@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/25/2019
 ms.author: abpati
 ms.custom: aaddev, devx-track-python, scenarios:getting-started, languages:Python
-ms.openlocfilehash: 1a8d851d2e70850155950786c6aa67c1d5086eb2
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 383f7f37e93b4705419ba1f93f509c86eaab192b
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95993872"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97030636"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-python-web-app"></a>Schnellstart: Hinzufügen von „Mit Microsoft anmelden“ zu einer Python-Web-App
 
@@ -50,31 +50,25 @@ Eine Abbildung finden Sie unter [Funktionsweise des Beispiels](#how-the-sample-w
 >
 > Führen Sie die folgenden Schritte aus, um Ihre Anwendung zu registrieren und Ihrer Projektmappe manuell die Registrierungsinformationen Ihrer App hinzuzufügen:
 >
-> 1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim [Azure-Portal](https://portal.azure.com) an.
-> 1. Wenn Sie mit Ihrem Konto auf mehrere Mandanten zugreifen können, klicken Sie rechts oben auf Ihr Konto, und legen Sie Ihre Portalsitzung auf den gewünschten Azure AD-Mandanten fest.
-> 1. Navigieren Sie zur Seite [App-Registrierungen](https://go.microsoft.com/fwlink/?linkid=2083908) von Microsoft Identity Platform für Entwickler.
-> 1. Wählen Sie **Neue Registrierung** aus.
-> 1. Geben Sie auf der daraufhin angezeigten Seite **Anwendung registrieren** die Registrierungsinformationen für Ihre Anwendung ein:
->      - Geben Sie im Abschnitt **Name** einen aussagekräftigen Anwendungsnamen ein, der den Benutzern der App angezeigt wird (beispielsweise `python-webapp`).
->      - Wählen Sie unter **Unterstützte Kontotypen** **Konten in allen Organisationsverzeichnissen und persönliche Microsoft-Konten** aus.
->      - Wählen Sie **Registrieren**.
->      - Notieren Sie sich für die spätere Verwendung auf der Seite **Übersicht** den Wert von **Anwendungs-ID (Client)** .
-> 1. Wählen Sie im Menü die Option **Authentifizierung** aus, und fügen Sie anschließend folgende Informationen hinzu:
->    - Fügen Sie die Plattformkonfiguration **Web** hinzu. Fügen Sie `http://localhost:5000/getAToken` als **Umleitungs-URI** hinzu.
->    - Wählen Sie **Speichern** aus.
-> 1. Wählen Sie im linken Menü die Option **Certificates & secrets** (Zertifikate und Geheimnisse) aus, und klicken Sie im Abschnitt **Geheime Clientschlüssel** auf **Neuer geheimer Clientschlüssel**:
->
->      - Geben Sie eine Schlüsselbeschreibung (des Instanz-App-Geheimnisses) ein.
->      - Wählen Sie als Schlüsseldauer die Option **In 1 Jahr** aus.
->      - Wenn Sie auf **Hinzufügen** klicken, wird der Schlüsselwert angezeigt.
->      - Kopieren Sie den Wert des Schlüssels. Sie benötigen sie später.
-> 1. Wählen Sie den Abschnitt **API-Berechtigungen** aus.
->
->      - Klicken Sie auf die Schaltfläche **Berechtigung hinzufügen**.
->      - Stellen Sie sicher, dass die Registerkarte **Microsoft-APIs** ausgewählt ist.
->      - Klicken Sie im Abschnitt *Häufig verwendete Microsoft-APIs* auf **Microsoft Graph**.
->      - Stellen Sie im Abschnitt **Delegierte Berechtigungen** sicher, dass die richtigen Berechtigungen aktiviert sind: **User.ReadBasic.All**. Verwenden Sie bei Bedarf das Suchfeld.
->      - Wählen Sie die Schaltfläche **Berechtigungen hinzufügen** aus.
+> 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+> 1. Wenn Sie Zugriff auf mehrere Mandanten haben, verwenden Sie im Menü am oberen Rand den Filter **Verzeichnis + Abonnement** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::, um den Mandanten auszuwählen, für den Sie eine Anwendung registrieren möchten.
+> 1. Wählen Sie unter **Verwalten** Folgendes aus: **App-Registrierungen** > **Neue Registrierung**.
+> 1. Geben Sie unter **Name** einen Namen für Ihre Anwendung ein (beispielsweise `python-webapp`). Benutzern Ihrer App wird wahrscheinlich dieser Namen angezeigt. Sie können ihn später ändern.
+> 1. Wählen Sie unter **Unterstützte Kontotypen** **Konten in allen Organisationsverzeichnissen und persönliche Microsoft-Konten** aus.
+> 1. Wählen Sie **Registrieren**.
+> 1. Notieren Sie sich für die spätere Verwendung auf der Seite **Übersicht** den Wert von **Anwendungs-ID (Client)** .
+> 1. Wählen Sie unter **Verwalten** die Option **Authentifizierung** aus.
+> 1. Wählen Sie **Plattform hinzufügen** > **Web** aus.
+> 1. Fügen Sie `http://localhost:5000/getAToken` als **Umleitungs-URI** hinzu.
+> 1. Wählen Sie **Konfigurieren** aus.
+> 1. Wählen Sie unter **Verwalten** die Option **Zertifikate und Geheimnisse** und dann im Abschnitt **Geheime Clientschlüssel** die Option **Neuer geheimer Clientschlüssel** aus.
+> 1. Geben Sie eine Beschreibung für den Schlüssel ein (z. B. App-Geheimnis), übernehmen Sie das standardmäßige Ablaufdatum, und wählen Sie **Hinzufügen** aus.
+> 1. Notieren Sie sich den **Wert** des **geheimen Clientschlüssels** zur späteren Verwendung.
+> 1. Wählen Sie unter **Verwalten** die Optionen **API-Berechtigungen** > **Berechtigung hinzufügen** aus.
+>1.  Stellen Sie sicher, dass die Registerkarte **Microsoft-APIs** ausgewählt ist.
+> 1. Wählen Sie im Abschnitt *Häufig verwendete Microsoft-APIs* die Option **Microsoft Graph** aus.
+> 1. Stellen Sie im Abschnitt **Delegierte Berechtigungen** sicher, dass die richtigen Berechtigungen aktiviert sind: **User.ReadBasic.All**. Verwenden Sie bei Bedarf das Suchfeld.
+> 1. Wählen Sie die Schaltfläche **Berechtigungen hinzufügen** aus.
 >
 > [!div class="sxs-lookup" renderon="portal"]
 >

@@ -1,5 +1,5 @@
 ---
-title: Vorläufiges Löschen wird für alle Azure Key Vaults aktiviert | Microsoft-Dokumentation
+title: Aktivieren von vorläufigem Löschen für alle Azure Key Vaults | Microsoft-Dokumentation
 description: Verwenden Sie dieses Dokument, um vorläufiges löschen für alle Schlüsseltresore zu übernehmen.
 services: key-vault
 author: ShaneBala-keyvault
@@ -7,19 +7,19 @@ manager: ravijan
 tags: azure-resource-manager
 ms.service: key-vault
 ms.topic: conceptual
-ms.date: 07/27/2020
+ms.date: 12/15/2020
 ms.author: sudbalas
-ms.openlocfilehash: 0e811cc219002c034afb968be760ce2c249b08f3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e512cccdbfdc56500fa7c69372ca38f59d3195c2
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91825249"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590085"
 ---
 # <a name="soft-delete-will-be-enabled-on-all-key-vaults"></a>Vorläufiges Löschen wird für alle Schlüsseltresore aktiviert
 
 > [!WARNING]
-> **Breaking Change**: Die Möglichkeit, das vorläufige Löschen zu deaktivieren, wird am Ende des Jahres eingestellt, und der vorläufige Löschschutz wird für alle Schlüsseltresore automatisch aktiviert.  Azure Key Vault-Benutzer und -Administratoren sollten das vorläufige Löschen für ihre Schlüsseltresore sofort aktivieren.
+> **Breaking Change**: Die Möglichkeit, vorläufiges Löschen abzuwählen, wird bald eingestellt. Azure Key Vault-Benutzer und -Administratoren sollten das vorläufige Löschen für ihre Schlüsseltresore sofort aktivieren.
 >
 > Für verwaltetes HSM ist vorläufiges Löschen standardmäßig aktiviert und kann nicht deaktiviert werden.
 
@@ -29,9 +29,18 @@ Wenn ein Geheimnis aus einem Schlüsseltresor ohne vorläufigen Löschschutz gel
 
 Vollständige Details zur Funktion für vorläufiges Löschen finden Sie unter [Übersicht über die Azure Key Vault-Funktion für vorläufiges Löschen](soft-delete-overview.md).
 
-## <a name="how-do-i-respond-to-breaking-changes"></a>Gewusst wie: Reagieren auf Breaking Changes
+## <a name="can-my-application-work-with-soft-delete-enabled"></a>Funktioniert meine Anwendung mit aktiviertem vorläufigem Löschen?
 
-Ein Schlüsseltresorobjekt kann nicht mit demselben Namen wie ein Schlüsseltresorobjekt im vorläufig gelöschten Zustand erstellt werden.  Wenn Sie beispielsweise einen Schlüssel mit dem Namen `test key` in Schlüsseltresor A löschen, können Sie erst dann einen neuen Schlüssel namens `test key` in Schlüsseltresor A erstellen, wenn das vorläufig gelöschte `test key`-Objekt endgültig gelöscht wurde.
+> [!Important] 
+> **Lesen Sie die folgenden Informationen sorgfältig durch, bevor Sie vorläufiges Löschen für Ihre Schlüsseltresore aktivieren.**
+
+Key Vault-Namen sind global eindeutig. Die Namen von Geheimnissen, die in einem Schlüsseltresor gespeichert sind, sind ebenfalls eindeutig. Der Name eines Schlüsseltresors oder Schlüsseltresorobjekts, das im vorläufig gelöschten Zustand vorhanden ist, kann nicht wiederverwendet werden. 
+
+**Beispiel Nr. 1**: Wenn Ihre Anwendung programmgesteuert einen Schlüsseltresor mit dem Namen „Vault A“ erstellt und „Vault A“ später löscht. Dem Schlüsseltresor wird der vorläufig gelöschte Zustand zugewiesen. Die Anwendung kann keinen weiteren Schlüsseltresor mit dem Namen „Vault A“ erstellen, bis der Schlüsseltresor aus dem vorläufig gelöschten Zustand bereinigt wird. 
+
+**Beispiel Nr. 2**: Wenn Ihre Anwendung einen Schlüssel mit dem Namen `test key` im Schlüsseltresor A erstellt und den Schlüssel später aus Tresor A löscht, kann Ihre Anwendung erst dann einen neuen Schlüssel mit dem Namen `test key` im Schlüsseltresor A erstellen, wenn das `test key`-Objekt aus dem vorläufig gelöschten Zustand bereinigt wird. 
+
+Dies kann zu Konfliktfehlern führen, wenn Sie versuchen, ein Schlüsseltresorobjekt zu löschen und es mit demselben Namen neu zu erstellen, ohne es zuerst aus dem vorläufig gelöschten Zustand endgültig zu löschen. Dies kann zum Fehlschlagen Ihrer Anwendungen oder Automatisierung führen. Wenden Sie sich an Ihr Entwicklerteam, bevor Sie die unten genannten erforderlichen Anwendungs- und Verwaltungsänderungen vornehmen. 
 
 ### <a name="application-changes"></a>Anwendungsänderungen
 
@@ -59,13 +68,14 @@ Wenn für Ihre Organisation gesetzliche Complianceanforderungen gelten und sie n
 2. Suchen Sie nach „Azure Policy“.
 3. Wählen Sie „Definitionen“ aus.
 4. Wählen Sie unter „Kategorie“ im Filter „Key Vault“ aus.
-5. Wählen Sie die Richtlinie „Key Vault-Objekte müssen wiederherstellbar sein“ aus.
+5. Wählen Sie die Richtlinie „Für Key Vault sollte vorläufiges Löschen aktiviert sein“ aus.
 6. Klicken Sie auf „Zuweisen“.
 7. Legen Sie den Gültigkeitsbereich auf Ihr Abonnement fest.
-8. Wählen Sie „Überprüfen + erstellen“ aus.
-9. Es kann bis zu 24 Stunden dauern, bis eine vollständige Überprüfung Ihrer Umgebung abgeschlossen ist.
-10. Klicken Sie auf dem Blatt „Azure Policy“ auf „Compliance“.
-11. Wählen Sie die Richtlinie aus, die Sie angewendet haben.
+8. Stellen Sie sicher, dass die Auswirkung der Richtlinie auf „Überwachung“ festgelegt ist.
+9. Wählen Sie „Überprüfen + erstellen“ aus.
+10. Es kann bis zu 24 Stunden dauern, bis eine vollständige Überprüfung Ihrer Umgebung abgeschlossen ist.
+11. Klicken Sie auf dem Blatt „Azure Policy“ auf „Compliance“.
+12. Wählen Sie die Richtlinie aus, die Sie angewendet haben.
 
 Sie sollten jetzt filtern und feststellen können, für welche Ihrer Schlüsseltresore vorläufiges Löschen aktiviert ist (kompatible Ressourcen) und für welche Schlüsseltresore vorläufiges Löschen nicht aktiviert ist (nicht kompatible Ressourcen).
 
@@ -106,15 +116,11 @@ Führen Sie die oben beschriebenen Schritte im Abschnitt „Vorgehensweise zum �
 
 ### <a name="what-action-do-i-need-to-take"></a>Welche Maßnahmen muss ich ergreifen?
 
-Stellen Sie sicher, dass Sie keine Änderungen an Ihrer Anwendungslogik vornehmen müssen. Sobald Sie sich dessen versichert haben, aktivieren Sie vorläufiges Löschen für alle Ihre Schlüsseltresore. Dadurch wird sichergestellt, dass Sie von einem Breaking Change unbeeinträchtigt bleiben, wenn am Ende des Jahres vorläufiges Löschen für alle Schlüsseltresore aktiviert wird.
+Stellen Sie sicher, dass Sie keine Änderungen an Ihrer Anwendungslogik vornehmen müssen. Sobald Sie sich dessen versichert haben, aktivieren Sie vorläufiges Löschen für alle Ihre Schlüsseltresore.
 
 ### <a name="by-when-do-i-need-to-take-action"></a>Bis wann muss ich Maßnahmen ergreifen?
 
-Vorläufiges Löschen wird bis Ende des Jahres für alle Schlüsseltresore aktiviert. Um sicherzustellen, dass Ihre Anwendungen nicht betroffen sind, aktivieren Sie vorläufiges Löschen so bald wie möglich für Ihre Schlüsseltresore.
-
-## <a name="what-will-happen-if-i-dont-take-any-action"></a>Was passiert, wenn ich nichts unternehme?
-
-Wenn Sie keine Maßnahmen ergreifen, wird vorläufiges Löschen automatisch am Ende des Jahres für alle Ihre Schlüsseltresore aktiviert. Dies kann zu Konfliktfehlern führen, wenn Sie versuchen, ein Schlüsseltresorobjekt zu löschen und es mit demselben Namen neu zu erstellen, ohne es zuerst aus dem vorläufig gelöschten Zustand endgültig zu löschen. Dies kann zum Fehlschlagen Ihrer Anwendungen oder Automatisierung führen.
+Um sicherzustellen, dass Ihre Anwendungen nicht betroffen sind, aktivieren Sie vorläufiges Löschen so bald wie möglich für Ihre Schlüsseltresore.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

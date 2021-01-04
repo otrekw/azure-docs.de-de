@@ -4,12 +4,12 @@ ms.author: dobett
 ms.service: iot-pnp
 ms.topic: include
 ms.date: 11/24/2020
-ms.openlocfilehash: 5ad69fb6743676189de409df16c046d5361a5a91
-ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
+ms.openlocfilehash: ad305202daf09258bbd439e824fc07f1eed1c5af
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96126088"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033846"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -28,8 +28,8 @@ Wenn Sie das Beispiel ausführen, um eine Verbindung mit IoT Central herzustell
 
 Die `main`-Methode:
 
-* Ruft `initializeAndProvisionDevice` auf, um die Modell-ID `dtmi:com:example:Thermostat;1` festzulegen, das Gerät mithilfe von DPS bereitzustellen und zu registrieren, eine **DeviceClient**-Instanz zu erstellen und eine Verbindung mit Ihrer IoT Central-Anwendung herzustellen.
-* Erstellt einen Befehlshandler für den Befehl `getMaxMinReport`.
+* Ruft `initializeAndProvisionDevice` auf, um die Modell-ID `dtmi:com:example:Thermostat;1` festzulegen, das Gerät mithilfe von DPS bereitzustellen und zu registrieren, eine **DeviceClient**-Instanz zu erstellen und eine Verbindung mit Ihrer IoT Central-Anwendung herzustellen. IoT Central verwendet die Modell-ID zum Identifizieren oder Generieren der Gerätevorlage für dieses Gerät. Weitere Informationen finden Sie unter [Zuordnen eines Geräts zu einer Gerätevorlage](../articles/iot-central/core/concepts-get-connected.md#associate-a-device-with-a-device-template).
+* Erstellen eines Befehlshandlers für den Befehl `getMaxMinReport`
 * Erstellt einen Eigenschaftsaktualisierungshandler für die schreibbare Eigenschaft `targetTemperature`.
 * Startet einen Thread, um alle fünf Sekunden Temperaturtelemetriedaten zu senden und die Eigenschaft `maxTempSinceLastReboot` zu aktualisieren.
 
@@ -90,7 +90,7 @@ public static void main(String[] args) throws URISyntaxException, IOException, P
 }
 ```
 
-Die `initializeAndProvisionDevice`-Methode zeigt, wie das Gerät mithilfe von DPS die Registrierung bei IoT Central durchführt und eine Verbindung mit IoT Central herstellt. Die Nutzlast beinhaltet die Modell-ID:
+Die `initializeAndProvisionDevice`-Methode zeigt, wie das Gerät mithilfe von DPS die Registrierung bei IoT Central durchführt und eine Verbindung mit IoT Central herstellt. Die Nutzlast enthält die Modell-ID, die IoT Central zum [Zuordnen des Geräts zu einer Gerätevorlage](../articles/iot-central/core/concepts-get-connected.md#associate-a-device-with-a-device-template) verwendet:
 
 ```java
 private static void initializeAndProvisionDevice() throws ProvisioningDeviceClientException, IOException, URISyntaxException, InterruptedException {

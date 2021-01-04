@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 07/01/2020
 ms.author: kenwith
-ms.openlocfilehash: c0253dc3c9dc029cd964fb32b148be1405e7fbad
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 2ff35a8d86534a99b8957a9272f9a1eb59fc27ab
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96780177"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97399977"
 ---
 # <a name="quickstart-set-up-oidc-based-single-sign-on-sso-for-an-application-in-your-azure-active-directory-azure-ad-tenant"></a>Schnellstart: Einrichten des OIDC-basierten einmaligen Anmeldens (Single Sign-On, SSO) für eine Anwendung auf Ihrem Azure Active Directory-Mandanten (Azure AD-Mandanten)
 
@@ -49,7 +49,7 @@ Richten Sie einmaliges Anmelden wie folgt für eine Anwendung ein:
     :::image type="content" source="media/add-application-portal-setup-oidc-sso/sign-up-oidc-sso.png" alt-text="Screenshot: Option für einmaliges Anmelden und Schaltfläche für die Registrierung" lightbox="media/add-application-portal-setup-oidc-sso/sign-up-oidc-sso.png":::
 
 
-2. Wenn Sie die Schaltfläche **Registrieren** auswählen, wird die Anmeldeseite für App-Entwickler angezeigt. Melden Sie sich mit Ihren Azure Active Directory-Anmeldeinformationen an. 
+2. Wenn Sie **Registrieren** auswählen, wird die Anmeldeseite für App-Entwickler angezeigt. Melden Sie sich mit Ihren Azure Active Directory-Anmeldeinformationen an. 
 
    > [!IMPORTANT]
     > Falls Sie bereits über ein Abonnement für die Anwendung verfügen, wird eine Überprüfung der Benutzerdetails und Mandanten- bzw. Verzeichnisinformationen durchgeführt. Falls der Benutzer von der Anwendung nicht verifiziert werden kann, werden Sie auf die Registrierungsseite für den Anwendungsdienst oder die Fehlerseite umgeleitet.

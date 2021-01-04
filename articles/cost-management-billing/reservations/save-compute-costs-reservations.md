@@ -6,14 +6,14 @@ ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: overview
-ms.date: 11/18/2020
+ms.date: 12/15/2020
 ms.author: banders
-ms.openlocfilehash: 0ef3f833d1bac4f26f49ace2b366cdfcf5ef3e35
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: b79bde204d82b069b3314855a45a680b863c3f69
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96352982"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97560490"
 ---
 # <a name="what-are-azure-reservations"></a>Was sind Azure-Reservierungen?
 
@@ -58,13 +58,14 @@ Weitere Informationen finden Sie unter  [Kaufen einer Reservierung](prepare-bu
 
 Die Reservierung wird mit der Zahlungsmethode in Rechnung gestellt, die mit dem Abonnement verknüpft ist. Die Reservierungskosten werden ggf. von Ihrem Verpflichtungsguthaben abgezogen. Wenn Ihr Zahlungsverpflichtungssaldo die Kosten für die Reservierung nicht abdeckt, wird Ihnen die Überschreitung in Rechnung gestellt. Wenn Sie über ein Abonnement in einem individuellen Plan mit Preisen für nutzungsbasierte Bezahlung verfügen, wird die Kreditkarte Ihres Konto umgehend für Vorabkäufe belastet. Monatliche Zahlungen werden auf Ihrer Rechnung angezeigt, und Ihre Kreditkarte wird monatlich belastet. Wenn Sie Rechnungen erhalten, sind die Gebühren Ihrer nächsten Rechnung aufgeführt. 
 
-## <a name="permissions-to-view-and-manage-reservations"></a>Berechtigungen zum Anzeigen und Verwalten von Reservierungen 
+## <a name="who-can-manage-a-reservation-by-default"></a>Wer kann eine Reservierung standardmäßig verwalten?
 
-Der Benutzer, der eine Reservierung erwirbt, und der Kontoadministrator des Abonnements, das für die Abrechnung der Reservierung verwendet wird, erhalten die Rolle „Besitzer“ im Reservierungsauftrag und in der Reservierung.
+Die folgenden Benutzer können Reservierungen standardmäßig anzeigen und verwalten:
 
-Sie können die Verwaltung einer Reservierung delegieren, indem Sie den Rollen im Reservierungsauftrag oder in der Reservierung Personen hinzufügen. Sie weisen die Rollen im Azure-Portal oder mithilfe von APIs und PowerShell zu. 
+- Die Person, die eine Reservierung erwirbt, und der Kontoadministrator des Abrechnungsabonnements, mit dem die Reservierung erworben wird, werden der Reservierungsreihenfolge hinzugefügt.
+- Abrechnungsadministratoren für Konzernvertrag (Enterprise Agreement, EA) und Microsoft-Kundenvereinbarung.
 
-Weitere Informationen finden Sie unter  [Hinzufügen oder Ändern von Benutzern, die eine Reservierung verwalten können](manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation). 
+Wenn Sie anderen Personen das Verwalten von Reservierungen erlauben möchten, lesen Sie [Verwalten von Reservierungen für Azure-Ressourcen](manage-reserved-vm-instance.md).
 
 ## <a name="get-reservation-details-and-utilization-after-purchase"></a>Abrufen der Reservierungsdetails und -nutzung nach dem Kauf
 

@@ -7,14 +7,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 12/01/2020
+ms.date: 12/14/2020
 ms.author: banders
-ms.openlocfilehash: 3182da0d04d61d5bad4ce3e41f213ecc3be7ecaf
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 662e1bf721c93ee1d59946d2fd603551f3f88ad3
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96444457"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97503793"
 ---
 # <a name="cancel-your-azure-subscription"></a>Kündigen Ihres Azure-Abonnements
 
@@ -30,6 +30,17 @@ Die folgenden Schritte sind zwar nicht obligatorisch, aber Microsoft *empfiehlt*
 
 Wenn Sie einen kostenpflichtigen Azure-Supportplan kündigen, werden Ihnen die Gebühren für die verbleibende Abonnementlaufzeit in Rechnung gestellt. Weitere Informationen finden Sie unter [Azure-Supportpläne](https://azure.microsoft.com/support/plans/).
 
+## <a name="who-can-cancel-a-subscription"></a>Wer kann ein Abonnement kündigen?
+
+Die Tabelle unten beschreibt die Berechtigungen, die zum Kündigen eines Abonnements benötigt werden.
+
+|Abonnementtyp     |Wer kann kündigen?  |
+|---------|---------|
+|Abonnements, die bei der Registrierung für Azure über die Azure-Website erstellt wurden. Beispiele hierfür sind die Registrierung für ein [Kostenloses Azure-Konto](https://azure.microsoft.com/offers/ms-azr-0044p/), ein [Angebot mit nutzungsbasierter Bezahlung](https://azure.microsoft.com/offers/ms-azr-0003p/) oder als [Visual Studio-Abonnent](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/). |  Kontoadministrator und Besitzer des Abonnements  |
+|[Microsoft Enterprise Agreement](https://azure.microsoft.com/pricing/enterprise-agreement/) und [Enterprise Dev/Test](https://azure.microsoft.com/offers/ms-azr-0148p/)     |  Kontobesitzer und Besitzer des Abonnements       |
+|[Azure-Plan](https://azure.microsoft.com/offers/ms-azr-0017g/) und [Azure-Plan für DevTest](https://azure.microsoft.com/offers/ms-azr-0148g/)     |  Besitzer des Abonnements      |
+
+
 ## <a name="cancel-subscription-in-the-azure-portal"></a>Kündigen eines Abonnements im Azure-Portal
 
 1. Wählen Sie auf der [Seite „Abonnements“ im Azure-Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) Ihr Abonnement aus.
@@ -41,15 +52,13 @@ Wenn Sie einen kostenpflichtigen Azure-Supportplan kündigen, werden Ihnen die G
 > [!NOTE]
 > Partner können ein Abonnement aus folgenden Gründen aussetzen oder kündigen: Anforderung durch einen Kunden, bei Nichtbezahlung oder Betrug. Weitere Informationen finden Sie unter [Aussetzen oder Stornieren eines Abonnements](/partner-center/create-a-new-subscription#suspend-or-cancel-a-subscription).
 
-## <a name="who-can-cancel-a-subscription"></a>Wer kann ein Abonnement kündigen?
+## <a name="cancel-a-support-plan"></a>Kündigen eines Supportplans
 
-Die Tabelle unten beschreibt die Berechtigungen, die zum Kündigen eines Abonnements benötigt werden.
+Wenn Sie Ihren Supportplan über die Azure-Website, das Azure-Portal, erworben haben oder wenn Sie einen Supportplan im Rahmen einer Microsoft-Kundenvereinbarung haben, können Sie einen Supportplan kündigen. Wenn Sie Ihren Supportplan über einen Microsoft-Vertreter oder -Partner erworben haben, wenden Sie sich zur Unterstützung an ihn. 
 
-|Abonnementtyp     |Wer kann kündigen?  |
-|---------|---------|
-|Abonnements, die bei der Registrierung für Azure über die Azure-Website erstellt wurden. Beispiele hierfür sind die Registrierung für ein [Kostenloses Azure-Konto](https://azure.microsoft.com/offers/ms-azr-0044p/), ein [Angebot mit nutzungsbasierter Bezahlung](https://azure.microsoft.com/offers/ms-azr-0003p/) oder als [Visual Studio-Abonnent](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/). |  Kontoadministrator und Besitzer des Abonnements  |
-|[Microsoft Enterprise Agreement](https://azure.microsoft.com/pricing/enterprise-agreement/) und [Enterprise Dev/Test](https://azure.microsoft.com/offers/ms-azr-0148p/)     |  Kontobesitzer und Besitzer des Abonnements       |
-|[Azure-Plan](https://azure.microsoft.com/offers/ms-azr-0017g/) und [Azure-Plan für DevTest](https://azure.microsoft.com/offers/ms-azr-0148g/)     |  Besitzer des Abonnements      |
+1. Navigieren Sie im Azure-Portal zu **Cost Management + Billing*** (Kostenverwaltung + Abrechnung).
+1. Wählen Sie unter **Abrechnung** die Option **Laufende Gebühren** aus.
+1. Wählen Sie auf der rechten Seite für das Zeilenelement „Supportplan“ die Auslassungspunkte ( **...** ) und dann **Automatische Verlängerung deaktivieren** aus.
 
 ## <a name="what-happens-after-subscription-cancellation"></a>Was geschieht nach der Kündigung eines Abonnements?
 

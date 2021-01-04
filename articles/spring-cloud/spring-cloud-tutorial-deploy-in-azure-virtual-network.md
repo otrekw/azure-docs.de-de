@@ -1,56 +1,61 @@
 ---
-title: 'Tutorial: Bereitstellen von Azure Spring Cloud im virtuellen Netzwerk'
-description: Bereitstellen von Azure Spring Cloud im virtuellen Netzwerk (VNET-Einschleusung)
+title: 'Tutorial: Bereitstellen von Azure Spring Cloud in einem virtuellen Netzwerk'
+description: Bereitstellen von Azure Spring Cloud in einem virtuellen Netzwerk (VNET-Einschleusung)
 author: MikeDodaro
 ms.author: brendm
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/21/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 6e2df9168b880e565ea9b70c82c2c0c1b55b4db8
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 9d72d60bd3a1ef23b8122b2bc5ba4f0c5c701254
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94737242"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97587722"
 ---
-# <a name="tutorial-deploy-azure-spring-cloud-in-azure-virtual-network-vnet-injection"></a>Tutorial: Bereitstellen von Azure Spring Cloud im virtuellen Azure-Netzwerk (VNET-Einschleusung)
+# <a name="tutorial-deploy-azure-spring-cloud-in-a-virtual-network"></a>Tutorial: Bereitstellen von Azure Spring Cloud in einem virtuellen Netzwerk
 
 **Dieser Artikel gilt für:** ✔️ Java ✔️ C#
 
-In diesem Tutorial wird erläutert, wie Sie eine Azure Spring Cloud-Dienstinstanz in Ihrem virtuellen Netzwerk bereitstellen. Dies wird manchmal als VNET-Einschleusung bezeichnet.  
+In diesem Tutorial wird erläutert, wie Sie eine Azure Spring Cloud-Instanz in Ihrem virtuellen Netzwerk bereitstellen. Diese Bereitstellung wird manchmal als VNET-Einschleusung bezeichnet.
 
 Die Bereitstellung ermöglicht Folgendes:
 
-* Isolierung von Azure Spring Cloud-Apps und der Dienstruntime vom Internet in Ihrem Unternehmensnetzwerk
-* Azure Spring Cloud-Interaktion mit Systemen in lokalen Rechenzentren und/oder Azure-Diensten in anderen virtuellen Netzwerken
-* Befähigung von Kunden zum Steuern der eingehenden und ausgehenden Netzwerkkommunikation für Azure Spring Cloud
+* Isolierung von Azure Spring Cloud-Apps und der Dienstruntime vom Internet in Ihrem Unternehmensnetzwerk.
+* Azure Spring Cloud-Interaktion mit Systemen in lokalen Rechenzentren oder Azure-Diensten in anderen virtuellen Netzwerken.
+* Befähigung von Kunden zum Steuern der eingehenden und ausgehenden Netzwerkkommunikation für Azure Spring Cloud.
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Sie müssen die Azure Spring Cloud-Ressourcenanbieter *Microsoft.AppPlatform* und *Microsoft.ContainerService* gemäß den Anweisungen zum [Registrieren des Ressourcenanbieters im Azure-Portal](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal) oder durch Ausführung des folgenden Azure CLI-Befehls registrieren:
+
+Registrieren der Azure Spring Cloud-Ressourcenanbieter **Microsoft.AppPlatform** und **Microsoft.ContainerService** gemäß den Anweisungen zum [Registrieren des Ressourcenanbieters im Azure-Portal](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal) oder durch Ausführung des folgenden Azure CLI-Befehls:
 
 ```azurecli
 az provider register --namespace Microsoft.AppPlatform
 az provider register --namespace Microsoft.ContainerService
 ```
-## <a name="virtual-network-requirements"></a>Anforderungen für virtuelle Netzwerke
-Das virtuelle Netzwerk, in dem Sie die Azure Spring Cloud-Dienstinstanz bereitstellen, muss die folgenden Anforderungen erfüllen:
 
-* **Standort**: Das virtuelle Netzwerk muss sich am selben Ort wie die Azure Spring Cloud-Dienstinstanz befinden.
-* **Abonnement**: Das virtuelle Netzwerk muss sich im selben Abonnement wie die Azure Spring Cloud-Dienstinstanz befinden.
-* **Subnetze**: Das virtuelle Netzwerk muss zwei Subnetze enthalten, die für eine Azure Spring Cloud-Dienstinstanz bestimmt sind: 
-    * Eins für die Dienstruntime
-    * Eins für Ihre Spring Boot-Microserviceanwendungen 
-    * Zwischen diesen Subnetzen und einer Azure Spring Cloud-Dienstinstanz besteht eine 1:1-Beziehung. Sie müssen für jede bereitgestellte Dienstinstanz ein neues Subnetz verwenden, und jedes Subnetz darf nur eine einzelne Dienstinstanz enthalten.
-* **Adressraum:** Ein CIDR-Block (bis zu /28) für das Subnetz der Dienstruntime und ein weiterer CIDR-Block (bis zu /24) für das Subnetz der Spring Boot-Microserviceanwendungen
+## <a name="virtual-network-requirements"></a>Anforderungen für virtuelle Netzwerke
+
+Das virtuelle Netzwerk, in dem Sie die Azure Spring Cloud-Instanz bereitstellen, muss die folgenden Anforderungen erfüllen:
+
+* **Standort**: Das virtuelle Netzwerk muss sich am selben Ort wie die Azure Spring Cloud-Instanz befinden.
+* **Abonnement**: Das virtuelle Netzwerk muss sich im selben Abonnement wie die Azure Spring Cloud-Instanz befinden.
+* **Subnetze**: Das virtuelle Netzwerk muss zwei Subnetze enthalten, die für eine Azure Spring Cloud-Instanz bestimmt sind:
+
+    * Ein Subnetz für die Dienstruntime.
+    * Ein Subnetz für Ihre Spring Boot-Microserviceanwendungen.
+    * Zwischen diesen Subnetzen und einer Azure Spring Cloud-Instanz besteht eine 1:1-Beziehung. Verwenden Sie für jede Dienstinstanz, die Sie bereitstellen, ein neues Subnetz. Jedes Subnetz kann nur eine einzelne Dienstinstanz enthalten.
+* **Adressraum:** CIDR-Blöcke bis zu */28* für das Subnetz der Dienstruntime und das Subnetz der Spring Boot-Microserviceanwendungen.
 * **Routingtabelle**: Den Subnetzen darf keine vorhandene Routingtabelle zugeordnet sein.
 
 In den folgenden Verfahren wird das Einrichten des virtuellen Netzwerks beschrieben, das die Instanz von Azure Spring Cloud enthalten soll.
 
 ## <a name="create-a-virtual-network"></a>Erstellen eines virtuellen Netzwerks
-Wenn Sie bereits über ein virtuelles Netzwerk zum Hosten der Azure Spring Cloud-Dienstinstanz verfügen, überspringen Sie Schritt 1, 2 und 3. Sie können mit Schritt 4 beginnen, um Subnetze für das virtuelle Netzwerk vorzubereiten.
 
-1. Wählen Sie im Menü des Azure-Portals die Option **Ressource erstellen** aus. Wählen Sie im Azure Marketplace die Option **Netzwerk** > **Virtuelles Netzwerk** aus.
+Wenn Sie bereits über ein virtuelles Netzwerk zum Hosten einer Azure Spring Cloud-Dienstinstanz verfügen, überspringen Sie die Schritte 1, 2 und 3. Sie können mit Schritt 4 beginnen, um Subnetze für das virtuelle Netzwerk vorzubereiten.
+
+1. Wählen Sie im Menü des Azure-Portals die Option **Ressource erstellen** aus. Wählen Sie in Azure Marketplace die Option **Netzwerk** > **Virtuelles Netzwerk** aus.
 
 1. Geben Sie im Dialogfeld **Virtuelles Netzwerk erstellen** die folgenden Informationen an, oder wählen Sie sie aus:
 
@@ -58,37 +63,37 @@ Wenn Sie bereits über ein virtuelles Netzwerk zum Hosten der Azure Spring Cloud
     |-----------------|--------------------------------------------------|
     |Subscription     |Wählen Sie Ihr Abonnement aus.                         |
     |Resource group   |Wählen Sie Ihre Ressourcengruppe aus, oder erstellen Sie eine neue.  |
-    |Name             |Geben Sie *azure-spring-cloud-vnet* ein.                   |
-    |Position         |Wählen Sie **USA, Osten** aus.                                |
+    |Name             |Geben Sie **azure-spring-cloud-vnet** ein.                 |
+    |Standort         |Wählen Sie **USA, Osten** aus.                               |
 
-1. Klicken Sie auf **Weiter: IP-Adressen >** . 
- 
-1. Geben Sie unter „IPv4-Adressraum“ den Adressraum „10.1.0.0/16“ ein.
+1. Klicken Sie auf **Weiter: IP-Adressen**.
 
-1. Wählen Sie **Subnetz hinzufügen** aus, und geben Sie unter **Subnetzname** den Namen *service-runtime-subnet* und unter **Subnetzadressbereich** den Bereich „10.1.0.0/24“ ein. Klicken Sie anschließend auf **Hinzufügen**.
+1. Geben Sie als „IPv4-Adressraum“ den Adressraum **10.1.0.0/16** ein.
 
-1. Wählen Sie erneut **Subnetz hinzufügen** aus, und geben Sie **Subnetzname** und **Subnetzadressbereich** ein, etwa *apps-subnet* und 10.1.1.0/24.  Klicken Sie auf **Hinzufügen**.
+1. Wählen Sie **Subnetz hinzufügen** aus. Geben Sie dann unter **Subnetzname** den Namen **service-runtime-subnet** und unter **Subnetzadressbereich** den Bereich **10.1.0.0/28** ein. Wählen Sie anschließend **Hinzufügen**.
 
-1. Klicken Sie auf **Überprüfen + erstellen**. Übernehmen Sie die restlichen Standardeinstellungen, und klicken Sie auf **Erstellen**.
+1. Wählen Sie erneut **Subnetz hinzufügen** aus, und geben Sie **Subnetzname** und **Subnetzadressbereich** ein. Geben Sie z. B. **apps-subnet** und **10.1.1.0/28** ein. Wählen Sie anschließend **Hinzufügen**.
+
+1. Klicken Sie auf **Überprüfen + erstellen**. Übernehmen Sie die übrigen Standardeinstellungen, und wählen Sie **Erstellen** aus.
 
 ## <a name="grant-service-permission-to-the-virtual-network"></a>Erteilen der Dienstberechtigung für das virtuelle Netzwerk
 
-Wählen Sie das virtuelle Netzwerk *azure-spring-cloud-vnet* aus, das Sie zuvor erstellt haben.
+Wählen Sie das virtuelle Netzwerk **azure-spring-cloud-vnet** aus, das Sie zuvor erstellt haben.
 
-1. Wählen Sie **Zugriffssteuerung (IAM)** und anschließend **Hinzufügen > Rollenzuweisung hinzufügen** aus.
+1. Wählen Sie **Zugriffssteuerung (IAM)** und anschließend **Hinzufügen** > **Rollenzuweisung hinzufügen** aus.
 
-    ![Zugriffssteuerung für das VNET](./media/spring-cloud-v-net-injection/access-control.png)
+    ![Screenshot: Bildschirm „Zugriffssteuerung“.](./media/spring-cloud-v-net-injection/access-control.png)
 
-2. Geben Sie im Dialogfeld **Rollenzuweisung hinzufügen** die folgenden Informationen ein, oder wählen Sie sie aus:
+1. Geben Sie im Dialogfeld **Rollenzuweisung hinzufügen** die folgenden Informationen ein, oder wählen Sie sie aus:
 
     |Einstellung  |Wert                                             |
     |---------|--------------------------------------------------|
-    |Role     |Wählen Sie **Besitzer** aus.                                  |
-    |Select   |Geben Sie *Azure Spring Cloud-Ressourcenanbieter* ein.      |
+    |Role     |Wählen Sie **Besitzer** aus.                                 |
+    |Select   |Geben Sie **Azure Spring Cloud-Ressourcenanbieter** ein.   |
 
-    Wählen Sie dann *Azure Spring Cloud-Ressourcenanbieter* aus, und klicken Sie auf **Speichern**.
+    Wählen Sie dann **Azure Spring Cloud-Ressourcenanbieter** aus, und klicken Sie auf **Speichern**.
 
-    ![Zuweisen des Azure Spring Cloud-Ressourcenanbieters zum VNET](./media/spring-cloud-v-net-injection/grant-azure-spring-cloud-resource-provider-to-vnet.png)
+    ![Screenshot: Auswählen des Azure Spring Cloud-Ressourcenanbieters.](./media/spring-cloud-v-net-injection/grant-azure-spring-cloud-resource-provider-to-vnet.png)
 
 Das gleiche Ergebnis erzielen Sie, wenn Sie den folgenden Azure CLI-Befehl ausführen:
 
@@ -105,51 +110,71 @@ az role assignment create \
     --assignee e8de9221-a19c-4c81-b814-fd37c6caf9d2
 ```
 
-## <a name="deploy-azure-spring-cloud-service-instance-in-the-virtual-network"></a>Bereitstellen der Azure Spring Cloud-Dienstinstanz im virtuellen Netzwerk
+## <a name="deploy-an-azure-spring-cloud-instance"></a>Bereitstellen einer Azure Spring Cloud-Instanz
 
-1. Öffnen Sie das Azure-Portal unter https://ms.portal.azure.com.
+So stellen Sie die Azure Spring Cloud-Instanz im virtuellen Netzwerk bereit:
 
-1. Suchen Sie über das obere Suchfeld nach **Azure Spring Cloud**, und wählen Sie in den Ergebnissen **Azure Spring Cloud** aus.
+1. Öffnen Sie das [Azure-Portal](https://portal.azure.com).
+
+1. Suchen Sie im oberen Suchfeld nach **Azure Spring Cloud**. Wählen Sie in den Ergebnissen **Azure Spring Cloud** aus.
 
 1. Wählen Sie auf der Seite **Azure Spring Cloud** die Option **+ Hinzufügen** aus.
 
-1. Füllen Sie das Formular auf der Azure Spring Cloud-Seite **Erstellen** aus. 
+1. Füllen Sie das Formular auf der Azure Spring Cloud-Seite **Erstellen** aus.
 
 1. Wählen Sie die gleiche Ressourcengruppe und die gleiche Region wie für das virtuelle Netzwerk aus.
 
-1. Wählen Sie unter **Dienstdetails** für **Name** die Option *azure-spring-cloud-vnet* aus.
+1. Wählen Sie unter **Dienstdetails** für **Name** die Option **azure-spring-cloud-vnet** aus.
 
-1. Wählen Sie die Registerkarte **Netzwerk** und dann Folgendes aus:
+1. Wählen Sie die Registerkarte **Netzwerk** und dann die folgenden Werte aus:
 
     |Einstellung                                |Wert                                             |
     |---------------------------------------|--------------------------------------------------|
-    |Bereitstellen im eigenen virtuellen Netzwerk     |Klicken Sie auf **Ja**.                                    |
-    |Virtuelles Netzwerk                        |Wählen Sie *azure-spring-cloud-vnet* aus.                  |
-    |Subnetz der Dienstruntime                 |Wählen Sie *service-runtime-subnet* aus.                   |
-    |Subnetz für Spring Boot-Microservice-Apps   |Wählen Sie *apps-subnet* aus.                              |
+    |Bereitstellen im eigenen virtuellen Netzwerk     |Wählen Sie **Ja** aus.                                   |
+    |Virtuelles Netzwerk                        |Wählen Sie **azure-spring-cloud-vnet** aus.               |
+    |Subnetz der Dienstruntime                 |Wählen Sie **service-runtime-subnet** aus.                |
+    |Subnetz für Spring Boot-Microservice-Apps   |Wählen Sie **apps-subnet** aus.                           |
 
-    ![Registerkarte „Netzwerk“ für die Erstellung](./media/spring-cloud-v-net-injection/creation-blade-networking-tab.png)
+    ![Screenshot: Registerkarte „Netzwerk“ auf der Azure Spring Cloud-Erstellungsseite.](./media/spring-cloud-v-net-injection/creation-blade-networking-tab.png)
 
 1. Klicken Sie auf **Überprüfen und erstellen**.
 
-1. Überprüfen Sie Ihre Spezifikationen, und klicken Sie auf **Erstellen**.
+1. Überprüfen Sie Ihre Spezifikationen, und wählen Sie **Erstellen** aus.
 
-Nach der Bereitstellung werden zwei zusätzliche Ressourcengruppen in Ihrem Abonnement erstellt, um die Netzwerkressourcen für die Azure Spring Cloud-Dienstinstanz zu hosten.  Navigieren Sie zur **Startseite**, und wählen Sie dann **Ressourcengruppen** aus den oberen Menüelementen aus, um die folgenden neuen Ressourcengruppen zu suchen.
+    ![Screenshot: Überprüfen der Spezifikationen.](./media/spring-cloud-v-net-injection/verify-specifications.png)
 
-Die Ressourcengruppe mit dem Namen *ap-svc-rt_{Dienstinstanzname}_{Dienstinstanzregion}* enthält Netzwerkressourcen für die Dienstruntime der Dienstinstanz.
+Nach der Bereitstellung werden zwei zusätzliche Ressourcengruppen in Ihrem Abonnement erstellt, um die Netzwerkressourcen für die Azure Spring Cloud-Instanz zu hosten. Navigieren Sie zur **Startseite**, und wählen Sie dann **Ressourcengruppen** aus den oberen Menüelementen aus, um die folgenden neuen Ressourcengruppen zu suchen.
 
-  ![Dienstruntime](./media/spring-cloud-v-net-injection/service-runtime-resource-group.png)
+Die Ressourcengruppe mit dem Namen **ap-svc-rt_{Dienstinstanzname}_{Dienstinstanzregion}** enthält Netzwerkressourcen für die Dienstruntime der Dienstinstanz.
 
-Die Ressourcengruppe mit dem Namen *ap-app_{Dienstinstanzname}_{Dienstinstanzregion}* enthält Netzwerkressourcen für die Spring Boot-Microserviceanwendungen der Dienstinstanz.
+  ![Screenshot: Dienstruntime.](./media/spring-cloud-v-net-injection/service-runtime-resource-group.png)
 
-  ![Apps-Ressourcengruppe](./media/spring-cloud-v-net-injection/apps-resource-group.png)
+Die Ressourcengruppe mit dem Namen **ap-app_{Dienstinstanzname}_{Dienstinstanzregion}** enthält Netzwerkressourcen für die Spring Boot-Microserviceanwendungen der Dienstinstanz.
 
-Diese Netzwerkressourcen sind mit dem oben erstellten virtuellen Netzwerk verbunden.
+  ![Screenshot: Apps-Ressourcengruppe.](./media/spring-cloud-v-net-injection/apps-resource-group.png)
 
-  ![VNET mit verbundenem Gerät](./media/spring-cloud-v-net-injection/vnet-with-connected-device.png)
+Diese Netzwerkressourcen sind mit dem in der vorherigen Abbildung erstellten virtuellen Netzwerk verbunden.
+
+  ![Screenshot: Virtuelles Netzwerk mit verbundenen Geräten.](./media/spring-cloud-v-net-injection/vnet-with-connected-device.png)
 
    > [!Important]
-   > Die Ressourcengruppen werden vollständig vom Azure Spring Cloud-Dienst verwaltet. Die Ressourcen darin dürfen NICHT manuell gelöscht oder geändert werden.
+   > Die Ressourcengruppen werden vollständig vom Azure Spring Cloud-Dienst verwaltet. Löschen oder ändern Sie die Ressourcen darin *nicht* manuell.
+
+## <a name="limitations"></a>Einschränkungen
+
+Ein kleiner Subnetzbereich speichert IP-Adressen, führt jedoch zu Einschränkungen der maximalen Anzahl von App-Instanzen, die die Azure Spring Cloud-Instanz enthalten kann.
+
+| App-Subnetz-CIDR | IP-Adressen gesamt | Verfügbare IP-Adressen | Maximale Anzahl App-Instanzen                                        |
+| --------------- | --------- | ------------- | ------------------------------------------------------------ |
+| /28             | 16        | 8             | <p> App mit 1 Kern:  96 <br/> App mit 2 Kernen: 48<br/>  App mit 3 Kernen: 32 <br/> App mit 4 Kernen: 24 </p> |
+| /27             | 32        | 24            | <p> App mit 1 Kern:  228<br/> App mit 2 Kernen: 144<br/>  App mit 3 Kernen: 96 <br/>  App mit 4 Kernen: 72</p> |
+| /26             | 64        | 56            | <p> App mit 1 Kern:  500<br/> App mit 2 Kernen: 336<br/>  App mit 3 Kernen: 224<br/>  App mit 4 Kernen: 168</p> |
+| /25             | 128       | 120           | <p> App mit 1 Kern:  500<br> App mit 2 Kernen:  500<br>  App mit 3 Kernen:  480<br>  App mit 4 Kernen: 360</p> |
+| /24             | 256       | 248           | <p> App mit 1 Kern:  500<br/> App mit 2 Kernen:  500<br/>  App mit 3 Kernen: 500<br/>  App mit 4 Kernen: 500</p> |
+
+Für Subnetze werden fünf IP-Adressen von Azure reserviert, und für Azure Spring Cloud sind mindestens vier Adressen erforderlich. Mindestens neun IP-Adressen sind erforderlich, sodass /29 und /30 nicht betriebsbereit sind.
+
+Bei einem Dienstruntime-Subnetz beträgt die Mindestgröße /28. Diese Größe hat keine Auswirkungen auf die Anzahl der App-Instanzen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

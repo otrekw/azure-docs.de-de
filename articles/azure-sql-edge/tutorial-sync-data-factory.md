@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 672c9f0d5403ae27a26d58617dca44f0f1121411
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b83201ae864d1f1eb9124af5268360bb1748f6c8
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90904169"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97507607"
 ---
 # <a name="tutorial-sync-data-from-sql-edge-to-azure-blob-storage-by-using-azure-data-factory"></a>Tutorial: Synchronisieren von Daten aus SQL Edge mit Azure Blob Storage unter Verwendung von Azure Data Factory
 
@@ -59,8 +59,11 @@ Führen Sie für die SQL Edge-Instanz die folgenden Befehle aus:
     CREATE PROCEDURE usp_write_watermark @timestamp datetime, @TableName varchar(50)  
     AS  
     BEGIN
+    
     UPDATE [dbo].[watermarktable]
-    SET [WatermarkValue] = @timestamp WHERE [TableName] = @TableName
+    SET [WatermarkValue] = @timestamp
+    WHERE [TableName] = @TableName
+
     END
     Go
 ```
@@ -187,7 +190,7 @@ Erstellen Sie eine Data Factory gemäß der Anleitung in [diesem Tutorial](../da
 
 30. Wählen Sie im Pipeline-Designer die Option **Stored Procedure-Aktivität** aus, und ändern Sie den Namen in **SPtoUpdateWatermarkActivity**.
 
-31. Wechseln Sie zur Registerkarte **SQL-Konto**, und wählen Sie unter **Verknüpfter Dienst** die Option **SQLDBEdgeLinkedService** aus.
+31. Wechseln Sie zur Registerkarte **SQL-Konto**, und wählen Sie unter **Verknüpfter Dienst** die Option **_SQLDBEdgeLinkedService_* aus.
 
 32. Wechseln Sie zur Registerkarte **Gespeicherte Prozedur**, und führen Sie die folgenden Schritte aus:
 

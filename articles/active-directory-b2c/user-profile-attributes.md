@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 12/07/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 85030285810433dc77d1f466d160c50d1f89770e
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 31926653950594b986aca19e2db2877cd655ca24
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96750406"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509596"
 ---
 # <a name="user-profile-attributes"></a>Benutzerprofilattribute
 
@@ -62,7 +62,7 @@ In der nachstehenden Tabelle sind die Attribute von [Benutzerressourcentypen](/g
 |objectId        |String|Ein global eindeutiger Bezeichner (Globally Unique Identifier, GUID), bei dem es sich um den eindeutigen Bezeichner für den Benutzer handelt. Beispiel: 12345678-9abc-def0-1234-56789abcde. Schreibgeschützt, unveränderlich.|Nur Lesezugriff|Ja|Eingabe, Persistent, Ausgabe|
 |otherMails      |Zeichenfolgensammlung|Eine Liste zusätzlicher E-Mail-Adressen für den Benutzer. Beispiel: [„bob@contoso.com“, „Robert@fabrikam.com“].|Ja (Alternative E-Mail-Adresse)|Nein|Persistent, Ausgabe|
 |password        |String|Das Kennwort für das lokale Konto bei der Benutzererstellung.|Nein|Nein|Persistent|
-|passwordPolicies     |String|Die Richtlinie des Kennworts. Dabei handelt sich um eine Zeichenfolge, die aus verschiedenen, durch Komma getrennten Richtliniennamen besteht. Das heißt: „DisablePasswordExpiration, DisableStrongPassword“.|Nein|Nein|Persistent, Ausgabe|
+|passwordPolicies     |String|Die Richtlinie des Kennworts. Dabei handelt sich um eine Zeichenfolge, die aus verschiedenen, durch Komma getrennten Richtliniennamen besteht. Beispiel: „DisablePasswordExpiration, DisableStrongPassword“.|Nein|Nein|Persistent, Ausgabe|
 |physicalDeliveryOfficeName (officeLocation)|String|Position des Büros am Unternehmensstandort des Benutzers. Maximale Länge: 128 Zeichen.|Ja|Nein|Persistent, Ausgabe|
 |postalCode      |String|Die Postleitzahl der Anschrift des Benutzers. Die Postleitzahl ist spezifisch für das Land oder die Region des Benutzers. In den USA enthält dieses Attribut die Postleitzahl. Maximale Länge: 40 Zeichen.|Ja|Nein|Persistent, Ausgabe|
 |preferredLanguage    |String|Die bevorzugte Sprache des Benutzers. Sollte den ISO 639-1-Codes entsprechen. Beispiel:„ en-US“.|Nein|Nein|Persistent, Ausgabe|
@@ -120,5 +120,4 @@ Für das Definieren einer Eigenschaft in einer Schemaerweiterung werden die folg
 ## <a name="next-steps"></a>Nächste Schritte
 Erfahren Sie mehr über Erweiterungsattribute:
 - [Schemaerweiterungen](/graph/extensibility-overview#schema-extensions)
-- [Definieren von benutzerdefinierten Attributen in einem Benutzerflow](user-flow-custom-attributes.md)
-- [Definieren von benutzerdefinierten Attributen in einer benutzerdefinierten Richtlinie](custom-policy-custom-attributes.md)
+- [Definieren von benutzerdefinierten Attributen](user-flow-custom-attributes.md)

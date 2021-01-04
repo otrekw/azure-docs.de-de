@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/13/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: 774c17af88e45e25cf1e8edc0df60ab55fe53e0e
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: dce2cd0d77ff0a98d4d68e1c99edb472e61ce8a5
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95974328"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509460"
 ---
 # <a name="tutorial-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>Tutorial: Aufrufen der Microsoft Graph-API über eine UWP-Anwendung (UWP = Universelle Windows-Plattform)
 
@@ -48,7 +48,7 @@ In diesem Leitfaden wird eine UWP-Beispielanwendung erstellt, von der die Micros
 
 In dieser Anleitung wird das folgende NuGet-Paket verwendet:
 
-|Bibliothek|BESCHREIBUNG|
+|Bibliothek|Beschreibung|
 |---|---|
 |[Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client)|Microsoft Authentication Library (MSAL)|
 |[Microsoft.Graph](https://www.nuget.org/packages/Microsoft.Graph)|Microsoft Graph-Clientbibliothek|
@@ -347,21 +347,23 @@ private async Task DisplayMessageAsync(string message)
 Nun müssen Sie Ihre Anwendung registrieren:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-1. Klicken Sie auf **Azure Active Directory** > **App-Registrierungen**.
-1. Wählen Sie **Neue Registrierung** aus. Geben Sie einen aussagekräftigen Anwendungsnamen ein, der den Benutzern der App angezeigt wird (beispielsweise *UWP-App-calling-MSGraph*).
-1. Wählen Sie unter **Unterstützte Kontotypen** die Option **Konten in allen Organisationsverzeichnissen und persönliche Microsoft-Konten (z. B. Skype, Xbox, Outlook.com)** aus. Wählen Sie anschließend **Registrieren** aus, um den Vorgang fortzusetzen.
+1. Wenn Sie Zugriff auf mehrere Mandanten haben, verwenden Sie im Menü am oberen Rand den Filter **Verzeichnis + Abonnement** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::, um den Mandanten auszuwählen, für den Sie eine Anwendung registrieren möchten.
+1. Suchen Sie nach **Azure Active Directory**, und wählen Sie diese Option aus.
+1. Wählen Sie unter **Verwalten** Folgendes aus: **App-Registrierungen** > **Neue Registrierung**.
+1. Geben Sie unter **Name** einen Namen für Ihre Anwendung ein (beispielsweise `UWP-App-calling-MSGraph`). Benutzern Ihrer App wird wahrscheinlich dieser Namen angezeigt. Sie können ihn später ändern.
+1. Wählen Sie unter **Unterstützte Kontotypen** die Option **Accounts in any organizational directory (Any Azure AD directory - Multitenant) and personal Microsoft accounts (e.g. Skype, Xbox)** (Konten in allen Organisationsverzeichnissen (beliebiges Azure AD-Verzeichnis: mehrere Mandanten) und persönliche Microsoft-Konten (z. B. Skype, Xbox)) aus. 
+1. Wählen Sie **Registrieren**.
 1. Suchen Sie auf der Übersichtsseite nach dem Wert **Anwendungs-ID (Client)** , und kopieren Sie ihn. Wechseln Sie zurück zu Visual Studio, öffnen Sie die Datei *MainPage.xaml.cs*, und ersetzen Sie den Wert von `ClientId` durch diesen Wert.
 
 Konfigurieren der Authentifizierung für Ihre Anwendung:
 
-1. Wählen Sie im [Azure-Portal](https://portal.azure.com) unter **Verwalten** die Option **Authentifizierung** aus.
-1. Aktivieren Sie im Abschnitt **Umleitungs-URIs** | **Vorgeschlagene Umleitungs-URIs für öffentliche Clients (Mobilgerät, Desktop)** die Option https://login.microsoftonline.com/common/oauth2/nativeclient.
-1. Wählen Sie **Speichern** aus.
+1. Wenn Sie sich wieder im [Azure-Portal](https://portal.azure.com) befinden, wählen Sie unter **Verwalten** die Optionen **Authentifizierung** > **Plattform hinzufügen** und dann **Mobilgerät- und Desktopanwendungen** aus.
+1. Aktivieren Sie **https://login.microsoftonline.com/common/oauth2/nativeclient** im Abschnitt **Umleitungs-URIs**.
+1. Wählen Sie **Konfigurieren** aus.
 
 Konfigurieren Sie die API-Berechtigungen für Ihre Anwendung:
 
-1. Wählen Sie unter **Verwalten** die Option **API-Berechtigungen**.
-1. Wählen Sie **Berechtigung hinzufügen** aus, und vergewissern Sie sich, dass die Option **Microsoft-APIs** ausgewählt ist.
+1. Wählen Sie unter **Verwalten** die Optionen **API-Berechtigungen** > **Berechtigung hinzufügen** aus.
 1. Wählen Sie **Microsoft Graph**.
 1. Wählen Sie **Delegierte Berechtigungen** aus, suchen Sie nach *User.Read*, und vergewissern Sie sich, dass **User.Read** ausgewählt ist.
 1. Wählen Sie nach dem Vornehmen aller Änderungen die Option **Berechtigungen hinzufügen** aus, um sie zu speichern.
@@ -464,7 +466,7 @@ Es werden Benutzerprofilinformationen angezeigt, die vom Microsoft Graph-API-Auf
 
 Grundlegende Informationen zum Token, das über `AcquireTokenInteractive` oder `AcquireTokenSilent` abgerufen wurde, werden im Feld **Tokeninformationen** angezeigt:
 
-|Eigenschaft  |Format  |BESCHREIBUNG |
+|Eigenschaft  |Format  |Beschreibung |
 |---------|---------|---------|
 |`Username` |`user@domain.com` |Der zur Identifizierung des Benutzers verwendete Benutzername|
 |`Token Expires` |`DateTime` |Die Uhrzeit, zu der das Token abläuft. Das Token wird bei Bedarf von der Microsoft-Authentifizierungsbibliothek verlängert, um die Ablauffrist zu verlängern.|

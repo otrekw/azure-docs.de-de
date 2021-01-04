@@ -5,18 +5,18 @@ author: mumian
 ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 1f4e8c0bc6a066e0d82d393474bfc804be5e3fb3
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: f044863be7d0bfaaad57d3974a1d2856b27927ea
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96931366"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589133"
 ---
 # <a name="tutorial-use-condition-in-arm-templates"></a>Tutorial: Verwenden von Bedingungen in ARM-Vorlagen
 
 Hier wird beschrieben, wie Sie Azure-Ressourcen basierend auf den Bedingungen in einer ARM-Vorlage (Azure Resource Manager-Vorlage) bereitstellen.
 
-Im Tutorial [Festlegen der Reihenfolge für die Ressourcenbereitstellung](./template-tutorial-create-templates-with-dependent-resources.md) erstellen Sie einen virtuellen Computer, ein virtuelles Netzwerk und einige andere abhängige Ressourcen, z.B. ein Speicherkonto. Anstatt jedes Mal ein neues Speicherkonto zu erstellen, können Benutzer zwischen dem Erstellen eines neuen Speicherkontos und dem Verwenden eines vorhandenen Speicherkontos wählen. Sie definieren einen zusätzlichen Parameter, um dieses Ziel zu erreichen. Wenn der Wert des Parameters „new“ lautet, wird ein neues Speicherkonto erstellt. Andernfalls wird ein vorhandenes Speicherkonto mit dem angegebenen Namen verwendet.
+Im Tutorial [Festlegen der Reihenfolge für die Ressourcenbereitstellung](./template-tutorial-create-templates-with-dependent-resources.md) erstellen Sie einen virtuellen Computer, ein virtuelles Netzwerk und einige andere abhängige Ressourcen, z.B. ein Speicherkonto. Anstatt jedes Mal ein neues Speicherkonto zu erstellen, können Benutzer zwischen dem Erstellen eines neuen Speicherkontos und dem Verwenden eines vorhandenen Speicherkontos wählen. Sie definieren einen zusätzlichen Parameter, um dieses Ziel zu erreichen. Wenn der Wert des Parameters **new** lautet, wird ein neues Speicherkonto erstellt. Andernfalls wird ein vorhandenes Speicherkonto mit dem angegebenen Namen verwendet.
 
 ![Diagramm der Bedingungen zum Verwenden der Resource Manager-Vorlage](./media/template-tutorial-use-conditions/resource-manager-template-use-condition-diagram.png)
 
@@ -54,7 +54,7 @@ Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie F
 
 „Azure-Schnellstartvorlagen“ ist ein Repository für ARM-Vorlagen. Statt eine Vorlage von Grund auf neu zu erstellen, können Sie eine Beispielvorlage verwenden und diese anpassen. Die in diesem Tutorial verwendete Vorlage heißt [Deploy a simple Windows VM](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/) (Bereitstellen eines einfachen virtuellen Windows-Computers).
 
-1. Wählen Sie in Visual Studio Code **Datei**>**Datei öffnen** aus.
+1. Wählen Sie in Visual Studio Code **Datei** > **Datei öffnen** aus.
 1. Fügen Sie in **Dateiname** die folgende URL ein:
 
     ```url
@@ -73,19 +73,19 @@ Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie F
 
     Es empfiehlt sich, vor dem Anpassen einer Vorlage die Referenz zu dieser Vorlage zu lesen.
 
-1. Wählen Sie **Datei**>**Speichern unter** aus, um eine Kopie der Datei als **azuredeploy.json** auf dem lokalen Computer zu speichern.
+1. Wählen Sie **Datei** > **Speichern unter** aus, um eine Kopie der Datei als _azuredeploy.json_ auf dem lokalen Computer zu speichern.
 
 ## <a name="modify-the-template"></a>Ändern der Vorlage
 
 Nehmen Sie zwei Änderungen an der vorhandenen Vorlage vor:
 
 * Fügen Sie einen Parameter für den Speicherkontonamen hinzu. Benutzer können entweder einen neuen oder einen vorhandenen Speicherkontonamen angeben.
-* Fügen Sie einen neuen Parameter mit dem Namen **newOrExisting** hinzu. Die Bereitstellung nutzt diesen Parameter, um zu ermitteln, ob ein neues Speicherkonto erstellt oder ein vorhandenes Speicherkonto verwendet werden soll.
+* Fügen Sie einen neuen Parameter mit dem Namen `newOrExisting` hinzu. Die Bereitstellung nutzt diesen Parameter, um zu ermitteln, ob ein neues Speicherkonto erstellt oder ein vorhandenes Speicherkonto verwendet werden soll.
 
 Hier ist das Verfahren zum Vornehmen von Änderungen angegeben:
 
-1. Öffnen Sie **azuredeploy.json** in Visual Studio Code.
-1. Ersetzen Sie die drei **variables('storageAccountName')** in der gesamten Vorlage durch **parameters('storageAccountName')** .
+1. Öffnen Sie _azuredeploy.json_ in Visual Studio Code.
+1. Ersetzen Sie die drei `variables('storageAccountName')` in der gesamten Vorlage durch `parameters('storageAccountName')` .
 1. Entfernen Sie die folgende Variablendefinition:
 
     ![Der Screenshot hebt die Variablendefinitionen hervor, die Sie entfernen müssen.](./media/template-tutorial-use-conditions/resource-manager-tutorial-use-condition-template-remove-storageaccountname.png)
@@ -105,7 +105,7 @@ Hier ist das Verfahren zum Vornehmen von Änderungen angegeben:
     },
     ```
 
-    Drücken Sie **[ALT]+[UMSCHALT]+ F**, um die Vorlage in Visual Studio Code zu formatieren.
+    Drücken Sie ALT+UMSCHALT+F, um die Vorlage in Visual Studio Code zu formatieren.
 
     Die aktualisierte Parameterdefinition sieht wie folgt aus:
 
@@ -117,12 +117,12 @@ Hier ist das Verfahren zum Vornehmen von Änderungen angegeben:
     "condition": "[equals(parameters('newOrExisting'),'new')]",
     ```
 
-    Mit der Bedingung wird der Wert des Parameters **newOrExisting** überprüft. Wenn der Parameterwert **new** lautet, erstellt die Bereitstellung das Speicherkonto.
+    Die Bedingung überprüft den Wert des Parameters `newOrExisting`. Wenn der Parameterwert **new** lautet, erstellt die Bereitstellung das Speicherkonto.
 
     Die aktualisierte Speicherkontodefinition sieht wie folgt aus:
 
     ![Der Screenshot zeigt die aktualisierte Speicherkontodefinition.](./media/template-tutorial-use-conditions/resource-manager-tutorial-use-condition-template.png)
-1. Aktualisieren Sie die Eigenschaft **storageUri** der VM-Ressourcendefinition mit dem folgenden Wert:
+1. Aktualisieren Sie die Eigenschaft `storageUri` der VM-Ressourcendefinition mit dem folgenden Wert:
 
     ```json
     "storageUri": "[concat('https://', parameters('storageAccountName'), '.blob.core.windows.net')]"
@@ -136,16 +136,16 @@ Hier ist das Verfahren zum Vornehmen von Änderungen angegeben:
 
 1. Melden Sie sich bei [Azure Cloud Shell](https://shell.azure.com) an.
 
-1. Wählen Sie Ihre bevorzugte Umgebung aus, indem Sie links oben **PowerShell** oder **Bash** (für die CLI) auswählen.  Bei einem Wechsel ist ein Neustart der Shell erforderlich.
+1. Wählen Sie Ihre bevorzugte Umgebung aus, indem Sie links oben **PowerShell** oder **Bash** (für die CLI) auswählen. Bei einem Wechsel ist ein Neustart der Shell erforderlich.
 
     ![Azure-Portal, Cloud Shell, Datei hochladen](./media/template-tutorial-use-template-reference/azure-portal-cloud-shell-upload-file.png)
 
-1. Wählen Sie **Dateien hochladen/herunterladen** und dann **Hochladen** aus. Betrachten Sie hierzu den vorherigen Screenshot. Wählen Sie die Datei aus, die Sie im vorherigen Abschnitt gespeichert haben. Nach dem Hochladen der Datei können Sie den Befehl **ls** und den Befehl **cat** verwenden, um zu überprüfen, ob die Datei hochgeladen wurde.
+1. Wählen Sie **Dateien hochladen/herunterladen** und dann **Hochladen** aus. Betrachten Sie hierzu den vorherigen Screenshot. Wählen Sie die Datei aus, die Sie im vorherigen Abschnitt gespeichert haben. Nach dem Hochladen der Datei können Sie den Befehl `ls` und den Befehl `cat` verwenden, um zu überprüfen, ob die Datei hochgeladen wurde.
 
 1. Führen Sie das folgende PowerShell-Skript aus, um die Vorlage bereitzustellen.
 
     > [!IMPORTANT]
-    > Der Name des Speicherkontos muss innerhalb von Azure eindeutig sein. Der Name darf nur Kleinbuchstaben und Ziffern enthalten, und er darf maximal 24 Zeichen lang sein. Zur Bildung des Speicherkontonamens wird dem Projektnamen „store“ angehängt. Stellen Sie sicher, dass der Projektname und der generierte Speicherkontoname den Anforderungen an den Speicherkontonamen entsprechen.
+    > Der Name des Speicherkontos muss innerhalb von Azure eindeutig sein. Der Name darf nur Kleinbuchstaben und Ziffern enthalten, und er darf maximal 24 Zeichen lang sein. Der Speicherkontoname besteht aus dem Projektnamen, dem **store** angefügt wird. Stellen Sie sicher, dass der Projektname und der generierte Speicherkontoname den Anforderungen an den Speicherkontonamen entsprechen.
 
     ```azurepowershell
     $projectName = Read-Host -Prompt "Enter a project name that is used to generate resource group name and resource names"
@@ -172,9 +172,9 @@ Hier ist das Verfahren zum Vornehmen von Änderungen angegeben:
     ```
 
     > [!NOTE]
-    > Für die Bereitstellung tritt ein Fehler auf, wenn **newOrExisting** auf **new** festgelegt, aber das Speicherkonto mit dem angegebenen Speicherkontonamen bereits vorhanden ist.
+    > Für die Bereitstellung tritt ein Fehler auf, wenn `newOrExisting` auf **new** festgelegt, aber das Speicherkonto mit dem angegebenen Speicherkontonamen bereits vorhanden ist.
 
-Versuchen Sie, eine andere Bereitstellung zu erstellen, bei der **newOrExisting** auf „existing“ festgelegt ist, und geben Sie ein vorhandenes Speicherkonto an. Informationen zum Erstellen eines Speicherkontos im Voraus finden Sie unter [Speicherkonto erstellen](../../storage/common/storage-account-create.md).
+Versuchen Sie, eine andere Bereitstellung zu erstellen, bei der `newOrExisting` auf **existing** festgelegt ist, und geben Sie ein vorhandenes Speicherkonto an. Informationen zum Erstellen eines Speicherkontos im Voraus finden Sie unter [Speicherkonto erstellen](../../storage/common/storage-account-create.md).
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

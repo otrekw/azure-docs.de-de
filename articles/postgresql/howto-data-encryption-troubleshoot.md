@@ -49,7 +49,7 @@ Die folgenden Fehlkonfigurationen führen zu den meisten Problemen bei der Daten
 #### <a name="missing-key-vault-permissions"></a>Fehlende Berechtigungen für Key Vault
 
 - `AzureKeyVaultMissingPermissionsMessage`
-- **Erläuterung** : Der Server verfügt nicht über die erforderlichen Get-, Wrap- und Unwrap-Berechtigungen für Azure Key Vault. Erteilen Sie dem Dienstprinzipal mit der entsprechenden ID alle fehlenden Berechtigungen.
+- **Erläuterung**: Der Server verfügt nicht über die erforderlichen Get-, Wrap- und Unwrap-Berechtigungen für Azure Key Vault. Erteilen Sie dem Dienstprinzipal mit der entsprechenden ID alle fehlenden Berechtigungen.
 
 ### <a name="mitigation"></a>Minderung
 

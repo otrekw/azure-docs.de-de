@@ -111,7 +111,7 @@ Um sicherzustellen, dass sich das gerade übertragene Image wirklich in Ihrer Az
 az acr repository list --name <acrName> --output table
 ```
 
-Beispiel:
+Zum Beispiel:
 
 ```azurecli
 az acr repository list --name mycontainerregistry082 --output table

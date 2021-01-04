@@ -6,18 +6,18 @@ ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: dfd6311fab8d9c65fa7c82d2f707ac96549a32a9
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: a44852fb2f491dd949b58217eca3e4f3e392cf17
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96931417"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97584135"
 ---
 # <a name="tutorial-utilize-the-arm-template-reference"></a>Tutorial: Verwenden der Referenz für ARM-Vorlagen
 
 Hier erfahren Sie, wie Sie die Vorlagenschemainformationen ermitteln und basierend darauf ARM-Vorlagen (Azure Resource Manager-Vorlagen) erstellen.
 
-In diesem Tutorial verwenden Sie eine Basisvorlage aus Azure-Schnellstartvorlagen. Sie nutzen die Referenzdokumentation für Vorlagen, um die Vorlage anzupassen.
+In diesem Tutorial verwenden Sie eine Basisvorlage aus den Azure-Schnellstartvorlagen. Sie nutzen die Referenzdokumentation für Vorlagen, um die Vorlage anzupassen.
 
 ![Referenz zu Resource Manager-Vorlagen: Bereitstellen eines Speicherkontos](./media/template-tutorial-use-template-reference/resource-manager-template-tutorial-deploy-storage-account.png)
 
@@ -42,7 +42,7 @@ Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie F
 
 [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/) ist ein Repository für ARM-Vorlagen. Statt eine Vorlage von Grund auf neu zu erstellen, können Sie eine Beispielvorlage verwenden und diese anpassen. Die in dieser Schnellstartanleitung verwendete Vorlage heißt [Standardspeicherkonto erstellen](https://azure.microsoft.com/resources/templates/101-storage-account-create/). Die Vorlage definiert eine Azure Storage-Kontoressource.
 
-1. Wählen Sie in Visual Studio Code **Datei**>**Datei öffnen** aus.
+1. Wählen Sie in Visual Studio Code **Datei** > **Datei öffnen** aus.
 1. Fügen Sie in **Dateiname** die folgende URL ein:
 
     ```url
@@ -50,26 +50,26 @@ Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie F
     ```
 
 1. Wählen Sie **Öffnen** aus, um die Datei zu öffnen.
-1. Wählen Sie **Datei**>**Speichern unter** aus, um die Datei als **azuredeploy.json** auf dem lokalen Computer zu speichern.
+1. Wählen Sie **Datei** > **Speichern unter** aus, um die Datei als _azuredeploy.json_ auf dem lokalen Computer zu speichern.
 
 ## <a name="understand-the-schema"></a>Grundlegendes zum Schema
 
-1. Reduzieren Sie in VS Code die Vorlage auf die Stammebene. Sie besitzen die einfachste Struktur mit den folgenden Elementen:
+1. Reduzieren Sie in Visual Studio Code die Vorlage auf die Stammebene. Sie besitzen die einfachste Struktur mit den folgenden Elementen:
 
     ![Einfachste Struktur der Resource Manager-Vorlage](./media/template-tutorial-use-template-reference/resource-manager-template-simplest-structure.png)
 
-    * **$schema**: Geben Sie den Speicherort der JSON-Schemadatei an, die die Version der Vorlagensprache beschreibt.
-    * **contentVersion**: Geben Sie einen beliebigen Wert für dieses Element an, um wichtige Änderungen an der Vorlage zu dokumentieren.
-    * **parameters**: Geben Sie die Werte an, die bei der Bereitstellung angegeben werden, um die Bereitstellung der Ressourcen anzupassen.
-    * **variables**: Geben Sie die Werte an, die als JSON-Fragmente in der Vorlage verwendet werden, um Vorlagensprachausdrücke zu vereinfachen.
-    * **resources**: Geben Sie die Ressourcentypen an, die in einer Ressourcengruppe bereitgestellt oder aktualisiert werden.
-    * **outputs**: Geben Sie die Werte an, die nach der Bereitstellung zurückgegeben werden.
+    * `$schema`: Geben Sie den Speicherort der JSON-Schemadatei an, die die Version der Vorlagensprache beschreibt.
+    * `contentVersion`: Geben Sie einen beliebigen Wert für dieses Element an, um wichtige Änderungen an der Vorlage zu dokumentieren.
+    * `parameters`: Geben Sie die Werte an, die bei der Bereitstellung angegeben werden, um die Bereitstellung der Ressourcen anzupassen.
+    * `variables`: Geben Sie die Werte an, die als JSON-Fragmente in der Vorlage verwendet werden, um Vorlagensprachausdrücke zu vereinfachen.
+    * `resources`: Geben Sie die Ressourcentypen an, die in einer Ressourcengruppe bereitgestellt oder aktualisiert werden.
+    * `outputs`: Geben Sie die Werte an, die nach der Bereitstellung zurückgegeben werden.
 
-1. Erweitern Sie **Ressourcen**. Dort ist eine Ressource vom Typ `Microsoft.Storage/storageAccounts` definiert. Der SKU-Name verfügt über einen Parameterwert.  Der Parameter heißt **storageAccountType**.
+1. Erweitern Sie `resources`. Dort ist eine Ressource vom Typ `Microsoft.Storage/storageAccounts` definiert. Der SKU-Name verfügt über einen Parameterwert. Der Parameter heißt `storageAccountType`.
 
     ![Resource Manager-Vorlage, Speicherkontodefinition](./media/template-tutorial-use-template-reference/resource-manager-template-storage-resource.png)
 
-1. Erweitern Sie **parameters**, um zu sehen, wie **storageAccountType** definiert ist. Für den Parameter gibt es vier mögliche Werte. Sie ermitteln die anderen zulässigen Werte und ändern dann die Parameterdefinition.
+1. Erweitern Sie `parameters`, um zu sehen, wie `storageAccountType` definiert ist. Für den Parameter gibt es vier mögliche Werte. Sie ermitteln die anderen zulässigen Werte und ändern dann die Parameterdefinition.
 
     ![Resource Manager-Vorlage: Speicherkontoressourcen-SKUs](./media/template-tutorial-use-template-reference/resource-manager-template-storage-resources-skus-old.png)
 
@@ -84,13 +84,13 @@ Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie F
 
     ![Referenz zu Resource Manager-Vorlagen: Speicherkontoversionen](./media/template-tutorial-use-template-reference/resource-manager-template-resources-reference-storage-accounts-versions.png)
 
-1. Wählen Sie im linken Bereich unter **Storage** die Option **Alle Ressourcen** aus. Auf dieser Seite sind die Ressourcentypen und Versionen des Speicherressourcenanbieters aufgelistet. Wir empfehlen Ihnen, für die in Ihrer Vorlage definierten Ressourcentypen die aktuellen API-Versionen zu verwenden.
+1. Wählen Sie im linken Bereich unter **Storage** die Option **Alle Ressourcen** aus. Auf dieser Seite sind die Ressourcentypen und Versionen des Speicherressourcenanbieters aufgelistet. Es wird empfohlen, für die in Ihrer Vorlage definierten Ressourcentypen die aktuellen API-Versionen zu verwenden.
 
     ![Referenz zu Resource Manager-Vorlagen: Speicherkontotypen/-versionen](./media/template-tutorial-use-template-reference/resource-manager-template-resources-reference-storage-accounts-types-versions.png)
 
-1. Wählen Sie die aktuelle Version des Ressourcentyps **storageAccount** aus. Zum Zeitpunkt der Erstellung dieses Artikels ist **2019-06-01** die aktuelle Version. Stellen Sie sicher, dass diese Version der Version entspricht, die für die Speicherkontoressource in Ihrer Vorlage verwendet wird. Vergewissern Sie sich beim Aktualisieren der API-Version, dass die Ressourcendefinition der Vorlagenreferenz entspricht.
+1. Wählen Sie die aktuelle Version des Ressourcentyps `storageAccount` aus. Zum Zeitpunkt der Erstellung dieses Artikels ist **2019-06-01** die aktuelle Version. Stellen Sie sicher, dass diese Version der Version entspricht, die für die Speicherkontoressource in Ihrer Vorlage verwendet wird. Vergewissern Sie sich beim Aktualisieren der API-Version, dass die Ressourcendefinition der Vorlagenreferenz entspricht.
 
-1. Auf dieser Seite werden die Details des Ressourcentyps „storageAccount“ aufgelistet.  Beispielsweise sind die zulässigen Werte für das **Sku**-Objekt aufgeführt. Es sind mehr SKUs vorhanden, als für die weiter oben geöffnete Schnellstartvorlage aufgeführt wurden. Sie können die Schnellstartvorlage so anpassen, dass sie alle verfügbaren Speichertypen enthält.
+1. Auf dieser Seite werden die Details des Ressourcentyps „storageAccount“ aufgelistet. Beispielsweise werden die zulässigen Werte für das **Sku-Objekt** aufgeführt. Es sind mehr SKUs vorhanden, als für die weiter oben geöffnete Schnellstartvorlage aufgeführt wurden. Sie können die Schnellstartvorlage so anpassen, dass sie alle verfügbaren Speichertypen enthält.
 
     ![Referenz zu Resource Manager-Vorlagen: Speicherkonto-SKUs](./media/template-tutorial-use-template-reference/resource-manager-template-resources-reference-storage-accounts-skus.png)
 
@@ -108,9 +108,11 @@ Fügen Sie über Visual Studio Code wie im folgenden Screenshot die zusätzliche
 
     ![Azure-Portal, Cloud Shell, Datei hochladen](./media/template-tutorial-use-template-reference/azure-portal-cloud-shell-upload-file.png)
 
-1. Wählen Sie **Dateien hochladen/herunterladen** und dann **Hochladen** aus. Betrachten Sie hierzu den vorherigen Screenshot. Wählen Sie die Datei aus, die Sie im vorherigen Abschnitt gespeichert haben. Nach dem Hochladen der Datei können Sie den Befehl **ls** und den Befehl **cat** verwenden, um zu überprüfen, ob die Datei hochgeladen wurde.
+1. Wählen Sie **Dateien hochladen/herunterladen** und dann **Hochladen** aus. Betrachten Sie hierzu den vorherigen Screenshot. Wählen Sie die Datei aus, die Sie im vorherigen Abschnitt gespeichert haben. Nach dem Hochladen der Datei können Sie den Befehl `ls` und den Befehl `cat` verwenden, um zu überprüfen, ob die Datei hochgeladen wurde.
 
 1. Führen Sie in Cloud Shell die folgenden Befehle aus. Klicken Sie auf die Registerkarte, um den PowerShell-Code oder den CLI-Code anzuzeigen.
+
+   Geben Sie beim Bereitstellen der Vorlage den Parameter `storageAccountType` mit einem neu hinzugefügten Wert an, z. B. **Standard_RAGRS**. Die Bereitstellung ist nicht erfolgreich, wenn Sie die ursprüngliche Schnellstartvorlage verwendet haben, weil **Standard_RAGRS** kein zulässiger Wert ist.
 
     # <a name="cli"></a>[BEFEHLSZEILENSCHNITTSTELLE (CLI)](#tab/CLI)
 
@@ -137,16 +139,14 @@ Fügen Sie über Visual Studio Code wie im folgenden Screenshot die zusätzliche
 
     ---
 
- Geben Sie beim Bereitstellen der Vorlage den Parameter **storageAccountType** mit einem neu hinzugefügten Wert an, z. B. **Standard_RAGRS**. Die Bereitstellung ist nicht erfolgreich, wenn Sie die ursprüngliche Schnellstartvorlage verwenden, weil **Standard_RAGRS** kein zulässiger Wert ist.
-
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
 Wenn Sie die Azure-Ressourcen nicht mehr benötigen, löschen Sie die Ressourcengruppe, um die bereitgestellten Ressourcen zu bereinigen.
 
 1. Wählen Sie im Azure-Portal im linken Menü die Option **Ressourcengruppe** aus.
-2. Geben Sie den Namen der Ressourcengruppe in das Feld **Nach Name filtern** ein.
-3. Klicken Sie auf den Namen der Ressourcengruppe.  Es werden insgesamt sechs Ressourcen in der Ressourcengruppe angezeigt.
-4. Wählen Sie **Ressourcengruppe löschen** aus dem Menü ganz oben aus.
+1. Geben Sie den Namen der Ressourcengruppe in das Feld **Nach Name filtern** ein.
+1. Klicken Sie auf den Namen der Ressourcengruppe.  Es werden insgesamt sechs Ressourcen in der Ressourcengruppe angezeigt.
+1. Wählen Sie **Ressourcengruppe löschen** aus dem Menü ganz oben aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

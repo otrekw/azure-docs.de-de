@@ -1,21 +1,29 @@
 ---
-title: Auslösen eines Batch-Auftrags mithilfe von Azure Functions
+title: Tutorial – Auslösen eines Batch-Auftrags mithilfe von Azure Functions
 description: 'Tutorial: Anwenden von OCR auf gescannte Dokumente beim Hinzufügen zu einem Storage-Blob'
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 05/30/2019
 ms.author: peshultz
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 6e481219c6be68f9e9da06d92b6c28998cc7a6e2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b441b4c4fcbeb089cef24c3a84fa33021e7840de
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88930093"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106381"
 ---
 # <a name="tutorial-trigger-a-batch-job-using-azure-functions"></a>Tutorial: Auslösen eines Batch-Auftrags mithilfe von Azure Functions
 
-In diesem Tutorial erfahren Sie, wie Sie mithilfe von Azure Functions einen Batch-Auftrag auslösen. Wir sehen uns ein Beispiel an, bei dem die optische Zeichenerkennung (OCR) über Azure Batch auf Dokumente angewandt wird, die einem Azure Storage-Blobcontainer hinzugefügt werden. Zur Optimierung der OCR-Verarbeitung wird eine Azure-Funktion konfiguriert, die bei jedem Hinzufügen einer Datei zum Blobcontainer einen Batch-OCR-Auftrag ausführt.
+In diesem Tutorial erfahren Sie, wie Sie mithilfe von [Azure Functions](../azure-functions/functions-overview.md) einen Batch-Auftrag auslösen. Wir sehen uns ein Beispiel an, bei dem die optische Zeichenerkennung (OCR) über Azure Batch auf Dokumente angewandt wird, die einem Azure Storage-Blobcontainer hinzugefügt werden. Zur Optimierung der OCR-Verarbeitung wird eine Azure-Funktion konfiguriert, die bei jedem Hinzufügen einer Datei zum Blobcontainer einen Batch-OCR-Auftrag ausführt. Folgendes wird vermittelt:
+
+> [!div class="checklist"]
+> * Erstellen von Pools und Aufträgen mithilfe von Batch Explorer
+> * Erstellen von Blobcontainern und einer Shared Access Signature (SAS) mithilfe von Storage-Explorer
+> * Erstellen einer per Blob ausgelösten Azure-Funktion
+> * Hochladen von Eingabedateien in Storage
+> * Überwachen der Aufgabenausführung
+> * Abrufen von Ausgabedateien
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -97,9 +105,13 @@ Um die Ausgabedateien von Storage-Explorer auf den lokalen Computer herunterzula
 > [!TIP]
 > Die heruntergeladenen Dateien können durchsucht werden, wenn sie in einem PDF-Reader geöffnet werden.
 
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+Ihnen werden während der Ausführung der Knoten auch dann Gebühren für den Pool berechnet, wenn keine Aufträge geplant sind. Es ist ratsam, den Pool zu löschen, wenn Sie ihn nicht mehr benötigen. Klicken Sie in der Kontoansicht auf **Pools** und auf den Namen des Pools. Wählen Sie anschließend die Option **Löschen**. Beim Löschen des Pools werden alle Aufgabenausgaben auf den Knoten gelöscht. Die Ausgabedateien verbleiben aber im Speicherkonto. Wenn Sie nicht mehr benötigt werden, können Sie auch das Batch-Konto und das Speicherkonto löschen.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie Folgendes gelernt: 
+In diesem Tutorial haben Sie gelernt, wie die folgenden Aufgaben ausgeführt werden:
 
 > [!div class="checklist"]
 > * Erstellen von Pools und Aufträgen mithilfe von Batch Explorer
@@ -109,6 +121,10 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 > * Überwachen der Aufgabenausführung
 > * Abrufen von Ausgabedateien
 
-* Weitere Beispiele zur Verwendung der .NET-API zum Planen und Verarbeiten von Batch-Workloads finden Sie in den [Beispielen auf GitHub](https://github.com/Azure-Samples/azure-batch-samples/tree/master/CSharp). 
 
-* Weitere Azure Functions-Auslöser, die Sie zum Ausführen von Batch-Workloads verwenden können, finden Sie in der [Dokumentation zu Azure Functions](../azure-functions/functions-triggers-bindings.md).
+Fahren Sie fort, indem Sie die über Batch Explorer verfügbaren Rendering-Anwendungen im Abschnitt **Gallery** (Katalog) erkunden. Für jede Anwendung stehen verschiedene Vorlagen zur Verfügung, und die Auswahl wird ständig erweitert. Für Blender sind beispielsweise Vorlagen verfügbar, die ein einzelnes Bild in Kacheln unterteilen, sodass Teile eines Bilds parallel gerendert werden können.
+
+Weitere Beispiele zur Verwendung der .NET-API zum Planen und Verarbeiten von Batch-Workloads finden Sie in den Beispielen auf GitHub.
+
+> [!div class="nextstepaction"]
+> [C#-Beispiele für Batch](https://github.com/Azure-Samples/azure-batch-samples/tree/master/CSharp)

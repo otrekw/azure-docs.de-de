@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Training von Machine Learning-Modellen mit automatisiertem ML'
-description: Tutorial zum Trainieren eines Machine Learning-Modells in Azure Synapse mit automatisiertem ML.
+title: 'Tutorial: Trainieren eines Modells mithilfe von automatisiertem maschinellem Lernen (automatisiertem ML)'
+description: Tutorial zum Trainieren eines Machine Learning-Modells ohne Code in Azure Synapse mithilfe von Apache Spark und automatisiertem maschinellem Lernen (automatisiertem ML).
 services: synapse-analytics
 ms.service: synapse-analytics
 ms.subservice: machine-learning
@@ -9,21 +9,21 @@ ms.reviewer: jrasnick, garye
 ms.date: 11/20/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: 8dd99b60a548e3c392bbe468ddde484081e6eb8b
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 4967d5305b4b438f3baa6fca078d7b3169612590
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96463938"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093399"
 ---
-# <a name="tutorial-code-free-machine-learning-model-training-in-azure-synapse-with-automl-preview"></a>Tutorial: Training für Machine Learning-Modelle in Azure Synapse mit automatisiertem ML (Vorschauversion) ohne Code
+# <a name="tutorial-train-a-machine-learning-model-code-free-in-azure-synapse-with-apache-spark-and-automated-ml"></a>Tutorial: Trainieren eines Machine Learning-Modells ohne Code in Azure Synapse mit Apache Spark und automatisiertem maschinellem Lernen (automatisiertem ML)
 
-Es wird beschrieben, wie Sie Ihre Daten in Spark-Tabellen leicht mit neuen Machine Learning-Modellen anreichern können, die Sie mit [automatisiertem maschinellem Lernen in Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/concept-automated-ml) trainieren.  Ein Benutzer in Synapse kann einfach eine Spark-Tabelle im Azure Synapse-Arbeitsbereich auswählen, um sie als Trainingsdataset zum Erstellen von Machine Learning-Modellen in einer Umgebung ohne Code zu verwenden.
+Hier erfahren Sie, wie Sie Ihre Daten in Spark-Tabellen mit neuen Machine Learning-Modellen, die Sie mithilfe von [automatisiertem maschinellem Lernen in Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/concept-automated-ml) trainieren, auf einfache Weise anreichern können.  Ein Benutzer in Synapse kann einfach eine Spark-Tabelle im Azure Synapse-Arbeitsbereich auswählen, um sie als Trainingsdataset zum Erstellen von Machine Learning-Modellen in einer Umgebung ohne Code zu verwenden.
 
 In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
-> - Trainieren von Machine Learning-Modellen in einer Umgebung ohne Code in Azure Synapse Studio, in der automatisiertes maschinelles Lernen in Azure ML verwendet wird. Der Typ des trainierten Modells hängt von dem Problem ab, das Sie lösen möchten.
+> - Trainieren von Machine Learning-Modellen mithilfe einer Umgebung ohne Code in Azure Synapse Studio, in der automatisiertes maschinelles Lernen in Azure Machine Learning (Azure ML, AML) verwendet wird. Der Typ des trainierten Modells hängt von dem Problem ab, das Sie lösen möchten.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
@@ -52,20 +52,20 @@ Für dieses Tutorial benötigen Sie eine Spark-Tabelle. Mit dem folgenden Notebo
 1. Nachdem die Ausführung des Notebooks abgeschlossen ist, wird in der Spark-Standarddatenbank eine neue Spark-Tabelle erstellt. Navigieren Sie zum Datenhub, und suchen Sie nach der Tabelle mit dem Namen `nyc_taxi`.
 ![Spark-Tabelle](media/tutorial-automl-wizard/tutorial-automl-wizard-00c.png)
 
-## <a name="launch-automl-wizard-to-train-a-model"></a>Starten des Assistenten für automatisiertes ML zum Trainieren eines Modells
+## <a name="launch-automated-ml-wizard-to-train-a-model"></a>Starten des Assistenten für automatisiertes maschinelles Lernen (automatisiertes ML) zum Trainieren eines Modells
 
 Klicken Sie mit der rechten Maustaste auf die im vorherigen Schritt erstellte Spark-Tabelle. Wählen Sie „Machine Learning“ -> „Mit neuem Modell anreichern“ aus, um den Assistenten zu öffnen.
-![Starten des Assistenten für automatisiertes ML](media/tutorial-automl-wizard/tutorial-automl-wizard-00d.png)
+![Starten des Assistenten für automatisiertes maschinelles Lernen](media/tutorial-automl-wizard/tutorial-automl-wizard-00d.png)
 
-Ein Konfigurationsbereich wird angezeigt, und Sie werden aufgefordert, Konfigurationsdetails für die Erstellung eines Experiments für automatisiertes ML anzugeben, das in Azure Machine Learning ausgeführt wird. Bei dieser Ausführung werden mehrere Modelle trainiert, und das beste Modell einer erfolgreichen Ausführung wird in der Azure ML-Modellregistrierung registriert:
+Ein Konfigurationsbereich wird angezeigt, und Sie werden aufgefordert, Konfigurationsdetails zum Erstellen einer Experimentausführung für automatisiertes maschinelles Lernen in Azure Machine Learning anzugeben. Bei dieser Ausführung werden mehrere Modelle trainiert, und das beste Modell aus einer erfolgreichen Ausführung wird in der Azure Machine Learning-Modellregistrierung registriert:
 
 ![Konfigurieren der Ausführung: Schritt 1](media/tutorial-automl-wizard/tutorial-automl-wizard-configure-run-00a.png)
 
-- **Azure ML-Arbeitsbereich**: Für die Erstellung einer Experimentausführung für automatisiertes ML wird ein Azure ML-Arbeitsbereich benötigt. Darüber hinaus müssen Sie Ihren Azure Synapse-Arbeitsbereich mit dem Azure ML-Arbeitsbereich verknüpfen, indem Sie einen [verknüpften Dienst](quickstart-integrate-azure-machine-learning.md) verwenden. Wenn alle Voraussetzungen erfüllt sind, können Sie den Azure ML-Arbeitsbereich angeben, den Sie für diese Ausführung des automatisierten maschinellen Lernens verwenden möchten.
+- **Azure Machine Learning-Arbeitsbereich**: Zum Erstellen der Experimentausführung für automatisiertes maschinelles Lernen ist ein Azure Machine Learning-Arbeitsbereich erforderlich. Außerdem müssen Sie Ihren Azure Synapse-Arbeitsbereich mithilfe eines [verknüpften Diensts](quickstart-integrate-azure-machine-learning.md) mit dem Azure Machine Learning-Arbeitsbereich verknüpfen. Wenn Sie alle Voraussetzungen erfüllt haben, können Sie den Machine Learning-Arbeitsbereich angeben, den Sie für diese Ausführung des automatisierten maschinellen Lernens verwenden möchten.
 
-- **Experimentname**: Geben Sie den Namen des Experiments an. Beim Übermitteln einer Ausführung des automatisierten maschinellen Lernens müssen Sie einen Experimentnamen angeben. Die Informationen für die Ausführung werden unter diesem Experiment im Azure ML-Arbeitsbereich gespeichert. Hierdurch wird standardmäßig ein neues Experiment erstellt und ein vorgeschlagener Name generiert. Sie können aber auch den Namen eines vorhandenen Experiments angeben.
+- **Experimentname**: Geben Sie den Namen des Experiments an. Beim Übermitteln einer Ausführung des automatisierten maschinellen Lernens geben Sie einen Experimentnamen an. Die Informationen für die Ausführung werden im Azure Machine Learning-Arbeitsbereich unter diesem Experiment gespeichert. Hierdurch wird standardmäßig ein neues Experiment erstellt und ein vorgeschlagener Name generiert. Sie können aber auch den Namen eines vorhandenen Experiments angeben.
 
-- **Bestes Modell**: Geben Sie den Namen des besten Modells aus der Ausführung des automatisierten maschinellen Lernens an. Dem besten Modell wird dieser Name zugewiesen und nach dieser Ausführung automatisch in der Azure ML-Modellregistrierung gespeichert. Bei einer Ausführung des automatisierten maschinellen Lernens werden viele Machine Learning-Modelle erstellt. Basierend auf der primären Metrik, die Sie in einem späteren Schritt auswählen, können diese Modelle verglichen werden, und es kann eine Auswahl des besten Modells erfolgen.
+- **Bestes Modell**: Geben Sie den Namen des besten Modells aus der Ausführung des automatisierten maschinellen Lernens an. Dem besten Modell wird dieser Name zugewiesen und nach dieser Ausführung automatisch in der Azure Machine Learning-Modellregistrierung gespeichert. Durch eine Ausführung des automatisierten maschinellen Lernens werden viele Machine Learning-Modelle erstellt. Basierend auf der primären Metrik, die Sie in einem späteren Schritt auswählen, können diese Modelle verglichen werden, und es kann eine Auswahl des besten Modells erfolgen.
 
 - **Zielspalte**: Für die Vorhersage dieses Werts wird das Modell trainiert. Wählen Sie die Spalte aus, die Sie vorhersagen möchten.
 
@@ -89,29 +89,29 @@ Klicken Sie auf „Weiter“, um zusätzliche Einstellungen zu konfigurieren.
 
 Bei Auswahl des Typs *Klassifizierung* oder *Regression* lauten die zusätzlichen Konfigurationen wie folgt:
 
-- **Primary metric** (Primäre Metrik): Die Metrik, mit der gemessen wird, wie gut die Leistung des Modells ist. Anhand dieser Metrik werden verschiedene Modelle verglichen, die bei der Ausführung des automatisierten maschinellen Lernens erstellt wurden, um zu ermitteln, welches Modell die beste Leistung aufweist.
+- **Primary metric** (Primäre Metrik): Die Metrik, mit der gemessen wird, wie gut die Leistung des Modells ist. Anhand dieser Metrik werden verschiedene Modelle, die durch die Ausführung des automatisierten maschinellen Lernens erstellt wurden, miteinander verglichen und so ermittelt, welches Modell die beste Leistung bietet.
 
 - **Training job time (hours)** Trainingsauftragszeit (Stunden): Der maximale Zeitraum (in Stunden), in dem ein Experiment ausgeführt und das Training von Modellen durchgeführt werden kann. Beachten Sie, dass Sie auch Werte unter 1 angeben können. Beispiel: `0.5`.
 
 - **Max concurrent iterations** (Maximale Anzahl gleichzeitiger Iterationen): Steht für die maximale Anzahl von Iterationen, die parallel ausgeführt werden.
 
-- **ONNX model compatibility** (Kompatibilität des ONNX-Modells): Wenn diese Option aktiviert ist, werden die per automatisiertem ML trainierten Modelle in das ONNX-Format konvertiert. Dies ist vor allem relevant, wenn Sie das Modell für die Bewertung in Azure Synapse SQL-Pools nutzen möchten.
+- **ONNX model compatibility** (Kompatibilität des ONNX-Modells): Wenn diese Option aktiviert ist, werden die durch automatisiertes maschinelles Lernen trainierten Modelle in das ONNX-Format konvertiert. Dies ist vor allem relevant, wenn Sie das Modell für die Bewertung in Azure Synapse SQL-Pools nutzen möchten.
 
 Diese Einstellungen verfügen alle über einen Standardwert, den Sie anpassen können.
 ![Zusätzliche Konfigurationen](media/tutorial-automl-wizard/tutorial-automl-wizard-configure-run-00c.png)
 
-> Beachten Sie, dass weitere Konfigurationen erforderlich sind, wenn Sie die Option für „Zeitreihenvorhersagen“ auswählen. Für Vorhersagen wird darüber hinaus die ONNX-Modellkompatibilität nicht unterstützt.
+> Beachten Sie, dass weitere Konfigurationen erforderlich sind, wenn Sie die Option für „Zeitreihenvorhersage“ auswählen. Für Vorhersagen wird darüber hinaus die ONNX-Modellkompatibilität nicht unterstützt.
 
 Nachdem alle erforderlichen Konfigurationen abgeschlossen sind, können Sie die Ausführung des automatisierten maschinellen Lernens starten.
 
-Es gibt zwei Möglichkeiten, eine Ausführung des automatisierten maschinellen Lernens in Azure Synapse zu starten. Eine Vorgehensweise ohne Code ist die direkte Auswahl von **Create run** (Ausführung erstellen). Falls Sie den Ansatz mit Code bevorzugen, können Sie die Option **Open in notebook** (In Notebook öffnen) auswählen. Hiermit können Sie den Code anzeigen, mit dem die Ausführung erstellt wird, und das Notebook dann ausführen.
+Es gibt zwei Möglichkeiten zum Starten einer Ausführung des automatisierten maschinellen Lernens in Azure Synapse. Bei einer Umgebung ohne Code können Sie **Ausführung erstellen** direkt auswählen. Falls Sie den Ansatz mit Code bevorzugen, können Sie die Option **Open in notebook** (In Notebook öffnen) auswählen. Hiermit können Sie den Code anzeigen, mit dem die Ausführung erstellt wird, und das Notebook dann ausführen.
 
 ### <a name="create-run-directly"></a>Direktes Erstellen der Ausführung
 
-Klicken Sie auf „Start Run“ (Ausführung starten), um die Ausführung des automatisierten maschinellen Lernens direkt zu starten. Es wird eine Benachrichtigung mit dem Hinweis angezeigt, dass die Ausführung des automatisierten maschinellen Lernens gestartet wird.
+Klicken Sie auf „Start Run“ (Ausführung starten), um die Ausführung des automatisierten maschinellen Lernens direkt zu starten. Dann wird eine Benachrichtigung mit dem Hinweis angezeigt, dass die Ausführung des automatisierten maschinellen Lernens gestartet wird.
 
 Nachdem die Ausführung des automatisierten maschinellen Lernens erfolgreich gestartet wurde, wird eine weitere entsprechende Benachrichtigung angezeigt. Sie können auch auf die Benachrichtigungsschaltfläche klicken, um den Status der Übermittlung zu überprüfen.
-Klicken Sie in der Benachrichtigung zur erfolgreichen Ausführung auf den Link, um die Azure ML-Informationen anzuzeigen.
+Klicken Sie in der Benachrichtigung zur erfolgreichen Ausführung auf den Link, um die Azure Machine Learning-Informationen anzuzeigen.
 ![Benachrichtigung zum erfolgreichen Start](media/tutorial-automl-wizard/tutorial-automl-wizard-configure-run-00d.png)
 
 ### <a name="create-run-with-notebook"></a>Erstellen einer Ausführung per Notebook
@@ -121,7 +121,7 @@ Dies ermöglicht es Ihnen auch, Ihrer Ausführung des automatisierten maschinell
 
 ![Öffnen des Notebooks](media/tutorial-automl-wizard/tutorial-automl-wizard-configure-run-00e.png)
 
-Nachdem die Ausführung aus dem Notebook erfolgreich übermittelt wurde, ist in der Ausgabe des Notebooks ein Link zur Experimentausführung im Azure ML-Arbeitsbereich angegeben. Sie können auf den Link klicken, um Ihre Ausführung des automatisierten maschinellen Lernens in Azure ML zu überwachen.
+Nachdem die Ausführung aus dem Notebook erfolgreich übermittelt wurde, wird in der Ausgabe des Notebooks ein Link zur Experimentausführung im Azure Machine Learning-Arbeitsbereich angezeigt. Sie können auf den Link klicken, um Ihre Ausführung des automatisierten maschinellen Lernens in Azure Machine Learning zu überwachen.
 ![Notebook: Alle ausführen](media/tutorial-automl-wizard/tutorial-automl-wizard-configure-run-00f.png))
 
 ## <a name="next-steps"></a>Nächste Schritte

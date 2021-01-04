@@ -1,24 +1,24 @@
 ---
-title: Informationen zu den Administratorrollen für Enterprise in Azure
+title: Grundlegendes zu Administratorrollen für Enterprise Agreements (EA) in Azure
 description: Erfahren Sie etwas über Enterprise-Administratorrollen in Azure. Sie können fünf verschiedene administrative Rollen zuweisen.
 author: bandersmsft
 ms.reviewer: adwise
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.topic: conceptual
-ms.date: 09/23/2020
+ms.date: 12/10/2020
 ms.author: banders
-ms.custom: contperfq1
-ms.openlocfilehash: e712b44f22a8080b14a2cc2532cadf2dd4738b76
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.custom: contperf-fy21q1
+ms.openlocfilehash: e8420f68fba40ddb61d06770f9f5bc2fafe5616a
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94409199"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97560524"
 ---
-# <a name="managing-azure-enterprise-roles"></a>Verwalten von Azure Enterprise-Rollen
+# <a name="managing-azure-enterprise-agreement-roles"></a>Verwalten von Azure Enterprise Agreement-Rollen
 
-Azure-Kunden mit einem Enterprise Agreement (EA) können zur Verwaltung ihrer Organisation und ihrer Ausgaben fünf verschiedene Administratorrollen zuweisen:
+Azure-Kunden mit einem Enterprise Agreement können als Hilfe bei der Verwaltung Ihrer Organisation und deren Ausgaben fünf verschiedene Administratorrollen zuweisen:
 
 - Unternehmensadministrator
 - Unternehmensadministrator (nur Leseberechtigung)<sup>1</sup>
@@ -40,7 +40,7 @@ Diese Rollen sind spezifisch für die Verwaltung von Azure Enterprise Agreements
 
 Die Hierarchie des Azure Enterprise Portal besteht aus folgenden Komponenten:
 
-- **Azure Enterprise Portal** : Ein Onlineverwaltungsportal, das Sie bei der Verwaltung der Kosten Ihrer Azure EA-Dienste unterstützt. Ihre Möglichkeiten:
+- **Azure Enterprise Portal**: Ein Onlineverwaltungsportal, das Sie bei der Verwaltung der Kosten Ihrer Azure EA-Dienste unterstützt. Ihre Möglichkeiten:
 
   - Erstellen Sie eine Azure EA-Hierarchie mit Abteilungen, Konten und Abonnements.
   - Gleichen Sie die Kosten Ihrer genutzten Dienste ab, laden Sie Nutzungsberichte herunter, und sehen Sie sich Preislisten an.
@@ -82,6 +82,8 @@ Benutzer mit dieser Rolle verfügen über die höchste Zugriffsebene. Sie könne
 - Verwalten von Benachrichtigungskontakten
 - Anzeigen der Nutzung für alle Konten
 - Anzeigen nicht in Rechnung gestellter Gebühren für alle Konten
+- Zeigen Sie alle Reservierungsaufträge und Reservierungen an, die für das Enterprise Agreement gelten, und verwalten Sie sie.
+  - Der Unternehmensadministrator (schreibgeschützt) kann Reservierungsaufträge und Reservierungen anzeigen. Er kann sie nicht verwalten.
 
 In einer Unternehmensregistrierung kann es mehrere Unternehmensadministratoren geben. Sie können Unternehmensadministratoren Lesezugriff gewähren. Sie erben alle die Abteilungsadministratorrolle.
 

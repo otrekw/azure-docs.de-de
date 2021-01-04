@@ -4,12 +4,12 @@ description: In diesem Tutorial erfahren Sie, wie Sie einen Azure Container Regi
 ms.topic: tutorial
 ms.date: 11/24/2020
 ms.custom: seodec18, mvc, devx-track-azurecli
-ms.openlocfilehash: 00f77d9dc56bf8fff792a23bbb139519ccd24351
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 7f2e6d7f304977d3e6d92a778dba5bf026343707
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96030593"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562904"
 ---
 # <a name="tutorial-automate-container-image-builds-in-the-cloud-when-you-commit-source-code"></a>Tutorial: Automatisieren von Buildvorgängen für Containerimages in der Cloud beim Committen von Quellcode
 
@@ -58,7 +58,7 @@ az acr task create \
 ```
 
 
-Durch diese Aufgabe erstellt ACR Tasks jedes Mal, wenn Code in der Verzweigung *master* des durch `--context` angegebenen Repositorys committet wird, das Containerimage auf der Grundlage des Codes in dieser Verzweigung. Das von `--file` angegebene Dockerfile aus dem Repositorystamm wird verwendet, um das Image zu erstellen. Das Argument `--image` gibt für den Versionsteil des Imagetags den parametrisierten Wert `{{.Run.ID}}` an, um sicherzustellen, dass das erstellte Image einem bestimmten Build entspricht und eindeutig gekennzeichnet ist.
+Durch diesen Task erstellt ACR Tasks jedes Mal, wenn Code in den *main*-Branch des durch `--context` angegebenen Repositorys committet wird, das Containerimage auf der Grundlage des Codes in diesem Branch. Das von `--file` angegebene Dockerfile aus dem Repositorystamm wird verwendet, um das Image zu erstellen. Das Argument `--image` gibt für den Versionsteil des Imagetags den parametrisierten Wert `{{.Run.ID}}` an, um sicherzustellen, dass das erstellte Image einem bestimmten Build entspricht und eindeutig gekennzeichnet ist.
 
 Die Ausgabe einer erfolgreichen Ausführung des Befehls [az acr task create][az-acr-task-create] sieht in etwa wie folgt aus:
 
@@ -103,7 +103,7 @@ Die Ausgabe einer erfolgreichen Ausführung des Befehls [az acr task create][az-
       {
         "name": "defaultSourceTriggerName",
         "sourceRepository": {
-          "branch": "master",
+          "branch": "main",
           "repositoryUrl": "https://github.com/gituser/acr-build-helloworld-node",
           "sourceControlAuthProperties": null,
           "sourceControlType": "GitHub"
@@ -194,7 +194,7 @@ Führen Sie als Nächstes die folgenden Befehle aus, um eine neue Datei zu erste
 echo "Hello World!" > hello.txt
 git add hello.txt
 git commit -m "Testing ACR Tasks"
-git push origin master
+git push origin main
 ```
 
 Wenn Sie den Befehl `git push` ausführen, werden Sie unter Umständen zur Eingabe Ihrer GitHub-Anmeldeinformationen aufgefordert. Geben Sie Ihren GitHub-Benutzernamen und als Kennwort das persönliche Zugriffstoken (Personal Access Token, PAT) ein, das Sie zuvor erstellt haben.

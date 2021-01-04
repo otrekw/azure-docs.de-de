@@ -3,90 +3,90 @@ title: Auswerten der Ergebnisse von AutoML-Experimenten
 titleSuffix: Azure Machine Learning
 description: Erfahren Sie, wie Sie Diagramme und Metriken für jede Ausführung Ihrer Experimente des automatisierten maschinellen Lernens anzeigen und auswerten.
 services: machine-learning
-author: aniththa
-ms.author: anumamah
+author: gregorybchris
+ms.author: chgrego
 ms.reviewer: nibaccam
 ms.service: machine-learning
 ms.subservice: core
-ms.date: 10/09/2020
+ms.date: 12/09/2020
 ms.topic: conceptual
-ms.custom: how-to, contperfq2, automl
-ms.openlocfilehash: fcbe0fc5049f6e892f80f048a885c75420bc636e
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.custom: how-to, contperf-fy21q2, automl
+ms.openlocfilehash: 747cc88cdea59017483245b59e4b2c56c4b06a40
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93359084"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97032931"
 ---
 # <a name="evaluate-automated-machine-learning-experiment-results"></a>Auswerten der Ergebnisse von Experimenten des automatisierten maschinellen Lernens
 
-In diesem Artikel erfahren Sie, wie Sie die Ergebnisse Ihrer Experimente des automatisierten maschinellen Lernens (automatisiertes ML) anzeigen und auswerten. Diese Experimente bestehen aus mehreren Ausführungen. Bei jeder Ausführung wird ein Modell erstellt. Um Sie bei der Auswertung der Modelle zu unterstützen, generiert automatisiertes ML automatisch Leistungsmetriken und Diagramme für Ihren jeweiligen Experimenttyp. 
+In diesem Artikel erfahren Sie, wie Sie Modelle, die durch Ihr Experiment für automatisiertes maschinelles Lernen (automatisiertes ML) trainiert wurden, bewerten und vergleichen können. Im Verlauf eines automatisierten ML-Experiments werden viele Ausführungen erstellt und jede Ausführung erstellt ein Modell. Für jedes Modell generiert das automatisierte maschinelle Lernen Auswertungsmetriken und Diagramme, mit denen Sie die Leistung des Modells messen können. 
 
-Automatisiertes ML stellt beispielsweise verschiedene Diagramme für Klassifizierungs- und Regressionsmodelle bereit. 
+Das automatisierte maschinelle Lernen generiert z. B. die folgenden Diagramme basierend auf dem Experimenttyp.
 
-|Klassifizierung|Regression
-|---|---|
-|<li> [Konfusionsmatrix](#confusion-matrix) <li>[Genauigkeit-Trefferquote-Diagramm](#precision-recall-chart) <li> [ROC-Kurve (Receiver Operating Characteristics)](#roc) <li> [Prognosegütekurve](#lift-curve)<li> [Gewinnkurve](#gains-curve)<li> [Kalibrierungsdiagramm](#calibration-plot) | <li> [Vorhergesagt im Vergleich zu TRUE](#pvt) <li> [Residualhistogramm](#histo)|
+| Klassifizierung| Regression/Vorhersagen |
+| ----------------------------------------------------------- | ---------------------------------------- |
+| [Konfusionsmatrix](#confusion-matrix)                       | [Residualshistogramm](#residuals)        |
+| [ROC-Kurve (Receiver Operating Characteristic)](#roc-curve) | [Vorhergesagt im Vergleich zu den wahren Werten](#predicted-vs-true) |
+| [Genauigkeit-Trefferquote-Kurve](#precision-recall-curve)      |                                          |
+| [Prognosegütekurve](#lift-curve)                                   |                                          |
+| [Kumulierte Gewinnkurve](#cumulative-gains-curve)           |                                          |
+| [Kalibrierungskurve](#calibration-curve)                     |                     
+
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://aka.ms/AMLFree) noch heute aus.
-
-* Erstellen Sie ein Experiment für Ihre Ausführung des automatisierten maschinellen Lernens, entweder mit dem SDK oder in Azure Machine Learning-Studio.
-
-    * Verwenden Sie das SDK zum Erstellen eines [Klassifizierungsmodells](how-to-auto-train-remote.md) oder [Regressionsmodells](tutorial-auto-train-models.md)
-    * Verwenden Sie [Azure Machine Learning-Studio](how-to-use-automated-ml-for-ml-models.md), um ein Klassifizierungs- oder Regressionsmodell zu erstellen, indem Sie die entsprechenden Daten hochladen.
+- Ein Azure-Abonnement. (Sollten Sie über kein Azure-Abonnement verfügen, können Sie [ein kostenloses Konto erstellen](https://aka.ms/AMLFree), bevor Sie beginnen.)
+- Ein Azure Machine Learning-Experiment, das erstellt wurde mit einer der folgenden Optionen:
+  - [Azure Machine Learning Studio](how-to-use-automated-ml-for-ml-models.md) (kein Code erforderlich)
+  - [Python-SDK für Azure Machine Learning](how-to-configure-auto-train.md)
 
 ## <a name="view-run-results"></a>Anzeigen von Ausführungsergebnissen
 
-Nach dem Ausführen Ihres Experiments für automatisiertes maschinelles Lernen finden Sie über [Azure Machine Learning Studio](overview-what-is-machine-learning-studio.md) einen Verlauf der Ausführungen in Ihrem Machine Learning-Arbeitsbereich. 
+Nachdem Ihr Experiment mit automatisiertem maschinellem Lernen abgeschlossen ist, können Sie einen Verlauf der Ausführungen über Folgendes finden:
+  - Browser mit [Azure Machine Learning Studio](overview-what-is-machine-learning-studio.md)
+  - Jupyter Notebook mithilfe des [RunDetails Jupyter-Widgets](/python/api/azureml-widgets/azureml.widgets.rundetails?view=azure-ml-py&preserve-view=true)
 
-Bei SDK-Experimenten können Sie diese Ergebnisse auch während einer Ausführung anzeigen, wenn Sie das [Jupyter-Widget](/python/api/azureml-widgets/azureml.widgets?preserve-view=true&view=azure-ml-py) `RunDetails` verwenden.
-
-Die folgende Animation und die anschließenden Schritte zeigen, wie Sie den Ausführungsverlauf sowie die Leistungsmetriken und Diagramme eines bestimmten Modells im Studio anzeigen.
-
-![Schritte zum Anzeigen des Ausführungsverlaufs und der Leistungsmetriken und Diagramme eines Modells](./media/how-to-understand-automated-ml/view-run-metrics-ui.gif)
-
-So zeigen Sie den Ausführungsverlauf und die Leistungsmetriken und Diagramme eines Modells im Studio an: 
+Die folgenden Schritte und das Video zeigen Ihnen, wie Sie den Ausführungsverlauf sowie die Metriken und Diagramme der Modellauswertung im Studio anzeigen:
 
 1. [Melden Sie sich beim Studio an](https://ml.azure.com/), und navigieren Sie zu Ihrem Arbeitsbereich.
-1. Wählen Sie links im Arbeitsbereich die Option **Ausführungen** aus.
-1. Wählen Sie in der Liste mit den Experimenten den gewünschten Eintrag aus.
-1. Wählen Sie in der unteren Tabelle die Option **Ausführen** aus.
-1. Wählen Sie auf der Registerkarte **Modelle** den **Algorithmusnamen** für das Modell aus, das Sie untersuchen möchten.
-1. Wählen Sie auf der Registerkarte **Metriken** die Metriken und Diagramme aus, die Sie für dieses Modell auswerten möchten. 
+1. Wählen Sie im linken Menü die Option **Experimente** aus.
+1. Wählen Sie Ihr Experiment aus der Liste der Experimente aus.
+1. Wählen Sie in der Tabelle unten auf der Seite eine automatisierte ML-Ausführung aus.
+1. Wählen Sie auf der Registerkarte **Modelle** den **Algorithmusnamen** für das Modell aus, das Sie auswerten möchten.
+1. Verwenden Sie auf der Registerkarte **Metriken** die Kontrollkästchen auf der linken Seite, um Metriken und Diagramme anzuzeigen.
 
+![Schritte zum Anzeigen von Metriken in Studio](./media/how-to-understand-automated-ml/how-to-studio-metrics.gif)
 
-<a name="classification"></a> 
+## <a name="classification-metrics"></a>Klassifizierungsmetrik
 
-## <a name="classification-performance-metrics"></a>Leistungsmetriken für Klassifizierungen
+Automatisiertes maschinelles Lernen berechnet Leistungsmetriken für jedes Klassifizierungsmodell, das für Ihr Experiment erstellt wurde. Diese Metriken basieren auf der scikit learn-Implementierung. 
 
-In der folgenden Tabelle sind die Modellleistungsmetriken zusammengefasst, die automatisiertes ML für jedes Klassifizierungsmodell berechnet, das für Ihr Experiment generiert wird. 
+Viele Klassifizierungsmetriken sind für die binäre Klassifizierung von zwei Klassen definiert und erfordern eine Mittelwerterstellung über die Klassen, um einen Score für die mehrklassige Klassifizierung zu erhalten. Scikit-learn bietet mehrere Methoden zur Mittelwerterstellung, von denen drei über das automatisierte maschinelle Lernen bereitgestellt werden: **macro**, **micro** und **weighted**.
 
-Metrik|BESCHREIBUNG|Berechnung|Zusätzliche Parameter
---|--|--|--
-AUC_macro| AUC ist die Fläche unter der ROC-Kurve (Receiver Operating Characteristic Curve). Macro ist das arithmetische Mittel der AUC für jede Klasse.  | [Berechnung](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html) | average="macro"|
-AUC_micro| AUC ist die Fläche unter der ROC-Kurve (Receiver Operating Characteristic Curve). „Micro“ wird global durch die Kombination der echt positiven und der falsch positiven Ergebnisse aus jeder Klasse berechnet.| [Berechnung](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html) | average="micro"|
-AUC_weighted  | AUC ist die Fläche unter der ROC-Kurve (Receiver Operating Characteristic Curve). Der gewichtete Wert ist das arithmetische Mittel des Ergebnisses für jede Klasse, gewichtet gemäß der Anzahl der TRUE-Instanzen in jeder Klasse.| [Berechnung](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html)|average="weighted"
-accuracy|Die Genauigkeit ist der Prozentsatz der prognostizierten Bezeichnungen, die den TRUE-Bezeichnungen genau entsprechen. |[Berechnung](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html) |Keine|
-average_precision_score_macro|Die durchschnittliche Genauigkeit fasst eine Precision-Recall-Kurve als gewichteten Mittelwert der bei jedem Schwellenwert erzielten Genauigkeiten zusammen, wobei die Zunahme beim Recall aus dem vorherigen Schwellenwert als Gewichtung verwendet wird. „Macro“ ist das arithmetische Mittel des durchschnittlichen Genauigkeitswerts jeder Klasse.|[Berechnung](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.average_precision_score.html)|average="macro"|
-average_precision_score_micro|Die durchschnittliche Genauigkeit fasst eine Precision-Recall-Kurve als gewichteten Mittelwert der bei jedem Schwellenwert erzielten Genauigkeiten zusammen, wobei die Zunahme beim Recall aus dem vorherigen Schwellenwert als Gewichtung verwendet wird. „Micro“ wird global durch Kombinieren der echt positiven und der falsch positiven Ergebnisse bei jedem Cutoff berechnet.|[Berechnung](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.average_precision_score.html)|average="micro"|
-average_precision_score_weighted|Die durchschnittliche Genauigkeit fasst eine Precision-Recall-Kurve als gewichteten Mittelwert der bei jedem Schwellenwert erzielten Genauigkeiten zusammen, wobei die Zunahme beim Recall aus dem vorherigen Schwellenwert als Gewichtung verwendet wird. Der gewichtete Wert ist das arithmetische Mittel der durchschnittlichen Genauigkeit für jede Klasse, gewichtet gemäß der Anzahl der TRUE-Instanzen in jeder Klasse.|[Berechnung](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.average_precision_score.html)|average="weighted"|
-balanced_accuracy|„Balanced accuracy“ ist das arithmetische Mittel des Recalls für jede Klasse.|[Berechnung](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|average="macro"|
-f1_score_macro|„F1 score“ ist das harmonische Mittel aus Genauigkeit und Recall. „Macro“ ist das arithmetische Mittel des F1-Ergebnisses für jede Klasse.|[Berechnung](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html)|average="macro"|
-f1_score_micro|„F1 score“ ist das harmonische Mittel aus Genauigkeit und Recall. „Micro“ wird global durch Zählen der insgesamt echt positiven, falsch negativen und falsch positiven Ergebnisse berechnet.|[Berechnung](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html)|average="micro"|
-f1_score_weighted|„F1 score“ ist das harmonische Mittel aus Genauigkeit und Recall. Gewichteter Mittelwert nach Klassenhäufigkeit des F1-Ergebnisses für jede Klasse|[Berechnung](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html)|average="weighted"|
-log_loss|Dies ist die Verlustfunktion, die bei der (multinomialen) logistischen Regression und deren Erweiterungen wie z. B. neuronalen Netzen verwendet wird. Sie ist definiert als die negative Log-Wahrscheinlichkeit der True-Bezeichnungen bei den Vorhersagen eines probabilistischen Klassifizierers. Für eine einzelne Stichprobe mit der TRUE-Bezeichnung „yt“ in {0,1} und der geschätzten Wahrscheinlichkeit yp, dass yt = 1 lautet der logarithmische Verlust -log P(yt&#124;yp) = -(yt log(yp) + (1 - yt) log(1 - yp)).|[Berechnung](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.log_loss.html)|Keine|
-norm_macro_recall|Der normalisierte Makro-Recall wird normalisiert, damit die zufällige Leistung ein Ergebnis von 0 und die ideale Leistung einen Wert von 1 liefert. Dies kann erzielt werden durch norm_macro_recall := (recall_score_macro - R)/(1 - R), wobei R der erwartete Wert von recall_score_macro für zufällige Vorhersagen ist (d. h. R=0,5 für die binäre Klassifizierung und R=(1/C) für C-Klassen-Klassifizierungsprobleme).|[Berechnung](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|average = "macro" |
-precision_score_macro|Die Genauigkeit ist der Prozentsatz der positiv vorhergesagten Elemente, die richtig bezeichnet sind. „Macro“ ist das arithmetische Mittel der Genauigkeit für jede Klasse.|[Berechnung](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html)|average="macro"|
-precision_score_micro|Die Genauigkeit ist der Prozentsatz der positiv vorhergesagten Elemente, die richtig bezeichnet sind. „Micro“ wird global durch Zählen der insgesamt echt positiven und falsch positiven Ergebnisse berechnet.|[Berechnung](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html)|average="micro"|
-precision_score_weighted|Die Genauigkeit ist der Prozentsatz der positiv vorhergesagten Elemente, die richtig bezeichnet sind. Der gewichtete Wert ist das arithmetische Mittel der Genauigkeit für jede Klasse, gewichtet gemäß der Anzahl der TRUE-Instanzen in jeder Klasse.|[Berechnung](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html)|average="weighted"|
-recall_score_macro|Der Abruf ist der prozentuale Anteil der richtig bezeichneten Elemente in einer bestimmten Klasse. „Macro“ ist das arithmetische Mittel des Recalls für jede Klasse.|[Berechnung](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|average="macro"|
-recall_score_micro|Der Abruf ist der prozentuale Anteil der richtig bezeichneten Elemente in einer bestimmten Klasse. „Micro“ wird global durch Zählen der insgesamt echt positiven, falsch negativen und falsch positiven Ergebnisse berechnet.|[Berechnung](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|average="micro"|
-recall_score_weighted|Der Abruf ist der prozentuale Anteil der richtig bezeichneten Elemente in einer bestimmten Klasse. Der gewichtete Wert ist das arithmetische Mittel des Recalls für jede Klasse, gewichtet gemäß der Anzahl der TRUE-Instanzen in jeder Klasse.|[Berechnung](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|average="weighted"|
-weighted_accuracy|Die gewichtete Genauigkeit ist die Genauigkeit, bei der die Gewichtung, die jedem Beispiel zugewiesen wird, gleich dem Anteil der TRUE-Instanzen in der TRUE-Klasse dieses Beispiels ist.|[Berechnung](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html)|sample_weight ist ein Vektor gleich dem Anteil der betreffenden Klasse für jedes Element im Ziel.|
+- **Macro**: Berechnet die Metrik für jede Klasse und bildet den ungewichteten Mittelwert.
+- **Micro**: Berechnet die Metrik global, indem die gesamten True Positive-, False Negative- und False Positive-Ergebnisse gezählt werden (unabhängig von den Klassen).
+- **Weighted**: Berechnet die Metrik für jede Klasse und bildet den gewichteten Mittelwert basierend auf der Anzahl der Stichproben pro Klasse.
 
-### <a name="binary-vs-multiclass-metrics"></a>Gegenüberstellung von Binär- und Multiklassenmetriken
+Während jede Methode zur Mittelwerterstellung ihre Vorteile hat, ist eine gemeinsame Überlegung bei der Auswahl der geeigneten Methode das Klassenungleichgewicht. Wenn Klassen eine unterschiedliche Anzahl von Stichproben aufweisen, kann es informativer sein, einen Macro-Mittelwert zu verwenden, bei dem Minderheitsklassen die gleiche Gewichtung wie Mehrheitsklassen erhalten. Weitere Informationen finden Sie unter [Gegenüberstellung von Binär- und Multiklassenmetriken beim automatisierten maschinellen Lernen](#binary-vs-multiclass-classification-metrics). 
+
+In der folgenden Tabelle sind die Modellleistungsmetriken zusammengefasst, die automatisiertes ML für jedes Klassifizierungsmodell berechnet, das für Ihr Experiment generiert wird. Weitere Details finden Sie in der scikit-learn-Dokumentation, die im Feld **Berechnung** der jeweiligen Metrik verlinkt ist. 
+
+|Metrik|BESCHREIBUNG|Berechnung|
+|--|--|---|
+|AUC | AUC ist die Fläche unter der [ROC-Kurve (Receiver Operating Characteristic Curve)](#roc-curve).<br><br> **Ziel**: Je näher an 1, desto besser <br> **Bereich:** [0, 1]<br> <br>Zu den unterstützten Metriknamen gehören <li>`AUC_macro`, das arithmetische Mittel der AUC für jede Klasse.<li> `AUC_micro`, das global durch die Kombination der True Positive- und der False Positive-Ergebnisse aus jeder Klasse berechnet wird. <li> `AUC_weighted`, das arithmetische Mittel des Ergebnisses für jede Klasse, gewichtet gemäß der Anzahl der TRUE-Instanzen in jeder Klasse.   |[Berechnung](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html) | 
+|accuracy| Die Genauigkeit ist der Anteil der Vorhersagen, die genau mit den wahren Klassenbezeichnungen übereinstimmen. <br> <br>**Ziel**: Je näher an 1, desto besser <br> **Bereich:** [0, 1]|[Berechnung](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html)|
+|average_precision|Die durchschnittliche Genauigkeit fasst eine Precision-Recall-Kurve als gewichteten Mittelwert der bei jedem Schwellenwert erzielten Genauigkeiten zusammen, wobei die Zunahme beim Recall aus dem vorherigen Schwellenwert als Gewichtung verwendet wird. <br><br> **Ziel**: Je näher an 1, desto besser <br> **Bereich:** [0, 1]<br> <br>Zu den unterstützten Metriknamen gehören<li>`average_precision_score_macro`, das arithmetische Mittel des durchschnittlichen Genauigkeitswerts jeder Klasse.<li> `average_precision_score_micro`, das global durch die Kombination der True Positive- und der False Positive-Ergebnisse bei jedem Cutoff berechnet wird.<li>`average_precision_score_weighted`, das arithmetische Mittel der durchschnittlichen Genauigkeit für jede Klasse, gewichtet gemäß der Anzahl der TRUE-Instanzen in jeder Klasse.|[Berechnung](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.average_precision_score.html)|
+balanced_accuracy|„Balanced accuracy“ ist das arithmetische Mittel des Recalls für jede Klasse.<br> <br>**Ziel**: Je näher an 1, desto besser <br> **Bereich:** [0, 1]|[Berechnung](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|
+f1_score|„F1 score“ ist das harmonische Mittel aus Genauigkeit und Recall. Es ist ein gutes, ausgewogenes Maß für sowohl False Positive- als auch False Negative-Ergebnisse. True Negative-Ergebnisse werden dabei jedoch nicht berücksichtigt. <br> <br>**Ziel**: Je näher an 1, desto besser <br> **Bereich:** [0, 1]<br> <br>Zu den unterstützten Metriknamen gehören<li>  `f1_score_macro`: Das arithmetische Mittel des F1-Ergebnisses für jede Klasse. <li> `f1_score_micro`: Wird global durch Zählen der insgesamt True Positive-, False Negative- und False Positive-Ergebnisse berechnet. <li> `f1_score_weighted`: Gewichteter Mittelwert nach Klassenhäufigkeit des F1-Ergebnisses für jede Klasse.|[Berechnung](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html)|
+log_loss|Dies ist die Verlustfunktion, die bei der (multinomialen) logistischen Regression und deren Erweiterungen wie z. B. neuronalen Netzen verwendet wird. Sie ist definiert als die negative Log-Wahrscheinlichkeit der True-Bezeichnungen bei den Vorhersagen eines probabilistischen Klassifizierers. <br><br> **Ziel**: Je näher an 0, desto besser <br> **Bereich:** [0, inf)|[Berechnung](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.log_loss.html)|
+norm_macro_recall| Der normalisierte Makro-Recall wird über das Recall-Makro gemittelt und normalisiert, damit die zufällige Leistung ein Ergebnis von 0 und die ideale Leistung einen Wert von 1 liefert. <br> <br>**Ziel**: Je näher an 1, desto besser <br> **Bereich:** [0, 1] |`(recall_score_macro - R)`&nbsp;/&nbsp;`(1 - R)` <br><br>wobei `R` der erwartete Wert von `recall_score_macro` für zufällige Vorhersagen ist.<br><br>`R = 0.5`&nbsp;für&nbsp; binäre&nbsp;Klassifizierung. <br>`R = (1 / C)` für C-Klassen-Klassifizierungsprobleme.|
+matthews_correlation | Der Matthews-Korrelationskoeffizient ist ein ausgewogenes Maß für die Genauigkeit, das auch dann verwendet werden kann, wenn eine Klasse viel mehr Stichproben als eine andere aufweist. Ein Koeffizient von 1 bedeutet perfekte Vorhersage, 0 zufällige Vorhersage und -1 inverse Vorhersage.<br><br> **Ziel**: Je näher an 1, desto besser <br> **Bereich:** [-1, 1]|[Berechnung](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.matthews_corrcoef.html)|
+precision (Genauigkeit)|Genauigkeit ist die Fähigkeit eines Modells, negative Stichproben nicht als positiv zu bezeichnen. <br><br> **Ziel**: Je näher an 1, desto besser <br> **Bereich:** [0, 1]<br> <br>Zu den unterstützten Metriknamen gehören <li> `precision_score_macro`, das arithmetische Mittel der Genauigkeit für jede Klasse. <li> `precision_score_micro`, wird global durch Zählen der insgesamt True Positive- und False Positive-Ergebnisse berechnet. <li> `precision_score_weighted`, das arithmetische Mittel der Genauigkeit für jede Klasse, gewichtet gemäß der Anzahl der TRUE-Instanzen in jeder Klasse.|[Berechnung](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html)|
+recall (Abruf)| Recall (Abruf) ist die Fähigkeit eines Modells, alle positiven Stichproben zu erkennen. <br><br> **Ziel**: Je näher an 1, desto besser <br> **Bereich:** [0, 1]<br> <br>Zu den unterstützten Metriknamen gehören <li>`recall_score_macro`: Das arithmetische Mittel des Recalls für jede Klasse. <li> `recall_score_micro`: Wird global durch Zählen der insgesamt True Positive-, False Negative- und False Positive-Ergebnisse berechnet.<li> `recall_score_weighted`: Das arithmetische Mittel des Recalls für jede Klasse, gewichtet gemäß der Anzahl der TRUE-Instanzen in jeder Klasse.|[Berechnung](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|
+weighted_accuracy|Die gewichtete Genauigkeit ist eine Genauigkeit, bei der jede Stichprobe mit der Gesamtzahl der Stichproben, die zur gleichen Klasse gehören, gewichtet wird. <br><br>**Ziel**: Je näher an 1, desto besser <br>**Bereich:** [0, 1]|[Berechnung](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html)|
+
+### <a name="binary-vs-multiclass-classification-metrics"></a>Gegenüberstellung von Binär- und Multiklassenmetriken für die Klassifizierung
 
 Automatisiertes ML unterscheidet nicht zwischen Binär- und Multiklassenmetriken. Für Datasets mit zwei Klassen werden die gleichen Validierungsmetriken gemeldet wie für Datasets mit mehr als zwei Klassen. Einige Metriken sind jedoch für die Klassifizierung mit mehreren Klassen vorgesehen. Wenn eine solche Metrik auf ein binäres Dataset angewendet wird, wird keine Klasse als `true` behandelt. Metriken, die eindeutig für mehrere Klassen vorgesehen sind, sind mit dem Suffix `micro`, `macro`oder `weighted` gekennzeichnet. Beispiele hierfür sind etwa `average_precision_score`, `f1_score`, `precision_score`, `recall_score` und `AUC`.
 
@@ -94,180 +94,162 @@ Anstatt beispielsweise den Abruf als `tp / (tp + fn)` zu berechnen, wird beim Du
 
 ## <a name="confusion-matrix"></a>Konfusionsmatrix
 
-Eine Konfusionsmatrix beschreibt die Leistung eines Klassifizierungsmodells. Jede Zeile zeigt die Instanzen der wahren bzw. tatsächlichen Klasse in Ihrem Dataset an, und jede Spalte stellt die Instanzen der Klasse dar, die vom Modell vorhergesagt wurde. 
+Konfusionsmatrizen bieten eine visuelle Darstellung dafür, wie ein Machine Learning-Modell systematische Fehler in seinen Vorhersagen für Klassifikationsmodelle macht. Das Wort „Konfusion“ im Namen stammt von einem Modell, das Stichproben „verwechselt“ oder falsch bezeichnet. Eine Zelle in Zeile `i` und Spalte `j` in einer Konfusionsmatrix enthält die Anzahl der Stichproben im Auswertungsdataset, die zur Klasse `C_i` gehören und vom Modell als Klasse `C_j` klassifiziert wurden.
 
-Das automatisierte maschinelle Lernen zeigt für jede Konfusionsmatrix die Häufigkeit der einzelnen vorhergesagten Bezeichnungen (Spalte) im Vergleich mit der tatsächlichen Bezeichnung (Zeile) an. Je dunkler die Farbe, desto höher die Anzahl in diesem bestimmten Teil der Matrix. 
+Im Studio zeigt eine dunklere Zelle eine höhere Anzahl von Stichproben an. Durch Auswahl der Ansicht **Normalisiert** in der Dropdownliste wird jede Matrixzeile normalisiert, um den Prozentsatz der Klasse `C_i` anzuzeigen, der als Klasse `C_j` vorhergesagt wird. Der Vorteil der Standardansicht der **Rohdaten** ist, dass Sie sehen können, ob ein Ungleichgewicht in der Verteilung der tatsächlichen Klassen dazu geführt hat, dass das Modell Stichproben aus der Minderheitsklasse falsch klassifiziert hat, wobei es sich um ein häufiges Problem in unausgeglichenen Datasets handelt.
 
-### <a name="what-does-a-good-model-look-like"></a>Wie sieht ein gutes Modell aus?
+Die Konfusionsmatrix eines guten Modells wird die meisten Stichproben entlang der Diagonalen aufweisen.
 
-Eine Konfusionsmatrix vergleicht den tatsächlichen Wert des Datasets mit den vorhergesagten Werten aus dem Modell. Aus diesem Grund haben Machine Learning-Modelle eine höhere Genauigkeit, wenn die meisten Werte des Modells entlang der Diagonalen liegen, was bedeutet, dass das Modell den richtigen Wert vorhergesagt hat. Wenn ein Modell ein Klassenungleichgewicht aufweist, hilft die Konfusionsmatrix dabei, ein verzerrtes Modell zu erkennen.
+### <a name="confusion-matrix-for-a-good-model"></a>Konfusionsmatrix für ein gutes Modell 
+![Konfusionsmatrix für ein gutes Modell ](./media/how-to-understand-automated-ml/chart-confusion-matrix-good.png)
 
-#### <a name="example-1-a-classification-model-with-poor-accuracy"></a>Beispiel 1: Ein Klassifizierungsmodell mit schlechter Genauigkeit.
-![Ein Klassifizierungsmodell mit schlechter Genauigkeit.](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-confusion-matrix1.png)
+### <a name="confusion-matrix-for-a-bad-model"></a>Konfusionsmatrix für ein ungültiges Modell
+![Konfusionsmatrix für ein ungültiges Modell](./media/how-to-understand-automated-ml/chart-confusion-matrix-bad.png)
 
-#### <a name="example-2-a-classification-model-with-high-accuracy"></a>Beispiel 2: Ein Klassifizierungsmodell mit hoher Genauigkeit. 
-![Ein Klassifizierungsmodell mit hoher Genauigkeit.](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-confusion-matrix2.png)
+## <a name="roc-curve"></a>ROC-Kurve
 
-##### <a name="example-3-a-classification-model-with-high-accuracy-and-high-bias-in-model-predictions"></a>Beispiel 3: Ein Klassifizierungsmodell mit hoher Genauigkeit und hoher Verzerrung bei Modellvorhersagen.
-![Ein Klassifizierungsmodell mit hoher Genauigkeit und hoher Verzerrung bei Modellvorhersagen.](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-biased-model.png)
+Die ROC-Kurve (Receiver Operating Characteristic) stellt das Verhältnis zwischen der True Positive- (TPR) und der False Positive-Rate (FPR) dar, wenn sich der Entscheidungsschwellenwert ändert. Die ROC-Kurve kann weniger aussagekräftig sein, wenn Modelle auf der Grundlage von Datasets mit stark unausgeglichenen Klassen trainiert werden, da die Beiträge von Minderheitsklassen ggf. durch die Mehrheitsklasse verdrängt wird.
 
-<a name="precision-recall-chart"></a>
+Der Bereich unter der Kurve (AUC) kann als der Anteil der richtig klassifizierten Stichproben interpretiert werden. Genauer gesagt, ist der AUC die Wahrscheinlichkeit, dass der Klassifizierer eine zufällig ausgewählte positive Stichprobe höher einstuft als eine zufällig ausgewählte negative Stichprobe. Die Form der Kurve gibt eine Vorstellung von der Beziehung zwischen TPR und FPR in Abhängigkeit vom Klassifizierungsschwellenwert oder der Entscheidungsgrenze.
 
-## <a name="precision-recall-chart"></a>Genauigkeit-Trefferquote-Diagramm
+Eine Kurve, die sich der oberen linken Ecke des Diagramms nähert, nähert sich einer TPR von 100 % und FPR von 0 %, dem bestmöglichen Modell. Ein zufälliges Modell würde eine ROC-Kurve entlang der `y = x`-Linie von der linken unteren Ecke bis zur rechten oberen Ecke erzeugen. Ein Modell, das schlechter als ein zufälliges Modell ist, würde eine ROC-Kurve aufweisen, die unter die `y = x`-Linie eintaucht.
+> [!TIP]
+> Für Klassifizierungsexperimente kann jedes der Liniendiagramme, die für automatisierte ML-Modelle erstellt werden, verwendet werden, um das Modell pro Klasse oder gemittelt über alle Klassen auszuwerten. Sie können zwischen diesen verschiedenen Ansichten umschalten, indem Sie auf die Klassenbezeichnungen in der Legende auf der rechten Seite des Diagramms klicken.
+### <a name="roc-curve-for-a-good-model"></a>ROC-Kurve für ein gutes Modell
+![ROC-Kurve für ein gutes Modell](./media/how-to-understand-automated-ml/chart-roc-curve-good.png)
 
-Die Genauigkeit-Trefferquote-Kurve zeigt die Beziehung zwischen Genauigkeit und Trefferquote eines Modells. Der Begriff „Genauigkeit“ steht für die Fähigkeit eines Modells, alle Instanzen richtig zu bezeichnen. „Trefferquote“ stellt die Möglichkeit für einen Klassifizierer dar, alle Instanzen einer bestimmten Bezeichnung zu finden.
+### <a name="roc-curve-for-a-bad-model"></a>ROC-Kurve für ein ungültiges Modell
+![ROC-Kurve für ein ungültiges Modell](./media/how-to-understand-automated-ml/chart-roc-curve-bad.png)
 
-Mit diesem Diagramm können Sie die Genauigkeit-Trefferquote-Kurven für jedes Modell vergleichen, um festzustellen, welches Modell eine akzeptable Beziehung zwischen Genauigkeit und Trefferquote für Ihr spezielles Geschäftsproblem aufweist. Dieses Diagramm zeigt die durchschnittliche Makro-Genauigkeit-Trefferquote, die durchschnittliche Mikro-Genauigkeit-Trefferquote und die Genauigkeit-Trefferquote, die allen Klassen für ein Modell zugeordnet ist. 
+## <a name="precision-recall-curve"></a>Kurve zu Genauigkeit/Abruf
 
-Der **Makrodurchschnitt** berechnet die Metrik unabhängig von allen Klassen und gibt dann den Durchschnitt aus, sodass alle Klassen gleichbehandelt werden. Der **Mikrodurchschnitt** aggregiert jedoch die Beiträge aller Klassen, um den Durchschnitt zu berechnen. Der Mikrodurchschnitt ist vorzuziehen, wenn im Dataset ein Klassenungleichgewicht vorhanden ist.
+Die Kurve zu Genauigkeit/Abruf stellt das Verhältnis zwischen Genauigkeit und Abruf bei Änderung des Entscheidungsschwellwerts dar. Abruf ist die Fähigkeit eines Modells, alle positiven Stichproben zu erkennen und Genauigkeit ist die Fähigkeit eines Modells, negative Stichproben nicht als positiv zu bezeichnen. Einige geschäftliche Probleme erfordern möglicherweise einen höheren Abruf und andere eine höhere Genauigkeit, abhängig von der relativen Wichtigkeit der Vermeidung von False Negative- gegenüber False Positive-Ergebnissen.
+> [!TIP]
+> Für Klassifizierungsexperimente kann jedes der Liniendiagramme, die für automatisierte ML-Modelle erstellt werden, verwendet werden, um das Modell pro Klasse oder gemittelt über alle Klassen auszuwerten. Sie können zwischen diesen verschiedenen Ansichten umschalten, indem Sie auf die Klassenbezeichnungen in der Legende auf der rechten Seite des Diagramms klicken.
+### <a name="precision-recall-curve-for-a-good-model"></a>Kurve zu Genauigkeit/Abruf für ein gutes Modell
+![Kurve zu Genauigkeit/Abruf für ein gutes Modell](./media/how-to-understand-automated-ml/chart-precision-recall-curve-good.png)
 
-### <a name="what-does-a-good-model-look-like"></a>Wie sieht ein gutes Modell aus?
-Abhängig vom Ziel des Geschäftsproblems kann sich die ideale Genauigkeit-Trefferquote-Kurve unterscheiden. 
+### <a name="precision-recall-curve-for-a-bad-model"></a>Kurve zu Genauigkeit/Abruf für ein ungültiges Modell
+![Kurve zu Genauigkeit/Abruf für ein ungültiges Modell](./media/how-to-understand-automated-ml/chart-precision-recall-curve-bad.png)
 
-##### <a name="example-1-a-classification-model-with-low-precision-and-low-recall"></a>Beispiel 1: Ein Klassifizierungsmodell mit niedriger Genauigkeit und niedriger Trefferquote.
-![Ein Klassifizierungsmodell mit niedriger Genauigkeit und niedriger Trefferquote.](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-precision-recall1.png)
+## <a name="cumulative-gains-curve"></a>Kumulierte Gewinnkurve
 
-##### <a name="example-2-a-classification-model-with-100-precision-and-100-recall"></a>Beispiel 2: Ein Klassifizierungsmodell mit ~100 % Genauigkeit und ~100 % Trefferquote. 
-![Ein Klassifizierungsmodell mit hoher Genauigkeit und hoher Trefferquote.](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-precision-recall2.png)
+Die kumulative Gewinnkurve stellt den Prozentsatz der richtig klassifizierten positiven Stichproben als Funktion des Prozentsatzes der betrachteten Stichproben dar, wobei wir die Stichproben in der Reihenfolge der vorhergesagten Wahrscheinlichkeit betrachten.
 
-<a name="roc"></a>
+Um den Gewinn zu berechnen, sortieren Sie zunächst alle Stichproben von der höchsten zur niedrigsten vom Modell vorhergesagten Wahrscheinlichkeit. Nehmen Sie dann `x%` der höchstmöglichen Vorhersagen. Teilen Sie die Anzahl der in diesem `x%` erkannten positiven Stichproben durch die Gesamtzahl der positiven Stichproben, um den Gewinn zu erhalten. Der kumulative Gewinn ist der Prozentsatz an positiven Stichproben, die wir erkennen, wenn wir einen gewissen Prozentsatz der Daten berücksichtigen, der mit hoher Wahrscheinlichkeit zur positiven Klasse gehört.
 
-## <a name="roc-chart"></a>ROC-Diagramm
+Ein perfektes Modell wird alle positiven Stichproben über alle negativen Stichproben stellen, was eine kumulative Gewinnkurve ergibt, die aus zwei geraden Segmenten besteht. Die erste ist eine Linie mit der Steigung `1 / x` von `(0, 0)` bis `(x, 1)`, wobei `x` der Anteil der Stichproben ist, die zur positiven Klasse gehören (`1 / num_classes`, wenn die Klassen ausgeglichen sind). Die zweite ist eine horizontale Linie von `(x, 1)` bis `(1, 1)`. Im ersten Segment werden alle positiven Stichproben richtig klassifiziert und der kumulative Gewinn wechselt innerhalb der ersten `x%` der betrachteten Stichproben zu `100%`.
 
-ROC (Receiver Operating Characteristic) ist ein Diagramm der korrekt klassifizierten Bezeichnungen im Vergleich zu den falsch klassifizierten Bezeichnungen für ein bestimmtes Modell. Die ROC-Kurve kann weniger aussagekräftig sein, wenn Modelle auf der Grundlage von Datasets mit stark unausgeglichenen Klassen trainiert werden, da der Beitrag von Minderheitsklassen ggf. durch die Mehrheitsklasse verdrängt wird.
+Das Baseline-Zufallsmodell hat eine kumulative Gewinnkurve, die `y = x` folgt, wobei für `x%` der betrachteten Stichproben nur etwa `x%` der gesamten positiven Stichproben erkannt wurden. Ein perfektes Modell verfügt über eine Micro-Mittelwertkurve, die die linke obere Ecke berührt, und über eine Macro-Mittelwertkurve mit der Steigung `1 / num_classes`, bis der kumulative Gewinn 100 % beträgt, und dann horizontal verläuft, bis der Datenprozentwert 100 entspricht.
+> [!TIP]
+> Für Klassifizierungsexperimente kann jedes der Liniendiagramme, die für automatisierte ML-Modelle erstellt werden, verwendet werden, um das Modell pro Klasse oder gemittelt über alle Klassen auszuwerten. Sie können zwischen diesen verschiedenen Ansichten umschalten, indem Sie auf die Klassenbezeichnungen in der Legende auf der rechten Seite des Diagramms klicken.
+### <a name="cumulative-gains-curve-for-a-good-model"></a>Kumulative Gewinnkurve für ein gutes Modell
+![Kumulative Gewinnkurve für ein gutes Modell](./media/how-to-understand-automated-ml/chart-cumulative-gains-curve-good.png)
 
-Der Bereich unter der ROC-Kurve kann als Anteil korrekt klassifizierter Stichproben visualisiert werden. Ein erfahrener Betrachter des ROC-Diagramms kann ggf. über den Bereich unter der Kurve hinausblicken und ein Gefühl für die True Positive- und False Positive-Raten als Funktion des Klassifizierungsschwellenwerts oder der Entscheidungsgrenze bekommen.
+### <a name="cumulative-gains-curve-for-a-bad-model"></a>Kumulative Gewinnkurve für ein ungültiges Modell
+![Kumulative Gewinnkurve für ein ungültiges Modell](./media/how-to-understand-automated-ml/chart-cumulative-gains-curve-bad.png)
 
-### <a name="what-does-a-good-model-look-like"></a>Wie sieht ein gutes Modell aus?
-Eine ROC-Kurve, die sich der linken oberen Ecke mit einer True Positive-Rate von 100 Prozent und einer False Positive-Rate von 0 Prozent annähert, ist das beste Modell. Ein Zufallsmodell wird als gerade Linie dargestellt, die von links unten nach rechts oben verläuft. Schlechter als zufällig wäre, wenn die Linie unter die y=x-Linie fällt.
+## <a name="lift-curve"></a>Prognosegütekurve
 
-#### <a name="example-1-a-classification-model-with-low-true-labels-and-high-false-labels"></a>Beispiel 1: Ein Klassifizierungsmodell mit niedrigen wahren Bezeichnungen und hohen falschen Bezeichnungen.
-![Ein Klassifizierungsmodell mit niedrigen wahren Bezeichnungen und hohen falschen Bezeichnungen.](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-roc-1.png)
+Die Prognosegütekurve zeigt, wie viel besser ein Modell im Vergleich zu einem Zufallsmodell abschneidet. Prognosegüte ist definiert als das Verhältnis des kumulativen Gewinns zum kumulativen Gewinn eines Zufallsmodells.
 
-#### <a name="example-2-a-classification-model-with-high-true-labels-and-low-false-labels"></a>Beispiel 2: Ein Klassifizierungsmodell mit hohen wahren Bezeichnungen und niedrigen falschen Bezeichnungen.
+Diese relative Leistungsangabe berücksichtigt, dass die Klassifizierung mit zunehmender Klassenanzahl schwieriger wird. (Ein Zufallsmodell sagt bei einem Dataset mit zehn Klassen einen höheren Anteil von Stichproben falsch vorher als bei einem Dataset mit zwei Klassen.)
 
-![Ein Klassifizierungsmodell mit hohen wahren Bezeichnungen und niedrigen falschen Bezeichnungen.](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-roc-2.png)
+Die Baseline-Prognosegütekurve ist die `y = 1`-Linie, bei der die Modellleistung mit der eines Zufallsmodells übereinstimmt. Im Allgemeinen wird die Prognosegütekurve für ein gutes Modell in diesem Diagramm höher und weiter von der X-Achse entfernt sein, was zeigt, dass das Modell, wenn es in seinen Vorhersagen am zuversichtlichsten ist, um ein Vielfaches besser abschneidet als bloßes Raten.
 
+> [!TIP]
+> Für Klassifizierungsexperimente kann jedes der Liniendiagramme, die für automatisierte ML-Modelle erstellt werden, verwendet werden, um das Modell pro Klasse oder gemittelt über alle Klassen auszuwerten. Sie können zwischen diesen verschiedenen Ansichten umschalten, indem Sie auf die Klassenbezeichnungen in der Legende auf der rechten Seite des Diagramms klicken.
+### <a name="lift-curve-for-a-good-model"></a>Prognosegütekurve für ein gutes Modell
+![Prognosegütekurve für ein gutes Modell](./media/how-to-understand-automated-ml/chart-lift-curve-good.png)
+ 
+### <a name="lift-curve-for-a-bad-model"></a>Prognosegütekurve für ein ungültiges Modell
+![Prognosegütekurve für ein ungültiges Modell](./media/how-to-understand-automated-ml/chart-lift-curve-bad.png)
 
-<a name="lift-curve"></a>
+## <a name="calibration-curve"></a>Kalibrierungskurve
 
-## <a name="lift-chart"></a>Prognosegütediagramm
+Die Kalibrierungskurve stellt die Konfidenz eines Modells in Bezug auf seine Vorhersagen im Vergleich zum Anteil positiver Stichproben auf den jeweiligen Konfidenzebenen dar. Ein gut kalibriertes Modell wird 100 % der Vorhersagen richtig klassifizieren, denen es eine Konfidenz von 100 % zuweist, 50 % der Vorhersagen, denen es eine Konfidenz von 50 % zuweist, 20 % der Vorhersagen, denen es eine Konfidenz von 20 % zuweist usw. Ein perfekt kalibriertes Modell hat eine Kalibrierungskurve, die der `y = x`-Linie folgt, in der das Modell die Wahrscheinlichkeit, dass Stichproben zu den einzelnen Klassen gehören, perfekt vorhersagt.
 
-Prognosegütediagramme werten die Leistung von Klassifizierungsmodellen aus. Ein Prognosegütediagramm zeigt, wie viel besser ein Modell im Vergleich zu einem Zufallsmodell abschneidet. Dadurch erhalten Sie eine relative Leistungsangabe, bei der die Tatsache berücksichtigt wird, dass die Klassifizierung mit zunehmender Klassenanzahl schwieriger wird. Ein Zufallsmodell sagt bei einem Dataset mit zehn Klassen einen höheren Anteil von Stichproben falsch vorher als bei einem Dataset mit zwei Klassen.
-
-Sie können die Prognosegüte des automatisch mit Azure Machine Learning erstellten Modells mit der Baseline (Zufallsmodell) vergleichen, um den Wertzuwachs dieses bestimmten Modells anzuzeigen.
-
-### <a name="what-does-a-good-model-look-like"></a>Wie sieht ein gutes Modell aus?
-
-Ein Modell mit besserer Leistung weist im Graph eine höhere Prognosegütekurve auf, die weiter von der Grundlinie entfernt ist. 
-
-#### <a name="example-1-a-classification-model-that-performs-poorly-compared-to-a-random-selection-model"></a>Beispiel 1: Ein Klassifizierungsmodell, das schlechter abschneidet als ein Zufallsauswahlmodell.
-![Ein Klassifizierungsmodell, das schlechter abschneidet als ein Zufallsauswahlmodell.](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-lift-curve1.png)
-
-#### <a name="example-2-a-classification-model-that-performs-better-than-a-random-selection-model"></a>Beispiel 2: Ein Klassifizierungsmodell, das besser abschneidet als ein Zufallsauswahlmodell.
-![Ein Klassifizierungsmodell, das besser abschneidet.](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-lift-curve2.png)
-
-<a name="gains-curve"></a>
-
-## <a name="cumulative-gains-chart"></a>Kumuliertes Gewinndiagramm
-
-Ein kumuliertes Gewinndiagramm wertet die Leistung eines Klassifizierungsmodells anhand jedes Teils der Daten aus. Das Diagramm zeigt für jedes Perzentil des Datasets, wie viele weitere Stichproben im Vergleich zu einem Modell, das immer falsch ist, korrekt klassifiziert wurden. Diese Informationen bieten eine weitere Möglichkeit, die Ergebnisse im zugehörigen Prognosegütediagramm zu untersuchen.
-
-Das Diagramm der kumulierten Gewinne erleichtert die Auswahl der Klassifizierungsgrenze anhand eines Prozentsatzes, der einem gewünschten Gewinn aus dem Modell entspricht. Sie können das Diagramm der kumulierten Gewinne mit der Baseline (Modell mit falschen Ergebnissen) vergleichen, um zu sehen, wie viel Prozent der Stichprobe in jedem Konfidenzperzentil korrekt klassifiziert wurden.
-
-#### <a name="what-does-a-good-model-look-like"></a>Wie sieht ein gutes Modell aus?
-
-Ähnlich wie bei einem Prognosegütediagramm gilt: Je höher die Kurve der kumulativen Gewinne über der Baseline liegt, desto besser funktioniert Ihr Modell. Darüber hinaus gilt: Je mehr sich die Kurve der kumulativen Gewinne der linken oberen Ecke des Diagramms nähert, desto mehr Gewinn erzielt Ihr Modell im Vergleich zur Baseline. 
-
-##### <a name="example-1-a-classification-model-with-minimal-gain"></a>Beispiel 1: Ein Klassifizierungsmodell mit minimalem Gewinn.
-![Ein Klassifizierungsmodell mit minimalem Gewinn.](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-gains-curve2.png)
-
-##### <a name="example-2-a-classification-model-with-significant-gain"></a>Beispiel 2: Ein Klassifizierungsmodell mit signifikantem Gewinn.
-![Ein Klassifizierungsmodell mit signifikantem Gewinn.](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-gains-curve1.png)
-
-<a name="calibration-plot"></a>
-
-## <a name="calibration-chart"></a>Kalibrierungsdiagramm
-
-Ein Kalibrierungsdiagramm zeigt die Konfidenz eines Vorhersagemodells an. Dies geschieht, indem es die Beziehung zwischen der vorhergesagten Wahrscheinlichkeit und der tatsächlichen Wahrscheinlichkeit zeigt, wobei die „Wahrscheinlichkeit“ die Wahrscheinlichkeit darstellt, dass eine bestimmte Instanz zu einer bestimmten Bezeichnung gehört.
-
-Für alle Klassifizierungsprobleme können Sie die Kalibrierungskurve auf Mikrodurchschnitt, Makrodurchschnitt und jede Klasse in einem bestimmten Vorhersagemodell überprüfen.
-
-Der **Makrodurchschnitt** berechnet die Metrik unabhängig von allen Klassen und gibt dann den Durchschnitt aus, sodass alle Klassen gleichbehandelt werden. Der **Mikrodurchschnitt** aggregiert jedoch die Beiträge aller Klassen, um den Durchschnitt zu berechnen. 
-
-### <a name="what-does-a-good-model-look-like"></a>Wie sieht ein gutes Modell aus?
-Ein gut kalibriertes Modell ist an der y=x-Linie ausgerichtet, wo es die Wahrscheinlichkeit der Zugehörigkeit von Stichproben zu den einzelnen Klassen korrekt vorhersagt. Bei einem übermäßig zuverlässigen Modell werden Wahrscheinlichkeiten übermäßig nah bei Null bzw. Eins vorhergesagt, sodass hinsichtlich der Klasse der jeweiligen Stichproben selten eine Unsicherheit besteht.
-
-#### <a name="example-1-a-well-calibrated-model"></a>Beispiel 1: Ein gut kalibriertes Modell.
-![ Ein besser kalibriertes Modell.](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-calib-curve1.png)
-
-#### <a name="example-2-an-over-confident-model"></a>Beispiel 2: Ein übermäßig zuverlässiges Modell.
-![Ein übermäßig zuverlässiges Modell.](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-calib-curve2.png)
-
-
-<a name="regression"></a> 
-
-## <a name="regression-performance-metrics"></a>Leistungsmetriken für Regression
-
-In der folgenden Tabelle sind die Modellleistungsmetriken zusammengefasst, die automatisiertes ML für jedes Regressions- oder Vorhersagemodell berechnet, das für Ihr Experiment generiert wird. 
-
-|Metrik|BESCHREIBUNG|Berechnung|Zusätzliche Parameter
---|--|--|--|
-explained_variance|Die erläuterte Varianz ist der Anteil, mit dem ein mathematisches Modell für die Variation eines bestimmten Datasets verantwortlich ist. Hierbei handelt es sich um den prozentualen Rückgang der Varianz der ursprünglichen Daten im Vergleich zur Varianz der Fehler. Wenn der Mittelwert der Fehler 0 beträgt, entspricht er dem Ermittlungskoeffizienten (siehe r2_score weiter unten).|[Berechnung](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.explained_variance_score.html)|Keine|
-r2_score|R^2 ist der Ermittlungskoeffizient bzw. die prozentuale Reduzierung der quadratischen Fehler im Vergleich zu einem Baselinemodell, das den Mittelwert ausgibt. |[Berechnung](https://scikit-learn.org/0.16/modules/generated/sklearn.metrics.r2_score.html)|Keine|
-spearman_correlation|Die Spearman-Korrelation ist ein nicht parametrisches Maß für die Monotonie der Beziehung zwischen zwei Datasets. Im Gegensatz zur Pearson-Korrelation geht die Spearman-Korrelation nicht davon aus, dass beide Datasets normal verteilt sind. Wie bei anderen Korrelationskoeffizienten variiert dieser Wert zwischen -1 und +1, wobei 0 für keine Korrelation steht. Korrelationen von -1 oder +1 implizieren eine exakt monotone Beziehung. Positive Korrelationen implizieren, dass sich x ebenso wie y erhöht. Negative Korrelationen implizieren, dass sich x erhöht und y niedriger wird.|[Berechnung](https://docs.scipy.org/doc/scipy-0.16.1/reference/generated/scipy.stats.spearmanr.html)|Keine|
-mean_absolute_error|Der mittlere absolute Fehler ist der erwartete Wert des absoluten Differenzwerts zwischen dem Ziel und der Vorhersage.|[Berechnung](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_absolute_error.html)|Keine|
-normalized_mean_absolute_error|Der normalisierte mittlere absolute Fehler ist der mittlere absolute Fehler, dividiert durch den Datenbereich.|[Berechnung](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_absolute_error.html)|Division durch den Datenbereich|
-median_absolute_error|Der mittlere absolute Fehler ist der Median aller absoluten Differenzen zwischen dem Ziel und der Vorhersage. Dieser Verlust ist stabil in Bezug auf Ausreißer.|[Berechnung](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.median_absolute_error.html)|Keine|
-normalized_median_absolute_error|Der normalisierte mittlere absolute Fehler ist der mittlere absolute Fehler, dividiert durch den Datenbereich.|[Berechnung](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.median_absolute_error.html)|Division durch den Datenbereich|
-root_mean_squared_error|Die Wurzel aus dem mittleren quadratischen Fehler ist die Quadratwurzel der erwarteten quadratischen Differenz zwischen dem Ziel und der Vorhersage.|[Berechnung](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html)|Keine|
-normalized_root_mean_squared_error|Die normalisierte Wurzel aus dem mittleren quadratischen Fehler ist die Wurzel aus dem mittleren quadratischen Fehler, dividiert durch den Datenbereich.|[Berechnung](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html)|Division durch den Datenbereich|
-root_mean_squared_log_error|Die Wurzel aus dem mittleren quadratischen logarithmischen Fehler ist die Quadratwurzel des erwarteten quadratischen logarithmischen Fehlers.|[Berechnung](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html)|Keine|
-normalized_root_mean_squared_log_error|Die normalisierte Wurzel aus dem mittleren quadratischen logarithmischen Fehler ist die Wurzel aus dem mittleren quadratischen logarithmischen Fehler dividiert durch den Datenbereich.|[Berechnung](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html)|Division durch den Datenbereich|
-
-<a name="pvt"></a>
-
-## <a name="predicted-vs-true-chart"></a> Vorhergesagt im Vergleich zu Wahr-Diagramm
-
-Vorhergesagt im Vergleich zu TRUE zeigt die Beziehung zwischen einem vorhergesagten Wert und seinem korrelierenden wahren Wert für ein Regressionsproblem. 
-
-Nach jeder Ausführung wird für jedes Regressionsmodell ein Diagramm mit den vorhergesagten im Vergleich zu den wahren Werten angezeigt. Zum Schutz der Privatsphäre werden die Werte in Behältern zusammengeführt, und die Größe jedes Behälters wird als Balkendiagramm im unteren Teil des Diagrammbereichs angezeigt. Sie können das Vorhersagemodell (mit dem helleren Farbbereich, der die Fehlergrenzen anzeigt) mit dem Idealwert des Modells vergleichen.
-
-### <a name="what-does-a-good-model-look-like"></a>Wie sieht ein gutes Modell aus?
-Mit diesem Graphen kann die Leistung eines Modells gemessen werden, da Folgendes gilt: Je näher die vorhergesagten Werte an der y=x-Linie liegen, desto besser ist die Leistung eines Vorhersagemodells.
-
-#### <a name="example-1-a-regression-model-with-low-performance"></a>Beispiel 1: Ein Regressionsmodell mit niedriger Leistung
-![Ein Regressionsmodell mit niedriger Genauigkeit bei Vorhersagen.](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression1.png)
-
-#### <a name="example-2-a-regression-model-with-high-performance"></a>Beispiel 2: Ein Regressionsmodell mit hoher Leistung
-![Ein Regressionsmodell mit hoher Genauigkeit bei seinen Vorhersagen.](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression2.png)
-
-<a name="histo"></a> 
-
-## <a name="histogram-of-residuals-chart"></a> Histogramm der Residualwerte
-
-Das automatisierte maschinelle Lernen stellt automatisch ein Residualwertediagramm bereit, um die Fehlerverteilung in den Vorhersagen eines Regressionsmodells zu zeigen. Ein Residualwert ist die Differenz zwischen der Vorhersage und dem tatsächlichen Wert (`y_pred - y_true`). 
-
-### <a name="what-does-a-good-model-look-like"></a>Wie sieht ein gutes Modell aus?
-Um eine Fehlerspanne mit geringer Verzerrung darzustellen, sollte das Histogramm der Residualwerte als Glockenkurve geformt sein, die um 0 zentriert ist.
-
-#### <a name="example-1-a-regression-model-with-bias-in-its-errors"></a>Beispiel 1: Ein Regressionsmodell mit Verzerrung bei seinen Fehlern.
-![Ein Regressionsmodell mit Verzerrung bei seinen Fehlern.](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression3.png)
-
-#### <a name="example-2-a-regression-model-with-a-more-even-distribution-of-errors"></a>Beispiel 2: Ein Regressionsmodell mit gleichmäßigerer Verteilung von Fehlern
-![Ein Regressionsmodell mit gleichmäßigerer Verteilung von Fehlern.](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression4.png)
-
-<a name="explain-model"></a>
-
-## <a name="model-interpretability-and-feature-importance"></a> Interpretierbarkeit von Modellen und Featurepriorität
-Automatisiertes ML bietet ein Dashboard für die Machine Learning-Interpretierbarkeit für Ihre Ausführungen.
-
-Weitere Informationen zum Aktivieren von Interpretierbarkeitsfeatures finden Sie unter [Interpretierbarkeit: Modellerklärungen beim automatisierten maschinellen Lernen](how-to-machine-learning-interpretability-automl.md).
+Bei einem übermäßig zuverlässigen Modell werden Wahrscheinlichkeiten übermäßig nah bei Null bzw. Eins vorhergesagt, sodass hinsichtlich der Klasse der jeweiligen Stichproben selten eine Unsicherheit besteht, und die Kalibrierungskurve wird ähnlich wie ein rückwärtsgerichtet „S“ aussehen. Bei einem Modell mit zu geringer Konfidenz wird der vorhergesagten Klasse im Durchschnitt eine geringere Wahrscheinlichkeit zugewiesen, und die zugehörige Kalibrierungskurve wird ähnlich wie ein „S“ aussehen. Die Kalibrierungskurve stellt nicht die Fähigkeit eines Modells zur richtigen Klassifizierung dar, sondern seine Fähigkeit, seinen Vorhersagen die richtige Konfidenz zuzuordnen. Ein ungültiges Modell kann immer noch eine geeignete Kalibrierungskurve aufweisen, wenn das Modell eine geringe Konfidenz und eine hohe Unsicherheit richtig zuweist.
 
 > [!NOTE]
-> Das ForecastTCN-Modell wird aktuell vom Erklärungsclient nicht unterstützt. Dieses Modell gibt kein Erklärungsdashboard zurück, wenn es als bestes Modell zurückgegeben wird, und es unterstützt keine Erklärungsausführungen auf Anforderung.
+> Die Kalibrierungskurve ist hinsichtlich der Anzahl der Stichproben empfindlich, sodass ein kleiner Validierungssatz zu verrauschten Ergebnissen führen kann, die schwer zu interpretieren sein können. Dies bedeutet nicht unbedingt, dass das Modell nicht richtig kalibriert ist.
+
+### <a name="calibration-curve-for-a-good-model"></a>Kalibrierungskurve für ein gutes Modell
+![Kalibrierungskurve für ein gutes Modell](./media/how-to-understand-automated-ml/chart-calibration-curve-good.png)
+
+### <a name="calibration-curve-for-a-bad-model"></a>Kalibrierungskurve für ein ungültiges Modell
+![Kalibrierungskurve für ein ungültiges Modell](./media/how-to-understand-automated-ml/chart-calibration-curve-bad.png)
+
+## <a name="regressionforecasting-metrics"></a>Regressions-/Vorhersagemetriken
+
+Das automatisierte maschinelle Lernen berechnet dieselben Leistungsmetriken für jedes erzeugte Modell, unabhängig davon, ob es sich um ein Regressions- oder Vorhersageexperiment handelt. Diese Metriken werden auch normalisiert, um einen Vergleich zwischen Modellen zu ermöglichen, die für Daten mit unterschiedlichen Bereichen trainiert wurden. Weitere Informationen finden Sie unter [Metrische Normalisierung](#metric-normalization).  
+
+In der folgenden Tabelle sind die für die Regressions- und Vorhersageexperimente generierten Modellleistungsmetriken zusammengefasst. Wie die Klassifizierungsmetriken basieren auch diese Metriken auf den scikit learn-Implementierungen. Die entsprechende scikit learn-Dokumentation ist entsprechend verlinkt, und zwar im Feld **Berechnung**.
+
+|Metrik|BESCHREIBUNG|Berechnung|
+--|--|--|
+explained_variance|Die erläuterte Varianz misst das Ausmaß, in dem ein Modell die Variation in der Zielvariablen erläutert. Hierbei handelt es sich um den prozentualen Rückgang der Varianz der ursprünglichen Daten im Vergleich zur Varianz der Fehler. Wenn der Mittelwert der Fehler 0 beträgt, entspricht er dem Ermittlungskoeffizienten (siehe r2_score weiter unten). <br> <br> **Ziel**: Je näher an 1, desto besser <br> **Bereich:** (-inf, 1]|[Berechnung](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.explained_variance_score.html)|
+mean_absolute_error|Der mittlere absolute Fehler ist der erwartete Wert des absoluten Differenzwerts zwischen dem Ziel und der Vorhersage.<br><br> **Ziel**: Je näher an 0, desto besser <br> **Bereich:** [0, inf) <br><br> Typen: <br>`mean_absolute_error` <br>  `normalized_mean_absolute_error`, mean_absolute_error geteilt durch den Bereich der Daten. | [Berechnung](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_absolute_error.html)|
+mean_absolute_percentage_error|Der mittlere absolute prozentuale Fehler (Mean Absolute Percentage Error, MAPE) ist ein Maß für die durchschnittliche Differenz zwischen einem vorhergesagten Wert und dem tatsächlichen Wert.<br><br> **Ziel**: Je näher an 0, desto besser <br> **Bereich:** [0, inf) ||
+median_absolute_error|Der mittlere absolute Fehler ist der Median aller absoluten Differenzen zwischen dem Ziel und der Vorhersage. Dieser Verlust ist stabil in Bezug auf Ausreißer.<br><br> **Ziel**: Je näher an 0, desto besser <br> **Bereich:** [0, inf)<br><br>Typen: <br> `median_absolute_error`<br> `normalized_median_absolute_error`: median_absolute_error geteilt durch den Bereich der Daten. |[Berechnung](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.median_absolute_error.html)|
+r2_score|R^2 ist der Ermittlungskoeffizient bzw. die prozentuale Reduzierung der quadratischen Fehler im Vergleich zu einem Baselinemodell, das den Mittelwert ausgibt. <br> <br> **Ziel**: Je näher an 1, desto besser <br> **Bereich:** (-inf, 1]|[Berechnung](https://scikit-learn.org/0.16/modules/generated/sklearn.metrics.r2_score.html)|
+root_mean_squared_error |Die Wurzel aus dem mittleren quadratischen Fehler (Root Mean Squared Error, RMSE) ist die Quadratwurzel der erwarteten quadratischen Differenz zwischen dem Ziel und der Vorhersage. Für einen ausgewogenen Schätzer ist der RMSE gleich der Standardabweichung.<br> <br> **Ziel**: Je näher an 0, desto besser <br> **Bereich:** [0, inf)<br><br>Typen:<br> `root_mean_squared_error` <br> `normalized_root_mean_squared_error`: root_mean_squared_error geteilt durch den Bereich der Daten. |[Berechnung](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html)|
+root_mean_squared_log_error|Die Wurzel aus dem mittleren quadratischen logarithmischen Fehler ist die Quadratwurzel des erwarteten quadratischen logarithmischen Fehlers.<br><br>**Ziel**: Je näher an 0, desto besser <br> **Bereich:** [0, inf) <br> <br>Typen: <br>`root_mean_squared_log_error` <br> `normalized_root_mean_squared_log_error`: root_mean_squared_log_error geteilt durch den Bereich der Daten.  |[Berechnung](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html)|
+spearman_correlation| Die Spearman-Korrelation ist ein nicht parametrisches Maß für die Monotonie der Beziehung zwischen zwei Datasets. Im Gegensatz zur Pearson-Korrelation geht die Spearman-Korrelation nicht davon aus, dass beide Datasets normal verteilt sind. Wie bei anderen Korrelationskoeffizienten variiert Spearman zwischen -1 und 1, wobei 0 für keine Korrelation steht. Korrelationen von -1 oder 1 implizieren eine exakt monotone Beziehung. <br><br> Bei Spearman handelt es sich um eine Korrelationsmetrik der Rangfolge, was bedeutet, dass Änderungen an vorhergesagten oder tatsächlichen Werten das Spearman-Ergebnis nicht verändern, wenn sie die Rangfolge der vorhergesagten oder tatsächlichen Werte nicht verändern.<br> <br> **Ziel**: Je näher an 1, desto besser <br> **Bereich:** [-1, 1]|[Berechnung](https://docs.scipy.org/doc/scipy-0.16.1/reference/generated/scipy.stats.spearmanr.html)|
+
+### <a name="metric-normalization"></a>Metrische Normalisierung
+
+Das automatisierte maschinelle Lernen normalisiert Regressions- und Vorhersagemetriken, was den Vergleich zwischen Modellen ermöglicht, die für Daten mit unterschiedlichen Bereichen trainiert wurden. Ein Modell, das für Daten mit einem größeren Bereich trainiert wurde, weist einen höheren Fehlerwert auf als dasselbe Modell, das für Daten mit einem kleineren Bereich trainiert wurde, es sei denn, dieser Fehler wird normalisiert.
+
+Es gibt zwar keine Standardmethode zur Normalisierung von Fehlermetriken, aber beim automatisierten maschinellen Lernen wird der Fehler üblicherweise durch den Bereich der Daten geteilt: `normalized_error = error / (y_max - y_min)`
+
+Wenn ein Prognosemodell anhand von Zeitreihendaten ausgewertet wird, unternimmt das automatisierte maschinelle Lernen zusätzliche Schritte, um sicherzustellen, dass die Normalisierung pro Zeitreihen-ID (Körnung) erfolgt, da jede Zeitreihe wahrscheinlich eine andere Verteilung der Zielwerte aufweist.
+## <a name="residuals"></a>Restdaten
+
+Das Restdatendiagramm ist ein Histogramm der Vorhersagefehler (Restdaten), die für Regressions- und Vorhersageexperimente generiert wurden. Die Restdaten werden als `y_predicted - y_true` für alle Stichproben berechnet und dann als Histogramm angezeigt, um die Modellverzerrung zu zeigen.
+
+In diesem Beispiel ist zu beachten, dass beide Modelle leicht verzerrt sind und einen niedrigeren als den tatsächlichen Wert vorhersagen. Dies ist nicht ungewöhnlich für ein Dataset mit einer ungleichmäßigen Verteilung der tatsächlichen Ziele, weist aber auf eine schlechtere Modellleistung hin. Ein gutes Modell besitzt eine Restdatenverteilung, die ihren Höhepunkt bei Null hat, mit wenigen Restdaten bei den Extremen. Ein weniger gutes Modell besitzt eine weit auseinander liegende Restdatenverteilung mit weniger Stichproben um Null herum.
+
+### <a name="residuals-chart-for-a-good-model"></a>Restdatendiagramm für ein gutes Modell
+![Restdatendiagramm für ein gutes Modell](./media/how-to-understand-automated-ml/chart-residuals-good.png)
+
+### <a name="residuals-chart-for-a-bad-model"></a>Restdatendiagramm für ein ungültiges Modell
+![Restdatendiagramm für ein ungültiges Modell](./media/how-to-understand-automated-ml/chart-residuals-bad.png)
+
+## <a name="predicted-vs-true"></a>Vorhergesagt im Vergleich zu den wahren Werten
+
+Bei Regressions- und Vorhersageexperimenten stellt das Diagramm „Vorhergesagt im Vergleich zu den wahren Werten“ die Beziehung zwischen der Zielfunktion (wahre/tatsächliche Werte) und den Vorhersagen des Modells dar. Die wahren Werte werden entlang der X-Achse klassifiziert und für jede Klassifizierung wird der mittlere vorhergesagte Wert mit Fehlerindikatoren dargestellt. So können Sie erkennen, ob ein Modell bei der Vorhersage bestimmter Werte verzerrt ist. Die Linie zeigt die durchschnittliche Vorhersage und der schattierte Bereich zeigt die Varianz der Vorhersagen um diesen Mittelwert an.
+
+Oft wird der häufigste wahre Wert die genauesten Vorhersagen mit der geringsten Varianz aufweisen. Der Abstand der Trendlinie von der Ideallinie `y = x`, bei der es nur wenige wahre Werte gibt, ist ein gutes Maß für die Modellleistung bei Ausreißern. Sie können das Histogramm am unteren Rand des Diagramms verwenden, um Rückschlüsse auf die tatsächliche Datenverteilung zu ziehen. Das Einbeziehen von weiteren Datenstichproben, bei denen die Verteilung gering ist, kann die Leistung des Modells bei unbekannten Daten verbessern.
+
+In diesem Beispiel ist zu beachten, dass das bessere Modell eine Linie für „Vorhergesagt im Vergleich zu den wahren Werten“ aufweist, die näher an der idealen `y = x`-Linie liegt.
+
+### <a name="predicted-vs-true-chart-for-a-good-model"></a>Diagramm zu „Vorhergesagt im Vergleich zu den wahren Werten“ für ein gutes Modell
+![Diagramm zu „Vorhergesagt im Vergleich zu den wahren Werten“ für ein gutes Modell](./media/how-to-understand-automated-ml/chart-predicted-true-good.png)
+
+### <a name="predicted-vs-true-chart-for-a-bad-model"></a>Diagramm zu „Vorhergesagt im Vergleich zu den wahren Werten“ für ein ungültiges Modell
+![Diagramm zu „Vorhergesagt im Vergleich zu den wahren Werten“ für ein ungültiges Modell](./media/how-to-understand-automated-ml/chart-predicted-true-bad.png)
+
+## <a name="model-explanations-and-feature-importances"></a>Modellerläuterung und Featurerelevanz
+
+Während Metriken und Diagramme zur Modellauswertung gut geeignet sind, um die allgemeine Qualität eines Modells zu messen, ist die Überprüfung, welche Datasetfunktionen ein Modell für seine Vorhersagen verwendet hat, für eine verantwortungsvolle KI unerlässlich. Deshalb bietet das automatisierte maschinelle Lernen ein Dashboard zur Modellinterpretation, um die relativen Beiträge von Datasetfunktionen zu messen und zu melden.
+
+![Featurerelevanz](./media/how-to-understand-automated-ml/how-to-feature-importance.gif)
+
+So zeigen Sie das Dashboard für die Interpretierbarkeit im Studio an
+
+1. [Melden Sie sich beim Studio an](https://ml.azure.com/), und navigieren Sie zu Ihrem Arbeitsbereich.
+2. Wählen Sie im linken Menü die Option **Experimente** aus.
+3. Wählen Sie Ihr Experiment aus der Liste der Experimente aus.
+4. Wählen Sie in der Tabelle unten auf der Seite eine AutoML-Ausführung aus.
+5. Wählen Sie auf der Registerkarte **Modelle** den **Algorithmusnamen** für das Modell aus, das Sie erläutern möchten.
+6. Auf der Registerkarte **Erläuterungen** sehen Sie möglicherweise, dass bereits eine Erläuterung erstellt wurde, wenn das Modell das beste war.
+7. Um eine neue Erläuterung zu erstellen, wählen Sie **Modell erklären** und wählen dann die Remotecompute-Instanz aus, mit der die Erläuterungen berechnet werden sollen.
+
+> [!NOTE]
+> Das ForecastTCN-Modell wird derzeit nicht durch Erläuterungen zum automatisierten maschinellen Lernen unterstützt und andere Vorhersagemodelle haben möglicherweise nur begrenzten Zugriff auf Interpretationstools.
 
 ## <a name="next-steps"></a>Nächste Schritte
-
-+ Erfahren Sie mehr über [automatisiertes Machine Learning](concept-automated-ml.md) in Azure Machine Learning.
-+ Probieren Sie die Beispielnotebooks für die [Modellerklärung zum automatisierten Machine Learning](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model) aus.
+* Probieren Sie die Beispielnotebooks für die [Modellerklärung zum automatisierten Machine Learning](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model) aus.
+* Erfahren Sie mehr über [Verantwortungsvolle KI-Angebote für automatisiertes maschinelles Lernen](how-to-machine-learning-interpretability-automl.md).
+* Bei Fragen zum automatisierten maschinellen Lernen wenden Sie sich an askautomatedml@microsoft.com.

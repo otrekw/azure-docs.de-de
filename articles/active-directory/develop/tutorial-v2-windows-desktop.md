@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Tutorial: Erstellen einer Windows Presentation Foundation (WPF)-App, die Microsoft Identity Platform für die Authentifizierung verwendet | Azure'
+title: 'Tutorial: Erstellen einer Windows Presentation Foundation (WPF)-App, die Microsoft Identity Platform für die Authentifizierung verwendet | Azure'
 titleSuffix: Microsoft identity platform
 description: In diesem Tutorial erstellen Sie eine WPF-Anwendung, die Microsoft Identity Platform zum Anmelden von Benutzern und zum Abrufen eines Zugriffstokens verwendet, um im Namen der Benutzer die Microsoft Graph-API aufzurufen.
 services: active-directory
@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: d205cff71b962afb9ead8271ee0c220fa1e2242f
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: 5fb7c0df653048adcffceda4d8a384be823b5c3a
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96518769"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97507692"
 ---
 # <a name="tutorial-call-the-microsoft-graph-api-from-a-windows-desktop-app"></a>Tutorial: Aufrufen der Microsoft Graph-API aus einer Windows Desktop-App
 
@@ -57,7 +57,7 @@ MSAL nimmt Ihrer Anwendung die Verwaltung der Zwischenspeicherung und Aktualisie
 
 In dieser Anleitung werden die folgenden NuGet-Pakete verwendet:
 
-|Bibliothek|BESCHREIBUNG|
+|Bibliothek|Beschreibung|
 |---|---|
 |[Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client)|Microsoft Authentication Library (MSAL.NET)|
 
@@ -104,18 +104,17 @@ Gehen Sie zur schnellen Registrierung Ihrer Anwendung wie folgt vor:
 ### <a name="option-2-advanced-mode"></a>Option 2: Erweiterter Modus
 
 Wenn Sie Ihre Anwendung registrieren und die Anwendungsregistrierungsinformationen Ihrer Projektmappe hinzufügen möchten, führen Sie folgende Schritte aus:
-1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim [Azure-Portal](https://portal.azure.com) an.
-1. Wenn Sie mit Ihrem Konto auf mehrere Mandanten zugreifen können, klicken Sie rechts oben auf Ihr Konto, und legen Sie Ihre Portalsitzung auf den gewünschten Azure AD-Mandanten fest.
-1. Navigieren Sie zur Seite [App-Registrierungen](https://go.microsoft.com/fwlink/?linkid=2083908) von Microsoft Identity Platform für Entwickler.
-1. Wählen Sie **Neue Registrierung** aus.
-   - Geben Sie im Abschnitt **Name** einen aussagekräftigen Anwendungsnamen ein, der den Benutzern der App angezeigt wird (beispielsweise `Win-App-calling-MsGraph`).
-   - Wählen Sie im Abschnitt **Unterstützte Kontotypen** die Option **Konten in allen Organisationsverzeichnissen und persönliche Microsoft-Konten (z.B. Skype, Xbox, Outlook.com)** aus.
-   - Wählen Sie **Registrieren** aus, um die Anwendung zu erstellen.
-1. Wählen Sie in der Liste mit den Seiten für die App die Option **Authentifizierung** aus.
-   1. Wählen Sie im Abschnitt **Umleitungs-URIs** in der Liste der Umleitungs-URIs Folgendes aus:
-   1. Wählen Sie in der **TYPE**-Spalte **Öffentlicher Client/nativ (mobil und Desktop)** aus.
-   1. Geben Sie in der Spalte **UMLEITUNGS-URI** den Wert `https://login.microsoftonline.com/common/oauth2/nativeclient` ein.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Wenn Sie Zugriff auf mehrere Mandanten haben, verwenden Sie im Menü am oberen Rand den Filter **Verzeichnis + Abonnement** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::, um den Mandanten auszuwählen, für den Sie eine Anwendung registrieren möchten.
+1. Suchen Sie nach **Azure Active Directory**, und wählen Sie diese Option aus.
+1. Wählen Sie unter **Verwalten** Folgendes aus: **App-Registrierungen** > **Neue Registrierung**.
+1. Geben Sie unter **Name** einen Namen für Ihre Anwendung ein (beispielsweise `Win-App-calling-MsGraph`). Benutzern Ihrer App wird wahrscheinlich dieser Namen angezeigt. Sie können ihn später ändern.
+1. Wählen Sie unter **Unterstützte Kontotypen** die Option **Konten in einem beliebigen Organisationsverzeichnis (beliebiges Azure AD-Verzeichnis, mehrere Mandanten) und persönliche Microsoft-Konten (z. B. Skype, Xbox)** aus.
 1. Wählen Sie **Registrieren**.
+1. Wählen Sie unter **Verwalten** die Optionen **Authentifizierung** > **Plattform hinzufügen** aus.
+1. Wählen Sie **Mobilgerät- und Desktopanwendungen** aus.
+1. Wählen Sie **https://login.microsoftonline.com/common/oauth2/nativeclient** im Abschnitt **Umleitungs-URIs** aus.
+1. Wählen Sie **Konfigurieren** aus.
 1. Öffnen Sie in Visual Studio die Datei *App.xaml.cs*, und ersetzen Sie im folgenden Codeausschnitt `Enter_the_Application_Id_here` durch die Anwendungs-ID, die Sie soeben registriert und kopiert haben.
 
     ```csharp

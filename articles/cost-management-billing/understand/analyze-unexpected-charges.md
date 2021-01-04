@@ -8,13 +8,13 @@ ms.subservice: cost-management
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: banders
-ms.custom: contperfq1
-ms.openlocfilehash: b2340e5b220936c1333cf842251b669b3e034042
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.custom: contperf-fy21q1
+ms.openlocfilehash: f6df8c6ff0db74798b71d57feae91e5245f2a6c2
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151221"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97028717"
 ---
 # <a name="analyze-unexpected-charges"></a>Analysieren unerwarteter Gebühren
 
@@ -61,7 +61,7 @@ Für eine einzelne Ressource können Gebühren in mehreren Azure-Produkten und -
 - IP-Adressstunden
 - Eingehende Datenübertragung
 - Ausgehende Datenübertragung
-- Managed Disks Standard
+- Verwalteter Datenträger Standard
 - Managed Disks Standard-Vorgänge
 - Standard-E/A – Datenträger
 - Standard-E/A – Blockblob-Lesevorgangseinheiten
@@ -80,7 +80,7 @@ Wenn Sie über Berechtigungen zum Anzeigen einer Ressource verfügen, sollten Si
 
 ### <a name="analyze-user-permissions-to-the-resources-parent-scope"></a>Analysieren von Benutzerberechtigungen für den übergeordneten Bereich der Ressource
 
-Personen mit Schreibzugriff auf ein Abonnement oder eine Ressourcengruppe verfügen in der Regel über Informationen zu den erstellten Ressourcen. Sie sollten den Zweck einer Ressource erklären oder Sie an die Person verweisen können, die über die entsprechenden Informationen verfügt. Informationen zur Ermittlung der Personen mit Berechtigungen für einen Abonnementbereich finden Sie unter [Anzeigen von Rollenzuweisungen](../../role-based-access-control/check-access.md#view-role-assignments). Für Ressourcengruppen kann ein ähnlicher Prozess verwendet werden.
+Personen mit Schreibzugriff auf ein Abonnement oder eine Ressourcengruppe verfügen in der Regel über Informationen zu den erstellten Ressourcen. Sie sollten den Zweck einer Ressource erklären oder Sie an die Person verweisen können, die über die entsprechenden Informationen verfügt. Informationen zum Identifizieren der Personen mit Berechtigungen für einen Abonnementbereich finden Sie unter [Überprüfen des Zugriffs für einen Benutzer auf Azure-Ressourcen](../../role-based-access-control/check-access.md). Für Ressourcengruppen kann ein ähnlicher Prozess verwendet werden.
 
 ## <a name="get-help-to-identify-charges"></a>Anfordern von Unterstützung bei der Identifizierung von Gebühren
 

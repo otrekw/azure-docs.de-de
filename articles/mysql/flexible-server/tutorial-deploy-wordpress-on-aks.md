@@ -7,16 +7,17 @@ ms.author: sumuth
 ms.topic: tutorial
 ms.date: 11/25/2020
 ms.custom: mvc
-ms.openlocfilehash: 31ad9450c775e5e4e7ae543241b48f8c372ad9ee
-ms.sourcegitcommit: 003ac3b45abcdb05dc4406661aca067ece84389f
+ms.openlocfilehash: 7713b7596b21e02e941a19f64d3658ab0f5f51f5
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96749208"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359012"
 ---
 # <a name="tutorial-deploy-wordpress-app-on-aks-with-azure-database-for-mysql---flexible-server"></a>Tutorial: Bereitstellen einer WordPress-App in AKS mit Azure Database for MySQL – Flexible Server
 
-In dieser Schnellstartanleitung wird eine WordPress-Anwendung in einem AKS-Cluster (Azure Kubernetes Service) mit Azure Database for MySQL – Flexible Server (Vorschau) unter Verwendung der Azure CLI bereitgestellt. [AKS](../../aks/intro-kubernetes.md) ist ein verwalteter Kubernetes-Dienst, mit dem Sie Cluster schnell bereitstellen und verwalten können. [Azure Database for MySQL – Flexible Server (Vorschau)](overview.md) ist ein vollständig verwalteter Datenbankdienst, der eine differenziertere Steuerung und mehr Flexibilität bei den Verwaltungsfunktionen und Konfigurationseinstellungen der Datenbank bietet. Flexible Server befindet sich aktuell in der Vorschauphase.
+In dieser Schnellstartanleitung wird eine WordPress-Anwendung in einem AKS-Cluster (Azure Kubernetes Service) mit Azure Database for MySQL – Flexible Server (Vorschau) unter Verwendung der Azure CLI bereitgestellt. 
+**[AKS](../../aks/intro-kubernetes.md)** ist ein verwalteter Kubernetes-Dienst, mit dem Sie Cluster schnell bereitstellen und verwalten können. **[Azure Database for MySQL – Flexible Server (Vorschau)](overview.md)** ist ein vollständig verwalteter Datenbankdienst, der eine differenziertere Steuerung und mehr Flexibilität bei den Verwaltungsfunktionen und Konfigurationseinstellungen der Datenbank bietet. Flexible Server befindet sich aktuell in der Vorschauphase.
 
 > [!NOTE]
 > - Azure Database for MySQL Flexible Server befindet sich aktuell in der öffentlichen Vorschau.
@@ -115,7 +116,7 @@ Der erstellte Server weist die folgenden Attribute auf:
 - Da in dem Befehl der lokale Kontext verwendet wird, wird der Server in der Ressourcengruppe ```wordpress-project``` und in der Region ```eastus``` erstellt.
 
 
-## <a name="build-your-wordpress-docker-image"></a>Erstellen Ihres WordPress-Docker-Images
+### <a name="build-your-wordpress-docker-image"></a>Erstellen Ihres WordPress-Docker-Images
 
 Laden Sie die [aktuelle WordPress-Version](https://wordpress.org/download/) herunter. Erstellen Sie für Ihr Projekt ein neues Verzeichnis namens ```my-wordpress-app```, und verwenden Sie die folgende einfache Ordnerstruktur:
 
@@ -173,6 +174,7 @@ define('DB_COLLATE', '');
 define('MYSQL_CLIENT_FLAGS', MYSQLI_CLIENT_SSL);
 ```
 
+### <a name="create-a-dockerfile"></a>Erstellen eines Dockerfile
 Erstellen Sie ein neues Dockerfile, und kopieren Sie den im Anschluss bereitgestellten Codeausschnitt. Dieses Dockerfile dient zum Einrichten von Apache-Webserver mit PHP sowie zum Aktivieren der mysqli-Erweiterung:
 
 ```docker
@@ -182,12 +184,12 @@ RUN docker-php-ext-install mysqli
 RUN docker-php-ext-enable mysqli
 ```
 
-## <a name="build-your-docker-image"></a>Erstellen Ihres Docker-Images
-Stellen Sie in einem Terminal mithilfe des Befehls ```cd``` sicher, dass Sie sich im Verzeichnis ```my-wordpress-app``` befinden. Führen Sie den folgenden Befehl aus, um Ihr Bulletin Board-Image zu erstellen:
+### <a name="build-your-docker-image"></a>Erstellen Ihres Docker-Images
+Stellen Sie in einem Terminal mithilfe des Befehls ```cd``` sicher, dass Sie sich im Verzeichnis ```my-wordpress-app``` befinden. Führen Sie den folgenden Befehl aus, um das Image zu erstellen:
 
 ``` bash
 
-docker build --tag myblog:latest . 
+docker build --tag myblog:latest .
 
 ```
 
@@ -272,8 +274,6 @@ In der folgenden Beispielausgabe sind die erfolgreich erstellten Bereitstellunge
 
 ```output
 deployment "wordpress-blog" created
-service "php-svc" created
-deployment "azure-vote-front" created
 service "php-svc" created
 ```
 

@@ -6,12 +6,12 @@ ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: d259510d880cbfc60e9ae80b533af6792cc95536
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 46ed1fc55a108bf80089d249abc58bc5d1a6479a
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96930727"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106953"
 ---
 # <a name="tutorial-add-variables-to-your-arm-template"></a>Tutorial: Hinzufügen von Variablen zu Ihrer ARM-Vorlage
 
@@ -37,17 +37,17 @@ Im folgenden Beispiel sind die Änderungen hervorgehoben, die Sie vornehmen, um 
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-variable/azuredeploy.json" range="1-47" highlight="5-9,29-31,36":::
 
-Beachten Sie, dass die Datei eine Variable namens **uniqueStorageName** enthält. Diese Variable verwendet vier Funktionen, um einen Zeichenfolgenwert zu erstellen.
+Beachten Sie, dass die Datei eine Variable namens `uniqueStorageName` enthält. Diese Variable verwendet vier Funktionen, um einen Zeichenfolgenwert zu erstellen.
 
 Da Sie bereits mit der Funktion [parameters](template-functions-deployment.md#parameters) vertraut sind, werden wir uns an dieser Stelle nicht mit ihr befassen.
 
-Sie kennen auch die Funktion [resourceGroup](template-functions-resource.md#resourcegroup). Im vorherigen Tutorial haben Sie die **location**-Eigenschaft abgerufen. In diesem Fall rufen Sie stattdessen die **id**-Eigenschaft ab. Die **id**-Eigenschaft gibt den vollständigen Bezeichner der Ressourcengruppe zurück, einschließlich der Abonnement-ID und des Ressourcengruppennamens.
+Sie kennen auch die Funktion [resourceGroup](template-functions-resource.md#resourcegroup). Im vorherigen Tutorial haben Sie die `location`-Eigenschaft abgerufen. In diesem Fall rufen Sie stattdessen die `id`-Eigenschaft ab. Die `id`-Eigenschaft gibt den vollständigen Bezeichner der Ressourcengruppe zurück, einschließlich der Abonnement-ID und des Ressourcengruppennamens.
 
 Die Funktion [uniqueString](template-functions-string.md#uniquestring) erstellt einen Hashwert mit 13 Zeichen. Der zurückgegebene Wert hängt von den Parametern ab, die Sie übergeben. In diesem Tutorial verwenden Sie die Ressourcengruppen-ID als Eingabe für den Hashwert. Sie könnten die Vorlage also in anderen Ressourcengruppen bereitstellen und einen anderen eindeutigen Zeichenfolgenwert abrufen. Wenn Sie die Vorlage in derselben Ressourcengruppe bereitstellen, erhalten Sie jedoch den gleichen Wert.
 
-Die Funktion [concat](template-functions-string.md#concat) akzeptiert Werte und kombiniert sie. Bei dieser Variable akzeptiert sie die Zeichenfolge aus dem Parameter und die Zeichenfolge aus der uniqueString-Funktion und kombiniert sie zu einer Zeichenfolge.
+Die Funktion [concat](template-functions-string.md#concat) akzeptiert Werte und kombiniert sie. Bei dieser Variable akzeptiert sie die Zeichenfolge aus dem Parameter und die Zeichenfolge aus der `uniqueString`-Funktion und kombiniert sie zu einer Zeichenfolge.
 
-Mit dem Parameter **storagePrefix** können Sie ein Präfix übergeben, das Ihnen die Identifizierung von Speicherkonten erleichtert. Sie können eine eigene Benennungskonvention erstellen, mit der Sie Speicherkonten nach der Bereitstellung in einer langen Liste von Ressourcen leichter erkennen können.
+Mit dem Parameter `storagePrefix` können Sie ein Präfix übergeben, das Ihnen die Identifizierung von Speicherkonten erleichtert. Sie können eine eigene Benennungskonvention erstellen, mit der Sie Speicherkonten nach der Bereitstellung in einer langen Liste von Ressourcen leichter erkennen können.
 
 Beachten Sie auch, dass der Speichername jetzt nicht mehr auf einen Parameter, sondern auf die Variable festgelegt ist.
 
@@ -55,7 +55,7 @@ Beachten Sie auch, dass der Speichername jetzt nicht mehr auf einen Parameter, s
 
 Nun stellen Sie die Vorlage bereit. Die Bereitstellung dieser Vorlage ist einfacher als die der vorherigen Vorlagen, da Sie nur das Präfix für den Speichernamen angeben.
 
-Falls Sie die Ressourcengruppe noch nicht erstellt haben, folgen Sie den Anweisungen unter [Erstellen einer Ressourcengruppe](template-tutorial-create-first-template.md#create-resource-group). Dieses Beispiel setzt voraus, dass Sie die Variable **templateFile** wie im [ersten Tutorial](template-tutorial-create-first-template.md#deploy-template) beschrieben auf den Pfad zur Vorlagendatei festgelegt haben.
+Falls Sie die Ressourcengruppe noch nicht erstellt haben, folgen Sie den Anweisungen unter [Erstellen einer Ressourcengruppe](template-tutorial-create-first-template.md#create-resource-group). Dieses Beispiel setzt voraus, dass Sie die Variable `templateFile` wie im [ersten Tutorial](template-tutorial-create-first-template.md#deploy-template) beschrieben auf den Pfad zur Vorlagendatei festgelegt haben.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -83,7 +83,7 @@ az deployment group create \
 ---
 
 > [!NOTE]
-> Wenn bei der Bereitstellung ein Fehler aufgetreten ist, verwenden Sie den Schalter **verbose**, um Informationen zu den erstellten Ressourcen abzurufen. Verwenden Sie den Schalter **debug**, um weitere Informationen zum Debuggen zu erhalten.
+> Wenn bei der Bereitstellung ein Fehler aufgetreten ist, verwenden Sie den Schalter `verbose`, um Informationen zu den erstellten Ressourcen abzurufen. Verwenden Sie den Schalter `debug`, um weitere Informationen zum Debuggen zu erhalten.
 
 ## <a name="verify-deployment"></a>Überprüfen der Bereitstellung
 

@@ -13,12 +13,12 @@ ms.date: 09/18/2020
 ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: aff89d49dec9bafedb3c9a5a76abdeb803740a12
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: f04a8aa96b51ac9330e4302c3afcc48f7d305b39
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95746726"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97507709"
 ---
 # <a name="tutorial-sign-in-users-and-call-microsoft-graph-from-an-ios-or-macos-app"></a>Tutorial: Anmelden von Benutzern und Aufrufen von Microsoft Graph aus einer iOS- oder macOS-App
 
@@ -71,16 +71,17 @@ Wenn Sie eine vollständige Version der App herunterladen möchten, die Sie in d
 
 ## <a name="register-your-application"></a>Anwendung registrieren
 
-1. [Navigieren Sie zum Azure-Portal](https://aka.ms/MobileAppReg).
-2. Öffnen Sie das Blatt „App-Registrierungen“, und wählen Sie **+ Neue Registrierung** aus.
-3. Geben Sie unter **Name** einen Namen für Ihre App ein, und legen Sie keinen Umleitungs-URI fest.
-4. Wählen Sie unter **Unterstützte Kontotypen** die Option **Accounts in any organizational directory (Any Azure AD directory - Multitenant) and personal Microsoft accounts (e.g. Skype, Xbox)** (Konten in allen Organisationsverzeichnissen (beliebiges Azure AD-Verzeichnis: mehrere Mandanten) und persönliche Microsoft-Konten (z. B. Skype, Xbox)) aus.
-5. Wählen Sie **Registrieren** aus.
-6. Wählen Sie im Abschnitt **Verwalten** des angezeigten Bereichs die Option **Authentifizierung** aus.
-
-7. Wählen Sie im oberen Bildschirmbereich die Option **Neue Benutzeroberfläche ausprobieren** aus, um die neue Benutzeroberfläche für die App-Registrierung zu öffnen, und wählen Sie dann **+ Neue Registrierung** >  **+ Plattform hinzufügen** > **iOS/macOS** aus.
-    - Geben Sie die Bündel-ID Ihres Projekts ein. Wenn Sie den Code heruntergeladen haben, lautet diese `com.microsoft.identitysample.MSALiOS`. Wählen Sie bei der Erstellung eines eigenen Projekts Ihr Projekt in Xcode aus, und öffnen Sie die Registerkarte **General** (Allgemein). Die Paket-ID wird im Abschnitt **Identity** (Identität) angezeigt.
-8. Wählen Sie `Configure` aus, und speichern Sie die **MSAL-Konfiguration**, die auf der Seite **MSAL-Konfiguration** angezeigt wird, damit Sie diese später beim Konfigurieren Ihrer App eingeben können. Wählen Sie **Fertig** aus.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Wenn Sie Zugriff auf mehrere Mandanten haben, verwenden Sie im Menü am oberen Rand den Filter **Verzeichnis + Abonnement** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::, um den Mandanten auszuwählen, für den Sie eine Anwendung registrieren möchten.
+1. Suchen Sie nach **Azure Active Directory**, und wählen Sie diese Option aus.
+1. Wählen Sie unter **Verwalten** Folgendes aus: **App-Registrierungen** > **Neue Registrierung**.
+1. Geben Sie einen **Namen** für Ihre Anwendung ein. Benutzern Ihrer App wird wahrscheinlich dieser Namen angezeigt. Sie können ihn später ändern.
+1. Wählen Sie unter **Unterstützte Kontotypen** die Option **Konten in einem beliebigen Organisationsverzeichnis (beliebiges Azure AD-Verzeichnis: mehrere Mandanten) und persönliche Microsoft-Konten (z. B. Skype, Xbox)** aus.
+1. Wählen Sie **Registrieren**.
+1. Wählen Sie unter **Verwalten** die Optionen **Authentifizierung** > **Plattform hinzufügen** > **iOS/macOS** aus.
+1. Geben Sie die Bündel-ID Ihres Projekts ein. Wenn Sie den Code heruntergeladen haben, lautet diese `com.microsoft.identitysample.MSALiOS`. Wählen Sie bei der Erstellung eines eigenen Projekts Ihr Projekt in Xcode aus, und öffnen Sie die Registerkarte General (Allgemein). Die Paket-ID wird im Abschnitt Identity (Identität) angezeigt.
+1. Wählen Sie **Konfigurieren** aus, und speichern Sie die **MSAL-Konfiguration**, die auf der Seite **MSAL-Konfiguration** angezeigt wird, damit Sie diese später beim Konfigurieren Ihrer App eingeben können. 
+1. Wählen Sie **Fertig** aus.
 
 ## <a name="add-msal"></a>Hinzufügen von MSAL
 
@@ -520,7 +521,7 @@ Der folgende Codeausschnitt ruft ein Token zum ersten Mal ab, indem ein `MSALInt
 
 1. Erstellen von `MSALInteractiveTokenParameters` mit Bereichen
 2. Aufrufen von `acquireToken()` mit den erstellten Parametern
-3. Behandeln von Fehlern. Weitere Informationen finden Sie im [MSAL-Leitfaden zur Fehlerbehandlung für iOS und macOS](msal-handling-exceptions.md).
+3. Behandeln von Fehlern. Weitere Informationen finden Sie im [MSAL-Leitfaden zur Fehlerbehandlung für iOS und macOS](msal-error-handling-ios.md).
 4. Verarbeiten der erfolgreichen Situation
 
 Fügen Sie der `ViewController` -Klasse den folgenden Code hinzu.

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 031ee9a6d945d923279fd3025c32212c3ead98ed
-ms.sourcegitcommit: 1d366d72357db47feaea20c54004dc4467391364
+ms.openlocfilehash: c1d448fe9da72654ac1600009e66c88c5e7b93b4
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95406598"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509426"
 ---
 # <a name="tutorial-build-a-multi-tenant-daemon-that-uses-the-microsoft-identity-platform"></a>Tutorial: Erstellen eines mehrinstanzenfähigen Daemons, der Microsoft Identity Platform verwendet
 
@@ -65,7 +65,7 @@ Oder [laden Sie das Beispiel in einer ZIP-Datei herunter](https://github.com/Azu
 
 Dieses Beispiel enthält ein einzelnes Projekt. Zum Registrieren der Anwendung bei Ihrem Azure AD-Mandanten haben Sie folgende Möglichkeiten:
 
-- Mithilfe der Schritte [Registrieren der Beispielanwendung bei Ihrem Azure AD-Mandanten](#register-your-application) und [Auswählen des Azure AD-Mandanten für die Anwendungen](#choose-the-azure-ad-tenant)
+- Mithilfe der Schritte [Registrieren der Beispielanwendung bei Ihrem Azure AD-Mandanten](#register-the-client-app-dotnet-web-daemon-v2) und [Auswählen des Azure AD-Mandanten für die Anwendungen](#choose-the-azure-ad-tenant)
 - Mithilfe von PowerShell-Skripts, die:
   - *Automatisch* die Azure AD-Anwendungen und die zugehörigen Objekte (Kennwörter, Berechtigungen, Abhängigkeiten) für Sie erstellen.
   - Die Konfigurationsdateien der Visual Studio-Projekte ändern.
@@ -93,40 +93,34 @@ Falls Sie die Automatisierung nicht verwenden möchten, führen Sie die Schritte
 
 ### <a name="choose-the-azure-ad-tenant"></a>Erstellen des Azure AD-Mandanten
 
-1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim [Azure-Portal](https://portal.azure.com) an.
-1. Sollte sich Ihr Konto in mehreren Azure AD-Mandanten befinden, wählen Sie im Menü oben auf der Seite Ihr Profil und anschließend **Verzeichnis wechseln** aus.
-1. Ändern Sie die Portalsitzung zum gewünschten Azure AD-Mandanten.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Wenn Sie Zugriff auf mehrere Mandanten haben, verwenden Sie im Menü am oberen Rand den Filter **Verzeichnis + Abonnement** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::, um den Mandanten auszuwählen, für den Sie eine Anwendung registrieren möchten.
+
 
 ### <a name="register-the-client-app-dotnet-web-daemon-v2"></a>Registrieren der Client-App (dotnet-web-daemon-v2)
 
-1. Navigieren Sie in Microsoft Identity Platform für Entwickler zur Seite [App-Registrierungen](https://go.microsoft.com/fwlink/?linkid=2083908).
-1. Wählen Sie **Neue Registrierung** aus.
-1. Geben Sie auf der daraufhin angezeigten Seite **Anwendung registrieren** die Registrierungsinformationen für Ihre Anwendung ein:
-   - Geben Sie im Abschnitt **Name** einen aussagekräftigen Anwendungsnamen ein, der den Benutzern der App angezeigt wird. Geben Sie beispielsweise **dotnet-web-daemon-v2** ein.
-   - Wählen Sie im Abschnitt **Unterstützte Kontotypen** die Option **Konten in einem beliebigen Organisationsverzeichnis** aus.
-   - Wählen Sie im Abschnitt **Umleitungs-URI (optional)** im Kombinationsfeld die Option **Web** aus, und geben Sie die folgenden Umleitungs-URIs ein:
-       - **https://localhost:44316/**
-       - **https://localhost:44316/Account/GrantPermissions**
+1. Suchen Sie nach **Azure Active Directory**, und wählen Sie diese Option aus.
+1. Wählen Sie unter **Verwalten** Folgendes aus: **App-Registrierungen** > **Neue Registrierung**.
+1. Geben Sie unter **Name** einen Namen für Ihre Anwendung ein (beispielsweise `dotnet-web-daemon-v2`). Benutzern Ihrer App wird wahrscheinlich dieser Namen angezeigt. Sie können ihn später ändern.
+1. Wählen Sie im Abschnitt **Unterstützte Kontotypen** die Option **Konten in einem beliebigen Organisationsverzeichnis** aus.
+1. Wählen Sie im Abschnitt **Umleitungs-URI (optional)** im Kombinationsfeld die Option **Web** aus, und geben Sie `https://localhost:44316/` und `https://localhost:44316/Account/GrantPermissions` als Umleitungs-URIs ein.
 
-     Sind mehr als zwei Umleitungs-URIs vorhanden, müssen diese nach erfolgreicher Erstellung der App auf der Registerkarte **Authentifizierung** hinzugefügt werden.
+    Sind mehr als zwei Umleitungs-URIs vorhanden, müssen diese nach erfolgreicher Erstellung der App auf der Registerkarte **Authentifizierung** hinzugefügt werden.
 1. Wählen Sie **Registrieren** aus, um die Anwendung zu erstellen.
-1. Suchen Sie auf der Seite **Übersicht** der App den Wert **Anwendungsclient-ID**, und notieren Sie ihn zur späteren Verwendung. Sie benötigen diesen Wert, um die Visual Studio-Konfigurationsdatei für dieses Projekt zu konfigurieren.
-1. Wählen Sie in der Liste mit den Seiten für die App die Option **Authentifizierung** aus. Führen Sie dann folgende Schritte aus:
-   - Legen Sie im Abschnitt **Erweiterte Einstellungen** die Option **Abmelde-URL** auf **https://localhost:44316/Account/EndSession** fest.
-   - Wählen Sie im Abschnitt **Erweiterte Einstellungen** > **Implizite Gewährung** die Optionen **Zugriffstoken** und **ID-Token** aus. Für dieses Beispiel muss der [Flow zur impliziten Gewährung](v2-oauth2-implicit-grant-flow.md) aktiviert werden, um den Benutzer anzumelden und eine API aufzurufen.
+1. Suchen Sie auf der Seite **Übersicht** der App den Wert **Anwendungs-ID (Client)** , und notieren Sie ihn zur späteren Verwendung. Sie benötigen diesen Wert, um die Visual Studio-Konfigurationsdatei für dieses Projekt zu konfigurieren.
+1. Wählen Sie unter **Verwalten** die Option **Authentifizierung** aus.
+1. Legen Sie `https://localhost:44316/Account/EndSession` als **Abmelde-URL** fest.
+1. Wählen Sie im Abschnitt **Implizite Gewährung** die Optionen **Zugriffstoken** und **ID-Token** aus. Für dieses Beispiel muss der [Flow zur impliziten Gewährung](v2-oauth2-implicit-grant-flow.md) aktiviert werden, um den Benutzer anzumelden und eine API aufzurufen.
 1. Wählen Sie **Speichern** aus.
-1. Wählen Sie auf der Seite **Zertifikate & Geheimnisse** im Abschnitt **Geheime Clientschlüssel** die Option **Neuer geheimer Clientschlüssel** aus. Führen Sie dann folgende Schritte aus:
-
-   1. Geben Sie eine Schlüsselbeschreibung ein (beispielsweise **app secret**).
-   1. Wählen Sie eine Schlüsseldauer aus: **In 1 Jahr**, **In 2 Jahren** oder **Läuft nie ab**.
-   1. Wählen Sie die Schaltfläche **Hinzufügen** aus.
-   1. Kopieren Sie den angezeigten Schlüsselwert, und speichern Sie ihn an einem sicheren Ort. Dieser Schlüssel wird später benötigt, um das Projekt in Visual Studio zu konfigurieren. Er wird nicht erneut angezeigt und kann auch nicht auf andere Weise abgerufen werden.
-1. Wählen Sie in der Liste mit den Seiten für die App die Option **API-Berechtigungen** aus. Führen Sie dann folgende Schritte aus:
-   1. Wählen Sie die Schaltfläche **Berechtigung hinzufügen**.
-   1. Stellen Sie sicher, dass die Registerkarte **Microsoft-APIs** ausgewählt ist.
-   1. Wählen Sie im Abschnitt **Häufig verwendete Microsoft-APIs** die Option **Microsoft Graph** aus.
-   1. Vergewissern Sie sich im Abschnitt **Anwendungsberechtigungen**, dass die richtigen Berechtigungen ausgewählt sind: **User.Read.All**.
-   1. Wählen Sie die Schaltfläche **Berechtigungen hinzufügen** aus.
+1. Wählen Sie unter **Verwalten** die Option **Zertifikate und Geheimnisse** aus.
+1. Wählen Sie im Abschnitt **Geheime Clientschlüssel** die Option **Neuer geheimer Clientschlüssel** aus. 
+1. Geben Sie eine Schlüsselbeschreibung ein (z. B. **App-Geheimnis**).
+1. Wählen Sie eine Schlüsseldauer aus: **In 1 Jahr**, **In 2 Jahren** oder **Läuft nie ab**.
+1. Wählen Sie **Hinzufügen**. Notieren Sie den Schlüsselwert, und verwahren Sie ihn an einem sicheren Ort. Dieser Schlüssel wird später benötigt, um das Projekt in Visual Studio zu konfigurieren.
+1. Wählen Sie unter **Verwalten** die Optionen **API-Berechtigungen** > **Berechtigung hinzufügen** aus.
+1. Wählen Sie im Abschnitt **Häufig verwendete Microsoft-APIs** die Option **Microsoft Graph** aus.
+1. Vergewissern Sie sich im Abschnitt **Anwendungsberechtigungen**, dass die richtigen Berechtigungen ausgewählt sind: **User.Read.All**.
+1. Wählen Sie **Berechtigungen hinzufügen** aus.
 
 ## <a name="configure-the-sample-to-use-your-azure-ad-tenant"></a>Konfigurieren des Beispiels für die Verwendung Ihres Azure-Mandanten
 

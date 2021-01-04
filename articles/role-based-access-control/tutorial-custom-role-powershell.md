@@ -13,12 +13,12 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 02/20/2019
 ms.author: rolyon
-ms.openlocfilehash: 8aedc59fc34278bf84983d78bf0e9a31fe38ee93
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8b1815e7598410cd709572d93082d5dee5e0b0fb
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82735588"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97369241"
 ---
 # <a name="tutorial-create-an-azure-custom-role-using-azure-powershell"></a>Tutorial: Erstellen einer benutzerdefinierten Azure-Rolle mithilfe von Azure PowerShell
 
@@ -51,7 +51,7 @@ Melden Sie sich bei [Azure PowerShell](/powershell/azure/authenticate-azureps) a
 
 Zum Erstellen einer benutzerdefinierten Rolle beginnen Sie am besten mit einer integrierten Rolle, bearbeiten sie und erstellen dann eine neue Rolle.
 
-1. Verwenden Sie in PowerShell den Befehl [Get-AzProviderOperation](/powershell/module/az.resources/get-azprovideroperation), um die Liste der Vorgänge für den Ressourcenanbieter „Microsoft.Support“ abzurufen. Es ist hilfreich, die Vorgänge zu kennen, die zum Erstellen der Berechtigungen verfügbar sind. Eine Liste der verfügbaren Vorgänge finden Sie auch unter [Vorgänge für Azure Resource Manager-Ressourcenanbieter](resource-provider-operations.md#microsoftsupport).
+1. Verwenden Sie in PowerShell den Befehl [Get-AzProviderOperation](/powershell/module/az.resources/get-azprovideroperation), um die Liste der Vorgänge für den Ressourcenanbieter „Microsoft.Support“ abzurufen. Es ist hilfreich, die Vorgänge zu kennen, die zum Erstellen der Berechtigungen verfügbar sind. Eine Liste der verfügbaren Vorgänge finden Sie auch unter [Vorgänge für Azure-Ressourcenanbieter](resource-provider-operations.md#microsoftsupport).
 
     ```azurepowershell
     Get-AzProviderOperation "Microsoft.Support/*" | FT Operation, Description -AutoSize

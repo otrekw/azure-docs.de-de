@@ -1,17 +1,17 @@
 ---
 title: 'Tutorial: Verwenden der Parameterdatei zum Bereitstellen einer Vorlage'
-description: Verwenden Sie Parameterdateien, die die Werte enthalten, die Sie für die Bereitstellung Ihrer Azure Resource Manager-Vorlage verwenden möchten.
+description: Verwenden Sie Parameterdateien, die die Werte enthalten, die Sie für die Bereitstellung Ihrer Azure Resource Manager-Vorlage (ARM-Vorlage) verwenden möchten.
 author: mumian
 ms.date: 09/10/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: de72f9f32a3b08ad1742ee2055efce5b93cab899
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b6257161017afc9dab692c43fcc64e5d961a90ba
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90069508"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368425"
 ---
 # <a name="tutorial-use-parameter-files-to-deploy-your-arm-template"></a>Tutorial: Verwenden von Parameterdateien zum Bereitstellen Ihrer ARM-Vorlage
 
@@ -41,23 +41,25 @@ Sie müssen keinen Wert für jeden Parameter angeben. Verfügt ein nicht spezifi
 
 Sie können in der Parameterdatei nur Parameternamen angeben, die mit einem Parameternamen in der Vorlage identisch sind. Wenn unbekannte Parameter angegeben werden, tritt ein Fehler auf.
 
-Erstellen Sie in VS Code eine neue Datei mit folgendem Inhalt. Speichern Sie die Datei mit dem Namen **azuredeploy.parameters.dev.json**.
+Erstellen Sie in Visual Studio Code eine neue Datei mit folgendem Inhalt. Speichern Sie die Datei mit dem Namen _azuredeploy.parameters.dev.json_.
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.parameters.dev.json":::
 
-Diese Datei ist Ihre Parameterdatei für die Entwicklungsumgebung. Beachten Sie, dass „Standard_LRS“ als Speicherkonto verwendet wird, Ressourcen mit dem Präfix **dev** benannt werden, und das **Environment**-Tag auf **Dev** festgelegt wird.
+Diese Datei ist Ihre Parameterdatei für die Entwicklungsumgebung. Beachten Sie, dass **Standard_LRS** als Speicherkonto verwendet wird, Ressourcen mit dem Präfix **dev** benannt werden, und das `Environment`-Tag auf **Dev** festgelegt wird.
 
-Erstellen Sie erneut eine neue Datei mit dem folgenden Inhalt. Speichern Sie die Datei mit dem Namen **azuredeploy.parameters.prod.json**.
+Erstellen Sie erneut eine neue Datei mit dem folgenden Inhalt. Speichern Sie die Datei mit dem Namen _azuredeploy.parameters.prod.json_.
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.parameters.prod.json":::
 
-Diese Datei ist Ihre Parameterdatei für die Produktionsumgebung. Beachten Sie, dass „Standard_GRS“ als Speicherkonto verwendet wird, Ressourcen mit dem Präfix **contoso** benannt werden, und das **Environment**-Tag auf **Production** festgelegt wird. In einer realen Produktionsumgebung würden Sie auch einen App-Dienst mit einer anderen SKU als „Free“ verwenden, für dieses Tutorial verwenden wir diese SKU aber weiterhin.
+Diese Datei ist Ihre Parameterdatei für die Produktionsumgebung. Beachten Sie, dass **Standard_GRS** als Speicherkonto verwendet wird, Ressourcen mit dem Präfix **contoso** benannt werden, und das `Environment`-Tag auf **Production** festgelegt wird. In einer realen Produktionsumgebung würden Sie auch einen App-Dienst mit einer anderen SKU als „Free“ verwenden, für dieses Tutorial verwenden wir diese SKU aber weiterhin.
 
 ## <a name="deploy-template"></a>Bereitstellen der Vorlage
 
 Verwenden Sie entweder die Azure CLI oder Azure PowerShell, um die Vorlage bereitzustellen.
 
 Als abschließenden Test Ihrer Vorlage erstellen wir zwei neue Ressourcengruppen. Eine für die Entwicklungsumgebung und eine für die Produktionsumgebung.
+
+Ersetzen Sie für die Vorlagen- und Parametervariablen `{path-to-the-template-file}`, `{path-to-azuredeploy.parameters.dev.json}`, `{path-to-azuredeploy.parameters.prod.json}` und die geschweiften Klammern `{}` durch Ihre Vorlagen- und Parameterdateipfade.
 
 Zuerst führen wir die Bereitstellung in der Entwicklungsumgebung durch.
 
@@ -128,7 +130,7 @@ az deployment group create \
 ---
 
 > [!NOTE]
-> Wenn bei der Bereitstellung ein Fehler aufgetreten ist, verwenden Sie den Schalter **verbose**, um Informationen zu den erstellten Ressourcen abzurufen. Verwenden Sie den Schalter **debug**, um weitere Informationen zum Debuggen zu erhalten.
+> Wenn bei der Bereitstellung ein Fehler aufgetreten ist, verwenden Sie den Schalter `verbose`, um Informationen zu den erstellten Ressourcen abzurufen. Verwenden Sie den Schalter `debug`, um weitere Informationen zum Debuggen zu erhalten.
 
 ## <a name="verify-deployment"></a>Überprüfen der Bereitstellung
 
@@ -142,7 +144,7 @@ Sie können die Bereitstellung überprüfen, indem Sie sich die Ressourcengruppe
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
 1. Wählen Sie im Azure-Portal im linken Menü die Option **Ressourcengruppe** aus.
-2. Geben Sie den Namen der Ressourcengruppe in das Feld **Nach Name filtern** ein. Wenn Sie diese Reihe abgeschlossen haben, verfügen Sie über drei Ressourcengruppen zum Löschen: myResourceGroup, myResourceGroupDev und myResourceGroupProd.
+2. Geben Sie den Namen der Ressourcengruppe in das Feld **Nach Name filtern** ein. Wenn Sie diese Reihe abgeschlossen haben, verfügen Sie über drei Ressourcengruppen zum Löschen: **myResourceGroup**, **myResourceGroupDev** und **myResourceGroupProd**.
 3. Klicken Sie auf den Namen der Ressourcengruppe.
 4. Wählen Sie **Ressourcengruppe löschen** aus dem Menü ganz oben aus.
 

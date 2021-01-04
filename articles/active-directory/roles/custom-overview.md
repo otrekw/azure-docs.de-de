@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4f694a46fddbc84968b3267842aa19108d051590
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 0876478d638963e7157f7a16a263000eec634db0
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499236"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97005118"
 ---
 # <a name="overview-of-role-based-access-control-in-azure-active-directory"></a>Übersicht über die rollenbasierte Zugriffssteuerung in Azure Active Directory
 
@@ -30,10 +30,13 @@ In diesem Artikel werden die Grundlagen der rollenbasierten Zugriffssteuerung in
 Beide Systeme enthalten ähnlich verwendete Rollendefinitionen und Rollenzuweisungen. Azure AD-Rollenberechtigungen können allerdings nicht in benutzerdefinierten Azure-Rollen verwendet werden (und umgekehrt).
 
 ## <a name="understand-azure-ad-role-based-access-control"></a>Grundlegendes zur rollenbasierten Zugriffssteuerung von Azure AD
+Azure AD unterstützt zwei Arten von Rollendefinitionen: 
+* [Integrierte Rollen](https://docs.microsoft.com/azure/active-directory/roles/permissions-reference)
+* [Benutzerdefinierte Rollen](https://docs.microsoft.com/azure/active-directory/roles/custom-create)
 
-Das Erteilen von Berechtigungen mithilfe benutzerdefinierter Azure AD-Rollen ist ein zweistufiger Prozess, bei dem eine benutzerdefinierte Rollendefinition erstellt und dann mithilfe einer Rollenzuweisung zugewiesen wird. Eine benutzerdefinierte Rollendefinition ist eine Sammlung von Berechtigungen, die Sie aus einer vordefinierten Liste hinzufügen. Bei diesen Berechtigungen handelt es sich um die gleichen Berechtigungen, die in den integrierten Rollen verwendet werden.  
+Integrierte Rollen sind vordefinierte Rollen mit einem festen Berechtigungssatz. Diese Rollendefinitionen können nicht geändert werden. Es gibt viele [integrierte Rollen](https://docs.microsoft.com/azure/active-directory/roles/permissions-reference), die von Azure AD unterstützt werden, und die Liste wird immer länger. Zur Vervollständigung und zum Erfüllen Ihrer speziellen Anforderungen unterstützt Azure AD aber auch [benutzerdefinierte Rollen](https://docs.microsoft.com/azure/active-directory/roles/custom-create). Das Erteilen von Berechtigungen mithilfe benutzerdefinierter Azure AD-Rollen ist ein zweistufiger Prozess, bei dem eine benutzerdefinierte Rollendefinition erstellt und dann mithilfe einer Rollenzuweisung zugewiesen wird. Eine benutzerdefinierte Rollendefinition ist eine Sammlung von Berechtigungen, die Sie aus einer vordefinierten Liste hinzufügen. Bei diesen Berechtigungen handelt es sich um die gleichen Berechtigungen, die in den integrierten Rollen verwendet werden.  
 
-Nachdem Sie Ihre Rollendefinition erstellt haben, können Sie diese durch Erstellen einer Rollenzuweisung einem Benutzer zuweisen. Eine Rollenzuweisung erteilt einem Benutzer die Berechtigungen in einer Rollendefinition für einen bestimmten Bereich. Durch diesen zweistufigen Prozess können Sie eine einzelne Rollendefinition erstellen und dann für verschiedene Bereiche mehrmals zuweisen. Ein Bereich definiert die Gruppe von Azure AD-Ressourcen, auf die das Rollenmitglied Zugriff hat. Der gängigste Bereich ist der organisationsweite Bereich. Eine benutzerdefinierte Rolle kann für den organisationsweiten Bereich zugewiesen werden. Dies bedeutet, dass das Rollenmitglied über die Rollenberechtigungen für alle Ressourcen in der Organisation verfügt. Eine benutzerdefinierte Rolle kann auch für einen Objektbereich zugewiesen werden. Ein Beispiel für einen Objektbereich ist eine einzelne Anwendung. Die gleiche Rolle kann einem Benutzer für alle Anwendungen in der Organisation und dann einem anderen Benutzer nur für die App der Contoso-Spesenabrechnungen zugewiesen werden.  
+Nachdem Sie Ihre benutzerdefinierte Rollendefinition erstellt (oder eine integrierte Rolle verwendet) haben, können Sie diese durch Erstellen einer Rollenzuweisung einem Benutzer zuweisen. Eine Rollenzuweisung erteilt einem Benutzer die Berechtigungen in einer Rollendefinition für einen bestimmten Bereich. Durch diesen zweistufigen Prozess können Sie eine einzelne Rollendefinition erstellen und dann für verschiedene Bereiche mehrmals zuweisen. Ein Bereich definiert die Gruppe von Azure AD-Ressourcen, auf die das Rollenmitglied Zugriff hat. Der gängigste Bereich ist der organisationsweite Bereich. Eine benutzerdefinierte Rolle kann für den organisationsweiten Bereich zugewiesen werden. Dies bedeutet, dass das Rollenmitglied über die Rollenberechtigungen für alle Ressourcen in der Organisation verfügt. Eine benutzerdefinierte Rolle kann auch für einen Objektbereich zugewiesen werden. Ein Beispiel für einen Objektbereich ist eine einzelne Anwendung. Die gleiche Rolle kann einem Benutzer für alle Anwendungen in der Organisation und dann einem anderen Benutzer nur für die App der Contoso-Spesenabrechnungen zugewiesen werden.  
 
 Die integrierten und benutzerdefinierten Rollen in Azure AD funktionieren auf ähnliche Weise wie die [rollenbasierte Zugriffssteuerung in Azure (Azure RBAC)](../../active-directory-b2c/overview.md). Der [Unterschied zwischen diesen beiden rollenbasierten Zugriffssteuerungssystemen](../../role-based-access-control/rbac-and-directory-admin-roles.md) besteht darin, dass die Azure-RBAC den Zugriff auf Azure-Ressourcen wie virtuelle Computer oder Speicher mithilfe der Azure-Ressourcenverwaltung steuert und benutzerdefinierte Azure AD-Rollen den Zugriff auf Azure AD-Ressourcen mithilfe der Graph-API steuern. Beide Systeme nutzen das Konzept von Rollendefinitionen und Rollenzuweisungen. Azure AD-RBAC-Berechtigungen können nicht in Azure-Rollen eingefügt werden (und umgekehrt).
 
@@ -80,7 +83,7 @@ Ein Bereich ist die Beschränkung zulässiger Aktionen auf eine bestimmte Azure 
 
 ## <a name="required-license-plan"></a>Erforderlicher Lizenzplan
 
-[!INCLUDE [License requirement for using custom roles in Azure AD](../../../includes/active-directory-p1-license.md)]
+Die Nutzung integrierter Rollen in Azure AD ist kostenlos, während für benutzerdefinierte Rollen eine Azure AD Premium P1-Lizenz erforderlich ist. Um die richtige Lizenz für Ihre Anforderungen zu ermitteln, lesen Sie [Vergleich: Allgemein verfügbare Features der Editionen Free, Basic und Premium](https://azure.microsoft.com/pricing/details/active-directory).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

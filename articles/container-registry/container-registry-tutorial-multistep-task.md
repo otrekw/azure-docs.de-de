@@ -4,12 +4,12 @@ description: In diesem Tutorial erfahren Sie, wie Sie einen Azure Container Regi
 ms.topic: tutorial
 ms.date: 11/24/2020
 ms.custom: seodec18, mvc, devx-track-azurecli
-ms.openlocfilehash: fac409e9acc14048068c0f46ffb2b64cc69582ef
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: c8d1179f1c31642b350ab8757a8d4abf71583bfc
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96029988"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562887"
 ---
 # <a name="tutorial-run-a-multi-step-container-workflow-in-the-cloud-when-you-commit-source-code"></a>Tutorial: Ausführen eines mehrstufigen Containerworkflows in der Cloud, wenn Sie Quellcode committen
 
@@ -83,7 +83,7 @@ az acr task create \
     --git-access-token $GIT_PAT
 ```
 
-Durch diese Aufgabe führt ACR Tasks jedes Mal, wenn Code in der Verzweigung *master* des durch `--context` angegebenen Repositorys committet wird, die mehrstufige Aufgabe auf der Grundlage des Codes in dieser Verzweigung aus. Die von `--file` angegebene YAML-Datei aus dem Repositorystamm definiert die Schritte. 
+Durch diesen Task führt ACR Tasks jedes Mal, wenn Code in den *main*-Branch des durch `--context` angegebenen Repositorys committet wird, den mehrstufigen Task auf der Grundlage des Codes in diesem Branch aus. Die von `--file` angegebene YAML-Datei aus dem Repositorystamm definiert die Schritte. 
 
 Die Ausgabe einer erfolgreichen Ausführung des Befehls [az acr task create][az-acr-task-create] sieht in etwa wie folgt aus:
 
@@ -126,7 +126,7 @@ Die Ausgabe einer erfolgreichen Ausführung des Befehls [az acr task create][az-
       {
         "name": "defaultSourceTriggerName",
         "sourceRepository": {
-          "branch": "master",
+          "branch": "main",
           "repositoryUrl": "https://github.com/gituser/acr-build-helloworld-node.git",
           "sourceControlAuthProperties": null,
           "sourceControlType": "Github"
@@ -220,7 +220,7 @@ Führen Sie als Nächstes die folgenden Befehle aus, um eine neue Datei zu erste
 echo "Hello World!" > hello.txt
 git add hello.txt
 git commit -m "Testing ACR Tasks"
-git push origin master
+git push origin main
 ```
 
 Wenn Sie den Befehl `git push` ausführen, werden Sie unter Umständen zur Eingabe Ihrer GitHub-Anmeldeinformationen aufgefordert. Geben Sie Ihren GitHub-Benutzernamen und als Kennwort das persönliche Zugriffstoken (Personal Access Token, PAT) ein, das Sie zuvor erstellt haben.

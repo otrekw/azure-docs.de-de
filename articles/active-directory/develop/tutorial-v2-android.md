@@ -13,12 +13,12 @@ ms.date: 11/26/2019
 ms.author: hahamil
 ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 08ee000d8f801559fcf572b8ab489161fd090b77
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 7ba15e66cca7baefdf8cca5cabd5e5d5b1e2c7f7
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95996201"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97507811"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-application"></a>Tutorial: Anmelden von Benutzern und Aufrufen der Microsoft Graph-API aus einer Android-Anwendung
 
@@ -75,24 +75,28 @@ Falls Sie noch nicht über eine Android-Anwendung verfügen, gehen Sie wie folgt
 
 ### <a name="register-your-application"></a>Anwendung registrieren
 
-1. Öffnen Sie das [Azure-Portal](https://aka.ms/MobileAppReg).
-2. Öffnen Sie das Blatt [App-Registrierungen](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade), und klicken Sie auf **+ Neue Registrierung**.
-3. Geben Sie unter **Name** einen Namen für Ihre App ein, und klicken Sie auf **Registrieren**, **ohne** einen Umleitungs-URI festzulegen.
-4. Wählen Sie im Abschnitt **Verwalten** des angezeigten Bereichs die Option **Authentifizierung** > **+ Plattform hinzu** > **Android** aus. (Möglicherweise müssen Sie oben auf dem Blatt „Switch to the new experience“ (Zur neuen Benutzeroberfläche wechseln) auswählen, um diesen Abschnitt anzeigen zu können.)
-5. Geben Sie den Paketnamen Ihres Projekts ein. Wenn Sie den Code heruntergeladen haben, lautet dieser `com.azuresamples.msalandroidapp`.
-6. Klicken Sie im Abschnitt **Signaturhash** der Seite **Android-App konfigurieren** auf **Generieren eines Signaturhashs für die Entwicklung**, und kopieren Sie den KeyTool-Befehl, um ihn auf Ihrer Plattform zu verwenden.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Wenn Sie Zugriff auf mehrere Mandanten haben, verwenden Sie im Menü am oberen Rand den Filter **Verzeichnis + Abonnement** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::, um den Mandanten auszuwählen, für den Sie eine Anwendung registrieren möchten.
+1. Suchen Sie nach **Azure Active Directory**, und wählen Sie diese Option aus.
+1. Wählen Sie unter **Verwalten** Folgendes aus: **App-Registrierungen** > **Neue Registrierung**.
+1. Geben Sie einen **Namen** für Ihre Anwendung ein. Benutzern Ihrer App wird wahrscheinlich dieser Namen angezeigt. Sie können ihn später ändern.
+1. Wählen Sie **Registrieren**.
+1. Wählen Sie unter **Verwalten** die Optionen **Authentifizierung** > **Plattform hinzufügen** > **Android** aus.
+1. Geben Sie den Paketnamen Ihres Projekts ein. Wenn Sie den Code heruntergeladen haben, lautet dieser `com.azuresamples.msalandroidapp`.
+1. Wählen Sie auf der Seite **Android-App konfigurieren** im Abschnitt **Signaturhash** die Option **Es wird ein Signaturhash für die Entwicklung generiert** aus, und kopieren Sie den KeyTool-Befehl, um ihn auf Ihrer Plattform zu verwenden.
 
    > [!Note]
    > „KeyTool. exe“ wird als Teil des Java Development Kit (JDK) installiert. Sie müssen auch das OpenSSL-Tool installieren, um den KeyTool-Befehl auszuführen. Weitere Informationen finden Sie in der [Android-Dokumentation für die Schlüsselerstellung](https://developer.android.com/studio/publish/app-signing#generate-key).
 
-7. Geben Sie den von KeyTool generierten **Signaturhash** ein.
-8. Klicken Sie auf `Configure`, und speichern Sie die **MSAL-Konfiguration**, die auf der Seite **Android-Konfiguration** angezeigt wird, damit Sie diese später beim Konfigurieren Ihrer App eingeben können.  Klicken Sie auf **Fertig**.
+1. Geben Sie den von KeyTool generierten **Signaturhash** ein.
+1. Wählen Sie **Konfigurieren** aus, und speichern Sie die **MSAL-Konfiguration**, die auf der Seite **Android-Konfiguration** angezeigt wird, damit Sie diese später beim Konfigurieren Ihrer App eingeben können.  
+1. Wählen Sie **Fertig** aus.
 
 ### <a name="configure-your-application"></a>Konfigurieren der Anwendung
 
 1. Navigieren Sie im Projektbereich von Android Studio zu **app\src\main\res**.
-2. Klicken Sie mit der rechten Maustaste auf **res**, und wählen Sie **New** > **Directory** („Neu“ > „Verzeichnis“) aus. Geben Sie `raw` als neuen Verzeichnisnamen ein, und klicken Sie auf **OK**.
-3. Erstellen Sie unter **app** > **src** > **main** > **res** > **raw** eine neue JSON-Datei namens `auth_config_single_account.json`, und fügen Sie die MSAL-Konfiguration ein, die Sie zuvor gespeichert haben.
+1. Klicken Sie mit der rechten Maustaste auf **res**, und wählen Sie **New** > **Directory** („Neu“ > „Verzeichnis“) aus. Geben Sie `raw` als neuen Verzeichnisnamen ein, und klicken Sie auf **OK**.
+1. Erstellen Sie unter **app** > **src** > **main** > **res** > **raw** eine neue JSON-Datei namens `auth_config_single_account.json`, und fügen Sie die MSAL-Konfiguration ein, die Sie zuvor gespeichert haben.
 
     Fügen Sie unterhalb des Umleitungs-URIs Folgendes ein:
     ```json

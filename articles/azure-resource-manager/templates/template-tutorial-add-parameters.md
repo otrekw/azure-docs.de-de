@@ -6,12 +6,12 @@ ms.date: 03/31/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 7d0743d316b9d879017f3b0fbe08ee4dc2b3e1c2
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: e983f8499cbeaf400a8da6f48d7f6c8b75c4795a
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96931060"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107061"
 ---
 # <a name="tutorial-add-parameters-to-your-arm-template"></a>Tutorial: Hinzufügen von Parametern zu Ihrer ARM-Vorlage
 
@@ -33,7 +33,7 @@ Möglicherweise haben Sie bemerkt, dass es bei dieser Vorlage ein Problem gibt. 
 
 ## <a name="make-template-reusable"></a>Ermöglichen der Wiederverwendung einer Vorlage
 
-Damit Ihre Vorlage wiederverwendet werden kann, fügen Sie einen Parameter hinzu, mit dem Sie einen Speicherkontonamen übergeben können. Der hervorgehobene JSON-Code im folgenden Beispiel zeigt, was sich in der Vorlage geändert hat. Der Parameter **storageName** wird als Zeichenfolge identifiziert. Die maximale Länge ist auf 24 Zeichen festgelegt, damit keine zu langen Namen verwendet werden.
+Damit Ihre Vorlage wiederverwendet werden kann, fügen Sie einen Parameter hinzu, mit dem Sie einen Speicherkontonamen übergeben können. Der hervorgehobene JSON-Code im folgenden Beispiel zeigt, was sich in der Vorlage geändert hat. Der Parameter `storageName` wird als Zeichenfolge identifiziert. Die maximale Länge ist auf 24 Zeichen festgelegt, damit keine zu langen Namen verwendet werden.
 
 Kopieren Sie die gesamte Datei, und ersetzen Sie Ihre Vorlage durch den Inhalt der Datei.
 
@@ -43,7 +43,7 @@ Kopieren Sie die gesamte Datei, und ersetzen Sie Ihre Vorlage durch den Inhalt d
 
 Nun stellen Sie die Vorlage bereit. Im folgenden Beispiel wird die Vorlage mit der Azure CLI oder PowerShell bereitgestellt. Dabei geben Sie den Namen des Speicherkontos als einen der Werte im Bereitstellungsbefehl an. Geben Sie für das Speicherkonto den Namen an, den Sie im vorherigen Tutorial verwendet haben.
 
-Falls Sie die Ressourcengruppe noch nicht erstellt haben, folgen Sie den Anweisungen unter [Erstellen einer Ressourcengruppe](template-tutorial-create-first-template.md#create-resource-group). Dieses Beispiel setzt voraus, dass Sie die Variable **templateFile** wie im [ersten Tutorial](template-tutorial-create-first-template.md#deploy-template) beschrieben auf den Pfad zur Vorlagendatei festgelegt haben.
+Falls Sie die Ressourcengruppe noch nicht erstellt haben, folgen Sie den Anweisungen unter [Erstellen einer Ressourcengruppe](template-tutorial-create-first-template.md#create-resource-group). Dieses Beispiel setzt voraus, dass Sie die Variable `templateFile` wie im [ersten Tutorial](template-tutorial-create-first-template.md#deploy-template) beschrieben auf den Pfad zur Vorlagendatei festgelegt haben.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -81,11 +81,11 @@ Da Aktualisierungen auf diese Weise verarbeitet werden, kann Ihre Vorlage alle R
 
 Mit Parametern können Sie die Bereitstellung anpassen, indem Sie Werte angeben, die für eine bestimmte Umgebung maßgeschneidert sind. Je nachdem, ob Sie die Vorlage in einer Entwicklungs-, Test- oder Produktionsumgebung bereitstellen, können Sie beispielsweise unterschiedliche Werte übergeben.
 
-Mit der vorherigen Vorlage wurde immer ein Standard_LRS-Speicherkonto bereitgestellt. Möglicherweise möchten Sie in der Lage sein, je nach Umgebung flexibel verschiedene SKUs bereitzustellen. Das folgende Beispiel zeigt die Änderungen, die Sie zum Hinzufügen eines Parameters für die SKU vornehmen. Kopieren Sie die gesamte Datei, und überschreiben Sie damit Ihre Vorlage.
+Mit der vorherigen Vorlage wurde immer ein **Standard_LRS**-Speicherkonto bereitgestellt. Möglicherweise möchten Sie in der Lage sein, je nach Umgebung flexibel verschiedene SKUs bereitzustellen. Das folgende Beispiel zeigt die Änderungen, die Sie zum Hinzufügen eines Parameters für die SKU vornehmen. Kopieren Sie die gesamte Datei, und überschreiben Sie damit Ihre Vorlage.
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-sku/azuredeploy.json" range="1-40" highlight="10-23,32":::
 
-Der Parameter **storageSKU** hat einen Standardwert. Dieser Wert wird verwendet, wenn während der Bereitstellung kein Wert angegeben wird. Außerdem verfügt er über eine Liste zulässiger Werte. Diese entsprechen den Werten, die zum Erstellen eines Speicherkontos erforderlich sind, und verhindern, dass Benutzer Ihrer Vorlage SKUs übergeben, die nicht funktionieren.
+Der Parameter `storageSKU` hat einen Standardwert. Dieser Wert wird verwendet, wenn während der Bereitstellung kein Wert angegeben wird. Außerdem verfügt er über eine Liste zulässiger Werte. Diese entsprechen den Werten, die zum Erstellen eines Speicherkontos erforderlich sind, und verhindern, dass Benutzer Ihrer Vorlage SKUs übergeben, die nicht funktionieren.
 
 ## <a name="redeploy-template"></a>Erneutes Bereitstellen der Vorlage
 
@@ -114,7 +114,7 @@ az deployment group create \
 ---
 
 > [!NOTE]
-> Wenn bei der Bereitstellung ein Fehler aufgetreten ist, verwenden Sie den Schalter **verbose**, um Informationen zu den erstellten Ressourcen abzurufen. Verwenden Sie den Schalter **debug**, um weitere Informationen zum Debuggen zu erhalten.
+> Wenn bei der Bereitstellung ein Fehler aufgetreten ist, verwenden Sie den Schalter `verbose`, um Informationen zu den erstellten Ressourcen abzurufen. Verwenden Sie den Schalter `debug`, um weitere Informationen zum Debuggen zu erhalten.
 
 Damit Sie sehen, wie flexibel Ihre Vorlage ist, stellen Sie sie nun nochmal bereit. Dieses Mal legen Sie den SKU-Parameter auf **Standard_GRS** fest. Sie können entweder einen neuen Namen übergeben, um ein anderes Speicherkonto zu erstellen, oder den gleichen Namen verwenden, um Ihr vorhandenes Speicherkonto zu aktualisieren. Beide Optionen funktionieren.
 

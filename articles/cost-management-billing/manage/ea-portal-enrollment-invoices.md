@@ -3,18 +3,18 @@ title: Rechnungen für die Azure Enterprise-Registrierung
 description: In diesem Artikel wird erläutert, wie Sie Ihre Azure-Unternehmensrechnung verwalten und Aktionen dafür ausführen.
 author: bandersmsft
 ms.author: banders
-ms.date: 09/23/2020
+ms.date: 12/09/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.custom: contperfq1
-ms.openlocfilehash: 57ada2ca760ffff2124582c31fdd095d04d4375f
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.custom: contperf-fy21q1
+ms.openlocfilehash: c64127f7ebbb416d9dfebb5e417cd27d51697665
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410952"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97030721"
 ---
 # <a name="azure-enterprise-enrollment-invoices"></a>Rechnungen für die Azure Enterprise-Registrierung
 
@@ -39,18 +39,14 @@ Laden Sie den Bericht mit den Nutzungsdetails herunter, um die ausführliche Nut
 So zeigen Sie die zusammengefassten Nutzungsberichte und -diagramme an:
 
 1. Melden Sie sich beim Azure Enterprise Portal an.
-
 1. Wählen Sie eine Laufzeit für die Vorauszahlung aus.
-
-   Um den Datumsbereich für die **Nutzungszusammenfassung** zu ändern, können Sie in der rechten oberen Ecke der Seite von **M** (monatlich) zu **C** (benutzerdefiniert) wechseln und dann das benutzerdefinierte Start- und Enddatum eingeben.
-
-   ![Erstellen und Anzeigen der Nutzungszusammenfassung und Herunterladen von Berichten in der benutzerdefinierten Ansicht](./media/ea-portal-enrollment-invoices/create-ea-view-usage-summary-and-download-reports-custom-view.png)
+   Um den Datumsbereich für die **Nutzungszusammenfassung** zu ändern, können Sie in der rechten oberen Ecke der Seite von **M** (monatlich) zu **C** (benutzerdefiniert) wechseln und dann das benutzerdefinierte Start- und Enddatum eingeben.  
+   ![Erstellen und Anzeigen der Verwendungszusammenfassung und Herunterladen von Berichten in der benutzerdefinierten Ansicht](./media/ea-portal-enrollment-invoices/create-ea-view-usage-summary-and-download-reports-custom-view.png)
 1. Wählen Sie einen Zeitraum oder einen Monat im Diagramm aus, um weitere Details anzuzeigen.
-
    - Das Diagramm zeigt die Nutzung im Vergleich zum Vormonat mit einer Aufschlüsselung der tatsächlichen Nutzung, der übermäßig berechneten Dienste, der getrennt berechneten Gebühren und der Azure Marketplace-Gebühren an.
    - Für den ausgewählten Monat können Sie die Felder unterhalb des Diagramms verwenden, um nach Abteilungen, Konten und Abonnements zu filtern.
    - Sie können zwischen **Gebühr nach Diensten** und **Gebühr nach Hierarchie** wechseln.
-   - Zeigen Sie Details zu den Kategorien **Azure-Dienst** , **Getrennt abgerechnete Gebühren** und **Azure Marketplace** an, indem Sie die entsprechenden Abschnitte erweitern.
+   - Zeigen Sie Details zu den Kategorien **Azure-Dienst**, **Getrennt abgerechnete Gebühren** und **Azure Marketplace** an, indem Sie die entsprechenden Abschnitte erweitern.
 
 In diesem Video können Sie sich die Nutzungsanzeige ansehen:
 
@@ -72,7 +68,7 @@ So laden Sie Berichte herunter:
 3. Wählen Sie neben dem Bericht des Monats **Herunterladen** aus.
 
    > [!NOTE]
-   > Zwischen dem Nutzungsdatum und dem Zeitpunkt, zu dem die Nutzung in den Berichten angezeigt wird, gibt es unter Umständen eine Wartezeit von bis zu fünf Tagen.
+   > Zwischen dem Nutzungsdatum und dem Zeitpunkt, zu dem die Nutzung in den Berichten angezeigt wird, gibt es möglicherweise eine Wartezeit von bis zu 72 Stunden (= 3 Tage).
    >
    > Wenn Sie die CSV-Dateien mit Safari in Excel herunterladen, treten möglicherweise Formatierungsfehler auf. Öffnen Sie die Datei in einem Text-Editor, um solche Fehler zu vermeiden.
 
@@ -142,20 +138,20 @@ Ihr Abrechnungsintervall hängt davon ab, wie Sie Ihre Vorauszahlungskäufe durc
 
 Wann Sie Ihre Überschreitungsrechnung erhalten, hängt vom Startdatum von Registrierung und Einrichtung ab:
 
-- **Direkte Registrierungen mit Startdatum vor dem 1. Mai 2018** :
+- **Direkte Registrierungen mit Startdatum vor dem 1. Mai 2018**:
   - Für direkte Enterprise Agreement-Kunden (EA) wird ein jährlicher Abrechnungszeitraum für Azure-Dienste eingerichtet, ausgenommen Azure Marketplace-Dienste. Ihr Abrechnungszeitraum basiert auf dem Jahrestag: dem Datum, an dem Ihre Vereinbarung wirksam wurde.
   - Wenn Sie 150 % Ihrer Azure EA-Vorauszahlung überschreiten, wird für Sie automatisch ein vierteljährlicher Abrechnungszeitraum eingerichtet, der auf Ihrem Jahrestag basiert. Außerdem erhalten Sie eine Rechnung für die Azure-Dienstüberschreitung.
   - Wenn Sie nicht 150 % Ihres Azure-Vorauszahlungsschwellenwerts überschreiten, verbleibt Ihre Registrierung in einem jährlichen Abrechnungszeitraum. Die Rechnung für die Überschreitung erhalten Sie am Ende des Vorauszahlungsjahres.
 
-- **Direkte Registrierungen mit Startdatum nach dem 1. Mai 2018** :
+- **Direkte Registrierungen mit Startdatum nach dem 1. Mai 2018**:
   - Ihr Azure-Verbrauch und separat abgerechnete Gebühren werden in einem monatlichen Abrechnungszeitraum abgerechnet.
   - Gebühren, die nicht durch ihre Azure-Vorauszahlung abgedeckt werden, sind als Überschreitungszahlung fällig.  
 
-- **Indirekte Registrierungen mit Startdatum vor dem 1. Mai 2018** :
+- **Indirekte Registrierungen mit Startdatum vor dem 1. Mai 2018**:
 
   Wenn Sie ein indirekter Enterprise Agreement-Kunde (EA) mit einem Startdatum vor dem 1. Mai 2018 sind, wird für Sie ein vierteljährlicher Abrechnungszeitraum eingerichtet. Vom Channelpartner(CP) erhalten Sie direkt eine Rechnung.  
 
-- **Indirekte Registrierungen mit Startdatum nach dem 1. Mai 2018** :
+- **Indirekte Registrierungen mit Startdatum nach dem 1. Mai 2018**:
 
   Für Sie gilt ein monatlicher Abrechnungszeitraum.  
 
@@ -169,9 +165,9 @@ Bei Überschreitung werden Ihnen die Nutzung oder Reservierungen in Rechnung ges
 
 Für jedes Element in der Rechnung wird Folgendes angezeigt:
 
-- **Erweiterter Betrag** : die Gesamtkosten
-- **Nutzung der Vorauszahlung** : der zum Abdecken der Gebühren verwendete Betrag Ihrer Vorauszahlung
-- **Nettobetrag** : die Gebühren, die ihre Vorauszahlung überschreiten
+- **Erweiterter Betrag**: die Gesamtkosten
+- **Nutzung der Vorauszahlung**: der zum Abdecken der Gebühren verwendete Betrag Ihrer Vorauszahlung
+- **Nettobetrag**: die Gebühren, die ihre Vorauszahlung überschreiten
 
 Die fälligen Steuern werden nur für den Nettobetrag berechnet, der Ihre Vorauszahlung überschreitet.
 
@@ -211,7 +207,7 @@ So zeigen Sie Gutschriften an:
 
 1. Wählen Sie im [Azure Enterprise Portal](https://ea.azure.com) den Abschnitt **Berichte** aus.
 1. Wählen Sie **Nutzungszusammenfassung** aus.
-1. Ändern Sie oben rechts die **M** -Ansicht in die **C** -Ansicht.
+1. Ändern Sie oben rechts die **M**-Ansicht in die **C**-Ansicht.
 1. Erweitern Sie das Anpassungsfeld in der Tabelle „Vorauszahlung für Azure-Dienst“.
 1. Es werden Gutschriften für Ihre Registrierung und eine kurze Erläuterung angezeigt. Beispiel: SLA-Gutschrift.
 
@@ -246,7 +242,7 @@ Die Maßeinheiten für Enterprise Agreements unterscheiden sich häufig von dene
 
 ### <a name="conversion-between-usage-detail-report-and-the-usage-summary-page"></a>Konvertierung zwischen Nutzungsdetailbericht und Nutzungszusammenfassungs-Seite
 
-Im heruntergeladenen Nutzungsdatenbericht können Sie die reine Ressourcennutzung auf bis zu sechs Dezimalstellen genau sehen. Allerdings werden die im Azure Enterprise Portal angezeigten Nutzungsdaten für Vorauszahlungseinheiten auf vier Dezimalstellen gerundet, und bei Überschreitungseinheiten werden alle Dezimalstellen abgeschnitten. Die reinen Nutzungsdaten werden zuerst auf vier Ziffern gerundet, bevor sie in Einheiten konvertiert werden, die im Azure Enterprise Portal verwendet werden. Anschließend werden die konvertierten Enterprise-Einheiten erneut auf vier Ziffern gerundet. Die tatsächlich verbrauchten Stunden vor der Konvertierung werden im heruntergeladenen Nutzungsbericht und nicht im Azure Enterprise Portal angezeigt.
+Im heruntergeladenen Nutzungsdatenbericht können Sie die reine Ressourcennutzung auf bis zu sechs Dezimalstellen genau sehen. Allerdings werden die im Azure Enterprise Portal angezeigten Nutzungsdaten für Vorauszahlungseinheiten auf vier Dezimalstellen gerundet, und bei Überschreitungseinheiten werden alle Dezimalstellen abgeschnitten. Die reinen Nutzungsdaten werden zuerst auf vier Ziffern gerundet, bevor sie in Einheiten konvertiert werden, die im Azure Enterprise-Portal verwendet werden. Anschließend werden die konvertierten Enterprise-Einheiten erneut auf vier Ziffern gerundet. Die tatsächlich verbrauchten Stunden vor der Konvertierung werden im heruntergeladenen Nutzungsbericht und nicht im Azure Enterprise Portal angezeigt.
 
 Beispiel: 694,533404 tatsächliche SQL Server-Stunden werden im Nutzungsdetailsbericht angezeigt. Diese Einheiten werden dann in 6,94533404 Einheiten von 100 Computestunden konvertiert, die dann zur Anzeige im Azure Enterprise Portal auf 6,9453 gerundet werden.
 
@@ -264,7 +260,7 @@ Die gesamte abgerechnete Nutzung basiert auf Minuten, die in Teil- und nicht Ges
 
 ### <a name="average-daily-consumption"></a>Durchschnittlicher täglicher Verbrauch
 
-Einige Dienste werden monatlich berechnet, aber die Nutzung wird täglich gemeldet. In diesen Fällen wird die Nutzung einmal pro Tag ausgewertet, durch 31 dividiert und über die Anzahl der Tage in diesem Abrechnungsmonat summiert. Dies führt zu Tarifen, die für einen Monat nie höher als erwartet und für die Monate mit weniger als 31 Tagen etwas niedriger sind.
+Einige Dienste werden monatlich berechnet, aber die Nutzung wird täglich gemeldet. In diesen Fällen wird die Nutzung einmal pro Tag ausgewertet, durch 31 dividiert und über die Anzahl der Tage in diesem Abrechnungsmonat summiert. Deshalb gibt es Tarife, die für einen Monat nie höher als erwartet und für die Monate mit weniger als 31 Tagen etwas niedriger sind.
 
 ### <a name="compute-hours-conversion"></a>Konvertierung von Computestunden
 
@@ -300,7 +296,7 @@ Die Azure-Vorauszahlung ist ein Betrag, der vorab für Azure-Dienste gezahlt wir
 
 ### <a name="charges-billed-separately"></a>Separat abgerechnete Gebühren
 
-Einige Produkte und Dienste, die aus Drittanbieterquellen bereitgestellt werden, werden nicht auf die Azure-Vorauszahlung angerechnet. Stattdessen werden diese Elemente separat als Teil der Überschreitungsrechnung für den Standardabrechnungszyklus abgerechnet.
+Einige Produkte und Dienste, die aus Drittanbieterquellen bereitgestellt werden, werden auf die Azure-Vorauszahlung nicht angerechnet. Stattdessen werden diese Elemente separat als Teil der Überschreitungsrechnung für den Standardabrechnungszyklus abgerechnet.
 
 Wir haben alle Azure- und Azure Marketplace-Gebühren in einer einzigen Rechnung zusammengefasst, die sich am Abrechnungszyklus der Registrierung orientiert. Die kombinierte Rechnung gilt nicht für Azure-Kunden in Australien, Japan oder Singapur.
 

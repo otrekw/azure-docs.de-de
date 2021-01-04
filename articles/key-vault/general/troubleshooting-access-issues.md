@@ -7,16 +7,19 @@ ms.date: 08/10/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: f9bbf6e9d1d932f7225807613b789821c1462932
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 78b42a8ad3685d07b61c4faca384c7ee8f5a5f94
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94441850"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97616387"
 ---
 # <a name="troubleshooting-azure-key-vault-access-policy-issues"></a>Behandeln von Problemen mit Schlüsseltresor-Zugriffsrichtlinien
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
+
+### <a name="i-am-not-able-to-list-or-get-secretskeyscertificate-i-am-seeing-something-went-wrong-error"></a>Ich kann Geheimnisse/Schlüssel/Zertifikate nicht auflisten oder abrufen. „Leider ist ein Problem aufgetreten“ wird angezeigt. Fehler.
+Wenn Probleme beim Auflisten/Abrufen/Erstellen eines Geheimnisses oder beim Zugreifen auf ein Geheimnis auftreten, vergewissern Sie sich, dass Sie eine Zugriffsrichtlinie zum Ausführen des entsprechenden Vorgangs definiert haben: [Bereitstellen der Key Vault-Authentifizierung mit einer Zugriffssteuerungsrichtlinie](https://docs.microsoft.com/azure/key-vault/general/group-permissions-for-apps)
 
 ### <a name="how-can-i-identify-how-and-when-key-vaults-are-accessed"></a>Wie kann ich ermitteln, wie und wann auf Schlüsseltresore zugegriffen wird?
 

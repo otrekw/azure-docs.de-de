@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 07/21/2020
+ms.date: 12/11/2020
 ms.author: alkohli
-ms.openlocfilehash: 04e4394e6a439c923558ef90e13c14c0adaa4020
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1035f7fb34ed5b2b11e3ef472ccda7cccc30f652
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88142110"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359029"
 ---
 # <a name="tutorial-return-azure-data-box-preview"></a>Tutorial: Zurücksenden von Azure Data Box (Vorschau)
 
@@ -45,7 +45,7 @@ Die nächsten Schritte hängen davon ab, wo Sie das Gerät zurückgeben.
 
 ## <a name="ship-data-box-back"></a>Zurücksenden der Data Box
 
-Vergewissern Sie sich, dass die Daten vollständig vom Gerät kopiert wurden, und dass die **Versandvorbereitung** erfolgreich war. Die Vorgehensweise hängt von der Region ab, in der das Gerät versendet wird.
+Vergewissern Sie sich, dass die Daten vollständig vom Gerät kopiert wurden, und dass die **Versandvorbereitung** erfolgreich war. Die Vorgehensweise ist abhängig von der Region, in der das Gerät versendet wird.
 
 ## <a name="us-canada-europe"></a>[USA, Kanada, Europa](#tab/in-us-canada-europe)
 
@@ -53,12 +53,12 @@ Wenn Sie das Gerät in den USA, in Kanada oder in Europa zurücksenden möchten,
 
 1. Vergewissern Sie sich, dass das Gerät ausgeschaltet ist und die Kabel entfernt wurden. 
 2. Wickeln Sie das mit dem Gerät gelieferte Netzkabel auf, und befestigen Sie es sicher an der Rückseite des Geräts.
-3. Stellen Sie sicher, dass das Adressetikett auf dem Freihanddisplay angezeigt wird, und vereinbaren Sie einen Abholtermin mit Ihrem Kurierdienst. Falls das Adressetikett beschädigt oder nicht mehr vorhanden ist oder nicht in der E-Ink-Anzeige angezeigt wird, wenden Sie sich an den Microsoft-Support. Sofern dies vom Support empfohlen wird, können Sie im Azure-Portal zu **Übersicht > Versandetikett herunterladen** navigieren. Laden Sie das Versandetikett herunter, und bringen Sie es am Gerät an. 
+3. Stellen Sie sicher, dass das Adressetikett in der E-Ink-Anzeige angezeigt wird, und vereinbaren Sie mit Ihrem Kurierdienst einen Abholtermin. Falls das Adressetikett beschädigt oder nicht mehr vorhanden ist oder aber in der E-Ink-Anzeige nicht angezeigt wird, wenden Sie sich an den Microsoft-Support. Sofern dies vom Support empfohlen wird, können Sie im Azure-Portal zu **Übersicht > Versandetikett herunterladen** navigieren. Laden Sie das Versandetikett herunter, und bringen Sie es am Gerät an. 
 4. Planen Sie die Abholung durch UPS, falls Sie das Gerät zurücksenden. So planen Sie die Abholung:
 
-    - Rufen Sie Ihre lokale UPS-Versandstelle an (landes-/regionsspezifische gebührenfreie Telefonnummer).
-    - Geben Sie bei dem Telefonat die Nachverfolgungsnummer für die Rücksendung an, die Sie in der E-Ink-Anzeige oder auf dem gedruckten Etikett finden.
-    - Wenn Sie keine Nachverfolgungsnummer angeben, fordert UPS eine Zusatzgebühr, die Sie bei der Abholung entrichten müssen.
+   - Rufen Sie Ihre lokale UPS-Versandstelle an (landes-/regionsspezifische gebührenfreie Telefonnummer).
+   - Geben Sie bei dem Telefonat die Nachverfolgungsnummer für die Rücksendung an, die Sie in der E-Ink-Anzeige oder auf dem gedruckten Etikett finden. Wenn Sie die Nachverfolgungsnummer nicht angeben, wird bei der Abholung eine zusätzliche Gebühr erhoben.
+   - Falls während der Planung einer Abholung Probleme auftreten oder wenn Sie aufgefordert werden, zusätzliche Gebühren zu bezahlen, wenden Sie sich an Azure Data Box Operations. Senden Sie eine E-Mail an [adbops@microsoft.com](mailto:adbops@microsoft.com).
 
     Wenn Sie keine Abholung planen können oder möchten, können Sie die Data Box auch an der nächstgelegenen Versandstelle abgeben.
 4. Nachdem die Data Box vom Kurierdienst abgeholt und eingescannt wurde, wird der Status der Bestellung im Portal in **Abgeholt** geändert. Außerdem wird eine Nachverfolgungs-ID angezeigt.
@@ -129,7 +129,7 @@ Den Support von Quantium Solution erreichen Sie bei Bedarf wie folgt (in japanis
 
 ## <a name="south-africa"></a>[Südafrika](#tab/in-sa)
 
-1. Bewahren Sie den Originalkarton des Geräts für den Rückversand auf.
+1. Bewahren Sie den Originalkarton zum Verpacken des Geräts für den Rückversand auf.
 2. Notieren Sie sich die Referenznummer (Frachtbriefnummer), die auf der lokalen Webbenutzeroberfläche des Geräts angezeigt wird. Diese Nummer wird nach erfolgreichem Abschluss der **Versandvorbereitung** angezeigt.
 3. Laden Sie das Adressetikett über die lokale Webbenutzeroberfläche des Geräts herunter, drucken Sie es aus, und bringen Sie es am Versandpaket an.
 4. Für die Reservierung der Abholung mit DHL stehen folgende Optionen zur Verfügung:
@@ -145,9 +145,9 @@ Den Support von Quantium Solution erreichen Sie bei Bedarf wie folgt (in japanis
       *  Requested pickup date: yyyy/mm/dd;time:HH MM
     ```
 
-    * Alternativ können Sie das Paket in einem DHL-Paketshop in Ihrer Nähe abgeben.
+    * Stattdessen können Sie das Paket in einem DHL-Paketshop in Ihrer Nähe abgeben.
 
-5. Sollten Probleme auftreten, senden Sie eine E-Mail mit Einzelheiten zu dem aufgetretenen Problem an [Priority.Support@dhl.com](mailto:Priority.Support@dhl.com). Geben Sie im Betreff die Frachtbriefnummer an. Sie können auch die Nummer +27(0)119213902 anrufen.
+5. Sollten Probleme auftreten, senden Sie eine E-Mail mit Einzelheiten zu dem/den aufgetretenen Problem(en) an [Priority.Support@dhl.com](mailto:Priority.Support@dhl.com). Geben Sie im Betreff die Frachtbriefnummer an. Sie können auch die Nummer +27(0)119213902 anrufen.
 
 ## <a name="hong-kong"></a>[Hongkong](#tab/in-hk)
 
@@ -172,7 +172,7 @@ Den Support von Quantium Solution erreichen Sie bei Bedarf wie folgt (in japanis
        * Pickup time:
     ```
 
-Sollten Probleme auftreten, senden Sie eine E-Mail an Data Box Operations Asia ([adbo@microsoft.com](mailto:adbo@microsoft.com)). Geben Sie dabei im Betreff den Auftragsnamen an, und beschreiben Sie das Problem.
+Sollten irgendwelche Probleme auftreten, senden Sie eine E-Mail an Data Box Operations Asia ([adbo@microsoft.com](mailto:adbo@microsoft.com)). Geben Sie dabei im Betreff den Auftragsnamen an, und beschreiben Sie das Problem.
 
 ## <a name="self-managed"></a>[Selbst verwalteter Versand](#tab/in-selfmanaged)
 
@@ -180,7 +180,7 @@ Wenn Sie Data Box in Japan, Singapur, Südkorea, Indien, Südafrika oder Westeur
 
 1. Notieren Sie sich den Autorisierungscode, der auf der Seite „Für den Versand vorbereiten“ der lokalen Webbenutzeroberfläche von Data Box angezeigt wird, nachdem dieser Schritt erfolgreich abgeschlossen wurde.
 2. Schalten Sie das Gerät aus, und entfernen Sie die Kabel. Wickeln Sie das mitgelieferte Netzkabel auf, und befestigen Sie es sicher an der Rückseite des Geräts.
-3. Senden Sie eine E-Mail an das Azure Data Box Operations-Team, wenn Sie bereit sind, das Gerät zurückzusenden. Verwenden Sie dafür die folgende Vorlage:
+3. Wenn Sie zum Rückversand des Geräts bereit sind, senden Sie eine E-Mail an das Azure Data Box Operations-Team. Verwenden Sie dafür die Vorlage unten.
     
     ```
     To: adbops@microsoft.com 
@@ -194,7 +194,7 @@ Wenn Sie Data Box in Japan, Singapur, Südkorea, Indien, Südafrika oder Westeur
 ---
 
 ## <a name="erasure-of-data-from-data-box"></a>Löschen von Daten von der Data Box
- 
+
 Sobald das Gerät das Azure-Rechenzentrum erreicht, löscht die Data Box die Daten auf ihren Datenträgern gemäß den [NIST-Richtlinien SP 800-88 Revision 1](https://csrc.nist.gov/News/2014/Released-SP-800-88-Revision-1,-Guidelines-for-Medi).
 
 ## <a name="next-steps"></a>Nächste Schritte

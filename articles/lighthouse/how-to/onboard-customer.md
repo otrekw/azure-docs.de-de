@@ -1,18 +1,18 @@
 ---
 title: Onboarding eines Kunden in Azure Lighthouse durchführen
 description: Erfahren Sie, wie Sie das Onboarding eines Kunden in Azure Lighthouse durchführen, sodass Ihr eigener Mandant über die delegierte Azure-Ressourcenverwaltung auf dessen Ressourcen zugreifen und sie verwalten kann.
-ms.date: 12/04/2020
+ms.date: 12/15/2020
 ms.topic: how-to
-ms.openlocfilehash: b353a8194b9f5dd48b315340435669531359e8d5
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: 023b44a77cb38a14df8aa6a885ff137c02942061
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96608468"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516129"
 ---
 # <a name="onboard-a-customer-to-azure-lighthouse"></a>Onboarding eines Kunden in Azure Lighthouse durchführen
 
-In diesem Artikel wird erläutert, wie Sie als Dienstanbieter das Onboarding eines Kunden in Azure Lighthouse durchführen können. Wenn Sie dies tun, kann Ihr eigener Azure Active Directory-Mandant (Azure AD) mithilfe der [delegierten Azure-Ressourcenverwaltung](../concepts/azure-delegated-resource-management.md) auf die delegierten Ressourcen des Kunden (Abonnements und/oder Ressourcengruppen) zugreifen und sie verwalten.
+In diesem Artikel wird erläutert, wie Sie als Dienstanbieter das Onboarding eines Kunden in Azure Lighthouse durchführen können. Dadurch können delegierte Ressourcen (Abonnements und/oder Ressourcengruppen) im Azure Active Directory-Mandanten (Azure AD) des Kunden mithilfe der [delegierten Azure-Ressourcenverwaltung](../concepts/azure-delegated-resource-management.md) über Ihren eigenen Mandanten verwaltet werden.
 
 > [!TIP]
 > In diesem Thema ist zwar von Dienstanbietern und Kunden die Rede, aber auch [Unternehmen, die mehrere Mandanten verwalten](../concepts/enterprise.md), können mithilfe desselben Verfahrens Azure Lighthouse einrichten und ihre Verwaltungsumgebung konsolidieren.
@@ -22,7 +22,7 @@ Sie können den Onboardingprozess für mehrere Kunden wiederholen. Wenn sich ein
 Um ihre Wirksamkeit hinsichtlich der Kundenbindung nachzuverfolgen und Bekanntheit zu erlangen, ordnen Sie Ihre MPN-ID (Microsoft Partner Network) mindestens einem Benutzerkonto zu, das Zugriff auf jedes Ihrer integrierten Abonnements hat. Diese Zuordnung müssen Sie in Ihrem Dienstanbietermandanten ausführen. Wir empfehlen, in Ihrem Mandanten ein Dienstprinzipalkonto zu erstellen, das mit Ihrer MPN-ID verknüpft ist, und diesen Dienstprinzipal bei jedem Onboarding eines Kunden einzubeziehen. Weitere Informationen finden Sie im Thema zum [Verknüpfen der Partner-ID, um Partner Earned Credit (PEC) für delegierte Ressourcen zu aktivieren](partner-earned-credit.md).
 
 > [!NOTE]
-> Das Onboarding in Azure Lighthouse kann auch für Kunden durchgeführt werden, die ein Angebot für verwaltete Dienste (öffentlich oder privat) kaufen, das Sie [in Azure Marketplace veröffentlichen](publish-managed-services-offers.md). Sie können den hier beschriebenen Onboardingprozess auch zusammen mit den in Azure Marketplace veröffentlichten Angeboten verwenden.
+> Das Onboarding in Azure Lighthouse kann alternativ für Kunden durchgeführt werden, die ein Angebot für verwaltete Dienste (öffentlich oder privat) kaufen, das Sie [in Azure Marketplace veröffentlichen](publish-managed-services-offers.md). Sie können den hier beschriebenen Onboardingprozess auch zusammen mit den in Azure Marketplace veröffentlichten Angeboten verwenden.
 
 Der Onboardingprozess erfordert, dass Aktionen sowohl innerhalb des Mandanten des Dienstanbieters als auch vom Mandanten des Kunden aus durchgeführt werden. Alle diese Schritte werden in diesem Artikel beschrieben.
 
@@ -303,7 +303,19 @@ az account list
 
 Wenn Sie nach dem Onboarding des Kunden Änderungen vornehmen müssen, können Sie [die Delegierung aktualisieren](update-delegation.md). Sie können auch vollständig den [Zugriff auf die Delegierung entfernen](remove-delegation.md).
 
+## <a name="troubleshooting"></a>Problembehandlung
+
+Wenn Sie das Onboarding Ihres Kunden nicht erfolgreich durchführen können oder wenn Ihre Benutzer Probleme beim Zugriff auf die delegierten Ressourcen haben, überprüfen Sie die folgenden Tipps und Anforderungen, und versuchen Sie es erneut.
+
+- Der Wert `managedbyTenantId` darf nicht mit der Mandanten-ID für das Abonnement übereinstimmen, für das das Onboarding durchgeführt wird.
+- Sie können nicht mehrere Zuweisungen im selben Bereich mit demselben `mspOfferName` verwenden. 
+- Der **Microsoft.ManagedServices**-Ressourcenanbieter muss für das delegierte Abonnement registriert sein. Dies sollte während der Bereitstellung automatisch erfolgen, aber wenn dies nicht der Fall ist, können Sie es [manuell registrieren](../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider).
+- Die Autorisierungen dürfen keine Benutzer mit der integrierten Rolle [Besitzer](../../role-based-access-control/built-in-roles.md#owner) und keine integrierten Rollen mit [DataActions](../../role-based-access-control/role-definitions.md#dataactions) enthalten.
+- Gruppen müssen so erstellt werden, dass der [**Gruppentyp**](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md#group-types) auf **Sicherheit** und nicht **Microsoft 365** festgelegt ist.
+- Benutzer, die Ressourcen im Azure-Portal anzeigen müssen, müssen die Rolle [Leser](../../role-based-access-control/built-in-roles.md#reader) (oder eine andere integrierte Rolle, die Lesezugriff umfasst) aufweisen.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Erfahren Sie über [Mandantenübergreifende Verwaltungsmöglichkeiten](../concepts/cross-tenant-management-experience.md).
 - [Anzeigen und Verwalten von Kunden](view-manage-customers.md), indem sie im Azure-Portal zu **Meine Kunden** navigieren.
+- Erfahren Sie, wie Sie eine Delegierung [aktualisieren](update-delegation.md) oder [entfernen](remove-delegation.md) können.

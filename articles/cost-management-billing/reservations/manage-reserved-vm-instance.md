@@ -6,20 +6,20 @@ ms.subservice: reservations
 author: bandersmsft
 ms.reviewer: yashesvi
 ms.topic: how-to
-ms.date: 07/24/2020
+ms.date: 12/08/2020
 ms.author: banders
-ms.openlocfilehash: 050984d58137ec03996572d2de41115073e4ab2b
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 2cd0611d5701f5ca407afd6d4e3b1b0ae22b6c12
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96338162"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562972"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>Verwalten von Reservierungen für Azure-Ressourcen
 
 Nachdem Sie eine Azure-Reservierung erworben haben, müssen Sie möglicherweise die Reservierung auf ein anderes Abonnement anwenden, ändern, wer die Reservierung verwalten kann, oder den Reservierungsumfang ändern. Sie können auch eine Reservierung in zwei Reservierungen aufteilen, um einige der von Ihnen erworbenen Instanzen auf ein anderes Abonnement anzuwenden.
 
-Wenn Sie Azure Reserved Virtual Machine Instances erworben haben, können Sie die Optimierungseinstellung für die Reservierung ändern. Der Reservierungsrabatt kann für virtuelle Computer (Virtual Machines, VMs) in der gleichen Reihe gelten. Sie können aber auch Rechenzentrumskapazität für eine bestimmte VM-Größe reservieren. Versuchen Sie außerdem, die Reservierungen zu optimieren, sodass sie vollständig genutzt werden.
+Wenn Sie Azure Reserved Virtual Machine Instances erworben haben, können Sie die Optimierungseinstellung für die Reservierung ändern. Der Reservierungsrabatt kann für virtuelle Computer (Virtual Machines, VMs) in der gleichen Reihe gelten. Sie können aber auch Rechenzentrumskapazität für eine bestimmte VM-Größe reservieren. Sie sollten versuchen, Reservierungen zu optimieren, damit sie vollständig genutzt werden.
 
 *Die zum Verwalten einer Reservierung erforderliche Berechtigung ist von der Abonnementberechtigung getrennt.*
 
@@ -31,7 +31,7 @@ Beim Kauf einer Reservierung werden zwei Objekte erstellt: **Reservierungsauftra
 
 Beim Kauf umfasst ein Reservierungsauftrag eine Reservierung. Bei Aktionen wie z. B. Teilung, Zusammenführung, teilweiser Erstattung oder Austausch werden neue Reservierungen unter dem **Reservierungsauftrag** erstellt.
 
-Zum Anzeigen eines Reservierungsauftrags navigieren Sie zu **Reservierungen**, wählen Sie die Reservierung aus, und klicken Sie dann auf die **Reservierungsauftrags-ID**.
+Zum Anzeigen eines Reservierungsauftrags navigieren Sie zu **Reservierungen**, > wählen Sie die Reservierung und dann die **Reservierungsauftrags-ID** aus.
 
 ![Beispiel für die Details eines Reservierungsauftrags mit Reservierungsauftrags-ID ](./media/manage-reserved-vm-instance/reservation-order-details.png)
 
@@ -49,31 +49,44 @@ So aktualisieren Sie den Bereich einer Reservierung:
 4. Wählen Sie **Einstellungen** > **Konfiguration** aus.
 5. Ändern Sie den Bereich.
 
-Wenn Sie von „Freigegeben“ zu „Einzeln“ wechseln, können Sie nur Abonnements auswählen, deren Besitzer Sie sind. Es können nur Abonnements ausgewählt werden, die sich im gleichen Abrechnungskontext wie die Reservierung befinden.
+Wenn Sie von „Freigegeben“ zu „Einzeln“ wechseln, können Sie nur Abonnements auswählen, deren Besitzer Sie sind. Es können nur Abonnements in demselben Abrechnungskontext wie die Reservierung ausgewählt werden.
 
 Der Bereich gilt nur für einzelne Abonnements mit nutzungsbasierter Zahlung (Angebote MS-AZR-0003P oder MS-AZR-0023P), für das Enterprise-Angebot MS-AZR-0017P oder MS-AZR-0148P oder für CSP-Abonnementtypen.
 
-## <a name="add-or-change-users-who-can-manage-a-reservation"></a>Hinzufügen oder Ändern von Benutzern, die eine Reservierung verwalten können
+## <a name="who-can-manage-a-reservation-by-default"></a>Wer kann eine Reservierung standardmäßig verwalten?
 
-Sie können die Verwaltung einer Reservierung delegieren, indem Sie den Rollen im Reservierungsauftrag oder in der Reservierung Personen hinzufügen. Standardmäßig verfügen die Person, die den Reservierungsauftrag erteilt, und der Kontoadministrator über die Rolle „Besitzer“ für den Reservierungsauftrag und die Reservierung.
+Die folgenden Benutzer können Reservierungen standardmäßig anzeigen und verwalten:
 
-Sie können den Zugriff auf Reservierungsaufträge und Reservierungen *unabhängig von den Abonnements verwalten*, die den Reservierungsrabatt erhalten. Wenn Sie einer Person die Berechtigung zum Verwalten eines Reservierungsauftrags oder der Reservierung erteilen, erhält diese keine Berechtigung zum Verwalten des Abonnements. Wenn Sie einer Person die Berechtigung erteilen, ein Abonnement im Geltungsbereich der Reservierung zu verwalten, erhält diese Person analog dazu keine Rechte zum Verwalten des Reservierungsauftrags oder der Reservierung.
+- Die Person, die eine Reservierung erwirbt, und der Kontoadministrator des Abrechnungsabonnements, mit dem die Reservierung erworben wird, werden der Reservierungsreihenfolge hinzugefügt.
+- Abrechnungsadministratoren für Konzernvertrag (Enterprise Agreement, EA) und Microsoft-Kundenvereinbarung.
 
-Für eine Erstattung oder einen Austausch muss der Benutzer Zugriff auf den Reservierungsauftrag haben. Wenn Sie einem Benutzer Berechtigungen erteilen, empfiehlt es sich, die Berechtigungen für den Reservierungsauftrag und nicht für die Reservierung zu erteilen.
+Damit andere Personen Reservierungen verwalten können, haben Sie zwei Optionen:
 
-So delegieren Sie die Zugriffsverwaltung für eine Reservierung:
+- Delegieren der Zugriffsverwaltung für eine individuelle Reservierungsreihenfolge:
+    1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+    1. Wählen Sie **Alle Dienste** > **Reservierungen** aus, um Reservierungen aufzulisten, auf die Sie Zugriff haben.
+    1. Wählen Sie die Reservierung aus, für die Sie den Zugriff an andere Benutzer delegieren möchten.
+    1. Wählen Sie unter „Reservierungsdetails“ die gewünschte Reservierungsreihenfolge aus.
+    1. Wählen Sie die Option **Zugriffssteuerung (IAM)** aus.
+    1. Wählen Sie **Rollenzuweisung hinzufügen** > **Rolle** > **Besitzer** aus. Wenn Sie eingeschränkten Zugriff gewähren möchten, wählen Sie eine andere Rolle aus.
+    1. Geben Sie die E-Mail-Adresse des Benutzers ein, den Sie als Besitzer hinzufügen möchten.
+    1. Wählen Sie den Benutzer und dann **Speichern** aus.
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-2. Wählen Sie **Alle Dienste** > **Reservierungen** aus, um Reservierungen aufzulisten, auf die Sie Zugriff haben.
-3. Wählen Sie die Reservierung aus, für die Sie den Zugriff an andere Benutzer delegieren möchten.
-4. Wählen Sie die Option **Zugriffssteuerung (IAM)** aus.
-5. Wählen Sie **Rollenzuweisung hinzufügen** > **Rolle** > **Besitzer** aus. Oder wählen Sie eine andere Rolle aus, wenn Sie eingeschränkten Zugriff erteilen möchten.
-6. Geben Sie die E-Mail-Adresse des Benutzers ein, den Sie als Besitzer hinzufügen möchten.
-7. Wählen Sie den Benutzer und dann **Speichern** aus.
+- Hinzufügen eines Benutzers als Abrechnungsadministrator zu einem Konzernvertrag oder einer Microsoft-Kundenvereinbarung:
+    - Fügen Sie bei einem Konzernvertrag Benutzer mit der Rolle _Unternehmensadministrator_ hinzu, um alle für diesen Vertrag geltenden Reservierungsaufträge anzuzeigen und zu verwalten. Benutzer mit der Rolle _Unternehmensadministrator (schreibgeschützt)_ können die Reservierung nur anzeigen. Abteilungsadministratoren und Kontobesitzer können Reservierungen nicht anzeigen, _außer_ wenn sie ihnen mithilfe der Zugriffssteuerung (Access Control, IAM) explizit hinzugefügt werden. Weitere Informationen finden Sie unter [Verwalten von Azure Enterprise-Rollen](../manage/understand-ea-roles.md).
+
+        _Unternehmensadministratoren können den Besitz einer Reservierungsreihenfolge übernehmen und andere Benutzer mithilfe der Zugriffssteuerung (Identity & Access Management, IAM) zu einer Reservierung hinzufügen._
+    - Bei einer Microsoft-Kundenvereinbarung können Benutzer mit der Rolle „Besitzer des Abrechnungsprofils“ oder „Mitwirkender am Abrechnungsprofil“ alle mit dem Abrechnungsprofil getätigten Reservierungseinkäufe verwalten. Benutzer mit Leseberechtigung für das Abrechnungsprofil und Rechnungs-Manager können alle Reservierungen anzeigen, die für das Abrechnungsprofil bezahlt werden. Sie können allerdings keine Änderungen an den Reservierungen vornehmen.
+    Weitere Informationen finden Sie unter [Rollen und Aufgaben für ein Abrechnungsprofil](../manage/understand-mca-roles.md#billing-profile-roles-and-tasks).
+
+### <a name="how-billing-administrators-view-or-manage-reservations"></a>Anzeigen oder Verwalten von Reservierungen durch Abrechnungsadministratoren
+
+1. Wechseln Sie zu **Cost Management + Billing*** , und wählen Sie auf der linken Seite **Reservierungstransaktionen** aus.
+2. Wenn Sie die erforderlichen Abrechnungsberechtigungen haben, können Sie Reservierungen anzeigen und verwalten. Wenn keine Reservierungen angezeigt werden, vergewissern Sie sich, dass Sie mit dem Azure AD-Mandanten angemeldet sind, in dem die Reservierungen erstellt wurden.
 
 ## <a name="split-a-single-reservation-into-two-reservations"></a>Aufteilten einer einzelnen Reservierung in zwei Reservierungen
 
- Wenn Sie mehrere Ressourceninstanzen innerhalb einer Reservierung erworben haben, können Sie Instanzen innerhalb dieser Reservierung verschiedenen Abonnements zuweisen. Standardmäßig verfügen alle Instanzen über einen Bereich: entweder ein Einzelabonnement, eine Ressourcengruppe oder einen freigegebenen Bereich. Beispiel: Sie haben eine Reservierung für zehn VM-Instanzen erworben und den Bereich auf das Abonnement A festgelegt. Sie möchten nun den Bereich für sieben VM-Instanzen in Abonnement A und für die restlichen drei in Abonnement B ändern. Dies ist durch die Aufteilung einer Reservierung möglich. Nach dem Aufteilen einer Reservierung wird die ursprüngliche Reservierungs-ID storniert, und es werden zwei neue Reservierungen erstellt. Die Aufteilung wirkt sich nicht auf die Reservierungsreihenfolge aus. Durch die Aufteilung erfolgt keine neue kommerzielle Transaktion, und die neuen Reservierungen haben dasselbe Enddatum wie die aufgeteilte Reservierung.
+ Wenn Sie mehrere Ressourceninstanzen innerhalb einer Reservierung erworben haben, können Sie Instanzen innerhalb dieser Reservierung verschiedenen Abonnements zuweisen. Standardmäßig verfügen alle Instanzen über einen Bereich: entweder ein Einzelabonnement, eine Ressourcengruppe oder einen freigegebenen Bereich. Beispiel: Sie haben eine Reservierung für zehn VM-Instanzen erworben und den Bereich auf das Abonnement A festgelegt. Jetzt möchten Sie den Bereich für sieben VM-Instanzen in Abonnement A und für die restlichen drei in Abonnement B ändern. Dies ist durch die Aufteilung einer Reservierung möglich. Nach dem Aufteilen einer Reservierung wird die ursprüngliche Reservierungs-ID storniert, und es werden zwei neue Reservierungen erstellt. Die Aufteilung wirkt sich nicht auf die Reservierungsreihenfolge aus. Es erfolgt dadurch keine neue kommerzielle Transaktion, und die neuen Reservierungen haben dasselbe Enddatum wie die aufgeteilte Reservierung.
 
  Sie können eine Reservierung mithilfe von PowerShell, der CLI oder über die API in zwei Reservierungen aufteilen.
 
@@ -110,7 +123,7 @@ Reservierungen können unter bestimmten Einschränkungen storniert, umgetauscht 
 
 ## <a name="change-optimize-setting-for-reserved-vm-instances"></a>Ändern der Optimierungseinstellung für reservierte VM-Instanzen
 
- Wenn Sie eine reservierte VM-Instanz erwerben, wählen Sie die Flexibilität bei der Instanzgröße oder die Kapazitätspriorität aus. Bei Auswahl der Flexibilität bei der Instanzgröße wird der Reservierungsrabatt auf weitere VMs in der [Gruppe mit VMs derselben Größe](../../virtual-machines/reserved-vm-instance-size-flexibility.md) angewendet. Die Option „Kapazitätspriorität“ priorisiert Rechenzentrumskapazität für Ihre Bereitstellungen. Diese Option bietet Ihnen zusätzliche Sicherheit, dass die VM-Instanzen gestartet werden können, wenn sie benötigt werden.
+ Wenn Sie eine reservierte VM-Instanz erwerben, wählen Sie die Flexibilität bei der Instanzgröße oder die Kapazitätspriorität aus. Bei Auswahl der Flexibilität bei der Instanzgröße wird der Reservierungsrabatt auf weitere VMs in der [Gruppe mit VMs derselben Größe](../../virtual-machines/reserved-vm-instance-size-flexibility.md) angewendet. Die Kapazitätspriorität bestimmt die Rechenzentrumskapazität, die für Ihre Bereitstellungen am wichtigsten ist. Diese Option bietet Ihnen zusätzliche Sicherheit, dass die VM-Instanzen gestartet werden können, wenn sie benötigt werden.
 
 Wenn der Reservierungsumfang „Freigegeben“ lautet, ist die Flexibilität bei der Instanzgröße standardmäßig aktiviert. Die Rechenzentrumskapazität wird bei VM-Bereitstellungen nicht priorisiert.
 
@@ -121,9 +134,9 @@ Gehen Sie wie folgt vor, um die Optimierungseinstellung für die Reservierung zu
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Klicken Sie auf **Alle Dienste** > **Reservierungen**.
 3. Wählen Sie die Reservierung aus.
-4. Wählen Sie **Einstellungen** > **Konfiguration** aus.  
+4. Wählen Sie **Einstellungen** > **Konfiguration** aus.
   ![Beispiel für das Konfigurationselement](./media/manage-reserved-vm-instance/add-product03.png)
-5. Ändern Sie die Einstellung **Optimiert für**.  
+5. Ändern Sie die Einstellung **Optimiert für**.
   ![Beispiel für die Einstellung „Optimiert für“](./media/manage-reserved-vm-instance/instance-size-flexibility-option.png)
 
 ## <a name="optimize-reservation-use"></a>Optimieren der Reservierungsnutzung
@@ -138,8 +151,8 @@ Die Reservierungsnutzung kann unter anderem im Azure-Portal angezeigt werden.
 2. Wählen Sie **Alle Dienste** > [**Reservierungen**](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade) aus, und sehen Sie sich den Wert unter **Nutzung (%)** für eine Reservierung an.  
   ![Abbildung: Reservierungsliste](./media/manage-reserved-vm-instance/reservation-list.png)
 3. Wählen Sie eine Reservierung aus.
-4. Überprüfen Sie den Nutzungstrend für die Reservierung im Zeitverlauf.  
-  ![Abbildung: Reservierungsnutzung ](./media/manage-reserved-vm-instance/reservation-utilization-trend.png)
+4. Überprüfen Sie den Nutzungstrend für die Reservierung im Zeitverlauf.
+  ![Abbildung der Reservierungsnutzung](./media/manage-reserved-vm-instance/reservation-utilization-trend.png)
 
 ### <a name="view-reservation-use-with-api"></a>Anzeigen der Reservierungsnutzung per API
 

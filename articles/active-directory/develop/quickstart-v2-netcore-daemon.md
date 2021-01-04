@@ -13,12 +13,12 @@ ms.date: 10/05/2020
 ms.author: jmprieur
 ms.reviewer: marsma
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: d732d2fd8b97ca61222accc21c9930ed8c5c5d3a
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 7c0efbae3576a5b57433fe70885fd97aae5e87e3
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95993889"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107939"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-using-console-apps-identity"></a>Schnellstart: Abrufen eines Tokens und Aufrufen der Microsoft Graph-API über die Identität einer Konsolen-App
 
@@ -49,17 +49,17 @@ Für diese Schnellstartanleitung ist [.NET Core 3.1](https://www.microsoft.com/
 > #### <a name="step-1-register-your-application"></a>Schritt 1: Anwendung registrieren
 > Führen Sie die folgenden Schritte aus, um Ihre Anwendung zu registrieren und Ihrer Projektmappe manuell die Registrierungsinformationen Ihrer App hinzuzufügen:
 >
-> 1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim [Azure-Portal](https://portal.azure.com) an.
-> 1. Wenn Sie mit Ihrem Konto auf mehrere Mandanten zugreifen können, klicken Sie rechts oben auf Ihr Konto, und legen Sie Ihre Portalsitzung auf den gewünschten Azure AD-Mandanten fest.
-> 1. Navigieren Sie in Microsoft Identity Platform für Entwickler zur Seite [App-Registrierungen](https://go.microsoft.com/fwlink/?linkid=2083908), indem Sie in der Suchleiste des Azure-Portals nach **App-Registrierungen** suchen.
-> 1. Wählen Sie **Neue Registrierung** aus.
-> 1. Geben Sie auf der daraufhin angezeigten Seite **Anwendung registrieren** die Registrierungsinformationen Ihrer Anwendung ein.
-> 1. Geben Sie im Abschnitt **Name** einen aussagekräftigen Anwendungsnamen ein, der den Benutzern der App angezeigt wird, z.B. `Daemon-console`. Wählen Sie anschließend **Registrieren**, um die Anwendung zu erstellen.
-> 1. Wählen Sie nach Abschluss der Registrierung das Menü **Zertifikate & Geheimnisse**.
-> 1. Wählen Sie unter **Geheime Clientschlüssel** die Option **+ Neuer geheimer Clientschlüssel**. Geben Sie ihm einen Namen, und wählen Sie **Hinzufügen**. Kopieren Sie das Geheimnis an einen sicheren Speicherort. Sie benötigen das Geheimnis zur Verwendung in Ihrem Code, und es wird nicht erneut im Portal angezeigt.
-> 1. Wählen Sie nun das Menü **API-Berechtigungen**, die Schaltfläche **+ Berechtigung hinzufügen** und dann die Option **Microsoft Graph**.
+> 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+> 1. Wenn Sie Zugriff auf mehrere Mandanten haben, verwenden Sie im Menü am oberen Rand den Filter **Verzeichnis + Abonnement** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::, um den Mandanten auszuwählen, für den Sie eine Anwendung registrieren möchten.
+> 1. Suchen Sie nach **Azure Active Directory**, und wählen Sie diese Option aus.
+> 1. Wählen Sie unter **Verwalten** Folgendes aus: **App-Registrierungen** > **Neue Registrierung**.
+> 1. Geben Sie unter **Name** einen Namen für Ihre Anwendung ein (beispielsweise `Daemon-console`). Benutzern Ihrer App wird wahrscheinlich dieser Namen angezeigt. Sie können ihn später ändern.
+> 1. Wählen Sie **Registrieren** aus, um die Anwendung zu erstellen.
+> 1. Wählen Sie unter **Verwalten** die Option **Zertifikate und Geheimnisse** aus.
+> 1. Wählen Sie unter **Geheimer Clientschlüssel** die Option **Neuer geheimer Clientschlüssel** aus, geben Sie einen Namen ein, und wählen Sie dann **Hinzufügen** aus. Notieren Sie den Wert für den geheimen Schlüssel an einem sicheren Ort, damit Sie ihn in einem späteren Schritt verwenden können.
+> 1. Wählen Sie unter **Verwalten** die Optionen **API-Berechtigungen** > **Berechtigung hinzufügen** aus. Wählen Sie **Microsoft Graph**.
 > 1. Wählen Sie **Anwendungsberechtigungen**.
-> 1. Wählen Sie unter dem Knoten **Benutzer** die Option **User.Read.All** und dann **Berechtigungen hinzufügen**.
+> 1. Wählen Sie unter dem Knoten **Benutzer** die Option **User.Read.All** und dann **Berechtigungen hinzufügen** aus.
 
 > [!div class="sxs-lookup" renderon="portal"]
 > ### <a name="download-and-configure-your-quickstart-app"></a>Herunterladen und Konfigurieren Ihrer Schnellstart-App
@@ -121,7 +121,7 @@ Wenn Sie zu diesem Zeitpunkt versuchen, die Anwendung auszuführen, wird der Feh
 ##### <a name="global-tenant-administrator"></a>Globaler Mandantenadministrator
 
 > [!div renderon="docs"]
-> Wenn Sie globaler Mandantenadministrator sind, navigieren Sie im Azure-Portal zu **Unternehmensanwendungen** > klicken Sie auf Ihre App-Registrierung > wählen Sie im linken Navigationsbereich im Abschnitt „Sicherheit“ die Option **Berechtigungen** aus. Klicken Sie auf die große Schaltfläche mit der Bezeichnung **Administratorzustimmung für "{Mandantenname}" erteilen** (wobei {Mandantenname} der Name Ihres Verzeichnisses ist).
+> Wenn Sie globaler Mandantenadministrator sind, navigieren Sie im Azure-Portal zu **Unternehmensanwendungen**, wählen Sie Ihre App-Registrierung und dann im linken Navigationsbereich im Abschnitt „Sicherheit“ die Option **Berechtigungen** aus. Wählen Sie die große Schaltfläche mit der Bezeichnung **Administratorzustimmung für "{Mandantenname}" erteilen** aus. (Dabei ist {Mandantenname} der Name Ihres Verzeichnisses.)
 
 > [!div renderon="portal" class="sxs-lookup"]
 > Gehen Sie als globaler Administrator wie folgt vor: Navigieren Sie zur Seite **API-Berechtigungen**, und wählen Sie **Administratorzustimmung für <Mandantennamen_hier_eingeben> erteilen**.

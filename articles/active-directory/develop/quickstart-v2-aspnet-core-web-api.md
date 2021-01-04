@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/22/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: aa0a001f9c35202939eeb4a7752803b998a3acf7
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: e85e433e1b1b31470fc8d7dee24353fd719b64e2
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94562014"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97031180"
 ---
 # <a name="quickstart-protect-an-aspnet-core-web-api-with-microsoft-identity-platform"></a>Schnellstart: Schützen einer ASP.NET Core-Web-API mit Microsoft Identity Platform
 
@@ -38,12 +38,10 @@ In dieser Schnellstartanleitung laden Sie ein ASP.NET Core-Web-API-Codebeispiel
 > 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 > 1. Wenn Sie Zugriff auf mehrere Mandanten haben, verwenden Sie im Menü am oberen Rand den Filter **Verzeichnis + Abonnement** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::, um den Mandanten auszuwählen, für den Sie eine Anwendung registrieren möchten.
 > 1. Suchen Sie nach **Azure Active Directory**, und wählen Sie diese Option aus.
-> 1. Wählen Sie unter **Verwalten** die Option **App-Registrierungen** und dann **Neue Registrierung** aus.
+> 1. Wählen Sie unter **Verwalten** Folgendes aus: **App-Registrierungen** > **Neue Registrierung**.
 > 1. Geben Sie unter **Name** einen Namen für Ihre Anwendung ein (beispielsweise `AspNetCoreWebApi-Quickstart`). Benutzern Ihrer App wird wahrscheinlich dieser Namen angezeigt. Sie können ihn später ändern.
 > 1. Wählen Sie **Registrieren**.
-> 1. Wählen Sie unter **Verwalten** die Option **Eine API verfügbar machen** aus.
-> 1. Wählen Sie **Bereich hinzufügen** und anschließend **Speichern und fortfahren** aus, um den standardmäßigen **Anwendungs-ID-URI** zu akzeptieren.
-> 1. Geben Sie im Bereich **Bereich hinzufügen** die folgenden Werte ein:
+> 1. Wählen Sie unter **Verwalten** die Optionen **Eine API verfügbar machen** > **Bereich hinzufügen** aus. Übernehmen Sie den standardmäßigen **Anwendungs-ID-URI**, indem Sie **Speichern und fortfahren** auswählen. Geben Sie dann die folgenden Informationen ein:
 >    - **Bereichsname**: `access_as_user`
 >    - **Zum Einwilligen berechtigte Personen**: **Administratoren und Benutzer**
 >    - **Anzeigename der Administratoreinwilligung**: `Access AspNetCoreWebApi-Quickstart`

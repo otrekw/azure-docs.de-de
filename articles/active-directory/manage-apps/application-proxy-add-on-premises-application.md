@@ -8,19 +8,22 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/04/2020
+ms.date: 12/10/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 5d0b2df551c73e8c9b24d80280bbc993d9b361b7
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: bcb484d62b7c4add7e1ab5562c19417a90cfb7e1
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96928466"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97587552"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Tutorial: Hinzufügen einer lokalen Anwendung für den Remotezugriff über den Anwendungsproxy in Azure Active Directory
 
 Mit einem Anwendungsproxydienst in Azure Active Directory (Azure AD) können Benutzer auf lokale Anwendungen zugreifen, indem sie sich mit ihrem Azure AD-Konto anmelden. In diesem Tutorial wird Ihre Umgebung auf die Verwendung des Anwendungsproxys vorbereitet. Wenn Ihre Umgebung bereit ist, fügen Sie im Azure-Portal Ihrem Azure AD-Mandanten eine lokale Anwendung hinzu.
+
+Connectors sind ein wichtiger Bestandteil des Anwendungsproxys. Weitere Informationen zu Connectors finden Sie unter [Grundlegendes zu Azure AD-Anwendungsproxyconnectors](application-proxy-connectors.md).
 
 In diesem Tutorial wird Folgendes durchgeführt:
 
@@ -74,7 +77,7 @@ Auf dem Windows-Connectorserver muss TLS 1.2 aktiviert werden, bevor Sie den Anw
 So aktivieren Sie TLS 1.2
 
 1. Legen Sie die folgenden Registrierungsschlüssel fest:
-    
+
    ```
    Windows Registry Editor Version 5.00
 
@@ -191,7 +194,7 @@ Nun haben Sie Ihre Umgebung vorbereitet, einen Connector installiert und sind be
 1. Melden Sie sich als Administrator beim [Azure-Portal](https://portal.azure.com/) an.
 2. Wählen Sie im Navigationsbereich auf der linken Seite die Option **Azure Active Directory**.
 3. Wählen Sie **Unternehmensanwendungen** und dann **Neue Anwendung**.
-4. Wählen Sie im Abschnitt **Eigene Anwendung erstellen** die Option **Configure Application Proxy for secure remote access to an on-premise application** (Anwendungsproxy für sicheren Remotezugriff auf eine lokale Anwendung konfigurieren) aus.
+4. Wählen Sie die Schaltfläche **Lokale Anwendung hinzufügen** aus, die etwa in der Mitte der Seite im Abschnitt **Lokale Anwendungen** angezeigt wird. Alternativ können Sie oben auf der Seite die Option **Eigene Anwendung erstellen** und dann **Anwendungsproxy für sicheren Remotezugriff auf eine lokale Anwendung konfigurieren** auswählen.
 5. Geben Sie im Abschnitt **Fügen Sie Ihre eigene lokale Anwendung hinzu** die folgenden Informationen zu Ihrer Anwendung an:
 
     | Feld | BESCHREIBUNG |

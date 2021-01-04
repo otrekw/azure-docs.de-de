@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/03/2020
+ms.date: 12/10/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7cfcaec38a939291090da7d2229c4a95f984bf28
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 5151f97386ebb6b06be2320505771dc8f47d59a0
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360439"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107531"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-key-vault"></a>Tutorial: Verwenden einer systemseitig zugewiesenen verwalteten Identität eines virtuellen Linux-Computers für den Zugriff auf Azure Key Vault 
 
@@ -36,7 +36,7 @@ Folgendes wird vermittelt:
  
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Kenntnisse im Bereich verwaltete Identitäten. Wenn Sie mit der Funktion für verwaltete Identitäten für Azure-Ressourcen nicht vertraut sind, finden Sie hier eine [Übersicht](overview.md). 
+- Grundlegende Kenntnisse im Bereich verwaltete Identitäten. Wenn Sie mit der Funktion für verwaltete Identitäten für Azure-Ressourcen nicht vertraut sind, finden Sie hier eine [Übersicht](overview.md). 
 - Ein Azure-Konto. [Registrieren Sie sich für ein kostenloses Azure-Konto.](https://azure.microsoft.com/free/)
 - Berechtigungen vom Typ „Besitzer“ für den entsprechenden Bereich (Ihr Abonnement oder die Ressourcengruppe), um die erforderlichen Schritte zur Ressourcenerstellung und Rollenverwaltung durchführen zu können. Wenn Sie Unterstützung bei der Rollenzuweisung benötigen, finden Sie weitere Informationen unter [Verwenden der rollenbasierten Zugriffssteuerung zum Verwalten des Zugriffs auf Ihre Azure-Abonnementressourcen](../../role-based-access-control/role-assignments-portal.md).
 - Außerdem benötigen Sie einen virtuellen Linux-Computer, auf dem systemseitig zugewiesene verwaltete Identitäten aktiviert sind.
@@ -62,6 +62,20 @@ Zunächst müssen Sie eine Key Vault-Instanz erstellen und der systemseitig zuge
 1. Wählen Sie **Überprüfen + erstellen** aus.
 1. Klicken Sie auf **Erstellen**
 
+### <a name="create-a-secret"></a>Erstellen eines Geheimnisses
+
+Fügen Sie als Nächstes der Key Vault-Instanz ein Geheimnis hinzu, das Sie später mithilfe von Code abrufen können, der auf dem virtuellen Computer ausgeführt wird. Im Rahmen dieses Tutorials wird PowerShell verwendet. Die gleichen Konzepte gelten jedoch für jeden Code, der auf diesem virtuellen Computer ausgeführt wird.
+
+1. Navigieren Sie zur neu erstellten Key Vault-Instanz.
+1. Wählen Sie **Geheimnisse** aus, und klicken Sie auf **Hinzufügen**.
+1. Wählen Sie die Option **Generieren/importieren** aus.
+1. Lassen Sie auf dem Bildschirm **Geheimnis erstellen** unter **Uploadoptionen** die Option **Manuell** ausgewählt.
+1. Geben Sie einen Namen und einen Wert für das Geheimnis ein.  Dabei kann es sich um einen beliebigen Wert handeln. 
+1. Lassen Sie das Aktivierungs- und das Ablaufdatum leer, und übernehmen Sie für **Aktiviert** die ausgewählte Option **Ja**. 
+1. Klicken Sie auf **Erstellen**, um das Geheimnis zu erstellen.
+
+   ![Erstellen eines Geheimnisses](./media/tutorial-linux-vm-access-nonaad/create-secret.png)
+
 ## <a name="grant-access"></a>Gewähren von Zugriff
 
 Der vom virtuellen Computer verwalteten Identität muss Zugriff gewährt werden, damit sie das in Key Vault gespeicherte Geheimnis lesen kann.
@@ -77,20 +91,6 @@ Der vom virtuellen Computer verwalteten Identität muss Zugriff gewährt werden,
 1. Wählen Sie **Hinzufügen** aus.
 1. Wählen Sie **Speichern** aus.
 
-## <a name="create-a-secret"></a>Erstellen eines Geheimnisses
-
-Fügen Sie als Nächstes der Key Vault-Instanz ein Geheimnis hinzu, das Sie später mithilfe von Code abrufen können, der auf dem virtuellen Computer ausgeführt wird. Im Rahmen dieses Tutorials wird PowerShell verwendet. Die gleichen Konzepte gelten jedoch für jeden Code, der auf diesem virtuellen Computer ausgeführt wird.
-
-1. Navigieren Sie zur neu erstellten Key Vault-Instanz.
-1. Wählen Sie **Geheimnisse** aus, und klicken Sie auf **Hinzufügen**.
-1. Wählen Sie die Option **Generieren/importieren** aus.
-1. Lassen Sie auf dem Bildschirm **Geheimnis erstellen** unter **Uploadoptionen** die Option **Manuell** ausgewählt.
-1. Geben Sie einen Namen und einen Wert für das Geheimnis ein.  Dabei kann es sich um einen beliebigen Wert handeln. 
-1. Lassen Sie das Aktivierungs- und das Ablaufdatum leer, und übernehmen Sie für **Aktiviert** die ausgewählte Option **Ja**. 
-1. Klicken Sie auf **Erstellen**, um das Geheimnis zu erstellen.
-
-   ![Erstellen eines Geheimnisses](./media/tutorial-linux-vm-access-nonaad/create-secret.png)
- 
 ## <a name="access-data"></a>Zugreifen auf Daten
 
 Zum Ausführen dieser Schritte benötigen Sie einen SSH-Client.  Wenn Sie Windows verwenden, können Sie den SSH-Client im [Windows-Subsystem für Linux](/windows/wsl/about) verwenden. Wenn Sie Hilfe beim Konfigurieren der SSH-Clientschlüssel benötigen, lesen Sie die Informationen unter [Vorgehensweise: Verwenden von SSH-Schlüsseln mit Windows in Azure](../../virtual-machines/linux/ssh-from-windows.md) oder [Erstellen und Verwenden eines SSH-Schlüsselpaars (öffentlich und privat) für virtuelle Linux-Computer in Azure](../../virtual-machines/linux/mac-create-ssh-keys.md).
@@ -121,7 +121,7 @@ Zum Ausführen dieser Schritte benötigen Sie einen SSH-Client.  Wenn Sie Window
     Sie können dieses Zugriffstoken zur Authentifizierung bei Azure Key Vault verwenden.  Die nächste CURL-Anforderung zeigt, wie Sie mithilfe von CURL und der Key Vault-REST-API ein Geheimnis aus der Key Vault lesen.  Sie benötigen die URL Ihrer Key Vaults. Diese befindet sich im Abschnitt **Zusammenfassung** der Seite **Übersicht** der Key Vault.  Darüber hinaus benötigen Sie auch das Zugriffstoken, das Sie im vorhergehenden Aufruf abgerufen haben. 
         
     ```bash
-    curl https://<YOUR-KEY-VAULT-URL>/secrets/<secret-name>?api-version=2016-10-01 -H "Authorization: Bearer <ACCESS TOKEN>" 
+    curl 'https://<YOUR-KEY-VAULT-URL>/secrets/<secret-name>?api-version=2016-10-01' -H "Authorization: Bearer <ACCESS TOKEN>" 
     ```
     
     Die Antwort sieht so aus: 

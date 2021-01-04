@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 11/03/2020
+ms.date: 12/11/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 683f0e070ad77add62ed76eabd70b42ba15f012e
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 558f4792a055fc491f15600ecc5502c3a114a94b
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498131"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97360219"
 ---
 # <a name="enforce-a-minimum-required-version-of-transport-layer-security-tls-for-requests-to-a-storage-account"></a>Erzwingen der erforderliche Mindestversion der Transport Layer Security (TLS) für Anforderungen an ein Speicherkonto
 
@@ -86,6 +86,9 @@ StorageBlobLogs
 ## <a name="remediate-security-risks-with-a-minimum-version-of-tls"></a>Beheben von Sicherheitsrisiken mit einer TLS-Mindestversion
 
 Wenn Sie sicher sind, dass der Datenverkehr von Clients, die ältere Versionen von TLS verwenden, minimal ist oder dass es akzeptabel ist, dass bei Anforderungen, die mit einer älteren Version von TLS gestellt wurden, Fehler auftreten, dann können Sie mit der Erzwingung einer TLS-Mindestversion für Ihr Speicherkonto beginnen. Die Anforderung, dass Clients eine TLS-Mindestversion verwenden müssen, um Anforderungen an ein Speicherkonto zu stellen, ist Teil einer Strategie zur Minimierung der Sicherheitsrisiken für Ihre Daten.
+
+> [!IMPORTANT]
+> Wenn Sie einen Dienst nutzen, der eine Verbindung mit Azure Storage herstellt, stellen Sie sicher, dass der Dienst die entsprechende Version von TLS zum Senden von Anforderungen an Azure Storage verwendet, bevor Sie die erforderliche Mindestversion für ein Speicherkonto festlegen.
 
 ### <a name="configure-the-minimum-tls-version-for-a-storage-account"></a>Konfigurieren der TLS-Mindestversion für ein Speicherkonto
 
@@ -339,6 +342,23 @@ Nachdem Sie die Richtlinie mit der Auswirkung „Deny“ erstellt und einem Bere
 Die folgende Abbildung zeigt den Fehler, der beim Erstellen eines Speicherkontos mit der TLS-Mindestversion von TLS 1.0 (dem Standard für ein neues Konto) auftritt, wenn eine Richtlinie mit der Auswirkung „Deny“ erfordert, dass die TLS-Mindestversion auf TLS 1.2 festgelegt wird.
 
 :::image type="content" source="media/transport-layer-security-configure-minimum-version/deny-policy-error.png" alt-text="Screenshot mit dem Fehler, der beim Erstellen eines Speicherkontos bei einem Verstoß gegen die Richtlinie auftritt":::
+
+## <a name="permissions-necessary-to-require-a-minimum-version-of-tls"></a>Erforderliche Berechtigungen zum Anfordern einer Mindestversion von TLS
+
+Zum Festlegen der Eigenschaft **MinimumTlsVersion** für das Speicherkonto muss ein Benutzer Berechtigungen zum Erstellen und Verwalten von Speicherkonten haben. Azure RBAC-Rollen (Role-Based Access Control, Rollenbasierte Zugriffssteuerung), die diese Berechtigungen bieten, enthalten die Aktion **Microsoft.Storage/storageAccounts/write** oder **Microsoft.Storage/storageAccounts/\** _. In diese Aktion sind folgende Rollen integriert:
+
+- Die Azure Resource Manager-Rolle [Besitzer](../../role-based-access-control/built-in-roles.md#owner)
+- Die Azure Resource Manager-Rolle [Mitwirkender](../../role-based-access-control/built-in-roles.md#contributor)
+- Die Rolle [Speicherkontomitwirkender](../../role-based-access-control/built-in-roles.md#storage-account-contributor)
+
+Diese Rollen bieten keinen Zugriff auf Daten in einem Speicherkonto über Azure Active Directory (Azure AD). Sie enthalten jedoch die Aktion „_*Microsoft.Storage/storageAccounts/listkeys/action**“, die Zugriff auf die Kontozugriffsschlüssel gewährt. Bei dieser Berechtigung kann ein Benutzer mithilfe der Kontozugriffsschlüssel auf alle Daten in einem Speicherkonto zuzugreifen.
+
+Rollenzuweisungen müssen auf die Ebene des Speicherkontos oder höher eingeschränkt werden, damit ein Benutzer eine Mindestversion von TLS für das Speicherkonto anfordern darf. Weitere Informationen zum Rollenbereich finden Sie unter [Grundlegendes zum Bereich für Azure RBAC](../../role-based-access-control/scope-overview.md).
+
+Beschränken Sie die Zuweisung dieser Rollen unbedingt auf diejenigen Benutzer, denen es möglich sein muss, ein Speicherkonto zu erstellen oder dessen Eigenschaften zu aktualisieren. Verwenden Sie das Prinzip der geringsten Rechte, um sicherzustellen, dass Benutzer die geringsten Berechtigungen haben, die sie zum Ausführen ihrer Aufgaben benötigen. Weitere Informationen zum Verwalten des Zugriffs mit Azure RBAC finden Sie unter [Bewährte Methoden für Azure RBAC](../../role-based-access-control/best-practices.md).
+
+> [!NOTE]
+> Die zu „Administrator für klassisches Abonnement“ gehörigen Rollen „Dienstadministrator“ und „Co-Administrator“ schließen die Entsprechung der Azure Resource Manager-Rolle [Besitzer](../../role-based-access-control/built-in-roles.md#owner) ein. Weil die Rolle **Besitzer** alle Aktionen einschließt, kann ein Benutzer mit einer dieser administrativen Rollen auch Speicherkonten erstellen und verwalten. Weitere Informationen finden Sie unter [Administratorrollen für klassische Abonnements, Azure-Rollen und Azure AD-Rollen](../../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles).
 
 ## <a name="network-considerations"></a>Überlegungen zu Netzwerken
 

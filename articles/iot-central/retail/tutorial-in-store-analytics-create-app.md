@@ -11,12 +11,12 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/12/2019
-ms.openlocfilehash: a15ccd6d67b4819ba5dd6233a2a001015037c404
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: fc8928c9f64e323aafb29c9b1e717cc5c2ab6691
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92165671"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97346706"
 ---
 # <a name="tutorial-create-an-in-store-analytics-application-in-azure-iot-central"></a>Tutorial: Erstellen einer Anwendung für die In-Store-Analyse in Azure IoT Central
 
@@ -236,7 +236,7 @@ Führen Sie die Schritte in den folgenden beiden Artikeln aus, um eine Verbindun
 ## <a name="add-rules-and-actions"></a>Hinzufügen von Regeln und Aktionen
 Als Teil der Verwendung von Sensoren in Ihrer Azure IoT Central-Anwendung zur Überwachung von Umgebungsbedingungen können Sie Regeln erstellen, mit denen Aktionen ausgeführt werden, wenn bestimmte Bedingungen erfüllt sind. Eine Regel ist einer Gerätevorlage und einem oder mehreren Geräten zugeordnet und enthält Bedingungen, die aufgrund von Gerätetelemetriedaten oder Ereignissen erfüllt sein müssen. Einer Regel sind zudem eine oder mehrere Aktionen zugeordnet. Die Aktionen können das Senden von E-Mail-Benachrichtigungen oder das Auslösen einer Webhook-Aktion zum Senden von Daten an andere Dienste umfassen. Die Anwendungsvorlage **In-store analytics - checkout** enthält einige vordefinierte Regeln für die in der Anwendung verwendeten Geräte.
 
-In diesem Abschnitt erstellen Sie eine neue Regel, die die maximale relative Luftfeuchtigkeit basierend auf den Telemetriedaten des RuuviTag-Sensors überprüft. Sie fügen der Regel eine Aktion hinzu, sodass die Anwendung eine E-Mail sendet, wenn die Luftfeuchtigkeit den maximalen Wert überschreitet. 
+In diesem Abschnitt erstellen Sie eine neue Regel, die die maximale relative Luftfeuchtigkeit basierend auf den Telemetriedaten des RuuviTag-Sensors überprüft. Sie fügen der Regel eine Aktion hinzu, damit die Anwendung eine E-Mail sendet, wenn die Luftfeuchtigkeit den maximalen Wert überschreitet. 
 
 So erstellen Sie eine Regel: 
 

@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova
 ms.date: 12/14/2018
-ms.openlocfilehash: 413786cf8946c1ffbb76bd0e18eae7c7ba16a9c1
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 9b2333e38415a2c0ad50ce36c213ead711c70ab4
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790745"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928799"
 ---
 # <a name="quickstart-restore-a-database-to-azure-sql-managed-instance-with-ssms"></a>Schnellstart: Wiederherstellen einer Datenbank in Azure SQL Managed Instance mit SSMS
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -51,6 +51,9 @@ Führen Sie in SQL Server Management Studio die folgenden Schritte aus, um die W
 1. Öffnen Sie SSMS, und stellen Sie eine Verbindung mit Ihrer verwalteten Instanz her.
 2. Klicken Sie im **Objekt-Explorer** mit der rechten Maustaste auf Ihre verwaltete Instanz, und wählen Sie **Neue Abfrage** aus, um ein neues Abfragefenster zu öffnen.
 3. Führen Sie das folgende SQL-Skript aus. Dieses Skript verwendet ein vorkonfiguriertes Speicherkonto und einen SAS-Schlüssel zum [Erstellen von Anmeldeinformationen](/sql/t-sql/statements/create-credential-transact-sql) in Ihrer verwalteten Instanz.
+ 
+   > [!IMPORTANT]
+   > `CREDENTIAL` muss dem Containerpfad entsprechen, mit `https` beginnen und darf nicht mit einem Schrägstrich enden. `IDENTITY` muss den Wert `SHARED ACCESS SIGNATURE` haben. `SECRET` muss das Shared Access Signature-Token sein und darf kein vorangestelltes `?` enthalten.
 
    ```sql
    CREATE CREDENTIAL [https://mitutorials.blob.core.windows.net/databases]
@@ -58,7 +61,7 @@ Führen Sie in SQL Server Management Studio die folgenden Schritte aus, um die W
    , SECRET = 'sv=2017-11-09&ss=bfqt&srt=sco&sp=rwdlacup&se=2028-09-06T02:52:55Z&st=2018-09-04T18:52:55Z&spr=https&sig=WOTiM%2FS4GVF%2FEEs9DGQR9Im0W%2BwndxW2CQ7%2B5fHd7Is%3D'
    ```
 
-    ![erstellen von anmeldeinformationen](./media/restore-sample-database-quickstart/credential.png)
+    ![Erstellen von Anmeldeinformationen](./media/restore-sample-database-quickstart/credential.png)
 
 4. Führen Sie zum Überprüfen Ihrer Anmeldeinformationen das folgende Skript aus. Dieses Skript verwendet eine [Container](https://azure.microsoft.com/services/container-instances/)-URL, um eine Sicherungsdateiliste abzurufen.
 

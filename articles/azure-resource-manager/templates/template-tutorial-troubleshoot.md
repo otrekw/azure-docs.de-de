@@ -5,12 +5,12 @@ author: mumian
 ms.date: 01/15/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 7a44edc7cd09709f14415fa0a92e63558001d46d
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 31c4e6383b5eaea2bb66dc1baafa0fbff4918a7c
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96928527"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589116"
 ---
 # <a name="tutorial-troubleshoot-arm-template-deployments"></a>Tutorial: Problembehandlung bei Bereitstellungen von ARM-Vorlagen
 
@@ -43,7 +43,7 @@ Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie F
 
 Öffnen Sie über [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/) eine Vorlage namens [Erstellen eines Standardspeicherkontos](https://azure.microsoft.com/resources/templates/101-storage-account-create/), und erzeugen Sie zwei Vorlagenprobleme.
 
-1. Wählen Sie in Visual Studio Code **Datei**>**Datei öffnen** aus.
+1. Wählen Sie in Visual Studio Code **Datei** > **Datei öffnen** aus.
 2. Fügen Sie in **Dateiname** die folgende URL ein:
 
     ```url
@@ -51,16 +51,16 @@ Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie F
     ```
 
 3. Wählen Sie **Öffnen** aus, um die Datei zu öffnen.
-4. Ändern Sie die Zeile **apiVersion** in folgende Zeile:
+4. Ändern Sie die Zeile `apiVersion` in folgende Zeile:
 
     ```json
     "apiVersion1": "2018-07-02",
     ```
 
-    - **apiVersion1** ist ein ungültiger Elementname. Dies ist ein Überprüfungsfehler.
-    - Die API-Version muss „2018-07-01“ sein.  Dies ist ein Bereitstellungsfehler.
+    - `apiVersion1` ist ein ungültiger Elementname. Dies ist ein Überprüfungsfehler.
+    - Die API-Version muss `"2018-07-01"` sein.  Dies ist ein Bereitstellungsfehler.
 
-5. Wählen Sie **Datei**>**Speichern unter** aus, um die Datei als **azuredeploy.json** auf dem lokalen Computer zu speichern.
+5. Wählen Sie **Datei** > **Speichern unter** aus, um die Datei als _azuredeploy.json_ auf dem lokalen Computer zu speichern.
 
 ## <a name="troubleshoot-the-validation-error"></a>Behandeln des Überprüfungsfehlers
 
@@ -68,13 +68,13 @@ Informationen zum Bereitstellen der Vorlage Sie im Abschnitt [Bereitstellen der 
 
 Sie erhalten von der Shell einen ähnlichen Fehler wie:
 
-```
+```azurepowershell
 New-AzResourceGroupDeployment : 4:29:24 PM - Error: Code=InvalidRequestContent; Message=The request content was invalid and could not be deserialized: 'Could not find member 'apiVersion1' on object of type 'TemplateResource'. Path 'properties.template.resources[0].apiVersion1', line 36, position 24.'.
 ```
 
-Die Fehlermeldung gibt an, dass das Problem durch **apiVersion1** verursacht wird.
+Die Fehlermeldung gibt an, dass das Problem durch `apiVersion1` verursacht wird.
 
-Verwenden Sie Visual Studio Code, um das Problem zu beheben, indem Sie **apiVersion1** in **apiVersion** ändern und dann die Vorlage speichern.
+Verwenden Sie Visual Studio Code, um das Problem zu beheben, indem Sie `apiVersion1` in `apiVersion` ändern und dann die Vorlage speichern.
 
 ## <a name="troubleshoot-the-deployment-error"></a>Behandeln des Bereitstellungsfehlers
 
@@ -82,7 +82,7 @@ Informationen zum Bereitstellen der Vorlage Sie im Abschnitt [Bereitstellen der 
 
 Sie erhalten von der Shell einen ähnlichen Fehler wie:
 
-```
+```azurepowershell
 New-AzResourceGroupDeployment : 4:48:50 PM - Resource Microsoft.Storage/storageAccounts 'storeqii7x2rce77dc' failed with message '{
   "error": {
     "code": "NoRegisteredProviderFound",

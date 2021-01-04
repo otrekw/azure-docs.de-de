@@ -5,17 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: overview
-ms.date: 09/01/2020
+ms.date: 12/14/2020
+ms.custom: project-no-code
 ms.author: mimart
 author: msmimart
 manager: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60bfac3b80e772e7b359b1e926d5fb84e447a8fb
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+zone_pivot_groups: b2c-policy-type
+ms.openlocfilehash: d6d5ab13c8997dffee42a053ba498376ccbcb6d8
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89270736"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97585257"
 ---
 # <a name="add-conditional-access-to-user-flows-in-azure-active-directory-b2c"></a>Hinzufügen von bedingtem Zugriff zu Benutzerflows in Azure Active Directory B2C
 
@@ -34,6 +36,22 @@ Bedingter Zugriff wird in den neuesten Versionen von Benutzerflows unterstützt.
 - **Bedingter Zugriff:** Diese Einstellung sollte immer auf **Ein** festgelegt sein. Sie wird in der Regel nur bei der Problembehandlung oder Migration oder für Legacyimplementierungen auf **Aus** festgelegt.
 
 Weitere Informationen zu Identity Protection und bedingtem Zugriff in Azure AD B2C finden Sie [hier](conditional-access-identity-protection-overview.md). Informationen zur Einrichtung finden Sie [hier](conditional-access-identity-protection-setup.md).
+
+## <a name="prerequisites"></a>Voraussetzungen
+
+- Für die Erstellung von Risikoanmeldungsrichtlinien ist Azure AD B2C Premium 2 ist erforderlich. Für Premium P1-Mandanten können standort-, App- oder gruppenbasierte Richtlinien erstellt werden.
+- Zu Testzwecken können Sie [die Testwebanwendung `https://jwt.ms` registrieren](tutorial-register-applications.md). Hierbei handelt es sich um eine Microsoft-Webanwendung, die den decodierten Inhalt eines Tokens anzeigt. (Der Inhalt des Tokens verlässt niemals Ihren Browser.) 
+- Laden Sie zum Simulieren einer Risikoanmeldung den Tor-Browser herunter, und versuchen Sie, sich beim Benutzerflow-Endpunkt anzumelden.
+- [Erstellen Sie eine Richtlinie für bedingten Zugriff](conditional-access-identity-protection-setup.md), und verwenden Sie dabei die folgenden Einstellungen:
+   
+  - Wählen Sie für **Benutzer und Gruppen** den Testbenutzer aus. (Wählen Sie nicht **Alle Benutzer** aus. Andernfalls wird unter Umständen Ihre eigene Anmeldung blockiert.)
+  - Wählen Sie für **Cloud-Apps oder -aktionen** die Option **Apps auswählen** und anschließend Ihre Anwendung der vertrauenden Seite aus.
+  - Wählen Sie unter den Bedingungen die Option **Anmelderisiko** und die Risikostufen **Hoch**, **Mittel** und **Niedrig** aus.
+  - Wählen Sie für **Gewähren** die Option **Zugriff blockieren** aus.
+
+      ![Risikoerkennungen](media/conditional-access-identity-protection-setup/test-conditional-access-policy.png)
+
+::: zone pivot="b2c-user-flow"
 
 ## <a name="add-conditional-access-to-a-new-user-flow"></a>Hinzufügen von bedingtem Zugriff zu einem neuen Benutzerflow
 
@@ -89,19 +107,6 @@ Weitere Informationen zu Identity Protection und bedingtem Zugriff in Azure AD�
 
 Testen Sie den bedingten Zugriff im Benutzerflow, indem Sie [eine Richtlinie für bedingten Zugriff erstellen](conditional-access-identity-protection-setup.md) und bedingten Zugriff im Benutzerflow aktivieren, wie oben beschrieben. 
 
-### <a name="prerequisites"></a>Voraussetzungen
-
-- Für die Erstellung von Risikoanmeldungsrichtlinien ist Azure AD B2C Premium 2 ist erforderlich. Für Premium P1-Mandanten können standort-, App- oder gruppenbasierte Richtlinien erstellt werden.
-- Zu Testzwecken können Sie [die Testwebanwendung `https://jwt.ms` registrieren](tutorial-register-applications.md). Hierbei handelt es sich um eine Microsoft-Webanwendung, die den decodierten Inhalt eines Tokens anzeigt. (Der Inhalt des Tokens verlässt niemals Ihren Browser.) 
-- Laden Sie zum Simulieren einer Risikoanmeldung den Tor-Browser herunter, und versuchen Sie, sich beim Benutzerflow-Endpunkt anzumelden.
-- [Erstellen Sie eine Richtlinie für bedingten Zugriff](conditional-access-identity-protection-setup.md), und verwenden Sie dabei die folgenden Einstellungen:
-   
-   - Wählen Sie für **Benutzer und Gruppen** den Testbenutzer aus. (Wählen Sie nicht **Alle Benutzer** aus. Andernfalls wird unter Umständen Ihre eigene Anmeldung blockiert.)
-   - Wählen Sie für **Cloud-Apps oder -aktionen** die Option **Apps auswählen** und anschließend Ihre Anwendung der vertrauenden Seite aus.
-   - Wählen Sie unter den Bedingungen die Option **Anmelderisiko** und die Risikostufen **Hoch**, **Mittel** und **Niedrig** aus.
-   - Wählen Sie für **Gewähren** die Option **Zugriff blockieren** aus.
-
-      ![Risikoerkennungen](media/conditional-access-identity-protection-setup/test-conditional-access-policy.png)
 
 ### <a name="run-the-user-flow"></a>Ausführen des Benutzerflows
 
@@ -117,6 +122,16 @@ Testen Sie den bedingten Zugriff im Benutzerflow, indem Sie [eine Richtlinie fü
 
    ![Testen einer blockierten Anmeldung](media/conditional-access-identity-protection-setup/test-blocked-sign-in.png)
 
+::: zone-end
+
+::: zone pivot="b2c-custom-policy"
+
+## <a name="add-conditional-access-to-your-policy"></a>Hinzufügen des bedingten Zugriffs zu Ihrer Richtlinie
+
+Ein Beispiel für eine Richtlinie für bedingten Zugriff finden Sie auf [GitHub](https://github.com/azure-ad-b2c/samples/tree/master/policies/conditional-access).
+
+::: zone-end
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Anpassen der Benutzeroberfläche in Azure Active Directory B2C](customize-ui-overview.md)
+[Anpassen der Benutzeroberfläche in Azure Active Directory B2C](customize-ui-with-html.md)

@@ -1,21 +1,21 @@
 ---
 title: 'Tutorial: Hinzufügen einer Ressource zu einer Vorlage'
-description: In diesem Tutorial werden die Schritte zum Erstellen Ihrer ersten Azure Resource Manager-Vorlage beschrieben. Sie lernen die Syntax der Vorlagendatei kennen und erfahren, wie Sie ein Speicherkonto bereitstellen.
+description: In diesem Tutorial werden die Schritte zum Erstellen Ihrer ersten Azure Resource Manager-Vorlage (ARM-Vorlage) beschrieben. Sie lernen die Syntax der Vorlagendatei kennen und erfahren, wie Sie ein Speicherkonto bereitstellen.
 author: mumian
 ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: 58a6423944abca703a42b68044e58d86187457bc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 49cee5c98c4099e214a732371269e935db353152
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91614375"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106970"
 ---
 # <a name="tutorial-add-a-resource-to-your-arm-template"></a>Tutorial: Hinzufügen einer Ressource zu Ihrer ARM-Vorlage
 
-Im [vorherigen Tutorial](template-tutorial-create-first-template.md) haben Sie erfahren, wie Sie eine leere Vorlage erstellen und bereitstellen. Nun können Sie eine tatsächliche Ressource bereitstellen. In diesem Tutorial fügen Sie ein Speicherkonto hinzu. Das Tutorial dauert ungefähr **9 Minuten**.
+Im [vorherigen Tutorial](template-tutorial-create-first-template.md) haben Sie erfahren, wie Sie eine leere Azure Resource Manager-Vorlage (ARM-Vorlage) erstellen und bereitstellen. Nun können Sie eine tatsächliche Ressource bereitstellen. In diesem Tutorial fügen Sie ein Speicherkonto hinzu. Das Tutorial dauert ungefähr **9 Minuten**.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -27,7 +27,7 @@ Sie benötigen Visual Studio Code mit der Resource Manager-Tools-Erweiterung 
 
 Der hervorgehobene JSON-Code im folgenden Beispiel zeigt, wie Sie der vorhandenen Vorlage eine Speicherkontodefinition hinzufügen. Anstatt Abschnitte der Vorlage zu kopieren, kopieren Sie die gesamte Datei und ersetzen Ihre Vorlage durch den Inhalt der Datei.
 
-Ersetzen Sie **{provide-unique-name}** (einschließlich geschweifte Klammern) durch einen eindeutigen Speicherkontonamen.
+Ersetzen Sie `{provide-unique-name}` und die geschweiften Klammern `{}` durch einen eindeutigen Speicherkontonamen.
 
 > [!IMPORTANT]
 > Der Name des Speicherkontos muss innerhalb von Azure eindeutig sein. Der Name darf nur Kleinbuchstaben und Ziffern enthalten, und er darf maximal 24 Zeichen lang sein. Es sind verschiedene Benennungsmuster möglich. Sie können beispielsweise **store1** als Präfix verwenden und danach Ihre Initialen und das aktuelle Datum hinzufügen. Der Name könnte z. B. **store1abc09092019** lauten.
@@ -42,15 +42,15 @@ Vielleicht fragen Sie sich, wie Sie die zu verwendenden Eigenschaften für die e
 
 Jede Ressource, die Sie bereitstellen, verfügt mindestens über die folgenden drei Eigenschaften:
 
-- **Typ**: Der Typ der Ressource. Dieser Wert ist eine Kombination aus dem Namespace des Ressourcenanbieters und dem Ressourcentyp (z. B. „Microsoft.Storage/storageAccounts“).
-- **apiVersion**: Version der REST-API zum Erstellen der Ressource. Jeder Ressourcenanbieter veröffentlicht seine eigenen API-Versionen. Dieser Wert unterscheidet sich daher je nach Typ.
-- **name:** Der Name der Ressource.
+- `type`: Der Typ der Ressource. Dieser Wert ist eine Kombination aus dem Namespace des Ressourcenanbieters und dem Ressourcentyp (z. B. `Microsoft.Storage/storageAccounts`).
+- `apiVersion`: Version der REST-API zum Erstellen der Ressource. Jeder Ressourcenanbieter veröffentlicht seine eigenen API-Versionen. Dieser Wert unterscheidet sich daher je nach Typ.
+- `name` Der Name der Ressource.
 
-Die meisten Ressourcen verfügen auch über eine **location**-Eigenschaft, mit der die Region festgelegt wird, in der die Ressource bereitgestellt wird.
+Die meisten Ressourcen verfügen auch über eine `location`-Eigenschaft, mit der die Region festgelegt wird, in der die Ressource bereitgestellt wird.
 
 Die anderen Eigenschaften variieren je nach Ressourcentyp und API-Version. Das Verständnis der Beziehung zwischen der API-Version und den verfügbaren Eigenschaften ist wichtig. Wir werden daher ausführlicher darauf eingehen.
 
-In diesem Tutorial haben Sie der Vorlage ein Speicherkonto hinzugefügt. Diese API-Version finden Sie unter [storageAccounts 2019-04-01](/azure/templates/microsoft.storage/2019-04-01/storageaccounts). Bedenken Sie, dass Sie Ihrer Vorlage nicht alle Eigenschaften hinzugefügt haben. Viele der Eigenschaften sind optional. Der Microsoft.Storage-Ressourcenanbieter könnte eine neue API-Version veröffentlichen, ohne dass sich die von Ihnen bereitgestellte Version ändert. Sie können diese Version weiterhin verwenden und dabei sicher sein, dass die Ergebnisse Ihrer Bereitstellung immer konsistent sind.
+In diesem Tutorial haben Sie der Vorlage ein Speicherkonto hinzugefügt. Diese API-Version finden Sie unter [storageAccounts 2019-04-01](/azure/templates/microsoft.storage/2019-04-01/storageaccounts). Bedenken Sie, dass Sie Ihrer Vorlage nicht alle Eigenschaften hinzugefügt haben. Viele der Eigenschaften sind optional. Der `Microsoft.Storage`-Ressourcenanbieter könnte eine neue API-Version veröffentlichen, ohne dass sich die von Ihnen bereitgestellte Version ändert. Sie können diese Version weiterhin verwenden und dabei sicher sein, dass die Ergebnisse Ihrer Bereitstellung immer konsistent sind.
 
 Wenn Sie eine ältere API-Version anzeigen (z. B. [storageAccounts 2016-05-01](/azure/templates/microsoft.storage/2016-05-01/storageaccounts)), werden Sie feststellen, dass dort weniger Eigenschaften verfügbar sind.
 
@@ -60,7 +60,7 @@ Falls Sie sich entscheiden, die API-Version für eine Ressource zu ändern, müs
 
 Sie können die Vorlage bereitstellen, um das Speicherkonto zu erstellen. Verwenden Sie einen anderen Namen für Ihre Bereitstellung, damit Sie sie problemlos im Verlauf finden können.
 
-Falls Sie die Ressourcengruppe noch nicht erstellt haben, folgen Sie den Anweisungen unter [Erstellen einer Ressourcengruppe](template-tutorial-create-first-template.md#create-resource-group). Dieses Beispiel setzt voraus, dass Sie die Variable **templateFile** wie im [ersten Tutorial](template-tutorial-create-first-template.md#deploy-template) beschrieben auf den Pfad zur Vorlagendatei festgelegt haben.
+Falls Sie die Ressourcengruppe noch nicht erstellt haben, folgen Sie den Anweisungen unter [Erstellen einer Ressourcengruppe](template-tutorial-create-first-template.md#create-resource-group). Dieses Beispiel setzt voraus, dass Sie die Variable `templateFile` wie im [ersten Tutorial](template-tutorial-create-first-template.md#deploy-template) beschrieben auf den Pfad zur Vorlagendatei festgelegt haben.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -85,15 +85,15 @@ az deployment group create \
 ---
 
 > [!NOTE]
-> Wenn bei der Bereitstellung ein Fehler aufgetreten ist, verwenden Sie den Schalter **verbose**, um Informationen zu den erstellten Ressourcen abzurufen. Verwenden Sie den Schalter **debug**, um weitere Informationen zum Debuggen zu erhalten.
+> Wenn bei der Bereitstellung ein Fehler aufgetreten ist, verwenden Sie den Schalter `verbose`, um Informationen zu den erstellten Ressourcen abzurufen. Verwenden Sie den Schalter `debug`, um weitere Informationen zum Debuggen zu erhalten.
 
 Bei der Bereitstellung können die folgenden zwei Fehler auftreten:
 
-- Error: „Code=AccountNameInvalid; Message={provide-unique-name}“ ist kein gültiger Speicherkontoname. Ein Speicherkontoname muss zwischen 3 und 24 Zeichen lang sein und darf ausschließlich Ziffern und Kleinbuchstaben enthalten.
+- `Error: Code=AccountNameInvalid; Message={provide-unique-name}` ist kein gültiger Speicherkontoname. Ein Speicherkontoname muss zwischen 3 und 24 Zeichen lang sein und darf ausschließlich Ziffern und Kleinbuchstaben enthalten.
 
-    Ersetzen Sie in der Vorlage **{provide-unique-name}** durch einen eindeutigen Namen für das Speicherkonto.  Weitere Informationen finden Sie unter [Hinzufügen einer Ressource](#add-resource).
+    Ersetzen Sie in der Vorlage `{provide-unique-name}` durch einen eindeutigen Namen für das Speicherkonto. Weitere Informationen finden Sie unter [Hinzufügen einer Ressource](#add-resource).
 
-- Error: Code=StorageAccountAlreadyTaken; Message = Das Speicherkonto mit dem Namen „store1abc09092019“ ist bereits vergeben.
+- `Error: Code=StorageAccountAlreadyTaken; Message=The storage account named store1abc09092019` wird bereits verwendet.
 
     Verwenden Sie in der Vorlage einen anderen Speicherkontonamen.
 
@@ -122,7 +122,7 @@ Falls Sie keine weiteren Tutorials durchführen möchten, können Sie die bereit
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sie haben eine einfache Vorlage zum Bereitstellen eines Azure-Speicherkontos erstellt.  In den nächsten Tutorials erfahren Sie, wie Sie einer Vorlage Parameter, Variablen, Ressourcen und Ausgaben hinzufügen. Diese Features sind die Bausteine für weitaus komplexere Vorlagen.
+Sie haben eine einfache Vorlage zum Bereitstellen eines Azure-Speicherkontos erstellt. In den nächsten Tutorials erfahren Sie, wie Sie einer Vorlage Parameter, Variablen, Ressourcen und Ausgaben hinzufügen. Diese Features sind die Bausteine für weitaus komplexere Vorlagen.
 
 > [!div class="nextstepaction"]
 > [Hinzufügen von Parametern](template-tutorial-add-parameters.md)
