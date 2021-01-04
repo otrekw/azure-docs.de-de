@@ -12,12 +12,12 @@ ms.date: 02/18/2019
 ms.author: kenwith
 ms.reviewer: luleon, asteen
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: e6d3674aaa4c89f42c2e7b87a6be6cdc8ecabf64
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 596af29fe72a41b5a86a09e4e6d5072d63b6ac71
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97028273"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586345"
 ---
 # <a name="problems-signing-in-to-saml-based-single-sign-on-configured-apps"></a>Probleme beim Anmelden bei für SAML-basiertes einmaliges Anmelden konfigurierten Apps
 Zur Behandlung der unten aufgeführten Anmeldeprobleme werden folgende Vorgehensweisen empfohlen, um bessere Diagnosen zu erzielen und Lösungsschritte zu automatisieren:
@@ -33,7 +33,9 @@ So öffnen Sie die Seite für die Konfiguration des SAML-basierten einmaligen An
 1.  Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und klicken Sie auf das Element **Azure Active Directory**.
 1.  Klicken Sie im linken Azure Active Directory-Navigationsmenü auf **Unternehmensanwendungen**.
 1.  Wählen Sie **Alle Anwendungen**, um eine Liste mit Ihren Anwendungen anzuzeigen.
+
     Wenn die gewünschte Anwendung nicht angezeigt wird, verwenden Sie das Steuerelement **Filter** oberhalb der Liste **Alle Anwendungen**, und legen Sie die Option **Anzeigen** auf **Alle Anwendungen** fest.
+
 1.  Wählen Sie die Anwendung aus, die Sie für das einmalige Anmelden konfigurieren möchten.
 1. Nachdem die Anwendung geladen wurde, wählen Sie im linken Navigationsmenü der Anwendung die Option **Einmaliges Anmelden** aus.
 1. Wählen Sie die Option für SAML-basiertes einmaliges Anmelden aus.
@@ -63,7 +65,7 @@ Der `AssertionConsumerServiceURL`-Wert in der SAML-Anforderung stimmt nicht mit 
 Stellen Sie sicher, dass der `AssertionConsumerServiceURL`-Wert in der SAML-Anforderung dem in Azure AD konfigurierten Wert der Antwort-URL entspricht. 
 
 Vergewissern Sie sich, dass der Wert im Textfeld für die Antwort-URL dem `AssertionConsumerServiceURL`-Wert in der SAML-Anforderung entspricht, oder aktualisieren Sie ihn entsprechend.   
-    
+
 Nachdem Sie den Wert der Antwort-URL in Azure AD aktualisiert haben und er mit dem Wert übereinstimmt, der in der SAML-Anforderung von der Anwendung gesendet wurde, sollten Sie sich bei der Anwendung anmelden können.
 
 ## <a name="user-not-assigned-a-role"></a>Benutzer wurde keine Rolle zugewiesen

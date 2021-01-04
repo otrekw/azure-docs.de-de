@@ -6,12 +6,12 @@ ms.date: 03/14/2019
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: dbc9e48987f527c9579decc3db84091a432a17e5
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 6b578cd03daa6e996a69c03afd327097d6123045
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96601015"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97607897"
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java-sdk"></a>Anleitung zur Problembehandlung sowie Fragen und Antworten zu Application Insights für das Java SDK
 
@@ -63,7 +63,6 @@ Sie haben Ihre App erfolgreich so eingerichtet, dass Telemetriedaten vom Server 
 Wenn der Client eine App auf einem [Smartphone oder anderen Gerät][platforms] ist, können Sie Telemetriedaten von dort aus senden.
 
 Verwenden Sie den gleichen Instrumentationsschlüssel zum Einrichten der Telemetrie auf Client und Server. Die Daten werden in der gleichen Application Insights-Ressource angezeigt und können Ereignisse von Client und Server korrelieren.
-
 
 ## <a name="disabling-telemetry"></a>Deaktivieren der Telemetrie
 **Wie kann ich die Telemetrieerfassung deaktivieren?**
@@ -183,7 +182,6 @@ Application Insights verwendet `org.apache.http`. Dies wird innerhalb der Kern-J
 
 >[!NOTE]
 >Wenn Sie die Protokollierung auf DEBUG-Ebene für alle Namespaces in der App aktivieren, wird sie von allen ausführenden Modulen einschließlich `org.apache.http`, umbenannt als `com.microsoft.applicationinsights.core.dependencies.http`, akzeptiert. Application Insights kann diese Aufrufe nicht filtern, weil der Protokollaufruf durch die Apache-Bibliothek erfolgt. Protokollierung auf DEBUG-Ebene erzeugt eine beträchtliche Menge an Protokolldaten und wird nicht für Liveproduktionsinstanzen empfohlen.
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 **Ich habe Application Insights für meine Java-Server-App eingerichtet. Was kann ich sonst noch tun?**

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 09/28/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 87d0b740ec4f7ffb8966b386c273c023f69c42d8
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 1cc2cd1a7c5c16b1f9d1542e3f2d14dc030bb090
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97008298"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586549"
 ---
 # <a name="monitor-azure-file-sync"></a>Überwachen der Azure-Dateisynchronisierung
 
@@ -161,7 +161,7 @@ Cloudtieringintegrität
   - Die Ereignis-ID 9003 ermöglicht die Fehlerverteilung für einen Serverendpunkt. Beispiel: Gesamtfehlerzahl und ErrorCode. Pro Fehlercode wird ein Ereignis protokolliert.
   - Die Ereignis-ID 9016 stellt Ghostingergebnisse für ein Volume bereit. Beispiel: Freier Speicherplatz in Prozent, Anzahl der Dateien in der Sitzung, für die ein Ghosting durchgeführt wurde, und Anzahl von Dateien, bei denen beim Ghosting ein Fehler aufgetreten ist.
   - Die Ereignis-ID 9029 bietet Informationen zu Ghostingsitzungen für einen Serverendpunkt. Beispiel: Anzahl der in der Sitzung herangezogenen Dateien, Anzahl der Dateien in der Sitzung, für die in der Sitzung ein Tiering durchgeführt wurde, und Anzahl der Dateien, für die bereits ein Tiering durchgeführt wurde.
-  
+
 - Verwenden Sie die Ereignis-IDs 9005, 9006, 9009, 9059 und 9071 im Telemetrieereignisprotokoll (in der Ereignisanzeige unter *Anwendungen und Dienste\Microsoft\FileSync\Agent*), um die Rückrufaktivität auf einem Server zu überwachen.
 
   - Die Ereignis-ID 9005 bietet Zuverlässigkeit beim Rückruf für einen Serverendpunkt. Beispiel: Gesamtanzahl eindeutiger Dateien, auf die zugegriffen wird, und Gesamtanzahl eindeutiger Dateien, bei denen beim Zugriff ein Fehler aufgetreten ist.
@@ -192,7 +192,7 @@ In diesem Abschnitt finden Sie einige Beispiele für Warnungen für die Azure-Da
 
   > [!Note]  
   > Wenn Sie eine Warnung erstellen und zu viele Warnungen ausgelöst werden, passen Sie den Schwellenwert und die Warnungslogik an.
-  
+
 ### <a name="how-to-create-an-alert-if-the-server-endpoint-health-shows-an-error-in-the-portal"></a>Erstellen einer Warnung, wenn die Serverendpunkt-Integrität einen Fehler im Portal anzeigt
 
 1. Navigieren Sie im **Azure-Portal** zum entsprechenden **Speichersynchronisierungsdienst**. 
@@ -201,16 +201,16 @@ In diesem Abschnitt finden Sie einige Beispiele für Warnungen für die Azure-Da
 4. Konfigurieren Sie eine Bedingung, indem Sie auf **Bedingung auswählen** klicken.
 5. Klicken Sie auf dem Blatt **Konfigurieren der Signallogik** unter dem Signalnamen auf **Ergebnis der Synchronisierungssitzung**.  
 6. Wählen Sie die folgende Dimensionskonfiguration aus: 
-    - Dimensionsname: **Name des Serverendpunkts**  
-    - Operator: **=** 
-    - Dimensionswerte: **Alle aktuellen und zukünftigen Werte**  
+     - Dimensionsname: **Name des Serverendpunkts**  
+     - Operator: **=** 
+     - Dimensionswerte: **Alle aktuellen und zukünftigen Werte**  
 7. Navigieren Sie zu **Warnungslogik**, und führen Sie die folgenden Schritte aus: 
-    - Auf **Statisch** festgelegter Schwellenwert 
-    - Operator: **Kleiner als** 
-    - Aggregationstyp: **Maximum**  
-    - Schwellenwert: **1** 
-    - Auswertung basierend auf: Aggregationsgranularität = **24 Stunden** | Häufigkeit der Auswertung = **Jede Stunde** 
-    - Klicken Sie auf **Fertig**. 
+     - Auf **Statisch** festgelegter Schwellenwert 
+     - Operator: **Kleiner als** 
+     - Aggregationstyp: **Maximum**  
+     - Schwellenwert: **1** 
+     - Auswertung basierend auf: Aggregationsgranularität = **24 Stunden** | Häufigkeit der Auswertung = **Jede Stunde** 
+     - Klicken Sie auf **Fertig**. 
 8. Klicken Sie auf **Aktionsgruppe auswählen**, um der Warnung eine Aktionsgruppe (E-Mail, SMS usw.) hinzuzufügen, indem Sie entweder eine bestehende Aktionsgruppe auswählen oder eine neue Aktionsgruppe erstellen.
 9. Geben Sie die **Warnungsdetails** wie **Warnungsregelname**, **Beschreibung** und **Schweregrad** ein.
 10. Klicken Sie auf **Warnungsregel erstellen**. 
@@ -254,7 +254,7 @@ In diesem Abschnitt finden Sie einige Beispiele für Warnungen für die Azure-Da
      - Aggregationstyp: **Maximum**  
      - Schwellenwert (in Bytes): **1** 
      - Auswertung basierend auf: Aggregationsgranularität = **1 Stunde** | Häufigkeit der Auswertung = **Alle 30 Minuten** 
-        - Beachten Sie, dass die Metriken alle 15 bis 20 Minuten an Azure Monitor gesendet werden. Legen Sie die **Häufigkeit der Auswertung** nicht auf weniger als 30 Minuten fest (generiert falsche Warnungen).
+         - Beachten Sie, dass die Metriken alle 15 bis 20 Minuten an Azure Monitor gesendet werden. Legen Sie die **Häufigkeit der Auswertung** nicht auf weniger als 30 Minuten fest (generiert falsche Warnungen).
      - Klicken Sie auf **Fertig**. 
 8. Klicken Sie auf **Aktionsgruppe auswählen**, um der Warnung eine Aktionsgruppe (E-Mail, SMS usw.) hinzuzufügen, indem Sie entweder eine bestehende Aktionsgruppe auswählen oder eine neue Aktionsgruppe erstellen.
 9. Geben Sie die **Warnungsdetails** wie **Warnungsregelname**, **Beschreibung** und **Schweregrad** ein.
@@ -277,7 +277,7 @@ In diesem Abschnitt finden Sie einige Beispiele für Warnungen für die Azure-Da
      - Aggregationstyp: **Gesamt**  
      - Schwellenwert (in Bytes): **67108864000** 
      - Auswertung basierend auf: Aggregationsgranularität = **24 Stunden** | Häufigkeit der Auswertung = **Jede Stunde** 
-    - Klicken Sie auf **Fertig**. 
+     - Klicken Sie auf **Fertig**. 
 8. Klicken Sie auf **Aktionsgruppe auswählen**, um der Warnung eine Aktionsgruppe (E-Mail, SMS usw.) hinzuzufügen, indem Sie entweder eine bestehende Aktionsgruppe auswählen oder eine neue Aktionsgruppe erstellen.
 9. Geben Sie die **Warnungsdetails** wie **Warnungsregelname**, **Beschreibung** und **Schweregrad** ein.
 10. Klicken Sie auf **Warnungsregel erstellen**. 

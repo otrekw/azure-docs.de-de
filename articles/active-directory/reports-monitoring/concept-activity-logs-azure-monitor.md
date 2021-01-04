@@ -17,12 +17,12 @@ ms.date: 04/09/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f4253fe52346890eaa993a18e8e9bc9b270bffd7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8dbf14b1816d367f864cc3a2977497b34111df3f
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89229853"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586192"
 ---
 # <a name="azure-ad-activity-logs-in-azure-monitor"></a>Azure AD-Aktivitätsprotokolle in Azure Monitor
 
@@ -111,11 +111,11 @@ In der folgenden Tabelle sind die geschätzten Kosten pro Monat für einen einfa
 
 
 
-| Protokollkategorie       | Anzahl an Benutzern | Ereignisse pro Tag | Ereignisse pro Monat (30 Tage) | Kosten pro Monat in US-Dollar (geschätzt) |
-| :--                | ---             | ---            | ---                        | --:                          |
-| Überwachung und Anmeldungen | 100.000         | 16.500.000     | 495.000.000                |  1093,00 US-Dollar                       |
-| Audit              | 100.000         | 1\.500.000      | 45.000.000                 |  246,66 US-Dollar                     |
-| Anmeldungen           | 100.000         | 15.000.000     | 450.000.000                |  847,28 US-Dollar                     |
+| Protokollkategorie | Anzahl an Benutzern | Ereignisse pro Tag | Ereignisse pro Monat (30 Tage) | Kosten pro Monat in US-Dollar (geschätzt) |
+|:-|--|--|--|-:|
+| Überwachung und Anmeldungen | 100.000 | 16.500.000 | 495.000.000 | 1093,00 US-Dollar |
+| Audit | 100.000 | 1\.500.000 | 45.000.000 | 246,66 US-Dollar |
+| Anmeldungen | 100.000 | 15.000.000 | 450.000.000 | 847,28 US-Dollar |
 
 
 

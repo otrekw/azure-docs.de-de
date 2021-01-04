@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 04/13/2020
-ms.openlocfilehash: 26fc976983fc08857e7771d58f15d0abcd9a1d3c
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: cef2e2ca9c7ad4640014d9b5a9a7da42d308ef7c
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353220"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97605143"
 ---
 # <a name="use-follow-up-prompts-to-create-multiple-turns-of-a-conversation"></a>Erstellen von Mehrfachdurchläufen einer Konversation mit Folgeaufforderungen
 
@@ -38,7 +38,6 @@ Mithilfe von Mehrfachdurchlauf verwaltet ein Chatbot eine Konversation mit einem
 In der vorstehenden Abbildung hat ein Benutzer durch Eingabe von **My account** (Mein Konto) eine Konversation begonnen. Die Wissensdatenbank enthält drei verknüpfte Frage-und-Antwortpaare. Um die Antwort zu verfeinern, wählt der Benutzer eine der drei Auswahlmöglichkeiten in der Wissensdatenbank aus. Zur Frage (#1) gibt es drei Folgeaufforderungen, die im Chatbot als drei Optionen (#2) angezeigt werden.
 
 Wenn der Benutzer eine Option (#3) auswählt, wird die nächste Liste von Verfeinerungsoptionen (#4) angezeigt. Diese Sequenz wird so lange fortgesetzt (#5), bis der Benutzer die richtige, endgültige Antwort (#6) bestimmt.
-
 
 ### <a name="use-multi-turn-in-a-bot"></a>Verwenden von Mehrfachdurchläufen in einem Bot
 
@@ -79,7 +78,6 @@ Beim Hinzufügen eines hierarchischen Dokuments bestimmt QnA Maker Folgeaufforde
 > [!Caution]
 > Die Unterstützung für die Verwendung einer exportierten TSV- oder XLS-Wissensdatenbankdatei mit Mehrfachdurchläufen als Datenquelle für eine neue oder leere Wissensdatenbank wird nicht unterstützt. Sie müssen den Dateityp auf der Seite **Einstellungen** des QnA Maker-Portals **importieren**, um exportierte Aufforderungen für Mehrfachdurchläufe zu einer Wissensdatenbank hinzuzufügen.
 
-
 ## <a name="create-knowledge-base-with-multi-turn-prompts-with-the-create-api"></a>Erstellen einer Wissensdatenbank mit Eingabeaufforderungen mit Mehrfachdurchläufen mithilfe der Create-API
 
 Sie können eine Wissensdatenbank mit Eingabeaufforderungen mit Mehrfachdurchläufen mithilfe der [Create-API von QnA Maker](/rest/api/cognitiveservices/qnamaker/knowledgebase/create) erstellen. Die Aufforderungen werden im Array `prompts` der `context`-Eigenschaft hinzugefügt.
@@ -116,7 +114,6 @@ Fügen Sie eine Folgeaufforderung zu einem vorhandenen Frage- und Antwortpaar hi
     |Context-only (Nur Kontext)| Aktivieren Sie dieses Kontrollkästchen. Eine Antwort wird nur zurückgegeben, wenn die Frage einen Kontext angibt.|
     |Link to answer (Link zur Antwort)|Geben Sie **Anmeldebildschirm verwenden** ein, um das vorhandene Frage- und Antwortpaar zu finden.|
 
-
 1.  Es wird eine Übereinstimmung zurückgegeben. Wählen Sie diese Antwort als Folgeaufforderung und dann **Save** (Speichern) aus.
 
     ![Die Seite „Follow-up prompt (PREVIEW)“
@@ -138,7 +135,6 @@ Wenn eine Folgeaufforderung erstellt und ein vorhandenes Frage- und Antwortpaar 
 1. Wenn Sie die Bearbeitung Ihres Anzeigetexts abgeschlossen haben, wählen Sie **Save** (Speichern) aus.
 1. Wählen Sie in der oberen Navigationsleiste **Save and train** (Speichern und trainieren) aus.
 
-
 ## <a name="add-a-new-question-and-answer-pair-as-a-follow-up-prompt"></a>Hinzufügen eines neuen Frage- und Antwortpaars als Folgeaufforderung
 
 Wenn Sie der Wissensdatenbank ein neues Frage- und Antwortpaar hinzufügen, sollte jedes Paar mit einer vorhandenen Frage als Folgeaufforderung verknüpft werden.
@@ -156,7 +152,6 @@ Wenn Sie der Wissensdatenbank ein neues Frage- und Antwortpaar hinzufügen, soll
     |||
 
     ![Erstellen einer neuen Eingabeaufforderung für Frage und Antwort](../media/conversational-context/create-child-prompt-from-parent.png)
-
 
 1. Wählen Sie **Create new** (Neu erstellen) und dann **Save** (Speichern) aus.
 
@@ -228,7 +223,7 @@ Im vorstehenden Abschnitt wurde eine Antwort mit allen Folgeaufforderungen für 
             "questions": [
                 "Sign out"
             ],
-            "answer": "**Sign out**\n\nHere's how to sign out: \n\n Go to Start, and right-click your name. Then select Sign out. ",
+            "answer": "**Sign out**\n\nHere's how to sign out: \n\n  Go to Start, and right-click your name. Then select Sign out. ",
             "score": 38.01,
             "id": 18,
             "source": "product-manual.pdf",
@@ -354,7 +349,6 @@ QnA Maker-JSON-Antwort _GenerateAnswer_ enthält die Folgeaufforderungen in der 
 ## <a name="query-the-knowledge-base-with-the-qna-maker-id"></a>Abfragen der Wissensdatenbank mit der QnA Maker-ID
 
 Wenn Sie eine benutzerdefinierte Anwendung mithilfe des Mehrfachdurchlauf-Features entwickeln. In der Antwort auf die erste Frage werden alle Folgeaufforderungen und zugehörigen `qnaId` zurückgegeben. Da Sie nun über die ID verfügen, können Sie diese im Anforderungstext der Folgeaufforderung übergeben. Wenn der Anforderungstext die `qnaId` und das Kontextobjekt (mit den vorherigen QnA Maker-Eigenschaften) enthält, gibt „GenerateAnswer“ die genaue Frage anhand der ID zurück, statt den Rangfolgenalgorithmus zu verwenden, um die Antwort anhand des Fragentexts zu suchen.
-
 
 ## <a name="display-order-is-supported-in-the-update-api"></a>Die Anzeigereihenfolge wird in der Update-API unterstützt
 

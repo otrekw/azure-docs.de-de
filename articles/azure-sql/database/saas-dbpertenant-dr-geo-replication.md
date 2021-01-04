@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: ffe5a1d0c9bbdbc416ecce7c36b3710339c4f059
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: d2c1ddd1e0b5a080050e1ffeb28eded98dbfea3f
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92781021"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97652108"
 ---
 # <a name="disaster-recovery-for-a-multi-tenant-saas-application-using-database-geo-replication"></a>Notfallwiederherstellung für eine mehrinstanzenfähige SaaS-Anwendung über Datenbankgeoreplikation
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -28,12 +28,12 @@ In diesem Tutorial werden sowohl der Failover- als auch der Failbackworkflow erl
 > 
 > * Synchronisieren der Datenbankinformationen sowie der Konfigurationsinformationen für den Pool für elastische Datenbanken im Mandantenkatalog
 > * Einrichten einer Wiederherstellungsumgebung in einer anderen Region, wobei die Umgebung die Anwendung, Server und Pools umfasst
-> * Verwenden von _Georeplikation_ , um die Katalog- und Mandantendatenbanken in der Wiederherstellungsregion zu replizieren
+> * Verwenden von _Georeplikation_, um die Katalog- und Mandantendatenbanken in der Wiederherstellungsregion zu replizieren
 > * Ausführen eines Failovers der Anwendung sowie der Katalog- und Mandantendatenbanken in die Wiederherstellungsregion 
 > * Später Ausführen eines Failovers der Anwendung sowie der Katalog- und Mandantendatenbanken zurück in die ursprüngliche Region, nachdem der Ausfall behoben wurde
 > * Aktualisieren des Katalogs, sobald ein Failover für eine Mandantendatenbank ausgeführt wurde, um den primären Speicherort der Datenbank des jeweiligen Mandanten nachzuverfolgen
 > * Sicherstellen, dass sich die Anwendung und die primäre Mandantendatenbank immer zusammen in derselben Azure-Region befinden, um die Wartezeit zu verringern  
- 
+
 
 Bevor Sie mit diesem Tutorial beginnen, sollten Sie sich vergewissern, dass die folgenden Voraussetzungen erfüllt sind:
 * Die Wingtip Tickets-SaaS-App mit einer Datenbank pro Mandant ist bereitgestellt. Unter [Bereitstellen und Kennenlernen der Wingtip Tickets SaaS-App mit einer Datenbank pro Mandant](saas-dbpertenant-get-started-deploy.md) finden Sie Informationen dazu, wie Sie die App in weniger als fünf Minuten bereitstellen.  
@@ -42,7 +42,7 @@ Bevor Sie mit diesem Tutorial beginnen, sollten Sie sich vergewissern, dass die 
 ## <a name="introduction-to-the-geo-replication-recovery-pattern"></a>Einführung in die Vorgehensweise einer Wiederherstellung mit Georeplikation
 
 ![Wiederherstellungsarchitektur](./media/saas-dbpertenant-dr-geo-replication/recovery-architecture.png)
- 
+
 Notfallwiederherstellung (NW) ist ein wichtiger Aspekt für viele Anwendungen, sei es aus Konformitätsgründen oder für Geschäftskontinuität. Sollte es zu einem längeren Dienstausfall kommen, lässt sich die Geschäftsunterbrechung mit einem gut vorbereiteten NW-Plan minimieren. Verwenden von Georeplikation ermöglicht das geringste RPO und RTO, indem Datenbankreplikate in einer Wiederherstellungsregion verwaltet werden, für die kurzfristig ein Failover ausgeführt werden kann.
 
 Ein NW-Plan, der auf Georeplikation basiert, besteht aus drei eigenständigen Teilen:
@@ -56,13 +56,13 @@ Alle Teile müssen sorgfältig überlegt werden, insbesondere bei bedarfsorienti
     * Einrichten und Verwalten einer Spiegelimageumgebung in der Wiederherstellungsregion. Das Erstellen der Pools für elastische Datenbanken und Replizieren aller Datenbanken in dieser Wiederherstellungsumgebung reserviert Kapazität in der Wiederherstellungsregion. Das Verwalten dieser Umgebung umfasst das Replizieren von neuen Mandantendatenbanken, während sie bereitgestellt werden.  
 * Wiederherstellung
     * Sofern eine herunterskalierte Wiederherstellungsumgebung verwendet wird, um die täglichen Kosten zu minimieren, müssen Pools und Datenbanken hochskaliert werden, um vollständige Betriebskapazität in der Wiederherstellungsregion zu erreichen.
-    * Ermöglichen der Bereitstellung von neuen Mandanten in der Wiederherstellungsregion so bald wie möglich.  
-    * Der Plan muss für ein Wiederherstellen der Mandanten in der Reihenfolge ihrer Priorität optimiert sein.
-    * Der Plan muss dafür optimiert sein, Mandanten so schnell wie möglich online schalten zu können, indem Schritte nach Möglichkeit parallel ausgeführt werden.
-    * Der Plan muss ausfallsicher, neu startbar und idempotent sein.
-    * Es muss möglich sein, den Prozess während der Ausführung abzubrechen, wenn die ursprüngliche Region wieder online geschaltet wurde.
+     * Ermöglichen der Bereitstellung von neuen Mandanten in der Wiederherstellungsregion so bald wie möglich.  
+     * Der Plan muss für ein Wiederherstellen der Mandanten in der Reihenfolge ihrer Priorität optimiert sein.
+     * Der Plan muss dafür optimiert sein, Mandanten so schnell wie möglich online schalten zu können, indem Schritte nach Möglichkeit parallel ausgeführt werden.
+     * Der Plan muss ausfallsicher, neu startbar und idempotent sein.
+     * Es muss möglich sein, den Prozess während der Ausführung abzubrechen, wenn die ursprüngliche Region wieder online geschaltet wurde.
 * Rückführung 
-    * Ausführen eines Failovers von Datenbanken aus der Wiederherstellungsregion in Replikate in der ursprünglichen Region mit minimaler Auswirkung auf Mandanten: kein Verlust von Daten und möglichst kurze Offlinezeit pro Mandant.   
+     * Ausführen eines Failovers von Datenbanken aus der Wiederherstellungsregion in Replikate in der ursprünglichen Region mit minimaler Auswirkung auf Mandanten: kein Verlust von Daten und möglichst kurze Offlinezeit pro Mandant.
 
 In diesem Tutorial werden diese Herausforderungen mit Funktionen von Azure SQL-Datenbank und der Azure-Plattform gemeistert:
 
@@ -111,9 +111,9 @@ In dieser Aufgabe starten Sie einen Prozess, mit dem die Konfiguration der Serve
 1. Öffnen Sie in _PowerShell ISE_ die Datei „...\Learning Modules\UserConfig.psm1“. Ersetzen Sie `<resourcegroup>` und `<user>` in den Zeilen 10 und 11 durch die jeweiligen Werte, die Sie beim Bereitstellen der App verwendet haben.  Speichern Sie die Datei.
 
 2. Öffnen Sie in *PowerShell ISE* das Skript „...\Learning Modules\Business Continuity and Disaster Recovery\DR-FailoverToReplica\Demo-FailoverToReplica.ps1“, und legen Sie Folgendes fest:
-    * **$DemoScenario = 1** : Starten eines Hintergrundauftrags, in dem Mandantenserver- und Poolkonfigurationsinformationen in den Katalog synchronisiert werden
+    * **$DemoScenario = 1**: Starten eines Hintergrundauftrags, in dem Mandantenserver- und Poolkonfigurationsinformationen in den Katalog synchronisiert werden
 
-3. Drücken Sie **F5** , um das Synchronisierungsskript auszuführen. Es wird eine neue PowerShell-Sitzung geöffnet, in der die Konfiguration von Mandantenressourcen synchronisiert wird.
+3. Drücken Sie **F5**, um das Synchronisierungsskript auszuführen. Es wird eine neue PowerShell-Sitzung geöffnet, in der die Konfiguration von Mandantenressourcen synchronisiert wird.
 ![Screenshot mit der neuen PowerShell-Sitzung, die geöffnet wurde, um die Konfiguration von Mandantenressourcen zu synchronisieren](./media/saas-dbpertenant-dr-geo-replication/sync-process.png)
 
 Lassen Sie das PowerShell-Fenster im Hintergrund weiter laufen, und führen Sie die weiteren Schritte des Tutorials aus. 
@@ -129,7 +129,7 @@ In dieser Aufgabe starten Sie einen Prozess, in dem eine duplizierte Anwendungsi
 > In diesem Tutorial wird der Wingtip Tickets-Beispielanwendung Schutz durch Georeplikation hinzugefügt. In einem Produktionsszenario für eine Anwendung, für die Georeplikation verwendet wird, würde jeder Mandant von Anfang an mit einer georeplizierten Datenbank bereitgestellt. Weitere Informationen finden Sie unter [Entwerfen eines hoch verfügbaren Diensts mit Azure SQL-Datenbank](designing-cloud-solutions-for-disaster-recovery.md#scenario-1-using-two-azure-regions-for-business-continuity-with-minimal-downtime).
 
 1. Öffnen Sie in *PowerShell ISE* das Skript „...\Learning Modules\Business Continuity and Disaster Recovery\DR-FailoverToReplica\Demo-FailoverToReplica.ps1“, und legen Sie die folgenden Werte fest:
-    * **$DemoScenario = 2** : Erstellen einer Spiegelimage-Wiederherstellungsumgebung und Replizieren von Katalog- und Mandantendatenbanken
+    * **$DemoScenario = 2**: Erstellen einer Spiegelimage-Wiederherstellungsumgebung und Replizieren von Katalog- und Mandantendatenbanken
 
 2. Drücken Sie **F5** , um das Skript auszuführen. Es wird neue PowerShell-Sitzung geöffnet, um die Replikate zu erstellen.
 ![Synchronisierungsprozess](./media/saas-dbpertenant-dr-geo-replication/replication-process.png)  
@@ -142,7 +142,7 @@ An diesem Punkt wird die Anwendung normal in der ursprünglichen Region ausgefü
 
 2. Untersuchen Sie die Ressourcen in der Wiederherstellungsressourcengruppe.  
 
-3. Klicken Sie auf die Contoso Concert Hall-Datenbank auf dem _tenants1-dpt -&lt;Benutzer&gt;-recovery_ -Server.  Klicken Sie auf „Georeplikation“ auf der linken Seite. 
+3. Klicken Sie auf die Contoso Concert Hall-Datenbank auf dem _tenants1-dpt -&lt;Benutzer&gt;-recovery_-Server.  Klicken Sie auf „Georeplikation“ auf der linken Seite. 
 
     ![Georeplikationslink für Contoso Concert](./media/saas-dbpertenant-dr-geo-replication/contoso-geo-replication.png) 
 
@@ -156,9 +156,9 @@ In dem Wiederherstellungsskript werden folgende Aufgaben ausgeführt:
 
 1. Der Traffic Manager-Endpunkt für die Web-App in der ursprünglichen Region wird deaktiviert. Durch Deaktivieren des Endpunkts wird verhindert, dass Benutzer eine Verbindung mit der App in einem ungültigen Zustand herstellen, sollte die ursprüngliche Region während der Wiederherstellung wieder online geschaltet werden.
 
-1. Es wird ein Failover der Katalogdatenbank in der Wiederherstellungsregion erzwungen, um diese Datenbank zur primären Datenbank zu machen, und der _activecatalog_ -Alias wird aktualisiert, sodass er auf den Wiederherstellungskatalogserver verweist.
+1. Es wird ein Failover der Katalogdatenbank in der Wiederherstellungsregion erzwungen, um diese Datenbank zur primären Datenbank zu machen, und der _activecatalog_-Alias wird aktualisiert, sodass er auf den Wiederherstellungskatalogserver verweist.
 
-1. Der _newtenant_ -Alias wird aktualisiert, sodass er auf den Mandantenserver in der Wiederherstellungsregion verweist. Durch Ändern dieses Alias wird sichergestellt, dass die Datenbanken für jeden neuen Mandanten in der Wiederherstellungsregion bereitgestellt werden. 
+1. Der _newtenant_-Alias wird aktualisiert, sodass er auf den Mandantenserver in der Wiederherstellungsregion verweist. Durch Ändern dieses Alias wird sichergestellt, dass die Datenbanken für jeden neuen Mandanten in der Wiederherstellungsregion bereitgestellt werden. 
 
 1. Alle vorhandenen Mandanten im Wiederherstellungskatalog werden als offline markiert, damit Zugriff auf Mandantendatenbanken verhindert wird, bevor für diese ein Failover ausgeführt wurde.
 
@@ -182,11 +182,11 @@ In dem Wiederherstellungsskript werden folgende Aufgaben ausgeführt:
 Stellen Sie sich nun vor, dass es einen Ausfall in der Region gibt, in der die Anwendung bereitgestellt wird, und führen Sie das Wiederherstellungsskript aus:
 
 1. Öffnen Sie in *PowerShell ISE* das Skript „...\Learning Modules\Business Continuity and Disaster Recovery\DR-FailoverToReplica\Demo-FailoverToReplica.ps1“, und legen Sie die folgenden Werte fest:
-    * **$DemoScenario = 3** : Wiederherstellen der Anwendung in einer Wiederherstellungsregion, indem ein Failover zu Replikaten ausgeführt wird
+    * **$DemoScenario = 3**: Wiederherstellen der Anwendung in einer Wiederherstellungsregion, indem ein Failover zu Replikaten ausgeführt wird
 
 2. Drücken Sie **F5** , um das Skript auszuführen.  
     * Das Skript wird in einem neuen PowerShell-Fenster geöffnet, und in dem Skript wird eine Reihe von PowerShell-Aufträgen gestartet, die parallel ausgeführt werden. In diesen Aufträgen wird ein Failover der Mandantendatenbanken zur Wiederherstellungsregion ausgeführt.
-    * Die Wiederherstellungsregion ist die _gekoppelte Region_ , die der Azure-Region zugeordnet ist, in der Sie die Anwendung bereitgestellt haben. Weitere Informationen finden Sie unter [Azure-Regionspaare](../../best-practices-availability-paired-regions.md). 
+    * Die Wiederherstellungsregion ist die _gekoppelte Region_, die der Azure-Region zugeordnet ist, in der Sie die Anwendung bereitgestellt haben. Weitere Informationen finden Sie unter [Azure-Regionspaare](../../best-practices-availability-paired-regions.md). 
 
 3. Überwachen Sie den Status des Wiederherstellungsprozesses im PowerShell-Fenster.
     ![Failoverprozess](./media/saas-dbpertenant-dr-geo-replication/failover-process.png)
@@ -204,7 +204,7 @@ Solange der Anwendungsendpunkt in Traffic Manager deaktiviert ist, ist die Anwen
 
      > [!Note]
      > Sind nur einige Datenbanken wiederherzustellen, kann es sein, dass Sie den Browser nicht vor Abschluss der Wiederherstellung aktualisieren können. Daher können Sie die Mandanten möglicherweise nicht sehen, während sie offline sind. 
- 
+
      ![Veranstaltungshub (Events Hub) ist offline](./media/saas-dbpertenant-dr-geo-replication/events-hub-offlinemode.png) 
 
    * Wenn Sie die „Veranstaltungen“-Seite eines Mandanten, der offline ist, direkt öffnen, wird auf der Seite eine „Mandant ist offline“-Benachrichtigung angezeigt. Versuchen Sie beispielsweise, wenn Contoso Concert Hall offline ist, „http://events.wingtip-dpt.&lt;Benutzer&gt;.trafficmanager.net/contosoconcerthall“ zu öffnen.![ Contoso-Seite für offline](./media/saas-dbpertenant-dr-geo-replication/dr-in-progress-offline-contosoconcerthall.png) 
@@ -213,9 +213,9 @@ Solange der Anwendungsendpunkt in Traffic Manager deaktiviert ist, ist die Anwen
 Schon bevor für alle vorhandenen Mandantendatenbanken ein Failover ausgeführt wurde, können Sie neue Mandanten in der Wiederherstellungsregion bereitstellen.  
 
 1. Öffnen Sie in *PowerShell ISE* das Skript „...\Learning Modules\Business Continuity and Disaster Recovery\DR-FailoverToReplica\Demo-FailoverToReplica.ps1“, und legen Sie die folgende Eigenschaft fest:
-    * **$DemoScenario = 4** : Bereitstellen eines neuen Mandanten in der Wiederherstellungsregion
+    * **$DemoScenario = 4**: Bereitstellen eines neuen Mandanten in der Wiederherstellungsregion
 
-2. Drücken Sie **F5** , um das Skript auszuführen und den neuen Mandanten bereitzustellen. 
+2. Drücken Sie **F5**, um das Skript auszuführen und den neuen Mandanten bereitzustellen. 
 
 3. Die Seite für Hawthorn Hall-Veranstaltungen wird im Browser geöffnet, wenn das Skript abgeschlossen ist. Anhand der Fußzeile können Sie sehen, dass die Hawthorn Hall-Datenbank in der Wiederherstellungsregion bereitgestellt wird.
     ![Hawthorn Hall-Seite für Veranstaltungen](./media/saas-dbpertenant-dr-geo-replication/hawthornhallevents.png) 
@@ -233,20 +233,20 @@ Wenn der Wiederherstellungsprozess abgeschlossen ist, sind die Anwendung und all
     ![Wiederhergestellte und neue Mandanten im Veranstaltungshub](./media/saas-dbpertenant-dr-geo-replication/events-hub-with-hawthorn-hall.png)
 
 2. Öffnen Sie im [Azure-Portal](https://portal.azure.com) die Liste der Ressourcengruppen.  
-    * Beachten Sie die Ressourcengruppe, die Sie bereitgestellt haben, und die Wiederherstellungsressourcengruppe mit dem Suffix _-recovery_ .  Die Wiederherstellungsressourcengruppe enthält alle Ressourcen, die während des Wiederherstellungsprozesses erstellt wurden, sowie neue Ressourcen, die während des Ausfalls erstellt wurden.  
+    * Beachten Sie die Ressourcengruppe, die Sie bereitgestellt haben, und die Wiederherstellungsressourcengruppe mit dem Suffix _-recovery_.  Die Wiederherstellungsressourcengruppe enthält alle Ressourcen, die während des Wiederherstellungsprozesses erstellt wurden, sowie neue Ressourcen, die während des Ausfalls erstellt wurden.  
 
 3. Öffnen Sie die Wiederherstellungsressourcengruppe, und beachten Sie die folgenden Elemente:
-   * Die Wiederherstellungsversionen des Katalog- und des tenants1-Servers mit dem Suffix _-recovery_ .  Die wiederhergestellten Katalog- und Mandantendatenbanken auf diesen Servern haben alle die Namen, die in der ursprünglichen Region verwendet wurden.
+   * Die Wiederherstellungsversionen des Katalog- und des tenants1-Servers mit dem Suffix _-recovery_.  Die wiederhergestellten Katalog- und Mandantendatenbanken auf diesen Servern haben alle die Namen, die in der ursprünglichen Region verwendet wurden.
 
-   * Der SQL-Server _tenants2-dpt-&lt;Benutzer&gt;-recovery_ .  Dieser Server wird dazu verwendet, neue Mandanten während des Ausfalls bereitzustellen.
-   * Der App Service namens _events-wingtip-dpt-&lt;recoveryregion&gt;-&lt;Benutzer&gt_ . Dies ist die Wiederherstellungsinstanz der Veranstaltungen-App. 
+   * Der SQL-Server _tenants2-dpt-&lt;Benutzer&gt;-recovery_.  Dieser Server wird dazu verwendet, neue Mandanten während des Ausfalls bereitzustellen.
+   * Der App Service namens _events-wingtip-dpt-&lt;recoveryregion&gt;-&lt;Benutzer&gt_. Dies ist die Wiederherstellungsinstanz der Veranstaltungen-App. 
 
      ![Azure-Wiederherstellungsressourcen](./media/saas-dbpertenant-dr-geo-replication/resources-in-recovery-region.png) 
-    
-4. Öffnen Sie den SQL-Server _tenants2-dpt-&lt;Benutzer&gt;-recovery_ .  Dieser enthält die Datenbank _hawthornhall_ und den Pool für elastische Datenbanken _Pool1_ .  Die _hawthornhall_ -Datenbank ist im Pool für elastische Datenbanken _Pool1_ als eine elastische Datenbank konfiguriert.
 
-5. Navigieren Sie zurück zur Ressourcengruppe, und klicken Sie auf die Contoso Concert Hall-Datenbank auf dem _tenants1-dpt -&lt;Benutzer&gt;-recovery_ -Server. Klicken Sie auf „Georeplikation“ auf der linken Seite.
-    
+4. Öffnen Sie den SQL-Server _tenants2-dpt-&lt;Benutzer&gt;-recovery_.  Dieser enthält die Datenbank _hawthornhall_ und den Pool für elastische Datenbanken _Pool1_.  Die _hawthornhall_-Datenbank ist im Pool für elastische Datenbanken _Pool1_ als eine elastische Datenbank konfiguriert.
+
+5. Navigieren Sie zurück zur Ressourcengruppe, und klicken Sie auf die Contoso Concert Hall-Datenbank auf dem _tenants1-dpt -&lt;Benutzer&gt;-recovery_-Server. Klicken Sie auf „Georeplikation“ auf der linken Seite.
+
     ![Contoso-Datenbank nach Failover](./media/saas-dbpertenant-dr-geo-replication/contoso-geo-replication-after-failover.png)
 
 ## <a name="change-tenant-data"></a>Ändern von Mandantendaten 
@@ -254,8 +254,8 @@ In dieser Aufgabe aktualisieren Sie eine der Mandantendatenbanken.
 
 1. Suchen Sie in Ihrem Browser nach der Veranstaltungsliste für die Contoso Concert Hall, und notieren Sie sich den letzten Veranstaltungsnamen.
 2. Legen Sie in *PowerShell ISE* im Skript „...\Learning Modules\Business Continuity and Disaster Recovery\DR-FailoverToReplica\Demo-FailoverToReplica.ps1“ den folgenden Wert fest:
-    * **$DemoScenario = 5** : Löschen einer Veranstaltung aus einem Mandanten in der Wiederherstellungsregion
-3. Drücken Sie **F5** , um das Skript auszuführen.
+    * **$DemoScenario = 5**: Löschen einer Veranstaltung aus einem Mandanten in der Wiederherstellungsregion
+3. Drücken Sie **F5**, um das Skript auszuführen.
 4. Aktualisieren Sie die Contoso Concert Hall-Seite für Veranstaltungen (http://events.wingtip-dpt.&lt;Benutzer&gt;.trafficmanager.net/contosoconcerthall – ersetzen Sie &lt; Benutzer&gt; durch den Benutzerwert Ihrer Bereitstellung). Sie können sehen, dass die letzte Veranstaltung gelöscht wurde.
 
 ## <a name="repatriate-the-application-to-its-original-production-region"></a>Zurückführen der Anwendung in ihre ursprüngliche Produktionsregion
@@ -268,7 +268,7 @@ In dieser Aufgabe wird die Anwendung in ihre ursprüngliche Region zurückgefüh
 
 Im Rückführungsprozess wird Folgendes ausgeführt:
 1. Alle ausstehenden oder wirksamen Anforderungen zur Datenbankwiederherstellung werden abgebrochen.
-2. Der _newtenant_ -Alias wird aktualisiert, sodass er auf den Server der Mandanten in der ursprünglichen Region verweist. Durch Ändern dieses Alias wird sichergestellt, dass die Datenbanken für jeden neuen Mandanten nun in der ursprünglichen Region bereitgestellt werden.
+2. Der _newtenant_-Alias wird aktualisiert, sodass er auf den Server der Mandanten in der ursprünglichen Region verweist. Durch Ändern dieses Alias wird sichergestellt, dass die Datenbanken für jeden neuen Mandanten nun in der ursprünglichen Region bereitgestellt werden.
 3. Alle geänderten Mandantendaten werden in die ursprüngliche Region übernommen.
 4. Für die Mandantendatenbanken wird in der Reihenfolge ihrer Priorität ein Failover ausgeführt.
 
@@ -281,12 +281,12 @@ Nehmen Sie nun an, dass der Ausfall behoben ist, und führen Sie das Rückführu
 1. Vergewissern Sie sich in *PowerShell ISE* im Skript „...\Learning Modules\Business Continuity and Disaster Recovery\DR-FailoverToReplica\Demo-FailoverToReplica.ps1“,
 
 2. dass der Katalogsynchronisierungsprozess weiterhin in seiner PowerShell-Instanz ausgeführt wird.  Starten Sie ihn bei Bedarf neu, indem Sie Folgendes festlegen:
-    * **$DemoScenario = 1** : Starten der Synchronisierung der Mandantenserver-, Pool- und Datenbankkonfigurationsinformationen in den Katalog
+    * **$DemoScenario = 1**: Starten der Synchronisierung der Mandantenserver-, Pool- und Datenbankkonfigurationsinformationen in den Katalog
     * Drücken Sie **F5** , um das Skript auszuführen.
 
 3.  Legen Sie dann Folgendes fest, um den Rückführungsprozess zu starten:
-    * **$DemoScenario = 6** : Rückführen der App in ihre ursprüngliche Region
-    * Drücken Sie **F5** , um das Wiederherstellungsskript in einem neuen PowerShell-Fenster auszuführen.  Die Rückführung dauert einige Minuten und kann im PowerShell-Fenster überwacht werden.
+    * **$DemoScenario = 6**: Rückführen der App in ihre ursprüngliche Region
+    * Drücken Sie **F5**, um das Wiederherstellungsskript in einem neuen PowerShell-Fenster auszuführen.  Die Rückführung dauert einige Minuten und kann im PowerShell-Fenster überwacht werden.
     ![Rückführungsprozess](./media/saas-dbpertenant-dr-geo-replication/repatriation-process.png)
 
 4. Aktualisieren Sie während der Skriptausführung die Seite für den Event Hub (http://events.wingtip-dpt.&lt;Benutzer&gt;.trafficmanager.net).
@@ -308,7 +308,7 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 > 
 > * Synchronisieren der Datenbankinformationen sowie der Konfigurationsinformationen für den Pool für elastische Datenbanken im Mandantenkatalog
 > * Einrichten einer Wiederherstellungsumgebung in einer anderen Region, wobei die Umgebung die Anwendung, Server und Pools umfasst
-> * Verwenden von _Georeplikation_ , um die Katalog- und Mandantendatenbanken in der Wiederherstellungsregion zu replizieren
+> * Verwenden von _Georeplikation_, um die Katalog- und Mandantendatenbanken in der Wiederherstellungsregion zu replizieren
 > * Ausführen eines Failovers der Anwendung sowie der Katalog- und Mandantendatenbanken in die Wiederherstellungsregion 
 > * Ausführen eines Failbacks der Anwendung sowie der Katalog- und Mandantendatenbanken in die ursprüngliche Region, nachdem der Ausfall behoben wurde
 

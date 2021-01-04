@@ -16,12 +16,12 @@ ms.date: 09/30/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b4030dedfb0d7308bb5a0f7a86bc49ee168e6d0c
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 2e8d68643b5cc0002467f738dd60343fb2c42dc6
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92362806"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631283"
 ---
 # <a name="tutorial-create-your-first-access-package-in-azure-ad-entitlement-management"></a>Tutorial: Erstellen Ihres ersten Zugriffspakets in der Azure AD-Berechtigungsverwaltung
 
@@ -117,6 +117,7 @@ Bei einem *Zugriffspaket* handelt es sich um eine Gruppe von Ressourcen, die von
 11. Wählen Sie in der Dropdownliste **Rolle** den Eintrag **Mitglied** aus.
 
     ![Neues Zugriffspaket, Registerkarte „Ressourcenrollen“](./media/entitlement-management-access-package-first/resource-roles.png)
+
     >[!IMPORTANT]
     >Die einem Zugriffspaket hinzugefügten Gruppen, denen Rollen zugewiesen werden können, werden mit dem Untertyp **Rolle zuweisbar** angegeben. Weitere Informationen zu Gruppen, die Azure AD-Rollen zugewiesen werden können, finden Sie unter [Erstellen einer Gruppe in Azure Active Directory für das Zuweisen von Rollen](../roles/groups-create-eligible.md). Wenn eine Gruppe, der Rollen zugewiesen werden können und die Sie hinzufügen möchten, nicht angezeigt wird, oder wenn Sie eine solche Gruppe nicht hinzufügen können, stellen Sie sicher, dass Sie über die erforderliche Azure AD-Rolle und -Berechtigungsverwaltungsrolle zum Ausführen dieses Vorgangs verfügen. Möglicherweise müssen Sie jemanden mit den erforderlichen Rollen beauftragen, die Ressource Ihrem Katalog hinzuzufügen. Weitere Informationen finden Sie unter [Erforderliche Rollen, um einem Katalog Ressourcen hinzuzufügen](entitlement-management-delegate.md#required-roles-to-add-resources-to-a-catalog).
 

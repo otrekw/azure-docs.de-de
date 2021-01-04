@@ -5,12 +5,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: dcd64cf779b931dbf3b4f743844071835e0b8c91
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 5e40f91945f83af7880f272f1578370f2ee1ec42
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91932055"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608492"
 ---
 # <a name="explore-azure-monitor-for-azure-cosmos-db"></a>Informationen zu Azure Monitor für Azure Cosmos DB
 
@@ -71,7 +71,7 @@ Wählen Sie oben auf der Seite **Fehler** aus, und der Bereich **Fehler** der Ar
 
 ![Screenshot von Fehlern mit Aufschlüsselung nach HTTP-Anforderungstyp](./media/cosmosdb-insights-overview/failures.png)
 
-| Code      |  BESCHREIBUNG       | 
+| Code |  BESCHREIBUNG       | 
 |-----------|:--------------------|
 | `200 OK`  | Einer der folgenden REST-Vorgänge war erfolgreich: </br>- GET für eine Ressource. </br> - PUT für eine Ressource. </br> - POST für eine Ressource. </br> - POST für eine gespeicherte Prozedur zum Ausführen der gespeicherten Prozedur.|
 | `201 Created` | Ein POST-Vorgang zum Erstellen einer Ressource war erfolgreich. |

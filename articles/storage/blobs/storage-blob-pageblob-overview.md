@@ -10,12 +10,12 @@ ms.author: tamram
 ms.reviewer: wielriac
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 39c1972eba84f4f1990c87112c5801c386849640
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: aada418b4f74c38a2a35c793deb85b94b703fb89
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95545957"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97629356"
 ---
 # <a name="overview-of-azure-page-blobs"></a>Übersicht über Azure-Seitenblobs
 
@@ -57,7 +57,7 @@ Das folgende Diagramm beschreibt die allgemeinen Beziehungen zwischen Konto, Con
 
 # <a name="net-v12"></a>[.NET v12](#tab/dotnet)
 
-Rufen Sie zunächst einen Verweis auf einen Container ab. Um ein Seitenblob zu erstellen, rufen Sie die [GetPageBlobClient](/dotnet/api/azure.storage.blobs.specialized.specializedblobextensions.getpageblobclient)-Methode auf, und rufen Sie dann die [PageBlobClient.Create](/dotnet/api/azure.storage.blobs.specialized.pageblobclient.create)-Methode auf. Übergeben Sie die maximale Größe für das Blob, das erstellt werden soll. Der Wert muss ein Vielfaches von 512 Bytes sein.
+Rufen Sie zunächst einen Verweis auf einen Container ab. Um ein Seitenblob zu erstellen, rufen Sie die GetPageBlobClient-Methode auf, und rufen Sie dann die [PageBlobClient.Create](/dotnet/api/azure.storage.blobs.specialized.pageblobclient.create)-Methode auf. Übergeben Sie die maximale Größe für das Blob, das erstellt werden soll. Der Wert muss ein Vielfaches von 512 Bytes sein.
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CRUD.cs" id="Snippet_CreatePageBlob":::
 

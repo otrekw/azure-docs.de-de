@@ -3,12 +3,12 @@ title: 'Azure Event Hubs: Visualisieren von Datenanomalien in Echtzeitereignisse
 description: 'Tutorial: Visualisieren von Datenanomalien in Echtzeitereignissen, die an Microsoft Azure Event Hubs gesendet werden'
 ms.topic: tutorial
 ms.date: 06/23/2020
-ms.openlocfilehash: 1394f9bedfdfc3715090bdb8a9028d2654a1e4e3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b72b82f3959565e6bd0598fef8e21bb64fedb053
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88934054"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97655678"
 ---
 # <a name="tutorial-visualize-data-anomalies-in-real-time-events-sent-to-azure-event-hubs"></a>Tutorial: Visualisieren von Datenanomalien in Echtzeitereignissen, die an Azure Event Hubs gesendet werden
 
@@ -26,14 +26,12 @@ In diesem Tutorial lernen Sie Folgendes:
 
 Sie benötigen ein Azure-Abonnement, um dieses Tutorial durcharbeiten zu können. Falls Sie kein Abonnement besitzen, können Sie ein [kostenloses Konto erstellen][], bevor Sie beginnen.
 
-## <a name="prerequisites"></a>Voraussetzungen
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
 - Installieren Sie [Visual Studio](https://www.visualstudio.com/). 
 - Sie benötigen ein Power BI-Konto zum Analysieren der Ausgabe eines Stream Analytics-Auftrags. Sie können [Power BI kostenlos testen](https://app.powerbi.com/signupredirect?pbi_source=web).
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="set-up-resources"></a>Einrichten von Ressourcen
 

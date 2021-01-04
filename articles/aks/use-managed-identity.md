@@ -3,13 +3,13 @@ title: Verwenden verwalteter Identitäten in Azure Kubernetes Service
 description: Erfahren Sie, wie Sie verwaltete Identitäten in Azure Kubernetes Service (AKS) verwenden.
 services: container-service
 ms.topic: article
-ms.date: 12/06/2020
-ms.openlocfilehash: 68d8111da5ec10f23d14b375a18229bca075da84
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.date: 12/16/2020
+ms.openlocfilehash: 948a189e1c6e03efca046b6d43dddcaf3d141957
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97026828"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97607285"
 ---
 # <a name="use-managed-identities-in-azure-kubernetes-service"></a>Verwenden verwalteter Identitäten in Azure Kubernetes Service
 
@@ -36,7 +36,7 @@ AKS verwendet mehrere verwaltete Identitäten für integrierte Dienste und Add-O
 
 | Identity                       | Name    | Anwendungsfall | Standardberechtigungen | Verwendung eigener Identitäten
 |----------------------------|-----------|----------|
-| Steuerungsebene | Nicht sichtbar | Wird von Komponenten der AKS-Steuerungsebene verwendet, um Clusterressourcen einschließlich Lastenausgleichsmodulen für eingehenden Datenverkehr und von AKS verwalteten öffentlichen IP-Adressen sowie Autoskalierungsvorgänge im Cluster zu verwalten. | Rolle „Mitwirkender“ für Knotenressourcengruppe | Vorschau
+| Steuerungsebene | Nicht sichtbar | Wird von Komponenten der AKS-Steuerungsebene verwendet, um Clusterressourcen einschließlich Lastenausgleichsmodulen für eingehenden Datenverkehr und von AKS verwalteten öffentlichen IP-Adressen sowie Autoskalierungsvorgänge im Cluster zu verwalten. | Rolle „Mitwirkender“ für Knotenressourcengruppe | Unterstützt
 | Kubelet | Name des AKS-Clusters: agentpool | Authentifizierung bei Azure Container Registry (ACR) | N/V (für Kubernetes v1.15+) | Derzeit nicht unterstützt
 | Add-On | AzureNPM | Keine Identität erforderlich | Nicht verfügbar | Nein
 | Add-On | Azure CNI-Netzwerküberwachung | Keine Identität erforderlich | Nicht verfügbar | Nein

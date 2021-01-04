@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
-ms.openlocfilehash: 99ee85c569340d8f1d3cff27112436465238c05f
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 753256adddf8b28518bac45011d582bc7a079629
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92455880"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97670382"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clickup-productivity-platform"></a>Tutorial: Azure Active Directory-Integration mit ClickUp Productivity Platform
 
@@ -41,7 +41,7 @@ Um die Azure AD-Integration mit ClickUp Productivity Platform konfigurieren zu k
 
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
-* ClickUp Productivity Platform unterstützt **SP** -initiiertes einmaliges Anmelden.
+* ClickUp Productivity Platform unterstützt **SP**-initiiertes einmaliges Anmelden.
 
 ## <a name="adding-clickup-productivity-platform-from-the-gallery"></a>Hinzufügen von ClickUp Productivity Platform aus dem Katalog
 
@@ -49,25 +49,25 @@ Zum Konfigurieren der Integration von ClickUp Productivity Platform in Azure AD 
 
 **Führen Sie die folgenden Schritte aus, um ClickUp Productivity Platform aus dem Katalog hinzuzufügen:**
 
-1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory** .
+1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**.
 
     ![Schaltfläche „Azure Active Directory“](common/select-azuread.png)
 
-2. Navigieren Sie zu **Unternehmensanwendungen** , und wählen Sie die Option **Alle Anwendungen** aus.
+2. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie die Option **Alle Anwendungen** aus.
 
     ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
-3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung** , um eine neue Anwendung hinzuzufügen.
+3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
 
     ![Schaltfläche „Neue Anwendung“](common/add-new-app.png)
 
-4. Geben Sie im Suchfeld **ClickUp Productivity Platform** ein, wählen Sie im Ergebnisbereich **ClickUp Productivity Platform** , und klicken Sie dann auf die Schaltfläche **Hinzufügen** , um die Anwendung hinzuzufügen.
+4. Geben Sie im Suchfeld **ClickUp Productivity Platform** ein, wählen Sie im Ergebnisbereich **ClickUp Productivity Platform**, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
-     ![ClickUp Productivity Platform in der Ergebnisliste](common/search-new-app.png)
+    ![ClickUp Productivity Platform in der Ergebnisliste](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
 
-In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit ClickUp Productivity Platform basierend auf einer Testbenutzerin mit dem Namen **Britta Simon** .
+In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit ClickUp Productivity Platform basierend auf einer Testbenutzerin mit dem Namen **Britta Simon**.
 Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in ClickUp Productivity Platform eingerichtet werden.
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei ClickUp Productivity Platform müssen Sie die folgenden Schritte ausführen:
@@ -85,7 +85,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit ClickUp Productivity Platform die folgenden Schritte aus:
 
-1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **ClickUp Productivity Platform** die Option **Einmaliges Anmelden** .
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **ClickUp Productivity Platform** die Option **Einmaliges Anmelden**.
 
     ![Konfigurieren des Links für einmaliges Anmelden](common/select-sso.png)
 
@@ -93,7 +93,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit ClickUp
 
     ![Auswahlmodus für einmaliges Anmelden](common/select-saml-option.png)
 
-3. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Symbol **Bearbeiten** , um das Dialogfeld **Grundlegende SAML-Konfiguration** zu öffnen.
+3. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Symbol **Bearbeiten**, um das Dialogfeld **Grundlegende SAML-Konfiguration** zu öffnen.
 
     ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
@@ -116,13 +116,13 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit ClickUp
 
 1. Melden Sie sich in einem anderen Webbrowserfenster an Ihrem ClickUp Productivity Platform-Mandanten als Administrator an.
 
-2. Klicken Sie auf das **Benutzerprofil** , und wählen Sie anschließend die Option **Einstellungen** aus.
+2. Klicken Sie auf das **Benutzerprofil**, und wählen Sie anschließend die Option **Einstellungen** aus.
 
     ![Screenshot des ClickUp Productivity-Mandanten, bei dem das Symbol „Einstellungen“ ausgewählt ist](./media/clickup-productivity-platform-tutorial/configure0.png)
 
     ![Screenshot der Einstellungen](./media/clickup-productivity-platform-tutorial/configure1.png)
 
-3. Wählen Sie als Anbieter für einmaliges Anmelden die Option **Microsoft** .
+3. Wählen Sie als Anbieter für einmaliges Anmelden die Option **Microsoft**.
 
     ![Screenshot des Bereichs „Authentifizierung“, in dem Microsoft ausgewählt ist](./media/clickup-productivity-platform-tutorial/configure2.png)
 
@@ -130,9 +130,9 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit ClickUp
 
     ![Screenshot der Seite „Einmaliges Anmelden konfigurieren für Microsoft“, auf der Sie die Entitäts-I D kopieren und die Azure-Verbundmetadaten-U R L speichern können](./media/clickup-productivity-platform-tutorial/configure3.png)
 
-    a. Klicken Sie auf **Kopieren** , um den Wert im Feld „Entity ID“ (Entitäts-ID) zu kopieren, und fügen Sie ihn im Azure-Portal im Abschnitt **Grundlegende SAML-Konfiguration** in das Textfeld **Bezeichner (Entitäts-ID)** ein.
-    
-    b. Fügen Sie im Textfeld **Azure Federation Metadata URL** (Azure-Verbundmetadaten-URL) den Wert der App-Verbundmetadaten-URL ein, den Sie aus dem Azure-Portal kopiert haben, und klicken Sie auf **Speichern** .
+    a. Klicken Sie auf **Kopieren**, um den Wert im Feld „Entity ID“ (Entitäts-ID) zu kopieren, und fügen Sie ihn im Azure-Portal im Abschnitt **Grundlegende SAML-Konfiguration** in das Textfeld **Bezeichner (Entitäts-ID)** ein.
+
+    b. Fügen Sie im Textfeld **Azure Federation Metadata URL** (Azure-Verbundmetadaten-URL) den Wert der App-Verbundmetadaten-URL ein, den Sie aus dem Azure-Portal kopiert haben, und klicken Sie auf **Speichern**.
 
 5. Klicken Sie zum Abschließen des Setups auf **Authenticate With Microsoft to complete setup** (Zum Beenden des Setups bei Microsoft authentifizieren), und führen Sie die Authentifizierung mit dem Microsoft-Konto durch.
 
@@ -142,7 +142,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit ClickUp
 
 Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im Azure-Portal.
 
-1. Wählen Sie im Azure-Portal im linken Bereich die Option **Azure Active Directory** , **Benutzer** und dann **Alle Benutzer** aus.
+1. Wählen Sie im Azure-Portal im linken Bereich die Option **Azure Active Directory**, **Benutzer** und dann **Alle Benutzer** aus.
 
     ![Links „Benutzer und Gruppen“ und „Alle Benutzer“](common/users.png)
 
@@ -155,19 +155,19 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
     ![Dialogfeld „Benutzer“](common/user-properties.png)
 
     a. Geben Sie im Feld **Name** den Namen **BrittaSimon** ein.
-  
-    b. Geben Sie im Feld **Benutzername** Folgendes ein: **brittasimon\@ihreunternehmensdomäne.erweiterung** .  
+
+    b. Geben Sie im Feld **Benutzername** Folgendes ein: **brittasimon\@ihreunternehmensdomäne.erweiterung**.  
     Zum Beispiel, BrittaSimon@contoso.com
 
-    c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen** , und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
+    c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Erstellen** .
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
 In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf ClickUp Productivity Platform gewähren.
 
-1. Wählen Sie im Azure-Portal nacheinander die Optionen **Unternehmensanwendungen** , **Alle Anwendungen** und **ClickUp Productivity Platform** .
+1. Wählen Sie im Azure-Portal nacheinander die Optionen **Unternehmensanwendungen**, **Alle Anwendungen** und **ClickUp Productivity Platform**.
 
     ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
@@ -179,27 +179,27 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
     ![Link „Benutzer und Gruppen“](common/users-groups-blade.png)
 
-4. Klicken Sie auf die Schaltfläche **Benutzer hinzufügen** , und wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+4. Klicken Sie auf die Schaltfläche **Benutzer hinzufügen**, und wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 
     ![Bereich „Zuweisung hinzufügen“](common/add-assign-user.png)
 
-5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **Britta Simon** aus, und klicken Sie dann unten im Bildschirm auf die Schaltfläche **Auswählen** .
+5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **Britta Simon** aus, und klicken Sie dann unten im Bildschirm auf die Schaltfläche **Auswählen**.
 
-6. Wenn Sie einen beliebigen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** in der Liste die entsprechende Rolle für den Benutzer aus, und klicken Sie dann unten auf dem Bildschirm auf **Auswählen** .
+6. Wenn Sie einen beliebigen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** in der Liste die entsprechende Rolle für den Benutzer aus, und klicken Sie dann unten auf dem Bildschirm auf **Auswählen**.
 
-7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen** .
+7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
 ### <a name="create-clickup-productivity-platform-test-user"></a>Erstellen eines ClickUp Productivity Platform-Testbenutzers
 
 1. Melden Sie sich in einem anderen Webbrowserfenster an Ihrem ClickUp Productivity Platform-Mandanten als Administrator an.
 
-2. Klicken Sie auf das **Benutzerprofil** , und wählen Sie anschließend die Option **Personen** aus.
-   
+2. Klicken Sie auf das **Benutzerprofil**, und wählen Sie anschließend die Option **Personen** aus.
+
     ![Screenshot des ClickUp Productivity-Mandanten](./media/clickup-productivity-platform-tutorial/configure0.png)
 
     ![Screenshot des ausgewählten Links „Personen“](./media/clickup-productivity-platform-tutorial/user1.png)
 
-3. Geben Sie die E-Mail-Adresse des Benutzers im Textfeld ein, und klicken Sie auf **Einladen** .
+3. Geben Sie die E-Mail-Adresse des Benutzers im Textfeld ein, und klicken Sie auf **Einladen**.
 
     ![Screenshot der Teambenutzereinstellungen, in denen Sie Personen per §-Mail einladen können](./media/clickup-productivity-platform-tutorial/user2.png)
 

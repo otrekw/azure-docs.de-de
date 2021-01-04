@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 04/14/2020
-ms.openlocfilehash: 29f0f0c3fd48920990519aecfe5ae58c32b43db9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 410b33b5c6078d096fa4b2acaa7b49bc14c95e31
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91253835"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608271"
 ---
 # <a name="list-entity"></a>Entität vom Typ „List“
 
@@ -85,7 +85,6 @@ In der Äußerung oben wird das Wort `paris` dem Element Paris als Teil der List
 
 #### <a name="v3-prediction-endpoint-response"></a>[V3 – Antwort für Vorhersageendpunkt](#tab/V3)
 
-
 Dies ist der JSON-Code, wenn `verbose=false` in der Abfragezeichenfolge festgelegt ist:
 
 ```json
@@ -130,7 +129,6 @@ Dies ist der JSON-Code, wenn `verbose=true` in der Abfragezeichenfolge festgeleg
 |Datenobjekt|Name der Entität|Wert|
 |--|--|--|
 |Entität vom Typ „List“|`Cities`|`paris`|
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 

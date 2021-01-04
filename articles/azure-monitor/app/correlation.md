@@ -7,12 +7,12 @@ ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
 ms.custom: devx-track-python, devx-track-csharp
-ms.openlocfilehash: 7a206d61124b2524feae0cf155083c1939696e18
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 20e9ed7e83ff3359651acebc11a939a998f2889d
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96853321"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97607914"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Telemetriekorrelation in Application Insights
 
@@ -79,7 +79,6 @@ Der [W3C Trace-Context](https://w3c.github.io/trace-context/) und Application In
 | `Operation_Id`                         | [trace-id](https://w3c.github.io/trace-context/#trace-id)                                           |
 | `Operation_ParentId`                   | [parent-id](https://w3c.github.io/trace-context/#parent-id) der übergeordneten Spanne dieser Spanne. Wenn es sich um eine Stammspanne handelt, muss dieses Feld leer sein.     |
 
-
 Weitere Informationen finden Sie unter [Application Insights-Telemetriedatenmodell](../../azure-monitor/app/data-model.md).
 
 ### <a name="enable-w3c-distributed-tracing-support-for-net-apps"></a>Aktivieren der Unterstützung der verteilten W3C-Ablaufverfolgung für .NET-Apps
@@ -103,7 +102,7 @@ Die W3C TraceContext-basierte verteilte Ablaufverfolgung ist in allen aktuellen 
        <Param name ="enableW3CBackCompat" value = "true" />
     </Add>
     ```
-    
+
   - Für Spring Boot-Apps fügen Sie die folgenden Eigenschaften hinzu:
 
     - `azure.application-insights.web.enable-W3C=true`
@@ -139,7 +138,7 @@ Fügen Sie die folgende Konfiguration hinzu:
   ```JavaScript
     distributedTracingMode: DistributedTracingModes.W3C
   ```
-  
+
 - **[Ausschnittbasiertes Setup](./javascript.md#snippet-based-setup)**
 
 Fügen Sie die folgende Konfiguration hinzu:

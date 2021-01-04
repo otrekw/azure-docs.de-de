@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 7af115d8f1244253e461f796c5665609d3b84b21
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: 6af4fba8ddf50b795d847a2c7b4e2fbc02fe593f
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94517443"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97587178"
 ---
 # <a name="security-frame-cryptography--mitigations"></a>Sicherheitsrahmen: Kryptografie | Gegenmaßnahmen 
 
@@ -109,7 +109,7 @@ ms.locfileid: "94517443"
 | **Zutreffende Technologien** | Allgemein |
 | **Attribute**              | –  |
 | **Referenzen**              | –  |
-| **Schritte** | <p>Für die Produkte muss die SHA-2-Familie der Hashalgorithmen (SHA256, SHA384 und SHA512) verwendet werden. Wenn ein kürzerer Hash erforderlich ist, z.B. eine Ausgabelänge von 128 Bit für eine Datenstruktur mit dem kürzeren MD5-Hash, ist es für Produktteams zulässig, einen der SHA2-Hashes (normalerweise SHA256) zu kürzen. Beachten Sie, dass SHA384 eine gekürzte Version von SHA512 ist. Das Kürzen von kryptografischen Hashes auf weniger als 128 Bit aus Sicherheitsgründen ist nicht zulässig. Für neuen Code dürfen die Hashalgorithmen MD2, MD4, MD5, SHA-0, SHA-1 oder RIPEMD nicht verwendet werden. Aus computertechnischer Sicht kann es für diese Algorithmen zu Hashkonflikten und somit zu Fehlern kommen.</p><p>Zulässige .NET-Hashalgorithmen für verwaltete kryptografische Flexibilität (sortiert nach Präferenz):</p><ul><li>SHA512Cng (FIPS-konform)</li><li>SHA384Cng (FIPS-konform)</li><li>SHA256Cng (FIPS-konform)</li><li>SHA512Managed (nicht FIPS-konform) (Verwenden Sie in Aufrufen von HashAlgorithm.Create oder CryptoConfig.CreateFromName „SHA512“ als Algorithmusname.)</li><li>SHA384Managed (nicht FIPS-konform) (Verwenden Sie in Aufrufen von HashAlgorithm.Create oder CryptoConfig.CreateFromName „SHA384“ als Algorithmusname.)</li><li>SHA256Managed (nicht FIPS-konform) (Verwenden Sie in Aufrufen von HashAlgorithm.Create oder CryptoConfig.CreateFromName „SHA256“ als Algorithmusname.)</li><li>SHA512CryptoServiceProvider (FIPS-konform)</li><li>SHA256CryptoServiceProvider (FIPS-konform)</li><li>SHA384CryptoServiceProvider (FIPS-konform)</li></ul>| 
+| **Schritte** | <p>Für die Produkte muss die SHA-2-Familie der Hashalgorithmen (SHA256, SHA384 und SHA512) verwendet werden. Wenn ein kürzerer Hash erforderlich ist, z.B. eine Ausgabelänge von 128 Bit für eine Datenstruktur mit dem kürzeren MD5-Hash, ist es für Produktteams zulässig, einen der SHA2-Hashes (normalerweise SHA256) zu kürzen. Beachten Sie, dass SHA384 eine gekürzte Version von SHA512 ist. Das Kürzen von kryptografischen Hashes auf weniger als 128 Bit aus Sicherheitsgründen ist nicht zulässig. Für neuen Code dürfen die Hashalgorithmen MD2, MD4, MD5, SHA-0, SHA-1 oder RIPEMD nicht verwendet werden. Aus computertechnischer Sicht kann es für diese Algorithmen zu Hashkonflikten und somit zu Fehlern kommen.</p><p>Zulässige .NET-Hashalgorithmen für verwaltete kryptografische Flexibilität (sortiert nach Präferenz):</p><ul><li>SHA512Cng (FIPS-konform)</li><li>SHA384Cng (FIPS-konform)</li><li>SHA256Cng (FIPS-konform)</li><li>SHA512Managed (nicht FIPS-konform) (verwenden Sie SHA512 als Algorithmusnamen in Aufrufen von HashAlgorithm.Create oder CryptoConfig.CreateFromName).</li><li>SHA384Managed (nicht FIPS-konform) (verwenden Sie SHA384 als Algorithmusnamen in Aufrufen von HashAlgorithm.Create oder CryptoConfig.CreateFromName).</li><li>SHA256Managed (nicht FIPS-konform) (verwenden Sie SHA256 als Algorithmusnamen in Aufrufen von HashAlgorithm.Create oder CryptoConfig.CreateFromName).</li><li>SHA512CryptoServiceProvider (FIPS-konform)</li><li>SHA256CryptoServiceProvider (FIPS-konform)</li><li>SHA384CryptoServiceProvider (FIPS-konform)</li></ul>| 
 
 ## <a name="use-strong-encryption-algorithms-to-encrypt-data-in-the-database"></a><a id="strong-db"></a>Verwenden von sicheren Verschlüsselungsalgorithmen zum Verschlüsseln von Daten in der Datenbank
 

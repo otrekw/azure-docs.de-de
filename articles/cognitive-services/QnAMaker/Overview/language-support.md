@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 11/09/2019
-ms.openlocfilehash: 5035a81838ace0678f0cbb68ad2b9325de498003
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 1edd5ffc2578a27a53c7e9a46a4a5f1cf61331ff
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353118"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97605058"
 ---
 # <a name="language-support-for-a-qna-maker-resource-and-knowledge-bases"></a>Sprachunterstützung für QnA Maker-Ressourcen und Wissensdatenbanken
 
@@ -83,61 +83,61 @@ Wenn Sie ein Wissensdatenbank-System unterstützen müssen, das mehrere Sprachen
 
 Die folgende Liste enthält die Sprachen, die für QnA Maker-Ressourcen unterstützt werden. 
 
-|Sprache|
+| Sprache |
 |--|
-|Arabisch|
-|Armenisch|
-|Bengalisch|
-|Baskisch|
-|Bulgarisch|
-|Katalanisch|
-|Chinesisch (vereinfacht)|
-|Chinesisch (traditionell)|
-|Kroatisch|
-|Tschechisch|
-|Dänisch|
-|Niederländisch|
-|Englisch|
-|Estnisch|
-|Finnisch|
-|Französisch|
-|Galizisch|
-|Deutsch|
-|Griechisch|
-|Gujarati|
-|Hebräisch|
-|Hindi|
-|Ungarisch|
-|Isländisch|
-|Indonesisch|
-|Irisch|
-|Italienisch|
-|Japanisch|
-|Kannada|
-|Koreanisch|
-|Lettisch|
-|Litauisch|
-|Malayalam|
-|Malaiisch|
-|Norwegisch|
-|Polnisch|
-|Portugiesisch|
-|Pandschabi|
-|Rumänisch|
-|Russisch|
-|Serbisch (Kyrillisch)|
-|Serbisch (Lateinisch)|
-|Slowakisch|
-|Slowenisch|
-|Spanisch|
-|Schwedisch|
-|Tamilisch|
-|Telugu|
-|Thailändisch|
-|Türkisch|
-|Ukrainisch|
-|Urdu|
-|Vietnamesisch|
+| Arabisch |
+| Armenisch |
+| Bengalisch |
+| Baskisch |
+| Bulgarisch |
+| Katalanisch |
+| Chinesisch (vereinfacht) |
+| Chinesisch (traditionell) |
+| Kroatisch |
+| Tschechisch |
+| Dänisch |
+| Niederländisch |
+| Englisch |
+| Estnisch |
+| Finnisch |
+| Französisch |
+| Galizisch |
+| Deutsch |
+| Griechisch |
+| Gujarati |
+| Hebräisch |
+| Hindi |
+| Ungarisch |
+| Isländisch |
+| Indonesisch |
+| Irisch |
+| Italienisch |
+| Japanisch |
+| Kannada |
+| Koreanisch |
+| Lettisch |
+| Litauisch |
+| Malayalam |
+| Malaiisch |
+| Norwegisch |
+| Polnisch |
+| Portugiesisch |
+| Pandschabi |
+| Rumänisch |
+| Russisch |
+| Serbisch (Kyrillisch) |
+| Serbisch (Lateinisch) |
+| Slowakisch |
+| Slowenisch |
+| Spanisch |
+| Schwedisch |
+| Tamilisch |
+| Telugu |
+| Thailändisch |
+| Türkisch |
+| Ukrainisch |
+| Urdu |
+| Vietnamesisch |
 
 ## <a name="query-matching-and-relevance"></a>Abfrageabgleich und Relevanz
 QnA Maker nutzt [Sprachanalysefunktionen von Azure Cognitive Search](/rest/api/searchservice/language-support), um Ergebnisse bereitzustellen.

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 08/23/2017
 ms.custom: devx-track-java
 ms.author: rapatchi
-ms.openlocfilehash: f65194cde25deac8c03d6ddc3a7c0b928aaca171
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3efa51f5632dd5cdc274ea39df5178aa0351a01f
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87327309"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97652295"
 ---
 # <a name="update-your-previous-java-service-fabric-application-to-fetch-java-libraries-from-maven"></a>Aktualisieren Ihrer älteren Java Service Fabric-Anwendung für den Abruf von Java-Bibliotheken aus Maven
 Service Fabric Java-Binärdateien wurden vom Service Fabric-Java-SDK auf Maven-Hosting umgestellt. Sie können die neuesten Service Fabric-Java-Abhängigkeiten mithilfe von **mavencentral** abrufen. Dieser Leitfaden unterstützt Sie bei der Aktualisierung vorhandener Java-Anwendungen, die für das Service Fabric-Java-SDK unter Verwendung der Yeoman-Vorlage oder Eclipse erstellt wurden, um mit dem Maven-basierten Build kompatibel zu sein.
@@ -385,7 +385,7 @@ Die hier erforderlichen Änderungen sind vergleichbar mit den Änderungen aus de
 ```gradle
 dependencies {
     compile fileTree(dir: '/opt/microsoft/sdk/servicefabric/java/packages/lib', include: ['*.jar'])
-      compile project(':MyactorInterface')
+    compile project(':MyactorInterface')
 }
 .
 .
@@ -398,7 +398,7 @@ jar
         "Class-Path": configurations.compile.collect { 'lib/' + it.getName() }.join(' '))
     }
     baseName "myactor-test"
-  destinationDir = file('out/lib')
+    destinationDir = file('out/lib')
 }
 .
 .

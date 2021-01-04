@@ -6,12 +6,12 @@ ms.author: alkemper
 ms.date: 05/28/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: 6b2b5f4bcbcc5af07a763ee4dff2d42413750fb7
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 588efd692119c9e2831e16c1ce26c2759898a1e5
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96930278"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97607363"
 ---
 # <a name="sync-your-github-repository-to-app-configuration"></a>Synchronisieren Ihres GitHub-Repositorys auf App Configuration
 
@@ -20,9 +20,9 @@ Teams, die Ihre vorhandenen Verfahren der Quellcodeverwaltung beibehalten möcht
 &nbsp;&nbsp;&nbsp;&nbsp;• Aktualisieren der Konfiguration ohne erneute Bereitstellung der gesamten App <br>
 &nbsp;&nbsp;&nbsp;&nbsp;• Integration in Dienste wie Azure App Service und Azure Functions 
 
-Ein GitHub Actions-[Workflow](https://help.github.com/articles/about-github-actions#workflow) definiert einen automatisierten Prozess in einem GitHub-Repository. Die Aktion *Azure App Configuration-Synchronisierung* löst Aktualisierungen einer App Configuration-Instanz aus, wenn Änderungen am Quellrepository vorgenommen werden. Dabei wird zum Definieren der Schritte und Parameter eine YAML-Datei (.yml) im Pfad `/.github/workflows/` des Repositorys verwendet. Sie können Konfigurationsupdates beim Pushen, Überprüfen oder Branchen von App-Konfigurationsdateien auslösen – genauso wie beim App-Code.
+Ein GitHub Actions-[Workflow](https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/introduction-to-github-actions#the-components-of-github-actions) definiert einen automatisierten Prozess in einem GitHub-Repository. Die Aktion *Azure App Configuration-Synchronisierung* löst Aktualisierungen einer App Configuration-Instanz aus, wenn Änderungen am Quellrepository vorgenommen werden. Dabei wird zum Definieren der Schritte und Parameter eine YAML-Datei (.yml) im Pfad `/.github/workflows/` des Repositorys verwendet. Sie können Konfigurationsupdates beim Pushen, Überprüfen oder Branchen von App-Konfigurationsdateien auslösen – genauso wie beim App-Code.
 
-Die GitHub-[Dokumentation](https://help.github.com/actions/automating-your-workflow-with-github-actions/configuring-a-workflow) bietet ausführliche Informationen zu GitHub-Workflows und GitHub Actions. 
+Die GitHub-[Dokumentation](https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/introduction-to-github-actions) bietet ausführliche Informationen zu GitHub-Workflows und GitHub Actions. 
 
 ## <a name="enable-github-actions-in-your-repository"></a>Aktivieren von GitHub Actions in Ihrem Repository
 Um mit der Verwendung dieser GitHub-Aktion zu beginnen, navigieren Sie zu Ihrem Repository, und wählen Sie die Registerkarte **Aktionen** aus. Wählen Sie **Neuer Workflow** und dann **Eigenen Workflow einrichten** aus. Suchen Sie zum Schluss im Marketplace nach „Azure App Configuration-Synchronisierung“.
@@ -35,13 +35,13 @@ Um mit der Verwendung dieser GitHub-Aktion zu beginnen, navigieren Sie zu Ihrem 
 ## <a name="sync-configuration-files-after-a-push"></a>Synchronisieren von Konfigurationsdateien nach einem Push
 Mit dieser Aktion werden Azure App Configuration-Dateien synchronisiert, wenn eine Änderung an `appsettings.json` gepusht wird. Wenn ein Entwickler eine Änderung an `appsettings.json` pusht, aktualisiert die Aktion „App Configuration-Synchronisierung“ die App Configuration-Instanz mit den neuen Werten.
 
-Der erste Abschnitt dieses Workflows gibt an, dass die Aktion *bei* einem *Push* mit `appsettings.json` zum *Mainbranch* ausgelöst wird. Im zweiten Abschnitt werden die Aufträge aufgelistet, die nach dem Auslösen der Aktion ausgeführt werden. Die Aktion prüft die relevanten Dateien und aktualisiert die App Configuration-Instanz mithilfe der als Geheimnis im Repository gespeicherten Verbindungszeichenfolge.  Weitere Informationen zur Verwendung von Geheimnissen in GitHub finden Sie in diesem [GitHub-Artikel](https://help.github.com/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets) zum Erstellen und Verwenden verschlüsselter Geheimnisse.
+Der erste Abschnitt dieses Workflows gibt an, dass die Aktion *bei* einem *Push* mit `appsettings.json` zum *Mainbranch* ausgelöst wird. Im zweiten Abschnitt werden die Aufträge aufgelistet, die nach dem Auslösen der Aktion ausgeführt werden. Die Aktion prüft die relevanten Dateien und aktualisiert die App Configuration-Instanz mithilfe der als Geheimnis im Repository gespeicherten Verbindungszeichenfolge.  Weitere Informationen zur Verwendung von Geheimnissen in GitHub finden Sie in diesem [GitHub-Artikel](https://docs.github.com/en/free-pro-team@latest/actions/reference/encrypted-secrets) zum Erstellen und Verwenden verschlüsselter Geheimnisse.
 
 ```json
 on: 
   push: 
     branches: 
-      - 'master' 
+      - 'main' 
     paths: 
       - 'appsettings.json' 
  
@@ -68,7 +68,7 @@ Die GitHub-Aktion aktiviert den Strict-Modus standardmäßig nicht, d. h., dass
 on: 
   push: 
     branches: 
-      - 'master' 
+      - 'main' 
     paths: 
       - 'appsettings.json' 
  
@@ -98,7 +98,7 @@ Wenn Ihre Konfiguration auf mehrere Dateien verteilt ist, können Sie das Muster
 on:
   push:
     branches:
-      - 'master'
+      - 'main'
     paths:
       - 'appsettings.json'
       - 'appsettings2.json'
@@ -127,7 +127,7 @@ Synchronisierung nach Präfix:
 on:
   push:
     branches:
-      - 'master'
+      - 'main'
     paths:
       - 'appsettings.json'
 
@@ -153,7 +153,7 @@ Synchronisierung nach Bezeichnung:
 on:
   push:
     branches:
-      - 'master'
+      - 'main'
     paths:
       - 'appsettings.json'
 
@@ -183,7 +183,7 @@ Der erste Abschnitt dieses Workflows gibt an, dass die Aktion *bei* einem *Push*
 on: 
   push: 
     branches: 
-      - 'master' 
+      - 'main' 
     paths: 
       - 'appsettings.json' 
  
@@ -219,7 +219,7 @@ Die GitHub-Aktion kann dann zum Durchführen einer strengen Synchronisierung fü
 on:
   push:
     branches:
-      - 'master'
+      - 'main'
     paths:
       - 'appsettings.json'
       - 'secretreferences.json'
@@ -272,7 +272,7 @@ Wenn das geschachtelte-Objekt der an die App Configuration-Instanz gepushte Wert
 on: 
   push: 
     branches: 
-      - 'master' 
+      - 'main' 
     paths: 
       - 'appsettings.json' 
  
@@ -300,7 +300,7 @@ Bei einer Tiefe von 2 gibt das obige Beispiel nun das folgende Schlüssel-Wert-P
 | Object:Inner | {"InnerKey":"InnerValue"} |
 
 ## <a name="understand-action-inputs"></a>Grundlegendes zu Aktionseingaben
-Eingabeparameter geben Daten an, die von der Aktion während der Laufzeit verwendet werden.  In der folgenden Tabelle sind die von der App Configuration-Synchronisierung akzeptierten Eingabeparameter sowie die jeweils erwarteten Werte enthalten.  Weitere Informationen zu Aktionseingaben für GitHub Actions finden Sie in der GitHub-[Dokumentation](https://help.github.com/actions/automating-your-workflow-with-github-actions/metadata-syntax-for-github-actions#inputs).
+Eingabeparameter geben Daten an, die von der Aktion während der Laufzeit verwendet werden.  In der folgenden Tabelle sind die von der App Configuration-Synchronisierung akzeptierten Eingabeparameter sowie die jeweils erwarteten Werte enthalten.  Weitere Informationen zu Aktionseingaben für GitHub Actions finden Sie in der GitHub-[Dokumentation](https://docs.github.com/en/free-pro-team@latest/actions/creating-actions/metadata-syntax-for-github-actions#inputs).
 
 > [!Note]
 > Bei den Eingabe-IDs wird die Groß-/Kleinschreibung nicht berücksichtigt.

@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/02/2020
-ms.openlocfilehash: 15a4a0ea78ef169480d4494683cb929cfefd16f2
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: f55364fe0eabae4bb1698bd655cde8d3e01b127a
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93026971"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590459"
 ---
 # <a name="managing-the-mapping-data-flow-graph"></a>Verwalten des Graphen des Zuordnungsdatenflusses
 
@@ -21,7 +21,7 @@ ms.locfileid: "93026971"
 
 Zuordnungsdatenflüsse werden mithilfe einer Entwurfsoberfläche, dem sog. Datenflussgraphen, erstellt. Im Graphen ist die Transformationslogik von links nach rechts aufgebaut. Weitere Datenströme werden von oben nach unten hinzugefügt. Wählen Sie zum Hinzufügen einer neuen Transformation unten rechts in einer vorhandenen Transformation das Pluszeichen aus.
 
-![Canvas](media/data-flow/canvas2.png "Canvas")
+![Canvas](media/data-flow/canvas-2.png)
 
 Wenn Ihre Datenflüsse komplexer werden, gehen Sie wie folgt vor, um den Datenflussgraphen effektiv zu nutzen und zu verwalten. 
 

@@ -6,12 +6,12 @@ author: TimothyMothra
 ms.author: tilee
 ms.date: 4/23/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 36c5fc93886327c0e3261418343d900ee66cb4eb
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: b44279f31aea8fc02130f1c3d7520f42c648bd4c
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168578"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97607948"
 ---
 # <a name="application-insights-for-azure-functions-supported-features"></a>Unterstützte Features in Application Insights für Azure Functions
 
@@ -23,37 +23,35 @@ Weitere Informationen zu kompatiblen Versionen von Application Insights finden S
 
 ## <a name="supported-features"></a>Unterstützte Features
 
-| Azure-Funktionen                       | V1                | V2 und V3   | 
-|-----------------------------------    |---------------    |------------------ |
+| Azure-Funktionen                   | V1            | V2 und V3 | 
+|-----------------------------------|---------------|------------------|
 | | | | 
-| **Automatische Sammlung von**        |                 |                   |               
-| &bull;Anforderungen                     | Ja             | Ja               | 
-| &bull;Ausnahmen                   | Ja             | Ja               | 
-| &bull; Leistungsindikatoren         | Ja             | Ja               |
-| &bull;Abhängigkeiten                   |                   |                   |               
-| &nbsp;&nbsp;&nbsp;&mdash; HTTP      |                 | Ja               | 
-| &nbsp;&nbsp;&nbsp;&mdash; ServiceBus|                 | Ja               | 
-| &nbsp;&nbsp;&nbsp;&mdash; EventHub  |                 | Ja               | 
-| &nbsp;&nbsp;&nbsp;&mdash; SQL       |                 | Ja               | 
+| **Automatische Sammlung von**        |               |                  |
+| &bull;Anforderungen                     | Ja           | Ja              |
+| &bull;Ausnahmen                   | Ja           | Ja              |
+| &bull; Leistungsindikatoren         | Ja           | Ja              |
+| &bull;Abhängigkeiten                 |               |                  |
+| &nbsp;&nbsp;&nbsp;&mdash; HTTP      |               | Ja              |
+| &nbsp;&nbsp;&nbsp;&mdash; ServiceBus|               | Ja              |
+| &nbsp;&nbsp;&nbsp;&mdash; EventHub  |               | Ja              |
+| &nbsp;&nbsp;&nbsp;&mdash; SQL       |               | Ja              |
 | | | | 
-| **Unterstützte Features**                |                   |                   |               
-| &bull; QuickPulse/LiveMetrics       | Ja             | Ja               | 
-| &nbsp;&nbsp;&nbsp;&mdash; Sicherer Steuerkanal|                 | Ja               | 
-| &bull; Stichprobenentnahme                     | Ja             | Ja               | 
-| &bull; Heartbeats                   |                 | Ja               | 
+| **Unterstützte Features**              |               |                  |
+| &bull; QuickPulse/LiveMetrics       | Ja           | Ja              | 
+| &nbsp;&nbsp;&nbsp;&mdash; Sicherer Steuerkanal |               | Ja | 
+| &bull; Stichprobenentnahme                     | Ja           | Ja              | 
+| &bull; Heartbeats                   | | Ja              | 
+| | | |
+| **Korrelation**                    |               |                  |
+| &bull; ServiceBus                  |               | Ja              |
+| &bull; EventHub                    |               | Ja              |
 | | | | 
-| **Korrelation**                       |                   |                   |               
-| &bull; ServiceBus                     |                   | Ja               | 
-| &bull; EventHub                       |                   | Ja               | 
-| | | | 
-| **Konfigurierbar**                      |                   |                   |           
-| &bull;Vollständig konfigurierbar.<br/>Anweisungen finden Sie unter [Azure Functions](https://github.com/Microsoft/ApplicationInsights-aspnetcore/issues/759#issuecomment-426687852).<br/>Alle Optionen finden Sie unter [ASP.NET Core](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Custom-Configuration).               |                   | Ja                   | 
-
+| **Konfigurierbar**                  |               |                  |           
+| &bull;Vollständig konfigurierbar.<br/>Anweisungen finden Sie unter [Azure Functions](https://github.com/Microsoft/ApplicationInsights-aspnetcore/issues/759#issuecomment-426687852).<br/>Alle Optionen finden Sie unter [ASP.NET Core](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Custom-Configuration).           |               | Ja                 | 
 
 ## <a name="performance-counters"></a>Leistungsindikatoren
 
 Automatische Erfassung von Leistungsindikatoren kann nur für Windows-Computer verwendet werden.
-
 
 ## <a name="live-metrics--secure-control-channel"></a>Livemetriken und sicherer Steuerkanal
 

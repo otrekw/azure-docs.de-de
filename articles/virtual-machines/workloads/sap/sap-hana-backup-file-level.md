@@ -13,12 +13,12 @@ ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/01/2020
 ms.author: juergent
-ms.openlocfilehash: 13bdf4b10ec586bf83a70434f003cc1573aca469
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 70b0f8178a94735a6ef37a225044984508cc2233
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94950260"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617135"
 ---
 # <a name="sap-hana-azure-backup-on-file-level"></a>SAP HANA-Sicherung mit Azure Backup auf Dateiebene
 
@@ -28,7 +28,7 @@ Dieser Artikel ist ein verwandter Artikel zur [Sicherungsanleitung für SAP HANA
 
 Verschiedene VM-Typen in Azure lassen eine unterschiedliche Anzahl angefügter VHDs zu. Die genauen Details finden Sie unter [Größen für virtuelle Linux-Computer in Azure](../../sizes.md). Für die in dieser Dokumentation erwähnten Tests haben wir eine Azure-VM des Typs GS5 verwendet, die 64 angefügte Datenträger unterstützt. Bei umfangreichen SAP HANA-Systemen wird ein Großteil der Datenträger u.U. bereits für Daten- und Protokolldateien benötigt – möglicherweise in Kombination mit Software-Striping für einen optimalen Datenträger-E/A-Durchsatz. Weitere Informationen zu empfohlenen Datenträgerkonfigurationen für SAP HANA-Bereitstellungen auf Azure-VMs finden Sie im Artikel [SAP HANA: Speicherkonfigurationen für virtuelle Azure-Computer](./hana-vm-operations-storage.md). Die gegebenen Empfehlungen berücksichtigen auch Angaben zum Speicherplatz für lokale Sicherungen.
 
-Die Sicherung/Wiederherstellung auf Dateiebene wird standardmäßig mit einer dateibasierten Sicherung über SAP HANA Studio oder über SAP HANA-SQL-Anweisungen verwaltet. Weitere Informationen finden Sie im Artikel [SAP HANA SQL and System Views Reference](https://help.sap.com/hana/SAP_HANA_SQL_and_System_Views_Reference_en.pdf) (Referenz zu SAP HANA-SQL und zu Systemansichten).
+Die Sicherung/Wiederherstellung auf Dateiebene wird standardmäßig mit einer dateibasierten Sicherung über SAP HANA Studio oder über SAP HANA-SQL-Anweisungen verwaltet. Weitere Informationen finden Sie im Artikel [SAP HANA SQL and System Views Reference](https://help.sap.com/viewer/4fe29514fd584807ac9f2a04f6754767/2.0.05/en-US/3859e48180bb4cf8a207e15cf25a7e57.html) (Referenz zu SAP HANA-SQL und zu Systemansichten).
 
 ![Diese Abbildung zeigt das Dialogfeld des Sicherungsmenüelements in SAP HANA-Studio.](media/sap-hana-backup-file-level/backup-menue-dialog.png)
 

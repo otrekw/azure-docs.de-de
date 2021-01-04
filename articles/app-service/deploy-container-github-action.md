@@ -7,16 +7,16 @@ ms.date: 12/04/2020
 ms.author: jafreebe
 ms.reviewer: ushan
 ms.custom: github-actions-azure
-ms.openlocfilehash: ae587b9501c9c68600ff880744d311ba966923ed
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 4f5deb33218c336da7a477b4f39cd45f7386debf
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97008026"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97604973"
 ---
 # <a name="deploy-a-custom-container-to-app-service-using-github-actions"></a>Bereitstellen eines benutzerdefinierten Containers in App Service mithilfe von GitHub-Aktionen
 
-[GitHub Actions](https://help.github.com/en/articles/about-github-actions) bietet Ihnen die Flexibilität, einen automatisierten Softwareentwicklungsworkflow zu erstellen. Mit der [Azure Web Deploy-Aktion](https://github.com/Azure/webapps-deploy) können Sie Ihren Workflow automatisieren, um mithilfe von GitHub Actions benutzerdefinierte [App Service](overview.md)-Container bereitzustellen.
+[GitHub Actions](https://docs.github.com/en/free-pro-team@latest/actions) bietet Ihnen die Flexibilität, einen automatisierten Softwareentwicklungsworkflow zu erstellen. Mit der [Azure Web Deploy-Aktion](https://github.com/Azure/webapps-deploy) können Sie Ihren Workflow automatisieren, um mithilfe von GitHub Actions benutzerdefinierte [App Service](overview.md)-Container bereitzustellen.
 
 Ein Workflow wird durch eine YAML-Datei im Pfad `/.github/workflows/` in Ihrem Repository definiert. Diese Definition enthält die verschiedenen Schritte und Parameter im Workflow.
 
@@ -39,7 +39,7 @@ Bei einem Azure App Service-Containerworkflow umfasst die Datei drei Abschnitte:
 
 Die empfohlene Vorgehensweise für die Authentifizierung mit Azure App Services für GitHub Actions verwendet ein Veröffentlichungsprofil. Sie können sich auch mit einem Dienstprinzipal authentifizieren, für diesen Vorgang sind jedoch weitere Schritte erforderlich. 
 
-Speichern Sie die Anmeldeinformationen des Veröffentlichungsprofils oder den Dienstprinzipal als [GitHub-Geheimnis](https://docs.github.com/en/actions/reference/encrypted-secrets), um sich bei Azure zu authentifizieren. In Ihrem Workflow greifen Sie auf das Geheimnis zu. 
+Speichern Sie die Anmeldeinformationen des Veröffentlichungsprofils oder den Dienstprinzipal als [GitHub-Geheimnis](https://docs.github.com/en/free-pro-team@latest/actions/reference/encrypted-secrets), um sich bei Azure zu authentifizieren. In Ihrem Workflow greifen Sie auf das Geheimnis zu. 
 
 # <a name="publish-profile"></a>[Veröffentlichungsprofil](#tab/publish-profile)
 
@@ -273,7 +273,7 @@ Die verfügbaren Aktionen sind auf verschiedene GitHub-Repositorys verteilt, jew
 
 - [Docker-Anmeldung/-Abmeldung](https://github.com/Azure/docker-login)
 
-- [Ereignisse zum Auslösen von Workflows](https://help.github.com/en/articles/events-that-trigger-workflows)
+- [Ereignisse zum Auslösen von Workflows](https://docs.github.com/en/free-pro-team@latest/actions/reference/events-that-trigger-workflows)
 
 - [Kubernetes-Bereitstellung](https://github.com/Azure/k8s-deploy)
 

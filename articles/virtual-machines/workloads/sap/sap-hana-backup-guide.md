@@ -13,12 +13,12 @@ ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/01/2020
 ms.author: juergent
-ms.openlocfilehash: 522af4bf6cc711bbfdfd30d0443ee58dad56b87e
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 340ce84ebe662b976f32048a47fd98d793083065
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94950022"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617101"
 ---
 # <a name="backup-guide-for-sap-hana-on-azure-virtual-machines"></a>Sicherungsanleitung für SAP HANA in Azure Virtual Machines
 
@@ -103,7 +103,7 @@ Informationen zur Überprüfung der Konsistenz von Tabellen finden Sie außerdem
 
 ### <a name="pros-and-cons-of-hana-backup-versus-storage-snapshot"></a>Vor- und Nachteile einer HANA-Sicherung gegenüber einer Speichermomentaufnahme
 
-Im SAP-System besteht keine Präferenz in Bezug auf die HANA-Sicherung bzw. die Speichermomentaufnahme. Die Vor- und Nachteile werden aufgeführt, damit Benutzer je nach Situation und verfügbarer Speichertechnologie ermitteln können, welches Verfahren am besten geeignet ist (siehe [Planning Your Backup and Recovery Strategy](https://help.sap.com/saphelp_hanaplatform/helpdata/en/ef/085cd5949c40b788bba8fd3c65743e/content.htm) (Planen Ihrer Sicherungs- und Wiederherstellungsstrategie)).
+Im SAP-System besteht keine Präferenz in Bezug auf die HANA-Sicherung bzw. die Speichermomentaufnahme. Die Vor- und Nachteile werden aufgeführt, damit Benutzer je nach Situation und verfügbarer Speichertechnologie ermitteln können, welches Verfahren am besten geeignet ist (siehe [Planning Your Backup and Recovery Strategy](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.05/en-US/ef085cd5949c40b788bba8fd3c65743e.html) (Planen Ihrer Sicherungs- und Wiederherstellungsstrategie)).
 
 Beachten Sie in Azure, dass bei der Azure-Blob-Momentaufnahmenfunktion keine Dateisystemkonsistenz auf mehreren Datenträgern garantiert ist (siehe [Using blob snapshots with PowerShell](/archive/blogs/cie/using-blob-snapshots-with-powershell) [Verwenden von Blob-Momentaufnahmen mit PowerShell]). 
 
