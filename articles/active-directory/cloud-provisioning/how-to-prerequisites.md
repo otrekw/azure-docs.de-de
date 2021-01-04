@@ -11,12 +11,12 @@ ms.date: 12/11/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a89a456b5d9ee36909d5d742a7880d72e5ed86fd
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 1f0c94ba6fb9ee5ab019458043095271123e325e
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97355856"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97671011"
 ---
 # <a name="prerequisites-for-azure-ad-connect-cloud-provisioning"></a>Voraussetzungen für die Azure AD Connect-Cloudbereitstellung
 Dieser Artikel enthält Anleitungen zur Auswahl und Verwendung der Azure Active Directory (Azure AD) Connect-Cloudbereitstellung als Identitätslösung.
@@ -51,58 +51,53 @@ Führen Sie das [IdFix-Tool](/office365/enterprise/prepare-directory-attributes-
 
 ### <a name="in-your-on-premises-environment"></a>In Ihrer lokalen Umgebung
 
- 1. Geben Sie einen in die Domäne eingebundenen Hostserver unter Windows Server 2012 R2 oder höher mit mindestens 4 GB RAM und .NET 4.7.1 + Runtime an.
+1. Geben Sie einen in die Domäne eingebundenen Hostserver unter Windows Server 2012 R2 oder höher mit mindestens 4 GB RAM und .NET 4.7.1 + Runtime an.
 
- >[!NOTE]
- > Beachten Sie, dass die Definition eines Bereichsfilters auf dem Hostserver Kosten für Arbeitsspeicher verursacht.  Wenn kein Bereichsfilter verwendet wird, fallen keine zusätzlichen Arbeitsspeicherkosten an. Die Mindestgröße von 4 GB unterstützt die Synchronisierung für bis zu 12 Organisationseinheiten, die im Bereichsfilter definiert sind. Wenn Sie zusätzliche Organisationseinheiten synchronisieren möchten, müssen Sie die Mindestmenge an Arbeitsspeicher erhöhen. Verwenden Sie die folgende Tabelle als Richtlinie:
- >
- >  
- >  | Anzahl der Organisationseinheiten im Bereichsfilter| Mindestens erforderlicher Arbeitsspeicher|
- >  | --- | --- |
- >  | 12| 4 GB|
- >  | 18|5,5 GB|
- >  | 28|> 10 GB|
- >
- > 
+    >[!NOTE]
+    > Beachten Sie, dass die Definition eines Bereichsfilters auf dem Hostserver Kosten für Arbeitsspeicher verursacht.  Wenn kein Bereichsfilter verwendet wird, fallen keine zusätzlichen Arbeitsspeicherkosten an. Die Mindestgröße von 4 GB unterstützt die Synchronisierung für bis zu 12 Organisationseinheiten, die im Bereichsfilter definiert sind. Wenn Sie zusätzliche Organisationseinheiten synchronisieren möchten, müssen Sie die Mindestmenge an Arbeitsspeicher erhöhen. Verwenden Sie die folgende Tabelle als Richtlinie:
+    >
+    >
+    > | Anzahl der Organisationseinheiten im Bereichsfilter| Mindestens erforderlicher Arbeitsspeicher|
+    > | --- | --- |
+    > | 12 | 4 GB |
+    > | 18 | 5,5 GB|
+    > | 28 | > 10 GB|
 
- 2. Die PowerShell-Ausführungsrichtlinie auf dem lokalen Server muss auf „Nicht definiert“ oder „RemoteSigned“ festgelegt werden.
+2. Die PowerShell-Ausführungsrichtlinie auf dem lokalen Server muss auf „Nicht definiert“ oder „RemoteSigned“ festgelegt werden.
 
- 3. Wenn zwischen Ihren Servern und Azure AD eine Firewall eingerichtet wurde, konfigurieren Sie die folgenden Elemente:
-   - Stellen Sie sicher, dass Agents über die folgenden Ports *ausgehende* Anforderungen an Azure AD senden können:
+3. Wenn zwischen Ihren Servern und Azure AD eine Firewall eingerichtet wurde, konfigurieren Sie die folgenden Elemente:
+    - Stellen Sie sicher, dass Agents über die folgenden Ports *ausgehende* Anforderungen an Azure AD senden können:
 
-        | Portnummer | Wie diese verwendet wird |
-        | --- | --- |
-        | **80** | Herunterladen der Zertifikatsperrlisten (CRLs) bei der Überprüfung des TLS/SSL-Zertifikats.  |
-        | **443** | Verarbeiten der gesamten ausgehenden Kommunikation mit dem Dienst |
-        |**8082**|Erforderlich für die Installation und wenn Sie die HIS-Verwaltungs-API konfigurieren möchten.  Dieser Port kann entfernt werden, nachdem der Agent installiert ist und Sie nicht mehr beabsichtigen, die API zu verwenden.   |
-        | **8080** (optional) | Agents melden ihren Status alle zehn Minuten über den Port 8080, wenn der Port 443 nicht verfügbar ist. Dieser Status wird im Azure AD-Portal angezeigt. |
-   
-     
-   - Wenn Ihre Firewall Regeln gemäß Ursprungsbenutzern erzwingt, öffnen Sie diese Ports für den Datenverkehr aus Windows-Diensten, die als Netzwerkdienst ausgeführt werden.
-   - Wenn Ihre Firewall oder Ihr Proxy das Angeben sicherer Suffixe zulässt, fügen Sie Verbindungen zu \*.msappproxy.net\* und „.servicebus.windows.net“ hinzu. Aktivieren Sie andernfalls den Zugriff auf die [IP-Adressbereiche für das Azure-Rechenzentrum](https://www.microsoft.com/download/details.aspx?id=41653), die wöchentlich aktualisiert werden.
-   - Ihre Agents benötigen für die Erstregistrierung Zugriff auf „login.windows.net“ und „login.microsoftonline.com“. Öffnen Sie Ihre Firewall auch für diese URLs.
-   - Geben Sie für die Zertifikatüberprüfung folgende URLs frei: „mscrl.microsoft.com:80“, „crl.microsoft.com:80“, „ocsp.msocsp.com:80“ und „www\.microsoft.com:80“. Da diese URLs für die Zertifikatüberprüfung in Verbindung mit anderen Microsoft-Produkten verwendet werden, haben Sie diese möglicherweise bereits freigegeben.
+      | Portnummer | Wie diese verwendet wird |
+      | --- | --- |
+      | **80** | Herunterladen der Zertifikatsperrlisten (CRLs) bei der Überprüfung des TLS/SSL-Zertifikats.  |
+      | **443** | Verarbeiten der gesamten ausgehenden Kommunikation mit dem Dienst |
+      |**8082**|Erforderlich für die Installation und wenn Sie die HIS-Verwaltungs-API konfigurieren möchten.  Dieser Port kann entfernt werden, nachdem der Agent installiert ist und Sie nicht mehr beabsichtigen, die API zu verwenden.   |
+      | **8080** (optional) | Agents melden ihren Status alle zehn Minuten über den Port 8080, wenn der Port 443 nicht verfügbar ist. Dieser Status wird im Azure AD-Portal angezeigt. |
 
->[!NOTE]
-> Die Installation des Agents für die Cloudbereitstellung unter Windows Server Core wird nicht unterstützt.
+    - Wenn Ihre Firewall Regeln gemäß Ursprungsbenutzern erzwingt, öffnen Sie diese Ports für den Datenverkehr aus Windows-Diensten, die als Netzwerkdienst ausgeführt werden.
+    - Wenn Ihre Firewall oder Ihr Proxy das Angeben sicherer Suffixe zulässt, fügen Sie Verbindungen zu \*.msappproxy.net\* und „.servicebus.windows.net“ hinzu. Aktivieren Sie andernfalls den Zugriff auf die [IP-Adressbereiche für das Azure-Rechenzentrum](https://www.microsoft.com/download/details.aspx?id=41653), die wöchentlich aktualisiert werden.
+    - Ihre Agents benötigen für die Erstregistrierung Zugriff auf „login.windows.net“ und „login.microsoftonline.com“. Öffnen Sie Ihre Firewall auch für diese URLs.
+    - Geben Sie für die Zertifikatüberprüfung folgende URLs frei: „mscrl.microsoft.com:80“, „crl.microsoft.com:80“, „ocsp.msocsp.com:80“ und „www\.microsoft.com:80“. Da diese URLs für die Zertifikatüberprüfung in Verbindung mit anderen Microsoft-Produkten verwendet werden, haben Sie diese möglicherweise bereits freigegeben.
 
-
-
+    >[!NOTE]
+    > Die Installation des Agents für die Cloudbereitstellung unter Windows Server Core wird nicht unterstützt.
 
 ### <a name="additional-requirements"></a>Zusätzliche Anforderungen
+
 - [Microsoft .NET Framework 4.7.1](https://www.microsoft.com/download/details.aspx?id=56116) 
 
 #### <a name="tls-requirements"></a>TLS-Anforderungen
 
->[!NOTE]
->Transport Layer Security (TLS) ist ein Protokoll, das für eine sichere Kommunikation sorgt. Das Ändern der TLS-Einstellungen wirkt sich auf die Gesamtstruktur aus. Weitere Informationen finden Sie unter [Update zur Aktivierung von TLS 1.1 und TLS 1.2 als sichere Standardprotokolle in WinHTTP unter Windows](https://support.microsoft.com/help/3140245/update-to-enable-tls-1-1-and-tls-1-2-as-default-secure-protocols-in-wi).
+> [!NOTE]
+> Transport Layer Security (TLS) ist ein Protokoll, das für eine sichere Kommunikation sorgt. Das Ändern der TLS-Einstellungen wirkt sich auf die Gesamtstruktur aus. Weitere Informationen finden Sie unter [Update zur Aktivierung von TLS 1.1 und TLS 1.2 als sichere Standardprotokolle in WinHTTP unter Windows](https://support.microsoft.com/help/3140245/update-to-enable-tls-1-1-and-tls-1-2-as-default-secure-protocols-in-wi).
 
 Auf dem Windows-Server, auf dem der Agent für die Azure AD Connect-Cloudbereitstellung gehostet wird, muss TLS 1.2 aktiviert sein, bevor Sie den Agent installieren.
 
 Führen Sie diese Schritte aus, um TLS 1.2 zu aktivieren.
 
 1. Legen Sie die folgenden Registrierungsschlüssel fest:
-    
+
     ```
     [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2]
     [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client] "DisabledByDefault"=dword:00000000 "Enabled"=dword:00000001
@@ -113,6 +108,7 @@ Führen Sie diese Schritte aus, um TLS 1.2 zu aktivieren.
 1. Starten Sie den Server neu.
 
 ## <a name="known-limitations"></a>Bekannte Einschränkungen
+
 Es gelten die folgenden bekannten Einschränkungen:
 
 ### <a name="delta-synchronization"></a>Deltasynchronisierung

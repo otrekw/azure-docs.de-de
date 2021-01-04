@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/28/2020
+ms.date: 12/18/2020
 ms.author: jingwang
-ms.openlocfilehash: f43f516b0999c4d5b775fc9b78dea9b05e228f0d
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 6670d6dc676ebefa149815253d5ce65c8a9b1abe
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97346247"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680944"
 ---
 # <a name="copy-data-from-the-hdfs-server-by-using-azure-data-factory"></a>Kopieren von Daten von einem HDFS-Server mithilfe von Azure Data Factory
 
@@ -284,7 +284,7 @@ Stellen Sie für beide Optionen sicher, dass Sie webhdfs für Hadoop-Cluster akt
 1. Erstellen Sie den HTTP-Prinzipal und die Schlüsseltabelle für webhdfs.
 
     > [!IMPORTANT]
-    > Der HTTP-Kerberos-Prinzipal muss gemäß der Kerberos-HTTP-SPNEGO-Spezifikation mit „**HTTP/** “ beginnen.
+    > Der HTTP-Kerberos-Prinzipal muss gemäß der Kerberos-HTTP-SPNEGO-Spezifikation mit „**HTTP/** “ beginnen. Weitere Informationen dazu finden Sie [hier](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#HDFS_Configuration_Options).
 
     ```bash
     Kadmin> addprinc -randkey HTTP/<namenode hostname>@<REALM.COM>
@@ -485,7 +485,7 @@ Weitere Informationen zu den Eigenschaften der Löschaktivität finden Sie unter
 
 ### <a name="legacy-dataset-model"></a>Legacy-Datasetmodell
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die *type*-Eigenschaft des Datasets muss auf *FileShare* festgelegt werden. |Ja |
 | folderPath | Diese Eigenschaft gibt den Pfad zum Ordner an. Ein Platzhalterfilter wird unterstützt. Zulässige Platzhalter sind: `*` (entspricht 0 oder mehr Zeichen) und `?` (entspricht 0 oder einem einzelnen Zeichen). Verwenden Sie `^` als Escapezeichen, wenn Ihr tatsächlicher Dateiname einen Platzhalter oder dieses Escapezeichen enthält. <br/><br/>Beispiele: Stammordner/Unterordner/. Weitere Beispiele finden Sie unter [Beispiele für Ordner- und Dateifilter](#folder-and-file-filter-examples). |Ja |
@@ -530,7 +530,7 @@ Weitere Informationen zu den Eigenschaften der Löschaktivität finden Sie unter
 
 ### <a name="legacy-copy-activity-source-model"></a>Legacy-Quellenmodell der Kopieraktivität
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die *type*-Eigenschaft der Quelle der Kopieraktivität muss auf *HdfsSource* festgelegt werden. |Ja |
 | recursive | Gibt an, ob die Daten rekursiv aus den Unterordnern oder nur aus dem angegebenen Ordner gelesen werden. Wenn „recursive“ auf *true* festgelegt ist und es sich bei der Senke um einen dateibasierten Speicher handelt, wird ein leerer Ordner oder Unterordner nicht in die Senke kopiert oder dort erstellt.<br/>Zulässige Werte sind *true* (Standard) und *false*. | Nein |

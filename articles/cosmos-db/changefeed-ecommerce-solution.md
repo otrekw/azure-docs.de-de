@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 05/28/2019
 ms.author: sngun
 ms.custom: devx-track-java
-ms.openlocfilehash: d0eef49ea82afe50c5e178de9ad5e82bcb0db0eb
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: e7b75c71d64054e38630677ecd38f8e3e2483c12
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93342163"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97606333"
 ---
 # <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>Verwenden des Azure Cosmos DB-Änderungsfeeds zum Visualisieren von Echtzeit-Datenanalysen
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -35,14 +35,14 @@ Im folgenden Diagramm finden Sie eine Darstellung des Datenflusses und der in di
  
 1. **Datengenerierung:** Der Datensimulator wird verwendet, um Einzelhandelsdaten zu generieren, die Ereignisse wie das Betrachten eines Artikels, das Hinzufügen eines Artikels zum Warenkorb und den Kauf eines Artikels darstellen. Mit dem Datensimulator können Sie große Beispieldatensätze erstellen. Die generierten Beispieldaten enthalten Dokumente im folgenden Format:
    
-   ```json
-   {      
-     "CartID": 2486,
-     "Action": "Viewed",
-     "Item": "Women's Denim Jacket",
-     "Price": 31.99
-   }
-   ```
+    ```json
+    {
+      "CartID": 2486,
+      "Action": "Viewed",
+      "Item": "Women's Denim Jacket",
+      "Price": 31.99
+    }
+    ```
 
 2. **Cosmos DB:** Die generierten Daten werden in einem Azure Cosmos-Container gespeichert.  
 
@@ -74,33 +74,33 @@ Im folgenden Diagramm finden Sie eine Darstellung des Datenflusses und der in di
 
 Erstellen Sie die Azure-Ressourcen – Azure Cosmos DB, Speicherkonto, Event Hub, Stream Analytics – die für die Lösung erforderlich sind. Sie werden diese Ressourcen über eine Azure Resource Manager-Vorlage bereitstellen. Verwenden Sie die folgenden Schritte, um diese Ressourcen bereitzustellen: 
 
-1. Legen Sie die Windows PowerShell-Ausführungsrichtlinie auf **Unrestricted** fest. Öffnen Sie dafür **PowerShell als Administrator** , und führen Sie den folgenden Befehl aus:
+1. Legen Sie die Windows PowerShell-Ausführungsrichtlinie auf **Unrestricted** fest. Öffnen Sie dafür **PowerShell als Administrator**, und führen Sie den folgenden Befehl aus:
 
    ```powershell
    Get-ExecutionPolicy
    Set-ExecutionPolicy Unrestricted 
    ```
 
-2. Navigieren Sie im GitHub-Repository, das Sie im vorherigen Schritt heruntergeladen haben, zum Ordner **Azure Resource Manager** , und öffnen Sie die Datei **parameters.json**.  
+2. Navigieren Sie im GitHub-Repository, das Sie im vorherigen Schritt heruntergeladen haben, zum Ordner **Azure Resource Manager**, und öffnen Sie die Datei **parameters.json**.  
 
-3. Geben Sie die Werte für die Parameter„cosmosdbaccount_name“, „eventhubnamespace_name“, „storageaccount_name“ aus der **parameters.json** -Datei an. Die Namen, mit denen Sie die einzelnen Ressourcen bezeichnen, werden Sie später verwenden.  
+3. Geben Sie die Werte für die Parameter„cosmosdbaccount_name“, „eventhubnamespace_name“, „storageaccount_name“ aus der **parameters.json**-Datei an. Die Namen, mit denen Sie die einzelnen Ressourcen bezeichnen, werden Sie später verwenden.  
 
-4. Navigieren Sie im **Windows PowerShell** zum Ordner **Azure Resource Manager** , und führen den folgenden Befehl aus:
+4. Navigieren Sie im **Windows PowerShell** zum Ordner **Azure Resource Manager**, und führen den folgenden Befehl aus:
 
    ```powershell
    .\deploy.ps1
    ```
-5. Geben Sie bei Aufforderung Ihre Azure- **Abonnement-ID** , **changefeedlab** als Ressourcengruppennamen und **run1** als Bereitstellungsnamen ein. Die Bereitstellung der Ressourcen kann nach dem Start bis zu 10 Minuten dauern.
+5. Geben Sie bei Aufforderung Ihre Azure-**Abonnement-ID**, **changefeedlab** als Ressourcengruppennamen und **run1** als Bereitstellungsnamen ein. Die Bereitstellung der Ressourcen kann nach dem Start bis zu 10 Minuten dauern.
 
 ## <a name="create-a-database-and-the-collection"></a>Erstellen einer Datenbank und der Sammlung
 
 Sie können jetzt eine Sammlung erstellen, um Ereignisse auf der E-Commerce-Website zu speichern. Wenn ein Benutzer einen Artikel ansieht, in seinen Warenkorb legt oder kauft, erhält die Sammlung einen Datensatz, der die Aktion („angesehen“, „hinzugefügt“ oder „gekauft“), den Namen und den Preis des betreffenden Artikels und die ID-Nummer des betreffenden Benutzers enthält.
 
-1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com/), und suchen Sie das **Azure Cosmos DB-Konto** , das durch die Vorlagenbereitstellung erstellt wurde.  
+1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com/), und suchen Sie das **Azure Cosmos DB-Konto**, das durch die Vorlagenbereitstellung erstellt wurde.  
 
 2. Wählen Sie im Bereich **Daten-Explorer** **Neue Sammlung** und füllen Sie das Formular mit den folgenden Informationen aus:  
 
-   * Wählen Sie im Feld **Datenbank-ID** die Option **Neu erstellen** , und geben Sie **changefeedlabdatabase** ein. Aktivieren Sie nicht das Kontrollkästchen **Durchsatz Bereitstellungsdatenbank**.  
+   * Wählen Sie im Feld **Datenbank-ID** die Option **Neu erstellen**, und geben Sie **changefeedlabdatabase** ein. Aktivieren Sie nicht das Kontrollkästchen **Durchsatz Bereitstellungsdatenbank**.  
    * Geben Sie für das Feld **Sammlungs-ID** **changefeedlabcollection** ein.  
    * In das Feld **Partitionsschlüssel** geben Sie **/Item** ein. Hier ist die Groß-/Kleinschreibung zu beachtet. Stellen Sie also sicher, dass die Informationen ordnungsgemäß eingegeben werden.  
    * Geben Sie im Feld **Durchsatz** **10000** ein.  
@@ -110,7 +110,7 @@ Sie können jetzt eine Sammlung erstellen, um Ereignisse auf der E-Commerce-Webs
 
 4. Kehren Sie zum Bereich **Daten-Explorer** zurück, wählen Sie **Neue Sammlung** und füllen Sie das Formular mit den folgenden Informationen aus:
 
-   * Wählen Sie im Feld **Datenbank-ID** die Option **Vorhandene verwenden** , und geben Sie **changefeedlabdatabase** ein.  
+   * Wählen Sie im Feld **Datenbank-ID** die Option **Vorhandene verwenden**, und geben Sie **changefeedlabdatabase** ein.  
    * Geben Sie für das Feld **Sammlungs-ID** **leases** ein.  
    * Für **Speicherkapazität** wählen Sie **Fest**.  
    * Behalten Sie im Feld **Durchsatz** den Standardwert bei.  
@@ -120,9 +120,9 @@ Sie können jetzt eine Sammlung erstellen, um Ereignisse auf der E-Commerce-Webs
 
 ### <a name="get-the-azure-cosmos-db-connection-string"></a>Abrufen einer Azure Cosmos DB-Verbindungszeichenfolge
 
-1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com/), und suchen Sie das **Azure Cosmos DB-Konto** , das durch die Vorlagenbereitstellung erstellt wurde.  
+1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com/), und suchen Sie das **Azure Cosmos DB-Konto**, das durch die Vorlagenbereitstellung erstellt wurde.  
 
-2. Navigieren Sie zum Bereich **Schlüssel** , kopieren Sie die PRIMÄRE VERBINDUNGSZEICHENFOLGE, und fügen Sie sie in Notepad oder ein anderes Dokument ein, auf das Sie während der gesamten Übungseinheit Zugriff haben. Verwenden Sie die Bezeichnung **Cosmos DB-Verbindungszeichenfolge**. Sie müssen die Zeichenfolge später in den Code kopieren. Merken Sie sich also, wo Sie sie speichern.
+2. Navigieren Sie zum Bereich **Schlüssel**, kopieren Sie die PRIMÄRE VERBINDUNGSZEICHENFOLGE, und fügen Sie sie in Notepad oder ein anderes Dokument ein, auf das Sie während der gesamten Übungseinheit Zugriff haben. Verwenden Sie die Bezeichnung **Cosmos DB-Verbindungszeichenfolge**. Sie müssen die Zeichenfolge später in den Code kopieren. Merken Sie sich also, wo Sie sie speichern.
 
 ### <a name="get-the-storage-account-key-and-connection-string"></a>Abrufen des Speicherkontoschlüssels und der Verbindungszeichenfolge
 
@@ -138,11 +138,11 @@ In Azure Storage-Konten können Benutzer Daten speichern. In dieser Übungseinhe
 
 Einen Azure Event Hub empfängt die Ereignisdaten und speichert und verarbeitet sie und leitet sie weiter. In dieser Übungseinheit erhält der Azure Event Hub jedes Mal ein Dokument, wenn ein neues Ereignis eintritt (d.h. ein Artikel wird von einem Benutzer angesehen, in den Warenkorb eines Benutzers gelegt oder von einem Benutzer gekauft) und leitet dieses Dokument dann an Azure Stream Analytics weiter.
 
-1. Kehren Sie zu Ihrer Ressourcengruppe zurück, und öffnen Sie den **Event Hub-Namespace** , den Sie vor der Übungseinheit erstellt und benannt haben.  
+1. Kehren Sie zu Ihrer Ressourcengruppe zurück, und öffnen Sie den **Event Hub-Namespace**, den Sie vor der Übungseinheit erstellt und benannt haben.  
 
 2. Wählen Sie **Freigegebene Zugriffsrichtlinien** im Menü auf der linken Seite.  
 
-3. Wählen Sie **RootManageSharedAccessKey**. Kopieren Sie den Wert für **Verbindungszeichenfolge-primärer Schlüssel** und fügen Sie ihn in Notepad oder ein anderes Dokument ein, auf das Sie während der gesamten Übungseinheit Zugriff haben. Bezeichnen Sie ihn mit „Verbindungszeichenfolge des **Event Hub-Namespace** “. Sie müssen die Zeichenfolge später in den Code kopieren. Merken Sie sich also, wo Sie sie speichern.
+3. Wählen Sie **RootManageSharedAccessKey**. Kopieren Sie den Wert für **Verbindungszeichenfolge-primärer Schlüssel** und fügen Sie ihn in Notepad oder ein anderes Dokument ein, auf das Sie während der gesamten Übungseinheit Zugriff haben. Bezeichnen Sie ihn mit „Verbindungszeichenfolge des **Event Hub-Namespace**“. Sie müssen die Zeichenfolge später in den Code kopieren. Merken Sie sich also, wo Sie sie speichern.
 
 ## <a name="set-up-azure-function-to-read-the-change-feed"></a>Einrichten der Azure-Funktion zum Lesen des Änderungsfeeds
 
@@ -150,11 +150,11 @@ Wenn ein neues Dokument erstellt oder ein aktuelles Dokument in einem Cosmos-Con
 
 1. Kehren Sie zum Repository zurück, das Sie auf Ihrem Gerät geklont haben.  
 
-2. Klicken Sie mit der rechten Maustaste auf die Datei **ChangeFeedLabSolution.sln** , und wählen Sie **Mit Visual Studio öffnen**.  
+2. Klicken Sie mit der rechten Maustaste auf die Datei **ChangeFeedLabSolution.sln**, und wählen Sie **Mit Visual Studio öffnen**.  
 
 3. Navigieren Sie in Visual Studio zu **local.settings.json**. Geben Sie anschließend die von Ihnen notierten Werte in die entsprechenden Felder ein.  
 
-4. Navigieren Sie zu **ChangeFeedProcessor.cs**. Führen Sie für die Parameter der **Run** -Funktion die folgenden Aktionen aus:  
+4. Navigieren Sie zu **ChangeFeedProcessor.cs**. Führen Sie für die Parameter der **Run**-Funktion die folgenden Aktionen aus:  
 
    * Ersetzen Sie den Text **IHR SAMMLUNSNAME HIER** mit dem Namen der Sammlung. Wenn Sie die vorherigen Anweisungen beachtet haben, lautet der Name Ihre Sammlung „changefeedlabcollection“.  
    * Ersetzen Sie den Text **IHR LEASES-SAMMLUNSNAME HIER** mit dem Namen der Leases-Sammlung. Wenn Sie die vorherigen Anweisungen beachtet haben, lautet der Name Ihre Leases-Sammlung **leases**.  
@@ -166,7 +166,7 @@ Wenn ein neues Dokument erstellt oder ein aktuelles Dokument in einem Cosmos-Con
 
 Um zu sehen, wie der Änderungsfeed neue Aktionen auf einer E-Commerce-Website verarbeitet, müssen Daten simuliert werden, die die Benutzer beim Anschauen von Artikeln aus dem Produktkatalog, beim Hinzufügen dieser Artikel zu ihren Warenkörben und beim Kauf dieser Artikel darstellen. Diese Daten sind willkürlich und dienen dazu, zu replizieren, wie die Daten auf einer E-Commerce-Seite aussehen würden.
 
-1. Navigieren Sie zurück zum Repository im Datei-Explorer, und klicken Sie mit der rechten Maustaste auf **ChangeFeedFunction.sln** , um diese erneut in einem neuen Visual Studio-Fenster zu öffnen.  
+1. Navigieren Sie zurück zum Repository im Datei-Explorer, und klicken Sie mit der rechten Maustaste auf **ChangeFeedFunction.sln**, um diese erneut in einem neuen Visual Studio-Fenster zu öffnen.  
 
 2. Navigieren Sie zur Datei **App.config**. Fügen Sie im `<appSettings>`-Block den Endpunkt und den eindeutigen **PRIMÄRSCHLÜSSEL** Ihres Azure Cosmos DB-Kontos hinzu, den Sie zuvor abgerufen haben.  
 
@@ -190,7 +190,7 @@ Azure Stream Analytics ist ein vollständig verwalteter Clouddienst für die Ver
 
 1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) zu Ihrer Ressourcengruppe und dann zu **streamjob1** (Stream Analytics-Auftrag, den Sie vor der Übungseinheit erstellt haben).  
 
-2. Wählen Sie **Eingaben** , wie unten dargestellt.  
+2. Wählen Sie **Eingaben**, wie unten dargestellt.  
 
    :::image type="content" source="./media/changefeed-ecommerce-solution/create-input.png" alt-text="Erstellen einer Eingabe":::
 
@@ -253,9 +253,9 @@ Power BI ist eine Suite aus Business Analytics-Tools zum Analysieren von Daten u
  
 5. Wählen Sie **averagePrice** aus **IHRE DATASETS** aus, und wählen Sie dann **Weiter** aus.  
 
-6. Wählen Sie im Feld **Visualisierungstyp** die Option **Balkendiagramm (gruppiert)** aus dem Dropdownmenü. Fügen Sie unter **Achse** eine Aktion hinzu. Überspringen Sie **Legende** ,ohne etwas hinzuzufügen. Fügen Sie dann im nächsten Abschnitt **Wert** **Avg** hinzu. Wählen Sie **Weiter** , benennen Sie das Diagramm, und wählen **Übernehmen**. Das neue Diagramm sollte jetzt auf dem Dashboard angezeigt werden.  
+6. Wählen Sie im Feld **Visualisierungstyp** die Option **Balkendiagramm (gruppiert)** aus dem Dropdownmenü. Fügen Sie unter **Achse** eine Aktion hinzu. Überspringen Sie **Legende**,ohne etwas hinzuzufügen. Fügen Sie dann im nächsten Abschnitt **Wert** **Avg** hinzu. Wählen Sie **Weiter**, benennen Sie das Diagramm, und wählen **Übernehmen**. Das neue Diagramm sollte jetzt auf dem Dashboard angezeigt werden.  
 
-7. Wenn Sie weitere Metriken visualisieren möchten, gehen Sie zurück zu **streamjob1** , und erstellen Sie drei zusätzliche Ausgaben mit den folgenden Feldern.
+7. Wenn Sie weitere Metriken visualisieren möchten, gehen Sie zurück zu **streamjob1**, und erstellen Sie drei zusätzliche Ausgaben mit den folgenden Feldern.
 
    a. **Ausgabealias:** IncomingRevenueOutput, Datasetname: IncomingRevenue, Tabellenname: IncomingRevenue  
    b. **Ausgabealias:** top5Output, Datasetname: top5, Tabellenname: top5  
@@ -341,14 +341,14 @@ Sie werden nun sehen, wie Sie Ihr neues Datenanalyse-Tool nutzen können, um sic
  
 5. Wenn Sie die optionale TOP 5-Abfrage im vorherigen Teil der Übungseinheit hinzugefügt haben, fahren Sie mit Teil 5a fort. Wenn nicht, fahren Sie mit Teil 5b fort.
 
-   5a. Wählen Sie in **streamjob1** die Option **Abfrage bearbeiten** , und fügen Sie die folgende Abfrage in Ihrem Azure Stream Analytics-Abfrage-Editor unter der TOP 5-Abfrage, aber über den anderen Abfragen ein.
+   5a. Wählen Sie in **streamjob1** die Option **Abfrage bearbeiten**, und fügen Sie die folgende Abfrage in Ihrem Azure Stream Analytics-Abfrage-Editor unter der TOP 5-Abfrage, aber über den anderen Abfragen ein.
 
    ```sql
    SELECT arrayvalue.value.item AS Item, arrayvalue.value.price, arrayvalue.value.countEvents
    INTO topItems
    FROM arrayselect
    ```
-   5b. Wählen Sie in **streamjob1** die Option **Abfrage bearbeiten** , und fügen Sie die folgende Abfrage in Ihrem Azure Stream Analytics-Abfrage-Editor über allen anderen Abfragen ein.
+   5b. Wählen Sie in **streamjob1** die Option **Abfrage bearbeiten**, und fügen Sie die folgende Abfrage in Ihrem Azure Stream Analytics-Abfrage-Editor über allen anderen Abfragen ein.
 
    ```sql
    /*TOP 5*/
@@ -377,11 +377,11 @@ Sie werden nun sehen, wie Sie Ihr neues Datenanalyse-Tool nutzen können, um sic
    FROM arrayselect
    ```
 
-6. Öffnen Sie **EcommerceWebApp.sln** , und navigieren Sie zur Datei **Web.config** im **Projektmappen-Explorer**.  
+6. Öffnen Sie **EcommerceWebApp.sln**, und navigieren Sie zur Datei **Web.config** im **Projektmappen-Explorer**.  
 
 7. Fügen Sie im `<appSettings>`-Block den zuvor gespeicherten **URI** und **PRIMÄRSCHLÜSSEL** unter **Ihren URI hier** und **Ihren Primärschlüssel hier** ein. Geben Sie anschließend Ihren **Datenbanknamen** und **Sammlungsname** an. (Diese sollten **changefeedlabdatabase** und **changefeedlabcollection** lauten, sofern Sie sie nicht anders benennen möchten.)
 
-   Geben Sie den **Produktsammlungsnamen** , **Kategoriensammlungsnamen** und den **Top Items-Sammlungsnamen** ein, wie angegeben. (Diese sollten **products, categories und topItems** lauten, sofern Sie sie nicht anders benennen möchten.)  
+   Geben Sie den **Produktsammlungsnamen**, **Kategoriensammlungsnamen** und den **Top Items-Sammlungsnamen** ein, wie angegeben. (Diese sollten **products, categories und topItems** lauten, sofern Sie sie nicht anders benennen möchten.)  
 
 8. Navigieren Sie zum **Auscheckordner** in **EcommerceWebApp.sln.** , und öffnen Sie ihn. Öffnen Sie dann die Datei **Web.config** in diesem Ordner.  
 

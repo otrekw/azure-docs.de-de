@@ -8,16 +8,16 @@ ms.topic: quickstart
 ms.author: jukullam
 ms.date: 10/12/2020
 ms.custom: github-actions-azure
-ms.openlocfilehash: 9203cebbd721b918f2514f7615712c035a0460ed
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 216658b5f5443409e7bd44cbd29bff40cd56c75f
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92669745"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97606979"
 ---
 # <a name="use-github-actions-to-connect-to-azure-sql-database"></a>Herstellen einer Verbindung mit Azure SQL-Datenbank mithilfe von GitHub Actions
 
-Verwenden Sie als Einstieg in [GitHub Actions](https://docs.github.com/en/actions) einen Workflow zum Bereitstellen von Datenbankupdates für [Azure SQL-Datenbank](../azure-sql-iaas-vs-paas-what-is-overview.md). 
+Verwenden Sie als Einstieg in [GitHub Actions](https://docs.github.com/en/free-pro-team@latest/actions) einen Workflow zum Bereitstellen von Datenbankupdates für [Azure SQL-Datenbank](../azure-sql-iaas-vs-paas-what-is-overview.md). 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -30,14 +30,14 @@ Sie benötigen Folgendes:
 
 ## <a name="workflow-file-overview"></a>Übersicht über die Workflowdatei
 
-Ein GitHub Actions-Workflow wird durch eine YAML-Datei im Pfad `/.github/workflows/` in Ihrem Repository definiert. Diese Definition enthält die verschiedenen Schritte und Parameter, die den Workflow bilden.
+Ein GitHub Actions-Workflow wird durch eine YAML-Datei (.yml) im Pfad `/.github/workflows/` in Ihrem Repository definiert. Diese Definition enthält die verschiedenen Schritte und Parameter, die den Workflow bilden.
 
 Die Datei besteht aus zwei Abschnitten:
 
 |`Section`  |Aufgaben  |
 |---------|---------|
 |**Authentifizierung** | 1. Definieren eines Dienstprinzipals. <br /> 2. Erstellen eines GitHub-Geheimnisses. |
-|**Bereitstellen** | 1. Bereitstellen der Datenbank. |
+|**Bereitstellen** | 1. Bereitstellen der Datenbank |
 
 ## <a name="generate-deployment-credentials"></a>Generieren von Anmeldeinformationen für die Bereitstellung
 
@@ -68,7 +68,7 @@ Die Ausgabe ist ein JSON-Objekt mit den Anmeldeinformationen für die Rollenzuwe
 
 ## <a name="copy-the-sql-connection-string"></a>Kopieren der SQL-Verbindungszeichenfolge 
 
-Wechseln Sie im Azure-Portal zur Azure SQL-Datenbank, und öffnen Sie **Einstellungen** > **Verbindungszeichenfolgen** . Kopieren Sie die **ADO.NET** -Verbindungszeichenfolge. Ersetzen Sie die Platzhalterwerte für `your_database` und `your_password`. Die Verbindungszeichenfolge ähnelt der folgenden Ausgabe. 
+Wechseln Sie im Azure-Portal zur Azure SQL-Datenbank, und öffnen Sie **Einstellungen** > **Verbindungszeichenfolgen**. Kopieren Sie die **ADO.NET**-Verbindungszeichenfolge. Ersetzen Sie die Platzhalterwerte für `your_database` und `your_password`. Die Verbindungszeichenfolge ähnelt der folgenden Ausgabe. 
 
 ```output
     Server=tcp:my-sql-server.database.windows.net,1433;Initial Catalog={your-database};Persist Security Info=False;User ID={admin-name};Password={your-password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
@@ -80,9 +80,9 @@ Sie verwenden die Verbindungszeichenfolge als GitHub-Geheimnis.
 
 1. Suchen Sie auf [GitHub](https://github.com/) nach Ihrem Repository.
 
-1. Klicken Sie auf **Settings > Secrets > New secret** (Einstellungen > Geheimnisse > Neues Geheimnis).
+1. Wählen Sie **Settings > Secrets > New secret** (Einstellungen > Geheimnisse > Neues Geheimnis) aus.
 
-1. Fügen Sie die gesamte JSON-Ausgabe aus dem Azure CLI-Befehl in das Wertfeld des Geheimnisses ein. Geben Sie dem Geheimnis den Namen `AZURE_CREDENTIALS`.
+1. Fügen Sie die gesamte JSON-Ausgabe aus dem Azure CLI-Befehl in das Wertfeld des Geheimnisses ein. Geben Sie dem Geheimnis den Namen `AZURE_CREDENTIALS`.
 
     Wenn Sie die Workflowdatei später konfigurieren, verwenden Sie das Geheimnis für die Eingabe `creds` der Azure-Anmeldeaktion. Beispiel:
 
@@ -103,7 +103,7 @@ Sie verwenden die Verbindungszeichenfolge als GitHub-Geheimnis.
 
 2. Wählen Sie **Set up your workflow yourself** (Workflow selbst einrichten) aus. 
 
-2. Löschen Sie alles nach dem Abschnitt `on:` Ihrer Workflowdatei. Der verbleibende Workflow könnte beispielsweise wie folgt aussehen. 
+2. Löschen Sie alles nach dem Abschnitt `on:` Ihrer Workflowdatei. Der verbleibende Workflow könnte beispielsweise wie folgt aussehen: 
 
     ```yaml
     name: CI
@@ -146,7 +146,7 @@ Sie verwenden die Verbindungszeichenfolge als GitHub-Geheimnis.
         sql-file: './Database.dacpac'
     ``` 
 
-1. Vervollständigen Sie Ihren Workflow, indem Sie eine Aktion zum Abmelden von Azure hinzufügen. Hier sehen Sie den fertigen Workflow. Die Datei wird im Ordner `.github/workflows` Ihres Repositorys angezeigt.
+1. Vervollständigen Sie Ihren Workflow, indem Sie eine Aktion zum Abmelden von Azure hinzufügen. Hier sehen Sie den fertigen Workflow: Die Datei wird im Ordner `.github/workflows` Ihres Repositorys angezeigt.
 
     ```yaml
    name: SQL for GitHub Actions

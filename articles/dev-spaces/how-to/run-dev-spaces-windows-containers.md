@@ -5,12 +5,12 @@ ms.date: 01/16/2020
 ms.topic: conceptual
 description: Erfahren Sie, wie Sie Azure Dev Spaces für einen vorhandenen Cluster mit Windows-Containern ausführen.
 keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container, Windows-Container
-ms.openlocfilehash: e6c4279717ef0a7bed0a66a9b0dba1d78e418835
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: a9aa24ae70afe062246e1b295cdc7e0724639596
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900150"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97606758"
 ---
 # <a name="interact-with-windows-containers-using-azure-dev-spaces"></a>Interagieren mit Windows-Containern unter Verwendung von Azure Dev Spaces
 
@@ -85,7 +85,7 @@ myapi-4b9667d123-1a2b3   1/1     Running             0          98s
 
 ## <a name="enable-azure-dev-spaces"></a>Aktivieren von Azure Dev Spaces
 
-Aktivieren Sie Azure Dev Spaces in demselben Namespace, den Sie zum Ausführen des Windows-Diensts verwendet haben. Der folgende Befehl aktiviert Azure Dev Spaces im Namespace *dev* :
+Aktivieren Sie Azure Dev Spaces in demselben Namespace, den Sie zum Ausführen des Windows-Diensts verwendet haben. Der folgende Befehl aktiviert Azure Dev Spaces im Namespace *dev*:
 
 ```console
 az aks use-dev-spaces -g myResourceGroup -n myAKSCluster --space dev --yes
@@ -118,11 +118,11 @@ Verwenden Sie `helm list`, um die Bereitstellung für den Windows-Dienst aufzuli
 
 ```cmd
 $ helm list --namespace dev
-NAME              REVISION  UPDATED                     STATUS      CHART           APP VERSION NAMESPACE
-windows-service 1           Wed Jul 24 15:45:59 2019    DEPLOYED    mywebapi-0.1.0  1.0         dev  
+NAME             REVISION   UPDATED                    STATUS    CHART            APP VERSION    NAMESPACE
+windows-service    1        Wed Jul 24 15:45:59 2019   DEPLOYED  mywebapi-0.1.0   1.0            dev
 ```
 
-Im vorstehenden Beispiel lautet der Name Ihrer Bereitstellung *windows-service* . Aktualisieren Sie den Windows-Dienst mit der neuen Konfiguration unter Verwendung von `helm upgrade`:
+Im vorstehenden Beispiel lautet der Name Ihrer Bereitstellung *windows-service*. Aktualisieren Sie den Windows-Dienst mit der neuen Konfiguration unter Verwendung von `helm upgrade`:
 
 ```cmd
 helm upgrade windows-service . --namespace dev
@@ -163,7 +163,7 @@ Service 'webfrontend' port 'http' is available at http://dev.webfrontend.abcdef0
 Service 'webfrontend' port 80 (http) is available via port forwarding at http://localhost:57648
 ```
 
-Sie können die Ausführung des Diensts verfolgen, indem Sie die öffentliche URL öffnen, die in der Ausgabe des Befehls „azds up“ angezeigt wird. In diesem Beispiel lautet die öffentliche URL `http://dev.webfrontend.abcdef0123.eus.azds.io/`. Navigieren Sie in einem Browser zum Dienst, und klicken Sie oben auf *Info* . Vergewissern Sie sich, dass eine Meldung vom Dienst *mywebapi* angezeigt wird, in der die vom Container verwendete Windows-Version enthalten ist.
+Sie können die Ausführung des Diensts verfolgen, indem Sie die öffentliche URL öffnen, die in der Ausgabe des Befehls „azds up“ angezeigt wird. In diesem Beispiel lautet die öffentliche URL `http://dev.webfrontend.abcdef0123.eus.azds.io/`. Navigieren Sie in einem Browser zum Dienst, und klicken Sie oben auf *Info*. Vergewissern Sie sich, dass eine Meldung vom Dienst *mywebapi* angezeigt wird, in der die vom Container verwendete Windows-Version enthalten ist.
 
 ![Beispiel-App mit Windows-Version aus mywebapi](../media/run-dev-spaces-windows-containers/sample-app.png)
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/06/2018
 ms.author: rapatchi
 ms.custom: devx-track-java
-ms.openlocfilehash: 004fb022847432a9739e79f7063b80636f8dcf2b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b85206f9b1e92607bba7b6f141b700922c129b65
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87374234"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656919"
 ---
 # <a name="service-fabric-plug-in-for-eclipse-java-application-development"></a>Service Fabric-Plug-In für die Entwicklung von Eclipse-Java-Anwendungen
 Eclipse ist eine der am häufigsten genutzten IDEs (Integrated Development Environments) für Java-Entwickler. In diesem Artikel wird beschrieben, wie Sie Ihre Eclipse-Entwicklungsumgebung für Azure Service Fabric einrichten. Hier erfahren Sie, wie Sie das Service Fabric-Plug-In installieren, eine Service Fabric-Anwendung erstellen und Ihre Service Fabric-Anwendung in einem lokalen Service Fabric-Cluster oder Service Fabric-Remotecluster in Eclipse bereitstellen. 
@@ -42,7 +42,7 @@ Installieren Sie das Service Fabric-Plug-In. Navigieren Sie hierzu in Eclipse zu
    ![Service Fabric-Plug-In für Eclipse][sf-eclipse-plugin-install]
 3. Wählen Sie das Service Fabric-Plug-In aus, und klicken Sie auf **Weiter**.
 4. Führen Sie die Schritte für die Installation aus, und akzeptieren Sie die Microsoft-Software-Lizenzbedingungen.
-  
+
 Falls Sie das Service Fabric-Plug-In bereits installiert haben, installieren Sie die aktuelle Version. 
 1. Unter **Hilfe** > **Über Eclipse** > **Installationsdetails** können Sie prüfen, ob Updates verfügbar sind. 
 2. Wählen Sie in der Liste mit den installierten Plug-Ins die Option „Service Fabric“, und klicken Sie auf **Aktualisieren**. Die verfügbaren Updates werden installiert.
@@ -53,7 +53,6 @@ Falls Sie das Service Fabric-Plug-In bereits installiert haben, installieren Sie
 
 > [!NOTE]
 >Sollte Eclipse auf Ihrem Mac nicht wie erwartet funktioniert oder die Ausführung als Administrator voraussetzen, navigieren Sie zum Ordner **ECLIPSE_INSTALLATION_PATH** und dort zum Unterordner **Eclipse.app/Contents/MacOS**. Führen Sie `./eclipse` aus, um Eclipse zu starten.
-
 
 ## <a name="create-a-service-fabric-application-in-eclipse"></a>Erstellen einer Service Fabric-Anwendung in Eclipse
 
@@ -91,7 +90,7 @@ Falls Sie das Service Fabric-Plug-In bereits installiert haben, installieren Sie
     -   Klicken Sie auf **Build Application** (Anwendung erstellen), um die Anwendung ohne Bereinigung zu erstellen.
     -   Klicken Sie auf **Rebuild Application** (Anwendung erneut erstellen), um eine bereinigte Erstellung der Anwendung durchzuführen.
     -   Klicken Sie auf **Clean Application** (Anwendung bereinigen), um die Anwendung in Bezug auf die Buildartefakte zu bereinigen.
-     
+
 ## <a name="deploy-a-service-fabric-application-to-the-local-cluster-with-eclipse"></a>Bereitstellen einer Service Fabric-Anwendung im lokalen Cluster mit Eclipse
 
 Nachdem Sie Ihre Service Fabric-Anwendung erstellt haben, gehen Sie folgendermaßen vor, um sie im lokalen Cluster bereitzustellen.
@@ -156,7 +155,6 @@ Um Ihre Anwendung in der Cloud zu veröffentlichen, führen Sie diese Schritte a
 
 4. Sie können den Fortschritt des Veröffentlichungsvorgangs im Konsolenfenster verfolgen.
 5. Um sicherzustellen, dass Ihre Anwendung ausgeführt wird, öffnen Sie den Service Fabric Explorer in Ihrem Azure-Cluster in einem Browserfenster. Für das obige Beispiel wäre dies: `https://lnxxug0tlqm5.westus.cloudapp.azure.com:19080/Explorer`. Erweitern Sie den Knoten **Anwendungen**, und stellen Sie sicher, dass die Anwendung ausgeführt wird. 
-
 
 Wenn Ihre Anwendung Reliable Services-Dienste enthält, müssen Sie in sicheren Linux-Clustern auch ein Zertifikat konfigurieren, mit denen Ihre Dienste Service Fabric-Runtime-APIs aufrufen können. Weitere Informationen finden Sie unter [Konfigurieren einer Reliable Services-App zur Ausführung in Linux-Clustern](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters).
 

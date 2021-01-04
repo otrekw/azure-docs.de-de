@@ -14,12 +14,12 @@ ms.date: 10/14/2020
 ms.author: marsma
 ms.reviewer: shoatman
 ms.custom: aaddev
-ms.openlocfilehash: 752e7dae9040059c662a93d9a9d668bac0e8e2d8
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: bf9b3a154e19fab08c46f9838f555e223f10e8a0
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92074667"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672286"
 ---
 # <a name="adal-to-msal-migration-guide-for-android"></a>Leitfaden für die Migration von ADAL zu MSAL für Android
 
@@ -89,7 +89,7 @@ Wenn Sie aktuell ADAL verwenden und keine inkrementelle Zustimmung verwenden mü
 > [!CAUTION]
 > Es ist nicht möglich, sowohl Bereiche als auch eine Ressourcen-ID festzulegen. Der Versuch, beides festzulegen, führt zu der Ausnahme `IllegalArgumentException`.
 
- Dies führt zu dem v1-Verhalten, das Ihnen bereits bekannt ist. Alle bei Ihrer App-Registrierung angeforderten Berechtigungen werden bei der ersten Interaktion vom Benutzer angefordert.
+Dies führt zu dem v1-Verhalten, das Ihnen bereits bekannt ist. Alle bei Ihrer App-Registrierung angeforderten Berechtigungen werden bei der ersten Interaktion vom Benutzer angefordert.
 
 ### <a name="authenticate-and-request-permissions-only-as-needed"></a>Authentifizieren und Anfordern von Berechtigungen nur bei Bedarf
 
@@ -131,13 +131,13 @@ Wenn Sie versuchen, eine autoritative Stelle zu verwenden, die Microsoft nicht b
 ### <a name="logging"></a>Protokollierung
 Sie können die Protokollierung jetzt folgendermaßen deklarativ als Bestandteil ihrer Konfiguration konfigurieren:
 
- ```
- "logging": {
-    "pii_enabled": false,
-    "log_level": "WARNING",
-    "logcat_enabled": true
-  }
-  ```
+```json
+"logging": {
+  "pii_enabled": false,
+  "log_level": "WARNING",
+  "logcat_enabled": true
+}
+```
 
 ## <a name="migrate-from-userinfo-to-account"></a>Migrieren von Benutzerinfo (UserInfo-Objekt) zu Konto
 
@@ -278,30 +278,30 @@ In MSAL gibt es eine Hierarchie von Ausnahmen, und jede verfügt über einen eig
 // New interface
   StringBuilder logs = new StringBuilder();
   Logger.getInstance().setExternalLogger(new ILoggerCallback() {
-            @Override
-            public void log(String tag, Logger.LogLevel logLevel, String message, boolean containsPII) {
-                logs.append(message).append('\n');
-            }
-        });
+      @Override
+      public void log(String tag, Logger.LogLevel logLevel, String message, boolean containsPII) {
+          logs.append(message).append('\n');
+      }
+  });
 
 // New Log Levels:
 public enum LogLevel
 {
-        /**
-         * Error level logging.
-         */
-        ERROR,
-        /**
-         * Warning level logging.
-         */
-        WARNING,
-        /**
-         * Info level logging.
-         */
-        INFO,
-        /**
-         * Verbose level logging.
-         */
-        VERBOSE
+    /**
+     * Error level logging.
+     */
+    ERROR,
+    /**
+     * Warning level logging.
+     */
+    WARNING,
+    /**
+     * Info level logging.
+     */
+    INFO,
+    /**
+     * Verbose level logging.
+     */
+    VERBOSE
 }
 ```

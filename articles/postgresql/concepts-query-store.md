@@ -6,12 +6,12 @@ ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/01/2020
-ms.openlocfilehash: 7b6c8faafac34ada664ddfadebf8d71a16c73fa7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5dff78989eef17f95d8b8dd108baafc53a3f761a
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91710531"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97657021"
 ---
 # <a name="monitor-performance-with-the-query-store"></a>Überwachen der Leistung mit dem Abfragespeicher
 
@@ -149,25 +149,25 @@ In dieser Ansicht werden alle Daten im Abfragespeicher zurückgegeben. Es gibt e
 ### <a name="query_storequery_texts_view"></a>query_store.query_texts_view
 Diese Ansicht gibt alle Abfragetextdaten im Abfragespeicher zurück. Für jeden einzelnen query_text gibt es eine Zeile.
 
-|**Name**|  **Typ**|   **Beschreibung**|
-|---|---|---|
-|query_text_id  |BIGINT     |ID der Tabelle query_texts|
-|query_sql_text |Varchar(10000)     |Der Text einer repräsentativen Anweisung. Unterschiedliche Abfragen mit der gleichen Struktur werden gruppiert; dieser Text ist der Text für die erste Abfrage im Cluster.|
+| **Name** | **Typ** | **Beschreibung** |
+|--|--|--|
+| query_text_id | BIGINT | ID der Tabelle query_texts |
+| query_sql_text | Varchar(10000) | Der Text einer repräsentativen Anweisung. Unterschiedliche Abfragen mit der gleichen Struktur werden gruppiert; dieser Text ist der Text für die erste Abfrage im Cluster. |
 
 ### <a name="query_storepgms_wait_sampling_view"></a>query_store.pgms_wait_sampling_view
 Diese Ansicht gibt Warteereignisdaten im Abfragespeicher zurück. Es gibt eine Zeile für jede einzelne Datenbank-ID, Benutzer-ID und jedes Ereignis.
 
-|**Name**|  **Typ**|   **Referenzen**| **Beschreibung**|
-|---|---|---|---|
-|user_id    |oid    |pg_authid.oid  |Die OID des Benutzers, der die Anweisung ausgeführt hat|
-|db_id  |oid    |pg_database.oid    |Die OID der Datenbank, in der die Anweisung ausgeführt wurde|
-|query_id   |BIGINT     ||Interner Hash, der von der Analysestruktur der Anweisung berechnet wurde|
-|event_type |text       ||Der Typ des Ereignisses, auf das das Back-End wartet|
-|Ereignis  |text       ||Der Warteereignisname, wenn das Back-End derzeit wartet|
-|calls  |Integer        ||Nummer des gleichen erfassten Ereignisses|
-
+| **Name** | **Typ** | **Referenzen** | **Beschreibung** |
+|--|--|--|--|
+| user_id | oid | pg_authid.oid | Die OID des Benutzers, der die Anweisung ausgeführt hat |
+| db_id | oid | pg_database.oid | Die OID der Datenbank, in der die Anweisung ausgeführt wurde |
+| query_id | BIGINT |  | Interner Hash, der von der Analysestruktur der Anweisung berechnet wurde |
+| event_type | text |  | Der Typ des Ereignisses, auf das das Back-End wartet |
+| Ereignis | text |  | Der Warteereignisname, wenn das Back-End derzeit wartet |
+| calls | Integer |  | Nummer des gleichen erfassten Ereignisses |
 
 ### <a name="functions"></a>Functions
+
 Query_store.qs_reset() gibt „void“ zurück
 
 `qs_reset` verwirft alle Statistiken, die bisher vom Abfragespeicher gesammelt werden. Diese Funktion kann nur von der Serveradministratorrolle ausgeführt werden.

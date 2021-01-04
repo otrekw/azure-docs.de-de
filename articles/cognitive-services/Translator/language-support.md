@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/10/2020
 ms.author: swmachan
-ms.openlocfilehash: bdd12b5c866ee723547513e35a5adcfabb59dab9
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: c7e859b05450b95cf9c75421599dd9c54a639cdc
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94364418"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97606843"
 ---
 # <a name="language-and-region-support-for-text-and-speech-translation"></a>Sprach- und Regionsunterstützung für Text- und Sprachübersetzung
 
@@ -34,88 +34,88 @@ Der Translator unterstützt die folgenden Sprachen für die Übersetzung von Tex
 
 [Referenzdokumentation zum Vorgang „Translate“ anzeigen](reference/v3-0-translate.md)
 
-|Sprache|  Sprachcode|
-|:-----|:-----:|
-|Afrikaans| `af`|
-|Arabisch|    `ar`    |
-|Assamesisch|  `as`    |
-|Bengalisch|    `bn`    |
-|Bosnisch (Lateinisch)|   `bs`    |
-|Bulgarisch| `bg`    |
-|Chinesisch (traditionell)|   `yue`|
-|Katalanisch|   `ca`    |
-|Chinesisch (vereinfacht)|    `zh-Hans`|
-|Chinesisch (traditionell)|   `zh-Hant`       |
-|Kroatisch|  `hr`    |
-|Tschechisch| `cs`    |
-|Dari|  `prs`   |
-|Dänisch|    `da`        |
-|Niederländisch| `nl`|
-|Englisch|   `en`    |
-|Estnisch|  `et`    |
-|Fidschi|    `fj`    |
-|Filipino|  `fil`   |
-|Finnisch|   `fi`    |
-|Französisch|    `fr`    |
-|Französisch (Kanada)|   `fr-ca` |
-|Deutsch|    `de`    |
-|Griechisch| `el`    |
-|Gujarati|  `gu`    |
-|Haitianisches Kreolisch|    `ht`        |
-|Hebräisch |`he`   |
-|Hindi| `hi`    |
-|Hmong Daw| `mww`   |
-|Ungarisch| `hu`    |
-|Isländisch| `is`    |
-|Indonesisch|    `id`    |
-|Irisch | `ga`|
-|Italienisch|   `it`    |
-|Japanisch|  `ja`    |
-|Kannada|`kn`|
-|Kasachisch|`kk`|
-|Klingonisch|   `tlh-Latn`  |
-|Klingonisch (plqaD)|   `tlh-Piqd`  |
-|Koreanisch |`ko`   |
-|Kurdisch (zentral)  |`ku`   |
-|Kurdisch (nördlich) |`kmr`  |
-|Lettisch|   `lv`    |
-|Litauisch|    `lt`    |
-|Madagassisch|  `mg`    |
-|Malaiisch| `ms`        |
-|Malayalam| `ml` |
-|Maltesisch|   `mt`    |
-|Maori| `mi`  |
-|Marathi| `mr`  |
-|Norwegisch| `nb`    |
-|Odia|  `or`    |
-|Paschtu|    `ps`    |
-|Persisch|   `fa`    |
-|Polnisch|    `pl`    |
-|Portugiesisch (Brasilien)|   `pt-br` |
-|Portugiesisch (Portugal)| `pt-pt` |
-|Pandschabi|`pa`|
-|Queretaro-Otomi|   `otq`   |
-|Rumänisch|  `ro`    |
-|Russisch|   `ru`    |
-|Samoanisch|    `sm`    |
-|Serbisch (Kyrillisch)|    `sr-Cyrl`|
-|Serbisch (Lateinisch)|   `sr-Latn`       |
-|Slowakisch|    `sk`    |
-|Slowenisch| `sl`    |
-|Spanisch|   `es`    |
-|Suaheli|   `sw`    |
-|Schwedisch|   `sv`    |
-|Tahitisch|  `ty`    |
-|Tamilisch| `ta`    |
-|Telugu|    `te`    |
-|Thailändisch|  `th`    |
-|Tongaisch|    `to`    |
-|Türkisch|   `tr`        |
-|Ukrainisch| `uk`    |
-|Urdu|  `ur`    |
-|Vietnamesisch|    `vi`    |
-|Walisisch| `cy`    |
-|Yukatekisches Maya|  `yua`   |
+| Sprache | Sprachcode |
+|:-|:-:|
+| Afrikaans | `af` |
+| Arabisch | `ar` |
+| Assamesisch | `as` |
+| Bengalisch | `bn` |
+| Bosnisch (Lateinisch) | `bs` |
+| Bulgarisch | `bg` |
+| Chinesisch (traditionell) | `yue` |
+| Katalanisch | `ca` |
+| Chinesisch (vereinfacht) | `zh-Hans` |
+| Chinesisch (traditionell) | `zh-Hant` |
+| Kroatisch | `hr` |
+| Tschechisch | `cs` |
+| Dari | `prs` |
+| Dänisch | `da` |
+| Niederländisch | `nl` |
+| Englisch | `en` |
+| Estnisch | `et` |
+| Fidschi | `fj` |
+| Filipino | `fil` |
+| Finnisch | `fi` |
+| Französisch | `fr` |
+| Französisch (Kanada) | `fr-ca` |
+| Deutsch | `de` |
+| Griechisch | `el` |
+| Gujarati | `gu` |
+| Haitianisches Kreolisch | `ht` |
+| Hebräisch | `he` |
+| Hindi | `hi` |
+| Hmong Daw | `mww` |
+| Ungarisch | `hu` |
+| Isländisch | `is` |
+| Indonesisch | `id` |
+| Irisch | `ga` |
+| Italienisch | `it` |
+| Japanisch | `ja` |
+| Kannada | `kn` |
+| Kasachisch | `kk` |
+| Klingonisch | `tlh-Latn` |
+| Klingonisch (plqaD) | `tlh-Piqd` |
+| Koreanisch | `ko` |
+| Kurdisch (zentral) | `ku` |
+| Kurdisch (nördlich) | `kmr` |
+| Lettisch | `lv` |
+| Litauisch | `lt` |
+| Madagassisch | `mg` |
+| Malaiisch | `ms` |
+| Malayalam | `ml` |
+| Maltesisch | `mt` |
+| Maori | `mi` |
+| Marathi | `mr` |
+| Norwegisch | `nb` |
+| Odia | `or` |
+| Paschtu | `ps` |
+| Persisch | `fa` |
+| Polnisch | `pl` |
+| Portugiesisch (Brasilien) | `pt-br` |
+| Portugiesisch (Portugal) | `pt-pt` |
+| Pandschabi | `pa` |
+| Queretaro-Otomi | `otq` |
+| Rumänisch | `ro` |
+| Russisch | `ru` |
+| Samoanisch | `sm` |
+| Serbisch (Kyrillisch) | `sr-Cyrl` |
+| Serbisch (Lateinisch) | `sr-Latn` |
+| Slowakisch | `sk` |
+| Slowenisch | `sl` |
+| Spanisch | `es` |
+| Suaheli | `sw` |
+| Schwedisch | `sv` |
+| Tahitisch | `ty` |
+| Tamilisch | `ta` |
+| Telugu | `te` |
+| Thailändisch | `th` |
+| Tongaisch | `to` |
+| Türkisch | `tr` |
+| Ukrainisch | `uk` |
+| Urdu | `ur` |
+| Vietnamesisch | `vi` |
+| Walisisch | `cy` |
+| Yukatekisches Maya | `yua` |
 
 > [!NOTE]
 > Der Sprachcode `pt` wird standardmäßig auf `pt-br`, Portugiesisch (Brasilien), festgelegt.
@@ -126,63 +126,63 @@ Der Translator erkennt die folgenden Sprachen für die Übersetzung und Translit
 
 [Referenzdokumentation zum Vorgang „Detect“ anzeigen](reference/v3-0-detect.md)
 
-|Sprache|  Sprachcode|
-|:-----|:-----:|
-|Afrikaans| `af`|
-|Arabisch|    `ar`    |
-|Bulgarisch| `bg`    |
-|Katalanisch|   `ca`    |
-|Chinesisch (vereinfacht)|    `zh-Hans`|
-|Chinesisch (traditionell)|   `zh-Hant`       |
-|Kroatisch|  `hr`    |
-|Tschechisch| `cs`    |
-|Dänisch|    `da`        |
-|Niederländisch| `nl`|
-|Englisch|   `en`    |
-|Estnisch|  `et`    |
-|Finnisch|   `fi`    |
-|Französisch|    `fr`    |
-|Deutsch|    `de`    |
-|Griechisch| `el`    |
-|Gujarati|  `gu`    |
-|Haitianisches Kreolisch|    `ht`        |
-|Hebräisch |`he`   |
-|Hindi| `hi`    |
-|Ungarisch| `hu`    |
-|Isländisch| `is`    |
-|Indonesisch|    `id`    |
-|Irisch | `ga`|
-|Italienisch|   `it`    |
-|Japanisch|  `ja`    |
-|Klingonisch|   `tlh-Latn`  |
-|Koreanisch |`ko`   |
-|Kurdisch (zentral)  |`ku-Arab`  |
-|Lettisch|   `lv`    |
-|Litauisch|    `lt`    |
-|Malaiisch| `ms`        |
-|Maltesisch|   `mt`    |
-|Norwegisch| `nb`    |
-|Paschtu|    `ps`    |
-|Persisch|   `fa`    |
-|Polnisch|    `pl`    |
-|Portugiesisch|    `pt`    |
-|Rumänisch|  `ro`    |
-|Russisch|   `ru`    |
-|Serbisch (Kyrillisch)|    `sr-Cyrl`|
-|Serbisch (Lateinisch)|   `sr-Latn`       |
-|Slowakisch|    `sk`    |
-|Slowenisch| `sl`    |
-|Spanisch|   `es`    |
-|Suaheli|   `sw`    |
-|Schwedisch|   `sv`    |
-|Tahitisch|  `ty`    |
-|Thailändisch|  `th`    |
-|Türkisch|   `tr`        |
-|Ukrainisch| `uk`    |
-|Urdu|  `ur`    |
-|Vietnamesisch|    `vi`    |
-|Walisisch| `cy`    |
-|Yukatekisches Maya|  `yua`   |
+| Sprache | Sprachcode |
+|:-|:-:|
+| Afrikaans | `af` |
+| Arabisch | `ar` |
+| Bulgarisch | `bg` |
+| Katalanisch | `ca` |
+| Chinesisch (vereinfacht) | `zh-Hans` |
+| Chinesisch (traditionell) | `zh-Hant` |
+| Kroatisch | `hr` |
+| Tschechisch | `cs` |
+| Dänisch | `da` |
+| Niederländisch | `nl` |
+| Englisch | `en` |
+| Estnisch | `et` |
+| Finnisch | `fi` |
+| Französisch | `fr` |
+| Deutsch | `de` |
+| Griechisch | `el` |
+| Gujarati | `gu` |
+| Haitianisches Kreolisch | `ht` |
+| Hebräisch | `he` |
+| Hindi | `hi` |
+| Ungarisch | `hu` |
+| Isländisch | `is` |
+| Indonesisch | `id` |
+| Irisch | `ga` |
+| Italienisch | `it` |
+| Japanisch | `ja` |
+| Klingonisch | `tlh-Latn` |
+| Koreanisch | `ko` |
+| Kurdisch (zentral) | `ku-Arab` |
+| Lettisch | `lv` |
+| Litauisch | `lt` |
+| Malaiisch | `ms` |
+| Maltesisch | `mt` |
+| Norwegisch | `nb` |
+| Paschtu | `ps` |
+| Persisch | `fa` |
+| Polnisch | `pl` |
+| Portugiesisch | `pt` |
+| Rumänisch | `ro` |
+| Russisch | `ru` |
+| Serbisch (Kyrillisch) | `sr-Cyrl` |
+| Serbisch (Lateinisch) | `sr-Latn` |
+| Slowakisch | `sk` |
+| Slowenisch | `sl` |
+| Spanisch | `es` |
+| Suaheli | `sw` |
+| Schwedisch | `sv` |
+| Tahitisch | `ty` |
+| Thailändisch | `th` |
+| Türkisch | `tr` |
+| Ukrainisch | `uk` |
+| Urdu | `ur` |
+| Vietnamesisch | `vi` |
+| Walisisch | `cy` |
+| Yukatekisches Maya | `yua` |
 
 ### <a name="transliterate"></a>Transliterate
 
@@ -319,7 +319,7 @@ Die folgenden Sprachen sind für die Anpassung an das Englische oder aus dem Eng
 | Lettisch      | `lv`          |
 | Litauisch      | `lt`          |
 | Madagassisch| `mg`    |
-| Malaiisch|    `ms`        |
+| Malaiisch|    `ms` |
 |Maltesisch|   `mt`    |
 | Maori| `mi`  |
 | Marathi| `mr`  |
@@ -387,47 +387,47 @@ Wandeln Sie Sprache in Text um, damit dieser in eine beliebige Textsprache über
 ### <a name="text-to-speech"></a>Text-zu-Sprache
 Konvertieren von Text in Sprache. Text-zu-Sprache wird in Verbindung mit der Spracherkennung zum Hinzufügen einer hörbaren Ausgabe von Übersetzungsergebnissen oder für die Übersetzung von Sprache in Sprache verwendet. 
 
-| Sprache    |
-|:----------- |
-|Arabisch|
-|Bulgarisch|
-|Chinesisch (traditionell)|
-|Katalanisch|
-|Chinesisch (vereinfacht)|
-|Chinesisch (traditionell)|
-|Kroatisch|
-|Tschechisch|
-|Dänisch|
-|Niederländisch|
-|Englisch|
-|Finnisch|
-|Französisch|
-|Französisch (Kanada)|
-|Deutsch|
-|Griechisch|
-|Hebräisch|
-|Hindi|
-|Ungarisch|
-|Indonesisch|
-|Italienisch|
-|Japanisch|
-|Koreanisch|
-|Malaiisch|
-|Norwegisch|
-|Polnisch|
-|Portugiesisch (Brasilien)|
-|Portugiesisch (Portugal)|
-|Rumänisch|
-|Russisch|
-|Slowakisch|
-|Slowenisch|
-|Spanisch|
-|Schwedisch|
-|Tamilisch|
-|Telugu|
-|Thailändisch|
-|Türkisch|
-|Vietnamesisch|
+| Sprache |
+|:-|
+| Arabisch |
+| Bulgarisch |
+| Chinesisch (traditionell) |
+| Katalanisch |
+| Chinesisch (vereinfacht) |
+| Chinesisch (traditionell) |
+| Kroatisch |
+| Tschechisch |
+| Dänisch |
+| Niederländisch |
+| Englisch |
+| Finnisch |
+| Französisch |
+| Französisch (Kanada) |
+| Deutsch |
+| Griechisch |
+| Hebräisch |
+| Hindi |
+| Ungarisch |
+| Indonesisch |
+| Italienisch |
+| Japanisch |
+| Koreanisch |
+| Malaiisch |
+| Norwegisch |
+| Polnisch |
+| Portugiesisch (Brasilien) |
+| Portugiesisch (Portugal) |
+| Rumänisch |
+| Russisch |
+| Slowakisch |
+| Slowenisch |
+| Spanisch |
+| Schwedisch |
+| Tamilisch |
+| Telugu |
+| Thailändisch |
+| Türkisch |
+| Vietnamesisch |
 
 ## <a name="view-the-language-list-on-the-microsoft-translator-website"></a>Anzeigen der Liste der Sprachen auf der Microsoft Translator-Website
 

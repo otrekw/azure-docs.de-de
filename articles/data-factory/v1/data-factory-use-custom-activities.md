@@ -13,12 +13,12 @@ ms.author: abnarain
 ms.custom: devx-track-csharp
 manager: anandsub
 robots: noindex
-ms.openlocfilehash: b3391727b19e9e8e88646f72667545f1df7fe5a7
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 0ef6c97f7924c890bb6665100259970372f1cd26
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96012866"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97606945"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-version-1-pipeline"></a>Verwenden von benutzerdefinierten Aktivitäten in einer Pipeline von Azure Data Factory Version 1
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
@@ -98,8 +98,10 @@ Die Methode akzeptiert vier Parameter:
 Die Methode gibt ein Wörterbuch zurück, das künftig zum Verketten benutzerdefinierter Aktivitäten verwendet werden kann. Dieses Feature ist noch nicht implementiert. Von der Methode wird also ein leeres Wörterbuch zurückgegeben.
 
 ### <a name="procedure"></a>Verfahren
+
 1. Erstellen Sie ein **.NET-Klassenbibliotheksprojekt** .
-   <ol type="a">
+   
+    <ol type="a">
      <li>Starten Sie Visual Studio.</li>
      <li>Klicken Sie auf <b>Datei</b>, zeigen Sie auf <b>Neu</b>, und klicken Sie auf <b>Projekt</b>.</li>
      <li>Erweitern Sie <b>Vorlagen</b>, und wählen Sie <b>Visual C#</b> aus. In dieser exemplarischen Vorgehensweise verwenden Sie C#, Sie können jedoch jede .NET-Sprache verwenden, um benutzerdefinierte Aktivität zu entwickeln.</li>
@@ -116,6 +118,7 @@ Die Methode gibt ein Wörterbuch zurück, das künftig zum Verketten benutzerdef
     ```powershell
     Install-Package Microsoft.Azure.Management.DataFactories
     ```
+
 4. Importieren Sie das **Azure Storage** NuGet-Paket in das Projekt.
 
     ```powershell
@@ -149,16 +152,19 @@ Die Methode gibt ein Wörterbuch zurück, das künftig zum Verketten benutzerdef
     using Microsoft.WindowsAzure.Storage;
     using Microsoft.WindowsAzure.Storage.Blob;
     ```
+
 6. Ändern Sie den Namen des **Namespace** in **MyDotNetActivityNS**.
 
     ```csharp
     namespace MyDotNetActivityNS
     ```
+
 7. Ändern Sie den Namen der Klasse in **MyDotNetActivity**, und leiten Sie ihn von der **IDotNetActivity**-Schnittstelle ab, wie im folgenden Codeausschnitt zu sehen.
 
     ```csharp
     public class MyDotNetActivity : IDotNetActivity
     ```
+
 8. Implementieren bzw. fügen Sie die **Execute**-Methode der **IDotNetActivity**-Schnittstelle der **MyDotNetActivity**-Klasse hinzu, und kopieren Sie den folgenden Beispielcode in die Methode.
 
     Das folgende Beispiel zählt, wie oft der Suchbegriff („Microsoft“) in jedem Blob, das einem Datenslice zugeordnet ist, vorkommt.
@@ -279,6 +285,7 @@ Die Methode gibt ein Wörterbuch zurück, das künftig zum Verketten benutzerdef
         return new Dictionary<string, string>();
     }
     ```
+
 9. Fügen Sie die folgenden Hilfsmethoden hinzu:
 
     ```csharp
@@ -367,25 +374,30 @@ Die Methode gibt ein Wörterbuch zurück, das künftig zum Verketten benutzerdef
     ```
 
     Die „Calculate“-Methode berechnet die Anzahl der Instanzen des Schlüsselworts „Microsoft“ in den Eingabedateien (Blobs im Ordner). Der Suchbegriff („Microsoft“) ist hartcodiert.
+
 10. Kompilieren Sie das Projekt. Klicken Sie im Menü auf **Erstellen** und dann auf **Projektmappe erstellen**.
 
     > [!IMPORTANT]
     > Legen Sie Version 4.5.2 von .NET Framework als Zielframework für Ihr Projekt fest: Klicken Sie mit der rechten Maustaste auf das Projekt, und klicken Sie auf **Eigenschaften**, um das Zielframework festzulegen. Data Factory unterstützt keine benutzerdefinierten Aktivitäten, die mit .NET Framework-Versionen nach 4.5.2 kompiliert wurden.
 
 11. Starten Sie **Windows-Explorer**, und navigieren Sie je nach Buildtyp zum Ordner **bin\debug** oder **bin\release**.
+
 12. Erstellen Sie die ZIP-Datei **MyDotNetActivity.zip**, die alle Binärdateien im Ordner \<project folder\>\bin\Debug enthält. Schließen Sie die Datei **MyDotNetActivity.pdb** ein, damit Sie im Falle eines Fehlers zusätzliche Details erhalten, z.B. die Nummer der Quellcodezeile, die das Problem verursacht hat.
 
     > [!IMPORTANT]
     > Alle Dateien in der ZIP-Datei für die benutzerdefinierte Aktivität müssen sich auf der **obersten Ebene** befinden und dürfen keine Unterordner besitzen.
 
     ![Binäre Ausgabedateien](./media/data-factory-use-custom-activities/Binaries.png)
-14. Erstellen Sie einen Blobcontainer mit dem Namen **customactivitycontainer**, sofern er noch nicht vorhanden ist.
-15. Laden Sie „MyDotNetActivity.zip“ als Blob in den customactivitycontainer in einer Azure Blob Storage-Instanz für **allgemeine Zwecke** hoch (keine Blob Storage-Instanz vom Typ „Hot“ oder „Cool“), auf den von AzureStorageLinkedService verwiesen wird.
+
+13. Erstellen Sie einen Blobcontainer mit dem Namen **customactivitycontainer**, sofern er noch nicht vorhanden ist.
+
+14. Laden Sie „MyDotNetActivity.zip“ als Blob in den customactivitycontainer in einer Azure Blob Storage-Instanz für **allgemeine Zwecke** hoch (keine Blob Storage-Instanz vom Typ „Hot“ oder „Cool“), auf den von AzureStorageLinkedService verwiesen wird.
 
 > [!IMPORTANT]
 > Wenn Sie dieses .NET-Aktivitätsprojekt einer Lösung in Visual Studio hinzufügen, die ein Data Factory-Projekt enthält, und dem .NET-Aktivitätsprojekt einen Verweis vom Data Factory-Anwendungsprojekt hinzufügen, müssen Sie die letzten beiden Schritte nicht durchführen (ZIP-Datei selbst erstellen und in Azure Blob Storage für allgemeine Zwecke hochladen). Beim Veröffentlichen von Data Factory-Entitäten mit Visual Studio werden diese Schritte automatisch durch den Veröffentlichungsprozess ausgeführt. Weitere Informationen finden Sie im Abschnitt [Data Factory-Projekt in Visual Studio](#data-factory-project-in-visual-studio).
 
 ## <a name="create-a-pipeline-with-custom-activity"></a>Erstellen einer Pipeline mit benutzerdefinierter Aktivität
+
 Sie haben eine benutzerdefinierte Aktivität erstellt und die ZIP-Datei mit Binärdateien in einen Blobcontainer in einem Azure Storage-Konto für **allgemeine Zwecke** hochgeladen. In diesem Abschnitt erstellen Sie eine Instanz von Azure Data Factory mit einer Pipeline, die die benutzerdefinierte Aktivität verwendet.
 
 Das Eingabedataset für die benutzerdefinierte Aktivität stellt Blobs (Dateien) im Ordner „customactivityinput“ des adftutorial-Containers im Blobspeicher dar. Das Ausgabedataset für die Aktivität stellt Ausgabeblobs im Ordner „customactivityoutput“ des adftutorial-Containers im Blobspeicher dar.

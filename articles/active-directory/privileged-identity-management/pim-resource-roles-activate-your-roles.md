@@ -15,12 +15,12 @@ ms.date: 07/01/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f38ef7db114705392bd1d3dc6f9a4562a809e20
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a6ddde80ca554aea25d24694aff76e61e47d928
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86023868"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672456"
 ---
 # <a name="activate-my-azure-resource-roles-in-privileged-identity-management"></a>Aktivieren meiner Azure-Ressourcenrollen in Privileged Identity Management
 
@@ -42,7 +42,7 @@ Wenn Sie eine Azure-Ressourcenrolle übernehmen müssen, können Sie in Privileg
 
 1. Wählen Sie **Azure-Ressourcenrollen** aus, um eine Liste der Azure-Ressourcenrollen anzuzeigen, für die Sie berechtigt sind.
 
-   ![Meine Rollen – Azure-Ressourcenrollen-Seite](./media/pim-resource-roles-activate-your-roles/resources-my-roles-azure-resources.png)
+    ![Meine Rollen – Azure-Ressourcenrollen-Seite](./media/pim-resource-roles-activate-your-roles/resources-my-roles-azure-resources.png)
 
 1. Wechseln Sie in der Liste **Azure-Ressourcenrollen** zur Rolle, die Sie aktivieren möchten.
 
@@ -50,7 +50,7 @@ Wenn Sie eine Azure-Ressourcenrolle übernehmen müssen, können Sie in Privileg
 
 1. Wählen Sie **Aktivieren** aus, um die Seite „Aktivieren“ zu öffnen.
 
-     ![Geöffneter Aktivierungsbereich mit Umfang, Startzeit, Dauer und Grund](./media/pim-resource-roles-activate-your-roles/azure-role-eligible-activate.png)
+    ![Geöffneter Aktivierungsbereich mit Umfang, Startzeit, Dauer und Grund](./media/pim-resource-roles-activate-your-roles/azure-role-eligible-activate.png)
 
 1. Wenn Ihre Rolle eine mehrstufige Authentifizierung erfordert, klicken Sie auf **Überprüfen Sie Ihre Identität, bevor Sie den Vorgang fortsetzen**. Sie müssen sich nur einmal pro Sitzung authentifizieren.
 
@@ -72,7 +72,7 @@ Wenn Sie eine Azure-Ressourcenrolle übernehmen müssen, können Sie in Privileg
 
     ![Vervollständigter Aktivierungsbereich mit Umfang, Startzeit, Dauer und Grund](./media/pim-resource-roles-activate-your-roles/resources-my-roles-activate-done.png)
 
-1. Wählen Sie **Aktivieren**aus.
+1. Wählen Sie **Aktivieren** aus.
 
     Wenn für die Aktivierung der [Rolle eine Genehmigung erforderlich ist](pim-resource-roles-approval-workflow.md), werden Sie über eine Benachrichtigung in der oberen rechten Ecke des Browsers darüber informiert, dass die Genehmigung der Anforderung aussteht.
 

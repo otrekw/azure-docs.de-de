@@ -11,12 +11,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 11/14/2020
 ms.author: apimpm
-ms.openlocfilehash: db1a8238cf9ddae57d73438d43daa54294ce6860
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 8ec0f8cf090b3ae85a8602fb39cb07f03a417133
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94686224"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97605597"
 ---
 # <a name="use-managed-identities-in-azure-api-management"></a>Verwenden von verwalteten Identitäten in Azure API Management
 
@@ -38,7 +38,6 @@ Erstellen Sie zunächst wie gewohnt eine API Management-Instanz, und aktivieren 
 3. Ändern Sie auf der Registerkarte **Systemseitig zugewiesen** den **Status** in **Ein**. Wählen Sie **Speichern** aus.
 
     :::image type="content" source="./media/api-management-msi/enable-system-msi.png" alt-text="Auswahl zum Aktivieren einer systemseitig zugewiesenen verwalteten Identität" border="true":::
-
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
@@ -118,7 +117,6 @@ Wenn die Instanz erstellt wurde, weist sie folgende zusätzliche Eigenschaften a
 ```
 
 Die `tenantId`-Eigenschaft gibt an, zu welchem Azure AD-Mandanten die Identität gehört. Die `principalId`-Eigenschaft ist ein eindeutiger Bezeichner für die neue Identität der Instanz. In Azure AD ist der Name des Dienstprinzipals mit dem Namen der API Management-Instanz identisch.
-
 
 > [!NOTE]
 > Eine API Management-Instanz kann gleichzeitig über systemseitig und über benutzerseitig zugewiesene Identitäten verfügen. In diesem Fall hat die `type`-Eigenschaft den Wert `SystemAssigned,UserAssigned`.
@@ -266,7 +264,6 @@ Das folgende Beispiel zeigt eine Azure Resource Manager-Vorlage mit den folgende
 
 Sie können die systemseitig zugewiesene Identität verwenden, um sich über die Richtlinie [authentication-managed-identity](api-management-authentication-policies.md#ManagedIdentity) beim Back-End zu authentifizieren.
 
-
 ## <a name="create-a-user-assigned-managed-identity"></a>Erstellen einer benutzerseitig zugewiesenen verwalteten Identität
 
 > [!NOTE]
@@ -361,7 +358,7 @@ Eine vollständige Azure Resource Manager-Vorlage kann beispielsweise wie folgt 
                 "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', variables('identityName'))]": {}
              }
         },
-        "dependsOn": [       
+         "dependsOn": [       
           "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', variables('identityName'))]"
         ]
     }]
@@ -415,7 +412,6 @@ Klicken Sie auf folgende Schaltfläche, um die Bereitstellung automatisch auszuf
 ### <a name="authenticate-to-the-back-end-by-using-a-user-assigned-identity"></a>Authentifizieren beim Back-End mithilfe einer benutzerseitig zugewiesenen Identität
 
 Sie können die benutzerseitig zugewiesene Identität verwenden, um sich über die Richtlinie [authentication-managed-identity](api-management-authentication-policies.md#ManagedIdentity) beim Back-End zu authentifizieren.
-
 
 ## <a name="remove-an-identity"></a><a name="remove"></a>Entfernen einer Identität
 

@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 11/06/2020
 ms.author: aahi
-ms.openlocfilehash: 2f03746a6a5afc388db2beeff84b3ab4cbd393b5
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: f41e513ee0f2755c446a9cb95465c1f636fe5a7a
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95014593"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97606265"
 ---
 # <a name="install-and-run-the-spatial-analysis-container-preview"></a>Installieren und Ausführen des Containers für räumliche Analyse (Vorschau)
 
@@ -113,7 +113,7 @@ Wählen Sie auf der Seite  **Edgecomputing konfigurieren** eine vorhandene I
 
 Klicken Sie auf **Erstellen**. Die Erstellung einer IoT Hub-Ressource kann einige Minuten dauern. Nachdem die IoT Hub-Ressource erstellt wurde, wird die Kachel  **Edgecomputing konfigurieren** aktualisiert, um die neue Konfiguration anzuzeigen. Wählen Sie auf der Kachel  **Compute konfigurieren** die Option  **Konfiguration anzeigen** aus, um sich zu vergewissern, dass die Edgecomputingrolle konfiguriert wurde.
 
-Wenn die Edge-Computerolle auf dem Edge-Gerät eingerichtet ist, werden zwei Geräte erstellt: ein IoT-Gerät und ein IoT Edge-Gerät. Beide Geräte können in der IoT Hub-Ressource angezeigt werden. Die Azure IoT Edge-Runtime wird auf dem IoT Edge-Gerät bereits ausgeführt.            
+Wenn die Edge-Computerolle auf dem Edge-Gerät eingerichtet ist, werden zwei Geräte erstellt: ein IoT-Gerät und ein IoT Edge-Gerät. Beide Geräte können in der IoT Hub-Ressource angezeigt werden. Die Azure IoT Edge-Runtime wird auf dem IoT Edge-Gerät bereits ausgeführt.
 
 > [!NOTE]
 > * Derzeit wird nur die Linux-Plattform für IoT Edge-Geräte unterstützt. Informationen zur Problembehandlung für das Azure Stack Edge-Gerät finden Sie im Artikel [Protokollierung und Problembehandlung](spatial-analysis-logging.md).

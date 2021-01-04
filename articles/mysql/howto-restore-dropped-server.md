@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 10/09/2020
-ms.openlocfilehash: 982747c1a7e093f84daeb63e75cfdf439d3fccf9
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 34dddd8e5f3fb418fc7155630bf82a922e418402
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546720"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97657089"
 ---
 # <a name="restore-a-dropped-azure-database-for-mysql-server"></a>Wiederherstellen eines getrennten Azure Database for MySQL-Servers
 
@@ -26,7 +26,7 @@ Zum Wiederherstellen eines getrennten Azure Database for MySQL-Servers benötige
 
 1. Wechseln Sie im Azure-Portal auf dem Blatt „Überwachen“ zum [Aktivitätsprotokoll](https://ms.portal.azure.com/#blade/Microsoft_Azure_ActivityLog/ActivityLogBlade). 
 
-2. Klicken Sie im „Aktivitätsprotokoll“ wie hier gezeigt auf **Filter hinzufügen** , und legen Sie die folgenden Filter fest für 
+2. Klicken Sie im „Aktivitätsprotokoll“ wie hier gezeigt auf **Filter hinzufügen**, und legen Sie die folgenden Filter fest für 
 
     - **Abonnement** = Ihr Abonnement, das den gelöschten Server hostet
     - **Ressourcentyp** = Azure Database for MySQL-Server (Microsoft.DBforMySQL/servers) 
@@ -45,15 +45,15 @@ Zum Wiederherstellen eines getrennten Azure Database for MySQL-Servers benötige
  6. Scrollen Sie im Abschnitt „Anforderungstext“ nach unten, und fügen Sie das Folgende für „Speicherort des gelöschten Servers“, „submissionTimestamp“ und „resourceId“ ein. Geben Sie für „restorePointinTime“ den Wert „submissionTimestamp“ minus **15 Minuten** an, um sicherzustellen, dass der Befehl nicht fehlerhaft ist.
  
     ```json
-        {
-          "location": "Dropped Server Location",  
-          "properties": 
-              {
-                  "restorePointInTime": "submissionTimestamp - 15 minutes",
-                  "createMode": "PointInTimeRestore",
-                  "sourceServerId": "resourceId"
+    {
+        "location": "Dropped Server Location",  
+        "properties": 
+            {
+                "restorePointInTime": "submissionTimestamp - 15 minutes",
+                "createMode": "PointInTimeRestore",
+                "sourceServerId": "resourceId"
             }
-        }
+    }
     ```
 
 7. Wenn Sie „Antwortcode 201“ oder 202 sehen, wurde die Wiederherstellungsanforderung erfolgreich übermittelt. 

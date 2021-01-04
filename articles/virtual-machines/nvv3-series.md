@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: dc6056653fc50976439d4b16594e6d554e62f061
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: 65107b0924351ca6debf37201e8849ffe8dd1eab
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91652821"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589426"
 ---
 # <a name="nvv3-series"></a>NVv3-Serie
 
@@ -23,9 +23,10 @@ Alle GPUs in NVv3-Instanzen beinhalten eine GRID-Lizenz. Diese Lizenz bietet Ihn
 
 [Storage Premium](premium-storage-performance.md): Unterstützt<br>
 [Storage Premium-Zwischenspeicherung:](premium-storage-performance.md) Unterstützt<br>
-[Livemigration](maintenance-and-updates.md): Nicht unterstützt<br>
-[Updates mit Speicherbeibehaltung](maintenance-and-updates.md): Nicht unterstützt<br>
-[Unterstützung von VM-Generationen](generation-2.md): Generation 1 und 2<br>
+[Livemigration:](maintenance-and-updates.md) Nicht unterstützt<br>
+[Updates mit Speicherbeibehaltung:](maintenance-and-updates.md) Nicht unterstützt<br>
+[Unterstützung von VM-Generationen:](generation-2.md) Generation 1 und 2<br>
+Beschleunigter Netzwerkbetrieb: Unterstützt<br>
 <br>
 
 | Size | vCPU | Memory: GiB | Temporärer Speicher (SSD): GiB | GPU | GPU-Arbeitsspeicher: GiB | Max. Anzahl Datenträger | Maximaler Durchsatz des Datenträgers ohne Cache: IOPS/MBit/s | Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (MBps) | Virtuelle Arbeitsstationen | Virtuelle Anwendungen |
@@ -35,8 +36,6 @@ Alle GPUs in NVv3-Instanzen beinhalten eine GRID-Lizenz. Diese Lizenz bietet Ihn
 | Standard_NV48s_v3 |48 | 448 | 1280 | 4 | 32 | 32 | 80.000/800 | 8/24000 | 4 | 100 |
 
 <sup>1</sup> 1 GPU = halbe M60-Karte
-
-<sup>2</sup> Derzeit wird der beschleunigte Netzwerkbetrieb auf dieser VM-Familie nicht unterstützt, sodass die reale Netzwerkleistung möglicherweise niedriger ist als die hier erfassten theoretischen Spitzenwerte.
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 

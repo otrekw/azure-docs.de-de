@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: v-miegge
-ms.openlocfilehash: 3677d67f55cfccdc80245b2ec870ffa76b0a1940
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ff7d5a4e1181dccedc3584d958038a1d695c57ca
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87088664"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97657123"
 ---
 # <a name="troubleshoot-windows-boot-manager-error----0xc0000225-status-not-found"></a>Problembehandlung beim Windows-Start-Manager-Fehler 0xC0000225 „Status not found“
  
@@ -126,7 +126,7 @@ Eine Beschädigung der Registrierungsstruktur kann folgende Ursachen haben:
       `dir <BINARY WITH ".SYS" EXTENSION>  /s`
 
       Mit diesem Befehl werden alle Versionen der Datei aufgelistet, die sich auf dem Computer befinden, und Sie erhalten den Pfadverlauf dieser Komponente.
-      
+
       Beispielsweise müssten Sie **dir cng.sys** in **dir cng.sys /s** umbenennen.
 
    1. Wählen Sie die neueste Version der Datei auf der Liste (oder eine andere, die Sie bevorzugen) aus, und kopieren Sie die Datei in den Ordner **windows\system32**. Verwenden Sie dazu den vorherigen Pfad und folgenden Befehl:
