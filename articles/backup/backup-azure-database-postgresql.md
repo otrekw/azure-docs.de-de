@@ -4,12 +4,12 @@ description: Weitere Informationen zur Azure Database for PostgreSQL-Sicherung m
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.custom: references_regions
-ms.openlocfilehash: edbfdb6ea741cdb344a121acdbee3b8bd4bc743c
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 32837e5bb871f7db5024569efc27940047aeacd7
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927888"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97734639"
 ---
 # <a name="azure-database-for-postgresql-backup-with-long-term-retention-preview"></a>Azure Database for PostgreSQL-Sicherung mit Langzeitaufbewahrung (Vorschau)
 
@@ -31,7 +31,7 @@ Sie können diese Lösung unabhängig oder zusätzlich zur nativen Sicherungslö
 
 |Support  |Details  |
 |---------|---------|
-|Unterstützte Bereitstellungen   |  Eigenständiger Azure Database for PostgreSQL-Einzelserver     |
+|Unterstützte Bereitstellungen   |  [Azure Database for PostgreSQL: Einzelserver](https://docs.microsoft.com/azure/postgresql/overview#azure-database-for-postgresql---single-server)     |
 |Unterstützte Azure-Regionen |  USA, Osten, USA, Osten 2, USA, Mitte, USA, Süden-Mitte, USA, Westen, USA, Westen 2; USA, Westen-Mitte, Brasilien, Süden; Kanada, Mitte, Europa, Norden, Europa, Westen, Vereinigtes Königreich, Süden, Vereinigtes Königreich, Westen, Deutschland, Westen-Mitte, Schweiz, Norden, Schweiz, Westen, Asien, Osten,Asien, Südosten, Japan, Osten, Japan, Westen, Südkorea, Mitte, Südkorea, Süden, Indien, Mitte, Australien, Osten, Australien, Mitte, Australien, Mitte 2, VAE, Norden  |
 |Unterstützte Azure PostgreSQL-Versionen    |   9.5, 9.6, 10, 11      |
 
@@ -45,7 +45,7 @@ Sie können diese Lösung unabhängig oder zusätzlich zur nativen Sicherungslö
 
 ## <a name="backup-process"></a>Sicherungsprozess
 
-1. Diese Lösung verwendet **pg_dump** , um Sicherungen Ihrer Azure PostgreSQL-Datenbanken zu erstellen.
+1. Diese Lösung verwendet **pg_dump**, um Sicherungen Ihrer Azure PostgreSQL-Datenbanken zu erstellen.
 
 2. Nachdem Sie die zu sichernden Azure PostgreSQL-Datenbanken angegeben haben, überprüft der Dienst, ob er über die richtigen Berechtigungen und Zugriffsrechte verfügt, um den Sicherungsvorgang auf dem Server und der Datenbank durchzuführen.
 
@@ -107,7 +107,7 @@ Die folgenden Anweisungen stellen eine Schrittanleitung zum Konfigurieren der Si
 
     ![Zu behebende Validierungsfehler](./media/backup-azure-database-postgresql/validation-errors.png)
 
-1. Bestätigen Sie alle Details unter **Überprüfen und konfigurieren** , und wählen Sie **Sicherung konfigurieren** aus, um den Vorgang zu übermitteln.
+1. Bestätigen Sie alle Details unter **Überprüfen und konfigurieren**, und wählen Sie **Sicherung konfigurieren** aus, um den Vorgang zu übermitteln.
 
     ![Bestätigen von Details unter „Überprüfen und Konfigurieren“](./media/backup-azure-database-postgresql/review-and-configure.png)
 
@@ -137,8 +137,8 @@ Die folgenden Anweisungen stellen eine Schrittanleitung zum Konfigurieren der Si
 
 1. Sie können Ihre Sicherungen in einem der beiden Datenspeicher (oder in einer der beiden Ebenen) speichern: **Sicherungsdatenspeicher** (heiße Ebene) oder **Archivdatenspeicher** (in der Vorschau). Sie können zwischen **zwei Tiering-Optionen** wählen, um festzulegen, wann die Sicherungen über die beiden Datenspeicher verteilt werden:
 
-    - Kopieren Sie **sofort** , wenn Sie gleichzeitig eine Sicherungskopie für sowohl Sicherungs- als auch Archivdatenspeicher haben möchten.
-    - Wählen Sie die Option zum Verschieben nach **Ablauf** , wenn Sie die Sicherung nach Ablauf im Sicherungsdatenspeicher in den Archivdatenspeicher verschieben möchten.
+    - Kopieren Sie **sofort**, wenn Sie gleichzeitig eine Sicherungskopie für sowohl Sicherungs- als auch Archivdatenspeicher haben möchten.
+    - Wählen Sie die Option zum Verschieben nach **Ablauf**, wenn Sie die Sicherung nach Ablauf im Sicherungsdatenspeicher in den Archivdatenspeicher verschieben möchten.
 
 1. Die **Standardaufbewahrungsregel** wird angewandt, wenn keine andere Aufbewahrungsregel vorhanden ist. Sie hat einen Standardwert von drei Monaten.
 
@@ -148,7 +148,7 @@ Die folgenden Anweisungen stellen eine Schrittanleitung zum Konfigurieren der Si
     ![Bearbeiten der Aufbewahrungsdauer](./media/backup-azure-database-postgresql/edit-retention.png)
 
 >[!NOTE]
->Die Aufbewahrungsregeln werden in einer vordefinierten Reihenfolge ausgewertet. Die oberste Priorität hat die Regel **Jährlich** , gefolgt von der Regel **Monatlich** und dann von der Regel **Wöchentlich**. Die Standardeinstellungen für die Aufbewahrung werden angewendet, wenn keine anderen Regeln zutreffen. Beispielsweise kann derselbe Wiederherstellungspunkt sowohl die erste erfolgreiche Sicherung, die jede Woche erstellt wird, als auch die erste erfolgreiche Sicherung, die jeden Monat erstellt wird, sein. Da die Priorität der monatlichen Regel jedoch höher als die der wöchentlichen Regel ist, gilt die Aufbewahrungsregel, die der ersten erfolgreichen, monatlich erstellten Sicherung entspricht.
+>Die Aufbewahrungsregeln werden in einer vordefinierten Reihenfolge ausgewertet. Die oberste Priorität hat die Regel **Jährlich**, gefolgt von der Regel **Monatlich** und dann von der Regel **Wöchentlich**. Die Standardeinstellungen für die Aufbewahrung werden angewendet, wenn keine anderen Regeln zutreffen. Beispielsweise kann derselbe Wiederherstellungspunkt sowohl die erste erfolgreiche Sicherung, die jede Woche erstellt wird, als auch die erste erfolgreiche Sicherung, die jeden Monat erstellt wird, sein. Da die Priorität der monatlichen Regel jedoch höher als die der wöchentlichen Regel ist, gilt die Aufbewahrungsregel, die der ersten erfolgreichen, monatlich erstellten Sicherung entspricht.
 
 ## <a name="restore"></a>Restore
 
@@ -181,7 +181,7 @@ Führen Sie diese Schrittanleitung aus, um eine Wiederherstellung auszulösen:
 
 1. Geben Sie die **Wiederherstellungsparameter** ein. Nun können Sie sich für eine von zwei Wegen für die Wiederherstellung entscheiden: **Wiederherstellen als Datenbank** und **Wiederherstellen als Dateien**.
 
-1. **Wiederherstellen als Datenbank** :  Stellen Sie die Sicherungsdaten wieder her, um eine neue Datenbank auf dem PostgreSQL-Zielserver zu erstellen.
+1. **Wiederherstellen als Datenbank**:  Stellen Sie die Sicherungsdaten wieder her, um eine neue Datenbank auf dem PostgreSQL-Zielserver zu erstellen.
 
     - Der Zielserver darf mit dem Quellserver identisch sein. Das Überschreiben der ursprünglichen Datenbank wird jedoch nicht unterstützt.
     - Sie können aus dem Server aus allen Abonnements, aber in derselben Region wie der Tresor auswählen.
@@ -189,7 +189,7 @@ Führen Sie diese Schrittanleitung aus, um eine Wiederherstellung auszulösen:
 
     ![Wiederherstellen als Datenbank](./media/backup-azure-database-postgresql/restore-as-database.png)
 
-1. **Wiederherstellen als Dateien** : Sichern Sie die Sicherungsdateien im Zielspeicherkonto (Blobs).
+1. **Wiederherstellen als Dateien**: Sichern Sie die Sicherungsdateien im Zielspeicherkonto (Blobs).
 
     - Sie können aus den Speicherkonten aus allen Abonnements, aber in derselben Region wie der Tresor auswählen.
     - Wählen Sie den Zielcontainer in der Liste der Container aus, die für das ausgewählte Speicherkonto gefiltert wurde.
@@ -261,12 +261,12 @@ Schritte:
 1. Geben Sie im rechten Kontextbereich, der geöffnet wird, Folgendes ein:<br>
 
     **Rolle:** Leser<br>
-    **Zugriff zuweisen zu** : Wählen Sie **Sicherungstresor** aus.<br>
+    **Zugriff zuweisen zu**: Wählen Sie **Sicherungstresor** aus.<br>
     Wenn Sie in der Dropdownliste die Option **Sicherungstresor** nicht finden können, wählen Sie die Option **Azure AD-Benutzer, -Gruppe oder -Dienstprinzipal** aus.<br>
 
     ![Rolle auswählen](./media/backup-azure-database-postgresql/select-role.png)
 
-    **Auswählen** : Geben Sie den Namen des Sicherungstresors ein, in dem Sie diesen Server und dessen Datenbanken sichern möchten.<br>
+    **Auswählen**: Geben Sie den Namen des Sicherungstresors ein, in dem Sie diesen Server und dessen Datenbanken sichern möchten.<br>
 
     ![Eingeben des Namens des Sicherungstresors](./media/backup-azure-database-postgresql/enter-backup-vault-name.png)
 

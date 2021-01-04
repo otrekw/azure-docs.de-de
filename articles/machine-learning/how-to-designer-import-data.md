@@ -10,12 +10,12 @@ ms.author: keli19
 ms.date: 11/13/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: 5569b625b8f0c4ba890c0cd5b1700ca6fe83d968
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: a2cc0840b7ba4b26cf9f5b1219fc189230870774
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94591987"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97739857"
 ---
 # <a name="import-data-into-azure-machine-learning-designer"></a>Importieren von Daten in den Azure Machine Learning-Designer
 
@@ -47,8 +47,7 @@ Wenn die Modulausgabedaten in einem Tabellenformat vorliegen, müssen Sie die Au
  - Mit **Dateidataset** wird der Ausgabeordner des Moduls als Dateidataset registriert. Der Ausgabeordner enthält eine Datendatei und Metadateien, die vom Designer intern verwendet werden. Wählen Sie diese Option aus, wenn Sie das registrierte Dataset weiterhin im Designer verwenden möchten. 
 
  - Mit **Tabellendataset** wird nur die Ausgabedatendatei des Moduls als Tabellendataset registriert. Dieses Format kann problemlos von anderen Tools verarbeitet werden, z. B. durch automatisiertes maschinelles Lernen oder im Python-SDK. Wählen Sie diese Option aus, wenn Sie das registrierte Dataset außerhalb des Designers verwenden möchten.  
-
-
+ 
 
 ### <a name="use-a-dataset"></a>Verwenden eines Datasets
 
@@ -62,6 +61,14 @@ Wenn Sie ein Dateidataset registrieren, ist der Ausgabeporttyp des Datasets **An
 > [!NOTE]
 > Der Designer unterstützt die [Datasetversionierung](how-to-version-track-datasets.md). Geben Sie die Datasetversion im Bereich „Eigenschaften“ des Datasetmoduls an.
 
+### <a name="limitations"></a>Einschränkungen 
+
+- Derzeit können nur tabellarische Datasets im Designer visualisiert werden. Wenn Sie ein Dateidataset außerhalb des Designers registrieren, können Sie es nicht im Designer-Zeichenbereich visualisieren.
+- Das Dataset ist im virtuellen Netzwerk (VNET) gespeichert. Zum Visualisieren müssen Sie die vom Arbeitsbereich verwaltete Identität des Datenspeichers aktivieren.
+    1. Rufen Sie den entsprechenden Datenspeicher auf, und klicken Sie auf **Anmeldeinformationen aktualisieren**
+    :::image type="content" source="./media/resource-known-issues/datastore-update-credential.png" alt-text="Anmeldeinformationen aktualisieren":::.
+    1. Wählen Sie **Ja** aus, um die vom Arbeitsbereich verwaltete Identität zu aktivieren.
+    :::image type="content" source="./media/resource-known-issues/enable-workspace-managed-identity.png" alt-text="Aktivieren der vom Arbeitsbereich verwalteten Identität":::
 
 ## <a name="import-data-using-the-import-data-module"></a>Importieren von Daten mit dem Modul „Daten importieren“
 

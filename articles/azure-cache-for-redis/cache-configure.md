@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
-ms.openlocfilehash: f0d0742994b14f692c2aea9130edc73d779cff52
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 2ff97dd30d9b993385f52ea531653a89197f8756
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92544765"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97734622"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Konfigurieren von Azure Cache for Redis
 In diesem Thema sind die für Ihre Azure Cache for Redis-Instanzen verfügbaren Konfigurationen beschrieben. Darüber hinaus wird in diesem Thema die standardmäßige Redis-Serverkonfiguration für Azure Cache for Redis-Instanzen behandelt.
@@ -126,7 +126,7 @@ TLS-/SSL-fremder Zugriff ist für neue Caches standardmäßig deaktiviert. Klick
 
 <a name="maxmemory-policy-and-maxmemory-reserved"></a>
 #### <a name="memory-policies"></a>Arbeitsspeicherrichtlinien
-Mit den Einstellungen **Maxmemory policy** , **maxmemory-reserved** und **maxfragmentationmemory-reserved** auf dem Blatt **Erweiterte Einstellungen** konfigurieren Sie die Arbeitsspeicherrichtlinien für den Cache.
+Mit den Einstellungen **Maxmemory policy**, **maxmemory-reserved** und **maxfragmentationmemory-reserved** auf dem Blatt **Erweiterte Einstellungen** konfigurieren Sie die Arbeitsspeicherrichtlinien für den Cache.
 
 ![Azure Cache for Redis: Maxmemory-Richtlinie](./media/cache-configure/redis-cache-maxmemory-policy.png)
 
@@ -145,7 +145,7 @@ Mit der Einstellung **maxmemory-reserved** wird die Arbeitsspeichermenge in MB p
 
 Mit der Einstellung **maxfragmentationmemory-reserved** wird der Arbeitsspeicher in MB pro Instanz in einem Cluster konfiguriert, der für die Speicherfragmentierung reserviert ist. Durch Festlegen dieses Werts können Sie eine konsistentere Redis-Servererfahrung erzielen, wenn der Cache voll bzw. beinahe voll und das Fragmentierungsverhältnis hoch ist. Wenn Arbeitsspeicher für Vorgänge dieser Art reserviert ist, ist er nicht für die Speicherung zwischengespeicherter Daten verfügbar.
 
-Bei der Auswahl eines neuen Speicherreservierungswerts ( **maxmemory-reserved** oder **maxfragmentationmemory-reserved** ) sollte berücksichtigt werden, wie sich diese Änderung auf einen Cache auswirkt, der bereits mit einer großen Datenmenge ausgeführt wird. Beispiel: Wenn Ihr Cache über eine Kapazität von 53 GB verfügt und 49 GB an Daten enthält, ändern Sie den Reservierungswert in 8 GB, um den maximal verfügbaren Arbeitsspeicher für das System auf 45 GB zu verringern. Wenn entweder der aktuelle Wert für `used_memory` oder der Wert für `used_memory_rss` höher als der neue Grenzwert von 45 GB ist, muss das System Daten entfernen, bis sowohl `used_memory` als auch `used_memory_rss` unter 45 GB liegen. Durch die Entfernung können sich Serverauslastung und Arbeitsspeicherfragmentierung erhöhen. Weitere Informationen zu Cachemetriken, etwa `used_memory` und `used_memory_rss`, finden Sie unter [Verfügbare Metriken und Berichtsintervalle](cache-how-to-monitor.md#available-metrics-and-reporting-intervals).
+Bei der Auswahl eines neuen Speicherreservierungswerts (**maxmemory-reserved** oder **maxfragmentationmemory-reserved**) sollte berücksichtigt werden, wie sich diese Änderung auf einen Cache auswirkt, der bereits mit einer großen Datenmenge ausgeführt wird. Beispiel: Wenn Ihr Cache über eine Kapazität von 53 GB verfügt und 49 GB an Daten enthält, ändern Sie den Reservierungswert in 8 GB, um den maximal verfügbaren Arbeitsspeicher für das System auf 45 GB zu verringern. Wenn entweder der aktuelle Wert für `used_memory` oder der Wert für `used_memory_rss` höher als der neue Grenzwert von 45 GB ist, muss das System Daten entfernen, bis sowohl `used_memory` als auch `used_memory_rss` unter 45 GB liegen. Durch die Entfernung können sich Serverauslastung und Arbeitsspeicherfragmentierung erhöhen. Weitere Informationen zu Cachemetriken, etwa `used_memory` und `used_memory_rss`, finden Sie unter [Verfügbare Metriken und Berichtsintervalle](cache-how-to-monitor.md#available-metrics-and-reporting-intervals).
 
 > [!IMPORTANT]
 > Die Einstellungen **maxmemory-reserved** und **maxfragmentationmemory-reserved** sind nur für Standard- und Premium-Caches verfügbar.
@@ -190,11 +190,11 @@ Jeder Tarif hat verschiedene Limits für Clientverbindungen, Speicher und Bandbr
 | Serverauslastung |[Nutzungsdiagramme – Arbeitsauslastung des Redis-Servers](cache-how-to-monitor.md#usage-charts) |
 | Speicherauslastung |[Cacheleistung – Größe](cache-planning-faq.md#azure-cache-for-redis-performance) |
 
-Klicken Sie zum Upgraden Ihres Caches auf **Jetzt aktualisieren** , um den [Tarif](#scale) zu ändern und Ihren Cache zu skalieren. Weitere Informationen zur Tarifauswahl finden Sie unter [Auswählen der richtigen Ebene](cache-overview.md#choosing-the-right-tier).
+Klicken Sie zum Upgraden Ihres Caches auf **Jetzt aktualisieren**, um den [Tarif](#scale) zu ändern und Ihren Cache zu skalieren. Weitere Informationen zur Tarifauswahl finden Sie unter [Auswählen der richtigen Ebene](cache-overview.md#choosing-the-right-tier).
 
 
 ### <a name="scale"></a>Skalieren
-Klicken Sie auf **Staffelung** , um den Tarif für Ihren Cache anzuzeigen oder zu ändern. Weitere Informationen zur Skalierung finden Sie unter [Skalieren von Azure Cache for Redis](cache-how-to-scale.md).
+Klicken Sie auf **Staffelung**, um den Tarif für Ihren Cache anzuzeigen oder zu ändern. Weitere Informationen zur Skalierung finden Sie unter [Skalieren von Azure Cache for Redis](cache-how-to-scale.md).
 
 ![Azure Cache for Redis: Tarifpreise](./media/cache-configure/pricing-tier.png)
 
@@ -214,7 +214,7 @@ Um die Clustergröße zu ändern, verwenden Sie den Schieberegler, oder geben Si
 
 
 ### <a name="redis-data-persistence"></a>Redis-Datenpersistenz
-Klicken Sie auf **Datenpersistenz** , um die Datenpersistenz für Ihren Premium-Cache zu aktivieren, zu deaktivieren oder zu konfigurieren. Azure Cache for Redis bietet Redis-Persistenz entweder per RDB-Persistenz oder per AOF-Persistenz.
+Klicken Sie auf **Datenpersistenz**, um die Datenpersistenz für Ihren Premium-Cache zu aktivieren, zu deaktivieren oder zu konfigurieren. Azure Cache for Redis bietet Redis-Persistenz entweder per RDB-Persistenz oder per AOF-Persistenz.
 
 Weitere Informationen finden Sie unter [Konfigurieren von Persistenz für Azure Cache for Redis vom Typ „Premium“](cache-how-to-premium-persistence.md).
 
@@ -262,7 +262,7 @@ Im Abschnitt **Virtuelles Netzwerk** können Sie die Einstellungen des virtuelle
 
 Die Konfiguration von Firewall-Regeln ist für alle Azure Cache for Redis-Tarife verfügbar.
 
-Klicken Sie auf **Firewall** , um Firewallregeln für den Cache anzuzeigen und zu konfigurieren.
+Klicken Sie auf **Firewall**, um Firewallregeln für den Cache anzuzeigen und zu konfigurieren.
 
 ![Firewall](./media/cache-configure/redis-firewall-rules.png)
 
@@ -274,7 +274,7 @@ Sie können Firewallregeln mit einem Start- und End-IP-Adressbereich angeben. We
 >
 
 ### <a name="properties"></a>Eigenschaften
-Klicken Sie auf **Eigenschaften** , um Informationen zu Ihrem Cache anzuzeigen, z.B. den Endpunkt und die Ports des Caches.
+Klicken Sie auf **Eigenschaften**, um Informationen zu Ihrem Cache anzuzeigen, z.B. den Endpunkt und die Ports des Caches.
 
 ![Azure Cache for Redis-Eigenschaften](./media/cache-configure/redis-cache-properties.png)
 
@@ -283,7 +283,7 @@ Im Abschnitt **Sperren** können Sie ein Abonnement, eine Ressourcengruppe oder 
 
 ### <a name="automation-script"></a>Automatisierungsskript
 
-Klicken Sie auf **Automatisierungsskript** , um für künftige Bereitstellungen eine Vorlage Ihrer bereitgestellten Ressourcen zu erstellen und zu exportieren. Weitere Informationen zum Arbeiten mit Vorlagen finden Sie unter [Bereitstellen von Ressourcen mit einer Azure Resource Manager-Vorlage](../azure-resource-manager/templates/deploy-powershell.md).
+Klicken Sie auf **Automatisierungsskript**, um für künftige Bereitstellungen eine Vorlage Ihrer bereitgestellten Ressourcen zu erstellen und zu exportieren. Weitere Informationen zum Arbeiten mit Vorlagen finden Sie unter [Bereitstellen von Ressourcen mit einer Azure Resource Manager-Vorlage](../azure-resource-manager/templates/deploy-powershell.md).
 
 ## <a name="administration-settings"></a>Verwaltungseinstellungen
 Mit den Einstellungen im Abschnitt **Verwaltung** können Sie folgende Verwaltungsaufgaben für Ihren Cache durchführen.
@@ -336,11 +336,11 @@ Weitere Informationen zur Azure Cache for Redis-Diagnose und -Überwachung finde
 * [Diagnose](#diagnostics)
 
 ### <a name="redis-metrics"></a>Redis-Metriken
-Klicken Sie auf **Redis Metriken** , um für Ihren Cache [Metriken anzuzeigen](cache-how-to-monitor.md#view-cache-metrics).
+Klicken Sie auf **Redis Metriken**, um für Ihren Cache [Metriken anzuzeigen](cache-how-to-monitor.md#view-cache-metrics).
 
 ### <a name="alert-rules"></a>Warnregeln
 
-Klicken Sie auf **Warnregeln** , um Warnungen basierend auf Azure Cache for Redis-Metriken zu konfigurieren. Weitere Informationen finden Sie unter [Warnungen](cache-how-to-monitor.md#alerts).
+Klicken Sie auf **Warnregeln**, um Warnungen basierend auf Azure Cache for Redis-Metriken zu konfigurieren. Weitere Informationen finden Sie unter [Warnungen](cache-how-to-monitor.md#alerts).
 
 ### <a name="diagnostics"></a>Diagnose
 
@@ -363,7 +363,7 @@ Die Einstellungen im Abschnitt **Support und Problembehandlung** bieten Optionen
 **Ressourcenintegrität** dienen zum Überwachen Ihrer Ressource und informieren Sie darüber, ob sie wie erwartet ausgeführt wird. Weitere Informationen zum Azure Resource Health-Dienst finden Sie in der [Übersicht über Azure Resource Health](../service-health/resource-health-overview.md).
 
 > [!NOTE]
-> Die Ressourcenintegrität kann derzeit keine Informationen zur Integrität der in einem virtuellen Netzwerk gehosteten Azure Cache for Redis-Instanzen liefern. Weitere Informationen finden Sie unter [Funktionieren alle Cachefeatures beim Hosten eines Cache in einem VNET?](cache-how-to-premium-vnet.md#do-all-cache-features-work-when-hosting-a-cache-in-a-vnet)
+> Die Ressourcenintegrität kann derzeit keine Informationen zur Integrität der in einem virtuellen Netzwerk gehosteten Azure Cache for Redis-Instanzen liefern. Weitere Informationen finden Sie unter [Funktionieren alle Cachefeatures beim Hosten eines Cache in einem VNET?](cache-how-to-premium-vnet.md#do-all-cache-features-work-when-a-cache-is-hosted-in-a-virtual-network)
 >
 >
 
@@ -382,7 +382,7 @@ Neue Azure Cache for Redis-Instanzen werden mit den folgenden standardmäßigen 
 >
 > `StackExchange.Redis.RedisServerException: ERR unknown command 'CONFIG'`
 >
-> Alle Werte, die konfigurierbar sind, z.B. **maxmemory-policy** , können über das Azure-Portal oder Befehlszeilenverwaltungstools wie die Azure-Befehlszeilenschnittstelle oder PowerShell konfiguriert werden.
+> Alle Werte, die konfigurierbar sind, z.B. **maxmemory-policy**, können über das Azure-Portal oder Befehlszeilenverwaltungstools wie die Azure-Befehlszeilenschnittstelle oder PowerShell konfiguriert werden.
 >
 >
 
@@ -464,7 +464,7 @@ Weitere Informationen zu Datenbanken finden Sie unter [Was sind Redis-Datenbanke
 Weitere Informationen zu Redis-Befehlen finden Sie unter [https://redis.io/commands](https://redis.io/commands).
 
 ## <a name="redis-console"></a>Redis-Konsole
-Über die **Redis-Konsole** , die im Azure-Portal für alle Cachetarife zur Verfügung steht, können Sie Befehle sicher auf Ihre Azure Cache for Redis-Instanzen anwenden.
+Über die **Redis-Konsole**, die im Azure-Portal für alle Cachetarife zur Verfügung steht, können Sie Befehle sicher auf Ihre Azure Cache for Redis-Instanzen anwenden.
 
 > [!IMPORTANT]
 > - Die Redis-Konsole kann nicht mit [VNET](cache-how-to-premium-vnet.md) verwendet werden. Wenn der Cache zu einem virtuellen Netzwerk gehört, haben nur Clients in diesem virtuellen Netzwerk Zugriff auf den Cache. Da die Redis-Konsole in Ihrem lokalen Browser ausgeführt wird, der sich außerhalb des VNET befindet, kann sie keine Verbindung mit Ihrem Cache herstellen.
