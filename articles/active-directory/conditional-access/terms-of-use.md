@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1829c69510568b0f9a8cec7fb7d2d57be8515d3
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 399cbef4de91623ada1c38de7c6148d22fde94c7
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97509987"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672399"
 ---
 # <a name="azure-active-directory-terms-of-use"></a>Nutzungsbedingungen für Azure Active Directory
 
@@ -74,11 +74,11 @@ Gehen Sie nach Fertigstellung Ihres Dokuments mit Nutzungsbedingungen wie folgt 
 1. Melden Sie sich bei Azure als globaler Administrator, Sicherheitsadministrator oder Administrator für bedingten Zugriff an.
 1. Navigieren Sie unter [https://aka.ms/catou](https://aka.ms/catou) zu **Nutzungsbedingungen**.
 
-   ![Blatt „Bedingter Zugriff – Nutzungsbedingungen“](./media/terms-of-use/tou-blade.png)
+    ![Blatt „Bedingter Zugriff – Nutzungsbedingungen“](./media/terms-of-use/tou-blade.png)
 
 1. Klicken Sie auf **Neue Bedingungen**.
 
-   ![Bereich „Neue Nutzungsbedingungen“ zum Festlegen der Einstellungen für die Nutzungsbedingungen](./media/terms-of-use/new-tou.png)
+    ![Bereich „Neue Nutzungsbedingungen“ zum Festlegen der Einstellungen für die Nutzungsbedingungen](./media/terms-of-use/new-tou.png)
 
 1. Geben Sie im Feld **Name** einen Namen für die Nutzungsbedingungen zur Verwendung im Azure-Portal ein.
 1. Geben Sie im Feld **Anzeigename** einen Titel ein, der Benutzern bei der Anmeldung angezeigt wird.
@@ -88,7 +88,7 @@ Gehen Sie nach Fertigstellung Ihres Dokuments mit Nutzungsbedingungen wie folgt 
 1. Wenn die Endbenutzer Ihren Nutzungsbedingungen auf jedem Gerät zustimmen sollen, über das der Zugriff erfolgt, legen Sie **Zustimmung der Benutzer auf jedem Gerät erforderlich** auf **Ein** fest. Wenn diese Option aktiviert ist, müssen Benutzer möglicherweise weitere Anwendungen installieren. Weitere Informationen finden Sie unter [Nutzungsbedingungen pro Gerät](#per-device-terms-of-use).
 1. Wenn die Zustimmungen zu Nutzungsbedingungen nach einem Zeitplan ablaufen sollen, legen Sie **Ablauf für Einwilligungen** auf **Ein** fest. Wenn diese Option aktiviert ist, werden zwei zusätzliche Zeitplaneinstellungen angezeigt.
 
-   ![Einstellungen von „Ablauf für Einwilligungen“ zum Festlegen des Startdatums, der Häufigkeit und Dauer](./media/terms-of-use/expire-consents.png)
+    ![Einstellungen von „Ablauf für Einwilligungen“ zum Festlegen des Startdatums, der Häufigkeit und Dauer](./media/terms-of-use/expire-consents.png)
 
 1. Verwenden Sie die Einstellungen **Ablauf startet am** und **Häufigkeit**, um den Zeitplan für den Ablauf der Nutzungsbedingungen anzugeben. In der folgenden Tabelle wird das Ergebnis für ein paar Beispieleinstellungen aufgezeigt:
 
@@ -115,7 +115,7 @@ Gehen Sie nach Fertigstellung Ihres Dokuments mit Nutzungsbedingungen wie folgt 
 
 1. Verwenden Sie unter **Bedingter Zugriff** die Liste **Mit Richtlinienvorlagen für bedingten Zugriff erzwingen**, um die Vorlage zum Erzwingen der Nutzungsbedingungen auszuwählen.
 
-   ![Dropdownliste für bedingten Zugriff zum Auswählen einer Richtlinienvorlage](./media/terms-of-use/conditional-access-templates.png)
+    ![Dropdownliste für bedingten Zugriff zum Auswählen einer Richtlinienvorlage](./media/terms-of-use/conditional-access-templates.png)
 
    | Vorlage | BESCHREIBUNG |
    | --- | --- |
@@ -131,7 +131,7 @@ Gehen Sie nach Fertigstellung Ihres Dokuments mit Nutzungsbedingungen wie folgt 
 
 1. Klicken Sie auf **Erstellen**.
 
-   Wenn Sie eine benutzerdefinierte Richtlinienvorlage für bedingten Zugriff ausgewählt haben, wird ein neuer Bildschirm angezeigt, auf dem Sie die benutzerdefinierte Richtlinie für bedingten Zugriff erstellen können.
+    Wenn Sie eine benutzerdefinierte Richtlinienvorlage für bedingten Zugriff ausgewählt haben, wird ein neuer Bildschirm angezeigt, auf dem Sie die benutzerdefinierte Richtlinie für bedingten Zugriff erstellen können.
 
    ![Bedingter Zugriff, Bereich „Neu“, der angezeigt wird, wenn Sie die benutzerdefinierte Richtlinienvorlage für bedingten Zugriff ausgewählt haben](./media/terms-of-use/custom-policy.png)
 
@@ -145,15 +145,15 @@ Auf dem Blatt für die Nutzungsbedingungen wird angezeigt, wie viele Benutzer di
 
 1. Melden Sie sich unter [https://aka.ms/catou](https://aka.ms/catou) bei Azure an, und navigieren Sie zu **Nutzungsbedingungen**.
 
-   ![Blatt für Nutzungsbedingungen mit der Anzahl der Benutzer, die zugestimmt und abgelehnt haben](./media/terms-of-use/view-tou.png)
+    ![Blatt für Nutzungsbedingungen mit der Anzahl der Benutzer, die zugestimmt und abgelehnt haben](./media/terms-of-use/view-tou.png)
 
 1. Klicken Sie neben dem Namen der Nutzungsbedingungen auf die Zahl unter **Akzeptiert** oder **Abgelehnt**, um den aktuellen Status für Benutzer anzuzeigen.
 
-   ![Bereich „Zustimmungen zu Nutzungsbedingungen“ mit einer Auflistung der Benutzer, die zugestimmt haben](./media/terms-of-use/accepted-tou.png)
+    ![Bereich „Zustimmungen zu Nutzungsbedingungen“ mit einer Auflistung der Benutzer, die zugestimmt haben](./media/terms-of-use/accepted-tou.png)
 
 1. Um den Verlauf für einen einzelnen Benutzer anzuzeigen, klicken Sie auf die Auslassungspunkte ( **...** ) und dann auf **Verlauf anzeigen**.
 
-   ![Kontextmenü „Verlauf anzeigen“ für einen Benutzer](./media/terms-of-use/view-history-menu.png)
+    ![Kontextmenü „Verlauf anzeigen“ für einen Benutzer](./media/terms-of-use/view-history-menu.png)
 
    Im Bereich „Verlauf anzeigen“ wird der Verlauf aller Zustimmungen, Ablehnungen und Ablauftermine angezeigt.
 
@@ -169,11 +169,11 @@ Gehen Sie wie folgt vor, um mit der Verwendung von Azure AD-Überwachungsprotoko
 1. Wählen Sie die gewünschten Nutzungsbedingungen aus.
 1. Klicken Sie auf **Überwachungsprotokolle anzeigen**.
 
-   ![Blatt für Nutzungsbedingungen, auf dem die Option „Überwachungsprotokolle anzeigen“ hervorgehoben ist](./media/terms-of-use/audit-tou.png)
+    ![Blatt für Nutzungsbedingungen, auf dem die Option „Überwachungsprotokolle anzeigen“ hervorgehoben ist](./media/terms-of-use/audit-tou.png)
 
 1. Auf dem Bildschirm mit den Azure AD-Überwachungsprotokollen können Sie die Informationen mithilfe der bereitgestellten Listen nach bestimmten Überwachungsprotokollinformationen filtern.
 
-   Sie können auch auf **Herunterladen** klicken, um die Informationen zur in einer CSV-Datei herunterzuladen und lokal zu verwenden.
+    Sie können auch auf **Herunterladen** klicken, um die Informationen zur in einer CSV-Datei herunterzuladen und lokal zu verwenden.
 
    ![Bildschirm der Azure AD-Überwachungsprotokolle mit Angaben zu Datum, Zielrichtlinie, „Initiiert von (Akteur)“ und Aktivität](./media/terms-of-use/audit-logs-tou.png)
 
@@ -204,11 +204,11 @@ Benutzer können die Nutzungsbedingungen, die sie akzeptiert haben, wie folgt le
 1. Melden Sie sich bei [https://myapps.microsoft.com](https://myapps.microsoft.com) an.
 1. Klicken Sie in der rechten oberen Ecke auf Ihren Namen, und wählen Sie **Profil** aus.
 
-   ![MyApps-Website mit dem geöffneten Bereich des Benutzers](./media/terms-of-use/tou14.png)
+    ![MyApps-Website mit dem geöffneten Bereich des Benutzers](./media/terms-of-use/tou14.png)
 
 1. Klicken Sie in Ihrem Profil auf **Nutzungsbedingungen lesen**.
 
-   ![Profilseite für einen Benutzer mit dem Link „Nutzungsbedingungen lesen“](./media/terms-of-use/tou13a.png)
+    ![Profilseite für einen Benutzer mit dem Link „Nutzungsbedingungen lesen“](./media/terms-of-use/tou13a.png)
 
 1. Hier können Sie sich die akzeptierten Nutzungsbedingungen ansehen.
 
@@ -220,11 +220,11 @@ Sie können einige Details der Nutzungsbedingungen bearbeiten, aber kein vorhand
 1. Wählen Sie die Nutzungsbedingungen aus, die Sie bearbeiten möchten.
 1. Klicken Sie auf **Bedingungen bearbeiten**.
 1. Sie können im Bereich „Nutzungsbedingungen bearbeiten“ Folgendes ändern:
-     - **Name:** der interne Name der Nutzungsbedingungen, der nicht für Endbenutzer freigegeben wird
-     - **Anzeigename:** der Name, den Endbenutzer beim Anzeigen der Nutzungsbedingungen sehen
-     - **Benutzer müssen die Nutzungsbedingungen erweitern:** Durch Festlegen dieser Option auf **Ein** erzwingen Sie, dass der Endbenutzer das Dokument mit den Nutzungsbedingungen erweitert muss, bevor er es akzeptieren kann.
-     - (Vorschau:) Sie können ein vorhandenes Dokument mit **Nutzungsbedingungen aktualisieren**.
-     - Sie können vorhandenen Nutzungsbedingungen eine Sprache hinzufügen.
+    - **Name:** der interne Name der Nutzungsbedingungen, der nicht für Endbenutzer freigegeben wird
+    - **Anzeigename:** der Name, den Endbenutzer beim Anzeigen der Nutzungsbedingungen sehen
+    - **Benutzer müssen die Nutzungsbedingungen erweitern:** Durch Festlegen dieser Option auf **Ein** erzwingen Sie, dass der Endbenutzer das Dokument mit den Nutzungsbedingungen erweitert muss, bevor er es akzeptieren kann.
+    - (Vorschau:) Sie können ein vorhandenes Dokument mit **Nutzungsbedingungen aktualisieren**.
+    - Sie können vorhandenen Nutzungsbedingungen eine Sprache hinzufügen.
 
    Wenn Sie andere Einstellungen ändern möchten, z. B. das PDF-Dokument, die Optionen „Zustimmung der Benutzer auf jedem Gerät erforderlich“, „Ablauf für Einwilligungen“ und „Zeitraum bis erneute Zustimmung erforderlich ist (Tage)“ oder die Richtlinie für bedingten Zugriff, müssen Sie neue Nutzungsbedingungen erstellen.
 
@@ -238,8 +238,8 @@ Sie können einige Details der Nutzungsbedingungen bearbeiten, aber kein vorhand
 2.  Wählen Sie die Nutzungsbedingungen aus, die Sie bearbeiten möchten.
 3.  Klicken Sie auf **Bedingungen bearbeiten**.
 4.  Klicken Sie bei der Sprache, für die Sie die Version aktualisieren möchten, in der Spalte „Aktion“ auf **Aktualisieren**.
- 
-     ![Bereich „Nutzungsbedingungen bearbeiten“ mit Optionen für den Namen und zum Erweitern der Nutzungsbedingungen](./media/terms-of-use/edit-terms-use.png)
+
+    ![Bereich „Nutzungsbedingungen bearbeiten“ mit Optionen für den Namen und zum Erweitern der Nutzungsbedingungen](./media/terms-of-use/edit-terms-use.png)
 
 5.  Laden Sie im rechten Bereich die PDF-Datei für die neue Version hoch.
 6.  Dort ist auch die Umschaltoption **Erneute Annahme erforderlich** verfügbar, mit der Sie erzwingen können, dass Benutzer diese neue Version bei der nächsten Anmeldung akzeptieren müssen. Wenn Sie die erneute Annahme durch Ihre Benutzer erzwingen, müssen diese beim nächsten Versuch, auf die in der Richtlinie für den bedingten Zugriff definierte Ressource zuzugreifen, die neue Version akzeptieren. Wenn die erneute Annahme durch die Benutzer nicht erzwingen, gilt die vorherige Einwilligung weiter. Die neue Version wird nur neuen Benutzern angezeigt, die noch nicht zugestimmt haben, oder Benutzern, deren Zustimmung abläuft.
@@ -279,7 +279,7 @@ Im Folgenden wird das Verfahren zum Hinzufügen einer Sprache der Nutzungsbeding
 1. Klicken Sie unten auf der Seite auf **Sprache hinzufügen**.
 1. Laden Sie in den Bereich „Sprache der Nutzungsbedingungen hinzufügen“ Ihre lokalisierte PDF-Datei hoch, und wählen Sie die Sprache aus.
 
-   ![Ausgewählte Nutzungsbedingungen und hervorgehobene Registerkarte „Sprachen“ im Detailbereich](./media/terms-of-use/select-language.png)
+    ![Ausgewählte Nutzungsbedingungen und hervorgehobene Registerkarte „Sprachen“ im Detailbereich](./media/terms-of-use/select-language.png)
 
 1. Klicken Sie auf **Sprache hinzufügen**.
 1. Klicken Sie unten auf der Seite auf **Speichern**.
@@ -340,7 +340,7 @@ Veraltete Nutzungsbedingungen können wie folgt gelöscht werden:
 1. Klicken Sie auf **Bedingungen löschen**.
 1. Klicken Sie in der Bestätigungsmeldung auf **Ja**.
 
-   ![Meldung, in der Sie aufgefordert werden, das Löschen der Nutzungsbedingungen zu bestätigen](./media/terms-of-use/delete-tou.png)
+    ![Meldung, in der Sie aufgefordert werden, das Löschen der Nutzungsbedingungen zu bestätigen](./media/terms-of-use/delete-tou.png)
 
    Ihre Nutzungsbedingungen werden nicht mehr angezeigt.
 

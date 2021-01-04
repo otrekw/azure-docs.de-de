@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dfbd5e6f190e0600c31aa17e9b1a75f08e213df4
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: fddb3b171e5a26273cb2e0045f11e3a4dbb48c5f
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95973574"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97655100"
 ---
 # <a name="approve-or-deny-access-requests-in-azure-ad-entitlement-management"></a>Genehmigen oder Ablehnen von Zugriffsanforderungen in der Azure AD-Berechtigungsverwaltung
 
@@ -57,11 +57,11 @@ Wenn Sie nicht über die E-Mail verfügen, können Sie die Zugriffsanforderungen
 
 1. Klicken Sie auf **Anforderungsdetails**.
 
-     ![Portal „Mein Zugriff“ –Zugriffsanforderung – Auf „Anforderungsdetails“ klicken](./media/entitlement-management-request-approve/requestor-information-request-details.png)
+    ![Portal „Mein Zugriff“ –Zugriffsanforderung – Auf „Anforderungsdetails“ klicken](./media/entitlement-management-request-approve/requestor-information-request-details.png)
 
 1. Die vom Anforderer bereitgestellten Informationen befinden sich am unteren Rand des Panels.
 
-     ![Screenshot mit den Details für die Anforderung](./media/entitlement-management-request-approve/requestor-information-requestor-answers.png)
+    ![Screenshot mit den Details für die Anforderung](./media/entitlement-management-request-approve/requestor-information-requestor-answers.png)
 
 1. Basierend auf den Informationen, die der Anforderer bereitgestellt hat, können Sie die Anforderung genehmigen oder ablehnen. Anleitungen hierzu finden Sie in den Schritten unter „Genehmigen oder Ablehnen einer Anforderung“.
 

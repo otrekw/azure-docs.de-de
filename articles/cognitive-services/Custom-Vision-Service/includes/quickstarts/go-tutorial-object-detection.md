@@ -3,12 +3,12 @@ author: areddish
 ms.author: areddish
 ms.service: cognitive-services
 ms.date: 09/15/2020
-ms.openlocfilehash: 1f07cda0afa7213ca9c803754950c86a3f246469
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: bae0887ca540dd553cc80849d9e134516089d016
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96021354"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97582588"
 ---
 Dieser Leitfaden enthält Anweisungen und Beispielcode für die ersten Schritte mit der Custom Vision-Clientbibliothek für Go und unterstützt Sie beim Erstellen eines Objekterkennungsmodells. Sie erstellen ein Projekt, fügen Tags hinzu, trainieren das Projekt und verwenden die Vorhersageendpunkt-URL des Projekts, um es programmgesteuert zu testen. Verwenden Sie dieses Beispiel als Vorlage für die Erstellung Ihrer eigenen Bilderkennungsanwendung.
 
@@ -274,6 +274,8 @@ go run sample.go
 ```
 
 Die Ausgabe der Anwendung sollte in der Konsole angezeigt werden. Daraufhin können Sie sich vergewissern, dass das Testbild (unter **samples/vision/images/Test**) ordnungsgemäß gekennzeichnet und die Erkennungsregion korrekt ist.
+
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
 [!INCLUDE [clean-od-project](../../includes/clean-od-project.md)]
 

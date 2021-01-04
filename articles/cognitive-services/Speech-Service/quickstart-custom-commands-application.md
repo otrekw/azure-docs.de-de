@@ -10,12 +10,13 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
-ms.openlocfilehash: d89f9330947d1c5d0146b8531f265d86d0fd5160
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.custom: references_regions
+ms.openlocfilehash: c5f8be87e7ee95e1deff12cce09204b5fe8a0bb7
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92329150"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97694187"
 ---
 # <a name="create-a-voice-assistant-using-custom-commands"></a>Erstellen eines Sprachassistenten mithilfe von benutzerdefinierten Befehlen
 
@@ -27,12 +28,12 @@ Derzeit unterstützen benutzerdefinierte Befehle Speech-Abonnements, die in folg
 * USA, Westen 2
 * East US
 * USA (Ost 2)
+* USA, Westen-Mitte
 * Nordeuropa
 * Europa, Westen
-* USA, Westen-Mitte
-* Indien, Mitte
 * Asien, Osten
 * Asien, Südosten
+* Indien, Mitte
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -87,7 +88,7 @@ Derzeit unterstützen benutzerdefinierte Befehle Speech-Abonnements, die in folg
 Sie sollten jetzt eine Übersicht über Ihre neue Anwendung für benutzerdefinierte Befehle sehen.
 
 ## <a name="try-out-some-voice-commands"></a>Ausprobieren einiger Sprachbefehle
-1. Klicken Sie oben im rechten Bereich auf **Trainieren** .
+1. Klicken Sie oben im rechten Bereich auf **Trainieren**.
 1. Sobald das Training abgeschlossen ist, wählen Sie **Testen** aus. Anschließend probieren Sie die folgenden Äußerungen aus:
     - Turn on the tv (Schalte den Fernseher ein)
     - Set the temperature to 80 degrees (Stelle die Temperatur auf 27 Grad ein)
@@ -113,15 +114,15 @@ Bevor Sie außerhalb von Speech Studio auf diese Anwendung zugreifen können, m�
 
 ### <a name="publish-the-application"></a>Veröffentlichen der Anwendung
 
-Wählen Sie oben im rechten Bereich **Veröffentlichen** aus. Sobald die Veröffentlichung abgeschlossen ist, wird ein neues Fenster angezeigt. Notieren Sie daraus die Werte **Anwendungs-ID** und **Speech-Ressourcenschlüssel** . Sie benötigen diese beiden Werte, um von außerhalb von Speech Studio auf die Anwendung zugreifen zu können.
+Wählen Sie oben im rechten Bereich **Veröffentlichen** aus. Sobald die Veröffentlichung abgeschlossen ist, wird ein neues Fenster angezeigt. Notieren Sie daraus die Werte **Anwendungs-ID** und **Speech-Ressourcenschlüssel**. Sie benötigen diese beiden Werte, um von außerhalb von Speech Studio auf die Anwendung zugreifen zu können.
 
 Alternativ können Sie diese Werte auch erhalten, indem Sie den Abschnitt **Einstellungen** > **Allgemein** auswählen.
 
 ### <a name="access-application-from-client"></a>Zugreifen auf die Anwendung über den Client
 
 Im Rahmen dieses Artikels werden wir den Windows-Sprachassistent-Client verwenden, den Sie als Teil der Voraussetzungen heruntergeladen haben. Entzippen Sie den Ordner.
-1. Starten Sie **VoiceAssistantClient.exe** .
-1. Erstellen Sie ein neues Veröffentlichungsprofil, und geben Sie einen Wert für **Verbindungsprofil** ein. Geben Sie im Bereich **Allgemeine Einstellungen** die Werte **Abonnementschlüssel** (dieser Wert ist identisch mit dem Wert für den **Speech-Ressourcenschlüssel** , den Sie beim Veröffentlichen der Anwendung gespeichert haben), **Abonnementschlüsselregion** und **App-ID für benutzerdefinierte Befehle** ein.
+1. Starten Sie **VoiceAssistantClient.exe**.
+1. Erstellen Sie ein neues Veröffentlichungsprofil, und geben Sie einen Wert für **Verbindungsprofil** ein. Geben Sie im Bereich **Allgemeine Einstellungen** die Werte **Abonnementschlüssel** (dieser Wert ist identisch mit dem Wert für den **Speech-Ressourcenschlüssel**, den Sie beim Veröffentlichen der Anwendung gespeichert haben), **Abonnementschlüsselregion** und **App-ID für benutzerdefinierte Befehle** ein.
     > [!div class="mx-imgBorder"]
     > ![Screenshot: Hervorhebung des Abschnitts „Allgemeine Einstellungen“ zum Erstellen eines WVAC-Profils](media/custom-commands/create-profile.png)
 1. Wählen Sie **Profil speichern und anwenden** aus.

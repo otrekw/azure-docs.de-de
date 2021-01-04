@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/08/2018
 ms.author: cynthn
 ms.custom: legacy, devx-track-azurecli
-ms.openlocfilehash: 376d9d76633060f504454f85841b9c15bafc6685
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eacd1426b856de11a18b0da6c509d281b3bca94c
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87503037"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97655168"
 ---
 # <a name="how-to-create-a-managed-image-of-a-virtual-machine-or-vhd"></a>Erstellen eines verwalteten Images eines virtuellen Computers oder einer VHD
 
@@ -60,8 +60,8 @@ Verwenden Sie Azure CLI, um die VM als generalisiert zu kennzeichnen und das Ima
    
     ```azurecli
     az vm deallocate \
-      --resource-group myResourceGroup \
-      --name myVM
+        --resource-group myResourceGroup \
+        --name myVM
     ```
     
     Warten Sie, bis die Zuordnung des virtuellen Computers vollständig aufgehoben wurde. Dies kann einige Minuten in Anspruch nehmen.  Der virtuelle Computer wird während der Aufhebung der Zuordnung heruntergefahren.
@@ -70,8 +70,8 @@ Verwenden Sie Azure CLI, um die VM als generalisiert zu kennzeichnen und das Ima
    
     ```azurecli
     az vm generalize \
-      --resource-group myResourceGroup \
-      --name myVM
+        --resource-group myResourceGroup \
+        --name myVM
     ```
 
     Eine VM, die generalisiert wurde, kann nicht mehr neu gestartet werden.
@@ -80,8 +80,8 @@ Verwenden Sie Azure CLI, um die VM als generalisiert zu kennzeichnen und das Ima
    
     ```azurecli
     az image create \
-      --resource-group myResourceGroup \
-      --name myImage --source myVM
+        --resource-group myResourceGroup \
+        --name myImage --source myVM
     ```
    
    > [!NOTE]

@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 20bfbaeea48711a680877e4d5d8f618e84eb12d7
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: cce4c6aff986c2e8c3d879d962714e13f6b2e7ae
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462577"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97694682"
 ---
 # <a name="query-parquet-files-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Abfragen von Parquet-Dateien mithilfe eines serverlosen SQL-Pools in Azure Synapse Analytics
 
@@ -38,9 +38,9 @@ from openrowset(
 Stellen Sie sicher, dass Sie auf diese Datei zugreifen können. Wenn Ihre Datei mit einem SAS-Schlüssel oder einer benutzerdefinierten Azure-Identität geschützt ist, müssen Sie [Anmeldeinformationen auf Serverebene für die SQL-Anmeldung](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#server-scoped-credential) einrichten.
 
 > [!IMPORTANT]
-> Stellen Sie sicher, dass Sie eine UTF-8-Datenbanksortierung (z. B. `Latin1_General_100_CI_AS_SC_UTF8`) verwenden, da Zeichenfolgenwerte in Parquet-Dateien mit UTF-8 codiert sind.
+> Stellen Sie sicher, dass Sie eine UTF-8-Datenbanksortierung (z. B. `Latin1_General_100_BIN2_UTF8`) verwenden, da Zeichenfolgenwerte in Parquet-Dateien mit UTF-8 codiert sind.
 > Ein Konflikt zwischen der Textcodierung in der Parquet-Datei und der Sortierung kann zu unerwarteten Konvertierungsfehlern führen.
-> Die Standardsortierung der aktuellen Datenbank kann mit der folgenden T-SQL-Anweisung problemlos geändert werden: `alter database current collate Latin1_General_100_CI_AI_SC_UTF8`.
+> Die Standardsortierung der aktuellen Datenbank kann mit der folgenden T-SQL-Anweisung problemlos geändert werden: `alter database current collate Latin1_General_100_BIN2_UTF8`.
 
 ### <a name="data-source-usage"></a>Datenquellennutzung
 
@@ -74,10 +74,10 @@ from openrowset(
 ```
 
 > [!IMPORTANT]
-> Stellen Sie sicher, dass Sie explizit eine UTF-8-Sortierung (z. B. `Latin1_General_100_CI_AS_SC_UTF8`) für alle Zeichenfolgenspalten in der `WITH`-Klausel angeben, oder legen Sie eine UTF-8-Sortierung auf Datenbankebene fest.
+> Stellen Sie sicher, dass Sie explizit eine UTF-8-Sortierung (z. B. `Latin1_General_100_BIN2_UTF8`) für alle Zeichenfolgenspalten in der `WITH`-Klausel angeben, oder legen Sie eine UTF-8-Sortierung auf Datenbankebene fest.
 > Ein Konflikt zwischen der Textcodierung in der Datei und der Sortierung der Zeichenfolgenspalte kann zu unerwarteten Konvertierungsfehlern führen.
-> Die Standardsortierung der aktuellen Datenbank kann mithilfe der folgenden T-SQL-Anweisung problemlos geändert werden: `alter database current collate Latin1_General_100_CI_AI_SC_UTF8`.
-> Sie können die Sortierung der Spaltentypen problemlos mit der folgenden Definition festlegen: `geo_id varchar(6) collate Latin1_General_100_CI_AI_SC_UTF8`.
+> Die Standardsortierung der aktuellen Datenbank kann mithilfe der folgenden T-SQL-Anweisung problemlos geändert werden: `alter database current collate Latin1_General_100_BIN2_UTF8`.
+> Sie können die Sortierung der Spaltentypen problemlos mit der folgenden Definition festlegen: `geo_id varchar(6) collate Latin1_General_100_BIN2_UTF8`.
 
 In den folgenden Abschnitten erfahren Sie, wie Sie verschiedene Typen von Parquet-Dateien abfragen.
 

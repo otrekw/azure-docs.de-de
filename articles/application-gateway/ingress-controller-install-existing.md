@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 2f585dd80219afac7c67eebabd72cb41dce0b673
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 2d64766c754c0ea104ae83fde799a514e9da6d68
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96018697"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97693731"
 ---
 # <a name="install-an-application-gateway-ingress-controller-agic-using-an-existing-application-gateway"></a>Installieren eines Application Gateway-Eingangscontrollers (Application Gateway Ingress Controller, AGIC) mithilfe eines vorhandenen Application Gateways
 
@@ -323,7 +323,7 @@ Erweitern Sie die AGIC-Berechtigungen wie folgt:
     ```
 
 ### <a name="enable-for-an-existing-agic-installation"></a>Aktivierung für eine vorhandene AGIC-Installation
-Nehmen wir an, dass wir bereits einen funktionierenden AKS, ein Application Gateway und einen konfigurierten AGIC in unserem Cluster verwenden. Wir verfügen über eingehenden Datenverkehr für `prod.contosor.com` und bedienen ihn erfolgreich aus AKS. Wir möchten unserem vorhandenen Application Gateway `staging.contoso.com` hinzufügen, müssen dies jedoch auf einer [VM](https://azure.microsoft.com/services/virtual-machines/) hosten. Wir verwenden die vorhandene Application Gateway-Instanz erneut und konfigurieren manuell einen Listener und Back-End-Pools für `staging.contoso.com`. Eine manuelle Anpassung der Application Gateway-Konfiguration (über das [Portal](https://portal.azure.com), [ARM-APIs](/rest/api/resources/) oder [Terraform](https://www.terraform.io/)) würde jedoch im Widerspruch zur Annahme des AGIC über den vollständigen Besitz stehen. Kurz nachdem wir Änderungen vorgenommen haben, überschreibt oder löscht AGIC diese.
+Nehmen wir an, dass wir bereits einen funktionierenden AKS, ein Application Gateway und einen konfigurierten AGIC in unserem Cluster verwenden. Wir verfügen über eingehenden Datenverkehr für `prod.contoso.com` und bedienen ihn erfolgreich aus AKS. Wir möchten unserem vorhandenen Application Gateway `staging.contoso.com` hinzufügen, müssen dies jedoch auf einer [VM](https://azure.microsoft.com/services/virtual-machines/) hosten. Wir verwenden die vorhandene Application Gateway-Instanz erneut und konfigurieren manuell einen Listener und Back-End-Pools für `staging.contoso.com`. Eine manuelle Anpassung der Application Gateway-Konfiguration (über das [Portal](https://portal.azure.com), [ARM-APIs](/rest/api/resources/) oder [Terraform](https://www.terraform.io/)) würde jedoch im Widerspruch zur Annahme des AGIC über den vollständigen Besitz stehen. Kurz nachdem wir Änderungen vorgenommen haben, überschreibt oder löscht AGIC diese.
 
 Wir können AGIC verbieten, Änderungen an einer Teilmenge der Konfiguration vorzunehmen.
 

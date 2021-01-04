@@ -8,12 +8,12 @@ ms.author: chalton
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 4889ecd02be1b8f59c30550b7813ed5e5935f20f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0953d750ee8b59e9889512bb64cfd276a0bbeb53
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88924693"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654863"
 ---
 #   <a name="text-translation-cognitive-skill"></a>Die Qualifikation „Textübersetzung“ der kognitiven Suche
 
@@ -38,7 +38,7 @@ Die maximale Größe eines Datensatzes beträgt 50.000 Zeichen (gemessen durch 
 
 Bei den Parametern wird zwischen Groß- und Kleinschreibung unterschieden.
 
-| Eingaben                | BESCHREIBUNG |
+| Eingaben | BESCHREIBUNG |
 |---------------------|-------------|
 | defaultToLanguageCode | (Erforderlich) Der Sprachcode, in den Dokumente übersetzt werden für Dokumente, in denen die Zielprache nicht explizit angegeben ist. <br/> Siehe die [vollständige Liste der unterstützten Sprachen](../cognitive-services/translator/language-support.md). |
 | defaultFromLanguageCode | (Optional) Der Sprachcode, aus dem Dokumente übersetzt werden für Dokumente, in denen die Ausgangssprache nicht explizit angegeben ist.  Wenn defaultFromLanguageCode nicht angegeben wird, wird die von der Textübersetzungs-API bereitgestellte automatische Spracherkennung verwendet, um die Ausgangssprache zu bestimmen. <br/> Siehe die [vollständige Liste der unterstützten Sprachen](../cognitive-services/translator/language-support.md). |

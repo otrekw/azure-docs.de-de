@@ -13,12 +13,12 @@ ms.author: aahi
 keywords: Textmining, Stimmungsanalyse, Textanalyse
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp, cog-serv-seo-aug-2020
 zone_pivot_groups: programming-languages-text-analytics
-ms.openlocfilehash: a1eba2f599a0365f43707ff7c9035d91e8637481
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: f93b7954861bf3351d2930132e1391e1f21b2a6f
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505854"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97655117"
 ---
 # <a name="quickstart-use-the-text-analytics-client-library-and-rest-api"></a>Schnellstart: Verwenden der Textanalyse-Clientbibliothek und der REST-API
 
@@ -39,8 +39,6 @@ Dieser Artikel hilft Ihnen beim Einstieg in die Verwendung der Textanalyse-Clien
 >    * Befolgen Sie nur die Anweisungen für die von Ihnen verwendete Version.
 > * Im Code dieses Artikels werden der Einfachheit halber synchrone Methoden und ein ungeschützter Anmeldeinformationsspeicher verwendet. Für Produktionsszenarien wird aus Leistungs- und Skalierbarkeitsgründen die Verwendung der asynchronen Batchmethoden empfohlen. Informationen finden Sie in der Referenzdokumentation weiter unten.
 > * Wenn Sie die Textanalyse für Gesundheit oder asynchrone Vorgänge verwenden möchten, sehen Sie sich auf GitHub die Beispiele für [C#](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics), [Python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/) oder [Java](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/textanalytics/azure-ai-textanalytics) an.
-
-[!INCLUDE [v3 region availability](../includes/v3-region-availability.md)]
 
 [!INCLUDE [C# quickstart](../includes/quickstarts/csharp-sdk.md)]
 

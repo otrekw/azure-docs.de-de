@@ -3,12 +3,12 @@ title: Ressourcen ohne Beschränkung auf 800 Instanzen
 description: Aufstellung der Azure-Ressourcentypen, die mehr als 800 Instanzen in einer Ressourcengruppe aufweisen können.
 ms.topic: conceptual
 ms.date: 10/28/2020
-ms.openlocfilehash: cec7ea87bbe81d3bfcca37f3133ac650e66f849f
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: c2d5797a7ec354f41d510ec6e884968bf9dbdbcd
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913499"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672363"
 ---
 # <a name="resources-not-limited-to-800-instances-per-resource-group"></a>Ressourcen ohne Beschränkung auf 800 Instanzen pro Ressourcengruppe
 
@@ -81,7 +81,7 @@ Für einige Ressourcentypen müssen Sie sich an den Support wenden, damit die Be
 
 ## <a name="microsoftdevtestlab"></a>Microsoft.DevTestLab
 
-* labs/virtualMachines: Standardmäßig auf 800 Instanzen beschränkt. Dieser Grenzwert kann bei Kontaktaufnahme mit dem Support erhöht werden.
+* labs/virtualMachines: Standardmäßig auf 800 Instanzen beschränkt. 
 * schedules
 
 ## <a name="microsoftenterpriseknowledgegraph"></a>Microsoft.EnterpriseKnowledgeGraph

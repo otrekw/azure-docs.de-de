@@ -11,18 +11,18 @@ ms.topic: reference
 ms.date: 12/01/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 3f8ba563345f5aa4f35bcf07546abdad05c3b6ed
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: db99fbdea38dd30401a8aeedb7ebc23c71c5236c
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97509783"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97655185"
 ---
 # <a name="define-a-saml-identity-provider-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definieren eines technischen Profils für einen SAML-Identitätsanbieter in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory B2C (Azure AD B2C) bietet Unterstützung für den SAML 2.0-Identitätsanbieter. In diesem Artikel werden die Einzelheiten eines technischen Profils für die Interaktion mit einem Anspruchsanbieter thematisiert, der dieses standardisierte Protokoll unterstützt. Mit einem technischen SAML-Profil können Sie einen Verbund mit einem SAML-basierten Identitätsanbieter wie [AD FS](identity-provider-adfs2016-custom.md) oder [Salesforce](identity-provider-salesforce.md) erstellen. Über diesen Verbund können sich Ihre Benutzer mit ihren vorhandenen Identitäten aus sozialen Netzwerken oder Ihrem Unternehmen anmelden.
+Azure Active Directory B2C (Azure AD B2C) bietet Unterstützung für den SAML 2.0-Identitätsanbieter. In diesem Artikel werden die Einzelheiten eines technischen Profils für die Interaktion mit einem Anspruchsanbieter thematisiert, der dieses standardisierte Protokoll unterstützt. Mit einem technischen SAML-Profil können Sie einen Verbund mit einem SAML-basierten Identitätsanbieter wie [AD FS](identity-provider-adfs2016-custom.md) oder [Salesforce](identity-provider-salesforce-saml.md) erstellen. Über diesen Verbund können sich Ihre Benutzer mit ihren vorhandenen Identitäten aus sozialen Netzwerken oder Ihrem Unternehmen anmelden.
 
 ## <a name="metadata-exchange"></a>Metadatenaustausch
 
@@ -110,8 +110,8 @@ SAML-Assertion:
 ```xml
 <saml:Subject>
   <saml:NameID SPNameQualifier="http://your-idp.com/unique-identifier" Format="urn:oasis:names:tc:SAML:2.0:nameid-format:transient">david@contoso.com</saml:NameID>
-    <SubjectConfirmation Method="urn:oasis:names:tc:SAML:2.0:cm:bearer">
-      <SubjectConfirmationData InResponseTo="_cd37c3f2-6875-4308-a9db-ce2cf187f4d1" NotOnOrAfter="2020-02-15T16:23:23.137Z" Recipient="https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/B2C_1A_TrustFrameworkBase/samlp/sso/assertionconsumer" />
+  <SubjectConfirmation Method="urn:oasis:names:tc:SAML:2.0:cm:bearer">
+    <SubjectConfirmationData InResponseTo="_cd37c3f2-6875-4308-a9db-ce2cf187f4d1" NotOnOrAfter="2020-02-15T16:23:23.137Z" Recipient="https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/B2C_1A_TrustFrameworkBase/samlp/sso/assertionconsumer" />
     </SubjectConfirmation>
   </saml:SubjectConfirmation>
 </saml:Subject>
@@ -217,4 +217,4 @@ Beispiel:
 Beispiele für die Arbeit mit SAML-Identitätsanbietern in Azure AD B2C finden Sie in den folgenden Artikeln:
 
 - [Add ADFS as a SAML identity provider using custom policies (Hinzufügen von ADFS als SAML-Identitätsanbieter mithilfe benutzerdefinierter Richtlinien)](identity-provider-adfs.md)
-- [Sign in by using Salesforce accounts via SAML (Anmelden mit Salesforce-Konten per SAML)](identity-provider-salesforce.md)
+- [Sign in by using Salesforce accounts via SAML (Anmelden mit Salesforce-Konten per SAML)](identity-provider-salesforce-saml.md)

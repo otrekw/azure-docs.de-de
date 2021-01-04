@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 12/15/2020
+ms.date: 12/17/2020
 ms.author: aahi
-ms.openlocfilehash: e5d25e71e4700f3f327319e4f444d2060c7ab5f6
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 91e10c25d2c3bef9c1ca20e3e5737a326d45997c
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97561884"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654777"
 ---
 # <a name="example-how-to-extract-key-phrases-using-text-analytics"></a>Beispiel: Erkennen von Schlüsselbegriffen mithilfe der Textanalyse
 
@@ -30,8 +30,6 @@ Weitere Informationen finden Sie unter [Unterstützte Sprachen](../language-supp
 > * Sie können dieses Feature auch [asynchron](text-analytics-how-to-call-api.md) mithilfe des Endpunkts vom Typ `/analyze` verwenden.
 
 ## <a name="preparation"></a>Vorbereitung
-
-[!INCLUDE [v3 region availability](../includes/v3-region-availability.md)]
 
 Die Schlüsselbegriffserkennung funktioniert am besten, wenn Sie ihr größere Texte zur Verarbeitung übergeben. Dies steht im Gegensatz zur Standpunktanalyse, die mit kleineren Texten besser funktioniert. Um für beide Vorgänge optimale Ergebnisse zu erzielen, empfiehlt es sich ggf., die Eingaben entsprechend umzustrukturieren.
 
