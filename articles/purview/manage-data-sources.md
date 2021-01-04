@@ -1,18 +1,18 @@
 ---
 title: Verwalten von Datenquellen in Azure Purview (Vorschau)
 description: Erfahren Sie, wie Sie neue Datenquellen registrieren, Sammlungen von Datenquellen verwalten und Quellen in Azure Purview (Vorschau) anzeigen können.
-author: mamccrea
-ms.author: mamccrea
+author: viseshag
+ms.author: viseshag
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/25/2020
-ms.openlocfilehash: 382c79cf77cb22d3cad1af41d6daa662fb00df4c
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 8714c3c3794186d6c21a0513bd7700764c000b6d
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96781163"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97694788"
 ---
 # <a name="manage-data-sources-in-azure-purview-preview"></a>Verwalten von Datenquellen in Azure Purview (Vorschau)
 
@@ -28,7 +28,6 @@ In diesem Artikel erfahren Sie, wie Sie neue Datenquellen registrieren, Sammlung
 * Azure Synapse Analytics (ehemals SQL DW)
 * Azure Cosmos DB
 * Power BI
-* Teradata (Preview)
 
 ## <a name="register-a-new-source"></a>Registrieren einer neuen Quelle
 

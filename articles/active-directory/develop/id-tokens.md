@@ -14,12 +14,12 @@ ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms:custom: fasttrack-edit
-ms.openlocfilehash: 784f1cc7b7e063166dc1f24851ab217cef8d831a
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: eec24ca19af8c41a842b1db3db4b9e16f748f029
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97355646"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97653247"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Microsoft Identity Platform – ID-Token
 
@@ -122,7 +122,7 @@ Um sicherzustellen, dass die Tokengröße die Grenzwerte für HTTP-Header nicht 
        }
      }
   ...
- }
+}
 ```
 
 ## <a name="validating-an-id_token"></a>Überprüfen eines ID-Tokens

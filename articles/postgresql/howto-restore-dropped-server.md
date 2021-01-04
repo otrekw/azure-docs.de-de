@@ -6,12 +6,12 @@ ms.author: bahusse
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 11/03/2020
-ms.openlocfilehash: 81764294cc29ad74d5a77f2055f10498d69b59e5
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 591f01004cfba247112f702625ab05ddc0aaede3
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93342813"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97652924"
 ---
 # <a name="restore-a-dropped-azure-database-for-postgresql-server"></a>Wiederherstellen eines gelöschten Azure Database for PostgreSQL-Servers
 
@@ -26,11 +26,11 @@ Zum Wiederherstellen eines gelöschten Azure Database for PostgreSQL-Servers ben
 
 1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com/#blade/Microsoft_Azure_ActivityLog/ActivityLogBlade). Wählen Sie den Dienst **Azure Monitor** und anschließend **Aktivitätsprotokoll** aus.
 
-2. Klicken Sie im Aktivitätsprotokoll wie hier gezeigt auf **Filter hinzufügen** , und legen Sie die Filter wie folgt fest:
+2. Klicken Sie im Aktivitätsprotokoll wie hier gezeigt auf **Filter hinzufügen**, und legen Sie die Filter wie folgt fest:
 
     - **Abonnement** = Ihr Abonnement, das den gelöschten Server hostet
-    - **Ressourcentyp** : Azure Database for PostgreSQL-Server (Microsoft.DBforPostgreSQL/servers)
-    - **Vorgang** : PostgreSQL-Server löschen (Microsoft.DBforPostgreSQL/servers/delete)
+    - **Ressourcentyp**: Azure Database for PostgreSQL-Server (Microsoft.DBforPostgreSQL/servers)
+    - **Vorgang**: PostgreSQL-Server löschen (Microsoft.DBforPostgreSQL/servers/delete)
  
     ![Nach Löschvorgang für PostgreSQL-Server gefiltertes Aktivitätsprotokoll](./media/howto-restore-dropped-server/activity-log-azure.png)
 
@@ -39,23 +39,26 @@ Zum Wiederherstellen eines gelöschten Azure Database for PostgreSQL-Servers ben
 
  4. Navigieren Sie zur [PostgreSQL-Seite der REST-API für die Servererstellung](/rest/api/PostgreSQL/servers/create), und wählen Sie die grün hervorgehobene Option **Jetzt testen** aus. Melden Sie sich mit Ihrem Azure-Konto an.
 
- 5. Geben Sie Werte für die Eigenschaften **resourceGroupName** , **serverName** (Name des gelöschten Servers) und **subscriptionId** an (basierend auf dem JSON-Wert für das Attribut „resourceId“, das Sie zuvor in Schritt 3 erfasst haben). Die Eigenschaft „api-version“ wurde vorab aufgefüllt und kann unverändert bleiben, wie in der folgenden Abbildung zu sehen:
+ 5. Geben Sie Werte für die Eigenschaften **resourceGroupName**, **serverName** (Name des gelöschten Servers) und **subscriptionId** an (basierend auf dem JSON-Wert für das Attribut „resourceId“, das Sie zuvor in Schritt 3 erfasst haben). Die Eigenschaft „api-version“ wurde vorab aufgefüllt und kann unverändert bleiben, wie in der folgenden Abbildung zu sehen:
 
     ![Erstellen eines Servers mit der REST-API](./media/howto-restore-dropped-server/create-server-from-rest-api-azure.png)
   
  6. Scrollen Sie im Abschnitt „Anforderungstext“ nach unten, und fügen Sie das Folgende für „Speicherort des gelöschten Servers“, „submissionTimestamp“ und „resourceId“ ein. Geben Sie für „restorePointinTime“ den Wert „submissionTimestamp“ minus **15 Minuten** an, um sicherzustellen, dass der Befehl nicht fehlerhaft ist.
+    
     ```json
-        {
-          "location": "Dropped Server Location",  
-          "properties": 
-              {
-                  "restorePointInTime": "submissionTimestamp - 15 minutes",
-                  "createMode": "PointInTimeRestore",
-                  "sourceServerId": "resourceId"
-            }
-        }
+    {
+      "location": "Dropped Server Location",  
+      "properties": 
+      {
+        "restorePointInTime": "submissionTimestamp - 15 minutes",
+        "createMode": "PointInTimeRestore",
+        "sourceServerId": "resourceId"
+      }
+    }
     ```
+
     Ein Beispiel: Wenn die aktuelle Zeit „2020-11-02T23:59:59.0000000Z“ lautet, empfiehlt es sich, einen Zeitpunkt zu wählen, der mindestens 15 Minuten vor dem Wiederherstellungszeitpunkt (2020-11-02T23:44:59.0000000Z) liegt.
+
     > [!Important]
     > Nach dem Löschen des Servers beginnt ein Zeitlimit von fünf Tagen. Nach fünf Tagen tritt erwartungsgemäß ein Fehler auf, da die Sicherungsdatei nicht gefunden wird.
     
@@ -63,8 +66,8 @@ Zum Wiederherstellen eines gelöschten Azure Database for PostgreSQL-Servers ben
 
     Die Servererstellung kann abhängig von der Datenbankgröße und den Computeressourcen, die auf dem ursprünglichen Server bereitgestellt werden, eine Weile dauern. Der Wiederherstellungsstatus kann über das Aktivitätsprotokoll überwacht werden durch filtern nach 
    - **Abonnement** = Ihr Abonnement
-   - **Ressourcentyp** : Azure Database for PostgreSQL-Server (Microsoft.DBforPostgreSQL/servers) 
-   - **Vorgang** : „Update PostgreSQL Server Create“ (PostgreSQL-Servererstellung aktualisieren)
+   - **Ressourcentyp**: Azure Database for PostgreSQL-Server (Microsoft.DBforPostgreSQL/servers) 
+   - **Vorgang**: „Update PostgreSQL Server Create“ (PostgreSQL-Servererstellung aktualisieren)
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Wenn Sie versuchen, einen Server innerhalb von fünf Tagen wiederherzustellen, und nach dem genauen Ausführen der zuvor beschriebenen Schritte immer noch eine Fehlermeldung angezeigt wird, öffnen Sie einen Supportfall, um Unterstützung zu erhalten. Wenn Sie versuchen, einen getrennten Server nach fünf Tagen wiederherzustellen, wird ein Fehler erwartet, da die Sicherungsdatei nicht gefunden werden kann. Eröffnen Sie in diesem Szenario kein Supportticket. Das Supportteam kann keine Unterstützung bieten, wenn die Sicherung aus dem System gelöscht worden ist. 

@@ -4,12 +4,12 @@ description: In dieser Schnellstartanleitung wird beschrieben, wie Sie Event Gri
 ms.topic: article
 ms.date: 08/23/2018
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 6058fceb873e2b26da2d30dadba456e2a625f3f2
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 2d13dd0ec5e50086e674b215d93917d6173d5af9
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93074215"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97694393"
 ---
 # <a name="quickstart-send-events-from-private-container-registry-to-event-grid"></a>Schnellstart: Senden von Ereignissen aus der privaten Containerregistrierung an Event Grid
 
@@ -23,7 +23,7 @@ Nachdem Sie die Schritte in diesem Artikel ausgeführt haben, werden Ereignisse,
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-- Die Azure CLI-Befehle in diesem Artikel sind für die Ausführung in einer **Bash** -Shell formatiert. Wenn Sie eine andere Shell wie PowerShell oder die Eingabeaufforderung verwenden, müssen Sie möglicherweise Zeilenfortsetzungszeichen oder Variablenzuweisungszeilen entsprechend anpassen. In diesem Artikel werden Variablen verwendet, damit die Befehle später nur geringfügig angepasst werden müssen.
+- Die Azure CLI-Befehle in diesem Artikel sind für die Ausführung in einer **Bash**-Shell formatiert. Wenn Sie eine andere Shell wie PowerShell oder die Eingabeaufforderung verwenden, müssen Sie möglicherweise Zeilenfortsetzungszeichen oder Variablenzuweisungszeilen entsprechend anpassen. In diesem Artikel werden Variablen verwendet, damit die Befehle später nur geringfügig angepasst werden müssen.
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
@@ -78,7 +78,7 @@ Legen Sie zum Bereitstellen der Beispiel-App `SITE_NAME` auf einen eindeutigen N
 ```azurecli-interactive
 SITE_NAME=<your-site-name>
 
-az group deployment create \
+az deployment group create \
     --resource-group $RESOURCE_GROUP_NAME \
     --template-uri "https://raw.githubusercontent.com/Azure-Samples/azure-event-grid-viewer/master/azuredeploy.json" \
     --parameters siteName=$SITE_NAME hostingPlanName=$SITE_NAME-plan
@@ -96,7 +96,7 @@ Die Beispiel-App sollte nun gerendert werden, und es sollten keine Ereignismeldu
 
 ## <a name="subscribe-to-registry-events"></a>Abonnieren von Registrierungsereignissen
 
-In Event Grid abonnieren Sie ein *Thema* , um festzulegen, welche Ereignisse Sie nachverfolgen möchten und wohin diese gesendet werden sollen. Durch den folgenden Befehl vom Typ [az eventgrid event-subscription create][az-eventgrid-event-subscription-create] wird die erstellte Containerregistrierung abonniert und die Web-App-URL als Endpunkt festgelegt, an die Ereignisse gesendet werden sollen. Die Umgebungsvariablen, die Sie in den vorherigen Abschnitten angegeben haben, werden hier wiederverwendet, sodass keine Änderungen erforderlich sind.
+In Event Grid abonnieren Sie ein *Thema*, um festzulegen, welche Ereignisse Sie nachverfolgen möchten und wohin diese gesendet werden sollen. Durch den folgenden Befehl vom Typ [az eventgrid event-subscription create][az-eventgrid-event-subscription-create] wird die erstellte Containerregistrierung abonniert und die Web-App-URL als Endpunkt festgelegt, an die Ereignisse gesendet werden sollen. Die Umgebungsvariablen, die Sie in den vorherigen Abschnitten angegeben haben, werden hier wiederverwendet, sodass keine Änderungen erforderlich sind.
 
 ```azurecli-interactive
 ACR_REGISTRY_ID=$(az acr show --name $ACR_NAME --query id --output tsv)
@@ -206,7 +206,7 @@ Glückwunsch! Wenn die Ereignisse `ImagePushed` und `ImageDeleted` angezeigt wer
 
 Wenn Sie die mit dieser Schnellstartanleitung erstellten Ressourcen nicht mehr benötigen, können Sie diese mit dem unten aufgeführten Azure CLI-Befehl löschen. Wenn Sie eine Ressourcengruppe löschen, werden alle darin enthaltenen Ressourcen dauerhaft gelöscht.
 
-**WARNUNG** : Dieser Vorgang kann nicht rückgängig gemacht werden. Stellen Sie sicher, dass Sie die Ressourcen in der Gruppe nicht mehr benötigen, bevor Sie den Befehl ausführen.
+**WARNUNG**: Dieser Vorgang kann nicht rückgängig gemacht werden. Stellen Sie sicher, dass Sie die Ressourcen in der Gruppe nicht mehr benötigen, bevor Sie den Befehl ausführen.
 
 ```azurecli-interactive
 az group delete --name $RESOURCE_GROUP_NAME

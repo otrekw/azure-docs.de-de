@@ -13,12 +13,12 @@ ms.reviewer: ''
 ms.date: 11/30/2020
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 057599cc92e27e423d25d528d5d84b978ff4a911
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4c695466fbd50435a85c63842ceb50ce80765760
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95919033"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97630291"
 ---
 # <a name="resilient-end-user-experience"></a>Resiliente Endbenutzerumgebung
 
@@ -58,7 +58,7 @@ Schließen Sie als Teil des Registrierungsprozesses des externen Identitätsanbi
 
  2. Konfigurieren Sie eine Profilrichtlinie, um Benutzern zu ermöglichen, die [andere Identität mit Ihrem Konto zu verknüpfen](https://github.com/Azure-Samples/active-directory-b2c-advanced-policies/tree/master/account-linking), nachdem sie sich angemeldet haben.
 
- 3. Benachrichtigen Sie die Benutzer und erlauben Sie ihnen, während eines Ausfalls [zu einem alternativen IDP zu wechseln](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-ui-customization#configure-dynamic-custom-page-content-uri).
+ 3. Benachrichtigen Sie die Benutzer und erlauben Sie ihnen, während eines Ausfalls [zu einem alternativen IDP zu wechseln](https://docs.microsoft.com/azure/active-directory-b2c/customize-ui-with-html#configure-dynamic-custom-page-content-uri).
 
 ## <a name="availability-of-multi-factor-authentication"></a>Verfügbarkeit von Multi-Factor Authentication
 
@@ -102,5 +102,5 @@ Testen Sie regelmäßig die Verfügbarkeit und die Leistung des CDNs bezüglich 
   - [Resiliente Schnittstellen mit externen Prozessen](resilient-external-processes.md)
   - [Resilienz durch bewährte Entwicklermethoden](resilience-b2c-developer-best-practices.md)
   - [Resilienz durch Überwachung und Analyse](resilience-with-monitoring-alerting.md)
-- [Schaffen von Resilienz für die Authentifizierungsinfrastruktur](resilience-in-infrastructure.md)
-- [Steigern der Resilienz für Authentifizierung und Autorisierung in Ihren Anwendungen](resilience-app-development-overview.md)
+- [Erzielen von Resilienz in der Authentifizierungsinfrastruktur](resilience-in-infrastructure.md)
+- [Mehr Resilienz bei Authentifizierung und Autorisierung in Ihren Anwendungen](resilience-app-development-overview.md)

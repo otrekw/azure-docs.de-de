@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/12/2018
 ms.author: cawa
-ms.openlocfilehash: 7c250f1351d83d213c5c7af5b00d7a648c5d8bc6
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 56654f09d3a92eec5b86d8c8e4cd76fec0639394
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499661"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97653043"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>Versionshinweise zu Microsoft Azure Storage-Explorer
 
@@ -567,7 +567,7 @@ Das Hochladen, Herunterladen und regionsübergreifende Kopieren von Datenträger
   * Erstellen neuer Ordner
   * Hochladen, Herunterladen, Umbenennen und Löschen von Dateien und Ordnern
   * Verwalten von Eigenschaften und Berechtigungen von Dateien und Ordnern (rechte Seite).
-    
+
     Andere typische Blobfunktionen wie vorläufiges Löschen und Momentaufnahmen sind aktuell noch nicht verfügbar. Das Verwalten von Berechtigungen ist ebenfalls nur möglich, wenn Sie angemeldet sind. Darüber hinaus verwendet Storage-Explorer bei der Arbeit in einem ADLS Gen2-Speicherkonto AzCopy für sämtliche Uploads und Downloads. Dabei nutzt er standardmäßig die Namen und Schlüsselanmeldeinformationen für alle Vorgänge (sofern verfügbar).
 * Nach deutlichem Benutzerfeedback kann „Lease abbrechen“ wieder zum Unterbrechen von Leases in mehreren Blobs gleichzeitig verwendet werden.
 

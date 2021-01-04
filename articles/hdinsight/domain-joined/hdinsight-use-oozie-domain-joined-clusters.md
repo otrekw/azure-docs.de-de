@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seodec18,seoapr2020
 ms.date: 05/14/2020
-ms.openlocfilehash: 36c04480c46cea904b072c659c5c2642a28e1f27
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 71432dc2dd09381d39ca646d45c7f2bdd96012c6
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83647575"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97653434"
 ---
 # <a name="run-apache-oozie-in-azure-hdinsight-clusters-with-enterprise-security-package"></a>Ausführen von Apache Oozie in Azure HDInsight-Clustern mit Enterprise-Sicherheitspaket
 
@@ -231,8 +231,8 @@ Definitionen von Oozie-Workflows werden in der Apache-Prozessdefinitionssprache 
    ```
 
    - Verwenden der `adl://home`-URI für die `nameNode`-Eigenschaft, wenn Sie Azure Data Lake Storage Gen1 als primären Clusterspeicher verwenden. Wenn Sie Azure Blob Storage verwenden, ändern Sie dies in `wasb://home`. Wenn Sie Azure Data Lake Storage Gen2 verwenden, ändern Sie dies in `abfs://home`.
-   - Ersetzen Sie `domainuser` durch Ihren Benutzernamen für die Domäne.  
-   - Ersetzen Sie `ClusterShortName` durch den Kurznamen für den Cluster. Wenn der Clustername „https:// *[Beispiellink]* sechadoopcontoso.azurehdisnight.net“ lautet, stellt `clustershortname` die ersten sechs Zeichen des Clusters dar: **sechad**.  
+   - Ersetzen Sie `domainuser` durch Ihren Benutzernamen für die Domäne.
+   - Ersetzen Sie `ClusterShortName` durch den Kurznamen für den Cluster. Wenn der Clustername „https:// *[Beispiellink]* sechadoopcontoso.azurehdisnight.net“ lautet, stellt `clustershortname` die ersten sechs Zeichen des Clusters dar: **sechad**.
    - Ersetzen Sie `jdbcurlvalue` durch die JDBC-URL aus der Hive-Konfiguration. Ein Beispiel hierfür ist „jdbc:hive2://headnodehost:10001/;transportMode=http“.
    - Um die Datei zu speichern, drücken Sie STRG + X, geben Sie `Y` ein, und drücken Sie auf die **EINGABETASTE**.
 
@@ -313,17 +313,17 @@ CoordAction ID: -
 
 Actions
 ------------------------------------------------------------------------------------------------
-ID                      Status  Ext ID          ExtStatus   ErrCode
+ID                        Status    Ext ID            ExtStatus                 ErrCode
 ------------------------------------------------------------------------------------------------
-0000015-180626011240801-oozie-oozi-W@:start:    OK  -           OK      -
+0000015-180626011240801-oozie-oozi-W@:start:    OK    -                         OK             -
 ------------------------------------------------------------------------------------------------
-0000015-180626011240801-oozie-oozi-W@mr-test    OK  job_1529975666160_0051  SUCCEEDED   -
+0000015-180626011240801-oozie-oozi-W@mr-test    OK    job_1529975666160_0051    SUCCEEDED      -
 ------------------------------------------------------------------------------------------------
-0000015-180626011240801-oozie-oozi-W@myHive2    OK  job_1529975666160_0053  SUCCEEDED   -
+0000015-180626011240801-oozie-oozi-W@myHive2    OK    job_1529975666160_0053    SUCCEEDED      -
 ------------------------------------------------------------------------------------------------
-0000015-180626011240801-oozie-oozi-W@myHive OK  job_1529975666160_0055  SUCCEEDED   -
+0000015-180626011240801-oozie-oozi-W@myHive    OK     job_1529975666160_0055    SUCCEEDED      -
 ------------------------------------------------------------------------------------------------
-0000015-180626011240801-oozie-oozi-W@end    OK  -           OK      -
+0000015-180626011240801-oozie-oozi-W@end       OK     -                         OK             -
 -----------------------------------------------------------------------------------------------
 ```
 

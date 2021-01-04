@@ -13,12 +13,12 @@ ms.date: 10/27/2020
 ms.author: hirsin
 ms.reviewer: mmacy, hirsin
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: 909c8910a86734b0a34787f75c233975cd3503c3
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: ceb5acbee2e572b1859a5577b58dd586fc924b3b
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96518242"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97653281"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Microsoft Identity Platform-Zugriffstoken
 
@@ -140,8 +140,8 @@ Um sicherzustellen, dass die Tokengröße die Grenzwerte für HTTP-Header nicht 
        }
      }
   ...
- }
- ```
+}
+```
 
 Sie können die im Ordner [App-Erstellungsskripts](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/5-WebApp-AuthZ/5-2-Groups/AppCreationScripts) verfügbare Datei `BulkCreateGroups.ps1` verwenden, um Überschreitungsszenarien zu testen.
 
@@ -186,7 +186,7 @@ Nicht alle Apps sollten Token überprüfen. Apps sollten nur in bestimmten Szena
 
 Wenn kein oben genanntes Szenario zutrifft, kann Ihre Anwendung nicht von der Überprüfung des Tokens profitieren und stellt möglicherweise ein Sicherheits- und Zuverlässigkeitsrisiko dar, wenn Entscheidungen anhand der Gültigkeit des Tokens getroffen werden.  Öffentliche Clients wie native Apps oder SPAs profitieren nicht von der Tokenüberprüfung. Die App kommuniziert direkt mit dem IDP, sodass die Gültigkeit der Token durch den SSL-Schutz sichergestellt ist.
 
- APIs und Web-Apps dürfen nur Token mit dem Anspruch `aud` überprüfen, der mit ihrer Anwendung übereinstimmt. Für andere Ressourcen gibt es möglicherweise benutzerdefinierte Tokenüberprüfungsregeln. Token für Microsoft Graph werden beispielsweise aufgrund ihres proprietären Formats nicht anhand dieser Regeln überprüft. Das Überprüfen und Akzeptieren von Token, die für eine andere Ressource bestimmt sind, ist ein Beispiel für das sogenannte [verwirrte Stellvertreterproblem](https://cwe.mitre.org/data/definitions/441.html) (confused deputy problem).
+APIs und Web-Apps dürfen nur Token mit dem Anspruch `aud` überprüfen, der mit ihrer Anwendung übereinstimmt. Für andere Ressourcen gibt es möglicherweise benutzerdefinierte Tokenüberprüfungsregeln. Token für Microsoft Graph werden beispielsweise aufgrund ihres proprietären Formats nicht anhand dieser Regeln überprüft. Das Überprüfen und Akzeptieren von Token, die für eine andere Ressource bestimmt sind, ist ein Beispiel für das sogenannte [verwirrte Stellvertreterproblem](https://cwe.mitre.org/data/definitions/441.html) (confused deputy problem).
 
 Wenn Ihre Anwendung ein ID-Token (id_token) oder ein Zugriffstoken (access_token) entsprechend dem oben Gesagten überprüfen muss, sollte Ihre App zunächst Signatur und Aussteller des Tokens anhand der Werte im OpenID Discovery-Dokument überprüfen. Die mandantenunabhängige Version des Dokuments finden Sie beispielsweise unter [https://login.microsoftonline.com/common/.well-known/openid-configuration](https://login.microsoftonline.com/common/.well-known/openid-configuration).
 
