@@ -1,7 +1,7 @@
 ---
 title: Sammeln von Daten zu Ihren Produktionsmodellen
 titleSuffix: Azure Machine Learning
-description: Erfahren Sie, wie Daten aus einem bereitgestellten Azure Machine Learning-Modell gesammelt werden.
+description: Erfahren Sie, wie Sie Daten aus einem Azure Machine Learning Modell sammeln, das in einem Azure Kubernetes Service-Cluster (AKS) bereitgestellt wird.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,16 +11,14 @@ author: lostmygithubaccount
 ms.date: 07/14/2020
 ms.topic: conceptual
 ms.custom: how-to, data4ml
-ms.openlocfilehash: 9a9ef4dbe7f6b97675d395baf441530e5bd79320
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: c6b9dc95e1d50481ac5353460910032ca1711ab1
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93357642"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000452"
 ---
 # <a name="collect-data-from-models-in-production"></a>Sammeln von Daten von Modellen in der Produktion
-
-
 
 In diesem Artikel wird beschrieben, wie Sie Daten aus einem Azure Machine Learning Modell sammeln, das in einem Azure Kubernetes Service-Cluster (AKS) bereitgestellt wird. Die gesammelten Daten werden anschließend in Azure Blob Storage gespeichert.
 
@@ -163,7 +161,7 @@ Sie können ein beliebiges Tool Ihrer Wahl verwenden, um die im Blobspeicher erf
 
     [![Power BI-Navigator](./media/how-to-enable-data-collection/pbiNavigator.png)](././media/how-to-enable-data-collection/pbiNavigator.png#lightbox)
 
-1. Klicken Sie im Abfrage-Editor unter der Spalte **Name** , und fügen Sie Ihr Speicherkonto hinzu.
+1. Klicken Sie im Abfrage-Editor unter der Spalte **Name**, und fügen Sie Ihr Speicherkonto hinzu.
 
 1. Geben Sie Ihren Modellpfad in den Filter ein. Erweitern Sie einfach den Filterpfad, wenn Sie sich nur die Dateien für ein bestimmtes Jahr oder einen bestimmten Monat ansehen möchten. Verwenden Sie beispielsweise den folgenden Filterpfad, wenn Sie nur die Daten vom März anzeigen möchten:
 
@@ -181,7 +179,7 @@ Sie können ein beliebiges Tool Ihrer Wahl verwenden, um die im Blobspeicher erf
 
 1. Wählen Sie **Schließen und übernehmen** aus.
 
-1. Wenn Sie Eingaben und Vorhersagen hinzugefügt haben, werden Ihre Tabellen automatisch anhand der **RequestId** -Werte sortiert.
+1. Wenn Sie Eingaben und Vorhersagen hinzugefügt haben, werden Ihre Tabellen automatisch anhand der **RequestId**-Werte sortiert.
 
 1. Beginnen Sie mit der Erstellung Ihrer benutzerdefinierten Berichte in Ihren Modelldaten.
 

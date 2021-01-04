@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 09/19/2018
 ms.author: terrylan
 Customer intent: As an IT Pro or decision maker I am trying to learn about identity management capabilities in Azure
-ms.openlocfilehash: 48d0483247f610a1e8c7491e13ea86883bf8f341
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 2c7d51da361816841ff556c1da696a48d2ce6a06
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410367"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843688"
 ---
 # <a name="azure-identity-management-security-overview"></a>Übersicht über die Sicherheit der Azure-Identitätsverwaltung
 
@@ -79,13 +79,13 @@ Weitere Informationen:
 
 ## <a name="multi-factor-authentication"></a>Multi-Factor Authentication
 
-Azure Multi-Factor Authentication ist eine Authentifizierungsmethode, für die die Verwendung von mehr als einem Verifizierungsverfahren erforderlich ist und die eine wichtige zweite Sicherheitsebene für Benutzeranmeldungen und Transaktionen darstellt. Multi-Factor Authentication trägt zum Schutz des Zugriffs auf Daten und Anwendungen bei und bietet gleichzeitig ein einfaches Anmeldeverfahren für Benutzer. Sie bietet eine leistungsfähige Authentifizierung mit verschiedenen Überprüfungsoptionen – Telefonanruf, SMS oder per Benachrichtigung bzw. Überprüfungscode in einer mobilen App sowie OAuth-Token von Drittanbietern.
+Azure AD Multi-Factor Authentication ist eine Authentifizierungsmethode, für die die Verwendung von mehr als einem Verifizierungsverfahren erforderlich ist und die eine wichtige zweite Sicherheitsebene für Benutzeranmeldungen und Transaktionen darstellt. Multi-Factor Authentication trägt zum Schutz des Zugriffs auf Daten und Anwendungen bei und bietet gleichzeitig ein einfaches Anmeldeverfahren für Benutzer. Sie bietet eine leistungsfähige Authentifizierung mit verschiedenen Überprüfungsoptionen – Telefonanruf, SMS oder per Benachrichtigung bzw. Überprüfungscode in einer mobilen App sowie OAuth-Token von Drittanbietern.
 
 Weitere Informationen:
 
 * [Multi-Factor Authentication](https://azure.microsoft.com/documentation/services/multi-factor-authentication/)
-* [Was ist Azure Multi-Factor Authentication?](../../active-directory/authentication/concept-mfa-howitworks.md)
-* [Funktionsweise von Azure Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md)
+* [Was ist Azure AD Multi-Factor Authentication?](../../active-directory/authentication/concept-mfa-howitworks.md)
+* [Funktionsweise von Azure AD Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md)
 
 ## <a name="azure-rbac"></a>Azure RBAC
 
@@ -111,7 +111,7 @@ Im Azure-Portal fallen Berichte in die folgenden Kategorien:
 * **Integrierte Anwendungsberichte:** Bieten Einblicke, wie Cloudanwendungen in Ihrer Organisation verwendet werden. Azure AD ermöglicht die Integration in Tausende von Cloudanwendungen.
 * **Fehlerberichte:** Enthalten Hinweise auf Fehler, die bei der Bereitstellung von Konten für externe Anwendungen auftreten können.
 * **Benutzerspezifische Berichte:** Enthalten Geräte- und Anmeldeaktivitätsdaten für einen bestimmten Benutzer.
-* **Aktivitätsprotokolle** : Enthalten eine Aufzeichnung aller überwachten Ereignisse in den letzten 24 Stunden, 7 Tagen oder 30 Tagen sowie geänderte Gruppenaktivitäten und Kennwortzurücksetzungs- und Registrierungsaktivitäten.
+* **Aktivitätsprotokolle**: Enthalten eine Aufzeichnung aller überwachten Ereignisse in den letzten 24 Stunden, 7 Tagen oder 30 Tagen sowie geänderte Gruppenaktivitäten und Kennwortzurücksetzungs- und Registrierungsaktivitäten.
 
 Weitere Informationen:
 

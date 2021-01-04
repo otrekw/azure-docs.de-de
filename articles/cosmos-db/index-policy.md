@@ -5,14 +5,14 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 11/03/2020
+ms.date: 12/07/2020
 ms.author: tisande
-ms.openlocfilehash: 9e62d6c475a4aeb366d034af1c80fc728f1a9211
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 2d99e0e2b65f7131e564e6ab64e454d2947c58a6
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93335805"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96903019"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Indizierungsrichtlinien in Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -201,6 +201,7 @@ Bei der Erstellung zusammengesetzter Indizes für Abfragen mit Filtern für mehr
 - Wenn Sie einen zusammengesetzten Index erstellen, um Abfragen mit mehreren Filtern zu optimieren, hat die Reihenfolge (`ORDER`) des zusammengesetzten Index keine Auswirkungen auf die Ergebnisse. Diese Eigenschaft ist optional.
 - Wenn Sie keinen zusammengesetzten Index für eine Abfrage mit Filtern für mehrere Eigenschaften definieren, wird die Abfrage trotzdem erfolgreich ausgeführt. Mit einem zusammengesetzten Index beansprucht die Abfrage allerdings weniger RUs.
 - Abfragen mit Aggregaten (z. B. COUNT oder SUM) und Filtern profitieren ebenfalls von zusammengesetzten Indizes.
+- Filterausdrücke können mehrere zusammengesetzte Indizes verwenden.
 
 Betrachten Sie die folgenden Beispiele, in denen ein zusammengesetzter Index für die Eigenschaften „name“, „age“, und „timestamp“ definiert wird:
 
@@ -213,6 +214,7 @@ Betrachten Sie die folgenden Beispiele, in denen ein zusammengesetzter Index fü
 | ```(name ASC, age ASC)```     | ```SELECT * FROM c WHERE c.name != "John" AND c.age > 18``` | ```No```             |
 | ```(name ASC, age ASC, timestamp ASC)``` | ```SELECT * FROM c WHERE c.name = "John" AND c.age = 18 AND c.timestamp > 123049923``` | ```Yes```            |
 | ```(name ASC, age ASC, timestamp ASC)``` | ```SELECT * FROM c WHERE c.name = "John" AND c.age < 18 AND c.timestamp = 123049923``` | ```No```            |
+| ```(name ASC, age ASC) and (name ASC, timestamp ASC)``` | ```SELECT * FROM c WHERE c.name = "John" AND c.age < 18 AND c.timestamp > 123049923``` | ```Yes```            |
 
 ### <a name="queries-with-a-filter-as-well-as-an-order-by-clause"></a>Abfragen mit Filter und ORDER BY-Klausel
 

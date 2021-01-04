@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - fasttrack-edit
 - iot
-ms.openlocfilehash: efc4d07e9e3a64a36f2ecf3fa0000379bef380f9
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: f8d37cf8f23de1d0535c7a9ff4a95ac217eddf74
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92538577"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452398"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>Überwachen von Gerät-zu-Cloud-Nachrichten in Azure IoT mit der verteilten Ablaufverfolgung (Vorschau)
 
@@ -55,7 +55,7 @@ In diesem Abschnitt konfigurieren Sie eine IoT Hub-Instanz so, dass die Attribut
 
 1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) zu Ihrer IoT Hub-Instanz.
 
-1. Scrollen Sie im linken Bereich für den IoT Hub nach unten zum Abschnitt **Überwachung** , und klicken Sie auf **Diagnoseeinstellungen**.
+1. Scrollen Sie im linken Bereich für den IoT Hub nach unten zum Abschnitt **Überwachung**, und klicken Sie auf **Diagnoseeinstellungen**.
 
 1. Klicken Sie auf **Diagnoseeinstellung hinzufügen**.
 
@@ -69,7 +69,7 @@ In diesem Abschnitt konfigurieren Sie eine IoT Hub-Instanz so, dass die Attribut
 
 1. Wählen Sie im Abschnitt **Protokoll** die Vorgänge aus, für die Protokollierungsinformationen erstellt werden sollen.
 
-    Stellen Sie sicher, dass Sie **DistributedTracing** , auswählen, und legen Sie unter **Aufbewahrung (Tage)** fest, für wie viele Tage die Protokollierung beibehalten werden soll. Die Dauer der Protokollbeibehaltung wirkt sich auf die Speicherkosten aus.
+    Stellen Sie sicher, dass Sie **DistributedTracing**, auswählen, und legen Sie unter **Aufbewahrung (Tage)** fest, für wie viele Tage die Protokollierung beibehalten werden soll. Die Dauer der Protokollbeibehaltung wirkt sich auf die Speicherkosten aus.
 
     ![Screenshot: Kategorie „DistributedTracing“ in den IoT-Diagnoseeinstellungen](./media/iot-hub-distributed-tracing/diag-logs.png)
 
@@ -162,7 +162,7 @@ Diese Anweisungen betreffen die Erstellung des Beispiels unter Windows. Informat
 
 ### <a name="compile-and-run"></a>Kompilieren und Ausführen
 
-1. Navigieren Sie im zuvor erstellten CMake-Verzeichnis (`azure-iot-sdk-c/cmake`) zum Projektverzeichnis *iothub_ll_telemetry_sample* , und kompilieren Sie das Beispiel:
+1. Navigieren Sie im zuvor erstellten CMake-Verzeichnis (`azure-iot-sdk-c/cmake`) zum Projektverzeichnis *iothub_ll_telemetry_sample*, und kompilieren Sie das Beispiel:
 
     ```cmd
     cd iothub_client/samples/iothub_ll_telemetry_sample
@@ -181,7 +181,7 @@ Diese Anweisungen betreffen die Erstellung des Beispiels unter Windows. Informat
 
 ### <a name="workaround-for-third-party-clients"></a>Problemumgehung für Clients von Drittanbietern
 
-Es ist **nicht einfach** , eine Vorschau des Features zur verteilten Ablaufverfolgung anzuzeigen, ohne das C SDK zu verwenden. Daher wird dieser Ansatz nicht empfohlen.
+Es ist **nicht einfach**, eine Vorschau des Features zur verteilten Ablaufverfolgung anzuzeigen, ohne das C SDK zu verwenden. Daher wird dieser Ansatz nicht empfohlen.
 
 Zunächst müssen Sie alle IoT-Hub-Protokollgrundtypen in Ihren Nachrichten implementieren, indem Sie der Anleitung für Entwickler [Erstellen und Lesen von IoT Hub-Nachrichten](iot-hub-devguide-messages-construct.md) folgen. Bearbeiten Sie dann die Protokolleigenschaften in den MQTT/AMQP-Nachrichten, um `tracestate` als **Systemeigenschaft** hinzuzufügen. Sie haben folgende Möglichkeiten:
 
@@ -295,7 +295,7 @@ In dieser Abbildung ist die verteilte Ablaufverfolgung mit drei Routingendpunkte
 
 ### <a name="context"></a>Kontext
 
-Viele IoT-Lösungen, einschließlich unserer eigenen [Referenzarchitektur](https://aka.ms/iotrefarchitecture) (nur Englisch) folgen in der Regel einer Variante der [Microservicearchitektur](/azure/architecture/microservices/). Mit zunehmender Komplexität einer IoT-Lösung nutzen Sie schließlich ein Dutzend oder mehr Microservices. Diese Microservices können von Azure oder anderen Anbietern stammen. Die genaue Ermittlung, an welcher Stelle IoT-Nachrichten gelöscht oder langsamer übertragen werden, kann sich schwierig gestalten. Angenommen, Ihre IoT-Lösung nutzt 5 unterschiedliche Azure-Dienste und umfasst 1.500 aktive Geräte. Jedes Gerät sendet 10 Gerät-zu-Cloud-Nachrichten pro Sekunde (also insgesamt 15.000 Nachrichten/Sekunde), aber bei Ihrer Web-App kommen pro Sekunde nur 10.000 Nachrichten an. Wo liegt das Problem? Wie finden Sie den Verursacher?
+Viele IoT-Lösungen, einschließlich unserer eigenen [Referenzarchitektur](/azure/architecture/reference-architectures/iot) (nur Englisch) folgen in der Regel einer Variante der [Microservicearchitektur](/azure/architecture/microservices/). Mit zunehmender Komplexität einer IoT-Lösung nutzen Sie schließlich ein Dutzend oder mehr Microservices. Diese Microservices können von Azure oder anderen Anbietern stammen. Die genaue Ermittlung, an welcher Stelle IoT-Nachrichten gelöscht oder langsamer übertragen werden, kann sich schwierig gestalten. Angenommen, Ihre IoT-Lösung nutzt 5 unterschiedliche Azure-Dienste und umfasst 1.500 aktive Geräte. Jedes Gerät sendet 10 Gerät-zu-Cloud-Nachrichten pro Sekunde (also insgesamt 15.000 Nachrichten/Sekunde), aber bei Ihrer Web-App kommen pro Sekunde nur 10.000 Nachrichten an. Wo liegt das Problem? Wie finden Sie den Verursacher?
 
 ### <a name="distributed-tracing-pattern-in-microservice-architecture"></a>Muster der verteilten Ablaufverfolgung in der Microservicearchitektur
 

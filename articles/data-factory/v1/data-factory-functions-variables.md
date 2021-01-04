@@ -2,20 +2,20 @@
 title: Data Factory – Funktionen und Systemvariablen
 description: Enthält eine Liste der Funktionen und Systemvariablen von Azure Data Factory.
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: cbc7fd22915af1c9645d915a9898679a3a7c30d0
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 9b5f91655367e866858a04b941cec4ee61dfe180
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92631511"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96495649"
 ---
 # <a name="azure-data-factory---functions-and-system-variables"></a>Azure Data Factory – Funktionen und Systemvariablen
 > [!NOTE]
@@ -61,7 +61,7 @@ Sie können Funktionen in Data Factory zusammen mit Systemvariablen für folgend
    
     $$ ist nicht erforderlich, um Eingabeabhängigkeitsausdrücke anzugeben.     
 
-Im folgenden Beispiel wird die **sqlReaderQuery** -Eigenschaft in einer JSON-Datei einem Wert zugewiesen, der von der `Text.Format`-Funktion zurückgegeben wird. Dieses Beispiel verwendet ebenfalls die Systemvariable **WindowStart** , die die Startzeit des Zeitfensters für die Aktivitätsausführung darstellt.
+Im folgenden Beispiel wird die **sqlReaderQuery**-Eigenschaft in einer JSON-Datei einem Wert zugewiesen, der von der `Text.Format`-Funktion zurückgegeben wird. Dieses Beispiel verwendet ebenfalls die Systemvariable **WindowStart**, die die Startzeit des Zeitfensters für die Aktivitätsausführung darstellt.
 
 ```json
 {
@@ -97,7 +97,7 @@ In den folgenden Tabellen werden alle Funktionen in Azure Data Factory aufgelist
 | Text |Format(X) |X: Zeichenfolgenvariable |Formatiert den Text (verwenden Sie `\\'` in Kombination mit dem Escapezeichen `'`)|
 
 > [!IMPORTANT]
-> Bei Verwenden einer Funktion in einer anderen Funktion müssen Sie für die innere Funktion nicht das Präfix **$$** verwenden. Beispiel: $$Text.Format('PartitionKey eq \\'my_pkey_filter_value\\' and RowKey ge \\'{0: yyyy-MM-dd HH:mm:ss}\\'', Time.AddHours(SliceStart, -6)). Wie Sie sehen, wird das Präfix **$$** bei diesem Beispiel nicht für die **Time.AddHours** -Funktion verwendet wird. 
+> Bei Verwenden einer Funktion in einer anderen Funktion müssen Sie für die innere Funktion nicht das Präfix **$$** verwenden. Beispiel: $$Text.Format('PartitionKey eq \\'my_pkey_filter_value\\' and RowKey ge \\'{0: yyyy-MM-dd HH:mm:ss}\\'', Time.AddHours(SliceStart, -6)). Wie Sie sehen, wird das Präfix **$$** bei diesem Beispiel nicht für die **Time.AddHours**-Funktion verwendet wird. 
 
 #### <a name="example"></a>Beispiel
 Im folgenden Beispiel werden die Eingabe- und Ausgabeparameter für die Hive-Aktivität mithilfe der `Text.Format`-Funktion und der Systemvariablen „SliceStart“ bestimmt. 

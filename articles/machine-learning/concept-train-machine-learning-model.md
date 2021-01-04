@@ -1,7 +1,7 @@
 ---
 title: Erstellen und Trainieren von Modellen
 titleSuffix: Azure Machine Learning
-description: Hier erfahren Sie, wie Sie Modelle mit Azure Machine Learning trainieren, und Sie erhalten Informationen zur Verwendung gängiger Frameworks wie Scikit-learn, TensorFlow und PyTorch. Machine Learning-Pipelines erleichtern die Planung unbeaufsichtigter Ausführungen, die Nutzung heterogener Computeumgebungen und die Wiederverwendung von Teilen Ihres Workflows. Außerdem bieten Laufzeitkonfigurationen eine differenzierte Kontrolle der Computeziele, auf denen der Trainingsprozess ausgeführt wird.
+description: Erfahren Sie, wie Sie Modelle mit Azure Machine Learning trainieren. Erkunden Sie die verschiedenen Trainingsmethoden, und wählen Sie die richtige für Ihr Projekt aus.
 services: machine-learning
 ms.service: machine-learning
 author: Blackmist
@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 8888393cdbc738525b89ace1cf6f5864b7aa3b6e
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 2448f5f778f19674aec63291acb72536c65ca6c9
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324823"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555888"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>Trainieren von Modellen mit Azure Machine Learning
 
@@ -27,13 +27,13 @@ Azure Machine Learning bietet verschiedene Methoden zum Trainieren von Modellen,
     | ----- | ----- |
     | [Laufzeitkonfiguration](#run-configuration) | Eine **typische Möglichkeit zum Trainieren von Modellen** besteht darin, ein Trainingsskript und eine Laufzeitkonfiguration zu verwenden. Die Laufzeitkonfiguration stellt die zum Konfigurieren der Trainingsumgebung, erforderlichen Informationen bereit, in der Ihr Modell trainiert wird. Sie können Ihr Trainingsskript, Ihr Computeziel und Ihre Azure ML-Umgebung in Ihrer Laufzeitkonfiguration angeben und einen Trainingsauftrag ausführen. |
     | [Automatisiertes maschinelles Lernen](#automated-machine-learning) | Mithilfe des automatisierten maschinellen Lernens können Sie **Modelle ohne umfassende Data Science- oder Programmierkenntnisse trainieren**. Für Personen mit Data Science- und Programmierungshintergrund bietet es eine Möglichkeit, Zeit und Ressourcen zu sparen, indem die Algorithmusauswahl und die Hyperparameteroptimierung automatisiert werden. Bei der Verwendung des automatisierten maschinellen Lernens müssen Sie sich nicht um die Definition einer Laufzeitkonfiguration kümmern. |
-    | [Machine Learning-Pipeline](#machine-learning-pipeline) | Pipelines sind keine andere Trainingsmethode, sondern eine **Möglichkeit, einen Workflow mit modularen, wiederverwendbaren Schritten zu definieren** , die Training als Teil des Workflows enthalten können. Machine Learning-Pipelines unterstützen die Verwendung des automatisierten maschinellen Lernens sowie der Laufzeitkonfiguration zum Trainieren von Modellen. Da Pipelines nicht speziell auf das Training ausgerichtet sind, variieren die Gründe für den Einsatz einer Pipeline stärker als die anderen Trainingsmethoden. Im Allgemeinen können Sie eine Pipeline in folgenden Situationen verwenden:<br>* Sie möchten **unbeaufsichtigte Prozesse planen** , z. B. zeitintensive Trainingsaufträge oder Datenaufbereitungen.<br>* Sie möchten **mehrere Schritte** verwenden, die über heterogene Computeressourcen und Speicherorte hinweg koordiniert sind.<br>* Sie möchten die Pipeline als **wiederverwendbare Vorlage** für bestimmte Szenarien verwenden, z. B. für erneutes Training oder Batchbewertungen.<br>* **Nachverfolgung und Versionierung von Datenquellen, Eingaben und Ausgaben** für Ihren Workflow.<br>* Ihr Workflow wird von **verschiedenen Teams implementiert, die unabhängig voneinander an bestimmten Schritten arbeiten**. Die Schritte können dann in einer Pipeline zusammengeführt werden, um den Workflow zu implementieren. |
+    | [Machine Learning-Pipeline](#machine-learning-pipeline) | Pipelines sind keine andere Trainingsmethode, sondern eine **Möglichkeit, einen Workflow mit modularen, wiederverwendbaren Schritten zu definieren**, die Training als Teil des Workflows enthalten können. Machine Learning-Pipelines unterstützen die Verwendung des automatisierten maschinellen Lernens sowie der Laufzeitkonfiguration zum Trainieren von Modellen. Da Pipelines nicht speziell auf das Training ausgerichtet sind, variieren die Gründe für den Einsatz einer Pipeline stärker als die anderen Trainingsmethoden. Im Allgemeinen können Sie eine Pipeline in folgenden Situationen verwenden:<br>* Sie möchten **unbeaufsichtigte Prozesse planen**, z. B. zeitintensive Trainingsaufträge oder Datenaufbereitungen.<br>* Sie möchten **mehrere Schritte** verwenden, die über heterogene Computeressourcen und Speicherorte hinweg koordiniert sind.<br>* Sie möchten die Pipeline als **wiederverwendbare Vorlage** für bestimmte Szenarien verwenden, z. B. für erneutes Training oder Batchbewertungen.<br>* **Nachverfolgung und Versionierung von Datenquellen, Eingaben und Ausgaben** für Ihren Workflow.<br>* Ihr Workflow wird von **verschiedenen Teams implementiert, die unabhängig voneinander an bestimmten Schritten arbeiten**. Die Schritte können dann in einer Pipeline zusammengeführt werden, um den Workflow zu implementieren. |
 
 + [Azure Machine Learning SDK für R (Vorschauversion)](#r-sdk-preview): Das SDK für R verwendet das Paket „reticulate“ zur Bindung an das Python-SDK von Azure Machine Learning. Dadurch erhalten Sie Zugriff auf die im Python-SDK implementierten Kernobjekte und -methoden aus jeder R-Umgebung.
 
-+ **Designer** : Azure Machine Learning-Designer bietet einen einfachen Einstiegspunkt in das maschinelle Lernen zum Erstellen von Proof of Concepts oder für Benutzer mit wenig Programmiererfahrung. Sie ermöglicht es Ihnen, Modelle per Drag & Drop über eine webbasierte Benutzeroberfläche zu trainieren. Sie können Python-Code als Teil des Designs verwenden oder Modelle trainieren, ohne Code zu schreiben.
++ **Designer**: Azure Machine Learning-Designer bietet einen einfachen Einstiegspunkt in das maschinelle Lernen zum Erstellen von Proof of Concepts oder für Benutzer mit wenig Programmiererfahrung. Sie ermöglicht es Ihnen, Modelle per Drag & Drop über eine webbasierte Benutzeroberfläche zu trainieren. Sie können Python-Code als Teil des Designs verwenden oder Modelle trainieren, ohne Code zu schreiben.
 
-+ **CLI** : Die Befehlszeilenschnittstelle für das maschinelle Lernen stellt Befehle für häufige Aufgaben mit Azure Machine Learning bereit und wird häufig für **Skripting- und Automatisierungsaufgaben** verwendet. Nachdem Sie z. B. ein Trainingsskript oder eine Pipeline erstellt haben, können Sie mit der Befehlszeilenschnittstelle einen Trainingsdurchlauf starten, der sich nach einem Zeitplan oder nach der Aktualisierung der für das Training verwendeten Datendateien richtet. Für Trainingsmodelle werden Befehle bereitgestellt, die Trainingsaufträge übermitteln. Sie kann Aufträge über Laufzeitkonfigurationen oder Pipelines übermitteln.
++ **CLI**: Die Befehlszeilenschnittstelle für das maschinelle Lernen stellt Befehle für häufige Aufgaben mit Azure Machine Learning bereit und wird häufig für **Skripting- und Automatisierungsaufgaben** verwendet. Nachdem Sie z. B. ein Trainingsskript oder eine Pipeline erstellt haben, können Sie mit der Befehlszeilenschnittstelle einen Trainingsdurchlauf starten, der sich nach einem Zeitplan oder nach der Aktualisierung der für das Training verwendeten Datendateien richtet. Für Trainingsmodelle werden Befehle bereitgestellt, die Trainingsaufträge übermitteln. Sie kann Aufträge über Laufzeitkonfigurationen oder Pipelines übermitteln.
 
 Jede dieser Trainingsmethoden kann verschiedene Arten von Computeressourcen für das Training verwenden. Zusammenfassend werden diese Ressourcen als [__Computeziele__](concept-azure-machine-learning-architecture.md#compute-targets) bezeichnet. Ein Computeziel kann ein lokaler Computer oder eine Cloudressource sein, wie beispielsweise Azure Machine Learning Compute, Azure HDInsight oder ein virtueller Remotecomputer.
 

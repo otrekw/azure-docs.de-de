@@ -10,12 +10,12 @@ ms.topic: troubleshooting
 ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: asteen
-ms.openlocfilehash: 1823de88597756ba3db9aee0dc29501b1ba914a4
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: d122cedbad41d6984614a0edccb2fd98269710f2
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94646235"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96618075"
 ---
 # <a name="troubleshoot-password-based-single-sign-on-in-azure-ad"></a>Behandeln von Problemen beim kennwortbasierten einmaligen Anmelden in Azure AD
 
@@ -150,6 +150,13 @@ Wenn bei Ihnen eines dieser Probleme auftritt, gehen Sie folgendermaßen vor:
 - Stellen Sie sicher, dass sich Ihre Benutzer nicht über „Meine Apps“ bei der App anzumelden versuchen, während sie sich im Modus *Inkognito*, *InPrivate* oder *Privat* befinden.
 - Versuchen Sie erneut die manuelle Erfassung. Stellen Sie sicher, dass sich die roten Marker über den richtigen Feldern befinden.
 - Wenn die manuelle Erfassung oder die Anmeldeseite nicht mehr reagiert, versuchen Sie, die manuelle Erfassung erneut durchzuführen. Drücken Sie dieses Mal nach Abschluss des Vorgangs jedoch die Taste F12, um die Entwicklerkonsole des Browsers zu öffnen. Wählen Sie die Registerkarte **Konsole** aus. Geben Sie **window.location=" *&lt;die Anmelde-URL, die Sie beim Konfigurieren der App angegeben haben&gt;* "** ein. Drücken Sie dann die EINGABETASTE. So erzwingen Sie eine Seitenumleitung, die den Erfassungsprozess beendet und die erfassten Felder speichert.
+
+### <a name="i-cant-add-another-user-to-my-password-based-sso-app"></a>Ich kann meiner kennwortbasierten SSO-App keinen weiteren Benutzer hinzufügen.
+
+Kennwortbasierte SSO-Apps sind auf 48 Benutzer beschränkt. Daher gilt pro App eine Beschränkung auf 48 Schlüssel für Benutzername-Kennwort-Paare.
+Wenn Sie zusätzliche Benutzer hinzufügen möchten, haben Sie folgende Möglichkeiten:
+-   Hinzufügen einer zusätzlichen Instanz der App
+-   Entfernen von Benutzern, die die App nicht mehr verwenden
 
 ## <a name="request-support"></a>Anfordern von Support 
 Wenn Sie beim Einrichten von SSO und Zuweisen von Benutzern eine Fehlermeldung erhalten, öffnen Sie ein Supportticket. Fügen Sie so viele der folgenden Informationen wie möglich hinzu:

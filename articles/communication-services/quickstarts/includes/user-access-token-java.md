@@ -10,17 +10,17 @@ ms.date: 08/20/2020
 ms.topic: include
 ms.custom: include file
 ms.author: tchladek
-ms.openlocfilehash: de578ec286a8232ee8d4e259b2f37fb76101f7a5
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: e7968f4ab01706aa5f8d7d016d93a1b9de2e74b6
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94506216"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325293"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- [Java Development Kit (JDK)](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable&preserve-view=true), Version 8 oder höher.
+- [Java Development Kit (JDK)](/java/azure/jdk/?preserve-view=true&view=azure-java-stable), Version 8 oder höher.
 - [Apache Maven](https://maven.apache.org/download.cgi).
 - Eine bereitgestellte Communication Services-Ressource und eine Verbindungszeichenfolge. [Erstellen Sie eine Communication Services-Ressource.](../create-communication-resource.md)
 
@@ -44,7 +44,7 @@ Wie Sie sehen, wurde durch die Aufgabe „generate“ ein Verzeichnis erstellt, 
 <dependency>
     <groupId>com.azure</groupId>
     <artifactId>azure-communication-administration</artifactId>
-    <version>1.0.0-beta.2</version> 
+    <version>1.0.0-beta.3</version> 
 </dependency>
 ```
 
@@ -98,12 +98,22 @@ HttpClient httpClient = new NettyAsyncHttpClientBuilder().build();
 
 CommunicationIdentityClient communicationIdentityClient = new CommunicationIdentityClientBuilder()
     .endpoint(endpoint)
-    .credential(new CommunicationClientCredential(accessKey))
+    .accessKey(accessKey)
     .httpClient(httpClient)
     .buildClient();
 ```
 
-Sie können den Client mit einem beliebigen benutzerdefinierten HTTP-Client initialisieren, der die Schnittstelle `com.azure.core.http.HttpClient`implementiert. Im obigen Code wird die Verwendung des von `azure-core` bereitgestellten [Azure Core-Netty-HTTP-Clients](https://docs.microsoft.com/java/api/overview/azure/core-http-netty-readme?view=azure-java-stable&preserve-view=true) gezeigt.
+Sie können den Client mit einem beliebigen benutzerdefinierten HTTP-Client initialisieren, der die Schnittstelle `com.azure.core.http.HttpClient` implementiert. Im obigen Code wird die Verwendung des von `azure-core` bereitgestellten [Azure Core-Netty-HTTP-Clients](/java/api/overview/azure/core-http-netty-readme?preserve-view=true&view=azure-java-stable) gezeigt.
+
+Anstelle des Endpunkts und des Zugriffsschlüssels können Sie mithilfe der ConnectionString()-Funktion auch die gesamte Verbindungszeichenfolge bereitstellen. 
+```java
+// Your can find your connection string from your resource in the Azure Portal
+String connectionString = "<connection_string>";
+CommunicationIdentityClient communicationIdentityClient = new CommunicationIdentityClientBuilder()
+    .connectionString(connectionString)
+    .httpClient(httpClient)
+    .buildClient();
+```
 
 ## <a name="create-an-identity"></a>Erstellen einer Identität
 
@@ -124,8 +134,7 @@ List<String> scopes = new ArrayList<>(Arrays.asList("voip"));
 CommunicationUserToken response = communicationIdentityClient.issueToken(identity, scopes);
 OffsetDateTime expiresOn = response.getExpiresOn();
 String token = response.getToken();
-String identityId = response.getUser().getId();
-System.out.println("\nIssued a access token with 'voip' scope for identity with ID: " + identityId + ": " + token);
+System.out.println("\nIssued an access token with 'voip' scope that expires at: " + expiresOn + ": " + token);
 ```
 
 Zugriffstoken sind kurzlebige Anmeldeinformationen, die erneut ausgestellt werden müssen. Wenn dies nicht der Fall ist, kann die Benutzerumgebung Ihrer Anwendung unterbrochen werden. Die Antworteigenschaft `expiresAt` gibt die Lebensdauer des Zugriffstokens an.
@@ -146,7 +155,7 @@ In einigen Fällen können Sie Zugriffstoken explizit widerrufen. Beispielsweise
 
 ```java  
 communicationIdentityClient.revokeTokens(identity, OffsetDateTime.now());
-System.out.println("\nRevoked access tokens for the user with ID: " + identity.getId());
+System.out.println("\nSuccessfully revoked all access tokens for identity with ID: " + identity.getId());
 ```
 
 ## <a name="delete-an-identity"></a>Löschen einer Identität
@@ -155,7 +164,7 @@ Wird eine Identität gelöscht, werden alle aktiven Zugriffstoken widerrufen, un
 
 ```java
 communicationIdentityClient.deleteUser(identity);
-System.out.println("\nSuccessfully deleted the identity with ID: " + identity.getId());
+System.out.println("\nDeleted the identity with ID: " + identity.getId());
 ```
 
 ## <a name="run-the-code"></a>Ausführen des Codes

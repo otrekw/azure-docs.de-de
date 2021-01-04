@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: e0625fd257ed9995fb567785ce07dcb0b0422c61
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: df6a4053eb70c02e27599bbd9086dfa32b0bcc65
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93311638"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97508831"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>Verbessern der Synthese mit Markupsprache für Sprachsynthese (Speech Synthesis Markup Language, SSML)
 
@@ -130,7 +130,7 @@ speechConfig->SetProperty(
 
 # <a name="java"></a>[Java](#tab/java)
 
-Weitere Informationen finden Sie unter <a href="https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig.setproperty?view=azure-java-stable#com_microsoft_cognitiveservices_speech_SpeechConfig_setProperty_String_String_" target="_blank"> `setProperty` <span class="docon docon-navigate-external x-hidden-focus"></span></a>.
+Weitere Informationen finden Sie unter <a href="https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig.setproperty#com_microsoft_cognitiveservices_speech_SpeechConfig_setProperty_String_String_" target="_blank"> `setProperty` <span class="docon docon-navigate-external x-hidden-focus"></span></a>.
 
 ```java
 speechConfig.setProperty(
@@ -200,25 +200,47 @@ Anpassungen der Sprechweise werden derzeit bei diesen neuronalen Stimmen unterst
 * `en-US-GuyNeural`
 * `zh-CN-XiaoxiaoNeural`
 * `zh-CN-YunyangNeural`
+* `zh-CN-YunyeNeural`
+* `zh-CN-YunxiNeural` (Vorschau)
+* `zh-CN-XiaohanNeural` (Vorschau)
+* `zh-CN-XiaomoNeural` (Vorschau)
+* `zh-CN-XiaoxuanNeural` (Vorschau)
+* `zh-CN-XiaoruiNeural` (Vorschau)
 
-Änderungen werden auf Satzebene angewendet, und die Sprechweise variiert je nach Stimme. Wenn keine Sprechweise unterstützt wird, gibt der Dienst Sprache in der neutralen Standardsprechweise zurück. Sie können die für jede Stimme unterstützten Sprechweisen über die [Voice List-API](rest-text-to-speech.md#get-a-list-of-voices) abfragen.
+Die Intensität der Sprechweise kann weiter verändert werden, damit sie besser zu Ihrem Anwendungsfall passt. Sie können mit `styledegree` eine kräftigere oder sanftere Sprechweise angeben, um die Sprache ausdrucksstärker oder gedämpfter zu gestalten. 
 
-Für die chinesische Stimme XiaoxiaoNeural kann die Intensität der Sprechweise weiter verändert werden, um besser zu Ihrem Anwendungsfall zu passen. Sie können mit `styledegree` eine kräftigere oder sanftere Sprechweise angeben, um die Sprache ausdrucksstärker oder gedämpfter zu gestalten.
+Anpassungen der Sprechweise werden derzeit bei diesen neuronalen Stimmen unterstützt:
+* `zh-CN-XiaoxiaoNeural`
+
+Abgesehen von der Anpassung der Sprechweisen und ihrer Abstufungen können Sie auch den `role`-Parameter anpassen, damit die Stimme ein anderes Alter und Geschlecht imitiert. Beispielsweise kann eine männliche Stimme die Tonhöhe erhöhen und die Intonation so ändern, dass eine weibliche Stimme imitiert wird.
+
+Aktuell werden Rollenanpassungen für diese neuronalen Stimmen unterstützt:
+* `zh-CN-XiaomoNeural`
+* `zh-CN-XiaoxuanNeural`
+
+Die voranstehenden Änderungen werden auf Satzebene angewendet, und die Sprechweisen und Rollen variieren je nach Stimme. Wenn eine Sprechweise oder Rolle nicht unterstützt wird, gibt der Dienst Sprache in der neutralen Standardsprechweise zurück. Sie können sehen, welche Sprechweisen und Rollen für jede Stimme unterstützt werden, indem Sie die [Stimmlisten-API](rest-text-to-speech.md#get-a-list-of-voices) oder die Plattform zur codelosen [Audioinhaltserstellung](https://aka.ms/audiocontentcreation) (Audio Content Creation) verwenden.
 
 **Syntax**
 
 ```xml
+<mstts:express-as style="string"></mstts:express-as>
+```
+```xml
 <mstts:express-as style="string" styledegree="value"></mstts:express-as>
 ```
+```xml
+<mstts:express-as role="string" style="string"></mstts:express-as>
+```
 > [!NOTE]
-> Zurzeit unterstützt `styledegree` nur XiaoxiaoNeural. 
+> Zurzeit unterstützt `styledegree` nur zh-CN-XiaoxiaoNeural. `role` unterstützt nur zh-CN-XiaomoNeural und zh-CN-XiaoxuanNeural.
 
 **Attribute**
 
 | attribute | BESCHREIBUNG | Erforderlich/optional |
 |-----------|-------------|---------------------|
 | `style` | Gibt die Sprechweise an. Sprechweisen sind derzeit stimmenspezifisch. | Erforderlich, wenn die Sprechweise für eine neuronale Stimme angepasst wird. Bei Verwendung von `mstts:express-as` muss die Sprechweise angegeben werden. Bei Angabe eines ungültigen Werts wird dieses Element ignoriert. |
-| `styledegree` | Gibt die Intensität der Sprechweise an. **Zulässige Werte** : 0,01 bis 2 (einschließlich). Der Standardwert ist 1, d. h. die vordefinierte Intensität für die Sprechweise. Die minimale Einheit ist 0,01, was zu einer leichten Tendenz zur Zielsprechweise führt. Ein Wert von 2 führt zu einer Verdoppelung der standardmäßigen Intensität der Sprechweise.  | Optional (Zurzeit unterstützt `styledegree` nur XiaoxiaoNeural.)|
+| `styledegree` | Gibt die Intensität der Sprechweise an. **Zulässige Werte**: 0,01 bis 2 (einschließlich). Der Standardwert ist 1, d. h. die vordefinierte Intensität für die Sprechweise. Die minimale Einheit ist 0,01, was zu einer leichten Tendenz zur Zielsprechweise führt. Ein Wert von 2 führt zu einer Verdoppelung der standardmäßigen Intensität der Sprechweise.  | Optional (zurzeit unterstützt `styledegree` nur zh-CN-XiaoxiaoNeural)|
+| `role` | Gibt die Sprechrolle an. Die Stimme agiert mit anderem Alter und Geschlecht.  | Optional (zurzeit unterstützt `role` nur zh-CN-XiaomoNeural und zh-CN-XiaoxuanNeural)|
 
 Ermitteln Sie anhand dieser Tabelle, welche Sprechweisen für die einzelnen neuronalen Stimmen unterstützt werden.
 
@@ -250,6 +272,59 @@ Ermitteln Sie anhand dieser Tabelle, welche Sprechweisen für die einzelnen neur
 |                         | `style="gentle"`          | Sanfter, höflicher und angenehmer Ton mit geringerer Tonhöhe und stimmlicher Energie         |   
 |                         | `style="lyrical"`         | Melodischer und gefühlvoller Ton zum Ausdrücken von Emotionen         |   
 | `zh-CN-YunyangNeural`   | `style="customerservice"` | Freundlicher und hilfsbereiter Ton für den Kundensupport  | 
+| `zh-CN-YunyeNeural`     | `style="calm"`            | Kühle, gesammelte und gelassene Haltung beim Sprechen Ton, Tonhöhe und Intonation sind im Vergleich zu anderen Sprachtypen viel einheitlicher    | 
+|                         | `style="cheerful"`        | Optimistischer und enthusiastischer Ton mit höherer Tonhöhe und stimmlicher Energie                         |
+|                         | `style="sad"`             | Trauriger Ton mit höherer Tonhöhe, geringerer Intensität und geringerer stimmlicher Energie Häufige Indikatoren für diese Emotion wären Wimmern oder Weinen während der Rede            |
+|                         | `style="angry"`           | Wütender und verärgerter Ton mit geringerer Tonhöhe, höherer Intensität und höherer stimmlicher Energie Der Sprecher ist in einem Zustand, in dem er wütend, unzufrieden und beleidigt ist.       |
+|                         | `style="fearful"`         | Ängstlicher und nervöser Ton mit höherer Tonhöhe, höherer stimmlicher Energie und höherem Tempo Der Sprecher befindet sich in einem Zustand der Anspannung und Beunruhigung.                          |
+|                         | `style="disgruntled"`     | Verächtlicher und klagender Ton Eine Rede mit dieser Emotion zeugt von Unmut und Verachtung.              |
+|                         | `style="serious"`         | Strenger und gebieterischer Ton Der Sprecher klingt oft steifer und viel weniger entspannt mit festem Rhythmus.          |
+| `zh-CN-YunxiNeural`     | `style="cheerful"`        | Optimistischer und enthusiastischer Ton mit höherer Tonhöhe und stimmlicher Energie                         |
+|                         | `style="sad"`             | Trauriger Ton mit höherer Tonhöhe, geringerer Intensität und geringerer stimmlicher Energie Häufige Indikatoren für diese Emotion wären Wimmern oder Weinen während der Rede            |
+|                         | `style="angry"`           | Wütender und verärgerter Ton mit geringerer Tonhöhe, höherer Intensität und höherer stimmlicher Energie Der Sprecher ist in einem Zustand, in dem er wütend, unzufrieden und beleidigt ist.       |
+|                         | `style="fearful"`         | Ängstlicher und nervöser Ton mit höherer Tonhöhe, höherer stimmlicher Energie und höherem Tempo Der Sprecher befindet sich in einem Zustand der Anspannung und Beunruhigung.                          |
+|                         | `style="disgruntled"`     | Verächtlicher und klagender Ton Eine Rede mit dieser Emotion zeugt von Unmut und Verachtung.              |
+|                         | `style="serious"`         | Strenger und gebieterischer Ton Der Sprecher klingt oft steifer und viel weniger entspannt mit festem Rhythmus.    |
+|                         | `style="depressed"`       | Melancholischer und niedergeschlagener Ton mit geringerer Tonhöhe und weniger Energie    |
+|                         | `style="embarrassed"`     | Unsicherer und zögerlicher Ton, wenn sich der Sprecher unwohl fühlt   |
+| `zh-CN-XiaohanNeural`   | `style="cheerful"`        | Optimistischer und enthusiastischer Ton mit höherer Tonhöhe und stimmlicher Energie                         |
+|                         | `style="sad"`             | Trauriger Ton mit höherer Tonhöhe, geringerer Intensität und geringerer stimmlicher Energie Häufige Indikatoren für diese Emotion wären Wimmern oder Weinen während der Rede            |
+|                         | `style="angry"`           | Wütender und verärgerter Ton mit geringerer Tonhöhe, höherer Intensität und höherer stimmlicher Energie Der Sprecher ist in einem Zustand, in dem er wütend, unzufrieden und beleidigt ist.       |
+|                         | `style="fearful"`         | Ängstlicher und nervöser Ton mit höherer Tonhöhe, höherer stimmlicher Energie und höherem Tempo Der Sprecher befindet sich in einem Zustand der Anspannung und Beunruhigung.                          |
+|                         | `style="disgruntled"`     | Verächtlicher und klagender Ton Eine Rede mit dieser Emotion zeugt von Unmut und Verachtung.              |
+|                         | `style="serious"`         | Strenger und gebieterischer Ton Der Sprecher klingt oft steifer und viel weniger entspannt mit festem Rhythmus.    |
+|                         | `style="embarrassed"`     | Unsicherer und zögerlicher Ton, wenn sich der Sprecher unwohl fühlt   |
+|                         | `style="affectionate"`    | Warmer und herzlicher Ton mit höherer Tonhöhe und stimmlicher Energie Der Sprecher ist in einem Zustand, in dem er die Aufmerksamkeit der Zuhörer auf sich zieht. Die „Persönlichkeit“ des Sprechers ist oft von liebenswerter Art.          |     
+|                         | `style="gentle"`          | Sanfter, höflicher und angenehmer Ton mit geringerer Tonhöhe und stimmlicher Energie         |   
+| `zh-CN-XiaomoNeural`    | `style="cheerful"`        | Optimistischer und enthusiastischer Ton mit höherer Tonhöhe und stimmlicher Energie                         |
+|                         | `style="angry"`           | Wütender und verärgerter Ton mit geringerer Tonhöhe, höherer Intensität und höherer stimmlicher Energie Der Sprecher ist in einem Zustand, in dem er wütend, unzufrieden und beleidigt ist.       |
+|                         | `style="fearful"`         | Ängstlicher und nervöser Ton mit höherer Tonhöhe, höherer stimmlicher Energie und höherem Tempo Der Sprecher befindet sich in einem Zustand der Anspannung und Beunruhigung.                          |
+|                         | `style="disgruntled"`     | Verächtlicher und klagender Ton Eine Rede mit dieser Emotion zeugt von Unmut und Verachtung.              |
+|                         | `style="serious"`         | Strenger und gebieterischer Ton Der Sprecher klingt oft steifer und viel weniger entspannt mit festem Rhythmus.    |
+|                         | `style="depressed"`       | Melancholischer und niedergeschlagener Ton mit geringerer Tonhöhe und weniger Energie    |
+|                         | `style="gentle"`          | Sanfter, höflicher und angenehmer Ton mit geringerer Tonhöhe und stimmlicher Energie         |  
+| `zh-CN-XiaoxuanNeural`  | `style="cheerful"`        | Optimistischer und enthusiastischer Ton mit höherer Tonhöhe und stimmlicher Energie                         |
+|                         | `style="angry"`           | Wütender und verärgerter Ton mit geringerer Tonhöhe, höherer Intensität und höherer stimmlicher Energie Der Sprecher ist in einem Zustand, in dem er wütend, unzufrieden und beleidigt ist.       |
+|                         | `style="fearful"`         | Ängstlicher und nervöser Ton mit höherer Tonhöhe, höherer stimmlicher Energie und höherem Tempo Der Sprecher befindet sich in einem Zustand der Anspannung und Beunruhigung.                          |
+|                         | `style="disgruntled"`     | Verächtlicher und klagender Ton Eine Rede mit dieser Emotion zeugt von Unmut und Verachtung.              |
+|                         | `style="serious"`         | Strenger und gebieterischer Ton Der Sprecher klingt oft steifer und viel weniger entspannt mit festem Rhythmus.    |
+|                         | `style="depressed"`       | Melancholischer und niedergeschlagener Ton mit geringerer Tonhöhe und weniger Energie    |
+|                         | `style="gentle"`          | Sanfter, höflicher und angenehmer Ton mit geringerer Tonhöhe und stimmlicher Energie         |   
+| `zh-CN-XiaoruiNeural`    | `style="sad"`             | Trauriger Ton mit höherer Tonhöhe, geringerer Intensität und geringerer stimmlicher Energie Häufige Indikatoren für diese Emotion wären Wimmern oder Weinen während der Rede            |
+|                         | `style="angry"`           | Wütender und verärgerter Ton mit geringerer Tonhöhe, höherer Intensität und höherer stimmlicher Energie Der Sprecher ist in einem Zustand, in dem er wütend, unzufrieden und beleidigt ist.       |
+|                         | `style="fearful"`         | Ängstlicher und nervöser Ton mit höherer Tonhöhe, höherer stimmlicher Energie und höherem Tempo Der Sprecher befindet sich in einem Zustand der Anspannung und Beunruhigung.                          |
+
+Ermitteln Sie anhand dieser Tabelle, welche Rollen für die einzelnen neuronalen Stimmen unterstützt werden.
+
+| Sprache                   | Rolle                       | Beschreibung                                                 |
+|-------------------------|----------------------------|-------------------------------------------------------------|
+| `zh-CN-XiaomoNeural`    | `role="YoungAdultFemale"`  | Die Stimme imitiert eine junge erwachsene Frau.                 |
+|                         | `role="OlderAdultMale"`    | Die Stimme imitiert einen älteren erwachsenen Mann.                   |
+|                         | `role="Girl"`              | Die Stimme imitiert ein Mädchen.                               |
+|                         | `role="Boy"`               | Die Stimme imitiert einen Jungen.                                |
+| `zh-CN-XiaoxuanNeural`  | `role="YoungAdultFemale"`  | Die Stimme imitiert eine junge erwachsene Frau.                 |
+|                         | `role="OlderAdultFemale"`  | Die Stimme imitiert eine ältere erwachsene Frau.                 |
+|                         | `role="OlderAdultMale"`    | Die Stimme imitiert einen älteren erwachsenen Mann.                   |
 
 **Beispiel**
 
@@ -278,6 +353,23 @@ Dieser SSML-Codeausschnitt veranschaulicht, wie das Attribut `styledegree` verwe
 </speak>
 ```
 
+Dieser SSML-Codeausschnitt veranschaulicht, wie das Attribut `role` verwendet wird, um die Rolle für XiaomoNeural zu ändern.
+```xml
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis"
+       xmlns:mstts="https://www.w3.org/2001/mstts" xml:lang="zh-CN">
+    <voice name="zh-CN-XiaomoNeural">
+        女儿看见父亲走了进来，问道：
+        <mstts:express-as role="YoungAdultFemale" style="calm">
+            “您来的挺快的，怎么过来的？”
+        </mstts:express-as>
+        父亲放下手提包，说：
+        <mstts:express-as role="OlderAdultMale" style="calm">
+            “刚打车过来的，路上还挺顺畅。”
+        </mstts:express-as>
+    </voice>
+</speak>
+```
+
 ## <a name="add-or-remove-a-breakpause"></a>Hinzufügen oder Entfernen einer Unterbrechung/Pause
 
 Verwenden Sie das `break`-Element zum Einfügen von Pausen (oder Unterbrechungen) zwischen Wörtern oder um Pausen zu verhindern, die vom Sprachsynthesedienst automatisch hinzugefügt werden.
@@ -297,7 +389,7 @@ Verwenden Sie das `break`-Element zum Einfügen von Pausen (oder Unterbrechungen
 | attribute | BESCHREIBUNG | Erforderlich/optional |
 |-----------|-------------|---------------------|
 | `strength` | Gibt die relative Dauer einer Pause mit einem der folgenden Werte an:<ul><li>none</li><li>x-weak</li><li>weak</li><li>medium (Standard)</li><li>strong</li><li>x-strong</li></ul> | Optional |
-| `time` | Gibt die absolute Dauer einer Pause in Sekunden oder Millisekunden an. Beispiele für gültige Werte sind `2s` und `500` | Optional |
+| `time` | Gibt die absolute Dauer einer Pause in Sekunden oder Millisekunden an. Dieser Werte sollte weniger als 5000 ms betragen. Beispiele für gültige Werte sind `2s` und `500ms` | Optional |
 
 | Strength                      | BESCHREIBUNG |
 |-------------------------------|-------------|
@@ -316,6 +408,37 @@ Verwenden Sie das `break`-Element zum Einfügen von Pausen (oder Unterbrechungen
         Welcome to Microsoft Cognitive Services <break time="100ms" /> Text-to-Speech API.
     </voice>
 </speak>
+```
+## <a name="add-silence"></a>Hinzufügen von Stille
+
+Verwenden Sie das `mstts:silence`-Element, um Pausen vor oder nach Text oder zwischen den 2 benachbarten Sätzen einzufügen. 
+
+> [!NOTE]
+>Der Unterschied zwischen `mstts:silence` und `break` besteht darin, dass `break` an einer beliebigen Stelle im Text hinzugefügt werden kann. Stille jedoch funktioniert nur am Anfang oder Ende von Eingabetext oder an der Grenze zwischen 2 benachbarten Sätzen.  
+
+
+**Syntax**
+
+```xml
+<mstts:silence  type="string"  value="string"/>
+```
+
+**Attribute**
+
+| attribute | BESCHREIBUNG | Erforderlich/optional |
+|-----------|-------------|---------------------|
+| `type` | Gibt die Position zum Hinzufügen von Stille an: <ul><li>„Leading“ (führend): am Anfang von Text. </li><li>„Tailing“ (nachfolgend): am Ende von Text. </li><li>„Sentenceboundary“ (Satzgrenze): zwischen benachbarten Sätzen. </li></ul> | Erforderlich |
+| `Value` | Gibt die absolute Dauer einer Pause in Sekunden oder Millisekunden an. Dieser Werte sollte weniger als 5000 ms betragen. Beispiele für gültige Werte sind `2s` und `500ms` | Erforderlich |
+
+**Beispiel** In diesem Beispiel wird `mtts:silence` verwendet, um 200 ms Stille zwischen zwei Sätzen hinzuzufügen.
+```xml
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">  
+<voice name="en-US-AriaNeural"> 
+<mstts:silence  type="Sentenceboundary" value="200ms"/> 
+If we’re home schooling, the best we can do is roll with what each day brings and try to have fun along the way. 
+A good place to start is by trying out the slew of educational apps that are helping children stay happy and smash their schooling at the same time. 
+</voice> 
+</speak> 
 ```
 
 ## <a name="specify-paragraphs-and-sentences"></a>Angeben von Absätzen und Sätzen
@@ -355,6 +478,9 @@ Das `s`-Element kann Text und die folgenden Elemente enthalten: `audio`, `break`
 Das `ph`-Element wird für die phonetische Aussprache in SSML-Dokumenten verwendet. Das `ph`-Element kann nur Text und keine anderen Elemente enthalten. Geben Sie immer lesbare Sprache als ein Fallback an.
 
 Phonetische Alphabete bestehen aus Phonen (Lauten), die sich aus Buchstaben, Zahlen oder Zeichen (manchmal in Kombination) zusammensetzen. Jedes Phon beschreibt einen eindeutigen Sprachklang. Dies steht im Gegensatz zum lateinischen Alphabet, in dem jeder Buchstabe mehrere gesprochene Klänge darstellen kann. Überlegen Sie die unterschiedliche Aussprache des Buchstabens „C“ in den Städtenamen „Coburg“ und „Celle“ oder die unterschiedliche Aussprache der Buchstabenkombination „ch“ in den Wörtern „ich“ und „ach“.
+
+> [!NOTE]
+> Das „Phoneme“-Tag wird zurzeit für diese 5 Stimmen (et-EE-AnuNeural, ga-IE-OrlaNeural, lt-LT-OnaNeural, lv-LV-EveritaNeural und mt-MT-GarceNeural) nicht unterstützt.
 
 **Syntax**
 
@@ -401,6 +527,10 @@ Manchmal kann ein Wort vom Sprachsynthesedienst nicht korrekt ausgesprochen werd
 
 > [!NOTE]
 > Für das benutzerdefinierte Lexikon wird derzeit die UTF-8-Codierung unterstützt. 
+
+> [!NOTE]
+> Das benutzerdefinierte Lexikon wird zurzeit für diese 5 Stimmen (et-EE-AnuNeural, ga-IE-OrlaNeural, lt-LT-OnaNeural, lv-LV-EveritaNeural und mt-MT-GarceNeural) nicht unterstützt.
+
 
 **Syntax**
 
@@ -465,7 +595,7 @@ Sie können auch direkt ihren erwarteten `alias` für das Akronym oder einen abg
 
 Weitere Informationen zu benutzerdefinierten Lexikondateien finden Sie unter [Spezifikation für Aussprachelexika (Pronunciation Lexicon Specification, PLS), Version 1.0](https://www.w3.org/TR/pronunciation-lexicon/).
 
-Veröffentlichen Sie als Nächstes Ihre benutzerdefinierte Lexikondatei. Diese Datei kann zwar an einem beliebigen Ort gespeichert werden, es empfiehlt sich jedoch, [Azure Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) zu verwenden.
+Veröffentlichen Sie als Nächstes Ihre benutzerdefinierte Lexikondatei. Diese Datei kann zwar an einem beliebigen Ort gespeichert werden, es empfiehlt sich jedoch, [Azure Blob Storage](../../storage/blobs/storage-quickstart-blobs-portal.md) zu verwenden.
 
 Nachdem Sie Ihr benutzerdefiniertes Lexikon veröffentlicht haben, können Sie von SSML aus darauf verweisen.
 
@@ -631,7 +761,7 @@ Im Folgenden finden Sie die unterstützten Inhaltstypen für die Attribute `inte
 | `address` | | Der Text wird als Adresse ausgesprochen. Aussprache der Sprachsynthese-Engine:<br /><br />`I'm at <say-as interpret-as="address">150th CT NE, Redmond, WA</say-as>`<br /><br />Als „Ich bin am 150th Court Nordost Redmond Washington“. |
 | `cardinal`, `number` | | Der Text wird als Kardinalzahl ausgesprochen. Aussprache der Sprachsynthese-Engine:<br /><br />`There are <say-as interpret-as="cardinal">3</say-as> alternatives`<br /><br />Als „Es gibt drei Alternativen.“ |
 | `characters`, `spell-out` | | Der Text wird als einzelner Buchstabe (buchstabiert) ausgesprochen. Aussprache der Sprachsynthese-Engine:<br /><br />`<say-as interpret-as="characters">test</say-as>`<br /><br />Als „T E S T.“ |
-| `date` | TMJ, MTJ, JMT, JTM, JM, MT, TM, T, M, J | Der Text wird als Datum ausgesprochen. Das `format`-Attribut gibt das Datumsformat an ( *T = Tag, M = Monat und J = Jahr* ). Aussprache der Sprachsynthese-Engine:<br /><br />`Today is <say-as interpret-as="date" format="mdy">10-19-2016</say-as>`<br /><br />Als „heute ist der neunzehnte Oktober zweitausendsechzehn“. |
+| `date` | TMJ, MTJ, JMT, JTM, JM, MT, TM, T, M, J | Der Text wird als Datum ausgesprochen. Das `format`-Attribut gibt das Datumsformat an (*T = Tag, M = Monat und J = Jahr*). Aussprache der Sprachsynthese-Engine:<br /><br />`Today is <say-as interpret-as="date" format="mdy">10-19-2016</say-as>`<br /><br />Als „heute ist der neunzehnte Oktober zweitausendsechzehn“. |
 | `digits`, `number_digit` | | Der Text wird als Sequenz einzelner Ziffern gesprochen. Aussprache der Sprachsynthese-Engine:<br /><br />`<say-as interpret-as="number_digit">123456789</say-as>`<br /><br />Als „1 2 3 4 5 6 7 8 9“. |
 | `fraction` | | Der Text wird als Bruchzahl ausgesprochen. Aussprache der Sprachsynthese-Engine:<br /><br /> `<say-as interpret-as="fraction">3/8</say-as> of an inch`<br /><br />Als „drei achtel Zoll“. |
 | `ordinal` | | Der Text wird als Ordinalzahl ausgesprochen. Aussprache der Sprachsynthese-Engine:<br /><br />`Select the <say-as interpret-as="ordinal">3rd</say-as> option`<br /><br />Als „Wählen Sie die dritte Option aus.“ |
@@ -717,9 +847,9 @@ Pro SSML-Dokument ist nur eine Hintergrundaudiodatei zulässig. Sie können jedo
 | attribute | BESCHREIBUNG | Erforderlich/optional |
 |-----------|-------------|---------------------|
 | `src` | Gibt den Speicherort bzw. die URL der Hintergrundaudiodatei an. | Erforderlich, wenn Sie eine Hintergrundaudioaufnahme in Ihrem SSML-Dokument verwenden. |
-| `volume` | Gibt die Lautstärke der Hintergrundaudiodatei an. **Akzeptierte Werte** : `0` bis `100` (einschließlich). Standardwert: `1`. | Optional |
-| `fadein` | Gibt (in Millisekunden) an, wie lange die Hintergrundaudiodatei eingeblendet wird. Der Standardwert ist `0`, was dem „Nicht einblenden“ entspricht. **Akzeptierte Werte** : `0` bis `10000` (einschließlich).  | Optional |
-| `fadeout` | Gibt (in Millisekunden) an, wie lange die Hintergrundaudiodatei ausgeblendet wird. Der Standardwert ist `0`, was dem „Nicht ausblenden“ entspricht. **Akzeptierte Werte** : `0` bis `10000` (einschließlich).  | Optional |
+| `volume` | Gibt die Lautstärke der Hintergrundaudiodatei an. **Akzeptierte Werte**: `0` bis `100` (einschließlich). Standardwert: `1`. | Optional |
+| `fadein` | Gibt (in Millisekunden) an, wie lange die Hintergrundaudiodatei eingeblendet wird. Der Standardwert ist `0`, was dem „Nicht einblenden“ entspricht. **Akzeptierte Werte**: `0` bis `10000` (einschließlich).  | Optional |
+| `fadeout` | Gibt (in Millisekunden) an, wie lange die Hintergrundaudiodatei ausgeblendet wird. Der Standardwert ist `0`, was dem „Nicht ausblenden“ entspricht. **Akzeptierte Werte**: `0` bis `10000` (einschließlich).  | Optional |
 
 **Beispiel**
 

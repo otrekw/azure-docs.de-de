@@ -5,18 +5,21 @@ ms.topic: how-to
 author: abhirockzz
 ms.author: abhishgu
 ms.date: 08/11/2020
-ms.openlocfilehash: a13713f01a6bdb0ffcd787ef9c1d2f9a0336f63c
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: ae3ef2e1f35be432558769c512845543867ef27a
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369555"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505408"
 ---
 # <a name="integrate-apache-kafka-connect-support-on-azure-event-hubs-preview-with-debezium-for-change-data-capture"></a>Integrieren der Apache Kafka Connect-Unterstützung in Azure Event Hubs (Vorschau) mit Debezium für Change Data Capture
 
 Bei **Change Data Capture (CDC)** handelt es sich um eine Methode, die verwendet wird, um Änderungen auf Zeilenebene in Datenbanktabellen als Reaktion auf Erstellungs-, Aktualisierungs- und Löschvorgänge nachzuverfolgen. [Debezium](https://debezium.io/) ist eine verteilte Plattform, die auf den in verschiedenen Datenbanken verfügbaren Change Data Capture-Funktionen aufbaut (z. B. [logische Decodierung in PostgreSQL](https://www.postgresql.org/docs/current/static/logicaldecoding-explanation.html)). Es bietet eine Reihe von [Kafka Connect-Connectors](https://debezium.io/documentation/reference/1.2/connectors/index.html), die auf Änderungen auf Zeilenebene in Datenbanktabellen zugreifen und diese in Ereignisstreams konvertieren, die dann an [Apache Kafka](https://kafka.apache.org/) gesendet werden.
 
 In diesem Tutorial werden Sie schrittweise durch den Vorgang geführt, um ein Change Data Capture-basiertes System in Azure mithilfe von [Azure Event Hubs](./event-hubs-about.md?WT.mc_id=devto-blog-abhishgu) (für Kafka), [Azure DB for PostgreSQL](../postgresql/overview.md) und Debezium einzurichten. Es verwendet den [Debezium PostgreSQL-Connector](https://debezium.io/documentation/reference/1.2/connectors/postgresql.html), um Datenbankänderungen aus PostgreSQL in Kafka-Themen in Azure Event Hubs zu streamen.
+
+> [!NOTE]
+> Dieser Artikel enthält Verweise auf den Begriff *Whitelist*, den Microsoft nicht länger verwendet. Sobald der Begriff aus der Software entfernt wurde, wird er auch aus diesem Artikel entfernt.
 
 In diesem Tutorial führen Sie die folgenden Schritte aus:
 

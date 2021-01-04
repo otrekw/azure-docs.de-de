@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/30/2020
 ms.author: aahi
-ms.openlocfilehash: 277a3c1c53564d7c5dff6a87381680a7f41606de
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: c3791a9049a3eab3ddd6fc70073629c38830dbc7
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93131597"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "96002272"
 ---
 # <a name="use-speech-service-containers-with-kubernetes-and-helm"></a>Verwenden von Containern für den Speech-Dienst mit Kubernetes und Helm
 
@@ -31,7 +31,7 @@ Die folgenden Voraussetzungen müssen erfüllt sein, damit Speech-Container loka
 | Zugriff auf die Containerregistrierung | Kubernetes benötigt Zugriff auf die Containerregistrierung, um die Docker-Images in den Cluster pullen zu können. |
 | Kubernetes-Befehlszeilenschnittstelle | Mithilfe der [Kubernetes-Befehlszeilenschnittstelle][kubernetes-cli] werden die gemeinsam genutzten Anmeldeinformationen aus der Containerregistrierung verwaltet. Kubernetes wird außerdem vor Helm (Kubernetes-Paket-Manager) benötigt. |
 | Helm-Befehlszeilenschnittstelle | Installieren Sie die [Helm-Befehlszeilenschnittstelle][helm-install]. Sie wird zum Installieren eines Helm-Charts (Containerpaketdefinition) verwendet. |
-|Speech-Ressource |Um diese Container zu verwenden, benötigen Sie Folgendes:<br><br>Eine Azure-Ressource vom Typ _Speech_ , um den entsprechenden Abrechnungsschlüssel und den URI des Abrechnungsendpunkts zu erhalten. Beide Werte stehen im Azure-Portal auf der Übersichts- und auf der Schlüsselseite für **Speech** zur Verfügung und werden zum Starten des Containers benötigt.<br><br>**{API_KEY}** : Der Ressourcenschlüssel.<br><br>**{ENDPOINT_URI}** : Der Endpunkt-URI. Beispiel: `https://westus.api.cognitive.microsoft.com/sts/v1.0`|
+|Speech-Ressource |Um diese Container zu verwenden, benötigen Sie Folgendes:<br><br>Eine Azure-Ressource vom Typ _Speech_, um den entsprechenden Abrechnungsschlüssel und den URI des Abrechnungsendpunkts zu erhalten. Beide Werte stehen im Azure-Portal auf der Übersichts- und auf der Schlüsselseite für **Speech** zur Verfügung und werden zum Starten des Containers benötigt.<br><br>**{API_KEY}** : Der Ressourcenschlüssel.<br><br>**{ENDPOINT_URI}** : Der Endpunkt-URI. Beispiel: `https://westus.api.cognitive.microsoft.com/sts/v1.0`|
 
 ## <a name="the-recommended-host-computer-configuration"></a>Empfohlene Hostcomputerkonfiguration
 
@@ -189,7 +189,7 @@ horizontalpodautoscaler.autoscaling/text-to-speech-autoscaler   Deployment/text-
 
 ### <a name="verify-helm-deployment-with-helm-tests"></a>Überprüfen der Helm-Bereitstellung mit Helm-Tests
 
-Die installierten Helm-Charts definieren *Helm-Tests* , um die Überprüfung zu vereinfachen. Diese Tests dienen zur Überprüfung der Dienstbereitschaft. Wir führen den Befehl [Helm test][helm-test] aus, um sowohl die **Spracherkennung** als auch die **Sprachsynthese** zu überprüfen.
+Die installierten Helm-Charts definieren *Helm-Tests*, um die Überprüfung zu vereinfachen. Diese Tests dienen zur Überprüfung der Dienstbereitschaft. Wir führen den Befehl [Helm test][helm-test] aus, um sowohl die **Spracherkennung** als auch die **Sprachsynthese** zu überprüfen.
 
 ```console
 helm test onprem-speech
@@ -229,7 +229,7 @@ Ausführlichere Informationen zum Installieren von Anwendungen mit Helm in Azure
 <!-- LINKS - external -->
 [free-azure-account]: https://azure.microsoft.com/free
 [git-download]: https://git-scm.com/downloads
-[azure-cli]: https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest
+[azure-cli]: /cli/azure/install-azure-cli?view=azure-cli-latest
 [docker-engine]: https://www.docker.com/products/docker-engine
 [kubernetes-cli]: https://kubernetes.io/docs/tasks/tools/install-kubectl
 [helm-install]: https://helm.sh/docs/intro/install/

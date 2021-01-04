@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: df800938d568af0b94cfb1d368ef32e9b085b6eb
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 985f9e741a1491a812c1d2b20de96381f8af3fa4
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913108"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359845"
 ---
 # <a name="deploy-the-sample-labeling-tool"></a>Bereitstellen des Samplebezeichnungstools
 
@@ -86,7 +86,7 @@ Führen Sie die folgenden Schritte aus, um eine neue Ressource im Azure-Portal z
    * Server-URL: Legen Sie die URL auf `https://mcr.microsoft.com` fest.
    * Benutzername (optional): Erstellen Sie einen Benutzernamen. 
    * Kennwort (optional): Erstellen Sie ein sicheres Kennwort, das Sie sich gut merken können.
-   * Image und Tag: Legen Sie diese Einstellung auf `mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:2.1.012970002-amd64-preview` fest.
+   * Image und Tag: Legen Sie diese Einstellung auf `mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest-preview` fest.
    * Continuous Deployment: Legen Sie diesen Wert auf **On** fest, wenn Sie automatische Aktualisierungen erhalten möchten, sobald das Entwicklungsteam Änderungen am Beschriftungstool für Stichproben vornimmt.
    * Startbefehl: Legen Sie diese Einstellung auf `./run.sh eula=accept` fest.
     
@@ -99,6 +99,9 @@ Führen Sie die folgenden Schritte aus, um eine neue Ressource im Azure-Portal z
 
 > [!NOTE]
 > Beim Erstellen Ihrer Web-App können Sie auch die Autorisierung/Authentifizierung konfigurieren. Für die ersten Schritte ist dies jedoch nicht erforderlich. 
+
+> [!IMPORTANT]
+> Möglicherweise müssen Sie TLS für Ihre Web-App aktivieren, um sie unter ihrer `https`-Adresse anzuzeigen. Befolgen Sie die Anweisungen in [Aktivieren eines TLS-Endpunkts](https://docs.microsoft.com/azure/container-instances/container-instances-container-group-ssl), um einen Sidecar-Container einzurichten, und aktivieren Sie dann TLS/SSL für Ihre Web-App.
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -136,7 +139,7 @@ DNS_NAME_LABEL=aci-demo-$RANDOM
 az container create \
   --resource-group <resource_group_name> \
   --name <name> \
-  --image mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:2.1.012970002-amd64-preview \
+  --image mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest-preview \
   --ports 3000 \
   --dns-name-label $DNS_NAME_LABEL \
   --location <region name> \

@@ -5,12 +5,12 @@ description: Erfahren Sie, wie Sie einen NGINX-Eingangscontroller installieren u
 services: container-service
 ms.topic: article
 ms.date: 08/17/2020
-ms.openlocfilehash: 5032880ddc5d23f824adec28aee85c652bad29d2
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 88e2bdc1b516e55fb630b2fd31ff6a2977d57bfe
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129659"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96607907"
 ---
 # <a name="create-an-https-ingress-controller-on-azure-kubernetes-service-aks"></a>Erstellen eines HTTPS-Eingangscontrollers in Azure Kubernetes Service (AKS)
 
@@ -78,7 +78,7 @@ Es wurden noch keine Eingangsregeln erstellt. Wenn Sie zu der öffentlichen IP-A
 
 ## <a name="add-an-a-record-to-your-dns-zone"></a>Hinzufügen eines A-Eintrags zu Ihrer DNS-Zone
 
-Fügen Sie Ihrer DNS-Zone mithilfe von [az network dns record-set a add-record][az-network-dns-record-set-a-add-record] einen *A* -Eintrag mit der externen IP-Adresse des NGINX-Diensts hinzu.
+Fügen Sie Ihrer DNS-Zone mithilfe von [az network dns record-set a add-record][az-network-dns-record-set-a-add-record] einen *A*-Eintrag mit der externen IP-Adresse des NGINX-Diensts hinzu.
 
 ```console
 az network dns record-set a add-record \
@@ -171,11 +171,11 @@ kubectl apply -f cluster-issuer.yaml
 
 ## <a name="run-demo-applications"></a>Ausführen von Demoanwendungen
 
-Ein Eingangscontroller und eine Zertifikatsverwaltungslösung wurden konfiguriert. Nun führen wir zwei Demoanwendungen im AKS-Cluster-aus. In diesem Beispiel wird Helm verwendet, um mehrere Instanzen einer einfachen *Hallo Welt* -Anwendung auszuführen.
+Ein Eingangscontroller und eine Zertifikatsverwaltungslösung wurden konfiguriert. Nun führen wir zwei Demoanwendungen im AKS-Cluster-aus. In diesem Beispiel wird Helm verwendet, um mehrere Instanzen einer einfachen *Hallo Welt*-Anwendung auszuführen.
 
-Um den Eingangscontroller in Aktion zu sehen, führen Sie zwei Demoanwendungen im AKS-Cluster aus. In diesem Beispiel verwenden Sie `kubectl apply`, um mehrere Instanzen einer einfachen *Hallo Welt* -Anwendung auszuführen.
+Um den Eingangscontroller in Aktion zu sehen, führen Sie zwei Demoanwendungen im AKS-Cluster aus. In diesem Beispiel verwenden Sie `kubectl apply`, um mehrere Instanzen einer einfachen *Hallo Welt*-Anwendung auszuführen.
 
-Erstellen Sie die Datei *aks-helloworld-one.yaml* , und kopieren Sie den folgenden YAML-Beispielcode hinein:
+Erstellen Sie die Datei *aks-helloworld-one.yaml*, und kopieren Sie den folgenden YAML-Beispielcode hinein:
 
 ```yml
 apiVersion: apps/v1
@@ -213,7 +213,7 @@ spec:
     app: aks-helloworld-one
 ```
 
-Erstellen Sie die Datei *aks-helloworld-two.yaml* , und kopieren Sie den folgenden YAML-Beispielcode hinein:
+Erstellen Sie die Datei *aks-helloworld-two.yaml*, und kopieren Sie den folgenden YAML-Beispielcode hinein:
 
 ```yml
 apiVersion: apps/v1
@@ -368,7 +368,7 @@ Mehr Kontrolle bietet eine andere Vorgehensweise, bei der Sie einzelne Ressource
 kubectl delete -f cluster-issuer.yaml --namespace ingress-basic
 ```
 
-Listen Sie mit dem Befehl `helm list` die Helm-Releases auf. Suchen Sie nach Diagrammen mit den Namen *nginx* und *cert-manager* , wie in der folgenden Beispielausgabe gezeigt:
+Listen Sie mit dem Befehl `helm list` die Helm-Releases auf. Suchen Sie nach Diagrammen mit den Namen *nginx* und *cert-manager*, wie in der folgenden Beispielausgabe gezeigt:
 
 ```
 $ helm list --namespace ingress-basic
@@ -424,7 +424,7 @@ Sie können außerdem:
 
 <!-- LINKS - external -->
 [az-network-dns-record-set-a-add-record]: /cli/azure/network/dns/record-set/a?view=azure-cli-latest#az-network-dns-record-set-a-add-record
-[custom-domain]: ../app-service/manage-custom-dns-buy-domain.md#buy-the-domain
+[custom-domain]: ../app-service/manage-custom-dns-buy-domain.md#buy-an-app-service-domain
 [dns-zone]: ../dns/dns-getstarted-cli.md
 [helm]: https://helm.sh/
 [helm-cli]: ./kubernetes-helm.md

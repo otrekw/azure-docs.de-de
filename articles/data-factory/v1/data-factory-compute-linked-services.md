@@ -3,20 +3,20 @@ title: Von Azure Data Factory Version 1 unterstützte Compute-Umgebungen
 description: Erfahren Sie mehr über Compute-Umgebungen, die in Azure Data Factory-Pipelines (wie z.B. Azure HDInsight) für die Transformation oder Verarbeitung von Daten verwendet werden können.
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 2250a2565aa4fbab32daed54830fb701a3a2a1ac
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 9f970b66bd30ef2faf705d2fb41825bb81bbb8c9
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636186"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96496091"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory-version-1"></a>Von Azure Data Factory Version 1 unterstützte Compute-Umgebungen
 > [!NOTE]
@@ -58,7 +58,7 @@ Nach dem 31. Juli 2018:
 ### <a name="recommended-actions"></a>Empfohlene Aktionen
 
 - Aktualisieren Sie zur Verwendung der neuesten Komponenten und Korrekturen des Hadoop-Ökosystems die [Eigenschaften **osType** und **Version**](#azure-hdinsight-on-demand-linked-service) der betroffenen Definitionen von bedarfsgesteuerten verknüpften HDInsight-Diensten der Data Factory-Version 1 auf neuere Linux-basierte HDInsight-Versionen (HDInsight 3.6). 
-- Testen Sie vor dem 15. Dezember 2017 die Hive-, Pig-, MapReduce- und Hadoop-Streamingaktivitäten der Data Factory-Version 1, die auf den betroffenen verknüpften Dienst verweisen. Vergewissern Sie sich, dass sie mit den neuen Standardwerten für **osType** und **Version** ( **Version=3.6** , **osType=Linux** ) bzw. mit der expliziten HDInsight-Version und dem Betriebssystemtyp kompatibel sind, auf die Sie das Upgrade durchführen. 
+- Testen Sie vor dem 15. Dezember 2017 die Hive-, Pig-, MapReduce- und Hadoop-Streamingaktivitäten der Data Factory-Version 1, die auf den betroffenen verknüpften Dienst verweisen. Vergewissern Sie sich, dass sie mit den neuen Standardwerten für **osType** und **Version** (**Version=3.6**, **osType=Linux**) bzw. mit der expliziten HDInsight-Version und dem Betriebssystemtyp kompatibel sind, auf die Sie das Upgrade durchführen. 
   Weitere Informationen zur Kompatibilität finden Sie unter [Migrieren von einem Windows-basierten HDInsight-Cluster zu einem Linux-basierten Cluster](../../hdinsight/index.yml) sowie unter [Hortonworks-Versionshinweise im Zusammenhang mit HDInsight-Versionen](../../hdinsight/hdinsight-component-versioning.md). 
 - Legen Sie vor dem 15. Dezember 2017 **osType** explizit auf **Windows** fest, wenn Sie weiterhin einen bedarfsgesteuerten verknüpften HDInsight-Dienst der Data Factory-Version 1 verwenden möchten, um Windows-basierte HDInsight-Cluster zu erstellen. Es empfiehlt sich allerdings, bis zum 31. Juli 2018 zu Linux-basierten HDInsight-Clustern zu migrieren. 
 - Wenn Sie zum Ausführen der benutzerdefinierten .NET-Aktivität der Data Factory-Version 1 einen verknüpften bedarfsgesteuerten HDInsight-Dienst verwenden, aktualisieren Sie die JSON-Definition der benutzerdefinierten .NET-Aktivität so, dass stattdessen ein verknüpfter Azure Batch-Dienst verwendet wird. Weitere Informationen finden Sie unter [Verwenden von benutzerdefinierten Aktivitäten in einer Azure Data Factory-Pipeline](./data-factory-use-custom-activities.md). 
@@ -112,7 +112,7 @@ Die folgende JSON definiert einen bedarfsgesteuerten Linux-basierten mit HDInsig
 ```
 
 > [!IMPORTANT]
-> Der HDInsight-Cluster erstellt einen *Standardcontainer* in dem Azure-Blobspeicher, den Sie in der JSON-Eigenschaft **linkedServiceName** angeben. HDInsight löscht diesen Container nicht, wenn der Cluster gelöscht wird. Dies ist so beabsichtigt. In einem bedarfsgesteuerten verknüpften HDInsight-Dienst wird jedes Mal ein HDInsight-Cluster erstellt, wenn ein Slice verarbeitet werden muss – es sei denn, es ist bereits ein aktiver Cluster vorhanden ( **timeToLive** ). Der Cluster wird nach Abschluss der Verarbeitung wieder gelöscht. 
+> Der HDInsight-Cluster erstellt einen *Standardcontainer* in dem Azure-Blobspeicher, den Sie in der JSON-Eigenschaft **linkedServiceName** angeben. HDInsight löscht diesen Container nicht, wenn der Cluster gelöscht wird. Dies ist so beabsichtigt. In einem bedarfsgesteuerten verknüpften HDInsight-Dienst wird jedes Mal ein HDInsight-Cluster erstellt, wenn ein Slice verarbeitet werden muss – es sei denn, es ist bereits ein aktiver Cluster vorhanden (**timeToLive**). Der Cluster wird nach Abschluss der Verarbeitung wieder gelöscht. 
 >
 > Wenn mehr Slices verarbeitet werden, werden in Ihrem Blobspeicher viele Container angezeigt. Sofern Sie die Container nicht für Problembehandlungsaufträge benötigen, sollten Sie sie ggf. löschen, um die Speicherkosten zu senken. Die Namen dieser Container folgen einem Muster: `adf<your Data Factory name>-<linked service name>-<date and time>`. Container in Blob Storage können mit Tools wie dem [Microsoft Azure Storage-Explorer](https://storageexplorer.com/) gelöscht werden.
 >
@@ -232,7 +232,7 @@ Diese Art von Konfiguration wird für die folgenden Compute-Umgebungen unterstü
 * Azure Batch
 * Azure Machine Learning Studio (klassisch)
 * Azure Data Lake Analytics
-* Azure SQL-Datenbank, Azure Synapse Analytics (ehemals SQL Data Warehouse), SQL Server
+* Azure SQL-Datenbank, Azure Synapse Analytics, SQL Server
 
 ## <a name="azure-hdinsight-linked-service"></a>Mit Azure HDInsight verknüpfter Dienst
 Sie können einen verknüpften HDInsight-Dienst erstellen, um Ihren eigenen HDInsight-Cluster bei Data Factory zu registrieren.
@@ -289,7 +289,7 @@ Wenn Sie noch nicht mit der Verwendung des Batch-Diensts vertraut sind, haben Si
 }
 ```
 
-Fügen Sie für die **accountName** -Eigenschaft die Zeichenfolge **.\<region name\>** an den Namen Ihres Batch-Kontos an. Beispiel:
+Fügen Sie für die **accountName**-Eigenschaft die Zeichenfolge **.\<region name\>** an den Namen Ihres Batch-Kontos an. Beispiel:
 
 ```json
 "accountName": "mybatchaccount.eastus"

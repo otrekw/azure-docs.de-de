@@ -10,13 +10,13 @@ ms.author: jordane
 author: jpe316
 ms.date: 09/24/2020
 ms.topic: conceptual
-ms.custom: how-to, contperfq2, devx-track-python, deploy
-ms.openlocfilehash: 9ec82dcd7578744dc7443d48dc28820413f14005
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.custom: how-to, contperf-fy21q2, devx-track-python, deploy
+ms.openlocfilehash: 9e43291325510f92f2e5fd6c07cdb9257fdede9d
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491697"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033067"
 ---
 # <a name="deploy-ml-models-to-field-programmable-gate-arrays-fpgas-with-azure-machine-learning"></a>Bereitstellen von ML-Modellen für Field Programmable Gate Arrays (FPGAs) mit Azure Machine Learning 
 
@@ -33,7 +33,7 @@ Sie können FPGAs für verschiedene Arten von Machine Learning-Modellen neu konf
 
 |Prozessor| Abkürzung |BESCHREIBUNG|
 |---|:-------:|------|
-|Anwendungsspezifische integrierte Schaltkreise|ASICs|Benutzerdefinierte Schaltkreise, z.B. TPUs (TensorFlow-Prozessoren) von Google, bieten die höchste Effizienz. Sie können nicht neu konfiguriert werden, wenn sich Ihre Anforderungen ändern.|
+|Anwendungsspezifische integrierte Schaltkreise|ASICs|Benutzerdefinierte Schaltkreise, z. B. TPUs (Tensor-Prozessoren) von Google, bieten die höchste Effizienz. Sie können nicht neu konfiguriert werden, wenn sich Ihre Anforderungen ändern.|
 |Field-Programmable Gate Arrays|FPGAs|FPGAs, wie sie in Azure verfügbar sind, stellen eine fast so gute Leistung wie ASICs bereit. Sie sind auch flexibel und können im Lauf der Zeit erneut konfiguriert werden, um neue Programmlogik zu implementieren.|
 |Grafikprozessoren|GPUs|Eine beliebte Wahl für KI-Berechnungen. GPUs bieten Funktionen zur Parallelverarbeitung und sind beim Grafikrendering schneller als CPUs.|
 |Zentralprozessoren|CPUs|CPUs sind Allzweckprozessoren, deren Leistung für die Grafik- und Videoverarbeitung nicht optimal ist.|

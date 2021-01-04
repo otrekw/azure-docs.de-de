@@ -5,19 +5,19 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 10/25/2020
-ms.openlocfilehash: cf8ce541c069f78adbb138fa38e2efc506e095ea
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.date: 11/12/2020
+ms.openlocfilehash: 6c5badf4760bff559fb050278df84c7ad6e703bd
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675197"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616942"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Herstellen einer Verbindung mit virtuellen Azure-Netzwerken in Azure Logic Apps mithilfe einer Integrationsdienstumgebung
 
 Für Szenarios, in denen Ihre Logik-Apps und Integrationskonten Zugriff auf ein [virtuelles Azure-Netzwerk](../virtual-network/virtual-networks-overview.md) benötigen, erstellen Sie eine [*Integrationsdienstumgebung* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md). Eine Integrationsdienstumgebung ist eine dedizierte Umgebung, die dedizierten Speicher und andere Ressourcen verwendet, die vom „globalen“ mehrinstanzenfähigen Logic Apps-Dienst getrennt bleiben. Diese Trennung trägt auch dazu bei, jegliche Auswirkungen anderer Azure-Mandanten auf die Leistung Ihrer Apps zu verringern. Eine ISE stellt Ihnen außerdem Ihre eigenen statischen IP-Adressen bereit. Diese IP-Adressen sind gesondert von den statischen IP-Adressen, die von den Logik-Apps im öffentlichen, mehrinstanzenfähigen Dienst gemeinsam verwendet werden.
 
-Bei der Erstellung einer ISE wird diese ISE von Azure in Ihr virtuelles Azure-Netzwerk *injiziert* , sodass dann der Logic Apps-Dienst in Ihrem virtuellen Netzwerk bereitgestellt wird. Wählen Sie Ihre Integrationsdienstumgebung beim Erstellen einer Logik-App oder eines Integrationskontos als Speicherort aus. Ihre Logik-App bzw. Ihr Integrationskonto kann dann direkt auf Ressourcen wie virtuelle Computer (VMs), Server, Systeme und Dienste in Ihrem virtuellen Netzwerk zugreifen.
+Bei der Erstellung einer ISE wird diese ISE von Azure in Ihr virtuelles Azure-Netzwerk *injiziert*, sodass dann der Logic Apps-Dienst in Ihrem virtuellen Netzwerk bereitgestellt wird. Wählen Sie Ihre Integrationsdienstumgebung beim Erstellen einer Logik-App oder eines Integrationskontos als Speicherort aus. Ihre Logik-App bzw. Ihr Integrationskonto kann dann direkt auf Ressourcen wie virtuelle Computer (VMs), Server, Systeme und Dienste in Ihrem virtuellen Netzwerk zugreifen.
 
 ![Auswählen der Integrationsdienstumgebung](./media/connect-virtual-network-vnet-isolated-environment/select-logic-app-integration-service-environment.png)
 
@@ -67,8 +67,8 @@ Sie können eine ISE auch erstellen, indem Sie das [Beispiel für die Azure Reso
 
   * Wenn Sie [ExpressRoute](../expressroute/expressroute-introduction.md) und [Tunnelerzwingung](../firewall/forced-tunneling.md) verwenden oder verwenden möchten, müssen Sie [eine Routingtabelle erstellen](../virtual-network/manage-route-table.md). Diese muss die folgende spezifische Route enthalten und mit jedem Subnetz verknüpft werden, das von Ihrer ISE verwendet wird:
 
-    **Name** : < *Routenname*><br>
-    **Adresspräfix** : 0.0.0.0/0<br>
+    **Name**: <*Routenname*><br>
+    **Adresspräfix**: 0.0.0.0/0<br>
     **Nächster Hop:** Internet
     
     Diese spezielle Routingtabelle ist erforderlich, damit Logic Apps-Komponenten mit anderen abhängigen Azure-Diensten wie Azure Storage und Azure SQL-Datenbank kommunizieren können. Weitere Informationen zu dieser Route finden Sie unter [Adresspräfix 0.0.0.0/0](../virtual-network/virtual-networks-udr-overview.md#default-route). Falls Sie keine Tunnelerzwingung mit ExpressRoute verwenden, ist diese spezielle Routingtabelle nicht erforderlich.
@@ -99,7 +99,7 @@ Um sicherzustellen, dass Ihre ISE zugänglich ist und dass die Logik-Apps in die
 
 * *Optional* können Sie für ein vorhandenes virtuelles Netzwerk [Netzwerksicherheitsgruppen (NSGs)](../virtual-network/network-security-groups-overview.md#network-security-groups) einrichten, indem Sie den [Netzwerkdatenverkehr über Subnetze filtern](../virtual-network/tutorial-filter-network-traffic.md). Wenn Sie diese Route verwenden möchten, oder wenn Sie bereits NSGs verwenden, stellen Sie sicher, dass Sie für diese NSGs die [in dieser Tabelle angegebenen Ports öffnen](#network-ports-for-ise).
 
-  Wenn Sie [NSG-Sicherheitsregeln](../virtual-network/network-security-groups-overview.md#security-rules) einrichten, müssen Sie *sowohl* **TCP** - als auch **UDP** -Protokolle verwenden, oder Sie können stattdessen **Beliebig** auswählen, damit Sie nicht für jedes Protokoll separate Regeln erstellen müssen. NSG-Sicherheitsregeln beschreiben die Ports, die Sie für die IP-Adressen öffnen müssen, die Zugriff auf diese Ports benötigen. Stellen Sie sicher, dass alle Firewalls, Router oder andere Elemente, die zwischen diesen Endpunkten vorhanden sind, diese Ports auch für diese IP-Adressen zugänglich halten.
+  Wenn Sie [NSG-Sicherheitsregeln](../virtual-network/network-security-groups-overview.md#security-rules) einrichten, müssen Sie *sowohl* **TCP**- als auch **UDP**-Protokolle verwenden, oder Sie können stattdessen **Beliebig** auswählen, damit Sie nicht für jedes Protokoll separate Regeln erstellen müssen. NSG-Sicherheitsregeln beschreiben die Ports, die Sie für die IP-Adressen öffnen müssen, die Zugriff auf diese Ports benötigen. Stellen Sie sicher, dass alle Firewalls, Router oder andere Elemente, die zwischen diesen Endpunkten vorhanden sind, diese Ports auch für diese IP-Adressen zugänglich halten.
 
 * Wenn Sie erzwungenes Tunneln durch Ihre Firewall einrichten, um internetgebundenen Datenverkehr umzuleiten, lesen Sie die [zusätzlichen Anforderungen für erzwungenes Tunneln](#forced-tunneling).
 
@@ -116,8 +116,8 @@ In dieser Tabelle werden die Ports beschrieben, die für Ihre ISE erforderlich s
 
 | Zweck | Quelldiensttag oder IP-Adressen | Quellports | Zieldiensttag oder IP-Adressen | Zielports | Notizen |
 |---------|------------------------------------|--------------|-----------------------------------------|-------------------|-------|
-| Kommunikation zwischen Subnetzen innerhalb des virtuellen Netzwerks | Adressraum für das virtuelle Netzwerk mit ISE-Subnetzen | * | Adressraum für das virtuelle Netzwerk mit ISE-Subnetzen | * | Erforderlich für die Übertragung von Datenverkehr *zwischen* den Subnetzen in Ihrem virtuellen Netzwerk. <p><p>**Wichtig** : Damit Datenverkehr zwischen den *Komponenten* in den einzelnen Subnetzen übertragen werden kann, müssen alle Ports innerhalb der einzelnen Subnetze geöffnet werden. |
-| Beide: <p>Kommunikation mit Ihrer Logik-App <p><p>Ausführungsverlauf der Logik-App| Internes ISE: <br>**VirtualNetwork** <p><p>Externes ISE: **Internet** oder siehe **Hinweise** | * | **VirtualNetwork** | 443 | Anstatt das **Internet** -Diensttag zu verwenden, können Sie die Quell-IP-Adresse für diese Elemente angeben: <p><p>– Der Computer oder Dienst, der beliebige Anforderungstrigger oder Webhooks in Ihrer Logik-App aufruft <p>– Der Computer oder Dienst, von dem aus Sie auf den Ausführungsverlauf der Logik-App zugreifen möchten <p><p>**Wichtig** : Wenn Sie diesen Port schließen oder blockieren, werden Aufrufe für Logik-Apps mit Anforderungstriggern oder Webhooks verhindert. Außerdem wird Ihr Zugriff auf Eingaben und Ausgaben für jeden Schritt im Ausführungsverlauf verhindert. Ihr Zugriff auf den Ausführungsverlauf von Logik-Apps wird jedoch nicht verhindert.|
+| Kommunikation zwischen Subnetzen innerhalb des virtuellen Netzwerks | Adressraum für das virtuelle Netzwerk mit ISE-Subnetzen | * | Adressraum für das virtuelle Netzwerk mit ISE-Subnetzen | * | Erforderlich für die Übertragung von Datenverkehr *zwischen* den Subnetzen in Ihrem virtuellen Netzwerk. <p><p>**Wichtig**: Damit Datenverkehr zwischen den *Komponenten* in den einzelnen Subnetzen übertragen werden kann, müssen alle Ports innerhalb der einzelnen Subnetze geöffnet werden. |
+| Beide: <p>Kommunikation mit Ihrer Logik-App <p><p>Ausführungsverlauf der Logik-App| Internes ISE: <br>**VirtualNetwork** <p><p>Externes ISE: **Internet** oder siehe **Hinweise** | * | **VirtualNetwork** | 443 | Anstatt das **Internet**-Diensttag zu verwenden, können Sie die Quell-IP-Adresse für diese Elemente angeben: <p><p>– Der Computer oder Dienst, der beliebige Anforderungstrigger oder Webhooks in Ihrer Logik-App aufruft <p>– Der Computer oder Dienst, von dem aus Sie auf den Ausführungsverlauf der Logik-App zugreifen möchten <p><p>**Wichtig**: Wenn Sie diesen Port schließen oder blockieren, werden Aufrufe für Logik-Apps mit Anforderungstriggern oder Webhooks verhindert. Außerdem wird Ihr Zugriff auf Eingaben und Ausgaben für jeden Schritt im Ausführungsverlauf verhindert. Ihr Zugriff auf den Ausführungsverlauf von Logik-Apps wird jedoch nicht verhindert.|
 | Logic Apps-Designer: dynamische Eigenschaften | **LogicAppsManagement** | * | **VirtualNetwork** | 454 | Anforderungen werden von den [eingehenden IP-Adressen](../logic-apps/logic-apps-limits-and-config.md#inbound) des Logic Apps-Zugriffsendpunkts für diese Region gesendet. |
 | Bereitstellen von Connectors | **AzureConnectors** | * | **VirtualNetwork** | 454 | Erforderlich zum Bereitstellen und Aktualisieren von Connectors. Wenn Sie diesen Port schließen oder blockieren, führt dies zu Fehlern bei ISE-Bereitstellungen, und es können keine Connectorupdates und -fixes durchgeführt werden. |
 | Überprüfen der Netzwerkintegrität | **LogicApps** | * | **VirtualNetwork** | 454 | Anforderungen werden von den [eingehenden](../logic-apps/logic-apps-limits-and-config.md#inbound) und [ausgehenden IP-Adressen](../logic-apps/logic-apps-limits-and-config.md#outbound) des Logic Apps-Zugriffsendpunkts für diese Region gesendet. |
@@ -131,7 +131,7 @@ In dieser Tabelle werden die Ports beschrieben, die für Ihre ISE erforderlich s
 
 | Zweck | Quelldiensttag oder IP-Adressen | Quellports | Zieldiensttag oder IP-Adressen | Zielports | Notizen |
 |---------|------------------------------------|--------------|-----------------------------------------|-------------------|-------|
-| Kommunikation zwischen Subnetzen innerhalb des virtuellen Netzwerks | Adressraum für das virtuelle Netzwerk mit ISE-Subnetzen | * | Adressraum für das virtuelle Netzwerk mit ISE-Subnetzen | * | Erforderlich für die Übertragung von Datenverkehr *zwischen* den Subnetzen in Ihrem virtuellen Netzwerk. <p><p>**Wichtig** : Damit Datenverkehr zwischen den *Komponenten* in den einzelnen Subnetzen übertragen werden kann, müssen alle Ports innerhalb der einzelnen Subnetze geöffnet werden. |
+| Kommunikation zwischen Subnetzen innerhalb des virtuellen Netzwerks | Adressraum für das virtuelle Netzwerk mit ISE-Subnetzen | * | Adressraum für das virtuelle Netzwerk mit ISE-Subnetzen | * | Erforderlich für die Übertragung von Datenverkehr *zwischen* den Subnetzen in Ihrem virtuellen Netzwerk. <p><p>**Wichtig**: Damit Datenverkehr zwischen den *Komponenten* in den einzelnen Subnetzen übertragen werden kann, müssen alle Ports innerhalb der einzelnen Subnetze geöffnet werden. |
 | Kommunikation von Ihrer Logik-App | **VirtualNetwork** | * | Variiert abhängig vom Ziel | 80, 443 | Das Ziel variiert je nach den Endpunkten für den externen Dienst, mit dem Ihre Logik-App kommunizieren muss. |
 | Azure Active Directory | **VirtualNetwork** | * | **AzureActiveDirectory** | 80, 443 ||
 | Azure Storage-Abhängigkeit | **VirtualNetwork** | * | **Storage** | 80, 443, 445 ||
@@ -194,18 +194,18 @@ Wenn Sie den Zugriff für diese Abhängigkeiten nicht zulassen, tritt ein Fehler
    | **Ressourcengruppe** | Ja | <*Name der Azure-Ressourcengruppe*> | Eine neue oder vorhandene Azure-Ressourcengruppe, in der Sie Ihre Umgebung erstellen möchten. |
    | **Name der Integrationsdienstumgebung** | Ja | <*Umgebungsname*> | Ihr ISE-Name, der nur Buchstaben, Ziffern, Bindestriche (`-`), Unterstriche (`_`) und Punkte (`.`) enthalten kann. |
    | **Location** | Ja | <*Azure-Datencenterregion*> | Die Azure-Datencenterregion, in der Sie Ihre Umgebung bereitstellen. |
-   | **SKU** | Ja | **Premium** oder **Developer (keine SLA)** | Die ISE-SKU, die erstellt und verwendet werden soll. Informationen zu den Unterschieden zwischen diesen SKUs finden Sie unter [ISE-SKUs](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level). <p><p>**Wichtig** : Diese Option ist nur bei der ISE-Erstellung verfügbar und kann später nicht mehr geändert werden. |
+   | **SKU** | Ja | **Premium** oder **Developer (keine SLA)** | Die ISE-SKU, die erstellt und verwendet werden soll. Informationen zu den Unterschieden zwischen diesen SKUs finden Sie unter [ISE-SKUs](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level). <p><p>**Wichtig**: Diese Option ist nur bei der ISE-Erstellung verfügbar und kann später nicht mehr geändert werden. |
    | **Zusätzliche Kapazität** | Premium: <br>Ja <p><p>Developer: <br>Nicht verfügbar | Premium: <br>0 bis 10 <p><p>Developer: <br>Nicht verfügbar | Die Anzahl der für diese ISE-Ressource zu verwendenden zusätzlichen Verarbeitungseinheiten. Weitere Informationen zum Hinzufügen von Kapazität nach dem Erstellen finden Sie im Abschnitt [Hinzufügen von ISE-Kapazität](../logic-apps/ise-manage-integration-service-environment.md#add-capacity). |
-   | **Zugriffsendpunkt** | Ja | **Intern** oder **Extern** | Der für Ihre ISE zu verwendende Typ von Zugriffsendpunkten. Diese Endpunkte bestimmen, ob Anforderungs- oder Webhooktrigger für Logik-Apps in Ihrer ISE Aufrufe von außerhalb Ihres virtuellen Netzwerks empfangen können. <p><p>Ihre Auswahl hat auch Einfluss auf die Methode, mit der Sie Eingaben und Ausgaben im Ausführungsverlauf Ihrer Logik-App anzeigen und darauf zugreifen können. Weitere Informationen finden Sie unter [ISE-Endpunktzugriff](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access). <p><p>**Wichtig** : Sie können den Zugriffsendpunkt nur während der Erstellung der ISE auswählen und diese Option später nicht mehr ändern. |
-   | **Virtuelles Netzwerk** | Ja | <*Azure-virtual-network-name*> | Das virtuelle Azure-Netzwerk, in das Sie Ihre Umgebung einfügen möchten, damit Logik-Apps in dieser Umgebung auf Ihr virtuelles Netzwerk zugreifen können. Wenn Sie nicht über ein Netzwerk verfügen, [erstellen Sie zunächst ein virtuelles Azure-Netzwerk](../virtual-network/quick-create-portal.md). <p><p>**Wichtig** : Sie können diese Einfügung *nur* einmalig durchführen, wenn Sie Ihre ISE erstellen. |
-   | **Subnetze** | Ja | <*subnet-resource-list*> | Für eine ISE werden vier *leere* Subnetze benötigt. Diese sind zum Erstellen und Bereitstellen von Ressourcen in Ihrer ISE erforderlich und werden von internen Logic Apps-Komponenten (etwa Connectors und Zwischenspeicherung zur Leistungsverbesserung) verwendet. <p>**Wichtig** : [Überprüfen Sie unbedingt die Subnetzanforderungen, bevor Sie mit diesen Schritten zum Erstellen Ihrer Subnetze fortfahren.](#create-subnet) |
+   | **Zugriffsendpunkt** | Ja | **Intern** oder **Extern** | Der für Ihre ISE zu verwendende Typ von Zugriffsendpunkten. Diese Endpunkte bestimmen, ob Anforderungs- oder Webhooktrigger für Logik-Apps in Ihrer ISE Aufrufe von außerhalb Ihres virtuellen Netzwerks empfangen können. <p><p>Wenn Sie z. B. die folgenden webhook-basierten Trigger verwenden möchten, stellen Sie sicher, dass Sie **Extern** auswählen: <p><p>– Azure DevOps <br>– Azure Event Grid <br>– Common Data Service <br>– Office 365 <br>– SAP (ISE-Version) <p><p>Ihre Auswahl hat auch Einfluss auf die Methode, mit der Sie Eingaben und Ausgaben im Ausführungsverlauf Ihrer Logik-App anzeigen und darauf zugreifen können. Weitere Informationen finden Sie unter [ISE-Endpunktzugriff](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access). <p><p>**Wichtig**: Sie können den Zugriffsendpunkt nur während der Erstellung der ISE auswählen und diese Option später nicht mehr ändern. |
+   | **Virtuelles Netzwerk** | Ja | <*Azure-virtual-network-name*> | Das virtuelle Azure-Netzwerk, in das Sie Ihre Umgebung einfügen möchten, damit Logik-Apps in dieser Umgebung auf Ihr virtuelles Netzwerk zugreifen können. Wenn Sie nicht über ein Netzwerk verfügen, [erstellen Sie zunächst ein virtuelles Azure-Netzwerk](../virtual-network/quick-create-portal.md). <p><p>**Wichtig**: Sie können diese Einfügung *nur* einmalig durchführen, wenn Sie Ihre ISE erstellen. |
+   | **Subnetze** | Ja | <*subnet-resource-list*> | Für eine ISE werden vier *leere* Subnetze benötigt. Diese sind zum Erstellen und Bereitstellen von Ressourcen in Ihrer ISE erforderlich und werden von internen Logic Apps-Komponenten (etwa Connectors und Zwischenspeicherung zur Leistungsverbesserung) verwendet. <p>**Wichtig**: [Überprüfen Sie unbedingt die Subnetzanforderungen, bevor Sie mit diesen Schritten zum Erstellen Ihrer Subnetze fortfahren.](#create-subnet) |
    |||||
 
    <a name="create-subnet"></a>
 
    **Erstellen von Subnetzen**
 
-   Für Ihre ISE werden vier *leere* Subnetze benötigt. Diese sind zum Erstellen und Bereitstellen von Ressourcen in Ihrer ISE erforderlich und werden von internen Logic Apps-Komponenten (etwa Connectors und Zwischenspeicherung zur Leistungsverbesserung) verwendet. Sie können diese Subnetzadressen *nicht mehr ändern* , nachdem Sie Ihre Umgebung erstellt haben. Stellen Sie bei der Erstellung und Bereitstellung Ihrer ISE über das Azure-Portal sicher, dass Sie diese Subnetze nicht an Azure-Dienste delegieren. Wenn Sie die ISE jedoch über die REST-API, über Azure PowerShell oder eine Azure Resource Manager-Vorlage erstellen und bereitstellen, müssen Sie ein leeres Subnetz an `Microsoft.integrationServiceEnvironment` [delegieren](../virtual-network/manage-subnet-delegation.md). Weitere Informationen finden Sie unter [Hinzufügen oder Entfernen einer Subnetzdelegierung](../virtual-network/manage-subnet-delegation.md).
+   Ihre ISE benötigt vier *leere* Subnetze, die zum Erstellen und Bereitstellen von Ressourcen in Ihrer ISE erforderlich sind und von internen Logic Apps-Komponenten (etwa Connectors und Zwischenspeicherung zur Leistungsverbesserung) verwendet werden. Sie können diese Subnetzadressen *nicht mehr ändern*, nachdem Sie Ihre Umgebung erstellt haben. Stellen Sie bei der Erstellung und Bereitstellung Ihrer ISE über das Azure-Portal sicher, dass Sie diese Subnetze nicht an Azure-Dienste delegieren. Wenn Sie die ISE jedoch über die REST-API, über Azure PowerShell oder eine Azure Resource Manager-Vorlage erstellen und bereitstellen, müssen Sie ein leeres Subnetz an `Microsoft.integrationServiceEnvironment` [delegieren](../virtual-network/manage-subnet-delegation.md). Weitere Informationen finden Sie unter [Hinzufügen oder Entfernen einer Subnetzdelegierung](../virtual-network/manage-subnet-delegation.md).
 
    Jedes Subnetz muss folgende Anforderungen erfüllen:
 
@@ -227,8 +227,8 @@ Wenn Sie den Zugriff für diese Abhängigkeiten nicht zulassen, tritt ein Fehler
 
    * Wenn Sie [ExpressRoute](../expressroute/expressroute-introduction.md) verwenden, müssen Sie [eine Routentabelle](../virtual-network/manage-route-table.md) erstellen, die die folgende Route enthält, und diese Tabelle mit jedem von Ihrer ISE verwendeten Subnetz verknüpfen:
 
-     **Name** : < *Routenname*><br>
-     **Adresspräfix** : 0.0.0.0/0<br>
+     **Name**: <*Routenname*><br>
+     **Adresspräfix**: 0.0.0.0/0<br>
      **Nächster Hop:** Internet
 
    1. Wählen Sie unter der Liste **Subnetze** den Eintrag **Subnetzkonfiguration verwalten** aus.
@@ -241,7 +241,7 @@ Wenn Sie den Zugriff für diese Abhängigkeiten nicht zulassen, tritt ein Fehler
 
    1. Geben Sie im Bereich **Subnetz hinzufügen** diese Informationen an.
 
-      * **Name** : Der Name für Ihr Subnetz.
+      * **Name**: Der Name für Ihr Subnetz.
       * **Adressbereich (CIDR-Block)** : Der Bereich Ihres Subnetzes in Ihrem virtuellen Netzwerk und im CIDR-Format
 
       ![Hinzufügen von Subnetzdetails](./media/connect-virtual-network-vnet-isolated-environment/provide-subnet-details.png)
@@ -277,6 +277,21 @@ Wenn Sie den Zugriff für diese Abhängigkeiten nicht zulassen, tritt ein Fehler
    > Beachten Sie hierzu die Anleitung [Löschen eines virtuellen Netzwerks](../virtual-network/manage-virtual-network.md#delete-a-virtual-network).
 
 1. Um Ihre Umgebung anzuzeigen, wählen Sie **Zu Ressource wechseln** aus, wenn Azure nach Abschluss der Bereitstellung nicht automatisch zu Ihrer Umgebung wechselt.
+
+1. Für eine ISE, die Zugriff auf einen *externen* Endpunkt hat, müssen Sie eine Netzwerksicherheitsgruppe erstellen, wenn Sie noch keine besitzen, und eine Eingangssicherheitsregel hinzufügen, um Datenverkehr von IP-Adressen für ausgehenden Datenverkehr des verwalteten Connectors zuzulassen. Eine Regel kann wie folgt eingerichtet werden:
+
+   1. Wählen Sie im ISE-Menü unter **Einstellungen** die Option **Eigenschaften** aus.
+
+   1. Kopieren Sie unter **Ausgehende IP-Adressen des Connectors** die öffentlichen IP-Adressbereiche, die auch im Artikel [IP-Adressen für die ausgehende Richtung](../logic-apps/logic-apps-limits-and-config.md#outbound) aufgeführt werden.
+
+   1. Erstellen Sie eine Netzwerksicherheitsgruppe, falls noch keine vorhanden ist.
+   
+   1. Fügen Sie basierend auf den folgenden Informationen eine Eingangssicherheitsregel für die öffentlichen IP-Adressen für ausgehenden Datenverkehr hinzu, die Sie kopiert haben. Weitere Informationen finden Sie im [Tutorial: Filtern von Netzwerkdatenverkehr mithilfe einer Netzwerksicherheitsgruppe über das Azure-Portal](../virtual-network/tutorial-filter-network-traffic.md#create-a-network-security-group).
+
+      | Zweck | Quelldiensttag oder IP-Adressen | Quellports | Zieldiensttag oder IP-Adressen | Zielports | Notizen |
+      |---------|------------------------------------|--------------|-----------------------------------------|-------------------|-------|
+      | Zulassen von Datenverkehr von ausgehenden IP-Adressen des Connectors | <*connector-public-outbound-IP-addresses*> | * | Adressraum für das virtuelle Netzwerk mit ISE-Subnetzen | * | |
+      |||||||
 
 1. Informationen zum Überprüfen der Netzwerkintegrität für Ihre ISE finden Sie unter [Verwalten Ihrer Integrationsdienstumgebung](../logic-apps/ise-manage-integration-service-environment.md#check-network-health).
 

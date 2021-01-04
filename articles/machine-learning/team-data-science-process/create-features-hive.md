@@ -12,11 +12,11 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 30c0a02c2cbc11002f8e0bf0295dab91de5d0365
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323679"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020584"
 ---
 # <a name="create-features-for-data-in-a-hadoop-cluster-using-hive-queries"></a>Erstellen von Features für Daten in einem Hadoop-Cluster mit Hive-Abfragen
 Dieses Dokument veranschaulicht, wie Features für Daten in einem Azure HDInsight Hadoop-Cluster mithilfe von Hive-Abfragen erstellt werden. Diese Hive-Abfragen verwenden eingebettete Hive-UDFs (User Defined Function, benutzerdefinierte Funktion), für die die Skripts bereitgestellt werden.
@@ -124,7 +124,7 @@ from <databasename>.<tablename>;
 ### <a name="calculate-distances-between-sets-of-gps-coordinates"></a><a name="hive-gpsdistance"></a>Berechnen der Entfernung zwischen GPS-Koordinaten
 Die in diesem Abschnitt angegebene Abfrage kann direkt auf die "NYC Taxi Trip"-Daten angewendet werden. Diese Abfrage soll veranschaulichen, wie Sie eine eingebettete mathematische Funktion in Hive zum Generieren von Funktionen verwenden.
 
-Die in dieser Abfrage verwendeten Felder sind GPS-Koordinaten von Start- und Zielorten mit den Bezeichnungen *pickup\_longitude* , *pickup\_latitude* , *dropoff\_longitude* und *dropoff\_latitude*. Die Abfragen zur Berechnung der direkten Entfernung zwischen den Start- und Zielkoordinaten sind:
+Die in dieser Abfrage verwendeten Felder sind GPS-Koordinaten von Start- und Zielorten mit den Bezeichnungen *pickup\_longitude*, *pickup\_latitude*, *dropoff\_longitude* und *dropoff\_latitude*. Die Abfragen zur Berechnung der direkten Entfernung zwischen den Start- und Zielkoordinaten sind:
 
 ```hiveql
 set R=3959;
@@ -153,7 +153,7 @@ Eine vollständige Liste der eingebetteten Hive-UDFs finden Sie im Abschnitt **B
 ## <a name="advanced-topics-tune-hive-parameters-to-improve-query-speed"></a><a name="tuning"></a> Weiterführende Themen: Optimieren von Hive-Parametern zur Verbesserung der Abfragegeschwindigkeit
 Die Standardeinstellungen für die Parameter von Hive-Clustern eignen sich möglicherweise nicht für die Hive-Abfragen und die von den Abfragen verarbeiteten Daten. In diesem Abschnitt werden einige Parameter beschrieben, mit denen Sie die Leistung der Hive-Abfragen optimieren können. Sie müssen die Abfragen zur Parameteroptimierung vor den Abfragen der Verarbeitungsdaten einfügen.
 
-1. **Java-Heapspeicher** : Für Abfragen, bei denen große Datasets zusammengeführt oder lange Datensätze verarbeitet werden, besteht ein typischer Fehler darin, dass **nicht genügend Heapspeicher verfügbar ist**. Dieser Fehler kann durch Festlegen der Parameter *mapreduce.map.java.opts* und *mapreduce.task.io.sort.mb* auf die gewünschten Werte vermieden werden. Beispiel:
+1. **Java-Heapspeicher**: Für Abfragen, bei denen große Datasets zusammengeführt oder lange Datensätze verarbeitet werden, besteht ein typischer Fehler darin, dass **nicht genügend Heapspeicher verfügbar ist**. Dieser Fehler kann durch Festlegen der Parameter *mapreduce.map.java.opts* und *mapreduce.task.io.sort.mb* auf die gewünschten Werte vermieden werden. Beispiel:
    
     ```hiveql
     set mapreduce.map.java.opts=-Xmx4096m;
@@ -162,20 +162,20 @@ Die Standardeinstellungen für die Parameter von Hive-Clustern eignen sich mögl
 
     Dieser Parameter ordnet dem Java-Heapspeicher 4 GB Arbeitsspeicher zu. Außerdem gestaltet er die Sortierung effizienter, da er ihr mehr Arbeitsspeicher zuweist. Sie sollten etwas mit diesen Zuordnungen experimentieren, wenn bei einem Auftrag Fehler im Zusammenhang mit dem Heapspeicher auftreten.
 
-1. **DFS-Blockgröße** : Mit diesem Parameter wird die kleinste Dateneinheit festgelegt, die das Dateisystem speichert. Wenn die DFS-Blockgröße beispielsweise 128 MB beträgt, werden alle Daten mit einer Größe von höchstens 128 MB in einem einzelnen Block gespeichert. Daten über 128 MB werden zusätzliche Blöcke zugewiesen. 
+1. **DFS-Blockgröße**: Mit diesem Parameter wird die kleinste Dateneinheit festgelegt, die das Dateisystem speichert. Wenn die DFS-Blockgröße beispielsweise 128 MB beträgt, werden alle Daten mit einer Größe von höchstens 128 MB in einem einzelnen Block gespeichert. Daten über 128 MB werden zusätzliche Blöcke zugewiesen. 
 2. Die Auswahl einer geringen Blockgröße führt zu starkem zusätzlichem Verbrauch in Hadoop, da der Namensknoten viel mehr Anforderungen verarbeiten muss, um den entsprechenden Block für die Datei zu finden. Eine empfohlene Einstellung bei der Arbeit mit Daten im Gigabytebereich (oder größer) ist:
 
     ```hiveql
     set dfs.block.size=128m;
     ```
 
-2. **Optimieren von Join-Vorgängen in Hive** : Join-Vorgänge im Map/Reduce-Framework erfolgen in der Regel in der Reduce-Phase. In einigen Fällen können jedoch enorme Vorteile erzielt werden, indem die Join-Vorgänge in die Map-Phase verlegt werden (so genannte „mapjoins“). Legen Sie die folgende Option fest:
+2. **Optimieren von Join-Vorgängen in Hive**: Join-Vorgänge im Map/Reduce-Framework erfolgen in der Regel in der Reduce-Phase. In einigen Fällen können jedoch enorme Vorteile erzielt werden, indem die Join-Vorgänge in die Map-Phase verlegt werden (so genannte „mapjoins“). Legen Sie die folgende Option fest:
    
     ```hiveql
     set hive.auto.convert.join=true;
     ```
 
-3. **Angeben der Anzahl von Zuordnungen für Hive** : Hadoop erlaubt das Festlegen der Anzahl von Reducern. Die Anzahl der Zuordnungen kann aber in der Regel nicht vom Benutzer festgelegt werden. Mit einem Trick erhalten Sie ein gewisses Maß an Kontrolle über diese Anzahl: Wählen Sie die Hadoop-Variablen *mapred.min.split.size* und *mapred.max.split.size* aus, da die Größe der einzelnen Zuordnungsaufgaben durch Folgendes bestimmt wird:
+3. **Angeben der Anzahl von Zuordnungen für Hive**: Hadoop erlaubt das Festlegen der Anzahl von Reducern. Die Anzahl der Zuordnungen kann aber in der Regel nicht vom Benutzer festgelegt werden. Mit einem Trick erhalten Sie ein gewisses Maß an Kontrolle über diese Anzahl: Wählen Sie die Hadoop-Variablen *mapred.min.split.size* und *mapred.max.split.size* aus, da die Größe der einzelnen Zuordnungsaufgaben durch Folgendes bestimmt wird:
    
     ```hiveql
     num_maps = max(mapred.min.split.size, min(mapred.max.split.size, dfs.block.size))

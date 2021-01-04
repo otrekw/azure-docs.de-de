@@ -15,11 +15,11 @@ ms.topic: how-to
 ms.date: 03/25/2019
 ms.author: allensu
 ms.openlocfilehash: 5387fdc224cd77ee5273767df5033a51dc27608c
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92778862"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008360"
 ---
 # <a name="dynamic-site-acceleration-via-azure-cdn"></a>Beschleunigung dynamischer Websites durch das Azure CDN
 
@@ -30,9 +30,9 @@ Zu den Standardfunktionen eines CDN (Content Delivery Network) zählt die Mögli
 Das **Azure CDN von Akamai** und das **Azure CDN von Verizon** ermöglichen beide während der Erstellung des Endpunkts über das Menü **Optimiert für** eine DSA-Optimierung. Beschleunigung dynamischer Websites von Microsoft wird über [Azure Front Door Service](../frontdoor/front-door-overview.md) angeboten.
 
 > [!Important]
-> Bei **Azure CDN von Akamai** -Profilen dürfen Sie nach deren Erstellung die Optimierung eines CDN-Endpunkts ändern.
+> Bei **Azure CDN von Akamai**-Profilen dürfen Sie nach deren Erstellung die Optimierung eines CDN-Endpunkts ändern.
 >   
-> Bei **Azure CDN von Verizon** -Profilen können Sie nach deren Erstellung die Optimierung eines CDN-Endpunkts nicht ändern.
+> Bei **Azure CDN von Verizon**-Profilen können Sie nach deren Erstellung die Optimierung eines CDN-Endpunkts nicht ändern.
 
 ## <a name="cdn-endpoint-configuration-to-accelerate-delivery-of-dynamic-files"></a>CDN-Endpunktkonfiguration zur Beschleunigung der Übermittlung dynamischer Dateien
 
@@ -40,7 +40,7 @@ Um einen CDN-Endpunkt für die Optimierung der Übermittlung von dynamischen Dat
 
 **So konfigurieren Sie einen CDN-Endpunkt für die DSA-Optimierung mithilfe des Azure-Portals**
 
-1. Klicken Sie auf der Seite **CDN-Profil** auf **Endpunkt** .
+1. Klicken Sie auf der Seite **CDN-Profil** auf **Endpunkt**.
 
    ![Hinzufügen eines neuen CDN-Endpunkts](./media/cdn-dynamic-site-acceleration/cdn-endpoint-profile.png) 
 
@@ -52,7 +52,7 @@ Um einen CDN-Endpunkt für die Optimierung der Übermittlung von dynamischen Dat
 
 3. Geben Sie für **Testpfad** einen gültigen Pfad zu einer Datei ein.
 
-    Der Testpfad ist ein spezielles Feature für die DSA. Für die Erstellung ist ein gültiger Testpfad erforderlich. Bei der DSA wird eine kleine *Testpfad* -Datei verwendet, die zum Ursprungsserver hinzugefügt wird, um die Netzwerkroutingkonfiguration für das CDN zu optimieren. Sie können für die Testpfaddatei die Beispieldatei herunterladen und in Ihre Website hochladen, oder stattdessen eine vorhandene Ressource mit einer Größe von ungefähr 10 KB verwenden, sofern eine vorhanden ist.
+    Der Testpfad ist ein spezielles Feature für die DSA. Für die Erstellung ist ein gültiger Testpfad erforderlich. Bei der DSA wird eine kleine *Testpfad*-Datei verwendet, die zum Ursprungsserver hinzugefügt wird, um die Netzwerkroutingkonfiguration für das CDN zu optimieren. Sie können für die Testpfaddatei die Beispieldatei herunterladen und in Ihre Website hochladen, oder stattdessen eine vorhandene Ressource mit einer Größe von ungefähr 10 KB verwenden, sofern eine vorhanden ist.
 
 4. Geben Sie die Werte für die erforderlichen Endpunktoptionen ein (weitere Informationen finden Sie unter [Erstellen eines neuen CDN-Endpunkts](cdn-create-new-endpoint.md#create-a-new-cdn-endpoint)), und wählen Sie dann **Hinzufügen** aus.
 
@@ -105,7 +105,7 @@ Das Transmission Control-Protokoll (TCP) ist das Standardprotokoll der Internetp
 
 Der *langsame Start von TCP* ist ein Algorithmus des Transmission Control-Protokolls (TCP), der eine Netzwerküberlastung verhindert, indem die Menge der über das Netzwerk gesendeten Daten beschränkt wird. Er beginnt mit kleinen Überlastungsfenstergrößen zwischen Absender und Empfänger, bis der Höchstwert erreicht oder ein Paketverlust erkannt wird.
 
- Sowohl das **Azure CDN von Akamai** -Profil als auch das **Azure CDN von Verizon** -Profil beseitigen langsame TCP-Starts durch die folgenden drei Schritte:
+ Sowohl das **Azure CDN von Akamai**-Profil als auch das **Azure CDN von Verizon**-Profil beseitigen langsame TCP-Starts durch die folgenden drei Schritte:
 
 1. Die Integritäts- und Bandbreitenüberwachung wird eingesetzt, um die Bandbreite von Verbindungen zwischen PoP-Edgeservern zu messen.
     
@@ -157,7 +157,7 @@ Sie können das Zwischenspeichern für das Profil **Azure CDN Standard von Veriz
 
 So greifen Sie auf Cacheregeln zu
 
-1. Wählen Sie auf der Seite **CDN-Profil** unter „Einstellungen“ die Option **Cacheregeln** .  
+1. Wählen Sie auf der Seite **CDN-Profil** unter „Einstellungen“ die Option **Cacheregeln**.  
     
     ![Schaltfläche für CDN-Cacheregeln](./media/cdn-dynamic-site-acceleration/cdn-caching-rules-btn.png)
 
@@ -169,7 +169,7 @@ Bei Profilen vom Typ **Azure CDN Premium von Verizon** können Sie das Zwischens
 
 So greifen Sie auf die Regel-Engine zu
     
-1. Klicken Sie auf der Seite **CDN-Profil** auf **Verwalten** .  
+1. Klicken Sie auf der Seite **CDN-Profil** auf **Verwalten**.  
     
     ![Verwaltungsschaltfläche für CDN-Profile](./media/cdn-dynamic-site-acceleration/cdn-manage-btn.png)
 

@@ -7,12 +7,12 @@ ms.custom: references_regions
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: 9827f79f8407bd04468f1b4456aec9d6a8793a6f
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: a4380ae7fdb523f8b2f5bc14fefa094b6d96e547
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94506293"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95750529"
 ---
 # <a name="configure-log-analytics-workspace-for-azure-monitor-for-vms"></a>Konfigurieren eines Log Analytics-Arbeitsbereichs für Azure Monitor für VMs
 Azure Monitor für VMs erfasst die Daten von einem oder mehreren Log Analytics-Arbeitsbereichen in Azure Monitor. Vor dem Integrieren von Agents müssen Sie einen Arbeitsbereich erstellen und konfigurieren. In diesem Artikel werden die Anforderungen für den Arbeitsbereich und dessen Konfiguration für Azure Monitor für VMs beschrieben.
@@ -68,7 +68,7 @@ Azure Monitor für VMs unterstützt Log Analytics-Arbeitsbereiche in den folgend
 - Australien (Osten)
 - Australien, Südosten
 
-## <a name="role-based-access-control"></a>Rollenbasierte Zugriffssteuerung
+## <a name="azure-role-based-access-control"></a>Rollenbasierte Zugriffssteuerung in Azure
 Um die Features in Azure Monitor für VMs zu aktivieren und darauf zuzugreifen, müssen Sie über die Rolle [Log Analytics-Mitwirkender](../platform/manage-access.md#manage-access-using-azure-permissions) im Arbeitsbereich verfügen. Sie müssen über die Rolle [Überwachungsleser](../platform/roles-permissions-security.md#built-in-monitoring-roles) für die Azure-VM verfügen, um Leistungs-, Integritäts- und Zuordnungsdaten anzeigen zu können. Weitere Informationen zur Zugriffssteuerung auf einen Log Analytics-Arbeitsbereich finden Sie unter [Verwalten von Arbeitsbereichen](../platform/manage-access.md).
 
 ## <a name="add-vminsights-solution-to-workspace"></a>Hinzufügen der VMInsights-Lösung zum Arbeitsbereich
@@ -78,9 +78,9 @@ Bevor ein Log Analytics-Arbeitsbereich mit Azure Monitor für VMs verwendet werd
 > Wenn Sie dem Arbeitsbereich die *VMInsights*-Lösung hinzufügen, beginnen alle vorhandenen virtuellen Computer, die mit dem Arbeitsbereich verbunden sind, mit dem Senden von Daten an InsightsMetrics. Daten für die anderen Datentypen werden erst erfasst, wenn Sie den Dependency-Agent zu den vorhandenen virtuellen Computern hinzufügen, die mit dem Arbeitsbereich verbunden sind.
 
 ### <a name="azure-portal"></a>Azure-Portal
-Es gibt drei Optionen zum Konfigurieren eines vorhandenen Arbeitsbereichs über das Azure-Portal.
+Es gibt drei Optionen zum Konfigurieren eines vorhandenen Arbeitsbereichs über das Azure-Portal. Diese werden unten im Einzelnen beschrieben.
 
-Zum Konfigurieren eines einzelnen Arbeitsbereichs wählen Sie **Andere Onboardingoptionen** und dann **Arbeitsbereich konfigurieren** aus. Wählen Sie ein Abonnement und einen Arbeitsbereich aus, und klicken Sie dann auf **Konfigurieren**.
+Um einen einzelnen Arbeitsbereich zu konfigurieren, wechseln Sie im Menü **Azure Monitor** zur Option **Virtuelle Computer**, und wählen Sie **Weitere Onboardingoptionen** und dann **Arbeitsbereich konfigurieren** aus. Wählen Sie ein Abonnement und einen Arbeitsbereich aus, und klicken Sie dann auf **Konfigurieren**.
 
 [![Konfigurieren eines Arbeitsbereichs](media/vminsights-enable-at-scale-policy/configure-workspace.png)](media/vminsights-enable-at-scale-policy/configure-workspace.png#lightbox)
 

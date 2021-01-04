@@ -5,15 +5,16 @@ services: virtual-machines-windows
 author: msmbaldwin
 tags: keyvault
 ms.service: virtual-machines-windows
+ms.subservice: extensions
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: f06c5f2b2938505380ea668a7c4113015c852b1d
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 0418c11d84fb82ac4a4b181289f032407a29f92e
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913958"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500664"
 ---
 # <a name="key-vault-virtual-machine-extension-for-windows"></a>Key Vault-VM-Erweiterung für Windows
 
@@ -35,9 +36,9 @@ Die Key Vault-VM-Erweiterung wird auch auf einer benutzerdefinierten lokalen VM 
 - PEM
 
 ## <a name="prerequisities"></a>Voraussetzungen
-  - Key Vault-Instanz mit Zertifikat. Siehe [Erstellen eines Schlüsseltresors](https://docs.microsoft.com/azure/key-vault/general/quick-create-portal).
-  - Der VM/VMSS muss eine [verwaltete Identität](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) zugewiesen sein.
-  - Die Key Vault-Zugriffsrichtlinie muss mit geheimen Schlüsseln `get` und `list` Berechtigung für die verwaltete VM/VMSS-Identität festgelegt werden, um den Teil des Zertifikats für den geheimen Schlüssel abzurufen. Weitere Informationen finden Sie unter [Authentifizieren bei Key Vault](/azure/key-vault/general/authentication) und [Zuweisen einer Key Vault-Zugriffsrichtlinie](/azure/key-vault/general/assign-access-policy-cli).
+  - Key Vault-Instanz mit Zertifikat. Siehe [Erstellen eines Schlüsseltresors](../../key-vault/general/quick-create-portal.md).
+  - Der VM/VMSS muss eine [verwaltete Identität](../../active-directory/managed-identities-azure-resources/overview.md) zugewiesen sein.
+  - Die Key Vault-Zugriffsrichtlinie muss mit geheimen Schlüsseln `get` und `list` Berechtigung für die verwaltete VM/VMSS-Identität festgelegt werden, um den Teil des Zertifikats für den geheimen Schlüssel abzurufen. Weitere Informationen finden Sie unter [Authentifizieren bei Key Vault](../../key-vault/general/authentication.md) und [Zuweisen einer Key Vault-Zugriffsrichtlinie](../../key-vault/general/assign-access-policy-cli.md).
 
 ## <a name="extension-schema"></a>Erweiterungsschema
 
@@ -81,7 +82,7 @@ Im folgenden JSON-Code ist das Schema für die Key Vault-VM-Erweiterung dargeste
 > Der Grund: Der Pfad `/secrets` gibt das vollständige Zertifikat einschließlich des privaten Schlüssels zurück, der Pfad `/certificates` dagegen nicht. Weitere Informationen zu Zertifikaten finden Sie hier: [Key Vault-Zertifikate](../../key-vault/general/about-keys-secrets-certificates.md)
 
 > [!IMPORTANT]
-> Die Eigenschaft „authenticationSettings“ ist nur **erforderlich** , wenn Sie VMs mit **benutzerseitig zugewiesenen Identitäten** verwenden.
+> Die Eigenschaft „authenticationSettings“ ist nur **erforderlich**, wenn Sie VMs mit **benutzerseitig zugewiesenen Identitäten** verwenden.
 > Sie gibt die Identität an, die für die Authentifizierung bei Key Vault verwendet werden soll.
 
 
@@ -110,7 +111,7 @@ Azure-VM-Erweiterungen können mithilfe von Azure Resource Manager-Vorlagen bere
 Die JSON-Konfiguration für eine VM-Erweiterung muss im VM-Ressourcenfragment der Vorlage geschachtelt sein – genauer gesagt im Objekt `"resources": []` für die VM-Vorlage und im Falle einer VM-Skalierungsgruppe unter dem Objekt `"virtualMachineProfile":"extensionProfile":{"extensions" :[]`.
 
  > [!NOTE]
-> Die VM-Erweiterung erfordert, dass eine system- oder benutzerverwaltete Identität für die Authentifizierung beim Schlüsseltresor zugewiesen wird.  Weitere Informationen finden Sie unter [Authentifizieren bei Key Vault und Zuweisen einer Key Vault-Zugriffsrichtlinie](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm).
+> Die VM-Erweiterung erfordert, dass eine system- oder benutzerverwaltete Identität für die Authentifizierung beim Schlüsseltresor zugewiesen wird.  Weitere Informationen finden Sie unter [Authentifizieren bei Key Vault und Zuweisen einer Key Vault-Zugriffsrichtlinie](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md).
 > 
 
 ```json

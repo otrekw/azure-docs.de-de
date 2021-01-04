@@ -3,18 +3,18 @@ title: Open-Source-Projekte der Azure Maps-Community | Microsoft Azure Maps
 description: Für die Microsoft Azure Maps-Plattform koordinierte Open-Source-Projekte
 author: rbrundritt
 ms.author: richbrun
-ms.date: 12/17/2019
+ms.date: 12/07/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: ebe633bbfa8ec950e7726c127e38adecf0d1872f
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 138160eb1515d1443302dbc23bbafa482e2eb905
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896258"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96904549"
 ---
 # <a name="azure-maps-community---open-source-projects"></a>Azure Maps-Community: Open-Source-Projekte
 
@@ -62,7 +62,7 @@ Im Folgenden finden Sie eine Liste von Open-Source-Projekten, mit denen die Funk
 | Projektname | BESCHREIBUNG |
 |-|-|
 | [Azure Maps Docs](https://github.com/MicrosoftDocs/azure-docs/tree/master/articles/azure-maps) | Quelle für die gesamte Dokumentation zu Azure Location Based Services |
-| [Azure Maps Creator-Tools](https://github.com/Azure-Samples/AzureMapsCreator) | Python-Tools für Azure Maps Creator. |
+| [Azure Maps Creator-Tools (Vorschau)](https://github.com/Azure-Samples/AzureMapsCreator) | Python-Tools für Azure Maps Creator-Tools (Vorschau) |
 
 [Hier](https://github.com/microsoft/Maps/blob/master/AzureMaps.md) finden Sie noch mehr Beispiele für von der Community erstellte Open-Source-Projekte für Azure Maps.
 

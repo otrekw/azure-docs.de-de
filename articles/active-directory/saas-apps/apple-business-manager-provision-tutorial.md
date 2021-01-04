@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/08/2020
 ms.author: Zhchia
-ms.openlocfilehash: f7fd2337fe496e75ced78215d14d530a853096fd
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: b4f24c9beffcd67fb84940c2e159da615496d9aa
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359282"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96180369"
 ---
 # <a name="tutorial-configure-apple-business-manager-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Apple Business Manager für die automatische Benutzerbereitstellung
 
@@ -39,7 +39,7 @@ In diesem Tutorial werden die Schritte beschrieben, die Sie sowohl in Apple Busi
 Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits über die folgenden Voraussetzungen verfügen:
 
 * [Einen Azure AD-Mandanten](../develop/quickstart-create-new-tenant.md)
-* Ein Benutzerkonto in Azure AD mit der [Berechtigung](../users-groups-roles/directory-assign-admin-roles.md) für die Konfiguration von Bereitstellungen (z. B. Anwendungsadministrator, Cloudanwendungsadministrator, Anwendungsbesitzer oder Globaler Administrator).
+* Ein Benutzerkonto in Azure AD mit der [Berechtigung](../roles/permissions-reference.md) für die Konfiguration von Bereitstellungen (z. B. Anwendungsadministrator, Cloudanwendungsadministrator, Anwendungsbesitzer oder Globaler Administrator).
 * Ein Apple Business Manager-Konto mit der Rolle „Administrator“ oder „People Manager“.
 
 > [!NOTE]
@@ -92,7 +92,7 @@ Mit dem Azure AD-Bereitstellungsdienst können Sie anhand der Zuweisung zur Anwe
 
     ![Registerkarte „Bereitstellung“ – automatisch](common/provisioning-automatic.png)
 
-5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** die zuvor von Apple Business Manager abgerufenen Werte für **„SCIM 2.0-Basis-URL“ und „Zugriffstoken“** in die Felder **Mandanten-URL** und **Geheimes Token** ein. Klicken Sie auf **Verbindung testen** , um sicherzustellen, dass Azure AD eine Verbindung mit Apple Business Manager herstellen kann. Vergewissern Sie sich im Falle eines Verbindungsfehlers, dass Ihr Apple Business Manager-Konto über Administratorberechtigungen verfügt, und wiederholen Sie den Vorgang.
+5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** die zuvor von Apple Business Manager abgerufenen Werte für **„SCIM 2.0-Basis-URL“ und „Zugriffstoken“** in die Felder **Mandanten-URL** und **Geheimes Token** ein. Klicken Sie auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit Apple Business Manager herstellen kann. Vergewissern Sie sich im Falle eines Verbindungsfehlers, dass Ihr Apple Business Manager-Konto über Administratorberechtigungen verfügt, und wiederholen Sie den Vorgang.
 
     ![Token](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -107,7 +107,7 @@ Mit dem Azure AD-Bereitstellungsdienst können Sie anhand der Zuweisung zur Anwe
 
 8. Wählen Sie im Abschnitt **Zuordnungen** die Option **Azure Active Directory-Benutzer mit Apple Business Manager synchronisieren** aus.
 
-9. Überprüfen Sie im Abschnitt **Attributzuordnung** die Benutzerattribute, die von Azure AD mit Apple Business Manager synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Benutzerkonten in Apple Business Manager für Updatevorgänge verwendet. Wählen Sie die Schaltfläche **Speichern** , um alle Änderungen zu übernehmen.
+9. Überprüfen Sie im Abschnitt **Attributzuordnung** die Benutzerattribute, die von Azure AD mit Apple Business Manager synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Benutzerkonten in Apple Business Manager für Updatevorgänge verwendet. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
    |attribute|type|
    |---|---|
@@ -126,7 +126,7 @@ Mit dem Azure AD-Bereitstellungsdienst können Sie anhand der Zuweisung zur Anwe
 
 10. Wenn Sie Bereichsfilter konfigurieren möchten, lesen Sie die Anweisungen unter [Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
-11. Ändern Sie den **Bereitstellungsstatus** im Abschnitt „Einstellungen“ in **Ein** , um den Azure AD-Bereitstellungsdienst für Apple Business Manager zu aktivieren.
+11. Ändern Sie den **Bereitstellungsstatus** im Abschnitt „Einstellungen“ in **Ein**, um den Azure AD-Bereitstellungsdienst für Apple Business Manager zu aktivieren.
 
     ![Aktivierter Bereitstellungsstatus](common/provisioning-toggle-on.png)
 

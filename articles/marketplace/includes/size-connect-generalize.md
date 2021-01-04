@@ -7,12 +7,12 @@ ms.topic: include
 author: mingshen-ms
 ms.author: krsh
 ms.date: 10/20/2020
-ms.openlocfilehash: ecbafe0d3f39b1bd6f7c494695ea17e067f0c79e
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 6c7536e38a0d2cf7d4e906947aff645c74e459c0
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129277"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96028438"
 ---
 ## <a name="generalize-the-image"></a>Generalisieren des Images
 
@@ -41,12 +41,12 @@ Mit dem folgenden Prozess wird eine Linux-VM generalisiert und als separate VM e
 ### <a name="take-a-snapshot-of-the-vm-disk"></a>Erstellen einer Momentaufnahme des VM-Datenträgers
 
 1. Melden Sie sich beim [Azure-Portal](https://ms.portal.azure.com/) an.
-2. Wählen Sie zunächst oben links **Ressource erstellen** aus, suchen Sie **Momentaufnahme** , und wählen Sie die Option aus.
+2. Wählen Sie zunächst oben links **Ressource erstellen** aus, suchen Sie **Momentaufnahme**, und wählen Sie die Option aus.
 3. Wählen Sie im Blatt „Momentaufnahme“ **Erstellen** aus.
 4. Geben Sie einen **Namen** für die Momentaufnahme ein.
 5. Wählen Sie eine vorhandene Ressourcengruppe aus, oder geben Sie den Namen einer neuen Ressourcengruppe ein.
 6. Wählen Sie für **Quelldatenträger** den verwalteten Datenträger aus, für den eine Momentaufnahme erstellt werden soll.
-7. Wählen Sie den **Kontotyp** aus, der zum Speichern der Momentaufnahme verwendet werden soll. Wir empfehlen **Standard-Festplattenlaufwerke** , es sei denn, Sie benötigen eine leistungsstarke SSD.
+7. Wählen Sie den **Kontotyp** aus, der zum Speichern der Momentaufnahme verwendet werden soll. Wir empfehlen **Standard-Festplattenlaufwerke**, es sei denn, Sie benötigen eine leistungsstarke SSD.
 8. Wählen Sie **Erstellen** aus.
 
 #### <a name="extract-the-vhd"></a>Extrahieren der VHD
@@ -81,7 +81,7 @@ destinationVHDFileName=myvhdfilename.vhd
 
 az account set --subscription $subscriptionId
 
-sas=$(az snapshot grant-access --resource-group $resourceGroupName --name $ snapshotName --duration-in-seconds $sasExpiryDuration --query [accessSas] -o tsv)
+sas=$(az snapshot grant-access --resource-group $resourceGroupName --name $snapshotName --duration-in-seconds $sasExpiryDuration --query [accessSas] -o tsv)
 
 az storage blob copy start --destination-blob $destinationVHDFileName --destination-container $storageContainerName --account-name $storageAccountName --account-key $storageAccountKey --source-uri $sas
 ```

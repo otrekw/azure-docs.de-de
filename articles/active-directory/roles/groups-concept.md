@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d014a901791f16ecdcb9c3d5f0858a8626cc1072
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 54988c8bbc4a9c3d448ac35f31e97e2d20228209
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93379076"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007567"
 ---
 # <a name="use-cloud-groups-to-manage-role-assignments-in-azure-active-directory-preview"></a>Verwenden von Cloudgruppen zum Verwalten von Rollenzuweisungen in Azure Active Directory (Vorschau)
 
@@ -52,17 +52,15 @@ Die Zuweisung von Gruppen zu Rollen wurde so konzipiert, dass diese Form einer V
 
 Folgende Szenarios werden derzeit nicht unterstützt:  
 
-- Zuweisen von Cloudgruppen zu benutzerdefinierten Azure AD-Rollen
-- Zuweisen von Cloudgruppen zu Azure AD-Rollen (integriert oder benutzerdefiniert) über eine Verwaltungseinheit oder einen Anwendungsbereich.
 - Zuweisen lokaler Gruppen zu Azure AD-Rollen (integriert oder benutzerdefiniert)
 
 ## <a name="known-issues"></a>Bekannte Probleme
 
 - Das Feature **Gestaffelten Rollout für verwaltete Benutzeranmeldung aktivieren** unterstützt keine Zuweisung über eine Gruppe.
-- *Nur Kunden mit Azure AD P2-Lizenz* : Weisen Sie einer Rolle eine Gruppe nicht über Azure AD und Privileged Identity Management (PIM) als „Aktiv“ zu. Vermeiden Sie es, einer Gruppe, der eine Rolle zugewiesen werden kann, eine Rolle bei ihrer Erstellung *und* später noch eine Rolle über PIM zuzuweisen. Dies führt zu Problemen, bei denen Benutzer ihre aktiven Rollenzuweisungen in PIM nicht sehen können und es nicht möglich ist, diese PIM-Zuweisung zu entfernen. Berechtigte Zuweisungen sind in diesem Szenario nicht beeinträchtigt. Wenn Sie versuchen, diese Zuweisung vorzunehmen, tritt möglicherweise ein unerwartetes Verhalten wie z. B. Folgendes auf:
+- *Nur Kunden mit Azure AD P2-Lizenz*: Weisen Sie einer Rolle eine Gruppe nicht über Azure AD und Privileged Identity Management (PIM) als „Aktiv“ zu. Vermeiden Sie es, einer Gruppe, der eine Rolle zugewiesen werden kann, eine Rolle bei ihrer Erstellung *und* später noch eine Rolle über PIM zuzuweisen. Dies führt zu Problemen, bei denen Benutzer ihre aktiven Rollenzuweisungen in PIM nicht sehen können und es nicht möglich ist, diese PIM-Zuweisung zu entfernen. Berechtigte Zuweisungen sind in diesem Szenario nicht beeinträchtigt. Wenn Sie versuchen, diese Zuweisung vorzunehmen, tritt möglicherweise ein unerwartetes Verhalten wie z. B. Folgendes auf:
   - Die Endzeit für die Rollenzuweisung wird möglicherweise falsch angezeigt.
   - Im PIM-Portal kann unter **Meine Rollen** nur eine Rollenzuweisung angezeigt werden, unabhängig davon, durch wie viele Methoden die Zuweisung gewährt wird (über eine oder mehrere Gruppen und direkt).
-- *Nur Kunden mit Azure AD P2-Lizenz* : Auch nach dem Löschen der Gruppe wird sie noch immer als ein berechtigtes Mitglied der Rolle auf der PIM-Benutzeroberfläche angezeigt. Funktionell gibt es kein Problem. Es ist lediglich ein Cacheproblem im Azure-Portal.  
+- *Nur Kunden mit Azure AD P2-Lizenz*: Auch nach dem Löschen der Gruppe wird sie noch immer als ein berechtigtes Mitglied der Rolle auf der PIM-Benutzeroberfläche angezeigt. Funktionell gibt es kein Problem. Es ist lediglich ein Cacheproblem im Azure-Portal.  
 - Verwenden Sie das neue [Exchange Admin Center](https://admin.exchange.microsoft.com/) zum Zuweisen von Rollen über Gruppenmitgliedschaften. Das alte Exchange Admin Center unterstützt dieses Feature noch nicht. Exchange PowerShell-Cmdlets funktionieren den Erwartungen entsprechend.
 - Das Azure Information Protection-Portal (klassisches Portal) erkennt die Rollenmitgliedschaft über eine Gruppe noch nicht. Sie können [zur Plattform für einheitliche Vertraulichkeitsbezeichnungen migrieren](/azure/information-protection/configure-policy-migrate-labels) und dann das Office 365 Security & Compliance Center verwenden, um Gruppenzuweisungen für das Verwalten von Rollen zu nutzen.
 

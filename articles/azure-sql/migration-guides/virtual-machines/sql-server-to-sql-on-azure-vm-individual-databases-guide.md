@@ -10,12 +10,12 @@ author: markjones-msft
 ms.author: markjon
 ms.reviewer: mathoma
 ms.date: 11/06/2020
-ms.openlocfilehash: c7a62bb3ed07ffbd8cfef520e5d504c810d11e5a
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 3b0fdccd3eaf6e6bd94b595107022f738bdd8382
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94496397"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325915"
 ---
 # <a name="migration-guide-sql-server-to-sql-server-on-azure-vms"></a>Migrationsleitfaden: SQL Server zu SQL Server auf Azure-VMs 
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlvm.md)]
@@ -38,9 +38,9 @@ Informationen zu anderen Migrationsstrategien finden Sie in der [Übersicht zur 
 Für die Migration zu SQL Server auf Azure-VMs benötigen Sie Folgendes: 
 
 - den [Datenmigrations-Assistenten (DMA)](https://www.microsoft.com/download/details.aspx?id=53595)
-- ein [Azure Migrate-Projekt](/azure/migrate/create-manage-projects)
-- eine vorbereitete Zielinstanz für [SQL Server auf Azure-VMs](/azure/azure-sql/virtual-machines/windows/create-sql-vm-portal), deren Version identisch mit oder höher als die der SQL Server-Quellinstanz ist
-- [Konnektivität zwischen Azure und einer lokalen Umgebung](/architecture/reference-architectures/hybrid-networking)
+- ein [Azure Migrate-Projekt](../../../migrate/create-manage-projects.md)
+- eine vorbereitete Zielinstanz für [SQL Server auf Azure-VMs](../../virtual-machines/windows/create-sql-vm-portal.md), deren Version identisch mit oder höher als die der SQL Server-Quellinstanz ist
+- [Konnektivität zwischen Azure und einer lokalen Umgebung](/azure/architecture/reference-architectures/hybrid-networking)
 - eine [geeignete Migrationsstrategie](sql-server-to-sql-on-azure-vm-migration-overview.md#migrate)
 
 ## <a name="pre-migration"></a>Vor der Migration
@@ -59,7 +59,7 @@ Weitere Informationen Ermittlungstools finden Sie unter [Dienste und Tools für 
 
 ### <a name="assess"></a>Bewerten
 
-Nachdem Sie alle Datenquellen ermittelt haben, können Sie den [Datenmigrations-Assistenten (DMA)](/dma/dma-overview) verwenden, um lokale SQL Server-Instanzen zu bewerten, die zu einer SQL Server-Instanz auf einer Azure-VM migriert werden, und so Diskrepanzen zwischen Quell- und Zielinstanzen festzustellen. 
+Nachdem Sie alle Datenquellen ermittelt haben, können Sie den [Datenmigrations-Assistenten (DMA)](/sql/dma/dma-overview) verwenden, um lokale SQL Server-Instanzen zu bewerten, die zu einer SQL Server-Instanz auf einer Azure-VM migriert werden, und so Diskrepanzen zwischen Quell- und Zielinstanzen festzustellen. 
 
 
 > [!NOTE]
@@ -123,7 +123,7 @@ Befolgen Sie diese Schritte, wenn Sie eine gewöhnliche Migration mit Sicherung 
 1. Halten Sie alle Anwendungen an, die für die Migration vorgesehene Datenbanken verwenden. 
 1. Sorgen Sie mit dem [Einzelbenutzermodus](/sql/relational-databases/databases/set-a-database-to-single-user-mode) dafür, dass Benutzerdatenbanken inaktiv sind. 
 1. Führen Sie eine vollständige Datenbanksicherung an einem lokalen Speicherort durch.
-1. Kopieren Sie lokale Sicherungsdateien auf Ihre VM, indem Sie einen Remotedesktop, [Azure Data Explorer](/data-explorer/data-explorer-overview) oder das [Befehlszeilentool AzCopy](../../../storage/common/storage-use-azcopy-v10.md) (bei Sicherungen über 2 TB empfohlen) verwenden.
+1. Kopieren Sie lokale Sicherungsdateien auf Ihre VM, indem Sie einen Remotedesktop, [Azure Data Explorer](/azure/data-explorer/data-explorer-overview) oder das [Befehlszeilentool AzCopy](../../../storage/common/storage-use-azcopy-v10.md) (bei Sicherungen über 2 TB empfohlen) verwenden.
 1. Stellen Sie die vollständigen Datenbanksicherungen in SQL Server auf der Azure-VM wieder her.
 
 ### <a name="log-shipping--minimize-downtime"></a>Protokollversand (Minimieren der Downtime)
@@ -133,7 +133,7 @@ Befolgen Sie diese Schritte, um eine Migration mit minimaler Downtime mithilfe v
 1. Richten Sie die Konnektivität zur SQL Server-Zielinstanz auf einer Azure-VM Ihren Anforderungen entsprechend ein. Weitere Informationen finden Sie unter [Verbinden mit SQL Server-Instanzen auf virtuellen Azure-Maschinen (Resource Manager)](../../virtual-machines/windows/ways-to-connect-to-sql.md).
 1. Stellen Sie sicher, dass die zu migrierenden Benutzerdatenbanken das vollständige oder massenprotokollierte Wiederherstellungsmodell verwenden.
 1. Führen Sie eine vollständige Datenbanksicherung auf einen lokalen Speicherort durch, und ändern Sie vorhandene Datenbanksicherungsaufträge so, dass das Schlüsselwort [COPY_ONLY](/sql/relational-databases/backup-restore/copy-only-backups-sql-server) verwendet wird, um die Protokollkette aufrechtzuerhalten.
-1. Kopieren Sie lokale Sicherungsdateien auf Ihre VM, indem Sie einen Remotedesktop, [Azure Data Explorer](/data-explorer/data-explorer-overview) oder das [Befehlszeilentool AzCopy](../../../storage/common/storage-use-azcopy-v10.md) (bei Sicherungen über 1 TB empfohlen) verwenden.
+1. Kopieren Sie lokale Sicherungsdateien auf Ihre VM, indem Sie einen Remotedesktop, [Azure Data Explorer](/azure/data-explorer/data-explorer-overview) oder das [Befehlszeilentool AzCopy](../../../storage/common/storage-use-azcopy-v10.md) (bei Sicherungen über 1 TB empfohlen) verwenden.
 1. Stellen Sie die vollständigen Datenbanksicherungen in SQL Server auf der Azure-VM wieder her.
 1. Richten Sie den [Protokollversand](/sql/database-engine/log-shipping/configure-log-shipping-sql-server) zwischen der lokalen Datenbank und der SQL Server-Zieldatenbank auf der Azure-VM ein. Initialisieren Sie Ihre Datenbanken nicht erneut, da dieser Vorgang bereits in einem vorherigen Schritt erfolgt ist.
 1. Führen Sie eine **Übernahme** auf den Zielserver durch. 
@@ -157,8 +157,8 @@ Die folgende Tabelle enthält Komponenten und empfohlene Migrationsmethoden, die
 || Benutzerdatenbanken mit Filestream |  Wenden Sie die [Sicherungs- und Wiederherstellungsmethode](../../virtual-machines/windows/migrate-to-vm-from-sql-server.md#back-up-and-restore) für die Migration an. DMA unterstützt keine Datenbanken mit Filestream. |
 | **Security** | SQL Server- und Windows-Anmeldungen | Verwenden Sie DMA zum [Migrieren von Benutzeranmeldungen](/sql/dma/dma-migrateserverlogins). |
 || SQL Server-Rollen | Skript mit SQL Server Management Studio |
-|| Kryptografieanbieter | Eine [Konvertierung](../../virtual-machines/windows/azure-key-vault-integration-configure.md) wird empfohlen, damit Sie Azure Key Vault verwenden können. Hierfür wird der Ressourcenanbieter [Microsoft.SqlVirtualMachine](../../virtual-machines/windows/sql-vm-resource-provider-register.md) verwendet. |
-| **Serverobjekte** | Sicherungsmedien | Ersetzen Sie die Datenbanksicherung mit [Azure Backup](../../../backup/backup-sql-server-database-azure-vms.md), oder schreiben Sie Sicherungen in [Azure Storage](../../virtual-machines/windows/azure-storage-sql-server-backup-restore-use.md) (SQL Server 2012 SP1 CU2 und höher). Hierfür wird der Ressourcenanbieter [Microsoft.SqlVirtualMachine](../../virtual-machines/windows/sql-vm-resource-provider-register.md) verwendet.|
+|| Kryptografieanbieter | Eine [Konvertierung](../../virtual-machines/windows/azure-key-vault-integration-configure.md) wird empfohlen, damit Sie Azure Key Vault verwenden können. Hierfür wird der Ressourcenanbieter [Microsoft.SqlVirtualMachine](../../virtual-machines/windows/sql-agent-extension-manually-register-single-vm.md) verwendet. |
+| **Serverobjekte** | Sicherungsmedien | Ersetzen Sie die Datenbanksicherung mit [Azure Backup](../../../backup/backup-sql-server-database-azure-vms.md), oder schreiben Sie Sicherungen in [Azure Storage](../../virtual-machines/windows/azure-storage-sql-server-backup-restore-use.md) (SQL Server 2012 SP1 CU2 und höher). Hierfür wird der Ressourcenanbieter [Microsoft.SqlVirtualMachine](../../virtual-machines/windows/sql-agent-extension-manually-register-single-vm.md) verwendet.|
 || Verbindungsserver | Skript mit SQL Server Management Studio |
 || Servertrigger | Skript mit SQL Server Management Studio |
 | **Replikation** | Lokale Veröffentlichungen | Skript mit SQL Server Management Studio |

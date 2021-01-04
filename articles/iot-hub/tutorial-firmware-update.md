@@ -15,12 +15,12 @@ ms.custom:
 - 'Role: IoT Device'
 - devx-track-js
 - devx-track-azurecli
-ms.openlocfilehash: 432cc733ee31bdaa18d555d9a6aeb6aee9879a44
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: b4de685accf665c7555a454ef247ddf589c6ba5f
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92748523"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96572336"
 ---
 # <a name="tutorial-implement-a-device-firmware-update-process"></a>Tutorial: Implementieren eines Updateprozesses für die Gerätefirmware
 
@@ -38,11 +38,9 @@ In diesem Tutorial führen Sie die folgenden Aufgaben durch:
 > * Simulieren des Prozesses für Firmwareupdates auf einem Gerät
 > * Empfangen von Statusaktualisierungen vom Gerät während der Durchführung des Firmwareupdates
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
-## <a name="prerequisites"></a>Voraussetzungen
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
 Die beiden in dieser Schnellstartanleitung ausgeführten Beispielanwendungen sind in Node.js geschrieben. Sie benötigen mindestens Node.js v10.x.x auf Ihrem Entwicklungscomputer.
 
@@ -141,7 +139,7 @@ Eine Konfiguration meldet zwei Arten von Metriken:
 
 Navigieren Sie zum Ordner **iot-hub/Tutorials/FirmwareUpdate** im heruntergeladenen Node.js-Beispielprojekt. Hier können Sie den simulierten Gerätecode anzeigen, mit dem die gewünschten Eigenschaften der Firmware verarbeitet werden, die von der Back-End-Anwendung gesendet werden. Öffnen Sie anschließend die Datei „SimulatedDevice.js“ in einem Text-Editor.
 
-Die simulierte Geräteanwendung erstellt einen Handler für Updates der gewünschten Eigenschaften ( **properties.desired.firmware** ) auf dem Gerätezwilling. Im Handler werden einige grundlegende Überprüfungen der gewünschten Eigenschaften durchgeführt, bevor der Updateprozesses gestartet wird:
+Die simulierte Geräteanwendung erstellt einen Handler für Updates der gewünschten Eigenschaften (**properties.desired.firmware**) auf dem Gerätezwilling. Im Handler werden einige grundlegende Überprüfungen der gewünschten Eigenschaften durchgeführt, bevor der Updateprozesses gestartet wird:
 
 [!code-javascript[Handle desired property update](~/iot-samples-node/iot-hub/Tutorials/FirmwareUpdate/SimulatedDevice.js?name=initiateUpdate "Handle desired property update")]
 
@@ -165,14 +163,14 @@ In diesem Abschnitt führen Sie zwei Beispielanwendungen aus, die nachverfolgt w
 
 Zum Ausführen der Anwendung zur Simulation eines Geräts und der Back-End-Anwendung benötigen Sie die Verbindungszeichenfolgen für das Gerät und den Dienst. Sie haben sich die Verbindungszeichenfolgen notiert, als Sie am Anfang dieses Tutorials die Ressourcen erstellt haben.
 
-Öffnen Sie zum Ausführen der Anwendung zur Simulation eines Geräts ein Shell- oder Befehlseingabefenster, und navigieren Sie im heruntergeladenen Node.js-Projekt zum Ordner **iot-hub/Tutorials/FirmwareUpdate** . Führen Sie anschließend die folgenden Befehle aus:
+Öffnen Sie zum Ausführen der Anwendung zur Simulation eines Geräts ein Shell- oder Befehlseingabefenster, und navigieren Sie im heruntergeladenen Node.js-Projekt zum Ordner **iot-hub/Tutorials/FirmwareUpdate**. Führen Sie anschließend die folgenden Befehle aus:
 
 ```cmd/sh
 npm install
 node SimulatedDevice.js "{your device connection string}"
 ```
 
-Öffnen Sie ein weiteres Shell- oder Befehlseingabefenster, um die Back-End-Anwendung auszuführen. Navigieren Sie anschließend im heruntergeladenen Node.js-Projekt zum Ordner **iot-hub/Tutorials/FirmwareUpdate** . Führen Sie anschließend die folgenden Befehle aus:
+Öffnen Sie ein weiteres Shell- oder Befehlseingabefenster, um die Back-End-Anwendung auszuführen. Navigieren Sie anschließend im heruntergeladenen Node.js-Projekt zum Ordner **iot-hub/Tutorials/FirmwareUpdate**. Führen Sie anschließend die folgenden Befehle aus:
 
 ```cmd/sh
 npm install
@@ -199,7 +197,7 @@ Da automatische Gerätekonfigurationen zum Zeitpunkt der Erstellung und dann all
 
 Wenn Sie das nächste Tutorial ausführen möchten, können Sie die Ressourcengruppe und die IoT Hub-Instanz beibehalten und später erneut verwenden.
 
-Falls Sie die IoT Hub-Instanz nicht mehr benötigen, löschen Sie die Ressourcengruppe über das Portal. Wählen Sie hierzu die Ressourcengruppe **tutorial-iot-hub-rg** aus, die Ihre IoT Hub-Instanz enthält, und klicken Sie auf **Löschen** .
+Falls Sie die IoT Hub-Instanz nicht mehr benötigen, löschen Sie die Ressourcengruppe über das Portal. Wählen Sie hierzu die Ressourcengruppe **tutorial-iot-hub-rg** aus, die Ihre IoT Hub-Instanz enthält, und klicken Sie auf **Löschen**.
 
 Verwenden Sie alternativ hierzu die CLI:
 

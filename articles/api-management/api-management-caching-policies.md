@@ -11,17 +11,20 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/27/2018
+ms.date: 11/13/2020
 ms.author: apimpm
-ms.openlocfilehash: e939e3e6eb686894094c77f62ed815d0ebb5a24f
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 4db42d8fa8c676b20b236577ce6646b909df7c3a
+ms.sourcegitcommit: 18046170f21fa1e569a3be75267e791ca9eb67d0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93358438"
+ms.lasthandoff: 11/16/2020
+ms.locfileid: "94638885"
 ---
 # <a name="api-management-caching-policies"></a>Cacherichtlinien für API Management
 Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinien. Weitere Informationen zum Hinzufügen und Konfigurieren von Richtlinien finden Sie unter [Richtlinien in API Management](./api-management-policies.md).
+
+> [!IMPORTANT]
+> Der integrierte Cache ist flüchtig und wird von allen Einheiten in derselben Region desselben API Management-Diensts gemeinsam genutzt.
 
 ## <a name="caching-policies"></a><a name="CachingPolicies"></a> Cacherichtlinien
 
@@ -120,7 +123,7 @@ Weitere Informationen finden Sie unter [Richtlinienausdrücke](api-management-po
 ### <a name="usage"></a>Verwendung
 Diese Richtlinie kann in den folgenden [Abschnitten](./api-management-howto-policies.md#sections) und [Bereichen](./api-management-howto-policies.md#scopes) von Richtlinien verwendet werden.
 
-- **Richtlinienabschnitte** : inbound
+- **Richtlinienabschnitte**: inbound
 - **Richtlinienbereiche:** alle Bereiche
 
 ## <a name="store-to-cache"></a><a name="StoreToCache"></a> In Cache ablegen

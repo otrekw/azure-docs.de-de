@@ -13,12 +13,12 @@ ms.date: 06/05/2020
 ms.author: negoe
 ms.reviewer: nacanuma
 ms.custom: aaddev devx-track-js
-ms.openlocfilehash: 327280c193c3c2fb829e468bccfc352f35edfdb5
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: ef1c0003978251dd2637915e56dc396e85f4438f
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92673514"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107871"
 ---
 # <a name="use-microsoft-authentication-library-for-javascript-to-work-with-azure-ad-b2c"></a>Verwenden von Microsoft Authentication Library für JavaScript für die Zusammenarbeit mit Azure AD B2C
 
@@ -56,7 +56,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-nodej
 
 ### <a name="step-3-configure-authentication"></a>Schritt 3: Konfigurieren der Authentifizierung
 
-1. Öffnen Sie im Beispiel die Datei *config.json* .
+1. Öffnen Sie im Beispiel die Datei *config.json*.
 
 2. Konfigurieren Sie das Beispiel mit den Anwendungsanmeldeinformationen, die Sie zuvor bei der Registrierung Ihrer Anwendung erhalten haben. Ändern Sie die folgenden Codezeilen. Ersetzen Sie dabei die Werte durch den Namen Ihres Mandanten, die Client-ID und den Richtliniennamen.
 
@@ -98,7 +98,7 @@ Es gibt zwei Punkte, die beim Konfigurieren Ihrer Anwendung von Interesse sind:
 - Konfigurieren des API-Endpunkts und von verfügbar gemachten Bereichen
 - Konfigurieren von Authentifizierungsparametern und Tokenbereichen
 
-1. Öffnen Sie im Beispiel die Datei *apiConfig.js* .
+1. Öffnen Sie im Beispiel die Datei *apiConfig.js*.
 
 2. Konfigurieren Sie das Beispiel mit den Parametern, die Sie zuvor bei der Registrierung Ihrer Web-API erhalten haben. Ändern Sie die folgenden Codezeilen, indem Sie die entsprechenden Werte durch die Adresse Ihrer Web-API und die verfügbar gemachten Bereiche ersetzen.
 
@@ -110,7 +110,7 @@ Es gibt zwei Punkte, die beim Konfigurieren Ihrer Anwendung von Interesse sind:
     };
    ```
 
-1. Öffnen Sie im Beispiel die Datei *authConfig.js* .
+1. Öffnen Sie im Beispiel die Datei *authConfig.js*.
 
 1. Konfigurieren Sie das Beispiel mit den Parametern, die Sie zuvor bei der Registrierung Ihrer Single-Page-Webanwendung erhalten haben. Ändern Sie die folgenden Codezeilen, indem Sie die entsprechenden Werte durch Ihre Client-ID, Autoritätsmetadaten und Bereiche für die Tokenanforderung ersetzen.
 
@@ -207,9 +207,9 @@ Wenn ein Benutzer die Option **Kennwort vergessen** auswählt, gibt Ihre Anmeldu
 
     Nachdem der Benutzer sein Kennwort zurückgesetzt hat, wird er zurück zur Anwendung geleitet, um sich erneut anzumelden.
 
-    :::image type="content" source="media/msal-b2c-overview/user-journey-02-password-reset.png" alt-text="Von Azure AD B2C angezeigter Anmeldebildschirm" border="false":::
+    :::image type="content" source="media/msal-b2c-overview/user-journey-02-password-reset.png" alt-text="Von Azure AD B2C während des Kennwortzurücksetzungsflows angezeigte Bildschirme" border="false":::
 
-    Weitere Informationen zu Fehlercodes und Ausnahmebehandlungen finden Sie unter [MSAL-Fehler- und Ausnahmecodes](msal-handling-exceptions.md).
+    Weitere Informationen zu Fehlercodes und Ausnahmebehandlungen finden Sie unter [MSAL-Fehler- und Ausnahmecodes](msal-error-handling-js.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -217,4 +217,4 @@ Erfahren Sie mehr zu den folgenden Azure AD B2C-Konzepten:
 
 - [Benutzerabläufe](../../active-directory-b2c/tutorial-create-user-flows.md)
 - [Benutzerdefinierte Richtlinien](../../active-directory-b2c/custom-policy-get-started.md)
-- [Anpassung der Benutzererfahrung](../../active-directory-b2c/custom-policy-configure-user-input.md)
+- [Anpassung der Benutzererfahrung](../../active-directory-b2c/configure-user-input.md)

@@ -3,16 +3,16 @@ title: Beispielklassentypen für Azure Lab Services | Microsoft-Dokumentation
 description: In diesem Artikel sind einige Typen von Klassen aufgeführt, für die Sie mithilfe von Azure Lab Services Labs einrichten können.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 1c2caac35125c3f69c2257750bac417971af5dbd
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 7ebc89c040be732c230f0c3f54f68fb91466eb68
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94490983"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436401"
 ---
 # <a name="class-types-overview---azure-lab-services"></a>Übersicht über Klassentypen: Azure Lab Services
 
-Mithilfe von Azure Lab Services können Sie schnell eine Classroom-Lab-Umgebung in der Cloud einrichten. Die Artikel in diesem Abschnitt bieten Anleitungen zum Einrichten verschiedener Typen von Classroom-Labs mithilfe von Azure Lab Services.
+Mithilfe von Azure Lab Services können Sie schnell eine Classroom-Lab-Umgebung in der Cloud einrichten. Die Artikel in diesem Abschnitt bieten Anleitungen zum Einrichten verschiedener Typen von Labs mithilfe von Azure Lab Services.
 
 ## <a name="big-data-analytics"></a>Big Data-Analyse
 Sie können für einen Big Data-Analysekurs ein GPU-Lab einrichten. Bei dieser Art von Kurs lernen die Kursteilnehmer, mit großen Datenmengen umzugehen und maschinelle und statistische Lernalgorithmen anzuwenden, um Erkenntnisse aus Daten zu gewinnen. Ein wichtiges Ziel für Kursteilnehmer ist es, den Umgang mit Datenanalysetools zu erlernen, z. B. mit dem Open-Source-Softwarepaket von Apache Hadoop, das Tools für die Speicherung, Verwaltung und Verarbeitung von Big Data bereitstellt. 

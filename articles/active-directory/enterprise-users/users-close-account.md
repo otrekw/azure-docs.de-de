@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.subservice: enterprise-users
 ms.topic: how-to
 ms.workload: identity
-ms.date: 11/20/2020
+ms.date: 12/03/2020
 ms.author: rolyon
 ms.reviewer: ''
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 142143f96314539051ea44c00c6ff95cb2650566
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 252c993f5679d80cda97a6fade08f5f92489840d
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94650205"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575583"
 ---
 # <a name="close-your-work-or-school-account-in-an-unmanaged-azure-ad-organization"></a>Schließen Ihres Geschäfts-, Schul- oder Unikontos in einer nicht verwalteten Azure AD-Organisation
 

@@ -9,18 +9,19 @@ editor: ''
 tags: azure-resource-manager
 keywords: SAP, Azure HANA, Storage Ultra-Datenträger, Storage Premium
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 11/05/2020
+ms.date: 11/26/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bbaa9d33d3a31b682a66b2a3254fc2265b6f8d7b
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 8c4aa608e892867daaf954284a9dfce997a9ae1f
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357076"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96484276"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>SAP HANA: Speicherkonfigurationen für virtuelle Azure-Computer
 
@@ -111,7 +112,7 @@ Die Kumulierung einer Reihe von Azure-VHDs unter einem Stripeset ist für den IO
 
 
 ### <a name="azure-burst-functionality-for-premium-storage"></a>Azure-Burstfunktionalität für Storage Premium
-Für Azure Premium-Datenträger mit einer Kapazität kleiner oder gleich 512 GiB wird eine Burstfunktionalität angeboten. Die genaue Funktionsweise des Datenträgerbursting wird in dem Artikel [Datenträgerbursting](../../linux/disk-bursting.md) beschrieben. Wenn Sie den Artikel lesen, verstehen Sie das Konzept des Anfallens von IOPS und Durchsatz in den Zeiten, in denen Ihre E/A-Workload unter den nominalen IOPS und unter dem Durchsatz der Datenträger liegt (Einzelheiten zum nominalen Durchsatz finden Sie unter [Verwaltete Datenträger – Preise](https://azure.microsoft.com/pricing/details/managed-disks/)). Sie werden das Delta von IOPS und Durchsatz zwischen Ihrer aktuellen Nutzung und den Nennwerten des Datenträgers ansammeln. Die Bursts sind auf maximal 30 Minuten begrenzt.
+Für Azure Premium-Datenträger mit einer Kapazität kleiner oder gleich 512 GiB wird eine Burstfunktionalität angeboten. Die genaue Funktionsweise des Datenträgerbursting wird in dem Artikel [Datenträgerbursting](../../disk-bursting.md) beschrieben. Wenn Sie den Artikel lesen, verstehen Sie das Konzept des Anfallens von IOPS und Durchsatz in den Zeiten, in denen Ihre E/A-Workload unter den nominalen IOPS und unter dem Durchsatz der Datenträger liegt (Einzelheiten zum nominalen Durchsatz finden Sie unter [Verwaltete Datenträger – Preise](https://azure.microsoft.com/pricing/details/managed-disks/)). Sie werden das Delta von IOPS und Durchsatz zwischen Ihrer aktuellen Nutzung und den Nennwerten des Datenträgers ansammeln. Die Bursts sind auf maximal 30 Minuten begrenzt.
 
 Die idealen Fälle, in denen diese Burstfunktionalität eingeplant werden kann, werden wahrscheinlich die Volumes oder Datenträger sein, die Datendateien für die verschiedenen DBMS enthalten. Die für diese Volumen zu erwartende E/A-Workload, insbesondere bei kleinen bis mittleren Systemen, wird voraussichtlich wie folgt aussehen:
 
@@ -133,7 +134,7 @@ Insbesondere auf kleineren DBMS-Systemen, auf denen Ihre Workload nur ein paar h
 > Die SAP HANA-Zertifizierung für virtuelle Computer der Azure M-Serie gilt ausschließlich mit der Azure-Schreibbeschleunigung für das Volume **/hana/log**. Folglich müssen SAP HANA-Bereitstellungen in Produktionsszenarien auf virtuellen Computern der Azure M-Serie für das Volume **/hana/log** mit der Azure-Schreibbeschleunigung konfiguriert werden.  
 
 > [!NOTE]
-> In Szenarien, die Azure Premium Storage einbeziehen, implementieren wir Burstfunktionen in die Konfiguration. Wenn Sie Speichertesttools in beliebiger Form oder Gestalt verwenden, denken Sie daran, wie das [Azure Premium-Datenträgerbursting](../../linux/disk-bursting.md) funktioniert. Bei der Durchführung der Speichertests, die über das SAP-HWCCT- oder HCMT-Tool geliefert werden, gehen wir nicht davon aus, dass alle Tests die Kriterien erfüllen, da einige der Tests die Bursting-Guthaben überschreiten, die Sie akkumulieren können. Vor allem, wenn alle Tests nacheinander ohne Unterbrechung durchgeführt werden.
+> In Szenarien, die Azure Premium Storage einbeziehen, implementieren wir Burstfunktionen in die Konfiguration. Wenn Sie Speichertesttools in beliebiger Form oder Gestalt verwenden, denken Sie daran, wie das [Azure Premium-Datenträgerbursting](../../disk-bursting.md) funktioniert. Bei der Durchführung der Speichertests, die über das SAP-HWCCT- oder HCMT-Tool geliefert werden, gehen wir nicht davon aus, dass alle Tests die Kriterien erfüllen, da einige der Tests die Bursting-Guthaben überschreiten, die Sie akkumulieren können. Vor allem, wenn alle Tests nacheinander ohne Unterbrechung durchgeführt werden.
 
 
 > [!NOTE]
@@ -272,7 +273,7 @@ Ausführliche Informationen zu ANF für Hana finden Sie im Dokument [NFS v4.1-V
 
 
 ## <a name="cost-conscious-solution-with-azure-premium-storage"></a>Kostengünstige Lösung mit Azure Storage Premium
-Bisher wurde die in diesem Dokument im Abschnitt [Lösungen mit Storage Premium und Azure-Schreibbeschleunigung für virtuelle Azure-Computer der M-Serie](#solutions-with-premium-storage-and-azure-write-accelerator-for-azure-m-series-virtual-machines) beschriebene Azure Storage Premium-Lösung für SAP HANA-Szenarien konzipiert, die für die Produktion unterstützt werden. Ein Merkmal der Konfigurationen, die für die Produktion unterstützt werden können, ist die Nutzung von zwei separaten Volumes für SAP HANA-Daten und -Wiederholungsprotokoll. Der Grund für eine solche Trennung ist, dass sich die Workloadmerkmale der Volumes unterscheiden. Mit den empfohlenen Produktionskonfigurationen könnten auch eine andere Art der Zwischenspeicherung oder sogar verschiedene Arten von Azure-Blockspeicher erforderlich sein. Die zur Produktion unterstützten Konfigurationen nutzen das Azure-Blockspeicherziel auch, um mit der [einzelnen VM-SLA für Azure Virtual Machines](https://azure.microsoft.com/support/legal/sla/virtual-machines/) kompatibel zu sein.  In Szenarien, die nicht für die Produktion bestimmt sind, gelten einige der Überlegungen für Produktionssysteme möglicherweise nicht für Low End-Systeme, die nicht für die Produktion bestimmt sind. In der Folge könnten das Daten- und Protokollvolume für HANA kombiniert werden. Wenn auch mit ein paar Schwachstellen, wie z. B. letztendlich einen bestimmten Durchsatz oder Latenz-KPIs nicht zu erreichen, die für Produktionssysteme erforderlich sind. Ein weiterer Aspekt bei der Reduzierung der Kosten in solchen Umgebungen kann die Verwendung von [Azure SSD Standard-Speicher](./planning-guide-storage.md#azure-standard-ssd-storage) sein. Obwohl diese Auswahl die [einzelne VM-SLA für Azure Virtual Machines](https://azure.microsoft.com/support/legal/sla/virtual-machines/) ungültig macht. 
+Bisher wurde die in diesem Dokument im Abschnitt [Lösungen mit Storage Premium und Azure-Schreibbeschleunigung für virtuelle Azure-Computer der M-Serie](#solutions-with-premium-storage-and-azure-write-accelerator-for-azure-m-series-virtual-machines) beschriebene Azure Storage Premium-Lösung für SAP HANA-Szenarien konzipiert, die für die Produktion unterstützt werden. Ein Merkmal der Konfigurationen, die für die Produktion unterstützt werden können, ist die Nutzung von zwei separaten Volumes für SAP HANA-Daten und -Wiederholungsprotokoll. Der Grund für eine solche Trennung ist, dass sich die Workloadmerkmale der Volumes unterscheiden. Mit den empfohlenen Produktionskonfigurationen könnten auch eine andere Art der Zwischenspeicherung oder sogar verschiedene Arten von Azure-Blockspeicher erforderlich sein. In Szenarien, die nicht für die Produktion bestimmt sind, gelten einige der Überlegungen für Produktionssysteme möglicherweise nicht für Low End-Systeme, die nicht für die Produktion bestimmt sind. In der Folge könnten das Daten- und Protokollvolume für HANA kombiniert werden. Wenn auch mit ein paar Schwachstellen, wie z. B. letztendlich einen bestimmten Durchsatz oder Latenz-KPIs nicht zu erreichen, die für Produktionssysteme erforderlich sind. Ein weiterer Aspekt bei der Reduzierung der Kosten in solchen Umgebungen kann die Verwendung von [Azure SSD Standard-Speicher](./planning-guide-storage.md#azure-standard-ssd-storage) sein. Beachten Sie, dass sich die Auswahl von Azure-Speicher vom Typ SSD Standard oder HDD Standard auf Ihre SLAs für einzelne VMs auswirkt. Dies ist im Artikel [SLA für Virtuelle Computer](https://azure.microsoft.com/support/legal/sla/virtual-machines) dokumentiert.
 
 Eine kostengünstigere Alternative für derartige Konfigurationen könnte wie folgt aussehen:
 

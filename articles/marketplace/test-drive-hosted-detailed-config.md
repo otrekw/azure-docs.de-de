@@ -7,12 +7,12 @@ ms.topic: article
 author: trkeya
 ms.author: trkeya
 ms.date: 11/06/2020
-ms.openlocfilehash: 0765c05e08dda782c084775fb83b22a52558fa0d
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 88779f67a2fa9b18f0177a1459b32c672343bb57
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491612"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462941"
 ---
 # <a name="detailed-configuration-for-hosted-test-drives"></a>Detaillierte Konfigurationsschritte für gehostete Testversionen
 
@@ -29,7 +29,7 @@ In diesem Artikel wird beschrieben, wie Sie eine gehostete Testversion für Dyna
 
     - **Typ der Testversion**: Wählen Sie die Option **Von Microsoft gehostet (Dynamics 365 for Customer Engagement & PowerApps)** aus. Dies weist darauf hin, dass Microsoft den Dienst hosten und warten wird, durch den die Benutzerbereitstellung für die Testversion ausgeführt und wieder aufgehoben wird.
 
-5. Erteilen Sie die Microsoft AppSource-Berechtigung, durch die die Benutzerbereitstellung für die Testversion im Mandanten ausgeführt und wieder aufgehoben werden kann. Befolgen Sie dazu die [hier](https://github.com/Microsoft/AppSource/blob/master/Microsoft%20Hosted%20Test%20Drive/Setup-your-Azure-subscription-for-Dynamics365-Microsoft-Hosted-Test-Drives.md) beschriebenen Anweisungen. In diesem Schritt generieren Sie die unten erwähnten Werte **Azure AD-App-ID** und **Azure AD-App-Schlüssel**.
+5. Erteilen Sie die Microsoft AppSource-Berechtigung, durch die die Benutzerbereitstellung für die Testversion im Mandanten ausgeführt und wieder aufgehoben werden kann. Befolgen Sie dazu die [hier](./test-drive-azure-subscription-setup.md) beschriebenen Anweisungen. In diesem Schritt generieren Sie die unten erwähnten Werte **Azure AD-App-ID** und **Azure AD-App-Schlüssel**.
 6. Füllen Sie diese Felder auf der Seite **Technische Konfiguration der Testversion** aus.
 
     [![Seite „Technische Konfiguration der Testversion“](media/test-drive/technical-config-details.png)](media/test-drive/technical-config-details.png#lightbox)
@@ -81,7 +81,7 @@ In diesem Artikel wird beschrieben, wie Sie eine gehostete Testversion für Dyna
     - **Azure Active Directory-Mandantenname**: Der Name des Azure-Mandanten für Ihre Dynamics 365-Instanz. Verwenden Sie das Format `<tenantname>.onmicrosoft.com`. Beispielwert: `testdrive.onmicrosoft.com`.
     - **Azure Active Directory-Anwendungs-ID**: Die ID der Azure Active Directory (AD)-App, die Sie in Schritt 5 erstellt haben. Beispielwert: `53852862-a2ae-4e43-9461-faa49650a096`.
     - **Clientgeheimnis für Azure Active Directory-Anwendung**: Das Geheimnis für die in Schritt 5 erstellte Azure AD-App. Beispielwert: `IJUgaIOfq9b9LbUjeQmzNBW4VGn6grr1l/n3aMrnfdk=`.
-    - **Juristische Person für Testversion**: Gibt eine juristische Person an, der ein Testbenutzer zugewiesen wird. Informieren Sie sich unter [Erstellen oder Ändern einer juristischen Person](https://technet.microsoft.com/library/hh242184.aspx), wie Sie eine neue juristische Person erstellen.
+    - **Juristische Person für Testversion**: Gibt eine juristische Person an, der ein Testbenutzer zugewiesen wird. Informieren Sie sich unter [Erstellen oder Ändern einer juristischen Person](/dynamicsax-2012/appuser-itpro/create-or-modify-a-legal-entity), wie Sie eine neue juristische Person erstellen.
     - **Rollenname**: Der Name der Entwicklungsumgebung (Application Object Tree, AOT) der benutzerdefinierten Dynamics 365-Sicherheitsrolle, die Sie für die Testversion erstellt haben. Dies ist die Rolle, die den Benutzern während der Nutzung der Testversion zugewiesen wird.
 
         :::image type="content" source="./media/test-drive/security-config.png" alt-text="Die Seite zur Sicherheitskonfiguration":::

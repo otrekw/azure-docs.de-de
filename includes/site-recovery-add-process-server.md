@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: raynew
 ms.openlocfilehash: 31e61069c95be9bd1c7a684bb83ebcd93bcb14be
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92548244"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019136"
 ---
 1. Starten von „UnifiedSetup.exe“ für Azure Site Recovery
 2. Wählen Sie unter **Vorbereitung** die Option **Weitere Prozessserver zum Aufskalieren der Bereitstellung hinzufügen** aus.
@@ -30,7 +30,7 @@ ms.locfileid: "92548244"
      * Bei Verwendung eines benutzerdefinierten Proxys müssen Sie die Adresse, den Port und die Anmeldeinformationen eingeben.
      * Wenn Sie einen Proxy verwenden, sollten Sie den Zugriff auf die Dienst-URLs bereits zugelassen haben.
 
-5. Bei der **Voraussetzungsüberprüfung** führt das Setup eine Überprüfung durch, um sicherzustellen, dass die Installation ausgeführt werden kann. Falls beim **Überprüfen der Synchronisierung der globalen Zeit** eine Warnung angezeigt wird, stellen Sie sicher, dass die Zeit der Systemuhr (Einstellungen für **Datum und Uhrzeit** ) mit der Zeitzone übereinstimmt.
+5. Bei der **Voraussetzungsüberprüfung** führt das Setup eine Überprüfung durch, um sicherzustellen, dass die Installation ausgeführt werden kann. Falls beim **Überprüfen der Synchronisierung der globalen Zeit** eine Warnung angezeigt wird, stellen Sie sicher, dass die Zeit der Systemuhr (Einstellungen für **Datum und Uhrzeit**) mit der Zeitzone übereinstimmt.
 
      ![Prozessserver hinzufügen 4](./media/site-recovery-add-process-server/ps-page-4.png)
 

@@ -4,17 +4,17 @@ description: In dieser Schnellstartanleitung erfahren Sie, wie Sie ein IoT Edge
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/30/2020
+ms.date: 12/02/2020
 ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 720a4d14a73350d98b3f9054f748b93d296be11b
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: ff9ba73e71e4525fe56a3cbb54626030f57e990b
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94579282"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920802"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-linux-device"></a>Schnellstart: Bereitstellen Ihres ersten IoT Edge-Moduls auf einem virtuellen Linux-Gerät
 
@@ -33,23 +33,15 @@ In dieser Schnellstartanleitung wird Schritt für Schritt beschrieben, wie Sie e
 
 Wenn Sie über kein aktives Azure-Abonnement verfügen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free) erstellen, bevor Sie beginnen.
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-Sie verwenden die Azure CLI für viele Schritte in dieser Schnellstartanleitung, und Azure IoT verfügt über eine Erweiterung zur Aktivierung der zusätzlichen Funktionalität.
-
-Fügen Sie die Azure IoT-Erweiterung der Cloud Shell-Instanz hinzu.
-
-   ```azurecli-interactive
-   az extension add --name azure-iot
-   ```
-
-[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
-
 ## <a name="prerequisites"></a>Voraussetzungen
+
+Bereiten Sie die Umgebung für die Azure CLI vor.
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
 Cloudressourcen:
 
-* Eine Ressourcengruppe zum Verwalten aller Ressourcen, die Sie in dieser Schnellstartanleitung verwenden. Wir verwenden in dieser Schnellstartanleitung und den folgenden Tutorials durchgängig die Beispielressourcengruppe mit dem Namen **IoTEdgeResources**.
+- Eine Ressourcengruppe zum Verwalten aller Ressourcen, die Sie in dieser Schnellstartanleitung verwenden. Wir verwenden in dieser Schnellstartanleitung und den folgenden Tutorials durchgängig die Beispielressourcengruppe mit dem Namen **IoTEdgeResources**.
 
    ```azurecli-interactive
    az group create --name IoTEdgeResources --location westus2
@@ -119,11 +111,11 @@ Verwenden Sie den folgenden CLI-Befehl, um Ihr IoT Edge-Gerät basierend auf der
    az deployment group create \
    --resource-group IoTEdgeResources \
    --template-uri "https://aka.ms/iotedge-vm-deploy" \
-   --parameters dnsLabelPrefix='my-edge-vm' \
+   --parameters dnsLabelPrefix='<REPLACE_WITH_VM_NAME>' \
    --parameters adminUsername='azureUser' \
    --parameters deviceConnectionString=$(az iot hub device-identity connection-string show --device-id myEdgeDevice --hub-name
    <REPLACE_WITH_HUB_NAME> -o tsv) \
-   --parameters authenticationType='password'
+   --parameters authenticationType='password' \
    --parameters adminPasswordOrKey="<REPLACE_WITH_PASSWORD>"
    ```
 
@@ -133,7 +125,7 @@ Verwenden Sie den folgenden CLI-Befehl, um Ihr IoT Edge-Gerät basierend auf der
    az deployment group create `
    --resource-group IoTEdgeResources `
    --template-uri "https://aka.ms/iotedge-vm-deploy" `
-   --parameters dnsLabelPrefix='my-edge-vm1' `
+   --parameters dnsLabelPrefix='<REPLACE_WITH_VM_NAME>' `
    --parameters adminUsername='azureUser' `
    --parameters deviceConnectionString=$(az iot hub device-identity connection-string show --device-id myEdgeDevice --hub-name <REPLACE_WITH_HUB_NAME> -o tsv) `
    --parameters authenticationType='password' `
@@ -146,7 +138,7 @@ Für diese Vorlage werden die folgenden Parameter verwendet:
 | --------- | ----------- |
 | **resource-group** | Die Ressourcengruppe, in der die Ressourcen erstellt werden. Verwenden Sie die Standardressourcengruppe **IoTEdgeResources**, die in diesem Artikel bereits verwendet wurde, oder geben Sie den Namen einer Ressourcengruppe an, die unter Ihrem Abonnement vorhanden ist. |
 | **template-uri** | Ein Zeiger auf die Resource Manager-Vorlage, die wir verwenden. |
-| **dnsLabelPrefix** | Eine Zeichenfolge, die zum Erstellen des Hostnamens des virtuellen Computers verwendet wird. Verwenden Sie die Beispielzeichenfolge **my-edge-vm**, oder geben Sie eine neue Zeichenfolge an. |
+| **dnsLabelPrefix** | Eine Zeichenfolge, die zum Erstellen des Hostnamens des virtuellen Computers verwendet wird. Ersetzen Sie den Platzhaltertext durch einen Namen für Ihren virtuellen Computer. |
 | **adminUsername** | Ein Benutzername für das Administratorkonto des virtuellen Computers. Verwenden Sie das Beispiel **azureUser**, oder geben Sie einen neuen Benutzernamen an. |
 | **deviceConnectionString** | Die Verbindungszeichenfolge aus der Geräteidentität in IoT Hub, die zum Konfigurieren der IoT Edge-Runtime auf dem virtuellen Computer verwendet wird. Mit dem CLI-Befehl in diesem Parameter wird die Verbindungszeichenfolge für Sie abgerufen. Ersetzen Sie den Platzhaltertext durch den Namen Ihres IoT-Hubs. |
 | **authenticationType** | Die Authentifizierungsmethode für das Administratorkonto. In dieser Schnellstartanleitung wird die Authentifizierung vom Typ **password** verwendet, aber Sie können diesen Parameter auch auf **sshPublicKey** festlegen. |

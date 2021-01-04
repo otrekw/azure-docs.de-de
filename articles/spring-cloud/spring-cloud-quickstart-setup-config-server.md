@@ -6,14 +6,14 @@ ms.author: brendm
 ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 09/08/2020
-ms.custom: devx-track-java
+ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 55e47b09ac4a6256a125a75c8a0f856e867e7c0e
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 7400aeeba80ce168a9dea0d81e1ad0f2fbe24c95
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94337786"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96750842"
 ---
 # <a name="quickstart-set-up-azure-spring-cloud-configuration-server"></a>Schnellstart: Einrichten des Azure Spring Cloud-Konfigurationsservers
 
@@ -57,9 +57,19 @@ Im folgenden Verfahren wird der Konfigurationsserver mithilfe des Azure-Portals 
 
 2. Geben Sie im Abschnitt **Standardrepository** für **URI** den Wert „https://github.com/Azure-Samples/piggymetrics-config“ ein.
 
-3. Wählen Sie **Übernehmen** aus, um die Änderungen zu speichern.
+3. Klicken Sie auf **Überprüfen**.
 
-    ![Screenshot des ASC-Portals](media/spring-cloud-quickstart-launch-app-portal/portal-config.png)
+    ![Navigieren zum Konfigurationsserver](media/spring-cloud-quickstart-launch-app-portal/portal-config.png)
+
+4. Klicken Sie nach Abschluss der Überprüfung auf **Anwenden**, um die Änderungen zu speichern.
+
+    ![Überprüfen des Konfigurationsservers](media/spring-cloud-quickstart-launch-app-portal/validate-complete.png)
+
+5. Die Aktualisierung der Konfiguration kann einige Minuten dauern.
+ 
+    ![Aktualisieren des Konfigurationsservers](media/spring-cloud-quickstart-launch-app-portal/updating-config.png) 
+
+6. Sie sollten eine Benachrichtigung erhalten, wenn die Konfiguration abgeschlossen ist.
 
 #### <a name="cli"></a>[BEFEHLSZEILENSCHNITTSTELLE (CLI)](#tab/Azure-CLI)
 
@@ -72,6 +82,9 @@ az spring-cloud config-server git set -n <service instance name> --uri https://g
 ```
 ---
 ::: zone-end
+
+> [!TIP]
+> Bei Verwendung eines privaten Repositorys für den Konfigurationsserver finden Sie weitere Informationen im [Tutorial zum Einrichten der Authentifizierung](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-tutorial-config-server).
 
 ## <a name="troubleshooting-of-azure-spring-cloud-config-server"></a>Problembehandlung beim Azure Spring Cloud-Konfigurationsserver
 

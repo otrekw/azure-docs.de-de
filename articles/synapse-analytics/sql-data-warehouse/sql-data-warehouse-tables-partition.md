@@ -11,12 +11,12 @@ ms.date: 03/18/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 39a1f41d97b1f4576d5877e4f35c99b3e189e3b2
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: f65c1d6fda09d7762a59fb5a932a72ad706a767a
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93314508"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96448024"
 ---
 # <a name="partitioning-tables-in-dedicated-sql-pool"></a>Partitionierungstabellen im dedizierten SQL-Pool
 
@@ -30,7 +30,7 @@ Durch die Partitionierung können sich Vorteile für die Wartung und die Abfrage
 
 ### <a name="benefits-to-loads"></a>Vorteile für Lasten
 
-Der Hauptvorteil der Partitionierung in einem dedizierten SQL-Pool ist die Verbesserung der Effizienz und Leistung beim Laden von Daten, indem Partitionen gelöscht, gewechselt und zusammengeführt werden. In den meisten Fällen werden Daten nach einer Datumsspalte partitioniert, die eng an die Reihenfolge gebunden ist, mit der die Daten in die Datenbank geladen werden. Einer der größten Vorteile bei der Verwendung von Partitionen zum Verwalten von Daten ist die Vermeidung der Transaktionsprotokollierung. Das schlichte Einfügen, Aktualisieren oder Löschen von Daten kann zwar der einfachste Ansatz sein, aber wenn Sie etwas Planung und Arbeit investieren, kann die Leistung durch die Verwendung der Partitionierung während des Ladevorgangs erheblich verbessert werden.
+Der Hauptvorteil der Partitionierung in einem dedizierten SQL-Pool ist die Verbesserung der Effizienz und Leistung beim Laden von Daten, indem Partitionen gelöscht, gewechselt und zusammengeführt werden. In den meisten Fällen werden Daten nach einer Datumsspalte partitioniert, die eng an die Reihenfolge gebunden ist, mit der die Daten in den SQL-Pool geladen werden. Einer der größten Vorteile bei der Verwendung von Partitionen zum Verwalten von Daten ist die Vermeidung der Transaktionsprotokollierung. Das schlichte Einfügen, Aktualisieren oder Löschen von Daten kann zwar der einfachste Ansatz sein, aber wenn Sie etwas Planung und Arbeit investieren, kann die Leistung durch die Verwendung der Partitionierung während des Ladevorgangs erheblich verbessert werden.
 
 Sie können den Partitionswechsel einsetzen, um einen Abschnitt einer Tabelle schnell zu entfernen oder auszutauschen.  So kann beispielsweise eine Umsatzfaktentabelle erstellt werden, die nur Daten für die letzten 36 Monate enthält. Am Monatsende wird jeweils der älteste Verkaufsdatenmonat aus der Tabelle gelöscht.  Sie können eine delete-Anweisung verwenden, um jeweils die Daten für den ältesten Monat zu löschen. 
 
@@ -48,7 +48,7 @@ Die Partitionierung kann zwar verwendet werden, um die Leistung in einigen Szena
 
 Es muss klar sein, wann sich der Einsatz der Partitionierung anbietet und wie viele Partitionen erstellt werden sollten, damit die Partitionierung hilfreich ist. Es gibt keine genaue Vorgabe, welche Anzahl von Partitionen zu hoch ist. Dies hängt von Ihren Daten und außerdem davon ab, wie viele Partitionen gleichzeitig geladen werden. Ein erfolgreiches Partitionierungsschema hat normalerweise Dutzende bis Hunderte von Partitionen, nicht Tausende.
 
-Beim Erstellen von Partitionierungen für **gruppierte Columnstore** -Tabellen ist es wichtig zu beachten, wie viele Zeilen zu jeder Partition gehören werden. Für eine optimale Komprimierung und Leistung von gruppierten Columnstore-Tabellen sind mindestens 1 Million Zeilen pro Verteilung und Partition erforderlich. Bereits vor der Erstellung von Partitionen teilt ein dedizierter SQL-Pool jede Tabelle auf 60 verteilte Datenbanken auf. 
+Beim Erstellen von Partitionierungen für **gruppierte Columnstore**-Tabellen ist es wichtig zu beachten, wie viele Zeilen zu jeder Partition gehören werden. Für eine optimale Komprimierung und Leistung von gruppierten Columnstore-Tabellen sind mindestens 1 Million Zeilen pro Verteilung und Partition erforderlich. Bereits vor der Erstellung von Partitionen teilt ein dedizierter SQL-Pool jede Tabelle auf 60 verteilte Datenbanken auf. 
 
 Jegliche Partitionierungen, die einer Tabelle hinzugefügt werden, werden zusätzlich zu den im Hintergrund erstellten Verteilungen durchgeführt. Für dieses Beispiel bedeutet das Folgendes: Wenn die Umsatzfaktentabelle 36 Monatspartitionen enthält und ein dedizierter SQL-Pool 60 Verteilungen umfasst, muss die Umsatzfaktentabelle mindestens 60 Millionen Zeilen pro Monat umfassen (oder 2,1 Milliarden Zeilen, wenn alle Monate aufgefüllt sind). Wenn eine Tabelle weniger Zeilen als das empfohlene Minimum an Zeilen pro Partition enthält, sollten Sie die Verwendung von weniger Partitionen erwägen, um die Anzahl von Zeilen pro Partition zu erhöhen. 
 
@@ -355,7 +355,7 @@ Um ein **Rosten** der Tabellendefinition in Ihrem Quellcodeverwaltungssystem zu 
     DROP TABLE #partitions;
     ```
 
-Bei diesem Ansatz bleibt der Code in der Quellcodeverwaltung statisch, und die Partitionierungsgrenzwerte können sich mit der Zeit dynamisch mit der Datenbank entwickeln.
+Bei diesem Ansatz bleibt der Code in der Quellcodeverwaltung statisch, und die Partitionierungsgrenzwerte können sich im Laufe der Zeit mit dem SQL-Pool dynamisch entwickeln.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

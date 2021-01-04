@@ -1,14 +1,17 @@
 ---
 title: Vorbereiten von Windows Server 2003-Server auf die Migration mit Azure Migrate
 description: Hier erfahren Sie, wie Sie Windows Server 2003-Server auf die Migration mit Azure Migrate vorbereiten.
+author: rahulg1190
+ms.author: rahugup
+ms.manager: bsiva
 ms.topic: how-to
 ms.date: 05/27/2020
-ms.openlocfilehash: 350eab98a2b40d5ca1382bbfc24245e7cb47b48e
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: f8d3dea970d07d951467a44661e12000ba413f72
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93146840"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753745"
 ---
 # <a name="prepare-windows-server-2003-machines-for-migration"></a>Vorbereiten von Windows Server 2003-Computer auf die Migration
 
@@ -32,14 +35,14 @@ In diesem Artikel wird beschrieben, wie Sie Computer mit Windows Server 2003 au
 
 1. Führen Sie [diese Anweisungen](/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#turn-an-integration-service-on-or-off-using-hyper-v-manager) aus, um zu überprüfen, ob die Installation durchgeführt wurde.
 2. Wenn keine Installation vorliegt, melden Sie sich mit der Hyper-V-Rolle an einem Windows Server 2012 R2/Windows Server 2012-Computer an.
-3. Navigieren Sie zur Installationsdatei unter **C:\Windows\System32\vmguest.iso** , und binden Sie die Datei ein.
+3. Navigieren Sie zur Installationsdatei unter **C:\Windows\System32\vmguest.iso**, und binden Sie die Datei ein.
 2. Kopieren Sie den Installationsordner auf den Windows Server 2003-Computer, und installieren Sie Integration Services.
 4. Nach der Installation können Sie die Standardeinstellungen von Integration Services beibehalten. 
 
 ## <a name="install-on-vmware-vms"></a>Installation auf VMware-VMs
 
 1. Melden Sie sich mit der Hyper-V-Rolle an einem Windows Server 2012 R2/Windows Server 2012-Computer an.
-2. Navigieren Sie zur Installationsdatei unter **C:\Windows\System32\vmguest.iso** , und binden Sie die Datei ein.
+2. Navigieren Sie zur Installationsdatei unter **C:\Windows\System32\vmguest.iso**, und binden Sie die Datei ein.
 3. Kopieren Sie den Installationsordner auf die VMware-VM.
 4. Führen Sie ```gpedit.msc``` in der Befehlszeile auf der VM aus.
 5. Öffnen Sie **Computerkonfiguration** > **Windows-Einstellungen** > **Skripts (Start/Herunterfahren)** .

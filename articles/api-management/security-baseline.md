@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 78a882378becda8c381ac036d786b32a2b42a5f1
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 62b4629d258f8779dc53b4b8e00684d3b793291d
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93379467"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183752"
 ---
 # <a name="azure-security-baseline-for-api-management"></a>Azure-Sicherheitsbaseline für API Management
 
@@ -98,7 +98,7 @@ Verwenden Sie die in Azure Security Center integrierte Threat Intelligence, um d
 
 * [Dokumentation zu Azure Application Gateway](../application-gateway/index.yml)
 
-* [Verwalten von Azure DDoS Protection Standard mithilfe des Azure-Portals](../virtual-network/manage-ddos-protection.md)
+* [Verwalten von Azure DDoS Protection Standard mithilfe des Azure-Portals](../ddos-protection/manage-ddos-protection.md)
 
 * [Grundlegendes zur integrierten Threat Intelligence in Azure Security Center](../security-center/azure-defender.md)
 
@@ -301,7 +301,7 @@ Optional können Sie API Management in Azure Application Insights integrieren un
 
 * [Ausführen benutzerdefinierter Abfragen in Azure Monitor](../azure-monitor/log-query/get-started-queries.md)
 
-* [Grundlegendes zum Log Analytics-Arbeitsbereich](../azure-monitor/log-query/get-started-portal.md)
+* [Grundlegendes zum Log Analytics-Arbeitsbereich](../azure-monitor/log-query/log-analytics-tutorial.md)
 
 * [Vorgehensweise beim Integrieren von Azure API Management in Azure Application Insights](./api-management-howto-app-insights.md)
 
@@ -506,7 +506,7 @@ Administratoren können benutzerdefinierte Gruppen erstellen oder externe Gruppe
 
 * [Verwalten von Benutzerkonten in Azure API Management](./api-management-howto-create-or-invite-developers.md)
 
-* [Abrufen einer Liste mit API Management-Benutzern](/powershell/module/az.apimanagement/get-azapimanagementuse)
+* [Abrufen einer Liste mit API Management-Benutzern](/powershell/module/az.apimanagement/get-azapimanagementuser)
 
 * [Erstellen und Verwenden von Gruppen für Entwicklerkonten in Azure API Management](./api-management-howto-create-groups.md)
 
@@ -614,7 +614,7 @@ Microsoft verwaltet die zugrunde liegende Infrastruktur für Azure API Managemen
 
 **Leitfaden**: Aufrufe auf Verwaltungsebene erfolgen über Azure Resource Manager und TLS. Ein gültiges JSON Web Token (JWT) ist erforderlich. Aufrufe auf Datenebene können mit TLS und einem der unterstützten Authentifizierungsmechanismen (z. B. Clientzertifikat oder JWT) geschützt werden.
 
-* [Schutz von Daten](./api-management-security-controls.md#data-protection)
+* [Schutz von Daten](#data-protection)
 
 * [Verwalten von Protokollen und Verschlüsselungen in Azure API Management](./api-management-howto-manage-protocols-ciphers.md)
 
@@ -664,7 +664,7 @@ Microsoft verwaltet die zugrunde liegende Infrastruktur für Azure API Managemen
 
 **Leitfaden**: Vertrauliche Daten, z. B. Zertifikate, Schlüssel und als geheim gekennzeichnete Werte, werden mit vom Dienst verwalteten Schlüsseln für die jeweilige Dienstinstanz verschlüsselt. Alle Verschlüsselungsschlüssel gelten pro Dienstinstanz und werden vom Dienst verwaltet.
 
-* [Schutz von Daten](./api-management-security-controls.md#data-protection)
+* [Schutz von Daten](#data-protection)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -692,7 +692,7 @@ Microsoft verwaltet die zugrunde liegende Infrastruktur für Azure API Managemen
 
 Die zugrunde liegende Plattform wird von Microsoft überprüft und gepatcht. Überprüfen Sie die verfügbaren Sicherheitsfunktionen, um Sicherheitsrisiken im Zusammenhang mit der Dienstkonfiguration zu minimieren.
 
-* [Sicherheitskontrollen für API Management](./api-management-security-controls.md)
+* [Sicherheitskontrollen für API Management]()
 
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 
@@ -700,7 +700,7 @@ Die zugrunde liegende Plattform wird von Microsoft überprüft und gepatcht. Üb
 
 ### <a name="52-deploy-automated-operating-system-patch-management-solution"></a>5.2: Bereitstellen der automatisierten Lösung für die Patchverwaltung von Betriebssystemen
 
-**Leitfaden**: Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
+**Anleitung:** Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -708,7 +708,7 @@ Die zugrunde liegende Plattform wird von Microsoft überprüft und gepatcht. Üb
 
 ### <a name="53-deploy-automated-third-party-software-patch-management-solution"></a>5.3: Bereitstellen der automatisierten Lösung für die Patchverwaltung von Drittanbietersoftware
 
-**Leitfaden**: Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
+**Anleitung:** Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -728,7 +728,7 @@ Die zugrunde liegende Plattform wird von Microsoft überprüft und gepatcht. Üb
 
 Die zugrunde liegende Plattform wird von Microsoft überprüft und gepatcht. Kunden sollten die für sie verfügbaren Sicherheitsfunktionen überprüfen, um Sicherheitsrisiken im Zusammenhang mit der Dienstkonfiguration zu minimieren.
 
-* [Sicherheitskontrollen für API Management](./api-management-security-controls.md)
+* [Sicherheitskontrollen für API Management]()
 
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 
@@ -846,7 +846,7 @@ Verwenden Sie Azure Resource Graph, um Ressourcen in ihren Abonnements abzufrage
 
 ### <a name="610-implement-approved-application-list"></a>6.10: Implementieren einer Liste genehmigter Anwendungen
 
-**Leitfaden**: Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
+**Anleitung:** Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -866,7 +866,7 @@ Verwenden Sie Azure Resource Graph, um Ressourcen in ihren Abonnements abzufrage
 
 ### <a name="612-limit-users-ability-to-execute-scripts-within-compute-resources"></a>6.12: Einschränken der Möglichkeiten der Benutzer, Skripte innerhalb von Computeressourcen auszuführen
 
-**Leitfaden**: Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
+**Anleitung:** Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -898,7 +898,7 @@ Verwenden Sie Azure Resource Graph, um Ressourcen in ihren Abonnements abzufrage
 
 ### <a name="72-establish-secure-operating-system-configurations"></a>7.2: Einrichten sicherer Betriebssystemkonfigurationen
 
-**Leitfaden**: Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
+**Anleitung:** Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -918,7 +918,7 @@ Verwenden Sie Azure Resource Graph, um Ressourcen in ihren Abonnements abzufrage
 
 ### <a name="74-maintain-secure-operating-system-configurations"></a>7.4: Verwalten sicherer Betriebssystemkonfigurationen
 
-**Leitfaden**: Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
+**Anleitung:** Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -932,15 +932,13 @@ Verwenden Sie Azure Resource Graph, um Ressourcen in ihren Abonnements abzufrage
 
 * [Dokumentation zu Azure Repos](/azure/devops/repos/index)
 
-* [Konfigurationsverwaltung](./api-management-security-controls.md#configuration-management)
-
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
 **Verantwortlichkeit**: Kunde
 
 ### <a name="76-securely-store-custom-operating-system-images"></a>7.6: Sicheres Speichern von benutzerdefinierten Betriebssystemimages
 
-**Leitfaden**: Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
+**Anleitung:** Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -960,7 +958,7 @@ Verwenden Sie Azure Resource Graph, um Ressourcen in ihren Abonnements abzufrage
 
 ### <a name="78-deploy-system-configuration-management-tools-for-operating-systems"></a>7.8: Bereitstellen von Verwaltungstools für Systemkonfigurationen für Betriebssysteme
 
-**Leitfaden**: Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
+**Anleitung:** Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -972,8 +970,6 @@ Verwenden Sie Azure Resource Graph, um Ressourcen in ihren Abonnements abzufrage
 
 Definieren und implementieren Sie zusätzlich mit Azure Policy Standardsicherheitskonfigurationen für Ihre Azure API Management-Dienste. Verwenden Sie Azure Policy-Aliase im Namespace „Microsoft.ApiManagement“, um benutzerdefinierte Richtlinien zum Überwachen oder Erzwingen der Konfiguration von Azure API Management-Instanzen zu erstellen. Verwenden Sie die Azure-Richtlinien [Verweigern] und [Bereitstellen, falls nicht vorhanden], um sichere Einstellungen in den Azure-Ressourcen zu erzwingen.
 
-* [Konfigurationsverwaltung](./api-management-security-controls.md#configuration-management)
-
 * [Konfigurieren und Verwalten von Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
 * [Grundlegendes zu Azure Policy-Auswirkungen](../governance/policy/concepts/effects.md)
@@ -984,7 +980,7 @@ Definieren und implementieren Sie zusätzlich mit Azure Policy Standardsicherhei
 
 ### <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7.10: Implementieren der automatisierten Konfigurationsüberwachung für Betriebssysteme
 
-**Leitfaden**: Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
+**Anleitung:** Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 

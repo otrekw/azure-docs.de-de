@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto, emlisa
 ms.date: 10/26/2020
-ms.openlocfilehash: 1485f06af2bb3c4912df3e34cb23c409b7db3dc2
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 39119f62fa938f5f4f6529539d4ca9a84bdf8fd7
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92780358"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94989189"
 ---
 # <a name="an-overview-of-azure-sql-database-and-sql-managed-instance-security-capabilities"></a>Übersicht über die Sicherheitsfunktionen von Azure SQL-Datenbank und SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -46,17 +46,17 @@ Mithilfe von [VNET-Regeln](vnet-service-endpoint-rule-overview.md) kann Azure SQ
 ## <a name="access-management"></a>Zugriffsverwaltung
 
 > [!IMPORTANT]
-> Die Verwaltung von Datenbanken und Servern in Azure wird über die Rollenzuweisungen in Ihrem Portalbenutzerkonto gesteuert. Weitere Informationen zu diesem Artikel finden Sie unter [Rollenbasierte Zugriffssteuerung im Azure-Portal](../../role-based-access-control/overview.md).
+> Die Verwaltung von Datenbanken und Servern in Azure wird über die Rollenzuweisungen in Ihrem Portalbenutzerkonto gesteuert. Weitere Informationen zu diesem Artikel finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure im Azure-Portal](../../role-based-access-control/overview.md).
 
 ### <a name="authentication"></a>Authentifizierung
 
 Die Authentifizierung ist der Prozess, bei dem bestätigt wird, dass der Benutzer derjenige ist, der er zu sein vorgibt. Azure SQL-Datenbank und SQL Managed Instance unterstützen zwei Arten der Authentifizierung:
 
-- **SQL-Authentifizierung** :
+- **SQL-Authentifizierung**:
 
     Der Begriff SQL-Authentifizierung bezieht sich auf die Authentifizierung eines Benutzers beim Herstellen einer Verbindung mit Azure SQL-Datenbank oder Azure SQL Managed Instance mithilfe von Benutzername und Kennwort. Beim Erstellen des Servers müssen Anmeldeinformationen für einen **Serveradministrator** mit einem Benutzernamen und einem Kennwort angegeben werden. Mit diesen Anmeldeinformationen kann sich ein **Serveradministrator** bei jeder Datenbank auf diesem Server oder dieser Instanz als Datenbankbesitzer authentifizieren. Danach können zusätzliche SQL-Anmeldungen und -Benutzer durch den Serveradministrator erstellt werden, sodass Benutzer eine Verbindung mithilfe von Benutzername und Kennwort herstellen können.
 
-- **Azure Active Directory-Authentifizierung** :
+- **Azure Active Directory-Authentifizierung**:
 
     Die Azure Active Directory-Authentifizierung ist ein Mechanismus zum Herstellen einer Verbindung mit [Azure SQL-Datenbank](sql-database-paas-overview.md), [Azure SQL Managed Instance](../managed-instance/sql-managed-instance-paas-overview.md) und [Azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) unter Verwendung von Identitäten in Azure Active Directory (Azure AD). Die Azure AD-Authentifizierung ermöglicht Administratoren die zentrale Verwaltung der Identitäten und Berechtigungen von Datenbankbenutzern und anderen Azure-Diensten. Dies umfasst auch die Minimierung der Kennwortspeicherung und ermöglicht Richtlinien zur zentralisierten Kennwortrotation.
 
@@ -65,7 +65,7 @@ Die Authentifizierung ist der Prozess, bei dem bestätigt wird, dass der Benutze
     Zu den weiteren Möglichkeiten der Azure AD-Authentifizierung gehören Verbindungen mit der [universellen Active Directory-Authentifizierung für SQL Server Management Studio](authentication-mfa-ssms-overview.md), einschließlich [Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) und [bedingtem Zugriff](conditional-access-configure.md).
 
 > [!IMPORTANT]
-> Die Verwaltung von Datenbanken und Servern in Azure wird über die Rollenzuweisungen in Ihrem Portalbenutzerkonto gesteuert. Weitere Informationen zu diesem Artikel finden Sie unter [Rollenbasierte Zugriffssteuerung im Azure-Portal](../../role-based-access-control/overview.md). Die Zugriffssteuerung mit Firewallregeln gilt *nicht* für **SQL Managed Instance**. Weitere Informationen zur erforderlichen Netzwerkkonfiguration finden Sie im Artikel zum [Herstellen einer Verbindung mit einer verwalteten Instanz](../managed-instance/connect-application-instance.md).
+> Die Verwaltung von Datenbanken und Servern in Azure wird über die Rollenzuweisungen in Ihrem Portalbenutzerkonto gesteuert. Weitere Informationen zu diesem Artikel finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure im Azure-Portal](../../role-based-access-control/overview.md). Die Zugriffssteuerung mit Firewallregeln gilt *nicht* für **SQL Managed Instance**. Weitere Informationen zur erforderlichen Netzwerkkonfiguration finden Sie im Artikel zum [Herstellen einer Verbindung mit einer verwalteten Instanz](../managed-instance/connect-application-instance.md).
 
 ## <a name="authorization"></a>Authorization
 
@@ -124,7 +124,7 @@ In Azure werden standardmäßig alle neu erstellten Datenbanken verschlüsselt, 
 
 ![Das Diagramm zeigt die Grundlagen des Always Encrypted Features. Auf eine SQL-Datenbank mit einer Sperre wird nur von einer App zugegriffen, die einen Schlüssel enthält.](./media/security-overview/azure-database-ae.png)
 
-[Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) ist eine Funktion zum Schutz vor dem Zugriff auf vertrauliche Daten (z.B. Kreditkartennummern, nationale Identifikationsnummern oder Daten, die _nur bei Bedarf bekannt sein sollten_ ), die in bestimmten Datenbankspalten gespeichert sind. Dies schließt Datenbankadministratoren und anderen privilegierte Benutzer ein, die autorisiert sind, für Verwaltungsaufgaben auf die Datenbank zuzugreifen, jedoch keinen Zugriff auf die entsprechenden Daten in den verschlüsselten Spalten benötigen. Die Daten werden immer verschlüsselt. Das bedeutet, dass die verschlüsselten Daten nur für die Verarbeitung durch Clientanwendungen mit Zugriff auf den Verschlüsselungsschlüssel entschlüsselt werden. Der Verschlüsselungsschlüssel wird nie gegenüber SQL-Datenbank oder SQL Managed Instance offengelegt und kann im [Windows-Zertifikatspeicher](always-encrypted-certificate-store-configure.md) oder in [Azure Key Vault](always-encrypted-azure-key-vault-configure.md) gespeichert werden.
+[Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) ist eine Funktion zum Schutz vor dem Zugriff auf vertrauliche Daten (z.B. Kreditkartennummern, nationale Identifikationsnummern oder Daten, die _nur bei Bedarf bekannt sein sollten_), die in bestimmten Datenbankspalten gespeichert sind. Dies schließt Datenbankadministratoren und anderen privilegierte Benutzer ein, die autorisiert sind, für Verwaltungsaufgaben auf die Datenbank zuzugreifen, jedoch keinen Zugriff auf die entsprechenden Daten in den verschlüsselten Spalten benötigen. Die Daten werden immer verschlüsselt. Das bedeutet, dass die verschlüsselten Daten nur für die Verarbeitung durch Clientanwendungen mit Zugriff auf den Verschlüsselungsschlüssel entschlüsselt werden. Der Verschlüsselungsschlüssel wird nie gegenüber SQL-Datenbank oder SQL Managed Instance offengelegt und kann im [Windows-Zertifikatspeicher](always-encrypted-certificate-store-configure.md) oder in [Azure Key Vault](always-encrypted-azure-key-vault-configure.md) gespeichert werden.
 
 ### <a name="dynamic-data-masking"></a>Dynamische Datenmaskierung
 

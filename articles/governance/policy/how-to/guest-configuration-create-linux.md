@@ -4,12 +4,12 @@ description: Hier wird beschrieben, wie Sie eine Azure Policy-Richtlinie für Ga
 ms.date: 08/17/2020
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 1e81d1a5157cc5872ba2628c8d6cb408e35ab9c6
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 1f6308250717d35dc725b097575bf3921646c6a0
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94694241"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302707"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-linux"></a>Erstellen von Richtlinien für Gastkonfigurationen für Linux
 
@@ -89,6 +89,10 @@ DSC fungiert als Wrapper für InSpec, um dessen Ausführung, die Bereitstellung 
 #### <a name="configuration-requirements"></a>Konfigurationsanforderungen
 
 Der Name der benutzerdefinierten Konfiguration muss überall einheitlich sein. Der Name der ZIP-Datei für das Inhaltspaket, der Konfigurationsname in der MOF-Datei und der Name der Gastzuweisung in der Azure Resource Manager-Vorlage (ARM-Vorlage) müssen identisch sein.
+
+Zum Erstellen des Pakets können PowerShell-Cmdlets verwendet werden.
+Es ist kein Ordner auf Stammebene oder Versionsordner erforderlich.
+Das Paketformat muss eine ZIP-Datei sein. Die Gesamtgröße darf unkomprimiert 100 MB nicht überschreiten.
 
 ### <a name="custom-guest-configuration-configuration-on-linux"></a>Benutzerdefinierte Konfiguration für Gastkonfigurationen unter Linux
 
@@ -328,10 +332,10 @@ Configuration AuditFilePathExists
 Wenn Sie eine Aktualisierung für die Richtliniendefinition veröffentlichen möchten, sind drei Felder von Bedeutung.
 
 > [!NOTE]
-> Die Eigenschaft `version` der Gastkonfigurationszuweisung wirkt sich nur auf Pakete aus, die von Microsoft gehostet werden. Im Zusammenhang mit der Versionsverwaltung für benutzerdefinierte Inhalte empfiehlt es sich, die Version in den Dateinamen aufzunehmen.
+> Die Eigenschaft `version` der Gastkonfigurationszuweisung wirkt sich nur auf Pakete aus, die von Microsoft gehostet werden. Bei der Versionsverwaltung für benutzerdefinierte Inhalte hat sich die Best Practice etabliert, die Version in den Dateinamen aufzunehmen.
 
 - **Version**: Beim Ausführen des Cmdlets `New-GuestConfigurationPolicy` müssen Sie eine Versionsnummer angeben, die höher als die der derzeitigen Veröffentlichung ist.
-- **contentUri**: Wenn Sie das Cmdlet `New-GuestConfigurationPolicy` ausführen, müssen Sie einen URI für den Speicherort des Pakets angeben. Durch Einschließen einer Paketversion in den Dateinamen wird sichergestellt, dass sich der Wert dieser Eigenschaft bei jedem Release ändert.
+- **contentUri**: Wenn Sie das Cmdlet `New-GuestConfigurationPolicy` ausführen, müssen Sie einen URI zum Speicherort des Pakets angeben. Durch Einschließen einer Paketversion in den Dateinamen wird sichergestellt, dass sich der Wert dieser Eigenschaft in jedem Release ändert.
 - **contentHash**: Diese Eigenschaft wird vom Cmdlet `New-GuestConfigurationPolicy` automatisch aktualisiert. Es handelt sich um einen Hashwert des Pakets, das mit `New-GuestConfigurationPackage` erstellt wurde. Diese Eigenschaft muss für die von Ihnen veröffentlichte Datei vom Typ `.zip` stimmen. Wenn nur die Eigenschaft **contentUri** aktualisiert wird, akzeptiert die Erweiterung das Inhaltspaket nicht.
 
 Die einfachste Möglichkeit zum Freigeben eines aktualisierten Pakets ist das Wiederholen des Prozesses in diesem Artikel und das Angeben einer aktualisierten Versionsnummer. Mit dieser Vorgehensweise wird sichergestellt, dass alle Eigenschaften richtig aktualisiert wurden.

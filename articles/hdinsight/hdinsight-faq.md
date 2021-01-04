@@ -10,11 +10,11 @@ ms.custom: hdinsightactive,seoapr2020
 ms.topic: conceptual
 ms.date: 11/20/2019
 ms.openlocfilehash: 0240510a2232bd12a94d5cdd59672270289e5e8f
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547519"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011828"
 ---
 # <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight: Häufig gestellte Fragen
 
@@ -221,7 +221,7 @@ Nein, derzeit ist es nicht möglich, einem Cluster, der Blob Storage als primär
 
 ### <a name="how-can-i-find-the-currently-linked-service-principal-for-a-data-lake-storage-account"></a>Wie finde ich den Dienstprinzipal für ein Data Lake-Speicherkonto, der aktuell verknüpft ist?
 
-Sie finden Ihre Einstellungen im Azure-Portal in den Clustereigenschaften unter **Data Lake Storage Gen1-Zugriff** . Weitere Informationen finden Sie unter [Überprüfen des Clustersetups](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md#verify-cluster-set-up).
+Sie finden Ihre Einstellungen im Azure-Portal in den Clustereigenschaften unter **Data Lake Storage Gen1-Zugriff**. Weitere Informationen finden Sie unter [Überprüfen des Clustersetups](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md#verify-cluster-set-up).
  
 ### <a name="how-can-i-calculate-the-usage-of-storage-accounts-and-blob-containers-for-my-hdinsight-clusters"></a>Wie berechne ich die Verwendung von Speicherkonten und BLOB-Containern für meine HDInsight-Cluster?
 
@@ -272,7 +272,7 @@ Lesen Sie dazu [Verwenden leerer Edgeknoten in Apache Hadoop-Clustern in HDInsig
 
 ### <a name="how-can-i-connect-to-an-edge-node"></a>Wie stelle ich eine Verbindung mit einem Edgeknoten her?
 
-Nachdem Sie einen Edgeknoten erstellt haben, können Sie über SSH an Port 22 eine Verbindung mit dem Edgeknoten herstellen. Den Namen des Edgeknotens finden Sie im Clusterportal. Die Namen enden im Allgemeinen auf *-ed* .
+Nachdem Sie einen Edgeknoten erstellt haben, können Sie über SSH an Port 22 eine Verbindung mit dem Edgeknoten herstellen. Den Namen des Edgeknotens finden Sie im Clusterportal. Die Namen enden im Allgemeinen auf *-ed*.
 
 ### <a name="why-are-persisted-scripts-not-running-automatically-on-newly-created-edge-nodes"></a>Warum werden permanente Skripts auf neu erstellten Edgeknoten nicht automatisch ausgeführt?
 

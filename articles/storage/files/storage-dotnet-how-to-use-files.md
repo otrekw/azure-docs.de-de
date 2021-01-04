@@ -9,12 +9,12 @@ ms.date: 10/02/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0196330df01f98e216c39bcc689eac2bde2f4cd9
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: e112060db4a44884d3094a939b03ff106ba72e65
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629341"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492198"
 ---
 # <a name="develop-for-azure-files-with-net"></a>Entwickeln für Azure Files mit .NET
 
@@ -316,7 +316,7 @@ Weitere Informationen zum Erstellen und Verwenden von Shared Access Signatures f
 
 Ab Version 5.x der Azure Files-Clientbibliothek können Sie eine Datei in eine andere Datei, eine Datei in ein Blob oder ein Blob in eine Datei kopieren.
 
-Sie können auch AzCopy verwenden, um eine Datei in eine andere oder ein Blob in eine Datei (oder umgekehrt) zu kopieren. Informationen finden Sie unter [Übertragen von Daten mit AzCopy v10](../common/storage-use-azcopy-v10.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json).
+Sie können auch AzCopy verwenden, um eine Datei in eine andere oder ein Blob in eine Datei (oder umgekehrt) zu kopieren. Informationen finden Sie unter [Übertragen von Daten mit AzCopy v10](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 
 > [!NOTE]
 > Wenn Sie ein BLOB in eine Datei oder eine Datei in ein BLOB kopieren, müssen Sie eine SAS verwenden, um den Zugriff auf das Quellobjekt zu autorisieren. Dies gilt selbst dann, wenn Sie innerhalb desselben Speicherkontos kopieren.
@@ -624,7 +624,7 @@ Weitere Informationen zu Azure Files finden Sie in den folgenden Ressourcen:
 
 ### <a name="tooling-support-for-file-storage"></a>Toolunterstützung für Dateispeicher
 
-- [Erste Schritte mit AzCopy](../common/storage-use-azcopy-v10.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json)
+- [Erste Schritte mit AzCopy](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)
 - [Behandeln von Azure Files-Problemen unter Windows](./storage-troubleshoot-windows-file-connection-problems.md)
 
 ### <a name="reference"></a>Verweis

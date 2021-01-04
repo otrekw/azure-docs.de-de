@@ -25,10 +25,6 @@
           href: spring-cloud-quickstart-logs-metrics-tracing.md
 - name: Tutorials
   items:
-    - name: Manuelles Skalieren einer App
-      href: spring-cloud-tutorial-scale-manual.md
-    - name: Autoskalierung einer App
-      href: spring-cloud-tutorial-setup-autoscale.md
     - name: Warnungen und Aktionsgruppen
       href: spring-cloud-tutorial-alerts-action-groups.md
     - name: Dashboard für Leistungsschutzschalter
@@ -75,12 +71,20 @@
           href: spring-cloud-howto-launch-from-source.md
         - name: Verwenden von IntelliJ zum Bereitstellen von Apps
           href: spring-cloud-tutorial-intellij-deploy-apps.md
+        - name: Bereitstellen von Azure Spring Cloud mit Azure PowerShell
+          href: spring-cloud-howto-deploy-powershell.md
     - name: Konfigurieren
       items:
         - name: 'Starten, Beenden und Löschen einer App'
           href: spring-cloud-howto-start-stop-delete.md
         - name: Verwenden von beständigem Speicher
           href: spring-cloud-howto-persistent-storage.md
+    - name: Skalieren
+      items:
+        - name: Manuelles Skalieren einer App
+          href: spring-cloud-tutorial-scale-manual.md
+        - name: Autoskalierung einer App
+          href: spring-cloud-tutorial-setup-autoscale.md
         - name: Ermitteln öffentlicher IP-Ausgangsadressen
           href: spring-cloud-howto-outbound-public-ip.md
     - name: Überwachen
@@ -126,11 +130,23 @@
     - name: Migrieren
       items:
         - name: Spring Cloud
-          href: 'https://docs.microsoft.com/azure/developer/java/migration/migrate-spring-cloud-to-azure-spring-cloud'
+          href: /azure/developer/java/migration/migrate-spring-cloud-to-azure-spring-cloud
         - name: Spring Boot
-          href: 'https://docs.microsoft.com/azure/developer/java/migration/migrate-spring-boot-to-azure-spring-cloud'
+          href: /azure/developer/java/migration/migrate-spring-boot-to-azure-spring-cloud
         - name: Tomcat
           href: 'https://docs.microsoft.com/azure/developer/java/migration/migrate-tomcat-to-azure-spring-cloud'
+- name: DevOps-Bereitstellung
+  items:
+    - name: CI/CD mit Azure DevOps
+      href: spring-cloud-howto-cicd.md
+    - name: CI/CD mit GitHub Actions
+      href: spring-cloud-howto-github-actions.md
+    - name: Authentifizierung mit Key Vault in GitHub-Aktionen
+      href: spring-cloud-github-actions-key-vault.md
+- name: Problembehandlung
+  items:
+    - name: Handbuch zur Problembehandlung
+      href: spring-cloud-troubleshoot.md
 - name: Verweis
   items:
     - name: Azure CLI-Plug-In
@@ -142,7 +158,7 @@
     - name: Häufig gestellte Fragen
       href: spring-cloud-faq.md
     - name: REST-API-Referenz
-      href: /rest/api/azurespringclould/
+      href: /rest/api/azurespringcloud/
     - name: Azure Policy-Integrationen
       displayName: 'samples, policies, definitions'
       href: ./policy-reference.md

@@ -7,14 +7,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: seodec18,seoapr2020, contperfq2
+ms.custom: seodec18,seoapr2020, contperf-fy21q2
 ms.date: 10/30/2020
-ms.openlocfilehash: ed2ce13ab10c09dc738e522566742078819e8341
-ms.sourcegitcommit: 8ad5761333b53e85c8c4dabee40eaf497430db70
+ms.openlocfilehash: 248d909e633607271aec7c2c9b8a373f111f7d98
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2020
-ms.locfileid: "93148387"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97031481"
 ---
 # <a name="configure-hdinsight-clusters-for-active-directory-integration-with-enterprise-security-package"></a>Konfigurieren von HDInsight-Clustern für die Active Directory-Integration mit dem Enterprise-Sicherheitspaket
 
@@ -62,7 +62,7 @@ New-SelfSignedCertificate -Subject contoso100.onmicrosoft.com `
 ```
 
 > [!NOTE]  
-> Nur Mandantenadministratoren verfügen über die Berechtigungen zum Aktivieren von Azure AD DS. Wenn Azure Data Lake Storage Gen1 oder Gen2 als Clusterspeicher verwendet wird, müssen Sie die Azure Multi-Factor Authentication nur für Benutzer deaktivieren, die mit grundlegenden Kerberos-Authentifizierungen auf den Cluster zugreifen müssen.
+> Nur Mandantenadministratoren verfügen über die Berechtigungen zum Aktivieren von Azure AD DS. Wenn Azure Data Lake Storage Gen1 oder Gen2 als Clusterspeicher verwendet wird, müssen Sie die Azure AD Multi-Factor Authentication nur für Benutzer deaktivieren, die mit grundlegenden Kerberos-Authentifizierungen auf den Cluster zugreifen müssen.
 >
 > Sie können [vertrauenswürdige IP-Adressen](../../active-directory/authentication/howto-mfa-mfasettings.md#trusted-ips) oder [bedingten Zugriff](../../active-directory/conditional-access/overview.md) verwenden, um Multi-Factor Authentication *nur* für bestimmte Benutzer zu deaktivieren, wenn diese auf den IP-Adressbereich für das virtuelle Netzwerk des HDInsight-Clusters zugreifen. Bei Verwendung von bedingtem Zugriff muss der Active Directory-Dienstendpunkt im virtuellen HDInsight-Netzwerk aktiviert sein.
 >
@@ -117,7 +117,7 @@ Wenn Sie in Ihrem HDInsight-Subnetz Regeln für Netzwerksicherheitsgruppen (NSG)
 
 Fügen Sie zum Testen Ihrer Netzwerkeinrichtung eine Windows-VM in das virtuelle HDInsight-Netzwerk oder -Subnetz ein, und pingen Sie den Domänennamen. Dies sollte in eine IP-Adresse aufgelöst werden. Führen Sie **ldp.exe** aus, um auf die Azure AD DS-Domäne zuzugreifen. Verknüpfen Sie dann diese Windows-VM mit der Domäne, um zu bestätigen, dass alle erforderlichen RPC-Aufrufe zwischen Client und Server erfolgreich sind.
 
-Verwenden Sie **nslookup** , um den Netzwerkzugriff auf Ihr Speicherkonto zu bestätigen. Oder bestätigen Sie den Zugriff auf eine externe Datenbank, die Sie möglicherweise verwenden (beispielsweise einen externen Hive-Metastore oder eine Ranger-DB). Stellen Sie sicher, dass alle [erforderlichen Ports](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772723(v=ws.10)#communication-to-domain-controllers) in den NSG-Regeln des Azure AD DS-Subnetzes zugelassen sind, wenn zum Schutz von Azure AD DS eine Netzwerksicherheitsgruppe eingesetzt wird. Wenn der Domänenbeitritt dieses virtuellen Windows-Computers erfolgreich ist, können Sie mit dem nächsten Schritt fortfahren und ESP-Cluster erstellen.
+Verwenden Sie **nslookup**, um den Netzwerkzugriff auf Ihr Speicherkonto zu bestätigen. Oder bestätigen Sie den Zugriff auf eine externe Datenbank, die Sie möglicherweise verwenden (beispielsweise einen externen Hive-Metastore oder eine Ranger-DB). Stellen Sie sicher, dass alle [erforderlichen Ports](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772723(v=ws.10)#communication-to-domain-controllers) in den NSG-Regeln des Azure AD DS-Subnetzes zugelassen sind, wenn zum Schutz von Azure AD DS eine Netzwerksicherheitsgruppe eingesetzt wird. Wenn der Domänenbeitritt dieses virtuellen Windows-Computers erfolgreich ist, können Sie mit dem nächsten Schritt fortfahren und ESP-Cluster erstellen.
 
 ## <a name="create-an-hdinsight-cluster-with-esp"></a>Erstellen eines HDInsight-Clusters mit ESP
 
@@ -136,11 +136,11 @@ Sobald Sie ESP aktivieren, werden häufige Fehlkonfigurationen im Zusammenhang m
 
 Zum Erstellen eines HDInsight-Clusters mit ESP müssen Sie die folgenden Parameter angeben:
 
-* **Clusteradministrator** : Wählen Sie aus Ihrer synchronisierten Azure AD DS-Instanz einen Administrator für Ihren Cluster aus. Dieses Domänenkonto muss bereits synchronisiert und in Azure AD DS verfügbar sein.
+* **Clusteradministrator**: Wählen Sie aus Ihrer synchronisierten Azure AD DS-Instanz einen Administrator für Ihren Cluster aus. Dieses Domänenkonto muss bereits synchronisiert und in Azure AD DS verfügbar sein.
 
-* **Clusterzugriffsgruppen** : Die Sicherheitsgruppen, deren Benutzer Sie synchronisieren möchten und deren Benutzer Zugriff auf den Cluster haben sollen, sollten in Azure AD DS verfügbar sein. Ein Beispiel hierfür ist die Gruppe HiveUsers. Weitere Informationen dazu finden Sie in [Erstellen einer Gruppe in Azure Active Directory und Hinzufügen von Mitgliedern](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
+* **Clusterzugriffsgruppen**: Die Sicherheitsgruppen, deren Benutzer Sie synchronisieren möchten und deren Benutzer Zugriff auf den Cluster haben sollen, sollten in Azure AD DS verfügbar sein. Ein Beispiel hierfür ist die Gruppe HiveUsers. Weitere Informationen dazu finden Sie in [Erstellen einer Gruppe in Azure Active Directory und Hinzufügen von Mitgliedern](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
 
-* **LDAPS-URL** : z. B. `ldaps://contoso.com:636`.
+* **LDAPS-URL**: z. B. `ldaps://contoso.com:636`.
 
 Die von Ihnen erstellte verwaltete Identität kann beim Erstellen eines neuen Clusters aus der Dropdownliste für die **benutzerseitig zugewiesene verwaltete Identität** ausgewählt werden.
 

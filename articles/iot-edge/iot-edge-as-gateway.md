@@ -11,12 +11,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: c08e03e6ff77613c0950f17fe5225bccb706524c
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 83e8089073f7e7e7634ddf00f7276e12aaf645b0
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94444350"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94536437"
 ---
 # <a name="how-an-iot-edge-device-can-be-used-as-a-gateway"></a>Verwendung eines IoT Edge-Geräts als Gateway
 
@@ -45,21 +45,21 @@ Alle Gatewaymuster bieten folgende Vorteile:
 
 Beim Gatewaymuster „transparent“ können Geräte, die theoretisch eine Verbindung mit IoT Hub herstellen könnten, stattdessen eine Verbindung mit einem Gatewaygerät herstellen. Die nachgeschalteten Geräte verfügen über ihre eigenen IoT Hub-Identitäten und stellen die Verbindung mithilfe von MQTT- oder AMQP-Protokollen her. Das Gateway übergibt einfach die Kommunikation zwischen den Geräten und IoT Hub. Weder die Geräte noch die Benutzer, die damit über IoT Hub interagieren, wissen, dass ein Gateway ihre Kommunikation vermittelt. Dieses fehlende Wissen bedeutet, dass das Gateway als *transparent* betrachtet wird.
 
-<!-- 1.2.0 -->
-::: moniker range=">=iotedge-2020-11"
-
-IoT Edge-Geräte können sowohl über transparente Gateways als auch über normale IoT-Geräte eine Verbindung herstellen.
-
-<!-- TODO add a downstream IoT Edge device to graphic -->
-
-::: moniker-end
-
 <!-- 1.0.10 -->
 ::: moniker range="iotedge-2018-06"
 
 IoT Edge-Geräte können keinem IoT Edge-Gateway nachgeschaltet werden.
 
 ![Diagramm des Gatewaymusters „Transparent“](./media/iot-edge-as-gateway/edge-as-gateway-transparent.png)
+
+::: moniker-end
+
+<!-- 1.2.0 -->
+::: moniker range=">=iotedge-2020-11"
+
+Ab Version 1.2.0 können IoT Edge-Geräte über transparente Gateways eine Verbindung herstellen.
+
+<!-- TODO add a downstream IoT Edge device to graphic -->
 
 ::: moniker-end
 
@@ -102,10 +102,22 @@ Wenn mehrere IoT Edge-Gateways in einer Gatewayhierarchie miteinander verbunden
 
 ### <a name="device-capabilities-behind-transparent-gateways"></a>Gerätefunktionen hinter transparenten Gateways
 
-
 Alle IoT Hub-Primitiven, die mit der Messagingpipeline von IoT Edge arbeiten, unterstützen auch Szenarien mit transparenten Gateways. Jedes IoT Edge-Gateway verfügt über Funktionen zum Speichern und Weiterleiten der darüber gesendeten Nachrichten.
 
 Der folgenden Tabelle können Sie entnehmen, wie die verschiedenen IoT Hub-Funktionen für Geräte und für Geräte hinter Gateways unterstützt werden.
+
+<!-- 1.0.10 -->
+::: moniker range="iotedge-2018-06"
+
+| Funktion | IoT-Gerät | IoT hinter einem Gateway |
+| ---------- | ---------- | -------------------- |
+| [D2C-Nachrichten](../iot-hub/iot-hub-devguide-messages-d2c.md) (Device-to-Cloud, Gerät-zu-Cloud) |  ![Ja – IoT D2C](./media/iot-edge-as-gateway/check-yes.png) | ![Ja – untergeordnetes IoT D2C](./media/iot-edge-as-gateway/check-yes.png) |
+| [C2D-Nachrichten](../iot-hub/iot-hub-devguide-messages-c2d.md) (Cloud-to-Device, Cloud-zu-Gerät) | ![Ja – IoT C2D](./media/iot-edge-as-gateway/check-yes.png) | ![Ja – untergeordnetes IoT C2D](./media/iot-edge-as-gateway/check-yes.png) |
+| [Direkte Methoden](../iot-hub/iot-hub-devguide-direct-methods.md) | ![Ja – IoT, direkte Methode](./media/iot-edge-as-gateway/check-yes.png) | ![Ja – untergeordnetes IoT, direkte Methode](./media/iot-edge-as-gateway/check-yes.png) |
+| [Gerätezwillinge](../iot-hub/iot-hub-devguide-device-twins.md) und [Modulzwillinge](../iot-hub/iot-hub-devguide-module-twins.md) | ![Ja – IoT-Zwillinge](./media/iot-edge-as-gateway/check-yes.png) | ![Ja – untergeordnete IoT-Zwillinge](./media/iot-edge-as-gateway/check-yes.png) |
+| [Hochladen von Dateien mit IoT Hub](../iot-hub/iot-hub-devguide-file-upload.md) | ![Ja – IoT, Dateiupload](./media/iot-edge-as-gateway/check-yes.png) | ![Nein – untergeordnetes IoT, Dateiupload](./media/iot-edge-as-gateway/crossout-no.png) |
+
+::: moniker-end
 
 <!-- 1.2.0 -->
 ::: moniker range=">=iotedge-2020-11"
@@ -123,19 +135,6 @@ Der folgenden Tabelle können Sie entnehmen, wie die verschiedenen IoT Hub-Funk
 **Containerimages** können von übergeordneten Geräten für untergeordnete Geräte heruntergeladen, gespeichert und bereitgestellt werden.
 
 **Blobs** (einschließlich Supportbundle und Protokolle) können von untergeordneten Geräten auf übergeordnete Geräte hochgeladen werden.
-
-::: moniker-end
-
-<!-- 1.0.10 -->
-::: moniker range="iotedge-2018-06"
-
-| Funktion | IoT-Gerät | IoT hinter einem Gateway |
-| ---------- | ---------- | -------------------- |
-| [D2C-Nachrichten](../iot-hub/iot-hub-devguide-messages-d2c.md) (Device-to-Cloud, Gerät-zu-Cloud) |  ![Ja – IoT D2C](./media/iot-edge-as-gateway/check-yes.png) | ![Ja – untergeordnetes IoT D2C](./media/iot-edge-as-gateway/check-yes.png) |
-| [C2D-Nachrichten](../iot-hub/iot-hub-devguide-messages-c2d.md) (Cloud-to-Device, Cloud-zu-Gerät) | ![Ja – IoT C2D](./media/iot-edge-as-gateway/check-yes.png) | ![Ja – untergeordnetes IoT C2D](./media/iot-edge-as-gateway/check-yes.png) |
-| [Direkte Methoden](../iot-hub/iot-hub-devguide-direct-methods.md) | ![Ja – IoT, direkte Methode](./media/iot-edge-as-gateway/check-yes.png) | ![Ja – untergeordnetes IoT, direkte Methode](./media/iot-edge-as-gateway/check-yes.png) |
-| [Gerätezwillinge](../iot-hub/iot-hub-devguide-device-twins.md) und [Modulzwillinge](../iot-hub/iot-hub-devguide-module-twins.md) | ![Ja – IoT-Zwillinge](./media/iot-edge-as-gateway/check-yes.png) | ![Ja – untergeordnete IoT-Zwillinge](./media/iot-edge-as-gateway/check-yes.png) |
-| [Hochladen von Dateien mit IoT Hub](../iot-hub/iot-hub-devguide-file-upload.md) | ![Ja – IoT, Dateiupload](./media/iot-edge-as-gateway/check-yes.png) | ![Nein – untergeordnetes IoT, Dateiupload](./media/iot-edge-as-gateway/crossout-no.png) |
 
 ::: moniker-end
 

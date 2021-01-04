@@ -12,11 +12,11 @@ ms.custom:
 - devx-track-python
 ms.date: 11/05/2019
 ms.openlocfilehash: 79add54478e9cd52ffd3041d5f85bf588929b44f
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93099435"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008870"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-in-python"></a>Schnellstart: Verwenden von Azure Cache for Redis mit Python
 
@@ -98,7 +98,7 @@ Wenn Sie die Azure-Ressourcengruppe und die Ressourcen, die Sie in diesem Schnel
 
 So löschen Sie die Ressourcengruppe und die Azure Cache for Redis-Instanz
 
-1. Suchen Sie im [Azure-Portal](https://portal.azure.com) nach **Ressourcengruppen** , und wählen Sie die Option aus.
+1. Suchen Sie im [Azure-Portal](https://portal.azure.com) nach **Ressourcengruppen**, und wählen Sie die Option aus.
 1. Geben Sie im Textfeld **Nach Name filtern** den Namen der Ressourcengruppe mit Ihrer Cache-Instanz ein, und wählen Sie sie dann in den Suchergebnissen aus. 
 1. Wählen Sie auf der Seite für die Ressourcengruppe die Option **Ressourcengruppe löschen** aus.
 1. Geben Sie den Ressourcengruppennamen ein, und wählen Sie dann **Löschen** aus.

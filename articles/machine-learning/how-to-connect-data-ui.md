@@ -11,12 +11,12 @@ author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 09/22/2020
 ms.custom: how-to, data4ml
-ms.openlocfilehash: e97546e678b3b7bf7932600ea53d09557493685c
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 554c815e6384115d56611e497f49a2c97ed15e38
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93359866"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461438"
 ---
 # <a name="connect-to-data-with-the-azure-machine-learning-studio"></a>Herstellen einer Verbindung mit Daten in Azure Machine Learning Studio
 
@@ -160,7 +160,7 @@ Informationen zu Kontoschlüssel, SAS-Token und Dienstprinzipal finden Sie im [A
 
 ### <a name="permissions"></a>Berechtigungen
 
-Stellen Sie für Azure-Blobcontainer und Azure Data Lake Gen2-Speicher sicher, dass Ihre Anmeldeinformationen für die Authentifizierung über den Zugriff **Storage-Blobdatenleser** verfügen. Erfahren Sie mehr über [Storage-Blobdatenleser](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader). Ein Konto-SAS-Token besitzt standardmäßig keine Berechtigungen. 
+Stellen Sie für Azure-Blobcontainer und Azure Data Lake Gen2-Speicher sicher, dass Ihre Anmeldeinformationen für die Authentifizierung über den Zugriff **Storage-Blobdatenleser** verfügen. Erfahren Sie mehr über [Storage-Blobdatenleser](../role-based-access-control/built-in-roles.md#storage-blob-data-reader). Ein Konto-SAS-Token besitzt standardmäßig keine Berechtigungen. 
 * Für den **Lesezugriff** auf Daten müssen Ihre Anmeldeinformationen für die Authentifizierung mindestens die Berechtigungen zum Auflisten und Lesen für Container und Objekte besitzen. 
 
 * Für den **Schreibzugriff** auf Daten sind auch Berechtigungen zum Schreiben und Hinzufügen erforderlich.

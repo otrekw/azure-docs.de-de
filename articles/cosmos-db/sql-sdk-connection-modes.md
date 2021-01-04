@@ -7,13 +7,13 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 10/14/2020
 ms.author: maquaran
-ms.custom: devx-track-dotnet, contperfq2
-ms.openlocfilehash: 892d73c2b23a9806cd38b188f594f129fda9303d
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.custom: devx-track-dotnet, contperf-fy21q2
+ms.openlocfilehash: c30e97a4bff8fa845f6eb3c3092a00ee541e59f4
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340718"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97032795"
 ---
 # <a name="azure-cosmos-db-sql-sdk-connectivity-modes"></a>Azure Cosmos DB SQL SDK-Konnektivitätsmodi
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -47,7 +47,7 @@ Die folgende Tabelle enthält eine Zusammenfassung der für verschiedene APIs ve
 |Verbindungsmodus  |Unterstütztes Protokoll  |Unterstützte SDKs  |API/Dienstport  |
 |---------|---------|---------|---------|
 |Gateway  |   HTTPS    |  Alle SDKs    |   SQL (443), MongoDB (10250, 10255, 10256), Tabelle (443), Cassandra (10350), Graph (443) <br> Port 10250 ist einer Instanz der Azure Cosmos DB-API für MongoDB ohne Georeplikation zugeordnet. Die Ports 10255 und 10256 hingegen sind der Instanz mit Georeplikation zugeordnet.   |
-|Direkt    |     TCP    |  .NET SDK    | Bei Verwendung von öffentlichen oder Dienstendpunkten: Ports im Bereich zwischen 10000 und 20000<br>Bei Verwendung von privaten Endpunkten: Ports im Bereich zwischen 0 und 65535 |
+|Direkt    |     TCP    |  .NET SDK Java SDK    | Bei Verwendung von öffentlichen oder Dienstendpunkten: Ports im Bereich zwischen 10000 und 20000<br>Bei Verwendung von privaten Endpunkten: Ports im Bereich zwischen 0 und 65535 |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 10/05/2020
 ms.author: sngun
-ms.openlocfilehash: 683fc553e7712e2a760a0af1b601207cb20f2f55
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: a0feaf4a984f40ddee7a30291fe0a8f671b6512a
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93092805"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636842"
 ---
 # <a name="how-to-audit-azure-cosmos-db-control-plane-operations"></a>Überwachen von Azure Cosmos DB-Vorgängen auf Steuerungsebene
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -28,7 +28,7 @@ Im Folgenden finden Sie einige Beispielszenarien, in denen das Überwachen von V
 
 ## <a name="disable-key-based-metadata-write-access"></a>Deaktivieren des schlüsselbasierten Metadatenschreibzugriffs
 
-Bevor Sie die Vorgänge auf Steuerungsebene in Azure Cosmos DB überwachen, deaktivieren Sie den schlüsselbasierten Metadatenschreibzugriff für Ihr Konto. Wenn der schlüsselbasierte Metadatenschreibzugriff deaktiviert ist, können Clients, die über Kontoschlüssel eine Verbindung mit dem Azure Cosmos-Konto herstellen, nicht auf das Konto zugreifen. Sie können den Schreibzugriff deaktivieren, indem Sie Eigenschaft `disableKeyBasedMetadataWriteAccess` auf „true“ festlegen. Nachdem Sie diese Eigenschaft festgelegt haben, können Änderungen an allen Ressourcen von Benutzern vorgenommen werden, die über die richtige RBAC-Rolle (rollenbasierte Zugriffssteuerung) und Anmeldeinformationen verfügen. Weitere Informationen zum Festlegen dieser Eigenschaft finden Sie im Artikel [Verhindern von Änderungen im Cosmos SDK](role-based-access-control.md#prevent-sdk-changes). 
+Bevor Sie die Vorgänge auf Steuerungsebene in Azure Cosmos DB überwachen, deaktivieren Sie den schlüsselbasierten Metadatenschreibzugriff für Ihr Konto. Wenn der schlüsselbasierte Metadatenschreibzugriff deaktiviert ist, können Clients, die über Kontoschlüssel eine Verbindung mit dem Azure Cosmos-Konto herstellen, nicht auf das Konto zugreifen. Sie können den Schreibzugriff deaktivieren, indem Sie Eigenschaft `disableKeyBasedMetadataWriteAccess` auf „true“ festlegen. Nachdem Sie diese Eigenschaft festgelegt haben, können Änderungen an allen Ressourcen von Benutzern vorgenommen werden, die über die richtige Azure-Rolle und Anmeldeinformationen verfügen. Weitere Informationen zum Festlegen dieser Eigenschaft finden Sie im Artikel [Verhindern von Änderungen im Cosmos SDK](role-based-access-control.md#prevent-sdk-changes). 
 
 Wenn `disableKeyBasedMetadataWriteAccess` aktiviert wurde und die SDK-basierten Clients Erstell- oder Aktualisierungsvorgänge ausführen, wird der Fehler *Vorgang „POST“ für die Ressource „ContainerNameorDatabaseName“ ist über den Azure Cosmos DB-Endpunkt nicht zulässig* zurückgegeben. Sie müssen den Zugriff auf solche Vorgänge für Ihr Konto aktivieren oder die Erstellungs-/Aktualisierungsvorgänge über Azure Resource Manager, Azure CLI oder Azure PowerShell ausführen. Um die Umstellung rückgängig zu machen, legen Sie disableKeyBasedMetadataWriteAccess mit Azure CLI auf **false** fest, wie im Artikel [Verhindern von Änderungen im Cosmos SDK](role-based-access-control.md#prevent-sdk-changes) beschrieben. Stellen Sie sicher, dass Sie den Wert von `disableKeyBasedMetadataWriteAccess` in „false“ anstelle von „true“ ändern.
 
@@ -46,7 +46,7 @@ Führen Sie die folgenden Schritte aus, um die Protokollierung für Vorgänge au
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und navigieren Sie zu Ihrem Azure Cosmos-Konto.
 
-1. Öffnen Sie den Bereich **Diagnoseeinstellungen** , und geben Sie einen **Namen** für die zu erstellenden Protokolle an.
+1. Öffnen Sie den Bereich **Diagnoseeinstellungen**, und geben Sie einen **Namen** für die zu erstellenden Protokolle an.
 
 1. Wählen Sie **ControlPlaneRequests** als Protokolltyp aus, und klicken Sie dann auf die Option **An Log Analytics senden**.
 
@@ -60,7 +60,7 @@ Nachdem Sie die Protokollierung aktiviert haben, führen Sie die folgenden Schri
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
 
-1. Öffnen Sie im linken Navigationsbereich die Registerkarte **Überwachen** , und klicken Sie dann auf den Bereich **Protokolle**. Es wird eine Benutzeroberfläche geöffnet, mit der Sie problemlos Abfragen mit diesem spezifischen Konto im Bereich ausführen können. Führen Sie die folgende Abfrage aus, um die Protokolle auf Steuerungsebene anzuzeigen:
+1. Öffnen Sie im linken Navigationsbereich die Registerkarte **Überwachen**, und klicken Sie dann auf den Bereich **Protokolle**. Es wird eine Benutzeroberfläche geöffnet, mit der Sie problemlos Abfragen mit diesem spezifischen Konto im Bereich ausführen können. Führen Sie die folgende Abfrage aus, um die Protokolle auf Steuerungsebene anzuzeigen:
 
    ```kusto
    AzureDiagnostics
@@ -164,7 +164,7 @@ Bei API-spezifischen Vorgängen hat die Vorgangsbezeichnung folgendes Format:
 * CassandraKeyspacesThroughputUpdate
 * SqlContainersUpdate
 
-Die *ResourceDetails* -Eigenschaft enthält den gesamten Ressourcentext als Anforderungsnutzlast und alle Eigenschaften, für die eine Aktualisierung angefordert wurde.
+Die *ResourceDetails*-Eigenschaft enthält den gesamten Ressourcentext als Anforderungsnutzlast und alle Eigenschaften, für die eine Aktualisierung angefordert wurde.
 
 ## <a name="diagnostic-log-queries-for-control-plane-operations"></a>Diagnoseprotokollabfragen für Vorgänge auf Steuerungsebene
 

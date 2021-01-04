@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.custom:
 - devx-track-java
 - devx-track-azurecli
-ms.openlocfilehash: 449f0a59cc8428ce8e19535d5cf0417bf4cf7ad0
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: db24fa4721e2e502c5098b415c4cf06da80f697d
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93424799"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96175677"
 ---
 # <a name="quickstart-create-a-java-function-in-azure-from-the-command-line"></a>Schnellstart: Erstellen einer Java-Funktion über die Befehlszeile in Azure
 
@@ -34,7 +34,7 @@ Bevor Sie mit diesem Lernprogramm beginnen können, benötigen Sie Folgendes:
 
 + [Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli) ab Version 2.4
 
-+ [Java Developer Kit](https://aka.ms/azure-jdks), Version 8 oder 11. Die Umgebungsvariable `JAVA_HOME` muss auf den Installationsspeicherort der richtigen Version des JDK festgelegt sein.     
++ [Java Developer Kit](/azure/developer/java/fundamentals/java-jdk-long-term-support), Version 8 oder 11. Die Umgebungsvariable `JAVA_HOME` muss auf den Installationsspeicherort der richtigen Version des JDK festgelegt sein.     
 
 + [Apache Maven](https://maven.apache.org), Version 3.0 oder höher
 
@@ -96,14 +96,14 @@ In Azure Functions handelt es sich bei einem Funktionsprojekt um einen Container
     cd fabrikam-functions
     ```
 
-    Dieser Ordner enthält verschiedene Dateien für das Projekt, z. B. die Konfigurationsdateien [local.settings.json](functions-run-local.md#local-settings-file) und [host.json](functions-host-json.md). Da *local.settings.json* aus Azure heruntergeladene Geheimnisse enthalten kann, wird die Datei in der *GITIGNORE* -Datei standardmäßig aus der Quellcodeverwaltung ausgeschlossen.
+    Dieser Ordner enthält verschiedene Dateien für das Projekt, z. B. die Konfigurationsdateien [local.settings.json](functions-run-local.md#local-settings-file) und [host.json](functions-host-json.md). Da *local.settings.json* aus Azure heruntergeladene Geheimnisse enthalten kann, wird die Datei in der *GITIGNORE*-Datei standardmäßig aus der Quellcodeverwaltung ausgeschlossen.
 
 ### <a name="optional-examine-the-file-contents"></a>(Optional) Untersuchen des Dateiinhalts
 
 Bei Bedarf können Sie [Lokales Ausführen der Funktion](#run-the-function-locally) überspringen und den Dateiinhalt später untersuchen.
 
 #### <a name="functionjava"></a>Function.java
-*Function.java* enthält eine Methode vom Typ `run`, die Anforderungsdaten in der Variablen `request` empfängt. Hierbei handelt es sich um eine HTTP-Anforderungsnachricht ( [HttpRequestMessage](/java/api/com.microsoft.azure.functions.httprequestmessage)), die mit der Anmerkung [HttpTrigger](/java/api/com.microsoft.azure.functions.annotation.httptrigger) versehen ist, um das Triggerverhalten zu definieren. 
+*Function.java* enthält eine Methode vom Typ `run`, die Anforderungsdaten in der Variablen `request` empfängt. Hierbei handelt es sich um eine HTTP-Anforderungsnachricht ([HttpRequestMessage](/java/api/com.microsoft.azure.functions.httprequestmessage)), die mit der Anmerkung [HttpTrigger](/java/api/com.microsoft.azure.functions.annotation.httptrigger) versehen ist, um das Triggerverhalten zu definieren. 
 
 :::code language="java" source="~/azure-functions-samples-java/src/main/java/com/functions/Function.java":::
 
@@ -111,7 +111,7 @@ Die Antwortnachricht wird von der API [HttpResponseMessage.Builder](/java/api/co
 
 #### <a name="pomxml"></a>pom.xml
 
-Einstellungen für die Azure-Ressourcen, die zum Hosten Ihrer App erstellt werden, werden in der generierten Datei „pom.xml“ im Konfigurationselement ( **configuration** ) des Plug-Ins mit der Gruppen-ID ( **groupId** ) `com.microsoft.azure` definiert. So wird beispielsweise durch das folgende Konfigurationselement eine Maven-basierte Bereitstellung angewiesen, eine Funktions-App in der Ressourcengruppe `java-functions-group` in der Region `westus` zu erstellen. Die Funktions-App selbst wird unter Windows mit Hosting im Tarif `java-functions-app-service-plan` ausgeführt. Bei dem Tarif handelt es sich standardmäßig um einen serverlosen Verbrauchstarif.
+Einstellungen für die Azure-Ressourcen, die zum Hosten Ihrer App erstellt werden, werden in der generierten Datei „pom.xml“ im Konfigurationselement (**configuration**) des Plug-Ins mit der Gruppen-ID (**groupId**) `com.microsoft.azure` definiert. So wird beispielsweise durch das folgende Konfigurationselement eine Maven-basierte Bereitstellung angewiesen, eine Funktions-App in der Ressourcengruppe `java-functions-group` in der Region `westus` zu erstellen. Die Funktions-App selbst wird unter Windows mit Hosting im Tarif `java-functions-app-service-plan` ausgeführt. Bei dem Tarif handelt es sich standardmäßig um einen serverlosen Verbrauchstarif.
 
 :::code language="java" source="~/azure-functions-samples-java/pom.xml" range="62-102":::
 
@@ -146,7 +146,7 @@ Durch den Archetyp wird auch ein Komponententest für Ihre Funktion generiert. W
     </pre>
     
     > [!NOTE]  
-    > Sollte „HttpExample“ nicht wie unten dargestellt angezeigt werden, haben Sie den Host wahrscheinlich außerhalb des Stammordners des Projekts gestartet. Drücken Sie in diesem Fall **STRG**+**C** , um den Host zu beenden. Navigieren Sie anschließend zum Stammordner des Projekts, und führen Sie den vorherigen Befehl erneut aus.
+    > Sollte „HttpExample“ nicht wie unten dargestellt angezeigt werden, haben Sie den Host wahrscheinlich außerhalb des Stammordners des Projekts gestartet. Drücken Sie in diesem Fall **STRG**+**C**, um den Host zu beenden. Navigieren Sie anschließend zum Stammordner des Projekts, und führen Sie den vorherigen Befehl erneut aus.
 
 1. Kopieren Sie die URL Ihrer `HttpExample`-Funktion aus dieser Ausgabe in einen Browser, und fügen Sie die Abfragezeichenfolge `?name=<YOUR_NAME>` an. Die vollständige URL lautet dann wie folgt: `http://localhost:7071/api/HttpExample?name=Functions`. Im Browser sollte eine Meldung wie `Hello Functions` angezeigt werden:
 
@@ -154,7 +154,7 @@ Durch den Archetyp wird auch ein Komponententest für Ihre Funktion generiert. W
     
     Im Terminal, in dem Sie Ihr Projekt gestartet haben, wird beim Senden von Anforderungen auch die Protokollausgabe angezeigt.
 
-1. Wenn Sie fertig sind, drücken Sie **STRG**+**C** , und wählen Sie `y` aus, um den Funktionshost zu beenden.
+1. Wenn Sie fertig sind, drücken Sie **STRG**+**C**, und wählen Sie `y` aus, um den Funktionshost zu beenden.
 
 ## <a name="deploy-the-function-project-to-azure"></a>Bereitstellen des Funktionsprojekts in Azure
 
@@ -163,11 +163,23 @@ Wenn Sie Ihr Funktionsprojekt erstmals bereitstellen, werden in Azure eine Funkt
 > [!TIP]
 > Wenn Sie eine Funktions-App für Linux anstatt für Windows erstellen möchten, ändern Sie das Element `runtime.os` in der Datei „pom.xml“ von `windows` in `linux`. Das Ausführen von Linux in einem Verbrauchstarif wird in [diesen Regionen](https://github.com/Azure/azure-functions-host/wiki/Linux-Consumption-Regions) unterstützt. Unter Linux ausgeführte Apps und unter Windows ausgeführte Apps können nicht in der gleichen Ressourcengruppe enthalten sein.
 
-1. Vor der Bereitstellung müssen Sie sich zunächst mithilfe des Azure CLI-Befehls [az login](/cli/azure/authenticate-azure-cli) bei Ihrem Azure-Abonnement anmelden. 
+1. Damit Sie die Bereitstellung durchführen können, müssen Sie sich entweder über die Azure CLI oder über Azure PowerShell bei Ihrem Azure-Abonnement anmelden. 
 
+    # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
     ```azurecli
     az login
     ```
+
+    Mit dem Befehl [az login](/cli/azure/reference-index#az-login) werden Sie bei Ihrem Azure-Konto angemeldet.
+
+    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell) 
+    ```azurepowershell
+    Connect-AzAccount
+    ```
+
+    Das Cmdlet [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) meldet Sie bei Ihrem Konto an.
+
+    ---
 
 1. Verwenden Sie den folgenden Befehl, um Ihr Projekt für eine neue Funktions-App bereitzustellen.
 

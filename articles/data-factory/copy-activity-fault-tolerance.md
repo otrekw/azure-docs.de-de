@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: yexu
-ms.openlocfilehash: caec9b802bb347333dd861ebe499f72249d75aa2
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: e64f4ab31aed5c4c3e70ef10faf2049027525014
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92634776"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94593643"
 ---
 #  <a name="fault-tolerance-of-copy-activity-in-azure-data-factory"></a>Fehlertoleranz der Kopieraktivität in Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
@@ -27,7 +27,7 @@ ms.locfileid: "92634776"
 
 Wenn Sie Daten aus dem Quell- in den Zielspeicher kopieren, bietet die Azure Data Factory-Kopieraktivität eine bestimmte Ebene von Fehlertoleranzen, um eine Unterbrechung aufgrund Fehlern während der Datenverschiebung zu verhindern. Sie kopieren beispielsweise Millionen von Zeilen aus dem Quell- in den Zielspeicher. In der Zieldatenbank wurde ein Primärschlüssel (Primary Key, PK) erstellt, für die Quelldatenbank aber wurden keine Primärschlüssel definiert. Wenn Sie doppelte Zeilen aus der Quelle in das Ziel kopieren, wird diese PK-Verletzung in der Zieldatenbank angezeigt. Dann bietet Ihnen die Kopieraktivität zwei Möglichkeiten zur Behandlung solcher Fehler: 
 - Sie können die Kopieraktivität abbrechen, sobald ein Fehler aufgetreten ist. 
-- Sie können den Rest weiter kopieren, indem Sie die Fehlertoleranz aktivieren, um die inkompatiblen Daten zu überspringen. Überspringen Sie in diesem Fall beispielsweise die doppelte Zeile. Außerdem können Sie die übersprungenen Daten protokollieren, indem Sie das Sitzungsprotokoll innerhalb der Kopieraktivität aktivieren. 
+- Sie können den Rest weiter kopieren, indem Sie die Fehlertoleranz aktivieren, um die inkompatiblen Daten zu überspringen. Überspringen Sie in diesem Fall beispielsweise die doppelte Zeile. Außerdem können Sie die übersprungenen Daten protokollieren, indem Sie das Sitzungsprotokoll innerhalb der Kopieraktivität aktivieren. Ausführlichere Informationen finden Sie im [Sitzungsprotokoll in der Copy-Aktivität](copy-activity-log.md).
 
 ## <a name="copying-binary-files"></a>Kopieren von Binärdateien 
 
@@ -61,13 +61,20 @@ Wenn Sie Binärdateien zwischen Storage-Speichern kopieren, können Sie die Fehl
         "dataInconsistency": true 
     }, 
     "validateDataConsistency": true, 
-    "logStorageSettings": { 
-        "linkedServiceName": { 
-            "referenceName": "ADLSGen2", 
-            "type": "LinkedServiceReference" 
-            }, 
-        "path": "sessionlog/" 
-     } 
+    "logSettings": {
+        "enableCopyActivityLog": true,
+        "copyActivityLogSettings": {            
+            "logLevel": "Warning",
+            "enableReliableLogging": false
+        },
+        "logLocationSettings": {
+            "linkedServiceName": {
+               "referenceName": "ADLSGen2",
+               "type": "LinkedServiceReference"
+            },
+            "path": "sessionlog/"
+        }
+    }
 } 
 ```
 Eigenschaft | BESCHREIBUNG | Zulässige Werte | Erforderlich
@@ -76,7 +83,7 @@ skipErrorFile | Eine Gruppe von Eigenschaften zur Angabe der Fehlertypen, die w�
 fileMissing | Eines der Schlüssel-Wert-Paare in der „skipErrorFile“-Eigenschaftensammlung zur Bestimmung, ob Sie von anderen Anwendungen gelöschte Dateien überspringen möchten, wenn ADF in der Zwischenzeit kopiert. <br/> – True: Sie möchten den Rest kopieren, indem Sie die von anderen Anwendungen gelöschten Dateien überspringen. <br/> – False: Die Kopieraktivität soll abgebrochen werden, sobald alle Dateien während der Datenverschiebung aus dem Quellspeicher gelöscht werden. <br/>Beachten Sie, dass diese Eigenschaft auf „true“ als Standardwert festgelegt wird. | True (Standard) <br/>False | Nein
 fileForbidden | Eines der Schlüssel-Wert-Paare in der „skipErrorFile“-Eigenschaftensammlung zur Bestimmung, ob Sie die jeweiligen Dateien überspringen möchten, wenn die ACLs dieser Dateien oder Ordner eine höhere Berechtigungsstufe als die in ADF konfigurierte Verbindung erfordern. <br/> – True: Sie möchten den Rest kopieren, indem Sie die Dateien überspringen. <br/> – False: Sie möchten die Kopieraktivität abbrechen, nachdem Ihnen das Berechtigungsproblem bei Ordnern oder Dateien mitgeteilt wurde. | True <br/>False (Standard) | Nein
 dataInconsistency | Eines der Schlüssel-Wert-Paare in der „skipErrorFile“-Eigenschaftensammlung zur Bestimmung, ob Sie die inkonsistenten Daten zwischen Quell- und Zielspeicher überspringen möchten. <br/> – True: Sie möchten den Rest kopieren, indem Sie inkonsistente Daten überspringen. <br/> – False: Sie möchten die Kopieraktivität abbrechen, sobald inkonsistente Daten gefunden wurden. <br/>Beachten Sie, dass diese Eigenschaft nur gültig ist, wenn Sie „validateDataConsistency“ als „True“ festlegen. | True <br/>False (Standard) | Nein
-logStorageSettings  | Eine Gruppe von Eigenschaften, die angegeben werden können, wenn Sie die Namen der übersprungenen Objekte protokollieren möchten. | &nbsp; | Nein
+logSettings  | Eine Gruppe von Eigenschaften, die angegeben werden können, wenn Sie die Namen der übersprungenen Objekte protokollieren möchten. | &nbsp; | Nein
 linkedServiceName | Der verknüpfte Dienst von [Azure Blob Storage](connector-azure-blob-storage.md#linked-service-properties) oder [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties) zum Speichern der Sitzungsprotokolldateien. | Die Namen eines verknüpften Diensts vom Typ `AzureBlobStorage` oder `AzureBlobFS`, der auf die Instanz verweist, in der Sie die Protokolldatei speichern. | Nein
 path | Der Pfad der Protokolldateien. | Geben Sie den Pfad an, in dem Sie die Protokolldateien speichern. Wenn Sie keinen Pfad angeben, erstellt der Dienst automatisch einen Container. | Nein
 
@@ -108,7 +115,7 @@ Sie können die Anzahl der Dateien, die gelesen, geschrieben und übersprungen w
             "filesWritten": 1, 
             "filesSkipped": 2, 
             "throughput": 297,
-            "logPath": "https://myblobstorage.blob.core.windows.net//myfolder/a84bf8d4-233f-4216-8cb5-45962831cd1b/",
+            "logFilePath": "myfolder/a84bf8d4-233f-4216-8cb5-45962831cd1b/",
             "dataConsistencyVerification": 
            { 
                 "VerificationResult": "Verified", 
@@ -146,11 +153,11 @@ Im vorstehenden Protokoll können Sie sehen, dass „bigfile.csv“ übersprunge
 ### <a name="supported-scenarios"></a>Unterstützte Szenarios
 Die Kopieraktivität unterstützt drei Szenarien zum Erkennen, Überspringen und Protokollieren von Tabellendaten:
 
-- **Inkompatibilität zwischen dem Quelldatentyp und dem nativen Senkentyp** . 
+- **Inkompatibilität zwischen dem Quelldatentyp und dem nativen Senkentyp**. 
 
     Beispiel: Kopieren von Daten aus einer CSV-Datei in Blob Storage in eine SQL-Datenbank mit einer Schemadefinition, die drei Spalten vom Typ „INT“ enthält. Die Zeilen der CSV-Datei, die numerische Daten wie z.B. 123,456,789 enthalten, werden erfolgreich in den Senkenspeicher kopiert. Die Zeilen mit nicht numerischen Werten, z.B. 123,456, abc, werden dagegen als nicht kompatibel erkannt und übersprungen.
 
-- **Fehlende Übereinstimmung bei der Anzahl der Spalten zwischen der Quelle und der Senke** .
+- **Fehlende Übereinstimmung bei der Anzahl der Spalten zwischen der Quelle und der Senke**.
 
     Beispiel: Kopieren von Daten aus einer CSV-Datei in Blob Storage in eine SQL-Datenbank mit einer Schemadefinition, die sechs Spalten enthält. Die Zeilen der CSV-Datei, die sechs Spalten enthalten, werden erfolgreich in den Senkenspeicher kopiert. Die Zeilen der CSV-Datei mit mehr als sechs Spalten werden als inkompatibel erkannt und übersprungen.
 
@@ -175,12 +182,19 @@ Das folgende Beispiel zeigt eine JSON-Definition, mit der das Überspringen der 
         "type": "AzureSqlSink" 
     }, 
     "enableSkipIncompatibleRow": true, 
-    "logStorageSettings": { 
-    "linkedServiceName": { 
-        "referenceName": "ADLSGen2", 
-        "type": "LinkedServiceReference" 
-        }, 
-    "path": "sessionlog/" 
+    "logSettings": {
+        "enableCopyActivityLog": true,
+        "copyActivityLogSettings": {            
+            "logLevel": "Warning",
+            "enableReliableLogging": false
+        },
+        "logLocationSettings": {
+            "linkedServiceName": {
+               "referenceName": "ADLSGen2",
+               "type": "LinkedServiceReference"
+            },
+            "path": "sessionlog/"
+        }
     } 
 }, 
 ```
@@ -188,7 +202,7 @@ Das folgende Beispiel zeigt eine JSON-Definition, mit der das Überspringen der 
 Eigenschaft | BESCHREIBUNG | Zulässige Werte | Erforderlich
 -------- | ----------- | -------------- | -------- 
 enableSkipIncompatibleRow | Gibt an, ob nicht kompatible Zeilen beim Kopieren übersprungen werden sollen. | True<br/>False (Standardwert) | Nein
-logStorageSettings | Eine Gruppe von Eigenschaften, die angegeben werden können, wenn Sie die inkompatiblen Zeilen protokollieren möchten. | &nbsp; | Nein
+logSettings | Eine Gruppe von Eigenschaften, die angegeben werden können, wenn Sie die inkompatiblen Zeilen protokollieren möchten. | &nbsp; | Nein
 linkedServiceName | Der verknüpfte Dienst von [Azure Blob Storage](connector-azure-blob-storage.md#linked-service-properties) oder [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties) zum Speichern des Protokolls mit den übersprungenen Zeilen. | Die Namen eines verknüpften Diensts vom Typ `AzureBlobStorage` oder `AzureBlobFS`, der auf die Instanz verweist, in der Sie die Protokolldatei speichern. | Nein
 path | Der Pfad der Protokolldateien mit den übersprungenen Zeilen. | Geben Sie den gewünschten Pfad für die Protokollierung der inkompatiblen Daten an. Wenn Sie keinen Pfad angeben, erstellt der Dienst automatisch einen Container. | Nein
 
@@ -203,7 +217,7 @@ Nach Abschluss der Ausführung der Kopieraktivität wird die Anzahl übersprunge
             "rowsSkipped": 2,
             "copyDuration": 16,
             "throughput": 0.01,
-            "logPath": "https://myblobstorage.blob.core.windows.net//myfolder/a84bf8d4-233f-4216-8cb5-45962831cd1b/",
+            "logFilePath": "myfolder/a84bf8d4-233f-4216-8cb5-45962831cd1b/",
             "errors": []
         },
 

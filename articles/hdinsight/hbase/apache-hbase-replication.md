@@ -9,11 +9,11 @@ ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 12/06/2019
 ms.openlocfilehash: 8fc5ba2280b5ad68a40f4992adc170408e80e5a6
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92540362"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021791"
 ---
 # <a name="set-up-apache-hbase-cluster-replication-in-azure-virtual-networks"></a>Einrichten der Apache HBase-Clusterreplikation in virtuellen Azure-Netzwerken
 
@@ -105,9 +105,9 @@ Im letzten Abschnitt wird anhand der Vorlage ein virtueller Ubuntu-Computer in j
 Um Bind zu installieren, müssen Sie die öffentliche IP-Adresse der beiden virtuellen DNS-Computer finden.
 
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com).
-2. Öffnen Sie den virtuellen DNS-Computer, indem Sie **Ressourcengruppen > [Ressourcengruppenname] > [vnet1DNS]** wählen.  Der Ressourcengruppenname ist derjenige, den Sie in der vorherigen Prozedur erstellt haben. Die Standardnamen der DNS-VMs lauten *vnet1DNS* und *vnet2DNS* .
+2. Öffnen Sie den virtuellen DNS-Computer, indem Sie **Ressourcengruppen > [Ressourcengruppenname] > [vnet1DNS]** wählen.  Der Ressourcengruppenname ist derjenige, den Sie in der vorherigen Prozedur erstellt haben. Die Standardnamen der DNS-VMs lauten *vnet1DNS* und *vnet2DNS*.
 3. Wählen Sie **Eigenschaften** aus, um die Eigenschaftenseite des virtuellen Netzwerks zu öffnen.
-4. Notieren Sie sich die **öffentliche IP-Adresse** , und überprüfen Sie außerdem die **private IP-Adresse** .  Die private IP-Adresse soll **10.1.0.4** für vnet1DNS und **10.2.0.4** für vnet2DNS sein.  
+4. Notieren Sie sich die **öffentliche IP-Adresse**, und überprüfen Sie außerdem die **private IP-Adresse**.  Die private IP-Adresse soll **10.1.0.4** für vnet1DNS und **10.2.0.4** für vnet2DNS sein.  
 5. Ändern Sie die DNS-Server für beide virtuelle Netzwerke in die Standard-DNS-Server (von Azure bereitgestellt), um eingehenden und ausgehenden Zugriff auf Downloadpakete zum Installieren von Bind in den folgenden Schritten zuzulassen.
 
 Gehen Sie zur Installation von Bind wie folgt vor:
@@ -170,7 +170,7 @@ Gehen Sie zur Installation von Bind wie folgt vor:
     sudo nano /etc/bind/named.conf.options
     ```
 
-    Zum Speichern der Datei drücken Sie __STRG+X__ , __Y__ und dann die __EINGABETASTE__ .
+    Zum Speichern der Datei drücken Sie __STRG+X__, __Y__ und dann die __EINGABETASTE__.
 
 4. Verwenden Sie aus der SSH-Sitzung den folgenden Befehl:
 
@@ -207,7 +207,7 @@ Gehen Sie zur Installation von Bind wie folgt vor:
     sudo nano /etc/bind/named.conf.local
     ```
 
-    Zum Speichern der Datei drücken Sie __STRG+X__ , __Y__ und dann die __EINGABETASTE__ .
+    Zum Speichern der Datei drücken Sie __STRG+X__, __Y__ und dann die __EINGABETASTE__.
 
 6. Verwenden Sie den folgenden Befehl, um Bind zu starten:
 
@@ -244,11 +244,11 @@ Gehen Sie zur Installation von Bind wie folgt vor:
 
 Führen Sie die folgenden Schritte aus, damit das virtuelle Netzwerk anstelle des rekursiven Azure-Resolvers den benutzerdefinierten DNS-Server verwendet:
 
-1. Wählen Sie im [Azure-Portal](https://portal.azure.com) das virtuelle Netzwerk aus, und klicken Sie dann auf __DNS-Server__ .
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com) das virtuelle Netzwerk aus, und klicken Sie dann auf __DNS-Server__.
 
-2. Wählen Sie __Benutzerdefiniert__ aus, und geben Sie die __interne IP-Adresse__ des benutzerdefinierten DNS-Servers ein. Klicken Sie abschließend auf __Speichern__ .
+2. Wählen Sie __Benutzerdefiniert__ aus, und geben Sie die __interne IP-Adresse__ des benutzerdefinierten DNS-Servers ein. Klicken Sie abschließend auf __Speichern__.
 
-6. Öffnen Sie den virtuellen DNS-Servercomputer in vnet1, und klicken Sie auf **Neustart** .  Sie müssen alle virtuellen Computer im virtuellen Netzwerk neu starten, damit die DNS-Konfiguration übernommen wird.
+6. Öffnen Sie den virtuellen DNS-Servercomputer in vnet1, und klicken Sie auf **Neustart**.  Sie müssen alle virtuellen Computer im virtuellen Netzwerk neu starten, damit die DNS-Konfiguration übernommen wird.
 7. Wiederholen Sie die Schritte zur Konfiguration des benutzerdefinierten DNS-Servers für vnet2.
 
 Um die DNS-Konfiguration zu testen, können Sie eine Verbindung zu den beiden virtuellen DNS-Computern über SSH herstellen und den DNS-Server des anderen virtuellen Netzwerks über dessen Hostnamen pingen. Wenn es nicht funktioniert, verwenden Sie den folgenden Befehl, um den DNS-Status zu überprüfen:
@@ -261,13 +261,13 @@ sudo service bind9 status
 
 Erstellen Sie in jedem der beiden virtuellen Netzwerke einen [Apache HBase](https://hbase.apache.org/)-Cluster mit folgender Konfiguration:
 
-- **Name der Ressourcengruppe** : Verwenden Sie den gleichen Ressourcengruppennamen, wie beim Erstellen der virtuellen Netzwerke.
-- **Clustertyp** : HBase
-- **Version** : HBase 1.1.2 (HDI 3.6)
-- **Standort** : Verwenden Sie denselben Standort wie für das virtuelle Netzwerk.  Standardmäßig ist vnet1 *USA, Westen* und vnet2 ist *USA, Osten* .
-- **Speicher** : Erstellen Sie ein neues Speicherkonto für den Cluster.
+- **Name der Ressourcengruppe**: Verwenden Sie den gleichen Ressourcengruppennamen, wie beim Erstellen der virtuellen Netzwerke.
+- **Clustertyp**: HBase
+- **Version**: HBase 1.1.2 (HDI 3.6)
+- **Standort**: Verwenden Sie denselben Standort wie für das virtuelle Netzwerk.  Standardmäßig ist vnet1 *USA, Westen* und vnet2 ist *USA, Osten*.
+- **Speicher**: Erstellen Sie ein neues Speicherkonto für den Cluster.
 - **Virtuelles Netzwerk** (aus den erweiterten Einstellungen im Portal): Wählen Sie vnet1, das Sie in der vorherigen Prozedur erstellt haben.
-- **Subnetz** : Der in der Vorlage verwendete Standardname lautet **subnet1** .
+- **Subnetz**: Der in der Vorlage verwendete Standardname lautet **subnet1**.
 
 Um sicherzustellen, dass die Umgebung korrekt konfiguriert ist, müssen Sie den FQDN des Hauptknotens zwischen den beiden Clustern pingen können.
 
@@ -275,7 +275,7 @@ Um sicherzustellen, dass die Umgebung korrekt konfiguriert ist, müssen Sie den 
 
 Wenn Sie einen Cluster replizieren, müssen Sie die Tabellen angeben, die Sie replizieren möchten. In diesem Abschnitt laden Sie einige Daten in den Quellcluster. Im nächsten Abschnitt aktivieren Sie die Replikation zwischen den beiden Clustern.
 
-Wenn Sie eine Tabelle namens [Kontakte](apache-hbase-tutorial-get-started-linux.md) erstellen und einige Daten in die Tabelle einfügen möchten, befolgen Sie die Anweisungen unter **Apache HBase-Tutorial: Erste Schritte mit Apache HBase in HDInsight** .
+Wenn Sie eine Tabelle namens [Kontakte](apache-hbase-tutorial-get-started-linux.md) erstellen und einige Daten in die Tabelle einfügen möchten, befolgen Sie die Anweisungen unter **Apache HBase-Tutorial: Erste Schritte mit Apache HBase in HDInsight**.
 
 > [!NOTE]
 > Wenn Sie Tabellen aus einem benutzerdefinierten Namespace replizieren möchten, müssen Sie sicherstellen, dass auch die entsprechenden benutzerdefinierten Namespaces auch auf dem Zielcluster definiert sind.
@@ -289,14 +289,14 @@ Die folgenden Schritte zeigen, wie Sie das Skript mit Skriptaktionen aus dem Azu
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Öffnen Sie den HBase-Quellcluster.
-3. Wählen Sie im Clustermenü **Skriptaktionen** .
+3. Wählen Sie im Clustermenü **Skriptaktionen**.
 4. Wählen Sie am oberen Rand der Seite **Neue übermitteln** aus.
 5. Wählen Sie folgende Informationen aus, oder geben Sie sie ein:
 
-   1. **Name** : Geben Sie **Replikation aktivieren** ein.
-   2. **Bashskript-URL** : Geben Sie **https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_enable_replication.sh** ein.
-   3. **Hauptknoten** : Stellen Sie sicher, dass diese Option aktiviert ist. Deaktivieren Sie die anderen Knotentypen.
-   4. **Parameter** : Die folgenden Beispielparameter aktivieren die Replikation für alle vorhandenen Tabellen und kopieren dann alle Daten aus dem Quellcluster in den Zielcluster:
+   1. **Name**: Geben Sie **Replikation aktivieren** ein.
+   2. **Bashskript-URL**: Geben Sie **https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_enable_replication.sh** ein.
+   3. **Hauptknoten**: Stellen Sie sicher, dass diese Option aktiviert ist. Deaktivieren Sie die anderen Knotentypen.
+   4. **Parameter**: Die folgenden Beispielparameter aktivieren die Replikation für alle vorhandenen Tabellen und kopieren dann alle Daten aus dem Quellcluster in den Zielcluster:
 
     `-m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -copydata`
     
@@ -305,7 +305,7 @@ Die folgenden Schritte zeigen, wie Sie das Skript mit Skriptaktionen aus dem Azu
       >
       > In dieser exemplarischen Vorgehensweise wird hn1 als aktiver Hauptknoten angenommen. Überprüfen Sie den Cluster, um den aktiven Hauptknoten zu identifizieren.
 
-6. Klicken Sie auf **Erstellen** . Die Ausführung des Skripts kann einige Zeit in Anspruch nehmen, insbesondere dann, wenn Sie das Argument **-copydata** verwenden.
+6. Klicken Sie auf **Erstellen**. Die Ausführung des Skripts kann einige Zeit in Anspruch nehmen, insbesondere dann, wenn Sie das Argument **-copydata** verwenden.
 
 Erforderliche Argumente:
 
@@ -320,8 +320,8 @@ Optionale Argumente:
 
 |Name|BESCHREIBUNG|
 |----|-----------|
-|-su, --src-ambari-user | Gibt den Administratorbenutzernamen für Ambari im HBase-Quellcluster an. Der Standardwert lautet **admin** . |
-|-du, --dst-ambari-user | Gibt den Administratorbenutzernamen für Ambari im HBase-Zielcluster an. Der Standardwert lautet **admin** . |
+|-su, --src-ambari-user | Gibt den Administratorbenutzernamen für Ambari im HBase-Quellcluster an. Der Standardwert lautet **admin**. |
+|-du, --dst-ambari-user | Gibt den Administratorbenutzernamen für Ambari im HBase-Zielcluster an. Der Standardwert lautet **admin**. |
 |-t, --table-list | Gibt die zu replizierenden Tabellen an. Beispiel: --table-list="table1;table2;table3". Wenn Sie keine Tabellen angeben, werden alle vorhandenen HBase-Tabellen repliziert.|
 |-m, --machine | Gibt den Hauptknoten an, auf dem die Skriptaktion ausgeführt werden soll. Der Wert muss basierend auf dem aktiven Hauptknoten ausgewählt werden. Verwenden Sie diese Option, wenn Sie das $0-Skript als Skriptaktion im HDInsight-Portal oder in Azure PowerShell ausführen.|
 |-cp, -copydata | Aktiviert die Migration vorhandener Daten in den Tabellen, in denen die Replikation aktiviert ist. |
@@ -336,19 +336,19 @@ Nachdem die Skriptaktion erfolgreich bereitgestellt wurde, können Sie über SSH
 
 Die folgende Liste zeigt einige allgemeine Anwendungsfälle und die zugehörigen Parametereinstellungen:
 
-- **Aktivieren der Replikation in allen Tabellen zwischen den beiden Clustern** . Dieses Szenario erfordert kein Kopieren oder Migrieren der in den Tabellen vorhandenen Daten und verwendet keine Phoenix-Tabellen. Verwenden Sie die folgenden Parameter:
+- **Aktivieren der Replikation in allen Tabellen zwischen den beiden Clustern**. Dieses Szenario erfordert kein Kopieren oder Migrieren der in den Tabellen vorhandenen Daten und verwendet keine Phoenix-Tabellen. Verwenden Sie die folgenden Parameter:
 
   `-m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password>`
 
-- **Aktivieren der Replikation in bestimmten Tabellen** . Verwenden Sie die folgenden Parameter, um die Replikation in „table1“, „table2“ und „table3“ zu aktivieren:
+- **Aktivieren der Replikation in bestimmten Tabellen**. Verwenden Sie die folgenden Parameter, um die Replikation in „table1“, „table2“ und „table3“ zu aktivieren:
 
   `-m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -t "table1;table2;table3"`
 
-- **Aktivieren der Replikation in bestimmten Tabellen und Kopieren der vorhandenen Daten** . Verwenden Sie die folgenden Parameter, um die Replikation in „table1“, „table2“ und „table3“ zu aktivieren:
+- **Aktivieren der Replikation in bestimmten Tabellen und Kopieren der vorhandenen Daten**. Verwenden Sie die folgenden Parameter, um die Replikation in „table1“, „table2“ und „table3“ zu aktivieren:
 
   `-m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -t "table1;table2;table3" -copydata`
 
-- **Aktivieren der Replikation in allen Tabellen und Replikation der Phoenix-Metadaten von der Quelle zum Ziel** . Die Replikation der Phoenix-Metadaten ist nicht perfekt. Verwenden Sie sie mit Vorsicht. Verwenden Sie die folgenden Parameter:
+- **Aktivieren der Replikation in allen Tabellen und Replikation der Phoenix-Metadaten von der Quelle zum Ziel**. Die Replikation der Phoenix-Metadaten ist nicht perfekt. Verwenden Sie sie mit Vorsicht. Verwenden Sie die folgenden Parameter:
 
   `-m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -t "table1;table2;table3" -replicate-phoenix-meta`
 
@@ -368,7 +368,7 @@ Der Abschnitt `print_usage()` des [Skripts](https://github.com/Azure/hbase-utils
 
 ### <a name="scenarios"></a>Szenarien
 
-- **Kopieren bestimmter Tabellen („test1“, „test2“ und „test3“) für alle bis jetzt (aktueller Zeitstempel) bearbeiteten Zeilen** :
+- **Kopieren bestimmter Tabellen („test1“, „test2“ und „test3“) für alle bis jetzt (aktueller Zeitstempel) bearbeiteten Zeilen**:
 
   `-m hn1 -t "test1::;test2::;test3::" -p "zk5-hbrpl2;zk1-hbrpl2;zk5-hbrpl2:2181:/hbase-unsecure" -everythingTillNow`
 
@@ -376,7 +376,7 @@ Der Abschnitt `print_usage()` des [Skripts](https://github.com/Azure/hbase-utils
 
   `-m hn1 -t "test1::;test2::;test3::" --replication-peer="zk5-hbrpl2;zk1-hbrpl2;zk5-hbrpl2:2181:/hbase-unsecure" -everythingTillNow`
 
-- **Kopieren bestimmter Tabellen innerhalb eines angegebenen Zeitraums** :
+- **Kopieren bestimmter Tabellen innerhalb eines angegebenen Zeitraums**:
 
   `-m hn1 -t "table1:0:452256397;table2:14141444:452256397" -p "zk5-hbrpl2;zk1-hbrpl2;zk5-hbrpl2:2181:/hbase-unsecure"`
 
@@ -390,7 +390,7 @@ Der Abschnitt `print_usage()` des [Skripts](https://raw.githubusercontent.com/Az
 
 ### <a name="scenarios"></a>Szenarien
 
-- **Deaktivieren der Replikation in allen Tabellen** :
+- **Deaktivieren der Replikation in allen Tabellen**:
 
   `-m hn1 -s <source hbase cluster name> -sp Mypassword\!789 -all`
 

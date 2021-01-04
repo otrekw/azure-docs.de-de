@@ -10,13 +10,13 @@ ms.author: peterlu
 author: peterclu
 ms.date: 10/06/2020
 ms.topic: conceptual
-ms.custom: how-to, contperfq4, tracking-python, contperfq1
-ms.openlocfilehash: 8082694b9f08023653d47e1f7fb442219cf8b475
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: how-to, contperf-fy20q4, tracking-python, contperf-fy21q1
+ms.openlocfilehash: 07b8c130a2a22554e4cd5b33996d5a5ee967d47f
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93316690"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97029531"
 ---
 # <a name="secure-an-azure-machine-learning-workspace-with-virtual-networks"></a>Schützen eines Azure Machine Learning-Arbeitsbereichs mit virtuellen Netzwerken
 
@@ -43,7 +43,7 @@ In diesem Artikel erfahren Sie, wie Sie die folgenden Arbeitsbereichsressourcen 
 
 + Ein vorhandenes virtuelles Netzwerk und Subnetz, die mit Ihren Computeressourcen verwendet werden können
 
-+ Ihr Benutzerkonto muss über die rollenbasierte Zugriffssteuerung von Azure (Role-Based Access Control, RBAC) zu den folgenden Aktionen berechtigt werden, um Ressourcen in einem virtuellen Netzwerk oder Subnetz bereitstellen zu können:
++ Ihr Benutzerkonto muss über die rollenbasierte Zugriffssteuerung von Azure (Azure RBAC) zu den folgenden Aktionen berechtigt werden, um Ressourcen in einem virtuellen Netzwerk oder Subnetz bereitstellen zu können:
 
     - „Microsoft.Network/virtualNetworks/join/action“ auf der virtuellen Netzwerkressource
     - „Microsoft.Network/virtualNetworks/subnet/join/action“ auf der Subnetzressource
@@ -87,7 +87,7 @@ Führen Sie die folgenden Schritte aus, um ein Azure-Speicherkonto für den Arbe
 
     1. Aktivieren Sie das Kontrollkästchen __Vertrauenswürdigen Microsoft-Diensten den Zugriff auf dieses Speicherkonto erlauben__. Dadurch erhalten nicht alle Azure-Dienste Zugriff auf Ihr Speicherkonto.
     
-        * Ressourcen einiger Dienste, **die in Ihrem Abonnement registriert sind** , können für bestimmte Vorgänge auf das Speicherkonto **im selben Abonnement** zugreifen. Hierzu zählen beispielsweise das Schreiben von Protokollen und Sicherungsvorgänge.
+        * Ressourcen einiger Dienste, **die in Ihrem Abonnement registriert sind**, können für bestimmte Vorgänge auf das Speicherkonto **im selben Abonnement** zugreifen. Hierzu zählen beispielsweise das Schreiben von Protokollen und Sicherungsvorgänge.
         * Ressourcen einiger Dienste kann durch __Zuweisen einer Azure-Rolle__ zur vom System zugewiesenen verwalteten Identität der explizite Zugriff auf Ihr Speicherkonto gewährt werden.
 
         Weitere Informationen finden Sie unter [Konfigurieren von Firewalls und virtuellen Netzwerken in Azure Storage](../storage/common/storage-network-security.md#trusted-microsoft-services).
@@ -301,4 +301,4 @@ Dieser Artikel ist der erste Teil einer vierteiligen Serie zu virtuellen Netzwer
 * [Teil 1: Übersicht über die Isolation virtueller Netzwerke und Datenschutz](how-to-network-security-overview.md)
 * [Teil 3: Schützen einer Azure Machine Learning-Trainingsumgebung mit virtuellen Netzwerken](how-to-secure-training-vnet.md)
 * [Teil 4: Schützen der Rückschlussumgebung](how-to-secure-inferencing-vnet.md)
-* [Teil 5: Aktivieren der Studio-Funktionalität](how-to-enable-studio-virtual-network.md)
+* [Teil 5: Verwenden von Studio in einem virtuellen Netzwerk](how-to-enable-studio-virtual-network.md)

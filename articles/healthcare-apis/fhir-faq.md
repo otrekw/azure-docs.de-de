@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 08/03/2020
 ms.author: matjazl
-ms.openlocfilehash: 8f4d16931f09f94af81dd4e0f178ce6e0f990881
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 31ae5b780bf451e29a97f04202f804db27fc387a
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94426203"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452928"
 ---
 # <a name="frequently-asked-questions-about-the-azure-api-for-fhir"></a>Häufig gestellte Fragen zu Azure API for FHIR
 
@@ -31,7 +31,7 @@ Ja. Die Daten werden in verwalteten Datenbanken in Azure gespeichert. Die Azure 
 Derzeit wird Microsoft Azure Active Directory als Identitätsanbieter unterstützt.
 
 ### <a name="what-is-the-recovery-point-objective-rpo-for-the-azure-api-for-fhir"></a>Wie lautet die RPO (Recovery Point Objective) für die Azure API for FHIR?
-Die Azure API for FHIR wird durch Cosmos DB – unseren Persistenzanbieter – gesichert. Aus diesem Grund entspricht die RPO für den Dienst der für [Cosmos DB (Einzelregion)](https://docs.microsoft.com/azure/cosmos-db/consistency-levels) und liegt unter 240 Minuten.
+Die Azure API for FHIR wird durch Cosmos DB – unseren Persistenzanbieter – gesichert. Aus diesem Grund entspricht die RPO für den Dienst der für [Cosmos DB (Einzelregion)](../cosmos-db/consistency-levels.md) und liegt unter 240 Minuten.
 
 ### <a name="what-fhir-version-do-you-support"></a>Welche FHIR-Version wird unterstützt?
 
@@ -65,6 +65,10 @@ Informationen zu den Funktionen, die in Azure API for FHIR veröffentlicht werde
 
 Bei SMART (Substitutable Medical Applications and Reusable Technology) on FHIR handelt es sich um eine Reihe offener Spezifikationen für die Integration von Partneranwendungen in FHIR-Server und andere IT-Systeme im Gesundheitswesen, wie elektronische Patientenakten und den Austausch von Gesundheitsinformationen. Indem Sie eine SMART on FHIR-Anwendung erstellen, können Sie sicherstellen, dass auf Ihre Anwendung zugegriffen und diese von einer Vielzahl unterschiedlicher Systeme genutzt werden kann.
 Authentifizierung und Azure API for FHIR. Weitere Informationen zu SMART finden Sie unter [SMART Health IT](https://smarthealthit.org/).
+
+### <a name="where-can-i-find-what-version-of-fhir-is-running-on-my-database"></a>Wo sehe ich, welche Version von FHIR für meine Datenbank ausgeführt wird? 
+
+Die genaue FHIR-Version finden Sie in der Funktionsbestätigung unter der Eigenschaft „fhirVersion“.
 
 ## <a name="fhir-implementations-and-specifications"></a>FHIR-Implementierungen and -Spezifikationen
 
@@ -118,7 +122,7 @@ Auf der [GitHub-Seite zur Gesundheitsarchitektur (Health Architecture)](https://
 
 ### <a name="where-can-i-see-an-example-of-connecting-a-web-application-to-azure-api-for-fhir"></a>Wo finde ich ein Beispiel für die Verbindungsherstellung zwischen einer Webanwendung und Azure API for FHIR?
 
-Die [GitHub-Seite zur Integritätsarchitektur](https://github.com/microsoft/health-architectures) enthält Beispielanwendungen und -szenarien. Dort sehen Sie, wie Sie eine Verbindung zwischen einer Webanwendung und Azure API for FHIR herstellen.  
+Die [GitHub-Seite zur Integritätsarchitektur](https://aka.ms/health-architectures) enthält Beispielanwendungen und -szenarien. Dort sehen Sie, wie Sie eine Verbindung zwischen einer Webanwendung und Azure API for FHIR herstellen.  
 
 ## <a name="azure-api-for-fhir-features-and-services"></a>Azure API for FHIR: Features und Dienste 
 

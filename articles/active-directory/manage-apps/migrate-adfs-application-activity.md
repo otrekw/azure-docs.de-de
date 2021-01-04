@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 01/14/2019
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ee1734e61ffe59fccf3ad35c1f0c607882f7f40
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 77a43d5bd5f2b228d5ed4384fc1efdca76f8ea0b
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94659196"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96573883"
 ---
 # <a name="use-the-ad-fs-application-activity-report-preview-to-migrate-applications-to-azure-ad"></a>Verwenden Sie den AD FS-Anwendungsaktivitätsbericht (Vorschau), um Anwendungen zu Azure AD zu migrieren.
 
@@ -26,9 +26,10 @@ Viele Organisationen verwenden Active Directory-Verbunddienste (AD FS), um Cloud
 
 Mit dem AD FS-Anwendungsaktivitätsbericht (Vorschau) im Azure-Portal können Sie schnell ermitteln, welche Ihrer Anwendungen zu Azure AD migriert werden können. Es werden alle AD FS-Anwendungen im Hinblick auf die Kompatibilität mit Azure AD bewertet und auf Probleme überprüft sowie Anleitungen zum Vorbereiten einzelner Anwendungen für die Migration bereitgestellt. Mit dem AD FS-Anwendungsaktivitätsbericht können Sie folgende Aktionen ausführen:
 
-* **Ermitteln der AD FS-Anwendungen und Planen des Migrationsumfangs.** Der AD FS-Anwendungsaktivitätsbericht listet alle AD FS-Anwendungen in Ihrer Organisation auf und gibt deren Bereitschaft für die Migration zu Azure AD an.
+* **Ermitteln der AD FS-Anwendungen und Planen des Migrationsumfangs.** Der AD FS-Anwendungsaktivitätsbericht enthält alle AD FS-Anwendungen in Ihrer Organisation, bei denen in den letzten 30 Tagen aktive Benutzeranmeldungen aufgetreten sind. Der Bericht gibt an, ob eine App für die Migration zu Azure AD bereit ist. Er zeigt jedoch keine Microsoft-bezogenen vertrauenden Seiten in AD FS (wie z. B. Office 365) an. Ein Beispiel wäre eine vertrauende Seite mit dem Namen „urn:federation:MicrosoftOnline“.
+
 * **Priorisieren von Anwendungen für die Migration.** Ermitteln Sie die Anzahl der verschiedenen Benutzer, die sich in den letzten 1, 7 oder 30 Tagen bei der Anwendung angemeldet haben, um die Wichtigkeit oder das Risiko der Migration der Anwendung zu ermitteln.
-* **Ausführen von Migrationstests und Beheben von Problemen.** Der Berichterstellungsdienst führt automatisch Tests aus, um zu bestimmen, ob eine Anwendung für die Migration bereit ist. Die Ergebnisse werden im AD FS-Anwendungsaktivitätsbericht als Migrationsstatus angezeigt. Werden potenzielle Migrationsprobleme erkannt, erhalten Sie spezifische Anweisungen zu deren Behebung.
+* **Ausführen von Migrationstests und Beheben von Problemen.** Der Berichterstellungsdienst führt automatisch Tests aus, um zu bestimmen, ob eine Anwendung für die Migration bereit ist. Die Ergebnisse werden im AD FS-Anwendungsaktivitätsbericht als Migrationsstatus angezeigt. Wenn die AD FS-Konfiguration nicht mit einer Azure AD-Konfiguration kompatibel ist, erhalten Sie spezifische Anweisungen zum Behandeln der Konfiguration in Azure AD.
 
 Die AD FS-Anwendungsaktivitätsdaten sind für Benutzer verfügbar, denen diese Administratorrollen zugewiesen sind: globaler Administrator, Benutzer mit Leseberechtigung für Berichte, Benutzer mit Leseberechtigung für Sicherheitsfunktionen, Anwendungsadministrator oder Cloudanwendungsadministrator.
 
@@ -39,6 +40,9 @@ Die AD FS-Anwendungsaktivitätsdaten sind für Benutzer verfügbar, denen diese 
 * Die Azure AD Connect Health-Instanz für den AD FS-Agent muss installiert sein.
    * [Weitere Informationen zu Azure AD Connect Health](../hybrid/how-to-connect-health-adfs.md)
    * [Erste Schritte mit dem Einrichten von Azure AD Connect Health und der Installation des AD FS-Agents](../hybrid/how-to-connect-health-agent-install.md)
+
+>[!IMPORTANT] 
+>Es gibt mehrere Gründe, aus denen nicht alle erwarteten Anwendungen angezeigt werden, nachdem Sie Azure AD Connect Health installiert haben. Der AD FS-Anwendungsaktivitätsbericht enthält nur vertrauende AD FS-Seiten, bei denen in den letzten 30 Tagen Benutzeranmeldungen aufgetreten sind. Außerdem zeigt der Bericht keine Microsoft-bezogenen vertrauenden Seiten (wie z. B. Office 365) an.
 
 ## <a name="discover-ad-fs-applications-that-can-be-migrated"></a>Ermitteln von AD FS-Anwendungen, die migriert werden können 
 
@@ -76,7 +80,7 @@ In der folgenden Tabelle sind alle Konfigurationstests aufgeführt, die für AD 
 
 |Ergebnis  |Bestanden/Warnung/Fehler  |BESCHREIBUNG  |
 |---------|---------|---------|
-|Test-ADFSRPAdditionalAuthenticationRules <br> Für „AdditionalAuthentication“ wurde mindestens eine nicht migrierbare Regel erkannt.       | Bestanden/Warnung          | Die vertrauende Seite verfügt über Regeln zum Anfordern der mehrstufigen Authentifizierung (Multi-Factor Authentication, MFA). Um zu Azure AD zu wechseln, übersetzen Sie diese Regeln in Richtlinien für bedingten Zugriff. Wenn Sie eine lokale MFA verwenden, empfehlen wir, dass Sie zu Azure MFA wechseln. [Weitere Informationen über bedingten Zugriff](../authentication/concept-mfa-howitworks.md).        |
+|Test-ADFSRPAdditionalAuthenticationRules <br> Für „AdditionalAuthentication“ wurde mindestens eine nicht migrierbare Regel erkannt.       | Bestanden/Warnung          | Die vertrauende Seite verfügt über Regeln zum Anfordern der mehrstufigen Authentifizierung (Multi-Factor Authentication, MFA). Um zu Azure AD zu wechseln, übersetzen Sie diese Regeln in Richtlinien für bedingten Zugriff. Wenn Sie eine lokale MFA verwenden, empfehlen wir, dass Sie zu Azure AD MFA wechseln. [Weitere Informationen über bedingten Zugriff](../authentication/concept-mfa-howitworks.md).        |
 |Test-ADFSRPAdditionalWSFedEndpoint <br> Für die vertrauende Seite ist „AdditionalWSFedEndpoint“ auf „true“ festgelegt.       | Erfolgreich/Fehler          | Die vertrauende Seite in AD FS unterstützt mehrere WS-Fed-Assertionsendpunkte. Zurzeit unterstützt Azure AD nur einen. Wenn Sie ein Szenario haben, in dem dieses Ergebnis die Migration blockiert, [geben Sie uns Feedback](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/38695621-allow-multiple-ws-fed-assertion-endpoints).     |
 |Test-ADFSRPAllowedAuthenticationClassReferences <br> Für die vertrauende Seite ist „AllowedAuthenticationClassReferences“ festgelegt.       | Erfolgreich/Fehler          | Mit dieser Einstellung in AD FS können Sie angeben, ob die Anwendung so konfiguriert ist, dass nur bestimmte Authentifizierungstypen zugelassen werden. Wir empfehlen, den bedingten Zugriff zu verwenden, um diese Funktion zu erzielen.  Wenn Sie ein Szenario haben, in dem dieses Ergebnis die Migration blockiert, [geben Sie uns Feedback](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/38695672-allow-in-azure-ad-to-specify-certain-authentication).  [Weitere Informationen über bedingten Zugriff](../authentication/concept-mfa-howitworks.md).          |
 |Test-ADFSRPAlwaysRequireAuthentication <br> AlwaysRequireAuthenticationCheckResult      | Erfolgreich/Fehler          | Mit dieser Einstellung in AD FS können Sie angeben, ob die Anwendung so konfiguriert ist, dass SSO-Cookies ignoriert werden und **immer eine Authentifizierung angefordert** wird. In Azure AD können Sie die Authentifizierungssitzung mithilfe von Richtlinien für bedingten Zugriff verwalten, um ein ähnliches Verhalten zu erzielen. [Weitere Informationen zum Konfigurieren der Verwaltung von Authentifizierungssitzungen mit bedingtem Zugriff](../conditional-access/howto-conditional-access-session-lifetime.md).          |
@@ -121,6 +125,17 @@ In der folgenden Tabelle sind alle Anspruchsregeltests aufgeführt, die für AD 
 |EXTERNAL_ATTRIBUTE_STORE      | Die Ausstellungsanweisung verwendet einen anderen Attributspeicher als Active Directory. Derzeit bindet Azure AD keine Ansprüche aus anderen Speichern als Active Directory oder Azure AD ein. Wenn dieses Ergebnis die Migration von Anwendungen zu Azure AD blockiert, [geben Sie uns Feedback](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/38695717-allow-to-source-user-attributes-from-external-dire).          |
 |UNSUPPORTED_ISSUANCE_CLASS      | Die Ausstellungsanweisung verwendet ADD, um dem eingehenden Anspruchssatz Ansprüche hinzuzufügen. In Azure AD kann dies möglicherweise als mehrfache Anspruchstransformationen konfiguriert werden.  Weitere Informationen finden Sie unter [Anpassen von Ansprüchen im SAML-Token für Unternehmensanwendungen](../develop/active-directory-claims-mapping.md).         |
 |UNSUPPORTED_ISSUANCE_TRANSFORMATION      | Die Ausstellungsanweisung verwendet reguläre Ausdrücke, um den Wert des Anspruchs zu transformieren, der ausgegeben werden soll. Um eine ähnliche Funktionalität in Azure AD zu erzielen, können Sie vordefinierte Transformationen wie z.B. Extract(), Trim() und ToLower verwenden. Weitere Informationen finden Sie unter [Anpassen von Ansprüchen im SAML-Token für Unternehmensanwendungen](../develop/active-directory-saml-claims-customization.md).          |
+
+## <a name="troubleshooting"></a>Problembehandlung
+
+### <a name="cant-see-all-my-ad-fs-applications-in-the-report"></a>Im Bericht werden nicht alle meine AD FS-Anwendungen angezeigt.
+
+ Wenn Sie Azure AD Connect Health installiert haben, aber die Aufforderung zur Installation weiterhin angezeigt wird, oder wenn nicht alle Ihre AD FS-Anwendungen im Bericht angezeigt werden, verfügen Sie möglicherweise nicht über aktive AD FS-Anwendungen, oder Ihre AD FS-Anwendungen sind Microsoft-Anwendungen.
+ 
+ Der AD FS-Anwendungsaktivitätsbericht enthält alle AD FS-Anwendungen in Ihrer Organisation, bei denen in den letzten 30 Tagen aktive Benutzeranmeldungen aufgetreten sind. Er zeigt jedoch keine Microsoft-bezogenen vertrauenden Seiten in AD FS (wie z. B. Office 365) an. So werden beispielsweise vertrauende Seiten mit den Namen „urn:federation:MicrosoftOnline“, „microsoftonline“ oder „microsoft:winhello:cert:prov:server“ nicht in der Liste angezeigt.
+
+
+
 
 
 ## <a name="next-steps"></a>Nächste Schritte

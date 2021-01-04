@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 10/21/2020
 ms.author: juliako
-ms.openlocfilehash: 0d954123b0d48a4b78c0dcda98898b7ab539d502
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 282e1ef98a3c0d6e152b56a180a639c86d004af9
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94504502"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96493099"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>Erstellen eines Video Indexer-Kontos mit Azure-Verbindung
 
@@ -45,7 +45,7 @@ Wenn Sie von einem *Test-* zu einem *kostenpflichtigen* Video Indexer-Konto wech
 
     Sie verwenden dieses Mitglied beim Herstellen der Verbindung für Ihr Video Indexer-Konto mit Azure.
 
-    Dieser Benutzer muss ein Mitglied Ihres Azure-Abonnements sein, der entweder der Rolle **Besitzer** oder den beiden Rollen **Mitwirkender** und **Benutzerzugriffsadministrator** zugewiesen sein muss. Ein Benutzer kann zweimal mit zwei Rollen hinzugefügt werden. Einmal mit „Mitwirkender“ und einmal mit „Benutzerzugriffsadministrator“. Weitere Informationen finden Sie unter [Anzeigen, welchen Zugriff ein Benutzer auf Azure-Ressourcen hat](https://docs.microsoft.com/azure/role-based-access-control/check-access).
+    Dieser Benutzer muss ein Mitglied Ihres Azure-Abonnements sein, der entweder der Rolle **Besitzer** oder den beiden Rollen **Mitwirkender** und **Benutzerzugriffsadministrator** zugewiesen sein muss. Ein Benutzer kann zweimal mit zwei Rollen hinzugefügt werden. Einmal mit „Mitwirkender“ und einmal mit „Benutzerzugriffsadministrator“. Weitere Informationen finden Sie unter [Anzeigen, welchen Zugriff ein Benutzer auf Azure-Ressourcen hat](../../role-based-access-control/check-access.md).
 
     ![Zugriffssteuerung](./media/create-account/access-control-iam.png)
 
@@ -193,6 +193,10 @@ Die Automatisierung des Erstellens des Kontos ist ein Prozess in zwei Schritten:
 
     Ein Beispiel für die Vorlage zum Erstellen eines Media Services-Kontos finden Sie [hier](https://github.com/Azure-Samples/media-services-v3-arm-templates).
 1. Aufrufen von [Create-Account mit Media Services und der Azure AD-Anwendung](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Create-Paid-Account).
+
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+Nachdem Sie dieses Tutorial abgeschlossen haben, löschen Sie Ressourcen, die Sie nicht verwenden möchten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

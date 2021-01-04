@@ -2,13 +2,13 @@
 title: Verknüpfen von Vorlagen für die Bereitstellung
 description: Beschreibt, wie verknüpfte Vorlagen in einer Azure-Ressourcen-Manager-Vorlage zum Erstellen einer modularen Vorlagenprojektmappe verwendet werden. Zeigt, wie Parameterwerte übergeben, eine Parameterdatei festgelegt und URLs dynamisch erstellt werden.
 ms.topic: conceptual
-ms.date: 11/06/2020
-ms.openlocfilehash: 603445fdd96cc72a2d64bae21a47cfeabd6dd167
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.date: 12/07/2020
+ms.openlocfilehash: 1e2ccc57b42f8072c9aa28612d534507b9a674ed
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94366336"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96852097"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Verwenden von verknüpften und geschachtelten Vorlagen bei der Bereitstellung von Azure-Ressourcen
 
@@ -380,6 +380,12 @@ Weitere Informationen finden Sie unter
 - [Tutorial: Erstellen einer Vorlagenspezifikation mit verknüpften Vorlagen](./template-specs-create-linked.md).
 - [Tutorial: Bereitstellen einer Vorlagenspezifikation als verknüpfte Vorlage](./template-specs-deploy-linked-template.md).
 
+## <a name="dependencies"></a>Abhängigkeiten
+
+Wie bei anderen Ressourcentypen können Sie Abhängigkeiten zwischen den verknüpften Vorlagen festlegen. Wenn die Ressourcen in einer verknüpften Vorlage vor Ressourcen in einer zweiten verknüpften Vorlage bereitgestellt werden müssen, legen Sie die zweite Vorlage als abhängig von der ersten fest.
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/linkedtemplates/linked-dependency.json" highlight="10,22,24":::
+
 ## <a name="contentversion"></a>contentVersion
 
 Sie müssen die `contentVersion`-Eigenschaft für die `templateLink`- oder `parametersLink`- Eigenschaft nicht angeben. Wenn Sie keinen Wert für `contentVersion` angeben, wird die aktuelle Version der Vorlage bereitgestellt. Wenn Sie einen Wert für die Inhaltsversion angeben, muss diese mit der Version in der verknüpften Vorlage übereinstimmen. Andernfalls tritt bei der Bereitstellung ein Fehler auf.
@@ -472,156 +478,19 @@ Wenn Sie eine Ausgabeeigenschaft von einer verknüpften Vorlage abrufen, darf de
 
 In den folgenden Beispielen wird veranschaulicht, wie Sie auf eine verknüpfte Vorlage verweisen und einen Ausgabewert abrufen. Die verknüpfte Vorlage gibt eine einfache Nachricht zurück.  Zunächst die verknüpfte Vorlage:
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {},
-  "variables": {},
-  "resources": [],
-  "outputs": {
-    "greetingMessage": {
-      "value": "Hello World",
-      "type" : "string"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/linkedtemplates/helloworld.json":::
 
 Die Hauptvorlage stellt die verknüpfte Vorlage bereit und ruft den zurückgegebenen Wert ab. Beachten Sie, dass sie durch den Namen auf die Bereitstellungsressource verweist und den Namen der von der verknüpften Vorlage zurückgegebenen Eigenschaft verwendet.
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {},
-  "variables": {},
-  "resources": [
-    {
-      "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2019-10-01",
-      "name": "linkedTemplate",
-      "properties": {
-        "mode": "Incremental",
-        "templateLink": {
-          "uri": "[uri(deployment().properties.templateLink.uri, 'helloworld.json')]",
-          "contentVersion": "1.0.0.0"
-        }
-      }
-    }
-  ],
-  "outputs": {
-    "messageFromLinkedTemplate": {
-      "type": "string",
-      "value": "[reference('linkedTemplate').outputs.greetingMessage.value]"
-    }
-  }
-}
-```
-
-Wie bei anderen Ressourcentypen können Sie Abhängigkeiten zwischen der verknüpften Vorlage und anderen Ressourcen festlegen. Wenn andere Ressourcen einen Ausgabewert aus der verknüpften Vorlage benötigen, stellen Sie sicher, dass die verknüpfte Vorlage vor ihnen bereitgestellt wird. Wenn andererseits die verknüpfte Vorlage von anderen Ressourcen abhängig ist, sorgen Sie dafür, dass andere Ressourcen vor der verknüpften Vorlage bereitgestellt werden.
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/linkedtemplates/helloworldparent.json" highlight="10,23":::
 
 Im folgenden Beispiel ist eine Vorlage dargestellt, die eine öffentliche IP-Adresse bereitstellt und die Ressourcen-ID der Azure-Ressource für diese öffentliche IP-Adresse zurückgibt:
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "publicIPAddresses_name": {
-      "type": "string"
-    }
-  },
-  "variables": {},
-  "resources": [
-    {
-      "type": "Microsoft.Network/publicIPAddresses",
-      "apiVersion": "2018-11-01",
-      "name": "[parameters('publicIPAddresses_name')]",
-      "location": "eastus",
-      "properties": {
-        "publicIPAddressVersion": "IPv4",
-        "publicIPAllocationMethod": "Dynamic",
-        "idleTimeoutInMinutes": 4
-      },
-      "dependsOn": []
-    }
-  ],
-  "outputs": {
-    "resourceID": {
-      "type": "string",
-      "value": "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_name'))]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/linkedtemplates/public-ip.json" highlight="27":::
 
 Um beim Bereitstellen eines Lastenausgleichs die öffentliche IP-Adresse aus der vorherigen Vorlage zu verwenden, verknüpfen Sie die Vorlage, und deklarieren Sie eine Abhängigkeit von der `Microsoft.Resources/deployments`-Ressource. Die öffentliche IP-Adresse des Lastenausgleichs wird auf den Ausgabewert von der verknüpften Vorlage festgelegt.
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "loadBalancers_name": {
-      "defaultValue": "mylb",
-      "type": "string"
-    },
-    "publicIPAddresses_name": {
-      "defaultValue": "myip",
-      "type": "string"
-    }
-  },
-  "variables": {},
-  "resources": [
-    {
-      "type": "Microsoft.Network/loadBalancers",
-      "apiVersion": "2018-11-01",
-      "name": "[parameters('loadBalancers_name')]",
-      "location": "eastus",
-      "properties": {
-        "frontendIPConfigurations": [
-          {
-            "name": "LoadBalancerFrontEnd",
-            "properties": {
-              "privateIPAllocationMethod": "Dynamic",
-              "publicIPAddress": {
-                // this is where the output value from linkedTemplate is used
-                "id": "[reference('linkedTemplate').outputs.resourceID.value]"
-              }
-            }
-          }
-        ],
-        "backendAddressPools": [],
-        "loadBalancingRules": [],
-        "probes": [],
-        "inboundNatRules": [],
-        "outboundNatRules": [],
-        "inboundNatPools": []
-      },
-      // This is where the dependency is declared
-      "dependsOn": [
-        "linkedTemplate"
-      ]
-    },
-    {
-      "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2019-10-01",
-      "name": "linkedTemplate",
-      "properties": {
-        "mode": "Incremental",
-        "templateLink": {
-          "uri": "[uri(deployment().properties.templateLink.uri, 'publicip.json')]",
-          "contentVersion": "1.0.0.0"
-        },
-        "parameters":{
-          "publicIPAddresses_name":{"value": "[parameters('publicIPAddresses_name')]"}
-        }
-      }
-    }
-  ]
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json" highlight="28,41":::
 
 ## <a name="deployment-history"></a>Bereitstellungsverlauf
 

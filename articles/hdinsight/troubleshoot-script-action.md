@@ -9,11 +9,11 @@ ms.topic: troubleshooting
 ms.custom: seoapr2020
 ms.date: 04/21/2020
 ms.openlocfilehash: ef9322c17a20ab5bfcf348649a1272dd4f301c5c
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93284480"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000673"
 ---
 # <a name="troubleshoot-script-actions-in-azure-hdinsight"></a>Behandeln von Problemen mit Skriptaktionen in Azure HDInsight
 
@@ -45,7 +45,7 @@ Für den Fall, dass die Clustererstellung aufgrund eines Fehlers in einem Skript
 
     ![Skriptaktionsprotokolle](./media/troubleshoot-script-action/script-action-logs-in-storage.png)
 
-    In diesem Verzeichnis sind die Protokolle separat nach **Hauptknoten** , **Workerknoten** und **ZooKeeper-Knoten** strukturiert. Hierzu folgende Beispiele:
+    In diesem Verzeichnis sind die Protokolle separat nach **Hauptknoten**, **Workerknoten** und **ZooKeeper-Knoten** strukturiert. Hierzu folgende Beispiele:
 
     * **Hauptknoten:** `<ACTIVE-HEADNODE-NAME>.cloudapp.net`
 

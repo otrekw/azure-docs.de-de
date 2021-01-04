@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: hafowler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ab17e5c0a024fec938f1b588cc4ce69bf16a878
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: a4077ade7de93470aaf03acef1dc1cefca8bd3d4
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93083251"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94837361"
 ---
 # <a name="manage-device-identities-using-the-azure-portal"></a>Verwalten der Geräteidentität mithilfe des Azure-Portals
 
@@ -77,7 +77,7 @@ Wenn Sie ein Intune-Administrator sind, können Sie Geräte verwalten, deren MDM
 
 Sie haben zwei Optionen, um Geräte zu aktivieren bzw. zu deaktivieren:
 
-- Die Symbolleiste auf der Seite **Alle Geräte** , nachdem Sie ein oder mehrere Geräte ausgewählt haben
+- Die Symbolleiste auf der Seite **Alle Geräte**, nachdem Sie ein oder mehrere Geräte ausgewählt haben
 - Die Symbolleiste nach dem Drilldown auf ein bestimmtes Gerät
 
 > [!IMPORTANT]
@@ -90,7 +90,7 @@ Sie haben zwei Optionen, um Geräte zu aktivieren bzw. zu deaktivieren:
 
 Sie haben zwei Optionen, um ein Gerät zu löschen:
 
-- Die Symbolleiste auf der Seite **Alle Geräte** , nachdem Sie ein oder mehrere Geräte ausgewählt haben
+- Die Symbolleiste auf der Seite **Alle Geräte**, nachdem Sie ein oder mehrere Geräte ausgewählt haben
 - Die Symbolleiste nach dem Drilldown auf ein bestimmtes Gerät
 
 > [!IMPORTANT]
@@ -158,19 +158,19 @@ Sie müssen einer der folgenden Rollen zugewiesen sein, um die Geräteeinstellun
 
 ![Geräteeinstellungen in Verbindung mit Azure AD](./media/device-management-azure-portal/device-settings-azure-portal.png)
 
-- **Benutzer dürfen Geräte in Azure AD einbinden** : Diese Einstellung ermöglicht Ihnen die Auswahl der Benutzer, die ihre Geräte als in Azure AD eingebundene Geräte registrieren können. Die Standardeinstellung ist **Alle**.
+- **Benutzer dürfen Geräte in Azure AD einbinden**: Diese Einstellung ermöglicht Ihnen die Auswahl der Benutzer, die ihre Geräte als in Azure AD eingebundene Geräte registrieren können. Die Standardeinstellung ist **Alle**.
 
 > [!NOTE]
-> **Benutzer dürfen Geräte in Azure AD einbinden** : Diese Einstellung gilt nur für die Azure AD-Einbindung unter Windows 10.
+> **Benutzer dürfen Geräte in Azure AD einbinden**: Diese Einstellung gilt nur für die Azure AD-Einbindung unter Windows 10.
 
-- **Weitere lokale Administratoren für in Azure AD eingebundene Geräte** : Sie können die Benutzer auswählen, denen lokale Administratorrechte auf einem Gerät erteilt werden. Diese Benutzer werden der Rolle *Geräteadministratoren* in Azure AD hinzugefügt. Globale Administratoren in Azure AD und Gerätebesitzer erhalten standardmäßig lokale Administratorrechte. Diese Option ist eine Premium Edition-Funktion, die über Produkte wie Azure AD Premium oder die Enterprise Mobility Suite (EMS) zur Verfügung steht.
-- **Benutzer dürfen ihre Geräte für Azure AD registrieren** : Sie müssen diese Einstellung konfigurieren, um die Registrierung von Windows 10-, persönlichen, iOS-, Android- und macOS-Geräten in Azure AD zuzulassen. Bei Auswahl von **Keine** dürfen Geräte nicht bei Azure AD registriert werden. Für die Registrierung bei Microsoft Intune oder der mobilen Geräteverwaltung (MDM) für Microsoft 365 ist eine Registrierung erforderlich. Wenn Sie einen dieser Dienste konfiguriert haben, wird **ALLE** ausgewählt, und die Option **KEINE** ist nicht verfügbar.
-- **Multi-Factor Auth zum Hinzufügen von Geräten erforderlich** : Sie können auswählen, ob Benutzer einen zusätzlichen Authentifizierungsfaktor bereitstellen müssen, um ihr Gerät in Azure AD einzubinden. Der Standardwert ist **No**. Es wird empfohlen, beim Registrieren eines Geräts die mehrstufige Authentifizierung zu verwenden. Bevor Sie die mehrstufige Authentifizierung für diesen Dienst aktivieren, müssen Sie sicherstellen, dass sie für die Benutzer konfiguriert ist, die ihre Geräte registrieren. Weitere Informationen zu verschiedenen Azure-Diensten mit mehrstufiger Authentifizierung finden Sie in den [ersten Schritten mit der mehrstufigen Azure-Authentifizierung](../authentication/concept-mfa-howitworks.md). 
+- **Weitere lokale Administratoren für in Azure AD eingebundene Geräte**: Sie können die Benutzer auswählen, denen lokale Administratorrechte auf einem Gerät erteilt werden. Diese Benutzer werden der Rolle *Geräteadministratoren* in Azure AD hinzugefügt. Globale Administratoren in Azure AD und Gerätebesitzer erhalten standardmäßig lokale Administratorrechte. Diese Option ist eine Premium Edition-Funktion, die über Produkte wie Azure AD Premium oder die Enterprise Mobility Suite (EMS) zur Verfügung steht.
+- **Benutzer dürfen ihre Geräte für Azure AD registrieren**: Sie müssen diese Einstellung konfigurieren, um die Registrierung von Windows 10-, persönlichen, iOS-, Android- und macOS-Geräten in Azure AD zuzulassen. Bei Auswahl von **Keine** dürfen Geräte nicht bei Azure AD registriert werden. Für die Registrierung bei Microsoft Intune oder der mobilen Geräteverwaltung (MDM) für Microsoft 365 ist eine Registrierung erforderlich. Wenn Sie einen dieser Dienste konfiguriert haben, wird **ALLE** ausgewählt, und die Option **KEINE** ist nicht verfügbar.
+- **Multi-Factor Auth zum Hinzufügen von Geräten erforderlich**: Sie können auswählen, ob Benutzer einen zusätzlichen Authentifizierungsfaktor bereitstellen müssen, um ihr Gerät in Azure AD einzubinden. Der Standardwert ist **No**. Es wird empfohlen, beim Registrieren eines Geräts die mehrstufige Authentifizierung zu verwenden. Bevor Sie die mehrstufige Authentifizierung für diesen Dienst aktivieren, müssen Sie sicherstellen, dass sie für die Benutzer konfiguriert ist, die ihre Geräte registrieren. Weitere Informationen zu den verschiedenen Azure AD Multi-Factor Authentication-Diensten finden Sie unter [Erste Schritte mit Azure AD Multi-Factor Authentication](../authentication/concept-mfa-howitworks.md). 
 
 > [!NOTE]
 > Die Einstellung **Mehrstufige Authentifizierung zum Hinzufügen von Geräten erforderlich** gilt für Geräte, die entweder in Azure AD eingebunden oder bei Azure AD registriert sind. Diese Einstellung gilt nicht für in Azure AD Hybrid eingebundene Geräte.
 
-- **Maximale Anzahl von Geräten pro Benutzer** : Mit dieser Einstellung können Sie die maximale Anzahl von in Azure AD eingebundenen oder bei Azure AD registrierten Geräten festlegen, die ein Benutzer in Azure AD verwenden kann. Wenn ein Benutzer diese Anzahl erreicht, kann er keine weiteren Geräte hinzufügen, bis mindestens eines der vorhandenen Geräte entfernt wird. Der Standardwert lautet **50**.
+- **Maximale Anzahl von Geräten pro Benutzer**: Mit dieser Einstellung können Sie die maximale Anzahl von in Azure AD eingebundenen oder bei Azure AD registrierten Geräten festlegen, die ein Benutzer in Azure AD verwenden kann. Wenn ein Benutzer diese Anzahl erreicht, kann er keine weiteren Geräte hinzufügen, bis mindestens eines der vorhandenen Geräte entfernt wird. Der Standardwert lautet **50**.
 
 > [!NOTE]
 > Die Einstellung **Maximale Anzahl von Geräten pro Benutzer** gilt für Geräte, die entweder in Azure AD eingebunden oder bei Azure AD registriert sind. Diese Einstellung gilt nicht für in Azure AD Hybrid eingebundene Geräte.

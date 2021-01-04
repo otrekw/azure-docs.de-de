@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/09/2020
-ms.openlocfilehash: 8abcbc74506599e7896ad6d41b9444e946172283
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.date: 11/12/2020
+ms.openlocfilehash: 1489ce74da2ecff5212feb5a1a2e3c9151b73424
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324894"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555582"
 ---
 # <a name="convert-to-image-directory"></a>Konvertieren in ein Bildverzeichnis
 
@@ -47,7 +47,8 @@ In diesem Artikel erfahren Sie, wie Sie das Modul „Convert to Image Directory�
     
     ![Bildbeispieldataset](./media/module/image-sample-dataset.png)
 
-    Für die Bewertung darf der Bilddatasetordner nur nicht klassifizierte Bilder enthalten.
+    > [!NOTE]
+    > Für Rückschlüsse darf der Bilddatasetordner nur nicht klassifizierte Bilder enthalten.
 
 1. [Registrieren Sie das Bilddataset als Dateidataset](../how-to-create-register-datasets.md) in Ihrem Arbeitsbereich, da die Eingabe des Moduls „Convert to Image Directory“ (In Bildverzeichnis konvertieren) ein **Dateidataset** sein muss.
 

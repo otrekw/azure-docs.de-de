@@ -3,14 +3,14 @@ title: 'Azure Automation-Updateverwaltung: Übersicht'
 description: Dieser Artikel bietet eine Übersicht über die Updateverwaltungsfunktion, die Updates für Ihre Windows- und Linux-Computer implementiert.
 services: automation
 ms.subservice: update-management
-ms.date: 10/26/2020
+ms.date: 11/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: 09bd82225fb7d8a6eefe84b5a70660e4553a3070
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 37ab05ce7e963ab7fdc4d2b02e254adaa205446c
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360784"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96327490"
 ---
 # <a name="update-management-overview"></a>Übersicht über die Updateverwaltung
 
@@ -76,10 +76,10 @@ Die folgende Tabelle enthält die unterstützten Betriebssysteme für Updatebewe
 |---------|---------|
 |Windows Server 2019 (Datacenter/Datacenter Core/Standard)<br><br>Windows Server 2016 (Datacenter/Datacenter Core/Standard)<br><br>Windows Server 2012 R2 (Datacenter/Standard)<br><br>Windows Server 2012 ||
 |Windows Server 2008 R2 (RTM und SP1 Standard)| Die Updateverwaltung unterstützt Bewertungen und Patching für dieses Betriebssystem. Der [Hybrid Runbook Worker](../automation-windows-hrw-install.md) wird für Windows Server 2008 R2 unterstützt. |
-|CentOS 6 (x86/x64) und 7 (x64)      | Linux-Agents erfordern Zugriff auf ein Updaterepository. Für klassifizierungsbasiertes Patchen muss `yum` Sicherheitsdaten zurückgeben, über die CentOS in den RTM-Releases nicht verfügt. Weitere Informationen zu klassifizierungsbasiertem Patching unter CentOS finden Sie unter [Lösung für die Updateverwaltung in Azure](view-update-assessments.md#linux).          |
-|Red Hat Enterprise 6 (x86/x64) und 7 (x64)     | Linux-Agents erfordern Zugriff auf ein Updaterepository.        |
+|CentOS 6 und 7 (x64)      | Linux-Agents erfordern Zugriff auf ein Updaterepository. Für klassifizierungsbasiertes Patchen muss `yum` Sicherheitsdaten zurückgeben, über die CentOS in den RTM-Releases nicht verfügt. Weitere Informationen zu klassifizierungsbasiertem Patching unter CentOS finden Sie unter [Lösung für die Updateverwaltung in Azure](view-update-assessments.md#linux).          |
+|Red Hat Enterprise 6 und 7 (x64)     | Linux-Agents erfordern Zugriff auf ein Updaterepository.        |
 |SUSE Linux Enterprise Server 12 (x64)     | Linux-Agents erfordern Zugriff auf ein Updaterepository.        |
-|Ubuntu 14.04 LTS, 16.04 LTS und 18.04 (x86/x64)      |Linux-Agents erfordern Zugriff auf ein Updaterepository.         |
+|Ubuntu 14.04 LTS, 16.04 LTS und 18.04 LTS (x64)      |Linux-Agents erfordern Zugriff auf ein Updaterepository.         |
 
 > [!NOTE]
 > VM-Skalierungsgruppen von Azure können über die Updateverwaltung verwaltet werden. Die Updateverwaltung arbeitet nicht mit dem Basisimage, sondern mit den Instanzen selbst. Die Updates müssen inkrementell geplant werden, damit nicht alle VM-Instanzen auf einmal aktualisiert werden. Sie können Knoten für VM-Skalierungsgruppen hinzufügen. Eine entsprechende Anleitung finden Sie unter [Hinzufügen eines Nicht-Azure-Computers zu Änderungsnachverfolgung und Bestand](../automation-tutorial-installed-software.md#add-a-non-azure-machine-to-change-tracking-and-inventory).
@@ -132,7 +132,7 @@ Die Updateverwaltung verwendet die in diesem Abschnitt beschriebenen Ressourcen.
 
 Nachdem Sie die Updateverwaltung aktiviert haben, werden alle direkt mit dem Log Analytics-Arbeitsbereich verbundenen Windows-Computer automatisch als Hybrid Runbook Worker konfiguriert, um die Runbooks zu unterstützen, die die Updateverwaltung unterstützen.
 
-Jeder von der Updateverwaltung verwaltete Windows-Computer wird im Bereich „Hybrid Worker-Gruppen“ als Hybrid Worker-Systemgruppe für das Automation-Konto aufgeführt. Die Gruppen verwenden die Benennungskonvention `Hostname FQDN_GUID`. Es ist nicht möglich, diese Gruppen mit Runbooks in Ihrem Konto zu erreichen. Entsprechende Versuche sind nicht erfolgreich. Diese Gruppen sind nur für die ausschließliche Unterstützung der Updateverwaltung bestimmt. Weitere Informationen zur Anzeige der Liste von Windows-Computern, die als Hybrid Runbook Worker konfiguriert sind, finden Sie unter [Anzeigen von Hybrid Runbook Workern](../automation-hybrid-runbook-worker.md#view-hybrid-runbook-workers).
+Jeder von der Updateverwaltung verwaltete Windows-Computer wird im Bereich „Hybrid Worker-Gruppen“ als Hybrid Worker-Systemgruppe für das Automation-Konto aufgeführt. Die Gruppen verwenden die Benennungskonvention `Hostname FQDN_GUID`. Es ist nicht möglich, diese Gruppen mit Runbooks in Ihrem Konto zu erreichen. Entsprechende Versuche sind nicht erfolgreich. Diese Gruppen sind nur für die ausschließliche Unterstützung der Updateverwaltung bestimmt. Weitere Informationen zur Anzeige der Liste von Windows-Computern, die als Hybrid Runbook Worker konfiguriert sind, finden Sie unter [Anzeigen von Hybrid Runbook Workern](../automation-hybrid-runbook-worker.md#view-system-hybrid-runbook-workers).
 
 Sie können die Windows-Computer einer Hybrid Runbook Worker-Gruppe in Ihrem Automation-Konto hinzufügen, um Automation-Runbooks zu unterstützen, wenn Sie für die Updateverwaltung und die Mitgliedschaft in der Hybrid Runbook Worker-Gruppe dasselbe Konto verwenden. Diese Funktionalität wurde in Version 7.2.12024.0 des Hybrid Runbook Worker hinzugefügt.
 

@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: sumuth
 ms.date: 10/23/2020
-ms.openlocfilehash: 3f32d3d7cc498126d0fbdb709aaf0424d335793f
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: a7dc6a6b11d3bfacf0aac5472a872ffaa7acc92b
+ms.sourcegitcommit: 003ac3b45abcdb05dc4406661aca067ece84389f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92534123"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96748704"
 ---
 # <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-mysql---flexible-server-preview"></a>Schnellstart: Verwenden einer Resource Manager-Vorlage zum Erstellen einer Azure Database for MySQL Flexible Server-Instanz (Vorschau)
 
@@ -31,7 +31,7 @@ Ein Azure-Konto mit einem aktiven Abonnement. [Erstellen Sie ein kostenloses Kon
 
 Bei einer Azure Database for MySQL Flexible Server-Instanz handelt es sich um die übergeordnete Ressource für eine oder mehrere Datenbanken innerhalb einer Region. Sie stellt den Bereich für Verwaltungsrichtlinien bereit, die auf die jeweiligen Datenbanken angewendet werden (z. B. Anmeldungen, Firewalls, Benutzer, Rollen und Konfigurationen).
 
-Erstellen Sie eine _mysql-flexible-server-template.json_ -Datei, und kopieren Sie dieses JSON-Skript in diese Datei.
+Erstellen Sie eine _mysql-flexible-server-template.json_-Datei, und kopieren Sie dieses JSON-Skript in diese Datei.
 
 ```json
 {
@@ -53,14 +53,12 @@ Erstellen Sie eine _mysql-flexible-server-template.json_ -Datei, und kopieren Si
     "serverEdition": {
       "type": "String"
     },
-    "vCores": {
-      "type": "Int"
-    },
     "storageSizeMB": {
       "type": "Int"
     },
-    "standbyCount": {
-      "type": "Int"
+    "haEnabled": {
+      "type": "string",
+      "defaultValue": "Disabled"
     },
     "availabilityZone": {
       "type": "String"
@@ -85,11 +83,11 @@ Erstellen Sie eine _mysql-flexible-server-template.json_ -Datei, und kopieren Si
     }
   },
   "variables": {
-    "api": "2020-02-14-privatepreview",
+    "api": "2020-07-01-preview",
     "firewallRules": "[parameters('firewallRules').rules]",
     "publicNetworkAccess": "[if(empty(parameters('vnetData')), 'Enabled', 'Disabled')]",
-    "vnetDataSet": "[if(empty(parameters('vnetData')), json('{ \"vnetId\": \"\", \"vnetName\": \"\", \"vnetResourceGroup\": \"\", \"subnetName\": \"\" }'), parameters('vnetData'))]",
-    "finalVnetData": "[json(concat('{ \"DelegatedVnetID\": \"', variables('vnetDataSet').vnetId, '\", \"DelegatedVnetName\": \"', variables('vnetDataSet').vnetName, '\", \"DelegatedVnetResourceGroup\": \"', variables('vnetDataSet').vnetResourceGroup, '\", \"DelegatedSubnetName\": \"', variables('vnetDataSet').subnetName, '\"}'))]"
+    "vnetDataSet": "[if(empty(parameters('vnetData')), json('{ \"subnetArmResourceId\": \"\" }'), parameters('vnetData'))]",
+    "finalVnetData": "[json(concat('{ \"subnetArmResourceId\": \"', variables('vnetDataSet').subnetArmResourceId, '\"}'))]"
   },
   "resources": [
     {
@@ -99,8 +97,7 @@ Erstellen Sie eine _mysql-flexible-server-template.json_ -Datei, und kopieren Si
       "location": "[parameters('location')]",
       "sku": {
         "name": "Standard_D4ds_v4",
-        "tier": "[parameters('serverEdition')]",
-        "capacity": "[parameters('vCores')]"
+        "tier": "[parameters('serverEdition')]"        
       },
       "tags": "[parameters('tags')]",
       "properties": {
@@ -108,8 +105,8 @@ Erstellen Sie eine _mysql-flexible-server-template.json_ -Datei, und kopieren Si
         "administratorLogin": "[parameters('administratorLogin')]",
         "administratorLoginPassword": "[parameters('administratorLoginPassword')]",
         "publicNetworkAccess": "[variables('publicNetworkAccess')]",
-        "VnetInjArgs": "[if(empty(parameters('vnetData')), json('null'), variables('finalVnetData'))]",
-        "standbyCount": "[parameters('standbyCount')]",
+        "DelegatedSubnetArguments": "[if(empty(parameters('vnetData')), json('null'), variables('finalVnetData'))]",
+        "haEnabled": "[parameters('haEnabled')]",
         "storageProfile": {
           "storageMB": "[parameters('storageSizeMB')]",
           "backupRetentionDays": "[parameters('backupRetentionDays')]"
@@ -159,7 +156,7 @@ Diese Ressourcen sind in der Vorlage definiert:
 
 ## <a name="deploy-the-template"></a>Bereitstellen der Vorlage
 
-Klicken Sie im folgenden PowerShell-Codeblock auf **Ausprobieren** , um die [Azure Cloud Shell](../../cloud-shell/overview.md) zu öffnen.
+Klicken Sie im folgenden PowerShell-Codeblock auf **Ausprobieren**, um die [Azure Cloud Shell](../../cloud-shell/overview.md) zu öffnen.
 
 ```azurepowershell-interactive
 $serverName = Read-Host -Prompt "Enter a name for the new Azure Database for MySQL server"
@@ -184,7 +181,7 @@ Befolgen Sie diese Schritte, um zu überprüfen, ob der Server in Azure erstellt
 
 ### <a name="azure-portal"></a>Azure-Portal
 
-1. Suchen Sie im [Azure-Portal](https://portal.azure.com) nach **Azure Database for MySQL-Server** , und wählen Sie die Option aus.
+1. Suchen Sie im [Azure-Portal](https://portal.azure.com) nach **Azure Database for MySQL-Server**, und wählen Sie die Option aus.
 1. Wählen Sie in der Datenbankliste den neuen Server aus. Die Seite **Übersicht** für den neuen Azure Database for MySQL-Server wird angezeigt.
 
 ### <a name="powershell"></a>PowerShell
@@ -217,7 +214,7 @@ So löschen Sie die Ressourcengruppe:
 
 ### <a name="azure-portal"></a>Azure-Portal
 
-1. Suchen Sie im [Azure-Portal](https://portal.azure.com) nach **Ressourcengruppen** , und wählen Sie die entsprechende Option aus.
+1. Suchen Sie im [Azure-Portal](https://portal.azure.com) nach **Ressourcengruppen**, und wählen Sie die entsprechende Option aus.
 1. Wählen Sie in der Liste der Ressourcengruppen den Namen Ihrer Ressourcengruppe aus.
 1. Wählen Sie auf der Seite **Übersicht** der Ressourcengruppe die Option **Ressourcengruppe löschen** aus.
 1. Geben Sie im Bestätigungsdialogfeld den Namen Ihrer Ressourcengruppe ein, und wählen Sie **Löschen** aus.

@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: troubleshooting
 ms.date: 05/06/2020
-ms.openlocfilehash: 17b070fea422268ec12e0ccd3357ae0549a78916
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: e803fa393d85f7f0b4849aed96356b7a4e77d83f
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94566264"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "96000129"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding: häufig gestellte Fragen (FAQ)
 
@@ -108,7 +108,7 @@ Beispiele für Lösungen sind:
 
 * Sie können [Ihren Tarif erhöhen](luis-how-to-azure-subscription.md#change-the-pricing-tier), falls Sie noch nicht den höchsten Tarif verwenden.
 * Falls Ihre Nutzung den höchsten Tarif übersteigt, sollten Sie weitere Language Understanding-Ressourcen mit vorgeschaltetem Lastenausgleich hinzufügen. Hierbei kann der [Language Understanding-Container](luis-container-howto.md) mit Kubernetes oder Docker Compose hilfreich sein.
-* Sie können Ihre Anforderungen der Clientanwendung mit einer [Wiederholungsrichtlinie](https://docs.microsoft.com/azure/architecture/best-practices/transient-faults#general-guidelines) versehen, die Sie selbst implementieren, wenn Sie diesen Statuscode erhalten.
+* Sie können Ihre Anforderungen der Clientanwendung mit einer [Wiederholungsrichtlinie](/azure/architecture/best-practices/transient-faults#general-guidelines) versehen, die Sie selbst implementieren, wenn Sie diesen Statuscode erhalten.
 
 ### <a name="my-endpoint-query-returned-unexpected-results-what-should-i-do"></a>Meine Endpunktabfrage hat unerwartete Ergebnisse zurückgegeben. Wie sollte ich vorgehen?
 
@@ -286,7 +286,7 @@ Wenn Sie Azure Bot Service verwenden und das Problem darin besteht, dass der **T
 
 #### <a name="resolve-issue-while-debugging-on-local-machine-with-bot-framework"></a>Beheben Sie Probleme beim Debuggen auf dem lokalen Computer mit Bot Framework.
 
-Weitere Informationen zum lokalen Debuggen eines Bots finden Sie unter [Debuggen eines Bots](https://docs.microsoft.com/azure/bot-service/bot-service-debug-bot?view=azure-bot-service-4.0).
+Weitere Informationen zum lokalen Debuggen eines Bots finden Sie unter [Debuggen eines Bots](/azure/bot-service/bot-service-debug-bot?view=azure-bot-service-4.0).
 
 ## <a name="integrating-luis"></a>Integrieren von LUIS
 
@@ -296,7 +296,7 @@ Wenn Sie eine LUIS-Vorlage auswählen und im Vorlagenbereich auf **Select** (Aus
 ![Web-App-Bot-Region für LUIS-Vorlage](./media/luis-faq/web-app-bot-location.png)
 
 ### <a name="what-luis-regions-support-bot-framework-speech-priming"></a>Welche LUIS-Regionen unterstützen die Bot Framework-Sprachoptimierung?
-Die [Sprachoptimierung ](https://docs.microsoft.com/bot-framework/bot-service-manage-speech-priming) wird nur von LUIS-Apps in der Instanz für die mittlere USA unterstützt.
+Die [Sprachoptimierung ](/bot-framework/bot-service-manage-speech-priming) wird nur von LUIS-Apps in der Instanz für die mittlere USA unterstützt.
 
 ## <a name="api-programming-strategies"></a>Strategien für die API-Programmierung
 
@@ -334,4 +334,4 @@ Videos:
 
 Weitere Informationen zu LUIS finden Sie in den folgenden Ressourcen:
 * [Mit dem Tag „LUIS“ versehene Fragen auf Stack Overflow](https://stackoverflow.com/questions/tagged/luis)
-* [Seite mit häufig gestellten Fragen von Microsoft für das MSDN-Forum für Language Understanding Intelligent Services (LUIS)](https://docs.microsoft.com/answers/topics/azure-language-understanding.html)
+* [Seite mit häufig gestellten Fragen von Microsoft für das MSDN-Forum für Language Understanding Intelligent Services (LUIS)](/answers/topics/azure-language-understanding.html)

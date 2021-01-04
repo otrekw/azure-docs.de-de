@@ -9,12 +9,12 @@ metadata:
   author: anastasia-ms
   ms.author: v-stharr
   ms.date: 1/15/2020
-  ms.openlocfilehash: 30606a38660e3113c6dfce4607333ef77584040f
-  ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+  ms.openlocfilehash: fa4db97e2aefe48e792f7d43dbb782e7a0967716
+  ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 10/29/2020
-  ms.locfileid: "92927463"
+  ms.lasthandoff: 12/09/2020
+  ms.locfileid: "96905263"
 landingContent:
 - title: Info zu Azure Maps
   linkLists:
@@ -25,7 +25,7 @@ landingContent:
   - linkListType: concept
     links:
     - text: Azure Maps-Abdeckung
-      url: render-coverage.md
+      url: geographic-coverage.md
     - text: Lokalisierungsunterstützung
       url: supported-languages.md
     - text: Unterstützte Kartenstile
@@ -172,6 +172,16 @@ landingContent:
       url: /rest/api/maps/traffic
     - text: Zeitzonendienst
       url: /rest/api/maps/timezone
+- title: Entwickeln mit dem Höhenangabendienst
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Abrufen und Verwenden von Höhenangabedaten
+      url: how-to-request-elevation-data.md
+  - linkListType: reference
+    links:
+    - text: Höhenangabendienst
+      url: /rest/api/maps/elevation/
 - title: Räumliche Analysen
   linkLists:
   - linkListType: concept
@@ -204,7 +214,7 @@ landingContent:
   linkLists:
   - linkListType: concept
     links:
-    - text: Mobility Service-Datenstruktur
+    - text: Mobility Services
       url: mobility-service-data-structure.md
   - linkListType: how-to-guide
     links:
@@ -214,14 +224,16 @@ landingContent:
       url: how-to-request-real-time-data.md
   - linkListType: reference
     links:
-    - text: Mobility Service
+    - text: Mobility Services
       url: /rest/api/maps/mobility
-- title: Entwickeln mit Weather Services
+- title: Entwickeln mit Wetterdiensten
   linkLists:
   - linkListType: concept
     links:
-    - text: Konzept von Weather Service
+    - text: Konzepte von Wetterdiensten
       url: weather-services-concepts.md
+    - text: Häufig gestellte Fragen zu Wetterdiensten
+      url: weather-services-faq.md
   - linkListType: tutorial
     links:
     - text: Analysieren von Wetterdaten mit Azure Notebooks (Python)
@@ -232,5 +244,5 @@ landingContent:
       url: how-to-request-weather-data.md
   - linkListType: reference
     links:
-    - text: Weather Service
+    - text: Wetterdienste
       url: /rest/api/maps/weather

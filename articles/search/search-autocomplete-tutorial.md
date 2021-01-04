@@ -1,5 +1,5 @@
 ---
-title: Hinzufügen von AutoVervollständigen und Vorschlägen in einem Suchfeld
+title: Hinzufügen von AutoVervollständigen zu einem Suchfeld
 titleSuffix: Azure Cognitive Search
 description: Aktivieren Sie Abfrageaktionen mit Suche während der Eingabe in Azure Cognitive Search, indem Sie Vorschlagsfunktionen erstellen und Anforderungen formulieren, die in einem Suchfeld automatisch mit vollständigen Begriffen oder Ausdrücken vervollständigt werden. Sie können auch Vorschläge für Übereinstimmungen zurückgeben.
 manager: nitinme
@@ -7,22 +7,22 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/10/2020
+ms.date: 11/24/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 1bf0a4a86ccc36960f218fabebda5bc82eb29019
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 25c87971455ed3c5f59c92748794720d61e599e3
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94426169"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96339607"
 ---
-# <a name="add-autocomplete-and-suggestions-to-client-apps"></a>Hinzufügen von AutoVervollständigen und Vorschlägen zu Client-Apps
+# <a name="add-autocomplete-and-suggestions-to-client-apps-using-azure-cognitive-search"></a>Hinzufügen von AutoVervollständigen und Vorschlägen zu Client-Apps mithilfe von Azure Cognitive Search
 
-„Suche während der Eingabe“ ist ein gängiges Verfahren für mehr Produktivität bei von Benutzern initiierten Abfragen. In Azure Cognitive Search wird dieses Vorgehen durch die Funktion *AutoVervollständigen* unterstützt, die einen Begriff oder einen Ausdruck auf der Grundlage von partiellen Eingaben vervollständigt (aus „Micro“ wird z. B. „Microsoft“). Eine andere Form sind *Vorschläge*, d. h. eine kurze Liste übereinstimmender Dokumente (Buchtitel werden mit einer ID zurückgegeben, sodass Sie eine Verknüpfung zu einer Detailseite herstellen können). Sowohl AutoVervollständigen als auch Vorschläge basieren auf einer Entsprechung im Index. Der Dienst bietet keine Abfragen an, die keine Ergebnisse zurückgeben.
+„Suche während der Eingabe“ ist ein gängiges Verfahren für mehr Produktivität bei von Benutzern initiierten Abfragen. In Azure Cognitive Search wird dieses Vorgehen durch die Funktion *AutoVervollständigen* unterstützt, die einen Begriff oder einen Ausdruck auf der Grundlage von partiellen Eingaben vervollständigt (aus „Micro“ wird z. B. „Microsoft“). Eine weitere Benutzerfunktion sind *Vorschläge*, d. h. eine Auswahlliste übereinstimmender Dokumente (Buchtitel werden mit einer ID zurückgegeben, sodass Sie einen Link zu einer Detailseite für ein Buch erstellen können). Sowohl AutoVervollständigen als auch Vorschläge basieren auf einer Entsprechung im Index. Der Dienst bietet keine Abfragen an, die keine Ergebnisse zurückgeben.
 
 Zum Implementieren dieser Verfahren in Azure Cognitive Search benötigen Sie Folgendes:
 
-+ Eine *Vorschlagsfunktion* auf dem Back-End.
++ Die Definition einer *Vorschlagsfunktion*, die im Indexschema eingebettet ist.
 + Eine *Abfrage* mit Angabe der [AutoVervollständigen](/rest/api/searchservice/autocomplete)- oder [Vorschlags](/rest/api/searchservice/suggestions)-API für die Anforderung.
 + Ein *UI-Steuerelement*, um Interaktionen bei der Suche während der Eingabe in Ihrer Client-App zu verarbeiten. Wir empfehlen für diesen Zweck eine vorhandene JavaScript-Bibliothek.
 

@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ad45d5f0e313c06619fa9c998515e434de957ea
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 08c4020fc03f89b2c583a2458c70e18ecbbe0ba1
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94656257"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498063"
 ---
 # <a name="redirect-hard-coded-links-for-apps-published-with-azure-ad-application-proxy"></a>Umleiten von hartcodierten Links für Apps, die mit Azure AD-Anwendungsproxy veröffentlicht wurden
 
@@ -86,28 +86,28 @@ Es gibt zwei verbreitete Typen von internen Links in lokalen Anwendungen:
 - **Relative interne Links**, die auf eine freigegebene Ressource in einer lokalen Dateistruktur wie `/claims/claims.html` zeigen. Diese Links funktionieren automatisch in Apps, die über den Anwendungsproxy veröffentlicht werden, und funktionieren auch weiterhin mit oder ohne Linkübersetzung. 
 - **Hartcodierte interne Links** zu anderen lokalen Apps wie `http://expenses` oder veröffentlichten Dateien wie `http://expenses/logo.jpg`. Das Linkübersetzungsfeature funktioniert für hartcodierte interne Links und ändert diese, sodass sie auf die externen URLs zeigen, die für Remotebenutzer gelten.
 
-In der vollständigen Liste der HTML-Codetags, für die der Anwendungsproxy die Übersetzung von Links unterstützt, ist Folgendes enthalten:
-* a
-* audio
-* base
-* Schaltfläche
-* div
-* embed
-* form
-* frame
-* head
-* html
-* iframe
-* Abbildung
-* input
-* link
-* menuitem
-* meta
-* Objekt (object)
-* script
-* source
-* track
-* video
+Die vollständige Liste der HTML-Codetags, für die der Anwendungsproxy die Übersetzung von Links unterstützt, enthält Folgendes:
+* a (href)
+* audio (src)
+* base (href)
+* button (formaction)
+* div (data-background, style, data-src)
+* embed (src)
+* form (action)
+* frame (src)
+* head (profile)
+* html (manifest)
+* iframe (longdesc, src)
+* img (longdesc, src)
+* input (formaction, src, value)
+* link (href)
+* menuitem (icon)
+* meta (content)
+* object (archive, data, codebase)
+* script (src)
+* source (src)
+* track (src)
+* video (src, poster)
 
 Zusätzlich wird das URL-Attribut innerhalb von CSS übersetzt.
 

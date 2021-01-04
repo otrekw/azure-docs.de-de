@@ -1,5 +1,5 @@
 ---
-title: Jupyter-Beispiel-Notebooks
+title: Exemplarische Jupyter Notebook-Instanzen
 titleSuffix: Azure Machine Learning
 description: Hier erfahren Sie, wie Sie die Juypter Notebook-Instanzen finden und verwenden, die Ihnen dabei helfen sollen, sich mit dem SDK vertraut zu machen, und die als Modelle für Ihre eigenen Machine Learning-Projekte fungieren.
 services: machine-learning
@@ -11,14 +11,14 @@ ms.author: sgilley
 ms.reviewer: sgilley
 ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: 3f5cb2831a58ce9d0d30039b80815e281401e883
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 38d0c350718480506e1267c161a85505ece4b69d
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94542557"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452248"
 ---
-# <a name="explore-azure-machine-learning-with-jupyter-notebooks"></a>Erkunden von Azure Machine Learning mit Jupyter-Notebooks
+# <a name="explore-azure-machine-learning-with-jupyter-notebooks"></a>Erkunden von Azure Machine Learning mit Jupyter Notebook-Instanzen
 
 > [!NOTE] 
 > Ein Communityrepository mit Beispielen finden Sie unter https://github.com/Azure/azureml-examples.

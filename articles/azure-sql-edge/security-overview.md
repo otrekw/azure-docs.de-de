@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/22/2020
-ms.openlocfilehash: cb673efb3e5d14e72e945bcf8c23d57495823720
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 56d5eb981aa02d9da83973d49e8df79fcd9c7e9c
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93394950"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95021013"
 ---
 # <a name="securing-azure-sql-edge"></a>Schützen von Azure SQL Edge
 
@@ -34,14 +34,14 @@ Das Implementieren der Plattformsicherheit beginnt mit dem Fernhalten unbefugter
 - Angeben und Einschränken von Hostports, die für Azure SQL Edge verwendet werden
 - Sicherstellen, dass die richtige Zugriffssteuerung auf alle Datenvolumes angewendet wird, auf denen Azure SQL Edge-Daten gehostet werden 
 
-Weitere Informationen zu Azure SQL Edge-Netzwerkprotokollen und TDS-Endpunkten finden Sie unter [Netzwerkprotokolle und TDS-Endpunkte](//previous-versions/sql/sql-server-2008-r2/ms191220(v=sql.105)).
+Weitere Informationen zu Azure SQL Edge-Netzwerkprotokollen und TDS-Endpunkten finden Sie unter [Netzwerkprotokolle und TDS-Endpunkte](/previous-versions/sql/sql-server-2008-r2/ms191220(v=sql.105)).
 
 ## <a name="authentication-and-authorization"></a>Authentifizierung und Autorisierung 
 
 ### <a name="authentication"></a>Authentifizierung  
 Die Authentifizierung ist der Prozess, bei dem bestätigt wird, dass der Benutzer derjenige ist, der er zu sein vorgibt. Azure SQL Edge unterstützt derzeit nur den `SQL Authentication`-Mechanismus.
 
-- *SQL-Authentifizierung* :
+- *SQL-Authentifizierung*:
 
     SQL-Authentifizierung bezieht sich auf die Authentifizierung eines Benutzers beim Herstellen einer Verbindung mit Azure SQL Edge mithilfe von Benutzername und Kennwort. Das SQL-Anmeldekennwort für **sa** muss während der SQL Edge-Bereitstellung angegeben werden. Danach können zusätzliche SQL-Anmeldungen und -Benutzer durch den Serveradministrator erstellt werden, sodass Benutzer eine Verbindung mithilfe von Benutzername und Kennwort herstellen können.
 

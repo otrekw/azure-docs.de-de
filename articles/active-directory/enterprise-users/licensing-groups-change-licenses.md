@@ -8,20 +8,20 @@ author: curtand
 manager: daveba
 editor: ''
 ms.service: active-directory
+ms.subservice: enterprise-users
 ms.topic: how-to
 ms.workload: identity
-ms.subservice: enterprise-users
-ms.date: 11/15/2020
+ms.date: 12/02/2020
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ec9a215d25ce1177b015b392c4f36d7547be521
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 050ae95c79e7ecb98f8508c2fdb41b90fc1b1da0
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94647017"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96546538"
 ---
 # <a name="change-license-assignments-for-a-user-or-group-in-azure-active-directory"></a>Ändern der Lizenzzuweisungen für einen Benutzer oder eine Gruppe in Azure Active Directory
 

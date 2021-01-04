@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 10/22/2020
 tags: connectors
 ms.openlocfilehash: b6276ff940d8b156a671cb5386ce53ede30dd879
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426652"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019707"
 ---
 # <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>Austauschen von Nachrichten in der Cloud mit Azure Logic Apps und Azure Service Bus
 
@@ -47,7 +47,7 @@ Vergewissern Sie sich, dass Ihre Logik-App über Berechtigungen für den Zugriff
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) mit Ihrem Azure-Konto an.
 
-1. Navigieren Sie zu Ihrem Service Bus- *Namespace*. Wählen Sie auf der Seite „Namespace“ unter **Einstellungen** die Option **Freigegebene Zugriffsrichtlinien** aus. Stellen Sie im Bereich **Ansprüche** sicher, dass Sie die **Verwaltungsberechtigungen** für diesen Namespace besitzen.
+1. Navigieren Sie zu Ihrem Service Bus-*Namespace*. Wählen Sie auf der Seite „Namespace“ unter **Einstellungen** die Option **Freigegebene Zugriffsrichtlinien** aus. Stellen Sie im Bereich **Ansprüche** sicher, dass Sie die **Verwaltungsberechtigungen** für diesen Namespace besitzen.
 
    ![Verwalten von Berechtigungen für einen Service Bus-Namespace](./media/connectors-create-api-azure-service-bus/azure-service-bus-namespace.png)
 
@@ -76,7 +76,7 @@ Vergewissern Sie sich, dass Ihre Logik-App über Berechtigungen für den Zugriff
 
    Nachfolgend sehen Sie einige Überlegungen zur Verwendung eines Service Bus-Triggers:
 
-   * Alle Service Bus Trigger sind *Long-Polling* -Trigger. Diese Beschreibung bedeutet, dass ein Trigger beim Auslösen alle Nachrichten verarbeitet und dann 30 Sekunden lang auf weitere Nachrichten wartet, die in der Warteschlange oder im Themenabonnement eingehen. Gehen innerhalb von 30 Sekunden keine Nachrichten ein, wird die Triggerausführung übersprungen. Andernfalls fährt der Trigger mit dem Lesen von Nachrichten fort, bis die Warteschlange oder das Themenabonnement leer ist. Der nächste Triggerabruf basiert auf dem in den Triggereigenschaften angegebenen Wiederholungsintervall.
+   * Alle Service Bus Trigger sind *Long-Polling*-Trigger. Diese Beschreibung bedeutet, dass ein Trigger beim Auslösen alle Nachrichten verarbeitet und dann 30 Sekunden lang auf weitere Nachrichten wartet, die in der Warteschlange oder im Themenabonnement eingehen. Gehen innerhalb von 30 Sekunden keine Nachrichten ein, wird die Triggerausführung übersprungen. Andernfalls fährt der Trigger mit dem Lesen von Nachrichten fort, bis die Warteschlange oder das Themenabonnement leer ist. Der nächste Triggerabruf basiert auf dem in den Triggereigenschaften angegebenen Wiederholungsintervall.
 
    * Einige Trigger, z. B. der Trigger **Bei Empfang mindestens einer Nachricht in der Warteschlange (autom. abschließen)** , können eine oder mehrere Nachrichten zurückgeben. Wird ein solcher Trigger ausgelöst, gibt er mindestens eine und maximal so viele Nachrichten zurück, wie diese in seiner Eigenschaft **Maximale Nachrichtenanzahl** angegeben ist.
 
@@ -101,7 +101,7 @@ Vergewissern Sie sich, dass Ihre Logik-App über Berechtigungen für den Zugriff
    
       ![Screenshot des Auswählens einer Service Bus-Warteschlange](./media/connectors-create-api-azure-service-bus/service-bus-select-queue-trigger.png)
 
-1. Geben Sie die erforderlichen Informationen zu Ihrem ausgewählten Trigger ein. Öffnen Sie zum Hinzufügen weiterer verfügbarer Eigenschaften zu der Aktion die Liste **Neuen Parameter hinzufügen** , und wählen Sie die gewünschten Eigenschaften aus.
+1. Geben Sie die erforderlichen Informationen zu Ihrem ausgewählten Trigger ein. Öffnen Sie zum Hinzufügen weiterer verfügbarer Eigenschaften zu der Aktion die Liste **Neuen Parameter hinzufügen**, und wählen Sie die gewünschten Eigenschaften aus.
 
    Für diesen Beispieltrigger: Legen Sie das Abrufintervall und die Häufigkeit für die Überprüfung der Warteschlange fest.
 
@@ -145,7 +145,7 @@ Vergewissern Sie sich, dass Ihre Logik-App über Berechtigungen für den Zugriff
 
       ![Screenshot des Auswählens einer Service Bus-Warteschlange](./media/connectors-create-api-azure-service-bus/service-bus-select-queue-action.png)
 
-1. Geben Sie die erforderlichen Informationen zu Ihrer ausgewählten Aktion ein. Öffnen Sie zum Hinzufügen weiterer verfügbarer Eigenschaften zu der Aktion die Liste **Neuen Parameter hinzufügen** , und wählen Sie die gewünschten Eigenschaften aus.
+1. Geben Sie die erforderlichen Informationen zu Ihrer ausgewählten Aktion ein. Öffnen Sie zum Hinzufügen weiterer verfügbarer Eigenschaften zu der Aktion die Liste **Neuen Parameter hinzufügen**, und wählen Sie die gewünschten Eigenschaften aus.
 
    Wählen Sie z. B. die Eigenschaften **Inhalt** und **Inhaltstyp** aus, damit Sie sie der Aktion hinzufügen. Geben Sie dann den Inhalt für die Nachricht an, die Sie senden möchten.
 

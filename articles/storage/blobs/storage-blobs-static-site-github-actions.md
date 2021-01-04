@@ -8,20 +8,20 @@ ms.author: jukullam
 ms.reviewer: dineshm
 ms.date: 09/11/2020
 ms.subservice: blobs
-ms.custom: devx-track-javascript, github-actions-azure
-ms.openlocfilehash: 7213cea0796197e230cc5914f7cebfac7c69ae49
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.custom: devx-track-javascript, github-actions-azure, devx-track-azurecli
+ms.openlocfilehash: 799c0dbc3ddb673cafe0fe4962f7346a841bd4b7
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93395732"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95543101"
 ---
 # <a name="set-up-a-github-actions-workflow-to-deploy-your-static-website-in-azure-storage"></a>Einrichten eines GitHub Actions-Workflows zum Bereitstellen einer statischen Website in Azure Storage
 
 Verwenden Sie als Einstieg in [GitHub Actions](https://docs.github.com/en/actions) einen Workflow zum Bereitstellen einer statischen Website in einem Azure-Speicherkonto. Nachdem Sie einen GitHub Actions-Workflow eingerichtet haben, können Sie Ihre Website über GitHub automatisch in Azure bereitstellen, wenn Sie Änderungen am Code der Website vornehmen.
 
 > [!NOTE]
-> Wenn Sie [Azure Static Web Apps](https://docs.microsoft.com/azure/static-web-apps/) verwenden, müssen Sie keinen GitHub Actions-Workflow manuell einrichten.
+> Wenn Sie [Azure Static Web Apps](../../static-web-apps/index.yml) verwenden, müssen Sie keinen GitHub Actions-Workflow manuell einrichten.
 > Azure Static Web Apps erstellt für Sie automatisch einen GitHub Actions-Workflow. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -187,4 +187,4 @@ Wenn Ihre statische Website und das GitHub-Repository nicht mehr benötigt werde
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Informieren Sie sich über Azure Static Web Apps.](https://docs.microsoft.com/azure/static-web-apps/)
+> [Informieren Sie sich über Azure Static Web Apps.](../../static-web-apps/index.yml)

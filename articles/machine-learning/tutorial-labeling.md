@@ -10,12 +10,13 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: ranku
 ms.date: 04/09/2020
-ms.openlocfilehash: 36c5f0103908ea150cbe6eb373e25f7d741127f5
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.custom: data4ml
+ms.openlocfilehash: 5aec3d6bb2afeadda64ac19563f8334a6aef3b77
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913261"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347505"
 ---
 # <a name="tutorial-create-a-labeling-project-for-multi-class-image-classification"></a>Tutorial: Erstellen eines Beschriftungsprojekts für mehrklassige Bildklassifizierung 
 
@@ -67,7 +68,7 @@ Azure Machine Learning-Datenspeicher werden zum Speichern von Verbindungsinforma
     Feld|BESCHREIBUNG 
     ---|---
     Datenspeichername | Benennen Sie den Datenspeicher.  Hier verwenden wir **labeling_tutorial**.
-    Datenspeichertyp | Wählen Sie den Speichertyp aus.  Hier verwenden wir **Azure Blob Storage** , den bevorzugten Speicher für Bilder.
+    Datenspeichertyp | Wählen Sie den Speichertyp aus.  Hier verwenden wir **Azure Blob Storage**, den bevorzugten Speicher für Bilder.
     Kontoauswahlmethode | Wählen Sie **Manuell eingeben** aus.
     URL | `https://azureopendatastorage.blob.core.windows.net/openimagescontainer`
     Authentifizierungsart | Wählen Sie **SAS-Token** aus.
@@ -87,7 +88,7 @@ Da Sie nun Zugriff auf die Daten haben, die Sie beschriften lassen möchten, ers
 
 ### <a name="project-details"></a>Projektdetails
 
-1. Verwenden Sie die folgende Eingabe für das Formular **Projektdetails** :
+1. Verwenden Sie die folgende Eingabe für das Formular **Projektdetails**:
 
     Feld|BESCHREIBUNG 
     ---|---
@@ -98,14 +99,14 @@ Da Sie nun Zugriff auf die Daten haben, die Sie beschriften lassen möchten, ers
 
 ### <a name="select-or-create-a-dataset"></a>Auswählen oder Erstellen eines Datasets
 
-1.   Wählen Sie im Formular **Dataset auswählen oder erstellen** die zweite Option, **Dataset erstellen** , und dann den Link **Aus Datenspeicher** aus.
+1.   Wählen Sie im Formular **Dataset auswählen oder erstellen** die zweite Option, **Dataset erstellen**, und dann den Link **Aus Datenspeicher** aus.
 
-1. Verwenden Sie die folgende Eingabe für das Formular **Dataset aus Datenspeicher erstellen** :
+1. Verwenden Sie die folgende Eingabe für das Formular **Dataset aus Datenspeicher erstellen**:
 
     1. Fügen Sie auf dem Formular **Grundlegende Infos** einen Namen hinzu. Hier verwenden wir **images-for-tutorial**.  Fügen Sie nach Wunsch eine Beschreibung hinzu.  Wählen Sie **Weiter** aus.
     1. Verwenden Sie im Formular **Datenspeicherauswahl** die Dropdownliste, um Ihren **zuvor erstellten Datenspeicher** auszuwählen, z. B. **tutorial_images (Azure Blob Storage)** .
     1. Wählen Sie als Nächstes weiterhin im Formular **Datenspeicherauswahl** die Option **Durchsuchen** und dann **MultiClass - DogsCats** aus.  Wählen Sie **Speichern** aus, um **/MultiClass - DogsCats** als Pfad zu verwenden.
-    1. Wählen Sie **Weiter** aus, um Details zu bestätigen, und dann **Erstellen** , um das Dataset zu erstellen.
+    1. Wählen Sie **Weiter** aus, um Details zu bestätigen, und dann **Erstellen**, um das Dataset zu erstellen.
     1. Wählen Sie den Kreis neben dem Namen des Datasets in der Liste aus, z. B. **images-for-tutorial**.
 
 1. Wählen Sie **Weiter** aus, um die Erstellung des Projekts fortzusetzen.
@@ -114,11 +115,11 @@ Da Sie nun Zugriff auf die Daten haben, die Sie beschriften lassen möchten, ers
 
 Wenn Sie dem Dataset neue Bilder hinzufügen möchten, werden diese von der inkrementellen Aktualisierung ermittelt und Ihrem Projekt hinzugefügt.  Wenn Sie diese Funktion aktivieren, sucht das Projekt regelmäßig nach neuen Bildern.  Lassen Sie diese Funktion deaktiviert, da Sie dem Datenspeicher in diesem Tutorial keine neuen Bilder hinzufügen.
 
-Klicken Sie auf **Weiter** , um fortzufahren.
+Klicken Sie auf **Weiter**, um fortzufahren.
 
 ### <a name="label-classes"></a>Beschriftungsklassen
 
-1. Geben Sie im Formular **Beschriftungsklassen** einen Beschriftungsnamen ein, und wählen Sie dann **+Beschriftung hinzufügen** aus, um die nächste Beschriftung einzugeben.  Für dieses Projekt sind die Beschriftungen **Cat** , **Dog** und **Uncertain**.
+1. Geben Sie im Formular **Beschriftungsklassen** einen Beschriftungsnamen ein, und wählen Sie dann **+Beschriftung hinzufügen** aus, um die nächste Beschriftung einzugeben.  Für dieses Projekt sind die Beschriftungen **Cat**, **Dog** und **Uncertain**.
 
 1. Wählen Sie **Weiter** aus, nachdem Sie alle Beschriftungen hinzugefügt haben.
 

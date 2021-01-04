@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 10/15/2020
 ms.author: trbye
-ms.openlocfilehash: 0e2324f7e524567b07f0228e046605b781bc4916
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: d50d4c554f47629f6e04adf957e02f8ffcc48fe5
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94425179"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96509520"
 ---
 In diesem Leitfaden erfahren Sie, wie Sie das [Sprach-SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) für Python installieren. Führen Sie `pip install azure-cognitiveservices-speech` aus, wenn Sie nur den Paketnamen benötigen und selbständig einsteigen möchten.
 
@@ -74,12 +74,12 @@ import azure.cognitiveservices.speech as speechsdk
 1. Laden Sie die neueste unterstützte Version von [Python](https://www.python.org/downloads/) für Ihre Plattform (3.5 bis 3.8) herunter, und installieren Sie sie.
    - Als Windows-Benutzer stellen Sie sicher, dass Sie während des Installationsvorgangs „Add Python to your PATH“ (Fügen Sie Python Ihrem PATH hinzu) auswählen.
 1. Laden Sie [Visual Studio Code](https://code.visualstudio.com/Download) herunter, und installieren Sie die Software.
-1. Öffnen Sie Visual Studio Code, und installieren Sie die Python-Erweiterung. Wählen Sie im Menü **Datei** > **Einstellungen** > **Erweiterungen**. Suchen Sie nach **Python** , und klicken Sie auf **Installieren**.
+1. Öffnen Sie Visual Studio Code, und installieren Sie die Python-Erweiterung. Wählen Sie im Menü **Datei** > **Einstellungen** > **Erweiterungen**. Suchen Sie nach **Python**, und klicken Sie auf **Installieren**.
 
    ![Installieren der Python-Erweiterung](~/articles/cognitive-services/speech-service/media/sdk/qs-python-vscode-python-extension.png)
 
 1. Installieren Sie das Sprach-SDK-Paket für Python auch von Visual Studio Code aus über die integrierte Befehlszeile:
-   1. Öffnen Sie ein Terminal (in den Dropdownmenüs **Terminal** > **Neues Terminal** ).
+   1. Öffnen Sie ein Terminal (in den Dropdownmenüs **Terminal** > **Neues Terminal**).
    1. Geben Sie im geöffneten Terminal den Befehl `python -m pip install azure-cognitiveservices-speech` ein.
 
 Wenn Sie noch nicht mit Visual Studio Code vertraut sind, lesen Sie die ausführlichere [Visual Studio Code-Dokumentation](https://code.visualstudio.com/docs). Weitere Informationen zu Visual Studio Code und Python finden Sie im [Visual Studio Code-Python-Tutorial](https://code.visualstudio.com/docs/python/python-tutorial).
@@ -90,7 +90,7 @@ Updates für das Speech SDK-Paket für Python werden über PyPI verteilt und in 
 Wenn eine neue Version verfügbar ist, können Sie mit dem Befehl `pip install --upgrade azure-cognitiveservices-speech` auf diese Version aktualisieren.
 Die derzeit installierte Version können Sie der Variablen `azure.cognitiveservices.speech.__version__` entnehmen.
 
-Falls Probleme auftreten oder ein Feature fehlt, sehen Sie sich die [Support- und Hilfeoptionen](../../../../cognitive-services-support-options.md?context=%252fazure%252fcognitive-services%252fspeech-service%252fcontext%252fcontext%253fcontext%253d%252fazure%252fcognitive-services%252fspeech-service%252fcontext%252fcontext) an.
+Falls Probleme auftreten oder ein Feature fehlt, sehen Sie sich die [Support- und Hilfeoptionen](../../../../cognitive-services-support-options.md?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext%253fcontext%253d%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext) an.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

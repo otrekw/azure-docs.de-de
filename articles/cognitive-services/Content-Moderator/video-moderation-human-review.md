@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 07/20/2020
 ms.author: pafarley
-ms.openlocfilehash: 392cc06c6e0bce7ec2304da61033fc508d940bbb
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 05ece4d8ea24fb9da106ec3daa2cc1a63706dab9
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93143772"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96853497"
 ---
 # <a name="video-moderation-with-the-review-tool"></a>Videomoderation mit dem Überprüfungstool
 
@@ -26,7 +26,7 @@ Nutzen Sie die computergestützte [Videomoderation](video-moderation-api.md) von
 Wählen Sie im Dashboard eine der Überprüfungswarteschlangen innerhalb des Videoinhaltstyps aus. Dadurch wird eine Überprüfung gestartet und die Seite für die Moderation von Videoinhalten geöffnet.
 
 > [!div class="mx-imgBorder"]
-> ![Ausführliche Ansicht der Videomoderation im Überprüfungstool](./Review-Tool-User-Guide/images/video-moderation-detailed.png)
+> ![Auf Content Moderator (Vorschau): Schieberegler hervorgehoben und auf 4 Überprüfungen festgelegt. Zudem: Schieberegler „Blur All“ (Alles weichzeichnen) und „Black and white“ (Schwarzweiß) sind hervorgehoben und festgelegt.](./Review-Tool-User-Guide/images/video-moderation-detailed.png)
 
 ### <a name="review-count"></a>Review count
 
@@ -55,7 +55,7 @@ In der **Detailansicht** werden im rechten Bereich mehrere Registerkarten angeze
 * Wählen Sie die Registerkarte **History** (Verlauf) aus, um den Verlauf der Überprüfung anzuzeigen, z. B. wann sie erstellt und wie sie geändert wurde.
 
 > [!div class="mx-imgBorder"]
-> ![Schaltfläche für Massentags für die Videomoderation](./Review-Tool-User-Guide/images/video-moderation-video-details.png)
+> ![Hervorgehobener rechter Bereich mit ausgewählter Registerkarte „Notes“ (Notizen); Zudem Testbereich „Add a note“ (Notiz hinzufügen)](./Review-Tool-User-Guide/images/video-moderation-video-details.png)
 
 ## <a name="apply-moderation-tags"></a>Anwenden von Moderationstags
 
@@ -66,7 +66,7 @@ Die Hauptaufgabe einer Videoüberprüfung besteht darin, Moderationstags auf Vid
 Mit der Symbolleiste für **Massentags** können Sie Tags zu mehreren ausgewählten Videos gleichzeitig hinzufügen. Wählen Sie ein oder mehrere Videos und dann die Tags aus, die Sie anwenden möchten, und klicken Sie auf **Submit** (Übermitteln). 
 
 > [!div class="mx-imgBorder"]
-> ![Schaltfläche für Massentags für die Videomoderation](./Review-Tool-User-Guide/images/video-moderation-bulk-tags.png)
+> ![Hervorgehobene Schaltfläche „+“ im Bereich zu Massentags](./Review-Tool-User-Guide/images/video-moderation-bulk-tags.png)
 
 
 ### <a name="key-frame-tagging"></a>Kennzeichnung von Keyframes
@@ -77,7 +77,7 @@ Sie können auch Moderationstags zu bestimmten Keyframes hinzufügen. Wählen Si
 > Wenn der Dienst keine Keyframes extrahieren konnte, zeigt der Kachelbereich für Keyframes **No frames available** (Keine Frames verfügbar) an und die Option zur Auswahl von Keyframes ist abgeblendet. In diesem Fall können Sie Tags nur auf das Video als Ganzes anwenden (mithilfe der Schaltfläche **Video tags +** (Videotags +)).
 
 > [!div class="mx-imgBorder"]
-> ![Ausführliche Ansicht der Videomoderation im Überprüfungstool](./Review-Tool-User-Guide/images/video-moderation-tagging-options.png)
+> ![Kachelbereiche, Videoplayer und Bereiche „Keyframetags“ und „Videotags“ werden angezeigt. Die Schaltflächen „Keyframetags“ und „Videotags“ sind hervorgehoben.](./Review-Tool-User-Guide/images/video-moderation-tagging-options.png)
 
 ## <a name="put-a-review-on-hold"></a>Anhalten einer Überprüfung
 
@@ -86,7 +86,7 @@ Mit der Schaltfläche **Hold** (Anhalten) am unteren Rand des Videobereichs kön
 Sie können die angehaltenen Videos anzeigen, indem Sie auf die Schaltfläche **Hold** (Anhalten) oben auf dem Bildschirm klicken. Auf der rechten Seite wird der Bereich „Hold“ (Anhalten) angezeigt. Von hier aus können Sie mehrere zurückgestellte Überprüfungen auswählen und sie entweder wieder in die Warteschlange freigeben oder ihre Ablaufzeit festlegen. Nach der vorkonfigurierten Zeitspanne werden zurückgestellte Überprüfungen wieder in die Warteschlange freigegeben. Wählen Sie **Save** (Speichern) aus, um mit dem Herunterzählen der aktuell gewählten Ablaufzeit zu beginnen.
 
 > [!div class="mx-imgBorder"]
-> ![Ausführliche Ansicht der Videomoderation im Überprüfungstool](./Review-Tool-User-Guide/images/video-moderation-hold.png)
+> ![Im Videobereich wird die Schaltfläche „Hold“ (Anhalten) hervorgehoben. Am unteren Rand des Bereichs wird das Kombinationsfeld „Hold Time“ (Zeit anhalten) zusammen mit den Schaltflächen „Release“ (Freigeben) und „Save“ (Speichern) hervorgehoben.](./Review-Tool-User-Guide/images/video-moderation-hold.png)
 
 ## <a name="submit-a-review"></a>Übermitteln einer Überprüfung
 
@@ -103,4 +103,3 @@ Sobald die Videos im Limbo-Zustand ablaufen, werden ihre Überprüfungen als abg
 - Beginnen Sie mit dem [Schnellstart für die Videomoderation](video-moderation-api.md).
 - Erfahren Sie mehr über das Generieren von [Videoüberprüfungen](video-reviews-quickstart-dotnet.md) für Ihre menschlichen Prüfer aus Ihrer moderierten Ausgabe.
 - Fügen Sie [Überprüfungen von Videotranskripten](video-transcript-reviews-quickstart-dotnet.md) zu Ihren Videoüberprüfungen hinzu.
-- Sehen Sie sich das ausführliche Tutorial zur Entwicklung einer [vollständigen Lösung für die Videomoderation](video-transcript-moderation-review-tutorial-dotnet.md) an.

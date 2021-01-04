@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/13/2019
 author: trkeya
 ms.author: trkeya
-ms.openlocfilehash: f628c2a4c2f8eb474bbc34ef2d3fd2f03f668992
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 553eba3898a5ea42e5d478603e35e82c68abcab1
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629902"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462898"
 ---
 # <a name="test-drive-technical-configuration"></a>Technische Konfiguration der Testversion
 
@@ -38,7 +38,9 @@ Microsoft kann die Dienstbereitstellung und die Aufhebung der Bereitstellung hos
 
 - **Rollenname** (erforderlich): Geben Sie den Namen der Sicherheitsrolle an, den Sie in der benutzerdefinierten Dynamics 365-Testversion definiert haben. Dieser wird dem Benutzer für die Dauer der Testversion zugewiesen (z. B. „Testversionsrolle“).
 
-Wenn Sie Hilfe beim Einrichten Ihrer Dynamics 365-Umgebung für Testversionen und bei der Erteilung der AppSource-Genehmigung zum Bereitstellen bzw. Aufheben der Bereitstellung von Testversionsbenutzern in Ihrem Mandanten benötigen, befolgen Sie [diese Anweisungen](https://github.com/Microsoft/AppSource/blob/patch-1/Microsoft%20Hosted%20Test%20Drive/Setup-your-Azure-subscription-for-Dynamics365-Microsoft-Hosted-Test-Drives.md).
+Wenn Sie Hilfe beim Einrichten Ihrer Dynamics 365-Umgebung für Testversionen und bei der Erteilung der AppSource-Genehmigung zum Bereitstellen bzw. Aufheben der Bereitstellung von Testversionsbenutzern in Ihrem Mandanten benötigen, befolgen Sie [diese Anweisungen](./test-drive-azure-subscription-setup.md).
+
+Eine Schrittanleitung zum Auflisten und Konfigurieren der gehosteten Testversion finden Sie auf der Seite [Ausführliche Konfiguration für gehostete Testversionen](./test-drive-hosted-detailed-config.md).
 
 ## <a name="logic-app-test-drive"></a>Testversion für Logik-Apps
 
@@ -92,6 +94,8 @@ Auf der Partner Center-Registerkarte **Test drive listings** (Listungen von Test
   - **Vorschauminiatur** (533 × 324 Pixel ): (Bilddatei muss im PNG-Format vorliegen)
 
 Wenn Sie Ihre Testversion derzeit im Partner Center erstellen, wählen Sie **Entwurf speichern** aus, bevor Sie fortfahren.
+
+Eine Schrittanleitung zum Auflisten und Konfigurieren der gehosteten Testversion finden Sie auf der Seite [Ausführliche Konfiguration für gehostete Testversionen](./test-drive-hosted-detailed-config.md).
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 

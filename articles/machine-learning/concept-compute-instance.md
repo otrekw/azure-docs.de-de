@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: 7c1bfa618ea0ddddd7666698bc4fffa3ced5079d
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 7d07dda7741aa075b8d853a8d06d3d3218ca901a
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323073"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94563816"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Was ist eine Azure Machine Learning-Compute-Instanz?
 
@@ -66,13 +66,13 @@ Die folgenden Tools und Umgebungen sind in der Compute-Instanz bereits installie
 |NCCL 2.0 ||
 |Protobuf|| 
 
-|**R** -Tools und -Umgebungen|Details|
+|**R**-Tools und -Umgebungen|Details|
 |----|:----:|
 |RStudio Server Open Source Edition (Vorschauversion)||
 |R-Kernel||
 |Azure Machine Learning SDK für R|[azuremlsdk](https://azure.github.io/azureml-sdk-for-r/reference/index.html)</br>SDK-Beispiele|
 
-|**PYTHON** -Tools und Umgebungen|Details|
+|**PYTHON**-Tools und Umgebungen|Details|
 |----|----|
 |Anaconda Python||
 |Jupyter und Erweiterungen||
@@ -84,7 +84,7 @@ Die folgenden Tools und Umgebungen sind in der Compute-Instanz bereits installie
 |ONNX-Pakete|`keras2onnx`</br>`onnx`</br>`onnxconverter-common`</br>`skl2onnx`</br>`onnxmltools`|
 |Python- und R-SDK-Beispiele für Azure Machine Learning||
 
-Python-Pakete sind alle in der **Python 3.6 – AzureML** -Umgebung installiert.  
+Python-Pakete sind alle in der **Python 3.6 – AzureML**-Umgebung installiert.  
 
 ## <a name="accessing-files"></a>Zugreifen auf Dateien
 
@@ -110,7 +110,7 @@ Sie können folgende Aktionen ausführen:
 
 * [Erstellen einer Compute-Instanz](#create). 
 * Aktualisieren der Registerkarte „Compute-Instanzen“.
-* Starten, Beenden und erneutes Starten einer Compute-Instanz.  Sie zahlen für die Instanz, wann immer sie ausgeführt wird. Beenden Sie die Compute-Instanz, wenn Sie sie nicht verwenden, um Kosten zu sparen. Das Beenden einer Compute-Instanz gibt diese frei. Starten Sie sie dann erneut, wenn Sie sie benötigen.
+* Starten, Beenden und erneutes Starten einer Compute-Instanz.  Sie zahlen für die Instanz, wann immer sie ausgeführt wird. Beenden Sie die Compute-Instanz, wenn Sie sie nicht verwenden, um Kosten zu sparen. Das Beenden einer Compute-Instanz gibt diese frei. Starten Sie sie dann erneut, wenn Sie sie benötigen. Beachten Sie, dass das Beenden der Compute-Instanz die Abrechnung der Computestunden stoppt, aber Ihnen werden weiterhin Datenträger, öffentliche IP-Adresse und Standardlastenausgleich in Rechnung gestellt.
 * Löschen einer Compute-Instanz.
 * Filtern Sie die Liste der Compute-Instanzen, um nur diejenigen anzuzeigen, die Sie erstellt haben.
 
@@ -132,7 +132,7 @@ Diese Aktionen können von Azure RBAC gesteuert werden:
 
 ### <a name="create-a-compute-instance"></a><a name="create"></a>Erstellen einer Compute-Instanz
 
-Erstellen Sie in Ihrem Arbeitsbereich im Azure Machine Learning Studio [eine neue Compute-Instanz](how-to-create-attach-compute-studio.md#compute-instance) entweder im Abschnitt **Compute** oder im Abschnitt **Notebooks** , wenn Sie bereit sind, eines Ihrer Notebooks auszuführen. 
+Erstellen Sie in Ihrem Arbeitsbereich im Azure Machine Learning Studio [eine neue Compute-Instanz](how-to-create-attach-compute-studio.md#compute-instance) entweder im Abschnitt **Compute** oder im Abschnitt **Notebooks**, wenn Sie bereit sind, eines Ihrer Notebooks auszuführen. 
 
 Sie können auch eine Instanz
 * direkt in der [integrierten Notebookumgebung](tutorial-1st-experiment-sdk-setup.md#azure) erstellen.

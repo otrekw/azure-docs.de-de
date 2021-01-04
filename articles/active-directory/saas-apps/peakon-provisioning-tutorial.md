@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/28/2019
 ms.author: zhchia
-ms.openlocfilehash: 5fc5045643c9baf67b61d45188c8a2b6ccbc5c23
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: c04bbd5459690262b484582e807569b965a0439b
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359815"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349887"
 ---
 # <a name="tutorial-configure-peakon-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Peakon für die automatische Benutzerbereitstellung
 
@@ -36,7 +36,7 @@ Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits �
 
 ## <a name="assigning-users-to-peakon"></a>Zuweisen von Benutzern zu Peakon
 
-Azure Active Directory ermittelt anhand von *Zuweisungen* , welche Benutzer Zugriff auf bestimmte Apps erhalten sollen. Im Kontext der automatischen Benutzerbereitstellung werden nur die Benutzer und/oder Gruppen synchronisiert, die einer Anwendung in Azure AD zugewiesen wurden.
+Azure Active Directory ermittelt anhand von *Zuweisungen*, welche Benutzer Zugriff auf bestimmte Apps erhalten sollen. Im Kontext der automatischen Benutzerbereitstellung werden nur die Benutzer und/oder Gruppen synchronisiert, die einer Anwendung in Azure AD zugewiesen wurden.
 
 Vor dem Konfigurieren und Aktivieren der automatischen Benutzerbereitstellung müssen Sie entscheiden, welche Benutzer und/oder Gruppen in Azure AD Zugriff auf Peakon benötigen. Anschließend können Sie diese Benutzer bzw. Gruppen Peakon wie folgt zuweisen:
 
@@ -74,15 +74,15 @@ Um Peakon für die automatische Benutzerbereitstellung mit Azure AD zu konfiguri
 
     ![Schaltfläche „Azure Active Directory“](common/select-azuread.png)
 
-2. Navigieren Sie zu **Unternehmensanwendungen** , und wählen Sie die Option **Alle Anwendungen**.
+2. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie die Option **Alle Anwendungen**.
 
     ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
-3. Klicken Sie oben im Bereich auf die Schaltfläche **Neue Anwendung** , um eine neue Anwendung hinzuzufügen.
+3. Klicken Sie oben im Bereich auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
 
     ![Schaltfläche „Neue Anwendung“](common/add-new-app.png)
 
-4. Geben Sie im Suchfeld **Peakon** ein, wählen Sie im Ergebnisbereich **Peakon** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen** , um die Anwendung hinzuzufügen.
+4. Geben Sie im Suchfeld **Peakon** ein, wählen Sie im Ergebnisbereich **Peakon** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
     ![Peakon in der Ergebnisliste](common/search-new-app.png)
 
@@ -111,7 +111,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![Screenshot der Dropdownliste „Bereitstellungsmodus“ mit aufgerufener Option „Automatisch“](common/provisioning-automatic.png)
 
-5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** die Werte für **SCIM 2.0-URL** und **OAuth-Bearertoken** ein, die zuvor unter **Mandanten-URL** bzw. **Geheimes Token** abgerufen wurden. Klicken Sie auf **Verbindung testen** , um sicherzustellen, dass Azure AD eine Verbindung mit Peakon herstellen kann. Vergewissern Sie sich im Falle eines Verbindungsfehlers, dass Ihr Peakon-Konto über Administratorberechtigungen verfügt, und versuchen Sie es noch mal.
+5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** die Werte für **SCIM 2.0-URL** und **OAuth-Bearertoken** ein, die zuvor unter **Mandanten-URL** bzw. **Geheimes Token** abgerufen wurden. Klicken Sie auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit Peakon herstellen kann. Vergewissern Sie sich im Falle eines Verbindungsfehlers, dass Ihr Peakon-Konto über Administratorberechtigungen verfügt, und versuchen Sie es noch mal.
 
     ![Mandanten-URL + Token](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -125,7 +125,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![Benutzerzuordnungen in Peakon](media/Peakon-provisioning-tutorial/Peakon-user-mappings.png)
 
-10. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit Peakon synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Benutzerkonten in Peakon für Updatevorgänge verwendet. Wählen Sie die Schaltfläche **Speichern** , um alle Änderungen zu übernehmen.
+10. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit Peakon synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Benutzerkonten in Peakon für Updatevorgänge verwendet. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
     ![Peakon-Benutzerattribute](media/Peakon-provisioning-tutorial/Peakon-user-attributes.png)
 

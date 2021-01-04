@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/14/2019
 ms.author: Zhchia
-ms.openlocfilehash: a62afa9469caa886d86814036017427c0cc0d193
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 8fdd2c8a326fbdc68d1aec65377f4c465c5ee4c1
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357435"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353900"
 ---
 # <a name="tutorial-configure-infor-cloudsuite-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Infor CloudSuite für die automatische Benutzerbereitstellung
 
@@ -37,7 +37,7 @@ Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits �
 
 ## <a name="assigning-users-to-infor-cloudsuite"></a>Zuweisen von Benutzern zu Infor CloudSuite
 
-Azure Active Directory ermittelt anhand von *Zuweisungen* , welche Benutzer Zugriff auf bestimmte Apps erhalten sollen. Im Kontext der automatischen Benutzerbereitstellung werden nur die Benutzer und/oder Gruppen synchronisiert, die einer Anwendung in Azure AD zugewiesen wurden.
+Azure Active Directory ermittelt anhand von *Zuweisungen*, welche Benutzer Zugriff auf bestimmte Apps erhalten sollen. Im Kontext der automatischen Benutzerbereitstellung werden nur die Benutzer und/oder Gruppen synchronisiert, die einer Anwendung in Azure AD zugewiesen wurden.
 
 Vor dem Konfigurieren und Aktivieren der automatischen Benutzerbereitstellung müssen Sie entscheiden, welche Benutzer und/oder Gruppen in Azure AD Zugriff auf Infor CloudSuite benötigen. Anschließend können Sie diese Benutzer und/oder Gruppen Infor CloudSuite wie folgt zuweisen:
 * [Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App](../manage-apps/assign-user-or-group-access-portal.md)
@@ -86,15 +86,15 @@ Bevor Sie Infor CloudSuite für die automatische Benutzerbereitstellung mit Azur
 
     ![Schaltfläche „Azure Active Directory“](common/select-azuread.png)
 
-2. Navigieren Sie zu **Unternehmensanwendungen** , und wählen Sie die Option **Alle Anwendungen**.
+2. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie die Option **Alle Anwendungen**.
 
     ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
-3. Klicken Sie oben im Bereich auf die Schaltfläche **Neue Anwendung** , um eine neue Anwendung hinzuzufügen.
+3. Klicken Sie oben im Bereich auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
 
     ![Schaltfläche „Neue Anwendung“](common/add-new-app.png)
 
-4. Geben Sie im Suchfeld **Infor CloudSuite** ein, wählen Sie im Ergebnisbereich **Infor CloudSuite** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen** , um die Anwendung hinzuzufügen.
+4. Geben Sie im Suchfeld **Infor CloudSuite** ein, wählen Sie im Ergebnisbereich **Infor CloudSuite** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
     ![Infor CloudSuite in der Ergebnisliste](common/search-new-app.png)
 
@@ -126,7 +126,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![Screenshot der Dropdownliste „Bereitstellungsmodus“ mit aufgerufener Option „Automatisch“](common/provisioning-automatic.png)
 
-5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** im Feld **Mandanten-URL** die Zeichenfolge `https://mingle-t20b-scim.mingle.awsdev.infor.com/INFORSTS_TST/v2/scim` ein. Geben Sie den Wert für Bearertoken ein, den Sie zuvor unter **Geheimes Token** abgerufen haben. Klicken Sie auf **Verbindung testen** , um sicherzustellen, dass Azure AD eine Verbindung mit Infor CloudSuite herstellen kann. Vergewissern Sie sich im Falle eines Verbindungsfehlers, dass Ihr Infor CloudSuite-Konto über Administratorberechtigungen verfügt, und wiederholen Sie den Vorgang.
+5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** im Feld **Mandanten-URL** die Zeichenfolge `https://mingle-t20b-scim.mingle.awsdev.infor.com/INFORSTS_TST/v2/scim` ein. Geben Sie den Wert für Bearertoken ein, den Sie zuvor unter **Geheimes Token** abgerufen haben. Klicken Sie auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit Infor CloudSuite herstellen kann. Vergewissern Sie sich im Falle eines Verbindungsfehlers, dass Ihr Infor CloudSuite-Konto über Administratorberechtigungen verfügt, und wiederholen Sie den Vorgang.
 
     ![Mandanten-URL + Token](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -140,7 +140,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![Infor CloudSuite – Benutzerzuordnungen](media/infor-cloudsuite-provisioning-tutorial/usermappings.png)
 
-9. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit Infor CloudSuite synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Benutzerkonten in Infor CloudSuite für Updatevorgänge verwendet. Wählen Sie die Schaltfläche **Speichern** , um alle Änderungen zu übernehmen.
+9. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit Infor CloudSuite synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Benutzerkonten in Infor CloudSuite für Updatevorgänge verwendet. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
     ![Infor CloudSuite – Benutzerattribute](media/infor-cloudsuite-provisioning-tutorial/userattributes.png)
 
@@ -148,7 +148,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![Infor CloudSuite– Gruppenzuordnungen](media/infor-cloudsuite-provisioning-tutorial/groupmappings.png)
 
-11. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Gruppenerattribute, die von Azure AD mit Infor CloudSuite synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Gruppen in Infor CloudSuite für Updatevorgänge verwendet. Wählen Sie die Schaltfläche **Speichern** , um alle Änderungen zu übernehmen.
+11. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Gruppenerattribute, die von Azure AD mit Infor CloudSuite synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Gruppen in Infor CloudSuite für Updatevorgänge verwendet. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
     ![Infor CloudSuite– Gruppenattribute](media/infor-cloudsuite-provisioning-tutorial/groupattributes.png)
 

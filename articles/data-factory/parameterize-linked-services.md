@@ -6,16 +6,16 @@ documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 10/22/2020
-author: djpmsft
-ms.author: daperlov
+ms.date: 12/09/2020
+author: dcstwh
+ms.author: weetok
 manager: anandsub
-ms.openlocfilehash: e6c00a0d2b6ff8bbb4ba9e51110e995e93d6b558
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: da38dd99d0f27d83d5810a664d0c05f979f47080
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426967"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920073"
 ---
 # <a name="parameterize-linked-services-in-azure-data-factory"></a>Parametrisieren von verknüpften Diensten in Azure Data Factory
 
@@ -44,7 +44,7 @@ Für die Erstellung verknüpfter Dienste auf der Benutzeroberfläche bietet Data
 - Azure Databricks
 - Azure SQL-Datenbank
 - Verwaltete Azure SQL-Instanz
-- Azure Synapse Analytics (ehemals SQL DW)
+- Azure Synapse Analytics 
 - MySQL
 - Oracle
 - SQL Server

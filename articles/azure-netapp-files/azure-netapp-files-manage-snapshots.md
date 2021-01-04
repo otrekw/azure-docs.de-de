@@ -12,18 +12,21 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 11/10/2020
+ms.date: 11/18/2020
 ms.author: b-juche
-ms.openlocfilehash: e578e377e322e6b6a23f0990ca1fa0285a4ec87d
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 03b7941385517fe694f0743194655a1b6a1c0e1e
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491646"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95253557"
 ---
 # <a name="manage-snapshots-by-using-azure-netapp-files"></a>Verwalten von Momentaufnahmen mithilfe von Azure NetApp Files
 
 Azure NetApp Files unterstützt das Erstellen bedarfsgesteuerter Momentaufnahmen und das Verwenden von Momentaufnahmenrichtlinien zum Planen der automatischen Erstellung von Momentaufnahmen. Sie können auch eine Momentaufnahme auf einem neuen Volume wiederherstellen, eine einzelne Datei mithilfe eines Clients wiederherstellen oder ein vorhandenes Volume mithilfe einer Momentaufnahme wiederherstellen.
+
+> [!NOTE] 
+> Überlegungen zur Verwaltung von Momentaufnahmen bei der regionsübergreifenden Replikation finden Sie unter [Regionsübergreifende Replikation: Anforderungen und Überlegungen](cross-region-replication-requirements-considerations.md).
 
 ## <a name="create-an-on-demand-snapshot-for-a-volume"></a>Erstellen einer Momentaufnahme bei Bedarf für ein Volume
 
@@ -144,6 +147,17 @@ Sie können eine Momentaufnahmenrichtlinie löschen, die Sie nicht mehr beibehal
 
     ![Bestätigung zum Löschen der Momentaufnahmenrichtlinie](../media/azure-netapp-files/snapshot-policy-delete-confirm.png) 
 
+## <a name="edit-the-hide-snapshot-path-option"></a>Bearbeiten der Option „Momentaufnahmepfad ausblenden“
+Die Option „Momentaufnahmepfad ausblenden“ steuert, ob der Momentaufnahmepfad eines Volumes sichtbar ist. Während der Erstellung eines [NFS](azure-netapp-files-create-volumes.md#create-an-nfs-volume)- oder [SMB](azure-netapp-files-create-volumes-smb.md#add-an-smb-volume)-Volumes können Sie angeben, ob der Momentaufnahmepfad ausgeblendet werden soll. Sie können die Option „Momentaufnahmepfad ausblenden“ anschließend nach Bedarf bearbeiten.  
+
+> [!NOTE]
+> Für ein [Zielvolume](cross-region-replication-create-peering.md#create-the-data-replication-volume-the-destination-volume) bei der regionsübergreifenden Replikation ist die Einstellung „Momentaufnahmepfad ausblenden“ standardmäßig aktiviert, und die Einstellung kann nicht geändert werden. 
+
+1. Wählen Sie das Volume aus, um die Optionseinstellung „Momentaufnahmepfad ausblenden“ eines Volumes anzuzeigen. Das Feld **Momentaufnahmepfad ausblenden** zeigt an, ob die Option aktiviert ist.   
+    ![Screenshot, der das Feld „Momentaufnahmepfad ausblenden“ veranschaulicht.](../media/azure-netapp-files/hide-snapshot-path-field.png) 
+2. Um die Option „Momentaufnahmepfad ausblenden“ zu bearbeiten, klicken Sie auf der Volumeseite auf **Bearbeiten**, und ändern Sie die Option **Momentaufnahmepfad ausblenden** nach Bedarf.   
+    ![Screenshot, der die Option „Volumemomentaufnahme bearbeiten“ veranschaulicht.](../media/azure-netapp-files/volume-edit-snapshot-options.png) 
+
 ## <a name="restore-a-snapshot-to-a-new-volume"></a>Wiederherstellen einer Momentaufnahme auf einem neuen Volume
 
 Derzeit können Sie eine Momentaufnahme nur auf einem neuen Volume wiederherstellen. 
@@ -173,11 +187,7 @@ Wenn Sie nicht [die gesamte Momentaufnahme auf einem Volume wiederherstellen](#r
 
 Das eingebundene Volume enthält ein Momentaufnahmeverzeichnis namens `.snapshot` (in NFS-Clients) oder `~snapshot` (bei SMB-Clients), auf das der Client Zugriff hat. Das Momentaufnahmeverzeichnis enthält Unterverzeichnisse, die den Momentaufnahmen des Volumes entsprechen. Jedes Unterverzeichnis enthält die Dateien der Momentaufnahme. Wenn Sie versehentlich eine Datei löschen oder überschreiben, können Sie die Datei im übergeordneten Lese-/Schreibverzeichnis wiederherstellen, indem Sie die Datei aus einem Unterverzeichnis der Momentaufnahme in das Lese-/Schreibverzeichnis kopieren. 
 
-Wenn Sie das beim Erstellen des Volumes Kontrollkästchen „Momentaufnahmepfad ausblenden“ aktiviert haben, wird das Momentaufnahmeverzeichnis ausgeblendet. Sie können den Status für „Momentaufnahmepfad ausblenden“ des Volumes einsehen, indem Sie das Volume auswählen. Sie können die Option „Momentaufnahmepfad ausblenden“ bearbeiten, indem Sie auf der Seite des Volumes auf **Bearbeiten** klicken.  
-
-Für ein Zielvolume bei der regionsübergreifenden Replikation ist die Einstellung „Momentaufnahmepfad ausblenden“ standardmäßig aktiviert, und die Einstellung kann nicht geändert werden.
-
-![Optionen zum Bearbeiten von Volumemomentaufnahmen](../media/azure-netapp-files/volume-edit-snapshot-options.png) 
+Wenn das Momentaufnahmeverzeichnis nicht angezeigt wird, ist es möglicherweise ausgeblendet, weil die Option „Momentaufnahmepfad ausblenden“ aktuell aktiviert ist. Sie können [die Option „Momentaufnahmepfad ausblenden“ bearbeiten](#edit-the-hide-snapshot-path-option), um sie deaktivieren.  
 
 ### <a name="restore-a-file-by-using-a-linux-nfs-client"></a>Wiederherstellen einer Datei mithilfe eines Linux-NFS-Clients 
 

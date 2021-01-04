@@ -3,8 +3,8 @@ title: Aufrufen eines MapReduce-Programms über Azure Data Factory
 description: Erfahren Sie, wie Sie Daten verarbeiten, indem Sie MapReduce-Programme mithilfe einer Azure Data Factory auf einen Azure HDInsight-Cluster anwenden.
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.assetid: c34db93f-570a-44f1-a7d6-00390f4dc0fa
@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 089a2e6a0b90c1682e2ebdd146626c93cec35f77
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 8bdcaf20330a3700681fd96f858370dd7dcdf4c7
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636849"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96495428"
 ---
 # <a name="invoke-mapreduce-programs-from-data-factory"></a>Aufrufen von MapReduce-Programmen über Data Factory
 > [!div class="op_single_selector" title1="Transformationsaktivitäten"]
@@ -52,7 +52,7 @@ Gehen Sie für die JSON-Definition der HDInsight-Aktivität so vor:
 1. Legen Sie den **Typ** der **Aktivität** auf **HDInsight** fest.
 2. Geben Sie für die Eigenschaft **className** den Namen der Klasse an.
 3. Geben Sie den Pfad zur JAR-Datei an, einschließlich des Dateinamens für die Eigenschaft **jarFilePath** .
-4. Geben Sie den verknüpften Dienst an, der auf die Azure Blob Storage-Instanz verweist, die die JAR-Datei für die **jarLinkedService** -Eigenschaft enthält.   
+4. Geben Sie den verknüpften Dienst an, der auf die Azure Blob Storage-Instanz verweist, die die JAR-Datei für die **jarLinkedService**-Eigenschaft enthält.   
 5. Geben Sie im Abschnitt **arguments** Argumente für das MapReduce-Programm an. Zur Laufzeit werden ein paar zusätzliche Argumente aus dem MapReduce-Framework angezeigt (z.B.: mapreduce.job.tags). Um Ihre Argumente mit den MapReduce-Argumenten zu unterscheiden, sollten Sie erwägen, sowohl Option als auch Wert als Argumente zu verwenden, wie im folgenden Beispiel gezeigt („-s“, „--input“, „--output“ usw. sind Optionen, denen ihre Werte unmittelbar folgen).
 
     ```JSON   

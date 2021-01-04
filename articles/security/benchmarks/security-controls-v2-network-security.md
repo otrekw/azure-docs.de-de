@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 6ddce9bd8eaa57571cd3c3eac660806340db4b74
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 38ab16fbadee245810a4486170dd54922c0c38f9
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94408667"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96558911"
 ---
 # <a name="security-control-v2-network-security"></a>Sicherheitskontrolle V2: Netzwerksicherheit
 
@@ -40,9 +40,9 @@ Verwenden Sie Azure Sentinel, um die Verwendung von unsicheren Legacyprotokollen
 
 - [Arbeitsmappe für unsichere Protokolle in Azure Sentinel](../../sentinel/quickstart-get-visibility.md#use-built-in-workbooks)
 
-**Verantwortlichkeit** : Kunde
+**Verantwortlichkeit**: Kunde
 
-**Sicherheitsverantwortliche beim Kunden** ( [weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Sicherheitsverantwortliche beim Kunden** ([weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Sicherheitsarchitektur](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -52,7 +52,7 @@ Verwenden Sie Azure Sentinel, um die Verwendung von unsicheren Legacyprotokollen
 
 ## <a name="ns-2-connect-private-networks-together"></a>NS-2: Verbinden privater Netzwerke
 
-| Azure-ID | ID(s) von CIS-Steuerelementen v7.1 | NIST SP800-53 r4 ID(s) |
+| Azure-ID | CIS Controls v7.1 ID(s) | NIST SP800-53 r4 ID(s) |
 |--|--|--|--|
 | NS-2 | – | CA-3, AC-17, MA-4 |
 
@@ -68,9 +68,9 @@ Stellen Sie eine Verbindung von zwei oder mehr virtuellen Netzwerken in Azure mi
 
 - [Azure Private Link](../../private-link/private-link-service-overview.md)
 
-**Verantwortlichkeit** : Kunde
+**Verantwortlichkeit**: Kunde
 
-**Sicherheitsverantwortliche beim Kunden** ( [weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Sicherheitsverantwortliche beim Kunden** ([weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Sicherheitsarchitektur](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -80,7 +80,7 @@ Stellen Sie eine Verbindung von zwei oder mehr virtuellen Netzwerken in Azure mi
 
 ## <a name="ns-3-establish-private-network-access-to-azure-services"></a>NS-3: Einrichten des Zugriffs über das private Netzwerk auf Azure-Dienste
 
-| Azure-ID | ID(s) von CIS-Steuerelementen v7.1 | NIST SP800-53 r4 ID(s) |
+| Azure-ID | CIS Controls v7.1 ID(s) | NIST SP800-53 r4 ID(s) |
 |--|--|--|--|
 | NS-3 | 14,1 | AC-4, CA-3, SC-7 |
 
@@ -92,9 +92,9 @@ Der private Zugriff ist neben der Authentifizierung und der von Azure-Diensten g
 
 - [Grundlegendes zu VNET-Dienstendpunkten](../../virtual-network/virtual-network-service-endpoints-overview.md)
 
-**Verantwortlichkeit** : Kunde
+**Verantwortlichkeit**: Kunde
 
-**Sicherheitsverantwortliche beim Kunden** ( [weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Sicherheitsverantwortliche beim Kunden** ([weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Sicherheitsarchitektur](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -104,7 +104,7 @@ Der private Zugriff ist neben der Authentifizierung und der von Azure-Diensten g
 
 ## <a name="ns-4-protect-applications-and-services-from-external-network-attacks"></a>NS-4: Schützen von Anwendungen und Diensten vor externen Netzwerkangriffen.
 
-| Azure-ID | ID(s) von CIS-Steuerelementen v7.1 | NIST SP800-53 r4 ID(s) |
+| Azure-ID | CIS Controls v7.1 ID(s) | NIST SP800-53 r4 ID(s) |
 |--|--|--|--|
 | NS-4 | 9.5, 12.3, 12.9 | SC-5, SC-7 |
 
@@ -120,17 +120,21 @@ Schützen Sie Azure-Ressourcen vor Angriffen aus externen Netzwerken einschließ
 
 - [Bereitstellen von Azure WAF](../../web-application-firewall/overview.md)
 
-- [Verwalten von Azure DDoS Protection Standard mithilfe des Azure-Portals](../../virtual-network/manage-ddos-protection.md)
+- [Verwalten von Azure DDoS Protection Standard mithilfe des Azure-Portals](../../ddos-protection/manage-ddos-protection.md)
 
-**Verantwortlichkeit** : Kunde
+**Verantwortlichkeit**: Kunde
 
-**Sicherheitsverantwortliche beim Kunden** ( [weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Sicherheitsverantwortliche beim Kunden** ([weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-Keine
+- [Sicherheitsarchitektur](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
+
+- [Statusverwaltung](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)  
+
+- [Anwendungssicherheit und DevSecOps-Funktionen](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
 ## <a name="ns-5-deploy-intrusion-detectionintrusion-prevention-systems-idsips"></a>NS-5: Bereitstellen von Angriffserkennungs-/Eindringschutzsystemen (Intrusion Detection/Intrusion Prevention Systems, IDS/IPS)
 
-| Azure-ID | ID(s) von CIS-Steuerelementen v7.1 | NIST SP800-53 r4 ID(s) |
+| Azure-ID | CIS Controls v7.1 ID(s) | NIST SP800-53 r4 ID(s) |
 |--|--|--|--|
 | NS-5 | 12.6, 12.7 | SI-4 |
 
@@ -144,9 +148,9 @@ Hinweis: Bei einer gesetzlichen oder sonstigen Anforderung der Verwendung von ID
 
 - [ATP-EDR-Funktion von Microsoft Defender](/windows/security/threat-protection/microsoft-defender-atp/overview-endpoint-detection-response)
 
-**Verantwortlichkeit** : Kunde
+**Verantwortlichkeit**: Kunde
 
-**Sicherheitsverantwortliche beim Kunden** ( [weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Sicherheitsverantwortliche beim Kunden** ([weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Sicherheitsarchitektur](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -156,7 +160,7 @@ Hinweis: Bei einer gesetzlichen oder sonstigen Anforderung der Verwendung von ID
 
 ## <a name="ns-6-simplify-network-security-rules"></a>NS-6: Vereinfachen von Netzwerksicherheitsregeln
 
-| Azure-ID | ID(s) von CIS-Steuerelementen v7.1 | NIST SP800-53 r4 ID(s) |
+| Azure-ID | CIS Controls v7.1 ID(s) | NIST SP800-53 r4 ID(s) |
 |--|--|--|--|
 | NS-6 | 1.5 | IA-4 |
 
@@ -170,9 +174,9 @@ Sie können auch Anwendungssicherheitsgruppen verwenden, um eine komplexe Sicher
 
 - [Grundlegendes zu Anwendungssicherheitsgruppen und deren Verwendung](../../virtual-network/network-security-groups-overview.md#application-security-groups)
 
-**Verantwortlichkeit** : Kunde
+**Verantwortlichkeit**: Kunde
 
-**Sicherheitsverantwortliche beim Kunden** ( [weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Sicherheitsverantwortliche beim Kunden** ([weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Sicherheitsarchitektur](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -182,7 +186,7 @@ Sie können auch Anwendungssicherheitsgruppen verwenden, um eine komplexe Sicher
 
 ## <a name="ns-7-secure-domain-name-service-dns"></a>NS-7: Secure Domain Name Service (DNS)
 
-| Azure-ID | ID(s) von CIS-Steuerelementen v7.1 | NIST SP800-53 r4 ID(s) |
+| Azure-ID | CIS Controls v7.1 ID(s) | NIST SP800-53 r4 ID(s) |
 |--|--|--|--|
 | NS-7 | – | SC-20, SC-21 |
 
@@ -196,9 +200,9 @@ Wenn Azure DNS als autorisierender DNS-Dienst verwendet wird, stellen Sie sicher
 
 - [Verhindern verwaister DNS-Einträge und Vermeiden von Unterdomänenübernahmen](../fundamentals/subdomain-takeover.md)
 
-**Verantwortlichkeit** : Kunde
+**Verantwortlichkeit**: Kunde
 
-**Sicherheitsverantwortliche beim Kunden** ( [weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Sicherheitsverantwortliche beim Kunden** ([weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Sicherheitsarchitektur](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 

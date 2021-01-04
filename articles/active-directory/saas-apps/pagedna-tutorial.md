@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
 ms.openlocfilehash: e1ccd337851f8242526362675a11280e33584082
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92513806"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993923"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pagedna"></a>Tutorial: Azure Active Directory-Integration mit PageDNA
 
@@ -56,7 +56,7 @@ Zum Konfigurieren der Integration von PageDNA in Azure AD müssen Sie PageDNA a
 
     ![Die Option „Azure Active Directory“](common/select-azuread.png)
 
-1. Navigieren Sie zu **Unternehmensanwendungen** , und wählen Sie die Option **Alle Anwendungen** aus.
+1. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie die Option **Alle Anwendungen** aus.
 
     ![Bereich „Unternehmensanwendungen“](common/enterprise-applications.png)
 
@@ -70,7 +70,7 @@ Zum Konfigurieren der Integration von PageDNA in Azure AD müssen Sie PageDNA a
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
 
-In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD bei PageDNA mithilfe einer Testbenutzerin namens **Britta Simon** . Damit einmaliges Anmelden funktioniert, muss eine Verknüpfung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in PageDNA eingerichtet werden.
+In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD bei PageDNA mithilfe einer Testbenutzerin namens **Britta Simon**. Damit einmaliges Anmelden funktioniert, muss eine Verknüpfung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in PageDNA eingerichtet werden.
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit PageDNA müssen Sie die folgenden Schritte ausführen:
 
@@ -156,11 +156,11 @@ In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer namens Brit
 
     1. Geben Sie in das Feld **Name** den Namen **BrittaSimon** ein.
   
-    1. Geben Sie in das Feld **Benutzername** den Namen **BrittaSimon@\@\<yourcompanydomain>.\<extension>** ein. Beispiel: **BrittaSimon\@contoso.com** .
+    1. Geben Sie in das Feld **Benutzername** den Namen **BrittaSimon@\@\<yourcompanydomain>.\<extension>** ein. Beispiel: **BrittaSimon\@contoso.com**.
 
-    1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen** , und notieren Sie sich den Wert aus dem Feld **Kennwort** .
+    1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert aus dem Feld **Kennwort**.
 
-    1. Klicken Sie auf **Erstellen** .
+    1. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -184,7 +184,7 @@ In diesem Abschnitt ermöglichen Sie der Benutzerin Britta Simon das einmalige A
 
 1. Wählen Sie im Bereich **Benutzer und Gruppen** in der Liste **Benutzer** den Eintrag **Britta Simon** und anschließend unten im Bereich **Auswählen** aus.
 
-1. Falls Sie in der SAML-Assertion einen Rollenwert erwarten, wählen Sie im Bereich **Rolle auswählen** die entsprechende Rolle für den Benutzer aus der Liste aus. Wählen Sie unten im Bereich die Option **Auswählen** .
+1. Falls Sie in der SAML-Assertion einen Rollenwert erwarten, wählen Sie im Bereich **Rolle auswählen** die entsprechende Rolle für den Benutzer aus der Liste aus. Wählen Sie unten im Bereich die Option **Auswählen**.
 
 1. Wählen Sie im Bereich **Zuweisung hinzufügen** die Option **Zuweisen** aus.
 

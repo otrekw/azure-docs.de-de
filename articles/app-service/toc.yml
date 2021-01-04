@@ -11,9 +11,9 @@
 - name: Schnellstarts
   expanded: true
   items:
-    - name: .NET Core
+    - name: ASP.NET Core
       href: quickstart-dotnetcore.md
-    - name: .NET Framework
+    - name: ASP.NET
       href: quickstart-dotnet-framework.md
     - name: Node.js
       href: quickstart-nodejs.md
@@ -52,9 +52,9 @@
           href: scenario-secure-app-clean-up-resources.md
     - name: App mit Datenbank
       items:
-        - name: .NET Core mit SQL-Datenbank
+        - name: ASP.NET Core mit SQL-Datenbank
           href: tutorial-dotnetcore-sqldb-app.md
-        - name: .NET Framework mit SQL-Datenbank
+        - name: ASP.NET mit SQL-Datenbank
           href: app-service-web-tutorial-dotnet-sqldatabase.md
         - name: PHP mit MySQL
           href: tutorial-php-mysql-app.md
@@ -223,6 +223,8 @@
               href: configure-authentication-provider-twitter.md
             - name: Authentifizieren mit einem OpenID Connect-Anbieter (Vorschau)
               href: configure-authentication-provider-openid-connect.md
+            - name: Authentifizieren mithilfe der Anmeldung mit Apple (Vorschau)
+              href: configure-authentication-provider-apple.md
         - name: Erweiterte Authentifizierung
           href: app-service-authentication-how-to.md
         - name: Beschränken des Zugriffs

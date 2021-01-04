@@ -3,20 +3,20 @@ title: Azure Data Factory – Häufig gestellte Fragen
 description: Häufig gestellte Fragen zu Azure Data Factory
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: de4661bcfd7106d515480e39dc4660f44f469a3d
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 57f2beef3dc14a47480950bf9e3bdf35a1fd6ce8
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92631698"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96495819"
 ---
 # <a name="azure-data-factory---frequently-asked-questions"></a>Azure Data Factory – Häufig gestellte Fragen
 > [!NOTE]
@@ -72,7 +72,7 @@ Die folgende Tabelle enthält eine Liste von Compute-Umgebungen, die von Data Fa
 | [Azure Batch](data-factory-compute-linked-services.md#azure-batch-linked-service) |[DotNet](data-factory-use-custom-activities.md) |
 | [Azure Machine Learning Studio (klassisch)](data-factory-compute-linked-services.md#azure-machine-learning-studio-classic-linked-service) |[Aktivitäten in Studio (klassisch): Batchausführung und Ressourcenaktualisierung](data-factory-azure-ml-batch-execution-activity.md) |
 | [Azure Data Lake Analytics](data-factory-compute-linked-services.md#azure-data-lake-analytics-linked-service) |[Data Lake Analytics U-SQL](data-factory-usql-activity.md) |
-| [Azure SQL](data-factory-compute-linked-services.md#azure-sql-linked-service), [Azure Synapse Analytics (ehemals SQL Data Warehouse)](data-factory-compute-linked-services.md#azure-synapse-analytics-linked-service), [SQL Server](data-factory-compute-linked-services.md#sql-server-linked-service) |[Gespeicherte Prozedur](data-factory-stored-proc-activity.md) |
+| [Azure SQL](data-factory-compute-linked-services.md#azure-sql-linked-service), [Azure Synapse Analytics](data-factory-compute-linked-services.md#azure-synapse-analytics-linked-service), [SQL Server](data-factory-compute-linked-services.md#sql-server-linked-service) |[Gespeicherte Prozedur](data-factory-stored-proc-activity.md) |
 
 ### <a name="how-does-azure-data-factory-compare-with-sql-server-integration-services-ssis"></a>Wie unterscheidet sich Azure Data Factory von SQL Server Integration Services (SSIS)? 
 Siehe die Präsentation [Azure Data Factory vs. SSIS](https://www.sqlbits.com/Sessions/Event15/Azure_Data_Factory_vs_SSIS) (in englischer Sprache) von einem unserer MVPs (Most Valued Professionals): Reza Rad. Einige der kürzlich in Data Factory vorgenommenen Änderungen werden möglicherweise in der Präsentation nicht aufgeführt. Azure Data Factory werden fortlaufend weitere Funktionen hinzugefügt. Azure Data Factory werden fortlaufend weitere Funktionen hinzugefügt. Diese Aktualisierungen werden irgendwann im Laufe dieses Jahres in den Vergleich der Datenintegrationstechnologien von Microsoft aufgenommen.   
@@ -139,7 +139,7 @@ Im obigen Beispiel stellen "otherLinkedServiceName1" und "otherLinkedServiceName
 
 ## <a name="slices---faq"></a>Slices – Häufig gestellte Fragen
 ### <a name="why-are-my-input-slices-not-in-ready-state"></a>Wieso weisen meine Eingabeslices nicht den Status „Bereit“ auf?
-Ein weit verbreiteter Fehler besteht darin, die **external** -Eigenschaft im Eingabedataset nicht auf **true** festzulegen, wenn die Eingabedaten für die Data Factory extern sind (also nicht von der Data Factory erstellt wurden).
+Ein weit verbreiteter Fehler besteht darin, die **external**-Eigenschaft im Eingabedataset nicht auf **true** festzulegen, wenn die Eingabedaten für die Data Factory extern sind (also nicht von der Data Factory erstellt wurden).
 
 Im folgenden Beispiel müssen Sie nur für **dataset1** den Wert **external** auf „true“ festlegen.  
 

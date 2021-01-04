@@ -10,19 +10,19 @@ ms.subservice: bing-custom-search
 ms.topic: quickstart
 ms.date: 03/24/2020
 ms.author: aahi
-ms.openlocfilehash: 313b216fd3e279e473790f7b82e17243b6df6846
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 726a60d611abc392bc1a4629c5088ca4c6b703d9
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93100013"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96338332"
 ---
 # <a name="quickstart-create-your-first-bing-custom-search-instance"></a>Schnellstart: Erstellen Ihrer ersten Instanz der benutzerdefinierten Bing-Suche
 
 > [!WARNING]
-> Die APIs der Bing-Suche werden von Cognitive Services auf Bing-Suchdienste umgestellt. Ab dem **30. Oktober 2020** müssen alle neuen Instanzen der Bing-Suche mit dem [hier](https://aka.ms/cogsvcs/bingmove) dokumentierten Prozess bereitgestellt werden.
+> Die APIs der Bing-Suche werden von Cognitive Services auf Bing-Suchdienste umgestellt. Ab dem **30. Oktober 2020** müssen alle neuen Instanzen der Bing-Suche mit dem [hier](/bing/search-apis/bing-web-search/create-bing-search-service-resource) dokumentierten Prozess bereitgestellt werden.
 > APIs der Bing-Suche, die mit Cognitive Services bereitgestellt wurden, werden noch drei Jahre lang bzw. bis zum Ablauf Ihres Enterprise Agreement unterstützt (je nachdem, was zuerst eintritt).
-> Eine Anleitung zur Migration finden Sie unter [Erstellen einer Ressource für die Bing-Suche über Azure Marketplace](https://aka.ms/cogsvcs/bingmigration).
+> Eine Anleitung zur Migration finden Sie unter [Erstellen einer Ressource für die Bing-Suche über Azure Marketplace](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 Zum Verwenden einer benutzerdefinierten Bing-Suche müssen Sie eine Instanz der benutzerdefinierten Suche erstellen, mit der Ihre Ansicht bzw. das Segment des Webs definiert wird. Diese Instanz enthält die öffentlichen Domänen, Websites und Webseiten, die Sie durchsuchen möchten, sowie alle Rangfolgenanpassungen, die Sie ggf. durchführen. 
 
@@ -40,7 +40,7 @@ Erstellen Sie wie folgt eine Instanz für die benutzerdefinierte Bing-Suche:
 
 1. Klicken Sie auf der Webseite mit dem [Portal für die benutzerdefinierte Bing-Suche](https://customsearch.ai) auf **Get Started** (Jetzt einsteigen), und melden Sie sich an Ihrem Microsoft-Konto an.
 
-2. Klicken Sie auf **Neue Instanz** , und geben Sie einen aussagekräftigen Namen ein. Sie können den Namen Ihrer Instanz jederzeit ändern.
+2. Klicken Sie auf **Neue Instanz**, und geben Sie einen aussagekräftigen Namen ein. Sie können den Namen Ihrer Instanz jederzeit ändern.
  
 3. Geben Sie auf der **Suchoberfläche** auf der Registerkarte **Aktiv** die URL für mindestens eine Website ein, die Sie in Ihre Suche einbeziehen möchten. 
 
@@ -49,9 +49,9 @@ Erstellen Sie wie folgt eine Instanz für die benutzerdefinierte Bing-Suche:
 
 4. Sie können im Portal für die benutzerdefinierte Bing-Suche auf der rechten Seite eine Abfrage eingeben und die Suchergebnisse untersuchen, die von Ihrer Suchinstanz zurückgegeben werden. Wenn keine Ergebnisse zurückgegeben werden, können Sie versuchen, eine andere URL einzugeben.  
 
-5. Klicken Sie auf **Veröffentlichen** , um Ihre Änderungen an der Produktionsumgebung zu veröffentlichen, und aktualisieren Sie die Endpunkte der Instanz.
+5. Klicken Sie auf **Veröffentlichen**, um Ihre Änderungen an der Produktionsumgebung zu veröffentlichen, und aktualisieren Sie die Endpunkte der Instanz.
 
-6.  Klicken Sie auf die Registerkarte **Produktion** unter **Endpunkte** , und kopieren Sie Ihre **Benutzerdefinierte Konfigurations-ID**. Sie benötigen diese ID zum Aufrufen der API für die benutzerdefinierte Bing-Suche, indem Sie sie in Ihren Aufrufen an den Abfrageparameter `customconfig=` anfügen.
+6.  Klicken Sie auf die Registerkarte **Produktion** unter **Endpunkte**, und kopieren Sie Ihre **Benutzerdefinierte Konfigurations-ID**. Sie benötigen diese ID zum Aufrufen der API für die benutzerdefinierte Bing-Suche, indem Sie sie in Ihren Aufrufen an den Abfrageparameter `customconfig=` anfügen.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

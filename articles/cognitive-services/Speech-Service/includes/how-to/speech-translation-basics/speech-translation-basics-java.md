@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 04/13/2020
 ms.custom: devx-track-java
 ms.author: trbye
-ms.openlocfilehash: 9c9ac75be5eba41d5625a092ac48166e24fcac79
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 050ba52115a3d46963ea91095025b43ead03e5fc
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94425079"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96026419"
 ---
 Eines der zentralen Features des Speech-Diensts ist die Fähigkeit, menschliche Sprache zu erkennen und in andere Sprachen zu übersetzen. In diesem Schnellstart erfahren Sie, wie Sie das Speech SDK in Ihren Apps und Produkten verwenden, um hochwertige Sprachübersetzungen durchzuführen. In diesem Schnellstart werden folgende Themen behandelt:
 
@@ -32,7 +32,7 @@ Zuallererst muss das Speech SDK installiert werden. Folgen Sie je nach Plattfor
 
 ## <a name="import-dependencies"></a>Importieren von Abhängigkeiten
 
-Fügen Sie die folgenden `import`-Anweisungen oben in der * *Java* -Codedatei ein, um die Beispiele in diesem Artikel auszuführen.
+Fügen Sie die folgenden `import`-Anweisungen oben in der **Java*-Codedatei ein, um die Beispiele in diesem Artikel auszuführen.
 
 ```java
 package speech;
@@ -241,7 +241,7 @@ Nach erfolgreicher Spracherkennung und -übersetzung werden alle Übersetzungen 
 
 ### <a name="event-based-synthesis"></a>Ereignisbasierte Synthese
 
-Das `TranslationRecognizer`-Objekt macht ein einzelnes `synthesizing`-Ereignis verfügbar. Das Ereignis wird mehrmals ausgelöst und bietet einen Mechanismus, mit dem das synthetische Audioformat aus dem Übersetzungserkennungsergebnis abgerufen werden kann. Weitere Informationen zum Übersetzen in mehrere Sprachen finden Sie unter [Manuelle Synthese](#manual-synthesis). Geben Sie die Synthesestimme an, indem Sie einen [`setVoiceName`][voicename] zuweisen und einen Ereignishandler für das `synthesizing`-Ereignis zum Abrufen der Audioinhalte bereitstellen. Im folgenden Beispiel wird die übersetzte Audiodatei als *WAV* -Datei gespeichert.
+Das `TranslationRecognizer`-Objekt macht ein einzelnes `synthesizing`-Ereignis verfügbar. Das Ereignis wird mehrmals ausgelöst und bietet einen Mechanismus, mit dem das synthetische Audioformat aus dem Übersetzungserkennungsergebnis abgerufen werden kann. Weitere Informationen zum Übersetzen in mehrere Sprachen finden Sie unter [Manuelle Synthese](#manual-synthesis). Geben Sie die Synthesestimme an, indem Sie einen [`setVoiceName`][voicename] zuweisen und einen Ereignishandler für das `synthesizing`-Ereignis zum Abrufen der Audioinhalte bereitstellen. Im folgenden Beispiel wird die übersetzte Audiodatei als *WAV*-Datei gespeichert.
 
 > [!IMPORTANT]
 > Die ereignisbasierte Synthese funktioniert nur mit einer einzigen Übersetzung. Fügen Sie deshalb **nur eine** Zielübersetzungssprache hinzu. Zudem muss die Sprache in [`setVoiceName`][voicename] mit der Zielübersetzungssprache übereinstimmen. So wird `"de"` beispielsweise `"de-DE-Hedda"` zugeordnet.
@@ -340,11 +340,11 @@ static void translateSpeech() throws ExecutionException, InterruptedException {
 
 Weitere Informationen zur Sprachsynthese finden Sie unter [Grundlegendes zur Sprachsynthese](../../../get-started-text-to-speech.md).
 
-[config]: /java/api/com.microsoft.cognitiveservices.speech.translation.SpeechTranslationConfig?view=azure-java-stable
-[audioconfig]: /java/api/com.microsoft.cognitiveservices.speech.audio.AudioConfig?view=azure-java-stable
-[recognizer]: /java/api/com.microsoft.cognitiveservices.speech.translation.TranslationRecognizer?view=azure-java-stable
-[recognitionlang]: /java/api/com.microsoft.cognitiveservices.speech.speechconfig.setspeechrecognitionlanguage?view=azure-java-stable
-[addlang]: /java/api/com.microsoft.cognitiveservices.speech.translation.speechtranslationconfig.addtargetlanguage?view=azure-java-stable
-[translations]: /java/api/com.microsoft.cognitiveservices.speech.translation.translationrecognitionresult.gettranslations?view=azure-java-stable
-[voicename]: /java/api/com.microsoft.cognitiveservices.speech.translation.speechtranslationconfig.setvoicename?view=azure-java-stable
-[speechsynthesisvoicename]: /java/api/com.microsoft.cognitiveservices.speech.speechconfig.setspeechsynthesisvoicename?view=azure-java-stable
+[config]: /java/api/com.microsoft.cognitiveservices.speech.translation.SpeechTranslationConfig
+[audioconfig]: /java/api/com.microsoft.cognitiveservices.speech.audio.AudioConfig
+[recognizer]: /java/api/com.microsoft.cognitiveservices.speech.translation.TranslationRecognizer
+[recognitionlang]: /java/api/com.microsoft.cognitiveservices.speech.speechconfig.setspeechrecognitionlanguage
+[addlang]: /java/api/com.microsoft.cognitiveservices.speech.translation.speechtranslationconfig.addtargetlanguage
+[translations]: /java/api/com.microsoft.cognitiveservices.speech.translation.translationrecognitionresult.gettranslations
+[voicename]: /java/api/com.microsoft.cognitiveservices.speech.translation.speechtranslationconfig.setvoicename
+[speechsynthesisvoicename]: /java/api/com.microsoft.cognitiveservices.speech.speechconfig.setspeechsynthesisvoicename

@@ -6,12 +6,12 @@ ms.author: nimag
 ms.date: 08/11/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 652566efda4d4f274dc5700d35bcf45c1ebfb9e2
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: d35e51d097c2d5e0b66c23efa27ae70c065d547c
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92347222"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96584579"
 ---
 In diesem Schnellstart erfahren Sie, wie Sie einen Anruf mithilfe der Clientbibliothek für Telefonie von Azure Communication Services für JavaScript beginnen.
 
@@ -62,7 +62,7 @@ Mit der Option `--save` wird die Bibliothek als Abhängigkeit in Ihrer Datei **p
 In dieser Schnellstartanleitung wird Webpack verwendet, um die Anwendungsressourcen zu bündeln. Führen Sie den folgenden Befehl aus, um die npm-Pakete „webpack“, „webpack-cli“ und „webpack-dev-server“ zu installieren und als Entwicklungsabhängigkeiten in Ihrer Datei **package.json** aufzulisten:
 
 ```console
-npm install webpack webpack-cli webpack-dev-server --save-dev
+npm install webpack@4.42.0 webpack-cli@3.3.11 webpack-dev-server@3.10.3 --save-dev
 ```
 
 Erstellen Sie im Stammverzeichnis Ihres Projekts die Datei **index.html**. Diese Datei wird zum Konfigurieren eines grundlegenden Layouts verwendet, das es dem Benutzer ermöglicht, einen Azure Communications Bot aufzurufen.
@@ -98,7 +98,7 @@ Hier folgt der Code:
 </html>
 ```
 
-Erstellen Sie im Stammverzeichnis Ihres Projekts eine Datei mit dem Namen **client.js** , die die Anwendungslogik für diese Schnellstartanleitung enthalten soll. Fügen Sie den folgenden Code hinzu, um den Client für Telefonie zu importieren und Verweise auf die DOM-Elemente abzurufen, damit wir unsere Geschäftslogik anfügen können. 
+Erstellen Sie im Stammverzeichnis Ihres Projekts eine Datei mit dem Namen **client.js**, die die Anwendungslogik für diese Schnellstartanleitung enthalten soll. Fügen Sie den folgenden Code hinzu, um den Client für Telefonie zu importieren und Verweise auf die DOM-Elemente abzurufen, damit wir unsere Geschäftslogik anfügen können. 
 
 ```javascript
 import { CallClient, CallAgent } from "@azure/communication-calling";
@@ -113,7 +113,7 @@ const hangUpButton = document.getElementById("hang-up-button");
 
 ## <a name="object-model"></a>Objektmodell
 
-Die folgenden Klassen und Schnittstellen verarbeiten einige der wichtigsten Features der Clientbibliothek für Telefonie von Azure Communication Services:
+Die folgenden Klassen und Schnittstellen befassen sich mit einigen der wichtigsten Features der Azure Communication Services-Clientbibliothek „Calling“:
 
 | Name                             | Beschreibung                                                                                                                                 |
 | ---------------------------------| ------------------------------------------------------------------------------------------------------------------------------------------- |

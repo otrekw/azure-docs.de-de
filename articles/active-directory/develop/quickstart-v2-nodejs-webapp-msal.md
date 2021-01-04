@@ -12,16 +12,18 @@ ms.workload: identity
 ms.date: 10/22/2020
 ms.author: amikuma
 ms.custom: aaddev, scenarios:getting-started, languages:js, devx-track-js
-ms.openlocfilehash: e223b5ae072a323ad56ed396c06580fea9b8b7ab
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: e860a33ba44743dcc5a96d7656f22fd952a1d0b8
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94335246"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96762566"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-node-web-app-using-the-auth-code-flow"></a>Schnellstart: Anmelden von Benutzern und Abrufen eines Zugriffstokens in einer Node-Web-App mithilfe des Autorisierungscodeflows
 
-In diesem Schnellstart führen Sie ein Codebeispiel aus, mit dem veranschaulicht wird, wie Benutzer von persönlichen Konten sowie Geschäfts-, Schul- und Unikonten in einer Node.js-Web-App mithilfe des Autorisierungscodeflows angemeldet werden können. Das Codebeispiel veranschaulicht ferner das Abrufen eines Zugriffstokens zum Aufrufen einer Web-API, in diesem Fall der Microsoft Graph-API. Eine Abbildung finden Sie unter [Funktionsweise des Beispiels](#how-the-sample-works).
+In diesem Schnellstart laden Sie ein Codebeispiel herunter und führen es aus, das zeigt, wie eine Node.js-Web-App Benutzer mithilfe des Autorisierungscodeflows anmelden können. Das Codebeispiel veranschaulicht außerdem das Abrufen eines Zugriffstokens zum Aufrufen der Microsoft Graph-API. 
+
+Eine Abbildung finden Sie unter [Funktionsweise des Beispiels](#how-the-sample-works).
 
 In dieser Schnellstartanleitung wird die Microsoft-Authentifizierungsbibliothek (Microsoft Authentication Library, MSAL) für Node.js (MSAL Node) beim Autorisierungscodeflow verwendet.
 
@@ -40,15 +42,14 @@ In dieser Schnellstartanleitung wird die Microsoft-Authentifizierungsbibliothek 
 > #### <a name="step-1-register-your-application"></a>Schritt 1: Anwendung registrieren
 >
 > 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-> 1. Wenn Sie in Ihrem Konto auf mehrere Mandanten zugreifen können, wählen Sie rechts oben das Konto aus, und legen Sie Ihre Portalsitzung auf den gewünschten Azure AD-Mandanten fest.
-> 1. Wählen Sie [App-Registrierungen](https://go.microsoft.com/fwlink/?linkid=2083908) aus.
-> 1. Wählen Sie **Neue Registrierung** aus.
-> 1. Geben Sie auf der daraufhin angezeigten Seite **Anwendung registrieren** einen Namen für Ihre Anwendung ein.
+> 1. Wenn Sie Zugriff auf mehrere Mandanten haben, verwenden Sie im Menü am oberen Rand den Filter **Verzeichnis + Abonnement** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::, um den Mandanten auszuwählen, für den Sie eine Anwendung registrieren möchten.
+> 1. Wählen Sie unter **Verwalten** Folgendes aus: **App-Registrierungen** > **Neue Registrierung**.
+> 1. Geben Sie einen **Namen** für Ihre Anwendung ein. Benutzern Ihrer App wird wahrscheinlich dieser Namen angezeigt. Sie können ihn später ändern.
 > 1. Wählen Sie unter **Unterstützte Kontotypen** **Konten in allen Organisationsverzeichnissen und persönliche Microsoft-Konten** aus.
 > 1. Legen Sie den Wert für **Umleitungs-URI** auf `http://localhost:3000/redirect` fest.
 > 1. Wählen Sie **Registrieren**. 
 > 1. Notieren Sie sich für die spätere Verwendung auf der Seite **Übersicht** den Wert von **Anwendungs-ID (Client)** .
-> 1. Wählen Sie unter **Zertifikate und Geheimnisse** die Option **Neuer geheimer Clientschlüssel** aus.  Lassen Sie die Beschreibung und den Standardablauf leer, und klicken Sie auf **Hinzufügen**.
+> 1. Wählen Sie unter **Verwalten** Folgendes aus: **Zertifikate und Geheimnisse** > **Neuer geheimer Clientschlüssel**.  Lassen Sie die Beschreibung und den Standardablauf leer, und wählen Sie **Hinzufügen** aus.
 > 1. Notieren Sie sich den **Wert** des **geheimen Clientschlüssels** zur späteren Verwendung.
 
 #### <a name="step-2-download-the-project"></a>Schritt 2: Herunterladen des Projekts
@@ -102,7 +103,7 @@ In dieser Schnellstartanleitung wird die Microsoft-Authentifizierungsbibliothek 
 > ```
 >
 > > [!TIP]
-> > Den Wert für **Anwendungs-ID (Client)** finden Sie im Azure-Portal auf der Seite **Übersicht** der App-Registrierung. Wechseln Sie zu **Zertifikate und Geheimnisse** , um einen neuen **geheimen Clientschlüssel** abzurufen oder zu generieren.
+> > Den Wert für **Anwendungs-ID (Client)** finden Sie im Azure-Portal auf der Seite **Übersicht** der App-Registrierung. Wechseln Sie zu **Zertifikate und Geheimnisse**, um einen neuen **geheimen Clientschlüssel** abzurufen oder zu generieren.
 >
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>Schritt 3: Ihre App ist konfiguriert und betriebsbereit

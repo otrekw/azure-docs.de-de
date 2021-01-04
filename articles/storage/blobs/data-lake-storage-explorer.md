@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/16/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 214cdbd5ad30ad096cb6c9d1442936eefb2b2054
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: e46bb87788de27916860720284087643db7153dc
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92674859"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95913401"
 ---
 # <a name="use-azure-storage-explorer-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Verwenden von Azure Storage-Explorer zum Verwalten von Verzeichnissen, Dateien und Zugriffssteuerungslisten in Azure Data Lake Storage Gen2
 
@@ -23,7 +23,7 @@ In diesem Artikel erfahren Sie, wie Sie [Azure Storage-Explorer](https://azure.m
 
 > [!div class="checklist"]
 > * Ein Azure-Abonnement. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
-> * Ein Speicherkonto, für das der hierarchische Namespace aktiviert ist. Befolgen Sie [diese Anleitung](data-lake-storage-quickstart-create-account.md) für die Erstellung.
+> * Ein Speicherkonto, für das der hierarchische Namespace aktiviert ist. Befolgen Sie [diese Anleitung](../common/storage-account-create.md) für die Erstellung.
 > * Azure Storage-Explorer muss auf dem lokalen Computer installiert sein. Informationen zum Installieren von Azure Storage-Explorer für Windows, Macintosh oder Linux finden Sie unter [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/).
 
 ## <a name="sign-in-to-storage-explorer"></a>Anmelden bei Storage-Explorer
@@ -36,7 +36,7 @@ Nach dem erstmaligen Starten von Storage-Explorer wird das Fenster **Microsoft A
 |Verwenden einer Verbindungszeichenfolge oder eines Shared Access Signature-URI | Kann verwendet werden, um mit einem SAS-Token oder einer freigegebenen Verbindungszeichenfolge direkt auf einen Container oder ein Speicherkonto zuzugreifen. |
 |Verwenden eines Speicherkontonamens und -schlüssels| Verwenden Sie den Speicherkontonamen und -schlüssel Ihres Speicherkontos, um eine Verbindung mit Azure Storage herzustellen.|
 
-Wählen Sie **Azure-Konto hinzufügen** , und klicken Sie auf **Anmelden...** . Befolgen Sie die Anweisungen auf dem Bildschirm, um sich an Ihrem Azure-Konto anzumelden.
+Wählen Sie **Azure-Konto hinzufügen**, und klicken Sie auf **Anmelden...** . Befolgen Sie die Anweisungen auf dem Bildschirm, um sich an Ihrem Azure-Konto anzumelden.
 
 ![Screenshot: Microsoft Azure Storage-Explorer mit hervorgehobener Option „Azure-Konto hinzufügen“ und der Schaltfläche „Anmelden“](media/storage-quickstart-blobs-storage-explorer/connect.png)
 
@@ -46,13 +46,13 @@ Nach Abschluss des Verbindungsvorgangs wird Azure Storage-Explorer geladen, und 
 
 ## <a name="create-a-container"></a>Erstellen eines Containers
 
-Ein Container enthält Verzeichnisse und Dateien. Erweitern Sie das Speicherkonto, das Sie im vorherigen Schritt erstellt haben, um einen Container zu erstellen. Wählen Sie **BLOB-Container** , klicken Sie mit der rechten Maustaste, und wählen Sie **BLOB-Container erstellen**. Geben Sie den Namen für den Container ein. Eine Liste mit den Regeln und Einschränkungen für die Benennung von Containern finden Sie unter [Erstellen eines Containers](storage-quickstart-blobs-dotnet.md#create-a-container). Drücken Sie nach Abschluss des Vorgangs die **EINGABETASTE** , um den Container zu erstellen. Nach der erfolgreichen Erstellung des Containers wird dieser im Ordner **Blobcontainer** für das ausgewählte Speicherkonto angezeigt.
+Ein Container enthält Verzeichnisse und Dateien. Erweitern Sie das Speicherkonto, das Sie im vorherigen Schritt erstellt haben, um einen Container zu erstellen. Wählen Sie **BLOB-Container**, klicken Sie mit der rechten Maustaste, und wählen Sie **BLOB-Container erstellen**. Geben Sie den Namen für den Container ein. Eine Liste mit den Regeln und Einschränkungen für die Benennung von Containern finden Sie unter [Erstellen eines Containers](storage-quickstart-blobs-dotnet.md#create-a-container). Drücken Sie nach Abschluss des Vorgangs die **EINGABETASTE**, um den Container zu erstellen. Nach der erfolgreichen Erstellung des Containers wird dieser im Ordner **Blobcontainer** für das ausgewählte Speicherkonto angezeigt.
 
 ![Microsoft Azure Storage-Explorer – Erstellen eines Containers](media/data-lake-storage-explorer/creating-a-filesystem.png)
 
 ## <a name="create-a-directory"></a>Erstellen eines Verzeichnisses
 
-Wählen Sie den Container aus, den Sie im vorherigen Schritt erstellt haben, um ein Verzeichnis zu erstellen. Wählen Sie auf dem Menüband „Container“ die Schaltfläche **Neuer Ordner** aus. Geben Sie den Namen für das Verzeichnis ein. Drücken Sie nach Abschluss des Vorgangs die **EINGABETASTE** , um das Verzeichnis zu erstellen. Nachdem das Verzeichnis erstellt wurde, wird es im Editor-Fenster angezeigt.
+Wählen Sie den Container aus, den Sie im vorherigen Schritt erstellt haben, um ein Verzeichnis zu erstellen. Wählen Sie auf dem Menüband „Container“ die Schaltfläche **Neuer Ordner** aus. Geben Sie den Namen für das Verzeichnis ein. Drücken Sie nach Abschluss des Vorgangs die **EINGABETASTE**, um das Verzeichnis zu erstellen. Nachdem das Verzeichnis erstellt wurde, wird es im Editor-Fenster angezeigt.
 
 ![Microsoft Azure Storage-Explorer – Erstellen eines Verzeichnisses](media/data-lake-storage-explorer/creating-a-directory.png)
 
@@ -95,11 +95,11 @@ Der Benutzer oder die Gruppe erscheint nun im Feld **Benutzer und Gruppen:** , s
 
 Es gibt zwei Kategorien von Berechtigungen, die Sie zuweisen können: Zugriffs-ACLs und Standard-ACLs.
 
-* **Zugriff** : Zugriffs-ACLs steuern den Zugriff auf ein Objekt. Dateien und Verzeichnisse verfügen jeweils über Zugriffs-ACLs.
+* **Zugriff**: Zugriffs-ACLs steuern den Zugriff auf ein Objekt. Dateien und Verzeichnisse verfügen jeweils über Zugriffs-ACLs.
 
 * **Standard:** Eine Vorlage von ACLs, die einem Verzeichnis zugeordnet ist, das die Zugriffs-ACLs für alle untergeordneten Elemente bestimmt, die unter diesem Verzeichnis erstellt werden. Dateien verfügen über keine Standard-ACLs.
 
-Innerhalb dieser beiden Kategorien gibt es drei Berechtigungen, die Sie dann Dateien oder Verzeichnissen zuweisen können: **Lesen** , **Schreiben** und **Ausführen**.
+Innerhalb dieser beiden Kategorien gibt es drei Berechtigungen, die Sie dann Dateien oder Verzeichnissen zuweisen können: **Lesen**, **Schreiben** und **Ausführen**.
 
 >[!NOTE]
 > Wenn Sie hier eine Auswahl treffen, werden keine Berechtigungen für ein aktuell vorhandenes Element im Verzeichnis festgelegt. Sie müssen jedes einzelne Element aufrufen und die Berechtigungen manuell festlegen, wenn die Datei bereits existiert.
@@ -111,4 +111,4 @@ Sie können Berechtigungen für einzelne Verzeichnisse sowie einzelne Dateien ve
 Erfahren Sie mehr über Zugriffssteuerungslisten in Data Lake Storage Gen2.
 
 > [!div class="nextstepaction"]
-> [Zugriffssteuerung in Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)
+> [Zugriffssteuerung in Azure Data Lake Storage Gen2](./data-lake-storage-access-control.md)

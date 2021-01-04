@@ -11,12 +11,12 @@ ms.author: sacartac
 ms.reviewer: nibaccam
 ms.date: 07/10/2020
 ms.custom: automl
-ms.openlocfilehash: 866be6a2449f3b10d200968782b90653e1363906
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 4b2769139e74289c4760b5c398c80380afea351f
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93359798"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96921893"
 ---
 # <a name="tutorial-create-a-classification-model-with-automated-ml-in-azure-machine-learning"></a>Tutorial: Erstellen eines Klassifizierungsmodells mit automatisiertem maschinellem Lernen in Azure Machine Learning
 
@@ -112,7 +112,7 @@ Laden Sie vor dem Konfigurieren Ihres Experiments Ihre Datendatei in Form eines 
     
     1. Wählen Sie Ihr Dataset aus, sobald es in der Liste angezeigt wird.
     
-    1. Überprüfen Sie die **Datenvorschau** , um sicherzustellen, dass Sie nicht **day_of_week** einbezogen haben. Klicken Sie dann auf **OK**.
+    1. Überprüfen Sie die **Datenvorschau**, um sicherzustellen, dass Sie nicht **day_of_week** einbezogen haben. Klicken Sie dann auf **OK**.
 
     1. Klicken Sie auf **Weiter**.
 
@@ -147,7 +147,7 @@ Nach dem Laden und Konfigurieren Ihrer Daten können Sie Ihr Experiment einricht
     
     1.  Wählen Sie als ML-Aufgabentyp **Klassifizierung** aus.
 
-    1. Klicken Sie auf **Zusätzliche Konfigurationseinstellungen anzeigen** , und füllen Sie die Felder wie folgt aus. Mit diesen Einstellungen können Sie den Trainingsauftrag besser steuern. Andernfalls werden die Standardwerte auf Basis der Experimentauswahl und -daten angewendet.
+    1. Klicken Sie auf **Zusätzliche Konfigurationseinstellungen anzeigen**, und füllen Sie die Felder wie folgt aus. Mit diesen Einstellungen können Sie den Trainingsauftrag besser steuern. Andernfalls werden die Standardwerte auf Basis der Experimentauswahl und -daten angewendet.
 
         Zusätzliche&nbsp;Konfigurationen|BESCHREIBUNG|Wert&nbsp;für&nbsp;das Tutorial
         ------|---------|---
@@ -165,13 +165,13 @@ Nach dem Laden und Konfigurieren Ihrer Daten können Sie Ihr Experiment einricht
 >[!IMPORTANT]
 > Die Vorbereitung des Experiments nimmt **10 –15 Minuten** in Anspruch.
 > Sobald es ausgeführt wird, dauert **jede Iteration mindestens zwei bis drei Minuten**.  
-> Klicken Sie von Zeit zu Zeit auf **Aktualisieren** , um den Status der Ausführung während der Experimentausführung anzuzeigen.
+> Klicken Sie von Zeit zu Zeit auf **Aktualisieren**, um den Status der Ausführung während der Experimentausführung anzuzeigen.
 >
 > In einer Produktionsumgebung würden Sie in dieser Zeit wahrscheinlich eine kurze Pause machen. Für dieses Tutorial empfehlen wir jedoch, schon während der Ausführung der weiteren Iterationen mit der Untersuchung der getesteten Algorithmen auf der Registerkarte **Modelle** zu beginnen. 
 
 ##  <a name="explore-models"></a>Untersuchen von Modellen
 
-Navigieren Sie zur Registerkarte **Modelle** , um die getesteten Algorithmen (Modelle) anzuzeigen. Standardmäßig werden die Modelle nach ihrem Abschluss nach der Metrikbewertung sortiert. In diesem Tutorial steht das Modell, das für die ausgewählte **AUC_weighted** -Metrik die höchste Bewertung erhält, ganz oben in der Liste.
+Navigieren Sie zur Registerkarte **Modelle**, um die getesteten Algorithmen (Modelle) anzuzeigen. Standardmäßig werden die Modelle nach ihrem Abschluss nach der Metrikbewertung sortiert. In diesem Tutorial steht das Modell, das für die ausgewählte **AUC_weighted**-Metrik die höchste Bewertung erhält, ganz oben in der Liste.
 
 Während Sie auf den Abschluss aller Experimentmodelle warten, können Sie den **Algorithmusnamen** eines abgeschlossenen Modells auswählen und sich die zugehörigen Leistungsdetails ansehen. 
 
@@ -187,7 +187,7 @@ In diesem Experiment bedeutet Bereitstellung in einem Webdienst, dass das Finanz
 
 Überprüfen Sie, ob die Ausführung des Experiments beendet ist. Navigieren Sie dazu zurück zur Seite mit der übergeordneten Ausführung, indem Sie oben auf dem Bildschirm **Ausführung 1** auswählen. Oben links auf dem Bildschirm wird der Status **Abgeschlossen** angezeigt. 
 
-Wenn die Ausführung des Experiments abgeschlossen ist, wird die Seite **Details** mit dem Abschnitt **Zusammenfassung des besten Modells** aufgefüllt. Aus diesem Experimentkontext geht **VotingEnsemble** basierend auf der **AUC_weighted** -Metrik als bestes Modell hervor.  
+Wenn die Ausführung des Experiments abgeschlossen ist, wird die Seite **Details** mit dem Abschnitt **Zusammenfassung des besten Modells** aufgefüllt. Aus diesem Experimentkontext geht **VotingEnsemble** basierend auf der **AUC_weighted**-Metrik als bestes Modell hervor.  
 
 Wir stellen dieses Modell bereit. Die Bereitstellung dauert jedoch etwa 20 Minuten. Der Bereitstellungsprozess umfasst mehrere Schritte, einschließlich der Registrierung des Modells, der Erstellung von Ressourcen und der Konfiguration dieser Ressourcen für den Webdienst.
 
@@ -209,7 +209,7 @@ Wir stellen dieses Modell bereit. Die Bereitstellung dauert jedoch etwa 20 Minu
 
 1. Klicken Sie auf **Bereitstellen**.  
 
-    Oben auf dem Bildschirm **Ausführen** wird eine grüne Erfolgsmeldung und im Bereich **Modellzusammenfassung** unter **Bereitstellungsstatus** eine Statusmeldung angezeigt. Wählen Sie von Zeit zu Zeit die Option **Aktualisieren** , um den Status der Bereitstellung zu überprüfen.
+    Oben auf dem Bildschirm **Ausführen** wird eine grüne Erfolgsmeldung und im Bereich **Modellzusammenfassung** unter **Bereitstellungsstatus** eine Statusmeldung angezeigt. Wählen Sie von Zeit zu Zeit die Option **Aktualisieren**, um den Status der Bereitstellung zu überprüfen.
     
 Nun haben Sie einen einsatzfähigen Webdienst, mit dem Vorhersagen generiert werden können. 
 
@@ -241,7 +241,7 @@ In diesem Tutorial zum automatisierten maschinellen Lernen haben Sie über die O
 > [Verwenden eines Webdiensts](how-to-consume-web-service.md#consume-the-service-from-power-bi)
 
 + Weitere Informationen zu [automatisiertem Machine Learning](concept-automated-ml.md).
-+ Weitere Informationen zu Klassifizierungsmetriken und Diagrammen finden Sie im Artikel [Grundlegendes zu den Ergebnissen des automatisierten maschinellen Lernens](how-to-understand-automated-ml.md#classification).
++ Weitere Informationen zu Klassifizierungsmetriken und Diagrammen finden Sie im Artikel [Grundlegendes zu den Ergebnissen des automatisierten maschinellen Lernens](how-to-understand-automated-ml.md).
 + Weitere Informationen zur [Featurebereitstellung](how-to-configure-auto-features.md#featurization)
 + Weitere Informationen zur [Datenprofilerstellung](how-to-connect-data-ui.md#profile).
 

@@ -8,17 +8,18 @@ editor: ''
 tags: azure-resource-management
 ms.assetid: 95a89072-0edf-49b5-88ed-584891c0e066
 ms.service: virtual-machines-sql
+ms.subservice: backup
 ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/04/2018
 ms.author: mikeray
-ms.openlocfilehash: a386ea5149b36a4e82b4c935e2373f505c6c83cf
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 4a102fc805750f7dd460c1878a730b9ca4ce1c37
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789878"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359369"
 ---
 # <a name="backup-and-restore-for-sql-server-on-azure-vms"></a>Sicherung und Wiederherstellung für SQL Server auf Azure-VMs
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -55,23 +56,23 @@ Um eine Datenbank wiederherzustellen, müssen Sie die erforderlichen Sicherungsd
 
 Informationen zum Konfigurieren der automatisierten Sicherung für SQL-VMs finden Sie in den folgenden Artikeln:
 
-- **SQL Server 2016/2017** : [Automatisierte Sicherung v2 für virtuelle Azure-Computer](automated-backup.md)
-- **SQL Server 2014** : [Automatisierte Sicherung für SQL Server 2014-VMs](automated-backup-sql-2014.md)
+- **SQL Server 2016/2017**: [Automatisierte Sicherung v2 für virtuelle Azure-Computer](automated-backup.md)
+- **SQL Server 2014**: [Automatisierte Sicherung für SQL Server 2014-VMs](automated-backup-sql-2014.md)
 
 ## <a name="azure-backup-for-sql-vms"></a><a id="azbackup"></a> Azure Backup für SQL-VMs
 
 [Azure Backup](../../../backup/index.yml) bietet Sicherungsfunktionen auf Unternehmensniveau für SQL Server auf Azure-VMs. Alle Sicherungen werden in einem Recovery Services-Tresor gespeichert und verwaltet. Diese Lösung bietet insbesondere für Unternehmen viele Vorteile:
 
-- **Sicherungen ohne Infrastruktur** : Sie müssen keine Sicherungsserver oder Speicherorte verwalten.
-- **Skalierung** : Sie können eine Vielzahl von SQL-VMs und Tausende von Datenbanken schützen.
-- **Nutzungsbasierte Bezahlung** : Dies ist ein separater, von Azure Backup bereitgestellter Dienst. Wie bei allen Azure-Diensten zahlen Sie nur für das, was Sie tatsächlich nutzen.
-- **Zentrale Verwaltung und Überwachung** : Verwalten Sie sämtliche Sicherungen – einschließlich anderer Workloads, die von Azure Backup unterstützt werden – zentral in einem einzigen Dashboard in Azure.
-- **Richtliniengesteuerte Sicherung und Aufbewahrung** : Erstellen Sie standardmäßige Sicherungsrichtlinien für regelmäßige Sicherungen. Richten Sie Aufbewahrungsrichtlinien ein, um Sicherungen auf Jahre hinaus zu speichern.
-- **Unterstützung für SQL Always On** : Ermitteln und schützen Sie eine SQL Server Always On-Konfiguration, und berücksichtigen Sie die Sicherungseinstellungen der Sicherungsverfügbarkeitsgruppe.
-- **Recovery Point Objective (RPO) von 15 Minuten** : Konfigurieren Sie Sicherungen der SQL-Transaktionsprotokolle so, dass die Sicherung alle 15 Minuten erfolgt.
-- **Point-in-Time-Wiederherstellung** : Verwenden Sie das Portal, um für Datenbanken den Stand zu einem bestimmten Zeitpunkt wiederherzustellen, ohne mehrere vollständige, differenzielle und Protokollsicherungen manuell wiederherstellen zu müssen.
-- **Konsolidierte E-Mail-Benachrichtigungen bei Fehlern** : Konfigurieren Sie konsolidierte E-Mail-Benachrichtigungen für jede Art von Fehler.
-- **Rollenbasierte Zugriffssteuerung** : Legen Sie fest, wer Sicherungs- und Wiederherstellungsvorgänge über das Portal verwalten darf.
+- **Sicherungen ohne Infrastruktur**: Sie müssen keine Sicherungsserver oder Speicherorte verwalten.
+- **Skalierung**: Sie können eine Vielzahl von SQL-VMs und Tausende von Datenbanken schützen.
+- **Nutzungsbasierte Bezahlung**: Dies ist ein separater, von Azure Backup bereitgestellter Dienst. Wie bei allen Azure-Diensten zahlen Sie nur für das, was Sie tatsächlich nutzen.
+- **Zentrale Verwaltung und Überwachung**: Verwalten Sie sämtliche Sicherungen – einschließlich anderer Workloads, die von Azure Backup unterstützt werden – zentral in einem einzigen Dashboard in Azure.
+- **Richtliniengesteuerte Sicherung und Aufbewahrung**: Erstellen Sie standardmäßige Sicherungsrichtlinien für regelmäßige Sicherungen. Richten Sie Aufbewahrungsrichtlinien ein, um Sicherungen auf Jahre hinaus zu speichern.
+- **Unterstützung für SQL Always On**: Ermitteln und schützen Sie eine SQL Server Always On-Konfiguration, und berücksichtigen Sie die Sicherungseinstellungen der Sicherungsverfügbarkeitsgruppe.
+- **Recovery Point Objective (RPO) von 15 Minuten**: Konfigurieren Sie Sicherungen der SQL-Transaktionsprotokolle so, dass die Sicherung alle 15 Minuten erfolgt.
+- **Point-in-Time-Wiederherstellung**: Verwenden Sie das Portal, um für Datenbanken den Stand zu einem bestimmten Zeitpunkt wiederherzustellen, ohne mehrere vollständige, differenzielle und Protokollsicherungen manuell wiederherstellen zu müssen.
+- **Konsolidierte E-Mail-Benachrichtigungen bei Fehlern**: Konfigurieren Sie konsolidierte E-Mail-Benachrichtigungen für jede Art von Fehler.
+- **Rollenbasierte Zugriffssteuerung in Azure:** Legen Sie fest, wer Sicherungs- und Wiederherstellungsvorgänge über das Portal verwalten darf.
 
 Eine kurze Übersicht und Demo der Funktionsweise finden Sie im folgenden Video:
 
@@ -93,7 +94,7 @@ In den folgenden Abschnitten werden verschiedene Optionen für die manuelle Sich
 
 ### <a name="backup-to-attached-disks"></a>Sicherung auf angefügten Datenträgern
 
-Für SQL Server auf Azure-VMs können Sie native Sicherungs- und Wiederherstellungsverfahren mit angefügten Datenträgern auf der VM als Ziel der Sicherungsdateien verwenden. Die Anzahl von Datenträgern, die an einen virtuellen Azure-Computer angefügt werden können, ist allerdings je nach [Größe des virtuellen Computers](../../../virtual-machines/sizes.md?toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json) begrenzt. Zudem muss der Mehraufwand für die Datenträgerverwaltung berücksichtigt werden.
+Für SQL Server auf Azure-VMs können Sie native Sicherungs- und Wiederherstellungsverfahren mit angefügten Datenträgern auf der VM als Ziel der Sicherungsdateien verwenden. Die Anzahl von Datenträgern, die an einen virtuellen Azure-Computer angefügt werden können, ist allerdings je nach [Größe des virtuellen Computers](../../../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) begrenzt. Zudem muss der Mehraufwand für die Datenträgerverwaltung berücksichtigt werden.
 
 Ein Beispiel für die manuelle Erstellung einer vollständigen Datenbanksicherung mithilfe von SQL Server Management Studio (SSMS) oder Transact-SQL finden Sie unter [Erstellen einer vollständigen Datenbanksicherung](/sql/relational-databases/backup-restore/create-a-full-database-backup-sql-server).
 
@@ -108,9 +109,9 @@ Ab SQL Server 2012 SP1 CU2 können Sie Sicherungen und Wiederherstellungen direk
 
 Weitere Informationen finden Sie in einem der folgenden Artikel, je nachdem, welche Version von SQL Server Sie verwenden:
 
-- **SQL Server 2016/2017** : [SQL Server-Sicherung über URLs](/sql/relational-databases/backup-restore/sql-server-backup-and-restore-with-microsoft-azure-blob-storage-service)
-- **SQL Server 2014** : [SQL Server 2014-Sicherung über URLs](/sql/relational-databases/backup-restore/sql-server-backup-and-restore-with-microsoft-azure-blob-storage-service?viewFallbackFrom=sql-server-2014)
-- **SQL Server 2012** : [SQL Server 2012-Sicherung über URLs](/previous-versions/sql/sql-server-2012/jj919148(v=sql.110))
+- **SQL Server 2016/2017**: [SQL Server-Sicherung über URLs](/sql/relational-databases/backup-restore/sql-server-backup-and-restore-with-microsoft-azure-blob-storage-service)
+- **SQL Server 2014**: [SQL Server 2014-Sicherung über URLs](/sql/relational-databases/backup-restore/sql-server-backup-and-restore-with-microsoft-azure-blob-storage-service?viewFallbackFrom=sql-server-2014)
+- **SQL Server 2012**: [SQL Server 2012-Sicherung über URLs](/previous-versions/sql/sql-server-2012/jj919148(v=sql.110))
 
 ### <a name="managed-backup"></a>Managed Backup
 

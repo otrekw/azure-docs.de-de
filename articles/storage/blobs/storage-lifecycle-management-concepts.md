@@ -9,12 +9,12 @@ ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
 ms.custom: devx-track-azurepowershell, references_regions
-ms.openlocfilehash: a4a338a4d13715ba1ff7cb30c011757d5050ba05
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 1b568687ffe646a91544c1bb75d26d552a23f49c
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93100068"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96005281"
 ---
 # <a name="optimize-costs-by-automating-azure-blob-storage-access-tiers"></a>Optimieren der Kosten durch Automatisieren der Azure Blob Storage-Zugriffsebenen
 
@@ -39,7 +39,7 @@ Stellen Sie sich ein Szenario vor, bei dem in den frühen Phasen des Lebenszyklu
 
 Das Feature zur Lebenszyklusverwaltung ist in allen Azure-Regionen für GPv2-Konten (Universell v2), Blob Storage-Konten, Premium-Blockblob-Speicherkonten und Azure Data Lake Storage Gen2-Konten verfügbar. Für ein vorhandenes GPv1-Konto (Universell V1) kann in einem einfachen Prozess im Azure-Portal ein Upgrade auf ein GPv2-Konto erfolgen. Weitere Informationen zu Speicherkonten finden Sie unter [Azure-Speicherkonto – Übersicht](../common/storage-account-overview.md).
 
-Die Funktion zur Lebenszyklusverwaltung ist kostenlos. Kunden werden die regulären Betriebskosten für die [Set Blob Tier](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier)-API-Aufrufe in Rechnung gestellt. Löschvorgänge sind kostenlos. Weitere Informationen zu den Preisen finden Sie unter [Preise für Blockblobs](https://azure.microsoft.com/pricing/details/storage/blobs/).
+Die Funktion zur Lebenszyklusverwaltung ist kostenlos. Kunden werden die regulären Betriebskosten für die [Set Blob Tier](/rest/api/storageservices/set-blob-tier)-API-Aufrufe in Rechnung gestellt. Löschvorgänge sind kostenlos. Weitere Informationen zu den Preisen finden Sie unter [Preise für Blockblobs](https://azure.microsoft.com/pricing/details/storage/blobs/).
 
 ## <a name="add-or-remove-a-policy"></a>Hinzufügen oder Entfernen einer Richtlinie
 
@@ -47,13 +47,13 @@ Sie können eine Richtlinie hinzufügen, bearbeiten oder entfernen, indem Sie ei
 
 * [Azure portal](https://portal.azure.com)
 * [Azure PowerShell](https://github.com/Azure/azure-powershell/releases)
-* [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/install-azure-cli)
-* [REST-APIs](https://docs.microsoft.com/rest/api/storagerp/managementpolicies)
+* [Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli)
+* [REST-APIs](/rest/api/storagerp/managementpolicies)
 
 Eine Richtlinie kann vollständig gelesen oder geschrieben werden. Teilaktualisierungen werden nicht unterstützt. 
 
 > [!NOTE]
-> Wenn Sie Firewallregeln für Ihr Speicherkonto aktivieren, werden Anforderungen für die Lebenszyklusverwaltung möglicherweise blockiert. Sie können die Sperre dieser Anforderungen durch Bereitstellen von Ausnahmen für vertrauenswürdige Microsoft-Dienste aufheben. Weitere Informationen finden Sie im Abschnitt „Ausnahmen“ unter [Konfigurieren von Firewalls und virtuellen Netzwerken](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions).
+> Wenn Sie Firewallregeln für Ihr Speicherkonto aktivieren, werden Anforderungen für die Lebenszyklusverwaltung möglicherweise blockiert. Sie können die Sperre dieser Anforderungen durch Bereitstellen von Ausnahmen für vertrauenswürdige Microsoft-Dienste aufheben. Weitere Informationen finden Sie im Abschnitt „Ausnahmen“ unter [Konfigurieren von Firewalls und virtuellen Netzwerken](../common/storage-network-security.md#exceptions).
 
 In diesem Artikel wird die Verwaltung einer Richtlinie über das Portal und über PowerShell erläutert.
 
@@ -74,7 +74,7 @@ Es gibt zwei Möglichkeiten zum Hinzufügen einer Richtlinie über das Azure-Por
 
 1. Wählen Sie die Registerkarte **Listenansicht** aus.
 
-1. Wählen Sie **Regel hinzufügen** aus, und geben Sie Ihrer Regel im Formular **Details** einen Namen. Darüber hinaus können Sie Werte für **Regelbereich** , **Blobtyp** und **Blobuntertyp** festlegen. Im folgenden Beispiel wird der Bereich zum Filtern von Blobs festgelegt. Daraufhin wird die Registerkarte **Filtersatz** angezeigt.
+1. Wählen Sie **Regel hinzufügen** aus, und geben Sie Ihrer Regel im Formular **Details** einen Namen. Darüber hinaus können Sie Werte für **Regelbereich**, **Blobtyp** und **Blobuntertyp** festlegen. Im folgenden Beispiel wird der Bereich zum Filtern von Blobs festgelegt. Daraufhin wird die Registerkarte **Filtersatz** angezeigt.
 
    :::image type="content" source="media/storage-lifecycle-management-concepts/lifecycle-management-details.png" alt-text="Seite mit Details zum Hinzufügen einer Regel in der Lebenszyklusverwaltung im Azure-Portal":::
 
@@ -322,7 +322,7 @@ Filter umfassen Folgendes:
 | blobIndexMatch | Ein Array von Wörterbuchwerten, die aus dem Blobindextag-Schlüssel und den Wertbedingungen bestehen, die abgeglichen werden sollen. In jeder Regel können bis zu 10 Blobindextag-Bedingungen definiert werden. Wenn Sie beispielsweise alle Blobs mit `Project = Contoso` unter `https://myaccount.blob.core.windows.net/` für eine Regel abgleichen möchten, lautet der blobIndexMatch-Wert `{"name": "Project","op": "==","value": "Contoso"}`. | Wenn Sie blobIndexMatch nicht definieren, gilt die Regel für alle Blobs im Speicherkonto. | Nein |
 
 > [!NOTE]
-> Der Blobindex befindet sich in der öffentlichen Vorschauphase und ist in den Regionen **Kanada, Mitte** , **Kanada, Osten** , **Frankreich, Mitte** und **Frankreich, Süden** verfügbar. Weitere Informationen zu dieser Funktion sowie zu bekannten Problemen und Einschränkungen finden Sie unter [Verwalten und Suchen von Daten in Azure Blob Storage mit dem Blobindex (Vorschau)](storage-manage-find-blobs.md).
+> Der Blobindex befindet sich in der öffentlichen Vorschauphase und ist in den Regionen **Kanada, Mitte**, **Kanada, Osten**, **Frankreich, Mitte** und **Frankreich, Süden** verfügbar. Weitere Informationen zu dieser Funktion sowie zu bekannten Problemen und Einschränkungen finden Sie unter [Verwalten und Suchen von Daten in Azure Blob Storage mit dem Blobindex (Vorschau)](storage-manage-find-blobs.md).
 
 ### <a name="rule-actions"></a>Regelaktionen
 
@@ -439,7 +439,7 @@ Die Zeitüberwachung für den letzten Zugriff ist für die folgenden Typen von S
 
 Wenn Ihr Speicherkonto vom Typ „Universell V1“ ist, verwenden Sie das Azure-Portal, um ein Upgrade auf ein Konto vom Typ „Universell V2“ durchzuführen.
 
-Speicherkonten mit einem hierarchischen Namespace, die für die Verwendung mit Azure Data Lake Storage Gen2 aktiviert sind, werden noch nicht unterstützt.
+Speicherkonten mit einem hierarchischen Namespace, die für die Verwendung mit Azure Data Lake Storage Gen2 aktiviert sind, werden nun unterstützt.
 
 #### <a name="pricing-and-billing"></a>Preise und Abrechnung
 
@@ -450,7 +450,7 @@ Die Aktualisierung der Uhrzeit des letzten Zugriffs gilt als [sonstiger Vorgang]
 Außerdem gibt es Daten, die in der Cloud lediglich vorgehalten werden und auf die nach der Speicherung nur sehr selten oder gar nicht zugegriffen wird. Die folgende Lebenszyklusrichtlinie ist so konfiguriert, dass Daten kurz nach der Erfassung archiviert werden. In diesem Beispiel werden Blockblobs im Speicherkonto im Container `archivecontainer` an eine Archivebene überführt. Die Umstellung wird durch die Ausführung der Aktion für Blobs 0 Tage nach dem Zeitpunkt der letzten Änderung erreicht:
 
 > [!NOTE] 
-> Es wird empfohlen, die Blobs für mehr Effizienz direkt auf die Archivebene hochzuladen. Sie können den Header „x-ms-access-tier“ für [PutBlob](https://docs.microsoft.com/rest/api/storageservices/put-blob) oder [PutBlockList](https://docs.microsoft.com/rest/api/storageservices/put-block-list) mit der REST-Version 2018-11-09 und höher oder unseren neuesten Blobspeicher-Clientbibliotheken verwenden. 
+> Es wird empfohlen, die Blobs für mehr Effizienz direkt auf die Archivebene hochzuladen. Sie können den Header „x-ms-access-tier“ für [PutBlob](/rest/api/storageservices/put-blob) oder [PutBlockList](/rest/api/storageservices/put-block-list) mit der REST-Version 2018-11-09 und höher oder unseren neuesten Blobspeicher-Clientbibliotheken verwenden. 
 
 ```json
 {
@@ -592,7 +592,7 @@ Wenn ein Blob von einer Zugriffsebene auf eine andere verschoben wird, ändert s
 
 Erfahren Sie, wie Daten nach versehentlichem Löschen wiederhergestellt werden:
 
-- [Vorläufiges Löschen für Azure Storage-Blobs](../blobs/storage-blob-soft-delete.md)
+- [Vorläufiges Löschen für Azure Storage-Blobs](./soft-delete-blob-overview.md)
 
 Erfahren Sie, wie Sie Daten mit dem Blobindex verwalten und suchen können:
 

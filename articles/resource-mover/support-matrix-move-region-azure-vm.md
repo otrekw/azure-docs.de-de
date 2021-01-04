@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 10/11/2020
 ms.author: raynew
-ms.openlocfilehash: b59bc33698be516ec5a2e289b52dafcb9e9efcbe
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 4da707ab698599c8ea5dd8e1ea8647f543eb2a68
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93341857"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95524248"
 ---
 # <a name="support-for-moving-azure-vms-between-azure-regions"></a>Unterstützung für das Verschieben von virtuellen Azure-Computern zwischen Azure-Regionen
 
@@ -121,11 +121,11 @@ In dieser Tabelle ist die Unterstützung für den Betriebssystemdatenträger, Da
 
 **Komponente** | **Unterstützung** | **Details**
 --- | --- | ---
-Maximale Größe des Betriebssystemdatenträgers | 2\.048 GB | [Erfahren Sie mehr](../virtual-machines/windows/managed-disks-overview.md) zu VM-Datenträgern.
-Temporärer Datenträger | Nicht unterstützt | Der temporäre Datenträger ist immer vom Vorbereitungsprozess ausgeschlossen.<br/><br/> Speichern Sie auf dem temporären Datenträger keine persistenten Daten. [Weitere Informationen](../virtual-machines/windows/managed-disks-overview.md#temporary-disk)
+Maximale Größe des Betriebssystemdatenträgers | 2\.048 GB | [Erfahren Sie mehr](../virtual-machines/managed-disks-overview.md) zu VM-Datenträgern.
+Temporärer Datenträger | Nicht unterstützt | Der temporäre Datenträger ist immer vom Vorbereitungsprozess ausgeschlossen.<br/><br/> Speichern Sie auf dem temporären Datenträger keine persistenten Daten. [Weitere Informationen](../virtual-machines/managed-disks-overview.md#temporary-disk)
 Maximale Größe des Datenträgers | 8\.192 GB für verwaltete Datenträger
 Minimale Größe des Datenträgers |  2 GB für verwaltete Datenträger |
-Maximale Anzahl von Datenträgern | Bis zu 64, gemäß der Unterstützung für eine bestimmte Azure-VM-Größe | [Erfahren Sie mehr](../virtual-machines/windows/sizes.md) zu VM-Größen.
+Maximale Anzahl von Datenträgern | Bis zu 64, gemäß der Unterstützung für eine bestimmte Azure-VM-Größe | [Erfahren Sie mehr](../virtual-machines/sizes.md) zu VM-Größen.
 Änderungsrate für Datenträger | Maximal 10 MBit/s pro Datenträger für Storage Premium. Maximal 2 MBit/s pro Datenträger für Standardspeicher. | Wenn die durchschnittliche Datenänderungsrate auf dem Datenträger dauerhaft über dem Maximalwert liegt, kann dies durch die Vorbereitung nicht aufgeholt werden.<br/><br/>  Falls der Maximalwert aber nur sporadisch überschritten wird, kann die Vorbereitung aufholen, aber es kommt ggf. zu einer leichten Verzögerung bei den Wiederherstellungspunkten.
 Datenträger (Standard-Speicherkonto) | Wird nicht unterstützt. | Geben Sie als Speichertyp „Verwalteter Datenträger“ an, und versuchen Sie dann, den virtuellen Computer zu verschieben.
 Datenträger (Premium-Speicherkonto) | Nicht unterstützt | Geben Sie als Speichertyp „Verwalteter Datenträger“ an, und versuchen Sie dann, den virtuellen Computer zu verschieben.
@@ -180,7 +180,7 @@ Service Bus | `*.servicebus.windows.net` | Ermöglicht es der VM, die Site Recov
 ## <a name="nsg-rules"></a>NSG-Regeln
 Wenn Sie Regeln für Netzwerksicherheitsgruppen (NSG) zum Steuern der ausgehenden Verbindung verwenden, erstellen Sie diese [Diensttagregeln](../virtual-network/service-tags-overview.md). Alle Regeln müssen den ausgehenden Zugriff auf HTTPS (443) erlauben.
 - Erstellen Sie eine Storage-Tagregel für die Quellregion.
-- Erstellen Sie eine *AzureSiteRecovery* -Tagregel, um den Zugriff auf den Site Recovery-Dienst in allen Regionen zu ermöglichen. Dieses Tag weist Abhängigkeiten mit diesen anderen Tags auf. Daher müssen Sie für diese ebenfalls Regeln erstellen:
+- Erstellen Sie eine *AzureSiteRecovery*-Tagregel, um den Zugriff auf den Site Recovery-Dienst in allen Regionen zu ermöglichen. Dieses Tag weist Abhängigkeiten mit diesen anderen Tags auf. Daher müssen Sie für diese ebenfalls Regeln erstellen:
     - *AzureActiveDirectory*
     - **EventHub*
     - *AzureKeyVault*

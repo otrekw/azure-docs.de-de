@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/13/2020
 ms.author: Zhchia
-ms.openlocfilehash: e0b98f15e03552f27cdd1c9683bdd7e74a1c02df
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: e7447a8d742caef7a2c2ff0211e7e8002307b9e3
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358688"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96177970"
 ---
 # <a name="tutorial-configure-lucidchart-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Lucidchart für die automatische Benutzerbereitstellung
 
@@ -36,7 +36,7 @@ In diesem Tutorial werden die Schritte beschrieben, die Sie sowohl in Lucidchart
 Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits über die folgenden Voraussetzungen verfügen:
 
 * [Azure AD-Mandant](../develop/quickstart-create-new-tenant.md) 
-* Ein Benutzerkonto in Azure AD mit der [Berechtigung](../users-groups-roles/directory-assign-admin-roles.md) für die Konfiguration von Bereitstellungen (z.B. Anwendungsadministrator, Cloudanwendungsadministrator, Anwendungsbesitzer oder Globaler Administrator). 
+* Ein Benutzerkonto in Azure AD mit der [Berechtigung](../roles/permissions-reference.md) für die Konfiguration von Bereitstellungen (z.B. Anwendungsadministrator, Cloudanwendungsadministrator, Anwendungsbesitzer oder Globaler Administrator). 
 * Ein Lucidchart-Mandant, für den mindestens der [Enterprise-Tarif](https://www.lucidchart.com/user/117598685#/subscriptionLevel) aktiviert ist
 * Ein Benutzerkonto in Lucidchart mit Administratorberechtigungen
 
@@ -55,7 +55,7 @@ Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits �
 
       :::image type="content" source="./media/lucidchart-provisioning-tutorial/scim.png" alt-text="Screenshot der Lucidchart-Verwaltungskonsole. Auf einer großen Schaltfläche ist der Text „S C I M“ hervorgehoben, und es ist ein aktiviertes Banner zu sehen." border="false":::
 
-3. Scrollen Sie nach unten, um das **Bearertoken** und die **Basisadresse für Lucidchart** anzuzeigen. Kopieren und speichern Sie das **Bearertoken**. Dieser Wert wird im Azure-Portal auf der Registerkarte „Bereitstellung“ für Ihre Lucidchart-Anwendung in das Feld **Geheimes Token** * eingegeben. 
+3. Scrollen Sie nach unten, um das **Bearertoken** und die **Basisadresse für Lucidchart** anzuzeigen. Kopieren und speichern Sie das **Bearertoken**. Dieser Wert wird im Azure-Portal auf der Registerkarte „Bereitstellung“ für Ihre Lucidchart-Anwendung in das Feld **Geheimes Token*** eingegeben. 
 
       ![Lucidchart-Token](./media/lucidchart-provisioning-tutorial/token.png)
 
@@ -94,7 +94,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![Screenshot der Dropdownliste „Bereitstellungsmodus“ mit aufgerufener Option „Automatisch“](common/provisioning-automatic.png)
 
-5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** im Feld **Geheimes Token** den zuvor abgerufenen Wert für das **Bearertoken** ein. Klicken Sie auf **Verbindung testen** , um sicherzustellen, dass Azure AD eine Verbindung mit Lucidchart herstellen kann. Wenn die Verbindung nicht möglich ist, stellen Sie sicher, dass Ihr Lucidchart-Konto über Administratorberechtigungen verfügt, und wiederholen Sie den Vorgang.
+5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** im Feld **Geheimes Token** den zuvor abgerufenen Wert für das **Bearertoken** ein. Klicken Sie auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit Lucidchart herstellen kann. Wenn die Verbindung nicht möglich ist, stellen Sie sicher, dass Ihr Lucidchart-Konto über Administratorberechtigungen verfügt, und wiederholen Sie den Vorgang.
 
       ![Bereitstellung](./media/Lucidchart-provisioning-tutorial/lucidchart1.png)
 
@@ -106,7 +106,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 8. Wählen Sie im Abschnitt **Zuordnungen** die Option **Azure Active Directory-Benutzer mit Lucidchart synchronisieren** aus.
 
-9. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit Lucidchart synchronisiert werden. Beachten Sie, dass die als **übereinstimmende** Eigenschaften ausgewählten Attribute für den Abgleich der Benutzerkonten in Lucidchart für Updatevorgänge verwendet werden. Wenn Sie sich dafür entscheiden, das [übereinstimmende Zielattribut](../app-provisioning/customize-application-attributes.md) zu ändern, müssen Sie sicherstellen, dass die Lucidchart-API das Filtern von Benutzern anhand dieses Attributs unterstützt. Wählen Sie die Schaltfläche **Speichern** , um alle Änderungen zu übernehmen.
+9. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit Lucidchart synchronisiert werden. Beachten Sie, dass die als **übereinstimmende** Eigenschaften ausgewählten Attribute für den Abgleich der Benutzerkonten in Lucidchart für Updatevorgänge verwendet werden. Wenn Sie sich dafür entscheiden, das [übereinstimmende Zielattribut](../app-provisioning/customize-application-attributes.md) zu ändern, müssen Sie sicherstellen, dass die Lucidchart-API das Filtern von Benutzern anhand dieses Attributs unterstützt. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
    |attribute|type|
    |---|---|
@@ -125,7 +125,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 10. Wählen Sie im Abschnitt **Zuordnungen** die Option **Azure Active Directory-Gruppen mit Lucidchart synchronisieren** aus.
 
-11. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Gruppenattribute, die von Azure AD mit Lucidchart synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden zum Abgleich der Gruppen in Lucidchart bei Updatevorgängen verwendet. Wählen Sie die Schaltfläche **Speichern** , um alle Änderungen zu übernehmen.
+11. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Gruppenattribute, die von Azure AD mit Lucidchart synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden zum Abgleich der Gruppen in Lucidchart bei Updatevorgängen verwendet. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
       |attribute|type|
       |---|---|

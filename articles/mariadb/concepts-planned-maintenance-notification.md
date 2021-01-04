@@ -6,12 +6,12 @@ ms.author: ambhatna
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 10/21/2020
-ms.openlocfilehash: 2ce6959cf025d2e29f0ee3dfb3b29b3eaf5d4221
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: c290236dfe7e88999847f8cb0d66b2d3c868c1ab
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490831"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96453299"
 ---
 # <a name="planned-maintenance-notification-in-azure-database-for-mariadb"></a>Benachrichtigung über geplante Wartung in Azure Database for MariaDB
 
@@ -48,7 +48,7 @@ Sie können die Benachrichtigung zur geplanten Wartung im Azure-Portal einsehen 
 
 1. Wählen Sie im [Azure-Portal](https://portal.azure.com) die Option **Service Health** aus.
 2. Wählen Sie die Registerkarte **Geplante Wartung** aus.
-3. Wählen Sie das **Abonnement** , die **Region** und den **Dienst** aus, für die Sie die Benachrichtigung zu geplanten Wartungen überprüfen möchten. 
+3. Wählen Sie das **Abonnement**, die **Region** und den **Dienst** aus, für die Sie die Benachrichtigung zu geplanten Wartungen überprüfen möchten. 
    
 ### <a name="to-receive-planned-maintenance-notification"></a>Empfangen von Benachrichtigungen zu geplanten Wartungen
 
@@ -61,7 +61,7 @@ Sie können die Benachrichtigung zur geplanten Wartung im Azure-Portal einsehen 
 7. Stellen Sie sicher, dass „Regel beim Erstellen aktivieren“ auf „Ja“ festgelegt ist.
 8. Wählen Sie **Warnungsregel erstellen** aus, um die Warnung fertig zu stellen.
 
-Eine ausführliche Beschreibung der Schritte zum Erstellen von **Service Health-Warnungen** finden Sie unter [Erstellen von Aktivitätsprotokollwarnungen zu Dienstbenachrichtigungen](../service-health/alerts-activity-log-service-notifications.md).
+Eine ausführliche Beschreibung der Schritte zum Erstellen von **Service Health-Warnungen** finden Sie unter [Erstellen von Aktivitätsprotokollwarnungen zu Dienstbenachrichtigungen](../service-health/alerts-activity-log-service-notifications-portal.md).
 
 ## <a name="can-i-cancel-or-postpone-planned-maintenance"></a>Kann ich eine geplante Wartung abbrechen oder verschieben?
 
@@ -78,7 +78,7 @@ Bei einem vorübergehenden Fehler handelt es sich um einen Fehler, der sich von 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Sollten Sie Fragen oder Vorschläge im Zusammenhang mit der Verwendung von Azure Database for MariaDB haben, können Sie unter der Adresse *AskAzureDBforMySQL@service.microsoft.com* eine E-Mail an das zuständige Team senden.
+- Sollten Sie Fragen oder Vorschläge im Zusammenhang mit der Verwendung von Azure Database for MariaDB haben, können Sie unter der Adresse AskAzureDBforMariaDB@service.microsoft.com eine E-Mail an das zuständige Team senden.
 - Anleitungen zum Erstellen einer Warnung zu einer Metrik finden Sie unter [Einrichten von Warnungen](howto-alert-metric.md).
 - [Beheben von Verbindungsproblemen mit Azure Database for MariaDB](howto-troubleshoot-common-connection-issues.md)
 - [Behandeln vorübergehender Konnektivitätsfehler für Azure Database for MariaDB](concepts-connectivity.md)

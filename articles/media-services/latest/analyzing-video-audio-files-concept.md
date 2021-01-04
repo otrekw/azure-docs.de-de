@@ -12,12 +12,12 @@ ms.workload: ''
 ms.topic: conceptual
 ms.date: 10/21/2020
 ms.author: inhenkel
-ms.openlocfilehash: c00af3a128685dfbd2435b65fe4d00107ca22ba4
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: f4784cc2e1b0276caf8326df8fad93b12f0d551d
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94744356"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96490073"
 ---
 # <a name="analyze-video-and-audio-files-with-azure-media-services"></a>Analysieren von Video- und Audiodateien mit Azure Media Services
 
@@ -45,9 +45,9 @@ Media Services unterstützt derzeit die folgenden integrierten Analysevoreinstel
 |**Name der Voreinstellung**|**Szenario**|**Details**|
 |---|---|---|
 |[AudioAnalyzerPreset](/rest/api/media/transforms/createorupdate#audioanalyzerpreset)|Audioanalyse Standard|Die Voreinstellung wendet einen vordefinierten Satz von AI-basierten Analysevorgängen, einschließlich Sprachtranskription, an. Die Voreinstellung unterstützt derzeit die Verarbeitung von Inhalten mit einer einzelnen, einsprachigen Audiospur. Sie können die Sprache für die Audionutzlast in der Eingabe angeben. Verwenden Sie dazu das BCP-47-Format des Tags zur Identifizierung von Sprache und Region. Folgende Sprachen werden unterstützt: Englisch („en-US“ und „en-GB“), Spanisch („es-ES“ und „es-MX“), Französisch („fr-FR“), Italienisch („it-IT“), Japanisch („ja-JP“), Portugiesisch („pt-BR“), Chinesisch („zh-CN“), Deutsch („de-DE“), Arabisch („ar-EG“ und „ar-SY“), Russisch („ru-RU“), Hindi („hi-IN“) und Koreanisch („ko-KR“).<br/><br/> Wenn keine Sprache angegeben oder NULL festgelegt ist, wählt die automatische Spracherkennung die erste erkannte Sprache aus und verwendet diese für die gesamte Datei. Die automatische Spracherkennung unterstützt derzeit Englisch, Chinesisch, Französisch, Deutsch, Italienisch, Japanisch, Spanisch, Russisch und Portugiesisch. Sie unterstützt nicht das dynamische Wechseln zwischen Sprachen, nachdem die erste Sprache erkannt wurde. Die automatische Spracherkennung funktioniert am besten mit Audioaufnahmen mit deutlicher Sprache. Kann die Sprache nicht automatisch erkannt werden, wird standardmäßig Englisch für die Transkription verwendet.|
-|[AudioAnalyzerPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#audioanalyzerpreset)|Audioanalyse Basic|In diesem Modus wird Sprache-in-Text-Transkription und die Generierung einer VTT-Datei mit Untertiteln/Untertiteln für Hörgeschädigte ausgeführt. Die Ausgabe in diesem Modus beinhaltet eine Insights JSON-Datei, die nur die Stichwörter, die Transkription und Zeitinformationen enthält. Die automatische Spracherkennung und Sprecherdiarisierung sind nicht Bestandteil dieses Modus. Die Liste der unterstützten Sprachen finden Sie [hier](https://go.microsoft.com/fwlink/?linkid=2109463).|
-|[VideoAnalyzerPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#videoanalyzerpreset)|Analysieren von Audio und Video|Extrahiert Erkenntnisse (umfangreiche Metadaten) von Audio- und Videoinhalten und gibt eine Datei im JSON-Format aus. Beim Verarbeiten einer Videodatei können Sie angeben, ob Sie nur Audioerkenntnisse erhalten möchten. Weitere Informationen finden Sie unter [Analysieren von Videos](analyze-videos-tutorial-with-api.md).|
-|[FaceDetectorPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#facedetectorpreset)|Erkennen von Gesichtern in Videos|Beschreibt die Einstellungen, die bei der Analyse eines Videos verwendet werden, um alle erscheinenden Gesichter zu erkennen|
+|[AudioAnalyzerPreset](/rest/api/media/transforms/createorupdate#audioanalyzerpreset)|Audioanalyse Basic|In diesem Modus wird Sprache-in-Text-Transkription und die Generierung einer VTT-Datei mit Untertiteln/Untertiteln für Hörgeschädigte ausgeführt. Die Ausgabe in diesem Modus beinhaltet eine Insights JSON-Datei, die nur die Stichwörter, die Transkription und Zeitinformationen enthält. Die automatische Spracherkennung und Sprecherdiarisierung sind nicht Bestandteil dieses Modus. Die Liste der unterstützten Sprachen finden Sie [hier](#built-in-presets).|
+|[VideoAnalyzerPreset](/rest/api/media/transforms/createorupdate#videoanalyzerpreset)|Analysieren von Audio und Video|Extrahiert Erkenntnisse (umfangreiche Metadaten) von Audio- und Videoinhalten und gibt eine Datei im JSON-Format aus. Beim Verarbeiten einer Videodatei können Sie angeben, ob Sie nur Audioerkenntnisse erhalten möchten. Weitere Informationen finden Sie unter [Analysieren von Videos](analyze-videos-tutorial-with-api.md).|
+|[FaceDetectorPreset](/rest/api/media/transforms/createorupdate#facedetectorpreset)|Erkennen von Gesichtern in Videos|Beschreibt die Einstellungen, die bei der Analyse eines Videos verwendet werden, um alle erscheinenden Gesichter zu erkennen|
 
 ### <a name="audioanalyzerpreset-standard-mode"></a>AudioAnalyzerPreset-Standardmodus
 

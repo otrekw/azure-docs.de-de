@@ -3,18 +3,18 @@ title: 'Steuerungen des Blaupausenbeispiels „ISO 27001: ASE-/SQL-Workload“'
 description: 'Steuerelementzuordnung des Blaupausenbeispiels „ISO 27001: App Service-Umgebungs-/SQL-Datenbank-Workload“ zu Azure Policy und Azure RBAC'
 ms.date: 11/05/2020
 ms.topic: sample
-ms.openlocfilehash: 438f2af05e0c499e9f002b501b97e291705cee9a
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 4256f401e602a0641247dd06a1537289282f647b
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93420409"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842548"
 ---
 # <a name="control-mapping-of-the-iso-27001-asesql-workload-blueprint-sample"></a>Steuerelementzuordnung des Blaupausenbeispiels „ISO 27001: ASE-/SQL-Workload“
 
 In diesem Artikel wird erläutert, wie das Azure Blueprints-Blaupausenbeispiel „ISO 27001: ASE-/SQL-Workload“ den ISO 27001-Steuerungen zugeordnet wird. Weitere Informationen zu den Steuerungen finden Sie unter [ISO 27001](https://www.iso.org/isoiec-27001-information-security.html).
 
-Die folgenden Zuordnungen gelten für die Steuerungen unter **ISO 27001:2013**. Über den rechten Navigationsbereich können Sie direkt zu einer bestimmten Steuerungszuordnung springen. Viele der zugeordneten Steuerungen werden mit einer [Azure Policy](../../../policy/overview.md)-Initiative implementiert. Zum Anzeigen der vollständigen Initiative öffnen Sie **Richtlinie** im Azure-Portal und wählen dann die Seite **Definitionen** aus. Suchen Sie anschließend die integrierte Richtlinieninitiative **\[Vorschau\] ISO 27001:2013-Steuerelemente überwachen und spezifische VM-Erweiterungen zur Unterstützung von Überwachungsanforderungen bereitstellen** , und wählen Sie sie aus.
+Die folgenden Zuordnungen gelten für die Steuerungen unter **ISO 27001:2013**. Über den rechten Navigationsbereich können Sie direkt zu einer bestimmten Steuerungszuordnung springen. Viele der zugeordneten Steuerungen werden mit einer [Azure Policy](../../../policy/overview.md)-Initiative implementiert. Zum Anzeigen der vollständigen Initiative öffnen Sie **Richtlinie** im Azure-Portal und wählen dann die Seite **Definitionen** aus. Suchen Sie anschließend die integrierte Richtlinieninitiative **\[Vorschau\] ISO 27001:2013-Steuerelemente überwachen und spezifische VM-Erweiterungen zur Unterstützung von Überwachungsanforderungen bereitstellen**, und wählen Sie sie aus.
 
 > [!IMPORTANT]
 > Jede Steuerung unten ist einer oder mehreren [Azure Policy](../../../policy/overview.md)-Definitionen zugeordnet. Diese Richtlinien können Ihnen bei der [Konformitätsbewertung](../../../policy/how-to/get-compliance-data.md) mit der Steuerung helfen. Es gibt jedoch oft keine 1:1- oder vollständige Übereinstimmung zwischen einer Steuerung und einer bzw. mehreren Richtlinien. Daher bezieht sich **Konform** in Azure Policy nur auf die Richtlinien selbst und gewährleistet nicht die vollständige Konformität mit allen Anforderungen einer Steuerung. Außerdem enthält der Kompatibilitätsstandard Steuerungen, die derzeit von keiner Azure Policy-Definition abgedeckt werden. Daher ist die Konformität in Azure Policy nur eine partielle Ansicht Ihres gesamten Konformitätsstatus. Die Zuordnungen zwischen Steuerungen und Azure Policy-Definitionen für dieses Konformitätsblaupausenbeispiel können sich im Laufe der Zeit ändern. Den Änderungsverlaufs finden Sie im [GitHub-Commit-Verlauf](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/iso27001-ase-sql-workload/control-mapping.md).
@@ -82,7 +82,7 @@ In Azure ist die [rollenbasierte Azure-Zugriffssteuerung (Azure RBAC)](../../../
 
 ## <a name="a942-secure-log-on-procedures"></a>A.9.4.2 Sichere Anmeldungsprozeduren
 
-Mit dieser Blaupause werden drei Azure Policy-Definitionen zugewiesen, um Konten ohne aktivierte mehrstufige Authentifizierung zu überwachen. Indem Azure Multi-Factor Authentication eine zweite Form der Authentifizierung verlangt, bietet das Verfahren zusätzliche Sicherheit und eine zuverlässige Authentifizierung. Durch die Überwachung von Konten ohne aktivierte mehrstufige Authentifizierung können Sie die Konten identifizieren, die möglicherweise eher kompromittiert werden.
+Mit dieser Blaupause werden drei Azure Policy-Definitionen zugewiesen, um Konten ohne aktivierte mehrstufige Authentifizierung zu überwachen. Indem Azure AD Multi-Factor Authentication eine zweite Form der Authentifizierung verlangt, bietet das Verfahren zusätzliche Sicherheit und eine zuverlässige Authentifizierung. Durch die Überwachung von Konten ohne aktivierte mehrstufige Authentifizierung können Sie die Konten identifizieren, die möglicherweise eher kompromittiert werden.
 
 - MFA sollte für Konten mit Besitzerberechtigungen in Ihrem Abonnement aktiviert sein.
 - MFA sollte für Ihre Abonnementkonten mit Leseberechtigungen aktiviert sein

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: f97d04ca40e69ba2516744adfc9f1f455cba97c0
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 813cb567ab3edddd6fb37cee050dc5e38ee4289f
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896343"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96904889"
 ---
 # <a name="tutorial---migrate-web-service-from-google-maps"></a>Tutorial: Migrieren von Webdiensten aus Google Maps
 
@@ -40,19 +40,19 @@ Die folgende Tabelle enthält die Dienst-APIs von Azure Maps, die über ähnlich
 
 | Google Maps-Dienst-API | Azure Maps-Dienst-API                                                                      |
 |-------------------------|---------------------------------------------------------------------------------------------|
-| Wegbeschreibungen              | [Route](/rest/api/maps/route)                                     |
-| Entfernungsmatrix         | [Routenmatrix](/rest/api/maps/route/postroutematrixpreview)       |
-| Geocodierung               | [Suchen,](/rest/api/maps/search)                                   |
-| Suche nach Orten           | [Suchen,](/rest/api/maps/search)                                   |
-| AutoVervollständigen von Orten      | [Suchen,](/rest/api/maps/search)                                   |
-| Ausrichtung an Straße            | Weitere Informationen finden Sie im Abschnitt [Berechnen von Routen und Wegbeschreibungen](#calculate-routes-and-directions).            |
-| Geschwindigkeitsbegrenzungen            | Weitere Informationen finden Sie unter [Umgekehrte Geocodierung einer Koordinate](#reverse-geocode-a-coordinate).                  |
-| Statische Karte              | [Render](/rest/api/maps/render/getmapimage)                       |
-| Zeitzone               | [Zeitzone](/rest/api/maps/timezone)                              |
+| Wegbeschreibungen              | [Route](/rest/api/maps/route)                                     |                         
+| Entfernungsmatrix         | [Routenmatrix](/rest/api/maps/route/postroutematrixpreview)       |                         
+| Geocodierung               | [Suchen,](/rest/api/maps/search)                                   |                         
+| Suche nach Orten           | [Suchen,](/rest/api/maps/search)                                   |                         
+| AutoVervollständigen von Orten      | [Suchen,](/rest/api/maps/search)                                   |                         
+| Ausrichtung an Straße            | Weitere Informationen finden Sie im Abschnitt [Berechnen von Routen und Wegbeschreibungen](#calculate-routes-and-directions).            
+| Geschwindigkeitsbegrenzungen            | Weitere Informationen finden Sie unter [Umgekehrte Geocodierung einer Koordinate](#reverse-geocode-a-coordinate).                  
+| Statische Karte              | [Render](/rest/api/maps/render/getmapimage)                       |                         
+| Zeitzone               | [Zeitzone](/rest/api/maps/timezone)                              |                         
+| Elevation               | [Höhe (Vorschauversion)](/rest/api/maps/elevation)                   |                         |
 
 Die folgenden Dienst-APIs stehen in Azure Maps derzeit nicht zur Verfügung:
 
-- Elevation
 - Geolocation
 - Details zu Orten und Fotos: Telefonnummern und Website-URL stehen in der Azure Maps-Such-API zur Verfügung.
 - Karten-URLs
@@ -203,7 +203,7 @@ Der Routenplanungsdienst von Azure Maps stellt die folgenden APIs zum Berechnen 
 
 - [**Berechnen der Route:**](/rest/api/maps/route/getroutedirections) Berechnen Sie die Route, und lassen Sie die Anforderung sofort verarbeiten. Diese API unterstützt sowohl GET- als auch POST-Anforderungen. POST-Anforderungen werden empfohlen, wenn eine große Anzahl von Wegpunkten angegeben wird oder wenn viele der Routenoptionen verwendet werden, um sicherzustellen, dass die URL-Anforderung nicht zu lang wird und Probleme verursacht. Für die POST-Anforderung im Zusammenhang mit der Routenbeschreibung in Azure Maps steht eine Option zur Verfügung, die Tausende unterstützende Punkte ([SupportingPoints](/rest/api/maps/route/postroutedirections#supportingpoints)) akzeptiert und diese verwendet, um eine logische Route zwischen ihnen zu erstellen (Ausrichtung an Straße). 
 - [**Batchroute:**](/rest/api/maps/route/postroutedirectionsbatchpreview) Erstellen Sie eine Anforderung mit bis zu 1.000 Routenanforderungen, und lassen Sie sie über einen bestimmten Zeitraum verarbeiten. Alle Daten werden auf dem Server parallel verarbeitet. Nach Abschluss des Vorgangs kann das vollständige Resultset heruntergeladen werden.
-- [**Mobilitätsdienste:**](/rest/api/maps/mobility) Berechnen Sie Routen und Wegbeschreibungen mit dem öffentlichen Nahverkehr.
+- [**Mobilitätsdienste (Vorschauversion)**](/rest/api/maps/mobility): Berechnen Sie Routen und Wegbeschreibungen mit dem öffentlichen Nahverkehr.
 
 In der folgenden Tabelle werden die API-Parameter von Google Maps den vergleichbaren API-Parametern in Azure Maps gegenübergestellt:
 
@@ -219,10 +219,10 @@ In der folgenden Tabelle werden die API-Parameter von Google Maps den vergleichb
 | `mode`                         | `travelMode`                       |
 | `optimize`                     | `computeBestOrder`                 |
 | `origin`                       | `query`                            |
-| `region`                       | *Nicht verfügbar:* Dieses Feature hängt mit der Geocodierung zusammen. Verwenden Sie den Parameter *countrySet* , wenn Sie die Geocodierung-API von Azure Maps verwenden.  |
+| `region`                       | *Nicht verfügbar:* Dieses Feature hängt mit der Geocodierung zusammen. Verwenden Sie den Parameter *countrySet*, wenn Sie die Geocodierung-API von Azure Maps verwenden.  |
 | `traffic_model`               | *Nicht verfügbar:* Es kann nur angegeben werden, ob Verkehrsinfos mit dem Parameter *traffic* verwendet werden sollen. |
-| `transit_mode`                | Weitere Informationen finden Sie in der [Dokumentation zu den Mobilitätsdiensten](/rest/api/maps/mobility). |
-| `transit_routing_preference` | Weitere Informationen finden Sie in der [Dokumentation zu den Mobilitätsdiensten](/rest/api/maps/mobility). |
+| `transit_mode`                | Weitere Informationen finden Sie in der [Dokumentation zu den Mobilitätsdiensten (Vorschauversion)](/rest/api/maps/mobility). |
+| `transit_routing_preference` | Weitere Informationen finden Sie in der [Dokumentation zu den Mobilitätsdiensten (Vorschauversion)](/rest/api/maps/mobility). |
 | `units`                        | *Nicht verfügbar:* Bei Azure Maps wird ausschließlich das metrische System verwendet.  |
 | `waypoints`                    | `query`                            |
 
@@ -501,10 +501,10 @@ Weitere Informationen zu den Azure Maps-REST-Diensten:
 > [Bewährte Methoden für den Azure Maps-Routendienst](how-to-use-best-practices-for-routing.md)
 
 > [!div class="nextstepaction"]
-> [Azure Maps-REST-Dienste-API – Referenzdokumentation](https://docs.microsoft.com/rest/api/maps/)
+> [Azure Maps-REST-Dienste-API – Referenzdokumentation](/rest/api/maps/)
 
 > [!div class="nextstepaction"]
-> [Codebeispiele](https://docs.microsoft.com/samples/browse/?products=azure-maps)
+> [Codebeispiele](/samples/browse/?products=azure-maps)
 
 > [!div class="nextstepaction"]
 > [Verwenden des Dienstmoduls (Web SDK)](how-to-use-best-practices-for-routing.md)

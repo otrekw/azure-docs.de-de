@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 10/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: 65451ed99580d9f2d66bd28518f0ec40a21ffe65
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: ed5eda668f6bd52ba144aa664119ab613fdb7742
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93317091"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183582"
 ---
 # <a name="manage-runbooks-in-azure-automation"></a>Verwalten von Runbooks in Azure Automation
 
@@ -45,27 +45,27 @@ New-AzAutomationRunbook -AutomationAccountName MyAccount `
 
 ## <a name="import-a-runbook"></a>Importieren eines Runbooks
 
-Sie können ein PowerShell- oder PowerShell-Workflowskript ( **.ps1** ), ein grafisches Runbook ( **.graphrunbook** ) oder ein Python 2-Skript ( **.py** ) importieren, um ein eigenes Runbook zu erstellen. Geben Sie den [Runbook-Typ](automation-runbook-types.md) an, der beim Import erstellt wird. Berücksichtigen Sie dabei die folgenden Aspekte.
+Sie können ein PowerShell- oder PowerShell-Workflowskript ( **.ps1**), ein grafisches Runbook ( **.graphrunbook**) oder ein Python 2-Skript ( **.py**) importieren, um ein eigenes Runbook zu erstellen. Geben Sie den [Runbook-Typ](automation-runbook-types.md) an, der beim Import erstellt wird. Berücksichtigen Sie dabei die folgenden Aspekte.
 
-* Eine **.ps1** -Datei ohne Workflow kann in ein [PowerShell-Runbook](automation-runbook-types.md#powershell-runbooks) oder [PowerShell-Workflow-Runbook](automation-runbook-types.md#powershell-workflow-runbooks) importiert werden. Wenn Sie sie in ein PowerShell-Workflow-Runbook importieren, wird sie in einen Workflow konvertiert. In diesem Fall sind im Runbook Kommentare enthalten, um die vorgenommenen Änderungen zu beschreiben.
+* Eine **.ps1**-Datei ohne Workflow kann in ein [PowerShell-Runbook](automation-runbook-types.md#powershell-runbooks) oder [PowerShell-Workflow-Runbook](automation-runbook-types.md#powershell-workflow-runbooks) importiert werden. Wenn Sie sie in ein PowerShell-Workflow-Runbook importieren, wird sie in einen Workflow konvertiert. In diesem Fall sind im Runbook Kommentare enthalten, um die vorgenommenen Änderungen zu beschreiben.
 
-* Eine **.ps1** -Datei mit einem PowerShell-Workflow kann nur in ein [PowerShell-Workflow-Runbook](automation-runbook-types.md#powershell-workflow-runbooks) importiert werden. Wenn die Datei mehrere PowerShell-Workflows enthält, schlägt der Import fehl. Sie müssen jeden Workflow in einer eigenen Datei speichern und einzeln importieren.
+* Eine **.ps1**-Datei mit einem PowerShell-Workflow kann nur in ein [PowerShell-Workflow-Runbook](automation-runbook-types.md#powershell-workflow-runbooks) importiert werden. Wenn die Datei mehrere PowerShell-Workflows enthält, schlägt der Import fehl. Sie müssen jeden Workflow in einer eigenen Datei speichern und einzeln importieren.
 
-* Eine **.ps1** -Datei mit einem PowerShell-Workflow darf nicht in ein [PowerShell-Runbook](automation-runbook-types.md#powershell-runbooks) importiert werden, da sie von der PowerShell-Skript-Engine nicht erkannt werden kann.
+* Eine **.ps1**-Datei mit einem PowerShell-Workflow darf nicht in ein [PowerShell-Runbook](automation-runbook-types.md#powershell-runbooks) importiert werden, da sie von der PowerShell-Skript-Engine nicht erkannt werden kann.
 
-* Importieren Sie eine **.graphrunbook** -Datei nur in ein neues [grafisches Runbook](automation-runbook-types.md#graphical-runbooks).
+* Importieren Sie eine **.graphrunbook**-Datei nur in ein neues [grafisches Runbook](automation-runbook-types.md#graphical-runbooks).
 
 ### <a name="import-a-runbook-from-the-azure-portal"></a>Importieren eines Runbooks im Azure-Portal
 
 Mit dem folgenden Verfahren können eine Skriptdatei in Azure Automation importieren.
 
 > [!NOTE]
-> Sie können über das Portal nur eine **.ps1** -Datei in ein PowerShell-Workflow-Runbook importieren.
+> Sie können über das Portal nur eine **.ps1**-Datei in ein PowerShell-Workflow-Runbook importieren.
 
 1. Öffnen Sie im Azure-Portal Ihr Automation-Konto.
 2. Wählen Sie unter **Prozessautomatisierung** die Option **Runbooks** aus, um die Liste der Runbooks zu öffnen.
 3. Klicken Sie auf **Runbook importieren**.
-4. Klicken Sie auf **Runbookdatei** , und wählen Sie die zu importierende Datei aus.
+4. Klicken Sie auf **Runbookdatei**, und wählen Sie die zu importierende Datei aus.
 5. Wenn das Feld **Name** aktiviert ist, haben Sie die Möglichkeit, den Namen des Runbooks zu ändern. Der Name muss mit einem Buchstaben beginnen und darf Buchstaben, Zahlen, Unterstriche und Bindestriche enthalten.
 6. Der [Runbooktyp](automation-runbook-types.md) wird automatisch ausgewählt, Sie können den Typ jedoch unter Berücksichtigung der geltenden Einschränkungen ändern.
 7. Klicken Sie auf **Erstellen**. Das neue Runbook wird in der Liste der Runbooks für das Automation-Konto angezeigt.
@@ -223,7 +223,7 @@ So verwenden Sie ein benutzerdefiniertes Skript
 
 1. Erstellen Sie ein Automation-Konto, und rufen Sie eine Rolle als [Mitwirkender](automation-role-based-access-control.md) ab.
 2. [Verknüpfen Sie das Konto mit dem Azure-Arbeitsbereich](../security-center/security-center-enable-data-collection.md).
-3. Aktivieren Sie [Hybrid Runbook Worker](automation-hybrid-runbook-worker.md), [Updateverwaltung](update-management/update-mgmt-overview.md) oder ein anderes Automation-Feature. 
+3. Aktivieren Sie [Hybrid Runbook Worker](automation-hybrid-runbook-worker.md), [Updateverwaltung](./update-management/overview.md) oder ein anderes Automation-Feature. 
 4. Auf einem Linux-Computer benötigen Sie dazu erhöhte Berechtigungen. Melden Sie sich an, um [Signaturüberprüfungen zu deaktivieren](automation-linux-hrw-install.md#turn-off-signature-validation).
 
 ## <a name="test-a-runbook"></a>Testen eines Runbooks
@@ -235,10 +235,10 @@ Auch wenn die Entwurfsversion ausgeführt wird, wird das Runbook trotzdem normal
 Die Vorgehensweise zum Testen der einzelnen [Typen von Runbooks](automation-runbook-types.md) ist identisch. Es besteht kein Unterschied zwischen Tests mit dem Text-Editor und dem grafischen Editor im Azure-Portal.
 
 1. Öffnen Sie die Entwurfsversion des Runbooks entweder im [Text-Editor](automation-edit-textual-runbook.md) oder [grafischen Editor](automation-graphical-authoring-intro.md).
-1. Klicken Sie auf **Testen** , um die Testseite zu öffnen.
+1. Klicken Sie auf **Testen**, um die Testseite zu öffnen.
 1. Wenn das Runbook über Parameter verfügt, werden diese im linken Bereich aufgeführt. Dort können Sie die für den Test zu verwendenden Werte angeben.
-1. Wenn Sie den Test auf einem [Hybrid Runbook Worker](automation-hybrid-runbook-worker.md) ausführen möchten, ändern Sie die **Testlaufeinstellungen** in **Hybrid Worker** , und wählen Sie den Namen der Zielgruppe aus.  Andernfalls behalten Sie den Standardwert **Azure** bei, um den Test in der Cloud auszuführen.
-1. Klicken Sie auf **Starten** , um den Test zu starten.
+1. Wenn Sie den Test auf einem [Hybrid Runbook Worker](automation-hybrid-runbook-worker.md) ausführen möchten, ändern Sie die **Testlaufeinstellungen** in **Hybrid Worker**, und wählen Sie den Namen der Zielgruppe aus.  Andernfalls behalten Sie den Standardwert **Azure** bei, um den Test in der Cloud auszuführen.
+1. Klicken Sie auf **Starten**, um den Test zu starten.
 1. Sie können die Schaltflächen unter dem Bereich „Ausgabe“ verwenden, um während des Tests ein [PowerShell-Workflow](automation-runbook-types.md#powershell-workflow-runbooks)- oder [graphisches](automation-runbook-types.md#graphical-runbooks) Runbook zu beenden oder anzuhalten. Wenn Sie das Runbook anhalten, wird die aktuelle Aktivität vor der Unterbrechung abgeschlossen. Nachdem das Runbook angehalten wurde, können Sie es beenden oder erneut starten.
 1. Untersuchen Sie die Ausgabe des Runbooks im Bereich „Ausgabe“.
 

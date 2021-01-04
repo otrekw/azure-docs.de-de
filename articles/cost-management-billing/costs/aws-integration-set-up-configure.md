@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: matrive
-ms.openlocfilehash: e900d63ba7e521cbf7e63d8580d22b08726d1ef6
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 2b8a008decc41a5686fb2c8d9fee271f95f0fef3
+ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92517343"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96122404"
 ---
 # <a name="set-up-and-configure-aws-cost-and-usage-report-integration"></a>Einrichten und Konfigurieren der Integration von AWS-Kosten- und Nutzungsberichten
 
@@ -150,7 +150,8 @@ Der JSON-Code der Richtlinie sollte wie im folgenden Beispiel aussehen: Ersetzen
 Verwenden Sie die folgenden Informationen, um einen AWS-Connector zu erstellen und mit der Überwachung Ihrer AWS-Kosten zu beginnen:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-2. Navigieren Sie zu **Cost Management + Abrechnung** > **Cost Management**.
+2. Rufen Sie die Azure-Startseite auf, indem Sie im Menü auf der linken Seite auf **Start** klicken („Hamburger“-Menüsymbol mit drei Strichen).
+3. Navigieren Sie zu **Tools** > **Cost Management** unten auf der Seite.
 3. Wählen Sie unter **Einstellungen** die Option **Connectors für AWS** aus.  
 4. Wählen Sie **+ Hinzufügen** oben auf der Seite aus, um einen Connector zu erstellen.  
     :::image type="content" source="./media/aws-integration-setup-configure/aws-connector.png" alt-text="Beispiel für die Einstellung „Connectors für AWS“" :::
@@ -173,7 +174,7 @@ Wenn den Benutzern nach dem Erkennen Connectorberechtigungen zugewiesen werden, 
 
 - [Richten Sie Verwaltungsgruppen ein](../../governance/management-groups/overview.md#initial-setup-of-management-groups), sofern das noch nicht geschehen ist.
 - Stellen Sie sicher, dass Ihrer Bereichsauswahl neue Bereiche hinzugefügt wurden. Wählen Sie **Aktualisieren** aus, um die neuesten Daten anzuzeigen.
-- Wählen Sie auf der Seite **Cloudconnectors** Ihren Connector aus, und klicken Sie auf **Zu Abrechnungskonto wechseln** , um das verknüpfte Konto Verwaltungsgruppen zuzuweisen.
+- Wählen Sie auf der Seite **Cloudconnectors** Ihren Connector aus, und klicken Sie auf **Zu Abrechnungskonto wechseln**, um das verknüpfte Konto Verwaltungsgruppen zuzuweisen.
 
 > [!NOTE]
 > Verwaltungsgruppen werden derzeit nicht für Microsoft-Kundenvereinbarung-Kunden (Microsoft Customer Agreement, MCA) unterstützt. MCA-Kunden können den Connector erstellen und ihre AWS-Daten anzeigen. Allerdings können MCA-Kunden ihre Azure-Kosten und AWS-Kosten nicht zusammen in einer Verwaltungsgruppe anzeigen.

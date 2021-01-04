@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.date: 10/29/2020
 ms.author: alkohli
 ms.subservice: common
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 39f9a5802d7f10753c8ea81bf414da195e137cc6
-ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: e2e25f2fb806cb6e88745ffdfefe3dd82c0e9a6d
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93234136"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96326539"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>Verwenden des Azure Import/Export-Diensts zum Exportieren von Daten aus Azure Blob Storage
 
@@ -72,8 +72,8 @@ Führen Sie die folgenden Schritte aus, um im Azure-Portal einen Exportauftrag z
          ![Alle exportieren](./media/storage-import-export-data-from-blobs/export-from-blob4.png)
 
     - Sie können angeben, welche Container und Blobs exportiert werden sollen.
-        - **So geben Sie ein zu exportierendes Blob an** : Verwenden Sie den Selektor **Gleich**. Geben Sie den relativen Pfad zum Blob, beginnend mit dem Containernamen, an. Verwenden Sie *$root* , um den Stammcontainer festzulegen.
-        - **So geben Sie alle Blobs an, die mit einem Präfix beginnen** : Verwenden Sie den Selektor **Beginnt mit**. Geben Sie das Präfix beginnend mit einem Schrägstrich „/“ an. Bei dem Präfix kann es sich um das Präfix des Containernamens, den vollständigen Containernamen oder den vollständigen Containernamen gefolgt vom Präfix des Blob-Namens handeln. Sie müssen die Blobpfade in einem gültigen Format angeben, um Fehler während der Verarbeitung zu vermeiden. Dies ist in diesem Screenshot dargestellt. Weitere Informationen finden Sie unter [Beispiele für gültige Blobpfade](#examples-of-valid-blob-paths).
+        - **So geben Sie ein zu exportierendes Blob an**: Verwenden Sie den Selektor **Gleich**. Geben Sie den relativen Pfad zum Blob, beginnend mit dem Containernamen, an. Verwenden Sie *$root* , um den Stammcontainer festzulegen.
+        - **So geben Sie alle Blobs an, die mit einem Präfix beginnen**: Verwenden Sie den Selektor **Beginnt mit**. Geben Sie das Präfix beginnend mit einem Schrägstrich „/“ an. Bei dem Präfix kann es sich um das Präfix des Containernamens, den vollständigen Containernamen oder den vollständigen Containernamen gefolgt vom Präfix des Blob-Namens handeln. Sie müssen die Blobpfade in einem gültigen Format angeben, um Fehler während der Verarbeitung zu vermeiden. Dies ist in diesem Screenshot dargestellt. Weitere Informationen finden Sie unter [Beispiele für gültige Blobpfade](#examples-of-valid-blob-paths).
 
            ![Exportieren ausgewählter Container und Blobs](./media/storage-import-export-data-from-blobs/export-from-blob5.png)
 
@@ -101,7 +101,7 @@ Führen Sie die folgenden Schritte aus, um im Azure-Portal einen Exportauftrag z
         > [!NOTE]
         > Senden Sie die Datenträger immer an das im Azure-Portal angegebene Rechenzentrum. Wenn die Datenträger an das falsche Rechenzentrum versendet werden, wird der Auftrag nicht verarbeitet.
 
-    - Klicken Sie auf **OK** , um das Erstellen des Exportauftrags abzuschließen.
+    - Klicken Sie auf **OK**, um das Erstellen des Exportauftrags abzuschließen.
 
 ### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
@@ -284,7 +284,7 @@ Wenn Sie die Anzahl der benötigten Laufwerke nicht kennen, fahren Sie mit [Übe
 Wenn im Dashboard angegeben wird, dass der Auftrag abgeschlossen wurde, werden die Laufwerke an Sie versendet, und die Nachverfolgungsnummer für die Lieferung ist im Portal verfügbar.
 
 1. Wenn Sie die Laufwerke mit exportierten Daten erhalten haben, benötigen Sie die BitLocker-Schlüssel, um die Laufwerke zu entsperren. Wechseln Sie im Azure-Portal zum Exportauftrag. Klicken auf die Registerkarte **Import/Export**.
-2. Wählen Sie Ihren Exportauftrag in der Liste aus, und klicken Sie darauf. Wechseln Sie zu **Verschlüsselung** , und kopieren Sie die Schlüssel.
+2. Wählen Sie Ihren Exportauftrag in der Liste aus, und klicken Sie darauf. Wechseln Sie zu **Verschlüsselung**, und kopieren Sie die Schlüssel.
 
    ![BitLocker-Schlüssel für einen Exportauftrag anzeigen](./media/storage-import-export-data-from-blobs/export-from-blob-7.png)
 
@@ -380,7 +380,7 @@ Die folgende Tabelle enthält Beispiele für gültige Blob-Pfade:
    | Starts With |/$root/ |Exportiert alle Blobs im Stammcontainer |
    | Starts With |/book |Exportiert alle Blobs in allen Containern mit dem Präfix **book** |
    | Starts With |/music/ |Exportiert alle Blobs im Container **music** |
-   | Starts With |/music/love |Exportiert alle Blobs im Container **music** , die mit dem Präfix **love** beginnen |
+   | Starts With |/music/love |Exportiert alle Blobs im Container **music**, die mit dem Präfix **love** beginnen |
    | Equal To |$root/logo.bmp |Exportiert das Blob **logo.bmp** im Stammcontainer |
    | Equal To |videos/story.mp4 |Exportiert das Blob **story.mp4** im Container **videos** |
 

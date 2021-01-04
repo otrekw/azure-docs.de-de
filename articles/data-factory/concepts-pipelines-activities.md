@@ -3,18 +3,18 @@ title: Pipelines und Aktivitäten in Azure Data Factory
 description: Informationen zu Pipelines und Aktivitäten in Azure Data Factory
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/19/2019
-ms.openlocfilehash: 93d741d22ac03c132954a48731451f891042d7b4
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: ceaced5860976b0fa9f84903804700f778ed9550
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371170"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500076"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Pipelines und Aktivitäten in Azure Data Factory
 
@@ -57,7 +57,7 @@ Datentransformationsaktivität | Compute-Umgebung
 [Hadoop-Datenströme](transform-data-using-hadoop-streaming.md) | HDInsight [Hadoop]
 [Spark](transform-data-using-spark.md) | HDInsight [Hadoop]
 [Aktivitäten mit Azure Machine Learning Studio (klassisch): Batchausführung und Ressourcenaktualisierung](transform-data-using-machine-learning.md) | Azure VM
-[Gespeicherte Prozedur](transform-data-using-stored-procedure.md) | Azure SQL, Azure Synapse Analytics (ehemals SQL Data Warehouse) oder SQL Server
+[Gespeicherte Prozedur](transform-data-using-stored-procedure.md) | Azure SQL, Azure Synapse Analytics oder SQL Server
 [U-SQL](transform-data-using-data-lake-analytics.md) | Azure Data Lake Analytics
 [Benutzerdefinierte Aktivität](transform-data-using-dotnet-custom-activity.md) | Azure Batch
 [Databricks-Notebook](transform-data-databricks-notebook.md) | Azure Databricks
@@ -221,10 +221,10 @@ Die unterschiedlichen Abhängigkeitsbedingungen lauten: „Erfolgreich“, „Fe
 
 Bei einer Pipeline mit Aktivität A -> Aktivität B lauten die möglichen Szenarios beispielsweise folgendermaßen:
 
-- Die Abhängigkeitsbedingung von Aktivität B zu Aktivität A lautet **Erfolgreich** : Aktivität B wird nur ausgeführt, wenn Aktivität A den Endstatus „Erfolgreich“ aufweist.
-- Die Abhängigkeitsbedingung von Aktivität B zu Aktivität A lautet **Fehlgeschlagen** : Aktivität B wird nur ausgeführt, wenn Aktivität A den Endstatus „Fehlgeschlagen“ aufweist.
-- Die Abhängigkeitsbedingung von Aktivität B zu Aktivität A lautet **Abgeschlossen** : Aktivität B wird nur ausgeführt, wenn Aktivität A den Endstatus „Erfolgreich“ oder „Fehlgeschlagen“ aufweist.
-- Die Abhängigkeitsbedingung von Aktivität B zu Aktivität A lautet **Übersprungen** : Aktivität B wird nur ausgeführt, wenn Aktivität A den Endstatus „Übersprungen“ aufweist. Die Bedingung „Übersprungen“ tritt im Szenario Aktivität X -> Aktivität Y -> Aktivität Z auf. Hier wird eine Aktivität nur ausgeführt, wenn die vorherige Aktivität erfolgreich war. Tritt bei Aktivität X ein Fehler auf, erhält Aktivität Y den Status „Übersprungen“, da sie nicht ausgeführt wird. Dementsprechend erhält auch Aktivität Z den Status „Übersprungen“.
+- Die Abhängigkeitsbedingung von Aktivität B zu Aktivität A lautet **Erfolgreich**: Aktivität B wird nur ausgeführt, wenn Aktivität A den Endstatus „Erfolgreich“ aufweist.
+- Die Abhängigkeitsbedingung von Aktivität B zu Aktivität A lautet **Fehlgeschlagen**: Aktivität B wird nur ausgeführt, wenn Aktivität A den Endstatus „Fehlgeschlagen“ aufweist.
+- Die Abhängigkeitsbedingung von Aktivität B zu Aktivität A lautet **Abgeschlossen**: Aktivität B wird nur ausgeführt, wenn Aktivität A den Endstatus „Erfolgreich“ oder „Fehlgeschlagen“ aufweist.
+- Die Abhängigkeitsbedingung von Aktivität B zu Aktivität A lautet **Übersprungen**: Aktivität B wird nur ausgeführt, wenn Aktivität A den Endstatus „Übersprungen“ aufweist. Die Bedingung „Übersprungen“ tritt im Szenario Aktivität X -> Aktivität Y -> Aktivität Z auf. Hier wird eine Aktivität nur ausgeführt, wenn die vorherige Aktivität erfolgreich war. Tritt bei Aktivität X ein Fehler auf, erhält Aktivität Y den Status „Übersprungen“, da sie nicht ausgeführt wird. Dementsprechend erhält auch Aktivität Z den Status „Übersprungen“.
 
 #### <a name="example-activity-2-depends-on-the-activity-1-succeeding"></a>Beispiel: Aktivität 2 hängt von der erfolgreich abgeschlossenen Aktivität 1 ab
 

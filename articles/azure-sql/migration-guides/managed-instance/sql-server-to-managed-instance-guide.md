@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 0aba809fd18dfd74a344a32b2335aba9426c9845
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 5d5404537ad107a54bd32110727e5a7d0f74ebea
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94496242"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96326895"
 ---
 # <a name="migration-guide-sql-server-to-sql-managed-instance"></a>Migrationsleitfaden: SQL Server zu SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -99,7 +99,7 @@ Wenn Sie die Leistung Ihrer Workload in einer SQL Managed Instance-Instanz mit I
 
 ### <a name="create-sql-managed-instance"></a>Erstellen einer verwalteten SQL-Instanz 
 
-Erstellen Sie auf Grundlage der Informationen aus der Ermittlungs- und Bewertungsphase eine entsprechend große SQL Managed Instance-Zielinstanz. Hierfür können Sie das [Azure-Portal](../../managed-instance/instance-create-quickstart.md), [PowerShell](../../managed-instance/scripts/create-configure-managed-instance-powershell.md) oder eine [Azure Resource Manager-Vorlage (ARM-Vorlage)](/../../managed-instance/create-template-quickstart.md) verwenden. 
+Erstellen Sie auf Grundlage der Informationen aus der Ermittlungs- und Bewertungsphase eine entsprechend große SQL Managed Instance-Zielinstanz. Hierfür können Sie das [Azure-Portal](../../managed-instance/instance-create-quickstart.md), [PowerShell](../../managed-instance/scripts/create-configure-managed-instance-powershell.md) oder eine [Azure Resource Manager-Vorlage (ARM-Vorlage)](../../managed-instance/create-template-quickstart.md) verwenden. 
 
 
 ## <a name="migrate"></a>Migrieren
@@ -124,7 +124,7 @@ Befolgen Sie diese Schritte, um Migrationen mit DMS durchzuführen:
 1. Klicken Sie nach der Wiederherstellung der Datenbank auf **Übernahme starten**. Beim Migrationsprozess wird die Sicherung des Protokollfragments kopiert, sobald Sie es in der SMB-Netzwerkfreigabe verfügbar machen, und im Ziel wiederhergestellt. 
 1. Halten Sie in der Quelldatenbank sämtlichen eingehenden Datenverkehr an, und aktualisieren Sie die Verbindungszeichenfolge auf die neue Azure SQL Managed Instance-Datenbank. 
 
-Ein ausführliches Tutorial für diese Migrationsoption finden Sie unter [Tutorial: Onlinemigration von SQL Server zu Azure SQL Managed Instance mithilfe von DMS](/azure/dms/tutorial-sql-server-managed-instance-online). 
+Ein ausführliches Tutorial für diese Migrationsoption finden Sie unter [Tutorial: Onlinemigration von SQL Server zu Azure SQL Managed Instance mithilfe von DMS](../../../dms/tutorial-sql-server-managed-instance-online.md). 
    
 
 
@@ -142,7 +142,7 @@ Das folgende Diagramm bietet einen allgemeinen Überblick über den Prozess:
 
 Befolgen Sie diese Schritte, um die Migration mit dem Sicherungs- und Wiederherstellungsansatz durchzuführen: 
 
-1. Sichern Sie Ihre Datenbank in Azure Blob Storage. Verwenden Sie beispielsweise die Option [Backup to URL](/sql/relational-databases/backup-restore/sql-server-backup-to-url) (Sicherung über URL) in [SQL Server Management Studio](/ssms/download-sql-server-management-studio-ssms). Verwenden Sie das entsprechende [Microsoft Azure-Tool](https://go.microsoft.com/fwlink/?LinkID=324399), wenn Datenbanken unterstützt werden müssen, die älter als SQL Server 2012 SP1 CU2 sind. 
+1. Sichern Sie Ihre Datenbank in Azure Blob Storage. Verwenden Sie beispielsweise die Option [Backup to URL](/sql/relational-databases/backup-restore/sql-server-backup-to-url) (Sicherung über URL) in [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms). Verwenden Sie das entsprechende [Microsoft Azure-Tool](https://go.microsoft.com/fwlink/?LinkID=324399), wenn Datenbanken unterstützt werden müssen, die älter als SQL Server 2012 SP1 CU2 sind. 
 1. Stellen Sie über SQL Server Management Studio eine Verbindung mit Ihrer Azure SQL Managed Instance-Instanz her. 
 1. Erstellen Sie mithilfe einer SAS (Shared Access Signature) die Anmeldeinformationen für den Zugriff auf das Azure Blob Storage-Konto, das Ihre Datenbanksicherungen enthält. Zum Beispiel:
 
@@ -160,7 +160,7 @@ Befolgen Sie diese Schritte, um die Migration mit dem Sicherungs- und Wiederhers
 
 1. Rufen Sie die Datenbank nach Abschluss der Wiederherstellung im **Objekt-Explorer** in SQL Server Management Studio auf. 
 
-Weitere Informationen zu dieser Migrationsoption finden Sie unter [Schnellstart: Wiederherstellen einer Datenbank in Azure SQL Managed Instance mit SSMS](https://docs.microsoft.com/azure/azure-sql/managed-instance/restore-sample-database-quickstart).
+Weitere Informationen zu dieser Migrationsoption finden Sie unter [Schnellstart: Wiederherstellen einer Datenbank in Azure SQL Managed Instance mit SSMS](../../managed-instance/restore-sample-database-quickstart.md).
 
 > [!NOTE]
 > Der Vorgang der Datenbankwiederherstellung ist asynchron und wiederholbar. Möglicherweise erhalten Sie eine Fehlermeldung in SQL Server Management Studio, falls die Verbindung unterbrochen oder ein Timeout überschritten wird. Azure SQL-Datenbank versucht weiterhin, die Datenbank im Hintergrund wiederherzustellen, und Sie können den Wiederherstellungsfortschritt mithilfe der Ansichten [sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) und [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) verfolgen.
@@ -203,7 +203,7 @@ Das Testvorgehen für die Datenbankmigration umfasst die folgenden Aktivitäten:
 
 ## <a name="leverage-advanced-features"></a>Nutzen der erweiterten Features 
 
-Sie sollten die erweiterten cloudbasierten Features von SQL Managed Instance nutzen, z. B. die [integrierte Hochverfügbarkeit](../../database/high-availability-sla.md), die [Bedrohungserkennung](../../database/advanced-data-security.md) und die [Überwachung und Optimierung Ihrer Workloads](../../database/monitor-tune-overview.md). 
+Sie sollten die erweiterten cloudbasierten Features von SQL Managed Instance nutzen, z. B. die [integrierte Hochverfügbarkeit](../../database/high-availability-sla.md), die [Bedrohungserkennung](../../database/azure-defender-for-sql.md) und die [Überwachung und Optimierung Ihrer Workloads](../../database/monitor-tune-overview.md). 
 
 Die [Azure SQL-Analyse](../../../azure-monitor/insights/azure-sql.md) bietet eine zentralisierte Überwachung für große Mengen verwalteter Instanzen.
 

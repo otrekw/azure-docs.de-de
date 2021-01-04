@@ -1,22 +1,22 @@
 ---
-title: 'Azure Cosmos-Emulator: Download und Versionshinweise'
-description: Hier finden Sie Hinweise zu verschiedenen Versionen des Azure Cosmos-Emulators sowie Downloadinformationen.
+title: 'Azure Cosmos DB-Emulator: Download und Versionshinweise'
+description: Hier finden Sie Hinweise zu verschiedenen Versionen des Azure Cosmos DB-Emulators sowie Downloadinformationen.
 ms.service: cosmos-db
 ms.topic: conceptual
 author: milismsft
 ms.author: adrianmi
 ms.date: 09/21/2020
-ms.openlocfilehash: 6ffd5670a8b84f0f4a5b7d3dee8a7a5080be26f5
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 5d105ad4c2aff03dae52b340037e4c193bf82ca1
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357316"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608434"
 ---
-# <a name="azure-cosmos-emulator---release-notes-and-download-information"></a>Azure Cosmos-Emulator: Versionshinweise und Informationen zum Download
+# <a name="azure-cosmos-db-emulator---release-notes-and-download-information"></a>Azure Cosmos DB-Emulator: Versionshinweise und Informationen zum Download
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
-Dieser Artikel zeigt die Versionshinweise zum Azure Cosmos-Emulator mit einer Liste der Featureupdates, die in den Versionen vorgenommen wurden. Auch die zum Herunterladen und Verwenden verfügbare neueste Version des Emulators wird aufgeführt.
+Dieser Artikel enthält die Versionshinweise zum Azure Cosmos DB-Emulator mit einer Liste der Featureupdates, die in den Versionen vorgenommen wurden. Auch die zum Herunterladen und Verwenden verfügbare neueste Version des Emulators wird aufgeführt.
 
 ## <a name="download"></a>Download
 
@@ -26,6 +26,12 @@ Dieser Artikel zeigt die Versionshinweise zum Azure Cosmos-Emulator mit einer Li
 |**Erste Schritte**|[Lokale Entwicklung mit dem Azure Cosmos-Emulator](local-emulator.md)|
 
 ## <a name="release-notes"></a>Versionshinweise
+
+### <a name="2119-3-december-2020"></a>2.11.9 (3. Dezember 2020)
+
+ - In diesem Release werden neben allgemeinen Inhaltsaktualisierungen zur Berücksichtigung der neuesten Features und Verbesserungen in Azure Cosmos DB auch einige Probleme mit der Azure Cosmos DB-Emulatorfunktion behandelt:
+ * Fix für ein Problem, das bei Verwendung von Direktmodus und Java-Clientanwendungen dazu führte, dass Anforderungen mit großen Dokumentnutzdaten nicht erfolgreich waren
+ * Fix für ein Konnektivitätsproblem mit der MongoDB-Endpunktversion 3.6, wenn diese von .NET-basierten Anwendungen als Ziel verwendet wurde
 
 ### <a name="2118-6-november-2020"></a>2.11.8 (6. November 2020)
 

@@ -11,12 +11,12 @@ ms.subservice: msi
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: references_regions
-ms.openlocfilehash: 37a17105be0b6754bbdfd935c6c17933314114d4
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 2da0407f848b0795414b071b9e082c7ed60a633d
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289584"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861883"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Dienste, die verwaltete Identitäten für Azure-Ressourcen unterstützen
 
@@ -45,8 +45,8 @@ Konfigurieren Sie die verwaltete Identität für Azure API Management anhand der
 
 | Typ der verwalteten Identität | Allgemein verfügbar<br>Globale Azure-Regionen | Azure Government | Azure Deutschland | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
-| Vom System zugewiesen | ![Verfügbar][check] | ![Verfügbar][check] | Nicht verfügbar. | Nicht verfügbar. |
-| Vom Benutzer zugewiesen | ![Verfügbar][check] | ![Verfügbar][check]  | Nicht verfügbar.  | Nicht verfügbar. |
+| Vom System zugewiesen | ![Verfügbar][check] | ![Verfügbar][check] | Nicht verfügbar. | ![Verfügbar][check] |
+| Vom Benutzer zugewiesen | ![Verfügbar][check] | ![Verfügbar][check]  | Nicht verfügbar.  | ![Verfügbar][check] |
 
 Konfigurieren Sie die verwaltete Identität für Azure App Configuration anhand der folgenden Liste (in Regionen, in denen sie verfügbar ist):
 
@@ -70,10 +70,20 @@ Konfigurieren Sie die verwaltete Identität für Azure App Service anhand der fo
 
 | Typ der verwalteten Identität | Allgemein verfügbar<br>Globale Azure-Regionen | Azure Government | Azure Deutschland | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
-| Vom System zugewiesen | Vorschau | Nicht verfügbar | Nicht verfügbar | Nicht verfügbar | 
+| Vom System zugewiesen | Vorschau | Nicht verfügbar | Nicht verfügbar | Nicht verfügbar |
 | Vom Benutzer zugewiesen | Nicht verfügbar | Nicht verfügbar | Nicht verfügbar | Nicht verfügbar |
 
 Kubernetes mit Azure Arc-Aktivierung [unterstützt derzeit systemseitig zugewiesene Identitäten](../../azure-arc/kubernetes/connect-cluster.md#azure-arc-agents-for-kubernetes). Das Zertifikat der Identität für den verwalteten Dienst wird von allen Kubernetes-Agents mit Azure Arc-Aktivierung zur Kommunikation mit Azure verwendet.
+
+### <a name="azure-automanage"></a>Automatische Azure-Verwaltung
+
+| Typ der verwalteten Identität | Allgemein verfügbar<br>Globale Azure-Regionen | Azure Government | Azure Deutschland | Azure China 21Vianet |
+| --- | :-: | :-: | :-: | :-: |
+| Vom System zugewiesen | Vorschau | Nicht verfügbar | Nicht verfügbar | Nicht verfügbar |
+| Vom Benutzer zugewiesen | Nicht verfügbar | Nicht verfügbar | Nicht verfügbar | Nicht verfügbar |
+
+Im folgenden Dokument finden Sie Informationen zum erneuten Konfigurieren einer verwalteten Identität, wenn Sie Ihr Abonnement zu einem neuen Mandanten verschoben haben:
+* [Reparieren eines fehlerhaften Automanage-Kontos](../../automanage/repair-automanage-account.md)
 
 ### <a name="azure-blueprints"></a>Azure Blueprint
 
@@ -151,7 +161,7 @@ Konfigurieren Sie die verwaltete Identität für Azure Data Factory V2 anhand de
 
 
 
-### <a name="azure-event-grid"></a>Azure Event Grid 
+### <a name="azure-event-grid"></a>Azure Event Grid
 
 Typ der verwalteten Identität |Allgemein verfügbar<br>Globale Azure-Regionen | Azure Government | Azure Deutschland | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
@@ -202,7 +212,7 @@ Typ der verwalteten Identität | Allgemein verfügbar<br>Globale Azure-Regionen 
 
 | Typ der verwalteten Identität | Allgemein verfügbar<br>Globale Azure-Regionen | Azure Government | Azure Deutschland | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
-| Vom System zugewiesen | ![Verfügbar][check] | ![Verfügbar][check] | Nicht verfügbar | Nicht verfügbar | 
+| Vom System zugewiesen | ![Verfügbar][check] | ![Verfügbar][check] | Nicht verfügbar | Nicht verfügbar |
 | Vom Benutzer zugewiesen | Vorschau | Nicht verfügbar | Nicht verfügbar | Nicht verfügbar |
 
 
@@ -222,7 +232,7 @@ Konfigurieren Sie die verwaltete Identität für Azure Logic Apps anhand der fol
 - [Azure portal](../../logic-apps/create-managed-service-identity.md#enable-system-assigned-identity-in-azure-portal)
 - [Azure Resource Manager-Vorlage](../../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)
 
-### <a name="azure-machine-learning"></a>Azure Machine Learning 
+### <a name="azure-machine-learning"></a>Azure Machine Learning
 
 Typ der verwalteten Identität | Allgemein verfügbar<br>Globale Azure-Regionen | Azure Government | Azure Deutschland | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
@@ -242,7 +252,7 @@ Konfigurieren Sie die verwaltete Identität für Azure Policy anhand der folgend
 
 - [Azure portal](../../governance/policy/tutorials/create-and-manage.md#assign-a-policy)
 - [PowerShell](../../governance/policy/how-to/remediate-resources.md#create-managed-identity-with-powershell)
-- [Azure-Befehlszeilenschnittstelle](/cli/azure/policy/assignment?view=azure-cli-latest#az-policy-assignment-create)
+- [Azure-Befehlszeilenschnittstelle](/cli/azure/policy/assignment#az-policy-assignment-create)
 - [Azure-Ressourcen-Manager-Vorlagen](/azure/templates/microsoft.authorization/policyassignments)
 - [REST](/rest/api/resources/policyassignments/create)
 
@@ -264,7 +274,7 @@ Informationen zum Konfigurieren der verwalteten Identität für Azure Service 
 
 | Typ der verwalteten Identität | Allgemein verfügbar<br>Globale Azure-Regionen | Azure Government | Azure Deutschland | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
-| Vom System zugewiesen | ![Verfügbar][check] | Nicht verfügbar. | Nicht verfügbar. | Nicht verfügbar. | 
+| Vom System zugewiesen | ![Verfügbar][check] | Nicht verfügbar. | Nicht verfügbar. | ![Verfügbar][check] |
 | Vom Benutzer zugewiesen | Nicht verfügbar. | Nicht verfügbar. | Nicht verfügbar. | Nicht verfügbar. |
 
 
@@ -281,8 +291,8 @@ Typ der verwalteten Identität | Allgemein verfügbar<br>Globale Azure-Regionen 
 
 |Typ der verwalteten Identität | Allgemein verfügbar<br>Globale Azure-Regionen | Azure Government | Azure Deutschland | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
-| Vom System zugewiesen | ![Verfügbar][check] | ![Verfügbar][check] | Vorschau | Vorschau |
-| Vom Benutzer zugewiesen | ![Verfügbar][check] | ![Verfügbar][check] | Vorschau | Vorschau |
+| Vom System zugewiesen | ![Verfügbar][check] | ![Verfügbar][check] | Vorschau | ![Verfügbar][check] |
+| Vom Benutzer zugewiesen | ![Verfügbar][check] | ![Verfügbar][check] | Vorschau | ![Verfügbar][check] |
 
 Konfigurieren Sie die verwaltete Identität für Azure Virtual Machine Scale Sets anhand der folgenden Liste (in Regionen, in denen sie verfügbar ist):
 
@@ -298,8 +308,8 @@ Konfigurieren Sie die verwaltete Identität für Azure Virtual Machine Scale Set
 
 | Typ der verwalteten Identität | Allgemein verfügbar<br>Globale Azure-Regionen | Azure Government | Azure Deutschland | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
-| Vom System zugewiesen | ![Verfügbar][check] | ![Verfügbar][check] | Vorschau | Vorschau | 
-| Vom Benutzer zugewiesen | ![Verfügbar][check] | ![Verfügbar][check] | Vorschau | Vorschau |
+| Vom System zugewiesen | ![Verfügbar][check] | ![Verfügbar][check] | Vorschau | ![Verfügbar][check] |
+| Vom Benutzer zugewiesen | ![Verfügbar][check] | ![Verfügbar][check] | Vorschau | ![Verfügbar][check] |
 
 Konfigurieren Sie die verwaltete Identität für Azure Virtual Machines anhand der folgenden Liste (in Regionen, in denen sie verfügbar ist):
 
@@ -315,7 +325,7 @@ Konfigurieren Sie die verwaltete Identität für Azure Virtual Machines anhand d
 
 | Typ der verwalteten Identität | Allgemein verfügbar<br>Globale Azure-Regionen | Azure Government | Azure Deutschland | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
-| Vom System zugewiesen | Nicht verfügbar. | Nicht verfügbar. | Nicht verfügbar. | Nicht verfügbar. | 
+| Vom System zugewiesen | Nicht verfügbar. | Nicht verfügbar. | Nicht verfügbar. | Nicht verfügbar. |
 | Vom Benutzer zugewiesen | [Verfügbar in unterstützten Regionen](../../virtual-machines/windows/image-builder-overview.md#regions) | Nicht verfügbar. | Nicht verfügbar. | Nicht verfügbar. |
 
 Informationen zum Konfigurieren der verwalteten Identität für Azure VM Image Builder (in Regionen, in denen sie verfügbar ist) finden Sie in der [Übersicht über Image Builder](../../virtual-machines/windows/image-builder-overview.md#permissions).

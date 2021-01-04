@@ -7,23 +7,23 @@ ms.author: baanders
 ms.date: 11/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 1866e9b233a1379474c061779ada09fd6d119107
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: f5bfe128ddc04e8048bb89a8e39035434dfd2b92
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94338665"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352880"
 ---
 # <a name="integrate-industry-standard-models-with-dtdl-for-azure-digital-twins"></a>Integrieren von Branchenstandardmodellen in DTDL für Azure Digital Twins
 
 Die Verwendung von Modellen, die auf Branchenstandards basieren oder eine standardmäßige Ontologiedarstellung nutzen (z. B. RDF oder OWL), bietet einen guten Ausgangspunkt für den Entwurf Ihrer Azure Digital Twins-Modelle. Die Verwendung von Branchenmodellen unterstützt außerdem die Standardisierung und Informationsfreigabe.
 
-Für die Verwendung in Azure Digital Twins muss ein Modell in der auf JSON-LD basierenden Sprache [**DTDL (Digital Twins Definition Language)** ](concepts-models.md) dargestellt werden. Deshalb wird in diesem Artikel beschrieben, wie Sie die Branchenstandardmodelle in DTDL darstellen und die vorhandenen Branchenkonzepte in die DTDL-Semantik integrieren, sodass diese von Azure Digital Twins verwendet werden können. Das DTDL-Modell dient dann als allgemeingültige Datenbasis für das Modell in Azure Digital Twins.
+Für die Verwendung in Azure Digital Twins muss ein Modell in der auf JSON-LD basierenden Sprache [**DTDL (Digital Twins Definition Language)**](concepts-models.md) dargestellt werden. Deshalb wird in diesem Artikel beschrieben, wie Sie die Branchenstandardmodelle in DTDL darstellen und die vorhandenen Branchenkonzepte in die DTDL-Semantik integrieren, sodass diese von Azure Digital Twins verwendet werden können. Das DTDL-Modell dient dann als allgemeingültige Datenbasis für das Modell in Azure Digital Twins.
 
 Es gibt drei Möglichkeiten für das Integrieren von Branchenstandardmodellen in DTDL:
-* **Übernehmen** : Sie können Ihre Lösung mit einer Open-Source-DTDL-Ontologie beginnen, die auf weit verbreiteten Branchenstandards basiert. 
-* **Konvertieren** : Wenn Sie bereits über vorhandene Modelle verfügen, müssen Sie diese in DTDL konvertieren.
-* **Erstellen** : Sie können eigene benutzerdefinierte DTDL-Modelle von Grund auf neu entwickeln. Eine Beschreibung finden Sie unter [*Vorgehensweise: Verwalten von Azure Digital Twins-Modellen*](how-to-manage-model.md).
+* **Übernehmen**: Sie können Ihre Lösung mit einer Open-Source-DTDL-Ontologie beginnen, die auf weit verbreiteten Branchenstandards basiert. 
+* **Konvertieren**: Wenn Sie bereits über vorhandene Modelle verfügen, müssen Sie diese in DTDL konvertieren.
+* **Erstellen**: Sie können eigene benutzerdefinierte DTDL-Modelle von Grund auf neu entwickeln. Eine Beschreibung finden Sie unter [*Vorgehensweise: Verwalten von Azure Digital Twins-Modellen*](how-to-manage-model.md).
 
 ## <a name="adopt-an-open-source-dtdl-ontology"></a>Übernehmen einer Open-Source-DTDL-Ontologie
 
@@ -111,7 +111,7 @@ Es steht eine Beispielanwendung zur Verfügung, mit der eine RDF-basierte Modell
 
 Dabei handelt es sich um die .NET Core-Befehlszeilenanwendung **RdfToDtdlConverter**.
 
-Hier können Sie die Beispielanwendung herunterladen: [**RdfToDtdlConverter**](https://docs.microsoft.com/samples/azure-samples/rdftodtdlconverter/digital-twins-model-conversion-samples/). 
+Hier können Sie die Beispielanwendung herunterladen: [**RdfToDtdlConverter**](/samples/azure-samples/rdftodtdlconverter/digital-twins-model-conversion-samples/). 
 
 Um den Code auf Ihren Computer herunterzuladen, klicken Sie auf die Schaltfläche *ZIP herunterladen* unterhalb des Titels auf der Landing Page der Beispielanwendung. Dadurch wird eine *ZIP-Datei* mit dem Namen *RdfToDtdlConverter_sample_application_to_convert_RDF_to_DTDL.zip* heruntergeladen, die Sie dann entzippen und ausprobieren können.
 

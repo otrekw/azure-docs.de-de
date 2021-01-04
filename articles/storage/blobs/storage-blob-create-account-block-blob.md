@@ -8,19 +8,19 @@ ms.topic: how-to
 ms.date: 10/30/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 53033226702ea1033fe4ae94f60c62cacbae6596
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: 9350f9aeff90b75a4e1362f6fa2fa1b0d07f20cf
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93124967"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95997085"
 ---
 # <a name="create-a-blockblobstorage-account"></a>Erstellen eines BlockBlobStorage-Kontos
 
 Mit der Kontoart BlockBlobStorage können Sie Blockblobs mit Premium-Leistungsmerkmalen erstellen. Diese Art von Speicherkonto ist für Workloads optimiert, die hohe Transaktionsraten aufweisen oder äußerst kurze Zugriffszeiten erfordern. In diesem Artikel wird gezeigt, wie Sie ein BlockBlobStorage-Konto über das Azure-Portal, mit der Azure CLI oder in Azure PowerShell erstellen.
 
-Weitere Informationen zu BlockBlobStorage-Konten finden Sie unter [Azure-Speicherkonto – Übersicht](https://docs.microsoft.com/azure/storage/common/storage-account-overview).
+Weitere Informationen zu BlockBlobStorage-Konten finden Sie unter [Azure-Speicherkonto – Übersicht](../common/storage-account-overview.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -43,7 +43,7 @@ Sie können sich bei Azure anmelden und Azure-CLI-Befehle ausführen. Dazu haben
 
 ### <a name="use-azure-cloud-shell"></a>Verwenden von Azure Cloud Shell
 
-Azure Cloud Shell ist eine kostenlose Bash-Shell, die Sie direkt im Azure-Portal ausführen können. Die Azure-Befehlszeilenschnittstelle ist vorinstalliert und für die Verwendung mit Ihrem Konto konfiguriert. Klicken Sie im Azure-Portal im Menü im rechten oberen Bereich auf die Schaltfläche **Cloud Shell** :
+Azure Cloud Shell ist eine kostenlose Bash-Shell, die Sie direkt im Azure-Portal ausführen können. Die Azure-Befehlszeilenschnittstelle ist vorinstalliert und für die Verwendung mit Ihrem Konto konfiguriert. Klicken Sie im Azure-Portal im Menü im rechten oberen Bereich auf die Schaltfläche **Cloud Shell**:
 
 [![Cloud Shell](../common/media/storage-quickstart-create-account/cloud-shell-menu.png)](https://portal.azure.com)
 
@@ -194,6 +194,6 @@ Zum Erstellen eines Blockblob-Speicherkontos mithilfe der Azure-Befehlszeilensch
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen zu Speicherkonten finden Sie unter [Azure-Speicherkonto – Übersicht](https://docs.microsoft.com/azure/storage/common/storage-account-overview).
+- Weitere Informationen zu Speicherkonten finden Sie unter [Azure-Speicherkonto – Übersicht](../common/storage-account-overview.md).
 
-- Weitere Informationen zu Ressourcengruppen finden Sie unter [Azure Resource Manager – Übersicht](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).
+- Weitere Informationen zu Ressourcengruppen finden Sie unter [Azure Resource Manager – Übersicht](../../azure-resource-manager/management/overview.md).

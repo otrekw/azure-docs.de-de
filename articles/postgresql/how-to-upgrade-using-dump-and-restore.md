@@ -6,18 +6,18 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 11/10/2020
-ms.openlocfilehash: e756e033c8e5b2508dca9bde76ad16be26a940fa
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 42bbe1c9f4056ae0dae0ccd59b452db90a7c63c5
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94505783"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96493660"
 ---
 # <a name="upgrade-your-postgresql-database-using-dump-and-restore"></a>Upgrade einer PostgreSQL-Datenbank durch Sichern und Wiederherstellen
 
 Sie können einen in Azure Database for PostgreSQL – Single Server bereitgestellten PostgreSQL-Server aktualisieren, indem Sie Ihre Datenbanken mithilfe der folgenden Methoden zu einem Server mit einer höheren Hauptversion migrieren.
 * **Offlinemethode** mit [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) und [pg_restore](https://www.postgresql.org/docs/current/static/app-pgrestore.html) von PostgreSQL – die Datenmigration verursacht eine Downtime. Im vorliegenden Dokument wird diese Upgrade-/Migrationsmethode behandelt.
-* **Onlinemethode** mit [Database Migration Service](https://docs.microsoft.com/azure/dms/tutorial-azure-postgresql-to-azure-postgresql-online-portal) (DMS). Bei dieser Methode erfolgt die Migration mit einer geringeren Downtime. Außerdem bleibt die Zieldatenbank mit der Quelldatenbank synchron, und Sie können wählen, wann der Übergang erfolgen soll. Allerdings müssen bei Verwendung von DMS einige Voraussetzungen und Einschränkungen beachtet werden. Ausführliche Informationen finden Sie in der [DMS-Dokumentation](https://docs.microsoft.com/azure/dms/tutorial-azure-postgresql-to-azure-postgresql-online-portal). 
+* **Onlinemethode** mit [Database Migration Service](../dms/tutorial-azure-postgresql-to-azure-postgresql-online-portal.md) (DMS). Bei dieser Methode erfolgt die Migration mit einer geringeren Downtime. Außerdem bleibt die Zieldatenbank mit der Quelldatenbank synchron, und Sie können wählen, wann der Übergang erfolgen soll. Allerdings müssen bei Verwendung von DMS einige Voraussetzungen und Einschränkungen beachtet werden. Ausführliche Informationen finden Sie in der [DMS-Dokumentation](../dms/tutorial-azure-postgresql-to-azure-postgresql-online-portal.md). 
 
  In der folgenden Tabelle finden Sie Empfehlungen, die auf der Größe und dem Verwendungsszenario der Datenbank basieren.
 
@@ -28,7 +28,7 @@ Sie können einen in Azure Database for PostgreSQL – Single Server bereitgeste
 | Kleine bis mittelgroße Datenbanken (10 GB bis 100 GB) | X | X |
 | Große Datenbanken (> 100 GB) |  | X |
 | Können von einem Upgrade verursachte Ausfallzeiten (unabhängig von der Datenbankgröße) verkraftet werden? | X |  |
-| Können [Voraussetzungen](https://docs.microsoft.com/azure/dms/tutorial-azure-postgresql-to-azure-postgresql-online-portal#prerequisites) für DMS einschließlich Neustart erfüllt werden? |  | X |
+| Können [Voraussetzungen](../dms/tutorial-azure-postgresql-to-azure-postgresql-online-portal.md#prerequisites) für DMS einschließlich Neustart erfüllt werden? |  | X |
 | Können DDLs und nicht protokollierte Tabellen während des Upgradevorgangs vermieden werden? | |  X |
 
 Dieser Leitfaden enthält einige Methoden und Beispiele für die Offlinemigration, um zu veranschaulichen, wie Sie vom Quellserver zum Zielserver migrieren können, auf dem eine höhere Version von PostgreSQL ausgeführt wird.

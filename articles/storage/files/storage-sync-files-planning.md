@@ -8,12 +8,12 @@ ms.date: 01/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 1b29565e18b2da2087cc15966b30b433a42fb603
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 32aa94c986c90b7bd46b9f5561021c34c0f142af
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629800"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492091"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Planung für die Bereitstellung einer Azure-Dateisynchronisierung
 
@@ -368,7 +368,7 @@ Die internen Virenschutzlösungen von Microsoft – Windows Defender und System 
 > Anbieter von Antivirensoftware können die Kompatibilität zwischen ihrem Produkt und der Azure-Dateisynchronisierung mithilfe der [Azure File Sync Antivirus Compatibility Test Suite](https://www.microsoft.com/download/details.aspx?id=58322) überprüfen, die aus dem Microsoft Download Center heruntergeladen werden kann.
 
 ## <a name="backup"></a>Backup 
-Wenn Cloudtiering aktiviert ist, sollten keine Lösungen verwendet werden, die den Serverendpunkt oder einen virtuellen Computer, auf dem sich der Serverendpunkt befindet, direkt sichern. Cloudtiering bewirkt, dass nur eine Teilmenge der Daten auf dem Serverendpunkt gespeichert wird, während sich das vollständige Dataset in Ihrer Azure-Dateifreigabe befindet. Abhängig von der verwendeten Sicherungslösung werden mehrstufige Dateien entweder übersprungen und nicht gesichert (da für sie das Attribut FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS festgelegt ist), oder sie werden auf den Datenträger zurückgerufen, sodass hohe Ausgangsgebühren anfallen. Es wird empfohlen, die Azure-Dateifreigabe direkt mithilfe einer Cloudsicherungslösung zu sichern. Weitere Informationen finden Sie unter [Informationen zum Sichern von Azure-Dateifreigaben](../../backup/azure-file-share-backup-overview.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json), oder wenden Sie sich an Ihren Sicherungsanbieter, um zu erfahren, ob dieser das Sichern von Azure-Dateifreigaben unterstützt.
+Wenn Cloudtiering aktiviert ist, sollten keine Lösungen verwendet werden, die den Serverendpunkt oder einen virtuellen Computer, auf dem sich der Serverendpunkt befindet, direkt sichern. Cloudtiering bewirkt, dass nur eine Teilmenge der Daten auf dem Serverendpunkt gespeichert wird, während sich das vollständige Dataset in Ihrer Azure-Dateifreigabe befindet. Abhängig von der verwendeten Sicherungslösung werden mehrstufige Dateien entweder übersprungen und nicht gesichert (da für sie das Attribut FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS festgelegt ist), oder sie werden auf den Datenträger zurückgerufen, sodass hohe Ausgangsgebühren anfallen. Es wird empfohlen, die Azure-Dateifreigabe direkt mithilfe einer Cloudsicherungslösung zu sichern. Weitere Informationen finden Sie unter [Informationen zum Sichern von Azure-Dateifreigaben](../../backup/azure-file-share-backup-overview.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json), oder wenden Sie sich an Ihren Sicherungsanbieter, um zu erfahren, ob dieser das Sichern von Azure-Dateifreigaben unterstützt.
 
 Wenn Sie eine lokale Sicherungslösung bevorzugen, sollten die Sicherungen auf einem Server in der Synchronisierungsgruppe ausgeführt werden, auf dem das Cloudtiering deaktiviert ist. Wenn Sie eine Wiederherstellung durchführen, verwenden Sie die Wiederherstellungsoptionen auf Volume- oder Dateiebene. Mithilfe der Wiederherstellungsoption auf Dateiebene wiederhergestellte Dateien werden auf allen Endpunkten in der Synchronisierungsgruppe synchronisiert. Dabei werden vorhandene Dateien durch die aus der Sicherung wiederhergestellte Version ersetzt.  Bei der Wiederherstellung auf Volumeebene werden die neueren Dateiversionen in der Azure-Dateifreigabe oder auf anderen Serverendpunkten nicht ersetzt.
 

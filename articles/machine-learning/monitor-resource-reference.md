@@ -1,6 +1,6 @@
 ---
 title: Referenz zum Überwachen von Azure Machine Learning-Daten | Microsoft-Dokumentation
-description: Hier finden Sie wichtige Referenzmaterialien für die Überwachung in Azure Machine Learning. Erfahren Sie mehr über die Daten und Ressourcen, die für Azure Machine Learning gesammelt werden und in Azure Monitor verfügbar sind. Azure Monitor sammelt Daten über Ihren Azure Machine Learning-Arbeitsbereich, stellt diese Daten dar und ermöglicht es Ihnen, Metriken anzuzeigen, Benachrichtigungen festzulegen und protokollierte Daten zu analysieren.
+description: Referenzdokumentation zur Überwachung von Azure Machine Learning Erfahren Sie mehr über die in Azure Monitor gesammelten und verfügbaren Daten und Ressourcen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 10/02/2020
-ms.openlocfilehash: be8d6ca79a43ddd2bd709390dd476cb9dcfa7b29
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: d231de8e262194cd7dda2462a3f54d7d531eb63c
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323942"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95542081"
 ---
 # <a name="monitoring-azure-machine-learning-data-reference"></a>Überwachen von Azure Machine Learning-Daten – Referenz
 
@@ -79,7 +79,7 @@ Den Metriken in Azure Machine Learning sind die folgenden Dimensionen zugeordnet
 
 | Dimension | Beschreibung |
 | ---- | ---- |
-| Clustername | Der Name der Compute-Instanz Diese Dimension ist für alle Kontingentmetriken verfügbar. |
+| Clustername | Der Name der Computeclusterressource. Diese Dimension ist für alle Kontingentmetriken verfügbar. |
 | Vm Family Name (Name der VM-Familie) | Der Name der vom Cluster verwendeten VM-Familie Diese Dimension ist für die Metrik „Quota Utilization Percentage“ (Prozentsatz der Kontingentnutzung) verfügbar. |
 | Vm Priority (VM-Priorität) | Die Priorität des virtuellen Computers (VM) Diese Dimension ist für die Metrik „Quota Utilization Percentage“ (Prozentsatz der Kontingentnutzung) verfügbar.
 | CreatedTime | Diese Dimension ist nur für CpuUtilization und GpuUtilization verfügbar. |

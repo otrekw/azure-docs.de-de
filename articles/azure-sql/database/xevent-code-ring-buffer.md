@@ -7,16 +7,16 @@ ms.subservice: performance
 ms.custom: sqldbrb=1
 ms.devlang: PowerShell
 ms.topic: sample
-author: MightyPen
-ms.author: genemi
-ms.reviewer: jrasnik
+author: WilliamDAssafMSFT
+ms.author: wiassaf
+ms.reviewer: sstein
 ms.date: 12/19/2018
-ms.openlocfilehash: d73efd7a64d0118cea11ca9b0a35f659ce7fee6a
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: a646588616b874e40b1ed2a5a0b5e691b075075d
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791289"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96487302"
 ---
 # <a name="ring-buffer-target-code-for-extended-events-in-azure-sql-database"></a>Code des Ringpufferziels für erweiterte Ereignisse in Azure SQL-Datenbank
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -28,10 +28,10 @@ Sie suchen ein vollständiges Codebeispiel für die einfachste schnelle Möglich
 In diesem Thema finden Sie ein Transact-SQL-Codebeispiel, mit dem folgende Aufgaben ausgeführt werden:
 
 1. Erstellen einer Tabelle mit Daten zur Veranschaulichung.
-2. Erstellen einer Sitzung für ein vorhandenes erweitertes Ereignis ( **sqlserver.sql_statement_starting** ).
+2. Erstellen einer Sitzung für ein vorhandenes erweitertes Ereignis (**sqlserver.sql_statement_starting**).
 
    * Das Ereignis ist auf SQL-Anweisungen beschränkt, die eine bestimmte Update-Zeichenfolge enthalten: **statement LIKE '%UPDATE tabEmployee%'** .
-   * Senden der Ausgabe des Ereignisses an ein Ziel vom Typ Ringpuffer ( **package0.ring_buffer** ).
+   * Senden der Ausgabe des Ereignisses an ein Ziel vom Typ Ringpuffer (**package0.ring_buffer**).
 3. Starten der Ereignissitzung.
 4. Ausgeben einer Reihe einfacher SQL UPDATE-Anweisungen.
 5. Ausgeben einer SQL SELECT-Anweisung, um die Ereignisausgabe vom Ringpuffer abzurufen.
@@ -46,7 +46,7 @@ In diesem Thema finden Sie ein Transact-SQL-Codebeispiel, mit dem folgende Aufga
 * Ein Azure-Konto und ein Azure-Abonnement. Sie können sich für eine [kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/)registrieren.
 * Jede Datenbank, in der eine Tabelle erstellt werden kann.
   
-  * Optional können Sie in wenigen Minuten [eine **AdventureWorksLT** -Demodatenbank erstellen](single-database-create-quickstart.md).
+  * Optional können Sie in wenigen Minuten [eine **AdventureWorksLT**-Demodatenbank erstellen](single-database-create-quickstart.md).
 * SQL Server Management Studio („ssms.exe“), im Idealfall die aktuelle monatliche Updateversion.
   Sie können "ssms.exe" in der neuesten Version wie folgt herunterladen:
   
@@ -315,7 +315,7 @@ SELECT 'AFTER__Updates', EmployeeKudosCount, * FROM tabEmployee;
 
 ### <a name="release-resources-held-by-your-ring-buffer"></a>Freigeben der von Ihrem Ringpuffer verwendeten Ressourcen
 
-Wenn Sie mit der Verwendung Ihres Ringpuffers fertig sind, können Sie ihn entfernen und seine Ressourcen freigeben. Verwenden Sie dazu wie nachfolgend gezeigt einen **ALTER** -Befehl:
+Wenn Sie mit der Verwendung Ihres Ringpuffers fertig sind, können Sie ihn entfernen und seine Ressourcen freigeben. Verwenden Sie dazu wie nachfolgend gezeigt einen **ALTER**-Befehl:
 
 ```sql
 ALTER EVENT SESSION eventsession_gm_azuresqldb51

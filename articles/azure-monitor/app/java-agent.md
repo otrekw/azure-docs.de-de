@@ -3,13 +3,15 @@ title: Leistungsüberwachung für Java-Web-Apps – Azure Application Insights
 description: Erweiterte Leistungs- und Nutzungsüberwachung Ihrer Java-Website mit Application Insights.
 ms.topic: conceptual
 ms.date: 01/10/2019
+author: MS-jgol
 ms.custom: devx-track-java
-ms.openlocfilehash: e91e0252ac2af02157c30fe025e75b6cfee7de6e
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.author: jgol
+ms.openlocfilehash: 299e9010b74c8363cacd1c20044d183dc1def6a6
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93378481"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96601287"
 ---
 # <a name="monitor-dependencies-caught-exceptions-and-method-execution-times-in-java-web-apps"></a>Überwachen von Abhängigkeiten, abgefangene Ausnahmen und Methodenausführungszeiten in Java-Web-Apps
 

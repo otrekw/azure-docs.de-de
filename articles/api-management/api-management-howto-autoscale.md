@@ -12,11 +12,11 @@ ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
 ms.openlocfilehash: 41a97c639d9148f2bff3e4f530363ea05a65a7b8
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93095950"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018245"
 ---
 # <a name="automatically-scale-an-azure-api-management-instance"></a>Automatisches Skalieren einer Azure API Management-Instanz  
 
@@ -52,7 +52,7 @@ Vor dem Konfigurieren des Verhaltens der automatischen Skalierung müssen bestim
 
 Führen Sie zum Konfigurieren der automatischen Skalierung für einen Azure API Management-Dienst die folgenden Schritte aus:
 
-1. Navigieren Sie im Azure-Portal zu der **Monitor** -Instanz.
+1. Navigieren Sie im Azure-Portal zu der **Monitor**-Instanz.
 
     ![Azure Monitor](media/api-management-howto-autoscale/01.png)
 

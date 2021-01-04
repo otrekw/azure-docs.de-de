@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/23/2019
 ms.author: Zhchia
-ms.openlocfilehash: 68d084b7fde7d4c28b1c9b1da1e1c66cb6a63dd8
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: c158358b1c4fcd72d9189d7a991645cb65a4dc83
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359441"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348125"
 ---
 # <a name="tutorial-configure-mindtickle-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von MindTickle für die automatische Benutzerbereitstellung
 
@@ -37,7 +37,7 @@ Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits �
 
 ## <a name="assigning-users-to-mindtickle"></a>Zuweisen von Benutzern zu MindTickle
 
-Azure Active Directory ermittelt anhand von *Zuweisungen* , welche Benutzer Zugriff auf bestimmte Apps erhalten sollen. Im Kontext der automatischen Benutzerbereitstellung werden nur die Benutzer und/oder Gruppen synchronisiert, die einer Anwendung in Azure AD zugewiesen wurden.
+Azure Active Directory ermittelt anhand von *Zuweisungen*, welche Benutzer Zugriff auf bestimmte Apps erhalten sollen. Im Kontext der automatischen Benutzerbereitstellung werden nur die Benutzer und/oder Gruppen synchronisiert, die einer Anwendung in Azure AD zugewiesen wurden.
 
 Vor dem Konfigurieren und Aktivieren der automatischen Benutzerbereitstellung müssen Sie entscheiden, welche Benutzer und/oder Gruppen in Azure AD Zugriff auf MindTickle benötigen. Anschließend können Sie diese Benutzer und/oder Gruppen MindTickle anhand der folgenden Anweisungen zuweisen:
 * [Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App](../manage-apps/assign-user-or-group-access-portal.md)
@@ -66,15 +66,15 @@ Bevor Sie MindTickle für die automatische Benutzerbereitstellung mit Azure AD k
 
     ![Schaltfläche „Azure Active Directory“](common/select-azuread.png)
 
-2. Navigieren Sie zu **Unternehmensanwendungen** , und wählen Sie die Option **Alle Anwendungen**.
+2. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie die Option **Alle Anwendungen**.
 
     ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
-3. Klicken Sie oben im Bereich auf die Schaltfläche **Neue Anwendung** , um eine neue Anwendung hinzuzufügen.
+3. Klicken Sie oben im Bereich auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
 
     ![Schaltfläche „Neue Anwendung“](common/add-new-app.png)
 
-4. Geben Sie in das Suchfeld **MindTickle** ein, klicken Sie im Ergebnisbereich erst auf **MindTickle** und dann auf die Schaltfläche **Hinzufügen** , um die Anwendung hinzuzufügen.
+4. Geben Sie in das Suchfeld **MindTickle** ein, klicken Sie im Ergebnisbereich erst auf **MindTickle** und dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
     ![MindTickle in der Ergebnisliste](common/search-new-app.png)
 
@@ -103,7 +103,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![Screenshot der Dropdownliste „Bereitstellungsmodus“ mit aufgerufener Option „Automatisch“](common/provisioning-automatic.png)
 
-5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** im Feld **Mandanten-URL** die Zeichenfolge `https://admin.mindtickle.com/scim` ein. Geben Sie den zuvor abgerufenen **JWT-Token** -Wert in das Textfeld „Geheimes Token“ ein, und geben Sie dann den **JWT-Token** -Wert ein, der vom MindTickle-Supportteam bereitgestellt wurde. Klicken Sie auf **Verbindung testen** , um sicherzustellen, dass Azure AD eine Verbindung mit myPolicies herstellen kann. Vergewissern Sie sich im Falle eines Verbindungsfehlers, dass Ihr MindTickle-Konto über Administratorberechtigungen verfügt, und wiederholen Sie den Vorgang.
+5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** im Feld **Mandanten-URL** die Zeichenfolge `https://admin.mindtickle.com/scim` ein. Geben Sie den zuvor abgerufenen **JWT-Token**-Wert in das Textfeld „Geheimes Token“ ein, und geben Sie dann den **JWT-Token**-Wert ein, der vom MindTickle-Supportteam bereitgestellt wurde. Klicken Sie auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit myPolicies herstellen kann. Vergewissern Sie sich im Falle eines Verbindungsfehlers, dass Ihr MindTickle-Konto über Administratorberechtigungen verfügt, und wiederholen Sie den Vorgang.
 
     ![Mandanten-URL + Token](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -117,7 +117,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     :::image type="content" source="media/mindtickle-provisioning-tutorial/usermapping.png" alt-text="Screenshot des Abschnitts „Zuordnungen“. Unter „Name“ ist die Option „Azure Active Directory-Benutzer mit MindTickle synchronisieren“ hervorgehoben." border="false":::
 
-9. Überprüfen Sie im Abschnitt **Attributzuordnung** die Benutzerattribute, die von Azure AD mit MindTickle synchronisiert werden. Beachten Sie, dass die als **übereinstimmende** Eigenschaften ausgewählten Attribute für den Abgleich der Benutzerkonten in MindTickle für Updatevorgänge verwendet werden. Wählen Sie die Schaltfläche **Speichern** , um alle Änderungen zu übernehmen.
+9. Überprüfen Sie im Abschnitt **Attributzuordnung** die Benutzerattribute, die von Azure AD mit MindTickle synchronisiert werden. Beachten Sie, dass die als **übereinstimmende** Eigenschaften ausgewählten Attribute für den Abgleich der Benutzerkonten in MindTickle für Updatevorgänge verwendet werden. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
     :::image type="content" source="media/mindtickle-provisioning-tutorial/userattribute.png" alt-text="Screenshot der Seite „Attributzuordnungen“. In einer Tabelle werden Attribute für Azure Active Directory und MindTickle sowie die entsprechende Rangfolge aufgelistet." border="false":::
 

@@ -11,14 +11,14 @@ ms.topic: conceptual
 author: monhaber
 ms.author: ronmat
 ms.reviewer: vanto, sstein
-ms.date: 09/21/2020
+ms.date: 12/01/2020
 tags: azure-synapse
-ms.openlocfilehash: f83b9515e16fcf2c2158586297545206d57e1a6e
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 931e914cd3c184136395a9bb9a7e148a90e9fb91
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92785118"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461946"
 ---
 # <a name="advanced-threat-protection-for-azure-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>Advanced Threat Protection für Azure SQL-Datenbank, SQL Managed Instance und Azure Synapse Analytics
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -35,7 +35,7 @@ Zur vollständigen Untersuchung empfiehlt es sich, die Datenbanküberwachung zu 
 
 ## <a name="alerts"></a>Alerts
 
-Advanced Threat Protection für Azure SQL-Datenbank erkennt Anomalien bei Aktivitäten, die auf ungewöhnliche und potenziell schädliche Versuche hinweisen, auf Ihre Datenbanken zuzugreifen oder diese zu nutzen. Eine Liste der Warnungen für Azure SQL-Datenbank finden Sie in den [Warnungen für SQL-Datenbank und Azure Synapse Analytics (früher SQL Data Warehouse) im Azure Security Center](../../security-center/alerts-reference.md#alerts-sql-db-and-warehouse).
+Advanced Threat Protection für Azure SQL-Datenbank erkennt Anomalien bei Aktivitäten, die auf ungewöhnliche und potenziell schädliche Versuche hinweisen, auf Ihre Datenbanken zuzugreifen oder diese zu nutzen. Eine Liste der Warnungen für Azure SQL-Datenbank finden Sie in den [Warnungen für SQL-Datenbank und Azure Synapse Analytics in Azure Security Center](../../security-center/alerts-reference.md#alerts-sql-db-and-warehouse).
 
 ## <a name="explore-detection-of-a-suspicious-event"></a>Erkennen eines verdächtigen Ereignisses
 
@@ -57,7 +57,11 @@ Bei Erkennung anormaler Datenbankaktivitäten erhalten Sie eine E-Mail-Benachric
 
 Warnungen von Advanced Threat Protection sind in [Azure Security Center](https://azure.microsoft.com/services/security-center/) integriert. Auf Livekacheln von SQL Advanced Threat Protection innerhalb der Datenbank und auf den Blättern von SQL Azure Defender im Azure-Portal lässt sich der Status aktiver Bedrohungen nachverfolgen.
 
-Klicken Sie auf **Advanced Threat Protection-Warnung** , um die Azure Security Center-Seite für Warnungen zu öffnen und eine Übersicht über die aktiven SQL-Bedrohungen zu erhalten, die in der Datenbank erkannt wurden.
+Klicken Sie auf **Advanced Threat Protection-Warnung**, um die Azure Security Center-Seite für Warnungen zu öffnen und eine Übersicht über die aktiven SQL-Bedrohungen zu erhalten, die in der Datenbank erkannt wurden.
+
+:::image type="content" source="media/azure-defender-for-sql/advanced-threat-protection-alerts.png" alt-text="Advanced Threat Protection-Warnungen in der Datenbankübersicht":::
+
+:::image type="content" source="media/azure-defender-for-sql/advanced-threat-protection.png" alt-text="Advanced Threat Protection in Security Center":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

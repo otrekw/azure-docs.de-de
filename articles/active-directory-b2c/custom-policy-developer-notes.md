@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e2ebc0033f2d2d55571ba45a38b5e0061716673d
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 68e282f192b87b9f2217e0727753e7d37ff1aeb1
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94532476"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516093"
 ---
 # <a name="developer-notes-for-custom-policies-in-azure-active-directory-b2c"></a>Entwicklerhinweise zu benutzerdefinierten Richtlinien in Azure Active Directory B2C
 
@@ -98,7 +98,7 @@ Funktionen für benutzerdefinierte Richtlinien und das Identity Experience Frame
 | Funktion | Entwicklung | Vorschau | Allgemein verfügbar | Notizen |
 | ------- | :-----------: | :-------: | :--: | ----- |
 | [PhoneFactor-Authentifizierung](phone-factor-technical-profile.md) |  |  | X |  |
-| [Azure MFA-Authentifizierung-Authentifizierung](multi-factor-auth-technical-profile.md) |  | X |  |  |
+| [Azure AD MFA-Authentifizierung](multi-factor-auth-technical-profile.md) |  | X |  |  |
 | [Einmalkennwort](one-time-password-technical-profile.md) |  | X |  |  |
 | [Azure Active Directory](active-directory-technical-profile.md) als lokales Verzeichnis |  |  | X |  |
 | E-Mail-Subsystem in Azure für die Überprüfung per E-Mail |  |  | X |  |
@@ -116,7 +116,7 @@ Funktionen für benutzerdefinierte Richtlinien und das Identity Experience Frame
 | Abfragezeichenfolgenparameter `login_hint` |  |  | X | als Anspruch verfügbar, kann an IDP übergeben werden |
 | Einfügen von JSON in User Journey über `client_assertion` | X |  |  | wird eingestellt |
 | Einfügen von JSON in User Journey als `id_token_hint` |  | X |  | Go-Forward-Ansatz zum Übergeben von JSON |
-| [Übergeben des Tokens eines Identitätsanbieters an die Anwendung](idp-pass-through-custom.md) |  | X |  | z.B. von Facebook in eine App |
+| [Übergeben des Tokens eines Identitätsanbieters an die Anwendung](idp-pass-through-user-flow.md) |  | X |  | z.B. von Facebook in eine App |
 
 
 ### <a name="session-management"></a>Sitzungsverwaltung
@@ -127,7 +127,7 @@ Funktionen für benutzerdefinierte Richtlinien und das Identity Experience Frame
 | [Sitzungsanbieter mit externer Anmeldung](custom-policy-reference-sso.md#externalloginssosessionprovider) |  |  | X |  |
 | [SAML SSO-Sitzungsanbieter](custom-policy-reference-sso.md#samlssosessionprovider) |  |  | X |  |
 | [OAuthSSOSessionProvider](custom-policy-reference-sso.md#oauthssosessionprovider)  |  | X |  |  |
-| [Einmaliges Abmelden](session-overview.md#sign-out)  |  | X |  |  |
+| [Einmaliges Abmelden](session-behavior.md#sign-out)  |  | X |  |  |
 
 ### <a name="security"></a>Sicherheit
 

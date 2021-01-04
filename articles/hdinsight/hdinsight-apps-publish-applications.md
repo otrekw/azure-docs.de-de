@@ -9,16 +9,16 @@ ms.topic: how-to
 ms.date: 05/14/2018
 ms.author: hrasheed
 ms.openlocfilehash: ca84cb6cdd6b47976eadbc5298701a46fe677426
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547825"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96007136"
 ---
 # <a name="publish-an-hdinsight-application-in-the-azure-marketplace"></a>Veröffentlichen von HDInsight-Anwendungen im Azure Marketplace
 Sie können eine Azure HDInsight-Anwendung auf einem Linux-basierten HDInsight-Cluster installieren. In diesem Artikel erfahren Sie, wie Sie eine HDInsight-Anwendung im Azure Marketplace veröffentlichen. Allgemeine Informationen zum Veröffentlichen im Azure Marketplace finden Sie unter [Veröffentlichen eines Angebots im Azure Marketplace](../marketplace/overview.md).
 
-HDInsight-Anwendungen verwenden das *Bring-Your-Own-Lizenz* -Modell (BYOL). In einem BYOL-Szenario ist ein Anwendungsanbieter für die Lizenzierung der Anwendung für App-Benutzer verantwortlich. App-Benutzern werden nur die Azure-Ressourcen in Rechnung gestellt, die sie erstellen, z.B. der HDInsight-Cluster sowie die VMs und Knoten des Clusters. Die Abrechnung für die eigentliche Anwendung wird nicht über Azure abgewickelt.
+HDInsight-Anwendungen verwenden das *Bring-Your-Own-Lizenz*-Modell (BYOL). In einem BYOL-Szenario ist ein Anwendungsanbieter für die Lizenzierung der Anwendung für App-Benutzer verantwortlich. App-Benutzern werden nur die Azure-Ressourcen in Rechnung gestellt, die sie erstellen, z.B. der HDInsight-Cluster sowie die VMs und Knoten des Clusters. Die Abrechnung für die eigentliche Anwendung wird nicht über Azure abgewickelt.
 
 Weitere Informationen finden Sie in diesen auf HDInsight-Anwendungen bezogenen Artikeln:
 
@@ -31,7 +31,7 @@ Für die Übermittlung einer benutzerdefinierten Anwendung an den Marketplace [e
 Darüber hinaus müssen Sie auch Ihr Entwicklerkonto registrieren. Weitere Informationen hierzu finden Sie unter [Veröffentlichen eines Angebots im Azure Marketplace](../marketplace/overview.md) sowie unter [Erstellen eines Microsoft-Entwicklerkontos](../marketplace/overview.md).
 
 ## <a name="define-the-application"></a>Definieren der Anwendung
-Die Veröffentlichung von Anwendungen im Marketplace erfolgt in zwei Schritten. Definieren Sie zuerst eine *createUiDef.json* -Datei. Die createUiDef.json-Datei gibt an, mit welchen Cluster Ihre Anwendung kompatibel ist. Veröffentlichen Sie dann die Vorlage aus dem Azure-Portal. Hier sehen Sie ein Beispiel für eine createUiDef.json-Datei:
+Die Veröffentlichung von Anwendungen im Marketplace erfolgt in zwei Schritten. Definieren Sie zuerst eine *createUiDef.json*-Datei. Die createUiDef.json-Datei gibt an, mit welchen Cluster Ihre Anwendung kompatibel ist. Veröffentlichen Sie dann die Vorlage aus dem Azure-Portal. Hier sehen Sie ein Beispiel für eine createUiDef.json-Datei:
 
 ```json
 {
@@ -87,14 +87,14 @@ Erstellen Sie eine ZIP-Datei mit allen Dateien, die für die Installation der HD
 So veröffentlichen Sie eine HDInsight-Anwendung:
 
 1. Melden Sie sich für die [Azure-Veröffentlichung](https://publish.windowsazure.com/) an.
-2. Wählen Sie im linken Menü **Lösungsvorlagen** .
-3. Geben Sie einen Titel ein, und wählen Sie dann **Neue Lösungsvorlage erstellen** .
+2. Wählen Sie im linken Menü **Lösungsvorlagen**.
+3. Geben Sie einen Titel ein, und wählen Sie dann **Neue Lösungsvorlage erstellen**.
 4. Wenn Sie Ihr Unternehmen noch nicht registriert haben, wählen Sie **Create Dev Center account and join the Azure program** (Dev Center-Konto erstellen und am Azure-Programm teilnehmen).  Weitere Informationen hierzu finden Sie unter [Erstellen eines Microsoft-Entwicklerkontos](../marketplace/overview.md).
 5. Wählen Sie **Define some Topologies to get Started** (Definieren einiger Topologien für den Einstieg). Eine Lösungsvorlage ist allen zugehörigen Topologien übergeordnet. Sie können in einem Angebot/einer Lösungsvorlage mehrere Topologien definieren. Wenn ein Angebot in die Stagingumgebung überführt wird, werden alle Topologien einbezogen. 
 6. Geben Sie einen Topologienamen ein, und wählen Sie dann **+** .
 7. Geben Sie eine neue Version ein, und wählen Sie dann **+** .
 8. Laden Sie die ZIP-Datei hoch, die Sie erstellt haben, als Sie die Anwendung gepackt haben.  
-9. Wählen Sie **Zertifizierung anfordern** . Das Microsoft-Zertifizierungsteam prüft die Dateien und zertifiziert die Topologie.
+9. Wählen Sie **Zertifizierung anfordern**. Das Microsoft-Zertifizierungsteam prüft die Dateien und zertifiziert die Topologie.
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Erfahren Sie, wie Sie auf Ihren Clustern eine [HDInsight-Anwendung installieren](hdinsight-apps-install-applications.md).

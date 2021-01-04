@@ -15,12 +15,12 @@ ms.date: 07/27/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017, devx-track-azurecli
-ms.openlocfilehash: 4ccd668fb6afa6787fadeda6ed92ebd954e2b892
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 3e4d75c59d0e3c97b0900dd72a27d4afbf4015c9
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94657804"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492317"
 ---
 # <a name="view-activity-logs-for-azure-rbac-changes"></a>Anzeigen von Aktivitätsprotokollen für Azure RBAC-Änderungen
 
@@ -48,7 +48,7 @@ Das Aktivitätsprotokoll im Portal verfügt über mehrere Filter. Im Folgenden d
 | Ereigniskategorie | <ul><li>Administrative</li></ul> |
 | Vorgang | <ul><li>Erstellen von Rollenzuweisungen</li><li>Löschen von Rollenzuweisungen</li><li>Erstellen oder Aktualisieren von benutzerdefinierten Rollendefinition</li><li>Löschen von benutzerdefinierten Rollendefinition</li></ul> |
 
-Weitere Informationen zu Aktivitätsprotokollen finden Sie unter [Anzeigen von Aktivitätsprotokollen, um Aktionen an Ressourcen zu überwachen](../azure-resource-manager/management/view-activity-logs.md?toc=%252fazure%252fmonitoring-and-diagnostics%252ftoc.json).
+Weitere Informationen zu Aktivitätsprotokollen finden Sie unter [Anzeigen von Aktivitätsprotokollen, um Aktionen an Ressourcen zu überwachen](../azure-resource-manager/management/view-activity-logs.md?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json).
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
@@ -162,5 +162,5 @@ AzureActivity
 ![Screenshot: Aktivitätsprotokolle im Advanced Analytics-Portal](./media/change-history-report/azure-log-analytics.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Anzeigen von Ereignissen im Aktivitätsprotokoll](../azure-resource-manager/management/view-activity-logs.md?toc=%252fazure%252fmonitoring-and-diagnostics%252ftoc.json)
+* [Anzeigen von Ereignissen im Aktivitätsprotokoll](../azure-resource-manager/management/view-activity-logs.md?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json)
 * [Monitor Subscription Activity with the Azure Activity Log (Überwachen der Abonnementaktivität per Azure-Aktivitätsprotokoll)](../azure-monitor/platform/platform-logs-overview.md)

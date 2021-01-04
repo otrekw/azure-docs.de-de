@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 04/30/2018
 ms.author: allensu
 ms.openlocfilehash: a226682c2580a871e1b2fc4db71f369f3bcc3abb
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92778632"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010162"
 ---
 # <a name="how-caching-works"></a>Funktionsweise der Zwischenspeicherung
 
@@ -65,7 +65,7 @@ Zum Definieren der Cacheaktualität können zwei Header verwendet werden: `Cache
 ## <a name="cache-directive-headers"></a>Header mit Cacheanweisungen
 
 > [!IMPORTANT]
-> Standardmäßig ignoriert ein für die DSA optimierter Azure CDN-Endpunkt Header mit Cacheanweisungen und umgeht die Zwischenspeicherung. Für die Profile **Azure CDN Standard von Verizon** und **Azure CDN Standard von Akamai** können Sie die Behandlung dieser Header durch einen Azure CDN-Endpunkt anpassen, indem Sie [CDN-Cacheregeln](cdn-caching-rules.md) verwenden, um die Zwischenspeicherung zu aktivieren. Nur bei **Azure CDN Premium von Verizon** -Profilen verwenden Sie die [Regel-Engine](./cdn-verizon-premium-rules-engine.md), um die Zwischenspeicherung zu aktivieren.
+> Standardmäßig ignoriert ein für die DSA optimierter Azure CDN-Endpunkt Header mit Cacheanweisungen und umgeht die Zwischenspeicherung. Für die Profile **Azure CDN Standard von Verizon** und **Azure CDN Standard von Akamai** können Sie die Behandlung dieser Header durch einen Azure CDN-Endpunkt anpassen, indem Sie [CDN-Cacheregeln](cdn-caching-rules.md) verwenden, um die Zwischenspeicherung zu aktivieren. Nur bei **Azure CDN Premium von Verizon**-Profilen verwenden Sie die [Regel-Engine](./cdn-verizon-premium-rules-engine.md), um die Zwischenspeicherung zu aktivieren.
 
 Azure CDN unterstützt die folgenden HTTP-Header mit Cacheanweisungen, die die Cachedauer und die -freigabe definieren.
 
@@ -129,9 +129,9 @@ In der folgenden Tabelle wird das Standardverhalten beim Zwischenspeichern bei d
 | **Berücksichtigung des Ursprungs**       | Ja    | Ja   | Nein   | Ja    | Nein   | Ja   | Ja    |
 | **CDN-Cachedauer** | 2 Tage |7 Tage | Keine | 7 Tage | Keine | 1 Tag | 1 Jahr |
 
-**Berücksichtigung des Ursprungs** : Gibt an, ob die unterstützten Header mit Cacheanweisungen berücksichtigt werden sollen, wenn sie in der HTTP-Antwort des Ursprungsservers enthalten sind.
+**Berücksichtigung des Ursprungs**: Gibt an, ob die unterstützten Header mit Cacheanweisungen berücksichtigt werden sollen, wenn sie in der HTTP-Antwort des Ursprungsservers enthalten sind.
 
-**CDN-Cachedauer** : Gibt den Zeitraum an, in dem eine Ressource im Azure CDN zwischengespeichert wird. Wenn **Berücksichtigung des Ursprungs** jedoch auf „Ja“ festgelegt ist und die HTTP-Antwort des Ursprungsservers den Header mit Cacheanweisungen `Expires` oder `Cache-Control: max-age` enthält, verwendet das Azure CDN stattdessen den vom Header angegebenen Wert für die Dauer. 
+**CDN-Cachedauer**: Gibt den Zeitraum an, in dem eine Ressource im Azure CDN zwischengespeichert wird. Wenn **Berücksichtigung des Ursprungs** jedoch auf „Ja“ festgelegt ist und die HTTP-Antwort des Ursprungsservers den Header mit Cacheanweisungen `Expires` oder `Cache-Control: max-age` enthält, verwendet das Azure CDN stattdessen den vom Header angegebenen Wert für die Dauer. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -11,19 +11,19 @@ ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: 143d7bf2fae36ae6721f009c79ed9a7fa2386bdd
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: b9311329ea4115d49f36dd7d39782bbd748a356b
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94369170"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106103"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-nodejs"></a>Schnellstart: Senden einer Suchanforderung an die Bing-Entitätssuche-REST-API mithilfe von Node.js
 
 > [!WARNING]
-> Die APIs der Bing-Suche werden von Cognitive Services auf Bing-Suchdienste umgestellt. Ab dem **30. Oktober 2020** müssen alle neuen Instanzen der Bing-Suche mit dem [hier](https://aka.ms/cogsvcs/bingmove) dokumentierten Prozess bereitgestellt werden.
+> Die APIs der Bing-Suche werden von Cognitive Services auf Bing-Suchdienste umgestellt. Ab dem **30. Oktober 2020** müssen alle neuen Instanzen der Bing-Suche mit dem [hier](/bing/search-apis/bing-web-search/create-bing-search-service-resource) dokumentierten Prozess bereitgestellt werden.
 > APIs der Bing-Suche, die mit Cognitive Services bereitgestellt wurden, werden noch drei Jahre lang bzw. bis zum Ablauf Ihres Enterprise Agreement unterstützt (je nachdem, was zuerst eintritt).
-> Eine Anleitung zur Migration finden Sie unter [Erstellen einer Ressource für die Bing-Suche über Azure Marketplace](https://aka.ms/cogsvcs/bingmigration).
+> Eine Anleitung zur Migration finden Sie unter [Erstellen einer Ressource für die Bing-Suche über Azure Marketplace](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 Verwenden Sie diese Schnellstartanleitung, um die Bing-Entitätssuche-API zum ersten Mal aufzurufen und die JSON-Antwort anzuzeigen. Diese einfache JavaScript-Anwendung sendet eine Nachrichtensuchabfrage an die API und zeigt die Antwort an. Den Quellcode des Beispiels finden Sie auf [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingEntitySearchv7.js).
 
@@ -87,15 +87,15 @@ Die Anwendung ist zwar in JavaScript geschrieben, an sich ist die API aber ein R
     let json = JSON.stringify(JSON.parse(body), null, '  ');
     console.log (json);
     });
-        ```
+    ```
 
-## Send a request
+## <a name="send-a-request"></a>Send a request (Anforderung senden)
 
-1. Create a function called `Search()` to send a search request. In it, perform the following steps:
+1. Erstellen Sie eine Funktion mit dem Namen `Search()`, um eine Suchanforderung zu senden. Führen Sie darin die folgenden Schritte aus:
 
-2. Within this function, create a JSON object containing your request parameters. Use `Get` for the method, and add your host and path information. Add your subscription key to the `Ocp-Apim-Subscription-Key` header. 
+2. Erstellen Sie innerhalb dieser Funktion ein JSON-Objekt, das Ihre Anforderungsparameter enthält. Verwenden Sie `Get` für die Methode, und fügen Sie die Host- und Pfadinformationen hinzu. Fügen Sie dem `Ocp-Apim-Subscription-Key`-Header Ihren Abonnementschlüssel hinzu. 
 
-3. Use `https.request()` to send the request with the response handler created previously, and your search parameters.
+3. Verwenden Sie `https.request()`, um die Anforderung mit dem zuvor erstellten Antworthandler und Ihren Suchparametern zu senden.
     
    ```javascript
    let Search = function () {

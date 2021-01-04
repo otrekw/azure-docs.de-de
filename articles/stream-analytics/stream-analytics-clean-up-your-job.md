@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.date: 06/21/2019
 ms.custom: seodec18
 ms.openlocfilehash: 2652b97c9392d3016bbc52209d4b2bda81c31706
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348966"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022080"
 ---
 # <a name="stop-or-delete-your-azure-stream-analytics-job"></a>Beenden oder Löschen Ihres Azure Stream Analytics-Auftrags
 
@@ -30,7 +30,7 @@ Wenn Sie einen Auftrag beenden, wird die Bereitstellung von Ressourcen aufgehobe
 
 2. Suchen Sie nach Ihrem ausgeführten Stream Analytics-Auftrag, und wählen Sie ihn aus.
 
-3. Klicken Sie auf der Seite für Stream Analytics-Aufträge auf **Beenden** , um den Auftrag zu beenden. 
+3. Klicken Sie auf der Seite für Stream Analytics-Aufträge auf **Beenden**, um den Auftrag zu beenden. 
 
    ![Beenden eines Azure Stream Analytics-Auftrags](./media/stream-analytics-clean-up-your-job/stop-stream-analytics-job.png)
 
@@ -44,7 +44,7 @@ Wenn Sie einen Auftrag beenden, wird die Bereitstellung von Ressourcen aufgehobe
 
 2. Suchen Sie Ihren vorhandenen Stream Analytics-Auftrag, und wählen Sie ihn aus.
 
-3. Klicken Sie auf der Seite für Stream Analytics-Aufträge auf **Löschen** , um den Auftrag zu löschen. 
+3. Klicken Sie auf der Seite für Stream Analytics-Aufträge auf **Löschen**, um den Auftrag zu löschen. 
 
    ![Löschen eines Azure Stream Analytics-Auftrags](./media/stream-analytics-clean-up-your-job/delete-stream-analytics-job.png)
 

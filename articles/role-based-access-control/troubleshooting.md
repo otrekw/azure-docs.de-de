@@ -15,12 +15,12 @@ ms.date: 11/10/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1, devx-track-azurecli
-ms.openlocfilehash: 53628f5aa0bc5ab5dedde5deb9950c7b13fb4bf6
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: e30af9522d7c8fa81c4d93e11d252aefc4426586
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94490745"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184262"
 ---
 # <a name="troubleshoot-azure-rbac"></a>Behandeln von Problemen bei Azure RBAC
 
@@ -151,7 +151,7 @@ Wenn Sie diese Rollenzuweisung mit der Azure CLI anzeigen, ist `principalName` m
 }
 ```
 
-Sie können diese Rollenzuweisungen ohne Probleme beibehalten, wenn der Sicherheitsprinzipal gelöscht wurde. Sie können diese Rollenzuweisungen jedoch bei Bedarf entfernen, indem Sie die Schritte ausführen, die denen für andere Rollenzuweisungen entsprechen. Informationen zum Entfernen von Rollenzuweisungen finden Sie unter [Azure-Portal](role-assignments-portal.md#remove-a-role-assignment), [Azure PowerShell](role-assignments-powershell.md#remove-a-role-assignment) oder [Azure CLI](role-assignments-cli.md#remove-role-assignment).
+Sie können diese Rollenzuweisungen ohne Probleme beibehalten, wenn der Sicherheitsprinzipal gelöscht wurde. Sie können diese Rollenzuweisungen jedoch bei Bedarf entfernen, indem Sie die Schritte ausführen, die denen für andere Rollenzuweisungen entsprechen. Informationen zum Entfernen von Rollenzuweisungen finden Sie unter [Azure-Portal](role-assignments-portal.md#remove-a-role-assignment), [Azure PowerShell](role-assignments-powershell.md#remove-a-role-assignment) oder [Azure CLI](role-assignments-cli.md#remove-a-role-assignment).
 
 Wenn Sie in PowerShell versuchen, die Rollenzuweisungen unter Verwendung der Objekt-ID und des Rollendefinitionsnamens zu entfernen, und mehr als eine Rollenzuweisung Ihren Parametern entspricht, wird die folgende Fehlermeldung angezeigt: „The provided information does not map to a role assignment“ (Die angegebenen Informationen stimmen mit keiner Rollenzuweisung überein). Die folgende Ausgabe zeigt ein Beispiel für die Fehlermeldung:
 
@@ -209,7 +209,7 @@ Die folgenden Elemente erfordern **Schreibzugriff** auf den **App Service-Plan**
 * Skalierungskonfiguration (Anzahl der Instanzen, Größe des virtuellen Computers, Einstellungen für automatische Skalierung)  
 * Kontingente (Speicher, Bandbreite, CPU)  
 
-Die folgenden Elemente erfordern **Schreibzugriff** auf die gesamte **Ressourcengruppe** , die Ihre Website umfasst:  
+Die folgenden Elemente erfordern **Schreibzugriff** auf die gesamte **Ressourcengruppe**, die Ihre Website umfasst:  
 
 * TLS/SSL-Zertifikate und -Bindungen (TLS/SSL-Zertifikate können von Websites derselben Ressourcengruppe und desselben geografischen Standorts gemeinsam genutzt werden)  
 * Warnregeln  
@@ -223,7 +223,7 @@ Die folgenden Elemente erfordern **Schreibzugriff** auf die gesamte **Ressourcen
 
 Virtuelle Computer stehen in Verbindung mit Domänennamen, virtuellen Netzwerken, Speicherkonten und Warnungsregeln.
 
-Die folgenden Elemente erfordern **Schreibzugriff** auf den **virtuellen Computer** :
+Die folgenden Elemente erfordern **Schreibzugriff** auf den **virtuellen Computer**:
 
 * Endpunkte  
 * IP-Adressen  

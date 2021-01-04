@@ -1,20 +1,20 @@
 ---
-title: 'Tutorial: Migrieren einer Web-App aus Google Maps | Microsoft Azure Maps'
+title: 'Tutorial: Migrieren einer Web-App aus Google Maps zu Microsoft Azure Maps'
 description: Hier finden Sie ein Tutorial zum Migrieren einer Web-App aus Google Maps zu Microsoft Azure Maps.
 author: rbrundritt
 ms.author: richbrun
-ms.date: 08/18/2020
+ms.date: 12/07/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: devx-track-js
-ms.openlocfilehash: b95800bea4bceffabad56aa29b68a57b310c5518
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 4dee8de8f42b78ecdab9d9e15bb277d58fa8ba70
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896445"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905059"
 ---
 # <a name="tutorial---migrate-a-web-app-from-google-maps"></a>Tutorial: Migrieren einer Web-App aus Google Maps
 
@@ -75,7 +75,7 @@ Die Tabelle enthält die wichtigsten API-Features im Google Maps V3 JavaScript�
 | Geocoder-Dienst        | ✓                          |
 | Wegbeschreibungsdienst      | ✓                          |
 | Entfernungsmatrixdienst | ✓                          |
-| Höhenangabendienst       | Geplant                     |
+| Höhenangabendienst       | ✓                          |
 
 ## <a name="notable-differences-in-the-web-sdks"></a>Wichtige Unterschiede in den Web-SDKs
 
@@ -85,7 +85,7 @@ Im Anschluss finden Sie einige wichtige Unterschiede zwischen den Web-SDKs für 
 - Erstellen Sie zunächst eine Instanz der Map-Klasse in Azure Maps. Warten Sie, bis das Kartenereignis `ready` oder `load` ausgelöst wurde, bevor Sie programmgesteuert mit der Karte interagieren. Dadurch wird sichergestellt, dass alle Kartenressourcen geladen wurden und für den Zugriff bereit sind.
 - Das Kachelsystem für die Basiskarten ist bei beide Plattformen ähnlich. Die Kacheln in Google Maps haben jedoch eine Größe von 256 Pixeln, während die Kachelgröße in Azure Maps 512 Pixel beträgt. Verringern Sie daher in Azure Maps die Google Maps-Zoomstufe um den Wert 1, um in Azure Maps die gleiche Kartenansicht zu erhalten wie in Google Maps.
 - Koordinaten werden in Google Maps als `latitude,longitude` angegeben, Azure Maps hingegen verwendet `longitude,latitude`. Das Format von Azure Maps entspricht dem Standardformat `[x, y]`, das von den meisten GIS-Plattformen genutzt wird.
-- Formen im Azure Maps Web-SDK basieren auf dem GeoJSON-Schema. Hilfsklassen werden über den [*atlas.data* -Namespace](/javascript/api/azure-maps-control/atlas.data) verfügbar gemacht. Darüber hinaus gibt es die Klasse [*atlas.Shape*](/javascript/api/azure-maps-control/atlas.shape). Verwenden Sie diese Klasse, um GeoJSON-Objekten zu umschließen. Dies vereinfacht die Aktualisierung und Verwaltung auf eine für Datenbindungen geeignete Weise.
+- Formen im Azure Maps Web-SDK basieren auf dem GeoJSON-Schema. Hilfsklassen werden über den [*atlas.data*-Namespace](/javascript/api/azure-maps-control/atlas.data) verfügbar gemacht. Darüber hinaus gibt es die Klasse [*atlas.Shape*](/javascript/api/azure-maps-control/atlas.shape). Verwenden Sie diese Klasse, um GeoJSON-Objekten zu umschließen. Dies vereinfacht die Aktualisierung und Verwaltung auf eine für Datenbindungen geeignete Weise.
 - Koordinaten werden in Azure Maps als Positionsobjekte definiert. Eine Koordinate wird als Zahlenarray im Format `[longitude,latitude]` angegeben. Alternativ kann das neue Format „atlas.data.Position(Längengrad, Breitengrad)“ verwendet werden.
     > [!TIP]
     > Die Position-Klasse weist eine statische Hilfsmethode zum Importieren von Koordinaten im Format „Breitengrad, Längengrad“ auf. Die Methode [atlas.data.Position.fromLatLng](/javascript/api/azure-maps-control/atlas.data.position) kann in vielen Fällen durch die Methode `new google.maps.LatLng` in Google Maps-Code ersetzt werden.
@@ -255,7 +255,7 @@ Dies ist ein Beispiel für Google Maps mit der Spracheinstellung „fr-FR“.
 
 #### <a name="after-azure-maps"></a>Nachher: Azure Maps
 
-Azure Maps bietet zwei verschiedene Möglichkeiten zum Festlegen der Sprache und der regionalen Ansicht für die Karte. Die erste Option besteht darin, diese Informationen dem globalen *Atlas* -Namespace hinzuzufügen. Dies führt dazu, dass alle Kartensteuerelement-Instanzen in Ihrer App standardmäßig auf diese Einstellungen festgelegt werden. Im Folgenden wird die Sprache auf Französisch („fr-FR“) und die regionale Ansicht auf „Auto“ festgelegt:
+Azure Maps bietet zwei verschiedene Möglichkeiten zum Festlegen der Sprache und der regionalen Ansicht für die Karte. Die erste Option besteht darin, diese Informationen dem globalen *Atlas*-Namespace hinzuzufügen. Dies führt dazu, dass alle Kartensteuerelement-Instanzen in Ihrer App standardmäßig auf diese Einstellungen festgelegt werden. Im Folgenden wird die Sprache auf Französisch („fr-FR“) und die regionale Ansicht auf „Auto“ festgelegt:
 
 ```javascript
 atlas.setLanguage('fr-FR');
@@ -332,9 +332,9 @@ map.setStyle({
 
 In Azure Maps können Punktdaten auf mehrere Arten auf der Karte gerendert werden:
 
-- **HTML-Marker** : Rendering von Punkten mithilfe herkömmlicher DOM-Elemente. HTML-Markers unterstützten Ziehbewegungen.
-- **Symbolebene** : Rendering von Punkten als Symbol oder Text im WebGL-Kontext.
-- **Blasenebene** : Punktdaten werden als Kreise auf der Karte gerendert. Die Radien der Kreise können auf der Grundlage von Eigenschaften in den Daten skaliert werden.
+- **HTML-Marker**: Rendering von Punkten mithilfe herkömmlicher DOM-Elemente. HTML-Markers unterstützten Ziehbewegungen.
+- **Symbolebene**: Rendering von Punkten als Symbol oder Text im WebGL-Kontext.
+- **Blasenebene**: Punktdaten werden als Kreise auf der Karte gerendert. Die Radien der Kreise können auf der Grundlage von Eigenschaften in den Daten skaliert werden.
 
 Rendern Sie Symbol- und Blasenebenen innerhalb des WebGL-Kontexts. Von beiden Ebenen können große Punktmengen auf der Karte gerendert werden. Für diese Ebenen ist die Speicherung der Daten in einer Datenquelle erforderlich. Die Datenquellen und Renderingebenen sollten der Karte nach dem Auslösen des `ready`-Ereignisses hinzugefügt werden. HTML-Marker werden als DOM-Elemente auf der Seite gerendert und verwenden keine Datenquelle. Je mehr DOM-Elemente eine Seite aufweist, desto langsamer wird sie. Wenn mehr als ein paar hundert Punkte auf einer Karte gerendert werden sollen, empfiehlt es sich, stattdessen eine der Renderingebenen zu verwenden.
 
@@ -1032,7 +1032,7 @@ Fügen Sie einer Datenquelle Daten hinzu, und verwalten Sie sie. Verbinden Sie D
 
 Bei aktiviertem Clustering sendet die Datenquelle gruppierte und nicht gruppierte Datenpunkte zum Rendern an Ebenen. Die Datenquelle kann Hunderttausende von Datenpunkten gruppieren. Ein gruppierter Datenpunkt verfügt über folgende Eigenschaften:
 
-| Eigenschaftenname             | type    | Beschreibung   |
+| Eigenschaftenname             | type    | BESCHREIBUNG   |
 |---------------------------|---------|---------------|
 | `cluster`                 | boolean | Gibt an, ob das Feature einen Cluster darstellt. |
 | `cluster_id`              | Zeichenfolge  | Eine eindeutige ID für den Cluster, die mit den DataSource-Methoden `getClusterExpansionZoom`, `getClusterChildren` und `getClusterLeaves` verwendet werden kann. |

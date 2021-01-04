@@ -1,6 +1,6 @@
 ---
-title: Zugreifen auf Dateien im Speicher in einem serverlosen SQL-Pool (Vorschauversion)
-description: Hier erfahren Sie, wie Sie Speicherdateien mithilfe eines serverlosen SQL-Pools (Vorschauversion) in Azure Synapse Analytics abfragen.
+title: Zugreifen auf Dateien im Speicher in einem serverlosen SQL-Pool
+description: Hier erfahren Sie, wie Sie Speicherdateien mithilfe eines serverlosen SQL-Pools in Azure Synapse Analytics abfragen.
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,14 +9,14 @@ ms.subservice: sql
 ms.date: 04/19/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 64148cd8fd467be6a5f09ee723e230bdc8181d2d
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 82a4ded3a64a8a8bbc62f99a8854eb6d2b5f0d0b
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94685680"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96446570"
 ---
-# <a name="access-external-storage-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Zugreifen auf externen Speicher mithilfe eines serverlosen SQL-Pools (Vorschauversion) in Azure Synapse Analytics
+# <a name="access-external-storage-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Zugreifen auf externen Speicher mithilfe eines serverlosen SQL-Pools in Azure Synapse Analytics
 
 In diesem Dokument wird beschrieben, wie Benutzer Daten aus den Dateien lesen können, die in Azure Storage in einem serverlosen SQL-Pool gespeichert sind. Benutzer haben die folgenden Optionen, um auf Speicher zuzugreifen:
 

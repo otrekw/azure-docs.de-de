@@ -5,19 +5,19 @@ services: load-balancer
 author: asudbring
 ms.service: load-balancer
 ms.topic: conceptual
-ms.custom: contperfq1
+ms.custom: contperf-fy21q1
 ms.date: 10/13/2020
 ms.author: allensu
-ms.openlocfilehash: 5a2d7f9f60253916eae808a7f65bc4b4b289bd67
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: d30998e0d99ba7b1eeb55bdc47cd5cc54690156f
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94694779"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97032914"
 ---
 # <a name="using-snat-for-outbound-connections"></a>Verwenden von SNAT für ausgehende Verbindungen
 
-Mithilfe der Front-End-IP-Adressen einer öffentlichen Azure Load Balancer-Instanz können ausgehende Verbindungen mit dem Internet für Back-End-Instanzen bereitgestellt werden. Bei dieser Konfiguration kommt **SNAT (Source Network Address Translation, Quell-Netzwerkadressübersetzung)** zum Einsatz. Die IP-Adresse des Back-Ends wird von SNAT in die öffentliche IP-Adresse Ihrer Load Balancer-Instanz umgeschrieben. 
+Mithilfe der Front-End-IP-Adressen einer öffentlichen Azure Load Balancer-Instanz können ausgehende Verbindungen mit dem Internet für Back-End-Instanzen bereitgestellt werden. Diese Konfiguration verwendet **SNAT (Source Network Address Translation, Quell-Netzwerkadressenübersetzung)** . Die IP-Adresse des Back-Ends wird von SNAT in die öffentliche IP-Adresse Ihrer Load Balancer-Instanz umgeschrieben. 
 
 SNAT ermöglicht **IP-Maskierung** der Back-End-Instanz. Diese Maskierung verhindert, dass externe Quellen eine direkte Adresse für die Back-End-Instanzen abrufen können. Wenn Sie eine IP-Adresse zwischen Back-End-Instanzen freigeben, werden die Kosten für statische öffentliche IPs reduziert, und es werden Szenarien wie das Vereinfachen von IP-Zulassungslisten mit Datenverkehr von bekannten öffentlichen IP-Adressen unterstützt. 
 
@@ -182,8 +182,6 @@ Weitere Informationen zu Azure Virtual Network NAT finden Sie unter [Was ist Azu
 
 ## <a name="constraints"></a>Einschränkungen
 
-*   Ports werden nach 15 Sekunden freigegeben, wenn **TCP RST** empfangen oder gesendet wird.
-*   Ports werden nach 240 Sekunden freigegeben, wenn **FINACK** empfangen oder gesendet wird.
 *   Wenn sich eine Verbindung im Leerlauf befindet und keine neuen Pakete gesendet werden, werden die Ports nach 4 bis 120 Minuten freigegeben.
   * Dieser Schwellenwert kann über Ausgangsregeln konfiguriert werden.
 *   Jede IP-Adresse stellt 64.000 Ports bereit, die für SNAT verwendet werden können.

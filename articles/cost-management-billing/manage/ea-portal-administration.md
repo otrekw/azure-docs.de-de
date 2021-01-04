@@ -3,18 +3,18 @@ title: Azure EA-Portalverwaltung
 description: In diesem Artikel werden die häufigsten Aufgaben erläutert, die Administratoren im Azure EA-Portal durchführen.
 author: bandersmsft
 ms.author: banders
-ms.date: 10/27/2020
+ms.date: 11/13/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.custom: contperfq1
-ms.openlocfilehash: e83af5baa4ca38a8e81dffa8bb81ab3da64e1e95
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.custom: contperf-fy21q1
+ms.openlocfilehash: e25b2aeee46617bd62a72d204e1a4bdbc31d08ea
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94411038"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97030823"
 ---
 # <a name="azure-ea-portal-administration"></a>Azure EA-Portalverwaltung
 
@@ -135,28 +135,20 @@ So bestätigen Sie den Kontobesitz:
    Der Status sollte sich von **Ausstehend** in **Start-/Enddatum** ändern. Das Start-/Enddatum ist das Datum, an dem der Benutzer sich zuerst angemeldet hat, und das Enddatum der Vereinbarung.
 1. Wenn die **Warnmeldung** angezeigt wird, muss der Kontobesitzer auf **Weiter** klicken, um das Konto bei der erstmaligen Anmeldung beim Azure Enterprise Portal zu aktivieren.
 
-## <a name="change-account-owner"></a>Ändern des Kontobesitzers
+## <a name="change-azure-subscription-or-account-ownership"></a>Ändern des Besitzes von Azure-Abonnements oder -Konten
 
-Unternehmensadministratoren können das Azure Enterprise Portal verwenden, um den Abonnementkontobesitz in einer Registrierung zu übertragen. Durch die Aktion werden alle Abonnements von einem Quellbenutzerkonto in ein Zielbenutzerkonto verschoben.
+Unternehmensadministratoren können das Azure Enterprise Portal verwenden, um den Kontobesitz bestimmter oder aller Abonnements in einer Registrierung zu übertragen.
 
-Beachten Sie beim Übertragen von Konten die folgenden wichtigen Informationen:
+Wenn Sie eine Besitzübertragung für ein Abonnement oder Konto durchführen, aktualisiert Microsoft den Kontobesitzer.
 
-- Diese Übertragungen können folgendermaßen durchgeführt werden:
-  - Von einem Geschäfts-, Schul- oder Unikonto zu einem anderen Geschäfts-, Schul- oder Unikonto.
-  - Von einem Microsoft-Konto zu einem Geschäfts-, Schul- oder Unikonto.
-  - Von einem Microsoft-Konto zu einem anderen Microsoft-Konto.
+Machen Sie sich vor der Besitzübertragung mit den folgenden Azure RBAC-Richtlinien (Azure Role-Based Access Control, rollenbasierte Zugriffssteuerung in Azure) vertraut:
 
-    Das Zielkonto muss ein gültiges Azure Commerce-Konto sein, damit es ein gültiges Ziel für Übertragungen darstellt. Bei neuen Konten werden Sie bei der Anmeldung beim Azure Enterprise Portal aufgefordert, ein Azure Commerce-Konto zu erstellen. Bei vorhandenen Konten müssen Sie zuerst ein neues Azure-Abonnement erstellen, bevor das Konto berechtigt ist.
-
-- Übertragungen von einem Geschäfts-, Schul- oder Unikonto zu einem Microsoft-Konto werden nicht unterstützt.
-
-- Wenn Sie eine Abonnementübertragung abschließen, aktualisiert Microsoft den Kontobesitzer.
-
-Beachten Sie diese Richtlinien für die rollenbasierte Zugriffssteuerung (RBAC):
-
-- Wenn Sie Abonnementübertragungen zwischen zwei Organisations-IDs im gleichen Mandanten durchführen, werden RBAC-Richtlinien und vorhandene Dienstadministrator- und Co-Administrator-Rollen beibehalten.
-- Andere Abonnementübertragungen führen zum Verlust Ihrer RBAC-Richtlinien und Rollenzuweisungen.
+- Wenn Sie Besitzübertragungen für Abonnements oder Konten zwischen zwei Organisations-IDs im gleichen Mandanten durchführen, werden Azure RBAC-Richtlinien und vorhandene Dienstadministrator- und Co-Admin-Rollen beibehalten.
+- Bei mandantenübergreifenden Besitzübertragungen für Abonnements oder Konten gehen Ihre Azure RBAC-Richtlinien und Rollenzuweisungen verloren.
 - Richtlinien und Administratorrollen werden nicht über verschiedene Verzeichnisse hinweg übertragen. Dienstadministratoren werden auf den Besitzer des Zielkontos aktualisiert.
+- Wenn Sie den Verlust der Azure RBAC-Richtlinien und Rollenzuweisungen bei der Abonnementübertragung zwischen Mandanten vermeiden möchten, achten Sie darauf, dass das Kontrollkästchen **Move the subscriptions to the recipient’s Azure AD tenant** (Abonnements in den Azure AD-Mandanten des Empfängers verschieben) **deaktiviert** ist. Dadurch bleiben die Dienste, Azure-Rollen und Richtlinien im aktuellen Azure AD-Mandanten erhalten, und es wird lediglich der Abrechnungsbesitz für das Konto übertragen.  
+    :::image type="content" source="./media/ea-portal-administration/unselected-checkbox-move-subscriptions-to-recipients-tenant.png" alt-text="Abbildung: Deaktiviertes Kontrollkästchen für die Verschiebung von Abonnements an einen Azure AD-Mandanten" lightbox="./media/ea-portal-administration/unselected-checkbox-move-subscriptions-to-recipients-tenant.png" :::
+
 
 Führen Sie vor dem Ändern des Kontobesitzers die folgenden Aktionen durch:
 
@@ -168,26 +160,25 @@ So übertragen Sie den Kontobesitz für alle Abonnements:
 1. Melden Sie sich beim Azure Enterprise Portal an.
 1. Wählen Sie im Navigationsbereich links die Option **Verwalten** aus.
 1. Klicken Sie auf die Registerkarte **Konto**, und zeigen Sie auf ein Konto.
-1. Klicken Sie auf der rechten Seite auf das Symbol zum Ändern des Kontobesitzers. Das Symbol stellt eine Person dar.
-1. Wählen Sie ein geeignetes Konto aus, und klicken Sie dann auf **Weiter**.
+1. Klicken Sie auf der rechten Seite auf das Symbol zum Ändern des Kontobesitzers. Das Symbol stellt eine Person dar.  
+    ![Bild des Symbols zum Ändern des Kontobesitzers](./media/ea-portal-administration/create-ea-create-sub-transfer-account-ownership-of-sub.png)
+1. Wählen Sie das Zielkonto für die Übertragung und anschließend **Weiter** aus.
+1. Wenn Sie den Kontobesitz an einen anderen Azure AD-Mandanten übertragen möchten, aktivieren Sie das Kontrollkästchen **Move the subscriptions to the recipient's Azure AD tenant** (Abonnements in den Azure AD-Mandanten des Empfängers verschieben).  
+    :::image type="content" source="./media/ea-portal-administration/selected-checkbox-move-subscriptions-to-recipients-tenant.png" alt-text="Abbildung: Aktiviertes Kontrollkästchen für die Verschiebung von Abonnements an einen Azure AD-Mandanten" lightbox="./media/ea-portal-administration/selected-checkbox-move-subscriptions-to-recipients-tenant.png" :::
 1. Bestätigen Sie die Übertragung, und klicken Sie auf **Senden**.
-
-![Bild des Symbols zum Ändern des Kontobesitzers](./media/ea-portal-administration/create-ea-create-sub-transfer-account-ownership-of-sub.png)
 
 So übertragen Sie den Kontobesitz für ein einzelnes Abonnement:
 
 1. Melden Sie sich beim Azure Enterprise Portal an.
 1. Wählen Sie im Navigationsbereich links die Option **Verwalten** aus.
 1. Klicken Sie auf die Registerkarte **Konto**, und zeigen Sie auf ein Konto.
-1. Klicken Sie rechts auf das Symbol zum Übertragen von Abonnements. Das Symbol stellt eine Seite dar.
-1. Wählen Sie ein geeignetes Abonnement aus, und klicken Sie dann auf **Weiter**.
+1. Klicken Sie rechts auf das Symbol zum Übertragen von Abonnements. Das Symbol stellt eine Seite dar.  
+    ![Bild des Symbols zum Übertragen von Abonnements](./media/ea-portal-administration/ea-transfer-subscriptions.png)
+1. Wählen Sie das Zielkonto für die Abonnementübertragung und anschließend **Weiter** aus.
+1. Wenn Sie den Abonnementbesitz an einen anderen Azure AD-Mandanten übertragen möchten, aktivieren Sie das Kontrollkästchen **Move the subscriptions to the recipient's Azure AD tenant** (Abonnements in den Azure AD-Mandanten des Empfängers verschieben).  
+    :::image type="content" source="./media/ea-portal-administration/selected-checkbox-move-subscriptions-to-recipients-tenant.png" alt-text="Abbildung: Aktiviertes Kontrollkästchen für die Verschiebung von Abonnements an einen Azure AD-Mandanten" lightbox="./media/ea-portal-administration/selected-checkbox-move-subscriptions-to-recipients-tenant.png" :::
 1. Bestätigen Sie die Übertragung, und klicken Sie auf **Senden**.
 
-![Bild des Symbols zum Übertragen von Abonnements](./media/ea-portal-administration/ea-transfer-subscriptions.png)
-
-In diesem Video können Sie sich die Benutzerverwaltung im Azure Enterprise Portal ansehen:
-
-> [!VIDEO https://www.youtube.com/embed/621jVkvmwm8]
 
 ## <a name="associate-an-account-to-a-department"></a>Zuordnen eines Kontos zu einer Abteilung
 
@@ -291,13 +282,13 @@ Das Azure EA-Portal unterstützt Sie bei der Verwaltung Ihrer Azure EA-Kosten un
 
 Jede Rolle verfügt über eine andere Zugriffs- und Autorisierungsebene.
 
-Weitere Informationen zu Benutzerrollen finden Sie unter [Unternehmensbenutzerrollen](https://docs.microsoft.com/azure/manage/understand-ea-roles#enterprise-user-roles).
+Weitere Informationen zu Benutzerrollen finden Sie unter [Unternehmensbenutzerrollen](./understand-ea-roles.md#enterprise-user-roles).
 
 ## <a name="add-an-azure-ea-account"></a>Hinzufügen eines Azure EA-Kontos
 
 Das Azure EA-Konto ist eine Organisationseinheit im Azure EA Portal. Sie wird zur Abonnementverwaltung und auch für die Berichterstellung verwendet. Für den Zugriff auf Azure-Dienste und ihre Verwendung müssen Sie ein Konto erstellen oder erstellen lassen.
 
-Weitere Informationen zu Azure-Konten finden Sie unter [Hinzufügen eines Kontos](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-administration#add-an-account).
+Weitere Informationen zu Azure-Konten finden Sie unter [Hinzufügen eines Kontos](#add-an-account).
 
 ## <a name="enterprise-devtest-offer"></a>Enterprise Dev/Test-Angebot
 
@@ -370,7 +361,7 @@ Löschen Sie ein Abonnement, für das Sie als Kontobesitzer fungieren, wie folgt
 
 Abonnements können nur von Kontoadministratoren gekündigt werden.
 
-Weitere Informationen finden Sie unter [Was geschieht, nachdem ich mein Abonnement gekündigt habe?](cancel-azure-subscription.md#what-happens-after-i-cancel-my-subscription).
+Weitere Informationen finden Sie unter [Was geschieht, nachdem ich mein Abonnement gekündigt habe?](cancel-azure-subscription.md#what-happens-after-subscription-cancellation).
 
 ## <a name="delete-an-account"></a>Löschen eines Kontos
 

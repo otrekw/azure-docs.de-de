@@ -5,13 +5,13 @@ services: logic-apps
 ms.workload: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
-ms.date: 08/27/2020
-ms.openlocfilehash: 8a59b47dadd845f1a522854c503af11c8fff72fd
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.date: 11/19/2020
+ms.openlocfilehash: b345168dad63b1846d46c12721587eaffb5f887e
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94331973"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94981203"
 ---
 # <a name="call-trigger-or-nest-logic-apps-by-using-https-endpoints-in-azure-logic-apps"></a>Aufrufen, Auslösen oder Schachteln von Logik-Apps mithilfe von HTTPS-Endpunkten in Azure Logic Apps
 
@@ -104,7 +104,7 @@ Weitere Informationen zu Sicherheit, Autorisierung und Verschlüsselung für ein
 
    * Wählen Sie rechts neben dem Feld **HTTP POST URL** die Option **URL kopieren** (Symbol „Dateien kopieren“) aus.
 
-   * Machen Sie diesen POST-Aufruf:
+   * Führen Sie diesen Befehl mit der Methode aus, die der Anforderungsbefehl erwartet. In diesem Beispiel wird die `POST`-Methode verwendet:
 
      `POST https://management.azure.com/{logic-app-resource-ID}/triggers/{endpoint-trigger-name}/listCallbackURL?api-version=2016-06-01`
 
@@ -124,7 +124,7 @@ Weitere Informationen zu Sicherheit, Autorisierung und Verschlüsselung für ein
 
 ## <a name="select-expected-request-method"></a>Auswählen der erwarteten Anforderungsmethode
 
-Standardmäßig erwartet der Anforderungstrigger eine POST-Anforderung. Sie können eine andere erwartete Methode angeben (aber nur eine einzige).
+Standardmäßig erwartet der Anforderungstrigger eine `POST`-Anforderung. Sie können jedoch eine andere Methode angeben, die vom Aufrufer verwendet werden muss (aber nur eine einzige).
 
 1. Öffnen Sie im Anforderungstrigger die Liste **Neuen Parameter hinzufügen**, und wählen Sie **Methode** aus. Dadurch wird diese Eigenschaft zum Trigger hinzugefügt.
 
@@ -262,7 +262,7 @@ Wenn Sie Parameterwerte über die URL des Endpunkts annehmen möchten, haben Sie
 
 ## <a name="call-logic-app-through-endpoint-url"></a>Aufrufen einer Logik-App über eine Endpunkt-URL
 
-Nach dem Erstellen des Endpunkts können Sie die Logik-App auslösen, indem Sie eine HTTPS-`POST`-Anforderung an die vollständige URL des Endpunkts senden. Logik-Apps bieten integrierte Unterstützung für Direktzugriffs-Endpunkte.
+Nach dem Erstellen des Endpunkts können Sie die Logik-App auslösen, indem Sie eine HTTPS-Anforderung an die vollständige URL des Endpunkts senden. Logik-Apps bieten integrierte Unterstützung für Direktzugriffs-Endpunkte.
 
 <a name="generated-tokens"></a>
 

@@ -2,13 +2,13 @@
 title: Bereitstellen von Ressourcen für einen Mandanten
 description: Hier erfahren Sie, wie Sie Ressourcen im Mandantenbereich in einer Azure Resource Manager-Vorlage bereitstellen.
 ms.topic: conceptual
-ms.date: 10/22/2020
-ms.openlocfilehash: 854ccbd43509b6c0b5a04357844c78c32b7e6396
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.date: 11/24/2020
+ms.openlocfilehash: 5733c5d6eb6cbd86207589244c22badc17fe7073
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92668692"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95807630"
 ---
 # <a name="tenant-deployments-with-arm-templates"></a>Mandantenbereitstellungen mit ARM-Vorlagen
 
@@ -36,11 +36,19 @@ Verwenden Sie zum Erstellen von Verwaltungsgruppen:
 
 * [managementGroups](/azure/templates/microsoft.management/managementgroups)
 
+Verwenden Sie zum Erstellen von Abonnements:
+
+* [Aliase](/azure/templates/microsoft.subscription/aliases)
+
 Verwenden Sie zum Verwalten von Kosten:
 
 * [billingProfiles](/azure/templates/microsoft.billing/billingaccounts/billingprofiles)
 * [instructions](/azure/templates/microsoft.billing/billingaccounts/billingprofiles/instructions)
 * [invoiceSections](/azure/templates/microsoft.billing/billingaccounts/billingprofiles/invoicesections)
+
+Verwenden Sie zum Konfigurieren des Portals:
+
+* [tenantConfigurations](/azure/templates/microsoft.portal/tenantconfigurations)
 
 ## <a name="schema"></a>Schema
 
@@ -121,14 +129,22 @@ Ausführlichere Informationen über Bereitstellungsbefehle und -optionen für di
 * [Verwenden einer Bereitstellungsschaltfläche zum Bereitstellen von Vorlagen aus einem GitHub-Repository](deploy-to-azure-button.md)
 * [Bereitstellen von ARM-Vorlagen über Cloud Shell](deploy-cloud-shell.md)
 
+## <a name="deployment-location-and-name"></a>Bereitstellungsspeicherort und -name
+
+Für Bereitstellungen auf der Mandantenebene müssen Sie einen Speicherort für die Bereitstellung angeben. Der Speicherort der Bereitstellung ist vom Speicherort der Ressourcen getrennt, die Sie bereitstellen. Der Bereitstellungsspeicherort gibt an, wo Bereitstellungsdaten gespeichert werden sollen. [Abonnement](deploy-to-subscription.md)- und [Verwaltungsgruppen](deploy-to-management-group.md)bereitstellungen erfordern ebenfalls einen Speicherort. Für [Ressourcengruppe](deploy-to-resource-group.md)nbereitstellungen wird der Speicherort der Ressourcengruppe zum Speichern der Bereitstellungsdaten verwendet.
+
+Sie können einen Namen für die Bereitstellung angeben oder den Bereitstellungsstandardnamen verwenden. Der Standardname ist der Name der Vorlagendatei. Wenn Sie z.B. eine Vorlage mit dem Namen **azuredeploy.json** bereitstellen, wird **azuredeploy** als Standardname für die Bereitstellung erstellt.
+
+Der Speicherort für jeden Bereitstellungsnamen ist unveränderlich. Sie können keine Bereitstellung an einem Speicherort erstellen, wenn bereits eine Bereitstellung mit demselben Namen an einem anderen Speicherort vorhanden ist. Wenn Sie z. B. eine Mandantenbereitstellung mit dem Namen **deployment1** in **centralus** erstellen, können Sie später keine weitere Bereitstellung mit dem Namen **deployment1**, aber einen Speicherort **westus** erstellen. Wenn Sie den Fehlercode `InvalidDeploymentLocation` erhalten, verwenden Sie entweder einen anderen Namen oder denselben Speicherort wie bei der vorherigen Bereitstellung für diesen Namen.
+
 ## <a name="deployment-scopes"></a>Bereitstellungsbereiche
 
-Bei der Bereitstellung in einer Verwaltungsgruppe können Sie Ressourcen an folgenden Orten bereitstellen:
+Bei der Bereitstellung auf einem Mandanten können Sie Ressourcen an folgenden Orten bereitstellen:
 
 * im Mandanten
 * in Verwaltungsgruppen innerhalb des Mandanten
 * subscriptions
-* in Ressourcengruppen (über zwei geschachtelte Bereitstellungen)
+* Ressourcengruppen
 * [Erweiterungsressourcen](scope-extension-resources.md) können auf Ressourcen angewendet werden.
 
 Der Benutzer, der die Vorlage bereitstellt, muss Zugriff auf den angegebenen Bereich besitzen.
@@ -145,7 +161,7 @@ Ressourcen, die im Ressourcenabschnitt der Vorlage definiert sind, werden auf de
 
 Um eine Verwaltungsgruppe innerhalb des Mandanten als Ziel zu verwenden, fügen Sie eine geschachtelte Bereitstellung hinzu, und geben Sie die `scope`-Eigenschaft an.
 
-:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/tenant-to-mg.json" highlight="10,17,22":::
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/tenant-to-mg.json" highlight="10,17,18,22":::
 
 ### <a name="scope-to-subscription"></a>Bereich: Abonnement
 
@@ -153,83 +169,27 @@ Sie können auch Abonnements innerhalb des Mandanten als Bereitstellungsziel ver
 
 Verwenden Sie eine geschachtelte Bereitstellung und die Eigenschaft `subscriptionId`, um ein Abonnement im Mandanten als Bereitstellungsziel zu verwenden.
 
-:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/tenant-to-subscription.json" highlight="10,18":::
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/tenant-to-subscription.json" highlight="9,10,18":::
 
-## <a name="deployment-location-and-name"></a>Bereitstellungsspeicherort und -name
+### <a name="scope-to-resource-group"></a>Bereich: Ressourcengruppe
 
-Für Bereitstellungen auf der Mandantenebene müssen Sie einen Speicherort für die Bereitstellung angeben. Der Speicherort der Bereitstellung ist vom Speicherort der Ressourcen getrennt, die Sie bereitstellen. Der Bereitstellungsspeicherort gibt an, wo Bereitstellungsdaten gespeichert werden sollen.
+Sie können auch Ressourcengruppen innerhalb des Mandanten als Bereitstellungsziel verwenden. Der Benutzer, der die Vorlage bereitstellt, muss Zugriff auf den angegebenen Bereich besitzen.
 
-Sie können einen Namen für die Bereitstellung angeben oder den Bereitstellungsstandardnamen verwenden. Der Standardname ist der Name der Vorlagendatei. Wenn Sie z.B. eine Vorlage mit dem Namen **azuredeploy.json** bereitstellen, wird **azuredeploy** als Standardname für die Bereitstellung erstellt.
+Um eine Ressourcengruppe innerhalb des Mandanten als Bereitstellungsziel zu verwenden, verwenden Sie eine geschachtelte Bereitstellung. Legen Sie die Eigenschaften `subscriptionId` und `resourceGroup` fest. Legen Sie keinen Speicherort für die geschachtelte Bereitstellung fest, da Sie am Speicherort der Ressourcengruppe bereitgestellt wird.
 
-Der Speicherort für jeden Bereitstellungsnamen ist unveränderlich. Sie können keine Bereitstellung an einem Speicherort erstellen, wenn bereits eine Bereitstellung mit demselben Namen an einem anderen Speicherort vorhanden ist. Wenn Sie den Fehlercode `InvalidDeploymentLocation` erhalten, verwenden Sie entweder einen anderen Namen oder denselben Speicherort wie bei der vorherigen Bereitstellung für diesen Namen.
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/tenant-to-rg.json" highlight="9,10,18":::
 
 ## <a name="create-management-group"></a>Erstellen einer Verwaltungsgruppe
 
-Die [folgende Vorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/tenant-deployments/new-mg) dient zum Erstellen einer Verwaltungsgruppe:
+Die folgende Vorlage dient zum Erstellen einer Verwaltungsgruppe:
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "mgName": {
-      "type": "string",
-      "defaultValue": "[concat('mg-', uniqueString(newGuid()))]"
-    }
-  },
-  "resources": [
-    {
-      "type": "Microsoft.Management/managementGroups",
-      "apiVersion": "2019-11-01",
-      "name": "[parameters('mgName')]",
-      "properties": {
-      }
-    }
-  ]
-}
-```
+:::code language="json" source="~/quickstart-templates/tenant-deployments/new-mg/azuredeploy.json":::
 
 ## <a name="assign-role"></a>Zuweisen einer Rolle
 
-Die [folgende Vorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/tenant-deployments/tenant-role-assignment) dient zum Zuweisen einer Rolle im Mandantenbereich:
+Die folgende Vorlage dient zum Zuweisen einer Rolle im Mandantenbereich:
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "principalId": {
-      "type": "string",
-      "metadata": {
-        "description": "principalId if the user that will be given contributor access to the resourceGroup"
-      }
-    },
-    "roleDefinitionId": {
-      "type": "string",
-      "defaultValue": "8e3af657-a8ff-443c-a75c-2fe8c4bcb635",
-      "metadata": {
-        "description": "roleDefinition for the assignment - default is owner"
-      }
-    }
-  },
-  "variables": {
-    // This creates an idempotent guid for the role assignment
-    "roleAssignmentName": "[guid('/', parameters('principalId'), parameters('roleDefinitionId'))]"
-  },
-  "resources": [
-    {
-      "name": "[variables('roleAssignmentName')]",
-      "type": "Microsoft.Authorization/roleAssignments",
-      "apiVersion": "2019-04-01-preview",
-      "properties": {
-        "roleDefinitionId": "[tenantResourceId('Microsoft.Authorization/roleDefinitions', parameters('roleDefinitionId'))]",
-        "principalId": "[parameters('principalId')]",
-        "scope": "/"
-      }
-    }
-  ]
-}
-```
+:::code language="json" source="~/quickstart-templates/tenant-deployments/tenant-role-assignment/azuredeploy.json":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

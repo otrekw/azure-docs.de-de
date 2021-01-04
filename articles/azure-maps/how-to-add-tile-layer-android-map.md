@@ -1,6 +1,6 @@
 ---
-title: Hinzufügen einer Kachelebene zu Android-Karten | Microsoft Azure Maps
-description: Erfahren Sie, wie Sie einer Karte eine Kachelebene hinzufügen. Sehen Sie sich ein Beispiel an, in dem das Azure Maps Android SDK verwendet wird, um einer Karte eine Wetterradarüberlagerung hinzuzufügen.
+title: Hinzufügen einer Kachelebene zu einer Karte mithilfe des Android SDK für Azure Maps
+description: Erfahren Sie, wie Sie einer Karte eine Kachelebene hinzufügen. Sehen Sie sich ein Beispiel an, in dem das Android SDK für Microsoft Azure Maps verwendet wird, um einer Karte eine Wetterradarüberlagerung hinzuzufügen.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 04/26/2019
@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: faa5e3e3177e18787a73c6b4c43aa04b6bc760b7
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 22618a28f1a87e68c19467aedf639e96ec2fb91e
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92897091"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96532675"
 ---
 # <a name="add-a-tile-layer-to-a-map-using-the-azure-maps-android-sdk"></a>Hinzufügen einer Kachelebene zu einer Karte mithilfe des Android SDK für Azure Maps
 
@@ -48,7 +48,7 @@ Um den Vorgang in diesem Artikel abzuschließen, müssen Sie das [Android SDK f�
 
 Sie können mithilfe der folgenden Schritte der Karte eine Kachelebene hinzufügen.
 
-1. Bearbeiten Sie **res > layout > „activity_main.xml“** , sodass die Datei wie folgt aussieht:
+1. Bearbeiten Sie **res > layout > „activity_main.xml“**, sodass die Datei wie folgt aussieht:
 
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
@@ -71,7 +71,7 @@ Sie können mithilfe der folgenden Schritte der Karte eine Kachelebene hinzufüg
     </FrameLayout>
     ```
 
-2. Kopieren Sie den folgenden Codeausschnitt in die **onCreate()** -Methode Ihrer `MainActivity.java`-Klasse.
+2. Kopieren Sie den folgenden Codeausschnitt in die **onCreate()**-Methode Ihrer `MainActivity.java`-Klasse.
 
     ```Java
     mapControl.onReady(map -> {
@@ -84,7 +84,7 @@ Sie können mithilfe der folgenden Schritte der Karte eine Kachelebene hinzufüg
     });
     ```
     
-    Der obige Codeausschnitt ruft zuerst mit der Rückrufmethode **onReady()** eine Instanz des Azure Maps-Kartensteuerelements ab. Anschließend wird ein `TileLayer`-Objekt erstellt und eine formatierte **xyz** -Kachel-URL an die `tileUrl`-Option weitergeleitet. Die Deckkraft der Ebene ist auf `0.8` festgelegt, und da die Kacheln des Kacheldiensts 256 Pixel aufweisen, werden diese Informationen an die `tileSize`-Option übermittelt. Die Kachelebene wird dann an den Kartenebenen-Manager weitergeleitet.
+    Der obige Codeausschnitt ruft zuerst mit der Rückrufmethode **onReady()** eine Instanz des Azure Maps-Kartensteuerelements ab. Anschließend wird ein `TileLayer`-Objekt erstellt und eine formatierte **xyz**-Kachel-URL an die `tileUrl`-Option weitergeleitet. Die Deckkraft der Ebene ist auf `0.8` festgelegt, und da die Kacheln des Kacheldiensts 256 Pixel aufweisen, werden diese Informationen an die `tileSize`-Option übermittelt. Die Kachelebene wird dann an den Kartenebenen-Manager weitergeleitet.
 
     Nachdem Sie den obigen Codeausschnitt hinzugefügt haben, sollte `MainActivity.java` wie folgt aussehen:
     

@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 7/01/2019
 ms.author: msangapu
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 7f177a7801e18bcdb2c2d6ef737f0c790cf6b1d1
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: e75eef86a4a0c679a44a61267f94d337538daaa8
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93075788"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007618"
 ---
 # <a name="access-azure-storage-preview-as-a-network-share-from-a-container-in-app-service"></a>Zugreifen auf Azure Storage (Vorschau) als Netzwerkfreigabe von einem Container in App Service
 
@@ -60,7 +60,7 @@ Der vorliegende Leitfaden zeigt, wie Sie Azure Storage an einen Linux-Container 
 ::: zone pivot="container-windows"
 
 - Azure Storage in App Service wird zurzeit für Szenarien mit Verwendung von eigenem Code (nicht containerisierte Windows-Apps) **nicht unterstützt**.
-- Aufgrund von Infrastruktureinschränkungen bietet Azure Storage in App Service **keine Unterstützung** für die Verwendung der **Storage-Firewall** -Konfiguration.
+- Aufgrund von Infrastruktureinschränkungen bietet Azure Storage in App Service **keine Unterstützung** für die Verwendung der **Storage-Firewall**-Konfiguration.
 - Mit Azure Storage mit App Service können Sie **bis zu fünf** Bereitstellungspunkte pro App angeben.
 - Auf Azure-Speicher, der für eine App bereitgestellt wurde, kann nicht über App Service-FTP/FTPs-Endpunkte zugegriffen werden. Verwenden Sie den [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/).
 
@@ -80,7 +80,7 @@ Der vorliegende Leitfaden zeigt, wie Sie Azure Storage an einen Linux-Container 
 
 Nachdem Sie Ihr [Azure Storage-Konto sowie die zugehörige Dateifreigabe und das Verzeichnis](#prerequisites) erstellt haben, können Sie Ihre App jetzt mit Azure Storage konfigurieren.
 
-Um eine Azure Files-Dateifreigabe in einem Verzeichnis in Ihrer App Service-App bereitzustellen, verwenden Sie den Befehl [`az webapp config storage-account add`](/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-add). Der Speichertyp muss „AzureFiles“ sein.
+Um eine Azure Files-Dateifreigabe in einem Verzeichnis in Ihrer App Service-App bereitzustellen, verwenden Sie den Befehl [`az webapp config storage-account add`](/cli/azure/webapp/config/storage-account#az-webapp-config-storage-account-add). Der Speichertyp muss „AzureFiles“ sein.
 
 ```azurecli
 az webapp config storage-account add --resource-group <group-name> --name <app-name> --custom-id <custom-id> --storage-type AzureFiles --share-name <share-name> --account-name <storage-account-name> --access-key "<access-key>" --mount-path <mount-path-directory of form c:<directory name> >
@@ -94,7 +94,7 @@ Gehen Sie ebenso für alle anderen Verzeichnisse vor, die mit einer Azure Files-
 
 Nachdem Sie Ihr [Azure Storage-Konto sowie die zugehörige Dateifreigabe und das Verzeichnis](#prerequisites) erstellt haben, können Sie Ihre App jetzt mit Azure Storage konfigurieren.
 
-Um ein Speicherkonto in einem Verzeichnis in Ihre App Service-App bereitzustellen, verwenden Sie den Befehl [`az webapp config storage-account add`](/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-add). Als Speichertyp kann „AzureBlob“ oder „AzureFiles“ verwendet werden. In diesem Beispiel wird AzureFiles verwendet. Die Einstellung für den Einbindungspfad entspricht dem Ordner innerhalb des Containers, den Sie in Azure Storage einbinden möchten. Wenn Sie diese Einstellung auf „/“ festlegen, wird der gesamte Container in Azure Storage eingebunden.
+Um ein Speicherkonto in einem Verzeichnis in Ihre App Service-App bereitzustellen, verwenden Sie den Befehl [`az webapp config storage-account add`](/cli/azure/webapp/config/storage-account#az-webapp-config-storage-account-add). Als Speichertyp kann „AzureBlob“ oder „AzureFiles“ verwendet werden. In diesem Beispiel wird AzureFiles verwendet. Die Einstellung für den Einbindungspfad entspricht dem Ordner innerhalb des Containers, den Sie in Azure Storage einbinden möchten. Wenn Sie diese Einstellung auf „/“ festlegen, wird der gesamte Container in Azure Storage eingebunden.
 
 
 > [!CAUTION]

@@ -3,8 +3,7 @@ title: Tutorial zur Verwendung von Featureflags in einer .NET Core-App | Micros
 description: In diesem Tutorial erfahren Sie, wie Sie Featureflags in .NET Core-Apps implementieren.
 services: azure-app-configuration
 documentationcenter: ''
-author: lisaguthrie
-manager: maiye
+author: AlexandraKemperMS
 editor: ''
 ms.assetid: ''
 ms.service: azure-app-configuration
@@ -12,14 +11,14 @@ ms.workload: tbd
 ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 09/17/2020
-ms.author: lcozzens
+ms.author: alkemper
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 6da2aa645549920cce2f5c0cfe8a32c98dc04708
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 8c0dd9713c673ad676058acc7dbbb3cb5a65362e
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746141"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929190"
 ---
 # <a name="tutorial-use-feature-flags-in-an-aspnet-core-app"></a>Tutorial: Verwenden von Featureflags in einer ASP.NET Core-App
 
@@ -90,7 +89,7 @@ Featureflags sollten sich außerhalb der Anwendung befinden und separat verwalte
 
 Die Verbindung zwischen Ihrer ASP.NET Core-Anwendung und App Configuration lässt sich am einfachsten über den Konfigurationsanbieter `Microsoft.Azure.AppConfiguration.AspNetCore` herstellen. Führen Sie die folgenden Schritte aus, um dieses NuGet-Paket zu verwenden.
 
-1. Öffnen Sie die Datei *Program.cs* , und fügen Sie folgenden Code hinzu.
+1. Öffnen Sie die Datei *Program.cs*, und fügen Sie folgenden Code hinzu.
 
    ```csharp
    using Microsoft.Extensions.Configuration.AzureAppConfiguration;
@@ -107,7 +106,7 @@ Die Verbindung zwischen Ihrer ASP.NET Core-Anwendung und App Configuration läs
               .UseStartup<Startup>();
    ```
 
-2. Öffnen Sie *Startup.cs* , und aktualisieren Sie die `Configure`-Methode, um die integrierte Middleware namens `UseAzureAppConfiguration` hinzuzufügen. Diese Middleware gestattet die regelmäßige Aktualisierung der Featureflagwerte, während die ASP.NET Core-Web-App weiterhin Anforderungen empfängt.
+2. Öffnen Sie *Startup.cs*, und aktualisieren Sie die `Configure`-Methode, um die integrierte Middleware namens `UseAzureAppConfiguration` hinzuzufügen. Diese Middleware gestattet die regelmäßige Aktualisierung der Featureflagwerte, während die ASP.NET Core-Web-App weiterhin Anforderungen empfängt.
 
    ```csharp
    public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -132,7 +131,7 @@ config.AddAzureAppConfiguration(options => {
 
 Jedes Featureflag besteht aus zwei Teilen: einem Namen und einer Filterliste, anhand der ausgewertet wird, ob ein Feature *aktiviert* ist (der Wert also `True` lautet). Ein Filter definiert einen Anwendungsfall für die Aktivierung eines Features.
 
-Verfügt ein Featureflag über mehrere Filter, wird die Filterliste in der angegebenen Reihenfolge durchlaufen, bis einer der Filter angibt, dass das Feature aktiviert werden soll. Daraufhin ist das Featureflag *aktiviert* , und alle weiteren Filterergebnisse werden übersprungen. Falls durch keinen Filter angegeben wird, dass das Feature aktiviert werden soll, ist das Featureflag *deaktiviert*.
+Verfügt ein Featureflag über mehrere Filter, wird die Filterliste in der angegebenen Reihenfolge durchlaufen, bis einer der Filter angibt, dass das Feature aktiviert werden soll. Daraufhin ist das Featureflag *aktiviert*, und alle weiteren Filterergebnisse werden übersprungen. Falls durch keinen Filter angegeben wird, dass das Feature aktiviert werden soll, ist das Featureflag *deaktiviert*.
 
 Der Feature-Manager unterstützt *appsettings.json* als Konfigurationsquelle für Featureflags. Das folgende Beispiel zeigt die Einrichtung von Featureflags in einer JSON-Datei:
 
@@ -231,7 +230,7 @@ Ist ein MVC-Controller oder eine Aktion blockiert, weil das steuernde Featurefla
 
 ## <a name="mvc-views"></a>MVC-Ansichten
 
-Öffnen Sie *_ViewImports.cshtml* im Verzeichnis *Views* , und fügen Sie das Taghilfsprogramm für den Feature-Manager hinzu:
+Öffnen Sie *_ViewImports.cshtml* im Verzeichnis *Views*, und fügen Sie das Taghilfsprogramm für den Feature-Manager hinzu:
 
 ```html
 @addTagHelper *, Microsoft.FeatureManagement.AspNetCore

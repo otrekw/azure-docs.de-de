@@ -16,6 +16,8 @@
       items:
         - name: Hinzufügen von Chatfunktionen zu Ihrer App
           href: quickstarts/chat/get-started.md
+        - name: Beitreten mit einer Chat-App zu einer Teams-Besprechung
+          href: quickstarts/chat/meeting-interop.md
     - name: Telefonie und SMS
       items:
         - name: Erhalten einer Telefonnummer

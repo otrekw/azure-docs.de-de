@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.author: normesta
 ms.date: 03/04/2020
 ms.custom: devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 5c9d7faebe7fefdddbf194e3a9ad36b4644115e0
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 8ca670049b49500e6b6310bca25cb78ded31a294
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746462"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95537848"
 ---
 # <a name="host-a-static-website-in-azure-storage"></a>Hosten einer statischen Website in Azure Storage
 
@@ -34,15 +34,15 @@ Das Feature zum Hosten statischer Websites muss für das Speicherkonto aktiviert
 
 2. Suchen Sie nach Ihrem Speicherkonto, und zeigen Sie die Kontoübersicht an.
 
-3. Wählen Sie die Option **Statische Website** , um die Konfigurationsseite für statische Websites anzuzeigen.
+3. Wählen Sie die Option **Statische Website**, um die Konfigurationsseite für statische Websites anzuzeigen.
 
-4. Wählen Sie **Aktiviert** , um das Hosten von statischen Websites für das Speicherkonto zu aktivieren.
+4. Wählen Sie **Aktiviert**, um das Hosten von statischen Websites für das Speicherkonto zu aktivieren.
 
-5. Geben Sie im Feld **Name des Indexdokuments**  die Standardindexseite an (z. B. *index.html* ). 
+5. Geben Sie im Feld **Name des Indexdokuments**  die Standardindexseite an (z. B. *index.html*). 
 
    Die Standardindexseite wird angezeigt, wenn ein Benutzer zum Stammverzeichnis Ihrer statischen Website navigiert.  
 
-6. Geben Sie im Feld **Pfad zum Fehlerdokument** die Standardfehlerseite an (z. B. *404.html* ). 
+6. Geben Sie im Feld **Pfad zum Fehlerdokument** die Standardfehlerseite an (z. B. *404.html*). 
 
    Die Standardfehlerseite wird angezeigt, wenn ein Benutzer versucht, zu einer Seite zu navigieren, die auf Ihrer statischen Website nicht vorhanden ist.
 
@@ -54,9 +54,9 @@ Das Feature zum Hosten statischer Websites muss für das Speicherkonto aktiviert
 
 <a id="cli"></a>
 
-Sie können das Hosting statischer Websites über die [Azure-Befehlszeilenschnittstelle (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) aktivieren.
+Sie können das Hosting statischer Websites über die [Azure-Befehlszeilenschnittstelle (CLI)](/cli/azure/?view=azure-cli-latest) aktivieren.
 
-1. Öffnen Sie zunächst [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest), oder falls Sie die Azure-CLI lokal [installiert](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) haben, öffnen Sie eine Befehlskonsolenanwendung wie Windows PowerShell.
+1. Öffnen Sie zunächst [Azure Cloud Shell](../../cloud-shell/overview.md?view=azure-cli-latest), oder falls Sie die Azure-CLI lokal [installiert](/cli/azure/install-azure-cli?view=azure-cli-latest) haben, öffnen Sie eine Befehlskonsolenanwendung wie Windows PowerShell.
 
 2. Wenn Ihre Identität mehreren Abonnements zugeordnet ist, legen Sie das aktive Abonnement auf das Abonnement des Speicherkontos fest, auf dem Ihre statische Website gehostet wird.
 
@@ -136,11 +136,11 @@ Sie können das Hosting statischer Websites über das Azure PowerShell-Modul akt
 
 ### <a name="portal"></a>[Portal](#tab/azure-portal)
 
-In diesen Anweisungen wird gezeigt, wie Sie Dateien mit der Version von Storage-Explorer hochladen, die im Azure-Portal angezeigt wird. Sie können aber auch die Version von [Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/) verwenden, die außerhalb vom Azure-Portal ausgeführt wird. Sie können [AzCopy](../common/storage-use-azcopy-v10.md), PowerShell, die CLI oder eine beliebige benutzerdefinierte Anwendung verwenden, die Dateien in den **$web** -Container Ihres Kontos hochladen kann. Ein Schritt-für-Schritt-Tutorial, in dem Dateien mithilfe von Visual Studio Code hochgeladen werden, finden Sie unter [Tutorial: Host a static website on Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blob-static-website-host) (Tutorial: Hosten einer statischen Website in Blob Storage) aus, bevor Sie mit diesem Tutorial beginnen.
+In diesen Anweisungen wird gezeigt, wie Sie Dateien mit der Version von Storage-Explorer hochladen, die im Azure-Portal angezeigt wird. Sie können aber auch die Version von [Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/) verwenden, die außerhalb vom Azure-Portal ausgeführt wird. Sie können [AzCopy](../common/storage-use-azcopy-v10.md), PowerShell, die CLI oder eine beliebige benutzerdefinierte Anwendung verwenden, die Dateien in den **$web**-Container Ihres Kontos hochladen kann. Ein Schritt-für-Schritt-Tutorial, in dem Dateien mithilfe von Visual Studio Code hochgeladen werden, finden Sie unter [Tutorial: Host a static website on Blob Storage](./storage-blob-static-website-host.md) (Tutorial: Hosten einer statischen Website in Blob Storage) aus, bevor Sie mit diesem Tutorial beginnen.
 
 1. Wählen Sie **Storage-Explorer (Vorschau)** aus.
 
-2. Erweitern Sie den Knoten **BLOBCONTAINER** , und wählen Sie dann den **$web** -Container aus.
+2. Erweitern Sie den Knoten **BLOBCONTAINER**, und wählen Sie dann den **$web**-Container aus.
 
 3. Wählen Sie die Schaltfläche **Hochladen** aus, um Dateien hochzuladen.
 
@@ -173,7 +173,7 @@ az storage blob upload-batch -s <source-path> -d '$web' --account-name <storage-
 > [!NOTE]
 > Wenn Sie eine Speicherortinstallation der Azure-CLI verwenden, können Sie den Pfad zu einem beliebigen Speicherort auf Ihrem lokalen Computer verwenden (z.B. `C:\myFolder`).
 >
-> Wenn Sie Azure Cloud Shell verwenden, müssen Sie auf eine Dateifreigabe verweisen, die für Cloud Shell sichtbar ist. Dieser Speicherort kann die Dateifreigabe der Cloudfreigabe selbst sein oder eine vorhandene Dateifreigabe, die Sie aus Cloud Shell bereitstellen. Informationen zur Vorgehensweise finden Sie unter [Beibehalten von Dateien in Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/persisting-shell-storage).
+> Wenn Sie Azure Cloud Shell verwenden, müssen Sie auf eine Dateifreigabe verweisen, die für Cloud Shell sichtbar ist. Dieser Speicherort kann die Dateifreigabe der Cloudfreigabe selbst sein oder eine vorhandene Dateifreigabe, die Sie aus Cloud Shell bereitstellen. Informationen zur Vorgehensweise finden Sie unter [Beibehalten von Dateien in Azure Cloud Shell](../../cloud-shell/persisting-shell-storage.md).
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -265,11 +265,11 @@ Nachdem Sie Metriken aktiviert haben, werden Datenverkehrsstatistiken zu Dateien
 
    ![Metriken von statischen Websites in Azure Storage: Aggregation](./media/storage-blob-static-website/storage-blob-static-website-metrics-aggregation.png)
 
-6. Klicken Sie auf die Schaltfläche **Filter hinzufügen** , und wählen Sie **API-Name** aus dem Selektor *Eigenschaft* aus.
+6. Klicken Sie auf die Schaltfläche **Filter hinzufügen**, und wählen Sie **API-Name** aus dem Selektor *Eigenschaft* aus.
 
    ![Metriken von statischen Websites in Azure Storage: API-Name](./media/storage-blob-static-website/storage-blob-static-website-metrics-api-name.png)
 
-7. Aktivieren Sie das Kontrollkästchen neben **GetWebContent** im Selektor *Werte* , um den Metrikbericht zu füllen.
+7. Aktivieren Sie das Kontrollkästchen neben **GetWebContent** im Selektor *Werte*, um den Metrikbericht zu füllen.
 
    ![Metriken von statischen Websites in Azure Storage: GetWebContent](./media/storage-blob-static-website/storage-blob-static-website-metrics-getwebcontent.png)
 
@@ -279,4 +279,3 @@ Nachdem Sie Metriken aktiviert haben, werden Datenverkehrsstatistiken zu Dateien
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Erfahren Sie, wie Sie eine benutzerdefinierte Domäne mit Ihrer statischen Website konfigurieren. Weitere Informationen finden Sie unter [Zuordnen einer benutzerdefinierten Domäne zu einem Azure Blob Storage-Endpunkt](storage-custom-domain-name.md).
-

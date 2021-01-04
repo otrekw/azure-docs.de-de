@@ -4,12 +4,12 @@ description: Informationen zum Ausführen von Wiederherstellungen auf Dateiebene
 ms.topic: tutorial
 ms.date: 01/31/2019
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 236b2c2c7799ef6a0df1da2ddded0e689349e222
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: d977919b806be32b84001a9b91dc9e396fbd63ce
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842208"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96557908"
 ---
 # <a name="restore-files-to-a-virtual-machine-in-azure"></a>Wiederherstellen von Dateien auf einem virtuellen Computer in Azure
 
@@ -21,13 +21,15 @@ Azure Backup erstellt Wiederherstellungspunkte, die in geografisch redundanten R
 > * Herstellen einer Verbindung eines Wiederherstellungspunkts mit einer VM
 > * Wiederherstellen von Dateien aus einem Wiederherstellungspunkt
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial mindestens die Azure CLI-Version 2.0.18 ausführen. Führen Sie `az --version` aus, um die Version zu ermitteln. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI](/cli/azure/install-azure-cli).
-
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Dieses Tutorial erfordert eine Linux-VM, die mit Azure Backup geschützt wurde. Um eine versehentliche Dateilöschung und den Wiederherstellungsprozess zu simulieren, löschen Sie eine Seite von einem Webserver. Wenn Sie eine Linux-VM benötigen, die einen Webserver ausführt und mit Azure Backup geschützt wurde, lesen Sie [Back up a virtual machine in Azure with the CLI](quick-backup-vm-cli.md) (Sichern eines virtuellen Computers in Azure mit der CLI).
+
+Vorbereiten der Umgebung:
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+- Für diesen Artikel ist mindestens Version 2.0.18 der Azure CLI erforderlich. Bei Verwendung von Azure Cloud Shell ist die aktuelle Version bereits installiert.
 
 ## <a name="backup-overview"></a>Übersicht über Azure Backup
 

@@ -1,6 +1,6 @@
 ---
 title: Authentifizierung über Azure Active Directory
-description: Erfahren Sie, wie Sie Azure Active Directory für die Authentifizierung bei Azure SQL-Datenbank, Azure SQL Managed Instance und Azure Synapse Analytics verwenden.
+description: Erfahren Sie, wie Sie Azure Active Directory für die Authentifizierung bei Azure SQL-Datenbank, Azure SQL Managed Instance und Synapse SQL in Azure Synapse Analytics verwenden.
 services: sql-database
 ms.service: sql-db-mi
 ms.subservice: security
@@ -11,18 +11,18 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, sstein
 ms.date: 04/23/2020
-ms.openlocfilehash: a57de3d6beda5336f480f20137a9ccaa014b012d
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: a636c0e2a41b636f30ada14d4f16a022f2890b71
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675086"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96454290"
 ---
 # <a name="use-azure-active-directory-authentication"></a>Verwenden der Azure Active Directory-Authentifizierung
 
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-Die Azure Active Directory (Azure AD)-Authentifizierung ist ein Mechanismus zum Herstellen einer Verbindung mit [Azure SQL-Datenbank](sql-database-paas-overview.md), [Azure SQL Managed Instance](../managed-instance/sql-managed-instance-paas-overview.md) und [Azure Synapse Analytics (früher SQL Data Warehouse)](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) unter Verwendung von Identitäten in Azure AD.
+Die Azure Active Directory-Authentifizierung (Azure AD) ist ein Mechanismus zum Herstellen einer Verbindung mit [Azure SQL-Datenbank](sql-database-paas-overview.md), [Azure SQL Managed Instance](../managed-instance/sql-managed-instance-paas-overview.md) und [Synapse SQL in Azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) unter Verwendung von Identitäten in Azure AD.
 
 > [!NOTE]
 > Dieser Artikel gilt für Azure SQL-Datenbank, SQL Managed Instance und Azure Synapse Analytics.
@@ -39,7 +39,7 @@ Mithilfe der Azure AD-Authentifizierung können Sie die Identitäten von Datenba
 - Azure AD-Authentifizierung unterstützt Folgendes:
   - Reine Azure AD-Cloudidentitäten
   - Azure AD-Hybrididentitäten, die Folgendes unterstützen:
-    - Cloudauthentifizierung mit zwei Optionen gekoppelt mit nahtlosem SSO (einmaliges Anmelden) **Passthrough** -Authentifizierung und **Kennworthashauthentifizierung**
+    - Cloudauthentifizierung mit zwei Optionen gekoppelt mit nahtlosem SSO (einmaliges Anmelden) **Passthrough**-Authentifizierung und **Kennworthashauthentifizierung**
     - Verbundauthentifizierung
   - Weitere Informationen zu Azure AD-Authentifizierungsmethoden sowie zur Auswahl der passenden Methode finden Sie im folgenden Artikel:
     - [Wählen der richtigen Authentifizierungsmethode für Ihre Azure Active Directory-Hybrididentitätslösung](../../active-directory/hybrid/choose-ad-authn.md)
@@ -61,7 +61,7 @@ Die Konfigurationsschritte schließen die folgenden Verfahren zum Konfigurieren 
 6. Herstellen einer Verbindung mit Ihrer Datenbank unter Verwendung von Azure AD-Identitäten
 
 > [!NOTE]
-> Informationen zum Erstellen und Auffüllen von Azure AD und zum anschließenden Konfigurieren von Azure AD mit Azure SQL-Datenbank, SQL Managed Instance und Azure Synapse finden Sie unter [Konfigurieren von Azure AD mit Azure SQL-Datenbank](authentication-aad-configure.md).
+> Informationen zum Erstellen und Auffüllen von Azure AD und zum anschließenden Konfigurieren von Azure AD mit Azure SQL-Datenbank, SQL Managed Instance und Synapse SQL in Azure Synapse Analytics finden Sie unter [Konfigurieren von Azure AD mit Azure SQL-Datenbank](authentication-aad-configure.md).
 
 ## <a name="trust-architecture"></a>Architektur von Vertrauensstellungen
 

@@ -5,12 +5,12 @@ author: batrived
 ms.topic: article
 ms.date: 06/21/2020
 ms.author: batrived
-ms.openlocfilehash: 7b93d7a110889192bb5be6fffa56a73758d6faa2
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: fa119784715b8c88ef3c9f2700b2cac1cc467234
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92892314"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96339744"
 ---
 # <a name="troubleshoot-connectivity-issues---azure-event-grid"></a>Behandeln von Konnektivitätsproblemen: Azure Event Grid
 
@@ -50,7 +50,7 @@ telnet {sampletopicname}.{region}-{suffix}.eventgrid.azure.net 443
 
 Wenn Sie mit Azure arbeiten, müssen Sie manchmal bestimmten IP-Adressbereichen oder URLs in Ihrer Unternehmensfirewall oder Ihrem Proxy erlauben, auf alle Azure-Dienste zuzugreifen, die Sie verwenden oder zu verwenden versuchen. Überprüfen Sie, ob der Datenverkehr für die von Event Grid verwendeten IP-Adressen zulässig ist. Weitere Informationen zu den von Azure Event Grid verwendeten IP-Adressen finden Sie unter: [Azure-IP-Bereiche und Diensttags – öffentliche Cloud](https://www.microsoft.com/download/details.aspx?id=56519) und [Diensttag – AzureEventGrid](network-security.md#service-tags).
 
-Im Dokument [Azure-IP-Bereiche und Diensttags – öffentliche Cloud](https://www.microsoft.com/download/details.aspx?id=56519) werden IP-Adressen auch **nach Region** aufgeführt. Sie können Adressbereiche für die **Region des Themas** und die **Regionspaare** in Ihrer Unternehmensfirewall oder Ihrem Proxy zulassen. Das Regionspaar für eine Region finden Sie unter [Geschäftskontinuität und Notfallwiederherstellung (BCDR): Azure-Regionspaare](/azure/best-practices-availability-paired-regions). 
+Im Dokument [Azure-IP-Bereiche und Diensttags – öffentliche Cloud](https://www.microsoft.com/download/details.aspx?id=56519) werden IP-Adressen auch **nach Region** aufgeführt. Sie können Adressbereiche für die **Region des Themas** und die **Regionspaare** in Ihrer Unternehmensfirewall oder Ihrem Proxy zulassen. Das Regionspaar für eine Region finden Sie unter [Geschäftskontinuität und Notfallwiederherstellung (BCDR): Azure-Regionspaare](../best-practices-availability-paired-regions.md). 
 
 > [!NOTE]
 > Neue IP-Adressen können dem AzureEventGrid-diensttag hinzugefügt werden, obwohl dies nicht üblich ist. Es ist also ratsam, eine wöchentliche Prüfung der Diensttags durchzuführen.

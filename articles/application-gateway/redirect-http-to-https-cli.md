@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 09/24/2020
 ms.author: victorh
-ms.openlocfilehash: 49fd6a939fc30671cf78984fdcba009666f6121e
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 0d56a1c46f251307755416ef44991ac6f809f330
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93397296"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566740"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-cli"></a>Erstellen eines Anwendungsgateways mit Umleitung von HTTP zu HTTPS über die Azure-Befehlszeilenschnittstelle
 
@@ -27,11 +27,11 @@ In diesem Artikel werden folgende Vorgehensweisen behandelt:
 * Hinzufügen eines Listeners und einer Umleitungsregel
 * Erstellen einer VM-Skalierungsgruppe mit dem standardmäßigen Back-End-Pool
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für diesen Schnellstart die Azure CLI-Version 2.0.4 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI](/cli/azure/install-azure-cli).
+ - Für dieses Tutorial ist mindestens Version 2.0.4 der Azure CLI erforderlich. Bei Verwendung von Azure Cloud Shell ist die aktuelle Version bereits installiert.
 
 ## <a name="create-a-self-signed-certificate"></a>Erstellen eines selbstsignierten Zertifikats
 
@@ -108,11 +108,11 @@ az network application-gateway create \
 
  Es kann einige Minuten dauern, bis das Anwendungsgateway erstellt wird. Nachdem das Anwendungsgateway erstellt wurde, sehen Sie diese neuen Features:
 
-- *appGatewayBackendPool* : Ein Anwendungsgateway muss über mindestens einen Back-End-Adresspool verfügen.
-- *appGatewayBackendHttpSettings* : Gibt an, dass zur Kommunikation Port 80 und ein HTTP-Protokoll verwendet werden.
-- *appGatewayHttpListener* : Der Standardlistener, der *appGatewayBackendPool* zugeordnet ist.
-- *appGatewayFrontendIP* : Hiermit wird *myAGPublicIPAddress* zu *appGatewayHttpListener* zugewiesen.
-- *rule1* :Die Standardroutingregel, die *appGatewayHttpListener* zugeordnet ist.
+- *appGatewayBackendPool*: Ein Anwendungsgateway muss über mindestens einen Back-End-Adresspool verfügen.
+- *appGatewayBackendHttpSettings*: Gibt an, dass zur Kommunikation Port 80 und ein HTTP-Protokoll verwendet werden.
+- *appGatewayHttpListener*: Der Standardlistener, der *appGatewayBackendPool* zugeordnet ist.
+- *appGatewayFrontendIP*: Hiermit wird *myAGPublicIPAddress* zu *appGatewayHttpListener* zugewiesen.
+- *rule1*:Die Standardroutingregel, die *appGatewayHttpListener* zugeordnet ist.
 
 ## <a name="add-a-listener-and-redirection-rule"></a>Hinzufügen eines Listeners und einer Umleitungsregel
 
@@ -172,7 +172,7 @@ az network application-gateway rule create \
 
 ## <a name="create-a-virtual-machine-scale-set"></a>Erstellen einer Skalierungsgruppe für virtuelle Computer
 
-In diesem Beispiel erstellen Sie eine VM-Skalierungsgruppe namens *myvmss* , die Server für den Back-End-Pool im Anwendungsgateway bereitstellt. Die virtuellen Computer in der Skalierungsgruppe sind *myBackendSubnet* und *appGatewayBackendPool* zugeordnet. Zum Erstellen der Skalierungsgruppe können Sie [az vmss create](/cli/azure/vmss#az-vmss-create) verwenden.
+In diesem Beispiel erstellen Sie eine VM-Skalierungsgruppe namens *myvmss*, die Server für den Back-End-Pool im Anwendungsgateway bereitstellt. Die virtuellen Computer in der Skalierungsgruppe sind *myBackendSubnet* und *appGatewayBackendPool* zugeordnet. Zum Erstellen der Skalierungsgruppe können Sie [az vmss create](/cli/azure/vmss#az-vmss-create) verwenden.
 
 ```azurecli-interactive
 az vmss create \

@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: a2597a4bc6c5ed44f0e0050be3f69d7e840665e5
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: c4fe512ff6db24498148ffa724c3144a2f61823f
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323848"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451715"
 ---
 # <a name="use-transactions-with-dedicated-sql-pool-in-azure-synapse-analytics"></a>Verwenden von Transaktionen mit dem dedizierten SQL-Pool in Azure Synapse Analytics
 
@@ -27,7 +27,7 @@ Wie zu erwarten, unterstützt ein dedizierter SQL-Pool Transaktionen als Teil de
 
 ## <a name="transaction-isolation-levels"></a>Transaktionsisolationsstufen
 
-SQL-Pools implementieren ACID-Transaktionen. Die Isolationsstufe der Transaktionsunterstützung ist standardmäßig auf READ UNCOMMITTED (Lesen ohne Commit) festgelegt.  Sie können diese in READ COMMITTED SNAPSHOT ISOLATION (Read Committed-Momentaufnahmeisolation) ändern, indem Sie die Datenbankoption READ_COMMITTED_SNAPSHOT für eine Benutzerdatenbank aktivieren, wenn Sie mit der Masterdatenbank verbunden sind.  
+Dedizierte SQL-Pools implementieren ACID-Transaktionen. Die Isolationsstufe der Transaktionsunterstützung ist standardmäßig auf READ UNCOMMITTED (Lesen ohne Commit) festgelegt.  Sie können diese in READ COMMITTED SNAPSHOT ISOLATION (Read Committed-Momentaufnahmeisolation) ändern, indem Sie die Datenbankoption READ_COMMITTED_SNAPSHOT für eine Benutzerdatenbank aktivieren, wenn Sie mit der Masterdatenbank verbunden sind.  
 
 Nach der Aktivierung werden alle Transaktionen in dieser Datenbank unter READ COMMITTED SNAPSHOT ISOLATION ausgeführt, und die Einstellung READ UNCOMMITTED auf Sitzungsebene wird nicht berücksichtigt. Ausführliche Informationen finden Sie unter [ALTER DATABASE SET-Optionen (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest&preserve-view=true).
 
@@ -89,7 +89,7 @@ Informationen zum Optimieren und Reduzieren der Datenmenge, die in das Protokoll
 
 ## <a name="transaction-state"></a>Transaktionsstatus
 
-SQL-Pools verwenden die XACT_STATE()-Funktion, um eine fehlgeschlagene Transaktion mit dem Wert „– 2“ zu melden. Dieser Wert bedeutet, dass die Transaktion fehlerhaft und nur für den Rollback markiert ist.
+Dedizierte SQL-Pools verwenden die XACT_STATE()-Funktion, um einen Transaktionsfehler mit dem Wert „-2“ zu melden. Dieser Wert bedeutet, dass die Transaktion fehlerhaft und nur für den Rollback markiert ist.
 
 > [!NOTE]
 > Die Verwendung von "-2" in der XACT_STATE-Funktion zum Kennzeichnen einer fehlgeschlagenen Transaktion stellt für SQL Server unterschiedliche Verhalten dar. SQL Server verwendet den Wert "-1" für eine Transaktion, für die kein Commit durchgeführt werden kann. SQL Server kann einige Fehler innerhalb einer Transaktion tolerieren, ohne als nicht commitfähig gekennzeichnet zu werden. `SELECT 1/0` würde beispielsweise einen Fehler verursachen, aber keinen Transaktionszustand erzwingen, der keinen Commit zulässt. SQL Server lässt auch Lesevorgänge in der nicht commitfähigen Transaktion zu. Ein dedizierter SQL-Pool lässt dies dagegen nicht zu. Wenn in einer Transaktion mit einem dedizierten SQL-Pool ein Fehler auftritt, wird die Transaktion sofort in den Zustand „– 2“ versetzt. Sie können erst dann weitere SELECT-Anweisungen ausführen, wenn ein Rollback für die ursprüngliche Anweisung erfolgt ist. Es ist daher wichtig, zu überprüfen, ob in Ihrem Anwendungscode XACT_STATE() verwendet wird, da Sie den Code möglicherweise ändern müssen.
@@ -193,7 +193,7 @@ THROW ist die modernere Implementierung zum Auslösen von Ausnahmen im dediziert
 
 ## <a name="limitations"></a>Einschränkungen
 
-SQL-Pools verfügen über einige weitere Einschränkungen in Bezug auf Transaktionen. Dies sind:
+Dedizierte SQL-Pools verfügen über einige weitere Einschränkungen in Bezug auf Transaktionen. Dies sind:
 
 * Keine verteilten Transaktionen
 * Keine geschachtelten Transaktionen zulässig
@@ -204,4 +204,4 @@ SQL-Pools verfügen über einige weitere Einschränkungen in Bezug auf Transakti
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zum Optimieren von Transaktionen finden Sie unter [Bewährte Methoden für Transaktionen](../sql-data-warehouse/sql-data-warehouse-develop-best-practices-transactions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json). Zusätzliche Leitfäden zu bewährten Methoden gibt es auch für den [SQL-Pool](best-practices-sql-pool.md) und [serverlosen SQL-Pool (Vorschauversion)](best-practices-sql-on-demand.md).
+Weitere Informationen zum Optimieren von Transaktionen finden Sie unter [Bewährte Methoden für Transaktionen](../sql-data-warehouse/sql-data-warehouse-develop-best-practices-transactions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json). Weitere Leitfäden zu bewährten Methoden gibt es auch für [dedizierte SQL-Pools](best-practices-sql-pool.md) und [serverlose SQL-Pools](best-practices-sql-on-demand.md).

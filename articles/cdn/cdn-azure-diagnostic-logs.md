@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 07/15/2020
 ms.author: allensu
-ms.openlocfilehash: e5d84616e70d2a28abf3937b485f4fcf5258c43e
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: fdb609a243656e2c75159cd2d4e70e2f965ae896
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92779406"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352115"
 ---
 # <a name="diagnostic-logs---azure-content-delivery-network"></a>Diagnoseprotokolle: Azure Content Delivery Network
 
@@ -52,24 +52,24 @@ Befolgen Sie diese Schritte, um die Protokollierung für Ihren Azure CDN-Endpunk
 
 3. Wählen Sie im Abschnitt **Überwachung** die Option **Diagnoseprotokolle** aus:
 
-    :::image type="content" source="./media/cdn-diagnostics-log/03_diagnostics-logs-options.png" alt-text="Wählen Sie den CDN-Endpunkt aus." border="true":::
+    :::image type="content" source="./media/cdn-diagnostics-log/03_diagnostics-logs-options.png" alt-text="Wählen Sie Diagnoseprotokolle aus." border="true":::
 
 ### <a name="enable-logging-with-azure-storage"></a>Aktivieren der Protokollierung mit Azure Storage
 
 Führen Sie die folgenden Schritte aus, um ein Speicherkonto zum Speichern der Protokolle zu verwenden:
 
  >[!NOTE] 
- >Zur Durchführung dieser Schritte ist ein Speicherkonto erforderlich. Weitere Informationen finden Sie unter: Weitere Informationen finden Sie unter **[Erstellen eines Azure Storage-Kontos](../storage/common/storage-account-create.md?tabs=azure-portal&toc=%252fazure%252fstorage%252fblobs%252ftoc.json)** .
+ >Zur Durchführung dieser Schritte ist ein Speicherkonto erforderlich. Weitere Informationen finden Sie unter: Weitere Informationen finden Sie unter **[Erstellen eines Azure Storage-Kontos](../storage/common/storage-account-create.md?tabs=azure-portal&toc=%2fazure%2fstorage%2fblobs%2ftoc.json)** .
     
 1. Geben Sie für **Name der Diagnoseeinstellung** einen Namen für Ihre Diagnoseprotokolleinstellungen ein.
  
-2. Wählen Sie **In einem Speicherkonto archivieren** und dann **CoreAnalytics** . 
+2. Wählen Sie **In einem Speicherkonto archivieren** und dann **CoreAnalytics**. 
 
 3. Wählen Sie für **Beibehaltungsdauer (Tage)** die Anzahl der Aufbewahrungstage. Bei einer Aufbewahrung von 0 Tagen werden die Protokolle dauerhaft gespeichert. 
 
 4. Wählen Sie das Abonnement und Speicherkonto für die Protokolle aus.
 
-    :::image type="content" source="./media/cdn-diagnostics-log/04_diagnostics-logs-storage.png" alt-text="Wählen Sie den CDN-Endpunkt aus." border="true":::
+    :::image type="content" source="./media/cdn-diagnostics-log/04_diagnostics-logs-storage.png" alt-text="Diagnoseprotokolle – Speicher." border="true":::
 
 3. Wählen Sie **Speichern** aus.
 
@@ -86,7 +86,7 @@ Führen Sie die folgenden Schritte aus, um Log Analytics für die Protokolle zu 
 
 3. Wählen Sie das Abonnement und den Log Analytics-Arbeitsbereich für die Protokolle aus.
 
-   :::image type="content" source="./media/cdn-diagnostics-log/05-la-workspace.png" alt-text="Wählen Sie den CDN-Endpunkt aus." border="true":::
+   :::image type="content" source="./media/cdn-diagnostics-log/05-la-workspace.png" alt-text="Diagnoseprotokolle – Log Analytics." border="true":::
 
 4. Wählen Sie **Speichern** aus.
 
@@ -103,7 +103,7 @@ Gehen Sie folgendermaßen vor, um einen Event Hub für die Protokolle zu verwend
 
 3. Wählen Sie das Abonnement und den Event Hub-Namespace für die Protokolle aus.
 
-   :::image type="content" source="./media/cdn-diagnostics-log/06-eventhub-namespace.png" alt-text="Wählen Sie den CDN-Endpunkt aus." border="true":::
+   :::image type="content" source="./media/cdn-diagnostics-log/06-eventhub-namespace.png" alt-text="Diagnoseprotokolle – Event Hub." border="true":::
 
 4. Wählen Sie **Speichern** aus.
 
@@ -187,12 +187,12 @@ In diesem Abschnitt werden das Schema der CDN-Basisanalyse und die Organisation 
 ### <a name="using-microsoft-azure-storage-explorer"></a>Verwenden des Microsoft Azure Storage-Explorers
 Informationen zum Herunterladen des Tools finden Sie unter [Azure Storage-Explorer](https://storageexplorer.com/). Konfigurieren Sie nach dem Herunterladen und Installieren der Software die Verwendung desselben Azure-Speicherkontos, das als Ziel für die CDN-Diagnoseprotokolle konfiguriert wurde.
 
-1.  Öffnen Sie den **Microsoft Azure Storage-Explorer** .
+1.  Öffnen Sie den **Microsoft Azure Storage-Explorer**.
 2.  Ermitteln Sie das Speicherkonto.
 3.  Erweitern Sie den Knoten **Blobcontainer** unter diesem Speicherkonto.
 4.  Wählen Sie den Container mit dem Namen *insights-logs-coreanalytics* aus.
 5.  Im Bereich auf der rechten Seite werden Ergebnisse angezeigt. Es wird mit der ersten Ebene begonnen: *resourceId=* . Wählen Sie weiterhin jede Ebene aus, bis Sie die Datei *PT1H.json* gefunden haben. Eine Erläuterung des Pfads finden Sie unter [Blobpfadformat](cdn-azure-diagnostic-logs.md#blob-path-format).
-6.  Jede *PT1H.json* -Datei des Blobs steht für die Analyseprotokolle für eine Stunde eines bestimmten CDN-Endpunkts oder dessen benutzerdefinierter Domäne.
+6.  Jede *PT1H.json*-Datei des Blobs steht für die Analyseprotokolle für eine Stunde eines bestimmten CDN-Endpunkts oder dessen benutzerdefinierter Domäne.
 7.  Das Schema der Inhalte dieser JSON-Datei wird im Abschnitt „Schema der Basisanalyseprotokolle“ beschrieben.
 
 
@@ -229,7 +229,7 @@ Sie können das Tool wie folgt verwenden:
 
 ## <a name="log-data-delays"></a>Protokolldatenverzögerungen
 
-Die folgende Tabelle zeigt die Verzögerungen bei Protokolldaten für **Azure CDN Standard von Microsoft** , **Azure CDN Standard von Akamai** und **Azure CDN Standard/Premium von Verizon** .
+Die folgende Tabelle zeigt die Verzögerungen bei Protokolldaten für **Azure CDN Standard von Microsoft**, **Azure CDN Standard von Akamai** und **Azure CDN Standard/Premium von Verizon**.
 
 Microsoft-Protokolldatenverzögerungen | Verizon-Protokolldatenverzögerungen | Akamai-Protokolldatenverzögerungen
 --- | --- | ---

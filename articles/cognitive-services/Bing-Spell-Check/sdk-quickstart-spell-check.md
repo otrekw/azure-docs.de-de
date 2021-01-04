@@ -11,19 +11,19 @@ ms.topic: quickstart
 ms.date: 12/16/2019
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b2df7bab9bceaefae5793e4802eba6a6aa218e96
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 2f39dbd22372342786eacbccd31a10fc927c0892
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94364801"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352625"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-sdk-for-c"></a>Schnellstart: Überprüfen der Rechtschreibung mit dem SDK für die Bing-Rechtschreibprüfung für C#
 
 > [!WARNING]
-> Die APIs der Bing-Suche werden von Cognitive Services auf Bing-Suchdienste umgestellt. Ab dem **30. Oktober 2020** müssen alle neuen Instanzen der Bing-Suche mit dem [hier](https://aka.ms/cogsvcs/bingmove) dokumentierten Prozess bereitgestellt werden.
+> Die APIs der Bing-Suche werden von Cognitive Services auf Bing-Suchdienste umgestellt. Ab dem **30. Oktober 2020** müssen alle neuen Instanzen der Bing-Suche mit dem [hier](/bing/search-apis/bing-web-search/create-bing-search-service-resource) dokumentierten Prozess bereitgestellt werden.
 > APIs der Bing-Suche, die mit Cognitive Services bereitgestellt wurden, werden noch drei Jahre lang bzw. bis zum Ablauf Ihres Enterprise Agreement unterstützt (je nachdem, was zuerst eintritt).
-> Eine Anleitung zur Migration finden Sie unter [Erstellen einer Ressource für die Bing-Suche über Azure Marketplace](https://aka.ms/cogsvcs/bingmigration).
+> Eine Anleitung zur Migration finden Sie unter [Erstellen einer Ressource für die Bing-Suche über Azure Marketplace](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 Verwenden Sie diese Schnellstartanleitung, um mit dem SDK für die Bing-Rechtschreibprüfung für C# mit der Rechtschreibprüfung zu beginnen. Die Bing-Rechtschreibprüfung verfügt zwar über eine REST-API, die mit den meisten Programmiersprachen kompatibel ist, aber das SDK ist eine einfache Möglichkeit, den Dienst in Ihre Anwendungen zu integrieren. Den Quellcode für dieses Beispiel finden Sie auf [GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/samples/SpellCheck).
 
@@ -102,7 +102,7 @@ Wählen Sie in Visual Studio im **Projektmappen-Explorer** die Option **NuGet-Pa
 
 ## <a name="run-the-application"></a>Ausführen der Anwendung
 
-Erstellen Sie Ihr Projekt, und führen Sie es aus. Wenn Sie Visual Studio verwenden, drücken Sie **F5** , um die Datei zu debuggen.
+Erstellen Sie Ihr Projekt, und führen Sie es aus. Wenn Sie Visual Studio verwenden, drücken Sie **F5**, um die Datei zu debuggen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

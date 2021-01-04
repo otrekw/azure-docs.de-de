@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.date: 4/13/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 945a67f81010a61adf814f6f6f422eba5001b48d
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541571"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95998548"
 ---
 # <a name="configure-and-access-slow-query-logs-by-using-azure-cli"></a>Konfigurieren der und Zugreifen auf die Protokolle für langsame Abfragen mithilfe der Azure CLI
 Sie können die Protokolle für langsame Abfragen von Azure Database for MySQL mithilfe der Azure-Befehlszeilenschnittstelle (Azure CLI, das Azure-Befehlszeilenhilfsprogramm) herunterladen.

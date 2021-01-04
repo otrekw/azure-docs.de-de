@@ -11,12 +11,12 @@ ms.author: anumamah
 ms.reviewer: nibaccam
 ms.date: 08/14/2020
 ms.custom: devx-track-python, automl
-ms.openlocfilehash: 811f1c27af660d388ecb875741c073591bd25f7f
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: e1a5370501fe73fb783db9a039d9f060acdb0a35
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93358608"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96511031"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-predict-taxi-fares"></a>Tutorial: Vorhersagen von Preisen für Taxifahrten mit automatisiertem maschinellem Lernen
 
@@ -39,7 +39,9 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein kostenloses Konto erste
 * Absolvieren Sie das [Einrichtungstutorial](tutorial-1st-experiment-sdk-setup.md), falls Sie noch nicht über einen Azure Machine Learning-Arbeitsbereich oder über einen virtuellen Notebook-Computer verfügen.
 * Öffnen Sie nach Abschluss des Einrichtungstutorials das Notebook *tutorials/regression-automl-nyc-taxi-data/regression-automated-ml.ipynb* unter Verwendung des gleichen Notebook-Servers.
 
-Dieses Tutorial ist auch auf [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) verfügbar, falls Sie es in Ihrer eigenen [lokalen Umgebung](how-to-configure-environment.md#local) ausführen möchten. Führen Sie `pip install azureml-sdk[automl] azureml-opendatasets azureml-widgets` aus, um die erforderlichen Pakete abzurufen.
+Dieses Tutorial ist auch auf [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) verfügbar, falls Sie es in Ihrer eigenen [lokalen Umgebung](how-to-configure-environment.md#local) ausführen möchten. So erhalten Sie die erforderlichen Pakete: 
+* [Installieren Sie den vollständigen `automl`-Client.](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/README.md#setup-using-a-local-conda-environment)
+* Führen Sie `pip install azureml-opendatasets azureml-widgets` aus, um die erforderlichen Pakete abzurufen.
 
 ## <a name="download-and-prepare-data"></a>Herunterladen und Vorbereiten von Daten
 
@@ -208,7 +210,7 @@ Definieren Sie die Experimentparameter und Modelleinstellungen für das Training
 
 |Eigenschaft| Wert in diesem Tutorial |BESCHREIBUNG|
 |----|----|---|
-|**iteration_timeout_minutes**|2|Zeitlimit in Minuten für jede Iteration. Verringern Sie diesen Wert, um die Gesamtlaufzeit zu verringern.|
+|**iteration_timeout_minutes**|10|Zeitlimit in Minuten für jede Iteration. Erhöhen Sie diesen Wert für größere Datasets, die mehr Zeit für jede Iteration benötigen.|
 |**experiment_timeout_hours**|0,3|Maximal zulässige Dauer für alle Iterationen (in Stunden). Danach wird das Experiment beendet.|
 |**enable_early_stopping**|True|Flag zum Aktivieren der vorzeitigen Beendigung, wenn sich der Score auf kurze Sicht nicht verbessert.|
 |**primary_metric**| spearman_correlation | Metrik, die Sie optimieren möchten. Das am besten geeignete Modell wird basierend auf dieser Metrik ausgewählt.|
@@ -220,7 +222,7 @@ Definieren Sie die Experimentparameter und Modelleinstellungen für das Training
 import logging
 
 automl_settings = {
-    "iteration_timeout_minutes": 2,
+    "iteration_timeout_minutes": 10,
     "experiment_timeout_hours": 0.3,
     "enable_early_stopping": True,
     "primary_metric": 'spearman_correlation',

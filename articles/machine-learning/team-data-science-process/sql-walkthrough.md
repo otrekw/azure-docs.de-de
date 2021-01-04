@@ -12,11 +12,11 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 580181aaaea975ee07bcec8108297079c5373b92
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93320427"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96007408"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-server"></a>Der Team Data Science-Prozess in Aktion: Verwenden von SQL Server
 In diesem Tutorial werden Sie durch die Erstellung und Bereitstellung eines Machine Learning-Modells geleitet. Hierfür werden SQL Server und das öffentlich zugängliche Dataset [NYC Taxi Trips](https://www.andresmh.com/nyctaxitrips/) verwendet. Die Prozedur entspricht dem standardmäßigen Data Science-Workflow: Erfassen und Durchsuchen der Daten, Entwickeln von Features zur Vereinfachung des Lernens und anschließendes Erstellen und Bereitstellen eines Modells.
@@ -120,7 +120,7 @@ Die Leistung beim Laden/Übertragen großer Datenmengen in eine SQL-Datenbank un
 2. Stellen Sie mithilfe der Windows-Authentifizierung eine Verbindung her.
    
     ![SSMS-Verbindung][12]
-3. Wenn Sie noch nicht den SQL Server-Authentifizierungsmodus geändert und einen neuen SQL-Benutzer erstellt haben, öffnen Sie die Skriptdatei **change\_auth.sql** im Ordner **Sample Scripts**. Ändern Sie den Standardbenutzernamen und das Kennwort. Klicken Sie auf der Symbolleiste auf **Ausführen** , um das Skript auszuführen.
+3. Wenn Sie noch nicht den SQL Server-Authentifizierungsmodus geändert und einen neuen SQL-Benutzer erstellt haben, öffnen Sie die Skriptdatei **change\_auth.sql** im Ordner **Sample Scripts**. Ändern Sie den Standardbenutzernamen und das Kennwort. Klicken Sie auf der Symbolleiste auf **Ausführen**, um das Skript auszuführen.
    
     ![Skript ausführen][13]
 4. Überprüfen und/oder ändern Sie die Standardordner für die SQL Server-Datenbank und die Protokolldateien, um sicherzustellen, dass die neu erstellten Datenbanken auf einem Datenträger gespeichert werden. Das für das Laden von Data Warehousing optimierte SQL Server-VM-Image wurde mit den Datenträgern für Daten- und Protokolldateien vorkonfiguriert. Wenn Ihr virtueller Computer keinen Datenträger enthält und Sie während der Einrichtung des virtuellen Computers neue virtuelle Festplatten hinzugefügt haben, ändern Sie die Standardordner wie folgt:
@@ -132,25 +132,25 @@ Die Leistung beim Laden/Übertragen großer Datenmengen in eine SQL-Datenbank un
    * Überprüfen und/oder ändern Sie die **Standardspeicherorte für Datenbank** in die Speicherorte Ihrer **Datenträger**. An diesem Speicherort werden die neuen Datenbanken gespeichert, wenn sie mit den Standardeinstellungen erstellt wurden.
      
        ![SQL-Datenbankstandards][15]  
-5. Um eine neue Datenbank und einen Satz von Dateigruppen zum Speichern der partitionierten Tabellen zu erstellen, öffnen Sie das Beispielskript **create\_db\_default.sql**. Das Skript erstellt eine neue Datenbank namens **TaxiNYC** und 12 Dateigruppen am Standardspeicherort für Daten. Jede Dateigruppe enthält die Daten aus „trip\_data“ und „trip\_fare data“ eines Monats. Ändern Sie bei Bedarf den Datenbanknamen. Klicken Sie auf **Ausführen** , um das Skript auszuführen.
+5. Um eine neue Datenbank und einen Satz von Dateigruppen zum Speichern der partitionierten Tabellen zu erstellen, öffnen Sie das Beispielskript **create\_db\_default.sql**. Das Skript erstellt eine neue Datenbank namens **TaxiNYC** und 12 Dateigruppen am Standardspeicherort für Daten. Jede Dateigruppe enthält die Daten aus „trip\_data“ und „trip\_fare data“ eines Monats. Ändern Sie bei Bedarf den Datenbanknamen. Klicken Sie auf **Ausführen**, um das Skript auszuführen.
 6. Erstellen Sie als Nächstes zwei Partitionstabellen für „trip\_data“ und „trip\_fare“. Öffnen Sie das Beispielskript **create\_partitioned\_table.sql**. Dadurch wird Folgendes ausgeführt:
    
    * Erstellen einer Partitionsfunktion zum Aufteilen der Daten nach Monaten
    * Erstellen eines Partitionsschemas für die Zuordnung der Daten der einzelnen Monate zu einer anderen Dateigruppe
    * Erstellen Sie zwei partitionierte Tabellen, die dem Partitionsschema zugeordnet sind: **nyctaxi\_trip** enthält „trip\_data“ und **nyctaxi\_fare** enthält „trip\_fare data“.
      
-     Klicken Sie auf **Ausführen** , um das Skript auszuführen und die partitionierten Tabellen zu erstellen.
+     Klicken Sie auf **Ausführen**, um das Skript auszuführen und die partitionierten Tabellen zu erstellen.
 7. Im Ordner **Sample Scripts** befinden sich zwei PowerShell-Beispielskripts zur Veranschaulichung des parallelen Massenimports von Daten in SQL Server-Tabellen.
    
    * **bcp\_parallel\_generic.ps1** ist ein allgemeines Skript für den parallelen Massenimport von Daten in eine Tabelle. Ändern Sie dieses Skript, um die Eingabe- und Zielvariablen wie in den Kommentarzeilen im Skript angegeben festzulegen.
    * **bcp\_parallel\_nyctaxi.ps1** ist eine vorkonfigurierte Version des generischen Skripts, das verwendet werden kann, um beide Tabellen für die „NYC Taxi Trips“-Daten zu laden.  
-8. Klicken Sie mit der rechten Maustaste auf den Namen des Skripts **bcp\_parallel\_nyctaxi.ps1** , und klicken Sie dann auf **Bearbeiten** , um es in PowerShell zu öffnen. Überprüfen und ändern Sie die vordefinierten Variablen gemäß den von Ihnen gewählten Namen für Datenbank, Eingabedatenordner, Zielprotokollordner sowie den Pfaden zu den Beispielformatdateien **nyctaxi_trip.xml** und **nyctaxi\_fare.xml** (im Ordner **Sample Scripts** ).
+8. Klicken Sie mit der rechten Maustaste auf den Namen des Skripts **bcp\_parallel\_nyctaxi.ps1**, und klicken Sie dann auf **Bearbeiten**, um es in PowerShell zu öffnen. Überprüfen und ändern Sie die vordefinierten Variablen gemäß den von Ihnen gewählten Namen für Datenbank, Eingabedatenordner, Zielprotokollordner sowie den Pfaden zu den Beispielformatdateien **nyctaxi_trip.xml** und **nyctaxi\_fare.xml** (im Ordner **Sample Scripts**).
    
     ![Massenimportdaten][16]
    
     Sie können auch den Authentifizierungsmodus auswählen, in der Voreinstellung wird die Windows-Authentifizierung verwendet. Klicken Sie für die Ausführung auf den grünen Pfeil auf der Symbolleiste. Das Skript startet 24 Massenimportvorgänge parallel – 12 für jede partitionierte Tabelle. Sie können den Fortschritt des Datenimports überwachen, indem Sie den oben festgelegten Standardordner mit den SQL Server-Daten öffnen.
 9. Das PowerShell-Skript meldet die Start- und Endzeiten. Wenn alle Massenimportvorgänge abgeschlossen wurden, wird die Endzeit gemeldet. Überprüfen Sie den Zielprotokollordner, um zu überprüfen, ob die Massenimportvorgänge erfolgreich ausgeführt wurden, d. h., ob keine Fehler im Zielprotokollordner gemeldet wurden.
-10. Die Datenbank kann jetzt zum Durchsuchen, zur Funktionsverarbeitung und für andere Vorgänge verwendet werden. Da die Tabellen nach dem Feld **pickup\_datetime** partitioniert sind, profitieren Abfragen mit **pickup\_datetime** -Bedingungen in der **WHERE** -Klausel vom Partitionsschema.
+10. Die Datenbank kann jetzt zum Durchsuchen, zur Funktionsverarbeitung und für andere Vorgänge verwendet werden. Da die Tabellen nach dem Feld **pickup\_datetime** partitioniert sind, profitieren Abfragen mit **pickup\_datetime**-Bedingungen in der **WHERE**-Klausel vom Partitionsschema.
 11. Untersuchen Sie in **SQL Server Management Studio** das bereitgestellte Beispielskript **sample\_queries.sql**. Um eine der Beispielabfragen auszuführen, markieren Sie die Abfragezeilen, und klicken Sie auf der Symbolleiste auf **Ausführen**.
 12. Die "NYC Taxi Trips"-Daten werden in zwei separate Tabellen geladen. Zur Verbesserung der Join-Vorgänge empfiehlt es sich dringend, die Tabellen zu indizieren. Das Beispielskript **create\_partitioned\_index.sql** erstellt partitionierte Indizes für den zusammengesetzten Verknüpfungsschlüssel **medallion, hack\_license und pickup\_datetime**.
 
@@ -258,7 +258,7 @@ AND   pickup_longitude != '0' AND dropoff_longitude != '0'
 ```
 
 #### <a name="feature-engineering-in-sql-queries"></a>Verarbeiten von Funktionen in SQL-Abfragen
-Die Suchabfragen zur Generierung von Bezeichnern und zum Konvertieren der Geografiepunkte können auch zum Erstellen von Bezeichnern/Funktionen verwendet werden, indem der Zählaspekt entfernt wird. Weitere SQL-Beispiele zum Verarbeiten von Funktionen finden Sie im Abschnitt [Durchsuchen von Daten und Verarbeiten von Funktionen in IPython Notebook](#ipnb). Es ist effizienter, die Abfragen zum Generieren von Funktionen für das komplette Dataset oder einen großen Teil davon auszuführen und dazu SQL-Abfragen zu verwenden, die direkt auf der SQL Server-Datenbankinstanz ausgeführt werden. Die Abfragen können in **SQL Server Management Studio** , IPython Notebook oder einem Entwicklungstool bzw. einer Entwicklungsumgebung ausgeführt werden, sofern lokaler oder Remotezugriff auf die Datenbank besteht.
+Die Suchabfragen zur Generierung von Bezeichnern und zum Konvertieren der Geografiepunkte können auch zum Erstellen von Bezeichnern/Funktionen verwendet werden, indem der Zählaspekt entfernt wird. Weitere SQL-Beispiele zum Verarbeiten von Funktionen finden Sie im Abschnitt [Durchsuchen von Daten und Verarbeiten von Funktionen in IPython Notebook](#ipnb). Es ist effizienter, die Abfragen zum Generieren von Funktionen für das komplette Dataset oder einen großen Teil davon auszuführen und dazu SQL-Abfragen zu verwenden, die direkt auf der SQL Server-Datenbankinstanz ausgeführt werden. Die Abfragen können in **SQL Server Management Studio**, IPython Notebook oder einem Entwicklungstool bzw. einer Entwicklungsumgebung ausgeführt werden, sofern lokaler oder Remotezugriff auf die Datenbank besteht.
 
 #### <a name="preparing-data-for-model-building"></a>Vorbereiten von Daten für die Modellerstellung
 Die folgende Abfrage führt die Tabellen **nyctaxi\_trip** und **nyctaxi\_fare** zusammen, generiert den binären Klassifikationsbezeichner **tipped** und den Bezeichner **tip\_class** für die Multi-Klassen-Klassifizierung und extrahiert eine zufällige 1-%-Stichprobe aus dem vollständig verbundenen Dataset. Diese Abfrage kann kopiert und dann direkt in das [Import Data][import-data]-Modul von [Azure Machine Learning Studio](https://studio.azureml.net) eingefügt werden, um eine direkte Datenerfassung aus der SQL Server-Datenbankinstanz in Azure zu erzielen. Die Abfrage schließt DataSets mit falschen Koordinaten (0, 0) aus.
@@ -415,7 +415,7 @@ pd.Series(trip_dist_bin_id).value_counts().plot(kind='line')
 ![Grafik 4][4]
 
 #### <a name="visualization-scatterplot-example"></a>Visualisierung: Punktdiagrammbeispiel
-Wir zeigen ein Punktdiagramm zwischen **trip\_time\_in\_secs** und **trip\_distance** , um zu ermitteln, ob es Korrelationen gibt.
+Wir zeigen ein Punktdiagramm zwischen **trip\_time\_in\_secs** und **trip\_distance**, um zu ermitteln, ob es Korrelationen gibt.
 
 ```sql
 plt.scatter(df1['trip_time_in_secs'], df1['trip_distance'])
@@ -437,7 +437,7 @@ Bei der Vorbereitung von Daten für die Modellerstellung in [Azure Machine Learn
 In diesem Abschnitt erstellen Sie eine neue Tabelle zum Speichern der erfassten und verarbeiteten Daten. Ein Beispiel für eine direkte SQL-Abfrage für die Modellerstellung finden Sie im Abschnitt [Durchsuchen von Daten und Verarbeiten von Funktionen in SQL Server](#dbexplore).
 
 #### <a name="create-a-sample-table-and-populate-with-1-of-the-joined-tables-drop-table-first-if-it-exists"></a>Erstellen einer Beispieltabelle und Auffüllen dieser mit 1 % der verknüpften Tabellen. Löschen Sie zunächst die Tabelle, falls sie bereits vorhanden ist.
-In diesem Abschnitt führen wir die Tabellen **nyctaxi\_trip** und **nyctaxi\_fare** zusammen, extrahieren 1% zufälliger Stichproben und speichern die erfassten Daten in der neuen Tabelle **nyctaxi\_one\_percent** :
+In diesem Abschnitt führen wir die Tabellen **nyctaxi\_trip** und **nyctaxi\_fare** zusammen, extrahieren 1% zufälliger Stichproben und speichern die erfassten Daten in der neuen Tabelle **nyctaxi\_one\_percent**:
 
 ```sql
 cursor = conn.cursor()
@@ -463,7 +463,7 @@ cursor.commit()
 ```
 
 ### <a name="data-exploration-using-sql-queries-in-ipython-notebook"></a>Durchsuchen von Daten und Verwenden von SQL-Abfragen in IPython Notebook
-In diesem Abschnitt untersuchen wir die Datenverteilungen anhand der 1 % Stichprobendaten in der zuvor neu erstellten Tabelle. Ähnliche Suchvorgänge können anhand der ursprünglichen Tabellen ausgeführt werden, wobei die Suchvorgänge optional mit **TABLESAMPLE** auf Stichproben begrenzt werden können, oder dass die Ergebnisse durch die Begrenzung mithilfe von **pickup\_datetime** -Partitionen auf einen bestimmten Zeitraum eingeschränkt werden können. Dies wird im Abschnitt [Durchsuchen von Daten und Verarbeiten von Funktionen in SQL Server](#dbexplore) beschrieben.
+In diesem Abschnitt untersuchen wir die Datenverteilungen anhand der 1 % Stichprobendaten in der zuvor neu erstellten Tabelle. Ähnliche Suchvorgänge können anhand der ursprünglichen Tabellen ausgeführt werden, wobei die Suchvorgänge optional mit **TABLESAMPLE** auf Stichproben begrenzt werden können, oder dass die Ergebnisse durch die Begrenzung mithilfe von **pickup\_datetime**-Partitionen auf einen bestimmten Zeitraum eingeschränkt werden können. Dies wird im Abschnitt [Durchsuchen von Daten und Verarbeiten von Funktionen in SQL Server](#dbexplore) beschrieben.
 
 #### <a name="exploration-daily-distribution-of-trips"></a>Durchsuchen: Tägliche Verteilung der Fahrten
 
@@ -661,7 +661,7 @@ Ein Beispiel für ein binäres Klassifizierungsexperiment zum Lesen von Daten di
 ![Azure Machine Learning: Training][10]
 
 > [!IMPORTANT]
-> In den Modellierungsbeispielen für Datenextraktion und Stichprobengenerierung in den vorherigen Abschnitten sind **alle Bezeichner für die drei Modellierungsübungen in der Abfrage enthalten**. Ein wichtiger (erforderlicher) Schritt in den einzelnen Modellierungsübungen ist das **Ausschließen** unnötiger Bezeichner für die anderen beiden Probleme und alle anderen **Zielverluste**. Wenn Sie z.B. eine binäre Klassifizierung nutzen, verwenden Sie den Bezeichner **tipped** und schließen die Felder **tip\_class** , **tip\_amount** und **total\_amount** aus. Letztere sind Zielverluste, da sie das bezahlte Trinkgeld beinhalten.
+> In den Modellierungsbeispielen für Datenextraktion und Stichprobengenerierung in den vorherigen Abschnitten sind **alle Bezeichner für die drei Modellierungsübungen in der Abfrage enthalten**. Ein wichtiger (erforderlicher) Schritt in den einzelnen Modellierungsübungen ist das **Ausschließen** unnötiger Bezeichner für die anderen beiden Probleme und alle anderen **Zielverluste**. Wenn Sie z.B. eine binäre Klassifizierung nutzen, verwenden Sie den Bezeichner **tipped** und schließen die Felder **tip\_class**, **tip\_amount** und **total\_amount** aus. Letztere sind Zielverluste, da sie das bezahlte Trinkgeld beinhalten.
 > 
 > Um nicht benötigte Spalten und/oder Zielverluste auszuschließen, können Sie das [Select Columns in Dataset][select-columns]- (Spalten im Dataset auswählen) oder [Edit Metadata][edit-metadata]-Modul (Bearbeiten von Metadaten) verwenden. Weitere Informationen finden Sie auf den Referenzseiten zu [Select Columns in Dataset][select-columns] und [Edit Metadata][edit-metadata].
 > 

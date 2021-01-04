@@ -3,19 +3,19 @@ title: Visuelles Überwachen von Azure Data Factory
 description: Erfahren Sie, wie Sie Azure Data Factorys visuell überwachen.
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: ecb066c7269217af3f8cc84e0f59ab29b4b39a9e
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.openlocfilehash: f2bf1b1a16660b4e80bc0acc5c6e4201b452098f
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94331511"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96497910"
 ---
 # <a name="visually-monitor-azure-data-factory"></a>Visuelles Überwachen von Azure Data Factory
 
@@ -62,7 +62,7 @@ Um eine ausführliche Ansicht der einzelnen Aktivitätsausführungen einer besti
 
 In der Listenansicht werden die Aktivitätsausführungen angezeigt, die den einzelnen Pipelineausführungen entsprechen. Zeigen Sie auf die jeweilige Aktivitätsausführung, um ausführungsspezifische Informationen wie die JSON-Eingabe, die JSON-Ausgabe und detaillierte aktivitätsspezifische Überwachungsfunktionen anzuzeigen.
 
-![Listenansicht zum Überwachen von Aktivitätsausführungen](media/monitor-visually/activity-runs.png)
+![Es gibt Informationen zu SalesAnalyticsMLPipeline, gefolgt von einer Liste der Aktivitätsausführungen.](media/monitor-visually/activity-runs.png)
 
 | **Spaltenname** | **Beschreibung** |
 | --- | --- |
@@ -79,7 +79,7 @@ In der Listenansicht werden die Aktivitätsausführungen angezeigt, die den einz
 
 Wenn eine Aktivität fehlerhaft war, können Sie auf das Symbol in der Fehlerspalte klicken, um die ausführliche Fehlermeldung anzuzeigen. 
 
-![Listenansicht zum Überwachen von Aktivitätsausführungen](media/monitor-visually/activity-run-error.png)
+![Eine Benachrichtigung mit Fehlerdetails einschließlich Fehlercode, Fehlertyp und Fehlerdetails wird angezeigt.](media/monitor-visually/activity-run-error.png)
 
 ### <a name="promote-user-properties-to-monitor"></a>Heraufstufen von Benutzereigenschaften für die Überwachung
 

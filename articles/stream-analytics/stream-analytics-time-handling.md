@@ -22,11 +22,11 @@ In diesem Artikel erfahren Sie, wie Sie Entwurfsentscheidungen treffen können, 
 
 Um die Diskussion besser zu gestalten, lassen Sie uns einige Hintergrundkonzepte definieren:
 
-- **Ereigniszeit** : Der Zeitpunkt, an dem das ursprüngliche Ereignis aufgetreten ist. Zum Beispiel, wenn sich ein fahrendes Auto auf der Autobahn einem Mauthäuschen nähert.
+- **Ereigniszeit**: Der Zeitpunkt, an dem das ursprüngliche Ereignis aufgetreten ist. Zum Beispiel, wenn sich ein fahrendes Auto auf der Autobahn einem Mauthäuschen nähert.
 
-- **Verarbeitungszeit** : Der Zeitpunkt, an dem das Ereignis das Verarbeitungssystem erreicht und beobachtet wird. Zum Beispiel, wenn der Sensor im Mauthäuschen das Auto erkennt und das Computersystem einen Moment benötigt, um die Daten zu verarbeiten.
+- **Verarbeitungszeit**: Der Zeitpunkt, an dem das Ereignis das Verarbeitungssystem erreicht und beobachtet wird. Zum Beispiel, wenn der Sensor im Mauthäuschen das Auto erkennt und das Computersystem einen Moment benötigt, um die Daten zu verarbeiten.
 
-- **Wasserzeichen** : Ein Ereigniszeitmarker, der anzeigt, bis zu welchem Punkt Ereignisse in den Streaming-Prozessor eingegangen sind. Mit Wasserzeichen zeigt das System den Fortschritt beim Erfassen der Ereignisse an. Aufgrund der Art der Streams hören die eingehenden Ereignisdaten nie auf, sodass Wasserzeichen den Fortschritt bis zu einem bestimmten Punkt im Stream anzeigen.
+- **Wasserzeichen**: Ein Ereigniszeitmarker, der anzeigt, bis zu welchem Punkt Ereignisse in den Streaming-Prozessor eingegangen sind. Mit Wasserzeichen zeigt das System den Fortschritt beim Erfassen der Ereignisse an. Aufgrund der Art der Streams hören die eingehenden Ereignisdaten nie auf, sodass Wasserzeichen den Fortschritt bis zu einem bestimmten Punkt im Stream anzeigen.
 
    Das Wasserzeichenkonzept ist wichtig. Mit Wasserzeichen kann Stream Analytics bestimmen, wann das System vollständige, korrekte und wiederholbare Ergebnisse liefern kann, die nicht zurückgezogen werden müssen. Die Verarbeitung kann auf vorhersehbare und wiederholbare Weise erfolgen. Wenn zum Beispiel eine Nachzählung für eine Fehlerbehandlung durchgeführt werden muss, sind Wasserzeichen sichere Start- und Endpunkte.
 
@@ -38,13 +38,13 @@ Stream Analytics bietet Benutzern zwei Optionen für die Auswahl der Ereigniszei
 
 ### <a name="arrival-time"></a>Eingangszeit
 
-Die Eingangszeit wird an der Eingabequelle zugewiesen, wenn das Ereignis die Quelle erreicht. Auf die Eingangszeit kann bei Event Hubs-Eingaben mithilfe der **EventEnqueuedUtcTime** -Eigenschaft, bei IoT Hub-Eingaben mit der Eigenschaft **IoTHub.EnqueuedTime** und bei Blobeingaben mithilfe der **BlobProperties.LastModified** -Eigenschaft zugegriffen werden.
+Die Eingangszeit wird an der Eingabequelle zugewiesen, wenn das Ereignis die Quelle erreicht. Auf die Eingangszeit kann bei Event Hubs-Eingaben mithilfe der **EventEnqueuedUtcTime**-Eigenschaft, bei IoT Hub-Eingaben mit der Eigenschaft **IoTHub.EnqueuedTime** und bei Blobeingaben mithilfe der **BlobProperties.LastModified**-Eigenschaft zugegriffen werden.
 
 Die Eingangszeit wird standardmäßig verwendet und eignet sich am besten für Datenarchivierungsszenarien, bei denen keine Zeitlogik erforderlich ist.
 
 ### <a name="application-time-also-named-event-time"></a>Anwendungszeit (auch als Ereigniszeit bezeichnet)
 
-Die Anwendungszeit wird bei Erstellung des Ereignisses zugewiesen und ist Teil der Ereignisnutzlast. Verwenden Sie zur Verarbeitung von Ereignissen anhand der Anwendungszeit die **Timestamp by** -Klausel in der SELECT-Abfrage. Wenn **Timestamp by** nicht vorhanden ist, werden Ereignisse basierend auf der Eingangszeit verarbeitet.
+Die Anwendungszeit wird bei Erstellung des Ereignisses zugewiesen und ist Teil der Ereignisnutzlast. Verwenden Sie zur Verarbeitung von Ereignissen anhand der Anwendungszeit die **Timestamp by**-Klausel in der SELECT-Abfrage. Wenn **Timestamp by** nicht vorhanden ist, werden Ereignisse basierend auf der Eingangszeit verarbeitet.
 
 Es ist wichtig, einen Zeitstempel in der Nutzlast zu verwenden, wenn Zeitlogik eine Rolle spielt, um Verzögerungen im Quellsystem oder im Netzwerk zu berücksichtigen. Die Zeit, die einem Ereignis zugeordnet ist steht in [SYSTEM.TIMESTAMP](/stream-analytics-query/system-timestamp-stream-analytics) zur Verfügung.
 
@@ -116,7 +116,7 @@ Stream Analytics-Aufträge verfügen über mehrere Optionen für die **Ereignisr
 
 3. Ausgaben scheinen verzögert zu sein.
 
-   Das erste Wasserzeichen wird zu der berechneten Zeit generiert: die **maximale Ereigniszeit** , die das System bisher beobachtet hat, abzüglich der Größe des Toleranzfensters für Ereignisse mit falscher Reihenfolge. Standardmäßig ist die Toleranz für Ereignisse mit falscher Reihenfolge auf Null (00 Minuten und 00 Sekunden) konfiguriert. Wenn Sie den Wert auf einen höher Zeitwert ungleich Null einstellen, wird die erste Ausgabe des Streamingauftrags aufgrund der berechneten ersten Wasserzeichenzeit um diesen Zeitwert (oder höher) verzögert.
+   Das erste Wasserzeichen wird zu der berechneten Zeit generiert: die **maximale Ereigniszeit**, die das System bisher beobachtet hat, abzüglich der Größe des Toleranzfensters für Ereignisse mit falscher Reihenfolge. Standardmäßig ist die Toleranz für Ereignisse mit falscher Reihenfolge auf Null (00 Minuten und 00 Sekunden) konfiguriert. Wenn Sie den Wert auf einen höher Zeitwert ungleich Null einstellen, wird die erste Ausgabe des Streamingauftrags aufgrund der berechneten ersten Wasserzeichenzeit um diesen Zeitwert (oder höher) verzögert.
 
 4. Eingaben haben eine geringe Dichte.
 

@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd0a2b44fd54eb716b5e1b8f9eabc923ccd7977f
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 4c97958add682a4c49d7832843c0b95ffd2663bf
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93285846"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96859630"
 ---
 # <a name="properties-of-an-azure-active-directory-b2b-collaboration-user"></a>Eigenschaften eines Azure Active Directory B2B-Zusammenarbeitsbenutzers
 
@@ -110,7 +110,7 @@ Ja. Gastobjekte sind in der globalen Adressliste Ihres Unternehmens standardmä�
 
 ## <a name="can-i-update-a-guest-users-email-address"></a>Kann ich die E-Mail-Adresse eines Gastbenutzers aktualisieren?
 
-Wenn ein Gastbenutzer Ihre Einladung annimmt und danach seine E-Mail-Adresse ändert, wird die neue Adresse nicht automatisch im Gastbenutzerobjekt in Ihrem Verzeichnis synchronisiert. Die E-Mail-Eigenschaft wird über die [Microsoft Graph-API](/graph/api/resources/user?view=graph-rest-1.0) erstellt. Sie können die Maileigenschaft über die Microsoft Graph-API, das Admin Center von Exchange oder [Exchange Online-PowerShell](/powershell/module/exchange/users-and-groups/set-mailuser?view=exchange-ps) aktualisieren. Die Änderung wird im Azure AD-Gastbenutzerobjekt widergespiegelt.
+Wenn ein Gastbenutzer Ihre Einladung annimmt und danach seine E-Mail-Adresse ändert, wird die neue Adresse nicht automatisch im Gastbenutzerobjekt in Ihrem Verzeichnis synchronisiert. Die E-Mail-Eigenschaft wird über die [Microsoft Graph-API](/graph/api/resources/user) erstellt. Sie können die Maileigenschaft über die Microsoft Graph-API, das Admin Center von Exchange oder [Exchange Online-PowerShell](/powershell/module/exchange/users-and-groups/set-mailuser) aktualisieren. Die Änderung wird im Azure AD-Gastbenutzerobjekt widergespiegelt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

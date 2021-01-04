@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.date: 10/29/2020
 ms.author: alkohli
 ms.subservice: common
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 859325bffe1db9cd6a7afc7e5013681c88209eff
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: 9d1d0f4b615bbf4cc7faf82d70a4de0b0157ed82
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491782"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96326351"
 ---
 # <a name="use-azure-importexport-service-to-import-data-to-azure-files"></a>Verwenden des Azure Import/Export-Diensts zum Importieren von Daten in Azure Files
 
@@ -49,16 +49,16 @@ Führen Sie zum Vorbereiten der Laufwerke die folgenden Schritte aus.
 
 1. Stellen Sie die Verbindung unserer Laufwerke mit dem Windows-System über SATA-Anschlüsse her.
 2. Erstellen Sie ein einzelnes NTFS-Volume auf jedem Laufwerk. Weisen Sie dem Volume einen Laufwerkbuchstaben zu. Verwenden Sie keine Bereitstellungspunkte.
-3. Ändern Sie die Datei *dataset.csv* im Stammverzeichnis, in dem sich das Tool befindet. Je nachdem, ob Sie eine Datei, einen Ordner oder beides importieren möchten, fügen Sie der *dataset.csv* -Datei Einträge wie in den folgenden Beispielen hinzu.
+3. Ändern Sie die Datei *dataset.csv* im Stammverzeichnis, in dem sich das Tool befindet. Je nachdem, ob Sie eine Datei, einen Ordner oder beides importieren möchten, fügen Sie der *dataset.csv*-Datei Einträge wie in den folgenden Beispielen hinzu.
 
-   - **So importieren Sie eine Datei** : Im folgenden Beispiel befinden sich die zu kopierenden Daten auf dem Laufwerk „F:“. Die Datei *MyFile1.txt* wird auf das Stammverzeichnis von *MyAzureFileshare1* kopiert. Wenn *MyAzureFileshare1* nicht vorhanden ist, wird es im Azure Storage-Konto erstellt. Die Ordnerstruktur wird beibehalten.
+   - **So importieren Sie eine Datei**: Im folgenden Beispiel befinden sich die zu kopierenden Daten auf dem Laufwerk „F:“. Die Datei *MyFile1.txt* wird auf das Stammverzeichnis von *MyAzureFileshare1* kopiert. Wenn *MyAzureFileshare1* nicht vorhanden ist, wird es im Azure Storage-Konto erstellt. Die Ordnerstruktur wird beibehalten.
 
        ```
            BasePath,DstItemPathOrPrefix,ItemType,Disposition,MetadataFile,PropertiesFile
            "F:\MyFolder1\MyFile1.txt","MyAzureFileshare1/MyFile1.txt",file,rename,"None",None
 
        ```
-   - **So importieren Sie einen Ordner** : Alle Dateien und Ordner in *MyFolder2* werden rekursiv in die Dateifreigabe kopiert. Die Ordnerstruktur wird beibehalten.
+   - **So importieren Sie einen Ordner**: Alle Dateien und Ordner in *MyFolder2* werden rekursiv in die Dateifreigabe kopiert. Die Ordnerstruktur wird beibehalten.
 
        ```
            "F:\MyFolder2\","MyAzureFileshare1/",file,rename,"None",None
@@ -78,14 +78,14 @@ Führen Sie zum Vorbereiten der Laufwerke die folgenden Schritte aus.
 
     In diesem Beispiel wird vorausgesetzt, dass zwei Festplatten angeschlossen sind und die grundlegenden NTFS-Volumes G:\ und H:\ erstellt werden. H:\ wird nicht verschlüsselt, während G:\ bereits verschlüsselt ist. Das Tool formatiert und verschlüsselt nur den Datenträger, der H:\ hostet (und nicht G:\).
 
-   - **Für einen Datenträger, die nicht verschlüsselt ist** : Geben Sie *Encrypt* zum Aktivieren der BitLocker-Verschlüsselung auf dem Datenträger an.
+   - **Für einen Datenträger, die nicht verschlüsselt ist**: Geben Sie *Encrypt* zum Aktivieren der BitLocker-Verschlüsselung auf dem Datenträger an.
 
        ```
        DriveLetter,FormatOption,SilentOrPromptOnFormat,Encryption,ExistingBitLockerKey
        H,Format,SilentMode,Encrypt,
        ```
 
-   - **Für einen Datenträger, der bereits verschlüsselt ist** : Geben Sie *AlreadyEncrypted* und den BitLocker-Schlüssel an.
+   - **Für einen Datenträger, der bereits verschlüsselt ist**: Geben Sie *AlreadyEncrypted* und den BitLocker-Schlüssel an.
 
        ```
        DriveLetter,FormatOption,SilentOrPromptOnFormat,Encryption,ExistingBitLockerKey
@@ -161,7 +161,7 @@ Führen Sie die folgenden Schritte aus, um einen Importauftrag im Azure-Portal z
 5. Gehen Sie unter **Zusammenfassung** wie folgt vor:
 
     - Geben Sie die Lieferadresse des Azure-Rechenzentrums für die Rücksendung der Datenträger an Azure an. Stellen Sie sicher, dass der Auftragsname und die vollständige Adresse auf dem Adressetikett angegeben sind.
-    - Klicken Sie auf **OK** , um das Erstellen des Importauftrags abzuschließen.
+    - Klicken Sie auf **OK**, um das Erstellen des Importauftrags abzuschließen.
 
         ![Importauftrag erstellen – Schritt 4](./media/storage-import-export-data-to-blobs/import-to-blob6.png)
 
@@ -355,9 +355,9 @@ Install-Module -Name Az.ImportExport
 
 ## <a name="samples-for-journal-files"></a>Beispiele für Journaldateien
 
-Um **weitere Laufwerke hinzuzufügen** , erstellen Sie eine neue Driveset-Datei, und führen Sie den Befehl wie unten beschrieben aus.
+Um **weitere Laufwerke hinzuzufügen**, erstellen Sie eine neue Driveset-Datei, und führen Sie den Befehl wie unten beschrieben aus.
 
-Geben Sie für nachfolgende Kopiersitzungen mit anderen Laufwerken als den in der Datei *InitialDriveset.csv* angegebenen eine neue Driveset- *CSV* -Datei an, und legen Sie sie als Wert für den Parameter `AdditionalDriveSet` fest. Verwenden Sie den **gleichen Journaldateinamen** , und geben Sie eine **neue Sitzungs-ID** an. Das Format der AdditionalDriveset-CSV-Datei ist mit dem InitialDriveSet-Format identisch.
+Geben Sie für nachfolgende Kopiersitzungen mit anderen Laufwerken als den in der Datei *InitialDriveset.csv* angegebenen eine neue Driveset-*CSV*-Datei an, und legen Sie sie als Wert für den Parameter `AdditionalDriveSet` fest. Verwenden Sie den **gleichen Journaldateinamen**, und geben Sie eine **neue Sitzungs-ID** an. Das Format der AdditionalDriveset-CSV-Datei ist mit dem InitialDriveSet-Format identisch.
 
 ```cmd
 WAImportExport.exe PrepImport /j:<JournalFile> /id:<SessionId> /AdditionalDriveSet:<driveset.csv>

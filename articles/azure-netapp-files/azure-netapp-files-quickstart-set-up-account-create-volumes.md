@@ -8,12 +8,12 @@ ms.workload: storage
 ms.topic: quickstart
 ms.date: 09/22/2020
 ms.custom: devx-track-azurecli, subject-armqs
-ms.openlocfilehash: 70441c3a1953fa1b6ebd69ef9cdb324d6cc04a5b
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: e31a1cef427062723adf4b45bd47cd8009630128
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93336446"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888809"
 ---
 # <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume"></a>Schnellstart: Einrichten von Azure NetApp Files und Erstellen eines NFS-Volumes
 
@@ -32,8 +32,6 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 > [!IMPORTANT]
 > Sie müssen Zugriff auf den Azure NetApp Files-Dienst erhalten. Informationen zum Anfordern des Zugriffs auf den Dienst finden Sie auf der Seite für die [Übermittlung der Azure NetApp Files-Warteliste](https://aka.ms/azurenetappfiles).  Sie müssen auf eine offizielle Bestätigungs-E-Mail des Azure NetApp Files-Teams warten, bevor Sie fortfahren können.
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ---
 
@@ -65,6 +63,10 @@ Für diesen Gewusst-wie-Artikel wird Az-Version 2.6.0 (oder höher) des Azure P
 
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
+Bereiten Sie die Umgebung für die Azure CLI vor.
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
 [!INCLUDE [azure-netapp-files-cloudshell-include](../../includes/azure-netapp-files-azure-cloud-shell-window.md)]
 
 # <a name="template"></a>[Vorlage](#tab/template)
@@ -85,7 +87,7 @@ Weitere Informationen finden Sie unter [Registrieren für Azure NetApp Files](az
 
       ![Auswählen von „Azure NetApp Files“](../media/azure-netapp-files/azure-netapp-files-select-azure-netapp-files.png)
 
-2. Klicken Sie auf **+ Hinzufügen** , um ein neues NetApp-Konto zu erstellen.
+2. Klicken Sie auf **+ Hinzufügen**, um ein neues NetApp-Konto zu erstellen.
 
      ![Erstellen eines neuen NetApp-Kontos](../media/azure-netapp-files/azure-netapp-files-create-new-netapp-account.png)
 
@@ -99,7 +101,7 @@ Weitere Informationen finden Sie unter [Registrieren für Azure NetApp Files](az
 
       ![Ressourcengruppenfenster](../media/azure-netapp-files/azure-netapp-files-resource-group-window.png)
 
-4. Klicken Sie auf **Erstellen** , um Ihr neues NetApp-Konto zu erstellen.
+4. Klicken Sie auf **Erstellen**, um Ihr neues NetApp-Konto zu erstellen.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -176,7 +178,7 @@ Der folgende Codeausschnitt zeigt, wie Sie ein NetApp-Konto in einer Azure Resou
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1. Wählen Sie auf dem Azure NetApp Files-Verwaltungsblatt Ihr NetApp-Konto ( **myaccount1** ) aus.
+1. Wählen Sie auf dem Azure NetApp Files-Verwaltungsblatt Ihr NetApp-Konto (**myaccount1**) aus.
 
     ![Auswählen des NetApp-Kontos](../media/azure-netapp-files/azure-netapp-files-select-netapp-account.png)
 
@@ -260,25 +262,25 @@ Der folgende Codeausschnitt zeigt, wie Sie einen Kapazitätspool in einer Azure 
 
 3. Geben Sie im Fenster „Volume erstellen“ Informationen für das Volume an:
    1. Geben Sie **myvol1** als Volumename ein.
-   2. Wählen Sie Ihren Kapazitätspool ( **mypool1** ) aus.
+   2. Wählen Sie Ihren Kapazitätspool (**mypool1**) aus.
    3. Übernehmen Sie für das Kontingent den Standardwert.
-   4. Klicken Sie unter „Virtuelles Netzwerk“ auf **Neu erstellen** , um ein neues virtuelles Azure-Netzwerk (VNET) zu erstellen.  Geben Sie anschließend folgende Informationen an:
+   4. Klicken Sie unter „Virtuelles Netzwerk“ auf **Neu erstellen**, um ein neues virtuelles Azure-Netzwerk (VNET) zu erstellen.  Geben Sie anschließend folgende Informationen an:
        * Geben Sie **myvnet1** als VNET-Name ein.
        * Geben Sie einen Adressraum für Ihre Einstellung an (beispielsweise 10.7.0.0/16).
        * Geben Sie **myANFsubnet** als Subnetzname ein.
        * Geben Sie den Subnetzadressbereich an (beispielsweise 10.7.0.0/24). Sie können das dedizierte Subnetz nicht für andere Ressourcen freigeben.
        * Wählen Sie für die Subnetzdelegierung die Option **Microsoft.NetApp/volumes** aus.
-       * Klicken Sie auf **OK** , um das VNET zu erstellen.
-   5. Wählen Sie unter „Subnetz“ das neu erstellte VNET ( **myvnet1** ) als Delegatsubnetz aus.
+       * Klicken Sie auf **OK**, um das VNET zu erstellen.
+   5. Wählen Sie unter „Subnetz“ das neu erstellte VNET (**myvnet1**) als Delegatsubnetz aus.
 
       ![Fenster „Volume erstellen“](../media/azure-netapp-files/azure-netapp-files-create-volume-window.png)
 
       ![Fenster „Virtuelles Netzwerk erstellen“](../media/azure-netapp-files/azure-netapp-files-create-virtual-network-window.png)
 
-4. Klicken Sie auf **Protokoll** , und führen Sie anschließend die folgenden Aktionen aus:
+4. Klicken Sie auf **Protokoll**, und führen Sie anschließend die folgenden Aktionen aus:
     * Wählen Sie **NFS** als Protokolltyp für das Volume aus.
     * Geben Sie **myfilepath1** als Dateipfad zum Erstellen des Exportpfads für das Volume an.
-    * Wählen Sie die NFS-Version ( **NFSv3** oder **NFSv4.1** ) für das Volume aus.
+    * Wählen Sie die NFS-Version (**NFSv3** oder **NFSv4.1**) für das Volume aus.
       Lesen Sie sich die [Überlegungen](azure-netapp-files-create-volumes.md#considerations) und [bewährten Methoden](azure-netapp-files-create-volumes.md#best-practice) zu NFS-Versionen durch.
 
     ![Angeben des NFS-Protokolls für den Schnellstart](../media/azure-netapp-files/azure-netapp-files-quickstart-protocol-nfs.png)

@@ -13,12 +13,12 @@ ms.date: 05/29/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f717e14e5abe62aafffdeef841889ea2458fa8b
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 1b4d1041b9d330227fadf31f6afc1804174ea2ad
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94413444"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96340848"
 ---
 # <a name="how-azure-ad-delivers-cloud-governed-management-for-on-premises-workloads"></a>So stellt Azure AD die über die Cloud gesteuerte Verwaltung für lokale Workloads bereit
 
@@ -39,7 +39,7 @@ In diesem Artikel wird Microsofts Strategie für Hybrid-IDaaS erläutert und wie
 
 ## <a name="the-azure-ad-approach-to-cloud-governed-identity-management"></a>Der Azure AD-Ansatz für cloudgesteuerte Identitätsverwaltung
 
-Beim Übergang zur Cloud benötigen Organisationen Zusicherungen, dass sie die Kontrolle über ihre vollständige Umgebung behalten – mehr Sicherheit und mehr Einblick in Aktivitäten, unterstützt durch Automatisierung, sowie proaktive Erkenntnisse erhalten. „ **Cloudgesteuerte Verwaltung** “ beschreibt, wie Organisationen ihre Benutzer, Anwendungen, Gruppen und Geräte aus der Cloud heraus verwalten und steuern.
+Beim Übergang zur Cloud benötigen Organisationen Zusicherungen, dass sie die Kontrolle über ihre vollständige Umgebung behalten – mehr Sicherheit und mehr Einblick in Aktivitäten, unterstützt durch Automatisierung, sowie proaktive Erkenntnisse erhalten. „**Cloudgesteuerte Verwaltung**“ beschreibt, wie Organisationen ihre Benutzer, Anwendungen, Gruppen und Geräte aus der Cloud heraus verwalten und steuern.
 
 In dieser modernen Welt müssen Unternehmen aufgrund der zunehmenden Verbreitung von SaaS-Anwendungen und der zunehmenden Rolle von Zusammenarbeit und externen Identitäten in der Lage sein, effektiv und maßstabsgetreu zu verwalten. Die neue Risikolandschaft der Cloud bedeutet, dass eine Organisation reaktionsschneller sein muss – ein bösartiger Akteur, der einen Cloudbenutzer kompromittiert, könnte Cloud- und lokale Anwendungen beeinträchtigen.
 
@@ -89,11 +89,11 @@ Wenn eine Organisation bereit ist, eine AD-integrierte Anwendung in die Cloud zu
 
 ## <a name="cloud-governed-management-for-on-premises-federation-based-applications"></a>Cloudgesteuerte Verwaltung für lokale, verbundbasierte Anwendungen
 
-Für eine Organisationen, die bereits einen lokalen Identitätsanbieter verwendet, ermöglicht das Verschieben von Anwendungen in Azure AD einen sichereren Zugriff und eine einfachere Verwaltungserfahrung für die Verbundverwaltung. Azure AD ermöglicht das Konfigurieren präziser Zugriffssteuerungen pro Anwendung, einschließlich Azure Multi-Factor Authentication, indem der bedingte Zugriff in Azure AD verwendet wird. Azure AD unterstützt weitere Funktionen, einschließlich anwendungsspezifischer Tokensignaturzertifikate und konfigurierbarer Zertifikatablaufdaten. Diese Funktionen, Tools und Anleitungen ermöglichen es Unternehmen, ihre lokalen Identitätsanbieter auszumustern. Die eigene IT von Microsoft IT hat beispielsweise 17.987 Anwendungen aus den internen Active Directory-Verbunddiensten (AD FS) von Microsoft in Azure AD verschoben.
+Für eine Organisationen, die bereits einen lokalen Identitätsanbieter verwendet, ermöglicht das Verschieben von Anwendungen in Azure AD einen sichereren Zugriff und eine einfachere Verwaltungserfahrung für die Verbundverwaltung. Azure AD ermöglicht das Konfigurieren präziser Zugriffssteuerungen pro Anwendung, einschließlich Azure AD Multi-Factor Authentication, indem der bedingte Zugriff in Azure AD verwendet wird. Azure AD unterstützt weitere Funktionen, einschließlich anwendungsspezifischer Tokensignaturzertifikate und konfigurierbarer Zertifikatablaufdaten. Diese Funktionen, Tools und Anleitungen ermöglichen es Unternehmen, ihre lokalen Identitätsanbieter auszumustern. Die eigene IT von Microsoft IT hat beispielsweise 17.987 Anwendungen aus den internen Active Directory-Verbunddiensten (AD FS) von Microsoft in Azure AD verschoben.
 
 ![Azure AD-Entwicklung](media/cloud-governed-management-for-on-premises/image5.png)
 
-Informationen, wie Sie mit der Migration von Verbundanwendungen zu Azure AD als Identitätsanbieter beginnen können, erhalten Sie unter „https://aka.ms/migrateapps“. Dort finden Sie Links zu folgenden Ressourcen:
+Informationen, wie Sie mit der Migration von Verbundanwendungen zu Azure AD als Identitätsanbieter beginnen können, erhalten Sie unter https://aka.ms/migrateapps. Dort finden Sie Links zu folgenden Ressourcen:
 
 * Das Whitepaper [Migrieren Ihrer Anwendungen zu Azure Active Directory](https://aka.ms/migrateapps/whitepaper), in dem die Vorteile der Migration vorgestellt und beschrieben wird, wie sich die Migration in vier klar dargestellten Phasen planen lässt: Ermittlung, Klassifizierung, Migration und laufende Verwaltung. Sie werden durch den Prozess geführt und erfahren, wie Sie das Projekt in einfach umzusetzende Teilschritte aufteilen. Im gesamten Dokument finden Sie Links zu wichtigen Ressourcen, die Ihnen im Verlauf des Prozesses helfen.
 
@@ -111,7 +111,7 @@ Organisationen können den Zugriffslebenszyklusprozess mit Technologien wie [dyn
 
 ## <a name="future-directions"></a>Künftige Ausrichtung
 
-Bei Hybridumgebungen verfolgt Microsoft die Strategie, Bereitstellungen zu ermöglichen, bei denen die **Cloud die Steuerungsebene für Identitäten ist** , und lokale Verzeichnisse und andere Identitätssysteme, z. B. Active Directory und andere lokale Anwendungen, das Ziel für die Bereitstellung von Benutzern mit Zugriff sind. Diese Strategie wird fortgesetzt, um die Rechte, Identitäten und den Zugriff in und auf diese Anwendungen und Workloads zu gewährleisten, die auf diesen basieren. In diesem Endzustand können Organisationen die Produktivität der Endbenutzer vollständig aus der Cloud heraus steuern.
+Bei Hybridumgebungen verfolgt Microsoft die Strategie, Bereitstellungen zu ermöglichen, bei denen die **Cloud die Steuerungsebene für Identitäten ist**, und lokale Verzeichnisse und andere Identitätssysteme, z. B. Active Directory und andere lokale Anwendungen, das Ziel für die Bereitstellung von Benutzern mit Zugriff sind. Diese Strategie wird fortgesetzt, um die Rechte, Identitäten und den Zugriff in und auf diese Anwendungen und Workloads zu gewährleisten, die auf diesen basieren. In diesem Endzustand können Organisationen die Produktivität der Endbenutzer vollständig aus der Cloud heraus steuern.
 
 ![Azure AD-Architektur](media/cloud-governed-management-for-on-premises/image6.png)
 

@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: include
 ms.date: 10/26/2020
 ms.author: pafarley
-ms.openlocfilehash: 8dee3d9c91ac2b4fe97ada6069591f8f474c8c24
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 65f7af56e7f0042b8d4c312d17641a537f5fd908
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92918686"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95999332"
 ---
 Erste Schritte mit Gesichtserkennung unter Verwendung der Gesichtserkennungs-Clientbibliothek für Go. Führen Sie die nachfolgenden Schritte zum Installieren des Pakets aus, und testen Sie den Beispielcode für grundlegende Aufgaben. Über den Gesichtserkennungsdienst haben Sie Zugriff auf erweiterte Algorithmen für die Erkennung von menschlichen Gesichtern in Bildern.
 
@@ -49,9 +49,9 @@ cd my-app
 
 Ihr Arbeitsbereich enthält drei Ordner:
 
-* **src** : Das Verzeichnis für Quellcode und Pakete. Alle mit dem Befehl `go get` installierten Pakete werden in diesem Ordner platziert.
-* **pkg** : Das Verzeichnis für die kompilierten Go-Paketobjekte. Diese Dateien haben alle die Erweiterung `.a`.
-* **bin** : Das Verzeichnis für die ausführbaren Binärdateien, die bei der Ausführung von `go install` erstellt werden.
+* **src**: Das Verzeichnis für Quellcode und Pakete. Alle mit dem Befehl `go get` installierten Pakete werden in diesem Ordner platziert.
+* **pkg**: Das Verzeichnis für die kompilierten Go-Paketobjekte. Diese Dateien haben alle die Erweiterung `.a`.
+* **bin**: Das Verzeichnis für die ausführbaren Binärdateien, die bei der Ausführung von `go install` erstellt werden.
 
 > [!TIP]
 > Weitere Informationen zur Struktur eines Go-Arbeitsbereichs finden Sie in der [Dokumentation zur Go-Sprache](https://golang.org/doc/code.html#Workspaces). Dieses Handbuch enthält Informationen zum Festlegen von `$GOPATH` und `$GOROOT`.
@@ -94,9 +94,9 @@ Die folgenden Klassen und Schnittstellen verarbeiten einige der Hauptfunktionen 
 |[BaseClient](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#BaseClient) | Diese Klasse stellt Ihre Autorisierung für die Verwendung des Gesichtserkennungsdiensts dar. Sie benötigen sie für alle Gesichtserkennungsfunktionen. Sie instanziieren sie mit Ihren Abonnementinformationen und verwenden sie zum Generieren von Instanzen anderer Klassen. |
 |[Client](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#Client)|Diese Klasse behandelt die grundlegenden Erkennungs- und Wiedererkennungsaufgaben, die Sie für menschliche Gesichter ausführen können. |
 |[DetectedFace](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#DetectedFace)|Diese Klasse stellt alle Daten dar, die in einem einzelnen Gesicht in einem Bild erkannt wurden. Sie können damit ausführliche Informationen zum Gesicht abrufen.|
-|[ListClient](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#ListClient)|Diese Klasse verwaltet die in der Cloud gespeicherten **FaceList** -Konstrukte, die verschiedene Gesichter speichern. |
-|[PersonGroupPersonClient](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#PersonGroupPersonClient)| Diese Klasse verwaltet die in der Cloud gespeicherten **Person** -Konstrukte, die eine Gruppe von Gesichtern speichern, die zu einer einzelnen Person gehören.|
-|[PersonGroupClient](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#PersonGroupClient)| Diese Klasse verwaltet die in der Cloud gespeicherten **PersonGroup** -Konstrukte, die verschiedene **Person** -Objekte speichern. |
+|[ListClient](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#ListClient)|Diese Klasse verwaltet die in der Cloud gespeicherten **FaceList**-Konstrukte, die verschiedene Gesichter speichern. |
+|[PersonGroupPersonClient](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#PersonGroupPersonClient)| Diese Klasse verwaltet die in der Cloud gespeicherten **Person**-Konstrukte, die eine Gruppe von Gesichtern speichern, die zu einer einzelnen Person gehören.|
+|[PersonGroupClient](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#PersonGroupClient)| Diese Klasse verwaltet die in der Cloud gespeicherten **PersonGroup**-Konstrukte, die verschiedene **Person**-Objekte speichern. |
 |[SnapshotClient](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#SnapshotClient)|Mit dieser Klasse wird die Funktion für Momentaufnahmen verwaltet. Sie können mit ihr vorübergehend alle cloudbasierten Gesichtserkennungsdaten speichern und zu einem neuen Azure-Abonnement migrieren. |
 
 ## <a name="code-examples"></a>Codebeispiele
@@ -114,7 +114,7 @@ In den folgenden Codebeispielen werden einfache Aufgaben mithilfe der Gesichtser
 > [!NOTE] 
 > In dieser Schnellstartanleitung wird davon ausgegangen, dass Sie für den Schlüssel und den Endpunkt der Gesichtserkennung (`FACE_SUBSCRIPTION_KEY` bzw. `FACE_ENDPOINT`) [Umgebungsvariablen erstellt haben](../../../cognitive-services-apis-create-account.md#configure-an-environment-variable-for-authentication).
 
-Erstellen Sie eine Funktion vom Typ **main** , und fügen Sie ihr den folgenden Code hinzu, um einen Client mit Ihrem Endpunkt und Schlüssel zu instanziieren. Sie erstellen ein Objekt vom Typ **[CognitiveServicesAuthorizer](https://godoc.org/github.com/Azure/go-autorest/autorest#CognitiveServicesAuthorizer)** mit Ihrem Schlüssel und verwenden es mit Ihrem Endpunkt, um ein Objekt vom Typ **[Client](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#Client)** zu erstellen. Durch diesen Code wird auch ein Kontextobjekt instanziiert, das für die Erstellung von Clientobjekten benötigt wird. Darüber hinaus wird ein Remotespeicherort definiert, an dem sich einige der Beispielbilder dieser Schnellstartanleitung befinden.
+Erstellen Sie eine Funktion vom Typ **main**, und fügen Sie ihr den folgenden Code hinzu, um einen Client mit Ihrem Endpunkt und Schlüssel zu instanziieren. Sie erstellen ein Objekt vom Typ **[CognitiveServicesAuthorizer](https://godoc.org/github.com/Azure/go-autorest/autorest#CognitiveServicesAuthorizer)** mit Ihrem Schlüssel und verwenden es mit Ihrem Endpunkt, um ein Objekt vom Typ **[Client](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#Client)** zu erstellen. Durch diesen Code wird auch ein Kontextobjekt instanziiert, das für die Erstellung von Clientobjekten benötigt wird. Darüber hinaus wird ein Remotespeicherort definiert, an dem sich einige der Beispielbilder dieser Schnellstartanleitung befinden.
 
 [!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_main_client)]
 
@@ -169,7 +169,7 @@ Diese Gruppe von Bildern enthält jeweils drei Bilder mit einem einzelnen Gesich
 
 ### <a name="create-persongroup"></a>Erstellen einer Personengruppe
 
-Fügen Sie nach dem Herunterladen Ihrer Bilder am Ende der Methode **main** den folgenden Code hinzu. Mit diesem Code wird ein Objekt vom Typ **[PersonGroupClient](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#PersonGroupClient)** authentifiziert und dann zum Definieren einer neuen Personengruppe ( **PersonGroup** ) verwendet.
+Fügen Sie nach dem Herunterladen Ihrer Bilder am Ende der Methode **main** den folgenden Code hinzu. Mit diesem Code wird ein Objekt vom Typ **[PersonGroupClient](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#PersonGroupClient)** authentifiziert und dann zum Definieren einer neuen Personengruppe (**PersonGroup**) verwendet.
 
 [!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_pg_setup)]
 
@@ -186,17 +186,20 @@ Der folgende Code sortiert die Bilder anhand ihres Präfixes, erkennt Gesichter 
 [!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_pgp_assign)]
 
 > [!TIP]
-> Sie können auch ein **PersonGroup** -Element aus Remotebildern erstellen, auf die durch eine URL verwiesen wird. Sehen Sie sich die [PersonGroupPersonClient](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#PersonGroupPersonClient)-Methoden an, etwa **AddFaceFromURL**.
+> Sie können auch ein **PersonGroup**-Element aus Remotebildern erstellen, auf die durch eine URL verwiesen wird. Sehen Sie sich die [PersonGroupPersonClient](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#PersonGroupPersonClient)-Methoden an, etwa **AddFaceFromURL**.
 
 ### <a name="train-persongroup"></a>Trainieren von PersonGroup
 
-Nach dem Zuweisen von Gesichtern muss die Personengruppe ( **PersonGroup** ) trainiert werden, damit die den einzelnen Objekten vom Typ **Person** zugewiesenen visuellen Merkmale erkannt werden können. Der folgende Code ruft die asynchrone **train** -Methode auf, ruft das Ergebnis ab und gibt den Status in der Konsole aus.
+Nach dem Zuweisen von Gesichtern muss die Personengruppe (**PersonGroup**) trainiert werden, damit die den einzelnen Objekten vom Typ **Person** zugewiesenen visuellen Merkmale erkannt werden können. Der folgende Code ruft die asynchrone **train**-Methode auf, ruft das Ergebnis ab und gibt den Status in der Konsole aus.
 
 [!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_pg_train)]
 
+> [!TIP]
+> Die Gesichtserkennungs-API wird für verschiedene vordefinierte Modelle ausgeführt, die von Natur aus statisch sind. (Die Leistung der Modelle verschlechtert oder verbessert sich bei der Dienstausführung nicht.) Die vom Modell erzeugten Ergebnisse können sich ändern, wenn Microsoft das Back-End des Modells aktualisiert, ohne zu einer vollständig neuen Modellversion zu migrieren. Um von einer neueren Version eines Modells zu profitieren, können Sie Ihre Personengruppe (**PersonGroup**) erneut trainieren und dabei das neuere Modell als Parameter mit denselben Registrierungsimages angeben.
+
 ## <a name="identify-a-face"></a>Identifizieren eines Gesichts
 
-Der Identifizierungsvorgang verwendet ein Bild einer Person (oder mehrerer Personen) und sucht im Bild nach der Identität der einzelnen Gesichter (Gesichtserkennungssuche). Er vergleicht jedes erkannte Gesicht mit einem **PersonGroup** -Objekt, einer Datenbank mit verschiedenen **Person** -Objekten,deren Gesichtsmerkmale bekannt sind.
+Der Identifizierungsvorgang verwendet ein Bild einer Person (oder mehrerer Personen) und sucht im Bild nach der Identität der einzelnen Gesichter (Gesichtserkennungssuche). Er vergleicht jedes erkannte Gesicht mit einem **PersonGroup**-Objekt, einer Datenbank mit verschiedenen **Person**-Objekten,deren Gesichtsmerkmale bekannt sind.
 
 > [!IMPORTANT]
 > Damit Sie dieses Beispiel ausführen können, müssen Sie zunächst den Code unter [Erstellen und Trainieren einer Personengruppe](#create-and-train-a-person-group) ausführen.
@@ -215,7 +218,7 @@ Der nächste Codeblock dient zum Ausführen einer gewöhnlichen Gesichtserkennun
 
 ### <a name="identify-faces"></a>Identifizieren von Gesichtern
 
-Die Methode **[Identify](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#Client.Identify)** vergleicht das Array der erkannten Gesichter mit der angegebenen Personengruppe ( **PersonGroup** ), die in einem früheren Abschnitt definiert und trainiert wurde. Falls eine Übereinstimmung zwischen einem erkannten Gesicht und einer **Person** in der Gruppe erkannt wird, wird das Ergebnis gespeichert.
+Die Methode **[Identify](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#Client.Identify)** vergleicht das Array der erkannten Gesichter mit der angegebenen Personengruppe (**PersonGroup**), die in einem früheren Abschnitt definiert und trainiert wurde. Falls eine Übereinstimmung zwischen einem erkannten Gesicht und einer **Person** in der Gruppe erkannt wird, wird das Ergebnis gespeichert.
 
 [!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_id)]
 
@@ -226,7 +229,7 @@ Anschließend werden detaillierte Übereinstimmungsergebnisse in der Konsole aus
 
 ## <a name="verify-faces"></a>Überprüfen von Gesichtern
 
-Der Überprüfungsvorgang (Verify) akzeptiert eine Gesichtserkennungs-ID und entweder eine andere Gesichtserkennungs-ID oder ein **Person** -Objekt und ermittelt, ob sie zu derselben Person gehören.
+Der Überprüfungsvorgang (Verify) akzeptiert eine Gesichtserkennungs-ID und entweder eine andere Gesichtserkennungs-ID oder ein **Person**-Objekt und ermittelt, ob sie zu derselben Person gehören.
 
 Mit dem folgenden Code werden Gesichter in zwei Quellbildern erkannt und dann jeweils anhand eines Gesichts überprüft, das in einem Zielbild erkannt wurde.
 

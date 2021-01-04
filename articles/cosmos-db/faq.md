@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/01/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 79ef46eef4da1beeea1c177ce39a09eea133f545
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 81c959467c4bb3700120917cf150773fb18e866d
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93089660"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359828"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Häufig gestellte Fragen zu unterschiedlichen APIs in Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -41,7 +41,7 @@ Jede API wird unabhängig ausgeführt, mit Ausnahme der Gremlin- und der SQL-API
 
 ### <a name="is-azure-cosmos-db-hipaa-compliant"></a>Ist Azure Cosmos DB HIPAA-kompatibel?
 
-Ja, Azure Cosmos DB ist HIPAA-kompatibel. HIPAA gibt Anforderungen für die Verwendung, Offenlegung und den Schutz von individuell identifizierbaren Gesundheitsinformationen vor. Weitere Informationen finden Sie im [Microsoft Trust Center](https://www.microsoft.com/en-us/TrustCenter/Compliance/HIPAA).
+Ja, Azure Cosmos DB ist HIPAA-kompatibel. HIPAA gibt Anforderungen für die Verwendung, Offenlegung und den Schutz von individuell identifizierbaren Gesundheitsinformationen vor. Weitere Informationen finden Sie im [Microsoft Trust Center](/compliance/regulatory/offering-hipaa-hitech).
 
 ### <a name="what-are-the-storage-limits-of-azure-cosmos-db"></a>Wie lauten die Speicherbeschränkungen von Azure Cosmos DB?
 
@@ -174,13 +174,13 @@ Die von SQL-API-Konten unterstützte SQL-Abfragesprache ist eine erweiterte Teil
 
 ### <a name="does-the-sql-api-support-sql-aggregation-functions"></a>Werden SQL-Aggregationsfunktionen von der SQL-API unterstützt?
 
-Die SQL-API unterstützt per SQL-Grammatik Aggregation mit geringer Latenz und beliebiger Größe über die Aggregationsfunktionen `COUNT`, `MIN`, `MAX`, `AVG` und `SUM`. Weitere Informationen finden Sie unter [Aggregationsfunktionen](sql-query-aggregates.md).
+Die SQL-API unterstützt per SQL-Grammatik Aggregation mit geringer Latenz und beliebiger Größe über die Aggregationsfunktionen `COUNT`, `MIN`, `MAX`, `AVG` und `SUM`. Weitere Informationen finden Sie unter [Aggregationsfunktionen](sql-query-aggregate-functions.md).
 
 ### <a name="how-does-the-sql-api-provide-concurrency"></a>Wie stellt die SQL-API Parallelität bereit?
 
 Die SQL-API unterstützt die Steuerung für optimistische Nebenläufigkeit (OCC) durch HTTP-Entitätstags bzw. ETags. Jede SQL-API-Ressource verfügt über ein ETag. Das ETag wird jedes Mal auf dem Server festgelegt, wenn ein Dokument aktualisiert wird. Der ETag-Header und der aktuelle Wert sind in allen Antwortnachrichten enthalten. ETags können mit dem „If-Match“-Header verwendet werden, um den Server entscheiden zu lassen, ob eine Ressource aktualisiert werden soll. Der „If-Match“-Wert ist der ETag-Wert, für den eine Überprüfung erfolgt. Wenn der ETag-Wert mit dem ETag-Wert des Servers übereinstimmt, wird die Ressource aktualisiert. Wenn das ETag nicht mehr aktuell ist, lehnt der Server den Vorgang mit dem Antwortcode „HTTP 412 – Vorbedingungsfehler“ ab. Der Client ruft anschließend die Ressource erneut ab, um den aktuellen ETag-Wert für die Ressource zu erhalten. Darüber hinaus können ETags mit dem „If-None-Match“-Header verwendet werden, um festzustellen, ob ein erneutes Abrufen einer Ressource erforderlich ist.
 
-Zum Nutzen der optimistischen Nebenläufigkeit in .NET verwenden Sie die [AccessCondition](/dotnet/api/microsoft.azure.documents.client.accesscondition) -Klasse. Ein Beispiel für .NET finden Sie unter [Program.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/DocumentManagement/Program.cs) im „DocumentManagement“-Beispiel auf GitHub.
+Zum Nutzen der optimistischen Nebenläufigkeit in .NET verwenden Sie die [AccessCondition](/dotnet/api/microsoft.azure.documents.client.accesscondition) -Klasse. Ein Beispiel für .NET finden Sie unter [Program.cs](https://github.com/Azure/azure-cosmos-dotnet-v2/blob/master/samples/code-samples/DocumentManagement/Program.cs) im „DocumentManagement“-Beispiel auf GitHub.
 
 ### <a name="how-do-i-perform-transactions-in-the-sql-api"></a>Wie führe ich Transaktionen in der SQL-API aus?
 

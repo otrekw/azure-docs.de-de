@@ -7,12 +7,12 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.custom: mvc, devx-track-csharp
 ms.date: 01/27/2020
-ms.openlocfilehash: 291586bc2e34784a7bbf29016ea1da35d51e844b
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: bb2eb36e4116c17efb20946b0da4586678838f3b
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94489946"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862002"
 ---
 # <a name="tutorial-run-azure-functions-from-azure-stream-analytics-jobs"></a>Tutorial: Ausführen von Azure Functions in Azure Stream Analytics-Aufträgen 
 
@@ -195,7 +195,9 @@ Führen Sie das Tutorial zur [Betrugserkennung in Echtzeit](stream-analytics-rea
 Im Falle eines Fehlers beim Senden von Ereignissen an Azure Functions werden die meisten Vorgänge von Stream Analytics wiederholt. Mit Ausnahme des HTTP-Fehlers 413 (Entität zu groß) werden alle HTTP-Ausnahmen bis zur erfolgreichen Ausführung wiederholt. Fehler vom Typ „Entität zu groß“ werden als Datenfehler gemäß der [Ausgabefehlerrichtlinie](stream-analytics-output-error-policy.md) behandelt und entweder wiederholt oder verworfen.
 
 > [!NOTE]
-> Das Zeitlimit für HTTP-Anforderungen von Stream Analytics an Azure Functions ist auf 100 Sekunden festgelegt. Falls Ihre Azure Functions-App mehr als 100 Sekunden für die Verarbeitung eines Batchs benötigt, tritt für Stream Analytics ein Fehler auf.
+> Das Zeitlimit für HTTP-Anforderungen von Stream Analytics an Azure Functions ist auf 100 Sekunden festgelegt. Falls Ihre Azure Functions-App mehr als 100 Sekunden für die Verarbeitung eines Batchs benötigt, tritt für Stream Analytics ein Fehler auf, und die Batchverarbeitung wird erneut versucht.
+
+Wiederholungsversuche infolge eines Timeouts können dazu führen, dass doppelte Ereignisse in die Ausgabesenke geschrieben werden. Wenn von Stream Analytics ein erneuter Versuch für einen nicht erfolgreichen Batch ausgeführt wird, umfasst dieser Versuch alle Ereignisse im Batch. Stellen Sie sich beispielsweise einen Batch mit 20 Ereignissen vor, die von Stream Analytics an Azure Functions gesendet werden. Angenommen, Azure Functions benötigt 100 Sekunden für die Verarbeitung der ersten zehn Ereignisse. Nach 100 Sekunden wird die Anforderung von Stream Analytics unterbrochen, da keine positive Antwort von Azure Functions empfangen wurde, und es wird eine weitere Anforderung für den gleichen Batch gesendet. Die ersten zehn Ereignisse im Batch werden erneut von Azure Functions verarbeitet, was ein Duplikat zur Folge hat. 
 
 ## <a name="known-issues"></a>Bekannte Probleme
 

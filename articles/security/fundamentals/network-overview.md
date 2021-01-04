@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/29/2018
 ms.author: terrylan
-ms.openlocfilehash: a26228b33a7d90df558de2ecdf4686910e606a54
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 8a82fd6e6dc1bea0804c429f3af46884f004de69
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94413291"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96489767"
 ---
 # <a name="azure-network-security-overview"></a>Übersicht über die Netzwerksicherheit in Azure
 
@@ -81,7 +81,7 @@ Weitere Informationen:
 
 #### <a name="asc-just-in-time-vm-access"></a>Just-in-Time-VM-Zugriff in ASC
 
-In [Azure Security Center](../../security-center/security-center-introduction.md) können die Netzwerksicherheitsgruppen auf virtuellen Computern verwaltet und der Zugriff auf die virtuellen Computer gesperrt werden, bis ein Benutzer mit den entsprechenden [RBAC](../../role-based-access-control/overview.md)-Berechtigungen (rollenbasierte Zugriffssteuerung) den Zugriff anfordert. Nachdem der Benutzer erfolgreich autorisiert wurde, nimmt ASC Änderungen an den Netzwerksicherheitsgruppen vor, um den Zugriff auf ausgewählte Ports für den angegebenen Zeitraum zu ermöglichen. Nach Ablauf des Zeitraums werden die NSGs auf ihren vorherigen gesicherten Status zurückgesetzt.
+In [Azure Security Center](../../security-center/security-center-introduction.md) können die Netzwerksicherheitsgruppen auf virtuellen Computern verwaltet und der Zugriff auf die virtuellen Computer gesperrt werden, bis ein Benutzer mit den entsprechenden [Azure RBAC](../../role-based-access-control/overview.md)-Berechtigungen (rollenbasierte Zugriffssteuerung in Azure) den Zugriff anfordert. Nachdem der Benutzer erfolgreich autorisiert wurde, nimmt ASC Änderungen an den Netzwerksicherheitsgruppen vor, um den Zugriff auf ausgewählte Ports für den angegebenen Zeitraum zu ermöglichen. Nach Ablauf des Zeitraums werden die NSGs auf ihren vorherigen gesicherten Status zurückgesetzt.
 
 Weitere Informationen:
 
@@ -320,19 +320,19 @@ Microsoft bietet DDoS Protection **Basic** als Bestandteil der Azure-Plattform. 
 * **Native Plattformintegration:** Nativ in Azure integriert. Umfasst die Konfiguration über das Azure-Portal. DDoS Protection Standard erkennt Ihre Ressourcen und die Ressourcenkonfiguration.
 * **Sofort einsetzbarer Schutz:** Dank vereinfachter Konfiguration sind alle Ressourcen in einem virtuellen Netzwerk sofort geschützt, sobald DDoS Protection Standard aktiviert wird. Es sind weder Benutzereingriffe noch Benutzerdefinitionen erforderlich. DDoS Protection Standard wehrt einen Angriff sofort automatisch ab, sobald er entdeckt wurde.
 * **Stets verfügbare Überwachung des Datenverkehrs:** Die Datenverkehrsmuster Ihrer Anwendungen werden 24 Stunden am Tag und 7 Tage die Woche nach Anzeichen für DDoS-Angriffe überwacht. Abwehrmaßnahmen werden bei Überschreitung der Schutzrichtlinien ausgeführt.
-* **Berichte zur Risikominderung nach Angriffen** : Diese Berichte verwenden aggregierte Flowdaten aus dem Netzwerk, um detaillierte Informationen zu Angriffen auf Ihre Ressourcen bereitzustellen.
-* **Flowprotokolle zur Risikominderung nach Angriffen** : Mit diesen Protokollen können Sie während eines aktiven DDoS-Angriffs den verworfenen Datenverkehr, den weitergeleiteten Datenverkehr und andere Daten in Zusammenhang mit dem Angriff in Echtzeit prüfen.
+* **Berichte zur Risikominderung nach Angriffen**: Diese Berichte verwenden aggregierte Flowdaten aus dem Netzwerk, um detaillierte Informationen zu Angriffen auf Ihre Ressourcen bereitzustellen.
+* **Flowprotokolle zur Risikominderung nach Angriffen**: Mit diesen Protokollen können Sie während eines aktiven DDoS-Angriffs den verworfenen Datenverkehr, den weitergeleiteten Datenverkehr und andere Daten in Zusammenhang mit dem Angriff in Echtzeit prüfen.
 * **Adaptive Optimierung:** Dank einer intelligenten Profilerstellung lernt die Funktion den Datenverkehr Ihrer Anwendung kontinuierlich besser kennen. Auf dieser Basis wird das Profil ausgewählt und aktualisiert, das am besten zu Ihrem Dienst passt. Das Profil passt sich den Veränderungen des Datenverkehrs mit der Zeit an. Schutz für Ebene 3 bis Ebene 7: Bietet vollständigen DDoS-Stapelschutz bei Verwendung mit einer Web Application Firewall.
 * **Umfangreiche Angriffsabwehr:** Über 60 verschiedene Angriffstypen können mit einer weltweiten Kapazität zum Schutz vor den größten bekannten DDoS-Angriffen abgewehrt werden.
 * **Angriffsmetriken:** Mit Azure Monitor kann auf eine Zusammenfassung der Metriken für jeden Angriff zugegriffen werden.
 * **Angriffswarnungen:** Mit integrierten Angriffsmetriken können Warnungen am Anfang und Ende eines Angriffs sowie währenddessen konfiguriert werden. Warnungen werden in Ihre Betriebssoftware wie Microsoft Azure Monitor-Protokolle, Splunk, Azure Storage, E-Mail und das Azure-Portal integriert.
 * **Kostengarantie:**  Dienstguthaben für Datenübertragung und horizontale Anwendungsskalierung bei dokumentierten DDoS-Angriffen.
-* **Schnelle Reaktion bei DDoS-Angriffen** : Kunden von DDoS Protection Standard haben jetzt während eines aktiven Angriffs Zugang zum Rapid Response-Team. Rapid Response hilft bei der Untersuchung von Angriffen, beim Durchführen von kundenspezifischen Maßnahmen während eines Angriffs sowie bei der Analyse nach einem Angriff.
+* **Schnelle Reaktion bei DDoS-Angriffen**: Kunden von DDoS Protection Standard haben jetzt während eines aktiven Angriffs Zugang zum Rapid Response-Team. Rapid Response hilft bei der Untersuchung von Angriffen, beim Durchführen von kundenspezifischen Maßnahmen während eines Angriffs sowie bei der Analyse nach einem Angriff.
 
 
 Weitere Informationen:
 
-* [Übersicht über DDoS Protection Standard](../../virtual-network/ddos-protection-overview.md)
+* [Übersicht über DDoS Protection Standard](../../ddos-protection/ddos-protection-overview.md)
 
 ## <a name="azure-front-door"></a>Azure Front Door
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 08/13/2020
 ms.author: Zhchia
-ms.openlocfilehash: b87b9d9e7cab0334f1b1996feb99dc69396527b7
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 31e5393cb5de627ebf8832e43302583d6eacbf59
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94352947"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181482"
 ---
 # <a name="tutorial-configure-sap-analytics-cloud-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren der automatischen Benutzerbereitstellung für SAP Analytics Cloud
 
@@ -39,9 +39,9 @@ In diesem Tutorial werden die Schritte beschrieben, die Sie sowohl in SAP Analyt
 Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits über die folgenden Voraussetzungen verfügen:
 
 * [Azure AD-Mandant](../develop/quickstart-create-new-tenant.md) 
-* Ein Benutzerkonto in Azure AD mit der [Berechtigung](../users-groups-roles/directory-assign-admin-roles.md) für die Konfiguration von Bereitstellungen (z.B. Anwendungsadministrator, Cloudanwendungsadministrator, Anwendungsbesitzer oder Globaler Administrator). 
+* Ein Benutzerkonto in Azure AD mit der [Berechtigung](../roles/permissions-reference.md) für die Konfiguration von Bereitstellungen (z.B. Anwendungsadministrator, Cloudanwendungsadministrator, Anwendungsbesitzer oder Globaler Administrator). 
 * Einen SAP Analytics Cloud-Mandanten.
-* Ein Benutzerkonto in der Verwaltungskonsole für die SAP-Identitätsbereitstellung mit Administratorberechtigungen. Stellen Sie sicher, dass Sie Zugriff auf die Proxysysteme in der Verwaltungskonsole für die Identitätsbereitstellung haben. Wenn die Kachel **Proxysysteme** nicht angezeigt wird, erstellen Sie einen Incident für die Komponente **BC-IAM-IPS** , um Zugriff auf diese Kachel anzufordern.
+* Ein Benutzerkonto in der Verwaltungskonsole für die SAP-Identitätsbereitstellung mit Administratorberechtigungen. Stellen Sie sicher, dass Sie Zugriff auf die Proxysysteme in der Verwaltungskonsole für die Identitätsbereitstellung haben. Wenn die Kachel **Proxysysteme** nicht angezeigt wird, erstellen Sie einen Incident für die Komponente **BC-IAM-IPS**, um Zugriff auf diese Kachel anzufordern.
 * Einen OAuth-Client mit Autorisierung zum Erteilen von Clientanmeldeinformationen in SAP Analytics Cloud. Eine entsprechende Anleitung finden Sie hier: [Verwalten von OAuth-Clients und vertrauenswürdigen Identitätsanbietern](https://help.sap.com/viewer/00f68c2e08b941f081002fd3691d86a7/release/en-US/4f43b54398fc4acaa5efa32badfe3df6.html)
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>Schritt 1: Planen der Bereitstellung
@@ -60,7 +60,7 @@ Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits �
 
    ![Eigenschaften unter „SAP-Proxysysteme“](./media/sap-analytics-cloud-provisioning-tutorial/sap-proxy-systems-properties.png)
 
-3. Kopieren Sie die **URL** , und fügen Sie `/api/v1/scim` an die URL an. Speichern Sie diese zur späteren Verwendung im Feld **Mandanten-URL**.
+3. Kopieren Sie die **URL**, und fügen Sie `/api/v1/scim` an die URL an. Speichern Sie diese zur späteren Verwendung im Feld **Mandanten-URL**.
 
    ![URL in „Eigenschaften“ unter „SAP-Proxysysteme“](./media/sap-analytics-cloud-provisioning-tutorial/sap-proxy-systems-details-url.png)
 
@@ -68,7 +68,7 @@ Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits �
 
    ![OAuth in „Eigenschaften“ unter „SAP-IP-Proxysysteme“](./media/sap-analytics-cloud-provisioning-tutorial/sap-proxy-systems-details-oauth.png)
 
-5. Verwenden Sie in Postman die Option **Standardauthentifizierung** , und legen Sie die OAuth-Client-ID als Benutzer und den geheimen Schlüssel als Kennwort fest. Dieser Aufruf gibt ein Zugriffstoken zurück. Kopieren Sie dieses zur späteren Verwendung im Feld **Geheimes Token** in die Zwischenablage.
+5. Verwenden Sie in Postman die Option **Standardauthentifizierung**, und legen Sie die OAuth-Client-ID als Benutzer und den geheimen Schlüssel als Kennwort fest. Dieser Aufruf gibt ein Zugriffstoken zurück. Kopieren Sie dieses zur späteren Verwendung im Feld **Geheimes Token** in die Zwischenablage.
 
    ![POST-Anforderung in Postman](./media/sap-analytics-cloud-provisioning-tutorial/postman-post-request.png)
 
@@ -107,7 +107,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![Screenshot der Dropdownliste „Bereitstellungsmodus“ mit aufgerufener Option „Automatisch“](common/provisioning-automatic.png)
 
-5. Geben Sie im Abschnitt **Administratoranmeldeinformationen**  den Wert für die Mandanten-URL ein, den Sie zuvor in **Mandanten-URL** abgerufen haben. Geben Sie den Wert für das Zugriffstoken ein, den Sie zuvor unter **Geheimes Token** abgerufen haben. Klicken Sie auf **Verbindung testen** , um sicherzustellen, dass Azure AD eine Verbindung mit InVision herstellen kann. Wenn die Verbindung nicht möglich ist, stellen Sie sicher, dass Ihr SAP Analytics Cloud-Konto über Administratorberechtigungen verfügt, und wiederholen Sie den Vorgang.
+5. Geben Sie im Abschnitt **Administratoranmeldeinformationen**  den Wert für die Mandanten-URL ein, den Sie zuvor in **Mandanten-URL** abgerufen haben. Geben Sie den Wert für das Zugriffstoken ein, den Sie zuvor unter **Geheimes Token** abgerufen haben. Klicken Sie auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit InVision herstellen kann. Wenn die Verbindung nicht möglich ist, stellen Sie sicher, dass Ihr SAP Analytics Cloud-Konto über Administratorberechtigungen verfügt, und wiederholen Sie den Vorgang.
 
     ![Screenshot des Dialogfelds „Administratoranmeldeinformationen“, in dem Sie Ihre Mandanten-URL und das geheime Token eingeben können.](./media/sap-analytics-cloud-provisioning-tutorial/provisioning.png)
 
@@ -119,7 +119,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 8. Wählen Sie im Abschnitt **Zuordnungen** die Option **Azure Active Directory-Benutzer bereitstellen** aus.
 
-9. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit SAP Analytics Cloud synchronisiert werden. Beachten Sie, dass die als **übereinstimmend** ausgewählten Attribute für den Abgleich der Benutzerkonten in SAP Analytics Cloud für Updatevorgänge verwendet werden. Wenn Sie sich dafür entscheiden, das [übereinstimmende Zielattribut](../app-provisioning/customize-application-attributes.md) zu ändern, müssen Sie sicherstellen, dass die SAP Analytics Cloud-API das Filtern von Benutzern anhand dieses Attributs unterstützt. Wählen Sie die Schaltfläche **Speichern** , um alle Änderungen zu übernehmen.
+9. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit SAP Analytics Cloud synchronisiert werden. Beachten Sie, dass die als **übereinstimmend** ausgewählten Attribute für den Abgleich der Benutzerkonten in SAP Analytics Cloud für Updatevorgänge verwendet werden. Wenn Sie sich dafür entscheiden, das [übereinstimmende Zielattribut](../app-provisioning/customize-application-attributes.md) zu ändern, müssen Sie sicherstellen, dass die SAP Analytics Cloud-API das Filtern von Benutzern anhand dieses Attributs unterstützt. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
    |attribute|type|Unterstützung für das Filtern|
    |---|---|---|
@@ -132,7 +132,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 10. Wenn Sie Bereichsfilter konfigurieren möchten, lesen Sie die Anweisungen unter [Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
-11. Ändern Sie den **Bereitstellungsstatus** im Abschnitt **Einstellungen** in **Ein** , um den Azure AD-Bereitstellungsdienst für SAP Analytics Cloud zu aktivieren.
+11. Ändern Sie den **Bereitstellungsstatus** im Abschnitt **Einstellungen** in **Ein**, um den Azure AD-Bereitstellungsdienst für SAP Analytics Cloud zu aktivieren.
 
     ![Aktivierter Bereitstellungsstatus](common/provisioning-toggle-on.png)
 

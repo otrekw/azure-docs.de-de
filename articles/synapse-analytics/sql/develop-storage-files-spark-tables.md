@@ -1,6 +1,6 @@
 ---
-title: Synchronisieren von Apache Spark für externe Tabellendefinitionen im serverlosen SQL-Pool (Vorschauversion)
-description: Übersicht über das Abfragen von Spark-Tabellen mithilfe des serverlosen SQL-Pools (Vorschauversion)
+title: Synchronisieren von Apache Spark für externe Tabellendefinitionen im serverlosen SQL-Pool
+description: Übersicht über das Abfragen von Spark-Tabellen mithilfe des serverlosen SQL-Pools
 services: synapse-analytics
 author: julieMSFT
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: ea4e7cd009be8a78faa0dcfab44371a350b6a200
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 057a69881b8b407e5d75fa3510ca1c3eb1830bc7
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93315838"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96446491"
 ---
-# <a name="synchronize-apache-spark-for-azure-synapse-external-table-definitions-in-serverless-sql-pool-preview"></a>Synchronisieren von Apache Spark für externe Azure Synapse-Tabellendefinitionen im serverlosen SQL-Pool (Vorschauversion)
+# <a name="synchronize-apache-spark-for-azure-synapse-external-table-definitions-in-serverless-sql-pool"></a>Synchronisieren von Apache Spark für externe Azure Synapse-Tabellendefinitionen im serverlosen SQL-Pool
 
-Der serverlose SQL-Pool (Vorschauversion) kann Metadaten aus Apache Spark automatisch synchronisieren. Für jede in serverlosen Apache Spark-Pools (Vorschauversion) vorhandene Datenbank wird eine Datenbank im serverlosen SQL-Pool erstellt. 
+Der serverlose SQL-Pool kann Metadaten aus Apache Spark automatisch synchronisieren. Für jede in serverlosen Apache Spark-Pools vorhandene Datenbank wird eine Datenbank im serverlosen SQL-Pool erstellt. 
 
 Für jede externe Spark-Tabelle, die auf Parquet basiert und sich in Azure Storage befindet, wird in der Datenbank im serverlosen SQL-Pool eine externe Tabelle erstellt. Aus diesem Grund können Sie Ihre Spark-Pools herunterfahren und dennoch externe Spark-Tabellen über den serverlosen SQL-Pool abfragen.
 

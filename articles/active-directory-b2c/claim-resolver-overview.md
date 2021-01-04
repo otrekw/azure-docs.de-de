@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 10/28/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 39b61815c33f933e0cdf08bd46382e74eea2f806
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 682b83d7016a89b27b5c936853abda1438f59c28
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93040454"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97508015"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>Informationen zu Anspruchskonfliktlösern in benutzerdefinierten Azure Active Directory B2C-Richtlinien
 
@@ -88,7 +88,7 @@ In den folgenden Abschnitten werden die verfügbaren Anspruchskonfliktlöser auf
 | {Context:DateTimeInUtc} |Datum und Uhrzeit in UTC.  | 10/10/2018 12:00:00 PM |
 | {Context:DeploymentMode} |Die Methode zur Richtlinienbereitstellung.  | Bereitstellung |
 | {Context:IPAddress} | Die Benutzer-IP-Adresse. | 11.111.111.11 |
-| {Context:KMSI} | Gibt an, ob das Kontrollkästchen [Angemeldet bleiben](custom-policy-keep-me-signed-in.md) aktiviert ist. |  true |
+| {Context:KMSI} | Gibt an, ob das Kontrollkästchen [Angemeldet bleiben](session-behavior.md?pivots=b2c-custom-policy#enable-keep-me-signed-in-kmsi) aktiviert ist. |  true |
 
 ### <a name="claims"></a>Ansprüche 
 
@@ -185,9 +185,9 @@ Bei der Verwendung von Anspruchskonfliktlösern können Sie den Anmeldenamen auf
 
 ### <a name="dynamic-ui-customization"></a>Dynamische Benutzeroberflächenanpassung
 
-Mit Azure AD B2C können Sie Abfragezeichenfolgen-Parameter an Ihre HTML-Inhaltsdefinitions-Endpunkte übergeben, um den Seiteninhalt dynamisch zu rendern. Mit diesem Feature können Sie z. B. das Hintergrundbild auf der Azure AD B2C-Registrierungs- oder Anmeldeseite auf der Basis eines benutzerdefinierten Parameters ändern, den Sie von der Web- oder Mobilanwendung übergeben. Weitere Informationen finden Sie unter [Dynamisches Konfigurieren der Benutzeroberfläche mithilfe von benutzerdefinierten Richtlinien in Azure Active Directory B2C](custom-policy-ui-customization.md#configure-dynamic-custom-page-content-uri). Sie können Ihre HTML-Seite auch auf Grundlage eines Sprachparameters lokalisieren, oder Sie können den Inhalt basierend auf der Client-ID ändern.
+Mit Azure AD B2C können Sie Abfragezeichenfolgen-Parameter an Ihre HTML-Inhaltsdefinitions-Endpunkte übergeben, um den Seiteninhalt dynamisch zu rendern. Mit diesem Feature können Sie z. B. das Hintergrundbild auf der Azure AD B2C-Registrierungs- oder Anmeldeseite auf der Basis eines benutzerdefinierten Parameters ändern, den Sie von der Web- oder Mobilanwendung übergeben. Weitere Informationen finden Sie unter [Dynamisches Konfigurieren der Benutzeroberfläche mithilfe von benutzerdefinierten Richtlinien in Azure Active Directory B2C](customize-ui-with-html.md#configure-dynamic-custom-page-content-uri). Sie können Ihre HTML-Seite auch auf Grundlage eines Sprachparameters lokalisieren, oder Sie können den Inhalt basierend auf der Client-ID ändern.
 
-Im folgenden Beispiel wird in der Abfragezeichenfolge ein Parameter namens **campaignId** mit einem Wert von `Hawaii`, einem **language** -Code (Sprache) von `en-US` und **app** für die Client-ID übergeben:
+Im folgenden Beispiel wird in der Abfragezeichenfolge ein Parameter namens **campaignId** mit einem Wert von `Hawaii`, einem **language**-Code (Sprache) von `en-US` und **app** für die Client-ID übergeben:
 
 ```xml
 <UserJourneyBehaviors>

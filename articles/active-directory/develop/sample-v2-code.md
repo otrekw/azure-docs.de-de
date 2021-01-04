@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: sample
 ms.workload: identity
-ms.date: 10/21/2020
+ms.date: 11/04/2020
 ms.author: marsma
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: e56748df2fb69ace4e9b8d9f6908bc8013176a19
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: a3f2eb8fe3da9b272c5fe61ef5dd66726cf7764d
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93287805"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348430"
 ---
 # <a name="microsoft-identity-platform-code-samples-v20-endpoint"></a>Microsoft Identity Platform – Codebesipiele (V2.0-Endpunkt)
 
@@ -48,6 +48,7 @@ Diese Beispiele zeigen, wie Sie eine Single-Page-Webanwendung schreiben, die mit
 | ![Diese Abbildung zeigt das React-Logo.](media/sample-v2-code/logo_react.png) [React (MSAL.js)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core)| SPA ruft benutzerdefinierte Web-API auf, die wiederum Microsoft Graph aufruft  | [ms-identity-javascript-react-spa-dotnetcore-webapi-obo](https://github.com/Azure-Samples/ms-identity-javascript-react-spa-dotnetcore-webapi-obo) |
 | ![Diese Abbildung zeigt das JavaScript-Logo.](media/sample-v2-code/logo_js.png) [JavaScript (MSAL.js)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-browser) | SPA ruft benutzerdefinierte Web-API auf, die wiederum Microsoft Graph aufruft  | [ms-identity-javascript-tutorial-chapter4-obo](https://github.com/Azure-Samples/ms-identity-javascript-tutorial/tree/main/4-AdvancedGrants/4-1-call-api-graph) |
 | ![Diese Abbildung zeigt das Angular-Logo.](media/sample-v2-code/logo_angular.png) [Angular (MSAL-Angular)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular) | SPA ruft benutzerdefinierte Web-API mit App-Rollen und -Sicherheitsgruppen auf |[ms-identity-javascript-angular-spa-dotnetcore-webapi-roles-groups](https://github.com/Azure-Samples/ms-identity-javascript-angular-spa-dotnetcore-webapi-roles-groups) |
+| ![Diese Abbildung zeigt das Blazor-Logo.](media/sample-v2-code/logo-blazor.png) [Blazor WebAssembly (MSAL-JS)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-browser) | Blazor WebAssembly-Tutorial zum Anmelden von Benutzern und Aufrufen von APIs mit Azure Active Directory |[ms-identity-blazor-wasm](https://github.com/Azure-Samples/ms-identity-blazor-wasm) |
 
 ## <a name="web-applications"></a>Webanwendungen
 
@@ -59,8 +60,12 @@ Die folgenden Beispiele zeigen Webanwendungen, die Benutzer anmelden. Einige Bei
 | ![Diese Abbildung zeigt das ASP.NET Framework-Logo.](media/sample-v2-code/logo_NETframework.png)</p>ASP.NET Core | Im [Playbook für Entwickler zur Migration von Anwendungen von AD FS zu Azure AD](https://github.com/Azure-Samples/ms-identity-dotnet-adfs-to-aad) erfahren Sie, wie Sie Ihre in Active Directory-Verbunddienste (AD FS) integrierten Anwendungen problemlos und sicher zu Azure Active Directory (Azure AD) migrieren können. | |
 | ![Diese Abbildung zeigt das ASP.NET Framework-Logo.](media/sample-v2-code/logo_NETframework.png)</p> ASP.NET | [Schnellstart für ASP.NET](https://github.com/AzureAdQuickstarts/AppModelv2-WebApp-OpenIDConnect-DotNet) </p> [dotnet-webapp-openidconnect-v2](https://github.com/azure-samples/active-directory-dotnet-webapp-openidconnect-v2)  |  [dotnet-admin-restricted-scopes-v2](https://github.com/azure-samples/active-directory-dotnet-admin-restricted-scopes-v2) </p> |[msgraph-training-aspnetmvcapp](https://github.com/microsoftgraph/msgraph-training-aspnetmvcapp)
 | ![Diese Abbildung zeigt das Java-Logo.](media/sample-v2-code/logo_java.png)  |                   | [ms-identity-java-webapp](https://github.com/Azure-Samples/ms-identity-java-webapp) |
+| ![Diese Abbildung zeigt das Java-Logo.](media/sample-v2-code/logo_java.png)  | [ms-identity-b2c-java-servlet-webapp-authentication](https://github.com/Azure-Samples/ms-identity-b2c-java-servlet-webapp-authentication)|  |
 | ![Diese Abbildung zeigt das Python-Logo.](media/sample-v2-code/logo_python.png)  | [ms-identity-python-flask-webapp-authentication](https://github.com/Azure-Samples/ms-identity-python-flask-webapp-authentication) | [ms-identity-python-webapp](https://github.com/Azure-Samples/ms-identity-python-webapp) |
+| ![Diese Abbildung zeigt das Python-Logo.](media/sample-v2-code/logo_python.png)  | Tutorial zum Anmelden von Benutzern durch eine [Python Flask-Web-App](https://github.com/Azure-Samples/ms-identity-python-flask-tutorial/blob/main/README.md)                   | Tutorial zum Anmelden von Benutzern und Aufrufen der Graph-API durch eine [Python Flask-Web-App](https://github.com/Azure-Samples/ms-identity-python-flask-tutorial/blob/main/README.md) |
+| ![Diese Abbildung zeigt das Python-Logo.](media/sample-v2-code/logo_python.png)  | Tutorial zum Anmelden von Benutzern mit B2C durch eine [Python Flask-Web-App](https://github.com/Azure-Samples/ms-identity-b2c-python-flask-webapp-authentication/blob/main/README.md)                    |  |
 | ![Diese Abbildung zeigt das Ruby-Logo.](media/sample-v2-code/logo_ruby.png) |                   | [msgraph-training-rubyrailsapp](https://github.com/microsoftgraph/msgraph-training-rubyrailsapp) |
+| ![Diese Abbildung zeigt das Blazor-Logo.](media/sample-v2-code/logo-blazor.png)</p>Blazor Server | [Tutorial zum Anmelden von Benutzern durch eine Blazor Server-App](https://github.com/Azure-Samples/ms-identity-blazor-server/tree/main/WebApp-OIDC) | [Aufruf von Microsoft Graph durch die Blazor Server-App](https://github.com/Azure-Samples/ms-identity-blazor-server/tree/main/WebApp-graph-user/Call-MSGraph)</p>Chapterwise-Tutorial: [Blazor Server-App zum Anmelden von Benutzern und Aufrufen von APIs mit Azure Active Directory](https://github.com/Azure-Samples/ms-identity-blazor-server) |
 
 ## <a name="desktop-and-mobile-public-client-apps"></a>Öffentliche Desktop- und mobile Client-Apps
 

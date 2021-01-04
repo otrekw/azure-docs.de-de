@@ -42,7 +42,7 @@
       href: concepts-storage.md
     - name: Zugriff und Identität für private Clouds
       href: concepts-identity.md
-    - name: Rollenbasierte Zugriffssteuerung
+    - name: Rollenbasierte Zugriffssteuerung (vSphere)
       href: concepts-role-based-access-control.md
     - name: Überwachen und Reparieren von privaten Clouds
       href: concepts-monitor-repair-private-cloud.md
@@ -108,5 +108,7 @@
       href: faq.md
 - name: Verweis
   items:
+    - name: Azure CLI
+      href: /cli/azure/ext/vmware/vmware
     - name: Azure PowerShell
-      href: 'https://docs.microsoft.com/powershell/module/az.vmware/'
+      href: /powershell/module/az.vmware/

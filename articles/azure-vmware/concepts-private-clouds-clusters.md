@@ -3,12 +3,12 @@ title: Konzepte – Private Clouds und Cluster
 description: Hier erfahren Sie mehr über die wichtigsten Funktionen von softwaredefinierten Azure VMware Solution-Rechenzentren und vSphere-Clustern.
 ms.topic: conceptual
 ms.date: 10/27/2020
-ms.openlocfilehash: daa712a722ca3252a49e4f54e0cc9e42de4ffc73
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: af34bb0d83d9571ae91dce90cab198a61cfe82a1
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94337320"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967379"
 ---
 #  <a name="azure-vmware-solution-private-cloud-and-cluster-concepts"></a>Azure VMware Solution: Konzepte – Private Clouds und Cluster
 
@@ -38,7 +38,7 @@ Sie verwenden vSphere und NSX-T Manager, um die meisten weiteren Aspekte der Clu
 
 ## <a name="hosts"></a>Hosts
 
-In Clustern privater Azure VMware Solution-Clouds werden hyperkonvergente Bare-Metal-Infrastrukturknoten verwendet. Die RAM-, CPU- und Datenträgerkapazitäten des Hosts sind in der folgenden Tabelle angegeben. 
+In Clustern privater Azure VMware Solution-Clouds werden hyperkonvergente Bare-Metal-Infrastrukturhosts verwendet. Die RAM-, CPU- und Datenträgerkapazitäten des Hosts sind in der folgenden Tabelle angegeben. 
 
 | Hosttyp              |             CPU             |   RAM (GB)   |  vSAN NVMe-Cacheebene (TB, Raw)  |  vSAN SSD-Kapazitätsebene (TB, Raw)  |
 | :---                   |            :---:            |    :---:     |               :---:              |                :---:               |
@@ -59,7 +59,7 @@ Im Folgenden die aktuellen in Clustern privater Azure VMware Solution-Clouds ver
 
 Bei allen neuen Clustern in einer privaten Cloud stimmt die Softwareversion mit der aktuell ausgeführten überein. Für alle neuen privaten Clouds in einem Abonnement wird die aktuelle Version des Softwarestapels installiert.
 
-Die allgemeinen Upgraderichtlinien und -prozesse für die Azure VMware Solution-Plattformsoftware werden im Artikel zu [Upgradekonzepten](concepts-upgrades.md) beschrieben.
+Die allgemeinen Upgraderichtlinien und -prozesse für die Azure VMware Solution-Plattformsoftware werden unter [Updates und Upgrades für private Clouds](concepts-upgrades.md) beschrieben.
 
 ## <a name="host-maintenance-and-lifecycle-management"></a>Hostwartung und Lebenszyklusverwaltung
 

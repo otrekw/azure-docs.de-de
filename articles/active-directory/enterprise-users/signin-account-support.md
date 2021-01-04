@@ -5,20 +5,20 @@ services: active-directory
 author: curtand
 manager: daveba
 ms.service: active-directory
-ms.workload: identity
 ms.subservice: enterprise-users
+ms.workload: identity
 ms.topic: overview
-ms.date: 11/15/2020
+ms.date: 12/02/2020
 ms.author: curtand
 ms.reviewer: kexia
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b2a3c2257311f208ae704a54f1369e10b2ff160b
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 2c3b1c8d35c24d78abb8a519ddc8790649eb5f2b
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94646847"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96547864"
 ---
 # <a name="sign-in-options-for-microsoft-accounts-in-azure-active-directory"></a>Anmeldeoptionen für Microsoft-Konten in Azure Active Directory
 

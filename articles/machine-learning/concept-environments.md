@@ -1,23 +1,22 @@
 ---
 title: Informationen zu Azure Machine Learning-Umgebungen
 titleSuffix: Azure Machine Learning
-description: In diesem Artikel erfahren Sie mehr über die Vorteile von Machine Learning-Umgebungen, die reproduzierbare, überprüfbare und portierbare Machine Learning-Abhängigkeitsdefinitionen über verschiedene Computeziele hinweg ermöglichen.
+description: In diesem Artikel finden Sie Informationen über Machine Learning-Umgebungen, die reproduzierbare, überprüfbare und portierbare Machine Learning-Abhängigkeitsdefinitionen für verschiedene Computeziele ermöglichen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.author: larryfr
 author: BlackMist
-ms.date: 07/08/2020
-ms.openlocfilehash: 9c554abc8aef89ca353e06c14b04fab2622d2827
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.date: 11/16/2020
+ms.openlocfilehash: 78f8d6d216659eaad01d512dd45696dd31035885
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322199"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94695383"
 ---
 # <a name="what-are-azure-machine-learning-environments"></a>Was sind Azure Machine Learning-Umgebungen?
-
 
 Azure Machine Learning-Umgebungen sind eine Kapselung der Umgebung, in der Ihr Training für das maschinelle Lernen stattfindet. Sie geben die Python-Pakete, Umgebungsvariablen und Softwareeinstellungen bezüglich Ihrer Trainings- und Bewertungsskripts an. Sie geben auch Laufzeiten an (Python, Spark oder Docker). Die Umgebungen sind verwaltete und versionsverwaltete Entitäten innerhalb Ihres Machine Learning-Arbeitsbereichs, die reproduzierbare, überprüfbare und portierbare Machine Learning-Workflows über verschiedene Computeziele hinweg ermöglichen.
 
@@ -35,7 +34,7 @@ Die Umgebung, das Computeziel und das Trainingsskript bilden zusammen die Ausfü
 
 ## <a name="types-of-environments"></a>Typen von Umgebungen
 
-Umgebungen lassen sich weitgehend in drei Kategorien unterteilen: *zusammengestellt* , *benutzerverwaltet* und *systemverwaltet*.
+Umgebungen lassen sich weitgehend in drei Kategorien unterteilen: *zusammengestellt*, *benutzerverwaltet* und *systemverwaltet*.
 
 Zusammengestellte Umgebungen werden von Azure Machine Learning bereitgestellt und sind standardmäßig in Ihrem Arbeitsbereich verfügbar. Sie sind zur sofortigen Verwendung gedacht und enthalten Sammlungen von Python-Paketen und -Einstellungen, die Ihnen den Einstieg in die verschiedenen Machine Learning-Frameworks erleichtern sollen. Diese vorab erstellten Umgebungen ermöglichen auch eine schnellere Bereitstellungszeit. Eine vollständige Liste finden Sie im [Artikel zu zusammengestellten Umgebungen](resource-curated-environments.md).
 

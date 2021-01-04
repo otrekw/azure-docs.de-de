@@ -10,13 +10,13 @@ ms.subservice: sql-dw
 ms.date: 05/09/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: d9349c5d1c4e6255dc0854537bb7e93e3e636ce8
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: seo-lt-2019, azure-synapse
+ms.openlocfilehash: e7fc89dcc0e7938ea2958d5c804abe82e20f186d
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321075"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96447936"
 ---
 # <a name="table-statistics-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Tabellenstatistiken für den dedizierten SQL-Pool in Azure Synapse Analytics
 
@@ -72,7 +72,7 @@ Um messbare Leistungseinbußen zu verhindern, sollten Sie zuerst durch Ausführe
 > [!NOTE]
 > Die Erstellung von Statistiken wird in [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) in einem anderen Benutzerkontext protokolliert.
 
-Wenn automatische Statistiken erstellt werden, sehen Sie wie folgt aus: _WA_Sys_ <8 digit column id in Hex>_<8 digit table id in Hex>. Sie können Statistiken anzeigen, die bereits erstellt wurden, indem Sie den Befehl [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) ausführen:
+Wenn automatische Statistiken erstellt werden, sehen Sie wie folgt aus: _WA_Sys_<8 digit column id in Hex>_<8 digit table id in Hex>. Sie können Statistiken anzeigen, die bereits erstellt wurden, indem Sie den Befehl [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) ausführen:
 
 ```sql
 DBCC SHOW_STATISTICS (<table_name>, <target>)
@@ -97,11 +97,11 @@ Im Folgenden finden Sie Empfehlungen für Updates für Statistiken:
 
 Eine der ersten Fragen bei der Problembehandlung für eine Abfrage sollte lauten: **„Sind die Statistiken auf dem aktuellen Stand?“**
 
-Diese Frage kann nicht anhand des Alters der Daten beantwortet werden. Ein Statistikobjekt auf dem aktuellen Stand ist ggf. alt, falls sich die zugrunde liegenden Daten nicht wesentlich geändert haben. Wenn sich die Anzahl von Zeilen deutlich geändert hat oder es eine wesentliche Änderung bei der Verteilung der Werte für eine Spalte gibt, *ist der Zeitpunkt gekommen* , die Statistiken zu aktualisieren. 
+Diese Frage kann nicht anhand des Alters der Daten beantwortet werden. Ein Statistikobjekt auf dem aktuellen Stand ist ggf. alt, falls sich die zugrunde liegenden Daten nicht wesentlich geändert haben. Wenn sich die Anzahl von Zeilen deutlich geändert hat oder es eine wesentliche Änderung bei der Verteilung der Werte für eine Spalte gibt, *ist der Zeitpunkt gekommen*, die Statistiken zu aktualisieren. 
 
 Es gibt keine dynamische Verwaltungssicht, mit der Sie feststellen können, ob sich die Daten innerhalb der Tabelle seit der letzten Aktualisierung der Statistik geändert haben.  Die folgenden zwei Abfragen können Ihnen helfen, zu bestimmen, ob Ihre Statistiken veraltet sind.
 
-**Abfrage 1:**  Ermitteln der Differenz zwischen der Zeilenanzahl aus den Statistiken ( **stats_row_count** ) und der tatsächlichen Zeilenanzahl ( **actual_row_count** ). 
+**Abfrage 1:**  Ermitteln der Differenz zwischen der Zeilenanzahl aus den Statistiken (**stats_row_count**) und der tatsächlichen Zeilenanzahl (**actual_row_count**). 
 
 ```sql
 select 
@@ -312,11 +312,11 @@ CREATE STATISTICS stats_col2 on dbo.table2 (col2);
 CREATE STATISTICS stats_col3 on dbo.table3 (col3);
 ```
 
-### <a name="use-a-stored-procedure-to-create-statistics-on-all-columns-in-a-database"></a>Verwenden einer gespeicherten Prozedur zum Erstellen von Statistiken für alle Spalten einer Datenbank
+### <a name="use-a-stored-procedure-to-create-statistics-on-all-columns-in-a-sql-pool"></a>Verwenden einer gespeicherten Prozedur zum Erstellen von Statistiken für alle Spalten in einem SQL-Pool
 
-Der dedizierte SQL-Pool verfügt nicht über eine gespeicherte Systemprozedur, die „sp_create_stats“ in SQL Server entspricht. Mit dieser gespeicherten Prozedur wird ein Einzelspaltenstatistik-Objekt für jede Spalte der Datenbank erstellt, die nicht bereits über eine Statistik verfügt.
+Der dedizierte SQL-Pool verfügt nicht über eine gespeicherte Systemprozedur, die „sp_create_stats“ in SQL Server entspricht. Mit dieser gespeicherten Prozedur wird ein Einzelspaltenstatistik-Objekt für jede Spalte in einem SQL-Pool erstellt, die nicht bereits über eine Statistik verfügt.
 
-Das folgende Beispiel ist eine nützliche Einstiegshilfe für den Datenbankentwurf. Sie können diesen Vorgang an Ihre Anforderungen anpassen.
+Das folgende Beispiel ist eine nützliche Einstiegshilfe für Ihren SQL-Pool-Entwurf. Sie können diesen Vorgang an Ihre Anforderungen anpassen.
 
 ```sql
 CREATE PROCEDURE    [dbo].[prc_sqldw_create_stats]

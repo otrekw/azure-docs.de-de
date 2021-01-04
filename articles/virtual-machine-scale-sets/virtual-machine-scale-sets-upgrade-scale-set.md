@@ -10,11 +10,11 @@ ms.date: 03/10/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli
 ms.openlocfilehash: 7577c8510746d1140c1f8b70081f600d992ae512
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92745822"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016674"
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>Ändern einer VM-Skalierungsgruppe
 
@@ -364,7 +364,7 @@ Bestimmte Änderungen können statt auf die globalen Skalierungsgruppeneigenscha
 ## <a name="scenarios"></a>Szenarien
 
 ### <a name="application-updates"></a>Anwendungsupdates
-Wenn eine Anwendung über Erweiterungen in einer Skalierungsgruppe bereitgestellt wird, löst eine Aktualisierung der Erweiterungskonfiguration eine Aktualisierung der Anwendung gemäß der Upgraderichtlinie aus. Wenn Sie beispielsweise über eine neue Version eines Skripts für die Ausführung in einer benutzerdefinierten Skripterweiterung verfügen, können Sie die *fileUris* -Eigenschaft aktualisieren, sodass sie auf das neue Skript verweist. In einigen Fällen möchten Sie jedoch eine Aktualisierung erzwingen, auch wenn die Erweiterungskonfiguration unverändert bleibt, z.B. wenn Sie das Skript aktualisiert haben, ohne den URI des Skripts zu ändern. In diesen Fällen können Sie *forceUpdateTag* ändern, um eine Aktualisierung zu erzwingen. Diese Eigenschaft wird von der Azure-Plattform nicht interpretiert. Eine Änderung des Werts hat keine Auswirkung auf die Ausführung der Erweiterung. Durch eine Änderung wird lediglich eine erneute Ausführung der Erweiterung erzwungen. Weitere Informationen zu *forceUpdateTag* finden Sie in der [REST-API-Dokumentation für Erweiterungen](/rest/api/compute/virtualmachineextensions/createorupdate). Beachten Sie, dass *forceUpdateTag* mit allen Erweiterungen verwendet werden kann, nicht nur mit der benutzerdefinierten Skripterweiterung.
+Wenn eine Anwendung über Erweiterungen in einer Skalierungsgruppe bereitgestellt wird, löst eine Aktualisierung der Erweiterungskonfiguration eine Aktualisierung der Anwendung gemäß der Upgraderichtlinie aus. Wenn Sie beispielsweise über eine neue Version eines Skripts für die Ausführung in einer benutzerdefinierten Skripterweiterung verfügen, können Sie die *fileUris*-Eigenschaft aktualisieren, sodass sie auf das neue Skript verweist. In einigen Fällen möchten Sie jedoch eine Aktualisierung erzwingen, auch wenn die Erweiterungskonfiguration unverändert bleibt, z.B. wenn Sie das Skript aktualisiert haben, ohne den URI des Skripts zu ändern. In diesen Fällen können Sie *forceUpdateTag* ändern, um eine Aktualisierung zu erzwingen. Diese Eigenschaft wird von der Azure-Plattform nicht interpretiert. Eine Änderung des Werts hat keine Auswirkung auf die Ausführung der Erweiterung. Durch eine Änderung wird lediglich eine erneute Ausführung der Erweiterung erzwungen. Weitere Informationen zu *forceUpdateTag* finden Sie in der [REST-API-Dokumentation für Erweiterungen](/rest/api/compute/virtualmachineextensions/createorupdate). Beachten Sie, dass *forceUpdateTag* mit allen Erweiterungen verwendet werden kann, nicht nur mit der benutzerdefinierten Skripterweiterung.
 
 Anwendungen werden häufig auch über ein benutzerdefiniertes Image bereitgestellt. Dieses Szenario wird im folgenden Abschnitt behandelt.
 
@@ -372,14 +372,14 @@ Anwendungen werden häufig auch über ein benutzerdefiniertes Image bereitgestel
 Bei Verwendung von Azure-Plattformimages können Sie das Image durch Ändern von *imageReference* aktualisieren. (Weitere Informationen finden Sie in der [REST-API-Dokumentation](/rest/api/compute/virtualmachinescalesets/createorupdate).)
 
 >[!NOTE]
-> Bei Plattformimages wird als Imagereferenzversion häufig „aktuelle Version“ angegeben. Beim Erstellen, Aufskalieren und Durchführen eines Reimagings werden die virtuellen Computer mit der neuesten verfügbaren Version erstellt. Das bedeutet jedoch **nicht** , dass das Betriebssystemimage im Lauf der Zeit automatisch aktualisiert wird, wenn neue Imageversionen veröffentlicht werden. Es befindet sich derzeit ein separates Feature in der Vorschau, das automatische Betriebssystemupgrades bereitstellt. Weitere Informationen finden Sie in der [Dokumentation zu automatischen Betriebssystemupgrades](virtual-machine-scale-sets-automatic-upgrade.md).
+> Bei Plattformimages wird als Imagereferenzversion häufig „aktuelle Version“ angegeben. Beim Erstellen, Aufskalieren und Durchführen eines Reimagings werden die virtuellen Computer mit der neuesten verfügbaren Version erstellt. Das bedeutet jedoch **nicht**, dass das Betriebssystemimage im Lauf der Zeit automatisch aktualisiert wird, wenn neue Imageversionen veröffentlicht werden. Es befindet sich derzeit ein separates Feature in der Vorschau, das automatische Betriebssystemupgrades bereitstellt. Weitere Informationen finden Sie in der [Dokumentation zu automatischen Betriebssystemupgrades](virtual-machine-scale-sets-automatic-upgrade.md).
 
-Bei Verwendung von benutzerdefinierten Images können Sie das Image durch Aktualisieren der *imageReference* -ID aktualisieren. (Weitere Informationen finden Sie in der [REST-API-Dokumentation](/rest/api/compute/virtualmachinescalesets/createorupdate).)
+Bei Verwendung von benutzerdefinierten Images können Sie das Image durch Aktualisieren der *imageReference*-ID aktualisieren. (Weitere Informationen finden Sie in der [REST-API-Dokumentation](/rest/api/compute/virtualmachinescalesets/createorupdate).)
 
 ## <a name="examples"></a>Beispiele
 
 ### <a name="update-the-os-image-for-your-scale-set"></a>Aktualisieren des Betriebssystemimages für Ihre Skalierungsgruppe
-Möglicherweise verfügen Sie über eine Skalierungsgruppe mit einer alten Version von Ubuntu LTS 16.04. Sie möchten auf eine neuere Version von Ubuntu LTS 16.04 aktualisieren, z.B. Version *16.04.201801090* . Die Eigenschaft für die Imagereferenzversion ist nicht Teil einer Liste, daher können Sie diese Eigenschaften direkt mit einem der folgenden Befehle ändern:
+Möglicherweise verfügen Sie über eine Skalierungsgruppe mit einer alten Version von Ubuntu LTS 16.04. Sie möchten auf eine neuere Version von Ubuntu LTS 16.04 aktualisieren, z.B. Version *16.04.201801090*. Die Eigenschaft für die Imagereferenzversion ist nicht Teil einer Liste, daher können Sie diese Eigenschaften direkt mit einem der folgenden Befehle ändern:
 
 - Azure PowerShell mit [Update-AzVmss](/powershell/module/az.compute/update-azvmss) wie folgt:
 

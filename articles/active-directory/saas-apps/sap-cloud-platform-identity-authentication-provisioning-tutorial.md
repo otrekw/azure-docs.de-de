@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/19/2019
 ms.author: Zhchia
-ms.openlocfilehash: f43d7b2a858c5047c40157429dc5c50b467c8efc
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 419f25ee3df471bc2fc4526254f5677b8bd71856
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94353117"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96342732"
 ---
 # <a name="tutorial-configure-sap-cloud-platform-identity-authentication-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von SAP Cloud Platform Identity Authentication für die automatische Benutzerbereitstellung
 
@@ -37,7 +37,7 @@ Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits �
 
 ## <a name="assigning-users-to-sap-cloud-platform-identity-authentication"></a>Zuweisen von Benutzern zu SAP Cloud Platform Identity Authentication
 
-Azure Active Directory ermittelt anhand von *Zuweisungen* , welche Benutzer Zugriff auf bestimmte Apps erhalten sollen. Im Kontext der automatischen Benutzerbereitstellung werden nur die Benutzer und/oder Gruppen synchronisiert, die einer Anwendung in Azure AD zugewiesen wurden.
+Azure Active Directory ermittelt anhand von *Zuweisungen*, welche Benutzer Zugriff auf bestimmte Apps erhalten sollen. Im Kontext der automatischen Benutzerbereitstellung werden nur die Benutzer und/oder Gruppen synchronisiert, die einer Anwendung in Azure AD zugewiesen wurden.
 
 Vor dem Konfigurieren und Aktivieren der automatischen Benutzerbereitstellung müssen Sie entscheiden, welche Benutzer und/oder Gruppen in Azure AD Zugriff auf SAP Cloud Platform Identity Authentication benötigen. Anschließend können Sie SAP Cloud Platform Identity Authentication diese Benutzer und/oder Gruppen zuweisen, indem Sie den folgenden Anweisungen folgen:
 * [Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App](../manage-apps/assign-user-or-group-access-portal.md)
@@ -54,7 +54,7 @@ Vor dem Konfigurieren und Aktivieren der automatischen Benutzerbereitstellung m�
 
     ![SAP Cloud Platform Identity Authentication-Verwaltungskonsole](media/sap-cloud-platform-identity-authentication-provisioning-tutorial/adminconsole.png)
 
-2.  Klicken Sie im linken Bereich auf die Schaltfläche **+Hinzufügen** , um der Liste einen neuen Administrator hinzuzufügen. Wählen Sie **System hinzufügen** aus, und geben Sie den Namen des Systems ein.   
+2.  Klicken Sie im linken Bereich auf die Schaltfläche **+Hinzufügen**, um der Liste einen neuen Administrator hinzuzufügen. Wählen Sie **System hinzufügen** aus, und geben Sie den Namen des Systems ein.   
 
 > [!NOTE]
 > Der Administratorbenutzer in SAP Cloud Platform Identity Authentication muss vom Typ **System** sein. Die Erstellung eines Standardadministrators kann bei der Bereitstellung zu Fehlern vom Typ *Nicht autorisiert* führen.   
@@ -77,15 +77,15 @@ Vor dem Konfigurieren von SAP Cloud Platform Identity Authentication für die au
 
     ![Schaltfläche „Azure Active Directory“](common/select-azuread.png)
 
-2. Navigieren Sie zu **Unternehmensanwendungen** , und wählen Sie die Option **Alle Anwendungen**.
+2. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie die Option **Alle Anwendungen**.
 
     ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
-3. Klicken Sie oben im Bereich auf die Schaltfläche **Neue Anwendung** , um eine neue Anwendung hinzuzufügen.
+3. Klicken Sie oben im Bereich auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
 
     ![Schaltfläche „Neue Anwendung“](common/add-new-app.png)
 
-4. Geben Sie im Suchfeld den Namen **SAP Cloud Platform Identity Authentication** ein, wählen Sie im Ergebnisbereich die Anwendung **SAP Cloud Platform Identity Authentication** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen** , um die Anwendung hinzuzufügen.
+4. Geben Sie im Suchfeld den Namen **SAP Cloud Platform Identity Authentication** ein, wählen Sie im Ergebnisbereich die Anwendung **SAP Cloud Platform Identity Authentication** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
     ![SAP Cloud Platform Identity Authentication in der Ergebnisliste](common/search-new-app.png)
 
@@ -114,7 +114,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![Screenshot der Dropdownliste „Bereitstellungsmodus“ mit aufgerufener Option „Automatisch“](common/provisioning-automatic.png)
 
-5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** im Feld **Mandanten-URL** die Zeichenfolge `https://<tenantID>.accounts.ondemand.com/service/scim ` ein. Geben Sie die zuvor abgerufenen Werte von **Benutzer-ID** und **Kennwort** in **Administratorbenutzername** bzw. **Administratorkennwort** ein. Klicken Sie auf **Verbindung testen** , um sicherzustellen, dass Azure AD eine Verbindung mit SAP Cloud Platform Identity Authentication herstellen kann. Wenn die Verbindung nicht hergestellt werden kann, stellen Sie sicher, dass Ihr SAP Cloud Platform Identity Authentication-Konto über Administratorberechtigungen verfügt, und versuchen Sie es noch einmal.
+5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** im Feld **Mandanten-URL** die Zeichenfolge `https://<tenantID>.accounts.ondemand.com/service/scim ` ein. Geben Sie die zuvor abgerufenen Werte von **Benutzer-ID** und **Kennwort** in **Administratorbenutzername** bzw. **Administratorkennwort** ein. Klicken Sie auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit SAP Cloud Platform Identity Authentication herstellen kann. Wenn die Verbindung nicht hergestellt werden kann, stellen Sie sicher, dass Ihr SAP Cloud Platform Identity Authentication-Konto über Administratorberechtigungen verfügt, und versuchen Sie es noch einmal.
 
     ![Mandanten-URL + Token](media/sap-cloud-platform-identity-authentication-provisioning-tutorial/testconnection.png)
 
@@ -128,7 +128,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![SAP Cloud Platform Identity Authentication-Benutzerzuordnungen](media/sap-cloud-platform-identity-authentication-provisioning-tutorial/mapping.png)
 
-9. Überprüfen Sie im Abschnitt **Attributzuordnung** die Benutzerattribute, die von Azure AD mit SAP Cloud Platform Identity Authentication synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Benutzerkonten in SAP Cloud Platform Identity Authentication für Aktualisierungsvorgänge verwendet. Wählen Sie die Schaltfläche **Speichern** , um alle Änderungen zu übernehmen.
+9. Überprüfen Sie im Abschnitt **Attributzuordnung** die Benutzerattribute, die von Azure AD mit SAP Cloud Platform Identity Authentication synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Benutzerkonten in SAP Cloud Platform Identity Authentication für Aktualisierungsvorgänge verwendet. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
     ![SAP Cloud Platform Identity Authentication-Benutzerattribute](media/sap-cloud-platform-identity-authentication-provisioning-tutorial/userattributes.png)
 

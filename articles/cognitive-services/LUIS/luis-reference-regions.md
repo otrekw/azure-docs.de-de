@@ -5,14 +5,16 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 11/09/2020
-ms.openlocfilehash: a591a8d0df751c071a17b1d77febdb3607a1b53d
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 5f65c5e1e1c8d306a70be3fdd7a07f18f8ebbd9f
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94555769"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368646"
 ---
 # <a name="authoring-and-publishing-regions-and-the-associated-keys"></a>Erstellungs- und Veröffentlichungsregionen und die dazugehörigen Schlüssel
+
+[!INCLUDE [LUIS Free account](includes/luis-portal-note.md)]
 
 Es werden drei Erstellungsregionen von entsprechenden LUIS-Portalen unterstützt. Zum Veröffentlichen einer LUIS-App in mehreren Regionen benötigen Sie mindestens einen Schlüssel pro Region.
 
@@ -27,7 +29,7 @@ Es gibt drei LUIS-Erstellungsportale, die auf der Region basieren. Sie müssen d
 |[au.luis.ai][au.luis.ai] |Australien| `australiaeast`|
 |[eu.luis.ai][eu.luis.ai] |Europa|`westeurope`|
 
-Erstellungsbereiche verfügen über [gekoppelte Failoverregionen](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
+Erstellungsbereiche verfügen über [gekoppelte Failoverregionen](../../best-practices-availability-paired-regions.md).
 
 <a name="regions-and-azure-resources"></a>
 
@@ -102,7 +104,7 @@ Erfahren Sie mehr über die [Erstellen- und Vorhersageendpunkte](developer-refer
 
 Jede Region verfügt über eine sekundäre Region für Failover. Europa führt Failover innerhalb Europas aus, Australien innerhalb von Australien.
 
-Erstellungsbereiche verfügen über [gekoppelte Failoverregionen](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
+Erstellungsbereiche verfügen über [gekoppelte Failoverregionen](../../best-practices-availability-paired-regions.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

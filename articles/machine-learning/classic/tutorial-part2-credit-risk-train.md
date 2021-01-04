@@ -9,17 +9,16 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 59567cf2dc03952a78852f3288e78ba06aa769ee
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 557c624b6ed683f701b6a8d38854cd8604e05b31
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325676"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325263"
 ---
 # <a name="tutorial-2-train-credit-risk-models---azure-machine-learning-studio-classic"></a>Tutorial 2: Trainieren von Kreditrisikomodellen – Azure Machine Learning Studio (klassisch)
 
-**BETRIFFT:** ![Ja](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (Classic) ![Nein ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
-
+**GILT FÜR:**  ![Dies ist ein Häkchen, d. h., dieser Artikel bezieht sich auf Machine Learning Studio (Classic).](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (Classic)   ![Dies ist ein X, d. h., dieser Artikel bezieht sich auf Azure Machine Learning.](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 Dieses Tutorial befasst sich eingehend mit der Entwicklung einer Predictive Analytics-Lösung. Hierzu wird in Machine Learning Studio (klassisch) ein einfaches Modell entwickelt.  Anschließend wird das Modell als Azure Machine Learning-Webdienst bereitgestellt.  Dieses bereitgestellte Modell kann auf der Grundlage neuer Daten Vorhersagen generieren. Dieses Tutorial ist der **zweite Teil einer dreiteiligen Reihe**.
 
@@ -118,7 +117,7 @@ Konfigurieren Sie jetzt das Modul [Normalize Data][normalize-data]:
 
 1. Klicken Sie, um das Modul [Normalize Data][normalize-data] auszuwählen. Wählen Sie im Bereich **Properties** den Wert **Tanh** für den Parameter **Transformation method** aus.
 
-1. Klicken Sie auf **Launch column selector** , wählen Sie für **Begin With** „No columns“, und wählen Sie in der ersten Dropdownliste **Include** , in der zweiten Dropdownliste **column type** und in der dritten Dropdownliste **Numeric** aus. Damit wird festgelegt, dass alle numerischen Spalten (und nur die numerischen Spalten) transformiert werden.
+1. Klicken Sie auf **Launch column selector**, wählen Sie für **Begin With** „No columns“, und wählen Sie in der ersten Dropdownliste **Include**, in der zweiten Dropdownliste **column type** und in der dritten Dropdownliste **Numeric** aus. Damit wird festgelegt, dass alle numerischen Spalten (und nur die numerischen Spalten) transformiert werden.
 
 1. Klicken Sie auf das Pluszeichen (+) rechts neben dieser Zeile. Dadurch wird eine neue Zeile mit Dropdownlisten erstellt. Wählen Sie in der ersten Dropdownliste **Exclude** aus. Wählen Sie in der zweiten Dropdownliste **column names** aus, und geben Sie „Credit risk“ in das Textfeld ein. Dadurch wird angegeben, dass die Spalte „Credit Risk“ ignoriert werden soll. (Dies ist erforderlich, da diese Spalte numerisch ist und transformiert wird, wenn Sie sie nicht ausschließen.)
 
@@ -183,7 +182,7 @@ Um die Ergebnisse zu prüfen, klicken Sie auf den Ausgabeport des Moduls [Evalua
 
 Das Modul [Evaluate Model][evaluate-model] erzeugt ein Paar aus Kurven und Metriken, mit denen die Ergebnisse der beiden bewerteten Modelle verglichen werden können. Sie können die Ergebnisse als ROC-Kurven (Receiver Operator Characteristic), Genauigkeits-/Trefferkurven oder Prognosegütekurven anzeigen. Zu den zusätzlich angezeigten Daten zählen eine Wahrheitsmatrix, kumulative Werte für den Bereich unter der Kurve (AUC) sowie weitere Metriken. Sie können den Schwellwert ändern, indem Sie den Schieberegler nach links oder rechts bewegen und beobachten, wie sich dies auf den Metriksatz auswirkt.  
 
-Klicken Sie rechts neben dem Graph auf **Scored dataset** oder auf **Scored dataset to compare** , um die zugeordnete Kurve zu markieren und die zugeordneten Metriken darunter anzuzeigen. In der Legende für die Kurven entspricht „Bewertetes Dataset“ dem linken Eingabeport des Moduls [Evaluate Model][evaluate-model] – in unserem Fall ist dies das Boosted Decision Tree-Modell. "Scored dataset to compare" entspricht dem rechten Eingabeport – in unserem Fall dem SVM-Modell. Wenn Sie auf eine dieser Beschriftungen klicken, werden die Kurve für das betreffende Modell markiert und die entsprechenden Metriken darunter angezeigt (siehe die folgende Abbildung).  
+Klicken Sie rechts neben dem Graph auf **Scored dataset** oder auf **Scored dataset to compare**, um die zugeordnete Kurve zu markieren und die zugeordneten Metriken darunter anzuzeigen. In der Legende für die Kurven entspricht „Bewertetes Dataset“ dem linken Eingabeport des Moduls [Evaluate Model][evaluate-model] – in unserem Fall ist dies das Boosted Decision Tree-Modell. "Scored dataset to compare" entspricht dem rechten Eingabeport – in unserem Fall dem SVM-Modell. Wenn Sie auf eine dieser Beschriftungen klicken, werden die Kurve für das betreffende Modell markiert und die entsprechenden Metriken darunter angezeigt (siehe die folgende Abbildung).  
 
 ![ROC-Kurven für Modelle](./media/tutorial-part2-credit-risk-train/roc-curves.png)
 

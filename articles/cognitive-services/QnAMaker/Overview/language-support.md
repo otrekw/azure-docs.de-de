@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 11/09/2019
-ms.openlocfilehash: dc910c01c401468a3dae392a6318344bee25efb7
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.openlocfilehash: 5035a81838ace0678f0cbb68ad2b9325de498003
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94375639"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353118"
 ---
 # <a name="language-support-for-a-qna-maker-resource-and-knowledge-bases"></a>Sprachunterstützung für QnA Maker-Ressourcen und Wissensdatenbanken
 
@@ -48,7 +48,7 @@ Beachten Sie Folgendes:
 # <a name="qnamaker-managed-preview"></a>[QnA Maker verwaltet (Vorschau)](#tab/v2)
 ![Spracheinstellung in QnA Maker verwaltet](../media/language-support/language-setting-managed.png)
 
-Wenn Sie das **Kontrollkästchen zum Aktivieren der Spracheinstellung pro Wissensdatenbank nicht aktivieren** , beachten Sie Folgendes: 
+Wenn Sie das **Kontrollkästchen zum Aktivieren der Spracheinstellung pro Wissensdatenbank nicht aktivieren**, beachten Sie Folgendes: 
 * Ein QnA Maker-Dienst und alle seine Wissensdatenbanken unterstützen nur eine Sprache.
 * Die Sprache wird explizit festgelegt, wenn die erste Wissensdatenbank des Diensts erstellt wird
 * Die Sprache wird durch die Dateien und URLs bestimmt, die beim Erstellen der Wissensdatenbank hinzugefügt werden
@@ -140,7 +140,7 @@ Die folgende Liste enthält die Sprachen, die für QnA Maker-Ressourcen unterst�
 |Vietnamesisch|
 
 ## <a name="query-matching-and-relevance"></a>Abfrageabgleich und Relevanz
-QnA Maker nutzt [Sprachanalysefunktionen von Azure Cognitive Search](https://docs.microsoft.com/rest/api/searchservice/language-support), um Ergebnisse bereitzustellen.
+QnA Maker nutzt [Sprachanalysefunktionen von Azure Cognitive Search](/rest/api/searchservice/language-support), um Ergebnisse bereitzustellen.
 
 Während die Azure Cognitive Search-Funktionen für unterstützte Sprachen ebenbürtig sind, verfügt QnA Maker über ein zusätzliches Rangfolgemodul, das oberhalb der Azure-Suchergebnisse ansetzt. In diesem Rangfolgemodul verwenden wir einige besondere semantische und wortbasierte Funktionen in den folgenden Sprachen.
 
@@ -166,4 +166,4 @@ Diese zusätzliche Rangbewertung ist zählt zu den internen Mechanismen des Rang
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Sprachauswahl](../how-to/language-knowledge-base.md)
+> [Sprachauswahl](../index.yml)

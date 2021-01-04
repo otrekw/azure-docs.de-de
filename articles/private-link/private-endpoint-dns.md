@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: allensu
-ms.openlocfilehash: fe8f4229a2bc967f1368e263d2c055b153c3717d
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 1c296b157fbac1e4c8d3fefb2b8cc09ff2ccc7a8
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369963"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96620595"
 ---
 # <a name="azure-private-endpoint-dns-configuration"></a>DNS-Konfiguration für private Azure-Endpunkte
 
@@ -25,9 +25,11 @@ Mit den folgenden Optionen können Sie Ihre DNS-Einstellungen für private Endpu
 - **Hostdatei (wird nur für Tests empfohlen)** . Sie können die Hostdatei auf einem virtuellen Computer verwenden, um das DNS zu überschreiben.  
 - **Private DNS-Zone**. Sie können [private DNS-Zonen](../dns/private-dns-privatednszone.md) verwenden, um die DNS-Auflösung für einen bestimmten privaten Endpunkt außer Kraft zu setzen. Eine private DNS-Zone kann mit Ihrem virtuellen Netzwerk verknüpft werden, um bestimmte Domänen aufzulösen.
 - **DNS-Weiterleitung (optional)** . Sie können Ihre DNS-Weiterleitung verwenden, um die DNS-Auflösung für eine bestimmte Private Link-Ressource zu überschreiben. Wenn Ihr [DNS-Server](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server) in einem virtuellen Netzwerk gehostet wird, können Sie zum Verwenden einer privaten DNS-Zone eine DNS-Weiterleitungsregel erstellen, um die Konfiguration für alle Private Link-Ressourcen zu vereinfachen.
- 
+
 > [!IMPORTANT]
 > Es wird nicht empfohlen, eine Zone zu überschreiben, die aktiv zur Auflösung öffentlicher Endpunkte genutzt wird. Verbindungen mit Ressourcen können ohne DNS-Weiterleitung an das öffentliche DNS nicht ordnungsgemäß aufgelöst werden. Um Probleme zu vermeiden, erstellen Sie einen anderen Domänennamen, oder halten Sie sich an den vorgeschlagenen Namen für jeden der folgenden Dienste. 
+
+
 
 ## <a name="azure-services-dns-zone-configuration"></a>DNS-Zonenkonfiguration für Azure-Dienste
 Azure-Dienste erstellen einen DNS-Eintrag vom Typ CNAME (kanonischer Name) im öffentlichen DNS-Dienst, um die Auflösung an den vorgeschlagenen Namen der privaten Domäne umzuleiten. Sie können die Auflösung mit der privaten IP-Adresse Ihrer privaten Endpunkte überschreiben. 
@@ -79,6 +81,7 @@ Verwenden Sie für Azure-Dienste die empfohlenen Zonennamen in der folgenden Tab
 | Azure File Sync (Microsoft.StorageSync/storageSyncServices) / afs |  privatelink.afs.azure.net  |  afs.azure.net  |
 | Azure Data Factory (Microsoft.DataFactory/factories) / dataFactory |  privatelink.datafactory.azure.net  |  datafactory.azure.net  |
 | Azure Data Factory (Microsoft.DataFactory/factories) / portal |  privatelink.azure.com  |  azure.com  |
+| Azure Cache for Redis (Microsoft.Cache/Redis)/redisCache | privatelink.redis.cache.windows.net | redis.cache.windows.net |
 
  
 ## <a name="dns-configuration-scenarios"></a>Szenarien der DNS-Konfiguration
@@ -93,6 +96,8 @@ Basierend auf Ihren Einstellungen sind die folgenden Szenarien mit integrierter 
 - [Lokale Workloads mit DNS-Weiterleitung](#on-premises-workloads-using-a-dns-forwarder)
 - [Lokale Workloads und Workloads in virtuellen Netzwerken mit DNS-Weiterleitung](#virtual-network-and-on-premises-workloads-using-a-dns-forwarder)
 
+> [!NOTE]
+> Der [DNS-Proxy der Azure Firewall](../firewall/dns-settings.md#dns-proxy) kann als DNS-Weiterleitung für [lokale Workloads](#on-premises-workloads-using-a-dns-forwarder) und [virtuelle Netzwerkworkloads, die eine DNS-Weiterleitung verwenden](#virtual-network-and-on-premises-workloads-using-a-dns-forwarder), verwendet werden.
 
 ## <a name="virtual-network-workloads-without-custom-dns-server"></a>Virtual Network-Workloads ohne benutzerdefinierten DNS-Server
 
@@ -121,7 +126,7 @@ Dieses Modell kann auf mehrere virtuelle Peeringnetzwerke erweitert werden, die 
 > [!IMPORTANT]
 > Wenn Sie einen privaten Endpunkt in einem Hub-and-Spoke-Modell aus einem anderen Abonnement verwenden, verwenden Sie die gleiche private DNS-Zone auf dem Hub.
 
-In diesem Szenario wird eine [Hub-and-Spoke](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)-Netzwerktopologie genutzt, in der die Spokenetzwerke einen privaten Endpunkt gemeinsam nutzen und alle virtuellen Spokenetzwerke mit derselben privaten DNS-Zone verknüpft sind. 
+In diesem Szenario wird eine [Hub-and-Spoke](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)-Netzwerktopologie genutzt, in der die Spokenetzwerke einen privaten Endpunkt gemeinsam nutzen und alle virtuellen Spokenetzwerke mit derselben privaten DNS-Zone verknüpft sind. 
 
 :::image type="content" source="media/private-endpoint-dns/hub-and-spoke-azure-dns.png" alt-text="Hub-and-Spoke-Modell mit von Azure bereitgestelltem DNS":::
 
@@ -137,7 +142,7 @@ Das folgende Szenario gilt für ein lokales Netzwerk mit einer DNS-Weiterleitung
 Für eine korrekte Konfiguration benötigen Sie die folgenden Ressourcen:
 
 - Lokales Netzwerk
-- Virtuelles Netzwerk [mit Verbindung mit lokalem Standort](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/)
+- Virtuelles Netzwerk [mit Verbindung mit lokalem Standort](/azure/architecture/reference-architectures/hybrid-networking/)
 - In Azure bereitgestellte DNS-Weiterleitung 
 - Zonen im privaten DNS [privatelink.database.windows.net](../dns/private-dns-privatednszone.md) mit [A-Datensatz](../dns/dns-zones-records.md#record-types)
 - Informationen zum privaten Endpunkt (Name des FQDN-Eintrags und private IP-Adresse)
@@ -154,7 +159,7 @@ Diese Konfiguration kann für ein lokales Netzwerk erweitert werden, für das be
 Für eine korrekte Konfiguration benötigen Sie die folgenden Ressourcen:
 
 - Lokales Netzwerk mit einer benutzerdefinierten DNS-Lösung 
-- Virtuelles Netzwerk [mit Verbindung mit lokalem Standort](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/)
+- Virtuelles Netzwerk [mit Verbindung mit lokalem Standort](/azure/architecture/reference-architectures/hybrid-networking/)
 - In Azure bereitgestellte DNS-Weiterleitung
 - Zonen im privaten DNS [privatelink.database.windows.net](../dns/private-dns-privatednszone.md) mit [A-Datensatz](../dns/dns-zones-records.md#record-types)
 - Informationen zum privaten Endpunkt (Name des FQDN-Eintrags und private IP-Adresse)
@@ -183,7 +188,7 @@ Diese DNS-Weiterleitung ist dafür zuständig, alle DNS-Abfragen über eine Weit
 Für eine korrekte Konfiguration benötigen Sie die folgenden Ressourcen:
 
 - Lokales Netzwerk
-- Virtuelles Netzwerk [mit Verbindung mit lokalem Standort](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/)
+- Virtuelles Netzwerk [mit Verbindung mit lokalem Standort](/azure/architecture/reference-architectures/hybrid-networking/)
 - [Virtuelles Netzwerk mit Peering](../virtual-network/virtual-network-peering-overview.md) 
 - In Azure bereitgestellte DNS-Weiterleitung
 - Zonen im privaten DNS [privatelink.database.windows.net](../dns/private-dns-privatednszone.md) mit [A-Datensatz](../dns/dns-zones-records.md#record-types)

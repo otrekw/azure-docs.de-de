@@ -10,11 +10,11 @@ ms.topic: how-to
 ms.date: 07/22/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 243f6f26be592e2db82d8f46df3de9aafcd2078b
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340460"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996983"
 ---
 # <a name="monitor-and-debug-with-metrics-in-azure-cosmos-db"></a>Überwachen und Debuggen mit Metriken in Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -33,17 +33,17 @@ Dieser Artikel behandelt häufige Anwendungsfälle und zeigt, wie Azure Cosmos D
 
 Die folgenden Metriken sind im Bereich **Metriken** verfügbar: 
 
-* **Durchsatzmetrik** : Diese Metrik zeigt die Anzahl der genutzten oder fehlerhaften Anforderungen an (Antwortcode 429), da der Durchsatz oder die bereitgestellte Speicherkapazität für den Container überschritten wurde.
+* **Durchsatzmetrik**: Diese Metrik zeigt die Anzahl der genutzten oder fehlerhaften Anforderungen an (Antwortcode 429), da der Durchsatz oder die bereitgestellte Speicherkapazität für den Container überschritten wurde.
 
-* **Speichermetrik** : Diese Metrik zeigt die Größe der Daten und die Indexnutzung an.
+* **Speichermetrik**: Diese Metrik zeigt die Größe der Daten und die Indexnutzung an.
 
-* **Verfügbarkeitsmetrik** : Diese Metrik zeigt den Prozentsatz erfolgreicher Anforderungen von der Gesamtzahl der Anforderungen pro Stunde an. Die Erfolgsrate wird durch Azure Cosmos DB-SLAs definiert.
+* **Verfügbarkeitsmetrik**: Diese Metrik zeigt den Prozentsatz erfolgreicher Anforderungen von der Gesamtzahl der Anforderungen pro Stunde an. Die Erfolgsrate wird durch Azure Cosmos DB-SLAs definiert.
 
-* **Latenzmetrik** : Diese Metrik zeigt die Wartezeit beim Lesen und Schreiben an, die von Azure Cosmos DB in der Region, in der Ihr Konto ausgeführt wird, gemessen wird. Sie können die regionsübergreifende Wartezeit für ein georepliziertes Konto visualisieren. Diese Metrik stellt nicht die End-to-End-Anforderungswartezeit dar.
+* **Latenzmetrik**: Diese Metrik zeigt die Wartezeit beim Lesen und Schreiben an, die von Azure Cosmos DB in der Region, in der Ihr Konto ausgeführt wird, gemessen wird. Sie können die regionsübergreifende Wartezeit für ein georepliziertes Konto visualisieren. Diese Metrik stellt nicht die End-to-End-Anforderungswartezeit dar.
 
-* **Konsistenzmetrik** : Diese Metrik informiert über die Konsistenz für das ausgewählte Konsistenzmodell. Diese Metrik zeigt für Konten in mehreren Regionen auch die Wartezeit für die Replikation zwischen den ausgewählten Regionen an.
+* **Konsistenzmetrik**: Diese Metrik informiert über die Konsistenz für das ausgewählte Konsistenzmodell. Diese Metrik zeigt für Konten in mehreren Regionen auch die Wartezeit für die Replikation zwischen den ausgewählten Regionen an.
 
-* **Systemmetrik** : Diese Metrik zeigt an, wie viele Metadatenanforderungen von der primären Partition bereitgestellt werden. Diese hilft auch beim Identifizieren der gedrosselten Anforderungen.
+* **Systemmetrik**: Diese Metrik zeigt an, wie viele Metadatenanforderungen von der primären Partition bereitgestellt werden. Diese hilft auch beim Identifizieren der gedrosselten Anforderungen.
 
 In den folgenden Abschnitten werden allgemeine Szenarios erläutert, in denen Sie Azure Cosmos DB-Metriken verwenden können. 
 
@@ -61,7 +61,7 @@ Für jede skalierbare Anwendung ist eine gute Kardinalität der Partitionsschlü
 
 :::image type="content" source="media/use-metrics/metrics-17.png" alt-text="Einzelne Partition mit starker Auslastung":::
 
-Eine ungleichmäßige Verteilung des Durchsatzes kann *Hot* -Partitionen verursachen, die zu gedrosselten Anforderungen führen können und möglicherweise eine Neupartitionierung erfordern. Weitere Informationen zum Partitionieren in Azure Cosmos DB finden Sie unter [Partitionieren und Skalieren in Azure Cosmos DB](./partitioning-overview.md).
+Eine ungleichmäßige Verteilung des Durchsatzes kann *Hot*-Partitionen verursachen, die zu gedrosselten Anforderungen führen können und möglicherweise eine Neupartitionierung erfordern. Weitere Informationen zum Partitionieren in Azure Cosmos DB finden Sie unter [Partitionieren und Skalieren in Azure Cosmos DB](./partitioning-overview.md).
 
 ## <a name="determine-the-storage-distribution-across-partitions"></a>Ermitteln der partitionsübergreifenden Speicherverteilung
 

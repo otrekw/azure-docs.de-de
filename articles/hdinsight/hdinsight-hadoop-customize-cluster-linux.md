@@ -9,15 +9,15 @@ ms.topic: how-to
 ms.custom: seoapr2020, devx-track-azurecli
 ms.date: 09/02/2020
 ms.openlocfilehash: 35c3901e9a48523a10c1a6aacbc52e6c165e278f
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92748703"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009788"
 ---
 # <a name="customize-azure-hdinsight-clusters-by-using-script-actions"></a>Anpassen von Azure HDInsight-Clustern mithilfe von Skriptaktionen
 
-Azure HDInsight verfügt über eine Konfigurationsmethode namens **Skriptaktionen** , bei der benutzerdefinierte Skripts zum Anpassen des Clusters aufgerufen werden. Diese Skripts werden auch zum Installieren weitere Komponenten und zum Ändern von Konfigurationseinstellungen verwendet. Skriptaktionen können während oder nach der Clustererstellung verwendet werden.
+Azure HDInsight verfügt über eine Konfigurationsmethode namens **Skriptaktionen**, bei der benutzerdefinierte Skripts zum Anpassen des Clusters aufgerufen werden. Diese Skripts werden auch zum Installieren weitere Komponenten und zum Ändern von Konfigurationseinstellungen verwendet. Skriptaktionen können während oder nach der Clustererstellung verwendet werden.
 
 Skriptaktionen können auch als HDInsight-Anwendung im Azure Marketplace veröffentlicht werden. Weitere Informationen zu HDInsight-Anwendungen finden Sie unter [Veröffentlichen von HDInsight-Anwendungen im Azure Marketplace](hdinsight-apps-publish-applications.md).
 
@@ -110,7 +110,7 @@ Ein Skriptfehler in einem bereits ausgeführten Cluster führt nicht automatisch
 
 Skriptaktionen werden mit Stammberechtigungen ausgeführt. Stellen Sie also sicher, dass Sie die Auswirkungen eines Skripts verstehen, bevor Sie es auf den Cluster anwenden.
 
-Wenn Sie ein Skript auf einem Cluster anwenden, ändert sich der Clusterzustand von **Wird ausgeführt** in **Akzeptiert** . Danach ändert sich der Zustand in **HDInsight-Konfiguration** , bevor er schließlich wieder **Wird ausgeführt** lautet (bei einem erfolgreichen Skript). Der Skriptstatus wird im Skriptaktionsverlauf protokolliert. Diese Angabe gibt Aufschluss darüber, ob das Skript erfolgreich ausgeführt wurde. Das PowerShell-Cmdlet `Get-AzHDInsightScriptActionHistory` zeigt beispielsweise den Status eines Skripts an. Die zurückgegebenen Informationen sehen in etwa wie folgt aus:
+Wenn Sie ein Skript auf einem Cluster anwenden, ändert sich der Clusterzustand von **Wird ausgeführt** in **Akzeptiert**. Danach ändert sich der Zustand in **HDInsight-Konfiguration**, bevor er schließlich wieder **Wird ausgeführt** lautet (bei einem erfolgreichen Skript). Der Skriptstatus wird im Skriptaktionsverlauf protokolliert. Diese Angabe gibt Aufschluss darüber, ob das Skript erfolgreich ausgeführt wurde. Das PowerShell-Cmdlet `Get-AzHDInsightScriptActionHistory` zeigt beispielsweise den Status eines Skripts an. Die zurückgegebenen Informationen sehen in etwa wie folgt aus:
 
 ```output
 ScriptExecutionId : 635918532516474303
@@ -160,10 +160,10 @@ In diesem Abschnitt werden die verschiedenen Verwendungsmöglichkeiten von Skrip
     | Auswählen eines Skripts | Wählen Sie __Benutzerdefiniert__ aus, wenn Sie ein eigenes Skript verwenden möchten. Wählen Sie andernfalls eines der bereitgestellten Skripts aus. |
     | Name |Geben Sie einen Namen für die Skriptaktion an. |
     | Bash-Skript-URI |Geben Sie den URI des Skripts an. |
-    | Haupt-/Workerknoten/Zookeeper |Geben Sie die Knoten an, auf denen das Skript ausgeführt wird: **Hauptknoten** , **Worker** oder **ZooKeeper** . |
+    | Haupt-/Workerknoten/Zookeeper |Geben Sie die Knoten an, auf denen das Skript ausgeführt wird: **Hauptknoten**, **Worker** oder **ZooKeeper**. |
     | Parameter |Geben Sie die Parameter an, sofern dies für das Skript erforderlich ist. |
 
-    Verwenden Sie den Eintrag __Speichern Sie diese Skriptaktion__ , um sicherzustellen, dass das Skript bei Skalierungsvorgängen angewendet wird.
+    Verwenden Sie den Eintrag __Speichern Sie diese Skriptaktion__, um sicherzustellen, dass das Skript bei Skalierungsvorgängen angewendet wird.
 
 1. Wählen Sie __Erstellen__ aus, um das Skript zu speichern. Anschließend können Sie __+ Neue übermitteln__ verwenden, um ein weiteres Skript hinzufügen.
 
@@ -234,10 +234,10 @@ In diesem Abschnitt erfahren Sie, wie Sie Skriptaktionen auf einen ausgeführten
     | Auswählen eines Skripts | Wählen Sie __Benutzerdefiniert__ aus, wenn Sie ein eigenes Skript verwenden möchten. Wählen Sie andernfalls ein bereitgestelltes Skript aus. |
     | Name |Geben Sie einen Namen für die Skriptaktion an. |
     | Bash-Skript-URI |Geben Sie den URI des Skripts an. |
-    | Haupt-/Worker-/Zookeeper-Knoten |Geben Sie die Knoten an, auf denen das Skript ausgeführt wird: **Hauptknoten** , **Worker** oder **ZooKeeper** . |
+    | Haupt-/Worker-/Zookeeper-Knoten |Geben Sie die Knoten an, auf denen das Skript ausgeführt wird: **Hauptknoten**, **Worker** oder **ZooKeeper**. |
     | Parameter |Geben Sie die Parameter an, sofern dies für das Skript erforderlich ist. |
 
-    Verwenden Sie den Eintrag __Speichern Sie diese Skriptaktion__ , um sicherzustellen, dass das Skript bei Skalierungsvorgängen angewendet wird.
+    Verwenden Sie den Eintrag __Speichern Sie diese Skriptaktion__, um sicherzustellen, dass das Skript bei Skalierungsvorgängen angewendet wird.
 
 1. Wählen Sie abschließend die Schaltfläche **Erstellen** aus, um das Skript auf den Cluster anzuwenden.
 

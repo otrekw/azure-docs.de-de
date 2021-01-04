@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 10/27/2020
 ms.author: olayemio
 ms.reviewer: cynthn
-ms.openlocfilehash: b77132a12475a66c099f5d38c04e8b58f7b839a7
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 74e1dc12be9bfec57d76357a335b46a55912f6df
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94504848"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500273"
 ---
 # <a name="troubleshoot-shared-image-galleries-in-azure"></a>Problembehandlung für Kataloge mit freigegebenen Images in Azure
 
@@ -70,14 +70,14 @@ Wenn beim Ausführen von Vorgängen an Katalogen mit freigegebenen Images, Image
 **Ursache:** Der Name <imageDefinitionName\> endet mit einem Punkt oder Unterstrich.  
 **Problemumgehung**: Wählen Sie einen Namen für die Imagedefinition aus, der die folgenden Bedingungen erfüllt: 
 - Maximal 80 Zeichen
-- Enthält nur Buchstaben des englischen Alphabets sowie Zahlen, Unterstriche und Punkte
+- Enthält nur Buchstaben des englischen Alphabets sowie Zahlen, Unterstriche, Bindestriche und Punkte
 - Beginnt und endet mit Zahlen oder Buchstaben des englischen Alphabets
 
 *Der Entitätsname <imageDefinitionName\> ist gemäß seiner Validierungsregel ungültig: ^[^\_\\W][\\w-.\_]{0,79}(?<![-.])$"*  
 **Ursache:** Der Name <imageDefinitionName\> endet mit einem Punkt oder Unterstrich.  
 **Problemumgehung**: Wählen Sie einen Namen für die Imagedefinition aus, der die folgenden Bedingungen erfüllt: 
 - Maximal 80 Zeichen
-- Enthält nur Buchstaben des englischen Alphabets sowie Zahlen, Unterstriche und Punkte
+- Enthält nur Buchstaben des englischen Alphabets sowie Zahlen, Unterstriche, Bindestriche und Punkte
 - Beginnt und endet mit Zahlen oder Buchstaben des englischen Alphabets
 
 *Der Ressourcenname galleryImage.properties.identifier.<property\> ist ungültig. Er darf nicht leer sein. Zulässige Zeichen sind Groß- und Kleinbuchstaben, Ziffern, Bindestrich (-), Punkt (.) und Unterstrich (\_). Namen dürfen nicht mit einem Punkt (.) enden. Die Länge des Namens darf <number\> Zeichen nicht überschreiten.*  
@@ -137,7 +137,7 @@ Das von (Herausgeber:<Publisher\>, Angebot:<Offer\>, SKU:<SKU\>) ermittelte *Kat
 
 *Der Speicherkontotyp ZRS wird in dieser Region nicht unterstützt.*  
 **Ursache:** Sie haben sich für den standardmäßigen zonenredundanten Speicher (ZRS) in einer Region entschieden, die diesen noch nicht unterstützt.  
-**Problemumgehung**: Ändern Sie den Speicherkontotyp in **Premium\_LRS** oder **Standard\_LRS**. In unserer Dokumentation finden Sie die aktuelle [Liste der Regionen](/azure/storage/common/storage-redundancy#zone-redundant-storage) mit aktivierter ZRS-Vorschau.
+**Problemumgehung**: Ändern Sie den Speicherkontotyp in **Premium\_LRS** oder **Standard\_LRS**. In unserer Dokumentation finden Sie die aktuelle [Liste der Regionen](../storage/common/storage-redundancy.md#zone-redundant-storage) mit aktivierter ZRS-Vorschau.
 
 ## <a name="creating-or-updating-image-versions"></a>Erstellen oder Aktualisieren von Imageversionen ##
 

@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 10/26/2020
+ms.date: 11/16/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: c59a104796e11b15af805e34f9cd14b2ce8bd075
-ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
+ms.openlocfilehash: ad7fe062d30f6858296ad4a2638b62c190862365
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92628846"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96936436"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>Registrieren einer SAML-Anwendung in Azure AD B2C
 
@@ -39,7 +39,7 @@ Zusammenfassung der beiden nicht exklusiven Kernszenarien mit SAML:
 | Szenario | Azure AD B2C-Rolle | Vorgehensweise |
 | -------- | ----------------- | ------- |
 | Meine Anwendung erwartet eine SAML-Assertion, um eine Authentifizierung abzuschließen. | **Azure AD B2C fungiert als Identitätsanbieter (IdP)**<br />Azure AD B2C fungiert als SAML-IdP für die Anwendungen. | Dieser Artikel |
-| Meine Benutzer benötigen einmaliges Anmelden (SSO) mit einem SAML-kompatiblen Identitätsanbieter wie ADFS, Salesforce oder Shibboleth.  | **Azure AD B2C fungiert als Dienstanbieter (SP)**<br />Azure AD B2C fungiert als Dienstanbieter, wenn eine Verbindung mit dem SAML-Identitätsanbieter hergestellt wird. Es handelt sich um einen Verbundproxy zwischen Ihrer Anwendung und dem SAML-Identitätsanbieter.  | <ul><li>[Einrichten der Anmeldung mit ADFS als SAML-IdP mithilfe benutzerdefinierter Richtlinien](identity-provider-adfs2016-custom.md)</li><li>[Einrichten der Anmeldung mit einem Salesforce SAML-Anbieter mithilfe benutzerdefinierter Richtlinien](identity-provider-salesforce-custom.md)</li></ul> |
+| Meine Benutzer benötigen einmaliges Anmelden (SSO) mit einem SAML-kompatiblen Identitätsanbieter wie ADFS, Salesforce oder Shibboleth.  | **Azure AD B2C fungiert als Dienstanbieter (SP)**<br />Azure AD B2C fungiert als Dienstanbieter, wenn eine Verbindung mit dem SAML-Identitätsanbieter hergestellt wird. Es handelt sich um einen Verbundproxy zwischen Ihrer Anwendung und dem SAML-Identitätsanbieter.  | <ul><li>[Einrichten der Anmeldung mit ADFS als SAML-IdP mithilfe benutzerdefinierter Richtlinien](identity-provider-adfs.md)</li><li>[Einrichten der Anmeldung mit einem Salesforce SAML-Anbieter mithilfe benutzerdefinierter Richtlinien](identity-provider-salesforce.md)</li></ul> |
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -51,8 +51,8 @@ Zusammenfassung der beiden nicht exklusiven Kernszenarien mit SAML:
 
 Für dieses Szenario sind drei Hauptkomponenten erforderlich:
 
-* SAML- **Dienstanbieter** mit der Möglichkeit, SAML-Anforderungen zu senden und SAML-Assertionen von Azure AD B2C zu empfangen, zu decodieren und darauf zu antworten. Der Dienstanbieter wird auch als Anwendung der vertrauenden Seite bezeichnet.
-* Öffentlich verfügbarer SAML- **Metadatenendpunkt** für Ihren Dienstanbieter.
+* SAML-**Dienstanbieter** mit der Möglichkeit, SAML-Anforderungen zu senden und SAML-Assertionen von Azure AD B2C zu empfangen, zu decodieren und darauf zu antworten. Der Dienstanbieter wird auch als Anwendung der vertrauenden Seite bezeichnet.
+* Öffentlich verfügbarer SAML-**Metadatenendpunkt** für Ihren Dienstanbieter.
 * [Azure AD B2C-Mandant](tutorial-create-tenant.md)
 
 Wenn Sie noch nicht über einen SAML-Dienstanbieter und einen zugehörigen Metadatenendpunkt verfügen, können Sie diese SAML-Beispielanwendung verwenden, die wir zum Testen zur Verfügung stellen:
@@ -73,7 +73,7 @@ Sie können ein Zertifikat verwenden, das von einer öffentlichen Zertifizierung
 
 ### <a name="11-prepare-a-self-signed-certificate"></a>1.1 Vorbereiten eines selbstsignierten Zertifikats
 
-Wenn Sie noch nicht über ein Zertifikat verfügen, können Sie für dieses Tutorial ein selbstsigniertes Zertifikat verwenden. Unter Windows können Sie das PowerShell-Cmdlet [New-SelfSignedCertificate](https://docs.microsoft.com/powershell/module/pkiclient/new-selfsignedcertificate) verwenden, um ein Zertifikat zu generieren.
+Wenn Sie noch nicht über ein Zertifikat verfügen, können Sie für dieses Tutorial ein selbstsigniertes Zertifikat verwenden. Unter Windows können Sie das PowerShell-Cmdlet [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) verwenden, um ein Zertifikat zu generieren.
 
 1. Führen Sie diesen PowerShell-Befehl aus, um ein selbstsigniertes Zertifikat zu generieren. Ändern Sie das Argument `-Subject` entsprechend Ihrer Anwendung und des Azure AD B2C-Mandantennamens. Sie können auch das `-NotAfter`-Datum anpassen, um einen anderen Ablaufzeitpunkt für das Zertifikat anzugeben.
 
@@ -131,7 +131,7 @@ Sie können den Wert der `IssuerUri`-Metadaten ändern. Dies ist der Aussteller-
       <OutputTokenFormat>SAML2</OutputTokenFormat>
       <Metadata>
         <!-- The issuer contains the policy name; it should be the same name as configured in the relying party application. B2C_1A_signup_signin_SAML is used below. -->
-        <!--<Item Key="IssuerUri">https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/B2C_1A_signup_signin_SAML</Item>-->
+        <!--<Item Key="IssuerUri">https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/B2C_1A_signup_signin_saml</Item>-->
       </Metadata>
       <CryptographicKeys>
         <Key Id="MetadataSigning" StorageReferenceId="B2C_1A_SamlIdpCert"/>
@@ -260,7 +260,7 @@ Die endgültige Richtliniendatei der vertrauenden Seite sollte wie im folgenden 
 
 Speichern Sie die Änderungen, und laden Sie die neue Richtliniendatei hoch. Nachdem Sie beide Richtlinien (die Erweiterung und die Dateien der vertrauenden Seite) hochgeladen haben, öffnen Sie einen Webbrowser, und navigieren Sie dann zu den Richtlinienmetadaten.
 
-Die IDP-Metadaten der Azure AD B2C-Richtlinie sind Informationen, die im SAML-Protokoll verwendet werden, um die Konfiguration eines SAML-Identitätsanbieters offenzulegen. Die Metadaten definieren den Ort der Dienste, z.B. Anmelden und Abmelden, Zertifikate und die Anmeldemethode. Die Azure AD B2C-Richtlinienmetadaten sind unter der folgenden URL verfügbar. Ersetzen Sie `tenant-name` durch den Namen Ihres Azure AD B2C-Mandanten und `policy-name` durch den Namen (ID) der Richtlinie:
+Die IDP-Metadaten der Azure AD B2C-Richtlinie sind Informationen, die im SAML-Protokoll verwendet werden, um die Konfiguration eines SAML-Identitätsanbieters offenzulegen. Die Metadaten definieren den Ort der Dienste, z.B. Anmelden und Abmelden, Zertifikate und die Anmeldemethode. Die Azure AD B2C-Richtlinienmetadaten sind unter der folgenden URL verfügbar. Ersetzen Sie `tenant-name` durch den Namen Ihres Azure AD B2C-Mandanten und `policy-name` durch den Namen (ID) der Richtlinie, z. B. „.../B2C_1A_signup_signin_saml/samlp/metadata“:
 
 `https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/policy-name/Samlp/metadata`
 
@@ -272,7 +272,7 @@ Ihre benutzerdefinierte Richtlinie und der Azure AD B2C-Mandant sind jetzt berei
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 1. Wählen Sie im oberen Menü den Filter **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren Azure AD B2C-Mandanten enthält.
-1. Wählen Sie im linken Menü die Option **Azure AD B2C** aus. Oder wählen Sie **Alle Dienste** aus, suchen Sie nach dem Eintrag **Azure AD B2C** , und wählen Sie ihn aus.
+1. Wählen Sie im linken Menü die Option **Azure AD B2C** aus. Oder wählen Sie **Alle Dienste** aus, suchen Sie nach dem Eintrag **Azure AD B2C**, und wählen Sie ihn aus.
 1. Wählen Sie **App-Registrierungen** aus, und wählen Sie dann **Registrierung einer neuen Anwendung** aus.
 1. Geben Sie unter **Name** einen Namen für die Anwendung ein. Beispielsweise *SAMLApp1*.
 1. Wählen Sie unter **Unterstützte Kontotypen** die Option **Nur Konten in diesem Organisationsverzeichnis** aus.
@@ -339,15 +339,15 @@ Die Metadaten können in Ihrem Dienstanbieter als „Statische Metadaten“ oder
 
 In der Regel sind einige oder alle der folgenden Angaben erforderlich:
 
-* **Metadaten** : `https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/policy-name/Samlp/metadata`
+* **Metadaten**: `https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/policy-name/Samlp/metadata`
 * **Aussteller:**  Der `issuer`-Wert der SAML-Anforderung muss mit einem der URIs übereinstimmen, die im Element `identifierUris` des Anwendungsregistrierungsmanifests konfiguriert wurden. Wenn der Name `issuer` der SAML-Anforderung im Element `identifierUris` nicht vorhanden ist, [fügen Sie ihn zum Anwendungsregistrierungsmanifest hinzu](#identifieruris). Beispiel: `https://contoso.onmicrosoft.com/app-name`. 
 * **Anmelde-URL/SAML-Endpunkt/SAML-URL-** : Überprüfen Sie den Wert in der Metadatendatei der Azure AD B2C SAML-Richtlinie für das XML-Element `<SingleSignOnService>`.
-* **Zertifikat** : Dies ist *B2C_1A_SamlIdpCert* , aber ohne den privaten Schlüssel. So rufen Sie den öffentlichen Schlüssel des Zertifikats ab:
+* **Zertifikat**: Dies ist *B2C_1A_SamlIdpCert*, aber ohne den privaten Schlüssel. So rufen Sie den öffentlichen Schlüssel des Zertifikats ab:
 
     1. Navigieren Sie zur Metadaten-URL, die oben angegeben wurde.
     1. Kopieren Sie den Wert in das `<X509Certificate>`-Element.
     1. Fügen Sie ihn in eine Textdatei ein.
-    1. Speichern Sie die Textdatei als *CER* -Datei.
+    1. Speichern Sie die Textdatei als *CER*-Datei.
 
 ### <a name="51-test-with-the-saml-test-app-optional"></a>5.1 Testen mit der SAML-Test-App (optional)
 
@@ -393,7 +393,7 @@ Legen Sie im [technischen Profil der vertrauenden Seite](relyingparty.md#technic
 
 ## <a name="enable-identity-provider-initiated-flow-optional"></a>Aktivieren des vom Identitätsanbieter initiierten Flows (optional)
 
-Beim vom Identitätsanbieter initiierten Flow wird der Anmeldevorgang vom Identitätsanbieter (Azure AD B2C) initiiert, der eine nicht angeforderte SAML-Antwort an den Dienstanbieter (Ihre Anwendung der vertrauenden Seite) sendet. Wir unterstützen derzeit keine Szenarien, in denen der initiierende Identitätsanbieter ein externer Identitätsanbieter ist, z. B. [AD-FS](identity-provider-adfs2016-custom.md)oder [Salesforce](identity-provider-salesforce-custom.md).
+Beim vom Identitätsanbieter initiierten Flow wird der Anmeldevorgang vom Identitätsanbieter (Azure AD B2C) initiiert, der eine nicht angeforderte SAML-Antwort an den Dienstanbieter (Ihre Anwendung der vertrauenden Seite) sendet. Wir unterstützen derzeit keine Szenarien, in denen der initiierende Identitätsanbieter ein externer Identitätsanbieter ist, z. B. [AD-FS](identity-provider-adfs.md)oder [Salesforce](identity-provider-salesforce.md).
 
 Um den vom Identitätsanbieter (Azure AD B2C) initiierten Flow zu aktivieren, legen Sie im [technischen Profil der vertrauenden Seite](relyingparty.md#technicalprofile) das Metadatenelement **IdpInitiatedProfileEnabled** auf `true` fest.
 
@@ -428,7 +428,7 @@ Wir stellen eine vollständige Beispielrichtlinie zur Verfügung, die Sie zum Te
 
 1. Laden Sie die [Anmeldebeispielrichtlinie „SAML-SP-initiated“](https://github.com/azure-ad-b2c/saml-sp/tree/master/policy/SAML-SP-Initiated) herunter.
 1. Aktualisieren Sie `TenantId` entsprechend Ihrem Mandantennamen, z.B. *contoso.b2clogin.com*.
-1. Behalten Sie den Richtliniennamen *B2C_1A_SAML2_signup_signin* bei.
+1. Behalten Sie den Richtliniennamen *B2C_1A_signup_signin* bei.
 
 ## <a name="supported-and-unsupported-saml-modalities"></a>Unterstützte und nicht unterstützte SAML-Modalitäten
 
@@ -453,7 +453,7 @@ Ein SAML-Token ist ein Sicherheitstoken, das nach einer erfolgreichen Anmeldung 
 |`<Response>` `<Assertion>` `<Subject>` `<NameID>`     |         |Der Prinzipal, für den das Token Informationen zusichert, z. B. die Benutzerobjekt-ID. Dieser Wert ist unveränderlich und kann nicht erneut zugewiesen oder wiederverwendet werden. Er kann für die sichere Durchführung von Autorisierungsüberprüfungen verwendet werden, z.B. wenn das Token verwendet wird, um auf eine Ressource zuzugreifen. Der Anspruch „Antragsteller“ wird standardmäßig mit der Objekt-ID des Benutzers im Verzeichnis aufgefüllt.|
 |`<Response>` `<Assertion>` `<Subject>` `<NameID>`     | `Format` | Ein URI-Verweis, der die Klassifizierung von zeichenfolgenbasierten Bezeichnerinformationen darstellt. Diese Eigenschaft wird standardmäßig weggelassen. Sie können das [SubjectNamingInfo](relyingparty.md#subjectnaminginfo)-Element der vertrauenden Seite festlegen, um das `NameID`-Format (z. B. `urn:oasis:names:tc:SAML:2.0:nameid-format:transient`) anzugeben. |
 |`<Response>` `<Assertion>` `<Subject>` `<Conditions>` |`NotBefore` |Der Zeitpunkt, zu dem das Token gültig wird. Der Zeitwert wird in UTC codiert. Ihre Anwendung muss anhand dieses Anspruchs die Gültigkeit der Tokenlebensdauer überprüfen. Um die Einstellungen für die Tokengültigkeitsdauer zu ändern, legen Sie die `TokenNotBeforeSkewInSeconds`-[Metadaten](saml-issuer-technical-profile.md#metadata) des technischen Profils des SAML-Tokenausstellers fest. |
-|`<Response>` `<Assertion>` `<Subject>` `<Conditions>` | `NotOnOrAfter` | Die Uhrzeit, zu der das Token ungültig wird. Ihre Anwendung muss anhand dieses Anspruchs die Gültigkeit der Tokenlebensdauer überprüfen. Der Wert liegt 15 Minuten nach dem `NotBefore` und kann nicht geändert werden.|
+|`<Response>` `<Assertion>` `<Subject>` `<Conditions>` | `NotOnOrAfter` | Die Uhrzeit, zu der das Token ungültig wird. Ihre Anwendung muss anhand dieses Anspruchs die Gültigkeit der Tokenlebensdauer überprüfen. Der Standardwert von 5 Minuten nach `NotBefore` kann durch Hinzufügen der `TokenLifeTimeInSeconds`-[Metadaten](saml-issuer-technical-profile.md#metadata) des technischen Profils für die Ausstellung von SAML-Token aktualisiert werden.|
 |`<Response>` `<Assertion>` `<Conditions>` `<AudienceRestriction>` `<Audience>` | |Ein URI-Verweis, der die beabsichtigte Zielgruppe identifiziert. Er identifiziert den vorgesehenen Empfänger des Tokens. Der Wert entspricht der `AssertionConsumerServiceURL` der SAML-Anforderung.|
 |`<Response>` `<Assertion>` `<AttributeStatement>`, Sammlung von `<Attribute>` | | Assertionssammlung (Ansprüche), wie in den Ausgabeansprüchen des [technischen Profils der vertrauende Seite](relyingparty.md#technicalprofile) definiert. Sie können den Namen der Assertion konfigurieren, indem Sie das `PartnerClaimType`-Element des Ausgabeanspruchs festlegen. |
 

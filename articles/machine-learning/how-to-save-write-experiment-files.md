@@ -1,7 +1,7 @@
 ---
 title: Speicherorte zum Speichern und Schreiben von Experimentdateien
 titleSuffix: Azure Machine Learning
-description: Erfahren Sie, wo Sie Ihre Experimenteingabedateien speichern sollten und wohin Sie Ausgabedateien schreiben sollten, um Speicherlimits einzuhalten und die Latenz von Experimenten zu minimieren.
+description: Erfahren Sie, wo Sie Ihre Eingabe- und Ausgabedateien speichern sollten, um Speicherlimits einzuhalten und die Latenz von Experimenten zu minimieren.
 services: machine-learning
 author: rastala
 ms.author: roastala
@@ -12,12 +12,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 03/10/2020
-ms.openlocfilehash: 0dab99c902269f7d598eedb8c2fa23bbed3948c4
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 49e1e9efbd6f59bd037a8033f83836bf7fc71c43
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325363"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630327"
 ---
 # <a name="where-to-save-and-write-files-for-azure-machine-learning-experiments"></a>Verzeichnisse zum Speichern und Schreiben von Dateien für Azure Machine Learning-Experimente
 
@@ -36,7 +36,7 @@ Das Speicherlimit für Momentaufnahmen des Experiments liegt bei 300 MB und/oder
 
 Aus diesem Grund empfehlen wir Folgendes:
 
-* **Speichern Sie Ihre Dateien in einem Azure Machine Learning- [Datenspeicher](/python/api/azureml-core/azureml.data?preserve-view=true&view=azure-ml-py).** Dadurch werden Probleme mit Wartezeiten beim Experiment vermieden, und Sie erhalten die Vorteile des Datenzugriffs von einem Remotecomputeziel aus, was bedeutet, dass Funktionen wie die Authentifizierung und die Einbindung von Azure Machine Learning verwaltet werden. Weitere Informationen zum Angeben eines Datenspeichers als Ihr Quellverzeichnis und Hochladen von Dateien in Ihren Datenspeicher finden Sie im Artikel [Zugreifen auf Daten aus Ihren Datenspeichern](how-to-access-data.md).
+* **Speichern Sie Ihre Dateien in einem Azure Machine Learning-[Datenspeicher](/python/api/azureml-core/azureml.data?preserve-view=true&view=azure-ml-py).** Dadurch werden Probleme mit Wartezeiten beim Experiment vermieden, und Sie erhalten die Vorteile des Datenzugriffs von einem Remotecomputeziel aus, was bedeutet, dass Funktionen wie die Authentifizierung und die Einbindung von Azure Machine Learning verwaltet werden. Weitere Informationen zum Angeben eines Datenspeichers als Ihr Quellverzeichnis und Hochladen von Dateien in Ihren Datenspeicher finden Sie im Artikel [Zugreifen auf Daten aus Ihren Datenspeichern](how-to-access-data.md).
 
 * **Wenn Sie nur wenige Datendateien und Abhängigkeitsskripts benötigen und keinen Datenspeicher verwenden können,** legen Sie die Dateien in demselben Ordnerverzeichnis wie Ihr Trainingsskript ab. Geben Sie diesen Ordner direkt in Ihrem Trainingsskript als Ihr `source_directory` an, oder in dem Code, der Ihr Trainingsskript aufruft.
 
@@ -69,11 +69,11 @@ Wenn Sie Änderungen vornehmen, wird empfohlen, Dateien in einen Azure Machine L
 Wenn Sie keinen Datenspeicher benötigen, schreiben Sie Dateien in die Ordner `./outputs` und/oder `./logs`.
 
 >[!Important]
-> Zwei Ordner, *outputs* und *logs* , erhalten eine besondere Behandlung durch Azure Machine Learning. Wenn Sie während des Trainings Dateien in die Ordner `./outputs` und `./logs` schreiben, werden diese Dateien automatisch in Ihren Ausführungsverlauf hochgeladen, damit Sie Zugriff darauf haben, wenn die Ausführung abgeschlossen ist.
+> Zwei Ordner, *outputs* und *logs*, erhalten eine besondere Behandlung durch Azure Machine Learning. Wenn Sie während des Trainings Dateien in die Ordner `./outputs` und `./logs` schreiben, werden diese Dateien automatisch in Ihren Ausführungsverlauf hochgeladen, damit Sie Zugriff darauf haben, wenn die Ausführung abgeschlossen ist.
 
 * **Für Ausgabe wie Statusmeldungen oder Bewertungsergebnisse** schreiben Sie Dateien in den Ordner `./outputs`, sodass diese als Artefakte im Verlauf beibehalten werden. Achten Sie auf die Anzahl und Größe der Dateien, die in diesen Ordner geschrieben werden, weil beim Hochladen der Inhalte in den Ausführungsverlauf Wartezeiten entstehen können. Wenn die Wartezeit ein Problem darstellt, wird das Schreiben von Dateien in einen Datenspeicher empfohlen.
 
-* **Um geschriebene Dateien als Protokolle im Ausführungsverlauf zu speichern** , schreiben Sie Dateien in den Ordner `./logs`. Die Protokolle werden in Echtzeit hochgeladen, sodass diese Methode für das Streamen von Liveupdates von einer Remoteausführung geeignet ist.
+* **Um geschriebene Dateien als Protokolle im Ausführungsverlauf zu speichern**, schreiben Sie Dateien in den Ordner `./logs`. Die Protokolle werden in Echtzeit hochgeladen, sodass diese Methode für das Streamen von Liveupdates von einer Remoteausführung geeignet ist.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

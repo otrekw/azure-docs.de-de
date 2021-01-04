@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 09/19/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 24e3841abc9c397ab307e55405bdcc208815570e
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 6864502a9d338a786e1e77dbf9888a7818bb94e9
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94444162"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95748647"
 ---
 # <a name="daemon-app-that-calls-web-apis---code-configuration"></a>Daemon-App, die Web-APIs aufruft – Codekonfiguration
 
@@ -36,9 +36,9 @@ Folgende Microsoft-Bibliotheken unterstützen Daemon-Apps:
 
 Daemonanwendungen verwenden Anwendungsberechtigungen anstelle von delegierten Berechtigungen. Daher kann ihr unterstützter Kontotyp kein Konto in einem Organisationsverzeichnis und kein persönliches Microsoft-Konto (z. B. Skype, Xbox, Outlook.com) sein. Es gibt keinen Mandantenadministrator, der der Daemonanwendung für persönliche Microsoft-Konten Einwilligung erteilen könnte. Sie müssen *accounts in my organization* (Konten in meiner Organisation) oder *accounts in any organization* (Konten in allen Organisationen) auswählen.
 
-Deshalb sollte die in der Anwendungskonfiguration angegebene Autorität über einen Mandanten verfügen (eine Mandanten-ID oder ein Domänennamen, die zu Ihrer Organisation gehören).
+Die in der Anwendungskonfiguration angegebene Autorität sollte über einen Mandanten verfügen (eine Mandanten-ID oder ein Domänennamen, die zu Ihrer Organisation gehören).
 
-Wenn Sie ein unabhängiger Softwarehersteller sind und ein mehrinstanzenfähiges Tool bereitstellen möchten, können Sie `organizations` verwenden. Beachten Sie jedoch, dass Sie Ihren Kunden auch erklären müssen, wie die Administratoreinwilligung erteilt wird. Weitere Einzelheiten finden Sie unter [Anfordern der Einwilligung für einen gesamten Mandanten](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant). Außerdem gibt es derzeit in MSAL eine Einschränkung: `organizations` ist nur zulässig, wenn die Clientanmeldeinformationen ein Anwendungsgeheimnis (kein Zertifikat) sind.
+Selbst wenn Sie ein mehrinstanzenfähiges Tool bereitstellen möchten, sollten Sie bei diesem Flow eine Mandanten-ID oder einen Domänennamen verwenden und **nicht** `common` oder `organizations`, da der Dienst nicht zuverlässig ableiten kann, welcher Mandant verwendet werden soll.
 
 ## <a name="configure-and-instantiate-the-application"></a>Konfigurieren und Instanziieren der Anwendung
 

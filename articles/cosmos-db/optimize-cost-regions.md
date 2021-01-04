@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/23/2020
-ms.openlocfilehash: 010ca40f4f3aacd6353aecd150e944672cc09066
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: a559a51feafa310a4645282dc6368f520fc6b972
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097506"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96459625"
 ---
 # <a name="optimize-multi-region-cost-in-azure-cosmos-db"></a>Optimieren der Kosten bei mehreren Regionen in Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -26,14 +26,14 @@ In einem System mit Schreibvorgängen in mehreren Regionen nehmen die tatsächli
 
 ### <a name="example"></a>Beispiel
 
-Sie verfügen über einen Container in der Region „USA, Westen“, der für Schreibvorgänge in einer einzelnen Region konfiguriert und mit einem Durchsatz von 10.000 RUs/Sek. bereitgestellt wurde, und speichern in diesem Monat 1 TB Daten. Nehmen wir einmal an, Sie fügen „USA, Osten“ als zweite Region mit denselben Speicher- und Durchsatzwerten hinzu und möchten von Ihrer App aus in beiden Regionen in die Container schreiben. Ihre monatliche Gesamtrechnung (basierend auf einem Monat von 31 Tagen) sieht dann wie folgt aus:
+Sie verfügen über einen Container in der Region „USA, Westen“, der für Schreibvorgänge in einer einzelnen Region konfiguriert und mit einem Durchsatz von 10.000 RUs/Sek. bereitgestellt wurde, und speichern in diesem Monat 0,5 TB Daten. Nehmen wir einmal an, Sie fügen „USA, Osten“ als zweite Region mit denselben Speicher- und Durchsatzwerten hinzu und möchten von Ihrer App aus in beiden Regionen in die Container schreiben. Ihre neue monatliche Gesamtrechnung (basierend auf 730 Stunden im Monat) sieht dann wie folgt aus:
 
 |**Element**|**Nutzung (monatlich)**|**Rate**|**Monatliche Kosten**|
 |----|----|----|----|
-|Durchsatzabrechnung für Container in „USA, Westen“ (Schreibvorgänge in einer einzelnen Region) |10.000 RUs/Sek. × 24 Stunden × 31 Tage |0,008 USD pro 100 RUs/Sek. pro Stunde |584,06 USD |
-|Durchsatzabrechnung für Container in zwei Regionen: „USA, Westen“ und „USA, Osten“ (Schreibvorgänge in mehreren Regionen) |2 × 10.000 RUs/Sek. x 24 Stunden × 31 Tage|0,016 US-Dollar pro 100 RUs/Sek. pro Stunde |2\.336,26 USD |
-|Speicherabrechnung für Container in „USA, Westen“ |1 TB (oder 1.024 GB) |0,25 US-Dollar/GB |256 US-Dollar |
-|Speicherabrechnung für zwei Regionen: „USA, Westen“ und „USA, Osten“ |2 × 1 TB (oder 3.072 GB) |0,25 US-Dollar/GB |768 US-Dollar |
+|Durchsatzabrechnung für Container in „USA, Westen“ (Schreibvorgänge in einer einzelnen Region) |10.000 RUs/Sek. × 730 Stunden |0,008 USD pro 100 RUs/Sek. pro Stunde |584 US-Dollar |
+|Durchsatzabrechnung für Container in zwei Regionen: „USA, Westen“ und „USA, Osten“ (Schreibvorgänge in mehreren Regionen) |2 × 10.000 RUs/Sek. × 730 Stunden |0,016 US-Dollar pro 100 RUs/Sek. pro Stunde |2\.336 US-Dollar |
+|Speicherabrechnung für Container in „USA, Westen“ |0,5 TB (oder 512 GB) |0,25 US-Dollar/GB |128 US-Dollar |
+|Speicherabrechnung für Container in zwei Regionen: „USA, Westen“ und „USA, Osten“ |2 × 0,5 TB (oder 1.024 GB) |0,25 US-Dollar/GB |256 US-Dollar |
 
 ## <a name="improve-throughput-utilization-on-a-per-region-basis"></a>Optimieren der Durchsatznutzung nach Region
 

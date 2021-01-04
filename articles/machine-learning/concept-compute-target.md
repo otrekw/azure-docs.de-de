@@ -1,7 +1,7 @@
 ---
 title: Was sind Computziele?
 titleSuffix: Azure Machine Learning
-description: Legen Sie fest, wo Sie Ihr Modell mit Azure Machine Learning trainieren oder bereitstellen möchten.
+description: Erfahren Sie, wie Sie eine Computeressource oder Umgebung für das Training oder die Bereitstellung Ihres Modells mit Azure Machine Learning bestimmen können.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 09/29/2020
-ms.openlocfilehash: 72cdfe2ebe79abb9649ac497a6ecddda8918b951
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 1d3a7be429f730dd4dbd71bade1e3e51ea73c10f
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322281"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96188648"
 ---
 # <a name="what-are-compute-targets-in-azure-machine-learning"></a>Was sind Computeziele in Azure Machine Learning?
 
@@ -44,7 +44,7 @@ Die folgenden Computeressourcen können zum Hosten Ihrer Modellimplementierung v
 
 Beim Durchführen von Rückschlüssen erstellt Azure Machine Learning einen Docker-Container, der das Modell und zugehörige Ressourcen hostet, die für die Verwendung erforderlich sind. Dieser Container wird dann in einem der folgenden Bereitstellungsszenarien verwendet:
 
-* Als *Webdienst* , der für Echtzeitrückschlüsse verwendet wird. Webdienstbereitstellungen verwenden eines der folgenden Computeziele:
+* Als *Webdienst*, der für Echtzeitrückschlüsse verwendet wird. Webdienstbereitstellungen verwenden eines der folgenden Computeziele:
 
     * [Lokaler Computer](how-to-attach-compute-targets.md#local)
     * [Azure Machine Learning-Computeinstanz](how-to-create-manage-compute-instance.md)
@@ -52,7 +52,7 @@ Beim Durchführen von Rückschlüssen erstellt Azure Machine Learning einen Dock
     * [Azure Kubernetes Service](how-to-create-attach-kubernetes.md)
     * Azure Functions (Vorschau). Bei der Bereitstellung in Azure Functions wird nur Azure Machine Learning zum Erstellen des Docker-Containers vorausgesetzt. Von dort aus wird es mithilfe von Azure Functions bereitgestellt. Weitere Informationen finden Sie unter [Bereitstellen eines Machine Learning-Modells in Azure Functions (Vorschauversion)](how-to-deploy-functions.md).
 
-* Als Endpunkt für _Batchrückschlüsse_ , der zur regelmäßigen Verarbeitung von Datenbatches verwendet wird. Batchrückschlüsse verwenden [Azure Machine Learning-Computecluster](how-to-create-attach-compute-cluster.md).
+* Als Endpunkt für _Batchrückschlüsse_, der zur regelmäßigen Verarbeitung von Datenbatches verwendet wird. Batchrückschlüsse verwenden [Azure Machine Learning-Computecluster](how-to-create-attach-compute-cluster.md).
 
 * Auf ein _IoT-Gerät_ (Vorschau). Bei der Bereitstellung auf einem IoT-Gerät wird nur Azure Machine Learning zum Erstellen des Docker-Containers vorausgesetzt. Anschließend erfolgt die Bereitstellung über Azure IoT Edge. Weitere Informationen finden Sie unter [Deploy as an IoT Edge module (preview)](../iot-edge/tutorial-deploy-machine-learning.md) (Bereitstellen als IoT Edge-Modul (Vorschau)).
 
@@ -119,6 +119,12 @@ In der folgenden Tabelle finden Sie weitere Informationen zu unterstützten Seri
 
 
 Obwohl Azure Machine Learning diese VM-Serien unterstützt, sind sie möglicherweise nicht in allen Azure-Regionen verfügbar. Informationen zum Überprüfen, ob VM-Serien verfügbar sind, finden Sie unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines).
+
+> [!NOTE]
+> Azure Machine Learning unterstützt nicht alle VM-Größen, die von Azure Compute unterstützt werden. Um alle verfügbaren VM-Größen aufzulisten, verwenden Sie eine der folgenden Methoden:
+> * [REST-API](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable/2020-08-01/examples/ListVMSizesResult.json)
+> * [Python SDK](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py.md#supported-vmsizes-workspace--location-none-)
+>
 
 ### <a name="compute-isolation"></a>Computeisolation
 

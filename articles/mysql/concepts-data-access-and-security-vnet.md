@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 7/17/2020
-ms.openlocfilehash: 225afcbafeaf7213b4f040a07d709d33e46b44f4
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 364d9c20c0bfce1f31103ddf6df0c8d7b228eca2
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94540806"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461779"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mysql"></a>Verwenden von Virtual Network-Dienstendpunkten und -Regeln für Azure Database for MySQL
 
@@ -112,7 +112,7 @@ Bei Azure Database for MySQL gelten für VNET-Regeln folgende Einschränkungen:
 
 - VNET-Regeln gelten nur für virtuelle Netzwerke gemäß dem Azure Resource Manager-Modell und nicht gemäß dem [klassischen Bereitstellungsmodell][arm-deployment-model-568f].
 
-- Wenn Sie die VNET-Dienstendpunkte für Azure Database for MySQL mit dem Diensttag **Microsoft.Sql** aktivieren, werden auch die Endpunkte für alle Azure-Datenbankdienste aktiviert: Azure Database for MySQL, Azure Database for PostgreSQL, Azure SQL-Datenbank und Azure Synapse Analytics (ehemals SQL Data Warehouse).
+- Wenn Sie die VNET-Dienstendpunkte für Azure Database for MySQL mit dem Diensttag **Microsoft.Sql** aktivieren, werden auch die Endpunkte für alle Azure-Datenbankdienste aktiviert: Azure Database for MySQL, Azure Database for PostgreSQL, Azure SQL-Datenbank und Azure Synapse Analytics.
 
 - VNET-Dienstendpunkte werden nur für Server vom Typ „Universell“ und „Arbeitsspeicheroptimiert“ unterstützt.
 

@@ -1,6 +1,6 @@
 ---
 title: Modell mit gemeinsam genutzten Metadaten
-description: Azure Synapse Analytics ermöglicht den verschiedenen Berechnungsengines von Arbeitsbereichen die gemeinsame Nutzung von Datenbanken und Tabellen zwischen serverlosen Apache Spark-Pools (Vorschauversion), dem serverlosen SQL-Pool (Vorschauversion) und dedizierten SQL-Pools.
+description: Azure Synapse Analytics ermöglicht den verschiedenen Berechnungsengines von Arbeitsbereichen die gemeinsame Nutzung von Datenbanken und Tabellen zwischen serverlosen Apache Spark-Pools, dem serverlosen SQL-Pool und dedizierten SQL-Pools.
 services: synapse-analytics
 author: MikeRys
 ms.service: synapse-analytics
@@ -9,18 +9,16 @@ ms.subservice: metadata
 ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
-ms.openlocfilehash: 64c19f3331be8ffda433207da88ebf22c546ee4e
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: b10b6f011fa7daee4094f0cc7b819d36127fedcd
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324671"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460352"
 ---
 # <a name="azure-synapse-analytics-shared-metadata"></a>Azure Synapse Analytics: Gemeinsam genutzte Metadaten
 
-Azure Synapse Analytics ermöglicht den verschiedenen Berechnungsengines von Arbeitsbereichen die gemeinsame Nutzung von Datenbanken und Tabellen zwischen serverlosen Apache Spark-Pools (Vorschauversion) und dem serverlosen SQL-Pool (Vorschauversion).
-
-[!INCLUDE [preview](../includes/note-preview.md)]
+Azure Synapse Analytics ermöglicht den verschiedenen Berechnungsengines von Arbeitsbereichen die gemeinsame Nutzung von Datenbanken und Tabellen zwischen serverlosen Apache Spark-Pools und dem serverlosen SQL-Pool.
 
 Die gemeinsame Nutzung unterstützt das sogenannte moderne Data Warehouse und ermöglicht den Arbeitsbereich-SQL-Engines den Zugriff auf mit Spark erstellte Datenbanken und Tabellen. Außerdem ermöglicht es den SQL-Engines die Erstellung eigener Objekte, die nicht gemeinsam mit anderen Engines genutzt werden.
 

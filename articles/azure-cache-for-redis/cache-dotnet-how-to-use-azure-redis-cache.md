@@ -9,11 +9,11 @@ ms.topic: quickstart
 ms.custom: devx-track-csharp, mvc
 ms.date: 06/18/2020
 ms.openlocfilehash: 762fdf0aab0077cfbf8beceeb432dc85695e4176
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93077063"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002455"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-in-net-framework"></a>Schnellstart: Verwenden von Azure Cache for Redis mit .NET Framework
 
@@ -30,9 +30,9 @@ In dieser Schnellstartanleitung integrieren Sie Azure Cache für Redis in eine .
 
 [!INCLUDE [redis-cache-access-keys](../../includes/redis-cache-access-keys.md)]
 
-Erstellen Sie auf Ihrem Computer eine Datei namens *CacheSecrets.config* , und platzieren Sie die Datei an einem Speicherort, an dem sie nicht mit dem Quellcode Ihrer Beispielanwendung eingecheckt wird. In diesem Schnellstart befindet sich die Datei *CacheSecrets.config* im Verzeichnis *C:\AppSecrets\CacheSecrets.config*.
+Erstellen Sie auf Ihrem Computer eine Datei namens *CacheSecrets.config*, und platzieren Sie die Datei an einem Speicherort, an dem sie nicht mit dem Quellcode Ihrer Beispielanwendung eingecheckt wird. In diesem Schnellstart befindet sich die Datei *CacheSecrets.config* im Verzeichnis *C:\AppSecrets\CacheSecrets.config*.
 
-Bearbeiten Sie die Datei *CacheSecrets.config* , und fügen Sie ihr folgende Inhalte hinzu:
+Bearbeiten Sie die Datei *CacheSecrets.config*, und fügen Sie ihr folgende Inhalte hinzu:
 
 ```xml
 <appSettings>
@@ -49,7 +49,7 @@ Ersetzen Sie `<access-key>` durch den Primärschlüssel für Ihren Cache.
 
 Klicken Sie in Visual Studio auf **Datei** > **Neu** > **Projekt**.
 
-Wählen Sie **Konsolen-App (.NET Framework)** und **Weiter** aus, um Ihre App zu konfigurieren. Geben Sie einen **Projektnamen** ein, und klicken Sie auf **Erstellen** , um eine neue Konsolenanwendung zu erstellen.
+Wählen Sie **Konsolen-App (.NET Framework)** und **Weiter** aus, um Ihre App zu konfigurieren. Geben Sie einen **Projektnamen** ein, und klicken Sie auf **Erstellen**, um eine neue Konsolenanwendung zu erstellen.
 
 <a name="configure-the-cache-clients"></a>
 
@@ -57,18 +57,18 @@ Wählen Sie **Konsolen-App (.NET Framework)** und **Weiter** aus, um Ihre App zu
 
 In diesem Abschnitt konfigurieren Sie die Konsolenanwendung zur Verwendung des [StackExchange.Redis](https://github.com/StackExchange/StackExchange.Redis)-Clients für .NET.
 
-Klicken Sie in Visual Studio auf **Tools** > **NuGet-Paket-Manager** > **Paket-Manager-Konsole** , und führen Sie im Fenster der Paket-Manager-Konsole den folgenden Befehl aus.
+Klicken Sie in Visual Studio auf **Tools** > **NuGet-Paket-Manager** > **Paket-Manager-Konsole**, und führen Sie im Fenster der Paket-Manager-Konsole den folgenden Befehl aus.
 
 ```powershell
 Install-Package StackExchange.Redis
 ```
 
-Nach Abschluss der Installation kann der *StackExchange.Redis* -Cacheclient für Ihr Projekt verwendet werden.
+Nach Abschluss der Installation kann der *StackExchange.Redis*-Cacheclient für Ihr Projekt verwendet werden.
 
 
 ## <a name="connect-to-the-cache"></a>Herstellen einer Verbindung mit dem Cache
 
-Öffnen Sie in Visual Studio die Datei *App.config* , und aktualisieren Sie sie, damit sie ein `appSettings`-`file`-Attribut enthält, das auf die Datei *CacheSecrets.config* verweist.
+Öffnen Sie in Visual Studio die Datei *App.config*, und aktualisieren Sie sie, damit sie ein `appSettings`-`file`-Attribut enthält, das auf die Datei *CacheSecrets.config* verweist.
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -81,7 +81,7 @@ Nach Abschluss der Installation kann der *StackExchange.Redis* -Cacheclient für
 </configuration>
 ```
 
-Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf **Verweise** , und klicken Sie anschließend auf **Verweis hinzufügen**. Fügen Sie einen Verweis auf die Assembly **System.Configuration** hinzu.
+Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf **Verweise**, und klicken Sie anschließend auf **Verweis hinzufügen**. Fügen Sie einen Verweis auf die Assembly **System.Configuration** hinzu.
 
 Fügen Sie der Datei *Program.cs* die folgenden `using`-Anweisungen hinzu:
 
@@ -173,7 +173,7 @@ Cacheelemente können mit den Methoden `StringSet` und `StringGet` gespeichert u
 
 Redis speichert die meisten Daten als Redis-Zeichenfolgen. Diese können jedoch unterschiedliche Datentypen enthalten, inklusive serialisierter Binärdaten, die zum Speichern von .NET-Objekten im Cache verwendet werden können.
 
-Drücken Sie **STRG+F5** , um die Konsolen-App zu erstellen und auszuführen.
+Drücken Sie **STRG+F5**, um die Konsolen-App zu erstellen und auszuführen.
 
 Im folgenden Beispiel können Sie sehen, dass der `Message`-Schlüssel zuvor einen zwischengespeicherten Wert aufgewiesen hat, der im Azure-Portal über die Redis-Konsole festgelegt wurde. Die App hat diesen zwischengespeicherten Wert aktualisiert. Außerdem hat die App die Befehle `PING` und `CLIENT LIST` ausgeführt.
 
@@ -186,7 +186,7 @@ Azure Cache for Redis kann sowohl .NET-Objekte als auch primitive Datentypen zwi
 
 Eine einfache Möglichkeit zum Serialisieren von Objekten stellt die Verwendung der `JsonConvert`-Serialisierungsmethoden in [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json/) und die Serialisierung in und aus JSON dar. In diesem Abschnitt fügen Sie dem Cache ein .NET-Objekt hinzu.
 
-Klicken Sie in Visual Studio auf **Tools** > **NuGet-Paket-Manager** > **Paket-Manager-Konsole** , und führen Sie im Fenster der Paket-Manager-Konsole den folgenden Befehl aus.
+Klicken Sie in Visual Studio auf **Tools** > **NuGet-Paket-Manager** > **Paket-Manager-Konsole**, und führen Sie im Fenster der Paket-Manager-Konsole den folgenden Befehl aus.
 
 ```powershell
 Install-Package Newtonsoft.Json
@@ -232,7 +232,7 @@ Fügen Sie in *Program.cs* am unteren Ende der Prozedur `Main()` und vor dem Auf
     Console.WriteLine("\tEmployee.Age  : " + e007FromCache.Age + "\n");
 ```
 
-Drücken Sie **STRG+F5** , um die Konsolen-App zum Testen der Serialisierung von .NET-Objekten zu erstellen und auszuführen. 
+Drücken Sie **STRG+F5**, um die Konsolen-App zum Testen der Serialisierung von .NET-Objekten zu erstellen und auszuführen. 
 
 ![Konsolen-App abgeschlossen](./media/cache-dotnet-how-to-use-azure-redis-cache/cache-console-app-complete.png)
 

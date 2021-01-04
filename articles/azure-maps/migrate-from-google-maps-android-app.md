@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: d7ec1edb779ddaf53cef02dd6e83bb3e719d0b4e
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: b096b24acd5cf65f6ad3e9eabb1d536b3aae0168
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92503554"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187067"
 ---
 # <a name="tutorial---migrate-an-android-app-from-google-maps"></a>Tutorial: Migrieren von Android-Apps aus Google Maps
 
@@ -163,7 +163,7 @@ Wenn Sie eine Anwendung ausführen, wird das Kartensteuerelement wie in der folg
 
 Wenn Sie mithilfe des Azure Maps SDK für Android eine Karte anzeigen lassen möchten, gehen Sie wie folgt vor:
 
-1. Öffnen Sie die übergeordnete Datei **build.gradle** , und fügen Sie dem Blockabschnitt **all projects** den folgenden Code hinzu:
+1. Öffnen Sie die übergeordnete Datei **build.gradle**, und fügen Sie dem Blockabschnitt **all projects** den folgenden Code hinzu:
 
     ```JAVA
     maven {
@@ -171,7 +171,7 @@ Wenn Sie mithilfe des Azure Maps SDK für Android eine Karte anzeigen lassen mö
     }
     ```
 
-2. Aktualisieren Sie **app/build.gradle** , und fügen Sie den folgenden Code hinzu:
+2. Aktualisieren Sie **app/build.gradle**, und fügen Sie den folgenden Code hinzu:
 
     1. Stellen Sie sicher, dass **minSdkVersion** Ihres Projekts mindestens auf API 21 festgelegt ist.
 
@@ -193,7 +193,7 @@ Wenn Sie mithilfe des Azure Maps SDK für Android eine Karte anzeigen lassen mö
         > [!Note]
         > Das Azure Maps Android SDK wird regelmäßig aktualisiert und verbessert. Die aktuelle Versionsnummer von Azure Maps finden Sie unter [Erste Schritte mit dem Android-Kartensteuerelement](how-to-use-android-map-control-library.md). Außerdem können Sie die Versionsnummer von „0.2“ auf „0+“ festlegen, damit Ihr Code immer auf die neueste Version verweist.
 
-    4. Wechseln Sie auf der Symbolleiste zu **Datei** , und klicken Sie auf **Sync Project with Gradle Files** (Projekt mit Gradle-Dateien synchronisieren).
+    4. Wechseln Sie auf der Symbolleiste zu **Datei**, und klicken Sie auf **Sync Project with Gradle Files** (Projekt mit Gradle-Dateien synchronisieren).
 
 3. Fügen Sie der Hauptaktivität („resources pwd“ \> „layout“ \> „activity\_main.xml“) ein Kartenfragment hinzu:
 
@@ -769,7 +769,7 @@ Weitere Informationen zum Android SDK für Azure Maps:
 > [Hinzufügen einer Symbolebene zu einer Android-Karte](how-to-add-symbol-to-android-map.md)
 
 > [!div class="nextstepaction"]
-> [Hinzufügen von Formen zu einer Android-Karte](https://docs.microsoft.com/azure/azure-maps/how-to-add-shapes-to-android-map)
+> [Hinzufügen von Formen zu einer Android-Karte](./how-to-add-shapes-to-android-map.md)
 
 > [!div class="nextstepaction"]
-> [Ändern von Kartenstilen auf Android-Karten](https://docs.microsoft.com/azure/azure-maps/set-android-map-styles)
+> [Ändern von Kartenstilen auf Android-Karten](./set-android-map-styles.md)

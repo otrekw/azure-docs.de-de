@@ -2,17 +2,17 @@
 title: Azure Monitor-Metriken für Application Gateway
 description: Erfahren Sie, wie Sie mit Metriken die Leistung von Application Gateway überwachen.
 services: application-gateway
-author: abshamsft
+author: surajmb
 ms.service: application-gateway
 ms.topic: article
 ms.date: 06/06/2020
-ms.author: absha
-ms.openlocfilehash: c072e7c1339a2217a3c167be3237029bd71429c2
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.author: surmb
+ms.openlocfilehash: be629d9f8441ad40fe15f005f4aeb0ec5565a7ec
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93397738"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96437064"
 ---
 # <a name="metrics-for-application-gateway"></a>Metriken für Application Gateway
 
@@ -28,7 +28,7 @@ Application Gateway bietet mehrere integrierte Zeitsteuerungsmetriken, die sich 
 
 > [!NOTE]
 >
-> Wenn Application Gateway mehr als einen Listener enthält, filtern Sie immer nach der Dimension *Listener* , und vergleichen Sie dabei verschiedene Latenzmetriken, um aussagekräftige Rückschlüsse zu erhalten.
+> Wenn Application Gateway mehr als einen Listener enthält, filtern Sie immer nach der Dimension *Listener*, und vergleichen Sie dabei verschiedene Latenzmetriken, um aussagekräftige Rückschlüsse zu erhalten.
 
 - **Verbindungszeit für das Back-End**
 
@@ -40,7 +40,7 @@ Application Gateway bietet mehrere integrierte Zeitsteuerungsmetriken, die sich 
 
   Zeitintervall zwischen dem Herstellen einer Verbindung mit dem Back-End-Server und dem Empfang des letzten Bytes des Antwortheaders. 
 
-  Dies entspricht ungefähr der Summe aus der *Back-End-Verbindungszeit* , der von der Anforderung zum Erreichen des Back-Ends von Application Gateway benötigten Zeit, der Zeit, die die Back-End-Anwendung für die Antwort benötigt (Zeit für die Generierung der Inhalte durch den Server, ggf. Abrufen von Datenbankabfragen), und der Zeit, bis das erste Byte der Antwort von Application Gateway vom Back-End erreicht.
+  Dies entspricht ungefähr der Summe aus der *Back-End-Verbindungszeit*, der von der Anforderung zum Erreichen des Back-Ends von Application Gateway benötigten Zeit, der Zeit, die die Back-End-Anwendung für die Antwort benötigt (Zeit für die Generierung der Inhalte durch den Server, ggf. Abrufen von Datenbankabfragen), und der Zeit, bis das erste Byte der Antwort von Application Gateway vom Back-End erreicht.
 
 - **Antwortzeit für letztes Byte des Back-Ends**
 
@@ -52,7 +52,7 @@ Application Gateway bietet mehrere integrierte Zeitsteuerungsmetriken, die sich 
 
   Durchschnittliche Zeit, bis eine Anforderung empfangen, verarbeitet und die zugehörige Antwort gesendet wurde. 
 
-  Dies wird als Intervall zwischen dem Zeitpunkt, zu dem Application Gateway das erste Byte einer HTTP-Anforderung empfängt, bis zu dem Zeitpunkt berechnet, zu dem das letzte Byte der Antwort an den Client gesendet wurde. Dies schließt die Verarbeitungszeit durch Application Gateway, die *Antwortzeit bis zum letzten Byte vom Back-End* , die Zeit, die Application Gateway zum Senden der Antwort benötigt, sowie die *Client-RTT* ein.
+  Dies wird als Intervall zwischen dem Zeitpunkt, zu dem Application Gateway das erste Byte einer HTTP-Anforderung empfängt, bis zu dem Zeitpunkt berechnet, zu dem das letzte Byte der Antwort an den Client gesendet wurde. Dies schließt die Verarbeitungszeit durch Application Gateway, die *Antwortzeit bis zum letzten Byte vom Back-End*, die Zeit, die Application Gateway zum Senden der Antwort benötigt, sowie die *Client-RTT* ein.
 
 - **Client-RTT**
 
@@ -162,7 +162,7 @@ Für Application Gateway werden folgende Metriken unterstützt:
 
 - **Anforderungsfehler**
 
-  Anzahl von Anforderungen, die von Application Gateway mit 5xx-Serverfehlercodes verarbeitet wurden. Dies umfasst die 5xx-Codes, die von Application Gateway generiert werden, sowie die 5xx-Codes, die vom Back-End generiert werden. Die Anzahl der Anforderungen kann weiter gefiltert werden, um die Anzahl für die einzelnen/spezifischen Kombinationen aus Back-End-Pools und HTTP-Einstellungen anzuzeigen.
+  Die Anzahl von Anforderungen, für die aufgrund von Verbindungsproblemen ein Fehler aufgetreten ist. In dieser Anzahl sind auch Anforderungen enthalten, für die aufgrund einer Überschreitung der HTTP-Einstellung „Anforderungstimeout“ ein Fehler aufgetreten ist, sowie Anforderungen, die aufgrund von Verbindungsproblemen zwischen dem Anwendungsgateway und dem Back-End nicht erfolgreich waren. Diese Anzahl umfasst keine Fehler, die aufgetreten sind, weil kein fehlerfreies Back-End verfügbar war. Back-End-Antworten vom Typ „4xx“ und „5xx“ werden im Rahmen dieser Metrik ebenfalls nicht berücksichtigt.
 
 - **Antwortstatus**
 
@@ -214,7 +214,7 @@ Im folgenden Beispiel wird schrittweise die Erstellung einer Warnungsregel besch
 
 2. Füllen Sie auf der Seite **Regel hinzufügen** die Abschnitte für den Namen, die Bedingung und die Benachrichtigung aus, und wählen Sie **OK** aus.
 
-   * Wählen Sie unter **Bedingung** einen der vier Werte aus: **Größer als** , **Größer oder gleich** , **Kleiner als** oder **Kleiner oder gleich**.
+   * Wählen Sie unter **Bedingung** einen der vier Werte aus: **Größer als**, **Größer oder gleich**, **Kleiner als** oder **Kleiner oder gleich**.
 
    * Wählen Sie unter **Zeitraum** einen Zeitraum zwischen fünf Minuten und sechs Stunden aus.
 

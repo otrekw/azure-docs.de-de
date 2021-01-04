@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 07/31/2020
 ms.author: jeedes
 ms.openlocfilehash: b89ae74a1f4ead568a5454c9494d4a82b0eeea3e
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92521338"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015178"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mitel-micloud-connect-or-cloudlink-platform"></a>Tutorial: Azure Active Directory-Integration mit Mitel MiCloud Connect oder CloudLink Platform
 
@@ -40,7 +40,7 @@ Um die Azure AD-Integration in MiCloud Connect zu konfigurieren, benötigen Si
 
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden (SSO) von Azure AD.
 
-* Mitel Connect unterstützt **SP** -initiiertes einmaliges Anmelden.
+* Mitel Connect unterstützt **SP**-initiiertes einmaliges Anmelden.
 * Nach dem Konfigurieren von Mitel Connect können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
 
 ## <a name="add-mitel-connect-from-the-gallery"></a>Hinzufügen von Mitel Connect aus dem Katalog
@@ -65,7 +65,7 @@ Zum Konfigurieren der Integration von Mitel Connect in Azure AD müssen Sie Mi
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
 
-In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit MiCloud Connect oder CloudLink Platform mithilfe eines Testbenutzers namens **_Britta Simon_** . Damit einmaliges Anmelden funktioniert, muss zwischen dem Benutzer im Azure AD-Portal und dem entsprechenden Benutzer auf der Mitel-Plattform eine Verknüpfung eingerichtet werden. In den folgenden Abschnitten finden Sie Informationen zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit MiCloud Connect oder CloudLink Platform.
+In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit MiCloud Connect oder CloudLink Platform mithilfe eines Testbenutzers namens **_Britta Simon_**. Damit einmaliges Anmelden funktioniert, muss zwischen dem Benutzer im Azure AD-Portal und dem entsprechenden Benutzer auf der Mitel-Plattform eine Verknüpfung eingerichtet werden. In den folgenden Abschnitten finden Sie Informationen zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit MiCloud Connect oder CloudLink Platform.
 * Konfigurieren und Testen des einmaligen Anmelden von Azure AD mit MiCloud Connect
 * Konfigurieren und Testen des einmaligen Anmelden von Azure AD mit CloudLink Platform
 
@@ -73,10 +73,10 @@ In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azur
 
 So konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit MiCloud Connect:
 
-1. **[Konfigurieren von MiCloud Connect für das einmalige Anmelden mit Azure AD](#configure-micloud-connect-for-sso-with-azure-ad)** , um Ihren Benutzern die Verwendung des Features zu ermöglichen und die SSO-Einstellungen auf der Anwendungsseite zu konfigurieren.
+1. **[Konfigurieren von MiCloud Connect für das einmalige Anmelden mit Azure AD](#configure-micloud-connect-for-sso-with-azure-ad)**, um Ihren Benutzern die Verwendung des Features zu ermöglichen und die SSO-Einstellungen auf der Anwendungsseite zu konfigurieren.
 2. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
 3. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-4. **[Erstellen eines Mitel MiCloud Connect-Testbenutzers](#create-a-mitel-micloud-connect-test-user)** , um in Ihrem MiCloud Connect-Konto eine Entsprechung von Britta Simon zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
+4. **[Erstellen eines Mitel MiCloud Connect-Testbenutzers](#create-a-mitel-micloud-connect-test-user)**, um in Ihrem MiCloud Connect-Konto eine Entsprechung von Britta Simon zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
 5. **[Testen der einmaligen Anmeldung](#test-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
 
 ## <a name="configure-micloud-connect-for-sso-with-azure-ad"></a>Konfigurieren von MiCloud Connect für das einmalige Anmelden mit Azure AD
@@ -142,9 +142,9 @@ Um MiCloud Connect mit einmaligem Anmelden für Azure AD zu konfigurieren, emp
 
 11. Führen Sie im Azure-Portal auf der Seite **SAML-basierte Anmeldung** im Abschnitt **Mitel Connect einrichten** die folgenden Schritte aus:
 
-     1. Kopieren Sie die URL im Feld **Anmelde-URL** , und fügen Sie sie in das Feld **Sign-in URL** (Anmelde-URL) im Mitel-Kontoportal ein.
+     1. Kopieren Sie die URL im Feld **Anmelde-URL**, und fügen Sie sie in das Feld **Sign-in URL** (Anmelde-URL) im Mitel-Kontoportal ein.
 
-     1. Kopieren Sie die URL im Feld **Azure AD-Bezeichner** , und fügen Sie sie in das Feld **Entity ID** (Entitäts-ID) im Mitel-Kontoportal ein.
+     1. Kopieren Sie die URL im Feld **Azure AD-Bezeichner**, und fügen Sie sie in das Feld **Entity ID** (Entitäts-ID) im Mitel-Kontoportal ein.
          
          ![Screenshot: Beziehung zwischen der Seite „SAML-basierte Anmeldung“ im Azure-Portal und dem Mitel-Kontoportal](./media/mitel-connect-tutorial/mitel-azure-set-up-connect.png)
 
@@ -154,7 +154,7 @@ Um MiCloud Connect mit einmaligem Anmelden für Azure AD zu konfigurieren, emp
 
 In diesem Abschnitt erstellen Sie im Azure-Portal eine Testbenutzerin namens „Britta Simon“.
 
-1. Wählen Sie im Azure-Portal im linken Bereich die Option **Azure Active Directory** , **Benutzer** und dann **Alle Benutzer** aus.
+1. Wählen Sie im Azure-Portal im linken Bereich die Option **Azure Active Directory**, **Benutzer** und dann **Alle Benutzer** aus.
 
     ![Links „Benutzer und Gruppen“ und „Alle Benutzer“](common/users.png)
 
@@ -170,15 +170,15 @@ In diesem Abschnitt erstellen Sie im Azure-Portal eine Testbenutzerin namens „
   
     1. Geben Sie in das Feld **Benutzername** den Namen „brittasimon@\<yourcompanydomain\>.\<extension\>“ ein.  Beispiel: BrittaSimon@contoso.com.
 
-    1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen** , und notieren Sie sich den Wert im Feld **Kennwort** .
+    1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert im Feld **Kennwort**.
 
-    1. Klicken Sie auf **Erstellen** .
+    1. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
 In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Mitel Connect gewähren.
 
-1. Wählen Sie im Azure-Portal **Unternehmensanwendungen**  > **Alle Anwendungen** aus.
+1. Wählen Sie im Azure-Portal **Unternehmensanwendungen** > **Alle Anwendungen** aus.
 
     ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
@@ -196,7 +196,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste **Benutzer** den Eintrag **Britta Simon** und anschließend am unteren Bildschirmrand **Auswählen** aus.
 
-6. Wenn Sie einen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** in der Liste die entsprechende Rolle für den Benutzer aus, und klicken Sie dann unten auf dem Bildschirm auf **Auswählen** .
+6. Wenn Sie einen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** in der Liste die entsprechende Rolle für den Benutzer aus, und klicken Sie dann unten auf dem Bildschirm auf **Auswählen**.
 
 7. Wählen Sie im Dialogfeld **Zuweisung hinzufügen** die Option **Zuweisen** aus.
 
@@ -297,9 +297,9 @@ Zum Konfigurieren von CloudLink Platform mit einmaligem Anmelden für Azure AD
 
 10. Führen Sie im Azure-Portal auf der Seite **SAML-basierte Anmeldung** im Abschnitt **Mitel Connect einrichten** die folgenden Schritte aus:
 
-     1. Kopieren Sie die URL im Feld **Anmelde-URL** , und fügen Sie sie im CloudLink-Kontoportal in das Feld **Sign-in URL** (Anmelde-URL) ein.
+     1. Kopieren Sie die URL im Feld **Anmelde-URL**, und fügen Sie sie im CloudLink-Kontoportal in das Feld **Sign-in URL** (Anmelde-URL) ein.
 
-     1. Kopieren Sie die URL im Feld **Azure AD-Bezeichner** , und fügen Sie sie im CloudLink-Kontoportal in das Feld **IDP Identifier (Entity ID)** (IDP-Bezeichner (Entitäts-ID)) ein.
+     1. Kopieren Sie die URL im Feld **Azure AD-Bezeichner**, und fügen Sie sie im CloudLink-Kontoportal in das Feld **IDP Identifier (Entity ID)** (IDP-Bezeichner (Entitäts-ID)) ein.
      
         ![Screenshot: Anzeige der Quelle für die hier beschriebenen Werte in Mitel Connect](./media/mitel-connect-tutorial/mitel-cloudlink-copy-settings.png)
 
@@ -309,7 +309,7 @@ Zum Konfigurieren von CloudLink Platform mit einmaligem Anmelden für Azure AD
 
 In diesem Abschnitt erstellen Sie im Azure-Portal eine Testbenutzerin namens „Britta Simon“.
 
-1. Wählen Sie im Azure-Portal im linken Bereich die Option **Azure Active Directory** , **Benutzer** und dann **Alle Benutzer** aus.
+1. Wählen Sie im Azure-Portal im linken Bereich die Option **Azure Active Directory**, **Benutzer** und dann **Alle Benutzer** aus.
 
     ![Links „Benutzer und Gruppen“ und „Alle Benutzer“](common/users.png)
 
@@ -325,15 +325,15 @@ In diesem Abschnitt erstellen Sie im Azure-Portal eine Testbenutzerin namens „
   
     1. Geben Sie in das Feld **Benutzername** den Namen „brittasimon@\<yourcompanydomain\>.\<extension\>“ ein.  Beispiel: BrittaSimon@contoso.com.
 
-    1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen** , und notieren Sie sich den Wert im Feld **Kennwort** .
+    1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert im Feld **Kennwort**.
 
-    1. Klicken Sie auf **Erstellen** .
+    1. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
 In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Mitel Connect gewähren.
 
-1. Wählen Sie im Azure-Portal **Unternehmensanwendungen**  > **Alle Anwendungen** aus.
+1. Wählen Sie im Azure-Portal **Unternehmensanwendungen** > **Alle Anwendungen** aus.
 
     ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
@@ -351,7 +351,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste **Benutzer** den Eintrag **Britta Simon** und anschließend am unteren Bildschirmrand **Auswählen** aus.
 
-6. Wenn Sie einen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** in der Liste die entsprechende Rolle für den Benutzer aus, und klicken Sie dann unten auf dem Bildschirm auf **Auswählen** .
+6. Wenn Sie einen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** in der Liste die entsprechende Rolle für den Benutzer aus, und klicken Sie dann unten auf dem Bildschirm auf **Auswählen**.
 
 7. Wählen Sie im Dialogfeld **Zuweisung hinzufügen** die Option **Zuweisen** aus.
 
@@ -359,7 +359,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 In diesem Abschnitt wird beschrieben, wie Sie in CloudLink Platform einen Testbenutzer namens **_Britta Simon_** erstellen. Benutzer müssen erstellt und aktiviert werden, damit sie einmaliges Anmelden verwenden können.
 
-Ausführliche Informationen zum Hinzufügen von Benutzern im CloudLink-Kontoportal finden Sie in der [Dokumentation zu CloudLink-Konten](https://www.mitel.com/document-center/technology/cloudlink/all-releases/en/cloudlink-accounts-html) unter **_Verwalten von Benutzern_** .
+Ausführliche Informationen zum Hinzufügen von Benutzern im CloudLink-Kontoportal finden Sie in der [Dokumentation zu CloudLink-Konten](https://www.mitel.com/document-center/technology/cloudlink/all-releases/en/cloudlink-accounts-html) unter **_Verwalten von Benutzern_**.
 
 Erstellen Sie in Ihrem CloudLink-Kontoportal einen Benutzer mit den folgenden Details:
 

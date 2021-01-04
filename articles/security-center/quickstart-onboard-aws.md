@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 3a2de9b167fcbe9dc603d33fd816e70d5c3705e5
-ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
+ms.openlocfilehash: 23609613cace2f9be90ad5c88d4d51bb1c2f1a9b
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94372777"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96573509"
 ---
 #  <a name="connect-your-aws-accounts-to-azure-security-center"></a>Herstellen einer Verbindung zwischen Ihren AWS-Konten und Azure Security Center
 
@@ -49,6 +49,8 @@ Im folgenden Screenshot sehen Sie AWS-Konten, die auf dem Übersichtsdashboard v
 
 ## <a name="connect-your-aws-account"></a>Herstellen einer Verbindung mit Ihrem AWS-Konto
 
+Führen Sie die folgenden Schritte aus, um Ihren AWS-Cloudconnector zu erstellen: 
+
 ### <a name="step-1-set-up-aws-security-hub"></a>Schritt 1: Einrichten von AWS Security Hub:
 
 1. Um Sicherheitsempfehlungen für mehrere Regionen anzuzeigen, wiederholen Sie die folgenden Schritte für jede relevante Region.
@@ -66,8 +68,8 @@ Im folgenden Screenshot sehen Sie AWS-Konten, die auf dem Übersichtsdashboard v
 
 Es gibt zwei Möglichkeiten, um Security Center die Authentifizierung bei AWS zu erlauben:
 
-- **Erstellen einer IAM-Rolle für Security Center** : Dies ist die sicherste Methode und wird empfohlen.
-- **AWS-Benutzer für Security Center** : Diese Option ist weniger sicher und kann genutzt werden, wenn IAM nicht aktiviert ist.
+- **Erstellen einer IAM-Rolle für Security Center**: Dies ist die sicherste Methode und wird empfohlen.
+- **AWS-Benutzer für Security Center**: Diese Option ist weniger sicher und kann genutzt werden, wenn IAM nicht aktiviert ist.
 
 #### <a name="create-an-iam-role-for-security-center"></a>Erstellen einer IAM-Rolle für Security Center
 1. Wählen Sie in Ihrer Amazon Web Services-Konsole unter **Security, Identity & Compliance** (Sicherheit, Identität und Compliance) die Option **IAM** aus.
@@ -77,7 +79,7 @@ Es gibt zwei Möglichkeiten, um Security Center die Authentifizierung bei AWS zu
 1. Wählen Sie **Another AWS account** (Ein anderes AWS-Konto) aus.
 1. Geben Sie die folgenden Details ein:
 
-    - **Account ID** (Konto-ID): Geben Sie die Microsoft-Konto-ID ( **158177204117** ) ein, wie sie auf der AWS-Connectorseite in Security Center angezeigt wird.
+    - **Account ID** (Konto-ID): Geben Sie die Microsoft-Konto-ID (**158177204117**) ein, wie sie auf der AWS-Connectorseite in Security Center angezeigt wird.
     - **Require External ID** (Externe ID erforderlich): Diese Option sollte ausgewählt werden.
     - **External ID** (Externe ID): Geben Sie die Abonnement-ID ein, wie sie auf der AWS-Connectorseite in Security Center angezeigt wird. 
 
@@ -160,7 +162,7 @@ AWS Systems Manager ist für die Automatisierung von Aufgaben in Ihren AWS-Resso
 
         Unter [Verwenden von Tags zum Organisieren von Azure-Ressourcen und Verwaltungshierarchie](../azure-resource-manager/management/tag-resources.md) erfahren Sie mehr über Azure-Tags.
 
-### <a name="step-7-confirmation"></a>Schritt 7. Bestätigung
+### <a name="step-6-confirmation"></a>Schritt 6. Bestätigung
 
 Wenn der Connector erfolgreich erstellt und der AWS Security Hub ordnungsgemäß konfiguriert wurde:
 

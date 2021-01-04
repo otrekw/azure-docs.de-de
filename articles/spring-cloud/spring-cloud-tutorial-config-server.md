@@ -7,12 +7,12 @@ ms.author: brendm
 author: bmitchell287
 ms.date: 10/18/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: 06d5196e612bcf20e11f17634b32db028cd5bc88
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 3033be3a793c318135f8150b86114b6fee55fac7
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93378090"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94655197"
 ---
 # <a name="set-up-a-spring-cloud-config-server-instance-for-your-service"></a>Einrichten einer Spring Cloud-Konfigurationsserverinstanz für Ihren Dienst
 
@@ -133,13 +133,25 @@ Nachdem Sie Ihre Konfigurationsdateien in einem Repository gespeichert haben, m�
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
-1. Navigieren Sie zur Seite **Übersicht** von Azure Spring Cloud.
+2. Navigieren Sie zur Seite **Übersicht** von Azure Spring Cloud.
 
-1. Wählen Sie den zu konfigurierenden Dienst aus.
+3. Wählen Sie im Navigationsbereich auf der linken Seite die Option **Konfigurationsserver** aus.
 
-1. Wählen Sie im linken Bereich der Dienstseite unter **Einstellungen** die Registerkarte **Konfigurationsserver** aus.
+4. Geben Sie im Abschnitt **Standardrepository** für **URI** den Wert „https://github.com/Azure-Samples/piggymetrics-config“ ein.
 
-![Fenster „Konfigurationsserver“](media/spring-cloud-tutorial-config-server/portal-config-server.png)
+5. Klicken Sie auf **Überprüfen**.
+
+    ![Navigieren zum Konfigurationsserver](media/spring-cloud-quickstart-launch-app-portal/portal-config.png)
+
+6. Klicken Sie nach Abschluss der Überprüfung auf **Anwenden**, um die Änderungen zu speichern.
+
+    ![Überprüfen des Konfigurationsservers](media/spring-cloud-quickstart-launch-app-portal/validate-complete.png)
+
+7. Die Aktualisierung der Konfiguration kann einige Minuten dauern.
+ 
+    ![Aktualisieren des Konfigurationsservers](media/spring-cloud-quickstart-launch-app-portal/updating-config.png) 
+
+8. Sie sollten eine Benachrichtigung erhalten, wenn die Konfiguration abgeschlossen ist.
 
 ### <a name="enter-repository-information-directly-to-the-azure-portal"></a>Direkte Eingabe von Repositoryinformationen im Azure-Portal
 

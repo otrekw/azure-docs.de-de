@@ -1,6 +1,6 @@
 ---
-title: PowerShell- und REST-APIs für einen dedizierten SQL-Pool
-description: Die wichtigsten PowerShell-Cmdlets für einen dedizierten SQL-Pool in Azure Synapse Analytics, einschließlich der Cmdlets zum Anhalten und Fortsetzen einer Datenbank.
+title: PowerShell- und REST-APIs für einen dedizierten SQL-Pool (früher SQL DW)
+description: Die wichtigsten PowerShell-Cmdlets für einen dedizierten SQL-Pool (früher SQL DW) in Azure Synapse Analytics, einschließlich der Cmdlets zum Anhalten und Fortsetzen einer Datenbank.
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, devx-track-azurepowershell
-ms.openlocfilehash: a86676f1a7939ff33deeeeae8d3f45c8238645d5
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: bb26ac0071a50095f8e93ce0cc25da0055bdbac8
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93305295"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96448233"
 ---
-# <a name="powershell--rest-apis-for-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>PowerShell- und REST-APIs für einen dedizierten SQL-Pool in Azure Synapse Analytics 
+# <a name="powershell--rest-apis-for-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>PowerShell- und REST-APIs für einen dedizierten SQL-Pool (früher SQL DW) in Azure Synapse Analytics 
 
-Viele Verwaltungsaufgaben für einen dedizierten SQL-Pool können entweder mithilfe von Azure PowerShell-Cmdlets oder REST-APIs erfolgen.  Die folgenden Beispiele zeigen, wie Sie häufige Aufgaben in Ihrem dedizierten SQL-Pool mithilfe von PowerShell-Befehlen automatisieren können.  Einige gute REST-Beispiele finden Sie im Artikel [Verwalten von Computeleistung in Azure SQL Data Warehouse (REST)](sql-data-warehouse-manage-compute-rest-api.md).
+Viele Verwaltungsaufgaben für einen dedizierten SQL-Pool können entweder mithilfe von Azure PowerShell-Cmdlets oder REST-APIs erfolgen.  Die folgenden Beispiele zeigen, wie Sie häufige Aufgaben in Ihrem dedizierten SQL-Pool (früher SQL DW) mithilfe von PowerShell-Befehlen automatisieren können.  Einige gute REST-Beispiele finden Sie im Artikel [Verwalten von Computeleistung in Azure SQL Data Warehouse (REST)](sql-data-warehouse-manage-compute-rest-api.md).
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 

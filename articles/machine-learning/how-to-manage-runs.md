@@ -9,15 +9,15 @@ ms.author: roastala
 author: rastala
 manager: cgronlun
 ms.reviewer: nibaccam
-ms.date: 01/09/2020
+ms.date: 12/04/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 2f7d102ad6bf2aba2056456acfe6207a0b0643ba
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: ec006636ed7e975b696aa32300b32089e3209bb5
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93357979"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96600471"
 ---
 # <a name="start-monitor-and-cancel-training-runs-in-python"></a>Starten, Überwachen und Abbrechen von Trainingsausführungen in Python
 
@@ -29,6 +29,10 @@ In diesem Artikel finden Sie Beispiele für die folgenden Aufgaben:
 * Abbrechen oder Fehler von Ausführungen
 * Erstellen untergeordneter Ausführungen
 * Markieren und Suchen von Ausführungen
+
+> [!TIP]
+> Informationen zur Überwachung des Azure Machine Learning-Diensts und der zugehörigen Azure-Dienste finden Sie unter [Überwachen von Azure Machine Learning](monitor-azure-machine-learning.md).
+> Informationen zur Überwachung von Modellen, die als Webdienste oder IoT Edge-Module bereitgestellt werden, finden Sie unter [Sammeln von Daten von Modellen in der Produktion](how-to-enable-data-collection.md) sowie unter [Überwachen und Erfassen von Daten von ML-Webdienst-Endpunkten](how-to-enable-app-insights.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -274,7 +278,7 @@ Um viele untergeordnete Ausführungen effizient zu erstellen, verwenden Sie die 
 
 ### <a name="submit-child-runs"></a>Senden untergeordneter Ausführungen
 
-Untergeordnete Ausführungen können auch aus einer übergeordneten Ausführung gesendet werden. So können Sie Hierarchien aus übergeordneten und untergeordneten Ausführungen erstellen. 
+Untergeordnete Ausführungen können auch aus einer übergeordneten Ausführung gesendet werden. So können Sie Hierarchien aus übergeordneten und untergeordneten Ausführungen erstellen. Es ist nicht möglich, eine untergeordnete Ausführung ohne eine übergeordnete Ausführung zu erstellen: Auch wenn die übergeordnete Ausführung lediglich untergeordnete Ausführungen startet, muss die Hierarchie trotzdem erstellt werden. Der Status aller Ausführungen ist unabhängig: Eine übergeordnete Ausführung kann den Erfolgsstatus `"Completed"` aufweisen, auch wenn eine untergeordnete Ausführung abgebrochen wurde oder zu einem Fehler führte.  
 
 Möglicherweise möchten Sie, dass untergeordnete Ausführungen eine andere Ausführungskonfiguration verwenden als die übergeordnete Ausführung. Sie könnten beispielsweise eine weniger leistungsfähige CPU-basierte Konfiguration für die übergeordnete Ausführung und GPU-basierte Konfigurationen für die untergeordneten Ausführungen verwenden. Häufig ist es auch wünschenswert, verschiedene Argumente und Daten an die einzelnen untergeordneten Ausführung zu übergeben. Erstellen Sie zum Anpassen einer untergeordneten Ausführung ein Objekt vom Typ `ScriptRunConfig` für die untergeordnete Ausführung. Im unten bereitgestellten Codebeispiel werden folgende Schritte ausgeführt:
 
@@ -323,6 +327,24 @@ Um die untergeordneten Ausführungen eines bestimmten übergeordneten Elements a
 ```python
 print(parent_run.get_children())
 ```
+
+### <a name="log-to-parent-or-root-run"></a>Protokollieren in einer übergeordneten oder der Stammausführung
+
+Sie können über das Feld `Run.parent` auf die Ausführung zugreifen, die die aktuelle untergeordnete Ausführung gestartet hat. Dies wird häufig genutzt, wenn die Protokollergebnisse an einer zentralen Stelle konsolidiert werden sollen. Beachten Sie, dass untergeordnete Ausführungen asynchron ausgeführt werden und es keine Garantie für die Reihenfolge oder Synchronisierung gibt. Die einzige Möglichkeit stellt das Warten auf die untergeordneten Ausführungen durch die übergeordnete Ausführung dar.
+
+```python
+# in child (or even grandchild) run
+
+def root_run(self : Run) -> Run :
+    if self.parent is None : 
+        return self
+    return root_run(self.parent)
+
+current_child_run = Run.get_context()
+root_run(current_child_run).log("MyMetric", f"Data from child run {current_child_run.id}")
+
+```
+
 
 ## <a name="tag-and-find-runs"></a>Markieren und Suchen von Ausführungen
 

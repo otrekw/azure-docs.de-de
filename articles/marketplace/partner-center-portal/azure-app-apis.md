@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: 87f27f316914f3efce5a750f50471c65dceca84e
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 9863ed24da9e427f885a4794bda7e103b0c1cc8e
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93127840"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96455444"
 ---
 # <a name="partner-center-submission-api-to-onboard-azure-apps-in-partner-center"></a>Partner Center-Übermittlungs-API zum Integrieren von Azure-Apps im Partner Center
 
-Verwenden Sie die *Partner Center-Übermittlungs-API* , um Azure-Angebote programmgesteuert abzufragen, zu erstellen und zu veröffentlichen.  Diese API ist nützlich, wenn Ihr Konto viele Angebote verwaltet und Sie den Übermittlungsvorgang für diese Angebote automatisieren und optimieren möchten.
+Verwenden Sie die *Partner Center-Übermittlungs-API*, um Azure-Angebote programmgesteuert abzufragen, zu erstellen und zu veröffentlichen.  Diese API ist nützlich, wenn Ihr Konto viele Angebote verwaltet und Sie den Übermittlungsvorgang für diese Angebote automatisieren und optimieren möchten.
 
 ## <a name="api-prerequisites"></a>API-Voraussetzungen
 
@@ -47,7 +47,7 @@ Um die Microsoft Store-Übermittlungs-API zu verwenden, müssen Sie Ihrem Partne
 
 ### <a name="step-2-obtain-an-azure-ad-access-token"></a>Schritt 2: Abrufen eines Azure AD-Zugriffstokens
 
-Bevor Sie eine der Methoden in der Partner Center-Übermittlungs-API aufrufen, müssen Sie zunächst ein Azure AD-Zugriffstoken abrufen, das Sie an den **Authorization** -Header jeder Methode in der API übergeben. Nachdem Sie ein Zugriffstoken erhalten haben, haben Sie 60 Minuten Zeit, es zu verwenden, bevor es abläuft. Nach dem Ablauf können Sie das Token aktualisieren, damit Sie es in zukünftigen Aufrufen der API weiterhin verwenden können.
+Bevor Sie eine der Methoden in der Partner Center-Übermittlungs-API aufrufen, müssen Sie zunächst ein Azure AD-Zugriffstoken abrufen, das Sie an den **Authorization**-Header jeder Methode in der API übergeben. Nachdem Sie ein Zugriffstoken erhalten haben, haben Sie 60 Minuten Zeit, es zu verwenden, bevor es abläuft. Nach dem Ablauf können Sie das Token aktualisieren, damit Sie es in zukünftigen Aufrufen der API weiterhin verwenden können.
 
 Um das Zugriffstoken zu erhalten, befolgen Sie die Anweisungen in [Verwenden von Clientanmeldeinformationen für Dienst-zu-Dienst-Aufrufe](../../active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow.md), um eine `HTTP POST`-Anweisung an den Endpunkt `https://login.microsoftonline.com/<tenant_id>/oauth2/token` zu senden. Hier ist eine Beispielanforderung:
 
@@ -73,5 +73,5 @@ https://apidocs.microsoft.com/services/partneringestion/
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Erfahren Sie mehr über das [Erstellen einer technischen Azure-VM-Ressource](create-azure-container-technical-assets.md).
-* Lesen Sie mehr über das [Erstellen eines Azure-Containerangebots](create-azure-container-offer.md).
+* Erfahren Sie mehr über das [Erstellen einer technischen Azure-VM-Ressource](../create-azure-container-technical-assets.md).
+* Lesen Sie mehr über das [Erstellen eines Azure-Containerangebots](../create-azure-container-offer.md).

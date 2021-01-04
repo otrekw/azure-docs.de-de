@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 03/25/2020
 ms.author: glenga
-ms.openlocfilehash: 7ddceb2808874e531cfda81e5a9ce74be3a4fab4
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: f102a5dd5b7dccba6643176d06d17a2a65171c90
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92517077"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96904069"
 ---
 ## <a name="configure-your-local-environment"></a>Konfigurieren Ihrer lokalen Umgebung
 
@@ -17,8 +17,8 @@ Bevor Sie mit diesem Lernprogramm beginnen können, benötigen Sie Folgendes:
 
 + Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-java"  
-+ [Azure Functions Core Tools](../articles/azure-functions/functions-run-local.md#v2), Version 2.7.1846 oder höhere 2.x-Version.
+::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-java,programming-language-other"  
++ [Azure Functions Core Tools](../articles/azure-functions/functions-run-local.md#v2), ab Version 2.7.1846.
 ::: zone-end  
 ::: zone pivot="programming-language-python"
 + Die Azure Functions Core Tools-Version, die Ihrer installierten Python-Version entspricht:
@@ -42,8 +42,11 @@ Bevor Sie mit diesem Lernprogramm beginnen können, benötigen Sie Folgendes:
 + [.NET Core SDK 3.1](https://www.microsoft.com/net/download)
 ::: zone-end
 ::: zone pivot="programming-language-java"  
-+ [Java Developer Kit](https://aka.ms/azure-jdks), Version 8 oder 11. 
++ [Java Developer Kit](/azure/developer/java/fundamentals/java-jdk-long-term-support), Version 8 oder 11. 
 
 + [Apache Maven](https://maven.apache.org), Version 3.0 oder höher
 
+::: zone-end
+::: zone pivot="programming-language-other"
++ Entwicklungstools für die von Ihnen verwendete Sprache. In diesem Tutorial wird als Beispiel die [Programmiersprache R](https://www.r-project.org/) verwendet.
 ::: zone-end

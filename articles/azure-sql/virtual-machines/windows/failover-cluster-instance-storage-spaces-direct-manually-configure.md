@@ -7,18 +7,19 @@ author: MashaMSFT
 editor: monicar
 tags: azure-service-management
 ms.service: virtual-machines-sql
+ms.subservice: hadr
 ms.custom: na
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/18/2020
 ms.author: mathoma
-ms.openlocfilehash: 9b90d13d6f4fa5a33bff38aaa66728a5d0f3d70f
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 6ed5e11a8492314e99b9f105d259fa910dcdb77d
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289957"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97357805"
 ---
 # <a name="create-an-fci-with-storage-spaces-direct-sql-server-on-azure-vms"></a>Erstellen einer FCI mit „Direkte Speicherplätze“ (SQL-Server auf Azure-VMs)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -217,7 +218,7 @@ Nachdem Sie den Failovercluster und alle Clusterkomponenten einschließlich Spei
 
 ## <a name="register-with-the-sql-vm-rp"></a>Registrieren beim SQL-VM-RP
 
-Um Ihre SQL Server-VM über das Portal zu verwalten, registrieren Sie sie beim SQL-VM-Ressourcenanbieter (RP) im [Verwaltungsmodus „Lightweight“](sql-vm-resource-provider-register.md#lightweight-management-mode), der derzeit als einziger Modus mit FCI und SQL Server auf Azure-VMs unterstützt wird. 
+Wenn Sie Ihre SQL Server-VM im Portal verwalten möchten, registrieren Sie die VM mit der SQL-IaaS-Agent-Erweiterung im [Verwaltungsmodus „Lightweight“](sql-agent-extension-manually-register-single-vm.md#lightweight-management-mode). Dies ist derzeit der einzige Modus, der mit FCI und SQL Server auf Azure-VMs unterstützt wird. 
 
 
 Registrieren einer SQL Server-VM im Modus „Lightweight“ mit PowerShell:  
@@ -239,7 +240,7 @@ Um Datenverkehr ordnungsgemäß an den aktuellen primären Knoten zu leiten, kon
 
 - Virtuelle Azure-Computer unterstützen Microsoft Distributed Transaction Coordinator (MSDTC) auf Windows Server 2019 mit Speicher auf CSVs und einen [Standardlastenausgleich](../../../load-balancer/load-balancer-overview.md).
 - Datenträger, die als NTFS-formatierte Datenträger angefügt wurden, können nur dann mit „Direkte Speicherplätze“ verwendet werden, wenn die Option für die Datenträgerberechtigung beim Hinzufügen von Speicher zum Cluster deaktiviert ist oder wird. 
-- Nur die Registrierung beim SQL-VM-Ressourcenanbieter im [Verwaltungsmodus „Lightweight“](sql-server-iaas-agent-extension-automate-management.md#management-modes) wird unterstützt.
+- Nur die Registrierung mit der SQL-IaaS-Agent-Erweiterung im [Verwaltungsmodus „Lightweight“](sql-server-iaas-agent-extension-automate-management.md#management-modes) wird unterstützt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

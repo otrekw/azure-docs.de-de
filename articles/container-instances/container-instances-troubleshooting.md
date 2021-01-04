@@ -4,12 +4,12 @@ description: Informationen zum Beheben von häufigen Problemen beim Bereitstelle
 ms.topic: article
 ms.date: 06/25/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: ac75fff3b088a7d595de2b27c92126ce592aff47
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: d8e7fb85e369f5f278436370944eafeb1fb6a50e
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746909"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96779514"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>Beheben von häufigen Problemen in Azure Container Instances
 
@@ -187,7 +187,7 @@ Eine weitere Möglichkeit, die Auswirkungen des Pullvorgangs für das Image auf 
 
 #### <a name="cached-images"></a>Zwischengespeicherte Images
 
-Azure Container Instances verwendet einen Mechanismus für die Zwischenspeicherung, um die Dauer des Containerstartvorgangs für Images basierend auf allgemeinen [Windows-Basisimages](container-instances-faq.md#what-windows-base-os-images-are-supported) (u. a. `nanoserver:1809`, `servercore:ltsc2019` und `servercore:1809`) zu verkürzen. Häufig verwendete Linux-Images wie `ubuntu:1604` und `alpine:3.6` werden auch zwischengespeichert. Verwenden Sie die API [List Cached Images][list-cached-images] (Zwischengespeicherte Images auflisten), um eine aktuelle Liste der zwischengespeicherten Images und Tags zu erhalten.
+Azure Container Instances verwendet einen Mechanismus für die Zwischenspeicherung, um die Dauer des Containerstartvorgangs für Images basierend auf allgemeinen [Windows-Basisimages](container-instances-faq.md#what-windows-base-os-images-are-supported) (u. a. `nanoserver:1809`, `servercore:ltsc2019` und `servercore:1809`) zu verkürzen. Häufig verwendete Linux-Images wie `ubuntu:1604` und `alpine:3.6` werden auch zwischengespeichert. Vermeiden Sie sowohl bei Windows- als auch Linux-Images die Verwendung des `latest`-Tags. Lesen Sie zur Anleitung [Bewährte Methoden für Imagetags](../container-registry/container-registry-image-tag-version.md) der Containerregistrierung. Verwenden Sie die API [List Cached Images][list-cached-images] (Zwischengespeicherte Images auflisten), um eine aktuelle Liste der zwischengespeicherten Images und Tags zu erhalten.
 
 > [!NOTE]
 > Die Verwendung von auf Windows Server 2019 basierenden Images in Azure Container Instances befindet sich im Vorschaustadium.
@@ -213,7 +213,7 @@ Wenn Sie überprüfen möchten, ob Azure Container Instances an dem Port lausche
     --ip-address Public --ports 9000 \
     --environment-variables 'PORT'='9000'
     ```
-1. Suchen Sie die IP-Adresse der Containergruppe in der Befehlsausgabe von `az container create`. Suchen Sie den Wert von **ip** . 
+1. Suchen Sie die IP-Adresse der Containergruppe in der Befehlsausgabe von `az container create`. Suchen Sie den Wert von **ip**. 
 1. Nachdem der Container erfolgreich bereitgestellt wurde, navigieren Sie im Browser zu der IP-Adresse und dem Port der Container-App, z. B. `192.0.2.0:9000`. 
 
     In der Web-App sollte die Meldung „Willkommen bei Azure Container Instances“ angezeigt werden.

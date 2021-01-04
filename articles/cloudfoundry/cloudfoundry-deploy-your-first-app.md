@@ -7,12 +7,12 @@ ms.subservice: workloads
 ms.topic: article
 ms.date: 06/14/2017
 ms.author: seanmck
-ms.openlocfilehash: 18f9f62ba28595289d37975200352c26788e69cc
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: c8afc4f15f421a7b60b95d09b954e7742c24c66e
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93040031"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95519675"
 ---
 # <a name="deploy-your-first-app-to-cloud-foundry-on-microsoft-azure"></a>Bereitstellen Ihrer ersten App in Cloud Foundry in Microsoft Azure
 
@@ -64,7 +64,7 @@ cf target -o testorg -s dev
 Wenn Sie nun eine Anwendung bereitstellen, wird sie automatisch in der neuen Organisation und im neuen Space erstellt. Um zu bestätigen, dass es in der neuen Organisation und im neuen Space keine Apps gibt, geben Sie erneut `cf apps` ein.
 
 > [!NOTE] 
-> Weitere Informationen zu Organisationen und Spaces und ihrer Nutzung für die rollenbasierte Zugriffssteuerung finden Sie in der [Cloud Foundry-Dokumentation][cf-orgs-spaces-docs].
+> Weitere Informationen zu Organisationen und Spaces und ihrer Nutzung für die rollenbasierte Zugriffssteuerung von Cloud Foundry (Cloud Foundry RBAC) finden Sie in der [Cloud Foundry-Dokumentation][cf-orgs-spaces-docs].
 
 ## <a name="deploy-an-application"></a>Bereitstellen von Anwendungen
 
@@ -114,7 +114,7 @@ Sie können die Cloud Foundry CLI verwenden, um Protokolle für eine Anwendung a
 cf logs hello-spring-cloud
 ```
 
-Standardmäßig verwendet der Befehl „logs“ *tail* , wodurch neue Protokolle angezeigt werden, während sie geschrieben werden. Damit neue Protokolle angezeigt werden, aktualisieren Sie die App Hello Spring Cloud im Browser.
+Standardmäßig verwendet der Befehl „logs“ *tail*, wodurch neue Protokolle angezeigt werden, während sie geschrieben werden. Damit neue Protokolle angezeigt werden, aktualisieren Sie die App Hello Spring Cloud im Browser.
 
 Um Protokolle anzuzeigen, die bereits geschrieben wurden, fügen Sie den Schalter `recent` hinzu:
 

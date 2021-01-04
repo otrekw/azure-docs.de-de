@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 05/21/2019
 ms.author: sngun
-ms.openlocfilehash: 3b47c7e8f31b51d51f5fad20cc068debb1dc2927
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: b27bab9ea3029264143caaacf094f0a799894356
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93339732"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359862"
 ---
 # <a name="visualize-azure-cosmos-db-data-by-using-the-power-bi-connector"></a>Visualisieren von Azure Cosmos DB-Daten mit dem Power BI-Connector
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -32,7 +32,7 @@ Vergewissern Sie sich vor dem Ausführen der Anweisungen dieses Power BI-Tutoria
 
 * [Laden Sie die neueste Version von Power BI Desktop herunter](https://powerbi.microsoft.com/desktop).
 
-* Laden Sie die [Beispieldaten zu Vulkanen](https://github.com/Azure-Samples/azure-cosmos-db-sample-data/blob/master/SampleData/VolcanoData.json) von GitHub herunter.
+* Laden Sie die [Beispieldaten zu Vulkanen](https://github.com/Azure-Samples/azure-cosmos-db-sample-data/blob/main/SampleData/VolcanoData.json) von GitHub herunter.
 
 * [Erstellen Sie ein Azure Cosmos-Datenbankkonto](create-cosmosdb-resources-portal.md#create-an-azure-cosmos-db-account), und importieren Sie die Vulkandaten mithilfe des [Azure Cosmos DB-Datenmigrationstools](import-data.md). Berücksichtigen Sie beim Importieren von Daten die folgenden Einstellungen für die Quelle und die Ziele im Datenmigrationstool:
 
@@ -76,13 +76,13 @@ Sie rufen die Daten zu Vulkanen aus dem Cosmos DB-Konto ab und visualisieren sie
 
 1. Führen Sie Power BI Desktop aus.
 
-2. Direkt über die Willkommensseite können Sie **Daten abrufen** , **aktuelle Quellen** anzeigen oder **andere Berichte öffnen**. Klicken Sie oben rechts auf das „X“, um das Dialogfeld zu schließen. Die Ansicht **Bericht** von Power BI Desktop wird angezeigt.
+2. Direkt über die Willkommensseite können Sie **Daten abrufen**, **aktuelle Quellen** anzeigen oder **andere Berichte öffnen**. Klicken Sie oben rechts auf das „X“, um das Dialogfeld zu schließen. Die Ansicht **Bericht** von Power BI Desktop wird angezeigt.
    
    :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbireportview.png" alt-text="Power BI Desktop-Berichtsansicht – Power BI-Connector":::
 
 3. Wählen Sie das Menüband **Start** aus, und klicken Sie dann auf **Daten abrufen**.  Das Fenster **Daten abrufen** wird angezeigt.
 
-4. Klicken Sie auf **Azure** , wählen Sie **Azure Cosmos DB (Beta)** aus, und klicken Sie dann auf **Verbinden**. 
+4. Klicken Sie auf **Azure**, wählen Sie **Azure Cosmos DB (Beta)** aus, und klicken Sie dann auf **Verbinden**. 
 
    :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbigetdata.png" alt-text="Power BI Desktop-Datenabruf – Power BI-Connector":::
 
@@ -104,14 +104,14 @@ Sie rufen die Daten zu Vulkanen aus dem Cosmos DB-Konto ab und visualisieren sie
     
     :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbinavigator.png" alt-text="Power BI-Tutorial für den Power BI-Connector für Azure Cosmos DB – Navigatorfenster":::
 
-12. Klicken Sie auf **Bearbeiten** , um den Abfrage-Editor in einem neuen Fenster zu starten und die Daten zu transformieren.
+12. Klicken Sie auf **Bearbeiten**, um den Abfrage-Editor in einem neuen Fenster zu starten und die Daten zu transformieren.
 
 ## <a name="flattening-and-transforming-json-documents"></a>Vereinfachen und Transformieren von JSON-Dokumenten
 1. Wechseln Sie zum Abfrage-Editor-Fenster von Power BI, in dem im mittleren Bereich die Spalte **Dokument** angezeigt wird.
 
    :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbiqueryeditor.png" alt-text="Power BI Desktop – Abfrage-Editor":::
 
-1. Klicken Sie auf das Erweiterungssteuerelement rechts in der Spaltenüberschrift **Dokument**.  Das Kontextmenü mit einer Liste von Feldern wird angezeigt.  Wählen Sie die Felder aus, die Sie für Ihren Bericht benötigen, z.B. „Volcano Name“, „Country“, „Region“, „Location“, „Elevation“, „Type“, „Status“ und „Last Known Eruption“. Deaktivieren Sie das Kontrollkästchen **Ursprünglichen Spaltennamen als Präfix verwenden** , und klicken Sie dann auf **OK**.
+1. Klicken Sie auf das Erweiterungssteuerelement rechts in der Spaltenüberschrift **Dokument**.  Das Kontextmenü mit einer Liste von Feldern wird angezeigt.  Wählen Sie die Felder aus, die Sie für Ihren Bericht benötigen, z.B. „Volcano Name“, „Country“, „Region“, „Location“, „Elevation“, „Type“, „Status“ und „Last Known Eruption“. Deaktivieren Sie das Kontrollkästchen **Ursprünglichen Spaltennamen als Präfix verwenden**, und klicken Sie dann auf **OK**.
    
    :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbiqueryeditorexpander.png" alt-text="Power BI-Tutorial für den Power BI-Connector für Azure Cosmos DB – Erweitern von Dokumenten":::
 
@@ -164,9 +164,9 @@ In der Berichtsansicht von Power BI Desktop können Sie Berichte erstellen, um D
 
 In der Berichtsansicht wird Folgendes angezeigt:
 
-1. Der Bereich **Felder** , in dem eine Liste von Datenmodellen mit Feldern angezeigt wird, die Sie für Ihre Berichte verwenden können
+1. Der Bereich **Felder**, in dem eine Liste von Datenmodellen mit Feldern angezeigt wird, die Sie für Ihre Berichte verwenden können
 1. Der Bereich **Visualisierungen** . Ein Bericht kann eine einzelne oder mehrere Visualisierungen enthalten.  Wählen Sie die zu Ihren Bedürfnissen passenden Visualisierungstypen im Bereich **Visualisierungen** aus.
-1. Der Zeichenbereich **Bericht** , in dem Sie die visuellen Objekte für den Bericht erstellen
+1. Der Zeichenbereich **Bericht**, in dem Sie die visuellen Objekte für den Bericht erstellen
 1. Die Seite **Bericht** . Sie können mehrere Berichtsseiten in Power BI Desktop hinzufügen.
 
 Das folgende Beispiel zeigt die grundlegenden Schritte zum Erstellen eines einfachen interaktiven Berichts mit einer Kartenansicht.
@@ -178,7 +178,7 @@ Das folgende Beispiel zeigt die grundlegenden Schritte zum Erstellen eines einfa
 1. Jetzt sollte eine Karte mit einer Reihe von Blasen angezeigt werden. Die Blasen markieren den Standort der einzelnen Vulkane, und die Größe der Blasen korreliert mit der Höhe (Elevation) der Vulkane.
 1. Sie haben jetzt einen einfachen Bericht erstellt.  Sie können den Bericht weiter anpassen, indem Sie weitere Visualisierungen hinzufügen.  In unserem Fall haben wir einen Datenschnitt für den Vulkantyp hinzugefügt, um den Bericht interaktiv zu gestalten.  
    
-1. Klicken Sie im Menü „Datei“ auf **Speichern** , und speichern Sie die Datei unter „PowerBITutorial.pbix“.
+1. Klicken Sie im Menü „Datei“ auf **Speichern**, und speichern Sie die Datei unter „PowerBITutorial.pbix“.
 
 ## <a name="publish-and-share-your-report"></a>Veröffentlichen und Freigeben des Berichts
 Zum Freigeben des Berichts müssen Sie über ein Konto in PowerBI.com verfügen.

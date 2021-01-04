@@ -10,15 +10,15 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/02/2020
+ms.date: 11/13/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: d65b2db9c69d006476ae1d08a1af3e60efe48930
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.openlocfilehash: 9bdd70baa906d9dc03a37eecb0388eee5638f153
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93280554"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184279"
 ---
 # <a name="add-azure-role-assignments-using-azure-resource-manager-templates"></a>Hinzufügen von Azure-Rollenzuweisungen mithilfe von Azure Resource Manager-Vorlagen
 
@@ -209,14 +209,7 @@ az deployment create --location centralus --template-file rbac-test.json --param
 
 ### <a name="resource-scope"></a>Ressourcenumfang
 
-Wenn Sie auf der Ebene einer Ressource eine Rollenzuweisung hinzufügen müssen, ist das Format der Rollenzuweisung anders. Sie stellen den Namespace des Ressourcenanbieters und den Ressourcentyp der Ressource bereit, der die Rolle zugewiesen werden soll. Außerdem fügen Sie den Namen der Ressource in den Namen der Rollenzuweisung ein.
-
-Verwenden Sie für den Typ und den Namen der Rollenzuweisung das folgende Format:
-
-```json
-"type": "{resource-provider-namespace}/{resource-type}/providers/roleAssignments",
-"name": "{resource-name}/Microsoft.Authorization/{role-assign-GUID}"
-```
+Wenn Sie auf der Ebene einer Ressource eine Rollenzuweisung hinzufügen müssen, legen Sie für die `scope`-Eigenschaft der Rollenzuweisung den Namen der Ressource fest.
 
 Die folgende Vorlage veranschaulicht Folgendes:
 
@@ -230,7 +223,7 @@ Um die Vorlage zu verwenden, müssen Sie Folgendes eingeben:
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "principalId": {
@@ -248,6 +241,13 @@ Um die Vorlage zu verwenden, müssen Sie Folgendes eingeben:
             ],
             "metadata": {
                 "description": "Built-in role to assign"
+            }
+        },
+        "roleNameGuid": {
+            "type": "string",
+            "defaultValue": "[newGuid()]",
+            "metadata": {
+                "description": "A new GUID used to identify the role assignment"
             }
         },
         "location": {
@@ -274,9 +274,10 @@ Um die Vorlage zu verwenden, müssen Sie Folgendes eingeben:
             "properties": {}
         },
         {
-            "type": "Microsoft.Storage/storageAccounts/providers/roleAssignments",
-            "apiVersion": "2018-09-01-preview",
-            "name": "[concat(variables('storageName'), '/Microsoft.Authorization/', guid(uniqueString(variables('storageName'))))]",
+            "type": "Microsoft.Authorization/roleAssignments",
+            "apiVersion": "2020-04-01-preview",
+            "name": "[parameters('roleNameGuid')]",
+            "scope": "[concat('Microsoft.Storage/storageAccounts', '/', variables('storageName'))]",
             "dependsOn": [
                 "[variables('storageName')]"
             ],
@@ -379,7 +380,7 @@ Wenn Sie in Azure RBAC Zugriff auf eine Azure-Ressource entfernen möchten, entf
 
 - [Azure portal](role-assignments-portal.md#remove-a-role-assignment)
 - [Azure PowerShell](role-assignments-powershell.md#remove-a-role-assignment)
-- [Azure-Befehlszeilenschnittstelle](role-assignments-cli.md#remove-role-assignment)
+- [Azure-Befehlszeilenschnittstelle](role-assignments-cli.md#remove-a-role-assignment)
 - [REST-API](role-assignments-rest.md#remove-a-role-assignment)
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 07d2e9fa98c24695a119c651539d4003ecd8524a
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: 6d9abc67035b4581a028d8e59ef080b4f1ffa5b9
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93242091"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96519041"
 ---
 # <a name="data-encryption-for-azure-database-for-mysql-by-using-the-azure-cli"></a>Datenverschlüsselung für Azure Database for MySQL über die Azure-Befehlszeilenschnittstelle
 
@@ -24,7 +24,7 @@ Erfahren Sie, wie Sie über die Azure-Befehlszeilenschnittstelle die Datenversch
 * Erstellen Sie einen Schlüsseltresor und einen Schlüssel, der als vom Kunden verwalteter Schlüssel verwendet werden soll. Aktivieren Sie außerdem den Löschschutz und das vorläufige Löschen für den Schlüsseltresor.
 
   ```azurecli-interactive
-  az keyvault create -g <resource_group> -n <vault_name> --enable-soft-delete true -enable-purge-protection true
+  az keyvault create -g <resource_group> -n <vault_name> --enable-soft-delete true --enable-purge-protection true
   ```
 
 * Erstellen Sie in der von Ihnen erstellten Azure Key Vault-Instanz den Schlüssel, der für die Datenverschlüsselung in Azure Database for MySQL verwendet wird.
@@ -46,11 +46,23 @@ Erfahren Sie, wie Sie über die Azure-Befehlszeilenschnittstelle die Datenversch
     ```azurecli-interactive
     az keyvault update --name <key_vault_name> --resource-group <resource_group_name>  --enable-purge-protection true
     ```
+  * Auf 90 Tage festgelegte Datenaufbewahrung
+  ```azurecli-interactive
+    az keyvault update --name <key_vault_name> --resource-group <resource_group_name>  --retention-days 90
+    ```
 
 * Der Schlüssel muss die folgenden Attribute aufweisen, damit er als vom Kunden verwalteter Schlüssel verwendet werden kann:
   * Kein Ablaufdatum
   * Nicht deaktiviert
-  * Ausführen der Vorgänge **get** , **wrap** und **unwrap**
+  * Ausführen der Vorgänge **get**, **wrap** und **unwrap**
+  * Das recoverylevel-Attribut ist auf **Recoverable** festgelegt. (Dafür muss vorläufiges Löschen mit einer Beibehaltungsdauer von 90 Tagen aktiviert sein.)
+  * Bereinigungsschutz aktiviert
+
+Sie können die oben genannten Attribute des Schlüssels mit dem folgenden Befehl überprüfen:
+
+```azurecli-interactive
+az keyvault key show --vault-name <key_vault_name> -n <key_name>
+```
 
 ## <a name="set-the-right-permissions-for-key-operations"></a>Festlegen der richtigen Berechtigungen für Schlüsselvorgänge
 
@@ -68,7 +80,7 @@ Erfahren Sie, wie Sie über die Azure-Befehlszeilenschnittstelle die Datenversch
    az mysql server update --name  <server name>  -g <resource_group> --assign-identity
    ```
 
-2. Legen Sie die **Schlüsselberechtigungen** ( **Get** , **Wrap** , **Unwrap** ) für den **Prinzipal** (der Name des MySQL-Servers) fest.
+2. Legen Sie die **Schlüsselberechtigungen** (**Get**, **Wrap**, **Unwrap**) für den **Prinzipal** (der Name des MySQL-Servers) fest.
 
     ```azurecli-interactive
     az keyvault set-policy --name -g <resource_group> --key-permissions get unwrapKey wrapKey --object-id <principal id of the server>
@@ -148,7 +160,7 @@ Sie können die Datenverschlüsselung nicht nur im Azure-Portal, sondern auch au
 
 Verwenden Sie eine der vorab erstellten Azure Resource Manager-Vorlagen, um den Server mit aktivierter Datenverschlüsselung bereitzustellen: [Beispiel mit Datenverschlüsselung](https://github.com/Azure/azure-mysql/tree/master/arm-templates/ExampleWithDataEncryption)
 
-Diese Azure Resource Manager-Vorlage erstellt einen Azure Database for MySQL-Server und verwendet **KeyVault** und **Key** , die als Parameter übergeben werden, um die Datenverschlüsselung auf dem Server zu aktivieren.
+Diese Azure Resource Manager-Vorlage erstellt einen Azure Database for MySQL-Server und verwendet **KeyVault** und **Key**, die als Parameter übergeben werden, um die Datenverschlüsselung auf dem Server zu aktivieren.
 
 ### <a name="for-an-existing-server"></a>Vorhandener Server
 

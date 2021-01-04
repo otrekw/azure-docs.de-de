@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 11/9/2020
-ms.openlocfilehash: d2095919d6f6be482390250fd8d0ee20e9015237
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: e7dfc6db50432b19d515671fabe26edf9cfb45ef
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94444859"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96345667"
 ---
 # <a name="service-configuration"></a>Dienstkonfiguration
 
@@ -20,7 +20,7 @@ Jede Version von QnA Maker verwendet einen anderen Satz von Azure-Ressourcen (Di
 
 # <a name="qna-maker-ga-stable-release"></a>[QnA Maker, allgemeine Verfügbarkeit (stabile Version)](#tab/v1)
 
-QnA Maker verwendet den App Service, um die von der [generateAnswer-API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker4.0/runtime/generateanswer) verwendete Abfragelaufzeit bereitzustellen.
+QnA Maker verwendet den App Service, um die von der [generateAnswer-API](/rest/api/cognitiveservices/qnamaker4.0/runtime/generateanswer) verwendete Abfragelaufzeit bereitzustellen.
 
 Diese Einstellungen sind im Azure-Portal für den App Service verfügbar. Die Einstellungen sind durch Auswahl von **Einstellungen** und dann **Konfiguration** verfügbar.
 
@@ -47,7 +47,7 @@ App Service-Anpassungen gelten nicht für QnA Maker verwaltet (Vorschau).
 
 Der QnA Maker-Dienst stellt die Konfiguration für die folgenden Benutzer bereit, die an einem einzelnen QnA Maker-Dienst und all seinen Wissensdatenbanken zusammenarbeiten können.
 
-Erfahren Sie, [wie Sie Projektmitarbeiter](./how-to/collaborate-knowledge-base.md) zu Ihrem Dienst hinzufügen können.
+Erfahren Sie, [wie Sie Projektmitarbeiter](./reference-role-based-access-control.md) zu Ihrem Dienst hinzufügen können.
 
 ## <a name="change-azure-cognitive-search"></a>Ändern von Azure Cognitive Search
 

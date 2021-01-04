@@ -10,12 +10,12 @@ ms.date: 08/20/2020
 ms.topic: include
 ms.custom: include file
 ms.author: tchladek
-ms.openlocfilehash: af5af26a8970409b07eda6195b0853c3fa931b3f
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: a64d26ad11911e2cb9dcdec027b3ab3e4d22984b
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94506226"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96584626"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -119,12 +119,11 @@ Zugriffstoken sind kurzlebige Anmeldeinformationen, die erneut ausgestellt werde
 
 ## <a name="refresh-access-tokens"></a>Zugriffstoken für die Aktualisierung
 
-Verwenden Sie zum Aktualisieren eines Zugriffstokens das `CommunicationUser`-Objekt für die erneute Ausstellung:
+Das Aktualisieren von Zugriffstoken ist genau so einfach wie das Aufrufen von `issueToken` mit der gleichen Identität, die zum Ausstellen der Token verwendet wurde. Außerdem müssen Sie die `scopes`-Elemente der aktualisierten Token angeben. 
 
-```javascript  
-// Value existingIdentity represents identity of Azure Communication Services stored during identity creation
-identityResponse = new CommunicationUser(existingIdentity);
-tokenResponse = await identityClient.issueToken(identityResponse, ["voip"]);
+```javascript
+// // Value of identityResponse represents the Azure Communication Services identity stored during identity creation and then used to issue the tokens being refreshed
+let refreshedTokenResponse = await identityClient.issueToken(identityResponse, ["voip"]);
 ```
 
 
@@ -134,7 +133,7 @@ In einigen Fällen können Sie Zugriffstoken explizit widerrufen. Beispielsweise
 
 ```javascript  
 await identityClient.revokeTokens(identityResponse);
-console.log(`\nSuccessfully revoked all access tokens for identity with Id: ${identityResponse.communicationUserId}`);
+console.log(`\nSuccessfully revoked all access tokens for identity with ID: ${identityResponse.communicationUserId}`);
 ```
 
 ## <a name="delete-an-identity"></a>Löschen einer Identität
@@ -143,12 +142,12 @@ Wird eine Identität gelöscht, werden alle aktiven Zugriffstoken widerrufen, un
 
 ```javascript
 await identityClient.deleteUser(identityResponse);
-console.log(`\nDeleted the identity with Id: ${identityResponse.communicationUserId}`);
+console.log(`\nDeleted the identity with ID: ${identityResponse.communicationUserId}`);
 ```
 
 ## <a name="run-the-code"></a>Ausführen des Codes
 
-Navigieren Sie an einer Konsoleneingabeaufforderung zum Verzeichnis mit der Datei *issue-access-token.js* , und führen Sie anschließend den folgenden Befehl vom Typ `node` aus, um die App auszuführen.
+Navigieren Sie an einer Konsoleneingabeaufforderung zum Verzeichnis mit der Datei *issue-access-token.js*, und führen Sie anschließend den folgenden Befehl vom Typ `node` aus, um die App auszuführen.
 
 ```console
 node ./issue-access-token.js

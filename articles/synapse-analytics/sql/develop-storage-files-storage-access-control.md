@@ -1,6 +1,6 @@
 ---
-title: Steuern des Speicherkontozugriffs für einen serverlosen SQL-Pool (Vorschauversion)
-description: In diesem Artikel wird beschrieben, wie ein serverloser SQL-Pool (Vorschauversion) auf Azure Storage zugreift und wie Sie den Speicherzugriff für den serverlosen SQL-Pool in Azure Synapse Analytics steuern können.
+title: Steuern des Speicherkontozugriffs für einen serverlosen SQL-Pool
+description: In diesem Artikel erfahren Sie, wie ein serverloser SQL-Pool auf Azure Storage zugreift und wie Sie den Speicherzugriff für den serverlosen SQL-Pool in Azure Synapse Analytics steuern.
 services: synapse-analytics
 author: filippopovic
 ms.service: synapse-analytics
@@ -9,18 +9,18 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 958f371a0018d20331e73d0eabba9354614d121c
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 6eff662ac0140e7a64cc3bab28856178708cb9b2
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93315730"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400674"
 ---
-# <a name="control-storage-account-access-for-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Steuern des Speicherkontozugriffs für einen serverlosen SQL-Pool (Vorschauversion) in Azure Synapse Analytics
+# <a name="control-storage-account-access-for-serverless-sql-pool-in-azure-synapse-analytics"></a>Steuern des Speicherkontozugriffs für einen serverlosen SQL-Pool in Azure Synapse Analytics
 
 Eine Abfrage eines serverlosen SQL-Pools liest Dateien direkt aus Azure Storage. Berechtigungen für den Zugriff auf Dateien in Azure Storage werden auf zwei Ebenen gesteuert:
-- **Speicherebene** : Der Benutzer sollte über die Berechtigung für den Zugriff auf zugrunde liegende Speicherdateien verfügen. Der Speicheradministrator sollte dem Azure AD-Prinzipal das Lesen/Schreiben von Dateien gestatten oder einen SAS-Schlüssel generieren, der für den Speicherzugriff verwendet wird.
-- **SQL-Dienstebene** : Der Benutzer sollte über die `SELECT`-Berechtigung zum Lesen von Daten aus [externen Tabellen](develop-tables-external-tables.md) oder die Berechtigung `ADMINISTER BULK ADMIN` zum Ausführen von `OPENROWSET` und außerdem über die Berechtigung zur Verwendung der Anmeldeinformationen für den Speicherzugriff verfügen.
+- **Speicherebene**: Der Benutzer sollte über die Berechtigung für den Zugriff auf zugrunde liegende Speicherdateien verfügen. Der Speicheradministrator sollte dem Azure AD-Prinzipal das Lesen/Schreiben von Dateien gestatten oder einen SAS-Schlüssel generieren, der für den Speicherzugriff verwendet wird.
+- **SQL-Dienstebene**: Benutzern müssen die Berechtigung zum Lesen von Daten mithilfe einer [externen Tabelle](develop-tables-external-tables.md) oder zum Ausführen der Funktion `OPENROWSET` erteilt haben. Informationen zu den erforderlichen Berechtigungen finden Sie in [diesem Abschnitt](develop-storage-files-overview.md#permissions).
 
 In diesem Artikel wird beschrieben, welche Arten von Anmeldeinformationen Sie verwenden können und wie die Suche nach Anmeldeinformationen für SQL- und Azure AD-Benutzer funktioniert.
 
@@ -144,7 +144,7 @@ SQL-Benutzer können Azure AD-Authentifizierung nicht für den Zugriff auf den 
 
 Mit dem folgenden Skript wird eine Anmeldeinformation auf Serverebene erstellt, die von der `OPENROWSET`-Funktion für den Zugriff auf eine beliebige Datei im Azure-Speicher mit dem SAS-Token verwendet werden kann. Erstellen Sie diese Anmeldeinformation, um dem SQL-Prinzipal, der die `OPENROWSET`-Funktion ausführt, das Lesen von Dateien zu ermöglichen, die mit dem SAS-Schlüssel in dem Azure-Speicher geschützt sind, der der URL im Anmeldeinformationsnamen entspricht.
 
-Ersetzen Sie < *mystorageaccountname* > durch den tatsächlichen Namen Ihres Speicherkontos und < *mystorageaccountcontainername* > durch den tatsächlichen Namen des Containers:
+Ersetzen Sie <*mystorageaccountname*> durch den tatsächlichen Namen Ihres Speicherkontos und <*mystorageaccountcontainername*> durch den tatsächlichen Namen des Containers:
 
 ```sql
 CREATE CREDENTIAL [https://<storage_account>.dfs.core.windows.net/<container>]

@@ -10,11 +10,11 @@ ms.date: 01/22/2019
 ms.author: chrande
 ms.custom: devx-track-python
 ms.openlocfilehash: 91b04b05b810b2b0fc221943a73e81c49f7119dc
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360189"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95972474"
 ---
 # <a name="quickstart-create-a-graph-database-in-azure-cosmos-db-using-python-and-the-azure-portal"></a>Schnellstart: Erstellen einer Graphdatenbank in Azure Cosmos DB mit Python und dem Azure-Portal
 [!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
@@ -101,7 +101,7 @@ Wechseln Sie nun zurück zum Azure-Portal, um die Verbindungsinformationen abzur
 
     :::image type="content" source="./media/create-graph-python/keys.png" alt-text="Anzeigen und Kopieren eines Zugriffsschlüssels im Azure-Portal auf der Seite „Schlüssel“":::
 
-2. Öffnen Sie die Datei *connect.py* , und ersetzen Sie `<YOUR_ENDPOINT>` in Zeile 104 durch den URI-Wert:
+2. Öffnen Sie die Datei *connect.py*, und ersetzen Sie `<YOUR_ENDPOINT>` in Zeile 104 durch den URI-Wert:
 
     ```python
     client = client.Client('wss://<YOUR_ENDPOINT>.gremlin.cosmosdb.azure.com:443/','g', 
@@ -171,7 +171,7 @@ Wechseln Sie nun zurück zum Azure-Portal, um die Verbindungsinformationen abzur
 
 Nach dem Einfügen der Scheitelpunkte und Kanten können Sie wieder zum Daten-Explorer zurückkehren, um sich die dem Graph hinzugefügten Scheitelpunkte anzusehen und weitere Datenpunkte hinzuzufügen.
 
-1. Wählen Sie im Azure-Portal in Ihrem Azure Cosmos DB-Konto **Daten-Explorer** aus, erweitern Sie den Eintrag **sample-graph** , und wählen Sie **Graph** und anschließend **Filter anwenden** aus. 
+1. Wählen Sie im Azure-Portal in Ihrem Azure Cosmos DB-Konto **Daten-Explorer** aus, erweitern Sie den Eintrag **sample-graph**, und wählen Sie **Graph** und anschließend **Filter anwenden** aus. 
 
    :::image type="content" source="./media/create-graph-python/azure-cosmosdb-data-explorer-expanded.png" alt-text="Screenshot: In der API ausgewählter Graph mit der Option „Filter anwenden“":::
 

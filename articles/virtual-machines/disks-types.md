@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 0a6b6196888aedfd6aa60c9395ff27611907661a
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 1a7e8e71e26af241d16095a5fa1e6a02a7e3d4c2
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94413160"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500766"
 ---
 # <a name="what-disk-types-are-available-in-azure"></a>Welche Datenträgertypen stehen in Azure zur Verfügung?
 
@@ -82,9 +82,9 @@ Im Gegensatz zu einem Standard-Speicherdatenträger sind bei der Bereitstellung 
 
 ## <a name="bursting"></a>Bursting
 
-SSD Premium-Größen kleiner als P30 bieten jetzt Datenträgerbursting und können die IOPS pro Datenträger auf bis zu 3.500 und deren Bandbreite auf bis 170 Mbit/s steigern. Bursting wird automatisiert und funktioniert auf Basis eines Guthabensystems. Guthaben werden automatisch in einem Burst-Bucket akkumuliert, wenn der Datenträgerverkehr unterhalb des bereitgestellten Leistungsziels liegt. Guthaben werden automatisch verbraucht, wenn der Datenverkehr über das Ziel hinausgeht (bis zum maximalen Burst-Limit). Das maximale Burst-Limit definiert die Obergrenze für Datenträger-IOPS und Bandbreite (auch wenn Sie über Burst-Guthaben verfügen, das verbraucht werden kann). Datenträgerbursting bietet eine bessere Toleranz bei unvorhersehbaren Änderungen der E/A-Muster. Es ist am besten für den Start des Betriebssystemdatenträgers und Anwendungen mit extremen Spitzen im Datenverkehr geeignet.    
+SSD Premium-Größen kleiner als P30 bieten jetzt Datenträgerbursting und können die IOPS pro Datenträger auf bis zu 3.500 und deren Bandbreite auf bis 170 MB/s steigern. Bursting wird automatisiert und funktioniert auf Basis eines Guthabensystems. Guthaben werden automatisch in einem Burst-Bucket akkumuliert, wenn der Datenträgerverkehr unterhalb des bereitgestellten Leistungsziels liegt. Guthaben werden automatisch verbraucht, wenn der Datenverkehr über das Ziel hinausgeht (bis zum maximalen Burst-Limit). Das maximale Burst-Limit definiert die Obergrenze für Datenträger-IOPS und Bandbreite (auch wenn Sie über Burst-Guthaben verfügen, das verbraucht werden kann). Datenträgerbursting bietet eine bessere Toleranz bei unvorhersehbaren Änderungen der E/A-Muster. Es ist am besten für den Start des Betriebssystemdatenträgers und Anwendungen mit extremen Spitzen im Datenverkehr geeignet.    
 
-Die Unterstützung für Datenträgerbursting wird standardmäßig in neuen Bereitstellungen der entsprechenden Datenträgergrößen aktiviert, ohne dass eine Benutzeraktion erforderlich ist. Für vorhandene Datenträger mit den entsprechenden Größen haben Sie zwei Möglichkeiten, um die Burstingfunktion zu aktivieren: Trennen und erneutes Anschließen des Datenträgers oder Beenden und Neustarten der zugehörigen VM. Alle für Bursting infrage kommenden Datenträgergrößen werden mit einem vollen Burst-Guthaben-Bucket gestartet, das eine maximale Dauer von 30 Minuten mit maximalem Burst-Limit unterstützt, wenn der Datenträger an einen virtuellen Computer abgeschlossen wird. Weitere Informationen zur Funktionsweise von Datenträgerbursting auf Azure-Datenträgern finden Sie unter [SSD Premium-Bursting](linux/disk-bursting.md). 
+Die Unterstützung für Datenträgerbursting wird standardmäßig in neuen Bereitstellungen der entsprechenden Datenträgergrößen aktiviert, ohne dass eine Benutzeraktion erforderlich ist. Für vorhandene Datenträger mit den entsprechenden Größen haben Sie zwei Möglichkeiten, um die Burstingfunktion zu aktivieren: Trennen und erneutes Anschließen des Datenträgers oder Beenden und Neustarten der zugehörigen VM. Alle für Bursting infrage kommenden Datenträgergrößen werden mit einem vollen Burst-Guthaben-Bucket gestartet, das eine maximale Dauer von 30 Minuten mit maximalem Burst-Limit unterstützt, wenn der Datenträger an einen virtuellen Computer abgeschlossen wird. Weitere Informationen zur Funktionsweise von Datenträgerbursting auf Azure-Datenträgern finden Sie unter [SSD Premium-Bursting](./disk-bursting.md). 
 
 ### <a name="transactions"></a>Transaktionen
 

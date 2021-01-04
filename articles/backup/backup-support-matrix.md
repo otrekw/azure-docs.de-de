@@ -4,12 +4,12 @@ description: Enthält eine Zusammenfassung der Unterstützungseinstellungen und 
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.custom: references_regions
-ms.openlocfilehash: ee37e994c9e72c3d3c98455360dc68746f49d278
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 70a81b42ad2fb417902a627afb1651d572844648
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92743130"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96548510"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Supportmatrix für Azure Backup
 
@@ -25,7 +25,7 @@ Andere Support-Matrizen sind verfügbar:
 
 ## <a name="vault-support"></a>Unterstützung für Tresore
 
-Azure Backup nutzt Recovery Services-Tresore zum Orchestrieren und Verwalten von Sicherungen. Azure Backup nutzt Tresore außerdem zum Speichern von gesicherten Daten.
+Azure Backup verwendet Recovery Services-Tresore, um Sicherungen für die folgenden Workloadtypen zu orchestrieren und zu verwalten: Azure-VMs, SQL in Azure-VMs, SAP HANA in Azure-VMs, Azure-Dateifreigaben und lokale Workloads mit Azure Backup Agent, Azure Backup Server und System Center DPM. Außerdem werden die Recovery Services-Tresore verwendet, um gesicherte Daten für diese Workloads zu speichern.
 
 In der folgenden Tabelle werden die Features von Recovery Services-Tresoren beschrieben:
 
@@ -150,7 +150,7 @@ In Azure Backup wurde ein Feature zur regionsübergreifenden Wiederherstellung h
 
 | Sicherungsverwaltungstyp | Unterstützt                                                    | Unterstützte Regionen |
 | ---------------------- | ------------------------------------------------------------ | ----------------- |
-| Azure VM               | Ja.   Wird für verschlüsselte VMs und VMs mit Datenträgern mit weniger als 4 TB unterstützt | Alle öffentlichen Azure-Regionen und souveränen Clouds.  |
+| Azure VM               | Ja.   Wird für verschlüsselte VMs und VMs mit Datenträgern mit weniger als 4 TB unterstützt | Alle öffentlichen Azure-Regionen  |
 | SQL/SAP HANA | Ja                                                          | Alle öffentlichen Regionen außer Frankreich |
 | MARS-Agent/lokal  | Nein                                                           | N/V               |
 | AFS (Azure-Dateifreigaben)                 | Nein                                                           | –               |

@@ -11,13 +11,13 @@ ms.author: memildin
 manager: rkarlin
 author: memildin
 ms.reviewer: vanto
-ms.date: 09/21/2020
-ms.openlocfilehash: d147303df43c4f86843df518c71316e6a97b6671
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.date: 12/01/2020
+ms.openlocfilehash: 4bb7f2fd5823a9d8ebf4234f3bb41d955574b838
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92678085"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451545"
 ---
 # <a name="azure-defender-for-sql"></a>Azure Defender für SQL
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -48,21 +48,27 @@ Sie können über das [Azure-Portal](https://portal.azure.com) auf Azure Defende
 >
 > Die Kosten von Azure Defender orientieren sich am Azure Security Center-Standardtarif pro Knoten, wobei ein Knoten dem gesamten Server oder der verwalteten Instanz entspricht. Sie bezahlen daher nur einmal für den Schutz aller Datenbanken auf dem Server oder in der verwalteten Instanz durch Azure Defender. Sie können Azure Defender anfänglich mit einer kostenlosen Testversion testen.
 
+:::image type="content" source="media/azure-defender-for-sql/enable-azure-defender.png" alt-text="Aktivieren von Azure Defender":::
+
 ## <a name="start-tracking-vulnerabilities-and-investigating-threat-alerts"></a>Beginnen mit dem Nachverfolgen von Sicherheitsrisiken und Untersuchen von Bedrohungswarnungen
 
-Klicken Sie auf die Karte **Sicherheitsrisikobewertung** , um Sicherheitsrisikoscans und -berichte anzuzeigen und zu verwalten und Ihren Sicherheitsstatus zu verfolgen. Wenn Sie Sicherheitswarnungen empfangen haben, klicken Sie auf die Karte **Advanced Threat Protection** , um Details zu den Warnungen anzuzeigen und einen konsolidierten Bericht für alle Warnungen in Ihrem Azure-Abonnement über die Seite mit den Sicherheitswarnungen im Azure Security Center abzurufen.
+Klicken Sie auf die Karte **Sicherheitsrisikobewertung**, um Sicherheitsrisikoscans und -berichte anzuzeigen und zu verwalten und Ihren Sicherheitsstatus zu verfolgen. Wenn Sie Sicherheitswarnungen empfangen haben, klicken Sie auf die Karte **Advanced Threat Protection**, um Details zu den Warnungen anzuzeigen und einen konsolidierten Bericht für alle Warnungen in Ihrem Azure-Abonnement über die Seite mit den Sicherheitswarnungen im Azure Security Center abzurufen.
 
 ## <a name="manage-azure-defender-settings"></a>Verwalten von Azure Defender-Einstellungen
 
-Um die Azure Defender-Einstellungen anzuzeigen und zu verwalten, navigieren Sie unterhalb der Überschrift **Sicherheit** für Ihren Server oder Ihre verwaltete Instanz zu **Security Center** . Auf dieser Seite können Sie Azure Defender aktivieren oder deaktivieren und die Einstellungen für die Sicherheitsrisikoanalyse und Advanced Threat Protection für Ihren gesamten Server oder Ihre verwaltete Instanz ändern.
+Um die Azure Defender-Einstellungen anzuzeigen und zu verwalten, navigieren Sie unterhalb der Überschrift **Sicherheit** für Ihren Server oder Ihre verwaltete Instanz zu **Security Center**. Auf dieser Seite können Sie Azure Defender aktivieren oder deaktivieren und die Einstellungen für die Sicherheitsrisikoanalyse und Advanced Threat Protection für Ihren gesamten Server oder Ihre verwaltete Instanz ändern.
+
+:::image type="content" source="media/azure-defender-for-sql/security-server-settings.png" alt-text="Sicherheitseinstellungen für den Server":::
 
 ## <a name="manage-azure-defender-settings-for-a-database"></a>Verwalten von Azure Defender-Einstellungen für eine Datenbank
 
-Um die Azure Defender-Einstellungen für eine bestimmte Datenbank außer Kraft zu setzen, aktivieren Sie das Kontrollkästchen **Enable Azure Defender for SQL at the database level** (Azure Defender für SQL auf Datenbankebene aktivieren). Verwenden Sie diese Option nur, wenn eine besondere Anforderung zum Empfangen von separaten Advanced Threat Protection-Warnungen oder Risikoanalyseergebnissen für diese Datenbank vorliegt, die anstelle der Warnungen für alle Datenbanken auf dem Server oder in der verwalteten Instanz oder zusätzlich zu diesen empfangen werden müssen.
+Um die Azure Defender-Einstellungen für eine bestimmte Datenbank außer Kraft zu setzen, aktivieren Sie in den Einstellungen von **Security Center** für Ihre Datenbank das Kontrollkästchen **Enable Azure Defender for SQL at the database level** (Azure Defender für SQL auf Datenbankebene aktivieren). Verwenden Sie diese Option nur, wenn eine besondere Anforderung zum Empfangen von separaten Advanced Threat Protection-Warnungen oder Risikoanalyseergebnissen für diese Datenbank vorliegt, die anstelle der Warnungen für alle Datenbanken auf dem Server oder in der verwalteten Instanz oder zusätzlich zu diesen empfangen werden müssen.
 
 Sobald das Kontrollkästchen aktiviert wurde, können Sie die relevanten Einstellungen für diese Datenbank konfigurieren.
 
-Sie können auch über den Azure Defender-Datenbankbereich auf die Azure Defender für SQL-Einstellungen für Ihren Server oder Ihre verwaltete Instanz zugreifen. Klicken Sie im Hauptbereich von Azure Defender auf **Einstellungen** und dann auf **View Azure Defender for SQL server settings** (Einstellungen für Azure Defender für SQL anzeigen).
+:::image type="content" source="media/azure-defender-for-sql/enable-for-database-level.png" alt-text="Aktivieren von Azure Defender auf Datenbankebene":::
+
+Sie können auch über den Azure Defender-Datenbankbereich auf die Azure Defender für SQL-Einstellungen für Ihren Server oder Ihre verwaltete Instanz zugreifen. Klicken Sie im Hauptbereich von Security Center auf **Einstellungen** und dann auf **View Azure Defender for SQL server settings** (Servereinstellungen für Azure Defender für SQL anzeigen).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

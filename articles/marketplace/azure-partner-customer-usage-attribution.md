@@ -3,17 +3,17 @@ title: Zuordnung der Nutzung durch Partner und Kunden des kommerziellen Marketpl
 description: Hier erhalten Sie einen Überblick über die Nachverfolgung der Kundennutzung für Azure Marketplace-Lösungen.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.topic: article
 author: vikrambmsft
 ms.author: vikramb
 ms.date: 11/4/2020
 ms.custom: devx-track-terraform
-ms.openlocfilehash: 95ac1abc1f286330bc5e7036f01faa6cf1b22d70
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: e9e630f4199e0bfb67509f008f403c0a7a490887
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94337898"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436690"
 ---
 # <a name="commercial-marketplace-partner-and-customer-usage-attribution"></a>Zuordnung der Nutzung durch Partner und Kunden des kommerziellen Marketplace
 
@@ -32,7 +32,7 @@ Die Zuordnung der Nutzung durch Kunden unterstützt drei Bereitstellungsmethoden
 >
 >- Die Zuordnung der Nutzung durch Kunden gilt für neue Bereitstellungen und unterstützt NICHT das Tagging vorhandener, bereits bereitgestellter Ressourcen.
 >
->- Die Zuordnung der Nutzung durch Kunden ist für [Azure-Anwendungsangebote](./partner-center-portal/create-new-azure-apps-offer.md) erforderlich, die in Azure Marketplace veröffentlicht werden.
+>- Die Zuordnung der Nutzung durch Kunden ist für [Azure-Anwendungsangebote](./create-new-azure-apps-offer.md) erforderlich, die in Azure Marketplace veröffentlicht werden.
 >
 >- Nicht alle Azure-Dienste sind mit der Zuordnung der Nutzung durch Kunden kompatibel. Bei Azure Kubernetes Services (AKS) und VM Scale Sets sind zum jetzigen Zeitpunkt Probleme bekannt, die zu einer unzureichenden Meldung der Nutzung führen.
 
@@ -64,7 +64,7 @@ Die GUIDs müssen in Partner Center registriert werden, um die Zuordnung der Nut
 Nachdem Sie Ihrer Vorlage oder im Benutzer-Agent eine GUID hinzugefügt und die GUID in Partner Center registriert haben, werden zukünftige Bereitstellungen nachverfolgt.
 
 > [!NOTE]
-> Wenn Sie Ihr [Azure-Anwendungsangebot](./partner-center-portal/create-new-azure-apps-offer.md) im Azure Marketplace über Partner Center veröffentlichen, wird jede neue GUID, die in Ihrer Vorlage verwendet wird, beim Hochladen der Vorlage automatisch im Partner Center-Profil registriert.  
+> Wenn Sie Ihr [Azure-Anwendungsangebot](./create-new-azure-apps-offer.md) im Azure Marketplace über Partner Center veröffentlichen, wird jede neue GUID, die in Ihrer Vorlage verwendet wird, beim Hochladen der Vorlage automatisch im Partner Center-Profil registriert.  
 
 1. Melden Sie sich bei [Partner Center](https://partner.microsoft.com/dashboard) an.
 
@@ -74,9 +74,9 @@ Nachdem Sie Ihrer Vorlage oder im Benutzer-Agent eine GUID hinzugefügt und die 
    * Partner können mehrere GUIDs registrieren.
    * Partner können auch GUIDs für nicht im Marketplace verfügbare Lösungsvorlagen und Angebote registrieren.
 
-1. Wählen Sie oben rechts „Einstellungen“ (Zahnradsymbol) und anschließend **Entwicklereinstellungen** aus.
+1. Wählen Sie in der oberen rechten Ecke **Einstellungen** (Zahnradsymbol) und dann **Kontoeinstellungen** aus.
 
-1. Wählen Sie auf der Seite **Kontoeinstellungen** die Option **Nachverfolgungs-GUID hinzufügen** aus.
+1. Wählen Sie unter **Organisationsprofil** > **Bezeichner** die Option **Nachverfolgungs-GUID hinzufügen** aus.
 
 1. Geben Sie im Feld **GUID** Ihre Nachverfolgungs-GUID ein. Geben Sie nur die GUID ohne das Präfix `pid-` ein. Geben Sie im Feld **Beschreibung** den Angebotsnamen oder eine Beschreibung ein.
 
@@ -90,7 +90,7 @@ Viele Partnerlösungen werden mithilfe von Azure Resource Manager-Vorlagen berei
 > [!NOTE]
 > Weitere Informationen zum Erstellen und Veröffentlichen von Lösungsvorlagen finden Sie unter:
 > * [Erstellen und Bereitstellen Ihrer ersten Resource Manager-Vorlage](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)
->* [Azure-Anwendungsangebot](./partner-center-portal/create-new-azure-apps-offer.md)
+>* [Azure-Anwendungsangebot](./create-new-azure-apps-offer.md)
 >* Video: [Erstellen von Lösungsvorlagen und verwalteten Anwendungen für den Azure Marketplace](https://channel9.msdn.com/Events/Build/2018/BRK3603).
 
 
@@ -183,9 +183,10 @@ Wenn Sie Ressourcen mithilfe von Azure PowerShell bereitstellen, fügen Sie Ihre
 
 Wenn Sie Ihre GUID mithilfe der Azure CLI anfügen, legen Sie die Umgebungsvariable **AZURE_HTTP_USER_AGENT** fest. Sie können diese Variable im Rahmen eines Skripts festlegen. Sie können die Variable auch global für den Bereich der Shell festlegen:
 
-```
+```powershell
 export AZURE_HTTP_USER_AGENT='pid-eb7927c8-dd66-43e1-b0cf-c346a422063'
 ```
+
 Weitere Informationen finden Sie unter [Azure SDK für Go](/azure/developer/go/).
 
 ## <a name="use-terraform"></a>Einsatz von Terraform
@@ -206,7 +207,6 @@ Partner, die Ihre Terraform-Bereitstellung durch die Zuordnung der Nutzung durch
 
 * Erstellen Sie eine GUID (diese sollte für jedes Angebot oder jede SKU hinzugefügt werden).
 * Legen Sie den Wert von *partner_id* des Azure-Anbieters auf die GUID fest (stellen Sie der GUID nicht „pid-“ voran, sondern geben Sie die tatsächliche GUID an).
-
 
 ## <a name="verify-the-guid-deployment"></a>Überprüfen der GUID-Bereitstellung
 
@@ -251,11 +251,7 @@ foreach ($deployment in $deployments){
 
 ## <a name="report"></a>Bericht
 
-Den Bericht für die Zuordnung der Nutzung durch Kunden finden Sie im Partner Center-Dashboard ([https://partner.microsoft.com/dashboard/mpn/analytics/CPP/MicrosoftAzure](https://partner.microsoft.com/dashboard/mpn/analytics/CPP/MicrosoftAzure)). Um den Bericht anzuzeigen, müssen Sie sich mit Ihren Anmeldeinformationen für das Partner Center anmelden. Wenn Sie Probleme mit dem Bericht oder der Anmeldung haben, erstellen Sie eine Supportanfrage gemäß der Anleitung im Abschnitt „Support“.
-
-Wählen Sie in der Dropdownliste für den Partnerzuordnungstyp „Tracked Template“ (Nachverfolgte Vorlage) aus, um den Bericht anzuzeigen.
-
-![Bericht für die Zuordnung der Nutzung durch Kunden](media/marketplace-publishers-guide/customer-usage-attribution-report.png)
+Den Bericht für die Zuordnung der Nutzung durch Kunden finden Sie im Partner Center-Dashboard ([https://partner.microsoft.com/dashboard/partnerinsights/analytics/overview](https://partner.microsoft.com/dashboard/partnerinsights/analytics/overview)). Um den Bericht anzuzeigen, müssen Sie sich mit Ihren Anmeldeinformationen für das Partner Center anmelden. Wenn beim Berichten oder Anmelden Probleme auftreten, erstellen Sie eine [Supportanfrage](#get-support).
 
 ## <a name="notify-your-customers"></a>Benachrichtigen der Kunden
 
@@ -263,11 +259,11 @@ Partner sollten ihre Kunden über Bereitstellungen informieren, bei denen die Zu
 
 ### <a name="notification-for-resource-manager-template-deployments"></a>Benachrichtigung für Bereitstellungen über Resource Manager-Vorlagen
 
-Wenn Sie diese Vorlage bereitstellen, kann Microsoft die Installation der Software von \<PARTNER> mit den bereitgestellten Azure-Ressourcen identifizieren. Microsoft kann die Azure-Ressourcen korrelieren, die zum Unterstützen der Software verwendet werden. Microsoft erfasst diese Informationen, um die Nutzung der Produkte zu optimieren und um Geschäfte zu ermöglichen. Diese Daten unterliegen den Datenschutzrichtlinien von Microsoft und werden gemäß diesen Richtlinien gesammelt. Diese Datenschutzrichtlinien können unter https://www.microsoft.com/trustcenter eingesehen werden.
+Wenn Sie diese Vorlage bereitstellen, kann Microsoft die Installation der Software von \<PARTNER> mit den bereitgestellten Azure-Ressourcen identifizieren. Microsoft kann die Azure-Ressourcen korrelieren, die zum Unterstützen der Software verwendet werden. Microsoft erfasst diese Informationen, um die Nutzung der Produkte zu optimieren und um Geschäfte zu ermöglichen. Diese Daten unterliegen den Datenschutzrichtlinien von Microsoft und werden gemäß dieser Richtlinien gesammelt. Diese Datenschutzrichtlinien können unter [https://www.microsoft.com/trustcenter](https://www.microsoft.com/trustcenter) eingesehen werden.
 
 ### <a name="notification-for-sdk-or-api-deployments"></a>Benachrichtigung für SDK- oder API-Bereitstellungen
 
-Wenn Sie Software von \<PARTNER> bereitstellen, kann Microsoft die Installation der Software von \<PARTNER> mit den bereitgestellten Azure-Ressourcen identifizieren. Microsoft kann die Azure-Ressourcen korrelieren, die zum Unterstützen der Software verwendet werden. Microsoft erfasst diese Informationen, um die Nutzung der Produkte zu optimieren und um Geschäfte zu ermöglichen. Diese Daten unterliegen den Datenschutzrichtlinien von Microsoft und werden gemäß diesen Richtlinien gesammelt. Diese Datenschutzrichtlinien können unter https://www.microsoft.com/trustcenter eingesehen werden.
+Wenn Sie Software von \<PARTNER> bereitstellen, kann Microsoft die Installation der Software von \<PARTNER> mit den bereitgestellten Azure-Ressourcen identifizieren. Microsoft kann die Azure-Ressourcen korrelieren, die zum Unterstützen der Software verwendet werden. Microsoft erfasst diese Informationen, um die Nutzung der Produkte zu optimieren und um Geschäfte zu ermöglichen. Diese Daten unterliegen den Datenschutzrichtlinien von Microsoft und werden gemäß dieser Richtlinien gesammelt. Diese Datenschutzrichtlinien können unter [https://www.microsoft.com/trustcenter](https://www.microsoft.com/trustcenter) eingesehen werden.
 
 ## <a name="get-support"></a>Support
 
@@ -282,6 +278,7 @@ Informationen zu den Supportoptionen im kommerziellen Marketplace finden Sie unt
     * Vervollständigen bzw. überprüfen Sie die Kontaktinformationen.
     * Wenn die Details zur Beratung nicht vorab ausgefüllt wurden, können Sie diese aus den Dropdownmenüs auswählen.
     * Geben Sie einen Titel und eine Beschreibung (so detailliert wie möglich) für das Problem ein.
+
 1. Klicken Sie auf „Senden“.
 
 Eine ausführliche Anleitung mit Screenshots finden Sie unter [Verwenden von technischen Presales- und Bereitstellungsdiensten](https://aka.ms/TechConsultInstructions).

@@ -1,21 +1,27 @@
 ---
-title: Arbeiten mit Gebäudeplänen in Azure Maps Creator
-description: In diesem Artikel werden Konzepte vorgestellt, die für die Azure Maps Creator-Dienste gelten.
+title: Arbeiten mit Gebäudeplänen in Azure Maps Creator (Vorschau)
+description: In diesem Artikel werden Konzepte vorgestellt, die für die Azure Maps Creator-Dienste (Vorschau) gelten.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 05/18/2020
+ms.date: 12/07/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 558903ead572363c5545a4a3121f7cf61f549df6
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 4ab00317e71f832bb677c4c7587e2356a37cb7a1
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895901"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96903563"
 ---
-# <a name="creator-for-indoor-maps"></a>Creator für Gebäudepläne
+# <a name="creator-preview-for-indoor-maps"></a>Creator (Vorschau) für Gebäudepläne
+
+
+> [!IMPORTANT]
+> Azure Maps Creator-Dienste befinden sich derzeit in der öffentlichen Vorschau.
+> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
 
 In diesem Artikel werden Konzepte und Tools vorgestellt, die für Azure Maps Creator gelten. Lesen Sie diesen Artikel, bevor Sie mit der Verwendung der Azure Maps Creator-API und des SDK beginnen.
 
@@ -23,15 +29,15 @@ Sie können Creator verwenden, um Anwendungen mit Kartenfunktionen zu entwickeln
 
 ![Workflow für Creator-Kartendaten](./media/creator-indoor-maps/workflow.png)
 
-## <a name="create-azure-maps-creator"></a>Azure Maps Creator erstellen
+## <a name="create-azure-maps-creator-preview"></a>Erstellen von Azure Maps Creator (Vorschau) 
 
-Damit Sie Creator-Dienste verwenden können, muss Azure Maps Creator in einem Azure Maps-Konto erstellt werden. Informationen zum Erstellen von Azure Maps Creator in Azure Maps finden Sie unter [Verwalten von Azure Maps Creator](how-to-manage-creator.md).
+Damit Sie Creator-Dienste (Vorschau) verwenden können, muss Azure Maps Creator in einem Azure Maps-Konto erstellt werden. Informationen zum Erstellen von Azure Maps Creator in Azure Maps finden Sie unter [Verwalten von Azure Maps Creator](how-to-manage-creator.md).
 
 ## <a name="upload-a-drawing-package"></a>Hochladen eines Zeichnungspakets
 
-Creator erfasst Daten von Gebäudeplänen, indem er ein hochgeladenes Zeichnungspaket konvertiert. Das Zeichnungspaket stellt eine gebaute oder umgebaute Einrichtung dar. Informationen zum den Anforderungen für Zeichnungspakete finden Sie unter [Anforderungen für Zeichnungspakete](drawing-requirements.md).
+Mit Creator (Vorschau) werden Daten von Gebäudeplänen durch Konvertieren eines hochgeladenen Zeichnungspakets erfasst. Das Zeichnungspaket stellt eine gebaute oder umgebaute Einrichtung dar. Informationen zum den Anforderungen für Zeichnungspakete finden Sie unter [Anforderungen für Zeichnungspakete](drawing-requirements.md).
 
-Verwenden Sie die [Datenupload-API von Azure Maps](/rest/api/maps/data/uploadpreview), um ein Zeichnungspaket hochzuladen.  Nach dem erfolgreichen Upload gibt die Datenupload-API einen Benutzerdatenbezeichner (`udid`) zurück. `udid` wird im nächsten Schritt verwendet, um das hochgeladene Paket in Gebäudeplandaten zu konvertieren.
+Verwenden Sie die [Datenupload-API von Azure Maps (Vorschau)](/rest/api/maps/data/uploadpreview), um ein Zeichnungspaket hochzuladen.  Nach dem erfolgreichen Upload gibt die Datenupload-API einen Benutzerdatenbezeichner (`udid`) zurück. `udid` wird im nächsten Schritt verwendet, um das hochgeladene Paket in Gebäudeplandaten zu konvertieren.
 
 ## <a name="convert-a-drawing-package"></a>Konvertieren eines Zeichnungspakets
 
@@ -41,7 +47,7 @@ Wenn ein Fehler auftritt, stellt der Konvertierungsdienst einen Link zur eigenst
 
 ## <a name="create-indoor-map-data"></a>Erstellen von Gebäudeplandaten
 
-Azure Maps Creator stellt drei Dienste bereit:
+Azure Maps Creator (Vorschau) umfasst drei Dienste:
 
 * [Datasetdienst](/rest/api/maps/dataset/createpreview).
 Verwenden Sie den Datasetdienst, um aus einem konvertierten Zeichnungspaket ein Dataset zu erstellen.
@@ -72,7 +78,7 @@ Wenn ein Kachelset veraltet ist und nicht mehr genutzt wird, können Sie das Kac
 
 ### <a name="feature-statesets"></a>Featurezustandssets
 
-Featurezustandssets sind Sammlungen dynamischer Eigenschaften ( *Zustände* ), die Datasetfeatures wie z. B. Räumen oder Ausstattung zugewiesen sind. Ein Beispiel für einen *Zustand* ist etwa die Temperatur oder die Belegung. Jeder *Zustand* ist ein Schlüssel-Wert-Paar, das den Namen der Eigenschaft, den Wert und den Zeitstempel der letzten Aktualisierung enthält.
+Featurezustandssets sind Sammlungen dynamischer Eigenschaften (*Zustände*), die Datasetfeatures wie z. B. Räumen oder Ausstattung zugewiesen sind. Ein Beispiel für einen *Zustand* ist etwa die Temperatur oder die Belegung. Jeder *Zustand* ist ein Schlüssel-Wert-Paar, das den Namen der Eigenschaft, den Wert und den Zeitstempel der letzten Aktualisierung enthält.
 
 Mit dem [Featurezustandsdiesnt](/rest/api/maps/featurestate/createstatesetpreview) können Sie einen Featurezustand für ein Dataset erstellen und verwalten. Das Zustandsset wird durch einen oder mehrere *Zustände* definiert. Zu jedem Feature wie etwa einem Raum kann ein *Zustand* hinzugefügt werden.
 
@@ -87,9 +93,9 @@ Eine Anwendung kann ein Featurezustandsset verwenden, um Features in einer Einri
 
 ### <a name="render-v2-service"></a>Render V2-Dienst
 
-Die Azure Maps [Render V2-Dienst-API zum Abrufen von Kartenkacheln](/rest/api/maps/renderv2/getmaptilepreview) wurde erweitert und unterstützt jetzt Creator-Kartenkacheln.
+Die [Render V2-Dienst-API zum Abrufen von Kartenkacheln (Vorschau)](/rest/api/maps/renderv2/getmaptilepreview) von Azure Maps wurde erweitert und unterstützt jetzt Creator-Kartenkacheln (Vorschau).
 
-Die [Render V2-Dienst-API zum Abrufen von Kartenkacheln](/rest/api/maps/renderv2/getmaptilepreview) ermöglicht es Anwendungen, Kachelsets anzufordern. Die Kachelsets können anschließend in ein Kartensteuerelement oder SDK integriert werden. Ein Beispiel für ein Kartensteuerelement, das den Render V2-Dienst verwendet, finden Sie unter [Modul für Gebäudepläne](#indoor-maps-module).
+Die Render V2-Dienst-API zum Abrufen von Kartenkacheln ermöglicht es Anwendungen, Kachelsets anzufordern. Die Kachelsets können anschließend in ein Kartensteuerelement oder SDK integriert werden. Ein Beispiel für ein Kartensteuerelement, das den Render V2-Dienst verwendet, finden Sie unter [Modul für Gebäudepläne](#indoor-maps-module).
 
 ### <a name="web-feature-service-api"></a>Web Feature Service-API
 
@@ -97,7 +103,7 @@ Datasets können mithilfe der [Web Feature Service-API (WFS)](/rest/api/maps/wfs
 
 ### <a name="indoor-maps-module"></a>Modul für Gebäudepläne
 
-Das [Azure Maps Web-SDK](./index.yml) umfasst das Modul für Gebäudepläne. Dieses Modul bietet erweiterte Funktionen für die Azure Maps-Bibliothek für *Kartensteuerelemente* . Das Modul für Gebäudepläne rendert Gebäudepläne, die in Creator erstellt wurden. Es integriert Widgets, wie z. B. die *Stockwerkauswahl* , mit der Benutzer die unterschiedlichen Stockwerke visualisieren können.
+Das [Azure Maps Web-SDK](./index.yml) umfasst das Modul für Gebäudepläne. Dieses Modul bietet erweiterte Funktionen für die Azure Maps-Bibliothek für *Kartensteuerelemente*. Das Modul für Gebäudepläne rendert Gebäudepläne, die in Creator (Vorschau) erstellt wurden. Es integriert Widgets, wie z. B. die *Stockwerkauswahl*, mit der Benutzer die unterschiedlichen Stockwerke visualisieren können.
 
 Das Modul für Gebäudepläne ermöglicht es Ihnen, Webanwendungen zu erstellen, die die Integration von Gebäudeplandaten in andere [Azure Maps-Dienste](./index.yml) ermöglichen. Eine häufige Anwendungseinrichtung besteht etwa darin, Kenntnisse aus anderen Karten, wie Straßen, Bilder, Wetterdaten und Verkehr, zu Gebäudeplänen hinzuzufügen.
 
@@ -109,7 +115,7 @@ Wenn Sie mit der Entwicklung von Lösungen für Gebäudepläne beginnen, haben S
 
 ### <a name="data-maintenance"></a>Datenpflege
 
- Die Azure Maps Creator-API zum Auflisten, Aktualisieren und Löschen ermöglicht es Ihnen, Ihre Datasets, Kachelsets und Featurezustandssets aufzulisten, zu aktualisieren und zu löschen.
+ Die Azure Maps Creator-API zum Auflisten, Aktualisieren und Löschen (Vorschau) ermöglicht Ihnen, Ihre Datasets, Kachelsets und Featurezustandssets aufzulisten, zu aktualisieren und zu löschen.
 
 >[!NOTE]
 >Wenn Sie eine Liste von Elementen überprüfen und entscheiden, diese zu löschen, müssen Sie die Auswirkung dieses Löschvorgangs auf alle abhängigen APIs oder Anwendungen berücksichtigen. Wenn Sie z. B. ein Kachelset löschen möchten, das aktuell von einer Anwendung mithilfe der [Render v2-API zum Abrufen von Kartenkacheln](/rest/api/maps/renderv2/getmaptilepreview) verwendet wird, führt das Löschen dieses Kachelsets dazu, dass beim Rendern dieses Kachelsets ein Anwendungsfehler auftritt.
@@ -129,4 +135,4 @@ Im folgenden Beispiel wird gezeigt, wie Sie ein Dataset aktualisieren, ein neues
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Tutorial: Erstellen von Gebäudeplänen mithilfe von Creator](tutorial-creator-indoor-maps.md)
+> [Tutorial: Erstellen von Gebäudeplänen mithilfe von Creator (Vorschau)](tutorial-creator-indoor-maps.md)

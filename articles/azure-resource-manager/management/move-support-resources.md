@@ -2,13 +2,13 @@
 title: Unterstützung des Verschiebevorgangs nach Ressourcentyp
 description: Eine Liste von Azure-Ressourcentypen, die in eine neue Ressourcengruppe oder ein neues Abonnement verschoben werden können.
 ms.topic: conceptual
-ms.date: 11/06/2020
-ms.openlocfilehash: 5b71c991136533096604c8a35af7989a227b6d2a
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.date: 12/07/2020
+ms.openlocfilehash: 0b1304b273523d42ad62f4e392fb803e1c174b69
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94364228"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96937524"
 ---
 # <a name="move-operation-support-for-resources"></a>Unterstützung des Verschiebevorgangs für Ressourcen
 
@@ -1026,7 +1026,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
 > | hanainstances | Nein | Nein |
-> | sapmonitors | Ja | Ja |
+> | sapmonitors | Nein | Nein |
 
 ## <a name="microsofthardwaresecuritymodules"></a>Microsoft.HardwareSecurityModules
 
@@ -1423,7 +1423,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | networkinterfaces | Ja | Ja |
 > | networkprofiles | Nein | Nein |
 > | networksecuritygroups | Ja | Ja |
-> | networkwatchers | Ja | Nein |
+> | networkwatchers | Nein | Nein |
 > | networkwatchers/connectionmonitors | Ja | Nein |
 > | networkwatchers/flowlogs | Ja | Nein |
 > | networkwatchers/pingmeshes | Ja | Nein |

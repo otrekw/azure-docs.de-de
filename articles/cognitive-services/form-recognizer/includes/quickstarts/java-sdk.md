@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 09/21/2020
 ms.custom: devx-track-java
 ms.author: pafarley
-ms.openlocfilehash: fa15b48cff73b567187aa078bec02aa82e41e665
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: d53863ccf71970cca3900707c844a2e5add050fa
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92918692"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96356510"
 ---
 > [!IMPORTANT]
 > Im Code dieses Artikels werden der Einfachheit halber synchrone Methoden und ein ungeschützter Anmeldeinformationsspeicher verwendet.
@@ -30,7 +30,7 @@ ms.locfileid: "92918692"
 * Sobald Sie über Ihr Azure-Abonnement verfügen, sollten Sie über <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title="Erstellen einer Formularerkennungsressource"  target="_blank"> im Azure-Portal eine Formularerkennungsressource <span class="docon docon-navigate-external x-hidden-focus"></span></a> erstellen, um Ihren Schlüssel und Endpunkt abzurufen. Klicken Sie nach Abschluss der Bereitstellung auf **Zu Ressource wechseln**.
     * Sie benötigen den Schlüssel und Endpunkt der von Ihnen erstellten Ressource, um Ihre Anwendung mit der Formularerkennungs-API zu verbinden. Der Schlüssel und der Endpunkt werden weiter unten in der Schnellstartanleitung in den Code eingefügt.
     * Sie können den kostenlosen Tarif (`F0`) verwenden, um den Dienst zu testen, und später für die Produktion auf einen kostenpflichtigen Tarif upgraden.
-* Trainingsdaten in einem Azure Storage-Blob. Tipps und Optionen für das Zusammenstellen eines Trainingsdatasets finden Sie unter [Erstellen eines Trainingsdatasets für ein benutzerdefiniertes Modell](../../build-training-data-set.md). In dieser Schnellstartanleitung können Sie die Dateien im Ordner **Trainieren** des [Beispieldatasets](https://go.microsoft.com/fwlink/?linkid=2090451) verwenden ( *sample_data.zip* herunterladen und extrahieren).
+* Trainingsdaten in einem Azure Storage-Blob. Tipps und Optionen für das Zusammenstellen eines Trainingsdatasets finden Sie unter [Erstellen eines Trainingsdatasets für ein benutzerdefiniertes Modell](../../build-training-data-set.md). In dieser Schnellstartanleitung können Sie die Dateien im Ordner **Trainieren** des [Beispieldatasets](https://go.microsoft.com/fwlink/?linkid=2090451) verwenden (*sample_data.zip* herunterladen und extrahieren).
 
 
 ## <a name="setting-up"></a>Einrichten
@@ -58,6 +58,7 @@ In dieser Schnellstartanleitung wird der Gradle-Abhängigkeits-Manager verwendet
 
 Fügen Sie in die Datei *build.gradle.kts* Ihres Projekts die Clientbibliothek als als `implementation`-Anweisung sowie die erforderlichen Plug-Ins und Einstellungen ein.
 
+#### <a name="version-30"></a>[Version 3.0](#tab/ga)
 ```kotlin
 plugins {
     java
@@ -73,6 +74,23 @@ dependencies {
     implementation(group = "com.azure", name = "azure-ai-formrecognizer", version = "3.0.0")
 }
 ```
+#### <a name="version-31-preview"></a>[Version 3.1 (Vorschau)](#tab/preview)
+```kotlin
+plugins {
+    java
+    application
+}
+application {
+    mainClass.set("FormRecognizer")
+}
+repositories {
+    mavenCentral()
+}
+dependencies {
+    implementation(group = "com.azure", name = "azure-ai-formrecognizer", version = "3.1.0-beta.1")
+}
+```
+---
 
 ### <a name="create-a-java-file"></a>Erstellen einer Java-Datei
 
@@ -91,24 +109,31 @@ Navigieren Sie zu dem neuen Ordner, und erstellen Sie eine Datei mit dem Namen *
 > Möchten Sie sich sofort die gesamte Codedatei für die Schnellstartanleitung ansehen? Die Datei steht [auf GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/FormRecognizer/FormRecognizer.java) zur Verfügung. Dort finden Sie die Codebeispiele aus dieser Schnellstartanleitung.
 
 
-Erstellen Sie in der **FormRecognizer** -Klasse der Anwendung Variablen für den Schlüssel und Endpunkt Ihrer Ressource.
+Erstellen Sie in der **FormRecognizer**-Klasse der Anwendung Variablen für den Schlüssel und Endpunkt Ihrer Ressource.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_creds)]
 
 > [!IMPORTANT]
 > Öffnen Sie das Azure-Portal. Wenn die im Abschnitt **Voraussetzungen** erstellte [Produktname]-Ressource erfolgreich bereitgestellt wurde, klicken Sie unter **Nächste Schritte** auf die Schaltfläche **Zu Ressource wechseln**. Schlüssel und Endpunkt finden Sie auf der Seite mit dem **Schlüssel und dem Endpunkt** der Ressource unter **Ressourcenverwaltung**. 
 >
-> Denken Sie daran, den Schlüssel aus Ihrem Code zu entfernen, wenn Sie fertig sind, und ihn niemals zu veröffentlichen. In der Produktionsumgebung sollten Sie eine sichere Methode zum Speichern Ihrer Anmeldeinformationen sowie zum Zugriff darauf verwenden. Weitere Informationen finden Sie im Cognitive Services-Artikel zur [Sicherheit](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-security).
+> Denken Sie daran, den Schlüssel aus Ihrem Code zu entfernen, wenn Sie fertig sind, und ihn niemals zu veröffentlichen. In der Produktionsumgebung sollten Sie eine sichere Methode zum Speichern Ihrer Anmeldeinformationen sowie zum Zugriff darauf verwenden. Weitere Informationen finden Sie im Cognitive Services-Artikel zur [Sicherheit](../../../cognitive-services-security.md).
 
-Fügen Sie in der **main** -Methode der Anwendung Aufrufe für die Methoden hinzu, die in dieser Schnellstartanleitung verwendet werden. Diese werden später definiert. Sie müssen außerdem Verweise auf die URLs für Ihre Trainings- und Testdaten hinzufügen.
+Fügen Sie in der **main**-Methode der Anwendung Aufrufe für die Methoden hinzu, die in dieser Schnellstartanleitung verwendet werden. Diese werden später definiert. Sie müssen außerdem Verweise auf die URLs für Ihre Trainings- und Testdaten hinzufügen.
 
-* Öffnen Sie zum Abrufen der SAS-URL für die Trainingsdaten Ihres benutzerdefinierten Modells den Microsoft Azure Storage-Explorer, klicken Sie mit der rechten Maustaste auf Ihren Container, und wählen Sie **Shared Access Signature abrufen** aus. Stellen Sie sicher, dass die Berechtigungen **Lesen** und **Auflisten**  aktiviert sind, und klicken Sie auf **Erstellen**. Kopieren Sie den Wert im **URL** -Abschnitt. Er muss das Format `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>` aufweisen.
+* Öffnen Sie zum Abrufen der SAS-URL für die Trainingsdaten Ihres benutzerdefinierten Modells den Microsoft Azure Storage-Explorer, klicken Sie mit der rechten Maustaste auf Ihren Container, und wählen Sie **Shared Access Signature abrufen** aus. Stellen Sie sicher, dass die Berechtigungen **Lesen** und **Auflisten**  aktiviert sind, und klicken Sie auf **Erstellen**. Kopieren Sie den Wert im **URL**-Abschnitt. Er muss das Format `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>` aufweisen.
 * Um die URL eines zu testenden Formulars zu erhalten, können Sie anhand der oben beschriebenen Schritte die SAS-URL eines einzelnen Dokuments im Blobspeicher abrufen. Sie können auch die URL eines Dokuments an einem anderen Speicherort verwenden.
 * Verwenden Sie die obige Methode, um auch die URL eines Belegbilds zu erhalten.
 
+#### <a name="version-30"></a>[Version 3.0](#tab/ga)
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_mainvars)]
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_maincalls)]
+#### <a name="version-31-preview"></a>[Version 3.1 (Vorschau)](#tab/preview)
+[!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java?name=snippet_mainvars)]
+
+[!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java?name=snippet_maincalls)]
+
+---
 
 
 
@@ -140,16 +165,28 @@ Mit der Formularerkennung können Sie zwei verschiedene Clienttypen erstellen. D
 
 Diese Codeausschnitte veranschaulichen, wie die folgenden Aufgaben mit der Formularerkennungs-Clientbibliothek für Java ausgeführt werden:
 
+#### <a name="version-30"></a>[Version 3.0](#tab/ga)
 * [Authentifizieren des Clients](#authenticate-the-client)
 * [Erkennen von Formularinhalten](#recognize-form-content)
 * [Erkennen von Belegen](#recognize-receipts)
 * [Trainieren eines benutzerdefinierten Modells](#train-a-custom-model)
 * [Analysieren von Formularen mit einem benutzerdefinierten Modell](#analyze-forms-with-a-custom-model)
 * [Verwalten von benutzerdefinierten Modellen](#manage-your-custom-models)
+#### <a name="version-31-preview"></a>[Version 3.1 (Vorschau)](#tab/preview)
+* [Authentifizieren des Clients](#authenticate-the-client)
+* [Erkennen von Formularinhalten](#recognize-form-content)
+* [Erkennen von Belegen](#recognize-receipts)
+* [Erkennen von Visitenkarten](#recognize-business-cards)
+* [Erkennen von Rechnungen](#recognize-invoices)
+* [Trainieren eines benutzerdefinierten Modells](#train-a-custom-model)
+* [Analysieren von Formularen mit einem benutzerdefinierten Modell](#analyze-forms-with-a-custom-model)
+* [Verwalten von benutzerdefinierten Modellen](#manage-your-custom-models)
+
+---
 
 ## <a name="authenticate-the-client"></a>Authentifizieren des Clients
 
-Fügen Sie oben in Ihrer **main** -Methode den folgenden Code hinzu. Hier authentifizieren Sie zwei Clientobjekte mithilfe der oben definierten Abonnementvariablen. Sie verwenden ein **AzureKeyCredential** -Objekt, damit Sie bei Bedarf den API-Schlüssel aktualisieren können, ohne neue Clientobjekte zu erstellen.
+Fügen Sie oben in Ihrer **main**-Methode den folgenden Code hinzu. Hier authentifizieren Sie zwei Clientobjekte mithilfe der oben definierten Abonnementvariablen. Sie verwenden ein **AzureKeyCredential**-Objekt, damit Sie bei Bedarf den API-Schlüssel aktualisieren können, ohne neue Clientobjekte zu erstellen.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_auth)]
 
@@ -157,14 +194,14 @@ Fügen Sie oben in Ihrer **main** -Methode den folgenden Code hinzu. Hier authen
 
 Mit der Formularerkennung können Sie Tabellen, Zeilen und Wörter in Dokumenten erkennen, ohne ein Modell trainieren zu müssen.
 
-Um die Inhalte einer Datei an einem angegebenen URI zu erkennen, verwenden Sie die **beginRecognizeContentFromUrl** -Methode.
+Um die Inhalte einer Datei an einem angegebenen URI zu erkennen, verwenden Sie die **beginRecognizeContentFromUrl**-Methode.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_getcontent_call)]
 
 > [!TIP]
-> Außerdem können Sie Inhalte aus einer lokalen Datei abrufen. Mehr dazu erfahren Sie bei den [FormRecognizerClient](https://docs.microsoft.com/java/api/com.azure.ai.formrecognizer.formrecognizerclient?view=azure-java-stable)-Methoden, z. B. **beginRecognizeContent**. Alternativ finden Sie im Beispielcode auf [GitHub](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md) Szenarien zu lokalen Bildern.
+> Außerdem können Sie Inhalte aus einer lokalen Datei abrufen. Mehr dazu erfahren Sie bei den [FormRecognizerClient](/java/api/com.azure.ai.formrecognizer.formrecognizerclient?view=azure-java-stable)-Methoden, z. B. **beginRecognizeContent**. Alternativ finden Sie im Beispielcode auf [GitHub](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md) Szenarien zu lokalen Bildern.
 
-Der zurückgegebene Wert ist eine Sammlung aus **FormPage** -Objekten: eines für jede Seite im übermittelten Dokument. Der folgende Code durchläuft diese Objekte und gibt die extrahierten Schlüssel-Wert-Paare und Tabellendaten aus.
+Der zurückgegebene Wert ist eine Sammlung aus **FormPage**-Objekten: eines für jede Seite im übermittelten Dokument. Der folgende Code durchläuft diese Objekte und gibt die extrahierten Schlüssel-Wert-Paare und Tabellendaten aus.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_getcontent_print)]
 ### <a name="output"></a>Output
@@ -190,14 +227,14 @@ Cell has text ET.
 
 In diesem Abschnitt wird veranschaulicht, wie Sie mithilfe eines vorab trainierten Belegmodells gebräuchliche Felder in US-Belegen erkennen und extrahieren.
 
-Um Belege aus einem URI zu erkennen, verwenden Sie die **beginRecognizeReceiptsFromUrl** -Methode. 
+Um Belege aus einem URI zu erkennen, verwenden Sie die **beginRecognizeReceiptsFromUrl**-Methode. 
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_receipts_call)]
 
 > [!TIP]
-> Sie können darüber hinaus lokale Belegbilder erkennen. Mehr dazu erfahren Sie bei den [FormRecognizerClient](https://docs.microsoft.com/java/api/com.azure.ai.formrecognizer.formrecognizerclient?view=azure-java-stable)-Methoden, z. B. **beginRecognizeReceipts**. Alternativ finden Sie im Beispielcode auf [GitHub](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md) Szenarien zu lokalen Bildern.
+> Sie können darüber hinaus lokale Belegbilder erkennen. Mehr dazu erfahren Sie bei den [FormRecognizerClient](/java/api/com.azure.ai.formrecognizer.formrecognizerclient?view=azure-java-stable)-Methoden, z. B. **beginRecognizeReceipts**. Alternativ finden Sie im Beispielcode auf [GitHub](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md) Szenarien zu lokalen Bildern.
 
-Der zurückgegebene Wert ist eine Sammlung aus **RecognizedReceipt** -Objekten: eines für jede Seite im übermittelten Dokument. Der nächste Codeblock durchläuft die Belege und gibt ihre Details an der Konsole aus.
+Der zurückgegebene Wert ist eine Sammlung aus **RecognizedReceipt**-Objekten: eines für jede Seite im übermittelten Dokument. Der nächste Codeblock durchläuft die Belege und gibt ihre Details an der Konsole aus.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_receipts_print)]
 
@@ -221,6 +258,43 @@ Name: BACON & EGGS, confidence: 0.94s
 Quantity: null, confidence: 0.927s]
 Total Price: null, confidence: 0.93
 ```
+
+#### <a name="version-30"></a>[Version 3.0](#tab/ga)
+
+#### <a name="version-31-preview"></a>[Version 3.1 (Vorschau)](#tab/preview)
+
+## <a name="recognize-business-cards"></a>Erkennen von Visitenkarten
+
+In diesem Abschnitt wird veranschaulicht, wie Sie mithilfe eines vorab trainierten Modells gängige Felder englischsprachiger Visitenkarten erkennen und extrahieren.
+
+Für die Erkennung von Visitenkarten unter einer URL muss die Methode `beginRecognizeBusinessCardsFromUrl` verwendet werden. 
+
+[!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java?name=snippet_bc_call)]
+
+> [!TIP]
+> Sie können für die Erkennung auch lokale Visitenkartenbilder verwenden. Sehen Sie sich dazu die Methoden vom Typ [FormRecognizerClient](/java/api/com.azure.ai.formrecognizer.formrecognizerclient?view=azure-java-stable) an (beispielsweise **beginRecognizeBusinessCards**). Alternativ finden Sie im Beispielcode auf [GitHub](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md) Szenarien zu lokalen Bildern.
+
+Der zurückgegebene Wert ist eine Sammlung mit Objekten vom Typ **RecognizedForm** (jeweils ein Objekt für jede Karte im Dokument). Der folgende Code verarbeitet die Visitenkarte unter dem angegebenen URI und gibt die wichtigsten Felder und Werte in der Konsole aus:
+
+[!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java?name=snippet_bc_print)]
+
+## <a name="recognize-invoices"></a>Erkennen von Rechnungen
+
+In diesem Abschnitt wird veranschaulicht, wie Sie mithilfe eines vorab trainierten Modells gängige Rechnungsfelder erkennen und extrahieren.
+
+Für die Erkennung von Rechnungen unter einer URL muss die Methode `beginRecognizeInvoicesFromUrl` verwendet werden. 
+
+[!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java?name=snippet_invoice_call)]
+
+> [!TIP]
+> Sie können für die Erkennung auch lokale Rechnungen verwenden. Sehen Sie sich dazu die Methoden vom Typ [FormRecognizerClient](/java/api/com.azure.ai.formrecognizer.formrecognizerclient?view=azure-java-stable) an (beispielsweise **beginRecognizeInvoices**). Alternativ finden Sie im Beispielcode auf [GitHub](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md) Szenarien zu lokalen Bildern.
+
+Der zurückgegebene Wert ist eine Sammlung mit Objekten vom Typ **RecognizedForm** (jeweils ein Objekt für jede Rechnung im Dokument). Der folgende Code verarbeitet die Visitenkarte unter dem angegebenen URI und gibt die wichtigsten Felder und Werte in der Konsole aus:
+
+[!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java?name=snippet_invoice_print)]
+
+---
+
 ## <a name="train-a-custom-model"></a>Trainieren eines benutzerdefinierten Modells
 
 In diesem Abschnitt wird gezeigt, wie Sie ein Modell mit eigenen Daten trainieren. Ein trainiertes Modell kann strukturierte Daten ausgeben, die die Schlüssel-Wert-Beziehungen im ursprünglichen Formulardokument enthalten. Nachdem das Modell trainiert wurde, können Sie es testen, neu trainieren und schließlich verwenden, um Daten aus weiteren Formularen zuverlässig nach Ihren Bedürfnissen zu extrahieren.
@@ -237,7 +311,7 @@ Die folgende Methode trainiert ein Modell mit einem angegebenen Dokumentensatz u
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_train_call)]
 
-Das zurückgegebene **CustomFormModel** -Objekt enthält Informationen zu den vom Modell erkannten Formulartypen und zu den Feldern, die das Modell aus jedem Formulartyp extrahieren kann. Der folgende Codeblock gibt diese Informationen an der Konsole aus.
+Das zurückgegebene **CustomFormModel**-Objekt enthält Informationen zu den vom Modell erkannten Formulartypen und zu den Feldern, die das Modell aus jedem Formulartyp extrahieren kann. Der folgende Codeblock gibt diese Informationen an der Konsole aus.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_train_print)]
 
@@ -268,7 +342,7 @@ The model found field 'field-6' with label: VAT ID
 
 ### <a name="train-a-model-with-labels"></a>Trainieren eines Modells mit Bezeichnungen
 
-Sie können benutzerdefinierte Modelle auch trainieren, indem Sie die Trainingsdokumente manuell bezeichnen. Das Training mit Bezeichnungen führt in einigen Szenarien zu einer besseren Leistung. Zum Training mit Bezeichnungen benötigen Sie zusätzlich zu den Trainingsdokumenten spezielle Informationsdateien mit Bezeichnungen ( *\<filename\>.pdf.labels.json* ) in Ihrem Blobspeichercontainer. Das [Formularerkennungstool für die Bezeichnung von Beispielen](../../quickstarts/label-tool.md) bietet eine Benutzeroberfläche, auf der Sie diese Bezeichnungsdateien erstellen können. Sobald Sie darüber verfügen, können Sie die **beginTraining** -Methode mit dem auf `true` festgelegten Parameter *useTrainingLabels* aufrufen.
+Sie können benutzerdefinierte Modelle auch trainieren, indem Sie die Trainingsdokumente manuell bezeichnen. Das Training mit Bezeichnungen führt in einigen Szenarien zu einer besseren Leistung. Zum Training mit Bezeichnungen benötigen Sie zusätzlich zu den Trainingsdokumenten spezielle Informationsdateien mit Bezeichnungen ( *\<filename\>.pdf.labels.json*) in Ihrem Blobspeichercontainer. Das [Formularerkennungstool für die Bezeichnung von Beispielen](../../quickstarts/label-tool.md) bietet eine Benutzeroberfläche, auf der Sie diese Bezeichnungsdateien erstellen können. Sobald Sie darüber verfügen, können Sie die **beginTraining**-Methode mit dem auf `true` festgelegten Parameter *useTrainingLabels* aufrufen.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_trainlabels_call)]
 
@@ -305,14 +379,14 @@ In diesem Abschnitt wird veranschaulicht, wie Sie mithilfe von Modellen, die Sie
 > [!IMPORTANT]
 > Um dieses Szenario zu implementieren, müssen Sie bereits ein Modell trainiert haben, sodass Sie seine ID an die unten stehende Methode übergeben können. Weitere Informationen finden Sie im Abschnitt [Trainieren eines Modells](#train-a-model-without-labels).
 
-Sie verwenden die **beginRecognizeCustomFormsFromUrl** -Methode. 
+Sie verwenden die **beginRecognizeCustomFormsFromUrl**-Methode. 
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_analyze_call)]
 
 > [!TIP]
-> Sie können auch eine lokale Datei analysieren. Mehr dazu erfahren Sie bei den [FormRecognizerClient](https://docs.microsoft.com/java/api/com.azure.ai.formrecognizer.formrecognizerclient?view=azure-java-stable)-Methoden, z. B. **beginRecognizeCustomForms**. Alternativ finden Sie im Beispielcode auf [GitHub](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md) Szenarien zu lokalen Bildern.
+> Sie können auch eine lokale Datei analysieren. Mehr dazu erfahren Sie bei den [FormRecognizerClient](/java/api/com.azure.ai.formrecognizer.formrecognizerclient?view=azure-java-stable)-Methoden, z. B. **beginRecognizeCustomForms**. Alternativ finden Sie im Beispielcode auf [GitHub](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md) Szenarien zu lokalen Bildern.
 
-Der zurückgegebene Wert ist eine Sammlung aus **RecognizedForm** -Objekten: eines für jede Seite im übermittelten Dokument. Mit dem folgenden Code werden die Analyseergebnisse auf der Konsole ausgegeben. Der Code gibt jedes erkannte Feld und den zugehörigen Wert sowie eine Zuverlässigkeitsbewertung aus.
+Der zurückgegebene Wert ist eine Sammlung aus **RecognizedForm**-Objekten: eines für jede Seite im übermittelten Dokument. Mit dem folgenden Code werden die Analyseergebnisse auf der Konsole ausgegeben. Der Code gibt jedes erkannte Feld und den zugehörigen Wert sowie eine Zuverlässigkeitsbewertung aus.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_analyze_print)]
 

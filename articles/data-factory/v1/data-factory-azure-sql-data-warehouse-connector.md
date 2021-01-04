@@ -1,6 +1,6 @@
 ---
-title: Kopieren von Daten in/aus Azure Synapse Analytics (ehemals SQL Data Warehouse)
-description: Erfahren Sie, wie Daten mithilfe von Azure Data Factory in und aus Azure Synapse Analytics (ehemals SQL Data Warehouse) kopiert werden.
+title: Kopieren von Daten in und aus Azure Synapse Analytics
+description: Erfahren Sie, wie Daten mithilfe von Azure Data Factory in und aus Azure Synapse Analytics kopiert werden.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -12,14 +12,14 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 55582fb8c4fc80ab005a01ec015035963404e639
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 0d071599b72f6a71bdff815f514311fb87f53d5b
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637410"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452361"
 ---
-# <a name="copy-data-to-and-from-azure-synapse-analytics-formerly-sql-data-warehouse-using-azure-data-factory"></a>Kopieren von Daten mithilfe von Azure Data Factory in und aus Azure Synapse Analytics (ehemals SQL Data Warehouse)
+# <a name="copy-data-to-and-from-azure-synapse-analytics-using-azure-data-factory"></a>Kopieren von Daten in und aus Azure Synapse Analytics mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
 > * [Version 1](data-factory-azure-sql-data-warehouse-connector.md)
 > * [Version 2 (aktuelle Version)](../connector-azure-sql-data-warehouse.md)
@@ -42,7 +42,7 @@ Sie können Daten aus den folgenden Datenspeichern **in Azure Synapse Analytics*
 [!INCLUDE [data-factory-supported-sources](../../../includes/data-factory-supported-sources.md)]
 
 > [!TIP]
-> Beim Kopieren von Daten aus SQL Server oder Azure SQL-Datenbank in Azure Synapse Analytics kann Data Factory die Tabelle, wenn sie im Zielspeicher nicht vorhanden ist, anhand des Schemas der Tabelle im Quelldatenspeicher automatisch in Synapse Analytics erstellen. Einzelheiten finden Sie unter [Automatische Tabellenerstellung](#auto-table-creation).
+> Beim Kopieren von Daten aus SQL Server oder Azure SQL-Datenbank in Azure Synapse Analytics kann Data Factory die Tabelle, wenn sie im Zielspeicher nicht vorhanden ist, anhand des Schemas der Tabelle im Quelldatenspeicher automatisch in Azure Synapse Analytics erstellen. Einzelheiten finden Sie unter [Automatische Tabellenerstellung](#auto-table-creation).
 
 ## <a name="supported-authentication-type"></a>Unterstützter Authentifizierungstyp
 Der Azure Synapse Analytics-Connector unterstützt die Standardauthentifizierung.
@@ -50,13 +50,13 @@ Der Azure Synapse Analytics-Connector unterstützt die Standardauthentifizierung
 ## <a name="getting-started"></a>Erste Schritte
 Sie können eine Pipeline mit einer Kopieraktivität erstellen, die Daten mithilfe verschiedener Tools/APIs in und aus einer Azure Synapse Analytics-Instanz verschiebt.
 
-Die einfachste Möglichkeit zum Erstellen einer Pipeline, die Daten in und aus Azure Synapse Analytics kopiert, ist die Verwendung des Assistenten zum Kopieren von Daten. Siehe [Tutorial: Laden von Daten in Synapse Analytics mit Data Factory](../load-azure-sql-data-warehouse.md) finden Sie eine kurze exemplarische Vorgehensweise zum Erstellen einer Pipeline mithilfe des Assistenten zum Kopieren von Daten.
+Die einfachste Möglichkeit zum Erstellen einer Pipeline, die Daten in und aus Azure Synapse Analytics kopiert, ist die Verwendung des Assistenten zum Kopieren von Daten. Im [Tutorial: Laden von Daten in Azure Synapse Analytics mit Data Factory](../load-azure-sql-data-warehouse.md) finden Sie eine kurze exemplarische Vorgehensweise zum Erstellen einer Pipeline mithilfe des Assistenten zum Kopieren von Daten.
 
-Sie können auch die folgenden Tools zum Erstellen einer Pipeline verwenden: **Visual Studio** , **Azure PowerShell** , **Azure Resource Manager-Vorlage** , **.NET-API** und **REST-API** . Im [Tutorial zur Kopieraktivität](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) finden Sie detaillierte Anweisungen, wie Sie eine Pipeline mit einer Kopieraktivität erstellen können.
+Sie können auch die folgenden Tools zum Erstellen einer Pipeline verwenden: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager-Vorlage**, **.NET-API** und **REST-API**. Im [Tutorial zur Kopieraktivität](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) finden Sie detaillierte Anweisungen, wie Sie eine Pipeline mit einer Kopieraktivität erstellen können.
 
 Unabhängig davon, ob Sie Tools oder APIs verwenden, führen Sie die folgenden Schritte aus, um eine Pipeline zu erstellen, die Daten aus einem Quelldatenspeicher in einen Senkendatenspeicher verschiebt:
 
-1. Eine **Data Factory** . Eine Data Factory kann eine oder mehrere Pipelines enthalten. 
+1. Eine **Data Factory**. Eine Data Factory kann eine oder mehrere Pipelines enthalten. 
 2. Erstellen **verknüpfter Dienste** zum Verknüpfen von Eingabe- und Ausgabedatenspeichern mit Ihrer Data Factory. Wenn Sie beispielsweise Daten aus einer Azure Blob Storage- in eine Azure Synapse Analytics-Instanz kopieren, erstellen Sie zwei verknüpfte Dienste, um Ihr Azure Storage-Konto und Azure Synapse Analytics mit Ihrer Data Factory zu verknüpfen. Informationen zu Eigenschaften von verknüpften Diensten, die spezifisch für Azure Synapse Analytics sind, finden Sie im Abschnitt [Eigenschaften des verknüpften Diensts](#linked-service-properties). 
 3. Erstellen von **Datasets** zur Darstellung von Eingabe- und Ausgabedaten für den Kopiervorgang. Im Beispiel, das im letzten Schritt erwähnt wurde, erstellen Sie ein Dataset, um den Blobcontainer und den Ordner mit den Eingabedaten anzugeben. Und Sie erstellen ein weiteres Dataset zum Angeben der Tabelle in der Azure Synapse Analytics-Instanz, in der die aus dem Blobspeicher kopierten Daten enthalten sind. Informationen zu Dataset-Eigenschaften, die spezifisch für Azure Synapse Analytics sind, finden Sie im Abschnitt [Dataset-Eigenschaften](#dataset-properties).
 4. Erstellen einer **Pipeline** mit einer Kopieraktivität, die ein Dataset als Eingabe und ein Dataset als Ausgabe akzeptiert. Im oben erwähnten Beispiel verwenden Sie „BlobSource“ als Quelle und „SqlDWSink“ als Senke für die Kopieraktivität. Wenn Sie Daten aus Azure Synapse Analytics in Azure Blob Storage kopieren, verwenden Sie entsprechend „SqlDWSource“ und „BlobSink“ in der Kopieraktivität. Informationen zu den Eigenschaften von Kopieraktivitäten, die spezifisch für Azure Synapse Analytics sind, finden Sie im Abschnitt [Eigenschaften der Kopieraktivität](#copy-activity-properties). Ausführliche Informationen zur Verwendung eines Datenspeichers als Quelle oder Senke erhalten Sie, indem Sie im vorherigen Abschnitt auf den Link für Ihren Datenspeicher klicken.
@@ -70,7 +70,7 @@ Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den 
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
-| type |Die type-Eigenschaft muss auf Folgendes festgelegt werden: **AzureSqlDW** . |Ja |
+| type |Die type-Eigenschaft muss auf Folgendes festgelegt werden: **AzureSqlDW**. |Ja |
 | connectionString |Geben Sie Informationen, die zum Herstellen einer Verbindung mit der Azure Synapse Analytics-Instanz erforderlich sind, für die Eigenschaft „connectionString“ an. Es wird nur Standardauthentifizierung unterstützt. |Ja |
 
 > [!IMPORTANT]
@@ -146,7 +146,7 @@ GO
 | --- | --- | --- | --- |
 | sqlWriterCleanupScript |Geben Sie eine Abfrage für die Kopieraktivität an, bei deren Ausführung die Daten eines bestimmten Slice bereinigt werden. Ausführlichere Informationen finden Sie im [Abschnitt zur Wiederholbarkeit](#repeatability-during-copy). |Eine Abfrageanweisung. |Nein |
 | allowPolyBase |Gibt an, ob (falls zutreffend) PolyBase anstelle des BULKINSERT-Mechanismus verwendet werden soll. <br/><br/> **Zum Laden von Daten in Azure Synapse Analytics wird die Verwendung von PolyBase empfohlen.** Einschränkungen und Einzelheiten finden Sie im Abschnitt [Verwenden von PolyBase zum Laden von Daten in Azure Synapse Analytics](#use-polybase-to-load-data-into-azure-synapse-analytics). |True <br/>False (Standardwert) |Nein |
-| polyBaseSettings |Eine Gruppe von Eigenschaften, die angegeben werden können, wenn die **allowPolybase** -Eigenschaft auf **true** festgelegt ist. |&nbsp; |Nein |
+| polyBaseSettings |Eine Gruppe von Eigenschaften, die angegeben werden können, wenn die **allowPolybase**-Eigenschaft auf **true** festgelegt ist. |&nbsp; |Nein |
 | rejectValue |Gibt die Anzahl oder den Prozentsatz von Zeilen an, die abgelehnt werden können, bevor für die Abfrage ein Fehler auftritt. <br/><br/>Weitere Informationen zu den Ablehnungsoptionen von PolyBase finden Sie im Abschnitt **Argumente** des Themas [CREATE EXTERNAL TABLE (Transact-SQL)](/sql/t-sql/statements/create-external-table-transact-sql). |0 (Standardwert), 1, 2, … |Nein |
 | rejectType |Gibt an, ob die rejectValue-Option als Literalwert oder Prozentsatz angegeben ist. |Value (Standardwert), Percentage |Nein |
 | rejectSampleValue |Gibt die Anzahl von Zeilen an, die abgerufen werden, bevor PolyBase den Prozentsatz der abgelehnten Zeilen neu berechnet. |1, 2, … |Ja, wenn für **rejectType** der Wert **percentage** festgelegt ist. |
@@ -193,12 +193,12 @@ PolyBase in Azure Synapse Analytics bietet direkte Unterstützung für Azure Blo
 
 Falls die Anforderungen nicht erfüllt werden, überprüft Azure Data Factory die Einstellungen und greift bei der Datenverschiebung automatisch auf den BULKINSERT-Mechanismus zurück.
 
-1. Der **mit der Quelle verknüpfte Dienst** hat den folgenden Typ: **AzureStorage** oder **AzureDataLakeStore mit Dienstprinzipalauthentifizierung** .
-2. Das **Eingabedataset** hat den folgenden Typ: **AzureBlob** oder **AzureDataLakeStore** , und der Formattyp unter den `type`-Eigenschaften lautet **OrcFormat** , **ParquetFormat** oder **TextFormat** mit folgenden Konfigurationen:
+1. Der **mit der Quelle verknüpfte Dienst** hat den folgenden Typ: **AzureStorage** oder **AzureDataLakeStore mit Dienstprinzipalauthentifizierung**.
+2. Das **Eingabedataset** hat den folgenden Typ: **AzureBlob** oder **AzureDataLakeStore**, und der Formattyp unter den `type`-Eigenschaften lautet **OrcFormat**, **ParquetFormat** oder **TextFormat** mit folgenden Konfigurationen:
 
    1. `rowDelimiter` muss **\n** sein.
    2. `nullValue` ist auf eine **leere Zeichenfolge** ("") festgelegt, oder `treatEmptyAsNull` ist auf **true** festgelegt.
-   3. `encodingName` ist auf **utf-8** festgelegt. (Dies ist der **Standardwert** .)
+   3. `encodingName` ist auf **utf-8** festgelegt. (Dies ist der **Standardwert**.)
    4. `escapeChar`, `quoteChar`, `firstRowAsHeader` und `skipLineCount` sind nicht angegeben.
    5. `compression` kann auf **keine Komprimierung** oder auf **Gzip** oder **Deflate** (Verkleinern) festgelegt sein.
 

@@ -3,13 +3,15 @@ title: Problembehandlung bei Application Insights in einem Java-Webprojekt
 description: Handbuch zur Problembehandlung – Überwachen von Live-Java-Apps mit Application Insights
 ms.topic: conceptual
 ms.date: 03/14/2019
+author: MS-jgol
 ms.custom: devx-track-java
-ms.openlocfilehash: 8d11eaa76f2133b9fdc66ba4e6bc91e2cc38c51c
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.author: jgol
+ms.openlocfilehash: dbc9e48987f527c9579decc3db84091a432a17e5
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93379535"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96601015"
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java-sdk"></a>Anleitung zur Problembehandlung sowie Fragen und Antworten zu Application Insights für das Java SDK
 

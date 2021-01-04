@@ -6,16 +6,16 @@ ms.author: sacedarb
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 03/11/2020
-ms.openlocfilehash: f14ded89ad294abbfaf9861e5f4caf17dd82fb98
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: f1aad2464e4979ecbf35deceaad4de70e05b3004
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94490711"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96573662"
 ---
-# <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-azure-blob-storage-output"></a>Verwendung von verwalteten Identitäten zum Authentifizieren von Azure Stream Analytics-Aufträgen für die Azure Blob Storage-Ausgabe
+# <a name="use-managed-identity-preview-to-authenticate-your-azure-stream-analytics-job-to-azure-blob-storage-output"></a>Verwendung von verwalteten Identitäten (Vorschau) zum Authentifizieren von Azure Stream Analytics-Aufträgen für die Azure Blob Storage-Ausgabe
 
-Durch die [Authentifizierung der verwalteten Identität](../active-directory/managed-identities-azure-resources/overview.md) für die Ausgabe an Azure Blob Storage erhalten Stream Analytics-Aufträge direkten Zugriff auf ein Speicherkonto, anstatt eine Verbindungszeichenfolge zu verwenden. Neben der verbesserten Sicherheit ermöglicht Ihnen diese Funktion auch das Schreiben von Daten auf ein Speicherkonto in einem virtuellen Netzwerk (VNET) in Azure.
+Durch die [Authentifizierung mittels verwalteter Identität](../active-directory/managed-identities-azure-resources/overview.md) (Vorschau) für die Ausgabe an Azure Blob Storage erhalten Stream Analytics-Aufträge direkten Zugriff auf ein Speicherkonto, anstatt eine Verbindungszeichenfolge zu verwenden. Neben der verbesserten Sicherheit ermöglicht Ihnen diese Funktion auch das Schreiben von Daten auf ein Speicherkonto in einem virtuellen Netzwerk (VNET) in Azure.
 
 Dieser Artikel zeigt Ihnen, wie Sie verwaltete Identitäten für die Blobausgabe(n) eines Stream Analytics-Auftrags über das Azure-Portal und mit einer Azure Resource Manager-Bereitstellung aktivieren.
 

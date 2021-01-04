@@ -1,7 +1,7 @@
 ---
 title: Neuerungen bei der Azure Active Directory-Anwendungsverwaltung
 description: Neue und aktualisierte Dokumentation für die Azure Active Directory-Anwendungsverwaltung
-ms.date: 11/05/2020
+ms.date: 12/15/2020
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: reference
@@ -9,16 +9,40 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: CelesteDG
-ms.openlocfilehash: 10861438334bc804d1b1e4b9a669280f7e09ffde
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: bad312b777c57a48c3205de588325d477b5773af
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94654008"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563397"
 ---
 # <a name="azure-active-directory-application-management-whats-new"></a>Azure Active Directory-Anwendungsverwaltung: Neues
 
 Hier erfahren Sie mehr über die Neuerungen in der Dokumentation zur Azure Active Directory-Anwendungsverwaltung. In diesem Artikel werden neu hinzugefügte Dokumente aufgelistet sowie Dokumente, die in den letzten drei Monaten grundlegend überarbeitet wurden. Informationen zu den Neuerungen beim Anwendungsverwaltungsdienst finden Sie unter [Neuerungen in Azure Active Directory](../fundamentals/whats-new.md).
+
+## <a name="december-2020"></a>Dezember 2020
+
+### <a name="updated-articles"></a>Aktualisierte Artikel
+
+- [Schnellstart: Einrichten des OIDC-basierten einmaligen Anmeldens (Single Sign-On, SSO) für eine Anwendung auf Ihrem Azure Active Directory-Mandanten (Azure AD-Mandanten)](add-application-portal-setup-oidc-sso.md)
+- [Tutorial: Hinzufügen einer lokalen Anwendung für den Remotezugriff über den Anwendungsproxy in Azure Active Directory](application-proxy-add-on-premises-application.md)
+- [Grundlegendes zum OIDC-basierten einmaligen Anmelden](configure-oidc-single-sign-on.md)
+- [Verschieben der Anwendungsauthentifizierung von Active Directory-Verbunddiensten (AD FS) in Azure Active Directory](migrate-adfs-apps-to-azure.md)
+- [Verwenden von vorhandenen lokalen Proxyservern](application-proxy-configure-connectors-with-proxy-servers.md)
+- [Azure Active Directory-Anwendungsverwaltung: Neues](whats-new-docs.md)
+- [Verwenden Sie den AD FS-Anwendungsaktivitätsbericht (Vorschau), um Anwendungen zu Azure AD zu migrieren.](migrate-adfs-application-activity.md)
+- [Veröffentlichen von Remotedesktop mit Azure AD-Anwendungsproxy](application-proxy-integrate-with-remote-desktop-services.md)
+
+
+## <a name="november-2020"></a>November 2020
+
+### <a name="new-articles"></a>Neue Artikel
+- [Headerbasiertes einmaliges Anmelden für lokale Apps mit dem Azure AD-Anwendungsproxy (Vorschau)](application-proxy-configure-single-sign-on-with-headers.md)
+
+### <a name="updated-articles"></a>Aktualisierte Artikel
+- [Azure Active Directory-Anwendungsverwaltung: Neues](whats-new-docs.md)
+- [Probleme beim Anmelden bei für SAML-basiertes einmaliges Anmelden konfigurierten Apps](application-sign-in-problem-federated-sso-gallery.md)
+
 
 ## <a name="october-2020"></a>Oktober 2020
 

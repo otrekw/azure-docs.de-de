@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f6c30dffbc8f97273ee59ce33ae3fe75ed730763
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: b2ce3b362d02e7acb0a11e6d93b8e94ca8e4d04e
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93356636"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96903529"
 ---
 # <a name="create-a-new-access-package-in-azure-ad-entitlement-management"></a>Erstellen eines neuen Zugriffspakets in der Azure AD-Berechtigungsverwaltung
 
@@ -106,6 +106,9 @@ Auf der Registerkarte **Ressourcenrollen** wählen Sie die Ressourcen aus, die i
     ![Zugriffspaket – Ressourcenrollenauswahl](./media/entitlement-management-access-package-create/resource-roles-role.png)
 
 1. Klicken Sie auf **Weiter**.
+
+>[!NOTE]
+>Sie können einem Katalog und einem Zugriffspaket dynamische Gruppen hinzufügen. Sie können jedoch nur die Rolle „Besitzer“ auswählen, wenn Sie in einem Zugriffspaket eine dynamische Gruppenressource verwalten.
 
 ## <a name="requests"></a>Requests
 

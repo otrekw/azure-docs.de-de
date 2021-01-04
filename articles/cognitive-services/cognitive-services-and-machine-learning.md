@@ -7,12 +7,12 @@ manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 08/22/2019
-ms.openlocfilehash: 96cca89b1206aaa7890648def694074a18b2aa17
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 4ab32cd37d732cd9f177363da547edd22bd5af77
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94368864"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349264"
 ---
 # <a name="cognitive-services-and-machine-learning"></a>Cognitive Services und maschinelles Lernen
 
@@ -44,7 +44,7 @@ Machine Learning (maschinelles Lernen) ist ein Konzept, bei dem Sie Daten und ei
 
 Der Prozess zum Erstellen eines Machine Learning-Systems erfordert einige Kenntnisse zu Machine Learning oder Data Science.
 
-Machine Learning wird über [Azure Machine Learning-Produkte und -Dienste](/azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=azure%252fmachine-learning%252fstudio%252fcontext%252fml-context) bereitgestellt.
+Machine Learning wird über [Azure Machine Learning-Produkte und -Dienste](/azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=azure%2fmachine-learning%2fstudio%2fcontext%2fml-context) bereitgestellt.
 
 ## <a name="what-is-a-cognitive-service"></a>Was ist ein Cognitive Service (kognitiver Dienst)?
 
@@ -77,7 +77,7 @@ Dienste, die ein vollständig trainiertes Modell bereitstellen, können als _Bla
 
 Einige Dienste ermöglichen es Ihnen, Ihre eigenen Daten einzubringen und dann ein Modell zu trainieren. Dadurch können Sie das Modell, für das die Daten und der Algorithmus des Diensts verwendet werden, mit ihren eigenen Daten erweitern. Die Ausgabe entspricht Ihren Anforderungen. Wenn Sie Ihre eigenen Daten einbringen, müssen Sie die Daten möglicherweise auf eine Weise markieren, die speziell für den Dienst gilt. Wenn Sie beispielsweise ein Modell zum Erkennen von Blumen trainieren, können Sie einen Katalog mit Blumenbildern zusammen mit der Position der Blume in jedem Bild bereitstellen, um das Modell zu trainieren. 
 
-Ein Dienst kann Ihnen das Bereitstellen von Daten _ermöglichen_ , um seine eigenen Daten zu verbessern. Ein Dienst kann von Ihnen _verlangen_ , dass Sie Daten bereitstellen. 
+Ein Dienst kann Ihnen das Bereitstellen von Daten _ermöglichen_, um seine eigenen Daten zu verbessern. Ein Dienst kann von Ihnen _verlangen_, dass Sie Daten bereitstellen. 
 
 ### <a name="real-time-or-near-real-time-data-required"></a>Daten in Echtzeit oder nahezu in Echtzeit erforderlich
 

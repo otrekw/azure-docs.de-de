@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 10/22/2020
+ms.date: 11/23/2020
 ms.author: aahi
 ms.custom: seodec18, cog-serv-seo-aug-2020
 keywords: Lokal, OCR, Docker, Container
-ms.openlocfilehash: 07440b99d887ee6cb4b6d505ed7fb79f4c12c784
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: b89d02107365872471f1dd5a7df07902b08f2031
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92677215"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96006904"
 ---
 # <a name="install-read-ocr-docker-containers-preview"></a>Installieren von Read-OCR-Docker-Containern (Vorschau) 
 
@@ -25,14 +25,14 @@ ms.locfileid: "92677215"
 
 Container ermöglichen Ihnen, die APIs für maschinelles Sehen in Ihrer eigenen Umgebung auszuführen. Container eignen sich hervorragend für bestimmte Sicherheits- und Datengovernanceanforderungen. In diesem Artikel erfahren Sie, wie Sie Container für maschinelles Sehen herunterladen, installieren und ausführen.
 
-Mit dem *Read* -OCR-Container können Sie gedruckten und handschriftlichen Text aus Bildern und Dokumenten mit Unterstützung für die Dateiformate JPEG, PNG, BMP, PDF und TIFF extrahieren. Weitere Informationen finden Sie in der Dokumentation zur [Lese-API](concept-recognizing-text.md#read-api).
+Mit dem *Read*-OCR-Container können Sie gedruckten und handschriftlichen Text aus Bildern und Dokumenten mit Unterstützung für die Dateiformate JPEG, PNG, BMP, PDF und TIFF extrahieren. Weitere Informationen finden Sie in der Dokumentation zur [Lese-API](concept-recognizing-text.md#read-api).
 
-## <a name="read-31-container"></a>Read 3.1-Container
+## <a name="read-32-preview-container"></a>Read 3.2-Vorschaucontainer
 
 > [!NOTE]
 > Der Read 3.0-Vorschaucontainer wurde als veraltet markiert. 
 
-Der Read 3.1-Vorschaucontainer bietet Folgendes:
+Der Read 3.2-Vorschaucontainer bietet Folgendes:
 * Neue Modelle für erweiterte Genauigkeit
 * Unterstützung für mehrere Sprachen innerhalb desselben Dokuments
 * Unterstützung für: Niederländisch, Englisch, Französisch, Deutsch, Italienisch, Portugiesisch und Spanisch
@@ -92,16 +92,16 @@ Für das Lesen stehen Containerimages zur Verfügung.
 | Container | Container Registry/Repository/Imagename |
 |-----------|------------|
 | Read 2.0-preview | `mcr.microsoft.com/azure-cognitive-services/vision/read:2.0-preview` |
-| Read 3.1-preview | `mcr.microsoft.com/azure-cognitive-services/vision/read:3.1-preview` |
+| Read 3.2-preview | `mcr.microsoft.com/azure-cognitive-services/vision/read:3.2-preview.1` |
 
 Verwenden Sie den Befehl [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/), um ein Containerimage herunterzuladen.
 
 ### <a name="docker-pull-for-the-read-container"></a>„docker pull“ für den Container für das Lesen
 
-# <a name="version-31-preview"></a>[Version 3.1-preview](#tab/version-3-1)
+# <a name="version-32-preview"></a>[Version 3.2 (Vorschauversion)](#tab/version-3-2)
 
 ```bash
-docker pull mcr.microsoft.com/azure-cognitive-services/vision/read:3.1-preview
+docker pull mcr.microsoft.com/azure-cognitive-services/vision/read:3.2-preview.1
 ```
 
 # <a name="version-20-preview"></a>[Version 2.0-preview](#tab/version-2)
@@ -127,11 +127,11 @@ Verwenden Sie den Befehl [docker run](https://docs.docker.com/engine/reference/c
 
 Es sind [Beispiele](computer-vision-resource-container-config.md#example-docker-run-commands) für den Befehl `docker run` verfügbar.
 
-# <a name="version-31-preview"></a>[Version 3.1-preview](#tab/version-3-1)
+# <a name="version-32-preview"></a>[Version 3.2 (Vorschauversion)](#tab/version-3-2)
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
-mcr.microsoft.com/azure-cognitive-services/vision/read:3.1-preview \
+mcr.microsoft.com/azure-cognitive-services/vision/read:3.2-preview.1 \
 Eula=accept \
 Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}
@@ -169,13 +169,13 @@ Es sind noch weitere [Beispiele](./computer-vision-resource-container-config.md#
 > [!IMPORTANT]
 > Die Optionen `Eula`, `Billing` und `ApiKey` müssen angegeben werden, um den Container auszuführen, andernfalls wird der Container nicht gestartet.  Weitere Informationen finden Sie unter [Abrechnung](#billing).
 
-Wenn Sie einen höheren Durchsatz (beispielsweise bei der Verarbeitung mehrseitiger Dateien) benötigen, ziehen Sie die Bereitstellung mehrerer Container [in einem Kubernetes-Cluster](deploy-computer-vision-on-premises.md) mithilfe von [Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-account-create) und [Azure Queue](https://docs.microsoft.com/azure/storage/queues/storage-queues-introduction) in Betracht.
+Wenn Sie einen höheren Durchsatz (beispielsweise bei der Verarbeitung mehrseitiger Dateien) benötigen, ziehen Sie die Bereitstellung mehrerer Container [in einem Kubernetes-Cluster](deploy-computer-vision-on-premises.md) mithilfe von [Azure Storage](../../storage/common/storage-account-create.md) und [Azure Queue](../../storage/queues/storage-queues-introduction.md) in Betracht.
 
-Wenn Sie Azure Storage zum Speichern von Images für die Verarbeitung verwenden, können Sie eine [Verbindungszeichenfolge](https://docs.microsoft.com/azure/storage/common/storage-configure-connection-string) erstellen, die beim Aufrufen des Containers verwendet werden soll.
+Wenn Sie Azure Storage zum Speichern von Images für die Verarbeitung verwenden, können Sie eine [Verbindungszeichenfolge](../../storage/common/storage-configure-connection-string.md) erstellen, die beim Aufrufen des Containers verwendet werden soll.
 
 So finden Sie die Verbindungszeichenfolge:
 
-1. Navigieren Sie im Azure-Portal zu **Speicherkonten** , und suchen Sie Ihr Konto.
+1. Navigieren Sie im Azure-Portal zu **Speicherkonten**, und suchen Sie Ihr Konto.
 2. Klicken Sie in der linken Navigationsliste auf **Zugriffsschlüssel**.
 3. Die Verbindungszeichenfolge befindet sich unterhalb von **Verbindungszeichenfolge**.
 
@@ -189,9 +189,9 @@ So finden Sie die Verbindungszeichenfolge:
 
 Der Container stellt REST-basierte Endpunkt-APIs für die Abfragevorhersage bereit. 
 
-# <a name="version-31-preview"></a>[Version 3.1-preview](#tab/version-3-1)
+# <a name="version-32-preview"></a>[Version 3.2 (Vorschauversion)](#tab/version-3-2)
 
-Verwenden Sie für Container-APIs den Host `http://localhost:5000`. Sie können den Swagger-Pfad unter `http://localhost:5000/swagger/vision-v3.1-preview-read/swagger.json` anzeigen.
+Verwenden Sie für Container-APIs den Host `http://localhost:5000`. Sie können den Swagger-Pfad unter `http://localhost:5000/swagger/vision-v3.2-preview-read/swagger.json` anzeigen.
 
 # <a name="version-20-preview"></a>[Version 2.0-preview](#tab/version-2)
 
@@ -202,9 +202,9 @@ Verwenden Sie für Container-APIs den Host `http://localhost:5000`. Sie können 
 ### <a name="asynchronous-read"></a>Asynchrones Lesen
 
 
-# <a name="version-31-preview"></a>[Version 3.1-preview](#tab/version-3-1)
+# <a name="version-32-preview"></a>[Version 3.2 (Vorschauversion)](#tab/version-3-2)
 
-Sie können die Vorgänge `POST /vision/v3.1/read/analyze` und `GET /vision/v3.1/read/operations/{operationId}` kombiniert verwenden, um asynchron in einem Bild zu lesen, ähnlich wie der Dienst für maschinelles Sehen die entsprechenden REST-Vorgänge verwendet. Die asynchrone POST-Methode gibt eine `operationId` zurück, die als Bezeichner für die HTTP GET-Anforderung verwendet wird.
+Sie können die Vorgänge `POST /vision/v3.2/read/analyze` und `GET /vision/v3.2/read/operations/{operationId}` kombiniert verwenden, um asynchron in einem Bild zu lesen, ähnlich wie der Dienst für maschinelles Sehen die entsprechenden REST-Vorgänge verwendet. Die asynchrone POST-Methode gibt eine `operationId` zurück, die als Bezeichner für die HTTP GET-Anforderung verwendet wird.
 
 
 Wählen Sie auf der Swagger-Benutzeroberfläche `asyncBatchAnalyze` aus, um die Option im Browser zu erweitern. Wählen Sie dann **Jetzt ausprobieren** > **Datei auswählen** aus. In diesem Beispiel verwenden wir das folgende Bild:
@@ -216,7 +216,7 @@ Wenn die asynchrone POST-Anforderung erfolgreich ausgeführt wurde, gibt sie den
 ```http
  content-length: 0
  date: Fri, 04 Sep 2020 16:23:01 GMT
- operation-location: http://localhost:5000/vision/v3.1/read/operations/a527d445-8a74-4482-8cb3-c98a65ec7ef9
+ operation-location: http://localhost:5000/vision/v3.2/read/operations/a527d445-8a74-4482-8cb3-c98a65ec7ef9
  server: Kestrel
 ```
 
@@ -228,7 +228,7 @@ Die `operation-location` ist die vollqualifizierte URL, auf die über HTTP GET z
   "createdDateTime": "2020-09-02T10:30:14Z",
   "lastUpdatedDateTime": "2020-09-02T10:30:15Z",
   "analyzeResult": {
-    "version": "3.1.0",
+    "version": "3.2.0",
     "readResults": [
       {
         "page": 1,
@@ -344,15 +344,15 @@ Die `operation-location` ist die vollqualifizierte URL, auf die über HTTP GET z
 ---
 
 > [!IMPORTANT]
-> Wenn Sie mehrere Lesecontainer hinter einem Lastenausgleich bereitstellen (z. B. unter Docker Compose oder Kubernetes), benötigen Sie einen externen Cache. Da der Verarbeitungscontainer und der GET-Anforderungscontainer möglicherweise nicht identisch sind, werden die Ergebnisse in einem externen Cache gespeichert und dort für die Container freigegeben. Ausführliche Informationen zu Cacheeinstellungen finden Sie unter [Konfigurieren von Docker-Containern für maschinelles Sehen](https://docs.microsoft.com/azure/cognitive-services/computer-vision/computer-vision-resource-container-config).
+> Wenn Sie mehrere Lesecontainer hinter einem Lastenausgleich bereitstellen (z. B. unter Docker Compose oder Kubernetes), benötigen Sie einen externen Cache. Da der Verarbeitungscontainer und der GET-Anforderungscontainer möglicherweise nicht identisch sind, werden die Ergebnisse in einem externen Cache gespeichert und dort für die Container freigegeben. Ausführliche Informationen zu Cacheeinstellungen finden Sie unter [Konfigurieren von Docker-Containern für maschinelles Sehen](./computer-vision-resource-container-config.md).
 
 ### <a name="synchronous-read"></a>Synchrones Lesen
 
 Mit dem folgenden Vorgang können Sie ein Bild synchron lesen: 
 
-# <a name="version-31-preview"></a>[Version 3.1-preview](#tab/version-3-1)
+# <a name="version-32-preview"></a>[Version 3.2 (Vorschauversion)](#tab/version-3-2)
 
-`POST /vision/v3.1/read/syncAnalyze` 
+`POST /vision/v3.2/read/syncAnalyze` 
 
 # <a name="version-20-preview"></a>[Version 2.0-preview](#tab/version-2)
 
@@ -411,6 +411,6 @@ In diesem Artikel haben Sie die Konzepte und den Workflow zum Herunterladen, Ins
 
 * Konfigurationseinstellungen finden Sie unter [Konfigurieren von Containern](computer-vision-resource-container-config.md).
 * Lesen Sie [Übersicht über maschinelles Sehen](overview.md), um weitere Informationen zur Erkennung von gedrucktem und handschriftlichem Text zu erhalten.
-* Details zu den vom Container unterstützten Methoden finden Sie unter [Maschinelles Sehen-API](//westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa).
+* Details zu den vom Container unterstützten Methoden finden Sie unter [Maschinelles Sehen-API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b).
 * Unter [Häufig gestellte Fragen (FAQ)](FAQ.md) finden Sie Informationen zum Beheben von Problemen im Zusammenhang mit der Funktionalität des maschinellen Sehens.
 * Verwenden weiterer [Cognitive Services-Container](../cognitive-services-container-support.md)

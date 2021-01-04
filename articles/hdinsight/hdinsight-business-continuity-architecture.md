@@ -8,12 +8,12 @@ keywords: Hochverfügbarkeit, Hadoop
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/07/2020
-ms.openlocfilehash: c322380d6a41e69baa8f753b84c0bc074f334647
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 0275fa4cc46dff8781d73563fd250b1ec62ddd56
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547026"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96344112"
 ---
 # <a name="azure-hdinsight-business-continuity-architectures"></a>Architekturen zur Geschäftskontinuität von Azure HDInsight
 
@@ -50,13 +50,13 @@ Der sekundäre Cluster ist normalerweise schreibgeschützt. Sie können den seku
 
 In einer Architektur mit *aktivem primären Cluster mit sekundärem On-Demand-Cluster* schreiben Anwendungen in die aktive primäre Region, während in der sekundären Region während des normalen Betriebs kein Cluster bereitgestellt wird. SQL Metastore und Storage in der sekundären Region sind persistent, während der HDInsight-Cluster durch Skripts erstellt und nur bei Bedarf bereitgestellt wird, bevor die geplante Hive-Replikation ausgeführt wird.
 
-:::image type="content" source="./media/hdinsight-business-continuity-architecture/active-primary-on-demand-secondary.png" alt-text="Architektur von Hive und Interactive Query":::
+:::image type="content" source="./media/hdinsight-business-continuity-architecture/active-primary-on-demand-secondary.png" alt-text="Aktiver primärer Cluster mit sekundärem On-Demand-Cluster":::
 
 #### <a name="hive-active-primary-with-standby-secondary"></a>Hive-Architektur mit aktivem primären Cluster und sekundärem Standbycluster
 
 In einer Architektur mit *aktivem primären Cluster und sekundärem Standbycluster* schreiben Anwendungen in die aktive primäre Region, während ein herunterskalierter sekundärer Standbycluster im schreibgeschützten Modus während des normalen Betriebs ausgeführt wird. Während des normalen Betriebs könnten Sie regionsspezifische Lesevorgänge auf sekundäre Cluster auslagern.
 
-:::image type="content" source="./media/hdinsight-business-continuity-architecture/active-primary-standby-secondary.png" alt-text="Architektur von Hive und Interactive Query":::
+:::image type="content" source="./media/hdinsight-business-continuity-architecture/active-primary-standby-secondary.png" alt-text="Aktiver primärer Cluster mit sekundärem Standbycluster":::
 
 Weitere Informationen zu Hive Replication sowie Codebeispiele finden Sie unter [Verwenden von Apache Hive Replication in Azure HDInsight-Clustern](./interactive-query/apache-hive-replication.md).
 
@@ -85,13 +85,13 @@ Wenn es kundenspezifische Bibliotheken gibt, die über das hinausgehen, was HDIn
 
 Anwendungen lesen von und schreiben auf Spark- und Hive-Cluster in der primären Region, während in der sekundären Region während des normalen Betriebs keine Cluster bereitgestellt werden. SQL Metastore, Hive-Speicher und Spark-Speicher sind in der sekundären Region persistent. Die Spark- und Hive-Cluster werden nach Bedarf per Skript erstellt und bereitgestellt. Die Hive-Replikation dient zur Replikation von Hive-Speichern und Hive-Metastores, während das `DistCP` von Azure Data Factory zum Kopieren von eigenständigen Spark-Speichern verwendet werden kann. Hive-Cluster müssen aufgrund der Abhängigkeit „`DistCp`-Compute“ vor jeder Hive-Replikationsausführung bereitgestellt werden.
 
-:::image type="content" source="./media/hdinsight-business-continuity-architecture/active-primary-on-demand-secondary-spark.png" alt-text="Architektur von Hive und Interactive Query":::
+:::image type="content" source="./media/hdinsight-business-continuity-architecture/active-primary-on-demand-secondary-spark.png" alt-text="Apache Spark-Architektur mit aktivem primären Cluster und sekundärem On-Demand-Cluster":::
 
 #### <a name="spark-active-primary-with-standby-secondary"></a>Spark-Architektur mit aktivem primären Cluster und sekundärem Standbycluster
 
 Anwendungen lesen von und schreiben auf Spark- und Hive-Cluster in der primären Region, während herunterskalierte Hive- und Spark-Standbycluster im schreibgeschützten Modus während des normalen Betriebs in der sekundären Region ausgeführt werden. Während des normalen Betriebs könnten Sie regionsspezifische Hive- und Spark-Lesevorgänge auf sekundäre Cluster auslagern.
 
-:::image type="content" source="./media/hdinsight-business-continuity-architecture/active-primary-standby-secondary-spark.png" alt-text="Architektur von Hive und Interactive Query":::
+:::image type="content" source="./media/hdinsight-business-continuity-architecture/active-primary-standby-secondary-spark.png" alt-text="Apache Spark-Architektur mit aktivem primären Cluster und sekundärem Standbycluster":::
 
 ## <a name="apache-hbase"></a>Apache HBase
 
@@ -131,19 +131,19 @@ Bei dieser regionsübergreifenden Einrichtung erfolgt die Replikation unidirekti
 
 Der sekundäre Cluster dient als normaler HBase-Cluster, der seine eigenen Tabellen hosten und Lese- und Schreibvorgänge von regionalen Anwendungen bearbeiten kann. Schreibvorgänge für die replizierten Tabellen oder Tabellen, die vom sekundären Cluster stammen, werden jedoch nicht auf den primären Cluster zurückrepliziert.
 
-:::image type="content" source="./media/hdinsight-business-continuity-architecture/hbase-leader-follower.png" alt-text="Architektur von Hive und Interactive Query":::
+:::image type="content" source="./media/hdinsight-business-continuity-architecture/hbase-leader-follower.png" alt-text="HBase: Leader-Follower-Modell":::
 
 #### <a name="hbase-replication--leader--leader-model"></a>HBase Replication:  Leader-Leader-Modell
 
 Diese regionsübergreifende Einrichtung ist der unidirektionalen Einrichtung sehr ähnlich, mit der Ausnahme, dass die Replikation bidirektional zwischen der primären und der sekundären Region erfolgt. Anwendungen können beide Cluster im Lese-/Schreibmodus verwenden, und Aktualisierungen werden asynchron zwischen ihnen vorgenommen.
 
-:::image type="content" source="./media/hdinsight-business-continuity-architecture/hbase-leader-leader.png" alt-text="Architektur von Hive und Interactive Query":::
+:::image type="content" source="./media/hdinsight-business-continuity-architecture/hbase-leader-leader.png" alt-text="HBase: Leader-Leader-Modell":::
 
 #### <a name="hbase-replication-multi-region-or-cyclic"></a>HBase Replication: „Mehrere Regionen“ oder „Zyklisch“
 
 Das Replikationsmodell „Mehrere Regionen/Zyklisch“ ist eine Erweiterung von HBase Replication und könnte dazu verwendet werden, eine global redundante HBase-Architektur mit mehreren Anwendungen zu erstellen, die von regionsspezifischen HBase-Clustern lesen und auf diese schreiben. Die Cluster können je nach Geschäftsanforderungen in verschiedenen Kombinationen aus Leader/Leader oder Leader/Follower eingerichtet werden.
 
-:::image type="content" source="./media/hdinsight-business-continuity-architecture/hbase-cyclic.png" alt-text="Architektur von Hive und Interactive Query":::
+:::image type="content" source="./media/hdinsight-business-continuity-architecture/hbase-cyclic.png" alt-text="Zyklisches HBase-Modell":::
 
 ## <a name="apache-kafka"></a>Apache Kafka
 
@@ -151,7 +151,7 @@ Um eine regionenübergreifende Verfügbarkeit zu ermöglichen, unterstützt HDIn
 
 Abhängig von der Lebensdauer des Themas beim Start der Replikation kann die MirrorMaker-Themenreplikation zu unterschiedlichen Offsets zwischen Quell- und Replikatthemen führen. HDInsight Kafka-Cluster unterstützen auch die Replikation von Themenpartitionen, die ein Hochverfügbarkeitsfeature auf der Ebene der einzelnen Cluster ist.
 
-:::image type="content" source="./media/hdinsight-business-continuity-architecture/kafka-replication.png" alt-text="Architektur von Hive und Interactive Query":::
+:::image type="content" source="./media/hdinsight-business-continuity-architecture/kafka-replication.png" alt-text="Apache Kafka-Replikation":::
 
 ### <a name="apache-kafka-architectures"></a>Apache Kafka-Architekturen
 
@@ -172,7 +172,7 @@ Nachteile:
 * Letztliche Konsistenz zwischen den Themen bei aktiven und passiven Clustern.
 * Failbacks zum primären Cluster können zu einer Nachrichteninkonsistenz bei Themen führen.
 
-:::image type="content" source="./media/hdinsight-business-continuity-architecture/kafka-active-passive.png" alt-text="Architektur von Hive und Interactive Query":::
+:::image type="content" source="./media/hdinsight-business-continuity-architecture/kafka-active-passive.png" alt-text="Apache Kafka: Aktiv-Passiv-Modell":::
 
 #### <a name="kafka-replication-active--active"></a>Kafka-Replikation: Aktiv – Aktiv
 
@@ -188,7 +188,7 @@ Nachteile:
 * Das Problem der kreisförmigen Replikation muss behandelt werden.  
 * Die bidirektionale Replikation führt zu höheren regionalen Kosten für die Datenausgabe.
 
-:::image type="content" source="./media/hdinsight-business-continuity-architecture/kafka-active-active.png" alt-text="Architektur von Hive und Interactive Query":::
+:::image type="content" source="./media/hdinsight-business-continuity-architecture/kafka-active-active.png" alt-text="Apache Kafka: Aktiv-Aktiv-Modell":::
 
 ## <a name="hdinsight-enterprise-security-package"></a>HDInsight: Enterprise-Sicherheitspaket
 
@@ -198,11 +198,11 @@ Ranger-Metastore-Replikation:
 
 Der Ranger-Metastore wird verwendet, um Ranger-Richtlinien zur Steuerung der Datenautorisierung dauerhaft zu speichern und zu bedienen. Es wird empfohlen, unabhängige Ranger-Richtlinien in der primären und sekundären Region beizubehalten und die sekundäre Region als Lesereplikat zu erhalten.
   
-Wenn die Anforderung darin besteht, die Ranger-Richtlinien zwischen primärer und sekundärer Region synchron zu halten, verwenden Sie [Ranger Import/Export](https://cwiki.apache.org/confluence/display/RANGER/User+Guide+For+Import-Export#:~:text=Ranger%20has%20introduced%20a%20new,can%20import%20and%20export%20policies.&text=Also%20can%20export%2Fimport%20a,repositories\)%20via%20Ranger%20Admin%20UI), um Ranger-Richtlinien periodisch zu sichern und aus der primären in die sekundäre Region zu importieren.
+Wenn die Anforderung darin besteht, die Ranger-Richtlinien zwischen primärer und sekundärer Region synchron zu halten, verwenden Sie [Ranger Import/Export](https://cwiki.apache.org/confluence/display/RANGER/User+Guide+For+Import-Export), um Ranger-Richtlinien periodisch zu sichern und aus der primären in die sekundäre Region zu importieren.
 
 Das Replizieren von Ranger-Richtlinien zwischen primärer und sekundärer Region kann dazu führen, dass die sekundäre Region für Schreibvorgänge aktiviert wird, was zu unbeabsichtigten Schreibvorgängen in der sekundären Region und somit zu Dateninkonsistenzen führen kann.  
 
-:::image type="content" source="./media/hdinsight-business-continuity-architecture/hdinsight-enterprise-security-package.png" alt-text="Architektur von Hive und Interactive Query":::
+:::image type="content" source="./media/hdinsight-business-continuity-architecture/hdinsight-enterprise-security-package.png" alt-text="Architektur des HDInsight-Enterprise-Sicherheitspakets":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

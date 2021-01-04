@@ -1,23 +1,23 @@
 ---
 title: 'Azure App Configuration-REST-API: Schlüssel-Wert-Paar'
 description: Referenzseiten für die Arbeit mit Schlüssel-Wert-Paaren in der Azure App Configuration-REST-API
-author: lisaguthrie
-ms.author: lcozzens
+author: AlexandraKemperMS
+ms.author: alkemper
 ms.service: azure-app-configuration
 ms.topic: reference
 ms.date: 08/17/2020
-ms.openlocfilehash: 50d97a330507e9361674776acf29d1007ee5bf58
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 95081d6f8c2770d01f7836e08b6851860bf47ba8
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93423677"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932556"
 ---
-# <a name="key-values"></a>Schlüssel-Wert-Paare
+# <a name="key-values"></a>Schlüsselwerte
 
-api-version: 1.0
+Ein Schlüssel-Wert-Paar ist eine Ressource, die über die eindeutige Kombination aus `key` + `label` identifiziert wird. `label` ist optional. Verwenden Sie „\0“ (als ``%00``-codierte URL), um explizit auf ein Schlüssel-Wert-Paar ohne Bezeichnung zu verweisen. Mehr dazu erfahren Sie in den Informationen zum jeweiligen Vorgang.
 
-Ein Schlüssel-Wert-Paar ist eine Ressource, die über die eindeutige Kombination aus `key` + `label` identifiziert wird. `label` ist optional. Verwenden Sie „\0“ (als ``%00`` codierte URL), um explizit auf ein Schlüssel-Wert-Paar ohne Bezeichnung zu verweisen. Mehr dazu erfahren Sie in den Informationen zum jeweiligen Vorgang.
+Dieser Artikel bezieht sich auf die API-Version 1.0.
 
 ## <a name="operations"></a>Operations
 
@@ -47,8 +47,8 @@ Ein Schlüssel-Wert-Paar ist eine Ressource, die über die eindeutige Kombinatio
 
 ## <a name="get-key-value"></a>Abrufen des Schlüssel-Wert-Paars
 
-**Erforderlich**: ``{key}``, ``{api-version}``  
-*Optional:* ``label`` – bei Auslassung wird ein Schlüssel-Wert-Paar ohne Bezeichnung impliziert
+Erforderlich: ``{key}``, ``{api-version}``  
+Optional: ``label`` (Bei Auslassung wird ein Schlüssel-Wert-Paar ohne Bezeichnung impliziert.)
 
 ```http
 GET /kv/{key}?label={label}&api-version={api-version}
@@ -87,7 +87,7 @@ HTTP/1.1 404 Not Found
 
 ## <a name="get-conditionally"></a>Abrufen (bedingt)
 
-Verwenden Sie `If-Match`- oder `If-None-Match`-Anforderungsheader, um das Zwischenspeichern auf dem Client zu verbessern. Das `etag`-Argument gehört zur Schlüsseldarstellung. Siehe [Abschnitt 14.24 und 14.26](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).
+Verwenden Sie `If-Match`- oder `If-None-Match`-Anforderungsheader, um das Zwischenspeichern auf dem Client zu verbessern. Das `etag`-Argument gehört zur Schlüsseldarstellung. Weitere Informationen finden Sie in den [Abschnitten 14.24 und 14.26](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).
 
 Die folgende Anforderung ruft das Schlüssel-Wert-Paar nur dann ab, wenn die aktuelle Darstellung nicht dem angegebenen `etag` entspricht:
 
@@ -111,10 +111,7 @@ HTTP/1.1 200 OK
 
 ## <a name="list-key-values"></a>Auflisten von Schlüssel-Wert-Paaren
 
-Weitere Optionen finden Sie unter **Filtern**.
-
-*Optional*: ``key`` – ohne Angabe wird ein **beliebiger** Schlüssel impliziert.
-*Optional*: ``label`` – ohne Angabe wird eine **beliebige** Bezeichnung impliziert.
+Optional: ``key`` (Ohne Angabe wird ein beliebiger Schlüssel impliziert.) Optional: ``label`` (Ohne Angabe wird eine beliebige Bezeichnung impliziert.)
 
 ```http
 GET /kv?label=*&api-version={api-version} HTTP/1.1
@@ -126,6 +123,8 @@ GET /kv?label=*&api-version={api-version} HTTP/1.1
 HTTP/1.1 200 OK
 Content-Type: application/vnd.microsoft.appconfig.kvset+json; charset=utf-8
 ```
+
+Weitere Optionen finden Sie weiter unten im Abschnitt „Filtern“ dieses Artikels.
 
 ## <a name="pagination"></a>Paginierung
 
@@ -234,7 +233,7 @@ GET /kv?$select=key,value&api-version={api-version} HTTP/1.1
 
 ## <a name="time-based-access"></a>Zeitbasierter Zugriff
 
-Rufen Sie eine Darstellung des Ergebnisses ab, so wie es zu einem bestimmten Zeitpunkt in der Vergangenheit war. Siehe Abschnitt [2.1.1.](https://tools.ietf.org/html/rfc7089#section-2.1) Die Paginierung wird weiterhin wie oben definiert unterstützt.
+Rufen Sie eine Darstellung des Ergebnisses ab, so wie es zu einem bestimmten Zeitpunkt in der Vergangenheit war. Weitere Informationen finden Sie im Abschnitt [2.1.1](https://tools.ietf.org/html/rfc7089#section-2.1). Die Paginierung wird weiterhin wie oben in diesem Artikel definiert unterstützt.
 
 ```http
 GET /kv?api-version={api-version} HTTP/1.1
@@ -260,8 +259,8 @@ Link: <{relative uri}>; rel="original"
 
 ## <a name="set-key"></a>Schlüssel festlegen
 
-- **Erforderlich**: ``{key}``
-- *Optional*: ``label`` – wenn nicht angegeben oder „label=%00“, wird ein Schlüsselwert ohne Bezeichnung impliziert.
+- Erforderlich: ``{key}``
+- Optional: ``label`` (Ohne Angabe oder bei „label=%00“ wird ein Schlüsselwert ohne Bezeichnung impliziert.)
 
 ```http
 PUT /kv/{key}?label={label}&api-version={api-version} HTTP/1.1
@@ -325,7 +324,7 @@ Content-Type: application/problem+json; charset="utf-8"
 Um Racebedingungen zu verhindern, verwenden Sie Anforderungsheader vom Typ `If-Match` oder `If-None-Match`. Das `etag`-Argument gehört zur Schlüsseldarstellung.
 Wenn `If-Match` oder `If-None-Match` ausgelassen werden, ist der Vorgang nicht bedingt.
 
-Die folgende Antwort aktualisiert den Wert nur, wenn die aktuelle Darstellung mit dem angegebenen `etag` übereinstimmt.
+Die folgende Antwort aktualisiert den Wert nur, wenn die aktuelle Darstellung mit dem angegebenen `etag` übereinstimmt:
 
 ```http
 PUT /kv/{key}?label={label}&api-version={api-version} HTTP/1.1
@@ -333,7 +332,7 @@ Content-Type: application/vnd.microsoft.appconfig.kv+json
 If-Match: "4f6dd610dd5e4deebc7fbaef685fb903"
 ```
 
-Die folgende Antwort aktualisiert den Wert nur, wenn die aktuelle Darstellung *nicht* mit dem angegebenen `etag` übereinstimmt.
+Die folgende Antwort aktualisiert den Wert nur, wenn die aktuelle Darstellung nicht mit dem angegebenen `etag` übereinstimmt:
 
 ```http
 PUT /kv/{key}?label={label}&api-version={api-version} HTTP/1.1
@@ -349,7 +348,7 @@ Content-Type: application/vnd.microsoft.appconfig.kv+json;
 If-Match: "*"
 ```
 
-Die folgende Anforderung fügt den Wert nur hinzu, wenn *noch keine* Darstellung vorhanden ist:
+Die folgende Anforderung fügt den Wert nur hinzu, wenn noch keine Darstellung vorhanden ist:
 
 ```http
 PUT /kv/{key}?label={label}&api-version={api-version} HTTP/1.1
@@ -373,8 +372,8 @@ HTTP/1.1 412 PreconditionFailed
 
 ## <a name="delete"></a>Löschen
 
-- **Erforderlich**: `{key}`, `{api-version}`
-- *Optional*: `{label}` – wenn nicht angegeben oder „label=%00“, wird ein Schlüsselwert ohne Bezeichnung impliziert.
+- Erforderlich: `{key}`, `{api-version}`
+- Optional: `{label}` (Ohne Angabe oder bei „label=%00“ wird ein Schlüsselwert ohne Bezeichnung impliziert.)
 
 ```http
 DELETE /kv/{key}?label={label}&api-version={api-version} HTTP/1.1
@@ -396,4 +395,4 @@ HTTP/1.1 204 No Content
 
 ## <a name="delete-key-conditionally"></a>Schlüssel löschen (bedingt)
 
-Entspricht **Schlüssel festlegen (bedingt)**
+Dies ähnelt dem Abschnitt „Schlüssel festlegen (bedingt)“ weiter oben in diesem Artikel.

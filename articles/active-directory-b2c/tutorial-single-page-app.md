@@ -11,18 +11,18 @@ ms.custom: mvc, seo-javascript-september2019, devx-track-js
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 6daf2da5b5bac051ac110ff15ed2c44971300a30
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 6a9f3b864bd8aba2140c7d32d4b5474ff7b95f88
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93421038"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96171227"
 ---
 # <a name="tutorial-enable-authentication-in-a-single-page-application-with-azure-ad-b2c"></a>Tutorial: Aktivieren der Authentifizierung in einer Single-Page-Webanwendung mit Azure AD B2C
 
 In diesem Tutorial erfahren Sie, wie Sie Azure Active Directory B2C (Azure AD B2C) für die Registrierung und Anmeldung von Benutzern in einer Single-Page-Webanwendung (Single-Page Application, SPA) verwenden. Dazu wird einer der folgenden Flows verwendet:
-* [OAuth 2.0-Autorisierungscodefluss (mit PKCE)](https://docs.microsoft.com/azure/active-directory-b2c/authorization-code-flow) (unter Verwendung von [MSAL.js 2.x](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-browser))
-* [OAuth 2.0-Flow für die implizite Genehmigung](https://docs.microsoft.com/azure/active-directory-b2c/implicit-flow-single-page-application) (unter Verwendung von [MSAL.js 1.x](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-core))
+* [OAuth 2.0-Autorisierungscodefluss (mit PKCE)](./authorization-code-flow.md) (unter Verwendung von [MSAL.js 2.x](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-browser))
+* [OAuth 2.0-Flow für die implizite Genehmigung](./implicit-flow-single-page-application.md) (unter Verwendung von [MSAL.js 1.x](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-core))
 
 Dieses Tutorial ist der erste Teil einer zweiteiligen Reihe und beinhaltet Folgendes:
 
@@ -51,9 +51,9 @@ Darüber hinaus benötigen Sie in Ihrer lokalen Entwicklungsumgebung Folgendes:
 
 ## <a name="update-the-application"></a>Aktualisieren der Anwendung
 
-Im [zweiten Tutorial](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-register-spa), das Sie zur Vorbereitung absolviert haben, wurde eine Single-Page-Webanwendung unter Azure AD B2C registriert. Um die Kommunikation mit dem Codebeispiel in diesem Tutorial zu ermöglichen, muss der Anwendungsregistrierung eine Antwort-URL (auch Umleitungs-URI genannt) hinzugefügt werden.
+Im [zweiten Tutorial](./tutorial-register-spa.md), das Sie zur Vorbereitung absolviert haben, wurde eine Single-Page-Webanwendung unter Azure AD B2C registriert. Um die Kommunikation mit dem Codebeispiel in diesem Tutorial zu ermöglichen, muss der Anwendungsregistrierung eine Antwort-URL (auch Umleitungs-URI genannt) hinzugefügt werden.
 
-Zum Aktualisieren einer Anwendung in Ihrem Azure AD B2C-Mandanten können Sie unsere neue einheitliche Benutzeroberfläche **App-Registrierungen** oder unsere alte Benutzeroberfläche **Anwendungen (Legacy)** verwenden. [Weitere Informationen zur neuen Oberfläche](https://aka.ms/b2cappregtraining)
+Zum Aktualisieren einer Anwendung in Ihrem Azure AD B2C-Mandanten können Sie unsere neue einheitliche Benutzeroberfläche **App-Registrierungen** oder unsere alte Benutzeroberfläche **Anwendungen (Legacy)** verwenden. [Weitere Informationen zur neuen Oberfläche](./app-registrations-training-guide.md)
 
 #### <a name="app-registrations-auth-code-flow"></a>[App-Registrierungen (Autorisierungscodeflow)](#tab/app-reg-auth/)
 

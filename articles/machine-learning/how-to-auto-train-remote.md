@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: how-to, automl
 ms.date: 03/09/2020
-ms.openlocfilehash: a79fc0311e940b9b4eb3e14838ef22e09342a066
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 65ce11581972c83b0294c0afcbe95e5a35ef2471
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93357996"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94920575"
 ---
 # <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>Trainieren von Modellen mit automatisiertem maschinellem Lernen in der Cloud
 
@@ -45,7 +45,7 @@ ws = Workspace.from_config()
 
 Erstellen Sie das [`AmlCompute`](/python/api/azureml-core/azureml.core.compute.amlcompute%28class%29?preserve-view=true&view=azure-ml-py)-Ziel in Ihrem Arbeitsbereich (`ws`), wenn es nicht bereits vorhanden ist.
 
-**Geschätzter Zeitaufwand** : Ein Erstellen des AmlCompute-Ziels dauert etwa fünf Minuten.
+**Geschätzter Zeitaufwand**: Ein Erstellen des AmlCompute-Ziels dauert etwa fünf Minuten.
 
 ```python
 from azureml.core.compute import AmlCompute
@@ -220,7 +220,7 @@ Wenn Sie nicht in einem Jupyter-Notebook arbeiten, können Sie die URL aus der A
 remote_run.get_portal_url()
 ```
 
-Die gleichen Informationen sind in Ihrem Arbeitsbereich verfügbar.  Weitere Informationen zu diesen Ergebnissen finden Sie unter [Grundlegendes zu den Ergebnissen des automatisierten maschinellen Lernens](how-to-understand-automated-ml.md).
+Die gleichen Informationen sind in Ihrem Arbeitsbereich verfügbar.  Weitere Informationen zu diesen Ergebnissen finden Sie unter [Auswerten der Ergebnisse des automatisierten maschinellen Lernens](how-to-understand-automated-ml.md).
 
 ## <a name="example"></a>Beispiel
 

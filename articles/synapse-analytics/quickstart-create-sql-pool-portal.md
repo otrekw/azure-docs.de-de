@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Erstellen eines dedizierten SQL-Pools (Vorschau) über das Azure-Portal'
+title: 'Schnellstart: Erstellen eines dedizierten SQL-Pools mithilfe des Azure-Portals'
 description: Erstellen Sie anhand der Schritte in diesem Leitfaden einen neuen dedizierten SQL-Pool über das Azure-Portal.
 services: synapse-analytics
 author: julieMSFT
@@ -9,14 +9,14 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2230784eedd044acd95b3087793ba664b544f76a
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 3537b126adf082c8b00a02d999789d8a32b3f51d
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94505069"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462014"
 ---
-# <a name="quickstart-create-a-dedicated-sql-pool-preview-using-the-azure-portal"></a>Schnellstart: Erstellen eines dedizierten SQL-Pools (Vorschau) über das Azure-Portal
+# <a name="quickstart-create-a-dedicated-sql-pool-using-the-azure-portal"></a>Schnellstart: Erstellen eines dedizierten SQL-Pools mithilfe des Azure-Portals
 
 Azure Synapse Analytics enthält verschiedene Analysemodule, mit denen Sie Ihre Daten erfassen, transformieren, modellieren und analysieren können. Ein dedizierter SQL-Pool bietet T-SQL-basierte Compute- und Speicherfunktionen. Nach der Erstellung eines dedizierten SQL-Pools in Ihrem Synapse-Arbeitsbereich können Daten geladen, modelliert, verarbeitet und für einen schnelleren analytischen Einblick bereitgestellt werden.
 
@@ -48,7 +48,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)
 
     | Einstellung | Vorgeschlagener Wert | BESCHREIBUNG |
     | :------ | :-------------- | :---------- |
-    | **dedicated SQL pool name** (Name des dedizierten SQL-Pools) | Ein gültiger Name | Name des dedizierten SQL-Pools |
+    | **Dedicated SQL pool name** (Name des dedizierten SQL-Pools) | Ein gültiger Name | Name des dedizierten SQL-Pools |
     | **Leistungsstufe** | DW100c | Legen Sie die kleinste Größe fest, um die Kosten für diesen Schnellstart zu senken. |
 
   
@@ -73,7 +73,6 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)
 
 8. Wenn Sie nach Abschluss der Bereitstellung zurück zum Arbeitsbereich navigieren, wird ein neuer Eintrag für den neu erstellten dedizierten SQL-Pool angezeigt.
  ![Flow für die SQL-Poolerstellung: Ressourcenbereitstellung](media/quickstart-create-sql-pool/create-sql-pool-studio-27.png)
-
 
 
 Nach der Erstellung des dedizierten SQL-Pools ist er im Arbeitsbereich zum Laden von Daten, Verarbeiten von Datenströmen, Lesen aus dem Data Lake usw. verfügbar.

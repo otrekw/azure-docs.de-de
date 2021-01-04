@@ -11,19 +11,19 @@ ms.topic: tutorial
 ms.date: 03/05/2019
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: 8d5352a79d2920701c96289f6162c1466f0f9f75
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 6a2c69735c36c06cdf72efc812aa1ac4020ff00a
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94367572"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96342225"
 ---
 # <a name="tutorial-get-search-suggestions-on-a-web-page"></a>Tutorial: Abrufen von Suchvorschlägen auf einer Webseite
 
 > [!WARNING]
-> Die APIs der Bing-Suche werden von Cognitive Services auf Bing-Suchdienste umgestellt. Ab dem **30. Oktober 2020** müssen alle neuen Instanzen der Bing-Suche mit dem [hier](https://aka.ms/cogsvcs/bingmove) dokumentierten Prozess bereitgestellt werden.
+> Die APIs der Bing-Suche werden von Cognitive Services auf Bing-Suchdienste umgestellt. Ab dem **30. Oktober 2020** müssen alle neuen Instanzen der Bing-Suche mit dem [hier](/bing/search-apis/bing-web-search/create-bing-search-service-resource) dokumentierten Prozess bereitgestellt werden.
 > APIs der Bing-Suche, die mit Cognitive Services bereitgestellt wurden, werden noch drei Jahre lang bzw. bis zum Ablauf Ihres Enterprise Agreement unterstützt (je nachdem, was zuerst eintritt).
-> Eine Anleitung zur Migration finden Sie unter [Erstellen einer Ressource für die Bing-Suche über Azure Marketplace](https://aka.ms/cogsvcs/bingmigration).
+> Eine Anleitung zur Migration finden Sie unter [Erstellen einer Ressource für die Bing-Suche über Azure Marketplace](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 In diesem Tutorial wird eine Webseite erstellt, die es Benutzern ermöglicht, die Bing-Vorschlagssuche-API abzufragen.
 
@@ -124,7 +124,7 @@ Die getSubscriptionKeyLocalStorage-Hilfsfunktion versucht zunächst, den Bing-Vo
     }
 ```
 
-Die getSubscriptionKey-Hilfsfunktion nimmt einen Parameter ( **invalidate** ) an. Wenn **invalidate** den Wert **TRUE** aufweist, löscht getSubscriptionKey das Cookie, das den Bing-Vorschlagssuche-API-Schlüssel enthält. Wenn **invalidate** den Wert **FALSE** aufweist, gibt getSubscriptionKey den Wert des Bing-Vorschlagssuche-API-Schlüssels zurück.
+Die getSubscriptionKey-Hilfsfunktion nimmt einen Parameter (**invalidate**) an. Wenn **invalidate** den Wert **TRUE** aufweist, löscht getSubscriptionKey das Cookie, das den Bing-Vorschlagssuche-API-Schlüssel enthält. Wenn **invalidate** den Wert **FALSE** aufweist, gibt getSubscriptionKey den Wert des Bing-Vorschlagssuche-API-Schlüssels zurück.
 
 ```html
     function getSubscriptionKey(invalidate) {
@@ -206,7 +206,7 @@ Geben Sie den Bing-Vorschlagssuche-API-Endpunkt an, und deklarieren Sie ein XMLH
     }
 ```
 
-Legen Sie den **Ocp-Apim-Subscription-Key** -Header auf den Wert des Bing-Vorschlagssuche-API-Schlüssels fest.
+Legen Sie den **Ocp-Apim-Subscription-Key**-Header auf den Wert des Bing-Vorschlagssuche-API-Schlüssels fest.
 
 ```html
     request.setRequestHeader("Ocp-Apim-Subscription-Key", key);
@@ -238,7 +238,7 @@ Behandeln Sie auch mögliche Fehlerereignisse aus dem XMLHttpRequest-Objekt.
     });
 ```
 
-Senden Sie die Anforderung. Schließen Sie die bingAutosuggest-Funktion, das **script** -Tag und das **head** -Tag.
+Senden Sie die Anforderung. Schließen Sie die bingAutosuggest-Funktion, das **script**-Tag und das **head**-Tag.
 
 ```html
     request.send();
@@ -272,7 +272,7 @@ Erstellen Sie ein HTML-Formular mit einem Textfeld. Behandeln Sie das `oninput`-
 </form>
 ```
 
-Fügen Sie das HTML-Tag **div** hinzu, das zum Anzeigen der Ergebnisse verwendet wird. Das zuvor definierte JavaScript bezieht sich auf dieses **div** -Tag.
+Fügen Sie das HTML-Tag **div** hinzu, das zum Anzeigen der Ergebnisse verwendet wird. Das zuvor definierte JavaScript bezieht sich auf dieses **div**-Tag.
 
 ```html
 <h2>Results</h2>

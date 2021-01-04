@@ -16,12 +16,12 @@ ms.date: 11/05/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eccc0e71c73fb8bd2a5a50ebd0dda048d34dbea0
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: edace0298514d1fc3cfd3afcff73fa0d29e18f0c
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94488399"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96858772"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Voraussetzungen für Azure AD Connect
 In diesem Artikel werden die Voraussetzungen und die Hardwareanforderungen für Azure Active Directory (Azure AD) Connect beschrieben.
@@ -52,7 +52,7 @@ Azure Active Directory Connect führt signierte PowerShell-Skripts im Rahmen der
 
 Die empfohlene Ausführungsrichtlinie während der Installation ist „RemoteSigned“.
 
-Weitere Informationen zum Festlegen der PowerShell-Ausführungsrichtlinie finden Sie unter [Set-ExecutionPolicy](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-7).
+Weitere Informationen zum Festlegen der PowerShell-Ausführungsrichtlinie finden Sie unter [Set-ExecutionPolicy](/powershell/module/microsoft.powershell.security/set-executionpolicy).
 
 
 ### <a name="azure-ad-connect-server"></a>Azure AD Connect-Server
@@ -82,7 +82,7 @@ Es wird empfohlen, den Azure AD Connect-Server zuverlässig zu schützen, um di
 - Erstellen Sie ein [dediziertes Konto für alle Mitarbeiter mit privilegiertem Zugriff](/windows-server/identity/securing-privileged-access/securing-privileged-access). Administratoren sollten in Konten mit hohen Berechtigungen nicht im Internet surfen, ihre E-Mails abfragen oder alltägliche Produktivitätsaufgaben ausführen.
 - Folgen Sie den Anweisungen unter [Schützen des privilegierten Zugriffs](/windows-server/identity/securing-privileged-access/securing-privileged-access). 
 - Lehnen Sie die Verwendung der NTLM-Authentifizierung beim AADConnect-Server ab. Hierfür gibt es verschiedene Möglichkeiten: [Einschränken von NTLM auf dem AADConnect-Server](/windows/security/threat-protection/security-policy-settings/network-security-restrict-ntlm-outgoing-ntlm-traffic-to-remote-servers) und [Einschränken von NTLM in einer Domäne](/windows/security/threat-protection/security-policy-settings/network-security-restrict-ntlm-ntlm-authentication-in-this-domain)
-- Stellen Sie sicher, dass für jeden Computer ein eindeutiges lokales Administratorkennwort vorhanden ist. Weitere Informationen finden Sie unter [Microsoft-Sicherheitsempfehlung: Local Administrator Password Solution (LAPS)](https://support.microsoft.com/help/3062591/microsoft-security-advisory-local-administrator-password-solution-laps). Mit dieser Lösung können eindeutige zufällige Kennwörter auf jeder Arbeitsstation konfiguriert werden, und für den Server werden die Kennwörter in Active Directory gespeichert und durch eine ACL geschützt. Nur berechtigte autorisierte Benutzer können diese lokalen Kennwörter für das Administratorkonto lesen oder eine Rücksetzung anfordern. Sie können die LAPS für die Verwendung auf Arbeitsstationen und Servern aus dem [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=46899#:~:text=The%20%22Local%20Administrator%20Password%20Solution,it%20or%20request%20its%20reset.) abrufen. Weitere Informationen zum Betreiben einer Umgebung mit LAPS und Arbeitsstationen mit privilegiertem Zugriff (Privileged Access Workstations, PAWs) finden Sie unter [Prinzip der vertrauenswürdigen Quelle für betriebliche Standards](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#operational-standards-based-on-clean-source-principle). 
+- Stellen Sie sicher, dass für jeden Computer ein eindeutiges lokales Administratorkennwort vorhanden ist. Weitere Informationen finden Sie unter [Microsoft-Sicherheitsempfehlung: Local Administrator Password Solution (LAPS)](https://support.microsoft.com/help/3062591/microsoft-security-advisory-local-administrator-password-solution-laps). Mit dieser Lösung können eindeutige zufällige Kennwörter auf jeder Arbeitsstation konfiguriert werden, und für den Server werden die Kennwörter in Active Directory gespeichert und durch eine ACL geschützt. Nur berechtigte autorisierte Benutzer können diese lokalen Kennwörter für das Administratorkonto lesen oder eine Rücksetzung anfordern. Sie können die LAPS für die Verwendung auf Arbeitsstationen und Servern aus dem [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=46899) abrufen. Weitere Informationen zum Betreiben einer Umgebung mit LAPS und Arbeitsstationen mit privilegiertem Zugriff (Privileged Access Workstations, PAWs) finden Sie unter [Prinzip der vertrauenswürdigen Quelle für betriebliche Standards](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#operational-standards-based-on-clean-source-principle). 
 - Implementieren Sie dedizierte [Arbeitsstationen mit privilegiertem Zugriff](/windows-server/identity/securing-privileged-access/privileged-access-workstations) für alle Mitarbeiter mit privilegiertem Zugriff auf die Informationssysteme Ihrer Organisation. 
 - Berücksichtigen Sie diese [zusätzlichen Richtlinien](/windows-server/identity/ad-ds/plan/security-best-practices/reducing-the-active-directory-attack-surface), um die Angriffsfläche Ihrer Active Directory-Umgebung zu verringern.
 

@@ -7,12 +7,12 @@ ms.service: cache
 ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.date: 10/09/2020
-ms.openlocfilehash: f7b4a22c0473acb7da0708f095c25b4f3f78fe66
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 5fd82105c94bb9be2d07c8843834465821acd8bc
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445590"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95803770"
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-cache-for-redis"></a>Konfigurieren der Unterstützung virtueller Netzwerke für Azure Cache for Redis vom Typ „Premium“
 Für Azure Cache for Redis stehen verschiedene Cacheangebote bereit, die Flexibilität bei der Auswahl von Cachegröße und -features bieten. Dazu zählen auch Features des Premium-Tarifs wie die Unterstützung für Clustering, Persistenz und virtuelle Netzwerke. Ein VNet ist ein privates Netzwerk in der Cloud. Wenn eine Azure Cache for Redis-Instanz mit einem VNET konfiguriert wird, ist dieses nicht öffentlich adressierbar, und auf das VNET kann nur über virtuelle Computer und Anwendungen innerhalb des VNET zugegriffen werden. In diesem Artikel erfahren Sie, wie Sie die Unterstützung eines virtuellen Netzwerks für eine Azure Cache for Redis-Instanz vom Typ „Premium“ konfigurieren.
@@ -130,7 +130,7 @@ Es liegen Anforderungen für neun ausgehende Ports vor. Ausgehende Anforderungen
 
 | Port(s) | Direction | Transportprotokoll | Zweck | Lokale IP | Remote-IP |
 | --- | --- | --- | --- | --- | --- |
-| 80, 443 |Ausgehend |TCP |Redis-Abhängigkeiten von Azure Storage/PKI (Internet) | (Redis-Subnetz) |* |
+| 80, 443 |Ausgehend |TCP |Redis-Abhängigkeiten von Azure Storage/PKI (Internet) | (Redis-Subnetz) |* <sup>4</sup> |
 | 443 | Ausgehend | TCP | Redis-Abhängigkeit von Azure Key Vault und Azure Monitor | (Redis-Subnetz) | AzureKeyVault, AzureMonitor <sup>1</sup> |
 | 53 |Ausgehend |TCP/UDP |Redis-Abhängigkeiten von DNS (Internet/VNet) | (Redis-Subnetz) | 168.63.129.16 und 169.254.169.254 <sup>2</sup> und jeder benutzerdefinierte DNS-Server für das Subnetz <sup>3</sup> |
 | 8443 |Ausgehend |TCP |Interne Kommunikation für Redis | (Redis-Subnetz) | (Redis-Subnetz) |
@@ -146,6 +146,8 @@ Es liegen Anforderungen für neun ausgehende Ports vor. Ausgehende Anforderungen
 
 <sup>3</sup> Nicht erforderlich für Subnetze ohne benutzerdefinierten DNS-Server oder neuere Redis Cache-Instanzen, die benutzerdefiniertes DNS ignorieren
 
+<sup>4</sup> Weitere Informationen finden Sie unter [Zusätzliche VNET-Netzwerkverbindungsanforderungen](#additional-vnet-network-connectivity-requirements).
+
 #### <a name="geo-replication-peer-port-requirements"></a>Anforderungen an Peer-Ports für die Georeplikation
 
 Wenn Sie Georeplikation zwischen Caches in virtuellen Azure-Netzwerken verwenden, beachten Sie, dass die empfohlene Konfiguration darin besteht, die Blockierung der Ports 15000–15999 für das gesamte Subnetz in eingehenden UND ausgehenden Richtungen für beide Caches zu aufzuheben, sodass alle Replikatkomponenten im Subnetz direkt miteinander kommunizieren können, auch im Falle eines zukünftigen geografischen Failovers.
@@ -156,13 +158,13 @@ Es liegen Anforderungen für acht eingehende Portbereiche vor. Eingehende Anford
 
 | Port(s) | Direction | Transportprotokoll | Zweck | Lokale IP | Remote-IP |
 | --- | --- | --- | --- | --- | --- |
-| 6379, 6380 |Eingehend |TCP |Clientkommunikation mit Redis, Azure-Lastenausgleich | (Redis-Subnetz) | (Redis-Subnetz), Virtual Network, Azure Load Balancer<sup>1</sup> |
+| 6379, 6380 |Eingehend |TCP |Clientkommunikation mit Redis, Azure-Lastenausgleich | (Redis-Subnetz) | (Redis-Subnetz), (Clientsubnetz), AzureLoadBalancer <sup>1</sup> |
 | 8443 |Eingehend |TCP |Interne Kommunikation für Redis | (Redis-Subnetz) |(Redis-Subnetz) |
-| 8500 |Eingehend |TCP/UDP |Azure-Lastenausgleich | (Redis-Subnetz) |Azure Load Balancer |
-| 10221-10231 |Eingehend |TCP |Clientkommunikation mit Redis-Clustern, interne Kommunikation für Redis | (Redis-Subnetz) |(Redis-Subnetz), Azure Load Balancer, (Clientsubnetz) |
-| 13000-13999 |Eingehend |TCP |Clientkommunikation mit Redis-Clustern, Azure-Lastenausgleich | (Redis-Subnetz) |Virtuelles Netzwerk, Azure Load Balancer |
-| 15000-15999 |Eingehend |TCP |Clientkommunikation mit Redis-Clustern, Azure-Lastenausgleich und Georeplikation | (Redis-Subnetz) |Virtual Network, Azure Load Balancer, (Georeplikat pro Subnetz) |
-| 16001 |Eingehend |TCP/UDP |Azure-Lastenausgleich | (Redis-Subnetz) |Azure Load Balancer |
+| 8500 |Eingehend |TCP/UDP |Azure-Lastenausgleich | (Redis-Subnetz) | AzureLoadBalancer |
+| 10221-10231 |Eingehend |TCP |Clientkommunikation mit Redis-Clustern, interne Kommunikation für Redis | (Redis-Subnetz) |(Redis-Subnetz), AzureLoadBalancer, (Clientsubnetz) |
+| 13000-13999 |Eingehend |TCP |Clientkommunikation mit Redis-Clustern, Azure-Lastenausgleich | (Redis-Subnetz) | (Redis-Subnetz), (Clientsubnetz), AzureLoadBalancer |
+| 15000-15999 |Eingehend |TCP |Clientkommunikation mit Redis-Clustern, Azure-Lastenausgleich und Georeplikation | (Redis-Subnetz) | (Redis-Subnetz), (Clientsubnetz), AzureLoadBalancer, (Peersubnetz des Georeplikats) |
+| 16001 |Eingehend |TCP/UDP |Azure-Lastenausgleich | (Redis-Subnetz) | AzureLoadBalancer |
 | 20226 |Eingehend |TCP |Interne Kommunikation für Redis | (Redis-Subnetz) |(Redis-Subnetz) |
 
 <sup>1</sup> Sie können für die Erstellung der NSG-Regeln das Diensttag „AzureLoadBalancer“ (bei Resource Manager- oder „AZURE_LOADBALANCER“ bei klassischen Bereitstellungen) verwenden.
@@ -218,19 +220,19 @@ Wenn Sie den DNS-Namen nicht auflösen können, enthalten einige Clientbibliothe
 VNets können nur mit Premium-Caches verwendet werden.
 
 ### <a name="why-does-creating-an-azure-cache-for-redis-fail-in-some-subnets-but-not-others"></a>Warum misslingt das Erstellen einer Azure Cache for Redis-Instanz in einigen Subnetzen, aber in anderen nicht?
-Wenn Sie eine Azure Cache for Redis-Instanz in einem Ressourcen-Manager-VNET bereitstellen, muss sich der Cache in einem dedizierten Subnetz befinden, das keine anderen Ressourcentypen enthält. Wird versucht, eine Azure Cache for Redis-Instanz in einem virtuellen Ressourcen-Manager-VNET in einem Subnetz bereitzustellen, das andere Ressourcen enthält, tritt bei der Bereitstellung ein Fehler auf. Bevor Sie eine neue Azure Cache for Redis-Instanz erstellen können, müssen Sie die im Subnetz vorhandenen Ressourcen löschen.
+Wenn Sie eine Azure Cache for Redis-Instanz in einem VNET bereitstellen, muss sich der Cache in einem dedizierten Subnetz befinden, das keine anderen Ressourcentypen enthält. Wird versucht, eine Azure Cache for Redis-Instanz im Subnetz eines Resource Manager-VNET bereitzustellen, das andere Ressourcen enthält (z. B. Anwendungsgateways, ausgehende NAT usw.), tritt bei der Bereitstellung in der Regel ein Fehler auf. Bevor Sie eine neue Azure Cache for Redis-Instanz erstellen können, müssen Sie die vorhandenen anderen Ressourcentypen löschen.
 
-Sie können mehrere Typen von Ressourcen in einem klassischen VNet bereitstellen, solange Sie über genügend IP-Adressen verfügen.
+Außerdem müssen Sie über genügend IP-Adressen im Subnetz verfügen.
 
 ### <a name="what-are-the-subnet-address-space-requirements"></a>Welche Anforderungen gelten für den Subnetzadressraum?
 Einige IP-Adressen innerhalb jedes Subnetzes sind in Azure reserviert und können deshalb nicht genutzt werden. Die erste und letzte IP-Adresse der Subnetze sind aus Gründen der Protokollkonformität reserviert. Darüber hinaus sind drei weitere für Azure-Dienste verwendete IP-Adressen reserviert. Weitere Informationen finden Sie unter [Unterliegen die in den Subnetzen verwendeten IP-Adressen bestimmten Beschränkungen?](../virtual-network/virtual-networks-faq.md#are-there-any-restrictions-on-using-ip-addresses-within-these-subnets)
 
-Zusätzlich zu den IP-Adressen, die von der Azure-VNet-Infrastruktur verwendet werden, nutzt jede Redis-Instanz im Subnetz zwei IP-Adressen pro Shard und eine zusätzliche IP-Adresse für den Lastenausgleich. Ein nicht gruppierter Cache hat definitionsgemäß einen Shard.
+Zusätzlich zu den IP-Adressen, die von der Azure-VNET-Infrastruktur verwendet werden, verwendet jede Redis-Instanz im Subnetz zwei IP-Adressen pro Shard (plus zusätzliche IP-Adressen für ggf. vorhandene weitere Replikate) und eine zusätzliche IP-Adresse für den Lastenausgleich. Ein nicht gruppierter Cache hat definitionsgemäß einen Shard.
 
 ### <a name="do-all-cache-features-work-when-hosting-a-cache-in-a-vnet"></a>Funktionieren alle Cachefeatures beim Hosten eines Cache in einem VNET?
 Wenn der Cache zu einem virtuellen Netzwerk gehört, haben nur Clients in diesem virtuellen Netzwerk Zugriff auf den Cache. Daher stehen zurzeit in diesem Fall folgende Cache-Verwaltungsfunktionen nicht zur Verfügung.
 
-* Redis-Konsole: Da die Redis-Konsole in Ihrem lokalen Browser ausgeführt wird, der sich außerhalb des VNet befindet, kann sie sich nicht mit Ihrem Cache verbinden.
+* Redis-Konsole: Da die Redis-Konsole in Ihrem lokalen Browser ausgeführt wird, der sich in der Regel auf einem Entwicklercomputer befindet, der nicht mit dem VNET verbunden ist, kann keine Verbindung mit dem Cache hergestellt werden.
 
 
 ## <a name="use-expressroute-with-azure-cache-for-redis"></a>Verwenden von ExpressRoute mit Azure Cache for Redis

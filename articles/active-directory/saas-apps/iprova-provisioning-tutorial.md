@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/29/2019
 ms.author: Zhchia
-ms.openlocfilehash: 3fe13d2fad2382e0e9fa8b93b79c5f27695ad898
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: dbaea9d4aaea982165c96af00f75524b15fa3015
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94355191"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96178075"
 ---
 # <a name="tutorial-configure-iprova-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von iProva für die automatische Benutzerbereitstellung
 
@@ -39,7 +39,7 @@ In diesem Tutorial werden die Schritte erläutert, die in iProva und Azure Activ
 Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits über die folgenden Voraussetzungen verfügen:
 
 * [Einen Azure AD-Mandanten](../develop/quickstart-create-new-tenant.md)
-* Ein Benutzerkonto in Azure AD mit der [Berechtigung](../users-groups-roles/directory-assign-admin-roles.md) für die Konfiguration von Bereitstellungen (z.B. Anwendungsadministrator, Cloudanwendungsadministrator, Anwendungsbesitzer oder Globaler Administrator).
+* Ein Benutzerkonto in Azure AD mit der [Berechtigung](../roles/permissions-reference.md) für die Konfiguration von Bereitstellungen (z.B. Anwendungsadministrator, Cloudanwendungsadministrator, Anwendungsbesitzer oder Globaler Administrator).
 * [Einen iProva-Mandanten](https://www.iProva.com/)
 * Ein Benutzerkonto in iProva mit Administratorrechten
 
@@ -64,7 +64,7 @@ Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits �
 
     ![iProva: Anbieter hinzufügen](media/iprova-provisioning-tutorial/addprovider.png)
 
-4.  Klicken Sie auf die Schaltfläche **Permanentes Token**. Kopieren Sie das **permanente Token** , und speichern Sie es, weil Sie es nur zu diesem Zeitpunkt anzeigen können. Dieser Wert wird im Azure-Portal auf der Registerkarte „Bereitstellung“ Ihrer iProva-Anwendung in das Feld „Geheimes Token“ eingegeben.
+4.  Klicken Sie auf die Schaltfläche **Permanentes Token**. Kopieren Sie das **permanente Token**, und speichern Sie es, weil Sie es nur zu diesem Zeitpunkt anzeigen können. Dieser Wert wird im Azure-Portal auf der Registerkarte „Bereitstellung“ Ihrer iProva-Anwendung in das Feld „Geheimes Token“ eingegeben.
 
     ![iProva: Token erstellen](media/iprova-provisioning-tutorial/token.png)
 
@@ -102,7 +102,7 @@ In diesem Abschnitt werden die Schritte erläutert, mit denen Sie den Azure AD-B
 
     ![Screenshot der Dropdownliste „Bereitstellungsmodus“ mit aufgerufener Option „Automatisch“](common/provisioning-automatic.png)
 
-5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** die zuvor abgerufenen Werte für **„SCIM 2.0 base URL“ and „Permanent Token“** („SCIM 2.0-Basis-URL“ und „Permanentes Token“) in die Felder **Mandanten-URL** und **Geheimes Token** ein. Klicken Sie auf **Verbindung testen** , um sicherzustellen, dass Azure AD eine Verbindung mit iProva herstellen kann. Vergewissern Sie sich im Falle eines Verbindungsfehlers, dass Ihr iProva-Konto über Administratorberechtigungen verfügt, und versuchen Sie es noch mal.
+5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** die zuvor abgerufenen Werte für **„SCIM 2.0 base URL“ and „Permanent Token“** („SCIM 2.0-Basis-URL“ und „Permanentes Token“) in die Felder **Mandanten-URL** und **Geheimes Token** ein. Klicken Sie auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit iProva herstellen kann. Vergewissern Sie sich im Falle eines Verbindungsfehlers, dass Ihr iProva-Konto über Administratorberechtigungen verfügt, und versuchen Sie es noch mal.
 
     ![Mandanten-URL + Token](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -114,7 +114,7 @@ In diesem Abschnitt werden die Schritte erläutert, mit denen Sie den Azure AD-B
 
 8. Wählen Sie im Abschnitt **Zuordnungen** die Option **Azure Active Directory-Benutzer mit iProva synchronisieren** aus.
 
-9. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit iProva synchronisiert werden. Beachten Sie, dass die als **übereinstimmende** Eigenschaften ausgewählten Attribute für den Abgleich der Benutzerkonten in iProva für Updatevorgänge verwendet werden. Wählen Sie die Schaltfläche **Speichern** , um alle Änderungen zu übernehmen.
+9. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit iProva synchronisiert werden. Beachten Sie, dass die als **übereinstimmende** Eigenschaften ausgewählten Attribute für den Abgleich der Benutzerkonten in iProva für Updatevorgänge verwendet werden. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
    |attribute|type|
    |---|---|
@@ -150,7 +150,7 @@ In diesem Abschnitt werden die Schritte erläutert, mit denen Sie den Azure AD-B
 
 10. Wählen Sie im Abschnitt **Zuordnungen** die Option **Azure Active Directory-Gruppen mit iProva synchronisieren** aus.
 
-11. Überprüfen Sie im Abschnitt **Attributzuordnung** die Gruppenattribute, die von Azure AD mit iProva synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden verwendet, um die Gruppen in iProva für Updatevorgänge abzugleichen. Wählen Sie die Schaltfläche **Speichern** , um alle Änderungen zu übernehmen.
+11. Überprüfen Sie im Abschnitt **Attributzuordnung** die Gruppenattribute, die von Azure AD mit iProva synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden verwendet, um die Gruppen in iProva für Updatevorgänge abzugleichen. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
       |attribute|type|
       |---|---|

@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.custom: H1Hack27Feb2017,hdinsightactive
 ms.date: 12/16/2019
 ms.openlocfilehash: fe511ed2d6b724c1215f9986c9d6c50aae076935
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92533290"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95971908"
 ---
 # <a name="analyze-twitter-data-using-apache-hive-and-apache-hadoop-on-hdinsight"></a>Analysieren von Twitter-Daten mit Apache Hive und Apache Hadoop in HDInsight
 
@@ -32,7 +32,7 @@ Twitter ermöglicht das Abrufen der Daten für jeden Tweet als JavaScript Object
 
 2. Wählen Sie **Create New App** (Neue App erstellen) aus.
 
-3. Geben Sie **Name** , **Description** und **Website** ein. Für das Feld **Website** können Sie eine URL erfinden. Die folgende Tabelle zeigt einige mögliche Beispielwerte:
+3. Geben Sie **Name**, **Description** und **Website** ein. Für das Feld **Website** können Sie eine URL erfinden. Die folgende Tabelle zeigt einige mögliche Beispielwerte:
 
    | Feld | Wert |
    |--- |--- |
@@ -42,7 +42,7 @@ Twitter ermöglicht das Abrufen der Daten für jeden Tweet als JavaScript Object
 
 4. Wählen Sie **Yes, I agree** (Ja, ich stimme zu) und dann **Create your Twitter application** (Erstellen Sie Ihre Twitter-Anwendung) aus.
 
-5. Wählen Sie die Registerkarte **Permissions** (Berechtigungen) aus. Die Standardberechtigung ist **Read only** .
+5. Wählen Sie die Registerkarte **Permissions** (Berechtigungen) aus. Die Standardberechtigung ist **Read only**.
 
 6. Wählen Sie die Registerkarte **Keys and Access Tokens** .
 
@@ -50,7 +50,7 @@ Twitter ermöglicht das Abrufen der Daten für jeden Tweet als JavaScript Object
 
 8. Wählen Sie oben rechts auf der Seite **Test OAuth** (OAuth testen) aus.
 
-9. Notieren Sie **consumer key** , **Consumer secret** , **Access token** und **Access token secret** .
+9. Notieren Sie **consumer key**, **Consumer secret**, **Access token** und **Access token secret**.
 
 ### <a name="download-tweets"></a>Herunterladen von Tweets
 
@@ -283,7 +283,7 @@ Mit diesen Befehlen werden die Daten an einem Speicherort gespeichert, auf den a
    WHERE (length(json_response) > 500);
    ```
 
-1. Drücken Sie zum Speichern der Datei **STRG+X** und anschließend **Y** .
+1. Drücken Sie zum Speichern der Datei **STRG+X** und anschließend **Y**.
 
 1. Verwenden Sie den folgenden Befehl, um den in der Datei enthaltenen HiveQL-Auftrag auszuführen:
 

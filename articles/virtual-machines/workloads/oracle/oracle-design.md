@@ -3,16 +3,17 @@ title: Entwerfen und Implementieren einer Oracle-Datenbank in Azure | Microsoft-
 description: Entwerfen und implementieren Sie eine Oracle-Datenbank in Ihrer Azure-Umgebung.
 author: dbakevlar
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.date: 08/02/2018
 ms.author: kegorman
 ms.reviewer: cynthn
-ms.openlocfilehash: 9bfd2330f71b9690e2864968cf51cb438bb23676
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 5e9ddecd694a9051e746d07cbc1bee4d98bf5829
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92534072"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96484429"
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>Entwerfen und Implementieren einer Oracle-Datenbank in Azure
 
@@ -137,19 +138,19 @@ Je nach Ihren Anforderungen an die Netzwerkbandbreite können Sie aus verschiede
 - Die Netzwerklatenz ist höher als bei einer lokalen Bereitstellung. Eine Verringerung der Netzwerkroundtrips kann die Leistung deutlich verbessern.
 - Zur Reduzierung von Roundtrips sollten Anwendungen, die ein hohes Transaktionsaufkommen aufweisen oder kommunikationsintensiv sind, auf demselben virtuellen Computer konsolidiert werden.
 - Verwenden Sie Virtual Machines mit [beschleunigtem Netzwerkbetrieb](../../../virtual-network/create-vm-accelerated-networking-cli.md), um eine bessere Netzwerkleistung zu erzielen.
-- Erwägen Sie für bestimmte Linux-Distributionen die Aktivierung der [TRIM/UNMAP-Unterstützung](../../linux/configure-lvm.md#trimunmap-support).
+- Erwägen Sie für bestimmte Linux-Distributionen die Aktivierung der [TRIM/UNMAP-Unterstützung](/previous-versions/azure/virtual-machines/linux/configure-lvm#trimunmap-support).
 - Installieren Sie [Oracle Enterprise Manager](https://www.oracle.com/technetwork/oem/enterprise-manager/overview/index.html) auf einem separaten virtuellen Computer.
 - Große Seiten sind unter Linux nicht standardmäßig aktiviert. Erwägen Sie das Aktivieren großer Seiten, und legen Sie `use_large_pages = ONLY` für die Oracle Database fest. Dies kann helfen, die Leistung zu steigern. Weitere Informationen finden Sie [hier](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/refrn/USE_LARGE_PAGES.html#GUID-1B0F4D27-8222-439E-A01D-E50758C88390).
 
 ### <a name="disk-types-and-configurations"></a>Datenträgertypen und -konfigurationen
 
-- *Standard-Betriebssystemdatenträger* : Diese Datenträgertypen bieten persistente Daten und Zwischenspeicherung. Sie sind für den Betriebssystemzugriff beim Systemstart optimiert und nicht für Transaktionsworkloads oder Data Warehouse-Workloads (analytisch) ausgelegt.
+- *Standard-Betriebssystemdatenträger*: Diese Datenträgertypen bieten persistente Daten und Zwischenspeicherung. Sie sind für den Betriebssystemzugriff beim Systemstart optimiert und nicht für Transaktionsworkloads oder Data Warehouse-Workloads (analytisch) ausgelegt.
 
 - *Nicht verwaltete Datenträger:* Mit diesen Datenträgertypen verwalten Sie die Speicherkonten, die die Dateien der virtuellen Festplatte (Virtual Hard Disk, VHD) speichern, die Ihren VM-Datenträgern entsprechen. Die VHD-Dateien werden als Seitenblobs in Azure-Speicherkonten gespeichert.
 
-- *Verwaltete Datenträger* : Azure verwaltet die Speicherkonten, die Sie für Ihre VM-Datenträger verwenden. Sie geben den Datenträgertyp (Premium oder Standard) und die benötigte Datenträgergröße an. Azure erstellt und verwaltet den Datenträger für Sie.
+- *Verwaltete Datenträger*: Azure verwaltet die Speicherkonten, die Sie für Ihre VM-Datenträger verwenden. Sie geben den Datenträgertyp (Premium oder Standard) und die benötigte Datenträgergröße an. Azure erstellt und verwaltet den Datenträger für Sie.
 
-- *Storage Premium-Datenträger* : Diese Datenträgertypen sind am besten für Produktionsworkloads geeignet. Storage Premium unterstützt VM-Datenträger, die an VMs einer bestimmten Größenserie wie DS, DSv2, GS und F angefügt werden können. Der Premium-Datenträger ist in unterschiedlichen Größen von 32 GB bis 4.096 GB erhältlich. Für jede Datenträgergröße gelten eigene Leistungsspezifikationen. Je nach Anwendungsanforderung können Sie einen oder mehrere Datenträger an Ihre VM anfügen.
+- *Storage Premium-Datenträger*: Diese Datenträgertypen sind am besten für Produktionsworkloads geeignet. Storage Premium unterstützt VM-Datenträger, die an VMs einer bestimmten Größenserie wie DS, DSv2, GS und F angefügt werden können. Der Premium-Datenträger ist in unterschiedlichen Größen von 32 GB bis 4.096 GB erhältlich. Für jede Datenträgergröße gelten eigene Leistungsspezifikationen. Je nach Anwendungsanforderung können Sie einen oder mehrere Datenträger an Ihre VM anfügen.
 
 Wenn Sie einen neuen verwalteten Datenträger aus dem Portal erstellen, können Sie den **Kontotyp** des Datenträgers angeben, den Sie verwenden möchten. Beachten Sie, dass nicht alle verfügbaren Datenträger im Dropdownmenü angezeigt werden. Nachdem Sie eine bestimmte VM-Größe ausgewählt haben, zeigt das Menü nur die verfügbaren Storage Premium-SKUs an, die auf dieser VM-Größe basieren.
 
@@ -186,9 +187,9 @@ Sobald Sie eine genaue Vorstellung von den E/A-Anforderungen haben, können Sie 
 
 Es gibt drei Optionen für die Hostzwischenspeicherung:
 
-- *ReadOnly* : Alle Anfragen werden für zukünftige Lesevorgänge zwischengespeichert. Alle Schreibvorgänge werden direkt in Azure Blob Storage gespeichert.
+- *ReadOnly*: Alle Anfragen werden für zukünftige Lesevorgänge zwischengespeichert. Alle Schreibvorgänge werden direkt in Azure Blob Storage gespeichert.
 
-- *ReadWrite* : Dies ist ein „Im Voraus lesen“-Algorithmus. Die Lese- und Schreibvorgänge werden für zukünftige Lesevorgänge zwischengespeichert. Schreibvorgänge ohne Durchschreiben werden zuerst im lokalen Cache gespeichert. Darüber hinaus bietet dies die niedrigste Datenträgerlatenz für schlanke Workloads. Das Verwenden eines „ReadWrite“-Caches mit einer Anwendung, die die benötigten Daten nicht beständig speichert, kann zu Datenverlusten führen, sollte die VM abstürzen.
+- *ReadWrite*: Dies ist ein „Im Voraus lesen“-Algorithmus. Die Lese- und Schreibvorgänge werden für zukünftige Lesevorgänge zwischengespeichert. Schreibvorgänge ohne Durchschreiben werden zuerst im lokalen Cache gespeichert. Darüber hinaus bietet dies die niedrigste Datenträgerlatenz für schlanke Workloads. Das Verwenden eines „ReadWrite“-Caches mit einer Anwendung, die die benötigten Daten nicht beständig speichert, kann zu Datenverlusten führen, sollte die VM abstürzen.
 
 - *Keine* (deaktiviert): Mit dieser Option können Sie den Cache umgehen. Alle Daten werden auf den Datenträger übertragen und in Azure Storage gespeichert. Diese Methode bietet Ihnen die höchste E/A-Rate für E/A-intensive Workloads. Sie müssen auch die „Transaktionskosten“ berücksichtigen.
 
@@ -208,7 +209,7 @@ Nachdem Ihre Einstellung für den Datenträger gespeichert wurde, können Sie di
 
 Nachdem Sie Ihre Azure-Umgebung eingerichtet und konfiguriert haben, besteht der nächste Schritt im Sichern des Netzwerks. Hier sind einige Empfehlungen dafür:
 
-- *NSG-Richtlinie* : NSG kann von einem Subnetz oder einer NIC definiert werden. Für Anwendungsfirewalls etwa vereinfacht die Zugriffssteuerung auf Subnetzebene die Sicherheitsimplementierung und Routingerzwingung.
+- *NSG-Richtlinie*: NSG kann von einem Subnetz oder einer NIC definiert werden. Für Anwendungsfirewalls etwa vereinfacht die Zugriffssteuerung auf Subnetzebene die Sicherheitsimplementierung und Routingerzwingung.
 
 - *Jumpbox:* Damit der Zugriff noch sicherer wird, sollten Administratoren keine direkte Verbindung zum Anwendungsdienst oder zur Datenbank herstellen. Eine Jumpbox wird als Medium zwischen dem Administratorcomputer und Azure-Ressourcen verwendet.
 ![Screenshot der Jumpbox-Topologieseite](./media/oracle-design/jumpbox.png)

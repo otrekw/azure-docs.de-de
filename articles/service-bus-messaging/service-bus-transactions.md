@@ -5,11 +5,11 @@ ms.topic: article
 ms.date: 10/28/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 9162b8578fe4f48cc3740b38d9d84ffaa2f260de
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927786"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023600"
 ---
 # <a name="overview-of-service-bus-transaction-processing"></a>Übersicht über die Service Bus-Transaktionsverarbeitung
 
@@ -36,7 +36,7 @@ Die Disposition der Nachricht (vollständig, verworfen, unzustellbar, zurückges
 
 ## <a name="transfers-and-send-via"></a>Übertragungen und „send via“
 
-Service Bus unterstützt *Übertragungen* , um transaktionsbasierte Übergaben von Daten aus einer Warteschlange oder einem Thema an einen Prozessor und von dort an eine andere Warteschlange oder ein anderes Thema zu ermöglichen. Bei einem Übertragungsvorgang sendet ein Sender eine Nachricht zuerst an eine *Übertragungswarteschlange oder ein Übertragungsthema*. Die Übertragungswarteschlange bzw. das Übertragungsthema verschiebt die Nachricht sofort an die gewünschte Zielwarteschlange bzw. das gewünschte Zielthema und verwendet dazu dieselbe stabile Übertragungsimplementierung, auf der auch die automatische Weiterleitung basiert. Die Nachricht wird an das Protokoll der Übertragungswarteschlange oder des Themas niemals in einer Weise committet, dass sie für die Consumer der Übertragungswarteschlangebzw. des Themas sichtbar wird.
+Service Bus unterstützt *Übertragungen*, um transaktionsbasierte Übergaben von Daten aus einer Warteschlange oder einem Thema an einen Prozessor und von dort an eine andere Warteschlange oder ein anderes Thema zu ermöglichen. Bei einem Übertragungsvorgang sendet ein Sender eine Nachricht zuerst an eine *Übertragungswarteschlange oder ein Übertragungsthema*. Die Übertragungswarteschlange bzw. das Übertragungsthema verschiebt die Nachricht sofort an die gewünschte Zielwarteschlange bzw. das gewünschte Zielthema und verwendet dazu dieselbe stabile Übertragungsimplementierung, auf der auch die automatische Weiterleitung basiert. Die Nachricht wird an das Protokoll der Übertragungswarteschlange oder des Themas niemals in einer Weise committet, dass sie für die Consumer der Übertragungswarteschlangebzw. des Themas sichtbar wird.
 
 Wenn die Übertragungswarteschlange oder das Übertragungsthema selbst die Quelle der eingehenden Nachrichten des Absenders ist, offenbart sich die Leistungsfähigkeit dieser Transaktionsfunktion. Anders gesagt: Service Bus kann die Nachricht über die Übertragungswarteschlange bzw. das Übertragungsthema an die Zielwarteschlange bzw. das Zielthema übermitteln. Gleichzeitig führt Service Bus einen vollständigen (oder einen zurückgestellten oder unzustellbaren) Vorgang für die Eingabenachricht aus. All dies erfolgt in einem einzigen atomaren Vorgang. 
 

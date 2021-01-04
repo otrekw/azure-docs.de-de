@@ -4,12 +4,12 @@ description: Lernen Sie die verschiedenen Methoden kennen, mit denen Code in Azu
 ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.openlocfilehash: 3988f30d0e6429a8cac450711d4033e4b2603d46
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 7a75408008a90a2c40553b1f6c5c196775a48e61
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900179"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96168099"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Bereitstellungstechnologien in Azure Functions
 
@@ -86,7 +86,7 @@ Zum Aktivieren des Remotebuilds unter Linux müssen Sie die folgenden [Anwendung
 * `ENABLE_ORYX_BUILD=true`
 * `SCM_DO_BUILD_DURING_DEPLOYMENT=true`
 
-Standardmäßig führen die [Azure Functions Core Tools](functions-run-local.md) und die [Azure Functions-Erweiterung für Visual Studio Code](functions-create-first-function-vs-code.md#publish-the-project-to-azure) bei der Bereitstellung unter Linux Remotebuilds aus. Aus diesem Grund erstellen beide Tools diese Einstellungen automatisch für Sie in Azure.
+Standardmäßig führen die [Azure Functions Core Tools](functions-run-local.md) und die [Azure Functions-Erweiterung für Visual Studio Code](./create-first-function-vs-code-csharp.md#publish-the-project-to-azure) bei der Bereitstellung unter Linux Remotebuilds aus. Aus diesem Grund erstellen beide Tools diese Einstellungen automatisch für Sie in Azure.
 
 Wenn Apps remote unter Linux erstellt werden, werden sie [über das Bereitstellungspaket ausgeführt](run-functions-from-deployment-package.md).
 
@@ -185,7 +185,7 @@ Im portalbasierten Editor können Sie die Dateien, die sich in ihrer Funktions-A
 
 >__Einsatzgebiete:__ Das Portal ist eine gute Möglichkeit, um erste Schritte mit Azure Functions auszuführen. Bei intensiveren Entwicklungsarbeiten empfiehlt sich die Verwendung eines der folgenden Clienttools:
 >
->* [Visual Studio Code](functions-create-first-function-vs-code.md)
+>* [Visual Studio Code](./create-first-function-vs-code-csharp.md)
 >* [Azure Functions Core Tools (Befehlszeile)](functions-run-local.md)
 >* [Visual Studio](functions-create-your-first-function-visual-studio.md)
 

@@ -2,18 +2,17 @@
 title: Konfigurieren von Verfügbarkeitsgruppen für SQL Server auf virtuellen RHEL-Computern in Azure – virtuelle Linux-Computer | Microsoft-Dokumentation
 description: Hier finden Sie Informationen zum Einrichten von Hochverfügbarkeit in einer RHEL-Clusterumgebung sowie zum Einrichten von STONITH.
 ms.service: virtual-machines-linux
-ms.subservice: ''
 ms.topic: tutorial
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: jroth
 ms.date: 06/25/2020
-ms.openlocfilehash: 06442e861a247f545ca6f22ecc82e5f5dc910553
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 533f5c9e38818a8e37482cbbb3a90602366eca6f
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790235"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97587212"
 ---
 # <a name="tutorial-configure-availability-groups-for-sql-server-on-rhel-virtual-machines-in-azure"></a>Tutorial: Konfigurieren von Verfügbarkeitsgruppen für SQL Server auf virtuellen RHEL-Computern in Azure 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -37,9 +36,9 @@ In diesem Tutorial wird die Azure-Befehlszeilenschnittstelle (Command-Line Inter
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
-[!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../../../includes/azure-cli-prepare-your-environment.md)]
 
-Wenn Sie die Befehlszeilenschnittstelle lieber lokal installieren und verwenden möchten, benötigen Sie für dieses Tutorial mindestens die Azure CLI-Version 2.0.30. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI]( /cli/azure/install-azure-cli).
+- Für diesen Artikel ist mindestens Version 2.0.30 der Azure CLI erforderlich. Bei Verwendung von Azure Cloud Shell ist die aktuelle Version bereits installiert.
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
@@ -263,7 +262,7 @@ Nach Abschluss des Befehls für die einzelnen virtuellen Computer sollten die Er
 > [!IMPORTANT]
 > Durch das mit dem obigen Befehl erstellte Standardimage wird standardmäßig ein Betriebssystemdatenträger mit einer Kapazität von 32 GB erstellt. Bei dieser Standardinstallation besteht ggf. die Gefahr, dass der Speicherplatz nicht ausreicht. Daher können Sie dem obigen Befehl `az vm create` den folgenden Parameter hinzufügen, um beispielsweise einen Betriebssystemdatenträger mit 128 GB zu erstellen: `--os-disk-size-gb 128`.
 >
-> Anschließend können Sie [Logical Volume Manager (LVM) konfigurieren](../../../virtual-machines/linux/configure-lvm.md), um bei Bedarf die entsprechenden Ordnervolumes für Ihre Installation zu erweitern.
+> Anschließend können Sie [Logical Volume Manager (LVM) konfigurieren](/previous-versions/azure/virtual-machines/linux/configure-lvm), um bei Bedarf die entsprechenden Ordnervolumes für Ihre Installation zu erweitern.
 
 ### <a name="test-connection-to-the-created-vms"></a>Testen der Verbindung mit den erstellten virtuellen Computern
 
@@ -324,7 +323,7 @@ Stellen Sie eine Verbindung mit den einzelnen VM-Knoten her, und gehen Sie wie i
     sudo vi /etc/hosts
     ```
 
-    Geben Sie im **vi** -Editor `i` ein, um Text einzufügen, und fügen Sie in einer leeren Zeile die **private IP-Adresse** des entsprechenden virtuellen Computers hinzu. Fügen Sie nach der IP-Adresse ein Leerzeichen und den VM-Namen hinzu. Jede Zeile muss einen separaten Eintrag enthalten.
+    Geben Sie im **vi**-Editor `i` ein, um Text einzufügen, und fügen Sie in einer leeren Zeile die **private IP-Adresse** des entsprechenden virtuellen Computers hinzu. Fügen Sie nach der IP-Adresse ein Leerzeichen und den VM-Namen hinzu. Jede Zeile muss einen separaten Eintrag enthalten.
 
     ```output
     <IP1> <VM1>
@@ -335,7 +334,7 @@ Stellen Sie eine Verbindung mit den einzelnen VM-Knoten her, und gehen Sie wie i
     > [!IMPORTANT]
     > Es wird empfohlen, oben Ihre **private IP-Adresse** zu verwenden. Mit der öffentlichen IP-Adresse ist diese Einrichtung nicht erfolgreich, und es wird davon abgeraten, den virtuellen Computer für externe Netzwerke verfügbar zu machen.
 
-    Drücken Sie zum Verlassen des **vi** -Editors **ESC** , und geben Sie anschließend den Befehl `:wq` ein, um die Datei zu schreiben und den Editor zu beenden.
+    Drücken Sie zum Verlassen des **vi**-Editors **ESC**, und geben Sie anschließend den Befehl `:wq` ein, um die Datei zu schreiben und den Editor zu beenden.
 
 ## <a name="create-the-pacemaker-cluster"></a>Erstellen eines Pacemaker-Clusters
 
@@ -487,13 +486,13 @@ Description : The fence-agents-azure-arm package contains a fence agent for Azur
  1. Besuchen Sie https://portal.azure.com.
  2. Öffnen Sie das Blatt [Azure Active Directory](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties). Wechseln Sie zu „Eigenschaften“, und notieren Sie sich die Verzeichnis-ID. Hierbei handelt es sich um die Mandanten-ID (`tenant ID`).
  3. Klicken Sie auf [**App-Registrierungen**](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade).
- 4. Klicken Sie auf **Neue Registrierung** .
+ 4. Klicken Sie auf **Neue Registrierung**.
  5. Geben Sie unter **Name** einen Namen ein (beispielsweise `<resourceGroupName>-app`), und wählen Sie **Nur Konten in diesem Organisationsverzeichnis** aus.
- 6. Wählen Sie den Anwendungstyp **Web** aus, geben Sie eine Anmelde-URL ein (beispielsweise http://localhost) ), und klicken Sie auf „Hinzufügen“. Die Anmelde-URL wird nicht verwendet und kann eine beliebige gültige URL sein. Klicken Sie anschließend auf **Registrieren** .
- 7. Wählen Sie **Zertifikate und Geheimnisse** für Ihre neue App-Registrierung aus, und klicken Sie auf **Neuer geheimer Clientschlüssel** .
- 8. Geben Sie eine Beschreibung für einen neuen Schlüssel (geheimer Clientschlüssel) ein, wählen Sie **Läuft nie ab** aus, und klicken Sie auf **Hinzufügen** .
+ 6. Wählen Sie den Anwendungstyp **Web** aus, geben Sie eine Anmelde-URL ein (beispielsweise http://localhost) ), und klicken Sie auf „Hinzufügen“. Die Anmelde-URL wird nicht verwendet und kann eine beliebige gültige URL sein. Klicken Sie anschließend auf **Registrieren**.
+ 7. Wählen Sie **Zertifikate und Geheimnisse** für Ihre neue App-Registrierung aus, und klicken Sie auf **Neuer geheimer Clientschlüssel**.
+ 8. Geben Sie eine Beschreibung für einen neuen Schlüssel (geheimer Clientschlüssel) ein, wählen Sie **Läuft nie ab** aus, und klicken Sie auf **Hinzufügen**.
  9. Notieren Sie sich den Wert des Geheimnisses. Er dient als Kennwort für den Dienstprinzipal.
-10. Wählen Sie **Übersicht** . Notieren Sie sich die Anwendungs-ID. Sie wird als Benutzername (Anmelde-ID in den folgenden Schritten) des Dienstprinzipals verwendet.
+10. Wählen Sie **Übersicht**. Notieren Sie sich die Anwendungs-ID. Sie wird als Benutzername (Anmelde-ID in den folgenden Schritten) des Dienstprinzipals verwendet.
  
 ### <a name="create-a-custom-role-for-the-fence-agent"></a>Erstellen einer benutzerdefinierten Rolle für den Fence-Agent
 
@@ -568,10 +567,10 @@ Weisen Sie dem Dienstprinzipal die benutzerdefinierte Rolle `Linux Fence Agent R
 2. Öffnen Sie das Blatt [Alle Ressourcen](https://ms.portal.azure.com/#blade/HubsExtension/BrowseAll).
 3. Wählen Sie den virtuellen Computer des ersten Clusterknotens aus.
 4. Klicken Sie auf **Zugriffssteuerung (IAM)** .
-5. Klicken Sie auf **Rollenzuweisung hinzufügen** .
+5. Klicken Sie auf **Rollenzuweisung hinzufügen**.
 6. Wählen Sie in der Liste **Rolle** die Rolle `Linux Fence Agent Role-<username>` aus.
 7. Geben Sie in der Liste **Auswählen** den Namen der oben erstellten Anwendung (`<resourceGroupName>-app`) ein.
-8. Klicken Sie unten auf der Seite auf **Speichern** .
+8. Klicken Sie unten auf der Seite auf **Speichern**.
 9. Wiederholen Sie die obigen Schritte für alle Clusterknoten.
 
 ### <a name="create-the-stonith-devices"></a>Erstellen des STONITH-Geräts
@@ -601,7 +600,7 @@ sudo firewall-cmd --reload
 ## <a name="install-sql-server-and-mssql-tools"></a>Installieren von SQL Server und „mssql-tools“
 
 > [!NOTE]
-> Wenn Sie die VMs mit einer Vorinstallation von SQL Server 2019 unter RHEL8-HA erstellt haben, können Sie die unten angegebenen Schritte für die Installation von SQL Server und „mssql-tools“ überspringen. Starten Sie in diesem Fall mit dem Abschnitt **Konfigurieren einer Verfügbarkeitsgruppe** , nachdem Sie das Systemadministratorkennwort auf allen VMs eingerichtet haben, indem Sie den Befehl `sudo /opt/mssql/bin/mssql-conf set-sa-password` für alle VMs ausgeführt haben.
+> Wenn Sie die VMs mit einer Vorinstallation von SQL Server 2019 unter RHEL8-HA erstellt haben, können Sie die unten angegebenen Schritte für die Installation von SQL Server und „mssql-tools“ überspringen. Starten Sie in diesem Fall mit dem Abschnitt **Konfigurieren einer Verfügbarkeitsgruppe**, nachdem Sie das Systemadministratorkennwort auf allen VMs eingerichtet haben, indem Sie den Befehl `sudo /opt/mssql/bin/mssql-conf set-sa-password` für alle VMs ausgeführt haben.
 
 In diesem Abschnitt werden SQL Server und „mssql-tools“ auf den virtuellen Computern installiert. Sie können eines der unten angegebenen Beispiele auswählen, um SQL Server 2017 auf RHEL 7 oder SQL Server 2019 auf RHEL 8 zu installieren. Führen Sie jede dieser Aktionen auf allen Knoten aus. Weitere Informationen finden Sie unter [Schnellstart: Installieren von SQL Server und Erstellen einer Datenbank unter Red Hat](/sql/linux/quickstart-install-connect-red-hat).
 
@@ -868,7 +867,7 @@ Speichern Sie in allen SQL Server-Instanzen die für die SQL Server-Anmeldung 
     <password>
     ```
 
-    Drücken Sie zum Verlassen des **vi** -Editors **ESC** , und geben Sie anschließend den Befehl `:wq` ein, um die Datei zu schreiben und den Editor zu beenden.
+    Drücken Sie zum Verlassen des **vi**-Editors **ESC**, und geben Sie anschließend den Befehl `:wq` ein, um die Datei zu schreiben und den Editor zu beenden.
 
 1. Sorgen Sie dafür, dass die Datei nur mit root-Berechtigungen lesbar ist:
 
@@ -946,6 +945,9 @@ Wenn `synchronization_state_desc` für `db1` den Zustand „SYNCHRONIZED“ (SYN
 ## <a name="create-availability-group-resources-in-the-pacemaker-cluster"></a>Erstellen von Verfügbarkeitsgruppenressourcen im Pacemaker-Cluster
 
 Wir gehen wie unter [Erstellen der Verfügbarkeitsgruppenressourcen im Pacemaker-Cluster (nur „Extern“)](/sql/linux/sql-server-linux-create-availability-group#create-the-availability-group-resources-in-the-pacemaker-cluster-external-only) beschrieben vor.
+
+> [!NOTE]
+> Dieser Artikel enthält Verweise auf den Begriff Slave, einen Begriff, den Microsoft nicht mehr verwendet. Sobald der Begriff aus der Software entfernt wird, wird er auch aus diesem Artikel entfernt.
 
 ### <a name="create-the-ag-cluster-resource"></a>Erstellen der Verfügbarkeitsgruppen-Clusterressource
 
@@ -1132,6 +1134,34 @@ Wir führen ein Testfailover durch, um uns zu vergewissern, dass die bisherige K
     sudo pcs resource move ag_cluster-clone <VM2> --master
     ```
 
+   Sie können auch eine zusätzliche Option angeben, damit die vorübergehende Einschränkung, die erstellt wird, um die Ressource auf einen gewünschten Knoten zu verschieben, automatisch deaktiviert wird und Sie die Schritte 2 und 3 weiter unten nicht ausführen müssen.
+
+   **RHEL 7**
+
+    ```bash
+    sudo pcs resource move ag_cluster-master <VM2> --master lifetime=30S
+    ```
+
+   **RHEL 8**
+
+    ```bash
+    sudo pcs resource move ag_cluster-clone <VM2> --master lifetime=30S
+    ```
+
+   Eine weitere Alternative zur Automatisierung der weiter unten angegebenen Schritte 2 und 3, durch die die vorübergehende Einschränkung direkt im Befehl für die Ressourcenverschiebung entfernt wird, besteht darin, mehrere Befehle in einer einzelnen Zeile zu kombinieren. 
+
+   **RHEL 7**
+
+    ```bash
+    sudo pcs resource move ag_cluster-master <VM2> --master && sleep 30 && pcs resource clear ag_cluster-master
+    ```
+
+   **RHEL 8**
+
+    ```bash
+    sudo pcs resource move ag_cluster-clone <VM2> --master && sleep 30 && pcs resource clear ag_cluster-clone
+    ```
+    
 2. Wenn Sie Ihre Einschränkungen erneut überprüfen, sehen Sie, dass aufgrund des manuellen Failovers eine weitere Einschränkung hinzugefügt wurde:
     
     **RHEL 7**

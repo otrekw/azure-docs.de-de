@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 02/21/2020
 ms.author: kenwith
 ms.reviewer: luleon
-ms.openlocfilehash: 55934e8c33b74740b7398be1ae18a3ef899aee74
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 22acfc5095b1ffcad382fa2b665a86d382645e7a
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94651276"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861676"
 ---
 # <a name="manage-user-assignment-for-an-app-in-azure-active-directory"></a>Verwalten von Benutzerzuweisungen für eine App in Azure Active Directory
 
@@ -81,11 +81,11 @@ Mit der Graph-API können Sie einer App Benutzer und Gruppen zuweisen und die Zu
     # Assign the user to the app role
     New-AzureADUserAppRoleAssignment -ObjectId $user.ObjectId -PrincipalId $user.ObjectId -ResourceId $sp.ObjectId -Id $appRole.Id
     ```
-Weitere Informationen zum Zuweisen eines Benutzers zu einer Anwendungsrolle finden Sie in der Dokumentation zu [New-AzureADUserAppRoleAssignment](/powershell/module/azuread/new-azureaduserapproleassignment?view=azureadps-2.0).
+Weitere Informationen zum Zuweisen eines Benutzers zu einer Anwendungsrolle finden Sie in der Dokumentation zu [New-AzureADUserAppRoleAssignment](/powershell/module/azuread/new-azureaduserapproleassignment).
 
 Wenn Sie eine Gruppe einer Unternehmens-App zuweisen möchten, müssen Sie `Get-AzureADUser` durch `Get-AzureADGroup` und `New-AzureADUserAppRoleAssignment` durch `New-AzureADGroupAppRoleAssignment` ersetzen.
 
-Weitere Informationen zum Zuweisen einer Gruppe zu einer Anwendungsrolle finden Sie in der Dokumentation zu [New-AzureADGroupAppRoleAssignment](/powershell/module/azuread/new-azureadgroupapproleassignment?view=azureadps-2.0).
+Weitere Informationen zum Zuweisen einer Gruppe zu einer Anwendungsrolle finden Sie in der Dokumentation zu [New-AzureADGroupAppRoleAssignment](/powershell/module/azuread/new-azureadgroupapproleassignment).
 
 ### <a name="example"></a>Beispiel
 

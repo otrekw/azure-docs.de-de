@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: tutorial
-ms.date: 10/23/2020
+ms.date: 11/23/2020
 ms.author: pafarley
-ms.openlocfilehash: bb4b69902f73a22cbd2b0fd5ad97c547ceb76a5c
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 3ba08f11fb52fc0ffe3acda5e81e21b7e7629628
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92912326"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95757419"
 ---
 # <a name="tutorial-create-a-form-processing-app-with-ai-builder"></a>Tutorial: Erstellen einer Formularverarbeitungs-App mit AI Builder
 
@@ -61,7 +61,7 @@ Auf der Seite **Dokumente hinzufügen** müssen Beispieldokumente bereitgestellt
 
 ### <a name="upload-your-documents"></a>Hochladen Ihrer Dokumente
 
-1. Wählen Sie **Dokumente hinzufügen** , mindestens fünf Dokumente und anschließend **Hochladen** aus.
+1. Wählen Sie **Dokumente hinzufügen**, mindestens fünf Dokumente und anschließend **Hochladen** aus.
 1. Wählen Sie nach Abschluss des Uploadvorgangs **Schließen** aus.
 1. Wählen Sie anschließend **Analysieren** aus.
 
@@ -120,7 +120,7 @@ Im Anschluss finden Sie einige Tipps für den Fall, dass Sie nicht zufriedenstel
 
 - Wiederholen Sie das Training unter Verwendung von Formularen mit unterschiedlichen Werten in jedem Feld.
 - Wiederholen Sie das Training mit mehr Trainingsdokumenten. Je mehr Dokumente Sie markieren, desto besser können die Felder von AI Builder erkannt werden.
-- Sie können PDF-Dateien optimieren, indem Sie nur bestimmte Seiten für das Training auswählen. Verwenden Sie die Option **Drucken** > **Als PDF drucken** , um bestimmte Seiten innerhalb Ihres Dokuments auszuwählen.
+- Sie können PDF-Dateien optimieren, indem Sie nur bestimmte Seiten für das Training auswählen. Verwenden Sie die Option **Drucken** > **Als PDF drucken**, um bestimmte Seiten innerhalb Ihres Dokuments auszuwählen.
 
 ## <a name="publish-your-model"></a>Veröffentlichen Ihres Modells
 

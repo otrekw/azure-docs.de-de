@@ -6,20 +6,20 @@ documentationcenter: ''
 author: curtand
 manager: daveba
 ms.service: active-directory
+ms.subservice: enterprise-users
 ms.topic: overview
 ms.workload: identity
-ms.subservice: enterprise-users
-ms.date: 11/15/2020
+ms.date: 12/02/2020
 ms.author: curtand
 ms.custom: it-pro
 ms.reviewer: sumitp
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b35c8630f47910c61e169d405c2117e53d0d536e
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 9ce3e4c6a7708fba15560564577c9b01722c8aec
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94650526"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96548051"
 ---
 # <a name="understand-how-multiple-azure-active-directory-organizations-interact"></a>Grundlegendes zur Interaktion mehrerer Azure Active Directory-Organisationen
 

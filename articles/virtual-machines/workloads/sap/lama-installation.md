@@ -9,17 +9,18 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/29/2019
 ms.author: sedusch
-ms.openlocfilehash: be7cfef5c7121d918c375dae216d293d9d56526b
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: e3f541e28f47bb6456b441811d23baa9e020fde7
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92890478"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94959151"
 ---
 # <a name="sap-lama-connector-for-azure"></a>SAP LaMa-Connector für Azure
 
@@ -319,7 +320,7 @@ Innerhalb des NetApp-Kontos gibt der Kapazitätspool die Größe und den Typ der
 
 ![SAP LaMa – NetApp-Kapazitätspool wurde erstellt ](media/lama/sap-lama-capacitypool-list.png)
 
-Jetzt können die NFS-Volumes definiert werden. Da es Volumes für mehrere Systeme in einem einzigen Pool geben wird, sollte ein selbsterklärendes Benennungsschema ausgewählt werden. Durch das Hinzufügen der Sicherheits-ID (SID) können verwandte Volumes gruppiert werden. Für ASCS und die AS-Instanz sind die folgenden Einbindungen erforderlich: „ */sapmnt/\<SID\>* “, „ */usr/sap/\<SID\>* “ und „ */home/\<sid\>adm* “. Optional wird */usr/sap/trans* für das zentrale Übertragungsverzeichnis benötigt, das mindestens von allen Systemen einer einzigen Landschaft verwendet wird.
+Jetzt können die NFS-Volumes definiert werden. Da es Volumes für mehrere Systeme in einem einzigen Pool geben wird, sollte ein selbsterklärendes Benennungsschema ausgewählt werden. Durch das Hinzufügen der Sicherheits-ID (SID) können verwandte Volumes gruppiert werden. Für ASCS und die AS-Instanz sind die folgenden Einbindungen erforderlich: „ */sapmnt/\<SID\>* “, „ */usr/sap/\<SID\>* “ und „ */home/\<sid\>adm*“. Optional wird */usr/sap/trans* für das zentrale Übertragungsverzeichnis benötigt, das mindestens von allen Systemen einer einzigen Landschaft verwendet wird.
 
 > [!NOTE]
 > Während der BETA-Phase muss der Name der Volumes im Abonnement eindeutig sein.
@@ -447,7 +448,7 @@ Sie müssen die IP-Adresse des virtuellen Hostnamens der Datenbank einer Netzwer
 C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h as1-db -n 255.255.255.128
 ```
 
-Führen Sie die Installation der SWPM-Datenbankinstanz auf der SQL Server-VM aus. Verwenden Sie „SAPINST_USE_HOSTNAME= *as1-db* “, um den für die Verbindung zu SQL Server verwendeten Hostnamen zu überschreiben. Wenn Sie die VM mit der Azure Resource Manager-Vorlage bereitgestellt haben, muss das Verzeichnis für die Datenbankdatendateien *C:\sql\data* und das für die Datenbankprotokolldatei *C:\sql\log* lauten.
+Führen Sie die Installation der SWPM-Datenbankinstanz auf der SQL Server-VM aus. Verwenden Sie „SAPINST_USE_HOSTNAME=*as1-db*“, um den für die Verbindung zu SQL Server verwendeten Hostnamen zu überschreiben. Wenn Sie die VM mit der Azure Resource Manager-Vorlage bereitgestellt haben, muss das Verzeichnis für die Datenbankdatendateien *C:\sql\data* und das für die Datenbankprotokolldatei *C:\sql\log* lauten.
 
 Stellen Sie sicher, dass der Benutzer *NT AUTHORITY\SYSTEM* auf SQL Server zugreifen kann und die Serverrolle *sysadmin* hat. Weitere Informationen finden Sie in den SAP-Hinweisen [1877727] und [2562184].
 

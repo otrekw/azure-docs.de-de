@@ -11,11 +11,11 @@ ms.workload: infrastructure-services
 ms.date: 05/15/2018
 ms.author: rohink
 ms.openlocfilehash: 2d3989b3c477a35d602f1ccf3e45d6f597f5d78d
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92737389"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011563"
 ---
 # <a name="manage-dns-records-and-recordsets-in-azure-dns-using-the-azure-cli"></a>Verwalten von DNS-Einträgen und Ressourceneintragssätzen in Azure DNS mit der Azure CLI
 
@@ -46,7 +46,7 @@ Ist der Eintragssatz noch nicht vorhanden, wird er vom Befehl für Sie erstellt.
 
 Bei der Erstellung eines neuen Eintragssatzes wird ein Standardwert von 3600 für die Gültigkeitsdauer (Time-To-Live, TTL) verwendet. Anleitungen zum Verwenden verschiedener TTL-Werte finden Sie unter [Erstellen eines DNS-Ressourceneintragssatzes](#create-a-dns-record-set).
 
-Im folgenden Beispiel wird in der Ressourcengruppe *MyResourceGroup* in der Zone *contoso.com* ein A-Eintrag namens *www* erstellt. Die IP-Adresse des A-Eintrags lautet *1.2.3.4* .
+Im folgenden Beispiel wird in der Ressourcengruppe *MyResourceGroup* in der Zone *contoso.com* ein A-Eintrag namens *www* erstellt. Die IP-Adresse des A-Eintrags lautet *1.2.3.4*.
 
 ```azurecli
 az network dns record-set a add-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name www --ipv4-address 1.2.3.4
@@ -193,7 +193,7 @@ Dieser Befehl löscht einen DNS-Eintrag aus einem Eintragssatz. Wenn der letzte 
 
 Sie müssen den zu löschenden Eintrag und die Zone angeben, aus der der Eintrag gelöscht werden soll. Verwenden Sie dazu die gleichen Parameter wie beim Erstellen eines Eintrags mithilfe von `az network dns record-set <record-type> add-record`. Diese Parameter werden unter [Erstellen eines DNS-Eintrags](#create-a-dns-record) und [Erstellen anderer Eintragstypen](#create-records-of-other-types) weiter oben beschrieben.
 
-Das folgende Beispiel löscht den A-Eintrag mit dem Wert „1.2.3.4“ aus dem Eintragssatz *www* in der Zone *contoso.com* der Ressourcengruppe *MyResourceGroup* .
+Das folgende Beispiel löscht den A-Eintrag mit dem Wert „1.2.3.4“ aus dem Eintragssatz *www* in der Zone *contoso.com* der Ressourcengruppe *MyResourceGroup*.
 
 ```azurecli
 az network dns record-set a remove-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name "www" --ipv4-address 1.2.3.4
@@ -281,7 +281,7 @@ Eintragssätze können mit dem Befehl `az network dns record-set <record-type> d
 > [!NOTE]
 > Die SOA- und NS-Ressourceneintragssätze auf der obersten Ebene der Zone (`--name "@"`) können nicht gelöscht werden.  Diese werden automatisch erstellt, wenn die Zone erstellt wird, und automatisch gelöscht, wenn die Zone gelöscht wird.
 
-Das folgende Beispiel löscht den Eintragssatz namens *www* vom Typ A aus der Zone *contoso.com* in der Ressourcengruppe *MyResourceGroup* :
+Das folgende Beispiel löscht den Eintragssatz namens *www* vom Typ A aus der Zone *contoso.com* in der Ressourcengruppe *MyResourceGroup*:
 
 ```azurecli
 az network dns record-set a delete --resource-group myresourcegroup --zone-name contoso.com --name www

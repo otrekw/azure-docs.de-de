@@ -4,11 +4,11 @@ description: Erfahren Sie mehr über Basisimages für Anwendungscontainerimages 
 ms.topic: article
 ms.date: 01/22/2019
 ms.openlocfilehash: 74e5fb81e3ef6f75b5ee2872ee44b99aae096fd8
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93025764"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009822"
 ---
 # <a name="about-base-image-updates-for-acr-tasks"></a>Informationen zu Basisimageaktualisierungen für ACR Tasks
 
@@ -47,24 +47,24 @@ Wenn sich das in der Anweisung `FROM` angegebene Basisimage in einem dieser Spei
 
 Die Zeit zwischen der Aktualisierung eines Basisimages und dem Auslösen des abhängigen Tasks hängt vom Speicherort des Basisimages ab:
 
-* **Basisimages aus einem öffentlichen Repository in Docker Hub oder MCR** : Bei Basisimages in öffentlichen Repositorys überprüft ein ACR-Task in einem zufälligen Intervall von 10 bis 60 Minuten auf Imageaktualisierungen. Abhängige Tasks werden entsprechend ausgeführt.
-* **Basisimages aus einer Azure Container Registry** : Bei Basisimages in Azure Container Registrys löst ein ACR-Task sofort eine Ausführung aus, wenn sein Basisimage aktualisiert wird. Das Basisimage kann sich in derselben ACR befinden, in der der Task ausgeführt wird, oder in einer anderen ACR in einer beliebigen Region.
+* **Basisimages aus einem öffentlichen Repository in Docker Hub oder MCR**: Bei Basisimages in öffentlichen Repositorys überprüft ein ACR-Task in einem zufälligen Intervall von 10 bis 60 Minuten auf Imageaktualisierungen. Abhängige Tasks werden entsprechend ausgeführt.
+* **Basisimages aus einer Azure Container Registry**: Bei Basisimages in Azure Container Registrys löst ein ACR-Task sofort eine Ausführung aus, wenn sein Basisimage aktualisiert wird. Das Basisimage kann sich in derselben ACR befinden, in der der Task ausgeführt wird, oder in einer anderen ACR in einer beliebigen Region.
 
 ## <a name="additional-considerations"></a>Weitere Überlegungen
 
-* **Basisimages für Anwendungsimages** : Derzeit verfolgt eine ACR-Aufgabe nur Basisimageaktualisierungen für Anwendungsimages ( *Runtime* ) nach. Basisimageaktualisierungen für Zwischenimages ( *Buildzeit* ), die in mehrstufigen Dockerfiles verwendet werden, werden nicht nachverfolgt.  
+* **Basisimages für Anwendungsimages**: Derzeit verfolgt eine ACR-Aufgabe nur Basisimageaktualisierungen für Anwendungsimages (*Runtime*) nach. Basisimageaktualisierungen für Zwischenimages (*Buildzeit*), die in mehrstufigen Dockerfiles verwendet werden, werden nicht nachverfolgt.  
 
-* **Standardmäßig aktiviert** : Wenn Sie eine ACR-Aufgabe mit dem Befehl [az acr task create][az-acr-task-create] erstellen, wird sie standardmäßig für die Auslösung von einer Aktualisierung des Basisimages *aktiviert*. Das heißt, die `base-image-trigger-enabled`-Eigenschaft wird auf TRUE festgelegt. Wenn Sie dieses Verhalten in einer Aufgabe deaktivieren möchten, ändern Sie den Wert der Eigenschaft in FALSE. Führen Sie beispielsweise den folgenden Befehl [az acr task update][az-acr-task-update] aus:
+* **Standardmäßig aktiviert**: Wenn Sie eine ACR-Aufgabe mit dem Befehl [az acr task create][az-acr-task-create] erstellen, wird sie standardmäßig für die Auslösung von einer Aktualisierung des Basisimages *aktiviert*. Das heißt, die `base-image-trigger-enabled`-Eigenschaft wird auf TRUE festgelegt. Wenn Sie dieses Verhalten in einer Aufgabe deaktivieren möchten, ändern Sie den Wert der Eigenschaft in FALSE. Führen Sie beispielsweise den folgenden Befehl [az acr task update][az-acr-task-update] aus:
 
   ```azurecli
   az acr task update --myregistry --name mytask --base-image-trigger-enabled False
   ```
 
-* **Zum Nachverfolgen von Abhängigkeiten auslösen** : Damit eine ACR-Aufgabe die Abhängigkeiten eines Containerimages (einschließlich des Basisimages) bestimmen und nachverfolgen kann, müssen Sie die Aufgabe zunächst **mindestens einmal** zum Erstellen des Images auslösen. Lösen Sie z. B. die Aufgabe mit dem Befehl [az acr task run][az-acr-task-run] manuell aus.
+* **Zum Nachverfolgen von Abhängigkeiten auslösen**: Damit eine ACR-Aufgabe die Abhängigkeiten eines Containerimages (einschließlich des Basisimages) bestimmen und nachverfolgen kann, müssen Sie die Aufgabe zunächst **mindestens einmal** zum Erstellen des Images auslösen. Lösen Sie z. B. die Aufgabe mit dem Befehl [az acr task run][az-acr-task-run] manuell aus.
 
-* **Stabiles Tag für Basisimage** : Damit eine Aufgabe bei der Aktualisierung des Basisimages ausgelöst wird, muss das Basisimage ein *stabiles* Tag enthalten, z. B. `node:9-alpine`. Dieses Tagging ist typisch für ein Basisimage, das mit Betriebssystem- und Frameworkpatches auf eine aktuelle stabile Version aktualisiert wird. Wenn das Basisimage mit einem neuen Versionstag aktualisiert wird, wird keine Aufgabe ausgelöst. Weitere Informationen zur Imagemarkierung finden Sie in der [Anleitung zu bewährten Methoden](container-registry-image-tag-version.md). 
+* **Stabiles Tag für Basisimage**: Damit eine Aufgabe bei der Aktualisierung des Basisimages ausgelöst wird, muss das Basisimage ein *stabiles* Tag enthalten, z. B. `node:9-alpine`. Dieses Tagging ist typisch für ein Basisimage, das mit Betriebssystem- und Frameworkpatches auf eine aktuelle stabile Version aktualisiert wird. Wenn das Basisimage mit einem neuen Versionstag aktualisiert wird, wird keine Aufgabe ausgelöst. Weitere Informationen zur Imagemarkierung finden Sie in der [Anleitung zu bewährten Methoden](container-registry-image-tag-version.md). 
 
-* **Andere Aufgabentrigger** : In einer durch Basisimageupdates ausgelösten Aufgabe können Sie Trigger auch auf Basis eines [Quellcodecommits](container-registry-tutorial-build-task.md) oder [Zeitplans](container-registry-tasks-scheduled.md) aktivieren. Ein Basisimageupdate kann auch eine [mehrstufige Aufgabe](container-registry-tasks-multi-step.md) auslösen.
+* **Andere Aufgabentrigger**: In einer durch Basisimageupdates ausgelösten Aufgabe können Sie Trigger auch auf Basis eines [Quellcodecommits](container-registry-tutorial-build-task.md) oder [Zeitplans](container-registry-tasks-scheduled.md) aktivieren. Ein Basisimageupdate kann auch eine [mehrstufige Aufgabe](container-registry-tasks-multi-step.md) auslösen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

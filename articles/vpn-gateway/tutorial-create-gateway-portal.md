@@ -5,17 +5,17 @@ author: cherylmc
 ms.author: cherylmc
 ms.service: vpn-gateway
 ms.topic: tutorial
-ms.date: 10/23/2020
-ms.openlocfilehash: 74000322372652b90e0d0db07d687f8e57c4f88e
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.date: 12/01/2020
+ms.openlocfilehash: 933b71d75eacdca015a38524870f25a345e76d22
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92518244"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96746164"
 ---
 # <a name="tutorial-create-and-manage-a-vpn-gateway-using-azure-portal"></a>Tutorial: Erstellen und Verwalten eines VPN-Gateways über das Azure-Portal
 
-Azure VPN-Gateways ermöglichen standortübergreifende Konnektivität zwischen lokalen Kundenumgebungen und Azure. In diesem Tutorial werden grundlegende Aufgaben der Azure VPN-Gatewaybereitstellung beschrieben, z.B. Erstellen und Verwalten eines VPN-Gateways.
+Azure VPN-Gateways ermöglichen standortübergreifende Konnektivität zwischen lokalen Kundenumgebungen und Azure. In diesem Tutorial werden grundlegende Aufgaben der Azure VPN-Gatewaybereitstellung beschrieben, z.B. Erstellen und Verwalten eines VPN-Gateways. Sie können ein Gateway auch mit der [Azure CLI](create-routebased-vpn-gateway-cli.md) oder mit [Azure PowerShell](create-routebased-vpn-gateway-powershell.md) erstellen.
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -41,9 +41,9 @@ Erstellen Sie ein VNet unter Verwendung der folgenden Werte:
 * **Ressourcengruppe:** TestRG1
 * **Name:** VNet1
 * **Region:** (USA) USA, Osten
-* **IPv4-Adressraum:** 10.1.0.0/16
+* **IPv4-Adressraum**: 10.1.0.0/16
 * **Subnetzname:** FrontEnd
-* **Subnetzadressraum:** 10.1.0.0/24
+* **Subnetzadressraum**: 10.1.0.0/24
 
 [!INCLUDE [Create a virtual network](../../includes/vpn-gateway-basic-vnet-rm-portal-include.md)]
 
@@ -55,15 +55,15 @@ Erstellen Sie ein virtuelles Netzwerkgateway mit den folgenden Werten:
 
 * **Name:** VNet1GW
 * **Region:** East US
-* **Gatewaytyp** : VPN
+* **Gatewaytyp**: VPN
 * **VPN-Typ:** routenbasiert
-* **SKU:** VpnGw1
-* **Generation:** Generation1
+* **SKU**: VpnGw1
+* **Generation**: Generation1
 * **Virtuelles Netzwerk:** VNet1
-* **Adressbereich für Gatewaysubnetz** : 10.1.255.0/27
-* **Öffentliche IP-Adresse** : Neu erstellen
+* **Adressbereich für Gatewaysubnetz**: 10.1.255.0/27
+* **Öffentliche IP-Adresse**: Neu erstellen
 * **Öffentliche IP-Adresse:** VNet1GWpip
-* **Aktiv/Aktiv-Modus aktivieren:** Disabled
+* **Aktiv/Aktiv-Modus aktivieren**: Disabled
 * **BGP konfigurieren:** Disabled
 
 [!INCLUDE [Create a vpn gateway](../../includes/vpn-gateway-add-gw-rm-portal-include.md)]
@@ -76,7 +76,7 @@ Sie können die öffentliche IP-Adresse des Gateways auf der Seite **Übersicht*
 
 :::image type="content" source="./media/tutorial-create-gateway-portal/address.png" alt-text="Seite „Übersicht“":::
 
-Klicken Sie auf den Link „Name/IP-Adresse“ neben **Öffentliche IP-Adresse** , um zusätzliche Informationen zum öffentlichen IP-Adressobjekt anzuzeigen.
+Klicken Sie auf den Link „Name/IP-Adresse“ neben **Öffentliche IP-Adresse**, um zusätzliche Informationen zum öffentlichen IP-Adressobjekt anzuzeigen.
 
 ## <a name="resize-a-gateway-sku"></a><a name="resize"></a>Ändern der Größe einer Gateway-SKU
 

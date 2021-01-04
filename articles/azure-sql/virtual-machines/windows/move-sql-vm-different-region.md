@@ -7,6 +7,7 @@ author: MashaMSFT
 tags: azure-resource-manager
 ms.assetid: aa5bf144-37a3-4781-892d-e0e300913d03
 ms.service: virtual-machines-sql
+ms.subservice: migration
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
@@ -14,12 +15,12 @@ ms.date: 07/30/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 131deabfbd29e4d55a3f34252e3ba68261872ca0
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 789554121af1c83d9077e6153ca9db01477bde25
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92785492"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97360151"
 ---
 # <a name="move-a-sql-server-vm-to-another-region-within-azure-with-azure-site-recovery"></a>Verschieben einer SQL Server-VM in eine andere Azure-Region mit Azure Site Recovery
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -98,7 +99,7 @@ In den folgenden Schritten wird erläutert, wie Sie Daten mithilfe von Azure Sit
 ## <a name="test-move-process"></a>Testen des Verschiebungsvorgangs
 In den folgenden Schritten wird gezeigt, wie Sie den Verschiebungsvorgang mithilfe von Azure Site Recovery testen. 
 
-1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem **Recovery Services-Tresor** , und wählen Sie **Replizierte Elemente** aus. 
+1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem **Recovery Services-Tresor**, und wählen Sie **Replizierte Elemente** aus. 
 1. Wählen Sie die SQL Server-VM aus, die Sie verschieben möchten, vergewissern Sie sich, dass der **Replikationsstatus** als **Fehlerfrei** angezeigt wird, und wählen Sie dann **Failover testen** aus. 
 
    ![Testen des Failovers für Ihre VM](./media/move-sql-vm-different-region/test-failover-of-replicated-vm.png)
@@ -109,19 +110,19 @@ In den folgenden Schritten wird gezeigt, wie Sie den Verschiebungsvorgang mithil
    >[!IMPORTANT]
    > Es wird empfohlen, ein separates Azure-VM-Netzwerk für den Failovertest zu verwenden. Verwenden Sie nicht das Produktionsnetzwerk, das beim Aktivieren der Replikation eingerichtet wurde und in das Sie Ihre VMs verschieben möchten. 
 
-1. Navigieren Sie zum Überwachen des Fortschritts zu Ihrem Tresor, wählen Sie unter **Überwachung** die Option **Site Recovery-Aufträge** aus, und wählen Sie dann den derzeit ausgeführten **Testfailover** -Auftrag aus.
+1. Navigieren Sie zum Überwachen des Fortschritts zu Ihrem Tresor, wählen Sie unter **Überwachung** die Option **Site Recovery-Aufträge** aus, und wählen Sie dann den derzeit ausgeführten **Testfailover**-Auftrag aus.
 
    ![Überwachen des Fortschritts des Failovertests](./media/move-sql-vm-different-region/monitor-failover-test-job.png)
 
-1. Navigieren Sie nach Abschluss des Tests im Portal zu **Virtuelle Computer** , und überprüfen Sie den neu erstellten virtuellen Computer. Stellen Sie sicher, dass die SQL Server-VM ausgeführt wird, die richtige Größe aufweist und mit dem richtigen Netzwerk verbunden ist. 
-1. Löschen Sie die VM, die im Rahmen des Tests erstellt wurde, da die Option **Failover** ausgegraut ist, bis die Ressourcen des Failovertests bereinigt wurden. Navigieren Sie zurück zum Tresor, wählen Sie **Replizierte Elemente** , anschließend die SQL Server-VM und dann **Testfailover bereinigen** aus. Erfassen und speichern Sie alle Beobachtungen im Zusammenhang mit dem Test im Abschnitt **Notizen** , und aktivieren Sie das Kontrollkästchen **Die Tests sind abgeschlossen. Löschen Sie die virtuellen Computer für das Testfailover** . Wählen Sie **OK** aus, um die Ressourcen nach dem Test zu bereinigen. 
+1. Navigieren Sie nach Abschluss des Tests im Portal zu **Virtuelle Computer**, und überprüfen Sie den neu erstellten virtuellen Computer. Stellen Sie sicher, dass die SQL Server-VM ausgeführt wird, die richtige Größe aufweist und mit dem richtigen Netzwerk verbunden ist. 
+1. Löschen Sie die VM, die im Rahmen des Tests erstellt wurde, da die Option **Failover** ausgegraut ist, bis die Ressourcen des Failovertests bereinigt wurden. Navigieren Sie zurück zum Tresor, wählen Sie **Replizierte Elemente**, anschließend die SQL Server-VM und dann **Testfailover bereinigen** aus. Erfassen und speichern Sie alle Beobachtungen im Zusammenhang mit dem Test im Abschnitt **Notizen**, und aktivieren Sie das Kontrollkästchen **Die Tests sind abgeschlossen. Löschen Sie die virtuellen Computer für das Testfailover**. Wählen Sie **OK** aus, um die Ressourcen nach dem Test zu bereinigen. 
 
    ![Bereinigen von Elementen nach dem Failovertest](./media/move-sql-vm-different-region/cleanup-test-items.png)
 
 ## <a name="move-the-sql-server-vm"></a>Verschieben der SQL Server-VM 
 In den folgenden Schritten wird gezeigt, wie Sie die SQL Server-VM aus der Quellregion in die Zielregion verschieben. 
 
-1. Navigieren Sie zum **Recovery Services** -Tresor, wählen Sie **Replizierte Elemente** , anschließend die VM und dann **Failover** aus. 
+1. Navigieren Sie zum **Recovery Services**-Tresor, wählen Sie **Replizierte Elemente**, anschließend die VM und dann **Failover** aus. 
 
    ![Initiieren des Failovers](./media/move-sql-vm-different-region/initiate-failover.png)
 
@@ -130,8 +131,8 @@ In den folgenden Schritten wird gezeigt, wie Sie die SQL Server-VM aus der Quell
 1. Wählen Sie **OK** aus, um das Failover zu starten.
 1. Sie können den Failovervorgang auf der gleichen Seite **Site Recovery-Aufträge** überwachen, die Sie beim Überwachen des Failovertests im vorherigen Abschnitt verwendet haben. 
 1. Vergewissern Sie sich nach Abschluss des Auftrags, dass die SQL Server-VM wie erwartet in der Zielregion angezeigt wird. 
-1. Navigieren Sie zurück zum Tresor, wählen Sie **Replizierte Elemente** , anschließend die SQL Server-VM und dann **Commit** aus, um den Verschiebungsvorgang in die Zielregion abzuschließen. Warten Sie, bis der Commitauftrag abgeschlossen ist. 
-1. Registrieren Sie Ihre SQL Server-VM beim SQL-VM-Ressourcenanbieter, um die Verwaltbarkeit von **virtuellen SQL-Computern** im Azure-Portal sowie Features, die dem Ressourcenanbieter zugeordnet sind, zu aktivieren. Weitere Informationen finden Sie unter [Registrieren der SQL Server-VM beim SQL-VM-Ressourcenanbieter](sql-vm-resource-provider-register.md). 
+1. Navigieren Sie zurück zum Tresor, wählen Sie **Replizierte Elemente**, anschließend die SQL Server-VM und dann **Commit** aus, um den Verschiebungsvorgang in die Zielregion abzuschließen. Warten Sie, bis der Commitauftrag abgeschlossen ist. 
+1. Registrieren Sie Ihre SQL Server-VM mit der Erweiterung für den SQL-IaaS-Agent, um die Verwaltbarkeit von **virtuellen SQL-Computern** im Azure-Portal sowie die Nutzung von Features zu ermöglichen, die der Erweiterung zugeordnet sind. Weitere Informationen finden Sie unter [Registrieren der SQL Server-VM mit der Erweiterung für den SQL-IaaS-Agent](sql-agent-extension-manually-register-single-vm.md). 
 
   > [!WARNING]
   > SQL Server-Datenkonsistenz ist nur bei App-konsistenten Momentaufnahmen sichergestellt. Die Momentaufnahme **Letzte Verarbeitung** kann nicht für SQL Server-Failover verwendet werden, da mit einer Momentaufnahme der Wiederherstellung nach einem Absturz keine SQL Server-Datenkonsistenz gewährleistet werden kann. 
@@ -139,7 +140,7 @@ In den folgenden Schritten wird gezeigt, wie Sie die SQL Server-VM aus der Quell
 ## <a name="clean-up-source-resources"></a>Bereinigen der Quellressourcen
 Entfernen Sie die SQL Server-VM aus dem Tresor, und löschen Sie alle nicht benötigten zugehörigen Ressourcen, um Abrechnungsgebühren zu vermeiden. 
 
-1. Navigieren Sie zurück zum **Site Recovery** -Tresor, wählen Sie **Replizierte Elemente** aus, und wählen Sie dann die SQL Server-VM aus. 
+1. Navigieren Sie zurück zum **Site Recovery**-Tresor, wählen Sie **Replizierte Elemente** aus, und wählen Sie dann die SQL Server-VM aus. 
 1. Wählen Sie **Replikation deaktivieren** aus. Wählen Sie einen Grund zum Deaktivieren des Schutzes aus, und wählen Sie dann **OK** aus, um die Replikation zu deaktivieren. 
 
    >[!IMPORTANT]

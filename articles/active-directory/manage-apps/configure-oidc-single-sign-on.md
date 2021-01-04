@@ -11,13 +11,13 @@ ms.workload: identity
 ms.date: 10/19/2020
 ms.author: kenwith
 ms.reviewer: arajpathak7
-ms.custom: contperfq2
-ms.openlocfilehash: 5fc0156b9b832f44fd38292ef2b9a25e39401610
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: d1acdc47d5a702faf7d5dbd5f2a4ea6826e97981
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348660"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033237"
 ---
 # <a name="understand-oidc-based-single-sign-on"></a>Grundlegendes zum OIDC-basierten einmaligen Anmelden
 In der [Schnellstartserie](view-applications-portal.md) zur Anwendungsverwaltung haben Sie gelernt, wie Sie Azure AD als Identitätsanbieter (Identity Provider, IdP) für eine Anwendung verwenden. In diesem Artikel werden die Apps ausführlicher beschrieben, die den OpenID Connect-Standard zum Implementieren von einmaligem Anmelden verwenden. 
@@ -34,6 +34,8 @@ Das Schöne beim Hinzufügen einer App, die den OIDC-Standard für einmaliges An
 Hinzufügen einer OIDC-basierten App in Azure Active Directory
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4HoNI]
+
+Weitere Informationen zur Benutzer- und Administratoreinwilligung finden Sie unter [Grundlegendes zur Benutzer- und Administratoreinwilligung](../develop/howto-convert-app-to-be-multi-tenant.md#understand-user-and-admin-consent).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

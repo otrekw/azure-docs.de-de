@@ -11,12 +11,12 @@ author: MarkusVi
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9e6b03a2f9dd0089b1112000804e46f3d214cd3c
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 2bdf3a763dc71eb842496775b6cc91b8ca39b4b3
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93131291"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96343840"
 ---
 # <a name="tutorial-configure-the-log-analytics-wizard"></a>Tutorial: Konfigurieren des Protokollanalyseassistenten
 
@@ -172,7 +172,7 @@ Pivotieren der Ergebnisse nach Vorgangsname
 
 Zusammenführen von Überprüfungs- und Anmeldeprotokollen mit einem inneren Join:
 
-`AuditLogs |where OperationName contains "Add User" |extend UserPrincipalName = tostring(TargetResources[0].userPrincipalName) | |project TimeGenerated , UserPrincipalName |join kind = inner (SigninLogs) on UserPrincipalName |summarize arg_min(TimeGenerated, *) by UserPrincipalName |extend SigninDate = TimeGenerated` 
+`AuditLogs |where OperationName contains "Add User" |extend UserPrincipalName = tostring(TargetResources[0].userPrincipalName) | |project TimeGenerated, UserPrincipalName |join kind = inner (SigninLogs) on UserPrincipalName |summarize arg_min(TimeGenerated, *) by UserPrincipalName |extend SigninDate = TimeGenerated` 
 
 
 Anzeigen der Anzahl von Anmeldungen nach Client-App-Typ:

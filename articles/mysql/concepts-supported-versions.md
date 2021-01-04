@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/3/2020
-ms.openlocfilehash: ed767055c1227d39fc29ac77a44c96b19030ad28
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 8033117d9e3c31f8aa9bba06afb7c3b1b7bba67f
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94535859"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95751027"
 ---
 # <a name="supported-azure-database-for-mysql-server-versions"></a>Unterstützte Azure-Datenbank für MySQL-Serverversionen
 
@@ -46,7 +46,7 @@ Weitere Informationen zu Verbesserungen und Fehlerbehebungen in dieser Version f
 ## <a name="managing-updates-and-upgrades"></a>Verwalten von Updates und Upgrades
 Das Patchen von Versionsupdates zur Fehlerbehebung wird vom Dienst automatisch verwaltet. Beispiel: 5.7.20 bis 5.7.21.  
 
-Zurzeit werden Upgrades von Neben- und Hauptversionen nicht unterstützt. Ein Upgrade von MySQL 5.6 auf MySQL 5.7 wird beispielsweise nicht unterstützt. Wenn Sie von 5.6 auf 5.7 aktualisieren möchten, führen Sie eine [Sicherung und Wiederherstellung](./concepts-migrate-dump-restore.md) auf einem Server aus, der mit der neuen Modulversion erstellt wurde.
+Ein Upgrade der Hauptversion wird zurzeit vom Dienst für Upgrades von MySQL v5.6 auf v5.7 unterstützt. Weitere Einzelheiten finden Sie unter [Upgraden von Hauptversionen](how-to-major-version-upgrade.md). Wenn Sie von 5.7 auf 8.0 upgraden möchten, sollten Sie eine [Sicherung und dann die Wiederherstellung](./concepts-migrate-dump-restore.md) auf einem Server ausführen, der mit der neuen Engine-Version erstellt wurde.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

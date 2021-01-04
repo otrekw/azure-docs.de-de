@@ -7,18 +7,24 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/10/2020
+ms.date: 11/24/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 498934c01970b296c1491e7ccd36ad947324306a
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 4390291eb96c11b8fb7fdb48eb92abaf802b80c0
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445335"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96030780"
 ---
 # <a name="create-a-suggester-to-enable-autocomplete-and-suggested-results-in-a-query"></a>Erstellen einer Vorschlagsfunktion zum Ermöglichen von AutoVervollständigen und vorgeschlagenen Ergebnissen in einer Abfrage
 
-In Azure Cognitive Search wird die Suche während der Eingabe über ein Konstrukt mit einer **Vorschlagsfunktion** ermöglicht, das einem [Suchindex](search-what-is-an-index.md) hinzugefügt wird. Eine Vorschlagsfunktion unterstützt zwei Umgebungen: *AutoVervollständigen* zum Vervollständigen einer partiellen Eingabe zu einem Gesamtbegriff für eine Abfrage und *Vorschläge*, die einen direkten Aufruf eines bestimmten Ergebnisses ermöglichen. AutoVervollständigen führt zu einer Abfrage. Vorschläge führen zu einem übereinstimmenden Dokument.
+In Azure Cognitive Search ermöglicht eine *Vorschlagsfunktion* die Suche während der Eingabe. Ein Vorschlag ist eine interne Datenstruktur, die aus einer Feldsammlung besteht. Die Felder werden einer zusätzlichen Tokenisierung unterzogen, wobei Präfixsequenzen zur Unterstützung von Übereinstimmungen bei Teilausdrücken generiert werden.
+
+Wenn eine Vorschlagsfunktion z. B. ein Feld „Stadt“ enthält, werden resultierende Präfixkombinationen von „Sea“, „Seat“, „seatt“ und „seattl“ für den Begriff „Seattle“ erstellt. Präfixe werden in invertierten Indizes gespeichert – eines für jedes Feld, das in der Feldsammlung der Vorschlagsfunktion angegeben ist.
+
+## <a name="typeahead-experiences-in-cognitive-search"></a>Vorschlagssuche in Cognitive Search
+
+Eine Vorschlagsfunktion unterstützt zwei Umgebungen: *AutoVervollständigen* zum Vervollständigen einer partiellen Eingabe zu einem Gesamtbegriff für eine Abfrage und *Vorschläge*, die einen direkten Aufruf eines bestimmten Ergebnisses ermöglichen. AutoVervollständigen führt zu einer Abfrage. Vorschläge führen zu einem übereinstimmenden Dokument.
 
 Der folgende Screenshot aus dem Beispiel [Erstellen Ihrer ersten App in C#](tutorial-csharp-type-ahead-and-suggestions.md) veranschaulicht beide Varianten. AutoVervollständigen erwartet einen potenziellen Begriff und ergänzt etwa „Zw“ mit „illing“. Vorschläge sind Minisuchergebnisse, bei denen ein Feld wie „Hotelname“ für ein entsprechendes Hotelsuchdokument aus dem Index steht. Für Vorschläge können Sie alle Felder bereitstellen, die beschreibende Informationen enthalten.
 
@@ -32,15 +38,13 @@ Sie können diese Features einzeln oder zusammen verwenden. Um dieses Verhalten 
 
 Die Unterstützung der Suche während der Eingabe wird auf Feldebene für Zeichenfolgenfelder aktiviert. Sie können beide Verhaltensweisen für Eingabevorschläge in derselben Suchlösung implementieren, wenn Sie ein ähnliches Erlebnis wie im Screenshot wünschen. Beide Anforderungen zielen auf die *Dokumentensammlung* eines bestimmten Index ab, und die Antworten werden zurückgegeben, nachdem ein Benutzer eine Zeichenfolge aus mindestens 3 Zeichen eingegeben hat.
 
-## <a name="what-is-a-suggester"></a>Was ist eine Vorschlagsfunktion?
-
-Bei einer Vorschlagsfunktion handelt es sich um eine interne Datenstruktur, die das Verhalten einer Suche während der Eingabe unterstützt, indem Präfixe für die Übereinstimmungssuche bei partiellen Abfragen gespeichert werden. Ähnlich wie bei tokenisierten Begriffen werden Präfixe in invertierten Indizes gespeichert – eines für jedes Feld, das in der Feldsammlung der Vorschlagsfunktion angegeben ist.
-
 ## <a name="how-to-create-a-suggester"></a>Erstellen einer Vorschlagsfunktion
 
 Um eine Vorschlagsfunktion zu erstellen, fügen Sie sie einer [Indexdefinition](/rest/api/searchservice/create-index) hinzu. Eine Vorschlagsfunktion erhält einen Namen und eine Sammlung von Feldern, über die Typeahead aktiviert wird. [Legen Sie die einzelnen Eigenschaften fest](#property-reference). Der beste Zeitpunkt zum Erstellen einer Vorschlagsfunktion ist bei der Definition des Felds, für das sie verwendet wird.
 
 + Verwenden Sie nur Zeichenfolgenfelder.
+
++ Wenn das Zeichenfolgenfeld Teil eines komplexen Typs ist (z. B. ein Ort-Feld innerhalb einer Adresse), schließen Sie das übergeordnete Element in das Feld ein: `"Address/City"` (REST und C# und Python) oder `["Address"]["City"]` (JavaScript).
 
 + Verwenden Sie für das Feld das standardmäßige Lucene-Standardanalysetool (`"analyzer": null`) oder ein [Sprachanalysetool](index-add-language-analyzers.md) (z. B. `"analyzer": "en.Microsoft"`).
 
@@ -117,7 +121,7 @@ Fügen Sie Vorschlagsfunktionen in der REST-API über [Index erstellen](/rest/ap
 
 ## <a name="create-using-net"></a>Erstellen mit .NET
 
-Definieren Sie in C# ein [SearchSuggester-Objekt](/dotnet/api/azure.search.documents.indexes.models.searchsuggester). `Suggesters` ist eine Sammlung für ein SearchIndex-Objekt, es akzeptiert aber nur ein Element. 
+Definieren Sie in C# ein [SearchSuggester-Objekt](/dotnet/api/azure.search.documents.indexes.models.searchsuggester). `Suggesters` ist eine Sammlung für ein SearchIndex-Objekt, es akzeptiert aber nur ein Element. Fügen Sie eine Vorschlagsfunktion zur Indexdefinition hinzu.
 
 ```csharp
 private static void CreateIndex(string indexName, SearchIndexClient indexClient)
@@ -125,12 +129,9 @@ private static void CreateIndex(string indexName, SearchIndexClient indexClient)
     FieldBuilder fieldBuilder = new FieldBuilder();
     var searchFields = fieldBuilder.Build(typeof(Hotel));
 
-    //var suggester = new SearchSuggester("sg", sourceFields = "HotelName", "Category");
-
     var definition = new SearchIndex(indexName, searchFields);
 
-    var suggester = new SearchSuggester("sg", new[] { "HotelName", "Category"});
-
+    var suggester = new SearchSuggester("sg", new[] { "HotelName", "Category", "Address/City", "Address/StateProvince" });
     definition.Suggesters.Add(suggester);
 
     indexClient.CreateOrUpdateIndex(definition);

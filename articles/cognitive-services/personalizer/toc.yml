@@ -94,7 +94,7 @@
         - name: Go
           items:
             - name: SDK
-              href: 'https://github.com/Azure/azure-sdk-for-go/tree/master/services/preview/personalizer/v1.0/personalizer'
+              href: 'https://github.com/Azure/azure-sdk-for-go/tree/master/services/preview'
         - name: Node.js
           items:
             - name: Verweis
@@ -115,7 +115,7 @@
       href: troubleshooting.md
     - name: Regionale Verfügbarkeit
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
-    - name: Kompatibilität
+    - name: Compliance
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Verschlüsselung
       href: personalizer-encryption-of-data-at-rest.md

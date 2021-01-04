@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: how-to
-ms.date: 09/10/2020
+ms.date: 11/23/2020
 ms.author: alkohli
-ms.openlocfilehash: ad8a5a23361e721fd5d8d55d3555f51def94e768
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: b132368982e0013bfe6f3ffd52e7aacb7b1274eb
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94442020"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "96003179"
 ---
 # <a name="tutorial-create-export-order-for-azure-data-box-preview"></a>Tutorial: Erstellen eines Exportauftrags für Azure Data Box (Vorschau)
 
@@ -72,7 +72,7 @@ Führen Sie die folgenden Schritte im Azure-Portal aus, um ein Gerät zu bestell
     |Subscription     | Wählen Sie ein EA-, CSP- oder Azure Sponsorship-Abonnement für den Data Box-Dienst aus. <br> Das Abonnement ist mit Ihrem Abrechnungskonto verknüpft.       |
     |Resource group     |    Wählen Sie eine vorhandene Ressourcengruppe aus. <br> Eine Ressourcengruppe ist ein logischer Container für die Ressourcen, die zusammen verwaltet oder bereitgestellt werden können.         |
     |Azure-Quellregion    |    Wählen Sie die Azure-Region aus, in der sich Ihre Daten zurzeit befinden.         |
-    |Zielland     |     Wählen Sie das Land aus, wohin Sie das Gerät versenden möchten.        |
+    |Zielland     |     Wählen Sie das Land/die Region aus, in das/die das Gerät versendet werden soll.        |
 
    ![Auswählen Ihrer Data Box-Einstellungen](media/data-box-deploy-export-ordered/azure-data-box-export-order-data-box-settings.png)
 
@@ -80,7 +80,7 @@ Führen Sie die folgenden Schritte im Azure-Portal aus, um ein Gerät zu bestell
 
    ![Auswählen der Data Box-Kapazität](media/data-box-deploy-export-ordered/azure-data-box-export-order-capacity.png)
 
-6. Geben Sie in **Bestellung** die **Grundeinstellungen** für die Bestellung an. Geben Sie die folgenden Informationen ein, oder wählen Sie sie aus, und wählen Sie anschließend **Weiter** aus.
+6. Geben Sie in **Bestellung** die **Grundeinstellungen** für die Bestellung an. Geben Sie die folgenden Informationen ein, oder wählen Sie sie aus.
 
     |Einstellung  |Wert  |
     |---------|---------|
@@ -88,13 +88,13 @@ Führen Sie die folgenden Schritte im Azure-Portal aus, um ein Gerät zu bestell
     |Resource group | Die Ressourcengruppe, die Sie zuvor ausgewählt haben. |
     |Name des Exportauftrags     |  Geben Sie einen Anzeigenamen an, um die Bestellung nachzuverfolgen. <br> Der Name kann zwischen 3 und 24 Zeichen lang sein und darf nur Buchstaben, Zahlen und Bindestriche enthalten. <br> Der Name muss mit einem Buchstaben oder einer Zahl beginnen und enden.      |
 
-    ![Grundeinstellungen für den Exportauftrag](media/data-box-deploy-export-ordered/azure-data-box-export-order-storage-account-export-type.png)
+    ![Grundeinstellungen für den Exportauftrag](media/data-box-deploy-export-ordered/azure-data-box-export-order-basics-order-name.png)
 
     Klicken Sie auf **Weiter: Datenauswahl**, um fortzufahren.
 
 7. Wählen Sie in **Datenauswahl** die Option **Speicherkonto und Exporttyp hinzufügen** aus.
 
-    ![Hinzufügen von Speicherkonto und Exporttyp](media/data-box-deploy-export-ordered/azure-data-box-export-order-basics.png)
+    ![Hinzufügen von Speicherkonto und Exporttyp](media/data-box-deploy-export-ordered/azure-data-box-export-order-basics-add-storage.png)
 
 8. Geben Sie in **Exportoption auswählen** die Exportoptiondetails an. Geben Sie die folgenden Informationen ein, oder wählen Sie sie aus, und wählen Sie anschließend **Hinzufügen** aus.
 
@@ -115,15 +115,88 @@ Führen Sie die folgenden Schritte im Azure-Portal aus, um ein Gerät zu bestell
 
    Ein Beispiel für die XML-Eingabe finden Sie unter [Beispiel für eine XML-Datei](data-box-deploy-export-ordered.md#sample-xml-file).
 
-9. Überprüfen Sie Ihre Einstellungen in **Datenauswahl**, und wählen Sie **Weiter: Sicherheit>** .
+9. Überprüfen Sie Ihre Einstellungen in **Datenauswahl**, und wählen Sie **Weiter: Sicherheit>** , um den Vorgang fortzusetzen.
 
    ![Exportreihenfolge, Datenauswahl](media/data-box-deploy-export-ordered/azure-data-box-export-order-data-selection.png)
 
-10. Wenn Sie die softwarebasierte doppelte Verschlüsselung aktivieren möchten, wählen Sie unter **Sicherheit** die Option **Doppelte Verschlüsselung für den Auftrag aktivieren**. 
+    Auf dem Bildschirm **Sicherheit** können Sie Ihren eigenen Verschlüsselungsschlüssel verwenden und die doppelte Verschlüsselung aktivieren.
+
+    Alle Einstellungen auf dem Bildschirm **Sicherheit** sind optional. Wenn Sie keine der Einstellungen ändern, werden die Standardeinstellungen verwendet.
+
+    ![Bildschirm „Sicherheit“ für den Assistenten für Data Box-Importaufträge](media/data-box-deploy-export-ordered/data-box-export-security-01.png)
+
+10. Erweitern Sie die Option **Verschlüsselungstyp**, wenn Sie Ihren eigenen kundenseitig verwalteten Schlüssel nutzen möchten, um den Hauptschlüssel zum Entsperren Ihrer neuen Ressource zu schützen.
+
+    Das Konfigurieren eines kundenseitig verwalteten Schlüssels für Azure Data Box ist optional. Standardmäßig verwendet Data Box einen von Microsoft verwalteten Schlüssel zum Schützen des Hauptschlüssels für die Entsperrung.
+
+    Ein kundenseitig verwalteter Schlüssel wirkt sich nicht darauf aus, wie Daten auf dem Gerät verschlüsselt werden. Der Schlüssel wird nur verwendet, um den Hauptschlüssel zum Entsperren des Geräts zu verschlüsseln.
+
+    Wenn Sie keinen kundenseitig verwalteten Schlüssel verwenden möchten, fahren Sie mit Schritt 16 fort.
+
+    ![Bildschirm „Sicherheit“ mit Einstellungen für den Verschlüsselungstyp](./media/data-box-deploy-export-ordered/customer-managed-key-01.png)
+
+11. Wählen Sie **Kundenseitig verwalteter Schlüssel** als Schlüsseltyp aus. Wählen Sie anschließend die Option **Schlüsseltresor und Schlüssel auswählen** aus.
+   
+    ![Bildschirm „Sicherheit“ mit Einstellungen für einen kundenseitig verwalteten Schlüssel](./media/data-box-deploy-export-ordered/customer-managed-key-02.png)
+
+12. Auf dem Bildschirm **Schlüssel aus Azure Key Vault auswählen** wird das Abonnementfeld automatisch aufgefüllt.
+
+    - Für **Schlüsseltresor** können Sie einen vorhandenen Schlüsseltresor aus der Dropdownliste auswählen.
+
+      ![Auswählen des Schlüssels auf dem Azure Key Vault-Bildschirm](./media/data-box-deploy-export-ordered/customer-managed-key-03.png)
+
+    - Sie können auch **Neu erstellen** auswählen, um einen neuen Schlüsseltresor zu erstellen. Geben Sie auf dem Bildschirm **Schlüsseltresor erstellen** die Ressourcengruppe und einen Schlüsseltresornamen ein. Stellen Sie sicher, dass die Optionen **Vorläufiges Löschen** und **Löschschutz** aktiviert sind. Übernehmen Sie für alle anderen Einstellungen die Standardwerte, und wählen Sie dann **Überprüfen und erstellen** aus.
+
+      ![Erstellen von neuen Azure Key Vault-Einstellungen](./media/data-box-deploy-export-ordered/customer-managed-key-04.png)
+
+      Überprüfen Sie die Informationen für Ihren Schlüsseltresor, und wählen Sie **Erstellen** aus. Warten Sie einige Minuten, bis die Erstellung des Schlüsseltresors abgeschlossen ist.
+
+      ![Bildschirm mit Übersicht für neuen Schlüsseltresor](./media/data-box-deploy-export-ordered/customer-managed-key-05.png)
+
+13. Auf dem Bildschirm **Schlüssel aus Azure Key Vault auswählen** können Sie einen Schlüssel auswählen, der im Schlüsseltresor vorhanden ist.
+
+    ![Auswählen eines vorhandenen Schlüssels aus Azure Key Vault](./media/data-box-deploy-export-ordered/customer-managed-key-06.png)
+
+    Wählen Sie die Option **Neu erstellen** aus, wenn Sie einen neuen Schlüssel erstellen möchten. Sie müssen einen RSA-Schlüssel verwenden. Der Wert für die Größe kann „2048“ oder höher lauten. Geben Sie einen Namen für Ihren neuen Schlüssel ein, behalten Sie ansonsten die Standardeinstellungen bei, und wählen Sie **Erstellen** aus.
+
+      ![Option zum Erstellen eines neuen Schlüssels](./media/data-box-deploy-export-ordered/customer-managed-key-07.png)
+
+      Sie werden benachrichtigt, wenn der Schlüssel in Ihrem Schlüsseltresor erstellt wurde.
+
+14. Wählen Sie die **Version** des zu verwendenden Schlüssels und dann die Option **Auswählen** aus.
+
+      ![Neu erstellter Schlüssel im Schlüsseltresor](./media/data-box-deploy-export-ordered/customer-managed-key-08.png)
+
+    Wählen Sie die Option **Neu erstellen** aus, wenn Sie eine neue Schlüsselversion erstellen möchten.
+
+    ![Öffnen eines Dialogfelds zum Erstellen einer neuen Schlüsselversion](./media/data-box-deploy-export-ordered/customer-managed-key-08-a.png)
+
+    Wählen Sie auf dem Bildschirm **Neuen Schlüssel erstellen** Einstellungen für die neue Schlüsselversion und dann die Option **Erstellen** aus.
+
+    ![Erstellen einer neuen Schlüsselversion](./media/data-box-deploy-export-ordered/customer-managed-key-08-b.png)
+
+    Auf dem Bildschirm **Sicherheit** werden in den Einstellungen unter **Verschlüsselungstyp** Ihr Schlüsseltresor und der Schlüssel angezeigt.
+
+    ![Schlüssel und Schlüsseltresor für einen kundenseitig verwalteten Schlüssel](./media/data-box-deploy-export-ordered/customer-managed-key-09.png)
+
+15. Wählen Sie eine Benutzeridentität aus, die Sie zum Verwalten des Zugriffs auf diese Ressource verwenden. Wählen Sie die Option **Benutzeridentität auswählen** aus. Wählen Sie im Bereich auf der rechten Seite das zu verwendende Abonnement und die verwaltete Identität aus. Wählen Sie anschließend **Auswählen** aus.
+
+    Eine vom Benutzer zugewiesene verwaltete Identität ist eine eigenständige Azure-Ressource, die zum Verwalten mehrerer Ressourcen verwendet werden kann. Weitere Informationen finden Sie unter [Arten von verwalteten Identitäten](/azure/active-directory/managed-identities-azure-resources/overview).  
+
+    Befolgen Sie die Anleitung unter [Erstellen, Auflisten, Löschen oder Zuweisen einer Rolle zu einer vom Benutzer zugewiesenen verwalteten Identität über das Azure-Portal](../../articles/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md), wenn Sie eine neue verwaltete Identität erstellen müssen.
+    
+    ![Auswählen einer Benutzeridentität](./media/data-box-deploy-export-ordered/customer-managed-key-10.png)
+
+    Die Benutzeridentität wird in den Einstellungen unter **Verschlüsselungstyp** angezeigt.
+
+    Sie können die Einstellungen unter **Verschlüsselungstyp** jetzt reduzieren.
+
+    ![Ausgewählte Benutzeridentität in den Einstellungen unter „Verschlüsselungstyp“](./media/data-box-deploy-export-ordered/customer-managed-key-11.png)
+
+16. Wenn Sie die softwarebasierte doppelte Verschlüsselung aktivieren möchten, erweitern Sie **Doppelte Verschlüsselung (für Hochsicherheitsumgebungen)** , und wählen Sie die Option **Doppelte Verschlüsselung für den Auftrag aktivieren** aus. 
 
     Die softwarebasierte Verschlüsselung wird zusätzlich zur AES-256-Bit-Verschlüsselung der Daten auf der Data Box ausgeführt.
 
-   
     > [!NOTE]
     > Wenn Sie diese Option aktivieren, können die Auftragsverarbeitung und das Kopieren von Daten länger dauern. Nach dem Erstellen des Auftrags können Sie diese Option nicht mehr ändern.
 

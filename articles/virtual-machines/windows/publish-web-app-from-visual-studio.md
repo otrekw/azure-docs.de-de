@@ -10,12 +10,12 @@ ms.workload: azure-vs
 ms.topic: how-to
 ms.date: 11/03/2017
 ms.author: ghogen
-ms.openlocfilehash: bdc03e8c136606ab7768705b0c8dbcc97782966f
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 7cf2474c9ca005d85cea28f2b8fa1e23836b191f
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "87088392"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96487557"
 ---
 # <a name="publish-an-aspnet-web-app-to-an-azure-vm-from-visual-studio"></a>Veröffentlichen einer ASP.NET-Web-App auf einer Azure-VM aus Visual Studio
 
@@ -26,7 +26,7 @@ Damit Sie mit Visual Studio ein ASP.NET-Projekt auf einer Azure-VM veröffentlic
 
 - Der Computer muss für das Ausführen einer ASP.NET-Webanwendung konfiguriert sein, und WebDeploy muss darauf installiert sein. Weitere Informationen finden Sie unter [Erstellen einer ASP.NET-VM mit WebDeploy](https://github.com/aspnet/Tooling/blob/AspNetVMs/docs/create-asp-net-vm-with-webdeploy.md).
 
-- Für den virtuellen Computer muss ein DNS-Name konfiguriert sein. Weitere Informationen finden Sie unter [Erstellen eines vollqualifizierten Domänennamens im Azure-Portal für eine Windows-VM](portal-create-fqdn.md).
+- Für den virtuellen Computer muss ein DNS-Name konfiguriert sein. Weitere Informationen finden Sie unter [Erstellen eines vollqualifizierten Domänennamens im Azure-Portal für eine Windows-VM](../create-fqdn.md).
 
 ## <a name="publish-your-aspnet-web-app-to-the-azure-vm-using-visual-studio"></a>Veröffentlichen der ASP.NET-Web-App auf der Azure-VM mit Visual Studio
 Der folgende Abschnitt beschreibt das Veröffentlichen einer vorhandenen ASP.NET-Webanwendung auf einem virtuellen Azure-Computer.

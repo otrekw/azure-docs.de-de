@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2019
-ms.openlocfilehash: 7e1deb11eb8ae754198cae5be7ecf7150262a61e
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: a817c12a367d7c14f693389920e49b368a35cc06
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94411387"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95522871"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>Optimieren von Protokollabfragen in Azure Monitor
 Azure Monitor-Protokolle verwendet [Azure Data Explorer (ADX)](/azure/data-explorer/), um Protokolldaten zu speichern und Abfragen zum Analysieren dieser Daten auszuführen. Es werden die ADX-Cluster für Sie erstellt, verwaltet und gepflegt sowie für Ihre Protokollanalyse-Workload optimiert. Wenn Sie eine Abfrage ausführen, wird diese optimiert und an den entsprechenden ADX-Cluster weitergeleitet, der die Arbeitsbereichsdaten speichert. Sowohl Azure Monitor-Protokolle als auch Azure Data Explorer nutzen eine Vielzahl automatischer Mechanismen zur Abfrageoptimierung. Automatische Optimierungen bieten bereits eine deutliche Steigerung, aber in einigen Fällen können Sie die Abfrageleistung erheblich verbessern. In diesem Artikel werden Leistungsaspekte sowie verschiedene Verfahren zur Behebung von Leistungsproblemen erläutert.
@@ -463,7 +463,7 @@ Hier einige Abfrageverhalten, die zur einer Verringerung der Parallelität führ
 - Verwendung von Serialisierungs- und Fensterfunktionen, z. B. dem [serialize-Operator](/azure/kusto/query/serializeoperator), [next()](/azure/kusto/query/nextfunction), [prev()](/azure/kusto/query/prevfunction) und den [row](/azure/kusto/query/rowcumsumfunction)-Funktionen. In einigen dieser Fälle können Zeitreihen- und Benutzeranalysefunktionen verwendet werden. Eine ineffiziente Serialisierung kann auch auftreten, wenn die folgenden Operatoren nicht am Ende der Abfrage verwendet werden: [range](/azure/kusto/query/rangeoperator), [sort](/azure/kusto/query/sortoperator), [order](/azure/kusto/query/orderoperator), [top](/azure/kusto/query/topoperator), [top-hitters](/azure/kusto/query/tophittersoperator), [getschema](/azure/kusto/query/getschemaoperator).
 -    Durch Verwendung der Aggregationsfunktion [dcount()](/azure/kusto/query/dcount-aggfunction) wird das System gezwungen, eine zentrale Kopie der eindeutigen Werte zu verwenden. Wenn die Datenmenge groß ist, sollten Sie die optionalen Parameter der dcount-Funktion verwenden, um die Genauigkeit zu verringern.
 -    In vielen Fällen verringert der [join](/azure/kusto/query/joinoperator?pivots=azuremonitor)-Operator die Gesamtparallelität. Prüfen Sie Shuffle-Join als Alternative, wenn die Leistung problematisch ist.
--    Bei Abfragen mit Ressourcenbereich können sich die RBAC-Prüfungen vor der Ausführung in Situationen, in denen eine große Anzahl von Azure-Rollenzuweisungen vorliegt, verzögern. Dies kann zu längeren Überprüfungen führen, was wiederum eine geringere Parallelität bewirkt. Beispielsweise wird eine Abfrage für ein Abonnement ausgeführt, bei dem Tausende von Ressourcen vorhanden sind, und jede Ressource verfügt über viele Rollenzuweisungen auf der Ressourcenebene und nicht auf Ebene des Abonnements oder der Ressourcengruppe.
+-    Bei Abfragen im Ressourcenbereich können sich die Kubernetes RBAC- oder Azure RBAC-Prüfungen vor der Ausführung in Situationen mit einer sehr großen Anzahl von Azure-Rollenzuweisungen verzögern. Dies kann zu längeren Überprüfungen führen, was wiederum eine geringere Parallelität bewirkt. Beispielsweise wird eine Abfrage für ein Abonnement ausgeführt, bei dem Tausende von Ressourcen vorhanden sind, und jede Ressource verfügt über viele Rollenzuweisungen auf der Ressourcenebene und nicht auf Ebene des Abonnements oder der Ressourcengruppe.
 -    Wenn eine Abfrage kleine Datenblöcke verarbeitet, ist die Parallelität gering, da sie vom System nicht auf viele Computeknoten verteilt wird.
 
 

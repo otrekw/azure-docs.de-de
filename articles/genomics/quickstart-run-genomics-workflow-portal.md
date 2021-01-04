@@ -9,12 +9,12 @@ ms.service: genomics
 ms.topic: quickstart
 ms.date: 01/11/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: 4beb1c31f34ec4e8d26228cfe4f30f5109a1b60c
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 85665dbda2ed11ffa04b71e4317f2b34b83d317f
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93394542"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349366"
 ---
 # <a name="quickstart-run-a-workflow-through-the-microsoft-genomics-service"></a>Schnellstart: Ausführen eines Workflows über den Microsoft Genomics-Dienst
 
@@ -74,7 +74,7 @@ Laden Sie zum Testen des Microsoft Genomics-Clients die Konfigurationsdatei aus 
 
 ![Suchen nach Microsoft Genomics im Azure-Portal](./media/quickstart-run-genomics-workflow-portal/genomics-filter-box.png "Suchen nach Microsoft Genomics im Azure-Portal")
 
-Wählen Sie das kurz zuvor erstellte Genomics-Konto aus, navigieren Sie zu **Zugriffsschlüssel** , und laden Sie die Konfigurationsdatei herunter.
+Wählen Sie das kurz zuvor erstellte Genomics-Konto aus, navigieren Sie zu **Zugriffsschlüssel**, und laden Sie die Konfigurationsdatei herunter.
 
 ![Herunterladen der Konfigurationsdatei aus Microsoft Genomics](./media/quickstart-run-genomics-workflow-portal/genomics-mygenomicsaccount-box.png "Herunterladen der Konfigurationsdatei aus Microsoft Genomics")
 
@@ -112,12 +112,12 @@ Der Microsoft Genomics-Dienst erwartet Abschnitte mit gepaarten Enden als Eingab
 [https://msgensampledata.blob.core.windows.net/small/chr21_1.fq.gz](https://msgensampledata.blob.core.windows.net/small/chr21_1.fq.gz)
 [https://msgensampledata.blob.core.windows.net/small/chr21_2.fq.gz](https://msgensampledata.blob.core.windows.net/small/chr21_2.fq.gz)
 
-In Ihrem Speicherkonto müssen Sie einen Blobcontainer für Ihre Eingabedaten und einen zweiten Blobcontainer für Ihre Ausgabedaten erstellen.  Laden Sie die Eingabedaten in den entsprechenden Blobcontainer hoch. Hierzu können Sie verschiedene Tools verwenden – beispielsweise [Microsoft Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/), [BlobPorter](https://github.com/Azure/blobporter) oder [AzCopy](../storage/common/storage-use-azcopy-v10.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json). 
+In Ihrem Speicherkonto müssen Sie einen Blobcontainer für Ihre Eingabedaten und einen zweiten Blobcontainer für Ihre Ausgabedaten erstellen.  Laden Sie die Eingabedaten in den entsprechenden Blobcontainer hoch. Hierzu können Sie verschiedene Tools verwenden – beispielsweise [Microsoft Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/), [BlobPorter](https://github.com/Azure/blobporter) oder [AzCopy](../storage/common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json). 
 
 ## <a name="run-a-workflow-through-the-microsoft-genomics-service-using-the-msgen-python-client"></a>Ausführen eines Workflows über den Microsoft Genomics-Dienst unter Verwendung des Python-Clients `msgen`
 
 Wenn Sie einen Workflow über den Microsoft Genomics-Dienst ausführen möchten, geben Sie in der Datei *config.txt* den Eingabe- und den Ausgabespeichercontainer für Ihre Daten an.
-Öffnen Sie die Datei *config.txt* , die Sie aus Ihrem Genomics-Konto heruntergeladen haben. Geben Sie unten Ihren Abonnementschlüssel und die sechs Elemente an (jeweils Speicherkontoname, Schlüssel und Containername für die Ein- und Ausgabe). Diese Informationen können Sie im Azure-Portal unter **Zugriffsschlüssel** für Ihr Speicherkonto oder direkt über den Azure Storage-Explorer ermitteln.  
+Öffnen Sie die Datei *config.txt*, die Sie aus Ihrem Genomics-Konto heruntergeladen haben. Geben Sie unten Ihren Abonnementschlüssel und die sechs Elemente an (jeweils Speicherkontoname, Schlüssel und Containername für die Ein- und Ausgabe). Diese Informationen können Sie im Azure-Portal unter **Zugriffsschlüssel** für Ihr Speicherkonto oder direkt über den Azure Storage-Explorer ermitteln.  
 
 ![Genomics-Konfiguration](./media/quickstart-run-genomics-workflow-portal/genomics-config.PNG "Genomics-Konfiguration")
 

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/06/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 4362b579b7f01570a2b5fd072bf53ad495797cd8
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: fb91a490083629101470565a630b659c090e071b
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92783775"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843365"
 ---
 # <a name="use-customer-managed-keys-in-azure-key-vault-for-importexport-service"></a>Verwenden kundenseitig verwalteter Schlüssel in Azure Key Vault für den Import/Export-Dienst
 
@@ -33,7 +33,7 @@ Stellen Sie Folgendes sicher, bevor Sie beginnen:
     - [Erstellen eines Importauftrags für Dateien](storage-import-export-data-to-files.md)
     - [Erstellen eines Exportauftrags für Blobs](storage-import-export-data-from-blobs.md)
 
-2. Sie verfügen über eine vorhandene Azure Key Vault-Instanz mit einem Schlüssel, den Sie zum Schützen Ihres BitLocker-Schlüssels verwenden können. Informationen zum Erstellen eines Schlüsseltresors über das Azure-Portal finden Sie unter [Schnellstart: Festlegen eines Geheimnisses und Abrufen des Geheimnisses aus Azure Key Vault mithilfe des Azure-Portals](../../key-vault/secrets/quick-create-portal.md).
+2. Sie verfügen über eine vorhandene Azure Key Vault-Instanz mit einem Schlüssel, den Sie zum Schützen Ihres BitLocker-Schlüssels verwenden können. Informationen zum Erstellen eines Schlüsseltresors über das Azure-Portal finden Sie unter [Schnellstart: Erstellen Sie eine Azure Key Vault-Instanz mithilfe des Azure-Portals](../../key-vault/general/quick-create-portal.md).
 
     - Für Ihre vorhandene Key Vault-Instanz ist **Vorläufiges Löschen** und **Nicht bereinigen** festgelegt. Diese Eigenschaften sind standardmäßig nicht aktiviert. Informationen zum Aktivieren dieser Eigenschaften finden Sie in den Abschnitten **Aktivieren des vorläufigen Löschens** und **Aktivieren des Bereinigungsschutzes** in einem der folgenden Artikel:
 

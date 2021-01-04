@@ -3,12 +3,12 @@ title: Löschung des vollständigen Modus
 description: Zeigt, wie die Ressourcentypen die Löschung des vollständigen Modus in Azure Resource Manager-Vorlagen verarbeiten.
 ms.topic: conceptual
 ms.date: 10/21/2020
-ms.openlocfilehash: b1f7623d6eee1ff629412a4cc0d76e59e6c9e847
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: e0c67bfcda81ad128e0018c4ab37c4b0cbe680f0
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370123"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184024"
 ---
 # <a name="deletion-of-azure-resources-for-complete-mode-deployments"></a>Löschen von Azure-Ressourcen für Bereitstellungen im vollständigen Modus
 
@@ -18,7 +18,7 @@ Die mit **Ja** markierten Ressourcentypen werden gelöscht, wenn sich der Typ ni
 
 Die mit **Nein** markierten Ressourcentypen werden nicht automatisch gelöscht, wenn sie sich nicht in der Vorlage befinden. Sie werden jedoch gelöscht, wenn die übergeordnete Ressource gelöscht wird. Eine vollständige Beschreibung des Verhaltens finden Sie unter [Azure Resource Manager-Bereitstellungsmodi](deployment-modes.md).
 
-Wenn Sie in [mehr als einer Ressourcengruppe in einer Vorlage](cross-scope-deployment.md) bereitstellen, können Ressourcen, die sich in der Ressourcengruppe befinden, die im Bereitstellungsvorgang angegeben wurde, gelöscht werden. Ressourcen in den sekundären Ressourcengruppen werden nicht gelöscht.
+Wenn Sie in [mehr als einer Ressourcengruppe in einer Vorlage](./deploy-to-resource-group.md) bereitstellen, können Ressourcen, die sich in der Ressourcengruppe befinden, die im Bereitstellungsvorgang angegeben wurde, gelöscht werden. Ressourcen in den sekundären Ressourcengruppen werden nicht gelöscht.
 
 Die Ressourcen werden nach dem Ressourcenanbieter-Namespace aufgelistet. Informationen zur Zuordnung des Namespace von Ressourcenanbietern zu den entsprechenden Azure-Diensten finden Sie unter [Ressourcenanbieter für Azure-Dienste](../management/azure-services-resource-providers.md).
 

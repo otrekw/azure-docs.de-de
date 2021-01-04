@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie mithilfe von Java Funktionen entwickeln könn
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 9679f6030ac889ac442a40cd852f5cc17f505756
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 1ffbd760ae75605d75652b29d379420d6946aa8f
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422517"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96326453"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Java-Entwicklerhandbuch für Azure Functions
 
@@ -45,15 +45,27 @@ Die voranstehenden Links zu Artikeln zeigen Ihnen, wie Sie Ihre ersten Funktione
 
 ### <a name="project-scaffolding"></a>Projektgerüst
 
-Wenn Sie die Entwicklung mit der Befehlszeile über das Terminal bevorzugen, besteht die einfachste Möglichkeit für den Gerüstbau von Java-basierten Funktionsprojekten darin, `Apache Maven`-Archetypes zu verwenden. Der Java Maven-Archetyp wird unter der folgenden _groupId_ : _artifactId_ veröffentlicht: [com.microsoft.azure:azure-functions-archetype](https://search.maven.org/artifact/com.microsoft.azure/azure-functions-archetype/). 
+Wenn Sie die Entwicklung mit der Befehlszeile über das Terminal bevorzugen, besteht die einfachste Möglichkeit für den Gerüstbau von Java-basierten Funktionsprojekten darin, `Apache Maven`-Archetypes zu verwenden. Der Java Maven-Archetyp wird unter der folgenden _groupId_:_artifactId_ veröffentlicht: [com.microsoft.azure:azure-functions-archetype](https://search.maven.org/artifact/com.microsoft.azure/azure-functions-archetype/). 
 
 Mit dem folgenden Befehl wird ein neues Java-Funktionsprojekt mit diesem Archetyp generiert:
+
+# <a name="bash"></a>[Bash](#tab/bash)
 
 ```bash
 mvn archetype:generate \
     -DarchetypeGroupId=com.microsoft.azure \
-    -DarchetypeArtifactId=azure-functions-archetype 
+    -DarchetypeArtifactId=azure-functions-archetype
 ```
+
+# <a name="cmd"></a>[Cmd](#tab/cmd)
+
+```cmd
+mvn archetype:generate ^
+    -DarchetypeGroupId=com.microsoft.azure ^
+    -DarchetypeArtifactId=azure-functions-archetype
+```
+
+---
 
 Informationen zu den ersten Schritten bei der Verwendung dieses Archetyps finden Sie im [Java-Schnellstart](./create-first-function-cli-java.md).
 
@@ -206,23 +218,44 @@ Sie können weitere Argumente in einer App-Einstellung namens `JAVA_OPTS` angebe
 
 Verwenden Sie im [Azur-Portal](https://portal.azure.com) die Registerkarte [Anwendungseinstellungen](functions-how-to-use-azure-function-app-settings.md#settings), um die Einstellung `JAVA_OPTS` hinzuzufügen.
 
-### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
+### <a name="azure-cli"></a>Azure CLI
 
 Mit dem Befehl [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings) können Sie `JAVA_OPTS` wie im folgenden Beispiel einstellen:
 
-#### <a name="consumption-plan"></a>[Verbrauchstarif](#tab/consumption)
+# <a name="consumption-plan"></a>[Verbrauchstarif](#tab/consumption/bash)
+
 ```azurecli-interactive
 az functionapp config appsettings set \
---settings "JAVA_OPTS=-Djava.awt.headless=true" \
-"WEBSITE_USE_PLACEHOLDER=0" \
---name <APP_NAME> --resource-group <RESOURCE_GROUP>
+    --settings "JAVA_OPTS=-Djava.awt.headless=true" \
+    "WEBSITE_USE_PLACEHOLDER=0" \
+    --name <APP_NAME> --resource-group <RESOURCE_GROUP>
 ```
-#### <a name="dedicated-plan--premium-plan"></a>[Dedizierter Tarif/Premium-Tarif](#tab/dedicated+premium)
+
+# <a name="consumption-plan"></a>[Verbrauchstarif](#tab/consumption/cmd)
+
+```azurecli-interactive
+az functionapp config appsettings set ^
+    --settings "JAVA_OPTS=-Djava.awt.headless=true" ^
+    "WEBSITE_USE_PLACEHOLDER=0" ^
+    --name <APP_NAME> --resource-group <RESOURCE_GROUP>
+```
+
+# <a name="dedicated-plan--premium-plan"></a>[Dedizierter Tarif/Premium-Tarif](#tab/dedicated+premium/bash)
+
 ```azurecli-interactive
 az functionapp config appsettings set \
---settings "JAVA_OPTS=-Djava.awt.headless=true" \
---name <APP_NAME> --resource-group <RESOURCE_GROUP>
+    --settings "JAVA_OPTS=-Djava.awt.headless=true" \
+    --name <APP_NAME> --resource-group <RESOURCE_GROUP>
 ```
+
+# <a name="dedicated-plan--premium-plan"></a>[Dedizierter Tarif/Premium-Tarif](#tab/dedicated+premium/cmd)
+
+```azurecli-interactive
+az functionapp config appsettings set ^
+    --settings "JAVA_OPTS=-Djava.awt.headless=true" ^
+    --name <APP_NAME> --resource-group <RESOURCE_GROUP>
+```
+
 ---
 
 In diesem Beispiel wird der monitorlose Modus aktiviert. Ersetzen Sie `<APP_NAME>` durch den Namen Ihrer Funktions-App und `<RESOURCE_GROUP>` durch die Ressourcengruppe. 
@@ -460,15 +493,36 @@ Mit der Azure CLI können Sie die Java-Protokollierung von stdout und stderr sow
 
 Nachfolgend wird erläutert, wie Sie Ihre Funktions-App so konfigurieren, dass die Anwendungsprotokollierung mithilfe der Azure CLI geschrieben wird:
 
+# <a name="bash"></a>[Bash](#tab/bash)
+
 ```azurecli-interactive
 az webapp log config --name functionname --resource-group myResourceGroup --application-logging true
 ```
 
+# <a name="cmd"></a>[Cmd](#tab/cmd)
+
+```azurecli-interactive
+az webapp log config --name functionname --resource-group myResourceGroup --application-logging true
+```
+
+---
+
 Zum Streaming der Protokollausgabe Ihrer Funktions-App mithilfe der Azure CLI öffnen Sie eine neue Eingabeaufforderungs-, Bash- oder Terminalsitzung und geben den folgenden Befehl ein:
+
+# <a name="bash"></a>[Bash](#tab/bash)
 
 ```azurecli-interactive
 az webapp log tail --name webappname --resource-group myResourceGroup
 ```
+
+# <a name="cmd"></a>[Cmd](#tab/cmd)
+
+```azurecli-interactive
+az webapp log tail --name webappname --resource-group myResourceGroup
+```
+
+---
+
 Der Befehl [az webapp log tail](/cli/azure/webapp/log) ermöglicht das Filtern der Ausgabe mithilfe der Option `--provider`. 
 
 Zum Herunterladen der Protokolldateien als eine einzelne ZIP-Datei mithilfe der Azure CLI öffnen Sie eine neue Eingabeaufforderungs-, Bash- oder Terminalsitzung, und geben Sie den folgenden Befehl ein:

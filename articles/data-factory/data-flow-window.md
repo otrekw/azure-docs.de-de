@@ -7,13 +7,13 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 01/30/2019
-ms.openlocfilehash: 896254a5577dad1bdcf474b963b9544029a4c81a
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.date: 11/16/2020
+ms.openlocfilehash: 8f0d10b6ed69cd31249447b59114c590bdbeb078
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93040114"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94832363"
 ---
 # <a name="window-transformation-in-mapping-data-flow"></a>Fenstertransformation im Zuordnungsdatenfluss
 
@@ -22,6 +22,8 @@ ms.locfileid: "93040114"
 In der Fenstertransformation definieren Sie fensterbasierte Aggregationen von Spalten in Ihren Datenströmen. Im Ausdrucks-Generator können Sie verschiedene Typen von Aggregationen definieren, die auf Daten- oder Zeitfenstern (SQL OVER-Klausel) basieren, wie z.B. LEAD, LAG, NTILE, CUMEDIST, RANK usw.). Ein neues Feld wird in Ihrer Ausgabe generiert, das diese Aggregationen enthält. Sie können auch optionale „Group by“-Felder einschließen.
 
 ![Screenshot: Ausgewählte Menüoption „Windowing“](media/data-flow/windows1.png "Fenster 1")
+
+> [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4IAVu]
 
 ## <a name="over"></a>Over
 Legen Sie die Partitionierung von Spaltendaten für Ihre Fenstertransformation fest. Die SQL-Entsprechung ist ```Partition By``` in der Over-Klausel in SQL. Wenn Sie eine Berechnung erstellen möchten, oder einen für die Partitionierung zu verwendenden Ausdruck, können Sie hierzu den Mauszeiger auf den Namen der Spalte setzen und „berechnete Spalte“ auswählen.

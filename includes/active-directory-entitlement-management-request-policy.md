@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/30/2020
 ms.author: ajburnle
 ms.custom: include file
-ms.openlocfilehash: 239fcc1e57cb4bd56a8704f8a840689d44617fcf
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: b7029c5cdd004910caa83425536bbe481e4b01f3
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93029455"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95554630"
 ---
 ## <a name="for-users-in-your-directory"></a>Für Benutzer in Ihrem Verzeichnis
 
@@ -33,7 +33,7 @@ Gehen Sie folgendermaßen vor, wenn Sie möchten, dass Benutzer in Ihrem Verzeic
     | **Alle Mitglieder (keine Gäste)** | Wählen Sie diese Option aus, wenn Sie möchten, dass alle Mitgliedsbenutzer in Ihrem Verzeichnis dieses Zugriffspaket anfordern können sollen. Diese Option umfasst keine Gastbenutzer, die Sie möglicherweise in Ihr Verzeichnis eingeladen haben. |
     | **Alle Benutzer (einschließlich Gästen)** | Wählen Sie diese Option aus, wenn Sie möchten, dass alle Mitgliedsbenutzer und Gastbenutzer in Ihrem Verzeichnis dieses Zugriffspaket anfordern können sollen. |
 
-    Gastbenutzer verweisen auf externe Benutzer, die mit [Azure AD B2B-](../articles/active-directory/b2b/what-is-b2b.md) in Ihr Verzeichnis eingeladen wurden. Weitere Informationen zu den Unterschieden zwischen Mitglieds- und Gastbenutzern finden Sie unter [Welche Standardbenutzerberechtigungen gibt es in Azure Active Directory?](../articles/active-directory/fundamentals/users-default-permissions.md).
+    Gastbenutzer verweisen auf externe Benutzer, die mit [Azure AD B2B-](../articles/active-directory/external-identities/what-is-b2b.md) in Ihr Verzeichnis eingeladen wurden. Weitere Informationen zu den Unterschieden zwischen Mitglieds- und Gastbenutzern finden Sie unter [Welche Standardbenutzerberechtigungen gibt es in Azure Active Directory?](../articles/active-directory/fundamentals/users-default-permissions.md).
 
 1. Wenn Sie **Bestimmte Benutzer und Gruppen** ausgewählt haben, klicken Sie auf **Benutzer und Gruppen hinzufügen**.
 
@@ -41,16 +41,16 @@ Gehen Sie folgendermaßen vor, wenn Sie möchten, dass Benutzer in Ihrem Verzeic
 
     ![Zugriffspaket – Anforderungen – Benutzer und Gruppen auswählen](./media/active-directory-entitlement-management-request-policy/select-users-groups.png)
 
-1. Klicken Sie auf **Auswählen** , um die Benutzer und Gruppen hinzuzufügen.
+1. Klicken Sie auf **Auswählen**, um die Benutzer und Gruppen hinzuzufügen.
 
 1. Fahren Sie mit dem Abschnitt [Genehmigung](#approval) fort.
 
 ## <a name="for-users-not-in-your-directory"></a>Für Benutzer, die sich nicht in Ihrem Verzeichnis befinden
 
- **Benutzer, die sich nicht in Ihrem Verzeichnis befinden** bezieht sich auf Benutzer in einem anderen Azure AD-Verzeichnis bzw. einer anderen Domäne. Diese Benutzer wurden möglicherweise noch nicht zu Ihrem Verzeichnis eingeladen. Azure AD-Verzeichnisse müssen in den **Einschränkungen bei der Zusammenarbeit** so konfiguriert werden, dass sie Einladungen zulassen. Weitere Informationen finden Sie unter [Aktivieren der externen B2B-Zusammenarbeit und Steuern, wer Gäste einladen kann](../articles/active-directory/b2b/delegate-invitations.md).
+ **Benutzer, die sich nicht in Ihrem Verzeichnis befinden** bezieht sich auf Benutzer in einem anderen Azure AD-Verzeichnis bzw. einer anderen Domäne. Diese Benutzer wurden möglicherweise noch nicht zu Ihrem Verzeichnis eingeladen. Azure AD-Verzeichnisse müssen in den **Einschränkungen bei der Zusammenarbeit** so konfiguriert werden, dass sie Einladungen zulassen. Weitere Informationen finden Sie unter [Aktivieren der externen B2B-Zusammenarbeit und Steuern, wer Gäste einladen kann](../articles/active-directory/external-identities/delegate-invitations.md).
 
 > [!NOTE]
-> Für einen sich noch nicht in Ihrem Verzeichnis befindenden Benutzer, dessen Anforderung genehmigt oder automatisch genehmigt wird, wird ein Gastbenutzerkonto erstellt. Der Gast wird eingeladen, erhält jedoch keine Einladungs-E-Mail. Stattdessen erhält er eine E-Mail, wenn seine Zugriffspaketzuweisung bereitgestellt wird. Wenn dieser Gastbenutzer zu einem späteren Zeitpunkt keine Zugriffspaketzuweisungen mehr besitzt, weil die letzte Zuweisung abgelaufen ist oder abgebrochen wurde, wird das Gastbenutzerkonto standardmäßig für die Anmeldung blockiert und anschließend gelöscht. Wenn Gastbenutzer dauerhaft in Ihrem Verzeichnis bleiben sollen, auch wenn sie keine Zugriffspaketzuweisungen haben, können Sie die Einstellungen für Ihre Berechtigungsverwaltungskonfiguration ändern. Weitere Informationen zum Gastbenutzerobjekt finden Sie unter [Eigenschaften eines Azure Active Directory B2B-Zusammenarbeitsbenutzers](../articles/active-directory/b2b/user-properties.md).
+> Für einen sich noch nicht in Ihrem Verzeichnis befindenden Benutzer, dessen Anforderung genehmigt oder automatisch genehmigt wird, wird ein Gastbenutzerkonto erstellt. Der Gast wird eingeladen, erhält jedoch keine Einladungs-E-Mail. Stattdessen erhält er eine E-Mail, wenn seine Zugriffspaketzuweisung bereitgestellt wird. Wenn dieser Gastbenutzer zu einem späteren Zeitpunkt keine Zugriffspaketzuweisungen mehr besitzt, weil die letzte Zuweisung abgelaufen ist oder abgebrochen wurde, wird das Gastbenutzerkonto standardmäßig für die Anmeldung blockiert und anschließend gelöscht. Wenn Gastbenutzer dauerhaft in Ihrem Verzeichnis bleiben sollen, auch wenn sie keine Zugriffspaketzuweisungen haben, können Sie die Einstellungen für Ihre Berechtigungsverwaltungskonfiguration ändern. Weitere Informationen zum Gastbenutzerobjekt finden Sie unter [Eigenschaften eines Azure Active Directory B2B-Zusammenarbeitsbenutzers](../articles/active-directory/external-identities/user-properties.md).
 
 Gehen Sie folgendermaßen vor, wenn Sie Benutzern, die sich nicht in Ihrem Verzeichnis befinden, die Möglichkeit geben möchten, dieses Zugriffspaket anzufordern:
 
@@ -70,7 +70,7 @@ Gehen Sie folgendermaßen vor, wenn Sie Benutzern, die sich nicht in Ihrem Verze
 
     Eine verbundene Organisation ist ein externes Azure AD-Verzeichnis bzw. eine externe Domäne, mit der eine Beziehung besteht.
 
-1. Wenn Sie **Bestimmte verbundene Organisationen**  ausgewählt haben, klicken Sie auf **Verzeichnisse hinzufügen** , um aus einer Liste der verbundenen Organisationen auszuwählen, die Ihr Administrator zuvor hinzugefügt hat.
+1. Wenn Sie **Bestimmte verbundene Organisationen**  ausgewählt haben, klicken Sie auf **Verzeichnisse hinzufügen**, um aus einer Liste der verbundenen Organisationen auszuwählen, die Ihr Administrator zuvor hinzugefügt hat.
 
 1. Geben Sie den Namen oder Domänennamen ein, um nach einer zuvor verbundenen Organisation zu suchen.
 
@@ -81,7 +81,7 @@ Gehen Sie folgendermaßen vor, wenn Sie Benutzern, die sich nicht in Ihrem Verze
 1. Nachdem Sie alle Ihre verbundenen Organisationen ausgewählt haben, klicken Sie auf **Auswählen**.
 
     > [!NOTE]
-    > Alle Benutzer aus den ausgewählten verbundenen Organisationen werden dieses Zugriffspaket anfordern können. Dies schließt in Azure AD auch Benutzer aller Unterdomänen ein, die der Organisation zugeordnet sind, sofern diese Domänen nicht über die Zulassungs- oder Verweigerungsliste von Azure B2B blockiert werden. Weitere Informationen finden Sie unter [Zulassen oder Blockieren von Einladungen für B2B-Benutzer von bestimmten Organisationen](../articles/active-directory/b2b/allow-deny-list.md).
+    > Alle Benutzer aus den ausgewählten verbundenen Organisationen werden dieses Zugriffspaket anfordern können. Dies schließt in Azure AD auch Benutzer aller Unterdomänen ein, die der Organisation zugeordnet sind, sofern diese Domänen nicht über die Zulassungs- oder Verweigerungsliste von Azure B2B blockiert werden. Weitere Informationen finden Sie unter [Zulassen oder Blockieren von Einladungen für B2B-Benutzer von bestimmten Organisationen](../articles/active-directory/external-identities/allow-deny-list.md).
 
 1. Fahren Sie mit dem Abschnitt [Genehmigung](#approval) fort.
 
@@ -117,7 +117,7 @@ Eine Demonstration, wie einer Anforderungsrichtlinie mehrstufige Genehmigung hin
 
 Führen Sie diese Schritte aus, um die Genehmigungseinstellungen für Anforderungen des Zugriffspakets festzulegen:
 
-1. Um die Genehmigung für Anforderungen der ausgewählten Benutzer anzufordern, setzen Sie **Genehmigung anfordern** auf **Ja**. Stellen Sie den Umschalter auf **Nein** , um Anforderungen automatisch genehmigen zu lassen.
+1. Um die Genehmigung für Anforderungen der ausgewählten Benutzer anzufordern, setzen Sie **Genehmigung anfordern** auf **Ja**. Stellen Sie den Umschalter auf **Nein**, um Anforderungen automatisch genehmigen zu lassen.
 
 1. Um von Benutzern eine Begründung für die Anforderung des Zugriffspakets anzufordern, legen Sie die Umschaltfläche **Begründung des Anforderers erforderlich** auf **Ja** fest.
     
@@ -139,11 +139,11 @@ Verwenden Sie die folgenden Schritte, um genehmigende Personen hinzuzufügen, na
     
     ![Zugriffspaket – Anforderungen – Für Benutzer außerhalb des Verzeichnisses – Erste genehmigende Person](./media/active-directory-entitlement-management-request-policy/out-directory-first-approver.png)
     
-1. Wenn Sie **Vorgesetzter** als erste genehmigende Person ausgewählt haben, klicken Sie auf **Fallback hinzufügen** , um einen oder mehrere Benutzer oder Gruppen in Ihrem Verzeichnis auszuwählen, die als genehmigende Fallbackperson gelten sollen. Genehmigende Fallbackpersonen empfangen die Anforderung, wenn die Berechtigungsverwaltung den Vorgesetzten des Benutzers, der Zugriff anfordert, nicht finden kann.
+1. Wenn Sie **Vorgesetzter** als erste genehmigende Person ausgewählt haben, klicken Sie auf **Fallback hinzufügen**, um einen oder mehrere Benutzer oder Gruppen in Ihrem Verzeichnis auszuwählen, die als genehmigende Fallbackperson gelten sollen. Genehmigende Fallbackpersonen empfangen die Anforderung, wenn die Berechtigungsverwaltung den Vorgesetzten des Benutzers, der Zugriff anfordert, nicht finden kann.
 
     Der Vorgesetzte wird von der Berechtigungsverwaltung anhand des Attributs **Vorgesetzter** gefunden. Das Attribut befindet sich im Profil des Benutzers in Azure AD. Weitere Informationen finden Sie unter [Hinzufügen oder Aktualisieren von Benutzerprofilinformationen mit Azure Active Directory](../articles/active-directory/fundamentals/active-directory-users-profile-azure-portal.md).
 
-1. Wenn Sie **Bestimmte genehmigende Personen auswählen** ausgewählt haben, klicken Sie auf **Genehmigende Person hinzufügen** , um einen oder mehrere Benutzer oder Gruppen in Ihrem Verzeichnis auszuwählen, die genehmigende Personen sein sollen.
+1. Wenn Sie **Bestimmte genehmigende Personen auswählen** ausgewählt haben, klicken Sie auf **Genehmigende Person hinzufügen**, um einen oder mehrere Benutzer oder Gruppen in Ihrem Verzeichnis auszuwählen, die genehmigende Personen sein sollen.
 
 1. Geben Sie im Feld unter **Zulässige Anzahl von Tagen für Entscheidungsfindung** die Anzahl der Tage an, die eine genehmigende Person Zeit hat, um eine Anforderung für dieses Zugriffspaket zu überprüfen.
 
@@ -157,7 +157,7 @@ Verwenden Sie die folgenden Schritte, um genehmigende Personen hinzuzufügen, na
 
 Wenn Sie eine zweistufige Genehmigung ausgewählt haben, müssen Sie eine zweite genehmigende Person hinzufügen.
 
-1. Hinzufügen der **zweiten genehmigenden Person** : 
+1. Hinzufügen der **zweiten genehmigenden Person**: 
     
     Wenn sich die Benutzer in Ihrem Verzeichnis befinden, fügen Sie einen bestimmten Benutzer als zweite genehmigende Person hinzu, indem Sie unter „Bestimmte genehmigende Personen auswählen“ auf **Genehmigende Personen hinzufügen** klicken.
 
@@ -188,7 +188,7 @@ Wenn Sie beispielsweise Alice und Bob als erste genehmigende Personen aufgeliste
 
 1. Legen Sie die Umschaltfläche **Wenn keine Aktion ausgeführt wird, an alternative genehmigende Personen weiterleiten?** auf **Ja** fest.
 
-1. Klicken Sie auf **Alternative genehmigende Personen hinzufügen** , und wählen Sie die alternativen genehmigende Personen aus der Liste aus.
+1. Klicken Sie auf **Alternative genehmigende Personen hinzufügen**, und wählen Sie die alternativen genehmigende Personen aus der Liste aus.
 
     ![Zugriffspaket – Richtlinie – Alternative genehmigende Personen hinzufügen](./media/active-directory-entitlement-management-request-policy/alternate-approvers-add.png)
 
@@ -210,7 +210,7 @@ Wenn Sie beispielsweise Alice und Bob als erste genehmigende Personen aufgeliste
 
 ## <a name="add-requestor-information-preview-to-an-access-package"></a>Hinzufügen von Informationen zum Anforderer (Vorschau) zu einem Zugriffspaket
 
-1. Wechseln Sie zur Registerkarte **Anfordererinformationen** , und klicken Sie auf die Unterregisterkarte **Fragen**.
+1. Wechseln Sie zur Registerkarte **Anfordererinformationen**, und klicken Sie auf die Unterregisterkarte **Fragen**.
  
 1. Geben Sie als Frage in das Feld **Frage** ein, was Sie den Anforderer fragen möchten (auch als Anzeigezeichenfolge bezeichnet).
 
@@ -223,11 +223,11 @@ Wenn Sie beispielsweise Alice und Bob als erste genehmigende Personen aufgeliste
 
     ![Zugriffspaket – Richtlinie – Lokalisierten Text konfigurieren](./media/active-directory-entitlement-management-request-policy/add-localization-question.png)
 
-1. Wählen Sie das **Antwortformat** aus, in dem Anforderer antworten sollen. Antwortformate umfassen: *Kurzer Text* , *Mehrfachauswahl* und *Langer Text*.
+1. Wählen Sie das **Antwortformat** aus, in dem Anforderer antworten sollen. Antwortformate umfassen: *Kurzer Text*, *Mehrfachauswahl* und *Langer Text*.
  
     ![Zugriffspaket – Richtlinie – „Anzeigen und bearbeiten“ für Antwortformat von Multiple Choice auswählen](./media/active-directory-entitlement-management-request-policy/answer-format-view-edit.png)
  
-1. Wenn Sie „Multiple Choice“ auswählen, klicken Sie auf die Schaltfläche **Anzeigen und bearbeiten** , um die Antwortoptionen zu konfigurieren.
+1. Wenn Sie „Multiple Choice“ auswählen, klicken Sie auf die Schaltfläche **Anzeigen und bearbeiten**, um die Antwortoptionen zu konfigurieren.
     1. Nachdem Sie „Anzeigen und bearbeiten“ ausgewählt haben, wird der Bereich **Frage anzeigen/bearbeiten** angezeigt.
     1. Geben Sie die Antwortoptionen in die Felder **Antwortwerte** ein, die Sie dem Anforderer zur Verfügung stellen möchten, wenn dieser die Frage beantwortet.
     1. Geben Sie so viele Antworten ein, wie Sie benötigen, und klicken Sie dann auf **Speichern**.

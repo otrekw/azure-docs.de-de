@@ -6,20 +6,20 @@ documentationcenter: ''
 author: curtand
 manager: daveba
 ms.service: active-directory
-ms.workload: identity
 ms.subservice: enterprise-users
+ms.workload: identity
 ms.topic: how-to
-ms.date: 11/15/2020
+ms.date: 12/02/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e404b3eeadd8eef45e413eea2bd753d08cc505ca
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: a4c1c30e4651136ada7264cad8ff4d3921c3aeeb
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94650630"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96547915"
 ---
 # <a name="enforce-a-naming-policy-on-microsoft-365-groups-in-azure-active-directory"></a>Durchsetzen einer Benennungsrichtlinie für Microsoft 365-Gruppen in Azure Active Directory
 
@@ -48,7 +48,7 @@ Präfixe und Suffixe können alle Sonderzeichen enthalten, die bei Gruppennamen 
 
 #### <a name="fixed-strings"></a>Feste Zeichenfolgen
 
-Sie können Zeichenfolgen verwenden, damit Gruppen in der globalen Adressliste und in den Navigationslinks auf der linken Seite der Gruppenworkloads einfacher überprüft und unterschieden werden können. Einige der häufig verwendeten Präfixe sind Schlüsselwörter wie „Gruppe\_Name“, „\#Name“, „\_Name“.
+Sie können Zeichenfolgen verwenden, damit Gruppen in der globalen Adressliste und in den Navigationslinks auf der linken Seite der Gruppenworkloads einfacher überprüft und unterschieden werden können. Einige der häufig verwendeten Präfixe sind Schlüsselwörter wie „Grp\_Name“, „\#Name“, „\_Name“.
 
 #### <a name="user-attributes"></a>Benutzerattribute
 
@@ -80,7 +80,6 @@ Ausgewählte Administratoren können von diesen Richtlinien für alle Gruppenwor
 - Partnersupport der Ebene 1
 - Partnersupport der Ebene 2
 - Benutzeradministrator
-- Verzeichnis schreiben
 
 ## <a name="configure-naming-policy-in-azure-portal"></a>Konfigurieren einer Benennungsrichtlinie im Azure-Portal
 

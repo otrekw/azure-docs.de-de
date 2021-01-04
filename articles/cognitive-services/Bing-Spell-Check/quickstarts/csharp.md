@@ -11,19 +11,19 @@ ms.topic: quickstart
 ms.date: 05/21/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3229091a0effda7837b8e58fe8764910e3b6636d
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: ace7a0ccaba533c9e72961536159d32af5ab8d98
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94366994"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352727"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-c"></a>Schnellstart: Überprüfen der Rechtschreibung mit der Bing-Rechtschreibprüfungs-REST-API und C#
 
 > [!WARNING]
-> Die APIs der Bing-Suche werden von Cognitive Services auf Bing-Suchdienste umgestellt. Ab dem **30. Oktober 2020** müssen alle neuen Instanzen der Bing-Suche mit dem [hier](https://aka.ms/cogsvcs/bingmove) dokumentierten Prozess bereitgestellt werden.
+> Die APIs der Bing-Suche werden von Cognitive Services auf Bing-Suchdienste umgestellt. Ab dem **30. Oktober 2020** müssen alle neuen Instanzen der Bing-Suche mit dem [hier](/bing/search-apis/bing-web-search/create-bing-search-service-resource) dokumentierten Prozess bereitgestellt werden.
 > APIs der Bing-Suche, die mit Cognitive Services bereitgestellt wurden, werden noch drei Jahre lang bzw. bis zum Ablauf Ihres Enterprise Agreement unterstützt (je nachdem, was zuerst eintritt).
-> Eine Anleitung zur Migration finden Sie unter [Erstellen einer Ressource für die Bing-Suche über Azure Marketplace](https://aka.ms/cogsvcs/bingmigration).
+> Eine Anleitung zur Migration finden Sie unter [Erstellen einer Ressource für die Bing-Suche über Azure Marketplace](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 Verwenden Sie diese Schnellstartanleitung, um die Bing-Rechtschreibprüfungs-REST-API zum ersten Mal aufzurufen. Diese einfache C#-Anwendung sendet eine Anforderung an die API und gibt eine Liste mit Korrekturvorschlägen zurück. 
 
@@ -38,7 +38,7 @@ Die Anwendung ist zwar in C# geschrieben, an sich ist die API aber ein RESTful-W
 
      1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf die Projektmappendatei.
      1. Klicken Sie auf **NuGet-Pakete für Projektmappe verwalten**.
-     1. Suchen Sie nach *Newtonsoft.Json* , und installieren Sie das Paket.
+     1. Suchen Sie nach *Newtonsoft.Json*, und installieren Sie das Paket.
 
 * Unter Linux/macOS können Sie diese Anwendung mit [Mono](https://www.mono-project.com/) ausführen.
 
@@ -155,7 +155,7 @@ static void Main(string[] args)
 
 ## <a name="run-the-application"></a>Ausführen der Anwendung
 
-Erstellen Sie Ihr Projekt, und führen Sie es aus. Wenn Sie Visual Studio verwenden, drücken Sie **F5** , um die Datei zu debuggen.
+Erstellen Sie Ihr Projekt, und führen Sie es aus. Wenn Sie Visual Studio verwenden, drücken Sie **F5**, um die Datei zu debuggen.
 
 ## <a name="example-json-response"></a>JSON-Beispielantwort
 

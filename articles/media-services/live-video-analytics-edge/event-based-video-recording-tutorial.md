@@ -3,12 +3,12 @@ title: 'Tutorial: Ereignisbasierte Videoaufzeichnung in der Cloud und Wiedergabe
 description: In diesem Tutorial erfahren Sie, wie Sie Azure Live Video Analytics in Azure IoT Edge verwenden, um eine ereignisbasierte Videoaufzeichnung in der Cloud durchzuführen und sie aus der Cloud wiederzugeben.
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: 03c97854673b369db9fe1cb026161a1e81a6bf31
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 84f6ef813fb1b2cc425e096212010717d0561aef
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93346638"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498301"
 ---
 # <a name="tutorial-event-based-video-recording-to-the-cloud-and-playback-from-the-cloud"></a>Tutorial: Ereignisbasierte Videoaufzeichnung in der Cloud und Wiedergabe aus der Cloud
 
@@ -52,7 +52,7 @@ Nach dem Abschluss dieser Schritte sind in Ihrem Azure Abonnement relevante Azur
 * Azure IoT Hub
 * Azure-Speicherkonto
 * Azure Media Services-Konto
-* Virtueller Linux-Computer in Azure mit installierter [IoT Edge-Runtime](../../iot-edge/how-to-install-iot-edge-linux.md)
+* Virtueller Linux-Computer in Azure mit installierter [IoT Edge-Runtime](../../iot-edge/how-to-install-iot-edge.md)
 
 ## <a name="concepts"></a>Konzepte
 
@@ -189,7 +189,7 @@ Führen Sie die folgenden Schritte aus, um die Ereignisse vom Objektzählermodul
     
 ## <a name="run-the-program"></a>Ausführen des Programms
 
-1. Öffnen Sie in Visual Studio Code die Registerkarte **Erweiterungen** (oder drücken Sie STRG + UMSCHALT + X), und suchen Sie nach Azure IoT Hub.
+1. Öffnen Sie in Visual Studio Code die Registerkarte **Erweiterungen** (oder drücken Sie STRG+UMSCHALT+X), und suchen Sie nach Azure IoT Hub.
 1. Klicken Sie mit der rechten Maustaste, um das Kontextmenü zu öffnen, und wählen Sie **Erweiterungseinstellungen** aus.
 
     > [!div class="mx-imgBorder"]
@@ -424,4 +424,4 @@ Falls Sie die anderen Tutorials ausprobieren möchten, behalten Sie die erstellt
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Verwenden Sie eine [IP-Kamera](https://en.wikipedia.org/wiki/IP_camera) mit RTSP-Unterstützung anstelle des RTSP-Simulators. IP-Kameras mit RTSP-Unterstützung finden Sie auf der [Seite für ONVIF-konforme Produkte](https://www.onvif.org/conformant-products/). Suchen Sie nach Geräten, die den Profilen G, S oder T entsprechen.
-* Verwenden Sie ein AMD64- oder x64-Linux-Gerät (anstelle eines virtuellen Azure-Linux-Computers). Dieses Gerät muss sich im gleichen Netzwerk befinden wie die IP-Kamera. Befolgen Sie die Anleitung unter [Installieren der Azure IoT Edge-Runtime unter Linux](../../iot-edge/how-to-install-iot-edge-linux.md). Befolgen Sie anschließend die Anweisungen in der Schnellstartanleitung [Bereitstellen Ihres ersten IoT Edge-Moduls auf einem virtuellen Linux-Gerät](../../iot-edge/quickstart-linux.md), um das Gerät für Azure IoT Hub zu registrieren.
+* Verwenden Sie ein AMD64- oder x64-Linux-Gerät (anstelle eines virtuellen Azure-Linux-Computers). Dieses Gerät muss sich im gleichen Netzwerk befinden wie die IP-Kamera. Befolgen Sie die Anleitung unter [Installieren der Azure IoT Edge-Runtime unter Linux](../../iot-edge/how-to-install-iot-edge.md). Befolgen Sie anschließend die Anweisungen in der Schnellstartanleitung [Bereitstellen Ihres ersten IoT Edge-Moduls auf einem virtuellen Linux-Gerät](../../iot-edge/quickstart-linux.md), um das Gerät für Azure IoT Hub zu registrieren.

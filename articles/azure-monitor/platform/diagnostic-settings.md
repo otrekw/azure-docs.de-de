@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.subservice: logs
-ms.openlocfilehash: 32ff5a73494bac2cabcb9488f946673435173dd0
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 950fcdc5cd6a5bbf3fa61ebd5e23be89691c4370
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92489437"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95535791"
 ---
 # <a name="create-diagnostic-settings-to-send-platform-logs-and-metrics-to-different-destinations"></a>Erstellen von Diagnoseeinstellungen zum Senden von Plattformprotokollen und Metriken an verschiedene Ziele
 [Plattformprotokolle](platform-logs-overview.md) in Azure, z. B. das Azure-Aktivitätsprotokoll und Ressourcenprotokolle, liefern ausführliche Diagnose- und Überwachungsinformationen für Azure-Ressourcen und die Azure-Plattform, von der sie abhängen. [Plattformmetriken](data-platform-metrics.md) werden standardmäßig gesammelt und in der Regel in der Azure Monitor-Metrikdatenbank gespeichert. Dieser Artikel enthält Details zum Erstellen und Konfigurieren von Diagnoseeinstellungen, um Plattformmetriken und -protokolle an verschiedene Ziele zu senden.
@@ -34,7 +34,7 @@ Das folgende Video führt Sie durch das Routing von Plattformprotokollen mit Dia
 > [Plattformmetriken](metrics-supported.md) werden automatisch an die [Azure Monitor-Metriken](data-platform-metrics.md) gesendet. Mit Diagnoseeinstellungen können Metriken für bestimmte Azure-Dienste an Azure Monitor-Protokolle gesendet werden, damit diese mit anderen Überwachungsdaten anhand von [Protokollabfragen](../log-query/log-query-overview.md) mit bestimmten Einschränkungen analysiert werden. 
 >  
 >  
-> Das Senden mehrdimensionaler Metriken über die Diagnoseeinstellungen wird derzeit nicht unterstützt. Metriken mit Dimensionen werden als vereinfachte eindimensionale Metriken exportiert und dimensionswertübergreifend aggregiert. *Beispiel* : Die Metrik „IOReadBytes“ in einer Blockchain kann für jeden Knoten einzeln untersucht und dargestellt werden. Wenn sie jedoch über Diagnoseeinstellungen exportiert wird, stellt die exportierte Metrik alle gelesenen Bytes für alle Knoten dar. Darüber hinaus können aufgrund von internen Einschränkungen nicht alle Metriken in Azure Monitor-Protokolle oder in Log Analytics exportiert werden. Weitere Informationen finden Sie in der [Liste mit den exportierbaren Metriken](metrics-supported-export-diagnostic-settings.md). 
+> Das Senden mehrdimensionaler Metriken über die Diagnoseeinstellungen wird derzeit nicht unterstützt. Metriken mit Dimensionen werden als vereinfachte eindimensionale Metriken exportiert und dimensionswertübergreifend aggregiert. *Beispiel*: Die Metrik „IOReadBytes“ in einer Blockchain kann für jeden Knoten einzeln untersucht und dargestellt werden. Wenn sie jedoch über Diagnoseeinstellungen exportiert wird, stellt die exportierte Metrik alle gelesenen Bytes für alle Knoten dar. Darüber hinaus können aufgrund von internen Einschränkungen nicht alle Metriken in Azure Monitor-Protokolle oder in Log Analytics exportiert werden. Weitere Informationen finden Sie in der [Liste mit den exportierbaren Metriken](metrics-supported-export-diagnostic-settings.md). 
 >  
 >  
 > Um diese Einschränkungen für bestimmte Metriken zu umgehen, empfiehlt es sich, diese mithilfe der [REST-API für Metriken](/rest/api/monitor/metrics/list) manuell zu extrahieren und mithilfe der [Azure Monitor-Datensammler-API](data-collector-api.md) in Azure Monitor-Protokolle zu importieren.  
@@ -52,7 +52,7 @@ Plattformprotokolle und -metriken können an die Ziele in der folgenden Tabelle 
 
 ### <a name="destination-requirements"></a>Anforderungen für Ziele
 
-Alle Ziele für Diagnoseeinstellungen müssen vor den Diagnoseeinstellungen erstellt werden. Das Ziel muss sich nicht in demselben Abonnement befinden wie die Ressource, die Protokolle sendet, sofern der Benutzer, der die Einstellung konfiguriert, den entsprechenden RBAC-Zugriff auf beide Abonnements besitzt. In der folgenden Tabelle sind besondere Anforderungen für die einzelnen Ziele einschließlich regionaler Einschränkungen aufgeführt.
+Alle Ziele für Diagnoseeinstellungen müssen vor den Diagnoseeinstellungen erstellt werden. Das Ziel muss sich nicht in demselben Abonnement befinden wie die Ressource, die Protokolle sendet, sofern der Benutzer, der die Einstellung konfiguriert, den entsprechenden Azure RBAC-Zugriff auf beide Abonnements besitzt. In der folgenden Tabelle sind besondere Anforderungen für die einzelnen Ziele einschließlich regionaler Einschränkungen aufgeführt.
 
 | Destination | Requirements (Anforderungen) |
 |:---|:---|
@@ -77,11 +77,11 @@ Sie können Diagnoseeinstellungen im-Azure-Portal entweder über das Azure Monit
 
         ![Screenshot des Bereichs „Überwachung“ eines Ressourcenmenüs im Azure-Portal mit hervorgehobener Option „Diagnoseeinstellungen“](media/diagnostic-settings/menu-resource.png)
 
-   - Für eine oder mehrere Ressourcen klicken Sie im Azure Monitor-Menü unter **Einstellungen** auf **Diagnoseeinstellungen** , und klicken Sie dann auf die Ressource.
+   - Für eine oder mehrere Ressourcen klicken Sie im Azure Monitor-Menü unter **Einstellungen** auf **Diagnoseeinstellungen**, und klicken Sie dann auf die Ressource.
 
         ![Screenshot des Abschnitts „Einstellungen“ im Azure Monitor-Menü mit hervorgehobener Option „Diagnoseeinstellungen“](media/diagnostic-settings/menu-monitor.png)
 
-   - Für das Aktivitätsprotokoll klicken Sie im **Azure Monitor** -Menü auf **Aktivitätsprotokoll** und dann auf **Diagnoseeinstellungen**. Stellen Sie sicher, dass Sie alle Legacykonfigurationen für das Aktivitätsprotokoll deaktivieren. Ausführliche Informationen dazu finden Sie unter [Deaktivieren vorhandener Einstellungen](./activity-log.md#legacy-collection-methods).
+   - Für das Aktivitätsprotokoll klicken Sie im **Azure Monitor**-Menü auf **Aktivitätsprotokoll** und dann auf **Diagnoseeinstellungen**. Stellen Sie sicher, dass Sie alle Legacykonfigurationen für das Aktivitätsprotokoll deaktivieren. Ausführliche Informationen dazu finden Sie unter [Deaktivieren vorhandener Einstellungen](./activity-log.md#legacy-collection-methods).
 
         ![Screenshot des Azure Monitor-Menüs mit ausgewähltem Aktivitätsprotokoll und hervorgehobener Option „Diagnoseeinstellungen“ in der Menüleiste „Aktivitätsprotokoll“ in Azure Monitor](media/diagnostic-settings/menu-activity-log.png)
 
@@ -89,7 +89,7 @@ Sie können Diagnoseeinstellungen im-Azure-Portal entweder über das Azure Monit
 
    ![Diagnoseeinstellung hinzufügen – keine Einstellungen vorhanden](media/diagnostic-settings/add-setting.png)
 
-   Wenn bereits Einstellungen für die Ressource vorhanden sind, wird eine Liste der konfigurierten Einstellungen anagezeigt. Klicken Sie entweder auf **Diagnoseeinstellung hinzufügen** , um eine neue Einstellung hinzuzufügen, oder auf **Einstellung bearbeiten** , um eine vorhandene Einstellung zu bearbeiten. Jede Einstellung kann höchstens einen der Zieltypen aufweisen.
+   Wenn bereits Einstellungen für die Ressource vorhanden sind, wird eine Liste der konfigurierten Einstellungen anagezeigt. Klicken Sie entweder auf **Diagnoseeinstellung hinzufügen**, um eine neue Einstellung hinzuzufügen, oder auf **Einstellung bearbeiten**, um eine vorhandene Einstellung zu bearbeiten. Jede Einstellung kann höchstens einen der Zieltypen aufweisen.
 
    ![Diagnoseeinstellung hinzufügen – Einstellungen vorhanden](media/diagnostic-settings/edit-setting.png)
 

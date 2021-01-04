@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 08/13/2020
-ms.openlocfilehash: 282f13c89c527b096573b67b5d539de821e89032
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 82297b81ebe99301574e99ef438cc81c711dbeff
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900797"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95533683"
 ---
 # <a name="apache-components-and-versions-available-for-azure-hdinsight"></a>Für Azure HDInsight verfügbare Apache-Komponenten und -Versionen
 
@@ -32,7 +32,7 @@ Die den HDInsight-Clusterversionen zugeordneten Komponentenversionen sind in der
 |------------------------|---------------|-----------------------------|
 | Apache Hadoop und YARN | 3.1.1         | 2.7.3                       |
 | Apache Tez             | 0.9.1         | 0.7.0                       |
-| Apache Pig             | 0.16.0        | 0.16.0                      |
+| Apache Pig             | 0.16.1        | 0.16.0                      |
 | Apache Hive            | 3.1.0         | 1.2.1 (2.1.0 bei ESP Interactive Query) |
 | Apache Tez Hive2       | -             | 0.8.4                       |
 | Apache Ranger          | 1.1.0         | 0.7.0                       |
@@ -96,7 +96,7 @@ Die Tabelle enthält die im Azure-Portal und über andere Bereitstellungsmethode
 | HDInsight 3.6 ML Services      | 9.3               | 31. Dezember 2020                      | 31. Dezember 2020                |
 
 > [!NOTE]
-> Nachdem die Clusterunterstützung für eine Version abgelaufen ist, ist sie möglicherweise nicht mehr über das Azure-Portal verfügbar. In manchen Fällen stehen Clusterversionen bis zum Zeitpunkt ihrer Deaktivierung weiterhin über den **Version** -Parameter im Windows PowerShell-Befehl [New-AzHDInsightCluster](/powershell/module/az.hdinsight/new-azhdinsightcluster) und das .NET SDK zur Verfügung.
+> Nachdem die Clusterunterstützung für eine Version abgelaufen ist, ist sie möglicherweise nicht mehr über das Azure-Portal verfügbar. In manchen Fällen stehen Clusterversionen bis zum Zeitpunkt ihrer Deaktivierung weiterhin über den **Version**-Parameter im Windows PowerShell-Befehl [New-AzHDInsightCluster](/powershell/module/az.hdinsight/new-azhdinsightcluster) und das .NET SDK zur Verfügung.
 
 ### <a name="retired-versions"></a>Eingestellte Versionen
 

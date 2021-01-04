@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4d99295fbb355b3efa22a64c9adc04311508e474
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: b2ad38e518fa4b924992355990ea3eb06a338ebe
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94517562"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94693157"
 ---
 # <a name="security-frame-authorization--mitigations"></a>Sicherheitsrahmen: Autorisierung | Risikominderung 
 | Produkt/Dienst | Artikel |
@@ -32,11 +32,11 @@ ms.locfileid: "94517562"
 | **IoT-Cloudgateway** | <ul><li>[Verwenden Sie beim Herstellen einer Verbindung mit dem Cloudgateway Token mit geringstmöglichen Berechtigungen.](#cloud-least-privileged)</li></ul> |
 | **Azure Event Hub** | <ul><li>[Verwenden Sie einen auf Sendeberechtigungen beschränkten SAS-Schlüssel, um Gerätetoken zu generieren.](#sendonly-sas)</li><li>[Verwenden Sie keine Zugriffstoken, die direkten Zugriff auf den Event Hub ermöglichen.](#access-tokens-hub)</li><li>[Verwenden Sie beim Herstellen einer Verbindung mit dem Event Hub SAS-Schlüssel, die über die erforderlichen Mindestberechtigungen verfügen.](#sas-minimum-permissions)</li></ul> |
 | **Azure DocumentDB** | <ul><li>[Verwenden Sie nach Möglichkeit Ressourcentoken, um eine Verbindung mit Azure Cosmos DB herzustellen.](#resource-docdb)</li></ul> |
-| **Azure-Vertrauensstellungsgrenze** | <ul><li>[Ermöglichen Sie mithilfe von RBAC eine differenzierte Zugriffsverwaltung für das Azure-Abonnement.](#grained-rbac)</li></ul> |
-| **Service Fabric-Vertrauensstellungsgrenze** | <ul><li>[Beschränken Sie mithilfe von RBAC den Clientzugriff auf Clustervorgänge.](#cluster-rbac)</li></ul> |
+| **Azure-Vertrauensstellungsgrenze** | <ul><li>[Ermöglichen Sie mithilfe von Azure RBAC eine differenzierte Zugriffsverwaltung für das Azure-Abonnement.](#grained-rbac)</li></ul> |
+| **Service Fabric-Vertrauensstellungsgrenze** | <ul><li>[Beschränken Sie mithilfe von Azure RBAC den Clientzugriff auf Clustervorgänge.](#cluster-rbac)</li></ul> |
 | **Dynamics CRM** | <ul><li>[Führen Sie die Sicherheitsmodellierung durch, und verwenden Sie bei Bedarf die Sicherheit auf Feldebene.](#modeling-field)</li></ul> |
 | **Dynamics CRM-Portal** | <ul><li>[Führen Sie die Sicherheitsmodellierung für Portalkonten durch, und bedenken Sie dabei, dass sich das Sicherheitsmodell für das Portal vom restlichen CRM unterscheidet.](#portal-security)</li></ul> |
-| **Azure Storage (in englischer Sprache)** | <ul><li>[Gewähren Sie differenzierte Berechtigungen für eine Reihe von Entitäten in Azure Table Storage.](#permission-entities)</li><li>[Aktivieren Sie mithilfe von Azure Resource Manager die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) für das Azure-Speicherkonto.](#rbac-azure-manager)</li></ul> |
+| **Azure Storage (in englischer Sprache)** | <ul><li>[Gewähren Sie differenzierte Berechtigungen für eine Reihe von Entitäten in Azure Table Storage.](#permission-entities)</li><li>[Aktivieren Sie mithilfe von Azure Resource Manager die rollenbasierte Zugriffssteuerung in Azure (Azure RBAC) für das Azure-Speicherkonto.](#rbac-azure-manager)</li></ul> |
 | **Mobiler Client** | <ul><li>[Implementieren Sie eine implizite Jailbreak- oder Rooting-Erkennung.](#rooting-detection)</li></ul> |
 | **WCF** | <ul><li>[Schwache Klassenreferenz in WCF](#weak-class-wcf)</li><li>[WCF – Implementieren Sie eine Autorisierungskontrolle.](#wcf-authz)</li></ul> |
 | **Web-API** | <ul><li>[Implementieren Sie einen geeigneten Autorisierungsmechanismus in der ASP.NET-Web-API.](#authz-aspnet)</li></ul> |
@@ -229,7 +229,7 @@ Beachten Sie, dass RLS als vorgefertigtes Datenbankfeature nur für SQL Server-V
 | **Referenzen**              | –  |
 | **Schritte** | Ein Ressourcentoken ist einer Azure Cosmos DB-Berechtigungsressource zugeordnet und erfasst die Beziehung zwischen dem Benutzer einer Datenbank und der Berechtigung, über die der Benutzer für eine bestimmte Azure Cosmos DB-Anwendungsressource (z. B. Sammlung, Dokument) verfügt. Verwenden Sie für den Zugriff auf Azure Cosmos DB immer ein Ressourcentoken, falls die Verarbeitung von Hauptschlüsseln oder Schlüsseln mit Leseberechtigung nicht bedenkenlos dem Client überlassen werden kann (z. B. im Falle einer Endbenutzeranwendung wie einem mobilen Client oder einem Desktopclient). Verwenden Sie Hauptschlüssel oder Schlüssel mit Leseberechtigung von Back-End-Anwendungen, die diese Schlüssel sicher speichern können.|
 
-## <a name="enable-fine-grained-access-management-to-azure-subscription-using-rbac"></a><a id="grained-rbac"></a>Ermöglichen Sie mithilfe von RBAC eine differenzierte Zugriffsverwaltung für das Azure-Abonnement.
+## <a name="enable-fine-grained-access-management-to-azure-subscription-using-azure-rbac"></a><a id="grained-rbac"></a>Ermöglichen Sie mithilfe von Azure RBAC eine differenzierte Zugriffsverwaltung für das Azure-Abonnement.
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
@@ -237,10 +237,10 @@ Beachten Sie, dass RLS als vorgefertigtes Datenbankfeature nur für SQL Server-V
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | Allgemein |
 | **Attribute**              | –  |
-| **Referenzen**              | [Verwenden von Rollenzuweisungen zum Verwalten Ihrer Azure-Abonnementressourcen](../../role-based-access-control/role-assignments-portal.md)  |
-| **Schritte** | Die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) in Azure ermöglicht eine präzise Zugriffsverwaltung für Azure. Mit RBAC können Sie den Benutzern nur die Zugriffsrechte gewähren, die diese zum Ausführen ihrer Aufgaben benötigen.|
+| **Referenzen**              | [Hinzufügen oder Entfernen von Rollenzuweisungen zum Verwalten von Azure-Abonnementressourcen](../../role-based-access-control/role-assignments-portal.md)  |
+| **Schritte** | Die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) in Azure ermöglicht eine präzise Zugriffsverwaltung für Azure. Mit Azure RBAC können Sie den Benutzern nur die Zugriffsrechte gewähren, die diese zum Ausführen ihrer Aufgaben benötigen.|
 
-## <a name="restrict-clients-access-to-cluster-operations-using-rbac"></a><a id="cluster-rbac"></a>Beschränken Sie mithilfe von RBAC den Clientzugriff auf Clustervorgänge.
+## <a name="restrict-clients-access-to-cluster-operations-using-service-fabric-rbac"></a><a id="cluster-rbac"></a>Beschränken Sie mithilfe von Service Fabric RBAC den Clientzugriff auf Clustervorgänge.
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
@@ -248,7 +248,7 @@ Beachten Sie, dass RLS als vorgefertigtes Datenbankfeature nur für SQL Server-V
 | **SDL-Phase**               | Bereitstellung |  
 | **Zutreffende Technologien** | Allgemein |
 | **Attribute**              | Umgebung: Azure |
-| **Referenzen**              | [Rollenbasierte Zugriffssteuerung für Service Fabric-Clients](../../service-fabric/service-fabric-cluster-security-roles.md) |
+| **Referenzen**              | [Rollenbasierte Zugriffssteuerung in Service Fabric für Service Fabric-Clients](../../service-fabric/service-fabric-cluster-security-roles.md) |
 | **Schritte** | <p>Azure Service Fabric unterstützt zwei unterschiedliche Zugriffsberechtigungstypen für Clients, die mit einem Service Fabric-Cluster verbunden sind: Administrator und Benutzer. Zugriffssteuerung ermöglicht es dem Clusteradministrator, den Zugriff auf bestimmte Clustervorgänge für verschiedene Gruppen von Benutzern einzuschränken, wodurch die Sicherheit des Clusters erhöht wird.</p><p>Administratoren haben vollständigen Zugriff auf Verwaltungsfunktionen (einschließlich Lese-/Schreibzugriff). Benutzer haben standardmäßig nur Lesezugriff auf Verwaltungsfunktionen (z. B. Abfragefunktionen) sowie die Möglichkeit, Anwendungen und Dienste aufzulösen.</p><p>Sie geben die beiden Clientrollen (Administrator und Client) zum Zeitpunkt der Clustererstellung an, indem Sie für jede separate Zertifikate bereitstellen.</p>|
 
 ## <a name="perform-security-modeling-and-use-field-level-security-where-required"></a><a id="modeling-field"></a>Führen Sie die Sicherheitsmodellierung durch, und verwenden Sie bei Bedarf die Sicherheit auf Feldebene.
@@ -284,7 +284,7 @@ Beachten Sie, dass RLS als vorgefertigtes Datenbankfeature nur für SQL Server-V
 | **Referenzen**              | [Delegieren des Zugriffs auf Objekte in Ihrem Konto mithilfe von SAS und gespeicherter Zugriffsrichtlinien](../../storage/blobs/security-recommendations.md#identity-and-access-management) |
 | **Schritte** | In bestimmten Geschäftsszenarien müssen in Azure Table Storage unter Umständen sensible Daten für unterschiedliche Parteien gespeichert werden. Ein Beispiel wären etwa sensible Daten für verschiedene Länder/Regionen. In solchen Fällen können SAS-Signaturen unter Angabe der Partition und Zeilenschlüsselbereiche erstellt werden, sodass ein Benutzer auf spezifische Daten für ein bestimmtes Land bzw. eine bestimmte Region zugreifen kann.| 
 
-## <a name="enable-role-based-access-control-rbac-to-azure-storage-account-using-azure-resource-manager"></a><a id="rbac-azure-manager"></a>Aktivieren Sie mithilfe von Azure Resource Manager die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) für das Azure-Speicherkonto.
+## <a name="enable-azure-role-based-access-control-azure-rbac-to-azure-storage-account-using-azure-resource-manager"></a><a id="rbac-azure-manager"></a>Aktivieren Sie mithilfe von Azure Resource Manager die rollenbasierte Zugriffssteuerung in Azure (Azure RBAC) für das Azure-Speicherkonto.
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
@@ -292,7 +292,7 @@ Beachten Sie, dass RLS als vorgefertigtes Datenbankfeature nur für SQL Server-V
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | Allgemein |
 | **Attribute**              | –  |
-| **Referenzen**              | [Sichern Ihres Speicherkontos mit rollenbasierter Zugriffssteuerung (RBAC)](../../storage/blobs/security-recommendations.md) |
+| **Referenzen**              | [Sichern des Speicherkontos mit der rollenbasierten Zugriffssteuerung in Azure (Azure RBAC)](../../storage/blobs/security-recommendations.md) |
 | **Schritte** | <p>Bei der Erstellung eines neuen Speicherkontos haben Sie die Wahl zwischen dem klassischen Bereitstellungsmodell und dem Azure Resource Manager-Bereitstellungsmodell. Das klassische Modell der Ressourcenerstellen in Azure lässt nur den uneingeschränkten Zugriff auf das Abonnement und damit auf das Speicherkonto zu.</p><p>Beim Azure Resource Manager-Modell platzieren Sie das Speicherkonto in einer Ressourcengruppe und steuern den Zugriff auf die Verwaltungsebene dieses bestimmten Speicherkontos mithilfe von Azure Active Directory. Beispielsweise können Sie bestimmten Benutzern den Zugriff auf die Speicherkontoschlüssel gewähren, während andere Benutzer Informationen über das Speicherkonto anzeigen, jedoch nicht auf die Speicherkontoschlüssel zugreifen können.</p>|
 
 ## <a name="implement-implicit-jailbreak-or-rooting-detection"></a><a id="rooting-detection"></a>Implementieren Sie eine implizite Jailbreak- oder Rooting-Erkennung.

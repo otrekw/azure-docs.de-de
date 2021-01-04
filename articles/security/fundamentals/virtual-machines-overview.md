@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/2/2019
 ms.author: terrylan
-ms.openlocfilehash: d22ce3941b00903be8532caaa36a9ce55e2f2c6f
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: ed2cb967b24ce5abdebadfe29847ae1a16b4e745
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94409789"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498743"
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Virtuelle Azure-Computer – Sicherheitsübersicht
 Dieser Artikel bietet eine Übersicht über die wichtigsten Sicherheitsfunktionen von Azure, die mit virtuellen Computern verwendet werden können.
@@ -108,16 +108,16 @@ Ein wichtiger Teil der BCDR-Strategie Ihrer Organisation ist die Ermittlung, wie
 
 Site Recovery:
 
-* **Vereinfachung Ihrer BCDR-Strategie** : Site Recovery vereinfacht die Replikation, das Failover und die Wiederherstellung mehrerer Geschäftsworkloads und -Apps von einem einzelnen Standort. Site Recovery orchestriert die Replikation und das Failover, aber das Tool fängt keine Anwendungsdaten ab und besitzt auch keinerlei Informationen hierzu.
-* **Ermöglicht flexible Replikation** : Mithilfe von Site Recovery können Sie Workloads auf virtuellen Hyper-V-Computern, virtuellen VMware-Computern und physischen Windows-/Linux-Servern replizieren.
-* **Einfaches Failover und leichte Wiederherstellung werden unterstützt** : Site Recovery verfügt über Testfailover, mit denen Übungen zur Notfallwiederherstellung unterstützt werden, ohne dass sich dies auf Produktionsumgebungen auswirkt. Außerdem können Sie geplante Failover ohne Datenverlust für erwartete Ausfälle oder ungeplante Failover mit minimalem Datenverlust (je nach Replikationsfrequenz) für unerwartete Notfälle ausführen. Nach dem Failover können Sie ein Failback zu Ihren primären Standorten durchführen. Site Recovery verfügt über Wiederherstellungspläne, die Skripts und Azure Automation-Arbeitsmappen enthalten können, sodass Sie das Failover und die Wiederherstellung von Anwendungen mit mehreren Ebenen anpassen können.
-* **Beseitigung sekundärer Datencenter** : Sie können Daten an einem sekundären lokalen Standort oder in Azure replizieren. Wenn Sie Azure als Ziel für die Notfallwiederherstellung nutzen, vermeiden Sie die Kosten und Komplexität, die mit der Verwaltung eines sekundären Standorts verbunden sind. Replizierte Daten werden in Azure Storage gespeichert.
-* **Integration in vorhandene BCDR-Technologien** : Site Recovery wird zusammen mit den BCDR-Features anderer Anwendungen eingesetzt. Beispielsweise können Sie Site Recovery verwenden, um das SQL Server-Back-End von geschäftlichen Workloads zu schützen. Dies umfasst auch die native Unterstützung für SQL Server Always On zum Verwalten des Failovers von Verfügbarkeitsgruppen.
+* **Vereinfachung Ihrer BCDR-Strategie**: Site Recovery vereinfacht die Replikation, das Failover und die Wiederherstellung mehrerer Geschäftsworkloads und -Apps von einem einzelnen Standort. Site Recovery orchestriert die Replikation und das Failover, aber das Tool fängt keine Anwendungsdaten ab und besitzt auch keinerlei Informationen hierzu.
+* **Ermöglicht flexible Replikation**: Mithilfe von Site Recovery können Sie Workloads auf virtuellen Hyper-V-Computern, virtuellen VMware-Computern und physischen Windows-/Linux-Servern replizieren.
+* **Einfaches Failover und leichte Wiederherstellung werden unterstützt**: Site Recovery verfügt über Testfailover, mit denen Übungen zur Notfallwiederherstellung unterstützt werden, ohne dass sich dies auf Produktionsumgebungen auswirkt. Außerdem können Sie geplante Failover ohne Datenverlust für erwartete Ausfälle oder ungeplante Failover mit minimalem Datenverlust (je nach Replikationsfrequenz) für unerwartete Notfälle ausführen. Nach dem Failover können Sie ein Failback zu Ihren primären Standorten durchführen. Site Recovery verfügt über Wiederherstellungspläne, die Skripts und Azure Automation-Arbeitsmappen enthalten können, sodass Sie das Failover und die Wiederherstellung von Anwendungen mit mehreren Ebenen anpassen können.
+* **Beseitigung sekundärer Datencenter**: Sie können Daten an einem sekundären lokalen Standort oder in Azure replizieren. Wenn Sie Azure als Ziel für die Notfallwiederherstellung nutzen, vermeiden Sie die Kosten und Komplexität, die mit der Verwaltung eines sekundären Standorts verbunden sind. Replizierte Daten werden in Azure Storage gespeichert.
+* **Integration in vorhandene BCDR-Technologien**: Site Recovery wird zusammen mit den BCDR-Features anderer Anwendungen eingesetzt. Beispielsweise können Sie Site Recovery verwenden, um das SQL Server-Back-End von geschäftlichen Workloads zu schützen. Dies umfasst auch die native Unterstützung für SQL Server Always On zum Verwalten des Failovers von Verfügbarkeitsgruppen.
 
 Weitere Informationen:
 
 * [Was ist Azure Site Recovery?](../../site-recovery/site-recovery-overview.md)
-* [Wie funktioniert Azure Site Recovery?](/azure/security/fundamentals/azure-to-azure-architecture)
+* [Wie funktioniert Azure Site Recovery?](../../site-recovery/azure-to-azure-architecture.md)
 * [Welche Workloads werden durch Azure Site Recovery geschützt?](../../site-recovery/site-recovery-workload.md)
 
 ## <a name="virtual-networking"></a>Virtuelle Netzwerke

@@ -7,16 +7,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: overview
-ms.date: 9/17/2020
+ms.date: 11/23/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: Gesichtserkennung, Gesichtserkennungssoftware, Gesichtsanalyse, Gesichtsabgleich, Gesichtserkennungs-App, Gesichtserkennungssuche nach Bild, Gesichtserkennungssuche
-ms.openlocfilehash: ccc9ee3107d287844430be0ae089e4b7ac3a2f44
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 600ca48cc19ee8723b423e484ec96736a55ae7fc
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92911442"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95532255"
 ---
 # <a name="what-is-the-azure-face-service"></a>Was ist der Azure-Gesichtserkennungsdienst?
 
@@ -76,9 +76,9 @@ Nachdem Sie eine Datenbank erstellt und trainiert haben, können Sie die Identif
 
 Weitere Informationen zur Personenidentifizierung finden Sie im Konzeptleitfaden zur [Gesichtserkennung](concepts/face-recognition.md) oder in der Referenzdokumentation zur [Identify-API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239).
 
-## <a name="containers"></a>Container
+## <a name="deploy-on-premises-using-docker-containers"></a>Lokales Bereitstellen unter Verwendung von Docker-Containern
 
-[Verwenden Sie den Gesichtserkennungscontainer](face-how-to-install-containers.md), um Gesichter zu erkennen und zu identifizieren. Installieren Sie dazu einen standardisierten Docker-Container, der sich näher bei Ihren Daten befindet.
+[Verwenden Sie den Container für die Gesichtserkennung (Vorschauversion)](face-how-to-install-containers.md), um API-Features lokal bereitzustellen. Mithilfe dieses Docker-Containers können Sie den Dienst näher an Ihre Daten heranbringen, um Compliance- oder Sicherheitsanforderungen zu erfüllen oder anderen betrieblichen Anforderungen gerecht zu werden.
 
 ## <a name="sample-apps"></a>Beispiel-Apps
 

@@ -11,17 +11,17 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 11/14/2019
-ms.openlocfilehash: 4539709dbac992979af6a56e3dae81725a35739d
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: c5839589c35ea5a9c52303801a8767fc598434fc
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325003"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905875"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-servers-in-azure-sql-database"></a>Verwenden von Virtual Network-Dienstendpunkten und -Regeln für Server in Azure SQL-Datenbank
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
-*VNET-Regeln* sind ein Firewallsicherheitsfeature, das steuert, ob der Server für Ihre Datenbanken und Pools für elastische Datenbanken in [Azure SQL-Datenbank](sql-database-paas-overview.md) oder für Ihre Datenbanken in [Azure Synapse](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) Nachrichten akzeptiert, die von bestimmten Subnetzen in virtuellen Netzwerken gesendet werden. In diesem Artikel wird erklärt, warum VNET-Regeln mitunter die beste Möglichkeit darstellen, um Nachrichten an Ihre Datenbank in Azure SQL-Datenbank und Azure Synapse Analytics (ehemals SQL Data Warehouse) sicher zuzulassen.
+*VNET-Regeln* sind ein Firewallsicherheitsfeature, das steuert, ob der Server für Ihre Datenbanken und Pools für elastische Datenbanken in [Azure SQL-Datenbank](sql-database-paas-overview.md) oder für Ihre Datenbanken in [Azure Synapse](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) Nachrichten akzeptiert, die von bestimmten Subnetzen in virtuellen Netzwerken gesendet werden. In diesem Artikel wird erläutert, warum die VNET-Regeln manchmal die beste Möglichkeit darstellen, um eine sichere Kommunikation mit Ihrer Datenbank in Azure SQL-Datenbank und Azure Synapse Analytics zu ermöglichen.
 
 > [!NOTE]
 > Dieser Artikel gilt sowohl für Azure SQL-Datenbank als auch für Azure Synapse Analytics. Der Einfachheit halber wird der Begriff „Datenbank“ verwendet, wenn auf Datenbanken sowohl in Azure SQL-Datenbank als auch in Azure Synapse Analytics verwiesen wird. Ebenso bezieht sich der Begriff „Server“ auf den [logischen SQL-Server](logical-servers.md), der Azure SQL-Datenbank und Azure Synapse Analytics hostet.
@@ -55,7 +55,7 @@ Bei der Verwaltung der VNET-Dienstendpunkte erfolgt eine Trennung von Sicherheit
 - **Netzwerkadministrator:** &nbsp;Aktivieren des Endpunkts.
 - **Datenbankadministrator:** &nbsp;Aktualisieren der Zugriffssteuerungsliste durch Hinzufügen des angegebenen Subnetzes zum Server.
 
-*Alternative zur rollenbasierten Zugriffssteuerung:*
+*Alternative zur rollenbasierten Zugriffssteuerung von Azure (Azure RBAC):*
 
 Die Rollen „Netzwerkadministrator“ und „Datenbankadministrator“ haben mehr Zugriffsrechte, als für die Verwaltung von VNET-Regeln erforderlich ist. Es wird nur eine Teilmenge der Zugriffsrechte benötigt.
 
@@ -80,6 +80,7 @@ Bei Azure SQL-Datenbank gelten für VNET-Regeln folgende Einschränkungen:
 
 - Durch das Aktivieren von VNET-Dienstendpunkten für Azure SQL-Datenbank werden auch die Endpunkte für die Azure-Dienste MySQL und PostgreSQL aktiviert. Jedoch treten bei Verbindungen von den Endpunkten mit den MySQL- oder PostgreSQL-Instanzen möglicherweise Fehler auf, wenn Endpunkte aktiviert sind.
   - Der Grund dafür ist, dass für MySQL und PostgreSQL wahrscheinlich keine VNET-Regel konfiguriert wurde. Sie müssen für Azure Database for MySQL und PostgreSQL eine VNET-Regel konfigurieren, damit die Verbindung erfolgreich hergestellt wird.
+  - Legen Sie zum Definieren von VNET-Firewallregeln auf einem logischen SQL-Server, der bereits mit privaten Endpunkten konfiguriert wurde, die Einstellung **Zugriff auf öffentliches Netzwerk verweigern** auf **Nein** fest.
 
 - In der Firewall gelten zwar IP-Adressbereiche für die folgenden Netzwerkelemente, VNET-Regeln jedoch nicht:
   - [Virtuelles privates S2S-Netzwerk (Site-to-Site-VPN)][vpn-gateway-indexmd-608y]
@@ -89,12 +90,12 @@ Bei Azure SQL-Datenbank gelten für VNET-Regeln folgende Einschränkungen:
 
 Stellen Sie bei der Verwendung von Dienstendpunkten für die Azure SQL-Datenbank folgende Überlegungen an:
 
-- **Ausgehend zu öffentlichen IP-Adressen der Azure SQL-Datenbank ist erforderlich** : Netzwerksicherheitsgruppen (NSGs) müssen für IP-Adressen der Azure SQL-Datenbank geöffnet werden, um Verbindungen zuzulassen. Sie erreichen dies, indem Sie [Diensttags](../../virtual-network/network-security-groups-overview.md#service-tags) der Netzwerksicherheitsgruppe für die Azure SQL-Datenbank verwenden.
+- **Ausgehend zu öffentlichen IP-Adressen der Azure SQL-Datenbank ist erforderlich**: Netzwerksicherheitsgruppen (NSGs) müssen für IP-Adressen der Azure SQL-Datenbank geöffnet werden, um Verbindungen zuzulassen. Sie erreichen dies, indem Sie [Diensttags](../../virtual-network/network-security-groups-overview.md#service-tags) der Netzwerksicherheitsgruppe für die Azure SQL-Datenbank verwenden.
 
 ### <a name="expressroute"></a>ExpressRoute
 
 Wenn Sie [ExpressRoute](../../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) lokal für öffentliches Peering oder für Microsoft-Peering verwenden, müssen Sie die verwendeten NAT-IP-Adressen identifizieren. Beim öffentlichen Peering werden für jede ExpressRoute-Verbindung standardmäßig zwei NAT-IP-Adressen verwendet. Diese werden auf den Datenverkehr der Azure-Dienste angewendet, wenn der Datenverkehr im Microsoft Azure-Netzwerk-Backbone eintrifft. Beim Microsoft-Peering werden die verwendeten NAT-IP-Adressen entweder vom Kunden oder vom Dienstanbieter bereitgestellt. Um den Zugriff auf Ihre Dienstressourcen zuzulassen, müssen Sie diese öffentlichen IP-Adressen in der Ressourceneinstellung der IP-Firewall zulassen. [Öffnen Sie über das Azure-Portal ein Supportticket für ExpressRoute](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview), um die IP-Adressen Ihrer ExpressRoute-Verbindung für öffentliches Peering zu ermitteln. Erfahren Sie mehr über [NAT für öffentliches ExpressRoute-Peering und Microsoft-Peering](../../expressroute/expressroute-nat.md?toc=%2fazure%2fvirtual-network%2ftoc.json#nat-requirements-for-azure-public-peering).
-  
+
 Um die Kommunikation von Ihrer Verbindung mit Azure SQL-Datenbank zu ermöglichen, müssen Sie IP-Netzwerkregeln für die öffentlichen IP-Adressen Ihrer Netzwerkadressenübersetzung erstellen.
 
 <!--
@@ -121,7 +122,7 @@ Polybase und die COPY-Anweisung werden häufig verwendet, um Daten aus Azure Sto
 
 #### <a name="steps"></a>Schritte
 
-1. **Registrieren Sie Ihren Server** , der Azure Synapse hostet, in PowerShell bei Azure Active Directory (AAD):
+1. Wenn Sie über einen eigenständigen dedizierten SQL-Pool verfügen, registrieren Sie Ihren SQL-Server mithilfe von PowerShell bei Azure Active Directory (AAD): 
 
    ```powershell
    Connect-AzAccount
@@ -129,6 +130,14 @@ Polybase und die COPY-Anweisung werden häufig verwendet, um Daten aus Azure Sto
    Set-AzSqlServer -ResourceGroupName your-database-server-resourceGroup -ServerName your-SQL-servername -AssignIdentity
    ```
 
+   Dieser Schritt ist für dedizierte SQL-Pools in einem Synapse-Arbeitsbereich nicht erforderlich.
+
+1. Wenn Sie über einen Synapse-Arbeitsbereich verfügen, registrieren Sie die vom System verwaltete Identität Ihres Arbeitsbereichs:
+
+   1. Wechseln Sie im Azure-Portal zu Ihrem Synapse-Arbeitsbereich.
+   2. Wechseln Sie zum Blatt „Verwaltete Identitäten“. 
+   3. Vergewissern Sie sich, dass die Option „Pipelines zulassen“ aktiviert ist.
+   
 1. Erstellen Sie ein **Speicherkonto vom Typ „Universell v2“** , indem Sie [diesen Leitfaden](../../storage/common/storage-account-create.md) verwenden.
 
    > [!NOTE]
@@ -136,7 +145,7 @@ Polybase und die COPY-Anweisung werden häufig verwendet, um Daten aus Azure Sto
    > - Falls Sie über ein universelles Speicherkonto (v1) oder ein Blobspeicherkonto verfügen, müssen Sie zuerst das **Upgrade auf Version 2** durchführen, indem Sie [diesen Leitfaden](../../storage/common/storage-account-upgrade.md) verwenden.
    > - Informationen zu bekannten Problemen mit Azure Data Lake Storage Gen2 finden Sie in [diesem Leitfaden](../../storage/blobs/data-lake-storage-known-issues.md).
 
-1. Navigieren Sie unter Ihrem Speicherkonto zu **Zugriffssteuerung (IAM)** , und wählen Sie **Rollenzuweisung hinzufügen** aus. Weisen Sie dem Server, auf dem Ihre bei Azure Active Directory (AAD) (wie in Schritt 1) registrierte Azure Synapse Analytics-Instanz gehostet wird, die Azure-Rolle **Mitwirkender an Storage-Blobdaten** zu.
+1. Navigieren Sie unter Ihrem Speicherkonto zu **Zugriffssteuerung (IAM)** , und wählen Sie **Rollenzuweisung hinzufügen** aus. Weisen Sie dem Server oder Arbeitsbereich, auf bzw. in dem Ihr bei Azure Active Directory (AAD) registrierter dedizierter SQL-Pool gehostet wird, die Azure-Rolle **Mitwirkender an Storage-Blobdaten** zu.
 
    > [!NOTE]
    > Nur Mitglieder mit der Berechtigung „Besitzer“ für das Speicherkonto können diesen Schritt ausführen. Verschiedene integrierte Azure-Rollen finden Sie in diesem [Leitfaden](../../role-based-access-control/built-in-roles.md).
@@ -188,7 +197,7 @@ Verwenden Sie PowerShell, um das Flag **IgnoreMissingVNetServiceEndpoint** festz
 
 ## <a name="errors-40914-and-40615"></a>Fehler 40914 und 40615
 
-Der Verbindungsfehler 40914 bezieht sich auf *VNET-Regeln* , die im Azure-Portal im Bereich „Firewall“ angegeben werden. Beim Fehler 40615 verhält es sich ähnlich, nur dass sich dieser Fehler auf *IP-Adressregeln* in der Firewall bezieht.
+Der Verbindungsfehler 40914 bezieht sich auf *VNET-Regeln*, die im Azure-Portal im Bereich „Firewall“ angegeben werden. Beim Fehler 40615 verhält es sich ähnlich, nur dass sich dieser Fehler auf *IP-Adressregeln* in der Firewall bezieht.
 
 ### <a name="error-40914"></a>Fehler 40914
 
@@ -229,7 +238,7 @@ Intern rufen die PowerShell-Cmdlets für SQL-VNet-Aktionen REST-APIs auf. Sie k�
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Falls Sie bereits ein Subnetz haben, das mit dem bestimmten Virtual Network-Dienstendpunkt gekennzeichnet ist, *geben Sie den Namen ein* , der zur Azure SQL-Datenbank-Instanz gehört.
+Falls Sie bereits ein Subnetz haben, das mit dem bestimmten Virtual Network-Dienstendpunkt gekennzeichnet ist, *geben Sie den Namen ein*, der zur Azure SQL-Datenbank-Instanz gehört.
 
 - Der Typname dieses Endpunkts ist **Microsoft.Sql**.
 - Wenn Ihr Subnetz nicht mit dem Typnamen gekennzeichnet werden kann, lesen Sie unter [Überprüfen, ob Ihr Subnetz ein Endpunkt ist][sql-db-vnet-service-endpoint-rule-powershell-md-a-verify-subnet-is-endpoint-ps-100] nach.
@@ -240,7 +249,7 @@ Falls Sie bereits ein Subnetz haben, das mit dem bestimmten Virtual Network-Dien
 
 1. Melden Sie sich beim [Azure-Portal][http-azure-portal-link-ref-477t] an.
 
-2. Suchen Sie nach **SQL-Server** , und wählen Sie dann Ihren Server aus. Wählen Sie unter **Sicherheit** die Option **Firewalls und virtuelle Netzwerke** aus.
+2. Suchen Sie nach **SQL-Server**, und wählen Sie dann Ihren Server aus. Wählen Sie unter **Sicherheit** die Option **Firewalls und virtuelle Netzwerke** aus.
 
 3. Legen Sie das Steuerelement **Zugriff auf Azure-Dienste erlauben** auf AUS fest.
 

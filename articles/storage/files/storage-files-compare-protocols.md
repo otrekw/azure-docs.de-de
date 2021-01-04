@@ -4,16 +4,16 @@ description: Erfahren Sie mehr über die verfügbaren Protokolle, bevor Sie eine
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 09/15/2020
+ms.date: 12/04/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 961ba457136d20fbb63ae3315fe8143cffb56be2
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 288d1740c1c4c67dd8756de5fc0652966ae89488
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629307"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96620973"
 ---
 # <a name="azure-file-share-protocols"></a>Azure-Dateifreigabeprotokolle
 
@@ -26,7 +26,7 @@ Azure Files bietet zwei Protokolle zum Verbinden und Einbinden Ihrer Azure-Datei
 |Zugriffsprotokolle     |NFS 4.1         |SMB 2.1, SMB 3.0         |
 |Unterstütztes Betriebssystem     |Linux-Kernelversion 4.3 und höher         |Windows 2008 R2 und höher, Linux-Kernel Version 4.11 und höher         |
 |[Verfügbare Tarife](storage-files-planning.md#storage-tiers)     |Storage Premium         |Storage Premium, transaktionsoptimiert, heiß, kalt         |
-|[Redundanz](storage-files-planning.md#redundancy)     |LRS         |LRS, ZRS, GRS         |
+|[Redundanz](storage-files-planning.md#redundancy)     |LRS, ZRS         |LRS, ZRS, GRS         |
 |Authentifizierung     |Nur Host-basierte Authentifizierung        |Identitätsbasierte Authentifizierung, benutzerbasierte Authentifizierung         |
 |Berechtigungen     |Berechtigungen im UNIX-Format         |Berechtigungen im NTFS-Format         |
 |Dateisystemsemantik     |POSIX-kompatibel         |Nicht POSIX-kompatibel         |

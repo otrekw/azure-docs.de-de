@@ -6,16 +6,16 @@ ms.subservice: migration
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: MashaMSFT
-ms.author: mathoma
+author: stevestein
+ms.author: sstein
 ms.reviewer: mokabiru
 ms.date: 11/06/2020
-ms.openlocfilehash: df53f4912108962e9d50400c4c2516aefaa50976
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: c47e4c1278f222feac35a2c6ab0b067c916c0217
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94496239"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96326844"
 ---
 # <a name="migration-performance-sql-server-to-sql-managed-instance-performance-analysis"></a>Migrationsleistung: Leistungsanalyse für Migrationen von SQL Server zu SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -86,4 +86,4 @@ Weitere Informationen zum Optimieren Ihrer neuen Azure SQL Managed Instance-Umge
 - [Ermitteln der Gründe für die Unterschiede bei der Workloadleistung zwischen Azure SQL Managed Instance und SQL Server](https://medium.com/azure-sqldb-managed-instance/what-to-do-when-azure-sql-managed-instance-is-slower-than-sql-server-dd39942aaadd)
 - [Hauptursache für Leistungsunterschiede zwischen SQL Managed Instance und SQL Server](https://azure.microsoft.com/blog/key-causes-of-performance-differences-between-sql-managed-instance-and-sql-server/)
 - [Best Practices für die Speicherleistung und Überlegungen zu Azure SQL Managed Instance (Universell)](https://techcommunity.microsoft.com/t5/datacat/storage-performance-best-practices-and-considerations-for-azure/ba-p/305525)
-- [Leistungsüberwachung in Echtzeit für verwaltete Azure SQL-Datenbank-Instanzen](https://docs.microsoft.com/archive/blogs/sqlcat/real-time-performance-monitoring-for-azure-sql-database-managed-instance)
+- [Leistungsüberwachung in Echtzeit für verwaltete Azure SQL-Datenbank-Instanzen](/archive/blogs/sqlcat/real-time-performance-monitoring-for-azure-sql-database-managed-instance)

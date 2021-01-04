@@ -1,7 +1,7 @@
 ---
 title: Architektur und wichtige Konzepte
 titleSuffix: Azure Machine Learning
-description: Enthält Informationen zu Architektur, Begriffen und Konzepten von Azure Machine Learning.
+description: Dieser Artikel enthält eine allgemeine Beschreibung der Grundlagen in Bezug auf die Architektur, Begriffe und Konzepte von Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 08/20/2020
 ms.custom: seoapril2019, seodec18
-ms.openlocfilehash: f17cdd42c892f6c0d218875cf304846937ba58d7
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: a36481b2496060cb12bd755f56680915ec1074bb
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94444835"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94540203"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>So funktioniert Azure Machine Learning: Architektur und Konzepte
 
@@ -267,6 +267,18 @@ Die [Azure Machine Learning-CLI](reference-azure-machine-learning-cli.md) ist ei
 [Machine Learning-Pipelines](concept-ml-pipelines.md) werden zum Erstellen und Verwalten von Workflows verwendet, die Machine Learning-Phasen zusammenfügen. Eine Pipeline kann beispielsweise eine Datenaufbereitungs-, eine Modelltrainings-, eine Modellimplementierungs- und eine Rückschluss-/Bewertungsphase enthalten. Jede Phase kann mehrere Schritte umfassen, von denen wiederum jeder Schritt auf verschiedenen Computezielen unbeaufsichtigt ausgeführt werden kann. 
 
 Pipelineschritte sind wiederverwendbar und können ohne erneute Ausführung der vorherigen Schritte ausgeführt werden, wenn sich die Ausgabe dieser Schritte nicht geändert hat. Beispielsweise können Sie ein Modell erneut trainieren, ohne teure Schritte zur Datenvorbereitung erneut auszuführen, wenn sich die Daten nicht geändert haben. Pipelines ermöglichen Data Scientists auch, bei der Arbeit an separaten Bereichen eines Machine Learning-Workflows zusammenzuarbeiten.
+
+## <a name="monitoring-and-logging"></a>Überwachung und Protokollierung
+
+Azure Machine Learning verfügt über die folgenden Funktionen für die Überwachung und Protokollierung:
+
+* __Data Scientists__ (Wissenschaftliche Fachkräfte für Daten) können ihre Experimente und Protokollinformationen über unsere Trainingsausführungen überwachen. Weitere Informationen finden Sie in den folgenden Artikeln:
+   * [Starten, Überwachen und Abbrechen von Trainingsausführungen in Python](how-to-manage-runs.md)
+   * [Protokollieren von Metriken für Trainingsausführungen](how-to-track-experiments.md)
+   * [Nachverfolgen von Experimenten mit MLflow](how-to-use-mlflow.md)
+   * [Visualisieren von Experimentausführungen und -metriken mit TensorBoard und Azure Machine Learning](how-to-monitor-tensorboard.md)
+* __Administratoren__ können ihre Informationen zum Arbeitsbereich und zu den relevanten Azure-Ressourcen und Ereignissen, z. B. Erstellen und Löschen von Ressourcen, mit Azure Monitor überwachen. Weitere Informationen finden Sie unter [Überwachen von Azure Machine Learning](monitor-azure-machine-learning.md).
+* Für den __DevOps__- bzw. __MLOps__-Bereich können generierte Informationen von Modellen, die als Webdienste oder IoT Edge-Module bereitgestellt werden, überwacht werden. Dies ermöglicht das Identifizieren von Problemen mit den Bereitstellungen und das Sammeln der an den Dienst übermittelten Daten. Weitere Informationen finden Sie unter [Sammeln von Modelldaten](how-to-enable-data-collection.md) und [Überwachen mit Application Insights](how-to-enable-app-insights.md).
 
 ## <a name="interacting-with-your-workspace"></a>Interaktion mit Ihrem Arbeitsbereich
 

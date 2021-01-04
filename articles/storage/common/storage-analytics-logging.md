@@ -9,12 +9,12 @@ ms.date: 07/23/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: 971f0cd74d7ccc6e2b0d8049a4441ba3d465b70a
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: eb71de223e2d840e0caa0444b837e16e1f091414
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92787668"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96484786"
 ---
 # <a name="azure-storage-analytics-logging"></a>Azure Storage Analytics-Protokollierung
 
@@ -61,7 +61,7 @@ Sobald Anforderungen protokolliert werden, lädt die Speicheranalyse Zwischenerg
 
 Bei einer großen Menge an Protokolldaten mit mehreren Dateien pro Stunde können Sie anhand der Blobmetadaten ermitteln, welche Daten das Protokoll enthält, indem Sie die Blobmetadatenfelder untersuchen. Dies ist auch deshalb nützlich, weil es in manchen Fällen zu Verzögerungen beim Schreiben von Daten in die Protokolldateien kommen kann: Die Blobmetadaten bieten eine genauere Angabe des Blobinhalts als der Blobname.
 
-Mit den meisten Tools zum Durchsuchen des Speichers können Sie die Metadaten von Blobs anzeigen. Zudem können Sie diese Informationen über PowerShell oder programmgesteuert anzeigen. Der folgende PowerShell-Codeausschnitt ist ein Beispiel für die Filterung der Liste mit Protokollblobs nach dem Namen, um einen Zeitpunkt anzugeben, und nach Metadaten, um nur die Protokolle zu identifizieren, die **write** -Vorgänge enthalten.  
+Mit den meisten Tools zum Durchsuchen des Speichers können Sie die Metadaten von Blobs anzeigen. Zudem können Sie diese Informationen über PowerShell oder programmgesteuert anzeigen. Der folgende PowerShell-Codeausschnitt ist ein Beispiel für die Filterung der Liste mit Protokollblobs nach dem Namen, um einen Zeitpunkt anzugeben, und nach Metadaten, um nur die Protokolle zu identifizieren, die **write**-Vorgänge enthalten.  
 
  ```powershell
  Get-AzStorageBlob -Container '$logs' |  
@@ -139,7 +139,7 @@ Sie können die zu protokollierenden Speicherdienste und den Aufbewahrungszeitra
 
  Sie können PowerShell auf Ihrem lokalen Computer zum Konfigurieren der Speicherprotokollierung in Ihrem Speicherkonto verwenden: Mit dem Azure PowerShell-Cmdlet **Get-AzStorageServiceLoggingProperty** können Sie die aktuellen Einstellungen abrufen, und mit dem Cmdlet **Set-AzStorageServiceLoggingProperty** können Sie die aktuellen Einstellungen ändern.  
 
- Die Cmdlets, über die die Speicherprotokollierung gesteuert wird, verwenden einen **LoggingOperations** -Parameter. Dabei handelt es sich um eine Zeichenfolge mit einer durch Trennzeichen getrennten Liste von zu protokollierenden Anforderungstypen. Die drei möglichen Anforderungstypen sind **read** , **write** und **delete** . Um die Protokollierung zu deaktivieren, verwenden Sie den Wert **none** für den Parameter **LoggingOperations** .  
+ Die Cmdlets, über die die Speicherprotokollierung gesteuert wird, verwenden einen **LoggingOperations**-Parameter. Dabei handelt es sich um eine Zeichenfolge mit einer durch Trennzeichen getrennten Liste von zu protokollierenden Anforderungstypen. Die drei möglichen Anforderungstypen sind **read**, **write** und **delete**. Um die Protokollierung zu deaktivieren, verwenden Sie den Wert **none** für den Parameter **LoggingOperations**.  
 
  Mit dem folgenden Befehl wird die Protokollierung für read-, write- und delete-Anforderungen im Warteschlangendienst mit einem Aufbewahrungszeitraum von fünf Tagen in Ihrem Standardspeicherkonto aktiviert:  
 
@@ -204,7 +204,7 @@ Im folgenden Beispiel wird veranschaulicht, wie Sie die Protokolldaten für den 
 azcopy copy 'https://mystorageaccount.blob.core.windows.net/$logs/queue' 'C:\Logs\Storage' --include-path '2014/05/20/09;2014/05/20/10;2014/05/20/11' --recursive
 ```
 
-Weitere Informationen zum Herunterladen bestimmter Dateien finden Sie unter [Herunterladen bestimmter Dateien](./storage-use-azcopy-blobs.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json#download-specific-files).
+Weitere Informationen zum Herunterladen bestimmter Dateien finden Sie unter [Herunterladen bestimmter Dateien](./storage-use-azcopy-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#download-specific-files).
 
 Nach dem Herunterladen der Protokolldaten können Sie die Protokolleinträge in den Dateien anzeigen. Diese Protokolldateien verwenden ein durch Trennzeichen getrenntes Textformat, das viele Protokolllesetools analysieren können. (Weitere Informationen finden Sie im Leitfaden [Microsoft Azure Storage: Überwachung, Diagnose und Problembehandlung](storage-monitoring-diagnosing-troubleshooting.md).) Die verschiedenen Tools umfassen unterschiedliche Funktionen zum Formatieren, Filtern, Sortieren und Durchsuchen der Inhalte der Protokolldateien. Weitere Informationen zum Format und Inhalt von Protokolldateien der Speicherprotokollierung finden Sie unter [Storage Analytics-Protokollformat](/rest/api/storageservices/storage-analytics-log-format) und [Protokollierte Vorgänge und Statusmeldungen in Storage Analytics](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages).
 

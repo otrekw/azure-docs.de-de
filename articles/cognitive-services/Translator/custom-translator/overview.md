@@ -9,16 +9,16 @@ ms.subservice: translator-text
 ms.date: 12/09/2019
 ms.author: swmachan
 ms.topic: overview
-ms.openlocfilehash: 55555d81eb531ae5a4d946fa3f661796b3294897
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 6a7301fd878eb65e4c1dd540275611bcf9348afc
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94365498"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95241742"
 ---
 # <a name="what-is-custom-translator"></a>Worum handelt es sich bei Custom Translator?
 
-[Custom Translator](https://portal.customtranslator.azure.ai) ist ein Feature des Microsoft Translator-Diensts, der Übersetzungsunternehmen, App-Entwicklern und Sprachdienstanbietern das Erstellen von angepassten Systemen für neuronale maschinelle Übersetzung (NMT) ermöglicht. Das angepasste Übersetzungssystem wird nahtlos in vorhandene Anwendungen, Workflows und Websites integriert. [Custom Translator](https://portal.customtranslator.azure.ai/) bietet ähnliche Funktionen wie [Microsoft Translator Hub](https://hub.microsofttranslator.com/) für die statistische maschinelle Übersetzung (Statistical Machine Translation, SMT), aber ausschließlich für Systeme für neuronale maschinelle Übersetzung (Neural Machine Translation, NMT).
+[Custom Translator](https://portal.customtranslator.azure.ai) ist ein Feature des Microsoft Translator-Diensts, der Übersetzungsunternehmen, App-Entwicklern und Sprachdienstanbietern das Erstellen von angepassten Systemen für neuronale maschinelle Übersetzung (NMT) ermöglicht. Das angepasste Übersetzungssystem wird nahtlos in vorhandene Anwendungen, Workflows und Websites integriert.
 
 Mit [Custom Translator](https://portal.customtranslator.azure.ai) erstellte Übersetzungssysteme sind über dieselbe cloudbasierte, [sichere](https://cognitive.uservoice.com/knowledgebase/articles/1147537-api-and-customization-confidentiality), leistungsstarke, hochgradig skalierbare [Textübersetzungs-API V3](../reference/v3-0-translate.md?tabs=curl) von Microsoft verfügbar, die jeden Tag Milliarden von Übersetzungen ermöglicht.
 

@@ -5,13 +5,13 @@ author: ThomasWeiss
 ms.author: thweiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/10/2020
-ms.openlocfilehash: c811a2ea5c06250068e7c0276e4b79e9108d920d
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.date: 11/25/2020
+ms.openlocfilehash: cabc243c6ba74217873b5b0a5fa51a7cb410512e
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94490354"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96170830"
 ---
 # <a name="azure-cosmos-db-serverless-preview"></a>Azure Cosmos DB serverlos (Vorschau)
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -33,9 +33,8 @@ Wenn Sie Azure Cosmos DB verwenden, werden für jeden Datenbankvorgang Kosten i
 
 Azure Cosmos DB Server serverlos ist am besten für Szenarien geeignet, in denen Folgendes erwartet wird:
 
-- **Wenig Datenverkehr** : Da die Bereitstellung von Kapazität in solchen Fällen nicht erforderlich und unter Umständen kostenintensiv ist.
-- **Mittlere Burstfähigkeit** : Da serverlose Container bis zu 5.000 Anforderungseinheiten pro Sekunde bereitstellen können.
-- **Mittlere Leistung** : Da serverlose Container [bestimmten Leistungsmerkmale](#performance) aufweisen.
+- **Niedriger, zeitweiliger und unvorhersehbarer Datenverkehr:** Da die Bereitstellung von Kapazität in solchen Fällen nicht erforderlich und unter Umständen kostenintensiv ist.
+- **Mittlere Leistung**: Da serverlose Container [bestimmten Leistungsmerkmale](#performance) aufweisen.
 
 Aus diesen Gründen sollte Azure Cosmos DB serverlos für die folgenden Workloadtypen in Betracht gezogen werden:
 
@@ -62,7 +61,6 @@ Jeder Container, der in einem serverlosen Konto erstellt wird, ist ein serverlos
     - Wenn Sie einen serverlosen Container erstellen, können Sie keinen Durchsatz übergeben. Bei einem Versuch wird ein Fehler zurückgegeben.
     - Sie können den Durchsatz für einen serverlosen Container nicht lesen oder aktualisieren, und es wird ein Fehler zurückgegeben.
     - Sie können in einem serverlosen Konto keine Datenbank mit freigegebenem Durchsatz erstellen, und es wird ein Fehler zurückgegeben.
-- Serverlose Container können einen maximalen Durchsatz von 5.000 Anforderungseinheiten pro Sekunde bereitstellen.
 - Serverlose Container können maximal 50 GB Daten und Indizes speichern.
 
 ## <a name="monitoring-your-consumption"></a>Überwachen Ihres Verbrauchs
@@ -80,8 +78,8 @@ Sie finden dasselbe Diagramm, wenn Sie Azure Monitor verwenden, wie [hier](monit
 Serverlose Ressourcen ergeben bestimmte Leistungsmerkmale, die davon unterscheiden, was Ressourcen mit bereitgestelltem Durchsatz bieten:
 
 - **Verfügbarkeit:** Nachdem das serverlose Angebot allgemein verfügbar ist, wird die Verfügbarkeit der serverlosen Container durch eine Vereinbarung zum Servicelevel (SLA) von 99,9 % abgedeckt, wenn keine Verfügbarkeitszonen (Zonenredundanz) verwendet werden. Die SLA beträgt 99,99 %, wenn Verfügbarkeitszonen verwendet werden.
-- **Latenz** : Nachdem das serverlose Angebot allgemein verfügbar ist, wird die Latenz der serverlosen Container durch ein Servicelevelziel (SLO) von 10 Millisekunden oder weniger für Punktlesevorgänge und 30 Millisekunden oder weniger für Schreibvorgänge abgedeckt. Ein Punktlesevorgang besteht aus dem Abrufen eines einzelnen Elements anhand seiner ID und seines Partitionsschlüsselwerts.
-- **Burstfähigkeit** : Nachdem das serverlose Angebot allgemein verfügbar ist, wird die Burstfähigkeit von serverlosen Containern durch ein Servicelevelziel (SLO) von 95 % abgedeckt. Dies bedeutet, dass die maximale Burstfähigkeit mindestens 95 % der Zeit erreicht werden kann.
+- **Latenz**: Nachdem das serverlose Angebot allgemein verfügbar ist, wird die Latenz der serverlosen Container durch ein Servicelevelziel (SLO) von 10 Millisekunden oder weniger für Punktlesevorgänge und 30 Millisekunden oder weniger für Schreibvorgänge abgedeckt. Ein Punktlesevorgang besteht aus dem Abrufen eines einzelnen Elements anhand seiner ID und seines Partitionsschlüsselwerts.
+- **Burstfähigkeit**: Nachdem das serverlose Angebot allgemein verfügbar ist, wird die Burstfähigkeit von serverlosen Containern durch ein Servicelevelziel (SLO) von 95 % abgedeckt. Dies bedeutet, dass die maximale Burstfähigkeit mindestens 95 % der Zeit erreicht werden kann.
 
 > [!NOTE]
 > Wie jede Azure-Vorschauversion wird Azure Cosmos DB serverlos aus Vereinbarungen zum Service Level (SLA) ausgeschlossen. Die oben erwähnten Leistungsmerkmale werden als Vorschauversion bereitgestellt, die das Angebot bereitstellt, wenn es allgemein verfügbar ist.

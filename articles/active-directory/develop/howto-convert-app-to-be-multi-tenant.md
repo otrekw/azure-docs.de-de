@@ -13,12 +13,12 @@ ms.date: 10/27/2020
 ms.author: ryanwi
 ms.reviewer: marsma, jmprieur, lenalepa, sureshja, kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: 0c5b06fd14f526ca90b1b922be281af55ba00116
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 22d6cacc36363b17f9bc32d354982eb71974b31d
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93077488"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96779752"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>Gewusst wie: Anmelden von Azure Active Directory-Benutzern mit dem mehrinstanzenfähigen Anwendungsmuster
 
@@ -116,6 +116,8 @@ Dieser Zustimmungsprozess wird durch die von der Anwendung angeforderten Berecht
 * Eine nur für die App geltende Berechtigung wird der Identität der Anwendung direkt gewährt. Beispielsweise können Sie einer Anwendung die nur für die App geltende Berechtigung zum Lesen der Liste der Benutzer in einem Mandanten erteilen, unabhängig davon, wer sich bei der Anwendung angemeldet hat.
 
 Einigen Berechtigungen kann ein regulärer Benutzer zustimmen, während andere die Zustimmung eines Mandantenadministrators erfordern.
+
+Weitere Informationen zur Benutzer- und Administratoreinwilligung finden Sie unter [Konfigurieren des Workflows für die Administratoreinwilligung](../manage-apps/configure-admin-consent-workflow.md).
 
 ### <a name="admin-consent"></a>Administratorzustimmung
 

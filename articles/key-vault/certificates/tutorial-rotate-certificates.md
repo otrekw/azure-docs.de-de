@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/16/2020
 ms.author: sebansal
-ms.openlocfilehash: 2d981e902f829eb0fa8283b6a38ae376a780bcc9
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 591d71e8cd6af2801540f5a1a41ad88b1f538e81
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289750"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844487"
 ---
 # <a name="tutorial-configure-certificate-auto-rotation-in-key-vault"></a>Tutorial: Konfigurieren der automatischen Zertifikatrotation in Key Vault
 
@@ -41,7 +41,7 @@ Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 
 ## <a name="create-a-vault"></a>Erstellen eines Tresors
 
-Erstellen Sie einen Schlüsseltresor, oder wählen Sie einen vorhandenen Tresor aus, um Vorgänge auszuführen. (Die Schritte zum Erstellen einer Key Vault-Instanz finden Sie [hier](../secrets/quick-create-portal.md).) In diesem Beispiel heißt der Schlüsseltresor **Example-Vault**.
+Sie können eine Azure Key Vault-Instanz im [Azure-Portal](../general/quick-create-portal.md), mit der [Azure-Befehlszeilenschnittstelle](../general/quick-create-cli.md) oder mit [Azure PowerShell](../general/quick-create-powershell.md) erstellen. In diesem Beispiel heißt der Schlüsseltresor **Example-Vault**.
 
 ![Ausgabe nach Erstellung des Schlüsseltresors](../media/certificates/tutorial-import-cert/vault-properties.png)
 

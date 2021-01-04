@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: fc44b7a49785a24460ea11f07e5248b266f5dfad
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 7008cfcdeb4615b42839f92a6df71357f9acf911
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92793006"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96484990"
 ---
 # <a name="storage-account-overview"></a>Speicherkontoübersicht
 
@@ -106,9 +106,9 @@ Azure Storage bietet verschiedene Optionen für den Zugriff auf Blockblobdaten b
 
 Folgende Zugriffsebenen sind verfügbar:
 
-- Die Zugriffsebene **Heiß** . Diese Ebene ist für häufigen Zugriff auf Objekte im Speicherkonto optimiert. Der Zugriff auf Daten auf der Zugriffsebene „Heiß“ ist besonders kostengünstig, dafür liegen aber die Speicherkosten etwas höher. Neue Speicherkonten werden standardmäßig auf dieser Ebene erstellt.
-- Die Zugriffsebene **Kalt** . Diese Ebene ist für die Speicherung von großen Datenmengen optimiert, auf die selten zugegriffen wird und die mindestens 30 Tage lang gespeichert werden. Das Speichern von Daten auf der Ebene „Kalt“ ist kostengünstiger, doch kann der Zugriff auf die Daten teurer sein als der Zugriff auf der Ebene „Heiß“.
-- Die Zugriffsebene **Archiv** . Diese Ebene ist nur für einzelne Blockblobs verfügbar. Die Zugriffsebene „Archiv“ ist für Daten optimiert, die eine Abrufwartezeit von mehreren Stunden tolerieren und die mindestens 180 Tage lang auf der Ebene „Archiv“ verbleiben. Die Zugriffsebene „Archiv“ ist die kosteneffizienteste Option zum Speichern von Daten. Der Zugriff auf diese Daten ist jedoch teurer als der Zugriff auf Daten auf den Ebenen „Heiß“ oder „Kalt“.
+- Die Zugriffsebene **Heiß**. Diese Ebene ist für häufigen Zugriff auf Objekte im Speicherkonto optimiert. Der Zugriff auf Daten auf der Zugriffsebene „Heiß“ ist besonders kostengünstig, dafür liegen aber die Speicherkosten etwas höher. Neue Speicherkonten werden standardmäßig auf dieser Ebene erstellt.
+- Die Zugriffsebene **Kalt**. Diese Ebene ist für die Speicherung von großen Datenmengen optimiert, auf die selten zugegriffen wird und die mindestens 30 Tage lang gespeichert werden. Das Speichern von Daten auf der Ebene „Kalt“ ist kostengünstiger, doch kann der Zugriff auf die Daten teurer sein als der Zugriff auf der Ebene „Heiß“.
+- Die Zugriffsebene **Archiv**. Diese Ebene ist nur für einzelne Blockblobs verfügbar. Die Zugriffsebene „Archiv“ ist für Daten optimiert, die eine Abrufwartezeit von mehreren Stunden tolerieren und die mindestens 180 Tage lang auf der Ebene „Archiv“ verbleiben. Die Zugriffsebene „Archiv“ ist die kosteneffizienteste Option zum Speichern von Daten. Der Zugriff auf diese Daten ist jedoch teurer als der Zugriff auf Daten auf den Ebenen „Heiß“ oder „Kalt“.
 
 Wenn sich das Nutzungsmuster Ihrer Daten ändert, können Sie jederzeit zwischen diesen Zugriffsebenen wechseln. Weitere Informationen zu Zugriffsebenen finden Sie unter [Azure Blob Storage: Zugriffsebenen „Heiß“ (Hot), „Kalt“ (Cool) und „Archiv“](../blobs/storage-blob-storage-tiers.md).
 
@@ -138,7 +138,7 @@ Wenn Ihr allgemeines Speicherkonto beispielsweise *meinspeicherkonto* heißt, la
 > [!NOTE]
 > Blockblob- und Blockspeicherkonten machen nur den Endpunkt des Blob-Diensts verfügbar.
 
-Erstellen Sie die URL für den Zugriff auf ein Objekt in einem Speicherkonto, indem Sie den Objektstandort im Speicherkonto an den Endpunkt anhängen. Eine Blob-Adresse kann beispielsweise das folgende Format haben: http:// *meinspeicherkonto* .blob.core.windows.net/ *meincontainer*/*meinblob* .
+Erstellen Sie die URL für den Zugriff auf ein Objekt in einem Speicherkonto, indem Sie den Objektstandort im Speicherkonto an den Endpunkt anhängen. Eine Blob-Adresse kann beispielsweise das folgende Format haben: http://*meinspeicherkonto*.blob.core.windows.net/*meincontainer*/*meinblob*.
 
 Sie können Ihr Speicherkonto auch für die Verwendung einer benutzerdefinierten Domäne konfigurieren. Weitere Informationen finden Sie unter [Konfigurieren eines benutzerdefinierten Domänennamens für Ihr Azure Storage-Konto](../blobs/storage-custom-domain-name.md).  
 
@@ -151,7 +151,7 @@ Jede Anforderung, die für Ihr Speicherkonto gesendet wird, muss autorisiert wer
 Sie können eine der folgenden Methoden verwenden, um Zugriff auf die Daten in Ihrem Speicherkonto zu gewähren:
 
 - **Azure Active Directory:** Verwenden Sie Anmeldeinformationen von Azure Active Directory (Azure AD), um einen Benutzer, eine Gruppe oder eine andere Identität für den Zugriff auf Blob- und Warteschlangendaten zu authentifizieren. Wenn die Authentifizierung einer Identität erfolgreich war, gibt Azure AD ein Token zurück, das zum Autorisieren der Anforderung bei Azure Blob Storage oder Azure Queue Storage verwendet wird. Weitere Informationen finden Sie unter [Authentifizieren des Zugriffs auf Azure Storage mit Azure Active Directory](storage-auth-aad.md).
-- **Autorisierung mit freigegebenen Schlüsseln** : Verwenden Sie den Zugriffsschlüssel für Ihr Speicherkonto, um eine Verbindungszeichenfolge zu erstellen, die Ihre Anwendung zur Laufzeit für den Zugriff auf Azure Storage verwendet. Die Werte in der Verbindungszeichenfolge werden verwendet, um den *Autorisierungsheader* zu generieren, der an Azure Storage übergeben wird. Weitere Informationen hierzu finden Sie unter [Konfigurieren von Azure Storage-Verbindungszeichenfolgen](storage-configure-connection-string.md).
+- **Autorisierung mit freigegebenen Schlüsseln**: Verwenden Sie den Zugriffsschlüssel für Ihr Speicherkonto, um eine Verbindungszeichenfolge zu erstellen, die Ihre Anwendung zur Laufzeit für den Zugriff auf Azure Storage verwendet. Die Werte in der Verbindungszeichenfolge werden verwendet, um den *Autorisierungsheader* zu generieren, der an Azure Storage übergeben wird. Weitere Informationen hierzu finden Sie unter [Konfigurieren von Azure Storage-Verbindungszeichenfolgen](storage-configure-connection-string.md).
 - **Shared Access Signature (SAS):** Verwenden Sie eine Shared Access Signature, um den Zugriff auf Ressourcen in Ihrem Speicherkonto zu delegieren, wenn Sie nicht die Azure AD-Autorisierung nutzen. Eine Shared Access Signature ist ein Token, das alle Informationen kapselt, die zum Autorisieren einer Zugriffsanforderung für Azure Storage in der URL erforderlich sind. In der Shared Access Signature können Sie die Speicherressource, die gewährten Berechtigungen und das Intervall angeben, in dem die Berechtigungen gültig sind. Weitere Informationen finden Sie unter [Verwenden von Shared Access Signatures (SAS)](storage-sas-overview.md).
 
 > [!NOTE]
@@ -167,7 +167,7 @@ Wenn Sie ein Upgrade eines Allgemein v1- oder Blob Storage-Kontos auf ein Allgem
 
 ### <a name="azcopy"></a>AzCopy
 
-AzCopy ist ein Windows-Befehlszeilenprogramm, mit dem sehr effizient Daten in und aus Azure Storage kopiert werden können. Mit AzCopy können Sie Daten aus einem vorhandenen allgemeinen Speicherkonto in ein Blob Storage-Konto kopieren oder Daten von lokalen Speichergeräten hochladen. Weitere Informationen finden Sie unter [Übertragen von Daten mit dem Befehlszeilenprogramm AzCopy](./storage-use-azcopy-v10.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json).
+AzCopy ist ein Windows-Befehlszeilenprogramm, mit dem sehr effizient Daten in und aus Azure Storage kopiert werden können. Mit AzCopy können Sie Daten aus einem vorhandenen allgemeinen Speicherkonto in ein Blob Storage-Konto kopieren oder Daten von lokalen Speichergeräten hochladen. Weitere Informationen finden Sie unter [Übertragen von Daten mit dem Befehlszeilenprogramm AzCopy](./storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
 ### <a name="data-movement-library"></a>Data Movement-Bibliothek
 

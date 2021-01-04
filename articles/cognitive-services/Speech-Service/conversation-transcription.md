@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: trbye
-ms.openlocfilehash: 5d95525c7dfecd44758c86903ca4a96c2290df52
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: c27493748381a3aced92aab41745f352f228c50e
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487777"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024992"
 ---
 # <a name="what-is-conversation-transcription-in-meetings-preview"></a>Worum handelt es sich bei der Unterhaltungstranskription (Vorschau) in Besprechungen?
 
@@ -23,13 +23,13 @@ Die Unterhaltungstranskription ist eine [Spracherkennungslösung](speech-to-text
 
 ## <a name="key-features"></a>Wichtige Features
 
-- **Zeitstempel** : Jede Äußerung eines Sprechers weist einen Zeitstempel auf, sodass Sie leicht erkennen können, wann ein Ausdruck geäußert wurde.
-- **Lesbare Transkriptionen** : Transkripte werden automatisch mit Formatierung und Interpunktion versehen, um sicherzustellen, dass der Text genau dem entspricht, was gesagt wurde.
-- **Benutzerprofile** : Benutzerprofile werden generiert, indem Sprachbeispiele von Benutzern erfasst und an die Signaturgenerierung gesendet werden.
-- **Sprecheridentifikation** : Sprecher werden über Benutzerprofile identifiziert und jedem Sprecher ist ein _Sprecherbezeichner_ zugeordnet.
-- **Diarisierung mehrerer Sprecher** : Ermittlung, wer was gesagt hat, durch Synthetisieren des Audiostreams mit den einzelnen Sprecherbezeichnern.
-- **Echtzeittranskription** : Bereitstellung von Live-Transkripten darüber, wer was und wann sagt, während die Unterhaltung stattfindet.
-- **Asynchrone Transkription** : Bereitstellung von Transkripten mit höherer Genauigkeit durch Verwendung eines Mehrkanalaudiostreams.
+- **Zeitstempel**: Jede Äußerung eines Sprechers weist einen Zeitstempel auf, sodass Sie leicht erkennen können, wann ein Ausdruck geäußert wurde.
+- **Lesbare Transkriptionen**: Transkripte werden automatisch mit Formatierung und Interpunktion versehen, um sicherzustellen, dass der Text genau dem entspricht, was gesagt wurde.
+- **Benutzerprofile**: Benutzerprofile werden generiert, indem Sprachbeispiele von Benutzern erfasst und an die Signaturgenerierung gesendet werden.
+- **Sprecheridentifikation**: Sprecher werden über Benutzerprofile identifiziert und jedem Sprecher ist ein _Sprecherbezeichner_ zugeordnet.
+- **Diarisierung mehrerer Sprecher**: Ermittlung, wer was gesagt hat, durch Synthetisieren des Audiostreams mit den einzelnen Sprecherbezeichnern.
+- **Echtzeittranskription**: Bereitstellung von Live-Transkripten darüber, wer was und wann sagt, während die Unterhaltung stattfindet.
+- **Asynchrone Transkription**: Bereitstellung von Transkripten mit höherer Genauigkeit durch Verwendung eines Mehrkanalaudiostreams.
 
 > [!NOTE]
 > Obwohl die Unterhaltungstranskription die Anzahl der Sprecher im Raum nicht begrenzt, ist sie für 2 bis 10 Sprecher pro Sitzung optimiert.
@@ -54,8 +54,8 @@ Dies ist eine allgemeine Übersicht darüber, wie die Unterhaltungstranskription
 
 ## <a name="expected-inputs"></a>Erwartete Eingaben
 
-- **Mehrkanalaudiostream** : Weitere Informationen zu Spezifikationen und Design finden Sie unter den [Mikrofonempfehlungen für das Speech-Geräte-SDK von Microsoft](https://aka.ms/cts/microphone). Weitere Informationen zum Development Kit und dessen Erwerb finden Sie unter [Abrufen des Speech-Geräte-SDK von Microsoft](https://aka.ms/cts/getsdk).
-- **Benutzersprachbeispiele** : Für die Unterhaltungstranskription sind vor der Unterhaltung Benutzerprofile erforderlich. Sie müssen Audioaufzeichnungen von jedem Benutzer sammeln und die Aufzeichnungen dann an den [Dienst für die Signaturgenerierung](https://aka.ms/cts/signaturegenservice) senden, um die Audioaufnahmen zu überprüfen und Benutzerprofile zu generieren.
+- **Mehrkanalaudiostream**: Weitere Informationen zu Spezifikationen und Design finden Sie unter den [Mikrofonempfehlungen für das Speech-Geräte-SDK von Microsoft](./speech-devices-sdk-microphone.md). Weitere Informationen zum Development Kit und dessen Erwerb finden Sie unter [Abrufen des Speech-Geräte-SDK von Microsoft](./get-speech-devices-sdk.md).
+- **Benutzersprachbeispiele**: Für die Unterhaltungstranskription sind vor der Unterhaltung Benutzerprofile erforderlich. Sie müssen Audioaufzeichnungen von jedem Benutzer sammeln und die Aufzeichnungen dann an den [Dienst für die Signaturgenerierung](https://aka.ms/cts/signaturegenservice) senden, um die Audioaufnahmen zu überprüfen und Benutzerprofile zu generieren.
 
 > [!NOTE]
 > Samples der Benutzerstimme sind optional. Ohne diese Eingabe weist die Transkription verschiedene Sprecher aus, zeigt sie aber als „Sprecher1“, „Speaker2“ usw., statt sie als zuvor registrierte Namen spezifischer Sprecher zu erkennen.

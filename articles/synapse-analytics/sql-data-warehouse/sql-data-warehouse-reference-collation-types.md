@@ -1,6 +1,6 @@
 ---
 title: Data Warehouse-Sortierungstypen
-description: Sortierungstypen, die beim dedizierten SQL-Pool in Azure Synapse Analytics unterstützt werden.
+description: Sortierungstypen, die beim dedizierten SQL-Pool (früher SQL DW) in Azure Synapse Analytics unterstützt werden.
 services: synapse-analytics
 author: antvgski
 manager: igorstan
@@ -11,16 +11,16 @@ ms.date: 12/04/2019
 ms.author: anvang
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 8d76d70c4c84f1d63d4643e1fba3f66d3541beff
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 39b89f8d303c10eead63839420141a74d3d3c74c
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93305263"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452758"
 ---
-# <a name="database-collation-support-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Unterstützung der Datenbanksortierung beim dedizierten SQL-Pool in Azure Synapse Analytics 
+# <a name="database-collation-support-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Unterstützung der Datenbanksortierung beim dedizierten SQL-Pool (früher SQL DW) in Azure Synapse Analytics 
 
-Sie können die standardmäßige Datenbanksortierung im Azure-Portal ändern, wenn Sie eine neue dedizierte SQL-Pool-Datenbank erstellen. Diese Funktion macht das Erstellen einer neuen Datenbank mit einer der 3.800 unterstützten Datenbanksortierungen noch einfacher.
+Sie können die standardmäßige Datenbanksortierung im Azure-Portal ändern, wenn Sie einen neuen dedizierten SQL-Pool (früher SQL DW) erstellen. Diese Funktion macht das Erstellen einer neuen Datenbank mit einer der 3.800 unterstützten Datenbanksortierungen noch einfacher.
 
 Sortierungen geben das Gebietsschema, die Codepage, die Sortierreihenfolge und Regeln für die Groß-/Kleinschreibung von Zeichen für zeichenbasierte Datentypen an. Nach dem Auswählen erben alle Spalten und Ausdrücke, für die Sortierungsinformationen erforderlich sind, die gewählte Sortierung aus der Datenbankeinstellung. Die Standardvererbung kann durch explizites Angeben einer anderen Sortierung für einen zeichenbasierten Datentyp überschrieben werden.
 

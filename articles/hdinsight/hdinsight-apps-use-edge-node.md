@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 04/16/2020
 ms.openlocfilehash: ddd1a6fa2fc25add30664da5b739338e87e7e74f
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547842"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010111"
 ---
 # <a name="use-empty-edge-nodes-on-apache-hadoop-clusters-in-hdinsight"></a>Verwenden leerer Edgeknoten in Apache Hadoop-Clustern in HDInsight
 
@@ -86,7 +86,7 @@ In diesem Abschnitt verwenden Sie eine Resource Manager-Vorlage, um einen Edgekn
     |Standort|Wählen Sie den Standort des vorhandenen HDInsight-Clusters aus.|
     |Clustername|Geben Sie den Namen eines vorhandenen HDInsight-Clusters ein.|
 
-1. Aktivieren Sie **Ich stimme den oben genannten Geschäftsbedingungen zu** , und wählen Sie anschließend **Kaufen** aus, um den Edgeknoten zu erstellen.
+1. Aktivieren Sie **Ich stimme den oben genannten Geschäftsbedingungen zu**, und wählen Sie anschließend **Kaufen** aus, um den Edgeknoten zu erstellen.
 
 > [!IMPORTANT]  
 > Stellen Sie sicher, dass Sie die Azure-Ressourcengruppe für den vorhandenen HDInsight-Cluster auswählen.  Andernfalls erhalten Sie die Fehlermeldung „Angeforderter Vorgang kann nicht auf die geschachtelte Ressource angewendet werden. Übergeordnete Ressource &lt;ClusterName > nicht gefunden.“
@@ -117,7 +117,7 @@ In diesem Abschnitt verwenden Sie eine Resource Manager-Vorlage, um HDInsight-Cl
 
     Einige Eigenschaften wurden in der Vorlage hartcodiert: „Clustertyp“, „Anzahl der Workerknoten im Cluster“, „Edge node size“ (Edgeknotengröße) und „Edge node name“ (Edgeknotenname).
 
-1. Aktivieren Sie **Ich stimme den oben genannten Geschäftsbedingungen zu** , und wählen Sie anschließend **Kaufen** aus, um den Cluster mit dem Edgeknoten zu erstellen.
+1. Aktivieren Sie **Ich stimme den oben genannten Geschäftsbedingungen zu**, und wählen Sie anschließend **Kaufen** aus, um den Cluster mit dem Edgeknoten zu erstellen.
 
 ## <a name="add-multiple-edge-nodes"></a>Hinzufügen mehrerer Edgeknoten
 
@@ -160,7 +160,7 @@ Sie können einen Edgeknoten aus dem Azure-Portal löschen.
 2. Öffnen Sie den HDInsight-Cluster mit einem Edgeknoten.
 3. Wählen Sie **Anwendungen** aus. Eine Liste mit Edgeknoten sollte angezeigt werden.  
 4. Klicken Sie mit der rechten Maustaste auf den Edgeknoten, den Sie löschen möchten, und wählen Sie dann **Löschen** aus.
-5. Klicken Sie auf **Ja** , um zu bestätigen.
+5. Klicken Sie auf **Ja**, um zu bestätigen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

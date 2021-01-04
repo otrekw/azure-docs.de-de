@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.custom: mvc, devx-track-azurecli
 ms.date: 07/01/2020
-ms.openlocfilehash: fa7919f54663387ddef811d02137da6d3ffb9d9b
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 48ef9cc48f48cec92ae57774e5d89e300ee43385
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94646626"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96485378"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-using-the-azure-cli"></a>Schnellstart: Erstellen eines Azure Stream Analytics-Auftrags mit der Azure CLI
 
@@ -94,7 +94,7 @@ Mit den folgenden Azure CLI-Codeblöcken wird ein Blobspeicherkonto erstellt, da
    az storage account keys list -g streamanalyticsrg -n <storage-account>
    ```
 
-3. Erstellen Sie mit dem Befehl [az storage container create](/cli/azure/storage/container) einen Container zum Speichern von Blobs. Sie verwenden den Schlüssel des Speicherkontos, um den Vorgang zur Erstellung des Containers zu autorisieren. Weitere Informationen zum Autorisieren von Datenvorgängen mithilfe der Azure CLI finden Sie unter [Autorisieren des Zugriffs auf Blob- oder Warteschlangendaten mit der Azure-Befehlszeilenschnittstelle](../storage/common/authorize-data-operations-cli.md).
+3. Erstellen Sie mit dem Befehl [az storage container create](/cli/azure/storage/container) einen Container zum Speichern von Blobs. Sie verwenden den Schlüssel des Speicherkontos, um den Vorgang zur Erstellung des Containers zu autorisieren. Weitere Informationen zum Autorisieren von Datenvorgängen mithilfe der Azure CLI finden Sie unter [Autorisieren des Zugriffs auf Blob- oder Warteschlangendaten mit der Azure-Befehlszeilenschnittstelle](../storage/blobs/authorize-data-operations-cli.md).
 
    ```azurecli
    az storage container create \
@@ -155,7 +155,7 @@ Erstellen Sie auf Ihrem lokalen Computer eine Datei mit dem Namen `serialization
 Führen Sie anschließend das Cmdlet `az stream-analytics input create` aus. Ersetzen Sie den Wert der Variablen `datasource` durch den Pfad, unter dem Sie die JSON-Datei mit der Definition der Auftragseingabe gespeichert haben, und den Wert der Variablen `serialization` durch den Pfad, unter dem Sie die JSON-Serialisierungsdatei gespeichert haben.
 
 ```azurecli
-az stream-analytics input create 
+az stream-analytics input create \
     --resource-group streamanalyticsrg 
     --job-name streamanalyticsjob \
     --name asaiotinput \
@@ -191,7 +191,7 @@ Erstellen Sie auf Ihrem lokalen Computer eine Datei mit dem Namen `datasink.json
 Führen Sie anschließend das Cmdlet `az stream-analytics output` aus. Ersetzen Sie den Wert der Variablen `datasource` durch den Pfad, unter dem Sie die JSON-Datei mit der Definition der Auftragsausgabe gespeichert haben, und den Wert der Variablen `serialization` durch den Pfad, unter dem Sie die JSON-Serialisierungsdatei gespeichert haben.
 
 ```azurecli
-az stream-analytics output create 
+az stream-analytics output create \
     --resource-group streamanalyticsrg \
     --job-name streamanalyticsjob \
     --name asabloboutput \
@@ -206,7 +206,7 @@ Fügen Sie Ihrem Auftrag eine Transformation hinzu, indem Sie das Cmdlet [az str
 Führen Sie das `az stream-analytics transformation create`-Cmdlet aus.
 
 ```azurecli
-az stream-analytics transformation create 
+az stream-analytics transformation create \
     --resource-group streamanalyticsrg \
     --job-name streamanalyticsjob \
     --name Transformation \
@@ -230,7 +230,7 @@ Starten Sie den Auftrag mit dem Cmdlet [az stream-analytics job start](/cli/azur
 Nach der Ausführung des folgenden Cmdlets wird als Ausgabe `True` zurückgegeben, wenn der Auftrag gestartet wird. Im Speichercontainer wird ein Ausgabeordner mit den transformierten Daten erstellt.
 
 ```azurecli
-az stream-analytics job start 
+az stream-analytics job start \
     --resource-group streamanalyticsrg \
     --name streamanalyticsjob \
     --output-start-mode JobStartTime

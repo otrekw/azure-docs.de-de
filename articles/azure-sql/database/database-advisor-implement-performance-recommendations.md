@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: danimir
 ms.author: danil
-ms.reviewer: jrasnik, sstein
+ms.reviewer: wiassaf, sstein
 ms.date: 03/10/2020
-ms.openlocfilehash: b1ef29eb71ccd945552550f64e5ae95bc85be44d
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 79ccf0f8aae7e915601081f875cea294de52d787
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92672108"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500851"
 ---
 # <a name="database-advisor-performance-recommendations-for-azure-sql-database"></a>Database Advisor: Empfehlungen zur Leistung für Azure SQL-Datenbank
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -40,8 +40,8 @@ Folgende Optionen für Leistungsempfehlungen sind in Azure SQL-Datenbank verfüg
 
 | Leistungsempfehlung | Unterstützung für Einzel- und Pooldatenbanken | Unterstützung der Instanzdatenbank |
 | :----------------------------- | ----- | ----- |
-| **Empfehlungen zum Erstellen eines Index** : Empfiehlt das Erstellen von Indizes, durch die sich die Leistung Ihrer Workload verbessern kann. | Ja | Nein |
-| **Empfehlungen zum Löschen eines Index** : Empfiehlt das tägliche Entfernen redundanter und doppelter Indizes (mit Ausnahme von eindeutigen Indizes) sowie Indizes, die über einen langen Zeitraum hinweg (über 90 Tage) nicht verwendet wurden. Beachten Sie, dass diese Option nicht kompatibel mit Anwendungen ist, die Partitionswechsel und Indexhinweise verwenden. Das Löschen nicht verwendeter Indizes wird bei den Dienstebenen „Premium“ und „Unternehmenskritisch“ nicht unterstützt. | Ja | Nein |
+| **Empfehlungen zum Erstellen eines Index**: Empfiehlt das Erstellen von Indizes, durch die sich die Leistung Ihrer Workload verbessern kann. | Ja | Nein |
+| **Empfehlungen zum Löschen eines Index**: Empfiehlt das tägliche Entfernen redundanter und doppelter Indizes (mit Ausnahme von eindeutigen Indizes) sowie Indizes, die über einen langen Zeitraum hinweg (über 90 Tage) nicht verwendet wurden. Beachten Sie, dass diese Option nicht kompatibel mit Anwendungen ist, die Partitionswechsel und Indexhinweise verwenden. Das Löschen nicht verwendeter Indizes wird bei den Dienstebenen „Premium“ und „Unternehmenskritisch“ nicht unterstützt. | Ja | Nein |
 | **Empfehlungen zum Parametrisieren von Abfragen (Vorschau)** : Empfiehlt die erzwungene Parametrisierung in Fällen, in denen eine oder mehrere Abfragen ständig neu kompiliert werden, aber am Ende immer der gleiche Abfrageausführungsplan daraus hervorgeht. | Ja | Nein |
 | **Empfehlungen zum Beheben von Schemaproblemen (Vorschau)** : Empfehlungen für die Schemakorrektur werden angezeigt, wenn Azure SQL-Datenbank eine Anomalie in der Anzahl von schemabezogenen SQL-Fehlern erkennt, die in Ihrer Datenbank auftreten. Empfehlungen zum Beheben von Schemaproblemen werden in Kürze von Microsoft eingestellt. | Ja | Nein |
 

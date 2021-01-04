@@ -6,24 +6,24 @@ documentationcenter: ''
 author: curtand
 manager: daveba
 ms.service: active-directory
-ms.workload: identity
 ms.subservice: enterprise-users
+ms.workload: identity
 ms.topic: how-to
-ms.date: 11/15/2020
+ms.date: 12/02/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c30dea57310fb040d8fa5f52e1d8576c2dd08504
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 3b40171d87ccffa7c5c4fb72d2e79af015b1d16f
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94650834"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96859962"
 ---
 # <a name="assign-sensitivity-labels-to-microsoft-365-groups-in-azure-active-directory"></a>Zuweisen von Vertraulichkeitsbezeichnungen zu Microsoft 365-Gruppen in Azure Active Directory
 
-Azure Active Directory (Azure AD) unterstützt das Anwenden von Vertraulichkeitsbezeichnungen, die vom [Microsoft 365 Compliance Center](https://sip.protection.office.com/homepage) für Microsoft 365-Gruppen veröffentlicht werden. Vertraulichkeitsbezeichnungen gelten für Gruppen über Dienste wie Outlook, Microsoft Teams und SharePoint hinweg. Dieses Feature ist aktuell in der allgemein verfügbaren Version erhältlich. Weitere Informationen zur Unterstützung von Microsoft 365-Apps finden Sie unter [Microsoft 365-Unterstützung für Vertraulichkeitsbezeichnungen](/microsoft-365/compliance/sensitivity-labels-teams-groups-sites#support-for-the-sensitivity-labels).
+Azure Active Directory (Azure AD) unterstützt das Anwenden von Vertraulichkeitsbezeichnungen, die vom [Microsoft 365 Compliance Center](https://sip.protection.office.com/homepage) für Microsoft 365-Gruppen veröffentlicht werden. Vertraulichkeitsbezeichnungen gelten für Gruppen über Dienste wie Outlook, Microsoft Teams und SharePoint hinweg. Weitere Informationen zur Unterstützung von Microsoft 365-Apps finden Sie unter [Microsoft 365-Unterstützung für Vertraulichkeitsbezeichnungen](/microsoft-365/compliance/sensitivity-labels-teams-groups-sites#support-for-the-sensitivity-labels).
 
 > [!IMPORTANT]
 > Um dieses Feature zu konfigurieren, muss mindestens eine aktive Azure Active Directory Premium P1-Lizenz in Ihrer Azure AD-Organisation vorhanden sein.
@@ -68,7 +68,7 @@ Damit veröffentlichte Bezeichnungen auf Gruppen angewendet werden können, müs
     Set-AzureADDirectorySetting -Id $Setting.Id -DirectorySetting $Setting
     ```
 
-Außerdem müssen Sie Ihre Vertraulichkeitsbezeichnungen mit Azure AD synchronisieren. Entsprechende Anweisungen finden Sie unter [Aktivieren von Vertraulichkeitsbezeichnungen für Container und Synchronisieren von Bezeichnungen](/microsoft-365/compliance/sensitivity-labels-teams-groups-sites?view=o365-worldwide#how-to-enable-sensitivity-labels-for-containers-and-synchronize-labels).
+Außerdem müssen Sie Ihre Vertraulichkeitsbezeichnungen mit Azure AD synchronisieren. Entsprechende Anweisungen finden Sie unter [Aktivieren von Vertraulichkeitsbezeichnungen für Container und Synchronisieren von Bezeichnungen](/microsoft-365/compliance/sensitivity-labels-teams-groups-sites#how-to-enable-sensitivity-labels-for-containers-and-synchronize-labels).
 
 ## <a name="assign-a-label-to-a-new-group-in-azure-portal"></a>Zuweisen einer Bezeichnung zu einer neuen Gruppe im Azure-Portal
 

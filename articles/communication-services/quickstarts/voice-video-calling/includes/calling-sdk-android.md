@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: 1f71c01d53a89ce1b459826689eb5b2e4899b3a2
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: c015561e66d77e6df352e601bf1a67da5996d4d5
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92886586"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94915430"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -153,7 +153,7 @@ Mobile Pushbenachrichtigungen sind die Popupbenachrichtigungen, die auf mobilen 
 
 ### <a name="prerequisites"></a>Voraussetzungen
 
-Ein Firebase-Konto, das mit aktiviertem Cloud Messaging (FCM) eingerichtet wurde und bei dem Ihr Firebase Cloud Messaging-Dienst mit einer Azure Notification Hub-Instanz verbunden ist. Weitere Informationen finden Sie unter [Communication Services-Benachrichtigungen](https://docs.microsoft.com/azure/communication-services/concepts/notifications).
+Ein Firebase-Konto, das mit aktiviertem Cloud Messaging (FCM) eingerichtet wurde und bei dem Ihr Firebase Cloud Messaging-Dienst mit einer Azure Notification Hub-Instanz verbunden ist. Weitere Informationen finden Sie unter [Communication Services-Benachrichtigungen](../../../concepts/notifications.md).
 Außerdem geht das Tutorial davon aus, dass Sie zur Entwicklung Ihrer Anwendung mindestens die Android Studio-Version 3.6 einsetzen.
 
 Für die Android-Anwendung sind eine Reihe von Berechtigungen erforderlich, um Benachrichtigungen von Firebase Cloud Messaging empfangen zu können. Fügen Sie in Ihrer Datei `AndroidManifest.xml` direkt nach dem Tag *<manifest ...>* oder unter dem Tag *</application>* den folgenden Berechtigungssatz hinzu.
@@ -166,7 +166,7 @@ Für die Android-Anwendung sind eine Reihe von Berechtigungen erforderlich, um B
 
 ### <a name="register-for-push-notifications"></a>Registrieren für Pushbenachrichtigungen
 
-Um sich für Pushbenachrichtigungen zu registrieren, muss die Anwendung `registerPushNotification()` für eine *CallAgent* -Instanz mit einem Geräteregistrierungstoken aufrufen.
+Um sich für Pushbenachrichtigungen zu registrieren, muss die Anwendung `registerPushNotification()` für eine *CallAgent*-Instanz mit einem Geräteregistrierungstoken aufrufen.
 
 Um das Geräteregistrierungstoken zu erhalten, fügen Sie die Firebase-Clientbibliothek zur Datei *build.gradle* Ihres Anwendungsmoduls hinzu, indem Sie die folgenden Zeilen im Abschnitt `dependencies` hinzufügen, sofern noch nicht vorhanden:
 
@@ -230,7 +230,7 @@ catch(Exception e) {
 
 ### <a name="push-notification-handling"></a>Behandlung von Pushbenachrichtigungen
 
-Um Pushbenachrichtigungen für eingehende Anrufe zu empfangen, rufen Sie *handlePushNotification()* für eine *CallAgent* -Instanz mit Nutzdaten auf.
+Um Pushbenachrichtigungen für eingehende Anrufe zu empfangen, rufen Sie *handlePushNotification()* für eine *CallAgent*-Instanz mit Nutzdaten auf.
 
 Um die Nutzlast von Firebase Cloud Messaging abzurufen, beginnen Sie mit der Erstellung eines neuen Diensts (Datei > Neu > Dienst > Dienst), der die Firebase-Clientbibliotheksklasse *FirebaseMessagingService* erweitert, und setzen Sie dann die `onMessageReceived`-Methode außer Kraft. Diese Methode ist der Ereignishandler, der aufgerufen wird, wenn Firebase Cloud Messaging die Pushbenachrichtigung an die Anwendung übermittelt.
 
@@ -262,7 +262,7 @@ Fügen Sie der Datei `AndroidManifest.xml` im Tag <application> die unten angege
         </service>
 ```
 
-- Sobald die Nutzdaten abgerufen wurden, können sie an die *Communication Services* -Clientbibliothek übergeben werden, um durch Aufrufen der *handlePushNotification* -Methode für eine *CallAgent* -Instanz verarbeitet zu werden. Eine `CallAgent`-Instanz wird durch den Aufruf der Methode `createCallAgent(...)` für die Klasse `CallClient` erstellt.
+- Sobald die Nutzdaten abgerufen wurden, können sie an die *Communication Services*-Clientbibliothek übergeben werden, um durch Aufrufen der *handlePushNotification*-Methode für eine *CallAgent*-Instanz verarbeitet zu werden. Eine `CallAgent`-Instanz wird durch den Aufruf der Methode `createCallAgent(...)` für die Klasse `CallClient` erstellt.
 
 ```java
 try {

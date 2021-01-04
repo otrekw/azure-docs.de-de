@@ -5,16 +5,16 @@ author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: overview
-ms.custom: mvc, contperfq1
-ms.date: 11/10/2020
+ms.custom: mvc, contperf-fy21q1
+ms.date: 12/03/2020
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: e714e88e47ec20adec44a104c659d03e62d8010a
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 3bfc8704919fc26db692701eaca526dd5c333b6f
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658382"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033492"
 ---
 # <a name="what-is-azure-firewall"></a>Was ist Azure Firewall?
 
@@ -70,7 +70,8 @@ Netzwerkfilterregeln für andere Protokolle als TCP/UDP (z.B. ICMP) funktioniere
 |Benutzerdefiniertes DNS kann nicht mit Tunnelerzwingung verwendet werden.|Ist Tunnelerzwingung aktiviert, funktioniert benutzerdefiniertes DNS nicht.|Es wird bereits nach einer Lösung gesucht.|
 |Unterstützung für neue öffentliche IP-Adressen für mehrere Verfügbarkeitszonen|Sie können keine neue IP-Adresse hinzufügen, wenn Sie eine Firewall mit zwei Verfügbarkeitszonen bereitstellen (entweder 1 und 2, 2 und 3 oder 1 und 3).|Dies ist eine Einschränkung bei öffentlichen IP-Adressressourcen.|
 |Starten/Beenden funktioniert nicht bei einer Firewall, für die der Tunnelerzwingungsmodus konfiguriert ist.|Starten/Beenden funktioniert nicht bei einer Azure Firewall-Instanz, für die der Tunnelerzwingungsmodus konfiguriert ist. Der Versuch, Azure Firewall mit konfigurierter Tunnelerzwingung zu starten, führt zu folgendem Fehler:<br><br>*Set-AzFirewall: Es ist nicht möglich, die Verwaltungs-IP-Konfiguration für AzureFirewall "FW-xx" einer vorhandenen Firewall hinzuzufügen. Wiederholen Sie die Bereitstellung mit einer Verwaltungs-IP-Konfiguration, wenn Sie eine Tunnelerzwingung unterstützen möchten.<br>Statuscode: 400<br>ReasonPhrase: Ungültige Anforderung*|Wird untersucht<br><br>Um das Problem zu umgehen, können Sie die vorhandene Firewall löschen und eine neue mit denselben Parametern erstellen.|
-|Tags der Firewallrichtlinie können nicht über das Portal hinzugefügt werden.|Die Azure Firewall-Richtlinie verfügt über eine Patchunterstützungseinschränkung, die verhindert, dass Sie über das Azure-Portal ein Tag hinzufügen können. Der folgende Fehler wird generiert: *Die Tags für die Ressource konnten nicht gespeichert werden*.|Es wird bereits nach einer Lösung gesucht. Alternativ können Sie das Azure PowerShell-Cmdlet `Set-AzFirewallPolicy` verwenden, um Tags zu aktualisieren.
+|Tags der Firewallrichtlinie können nicht über das Portal hinzugefügt werden.|Die Azure Firewall-Richtlinie verfügt über eine Patchunterstützungseinschränkung, die verhindert, dass Sie über das Azure-Portal ein Tag hinzufügen können. Der folgende Fehler wird generiert: *Die Tags für die Ressource konnten nicht gespeichert werden*.|Es wird bereits nach einer Lösung gesucht. Alternativ können Sie das Azure PowerShell-Cmdlet `Set-AzFirewallPolicy` verwenden, um Tags zu aktualisieren.|
+|Noch keine IPv6-Unterstützung|Wenn Sie einer Regel eine IPv6-Adresse hinzufügen, tritt ein Firewallfehler auf.|Verwenden Sie nur IPv4-Adressen. Die IPv6-Unterstützung wird geprüft.|
 
 
 ## <a name="next-steps"></a>Nächste Schritte

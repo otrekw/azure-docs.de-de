@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/26/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: e29aeb7570ad6daba9d6fc652291471fa246bf0a
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: b75964f8cfc41efc35858284dbffded3aa406eb6
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92674624"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436061"
 ---
 # <a name="marketplace-metered-billing-apis"></a>APIs für getaktete Abrechnung im Marketplace
 
@@ -20,7 +20,7 @@ Die APIs für getaktete Abrechnung sollten verwendet werden, wenn der Herausgebe
 
 Weitere Informationen zum Erstellen benutzerdefinierter Messungsdimensionen für SaaS finden Sie unter [Getaktete SaaS-Abrechnung](saas-metered-billing.md).
 
-Weitere Informationen zum Erstellen benutzerdefinierter Messungsdimensionen für ein Azure-Anwendungsangebot mit einem Plan für verwaltete Apps finden Sie im [Abschnitt „Technische Konfiguration“ des Artikels „Erstellen eines Azure-Anwendungsangebots“](create-new-azure-apps-offer.md#technical-configuration)).
+Weitere Informationen zum Erstellen benutzerdefinierter Messungsdimensionen für ein Azure-Anwendungsangebot mit einem Plan für verwaltete Apps finden Sie unter [Konfigurieren der Details der Einrichtung Ihres Azure-Anwendungsangebots](../create-new-azure-apps-offer.md#configure-your-azure-application-offer-setup-details).
 
 ## <a name="enforcing-tls-12-note"></a>Hinweis zum Erzwingen von TLS 1.2
 
@@ -34,7 +34,7 @@ Für jede Stunde eines Kalendertags kann nur ein Nutzungsereignis ausgegeben wer
 
 Für jede Stunde eines Kalendertags kann pro Ressource nur ein Nutzungsereignis ausgegeben werden. Wenn mehr als eine Einheit in einer Stunde verwendet wird, sammeln Sie alle in dieser Stunde verwendeten Einheiten, und geben Sie diese dann in einem einzelnen Ereignis aus. Nutzungsereignisse können nur für die letzten 24 Stunden ausgegeben werden. Wenn Sie ein Nutzungsereignis zu einem Zeitpunkt zwischen 8:00 Uhr und 8:59:59 Uhr ausgeben (und es akzeptiert wird) und ein zusätzliches Ereignis für denselben Tag zwischen 8:00 und 8:59:59 senden, wird es als Duplikat zurückgewiesen.
 
-**POST** : `https://marketplaceapi.microsoft.com/api/usageEvent?api-version=<ApiVersion>`
+**POST**: `https://marketplaceapi.microsoft.com/api/usageEvent?api-version=<ApiVersion>`
 
 *Abfrageparameter:*
 

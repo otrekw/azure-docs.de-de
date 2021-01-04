@@ -18,11 +18,11 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bf68406d4b0806e1d533e0bb8669a01939387989
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410656"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997748"
 ---
 # <a name="determine-hybrid-identity-lifecycle-adoption-strategy"></a>Ermitteln der Strategie für die Übernahme des Hybrididentitätslebenszyklus
 In dieser Aufgabe definieren Sie die Identitätsverwaltungsstrategie für Ihre Hybrididentitätslösung, um die geschäftlichen Anforderungen zu erfüllen, die Sie in [Ermitteln von Aufgaben der Hybrididentitätsverwaltung](plan-hybrid-identity-design-considerations-hybrid-id-management-tasks.md)definiert haben.
@@ -44,9 +44,9 @@ Konten in anspruchsvollen IT-Unternehmen umfassen Hunderte von Parametern, die d
 Rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC) setzt Rollen- und Bereitstellungsrichtlinien zum Auswerten, Testen und Erzwingen Ihrer Geschäftsprozesse und Regeln für das Gewähren von Zugriffsrechten für Benutzer ein. Hauptadministratoren erstellen Bereitstellungsrichtlinien, weisen Benutzern Rollen zu und definieren für diese Rollen Sätze von Berechtigungen für Ressourcen. Azure RBAC erweitert die Identitätsverwaltungslösung auf die Verwendung softwarebasierter Prozesse und Reduzierung der manuellen Benutzerinteraktion im Bereitstellungsprozess.
 Azure RBAC ermöglicht es Unternehmen, die Anzahl von Vorgängen zu beschränken, die eine einzelne Person über das Azure-Portal ausführen kann. Durch Einsatz von Azure RBAC zur Steuerung des Zugriffs auf das Portal können IT-Administratoren den Zugriff mithilfe folgender Ansätze zur Zugriffsverwaltung delegieren:
 
-* **Gruppenbasierte Rollenzuweisung** : Sie können Azure AD-Gruppen den Zugriff zuweisen, die von Ihrem lokalen Active Directory aus synchronisiert werden können. So können Sie die vorhandenen Investitionen nutzen, die Ihre Organisation in Tools und Prozesse zum Verwalten von Gruppen vorgenommen hat. Sie können auch das Feature zur delegierten Gruppenverwaltung von Azure AD Premium nutzen.
-* **Nutzen Sie integrierte Rollen in Azure** : Sie können diese drei Rollen verwenden – Besitzer, Mitwirkender und Leser, um sicherzustellen, dass Benutzer und Gruppen berechtigt sind, nur die Aufgaben auszuführen, die sie für ihre Arbeit benötigen.
-* **Präziser Zugriff auf Ressourcen** : Sie können Benutzern und Gruppen Rollen für bestimmte Abonnements, Ressourcengruppen oder für eine einzelne Azure-Ressource (beispielsweise eine Website oder Datenbank) zuweisen. Auf diese Weise können Sie sicherstellen, dass Benutzer Zugriff auf alle Ressourcen haben, die sie benötigen, und keinen Zugriff auf Ressourcen, die sie nicht verwalten müssen.
+* **Gruppenbasierte Rollenzuweisung**: Sie können Azure AD-Gruppen den Zugriff zuweisen, die von Ihrem lokalen Active Directory aus synchronisiert werden können. So können Sie die vorhandenen Investitionen nutzen, die Ihre Organisation in Tools und Prozesse zum Verwalten von Gruppen vorgenommen hat. Sie können auch das Feature zur delegierten Gruppenverwaltung von Azure AD Premium nutzen.
+* **Nutzen Sie integrierte Rollen in Azure**: Sie können diese drei Rollen verwenden – Besitzer, Mitwirkender und Leser, um sicherzustellen, dass Benutzer und Gruppen berechtigt sind, nur die Aufgaben auszuführen, die sie für ihre Arbeit benötigen.
+* **Präziser Zugriff auf Ressourcen**: Sie können Benutzern und Gruppen Rollen für bestimmte Abonnements, Ressourcengruppen oder für eine einzelne Azure-Ressource (beispielsweise eine Website oder Datenbank) zuweisen. Auf diese Weise können Sie sicherstellen, dass Benutzer Zugriff auf alle Ressourcen haben, die sie benötigen, und keinen Zugriff auf Ressourcen, die sie nicht verwalten müssen.
 
 ## <a name="provisioning-and-other-customization-options"></a>Bereitstellung und andere Optionen für die Anpassung
 Ihr Team kann Geschäftspläne und -anforderungen nutzen, um zu entscheiden, wie stark die Identitätslösung angepasst werden soll. Ein großes Unternehmen könnte z. B. einen schrittweisen Rollout-Plan für Workflows und benutzerdefinierte Adapter benötigen, der auf einer Zeitachse für die inkrementelle Bereitstellung von Anwendungen basiert, die über einen großen geografischen Raum hinweg verwendet werden. Ein anderer Plan zur Anpassung könnte die organisationsweite Bereitstellung von zwei oder mehr Anwendungen nach erfolgreichem Test ermöglichen. Die Interaktion zwischen Benutzer und Anwendung kann angepasst werden, und Verfahren für die Bereitstellung von Ressourcen könnten geändert werden, um der automatisierten Bereitstellung gerecht zu werden.

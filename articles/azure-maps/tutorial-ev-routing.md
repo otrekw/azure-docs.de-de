@@ -1,20 +1,20 @@
 ---
-title: 'Tutorial: Routenplanung für Elektrofahrzeuge mit Azure Notebooks (Python) | Microsoft Azure Maps'
+title: 'Tutorial: Routenplanung für Elektrofahrzeuge mithilfe von Azure Notebooks (Python) mit Microsoft Azure Maps'
 description: Tutorial zur Routenplanung für Elektrofahrzeuge mit den Microsoft Azure Maps-Routenplanungs-APIs und Azure Notebooks
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 11/12/2019
+ms.date: 12/07/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: 6dde7abef1769b9441c037f3727e7fd9d83ab172
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: f30b99a1d9c8303d5b2ed4b02819d0ca837946d2
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896817"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905739"
 ---
 # <a name="tutorial-route-electric-vehicles-by-using-azure-notebooks-python"></a>Tutorial: Routenplanung für Elektrofahrzeuge mit Azure Notebooks (Python)
 
@@ -62,7 +62,7 @@ Um die Schritte in diesem Tutorial ausführen zu können, müssen Sie ein Azure�
  
     ![Bereich „Neues Projekt erstellen“](./media/tutorial-ev-routing/create-project-window.png)
 
-1. Klicken Sie auf **Erstellen** .
+1. Klicken Sie auf **Erstellen**.
 
 1. Nachdem das Projekt erstellt wurde, laden Sie [diese Jupyter Notebook-Dokumentdatei](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/blob/master/AzureMapsJupyterSamples/Tutorials/EV%20Routing%20and%20Reachable%20Range/EVrouting.ipynb) aus dem [Repository für Jupyter Notebook in Azure Maps](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook) herunter.
 
@@ -171,9 +171,9 @@ for loc in range(len(searchPolyResponse["results"])):
                 reachableLocations.append(location)
 ```
 
-## <a name="upload-the-reachable-range-and-charging-points-to-azure-maps-data-service"></a>Hochladen des erreichbaren Bereichs und der Ladestationen in den Azure Maps-Datendienst
+## <a name="upload-the-reachable-range-and-charging-points-to-azure-maps-data-service-preview"></a>Hochladen des erreichbaren Bereichs und der Ladestationen in den Azure Maps-Datendienst (Vorschau)
 
-Auf einer Karte empfiehlt es sich, die Ladestationen und die Grenze für den maximal erreichbaren Bereich des Elektrofahrzeugs zu visualisieren. Laden Sie hierzu die Daten zur Grenze und zu den Ladestationen als GeoJSON-Objekte in den Azure Maps-Datendienst hoch. Verwenden Sie hierzu die [Datenupload-API](/rest/api/maps/data/uploadpreview). 
+Auf einer Karte empfiehlt es sich, die Ladestationen und die Grenze für den maximal erreichbaren Bereich des Elektrofahrzeugs zu visualisieren. Laden Sie hierzu die Daten zur Grenze und zu den Ladestationen als GeoJSON-Objekte in den Azure Maps-Datendienst (Vorschau) hoch. Verwenden Sie hierzu die [Datenupload-API](/rest/api/maps/data/uploadpreview). 
 
 Führen Sie die beiden folgenden Zellen aus, um die Daten zur Grenze und zu den Ladestationen in den Azure Maps-Datendienst hochzuladen:
 
@@ -194,7 +194,7 @@ rangeData = {
   ]
 }
 
-# Upload the range data to Azure Maps Data Service.
+# Upload the range data to Azure Maps Data service (Preview).
 uploadRangeResponse = await session.post("https://atlas.microsoft.com/mapData/upload?subscription-key={}&api-version=1.0&dataFormat=geojson".format(subscriptionKey), json = rangeData)
 
 rangeUdidRequest = uploadRangeResponse.headers["Location"]+"&subscription-key={}".format(subscriptionKey)
@@ -223,7 +223,7 @@ poiData = {
   ]
 }
 
-# Upload the electric vehicle charging station data to Azure Maps Data Service.
+# Upload the electric vehicle charging station data to Azure Maps Data service (Preview).
 uploadPOIsResponse = await session.post("https://atlas.microsoft.com/mapData/upload?subscription-key={}&api-version=1.0&dataFormat=geojson".format(subscriptionKey), json = poiData)
 
 poiUdidRequest = uploadPOIsResponse.headers["Location"]+"&subscription-key={}".format(subscriptionKey)
@@ -336,12 +336,12 @@ routeData = {
 
 ## <a name="visualize-the-route"></a>Visualisieren der Route
 
-Zum Visualisieren der Route laden Sie zunächst die Routendaten als GeoJSON-Objekt in den Azure Maps-Datendienst hoch. Verwenden Sie dazu die [Datenupload-API](/rest/api/maps/data/uploadpreview) von Azure Maps. Rufen Sie anschließend den Renderingdienst ([API zum Abrufen des Kartenbilds](/rest/api/maps/render/getmapimage)) auf, um die Route auf der Karte zu rendern und zu visualisieren.
+Zum Visualisieren der Route laden Sie zunächst die Routendaten als GeoJSON-Objekt in den Azure Maps-Datendienst (Vorschau) hoch. Verwenden Sie dazu die [Datenupload-API](/rest/api/maps/data/uploadpreview) von Azure Maps. Rufen Sie anschließend den Renderingdienst ([API zum Abrufen des Kartenbilds](/rest/api/maps/render/getmapimage)) auf, um die Route auf der Karte zu rendern und zu visualisieren.
 
 Führen Sie das folgende Skript aus, um ein Bild mit der gerenderten Route auf der Karte abzurufen:
 
 ```python
-# Upload the route data to Azure Maps Data Service.
+# Upload the route data to Azure Maps Data service (Preview).
 routeUploadRequest = await session.post("https://atlas.microsoft.com/mapData/upload?subscription-key={}&api-version=1.0&dataFormat=geojson".format(subscriptionKey), json = routeData)
 
 udidRequestURI = routeUploadRequest.headers["Location"]+"&subscription-key={}".format(subscriptionKey)

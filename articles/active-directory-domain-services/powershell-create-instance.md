@@ -2,7 +2,7 @@
 title: Aktivieren von Azure AD Domain Services mithilfe von PowerShell | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie Azure Active Directory Domain Services mithilfe von Azure AD PowerShell und Azure PowerShell konfigurieren und aktivieren.
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.assetid: d4bc5583-6537-4cd9-bc4b-7712fdd9272a
 ms.service: active-directory
@@ -10,14 +10,14 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: sample
 ms.date: 10/02/2020
-ms.author: joflore
+ms.author: justinha
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 46fdaed4a3e1dbbe5575cd573061a480bf330389
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 89061af04147d7cfaa0fdb3a6b1a8fb1cd8c8da7
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93041952"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96619146"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-powershell"></a>Aktivieren von Azure Active Directory Domain Services mithilfe von PowerShell
 
@@ -54,7 +54,7 @@ New-AzureADServicePrincipal -AppId "6ba9a5d4-8456-4118-b521-9c5ca10cdf84"
 
 Erstellen Sie nun eine Azure AD-Gruppe namens *AAD DC Administrators*. Den dieser Gruppe hinzugefügten Benutzern werden dann Berechtigungen zum Ausführen von Verwaltungsaufgaben für die verwaltete Domäne erteilt.
 
-Rufen Sie zunächst mithilfe des Cmdlets [Get-AzureADGroup][Get-AzureADGroup] die Objekt-ID für die Gruppe *AAD DC Administrators* ab. Wenn die Gruppe nicht vorhanden ist, erstellen Sie sie mithilfe des Cmdlets [New-AzureADGroup][New-AzureADGroup] und der Gruppe *AAD DC Administrators* :
+Rufen Sie zunächst mithilfe des Cmdlets [Get-AzureADGroup][Get-AzureADGroup] die Objekt-ID für die Gruppe *AAD DC Administrators* ab. Wenn die Gruppe nicht vorhanden ist, erstellen Sie sie mithilfe des Cmdlets [New-AzureADGroup][New-AzureADGroup] und der Gruppe *AAD DC Administrators*:
 
 ```powershell
 # First, retrieve the object ID of the 'AAD DC Administrators' group.
@@ -200,7 +200,7 @@ $vnet | Set-AzVirtualNetwork
 
 ## <a name="create-a-managed-domain"></a>Erstellen einer verwalteten Domäne
 
-Jetzt erstellen wir eine verwaltete Domäne. Legen Sie Ihre Azure-Abonnement-ID fest, und geben Sie dann einen Namen für die verwaltete Domäne (z. B. *aaddscontoso.com* ) an. Die ID Ihres Abonnements können Sie mithilfe des Cmdlets [Get-AzSubscription][Get-AzSubscription] abrufen.
+Jetzt erstellen wir eine verwaltete Domäne. Legen Sie Ihre Azure-Abonnement-ID fest, und geben Sie dann einen Namen für die verwaltete Domäne (z. B. *aaddscontoso.com*) an. Die ID Ihres Abonnements können Sie mithilfe des Cmdlets [Get-AzSubscription][Get-AzSubscription] abrufen.
 
 Wenn Sie eine Region mit Unterstützung von Verfügbarkeitszonen auswählen, werden die Azure AD DS-Ressourcen auf mehrere Zonen verteilt, um zusätzliche Redundanz zu erzielen.
 

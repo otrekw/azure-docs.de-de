@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: duau
-ms.openlocfilehash: b8ef1c14089744defaf6de5b3cf9e72d281452b6
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: ef5b065425fa05d016c1b1c1688cc28508f32d30
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93027107"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462040"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute – FAQ
 
@@ -46,8 +46,9 @@ Nein. Sie können eine VPN-Verbindung beliebiger Geschwindigkeit bei Ihrem Diens
 
 ### <a name="if-i-pay-for-an-expressroute-circuit-of-a-given-bandwidth-do-i-have-the-ability-to-use-more-than-my-procured-bandwidth"></a>Wenn ich für eine ExpressRoute-Leitung mit einer bestimmten Bandbreite zahle, habe ich die Möglichkeit, mehr als die erworbene Bandbreite zu nutzen?
 
-Ja, Sie können die erworbene Bandbreite verdoppeln, indem Sie die Bandbreite der sekundären Verbindung Ihrer ExpressRoute-Leitung nutzen. Die integrierte Redundanz Ihrer Leitung ist mit der primären und der sekundären Verbindung (die jeweils die erworbene Bandbreite bereitstellen) mit zwei Microsoft Enterprise Edge-Routern (MSEEs) konfiguriert. Die über die sekundäre Verbindung verfügbare Bandbreite kann bei Bedarf für zusätzlichen Datenverkehr genutzt werden. Da die sekundäre Verbindung zur Bereitstellung von Redundanz gedacht ist, bietet sie jedoch keine Garantien und sollte nicht über einen längeren Zeitraum für zusätzlichen Datenverkehr genutzt werden. Weitere Informationen zur Verwendung beider Verbindungen für die Übertragung von Datenverkehr finden Sie [hier](https://docs.microsoft.com/azure/expressroute/expressroute-optimize-routing#solution-use-as-path-prepending).
-Wenn Sie planen, nur die primäre Verbindung für die Übertragung von Datenverkehr zu verwenden, ist die Bandbreite für die Verbindung nicht veränderlich, und der Versuch einer Überbelegung führt zu vermehrten Paketverlusten. Wenn der Datenverkehr durch ein ExpressRoute-Gateway geleitet wird, ist die Bandbreite für die SKU festgelegt und nicht burstfähig.
+Ja, Sie können die erworbene Bandbreite verdoppeln, indem Sie die Bandbreite der sekundären Verbindung Ihrer ExpressRoute-Leitung nutzen. Die integrierte Redundanz Ihrer Leitung ist mit der primären und der sekundären Verbindung (die jeweils die erworbene Bandbreite bereitstellen) mit zwei Microsoft Enterprise Edge-Routern (MSEEs) konfiguriert. Die über die sekundäre Verbindung verfügbare Bandbreite kann bei Bedarf für zusätzlichen Datenverkehr genutzt werden. Da die sekundäre Verbindung zur Bereitstellung von Redundanz gedacht ist, bietet sie jedoch keine Garantien und sollte nicht über einen längeren Zeitraum für zusätzlichen Datenverkehr genutzt werden. Weitere Informationen zur Verwendung beider Verbindungen für die Übertragung von Datenverkehr finden Sie unter [Voranstellen von AS PATH](./expressroute-optimize-routing.md#solution-use-as-path-prepending).
+
+Wenn Sie planen, nur die primäre Verbindung für die Übertragung von Datenverkehr zu verwenden, ist die Bandbreite für die Verbindung nicht veränderlich, und der Versuch einer Überbelegung führt zu vermehrten Paketverlusten. Wenn der Datenverkehr durch ein ExpressRoute-Gateway geleitet wird, ist die Bandbreite für die Gateway-SKU festgelegt und nicht burstfähig. Informationen zur Bandbreite der einzelnen Gateway-SKUs finden Sie unter [Informationen zu ExpressRoute-Gateways für virtuelle Netzwerke](expressroute-about-virtual-network-gateways.md#aggthroughput).
 
 ### <a name="can-i-use-the-same-private-network-connection-with-virtual-network-and-other-azure-services-simultaneously"></a>Kann ich dieselbe private Netzwerkverbindung gleichzeitig mit virtuellen Netzwerken und anderen Azure-Diensten verwenden?
 

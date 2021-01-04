@@ -3,12 +3,12 @@ title: Konfigurieren der PV-Überwachung mit Azure Monitor für Container | Micr
 description: In diesem Artikel erfahren Sie, wie Sie die Überwachung von Kubernetes-Clustern mit persistenten Volumes mit Azure Monitor für Container konfigurieren können.
 ms.topic: conceptual
 ms.date: 10/20/2020
-ms.openlocfilehash: 30e99c2abbc66de257f9623dedc901fca51976c1
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: e7c547c137fc84e6e6dfb2807b871ef0329a3c13
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92492125"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186846"
 ---
 # <a name="configure-pv-monitoring-with-azure-monitor-for-containers"></a>Konfigurieren der PV-Überwachung mit Azure Monitor für Container
 
@@ -30,4 +30,4 @@ Azure Monitor für Container enthält vorkonfigurierte Diagramme für diese Metr
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen zu erfassten PV-Metriken finden Sie [hier](https://aka.ms/ci/pvconfig).
+- Weitere Informationen zu erfassten PV-Metriken finden Sie [hier](./container-insights-agent-config.md).

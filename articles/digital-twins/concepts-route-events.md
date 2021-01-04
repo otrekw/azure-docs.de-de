@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: d085d59dc1dbe09c014dcaf5aa239805824354f0
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.openlocfilehash: 6559de2b94879ac8643f4945fd5adcf4fc7e1045
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93279959"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350822"
 ---
 # <a name="route-events-within-and-outside-of-azure-digital-twins"></a>Weiterleiten von Ereignissen innerhalb und außerhalb von Azure Digital Twins
 
@@ -103,7 +103,7 @@ Wenn eine der Bedingungen erfüllt ist, wird das Ereignis gelöscht oder als unz
 
 Wenn Sie den Speicherort für unzustellbare Nachrichten festlegen möchten, benötigen Sie ein Speicherkonto mit einem Container. Sie geben die URL für diesen Container an, wenn Sie den Endpunkt erstellen. Die unzustellbaren Nachrichten werden als Container-URL mit einem SAS-Token bereitgestellt. Dieses Token benötigt nur die `write`-Berechtigung für den Zielcontainer innerhalb des Speicherkontos. Die vollständig formatierte URL weist das folgende Format auf: `https://<storageAccountname>.blob.core.windows.net/<containerName>?<SASToken>`
 
-Weitere Informationen zu SAS-Token finden Sie hier: [*Gewähren von eingeschränktem Zugriff auf Azure Storage-Ressourcen mithilfe von SAS (Shared Access Signature)*](https://docs.microsoft.com/azure/storage/common/storage-sas-overview)
+Weitere Informationen zu SAS-Token finden Sie hier: [*Gewähren von eingeschränktem Zugriff auf Azure Storage-Ressourcen mithilfe von SAS (Shared Access Signature)*](../storage/common/storage-sas-overview.md)
 
 Informationen zum Einrichten eines Endpunkts mit unzustellbaren Nachrichten finden Sie unter [*Vorgehensweise: Verwalten von Endpunkten und Routen in Azure Digital Twins (APIs und CLI)*](how-to-manage-routes-apis-cli.md#create-an-endpoint-with-dead-lettering).
 

@@ -7,12 +7,12 @@ ms.author: msangapu
 keywords: Azure App Service, Web-App, Linux, Windows, Docker, Container
 ms.custom: devx-track-csharp, mvc, seodec18, devx-track-python, devx-track-azurecli
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: b5682275a9e5f3993de715ab5f23a708d5df47ae
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 68fe49ff201ead89d846a0676e81dda9fc9b75b9
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130118"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96558605"
 ---
 # <a name="migrate-custom-software-to-azure-app-service-using-a-custom-container"></a>Migrieren benutzerdefinierter Software zu Azure App Service mithilfe eines benutzerdefinierten Containers
 
@@ -228,31 +228,16 @@ Bei diesem Tutorial fällt in Ihrem Azure-Konto eine geringfügige Gebühr für 
 
 ## <a name="set-up-your-initial-environment"></a>Einrichten der anfänglichen Umgebung
 
-* Sie benötigen ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-* Installieren Sie [Docker](https://docs.docker.com/get-started/#setup). Mit diesem Tool erstellen Sie Docker-Images. Zum Installieren von Docker ist möglicherweise ein Neustart des Computers erforderlich.
-* Installieren Sie die <a href="/cli/azure/install-azure-cli" target="_blank">Azure CLI</a> 2.0.80 oder höher, mit der Sie Befehle in einer beliebigen Shell ausführen, um Azure-Ressourcen bereitzustellen und zu konfigurieren.
+- Sie benötigen ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- Installieren Sie [Docker](https://docs.docker.com/get-started/#setup). Mit diesem Tool erstellen Sie Docker-Images. Zum Installieren von Docker ist möglicherweise ein Neustart des Computers erforderlich.
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+- Für dieses Tutorial ist mindestens Version 2.0.80 der Azure CLI erforderlich. Bei Verwendung von Azure Cloud Shell ist die aktuelle Version bereits installiert.
 
-Öffnen Sie nach der Installation von Docker und der Azure CLI ein Terminalfenster, und vergewissern Sie sich, dass Docker installiert ist:
+Öffnen Sie nach der Installation von Docker oder der Ausführung von Azure Cloud Shell ein Terminalfenster, und vergewissern Sie sich, dass Docker installiert ist:
 
 ```bash
 docker --version
 ```
-
-Vergewissern Sie sich außerdem, dass Sie mindestens Version 2.0.80 der Azure CLI verwenden:
-
-```azurecli
-az --version
-```
-
-Melden Sie sich anschließend über die CLI bei Azure an:
-
-```azurecli
-az login
-```
-
-Der Befehl `az login` öffnet einen Browser zum Erfassen Ihrer Anmeldeinformationen. Wenn der Befehl abgeschlossen ist, wird eine JSON-Ausgabe mit Informationen zu Ihren Abonnements angezeigt.
-
-Nachdem Sie sich angemeldet haben, können Sie Azure-Befehle mit der Azure CLI ausführen, um Ressourcen in Ihrem Abonnement zu verwenden.
 
 ## <a name="clone-or-download-the-sample-app"></a>Klonen oder Herunterladen der Beispiel-App
 
@@ -343,8 +328,6 @@ ENTRYPOINT ["init.sh"]
 1. Rufen Sie `http://localhost:8000` auf, um zu überprüfen, ob Web-App und Container ordnungsgemäß funktionieren.
 
     ![Lokales Testen der Web-App](./media/app-service-linux-using-custom-docker-image/app-service-linux-browse-local.png)
-
-[!INCLUDE [Try Cloud Shell](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 

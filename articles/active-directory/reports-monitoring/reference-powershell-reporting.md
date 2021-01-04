@@ -18,12 +18,12 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 25f3402864e2ba873ce63acb6cedcd3f2ea018f7
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 9ff923d0231a1b00493a54996c2fcd489012bbe7
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93123131"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862036"
 ---
 # <a name="azure-ad-powershell-cmdlets-for-reporting"></a>Azure AD PowerShell-Cmdlets für die Berichterstellung
 
@@ -36,7 +36,7 @@ Verwenden Sie folgenden Befehl, um die öffentliche Vorschauversion zu installie
 Install-module AzureADPreview
 ```
 
-Weitere Informationen dazu, wie Sie mithilfe von PowerShell eine Verbindung mit Azure AD herstellen, finden Sie im Artikel [Azure AD PowerShell für Graph](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0).  
+Weitere Informationen dazu, wie Sie mithilfe von PowerShell eine Verbindung mit Azure AD herstellen, finden Sie im Artikel [Azure AD PowerShell für Graph](/powershell/azure/active-directory/install-adv2).  
 
 Mit Azure AD-Berichten (Azure Active Directory) können Sie Details zu Aktivitäten rund um alle Schreibvorgänge in Ihrem Verzeichnis (Überwachungsprotokolle) und Authentifizierungsdaten (Anmeldeprotokolle) erhalten. Diese Informationen stehen zwar schon über die Microsoft Graph-API zur Verfügung, aber jetzt können Sie die gleichen Daten mithilfe der Azure AD-PowerShell-Cmdlets für die Berichterstellung abrufen.
 

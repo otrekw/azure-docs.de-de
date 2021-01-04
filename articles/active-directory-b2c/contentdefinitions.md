@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 10/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: fd2f7d46df09085d19b19709c7f45cd3d6566988
-ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
+ms.openlocfilehash: 018d90db06948f3fd6a34b56c65088641a9ca874
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92628659"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97108976"
 ---
 # <a name="contentdefinitions"></a>ContentDefinitions
 
@@ -24,9 +24,9 @@ ms.locfileid: "92628659"
 
 Sie können das Aussehen und Verhalten von [selbstbestätigten technischen Profilen](self-asserted-technical-profile.md) anpassen. Azure Active Directory B2C (Azure AD B2C) führt den Code im Browser Ihres Kunden aus und verwendet einen modernen Ansatz namens Cross-Origin Resource Sharing (CORS, Ressourcenfreigabe zwischen verschiedenen Ursprüngen).
 
-Zum Anpassen der Benutzeroberfläche geben Sie im **ContentDefinition** -Element eine URL mit benutzerdefiniertem HTML-Inhalt an. Verweisen Sie in dem selbstbestätigten technischen Profil oder in **OrchestrationStep** auf den Bezeichner der Inhaltsdefinition. Die Inhaltsdefinition darf ein **LocalizedResourcesReferences** -Element mit einer Liste der lokalisierten Ressourcen, die geladen werden sollen, enthalten. Azure AD B2C führt die Benutzeroberflächenelemente mit dem HTML-Inhalt, der über Ihre URL geladen wird, zusammen und zeigt anschließend die Seite für den Benutzer an.
+Zum Anpassen der Benutzeroberfläche geben Sie im **ContentDefinition**-Element eine URL mit benutzerdefiniertem HTML-Inhalt an. Verweisen Sie in dem selbstbestätigten technischen Profil oder in **OrchestrationStep** auf den Bezeichner der Inhaltsdefinition. Die Inhaltsdefinition darf ein **LocalizedResourcesReferences**-Element mit einer Liste der lokalisierten Ressourcen, die geladen werden sollen, enthalten. Azure AD B2C führt die Benutzeroberflächenelemente mit dem HTML-Inhalt, der über Ihre URL geladen wird, zusammen und zeigt anschließend die Seite für den Benutzer an.
 
-Das **ContentDefinitions** -Element enthält die URLs für HTML5-Vorlagen, die in einer User Journey verwendet werden können. Der HTML5-Seiten-URI wird für einen angegebenen Schritt auf der Benutzeroberfläche verwendet. Dies könnten beispielsweise die Seiten für das Registrieren oder Anmelden oder das Zurücksetzen des Kennworts oder Fehlerseiten sein. Sie können das Aussehen und Verhalten durch Überschreiben des LoadUri für die HTML5-Datei ändern. Sie können neue Inhaltsdefinitionen nach Ihren Anforderungen erstellen. Dieses Element kann einen Verweis auf lokalisierte Ressourcen im Lokalisierungsbezeichner, der im [Localization](localization.md)-Element angegeben wird, enthalten.
+Das **ContentDefinitions**-Element enthält die URLs für HTML5-Vorlagen, die in einer User Journey verwendet werden können. Der HTML5-Seiten-URI wird für einen angegebenen Schritt auf der Benutzeroberfläche verwendet. Dies könnten beispielsweise die Seiten für das Registrieren oder Anmelden oder das Zurücksetzen des Kennworts oder Fehlerseiten sein. Sie können das Aussehen und Verhalten durch Überschreiben des LoadUri für die HTML5-Datei ändern. Sie können neue Inhaltsdefinitionen nach Ihren Anforderungen erstellen. Dieses Element kann einen Verweis auf lokalisierte Ressourcen im Lokalisierungsbezeichner, der im [Localization](localization.md)-Element angegeben wird, enthalten.
 
 Das folgende Beispiel zeigt den Bezeichner für die Inhaltsdefinition und die Definition von lokalisierten Ressourcen:
 
@@ -44,7 +44,7 @@ Das folgende Beispiel zeigt den Bezeichner für die Inhaltsdefinition und die De
     ...
 ```
 
-Die Metadaten des selbstbestätigten technischen Profils **LocalAccountSignUpWithLogonEmail** enthalten den Bezeichner für die Inhaltsdefinition **ContentDefinitionReferenceId** , der auf `api.localaccountsignup` festgelegt ist.
+Die Metadaten des selbstbestätigten technischen Profils **LocalAccountSignUpWithLogonEmail** enthalten den Bezeichner für die Inhaltsdefinition **ContentDefinitionReferenceId**, der auf `api.localaccountsignup` festgelegt ist.
 
 ```xml
 <TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">
@@ -59,13 +59,13 @@ Die Metadaten des selbstbestätigten technischen Profils **LocalAccountSignUpWit
 
 ## <a name="contentdefinition"></a>ContentDefinition
 
-Das **ContentDefinition** -Element enthält das folgende Attribut:
+Das **ContentDefinition**-Element enthält das folgende Attribut:
 
 | attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | Id | Ja | Ein Bezeichner für eine Inhaltsdefinition. Der Wert wird im Abschnitt **ID für Inhaltsdefinitionen** weiter unten auf dieser Seite beschrieben. |
 
-Das **ContentDefinition** -Element enthält die folgenden Elemente:
+Das **ContentDefinition**-Element enthält die folgenden Elemente:
 
 | Element | Vorkommen | BESCHREIBUNG |
 | ------- | ----------- | ----------- |
@@ -77,7 +77,7 @@ Das **ContentDefinition** -Element enthält die folgenden Elemente:
 
 ### <a name="datauri"></a>DataUri
 
-Das **DataUri** -Element wird verwendet, um den Seitenbezeichner anzugeben. Azure AD B2C verwendet den Seitenbezeichner, um Elemente der Benutzeroberfläche und clientseitigen JavaScript-Code zu laden und zu initiieren. Das Format des Werts ist `urn:com:microsoft:aad:b2c:elements:page-name:version`. Die folgende Tabelle enthält die Seitenbezeichner, die Sie verwenden können.
+Das **DataUri**-Element wird verwendet, um den Seitenbezeichner anzugeben. Azure AD B2C verwendet den Seitenbezeichner, um Elemente der Benutzeroberfläche und clientseitigen JavaScript-Code zu laden und zu initiieren. Das Format des Werts ist `urn:com:microsoft:aad:b2c:elements:page-name:version`. Die folgende Tabelle enthält die Seitenbezeichner, die Sie verwenden können.
 
 | Seitenbezeichner | BESCHREIBUNG |
 | ----- | ----------- |
@@ -90,7 +90,7 @@ Das **DataUri** -Element wird verwendet, um den Seitenbezeichner anzugeben. Azur
 
 ### <a name="select-a-page-layout"></a>Auswählen eines Seitenlayouts
 
-Sie können [clientseitigen JavaScript-Code](javascript-samples.md) aktivieren, indem Sie `contract` zwischen `elements` und dem Seitentyp einfügen. Beispiel: `urn:com:microsoft:aad:b2c:elements:contract:page-name:version`.
+Sie können [clientseitigen JavaScript-Code](javascript-and-page-layout.md) aktivieren, indem Sie `contract` zwischen `elements` und dem Seitentyp einfügen. Beispiel: `urn:com:microsoft:aad:b2c:elements:contract:page-name:version`.
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
@@ -111,7 +111,7 @@ Das folgende Beispiel zeigt den **DataUri** von `selfasserted`version`1.2.0`:
 
 #### <a name="migrating-to-page-layout"></a>Migrieren zum Seitenlayout
 
-Das Format des Werts muss das Wort `contract` enthalten: _urn:com:microsoft:aad:b2c:elements: **contract** :page-name:version_. Um ein Seitenlayout in Ihren benutzerdefinierten Richtlinien anzugeben, die einen alten **DataUri** -Wert verwenden, verwenden Sie die folgende Tabelle für das Migrieren zum neuen Format.
+Das Format des Werts muss das Wort `contract` enthalten: _urn:com:microsoft:aad:b2c:elements:**contract**:page-name:version_. Um ein Seitenlayout in Ihren benutzerdefinierten Richtlinien anzugeben, die einen alten **DataUri**-Wert verwenden, verwenden Sie die folgende Tabelle für das Migrieren zum neuen Format.
 
 | Alter DataUri-Wert | Neuer DataUri-Wert |
 | ----------------- | ----------------- |
@@ -162,13 +162,13 @@ Im folgenden Beispiel werden die Inhaltsdefinitions-IDs mit dem zugehörigen **D
 
 ### <a name="metadata"></a>Metadaten
 
-Das **Metadata** -Element enthält die folgenden Elemente:
+Das **Metadata**-Element enthält die folgenden Elemente:
 
 | Element | Vorkommen | BESCHREIBUNG |
 | ------- | ----------- | ----------- |
 | Element | 0:n | Die Metadaten zu der Inhaltsdefinition. |
 
-Das **Item** -Element des **Metadata** -Elements enthält die folgenden Attribute:
+Das **Item**-Element des **Metadata**-Elements enthält die folgenden Attribute:
 
 | attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
@@ -184,18 +184,18 @@ Die Inhaltsdefinition unterstützt die folgenden Metadatenelemente:
 
 ### <a name="localizedresourcesreferences"></a>LocalizedResourcesReferences
 
-Das **LocalizedResourcesReferences** -Element enthält die folgenden Elemente:
+Das **LocalizedResourcesReferences**-Element enthält die folgenden Elemente:
 
 | Element | Vorkommen | BESCHREIBUNG |
 | ------- | ----------- | ----------- |
 | LocalizedResourcesReference | 1:n | Eine Liste mit Verweisen auf lokalisierte Ressourcen für die Inhaltsdefinition. |
 
-Das **LocalizedResourcesReference** -Element enthält die folgenden Attribute:
+Das **LocalizedResourcesReference**-Element enthält die folgenden Attribute:
 
 | attribute | Erforderlich | Beschreibung |
 | --------- | -------- | ----------- |
 | Sprache | Ja | Eine Zeichenfolge mit einer unterstützten Sprache für die Richtlinie gemäß „RFC 5646 – Tags for Identifying Languages“ (Tags für das Angeben von Sprachen). |
-| LocalizedResourcesReferenceId | Ja | Der Bezeichner des **LocalizedResources** -Elements. |
+| LocalizedResourcesReferenceId | Ja | Der Bezeichner des **LocalizedResources**-Elements. |
 
 Das folgende Beispiel zeigt eine Inhaltsdefinition für die Registrierung oder Anmeldung mit einem Verweis auf die Lokalisierung für Englisch, Französisch und Spanisch:
 
@@ -219,7 +219,7 @@ Weitere Informationen zum Hinzufügen von Unterstützung für die Lokalisierung 
 
 ## <a name="content-definition-ids"></a>ID für Inhaltsdefinitionen
 
-Das ID-Attribut des **ContentDefinition** -Elements gibt den Typ der Seite an, die mit der Inhaltsdefinition verknüpft ist. Das Element definiert den Kontext, den eine benutzerdefinierte HTML5/CSS-Vorlage anwendet. In der folgenden Tabelle werden die Gruppe mit den IDs der Inhaltsdefinitionen, die vom Identity Experience Framework erkannt werden, und die entsprechenden Seitentypen beschrieben. Sie können eigene Inhaltsdefinitionen mit beliebigen IDs erstellen.
+Das ID-Attribut des **ContentDefinition**-Elements gibt den Typ der Seite an, die mit der Inhaltsdefinition verknüpft ist. Das Element definiert den Kontext, den eine benutzerdefinierte HTML5/CSS-Vorlage anwendet. In der folgenden Tabelle werden die Gruppe mit den IDs der Inhaltsdefinitionen, die vom Identity Experience Framework erkannt werden, und die entsprechenden Seitentypen beschrieben. Sie können eigene Inhaltsdefinitionen mit beliebigen IDs erstellen.
 
 | ID | Standardvorlage | Beschreibung |
 | -- | ---------------- | ----------- |
@@ -238,4 +238,4 @@ Das ID-Attribut des **ContentDefinition** -Elements gibt den Typ der Seite an, d
 
 Ein Beispiel für die Anpassung der Benutzeroberfläche mithilfe von Inhaltsdefinitionen finden Sie unter:
 
-[Anpassen der Benutzeroberfläche Ihrer Anwendung mit einer benutzerdefinierten Richtlinie](custom-policy-ui-customization.md)
+[Anpassen der Benutzeroberfläche Ihrer Anwendung mit einer benutzerdefinierten Richtlinie](customize-ui-with-html.md)

@@ -192,8 +192,16 @@
           href: application-proxy-remove-personal-data.md
         - name: Konfigurieren einer benutzerdefinierten Domäne
           href: application-proxy-configure-custom-domain.md
-        - name: Schützen von Legacy-Apps mit App-Bereitstellungscontrollern oder -netzwerken
-          href: secure-hybrid-access.md
+        - name: Sichern von Legacy-Apps
+          items:
+            - name: Sichern des Hybridzugriffs mit Azure AD
+              href: secure-hybrid-access.md
+            - name: Integration von F5 und Azure AD
+              href: f5-aad-integration.md
+            - name: Bereitstellung von F5 BIG-IP VE in Azure IaaS
+              href: f5-bigip-deployment-guide.md
+            - name: F5 Big-IP mit Azure AD für kennwortloses VPN
+              href: f5-aad-password-less-vpn.md
         - name: Veröffentlichen von exemplarische Vorgehensweisen
           items:
             - name: Integrieren in den Anwendungsproxy auf einem NDES-Server
@@ -201,7 +209,7 @@
             - name: Integrieren in den Anwendungsproxy mithilfe von PingAccess
               href: application-proxy-ping-access-publishing-guide.md
             - name: Integrieren in Azure AD Domain Services
-              href: ../../active-directory-domain-services/deploy-azure-app-proxy.md?context=azure%252factive-directory%252fmanage-apps%252fcontext%252fmanage-apps-context
+              href: ../../active-directory-domain-services/deploy-azure-app-proxy.md?context=%2fazure%2factive-directory%2fmanage-apps%2fcontext%2fmanage-apps-context
             - name: Integrieren mit Power BI
               href: application-proxy-integrate-with-power-bi.md
             - name: Integrieren mit Cloud App Security
@@ -263,7 +271,7 @@
             - name: Konfigurieren der eingeschränkten Kerberos-Delegierung
               href: application-proxy-back-end-kerberos-constrained-delegation-how-to.md
             - name: Konfigurieren mit PingAccess
-              href: /azure/active-directory/manage-apps/application-proxy-ping-access-publishing-guide
+              href: ./application-proxy-ping-access-publishing-guide.md
             - name: Fehler „Zugriff auf diese Unternehmensanwendung nicht möglich“
               href: application-proxy-sign-in-bad-gateway-timeout-error.md
             - name: Problem beim Installieren des Anwendungsproxy-Agent-Connectors
@@ -281,7 +289,7 @@
 - name: Ressourcen
   items:
     - name: Support- und Hilfeoptionen für Entwickler
-      href: ../develop/developer-support-help-options.md?context=azure%252factive-directory%252fmanage-apps%252fcontext%252fmanage-apps-context
+      href: ../develop/developer-support-help-options.md?context=%2fazure%2factive-directory%2fmanage-apps%2fcontext%2fmanage-apps-context
     - name: Azure-Feedbackforum
       href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
     - name: "Frageseite von Microsoft\_Q&A (Fragen und Antworten)"

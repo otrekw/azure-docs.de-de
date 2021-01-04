@@ -67,6 +67,10 @@
           href: virtual-wan-ipsec.md
         - name: 'Mehrere ISP-Links: Azure-Pfadauswahl'
           href: path-selection-multiple-links.md
+    - name: Sicherheit
+      items:
+        - name: Sicherheitsbaseline
+          href: security-baseline.md
     - name: Preiskonzepte
       href: pricing-concepts.md
     - name: Informationen zu NVA in einem virtuellen Hub
@@ -137,6 +141,8 @@
           href: howto-firewall.md
         - name: "Konfigurieren von Private\_Link-Konnektivität"
           href: howto-private-link.md
+        - name: 'Verwalten des Zugriffs auf Ressourcen: Spoke-VNET (P2S)'
+          href: manage-secure-access-resources-spoke-p2s.md
     - name: Überwachung
       items:
         - name: Protokolle und Metriken

@@ -1,6 +1,6 @@
 ---
-title: Sichern einer Datenbank
-description: Tipps zum Sichern eines dedizierten SQL-Pools und zum Entwickeln von Lösungen in Azure Synapse Analytics.
+title: Sichern eines dedizierten SQL-Pools (früher SQL DW)
+description: Tipps zum Sichern eines dedizierten SQL-Pools (früher SQL DW) und zum Entwickeln von Lösungen in Azure Synapse Analytics.
 author: julieMSFT
 manager: craigg
 ms.service: synapse-analytics
@@ -11,14 +11,14 @@ ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: f6c1370cab573926183a937b8e749ef490c19334
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: ce09488e2323aada5f99494ef3920681b685ec0b
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93317693"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96453631"
 ---
-# <a name="secure-a-dedicated-sql-pool-in-azure-synapse-analytics"></a>Sichern eines dedizierten SQL-Pools in Azure Synapse Analytics
+# <a name="secure-a-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Sichern eines dedizierten SQL-Pools (früher SQL DW) in Azure Synapse Analytics
 
 > [!div class="op_single_selector"]
 >
@@ -27,7 +27,7 @@ ms.locfileid: "93317693"
 > * [Verschlüsselung (Portal)](sql-data-warehouse-encryption-tde.md)
 > * [Verschlüsselung (T-SQL)](sql-data-warehouse-encryption-tde-tsql.md)
 
-In diesem Artikel werden die Grundlagen zum Sichern Ihres dedizierten SQL-Pools erläutert. Insbesondere erhalten Sie in diesem Artikel erste Informationen über Ressourcen zum Einschränken des Zugriffs, Schützen von Daten und Überwachen von Aktivitäten mithilfe eines dedizierten SQL-Pools.
+In diesem Artikel werden die Grundlagen zum Sichern Ihres dedizierten SQL-Pools (früher SQL DW) erläutert. Insbesondere erhalten Sie in diesem Artikel erste Informationen über Ressourcen zum Einschränken des Zugriffs, Schützen von Daten und Überwachen von Aktivitäten mithilfe eines dedizierten SQL-Pools (früher SQL DW).
 
 ## <a name="connection-security"></a>Verbindungssicherheit
 
@@ -35,15 +35,15 @@ Verbindungssicherheit bezieht sich darauf, auf welche Weise Sie die Verbindungen
 
 Firewallregeln werden vom [logischen SQL-Server](../../azure-sql/database/logical-servers.md) und den zugehörigen Datenbanken verwendet, um Verbindungsversuche von IP-Adressen abzuwehren, die nicht explizit genehmigt wurden. Damit von Ihrer Anwendung oder von der öffentlichen IP-Adresse Ihres Clientcomputers aus Verbindungen hergestellt werden können, müssen Sie zuerst über das Azure-Portal, über REST-API oder über PowerShell eine Firewallregel auf Serverebene erstellen.
 
-Eine bewährte Methode besteht darin, die von der Firewall auf Serverebene zugelassenen IP-Adressbereiche so weit wie möglich einzuschränken.  Wenn Sie von Ihrem lokalen Computer aus auf Ihren dedizierten SQL-Pool zugreifen möchten, stellen Sie sicher, dass die Firewall in Ihrem Netzwerk und auf dem lokalen Computer eine ausgehende Kommunikation an TCP-Port 1433 zulässt.  
+Eine bewährte Methode besteht darin, die von der Firewall auf Serverebene zugelassenen IP-Adressbereiche so weit wie möglich einzuschränken.  Wenn Sie von Ihrem lokalen Computer aus auf Ihren dedizierten SQL-Pool (früher SQL DW) zugreifen möchten, stellen Sie sicher, dass die Firewall in Ihrem Netzwerk und auf dem lokalen Computer eine ausgehende Kommunikation an TCP-Port 1433 zulässt.  
 
-Azure Synapse Analytics verwendet IP-Firewallregeln auf Serverebene. IP-Firewallregeln auf Datenbankebene werden nicht unterstützt. Weitere Informationen finden Sie unter [Firewallregeln für Azure SQL-Datenbank](../../azure-sql/database/firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
+Der dedizierte SQL-Pool (früher SQL DW) verwendet IP-Firewallregeln auf Serverebene. IP-Firewallregeln auf Datenbankebene werden nicht unterstützt. Weitere Informationen finden Sie unter [Firewallregeln für Azure SQL-Datenbank](../../azure-sql/database/firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
 
-Verbindungen mit Ihrem dedizierten SQL-Pool werden standardmäßig verschlüsselt.  Das Ändern von Verbindungseinstellungen zum Deaktivieren der Verschlüsselung wird ignoriert.
+Verbindungen mit Ihrem dedizierten SQL-Pool (früher SQL DW) werden standardmäßig verschlüsselt.  Das Ändern von Verbindungseinstellungen zum Deaktivieren der Verschlüsselung wird ignoriert.
 
 ## <a name="authentication"></a>Authentifizierung
 
-Authentifizierung bezieht sich darauf, auf welche Weise Sie Ihre Identität beim Herstellen der Verbindung mit der Datenbank nachweisen. Der dedizierte SQL-Pool unterstützt zurzeit die SQL Server-Authentifizierung mit einem Benutzernamen und Kennwort sowie mit Azure Active Directory.
+Authentifizierung bezieht sich darauf, auf welche Weise Sie Ihre Identität beim Herstellen der Verbindung mit der Datenbank nachweisen. Der dedizierte SQL-Pool (früher SQL DW) unterstützt zurzeit die SQL Server-Authentifizierung mit einem Benutzernamen und Kennwort sowie mit Azure Active Directory.
 
 Bei der Erstellung des Servers für die Datenbank haben Sie eine Serveradministratoranmeldung mit Benutzername und Kennwort angegeben. Mit diesen Anmeldeinformationen können Sie sich mittels SQL Server-Authentifizierung bei jeder Datenbank auf diesem Server als Datenbankbesitzer bzw. „dbo“ (database owner) authentifizieren.
 
@@ -57,7 +57,7 @@ CREATE LOGIN ApplicationLogin WITH PASSWORD = 'Str0ng_password';
 CREATE USER ApplicationUser FOR LOGIN ApplicationLogin;
 ```
 
-Stellen Sie dann mit den Anmeldedaten für den Serveradministrator eine Verbindung mit Ihrer **dedizierten SQL-Pooldatenbank** her, und erstellen Sie einen Datenbankbenutzer basierend auf der erstellten Serveranmeldung.
+Stellen Sie dann mit den Anmeldedaten für den Serveradministrator eine Verbindung mit Ihrem **dedizierten SQL-Pool (früher SQL DW)** her, und erstellen Sie einen Datenbankbenutzer basierend auf der erstellten Serveranmeldung.
 
 ```sql
 -- Connect to the database and create a database user
@@ -104,4 +104,4 @@ Sie können Ihre Datenbank mit dem [Azure-Portal](sql-data-warehouse-encryption-
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informationen und Beispiele zum Herstellen einer Verbindung mit Ihrem Warehouse mithilfe verschiedener Protokolle finden Sie unter [Herstellen einer Verbindung mit Ihrem dedizierten SQL-Pool](../sql/connect-overview.md).
+Informationen und Beispiele zum Herstellen einer Verbindung mit Ihrem Warehouse mithilfe verschiedener Protokolle finden Sie unter [Herstellen einer Verbindung mit Ihrem dedizierten SQL-Pool (früher SQL DW)](sql-data-warehouse-connect-overview.md).

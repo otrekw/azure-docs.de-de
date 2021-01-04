@@ -3,17 +3,20 @@ title: Überwachen der Java-Web-App-Leistung unter Linux – Azure | Microsoft-D
 description: Erweiterte Überwachung der Anwendungsleistung Ihrer Java-Website mit dem Plug-In „CollectD“ für Application Insights.
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.openlocfilehash: 63b64226c9e788e060298050a74d9009c8035b89
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+author: MS-jgol
+ms.custom: devx-track-java
+ms.author: jgol
+ms.openlocfilehash: 5ec928a0dc3cbcde3c6dd50b1795a05b5e092bde
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93379008"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96601270"
 ---
-# <a name="collectd-linux-performance-metrics-in-application-insights"></a>collectd: Linux-Leistungsmetriken in Application Insights
+# <a name="collectd-linux-performance-metrics-in-application-insights-deprecated"></a>collectd: Linux-Leistungsmetriken in Application Insights [veraltet]
 
 > [!IMPORTANT]
-> Der empfohlene Ansatz zur Überwachung von Java-Anwendungen ist die automatische Instrumentierung ohne Änderung des Codes. Befolgen Sie die Leitlinien für den [Application Insights Java 3.0-Agent](./java-in-process-agent.md).
+> Der **empfohlene Ansatz** zur Überwachung von Java-Anwendungen ist die automatische Instrumentierung ohne Änderung des Codes. Befolgen Sie die Richtlinien für den **[Application Insights Java 3.0-Agent](./java-in-process-agent.md)** .
 
 Um Leistungsmetriken für Linux-Systeme in [Application Insights](./app-insights-overview.md) zu untersuchen, installieren Sie [CollectD](https://collectd.org/) zusammen mit dem entsprechenden Application Insights-Plug-In. Diese Open Source-Lösung sammelt verschiedene System- und Netzwerkstatistiken.
 

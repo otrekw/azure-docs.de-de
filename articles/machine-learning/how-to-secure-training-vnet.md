@@ -10,13 +10,13 @@ ms.reviewer: larryfr
 ms.author: peterlu
 author: peterclu
 ms.date: 07/16/2020
-ms.custom: contperfq4, tracking-python, contperfq1
-ms.openlocfilehash: 2b0a56bac1652881e9d1733bcb52b02610e27e9e
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1
+ms.openlocfilehash: 131feaf6ff01659b7d126604a5d081275e64508f
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93314157"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97029565"
 ---
 # <a name="secure-an-azure-machine-learning-training-environment-with-virtual-networks"></a>Schützen einer Azure Machine Learning-Trainingsumgebung mit virtuellen Netzwerken
 
@@ -42,7 +42,7 @@ In diesem Artikel erfahren Sie, wie Sie die folgenden Trainingscomputeressourcen
 
 + Ein vorhandenes virtuelles Netzwerk und Subnetz, die mit Ihren Computeressourcen verwendet werden können
 
-+ Ihr Benutzerkonto muss über die rollenbasierte Zugriffssteuerung von Azure (Role-Based Access Control, RBAC) zu den folgenden Aktionen berechtigt werden, um Ressourcen in einem virtuellen Netzwerk oder Subnetz bereitstellen zu können:
++ Ihr Benutzerkonto muss über die rollenbasierte Zugriffssteuerung von Azure (Azure RBAC) zu den folgenden Aktionen berechtigt werden, um Ressourcen in einem virtuellen Netzwerk oder Subnetz bereitstellen zu können:
 
     - „Microsoft.Network/virtualNetworks/join/action“ auf der virtuellen Netzwerkressource
     - „Microsoft.Network/virtualNetworks/subnet/join/action“ auf der Subnetzressource
@@ -52,7 +52,7 @@ In diesem Artikel erfahren Sie, wie Sie die folgenden Trainingscomputeressourcen
 
 ## <a name="compute-clusters--instances"></a><a name="compute-instance"></a>Computecluster und -instanzen 
 
-Wenn Sie ein [verwaltetes Azure Machine Learning- __Computeziel__](concept-compute-target.md#azure-machine-learning-compute-managed) oder eine [Azure Machine Learning- __Computeinstanz__](concept-compute-instance.md) in einem virtuellen Netzwerk verwenden möchten, müssen die folgenden Netzwerkanforderungen erfüllt sein:
+Wenn Sie ein [verwaltetes Azure Machine Learning-__Computeziel__](concept-compute-target.md#azure-machine-learning-compute-managed) oder eine [Azure Machine Learning-__Computeinstanz__](concept-compute-instance.md) in einem virtuellen Netzwerk verwenden möchten, müssen die folgenden Netzwerkanforderungen erfüllt sein:
 
 > [!div class="checklist"]
 > * Das virtuelle Netzwerk muss sich im selben Abonnement und in derselben Region befinden wie der Azure Machine Learning-Arbeitsbereich.
@@ -317,4 +317,4 @@ Dieser Artikel ist der dritte Teil einer vierteiligen Serie zu virtuellen Netzwe
 * [Teil 1: Virtuelle Netzwerke im Überblick](how-to-network-security-overview.md)
 * [Teil 2: Schützen von Arbeitsbereichsressourcen](how-to-secure-workspace-vnet.md)
 * [Teil 4: Schützen der Rückschlussumgebung](how-to-secure-inferencing-vnet.md)
-* [Teil 5: Aktivieren der Studio-Funktionalität](how-to-enable-studio-virtual-network.md)
+* [Teil 5: Verwenden von Studio in einem virtuellen Netzwerk](how-to-enable-studio-virtual-network.md)

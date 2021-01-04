@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 10/30/2020
 keywords: java, jakartaee, javaee, microprofile, open-liberty, websphere-liberty, aro, openshift, red hat
-ms.openlocfilehash: ee4baf8eed26a43728fa52289bce86108c9e8c4a
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 0c17c911d1eefe646785314a26b6a9b1e964ca67
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94413564"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96493939"
 ---
 # <a name="deploy-a-java-application-with-open-libertywebsphere-liberty-on-an-azure-red-hat-openshift-4-cluster"></a>Bereitstellen einer Java-Anwendung mit Open Liberty/WebSphere Liberty in Azure Red Hat OpenShift 4-Clustern
 
@@ -25,26 +25,26 @@ In dieser Anleitung wird veranschaulicht, wie Sie Ihre Java-, Java EE-, [Jakarta
 Erfüllen Sie die folgenden Voraussetzungen aus, um dieses Handbuch erfolgreich durchzuarbeiten.
 
 > [!NOTE]
-> Für Azure Red Hat OpenShift sind mindestens 40 Kerne erforderlich, um einen OpenShift-Cluster zu erstellen und auszuführen. Das standardmäßige Azure-Ressourcenkontingent für ein neues Azure-Abonnement erfüllt diese Anforderung nicht. Weitere Informationen zum Anfordern einer Erhöhung des Ressourcenlimits finden Sie unter [Standardkontingent: Erhöhen der Grenzwerte nach VM-Serie](https://docs.microsoft.com/azure/azure-portal/supportability/per-vm-quota-requests) beschrieben. Beachten Sie, dass Ihr kostenloses Testabonnement nicht für eine Erhöhung des Kontingents qualifiziert ist. Bevor Sie eine Kontingenterhöhung anfordern, [führen Sie zuerst ein Upgrade auf ein Abonnement mit nutzungsbasierter Bezahlung durch](https://docs.microsoft.com/azure/cost-management-billing/manage/upgrade-azure-subscription).
+> Für Azure Red Hat OpenShift sind mindestens 40 Kerne erforderlich, um einen OpenShift-Cluster zu erstellen und auszuführen. Das standardmäßige Azure-Ressourcenkontingent für ein neues Azure-Abonnement erfüllt diese Anforderung nicht. Weitere Informationen zum Anfordern einer Erhöhung des Ressourcenlimits finden Sie unter [Standardkontingent: Erhöhen der Grenzwerte nach VM-Serie](../azure-portal/supportability/per-vm-quota-requests.md) beschrieben. Beachten Sie, dass Ihr kostenloses Testabonnement nicht für eine Erhöhung des Kontingents qualifiziert ist. Bevor Sie eine Kontingenterhöhung anfordern, [führen Sie zuerst ein Upgrade auf ein Abonnement mit nutzungsbasierter Bezahlung durch](../cost-management-billing/manage/upgrade-azure-subscription.md).
 
 1. Bereiten Sie einen lokalen Computer mit installiertem UNIX-ähnlichem Betriebssystem vor (z. B. Ubuntu, macOS).
 1. Installieren Sie eine Java SE-Implementierung (z. B. [AdoptOpenJDK OpenJDK 8 LTS/OpenJ9](https://adoptopenjdk.net/?variant=openjdk8&jvmVariant=openj9)).
 1. Installieren Sie [Maven](https://maven.apache.org/download.cgi) 3.5.0 oder höher.
 1. Installieren Sie [Docker](https://docs.docker.com/get-docker/) für Ihr Betriebssystem.
-1. Installieren Sie [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) 2.0.75 oder höher.
+1. Installieren Sie [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest) 2.0.75 oder höher.
 1. Überprüfen und installieren Sie [`envsubst`](https://command-not-found.com/envsubst), wenn es nicht im Betriebssystem vorinstalliert ist.
 1. Klonen Sie den Code für dieses Beispiel auf Ihrem lokalen System. Das Beispiel befindet sich auf [GitHub](https://github.com/Azure-Samples/open-liberty-on-aro).
-1. Führen Sie die Schritte in [Tutorial: Erstellen eines Azure Red Hat OpenShift 4-Clusters](/azure/openshift/tutorial-create-cluster) aus.
+1. Führen Sie die Schritte in [Tutorial: Erstellen eines Azure Red Hat OpenShift 4-Clusters](./tutorial-create-cluster.md) aus.
 
    Der Schritt „Abrufen eines Red Hat-Pullgeheimnisses“ wird als optional bezeichnet, **ist jedoch für diesen Artikel erforderlich**.  Das Pullgeheimnis ermöglicht Ihrem Azure Red Hat OpenShift-Cluster, den Open Liberty Operator zu finden.
 
    Wenn Sie planen, arbeitsspeicherintensive Anwendungen im Cluster auszuführen, geben Sie die richtige Größe des virtuellen Computers für die Workerknoten mit dem `--worker-vm-size`-Parameter an. Beispielsweise ist `Standard_E4s_v3` die minimale Größe des virtuellen Computers, um den Elasticsearch Operator in einem Cluster zu installieren. Weitere Informationen finden Sie unter
 
-   * [Erstellen eines Clusters mit Azure CLI](https://docs.microsoft.com/cli/azure/aro?view=azure-cli-latest&preserve-view=true#az-aro-create)
-   * [Unterstützte VM-Größen für Arbeitsspeicheroptimierung](/azure/openshift/support-policies-v4#memory-optimized)
+   * [Erstellen eines Clusters mit Azure CLI](/cli/azure/aro?preserve-view=true&view=azure-cli-latest#az-aro-create)
+   * [Unterstützte VM-Größen für Arbeitsspeicheroptimierung](./support-policies-v4.md#memory-optimized)
    * [Voraussetzungen für die Installation des Elasticsearch Operator](https://docs.openshift.com/container-platform/4.3/logging/cluster-logging-deploying.html#cluster-logging-deploy-eo-cli_cluster-logging-deploying)
 
-1. Stellen Sie eine Verbindung mit dem Cluster her, indem Sie die Schritte in [Tutorial: Herstellen einer Verbindung mit einem Azure Red Hat OpenShift 4-Cluster](/azure/openshift/tutorial-connect-cluster) ausführen.
+1. Stellen Sie eine Verbindung mit dem Cluster her, indem Sie die Schritte in [Tutorial: Herstellen einer Verbindung mit einem Azure Red Hat OpenShift 4-Cluster](./tutorial-connect-cluster.md) ausführen.
    * Stellen Sie sicher, dass Sie die Schritte unter „Installieren der OpenShift-CLI“ ausführen, da der `oc`-Befehl weiter unten in diesem Artikel verwendet wird.
    * Notieren Sie sich die URL der Clusterkonsole, die wie `https://console-openshift-console.apps.<random>.<region>.aroapp.io/`aussieht.
    * Notieren Sie sich die `kubeadmin`-Anmeldeinformationen.
@@ -126,7 +126,7 @@ Um die Anwendung auf Open Liberty auszuführen, müssen Sie eine Open Liberty-Se
    [INFO] Source compilation was successful.
    ```
 
-1. Öffnen Sie [http://localhost:9080/](http://localhost:9080/) in Ihrem Browser, um die Startseite der Anwendung aufzurufen. Die Anwendung sieht etwa wie folgt aus:
+1. Öffnen Sie `http://localhost:9080/` in Ihrem Browser, um die Startseite der Anwendung aufzurufen. Die Anwendung sieht etwa wie folgt aus:
 
    ![JavaEE Cafe Web UI](./media/howto-deploy-java-liberty-app/javaee-cafe-web-ui.png)
 1. Drücken Sie **STRG+C**, um die Anwendung und den Open Liberty-Server anzuhalten.
@@ -164,7 +164,7 @@ Führen Sie die Containeranwendung vor dem Bereitstellen in einem Remotecluster 
 
 1. Führen Sie `docker run -it --rm -p 9080:9080 javaee-cafe-simple:1.0.0` in Ihrer Konsole aus.
 2. Warten Sie, bis der Liberty-Server startet und die Anwendung erfolgreich bereitgestellt wird.
-3. Öffnen Sie [http://localhost:9080/](http://localhost:9080/) in Ihrem Browser, um die Startseite der Anwendung aufzurufen.
+3. Öffnen Sie `http://localhost:9080/` in Ihrem Browser, um die Startseite der Anwendung aufzurufen.
 4. Drücken Sie **STRG+C**, um die Anwendung und den Liberty-Server anzuhalten.
 
 ### <a name="push-the-image-to-the-container-image-registry"></a>Pushen des Images zur Containerregistrierung
@@ -314,7 +314,7 @@ oc delete -f openlibertyapplication.yaml
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Löschen Sie den ARO-Cluster, indem Sie die Schritte im [-Tutorial ausführen: Löschen eines Azure Red Hat OpenShift 4-Clusters](/azure/openshift/tutorial-delete-cluster)
+Löschen Sie den ARO-Cluster, indem Sie die Schritte im [-Tutorial ausführen: Löschen eines Azure Red Hat OpenShift 4-Clusters](./tutorial-delete-cluster.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

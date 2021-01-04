@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3587ef6be9d6c9969dff5d1af2181ed51aea7d29
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 3acaf4929158b24ff50655aa18c05b41aeec4b53
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93308281"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96435449"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>Gewusst wie: Planen der Implementierung Ihrer Azure AD-Einbindung
 
@@ -95,6 +95,8 @@ Bei der Erstellung von Benutzern in:
 
 Lokale UPNs, die sich von Azure AD-UPNs unterscheiden, werden auf in Azure AD eingebundenen Geräten nicht unterstützt. Wenn Ihre Benutzer einen lokalen UPN verwenden, sollten Sie auf die Verwendung ihres primären UPN in Azure AD umstellen.
 
+UPN-Änderungen werden erst ab dem Windows 10-Update 2004 unterstützt. Bei Benutzern, die Geräte mit diesem Update verwenden, kann der UPN problemlos geändert werden. Auf Geräten vor dem Windows 10-Update 2004 haben Benutzer Probleme mit SSO und dem bedingten Zugriff. Sie müssen sich über die Kachel „Anderer Benutzer“ mit ihrem neuen UPN bei Windows anmelden, um dieses Problem zu beheben. 
+
 ## <a name="assess-your-device-management"></a>Bewerten Ihrer Geräteverwaltung
 
 ### <a name="supported-devices"></a>Unterstützte Geräte
@@ -116,8 +118,8 @@ Die Geräteverwaltung für in Azure AD eingebundene Geräte basiert auf einer MD
 
 Es gibt zwei Ansätze für die Verwaltung von in Azure AD eingebundenen Geräten:
 
-- **Nur MDM** : Ein Gerät wird ausschließlich von einem MDM-Anbieter wie Intune verwaltet. Alle Richtlinien werden im Rahmen des MDM-Registrierungsprozesses bereitgestellt. Für Azure AD Premium- oder EMS-Kunden ist die MDM-Registrierung ein automatisierter Schritt, der Teil einer Azure AD-Einbindung ist.
-- **Co-Verwaltung** : Ein Gerät wird von einem MDM-Anbieter und SCCM verwaltet. Bei diesem Ansatz ist der SCCM-Agent auf einem MDM-verwalteten Gerät zur Verwaltung bestimmter Aspekte installiert.
+- **Nur MDM**: Ein Gerät wird ausschließlich von einem MDM-Anbieter wie Intune verwaltet. Alle Richtlinien werden im Rahmen des MDM-Registrierungsprozesses bereitgestellt. Für Azure AD Premium- oder EMS-Kunden ist die MDM-Registrierung ein automatisierter Schritt, der Teil einer Azure AD-Einbindung ist.
+- **Co-Verwaltung**: Ein Gerät wird von einem MDM-Anbieter und SCCM verwaltet. Bei diesem Ansatz ist der SCCM-Agent auf einem MDM-verwalteten Gerät zur Verwaltung bestimmter Aspekte installiert.
 
 Überprüfen Sie bei Verwendung von Gruppenrichtlinien mithilfe der [Analyse von Gruppenrichtlinien](/mem/intune/configuration/group-policy-analytics) in Microsoft Endpoint Manager die Parität von GPO- und MDM-Richtlinien. 
 
@@ -187,13 +189,13 @@ Um eine Remotedesktopverbindung mit einem in Azure AD eingebundenen Gerät herst
 Ab dem Windows 10-Update 2004 können Benutzer auch eine Remotedesktopverbindung auf einem bei Azure AD registrierten Windows 10-Gerät mit einem in Azure AD eingebundenen Gerät verwenden. 
 
 ## <a name="understand-your-provisioning-options"></a>Grundlegendes zu Ihren Bereitstellungsoptionen
-**Hinweis** : In Azure AD eingebundene Geräte können nicht mit einem Tool für die Systemvorbereitung (Sysprep) oder mit ähnlichen Abbilderstellungstools bereitgestellt werden.
+**Hinweis**: In Azure AD eingebundene Geräte können nicht mit einem Tool für die Systemvorbereitung (Sysprep) oder mit ähnlichen Abbilderstellungstools bereitgestellt werden.
 
 Sie können Azure AD Join mithilfe der folgenden Methoden bereitstellen:
 
-- **Self-Service auf der Windows-Willkommensseite/in den Windows-Einstellungen** : Im Self-Service-Modus durchlaufen die Benutzer den Azure AD-Einbindungsprozess entweder auf der Windows-Willkommensseite (Windows Out-of-Box-Experience, OOBE) oder in den Windows-Einstellungen. Weitere Informationen finden Sie unter [Einbinden von geschäftlichen Geräten in das Netzwerk der Organisation](../user-help/user-help-join-device-on-network.md). 
-- **Windows Autopilot** : Windows Autopilot ermöglicht die Vorkonfiguration von Geräten, um auf der Windows-Willkommensseite für ein möglichst reibungsloses Benutzererlebnis bei einer Azure AD-Einbindung zu sorgen. Weitere Informationen finden Sie in der [Übersicht über Windows Autopilot](/windows/deployment/windows-autopilot/windows-10-autopilot). 
-- **Massenregistrierung** : Die Massenregistrierung ermöglicht eine vom Administrator gesteuerte Azure AD-Einbindung mithilfe eines Massenbereitstellungstools zum Konfigurieren von Geräten. Weitere Informationen finden Sie unter [Massenregistrierung für Windows-Geräte](/intune/windows-bulk-enroll).
+- **Self-Service auf der Windows-Willkommensseite/in den Windows-Einstellungen**: Im Self-Service-Modus durchlaufen die Benutzer den Azure AD-Einbindungsprozess entweder auf der Windows-Willkommensseite (Windows Out-of-Box-Experience, OOBE) oder in den Windows-Einstellungen. Weitere Informationen finden Sie unter [Einbinden von geschäftlichen Geräten in das Netzwerk der Organisation](../user-help/user-help-join-device-on-network.md). 
+- **Windows Autopilot**: Windows Autopilot ermöglicht die Vorkonfiguration von Geräten, um auf der Windows-Willkommensseite für ein möglichst reibungsloses Benutzererlebnis bei einer Azure AD-Einbindung zu sorgen. Weitere Informationen finden Sie in der [Übersicht über Windows Autopilot](/windows/deployment/windows-autopilot/windows-10-autopilot). 
+- **Massenregistrierung**: Die Massenregistrierung ermöglicht eine vom Administrator gesteuerte Azure AD-Einbindung mithilfe eines Massenbereitstellungstools zum Konfigurieren von Geräten. Weitere Informationen finden Sie unter [Massenregistrierung für Windows-Geräte](/intune/windows-bulk-enroll).
  
 Hier finden Sie einen Vergleich dieser drei Methoden: 
  
@@ -243,7 +245,7 @@ Wählen Sie **Ja** aus, wenn Benutzer beim Einbinden von Geräten in Azure AD di
 
 Bevor Sie Ihre Mobilitätseinstellungen konfigurieren können, müssen Sie möglicherweise zuerst einen MDM-Anbieter hinzufügen.
 
-**Gehen Sie wie folgt vor, um einen MDM-Anbieter hinzuzufügen** :
+**Gehen Sie wie folgt vor, um einen MDM-Anbieter hinzuzufügen**:
 
 1. Klicken Sie auf der Seite **Azure Active Directory** im Abschnitt **Verwalten** auf `Mobility (MDM and MAM)`. 
 1. Klicken Sie auf **Anwendung hinzufügen**.
@@ -261,8 +263,8 @@ Wählen Sie basierend auf dem Benutzerbereich Ihrer Bereitstellung entweder **Ei
 
 Basierend auf Ihrem Benutzerbereich ergibt sich eine der folgenden Situationen: 
 
-- **Der Benutzer befindet sich im MDM-Bereich** : Wenn Sie über ein Azure AD Premium-Abonnement verfügen, ist die MDM-Registrierung mit der Azure AD-Einbindung automatisiert. Alle bereichsbezogenen Benutzer müssen eine entsprechende Lizenz für die MDM verfügen. Wenn die MDM-Registrierung in diesem Szenario fehlschlägt, wird auch für die Azure AD-Einbindung ein Rollback ausgeführt.
-- **Der Benutzer befindet sich nicht im MDM-Bereich** : Wenn Benutzer nicht im MDM-Bereich enthalten sind, wird die Azure AD-Einbindung ohne MDM-Registrierung abgeschlossen. Dies führt zu einem nicht verwalteten Gerät.
+- **Der Benutzer befindet sich im MDM-Bereich**: Wenn Sie über ein Azure AD Premium-Abonnement verfügen, ist die MDM-Registrierung mit der Azure AD-Einbindung automatisiert. Alle bereichsbezogenen Benutzer müssen eine entsprechende Lizenz für die MDM verfügen. Wenn die MDM-Registrierung in diesem Szenario fehlschlägt, wird auch für die Azure AD-Einbindung ein Rollback ausgeführt.
+- **Der Benutzer befindet sich nicht im MDM-Bereich**: Wenn Benutzer nicht im MDM-Bereich enthalten sind, wird die Azure AD-Einbindung ohne MDM-Registrierung abgeschlossen. Dies führt zu einem nicht verwalteten Gerät.
 
 ### <a name="mdm-urls"></a>MDM-URLs
 
@@ -284,7 +286,7 @@ MAM gilt nicht für Azure AD Join.
 
 Wenn Sie Enterprise State Roaming in Azure AD aktivieren möchten, damit Benutzer ihre Einstellungen geräteübergreifend synchronisieren können, lesen Sie [Aktivieren von Enterprise State Roaming in Azure Active Directory](enterprise-state-roaming-enable.md). 
 
-**Empfehlung** : Aktivieren Sie diese Einstellung auch für über Azure AD Hybrid eingebundene Geräte.
+**Empfehlung**: Aktivieren Sie diese Einstellung auch für über Azure AD Hybrid eingebundene Geräte.
 
 ## <a name="configure-conditional-access"></a>Konfigurieren des bedingten Zugriffs
 

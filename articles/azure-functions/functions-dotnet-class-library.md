@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Azure Functions mithilfe von C# entwickelt wird.
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 07/24/2020
-ms.openlocfilehash: 51a7ffe72f8597fbaa11eae12585ebde8bb83153
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: dc08e378d68743ed7906f4dec7c8f31202959880
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94380962"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608281"
 ---
 # <a name="azure-functions-c-developer-reference"></a>C#-Entwicklerreferenz zu Azure Functions
 
@@ -17,12 +17,13 @@ ms.locfileid: "94380962"
 
 Dieser Artikel ist eine Einführung in die Entwicklung von Azure Functions durch Verwenden von C# in .NET-Klassenbibliotheken.
 
+Für C#-Entwickler sind möglicherweise auch folgende Artikel interessant:
+
+| Erste Schritte | Konzepte| Geführte Tutorials/Beispiele |
+| -- | -- | -- | 
+| <ul><li>[Verwenden von Visual Studio](functions-create-your-first-function-visual-studio.md)</li><li>[Verwendung von Visual Studio Code](create-first-function-vs-code-csharp.md)</li><li>[Verwenden von Befehlszeilentools](create-first-function-cli-csharp.md)</li></ul> | <ul><li>[Hostingoptionen](functions-scale.md)</li><li>[Überlegungen zur &nbsp;Leistung](functions-best-practices.md)</li><li>[Visual Studio-Entwicklung](functions-develop-vs.md)</li><li>[Dependency Injection](functions-dotnet-dependency-injection.md)</li></ul> | <ul><li>[Erstellen serverloser Anwendungen](/learn/paths/create-serverless-applications/)</li><li>[Beispiele für C#](/samples/browse/?products=azure-functions&languages=csharp)</li></ul> |
+
 Azure Functions unterstützt die Programmiersprachen C# und C#-Skript. Wenn Sie nach Anleitungen zum [Verwenden von C# im Azure-Portal](functions-create-function-app-portal.md) suchen, lesen Sie [C#-Skriptentwicklerreferenz (C#-Skript, CSX) zu Azure Functions](functions-reference-csharp.md).
-
-In diesem Artikel wird davon ausgegangen, dass Sie die folgenden Artikel bereits gelesen haben:
-
-* [Azure Functions: Entwicklerhandbuch](functions-reference.md)
-* [Azure Functions Visual Studio 2019 Tools](functions-develop-vs.md)
 
 ## <a name="supported-versions"></a>Unterstützte Versionen
 
@@ -326,6 +327,8 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, ILogge
 {
     logger.LogInformation("Request for item with key={itemKey}.", id);
 ```
+
+Weitere Informationen zur Implementierung von `ILogger` in Functions finden Sie unter [Sammeln von Telemetriedaten](functions-monitoring.md#collecting-telemetry-data). Bei Kategorien mit dem Präfix `Function` wird angenommen, dass Sie eine `ILogger`-Instanz verwenden. Wenn Sie stattdessen eine `ILogger<T>`-Instanz verwenden, kann der Kategoriename stattdessen auf `T` basieren.  
 
 ### <a name="structured-logging"></a>Strukturierte Protokollierung
 

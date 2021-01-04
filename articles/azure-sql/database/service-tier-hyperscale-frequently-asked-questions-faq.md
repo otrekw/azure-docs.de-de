@@ -11,12 +11,12 @@ author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: ''
 ms.date: 03/03/2020
-ms.openlocfilehash: 400dd66827e82c1ede496526c49977e6f5383487
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 4ea1982e7545f4ac39a5ecd15dc9e19a582ae31c
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92780188"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96459629"
 ---
 # <a name="azure-sql-database-hyperscale-faq"></a>Azure SQL-Datenbank Hyperscale – Häufig gestellte Fragen (FAQs)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -118,7 +118,7 @@ Hyperscale unterstützt alle SQL Server-Workloads, wurde aber in erster Linie f�
 
 Wenn Sie zurzeit interaktive Analyseabfragen mit SQL Server als Data Warehouse ausführen, stellt Hyperscale eine hervorragende Option dar, weil Sie kleine und mittelgroße Data Warehouses (z.B. von wenigen TB bis hin zu 100 TB) zu geringeren Kosten hosten und Ihre SQL Server Data Warehouse-Workloads mit nur minimalen Änderungen am T-SQL-Code zu Hyperscale migrieren können.
 
-Wenn Sie Datenanalysen im großen Umfang mit komplexen Abfragen und nachhaltigen Erfassungsraten von mehr als 100 MB/Sek. oder aber mithilfe von Parallel Data Warehouse (PDW), Teradata oder anderen Data Warehouses mit MPP-Design (Massively Parallel Processing) durchführen, ist Azure Synapse Analytics (früher SQL Data Warehouse) möglicherweise die beste Wahl.
+Wenn Sie Datenanalysen im großen Umfang mit komplexen Abfragen und nachhaltigen Erfassungsraten von mehr als 100 MB/Sek. oder aber mithilfe von Parallel Data Warehouse (PDW), Teradata oder anderen Data Warehouses mit MPP-Design (Massively Parallel Processing) durchführen, ist Azure Synapse Analytics möglicherweise die beste Wahl.
   
 ## <a name="hyperscale-compute-questions"></a>Fragen zu Hyperscale Compute
 

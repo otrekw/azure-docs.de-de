@@ -7,19 +7,19 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 09/04/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: edd9898580c60199b761b24b172a366069f09cb2
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 0c0b3bd81e0f73a7879382e28516378bd722bc17
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92516187"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498641"
 ---
 # <a name="how-to-use-permissions-in-azure-spring-cloud"></a>Verwenden von Berechtigungen in Azure Spring Cloud
-In diesem Artikel wird beschrieben, wie Sie benutzerdefinierte Rollen erstellen, die Berechtigungen an Azure Spring Cloud-Ressourcen vergeben. Benutzerdefinierte Rollen erweitern [integrierte Azure-Rollen](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) um verschiedene Bestandsberechtigungen.
+In diesem Artikel wird beschrieben, wie Sie benutzerdefinierte Rollen erstellen, die Berechtigungen an Azure Spring Cloud-Ressourcen vergeben. Benutzerdefinierte Rollen erweitern [integrierte Azure-Rollen](../role-based-access-control/built-in-roles.md) um verschiedene Bestandsberechtigungen.
 
 Die folgenden benutzerdefinierten Rollen werden implementiert:
 
-* **Entwicklerrolle** : 
+* **Entwicklerrolle**: 
     * Bereitstellen
     * Testen
     * Apps neu starten
@@ -29,7 +29,7 @@ Die folgenden benutzerdefinierten Rollen werden implementiert:
     * Apps neu starten
     * Protokolldatenströme abrufen
     * Kann keine Änderungen an Apps oder Konfigurationen vornehmen
-* **Azure Pipelines/Jenkins/Github Actions-Rolle** :
+* **Azure Pipelines/Jenkins/Github Actions-Rolle**:
     * Kann Erstell-, Lese-, Aktualisierungs- und Löschvorgänge ausführen
     * Kann alles in der Azure Spring Cloud und in den Apps innerhalb der Dienstinstanz erstellen und konfigurieren: Azure Pipelines, Jenkins oder GitHub Actions mit TERRAFORM- oder ARM-Vorlagen
 
@@ -257,9 +257,9 @@ Wählen Sie unter **Microsoft.AppPlatform/skus** Folgendes aus:
 
 
 ## <a name="see-also"></a>Weitere Informationen
-* [Erstellen oder Aktualisieren benutzerdefinierter Azure-Rollen über das Azure-Portal](https://docs.microsoft.com/azure/role-based-access-control/custom-roles-portal)
+* [Erstellen oder Aktualisieren benutzerdefinierter Azure-Rollen über das Azure-Portal](../role-based-access-control/custom-roles-portal.md)
 
 Weitere Informationen zu drei Methoden, mit denen benutzerdefinierte Berechtigungen definiert werden, finden Sie unter:
-* [Klonen einer Rolle](https://docs.microsoft.com/azure/role-based-access-control/custom-roles-portal#clone-a-role)
-* [Ganz von vorn beginnen](https://docs.microsoft.com/azure/role-based-access-control/custom-roles-portal#start-from-scratch)
-* [Verwenden einer JSON-Datei](https://docs.microsoft.com/azure/role-based-access-control/custom-roles-portal#start-from-json)
+* [Klonen einer Rolle](../role-based-access-control/custom-roles-portal.md#clone-a-role)
+* [Ganz von vorn beginnen](../role-based-access-control/custom-roles-portal.md#start-from-scratch)
+* [Verwenden einer JSON-Datei](../role-based-access-control/custom-roles-portal.md#start-from-json)

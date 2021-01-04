@@ -1,6 +1,6 @@
 ---
-title: Verbindungsmonitor (Vorschauversion) | Microsoft-Dokumentation
-description: In diesem Artikel erfahren Sie, wie Sie mit dem Verbindungsmonitor (Vorschau) die Netzwerkkommunikation in einer verteilten Umgebung überwachen.
+title: Verbindungsmonitor in Azure | Microsoft-Dokumentation
+description: In diesem Artikel erfahren Sie, wie Sie mit dem Verbindungsmonitor die Netzwerkkommunikation in einer verteilten Umgebung überwachen.
 services: network-watcher
 documentationcenter: na
 author: vinynigam
@@ -12,21 +12,21 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/27/2020
+ms.date: 11/23/2020
 ms.author: vinigam
 ms.custom: mvc
-ms.openlocfilehash: 80934dca73d7f8a205c62a49c418828cab1820e7
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: c5c3f8dedad47a819ce3648a0b81ffa3e65a1a1e
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94447473"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95544886"
 ---
-# <a name="network-connectivity-monitoring-with-connection-monitor-preview"></a>Überwachung der Netzwerkkonnektivität mit dem Verbindungsmonitor (Vorschau)
+# <a name="network-connectivity-monitoring-with-connection-monitor"></a>Überwachung der Netzwerkkonnektivität mit dem Verbindungsmonitor
 
-Der Verbindungsmonitor (Vorschau) bietet eine einheitliche End-to-End-Verbindungsüberwachung in Azure Network Watcher. Der Verbindungsmonitor (Vorschau) unterstützt Hybrid- und Azure-Cloudbereitstellungen. Network Watcher stellt Tools für das Überwachen, Diagnostizieren und Anzeigen von Verbindungsmetriken für Ihre Azure-Bereitstellungen zur Verfügung.
+Der Verbindungsmonitor bietet eine einheitliche End-to-End-Verbindungsüberwachung in Azure Network Watcher. Das Feature für den Verbindungsmonitor unterstützt Hybrid- und Azure-Cloudbereitstellungen. Network Watcher stellt Tools für das Überwachen, Diagnostizieren und Anzeigen von Verbindungsmetriken für Ihre Azure-Bereitstellungen zur Verfügung.
 
-Nachfolgend sind einige Anwendungsfälle für den Verbindungsmonitor (Vorschau) aufgeführt:
+Nachfolgend sind einige Anwendungsfälle für den Verbindungsmonitor aufgeführt:
 
 - Ihre Front-End-Webserver-VM kommuniziert in einer Anwendung mit mehreren Ebenen mit einer Datenbankserver-VM, und Sie möchten die Netzwerkkonnektivität zwischen beiden VMs überprüfen.
 - Sie möchten, dass VMs in der Region „USA, Osten“ VMs in der Region „USA, Mitte“ pingen, und Sie möchten die regionsübergreifenden Netzwerklatenzen vergleichen.
@@ -34,9 +34,9 @@ Nachfolgend sind einige Anwendungsfälle für den Verbindungsmonitor (Vorschau) 
 - Ihre Hybridanwendung benötigt eine Verbindung mit einem Azure Storage-Endpunkt. Der lokale Standort und die Azure-Anwendung sind mit dem gleichen Azure Storage-Endpunkt verbunden. Sie möchten die Latenzen des lokalen Standorts mit den Latenzen der Azure-Anwendung vergleichen.
 - Sie möchten die Konnektivität zwischen den lokalen Setups und den Azure-VMs überprüfen, auf denen die Cloudanwendung gehostet wird.
 
-In der Vorschauphase bietet der Verbindungsmonitor eine Kombination aus dem Besten von zwei Features: dem Feature [Verbindungsmonitor](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#monitor-communication-between-a-virtual-machine-and-an-endpoint) von Network Watcher und dem Feature [Dienstkonnektivitätsmonitor](https://docs.microsoft.com/azure/azure-monitor/insights/network-performance-monitor-service-connectivity) des Netzwerkleistungsmonitors (NPM), [ExpressRoute-Überwachung](https://docs.microsoft.com/azure/expressroute/how-to-npm) und [Leistungsüberwachung](https://docs.microsoft.com/azure/azure-monitor/insights/network-performance-monitor-performance-monitor).
+Der Verbindungsmonitor bietet eine Kombination aus dem Besten von zwei Features: dem Feature [Verbindungsmonitor (Klassisch)](./network-watcher-monitoring-overview.md#monitor-communication-between-a-virtual-machine-and-an-endpoint) von Network Watcher und dem Feature [Dienstkonnektivitätsmonitor](../azure-monitor/insights/network-performance-monitor-service-connectivity.md) des Netzwerkleistungsmonitors (NPM), [ExpressRoute-Überwachung](../expressroute/how-to-npm.md) und [Leistungsüberwachung](../azure-monitor/insights/network-performance-monitor-performance-monitor.md).
 
-Nachfolgend sind einige Vorteile des Verbindungsmonitors (Vorschau) aufgeführt:
+Nachfolgend sind einige Vorteile des Verbindungsmonitors aufgeführt:
 
 * Einheitliche, intuitive Oberfläche zum Überwachen von Azure- und Hybridbereitstellungen
 * Regionsübergreifende und arbeitsbereichsübergreifende Konnektivitätsüberwachung
@@ -47,7 +47,7 @@ Nachfolgend sind einige Vorteile des Verbindungsmonitors (Vorschau) aufgeführt:
 
 ![Diagramm der Interaktion des Verbindungsmonitors mit Azure-VMs, Nicht-Azure-Hosts, Endpunkten und Datenspeicherorten](./media/connection-monitor-2-preview/hero-graphic.png)
 
-Führen Sie die folgenden Schritte aus, um den Verbindungsmonitor (Vorschau) für die Überwachung zu verwenden: 
+Führen Sie die folgenden Schritte aus, um den Verbindungsmonitor für die Überwachung zu verwenden: 
 
 1. Installieren Sie Überwachungs-Agents.
 1. Aktivieren Sie Network Watcher für Ihr Abonnement.
@@ -59,13 +59,13 @@ Die folgenden Abschnitte enthalten weitere Informationen zu diesen Schritten.
 
 ## <a name="install-monitoring-agents"></a>Installieren von Überwachungs-Agents
 
-Der Verbindungsmonitor verwendet einfache ausführbare Dateien zum Ausführen von Konnektivitätsprüfungen.  Er unterstützt Konnektivitätsprüfungen sowohl in Azure-Umgebungen als auch lokalen Umgebungen. Die verwendete ausführbare Datei hängt davon ab, ob Ihre VM in Azure oder lokal gehostet wird.
+Der Verbindungsmonitor verwendet einfache ausführbare Dateien zum Ausführen von Konnektivitätsprüfungen. Er unterstützt Konnektivitätsprüfungen sowohl in Azure-Umgebungen als auch lokalen Umgebungen. Die verwendete ausführbare Datei hängt davon ab, ob Ihre VM in Azure oder lokal gehostet wird.
 
 ### <a name="agents-for-azure-virtual-machines"></a>Agents für Azure-VMs
 
 Damit der Verbindungsmonitor Ihre Azure-VMs als Überwachungsquellen erkennt, installieren Sie die VM-Erweiterung für den Network Watcher-Agent auf den VMs. Diese Erweiterung wird auch als *Network Watcher-Erweiterung* bezeichnet. Für Azure-VMs muss die Erweiterung eine End-to-End-Überwachung und andere erweiterte Funktionen auslösen. 
 
-Sie können die Network Watcher-Erweiterung beim [Erstellen einer VM](https://docs.microsoft.com/azure/network-watcher/connection-monitor#create-the-first-vm) installieren. Die Network Watcher-Erweiterung für [Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/network-watcher-linux) und [Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/network-watcher-windows) kann auch separat installiert und konfiguriert sowie eine separate Problembehandlung durchgeführt werden.
+Sie können die Network Watcher-Erweiterung beim [Erstellen einer VM](./connection-monitor.md#create-the-first-vm) installieren. Die Network Watcher-Erweiterung für [Linux](../virtual-machines/extensions/network-watcher-linux.md) und [Windows](../virtual-machines/extensions/network-watcher-windows.md) kann auch separat installiert und konfiguriert sowie eine separate Problembehandlung durchgeführt werden.
 
 Durch Regeln für eine Netzwerksicherheitsgruppe (NSG) oder Firewall kann die Kommunikation zwischen Quelle und Ziel blockiert werden. Der Verbindungsmonitor erkennt dieses Problem und zeigt es als Diagnosemeldung in der Topologie an. Damit eine Verbindungsüberwachung möglich ist, müssen Sie zunächst sicherstellen, dass die NSG- und Firewallregeln eine Paketübertragung über TCP oder ICMP zwischen der Quelle und dem Ziel zulassen.
 
@@ -73,7 +73,7 @@ Durch Regeln für eine Netzwerksicherheitsgruppe (NSG) oder Firewall kann die Ko
 
 Damit der Verbindungsmonitor die lokalen Computer als Quellen für die Überwachung erkennt, installieren Sie den Log Analytics-Agent auf den Computern. Dann aktivieren Sie die Netzwerkleistungsmonitor-Lösung. Diese Agents sind mit den Log Analytics-Arbeitsbereichen verknüpft. Daher müssen Sie die Arbeitsbereichs-ID und den Primärschlüssel einrichten, bevor die Agents mit der Überwachung beginnen können.
 
-Informationen zum Installieren des Log Analytics-Agents für Windows-Computer finden Sie unter [Azure Monitor-VM-Erweiterung für Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/oms-windows).
+Informationen zum Installieren des Log Analytics-Agents für Windows-Computer finden Sie unter [Azure Monitor-VM-Erweiterung für Windows](../virtual-machines/extensions/oms-windows.md).
 
 Wenn der Pfad Firewalls oder virtuelle Netzwerkgeräte (NVAs) umfasst, stellen Sie sicher, dass das Ziel erreichbar ist.
 
@@ -81,7 +81,7 @@ Wenn der Pfad Firewalls oder virtuelle Netzwerkgeräte (NVAs) umfasst, stellen S
 
 Für alle Abonnements, die über ein virtuelles Netzwerk verfügen, wird Network Watcher aktiviert. Wenn Sie ein virtuelles Netzwerk in Ihrem Abonnement erstellen, wird Network Watcher automatisch in der Region und für das Abonnement des virtuellen Netzwerks aktiviert. Diese automatische Aktivierung wirkt sich nicht auf Ihre Ressourcen aus, und es fallen auch keine Gebühren an. Stellen Sie sicher, dass Network Watcher für Ihr Abonnement nicht explizit deaktiviert ist. 
 
-Weitere Informationen finden Sie unter [Aktivieren von Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-create).
+Weitere Informationen finden Sie unter [Aktivieren von Network Watcher](./network-watcher-create.md).
 
 ## <a name="create-a-connection-monitor"></a>Erstellen eines Verbindungsmonitors 
 
@@ -89,29 +89,29 @@ Der Verbindungsmonitor überwacht die Kommunikation in regelmäßigen Abständen
 
 Ziele können Azure-VMs oder lokale Computer sein, auf denen ein Überwachungs-Agent installiert ist. Zielendpunkte können Microsoft 365-URLs, Dynamics 365-URLs, benutzerdefinierte URLs, Azure-VM-Ressourcen-IDs, IPv4/IPv6-Adressen, FQDNs oder beliebige Domänennamen sein.
 
-### <a name="access-connection-monitor-preview"></a>Zugreifen auf den Verbindungsmonitor (Vorschau)
+### <a name="access-connection-monitor"></a>Zugreifen auf den Verbindungsmonitor
 
 1. Navigieren Sie auf der Startseite des Azure-Portals zu **Network Watcher**.
-1. Wählen Sie links im Abschnitt **Überwachung** die Option **Verbindungsmonitor (Vorschau)** aus.
-1. Es werden alle Verbindungsmonitore angezeigt, die im Verbindungsmonitor (Vorschau) erstellt wurden. Zum Anzeigen der Verbindungsmonitore, die auf der klassischen Benutzeroberfläche des Verbindungsmonitors erstellt wurden, wechseln Sie zur Registerkarte **Verbindungsmonitor**.
+1. Wählen Sie links im Abschnitt **Überwachung** die Option **Verbindungsmonitor** aus.
+1. Es werden alle Verbindungsmonitore angezeigt, die im Verbindungsmonitor erstellt wurden. Zum Anzeigen der Verbindungsmonitore, die auf der klassischen Benutzeroberfläche des Verbindungsmonitors erstellt wurden, wechseln Sie zur Registerkarte **Verbindungsmonitor**.
     
-  :::image type="content" source="./media/connection-monitor-2-preview/cm-resource-view.png" alt-text="Screenshot: Verbindungsmonitore, die im Verbindungsmonitor (Vorschau) erstellt wurden" lightbox="./media/connection-monitor-2-preview/cm-resource-view.png":::
+  :::image type="content" source="./media/connection-monitor-2-preview/cm-resource-view.png" alt-text="Screenshot: Verbindungsmonitore, die im Verbindungsmonitor erstellt wurden" lightbox="./media/connection-monitor-2-preview/cm-resource-view.png":::
 
 ### <a name="create-a-connection-monitor"></a>Erstellen eines Verbindungsmonitors
 
-In Verbindungsmonitoren, die Sie im Verbindungsmonitor (Vorschau) erstellen, können Sie sowohl lokale Computer als auch Azure-VMs als Quellen hinzufügen. Mit diesen Verbindungsmonitoren kann auch die Konnektivität mit Endpunkten überwacht werden. Die Endpunkte können sich in Azure oder einer beliebigen anderen URL oder IP-Adresse befinden.
+In Verbindungsmonitoren, die Sie im Feature „Verbindungsmonitor“ erstellen, können Sie sowohl lokale Computer als auch Azure-VMs als Quellen hinzufügen. Mit diesen Verbindungsmonitoren kann auch die Konnektivität mit Endpunkten überwacht werden. Die Endpunkte können sich in Azure oder einer beliebigen anderen URL oder IP-Adresse befinden.
 
-Der Verbindungsmonitor (Vorschau) umfasst die folgenden Entitäten:
+Der Verbindungsmonitor umfasst die folgenden Entitäten:
 
-* **Verbindungsmonitorressource** : Dies ist eine regionsspezifische Azure-Ressource. Alle folgenden Entitäten sind Eigenschaften einer Verbindungsmonitorressource.
-* **Endpunkt** : Eine Quelle oder ein Ziel, die bzw. das an Konnektivitätsprüfungen beteiligt ist. Beispiele für Endpunkte umfassen Azure-VMs, lokale Agents, URLs und IP-Adressen.
-* **Testkonfiguration** : Eine protokollspezifische Konfiguration für einen Test. Je nach ausgewähltem Protokoll können Sie den Port, Schwellenwerte, die Testhäufigkeit und weitere Parameter definieren.
-* **Testgruppe** : Die Gruppe, die Quellendpunkte, Zielendpunkte und Testkonfigurationen enthält. Ein Verbindungsmonitor kann mehrere Testgruppen enthalten.
-* **Test** : Die Kombination aus einem Quellendpunkt, einem Zielendpunkt und einer Testkonfiguration. Ein Test ist die differenzierteste Ebene, auf der Überwachungsdaten verfügbar sind. Die Überwachungsdaten umfassen den Prozentsatz von Überprüfungen mit Fehlern und die Roundtripzeit.
+* **Verbindungsmonitorressource**: Dies ist eine regionsspezifische Azure-Ressource. Alle folgenden Entitäten sind Eigenschaften einer Verbindungsmonitorressource.
+* **Endpunkt**: Eine Quelle oder ein Ziel, die bzw. das an Konnektivitätsprüfungen beteiligt ist. Beispiele für Endpunkte umfassen Azure-VMs, lokale Agents, URLs und IP-Adressen.
+* **Testkonfiguration**: Eine protokollspezifische Konfiguration für einen Test. Je nach ausgewähltem Protokoll können Sie den Port, Schwellenwerte, die Testhäufigkeit und weitere Parameter definieren.
+* **Testgruppe**: Die Gruppe, die Quellendpunkte, Zielendpunkte und Testkonfigurationen enthält. Ein Verbindungsmonitor kann mehrere Testgruppen enthalten.
+* **Test**: Die Kombination aus einem Quellendpunkt, einem Zielendpunkt und einer Testkonfiguration. Ein Test ist die differenzierteste Ebene, auf der Überwachungsdaten verfügbar sind. Die Überwachungsdaten umfassen den Prozentsatz von Überprüfungen mit Fehlern und die Roundtripzeit.
 
  ![Diagramm eines Verbindungsmonitors mit Definition der Beziehung zwischen Testgruppen und Tests](./media/connection-monitor-2-preview/cm-tg-2.png)
 
-Sie können mit dem [Azure-Portal](connection-monitor-preview-create-using-portal.md) oder dem [ARMClient](connection-monitor-preview-create-using-arm-client.md) eine Vorschau für den Verbindungsmonitor erstellen.
+Sie können mit dem [Azure-Portal](./connection-monitor-create-using-portal.md) oder mit [ARMClient](./connection-monitor-create-using-template.md) eine Vorschau für den Verbindungsmonitor erstellen.
 
 Alle Quellen, Ziele und Testkonfigurationen, die Sie einer Testgruppe hinzufügen, werden auf einzelne Tests aufgeteilt. Hier folgt ein Beispiel dafür, wie Quellen und Ziele aufgeteilt werden:
 
@@ -151,7 +151,7 @@ Nachdem Sie einen Verbindungsmonitor erstellt haben, überprüfen die Quellen di
 
 ### <a name="checks-in-a-test"></a>Überprüfungen in einem Test
 
-Basierend auf dem von Ihnen in der Testkonfiguration ausgewählten Protokoll führt der Verbindungsmonitor (Vorschau) eine Reihe von Überprüfungen für das Quelle-Ziel-Paar aus. Die Überprüfungen werden gemäß der ausgewählten Testhäufigkeit durchgeführt.
+Basierend auf dem von Ihnen in der Testkonfiguration ausgewählten Protokoll führt der Verbindungsmonitor eine Reihe von Überprüfungen für das Quelle-Ziel-Paar aus. Die Überprüfungen werden gemäß der ausgewählten Testhäufigkeit durchgeführt.
 
 Wenn Sie HTTP verwenden, berechnet der Dienst die Anzahl von HTTP-Antworten, die einen gültigen Antwortcode zurückgegeben haben. Gültige Antwortcodes können mithilfe von PowerShell und der CLI festgelegt werden. Das Ergebnis bestimmt den Prozentsatz der Überprüfungen mit Fehlern. Zum Berechnen der Roundtripzeit misst der Dienst die Zeit zwischen einem HTTP-Aufruf und der Antwort.
 
@@ -161,17 +161,17 @@ Wenn Sie TCP oder ICMP verwenden, berechnet der Dienst den Prozentsatz an Paketv
 
 Basierend auf den Daten, die bei den Überprüfungen zurückgegeben werden, können Tests einen der folgenden Status aufweisen:
 
-* **Erfolgreich** : Die tatsächlichen Werte für den Prozentsatz der Überprüfungen mit Fehlern und die Roundtripzeit liegen innerhalb der angegebenen Schwellenwerte.
-* **Fehler** : Die tatsächlichen Werte für den Prozentsatz der Überprüfungen mit Fehlern oder die Roundtripzeit lagen oberhalb der angegebenen Schwellenwerte. Wenn kein Schwellenwert angegeben ist, weist ein Test den Fehlerstatus auf, sobald der Prozentsatz der Überprüfungen mit Fehlern bei 100 liegt.
-* **Warnung** : 
-     * Wenn ein Schwellenwert angegeben ist und der Verbindungsmonitor (Vorschau) bei fehlerhaften Überprüfungen einen Prozentsatz von mehr als 80 % des Schwellenwerts beobachtet, wird der Test als Warnung gekennzeichnet.
-     * Wenn keine Schwellenwerte angegeben sind, weist der Verbindungsmonitor (Vorschau) automatisch einen Schwellenwert zu. Wird dieser Schwellenwert überschritten, ändert sich der Teststatus in „Warnung“. Für die Roundtripzeit (RTT) in TCP- oder ICMP-Tests beträgt der Schwellenwert 750 ms. Für den Prozentsatz der fehlerhaften Überprüfungen liegt der Schwellenwert bei 10 %. 
+* **Erfolgreich**: Die tatsächlichen Werte für den Prozentsatz der Überprüfungen mit Fehlern und die Roundtripzeit liegen innerhalb der angegebenen Schwellenwerte.
+* **Fehler**: Die tatsächlichen Werte für den Prozentsatz der Überprüfungen mit Fehlern oder die Roundtripzeit lagen oberhalb der angegebenen Schwellenwerte. Wenn kein Schwellenwert angegeben ist, weist ein Test den Fehlerstatus auf, sobald der Prozentsatz der Überprüfungen mit Fehlern bei 100 liegt.
+* **Warnung**: 
+     * Wenn ein Schwellenwert angegeben ist und der Verbindungsmonitor bei fehlerhaften Überprüfungen einen Prozentsatz von mehr als 80 Prozent des Schwellenwerts beobachtet, wird der Test als Warnung gekennzeichnet.
+     * Wenn keine Schwellenwerte angegeben sind, weist der Verbindungsmonitor automatisch einen Schwellenwert zu. Wird dieser Schwellenwert überschritten, ändert sich der Teststatus in „Warnung“. Für die Roundtripzeit (RTT) in TCP- oder ICMP-Tests beträgt der Schwellenwert 750 ms. Für den Prozentsatz der fehlerhaften Überprüfungen liegt der Schwellenwert bei 10 %. 
 * **Unbestimmt** : Keine Daten im Log Analytics-Arbeitsbereich.  Überprüfen Sie die Metriken. 
 * **Nicht ausgeführt** : Deaktiviert durch Deaktivierung der Testgruppe.  
 
 ### <a name="data-collection-analysis-and-alerts"></a>Datensammlung, Datenanalyse und Datenwarnungen
 
-Die vom Verbindungsmonitor (Vorschau) gesammelten Daten werden im Log Analytics-Arbeitsbereich gespeichert. Sie haben diesen Arbeitsbereich beim Erstellen des Verbindungsmonitors eingerichtet. 
+Die vom Verbindungsmonitor gesammelten Daten werden im Log Analytics-Arbeitsbereich gespeichert. Sie haben diesen Arbeitsbereich beim Erstellen des Verbindungsmonitors eingerichtet. 
 
 Über Azure Monitor-Metriken sind auch Überwachungsdaten verfügbar. Mit Log Analytics können Sie die Überwachungsdaten über den gewünschten Zeitraum aufbewahren. Azure Monitor speichert Metriken standardmäßig nur für 30 Tage. 
 
@@ -181,11 +181,11 @@ Sie können [metrikbasierte Warnungen für die Daten festlegen](https://azure.mi
 
 Auf den Überwachungsdashboards wird eine Liste der Verbindungsmonitore angezeigt, auf die Sie für Ihre Abonnements, Regionen, Zeitstempel, Quellen und Zieltypen zugreifen können.
 
-Wenn Sie von Network Watcher zum Verbindungsmonitor (Vorschau) wechseln, können Sie Daten auf folgende Arten anzeigen:
+Wenn Sie von Network Watcher zum Verbindungsmonitor wechseln, können Sie Daten auf folgende Arten anzeigen:
 
-* **Verbindungsmonitor** : Dies ist eine Liste aller Verbindungsmonitore, die für Ihre Abonnements, Regionen, Zeitstempel, Quellen und Zieltypen erstellt wurden. Dies ist die Standardansicht.
-* **Testgruppen** : Dies ist eine Liste aller Testgruppen, die für Ihre Abonnements, Regionen, Zeitstempel, Quellen und Zieltypen erstellt wurden. Diese Testgruppen sind nicht nach Verbindungsmonitoren gefiltert.
-* **Test** : Dies ist eine Liste aller Tests, die für Ihre Abonnements, Regionen, Zeitstempel, Quellen und Zieltypen ausgeführt werden. Diese Tests sind nicht nach Verbindungsmonitoren oder Testgruppen gefiltert.
+* **Verbindungsmonitor**: Dies ist eine Liste aller Verbindungsmonitore, die für Ihre Abonnements, Regionen, Zeitstempel, Quellen und Zieltypen erstellt wurden. Dies ist die Standardansicht.
+* **Testgruppen**: Dies ist eine Liste aller Testgruppen, die für Ihre Abonnements, Regionen, Zeitstempel, Quellen und Zieltypen erstellt wurden. Diese Testgruppen sind nicht nach Verbindungsmonitoren gefiltert.
+* **Test**: Dies ist eine Liste aller Tests, die für Ihre Abonnements, Regionen, Zeitstempel, Quellen und Zieltypen ausgeführt werden. Diese Tests sind nicht nach Verbindungsmonitoren oder Testgruppen gefiltert.
 
 In der folgenden Abbildung sind die drei Datenansichten mit Pfeil 1 gekennzeichnet.
 
@@ -193,27 +193,27 @@ Sie können auf dem Dashboard die einzelnen Verbindungsmonitore erweitern, um de
 
 Für eine Liste sind folgende Filter verfügbar:
 
-* **Filter der obersten Ebene** : Durchsuchen Sie die Liste nach Text, Entitätstyp (Verbindungsmonitor, Testgruppe oder Test), Zeitstempel und Umfang. Der Umfang umfasst Abonnements, Regionen, Quellen und Zieltypen. Siehe Kasten 1 in der folgenden Abbildung.
-* **Zustandsbasierte Filter** : Filtern Sie nach dem Zustand des Verbindungsmonitors, der Testgruppe oder des Tests. Siehe Kasten 2 in der folgenden Abbildung.
-* **Warnungsbasierte Filter** : Filtern Sie nach Warnungen, die bei der Verbindungsmonitorressource ausgelöst werden. Siehe Kasten 3 in der folgenden Abbildung.
+* **Filter der obersten Ebene**: Durchsuchen Sie die Liste nach Text, Entitätstyp (Verbindungsmonitor, Testgruppe oder Test), Zeitstempel und Umfang. Der Umfang umfasst Abonnements, Regionen, Quellen und Zieltypen. Siehe Kasten 1 in der folgenden Abbildung.
+* **Zustandsbasierte Filter**: Filtern Sie nach dem Zustand des Verbindungsmonitors, der Testgruppe oder des Tests. Siehe Kasten 2 in der folgenden Abbildung.
+* **Warnungsbasierte Filter**: Filtern Sie nach Warnungen, die bei der Verbindungsmonitorressource ausgelöst werden. Siehe Kasten 3 in der folgenden Abbildung.
 
-  :::image type="content" source="./media/connection-monitor-2-preview/cm-view.png" alt-text="Screenshot: Filtern von Ansichten der Verbindungsmonitore, Testgruppen und Tests im Verbindungsmonitor (Vorschau)" lightbox="./media/connection-monitor-2-preview/cm-view.png":::
+  :::image type="content" source="./media/connection-monitor-2-preview/cm-view.png" alt-text="Screenshot: Filtern von Ansichten der Verbindungsmonitore, Testgruppen und Tests im Verbindungsmonitor" lightbox="./media/connection-monitor-2-preview/cm-view.png":::
     
-Wenn Sie beispielsweise alle Tests im Verbindungsmonitor (Vorschau) anzeigen möchten, bei denen die Quell-IP 10.192.64.56 lautet, gehen Sie folgendermaßen vor:
+Wenn Sie beispielsweise alle Tests im Verbindungsmonitor anzeigen möchten, bei denen die Quell-IP 10.192.64.56 lautet, gehen Sie folgendermaßen vor:
 1. Ändern Sie die Ansicht in **Test**.
 1. Geben Sie *10.192.64.56* in das Suchfeld ein.
 1. Wählen Sie unter **Umfang** im Filter der obersten Ebene **Quellen** aus.
 
-Wenn Sie nur Tests mit Fehlern im Verbindungsmonitor (Vorschau) anzeigen möchten, bei denen die Quell-IP 10.192.64.56 lautet, gehen Sie folgendermaßen vor:
+Wenn Sie nur Tests mit Fehlern im Verbindungsmonitor anzeigen möchten, bei denen die Quell-IP 10.192.64.56 lautet, gehen Sie folgendermaßen vor:
 1. Ändern Sie die Ansicht in **Test**.
 1. Wählen Sie aus den zustandsbasierten Filtern die Option **Fehler** aus.
 1. Geben Sie *10.192.64.56* in das Suchfeld ein.
 1. Wählen Sie unter **Umfang** im Filter der obersten Ebene **Quellen** aus.
 
-Wenn Sie nur Tests mit Fehlern im Verbindungsmonitor (Vorschau) anzeigen möchten, bei denen das Ziel „outlook.office365.com“ lautet, gehen Sie folgendermaßen vor:
+Wenn Sie nur Tests mit Fehlern im Verbindungsmonitor anzeigen möchten, bei denen das Ziel „outlook.office365.com“ lautet, gehen Sie folgendermaßen vor:
 1. Ändern Sie die Ansicht in **Test**.
 1. Wählen Sie aus den zustandsbasierten Filtern die Option **Fehler** aus.
-1. Geben Sie *outlook.office365.com* in das Suchfeld ein.
+1. Geben Sie *office.live.com* in das Suchfeld ein.
 1. Wählen Sie unter **Umfang** im Filter der obersten Ebene **Ziele** aus.
   
   :::image type="content" source="./media/connection-monitor-2-preview/tests-view.png" alt-text="Screenshot: Gefilterte Ansicht zur ausschließlichen Anzeige von Tests mit Fehlern für das Ziel „outlook.office365.com“" lightbox="./media/connection-monitor-2-preview/tests-view.png":::
@@ -265,9 +265,9 @@ Mit Log Analytics lassen sich benutzerdefinierte Ansichten Ihrer Überwachungsda
 
 #### <a name="metrics-in-azure-monitor"></a>Metriken in Azure Monitor
 
-In Verbindungsmonitoren, die vor dem Verbindungsmonitor (Vorschau) erstellt wurden, sind alle vier Metriken verfügbar: ProbesFailedPercent, AverageRoundtripMs, ChecksFailedPercent (Preview) und RoundTripTimeMs (Preview). In Verbindungsmonitoren, die im Verbindungsmonitor (Vorschau) erstellt wurden, sind Daten nur für die mit *(Preview)* (Vorschau) gekennzeichneten Metriken verfügbar.
+In Verbindungsmonitoren, die vor dem Verbindungsmonitor erstellt wurden, sind alle vier Metriken verfügbar: ProbesFailedPercent, AverageRoundtripMs, ChecksFailedPercent (Preview) und RoundTripTimeMs (Preview). In Verbindungsmonitoren, die im Verbindungsmonitor erstellt wurden, sind Daten nur für die mit *(Preview)* (Vorschau) gekennzeichneten Metriken verfügbar.
 
-  :::image type="content" source="./media/connection-monitor-2-preview/monitor-metrics.png" alt-text="Screenshot: Metriken im Verbindungsmonitor (Vorschau)" lightbox="./media/connection-monitor-2-preview/monitor-metrics.png":::
+  :::image type="content" source="./media/connection-monitor-2-preview/monitor-metrics.png" alt-text="Screenshot: Metriken im Verbindungsmonitor" lightbox="./media/connection-monitor-2-preview/monitor-metrics.png":::
 
 Legen Sie bei Verwendung von Metriken den Ressourcentyp auf „Microsoft.Network/networkWatchers/connectionMonitors“ fest.
 
@@ -282,18 +282,18 @@ Legen Sie bei Verwendung von Metriken den Ressourcentyp auf „Microsoft.Network
 
 Sie können Metrikwarnungen für Verbindungsmonitore mithilfe der folgenden Methoden erstellen. 
 
-1. Vom Verbindungsmonitor (Vorschau) aus, während der Erstellung des Verbindungsmonitors [unter Verwendung des Azure-Portals](connection-monitor-preview-create-using-portal.md#) 
-1. Vom Verbindungsmonitor (Vorschau) aus, unter Verwendung von „Warnungen konfigurieren“ im Dashboard 
+1. Vom Verbindungsmonitor aus, während der Erstellung des Verbindungsmonitors [unter Verwendung des Azure-Portals](connection-monitor-preview-create-using-portal.md#) 
+1. Vom Verbindungsmonitor aus, unter Verwendung von „Warnungen konfigurieren“ auf dem Dashboard 
 1. Von Azure Monitor aus, um eine Warnung in Azure Monitor zu erstellen: 
-    1. Wählen Sie die Verbindungsmonitorressource aus, die Sie im Verbindungsmonitor (Vorschau) erstellt haben.
+    1. Wählen Sie die Verbindungsmonitorressource aus, die Sie im Verbindungsmonitor erstellt haben.
     1. Stellen Sie sicher, dass **Metrik** als Signaltyp für den Verbindungsmonitor angezeigt wird.
     1. Wählen Sie unter **Bedingung hinzufügen** für **Signalname** die Option **ChecksFailedPercent(Preview)** oder **RoundTripTimeMs(Preview)** aus.
     1. Wählen Sie für **Signaltyp** die Option **Metriken** aus. Wählen Sie z. B. **ChecksFailedPercent(Preview)** aus.
     1. Alle Dimensionen für die Metrik werden aufgelistet. Wählen Sie den Dimensionsnamen und -wert aus. Wählen Sie z. B. **Quelladresse** aus, und geben Sie dann die IP-Adresse einer beliebigen Quelle in Ihrem Verbindungsmonitor ein.
     1. Geben Sie unter **Warnungslogik** die folgenden Details ein:
-        * **Bedingungstyp** : **Statisch**
+        * **Bedingungstyp**: **Statisch**
         * **Bedingung** und **Schwellenwert**
-        * **Aggregationsgranularität und Häufigkeit der Auswertung** : Der Verbindungsmonitor (Vorschau) aktualisiert die Daten jede Minute.
+        * **Aggregationsgranularität und Häufigkeit der Auswertung**: Der Verbindungsmonitor aktualisiert die Daten jede Minute.
     1. Wählen Sie unter **Aktionen** Ihre Aktionsgruppe aus.
     1. Legen Sie die Warnungsdetails fest.
     1. Erstellen Sie die Warnungsregel.
@@ -302,7 +302,7 @@ Sie können Metrikwarnungen für Verbindungsmonitore mithilfe der folgenden Meth
 
 ## <a name="diagnose-issues-in-your-network"></a>Diagnostizieren von Problemen in Ihrem Netzwerk
 
-Mit dem Verbindungsmonitor (Vorschau) können Sie Probleme in Ihrem Verbindungsmonitor und Ihrem Netzwerk diagnostizieren. Probleme in Ihrem Hybridnetzwerk werden von den Log Analytics-Agents erkannt, die Sie zuvor installiert haben. Probleme in Azure werden von der Network Watcher-Erweiterung erkannt. 
+Mit dem Verbindungsmonitor können Sie Probleme in Ihrem Verbindungsmonitor und Ihrem Netzwerk diagnostizieren. Probleme in Ihrem Hybridnetzwerk werden von den Log Analytics-Agents erkannt, die Sie zuvor installiert haben. Probleme in Azure werden von der Network Watcher-Erweiterung erkannt. 
 
 Sie können Probleme im Azure-Netzwerk in der Netzwerktopologie anzeigen.
 
@@ -348,5 +348,5 @@ Bei Netzwerken, deren Quellen sich auf Azure-VMs befinden, können die folgenden
 
 ## <a name="next-steps"></a>Nächste Schritte
     
-   * Informationen zum [Erstellen eines Verbindungsmonitors (Vorschau) mithilfe des Azure-Portals](connection-monitor-preview-create-using-portal.md)  
-   * Informationen zum [Erstellen eines Verbindungsmonitors (Vorschau) mithilfe von ARMClient](connection-monitor-preview-create-using-arm-client.md)  
+   * Informationen zum [Erstellen eines Verbindungsmonitors mithilfe des Azure-Portals](./connection-monitor-create-using-portal.md)  
+   * Informationen zum [Erstellen eines Verbindungsmonitors mithilfe von ARMClient](./connection-monitor-create-using-template.md)

@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 08/27/2020
 author: palma21
-ms.openlocfilehash: 556aec071ccb59a0223bc07d134f3427755117f3
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: b29f4034b12ce43e6c051e454601f196365469f3
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92745786"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636979"
 ---
 # <a name="use-azure-files-container-storage-interface-csi-drivers-in-azure-kubernetes-service-aks-preview"></a>Verwenden von Container Storage Interface-Treibern (CSI) von Azure Files in Azure Kubernetes Service (AKS) (Vorschauversion)
 
@@ -36,10 +36,10 @@ Weitere Informationen zu Kubernetes-Volumes finden Sie unter [Speicheroptionen f
 Mit einer Speicherklasse wird festgelegt, wie eine Azure Files-Freigabe erstellt wird. In der [Knotenressourcengruppe][node-resource-group] wird automatisch ein Speicherkonto zur Verwendung mit der Speicherklasse und zur Speicherung von Azure Files-Freigaben erstellt. Wählen Sie für *skuName* eine der folgenden [Azure-Speicherredundanz-SKUs][storage-skus] aus:
 
 * **Standard_LRS:** Standard – lokal redundanter Speicher
-* **Standard_GRS** : Standard – georedundanter Speicher
-* **Standard_ZRS** : Standard – zonenredundanter Speicher
-* **Standard_RAGRS** : Standard – georedundanter Speicher mit Lesezugriff
-* **Premium_LRS** : Premium – lokal redundanter Speicher
+* **Standard_GRS**: Standard – georedundanter Speicher
+* **Standard_ZRS**: Standard – zonenredundanter Speicher
+* **Standard_RAGRS**: Standard – georedundanter Speicher mit Lesezugriff
+* **Premium_LRS**: Premium – lokal redundanter Speicher
 
 > [!NOTE]
 > Azure Files unterstützt Azure Storage Premium. Die kleinstmögliche Premium-Dateifreigabe beträgt 100 GB.
@@ -76,7 +76,7 @@ total 29
 
 Die Standardspeicherklassen eignen sich für die gängigsten Szenarien, aber nicht für alle. In einigen Fällen möchten Sie möglicherweise Ihre eigene Speicherklasse mit eigenen Parametern anpassen. Verwenden Sie z. B. das folgende Manifest, um die `mountOptions` der Dateifreigabe zu konfigurieren.
 
-Der Standardwert für *fileMode* und *dirMode* lautet bei in Kubernetes eingebundenen Dateifreigaben *0777* . Sie können die verschiedenen Einbindungsoptionen im Speicherklassenobjekt angeben.
+Der Standardwert für *fileMode* und *dirMode* lautet bei in Kubernetes eingebundenen Dateifreigaben *0777*. Sie können die verschiedenen Einbindungsoptionen im Speicherklassenobjekt angeben.
 
 Erstellen Sie eine Datei mit dem Namen `azure-file-sc.yaml`, und fügen Sie das folgende Beispielmanifest ein:
 
@@ -229,7 +229,7 @@ az provider register --namespace Microsoft.Storage
 [Erstellen Sie ein Azure Storage-Konto vom Typ `Premium_LRS`](../storage/files/storage-how-to-create-premium-fileshare.md) mit den folgenden Konfigurationen, um NFS-Freigaben zu unterstützen:
 - Kontotyp: FileStorage
 - Sichere Übertragung erforderlich (nur HTTPS-Datenverkehr aktivieren): FALSE
-- Auswählen des virtuellen Netzwerks Ihrer Agent-Knoten in Firewalls und virtuellen Netzwerken
+- Wählen Sie das virtuelle Netzwerk der Agent-Knoten in Firewalls und virtuellen Netzwerken aus. Daher sollten Sie das Speicherkonto in der MC_-Ressourcengruppe erstellen.
 
 ### <a name="create-nfs-file-share-storage-class"></a>Erstellen einer Speicherklasse für die NFS-Dateifreigabe
 
@@ -239,7 +239,7 @@ Speichern Sie eine Datei `nfs-sc.yaml` mit dem unten gezeigten Manifest, und bea
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
-  name: azurefile-csi
+  name: azurefile-csi-nfs
 provisioner: file.csi.azure.com
 parameters:
   resourceGroup: EXISTING_RESOURCE_GROUP_NAME  # optional, required only when storage account is not in the same resource group as your agent nodes
@@ -275,6 +275,10 @@ Filesystem      Size  Used Avail Use% Mounted on
 accountname.file.core.windows.net:/accountname/pvc-fa72ec43-ae64-42e4-a8a2-556606f5da38  100G     0  100G   0% /mnt/azurefile
 ...
 ```
+
+>[!NOTE]
+> Beachten Sie Folgendes: Da die NFS-Dateifreigabe ein Premium-Konto ist, beträgt die Mindestgröße für die Dateifreigabe 100 GB. Wenn Sie einen PVC mit einer kleinen Speichergröße erstellen, tritt möglicherweise ein Fehler auf: „Fehler beim Erstellen der Dateifreigabe... Größe (5)...“.
+
 
 ## <a name="windows-containers"></a>Windows-Container
 

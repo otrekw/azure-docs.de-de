@@ -10,12 +10,12 @@ ms.author: jhirono
 author: jhirono
 ms.reviewer: larryfr
 ms.date: 11/09/2020
-ms.openlocfilehash: de83be26e3cb7105303528e10fb50b7ecc438472
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 211ef9571b5a126686b4583330dc0f80863fd47e
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94447474"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94992045"
 ---
 # <a name="data-encryption-with-azure-machine-learning"></a>Datenverschlüsselung mit Azure Machine Learning
 
@@ -53,7 +53,7 @@ Informationen zum erneuten Generieren der Zugriffsschlüssel finden Sie unter [E
 
 ### <a name="azure-cosmos-db"></a>Azure Cosmos DB
 
-Azure Machine Learning speichert Metriken und Metadaten in einer Azure Cosmos DB-Instanz. Diese Instanz ist mit einem Microsoft-Abonnement verbunden, das von Azure Machine Learning verwaltet wird. Alle in Azure Cosmos DB gespeicherten Daten werden im Ruhezustand mit von Microsoft verwalteten Schlüsseln verschlüsselt.
+Azure Machine Learning speichert Metadaten in einer Azure Cosmos DB-Instanz. Diese Instanz ist mit einem Microsoft-Abonnement verbunden, das von Azure Machine Learning verwaltet wird. Alle in Azure Cosmos DB gespeicherten Daten werden im Ruhezustand mit von Microsoft verwalteten Schlüsseln verschlüsselt.
 
 Um Ihre eigenen (vom Kunden verwalteten) Schlüssel zur Verschlüsselung der Azure-Cosmos-DB-Instanz zu verwenden, können Sie eine dedizierte Cosmos-DB-Instanz zur Verwendung mit Ihrem Arbeitsbereich erstellen. Wir empfehlen diesen Ansatz, wenn Sie Ihre Daten, z. B. Informationen zum Ausführungsverlauf, außerhalb der mehrinstanzenfähigen Cosmos DB-Instanz speichern möchten, die in unserem Microsoft-Abonnement gehostet wird. 
 
@@ -129,6 +129,12 @@ Jeder virtuelle Computer verfügt auch über einen lokalen temporären Datenträ
 ### <a name="azure-databricks"></a>Azure Databricks
 
 Azure Databricks kann in Azure Machine Learning-Pipelines verwendet werden. Das von Azure Databricks verwendete Databricks-Dateisystem (Databricks File System, DBFS) wird standardmäßig mithilfe eines von Microsoft verwalteten Schlüssels verschlüsselt. Informationen zum Konfigurieren von Azure Databricks für die Verwendung von kundenseitig verwalteten Schlüsseln finden Sie unter [Konfigurieren der kundenseitig verwalteten Schlüsseln im Standard-DBFS (Stamm)](/azure/databricks/security/customer-managed-keys-dbfs).
+
+### <a name="microsoft-generated-data"></a>Von Microsoft generierte Daten
+
+Bei der Verwendung von Diensten wie automatisiertes ML generiert Microsoft möglicherweise vorübergehende, vorverarbeitete Daten für das Training mehrerer Modelle. Diese Daten werden in einem Datenspeicher in Ihrem Arbeitsbereich gespeichert, der es Ihnen ermöglicht, die Zugriffssteuerung und Verschlüsselung entsprechend durchzusetzen.
+
+Möglicherweise möchten Sie auch [Diagnoseinformationen verschlüsseln, die von Ihrem bereitgestellten Endpunkt](how-to-enable-app-insights.md) in Ihrer Azure Application Insights-Instanz protokolliert werden.
 
 ## <a name="encryption-in-transit"></a>Verschlüsselung während der Übertragung
 

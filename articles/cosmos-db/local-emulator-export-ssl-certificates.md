@@ -1,18 +1,18 @@
 ---
 title: Exportieren der Azure Cosmos DB-Emulatorzertifikate
-description: Hier erfahren Sie, wie Sie das Azure Cosmos DB-Emulatorzertifikat für die Verwendung mit Java-, Python- und Node.js-Apps exportieren. Die Zertifikate sollten exportiert und für Sprachen und Runtimeumgebungen verwendet werden, in denen der Windows-Zertifikatspeicher nicht verwendet wird.
+description: Hier erfahren Sie, wie Sie das Azure Cosmos DB-Emulatorzertifikat für die Verwendung mit Java-, Python- und Node.js-Apps exportieren. Die Zertifikate sollten exportiert und für Sprachen und Runtimeumgebungen verwendet werden, in denen der Windows-Zertifikatspeicher nicht verwendet wird.
 ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 09/17/2020
 author: deborahc
 ms.author: dech
-ms.custom: devx-track-python, devx-track-java, contperfq1
-ms.openlocfilehash: 79e2b58ea342c9449faba108881c65d0bd8de856
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.custom: devx-track-python, devx-track-java, contperf-fy21q1
+ms.openlocfilehash: 1c111ca23ce7cf749dc4a7d5ad2ad39756236ab1
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93085801"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97028205"
 ---
 # <a name="export-the-azure-cosmos-db-emulator-certificates-for-use-with-java-python-and-nodejs-apps"></a>Exportieren der Azure Cosmos DB-Emulatorzertifikate für die Verwendung mit Java-, Python- und Node.js-Apps
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -55,7 +55,7 @@ Sie müssen das Emulatorzertifikat exportieren, um den Emulatorendpunkt aus Spra
 
     :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-6.png" alt-text="Exportieren im lokalen Azure Cosmos DB-Emulator, Schritt 6":::
 
-1. Benennen Sie das Zertifikat. Wählen Sie in diesem Fall den Namen **documentdbemulatorcert** , und klicken Sie auf **Weiter**.
+1. Benennen Sie das Zertifikat. Wählen Sie in diesem Fall den Namen **documentdbemulatorcert**, und klicken Sie auf **Weiter**.
 
     :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-7.png" alt-text="Exportieren im lokalen Azure Cosmos DB-Emulator, Schritt 7":::
 
@@ -67,7 +67,7 @@ Sie müssen das Emulatorzertifikat exportieren, um den Emulatorendpunkt aus Spra
 
 Wenn Sie Java- oder MongoDB-Anwendungen ausführen, die den auf Java basierenden Client verwenden, ist es einfacher, das Zertifikat im Java-Standardzertifikatspeicher zu installieren, als die Flags `-Djavax.net.ssl.trustStore=<keystore> -Djavax.net.ssl.trustStorePassword="<password>"` zu übergeben. Die enthaltene Java-Demoanwendung (`https://localhost:8081/_explorer/index.html`) ist beispielsweise vom Standardzertifikatspeicher abhängig.
 
-Befolgen Sie die Anweisungen unter [Hinzufügen eines Stammzertifikats zum Java-ZS-Zertifikatspeicher](/azure/developer/java/sdk/java-sdk-add-certificate-ca-store), um das X.509-Zertifikat in den Java-Standardzertifikatspeicher zu importieren. Denken Sie daran, dass Sie im Verzeichnis *%JAVA_HOME%* arbeiten, wenn Sie „keytool“ ausführen. Nachdem das Zertifikat in den Zertifikatsspeicher importiert wurde, können sich Clients für SQL und die API für MongoDB von Azure Cosmos DB mit dem Azure Cosmos-Emulator verbinden.
+Befolgen Sie die Anweisungen unter [Hinzufügen eines Stammzertifikats zum Java-ZS-Zertifikatspeicher](/azure/developer/java/sdk/java-sdk-add-certificate-ca-store), um das X.509-Zertifikat in den Java-Standardzertifikatspeicher zu importieren. Denken Sie daran, dass Sie im Verzeichnis *%JAVA_HOME%* arbeiten, wenn Sie „keytool“ ausführen. Nachdem das Zertifikat in den Zertifikatspeicher importiert wurde, können Clients für SQL und die API für MongoDB von Azure Cosmos DB eine Verbindung mit dem Azure Cosmos DB-Emulator herstellen.
 
 Alternativ können Sie das folgende Bash-Skript ausführen, um das Zertifikat zu importieren:
 
@@ -97,7 +97,7 @@ Beim Herstellen einer Verbindung mit dem Emulator in Node.js SDKs ist die TLS-Ü
 
 ## <a name="rotate-emulator-certificates"></a>Rotieren von Emulatorzertifikaten
 
-Sie können das erneute Generieren der Emulatorzertifikate erzwingen, indem Sie im Windows-Infobereich auf die Option **Reset Data** (Daten zurücksetzen) des ausgeführten Azure Cosmos DB-Emulators klicken. Beachten Sie, dass durch diese Aktion auch alle lokal vom Emulator gespeicherten Daten gelöscht werden.
+Sie können das erneute Generieren der Emulatorzertifikate erzwingen, indem Sie im Windows-Infobereich auf die Option **Daten zurücksetzen** des ausgeführten Azure Cosmos DB-Emulators klicken. Beachten Sie, dass durch diese Aktion auch alle lokal vom Emulator gespeicherten Daten gelöscht werden.
 
 :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-reset-data.png" alt-text="Zurücksetzen von Daten im lokalen Azure Cosmos DB-Emulator":::
 

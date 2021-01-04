@@ -3,20 +3,20 @@ title: Erstellen von Datenpipelines für die Vorhersage mithilfe von Azure Data 
 description: Dieser Artikel beschreibt das Erstellen von Vorhersagepipelines mithilfe von Azure Data Factory und Azure Machine Learning Studio (klassisch).
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: ce3175a015b7a5813f62c639fdadbeea367bbc22
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: c65ef2eb25f330f645048cdc73371d98d8c2ce91
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92631766"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97508471"
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-studio-classic-and-azure-data-factory"></a>Erstellen einer Vorhersagepipeline mithilfe von Azure Machine Learning Studio (klassisch) und Azure Data Factory
 
@@ -35,7 +35,6 @@ ms.locfileid: "92631766"
 ## <a name="introduction"></a>Einführung
 > [!NOTE]
 > Dieser Artikel gilt für Version 1 von Data Factory. Wenn Sie die aktuelle Version des Data Factory-Diensts verwenden, finden Sie weitere Informationen unter [Transformieren von Daten mithilfe von maschinellem Lernen in Data Factory](../transform-data-using-machine-learning.md).
-
 
 ### <a name="azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (klassisch)
 [Azure Machine Learning Studio (Classic)](https://azure.microsoft.com/documentation/services/machine-learning/) ermöglicht es Ihnen, Predictive Analytics-Lösungen zu erstellen, zu testen und bereitzustellen. Allgemein betrachtet, geschieht dies in drei Schritten:
@@ -75,18 +74,18 @@ Mit Azure Data Factory können Sie die Verschiebung und Verarbeitung von Daten o
       ![Batch-URI](./media/data-factory-azure-ml-batch-execution-activity/batch-uri.png)
 
 ### <a name="scenario-experiments-using-web-service-inputsoutputs-that-refer-to-data-in-azure-blob-storage"></a>Szenario: Experimente mit Eingaben/Ausgaben für den Webdienst, die auf Daten in Azure Blob Storage verweisen
-In diesem Szenario werden Vorhersagen mit dem Azure Machine Learning Studio-Webdienst (klassisch) anhand der Daten aus einer Datei in Azure Blob Storage erstellt und die Vorhersageergebnisse in Blob Storage gespeichert. Das folgende JSON-Skript definiert eine Data Factory-Pipeline mit einer AzureMLBatchExecution-Aktivität. Die Aktivität enthält das Dataset **DecisionTreeInputBlob** als Eingabe und **DecisionTreeResultBlob** als Ausgabe. **DecisionTreeInputBlob** wird als Eingabe an den Webdienst übergeben, indem die **webServiceInput** -JSON-Eigenschaft verwendet wird. **DecisionTreeResultBlob** wird als Ausgabe an den Webdienst übergeben, indem die **webServiceOutputs** -JSON-Eigenschaft verwendet wird.
+In diesem Szenario werden Vorhersagen mit dem Azure Machine Learning Studio-Webdienst (klassisch) anhand der Daten aus einer Datei in Azure Blob Storage erstellt und die Vorhersageergebnisse in Blob Storage gespeichert. Das folgende JSON-Skript definiert eine Data Factory-Pipeline mit einer AzureMLBatchExecution-Aktivität. Die Aktivität enthält das Dataset **DecisionTreeInputBlob** als Eingabe und **DecisionTreeResultBlob** als Ausgabe. **DecisionTreeInputBlob** wird als Eingabe an den Webdienst übergeben, indem die **webServiceInput**-JSON-Eigenschaft verwendet wird. **DecisionTreeResultBlob** wird als Ausgabe an den Webdienst übergeben, indem die **webServiceOutputs**-JSON-Eigenschaft verwendet wird.
 
 > [!IMPORTANT]
 > Wenn der Webdienst mehrere Eingaben akzeptiert, verwenden Sie die Eigenschaft **webServiceInputs** anstatt **webServiceInput**. Im Abschnitt [Webdienst erfordert mehrere Eingaben](#web-service-requires-multiple-inputs) finden Sie ein Beispiel für die Verwendung der webServiceInputs-Eigenschaft.
 >
-> Datasets, auf die die Eigenschaften **webServiceInput**/**webServiceInputs** und **webServiceOutputs** (in **typeProperties** ) verweisen, müssen auch in den Aktivitäten **inputs** und **outputs** enthalten sein.
+> Datasets, auf die die Eigenschaften **webServiceInput**/**webServiceInputs** und **webServiceOutputs** (in **typeProperties**) verweisen, müssen auch in den Aktivitäten **inputs** und **outputs** enthalten sein.
 >
 > In Ihrem Azure Machine Learning Studio-Experiment (klassisch) haben Eingabe- und Ausgabeports von Webdiensten und globale Parameter Standardnamen („input1“, „input2“), die Sie anpassen können. Die Namen, die Sie für die Einstellungen webServiceInputs, webServiceOutputs und globalParameters verwenden, müssen den Namen in den Experimenten genau entsprechen. Sie können die Beispiel-Anforderungsnutzlast auf der Hilfeseite für die Batchausführung für Ihren Azure Machine Learning Studio-Endpunkt (klassisch) anzeigen, um die erwartete Zuordnung zu überprüfen.
 >
 >
 
-```JSON
+```json
 {
   "name": "PredictivePipeline",
   "properties": {
@@ -127,6 +126,7 @@ In diesem Szenario werden Vorhersagen mit dem Azure Machine Learning Studio-Webd
   }
 }
 ```
+
 > [!NOTE]
 > Nur Eingaben und Ausgaben der AzureMLBatchExecution-Aktivität können als Parameter an den Webdienst übergeben werden. Im JSON-Codeausschnitt oben ist beispielsweise "DecisionTreeInputBlob" eine Eingabe für die AzureMLBatchExecution-Aktivität, die über den webServiceInput-Parameter als Eingabe an den Webdienst übergeben wird.
 >
@@ -139,115 +139,119 @@ Wir empfehlen Ihnen, das Tutorial zum [Erstellen der ersten Pipeline mit Data Fa
 
 1. Erstellen Sie einen **verknüpften Dienst** für **Azure Storage**. Wenn sich die Ein- und Ausgabedateien in verschiedenen Speicherkonten befinden, benötigen Sie zwei verknüpfte Dienste. Hier folgt ein JSON-Beispiel:
 
-    ```JSON
-    {
-      "name": "StorageLinkedService",
-      "properties": {
-        "type": "AzureStorage",
-        "typeProperties": {
-          "connectionString": "DefaultEndpointsProtocol=https;AccountName=[acctName];AccountKey=[acctKey]"
-        }
-      }
-    }
-    ```
+   ```json
+   {
+     "name": "StorageLinkedService",
+     "properties": {
+       "type": "AzureStorage",
+       "typeProperties": {
+         "connectionString": "DefaultEndpointsProtocol=https;AccountName= [acctName];AccountKey=[acctKey]"
+       }
+     }
+   }
+   ```
+
 2. Erstellen Sie das **Eingabe** **dataset** für Azure Data Factory. Im Gegensatz zu einigen anderen Data Factory-Datasets müssen diese Datasets die beiden Werte **folderPath** und **fileName** enthalten. Sie können die Partitionierung verwenden, damit jede Batchausführung (jeder Datenslice) eindeutige Ein- und Ausgabedateien verarbeitet oder erzeugt. Sie müssen unter Umständen einige vorgeschaltete Aktivitäten einbeziehen, um die Eingabe in das CSV-Dateiformat umzuwandeln und sie im Speicherkonto für die einzelnen Datenslices abzulegen. In diesem Fall würden Sie die im folgenden Beispiel gezeigten Einstellungen **external** und **externalData** nicht einbeziehen, und Ihr „DecisionTreeInputBlob“ würde dem Ausgabedataset einer anderen Aktivität entsprechen.
 
-    ```JSON
-    {
-      "name": "DecisionTreeInputBlob",
-      "properties": {
-        "type": "AzureBlob",
-        "linkedServiceName": "StorageLinkedService",
-        "typeProperties": {
-          "folderPath": "azuremltesting/input",
-          "fileName": "in.csv",
-          "format": {
-            "type": "TextFormat",
-            "columnDelimiter": ","
-          }
-        },
-        "external": true,
-        "availability": {
-          "frequency": "Day",
-          "interval": 1
-        },
-        "policy": {
-          "externalData": {
-            "retryInterval": "00:01:00",
-            "retryTimeout": "00:10:00",
-            "maximumRetry": 3
-          }
-        }
-      }
-    }
-    ```
+   ```json
+   {
+     "name": "DecisionTreeInputBlob",
+     "properties": {
+       "type": "AzureBlob",
+       "linkedServiceName": "StorageLinkedService",
+       "typeProperties": {
+         "folderPath": "azuremltesting/input",
+         "fileName": "in.csv",
+         "format": {
+           "type": "TextFormat",
+           "columnDelimiter": ","
+         }
+       },
+       "external": true,
+       "availability": {
+         "frequency": "Day",
+         "interval": 1
+       },
+       "policy": {
+         "externalData": {
+           "retryInterval": "00:01:00",
+           "retryTimeout": "00:10:00",
+           "maximumRetry": 3
+         }
+       }
+     }
+   }
+   ```
 
-    Die CSV-Eingabedatei muss die Spaltenkopfzeile enthalten. Bei Verwendung der **Kopieraktivität** zum Erstellen/Verschieben der CSV-Datei in den Blobspeicher müssen Sie die Senkeneigenschaft **blobWriterAddHeader** auf **true** festlegen. Beispiel:
+   Die CSV-Eingabedatei muss die Spaltenkopfzeile enthalten. Bei Verwendung der **Kopieraktivität** zum Erstellen/Verschieben der CSV-Datei in den Blobspeicher müssen Sie die Senkeneigenschaft **blobWriterAddHeader** auf **true** festlegen. Beispiel:
 
-    ```JSON
-    sink:
-    {
-        "type": "BlobSink",
-        "blobWriterAddHeader": true
-    }
-    ```
+   ```json
+   sink:
+   {
+     "type": "BlobSink",
+     "blobWriterAddHeader": true
+     }
+   ```
 
-    Wenn die CSV-Datei nicht die Kopfzeile enthält, wird möglicherweise folgender Fehler angezeigt: **Fehler in Aktivität: Fehler beim Lesen der Zeichenfolge. Unerwartetes Token: StartObject. Pfad '', Zeile 1, Position 1**.
+   Wenn die CSV-Datei nicht die Kopfzeile enthält, wird möglicherweise folgender Fehler angezeigt: **Fehler in Aktivität: Fehler beim Lesen der Zeichenfolge. Unerwartetes Token: StartObject. Pfad '', Zeile 1, Position 1**.
+
 3. Erstellen Sie das **Ausgabe** **dataset** für Azure Data Factory. In diesem Beispiel wird die Partitionierung verwendet, um für die Ausführung der einzelnen Datenslices einen eindeutigen Ausgabepfad zu erstellen. Ohne die Partitionierung würde die Aktivität die Datei überschreiben.
 
-    ```JSON
-    {
-      "name": "DecisionTreeResultBlob",
-      "properties": {
-        "type": "AzureBlob",
-        "linkedServiceName": "StorageLinkedService",
-        "typeProperties": {
-          "folderPath": "azuremltesting/scored/{folderpart}/",
-          "fileName": "{filepart}result.csv",
-          "partitionedBy": [
-            {
-              "name": "folderpart",
-              "value": {
-                "type": "DateTime",
-                "date": "SliceStart",
-                "format": "yyyyMMdd"
-              }
-            },
-            {
-              "name": "filepart",
-              "value": {
-                "type": "DateTime",
-                "date": "SliceStart",
-                "format": "HHmmss"
-              }
-            }
-          ],
-          "format": {
-            "type": "TextFormat",
-            "columnDelimiter": ","
-          }
-        },
-        "availability": {
-          "frequency": "Day",
-          "interval": 15
-        }
-      }
-    }
-    ```
-4. Erstellen Sie einen **verknüpften Dienst** vom Typ **AzureMLLinkedService** , der den API-Schlüssel und die URL für die Modellbatchausführung bereitstellt.
+   ```json
+   {
+     "name": "DecisionTreeResultBlob",
+     "properties": {
+       "type": "AzureBlob",
+       "linkedServiceName": "StorageLinkedService",
+       "typeProperties": {
+         "folderPath": "azuremltesting/scored/{folderpart}/",
+         "fileName": "{filepart}result.csv",
+         "partitionedBy": [
+           {
+             "name": "folderpart",
+             "value": {
+               "type": "DateTime",
+               "date": "SliceStart",
+               "format": "yyyyMMdd"
+             }
+           },
+           {
+             "name": "filepart",
+             "value": {
+               "type": "DateTime",
+               "date": "SliceStart",
+               "format": "HHmmss"
+             }
+           }
+         ],
+         "format": {
+           "type": "TextFormat",
+           "columnDelimiter": ","
+         }
+       },
+       "availability": {
+         "frequency": "Day",
+         "interval": 15
+       }
+     }
+   }
+   ```
 
-    ```JSON
-    {
-      "name": "MyAzureMLLinkedService",
-      "properties": {
-        "type": "AzureML",
-        "typeProperties": {
-          "mlEndpoint": "https://[batch execution endpoint]/jobs",
-          "apiKey": "[apikey]"
-        }
-      }
-    }
-    ```
+4. Erstellen Sie einen **verknüpften Dienst** vom Typ **AzureMLLinkedService**, der den API-Schlüssel und die URL für die Modellbatchausführung bereitstellt.
+
+   ```json
+   {
+     "name": "MyAzureMLLinkedService",
+     "properties": {
+       "type": "AzureML",
+       "typeProperties": {
+         "mlEndpoint": "https://[batch execution endpoint]/jobs",
+         "apiKey": "[apikey]"
+       }
+     }
+   }
+   ```
+
 5. Erstellen Sie abschließend eine Pipeline, die eine **AzureMLBatchExecution** -Aktivität enthält. Zur Laufzeit führt die Pipeline die folgenden Schritte aus:
 
    1. Abrufen des Speicherorts der Eingabedatei aus Ihren Eingabedatasets
@@ -259,49 +263,49 @@ Wir empfehlen Ihnen, das Tutorial zum [Erstellen der ersten Pipeline mit Data Fa
       >
       >
 
-      ```JSON
+      ```json
       {
         "name": "PredictivePipeline",
         "properties": {
-            "description": "use AzureML model",
-            "activities": [
-            {
-                "name": "MLActivity",
-                "type": "AzureMLBatchExecution",
-                "description": "prediction analysis on batch input",
-                "inputs": [
+          "description": "use AzureML model",
+          "activities": [
+              {
+              "name": "MLActivity",
+              "type": "AzureMLBatchExecution",
+              "description": "prediction analysis on batch input",
+              "inputs": [
                 {
-                    "name": "DecisionTreeInputBlob"
+                  "name": "DecisionTreeInputBlob"
                 }
                 ],
-                "outputs": [
+              "outputs": [
                 {
-                    "name": "DecisionTreeResultBlob"
+                  "name": "DecisionTreeResultBlob"
                 }
                 ],
-                "linkedServiceName": "MyAzureMLLinkedService",
-                "typeProperties":
+              "linkedServiceName": "MyAzureMLLinkedService",
+              "typeProperties":
                 {
-                    "webServiceInput": "DecisionTreeInputBlob",
-                    "webServiceOutputs": {
-                        "output1": "DecisionTreeResultBlob"
-                    }
+                "webServiceInput": "DecisionTreeInputBlob",
+                "webServiceOutputs": {
+                  "output1": "DecisionTreeResultBlob"
+                }
                 },
-                "policy": {
-                    "concurrency": 3,
-                    "executionPriorityOrder": "NewestFirst",
-                    "retry": 1,
-                    "timeout": "02:00:00"
-                }
+              "policy": {
+                "concurrency": 3,
+                "executionPriorityOrder": "NewestFirst",
+                "retry": 1,
+                "timeout": "02:00:00"
+              }
             }
-            ],
-            "start": "2016-02-13T00:00:00Z",
-            "end": "2016-02-14T00:00:00Z"
-        }
+          ],
+          "start": "2016-02-13T00:00:00Z",
+          "end": "2016-02-14T00:00:00Z"
+          }
       }
       ```
 
-      Die **Start** - und **Endzeit** von Datums-/Uhrzeitangaben müssen im [ISO-Format](https://en.wikipedia.org/wiki/ISO_8601) angegeben werden. Beispiel: 2014-10-14T16:32:41Z. Die Zeit für **end** ist optional. Wenn für die **end** -Eigenschaft kein Wert angegeben wird, wird sie als „ **start + 48 Stunden** “ berechnet. Um die Pipeline auf unbestimmte Zeit auszuführen, geben Sie als Wert für die **end** -Eigenschaft **9999-09-09** an. Informationen zu JSON-Eigenschaften finden Sie in der [JSON-Skriptreferenz](/previous-versions/azure/dn835050(v=azure.100)) .
+      Die **Start**- und **Endzeit** von Datums-/Uhrzeitangaben müssen im [ISO-Format](https://en.wikipedia.org/wiki/ISO_8601) angegeben werden. Beispiel: 2014-10-14T16:32:41Z. Die Zeit für **end** ist optional. Wenn für die **end**-Eigenschaft kein Wert angegeben wird, wird sie als „**start + 48 Stunden**“ berechnet. Um die Pipeline auf unbestimmte Zeit auszuführen, geben Sie als Wert für die **end**-Eigenschaft **9999-09-09** an. Informationen zu JSON-Eigenschaften finden Sie in der [JSON-Skriptreferenz](/previous-versions/azure/dn835050(v=azure.100)) .
 
       > [!NOTE]
       > Das Festlegen der Eingaben für die AzureMLBatchExecution-Aktivität erfolgt optional.
@@ -320,7 +324,7 @@ Bei Verwendung der Reader- und Writer-Module empfiehlt es sich, einen Webdienstp
 
 Betrachten wir nun ein Szenario für die Verwendung von Webdienstparametern. Sie haben einen Azure Machine Learning Studio-Webdienst (klassisch) bereitgestellt, bei dem Daten mithilfe eines Reader-Moduls aus einer von Azure Machine Learning Studio (klassisch) unterstützten Datenquelle (z. B. Azure SQL-Datenbank) gelesen werden. Nach der Batchausführung werden die Ergebnisse mit einem Writer-Modul (Azure SQL-Datenbank) geschrieben.  In den Experimenten sind keine Eingaben und Ausgaben für den Webdienst definiert. In diesem Fall wird empfohlen, die relevanten Webdienstparameter für das Reader- und das Writer-Modul zu konfigurieren. Bei dieser Konfiguration können das Reader- und Writer-Modul bei Verwendung der AzureMLBatchExecution-Aktivität konfiguriert werden. Sie geben die Webdienstparameter wie folgt im Abschnitt **globalParameters** im JSON-Code der Aktivität an.
 
-```JSON
+```json
 "typeProperties": {
     "globalParameters": {
         "Param 1": "Value 1",
@@ -331,7 +335,7 @@ Betrachten wir nun ein Szenario für die Verwendung von Webdienstparametern. Sie
 
 Sie können auch [Data Factory-Funktionen](data-factory-functions-variables.md) zum Übergeben von Werten für die Webdienstparameter verwenden, wie im folgenden Beispiel gezeigt:
 
-```JSON
+```json
 "typeProperties": {
     "globalParameters": {
        "Database query": "$$Text.Format('SELECT * FROM myTable WHERE timeColumn = \\'{0:yyyy-MM-dd HH:mm:ss}\\'', Time.AddHours(WindowStart, 0))"
@@ -347,7 +351,7 @@ Sie können auch [Data Factory-Funktionen](data-factory-functions-variables.md) 
 ### <a name="using-a-reader-module-to-read-data-from-multiple-files-in-azure-blob"></a>Lesen von Daten aus mehreren Dateien im Azure-Blob mithilfe eines Reader-Moduls
 Große Datenpipelines mit Aktivitäten wie Pig und Hive können eine oder mehrere Ausgabedateien ohne Erweiterungen produzieren. Wenn Sie beispielsweise eine externe Hive-Tabelle angeben, können die Daten für die externe Hive-Tabelle in Azure Blob Storage unter dem Namen „000000_0“ gespeichert werden. Mithilfe des Reader-Moduls in einem Experiment können Sie mehrere Dateien lesen und für Vorhersagen verwenden.
 
-Wenn Sie das Reader-Modul in einem Azure Machine Learning Studio-Experiment (klassisch) verwenden, können Sie das Azure-Blob als Eingabe angeben. Bei den Dateien in Azure Blob Storage kann es sich um die Ausgabedateien (Beispiel: 000000_0) handeln, die von einem Pig- und Hive-Skript unter HDInsight erstellt werden. Mit dem Reader-Modul können Sie Dateien lesen (ohne Erweiterungen), indem Sie **Path to container, directory/blob** (Pfad zum Container, Verzeichnis/Blob) konfigurieren. **Path to container** verweist auf den Container, und **directory/blob** verweist auf den Ordner, der die Dateien enthält, wie in der folgenden Abbildung dargestellt. Das Sternchen (\*) **gibt an, dass alle Dateien im Container/Ordner (d.h. „data/aggregateddata/year=2014/month=6/\*“)** als Teil des Experiments gelesen werden.
+Wenn Sie das Reader-Modul in einem Azure Machine Learning Studio-Experiment (klassisch) verwenden, können Sie das Azure-Blob als Eingabe angeben. Bei den Dateien in Azure Blob Storage kann es sich um die Ausgabedateien (Beispiel: 000000_0) handeln, die von einem Pig- und Hive-Skript unter HDInsight erstellt werden. Mit dem Reader-Modul können Sie Dateien lesen (ohne Erweiterungen), indem Sie **Path to container, directory/blob**(Pfad zum Container, Verzeichnis/Blob) konfigurieren. **Path to container** verweist auf den Container, und **directory/blob** verweist auf den Ordner, der die Dateien enthält, wie in der folgenden Abbildung dargestellt. Das Sternchen (\*) **gibt an, dass alle Dateien im Container/Ordner (d.h. „data/aggregateddata/year=2014/month=6/\*“)** als Teil des Experiments gelesen werden.
 
 ![Azure-Blobeigenschaften](./media/data-factory-create-predictive-pipelines/azure-blob-properties.png)
 
@@ -405,7 +409,7 @@ Wenn Sie das Reader-Modul in einem Azure Machine Learning Studio-Experiment (kla
 Im obigen JSON-Beispiel:
 
 * Der bereitgestellte Azure Machine Learning Studio-Webdienst (klassisch) verwendet ein Reader- und ein Writer-Modul zum Lesen/Schreiben von Daten aus/an eine Azure SQL-Datenbank-Instanz. Dieser Webdienst stellt die vier folgenden Parameter bereit:  „Database server name“, „Database name“, „Server user account name“ und „Server user account password“.
-* Die **Start** - und **Endzeit** von Datums-/Uhrzeitangaben müssen im [ISO-Format](https://en.wikipedia.org/wiki/ISO_8601) angegeben werden. Beispiel: 2014-10-14T16:32:41Z. Die Zeit für **end** ist optional. Wenn für die **end** -Eigenschaft kein Wert angegeben wird, wird sie als „ **start + 48 Stunden** “ berechnet. Um die Pipeline auf unbestimmte Zeit auszuführen, geben Sie als Wert für die **end** -Eigenschaft **9999-09-09** an. Informationen zu JSON-Eigenschaften finden Sie in der [JSON-Skriptreferenz](/previous-versions/azure/dn835050(v=azure.100)) .
+* Die **Start**- und **Endzeit** von Datums-/Uhrzeitangaben müssen im [ISO-Format](https://en.wikipedia.org/wiki/ISO_8601) angegeben werden. Beispiel: 2014-10-14T16:32:41Z. Die Zeit für **end** ist optional. Wenn für die **end**-Eigenschaft kein Wert angegeben wird, wird sie als „**start + 48 Stunden**“ berechnet. Um die Pipeline auf unbestimmte Zeit auszuführen, geben Sie als Wert für die **end**-Eigenschaft **9999-09-09** an. Informationen zu JSON-Eigenschaften finden Sie in der [JSON-Skriptreferenz](/previous-versions/azure/dn835050(v=azure.100)) .
 
 ### <a name="other-scenarios"></a>Andere Szenarien
 #### <a name="web-service-requires-multiple-inputs"></a>Webdienst erfordert mehrere Eingaben
@@ -558,7 +562,7 @@ Ausführliche Informationen zu Azure-Blob/Azure SQL Reader/Writer finden Sie in 
 **A:** Ja. Ausführliche Informationen dazu finden Sie im Abschnitt **Lesen von Daten aus mehreren Dateien im Azure-Blob mithilfe eines Reader-Moduls** .
 
 ## <a name="azure-machine-learning-studio-classic-batch-scoring-activity"></a>Batchbewertungsaktivität von Azure Machine Learning Studio (klassisch)
-Wenn Sie derzeit die Aktivität **AzureMLBatchScoring** für die Integration in Azure Machine Learning Studio (klassisch) verwenden, empfiehlt es sich, die neueste **AzureMLBatchExecution** -Aktivität zu verwenden.
+Wenn Sie derzeit die Aktivität **AzureMLBatchScoring** für die Integration in Azure Machine Learning Studio (klassisch) verwenden, empfiehlt es sich, die neueste **AzureMLBatchExecution**-Aktivität zu verwenden.
 
 Die AzureMLBatchExecution-Aktivität wird in den Azure SDK- und Azure PowerShell-Versionen von August 2015 eingeführt.
 

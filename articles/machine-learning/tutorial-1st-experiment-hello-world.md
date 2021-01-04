@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 20173c4ba02f53a526167a5a8e22bd0cedc85594
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 971bac8a0b0951d4e07e139aea6c465a9159b8db
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93393217"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96570959"
 ---
 # <a name="tutorial-run-a-hello-world-python-script-part-2-of-4"></a>Tutorial: Ausführen eines Python-Skripts „Hello World!“ (Teil 2 von 4)
 
@@ -61,7 +61,8 @@ tutorial
 └──02-create-compute.py
 ```
 
-### <a name="test-your-script-locally"></a>Lokales Testen des Skripts
+
+### <a name="test-your-script-locally"></a><a name="test"></a>Lokales Testen des Skripts
 
 Sie können Ihren Code lokal ausführen, indem Sie Ihre bevorzugte IDE oder ein Terminal verwenden. Das lokale Ausführen von Code hat den Vorteil, dass Sie Code interaktiv debuggen.
 
@@ -70,7 +71,10 @@ cd <path/to/tutorial>
 python ./src/hello.py
 ```
 
-## <a name="create-a-control-script"></a>Erstellen eines Steuerungsskripts
+> [!div class="nextstepaction"]
+> [Ich habe das Skript lokal ausgeführt.](?success=run-local#control-script) [Es ist ein Problem aufgetreten.](https://www.research.net/r/7C2NTH7?issue=run-local)
+
+## <a name="create-a-control-script"></a><a name="control-script"></a> Erstellen eines Steuerungsskripts
 
 Mithilfe eines *Steuerungsskripts* können Sie ihr `hello.py`-Skript in der Cloud ausführen. Sie verwenden das Steuerungsskript, um zu steuern, wie und wo Ihr Machine Learning-Code ausgeführt wird.  
 
@@ -89,6 +93,8 @@ run = experiment.submit(config)
 aml_url = run.get_portal_url()
 print(aml_url)
 ```
+
+
 
 ### <a name="understand-the-code"></a>Grundlegendes zum Code
 
@@ -135,7 +141,10 @@ Eine kurze Beschreibung zur Funktionsweise des Steuerungsskripts:
    :::column-end:::
 :::row-end:::
 
-## <a name="submit-and-run-your-code-in-the-cloud"></a>Übermitteln und Ausführen Ihres Codes in der Cloud
+> [!div class="nextstepaction"]
+> [Ich habe das Steuerungsskript erstellt.](?success=create-control-script#submit) [Es ist ein Problem aufgetreten.](https://www.research.net/r/7C2NTH7?issue=create-control-script)
+
+## <a name="submit-and-run-your-code-in-the-cloud"></a><a name="submit"></a> Übermitteln und Ausführen Ihres Codes in der Cloud
 
 Führen Sie Ihr Steuerungsskript aus, das seinerseits `hello.py` auf dem Computecluster ausführt, den Sie im [Setup-Tutorial](tutorial-1st-experiment-sdk-setup-local.md) erstellt haben.
 
@@ -154,7 +163,10 @@ python 03-run-hello.py
 > [!TIP]
 > Wenn Sie beim Ausführen dieses Codes den Fehler erhalten, dass Sie keinen Zugriff auf das Abonnement haben, finden Sie Informationen zu Authentifizierungsoptionen unter [Herstellen einer Verbindung mit einem Arbeitsbereich](how-to-manage-workspace.md?tab=python#connect-multi-tenant).
 
-## <a name="monitor-your-code-in-the-cloud-by-using-the-studio"></a>Überwachen Ihres Codes in der Cloud mithilfe von Studio
+> [!div class="nextstepaction"]
+> [Ich habe Code in der Cloud übermittelt.](?success=submit-to-cloud#monitor) [Es ist ein Problem aufgetreten.](https://www.research.net/r/7C2NTH7?issue=submit-to-cloud)
+
+## <a name="monitor-your-code-in-the-cloud-by-using-the-studio"></a><a name="monitor"></a>Überwachen Ihres Codes in der Cloud mithilfe von Studio
 
 Die Ausgabe enthält einen Link zu Studio, der etwa wie folgt aussieht: `https://ml.azure.com/experiments/hello-world/runs/<run-id>?wsid=/subscriptions/<subscription-id>/resourcegroups/<resource-group>/workspaces/<workspace-name>`.
 
@@ -185,6 +197,9 @@ Folgen Sie dem Link, und navigieren Sie zur Registerkarte **Ausgaben und Protoko
 In Zeile 8 sehen Sie die Ausgabe „Hallo Welt!“ .
 
 Die Datei `70_driver_log.txt` enthält die Standardausgabe einer Ausführung. Diese Datei kann nützlich sein, wenn Sie Remoteausführungen in der Cloud debuggen.
+
+> [!div class="nextstepaction"]
+> [Ich habe das Protokoll in Studio angezeigt.](?success=monitor-in-studio#next-steps) [Es ist ein Problem aufgetreten.](https://www.research.net/r/7C2NTH7?issue=monitor-in-studio)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

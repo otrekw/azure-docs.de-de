@@ -11,12 +11,12 @@ ms.date: 09/17/2020
 ms.author: gopalv
 ms.reviewer: larryfr
 ms.custom: deploy
-ms.openlocfilehash: 2225ef42d8862935e5cd682a3c11a7ce687babab
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 5b05891500ae5fd66e5ec2381066ccd1d26aa7ec
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325567"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94578058"
 ---
 # <a name="advanced-entry-script-authoring"></a>Erweiterte Eingabeskripterstellung
 
@@ -28,7 +28,10 @@ Dieser Artikel setzt voraus, dass Sie bereits über ein trainiertes Machine Lear
 
 ## <a name="automatically-generate-a-swagger-schema"></a>Automatisches Generieren eines Swagger-Schemas
 
-Um automatisch ein Schema für Ihren Webdienst zu generieren, stellen Sie ein Beispiel der Eingabe und/oder Ausgabe im Konstruktor für eines der definierten Typobjekte bereit. Der Typ und das Beispiel werden verwendet, um das Schema automatisch zu erstellen. Azure Machine Learning erstellt dann während der Bereitstellung eine [OpenAPI](https://swagger.io/docs/specification/about/)-Spezifikation (Swagger) für den Webdienst.
+Um automatisch ein Schema für Ihren Webdienst zu generieren, stellen Sie ein Beispiel der Eingabe und/oder Ausgabe im Konstruktor für eines der definierten Typobjekte bereit. Der Typ und das Beispiel werden verwendet, um das Schema automatisch zu erstellen. Azure Machine Learning erstellt dann während der Bereitstellung eine [OpenAPI](https://swagger.io/docs/specification/about/)-Spezifikation (Swagger) für den Webdienst. 
+
+> [!WARNING]
+> Sie dürfen keine vertraulichen oder privaten Daten für die Beispielein- oder -ausgabe verwenden. Die Beispieldaten werden auf der Swagger-Seite für von AML gehostete Rückschlüsse verfügbar gemacht. 
 
 Diese Typen werden derzeit unterstützt:
 

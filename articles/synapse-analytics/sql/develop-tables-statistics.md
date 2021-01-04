@@ -11,16 +11,16 @@ ms.date: 04/19/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: cf85b0ea658ae6459644dd710630a30f78ad99aa
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 52e3ea3e07a81495f64f70f72686154a02a654af
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93339392"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451792"
 ---
 # <a name="statistics-in-synapse-sql"></a>Statistiken in Synapse SQL
 
-In diesem Artikel finden Sie Empfehlungen und Beispiele für die Erstellung und Aktualisierung von Abfrageoptimierungsstatistiken mithilfe folgender Synapse SQL-Ressourcen: dedizierter SQL-Pool und serverloser SQL-Pool (Vorschauversion).
+In diesem Artikel finden Sie Empfehlungen und Beispiele für die Erstellung und Aktualisierung von Abfrageoptimierungsstatistiken mithilfe folgender Synapse SQL-Ressourcen: dedizierter SQL-Pool und serverloser SQL-Pool.
 
 ## <a name="statistics-in-dedicated-sql-pool"></a>Statistiken im dedizierten SQL-Pool
 
@@ -74,7 +74,7 @@ Um messbare Leistungseinbußen zu verhindern, sollten Sie zuerst durch Ausführe
 > [!NOTE]
 > Die Erstellung von Statistiken wird in [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) in einem anderen Benutzerkontext protokolliert.
 
-Wenn automatische Statistiken erstellt werden, sehen Sie wie folgt aus: _WA_Sys_ <8 digit column id in Hex>_<8 digit table id in Hex>. Sie können bereits erstellte Statistiken anzeigen, indem Sie den Befehl [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) ausführen:
+Wenn automatische Statistiken erstellt werden, sehen Sie wie folgt aus: _WA_Sys_<8 digit column id in Hex>_<8 digit table id in Hex>. Sie können bereits erstellte Statistiken anzeigen, indem Sie den Befehl [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) ausführen:
 
 ```sql
 DBCC SHOW_STATISTICS (<table_name>, <target>)
@@ -101,7 +101,7 @@ Im Folgenden finden Sie Empfehlungen für Updates für Statistiken:
 
 Eine der ersten Fragen bei der Problembehandlung für eine Abfrage sollte lauten: **„Sind die Statistiken auf dem aktuellen Stand?“**
 
-Diese Frage kann nicht anhand des Alters der Daten beantwortet werden. Ein Statistikobjekt auf dem aktuellen Stand ist ggf. alt, falls sich die zugrunde liegenden Daten nicht wesentlich geändert haben. Wenn sich die Anzahl von Zeilen deutlich geändert hat oder eine wesentliche Änderung bei der Verteilung der Werte für eine Spalte aufgetreten ist, *ist der Zeitpunkt gekommen* , die Statistiken zu aktualisieren.
+Diese Frage kann nicht anhand des Alters der Daten beantwortet werden. Ein Statistikobjekt auf dem aktuellen Stand ist ggf. alt, falls sich die zugrunde liegenden Daten nicht wesentlich geändert haben. Wenn sich die Anzahl von Zeilen deutlich geändert hat oder eine wesentliche Änderung bei der Verteilung der Werte für eine Spalte aufgetreten ist, *ist der Zeitpunkt gekommen*, die Statistiken zu aktualisieren.
 
 Es gibt keine dynamische Verwaltungssicht, mit der Sie feststellen können, ob sich die Daten innerhalb der Tabelle seit der letzten Aktualisierung der Statistik geändert haben. Das Alter Ihrer Statistiken kann Ihnen teilweise als Hinweis auf die Aktualität der Daten dienen. 
 
@@ -557,7 +557,7 @@ DBCC SHOW_STATISTICS (dbo.table1, stats_col1)
 - Benutzerdefinierter Fehler 2767 wird nicht unterstützt.
 
 
-## <a name="statistics-in-serverless-sql-pool-preview"></a>Statistiken im serverlosen SQL-Pool (Vorschauversion)
+## <a name="statistics-in-serverless-sql-pool"></a>Statistiken im serverlosen SQL-Pool
 
 Statistiken werden für ein bestimmtes Dataset (Speicherpfad) pro bestimmter Spalte erstellt.
 
@@ -566,7 +566,7 @@ Statistiken werden für ein bestimmtes Dataset (Speicherpfad) pro bestimmter Spa
 
 ### <a name="why-use-statistics"></a>Gründe für die Verwendung von Statistiken
 
-Je mehr Informationen zu Ihren Daten der serverlose SQL-Pool (Vorschauversion) hat, desto schneller kann er Abfragen dafür ausführen. Das Erfassen von Statistiken über Ihre Daten ist eine der wichtigsten Maßnahmen, die Sie zur Optimierung von Abfragen ergreifen können. 
+Je mehr Informationen zu Ihren Daten der serverlose SQL-Pool hat, desto schneller kann er Abfragen dafür ausführen. Das Erfassen von Statistiken über Ihre Daten ist eine der wichtigsten Maßnahmen, die Sie zur Optimierung von Abfragen ergreifen können. 
 
 Der Abfrageoptimierer im serverlosen SQL-Pool arbeitet kostenorientiert. Die Kosten der verschiedenen Abfragepläne werden verglichen, und dann wird der Plan mit den geringsten Kosten gewählt. In den meisten Fällen wird der Plan gewählt, der am schnellsten ausgeführt wird. 
 
@@ -604,7 +604,7 @@ Manuelle Statistiken werden nie als veraltet deklariert.
 
 Eine der ersten Fragen bei der Problembehandlung für eine Abfrage sollte lauten: **„Sind die Statistiken auf dem aktuellen Stand?“**
 
-Wenn sich die Anzahl von Zeilen deutlich geändert hat oder es eine wesentliche Änderung bei der Verteilung der Werte für eine Spalte gibt, *ist der Zeitpunkt gekommen* , die Statistiken zu aktualisieren.
+Wenn sich die Anzahl von Zeilen deutlich geändert hat oder es eine wesentliche Änderung bei der Verteilung der Werte für eine Spalte gibt, *ist der Zeitpunkt gekommen*, die Statistiken zu aktualisieren.
 
 > [!NOTE]
 > Immer wenn sich die Verteilung der Werte einer Spalte wesentlich ändert, sollten Sie die Statistiken – unabhängig vom Zeitpunkt des letzten Updates – aktualisieren.
@@ -812,6 +812,74 @@ Und erstellen Sie eine Statistik:
 CREATE STATISTICS sState
     on census_external_table (STATENAME)
     WITH FULLSCAN, NORECOMPUTE
+```
+
+### <a name="statistics-metadata"></a>Statistikmetadaten
+
+Es gibt mehrere Systemsichten und -funktionen, die Sie zum Suchen nach Informationen zu Statistiken verwenden können. Beispielsweise können Sie sehen, ob ein Statistikobjekt veraltet ist, indem Sie die STATS_DATE()-Funktion verwenden. Mit der Funktion STATS_DATE() können Sie prüfen, wann Statistiken zuletzt erstellt oder aktualisiert wurden.
+
+> [!NOTE]
+> Statistikmetadaten sind nur für Spalten externer Tabellen verfügbar. Statistikmetadaten sind nicht für OPENROWSET-Spalten verfügbar.
+
+#### <a name="catalog-views-for-statistics"></a>Katalogsichten für Statistiken
+
+Diese Systemsichten enthalten Informationen zu Statistiken:
+
+| Katalogsicht                                                 | BESCHREIBUNG                                                  |
+| :----------------------------------------------------------- | :----------------------------------------------------------- |
+| [sys.columns](/sql/relational-databases/system-catalog-views/sys-columns-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | Eine Zeile für jede Spalte.                                     |
+| [sys.objects](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | Eine Zeile für jedes Objekt in der Datenbank.                     |
+| [sys.schemas](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | Eine Zeile für jedes Schema in der Datenbank.                     |
+| [sys.stats](/sql/relational-databases/system-catalog-views/sys-stats-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | Eine Zeile für jedes Statistikobjekt.                          |
+| [sys.stats_columns](/sql/relational-databases/system-catalog-views/sys-stats-columns-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | Eine Zeile für jede Spalte im Statistikobjekt. Eine Verknüpfung zurück zu sys.columns. |
+| [sys.tables](/sql/relational-databases/system-catalog-views/sys-tables-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | Eine Zeile für jede Tabelle (enthält externe Tabellen).           |
+| [sys.table_types](/sql/relational-databases/system-catalog-views/sys-table-types-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | Eine Zeile für jeden Datentyp.                                  |
+
+#### <a name="system-functions-for-statistics"></a>Systemfunktionen für Statistiken
+
+Diese Systemfunktionen sind nützlich für die Arbeit mit Statistiken:
+
+| Systemfunktion                                              | BESCHREIBUNG                                  |
+| :----------------------------------------------------------- | :------------------------------------------- |
+| [STATS_DATE](/sql/t-sql/functions/stats-date-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | Datum, an dem das Statistikobjekt zuletzt aktualisiert wurde. |
+
+#### <a name="combine-statistics-columns-and-functions-into-one-view"></a>Kombinieren von Statistikspalten und -funktionen zu einer Sicht
+
+In dieser Sicht werden Spalten, die sich auf Statistiken beziehen, und Ergebnisse aus der STATS_DATE()-Funktion zusammengefasst.
+
+```sql
+CREATE VIEW dbo.vstats_columns
+AS
+SELECT
+        sm.[name]                           AS [schema_name]
+,       tb.[name]                           AS [table_name]
+,       st.[name]                           AS [stats_name]
+,       st.[filter_definition]              AS [stats_filter_definition]
+,       st.[has_filter]                     AS [stats_is_filtered]
+,       STATS_DATE(st.[object_id],st.[stats_id])
+                                            AS [stats_last_updated_date]
+,       co.[name]                           AS [stats_column_name]
+,       ty.[name]                           AS [column_type]
+,       co.[max_length]                     AS [column_max_length]
+,       co.[precision]                      AS [column_precision]
+,       co.[scale]                          AS [column_scale]
+,       co.[is_nullable]                    AS [column_is_nullable]
+,       co.[collation_name]                 AS [column_collation_name]
+,       QUOTENAME(sm.[name])+'.'+QUOTENAME(tb.[name])
+                                            AS two_part_name
+,       QUOTENAME(DB_NAME())+'.'+QUOTENAME(sm.[name])+'.'+QUOTENAME(tb.[name])
+                                            AS three_part_name
+FROM    sys.objects                         AS ob
+JOIN    sys.stats           AS st ON    ob.[object_id]      = st.[object_id]
+JOIN    sys.stats_columns   AS sc ON    st.[stats_id]       = sc.[stats_id]
+                            AND         st.[object_id]      = sc.[object_id]
+JOIN    sys.columns         AS co ON    sc.[column_id]      = co.[column_id]
+                            AND         sc.[object_id]      = co.[object_id]
+JOIN    sys.types           AS ty ON    co.[user_type_id]   = ty.[user_type_id]
+JOIN    sys.tables          AS tb ON    co.[object_id]      = tb.[object_id]
+JOIN    sys.schemas         AS sm ON    tb.[schema_id]      = sm.[schema_id]
+WHERE   st.[user_created] = 1
+;
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

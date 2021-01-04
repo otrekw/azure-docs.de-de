@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/29/2020
 ms.openlocfilehash: 22ce91a81964ed52830fc19dbbbd52e7f170b0d4
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92535398"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022767"
 ---
 # <a name="scale-azure-hdinsight-clusters"></a>Skalieren von Azure HDInsight-Clustern
 
@@ -82,7 +82,7 @@ Auswirkungen der Änderung der Anzahl von Datenknoten variieren für die von HDI
 
     1. Öffnen Sie `https://CLUSTERNAME.azurehdinsight.net/stormui` im Webbrowser, wobei `CLUSTERNAME` der Name Ihres Storm-Clusters ist. Geben Sie bei entsprechender Aufforderung den Namen und das Kennwort des HDInsight-Clusteradministrators ein, die Sie beim Erstellen des Clusters festgelegt haben.
 
-    1. Wählen Sie die Topologie aus, die Sie erneut ausgleichen möchten, und klicken Sie dann auf die Schaltfläche **Neu ausgleichen** . Geben Sie die Verzögerung ein, bevor der Neuausgleich abgeschlossen ist.
+    1. Wählen Sie die Topologie aus, die Sie erneut ausgleichen möchten, und klicken Sie dann auf die Schaltfläche **Neu ausgleichen**. Geben Sie die Verzögerung ein, bevor der Neuausgleich abgeschlossen ist.
 
         ![Ausgleichen der HDInsight Storm-Skalierung](./media/hdinsight-scaling-best-practices/hdinsight-portal-scale-cluster-storm-rebalance.png)
 
@@ -128,9 +128,9 @@ Um zu vermeiden, dass bei ausgeführten Aufträgen bei einem Vorgang zum zentral
 Um eine Liste der ausstehenden und ausgeführten Aufträge anzuzeigen, können Sie mit folgenden Schritten die YARN **Resource Manager-Benutzeroberfläche** verwenden:
 
 1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) Ihren Cluster aus.  Der Cluster wird auf einer neuen Portalseite geöffnet.
-2. Navigieren Sie in der Hauptansicht zu **Clusterdashboards** > **Ambari-Startseite** . Geben Sie Ihre Clusteranmeldeinformationen ein.
+2. Navigieren Sie in der Hauptansicht zu **Clusterdashboards** > **Ambari-Startseite**. Geben Sie Ihre Clusteranmeldeinformationen ein.
 3. Wählen Sie auf der Benutzeroberfläche von Ambari in der Liste mit den Diensten im linken Menü **YARN** aus.  
-4. Wählen Sie auf der Seite „YARN“ die Option **Quicklinks** aus. Zeigen Sie auf den aktiven Hauptknoten, und klicken Sie auf **Resource Manager-Benutzeroberfläche** .
+4. Wählen Sie auf der Seite „YARN“ die Option **Quicklinks** aus. Zeigen Sie auf den aktiven Hauptknoten, und klicken Sie auf **Resource Manager-Benutzeroberfläche**.
 
     ![Quicklinks > Resource Manager-Benutzeroberfläche in Apache Ambari](./media/hdinsight-scaling-best-practices/resource-manager-ui1.png)
 

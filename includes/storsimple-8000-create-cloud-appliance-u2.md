@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 1522bb133c7d8f877a334e47bf7929c533ea3465
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 8b827a80059cecadd7b76263f13dd4a0d141fc7a
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93376017"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95562204"
 ---
 #### <a name="to-create-a-cloud-appliance"></a>So erstellen Sie ein Cloudgerät
 
@@ -33,8 +33,7 @@ ms.locfileid: "93376017"
    7. Aktivieren Sie das Kontrollkästchen, um anzugeben, dass Sie Folgendes verstanden haben: Die auf dem Cloudgerät gespeicherten Daten werden in einem Microsoft-Datencenter gehostet.
        * Wenn Sie lediglich ein physisches Gerät verwenden, wird der Verschlüsselungsschlüssel auf Ihrem Gerät beibehalten. Daher kann Microsoft dieses nicht entschlüsseln.
 
-       * Wenn Sie ein Cloudgerät verwenden, werden die Ver- und Entschlüsselungsschlüssel in Microsoft Azure gespeichert. Weitere Informationen finden Sie unter den [Sicherheitsüberlegungen bei der Verwendung eines Cloudgeräts](../articles/storsimple/storsimple-security.md).
+       * Wenn Sie ein Cloudgerät verwenden, werden die Ver- und Entschlüsselungsschlüssel in Microsoft Azure gespeichert. Weitere Informationen finden Sie unter den [Sicherheitsüberlegungen bei der Verwendung eines Cloudgeräts](../articles/storsimple/storsimple-8000-security.md).
    8. Klicken Sie auf **Erstellen**, um das Cloudgerät bereitzustellen. Die Bereitstellung des Geräts kann etwa 30 Minuten dauern. Sie erhalten eine Benachrichtigung, nachdem das Cloudgerät erfolgreich erstellt wurde. Navigieren Sie zum Blatt „Geräte“. Die Liste mit den Geräten wird aktualisiert, um das Cloudgerät anzuzeigen. Der Status des Geräts lautet **Zur Einrichtung bereit**.
       
       ![StorSimple Cloud Appliance – Zur Einrichtung bereit](./media/storsimple-8000-create-cloud-appliance-u2/sca-create3.png)
-

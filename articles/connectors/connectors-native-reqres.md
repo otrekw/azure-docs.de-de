@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewers: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 08/27/2020
+ms.date: 11/19/2020
 tags: connectors
-ms.openlocfilehash: c0e8743d78c8eeafb5bdeb6ade783d5e75991f91
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.openlocfilehash: 4997853fea97d14491bd9e9101f79f324807a6a1
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94330987"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920820"
 ---
 # <a name="receive-and-respond-to-inbound-https-requests-in-azure-logic-apps"></a>Empfangen und Beantworten eingehender HTTPS-Anforderungen in Azure Logic Apps
 
@@ -42,7 +42,7 @@ Weitere Informationen zu Sicherheit, Autorisierung und Verschlüsselung für ein
 
 Dieser integrierte Trigger erstellt einen manuell aufrufbaren Endpunkt, der *nur* eingehende Anforderungen über HTTPS verarbeiten kann. Wenn ein Aufrufer eine Anforderung an diesen Endpunkt sendet, wird der [Anforderungstrigger](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger) ausgelöst und führt die Logik-App aus. Weitere Informationen zum Aufrufen dieses Triggers finden Sie unter [Aufrufen, Auslösen oder Schachteln von Workflows mit HTTPS-Endpunkten in Azure Logic Apps](../logic-apps/logic-apps-http-endpoint.md).
 
-Ihre Logik-App hält eine eingehende Anforderung nur für [begrenzte Zeit](../logic-apps/logic-apps-limits-and-config.md#request-limits) geöffnet. Unter der Annahme, dass Ihre Logik-App eine [Antwortaktion](#add-response) enthält, gibt Ihre Logik-App einen `504 GATEWAY TIMEOUT`-Status an den Aufrufer zurück, wenn Ihre Logik-App nach Ablauf dieses Zeitraums keine Antwort an den Aufrufer sendet. Wenn Ihre Logik-App keine Antwortaktion enthält, gibt sie sofort einen `202 ACCEPTED`-Status an den Aufrufer zurück.
+Ihre Logik-App hält eine eingehende Anforderung nur für [begrenzte Zeit](../logic-apps/logic-apps-limits-and-config.md#http-limits) geöffnet. Unter der Annahme, dass Ihre Logik-App eine [Antwortaktion](#add-response) enthält, gibt Ihre Logik-App einen `504 GATEWAY TIMEOUT`-Status an den Aufrufer zurück, wenn Ihre Logik-App nach Ablauf dieses Zeitraums keine Antwort an den Aufrufer sendet. Wenn Ihre Logik-App keine Antwortaktion enthält, gibt sie sofort einen `202 ACCEPTED`-Status an den Aufrufer zurück.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Erstellen einer leeren Logik-App
 
@@ -179,7 +179,7 @@ Ihre Logik-App hält eine eingehende Anforderung nur für [begrenzte Zeit](../lo
 
    Beispielsweise können Sie auf die Anforderung reagieren, indem Sie eine [Antwortaktion hinzufügen](#add-response), um damit eine benutzerdefinierte Antwort zurückzugeben. Dies wird weiter unten in diesem Thema beschrieben.
 
-   Ihre Logik-App hält die eingehende Anforderung nur für [begrenzte Zeit](../logic-apps/logic-apps-limits-and-config.md#request-limits) geöffnet. Falls der Logik-App-Workflow eine Antwortaktion enthält, gibt Ihre Logik-App ein `504 GATEWAY TIMEOUT` an den Aufrufer zurück, wenn die Logik-App nach diesem Zeitraum nicht geantwortet hat. Falls Ihre Logik-App keine Antwortaktion enthält, gibt Ihre Logik-App sofort eine `202 ACCEPTED`-Antwort an den Aufrufer zurück.
+   Ihre Logik-App hält die eingehende Anforderung nur für [begrenzte Zeit](../logic-apps/logic-apps-limits-and-config.md#http-limits) geöffnet. Falls der Logik-App-Workflow eine Antwortaktion enthält, gibt Ihre Logik-App ein `504 GATEWAY TIMEOUT` an den Aufrufer zurück, wenn die Logik-App nach diesem Zeitraum nicht geantwortet hat. Falls Ihre Logik-App keine Antwortaktion enthält, gibt Ihre Logik-App sofort eine `202 ACCEPTED`-Antwort an den Aufrufer zurück.
 
 1. Wenn Sie fertig sind, speichern Sie Ihre Logik-App. Wählen Sie auf der Symbolleiste des Designers **Speichern** aus.
 
@@ -190,9 +190,9 @@ Ihre Logik-App hält eine eingehende Anforderung nur für [begrenzte Zeit](../lo
    > [!NOTE]
    > Wenn Sie das Hash- oder Nummernzeichen ( **#** ) im URI verwenden möchten, wenn Sie einen Aufruf an den Anforderungstrigger senden, nutzen Sie stattdessen diese codierte Version: `%25%23`.
 
-1. Zum Starten Ihrer Logik-App senden Sie eine HTTP POST-Methode an die generierte URL.
+1. Senden Sie zum Testen Ihrer Logik-App eine HTTP-Anforderung an die generierte URL.
 
-   Beispielsweise können Sie ein Tool wie [Postman](https://www.getpostman.com/) verwenden, um den HTTP POST zu senden. Weitere Informationen zur zugrunde liegenden JSON-Definition des Triggers und zum Aufzurufen dieses Triggers finden Sie in den Themen [Anforderungstriggertyp](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger) und unter [Aufrufen, Auslösen oder Schachteln von Workflows mit HTTP-Endpunkten in Azure Logic Apps](../logic-apps/logic-apps-http-endpoint.md).
+   Zum Senden der HTTP-Anforderung kann beispielsweise ein Tool wie [Postman](https://www.getpostman.com/) verwendet werden. Weitere Informationen zur zugrunde liegenden JSON-Definition des Triggers und zum Aufzurufen dieses Triggers finden Sie in den Themen [Anforderungstriggertyp](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger) und unter [Aufrufen, Auslösen oder Schachteln von Workflows mit HTTP-Endpunkten in Azure Logic Apps](../logic-apps/logic-apps-http-endpoint.md).
 
 Weitere Informationen zu Sicherheit, Autorisierung und Verschlüsselung für eingehende Aufrufe Ihrer Logik-App, etwa über [Transport Layer Security (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security) (früher bekannt als Secure Sockets Layer [SSL]) oder [Azure Active Directory Open Authentication (Azure AD OAuth)](../active-directory/develop/index.yml), finden Sie unter [Sicherer Zugriff und Daten: Zugriff für eingehende Aufrufe anforderungsbasierter Trigger](../logic-apps/logic-apps-securing-a-logic-app.md#secure-inbound-requests). In diesem Artikel erfahren Sie auch, wie Sie Ihre Logik-App mit Azure API Management verfügbar machen oder IP-Adressen aus eingehenden Aufrufen einschränken.
 

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/20/2019
 ms.author: victorh
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 5d0a130830c8b03fd1f47086b9a997f6fc3df9a4
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 89ba84be61469ff07eff55bb9cd114fe124b3ec2
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93396956"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566604"
 ---
 # <a name="manage-web-traffic-with-an-application-gateway-using-the-azure-cli"></a>Verwalten von Webdatenverkehr mit einem Anwendungsgateway per Azure CLI
 
@@ -27,11 +27,11 @@ In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
 Sie können für dieses Verfahren auch [Azure PowerShell](tutorial-manage-web-traffic-powershell.md) verwenden.
 
-Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen.
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-Wenn Sie die CLI lokal installieren und verwenden möchten, muss für diese Schnellstartanleitung die Azure CLI in Version 2.0.4 oder höher ausgeführt werden. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI](/cli/azure/install-azure-cli).
+ - Für dieses Tutorial ist mindestens Version 2.0.4 der Azure CLI erforderlich. Bei Verwendung von Azure Cloud Shell ist die aktuelle Version bereits installiert.
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
@@ -69,7 +69,7 @@ az network public-ip create \
   --sku Standard
 ```
 
-## <a name="create-an-application-gateway"></a>Erstellen eines Anwendungsgateways
+## <a name="create-an-application-gateway"></a>Erstellen einer Application Gateway-Instanz
 
 Erstellen Sie mit [az network application-gateway create](/cli/azure/network/application-gateway) das Anwendungsgateway namens *myAppGateway*. Wenn Sie über die Azure-Befehlszeilenschnittstelle ein Anwendungsgateway erstellen, geben Sie Konfigurationsinformationen wie Kapazität, SKU und HTTP-Einstellungen an. Das Anwendungsgateway wird dem Subnetz *myAGSubnet* und der IP-Adresse *myPublicIPAddress* zugewiesen, das bzw. die Sie zuvor erstellt haben. 
 
@@ -91,11 +91,11 @@ az network application-gateway create \
 
  Es kann einige Minuten dauern, bis das Anwendungsgateway erstellt wird. Nachdem das Anwendungsgateway erstellt wurde, werden die folgenden neuen Funktionen angezeigt:
 
-- *appGatewayBackendPool* : Ein Anwendungsgateway muss über mindestens einen Back-End-Adresspool verfügen.
-- *appGatewayBackendHttpSettings* : Gibt an, dass zur Kommunikation Port 80 und ein HTTP-Protokoll verwendet werden.
-- *appGatewayHttpListener* : Der Standardlistener, der *appGatewayBackendPool* zugeordnet ist.
-- *appGatewayFrontendIP* : Hiermit wird *myAGPublicIPAddress* zu *appGatewayHttpListener* zugewiesen.
-- *rule1* :Die Standardroutingregel, die *appGatewayHttpListener* zugeordnet ist.
+- *appGatewayBackendPool*: Ein Anwendungsgateway muss über mindestens einen Back-End-Adresspool verfügen.
+- *appGatewayBackendHttpSettings*: Gibt an, dass zur Kommunikation Port 80 und ein HTTP-Protokoll verwendet werden.
+- *appGatewayHttpListener*: Der Standardlistener, der *appGatewayBackendPool* zugeordnet ist.
+- *appGatewayFrontendIP*: Hiermit wird *myAGPublicIPAddress* zu *appGatewayHttpListener* zugewiesen.
+- *rule1*:Die Standardroutingregel, die *appGatewayHttpListener* zugeordnet ist.
 
 ## <a name="create-a-virtual-machine-scale-set"></a>Erstellen einer VM-Skalierungsgruppe
 

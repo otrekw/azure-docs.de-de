@@ -13,17 +13,17 @@ ms.author: mireks
 ms.reviewer: vanto
 ms.date: 09/28/2020
 tags: azure-synapse
-ms.openlocfilehash: 3b81572266f6ee5bd90662a98988d41479f399cc
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 9afad44bcf67478a81e75c17d0ff8ffc6d8c65aa
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675010"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94841128"
 ---
 # <a name="using-multi-factor-azure-active-directory-authentication"></a>Verwenden der mehrstufigen Azure Active Directory-Authentifizierung
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-Azure SQL-Datenbank, Azure SQL Managed Instance und Azure Synapse Analytics unterstützen Verbindungen mit [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) mithilfe der *universellen Azure Active Directory-Authentifizierung mit mehrstufiger Authentifizierung* . In diesem Artikel werden die Unterschiede zwischen den verschiedenen Authentifizierungsoptionen sowie die Einschränkungen bei Verwendung der universellen Authentifizierung in Azure Active Directory (Azure AD) für Azure SQL-Datenbank erörtert.
+Azure SQL-Datenbank, Azure SQL Managed Instance und Azure Synapse Analytics unterstützen Verbindungen mit [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) mithilfe der *universellen Azure Active Directory-Authentifizierung mit mehrstufiger Authentifizierung*. In diesem Artikel werden die Unterschiede zwischen den verschiedenen Authentifizierungsoptionen sowie die Einschränkungen bei Verwendung der universellen Authentifizierung in Azure Active Directory (Azure AD) für Azure SQL-Datenbank erörtert.
 
 **Herunterladen der aktuellen Version von SSMS:** Laden Sie die neueste Version von SSMS unter [Herunterladen von SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) auf den Clientcomputer herunter. 
 
@@ -41,13 +41,13 @@ Es gibt zwei nicht interaktive Authentifizierungsmodelle für Azure AD, die in 
 - `Azure Active Directory - Password`
 - `Azure Active Directory - Integrated`
 
-Die folgende interaktive Methode unterstützt ebenfalls Azure Multi-Factor Authentication (MFA): 
+Die folgende interaktive Methode unterstützt auch Azure AD Multi-Factor Authentication (MFA): 
 
 - `Azure Active Directory - Universal with MFA`
 
-Azure MFA bietet Schutz für den Zugriff auf Daten sowie Anwendungen und erfüllt gleichzeitig Benutzeranforderungen nach einem einfachen Anmeldevorgang. Diese Lösung ermöglicht eine sichere Authentifizierung über eine Reihe einfacher Überprüfungsoptionen: Telefonanruf, SMS, Smartcards mit PIN oder Benachrichtigung in einer mobilen App. Benutzer können ihre bevorzugte Methode wählen. Bei der interaktiven MFA mit Azure AD kann ein Popupdialogfeld zur Überprüfung geöffnet werden.
+Azure AD MFA bietet Schutz für den Zugriff auf Daten sowie Anwendungen und erfüllt gleichzeitig Benutzeranforderungen nach einem einfachen Anmeldevorgang. Diese Lösung ermöglicht eine sichere Authentifizierung über eine Reihe einfacher Überprüfungsoptionen: Telefonanruf, SMS, Smartcards mit PIN oder Benachrichtigung in einer mobilen App. Benutzer können ihre bevorzugte Methode wählen. Bei der interaktiven MFA mit Azure AD kann ein Popupdialogfeld zur Überprüfung geöffnet werden.
 
-Eine Beschreibung von Azure Multi-Factor Authentication finden Sie unter [Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md).
+Eine Beschreibung von Azure AD Multi-Factor Authentication finden Sie unter [Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md).
 Konfigurationsschritte finden Sie unter [Konfigurieren der Multi-Factor Authentication in Azure SQL-Datenbank für SQL Server Management Studio](authentication-mfa-ssms-configure.md).
 
 ### <a name="azure-ad-domain-name-or-tenant-id-parameter"></a>Name der Azure AD-Domäne oder Mandanten-ID-Parameter
@@ -58,7 +58,7 @@ Alle diese Gastbenutzer, die mithilfe der universellen Authentifizierung authent
 
 
 1. Stellen Sie in SSMS eine Verbindung her. Geben Sie den Servernamen ein, und wählen Sie die Authentifizierung **Azure Active Directory: universell mit MFA** aus. Fügen Sie den **Benutzernamen** hinzu, mit dem Sie sich anmelden möchten.
-1. Aktivieren Sie das Kontrollkästchen **Optionen** , und wechseln Sie zur Registerkarte **Verbindungseigenschaften** . Füllen Sie das Dialogfeld **Verbindung mit Datenbank herstellen** für Ihre Datenbank aus. Aktivieren Sie das Kontrollkästchen **AD-Domänenname oder Mandanten-ID** , und geben Sie die Authentifizierungsstelle an, z.B. den Domänennamen ( **contosotest.onmicrosoft.com** ) oder die GUID der Mandanten-ID. 
+1. Aktivieren Sie das Kontrollkästchen **Optionen**, und wechseln Sie zur Registerkarte **Verbindungseigenschaften**. Füllen Sie das Dialogfeld **Verbindung mit Datenbank herstellen** für Ihre Datenbank aus. Aktivieren Sie das Kontrollkästchen **AD-Domänenname oder Mandanten-ID**, und geben Sie die Authentifizierungsstelle an, z.B. den Domänennamen (**contosotest.onmicrosoft.com**) oder die GUID der Mandanten-ID. 
 
    ![Screenshot der Registerkarte „Verbindungseigenschaften“ mit hervorgehobenen Einstellungen für die Verbindung mit der Datenbank und dem AD-Domänennamen oder der Mandanten-ID](./media/authentication-mfa-ssms-overview/mfa-tenant-ssms.png)
 
@@ -69,7 +69,7 @@ Wenn Sie SSMS 18.x oder höher ausführen, wird der AD-Domänenname oder die Ma
 ### <a name="azure-ad-business-to-business-support"></a>Azure AD-Business-to-Business-Unterstützung
 
 > [!IMPORTANT]
-> Die Unterstützung für Gastbenutzer für das Herstellen einer Verbindung mit Azure SQL-Datenbank, SQL Managed Instance und Azure Synapse, ohne dass diese Mitglied einer Gruppe sein müssen, befindet sich derzeit in der **Public Preview** . Weitere Informationen finden Sie unter [Erstellen von Azure AD-Gastbenutzern und Festlegen als Azure AD-Administrator](authentication-aad-guest-users.md).
+> Die Unterstützung für Gastbenutzer für das Herstellen einer Verbindung mit Azure SQL-Datenbank, SQL Managed Instance und Azure Synapse, ohne dass diese Mitglied einer Gruppe sein müssen, befindet sich derzeit in der **Public Preview**. Weitere Informationen finden Sie unter [Erstellen von Azure AD-Gastbenutzern und Festlegen als Azure AD-Administrator](authentication-aad-guest-users.md).
 
 Azure AD-Benutzer, die für Azure AD B2B-Szenarien als Gastbenutzer unterstützt werden (siehe [Was ist Azure B2B Collaboration?](../../active-directory/external-identities/what-is-b2b.md)), können nur als Mitglieder einer Gruppe im zugehörigen Azure AD eine Verbindung mit SQL-Datenbank und Azure Synapse herstellen und müssen dann mit der Transact-SQL-Anweisung [CREATE USER](/sql/t-sql/statements/create-user-transact-sql) in einer bestimmten Datenbank manuell zugeordnet werden. Wenn beispielsweise `steve@gmail.com` zu Azure AD `contosotest` (mit der Azure AD-Domäne `contosotest.onmicrosoft.com`) eingeladen wird, muss eine Azure AD-Gruppe, z. B. `usergroup` in dem Azure AD erstellt werden, das `steve@gmail.com` als Mitglied enthält. Diese Gruppe muss dann von einem Azure AD-SQL-Administrator oder Azure AD-DBO durch Ausführen der Transact-SQL-Anweisung `MyDatabase` für eine bestimmte Datenbank (z. B. `CREATE USER [usergroup] FROM EXTERNAL PROVIDER`) erstellt werden. 
 

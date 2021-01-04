@@ -11,14 +11,14 @@ ms.topic: how-to
 ms.date: 09/01/2020
 ms.author: ajburnle
 ms.reviewer: jeffsta
-ms.custom: it-pro, seodec18, contperfq4
+ms.custom: it-pro, seodec18, contperf-fy20q4
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ed68211d034a133b923b6a2eec20ad6f1a0ffe2
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: c7a39340f44e2c6eeae5b5f1a8e687bc73b3b0fe
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92541025"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97028409"
 ---
 # <a name="associate-or-add-an-azure-subscription-to-your-azure-active-directory-tenant"></a>Zuordnen oder Hinzufügen eines Azure-Abonnements zu Ihrem Azure Active Directory-Mandanten
 
@@ -48,7 +48,7 @@ Bevor Sie Ihr Abonnement zuweisen oder hinzufügen können, müssen Sie die folg
   - Wenn Sie über Schlüsseltresore verfügen, kann darauf nicht mehr zugegriffen werden, und Sie müssen sie nach der Zuweisung korrigieren.
   - Wenn Sie über verwaltete Identitäten für Ressourcen wie Virtual Machines oder Logic Apps verfügen, müssen Sie diese nach der Zuordnung nochmal aktivieren oder erstellen.
   - Wenn Sie eine Azure Stack-Instanz konfiguriert haben, müssen Sie diese nach der Zuweisung erneut registrieren.
-  - Weitere Informationen finden Sie unter [Übertragen eines Azure-Abonnements in ein anderes Azure AD-Verzeichnis](../../role-based-access-control/transfer-subscription.md).
+  - Weitere Informationen finden Sie unter [Übertragen eines Azure-Abonnements in ein anderes Azure AD-Verzeichnis](../../role-based-access-control/transfer-subscription.md).
 
 - Melden Sie sich mit einem Konto an, das:
 
@@ -77,7 +77,7 @@ Führen Sie die folgenden Schritte aus, um Ihrem Azure AD-Verzeichnis ein vorhan
 
    ![Seite mit dem Verzeichnisumschalter mit Beispielinformationen](media/active-directory-how-subscriptions-associated-directory/directory-switcher.png)
 
-   Es kann mehrere Stunden dauern, bis alles ordnungsgemäß angezeigt wird. Wenn es zu lange dauert, überprüfen Sie den **globalen Abonnementfilter** . Stellen Sie sicher, dass das verschobene Abonnement nicht ausgeblendet ist. Möglicherweise müssen Sie sich beim Azure-Portal abmelden und wieder anmelden, damit das neue Verzeichnis angezeigt wird.
+   Es kann mehrere Stunden dauern, bis alles ordnungsgemäß angezeigt wird. Wenn es zu lange dauert, überprüfen Sie den **globalen Abonnementfilter**. Stellen Sie sicher, dass das verschobene Abonnement nicht ausgeblendet ist. Möglicherweise müssen Sie sich beim Azure-Portal abmelden und wieder anmelden, damit das neue Verzeichnis angezeigt wird.
 
 Das Ändern des Abonnementverzeichnisses erfolgt auf Dienstebene, sodass sich der Vorgang nicht auf die Abonnementabrechnung auswirkt. Um das ursprüngliche Verzeichnis zu löschen, müssen Sie die Abonnementabrechnung einem neuen Kontoadministrator übertragen. Weitere Informationen zum Übertragen der Abrechnung finden Sie unter [Übertragen des Besitzes eines Azure-Abonnements auf ein anderes Konto](../../cost-management-billing/manage/billing-subscription-transfer.md).
 
@@ -91,7 +91,7 @@ Nachdem Sie ein Abonnement einem anderen Verzeichnis zugeordnet haben, müssen S
 
 - Wenn Sie mit diesem Abonnement eine Azure Stack-Instanz registriert haben, müssen Sie diese nochmal registrieren. Weitere Informationen finden Sie unter [Registrieren von Azure Stack in Azure](/azure-stack/operator/azure-stack-registration).
 
-- Weitere Informationen finden Sie unter [Übertragen eines Azure-Abonnements in ein anderes Azure AD-Verzeichnis](../../role-based-access-control/transfer-subscription.md).
+- Weitere Informationen finden Sie unter [Übertragen eines Azure-Abonnements in ein anderes Azure AD-Verzeichnis](../../role-based-access-control/transfer-subscription.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

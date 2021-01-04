@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 07/09/2020
-ms.openlocfilehash: 2e4a09ba07a5fa5eb3a5af7aa88e092feb3e7efc
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 000f8a1457298901dcfc94bc5e0923e94ba35dc7
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487975"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96620901"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql--hyperscale-citus"></a>PostgreSQL-Erweiterungen in Azure Database for PostgreSQL – Hyperscale (Citus)
 
@@ -35,8 +35,8 @@ In den folgenden Tabellen werden die standardmäßigen PostgreSQL-Erweiterungen 
 > |---|---|
 > | [citext](https://www.postgresql.org/docs/current/static/citext.html) | Gibt einen Zeichenfolgentyp an, bei dem Groß-/Kleinschreibung beachtet werden muss. |
 > | [cube](https://www.postgresql.org/docs/current/static/cube.html) | Stellt einen Datentyp für mehrdimensionale Cubes bereit. |
-> | [hstore](https://www.postgresql.org/docs/current/static/hstore.html) | Gibt den Datentyp zum Speichern von Schlüssel-Wert-Paaren an. |
 > | [hll](https://github.com/citusdata/postgresql-hll) | Stellt eine HyperLogLog-Datenstruktur bereit. |
+> | [hstore](https://www.postgresql.org/docs/current/static/hstore.html) | Gibt den Datentyp zum Speichern von Schlüssel-Wert-Paaren an. |
 > | [isn](https://www.postgresql.org/docs/current/static/isn.html) | Stellt Datentypen für internationale Produktnummerierungsnormen bereit. |
 > | [lo](https://www.postgresql.org/docs/current/lo.html) | Large Object-Wartung. |
 > | [ltree](https://www.postgresql.org/docs/current/static/ltree.html) | Stellt einen Datentyp für hierarchische baumähnliche Strukturen bereit. |
@@ -65,9 +65,9 @@ In den folgenden Tabellen werden die standardmäßigen PostgreSQL-Erweiterungen 
 > | [intagg](https://www.postgresql.org/docs/current/intagg.html) | Integeraggregator und -enumerator (veraltet). |
 > | [intarray](https://www.postgresql.org/docs/current/static/intarray.html) | Stellt Funktionen und Operatoren bereit, um Arrays mit Ganzzahlen ohne Nullen zu bearbeiten |
 > | [moddatetime](https://www.postgresql.org/docs/current/contrib-spi.html#id-1.11.7.45.9) | Funktionen zur Verfolgung der letzten Änderungszeit. |
-> | [pgcrypto](https://www.postgresql.org/docs/current/static/pgcrypto.html) | Stellt kryptografische Funktionen bereit |
 > | [pg\_partman](https://pgxn.org/dist/pg_partman/doc/pg_partman.html) | Verwaltet partitionierte Tabellen nach Zeit oder ID |
 > | [pg\_trgm](https://www.postgresql.org/docs/current/static/pgtrgm.html) | Stellt Funktionen und Operatoren bereit, um die Ähnlichkeit von alphanumerischen Texten basierend auf übereinstimmenden Trigrammen zu ermitteln |
+> | [pgcrypto](https://www.postgresql.org/docs/current/static/pgcrypto.html) | Stellt kryptografische Funktionen bereit |
 > | [refint](https://www.postgresql.org/docs/current/contrib-spi.html#id-1.11.7.45.5) | Funktionen für die Implementierung referentieller Integrität (veraltet). |
 > | session\_analytics | Funktionen zum Abfragen von Hstore-Arrays. |
 > | [tablefunc](https://www.postgresql.org/docs/current/static/tablefunc.html) | Stellt Funktionen bereit, um ganze Tabellen einschließlich einer Kreuztabelle zu bearbeiten. |
@@ -81,7 +81,6 @@ In den folgenden Tabellen werden die standardmäßigen PostgreSQL-Erweiterungen 
 > | **Erweiterung** | **Beschreibung** |
 > |---|---|
 > | [citus](https://github.com/citusdata/citus) | Von Citus verteilte Datenbank. |
-> | shard\_rebalancer | Sicheres Ausgleichen von Daten in einer Servergruppe, wenn Knoten hinzugefügt oder entfernt werden. |
 
 ### <a name="index-types-extensions"></a>Indextypenerweiterungen
 
@@ -106,6 +105,7 @@ In den folgenden Tabellen werden die standardmäßigen PostgreSQL-Erweiterungen 
 > |---|---|
 > | [adminpack](https://www.postgresql.org/docs/current/adminpack.html) | Verwaltungsfunktionen für PostgreSQL. |
 > | [amcheck](https://www.postgresql.org/docs/current/amcheck.html) | Funktionen zum Überprüfen der Beziehungsintegrität. |
+> | [dblink](https://www.postgresql.org/docs/current/dblink.html) | Ein Modul, das Verbindungen mit anderen PostgreSQL-Datenbanken innerhalb einer Datenbanksitzung unterstützt Weitere Informationen zu dieser Erweiterung finden Sie im Abschnitt „dblink und postgres_fdw“. |
 > | [file\_fdw](https://www.postgresql.org/docs/current/file-fdw.html) | Wrapper für programmfremde Daten für den Flatfile-Zugriff. |
 > | [pageinspect](https://www.postgresql.org/docs/current/pageinspect.html) | Überprüfen Sie den Inhalt von Datenbankseiten auf niedriger Ebene. |
 > | [pg\_buffercache](https://www.postgresql.org/docs/current/static/pgbuffercache.html) | Bietet eine Möglichkeit, um die Vorgänge im freigegebenen Puffercache in Echtzeit mitzuverfolgen |
@@ -120,8 +120,6 @@ In den folgenden Tabellen werden die standardmäßigen PostgreSQL-Erweiterungen 
 > | [sslinfo](https://www.postgresql.org/docs/current/sslinfo.html) | Informationen zu TLS-/SSL-Zertifikaten |
 > | [tsm\_system\_rows](https://www.postgresql.org/docs/current/tsm-system-rows.html) | TABLESAMPLE-Methode, die die Anzahl von Zeilen als Grenzwert akzeptiert. |
 > | [tsm\_system\_time](https://www.postgresql.org/docs/current/tsm-system-time.html) | TABLESAMPLE-Methode, die die Zeit in Millisekunden als Grenzwert akzeptiert. |
-> | [hypopg](https://hypopg.readthedocs.io/en/latest/) | Stellt eine Möglichkeit zum Erstellen hypothetischer Indizes bereit, die weder CPU noch Speicherplatz benötigen. |
-> | [dblink](https://www.postgresql.org/docs/current/dblink.html) | Ein Modul, das Verbindungen mit anderen PostgreSQL-Datenbanken innerhalb einer Datenbanksitzung unterstützt Weitere Informationen zu dieser Erweiterung finden Sie im Abschnitt „dblink und postgres_fdw“. |
 > | [xml2](https://www.postgresql.org/docs/current/xml2.html) | XPath-Abfrage und XSLT. |
 
 

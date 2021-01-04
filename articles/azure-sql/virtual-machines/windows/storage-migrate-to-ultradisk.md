@@ -8,18 +8,19 @@ editor: ''
 tags: azure-service-management
 ms.assetid: ''
 ms.service: virtual-machines-sql
+ms.subservice: management
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 07/09/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 12ba0900f2499965f7843672183310dfecfbab2b
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 42d7760d25f6ab591c19889eb2159711d6de1b07
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93146670"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97356751"
 ---
 # <a name="migrate-log-disk-to-ultra-disk"></a>Migrieren eines Protokolldatenträgers zu einem Ultra-Datenträger
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -143,14 +144,14 @@ Die Datenbank wird daraufhin mit dem Protokoll am neuen Speicherort online gesch
 Verwenden Sie SSMS, um die vorhandenen Dateien an einen neuen Speicherort zu verschieben:
 
 1. Stellen Sie in SQL Server Management Studio (SSMS) eine Verbindung mit Ihrer Datenbank her. 
-1. Klicken Sie mit der rechten Maustaste auf die Datenbank, und wählen Sie **Eigenschaften**  > **Dateien** aus. 
+1. Klicken Sie mit der rechten Maustaste auf die Datenbank, und wählen Sie **Eigenschaften** > **Dateien** aus. 
 1. Notieren Sie sich den Pfad der vorhandenen Dateien. 
 1. Wählen Sie **OK** aus, um das Dialogfeld zu schließen. 
 1. Klicken Sie mit der rechten Maustaste auf die Datenbank, und wählen Sie **Aufgaben** > **Trennen** aus. 
 1. Befolgen Sie die Anweisungen des Assistenten, um die Datenbank zu trennen. 
 1. Verschieben Sie die Protokolldatei mithilfe des Datei-Explorers manuell an den neuen Speicherort.
 1. Fügen Sie die Datenbank in SQL Server Management Studio an:
-   1. Klicken Sie im **Objekt-Explorer** mit der rechten Maustaste auf **Datenbanken** , und wählen Sie **Datenbank anfügen** aus. 
+   1. Klicken Sie im **Objekt-Explorer** mit der rechten Maustaste auf **Datenbanken**, und wählen Sie **Datenbank anfügen** aus. 
    1. Fügen Sie im Dialogfeld die einzelnen Dateien (einschließlich der Protokolldatei) ihrem neuen Speicherort hinzu. 
    1. Wählen Sie **OK** aus, um die Datenbank anzufügen. 
 

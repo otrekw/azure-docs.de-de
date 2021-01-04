@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie einen benutzerdefinierten Container in Azure 
 ms.topic: article
 ms.date: 09/22/2020
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 9f71efbf7cc606efd598880e90ade3a549402245
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: a7582bbb866a63820abbd959e06628eda5d57e29
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92787056"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007635"
 ---
 # <a name="configure-a-custom-container-for-azure-app-service"></a>Konfigurieren eines benutzerdefinierten Containers für Azure App Service
 
@@ -139,7 +139,17 @@ Sie können das Verzeichnis *C:\home* im Dateisystem Ihrer App verwenden, damit 
 
 Wenn der beständige Speicher deaktiviert ist, bleiben Schreibvorgänge in das Verzeichnis `C:\home` nicht erhalten. [Docker-Hostprotokolle und -Containerprotokolle](#access-diagnostic-logs) werden in einem standardmäßigen permanenten freigegebenen Speicher gespeichert, der nicht an den Container angefügt ist. Wenn der beständige Speicher aktiviert ist, bleiben alle Schreibvorgänge in das Verzeichnis `C:\home` erhalten, alle Instanzen einer horizontal skalierten App können darauf zugreifen, und das Protokoll ist unter `C:\home\LogFiles` verfügbar.
 
-Standardmäßig ist der beständige Speicher *deaktiviert* , und die Einstellung wird in den Anwendungseinstellungen nicht angezeigt. Um ihn zu aktivieren, legen Sie die App-Einstellung `WEBSITES_ENABLE_APP_SERVICE_STORAGE` über die [Cloud Shell](https://shell.azure.com) fest. In Bash:
+::: zone-end
+
+::: zone pivot="container-linux"
+
+Sie können das Verzeichnis */home* im Dateisystem Ihrer App verwenden, damit Dateien auch nach einem Neustart erhalten bleiben und instanzübergreifend freigegeben werden können. Das `/home` wird in Ihrer App bereitgestellt, damit Ihre Container-App auf den beständigen Speicher zugreifen kann.
+
+Wenn der beständige Speicher deaktiviert ist, bleiben Schreibvorgänge in das Verzeichnis `/home` nicht über App-Neustarts oder mehrere Instanzen hinweg erhalten. Die einzige Ausnahme ist das Verzeichnis `/home/LogFiles`, das zum Speichern der Docker- und Containerprotokolle verwendet wird. Wenn der beständige Speicher aktiviert ist, bleiben alle Schreibvorgänge in das Verzeichnis `/home` erhalten und können von allen Instanzen einer horizontal skalierten App aufgerufen werden.
+
+::: zone-end
+
+Standardmäßig ist der beständige Speicher deaktiviert, und die Einstellung wird in den App-Einstellungen nicht verfügbar gemacht. Um ihn zu aktivieren, legen Sie die App-Einstellung `WEBSITES_ENABLE_APP_SERVICE_STORAGE` über die [Cloud Shell](https://shell.azure.com) fest. In Bash:
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group <group-name> --name <app-name> --settings WEBSITES_ENABLE_APP_SERVICE_STORAGE=true
@@ -150,28 +160,6 @@ PowerShell:
 ```azurepowershell-interactive
 Set-AzWebApp -ResourceGroupName <group-name> -Name <app-name> -AppSettings @{"WEBSITES_ENABLE_APP_SERVICE_STORAGE"=true}
 ```
-
-::: zone-end
-
-::: zone pivot="container-linux"
-
-Sie können das Verzeichnis */home* im Dateisystem Ihrer App verwenden, damit Dateien auch nach einem Neustart erhalten bleiben und instanzübergreifend freigegeben werden können. Das `/home` wird in Ihrer App bereitgestellt, damit Ihre Container-App auf den beständigen Speicher zugreifen kann.
-
-Wenn der beständige Speicher deaktiviert ist, bleiben Schreibvorgänge in das Verzeichnis `/home` nicht über App-Neustarts oder mehrere Instanzen hinweg erhalten. Die einzige Ausnahme ist das Verzeichnis `/home/LogFiles`, das zum Speichern der Docker- und Containerprotokolle verwendet wird. Wenn der beständige Speicher aktiviert ist, bleiben alle Schreibvorgänge in das Verzeichnis `/home` erhalten und können von allen Instanzen einer horizontal skalierten App aufgerufen werden.
-
-Standardmäßig ist der persistente Speicher *aktiviert* und die Einstellung wird in den Anwendungseinstellungen nicht angezeigt. Um ihn zu deaktivieren, legen Sie die App-Einstellung `WEBSITES_ENABLE_APP_SERVICE_STORAGE` über die [Cloud Shell](https://shell.azure.com) fest. In Bash:
-
-```azurecli-interactive
-az webapp config appsettings set --resource-group <group-name> --name <app-name> --settings WEBSITES_ENABLE_APP_SERVICE_STORAGE=false
-```
-
-PowerShell:
-
-```azurepowershell-interactive
-Set-AzWebApp -ResourceGroupName <group-name> -Name <app-name> -AppSettings @{"WEBSITES_ENABLE_APP_SERVICE_STORAGE"=false}
-```
-
-::: zone-end
 
 > [!NOTE]
 > Sie können auch [Ihren eigenen beständigen Speicher konfigurieren](configure-connect-to-azure-storage.md).
@@ -216,7 +204,7 @@ Docker-Protokolle werden im Portal auf der Seite **Containereinstellungen** Ihre
 
 ### <a name="from-the-kudu-console"></a>In der Kudu-Konsole
 
-Navigieren Sie zu `https://<app-name>.scm.azurewebsites.net/DebugConsole`, und klicken Sie auf den Ordner **LogFiles** , um die einzelnen Protokolldateien anzuzeigen. Um das gesamte Verzeichnis **LogFiles** herunterzuladen, klicken Sie auf das Symbol **Herunterladen** links neben dem Verzeichnisnamen. Sie können auch über einen FTP-Client auf diesen Ordner zugreifen.
+Navigieren Sie zu `https://<app-name>.scm.azurewebsites.net/DebugConsole`, und klicken Sie auf den Ordner **LogFiles**, um die einzelnen Protokolldateien anzuzeigen. Um das gesamte Verzeichnis **LogFiles** herunterzuladen, klicken Sie auf das Symbol **Herunterladen** links neben dem Verzeichnisnamen. Sie können auch über einen FTP-Client auf diesen Ordner zugreifen.
 
 Im Konsolenterminal können Sie nicht standardmäßig auf den Ordner `C:\home\LogFiles` zugreifen, da der persistente freigegebene Speicher nicht aktiviert ist. Um dieses Verhalten im Konsolenterminal zu aktivieren, [aktivieren Sie den persistenten freigegebenen Speicher](#use-persistent-shared-storage).
 
@@ -318,14 +306,14 @@ SSH ermöglicht die sichere Kommunikation zwischen einem Container und einem Cli
 
     Diese Konfiguration erlaubt keine externen Verbindungen zum Container. SSH ist nur über `https://<app-name>.scm.azurewebsites.net` verfügbar und wird mit den Anmeldeinformationen für die Veröffentlichung authentifiziert.
 
-- Fügen Sie [diese sshd_config-Datei](https://github.com/Azure-App-Service/node/blob/master/10.14/sshd_config) zu Ihrem Imagerepository hinzu, und kopieren Sie die Datei mit dem Befehl [COPY](https://docs.docker.com/engine/reference/builder/#copy) in das Verzeichnis */etc/ssh/*. Weitere Informationen zu *sshd_config* -Dateien finden Sie in der [OpenBSD-Dokumentation](https://man.openbsd.org/sshd_config).
+- Fügen Sie [diese sshd_config-Datei](https://github.com/Azure-App-Service/node/blob/master/10.14/sshd_config) zu Ihrem Imagerepository hinzu, und kopieren Sie die Datei mit dem Befehl [COPY](https://docs.docker.com/engine/reference/builder/#copy) in das Verzeichnis */etc/ssh/*. Weitere Informationen zu *sshd_config*-Dateien finden Sie in der [OpenBSD-Dokumentation](https://man.openbsd.org/sshd_config).
 
     ```Dockerfile
     COPY sshd_config /etc/ssh/
     ```
 
     > [!NOTE]
-    > Die *sshd_config* -Datei muss Folgendes enthalten:
+    > Die *sshd_config*-Datei muss Folgendes enthalten:
     > - `Ciphers` muss mindestens ein Element aus dieser Liste enthalten: `aes128-cbc,3des-cbc,aes256-cbc`.
     > - `MACs` muss mindestens ein Element aus dieser Liste enthalten: `hmac-sha1,hmac-sha1-96`.
 
@@ -357,7 +345,7 @@ SSH ermöglicht die sichere Kommunikation zwischen einem Container und einem Cli
 
 Apps mit mehreren Containern wie WordPress benötigen einen beständigen Speicher, um ordnungsgemäß zu funktionieren. Um dies zu ermöglichen, muss Ihre Docker Compose-Konfiguration auf einen Speicherort *außerhalb* Ihres Containers verweisen. Speicherorte in Ihrem Container bleiben nach dem Neustart der App nicht mehr unverändert.
 
-Aktivieren Sie den beständigen Speicher, indem Sie die App-Einstellung `WEBSITES_ENABLE_APP_SERVICE_STORAGE` mit dem Befehl [az webapp config appsettings set](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) in der [Cloud Shell](https://shell.azure.com) festlegen.
+Aktivieren Sie den beständigen Speicher, indem Sie die App-Einstellung `WEBSITES_ENABLE_APP_SERVICE_STORAGE` mit dem Befehl [az webapp config appsettings set](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) in der [Cloud Shell](https://shell.azure.com) festlegen.
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group <group-name> --name <app-name> --settings WEBSITES_ENABLE_APP_SERVICE_STORAGE=TRUE

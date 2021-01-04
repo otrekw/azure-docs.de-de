@@ -1,6 +1,6 @@
 ---
-title: Verwenden von „OPENROWSET“ im serverlosen SQL-Pool (Vorschauversion)
-description: In diesem Artikel wird die Syntax von „OPENROWSET“ im serverlosen SQL-Pool (Vorschauversion) beschrieben und die Verwendung von Argumenten erläutert.
+title: Verwenden von „OPENROWSET“ im serverlosen SQL-Pool
+description: In diesem Artikel wird die Syntax von „OPENROWSET“ im serverlosen SQL-Pool beschrieben und die Verwendung von Argumenten erläutert.
 services: synapse-analytics
 author: filippopovic
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: b08e834233e1ce12392d940cb0ccc0bef7e96158
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 97ee6c17d62a924686e3e4f4717d7bb7f4375988
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94337745"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96446672"
 ---
-# <a name="how-to-use-openrowset-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Verwenden von „OPENROWSET“ mit einem serverlosen SQL-Pool (Vorschauversion) in Azure Synapse Analytics
+# <a name="how-to-use-openrowset-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Verwenden von „OPENROWSET“ mit einem serverlosen SQL-Pool in Azure Synapse Analytics
 
-Die `OPENROWSET(BULK...)`-Funktion ermöglicht den Zugriff auf Dateien in Azure Storage. Die `OPENROWSET`-Funktion liest den Inhalt einer Remotedatenquelle (z. B. einer Datei) und gibt den Inhalt als eine Reihe von Zeilen zurück. Innerhalb des serverlosen SQL-Pools (Vorschauversion) wird die OPENROWSET-Funktion aufgerufen und die BULK-Option angegeben, um auf den OPENROWSET-Massenrowsetanbieter zuzugreifen.  
+Die `OPENROWSET(BULK...)`-Funktion ermöglicht den Zugriff auf Dateien in Azure Storage. Die `OPENROWSET`-Funktion liest den Inhalt einer Remotedatenquelle (z. B. einer Datei) und gibt den Inhalt als eine Reihe von Zeilen zurück. Innerhalb des serverlosen SQL-Pools wird die OPENROWSET-Funktion aufgerufen und die BULK-Option angegeben, um auf den OPENROWSET-Massenrowsetanbieter zuzugreifen.  
 
 Auf die `OPENROWSET`-Funktion kann in der `FROM`-Klausel einer Abfrage so verwiesen werden, als handele es sich um einen Tabellennamen vom Typ `OPENROWSET`. Sie unterstützt Massenvorgänge über einen integrierten BULK-Anbieter, mit dem Daten aus einer Datei gelesen und als Rowset zurückgegeben werden können.
 
@@ -84,7 +84,7 @@ OPENROWSET
     FORMAT = 'CSV'
     [ <bulk_options> ] }  
 )  
-WITH ( {'column_name' 'column_type' [ 'column_ordinal'] })  
+WITH ( {'column_name' 'column_type' [ 'column_ordinal' | 'json_path'] })  
 [AS] table_alias(column_alias,...n)
  
 <bulk_options> ::=  
@@ -147,7 +147,7 @@ Das folgende Beispiel zeigt: Bei Verwendung von „unstructured_data_path=`https
 
 Mit der WITH-Klausel können Sie Spalten angeben, die aus Dateien gelesen werden sollen.
 
-- Geben Sie bei CSV-Datendateien Spaltennamen und den jeweiligen Datentyp an, um alle Spalten zu lesen. Wenn Sie sich nur für eine Teilmenge der Spalten interessieren, verwenden Sie Ordinalzahlen, um die Spalten aus den Ursprungsdatendateien anhand der Ordinalzahl auszuwählen. Spalten werden auf der Grundlage der Ordinalangabe gebunden. 
+- Geben Sie bei CSV-Datendateien Spaltennamen und den jeweiligen Datentyp an, um alle Spalten zu lesen. Wenn Sie sich nur für eine Teilmenge der Spalten interessieren, verwenden Sie Ordinalzahlen, um die Spalten aus den Ursprungsdatendateien anhand der Ordinalzahl auszuwählen. Spalten werden auf der Grundlage der Ordinalangabe gebunden. Bei Verwendung von „HEADER_ROW = TRUE“ erfolgt die Spaltenbindung nach Spaltenname und nicht nach Ordinalposition.
     > [!TIP]
     > Die WITH-Klausel kann für CSV-Dateien auch weggelassen werden. Datentypen werden automatisch aus Dateiinhalten abgeleitet. Mit dem Argument „HEADER_ROW“ können Sie angeben, dass eine Kopfzeile vorhanden ist. In diesem Fall werden Spaltennamen aus der Kopfzeile gelesen. Ausführliche Informationen finden Sie unter [Automatische Schemaerkennung](#automatic-schema-discovery).
     
@@ -156,7 +156,7 @@ Mit der WITH-Klausel können Sie Spalten angeben, die aus Dateien gelesen werden
     > Bei Spaltennamen in Parquet-Dateien wird die Groß-/Kleinschreibung beachtet. Wenn Sie einen Spaltennamen angeben, dessen Groß-/Kleinschreibung sich von der Schreibweise in der Parquet-Datei unterscheidet, werden für diese Spalte NULL-Werte zurückgegeben.
 
 
-column_name: Der Name für die Ausgabespalte. Bei Angabe dieser Option wird der Spaltenname in der Quelldatei überschrieben.
+column_name: Der Name für die Ausgabespalte. Wird der Name angegeben, überschreibt er den Spaltennamen in der Quelldatei und den Spaltennamen im JSON-Pfad, sofern vorhanden. Wird „json_path“ nicht angegeben, wird automatisch „$.column_name“ hinzugefügt. Überprüfen Sie das Argument „json_path“ auf das Verhalten.
 
 column_type: Der Datentyp für die Ausgabespalte. Hier findet die implizite Datentypkonvertierung statt.
 
@@ -170,6 +170,11 @@ WITH (
     --[population] bigint
 )
 ```
+
+json_path: Der [JSON-Pfadausdruck](https://docs.microsoft.com/sql/relational-databases/json/json-path-expressions-sql-server?view=sql-server-ver15) zur Spalte oder geschachtelten Eigenschaft. Als [PATH-Modus](https://docs.microsoft.com/sql/relational-databases/json/json-path-expressions-sql-server?view=sql-server-ver15#PATHMODE) ist standardmäßig der Lax-Modus ausgewählt.
+
+> [!NOTE]
+> Im Strict-Modus tritt bei der Abfrage ein Fehler auf, wenn der angegebene Pfad nicht vorhanden ist. Im Lax-Modus wird die Abfrage erfolgreich ausgeführt, und der JSON-Pfadausdruck wird zu NULL ausgewertet.
 
 **\<bulk_options>**
 
@@ -220,10 +225,13 @@ Einzelheiten zu CSV-Parserversion 2.0:
 - Die maximale Zeilengröße beträgt 8 MB.
 - Die folgenden Optionen werden nicht unterstützt: DATA_COMPRESSION.
 - Eine leere Zeichenfolge in Anführungszeichen ("") wird als leere Zeichenfolge interpretiert.
+- Unterstütztes Format für DATE-Datentyp: JJJJ-MM-TT
+- Unterstütztes Format für TIME-Datentyp: HH:MM:SS[.Sekundenbruchteile]
+- Unterstütztes Format für DATETIME2-Datentyp: YYYY-MM-DD HH:MM:SS[.Sekundenbruchteile]
 
 HEADER_ROW = { TRUE | FALSE }
 
-Gibt an, ob die CSV-Datei eine Kopfzeile enthält. Standardwert: FALSE. Unterstützt in: PARSER_VERSION='2.0'. Bei „TRUE“ werden Spaltennamen aus der ersten Zeile gelesen (gemäß FIRSTROW-Argument).
+Gibt an, ob die CSV-Datei eine Kopfzeile enthält. Standardwert: FALSE. Unterstützt in: PARSER_VERSION='2.0'. Bei „TRUE“ werden Spaltennamen aus der ersten Zeile gelesen (gemäß FIRSTROW-Argument). Bei „TRUE“ und Schemaangabe mit „WITH“ wird für die Bindung von Spaltennamen der Spaltenname und nicht die Ordinalposition herangezogen.
 
 DATAFILETYPE = { 'char' | 'widechar' }
 
@@ -359,6 +367,32 @@ WITH (
     [stateName] VARCHAR (50),
     [population] bigint
 ) AS [r]
+```
+
+### <a name="specify-columns-using-json-paths"></a>Angeben von Spalten mithilfe von JSON-Pfaden
+
+Im folgenden Beispiel wird gezeigt, wie Sie [JSON-Pfadausdrücke](https://docs.microsoft.com/sql/relational-databases/json/json-path-expressions-sql-server?view=sql-server-ver15) in der WITH-Klausel verwenden. Darüber hinaus wird der Unterschied zwischen den PATH-Modi „Strict“ und „Lax“ veranschaulicht: 
+
+```sql
+SELECT 
+    TOP 1 *
+FROM  
+    OPENROWSET(
+        BULK 'https://azureopendatastorage.blob.core.windows.net/censusdatacontainer/release/us_population_county/year=20*/*.parquet',
+        FORMAT='PARQUET'
+    )
+WITH (
+    --lax path mode samples
+    [stateName] VARCHAR (50), -- this one works as column name casing is valid - it targets the same column as the next one
+    [stateName_explicit_path] VARCHAR (50) '$.stateName', -- this one works as column name casing is valid
+    [COUNTYNAME] VARCHAR (50), -- STATEname column will contain NULLs only because of wrong casing - it targets the same column as the next one
+    [countyName_explicit_path] VARCHAR (50) '$.COUNTYNAME', -- STATEname column will contain NULLS only because of wrong casing and default path mode being lax
+
+    --strict path mode samples
+    [population] bigint 'strict $.population' -- this one works as column name casing is valid
+    --,[population2] bigint 'strict $.POPULATION' -- this one fails because of wrong casing and strict path mode
+)
+AS [r]
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

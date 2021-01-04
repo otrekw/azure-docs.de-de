@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp, devx-track-js
 ms.date: 03/25/2019
 ms.author: cshoe
-ms.openlocfilehash: ff64d5c17174f8e1e67111ebca9ccf050deb2f26
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 2488a476fe40c2bf1f3e290b462babceff30a9b0
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94409653"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96601389"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>Strategien zum Testen Ihres Codes in Azure Functions
 
@@ -28,7 +28,7 @@ Das Beispielrepository ist auf [GitHub](https://github.com/Azure-Samples/azure-f
 
 ## <a name="c-in-visual-studio"></a>C# in Visual Studio
 
-Im folgenden Beispiel wird beschrieben, wie Sie eine C#-Funktions-App in Visual Studio erstellen und mit [xUnit](https://xunit.github.io) ausführen und testen.
+Im folgenden Beispiel wird beschrieben, wie Sie eine C#-Funktions-App in Visual Studio erstellen und mit [xUnit](https://github.com/xunit/xunit) ausführen und testen.
 
 ![Testen von Azure Functions mit C# in Visual Studio](./media/functions-test-a-function/azure-functions-test-visual-studio-xunit.png)
 
@@ -39,7 +39,7 @@ Um Ihre Umgebung einzurichten, erstellen Sie eine Funktion und Test-App. Die fol
 1. [Erstellen Sie eine neue Functions-App](./functions-create-first-azure-function.md), und nennen Sie sie **Functions**
 2. [Erstellen Sie eine HTTP-Funktion aus der Vorlage](./functions-create-first-azure-function.md), und nennen Sie sie **MyHttpTrigger**.
 3. [Erstellen Sie eine Zeitgeberfunktion aus der Vorlage](./functions-create-scheduled-function.md), und nennen Sie sie **MyTimerTrigger**.
-4. [Erstellen Sie eine xUnit-Test-App](https://xunit.github.io/docs/getting-started-dotnet-core) in der Projektmappe, und nennen Sie sie **Functions.Tests**.
+4. [Erstellen Sie eine xUnit-Test-App](https://xunit.net/docs/getting-started/netcore/cmdline) in der Projektmappe, und nennen Sie sie **Functions.Tests**.
 5. Fügen Sie mithilfe von NuGet einen Verweis von der Test-App auf [Microsoft.AspNetCore.Mvc](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc/) hinzu.
 6. [Verweisen Sie aus der *Functions.Tests*-App auf die *Functions*-App](/visualstudio/ide/managing-references-in-a-project?view=vs-2017).
 

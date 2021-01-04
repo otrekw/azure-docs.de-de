@@ -9,17 +9,16 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 946435175ea5cd366103bc1254bae0d9afe0926e
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 62cecc011980c2d11e6f99895c90b0ced744039a
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325804"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325348"
 ---
 # <a name="tutorial-1-predict-credit-risk---azure-machine-learning-studio-classic"></a>Tutorial 1: Vorhersagen des Kreditrisikos: Azure Machine Learning Studio (klassisch)
 
-**BETRIFFT:** ![Ja](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (Classic) ![Nein ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
-
+**GILT FÜR:**  ![Dies ist ein Häkchen, d. h., dieser Artikel bezieht sich auf Machine Learning Studio (Classic).](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (Classic)   ![Dies ist ein X, d. h., dieser Artikel bezieht sich auf Azure Machine Learning.](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 [!INCLUDE [Designer notice](../../../includes/designer-notice.md)]
 
@@ -75,7 +74,7 @@ Um ein Vorhersagemodell für Kreditrisiken zu entwickeln, benötigen Sie Daten, 
 
 Sie verwenden die Datei mit dem Namen **german.data**. Laden Sie die Datei auf Ihre lokale Festplatte herunter.  
 
-Das Dataset **german.data** enthält Zeilen mit 20 Variablen für 1.000 Kreditantragsteller aus der Vergangenheit. Diese 20 Variablen stellen den Featuresatz ( *Featurevektor* ) des Datasets dar, der Identifikationseigenschaften für die einzelnen Kreditantragsteller enthält. Eine zusätzliche Spalte in jeder Zeile enthält das berechnete Kreditrisiko der Antragsteller. 700 der Antragsteller wurden mit niedrigem Risiko klassifiziert und 300 mit hohem Risiko.
+Das Dataset **german.data** enthält Zeilen mit 20 Variablen für 1.000 Kreditantragsteller aus der Vergangenheit. Diese 20 Variablen stellen den Featuresatz (*Featurevektor*) des Datasets dar, der Identifikationseigenschaften für die einzelnen Kreditantragsteller enthält. Eine zusätzliche Spalte in jeder Zeile enthält das berechnete Kreditrisiko der Antragsteller. 700 der Antragsteller wurden mit niedrigem Risiko klassifiziert und 300 mit hohem Risiko.
 
 Auf der UCI-Website finden Sie eine Beschreibung der Attribute des Funktionsvektors für diese Daten. Diese Daten umfassen beispielsweise Finanzinformationen, Bonitätsgeschichte, Beschäftigungsstatus und persönliche Daten. Für jeden Antragsteller wurde eine binäre Bewertung vergeben, um zwischen niedrigem und hohem Kreditrisiko zu unterscheiden. 
 
@@ -119,7 +118,7 @@ Nach dem Konvertieren der Daten in das CSV-Format müssen Sie sie in Machine Lea
 
 1. Öffnen Sie die Startseite von Machine Learning Studio (klassisch) unter [https://studio.azureml.net](https://studio.azureml.net). 
 
-2. Klicken Sie im Fenster oben links auf das ![Menü](./media/tutorial-part1-credit-risk/menu.png), klicken Sie auf **Azure Machine Learning** , wählen Sie **Studio** aus, und melden Sie sich an.
+2. Klicken Sie links oben im Fenster auf das Menü![Menüsymbol (drei gestapelte Linien)](./media/tutorial-part1-credit-risk/menu.png), klicken Sie auf **Azure Machine Learning**, wählen Sie **Studio** aus, und melden Sie sich an.
 
 3. Klicken Sie im unteren Seitenbereich auf **+NEU** .
 
@@ -260,7 +259,7 @@ Für diese Replikation können Sie den R-Code verwenden:
 
 1. Doppelklicken Sie auf das Modul [Execute R Script][execute-r-script], und geben Sie den Kommentar „Kostenanpassung festlegen“ ein.
 
-1. Löschen Sie im Bereich mit den **Eigenschaften** den Standardtext im Parameter **R Script** , und geben Sie dieses Skript ein:
+1. Löschen Sie im Bereich mit den **Eigenschaften** den Standardtext im Parameter **R Script**, und geben Sie dieses Skript ein:
    
     ```r
     dataset1 <- maml.mapInputPort(1)

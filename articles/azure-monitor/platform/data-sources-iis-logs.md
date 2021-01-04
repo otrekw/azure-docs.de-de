@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 10/21/2020
-ms.openlocfilehash: ca3cf93329ea84183ef11eec8f8fac52cd84d445
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.date: 11/13/2020
+ms.openlocfilehash: a089631ab199b0fe997bba001561c6b027034e2c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461191"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993685"
 ---
 # <a name="collect-iis-logs-with-log-analytics-agent-in-azure-monitor"></a>Sammeln von IIS-Protokollen mit dem Log Analytics-Agent in Azure Monitor
 IIS (Internet Information Services, Internetinformationsdienste) speichern Benutzeraktivitäten in Protokolldateien, die vom Log Analytics-Agent gesammelt und in [Azure Monitor-Protokollen](data-platform.md) gespeichert werden können.
@@ -32,6 +32,8 @@ IIS-Protokolle können in Azure Monitor über das Menü [Erweiterte Einstellunge
 ## <a name="data-collection"></a>Datensammlung
 Azure Monitor erfasst bei jeder Änderung des Protokollzeitstempels IIS-Protokolleinträge von allen Agents. Das Protokoll wird alle **fünf Minuten** gelesen. Falls IIS den Zeitstempel beim Erstellen einer neuen Datei nicht vor der Rolloverzeit aktualisiert, werden nach der Erstellung der neuen Datei Einträge erfasst. Die Häufigkeit der Erstellung neuer Dateien wird mit der Einstellung **Log File Rollover Schedule** (Rolloverzeitplan der Protokolldatei) für die IIS-Website gesteuert, wobei einmal täglich als Standardeinstellung festgelegt ist. Ist die Einstellung auf **Stündlich** festgelegt, erfasst Azure Monitor das Protokoll jede Stunde. Wenn die Einstellung auf **Täglich** festgelegt ist, erfasst Azure Monitor das Protokoll alle 24 Stunden.
 
+> [!IMPORTANT]
+> Es empfiehlt sich, den **Rolloverzeitplan der Protokolldatei** auf **Stündlich** festzulegen. Bei Verwendung der Einstellung **Täglich** kommt es möglicherweise zu Datenspitzen, da die Daten nur einmal pro Tag erfasst werden.
 
 ## <a name="iis-log-record-properties"></a>Eigenschaften der IIS-Protokolldatensätze
 IIS-Protokolldatensätze weisen den Typ **W3CIISLog** auf und besitzen die in der folgenden Tabelle aufgeführten Eigenschaften:

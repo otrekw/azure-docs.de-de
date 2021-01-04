@@ -3,19 +3,19 @@ title: Manuelles Initiieren eines Failovers für SQL Managed Instance
 description: Erfahren Sie, wie Sie ein manuelles Failover der primären und sekundären Replikate in einer Azure SQL Managed Instance ausführen.
 services: sql-database
 ms.service: sql-managed-instance
-ms.custom: seo-lt-2019, sqldbrb=1
+ms.custom: seo-lt-2019, sqldbrb=1, devx-track-azurecli
 ms.devlang: ''
 ms.topic: how-to
 author: danimir
 ms.author: danil
 ms.reviewer: douglas, sstein
 ms.date: 08/31/2020
-ms.openlocfilehash: ebf36c99e6c4dd636c41086d4c72fd6761f6d5ca
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 51e9e66e2fd8ff60dd20c275a66fd13c047cc629
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791629"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94985517"
 ---
 # <a name="user-initiated-manual-failover-on-sql-managed-instance"></a>Vom Benutzer initiiertes manuelles Failover für SQL Managed Instance
 
@@ -37,9 +37,9 @@ In folgenden Fällen sollten Sie allerdings ein [manuelles Failover](../database
 
 ## <a name="initiate-manual-failover-on-sql-managed-instance"></a>Initiieren eines manuellen Failovers in SQL Managed Instance
 
-### <a name="rbac-permissions-required"></a>Erforderliche RBAC-Berechtigungen
+### <a name="azure-rbac-permissions-required"></a>Erforderliche Azure RBAC-Berechtigungen
 
-Benutzer, die einen Failover initiieren, müssen über eine der folgenden RBAC-Rollen verfügen:
+Benutzer, die einen Failover initiieren, müssen über eine der folgenden Azure-Rollen verfügen:
 
 - Rolle „Besitzer des Abonnements“ oder
 - Rolle „Mitwirkender“ der verwalteten Instanz oder

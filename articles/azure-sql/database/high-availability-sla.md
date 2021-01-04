@@ -12,12 +12,12 @@ author: sashan
 ms.author: sashan
 ms.reviewer: sstein, sashan
 ms.date: 10/28/2020
-ms.openlocfilehash: c0c925f68e8edbae00f980d9445c59d7213a4b25
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 15067a046d8adc0ba38101bbe24cdc48cd433d56
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92901316"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095439"
 ---
 # <a name="high-availability-for-azure-sql-database-and-sql-managed-instance"></a>Hochverfügbarkeit für Azure SQL-Datenbank und SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -28,8 +28,8 @@ Die Hochverfügbarkeitslösung soll sicherstellen, dass Daten, für die ein Comm
 
 Es gibt zwei Architekturmodelle für Hochverfügbarkeit:
 
-- Das **Standardverfügbarkeitsmodell** , das auf der Trennung der Compute- und Speicherebene basiert.  Es basiert auf der Hochverfügbarkeit und der Zuverlässigkeit der Remotespeicherebene. Diese Architektur ist auf budgetgebundene Geschäftsanwendungen ausgelegt, die bei Wartungsarbeiten gewisse Leistungseinbußen tolerieren können.
-- Das **Premium-Verfügbarkeitsmodell** , das auf einem Cluster von Datenbank-Engine-Prozessen basiert. Dieses beruht auf dem Umstand, dass stets ein Quorum von verfügbaren Datenbank-Engine-Knoten vorhanden ist. Diese Architektur ist auf unternehmenskritische Anwendungen mit hoher E/A-Leistung und einer hohen Transaktionsrate ausgelegt; es garantiert während Wartungsaktivitäten minimale Leistungseinbußen für Ihre Workload.
+- Das **Standardverfügbarkeitsmodell**, das auf der Trennung der Compute- und Speicherebene basiert.  Es basiert auf der Hochverfügbarkeit und der Zuverlässigkeit der Remotespeicherebene. Diese Architektur ist auf budgetgebundene Geschäftsanwendungen ausgelegt, die bei Wartungsarbeiten gewisse Leistungseinbußen tolerieren können.
+- Das **Premium-Verfügbarkeitsmodell**, das auf einem Cluster von Datenbank-Engine-Prozessen basiert. Dieses beruht auf dem Umstand, dass stets ein Quorum von verfügbaren Datenbank-Engine-Knoten vorhanden ist. Diese Architektur ist auf unternehmenskritische Anwendungen mit hoher E/A-Leistung und einer hohen Transaktionsrate ausgelegt; es garantiert während Wartungsaktivitäten minimale Leistungseinbußen für Ihre Workload.
 
 SQL-Datenbank und SQL Managed Instance werden auf der aktuellen stabilen Version der SQL Server-Datenbank-Engine und des Windows-Betriebssystems ausgeführt. Die meisten Benutzer bemerken nicht, dass laufend Upgrades ausgeführt werden.
 
@@ -94,7 +94,7 @@ Die zonenredundante Version der Hochverfügbarkeitsarchitektur wird im folgenden
 
 ## <a name="hyperscale-service-tier-availability"></a>Verfügbarkeit der Dienstebene „Hyperscale“
 
-Die Architektur der Dienstebene „Hyperscale“ wird in [Architektur verteilter Funktionen](https://docs.microsoft.com/azure/sql-database/sql-database-service-tier-hyperscale#distributed-functions-architecture) beschrieben und ist zurzeit nur für die SQL-Datenbank und nicht für SQL Managed Instance verfügbar.
+Die Architektur der Dienstebene „Hyperscale“ wird in [Architektur verteilter Funktionen](./service-tier-hyperscale.md#distributed-functions-architecture) beschrieben und ist zurzeit nur für die SQL-Datenbank und nicht für SQL Managed Instance verfügbar.
 
 ![Funktionale Hyperscale-Architektur](./media/high-availability-sla/hyperscale-architecture.png)
 
@@ -102,17 +102,17 @@ Das Verfügbarkeitsmodell in Hyperscale umfasst vier Ebenen:
 
 - Eine zustandslose Compute-Ebene, auf der der Prozess `sqlservr.exe` ausgeführt wird und die nur vorübergehende und zwischengespeicherte Daten enthält, z. B. nicht abdeckenden RBPEX-Cache TempDB, Modelldatenbanken usw. auf der angefügten SSD, Plancache, Puffer- und Columnstore-Pool im Arbeitsspeicher. Diese zustandslose Ebene enthält das primäre Computereplikat und optional eine Reihe sekundärer Computereplikate, die als Failoverziele dienen können.
 - Eine durch Seitenserver gebildete zustandslose Speicherebene. Diese Ebene ist das verteilte Speichermodul für die `sqlservr.exe`-Prozesse, die auf den Computereplikaten ausgeführt werden. Jeder Seitenserver enthält nur vorübergehende und zwischengespeicherte Daten, wie z.B. abdeckenden RBPEX-Cache auf der angefügten SSD und im Arbeitsspeicher zwischengespeicherte Datenseiten. Jeder Seitenserver verfügt über einen gekoppelten Seitenserver in einer Aktiv-Aktiv-Konfiguration, um Lastenausgleich, Redundanz und Hochverfügbarkeit zu gewährleisten.
-- Eine zustandsbehaftete Speicherschicht für Transaktionsprotokolle, die vom Computeknoten gebildet wird, auf dem der Protokolldienstprozess, die Zielzone für Transaktionsprotokolle und der langfristige Speicher für Transaktionsprotokolle ausgeführt werden. Für die Zielzone und den langfristigen Speicher wird Azure Storage eingesetzt. Dieser Dienst bietet Verfügbarkeit und [Redundanz](https://docs.microsoft.com/azure/storage/common/storage-redundancy) für das Transaktionsprotokoll und gewährleistet Datenbeständigkeit für durchgeführte Transaktionen.
-- Eine zustandsbehaftete Datenspeicherebene mit den Datenbankdateien (MDF- und NDF-Dateien), die in Azure Storage gespeichert und von Seitenservern aktualisiert werden. Diese Ebene nutzt die Features von Azure Storage für Datenverfügbarkeit und [Redundanz](https://docs.microsoft.com/azure/storage/common/storage-redundancy). Sie garantiert, dass jede Seite in einer Datendatei erhalten bleibt, auch wenn Prozesse auf anderen Ebenen der Hyperscale-Architektur abstürzen oder Computeknoten ausfallen.
+- Eine zustandsbehaftete Speicherschicht für Transaktionsprotokolle, die vom Computeknoten gebildet wird, auf dem der Protokolldienstprozess, die Zielzone für Transaktionsprotokolle und der langfristige Speicher für Transaktionsprotokolle ausgeführt werden. Für die Zielzone und den langfristigen Speicher wird Azure Storage eingesetzt. Dieser Dienst bietet Verfügbarkeit und [Redundanz](../../storage/common/storage-redundancy.md) für das Transaktionsprotokoll und gewährleistet Datenbeständigkeit für durchgeführte Transaktionen.
+- Eine zustandsbehaftete Datenspeicherebene mit den Datenbankdateien (MDF- und NDF-Dateien), die in Azure Storage gespeichert und von Seitenservern aktualisiert werden. Diese Ebene nutzt die Features von Azure Storage für Datenverfügbarkeit und [Redundanz](../../storage/common/storage-redundancy.md). Sie garantiert, dass jede Seite in einer Datendatei erhalten bleibt, auch wenn Prozesse auf anderen Ebenen der Hyperscale-Architektur abstürzen oder Computeknoten ausfallen.
 
 Computeknoten auf allen Hyperscale-Ebenen werden in Azure Service Fabric ausgeführt. Dieser Dienst kontrolliert die Integrität jedes Knotens und führt bei Bedarf ein Failover auf verfügbare fehlerfreie Knoten durch.
 
-Weitere Informationen zur Hochverfügbarkeit in Hyperscale finden Sie unter [Hochverfügbarkeit der Datenbank in Hyperscale](https://docs.microsoft.com/azure/sql-database/sql-database-service-tier-hyperscale#database-high-availability-in-hyperscale).
+Weitere Informationen zur Hochverfügbarkeit in Hyperscale finden Sie unter [Hochverfügbarkeit der Datenbank in Hyperscale](./service-tier-hyperscale.md#database-high-availability-in-hyperscale).
 
 
 ## <a name="accelerated-database-recovery-adr"></a>Schnellere Datenbankwiederherstellung
 
-Die [schnellere Datenbankwiederherstellung (Accelerated Database Recovery, ADR)](../accelerated-database-recovery.md) ist ein neues Feature der SQL-Datenbank-Engine, das die Datenbankverfügbarkeit erheblich verbessert, insbesondere bei Transaktionen mit langer Ausführungsdauer. ADR ist derzeit für Azure SQL-Datenbank, Azure SQL Managed Instance und Azure Synapse Analytics (früher SQL Data Warehouse) verfügbar.
+Die [schnellere Datenbankwiederherstellung (Accelerated Database Recovery, ADR)](../accelerated-database-recovery.md) ist ein neues Feature der SQL-Datenbank-Engine, das die Datenbankverfügbarkeit erheblich verbessert, insbesondere bei Transaktionen mit langer Ausführungsdauer. ADS ist zurzeit für Azure SQL-Datenbank, Azure SQL Managed Instance und Azure Synapse Analytics verfügbar.
 
 ## <a name="testing-application-fault-resiliency"></a>Testen der Resilienz von Anwendungsfehlern
 
@@ -122,7 +122,7 @@ Ein Failover kann mithilfe von PowerShell, der Rest-API oder Azure CLI initiiert
 
 |Bereitstellungstyp|PowerShell|REST-API| Azure CLI|
 |:---|:---|:---|:---|
-|Datenbank|[Invoke-AzSqlDatabaseFailover](/powershell/module/az.sql/invoke-azsqldatabasefailover)|[Datenbankfailover](/rest/api/sql/databases(failover)/failover/)|[az rest](/cli/azure/reference-index#az-rest) kann für einen REST-API-Aufruf über die Azure CLI verwendet werden.|
+|Datenbank|[Invoke-AzSqlDatabaseFailover](/powershell/module/az.sql/invoke-azsqldatabasefailover)|[Datenbankfailover](/rest/api/sql/databases/failover)|[az rest](/cli/azure/reference-index#az-rest) kann für einen REST-API-Aufruf über die Azure CLI verwendet werden.|
 |Pool für elastische Datenbanken|[Invoke-AzSqlElasticPoolFailover](/powershell/module/az.sql/invoke-azsqlelasticpoolfailover)|[Failover für den Pool für elastische Datenbanken](/rest/api/sql/elasticpools(failover)/failover/)|[az rest](/cli/azure/reference-index#az-rest) kann für einen REST-API-Aufruf über die Azure CLI verwendet werden.|
 |SQL-Datenbank-Instanz|[Invoke-AzSqlInstanceFailover](/powershell/module/az.sql/Invoke-AzSqlInstanceFailover/)|[Verwaltete Instanzen – Failover](/rest/api/sql/managed%20instances%20-%20failover/failover)|[az sql mi failover](/cli/azure/sql/mi/#az-sql-mi-failover)|
 

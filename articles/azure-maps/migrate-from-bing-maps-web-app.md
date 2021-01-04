@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: devx-track-js
-ms.openlocfilehash: be0b2a3a15c77ae0de303f02be078f115b283eb9
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 6037deb484ca966ab3a54cc60b0d53ac8299d500
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92897142"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590000"
 ---
 # <a name="tutorial---migrate-a-web-app-from-bing-maps"></a>Tutorial: Migrieren einer Web-App aus Bing Karten
 
@@ -506,7 +506,7 @@ map.layers.insert(layer);
 Zum Anpassen eines HTML-Markers kann in Azure Maps der `htmlContent`-Option des Markers ein HTML-`string` oder -`HTMLElement` übergeben werden. In Azure Maps wird eine `anchor`-Option verwendet, um die relative Position des Markers bezogen auf die Positionskoordinate mithilfe eines von neun definierten Referenzpunkten anzugeben: „center“, „top“, „bottom“, „left“, „right“, „top-left“, „top-right“, „bottom-left“, „bottom-right“. Die Inhalte sind verankert und standardmäßig auf „bottom“ festgelegt, das ist die Mitte der Unterkante des HTML-Inhalts. Um die Migration von Code aus Bing Karten zu vereinfachen, legen Sie den Anker auf „top-left“ fest, und verwenden Sie dann die Option `offset` mit dem gleichen Offset, der in Bing Karten verwendet wird. Die Offsets in Azure Maps bewegen sich in der zu Bing Karten entgegengesetzten Richtung, Sie müssen sie daher mit minus Eins multiplizieren.
 
 > [!TIP]
-> Fügen Sie im HTML-Inhalt `pointer-events:none`als Stil hinzu, um das Standardverhalten beim Ziehen in Microsoft Edge zu deaktivieren, durch das ein unerwünschtes Symbol angezeigt wird.
+> Fügen Sie im HTML-Inhalt `pointer-events:none` als Stil hinzu, um das Standardverhalten beim Ziehen in MS Edge zu deaktivieren, durch das ein unerwünschtes Symbol angezeigt wird.
 
 ```html
 map.markers.add(new atlas.HtmlMarker({
@@ -883,7 +883,7 @@ In Bing Karten können GeoJSON-Daten mithilfe des GeoJSON-Moduls geladen werden.
             var clusterSize = cluster.containedPushpins.length;
 
             var radius = 20;    //Default radius to 20 pixels.
-            var fillColor = 'lime';     //Default to lime green.
+            var fillColor = 'lime';   //Default to lime green.
 
             if (clusterSize >= 750) {
                 radius = 40;   //If point_count >= 750, radius is 40 pixels.

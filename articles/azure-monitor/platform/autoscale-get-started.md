@@ -4,12 +4,12 @@ description: Informationen zum Skalieren Ihrer Ressource Web-App, Clouddienst, v
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: 543ecc80abeb9a437a895224de6ade679698c4d7
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 364309301b403234936da1bac6e1b74af24c2fdb
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94565635"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96573305"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>Erste Schritte mit der automatischen Skalierung in Azure
 In diesem Artikel wird beschrieben, wie Sie Ihre automatische Skalierungseinstellung für Ihre Ressource im Microsoft Azure-Portal einrichten.
@@ -131,12 +131,12 @@ Entwicklungsteams in großen Unternehmen müssen häufig Sicherheitsanforderunge
 
 ### <a name="behavior"></a>Verhalten
 
-Wenn der Pfad der Integritätsprüfung angegeben ist, sendet App Service auf allen Instanzen ein Ping an den Pfad. Wenn nach 5 Pings kein erfolgreicher Antwortcode empfangen wird, gilt diese Instanz als fehlerhaft. Fehlerhafte Instanzen werden von der Lastenausgleichsrotation ausgeschlossen. Sie können die erforderliche Anzahl fehlerhafter Pings mit der App-Einstellung `WEBSITE_HEALTHCHECK_MAXPINGFAILURES` konfigurieren. Diese App-Einstellung kann auf eine beliebige Ganzzahl zwischen 2 und 10 festgelegt werden. Wenn sie beispielsweise auf `2` festgelegt wird, werden die Instanzen nach zwei fehlgeschlagenen Pings aus dem Lastenausgleich entfernt. Wenn Sie darüber hinaus zentral oder horizontal hochskalieren, pingt App Service den Pfad der Integritätsüberprüfung, um sicherzustellen, dass die neuen Instanzen für Anforderungen bereit sind, bevor sie zum Lastenausgleich hinzugefügt werden.
+Wenn der Pfad der Integritätsprüfung angegeben ist, sendet App Service auf allen Instanzen ein Ping an den Pfad. Wenn nach 5 Pings kein erfolgreicher Antwortcode empfangen wird, gilt diese Instanz als fehlerhaft. Fehlerhafte Instanzen werden von der Load Balancer-Rotation ausgeschlossen, wenn Sie auf 2 oder mehr Instanzen aufskaliert haben und mindestens den [Basic-Tarif](../../app-service/overview-hosting-plans.md) verwenden. Sie können die erforderliche Anzahl fehlerhafter Pings mit der App-Einstellung `WEBSITE_HEALTHCHECK_MAXPINGFAILURES` konfigurieren. Diese App-Einstellung kann auf eine beliebige Ganzzahl zwischen 2 und 10 festgelegt werden. Wenn sie beispielsweise auf `2` festgelegt wird, werden die Instanzen nach zwei fehlgeschlagenen Pings aus dem Lastenausgleich entfernt. Wenn Sie darüber hinaus zentral oder horizontal hochskalieren, pingt App Service den Pfad der Integritätsüberprüfung, um sicherzustellen, dass die neuen Instanzen für Anforderungen bereit sind, bevor sie zum Lastenausgleich hinzugefügt werden.
 
 > [!NOTE]
-> Denken Sie daran, dass der App Service-Plan auf mindestens zwei Instanzen aufskaliert werden muss, damit der Lastenausgleichsausschluss erfolgt. Wenn Sie nur über eine Instanz verfügen, wird diese auch dann nicht aus dem Lastenausgleich entfernt, wenn sie fehlerhaft ist. 
+> Denken Sie daran, dass der App Service-Plan auf mindestens 2 Instanzen aufskaliert und **mindestens der Basic-Tarif** verwendet werden muss, damit der Lastenausgleichsausschluss erfolgt. Wenn Sie nur über eine Instanz verfügen, wird diese auch dann nicht aus dem Lastenausgleich entfernt, wenn sie fehlerhaft ist. 
 
-Die verbleibenden fehlerfreien Instanzen werden möglicherweise stärker ausgelastet. Um zu vermeiden, dass die verbleibenden Instanzen überlastet werden, wird nicht mehr als die Hälfte der Instanzen ausgeschlossen. Wenn z. B. ein App Service-Plan auf vier Instanzen aufskaliert wird und drei fehlerhaft sind, werden höchstens zwei von der Lastenausgleichsrotation ausgeschlossen. Die anderen beiden Instanzen (1 fehlerfrei und 1 fehlerhaft) empfangen weiterhin Anforderungen. Sollten im ungünstigsten Fall alle Instanzen fehlerhaft sein, wird keine Instanz ausgeschlossen. Wenn Sie dieses Verhalten überschreiben möchten, können Sie die App-Einstellung `WEBSITE_HEALTHCHECK_MAXUNHEALTYWORKERPERCENT` auf einen Wert zwischen `0` und `100` festlegen. Ein höherer Wert führt dazu, dass mehr fehlerhafte Instanzen entfernt werden. (Der Standardwert ist „50“.)
+Die verbleibenden fehlerfreien Instanzen werden möglicherweise stärker ausgelastet. Um zu vermeiden, dass die verbleibenden Instanzen überlastet werden, wird nicht mehr als die Hälfte der Instanzen ausgeschlossen. Wenn z. B. ein App Service-Plan auf vier Instanzen aufskaliert wird und drei fehlerhaft sind, werden höchstens zwei von der Lastenausgleichsrotation ausgeschlossen. Die anderen beiden Instanzen (1 fehlerfrei und 1 fehlerhaft) empfangen weiterhin Anforderungen. Sollten im ungünstigsten Fall alle Instanzen fehlerhaft sein, wird keine Instanz ausgeschlossen. Wenn Sie dieses Verhalten überschreiben möchten, können Sie die App-Einstellung `WEBSITE_HEALTHCHECK_MAXUNHEALTHYWORKERPERCENT` auf einen Wert zwischen `0` und `100` festlegen. Ein höherer Wert führt dazu, dass mehr fehlerhafte Instanzen entfernt werden. (Der Standardwert ist „50“.)
 
 Wenn eine Instanz für eine Stunde fehlerhaft bleibt, wird sie durch eine neue Instanz ersetzt. Pro Stunde wird höchstens eine Instanz ersetzt, wobei der Maximalwert bei drei Instanzen pro Tag und App Service-Plan liegt.
 
@@ -151,12 +151,12 @@ In diesem Abschnitt wird beschrieben, wie Sie die Autoskalierung von Azure in ei
 1. Stellen Sie sicher, dass die Autoskalierung von Azure in der [Azure-Zielregion für das Verschieben](https://azure.microsoft.com/global-infrastructure/services/?products=monitor&regions=all) verfügbar ist.
 
 ### <a name="move"></a>Move
-Erstellen Sie mithilfe der [REST-API](https://docs.microsoft.com/rest/api/monitor/autoscalesettings/createorupdate) eine Autoskalierungseinstellung in der neuen Umgebung. Die in der Zielregion erstellte Einstellung für die Autoskalierung ist eine Kopie der Autoskalierungseinstellung in der Quellregion.
+Erstellen Sie mithilfe der [REST-API](/rest/api/monitor/autoscalesettings/createorupdate) eine Autoskalierungseinstellung in der neuen Umgebung. Die in der Zielregion erstellte Einstellung für die Autoskalierung ist eine Kopie der Autoskalierungseinstellung in der Quellregion.
 
-[Diagnoseeinstellungen](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings), die in Verbindung mit der Autoskalierungseinstellung in der Quellregion erstellt wurden, können nicht verschoben werden. Sie müssen die Diagnoseeinstellungen nach Abschluss der Erstellung der Autoskalierungseinstellungen in der Zielregion neu erstellen. 
+[Diagnoseeinstellungen](./diagnostic-settings.md), die in Verbindung mit der Autoskalierungseinstellung in der Quellregion erstellt wurden, können nicht verschoben werden. Sie müssen die Diagnoseeinstellungen nach Abschluss der Erstellung der Autoskalierungseinstellungen in der Zielregion neu erstellen. 
 
 ### <a name="learn-more-about-moving-resources-across-azure-regions"></a>Weitere Informationen zum Verschieben von Ressourcen zwischen Azure-Regionen
-Weitere Informationen zum Verschieben von Ressourcen zwischen Regionen und zur Notfallwiederherstellung in Azure finden Sie unter [Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources).
+Weitere Informationen zum Verschieben von Ressourcen zwischen Regionen und zur Notfallwiederherstellung in Azure finden Sie unter [Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](../../azure-resource-manager/management/move-resource-group-and-subscription.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [Erstellen einer Aktivitätsprotokollwarnung, um alle Vorgänge der Engine für die automatische Skalierung für Ihr Abonnement zu überwachen](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)

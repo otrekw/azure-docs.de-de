@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: 3371b9cc0848e387c0150ca9aa7e7a971cecba1a
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: e5472620fe9b07d152a5325b0654044cb1505fd7
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92904927"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94992436"
 ---
 # <a name="ddos-protection-reference-architectures"></a>DDoS Protection – Referenzarchitekturen
 
-DDoS Protection Standard ist für Dienste vorgesehen, die in einem virtuellen Netzwerk bereitgestellt werden. Weitere Informationen finden Sie unter [Virtual network integration for Azure services (Integration virtueller Netzwerke für Azure-Dienste)](/azure/virtual-network/virtual-network-for-azure-services). Für andere Dienste gilt der Standarddienst DDoS Protection Basic. Die folgenden Referenzarchitekturen sind nach Szenarios angeordnet, wobei Architekturmuster gruppiert sind.
+DDoS Protection Standard ist für Dienste vorgesehen, die in einem virtuellen Netzwerk bereitgestellt werden. Weitere Informationen finden Sie unter [Virtual network integration for Azure services (Integration virtueller Netzwerke für Azure-Dienste)](../virtual-network/virtual-network-for-azure-services.md). Für andere Dienste gilt der Standarddienst DDoS Protection Basic. Die folgenden Referenzarchitekturen sind nach Szenarios angeordnet, wobei Architekturmuster gruppiert sind.
 
 ## <a name="virtual-machine-windowslinux-workloads"></a>Die Arbeitsauslastungen virtueller Computer (Windows/Linux)
 
@@ -54,7 +54,7 @@ Die Standby-Region ist für Failoverszenarios eingerichtet.
 
 Azure Traffic Manager leitet eingehende Anforderungen an Application Gateway in einer der Regionen weiter. Während des normalen Betriebs werden Anforderungen an Application Gateway in der aktiven Region weitergeleitet. Wenn diese Region nicht mehr verfügbar ist, führt Traffic Manager ein Failover zu Application Gateway in der Standby-Region aus.
 
-Der gesamte für die Webanwendung bestimmte Datenverkehr aus dem Internet wird über Traffic Manager an die öffentliche Application Gateway-IP-Adresse weitergeleitet. (siehe [Application Gateway support for multi-tenant back ends (Application Gateway-Unterstützung für mehrinstanzenfähige Back-Ends)](/azure/application-gateway/application-gateway-web-app-overview)). In diesem Szenario ist der App-Dienst (Web-Apps) selbst nicht direkt nach außen gerichtet und wird von Application Gateway geschützt. 
+Der gesamte für die Webanwendung bestimmte Datenverkehr aus dem Internet wird über Traffic Manager an die öffentliche Application Gateway-IP-Adresse weitergeleitet. (siehe [Application Gateway support for multi-tenant back ends (Application Gateway-Unterstützung für mehrinstanzenfähige Back-Ends)](../application-gateway/application-gateway-web-app-overview.md)). In diesem Szenario ist der App-Dienst (Web-Apps) selbst nicht direkt nach außen gerichtet und wird von Application Gateway geschützt. 
 
 Sie sollten die Application Gateway-WAF-SKU (Verhinderungsmodus) zum Schutz vor Angriffen auf Schicht 7 (HTTP/HTTPS/Websocket) konfigurieren. Darüber hinaus werden die Web-Apps so konfiguriert, dass sie Datenverkehr nur über die Application Gateway-IP-Adresse akzeptieren (siehe [IP and Domain Restrictions for Windows Azure Web Sites (IP- und Domäneneinschränkungen für Windows Azure-Websites)](https://azure.microsoft.com/blog/ip-and-domain-restrictions-for-windows-azure-web-sites/)).
 
@@ -64,7 +64,7 @@ Lesen Sie [diesen Artikel](/azure/architecture/reference-architectures/app-servi
 
 ### <a name="hdinsight-on-azure"></a>HDInsight unter Azure
 
-Diese Referenzarchitektur zeigt das Konfigurieren von DDoS Protection Standard für [Azure HDInsight-Cluster](/azure/hdinsight/). Stellen Sie sicher, dass der HDInsight-Cluster mit einem virtuellen Netzwerk verknüpft und DDoS Protection in diesem virtuellen Netzwerk aktiviert ist.
+Diese Referenzarchitektur zeigt das Konfigurieren von DDoS Protection Standard für [Azure HDInsight-Cluster](../hdinsight/index.yml). Stellen Sie sicher, dass der HDInsight-Cluster mit einem virtuellen Netzwerk verknüpft und DDoS Protection in diesem virtuellen Netzwerk aktiviert ist.
 
 ![Bereiche „HDInsight“ und „Erweiterte Einstellungen“ mit Einstellungen zum virtuellen Netzwerk](./media/ddos-best-practices/image-12.png)
 
@@ -72,7 +72,7 @@ Diese Referenzarchitektur zeigt das Konfigurieren von DDoS Protection Standard f
 
 In dieser Architektur wird der für den HDInsight-Cluster bestimmte Datenverkehr aus dem Internet an die öffentliche IP-Adresse weitergeleitet, die dem HDInsight-Gatewaylastenausgleich zugeordnet ist. Der Gatewaylastenausgleich sendet dann den Datenverkehr direkt an die Hauptknoten oder Workerknoten. Da DDoS Protection Standard im virtuellen HDInsight-Netzwerk aktiviert wird, erhalten alle öffentlichen IP-Adressen im virtuellen Netzwerk DDoS-Schutz für Schicht 3 und Schicht 4. Diese Referenzarchitektur kann mit Referenzarchitekturen für n-Schichten und mehrere Regionen kombiniert werden.
 
-Weitere Informationen zu dieser Referenzarchitektur finden Sie in der Dokumentation [Erweitern von Azure HDInsight per Azure Virtual Network](/azure/hdinsight/hdinsight-extend-hadoop-virtual-network?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Weitere Informationen zu dieser Referenzarchitektur finden Sie in der Dokumentation [Erweitern von Azure HDInsight per Azure Virtual Network](../hdinsight/hdinsight-plan-virtual-network-deployment.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 
 > [!NOTE]

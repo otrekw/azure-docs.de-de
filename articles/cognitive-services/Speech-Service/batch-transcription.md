@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/03/2020
 ms.author: wolfma
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f89dd6b7926baf6c1c64cff81e8b613461a3e925
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 426cf78f6b87acf1d8c7551b0b0a6172a30167b1
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93345498"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621094"
 ---
 # <a name="how-to-use-batch-transcription"></a>Verwenden von Batch-Transkription
 
@@ -46,7 +46,7 @@ Wie bei allen Features des Speech-Diensts erstellen Sie mithilfe der Anleitung u
 >[!NOTE]
 > Für die Verwendung der Batch-Transkription ist ein Standardabonnement (S0) für den Speech-Dienst erforderlich. Kostenlose Abonnementschlüssel (F0) funktionieren nicht. Weitere Informationen finden Sie unter [Preise und Einschränkungen](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/).
 
-Wenn Sie planen, Modelle anzupassen, befolgen Sie die Schritte unter [Akustische Anpassung](how-to-customize-acoustic-models.md) und [Sprachanpassung](how-to-customize-language-model.md). Um die erstellten Modelle in der Batch-Transkription zu verwenden, benötigen Sie ihren Modellspeicherort. Der Modellspeicherort lässt sich durch Untersuchen der Details des Modells ermitteln (`self`-Eigenschaft). Für den Batch-Transkriptionsdienst ist *kein* bereitgestellter benutzerdefinierter Endpunkt erforderlich.
+Wenn Sie planen, Modelle anzupassen, befolgen Sie die Schritte unter [Akustische Anpassung](./how-to-custom-speech-train-model.md) und [Sprachanpassung](./how-to-custom-speech-train-model.md). Um die erstellten Modelle in der Batch-Transkription zu verwenden, benötigen Sie ihren Modellspeicherort. Der Modellspeicherort lässt sich durch Untersuchen der Details des Modells ermitteln (`self`-Eigenschaft). Für den Batch-Transkriptionsdienst ist *kein* bereitgestellter benutzerdefinierter Endpunkt erforderlich.
 
 >[!NOTE]
 > Als Bestandteil der REST-API weist der Batch Transkriptionsdienst eine Reihe von [Kontingenten und Grenzwerten](speech-services-quotas-and-limits.md#batch-transcription) auf, zu deren Prüfung wir Sie auffordern. Damit Sie die Funktion zur Batch-Transkription zum effizienten Transkribieren einer großen Anzahl von Audiodateien in vollem Umfang nutzen können, empfehlen wir, immer mehrere Dateien pro Anforderung zu senden oder auf einen Blob-Speichercontainer mit den zu transkribierenden Audiodateien zu verweisen. Der Dienst transkribiert die Dateien parallel, wodurch sich die Umschlagszeit verringert. Das Verwenden mehrerer Dateien in einer einzelnen Anforderung ist ganz einfach und unkompliziert. Weitere Informationen finden Sie im Abschnitt [Konfiguration](#configuration). 
@@ -182,7 +182,7 @@ Verwenden Sie diese optionalen Eigenschaften zum Konfigurieren der Transkription
 
 ### <a name="storage"></a>Storage
 
-Bei der Batch-Transkription können Audiodaten von einem öffentlich sichtbaren Internet-URI gelesen und die Transkriptionen dann über einen SAS-URI in [Azure Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) geschrieben werden.
+Bei der Batch-Transkription können Audiodaten von einem öffentlich sichtbaren Internet-URI gelesen und die Transkriptionen dann über einen SAS-URI in [Azure Blob Storage](../../storage/blobs/storage-blobs-overview.md) geschrieben werden.
 
 ## <a name="batch-transcription-result"></a>Ergebnis der Batch-Transkription
 
@@ -214,7 +214,7 @@ Jede Transkriptionsergebnisdatei weist das folgende Format auf:
       "duration": "PT1.59S",            // audio duration of this phrase, ISO 8601 encoded duration
       "offsetInTicks": 700000.0,        // offset in audio of this phrase in ticks (1 tick is 100 nanoseconds)
       "durationInTicks": 15900000.0,    // audio duration of this phrase in ticks (1 tick is 100 nanoseconds)
-      
+
       // possible transcriptions of the current phrase with confidences
       "nBest": [
         {
@@ -224,7 +224,7 @@ Jede Transkriptionsergebnisdatei weist das folgende Format auf:
           "itn": "hello world",
           "maskedITN": "hello world",
           "display": "Hello world.",
-          
+
           // if wordLevelTimestampsEnabled is `true`, there will be a result for each word of the phrase, otherwise this property is not present
           "words": [
             {
@@ -245,7 +245,7 @@ Jede Transkriptionsergebnisdatei weist das folgende Format auf:
             }
           ]
         }
-      ]    
+      ]
     }
   ]
 }

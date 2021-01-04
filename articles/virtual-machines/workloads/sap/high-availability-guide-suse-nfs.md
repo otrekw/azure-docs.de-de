@@ -9,17 +9,18 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-windows
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/16/2020
 ms.author: radeltch
-ms.openlocfilehash: d121430452e0ed445af19f9b1ac89cfdfccdcdae
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 6b0504f5e4199ee3cd8e86660b866fddf2568485
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167320"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608570"
 ---
 # <a name="high-availability-for-nfs-on-azure-vms-on-suse-linux-enterprise-server"></a>Hochverfügbarkeit für NFS auf Azure-VMs unter SUSE Linux Enterprise Server
 
@@ -52,6 +53,10 @@ ms.locfileid: "92167320"
 
 In diesem Artikel werden das Bereitstellen und Konfigurieren der virtuellen Computer, das Installieren des Clusterframeworks und das Installieren eines hochverfügbaren NFS-Servers, auf dem die freigegebenen Daten eines hochverfügbaren SAP-Systems gespeichert werden können, beschrieben.
 In dieser Anleitung wird beschrieben, wie ein hochverfügbarer NFS-Server eingerichtet wird, der von zwei SAP-Systemen verwendet wird: NW1 und NW2. Bezüglich der Namen der Ressourcen (z. B. virtuelle Computer, virtuelle Netzwerke) im Beispiel wird davon ausgegangen, dass Sie die [SAP-Dateiservervorlage][template-file-server] mit dem Ressourcenpräfix **prod** verwendet haben.
+
+
+> [!NOTE]
+> Dieser Artikel enthält Verweise auf die Begriffe *Slave* und *Master*, die von Microsoft nicht mehr verwendet werden. Sobald die Begriffe aus der Software entfernt wurden, werden sie auch aus diesem Artikel gelöscht.
 
 Lesen Sie zuerst die folgenden SAP Notes und Dokumente:
 
@@ -141,15 +146,15 @@ Sie müssen zunächst die virtuellen Computer für diesen NFS-Cluster erstellen.
       1. Erstellen der Front-End-IP-Adressen
          1. IP-Adresse 10.0.0.4 für NW1
             1. Öffnen Sie den Lastenausgleich, wählen Sie den Front-End-IP-Pool aus und klicken Sie auf „Hinzufügen“.
-            1. Geben Sie den Namen des neuen Front-End-IP-Pools ein (z.B. **nw1-frontend** ).
-            1. Legen Sie die Zuweisung als statisch fest, und geben Sie die IP-Adresse ein (z.B. **10.0.0.4** ).
+            1. Geben Sie den Namen des neuen Front-End-IP-Pools ein (z.B. **nw1-frontend**).
+            1. Legen Sie die Zuweisung als statisch fest, und geben Sie die IP-Adresse ein (z.B. **10.0.0.4**).
             1. OK klicken
          1. IP-Adresse 10.0.0.5 für NW2
             * Wiederholen Sie die oben genannten Schritte für NW2.
       1. Erstellen der Back-End-Pools
          1. Mit primären Netzwerkschnittstellen von allen virtuellen Computern verbunden, die Teil des NFS-Clusters sein sollen
             1. Öffnen Sie den Lastenausgleich, wählen Sie Back-End-Pools und klicken Sie auf „Hinzufügen“.
-            1. Geben Sie den Namen des neuen Back-End-Pools (z. B. **nw-backend** ) ein.
+            1. Geben Sie den Namen des neuen Back-End-Pools (z. B. **nw-backend**) ein.
             1. Virtuelles Netzwerk auswählen
             1. Klicken Sie auf „Virtuellen Computer hinzufügen“.
             1. Wählen Sie die virtuellen Computer des NFS-Clusters und deren IP-Adressen aus.
@@ -157,15 +162,15 @@ Sie müssen zunächst die virtuellen Computer für diesen NFS-Cluster erstellen.
       1. Erstellen der Integritätstests
          1. Port 61000 für NW1
             1. Öffnen Sie den Lastenausgleich, wählen Sie Integritätstests aus, und klicken Sie auf „Hinzufügen“.
-            1. Geben Sie den Namen des neuen Integritätstests ein (z.B. **nw1-hp** ).
+            1. Geben Sie den Namen des neuen Integritätstests ein (z.B. **nw1-hp**).
             1. Wählen Sie TCP als Protokoll und Port 610 **00** aus, und behalten Sie „Intervall 5“ und „Fehlerschwellenwert 2“ bei.
             1. OK klicken
          1. Port 61001 für NW2
             * Wiederholen Sie die oben genannten Schritte, um einen Integritätstest für NW2 zu erstellen.
       1. Lastenausgleichsregeln
          1. Öffnen Sie den Lastenausgleich, wählen Sie „Lastenausgleichsregeln“ aus, und klicken Sie auf „Hinzufügen“.
-         1. Geben Sie den Namen der neuen Lastenausgleichsregel ein (z. B. **nw1-lb** ).
-         1. Wählen Sie die Front-End-IP-Adresse, den Back-End-Pool und den Integritätstest aus, die Sie zuvor erstellt haben (z. B. **nw1-frontend** , **nw-backend** und **nw1-hp** )
+         1. Geben Sie den Namen der neuen Lastenausgleichsregel ein (z. B. **nw1-lb**).
+         1. Wählen Sie die Front-End-IP-Adresse, den Back-End-Pool und den Integritätstest aus, die Sie zuvor erstellt haben (z. B. **nw1-frontend**, **nw-backend** und **nw1-hp**)
          1. Wählen Sie **HA-Ports** aus.
          1. Erhöhen Sie die Leerlaufzeitüberschreitung auf 30 Minuten.
          1. **Achten Sie darauf, dass Sie „Floating IP“ aktivieren.**
@@ -175,15 +180,15 @@ Sie müssen zunächst die virtuellen Computer für diesen NFS-Cluster erstellen.
       1. Erstellen der Front-End-IP-Adressen
          1. IP-Adresse 10.0.0.4 für NW1
             1. Öffnen Sie den Lastenausgleich, wählen Sie den Front-End-IP-Pool aus und klicken Sie auf „Hinzufügen“.
-            1. Geben Sie den Namen des neuen Front-End-IP-Pools ein (z.B. **nw1-frontend** ).
-            1. Legen Sie die Zuweisung als statisch fest, und geben Sie die IP-Adresse ein (z.B. **10.0.0.4** ).
+            1. Geben Sie den Namen des neuen Front-End-IP-Pools ein (z.B. **nw1-frontend**).
+            1. Legen Sie die Zuweisung als statisch fest, und geben Sie die IP-Adresse ein (z.B. **10.0.0.4**).
             1. OK klicken
          1. IP-Adresse 10.0.0.5 für NW2
             * Wiederholen Sie die oben genannten Schritte für NW2.
       1. Erstellen der Back-End-Pools
          1. Mit primären Netzwerkschnittstellen von allen virtuellen Computern verbunden, die Teil des NFS-Clusters sein sollen
             1. Öffnen Sie den Lastenausgleich, wählen Sie Back-End-Pools und klicken Sie auf „Hinzufügen“.
-            1. Geben Sie den Namen des neuen Back-End-Pools (z. B. **nw-backend** ) ein.
+            1. Geben Sie den Namen des neuen Back-End-Pools (z. B. **nw-backend**) ein.
             1. Klicken Sie auf „Virtuellen Computer hinzufügen“.
             1. Wählen Sie die Verfügbarkeitsgruppe aus, die Sie zuvor erstellt haben.
             1. Wählen Sie die virtuellen Computer des NFS-Clusters aus.
@@ -191,7 +196,7 @@ Sie müssen zunächst die virtuellen Computer für diesen NFS-Cluster erstellen.
       1. Erstellen der Integritätstests
          1. Port 61000 für NW1
             1. Öffnen Sie den Lastenausgleich, wählen Sie Integritätstests aus, und klicken Sie auf „Hinzufügen“.
-            1. Geben Sie den Namen des neuen Integritätstests ein (z.B. **nw1-hp** ).
+            1. Geben Sie den Namen des neuen Integritätstests ein (z.B. **nw1-hp**).
             1. Wählen Sie TCP als Protokoll und Port 610 **00** aus, und behalten Sie „Intervall 5“ und „Fehlerschwellenwert 2“ bei.
             1. OK klicken
          1. Port 61001 für NW2
@@ -199,8 +204,8 @@ Sie müssen zunächst die virtuellen Computer für diesen NFS-Cluster erstellen.
       1. Lastenausgleichsregeln
          1. 2049 TCP für NW1
             1. Öffnen Sie den Load Balancer, wählen Sie das Laden von Lastenausgleichsregeln, und klicken Sie auf „Hinzufügen“.
-            1. Geben Sie den Namen der neuen Lastenausgleichsregel ein (z.B. **nw1-lb-2049** ).
-            1. Wählen Sie die Front-End-IP-Adresse, den Back-End-Pool und den Integritätstest aus, die Sie zuvor erstellt haben (z.B. **nw1-frontend** ).
+            1. Geben Sie den Namen der neuen Lastenausgleichsregel ein (z.B. **nw1-lb-2049**).
+            1. Wählen Sie die Front-End-IP-Adresse, den Back-End-Pool und den Integritätstest aus, die Sie zuvor erstellt haben (z.B. **nw1-frontend**).
             1. Behalten Sie **TCP** als Protokoll bei, und geben Sie Port **2049** ein.
             1. Erhöhen Sie die Leerlaufzeitüberschreitung auf 30 Minuten.
             1. **Achten Sie darauf, dass Sie „Floating IP“ aktivieren.**
@@ -213,7 +218,7 @@ Sie müssen zunächst die virtuellen Computer für diesen NFS-Cluster erstellen.
             * Wiederholen Sie die oben genannten Schritte für Port 2049 und UDP für NW2.
 
 > [!IMPORTANT]
-> Floating IP-Adressen werden für sekundäre NIC-IP-Konfigurationen in Szenarien mit Lastenausgleich nicht unterstützt. Ausführliche Informationen finden Sie unter [Azure Load Balancer – Einschränkungen](https://docs.microsoft.com/azure/load-balancer/load-balancer-multivip-overview#limitations). Wenn Sie zusätzliche IP-Adressen für die VM benötigen, stellen Sie eine zweite NIC bereit.  
+> Floating IP-Adressen werden für sekundäre NIC-IP-Konfigurationen in Szenarien mit Lastenausgleich nicht unterstützt. Weitere Informationen finden Sie unter [Azure Load Balancer – Einschränkungen](../../../load-balancer/load-balancer-multivip-overview.md#limitations). Wenn Sie zusätzliche IP-Adressen für die VM benötigen, stellen Sie eine zweite NIC bereit.  
 
 > [!Note]
 > Wenn virtuelle Computer ohne öffentliche IP-Adressen im Back-End-Pool einer internen Azure Load Balancer Standard-Instanz (ohne öffentliche IP-Adresse) platziert werden, liegt keine ausgehende Internetverbindung vor, sofern nicht in einer zusätzlichen Konfiguration das Routing an öffentliche Endpunkte zugelassen wird. Ausführliche Informationen zum Erreichen ausgehender Konnektivität finden Sie unter [Public endpoint connectivity for Virtual Machines using Azure Standard Load Balancer in SAP high-availability scenarios](./high-availability-guide-standard-load-balancer-outbound-connections.md) (Konnektivität mit öffentlichen Endpunkten für virtuelle Computer mithilfe von Azure Load Balancer Standard in SAP-Szenarien mit Hochverfügbarkeit).  

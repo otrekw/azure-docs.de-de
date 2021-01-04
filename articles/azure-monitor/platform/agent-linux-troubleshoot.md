@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
 ms.openlocfilehash: 13959c4a3c798656efdc72b5c8e5f96e4fb2392a
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94375345"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011896"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>Behandeln von Problemen mit dem Log Analytics-Agent für Linux 
 
@@ -92,9 +92,9 @@ Wir haben festgestellt, dass eine saubere Neuinstallation des Agents die meisten
 | NOT_DEFINED | Da die erforderlichen Abhängigkeiten nicht installiert sind, wird das Plug-In „auoms auditd“ nicht installiert. | Bei der Installation von auoms ist ein Fehler aufgetreten. Installieren Sie das auditd-Paket. |
 | 2 | Für das Shellbündel wurde eine ungültige Option angegeben. Führen Sie `sudo sh ./omsagent-*.universal*.sh --help` aus, um Informationen zur Verwendung anzuzeigen. |
 | 3 | Für das Shellbündel wurde keine Option angegeben. Führen Sie `sudo sh ./omsagent-*.universal*.sh --help` aus, um Informationen zur Verwendung anzuzeigen. |
-| 4 | Ungültiger Pakettyp ODER ungültige Proxyeinstellungen. omsagent- *rpm*.sh-Pakete können nur auf RPM-basierten Systemen installiert werden, und omsagent- *deb*.sh-Pakete können nur auf Debian-basierten Systemen installiert werden. Es wird empfohlen, den universellen Installer der [aktuellen Version](../learn/quick-collect-linux-computer.md#install-the-agent-for-linux) zu verwenden. Überprüfen Sie auch Ihre Proxyeinstellungen. |
+| 4 | Ungültiger Pakettyp ODER ungültige Proxyeinstellungen. omsagent-*rpm*.sh-Pakete können nur auf RPM-basierten Systemen installiert werden, und omsagent-*deb*.sh-Pakete können nur auf Debian-basierten Systemen installiert werden. Es wird empfohlen, den universellen Installer der [aktuellen Version](../learn/quick-collect-linux-computer.md#install-the-agent-for-linux) zu verwenden. Überprüfen Sie auch Ihre Proxyeinstellungen. |
 | 5 | Das Shellbündel muss als Root-Benutzer ausgeführt werden, ODER während des Onboardings wurde ein Fehler 403 zurückgegeben. Führen Sie den Befehl mit `sudo` aus. |
-| 6 | Ungültige Paketarchitektur ODER während des Onboardings wurde ein Fehler 200 zurückgegeben. omsagent- *x64.sh-Pakete können nur auf 64-Bit-Systemen installiert werden, und omsagent-* x86.sh-Pakete können nur auf 32-Bit-Systemen installiert werden. Laden Sie das richtige Paket für Ihre Architektur aus der [aktuellen Version](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/latest) herunter. |
+| 6 | Ungültige Paketarchitektur ODER während des Onboardings wurde ein Fehler 200 zurückgegeben. omsagent-*x64.sh-Pakete können nur auf 64-Bit-Systemen installiert werden, und omsagent-* x86.sh-Pakete können nur auf 32-Bit-Systemen installiert werden. Laden Sie das richtige Paket für Ihre Architektur aus der [aktuellen Version](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/latest) herunter. |
 | 17 | Fehler bei der Installation des OMS-Pakets. Suchen Sie in der Ausgabe des Befehls nach der Grundursache des Fehlers. |
 | 19 | Fehler bei der Installation des OMI-Pakets. Suchen Sie in der Ausgabe des Befehls nach der Grundursache des Fehlers. |
 | 20 | Fehler bei der Installation des SCX-Pakets. Suchen Sie in der Ausgabe des Befehls nach der Grundursache des Fehlers. |
@@ -427,7 +427,7 @@ Dieser Fehler weist darauf hin, dass die Linux-Diagnoseerweiterung (LAD) paralle
 1. Vergewissern Sie sich, dass das Onboarding in Azure Monitor erfolgreich war, indem Sie überprüfen, ob die folgende Datei vorhanden ist: `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsadmin.conf`. Falls dies nicht der Fall ist, führen Sie einen der folgenden Schritte aus:  
 
   1. Wiederholen Sie das Onboarding mithilfe der [Anweisungen](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/OMS-Agent-for-Linux.md#onboarding-using-the-command-line) der Befehlszeile „omsadmin.sh“.
-  2. Vergewissern Sie sich im Azure-Portal unter **Erweiterte Einstellungen** , dass die Einstellung **Apply the following configuration to my Linux Servers** (Die nachstehende Konfiguration auf meine Linux-Server anwenden) aktiviert ist.  
+  2. Vergewissern Sie sich im Azure-Portal unter **Erweiterte Einstellungen**, dass die Einstellung **Apply the following configuration to my Linux Servers** (Die nachstehende Konfiguration auf meine Linux-Server anwenden) aktiviert ist.  
 
 2. Überprüfen Sie, ob der `omsconfig`-Agent mit Azure Monitor kommunizieren kann, indem Sie den Befehl `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/GetDscConfiguration.py'` ausführen.  Dieser Befehl gibt die Konfiguration zurück, die der Agent vom Dienst empfängt (einschließlich der Syslog-Einstellungen, Linux-Leistungsindikatoren und benutzerdefinierten Protokolle). Falls bei diesem Befehl ein Fehler auftritt, führen Sie den folgenden Befehl aus: `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/PerformRequiredConfigurationChecks.py'`. Dieser Befehl erzwingt die Kommunikation des omsconfig-Agents mit Azure Monitor und das Abrufen der aktuellen Konfiguration.
 

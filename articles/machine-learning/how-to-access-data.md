@@ -10,13 +10,13 @@ ms.author: sihhu
 author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 11/03/2020
-ms.custom: how-to, contperfq1, devx-track-python, data4ml
-ms.openlocfilehash: 7f2c7e99117c338d07abc2ed8760c2be18955d66
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.custom: how-to, contperf-fy21q1, devx-track-python, data4ml
+ms.openlocfilehash: bb63ac6de6c48bb3853bd235d908ee745ff5279d
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94489300"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97032846"
 ---
 # <a name="connect-to-storage-services-on-azure"></a>Herstellen einer Verbindung mit Speicherdiensten in Azure
 
@@ -80,7 +80,7 @@ Datenspeicher unterstützen derzeit das Speichern von Verbindungsinformationen i
 
 Es wird empfohlen, einen Datenspeicher für einen [Azure-Blobcontainer](../storage/blobs/storage-blobs-introduction.md) zu erstellen. Für Blobs stehen sowohl der Standard- als auch der Premiumspeicher zur Verfügung. Der Premiumspeicher ist zwar teurer, ermöglicht aber höhere Durchsätze. Dies kann sich vor allem bei einem Training mit einem großen Dataset positiv auf die Ausführungsgeschwindigkeit auswirken. Informationen zu den Kosten für Speicherkonten finden Sie unter [Azure-Preisrechner](https://azure.microsoft.com/pricing/calculator/?service=machine-learning-service).
 
-[Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json) baut auf Azure Blob Storage auf und ist für Big Data-Analysen in Unternehmen ausgelegt. Ein wesentlicher Bestandteil von Data Lake Storage Gen2 ist das Hinzufügen eines [hierarchischen Namespace](../storage/blobs/data-lake-storage-namespace.md) zum Blobspeicher. Der hierarchische Namespace organisiert Objekte/Dateien in einer Hierarchie von Verzeichnissen für den effizienten Datenzugriff.
+[Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) baut auf Azure Blob Storage auf und ist für Big Data-Analysen in Unternehmen ausgelegt. Ein wesentlicher Bestandteil von Data Lake Storage Gen2 ist das Hinzufügen eines [hierarchischen Namespace](../storage/blobs/data-lake-storage-namespace.md) zum Blobspeicher. Der hierarchische Namespace organisiert Objekte/Dateien in einer Hierarchie von Verzeichnissen für den effizienten Datenzugriff.
 
 ## <a name="storage-access-and-permissions"></a>Speicherzugriff und Berechtigungen
 
@@ -112,7 +112,7 @@ Informationen zu Kontoschlüssel, SAS-Token und Dienstprinzipal finden Sie im [A
 > * Wenn Sie Ihre Zugriffsschlüssel für ein Azure Storage-Konto (Kontoschlüssel oder SAS-Token) ändern müssen, stellen Sie sicher, dass die neuen Anmeldeinformationen mit Ihrem Arbeitsbereich und den damit verbundenen Datenspeichern synchronisiert werden. Eine Anleitung zum Synchronisieren Ihrer aktualisierten Anmeldeinformationen finden Sie [hier](how-to-change-storage-access-key.md). 
 ### <a name="permissions"></a>Berechtigungen
 
-Stellen Sie für Azure-Blobcontainer und Azure Data Lake Gen2-Speicher sicher, dass Ihre Anmeldeinformationen für die Authentifizierung über den Zugriff **Storage-Blobdatenleser** verfügen. Erfahren Sie mehr über [Storage-Blobdatenleser](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader). Ein Konto-SAS-Token besitzt standardmäßig keine Berechtigungen. 
+Stellen Sie für Azure-Blobcontainer und Azure Data Lake Gen2-Speicher sicher, dass Ihre Anmeldeinformationen für die Authentifizierung über den Zugriff **Storage-Blobdatenleser** verfügen. Erfahren Sie mehr über [Storage-Blobdatenleser](../role-based-access-control/built-in-roles.md#storage-blob-data-reader). Ein Konto-SAS-Token besitzt standardmäßig keine Berechtigungen. 
 * Für den **Lesezugriff** auf Daten müssen Ihre Anmeldeinformationen für die Authentifizierung mindestens die Berechtigungen zum Auflisten und Lesen für Container und Objekte besitzen. 
 
 * Für den **Datenschreibzugriff** sind auch Berechtigungen zum Schreiben und Hinzufügen erforderlich.
@@ -180,7 +180,7 @@ file_datastore = Datastore.register_azure_file_share(workspace=ws,
 
 Für einen Datenspeicher von Azure Data Lake Storage Generation 2 (ADLS Gen 2) verwenden Sie [register_azure_data_lake_gen2()](/python/api/azureml-core/azureml.core.datastore.datastore?preserve-view=true&view=azure-ml-py#&preserve-view=trueregister-azure-data-lake-gen2-workspace--datastore-name--filesystem--account-name--tenant-id--client-id--client-secret--resource-url-none--authority-url-none--protocol-none--endpoint-none--overwrite-false-), um einen Datenspeicher für Anmeldeinformationen zu registrieren, der mit einem Azure DataLake Gen 2-Speicher mit [Dienstprinzipalberechtigungen](../active-directory/develop/howto-create-service-principal-portal.md) verbunden ist.  
 
-Damit Sie Ihren Dienstprinzipal nutzen können, müssen Sie [Ihre Anwendung registrieren](../active-directory/develop/app-objects-and-service-principals.md) und dem Dienstprinzipal die Zugriffsberechtigung **Storage-Blobdatenleser** zuweisen. Erfahren Sie mehr über die [für ADLS Gen 2 eingerichtete Zugriffssteuerung](../storage/blobs/data-lake-storage-access-control.md). 
+Damit Sie Ihren Dienstprinzipal nutzen können, müssen Sie [Ihre Anwendung registrieren](../active-directory/develop/app-objects-and-service-principals.md) und dem Dienstprinzipal Datenzugriff über die rollenbasierte Zugriffssteuerung in Azure (Azure RBAC) oder Zugriffssteuerungslisten (ACL) gewähren. Erfahren Sie mehr über die [für ADLS Gen 2 eingerichtete Zugriffssteuerung](../storage/blobs/data-lake-storage-access-control-model.md). 
 
 Der folgende Code erstellt den Datenspeicher `adlsgen2_datastore_name` und registriert ihn im Arbeitsbereich `ws`. Dieser Datenspeicher greift auf das Dateisystem `test` im `account_name`-Speicherkonto zu und verwendet dazu die bereitgestellten Anmeldeinformationen des Dienstprinzipals. Lesen Sie den Abschnitt [Speicherzugriff und Berechtigungen](#storage-access-and-permissions), um Informationen zu Szenarios für virtuelle Netzwerke zu erhalten und um zu erfahren, wo Sie die erforderlichen Anmeldeinformationen für die Authentifizierung finden. 
 

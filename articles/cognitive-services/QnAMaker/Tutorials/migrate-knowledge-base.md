@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: how-to
 ms.date: 11/09/2020
-ms.openlocfilehash: 4378a648b8b7a545c9e4b638d08592aa32fff3aa
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: c89ab375cb02824a08ff57e6b5278dd9299126ff
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427665"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350924"
 ---
 # <a name="migrate-a-knowledge-base-using-export-import"></a>Migrieren einer Knowledge Base durch Exportieren und Importieren
 
@@ -34,7 +34,7 @@ Die Migration einer Wissensdatenbank erfordert den Export aus einer vorhandenen 
 1. Melden Sie sich beim [QnA Maker-Portal](https://qnamaker.ai) an.
 1. Wählen Sie die ursprüngliche Wissensdatenbank aus, die Sie migrieren möchten.
 
-1. Wählen Sie auf der Seite **Settings** (Einstellungen) die Option **Wissensdatenbank exportieren** (Export knowledge base), um eine TSV-Datei mit dem Inhalt der ursprünglichen Wissensdatenbank herunterzuladen, d. h. Fragen, Antworten, Metadaten, Folgeaufforderungen und die Namen der Datenquellen, aus denen sie extrahiert wurden. Die QnA-IDs, die mit den Fragen und Antworten exportiert werden, können mithilfe der [Update-API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update) zum Aktualisieren eines bestimmten QnA-Paares verwendet werden. Die QnA-ID für ein bestimmtes QnA-Paar bleibt über mehrere Exportvorgänge hinweg unverändert.
+1. Wählen Sie auf der Seite **Settings** (Einstellungen) die Option **Wissensdatenbank exportieren** (Export knowledge base), um eine TSV-Datei mit dem Inhalt der ursprünglichen Wissensdatenbank herunterzuladen, d. h. Fragen, Antworten, Metadaten, Folgeaufforderungen und die Namen der Datenquellen, aus denen sie extrahiert wurden. Die QnA-IDs, die mit den Fragen und Antworten exportiert werden, können mithilfe der [Update-API](/rest/api/cognitiveservices/qnamaker/knowledgebase/update) zum Aktualisieren eines bestimmten QnA-Paares verwendet werden. Die QnA-ID für ein bestimmtes QnA-Paar bleibt über mehrere Exportvorgänge hinweg unverändert.
 
 1. Wählen Sie im oberen Menü die Option **Create a knowledge base** (Wissensdatenbank erstellen) aus, um eine _leere_ Wissensdatenbank zu erstellen. Sie ist leer, da Sie bei ihrer Erstellung keine URLs oder Dateien hinzufügen werden. Diese werden nach der Erstellung während des Importschritts hinzugefügt.
 
@@ -59,16 +59,16 @@ Die Migration kann programmgesteuert über die folgenden REST-APIs ausgeführt w
 
 **Export**
 
-* [Herunterladen der Wissensdatenbank-API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker4.0/knowledgebase/download)
+* [Herunterladen der Wissensdatenbank-API](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase/download)
 
 **Importieren**
 
-* [Ersetzen der API (erneutes Laden mit der gleichen Wissensdatenbank-ID)](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker4.0/knowledgebase/replace)
-* [Erstellen der API (Laden mit der neuen Wissensdatenbank-ID)](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker4.0/knowledgebase/create)
+* [Ersetzen der API (erneutes Laden mit der gleichen Wissensdatenbank-ID)](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase/replace)
+* [Erstellen der API (Laden mit der neuen Wissensdatenbank-ID)](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase/create)
 
 
 ## <a name="chat-logs-and-alterations"></a>Chatprotokolle und Varianten
-Varianten (Synonyme) ohne Berücksichtigung von Groß-/Kleinbuchstaben werden nicht automatisch importiert. Verwenden Sie die [V4-APIs](https://go.microsoft.com/fwlink/?linkid=2092179), um die Änderungen in die neue Wissensdatenbank zu verschieben.
+Varianten (Synonyme) ohne Berücksichtigung von Groß-/Kleinbuchstaben werden nicht automatisch importiert. Verwenden Sie die [V4-APIs](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase), um die Änderungen in die neue Wissensdatenbank zu verschieben.
 
 Die Migration von Chatprotokollen ist nicht möglich, da die neue Wissensdatenbank Application Insights zum Speichern von Chatprotokollen verwendet.
 

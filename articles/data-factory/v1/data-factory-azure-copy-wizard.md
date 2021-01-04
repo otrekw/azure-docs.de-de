@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 10/26/2020
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 55a27dbb6c2ec3569bae9d6fb96fcd8087f08daf
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 99c7490c4bf842da119a3a0abd4623c64d720ac8
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637665"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462223"
 ---
 # <a name="azure-data-factory-copy-wizard"></a>Kopier-Assistent in Azure Data Factory
 
@@ -48,7 +48,7 @@ Sie können eine Vorschau für einen Teil der Daten aus der ausgewählten Datenq
 Das Schema der Eingabedaten stimmt nicht in jedem Fall mit dem Schema der Ausgabedaten überein. In diesem Szenario müssen die Spalten des Quellschemas den Spalten des Zielschemas zugeordnet werden.
 
 > [!TIP]
-> Beim Kopieren von Daten aus SQL Server oder Azure SQL-Datenbank in Azure Synapse Analytics (vormals SQL Data Warehouse) unterstützt Data Factory die automatische Tabellenerstellung anhand des Quellschemas, wenn die Tabelle im Zielspeicher nicht vorhanden ist. Weitere Informationen finden Sie unter [Verschieben von Daten in und aus Azure Synapse Analytics mithilfe von Azure Data Factory](./data-factory-azure-sql-data-warehouse-connector.md).
+> Beim Kopieren von Daten aus SQL Server oder Azure SQL-Datenbank in Azure Synapse Analytics unterstützt Data Factory die automatische Tabellenerstellung anhand des Quellschemas, wenn die Tabelle im Zielspeicher nicht vorhanden ist. Weitere Informationen finden Sie unter [Verschieben von Daten in und aus Azure Synapse Analytics mithilfe von Azure Data Factory](./data-factory-azure-sql-data-warehouse-connector.md).
 
 Verwenden Sie eine Dropdownliste, um eine Spalte aus dem Quellschema auszuwählen, die einer Spalte im Zielschema zugeordnet werden soll. Der Kopier-Assistent versucht, das Muster für die Spaltenzuordnung zu verstehen. Er wendet das gleiche Muster auf die restlichen Spalten an, damit Sie nicht jede Spalte einzeln auswählen müssen, um die Schemazuordnung abzuschließen. Falls gewünscht, können Sie diese Zuordnungen überschreiben, indem Sie mithilfe der Dropdownlisten die Spalten einzeln zuordnen. Das Muster wird genauer, wenn Sie mehr Spalten zugeordnet haben. Der Kopier-Assistent aktualisiert das Muster ständig und erreicht letztlich das richtige Muster für die Spaltenzuordnung, die Sie erreichen möchten.     
 
@@ -74,11 +74,11 @@ Angenommen, Sie haben Eingabeordner im folgenden Format:
 ...
 ```
 
-Klicken Sie auf die Schaltfläche **Durchsuchen** für **Datei oder Ordner** , navigieren Sie zu einem der Ordner (z.B. 2016->03->01->02), und klicken Sie auf **Auswählen**. Das Textfeld sollte jetzt `2016/03/01/02` enthalten. Ersetzen Sie nun **2016** durch **{year}** , **03** durch **{month}** , **01** durch **{day}** , **02** durch **{hour}** , und drücken Sie die **TAB** -TASTE. Daraufhin werden Dropdownlisten zum Auswählen des Formats für diese vier Variablen angezeigt:
+Klicken Sie auf die Schaltfläche **Durchsuchen** für **Datei oder Ordner**, navigieren Sie zu einem der Ordner (z.B. 2016->03->01->02), und klicken Sie auf **Auswählen**. Das Textfeld sollte jetzt `2016/03/01/02` enthalten. Ersetzen Sie nun **2016** durch **{year}** , **03** durch **{month}** , **01** durch **{day}** , **02** durch **{hour}** , und drücken Sie die **TAB**-TASTE. Daraufhin werden Dropdownlisten zum Auswählen des Formats für diese vier Variablen angezeigt:
 
 ![Verwenden von Systemvariablen](./media/data-factory-copy-wizard/blob-standard-variables-in-folder-path.png)   
 
-Sie können auch eine **benutzerdefinierte** Variable und beliebige [unterstützte Formatzeichenfolgen](/dotnet/standard/base-types/custom-date-and-time-format-strings)verwenden (siehe Screenshot unten). Um einen Ordner mit dieser Struktur auszuwählen, verwenden Sie zunächst die Schaltfläche **Durchsuchen** . Ersetzen Sie dann einen Wert mit **{custom}** , und drücken Sie die **TAB** -TASTE, um das Textfeld anzuzeigen, in dem Sie die Formatzeichenfolge eingeben können.     
+Sie können auch eine **benutzerdefinierte** Variable und beliebige [unterstützte Formatzeichenfolgen](/dotnet/standard/base-types/custom-date-and-time-format-strings)verwenden (siehe Screenshot unten). Um einen Ordner mit dieser Struktur auszuwählen, verwenden Sie zunächst die Schaltfläche **Durchsuchen** . Ersetzen Sie dann einen Wert mit **{custom}** , und drücken Sie die **TAB**-TASTE, um das Textfeld anzuzeigen, in dem Sie die Formatzeichenfolge eingeben können.     
 
 ![Verwenden von benutzerdefinierten Variablen](./media/data-factory-copy-wizard/blob-custom-variables-in-folder-path.png)
 
@@ -94,19 +94,19 @@ Ein einmaliger Kopiervorgang ermöglicht nur einmal das Verschieben von Daten au
 In diesem Abschnitt werden die gängigen Problembehandlungsmethoden für den Kopier-Assistenten in Azure Data Factory beschrieben.
 
 > [!NOTE] 
-> Diese Tipps zur Problembehandlung beziehen sich auf den Kopier-Assistenten in Version 1 von Data Factory. Informationen für Data Factory-Version 2 finden Sie im Leitfaden zur Problembehandlung unter [Problembehandlung für Azure Data Factory](https://docs.microsoft.com/azure/data-factory/data-factory-ux-troubleshoot-guide).
+> Diese Tipps zur Problembehandlung beziehen sich auf den Kopier-Assistenten in Version 1 von Data Factory. Informationen für Data Factory-Version 2 finden Sie im Leitfaden zur Problembehandlung unter [Problembehandlung für Azure Data Factory](../data-factory-ux-troubleshoot-guide.md).
 
 ### <a name="error-code-unable-to-validate-in-copy-wizard"></a>Fehlercode: Unable to validate in Copy Wizard (Kann nicht im Kopier-Assistenten überprüft werden)
 
 - **Symptome:** Im ersten Schritt des Kopier-Assistenten tritt die Warnung „Unable to validate“ (Kann nicht überprüft werden) auf.
-- **Ursachen** : Dies könnte auftreten, wenn alle Drittanbietercookies deaktiviert sind.
+- **Ursachen**: Dies könnte auftreten, wenn alle Drittanbietercookies deaktiviert sind.
 - **Lösung:** 
     - Verwenden der Browser „Internet Explorer“ und „Microsoft Edge“.
     - Wenn Sie den Chrome-Browser verwenden, befolgen Sie die Anleitung unten, um unten Ausnahmen für Cookies für *microsoftonline.com* und *windows.net* hinzuzufügen.
         1.  Öffnen Sie den Chrome-Browser.
         2.  Klicken Sie auf das Schraubendrehersymbol bzw. auf die drei Linien auf der rechten Seite (Customize and control Google Chrome (Anpassen und Steuern von Google Chrome)).
         3.  Klicken Sie auf **Einstellungen**.
-        4.  Suchen Sie nach **Cookies** , oder navigieren Sie unter „Advanced Settings“ (Erweiterte Einstellungen) zu **Privacy** (Datenschutz).
+        4.  Suchen Sie nach **Cookies**, oder navigieren Sie unter „Advanced Settings“ (Erweiterte Einstellungen) zu **Privacy** (Datenschutz).
         5.  Klicken Sie auf **Content Settings** (Inhaltseinstellungen).    
         6.  Cookies sollten auf **allow local data to be set (recommended)** (lokale Daten dürfen festgelegt werden (empfohlen)) festgelegt werden.
         7.  Klicken Sie auf **Manage exceptions** (Ausnahmen verwalten). Geben Sie unter **hostname pattern** (Hostnamemuster) Folgendes ein, und sorgen Sie dafür, dass für das Verhalten **Allow** (Erlauben) festgelegt ist.
@@ -125,7 +125,7 @@ In diesem Abschnitt werden die gängigen Problembehandlungsmethoden für den Kop
 ### <a name="error-code-unable-to-open-login-page-and-enter-password"></a>Fehlercode: Unable to open login page and enter password (Das Öffnen der Anmeldeseite und das Eingeben eines Kennworts ist nicht möglich)
 
 - **Symptome:** Der Kopier-Assistent leitet Sie zur Anmeldeseite weiter. Diese wird jedoch nicht erfolgreich angezeigt.
-- **Ursachen** : Dieses Problem kann auftreten, wenn Sie die Netzwerkumgebung von einem Büronetzwerk in ein privates Netzwerk geändert haben. In Browsern gibt es Zwischenspeicher. 
+- **Ursachen**: Dieses Problem kann auftreten, wenn Sie die Netzwerkumgebung von einem Büronetzwerk in ein privates Netzwerk geändert haben. In Browsern gibt es Zwischenspeicher. 
 - **Lösung:** 
     1.  Schließen Sie den Browser, und versuchen Sie es noch mal. Fahren Sie mit dem nächsten Schritt fort, wenn das Problem weiterhin besteht.   
     2.  Wenn Sie den Internet Explorer verwenden, versuchen Sie, ihn im privaten Modus zu öffnen. Drücken Sie dazu STRG + UMSCHALT + P. Wenn Sie Chrome verwenden, versuchen Sie, ihn im Inkognitomodus zu öffnen. Drücken Sie dazu STRG + UMSCHALT + N. Fahren Sie mit dem nächsten Schritt fort, wenn das Problem weiterhin besteht. 

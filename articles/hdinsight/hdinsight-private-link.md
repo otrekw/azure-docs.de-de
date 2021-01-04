@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: 3c6bee570312009af5fbdf42a018ad2b387662d9
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: fac26c616c977eedc466f004a9455297ec995fb8
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422296"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352540"
 ---
 # <a name="secure-and-isolate-azure-hdinsight-clusters-with-private-link-preview"></a>Schützen und Isolieren von Azure HDInsight-Clustern mit Private Link (Vorschauversion)
 
@@ -86,7 +86,8 @@ Die folgende Abbildung enthält ein Beispiel für die privaten DNS-Einträge, di
 
 :::image type="content" source="media/hdinsight-private-link/access-private-clusters.png" alt-text="Diagramm: Private Link-Architektur":::
 
-## <a name="arm-template-properties"></a>Eigenschaften von ARM-Vorlagen
+## <a name="how-to-create-clusters"></a>Wie werden Cluster erstellt?
+### <a name="use-arm-template-properties"></a>Verwenden der Eigenschaften von ARM-Vorlagen
 
 Der folgende JSON-Codeausschnitt enthält die beiden Netzwerkeigenschaften, die Sie in Ihrer ARM-Vorlage konfigurieren müssen, um einen privaten HDInsight-Cluster zu erstellen.
 
@@ -98,6 +99,13 @@ networkProperties: {
 ```
 
 Eine vollständige Vorlage mit vielen dieser HDInsight-Sicherheitsfunktionen für Unternehmen, z. B. Private Link, finden Sie im Artikel zur [Enterprise-Sicherheitsvorlage für HDInsight](https://github.com/Azure-Samples/hdinsight-enterprise-security/tree/main/ESP-HIB-PL-Template).
+
+### <a name="use-azure-powershell"></a>Verwenden von Azure PowerShell
+
+Informationen zur Verwendung von PowerShell finden Sie [hier](/powershell/module/az.hdinsight/new-azhdinsightcluster?view=azps-5.1.0#example-4--create-an-azure-hdinsight-cluster-with-relay-outbound-and-private-link-feature) in dem Beispiel.
+
+### <a name="use-azure-cli"></a>Mithilfe der Azure-Befehlszeilenschnittstelle
+Informationen zur Verwendung der Azure CLI finden Sie [hier](/cli/azure/hdinsight?view=azure-cli-latest#az_hdinsight_create-examples) in dem Beispiel.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

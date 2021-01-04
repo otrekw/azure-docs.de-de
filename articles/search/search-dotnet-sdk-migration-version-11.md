@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 11/10/2020
+ms.date: 12/02/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 90fc356929a9ea5713a8d359dfaa83286017b8f8
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 260df85f3e380e40d153fc17ce77bd56ca068982
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445437"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96532821"
 ---
 # <a name="upgrade-to-azure-cognitive-search-net-sdk-version-11"></a>Upgrade auf Version 11 des Azure Cognitive Search .NET SDK
 
-Wenn Sie die Version 10.0 oder eine frühere Version des [.NET SDK](/dotnet/api/overview/azure/search) verwenden, unterstützt dieser Artikel Sie beim Upgrade auf Version 11.
+Wenn Sie Version 10.0 oder eine ältere Version des [.NET SDK](/dotnet/api/overview/azure/search) verwenden, hilft Ihnen dieser Artikel dabei, ein Upgrade auf Version 11 und die Clientbibliothek **Azure.Search.Documents** durchzuführen.
 
 Version 11 ist eine vollständig neu gestaltete Clientbibliothek, die vom Azure SDK-Entwicklungsteam freigegeben wurde (frühere Versionen wurden vom Azure Cognitive Search-Entwicklungsteam erstellt). Die Bibliothek wurde neu gestaltet, um eine größere Konsistenz mit anderen Azure-Clientbibliotheken zu erreichen. Dabei wurde eine Abhängigkeit von [Azure.Core](/dotnet/api/azure.core) und [System.Text.Json](/dotnet/api/system.text.json) berücksichtigt und bewährte Ansätze für gängige Aufgaben implementiert.
 
@@ -141,7 +141,7 @@ Die folgenden Features der Version 10 sind noch nicht in Version 11 verfügbar
 
 ## <a name="steps-to-upgrade"></a>Schritte zum Upgrade
 
-Mit den folgenden Schritten können Sie eine Codemigration beginnen, indem Sie die ersten erforderlichen Aufgaben durchgehen, insbesondere im Hinblick auf die Clientverweise.
+Mit den folgenden Schritten können Sie eine Codemigration beginnen, indem Sie die ersten erforderlichen Schritte absolvieren (insbesondere im Hinblick auf Clientverweise).
 
 1. Installieren Sie das [Azure.Search.Documents-Paket](https://www.nuget.org/packages/Azure.Search.Documents/), indem Sie mit der rechten Maustaste auf Ihre Projektreferenzen klicken und in Visual Studio „NuGet-Pakete verwalten...“ auswählen.
 
@@ -170,7 +170,7 @@ Mit den folgenden Schritten können Sie eine Codemigration beginnen, indem Sie d
 
 1. Fügen Sie neue Clientverweise für indexerbezogene Objekte hinzu. Wenn Sie Indexer, Datenquellen oder Skillsets verwenden, ändern Sie die Clientverweise in [SearchIndexerClient](/dotnet/api/azure.search.documents.indexes.searchindexerclient). Dieser Client ist in Version 11 neu und hat keine Vorgängerversion.
 
-1. Sammlungen wurden überarbeitet. Im neuen SDK sind alle Listen schreibgeschützt, um Downstreamprobleme zu vermeiden, wenn die Liste NULL-Werte enthält. Der Code muss so geändert werden, dass Elemente in eine Liste eingefügt werden. Anstatt beispielsweise einer Select-Eigenschaft Zeichenfolgen zuzuweisen, fügen Sie diese wie folgt hinzu:
+1. Überarbeiten Sie Sammlungen und Listen. Im neuen SDK sind alle Listen schreibgeschützt, um Downstreamprobleme zu vermeiden, wenn die Liste NULL-Werte enthält. Der Code muss so geändert werden, dass Elemente in eine Liste eingefügt werden. Anstatt beispielsweise einer Select-Eigenschaft Zeichenfolgen zuzuweisen, fügen Sie diese wie folgt hinzu:
 
    ```csharp
    var options = new SearchOptions
@@ -188,11 +188,13 @@ Mit den folgenden Schritten können Sie eine Codemigration beginnen, indem Sie d
     options.Select.Add("LastRenovationDate");
    ```
 
+   „Select“, „Facets“, „SearchFields“, „SourceFields“, „ScoringParameters“ und „OrderBy“ sind jeweils Listen, die nun rekonstruiert werden müssen.
+
 1. Aktualisieren Sie Clientverweise für Abfragen und Datenimport. Instanzen von [SearchIndexClient](/dotnet/api/microsoft.azure.search.searchindexclient) müssen in [SearchClient](/dotnet/api/azure.search.documents.searchclient) geändert werden. Stellen Sie sicher, dass Sie alle Instanzen abfangen, bevor Sie mit dem nächsten Schritt fortfahren, um Namensverwechslungen zu vermeiden.
 
-1. Aktualisieren Sie Clientverweise für Index-, Indexer-, Synonymzuordnungs- und Analysetoolobjekte. Instanzen von [SearchServiceClient](/dotnet/api/microsoft.azure.search.searchserviceclient) müssen in [SearchIndexClient](/dotnet/api/microsoft.azure.search.searchindexclient) geändert werden. 
+1. Aktualisieren Sie Clientverweise für Index-, Synonymzuordnungs- und Analysetoolobjekte. Instanzen von [SearchServiceClient](/dotnet/api/microsoft.azure.search.searchserviceclient) müssen in [SearchIndexClient](/dotnet/api/microsoft.azure.search.searchindexclient) geändert werden. 
 
-1. Aktualisieren Sie die Klassen, Methoden und Eigenschaften so weit wie möglich, um die APIs der neuen Bibliothek zu verwenden. Sie können mit dem Abschnitt [Benennungsunterschiede](#naming-differences) beginnen oder auch das [Änderungsprotokoll](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/CHANGELOG.md) einsehen.
+1. Aktualisieren Sie in Ihrem restlichen Code die Klassen, Methoden und Eigenschaften, um die APIs der neuen Bibliothek zu verwenden. Sie können mit dem Abschnitt [Benennungsunterschiede](#naming-differences) beginnen oder auch das [Änderungsprotokoll](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/CHANGELOG.md) einsehen.
 
    Wenn Sie Schwierigkeiten haben, entsprechende APIs zu finden, schlagen wir vor, ein Problem unter [https://github.com/MicrosoftDocs/azure-docs/issues](https://github.com/MicrosoftDocs/azure-docs/issues) zu melden, damit wir die Dokumentation verbessern oder das Problem untersuchen können.
 

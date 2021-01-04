@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 11/06/2020
-ms.openlocfilehash: 66da9124a6b46fa34d0a13c8992cd3141b095422
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: a67a721b8d94112347282e1cd9be4d43f4ac85da
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94369827"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96744634"
 ---
 # <a name="configure-a-managed-application-plan"></a>Konfigurieren eines Plans für verwaltete Anwendungen
 
@@ -135,10 +135,10 @@ Aktivieren Sie das Kontrollkästchen **Just-in-Time-Zugriff (JIT) aktivieren**, 
 
 Wählen Sie als Bereitstellungsmodus entweder **Vollständig** oder **Inkrementell** aus.
 
-- Im Modus **Vollständig** führt eine erneute Bereitstellung der Anwendung durch den Kunden zur Entfernung von Ressourcen aus der verwalteten Ressourcengruppe, wenn die Ressourcen nicht in der Datei [mainTemplate.json](/azure/azure-resource-manager/managed-applications/publish-service-catalog-app?tabs=azure-powershell#create-the-arm-template.md) definiert sind.
+- Im Modus **Vollständig** führt eine erneute Bereitstellung der Anwendung durch den Kunden zur Entfernung von Ressourcen aus der verwalteten Ressourcengruppe, wenn die Ressourcen nicht in der Datei [mainTemplate.json](../azure-resource-manager/managed-applications/publish-service-catalog-app.md?tabs=azure-powershell#create-the-arm-template) definiert sind.
 - Im Modus **Inkrementell** bleiben bestehende Ressourcen bei einer erneuten Bereitstellung der Anwendung unverändert.
 
-Weitere Informationen zu den Bereitstellungsmodi finden Sie unter [Azure Resource Manager-Bereitstellungsmodi](/azure/azure-resource-manager/deployment-modes.md).
+Weitere Informationen zu den Bereitstellungsmodi finden Sie unter [Azure Resource Manager-Bereitstellungsmodi](../azure-resource-manager/templates/deployment-modes.md).
 
 ### <a name="provide-a-notification-endpoint-url"></a>Angeben einer URL für den Benachrichtigungsendpunkt
 
@@ -188,4 +188,4 @@ Die Aktionen, die in der Spalte **Aktion** der Registerkarte **Planübersicht** 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Testen und Veröffentlichen eines Azure-Anwendungsangebots](create-new-azure-apps-offer-test-publish.md)
-- Erfahren Sie, wie Sie die Programme „Co-Selling mit Microsoft“ und „Verkaufen über CSPs“ für die [Vermarktung Ihres Azure-Anwendungsangebots](create-new-azure-apps-offer-marketing.md) nutzen.
+- Erfahren Sie, wie Sie die Programme „Co-Selling mit Microsoft“ und „Verkaufen über CSPs“ für das [Vermarkten Ihres Azure-Anwendungsangebots](create-new-azure-apps-offer-marketing.md) nutzen.

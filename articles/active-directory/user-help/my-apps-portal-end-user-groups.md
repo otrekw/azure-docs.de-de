@@ -13,11 +13,11 @@ ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
 ms.openlocfilehash: cff1298f12d26b1260213d75701c282e0a82511d
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93124151"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96004149"
 ---
 # <a name="update-your-groups-info-on-the-my-apps-portal"></a>Aktualisieren Ihrer Gruppeninformationen im Portal „Meine Apps“
 
@@ -128,7 +128,7 @@ Wenn Ihre Organisation dies zulässt, können Sie eine Office 365-Gruppe erneuer
 
     ![Verlängern einer Office 365-Gruppe und deren Ablaufdatum](media/my-apps-portal/my-apps-portal-renew-group-link.png)
 
-2. Klicken Sie auf **OK** , um die Bestätigungsmeldung zu schließen.
+2. Klicken Sie auf **OK**, um die Bestätigungsmeldung zu schließen.
 
     Nachdem Sie die Seite aktualisiert haben, werden unter **Zuletzt erneuert** und **Gruppenablauf** die aktualisierten Datumsangaben angezeigt.
 

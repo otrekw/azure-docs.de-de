@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/27/2020
-ms.openlocfilehash: dfc812771f0eeb8dcb0d95bdad1e76ed0b12297e
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 7f56ff94c4dcf276accc56e8d1076266099d635d
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92754219"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96780704"
 ---
 # <a name="how-to-plan-a-consulting-service-offer-in-the-commercial-marketplace"></a>Planen eines Angebots für einen Beratungsdienst im kommerziellen Marketplace
 
@@ -27,7 +27,21 @@ Angebote für Beratungsdienste werden als Angebot des Typs **Kontakt mit mir auf
 
 ## <a name="primary-products-and-online-stores"></a>Primäre Produkte und Onlinestores
 
-Jedes Angebot für einen Beratungsdienst sollte sich auf ein Microsoft-Produkt konzentrieren, ein sogenanntes **primäres Produkt**. Das in Partner Center ausgewählte primäre Produkt bestimmt, ob Ihr Angebot in Microsoft AppSource oder im Azure Marketplace veröffentlicht wird.
+Jeder Beratungsdienst muss sich auf eines dieser Microsoft-Produkte konzentrieren, das im Angebot als **primäres Produkt** bezeichnet wird:
+
+|Hauptprodukt                               |                   |
+|-------------------------------|-------------------|
+|Azure                          |Dynamics 365 Project Service Automation |
+|Dynamics 365 Business Central  |Dynamics 365 Sales |
+|Dynamics 365 Commerce          |Dynamics 365 Supply Chain Management |
+|Dynamics 365 Customer Insights |Microsoft 365 |
+|Dynamics 365 Customer Service  |Power Apps |
+|Dynamics 365 Field Service     |Power Automate |
+|Dynamics 365 Finance           |Power BI |
+|Dynamics 365 Marketing         |Power Virtual Agents |
+|    |    |
+
+Das in Partner Center ausgewählte primäre Produkt bestimmt, ob Ihr Angebot in Microsoft AppSource oder im Azure Marketplace veröffentlicht wird.
 
 * Wenn das primäre Produkt Ihres Beratungsdiensts Azure ist, wird das Angebot im Azure Marketplace aufgeführt.
 * Wenn es sich bei dem primären Produkt nicht um Azure handelt, wird das Angebot in AppSource veröffentlicht.
@@ -36,7 +50,7 @@ Weitere Informationen zu den Unterschieden zwischen AppSource und dem Azure Mark
 
 ## <a name="eligibility-requirements"></a>Qualifizierungsanforderungen
 
-Sie müssen vor dem Veröffentlichen eines Angebots für einen Beratungsdienst mehrere Eignungsanforderungen erfüllen, um den Kunden gegenüber Ihr Fachwissen auf einem Gebiet nachzuweisen. Die Anforderungen hängen vom Kernprodukt Ihres Angebots ab. Die komplette Liste der Eignungsanforderungen für die einzelnen primären Produkte finden Sie in den [Zertifizierungsrichtlinien für Beratungsdienste](https://docs.microsoft.com/legal/marketplace/certification-policies#800-consulting-services).
+Sie müssen vor dem Veröffentlichen eines Angebots für einen Beratungsdienst mehrere Eignungsanforderungen erfüllen, um den Kunden gegenüber Ihr Fachwissen auf einem Gebiet nachzuweisen. Die Anforderungen hängen vom Kernprodukt Ihres Angebots ab. Die komplette Liste der Eignungsanforderungen für die einzelnen primären Produkte finden Sie in den [Zertifizierungsrichtlinien für Beratungsdienste](/legal/marketplace/certification-policies#800-consulting-services).
 
 > [!NOTE]
 > Für einige primäre Produkte benötigen Sie die Microsoft-Kompetenz „Gold“ oder „Silver“ in ihrem Lösungsbereich. Weitere Informationen finden Sie unter [Kompetenzen für das Microsoft Partner Network](https://partner.microsoft.com/membership/competencies).
@@ -84,17 +98,18 @@ Wenn Sie ein Angebot für einen Beratungsdienst in Partner Center erstellen, fü
 
 Um das Angebot einfacher zu gestalten, können Sie einige dieser Elemente vorab vorbereiten. Die folgenden Elemente sind erforderlich, sofern nicht anders angegeben:
 
-**Name** : Dieser Name wird als Titel Ihrer Angebotsliste im kommerziellen Marketplace angezeigt. Der Name ist möglicherweise markenrechtlich geschützt. Er darf keine Emojis (mit Ausnahme des Markenzeichen- und Copyrightsymbols) enthalten und ist auf 50 Zeichen begrenzt. Der Name muss die Dauer und den Typ des angebotenen Beratungsdiensts angeben, um eine maximale Suchmaschinenoptimierung zu erzielen. Das erforderliche Format ist wie folgt: *Name: Dauer + Typ*. Fügen Sie den Namen Ihres Unternehmens nur dann ein, wenn es sich auch um den Produktnamen handelt. Im Folgenden finden Sie einige Beispiele:
+**Name**: Dieser Name wird als Titel Ihrer Angebotsliste im kommerziellen Marketplace angezeigt. Der Name ist möglicherweise markenrechtlich geschützt. Er darf keine Emojis (mit Ausnahme des Markenzeichen- und Copyrightsymbols) enthalten und ist auf 50 Zeichen begrenzt. Der Name muss die Dauer und den Typ des angebotenen Beratungsdiensts angeben, um eine maximale Suchmaschinenoptimierung zu erzielen. Das erforderliche Format ist wie folgt: *Name: Dauer + Typ*. Fügen Sie den Namen Ihres Unternehmens nur dann ein, wenn es sich auch um den Produktnamen handelt. Im Folgenden finden Sie einige Beispiele:
 
 |Nicht zulässig |Sagen Sie: . |
 |---|---|
 |Erste Schritte mit Azure IoT in der Fertigung |IoT in der Fertigung: 2-Tag Bewertung |
 |Workshop zu intelligenten Toastern |Intelligente Toaster: Woche-1 Workshop |
 |PoC für SQL Server-Migration von Contoso |SQL-Migration: 3-tägige Proof of Concept-Verifizierung |
+| | |
 
-**Zusammenfassung der Suchergebnisse** : Beschreiben Sie den Zweck oder das Ziel Ihres Angebots in höchstens 200 Zeichen. Diese Zusammenfassung wird in den Suchergebnissen verwendet, die aus den Angeboten im kommerziellen Marketplace erfasst werden. Sie sollte nicht mit dem Titel identisch sein. Fügen Sie ggf. Ihre wichtigsten SEO-Schlüsselwörter ein.
+**Zusammenfassung der Suchergebnisse**: Beschreiben Sie den Zweck oder das Ziel Ihres Angebots in höchstens 200 Zeichen. Diese Zusammenfassung wird in den Suchergebnissen verwendet, die aus den Angeboten im kommerziellen Marketplace erfasst werden. Sie sollte nicht mit dem Titel identisch sein. Fügen Sie ggf. Ihre wichtigsten SEO-Schlüsselwörter ein.
 
-**Beschreibung** : Diese Beschreibung wird im Angebot im kommerziellen Marketplace angezeigt. Fügen Sie gegebenenfalls auch ein Nutzenversprechen, die wichtigsten Vorteile, die beabsichtigte Benutzerbasis und alle Kategorie- oder Branchenverbände hinzu.
+**Beschreibung**: Diese Beschreibung wird im Angebot im kommerziellen Marketplace angezeigt. Fügen Sie gegebenenfalls auch ein Nutzenversprechen, die wichtigsten Vorteile, die beabsichtigte Benutzerbasis und alle Kategorie- oder Branchenverbände hinzu.
 
 Halten Sie sich beim Verfassen der Beschreibung für die jeweiligen Diensttypen an die folgenden Kriterien:
 
@@ -105,6 +120,7 @@ Halten Sie sich beim Verfassen der Beschreibung für die jeweiligen Diensttypen 
 |Implementierung |Fügen Sie eine detaillierte Agenda für Implementierungen hinzu, die länger als einen Tag dauern, und erläutern Sie, welche Entwicklungsänderungen, technischen oder andere Artefakte ein Kunde als Ergebnis des Auftrags erwarten kann. |
 |Proof of Concept |Beschreiben Sie, welche Entwicklungsänderungen oder technischen oder anderen Artefakte ein Kunde als Ergebnis des Auftrags erwarten kann. |
 |Workshop |Fügen Sie je nach Dauer Ihres Angebots eine detaillierte Tages-, Wochen- oder Monatsagenda hinzu. Formulieren Sie die Lernziele oder andere Ergebnisse Ihres Workshops. |
+| | |
 
 Hier einige Tipps zum Verfassen Ihrer Beschreibung:
 
@@ -142,6 +158,11 @@ Befolgen Sie die folgenden Richtlinien für Ihre Logos:
 **Marketplace-Medien – Screenshots:** Fügen Sie mindestens ein und bis zu fünf Bilder hinzu, die Ihr Angebot veranschaulichen. Alle Bilder müssen 1.280 × 720 Pixel groß sein und im PNG-Format vorliegen.
 
 **Marketplace-Medien – Videos** (optional): Sie können bis zu vier Videos hinzufügen, die Ihr Angebot veranschaulichen. Die Videos müssen auf YouTube oder Vimeo gehostet werden und eine Vorschauminiatur aufweisen (1280 × 720, PNG-Datei).
+
+## <a name="pricing-and-availability"></a>Preise und Verfügbarkeit
+
+Ihr Beratungsdienstangebot kann in einem oder mehreren Ländern oder Regionen zur Verfügung gestellt werden. Sie können in Partner Center den Preis für jeden ausgewählten Markt festlegen. Eine umfassende Liste der unterstützten Märkte und Währungen finden Sie unter [Geografische Verfügbarkeit und Unterstützung von Währungen für den kommerziellen Marketplace](./marketplace-geo-availability-currencies.md).
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

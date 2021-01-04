@@ -1,22 +1,22 @@
 ---
 title: Verwalten von Ressourcen und Kontingenten
 titleSuffix: Azure Machine Learning
-description: Enthält eine Beschreibung der Kontingente für Azure Machine Learning-Ressourcen und der Anforderung von Kontingenterhöhungen.
+description: Enthält eine Beschreibung der Kontingente und Grenzwerte für Azure Machine Learning-Ressourcen und der Anforderung von Kontingenterhöhungen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: jmartens
 author: nishankgu
 ms.author: nigup
-ms.date: 10/13/2020
+ms.date: 12/1/2020
 ms.topic: conceptual
-ms.custom: troubleshooting,contperfq4, contperfq2
-ms.openlocfilehash: 9bcf6ac9991c1ad070f823c97b5bd0460eff07c2
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: troubleshooting,contperf-fy20q4, contperf-fy21q2
+ms.openlocfilehash: 58dacc9e65da6502d083446cb7202c222cb7e795
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93309087"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97034036"
 ---
 # <a name="manage-and-increase-quotas-for-resources-with-azure-machine-learning"></a>Verwalten und Erhöhen der Kontingente für Ressourcen mit Azure Machine Learning
 
@@ -45,28 +45,32 @@ Neben dem Verwalten von Kontingenten können Sie sich darüber informieren, wie 
 
 In diesem Abschnitt erfahren Sie mehr über die standardmäßigen und maximalen Kontingentgrenzwerte für die folgenden Ressourcen:
 
++ Azure Machine Learning-Ressourcen
+  + Azure Machine Learning Compute
+  + Azure Machine Learning-Pipelines
 + Virtuelle Computer
-+ Azure Machine Learning Compute
-+ Azure Machine Learning-Pipelines
 + Azure Container Instances
 + Azure Storage
 
 > [!IMPORTANT]
 > Änderungen bei Limits bleiben vorbehalten. Aktuelle allgemeine Informationen zu Azure finden Sie unter [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../azure-resource-manager/management/azure-subscription-service-limits.md).
 
-### <a name="virtual-machines"></a>Virtuelle Computer
-Jedes Azure-Abonnement verfügt über einen Grenzwert für die Anzahl virtueller Computer für alle Dienste. Für die Kerne virtueller Computer gilt ein regionaler Gesamtgrenzwert und ein regionaler Grenzwert pro Größenserie. Beide Grenzwerte werden separat erzwungen.
+### <a name="azure-machine-learning-assets"></a>Azure Machine Learning-Ressourcen
+Die folgenden Grenzwerte für Ressourcen gelten pro Arbeitsbereich. 
 
-Angenommen, Sie verwenden ein Abonnement mit einem Kerngesamtgrenzwert von 30 für VMs in der Region „USA, Osten“, einem Kerngrenzwert von 30 für die A-Serie und einem Kerngrenzwert von 30 für die D-Serie. Für dieses Abonnement dürfen dann 30 virtuelle A1-Computer bzw. 30 virtuelle D1-Computer bereitgestellt werden, oder eine Kombination der beiden, bei der die Gesamtzahl von 30 Kernen nicht überschritten wird.
+| **Ressource** | **Maximales Limit** |
+| --- | --- |
+| Datasets | 10 Millionen |
+| Ausführungen | 10 Millionen |
+| Modelle | 10 Millionen|
+| Artifacts | 10 Millionen |
 
-Sie können Grenzwerte für virtuelle Computer nicht über die in der folgenden Tabelle angegebenen Werte hinaus erhöhen.
-
-[!INCLUDE [azure-subscription-limits-azure-resource-manager](../../includes/azure-subscription-limits-azure-resource-manager.md)]
+Darüber hinaus beträgt die maximale **Laufzeit** 30 Tage, und die maximale Anzahl von **Metriken, die pro Ausführung protokolliert werden** beträgt 1 Million.
 
 ### <a name="azure-machine-learning-compute"></a>Azure Machine Learning Compute
-[Azure Machine Learning Compute](concept-compute-target.md#azure-machine-learning-compute-managed) verfügt über eine Standardkontingentgrenze für die Anzahl von Kernen und eindeutigen Computeressourcen, die pro Region in einem Abonnement zulässig sind. Dieses Kontingent ist von dem VM-Kernkontingent aus dem vorherigen Abschnitt getrennt.
+[Azure Machine Learning Compute](concept-compute-target.md#azure-machine-learning-compute-managed) verfügt über Standardkontingentgrenzen für die Anzahl von Kernen (aufgeteilt nach VM-Serie und kumulierter Kernanzahl) und die Anzahl von eindeutigen Computeressourcen, die pro Region in einem Abonnement zulässig sind. Diese Kontingente sind unabhängig von dem im vorherigen Abschnitt aufgelisteten Kontingent für VM-Kerne, da dieses nur für die verwalteten Computeressourcen von Azure Machine Learning gilt.
 
-[Fordern Sie eine Kontingenterhöhung an](#request-quota-increases), um die Grenzwerte in diesem Abschnitt bis zu dem in der Tabelle angegebenen maximalen Grenzwert zu erhöhen.
+[Fordern Sie eine Erhöhung des Kontingents an](#request-quota-increases), um die Grenzwerte für die Kernkontingente verschiedener VM-Serien, die Kernkontingente des gesamten Abonnements und die Ressourcen in diesem Abschnitt anzuheben.
 
 Verfügbare Ressourcen:
 + **Dedizierte Kerne pro Region** haben je nach Typ Ihres Abonnementangebots einen Standardgrenzwert von 24 bis 300. Sie können die Anzahl dedizierter Kerne pro Abonnement für jede VM-Familie erhöhen. Spezialisierte VM-Familien wie die Serien NCv2, NCv3 oder ND beginnen mit einem Standardwert von null Kernen.
@@ -75,12 +79,19 @@ Verfügbare Ressourcen:
 
 + Für **Cluster pro Region** gilt der Standardgrenzwert 200. Diese werden von einem Trainingscluster und einer Compute-Instanz gemeinsam verwendet. (Eine Compute-Instanz wird in Bezug auf Kontingente als Cluster mit nur einem Knoten angesehen.)
 
-In der folgenden Tabelle sind weitere Grenzwerte angegeben, die Sie nicht überschreiten dürfen.
+> [!TIP]
+> Weitere Informationen dazu, für welche VM-Serie eine Erhöhung des Kontingents angefordert werden sollte, finden Sie unter [Größen virtueller Computer in Azure](https://docs.microsoft.com/azure/virtual-machines/sizes). Beispielsweise beginnen VMs der GPU-VM-Serien mit einem „N“ in der Hauptbezeichnung (z. B. NCv3-Serie).
 
-| **Ressource** | **Maximales Limit** |
+In der folgenden Tabelle sind weitere Grenzwerte der Plattform angegeben. Wenden Sie sich über ein **technisches** Supportticket an das Produktteam von Azure ML, um eine Ausnahme anzufordern.
+
+| **Ressource oder Aktion** | **Maximales Limit** |
 | --- | --- |
 | Arbeitsbereiche pro Ressourcengruppe | 800 |
-| Knoten in einer einzelnen Ressource von Azure Machine Learning Compute (AmlCompute) | 100 Knoten |
+| Knoten in einem einzelnen Azure Machine Learning Compute-**Cluster** (AmlCompute), der als nicht kommunikationsfähiger Pool eingerichtet ist (d. h., er kann keine MPI-Aufträge ausführen) | 100 Knoten (konfigurierbar bis 65.000 Knoten) |
+| Knoten in einem einzelnen parallelen Ausführungsschritt, die in einem Azure Machine Learning Compute-Cluster (AmlCompute) **ausgeführt** werden | 100 Knoten (konfigurierbar bis 65.000 Knoten, wenn Ihr Cluster wie oben beschrieben für die Skalierung eingerichtet ist) |
+| Knoten in einem einzelnen Azure Machine Learning Compute-**Cluster** (AmlCompute), der als kommunikationsfähiger Pool eingerichtet ist | 300 Knoten (konfigurierbar bis 4.000 Knoten) |
+| Knoten in einem einzelnen Azure Machine Learning Compute-**Cluster** (AmlCompute), der als kommunikationsfähiger Pool in einer RDMA-fähigen VM-Serie eingerichtet ist | 100 Knoten |
+| Knoten in einem einzelnen MPI, die in einem Azure Machine Learning Compute-Cluster (AmlCompute) **ausgeführt** werden | 100 Knoten (erweiterbar auf 300 Knoten) |
 | GPU MPI-Prozesse pro Knoten | 1–4 |
 | GPU-Worker pro Knoten | 1–4 |
 | Lebensdauer von Aufträgen | 21 Tage<sup>1</sup> |
@@ -90,13 +101,22 @@ In der folgenden Tabelle sind weitere Grenzwerte angegeben, die Sie nicht übers
 <sup>1</sup> Die maximale Lebensdauer bezieht sich auf die Zeitspanne zwischen dem Start und Ende einer Ausführung. Abgeschlossene Ausführungen bleiben unbegrenzt erhalten. Daten für Ausführungen, die nicht innerhalb der maximalen Lebensdauer abgeschlossen wurden, sind nicht verfügbar.
 <sup>2</sup> Aufträge auf einem Knoten niedriger Priorität können vorzeitig entfernt werden, wenn eine Kapazitätseinschränkung besteht. Wir empfehlen Ihnen, in Ihrem Auftrag Prüfpunkte zu implementieren.
 
-### <a name="azure-machine-learning-pipelines"></a>Azure Machine Learning-Pipelines
+#### <a name="azure-machine-learning-pipelines"></a>Azure Machine Learning-Pipelines
 Für [Azure Machine Learning-Pipelines](concept-ml-pipelines.md) gelten die unten angegebenen Grenzwerte.
 
 | **Ressource** | **Begrenzung** |
 | --- | --- |
 | Schritte in einer Pipeline | 30.000 |
 | Arbeitsbereiche pro Ressourcengruppe | 800 |
+
+### <a name="virtual-machines"></a>Virtuelle Computer
+Jedes Azure-Abonnement verfügt über einen Grenzwert für die Anzahl virtueller Computer für alle Dienste. Für die Kerne virtueller Computer gilt ein regionaler Gesamtgrenzwert und ein regionaler Grenzwert pro Größenserie. Beide Grenzwerte werden separat erzwungen.
+
+Angenommen, Sie verwenden ein Abonnement mit einem Kerngesamtgrenzwert von 30 für VMs in der Region „USA, Osten“, einem Kerngrenzwert von 30 für die A-Serie und einem Kerngrenzwert von 30 für die D-Serie. Für dieses Abonnement dürfen dann 30 virtuelle A1-Computer bzw. 30 virtuelle D1-Computer bereitgestellt werden, oder eine Kombination der beiden, bei der die Gesamtzahl von 30 Kernen nicht überschritten wird.
+
+Sie können Grenzwerte für virtuelle Computer nicht über die in der folgenden Tabelle angegebenen Werte hinaus erhöhen.
+
+[!INCLUDE [azure-subscription-limits-azure-resource-manager](../../includes/azure-subscription-limits-azure-resource-manager.md)]
 
 ### <a name="container-instances"></a>Container Instances
 
@@ -139,7 +159,7 @@ Verwenden Sie das Azure-Portal, um Ihr Kontingent für verschiedene Azure-Ressou
 
 Sie verwalten das Azure Machine Learning Compute-Kontingent für Ihr Abonnement getrennt von anderen Azure-Kontingenten: 
 
-1. Navigieren Sie im Azure-Portal zu Ihrem **Azure Machine Learning** -Arbeitsbereich.
+1. Navigieren Sie im Azure-Portal zu Ihrem **Azure Machine Learning**-Arbeitsbereich.
 
 2. Wählen Sie im linken Bereich im Abschnitt **Support + Problembehandlung** die Option **Nutzung + Kontingente** aus, um Ihre aktuellen Kontingentgrenzen und die Nutzung anzuzeigen.
 
@@ -181,7 +201,7 @@ Verwenden Sie die folgenden Schritte, um eine Zuteilung für diese Szenarien anz
     | Problemtyp | **Konfiguration und Sicherheit von Arbeitsbereichen** |
     | Problemuntertyp | **Zuteilungsanforderung für private Endpunkte und private DNS-Zonen** |
 
-2. Verwenden Sie im Abschnitt __Details__ das Feld __Beschreibung__ , um die Azure-Region und das gewünschte Szenario anzugeben. Wenn Sie Kontingenterhöhungen für mehrere Abonnements anfordern müssen, geben Sie in diesem Feld die Abonnement-IDs an.
+2. Verwenden Sie im Abschnitt __Details__ das Feld __Beschreibung__, um die Azure-Region und das gewünschte Szenario anzugeben. Wenn Sie Kontingenterhöhungen für mehrere Abonnements anfordern müssen, geben Sie in diesem Feld die Abonnement-IDs an.
 
 3. Wählen Sie __Erstellen__ aus, um die Anforderung zu erstellen.
 

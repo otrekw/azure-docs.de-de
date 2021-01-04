@@ -3,16 +3,17 @@ title: Anbieter von Azure Monitor für SAP-Lösungen | Microsoft-Dokumentation
 description: Dieser Artikel bietet Antworten auf häufig gestellte Fragen zu Azure Monitor für SAP-Lösungsanbieter.
 author: rdeltcheva
 ms.service: virtual-machines
+ms.subservice: workloads
 ms.topic: article
 ms.date: 06/30/2020
 ms.author: radeltch
 ms.reviewer: cynthn
-ms.openlocfilehash: f5df8bccc10ca64ee9a04f195299c5228b7274c1
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 056eba8694d1727350809121f763181e3cdbdc64
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94356449"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968603"
 ---
 # <a name="azure-monitor-for-sap-solutions-providers-preview"></a>Anbieter von Azure Monitor für SAP-Lösungen (Vorschau)
 

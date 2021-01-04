@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/06/2020
-ms.openlocfilehash: 4cb707896aa7874aa2bf287723e8a53d7d6d974c
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 45bc3aaf5217c626e2593b4eda861eaace2a8be2
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94577786"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96620408"
 ---
 # <a name="plan-an-azure-application-offer-for-the-commercial-marketplace"></a>Planen eines Azure-Anwendungsangebots für den kommerziellen Marketplace
 
@@ -33,18 +33,18 @@ Das Entwerfen, Erstellen und Testen dieser Azure-Anwendungsangebote erfordert te
 
 Nutzen Sie die folgenden Ressourcen, um Ihr Azure-Anwendungsangebot für den kommerziellen Marketplace zu planen.
 
-- [Verstehen von Azure Resource Manager-Vorlagen](/azure/azure-resource-manager/templates/template-syntax)
+- [Verstehen von Azure Resource Manager-Vorlagen](../azure-resource-manager/templates/template-syntax.md)
 - Schnellstartanleitungen:
     - [Azure-Schnellstartvorlagen](https://azure.microsoft.com/documentation/templates/)
     - [Leitfaden zu bewährten Methoden für Azure-Vorlagen](https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md)
-    - [Veröffentlichen der Anwendungsdefinition](/azure/managed-applications/publish-service-catalog-app)
-    - [Bereitstellen einer Dienstkatalog-App](/azure/managed-applications/deploy-service-catalog-quickstart)
+    - [Veröffentlichen der Anwendungsdefinition](../azure-resource-manager/managed-applications/publish-service-catalog-app.md)
+    - [Bereitstellen einer Dienstkatalog-App](../azure-resource-manager/managed-applications/deploy-service-catalog-quickstart.md)
 - Tutorials:
-    - [Erstellen von Definitionsdateien](/azure/managed-applications/publish-service-catalog-app)
+    - [Erstellen von Definitionsdateien](../azure-resource-manager/managed-applications/publish-service-catalog-app.md)
 - Beispiele:
-    - [Azure-Befehlszeilenschnittstelle](/azure/managed-applications/cli-samples)
-    - [Azure PowerShell](/azure/managed-applications/powershell-samples)
-    - [Verwaltete Anwendungslösungen](/azure/managed-applications/sample-projects)
+    - [Azure-Befehlszeilenschnittstelle](../azure-resource-manager/managed-applications/cli-samples.md)
+    - [Azure PowerShell](../azure-resource-manager/managed-applications/powershell-samples.md)
+    - [Verwaltete Anwendungslösungen](../azure-resource-manager/managed-applications/sample-projects.md)
 
 Das Video [Erstellen von Lösungsvorlagen und verwalteten Anwendungen für den Azure Marketplace](https://channel9.msdn.com/Events/Build/2018/BRK3603) enthält eine ausführliche Einführung in den Angebotstyp „Azure-Anwendung“:
 
@@ -59,12 +59,12 @@ Das Video [Erstellen von Lösungsvorlagen und verwalteten Anwendungen für den A
 
 Wählen Sie eine oder beide der folgenden Skriptumgebungen als Unterstützung bei der Verwaltung Ihrer Azure-Anwendung aus:
 
-- [Azure PowerShell](https://docs.microsoft.com/powershell/azure/)
-- [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure)
+- [Azure PowerShell](/powershell/azure/)
+- [Azure-Befehlszeilenschnittstelle](/cli/azure)
 
 Es empfiehlt sich, dass Sie Ihrer Entwicklungsumgebung die folgenden Tools hinzufügen:
 
-- [Azure Storage-Explorer](/azure/vs-azure-tools-storage-manage-with-storage-explorer)
+- [Azure Storage-Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md)
 - [Visual Studio Code](https://code.visualstudio.com/) mit den folgenden Erweiterungen:
     - Erweiterung: [Azure Resource Manager Tools](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
     - Erweiterung: [Beautify](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
@@ -197,10 +197,10 @@ Sie legen Ihre Vorschauzielgruppe mithilfe von Azure-Abonnement-IDs fest, beglei
 
 Für verwaltete Anwendungen, die Messungsereignisse mithilfe der [Marketplace-Messungsdienst-APIs](partner-center-portal/marketplace-metering-service-apis.md) ausgeben, müssen Sie die Identität angeben, die Ihr Dienst für das Ausgeben von Messungsereignissen verwendet.
 
-Diese Konfiguration ist erforderlich, wenn Sie das [Batchnutzungsereignis](partner-center-portal/marketplace-metering-service-apis.md#metered-billing-batch-usage-event) verwenden möchten. Wenn Sie [Nutzungsereignisse](partner-center-portal/marketplace-metering-service-apis.md#metered-billing-single-usage-event) übermitteln möchten, können Sie [Instance Metadata Service](/azure/active-directory/managed-identities-azure-resources/overview) verwenden, um das [JWT-Bearertoken (JSON Web Token)](partner-center-portal/pc-saas-registration.md#how-to-get-the-publishers-authorization-token) abzurufen.
+Diese Konfiguration ist erforderlich, wenn Sie das [Batchnutzungsereignis](partner-center-portal/marketplace-metering-service-apis.md#metered-billing-batch-usage-event) verwenden möchten. Wenn Sie [Nutzungsereignisse](partner-center-portal/marketplace-metering-service-apis.md#metered-billing-single-usage-event) übermitteln möchten, können Sie [Instance Metadata Service](../active-directory/managed-identities-azure-resources/overview.md) verwenden, um das [JWT-Bearertoken (JSON Web Token)](partner-center-portal/pc-saas-registration.md#how-to-get-the-publishers-authorization-token) abzurufen.
 
-- **Azure Active Directory-Mandanten-ID** (erforderlich): Im Azure-Portal müssen Sie eine [Azure AD-App (Active Directory) erstellen](/azure/active-directory/develop/howto-create-service-principal-portal), damit überprüft werden kann, ob die Verbindung zwischen unseren beiden Diensten über eine authentifizierte Kommunikation erfolgt. Um die [Mandanten-ID](/azure/active-directory/develop/howto-create-service-principal-portal#get-tenant-and-app-id-values-for-signing-in) für Ihre Azure Active Directory-App (Azure AD) zu ermitteln, navigieren Sie in Azure Active Directory zum Blatt [App-Registrierungen](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade). Wählen Sie in der Spalte **Anzeigename** die App aus. Suchen Sie nach **Eigenschaften** und nach der **Verzeichnis-ID (Mandant)** (z. B. `50c464d3-4930-494c-963c-1e951d15360e`).
-- **Azure Active Directory-Anwendungs-ID** (erforderlich): Sie benötigen auch die [Anwendungs-ID](/azure/active-directory/develop/howto-create-service-principal-portal#get-tenant-and-app-id-values-for-signing-in.md) und einen Authentifizierungsschlüssel. Um die Anwendungs-ID zu ermitteln, wechseln Sie in Azure Active Directory zum Blatt [App-Registrierungen](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade). Wählen Sie in der Spalte **Anzeigename** die App aus, und suchen Sie dann nach der **Anwendungs-ID (Client)** (z. B. `50c464d3-4930-494c-963c-1e951d15360e`). Um den Authentifizierungsschlüssel zu suchen, wechseln Sie zu **Einstellungen**, und wählen Sie **Schlüssel** aus. Sie müssen eine Beschreibung und eine Dauer angeben und erhalten dann einen Zahlenwert.
+- **Azure Active Directory-Mandanten-ID** (erforderlich): Im Azure-Portal müssen Sie eine [Azure AD-App (Active Directory) erstellen](../active-directory/develop/howto-create-service-principal-portal.md), damit überprüft werden kann, ob die Verbindung zwischen unseren beiden Diensten über eine authentifizierte Kommunikation erfolgt. Um die [Mandanten-ID](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in) für Ihre Azure Active Directory-App (Azure AD) zu ermitteln, navigieren Sie in Azure Active Directory zum Blatt [App-Registrierungen](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade). Wählen Sie in der Spalte **Anzeigename** die App aus. Suchen Sie nach **Eigenschaften** und nach der **Verzeichnis-ID (Mandant)** (z. B. `50c464d3-4930-494c-963c-1e951d15360e`).
+- **Azure Active Directory-Anwendungs-ID** (erforderlich): Sie benötigen auch die [Anwendungs-ID](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in) und einen Authentifizierungsschlüssel. Um die Anwendungs-ID zu ermitteln, wechseln Sie in Azure Active Directory zum Blatt [App-Registrierungen](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade). Wählen Sie in der Spalte **Anzeigename** die App aus, und suchen Sie dann nach der **Anwendungs-ID (Client)** (z. B. `50c464d3-4930-494c-963c-1e951d15360e`). Um den Authentifizierungsschlüssel zu suchen, wechseln Sie zu **Einstellungen**, und wählen Sie **Schlüssel** aus. Sie müssen eine Beschreibung und eine Dauer angeben und erhalten dann einen Zahlenwert.
 
 > [!NOTE]
 > Die Azure-Anwendungs-ID wird Ihrer Herausgeber-ID zugeordnet und kann nur mit diesem Herausgeberkonto wiederverwendet werden.
@@ -209,8 +209,8 @@ Diese Konfiguration ist erforderlich, wenn Sie das [Batchnutzungsereignis](partn
 
 Sie haben die Möglichkeit, sich für von Microsoft unterstützte Marketing- und Vertriebskanäle zu entscheiden. Wenn Sie Ihr Angebot im Partner Center erstellen, werden gegen Ende des Prozesses zwei Registerkarten angezeigt:
 
-- **Verkauf über CSPs**: Verwenden Sie diese Option, um Microsoft CSP-Partnern (Cloud Solution Providers) zu ermöglichen, Ihre Lösung als Teil eines Bundleangebots weiterzuverkaufen. Weitere Informationen finden Sie unter [Cloud-Lösungsanbieter-Programm](/azure/marketplace/cloud-solution-providers).
-- **Co-Selling mit Microsoft**: Mit dieser Option können die Microsoft-Verkaufsteams Ihre für IP-Co-Selling in Frage kommende Lösung in Betracht ziehen, wenn sie Kundenanforderungen evaluieren. Ausführliche Informationen dazu, wie Sie Ihr Angebot auf die Evaluierung vorbereiten können, finden Sie unter [Co-Selling-Features im Partner Center](partner-center-portal/commercial-marketplace-co-sell.md). Weitere Informationen zum Vermarkten Ihres Angebots über die Microsoft CSP-Partnerkanäle finden Sie unter [Cloud Solution Provider](cloud-solution-providers.md).
+- **Verkauf über CSPs**: Verwenden Sie diese Option, um Microsoft CSP-Partnern (Cloud Solution Providers) zu ermöglichen, Ihre Lösung als Teil eines Bundleangebots weiterzuverkaufen. Weitere Informationen finden Sie unter [Cloud-Lösungsanbieter-Programm](./cloud-solution-providers.md).
+- **Co-Selling mit Microsoft**: Mit dieser Option können die Microsoft-Verkaufsteams Ihre für IP-Co-Selling in Frage kommende Lösung in Betracht ziehen, wenn sie Kundenanforderungen evaluieren. Ausführliche Informationen zum Vorbereiten Ihres Angebots auf die Evaluierung finden Sie unter [Co-Selling-Optionen im kommerziellen Marketplace](commercial-marketplace-co-sell.md). Einzelheiten zu den Anforderungen an das IP-Co-Selling finden Sie unter [Requirements for Co-sell Status](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status) (Anforderungen für den Co-Selling-Status). Weitere Informationen zum Vermarkten Ihres Angebots über die Microsoft CSP-Partnerkanäle finden Sie unter [Cloud Solution Provider](cloud-solution-providers.md).
 
 Weitere Informationen finden Sie unter [Weiten Sie Ihr Cloudgeschäft mit Azure Marketplace aus](https://azuremarketplace.microsoft.com/sell).
 
@@ -224,12 +224,12 @@ Eine allgemeine Anleitung zu Plänen, einschließlich Preismodellen und privaten
 
 Es gibt zwei Typen von Azure-Anwendungsplänen: _Lösungsvorlage_ und _verwaltete Anwendung_. Beide Plantypen unterstützen die Automatisierung der Bereitstellung und die Konfiguration einer Lösung über eine einzelne VM hinaus. Sie können die Bereitstellung mehrerer Ressourcen automatisieren, z. B. VMs, Netzwerke und Speicherressourcen, um komplexe Lösungen wie IaaS-Lösungen bereitzustellen. Bei beiden Plantypen können viele verschiedene Arten von Azure-Ressourcen genutzt werden, einschließlich u. a. VMs.
 
-- Pläne für **Lösungsvorlagen** zählen zu den wichtigsten Optionen für die Veröffentlichung von Lösungen im kommerziellen Marketplace. Pläne für Lösungsvorlagen sind keine Transaktionsangebote im kommerziellen Marketplace. Sie können jedoch zum Bereitstellen bezahlter VM-Angebote verwendet werden, die über den kommerziellen Marketplace abgerechnet werden. Verwenden Sie den Plantyp für Lösungsvorlagen, wenn der Kunde die Lösung verwaltet und die Transaktionen über einen anderen Plan abgerechnet werden. Weitere Informationen zum Erstellen von Lösungsvorlagen finden Sie unter [Was ist Azure Resource Manager?](/azure/azure-resource-manager/resource-group-overview).
+- Pläne für **Lösungsvorlagen** zählen zu den wichtigsten Optionen für die Veröffentlichung von Lösungen im kommerziellen Marketplace. Pläne für Lösungsvorlagen sind keine Transaktionsangebote im kommerziellen Marketplace. Sie können jedoch zum Bereitstellen bezahlter VM-Angebote verwendet werden, die über den kommerziellen Marketplace abgerechnet werden. Verwenden Sie den Plantyp für Lösungsvorlagen, wenn der Kunde die Lösung verwaltet und die Transaktionen über einen anderen Plan abgerechnet werden. Weitere Informationen zum Erstellen von Lösungsvorlagen finden Sie unter [Was ist Azure Resource Manager?](../azure-resource-manager/management/overview.md).
 - Verwenden Sie Pläne für **verwaltete Anwendungen**, um mühelos vollständig verwaltete, schlüsselfertige Anwendungen für Ihre Kunden zu erstellen und bereitzustellen. Sie verfügen über die gleichen Funktionen wie Pläne für Lösungsvorlagen mit einigen wichtigen Unterschieden:
     - Die Ressourcen werden in einer Ressourcengruppe bereitgestellt und vom Herausgeber der App verwaltet. Die Ressourcengruppe befindet sich zwar im Abonnement des Verbrauchers, eine Identität im Mandanten des Herausgebers hat jedoch Zugriff auf die Ressourcengruppe. 
     - Als Herausgeber geben Sie die Kosten für den fortlaufende Support der Lösung an, und Transaktionen erfolgen über den kommerziellen Marketplace.
  
-    Verwenden Sie den Plantyp für verwaltete Anwendungen, wenn Sie oder Ihr Kunde möchten, dass die Lösung von einem Partner verwaltet wird, oder wenn Sie eine abonnementbasierte Lösung bereitstellen. Weitere Informationen zu den Vorteilen und Typen von verwalteten Anwendungen finden Sie unter [Übersicht über verwaltete Azure-Anwendungen](/azure/managed-applications/overview).
+    Verwenden Sie den Plantyp für verwaltete Anwendungen, wenn Sie oder Ihr Kunde möchten, dass die Lösung von einem Partner verwaltet wird, oder wenn Sie eine abonnementbasierte Lösung bereitstellen. Weitere Informationen zu den Vorteilen und Typen von verwalteten Anwendungen finden Sie unter [Übersicht über verwaltete Azure-Anwendungen](../azure-resource-manager/managed-applications/overview.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

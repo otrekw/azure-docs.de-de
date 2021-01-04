@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 11/06/2020
-ms.openlocfilehash: b54e965188be51ec54110bb85d8cda8f01256836
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 461f9354bb3a6eae0af186de8fe9f39c6b5fff2c
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94369766"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96620918"
 ---
 # <a name="how-to-test-and-publish-an-azure-application-offer"></a>Testen und Veröffentlichen eines Azure-Anwendungsangebots
 
@@ -72,4 +72,4 @@ Wenn Fehler bei einem oder mehreren Veröffentlichungsschritten aufgetreten sind
 ## <a name="next-step"></a>Nächster Schritt
 
 - [Zugreifen auf Analysen für den kommerziellen Marketplace in Partner Center](partner-center-portal/analytics.md)
-- Erfahren Sie, wie Sie die Programme „Co-Selling mit Microsoft“ und „Verkaufen über CSPs“ für die [Vermarktung Ihres Azure-Anwendungsangebots](create-new-azure-apps-offer-marketing.md) nutzen.
+- Erfahren Sie, wie Sie die Programme „Co-Selling mit Microsoft“ und „Verkaufen über CSPs“ für das [Verkaufen Ihres Azure-Anwendungsangebots](create-new-azure-apps-offer-marketing.md) nutzen.

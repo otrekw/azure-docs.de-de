@@ -9,16 +9,14 @@ ms.reviewer: jrasnick, garye
 ms.date: 09/25/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: 382ba871f95b3b36c3f819de8d582ba2c5dc358a
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 20f095a058434c36373c30ed2a633db12643814d
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93316086"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96448280"
 ---
-# <a name="machine-learning-capabilities-in-azure-synapse-analytics-workspaces-preview"></a>Machine Learning-Funktionen in Azure Synapse Analytics (Vorschau für Arbeitsbereiche)
-
-[!INCLUDE [preview](../includes/note-preview.md)]
+# <a name="machine-learning-capabilities-in-azure-synapse-analytics"></a>Machine Learning-Funktionen in Azure Synapse Analytics
 
 Azure Synapse Analytics bietet verschiedene Machine Learning-Funktionen. Dieser Artikel bietet einen Überblick darüber, wie Sie Machine Learning im Kontext von Azure Synapse anwenden können.
 
@@ -48,11 +46,11 @@ Dank [Azure Data Factory](/azure/data-factory/introduction), einem nativ integri
 
 Ein wichtiger Teil des Machine Learning-Prozesses ist es, die Daten mittels Durchsuchen und Visualisierungen zu verstehen.
 
-Abhängig davon, wo die Daten gespeichert sind, bietet Synapse eine Reihe verschiedener Tools zum Durchsuchen und Vorbereiten der Daten für die Analyse und für Machine Learning. Eine der schnellsten Möglichkeiten, um mit dem Durchsuchen von Daten zu beginnen, ist die Verwendung von Apache Spark oder serverlosen Synapse SQL-Pools direkt über Daten in Data Lake.
+Abhängig davon, wo die Daten gespeichert sind, bietet Synapse eine Reihe verschiedener Tools zum Durchsuchen und Vorbereiten der Daten für die Analyse und für Machine Learning. Eine der schnellsten Möglichkeiten, um mit dem Durchsuchen von Daten zu beginnen, ist die Verwendung von Apache Spark oder serverlosen SQL-Pools direkt über Daten im Data Lake.
 
 * [Apache Spark für Azure Synapse](../spark/apache-spark-overview.md) bietet Funktionen zum Transformieren, Vorbereiten und Untersuchen Ihrer Daten im großen Stil. Diese Spark-Pools bieten Tools wie PySpark/Python, Scala und .NET für die Datenverarbeitung im großen Stil. Mithilfe leistungsfähiger Visualisierungsbibliotheken lässt sich die Datenuntersuchungserfahrung verbessern, um die Daten besser verstehen zu können. [Weitere Informationen über die Vorgehensweise beim Durchsuchen und Visualisieren von Daten in Synapse mithilfe von Spark](../get-started-analyze-spark.md).
 
-* [Serverlose Synapse SQL-Pools](../sql/on-demand-workspace-overview.md) bieten eine Möglichkeit, Daten mithilfe von TSQL direkt über Data Lake zu durchsuchen. Serverlose Synapse SQL-Pools bieten auch einige integrierte Visualisierungen in Synapse Studio. [Weitere Informationen zur Vorgehensweise beim Durchsuchen von Daten mit serverlosen Synapse SQL-Pools](../get-started-analyze-sql-on-demand.md).
+* [Serverlose SQL-Pools](../sql/on-demand-workspace-overview.md) bieten eine Möglichkeit, Daten mithilfe von TSQL direkt über den Data Lake zu durchsuchen. Serverlose SQL-Pools bieten auch einige integrierte Visualisierungen in Synapse Studio. [Weitere Informationen zur Vorgehensweise beim Durchsuchen von Daten mit serverlosen SQL-Pools](../get-started-analyze-sql-on-demand.md)
 
 ### <a name="modeling"></a>Modellierung
 

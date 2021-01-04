@@ -1,36 +1,39 @@
 ---
 title: 'Tutorial: Zugriff auf Speicher durch die Web-App über verwaltete Identitäten | Azure'
-description: In diesem Tutorial wird beschrieben, wie Sie im Namen einer App mit verwalteten Identitäten auf Azure-Speicher zugreifen.
+description: In diesem Tutorial wird beschrieben, wie Sie für eine App mit verwalteten Identitäten auf Azure-Speicher zugreifen.
 services: storage, app-service-web
 author: rwike77
 manager: CelesteDG
 ms.service: app-service-web
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 11/09/2020
+ms.date: 11/30/2020
 ms.author: ryanwi
 ms.reviewer: stsoneff
-ms.openlocfilehash: de179ad1e310df1fdeaed2173a83076922f3dccc
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.custom: azureday1
+ms.openlocfilehash: 72b1d4fe864c23c0ac065e47d96ab0c78866defa
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94428354"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96435840"
 ---
 # <a name="tutorial-access-azure-storage-from-a-web-app"></a>Tutorial: Zugreifen auf Azure-Speicher über eine Web-App
 
-Es wird beschrieben, wie Sie im Namen einer Web-App (kein angemeldeter Benutzer), die in Azure App Service ausgeführt wird, auf Azure-Speicher zugreifen.
+Es wird beschrieben, wie Sie für eine Web-App (kein angemeldeter Benutzer), die in Azure App Service ausgeführt wird, mit verwalteten Identitäten auf Azure-Speicher zugreifen.
 
-:::image type="content" alt-text="Zugreifen auf Speicher" source="./media/scenario-secure-app-access-storage/web-app-access-storage.svg" border="false":::
+:::image type="content" alt-text="Diagramm: Zugreifen auf Speicher" source="./media/scenario-secure-app-access-storage/web-app-access-storage.svg" border="false":::
 
-Sie möchten den Zugriff auf die Azure-Datenebene (Azure Storage, SQL Azure, Azure Key Vault oder andere Dienste) über Ihre Web-App hinzufügen.  Sie können auch einen gemeinsam verwendeten Schlüssel nutzen. In diesem Fall müssen Sie sich aber Gedanken über den sicheren Betrieb machen – also darüber, wer das Geheimnis erstellen, bereitstellen und verwalten kann.  Darüber hinaus kann es sein, dass der Schlüssel in GitHub eingecheckt wird – und Hacker wissen, wie man einen entsprechenden Scanvorgang zur Ermittlung durchführt. Eine sicherere Möglichkeit, wie Sie für Ihre Web-App den Zugriff auf Daten ermöglichen können, ist die Verwendung von [verwalteten Identitäten](/azure/active-directory/managed-identities-azure-resources/overview). Mit einer verwalteten Identität über Azure Active Directory können App Services per rollenbasierter Zugriffssteuerung (Role-Based Access Control, RBAC) auf Ressourcen zugreifen, ohne dass die App-Anmeldeinformationen benötigt werden. Nachdem Sie Ihrer Web-App eine verwaltete Identität zugewiesen haben, kümmert sich Azure um die Erstellung und Verteilung eines Zertifikats.  Die Benutzer müssen sich keine Gedanken über die Verwaltung von Geheimnissen oder App-Anmeldeinformationen machen.
+Sie möchten den Zugriff auf die Azure-Datenebene (Azure Storage, Azure SQL-Datenbank, Azure Key Vault oder andere Dienste) über Ihre Web-App hinzufügen. Sie können auch einen gemeinsam verwendeten Schlüssel nutzen. In diesem Fall müssen Sie sich aber Gedanken über den sicheren Betrieb machen – also darüber, wer das Geheimnis erstellen, bereitstellen und verwalten kann. Darüber hinaus kann es sein, dass der Schlüssel in GitHub eingecheckt wird – und Hacker wissen, wie man einen entsprechenden Scanvorgang zur Ermittlung durchführt. Eine sicherere Möglichkeit, wie Sie für Ihre Web-App den Zugriff auf Daten ermöglichen können, ist die Verwendung von [verwalteten Identitäten](../active-directory/managed-identities-azure-resources/overview.md).
+
+Mit einer verwalteten Identität über Azure Active Directory (Azure AD) können App Services per rollenbasierter Zugriffssteuerung (Role-Based Access Control, RBAC) auf Ressourcen zugreifen, ohne dass die App-Anmeldeinformationen benötigt werden. Nachdem Sie Ihrer Web-App eine verwaltete Identität zugewiesen haben, kümmert sich Azure um die Erstellung und Verteilung eines Zertifikats. Die Benutzer müssen sich keine Gedanken über die Verwaltung von Geheimnissen oder App-Anmeldeinformationen machen.
 
 In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
 >
 > * Erstellen einer systemseitig zugewiesenen verwalteten Identität in einer Web-App
-> * Erstellen eines Speicherkontos und Blobspeichercontainers
+> * Erstellen eines Speicherkontos und eines Azure Blob Storage-Containers
 > * Zugreifen auf Speicher über eine Web-App mit verwalteten Identitäten
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
@@ -39,19 +42,19 @@ In diesem Tutorial lernen Sie Folgendes:
 
 * Eine unter Azure App Service ausgeführte Webanwendung, für die das [App Service-Modul für die Authentifizierung/Autorisierung aktiviert ist](scenario-secure-app-authentication-app-service.md).
 
-## <a name="enable-managed-identity-on-app"></a>Aktivieren einer verwalteten Identität für die App
+## <a name="enable-managed-identity-on-an-app"></a>Aktivieren einer verwalteten Identität in einer App
 
-Wenn Sie Ihre Web-App mit Visual Studio erstellen und veröffentlichen, wird die verwaltete Identität für Sie in Ihrer App aktiviert. Wählen Sie auf Ihrer App Service-Instanz im linken Navigationsbereich die Option **Identität** und dann **Vom System zugewiesen** aus.  Vergewissern Sie sich, dass der **Status** auf **Ein** festgelegt ist.  Falls nicht: Klicken Sie auf **Speichern** und dann auf **Ja**, um die systemseitig zugewiesene verwaltete Identität zu aktivieren.  Wenn die verwaltete Identität aktiviert ist, ist der Status auf *Ein* festgelegt, und die Objekt-ID ist verfügbar.
+Wenn Sie Ihre Web-App mit Visual Studio erstellen und veröffentlichen, wird die verwaltete Identität für Sie in Ihrer App aktiviert. Wählen Sie auf Ihrer App Service-Instanz im linken Bereich die Option **Identität** und dann **Vom System zugewiesen** aus. Vergewissern Sie sich, dass der **Status** auf **Ein** festgelegt ist. Falls nicht: Wählen Sie **Speichern** und dann **Ja** aus, um die systemseitig zugewiesene verwaltete Identität zu aktivieren. Wenn die verwaltete Identität aktiviert ist, ist der Status auf **Ein** festgelegt, und die Objekt-ID ist verfügbar.
 
-:::image type="content" alt-text="Systemzugewiesene Identität" source="./media/scenario-secure-app-access-storage/create-system-assigned-identity.png":::
+:::image type="content" alt-text="Screenshot: Option „Systemseitig zugewiesene Identität“" source="./media/scenario-secure-app-access-storage/create-system-assigned-identity.png":::
 
-Es wird eine neue Objekt-ID erstellt, die sich von der auf dem Blatt **Authentifizierung/Autorisierung** erstellten App-ID unterscheidet.  Kopieren Sie die Objekt-ID der systemseitig zugewiesenen verwalteten Identität, da Sie sie später noch benötigen.
+In diesem Schritt wird eine neue Objekt-ID erstellt, die sich von der im Bereich **Authentifizierung/Autorisierung** erstellten App-ID unterscheidet. Kopieren Sie die Objekt-ID der systemseitig zugewiesenen verwalteten Identität. Sie benötigen die Information später.
 
-## <a name="create-a-storage-account-and-blob-storage-container"></a>Erstellen eines Speicherkontos und Blobspeichercontainers
+## <a name="create-a-storage-account-and-blob-storage-container"></a>Erstellen eines Speicherkontos und Blob Storage-Containers
 
-Nun können Sie ein Speicherkonto und einen Blobspeichercontainer erstellen.
+Nun können Sie ein Speicherkonto und einen Blob Storage-Container erstellen.
 
-Jedes Speicherkonto muss zu einer Azure-Ressourcengruppe gehören. Eine Ressourcengruppe ist ein logischer Container zur Gruppierung Ihrer Azure-Dienste. Beim Erstellen eines Speicherkontos haben Sie die Wahlmöglichkeit, entweder eine neue Ressourcengruppe zu erstellen oder eine vorhandene Ressourcengruppe zu verwenden. In diesem Artikel wird gezeigt, wie Sie eine neue Ressourcengruppe erstellen.
+Jedes Speicherkonto muss zu einer Azure-Ressourcengruppe gehören. Eine Ressourcengruppe ist ein logischer Container zur Gruppierung Ihrer Azure-Dienste. Beim Erstellen eines Speicherkontos haben Sie die Möglichkeit, eine neue Ressourcengruppe zu erstellen oder eine vorhandene Ressourcengruppe zu verwenden. In diesem Artikel wird gezeigt, wie Sie eine neue Ressourcengruppe erstellen.
 
 Ein universelles v2-Speicherkonto bietet Zugriff auf sämtliche Azure Storage-Dienste: Blobs, Dateien, Warteschlangen, Tabellen und Datenträger. In den hier beschriebenen Schritten wird ein Speicherkonto vom Typ „Universell v2“ erstellt. Die Schritte für die Erstellung einer anderen Art von Speicherkonto sind jedoch ähnlich.
 
@@ -59,39 +62,39 @@ Blobs in Azure Storage sind in Containern organisiert. Bevor Sie später in dies
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Führen Sie diese Schritte aus, wenn Sie ein allgemeines Speicherkonto vom Typ „General Purpose v2“ über das Azure-Portal erstellen möchten:
+Führen Sie die folgenden Schritte aus, wenn Sie ein allgemeines Speicherkonto vom Typ „Universell V2“ über das Azure-Portal erstellen möchten.
 
-1. Wählen Sie im Menü des Azure-Portals **Alle Dienste** aus. Geben Sie in der Liste mit den Ressourcen **Speicherkonten** ein. Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Wählen Sie **Speicherkonten**.
+1. Wählen Sie im Menü des Azure-Portals die Option **Alle Dienste** aus. Geben Sie in der Liste der Ressourcen **Speicherkonten** ein. Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Wählen Sie **Speicherkonten**.
 
-1. Klicken Sie im angezeigten Fenster **Speicherkonten** auf **Hinzufügen**.
+1. Wählen Sie im angezeigten Fenster **Speicherkonten** die Option **Hinzufügen** aus.
 
 1. Wählen Sie das Abonnement aus, in dem das Speicherkonto erstellt werden soll.
 
 1. Wählen Sie unter dem Feld **Ressourcengruppe** im Dropdownmenü die Ressourcengruppe aus, die Ihre Web-App enthält.
 
-1. Geben Sie als Nächstes einen Namen für Ihr Speicherkonto ein. Der gewählte Name muss innerhalb von Azure eindeutig sein. Der Name muss ebenfalls zwischen 3 und 24 Zeichen lang sein und darf nur Zahlen und Kleinbuchstaben enthalten.
+1. Geben Sie als Nächstes einen Namen für Ihr Speicherkonto ein. Der gewählte Name muss innerhalb von Azure eindeutig sein. Der Name muss ebenfalls zwischen 3 und 24 Zeichen lang sein und darf nur Zahlen und Kleinbuchstaben enthalten.
 
 1. Wählen Sie einen Standort für Ihr Speicherkonto aus, oder verwenden Sie den Standardstandort.
 
 1. Behalten Sie die Standardwerte für diese Felder bei:
 
-|Feld|Wert|
-|--|--|
-|Bereitstellungsmodell|Ressourcen-Manager|
-|Leistung|Standard|
-|Kontoart|StorageV2 (universell v2)|
-|Replikation|Georedundanter Speicher mit Lesezugriff (RA-GRS)|
-|Zugriffsebene|Hot|
+    |Feld|Wert|
+    |--|--|
+    |Bereitstellungsmodell|Ressourcen-Manager|
+    |Leistung|Standard|
+    |Kontoart|StorageV2 (universell v2)|
+    |Replikation|Georedundanter Speicher mit Lesezugriff (RA-GRS)|
+    |Zugriffsebene|Hot|
 
 1. Wählen Sie **Überprüfen + erstellen**, um die Speicherkontoeinstellungen zu überprüfen und das Konto zu erstellen.
 
 1. Klicken Sie auf **Erstellen**.
 
-Führen Sie die folgenden Schritte aus, um einen Blobspeichercontainer in Azure Storage zu erstellen:
+Führen Sie die folgenden Schritte aus, um einen Blob Storage-Container in Azure Storage zu erstellen.
 
 1. Navigieren Sie im Azure-Portal zu Ihrem neuen Speicherkonto.
 
-1. Scrollen Sie im linken Menü für das Speicherkonto zum Abschnitt **Blob-Dienst**, und wählen Sie **Container** aus.
+1. Scrollen Sie im linken Menü für das Speicherkonto zum Abschnitt **Blob-Dienst**, und wählen Sie dann **Container** aus.
 
 1. Wählen Sie die Schaltfläche **+ Container**.
 
@@ -103,7 +106,9 @@ Führen Sie die folgenden Schritte aus, um einen Blobspeichercontainer in Azure 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Führen Sie das folgende Skript aus, um ein Speicherkonto vom Typ „Universell V2“ und einen Blobspeichercontainer zu erstellen. Geben Sie den Namen der Ressourcengruppe an, die Ihre Web-App enthält. Geben Sie einen Namen für Ihr Speicherkonto ein. Der gewählte Name muss innerhalb von Azure eindeutig sein. Der Name muss ebenfalls zwischen 3 und 24 Zeichen lang sein und darf nur Zahlen und Kleinbuchstaben enthalten. Geben Sie den Speicherort für Ihr Speicherkonto an.  Führen Sie ```Get-AzLocation | select Location``` aus, um eine Liste mit den gültigen Speicherorten für Ihr Abonnement anzuzeigen. Der Containername muss klein geschrieben werden, mit einem Buchstaben oder einer Zahl beginnen und darf nur Buchstaben, Zahlen und Bindestriche (-) enthalten.
+Führen Sie das folgende Skript aus, um ein Speicherkonto vom Typ „Universell V2“ und einen Blob Storage-Container zu erstellen. Geben Sie den Namen der Ressourcengruppe an, die Ihre Web-App enthält. Geben Sie einen Namen für Ihr Speicherkonto ein. Der gewählte Name muss innerhalb von Azure eindeutig sein. Der Name muss ebenfalls zwischen 3 und 24 Zeichen lang sein und darf nur Zahlen und Kleinbuchstaben enthalten.
+
+Geben Sie den Speicherort für Ihr Speicherkonto an. Führen Sie ```Get-AzLocation | select Location``` aus, um eine Liste mit den gültigen Speicherorten für Ihr Abonnement anzuzeigen. Der Containername muss klein geschrieben werden, mit einem Buchstaben oder einer Zahl beginnen und darf nur Buchstaben, Zahlen und Bindestriche (-) enthalten.
 
 Denken Sie daran, die Platzhalterwerte in spitzen Klammern durch Ihre eigenen Werte zu ersetzen.
 
@@ -128,7 +133,9 @@ New-AzStorageContainer -Name $containerName -Context $ctx -Permission blob
 
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
-Führen Sie das folgende Skript aus, um ein Speicherkonto vom Typ „Universell V2“ und einen Blobspeichercontainer zu erstellen. Geben Sie den Namen der Ressourcengruppe an, die Ihre Web-App enthält. Geben Sie einen Namen für Ihr Speicherkonto ein. Der gewählte Name muss innerhalb von Azure eindeutig sein. Der Name muss ebenfalls zwischen 3 und 24 Zeichen lang sein und darf nur Zahlen und Kleinbuchstaben enthalten. Geben Sie den Speicherort für Ihr Speicherkonto an.  Der Containername muss klein geschrieben werden, mit einem Buchstaben oder einer Zahl beginnen und darf nur Buchstaben, Zahlen und Bindestriche (-) enthalten.
+Führen Sie das folgende Skript aus, um ein Speicherkonto vom Typ „Universell V2“ und einen Blob Storage-Container zu erstellen. Geben Sie den Namen der Ressourcengruppe an, die Ihre Web-App enthält. Geben Sie einen Namen für Ihr Speicherkonto ein. Der gewählte Name muss innerhalb von Azure eindeutig sein. Der Name muss ebenfalls zwischen 3 und 24 Zeichen lang sein und darf nur Zahlen und Kleinbuchstaben enthalten. 
+
+Geben Sie den Speicherort für Ihr Speicherkonto an. Der Containername muss klein geschrieben werden, mit einem Buchstaben oder einer Zahl beginnen und darf nur Buchstaben, Zahlen und Bindestriche (-) enthalten.
 
 Im folgenden Beispiel wird Ihr Azure AD-Konto genutzt, um den Vorgang zur Erstellung des Containers zu autorisieren. Weisen Sie sich vor der Erstellung des Containers selbst die Rolle Mitwirkender an Storage-Blobdaten zu. Selbst wenn Sie der Kontobesitzer sind, benötigen Sie explizite Berechtigungen, um Datenvorgänge in Ihrem Speicherkonto ausführen zu können.
 
@@ -161,20 +168,21 @@ az storage container create \
 
 ## <a name="grant-access-to-the-storage-account"></a>Gewähren des Zugriffs auf das Speicherkonto
 
-Sie müssen Ihrer Web-App Zugriff auf das Speicherkonto gewähren, bevor Sie Blobs erstellen, lesen oder löschen können. In einem vorherigen Schritt haben Sie die in App Service ausgeführte Web-App mit einer verwalteten Identität konfiguriert.  Mit der rollenbasierten Zugriffssteuerung von Azure (Azure RBAC) können Sie der verwalteten Identität Zugriff auf eine andere Ressource gewähren (wie für jeden anderen Sicherheitsprinzipal). Mit der Rolle *Mitwirkender an Storage-Blobdaten* wird der Web-App (repräsentiert durch die systemseitig zugewiesene verwaltete Identität) Lese-, Schreib- und Löschzugriff auf den Blobcontainer und die Daten gewährt.
+Sie müssen Ihrer Web-App Zugriff auf das Speicherkonto gewähren, bevor Sie Blobs erstellen, lesen oder löschen können. In einem vorherigen Schritt haben Sie die in App Service ausgeführte Web-App mit einer verwalteten Identität konfiguriert. Mit der rollenbasierten Zugriffssteuerung von Azure (Azure RBAC) können Sie der verwalteten Identität Zugriff auf eine andere Ressource gewähren (wie für jeden anderen Sicherheitsprinzipal). Mit der Rolle „Mitwirkender an Storage-Blobdaten“ wird der Web-App (repräsentiert durch die systemseitig zugewiesene verwaltete Identität) Lese-, Schreib- und Löschzugriff auf den Blobcontainer und die Daten gewährt.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
-Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem Speicherkonto, um für Ihre Web-App Zugriff zu gewähren.  Wählen Sie im linken Navigationsbereich die Option **Zugriffssteuerung (IAM)** und dann **Rollenzuweisungen** aus.  Es wird eine Liste mit den Benutzern angezeigt, die Zugriff auf das Speicherkonto haben.  Nun möchten Sie eine Rollenzuweisung einem Roboter hinzufügen (der App Service-Instanz, die Zugriff auf das Speicherkonto benötigt).  Wählen Sie **Hinzufügen**->**Rollenzuweisung hinzufügen**.
 
-Wählen Sie unter **Rolle** die Option **Mitwirkender an Storage-Blobdaten** aus, um Ihrer Web-App Lesezugriff auf Speicherblobs zu gewähren.  Wählen Sie unter **Zugriff zuweisen zu** die Option **App Service** aus.  Wählen Sie unter **Abonnement** Ihr Abonnement aus.  Wählen Sie anschließend die App Service-Instanz aus, für die Sie den Zugriff gewähren möchten.  Klicken Sie auf **Speichern**.
+Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem Speicherkonto, um für Ihre Web-App Zugriff zu gewähren. Wählen Sie im linken Bereich die Option **Zugriffssteuerung (IAM)** und dann **Rollenzuweisungen** aus. Es wird eine Liste mit den Benutzern angezeigt, die Zugriff auf das Speicherkonto haben. Nun möchten Sie eine Rollenzuweisung einem Roboter hinzufügen (der App Service-Instanz, die Zugriff auf das Speicherkonto benötigt). Wählen Sie **Hinzufügen** > **Rollenzuweisung hinzufügen**.
 
-:::image type="content" alt-text="Hinzufügen der Rollenzuweisung" source="./media/scenario-secure-app-access-storage/add-role-assignment.png":::
+Wählen Sie unter **Rolle** die Option **Mitwirkender an Storage-Blobdaten** aus, um Ihrer Web-App Lesezugriff auf Speicherblobs zu gewähren. Wählen Sie unter **Zugriff zuweisen zu** die Option **App Service** aus. Wählen Sie unter **Abonnement** Ihr Abonnement aus. Wählen Sie anschließend den App-Dienst aus, für den Sie Zugriff gewähren möchten. Wählen Sie **Speichern** aus.
+
+:::image type="content" alt-text="Screenshot: Bildschirm „Rollenzuweisung hinzufügen“" source="./media/scenario-secure-app-access-storage/add-role-assignment.png":::
 
 Ihre Web-App verfügt jetzt über Zugriff auf Ihr Speicherkonto.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Führen Sie das folgende Skript aus, um Ihrer Web-App (repräsentiert durch eine systemseitig zugewiesene verwaltete Identität) in Ihrem Speicherkonto die Rolle *Mitwirkender an Storage-Blobdaten* zuzuweisen.
+Führen Sie das folgende Skript aus, um Ihrer Web-App (repräsentiert durch eine systemseitig zugewiesene verwaltete Identität) in Ihrem Speicherkonto die Rolle „Mitwirkender an Storage-Blobdaten“ zuzuweisen.
 
 ```powershell
 $resourceGroup = "securewebappresourcegroup"
@@ -188,7 +196,7 @@ New-AzRoleAssignment -ObjectId $spID -RoleDefinitionName "Storage Blob Data Cont
 
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
-Führen Sie das folgende Skript aus, um Ihrer Web-App (repräsentiert durch eine systemseitig zugewiesene verwaltete Identität) in Ihrem Speicherkonto die Rolle *Mitwirkender an Storage-Blobdaten* zuzuweisen.
+Führen Sie das folgende Skript aus, um Ihrer Web-App (repräsentiert durch eine systemseitig zugewiesene verwaltete Identität) in Ihrem Speicherkonto die Rolle „Mitwirkender an Storage-Blobdaten“ zuzuweisen.
 
 ```azurecli-interactive
 spID=$(az resource list -n SecureWebApp20201102125811 --query [*].identity.principalId --out tsv)
@@ -200,19 +208,21 @@ az role assignment create --assignee $spID --role 'Storage Blob Data Contributor
 
 ---
 
-## <a name="access-blob-storage-net"></a>Zugreifen auf Blobspeicher (.NET)
+## <a name="access-blob-storage-net"></a>Zugreifen auf Blob Storage (.NET)
 
-Die Klasse [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) wird zum Abrufen von Tokenanmeldeinformationen für Ihren Code verwendet, um Anforderungen für Azure Storage zu autorisieren.  Erstellen Sie eine Instanz der Klasse [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential), bei der die verwaltete Identität zum Abrufen von Token verwendet wird, und fügen Sie diese dem Dienstclient hinzu. Im folgenden Codebeispiel werden die authentifizierten Tokenanmeldeinformationen abgerufen und zum Erstellen eines Dienstclientobjekts verwendet, mit dem ein neues Blob hochgeladen wird.  
+Die Klasse [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) wird zum Abrufen von Tokenanmeldeinformationen für Ihren Code verwendet, um Anforderungen für Azure Storage zu autorisieren. Erstellen Sie eine Instanz der Klasse [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential), bei der die verwaltete Identität zum Abrufen von Token verwendet wird, und fügen Sie diese dem Dienstclient hinzu. Im folgenden Codebeispiel werden die authentifizierten Tokenanmeldeinformationen abgerufen und zum Erstellen eines Dienstclientobjekts verwendet, mit dem ein neues Blob hochgeladen wird.
+
+Im [Beispiel auf GitHub](https://github.com/Azure-Samples/ms-identity-easyauth-dotnet-storage-graphapi/tree/main/1-WebApp-storage-managed-identity) können Sie sich diesen Code in einer Beispielanwendung ansehen.
 
 ### <a name="install-client-library-packages"></a>Installieren von Clientbibliothekspaketen
 
-Installieren Sie das [Blobspeicher-NuGet-Paket](https://www.nuget.org/packages/Azure.Storage.Blobs/), damit Sie den Blobspeicherdienst und das [NuGet-Paket mit der Azure Identity-Clientbibliothek für .NET](https://www.nuget.org/packages/Azure.Identity/) verwenden können, um die Authentifizierung mit Azure AD-Anmeldeinformationen durchzuführen.  Installieren Sie die Clientbibliotheken über die .NET Core-Befehlszeilenschnittstelle oder die Paket-Manager-Konsole in Visual Studio.
+Installieren Sie das [Blob Storage-NuGet-Paket](https://www.nuget.org/packages/Azure.Storage.Blobs/), um Blob Storage zu nutzen, und das [NuGet-Paket mit der Azure Identity-Clientbibliothek für .NET](https://www.nuget.org/packages/Azure.Identity/), um die Authentifizierung mit Azure AD-Anmeldeinformationen durchzuführen. Installieren Sie die Clientbibliotheken über die .NET Core-Befehlszeilenschnittstelle oder die Paket-Manager-Konsole in Visual Studio.
 
 # <a name="command-line"></a>[Befehlszeile](#tab/command-line)
 
-Öffnen Sie eine Befehlszeile, und wechseln Sie zu dem Verzeichnis, das Ihre Projektdatei enthält.
+Öffnen Sie eine Befehlszeile, und wechseln Sie zu dem Verzeichnis, in dem Ihre Projektdatei enthalten ist.
 
-Führen Sie die Installationsbefehle aus:
+Führen Sie die Installationsbefehle aus.
 
 ```dotnetcli
 dotnet add package Azure.Storage.Blobs
@@ -224,7 +234,7 @@ dotnet add package Azure.Identity
 
 Öffnen Sie das Projekt bzw. die Projektmappe in Visual Studio und dann die Konsole mit dem Befehl **Extras** > **NuGet-Paket-Manager** > **Paket-Manager-Konsole**.
 
-Führen Sie die Installationsbefehle aus:
+Führen Sie die Installationsbefehle aus.
 ```powershell
 Install-Package Azure.Storage.Blobs
 
@@ -284,12 +294,12 @@ Wenn Sie dieses Tutorial abgeschlossen haben und die Web-App und die zugehörige
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie Folgendes gelernt:
+In diesem Tutorial haben Sie gelernt, wie die folgenden Aufgaben ausgeführt werden:
 
 > [!div class="checklist"]
 >
 > * Erstellen einer systemseitig zugewiesenen verwalteten Identität
-> * Erstellen eines Speicherkontos und Blobspeichercontainers
+> * Erstellen eines Speicherkontos und Blob Storage-Containers
 > * Zugreifen auf Speicher über eine Web-App mit verwalteten Identitäten
 
 > [!div class="nextstepaction"]

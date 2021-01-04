@@ -6,12 +6,12 @@ ms.topic: conceptual
 description: Erfahren Sie, wie Sie Azure Dev Spaces für die Verwendung eines benutzerdefinierten NGINX-Eingangscontrollers und HTTPS mithilfe dieses Eingangscontrollers konfigurieren.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container, Helm, Service Mesh, Service Mesh-Routing, kubectl, k8s
 ms.custom: devx-track-js, devx-track-azurecli
-ms.openlocfilehash: e1918b5ce9c0fdba81174f0b36fd1ce51d0df70a
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 873057e88809c1aaa8047ac02129d83ca8e9a478
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92748827"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608553"
 ---
 # <a name="use-a-custom-nginx-ingress-controller-and-configure-https"></a>Verwenden eines benutzerdefinierten NGINX-Eingangscontrollers und Konfigurieren von HTTPS
 
@@ -70,7 +70,7 @@ Rufen Sie die IP-Adresse des NGINX-Eingangscontrollerdiensts mithilfe von [kubec
 kubectl get svc -n nginx --watch
 ```
 
-Die Beispielausgabe enthält die IP-Adressen für alle Dienste im *nginx* -Namespace.
+Die Beispielausgabe enthält die IP-Adressen für alle Dienste im *nginx*-Namespace.
 
 ```console
 NAME                                  TYPE           CLUSTER-IP     EXTERNAL-IP      PORT(S)                      AGE
@@ -80,7 +80,7 @@ nginx-nginx-ingress-default-backend   ClusterIP      10.0.210.231   <none>      
 nginx-nginx-ingress-controller        LoadBalancer   10.0.19.39     MY_EXTERNAL_IP   80:31314/TCP,443:30521/TCP   26s
 ```
 
-Fügen Sie Ihrer DNS-Zone mithilfe von [az network dns record-set a add-record][az-network-dns-record-set-a-add-record] einen *A* -Datensatz mit der externen IP-Adresse des NGINX-Diensts hinzu.
+Fügen Sie Ihrer DNS-Zone mithilfe von [az network dns record-set a add-record][az-network-dns-record-set-a-add-record] einen *A*-Datensatz mit der externen IP-Adresse des NGINX-Diensts hinzu.
 
 ```azurecli
 az network dns record-set a add-record \
@@ -90,7 +90,7 @@ az network dns record-set a add-record \
     --ipv4-address MY_EXTERNAL_IP
 ```
 
-Im obigen Beispiel wird der DNS-Zone *MY_CUSTOM_DOMAIN* ein *A* -Eintrag hinzugefügt.
+Im obigen Beispiel wird der DNS-Zone *MY_CUSTOM_DOMAIN* ein *A*-Eintrag hinzugefügt.
 
 In diesem Artikel verwenden Sie die [Azure Dev Spaces-Beispielanwendung „Bike Sharing“](https://github.com/Azure/dev-spaces/tree/master/samples/BikeSharingApp), um die Nutzung von Azure Dev Spaces zu veranschaulichen. Klonen Sie die Anwendung von GitHub, und navigieren Sie zum Verzeichnis der Anwendung:
 
@@ -100,8 +100,8 @@ cd dev-spaces/samples/BikeSharingApp/charts
 ```
 
 Öffnen Sie [values.yaml][values-yaml], und führen Sie die folgenden Updates durch:
-* Ersetzen Sie alle Vorkommen von *<REPLACE_ME_WITH_HOST_SUFFIX>* durch *nginx.MY_CUSTOM_DOMAIN* , wobei Sie für *MY_CUSTOM_DOMAIN* Ihre Domäne verwenden. 
-* Ersetzen Sie *kubernetes.io/ingress.class: traefik-azds  # Dev Spaces-specific* durch *kubernetes.io/ingress.class: nginx  # Custom Ingress* . 
+* Ersetzen Sie alle Vorkommen von *<REPLACE_ME_WITH_HOST_SUFFIX>* durch *nginx.MY_CUSTOM_DOMAIN*, wobei Sie für *MY_CUSTOM_DOMAIN* Ihre Domäne verwenden. 
+* Ersetzen Sie *kubernetes.io/ingress.class: traefik-azds  # Dev Spaces-specific* durch *kubernetes.io/ingress.class: nginx  # Custom Ingress*. 
 
 Nachstehend finden Sie ein Beispiel für eine aktualisierte `values.yaml`-Datei:
 
@@ -126,7 +126,7 @@ gateway:
 
 Speichern Sie Ihre Änderungen, und schließen Sie die Datei.
 
-Erstellen Sie mithilfe von `azds space select` den *dev* -Raum mit Ihrer Beispielanwendung.
+Erstellen Sie mithilfe von `azds space select` den *dev*-Raum mit Ihrer Beispielanwendung.
 
 ```console
 azds space select -n dev -y
@@ -138,7 +138,7 @@ Stellen Sie die Beispielanwendung mithilfe von `helm install` bereit.
 helm install bikesharingsampleapp . --dependency-update --namespace dev --atomic
 ```
 
-Im obigen Beispiel wird die Beispielanwendung für den *dev* -Namespace bereitgestellt.
+Im obigen Beispiel wird die Beispielanwendung für den *dev*-Namespace bereitgestellt.
 
 Zeigen Sie die URLs für den Zugriff auf die Beispielanwendung mit `azds list-uris` an.
 
@@ -155,7 +155,7 @@ http://dev.bikesharingweb.nginx.MY_CUSTOM_DOMAIN/  Available
 http://dev.gateway.nginx.MY_CUSTOM_DOMAIN/         Available
 ```
 
-Navigieren Sie zum Dienst *bikesharingweb* , indem Sie die öffentliche URL über den Befehl `azds list-uris` öffnen. Im obigen Beispiel lautet die öffentliche URL für den Dienst *bikesharingweb*`http://dev.bikesharingweb.nginx.MY_CUSTOM_DOMAIN/`.
+Navigieren Sie zum Dienst *bikesharingweb*, indem Sie die öffentliche URL über den Befehl `azds list-uris` öffnen. Im obigen Beispiel lautet die öffentliche URL für den Dienst *bikesharingweb*`http://dev.bikesharingweb.nginx.MY_CUSTOM_DOMAIN/`.
 
 > [!NOTE]
 > Wenn anstelle des Diensts *bikesharingweb* eine Fehlerseite angezeigt wird, überprüfen Sie, ob Sie **sowohl** die Anmerkung *kubernetes.io/ingress.class* als auch den Host in der Datei *values.yaml* aktualisiert haben.
@@ -167,7 +167,7 @@ azds space select -n dev/azureuser1 -y
 azds list-uris
 ```
 
-Die folgende Ausgabe zeigt die Beispiel-URLs aus `azds list-uris` für den Zugriff auf die Beispielanwendung im untergeordneten Entwicklungsbereich *azureuser1* .
+Die folgende Ausgabe zeigt die Beispiel-URLs aus `azds list-uris` für den Zugriff auf die Beispielanwendung im untergeordneten Entwicklungsbereich *azureuser1*.
 
 ```console
 Uri                                                  Status
@@ -176,7 +176,7 @@ http://azureuser1.s.dev.bikesharingweb.nginx.MY_CUSTOM_DOMAIN/  Available
 http://azureuser1.s.dev.gateway.nginx.MY_CUSTOM_DOMAIN/         Available
 ```
 
-Navigieren Sie zum Dienst *bikesharingweb* im untergeordneten Entwicklungsbereich *azureuser1* , indem Sie die öffentliche URL über den Befehl `azds list-uris` öffnen. Im obigen Beispiel wird für den Dienst *bikesharingweb* im untergeordneten Entwicklungsbereich *azureuser1* die öffentliche URL `http://azureuser1.s.dev.bikesharingweb.nginx.MY_CUSTOM_DOMAIN/` verwendet.
+Navigieren Sie zum Dienst *bikesharingweb* im untergeordneten Entwicklungsbereich *azureuser1*, indem Sie die öffentliche URL über den Befehl `azds list-uris` öffnen. Im obigen Beispiel wird für den Dienst *bikesharingweb* im untergeordneten Entwicklungsbereich *azureuser1* die öffentliche URL `http://azureuser1.s.dev.bikesharingweb.nginx.MY_CUSTOM_DOMAIN/` verwendet.
 
 ## <a name="configure-the-nginx-ingress-controller-to-use-https"></a>Konfigurieren des NGINX-Eingangscontrollers für die Verwendung von HTTPS
 
@@ -255,7 +255,7 @@ Führen Sie für die Beispielanwendung mithilfe von `helm` ein Upgrade durch:
 helm upgrade bikesharingsampleapp . --namespace dev --atomic
 ```
 
-Navigieren Sie zur Beispielanwendung im untergeordneten Bereich *dev/azureuser1* , und beachten Sie, dass Sie zur Verwendung von HTTPS umgeleitet werden. Beachten Sie auch, dass die Seite geladen wird, im Browser jedoch einige Fehler angezeigt werden. Wenn Sie die Browserkonsole öffnen, wird angezeigt, dass sich der Fehler auf eine HTTPS-Seite bezieht, auf der HTTP-Ressourcen geladen werden. Beispiel:
+Navigieren Sie zur Beispielanwendung im untergeordneten Bereich *dev/azureuser1*, und beachten Sie, dass Sie zur Verwendung von HTTPS umgeleitet werden. Beachten Sie auch, dass die Seite geladen wird, im Browser jedoch einige Fehler angezeigt werden. Wenn Sie die Browserkonsole öffnen, wird angezeigt, dass sich der Fehler auf eine HTTPS-Seite bezieht, auf der HTTP-Ressourcen geladen werden. Beispiel:
 
 ```console
 Mixed Content: The page at 'https://azureuser1.s.dev.bikesharingweb.nginx.MY_CUSTOM_DOMAIN/devsignin' was loaded over HTTPS, but requested an insecure resource 'http://azureuser1.s.dev.gateway.nginx.MY_CUSTOM_DOMAIN/api/user/allUsers'. This request has been blocked; the content must be served over HTTPS.
@@ -279,7 +279,7 @@ Um diesen Fehler zu beheben, aktualisieren Sie [BikeSharingWeb/azds.yaml][azds-y
 ...
 ```
 
-Aktualisieren Sie [BikeSharingWeb/package.json][package-json] mit einer Abhängigkeit für das *URL* -Paket.
+Aktualisieren Sie [BikeSharingWeb/package.json][package-json] mit einer Abhängigkeit für das *URL*-Paket.
 
 ```json
 {
@@ -291,7 +291,7 @@ Aktualisieren Sie [BikeSharingWeb/package.json][package-json] mit einer Abhängi
 ...
 ```
 
-Aktualisieren Sie die *getApiHostAsync* -Methode in [BikeSharingWeb/lib/helpers.js][helpers-js] für die Verwendung von HTTPS:
+Aktualisieren Sie die *getApiHostAsync*-Methode in [BikeSharingWeb/lib/helpers.js][helpers-js] für die Verwendung von HTTPS:
 
 ```javascript
 ...
@@ -315,7 +315,7 @@ cd ../BikeSharingWeb/
 azds up
 ```
 
-Navigieren Sie zur Beispielanwendung im untergeordneten Bereich *dev/azureuser1* , und beachten Sie, dass Sie ohne Fehler zur Verwendung von HTTPS umgeleitet werden.
+Navigieren Sie zur Beispielanwendung im untergeordneten Bereich *dev/azureuser1*, und beachten Sie, dass Sie ohne Fehler zur Verwendung von HTTPS umgeleitet werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -328,7 +328,7 @@ Weitere Informationen zur Funktionsweise von Azure Dev Spaces:
 [az-cli]: /cli/azure/install-azure-cli?view=azure-cli-latest
 [az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials
 [az-network-dns-record-set-a-add-record]: /cli/azure/network/dns/record-set/a?view=azure-cli-latest#az-network-dns-record-set-a-add-record
-[custom-domain]: ../../app-service/manage-custom-dns-buy-domain.md#buy-the-domain
+[custom-domain]: ../../app-service/manage-custom-dns-buy-domain.md#buy-an-app-service-domain
 [dns-zone]: ../../dns/dns-getstarted-cli.md
 [azds-yaml]: https://github.com/Azure/dev-spaces/blob/master/samples/BikeSharingApp/BikeSharingWeb/azds.yaml
 [azure-account-create]: https://azure.microsoft.com/free

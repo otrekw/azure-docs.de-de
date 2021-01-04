@@ -30,6 +30,8 @@
   items:
     - name: Ermitteln von Anomalien in Ihren Daten
       href: how-to/identify-anomalies.md
+    - name: Bereitstellen für IoT Edge
+      href: how-to/deploy-anomaly-detection-on-iot-edge.md
     - name: Verwenden von Containern
       items:
         - name: Installieren und Ausführen von Containern

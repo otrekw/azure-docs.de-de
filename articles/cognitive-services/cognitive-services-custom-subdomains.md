@@ -7,14 +7,14 @@ author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 07/24/2019
+ms.date: 12/04/2020
 ms.author: erhopf
-ms.openlocfilehash: 95f3de0fe26678f6b4bcd97a78c06e92b72a7135
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 4746aad2d7cd62cb309a1823f8c50487e6f7e87c
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94368813"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97032965"
 ---
 # <a name="custom-subdomain-names-for-cognitive-services"></a>Benutzerdefinierte Unterdomänennamen für Cognitive Services
 
@@ -39,7 +39,7 @@ Nein. Der regionale Endpunkt funktioniert weiterhin für neue und vorhandene Cog
 ## <a name="what-if-an-sdk-asks-me-for-the-region-for-a-resource"></a>Was geschieht, wenn ein SDK die Region für eine Ressource anfordert?
 
 > [!WARNING]
-> Benutzerdefinierte Unterdomänen werden zurzeit **nicht** von Speech-Diensten unterstützt. Verwenden Sie die regionalen Endpunkte bei Verwendung der Speech-Dienste und der zugeordneten SDKs.
+> Die Speech-Dienste nutzen **ausschließlich** benutzerdefinierte Subdomänen mit [privaten Endpunkten](Speech-Service/speech-services-private-link.md). Verwenden Sie in allen anderen Fällen die **regionalen Endpunkte** bei Verwendung der Speech-Dienste und der dazugehörigen SDKs.
 
 Regionale Endpunkte und benutzerdefinierte Unterdomänennamen werden unterstützt und können austauschbar verwendet werden. Dennoch ist der vollständige Endpunkt erforderlich.
 

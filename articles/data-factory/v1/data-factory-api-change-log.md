@@ -3,8 +3,8 @@ title: Data Factory – .NET-API-Änderungsprotokoll
 description: Beschreibt Änderungen, hinzugefügte Features und Fehlerbehebungen usw. in einer bestimmten Version der .NET-API für Azure Data Factory.
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 robots: noindex
 ms.date: 01/22/2018
-ms.openlocfilehash: 24e468007e0e5ea849ac4d7f945b0aaf6377e580
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 70df35409d1c84efb996bb40f4e39bde6ad7d5a8
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92633806"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96496499"
 ---
 # <a name="azure-data-factory---net-api-change-log"></a>Azure Data Factory – .NET-API-Änderungsprotokoll
 > [!NOTE]
@@ -75,7 +75,7 @@ Hinzugefügte Features:
 ### <a name="feature-additions"></a>Hinzugefügte Features
 * Ein neuer StorageFormat-Typ vom Typ [OrcFormat](/dotnet/api/microsoft.azure.management.datafactories.models.orcformat) wurde hinzugefügt, um Dateien im einspaltig optimierten Zeilenformat (ORC) zu kopieren.
 * Hinzufügen von [AllowPolyBase](/dotnet/api/microsoft.azure.management.datafactories.models.sqldwsink) - und PolyBaseSettings-Eigenschaften zu „SqlDWSink“.
-  * Ermöglicht das Kopieren von Daten in Azure Synapse Analytics (ehemals SQL Data Warehouse) mithilfe von PolyBase.
+  * Ermöglicht das Kopieren von Daten in Azure Synapse Analytics mithilfe von PolyBase.
 
 ## <a name="version-461"></a>Version 4.6.1
 ### <a name="bug-fixes"></a>Fehlerbehebungen
@@ -181,5 +181,5 @@ Die folgenden Klassen wurden umbenannt. Die neuen Namen entsprechen den ursprün
 * **List--** -Pipeline-API gibt nur die Zusammenfassung einer Pipeline anstatt alle Details zurück. Beispielsweise enthalten Aktivitäten in einer Pipelinezusammenfassung nur Name und Typ.
 
 ### <a name="feature-additions"></a>Hinzugefügte Features
-* Die Klasse [SqlDWSink](/dotnet/api/microsoft.azure.management.datafactories.models.sqldwsink) unterstützt die beiden neuen Eigenschaften **SliceIdentifierColumnName** und **SqlWriterCleanupScript** , um idempotentes Kopieren in Azure Synapse Analytics zu ermöglichen. Ausführliche Informationen zu diesen Eigenschaften finden Sie im [Artikel zu Azure Synapse Analytics](data-factory-azure-sql-data-warehouse-connector.md).
-* Wir unterstützen jetzt im Rahmen der Kopieraktivität das Ausführen einer gespeicherten Prozedur für Azure SQL-Datenbank- und Azure Synapse Analytics-Quellen. Die Klassen [SqlSource](/dotnet/api/microsoft.azure.management.datafactories.models.sqlsource) und [SqlDWSource](/dotnet/api/microsoft.azure.management.datafactories.models.sqldwsource) verfügen über die folgenden Eigenschaften: **SqlReaderStoredProcedureName** und **StoredProcedureParameters** . Ausführliche Informationen zu diesen Eigenschaften finden Sie auf „Azure.com“ in den Artikeln zu [Azure SQL-Datenbank](data-factory-azure-sql-connector.md#sqlsource) und [Azure Synapse Analytics](data-factory-azure-sql-data-warehouse-connector.md#sqldwsource).
+* Die Klasse [SqlDWSink](/dotnet/api/microsoft.azure.management.datafactories.models.sqldwsink) unterstützt die beiden neuen Eigenschaften **SliceIdentifierColumnName** und **SqlWriterCleanupScript**, um idempotentes Kopieren in Azure Synapse Analytics zu ermöglichen. Ausführliche Informationen zu diesen Eigenschaften finden Sie im [Artikel zu Azure Synapse Analytics](data-factory-azure-sql-data-warehouse-connector.md).
+* Wir unterstützen jetzt im Rahmen der Kopieraktivität das Ausführen einer gespeicherten Prozedur für Azure SQL-Datenbank- und Azure Synapse Analytics-Quellen. Die Klassen [SqlSource](/dotnet/api/microsoft.azure.management.datafactories.models.sqlsource) und [SqlDWSource](/dotnet/api/microsoft.azure.management.datafactories.models.sqldwsource) verfügen über die folgenden Eigenschaften: **SqlReaderStoredProcedureName** und **StoredProcedureParameters**. Ausführliche Informationen zu diesen Eigenschaften finden Sie auf „Azure.com“ in den Artikeln zu [Azure SQL-Datenbank](data-factory-azure-sql-connector.md#sqlsource) und [Azure Synapse Analytics](data-factory-azure-sql-data-warehouse-connector.md#sqldwsource).

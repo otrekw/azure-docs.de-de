@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 3/18/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 4d2300e36bd06313cf889f40f37d672d66534db6
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 3279150d0cb7b287f0a78581094a51356033596c
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94538361"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96435738"
 ---
 # <a name="quickstart-create-an-azure-database-for-mariadb-server-by-using-the-azure-cli"></a>Schnellstart: Erstellen eines Azure Database for MariaDB-Servers mit der Azure-Befehlszeilenschnittstelle
 
@@ -21,9 +21,9 @@ Sie können die Azure-Befehlszeilenschnittstelle (Azure CLI) verwenden, um Azure
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
-[!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-Für diesen Schnellstart ist Version 2.0 oder höher der Azure CLI erforderlich, wenn Sie die CLI lokal installieren und verwenden. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zur Installation und Aktualisierung der CLI finden Sie bei Bedarf unter [Installieren von Azure CLI 2.0]( /cli/azure/install-azure-cli).
+- Für diesen Artikel ist mindestens Version 2.0 der Azure CLI erforderlich. Bei Verwendung von Azure Cloud Shell ist die aktuelle Version bereits installiert.
 
 Falls Sie über mehrere Abonnements verfügen, wählen Sie das Abonnement aus, das die Ressource enthält, oder das Abonnement, über das Ihre Abrechnung erfolgt. Verwenden Sie zum Auswählen einer bestimmte Abonnement-ID in Ihrem Konto den Befehl [az account set](/cli/azure/account#az-account-set):
 

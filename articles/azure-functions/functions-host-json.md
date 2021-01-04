@@ -3,12 +3,12 @@ title: host.json-Referenz für Azure Functions 2.x
 description: Referenzdokumentation für die host.json-Datei von Azure Functions mit der v2 Runtime.
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: aaea37b100d6fadd271f48490628b38cba6cf822
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 96d6b884e9e2c835316af01140c6fc7208ee5ab9
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93377121"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96746079"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>host.json-Referenz für Azure Functions 2.x oder höher 
 
@@ -162,6 +162,8 @@ Die vollständige JSON-Struktur finden Sie in der obigen [Beispieldatei „host.
 
 ### <a name="applicationinsightssamplingsettings"></a>applicationInsights.samplingSettings
 
+Weitere Informationen zu diesen Einstellungen finden Sie unter [Erstellen von Stichproben in Application Insights](../azure-monitor/app/sampling.md). 
+
 |Eigenschaft | Standard | BESCHREIBUNG |
 | --------- | --------- | --------- | 
 | isEnabled | true | Aktiviert oder deaktiviert die Stichprobenentnahme. | 
@@ -216,6 +218,28 @@ Weitere Informationen zu Momentaufnahmen finden Sie unter [Debugmomentaufnahmen 
 ## <a name="cosmosdb"></a>cosmosDb
 
 Die Konfigurationseinstellung finden Sie in [Cosmos DB-Trigger und -Bindungen](functions-bindings-cosmosdb-v2-output.md#host-json).
+
+## <a name="customhandler"></a>customHandler
+
+Konfigurationseinstellungen für einen benutzerdefinierten Handler. Weitere Informationen finden Sie unter [Benutzerdefinierte Azure Functions-Handler](functions-custom-handlers.md#configuration).
+
+```json
+"customHandler": {
+  "description": {
+    "defaultExecutablePath": "server",
+    "workingDirectory": "handler",
+    "arguments": [ "--port", "%FUNCTIONS_CUSTOMHANDLER_PORT%" ]
+  },
+  "enableForwardingHttpRequest": false
+}
+```
+
+|Eigenschaft | Standard | BESCHREIBUNG |
+| --------- | --------- | --------- |
+| defaultExecutablePath | – | Die ausführbare Datei, die als benutzerdefinierter Handlerprozess gestartet wird. Dies ist eine erforderliche Einstellung bei der Verwendung von benutzerdefinierten Handlern, und der zugehörige Wert ist relativ zum Stamm der Funktions-App. |
+| workingDirectory | *Stamm der Funktions-App* | Das Arbeitsverzeichnis, in dem der benutzerdefinierte Handlerprozess gestartet werden soll. Es handelt sich um eine optionale Einstellung, und ihr Wert ist relativ zum Stamm der Funktions-App. |
+| Argumente | – | Ein Array von Befehlszeilenargumenten, die an den benutzerdefinierten Handlerprozess übergeben werden sollen. |
+| enableForwardingHttpRequest | false | Wenn diese Option festgelegt ist, werden alle Funktionen, die nur aus einem HTTP-Trigger und einer HTTP-Ausgabe bestehen, an die ursprüngliche HTTP-Anforderung weitergeleitet, anstatt an die [Anforderungsnutzlast](functions-custom-handlers.md#request-payload) des benutzerdefinierten Handlers. |
 
 ## <a name="durabletask"></a>durableTask
 

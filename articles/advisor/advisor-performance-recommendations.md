@@ -3,12 +3,12 @@ title: Verbessern der Leistung von Azure-Anwendungen mit Advisor
 description: Anhand der Empfehlungen zur Leistung in Azure Advisor können Sie die Geschwindigkeit und Reaktionszeit Ihrer unternehmenskritischen Anwendungen verbessern.
 ms.topic: article
 ms.date: 07/29/2020
-ms.openlocfilehash: 6a008411d4422853e6a98fad59bd4519b42a9548
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 55f5ac6784bf613170fd10060799ab5ad1290a62
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93308674"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183344"
 ---
 # <a name="improve-the-performance-of-azure-applications-by-using-azure-advisor"></a>Verbessern der Leistung von Azure-Anwendungen mit Azure Advisor
 
@@ -146,7 +146,7 @@ Advisor ermittelt Azure Cosmos DB-Konten mit Datenverkehr aus einer derzeit ni
 
 ## <a name="configure-your-azure-cosmos-db-indexing-policy-by-using-custom-included-or-excluded-paths"></a>Konfigurieren der Azure Cosmos DB-Indizierungsrichtlinie mit benutzerdefinierten eingeschlossenen oder ausgeschlossenen Pfaden
 
-Advisor ermittelt Azure Cosmos DB-Container, die die standardmäßige Indizierungsrichtlinie verwenden, aber von einer benutzerdefinierten Indizierungsrichtlinie profitieren könnten. Diese Einschätzung basiert auf dem Workloadmuster. Die Standardindizierungsrichtlinie indiziert alle Eigenschaften. Mit einer benutzerdefinierten Indizierungsrichtlinie mit expliziten ein- bzw. ausgeschlossenen Pfaden für Abfragefilter lassen sich die Anforderungseinheiten und der Speicherbedarf für die Indizierung verringern. [Weitere Informationen zum Ändern von Indizierungsrichtlinien](/azure/cosmos-db/index-policy)
+Advisor ermittelt Azure Cosmos DB-Container, die die standardmäßige Indizierungsrichtlinie verwenden, aber von einer benutzerdefinierten Indizierungsrichtlinie profitieren könnten. Diese Einschätzung basiert auf dem Workloadmuster. Die Standardindizierungsrichtlinie indiziert alle Eigenschaften. Mit einer benutzerdefinierten Indizierungsrichtlinie mit expliziten ein- bzw. ausgeschlossenen Pfaden für Abfragefilter lassen sich die Anforderungseinheiten und der Speicherbedarf für die Indizierung verringern. [Weitere Informationen zum Ändern von Indizierungsrichtlinien](../cosmos-db/index-policy.md)
 
 ## <a name="set-your-azure-cosmos-db-query-page-size-maxitemcount-to--1"></a>Festlegen der Azure Cosmos DB-Abfrageseitengröße (MaxItemCount) auf „–1“ 
 

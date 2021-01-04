@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 21984a03947e4f9f60e705955cb1be3b2df8933c
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.openlocfilehash: 273548ec095ce04772438a2d732b914d80d976cc
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94376144"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353152"
 ---
 # <a name="test-your-knowledge-base-in-qna-maker"></a>Testen Ihrer Wissensdatenbank in QnA Maker
 
@@ -119,7 +119,7 @@ Wählen Sie **Speichern und trainieren** aus, um diese Antwort dauerhaft zu spei
 
 ### <a name="test-the-published-knowledge-base"></a>Testen der veröffentlichten Wissensdatenbank
 
-Sie können die veröffentlichte Version der Wissensdatenbank im Testbereich testen. Nachdem Sie die Wissensdatenbank veröffentlicht haben, aktivieren Sie das Kontrollkästchen **Veröffentlichte Wissensdatenbank** , und senden Sie eine Abfrage, um Ergebnisse von der veröffentlichten Wissensdatenbank zu erhalten.
+Sie können die veröffentlichte Version der Wissensdatenbank im Testbereich testen. Nachdem Sie die Wissensdatenbank veröffentlicht haben, aktivieren Sie das Kontrollkästchen **Veröffentlichte Wissensdatenbank**, und senden Sie eine Abfrage, um Ergebnisse von der veröffentlichten Wissensdatenbank zu erhalten.
 
 ![Testen einer veröffentlichten Wissensdatenbank](../media/qnamaker-how-to-test-knowledge-bases/test-against-published-knowledge-base.png)
 
@@ -144,7 +144,7 @@ Verwenden Sie das Batchtesttool für Folgendes:
 ### <a name="create-a-new-knowledge-base-from-the-multi-turn-sampledocx-file"></a>Erstellen Sie eine neue Wissensdatenbank aus der .docx-Beispieldatei für mehrere Durchläufe.
 
 1. Wählen Sie aus der Symbolleiste die Option **Wissensdatenbank erstellen** aus.
-1. Überspringen Sie **Schritt 1** , da Sie bereits über eine QnA Maker-Ressource verfügen, und fahren Sie mit **Schritt 2** fort, um die Informationen zu Ihrer vorhandenen Ressource auszuwählen:
+1. Überspringen Sie **Schritt 1**, da Sie bereits über eine QnA Maker-Ressource verfügen, und fahren Sie mit **Schritt 2** fort, um die Informationen zu Ihrer vorhandenen Ressource auszuwählen:
     * Azure Active Directory-ID
     * Name des Azure-Abonnements
     * Name des Azure QnA-Diensts
@@ -261,9 +261,9 @@ Verwenden Sie das folgende Diagramm, um zu ermitteln, wie Sie die Feldwerte für
     Für zwei Frage-Antwort-Paare ist der Metadatensatz vorhanden.
 
     > [!TIP]
-    > Um die Metadaten und QnA-IDs der einzelnen Sätze anzuzeigen, exportieren Sie die Wissensdatenbank. Wechseln Sie zur Seite **Einstellungen** , und wählen Sie für den **Export** das Dateiformat `.xls` aus. Suchen Sie diese heruntergeladene Datei, öffnen Sie sie in Excel, und überprüfen Sie Metadaten und ID.
+    > Um die Metadaten und QnA-IDs der einzelnen Sätze anzuzeigen, exportieren Sie die Wissensdatenbank. Wechseln Sie zur Seite **Einstellungen**, und wählen Sie für den **Export** das Dateiformat `.xls` aus. Suchen Sie diese heruntergeladene Datei, öffnen Sie sie in Excel, und überprüfen Sie Metadaten und ID.
 
-1. Klicken Sie auf **Speichern und trainieren** , wechseln Sie zur Seite **Veröffentlichen** , und klicken Sie dann auf die Schaltfläche **Veröffentlichen**. Diese Aktionen stellen dem Batchtest die Änderungen zur Verfügung. Laden Sie die Wissensdatenbank von der Seite **Einstellungen** herunter.
+1. Klicken Sie auf **Speichern und trainieren**, wechseln Sie zur Seite **Veröffentlichen**, und klicken Sie dann auf die Schaltfläche **Veröffentlichen**. Diese Aktionen stellen dem Batchtest die Änderungen zur Verfügung. Laden Sie die Wissensdatenbank von der Seite **Einstellungen** herunter.
 
     Die heruntergeladene Datei weist das korrekte Format für die Metadaten und die richtige ID für den Satz aus Fragen und Antworten auf. Verwenden Sie diese Felder im nächsten Abschnitt.
 
@@ -273,8 +273,8 @@ Verwenden Sie das folgende Diagramm, um zu ermitteln, wie Sie die Feldwerte für
 ### <a name="create-a-second-batch-test"></a>Erstellen eines zweiten Batchtests
 
 Bei Batchtests gibt es zwei Hauptszenarien:
-* **Verarbeiten von Chatprotokolldateien** : Sie möchten die häufigste Antwort für eine bisher unbekannte Frage ermitteln. Dieses Szenario tritt am häufigsten dann auf, wenn Sie eine Protokolldatei mit Fragen verarbeiten müssen, beispielsweise Benutzerfragen an einen Chatbot. Erstellen Sie einen Batchdateitest, und verwenden Sie dabei nur die erforderlichen Spalten. Der Test gibt die häufigste Antwort für jede Frage zurück. Das bedeutet nicht, dass diese Antwort auch die richtige Antwort ist. Sobald Sie den Test abgeschlossen haben, fahren Sie mit dem Validierungstest fort.
-* **Validierungstest** : Überprüfen Sie die erwartete Antwort. Für diesen Test müssen alle Fragen und die entsprechenden erwarteten Antworten im Batchtest überprüft worden sein. Hierfür ist ein gewisses Maß an manueller Verarbeitung erforderlich.
+* **Verarbeiten von Chatprotokolldateien**: Sie möchten die häufigste Antwort für eine bisher unbekannte Frage ermitteln. Dieses Szenario tritt am häufigsten dann auf, wenn Sie eine Protokolldatei mit Fragen verarbeiten müssen, beispielsweise Benutzerfragen an einen Chatbot. Erstellen Sie einen Batchdateitest, und verwenden Sie dabei nur die erforderlichen Spalten. Der Test gibt die häufigste Antwort für jede Frage zurück. Das bedeutet nicht, dass diese Antwort auch die richtige Antwort ist. Sobald Sie den Test abgeschlossen haben, fahren Sie mit dem Validierungstest fort.
+* **Validierungstest**: Überprüfen Sie die erwartete Antwort. Für diesen Test müssen alle Fragen und die entsprechenden erwarteten Antworten im Batchtest überprüft worden sein. Hierfür ist ein gewisses Maß an manueller Verarbeitung erforderlich.
 
 Beim folgenden Verfahren wird davon ausgegangen, dass Chatprotokolle verarbeitet werden sollen.
 
@@ -323,4 +323,4 @@ Die [Referenzdokumentation zu dem Tool](../reference-tsv-format-batch-testing.md
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Veröffentlichen einer Wissensdatenbank](./publish-knowledge-base.md)
+> [Veröffentlichen einer Wissensdatenbank](../quickstarts/create-publish-knowledge-base.md)

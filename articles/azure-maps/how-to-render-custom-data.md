@@ -3,18 +3,18 @@ title: Rendern von benutzerdefinierten Daten auf einer Rasterkarte | Microsoft A
 description: Hier erfahren Sie, wie Sie Ortsmarken, Bezeichnungen und geometrische Formen zu einer Rasterkarte hinzufügen. Informieren Sie sich zu diesem Zweck über die Verwendung des statischen Bilddiensts in Azure Maps.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 01/23/2020
+ms.date: 12/07/2020
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 88afb380f1aabf0c91e9d5abb0430972743eb6c2
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 5c70835c11bafb3fd06645ba51099b33d1eb6149
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895748"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96906079"
 ---
 # <a name="render-custom-data-on-a-raster-map"></a>Rendern von benutzerdefinierten Daten auf einer Rasterkarte
 
@@ -43,7 +43,7 @@ Führen Sie die folgenden Schritte aus, um Ortsmarken mit Bezeichnungen und eine
 
 1. Erstellen Sie eine Sammlung, in der die Anforderungen gespeichert werden. Klicken Sie in der Postman-App auf **New** (Neu). Wählen Sie im Fenster **Create New** (Neu erstellen) die Option **Collection** (Sammlung) aus. Geben Sie einen Namen für die Sammlung ein, und klicken Sie dann auf **Create** (Erstellen). 
 
-2. Klicken Sie erneut auf **New** (Neu), um die Anforderung zu erstellen. Wählen Sie im Fenster **Create New** (Neu erstellen) die Option **Request** (Anforderung) aus. Geben Sie einen Anforderungsnamen ( **Request name** ) für die Ortsmarken ein. Wählen Sie die im vorherigen Schritt erstellte Sammlung als Speicherort für die Anforderung aus. Wählen Sie anschließend **Speichern** aus.
+2. Klicken Sie erneut auf **New** (Neu), um die Anforderung zu erstellen. Wählen Sie im Fenster **Create New** (Neu erstellen) die Option **Request** (Anforderung) aus. Geben Sie einen Anforderungsnamen (**Request name**) für die Ortsmarken ein. Wählen Sie die im vorherigen Schritt erstellte Sammlung als Speicherort für die Anforderung aus. Wählen Sie anschließend **Speichern** aus.
     
     ![Erstellen einer Anforderung in Postman](./media/how-to-render-custom-data/postman-new.png)
 
@@ -223,4 +223,4 @@ Auf ähnliche Weise können Sie andere Stilmodifiziererer ändern, hinzufügen u
 
 
 * Machen Sie sich mit der API-Dokumentation zum [Get Map-Image-API von Azure Maps](/rest/api/maps/render/getmapimage) vertraut.
-* Weitere Informationen zum Azure Maps-Datendienst finden Sie in der [Dienstdokumentation](/rest/api/maps/data).
+* Weitere Informationen zum Azure Maps-Datendienst (Vorschau) finden Sie in der [Dienstdokumentation](/rest/api/maps/data).

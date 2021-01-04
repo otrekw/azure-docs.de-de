@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 4/15/2019
 ms.author: ramamill
 ms.openlocfilehash: 05d260de726c62c130a58938c2a2c9fa2440a96d
-ms.sourcegitcommit: 7a7b6c7ac0aa9dac678c3dfd4b5bcbc45dc030ca
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2020
-ms.locfileid: "93186721"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96004720"
 ---
 # <a name="run-the-deployment-planner-for-vmware-disaster-recovery"></a>Ausführen des Bereitstellungsplaners für die VMware-Notfallwiederherstellung
 Dieser Artikel ist der Leitfaden zum Deployment Planner (Bereitstellungsplaner) von Azure Site Recovery für Bereitstellungen von „VMware zu Azure“ in der Produktion.
@@ -86,7 +86,7 @@ ASRDeploymentPlanner.exe -Operation StartProfiling /?
 |-Port|(Optional) Portnummer zum Herstellen der Verbindung mit dem vCenter/ESXi-Host. Der Standardport ist 443.|
 |-Protocol| (Optional) Geben Sie als Protokoll entweder „http“ oder „https“ für die Verbindungsherstellung mit vCenter an. Das Standardprotokoll ist „https“.|
 | -StorageAccountName | (Optional) Der Name des Speicherkontos zur Ermittlung des Durchsatzes, der für die Replikation von Daten aus der lokalen Umgebung in Azure erreichbar ist. Mit dem Tool werden Testdaten in dieses Speicherkonto hochgeladen, um den Durchsatz zu berechnen. Das Speicherkonto muss vom Typ „Allgemein v1 (GPv1)“ sein. |
-| -StorageAccountKey | (Optional) Der Schlüssel des Speicherkontos, der zum Zugreifen auf das Speicherkonto verwendet wird. Navigieren Sie im Azure-Portal zu „Speicherkonten“ > < *Name des Speicherkontos* > > Einstellungen > Zugriffsschlüssel > Key1. |
+| -StorageAccountKey | (Optional) Der Schlüssel des Speicherkontos, der zum Zugreifen auf das Speicherkonto verwendet wird. Navigieren Sie im Azure-Portal zu „Speicherkonten“ > <*Name des Speicherkontos*> > Einstellungen > Zugriffsschlüssel > Key1. |
 | -Environment | (optional) Dies ist Ihre Azure Storage-Zielkontoumgebung. Diese drei Werte sind möglich: „AzureCloud“, „AzureUSGovernment“ und „AzureChinaCloud“. Der Standardwert ist „AzureCloud“. Verwenden Sie den Parameter, wenn Sie als Zielregion „Azure US Government“ oder „Azure China 21Vianet“ nutzen. |
 
 
@@ -269,7 +269,7 @@ Führen Sie das Tool im GetThroughput-Modus aus, um den Durchsatz zu schätzen, 
 |-Virtualization|Geben Sie den Virtualisierungstyp an (VMware oder Hyper-V).|
 | -Directory | (Optional) Der UNC- oder lokale Verzeichnispfad des Speicherorts, an dem die Daten der Profilerstellung (während der Profilerstellung generierte Dateien) gespeichert werden. Diese Daten werden für die Erstellung des Berichts benötigt. Wenn kein Verzeichnisname angegeben ist, wird das Verzeichnis „ProfiledData“ verwendet. |
 | -StorageAccountName | Der Name des Speicherkontos zur Ermittlung der Bandbreite, die für die Replikation von Daten aus der lokalen Umgebung in Azure verbraucht wird. Mit dem Tool werden Testdaten in dieses Speicherkonto hochgeladen, um die verbrauchte Bandbreite zu ermitteln. Das Speicherkonto muss vom Typ „Allgemein v1 (GPv1)“ sein.|
-| -StorageAccountKey | Der Schlüssel des Speicherkontos, der zum Zugreifen auf das Speicherkonto verwendet wird. Navigieren Sie im Azure-Portal zu „Speicherkonten“ > < *Name des Speicherkontos* > > „Einstellungen“ > „Zugriffsschlüssel“ > „Key1“ (oder primärer Zugriffsschlüssel für ein klassisches Speicherkonto). |
+| -StorageAccountKey | Der Schlüssel des Speicherkontos, der zum Zugreifen auf das Speicherkonto verwendet wird. Navigieren Sie im Azure-Portal zu „Speicherkonten“ > <*Name des Speicherkontos*> > „Einstellungen“ > „Zugriffsschlüssel“ > „Key1“ (oder primärer Zugriffsschlüssel für ein klassisches Speicherkonto). |
 | -VMListFile | Die Datei mit der Liste der VMs, für die Profile erstellt werden sollen, um die verbrauchte Bandbreite zu berechnen. Der Dateipfad kann absolut oder relativ sein. Die Datei sollte einen VM-Namen bzw. eine IP-Adresse pro Zeile enthalten. Die in der Datei angegebenen VM-Namen sollten mit den VM-Namen auf dem vCenter-Server/vSphere ESXi-Host identisch sein.<br>Die Datei „VMList.txt“ enthält beispielsweise die folgenden VMs:<ul><li>VM_A</li><li>10.150.29.110</li><li>VM_B</li></ul>|
 | -Environment | (optional) Dies ist Ihre Azure Storage-Zielkontoumgebung. Diese drei Werte sind möglich: „AzureCloud“, „AzureUSGovernment“ und „AzureChinaCloud“. Der Standardwert ist „AzureCloud“. Verwenden Sie den Parameter, wenn Sie als Zielregion „Azure US Government“ oder „Azure China 21Vianet“ nutzen. |
 

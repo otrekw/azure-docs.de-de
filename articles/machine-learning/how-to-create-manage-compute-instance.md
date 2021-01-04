@@ -1,22 +1,22 @@
 ---
 title: Erstellen und Verwalten einer Compute-Instanz
 titleSuffix: Azure Machine Learning
-description: Hier erfahren Sie, wie Sie eine Compute-Instanz in Ihrem Azure Machine Learning-Arbeitsbereich erstellen und verwalten. Verwenden Sie die Compute-Instanz als Entwicklungsumgebung oder zu Test- und Dev/Test-Rückschlusszwecken.
+description: Erfahren Sie, wie Sie eine Azure Machine Learning-Compute-Instanz erstellen und verwalten. Verwenden Sie es als Ihre Entwicklungsumgebung oder als Computeziel für Entwicklungs-/Testzwecke.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.custom: how-to
+ms.custom: how-to, devx-track-azurecli
 ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: 6e0d80c35a4822ad46973c94b32cf71b129ad1e1
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 40882f2a0c1a65650d633d0784214afbeef9ae63
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93318016"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842888"
 ---
 # <a name="create-and-manage-an-azure-machine-learning-compute-instance"></a>Erstellen und Verwalten einer Azure Machine Learning-Compute-Instanz
 
@@ -42,7 +42,7 @@ Sie können Aufträge sicher in einer [virtuellen Netzwerkumgebung](how-to-secur
 
 ## <a name="create"></a>Erstellen
 
-**Geschätzter Zeitaufwand** : Ca. fünf Minuten.
+**Geschätzter Zeitaufwand**: Ca. fünf Minuten.
 
 Das Erstellen einer Compute-Instanz ist ein für Ihren Arbeitsbereich einmaliger Prozess. Sie können diese Compute als Entwicklungsarbeitsstation oder als Computeziel für das Training wiederverwenden. Sie können mehrere Compute-Instanzen an Ihren Arbeitsbereich anfügen.
 
@@ -97,7 +97,7 @@ Weitere Informationen finden Sie in der Referenz zu [az ml computetarget create 
 
 # <a name="studio"></a>[Studio](#tab/azure-studio)
 
-Erstellen Sie in Ihrem Arbeitsbereich im Azure Machine Learning Studio eine neue Compute-Instanz entweder im Abschnitt **Compute** oder im Abschnitt **Notebooks** , wenn Sie bereit sind, eines Ihrer Notebooks auszuführen.
+Erstellen Sie in Ihrem Arbeitsbereich im Azure Machine Learning Studio eine neue Compute-Instanz entweder im Abschnitt **Compute** oder im Abschnitt **Notebooks**, wenn Sie bereit sind, eines Ihrer Notebooks auszuführen.
 
 Weitere Informationen zum Erstellen einer Compute-Instanz in Studio finden Sie unter [Erstellen von Computezielen für Modelltraining und -bereitstellung in Azure Machine Learning Studio](how-to-create-attach-compute-studio.md#compute-instance).
 
@@ -255,10 +255,10 @@ Sie können Pakete direkt in einem Jupyter-Notebook oder in RStudio installieren
 * Verwenden Sie die Registerkarte **Pakete** unten rechts oder die Registerkarte **Konsole** oben links.  
 * Python: Fügen Sie Installationscode hinzu, und führen Sie ihn in einer Zelle im Jupyter-Notebook aus.
 
-Sie können Pakete auch über ein Terminalfenster installieren. Installieren Sie Python-Pakete in der Umgebung **Python 3.6 – AzureML**.  Installieren Sie R-Pakete in der **R** -Umgebung.
+Sie können Pakete auch über ein Terminalfenster installieren. Installieren Sie Python-Pakete in der Umgebung **Python 3.6 – AzureML**.  Installieren Sie R-Pakete in der **R**-Umgebung.
 
 > [!NOTE]
-> Für die Paketverwaltung innerhalb eines Notebooks verwenden Sie die magischen Funktionen **%pip** oder **%conda** , um Pakete automatisch in den **aktuell aktiven Kernel** zu installieren, anstatt **!pip** oder **!conda** , die sich auf alle Pakete beziehen (einschließlich der Pakete außerhalb des aktuell aktiven Kernels).
+> Für die Paketverwaltung innerhalb eines Notebooks verwenden Sie die magischen Funktionen **%pip** oder **%conda**, um Pakete automatisch in den **aktuell aktiven Kernel** zu installieren, anstatt **!pip** oder **!conda**, die sich auf alle Pakete beziehen (einschließlich der Pakete außerhalb des aktuell aktiven Kernels).
 
 ## <a name="add-new-kernels"></a>Hinzufügen neuer Kernel
 

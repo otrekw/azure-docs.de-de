@@ -66,6 +66,7 @@
     - name: Mediendiagramm
       href: media-graph-concept.md
     - name: Mediengrapherweiterung
+      displayName: AI
       href: media-graph-extension-concept.md
     - name: Videoaufzeichnung
       href: video-recording-concept.md
@@ -99,6 +100,10 @@
       href: configure-signal-gate-how-to.md
     - name: Problembehandlung
       href: troubleshoot-how-to.md
+    - name: Wird aktualisiert
+      href: upgrading-lva-module.md
+    - name: Entwickeln und Bereitstellen eines gRPC-Rückschlussservers
+      href: develop-deploy-grpc-inference-srv-how-to.md
 - name: Verweis
   items:
     - name: HTTP-Erweiterungsprotokoll

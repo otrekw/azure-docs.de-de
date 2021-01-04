@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: sudbalas
-ms.openlocfilehash: 91a3a0c2ae066fde55892af90a3d666a3c1221a3
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 3f28c50be73b2b87ed8b25429cfa2dee9a663f1b
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445488"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452175"
 ---
 # <a name="secure-access-to-a-key-vault"></a>Sicherer Zugriff auf einen Schlüsseltresor
 
@@ -130,7 +130,7 @@ Weitere Informationen zu Key Vault-Firewall und virtuellen Netzwerken finden Sie
 
 ## <a name="private-endpoint-connection"></a>Verbindungen mit privaten Endpunkten
 
-Falls es erforderlich ist, den Zugriff auf Key Vault für die Öffentlichkeit vollständig zu blockieren, kann ein [privater Azure-Endpunkt](https://docs.microsoft.com/azure/private-link/private-endpoint-overview) verwendet werden. Ein privater Endpunkt in Azure ist eine Netzwerkschnittstelle, die Sie privat und sicher mit einem von Azure Private Link betriebenen Dienst verbindet. Der private Endpunkt verwendet eine private IP-Adresse aus Ihrem VNET und bindet den Dienst dadurch in Ihr VNET ein. Der gesamte für den Dienst bestimmte Datenverkehr kann über den privaten Endpunkt geleitet werden. Es sind also keine Gateways, NAT-Geräte, ExpressRoute-/VPN-Verbindungen oder öffentlichen IP-Adressen erforderlich. Der Datenverkehr zwischen Ihrem virtuellen Netzwerk und dem Dienst wird über das Microsoft-Backbone-Netzwerk übertragen und dadurch vom öffentlichen Internet isoliert. Sie können eine Verbindung mit einer Instanz einer Azure-Ressource herstellen, was ein Höchstmaß an Granularität bei der Zugriffssteuerung ermöglicht.
+Falls es erforderlich ist, den Zugriff auf Key Vault für die Öffentlichkeit vollständig zu blockieren, kann ein [privater Azure-Endpunkt](../../private-link/private-endpoint-overview.md) verwendet werden. Ein privater Endpunkt in Azure ist eine Netzwerkschnittstelle, die Sie privat und sicher mit einem von Azure Private Link betriebenen Dienst verbindet. Der private Endpunkt verwendet eine private IP-Adresse aus Ihrem VNET und bindet den Dienst dadurch in Ihr VNET ein. Der gesamte für den Dienst bestimmte Datenverkehr kann über den privaten Endpunkt geleitet werden. Es sind also keine Gateways, NAT-Geräte, ExpressRoute-/VPN-Verbindungen oder öffentlichen IP-Adressen erforderlich. Der Datenverkehr zwischen Ihrem virtuellen Netzwerk und dem Dienst wird über das Microsoft-Backbone-Netzwerk übertragen und dadurch vom öffentlichen Internet isoliert. Sie können eine Verbindung mit einer Instanz einer Azure-Ressource herstellen, was ein Höchstmaß an Granularität bei der Zugriffssteuerung ermöglicht.
 
 Allgemeine Szenarien zur Verwendung von Private Link für Azure-Dienste:
 

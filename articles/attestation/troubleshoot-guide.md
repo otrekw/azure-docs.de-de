@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: reference
 ms.date: 07/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 46e3521a54f6bfdfbfb25634a09b8c8e0cfdcac0
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 72d7a40c38f3629a70260f223074b456dff9ce38
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93342811"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182834"
 ---
 # <a name="microsoft-azure-attestation-troubleshooting-guide"></a>Microsoft Azure Attestation: Leitfaden zur Problembehandlung
 
@@ -27,7 +27,7 @@ Unten sind einige Beispiele für die Fehler angegeben, die von Azure Attestation
 ### <a name="http-status-code"></a>HTTP-Statuscode
 401
 
-**Fehlercode** : Nicht autorisiert
+**Fehlercode**: Nicht autorisiert
 
 **Szenariobeispiele**
   - Nachweisfehler, wenn dem Benutzer die Attestation-Rolle „Leser“ nicht zugewiesen ist
@@ -64,7 +64,7 @@ Führen Sie die folgenden Schritte aus, um die Rollen in PowerShell zu überprü
 
 a. Starten Sie PowerShell, und melden Sie sich über das Cmdlet „Connect-AzAccount“ bei Azure an.
 
-b. Überprüfen Sie Ihre Einstellungen für die RBAC-Rollenzuweisung.
+b. Überprüfen Sie Ihre Einstellungen für die Azure-Rollenzuweisung.
 
 
   ```powershell
@@ -95,7 +95,7 @@ b. Überprüfen Sie Ihre Einstellungen für die RBAC-Rollenzuweisung.
  
   ```
 
-c. Befolgen Sie [diese Anleitung](/azure/role-based-access-control/role-assignments-powershell), falls Sie in der Liste keine passende Rollenzuweisung finden.
+c. Befolgen Sie [diese Anleitung](../role-based-access-control/role-assignments-powershell.md), falls Sie in der Liste keine passende Rollenzuweisung finden.
 
 ## <a name="2-http--400-errors"></a>2. HTTP 400-Fehler
 
@@ -108,7 +108,7 @@ Es gibt verschiedene Gründe, warum für eine Anforderung der Fehler 400 zurüc
 
 Eine Nachweisrichtlinie umfasst Autorisierungs- und Ausstellungsregeln. Die Enklavenbeweise werden basierend auf den Autorisierungsregeln ausgewertet. Mit Ausstellungsregeln werden die Ansprüche definiert, die in das Nachweistoken eingeschlossen werden sollen. Wenn Ansprüche in den Enklavenbeweisen nicht mit den Autorisierungsregeln konform sind, wird bei Nachweisaufrufen für die Richtlinienauswertung ein Fehler zurückgegeben. 
 
-**Fehlercode** : PolicyEvaluationError
+**Fehlercode**: PolicyEvaluationError
 
 **Szenariobeispiele** Wenn Ansprüche im Enklavenangebot nicht mit den Autorisierungsregeln der Nachweisrichtlinie übereinstimmen
 
@@ -123,11 +123,11 @@ G:\Az\security\Attestation\src\AttestationServices\Instance\Enclave\api.cpp(840)
 
 Senden Sie eine Anforderung für einen API-Nachweis, indem Sie Richtlinientext im Parameter „draftPolicyForAttestation“ angeben. Von der AttestSgxEnclave-API wird dieses Richtliniendokument während des Nachweisaufrufs verwendet. Es kann genutzt werden, um Nachweisrichtlinien vor der Verwendung zu testen. Ein Nachweistoken, das bei Vorhandensein dieses Felds generiert wird, ist nicht geschützt.
 
-Sehen Sie sich die [Beispiele für Nachweisrichtlinien](/azure/attestation/policy-examples) an.
+Sehen Sie sich die [Beispiele für Nachweisrichtlinien](./policy-examples.md) an.
 
 ### <a name="22-attestation-failure-due-to-invalid-input"></a>2.2. Nachweisfehler aufgrund einer ungültigen Eingabe
 
-**Fehlercode** : InvalidParameter
+**Fehlercode**: InvalidParameter
 
 **Szenariobeispiele** SGX-Nachweisfehler aufgrund einer ungültigen Eingabe. Hier sind einige Beispiele für Fehlermeldungen angegeben:
 - Das angegebene Angebot war aufgrund eines Fehlers im Begleitmaterial des Angebots ungültig. 
@@ -142,7 +142,7 @@ Sehen Sie sich die [Codebeispiele](/samples/browse/?expanded=azure&terms=attesta
 
 ### <a name="23-invalid-certificate-chain-error-while-uploading-policypolicy-signer"></a>2.3. Fehler aufgrund einer ungültigen Zertifikatkette beim Hochladen der Richtlinie bzw. des Richtliniensignaturgebers
 
-**Fehlercode** : InvalidParameter
+**Fehlercode**: InvalidParameter
 
 **Szenariobeispiele** Konfigurieren einer signierten Richtlinie oder Hinzufügen/Löschen eines Richtliniensignaturgebers, wenn zum Signieren eine ungültige Zertifikatkette verwendet wurde (z. B. wenn die Erweiterung für Basiseinschränkungen des Stammzertifikats nicht auf „Subject Type = CA“ festgelegt ist)
 
@@ -163,11 +163,11 @@ Stellen Sie sicher, dass die Erweiterung für Basiseinschränkungen des Stammzer
 
 Andernfalls wird die Zertifikatkette als ungültig angesehen.
 
-Sehen Sie sich die Beispiele für [Richtliniensignaturgeber](/azure/attestation/policy-signer-examples) und [Richtlinien](/azure/attestation/policy-examples) an. 
+Sehen Sie sich die Beispiele für [Richtliniensignaturgeber](./policy-signer-examples.md) und [Richtlinien](./policy-examples.md) an. 
 
 ### <a name="24-adddelete-policy-signer-failure"></a>2.4. Fehler beim Hinzufügen/Löschen des Richtliniensignaturgebers
 
-**Fehlercode** : InvalidOperation
+**Fehlercode**: InvalidOperation
 
 **Szenariobeispiele**
 
@@ -209,11 +209,11 @@ At line:1 char:1
     + FullyQualifiedErrorId : Microsoft.Azure.Commands.Attestation.AddAzureAttestationPolicySigner
 ```
 
-**Schritte zur Problembehandlung** Verwenden Sie zum Hinzufügen/Löschen ein neues Richtlinien-Signaturgeberzertifikats das RFC7519 JSON Web Token (JWT) mit dem Anspruch „x-ms-policyCertificate“. Der Wert des Anspruchs ist ein RFC7517 JSON Web Key, der das hinzuzufügende Zertifikat enthält. Das JWT muss mit dem privaten Schlüssel eines beliebigen gültigen Richtlinien-Signaturgeberzertifikats signiert werden, das dem Anbieter zugeordnet ist. Weitere Informationen finden Sie unter [Beispiele für Richtliniensignaturgeber](/azure/attestation/policy-signer-examples).
+**Schritte zur Problembehandlung** Verwenden Sie zum Hinzufügen/Löschen ein neues Richtlinien-Signaturgeberzertifikats das RFC7519 JSON Web Token (JWT) mit dem Anspruch „x-ms-policyCertificate“. Der Wert des Anspruchs ist ein RFC7517 JSON Web Key, der das hinzuzufügende Zertifikat enthält. Das JWT muss mit dem privaten Schlüssel eines beliebigen gültigen Richtlinien-Signaturgeberzertifikats signiert werden, das dem Anbieter zugeordnet ist. Weitere Informationen finden Sie unter [Beispiele für Richtliniensignaturgeber](./policy-signer-examples.md).
 
 ### <a name="25-attestation-policy-configuration-failure"></a>2.5. Fehler bei der Konfiguration der Nachweisrichtlinie
 
-**Fehlercode** : PolicyParsingError
+**Fehlercode**: PolicyParsingError
 
 **Szenariobeispiele** Bereitstellung der Richtlinie mit fehlerhafter Syntax (z. B. Semikolon/gültige JWT-Richtlinie fehlt)
 
@@ -231,7 +231,7 @@ At line:1 char:1
     + FullyQualifiedErrorId : Microsoft.Azure.Commands.Attestation.SetAzureAttestationPolicy
 ```
 
-**Fehlercode** : InvalidOperation
+**Fehlercode**: InvalidOperation
 
 **Szenariobeispiele** Bereitstellung ungültiger Inhalte (z. B. Richtlinienupload/unsignierte Richtlinie, obwohl erforderlich)
 
@@ -255,7 +255,7 @@ Geben Sie Richtlinientext direkt an, um eine Richtlinie im Textformat zu konfigu
 
 Geben Sie in PowerShell für „PolicyFormat“ die Option „JWT“ an, um die Richtlinie im JWT-Format zu konfigurieren. Das Standardformat für Richtlinien ist „Text“.
 
-Weitere Informationen finden Sie unter [Beispiele für eine Nachweisrichtlinie](/azure/attestation/policy-examples) und [Erstellen und Signieren einer Nachweisrichtlinie](/azure/attestation/author-sign-policy). 
+Weitere Informationen finden Sie unter [Beispiele für eine Nachweisrichtlinie](./policy-examples.md) und [Erstellen und Signieren einer Nachweisrichtlinie](./author-sign-policy.md). 
 
 ## <a name="3-azattestation-installation-issues-in-powershell"></a>3. Probleme bei der Az.Attestation-Installation in PowerShell
 
@@ -301,4 +301,3 @@ Get-InstalledModule
 Führen Sie „Update-Module“-Befehle aus, wenn die Versionen nicht die Mindestanforderungen erfüllen.
 
 Beispiel: Update-Module -Name Az.Attestation
-

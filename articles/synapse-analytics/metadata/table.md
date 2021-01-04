@@ -1,6 +1,6 @@
 ---
 title: Tabellen mit gemeinsam genutzten Metadaten
-description: Azure Synapse Analytics bietet ein Modell mit gemeinsam genutzten Metadaten, das es ermöglicht, über einen serverlosen SQL-Pool (Vorschauversion) und einen dedizierten SQL-Pool auf eine in einem serverlosen Apache Spark-Pool erstellte Tabelle zuzugreifen, ohne die Daten zu duplizieren.
+description: Azure Synapse Analytics bietet ein Modell mit gemeinsam genutzten Metadaten, das es ermöglicht, über einen serverlosen SQL-Pool und einen dedizierten SQL-Pool auf eine in einem serverlosen Apache Spark-Pool erstellte Tabelle zuzugreifen, ohne die Daten zu duplizieren.
 services: sql-data-warehouse
 author: MikeRys
 ms.service: synapse-analytics
@@ -10,18 +10,17 @@ ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f269217908bea4b5e8ef3c0004a9cec9d5d682c7
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 9ee18edd563d94a85dedf48b7a4d6df394c09707
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93314543"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461381"
 ---
 # <a name="azure-synapse-analytics-shared-metadata-tables"></a>Azure Synapse Analytics: Gemeinsam genutzte Metadatentabellen
 
-[!INCLUDE [synapse-analytics-preview-terms](../../../includes/synapse-analytics-preview-terms.md)]
 
-Azure Synapse Analytics ermöglicht den verschiedenen Berechnungsengines von Arbeitsbereichen die gemeinsame Nutzung von Datenbanken und Parquet-basierten Tabellen zwischen Apache Spark-Pools (Vorschauversion) und einem serverlosen SQL-Pool (Vorschauversion).
+Azure Synapse Analytics ermöglicht den verschiedenen Berechnungsengines von Arbeitsbereichen die gemeinsame Nutzung von Datenbanken und Parquet-basierten Tabellen zwischen Apache Spark-Pools und einem serverlosen SQL-Pool.
 
 Nach der Erstellung einer Datenbank durch einen Spark-Auftrag können darin Tabellen mit Spark erstellt werden, die Parquet als Speicherformat verwenden. Diese Tabellen stehen umgehend für Abfragen von beliebigen Spark-Pools des Azure Synapse-Arbeitsbereichs zur Verfügung. Darüber hinaus können sie von einem beliebigen Spark-Auftrag verwendet werden (entsprechende Berechtigungen vorausgesetzt).
 

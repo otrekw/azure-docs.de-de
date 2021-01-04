@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 10/05/2019
 ms.author: allensu
-ms.openlocfilehash: 6ee6d88b5247209d5628c7f85f1985507d53811d
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 2e5edb0ccf20ab0dba14864487f2b2ddef7d57e7
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913720"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95544206"
 ---
 # <a name="azure-private-link-frequently-asked-questions-faq"></a>Häufig gestellte Fragen (FAQ) zu Azure Private Link
 
@@ -69,9 +69,9 @@ Ja. Ein Private Link-Dienst kann Verbindungen von mehreren privaten Endpunkten e
 ### <a name="how-should-i-control-the-exposure-of-my-private-link-service"></a>Wie sollte ich die Offenlegung meines Private Link-Dienstes kontrollieren?
 Sie können die Offenlegung über die Sichtbarkeitskonfiguration des Private Link-Dienstes kontrollieren. Die Sichtbarkeit unterstützt drei Einstellungen:
 
-- **Keine** : Nur Abonnements mit RBAC-Zugriff können den Dienst finden. 
-- **Restriktiv** : Nur genehmigte aufgeführte Abonnements, die über RBAC-Zugriff verfügen, können den Dienst finden. 
-- **Alle** : Jeder kann den Dienst finden. 
+- **Keine:** Nur Abonnements mit Azure RBAC-Zugriff können den Dienst finden. 
+- **Restriktiv:** Nur genehmigte aufgeführte Abonnements, die über Azure RBAC-Zugriff verfügen, können den Dienst finden. 
+- **Alle**: Jeder kann den Dienst finden. 
  
 ### <a name="can-i-create-a-private-link-service-with-basic-load-balancer"></a>Kann ich mit einem Load Balancer im Tarif „Basic“ einen Private Link-Dienst erstellen? 
 Nein. Der Private Link-Dienst über einen Load Balancer im Tarif „Basic“ wird nicht unterstützt.

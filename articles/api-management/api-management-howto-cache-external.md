@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 04/26/2020
 ms.author: apimpm
 ms.openlocfilehash: 6288a10e111e42629abf5e09b84a6a7791dcfe95
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93095933"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018221"
 ---
 # <a name="use-an-external-redis-compatible-cache-in-azure-api-management"></a>Verwenden eines externen Redis-kompatiblen Caches in Azure API Management
 

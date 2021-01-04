@@ -8,12 +8,12 @@ ms.date: 10/12/2020
 ms.author: tisande
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: 012e155737b9251827c668b3a9cacbbe8d59ae77
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 42f01b140a44d7aa6d75dece9a4398fd7b41bf5a
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94411353"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905110"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>Behandeln von Problemen bei Verwendung von Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -196,9 +196,7 @@ Sie können der Indizierungsrichtlinie jederzeit Eigenschaften hinzufügen, ohne
 
 ### <a name="understand-which-system-functions-use-the-index"></a>Ermitteln der Systemfunktionen, die den Index verwenden
 
-Wenn der Ausdruck in einen Bereich von Zeichenfolgenwerten übersetzt werden kann, kann der Index genutzt werden. Andernfalls ist dies nicht möglich.
-
-Hier ist die Liste einiger allgemeiner Zeichenfolgenfunktionen, die den Index verwenden können:
+Die meisten Systemfunktionen verwenden Indizes. Es folgt eine Liste einiger allgemeiner Zeichenfolgenfunktionen, die Indizes verwenden:
 
 - STARTSWITH(str_expr1, str_expr2, bool_expr)  
 - CONTAINS(str_expr, str_expr, bool_expr)
@@ -214,7 +212,26 @@ Nachstehend sind einige allgemeine Systemfunktionen aufgeführt, die den Index n
 
 ------
 
-Andere Teile der Abfrage verwenden möglicherweise weiterhin den Index, auch wenn die für die Systemfunktionen nicht gilt.
+Wenn eine Systemfunktion Indizes verwendet und dennoch eine hohe RU-Gebühr aufweist, können Sie versuchen, der Abfrage `ORDER BY` hinzuzufügen. In einigen Fällen kann das Hinzufügen von `ORDER BY` zu einer verbesserten Indexnutzung der Systemfunktion führen, insbesondere dann, wenn die Abfrage eine lange Ausführungsdauer hat oder mehrere Seiten umfasst.
+
+Sehen Sie sich beispielsweise die folgende Abfrage mit `CONTAINS` an. `CONTAINS` sollte einen Index verwenden. Stellen Sie sich jedoch vor, dass Sie nach dem Hinzufügen des entsprechenden Indexes weiterhin eine sehr hohe RU-Gebühr beobachten, wenn Sie die folgende Abfrage ausführen:
+
+Ursprüngliche Abfrage:
+
+```sql
+SELECT *
+FROM c
+WHERE CONTAINS(c.town, "Sea")
+```
+
+Aktualisierte Abfrage mit `ORDER BY`:
+
+```sql
+SELECT *
+FROM c
+WHERE CONTAINS(c.town, "Sea")
+ORDER BY c.town
+```
 
 ### <a name="understand-which-aggregate-queries-use-the-index"></a>Verstehen, welche Aggregatabfragen den Index verwenden
 

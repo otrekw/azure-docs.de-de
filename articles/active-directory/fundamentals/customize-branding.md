@@ -13,18 +13,18 @@ ms.author: ajburnle
 ms.reviewer: kexia
 ms.custom: it-pro, seodec18, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 04e1d35ab17a49dd1c4e9bd2bd19289de2b8658a
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: bb138ade0f579a7545c0910646b6adfb7d5ac02a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "89565853"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996660"
 ---
 # <a name="add-branding-to-your-organizations-azure-active-directory-sign-in-page"></a>Hinzufügen von Branding zur Azure Active Directory-Anmeldeseite Ihrer Organisation
 Verwenden Sie das Logo und benutzerdefinierte Farbschemas Ihrer Organisation, um Ihren Azure Active Directory-Anmeldeseiten (Azure AD) ein konsistentes Aussehen und Verhalten zu verleihen. Ihre Anmeldeseiten werden angezeigt, wenn sich Benutzer bei webbasierten Apps Ihrer Organisation wie Microsoft 365 anmelden, die Azure AD als Identitätsanbieter verwenden.
 
 >[!NOTE]
->Für das Hinzufügen eines benutzerdefinierten Brandings müssen Sie eine der Editionen Azure Active Directory Premium 1, Premium 2 oder Basic verwenden oder eine Microsoft 365-Lizenz besitzen. Weitere Informationen zu Lizenzierung und Editionen finden Sie unter [Registrieren für Azure AD Premium](active-directory-get-started-premium.md).<br><br>Die Azure AD-Editionen Premium und Basic stehen für Kunden in China zur Verfügung, die mit der weltweit verfügbaren Instanz von Azure Active Directory arbeiten. Allerdings werden die Azure AD-Editionen „Premium“ und „Basic“ derzeit nicht durch den Azure-Dienst unterstützt, der in China von 21Vianet betrieben wird. Sollten Sie weitere Informationen benötigen, können Sie sich über das [Azure Active Directory-Forum](https://feedback.azure.com/forums/169401-azure-active-directory/) mit uns in Verbindung setzen.
+>Für das Hinzufügen eines benutzerdefinierten Brandings benötigen Sie eine Azure Active Directory Premium 1- oder Premium 2-Lizenz. Weitere Informationen zu Lizenzierung und Editionen finden Sie unter [Registrieren für Azure AD Premium](active-directory-get-started-premium.md).<br><br>Die Azure AD Premium-Editionen stehen für Kunden in China zur Verfügung, die mit der weltweit verfügbaren Instanz von Azure Active Directory arbeiten. Allerdings werden die Azure AD Premium-Editionen derzeit nicht durch den Azure-Dienst unterstützt, der in China von 21Vianet betrieben wird. Sollten Sie weitere Informationen benötigen, können Sie sich über das [Azure Active Directory-Forum](https://feedback.azure.com/forums/169401-azure-active-directory/) mit uns in Verbindung setzen.
 
 ## <a name="customize-your-azure-ad-sign-in-page"></a>Anpassen Ihrer Azure AD-Anmeldeseite
 Sie können Ihre Azure AD-Anmeldeseiten anpassen, die angezeigt werden, wenn sich Benutzer bei mandantenspezifischen Apps Ihrer Organisation anmelden, z. B. `https://outlook.com/contoso.com`, oder bei der Übergabe einer Domänenvariablen, z. B. `https://passwordreset.microsoftonline.com/?whr=contoso.com`.

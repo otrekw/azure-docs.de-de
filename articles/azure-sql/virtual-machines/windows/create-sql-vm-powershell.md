@@ -8,6 +8,7 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: 98d50dd8-48ad-444f-9031-5378d8270d7b
 ms.service: virtual-machines-sql
+ms.subservice: deployment
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
@@ -15,12 +16,12 @@ ms.date: 12/21/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6bf17f85892691fe930d3d4b1e12846da8f9dc58
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: a3f51a07b274320d1cd9f12b33703d8ec7f21f49
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789810"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359658"
 ---
 # <a name="how-to-use-azure-powershell-to-provision-sql-server-on-azure-virtual-machines"></a>Bereitstellen von SQL Server auf virtuellen Azure-Computern mit Azure PowerShell
 
@@ -135,7 +136,7 @@ Definieren Sie mithilfe der folgenden Variablen das SQL Server-Image, das für d
    Get-AzVMImageSku -Location $Location -Publisher 'MicrosoftSQLServer' -Offer $OfferName | Select Skus
    ```
 
-1. Verwenden Sie in diesem Tutorial die SQL Server 2017 Developer Edition ( **SQLDEV** ). Die Developer Edition wird kostenlos für Test- und Entwicklungsumgebungen lizenziert – Sie bezahlen lediglich für die Kosten der VM-Ausführung.
+1. Verwenden Sie in diesem Tutorial die SQL Server 2017 Developer Edition (**SQLDEV**). Die Developer Edition wird kostenlos für Test- und Entwicklungsumgebungen lizenziert – Sie bezahlen lediglich für die Kosten der VM-Ausführung.
 
    ```powershell
    $Sku = "SQLDEV"
@@ -367,12 +368,17 @@ Der virtuelle Computer wird erstellt.
 
 ## <a name="install-the-sql-iaas-agent"></a>Installieren des SQL-IaaS-Agents
 
-SQL Server-VMs unterstützen mit der [Erweiterung für SQL Server-IaaS-Agent](sql-server-iaas-agent-extension-automate-management.md) automatische Verwaltungsfunktionen. Um den Agent auf der neuen VM zu installieren und beim Ressourcenanbieter zu registrieren, führen Sie den Befehl [New-AzSqlVM](/powershell/module/az.sqlvirtualmachine/new-azsqlvm) aus, nachdem der virtuelle Computer erstellt wurde. Geben Sie den Lizenztyp für Ihre SQL Server-VM an, und wählen Sie über den [Azure-Hybridvorteil](https://azure.microsoft.com/pricing/hybrid-benefit/) eine Lizenz mit nutzungsbasierter Bezahlung oder eine BYOL-Lizenz (Bring Your Own License) aus. Weitere Informationen zur Lizenzierung finden Sie unter [Lizenzierungsmodell](licensing-model-azure-hybrid-benefit-ahb-change.md). 
+SQL Server-VMs unterstützen mit der [Erweiterung für SQL Server-IaaS-Agent](sql-server-iaas-agent-extension-automate-management.md) automatische Verwaltungsfunktionen. Führen Sie nach der Erstellung des virtuellen Computers den Befehl [New-AzSqlVM](/powershell/module/az.sqlvirtualmachine/new-azsqlvm) aus, um Ihre SQL Server-VM mit der Erweiterung zu registrieren. Geben Sie den Lizenztyp für Ihre SQL Server-VM an, und wählen Sie über den [Azure-Hybridvorteil](https://azure.microsoft.com/pricing/hybrid-benefit/) eine Lizenz mit nutzungsbasierter Bezahlung oder eine BYOL-Lizenz (Bring Your Own License) aus. Weitere Informationen zur Lizenzierung finden Sie unter [Lizenzierungsmodell](licensing-model-azure-hybrid-benefit-ahb-change.md). 
 
 
    ```powershell
    New-AzSqlVM -ResourceGroupName $ResourceGroupName -Name $VMName -Location $Location -LicenseType <PAYG/AHUB> 
    ```
+
+Es gibt drei Möglichkeiten, VMs mit der Erweiterung zu registrieren: 
+- [Automatisch für alle aktuellen und zukünftigen VMs in einem Abonnement](sql-agent-extension-automatic-registration-all-vms.md)
+- [Manuell für eine einzelne VM](sql-agent-extension-manually-register-single-vm.md)
+- [Manuell für mehrere VMs in einem Massenvorgang](sql-agent-extension-manually-register-vms-bulk.md)
 
 
 ## <a name="stop-or-remove-a-vm"></a>Beenden oder Entfernen eines virtuellen Computers

@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: f034cd07b481f9d72cb3f753b30e1779bf672ac2
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 99246ecee27f7ded693e2a797f8e98480e350983
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491935"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96854528"
 ---
 # <a name="azure-spring-cloud-faq"></a>Häufig gestellte Fragen zu Azure Spring Cloud
 
@@ -37,7 +37,7 @@ Sicherheit und Datenschutz gehören zu den wichtigsten Prioritäten für Azure- 
 
 ### <a name="in-which-regions-is-azure-spring-cloud-available"></a>In welchen Regionen ist Azure Spring Cloud verfügbar?
 
-„USA, Osten“, „USA, Osten 2“, „USA, Mitte“, „USA, Süden-Mitte“, „USA, Westen 2“, „Europa, Westen“, „Europa, Norden“, „Vereinigtes Königreich, Süden“, „Asien, Südosten“ und „Australien, Osten“.
+„USA, Osten“, „USA, Osten 2“, „USA, Mitte“, „USA, Süden-Mitte“, „USA, Norden-Mitte“, „USA, Westen“, „USA, Westen 2“, „Europa, Westen“, „Europa, Norden“, „Vereinigtes Königreich, Süden“, „Asien, Südosten“, „Australien, Osten“, „Kanada, Mitte“ und „VAE, Norden“.
 
 ### <a name="is-any-customer-data-stored-outside-of-the-specified-region"></a>Werden Kundendaten außerhalb der angegebenen Region gespeichert?
 
@@ -69,6 +69,23 @@ Für den schnellsten Einstieg mit Azure Spring Cloud führen Sie die Anweisungen
 ### <a name="what-java-runtime-does-azure-spring-cloud-support"></a>Welche Java-Runtime unterstützt Azure Spring Cloud?
 
 Azure Spring Cloud unterstützt Java 8 und 11. Weitere Informationen finden Sie unter [Java-Runtime und Betriebssystemversionen](#java-runtime-and-os-versions).
+
+### <a name="is-spring-boot-24x-supported"></a>Wird Spring Boot 2.4.x unterstützt?
+Wir haben ein Problem mit Spring Boot 2.4 identifiziert und arbeiten zurzeit gemeinsam mit der Spring-Community an dessen Behebung. Fügen Sie in der Zwischenzeit diese beiden Abhängigkeiten ein, um die TLS-Authentifizierung zwischen Ihren Apps und Eureka zu aktivieren.
+
+```xml
+<dependency> 
+    <groupId>com.sun.jersey</groupId>
+    <artifactId>jersey-client</artifactId>
+    <version>1.19.4</version>
+</dependency>
+<dependency>
+    <groupId>com.sun.jersey.contribs</groupId>
+    <artifactId>jersey-apache-client4</artifactId>
+    <version>1.19.4</version>
+</dependency>
+```
+
 ::: zone-end
 
 ### <a name="where-can-i-view-my-spring-cloud-application-logs-and-metrics"></a>Wo kann ich meine Spring Cloud-Anwendungsprotokolle und -metriken einsehen?
@@ -93,6 +110,21 @@ Derzeit werden drei Dienste unterstützt:
 ### <a name="can-i-view-add-or-move-persistent-volumes-from-inside-my-applications"></a>Kann ich persistente Volumes innerhalb meiner Anwendungen anzeigen, hinzufügen oder verschieben?
 
 Ja.
+
+### <a name="how-many-outbound-public-ip-addresses-does-an-azure-spring-cloud-instance-have"></a>Wie viele öffentliche IP-Ausgangsadressen hat eine Azure Spring Cloud-Instanz?
+
+Die Anzahl der öffentlichen IP-Ausgangsadressen kann je nach Ebene und anderen Faktoren variieren. 
+
+| Azure Spring Cloud-Instanztyp | Standardzahl öffentlicher IP-Ausgangsadressen |
+| -------------------------------- | ---------------------------------------------- |
+| Basic-Tarif-Instanzen             | 1                                              |
+| Standard-Tarif-Instanzen          | 2                                              |
+| VNET-Einschleusungsinstanzen         | 1                                              |
+
+
+### <a name="can-i-increase-the-number-of-outbound-public-ip-addresses"></a>Kann ich die Anzahl öffentlicher IP-Ausgangsadressen heraufsetzen?
+
+Ja, Sie können ein [Supportticket](https://azure.microsoft.com/support/faq/) öffnen, um weitere öffentliche IP-Ausgangsadressen anzufordern.
 
 ### <a name="when-i-deletemove-an-azure-spring-cloud-service-instance-will-its-extension-resources-be-deletedmoved-as-well"></a>Werden beim Löschen oder Verschieben einer Azure Spring Cloud-Dienstinstanz auch die Erweiterungsressourcen gelöscht bzw. verschoben?
 

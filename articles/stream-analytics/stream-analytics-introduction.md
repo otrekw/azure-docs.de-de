@@ -1,23 +1,23 @@
 ---
-title: Übersicht über Azure Stream Analytics
-description: Hier erfahren Sie mehr über Stream Analytics, einen verwalteten Dienst, der Ihnen bei der Analyse der Streamingdaten aus dem Internet der Dinge (IoT) in Echtzeit hilft.
+title: Einführung in Azure Stream Analytics
+description: Hier erfahren Sie mehr über Azure Stream Analytics, einen verwalteten Dienst, der Ihnen bei der Analyse der Streamingdaten aus dem Internet der Dinge (IoT) in Echtzeit hilft.
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: overview
-ms.custom: mvc, contperfq2
-ms.date: 11/03/2020
-ms.openlocfilehash: d81858db3f4d09b834a9199804a6f2631828496b
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.custom: mvc, contperf-fy21q2
+ms.date: 11/12/2020
+ms.openlocfilehash: 1871fdda7fe37e938f52c68e97bd9f40dbd9791d
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93342231"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97029276"
 ---
-# <a name="what-is-azure-stream-analytics"></a>Was ist Azure Stream Analytics?
+# <a name="welcome-to-azure-stream-analytics"></a>Willkommen bei Azure Stream Analytics
 
-Azure Stream Analytics ist eine Engine für Analysen in Echtzeit und die Verarbeitung komplexer Ereignisse, die entwickelt wurde, um große Mengen schneller Streamingdaten aus mehreren Quellen gleichzeitig zu analysieren und zu verarbeiten. In Informationen aus einer Reihe von Eingabequellen wie Geräten, Sensoren, Clickstreams, Feeds sozialer Medien und Anwendungen können Muster und Beziehungen identifiziert werden. Diese Muster können verwendet werden, Aktionen und Workflows wie das Erstellen von Warnungen, das Senden von Informationen per Feed an ein Berichterstellungstool oder das Speichern transformierter Informationen zur späteren Verwendung auszulösen. Außerdem ist Stream Analytics in der Azure IoT Edge-Laufzeit verfügbar, wo es die Verarbeitung von Daten auf IoT-Geräten ermöglicht. 
+Azure Stream Analytics ist eine Engine für Analysen in Echtzeit und die Verarbeitung komplexer Ereignisse, die entwickelt wurde, um große Mengen schneller Streamingdaten aus mehreren Quellen gleichzeitig zu analysieren und zu verarbeiten. In Informationen aus einer Reihe von Eingabequellen wie Geräten, Sensoren, Clickstreams, Feeds sozialer Medien und Anwendungen können Muster und Beziehungen identifiziert werden. Diese Muster können verwendet werden, Aktionen und Workflows wie das Erstellen von Warnungen, das Senden von Informationen per Feed an ein Berichterstellungstool oder das Speichern transformierter Informationen zur späteren Verwendung auszulösen. Außerdem ist Stream Analytics in der Azure IoT Edge-Laufzeit verfügbar, wo es die Verarbeitung von Daten auf IoT-Geräten ermöglicht.
 
 Die folgenden Szenarien sind Beispiele für Situationen, in denen Azure Stream Analytics verwenden werden kann:
 
@@ -26,6 +26,11 @@ Die folgenden Szenarien sind Beispiele für Situationen, in denen Azure Stream A
 * Geoanalysen für das Flottenmanagement und fahrerlose Fahrzeuge
 * Remoteüberwachung und Predictive Maintenance für Objekte mit hohem Wert
 * Echtzeitanalysen von POS-Daten (Point of Sale) für die Bestandskontrolle und Anomalieerkennung
+
+Sie können Azure Stream Analytics mit einem kostenlosen Azure-Abonnement ausprobieren.
+
+> [!div class="nextstepaction"]
+> [Azure Stream Analytics ausprobieren](https://azure.microsoft.com/services/stream-analytics/)
 
 ## <a name="how-does-stream-analytics-work"></a>Funktionsweise von Stream Analytics
 

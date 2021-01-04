@@ -1,26 +1,24 @@
 ---
 title: Bewerten der Fairness von ML-Modellen in Python (Vorschau)
 titleSuffix: Azure Machine Learning
-description: Erfahren Sie, wie Sie die Fairness Ihrer Modelle in Azure Machine Learning bewerten.
+description: Erfahren Sie, wie Sie mithilfe von Fairlearn und dem Python-SDK für Azure Machine Learning die Fairness Ihrer Machine Learning-Modelle beurteilen und minimieren können.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.author: mesameki
 author: mesameki
 ms.reviewer: luquinta
-ms.date: 09/01/2020
+ms.date: 11/16/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: bf819e5cff8c6ef008b0e55e156ba3531936b489
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 3fbd4990fd330960bb8dbce2e2a8d1bcb578cf2a
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94337881"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94701183"
 ---
 # <a name="use-azure-machine-learning-with-the-fairlearn-open-source-package-to-assess-the-fairness-of-ml-models-preview"></a>Verwenden von Azure Machine Learning mit dem Open-Source-Paket Fairlearn zur Bewertung der Fairness von ML-Modellen (Vorschau)
-
-
 
 In dieser Schrittanleitung erfahren Sie, wie Sie das Open-Source-Python-Paket [Fairlearn](https://fairlearn.github.io/) mit Azure Machine Learning verwenden, um die folgenden Aufgaben auszuführen:
 
@@ -194,16 +192,16 @@ Im folgenden Beispiel wird gezeigt, wie Sie das Fairnesspaket verwenden, um Erke
     Sie haben zwei Möglichkeiten, um auf das Visualisierungsdashboard in Azure Machine Learning-Studio zuzugreifen:
 
     * **Bereich „Experimente“ (Vorschau)**
-    1. Klicken Sie im linken Bereich auf **Experimente** , damit Ihnen eine Liste mit Experimenten angezeigt wird, die Sie in Azure Machine Learning ausgeführt haben.
+    1. Klicken Sie im linken Bereich auf **Experimente**, damit Ihnen eine Liste mit Experimenten angezeigt wird, die Sie in Azure Machine Learning ausgeführt haben.
     1. Wählen Sie ein bestimmtes Experiment aus, um alle Ausführungen in diesem Experiment anzuzeigen.
-    1. Klicken Sie auf eine Ausführung und dann auf die Registerkarte **Fairness** , um das Dashboard zur Erklärungsvisualisierung anzuzeigen.
+    1. Klicken Sie auf eine Ausführung und dann auf die Registerkarte **Fairness**, um das Dashboard zur Erklärungsvisualisierung anzuzeigen.
 
 
     [![Fairnessdashboard](./media/how-to-machine-learning-fairness-aml/dashboard.png)](./media/how-to-machine-learning-fairness-aml/dashboard.png#lightbox)
     
     * **Bereich „Modelle“**
     1. Wenn Sie Ihr ursprüngliches Modell mit den obigen Schritten registriert haben, können Sie im linken Bereich auf **Modelle** klicken, um es anzuzeigen.
-    1. Klicken Sie auf ein Modell und dann auf die Registerkarte **Fairness** , um das Dashboard zur Erklärungsvisualisierung anzuzeigen.
+    1. Klicken Sie auf ein Modell und dann auf die Registerkarte **Fairness**, um das Dashboard zur Erklärungsvisualisierung anzuzeigen.
 
     Weitere Informationen zum Visualisierungsdashboard und den enthaltenen Funktionen finden Sie im [Fairlearn-Benutzerhandbuch](https://fairlearn.github.io/master/user_guide/assessment.html#fairlearn-dashboard).
 
@@ -306,7 +304,7 @@ Wenn Sie mehrere Modelle vergleichen und sehen möchten, wie sich deren Fairness
     ```
 
 
-    Wie im vorherigen Abschnitt können Sie auf eine der oben beschriebenen Arten (über **Experimente** oder **Modelle** ) in Azure Machine Learning Studio auf das Visualisierungsdashboard zugreifen und die beiden Modelle hinsichtlich der Fairness und Leistung vergleichen.
+    Wie im vorherigen Abschnitt können Sie auf eine der oben beschriebenen Arten (über **Experimente** oder **Modelle**) in Azure Machine Learning Studio auf das Visualisierungsdashboard zugreifen und die beiden Modelle hinsichtlich der Fairness und Leistung vergleichen.
 
 
 ## <a name="upload-unmitigated-and-mitigated-fairness-insights"></a>Hochladen von nicht entschärften und entschärften Erkenntnissen zur Fairness

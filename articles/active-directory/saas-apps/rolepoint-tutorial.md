@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 03/15/2019
 ms.author: jeedes
 ms.openlocfilehash: 3225aa9eaff5c3cd0acca99261935feb9774810f
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92520675"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010264"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rolepoint"></a>Tutorial: Azure Active Directory-Integration mit RolePoint
 
@@ -48,15 +48,15 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 
 Zum Einrichten der Integration von RolePoint in Azure AD müssen Sie RolePoint aus dem Katalog der Liste der verwalteten SaaS-Apps hinzufügen.
 
-1. Klicken Sie im linken Bereich des [Azure-Portals](https://portal.azure.com) auf **Azure Active Directory** :
+1. Klicken Sie im linken Bereich des [Azure-Portals](https://portal.azure.com) auf **Azure Active Directory**:
 
     ![Wählen Sie „Azure Active Directory“.](common/select-azuread.png)
 
-2. Navigieren Sie zu **Unternehmensanwendungen** > **Alle Anwendungen** :
+2. Navigieren Sie zu **Unternehmensanwendungen** > **Alle Anwendungen**:
 
     ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
-3. Um eine Anwendung hinzuzufügen, wählen Sie oben im Fenster die Option **Neue Anwendung** :
+3. Um eine Anwendung hinzuzufügen, wählen Sie oben im Fenster die Option **Neue Anwendung**:
 
     ![Auswählen von „Neue Anwendung“](common/add-new-app.png)
 
@@ -123,7 +123,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit RolePoin
 
     1. **Azure AD-Bezeichner**
 
-    1. **Abmelde-URL** :
+    1. **Abmelde-URL**:
 
 
 ### <a name="configure-rolepoint-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens für RolePoint
@@ -150,7 +150,7 @@ In diesem Abschnitt erstellen Sie im Azure-Portal eine Testbenutzerin namens „
   
     1. Geben Sie in das Feld **Benutzername** den Namen **BrittaSimon@\<yourcompanydomain>.\<extension>** ein. (Beispiel: BrittaSimon@contoso.com.)
 
-    1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen** , und notieren Sie sich den im Feld **Kennwort** angezeigten Wert.
+    1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den im Feld **Kennwort** angezeigten Wert.
 
     1. Klicken Sie auf **Erstellen**.
 

@@ -12,11 +12,11 @@ ms.date: 11/03/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 4e74c33a18baff3e1cb39328ce265f16975ef1b5
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322157"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994841"
 ---
 # <a name="string-claims-transformations"></a>Transformationen von Zeichenfolgen-Ansprüchen
 
@@ -80,10 +80,10 @@ Das selbstbestätigte technische Profil ruft das technische Validierungsprofil *
 ### <a name="example"></a>Beispiel
 
 - Eingabeansprüche:
-  - **inputClaim1** : someone@contoso.com
-  - **inputClaim2** : someone@outlook.com
+  - **inputClaim1**: someone@contoso.com
+  - **inputClaim2**: someone@outlook.com
 - Eingabeparameter:
-  - **stringComparison** :  ordinalIgnoreCase
+  - **stringComparison**:  ordinalIgnoreCase
 - Ergebnis: Fehler wird ausgelöst.
 
 ## <a name="changecase"></a>ChangeCase
@@ -115,11 +115,11 @@ Mithilfe dieses Anspruchstyps können Sie jeden Zeichenfolgen-Anspruchstyp in Gr
 ### <a name="example"></a>Beispiel
 
 - Eingabeansprüche:
-  - **email** : SomeOne@contoso.com
+  - **email**: SomeOne@contoso.com
 - Eingabeparameter:
     - **toCase:** LOWER
 - Ausgabeansprüche:
-  - **email** : someone@contoso.com
+  - **email**: someone@contoso.com
 
 ## <a name="createstringclaim"></a>CreateStringClaim
 
@@ -183,13 +183,13 @@ Mithilfe dieser Anspruchstransformation können Sie überprüfen, ob ein Anspruc
 ### <a name="example"></a>Beispiel
 
 - Eingabeansprüche:
-  - **inputClaim1** : someone@contoso.com
-  - **inputClaim2** : someone@outlook.com
+  - **inputClaim1**: someone@contoso.com
+  - **inputClaim2**: someone@outlook.com
 - Eingabeparameter:
     - **operator:**  NOT EQUAL
-    - **ignoreCase** : true
+    - **ignoreCase**: true
 - Ausgabeansprüche:
-    - **outputClaim** : true
+    - **outputClaim**: true
 
 ## <a name="compareclaimtovalue"></a>CompareClaimToValue
 
@@ -223,13 +223,13 @@ Mithilfe dieser Anspruchstransformation können Sie überprüfen, ob ein Anspruc
 
 ### <a name="example"></a>Beispiel
 - Eingabeansprüche:
-    - **inputClaim1** : v1
+    - **inputClaim1**: v1
 - Eingabeparameter:
     - **compareTo:** V1
     - **operator:** EQUAL
-    - **ignoreCase** :  true
+    - **ignoreCase**:  true
 - Ausgabeansprüche:
-    - **outputClaim** : true
+    - **outputClaim**: true
 
 ## <a name="createrandomstring"></a>CreateRandomString
 
@@ -261,7 +261,7 @@ Im folgenden Beispiel wird eine globale eindeutige ID generiert. Mithilfe dieser
 - Eingabeparameter:
     - **randomGeneratorType:** GUID
 - Ausgabeansprüche:
-    - **outputClaim** : bc8bedd2-aaa3-411e-bdee-2f1810b73dfc
+    - **outputClaim**: bc8bedd2-aaa3-411e-bdee-2f1810b73dfc
 
 Im folgenden Beispiel wird ein ganzzahliger Zufallswert zwischen 0 und 1.000 generiert. Der Wert ist wie folgt formatiert: OTP_{random value}.
 
@@ -285,7 +285,7 @@ Im folgenden Beispiel wird ein ganzzahliger Zufallswert zwischen 0 und 1.000 gen
     - **randomGeneratorType:** INTEGER
     - **maximumNumber:** 1000
     - **stringFormat:** OTP_{0}
-    - **base64** : false
+    - **base64**: false
 - Ausgabeansprüche:
     - **outputClaim:** OTP_853
 
@@ -321,9 +321,9 @@ Mithilfe dieser Anspruchstransformation können Sie eine beliebige Zeichenfolge 
 - Eingabeansprüche:
     - **inputClaim:** 5164db16-3eee-4629-bfda-dcc3326790e9
 - Eingabeparameter:
-    - **stringFormat** :  cpim_{0}@{RelyingPartyTenantId}
+    - **stringFormat**:  cpim_{0}@{RelyingPartyTenantId}
 - Ausgabeansprüche:
-  - **outputClaim** : cpim_5164db16-3eee-4629-bfda-dcc3326790e9@b2cdemo.onmicrosoft.com
+  - **outputClaim**: cpim_5164db16-3eee-4629-bfda-dcc3326790e9@b2cdemo.onmicrosoft.com
 
 ## <a name="formatstringmultipleclaims"></a>FormatStringMultipleClaims
 
@@ -359,7 +359,7 @@ Mithilfe dieser Anspruchstransformation können Sie eine beliebige Zeichenfolge 
     - **inputClaim1:** Joe
     - **inputClaim2:** Fernando
 - Eingabeparameter:
-    - **stringFormat** : {0} {1}
+    - **stringFormat**: {0} {1}
 - Ausgabeansprüche:
     - **outputClaim:** Joe Fernando
 
@@ -427,10 +427,10 @@ Die Anspruchstransformation legt den Wert des Anspruchstyps *subject* mit dem We
 ### <a name="example"></a>Beispiel
 
 - Ausgabeansprüche:
-  - **subject** : E-Mail-Prüfcode für Contoso-Konto
-  - **message** : Vielen Dank für die Bestätigung Ihres Kontos!
-  - **codeIntro** : Ihr Code lautet:
-  - **signature** : Mit freundlichen Grüßen
+  - **subject**: E-Mail-Prüfcode für Contoso-Konto
+  - **message**: Vielen Dank für die Bestätigung Ihres Kontos!
+  - **codeIntro**: Ihr Code lautet:
+  - **signature**: Mit freundlichen Grüßen
 
 
 ## <a name="getmappedvaluefromlocalizedcollection"></a>GetMappedValueFromLocalizedCollection
@@ -439,7 +439,7 @@ Suche nach einem Element aus der Sammlung **Restriction** eines Anspruchs.
 
 | Element | TransformationClaimType | Datentyp | Notizen |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | mapFromClaim | Zeichenfolge | Der Anspruch mit dem Text, nach dem in den **restrictionValueClaim** -Ansprüchen über die Sammlung **Restriction** gesucht werden soll.  |
+| InputClaim | mapFromClaim | Zeichenfolge | Der Anspruch mit dem Text, nach dem in den **restrictionValueClaim**-Ansprüchen über die Sammlung **Restriction** gesucht werden soll.  |
 | OutputClaim | restrictionValueClaim | Zeichenfolge | Der Anspruch mit der Sammlung **Restriction**. Nach dem Aufrufen der Anspruchstransformation enthält der Wert dieses Anspruchs den Wert des ausgewählten Elements. |
 
 Im folgenden Beispiel wird anhand des Schlüssels des Fehlers nach der Beschreibung der Fehlermeldung gesucht. Der Anspruch **responseMsg** enthält eine Sammlung von Fehlermeldungen, die dem Benutzer angezeigt oder der vertrauenden Seite gesendet werden sollen.
@@ -509,14 +509,14 @@ Im folgenden Beispiel wird in einer der Sammlungen von inputParameter nach dem D
 ### <a name="example"></a>Beispiel
 
 - Eingabeansprüche:
-    - **inputParameterId** : test.com
+    - **inputParameterId**: test.com
 - Eingabeparameter:
     - **contoso.com:** 13c15f79-8fb1-4e29-a6c9-be0d36ff19f1
     - **microsoft.com:** 0213308f-17cb-4398-b97e-01da7bd4804e
-    - **test.com** : c7026f88-4299-4cdb-965d-3f166464b8a9
-    - **errorOnFailedLookup** : false
+    - **test.com**: c7026f88-4299-4cdb-965d-3f166464b8a9
+    - **errorOnFailedLookup**: false
 - Ausgabeansprüche:
-    - **outputClaim** : c7026f88-4299-4cdb-965d-3f166464b8a9
+    - **outputClaim**: c7026f88-4299-4cdb-965d-3f166464b8a9
 
 Wenn der Eingabeparameter `errorOnFailedLookup` auf `true` festgelegt ist, wird die Anspruchstransformation **LookupValue** immer über ein [technisches Validierungsprofil](validation-technical-profile.md) ausgeführt, das von einem [selbstbestätigten technischen Profil](self-asserted-technical-profile.md) aufgerufen wird (oder von einem Element vom Typ [DisplayControl](display-controls.md)). Die `LookupNotFound`-Metadaten eines selbstbestätigten technischen Profils steuern die Fehlermeldung, die dem Benutzer angezeigt wird.
 
@@ -544,12 +544,12 @@ Im folgenden Beispiel wird in einer der Sammlungen von inputParameter nach dem D
 ### <a name="example"></a>Beispiel
 
 - Eingabeansprüche:
-    - **inputParameterId** : live.com
+    - **inputParameterId**: live.com
 - Eingabeparameter:
     - **contoso.com:** 13c15f79-8fb1-4e29-a6c9-be0d36ff19f1
     - **microsoft.com:** 0213308f-17cb-4398-b97e-01da7bd4804e
-    - **test.com** : c7026f88-4299-4cdb-965d-3f166464b8a9
-    - **errorOnFailedLookup** : true
+    - **test.com**: c7026f88-4299-4cdb-965d-3f166464b8a9
+    - **errorOnFailedLookup**: true
 - Error:
     - In der Liste der Eingabeparameter-IDs wurde keine Entsprechung für den Eingabeanspruchswert gefunden, und „errorOnFailedLookup“ ist „true“.
 
@@ -573,7 +573,7 @@ Mithilfe dieser Anspruchstransformation können Sie unnötige Daten aus der Eige
 ```
 
 - Eingabeansprüche:
-    - **outputClaim:** Willkommen bei der Contoso-App. If you continue to browse and use this website, you are agreeing to comply with and be bound by the following terms and conditions...
+    - **outputClaim:** Willkommen bei der Contoso-App. Wenn Sie diese Website weiterhin aufrufen und nutzen, erklären Sie sich mit den folgenden Bedingungen einverstanden...
 - Ausgabeansprüche:
     - **outputClaim:** NULL
 
@@ -602,9 +602,9 @@ Mithilfe dieser Anspruchstransformation können Sie den Domänennamen hinter dem
 ### <a name="example"></a>Beispiel
 
 - Eingabeansprüche:
-  - **emailAddress** : joe@outlook.com
+  - **emailAddress**: joe@outlook.com
 - Ausgabeansprüche:
-    - **domain** : outlook.com
+    - **domain**: outlook.com
 
 ## <a name="setclaimsifregexmatch"></a>SetClaimsIfRegexMatch
 
@@ -643,11 +643,11 @@ Anhand des Musters des regulären Ausdrucks für Telefonnummern wird überprüft
 - Eingabeansprüche:
     - **claimToMatch:** "64854114520"
 - Eingabeparameter:
-    - **matchTo** : "^[0-9]{4,16}$"
-    - **outputClaimIfMatched** :  "isPhone"
+    - **matchTo**: "^[0-9]{4,16}$"
+    - **outputClaimIfMatched**:  "isPhone"
 - Ausgabeansprüche:
-    - **outputClaim** : "isPhone"
-    - **regexCompareResultClaim** : true
+    - **outputClaim**: "isPhone"
+    - **regexCompareResultClaim**: true
 
 ### <a name="example-2"></a>Beispiel 2
 
@@ -672,15 +672,15 @@ Anhand des Musters des regulären Ausdrucks für Telefonnummern wird überprüft
 ```
 
 - Eingabeansprüche:
-    - **claimToMatch** : „emily@contoso.com“
+    - **claimToMatch**: „emily@contoso.com“
 - Eingabeparameter:
-    - **matchTo** : `(?&lt;mailAlias&gt;.*)@(.*)$`
-    - **outputClaimIfMatched** : „isEmail“
-    - **extractGroups** : true
+    - **matchTo**: `(?&lt;mailAlias&gt;.*)@(.*)$`
+    - **outputClaimIfMatched**: „isEmail“
+    - **extractGroups**: true
 - Ausgabeansprüche:
-    - **outputClaim** : „isEmail“
-    - **regexCompareResultClaim** : true
-    - **mailAlias** : emily
+    - **outputClaim**: „isEmail“
+    - **regexCompareResultClaim**: true
+    - **mailAlias**: emily
     
 ## <a name="setclaimsifstringsareequal"></a>SetClaimsIfStringsAreEqual
 
@@ -720,16 +720,16 @@ Mithilfe dieser Anspruchstransformation können Sie überprüfen, ob ein Anspruc
 ### <a name="example"></a>Beispiel
 
 - Eingabeansprüche:
-    - **inputClaim** : v1
+    - **inputClaim**: v1
 - Eingabeparameter:
     - **matchTo:** V1
-    - **stringComparison** : ordinalIgnoreCase
+    - **stringComparison**: ordinalIgnoreCase
     - **stringMatchMsg:**  B2C_V1_90005
     - **stringMatchMsgCode:**  Die TOS wurden auf v2 aktualisiert.
 - Ausgabeansprüche:
     - **outputClaim1:** B2C_V1_90005
     - **outputClaim2:** Die TOS wurden auf v2 aktualisiert.
-    - **stringCompareResultClaim** : true
+    - **stringCompareResultClaim**: true
 
 ## <a name="setclaimsifstringsmatch"></a>SetClaimsIfStringsMatch
 
@@ -769,11 +769,11 @@ Bei der folgenden Anspruchstransformation wird beispielsweise überprüft, ob de
     - **claimToMatch:** Nebenversion
 - Eingabeparameter:
     - **matchTo:** Nebenversion
-    - **stringComparison** : ordinalIgnoreCase
+    - **stringComparison**: ordinalIgnoreCase
     - **outputClaimIfMatched:**  B2C_V1_90001
 - Ausgabeansprüche:
     - **isMinorResponseCode:** B2C_V1_90001
-    - **isMinor** : true
+    - **isMinor**: true
 
 
 ## <a name="stringcontains"></a>StringContains
@@ -809,10 +809,10 @@ Mithilfe dieser Anspruchstransformation können Sie überprüfen, ob ein Zeichen
 - Eingabeansprüche:
     - **inputClaim:** "Admin, Approver, Editor"
 - Eingabeparameter:
-    - **contains** : "admin,"
-    - **ignoreCase** : true
+    - **contains**: "admin,"
+    - **ignoreCase**: true
 - Ausgabeansprüche:
-    - **outputClaim** : true
+    - **outputClaim**: true
 
 ## <a name="stringsubstring"></a>StringSubstring
 
@@ -845,12 +845,12 @@ Ruft z. B. die Länder-/Regionsvorwahl der Telefonnummer ab.
 ### <a name="example"></a>Beispiel
 
 - Eingabeansprüche:
-    - **inputClaim** : "+1644114520"
+    - **inputClaim**: "+1644114520"
 - Eingabeparameter:
-    - **startIndex** : 0
-    - **length** :  2
+    - **startIndex**: 0
+    - **length**:  2
 - Ausgabeansprüche:
-    - **outputClaim** : "+1"
+    - **outputClaim**: "+1"
 
 ## <a name="stringreplace"></a>StringReplace
 
@@ -883,12 +883,12 @@ Beispielsweise können Sie eine Telefonnummer normalisieren, indem Sie die Zeich
 ### <a name="example"></a>Beispiel
 
 - Eingabeansprüche:
-    - **inputClaim** : "+164-411-452-054"
+    - **inputClaim**: "+164-411-452-054"
 - Eingabeparameter:
-    - **oldValue** : "-"
-    - **newValue** : ""
+    - **oldValue**: "-"
+    - **newValue**: ""
 - Ausgabeansprüche:
-    - **outputClaim** : "+164411452054"
+    - **outputClaim**: "+164411452054"
 
 ## <a name="stringjoin"></a>StringJoin
 
@@ -919,9 +919,9 @@ Im folgenden Beispiel wird eine Zeichenfolgenauflistung von Benutzerrollen in ei
 ### <a name="example"></a>Beispiel
 
 - Eingabeansprüche:
-  - **inputClaim** : [ "Admin", "Author", "Reader" ]
+  - **inputClaim**: [ "Admin", "Author", "Reader" ]
 - Eingabeparameter:
-  - **delimiter** : ","
+  - **delimiter**: ","
 - Ausgabeansprüche:
   - **outputClaim:** "Admin,Author,Reader"
 
@@ -957,9 +957,9 @@ Im folgenden Beispiel wird eine Zeichenfolge mit durch Kommas getrennten Benutze
 - Eingabeansprüche:
   - **inputClaim:** "Admin,Author,Reader"
 - Eingabeparameter:
-  - **delimiter** : ","
+  - **delimiter**: ","
 - Ausgabeansprüche:
-  - **outputClaim** : [ "Admin", "Author", "Reader" ]
+  - **outputClaim**: [ "Admin", "Author", "Reader" ]
 
 ## <a name="string-claim-transformations-expressions"></a>Transformationsausdrücke für Zeichenfolgenansprüche
 Anspruchstransformationsausdrücke in benutzerdefinierten Azure AD B2C-Richtlinien liefern Kontextinformationen zur Mandanten-ID und zur ID des technischen Profils.

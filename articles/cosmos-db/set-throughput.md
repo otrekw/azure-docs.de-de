@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/10/2020
-ms.openlocfilehash: 0dc55f4d77fde48590b1fbf206ed988e8fb9ec0e
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 4fea027663b55e87822eae1fd0cdb2d67dbc630b
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94490269"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96170821"
 ---
 # <a name="introduction-to-provisioned-throughput-in-azure-cosmos-db"></a>Einführung zum bereitgestellten Durchsatz in Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -65,7 +65,7 @@ Alle in einer Datenbank erstellten Container mit bereitgestelltem Durchsatz müs
 
 Wenn die Workload in einer logischen Partition mehr als den Durchsatz verbraucht, der der jeweiligen logischen Partition zugewiesen wurde, werden Ihre Vorgänge begrenzt. Bei einer Ratenbegrenzung können Sie entweder den Durchsatz für die gesamte Datenbank erhöhen oder die Vorgänge wiederholen. Weitere Informationen zur Partitionierung finden Sie unter [Logische Partitionen](partitioning-overview.md).
 
-Container in einer Datenbank mit gemeinsam genutztem Durchsatz teilen den Durchsatz (RU/s), der dieser Datenbank zugeordnet ist. Können Sie bis zu vier Container mit mindestens 400 RU/s in der Datenbank haben. Bei einem standardmäßigen (manuell) bereitgestellten Durchsatz erfordert jeder zu den ersten vier Containern neu hinzugefügte Container mindestens 100 zusätzliche RU/s. Wenn Sie z. B. eine Datenbank mit gemeinsam genutztem Durchsatz mit acht Containern haben, beträgt die Mindestanforderungen für die RU/s in der Datenbank 800 RU/s. Mit dem automatisch skalierten bereitgestellten Durchsatz können Sie in einer Datenbank über bis zu 25 Container mit maximal 4000 RU/s (Skalierung von 400 bis 4.000 RU/s) verfügen.
+Container in einer Datenbank mit gemeinsam genutztem Durchsatz teilen den Durchsatz (RU/s), der dieser Datenbank zugeordnet ist. Mit dem standardmäßig (manuell) bereitgestellten Durchsatz können Sie bis zu 25 Container mit mindestens 400 RU/s für die Datenbank einsetzen. Mit dem automatisch skalierten bereitgestellten Durchsatz können Sie in einer Datenbank über bis zu 25 Container mit maximal 4000 RU/s (Skalierung von 400 bis 4.000 RU/s) verfügen.
 
 > [!NOTE]
 > Im Februar 2020 haben wir eine Änderung eingeführt, die Ihnen maximal 25 Container in einer gemeinsam genutzten Durchsatzdatenbank ermöglicht, was containerübergreifend eine bessere gemeinsame Nutzung des Durchsatzes ermöglicht. Nach den ersten 25 Containern können Sie der Datenbank nur dann weitere Container hinzufügen, wenn diese [mit dediziertem Durchsatz](#set-throughput-on-a-database-and-a-container) bereitgestellt werden, der vom gemeinsam genutzten Durchsatz der Datenbank getrennt ist.<br>
@@ -111,7 +111,6 @@ Der tatsächliche Mindestwert an RU/s kann je nach Kontokonfiguration variieren.
 * 400 RU/s 
 * Aktueller Speicher in GB * 10 RU/s (falls Ihr Container oder Ihre Datenbank mehr als 1 TB an Daten enthält, siehe unser [Programm „High Storage/Low Throughput“ (Hohe Speicherkapazität/geringer Durchsatz)](#high-storage-low-throughput-program))
 * Höchstwert bereitgestellter RU/s für die Datenbank oder den Container / 100
-* Containeranzahl * 100 RU/s (nur Datenbank mit gemeinsam genutztem Durchsatz)
 
 ### <a name="changing-the-provisioned-throughput"></a>Ändern des bereitgestellten Durchsatzes
 
@@ -138,7 +137,7 @@ Sie können [Azure Monitor-Metriken](monitor-cosmos-db.md#view-operation-level-m
 
 Wie im Abschnitt [Aktuell bereitgestellter Durchsatz](#current-provisioned-throughput) weiter oben beschrieben, hängt der Mindestdurchsatz, den Sie für einen Container oder eine Datenbank bereitstellen können, von einer Reihe von Faktoren ab. Einer davon ist die Datenmenge, die derzeit gespeichert wird, da Azure Cosmos DB einen Mindestdurchsatz von 10 RU/s pro GB Speicher erzwingt.
 
-Dies kann in Situationen, in denen Sie große Datenmengen speichern müssen, aber im Vergleich dazu geringe Durchsatzanforderungen haben, ein Problem darstellen. Um diese Szenarien besser zu unterstützen, wurde in Azure Cosmos DB ein **Programm „High Storage/Low Throughput“** (hohe Speicherkapazität/geringer Durchsatz) eingeführt, das die Einschränkung für RU/s pro GB bei berechtigten Konten von 10 auf 1 reduziert.
+Dies kann in Situationen, in denen Sie große Datenmengen speichern müssen, aber im Vergleich dazu geringe Durchsatzanforderungen haben, ein Problem darstellen. Um diese Szenarien besser zu unterstützen, wurde in Azure Cosmos DB ein **Programm „High Storage/Low Throughput“** (hohe Speicherkapazität/geringer Durchsatz) eingeführt, das die Einschränkung für RU/s pro GB bei berechtigten Konten reduziert.
 
 Derzeit benötigen Sie in Ihrem Konto mindestens einen Container oder eine Datenbank mit gemeinsam genutztem Durchsatz, der bzw. die mehr als 1 TB Daten enthält, um dafür berechtigt zu sein. Um an diesem Programm teilzunehmen und Ihre Gesamtberechtigung zu prüfen, müssen Sie lediglich [diese Umfrage](https://customervoice.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRzBPrdEMjvxPuDm8fCLUtXpUREdDU0pCR0lVVFY5T1lRVEhWNUZITUJGMC4u) ausfüllen. Das Azure Cosmos DB-Team wird dies dann nachverfolgen und mit dem Onboarding fortfahren.
 
@@ -147,8 +146,8 @@ Diese Tabelle zeigt einen Vergleich zwischen dem standardmäßig (manuell) berei
 
 |**Parameter**  |**Standarddurchsatz (manuell) für eine Datenbank**  |**Standarddurchsatz (manuell) für einen Container**|**Automatisch skalierter Durchsatz für eine Datenbank** | **Automatisch skalierter Durchsatz für einen Container**|
 |---------|---------|---------|---------|---------|
-|Einstiegspunkt (minimale RU/s) |400 RU/s. Nach den ersten vier Containern benötigt jeder weitere Container mindestens 100 RU/s.</li> |400| Automatische Skalierung zwischen 400 und 4.000 RU/s. Bis zu 25 Container ohne RU/s-Minimum pro Container</li> | Automatische Skalierung zwischen 400 und 4.000 RU/s.|
-|RU/s-Minimum pro Container|100|400|--|Automatische Skalierung zwischen 400 und 4.000 RU/s|
+|Einstiegspunkt (minimale RU/s) |400 RU/s. Bis zu 25 Container ohne Mindest-RU/s pro Container</li> |400| Automatische Skalierung zwischen 400 und 4.000 RU/s. Bis zu 25 Container ohne Mindest-RU/s pro Container</li> | Automatische Skalierung zwischen 400 und 4.000 RU/s.|
+|RU/s-Minimum pro Container|--|400|--|Automatische Skalierung zwischen 400 und 4.000 RU/s|
 |Maximale RUs|Unbegrenzt, in der Datenbank|Unbegrenzt, im Container|Unbegrenzt, in der Datenbank|Unbegrenzt, im Container
 |RUs zugewiesen oder verfügbar für einen bestimmten Container|Keine Garantien. Die einem bestimmten Container zugewiesenen RUs hängen von den Eigenschaften ab. Bei diesen Eigenschaften kann es sich um die Partitionsschlüssel der Container, die den Durchsatz gemeinsam nutzen, um die Verteilung der Workload oder um die Anzahl von Containern handeln. |Alle RUs, die für den Container konfiguriert wurden, sind ausschließlich für diesen Container reserviert.|Keine Garantien. Die einem bestimmten Container zugewiesenen RUs hängen von den Eigenschaften ab. Bei diesen Eigenschaften kann es sich um die Partitionsschlüssel der Container, die den Durchsatz gemeinsam nutzen, um die Verteilung der Workload oder um die Anzahl von Containern handeln. |Alle RUs, die für den Container konfiguriert wurden, sind ausschließlich für diesen Container reserviert.|
 |Maximale Speicherkapazität für einen Container|Unbegrenzt.|Unbegrenzt|Unbegrenzt|Unbegrenzt|

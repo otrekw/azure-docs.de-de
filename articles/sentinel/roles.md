@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/28/2020
 ms.author: yelevin
-ms.openlocfilehash: 0704f076ef7c5d1a39af67d3ec6ec2baece1fda5
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 9c100ca82b751a050e74cce85e1794701a789288
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92517300"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95498468"
 ---
 # <a name="permissions-in-azure-sentinel"></a>Berechtigungen in Azure Sentinel
 
@@ -46,7 +46,7 @@ Es gibt drei dedizierte integrierte Azure Sentinel-Rollen.
 >
 > - Um optimale Ergebnisse zu erzielen, sollten diese Rollen für die **Ressourcengruppe** zugewiesen werden, die den Azure Sentinel-Arbeitsbereich enthält. Auf diese Weise gelten die Rollen für alle Ressourcen, die zur Unterstützung von Azure Sentinel bereitgestellt werden, da diese Ressourcen auch in derselben Ressourcengruppe platziert werden sollten.
 >
-> - Eine andere Möglichkeit besteht darin, die Rollen direkt für den Azure Sentinel- **Arbeitsbereich** selbst zuzuweisen. Wenn Sie so vorgehen, müssen Sie die gleichen Rollen auch für die SecurityInsights- **Lösungsressource** in diesem Arbeitsbereich zuweisen. Sie müssen sie möglicherweise auch anderen Ressourcen zuweisen, und Sie müssen die Rollenzuweisungen für Ressourcen kontinuierlich verwalten.
+> - Eine andere Möglichkeit besteht darin, die Rollen direkt für den Azure Sentinel-**Arbeitsbereich** selbst zuzuweisen. Wenn Sie so vorgehen, müssen Sie die gleichen Rollen auch für die SecurityInsights-**Lösungsressource** in diesem Arbeitsbereich zuweisen. Sie müssen sie möglicherweise auch anderen Ressourcen zuweisen, und Sie müssen die Rollenzuweisungen für Ressourcen kontinuierlich verwalten.
 
 ### <a name="additional-roles-and-permissions"></a>Weitere Rollen und Berechtigungen
 
@@ -62,7 +62,7 @@ Benutzern mit besonderen Arbeitsanforderungen müssen möglicherweise zusätzlic
 
 - Gastbenutzer, die Incidents zuweisen
 
-    Wenn ein Gastbenutzer in der Lage sein muss, Incidents zuzuweisen, muss dem Benutzer zusätzlich zur Rolle „Azure Sentinel-Antwortberechtigter“ auch die Rolle [Verzeichnisleseberechtigte](../active-directory/roles/permissions-reference.md#directory-readers) zugewiesen werden. Beachten Sie, dass diese Rolle *keine* Azure-Rolle, sondern eine **Azure Active Directory** -Rolle ist, und dass Standardbenutzern (keine Gastbenutzer) diese Rolle standardmäßig zugewiesen ist. 
+    Wenn ein Gastbenutzer in der Lage sein muss, Incidents zuzuweisen, muss dem Benutzer zusätzlich zur Rolle „Azure Sentinel-Antwortberechtigter“ auch die Rolle [Verzeichnisleseberechtigte](../active-directory/roles/permissions-reference.md#directory-readers) zugewiesen werden. Beachten Sie, dass diese Rolle *keine* Azure-Rolle, sondern eine **Azure Active Directory**-Rolle ist, und dass Standardbenutzern (keine Gastbenutzer) diese Rolle standardmäßig zugewiesen ist. 
 
 Eine Gegenüberstellung finden Sie in der [Tabelle unten](#roles-and-allowed-actions).
 
@@ -74,7 +74,7 @@ Bei der Zuweisung von Azure Sentinel-spezifischen Azure-Rollen können Sie auf a
 
 - **Log Analytics-Rollen:** [Log Analytics-Mitwirkender](../role-based-access-control/built-in-roles.md#log-analytics-contributor) und [Log Analytics-Leser](../role-based-access-control/built-in-roles.md#log-analytics-reader). Log Analytics-Rollen gewähren Zugriff auf Ihre Log Analytics-Arbeitsbereiche. 
 
-Beispielsweise kann ein Benutzer, dem die Rolle **Azure Sentinel-Leser** , aber nicht die Rolle **Azure Sentinel-Mitwirkender** zugewiesen wurde, immer noch Ressourcen in Azure Sentinel bearbeiten, wenn ihm die Rolle **Mitwirkender** auf Azure-Ebene zugewiesen wurde. Wenn Sie daher einem Benutzer Berechtigungen nur in Azure Sentinel gewähren möchten, sollten Sie die vorherigen Berechtigungen dieses Benutzers sorgfältig entfernen und sicherstellen, dass Sie keinen erforderlichen Zugriff auf eine andere Ressource aufheben.
+Beispielsweise kann ein Benutzer, dem die Rolle **Azure Sentinel-Leser**, aber nicht die Rolle **Azure Sentinel-Mitwirkender** zugewiesen wurde, immer noch Ressourcen in Azure Sentinel bearbeiten, wenn ihm die Rolle **Mitwirkender** auf Azure-Ebene zugewiesen wurde. Wenn Sie daher einem Benutzer Berechtigungen nur in Azure Sentinel gewähren möchten, sollten Sie die vorherigen Berechtigungen dieses Benutzers sorgfältig entfernen und sicherstellen, dass Sie keinen erforderlichen Zugriff auf eine andere Ressource aufheben.
 
 ## <a name="roles-and-allowed-actions"></a>Rollen und zulässige Aktionen
 
@@ -91,7 +91,7 @@ In der folgenden Tabelle sind die Rollen und zulässigen Aktionen in Azure Senti
 
 - Zusätzlich zu integrierten Azure-Rollen oder anstelle von diesen können Sie benutzerdefinierte Azure-Rollen für Azure Sentinel erstellen. Benutzerdefinierte Azure-Rollen für Azure Sentinel werden genauso wie andere [benutzerdefinierte Azure-Rollen](../role-based-access-control/custom-roles-rest.md#create-a-custom-role) basierend auf [bestimmten Berechtigungen für Azure Sentinel](../role-based-access-control/resource-provider-operations.md#microsoftsecurityinsights) und für [Azure Log Analytics-Ressourcen](../role-based-access-control/resource-provider-operations.md#microsoftoperationalinsights) erstellt.
 
-- Sie können die erweiterte rollenbasierte Zugriffssteuerung von Log Analytics für die Daten in Ihrem Azure Sentinel-Arbeitsbereich verwenden. Dies umfasst sowohl auf dem Datentyp basierendes Azure RBAC als auch ressourcenzentriertes Azure RBAC. Weitere Informationen zu den Log Analytics-Rollen finden Sie unter [Verwalten von Protokolldaten und Arbeitsbereichen in Azure Monitor](../azure-monitor/platform/manage-access.md#manage-access-using-workspace-permissions).
+- Sie können die erweiterte rollenbasierte Zugriffssteuerung in Azure von Log Analytics für die Daten in Ihrem Azure Sentinel-Arbeitsbereich verwenden. Dies umfasst sowohl auf dem Datentyp basierendes Azure RBAC als auch ressourcenzentriertes Azure RBAC. Weitere Informationen zu den Log Analytics-Rollen finden Sie unter [Verwalten von Protokolldaten und Arbeitsbereichen in Azure Monitor](../azure-monitor/platform/manage-access.md#manage-access-using-workspace-permissions).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

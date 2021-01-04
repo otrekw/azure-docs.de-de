@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.date: 03/24/2020
 ms.custom: seodec18
 ms.openlocfilehash: ba216e41672e1d19e552b3f82a2ea65da7d3a435
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93124576"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96007085"
 ---
 # <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>Erste Schritte mit Azure Stream Analytics: Betrugsermittlung in Echtzeit
 
@@ -41,7 +41,7 @@ Stellen Sie zunächst sicher, dass Sie über Folgendes verfügen:
 * Die App zum Generieren von Anrufereignissen [TelcoGenerator.zip](https://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/TelcoGenerator.zip), die im Microsoft Download Center heruntergeladen werden kann. Entzippen Sie dieses Paket in einem Ordner auf Ihrem Computer. Wenn Sie den Quellcode prüfen und die App in einem Debugger ausführen möchten, können Sie den Quellcode der App über [GitHub](https://aka.ms/azure-stream-analytics-telcogenerator) beziehen. 
 
     >[!NOTE]
-    >Windows blockiert möglicherweise die heruntergeladene ZIP-Datei. Wenn Sie die Datei nicht entzippen können, klicken Sie mit der rechten Maustaste auf die Datei, und wählen Sie **Eigenschaften**. Wenn die Meldung „Die Datei stammt von einem anderen Computer. Der Zugriff wurde aus Sicherheitsgründen eventuell blockiert.“ angezeigt wird, wählen Sie die Option **Nicht mehr blockieren** , und klicken Sie dann auf **Übernehmen**.
+    >Windows blockiert möglicherweise die heruntergeladene ZIP-Datei. Wenn Sie die Datei nicht entzippen können, klicken Sie mit der rechten Maustaste auf die Datei, und wählen Sie **Eigenschaften**. Wenn die Meldung „Die Datei stammt von einem anderen Computer. Der Zugriff wurde aus Sicherheitsgründen eventuell blockiert.“ angezeigt wird, wählen Sie die Option **Nicht mehr blockieren**, und klicken Sie dann auf **Übernehmen**.
 
 Wenn Sie die Ergebnisse des Stream Analytics-Auftrags untersuchen möchten, benötigen Sie darüber hinaus ein Tool zum Anzeigen der Inhalte eines Azure Blob Storage-Containers. Wenn Sie Visual Studio einsetzen, können Sie [Azure-Tools für Visual Studio](/visualstudio/azure/vs-azure-tools-storage-resources-server-explorer-browse-manage) oder [Visual Studio Cloud-Explorer](/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer) verwenden. Alternativ dazu können Sie eigenständige Tools wie [Azure Storage-Explorer](https://storageexplorer.com/) oder [Cerulean](https://www.cerebrata.com/products/cerulean/features/azure-storage) installieren. 
 
@@ -102,7 +102,7 @@ Damit ein Prozess Daten an einen Event Hub senden kann, muss der Event Hub mit e
 
 5. Nachdem die Richtlinie bereitgestellt wurde, klicken sie in der Liste der SAS-Richtlinien darauf.
 
-6. Navigieren Sie zum Feld **VERBINDUNGSZEICHENFOLGE – PRIMÄRSCHLÜSSEL** , und klicken Sie neben der Verbindungszeichenfolge auf die Schaltfläche „Kopieren“. 
+6. Navigieren Sie zum Feld **VERBINDUNGSZEICHENFOLGE – PRIMÄRSCHLÜSSEL**, und klicken Sie neben der Verbindungszeichenfolge auf die Schaltfläche „Kopieren“. 
 
     <br/><img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-shared-access-policy-copy-connection-string-new-portal.png" alt="Stream Analytics shared access policy" width="300px"/>
  
@@ -197,7 +197,7 @@ Nachdem Sie einen Datenstrom von Anrufereignissen eingerichtet haben, können Si
 
    ![Feld „Eingabe“ unter „Topologie“ im Bereich „Stream Analytics-Auftrag“](./media/stream-analytics-real-time-fraud-detection/stream-analytics-sa-job-input-box-new-portal.png)
  
-3. Klicken Sie im Bereich auf **Datenstromeingabe hinzufügen** , und wählen Sie **Event Hub** aus. Geben Sie dann auf der Seite „Neue Eingabe“ die folgenden Informationen ein:
+3. Klicken Sie im Bereich auf **Datenstromeingabe hinzufügen**, und wählen Sie **Event Hub** aus. Geben Sie dann auf der Seite „Neue Eingabe“ die folgenden Informationen ein:
 
    |**Einstellung**  |**Empfohlener Wert**  |**Beschreibung**  |
    |---------|---------|---------|
@@ -345,7 +345,7 @@ Wenn Sie eine Verknüpfung mit Streamingdaten durchführen, müssen bei der Verk
 
    ![Stream Analytics-Auftragsausgabe mit sechs generierten Datensätzen zur Selbstverknüpfung](./media/stream-analytics-real-time-fraud-detection/stream-analytics-sa-job-sample-output-self-join.png)
 
-3. Klicken Sie auf **Speichern** , um die Selbstverknüpfungsabfrage als Teil des Stream Analytics-Auftrags zu speichern. (Die Beispieldaten werden nicht gespeichert.)
+3. Klicken Sie auf **Speichern**, um die Selbstverknüpfungsabfrage als Teil des Stream Analytics-Auftrags zu speichern. (Die Beispieldaten werden nicht gespeichert.)
 
     <br/><img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-query-editor-save-button-new-portal.png" alt="Save Stream Analytics query in portal" width="300px"/>
 
@@ -367,7 +367,7 @@ Wenn ein Blob Storage-Konto vorhanden ist, können Sie dieses verwenden. In dies
 
 3. Klicken Sie im Abschnitt **Auftragstopologie** in das Feld **Ausgabe**.
 
-4. Klicken Sie im Bereich **Ausgaben** auf **Hinzufügen** , und wählen Sie **Blobspeicher** aus. Geben Sie dann auf der Seite „Neue Ausgabe“ die folgenden Informationen ein:
+4. Klicken Sie im Bereich **Ausgaben** auf **Hinzufügen**, und wählen Sie **Blobspeicher** aus. Geben Sie dann auf der Seite „Neue Ausgabe“ die folgenden Informationen ein:
 
    |**Einstellung**  |**Empfohlener Wert**  |**Beschreibung**  |
    |---------|---------|---------|

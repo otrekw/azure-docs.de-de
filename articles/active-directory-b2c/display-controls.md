@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 10/12/2020
+ms.date: 12/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 950c159ed4d2c57796f33b9505e6931dbec983ba
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 441a77823c77305e567e9e1436715bc51ca48c11
+ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94532374"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97387053"
 ---
 # <a name="display-controls"></a>Anzeigesteuerelemente
 
@@ -53,9 +53,9 @@ Das **DisplayControl**-Element enthält die folgenden Elemente:
 
 | Element | Vorkommen | BESCHREIBUNG |
 | ------- | ----------- | ----------- |
-| InputClaims | 0:1 | **InputClaims** wird verwendet, um den Wert der Ansprüche, die vom Benutzer erfasst werden sollen, vorab auszufüllen. Weitere Informationen finden Sie unter dem Element [Input Claims](technicalprofiles.md#inputclaims). |
+| InputClaims | 0:1 | **InputClaims** wird verwendet, um den Wert der Ansprüche, die vom Benutzer erfasst werden sollen, vorab auszufüllen. Weitere Informationen finden Sie unter dem Element [Input Claims](technicalprofiles.md#input-claims). |
 | DisplayClaims | 0:1 | **DisplayClaims** wird verwendet, um die Ansprüche darzustellen, die vom Benutzer erfasst werden sollen. Weitere Informationen finden Sie unter dem Element [DisplayClaim](technicalprofiles.md#displayclaim).|
-| OutputClaims | 0:1 | **OutputClaims** wird verwendet, um die Ansprüche darzustellen, die temporär für **DisplayControl** gespeichert werden sollen. Weitere Informationen finden Sie unter dem Element [OutputClaims](technicalprofiles.md#outputclaims).|
+| OutputClaims | 0:1 | **OutputClaims** wird verwendet, um die Ansprüche darzustellen, die temporär für **DisplayControl** gespeichert werden sollen. Weitere Informationen finden Sie unter dem Element [OutputClaims](technicalprofiles.md#output-claims).|
 | Aktionen | 0:1 | **Actions** wird verwendet, um die technischen Validierungsprofile aufzulisten, die für Benutzeraktionen am Front-End aufgerufen werden sollen. |
 
 ### <a name="input-claims"></a>Eingabeansprüche

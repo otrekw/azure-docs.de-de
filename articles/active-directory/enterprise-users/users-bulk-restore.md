@@ -5,7 +5,7 @@ services: active-directory
 author: curtand
 ms.author: curtand
 manager: mtillman
-ms.date: 11/15/2020
+ms.date: 12/02/2020
 ms.topic: how-to
 ms.service: active-directory
 ms.subservice: enterprise-users
@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d141637286ed931701e82d29088186de32ff9f9c
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: be3947e3de18f8ccaf47382c4035e187521ac710
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94646779"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96571503"
 ---
 # <a name="bulk-restore-deleted-users-in-azure-active-directory"></a>Massenwiederherstellung gelöschter Benutzer in Azure Active Directory
 

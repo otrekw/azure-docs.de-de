@@ -10,12 +10,12 @@ ms.author: tamram
 ms.reviewer: wielriac
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5558a57812414f6f1bb1be053a089af98533155a
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 39c1972eba84f4f1990c87112c5801c386849640
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93288340"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95545957"
 ---
 # <a name="overview-of-azure-page-blobs"></a>Übersicht über Azure-Seitenblobs
 
@@ -31,7 +31,7 @@ Seitenblobs können nur die **heiße Zugriffsebene** verwenden. Die Verwendung d
 
 ## <a name="sample-use-cases"></a>Beispiele für Anwendungsfälle
 
-In diesem Abschnitt werden einige Anwendungsfälle für Seitenblobs erläutert. Den Anfang machen Azure-IaaS-Datenträger. Azure-Seitenblobs bilden das Rückgrat der Plattform für virtuelle Datenträger für Azure-IaaS. Sowohl Azure-Datenträger für das Betriebssystem als auch für die zu speichernden Daten werden als virtuelle Datenträger implementiert, wo Daten auf der Azure Storage-Plattform persistent gespeichert und anschließend für optimale Leistung an die virtuellen Computer übermittelt werden. Azure-Datenträger liegen im [VHD-Format](https://technet.microsoft.com/library/dd979539.aspx) von Hyper-V vor und werden als [Seitenblob](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs#about-page-blobs) in Azure Storage gespeichert. Zusätzlich zur Verwendung virtueller Datenträger für Azure-IaaS-VMs ermöglichen Seitenblobs auch PaaS- und DBaaS-Szenarien. Ein Beispiel wäre etwa der Azure SQL-DB-Dienst, der derzeit Seitenblobs zum Speichern von SQL-Daten verwendet, um schnelle wahlfreie Lese-/Schreibzugriffe für die Datenbank zu ermöglichen. Ein weiteres Beispiel: Bei einem PaaS-Dienst für den Zugriff auf freigegebene Medien für Anwendungen für gemeinsame Videobearbeitung ermöglichen Seitenblobs schnellen Zugriff auf zufällige Positionen in den Medien. Außerdem ermöglichen sie schnelles und effizientes Bearbeiten und Zusammenführen derselben Medien durch mehrere Benutzer. 
+In diesem Abschnitt werden einige Anwendungsfälle für Seitenblobs erläutert. Den Anfang machen Azure-IaaS-Datenträger. Azure-Seitenblobs bilden das Rückgrat der Plattform für virtuelle Datenträger für Azure-IaaS. Sowohl Azure-Datenträger für das Betriebssystem als auch für die zu speichernden Daten werden als virtuelle Datenträger implementiert, wo Daten auf der Azure Storage-Plattform persistent gespeichert und anschließend für optimale Leistung an die virtuellen Computer übermittelt werden. Azure-Datenträger liegen im [VHD-Format](/previous-versions/windows/it-pro/windows-7/dd979539(v=ws.10)) von Hyper-V vor und werden als [Seitenblob](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs#about-page-blobs) in Azure Storage gespeichert. Zusätzlich zur Verwendung virtueller Datenträger für Azure-IaaS-VMs ermöglichen Seitenblobs auch PaaS- und DBaaS-Szenarien. Ein Beispiel wäre etwa der Azure SQL-DB-Dienst, der derzeit Seitenblobs zum Speichern von SQL-Daten verwendet, um schnelle wahlfreie Lese-/Schreibzugriffe für die Datenbank zu ermöglichen. Ein weiteres Beispiel: Bei einem PaaS-Dienst für den Zugriff auf freigegebene Medien für Anwendungen für gemeinsame Videobearbeitung ermöglichen Seitenblobs schnellen Zugriff auf zufällige Positionen in den Medien. Außerdem ermöglichen sie schnelles und effizientes Bearbeiten und Zusammenführen derselben Medien durch mehrere Benutzer. 
 
 Für Microsoft-Erstanbieterdienste wie Azure Site Recovery und Azure Backup sowie von vielen Drittanbieterentwicklern wurden branchenführende Innovationen mithilfe der REST-Schnittstelle des Seitenblobs implementiert. Zu den einzigartigen in Azure implementierten Szenarien zählen: 
 
@@ -47,7 +47,7 @@ Beide mit Seitenblobs angebotenen Arten von Speicher verfügen über ein eigenes
 
 ### <a name="rest-api"></a>REST-API
 
-Machen Sie sich anhand des folgenden Dokuments mit der [Entwicklung mithilfe von Seitenblobs](storage-dotnet-how-to-use-blobs.md) vertraut. Sehen Sie sich als Beispiel den Zugriff auf Seitenblobs mit der Storage-Clientbibliothek für .NET an. 
+Machen Sie sich anhand des folgenden Dokuments mit der [Entwicklung mithilfe von Seitenblobs](./storage-quickstart-blobs-dotnet.md) vertraut. Sehen Sie sich als Beispiel den Zugriff auf Seitenblobs mit der Storage-Clientbibliothek für .NET an. 
 
 Das folgende Diagramm beschreibt die allgemeinen Beziehungen zwischen Konto, Containern und Seitenblobs.
 
@@ -63,7 +63,7 @@ Rufen Sie zunächst einen Verweis auf einen Container ab. Um ein Seitenblob zu e
 
 # <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
-Zur Erstellung eines Seitenblobs erstellen wir zunächst ein **CloudBlobClient** -Objekt mit dem Basis-URI für den Zugriff auf den Blobspeicher für Ihr Speicherkonto ( *pbaccount* in Abbildung 1) sowie das **StorageCredentialsAccountAndKey** -Objekt, wie im folgenden Beispiel zu sehen. Das Beispiel zeigt anschließend das Erstellen eines Verweises auf ein **CloudBlobContainer** -Objekt und dann das Erstellen des Containers ( *testvhds* ), wenn dieser nicht bereits vorhanden ist. Dann können Sie mit dem **CloudBlobContainer** -Objekt durch Angabe des Namens des Seitenblobs („os4.vhd“), auf das Sie zugreifen möchten, einen Verweis auf ein **CloudPageBlob** -Objekt erstellen. Zum Erstellen des Seitenblobs rufen Sie [CloudPageBlob.Create](/dotnet/api/microsoft.azure.storage.blob.cloudpageblob.create) auf und übergeben die maximale Größe für das Blob, das Sie erstellen möchten. Der Wert von *blobSize* muss ein Vielfaches von 512 Byte sein.
+Zur Erstellung eines Seitenblobs erstellen wir zunächst ein **CloudBlobClient**-Objekt mit dem Basis-URI für den Zugriff auf den Blobspeicher für Ihr Speicherkonto (*pbaccount* in Abbildung 1) sowie das **StorageCredentialsAccountAndKey**-Objekt, wie im folgenden Beispiel zu sehen. Das Beispiel zeigt anschließend das Erstellen eines Verweises auf ein **CloudBlobContainer**-Objekt und dann das Erstellen des Containers (*testvhds*), wenn dieser nicht bereits vorhanden ist. Dann können Sie mit dem **CloudBlobContainer**-Objekt durch Angabe des Namens des Seitenblobs („os4.vhd“), auf das Sie zugreifen möchten, einen Verweis auf ein **CloudPageBlob**-Objekt erstellen. Zum Erstellen des Seitenblobs rufen Sie [CloudPageBlob.Create](/dotnet/api/microsoft.azure.storage.blob.cloudpageblob.create) auf und übergeben die maximale Größe für das Blob, das Sie erstellen möchten. Der Wert von *blobSize* muss ein Vielfaches von 512 Byte sein.
 
 ```csharp
 using Microsoft.Azure;

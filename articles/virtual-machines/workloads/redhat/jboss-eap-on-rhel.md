@@ -8,12 +8,12 @@ ms.service: virtual-machines-linux
 ms.subservice: workloads
 ms.assetid: 8a4df7bf-be49-4198-800e-db381cda98f5
 ms.date: 10/30/2020
-ms.openlocfilehash: ce07a0667b1fd4b439f061966e4ee0b1112578c4
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: bab84b12c871c621b5a317ba8b47f9b18c91bff3
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94413206"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500188"
 ---
 # <a name="deploy-enterprise-java-applications-to-azure-with-jboss-eap-on-red-hat-enterprise-linux"></a>Bereitstellen von Java-Unternehmensanwendungen in Azure mit JBoss EAP unter Red Hat Enterprise Linux
 
@@ -31,7 +31,7 @@ In JBoss EAP und RHEL ist alles enthalten, was Sie zum Erstellen, Ausführen, Be
 
   Wenn Sie nicht über eine EAP-Berechtigung verfügen, sollten sie sich zunächst ein [JBoss EAP-Evaluierungsabonnement](https://access.redhat.com/products/red-hat-jboss-enterprise-application-platform/evaluation) beschaffen. Greifen Sie zum Erstellen eines neuen Red Hat-Abonnements auf das [Red Hat-Kundenportal](https://access.redhat.com/) zu, und richten Sie ein Konto ein.
 
-* Die [Azure CLI](https://docs.microsoft.com/cli/azure/overview)
+* Die [Azure CLI](/cli/azure/overview)
 
 * RHEL-Optionen Wählen Sie zwischen „Nutzungsbasierte Zahlung“ und „Bring-Your-Own-Subscription (BYOS)“. Bei BYOS müssen Sie Ihr RHEL Gold Image für [Red Hat Cloud Access](https://access.redhat.com/) aktivieren, bevor Sie die Schnellstartvorlage bereitstellen.
 
@@ -164,9 +164,9 @@ Für die Verwendung von BYOS für das RHEL-Betriebssystem müssen Sie über ein 
 
    1. Warten Sie ab, bis die Red Hat Gold Images in Ihrem Azure-Abonnement verfügbar sind. Diese Images sind normalerweise innerhalb von drei Stunden nach der Übermittlung der Daten verfügbar.
     
-3. Akzeptieren Sie die Azure Marketplace-Geschäftsbedingungen für RHEL-Images mit BYOS. Sie können diesen Prozess abschließen, indem Sie die folgenden Azure CLI-Befehle ausführen. Weitere Informationen finden Sie in der Dokumentation unter [Bring-Your-Own-Subscription-Gold-Images für Red Hat Enterprise Linux in Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/redhat/byos). Es ist wichtig, dass Sie die neueste Azure CLI-Version ausführen.
+3. Akzeptieren Sie die Azure Marketplace-Geschäftsbedingungen für RHEL-Images mit BYOS. Sie können diesen Prozess abschließen, indem Sie die folgenden Azure CLI-Befehle ausführen. Weitere Informationen finden Sie in der Dokumentation unter [Bring-Your-Own-Subscription-Gold-Images für Red Hat Enterprise Linux in Azure](./byos.md). Es ist wichtig, dass Sie die neueste Azure CLI-Version ausführen.
 
-   1. Öffnen Sie eine Azure CLI-Sitzung, und führen Sie die Authentifizierung für Ihr Azure-Konto durch. Weitere Informationen finden Sie unter [Anmelden mit der Azure CLI](https://docs.microsoft.com/cli/azure/authenticate-azure-cli).
+   1. Öffnen Sie eine Azure CLI-Sitzung, und führen Sie die Authentifizierung für Ihr Azure-Konto durch. Weitere Informationen finden Sie unter [Anmelden mit der Azure CLI](/cli/azure/authenticate-azure-cli).
 
    1. Vergewissern Sie sich, dass die RHEL-Images mit BYOS unter Ihrem Abonnement verfügbar sind, indem Sie den folgenden CLI-Befehl ausführen. Falls Sie hier keine Ergebnisse erhalten, sollten Sie sicherstellen, dass Ihr Azure-Abonnement für RHEL-Images mit BYOS aktiviert ist.
    
@@ -203,7 +203,7 @@ Sie können die Vorlage auf die folgenden Arten bereitstellen:
   New-AzResourceGroupDeployment -ResourceGroupName <resource-group-name> -TemplateUri <raw link to the template which can be obtained from github>
   ```
  
-  Informationen zur Installation und Konfiguration von Azure PowerShell finden Sie in der [PowerShell-Dokumentation](https://docs.microsoft.com/powershell/azure/).  
+  Informationen zur Installation und Konfiguration von Azure PowerShell finden Sie in der [PowerShell-Dokumentation](/powershell/azure/).  
 
 - **Azure-Befehlszeilenschnittstelle**. Stellen Sie die Vorlage mithilfe der folgenden Befehle bereit:
 
@@ -215,7 +215,7 @@ Sie können die Vorlage auf die folgenden Arten bereitstellen:
   az group deployment create --resource-group <my-resource-group> --template-uri <raw link to the template which can be obtained from github>
   ```
 
-  Ausführliche Informationen zur Installation und Konfiguration der Azure CLI finden Sie unter [Installieren der Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/install-azure-cli).
+  Ausführliche Informationen zur Installation und Konfiguration der Azure CLI finden Sie unter [Installieren der Befehlszeilenschnittstelle](/cli/azure/install-azure-cli).
 
 - **Azure-Portal**. Für die Bereitstellung über das Azure-Portal können Sie die Azure-Schnellstartvorlagen verwenden (wie im nachfolgenden Abschnitt beschrieben). Wählen Sie dann in der Schnellstartanleitung die Schaltfläche **In Azure bereitstellen** oder **Auf GitHub suchen** aus.
 
@@ -231,10 +231,10 @@ Sie können zunächst eine der folgenden Schnellstartvorlagen für JBoss EAP unt
 
 ## <a name="resource-links"></a>Ressourcenlinks
 
-* [Azure-Hybridvorteil](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing)
-* [Konfigurieren einer Java-App für Azure App Service](https://docs.microsoft.com/azure/app-service/configure-language-java)
+* [Azure-Hybridvorteil](../../windows/hybrid-use-benefit-licensing.md)
+* [Konfigurieren einer Java-App für Azure App Service](../../../app-service/configure-language-java.md)
 * [JBoss EAP unter Azure Red Hat OpenShift](https://azure.microsoft.com/services/openshift/)
-* [JBoss EAP unter Azure App Service Linux](https://docs.microsoft.com/azure/app-service/quickstart-java)
+* [JBoss EAP unter Azure App Service Linux](../../../app-service/quickstart-java.md)
 * [Bereitstellen von JBoss EAP unter Azure App Service](https://github.com/JasonFreeberg/jboss-on-app-service)
 
 ## <a name="next-steps"></a>Nächste Schritte
@@ -242,6 +242,6 @@ Sie können zunächst eine der folgenden Schnellstartvorlagen für JBoss EAP unt
 * Weitere Informationen: [JBoss EAP 7.2](https://access.redhat.com/documentation/red_hat_jboss_enterprise_application_platform/7.2/)
 * Weitere Informationen: [JBoss EAP 7.3](https://access.redhat.com/documentation/red_hat_jboss_enterprise_application_platform/7.3/)
 * Weitere Informationen: [Red Hat Subscription Management](https://access.redhat.com/products/red-hat-subscription-management)
-* Weitere Informationen: [Red Hat-Workloads unter Azure](https://aka.ms/rhel-docs)
+* Weitere Informationen: [Red Hat-Workloads unter Azure](./overview.md)
 * Bereitstellung: [JBoss EAP für RHEL-VM oder -VM-Skalierungsgruppe über Azure Marketplace](https://aka.ms/AMP-JBoss-EAP)
 * Bereitstellung: [JBoss EAP für RHEL-VM oder -VM-Skalierungsgruppe über Azure-Schnellstartvorlagen](https://aka.ms/Quickstart-JBoss-EAP)

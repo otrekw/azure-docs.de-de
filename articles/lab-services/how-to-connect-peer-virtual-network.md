@@ -3,12 +3,12 @@ title: Herstellen einer Verbindung mit einem Peernetzwerk in Azure Lab Services 
 description: Hier erfahren Sie, wie Sie eine Peerverbindung zwischen Ihrem Labnetzwerk und einem anderen Netzwerk herstellen. Sie können z. B. Ihr lokales Organisations- oder Schul-/Universitätsnetzwerk mit dem virtuellen Netzwerk eines Labs in Azure verbinden.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 169160005b27f6ab9575749e4a72a26d2df4000b
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 99ea72f11c8f389a15171a1fe3b376646494903a
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94647986"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96434242"
 ---
 # <a name="connect-your-labs-network-with-a-peer-virtual-network-in-azure-lab-services"></a>Verbinden des Netzwerks Ihres Labs mit einem virtuellen Peernetzwerk in Azure Lab Services
 
@@ -26,7 +26,7 @@ In einigen Szenarien, wie beispielsweise den folgenden, müssen Sie das Netzwerk
 Einige lokale Netzwerke sind über [ExpressRoute](../expressroute/expressroute-introduction.md) oder ein [Gateway für virtuelle Netzwerke](../vpn-gateway/vpn-gateway-about-vpngateways.md) mit Azure Virtual Network verbunden. Diese Dienste müssen außerhalb von Azure Lab Services eingerichtet werden. Weitere Informationen zum Herstellen einer Verbindung zwischen einem lokalen Netzwerk und Azure über ExpressRoute finden Sie unter [Übersicht über ExpressRoute](../expressroute/expressroute-introduction.md). Für die lokale Verbindung über ein Gateway für virtuelle Netzwerke müssen sich das Gateway, das angegebene virtuelle Netzwerk und das Labkonto in der gleichen Region befinden.
 
 > [!NOTE]
-> Beim Erstellen eines Azure Virtual Network, für das Peering mit einem Lab-Konto verwendet wird, ist es wichtig zu verstehen, wie sich die Region des virtuellen Netzwerks auf den Ort der Erstellung von Classroom-Labs auswirkt.  Weitere Informationen finden Sie im Administratorleitfaden im Abschnitt zu [Regionen/Speicherorten](./administrator-guide.md#regionslocations).
+> Beim Erstellen eines Azure Virtual Network, für das Peering mit einem Lab-Konto verwendet wird, ist es wichtig zu verstehen, wie sich die Region des virtuellen Netzwerks auf den Ort der Erstellung von Labs auswirkt.  Weitere Informationen finden Sie im Administratorleitfaden im Abschnitt zu [Regionen/Speicherorten](./administrator-guide.md#regionslocations).
 
 ## <a name="configure-at-the-time-of-lab-account-creation"></a>Konfigurieren zum Zeitpunkt der Labkontoerstellung
 

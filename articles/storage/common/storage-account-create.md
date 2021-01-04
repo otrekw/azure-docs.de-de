@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/24/2020
+ms.date: 12/11/2020
 ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: b7faec5023abe37802d8b08980f216934d70a6ac
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: c8d07e53e259fff28e662f0c1ca3934eabf015e8
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92784353"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97357448"
 ---
 # <a name="create-a-storage-account"></a>Speicherkonto erstellen
 
@@ -54,7 +54,7 @@ Sie können sich bei Azure anmelden und Azure-CLI-Befehle ausführen. Dazu haben
 
 ### <a name="use-azure-cloud-shell"></a>Verwenden von Azure Cloud Shell
 
-Azure Cloud Shell ist eine kostenlose Bash-Shell, die Sie direkt im Azure-Portal ausführen können. Die Azure-Befehlszeilenschnittstelle ist vorinstalliert und für die Verwendung mit Ihrem Konto konfiguriert. Klicken Sie im Azure-Portal im Menü im rechten oberen Bereich auf die Schaltfläche **Cloud Shell** :
+Azure Cloud Shell ist eine kostenlose Bash-Shell, die Sie direkt im Azure-Portal ausführen können. Die Azure-Befehlszeilenschnittstelle ist vorinstalliert und für die Verwendung mit Ihrem Konto konfiguriert. Klicken Sie im Azure-Portal im Menü im rechten oberen Bereich auf die Schaltfläche **Cloud Shell**:
 
 [![Cloud Shell](./media/storage-quickstart-create-account/cloud-shell-menu.png)](https://portal.azure.com)
 
@@ -106,7 +106,7 @@ az login
 
 Jedes Speicherkonto muss zu einer Azure-Ressourcengruppe gehören. Eine Ressourcengruppe ist ein logischer Container zur Gruppierung Ihrer Azure-Dienste. Beim Erstellen eines Speicherkontos haben Sie die Wahlmöglichkeit, entweder eine neue Ressourcengruppe zu erstellen oder eine vorhandene Ressourcengruppe zu verwenden. In diesem Artikel wird gezeigt, wie Sie eine neue Ressourcengruppe erstellen.
 
-Ein **universelles v2** -Speicherkonto bietet Zugriff auf sämtliche Azure Storage-Dienste: Blobs, Dateien, Warteschlangen, Tabellen und Datenträger. In den hier beschriebenen Schritten wird ein Speicherkonto vom Typ „Universell v2“ erstellt. Die Schritte für die Erstellung einer anderen Art von Speicherkonto sind jedoch ähnlich. Weitere Informationen zu den Arten von Speicherkonten und anderen Speicherkontoeinstellungen finden Sie unter [Übersicht über Azure Storage-Konten](storage-account-overview.md).
+Ein **universelles v2**-Speicherkonto bietet Zugriff auf sämtliche Azure Storage-Dienste: Blobs, Dateien, Warteschlangen, Tabellen und Datenträger. In den hier beschriebenen Schritten wird ein Speicherkonto vom Typ „Universell v2“ erstellt. Die Schritte für die Erstellung einer anderen Art von Speicherkonto sind jedoch ähnlich. Weitere Informationen zu den Arten von Speicherkonten und anderen Speicherkontoeinstellungen finden Sie unter [Übersicht über Azure Storage-Konten](storage-account-overview.md).
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -236,7 +236,7 @@ Durch das Löschen eines Speicherkontos wird das gesamte Konto gelöscht, einsch
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
 1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu dem Speicherkonto.
-1. Klicken Sie auf **Löschen** .
+1. Klicken Sie auf **Löschen**.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -286,3 +286,4 @@ Alternativ können Sie die Ressourcengruppe löschen, wodurch das Speicherkonto 
 - [Speicherkontoübersicht](storage-account-overview.md)
 - [Durchführen eines Upgrades auf ein Speicherkonto vom Typ „Allgemein v2“](storage-account-upgrade.md)
 - [Verschieben eines Azure Storage-Kontos in eine andere Region](storage-account-move.md)
+- [Wiederherstellen eines gelöschten Speicherkontos](storage-account-recover.md)

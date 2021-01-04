@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/24/2019
+ms.date: 12/04/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 41955475f32fe674bcb3ef2d1b6e59c71a008b6b
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 5d0b2df551c73e8c9b24d80280bbc993d9b361b7
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94656444"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928466"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Tutorial: Hinzufügen einer lokalen Anwendung für den Remotezugriff über den Anwendungsproxy in Azure Active Directory
 
@@ -51,8 +51,12 @@ Für hohe Verfügbarkeit in Ihrer Produktionsumgebung sollten Sie mehrere Window
 > ```
 > Windows Registry Editor Version 5.00
 > 
-> [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\WinHttp] "EnableDefaultHttp2"=dword:00000000
+> HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\WinHttp\EnableDefaultHttp2 Value: 0
 > ```
+>
+> Der Schlüssel kann über PowerShell mit dem folgenden Befehl festgelegt werden:
+> ```
+> Set-ItemProperty 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\WinHttp\' -Name EnableDefaultHTTP2 -Value 0
 >
 
 #### <a name="recommendations-for-the-connector-server"></a>Empfehlungen für den Connectorserver
@@ -87,6 +91,9 @@ So aktivieren Sie TLS 1.2
 
 1. Starten Sie den Server neu.
 
+> [!Note]
+> Microsoft aktualisiert Azure-Dienste für die Verwendung von TLS-Zertifikaten aus einer anderen Gruppe von Stammzertifizierungsstellen (Certificate Authorities, CAs). Diese Änderung wird vorgenommen, da die aktuellen Zertifizierungsstellenzertifikate eine der grundlegenden Anforderungen des Zertifizierungsstellen-/Browserforums nicht erfüllen. Weitere Informationen finden Sie unter [TLS-Zertifikatänderungen für Azure](https://docs.microsoft.com/azure/security/fundamentals/tls-certificate-changes).
+
 ## <a name="prepare-your-on-premises-environment"></a>Vorbereiten Ihrer lokalen Umgebung
 
 Ermöglichen Sie zuerst die Kommunikation mit Azure-Rechenzentren, um Ihre Umgebung für den Azure AD-Anwendungsproxy vorzubereiten. Falls der Pfad eine Firewall enthält, sollten Sie sicherstellen, dass der Zugang geöffnet ist. Bei einer geöffneten Firewall kann der Connector HTTPS-Anforderungen (TCP) an den Anwendungsproxy senden.
@@ -113,7 +120,7 @@ Lassen Sie den Zugriff auf die folgenden URLs zu:
 | --- | --- | --- |
 | &ast;.msappproxy.net<br>&ast;.servicebus.windows.net | 443/HTTPS | Kommunikation zwischen dem Connector und dem Anwendungsproxy-Clouddienst |
 | crl3.digicert.com<br>crl4.digicert.com<br>ocsp.digicert.com<br>crl.microsoft.com<br>oneocsp.microsoft.com<br>ocsp.msocsp.com<br> | 80/HTTP |Der Connector verwendet diese URLs, um Zertifikate zu überprüfen. |
-| login.windows.net<br>secure.aadcdn.microsoftonline-p.com<br>&ast;.microsoftonline.com<br>&ast;.microsoftonline-p.com<br>&ast;.msauth.net<br>&ast;.msauthimages.net<br>&ast;.msecnd.net<br>&ast;.msftauth.net<br>&ast;.msftauthimages.net<br>&ast;.phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net<br>ctldl.windowsupdate.com | 443/HTTPS |Der Connector verwendet diese URLs während der Registrierung. |
+| login.windows.net<br>secure.aadcdn.microsoftonline-p.com<br>&ast;.microsoftonline.com<br>&ast;.microsoftonline-p.com<br>&ast;.msauth.net<br>&ast;.msauthimages.net<br>&ast;.msecnd.net<br>&ast;.msftauth.net<br>&ast;.msftauthimages.net<br>&ast;.phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net<br>ctldl.windowsupdate.com<br>www.microsoft.com/pkiops | 443/HTTPS |Der Connector verwendet diese URLs während der Registrierung. |
 | ctldl.windowsupdate.com | 80/HTTP |Der Connector verwendet diese URL während der Registrierung. |
 
 Sie können Verbindungen mit „&ast;.msappproxy.net“, „&ast;.servicebus.windows.net“ und anderen URLs zulassen, wenn für Ihre Firewall oder Ihren Proxy die Konfiguration von DNS-Zulassungslisten möglich ist. Andernfalls müssen Sie den Zugriff auf die Datei [Azure IP Ranges and Service Tags – Public Cloud](https://www.microsoft.com/download/details.aspx?id=56519) zulassen. Die IP-Adressbereiche werden wöchentlich aktualisiert.
@@ -184,7 +191,7 @@ Nun haben Sie Ihre Umgebung vorbereitet, einen Connector installiert und sind be
 1. Melden Sie sich als Administrator beim [Azure-Portal](https://portal.azure.com/) an.
 2. Wählen Sie im Navigationsbereich auf der linken Seite die Option **Azure Active Directory**.
 3. Wählen Sie **Unternehmensanwendungen** und dann **Neue Anwendung**.
-4. Wählen Sie im Abschnitt **Lokale Anwendungen** die Option **Lokale Anwendung hinzufügen** aus.
+4. Wählen Sie im Abschnitt **Eigene Anwendung erstellen** die Option **Configure Application Proxy for secure remote access to an on-premise application** (Anwendungsproxy für sicheren Remotezugriff auf eine lokale Anwendung konfigurieren) aus.
 5. Geben Sie im Abschnitt **Fügen Sie Ihre eigene lokale Anwendung hinzu** die folgenden Informationen zu Ihrer Anwendung an:
 
     | Feld | BESCHREIBUNG |

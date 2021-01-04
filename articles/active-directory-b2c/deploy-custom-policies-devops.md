@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 02/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0dba5f96d90304418d7ebd297419c1f36244f868
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 13f5f8da0bd58cef0974e8ea8f5f3c5172daa0ba
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92363928"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928731"
 ---
 # <a name="deploy-custom-policies-with-azure-pipelines"></a>Bereitstellen benutzerdefinierter Richtlinien mit Azure Pipelines
 
@@ -29,7 +29,7 @@ Drei Hauptschritte sind erforderlich, um Azure Pipelines zum Verwalten benutzerd
 1. Konfigurieren einer Azure-Pipeline
 
 > [!IMPORTANT]
-> Bei der Verwaltung von benutzerdefinierten Richtlinien in Azure AD B2C mit Azure Pipelines werden derzeit **Vorschau** -Vorgänge verwendet, die im `/beta`-Endpunkt der Microsoft Graph-API zur Verfügung stehen. Die Verwendung dieser APIs in Produktionsanwendungen wird nicht unterstützt. Weitere Informationen finden Sie in der [Microsoft Graph-REST-API-Beta-Endpunkt-Referenz](https://docs.microsoft.com/graph/api/overview?toc=./ref/toc.json&view=graph-rest-beta).
+> Bei der Verwaltung von benutzerdefinierten Richtlinien in Azure AD B2C mit Azure Pipelines werden derzeit **Vorschau**-Vorgänge verwendet, die im `/beta`-Endpunkt der Microsoft Graph-API zur Verfügung stehen. Die Verwendung dieser APIs in Produktionsanwendungen wird nicht unterstützt. Weitere Informationen finden Sie in der [Microsoft Graph-REST-API-Beta-Endpunkt-Referenz](/graph/api/overview?toc=.%2fref%2ftoc.json&view=graph-rest-beta).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -40,7 +40,7 @@ Drei Hauptschritte sind erforderlich, um Azure Pipelines zum Verwalten benutzerd
 
 ## <a name="client-credentials-grant-flow"></a>Gewährungsflow für Clientanmeldeinformationen
 
-In dem hier beschriebenen Szenario wrden Dienst-zu-Dienst-Aufrufe zwischen Azure Pipelines und Azure AD B2C mithilfe des [Gewährungsflows für OAuth 2.0-Clientanmeldeinformationen](../active-directory/develop/v1-oauth2-client-creds-grant-flow.md) verwendet. Dieser Gewährungsflow erlaubt einem Webdienst wie Azure Pipelines (vertraulicher Client), beim Aufrufen eines anderen Webdiensts (in diesem Fall die Microsoft Graph-API) seine eigenen Anmeldeinformationen zum Authentifizieren zu verwenden, anstatt die Identität eines Benutzers anzunehmen. Azure Pipelines ruft ohne Benutzereingriff ein Token ab und sendet dann Anforderungen an die Microsoft Graph-API.
+In dem hier beschriebenen Szenario wrden Dienst-zu-Dienst-Aufrufe zwischen Azure Pipelines und Azure AD B2C mithilfe des [Gewährungsflows für OAuth 2.0-Clientanmeldeinformationen](../active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow.md) verwendet. Dieser Gewährungsflow erlaubt einem Webdienst wie Azure Pipelines (vertraulicher Client), beim Aufrufen eines anderen Webdiensts (in diesem Fall die Microsoft Graph-API) seine eigenen Anmeldeinformationen zum Authentifizieren zu verwenden, anstatt die Identität eines Benutzers anzunehmen. Azure Pipelines ruft ohne Benutzereingriff ein Token ab und sendet dann Anforderungen an die Microsoft Graph-API.
 
 ## <a name="register-an-application-for-management-tasks"></a>Registrieren einer Anwendung für Verwaltungstasks
 
@@ -56,10 +56,10 @@ Nach dem Registrieren der Verwaltungsanwendung können Sie ein Repository für I
 
 1. Melden Sie sich bei Ihrer Azure DevOps Services-Organisation an.
 1. [Erstellen Sie ein neues Projekt][devops-create-project], oder wählen Sie ein vorhandenes Projekt aus.
-1. Navigieren Sie in Ihrem Projekt zu **Repos** , und wählen Sie die Seite **Dateien** aus. Wählen Sie für diese Übung ein vorhandenes Repository aus, oder erstellen Sie ein neues Repository.
-1. Erstellen Sie einen Ordner namens *B2CAssets*. Geben Sie der erforderlichen Platzhalterdatei den Namen *README.md* , und führen Sie einen **Commit** für die Datei aus. Sie können diese Datei später bei Bedarf entfernen.
-1. Fügen Sie Ihre Azure AD B2C-Richtliniendateien dem Ordner *B2CAssets* hinzu. Dazu zählen *TrustFrameworkBase.xml* , *TrustFrameWorkExtensions.xml* , *SignUpOrSignin.xml* , *ProfileEdit.xml* , *PasswordReset.xml* und alle weiteren Richtlinien, die Sie erstellt haben. Notieren Sie sich die Dateinamen der einzelnen Azure AD B2C-Richtliniendateien, um sie in einem späteren Schritt (als PowerShell-Skriptargumente) zu verwenden.
-1. Erstellen Sie im Stammverzeichnis des Repository einen Ordner namens *Skripts* , und geben Sie der Platzhalterdatei den Namen *DeployToB2c.ps1*. Führen Sie an diesem Punkt noch keinen Commit für die Datei aus. Dies geschieht in einem späteren Schritt.
+1. Navigieren Sie in Ihrem Projekt zu **Repos**, und wählen Sie die Seite **Dateien** aus. Wählen Sie für diese Übung ein vorhandenes Repository aus, oder erstellen Sie ein neues Repository.
+1. Erstellen Sie einen Ordner namens *B2CAssets*. Geben Sie der erforderlichen Platzhalterdatei den Namen *README.md*, und führen Sie einen **Commit** für die Datei aus. Sie können diese Datei später bei Bedarf entfernen.
+1. Fügen Sie Ihre Azure AD B2C-Richtliniendateien dem Ordner *B2CAssets* hinzu. Dazu zählen *TrustFrameworkBase.xml*, *TrustFrameWorkExtensions.xml*, *SignUpOrSignin.xml*, *ProfileEdit.xml*, *PasswordReset.xml* und alle weiteren Richtlinien, die Sie erstellt haben. Notieren Sie sich die Dateinamen der einzelnen Azure AD B2C-Richtliniendateien, um sie in einem späteren Schritt (als PowerShell-Skriptargumente) zu verwenden.
+1. Erstellen Sie im Stammverzeichnis des Repository einen Ordner namens *Skripts*, und geben Sie der Platzhalterdatei den Namen *DeployToB2c.ps1*. Führen Sie an diesem Punkt noch keinen Commit für die Datei aus. Dies geschieht in einem späteren Schritt.
 1. Fügen Sie das folgende PowerShell-Skript in die Datei *DeployToB2c.ps1* ein, und führen Sie dann einen **Commit** für die Datei aus. Mit dem Skript wird ein Token von Azure AD abgerufen und die Microsoft Graph-API aufgerufen, um die Richtlinien in den Ordner *B2CAssets* in Ihrem Azure AD B2C-Mandanten hochzuladen.
 
     ```PowerShell
@@ -116,7 +116,7 @@ Nachdem Sie Ihr Repository initialisiert und mit Ihren benutzerdefinierten Richt
 1. Melden Sie sich bei Ihrer Azure DevOps Services-Organisation an, und navigieren Sie zu Ihrem Projekt.
 1. Wählen Sie in Ihrem Projekt **Pipelines** > **Freigaben** > **Neue Pipeline** aus.
 1. Wählen Sie unter **Vorlage auswählen** die Option **Leerer Auftrag** aus.
-1. Geben Sie einen **Phasennamen** (z. B. *DeployCustomPolicies* ) ein, und schließen Sie dann den Bereich.
+1. Geben Sie einen **Phasennamen** (z. B. *DeployCustomPolicies*) ein, und schließen Sie dann den Bereich.
 1. Wählen Sie **Artefakt hinzufügen** aus, und wählen Sie unter **Quelltyp** die Option **Azure-Repository** aus.
     1. Wählen Sie das Quellrepository mit dem Ordner *Skripts* und dem gespeicherten PowerShell-Skript aus.
     1. Wählen Sie einen **Standardbranch** aus. Wenn Sie im vorherigen Abschnitt ein neues Repository erstellt haben, ist *master* der Standardbranch.
@@ -134,7 +134,7 @@ Nachdem Sie Ihr Repository initialisiert und mit Ihren benutzerdefinierten Richt
     | Name | Wert |
     | ---- | ----- |
     | `clientId` | **Anwendungs-ID (Client)** der zuvor von Ihnen registrierten Anwendung. |
-    | `clientSecret` | Wert des **geheimen Clientschlüssels** , den Sie zuvor erstellt haben. <br /> Ändern Sie den Variablentyp in **Geheimnis** (wählen Sie das Schlosssymbol aus). |
+    | `clientSecret` | Wert des **geheimen Clientschlüssels**, den Sie zuvor erstellt haben. <br /> Ändern Sie den Variablentyp in **Geheimnis** (wählen Sie das Schlosssymbol aus). |
     | `tenantId` | `your-b2c-tenant.onmicrosoft.com`, wobei *your-b2c-tenant* dem Namen Ihres Azure AD B2C-Mandanten entspricht. |
 
 1. Wählen Sie **Speichern** aus, um die Variablen zu speichern.
@@ -145,14 +145,14 @@ Fügen Sie als Nächstes einen Task zum Bereitstellen einer Richtliniendatei hin
 
 1. Wählen Sie die Registerkarte **Tasks** aus.
 1. Wählen Sie **Agent-Auftrag** und dann das Pluszeichen ( **+** ) aus, um dem Agent-Auftrag einen Task hinzuzufügen.
-1. Suchen Sie nach dem Eintrag **PowerShell** , und wählen Sie ihn aus. Wählen Sie nicht „Azure PowerShell“, „PowerShell auf Zielcomputern“ oder einen anderen Eintrag im Zusammenhang mit PowerShell aus.
+1. Suchen Sie nach dem Eintrag **PowerShell**, und wählen Sie ihn aus. Wählen Sie nicht „Azure PowerShell“, „PowerShell auf Zielcomputern“ oder einen anderen Eintrag im Zusammenhang mit PowerShell aus.
 1. Wählen Sie den neu hinzugefügten Task **PowerShell-Skript** aus.
 1. Geben Sie für den Task „PowerShell-Skript“ die folgenden Werte ein:
-    * **Taskversion** : 2.*
-    * **Anzeigename** : Der Name der Richtlinie, die dieser Task hochladen soll, zum Beispiel *B2C_1A_TrustFrameworkBase*.
+    * **Taskversion**: 2.*
+    * **Anzeigename**: Der Name der Richtlinie, die dieser Task hochladen soll, zum Beispiel *B2C_1A_TrustFrameworkBase*.
     * **Typ:** Dateipfad
-    * **Skriptpfad:** Wählen Sie die Auslassungspunkte (* *_..._* _) aus, navigieren Sie zum Ordner _Skripts*, und wählen Sie dann die Datei *DeployToB2C.ps1* aus.
-    * **Argumente** :
+    * **Skriptpfad:** Wählen Sie die Auslassungspunkte (**_..._* _) aus, navigieren Sie zum Ordner _Skripts*, und wählen Sie dann die Datei *DeployToB2C.ps1* aus.
+    * **Argumente**:
 
         Geben Sie als **Argumente** die folgenden Werte ein. Ersetzen Sie `{alias-name}` durch den Alias, den Sie im vorherigen Abschnitt definiert haben.
 
@@ -170,11 +170,11 @@ Fügen Sie als Nächstes einen Task zum Bereitstellen einer Richtliniendatei hin
 
 1. Wählen Sie **Speichern** aus, um den Agent-Auftrag zu speichern.
 
-Mit dem gerade hinzugefügten Task wird *eine* Richtliniendatei in Azure AD B2C hochgeladen. Bevor Sie den Vorgang fortsetzen und weitere Tasks erstellen, sollten Sie manuell den Task auslösen ( **Freigabe erstellen** ), um sicherzustellen, dass er erfolgreich abgeschlossen wird.
+Mit dem gerade hinzugefügten Task wird *eine* Richtliniendatei in Azure AD B2C hochgeladen. Bevor Sie den Vorgang fortsetzen und weitere Tasks erstellen, sollten Sie manuell den Task auslösen (**Freigabe erstellen**), um sicherzustellen, dass er erfolgreich abgeschlossen wird.
 
 Wenn der Task erfolgreich abgeschlossen wird, können Sie weitere Bereitstellungstasks hinzufügen. Führen Sie dazu für jede Datei mit einer benutzerdefinierten Richtlinie die oben beschriebenen Schritte aus. Ändern Sie für jede Richtlinie die Argumentwerte `-PolicyId` und `-PathToFile`.
 
-`PolicyId` ist ein Wert, der sich am Anfang jeder XML-Richtliniendatei im TrustFrameworkPolicy-Knoten befindet. Beispiel: `PolicyId` in der folgenden XML-Richtliniendatei lautet *B2C_1A_TrustFrameworkBase* :
+`PolicyId` ist ein Wert, der sich am Anfang jeder XML-Richtliniendatei im TrustFrameworkPolicy-Knoten befindet. Beispiel: `PolicyId` in der folgenden XML-Richtliniendatei lautet *B2C_1A_TrustFrameworkBase*:
 
 ```xml
 <TrustFrameworkPolicy
@@ -202,7 +202,7 @@ Das Identity Experience Framework erzwingt diese Reihenfolge, da die Dateistrukt
 So testen Sie Ihre Pipeline
 
 1. Wählen Sie **Pipelines** und anschließend **Freigaben** aus.
-1. Wählen Sie die zuvor erstellte Pipeline (z. B. *DeployCustomPolicies* ) aus.
+1. Wählen Sie die zuvor erstellte Pipeline (z. B. *DeployCustomPolicies*) aus.
 1. Wählen Sie **Freigabe erstellen** und dann **Erstellen** aus, um die Freigabe in die Warteschlange einzureihen.
 
 Es sollte ein Benachrichtigungsbanner mit dem Hinweis angezeigt werden, dass eine Freigabe in die Warteschlange gestellt wurde. Um deren Status anzuzeigen, wählen Sie den Link im Benachrichtigungsbanner oder die Freigabe in der Liste auf der Registerkarte **Freigaben** aus.
@@ -211,10 +211,10 @@ Es sollte ein Benachrichtigungsbanner mit dem Hinweis angezeigt werden, dass ein
 
 Weitere Informationen:
 
-* [Dienst-zu-Dienst-Aufrufe mit Clientanmeldeinformationen](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow)
-* [Azure DevOps Services](https://docs.microsoft.com/azure/devops/user-guide/?view=azure-devops)
+* [Dienst-zu-Dienst-Aufrufe mit Clientanmeldeinformationen](../active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow.md)
+* [Azure DevOps Services](/azure/devops/user-guide/)
 
 <!-- LINKS - External -->
-[devops]: https://docs.microsoft.com/azure/devops/?view=azure-devops
-[devops-create-project]:  https://docs.microsoft.com/azure/devops/organizations/projects/create-project?view=azure-devops
-[devops-pipelines]: https://docs.microsoft.com/azure/devops/pipelines
+[devops]: /azure/devops/
+[devops-create-project]:  /azure/devops/organizations/projects/create-project
+[devops-pipelines]: /azure/devops/pipelines

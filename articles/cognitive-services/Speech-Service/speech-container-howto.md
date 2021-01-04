@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/09/2020
+ms.date: 11/17/2020
 ms.author: aahi
 ms.custom: cog-serv-seo-aug-2020
 keywords: Lokal, Docker, Container
-ms.openlocfilehash: f91d96732c872c6f93ee2de4c5c3eba5fe5ffbc4
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 9ca5229200b39f0a3c68da152f4d89f842d021ca
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94412237"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95996420"
 ---
 # <a name="install-and-run-docker-containers-for-the-speech-service-apis"></a>Installieren und Ausführen von Docker-Containern für die APIs des Speech-Diensts 
 
@@ -31,22 +31,22 @@ Mit Speech-Containern können Kunden eine Speech-basierte Anwendungsarchitektur 
 > * Standardspracherkennung
 > * Benutzerdefinierte Spracherkennung
 > * Standardsprachsynthese
-> 
+> * Text-zu-Sprache (neuronal)
+>
 > Die folgenden Speech-Container sind in der geschlossenen Vorschau verfügbar:
 > * Benutzerdefinierte Sprachsynthese
 > * Speech-Sprachenerkennung 
-> * Text-zu-Sprache (neuronal)
 >
 > Wenn Sie die Speech-Container verwenden möchten, müssen Sie eine Onlineanfrage einreichen und diese genehmigen lassen. Weitere Informationen finden Sie weiter unten im Abschnitt **Anfordern der Genehmigung für die Containerausführung**.
 
 | Container | Features | Neueste Version |
 |--|--|--|
-| Spracherkennung | Analysiert die Stimmung und transkribiert kontinuierliche Echtzeitsprach- oder Batchaudioaufzeichnungen mit Zwischenergebnissen.  | 2.6.0 |
-| Benutzerdefinierte Spracherkennung | Verwendet ein benutzerdefiniertes Modell aus dem [Custom Speech-Portal](https://speech.microsoft.com/customspeech) und transkribiert kontinuierliche Echtzeitsprach- oder Batchaudioaufzeichnungen in Text mit Zwischenergebnissen. | 2.6.0 |
-| Text-zu-Sprache | Konvertiert Text in natürlich klingende Sprache mit Nur-Text-Eingaben oder SSML (Speech Synthesis Markup Language, Markupsprache für Sprachsynthese). | 1.8.0 |
-| Benutzerdefinierte Sprachsynthese | Verwendet ein benutzerdefiniertes Modell aus dem [Custom Voice-Portal](https://aka.ms/custom-voice-portal) und konvertiert Text in natürlich klingende Sprache mit Nur-Text-Eingaben oder SSML (Speech Synthesis Markup Language, Markupsprache für Sprachsynthese). | 1.8.0 |
+| Spracherkennung | Analysiert die Stimmung und transkribiert kontinuierliche Echtzeitsprach- oder Batchaudioaufzeichnungen mit Zwischenergebnissen.  | 2.7.0 |
+| Benutzerdefinierte Spracherkennung | Verwendet ein benutzerdefiniertes Modell aus dem [Custom Speech-Portal](https://speech.microsoft.com/customspeech) und transkribiert kontinuierliche Echtzeitsprach- oder Batchaudioaufzeichnungen in Text mit Zwischenergebnissen. | 2.7.0 |
+| Text-zu-Sprache | Konvertiert Text in natürlich klingende Sprache mit Nur-Text-Eingaben oder SSML (Speech Synthesis Markup Language, Markupsprache für Sprachsynthese). | 1.9.0 |
+| Benutzerdefinierte Sprachsynthese | Verwendet ein benutzerdefiniertes Modell aus dem [Custom Voice-Portal](https://aka.ms/custom-voice-portal) und konvertiert Text in natürlich klingende Sprache mit Nur-Text-Eingaben oder SSML (Speech Synthesis Markup Language, Markupsprache für Sprachsynthese). | 1.9.0 |
 | Speech-Sprachenerkennung | Erkennen der in Audiodateien gesprochenen Sprache | 1.0 |
-| Text-zu-Sprache (neuronal) | Konvertiert Text mithilfe von Deep Neural Network-Technologie in natürlich klingende Sprache, die eine natürlichere synthetische Sprache ermöglicht. | 1.2.0 |
+| Text-zu-Sprache (neuronal) | Konvertiert Text mithilfe von Deep Neural Network-Technologie in natürlich klingende Sprache, die eine natürlichere synthetische Sprache ermöglicht. | 1.3.0 |
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/cognitive-services/) erstellen, bevor Sie beginnen.
 
@@ -58,7 +58,7 @@ Für die Verwendung von Speech-Containern müssen folgende Voraussetzungen erfü
 |--|--|
 | Docker-Engine | Die Docker-Engine muss auf einem [Hostcomputer](#the-host-computer) installiert sein. Für die Docker-Umgebung stehen Konfigurationspakete für [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) und [Linux](https://docs.docker.com/engine/installation/#supported-platforms) zur Verfügung. Eine Einführung in Docker und Container finden Sie in der [Docker-Übersicht](https://docs.docker.com/engine/docker-overview/).<br><br> Docker muss so konfiguriert werden, dass die Container eine Verbindung mit Azure herstellen und Abrechnungsdaten an Azure senden können. <br><br> **Unter Windows** muss Docker auch für die Unterstützung von Linux-Containern konfiguriert werden.<br><br> |
 | Kenntnisse zu Docker | Sie sollten über Grundkenntnisse der Konzepte von Docker, einschließlich Registrierungen, Repositorys, Container und Containerimages, verfügen und die grundlegenden `docker`-Befehle kennen. |
-| Speech-Ressource | Um diese Container zu verwenden, benötigen Sie Folgendes:<br><br>Eine Azure-Ressource vom Typ _Speech_ , um den entsprechenden API-Schlüssel und den URI des Endpunkts zu erhalten. Beide Werte stehen im Azure-Portal auf den Seiten „Übersicht“ und „Schlüssel“ von **Speech** zur Verfügung. Beide sind zum Starten des Containers erforderlich.<br><br>**{API_KEY}** : Einer der beiden verfügbaren Ressourcenschlüssel auf der Seite **Schlüssel**<br><br>**{ENDPOINT_URI}** : Der Endpunkt, der auf der Seite **Übersicht** angegeben ist |
+| Speech-Ressource | Um diese Container zu verwenden, benötigen Sie Folgendes:<br><br>Eine Azure-Ressource vom Typ _Speech_, um den entsprechenden API-Schlüssel und den URI des Endpunkts zu erhalten. Beide Werte stehen im Azure-Portal auf den Seiten „Übersicht“ und „Schlüssel“ von **Speech** zur Verfügung. Beide sind zum Starten des Containers erforderlich.<br><br>**{API_KEY}** : Einer der beiden verfügbaren Ressourcenschlüssel auf der Seite **Schlüssel**<br><br>**{ENDPOINT_URI}** : Der Endpunkt, der auf der Seite **Übersicht** angegeben ist |
 
 [!INCLUDE [Gathering required parameters](../containers/includes/container-gathering-required-parameters.md)]
 
@@ -94,7 +94,7 @@ Die folgende Tabelle beschreibt die minimale und empfohlene Zuordnung von Ressou
 Kern und Arbeitsspeicher entsprechen den Einstellungen `--cpus` und `--memory`, die im Rahmen des Befehls `docker run` verwendet werden.
 
 > [!NOTE]
-> Die Mindestanforderungen und Empfehlungen basieren auf Docker-Grenzwerten, *nicht* auf den Ressourcen des Hostcomputers. Spracherkennungscontainer ordnen beispielsweise Teile des Arbeitsspeichers eines großen Sprachmodells zu, und es wird *empfohlen* , dass die gesamte Datei in den Arbeitsspeicher passt (was zusätzlich 4 bis 6 GB ausmacht). Außerdem dauert die erste Ausführung des Containers unter Umständen länger, da Modelle in den Arbeitsspeicher ausgelagert werden.
+> Die Mindestanforderungen und Empfehlungen basieren auf Docker-Grenzwerten, *nicht* auf den Ressourcen des Hostcomputers. Spracherkennungscontainer ordnen beispielsweise Teile des Arbeitsspeichers eines großen Sprachmodells zu, und es wird *empfohlen*, dass die gesamte Datei in den Arbeitsspeicher passt (was zusätzlich 4 bis 6 GB ausmacht). Außerdem dauert die erste Ausführung des Containers unter Umständen länger, da Modelle in den Arbeitsspeicher ausgelagert werden.
 
 ## <a name="request-approval-to-the-run-the-container"></a>Anfordern der Genehmigung für die Containerausführung
 
@@ -244,13 +244,13 @@ docker pull mcr.microsoft.com/azure-cognitive-services/speechservices/neural-tex
 Alle Tags, mit Ausnahme von `latest`, haben das folgende Format und beachten die Groß-/Kleinschreibung:
 
 ```
-<major>.<minor>.<patch>-<platform>-<locale>-<voice>-<prerelease>
+<major>.<minor>.<patch>-<platform>-<locale>-<voice>
 ```
 
 Das folgende Tag ist ein Beispiel für das Format:
 
 ```
-1.2.0-amd64-en-us-arianeural-preview
+1.3.0-amd64-en-us-arianeural
 ```
 
 Informationen zu allen unterstützten Gebietsschemas und den entsprechenden Stimmen des Containers **Text-zu-Sprache (neuronal)** finden Sie unter [Imagetags für „Text-zu-Sprache (neuronal)“](../containers/container-image-tags.md#neural-text-to-speech).
@@ -377,7 +377,7 @@ Der Container für *benutzerdefinierte Spracherkennung* basiert auf einem benutz
 > * **20190701 (v4.17 Einheitlich)**<br>
 > ![Custom Speech-Containermodell für das Training](media/custom-speech/custom-speech-train-model-container-scoped.png)
 
-Die **Modell-ID** für Custom Speech ist zur Ausführung des Containers erforderlich. Sie finden diese auf der Seite **Training** des Custom Speech-Portals. Navigieren Sie im Custom Speech-Portal zur Seite **Training** , und wählen Sie das Modell aus.
+Die **Modell-ID** für Custom Speech ist zur Ausführung des Containers erforderlich. Sie finden diese auf der Seite **Training** des Custom Speech-Portals. Navigieren Sie im Custom Speech-Portal zur Seite **Training**, und wählen Sie das Modell aus.
 <br>
 
 ![Seite „Training“ im Custom Speech-Portal](media/custom-speech/custom-speech-model-training.png)
@@ -391,7 +391,7 @@ Die folgende Tabelle zeigt die verschiedenen `docker run`-Parameter und die ents
 
 | Parameter | BESCHREIBUNG |
 |---------|---------|
-| `{VOLUME_MOUNT}` | Die [Volumebereitstellung](https://docs.docker.com/storage/volumes/) des Hostcomputers, die Docker zum dauerhaften Speichern des benutzerdefinierten Modells verwendet. Beispiel: *C:\CustomSpeech* , wobei sich *Laufwerk „C“* auf dem Hostcomputer befindet. |
+| `{VOLUME_MOUNT}` | Die [Volumebereitstellung](https://docs.docker.com/storage/volumes/) des Hostcomputers, die Docker zum dauerhaften Speichern des benutzerdefinierten Modells verwendet. Beispiel: *C:\CustomSpeech*, wobei sich *Laufwerk „C“* auf dem Hostcomputer befindet. |
 | `{MODEL_ID}` | Die **Modell-ID** für Custom Speech von der Seite **Training** des Custom Speech-Portals. |
 | `{ENDPOINT_URI}` | Der Endpunkt ist zur Messung und Abrechnung erforderlich. Weitere Informationen finden Sie unter [Ermitteln erforderlicher Parameter](#gathering-required-parameters). |
 | `{API_KEY}` | Der API-Schlüssel ist erforderlich. Weitere Informationen finden Sie unter [Ermitteln erforderlicher Parameter](#gathering-required-parameters). |
@@ -498,7 +498,7 @@ Dieser Befehl:
 
 # <a name="custom-text-to-speech"></a>[Benutzerdefinierte Sprachsynthese](#tab/ctts)
 
-Der Container für die *benutzerdefinierte Sprachsynthese* basiert auf einem benutzerdefinierten Sprachmodell. Das benutzerdefinierte Modell muss über das [Custom Voice-Portal](https://aka.ms/custom-voice-portal)[trainiert](how-to-custom-voice-create-voice.md) worden sein. Die **Modell-ID** für Custom Voice ist zur Ausführung des Containers erforderlich. Sie finden diese auf der Seite **Training** des Custom Voice-Portals. Navigieren Sie im Custom Voice-Portal zur Seite **Training** , und wählen Sie das Modell aus.
+Der Container für die *benutzerdefinierte Sprachsynthese* basiert auf einem benutzerdefinierten Sprachmodell. Das benutzerdefinierte Modell muss über das [Custom Voice-Portal](https://aka.ms/custom-voice-portal)[trainiert](how-to-custom-voice-create-voice.md) worden sein. Die **Modell-ID** für Custom Voice ist zur Ausführung des Containers erforderlich. Sie finden diese auf der Seite **Training** des Custom Voice-Portals. Navigieren Sie im Custom Voice-Portal zur Seite **Training**, und wählen Sie das Modell aus.
 <br>
 
 ![Seite „Training“ im Custom Voice-Portal](media/custom-voice/custom-voice-model-training.png)
@@ -512,7 +512,7 @@ Die folgende Tabelle zeigt die verschiedenen `docker run`-Parameter und die ents
 
 | Parameter | BESCHREIBUNG |
 |---------|---------|
-| `{VOLUME_MOUNT}` | Die [Volumebereitstellung](https://docs.docker.com/storage/volumes/) des Hostcomputers, die Docker zum dauerhaften Speichern des benutzerdefinierten Modells verwendet. Beispiel: *C:\CustomSpeech* , wobei sich *Laufwerk „C“* auf dem Hostcomputer befindet. |
+| `{VOLUME_MOUNT}` | Die [Volumebereitstellung](https://docs.docker.com/storage/volumes/) des Hostcomputers, die Docker zum dauerhaften Speichern des benutzerdefinierten Modells verwendet. Beispiel: *C:\CustomSpeech*, wobei sich *Laufwerk „C“* auf dem Hostcomputer befindet. |
 | `{MODEL_ID}` | Die **Modell-ID** für Custom Speech von der Seite **Training** des Custom Voice-Portals. |
 | `{ENDPOINT_URI}` | Der Endpunkt ist zur Messung und Abrechnung erforderlich. Weitere Informationen finden Sie unter [Ermitteln erforderlicher Parameter](#gathering-required-parameters). |
 | `{API_KEY}` | Der API-Schlüssel ist erforderlich. Weitere Informationen finden Sie unter [Ermitteln erforderlicher Parameter](#gathering-required-parameters). |

@@ -10,13 +10,13 @@ author: nabhishek
 ms.author: abnarain
 manager: anandsub
 ms.custom: seo-lt-2019
-ms.date: 06/09/2020
-ms.openlocfilehash: 80c837e640ef0d1739c329fb463e173e6c40be31
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.date: 11/25/2020
+ms.openlocfilehash: 22155083a71a9cbf615293a4f86a179aaefce2a9
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94331727"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96023351"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Erstellen und Konfigurieren einer selbstgehosteten Integration Runtime
 
@@ -150,7 +150,7 @@ Hier ist eine allgemeine Zusammenfassung der Datenflussschritte zum Kopieren per
 - Verwenden Sie eine selbstgehostete Integration Runtime, um die Datenintegration in einem virtuellen Azure-Netzwerk zu unterstützen.
 - Behandeln Sie Ihre Datenquelle wie eine lokale Datenquelle (die sich hinter einer Firewall befindet), selbst wenn Sie Azure ExpressRoute verwenden. Verwenden Sie die selbstgehostete Integration Runtime, um den Dienst mit der Datenquelle zu verbinden.
 - Verwenden Sie die selbstgehostete Integration Runtime auch, wenn sich der Datenspeicher in der Cloud auf einem virtuellen Azure IaaS-Computer (Infrastructure-as-a-Service) befindet.
-- Bei einer selbstgehosteten Integration Runtime-Instanz, die Sie auf einem Windows Server-Computer mit aktivierter FIPS-konformer Verschlüsselung installiert haben, treten für Aufgaben unter Umständen Fehler auf. Um dieses Problem zu umgehen, stehen Ihnen zwei Möglichkeiten zur Verfügung: Speichern von Anmeldeinformationen oder Geheimnissen in einer Azure Key Vault-Instanz oder Deaktivieren der FIPS-konformen Verschlüsselung auf dem Server. Zum Deaktivieren der FIPS-konformen Verschlüsselung ändern Sie den folgenden Wert des Registrierungsschlüssels „1“ (aktiviert) in „0“ (deaktiviert): `HKLM\System\CurrentControlSet\Control\Lsa\FIPSAlgorithmPolicy\Enabled`.
+- Bei einer selbstgehosteten Integration Runtime-Instanz, die Sie auf einem Windows Server-Computer mit aktivierter FIPS-konformer Verschlüsselung installiert haben, treten für Aufgaben unter Umständen Fehler auf. Um dieses Problem zu umgehen, stehen Ihnen zwei Möglichkeiten zur Verfügung: Speichern von Anmeldeinformationen oder Geheimnissen in einer Azure Key Vault-Instanz oder Deaktivieren der FIPS-konformen Verschlüsselung auf dem Server. Zum Deaktivieren der FIPS-konformen Verschlüsselung ändern Sie den folgenden Wert des Registrierungsschlüssels „1“ (aktiviert) in „0“ (deaktiviert): `HKLM\System\CurrentControlSet\Control\Lsa\FIPSAlgorithmPolicy\Enabled`. Wenn Sie die [selbstgehostete Integration Runtime als Proxy für die SSIS Integration Runtime](https://docs.microsoft.com/azure/data-factory/self-hosted-integration-runtime-proxy-ssis) verwenden, kann die FIPS-konforme Verschlüsselung aktiviert werden. Dies wird dann verwendet, wenn Daten von einem lokalen Speicherort in Azure Blob Storage als Stagingbereich verschoben werden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

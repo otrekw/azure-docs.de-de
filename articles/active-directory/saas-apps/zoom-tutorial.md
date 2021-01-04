@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: jeedes
 ms.openlocfilehash: 6b4484b9bb235b24d2b733c329b52ab6b04be183
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92519823"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006420"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zoom"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Zoom
 
@@ -48,14 +48,14 @@ Zum Konfigurieren der Integration von Zoom in Azure AD müssen Sie Zoom aus dem 
 
 1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim [Azure-Portal](https://portal.azure.com) an.
 1. Wählen Sie im linken Navigationsbereich den Dienst **Azure Active Directory** aus.
-1. Navigieren Sie zu **Unternehmensanwendungen** , und wählen Sie dann **Alle Anwendungen** aus.
+1. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie dann **Alle Anwendungen** aus.
 1. Wählen Sie zum Hinzufügen einer neuen Anwendung **Neue Anwendung** aus.
 1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **Zoom** in das Suchfeld ein.
 1. Wählen Sie im Ergebnisbereich **Zoom** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-zoom"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für Zoom
 
-Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Zoom mithilfe eines Testbenutzers mit dem Namen **B. Simon** . Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Zoom eingerichtet werden.
+Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Zoom mithilfe eines Testbenutzers mit dem Namen **B. Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Zoom eingerichtet werden.
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit Zoom müssen Sie die folgenden Schritte ausführen:
 
@@ -70,9 +70,9 @@ Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit Zoom mü
 
 Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal zu aktivieren.
 
-1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **Zoom** zum Abschnitt **Verwalten** , und wählen Sie **Einmaliges Anmelden** aus.
+1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **Zoom** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
 1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
-1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Bearbeitungs- bzw. Stiftsymbol für **Grundlegende SAML-Konfiguration** , um die Einstellungen zu bearbeiten.
+1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Bearbeitungs- bzw. Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
 
    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
@@ -110,16 +110,16 @@ In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Nam
 1. Führen Sie unter den Eigenschaften für **Benutzer** die folgenden Schritte aus:
     1. Geben Sie im Feld **Name** die Zeichenfolge `B.Simon` ein.  
     1. Geben Sie im Feld **Benutzername** die Zeichenfolge username@companydomain.extension ein. Beispiel: `B.Simon@contoso.com`.
-    1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen** , und notieren Sie sich den Wert aus dem Feld **Kennwort** .
-    1. Klicken Sie auf **Erstellen** .
+    1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert aus dem Feld **Kennwort**.
+    1. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
 In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Zoom gewähren.
 
-1. Wählen Sie im Azure-Portal **Unternehmensanwendungen**  > **Alle Anwendungen** aus.
+1. Wählen Sie im Azure-Portal **Unternehmensanwendungen** > **Alle Anwendungen** aus.
 1. Wählen Sie in der Anwendungsliste **Zoom** aus.
-1. Navigieren Sie auf der Übersichtsseite der App zum Abschnitt **Verwalten** , und wählen Sie **Benutzer und Gruppen** aus.
+1. Navigieren Sie auf der Übersichtsseite der App zum Abschnitt **Verwalten**, und wählen Sie **Benutzer und Gruppen** aus.
 
     ![Link „Benutzer und Gruppen“](common/users-groups-blade.png)
 
@@ -127,19 +127,19 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
     ![Link „Benutzer hinzufügen“](common/add-assign-user.png)
 
-1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **B. Simon** aus, und klicken Sie dann unten auf dem Bildschirm auf die Schaltfläche **Auswählen** .
-1. Wenn Sie einen beliebigen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** die entsprechende Rolle für den Benutzer in der Liste aus, und klicken Sie dann im unteren Bildschirmbereich auf die Schaltfläche **Auswählen** .
-1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen** .
+1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **B. Simon** aus, und klicken Sie dann unten auf dem Bildschirm auf die Schaltfläche **Auswählen**.
+1. Wenn Sie einen beliebigen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** die entsprechende Rolle für den Benutzer in der Liste aus, und klicken Sie dann im unteren Bildschirmbereich auf die Schaltfläche **Auswählen**.
+1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
 ## <a name="configure-zoom-sso"></a>Konfigurieren des einmaligen Anmeldens für Zoom
 
 1. Melden Sie sich in einem anderen Webbrowserfenster bei der Zoom-Unternehmenswebsite als Administrator an.
 
-2. Klicken Sie auf die Registerkarte **Einmaliges Anmelden** .
+2. Klicken Sie auf die Registerkarte **Einmaliges Anmelden**.
 
     ![Registerkarte „Einmaliges Anmelden“](./media/zoom-tutorial/zoom-sso1.png "Einmaliges Anmelden")
 
-3. Klicken Sie auf die Registerkarte **Sicherheitskontrolle** , und öffnen Sie anschließend die Einstellungen für **Einmaliges Anmelden** .
+3. Klicken Sie auf die Registerkarte **Sicherheitskontrolle**, und öffnen Sie anschließend die Einstellungen für **Einmaliges Anmelden**.
 
 4. Führen Sie im Abschnitt „Einmaliges Anmelden“ die folgenden Schritte aus:
 
@@ -151,11 +151,11 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
     ![Schaltfläche „Azure Active Directory“](./media/zoom-tutorial/appreg.png)
 
-    c. Klicken Sie auf **Endpunkte** .
+    c. Klicken Sie auf **Endpunkte**.
 
     ![Endpunkt-Schaltfläche](./media/zoom-tutorial/endpoint.png)
 
-    d. Kopieren Sie den **SAML-P-ABMELDUNGSENDPUNKT** , und fügen Sie ihn in das Textfeld **URL der Abmeldeseite** ein.
+    d. Kopieren Sie den **SAML-P-ABMELDUNGSENDPUNKT**, und fügen Sie ihn in das Textfeld **URL der Abmeldeseite** ein.
 
     ![Schaltfläche zum Kopieren des Endpunkts](./media/zoom-tutorial/endpoint1.png)
 
@@ -163,7 +163,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
     f. Fügen Sie im Textfeld **Aussteller** den Wert von **Azure AD-Bezeichner** ein, den Sie aus dem Azure-Portal kopiert haben. 
 
-    g. Klicken Sie auf **Änderungen speichern** .
+    g. Klicken Sie auf **Änderungen speichern**.
 
     > [!NOTE]
     > Weitere Informationen finden Sie in der Dokumentation zum Zoomen [https://zoomus.zendesk.com/hc/articles/115005887566](https://zoomus.zendesk.com/hc/articles/115005887566).

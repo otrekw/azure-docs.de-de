@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: tutorial
 ms.date: 09/24/2020
 ms.author: caya
-ms.openlocfilehash: 18c8aa0ff05dababc5a79c5c05b43ce9ebcbf9b4
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 627d5b15a861c3d564cb4db33b366d3227092d37
+ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93397092"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96296249"
 ---
 # <a name="tutorial-enable-the-ingress-controller-add-on-preview-for-a-new-aks-cluster-with-a-new-application-gateway-instance"></a>Tutorial: Aktivieren des Eingangscontroller-Add-Ons (Vorschau) für einen neuen AKS-Cluster mit einer neuen Azure Application Gateway-Instanz
 
@@ -30,39 +30,29 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Bereitstellen einer Beispielanwendung mithilfe von AGIC für eingehenden Datenverkehr auf dem AKS-Cluster.
 > * Überprüfen der Erreichbarkeit der Anwendung über Application Gateway.
 
-## <a name="prerequisites"></a>Voraussetzungen
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+ - Für dieses Tutorial ist mindestens Version 2.0.4 der Azure CLI erforderlich. Bei Verwendung von Azure Cloud Shell ist die aktuelle Version bereits installiert. Wenn Sie Azure CLI verwenden, müssen Sie mit dem folgenden Befehl die Vorschauerweiterung für CLI installieren, sofern dies nicht bereits geschehen ist:
+    ```azurecli-interactive
+    az extension add --name aks-preview
+    ```
 
+ - Registrieren Sie das Featureflag *AKS-IngressApplicationGatewayAddon* mit dem Befehl [az feature register](/cli/azure/feature#az-feature-register), wie im folgenden Beispiel gezeigt. Sie müssen dies nur einmal pro Abonnement durchführen, während sich das Add-On noch in der Vorschauphase befindet.
+    ```azurecli-interactive
+    az feature register --name AKS-IngressApplicationGatewayAddon --namespace Microsoft.ContainerService
+    ```
 
-Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial die Azure CLI-Version 2.0.4 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI](/cli/azure/install-azure-cli).
+   Es dauert ein paar Minuten, bis der Status `Registered` angezeigt wird. Sie können den Registrierungsstatus mithilfe des Befehls [az feature list](/cli/azure/feature#az-feature-register) überprüfen:
+    ```azurecli-interactive
+    az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKS-IngressApplicationGatewayAddon')].{Name:name,State:properties.state}"
+    ```
 
-Registrieren Sie das Featureflag *AKS-IngressApplicationGatewayAddon* mit dem Befehl [az feature register](/cli/azure/feature#az-feature-register), wie im folgenden Beispiel gezeigt. Sie müssen dies nur einmal pro Abonnement durchführen, während sich das Add-On noch in der Vorschauphase befindet.
-```azurecli-interactive
-az feature register --name AKS-IngressApplicationGatewayAddon --namespace Microsoft.ContainerService
-```
-
-Es dauert ein paar Minuten, bis der Status `Registered` angezeigt wird. Sie können den Registrierungsstatus mithilfe des Befehls [az feature list](/cli/azure/feature#az-feature-register) überprüfen:
-```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKS-IngressApplicationGatewayAddon')].{Name:name,State:properties.state}"
-```
-
-Wenn Sie bereit sind, aktualisieren Sie Registrierung des „Microsoft.ContainerService“-Ressourcenanbieters mit dem Befehl [az provider register](/cli/azure/provider#az-provider-register):
-```azurecli-interactive
-az provider register --namespace Microsoft.ContainerService
-```
-
-Installieren oder Aktualisieren die Erweiterung „aks-preview“ für dieses Tutorial. Verwenden Sie die folgenden Azure CLI-Befehle:
-```azurecli-interactive
-az extension add --name aks-preview
-az extension list
-```
-```azurecli-interactive
-az extension update --name aks-preview
-az extension list
-```
+ - Wenn Sie bereit sind, aktualisieren Sie Registrierung des „Microsoft.ContainerService“-Ressourcenanbieters mit dem Befehl [az provider register](/cli/azure/provider#az-provider-register):
+    ```azurecli-interactive
+    az provider register --namespace Microsoft.ContainerService
+    ```
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
@@ -93,7 +83,7 @@ az aks create -n myCluster -g myResourceGroup --network-plugin azure --enable-ma
 Um zusätzliche Parameter für den Befehl `az aks create` zu konfigurieren, lesen Sie [diese Referenzen](/cli/azure/aks?view=azure-cli-latest#az-aks-create). 
 
 > [!NOTE]
-> Der von Ihnen erstellte AKS-Cluster wird in der Ressourcengruppe aktiviert, die Sie erstellt haben, *myResourceGroup*. Allerdings befindet sich die automatisch erstellte Application Gateway-Instanz in der Knotenressourcengruppe, in der sich die Agentpools befinden. Die Knotenressourcengruppe hat standardmäßig den Namen *MC_resource-group-name_cluster-name_location* , der aber geändert werden kann. 
+> Der von Ihnen erstellte AKS-Cluster wird in der Ressourcengruppe aktiviert, die Sie erstellt haben, *myResourceGroup*. Allerdings befindet sich die automatisch erstellte Application Gateway-Instanz in der Knotenressourcengruppe, in der sich die Agentpools befinden. Die Knotenressourcengruppe hat standardmäßig den Namen *MC_resource-group-name_cluster-name_location*, der aber geändert werden kann. 
 
 ## <a name="deploy-a-sample-application-by-using-agic"></a>Bereitstellen einer Beispielanwendung mithilfe von AGIC
 

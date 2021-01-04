@@ -6,23 +6,23 @@ author: kevinvngo
 ms.service: synapse-analytics
 ms.subservice: sql
 ms.topic: quickstart
-ms.date: 05/06/2020
+ms.date: 11/16/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2a4740699d70601591645aa0d3183531a6687be6
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 312c57c103bf733bc72c5de1d22ab3239d5b5e96
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324938"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96484664"
 ---
 # <a name="quickstart-bulk-loading-with-synapse-sql"></a>Schnellstart: Massenladen mit Synapse SQL
 
-Der Massenladen-Assistent in Synapse Studio macht das Laden von Daten so einfach wie nie. Dieser Assistent führt Sie durch die Erstellung eines T-SQL-Skripts mit der [COPY-Anweisung](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true) zum Massenladen von Daten. 
+Das Laden von Daten ist mit dem Massenladen-Assistenten in Synapse Studio ganz einfach. Der Massenladen-Assistent führt Sie durch die Erstellung eines T-SQL-Skripts mit der [COPY-Anweisung](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true) zum Massenladen von Daten. 
 
 ## <a name="entry-points-to-the-bulk-load-wizard"></a>Einstiegspunkte für den Massenladen-Assistenten
 
-Das Massenladen von Daten unter Verwendung von dedizierten SQL-Pools ist jetzt ganz einfach und kann mit einem Rechtsklick auf die folgenden Bereiche in Synapse Studio durchgeführt werden:
+Das Massenladen von Daten unter Verwendung von dedizierten SQL-Pools ist ganz einfach und kann mit einem Rechtsklick auf die folgenden Bereiche in Synapse Studio durchgeführt werden:
 
 - Eine Datei oder ein Ordner aus einem mit Ihrem Arbeitsbereich verknüpften Azure-Speicherkonto ![Rechtsklick auf eine Datei oder einen Ordner aus einem Speicherkonto](./sql/media/bulk-load/bulk-load-entry-point-0.png)
 
@@ -39,7 +39,9 @@ Das Massenladen von Daten unter Verwendung von dedizierten SQL-Pools ist jetzt g
 
 ### <a name="steps"></a>Schritte
 
-1. Wählen Sie im Bereich für den Quellspeicherort das Speicherkonto und die Datei bzw. den Ordner aus, die bzw. den Sie als Quelle für den Ladevorgang verwenden möchten: ![Auswählen des Quellspeicherorts](./sql/media/bulk-load/bulk-load-source-location.png)
+1. Wählen Sie im Bereich für den Quellspeicherort das Speicherkonto und die Datei bzw. den Ordner aus, die bzw. den Sie als Quelle für den Ladevorgang verwenden möchten. Der Assistent versucht automatisch, Parquet-Dateien zu erkennen. Werden keine Dateien vom Typ „Parquet“ erkannt, wird standardmäßig das CSV-Format (durch Trennzeichen getrennter Text) verwendet.
+
+   ![Auswählen des Quellspeicherorts](./sql/media/bulk-load/bulk-load-source-location.png)
 
 2. Wählen Sie die Dateiformateinstellungen einschließlich des Speicherkontos aus, in das abgelehnte Zeilen geschrieben werden sollen (Fehlerdatei). Aktuell werden nur CSV- und Parquet-Dateien unterstützt.
 
@@ -47,9 +49,14 @@ Das Massenladen von Daten unter Verwendung von dedizierten SQL-Pools ist jetzt g
 
 3. Sie können „Datenvorschau“ auswählen, um zu sehen, wie die Datei von der COPY-Anweisung analysiert wird, was beim Konfigurieren der Dateiformateinstellungen hilfreich ist. Wählen Sie nach jeder Änderung einer Dateiformateinstellung „Datenvorschau“ aus, um zu sehen, wie die Datei mit der aktualisierten Einstellung von der COPY-Anweisung analysiert wird: ![Anzeigen einer Datenvorschau](./sql/media/bulk-load/bulk-load-file-format-settings-preview-data.png) 
 
+> [!NOTE]  
+>
+> - Das Anzeigen einer Vorschau für die Daten mit mehrstelligen Feldabschlusszeichen wird im Massenladen-Assistenten nicht unterstützt. Der Massenladen-Assistent zeigt eine Vorschau der Daten in einer einzelnen Spalte an, wenn ein mehrstelliges Feldabschlusszeichen angegeben wird. 
+> - Die Angabe von mehrstelligen Zeilenabschlusszeichen wird in der Copy-Anweisung unterstützt. Im Massenladen-Assistenten wird dies jedoch nicht unterstützt, und es wird ein Fehler ausgelöst.
+
 4. Wählen Sie den zum Laden verwendeten dedizierten SQL-Pool aus, und geben Sie an, ob es sich um einen Ladevorgang für eine bereits vorhandene oder für eine neue Tabelle handelt: ![Auswählen des Zielspeicherorts](./sql/media/bulk-load/bulk-load-target-location.png)
 
-5. Wählen Sie die Option zum Konfigurieren der Spaltenzuordnung aus, und vergewissern Sie sich, dass die Spaltenzuordnung korrekt ist. Bei neuen Tabellen muss die Spaltenzuordnung unbedingt konfiguriert werden, um die Datentypen der Zielspalten zu aktualisieren: ![Konfigurieren der Spaltenzuordnung](./sql/media/bulk-load/bulk-load-target-location-column-mapping.png)
+5. Wählen Sie die Option zum Konfigurieren der Spaltenzuordnung aus, und vergewissern Sie sich, dass die Spaltenzuordnung korrekt ist. Beachten Sie, dass Spaltennamen automatisch erkannt werden, wenn „Infer column names“ (Spaltennamen ableiten) aktiviert wurde. Bei neuen Tabellen muss die Spaltenzuordnung unbedingt konfiguriert werden, um die Datentypen der Zielspalten zu aktualisieren: ![Konfigurieren der Spaltenzuordnung](./sql/media/bulk-load/bulk-load-target-location-column-mapping.png)
 
 6. Wählen Sie die Option zum Öffnen des Skripts aus. Daraufhin wird ein T-SQL-Skript mit der COPY-Anweisung generiert, um Daten aus Ihrem Data Lake zu laden: ![Öffnen des SQL-Skripts](./sql/media/bulk-load/bulk-load-target-final-script.png)
 

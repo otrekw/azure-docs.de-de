@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: mjbrown
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 2bbdbc7a0ed71634522bd68dbf0807264a409525
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 1d63d21f4c49e3c7aef035208477ac9fc79f2e51
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93101713"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94637182"
 ---
 # <a name="configure-access-to-azure-cosmos-db-from-virtual-networks-vnet"></a>Konfigurieren des Zugriffs auf Azure Cosmos DB über virtuelle Netzwerke (VNET)
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -40,11 +40,11 @@ Die folgenden Abschnitte beschreiben, wie Sie den VNET-Dienstendpunkt für ein A
 
 1. Suchen Sie auf dem Blatt **Alle Ressourcen** das Azure Cosmos DB-Konto, das Sie schützen möchten.
 
-1. Wählen Sie aus dem Einstellungsmenü die Option **Firewalls und virtuelle Netzwerke** , und aktivieren Sie **Ausgewählte Netzwerke** , um den Zugriff über ausgewählte Netzwerke zuzulassen.
+1. Wählen Sie aus dem Einstellungsmenü die Option **Firewalls und virtuelle Netzwerke**, und aktivieren Sie **Ausgewählte Netzwerke**, um den Zugriff über ausgewählte Netzwerke zuzulassen.
 
 1. Um Zugriff auf das Subnetz eines vorhandenen virtuellen Netzwerks zu gewähren, wählen Sie unter **Virtuelle Netzwerke** die Option **Vorhandenes Azure Virtual Network hinzufügen** aus.
 
-1. Wählen Sie das **Abonnement** aus, aus dem ein virtuelles Azure-Netzwerk hinzugefügt werden soll. Wählen Sie für **Virtuelle Netzwerke** und **Subnetze** die virtuellen Azure-Netzwerke und Subnetze aus, denen Sie Zugriff auf Ihr Azure Cosmos DB-Konto gewähren möchten. Klicken Sie als Nächstes auf **Aktivieren** , um die ausgewählten Netzwerke mit Dienstendpunkten für „Microsoft.AzureCosmosDB“ zu aktivieren. Wenn der Vorgang abgeschlossen ist, klicken Sie auf **Hinzufügen**.
+1. Wählen Sie das **Abonnement** aus, aus dem ein virtuelles Azure-Netzwerk hinzugefügt werden soll. Wählen Sie für **Virtuelle Netzwerke** und **Subnetze** die virtuellen Azure-Netzwerke und Subnetze aus, denen Sie Zugriff auf Ihr Azure Cosmos DB-Konto gewähren möchten. Klicken Sie als Nächstes auf **Aktivieren**, um die ausgewählten Netzwerke mit Dienstendpunkten für „Microsoft.AzureCosmosDB“ zu aktivieren. Wenn der Vorgang abgeschlossen ist, klicken Sie auf **Hinzufügen**.
 
    :::image type="content" source="./media/how-to-configure-vnet-service-endpoint/choose-subnet-and-vnet.png" alt-text="Auswählen des virtuellen Netzwerks und des Subnetzes":::
 
@@ -64,7 +64,7 @@ Im Folgenden finden Sie die Schritte zum Registrieren eines Abonnements bei eine
 
 1. Suchen Sie auf dem Blatt **Alle Ressourcen** das Azure Cosmos DB-Konto, das Sie schützen möchten.  
 
-1. Wählen Sie aus dem Einstellungsmenü die Option **Firewalls und virtuelle Azure-Netzwerke** , und aktivieren Sie **Ausgewählte Netzwerke** , um den Zugriff über ausgewählte Netzwerke zuzulassen.  
+1. Wählen Sie aus dem Einstellungsmenü die Option **Firewalls und virtuelle Azure-Netzwerke**, und aktivieren Sie **Ausgewählte Netzwerke**, um den Zugriff über ausgewählte Netzwerke zuzulassen.  
 
 1. Um Zugriff auf ein neues virtuelles Azure-Netzwerk zu gewähren, wählen Sie unter **Virtuelle Netzwerke** die Option **Neues virtuelles Netzwerk hinzufügen** aus.  
 
@@ -74,7 +74,7 @@ Im Folgenden finden Sie die Schritte zum Registrieren eines Abonnements bei eine
 
 Wenn Ihr Azure Cosmos DB-Konto von anderen Azure-Diensten wie z. B. Azure Cognitive Search verwendet wird oder Stream Analytics oder Power BI darauf zugreifen, gewähren Sie Zugriff, indem Sie das Kontrollkästchen **Accept connections from within global Azure datacenters** (Zugriff aus globalen Azure-Rechenzentren zulassen) aktivieren.
 
-Um sicherzustellen, dass Sie vom Portal aus auf Azure Cosmos DB-Metriken zugreifen können, müssen Sie Optionen für **Zugriff über das Azure-Portal zulassen** aktivieren. Weitere Informationen zu diesen Optionen finden Sie im Artikel [Konfigurieren einer IP-Firewall](how-to-configure-firewall.md). Nachdem Sie den Zugriff aktiviert haben, klicken Sie auf **Speichern** , um die Einstellungen zu speichern.
+Um sicherzustellen, dass Sie vom Portal aus auf Azure Cosmos DB-Metriken zugreifen können, müssen Sie Optionen für **Zugriff über das Azure-Portal zulassen** aktivieren. Weitere Informationen zu diesen Optionen finden Sie im Artikel [Konfigurieren einer IP-Firewall](how-to-configure-firewall.md). Nachdem Sie den Zugriff aktiviert haben, klicken Sie auf **Speichern**, um die Einstellungen zu speichern.
 
 ## <a name="remove-a-virtual-network-or-subnet"></a><a id="remove-vnet-or-subnet"></a>Entfernen eines virtuellen Netzwerks oder eines Subnetzes
 
@@ -322,7 +322,7 @@ Zurzeit werden die Integrationen der [Mongo Shell](https://devblogs.microsoft.co
 
 ### <a name="can-i-specify-both-virtual-network-service-endpoint-and-ip-access-control-policy-on-an-azure-cosmos-account"></a>Kann ich sowohl den VNET-Dienstendpunkt als auch eine IP-Zugriffssteuerungsrichtlinie für ein Azure Cosmos DB-Konto festlegen? 
 
-Sie können sowohl den VNET-Dienstendpunkt als auch eine IP-Zugriffssteuerungsrichtlinie (alias Firewall) für Ihr Azure Cosmos DB-Konto aktivieren. Diese beiden Funktionen ergänzen sich und gewährleisten zusammen die Isolation und Sicherheit Ihres Azure Cosmos DB-Kontos. Die Verwendung einer IP-Firewall stellt sicher, dass statische IP-Adressen auf Ihr Konto zugreifen können. 
+Sie können sowohl den VNET-Dienstendpunkt als auch eine IP-Zugriffssteuerungsrichtlinie (auch als Firewall bekannt) für Ihr Azure Cosmos-Konto aktivieren. Diese beiden Funktionen ergänzen sich und gewährleisten zusammen die Isolation und Sicherheit Ihres Azure Cosmos DB-Kontos. Die Verwendung einer IP-Firewall stellt sicher, dass statische IP-Adressen auf Ihr Konto zugreifen können. 
 
 ### <a name="how-do-i-limit-access-to-subnet-within-a-virtual-network"></a>Wie schränke ich den Zugriff auf ein Subnetz innerhalb eines virtuellen Netzwerks ein? 
 
@@ -336,7 +336,7 @@ Wenn eine IP-Firewall oder Zugriffsregeln für virtuelle Netzwerke hinzugefügt 
 
 Wenn der Dienstendpunkt für Azure Cosmos DB in einem Subnetz aktiviert ist, wechselt die Quelle des Datenverkehrs, der das Konto erreicht, von der öffentlichen IP-Adresse zu einem virtuellen Netzwerk und Subnetz. Wenn Ihr Azure Cosmos DB-Konto über eine einzige IP-basierte Firewall verfügt, würde der Datenverkehr vom im Dienst aktivierten Subnetz nicht mehr den IP-Firewallregeln entsprechen und daher zurückgewiesen werden. Befolgen Sie die Anweisungen zur nahtlosen Migration von einer IP-basierten Firewall zu einer Zugriffssteuerung, die auf einem virtuellen Netzwerk basiert.
 
-### <a name="are-additional-rbac-permissions-needed-for-azure-cosmos-accounts-with-vnet-service-endpoints"></a>Sind zusätzliche RBAC-Berechtigungen für Azure Cosmos-Konten mit VNET-Dienstendpunkten erforderlich?
+### <a name="are-additional-azure-rbac-permissions-needed-for-azure-cosmos-accounts-with-vnet-service-endpoints"></a>Sind zusätzliche Azure RBAC-Berechtigungen für Azure Cosmos-Konten mit VNET-Dienstendpunkten erforderlich?
 
 Nachdem Sie die VNET-Dienstendpunkte einem Azure Cosmos-Konto hinzugefügt haben, benötigen Sie Zugriff auf die `Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action`-Aktion für alle VNETs, die in Ihrem Azure Cosmos-Konto konfiguriert sind, um Änderungen an den Kontoeinstellungen vornehmen zu können. Diese Berechtigung ist erforderlich, da der Autorisierungsprozess den Zugriff auf Ressourcen (z.B. auf Datenbank- und virtuelle Netzwerkressourcen) überprüft, bevor Eigenschaften ausgewertet werden.
  

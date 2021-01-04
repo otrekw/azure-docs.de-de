@@ -11,15 +11,14 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 06/12/2020
-ms.openlocfilehash: 580459f3a5da8485bd92395f9b0b9745e28c023c
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: a0e9401842284cad29b297be5ce572fa53cfe774
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325264"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96188087"
 ---
 # <a name="deploy-a-model-to-azure-container-instances"></a>Bereitstellen eines Modells in Azure Container Instances
-
 
 Erfahren Sie, wie Sie ein Modell mit Azure Machine Learning als Webdienst in Azure Container Instances (ACI) bereitstellen. Verwenden Sie Azure Container Instances, wenn eine der folgenden Bedingungen zutrifft:
 
@@ -29,7 +28,7 @@ Erfahren Sie, wie Sie ein Modell mit Azure Machine Learning als Webdienst in Azu
 Informationen zu den für ACI geltenden Kontingenten und zur Verfügbarkeit in den Regionen finden Sie im Artikel [Kontingente und Limits für Azure Container Instances](../container-instances/container-instances-quotas.md).
 
 > [!IMPORTANT]
-> Es wird dringend empfohlen, vor der Bereitstellung im Webdienst lokal zu debuggen. Weitere Informationen finden Sie unter [Lokales Debuggen](./how-to-troubleshoot-deployment.md#debug-locally).
+> Es wird dringend empfohlen, vor der Bereitstellung im Webdienst lokal zu debuggen. Weitere Informationen finden Sie unter [Lokales Debuggen](./how-to-troubleshoot-deployment-local.md).
 >
 > Weitere Informationen finden Sie auch unter Azure Machine Learning – [Bereitstellung auf lokalem Notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/deployment/deploy-to-local).
 
@@ -41,7 +40,7 @@ Informationen zu den für ACI geltenden Kontingenten und zur Verfügbarkeit in d
 
 - Die [Azure CLI-Erweiterung für Machine Learning Service](reference-azure-machine-learning-cli.md), das [Azure Machine Learning Python SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) oder die [Visual Studio Code-Erweiterung für Azure Machine Learning](tutorial-setup-vscode-extension.md).
 
-- Bei den in diesem Artikel verwendeten __Python__ -Codeausschnitten wird davon ausgegangen, dass die folgenden Variablen festgelegt sind:
+- Bei den in diesem Artikel verwendeten __Python__-Codeausschnitten wird davon ausgegangen, dass die folgenden Variablen festgelegt sind:
 
     * `ws`: Legen Sie diese Variable auf Ihren Arbeitsbereich fest.
     * `model`: Legen Sie diese Variable auf Ihr registriertes Modell fest.
@@ -49,7 +48,7 @@ Informationen zu den für ACI geltenden Kontingenten und zur Verfügbarkeit in d
 
     Weitere Informationen zum Festlegen dieser Variablen finden Sie unter [Wie und wo Modelle bereitgestellt werden](how-to-deploy-and-where.md).
 
-- Bei den in diesem Artikel verwendeten __CLI__ -Ausschnitten wird davon ausgegangen, dass Sie ein `inferenceconfig.json`-Dokument erstellt haben. Weitere Informationen zum Erstellen dieses Dokuments finden Sie unter [Wie und wo Modelle bereitgestellt werden](how-to-deploy-and-where.md).
+- Bei den in diesem Artikel verwendeten __CLI__-Ausschnitten wird davon ausgegangen, dass Sie ein `inferenceconfig.json`-Dokument erstellt haben. Weitere Informationen zum Erstellen dieses Dokuments finden Sie unter [Wie und wo Modelle bereitgestellt werden](how-to-deploy-and-where.md).
 
 ## <a name="limitations"></a>Einschränkungen
 
@@ -60,7 +59,7 @@ Weitere Informationen finden Sie unter [Schützen von Rückschlüssen mit virtue
 
 ## <a name="deploy-to-aci"></a>Bereitstellen für ACI
 
-Um ein Modell für Azure Container Instances bereitzustellen, erstellen Sie eine __Bereitstellungskonfiguration__ , in der die benötigten Computeressourcen beschrieben werden. Dies sind beispielsweise die Anzahl von Kernen und die Arbeitsspeichergröße. Außerdem benötigen Sie eine __Rückschlusskonfiguration__ , in der die zum Hosten des Modells und des Webdiensts erforderliche Umgebung beschrieben wird. Weitere Informationen zum Erstellen der Rückschlusskonfiguration finden Sie unter [Wie und wo Modelle bereitgestellt werden](how-to-deploy-and-where.md).
+Um ein Modell für Azure Container Instances bereitzustellen, erstellen Sie eine __Bereitstellungskonfiguration__, in der die benötigten Computeressourcen beschrieben werden. Dies sind beispielsweise die Anzahl von Kernen und die Arbeitsspeichergröße. Außerdem benötigen Sie eine __Rückschlusskonfiguration__, in der die zum Hosten des Modells und des Webdiensts erforderliche Umgebung beschrieben wird. Weitere Informationen zum Erstellen der Rückschlusskonfiguration finden Sie unter [Wie und wo Modelle bereitgestellt werden](how-to-deploy-and-where.md).
 
 > [!NOTE]
 > * ACI eignet sich nur für kleine Modelle, die weniger als 1 GB groß sind. 

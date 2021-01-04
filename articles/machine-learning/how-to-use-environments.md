@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/23/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 32748a996e0622c4b75d887aebf8a1805c5368bd
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 67b2dacb9debae1990d51be8ca47c76b7342cf67
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93319079"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660116"
 ---
 # <a name="create--use-software-environments-in-azure-machine-learning"></a>Erstellen und Verwenden von Softwareumgebungen in Azure Machine Learning
 
@@ -56,9 +56,9 @@ Environment(name="myenv")
 
 Zusammengestellte Umgebungen enthalten Sammlungen mit Python-Paketen und sind standardmäßig in Ihrem Arbeitsbereich verfügbar. Diese Umgebungen werden durch zwischengespeicherte Docker-Images unterstützt, wodurch die Kosten für die Vorbereitung der Ausführung reduziert werden. Sie können für den Einstieg eine dieser beliebten zusammengestellten Umgebungen auswählen: 
 
-* Die _AzureML-Minimal_ -Umgebung enthält einen minimalen Satz von Paketen, um die Nachverfolgung von Durchläufen und das Hochladen von Ressourcen zu ermöglichen. Sie können sie als Ausgangspunkt für Ihre eigene Umgebung verwenden.
+* Die _AzureML-Minimal_-Umgebung enthält einen minimalen Satz von Paketen, um die Nachverfolgung von Durchläufen und das Hochladen von Ressourcen zu ermöglichen. Sie können sie als Ausgangspunkt für Ihre eigene Umgebung verwenden.
 
-* Die _AzureML-Tutorial_ -Umgebung enthält allgemeine Data Science-Pakete. Zu diesen Paketen gehören Scikit-Learn, Pandas, Matplotlib und eine größere Menge an azureml-sdk-Paketen.
+* Die _AzureML-Tutorial_-Umgebung enthält allgemeine Data Science-Pakete. Zu diesen Paketen gehören Scikit-Learn, Pandas, Matplotlib und eine größere Menge an azureml-sdk-Paketen.
 
 Eine Liste der zusammengestellten Umgebungen finden Sie im [Artikel zu zusammengestellten Umgebungen](resource-curated-environments.md).
 
@@ -95,7 +95,7 @@ myenv = Environment.from_conda_specification(name = "myenv",
                                              file_path = "path-to-conda-specification-file")
 
 # From a pip requirements file
-myenv = Environment.from_pip_requirements(name = "myenv"
+myenv = Environment.from_pip_requirements(name = "myenv",
                                           file_path = "path-to-pip-requirements-file")                                          
 ```
 
@@ -110,11 +110,11 @@ Die [`DockerSection`](/python/api/azureml-core/azureml.core.environment.dockerse
 myenv.docker.enabled = True
 ```
 
-Standardmäßig wird das neu erstellte Docker-Image in der Containerregistrierung angezeigt, die dem Arbeitsbereich zugeordnet ist.  Der Repositoryname hat das Format *azureml/azureml_\<uuid\>* . Der *UUID* -Anteil (universally unique identifier, global eindeutiger Bezeichner) des Namens entspricht einem Hash, der aus der Umgebungskonfiguration errechnet wird. Diese Entsprechung ermöglicht es dem Dienst, zu ermitteln, ob bereits ein Image der betreffenden Umgebung zur Wiederverwendung vorhanden ist.
+Standardmäßig wird das neu erstellte Docker-Image in der Containerregistrierung angezeigt, die dem Arbeitsbereich zugeordnet ist.  Der Repositoryname hat das Format *azureml/azureml_\<uuid\>* . Der *UUID*-Anteil (universally unique identifier, global eindeutiger Bezeichner) des Namens entspricht einem Hash, der aus der Umgebungskonfiguration errechnet wird. Diese Entsprechung ermöglicht es dem Dienst, zu ermitteln, ob bereits ein Image der betreffenden Umgebung zur Wiederverwendung vorhanden ist.
 
 #### <a name="use-a-prebuilt-docker-image"></a>Verwenden eines vorgefertigten Docker-Images
 
-Standardmäßig verwendet der Dienst automatisch eines der Ubuntu Linux-basierten [Basisimages](https://github.com/Azure/AzureML-Containers), insbesondere das von `azureml.core.environment.DEFAULT_CPU_IMAGE` definierte Image. Anschließend werden alle angegebenen Python-Pakete installiert, die von der bereitgestellten Azure ML-Umgebung definiert sind. Es ist auch möglich, ein [benutzerdefiniertes Docker-Basisimage](./how-to-deploy-custom-docker-image.md#create-a-custom-base-image) zu verwenden.
+Standardmäßig verwendet der Dienst automatisch eines der Ubuntu Linux-basierten [Basisimages](https://github.com/Azure/AzureML-Containers), insbesondere das von `azureml.core.environment.DEFAULT_CPU_IMAGE` definierte Image. Anschließend werden alle angegebenen Python-Pakete installiert, die von der bereitgestellten Azure ML-Umgebung definiert sind. Weitere Azure ML-CPU- und -GPU-Basisimages sind im [Containerrepository](https://github.com/Azure/AzureML-Containers) verfügbar. Es ist auch möglich, ein [benutzerdefiniertes Docker-Basisimage](./how-to-deploy-custom-docker-image.md#create-a-custom-base-image) zu verwenden.
 
 ```python
 # Specify custom Docker base image and registry, if you don't want to use the defaults

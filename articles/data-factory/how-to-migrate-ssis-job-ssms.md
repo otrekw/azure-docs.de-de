@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 4/7/2020
 ms.openlocfilehash: 5566717387f6da375129a0e70c9ad825198d66b7
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92634605"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005706"
 ---
 # <a name="migrate-sql-server-agent-jobs-to-adf-with-ssms"></a>Migrieren von SQL Server-Agent-Aufträgen zu ADF mit SSMS
 
@@ -34,7 +34,7 @@ Mit dem **Assistenten für die SSIS-Auftragsmigration** können Sie generell fol
 |Objekt des SQL-Agent-Auftrags  |ADF-Ressource  |Notizen|
 |---------|---------|---------|
 |SQL-Agent-Auftrag|pipeline     |Der Name der Pipeline lautet *Generiert für \<job name>* . <br> <br> Folgende integrierte Agent-Aufträge sind nicht anwendbar: <li> Wartungsauftrag für SSIS-Server <li> syspolicy_purge_history <li> collection_set_* <li> mdw_purge_data_* <li> sysutility_*|
-|SSIS-Auftragsschritt|Aktivität „SSIS-Paket ausführen“|<li> Der Name der Aktivität lautet \<step name>. <li> Das im Auftragsschritt verwendete Proxykonto wird als Windows-Authentifizierung dieser Aktivität migriert. <li> *Ausführungsoptionen* , mit Ausnahme der im Auftragsschritt definierten Option *32-Bit-Runtime verwenden* , werden bei der Migration ignoriert. <li> Die im Auftragsschritt definierte *Überprüfung* wird bei der Migration ignoriert.|
+|SSIS-Auftragsschritt|Aktivität „SSIS-Paket ausführen“|<li> Der Name der Aktivität lautet \<step name>. <li> Das im Auftragsschritt verwendete Proxykonto wird als Windows-Authentifizierung dieser Aktivität migriert. <li> *Ausführungsoptionen*, mit Ausnahme der im Auftragsschritt definierten Option *32-Bit-Runtime verwenden*, werden bei der Migration ignoriert. <li> Die im Auftragsschritt definierte *Überprüfung* wird bei der Migration ignoriert.|
 |schedule      |Zeitplantrigger        |Der Name des Zeitplantriggers lautet *Generiert für \<schedule name>* . <br> <br> Die folgenden Optionen im Auftragszeitplan des SQL-Agents werden bei der Migration ignoriert: <li> Intervall der zweiten Ebene <li> *Automatisch starten, wenn der SQL Server-Agent startet* <li> *Starten, wenn sich die CPUs im Leerlauf befinden* <li> *Wochentag* und *Wochenendtag* <time zone> <br> Nach der Migration des Auftragszeitplans des SQL-Agents zum ADF-Zeitplantrigger sind folgende Unterschiede vorhanden: <li> Die nachfolgende Ausführung des ADF-Zeitplantriggers erfolgt unabhängig vom Ausführungszustand der zuvor ausgelösten Ausführung. <li> Die Wiederholungskonfiguration für den ADF-Zeitplantrigger unterscheidet sich von der täglichen Häufigkeit im SQL-Agent-Auftrag.|
 
 - Generieren von Azure Resource Manager-Vorlagen (ARM) im lokalen Ausgabeordner, die direkt oder später manuell in Data Factory bereitgestellt werden. Weitere Informationen zu den Azure Resource Manager-Vorlagen in ADF finden Sie unter [Microsoft.DataFactory-Ressourcentypen](/azure/templates/microsoft.datafactory/allversions).
@@ -60,7 +60,7 @@ Die in diesem Artikel beschriebene Funktion erfordert Version 18.5 oder höher 
 ![Screenshot der Seite zum Zuordnen der Pfade für SSIS-Paket und Konfiguration für das Hinzufügen einer Zuordnung](media/how-to-migrate-ssis-job-ssms/step2.png)
 ![Screenshot der Seite zum Zuordnen der Pfade für SSIS-Paket und Konfiguration für das Aktualisieren der Pfade für Quell- und Zielordner](media/how-to-migrate-ssis-job-ssms/step2-1.png)
 
-1. Wählen Sie die anwendbaren Aufträge aus, die migriert werden sollen, und konfigurieren Sie die Einstellungen der entsprechenden Aktivität *SSIS-Paket ausführen* .
+1. Wählen Sie die anwendbaren Aufträge aus, die migriert werden sollen, und konfigurieren Sie die Einstellungen der entsprechenden Aktivität *SSIS-Paket ausführen*.
 
     - Die *Standardeinstellung* gilt standardmäßig für alle ausgewählten Schritte. Weitere Informationen zu den einzelnen Eigenschaften finden Sie auf der Registerkarte *Einstellungen* der [Aktivität „SSIS-Paket ausführen“](how-to-invoke-ssis-package-ssis-activity.md), wenn der Paketspeicherort auf *Dateisystem (Paket)* festgelegt ist.
     ![Screenshot der Seite „SSIS-Aufträge auswählen“ für das Konfigurieren der Einstellungen der entsprechenden ausgeführten SSIS-Paketaktivität](media/how-to-migrate-ssis-job-ssms/step3-1.png)
@@ -72,7 +72,7 @@ Die in diesem Artikel beschriebene Funktion erfordert Version 18.5 oder höher 
 
 1. Generieren Sie eine ARM-Vorlage, und stellen Sie diese bereit.
     1. Wählen Sie den Ausgabepfad für die ARM-Vorlagen der migrierten ADF-Pipelines aus, oder geben Sie ihn ein. Sofern der Ordner noch nicht vorhanden ist, wird er automatisch erstellt.
-    2. Aktivieren Sie das Kontrollkästchen bei **ARM-Vorlagen in Data Factory bereitstellen** .
+    2. Aktivieren Sie das Kontrollkästchen bei **ARM-Vorlagen in Data Factory bereitstellen**.
         - Standardmäßig ist das Kontrollkästchen nicht aktiviert. Generierte ARM-Vorlagen können Sie später manuell bereitstellen.
         - Aktivieren Sie das Kontrollkästchen, um generierte ARM-Vorlagen direkt in Data Factory bereitzustellen.
     ![Screenshot der Seite „Migration konfigurieren“ für das Auswählen oder Eingeben des Ausgabepfads für die ARM-Vorlagen der migrierten ADF-Pipelines und das Aktivieren der Option zum Bereitstellen von ARM-Vorlagen in Ihrer Data Factory](media/how-to-migrate-ssis-job-ssms/step4.png)

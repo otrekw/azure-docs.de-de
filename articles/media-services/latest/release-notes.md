@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 10/21/2020
 ms.author: inhenkel
-ms.openlocfilehash: cdc6cbbea8b222007d94ecac99902bc4498a42fe
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 4ddb02bbcf284566550517f8fa343a728e2275a9
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94505256"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483626"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Versionshinweise zu Azure Media Services v3
 
@@ -51,7 +51,7 @@ Weitere Informationen zum Basic-Modus für die Audioanalyse finden Sie unter [An
 
 Aktualisierungen der meisten Eigenschaften sind jetzt zulässig, wenn Liveereignisse beendet werden. Darüber hinaus dürfen Benutzer ein Präfix für den statischen Hostnamen für die Eingabe- und Vorschau-URLs von Liveereignissen angeben. VanityUrl heißt jetzt `useStaticHostName`, um den Zweck der Eigenschaft besser widerzuspiegeln.
 
-Liveereignisse verfügen jetzt über einen Standbyzustand.  Weitere Informationen finden Sie unter [Liveereignisse und Liveausgaben in Media Services](https://docs.microsoft.com/azure/media-services/latest/live-events-outputs-concept).
+Liveereignisse verfügen jetzt über einen Standbyzustand.  Weitere Informationen finden Sie unter [Liveereignisse und Liveausgaben in Media Services](./live-events-outputs-concept.md).
 
 Ein Liveereignis unterstützt den Empfang verschiedener Seitenverhältnisse bei Eingaben. Der Stretchingmodus ermöglicht es Kunden, das Stretchingverhalten für die Ausgabe anzugeben.
 

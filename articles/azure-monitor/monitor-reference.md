@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 08/15/2020
-ms.openlocfilehash: 1681217c9e55b67ee2a6737aeece5303256bc1e6
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 08d30fb72398c4b43422eb21f132d5fddd5502b7
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461803"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96853141"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Was wird von Azure Monitor überwacht?
 In diesem Artikel werden die verschiedenen Anwendungen und Dienste beschrieben, die von Azure Monitor überwacht werden. 
@@ -126,7 +126,6 @@ In der folgenden Tabelle sind Azure-Dienste und die damit in Azure Monitor erfas
 |Verwaltete Anwendungen  | Nein | Nein | Nein |  |
 |Karten  | Nein | Nein | Nein |  |
 |Media Services | Ja | Ja | Nein |  |
-|Microsoft Flow | Nein | Nein | Nein |  |
 |Microsoft Managed Desktop | Nein | Nein | Nein |  |
 |Microsoft PowerApps | Nein | Nein | Nein |  |
 |Microsoft Social Engagement | Nein | Nein | Nein |  |
@@ -137,6 +136,7 @@ In der folgenden Tabelle sind Azure-Dienste und die damit in Azure Monitor erfas
 |Notification Hubs | Ja | Nein | Nein |  |
 |Open Datasets | Nein | Nein | Nein |  |
 |Richtlinie | Nein | Nein | Nein |  |
+|Power Automate | Nein | Nein | Nein |  |
 |Power BI Embedded | Ja | Ja | Nein |  |
 |Private Link | Nein | Nein | Nein |  |
 |Project Spool Communication Platform | Nein | Nein | Nein |  |
@@ -189,12 +189,12 @@ Die in der folgenden Tabelle aufgeführten Dienste und Lösungen speichern ihre 
 
 | Produkt/Dienst | BESCHREIBUNG |
 |:---|:---|
-| [Azure Automation](../automation/index.yml) | Verwalten von Betriebssystemupdates und Nachverfolgen von Änderungen auf Windows- und Linux-Computern. Informationen finden Sie unter [Änderungsnachverfolgung](../automation/change-tracking/overview.md) und [Updateverwaltung](../automation/update-management/update-mgmt-overview.md). |
+| [Azure Automation](../automation/index.yml) | Verwalten von Betriebssystemupdates und Nachverfolgen von Änderungen auf Windows- und Linux-Computern. Informationen finden Sie unter [Änderungsnachverfolgung](../automation/change-tracking/overview.md) und [Updateverwaltung](../automation/update-management/overview.md). |
 | [Azure Information Protection](/azure/information-protection/) | Klassifizieren und optionales Schützen von Dokumenten und E-Mails. Informationen finden Sie unter [Zentrale Berichterstellung für Azure Information Protection](/azure/information-protection/reports-aip#configure-a-log-analytics-workspace-for-the-reports). |
 | [Azure Security Center](../security-center/index.yml) | Sammeln und Analysieren von Sicherheitsereignissen und Durchführen einer Bedrohungsanalyse. Informationen finden Sie unter [Datensammlung in Azure Security Center](../security-center/security-center-enable-data-collection.md). |
 | [Azure Sentinel](../sentinel/index.yml) | Stellt eine Verbindung mit verschiedenen Quellen her, einschließlich Office 365 und Amazon Web Services CloudTrail. Lesen Sie dazu [Herstellen einer Verbindung mit Datenquellen](../sentinel/connect-data-sources.md). |
 | [Microsoft Intune](/intune/) | Erstellen einer Diagnoseeinstellung zum Senden von Protokollen an Azure Monitor. Informationen finden Sie unter [Senden von Daten an den Speicher, an Event Hubs oder Log Analytics in Intune (Vorschauversion)](/intune/fundamentals/review-logs-using-azure-monitor).  |
-| Netzwerk  | [Netzwerkleistungsmonitor](insights/network-performance-monitor.md): Überwachen der Netzwerkkonnektivität und -leistung für Dienst- und Anwendungsendpunkte.<br>[Azure Application Gateway](insights/azure-networking-analytics.md#azure-application-gateway-analytics-solution-in-azure-monitor): Analysieren der Protokolle und Metriken von Azure Application Gateway.<br>[Traffic Analytics](../network-watcher/traffic-analytics.md): Analysiert Flussprotokolle von Network Watcher für Netzwerksicherheitsgruppen (NSGs), um Einblicke in den Datenfluss in Ihrer Azure-Cloud zu ermöglichen. |
+| Netzwerk  | [Netzwerkleistungsmonitor](insights/network-performance-monitor.md): Überwachen der Netzwerkkonnektivität und -leistung für Dienst- und Anwendungsendpunkte.<br>[Azure Application Gateway](insights/azure-networking-analytics.md#azure-application-gateway-analytics): Analysieren der Protokolle und Metriken von Azure Application Gateway.<br>[Traffic Analytics](../network-watcher/traffic-analytics.md): Analysiert Flussprotokolle von Network Watcher für Netzwerksicherheitsgruppen (NSGs), um Einblicke in den Datenfluss in Ihrer Azure-Cloud zu ermöglichen. |
 | [Office 365](insights/solution-office-365.md) | Überwachen Ihrer Office 365-Umgebungen. Aktualisierte Version mit verbessertem Onboarding über Azure Sentinel verfügbar. |
 | [Azure SQL-Analyse](insights/azure-sql.md) | Bedarfsorientiertes und abonnementübergreifendes Überwachen der Leistung von Azure SQL-Datenbanken und verwalteten SQL-Instanzen. |
 | [Surface Hub](insights/surface-hubs.md) | Nachverfolgen der Integrität und Nutzung von Surface Hub-Geräten. |
@@ -245,4 +245,3 @@ Mithilfe der in der folgenden Tabelle aufgeführten Methoden kann Azure Monitor 
 - Arbeiten Sie ein [Tutorial zum Schreiben einer Protokollabfrage für die Analyse von Daten in Azure Monitor-Protokollen](learn/tutorial-resource-logs.md) durch.
 - Arbeiten Sie ein [Tutorial zum Erstellen eines Metrikdiagramms für die Analyse von Daten in Azure Monitor-Metriken](learn/tutorial-metrics-explorer.md) durch.
 
- 

@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 author: cartacioS
 ms.date: 07/10/2020
 ms.custom: automl
-ms.openlocfilehash: 5577a0d9270f3e4566bf57876b8abc3d1a3ae4be
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 8b354abb98c56a572badf2421b0d7dbbd25f7a63
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93356500"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96921853"
 ---
 # <a name="tutorial-forecast-demand-with-automated-machine-learning"></a>Tutorial: Vorhersage des Bedarfs mithilfe von automatisiertem maschinellem Lernen
 
@@ -138,14 +138,14 @@ Schließen Sie die Einrichtung Ihres Experiments mit automatisiertem maschinelle
 
 1. **Forecast horizon** (Vorhersagehorizont) ist die Zeitspanne für die Zukunftsprognose.  Deaktivieren Sie „Automatische Erkennung“, und geben Sie „14“ in das Feld ein. 
 
-1. Klicken Sie auf **Zusätzliche Konfigurationseinstellungen anzeigen** , und füllen Sie die Felder wie folgt aus. Mit diesen Einstellungen können Sie den Trainingsauftrag besser steuern und Einstellungen für die Vorhersage angeben. Andernfalls werden die Standardwerte auf Basis der Experimentauswahl und -daten angewendet.
+1. Klicken Sie auf **Zusätzliche Konfigurationseinstellungen anzeigen**, und füllen Sie die Felder wie folgt aus. Mit diesen Einstellungen können Sie den Trainingsauftrag besser steuern und Einstellungen für die Vorhersage angeben. Andernfalls werden die Standardwerte auf Basis der Experimentauswahl und -daten angewendet.
 
     Zusätzliche&nbsp;Konfigurationen|BESCHREIBUNG|Wert&nbsp;für&nbsp;das Tutorial
     ------|---------|---
     Primary metric (Primäre Metrik)| Auswertungsmetrik, die zur Messung des Machine Learning-Algorithmus verwendet wird.|Wurzel der mittleren Fehlerquadratsumme (RMSE), normalisiert
     Explain best model (Bestes Modell erläutern)| Zeigt automatisch die Erklärbarkeit für das beste Modell an, das durch automatisiertes ML erstellt wurde.| Aktivieren
     Blockierte Algorithmen | Algorithmen, die Sie aus den Trainingsauftrag ausschließen möchten.| „Extreme Random Trees“ (Extreme Zufallsstrukturen)
-    Zusätzliche Vorhersageeinstellungen| Diese Einstellungen tragen dazu bei, die Genauigkeit des Modells zu verbessern. <br><br> _**Zielverzögerungen für Prognose:**_ Angabe, wie weit die Verzögerungen für die Zielvariable zurückreichen sollen <br> _**Zielgröße für rollierendes Zeitfenster**_ : Angabe der Größe des rollierenden Zeitfensters, in dem Features wie *max, min* und *sum* generiert werden sollen | <br><br>Zielverzögerungen&nbsp;für&nbsp;Prognose: Keine <br> Zielgröße&nbsp;für&nbsp;rollierendes&nbsp;Zeitfenster: Keine
+    Zusätzliche Vorhersageeinstellungen| Diese Einstellungen tragen dazu bei, die Genauigkeit des Modells zu verbessern. <br><br> _**Zielverzögerungen für Prognose:**_ Angabe, wie weit die Verzögerungen für die Zielvariable zurückreichen sollen <br> _**Zielgröße für rollierendes Zeitfenster**_: Angabe der Größe des rollierenden Zeitfensters, in dem Features wie *max, min* und *sum* generiert werden sollen | <br><br>Zielverzögerungen&nbsp;für&nbsp;Prognose: Keine <br> Zielgröße&nbsp;für&nbsp;rollierendes&nbsp;Zeitfenster: Keine
     Beendigungskriterium| Wenn ein Kriterium erfüllt ist, wird der Trainingsauftrag angehalten. |Dauer&nbsp;des&nbsp;Trainingsauftrags (Stunden): 3 <br> Metrikschwellenwert&nbsp;&nbsp;: Keine
     Überprüfen | Wählen Sie einen Kreuzvalidierungstyp und die Anzahl von Tests aus.|Überprüfungstyp:<br>&nbsp;k-fold&nbsp;cross-validation <br> <br> Anzahl von Überprüfungen: 5
     Parallelität| Die maximale Anzahl paralleler Iterationen pro Iteration| Max.&nbsp;parallele&nbsp;Iterationen: 6
@@ -163,7 +163,7 @@ Wählen Sie **Fertig stellen** aus, um Ihr Experiment auszuführen. Im daraufhin
 
 ##  <a name="explore-models"></a>Untersuchen von Modellen
 
-Navigieren Sie zur Registerkarte **Modelle** , um die getesteten Algorithmen (Modelle) anzuzeigen. Standardmäßig werden die Modelle nach ihrem Abschluss nach der Metrikbewertung sortiert. In diesem Tutorial befindet sich das Modell, das für die ausgewählte Metrik **Wurzel der mittleren Fehlerquadratsumme (RMSE), normalisiert** die höchste Bewertung erhält, ganz oben auf der Liste.
+Navigieren Sie zur Registerkarte **Modelle**, um die getesteten Algorithmen (Modelle) anzuzeigen. Standardmäßig werden die Modelle nach ihrem Abschluss nach der Metrikbewertung sortiert. In diesem Tutorial befindet sich das Modell, das für die ausgewählte Metrik **Wurzel der mittleren Fehlerquadratsumme (RMSE), normalisiert** die höchste Bewertung erhält, ganz oben auf der Liste.
 
 Während Sie auf den Abschluss aller Experimentmodelle warten, können Sie den **Algorithmusnamen** eines abgeschlossenen Modells auswählen und sich die zugehörigen Leistungsdetails ansehen. 
 
@@ -235,7 +235,7 @@ Im folgenden Artikel erfahren Sie, wie Sie ein von Power BI unterstütztes Sche
 > [Verwenden eines Webdiensts](how-to-consume-web-service.md#consume-the-service-from-power-bi)
 
 + Weitere Informationen zu [automatisiertem Machine Learning](concept-automated-ml.md).
-+ Weitere Informationen zu Klassifizierungsmetriken und Diagrammen finden Sie im Artikel [Grundlegendes zu den Ergebnissen des automatisierten maschinellen Lernens](how-to-understand-automated-ml.md#classification).
++ Weitere Informationen zu Klassifizierungsmetriken und Diagrammen finden Sie im Artikel [Grundlegendes zu den Ergebnissen des automatisierten maschinellen Lernens](how-to-understand-automated-ml.md).
 + Weitere Informationen zur [Featurebereitstellung](how-to-configure-auto-features.md#featurization)
 + Weitere Informationen zur [Datenprofilerstellung](how-to-connect-data-ui.md#profile).
 

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: 78a8ae7724c9ede06b24649d3b19ea90b791ae08
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: c1dba383f259e35b143688b2db68f05f1a67def6
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541316"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938196"
 ---
 # <a name="tutorial-create-a-hierarchy-of-iot-edge-devices-preview"></a>Tutorial: Erstellen einer Hierarchie für IoT Edge-Geräte (Vorschauversion)
 
@@ -50,10 +50,19 @@ In diesem Tutorial wird der Einfachheit halber eine Hierarchie mit nur zwei Ger�
 Sie benötigen Folgendes, um eine Hierarchie mit IoT Edge-Geräten zu erstellen:
 
 * Einen Computer (Windows oder Linux) mit Internetverbindung.
-* Zwei Linux-Geräte, die als IoT Edge-Geräte konfiguriert werden. Falls Sie keine Geräte zur Verfügung haben, können Sie [virtuelle Azure-Computer](https://docs.microsoft.com/azure/virtual-machines/linux/) verwenden.
-* Ein Azure-Konto mit einem gültigen Abonnement. Wenn Sie kein [Azure-Abonnement](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing) besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/), bevor Sie beginnen.
+* Ein Azure-Konto mit einem gültigen Abonnement. Wenn Sie kein [Azure-Abonnement](../guides/developer/azure-developer-guide.md#understanding-accounts-subscriptions-and-billing) besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/), bevor Sie beginnen.
 * Eine [IoT Hub-Instanz](../iot-hub/iot-hub-create-through-portal.md) in Azure mit dem Tarif „Free“ oder „Standard“.
-* Azure CLI v2.3.1 mit einer Installation der Azure IoT-Erweiterung v0.10.6 oder höher. In diesem Tutorial wird [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) verwendet. Falls Sie mit Azure Cloud Shell noch nicht vertraut sein sollten, helfen Ihnen die [Informationen in der Schnellstartanleitung](https://docs.microsoft.com/azure/iot-edge/quickstart-linux#use-azure-cloud-shell) weiter.
+* Azure CLI v2.3.1 mit einer Installation der Azure IoT-Erweiterung v0.10.6 oder höher. In diesem Tutorial wird [Azure Cloud Shell](../cloud-shell/overview.md) verwendet. Falls Sie mit Azure Cloud Shell noch nicht vertraut sein sollten, helfen Ihnen die [Informationen in der Schnellstartanleitung](./quickstart-linux.md#prerequisites) weiter.
+* Zwei Linux-Geräte, die als IoT Edge-Geräte konfiguriert werden. Sind keine Geräte verfügbar, können Sie zwei virtuelle Azure-Computer erstellen, indem Sie den Platzhaltertext im folgenden Befehl ersetzen und diesen zweimal ausführen:
+
+   ```azurecli-interactive
+   az vm create \
+    --resource-group <REPLACE_WITH_RESOURCE_GROUP> \
+    --name <REPLACE_WITH_UNIQUE_NAMES_FOR_EACH_VM> \
+    --image UbuntuLTS \
+    --admin-username azureuser \
+    --admin-password <REPLACE_WITH_PASSWORD>
+   ```
 
 Sie können dieses Szenario auch ausprobieren, indem Sie das Skript für das [Beispiel „Azure IoT Edge for Industrial IoT“](https://aka.ms/iotedge-nested-sample) verwenden. Hiermit werden virtuelle Azure-Computer als vorkonfigurierte Geräte bereitgestellt, um eine Produktionsumgebung zu simulieren.
 
@@ -185,7 +194,7 @@ Installieren Sie IoT Edge, indem Sie die unten angegebenen Schritte auf beiden G
    sudo apt-get install moby-engine
    ```
 
-1. Installieren Sie hsmlib und den IoT Edge-Daemon. <!-- Update with proper image links on release -->
+1. Installieren Sie hsmlib und den IoT Edge-Daemon. Wenn Sie die Ressourcen für andere Linux-Distributionen anzeigen möchten, sehen Sie sich das [GitHub-Release](https://github.com/Azure/azure-iotedge/releases/tag/1.2.0-rc1) an. <!-- Update with proper image links on release -->
 
    ```bash
    curl -L https://github.com/Azure/azure-iotedge/releases/download/1.2.0-rc1/libiothsm-std_1.2.0.rc1-1-1_debian9_amd64.deb -o libiothsm-std.deb
@@ -261,7 +270,7 @@ Führen Sie die folgenden Schritte aus, und starten Sie den IoT Edge-Dienst neu,
      type: "docker"
      env: {}
      config:
-       image: "mcr.microsoft.com/azureiotedge-agent:1.2.0-rc1"
+       image: "mcr.microsoft.com/azureiotedge-agent:1.2.0-rc2"
        auth: {}
    ```
 
@@ -273,7 +282,7 @@ Führen Sie die folgenden Schritte aus, und starten Sie den IoT Edge-Dienst neu,
      type: "docker"
      env: {}
      config:
-       image: "<parent_device_fqdn_or_ip>:8000/azureiotedge-agent:1.2.0-rc1"
+       image: "<parent_device_fqdn_or_ip>:8000/azureiotedge-agent:1.2.0-rc2"
        auth: {}
    ```
 
@@ -305,7 +314,7 @@ Im [Azure-Portal](https://ms.portal.azure.com/):
 
 1. Wählen Sie neben dem Zahnradsymbol die Option **Runtimeeinstellungen** aus.
 
-1. Geben Sie unter **Edge Hub** im Imagefeld die Zeichenfolge `mcr.microsoft.com/azureiotedge-hub:1.2.0-rc1` ein.
+1. Geben Sie unter **Edge Hub** im Imagefeld die Zeichenfolge `mcr.microsoft.com/azureiotedge-hub:1.2.0-rc2` ein.
 
    ![Bearbeiten des Edge-Hub-Images](./media/tutorial-nested-iot-edge/edge-hub-image.png)
 
@@ -318,7 +327,7 @@ Im [Azure-Portal](https://ms.portal.azure.com/):
 
    ![Bearbeiten der Umgebungsvariablen für den Edge-Hub](./media/tutorial-nested-iot-edge/edge-hub-environment-variables.png)
 
-1. Geben Sie unter **Edge-Agent** im Imagefeld die Zeichenfolge `mcr.microsoft.com/azureiotedge-agent:1.2.0-rc1` ein. Wählen Sie **Speichern** aus.
+1. Geben Sie unter **Edge-Agent** im Imagefeld die Zeichenfolge `mcr.microsoft.com/azureiotedge-agent:1.2.0-rc2` ein. Wählen Sie **Speichern** aus.
 
 1. Fügen Sie das Docker-Registrierungsmodul Ihrem Gerät der obersten Ebene hinzu. Wählen Sie **+ Hinzufügen** und in der Dropdownliste die Option **IoT Edge-Modul** aus. Geben Sie den Namen `registry` für Ihr Docker-Registrierungsmodul und `registry:latest` für den Image-URI ein. Fügen Sie als Nächstes Umgebungsvariablen hinzu, und erstellen Sie Optionen, um für Ihr lokales Registrierungsmodul auf die Microsoft-Containerregistrierung zu verweisen, damit hierüber Containerimages heruntergeladen und unter registry:5000 bereitgestellt werden können.
 
@@ -412,14 +421,14 @@ Im [Azure-Portal](https://ms.portal.azure.com/):
                    "systemModules": {
                        "edgeAgent": {
                            "settings": {
-                               "image": "mcr.microsoft.com/azureiotedge-agent:1.2.0-rc1",
+                               "image": "mcr.microsoft.com/azureiotedge-agent:1.2.0-rc2",
                                "createOptions": ""
                            },
                            "type": "docker"
                        },
                        "edgeHub": {
                            "settings": {
-                               "image": "mcr.microsoft.com/azureiotedge-hub:1.2.0-rc1",
+                               "image": "mcr.microsoft.com/azureiotedge-hub:1.2.0-rc2",
                                "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"443/tcp\":[{\"HostPort\":\"443\"}],\"5671/tcp\":[{\"HostPort\":\"5671\"}],\"8883/tcp\":[{\"HostPort\":\"8883\"}]}}}"
                            },
                            "type": "docker",
@@ -478,7 +487,7 @@ Im [Azure-Portal](https://ms.portal.azure.com/):
 
 1. Wählen Sie neben dem Zahnradsymbol die Option **Runtimeeinstellungen** aus.
 
-1. Geben Sie unter **Edge Hub** im Imagefeld die Zeichenfolge `$upstream:8000/azureiotedge-hub:1.2.0-rc1` ein.
+1. Geben Sie unter **Edge Hub** im Imagefeld die Zeichenfolge `$upstream:8000/azureiotedge-hub:1.2.0-rc2` ein.
 
 1. Fügen Sie Ihrem Edge-Hubmodul die folgenden Umgebungsvariablen hinzu:
 
@@ -487,7 +496,7 @@ Im [Azure-Portal](https://ms.portal.azure.com/):
     | `experimentalFeatures__enabled` | `true` |
     | `experimentalFeatures__nestedEdgeEnabled` | `true` |
 
-1. Geben Sie unter **Edge-Agent** im Imagefeld die Zeichenfolge `$upstream:8000/azureiotedge-agent:1.2.0-rc1` ein. Wählen Sie **Speichern** aus.
+1. Geben Sie unter **Edge-Agent** im Imagefeld die Zeichenfolge `$upstream:8000/azureiotedge-agent:1.2.0-rc2` ein. Wählen Sie **Speichern** aus.
 
 1. Fügen Sie das Temperatursensormodul hinzu. Wählen Sie **+ Hinzufügen** und in der Dropdownliste die Option **Marketplace-Modul** aus. Suchen Sie nach `Simulated Temperature Sensor`, und wählen Sie das Modul aus.
 
@@ -534,14 +543,14 @@ Im [Azure-Portal](https://ms.portal.azure.com/):
                    "systemModules": {
                        "edgeAgent": {
                            "settings": {
-                               "image": "$upstream:8000/azureiotedge-agent:1.2.0-rc1",
+                               "image": "$upstream:8000/azureiotedge-agent:1.2.0-rc2",
                                "createOptions": ""
                            },
                            "type": "docker"
                        },
                        "edgeHub": {
                            "settings": {
-                               "image": "$upstream:8000/azureiotedge-hub:1.2.0-rc1",
+                               "image": "$upstream:8000/azureiotedge-hub:1.2.0-rc2",
                                "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"443/tcp\":[{\"HostPort\":\"443\"}],\"5671/tcp\":[{\"HostPort\":\"5671\"}],\"8883/tcp\":[{\"HostPort\":\"8883\"}]}}}"
                            },
                            "type": "docker",
@@ -585,25 +594,35 @@ Notice that the image URI that we used for the simulated temperature sensor modu
 
 On the device details page for your lower layer IoT Edge device, you should now see the temperature sensor module listed along the system modules as **Specified in deployment**. It may take a few minutes for the device to receive its new deployment, request the container image, and start the module. Refresh the page until you see the temperature sensor module listed as **Reported by device**.
 
-You can also watch the messages arrive at your IoT hub by using the [Azure IoT Hub extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit).
+## View generated data
 
-## Clean up resources
+The **Simulated Temperature Sensor** module that you pushed generates sample environment data. It sends messages that include ambient temperature and humidity, machine temperature and pressure, and a timestamp.
 
-You can delete the local configurations and the Azure resources that you created in this article to avoid charges.
+You can watch the messages arrive at your IoT hub by using the [Azure IoT Hub extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit).
 
-To delete the resources:
+You can also view these messages through the [Azure Cloud Shell](https://shell.azure.com/):
 
-1. Sign in to the [Azure portal](https://portal.azure.com) and select **Resource groups**.
+   ```azurecli-interactive
+   az iot hub monitor-events -n <iothub_name> -d <lower-layer-device-name>
+   ```
 
-2. Select the name of the resource group that contains your IoT Edge test resources. 
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-3. Review the list of resources contained in your resource group. If you want to delete all of them, you can select **Delete resource group**. If you want to delete only some of them, you can click into each resource to delete them individually. 
+Sie können die in diesem Artikel erstellten lokalen Konfigurationen und Azure-Ressourcen löschen, um Kosten zu vermeiden.
 
-## Next steps
+So löschen Sie die Ressourcen:
 
-In this tutorial, you configured two IoT Edge devices as gateways and set one as the parent device of the other. Then, you demonstrated pulling a container image onto the child device through a gateway. You can also try out this scenario by following the scripted [Azure IoT Edge for Industrial IoT sample](https://aka.ms/iotedge-nested-sample), which deploys Azure virtual machines as preconfigured devices to simulate a factory environment.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und klicken Sie auf **Ressourcengruppen**.
 
-To see how Azure IoT Edge can create more solutions for your business, continue on to the other tutorials.
+2. Wählen Sie den Namen der Ressourcengruppe aus, die Ihre IoT Edge-Testressourcen enthält. 
+
+3. Überprüfen Sie die Liste der Ressourcen in Ihrer Ressourcengruppe. Wenn Sie alle löschen möchten, klicken Sie auf **Ressourcengruppe löschen**. Wenn Sie nur einige Ressourcen löschen möchten, klicken Sie auf die jeweiligen Ressourcen, um sie einzeln zu löschen. 
+
+## <a name="next-steps"></a>Nächste Schritte
+
+In diesem Tutorial haben Sie zwei IoT Edge-Geräte als Gateways konfiguriert und eins als übergeordnetes Gerät des anderen festgelegt. Anschließend haben Sie gezeigt, wie Sie ein Containerimage über ein Gateway auf das untergeordnete Gerät pullen.
+
+Sie können nun die anderen Tutorials bearbeiten, um noch mehr darüber zu erfahren, wie sich mit Azure IoT Edge weitere Lösungen für Ihr Unternehmen erstellen lassen.
 
 > [!div class="nextstepaction"]
-> [Deploy an Azure Machine Learning model as a module](tutorial-deploy-machine-learning.md)
+> [Bereitstellen eines Azure Machine Learning-Modells als Modul](tutorial-deploy-machine-learning.md)

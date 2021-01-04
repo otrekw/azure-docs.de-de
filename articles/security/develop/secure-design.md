@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: e8eab3a1054541b1ef7fc6d2e65089f01f0df3c0
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: 743412b7602e5781911cdf190e41a5ee15bfddd4
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94517154"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96487676"
 ---
 # <a name="design-secure-applications-on-azure"></a>Entwerfen von sicheren Anwendungen in Azure
 In diesem Artikel werden Sicherheitsaktivitäten und -kontrollen vorgestellt, die Sie berücksichtigen sollten, wenn Sie Anwendungen für die Cloud entwerfen. Es werden Trainingsressourcen zusammen mit Sicherheitsfragen und -konzepten behandelt, die Sie in der Anforderungen- und in der Entwurfsphase von Microsoft [Security Development Lifecycle (SDL)](/previous-versions/windows/desktop/cc307891(v=msdn.10)) berücksichtigen müssen. Das Ziel ist, Ihnen das Festlegen von Aktivitäten und Azure-Diensten zu ermöglichen, mit denen Sie eine sicherere Anwendung entwickeln können.
@@ -157,7 +157,7 @@ Das Modellieren des Anwendungsentwurfs und das Aufzählen von [STRIDE](https://d
 | Manipulation              | Integrität             | Überprüfen Sie SSL/TLS-Zertifikate. Anwendungen, die SSL/TLS verwenden, müssen die X.509-Zertifikate der Entitäten, mit denen sie eine Verbindung herstellen, umfassend überprüfen. Verwenden Sie Azure Key Vault-Zertifikate, um [Ihre X509-Zertifikate zu verwalten](../../key-vault/general/about-keys-secrets-certificates.md). |
 | Nichtanerkennung            | Unleugbarkeit       | Aktivieren Sie die [Überwachung und Diagnose](/azure/architecture/best-practices/monitoring) von Azure.|
 | Veröffentlichung von Informationen | Vertraulichkeit       | Verschlüsseln Sie sensible [ruhende](../fundamentals/encryption-atrest.md) Daten und Daten [während einer Übertragung](../fundamentals/data-encryption-best-practices.md#protect-data-in-transit). |
-| Denial of Service      | Verfügbarkeit          | Überwachen Sie Leistungsmetriken auf potenzielle Denial of Service-Angriffe. Implementieren Sie Verbindungsfilter. [Azure DDoS-Schutz](../../virtual-network/ddos-protection-overview.md#next-steps) in Kombination mit bewährten Anwendungsentwurfsmethoden stellt den bestmöglichen Schutz vor DDoS-Angriffen dar.|
+| Denial of Service      | Verfügbarkeit          | Überwachen Sie Leistungsmetriken auf potenzielle Denial of Service-Angriffe. Implementieren Sie Verbindungsfilter. [Azure DDoS-Schutz](../../ddos-protection/ddos-protection-overview.md#next-steps) in Kombination mit bewährten Anwendungsentwurfsmethoden stellt den bestmöglichen Schutz vor DDoS-Angriffen dar.|
 | Rechteerweiterungen | Authorization         | Verwenden Sie Azure Active Directory <span class="underline"> </span> [Privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md).|
 
 ### <a name="reduce-your-attack-surface"></a>Verringern der Angriffsfläche
@@ -217,7 +217,7 @@ Verwenden Sie von der Plattform bereitgestellte Authentifizierungs- und Autorisi
 
 Das Konzept der [geringsten Rechte](https://en.wikipedia.org/wiki/Principle_of_least_privilege) bedeutet, dass Benutzern Zugriff und Kontrolle genau in dem Umfang gewährt wird, den sie zum Erledigen ihrer Aufgaben benötigen, und mehr nicht.
 
-Benötigt ein Softwareentwickler die Rechte eines Domänenadministrators? Benötigt ein Verwaltungsassistent Zugriff auf administrative Komponenten auf seinem Personalcomputer? Bewerten von Zugriff auf Software unterscheidet sich davon nicht. Wenn Sie [rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC)](../../role-based-access-control/overview.md) verwenden, um Benutzern unterschiedliche Fähigkeiten und Befugnisse in Ihrer Anwendung zu gewähren, werden Sie nicht jedem Zugriff auf alles ermöglichen. Durch Beschränken des Zugriffs auf die Elemente, die für jede Rolle erforderlich sind, beschränken Sie das Risiko, dass ein Sicherheitsproblem auftritt.
+Benötigt ein Softwareentwickler die Rechte eines Domänenadministrators? Benötigt ein Verwaltungsassistent Zugriff auf administrative Komponenten auf seinem Personalcomputer? Bewerten von Zugriff auf Software unterscheidet sich davon nicht. Wenn Sie [rollenbasierte Azure-Zugriffssteuerung (Azure RBAC)](../../role-based-access-control/overview.md) verwenden, um Benutzern unterschiedliche Fähigkeiten und Befugnisse in Ihrer Anwendung zu gewähren, werden Sie nicht jedem Zugriff auf alles ermöglichen. Durch Beschränken des Zugriffs auf die Elemente, die für jede Rolle erforderlich sind, beschränken Sie das Risiko, dass ein Sicherheitsproblem auftritt.
 
 Achten Sie darauf, dass in Ihrer Anwendung in allen Zugriffsmustern das [Prinzip der geringsten Rechte](/windows-server/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models#in-applications) erzwungen wird.
 
@@ -233,7 +233,7 @@ Implementieren Sie *Just-In-Time-Zugriff* (JIT-Zugriff), um die Zeit, in der Rec
 
 ### <a name="require-re-authentication-for-important-transactions"></a>Verlangen einer erneuten Authentifizierung für wichtige Transaktionen
 
-Bei einer [websiteübergreifenden Anforderungsfälschung](/aspnet/core/security/anti-request-forgery?view=aspnetcore-2.1) (auch bekannt als *XSRF* oder *CSRF* ) handelt es sich um einen Angriff auf im Web gehostete Apps, in denen eine schädliche Web-App die Interaktion zwischen einem Clientbrowser und einer Web-App beeinflusst, die diesem Browser vertraut. Angriffe in Form von websiteübergreifenden Anforderungsfälschungen sind möglich, weil Webbrowser einige Typen von Authentifizierungstoken automatisch bei jeder Anforderung an eine Website senden.
+Bei einer [websiteübergreifenden Anforderungsfälschung](/aspnet/core/security/anti-request-forgery?view=aspnetcore-2.1) (auch bekannt als *XSRF* oder *CSRF*) handelt es sich um einen Angriff auf im Web gehostete Apps, in denen eine schädliche Web-App die Interaktion zwischen einem Clientbrowser und einer Web-App beeinflusst, die diesem Browser vertraut. Angriffe in Form von websiteübergreifenden Anforderungsfälschungen sind möglich, weil Webbrowser einige Typen von Authentifizierungstoken automatisch bei jeder Anforderung an eine Website senden.
 Diese Form missbräuchlicher Verwendung wird auch als *Ein-Klick-Angriff* oder *Session-Riding* bezeichnet, weil für den Angriff die zuvor authentifizierte Sitzung des Benutzers verwendet wird.
 
 Die beste Möglichkeit, diese Art von Angriff abzuwehren, besteht darin, den Benutzer vor jeder wichtigen Transaktion, z. B. eine Bestellung, Kontodeaktivierung oder Kennwortänderung, nach etwas zu fragen, das nur er bereitstellen kann. Sie können den Benutzer bitten, sein Passwort erneut einzugeben, ein Captcha zu vervollständigen oder ein geheimes Token zu senden, das nur der Benutzer hat. Der gängigste Ansatz ist das geheime Token.
@@ -244,7 +244,7 @@ Der Verlust von Schlüsseln und Anmeldeinformationen ist ein verbreitetes Proble
 
 Legen Sie Ihre Schlüssel, Zertifikate, Geheimnisse und Verbindungszeichenfolgen immer in einer Schlüsselverwaltungslösung ab. Sie können eine zentrale Lösung verwenden, in der Schlüssel und Geheimnisse in Hardwaresicherheitsmodulen (HSMs) gespeichert werden. Azure stellt Ihnen mit [Azure Key Vault](../../key-vault/general/overview.md) ein HSM in der Cloud zur Verfügung.
 
-Key Vault ist ein *Geheimnisspeicher* : Es ist eine zentraler Clouddienst zum Speichern von Anwendungsgeheimnissen. Key Vault schützt Ihre vertraulichen Daten, indem es Anwendungsgeheimnisse an einem einzigen zentralen Ort aufbewahrt und sicheren Zugriff, Berechtigungssteuerung und Zugriffsprotokollierung bietet.
+Key Vault ist ein *Geheimnisspeicher*: Es ist eine zentraler Clouddienst zum Speichern von Anwendungsgeheimnissen. Key Vault schützt Ihre vertraulichen Daten, indem es Anwendungsgeheimnisse an einem einzigen zentralen Ort aufbewahrt und sicheren Zugriff, Berechtigungssteuerung und Zugriffsprotokollierung bietet.
 
 Geheimnisse werden in einzelnen *Tresoren* (Vaults) gespeichert. Jeder Tresor hat seine eigene Konfiguration und eigenen Sicherheitsrichtlinien, um Zugriffe zu steuern. Sie rufen Ihren Daten über eine REST-API oder über ein Client-SDK ab, das für die meisten Programmiersprachen verfügbar ist.
 

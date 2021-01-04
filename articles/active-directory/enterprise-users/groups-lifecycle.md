@@ -7,20 +7,20 @@ author: curtand
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.workload: identity
 ms.subservice: enterprise-users
+ms.workload: identity
 ms.topic: how-to
-ms.date: 11/15/2020
+ms.date: 12/02/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f3544d81059cd4c25c584d8af1b6fcd45a41b8bb
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 60d71c44ebaba5b0cbcb03afa41ad15237dceaef
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94650715"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96547473"
 ---
 # <a name="configure-the-expiration-policy-for-microsoft-365-groups"></a>Konfigurieren der Ablaufrichtlinie für Microsoft 365-Gruppen
 

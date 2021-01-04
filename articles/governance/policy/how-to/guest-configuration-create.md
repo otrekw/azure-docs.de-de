@@ -3,12 +3,12 @@ title: Erstellen von Richtlinien für Gastkonfigurationen für Windows
 description: Erfahren Sie, wie Sie eine Azure Policy-Richtlinie für Gastkonfigurationen für Windows erstellen.
 ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: ea9b40006deefbac2c253082eda4ef2da12149a4
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 124f747a1e7c7925efc2519ee826d62034e69cc5
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94700677"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302695"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-windows"></a>Erstellen von Richtlinien für Gastkonfigurationen für Windows
 
@@ -160,7 +160,7 @@ Das fertige Paket wird von der Gastkonfiguration verwendet, um die Azure Policy-
 
 Zum Erstellen des Pakets können PowerShell-Cmdlets verwendet werden.
 Es ist kein Ordner auf Stammebene oder Versionsordner erforderlich.
-Das Paketformat muss eine ZIP-Datei sein.
+Das Paketformat muss eine ZIP-Datei sein, deren Gesamtgröße unkomprimiert 100 MB nicht überschreiten darf.
 
 ### <a name="storing-guest-configuration-artifacts"></a>Speichern von Gastkonfigurationsartefakten
 

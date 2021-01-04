@@ -7,12 +7,12 @@ ms.service: api-management
 ms.topic: conceptual
 ms.date: 10/09/2020
 ms.author: apimpm
-ms.openlocfilehash: 92d108304f788279a636b1dc5e1c4e6c103ede3d
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 62f163b9ce649cd5ddb52b4325682570633dfb92
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93088878"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183157"
 ---
 # <a name="cicd-for-api-management-using-azure-resource-manager-templates"></a>CI/CD für API Management mit Azure Resource Manager-Vorlagen
 
@@ -41,14 +41,14 @@ In diesem Beispiel werden zwei Bereitstellungsumgebungen verwendet: eine für di
 * API-Entwickler haben Zugriff auf die Instanz „Entwicklung“ und können sie zum Entwickeln und Testen ihrer APIs verwenden. 
 * Ein zugeordnetes Team mit dem Namen *API publishers* (API-Herausgeber) verwaltet die Instanz „Produktion“.
 
-Der entscheidende Punkt bei diesem vorgeschlagenen Ansatz ist, alle API Management-Konfigurationen in [Azure Resource Manager-Vorlagen](../azure-resource-manager/resource-group-authoring-templates.md) aufzubewahren. Die Organisation sollte diese Vorlagen in einem System für die Quellcodeverwaltung (etwa Git) vorhalten. Wie in der Abbildung dargestellt, enthält das Repository „Publisher“ (Herausgeber) alle Konfigurationen der API Management-Instanz „Produktion“ als Vorlagensammlung:
+Der entscheidende Punkt bei diesem vorgeschlagenen Ansatz ist, alle API Management-Konfigurationen in [Azure Resource Manager-Vorlagen](../azure-resource-manager/templates/template-syntax.md) aufzubewahren. Die Organisation sollte diese Vorlagen in einem System für die Quellcodeverwaltung (etwa Git) vorhalten. Wie in der Abbildung dargestellt, enthält das Repository „Publisher“ (Herausgeber) alle Konfigurationen der API Management-Instanz „Produktion“ als Vorlagensammlung:
 
 |Vorlage  |BESCHREIBUNG  |
 |---------|---------|
 |Dienstvorlage     | Dienstebenenkonfigurationen der API Management-Instanz, z. B. Tarif und benutzerdefinierte Domänen         |
 |Freigegebene Vorlagen     |  Gemeinsam genutzte Ressourcen einer API Management-Instanz, z. B. Gruppen, Produkte und Protokollierungen    |
 |API-Vorlagen     |  Konfigurationen von APIs und deren Unterressourcen: Vorgänge, Richtlinien, Diagnoseeinstellungen        |
-|Mastervorlage (Hauptvorlage)     |   Vereint alle Elemente, indem eine [Verknüpfung](../azure-resource-manager/resource-group-linked-templates.md) mit allen Vorlagen erstellt wird und diese in der entsprechenden Reihenfolge bereitgestellt werden. Stellen Sie die Hauptvorlage bereit, um die Bereitstellung aller Konfigurationen für eine API Management-Instanz durchzuführen. Sie können jede Vorlage auch einzeln bereitstellen.       |
+|Mastervorlage (Hauptvorlage)     |   Vereint alle Elemente, indem eine [Verknüpfung](../azure-resource-manager/templates/linked-templates.md) mit allen Vorlagen erstellt wird und diese in der entsprechenden Reihenfolge bereitgestellt werden. Stellen Sie die Hauptvorlage bereit, um die Bereitstellung aller Konfigurationen für eine API Management-Instanz durchzuführen. Sie können jede Vorlage auch einzeln bereitstellen.       |
 
 API-Entwickler forken das Repository „Publisher“ (Herausgeber) in ein Repository „Developer“ (Entwickler) und arbeiten an den Änderungen für ihre APIs. In den meisten Fällen konzentrieren sie sich auf die API-Vorlagen für ihre APIs und müssen die freigegebenen Vorlagen oder Dienstvorlagen nicht ändern.
 

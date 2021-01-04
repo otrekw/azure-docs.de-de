@@ -6,20 +6,20 @@ documentationcenter: ''
 author: curtand
 manager: mtillman
 ms.service: active-directory
-ms.workload: identity
 ms.subservice: enterprise-users
+ms.workload: identity
 ms.topic: how-to
-ms.date: 11/15/2020
+ms.date: 12/02/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e37a450ad99c37a2468e4cb73ce9f88decb628d5
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: d78a2a4e0f14d99a7a1ecada915857f59422bb58
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94647238"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96547371"
 ---
 # <a name="search-groups-and-members-preview-in-azure-active-directory"></a>Suchen von Gruppen und Mitgliedern (Vorschau) in Azure Active Directory
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2018
 ms.author: terrylan
-ms.openlocfilehash: 435cb1d52b5505f4f29bd0c31986a1f7f72208fd
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: e298cb0d1a2c510a096f8ead03f8af7e39c206a8
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94412866"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498930"
 ---
 # <a name="azure-ddos-protection---designing-resilient-solutions"></a>Azure DDoS Protection: Entwerfen robuster Lösungen
 
@@ -54,7 +54,7 @@ Wählen Sie für [Azure App Service](../../app-service/overview.md) einen [App S
 
 Hinter der tiefgehenden Verteidigung steht die Idee, dem Risiko mit verschiedenen Verteidigungsstrategien zu begegnen. Abwehrmaßnahmen in die Schichten einer Anwendung zu integrieren reduziert die Wahrscheinlichkeit eines erfolgreichen Angriffs. Sie sollten sichere Entwürfe für Ihre Anwendungen mithilfe der integrierten Funktionen der Azure-Plattform implementieren.
 
-Das Risiko von Angriffen steigt z.B. mit der Größe ( *Oberflächenbereich* ) der Anwendung. Sie können den Oberflächenbereich durch Verwendung einer Genehmigungsliste verringern, um den verfügbar gemachten IP-Adressraum und die Überwachungsports zu schließen, die im Lastenausgleichsmodul ([Azure Load Balancer](../../load-balancer/quickstart-load-balancer-standard-public-portal.md) und [Azure Application Gateway](../../application-gateway/application-gateway-create-probe-portal.md)) nicht mehr benötigt werden. Durch [Netzwerksicherheitsgruppen (NSGs)](../../virtual-network/network-security-groups-overview.md) kann die angreifbare Oberfläche ebenfalls reduziert werden.
+Das Risiko von Angriffen steigt z.B. mit der Größe (*Oberflächenbereich*) der Anwendung. Sie können den Oberflächenbereich durch Verwendung einer Genehmigungsliste verringern, um den verfügbar gemachten IP-Adressraum und die Überwachungsports zu schließen, die im Lastenausgleichsmodul ([Azure Load Balancer](../../load-balancer/quickstart-load-balancer-standard-public-portal.md) und [Azure Application Gateway](../../application-gateway/application-gateway-create-probe-portal.md)) nicht mehr benötigt werden. Durch [Netzwerksicherheitsgruppen (NSGs)](../../virtual-network/network-security-groups-overview.md) kann die angreifbare Oberfläche ebenfalls reduziert werden.
 Sie können mit [Diensttags](../../virtual-network/network-security-groups-overview.md#service-tags) und [Anwendungssicherheitsgruppen](../../virtual-network/network-security-groups-overview.md#application-security-groups) das Erstellen von Sicherheitsregeln weniger komplex machen und Netzwerksicherheit als natürliche Erweiterung der Struktur einer Anwendung konfigurieren.
 
 Sie sollten Azure-Dienste nach Möglichkeit in einem [virtuellen Netzwerk](../../virtual-network/virtual-networks-overview.md) bereitstellen. Mit dieser Methode können Dienstressourcen über private IP-Adressen kommunizieren. Standardmäßig werden für Datenverkehr von Azure-Diensten aus einem virtuellen Netzwerk öffentliche IP-Adressen als Quell-IP-Adressen verwendet. Bei Verwendung von [Dienstendpunkten](../../virtual-network/virtual-network-service-endpoints-overview.md) wechselt der Dienstdatenverkehr zu privaten Adressen im virtuellen Netzwerk als Quell-IP-Adressen, wenn aus einem virtuellen Netzwerk auf den Azure-Dienst zugegriffen wird.
@@ -113,7 +113,7 @@ Wenn die öffentliche IP-Adresse einem Angriff ausgesetzt wird, ändert sich der
 
 Es ist empfehlenswert, eine Warnung für diese Metrik zu konfigurieren. Dadurch werden Sie benachrichtigt, wenn eine aktive DDoS-Entschärfung für Ihre öffentliche IP-Adresse durchgeführt wird.
 
-Weitere Informationen finden Sie unter [Verwalten des Azure DDoS-Standardschutzs mithilfe des Azure-Portals](../../virtual-network/manage-ddos-protection.md).
+Weitere Informationen finden Sie unter [Verwalten des Azure DDoS-Standardschutzs mithilfe des Azure-Portals](../../ddos-protection/manage-ddos-protection.md).
 
 #### <a name="web-application-firewall-for-resource-attacks"></a>Web Application Firewall für Ressourcenangriffe
 
@@ -179,7 +179,7 @@ Ihr DDoS-Reaktionsteam sollte Simulationsübungen als normalen Bestandteil Ihrer
 
 ### <a name="alerts-during-an-attack"></a>Warnungen während eines Angriffs
 
-Azure DDoS Protection Standard identifiziert und entschärft DDoS-Angriffe ohne jegliches Eingreifen des Benutzers. Um benachrichtigt zu werden, wenn eine Entschärfung für eine geschützte öffentliche IP-Adresse aktiv ist, können Sie in der Metrik **einem DDoS Angriff ausgesetzt oder nicht**  eine Warnung konfigurieren. Weitere Informationen finden Sie unter [Manage Azure DDoS Protection Standard using the Azure portal (Verwalten von Azure DDoS Protection Standard über das Azure-Portal)](../../virtual-network/manage-ddos-protection.md). Sie können außerdem Warnungen für andere DDoS-Metriken erstellen, um das Ausmaß des Angriffs, den gelöschten Datenverkehr usw. zu verstehen.
+Azure DDoS Protection Standard identifiziert und entschärft DDoS-Angriffe ohne jegliches Eingreifen des Benutzers. Um benachrichtigt zu werden, wenn eine Entschärfung für eine geschützte öffentliche IP-Adresse aktiv ist, können Sie in der Metrik **einem DDoS Angriff ausgesetzt oder nicht**  eine Warnung konfigurieren. Weitere Informationen finden Sie unter [Manage Azure DDoS Protection Standard using the Azure portal (Verwalten von Azure DDoS Protection Standard über das Azure-Portal)](../../ddos-protection/manage-ddos-protection.md). Sie können außerdem Warnungen für andere DDoS-Metriken erstellen, um das Ausmaß des Angriffs, den gelöschten Datenverkehr usw. zu verstehen.
 
 #### <a name="when-to-contact-microsoft-support"></a>Wann Sie den Microsoft-Support kontaktieren sollten
 
@@ -260,7 +260,7 @@ Diese Referenzarchitektur zeigt das Konfigurieren von DDoS Protection Standard f
 
 In dieser Architektur wird der für den HDInsight-Cluster bestimmte Datenverkehr aus dem Internet an die öffentliche IP-Adresse weitergeleitet, die dem HDInsight-Gatewaylastenausgleich zugeordnet ist. Der Gatewaylastenausgleich sendet dann den Datenverkehr direkt an die Hauptknoten oder Workerknoten. Da DDoS Protection Standard im virtuellen HDInsight-Netzwerk aktiviert wird, erhalten alle öffentlichen IP-Adressen im virtuellen Netzwerk DDoS-Schutz für Schicht 3 und Schicht 4. Diese Referenzarchitektur kann mit Referenzarchitekturen für n-Schichten und mehrere Regionen kombiniert werden.
 
-Weitere Informationen zu dieser Referenzarchitektur finden Sie in der Dokumentation [Erweitern von Azure HDInsight per Azure Virtual Network](../../hdinsight/hdinsight-plan-virtual-network-deployment.md?toc=%252fazure%252fvirtual-network%252ftoc.json).
+Weitere Informationen zu dieser Referenzarchitektur finden Sie in der Dokumentation [Erweitern von Azure HDInsight per Azure Virtual Network](../../hdinsight/hdinsight-plan-virtual-network-deployment.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 
 > [!NOTE]
@@ -270,4 +270,4 @@ Weitere Informationen zu dieser Referenzarchitektur finden Sie in der Dokumentat
 
 * [Gemeinsame Verantwortung in der Cloud](shared-responsibility.md)
 * [Azure DDoS Protection-Produktseite](https://azure.microsoft.com/services/ddos-protection/)
-* [Azure DDoS Protection Standard overview (Übersicht über Azure DDoS Protection Standard)](../../virtual-network/ddos-protection-overview.md)
+* [Azure DDoS Protection Standard overview (Übersicht über Azure DDoS Protection Standard)](../../ddos-protection/ddos-protection-overview.md)

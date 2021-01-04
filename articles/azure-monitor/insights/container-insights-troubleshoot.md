@@ -4,11 +4,11 @@ description: In diesem Artikel wird beschrieben, wie Sie Probleme mit Azure Moni
 ms.topic: conceptual
 ms.date: 07/21/2020
 ms.openlocfilehash: 5727702ff973523ce7ab6400c1c7748e0584acbf
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92890359"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010587"
 ---
 # <a name="troubleshooting-azure-monitor-for-containers"></a>Problembehandlung für Azure Monitor für Container
 
@@ -26,7 +26,7 @@ Sie können diese Rolle auch manuell über das Azure-Portal zuweisen. Führen Si
 2. Klicken Sie links oben im Azure-Portal auf **Alle Dienste**. Geben Sie in der Liste mit den Ressourcen **Kubernetes** ein. Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Wählen Sie **Azure Kubernetes** aus.
 3. Wählen Sie in der Liste der Kubernetes-Cluster einen Cluster aus.
 2. Klicken Sie im linken Menü auf **Zugriffssteuerung (IAM)** .
-3. Klicken Sie auf **+ Hinzufügen** , um eine Rollenzuweisung hinzuzufügen. Wählen Sie die Rolle **Überwachungsmetriken veröffentlichen** aus, und geben Sie unterhalb des Felds **Auswählen** die Zeichenfolge **AKS** ein, um die Ergebnisse nur nach denjenigen Clusterdienstprinzipalen zu filtern, die im Abonnement definiert sind. Wählen Sie den Dienstprinzipal für diesen Cluster aus.
+3. Klicken Sie auf **+ Hinzufügen**, um eine Rollenzuweisung hinzuzufügen. Wählen Sie die Rolle **Überwachungsmetriken veröffentlichen** aus, und geben Sie unterhalb des Felds **Auswählen** die Zeichenfolge **AKS** ein, um die Ergebnisse nur nach denjenigen Clusterdienstprinzipalen zu filtern, die im Abonnement definiert sind. Wählen Sie den Dienstprinzipal für diesen Cluster aus.
 4. Wählen Sie **Speichern** aus, um das Zuweisen der Rolle abzuschließen.
 
 ## <a name="azure-monitor-for-containers-is-enabled-but-not-reporting-any-information"></a>Azure Monitor für Container ist aktiviert, meldet aber keinerlei Informationen
@@ -112,7 +112,7 @@ Pods des Azure Monitor für Container-Agents verwenden den cAdvisor-Endpunkt auf
 
 ## <a name="non-azure-kubernetes-cluster-are-not-showing-in-azure-monitor-for-containers"></a>Nicht-Azure Kubernetes-Cluster werden in Azure Monitor für Container nicht angezeigt
 
-Um den Nicht-Azure Kubernetes-Cluster in Azure Monitor für Container anzuzeigen, ist Lesezugriff für den Log Analytics-Arbeitsbereich, der diese Einblicke unterstützt, und für die Container Insights-Lösungsressource **ContainerInsights ( *Arbeitsbereich* )** erforderlich.
+Um den Nicht-Azure Kubernetes-Cluster in Azure Monitor für Container anzuzeigen, ist Lesezugriff für den Log Analytics-Arbeitsbereich, der diese Einblicke unterstützt, und für die Container Insights-Lösungsressource **ContainerInsights (*Arbeitsbereich*)** erforderlich.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -15,12 +15,12 @@ ms.custom:
 - 'Role: Technical Support'
 - fasttrack-edit
 - iot
-ms.openlocfilehash: b179bb3566cc19b8033a56348db34cd1f05cee10
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 81558526500f3c01e975d9a963b4a6a98ec6d753
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94506395"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96446408"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-disconnects-with-azure-iot-hub"></a>Überwachen, Diagnostizieren und Behandeln von Problemen bei der Trennung von Geräteverbindungen mit Azure IoT Hub
 
@@ -58,7 +58,7 @@ Weitere Informationen zum Überwachen von Geräteverbindungsereignissen mit Even
 
 * Ein Tutorial zum Sortieren von Geräteverbindungsereignissen finden Sie unter [Sortieren von Geräteverbindungsereignissen von Azure IoT Hub mithilfe von Azure Cosmos DB](iot-hub-how-to-order-connection-state-events.md).
 
-* Ein Tutorial zum Senden von E-Mail-Benachrichtigungen finden Sie in der Event Grid-Dokumentation unter [Senden von E-Mail-Benachrichtigungen zu Azure IoT Hub-Ereignissen mit Event Grid und Logic Apps](/azure/event-grid/publish-iot-hub-events-to-logic-apps).
+* Ein Tutorial zum Senden von E-Mail-Benachrichtigungen finden Sie in der Event Grid-Dokumentation unter [Senden von E-Mail-Benachrichtigungen zu Azure IoT Hub-Ereignissen mit Event Grid und Logic Apps](../event-grid/publish-iot-hub-events-to-logic-apps.md).
 
 ## <a name="azure-monitor-route-connection-events-to-logs"></a>Azure Monitor: Weiterleiten von Verbindungsereignissen an Protokolle
 
@@ -76,7 +76,7 @@ Weitere Informationen zum Weiterleiten von Protokollen an ein Ziel finden Sie un
 
 Sie können Warnungen basierend auf den Plattformmetriken einrichten, die von IoT Hub ausgegeben werden. Mit Metrikwarnungen können Sie Personen benachrichtigen, dass eine relevante Bedingung aufgetreten ist, und außerdem Aktionen auslösen, die auf diese Bedingung automatisch reagieren können.
 
-Die Metrik [*Verbundene Geräte (Vorschau)* ](monitor-iot-hub-reference.md#device-metrics) informiert Sie, wie viele Geräte mit Ihrem IoT-Hub verbunden sind. Sie können Warnungen erstellen, die ausgelöst werden sollen, wenn diese Metrik einen Schwellenwert unterschreitet:
+Die Metrik [*Verbundene Geräte (Vorschau)*](monitor-iot-hub-reference.md#device-metrics) informiert Sie, wie viele Geräte mit Ihrem IoT-Hub verbunden sind. Sie können Warnungen erstellen, die ausgelöst werden sollen, wenn diese Metrik einen Schwellenwert unterschreitet:
 
 :::image type="content" source="media/iot-hub-troubleshoot-connectivity/configure-alert-logic.png" alt-text="Einstellungen für die Warnungslogik bei der Metrik „Verbundene Geräte“.":::
 

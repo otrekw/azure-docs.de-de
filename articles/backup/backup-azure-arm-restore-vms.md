@@ -4,12 +4,12 @@ description: Wiederherstellen eines virtuellen Azure-Computers mithilfe eines Wi
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 08/02/2020
-ms.openlocfilehash: 335dfc665cc7fb9727e4eff3e65a18a2aa5c3f94
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 1c28de679bd957a472e543489a2dd15b3883aed5
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92926766"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96327184"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Wiederherstellen von Azure-VM-Daten im Azure-Portal
 
@@ -34,12 +34,12 @@ Azure Backup bietet eine Reihe von Möglichkeiten zum Wiederherstellen einer VM.
 Einige Details zu Speicherkonten:
 
 - **Virtuellen Computer erstellen:** Wenn Sie einen neuen virtuellen Computer erstellen, wird er im von Ihnen angegebenen Speicherkonto platziert.
-- **Datenträger wiederherstellen** : Wenn Sie einen Datenträger wiederherstellen, wird er in das von Ihnen angegebene Speicherkonto kopiert. Der Wiederherstellungsauftrag generiert eine Vorlage, die Sie herunterladen und verwenden können, um benutzerdefinierte VM-Einstellungen festzulegen. Diese Vorlage wird im angegebenen Speicherkonto platziert.
-- **Datenträger ersetzen** : Wenn Sie einen Datenträger auf einem vorhandenen virtuellen Computer ersetzen, erstellt Azure Backup eine Momentaufnahme von diesem Computer, bevor der Datenträger ersetzt wird. Die Momentaufnahme wird auch als Hintergrundprozess über die Datenübertragung in den Recovery Services Tresor kopiert. Nachdem die Momentaufnahmenphase abgeschlossen ist, wird der Vorgang zum Ersetzen von Datenträgern ausgelöst. Nach dem Vorgang zum Ersetzen von Datenträgern verbleiben die Datenträger der Azure-Quell-VM in der für den Vorgang angegebenen Ressourcengruppe, und die VHDs werden im angegebenen Speicherkonto gespeichert. Sie können diese VHDs und Datenträger löschen oder beibehalten.
-- **Standort des Speicherkontos** : Das Speicherkonto muss sich in derselben Region wie der Tresor befinden. Nur diese Konten werden angezeigt. Wenn es am Standort keine Speicherkonten gibt, müssen Sie ein Konto erstellen.
+- **Datenträger wiederherstellen**: Wenn Sie einen Datenträger wiederherstellen, wird er in das von Ihnen angegebene Speicherkonto kopiert. Der Wiederherstellungsauftrag generiert eine Vorlage, die Sie herunterladen und verwenden können, um benutzerdefinierte VM-Einstellungen festzulegen. Diese Vorlage wird im angegebenen Speicherkonto platziert.
+- **Datenträger ersetzen**: Wenn Sie einen Datenträger auf einem vorhandenen virtuellen Computer ersetzen, erstellt Azure Backup eine Momentaufnahme von diesem Computer, bevor der Datenträger ersetzt wird. Die Momentaufnahme wird auch als Hintergrundprozess über die Datenübertragung in den Recovery Services Tresor kopiert. Nachdem die Momentaufnahmenphase abgeschlossen ist, wird der Vorgang zum Ersetzen von Datenträgern ausgelöst. Nach dem Vorgang zum Ersetzen von Datenträgern verbleiben die Datenträger der Azure-Quell-VM in der für den Vorgang angegebenen Ressourcengruppe, und die VHDs werden im angegebenen Speicherkonto gespeichert. Sie können diese VHDs und Datenträger löschen oder beibehalten.
+- **Standort des Speicherkontos**: Das Speicherkonto muss sich in derselben Region wie der Tresor befinden. Nur diese Konten werden angezeigt. Wenn es am Standort keine Speicherkonten gibt, müssen Sie ein Konto erstellen.
 - **Storage type** (Speichertyp): Blobspeicher wird nicht unterstützt.
-- **Speicherredundanz** : Der zonenredundante Speicher (Zone Redundant Storage, ZRS) wird nicht unterstützt. Die Informationen zu Replikation und Redundanz für das Konto stehen hinter in Klammern hinter dem Kontonamen.
-- **Storage Premium** :
+- **Speicherredundanz**: Der zonenredundante Speicher (Zone Redundant Storage, ZRS) wird nicht unterstützt. Die Informationen zu Replikation und Redundanz für das Konto stehen hinter in Klammern hinter dem Kontonamen.
+- **Storage Premium**:
   - Beim Wiederherstellen von Nicht-Premium-VMs werden Storage Premium-Konten nicht unterstützt.
   - Beim Wiederherstellen von verwalteten VMs werden Storage Premium-Konten, die mit Netzwerkregeln konfiguriert wurden, nicht unterstützt.
 
@@ -64,8 +64,8 @@ Wenn dies nicht zutrifft, können Sie [einen Datenträger wiederherstellen](#res
 ## <a name="choose-a-vm-restore-configuration"></a>Auswählen einer Konfiguration für die VM-Wiederherstellung
 
 1. Wählen Sie in **Virtuellen Computer wiederherstellen** eine Wiederherstellungsoption aus:
-    - **Neue erstellen** : Verwenden Sie diese Option, wenn Sie eine neue VM erstellen möchten. Sie können eine VM mit einfachen Einstellungen erstellen oder einen Datenträger wiederherstellen und eine benutzerdefinierte VM erstellen.
-    - **Vorhandene ersetzen** : Verwenden Sie diese Option, wenn Sie Datenträger auf einer vorhandenen VM ersetzen möchten.
+    - **Neue erstellen**: Verwenden Sie diese Option, wenn Sie eine neue VM erstellen möchten. Sie können eine VM mit einfachen Einstellungen erstellen oder einen Datenträger wiederherstellen und eine benutzerdefinierte VM erstellen.
+    - **Vorhandene ersetzen**: Verwenden Sie diese Option, wenn Sie Datenträger auf einer vorhandenen VM ersetzen möchten.
 
         ![Wiederherstellen des Assistenten zur Konfiguration des virtuellen Computers](./media/backup-azure-arm-restore-vms/restore-configuration.png)
 
@@ -110,7 +110,7 @@ Nachdem der Datenträger wiederhergestellt wurde, verwenden Sie die Vorlage, die
 
 1. Wählen Sie unter **Sicherungsaufträge** den entsprechenden Wiederherstellungsauftrag aus.
 
-1. Klicken Sie unter **Wiederherstellen** auf **Vorlage bereitstellen** , um die Vorlagenbereitstellung zu initiieren.
+1. Klicken Sie unter **Wiederherstellen** auf **Vorlage bereitstellen**, um die Vorlagenbereitstellung zu initiieren.
 
     ![Drilldown des Wiederherstellungsauftrags](./media/backup-azure-arm-restore-vms/restore-job-drill-down1.png)
 
@@ -120,7 +120,7 @@ Nachdem der Datenträger wiederhergestellt wurde, verwenden Sie die Vorlage, die
 
    ![Laden der Vorlagenbereitstellung](./media/backup-azure-arm-restore-vms/edit-template1.png)
 
-1. Geben Sie die benutzerdefinierten Werte für die VM ein, akzeptieren Sie die **Geschäftsbedingungen** , und wählen Sie **Kaufen** aus.
+1. Geben Sie die benutzerdefinierten Werte für die VM ein, akzeptieren Sie die **Geschäftsbedingungen**, und wählen Sie **Kaufen** aus.
 
    ![Übermitteln der Vorlagenbereitstellung](./media/backup-azure-arm-restore-vms/submitting-template1.png)
 
@@ -203,7 +203,7 @@ Es gibt eine Reihe von häufigen Szenarien, in denen Sie möglicherweise VMs wie
 **Netzwerksicherheitsgruppe (NSG) für Netzwerkadapter oder Subnetz** | Die Azure-VM-Sicherung unterstützt die Sicherung und Wiederherstellung von NSG-Informationen auf Vnet-, Subnetz- und NIC-Ebene.
 **Zonenkonfigurierte angeheftete VMs** | Wenn Sie einen an eine Zone angehefteten virtuellen Azure-Computer (mit Azure Backup) sichern, können Sie ihn in derselben Zone wiederherstellen, der er angeheftet war. [Weitere Informationen](../availability-zones/az-overview.md)
 **Wiederherstellen eines virtuellen Computers in einer beliebigen Verfügbarkeitsgruppe** | Beim Wiederherstellen eines virtuellen Computers über das Portal gibt es keine Möglichkeit, eine Verfügbarkeitsgruppe auszuwählen. Für eine wiederhergestellte VM gibt es keine Verfügbarkeitsgruppe. Falls Sie aber die Option „Datenträger wiederherstellen“ verwenden, können Sie [eine Verfügbarkeitsgruppe](../virtual-machines/windows/tutorial-availability-sets.md) angeben, wenn Sie eine VM vom Datenträger aus mithilfe der bereitgestellten Vorlage oder von PowerShell erstellen.
-**Wiederherstellen spezieller VMs wie SQL-VMs** | Wenn Sie eine SQL-VM mithilfe der Azure-VM-Sicherung sichern und dann die Option zum Wiederherstellen der VM verwenden oder eine VM nach dem Wiederherstellen von Datenträgern erstellen, muss die neu erstellte VM beim SQL-Anbieter registriert werden. Die Vorgehensweise ist [hier](../azure-sql/virtual-machines/windows/sql-vm-resource-provider-register.md?tabs=azure-cli%2Cbash) beschrieben. Dadurch wird die wiederhergestellte VM in eine SQL-VM konvertiert.
+**Wiederherstellen spezieller VMs wie SQL-VMs** | Wenn Sie eine SQL-VM mithilfe der Azure-VM-Sicherung sichern und dann die Option zum Wiederherstellen der VM verwenden oder eine VM nach dem Wiederherstellen von Datenträgern erstellen, muss die neu erstellte VM beim SQL-Anbieter registriert werden. Die Vorgehensweise ist [hier](../azure-sql/virtual-machines/windows/sql-agent-extension-manually-register-single-vm.md?tabs=azure-cli%2cbash) beschrieben. Dadurch wird die wiederhergestellte VM in eine SQL-VM konvertiert.
 
 ### <a name="restore-domain-controller-vms"></a>Wiederherstellen von virtuellen Computern mit Domänencontroller
 
@@ -228,9 +228,9 @@ Nachdem Sie den Wiederherstellungsvorgang ausgelöst haben, erstellt der Sicheru
 
 1. Um den Fortschritt der Wiederherstellung zu überwachen, wählen Sie einen beliebigen Wiederherstellungsauftrag mit dem Status **Wird ausgeführt** aus. Damit wird die Statusanzeige mit Informationen zum Fortschritt der Wiederherstellung anzeigt:
 
-    - **Geschätzte Dauer der Wiederherstellung** : Gibt zunächst an, wieviel Zeit benötigt wird, um den Wiederherstellungsvorgang abzuschließen. Während der Vorgang weiter ausgeführt wird, verringert sich die benötigte Zeit und erreicht schließlich 0, sobald der Wiederherstellungsvorgang abgeschlossen ist.
+    - **Geschätzte Dauer der Wiederherstellung**: Gibt zunächst an, wieviel Zeit benötigt wird, um den Wiederherstellungsvorgang abzuschließen. Während der Vorgang weiter ausgeführt wird, verringert sich die benötigte Zeit und erreicht schließlich 0, sobald der Wiederherstellungsvorgang abgeschlossen ist.
     - **Prozentsatz der Wiederherstellung**. Zeigt an, wie viel Prozent des Wiederherstellungsvorgangs abgeschlossen sind.
-    - **Anzahl der übertragenen Bytes** : Wenn Sie die Wiederherstellung durch Erstellen einer neuen VM durchführen, werden die übertragenen Bytes im Verhältnis zur Gesamtzahl der zu übertragenden Bytes angezeigt.
+    - **Anzahl der übertragenen Bytes**: Wenn Sie die Wiederherstellung durch Erstellen einer neuen VM durchführen, werden die übertragenen Bytes im Verhältnis zur Gesamtzahl der zu übertragenden Bytes angezeigt.
 
 ## <a name="post-restore-steps"></a>Schritte nach der Wiederherstellung
 

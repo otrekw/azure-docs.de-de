@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 5aa6906f7f06e109342d81db6171773a68642e0c
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 76695d4d8dbc3e3a6b04b89b8f34e41b83a92963
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92342279"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965186"
 ---
 # <a name="working-with-security-policies"></a>Arbeiten mit Sicherheitsrichtlinien
 
@@ -44,7 +44,7 @@ Security Center bietet die folgenden Optionen für die Arbeit mit Sicherheitsric
 
 Zeigen Sie Ihre Sicherheitsrichtlinien in Security Center wie folgt an:
 
-1. Wählen Sie im **Security Center** -Dashboard die Option **Sicherheitsrichtlinie** .
+1. Wählen Sie im **Security Center**-Dashboard die Option **Sicherheitsrichtlinie**.
 
     :::image type="content" source="./media/security-center-policies/security-center-policy-mgt.png" alt-text="Seite „Richtlinienverwaltung“":::
 
@@ -68,7 +68,7 @@ Zeigen Sie Ihre Sicherheitsrichtlinien in Security Center wie folgt an:
 
     1. Zum Anzeigen und Bearbeiten der Standardrichtlinie wählen Sie **Effektive Richtlinie anzeigen** aus und fahren wie unten beschrieben fort. 
 
-        :::image type="content" source="./media/security-center-policies/policy-screen.png" alt-text="Seite „Richtlinienverwaltung“":::
+        :::image type="content" source="./media/security-center-policies/policy-screen.png" alt-text="Anzeige „Effektive Richtlinie“":::
 
        Auf diesem Bildschirm **Sicherheitsrichtlinie** wird die Aktion der Richtlinien widergespiegelt, die dem von Ihnen ausgewählten Abonnement oder der Verwaltungsgruppe zugewiesen sind.
        
@@ -86,10 +86,10 @@ Zeigen Sie Ihre Sicherheitsrichtlinien in Security Center wie folgt an:
 
 Sie können Sicherheitsrichtlinien über das Azure Policy-Portal, über die REST-API oder über Windows PowerShell bearbeiten.
 
-Security Center verwendet die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC). Hierbei werden integrierte Rollen bereitgestellt, die Sie Azure-Benutzern, -Gruppen und -Diensten zuweisen können. In Security Center werden den Benutzern nur Informationen zu den Ressourcen angezeigt, auf die sie Zugriff haben. Dies bedeutet, dass Benutzern die Rolle *Besitzer* , *Mitwirkender* oder *Leser* für das Abonnement der Ressource zugewiesen wird. Darüber hinaus gibt es noch zwei spezifische Security Center-Rollen:
+Security Center verwendet die rollenbasierte Zugriffssteuerung in Azure (Azure RBAC). Hierbei werden integrierte Rollen bereitgestellt, die Sie Azure-Benutzern, -Gruppen und -Diensten zuweisen können. In Security Center werden den Benutzern nur Informationen zu den Ressourcen angezeigt, auf die sie Zugriff haben. Dies bedeutet, dass Benutzern die Rolle *Besitzer*, *Mitwirkender* oder *Leser* für das Abonnement der Ressource zugewiesen wird. Darüber hinaus gibt es noch zwei spezifische Security Center-Rollen:
 
-- **Sicherheitsleseberechtigter** : Verfügt über Rechte zum Anzeigen von Security Center-Elementen, z. B. Empfehlungen, Warnungen, Richtlinie und Integrität. Änderungen können nicht vorgenommen werden.
-- **Sicherheitsadministrator** : Verfügt über die gleichen Rechte wie *Sicherheitsleseberechtigter* . Kann außerdem die Sicherheitsrichtlinie aktualisieren und Warnungen schließen.
+- **Sicherheitsleseberechtigter**: Verfügt über Rechte zum Anzeigen von Security Center-Elementen, z. B. Empfehlungen, Warnungen, Richtlinie und Integrität. Änderungen können nicht vorgenommen werden.
+- **Sicherheitsadministrator**: Verfügt über die gleichen Rechte wie *Sicherheitsleseberechtigter*. Kann außerdem die Sicherheitsrichtlinie aktualisieren und Warnungen schließen.
 
 
 ## <a name="disable-security-policies-and-disable-recommendations"></a>Deaktivieren von Sicherheitsrichtlinien und Empfehlungen

@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: 9d5ddb508740cf5fec670d258926419512e3d549
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: ac2c9cb1710c4b4f67ba2aa06707d08cc45d4907
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129829"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96459243"
 ---
 # <a name="azure-sql-database-output-from-azure-stream-analytics"></a>Azure SQL-Datenbank aus Azure Stream Analytics
 
@@ -35,11 +35,11 @@ Die folgende Tabelle enthält die Eigenschaftennamen und die entsprechenden Besc
 |Erben des Partitionsschemas| Eine Option zum Erben des Partitionierungsschemas Ihres vorherigen Abfrageschrittes, um die vollständig parallele Topologie mit mehreren in die Tabelle Schreibenden zu aktivieren. Weitere Informationen finden Sie unter [Azure Stream Analytics-Ausgabe an Azure SQL-Datenbank](stream-analytics-sql-output-perf.md).|
 |Max Batch Count| Der empfohlene obere Grenzwert für die Anzahl der Sätze, die mit jeder Transaktion zum Masseneinfügen gesendet werden.|
 
-Es gibt zwei Adapter, die eine Ausgabe von Azure Stream Analytics an Azure Synapse Analytics (früher SQL Data Warehouse) ermöglichen: SQL-Datenbank und Azure Synapse. Es wird empfohlen, den Azure Synapse Analytics-Adapter anstelle des SQL-Datenbank-Adapters auszuwählen, wenn eine der folgenden Bedingungen zutrifft:
+Es gibt zwei Adapter, die eine Ausgabe von Azure Stream Analytics an Azure Synapse Analytics ermöglichen: SQL-Datenbank und Azure Synapse. Es wird empfohlen, den Azure Synapse Analytics-Adapter anstelle des SQL-Datenbank-Adapters auszuwählen, wenn eine der folgenden Bedingungen zutrifft:
 
-* **Durchsatz** : Wenn der erwartete Durchsatz jetzt oder in Zukunft über 10 MB/s liegt, verwenden Sie die Azure Synapse-Ausgabeoption, um eine bessere Leistung zu erzielen.
+* **Durchsatz**: Wenn der erwartete Durchsatz jetzt oder in Zukunft über 10 MB/s liegt, verwenden Sie die Azure Synapse-Ausgabeoption, um eine bessere Leistung zu erzielen.
 
-* **Eingabepartitionen** : Wenn Sie über acht oder mehr Eingabepartitionen verfügen, verwenden Sie die Azure Synapse-Ausgabeoption, um das horizontale Skalieren zu verbessern.
+* **Eingabepartitionen**: Wenn Sie über acht oder mehr Eingabepartitionen verfügen, verwenden Sie die Azure Synapse-Ausgabeoption, um das horizontale Skalieren zu verbessern.
 
 ## <a name="partitioning"></a>Partitionierung
 

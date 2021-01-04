@@ -14,11 +14,11 @@ ms.workload: na
 ms.date: 11/04/2020
 ms.author: memildin
 ms.openlocfilehash: 0a487f778693e87e680033edd0d80c55d1a85f66
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348626"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013784"
 ---
 # <a name="sql-information-protection-policy-in-azure-security-center"></a>SQL Information Protection-Richtlinie in Azure Security Center
  
@@ -26,8 +26,8 @@ Der [Mechanismus zur Datenermittlung und -klassifizierung](../azure-sql/database
 
 Der Klassifizierungsmechanismus basiert auf den folgenden beiden Elementen:
 
-- **Bezeichnungen** : Die wichtigsten Klassifizierungsattribute zum Definieren der *Vertraulichkeitsstufe* der in der Spalte gespeicherten Daten. 
-- **Informationstypen** : Bieten zusätzliche Granularität für den *Typ* der in der Spalte gespeicherten Daten.
+- **Bezeichnungen**: Die wichtigsten Klassifizierungsattribute zum Definieren der *Vertraulichkeitsstufe* der in der Spalte gespeicherten Daten. 
+- **Informationstypen**: Bieten zusätzliche Granularität für den *Typ* der in der Spalte gespeicherten Daten.
 
 Die Information Protection-Richtlinienoptionen in Security Center bieten vordefinierte Bezeichnungen und Informationstypen, die als Standardwerte für die Klassifizierungs-Engine dienen. Sie können die Richtlinie wie unten beschrieben an die Anforderungen Ihrer Organisation anpassen.
 
@@ -116,7 +116,7 @@ Gehen Sie zum Verwalten und Anpassen von Informationstypen folgendermaßen vor:
     > [!TIP]
     > Sie können integrierte Typen jedoch weder löschen noch ihre Namen ändern. 
 
-1. **Informationstypen** werden in aufsteigender Reihenfolge der Ermittlung aufgeführt, d.h., die Typen, die weiter oben in der Liste stehen, werden bei der Suche nach Übereinstimmungen bevorzugt. Um die Rangfolge zwischen den Informationstypen zu ändern, ziehen Sie die Typen an die entsprechende Position in der Tabelle oder verwenden die Schaltflächen **Nach oben verschieben** und **Nach unten verschieben** , um die Reihenfolge zu ändern. 
+1. **Informationstypen** werden in aufsteigender Reihenfolge der Ermittlung aufgeführt, d.h., die Typen, die weiter oben in der Liste stehen, werden bei der Suche nach Übereinstimmungen bevorzugt. Um die Rangfolge zwischen den Informationstypen zu ändern, ziehen Sie die Typen an die entsprechende Position in der Tabelle oder verwenden die Schaltflächen **Nach oben verschieben** und **Nach unten verschieben**, um die Reihenfolge zu ändern. 
 
 1. Wenn Sie fertig sind, klicken Sie auf **OK**.
 

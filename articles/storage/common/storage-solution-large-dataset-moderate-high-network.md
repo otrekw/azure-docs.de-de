@@ -8,12 +8,12 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: alkohli
-ms.openlocfilehash: 962bb7a4484f28d52ffd4f0cae985140ec2f0d28
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: f1ded1ce87df1cb57960bbc99cd950ed7b3f97ee
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92792921"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96573934"
 ---
 # <a name="data-transfer-for-large-datasets-with-moderate-to-high-network-bandwidth"></a>Datenübertragung für große Datasets mit mittlerer bis hoher Netzwerkbandbreite
  
@@ -39,8 +39,8 @@ Schätzen Sie anhand der folgenden Tabelle die Zeit, und wählen Sie danach zwis
 
 - Wenn die Netzwerkübertragung als zu langsam eingestuft wird, sollten Sie ein physisches Gerät verwenden. Die empfohlenen Optionen in diesem Fall sind die Offlineübertragungsgeräte aus der Azure Data Box-Produktfamilie oder Azure Import/Export mit eigenen Datenträgern.
 
-    - **Azure Data Box-Produktfamilie für Offlineübertragungen** : Verwenden Sie von Microsoft bereitgestellte Data Box-Geräte, um große Datenmengen in Azure zu übertragen, wenn Sie aufgrund von Zeit, Netzwerkverfügbarkeit oder Kosten eingeschränkt sind. Kopieren Sie lokale Daten mithilfe von Tools wie Robocopy. Abhängig von der für die Übertragung vorgesehenen Datengröße können Sie zwischen Data Box Disk, Data Box oder Data Box Heavy wählen.
-    - **Azure Import/Export** : Verwenden Sie den Azure Import/Export-Dienst, indem Sie Ihre eigenen Festplattenlaufwerke versenden, um große Datenmengen sicher in Azure Blob Storage und Azure Files zu importieren. Sie können diesen Dienst auch zum Übertragen von Daten aus Azure Blob Storage auf Festplattenlaufwerke und zum Versand an lokale Standorte nutzen.
+    - **Azure Data Box-Produktfamilie für Offlineübertragungen**: Verwenden Sie von Microsoft bereitgestellte Data Box-Geräte, um große Datenmengen in Azure zu übertragen, wenn Sie aufgrund von Zeit, Netzwerkverfügbarkeit oder Kosten eingeschränkt sind. Kopieren Sie lokale Daten mithilfe von Tools wie Robocopy. Abhängig von der für die Übertragung vorgesehenen Datengröße können Sie zwischen Data Box Disk, Data Box oder Data Box Heavy wählen.
+    - **Azure Import/Export**: Verwenden Sie den Azure Import/Export-Dienst, indem Sie Ihre eigenen Festplattenlaufwerke versenden, um große Datenmengen sicher in Azure Blob Storage und Azure Files zu importieren. Sie können diesen Dienst auch zum Übertragen von Daten aus Azure Blob Storage auf Festplattenlaufwerke und zum Versand an lokale Standorte nutzen.
 
 - Wenn die Netzwerkübertragung als sinnvoll erachtet wird, können Sie eines der folgenden Tools verwenden, die unter [Hohe Netzwerkbandbreite](#high-network-bandwidth) beschrieben werden.
 
@@ -49,10 +49,10 @@ Schätzen Sie anhand der folgenden Tabelle die Zeit, und wählen Sie danach zwis
 
 Wenn die verfügbare Netzwerkbandbreite hoch ist, verwenden Sie eines der folgenden Tools.
 
-- **AzCopy** : Verwenden Sie dieses Befehlszeilentool, um Daten einfach und schnell in und aus Azure Blobs, Files und Table Storage mit optimaler Leistung zu kopieren. AzCopy unterstützt Nebenläufigkeit und Parallelität sowie die Fortsetzung unterbrochener Kopiervorgänge.
-- **Azure Storage REST-APIs/SDKs** : Beim Erstellen einer Anwendung können Sie die Anwendung mithilfe von Azure Storage REST-APIs entwickeln und die in mehreren Sprachen angebotenen Azure SDKs verwenden.
-- **Azure Data Box-Produktfamilie für Onlineübertragungen** : Data Box Edge und Data Box Gateway sind Onlinenetzwerkgeräte, die Daten in und aus Azure übertragen können. Verwenden Sie das physische Data Box Edge-Gerät, wenn gleichzeitig eine kontinuierliche Erfassung und Vorverarbeitung der Daten vor dem Hochladen erforderlich ist. Data Box Gateway ist eine virtuelle Version des Geräts mit den gleichen Datenübertragungsfunktionen. In jedem Fall wird die Datenübertragung vom Gerät verwaltet.
-- **Azure Data Factory** : Data Factory sollte verwendet werden, um einen Übertragungsvorgang aufzuskalieren, und wenn es Bedarf für Orchestrierung und Überwachungsfunktionen auf Unternehmensebene gibt. Verwenden Sie Data Factory, um regelmäßig Dateien zwischen mehreren Azure-Diensten, lokal oder in einer Kombination aus beidem zu übertragen. Mit Data Factory können Sie datengesteuerte Workflows (sogenannte Pipelines) erstellen und planen, die Daten aus unterschiedlichen Datenspeichern erfassen und die Datenbewegung und Datentransformation automatisieren.
+- **AzCopy**: Verwenden Sie dieses Befehlszeilentool, um Daten einfach und schnell in und aus Azure Blobs, Files und Table Storage mit optimaler Leistung zu kopieren. AzCopy unterstützt Nebenläufigkeit und Parallelität sowie die Fortsetzung unterbrochener Kopiervorgänge.
+- **Azure Storage REST-APIs/SDKs**: Beim Erstellen einer Anwendung können Sie die Anwendung mithilfe von Azure Storage REST-APIs entwickeln und die in mehreren Sprachen angebotenen Azure SDKs verwenden.
+- **Azure Data Box-Produktfamilie für Onlineübertragungen**: Data Box Edge und Data Box Gateway sind Onlinenetzwerkgeräte, die Daten in und aus Azure übertragen können. Verwenden Sie das physische Data Box Edge-Gerät, wenn gleichzeitig eine kontinuierliche Erfassung und Vorverarbeitung der Daten vor dem Hochladen erforderlich ist. Data Box Gateway ist eine virtuelle Version des Geräts mit den gleichen Datenübertragungsfunktionen. In jedem Fall wird die Datenübertragung vom Gerät verwaltet.
+- **Azure Data Factory**: Data Factory sollte verwendet werden, um einen Übertragungsvorgang aufzuskalieren, und wenn es Bedarf für Orchestrierung und Überwachungsfunktionen auf Unternehmensebene gibt. Verwenden Sie Data Factory, um regelmäßig Dateien zwischen mehreren Azure-Diensten, lokal oder in einer Kombination aus beidem zu übertragen. Mit Data Factory können Sie datengesteuerte Workflows (sogenannte Pipelines) erstellen und planen, die Daten aus unterschiedlichen Datenspeichern erfassen und die Datenbewegung und Datentransformation automatisieren.
 
 ## <a name="comparison-of-key-capabilities"></a>Vergleich der Schlüsselfunktionen
 
@@ -102,7 +102,7 @@ Bei Nutzung von Onlinedatenübertragung verwenden Sie die Tabelle im folgenden A
     - [Übertragen von Daten mit Data Box](../../databox/data-box-quickstart-portal.md).
 - [Übertragen von Daten mit AzCopy](./storage-use-azcopy-v10.md).
 - Informationen zum
-    - [Übertragen von Daten mit Data Box Gateway](../../databox-online/data-box-gateway-deploy-add-shares.md)
+    - [Übertragen von Daten mit Data Box Gateway](../../databox-gateway/data-box-gateway-deploy-add-shares.md)
     - [Transformieren von Daten mit Data Box Edge vor dem Senden an Azure](../../databox-online/azure-stack-edge-deploy-configure-compute.md).
 - [Informationen zum Übertragen von Daten mit Azure Data Factory](../../data-factory/quickstart-create-data-factory-portal.md).
 - Verwenden der REST-APIs zum Übertragen von Daten

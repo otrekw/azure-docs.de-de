@@ -10,13 +10,13 @@ ms.reviewer: larryfr
 ms.author: peterlu
 author: peterclu
 ms.date: 10/23/2020
-ms.custom: contperfq4, tracking-python, contperfq1, devx-track-azurecli
-ms.openlocfilehash: 6508db654cd27ca4b3844f6037f13fb504173e11
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1, devx-track-azurecli
+ms.openlocfilehash: ba5dd0ccc06a443378f87cfb92da76616ad67263
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93361164"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97029514"
 ---
 # <a name="secure-an-azure-machine-learning-inferencing-environment-with-virtual-networks"></a>Schützen einer Azure Machine Learning-Rückschlussumgebung mit virtuellen Netzwerken
 
@@ -115,6 +115,8 @@ aks_target = ComputeTarget.create(workspace=ws,
 
 Nach Abschluss des Erstellungsprozesses können Sie Rückschlüsse für einen AKS-Cluster hinter einem virtuellen Netzwerk ziehen oder das Modell bewerten. Weitere Informationen finden Sie unter [Bereitstellen im AKS](how-to-deploy-and-where.md).
 
+Weitere Informationen zur Verwendung der rollenbasierten Zugriffssteuerung mit Kubernetes finden Sie unter [Verwenden von Azure RBAC für die Kubernetes-Autorisierung](../aks/manage-azure-rbac.md).
+
 ## <a name="network-contributor-role"></a>Rolle „Netzwerkmitwirkender“
 
 > [!IMPORTANT]
@@ -122,7 +124,7 @@ Nach Abschluss des Erstellungsprozesses können Sie Rückschlüsse für einen AK
 >
 > Um die Identität als Netzwerkmitwirkenden hinzuzufügen, führen Sie die folgenden Schritte aus:
 
-1. Verwenden Sie zum Ermitteln der ID des Dienstprinzipals oder der verwalteten Identität für AKS die folgenden Azure CLI Befehle. Ersetzen Sie `<aks-cluster-name>` durch den Namen des Clusters. Ersetzen Sie `<resource-group-name>` durch den Namen der Ressourcengruppe, die den _AKS-Cluster enthält_ :
+1. Verwenden Sie zum Ermitteln der ID des Dienstprinzipals oder der verwalteten Identität für AKS die folgenden Azure CLI Befehle. Ersetzen Sie `<aks-cluster-name>` durch den Namen des Clusters. Ersetzen Sie `<resource-group-name>` durch den Namen der Ressourcengruppe, die den _AKS-Cluster enthält_:
 
     ```azurecli-interactive
     az aks show -n <aks-cluster-name> --resource-group <resource-group-name> --query servicePrincipalProfile.clientId
@@ -134,7 +136,7 @@ Nach Abschluss des Erstellungsprozesses können Sie Rückschlüsse für einen AK
     az aks show -n <aks-cluster-name> --resource-group <resource-group-name> --query identity.principalId
     ```
 
-1. Verwenden Sie den folgenden Befehl, um die ID der Ressourcengruppe zu ermitteln, die das virtuelle Netzwerk enthält. Ersetzen Sie `<resource-group-name>` durch den Namen der Ressourcengruppe, die das _virtuelle Azure-Netzwerk enthält_ :
+1. Verwenden Sie den folgenden Befehl, um die ID der Ressourcengruppe zu ermitteln, die das virtuelle Netzwerk enthält. Ersetzen Sie `<resource-group-name>` durch den Namen der Ressourcengruppe, die das _virtuelle Azure-Netzwerk enthält_:
 
     ```azurecli-interactive
     az group show -n <resource-group-name> --query id
@@ -151,8 +153,8 @@ Weitere Informationen zur Verwendung des internen Lastenausgleichs mit AKS finde
 
 Es gibt zwei Ansätze, um den Datenverkehr zwischen AKS-Cluster und virtuellem Netzwerk zu isolieren:
 
-* __Privater AKS-Cluster__ : Bei diesem Ansatz wird Azure Private Link zum Schützen der Kommunikation mit dem Cluster für Bereitstellungs- und Verwaltungsvorgänge verwendet.
-* __Interner AKS-Lastenausgleich__ : Bei diesem Ansatz wird der Endpunkt für Ihre Bereitstellungen in AKS konfiguriert, um eine private IP-Adresse innerhalb des virtuellen Netzwerks zu verwenden.
+* __Privater AKS-Cluster__: Bei diesem Ansatz wird Azure Private Link zum Schützen der Kommunikation mit dem Cluster für Bereitstellungs- und Verwaltungsvorgänge verwendet.
+* __Interner AKS-Lastenausgleich__: Bei diesem Ansatz wird der Endpunkt für Ihre Bereitstellungen in AKS konfiguriert, um eine private IP-Adresse innerhalb des virtuellen Netzwerks zu verwenden.
 
 > [!WARNING]
 > Der interne Lastenausgleich funktioniert nicht mit einem AKS-Cluster, der Kubenet verwendet. Wenn Sie gleichzeitig einen internen Lastenausgleich und einen privaten AKS-Cluster verwenden möchten, konfigurieren Sie Ihren privaten AKS-Cluster mit Azure Container Networking Interface (CNI). Weitere Informationen finden Sie unter [Konfigurieren von Azure CNI-Netzwerken in Azure Kubernetes Service](../aks/configure-azure-cni.md).
@@ -250,7 +252,9 @@ aks_target.wait_for_completion(show_output = True)
 Azure Container Instances werden beim Bereitstellen eines Modells dynamisch erstellt. Damit Azure Machine Learning ACIs innerhalb des virtuellen Netzwerks erstellen kann, müssen Sie __Subnetzdelegierung__ für das von der Bereitstellung verwendete Subnetz aktivieren.
 
 > [!WARNING]
-> Wenn Sie Azure Container Instances in einem virtuellen Netzwerk verwenden, muss sich das virtuelle Netzwerk in derselben Ressourcengruppe wie der Azure Machine Learning-Arbeitsbereich befinden.
+> Wenn Sie Azure Container Instances in einem virtuellen Netzwerk verwenden, muss das virtuelle Netzwerk folgende Anforderungen erfüllen:
+> * Es muss sich in der gleichen Ressourcengruppe befinden wie Ihr Azure Machine Learning-Arbeitsbereich.
+> * Wenn Ihr Arbeitsbereich über einen __privaten Endpunkt__ verfügt, muss für Azure Container Instances das gleiche virtuelle Netzwerk verwendet werden wie von dem privaten Endpunkt des Arbeitsbereichs.
 >
 > Wenn Sie Azure Container Instances innerhalb des virtuellen Netzwerks verwenden, darf sich die Azure Container Registry (ACR) für Ihren Arbeitsbereich nicht ebenfalls im virtuellen Netzwerk befinden.
 

@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 11/06/2020
 ms.author: aahi
-ms.openlocfilehash: 6ebc1831b990b540bcb9a3856c380c28142af536
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 2f03746a6a5afc388db2beeff84b3ab4cbd393b5
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357112"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95014593"
 ---
 # <a name="install-and-run-the-spatial-analysis-container-preview"></a>Installieren und Ausführen des Containers für räumliche Analyse (Vorschau)
 
@@ -34,7 +34,7 @@ Zum Ausführen des Containers für räumliche Analyse benötigen Sie ein Compute
 
 #### <a name="azure-stack-edge-device"></a>[Azure Stack Edge-Gerät](#tab/azure-stack-edge)
 
-Azure Stack Edge ist eine Hardware-as-a-Service-Lösung und ein KI-fähiges Edgecomputinggerät mit Netzwerkfunktionen für die Datenübertragung. Eine ausführliche Anleitung zur Vorbereitung und Einrichtung finden Sie in der [Azure Stack Edge-Dokumentation](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-deploy-prep).
+Azure Stack Edge ist eine Hardware-as-a-Service-Lösung und ein KI-fähiges Edgecomputinggerät mit Netzwerkfunktionen für die Datenübertragung. Eine ausführliche Anleitung zur Vorbereitung und Einrichtung finden Sie in der [Azure Stack Edge-Dokumentation](../../databox-online/azure-stack-edge-deploy-prep.md).
 
 #### <a name="desktop-machine"></a>[Desktopcomputer](#tab/desktop-machine)
 
@@ -59,7 +59,7 @@ In diesem Artikel führen Sie den Download und die Installation der folgenden So
 * [NVIDIA-Grafiktreiber](https://docs.nvidia.com/datacenter/tesla/tesla-installation-notes/index.html) und [NVIDIA CUDA-Toolkit](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html)
 * Konfigurationen für [NVIDIA MPS](https://docs.nvidia.com/deploy/pdf/CUDA_Multi_Process_Service_Overview.pdf) (Multi-Process Service, Multiprozessdienst)
 * [Docker CE](https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-docker-engine---community-1) und [NVIDIA-Docker2](https://github.com/NVIDIA/nvidia-docker) 
-* [Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux)-Runtime
+* [Azure IoT Edge](../../iot-edge/how-to-install-iot-edge.md)-Runtime
 
 ---
 
@@ -85,7 +85,7 @@ Sie können den Container nicht ausführen, wenn Ihr Azure-Abonnement nicht gene
 
 ## <a name="set-up-the-host-computer"></a>Einrichten des Hostcomputers
 
-Wir empfehlen Ihnen, ein Azure Stack Edge-Gerät für Ihren Hostcomputer zu verwenden. Klicken Sie auf **Desktopcomputer** , wenn Sie ein anderes Gerät konfigurieren.
+Wir empfehlen Ihnen, ein Azure Stack Edge-Gerät für Ihren Hostcomputer zu verwenden. Klicken Sie auf **Desktopcomputer**, wenn Sie ein anderes Gerät konfigurieren.
 
 #### <a name="azure-stack-edge-device"></a>[Azure Stack Edge-Gerät](#tab/azure-stack-edge)
 
@@ -93,7 +93,7 @@ Wir empfehlen Ihnen, ein Azure Stack Edge-Gerät für Ihren Hostcomputer zu verw
  
 Bei der räumlichen Analyse werden die Computefeatures von Azure Stack Edge zum Ausführen einer KI-Lösung verwendet. Stellen Sie Folgendes sicher, um die Computefeatures zu aktivieren: 
 
-* Sie haben Ihr Azure Stack Edge-Gerät [verbunden und aktiviert](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-deploy-connect-setup-activate). 
+* Sie haben Ihr Azure Stack Edge-Gerät [verbunden und aktiviert](../../databox-online/azure-stack-edge-deploy-connect-setup-activate.md). 
 * Sie verfügen über ein Windows-Clientsystem mit PowerShell 5.0 oder höher, um auf das Gerät zuzugreifen.  
 * Zum Bereitstellen eines Kubernetes-Clusters müssen Sie Ihr Azure Stack Edge-Gerät über die **lokale Benutzeroberfläche** im [Azure-Portal](https://portal.azure.com/) konfigurieren: 
   1. Aktivieren Sie das Computefeature auf Ihrem Azure Stack Edge-Gerät. Navigieren Sie zum Aktivieren von Compute auf der Weboberfläche Ihres Geräts zur Seite **Compute**. 
@@ -117,7 +117,7 @@ Wenn die Edge-Computerolle auf dem Edge-Gerät eingerichtet ist, werden zwei Ger
 
 > [!NOTE]
 > * Derzeit wird nur die Linux-Plattform für IoT Edge-Geräte unterstützt. Informationen zur Problembehandlung für das Azure Stack Edge-Gerät finden Sie im Artikel [Protokollierung und Problembehandlung](spatial-analysis-logging.md).
-> * Weitere Informationen zum Konfigurieren eines IoT Edge-Geräts für die Kommunikation über einen Proxyserver finden Sie unter [Konfigurieren eines IoT Edge-Geräts für die Kommunikation über einen Proxyserver](https://docs.microsoft.com/azure/iot-edge/how-to-configure-proxy-support#azure-portal).
+> * Weitere Informationen zum Konfigurieren eines IoT Edge-Geräts für die Kommunikation über einen Proxyserver finden Sie unter [Konfigurieren eines IoT Edge-Geräts für die Kommunikation über einen Proxyserver](../../iot-edge/how-to-configure-proxy-support.md#azure-portal).
 
 ###  <a name="enable-mps-on-azure-stack-edge"></a>Aktivieren von MPS auf Azure Stack Edge 
 
@@ -129,7 +129,7 @@ Wenn die Edge-Computerolle auf dem Edge-Gerät eingerichtet ist, werden zwei Ger
     winrm quickconfig
     ```
     
-    Falls Warnungen zu einer Firewallausnahme angezeigt werden, sollten Sie Ihren Netzwerkverbindungstyp überprüfen und in der Dokumentation zur [Windows-Remoteverwaltung](https://docs.microsoft.com/windows/win32/winrm/installation-and-configuration-for-windows-remote-management) nachsehen.
+    Falls Warnungen zu einer Firewallausnahme angezeigt werden, sollten Sie Ihren Netzwerkverbindungstyp überprüfen und in der Dokumentation zur [Windows-Remoteverwaltung](/windows/win32/winrm/installation-and-configuration-for-windows-remote-management) nachsehen.
 
 3. Weisen Sie der IP-Adresse des Geräts eine Variable zu. 
     
@@ -246,7 +246,7 @@ sudo systemctl --now enable nvidia-mps.service
 
 ## <a name="configure-azure-iot-edge-on-the-host-computer"></a>Konfigurieren von Azure IoT Edge auf dem Hostcomputer
 
-Erstellen Sie zum Bereitstellen des Containers für räumliche Analyse auf dem Hostcomputer eine Instanz des Diensts [Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-create-through-portal), indem Sie den Standard- (S1) oder Free-Tarif (F0) verwenden. Wenn Ihr Hostcomputer vom Typ „Azure Stack Edge“ ist, sollten Sie dasselbe Abonnement und dieselbe Ressourcengruppe verwenden, das bzw. die von der Azure Stack Edge-Ressource verwendet wird.
+Erstellen Sie zum Bereitstellen des Containers für räumliche Analyse auf dem Hostcomputer eine Instanz des Diensts [Azure IoT Hub](../../iot-hub/iot-hub-create-through-portal.md), indem Sie den Standard- (S1) oder Free-Tarif (F0) verwenden. Wenn Ihr Hostcomputer vom Typ „Azure Stack Edge“ ist, sollten Sie dasselbe Abonnement und dieselbe Ressourcengruppe verwenden, das bzw. die von der Azure Stack Edge-Ressource verwendet wird.
 
 Verwenden Sie die Azure CLI, um eine Instanz von Azure IoT Hub zu erstellen. Ersetzen Sie die Parameter nach Bedarf. Alternativ können Sie die Instanz von Azure IoT Hub auch über das [Azure-Portal](https://portal.azure.com/) erstellen.
 
@@ -261,7 +261,7 @@ az iot hub create --name "test-iot-hub-123" --sku S1 --resource-group "test-reso
 az iot hub device-identity create --hub-name "test-iot-hub-123" --device-id "my-edge-device" --edge-enabled
 ```
 
-Wenn es sich beim Hostcomputer nicht um ein Azure Stack Edge-Gerät handelt, müssen Sie [Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux) Version 1.0.9 installieren. Führen Sie die folgenden Schritte aus, um die richtige Version herunterzuladen:
+Wenn es sich beim Hostcomputer nicht um ein Azure Stack Edge-Gerät handelt, müssen Sie [Azure IoT Edge](../../iot-edge/how-to-install-iot-edge.md) Version 1.0.9 installieren. Führen Sie die folgenden Schritte aus, um die richtige Version herunterzuladen:
 
 Ubuntu Server 18.04:
 ```bash
@@ -292,7 +292,7 @@ Installieren Sie das Release 1.0.9:
 sudo apt-get install iotedge=1.0.9* libiothsm-std=1.0.9*
 ```
 
-Registrieren Sie den Hostcomputer als Nächstes als IoT Edge-Gerät auf Ihrer IoT Hub-Instanz, indem Sie eine [Verbindungszeichenfolge](https://docs.microsoft.com/azure/iot-edge/how-to-register-device#register-in-the-azure-portal) verwenden.
+Registrieren Sie den Hostcomputer als Nächstes als IoT Edge-Gerät auf Ihrer IoT Hub-Instanz, indem Sie eine [Verbindungszeichenfolge](../../iot-edge/how-to-manual-provision-symmetric-key.md?view=iotedge-2018-06) verwenden.
 
 Sie müssen das IoT Edge-Gerät mit Ihrer Azure IoT Hub-Instanz verbinden. Sie müssen die Verbindungszeichenfolge von dem IoT Edge-Gerät kopieren, das Sie weiter oben erstellt haben. Alternativ können Sie auch den unten angegebenen Befehl über die Azure CLI ausführen.
 
@@ -306,7 +306,7 @@ az iot hub device-identity show-connection-string --device-id my-edge-device --h
 sudo systemctl restart iotedge
 ```
 
-Stellen Sie den Container für räumliche Analyse über das [Azure-Portal](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-modules-portal) oder die [Azure CLI](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-modules-cli) auf dem Hostcomputer als IoT-Modul bereit. Legen Sie bei Verwendung des Portals den Image-URI auf den Speicherort Ihrer Azure Container Registry-Instanz fest. 
+Stellen Sie den Container für räumliche Analyse über das [Azure-Portal](../../iot-edge/how-to-deploy-modules-portal.md) oder die [Azure CLI](../../iot-edge/how-to-deploy-modules-cli.md) auf dem Hostcomputer als IoT-Modul bereit. Legen Sie bei Verwendung des Portals den Image-URI auf den Speicherort Ihrer Azure Container Registry-Instanz fest. 
 
 Führen Sie die unten angegebenen Schritte aus, um den Container mit der Azure CLI bereitzustellen.
 
@@ -335,7 +335,7 @@ In der folgenden Tabelle sind die verschiedenen Umgebungsvariablen aufgeführt, 
 > [!IMPORTANT]
 > Die Optionen `Eula`, `Billing` und `ApiKey` müssen angegeben werden, um den Container auszuführen, andernfalls wird der Container nicht gestartet.  Weitere Informationen finden Sie unter [Abrechnung](#billing).
 
-Nachdem Sie das Bereitstellungsmanifest für [Azure Stack Edge-Geräte](https://go.microsoft.com/fwlink/?linkid=2142179) oder [einen Desktopcomputer](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json) mit Ihren eigenen Einstellungen und Ihrer Auswahl von Vorgängen aktualisiert haben, können Sie den unten dargestellten [Azure CLI](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-modules-cli)-Befehl verwenden, um den Container auf dem Hostcomputer als IoT Edge-Modul bereitzustellen.
+Nachdem Sie das Bereitstellungsmanifest für [Azure Stack Edge-Geräte](https://go.microsoft.com/fwlink/?linkid=2142179) oder [einen Desktopcomputer](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json) mit Ihren eigenen Einstellungen und Ihrer Auswahl von Vorgängen aktualisiert haben, können Sie den unten dargestellten [Azure CLI](../../iot-edge/how-to-deploy-modules-cli.md)-Befehl verwenden, um den Container auf dem Hostcomputer als IoT Edge-Modul bereitzustellen.
 
 ```azurecli
 az login
@@ -366,14 +366,14 @@ Sie müssen die [Vorgänge der räumlichen Analyse](spatial-analysis-operations.
 
 ## <a name="redeploy-or-delete-the-deployment"></a>Erneutes Bereitstellen oder Löschen der Bereitstellung
 
-Wenn Sie die Bereitstellung aktualisieren müssen, müssen Sie sicherstellen, dass Ihre vorherigen Bereitstellungen erfolgreich waren. Alternativ müssen Sie die Bereitstellungen von IoT Edge-Geräten löschen, die nicht erfolgreich abgeschlossen werden konnten. Andernfalls werden diese Bereitstellungen fortgesetzt, und das System befindet sich in einem Fehlerzustand. Sie können das Azure-Portal oder die [Azure CLI](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment) verwenden.
+Wenn Sie die Bereitstellung aktualisieren müssen, müssen Sie sicherstellen, dass Ihre vorherigen Bereitstellungen erfolgreich waren. Alternativ müssen Sie die Bereitstellungen von IoT Edge-Geräten löschen, die nicht erfolgreich abgeschlossen werden konnten. Andernfalls werden diese Bereitstellungen fortgesetzt, und das System befindet sich in einem Fehlerzustand. Sie können das Azure-Portal oder die [Azure CLI](/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment) verwenden.
 
 ## <a name="use-the-output-generated-by-the-container"></a>Verwenden der vom Container generierten Ausgabe
 
 Falls Sie die vom Container generierte Ausgabe nutzen möchten, helfen Ihnen die Informationen in den folgenden Artikeln weiter:
 
-*   Verwenden Sie das Azure Event Hub-SDK für Ihre gewählte Programmiersprache, um eine Verbindung mit dem Azure IoT Hub-Endpunkt herstellen und die Ereignisse empfangen zu können. Weitere Informationen finden Sie unter [Lesen von Nachrichten, die von Geräten an die Cloud gesendet werden, vom integrierten Endpunkt](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-read-builtin). 
-*   Richten Sie das Nachrichtenrouting auf Ihrer Azure IoT Hub-Instanz ein, um Ereignisse an andere Endpunkte zu senden, die Ereignisse unter Azure Blob Storage zu speichern usw. Weitere Informationen finden Sie unter [Verwenden des IoT Hub-Nachrichtenroutings zum Senden von D2C-Nachrichten an verschiedene Endpunkte](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c). 
+*   Verwenden Sie das Azure Event Hub-SDK für Ihre gewählte Programmiersprache, um eine Verbindung mit dem Azure IoT Hub-Endpunkt herstellen und die Ereignisse empfangen zu können. Weitere Informationen finden Sie unter [Lesen von Nachrichten, die von Geräten an die Cloud gesendet werden, vom integrierten Endpunkt](../../iot-hub/iot-hub-devguide-messages-read-builtin.md). 
+*   Richten Sie das Nachrichtenrouting auf Ihrer Azure IoT Hub-Instanz ein, um Ereignisse an andere Endpunkte zu senden, die Ereignisse unter Azure Blob Storage zu speichern usw. Weitere Informationen finden Sie unter [Verwenden des IoT Hub-Nachrichtenroutings zum Senden von D2C-Nachrichten an verschiedene Endpunkte](../../iot-hub/iot-hub-devguide-messages-d2c.md). 
 
 ## <a name="running-spatial-analysis-with-a-recorded-video-file"></a>Ausführen der räumlichen Analyse mit einer aufgezeichneten Videodatei
 
@@ -381,9 +381,9 @@ Sie können die räumliche Analyse sowohl für aufgezeichnete als auch für Live
     1. Ändern Sie **Sichere Übertragung erforderlich** in **Deaktiviert**.
     2. Ändern Sie **Öffentlichen Blobzugriff gestatten** in **Aktiviert**.
 
-Navigieren Sie zum Abschnitt **Container** , und erstellen Sie entweder einen neuen Container, oder verwenden Sie einen vorhandenen. Laden Sie anschließend die Videodatei in den Container hoch. Erweitern Sie die Dateieinstellungen für die hochgeladene Datei, und wählen Sie die Option **SAS generieren** aus. Achten Sie darauf, dass Sie unter **Ablaufdatum** einen Zeitraum angeben, der den Testzeitraum abdeckt. Legen Sie **Zulässige Protokolle** auf *HTTP* fest ( *HTTPS* wird nicht unterstützt).
+Navigieren Sie zum Abschnitt **Container**, und erstellen Sie entweder einen neuen Container, oder verwenden Sie einen vorhandenen. Laden Sie anschließend die Videodatei in den Container hoch. Erweitern Sie die Dateieinstellungen für die hochgeladene Datei, und wählen Sie die Option **SAS generieren** aus. Achten Sie darauf, dass Sie unter **Ablaufdatum** einen Zeitraum angeben, der den Testzeitraum abdeckt. Legen Sie **Zulässige Protokolle** auf *HTTP* fest (*HTTPS* wird nicht unterstützt).
 
-Klicken Sie auf **SAS-Token und -URL generieren** , und kopieren Sie die Blob-SAS-URL. Ersetzen Sie `https` am Anfang durch `http`, und testen Sie die URL in einem Browser, der die Videowiedergabe unterstützt.
+Klicken Sie auf **SAS-Token und -URL generieren**, und kopieren Sie die Blob-SAS-URL. Ersetzen Sie `https` am Anfang durch `http`, und testen Sie die URL in einem Browser, der die Videowiedergabe unterstützt.
 
 Ersetzen Sie `VIDEO_URL` im Bereitstellungsmanifest für Ihr [Azure Stack Edge-Gerät](https://go.microsoft.com/fwlink/?linkid=2142179) oder einen anderen [Desktopcomputer](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json) durch die von Ihnen erstellte URL, und zwar für alle Graphen. Legen Sie `VIDEO_IS_LIVE` auf `false` fest, und stellen Sie den Container für räumliche Analyse mit dem aktualisierten Manifest erneut bereit. Betrachten Sie das folgende Beispiel.
 

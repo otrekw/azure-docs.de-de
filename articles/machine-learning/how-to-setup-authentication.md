@@ -10,13 +10,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.date: 11/05/2020
 ms.topic: conceptual
-ms.custom: how-to, has-adal-ref, devx-track-js, devx-track-azurecli, contperfq2
-ms.openlocfilehash: adc0547e36e9cf996a87c2683b4830541b8cd360
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.custom: how-to, has-adal-ref, devx-track-js, devx-track-azurecli, contperf-fy21q2
+ms.openlocfilehash: 27c8a0b80068124613af15565f387f15ac6b8e57
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94442105"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97027253"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>Einrichten der Authentifizierung für Azure Machine Learning-Ressourcen und -Workflows
 
@@ -27,7 +27,7 @@ Erfahren Sie, wie Sie die Authentifizierung für Ihren Azure Machine Learning-Ar
 
 * __Dienstprinzipal__: Sie erstellen ein Dienstprinzipalkonto in Azure Active Directory und verwenden es, um sich zu authentifizieren oder ein Token zu erhalten. Ein Dienstprinzipal wird verwendet, wenn ein _automatisierter Prozess sich beim Dienst authentifizieren_ soll, ohne dass eine Benutzerinteraktion erforderlich ist. Ein Beispiel hierfür wäre ein Continuous-Integration- und Bereitstellungsskript, das ein Modell bei jeder Änderung des Trainingscodes trainiert und testet.
 
-* __Verwaltete Identität__: Wenn Sie das Azure Machine Learning SDK _auf einem virtuellen Azure-Computer_ verwenden, können Sie eine verwaltete Identität für Azure erstellen. Dieser Workflow ermöglicht es der VM, mithilfe der verwalteten Identität eine Verbindung mit dem Arbeitsbereich herzustellen, ohne Anmeldeinformationen im Python-Code zu speichern oder den Benutzer zur Authentifizierung aufzufordern. Azure Machine Learning-Computecluster können auch so konfiguriert werden, dass sie _beim Trainieren von Modellen_ mithilfe einer verwalteten Identität auf den Arbeitsbereich zugreifen.
+* __Verwaltete Identität__: Wenn Sie das Azure Machine Learning SDK _auf einem virtuellen Azure-Computer_ nutzen, können Sie eine verwaltete Identität für Azure verwenden. Dieser Workflow ermöglicht es der VM, mithilfe der verwalteten Identität eine Verbindung mit dem Arbeitsbereich herzustellen, ohne Anmeldeinformationen im Python-Code zu speichern oder den Benutzer zur Authentifizierung aufzufordern. Azure Machine Learning-Computecluster können auch so konfiguriert werden, dass sie _beim Trainieren von Modellen_ mithilfe einer verwalteten Identität auf den Arbeitsbereich zugreifen.
 
 > [!IMPORTANT]
 > Unabhängig vom verwendeten Authentifizierungsworkflow wird die rollenbasierte Zugriffssteuerung von Azure (Role-Based Access Control, RBAC) verwendet, um die zulässige Zugriffsebene (Autorisierung) für die Ressourcen zu beschränken. Beispielsweise könnte ein Administrator oder ein Automatisierungsprozess Zugriff haben, um eine Compute-Instanz zu erstellen, sie aber nicht verwenden, während eine wissenschaftliche Fachkraft für Daten sie verwenden, aber nicht löschen oder erstellen könnte. Weitere Informationen finden Sie unter [Verwalten des Zugriffs auf einen Azure Machine Learning-Arbeitsbereich](how-to-assign-roles.md).
@@ -67,7 +67,7 @@ Die einfachste Art der Erstellung eines Dienstprinzipals und Gewährung von Zugr
 
     Die CLI öffnet Ihren Standardbrowser, sofern sie dazu in der Lage ist, und lädt eine Anmeldeseite. Andernfalls müssen Sie einen Browser öffnen und die Anweisungen in der Befehlszeile befolgen. Die Anweisungen umfassen das Navigieren zu [https://aka.ms/devicelogin](https://aka.ms/devicelogin) und Eingeben eines Autorisierungscodes.
 
-    Wenn Sie über mehrere Azure-Abonnements verfügen, können Sie den Befehl `az account set -s <subscription name or ID>` verwenden, um das Abonnement festzulegen. Weitere Informationen finden Sie unter [Verwenden mehrerer Azure-Abonnements](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest).
+    Wenn Sie über mehrere Azure-Abonnements verfügen, können Sie den Befehl `az account set -s <subscription name or ID>` verwenden, um das Abonnement festzulegen. Weitere Informationen finden Sie unter [Verwenden mehrerer Azure-Abonnements](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest).
 
     Andere Methoden zur Authentifizierung finden Sie unter [Anmelden mit der Azure CLI](/cli/azure/authenticate-azure-cli?preserve-view=true&view=azure-cli-latest).
 
@@ -154,7 +154,7 @@ Weitere Informationen finden Sie unter [Einrichten der verwalteten Identität f�
 ## <a name="use-interactive-authentication"></a>Verwenden der interaktiven Authentifizierung
 
 > [!IMPORTANT]
-> Die interaktive Authentifizierung verwendet Ihren Browser und erfordert Cookies (einschließlich Cookies von Drittanbietern). Wenn Sie Cookies deaktiviert haben, erhalten Sie möglicherweise eine Fehlermeldung wie „Wir konnten Sie nicht anmelden“. Dieser Fehler kann auch auftreten, wenn Sie [Azure Multi-Factor Authentication](../active-directory/authentication/concept-mfa-howitworks.md) aktiviert haben.
+> Die interaktive Authentifizierung verwendet Ihren Browser und erfordert Cookies (einschließlich Cookies von Drittanbietern). Wenn Sie Cookies deaktiviert haben, erhalten Sie möglicherweise eine Fehlermeldung wie „Wir konnten Sie nicht anmelden“. Dieser Fehler kann auch auftreten, wenn Sie [Azure AD Multi-Factor Authentication](../active-directory/authentication/concept-mfa-howitworks.md) aktiviert haben.
 
 In den meisten Beispielen in der Dokumentation und Verwendungsbeispielen wird interaktive Authentifizierung verwendet. Bei Verwendung des SDK gibt es z. B. zwei Funktionsaufrufe, bei denen Sie automatisch über einen auf einer Benutzeroberfläche basierenden Authentifizierungsflow eine Aufforderung erhalten:
 
@@ -184,7 +184,7 @@ In den meisten Beispielen in der Dokumentation und Verwendungsbeispielen wird in
 > interactive_auth = InteractiveLoginAuthentication(tenant_id="your-tenant-id")
 > ```
 
-Bei Verwendung der Azure CLI wird der Befehl `az login` zur Authentifizierung der CLI-Sitzung verwendet. Weitere Informationen finden Sie unter [Erste Schritte mit der Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli).
+Bei Verwendung der Azure CLI wird der Befehl `az login` zur Authentifizierung der CLI-Sitzung verwendet. Weitere Informationen finden Sie unter [Erste Schritte mit der Azure-Befehlszeilenschnittstelle](/cli/azure/get-started-with-azure-cli).
 
 > [!TIP]
 > Wenn Sie das SDK von einer Umgebung aus verwenden, in der Sie sich zuvor interaktiv mit der Azure CLI authentifiziert haben, können Sie die Klasse `AzureCliAuthentication` verwenden, um sich beim Arbeitsbereich mithilfe der von der CLI zwischengespeicherten Anmeldeinformationen zu authentifizieren:

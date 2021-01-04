@@ -12,19 +12,19 @@ ms.topic: tutorial
 ms.date: 06/24/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c6b6aea6a3b0856b3db345e20b87d2a12ad055e1
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: 077c715616e377d8b296e53fdd5a861f944ab940
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94380329"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349502"
 ---
 # <a name="build-a-console-app-search-client-in-c"></a>Erstellen einer Suchclient-Konsolen-App in C#
 
 > [!WARNING]
-> Die APIs der Bing-Suche werden von Cognitive Services auf Bing-Suchdienste umgestellt. Ab dem **30. Oktober 2020** müssen alle neuen Instanzen der Bing-Suche mit dem [hier](https://aka.ms/cogsvcs/bingmove) dokumentierten Prozess bereitgestellt werden.
+> Die APIs der Bing-Suche werden von Cognitive Services auf Bing-Suchdienste umgestellt. Ab dem **30. Oktober 2020** müssen alle neuen Instanzen der Bing-Suche mit dem [hier](/bing/search-apis/bing-web-search/create-bing-search-service-resource) dokumentierten Prozess bereitgestellt werden.
 > APIs der Bing-Suche, die mit Cognitive Services bereitgestellt wurden, werden noch drei Jahre lang bzw. bis zum Ablauf Ihres Enterprise Agreement unterstützt (je nachdem, was zuerst eintritt).
-> Eine Anleitung zur Migration finden Sie unter [Erstellen einer Ressource für die Bing-Suche über Azure Marketplace](https://aka.ms/cogsvcs/bingmigration).
+> Eine Anleitung zur Migration finden Sie unter [Erstellen einer Ressource für die Bing-Suche über Azure Marketplace](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 In diesem Tutorial erfahren Sie, wie Sie eine einfache .NET Core-Konsolen-App erstellen, mit der Benutzer die Bing-Websuche-API abfragen und nach Rang sortierte Ergebnisse anzeigen können.
 
@@ -47,7 +47,7 @@ Erstellen Sie in Visual Studio durch Drücken von `Ctrl`+`Shift`+`N` ein Projekt
 
 Klicken Sie im Dialogfeld **Neues Projekt** auf **Visual C# > Klassischer Windows-Desktop > Konsolen-App (.NET Framework)** .
 
-Nennen Sie die Anwendung **MyConsoleSearchApp** , und klicken Sie anschließend auf **OK**.
+Nennen Sie die Anwendung **MyConsoleSearchApp**, und klicken Sie anschließend auf **OK**.
 
 ## <a name="add-the-jsonnet-nuget-package-to-the-project"></a>Hinzufügen des NuGet-Pakets „JSON.net“ zum Projekt
 
@@ -62,13 +62,13 @@ Nennen Sie die Anwendung **MyConsoleSearchApp** , und klicken Sie anschließend 
 
 Dieses Tutorial basiert auf der Assembly `System.Web`. Fügen Sie Ihrem Projekt einen Verweis auf diese Assembly hinzu:
 
-- Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf **Verweise** , und klicken Sie anschließend auf **Verweis hinzufügen...** .
-- Klicken Sie auf **Assemblys > Framework** , scrollen Sie nach unten, und aktivieren Sie das Kontrollkästchen für **System.Web**
+- Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf **Verweise**, und klicken Sie anschließend auf **Verweis hinzufügen...** .
+- Klicken Sie auf **Assemblys > Framework**, scrollen Sie nach unten, und aktivieren Sie das Kontrollkästchen für **System.Web**
 - Klicken Sie auf **OK**.
 
 ## <a name="add-some-necessary-using-statements"></a>Hinzufügen einiger erforderlicher using-Anweisungen
 
-Für den Code in diesem Tutorial sind drei zusätzliche using-Anweisungen erforderlich. Fügen Sie unter den vorhandenen Anweisungen vom Typ `using` (am Anfang von **Program.cs** ) die folgenden Anweisungen hinzu:
+Für den Code in diesem Tutorial sind drei zusätzliche using-Anweisungen erforderlich. Fügen Sie unter den vorhandenen Anweisungen vom Typ `using` (am Anfang von **Program.cs**) die folgenden Anweisungen hinzu:
 
 ```csharp
 using System.Web;

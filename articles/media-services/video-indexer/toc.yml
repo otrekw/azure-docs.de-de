@@ -54,6 +54,7 @@
     - name: Überprüfen der Video Indexer-Ausgabe
       href: video-indexer-output-json-v2.md
     - name: Suchen bestimmter Momente in Videos
+      displayName: search
       href: video-indexer-search.md
     - name: 'Erkennen von Szenen, Aufnahmen, Keyframes'
       href: scenes-shots-keyframes.md
@@ -72,7 +73,7 @@
     - name: Anpassen von Inhaltsmodellen
       items:
         - name: Animierte Zeichen
-          href: animated-characters-recognition.md
+          href: animated-characters-recognition-how-to.md
         - name: Person
           items:
             - name: Verwenden der Video Indexer-Website

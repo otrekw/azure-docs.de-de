@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: 0e2406cd35fb2d4dd99da4f5139a9f0f80697912
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: e50d7aba5cc5b3d5d620d844cc9ad169ad8b3bf6
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94566247"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025890"
 ---
 # <a name="set-up-web-endpoints"></a>Einrichten von Webendpunkten
 
@@ -49,10 +49,10 @@ In diesem Artikel erfahren Sie, wie Sie Webendpunkte in einer Anwendung für ben
    | Header | Schlüssel: app, Wert: Nehmen Sie die ersten 8 Stellen Ihrer applicationId | Die Headerparameter, die in den Anforderungsheader einbezogen werden sollen.|
 
     > [!NOTE]
-    > - Der mit [Azure Function](https://docs.microsoft.com/azure/azure-functions/) erstellte Webendpunkt, der sich mit der Datenbank verbindet, die den Gerätezustand von Fernseher und Lüfter speichert.
+    > - Der mit [Azure Function](../../azure-functions/index.yml) erstellte Webendpunkt, der sich mit der Datenbank verbindet, die den Gerätezustand von Fernseher und Lüfter speichert.
     > - Der vorgeschlagene Header wird nur für den Beispielendpunkt benötigt.
     > - Um sicherzustellen, dass der Wert des Headers an Ihrem Beispielendpunkt eindeutig ist, nehmen Sie die ersten 8 Stellen Ihrer applicationId
-    > - In der Praxis kann der Webendpunkt der Endpunkt für den [IoT-Hub](https://docs.microsoft.com/azure/iot-hub/about-iot-hub) sein, der Ihre Geräte verwaltet.
+    > - In der Praxis kann der Webendpunkt der Endpunkt für den [IoT-Hub](../../iot-hub/about-iot-hub.md) sein, der Ihre Geräte verwaltet.
 
 1. Klicken Sie auf **Speichern**.
 

@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: 771b48c36a409654a1d1586590811c81e5c2340a
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 87106cce018a2b2663de2a9abbb43b31ab58c125
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93086753"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96007323"
 ---
 # <a name="access-tiers-for-azure-blob-storage---hot-cool-and-archive"></a>Zugriffsebenen für Azure Blob Storage: „Heiß“, „Kalt“ und „Archiv“
 
@@ -55,7 +55,7 @@ Für die kalte Zugriffsebene fallen im Vergleich mit dem heißen Speicher niedri
 
 - Kurzfristige Sicherung und Datasets für die Notfallwiederherstellung
 - Ältere Medieninhalte, die nur noch selten angezeigt werden, dann aber umgehend verfügbar sein müssen
-- Große Datasets, die kostengünstig gespeichert werden müssen, während weitere Daten für die zukünftige Verarbeitung gesammelt werden ( *Beispiel:* langfristige Speicherung von wissenschaftlichen Daten oder Telemetrie-Rohdaten einer Produktionsstätte)
+- Große Datasets, die kostengünstig gespeichert werden müssen, während weitere Daten für die zukünftige Verarbeitung gesammelt werden (*Beispiel:* langfristige Speicherung von wissenschaftlichen Daten oder Telemetrie-Rohdaten einer Produktionsstätte)
 
 ## <a name="archive-access-tier"></a>Zugriffsebene „Archiv“
 
@@ -94,7 +94,7 @@ Die Blob Storage-Lebenszyklusverwaltung bietet eine umfassende regelbasierte Ric
 > [!NOTE]
 > Für in einem Blockblob-Speicherkonto mit Premium-Leistung gespeicherte Daten ist derzeit weder mithilfe von [Blobtarif festlegen](/rest/api/storageservices/set-blob-tier) noch unter Verwendung der Azure Blob Storage-Lebenszyklusverwaltung ein Tiering zu „Heiß“, „Kalt“ oder „Archiv“ möglich.
 > Um Daten zu verschieben, müssen Sie Blobs synchron vom Blockblob-Speicherkonto auf die heiße Zugriffsebene in einem anderen Konto kopieren und hierzu die [Put Block From URL-API](/rest/api/storageservices/put-block-from-url) oder eine AzCopy-Version, die diese API unterstützt, verwenden.
-> Die *Put Block From URL* -API kopiert Daten synchron auf den Server, was heißt, dass der Aufruf erst abgeschlossen wird, nachdem alle Daten vom ursprünglichen Serverspeicherort an den Zielspeicherort verschoben wurden.
+> Die *Put Block From URL*-API kopiert Daten synchron auf den Server, was heißt, dass der Aufruf erst abgeschlossen wird, nachdem alle Daten vom ursprünglichen Serverspeicherort an den Zielspeicherort verschoben wurden.
 
 ### <a name="blob-level-tiering-billing"></a>Abrechnung für das Blobebenentiering
 
@@ -112,7 +112,7 @@ Wenn ein Blob in eine „wärmere“ Ebene verschoben wird (von „Archiv“ zu 
 
 Alle Blobs, die auf die Ebene „Kalt“ verschoben werden (nur GPv2-Konten), unterliegen für einen Zeitraum von 30 Tagen einer Gebühr für kaltes vorzeitiges Löschen. Alle Blobs, die auf die Archivspeicherebene verschoben werden, unterliegen für einen Zeitraum von 180 Tagen einer Gebühr für frühes Löschen des Archivs. Diese Gebühr fällt anteilig an. Wenn ein Blob beispielsweise auf die Archivspeicherebene verschoben und dann nach 45 Tagen gelöscht oder auf die heiße Ebene verschoben wird, wird Ihnen eine Gebühr für frühes Löschen berechnet, die den 135 Speichertagen (180 - 45) dieses Blobs im Archiv entspricht.
 
-Sie können das frühe Löschen mithilfe der Blobeigenschaft **Last-Modified** berechnen, sofern keine Änderungen an der Zugriffsebene vorgenommen wurden. Andernfalls können Sie den Zeitpunkt der letzten Änderung der Zugriffsebene auf „Kalt“ oder „Archiv“ verwenden, indem Sie die Blobeigenschaft **access-tier-change-time** anzeigen. Weitere Informationen zu Blobeigenschaften finden Sie unter [Abrufen von Blobeigenschaften](https://docs.microsoft.com/rest/api/storageservices/get-blob-properties).
+Sie können das frühe Löschen mithilfe der Blobeigenschaft **Last-Modified** berechnen, sofern keine Änderungen an der Zugriffsebene vorgenommen wurden. Andernfalls können Sie den Zeitpunkt der letzten Änderung der Zugriffsebene auf „Kalt“ oder „Archiv“ verwenden, indem Sie die Blobeigenschaft **access-tier-change-time** anzeigen. Weitere Informationen zu Blobeigenschaften finden Sie unter [Abrufen von Blobeigenschaften](/rest/api/storageservices/get-blob-properties).
 
 ## <a name="comparing-block-blob-storage-options"></a>Vergleichen von Blockblobspeicher-Optionen
 
@@ -146,7 +146,7 @@ In diesem Abschnitt werden die folgenden Szenarien unter Verwendung des Azure-Po
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
-1. Suchen Sie im Azure-Portal nach **Alle Ressourcen** , und wählen Sie den Eintrag aus.
+1. Suchen Sie im Azure-Portal nach **Alle Ressourcen**, und wählen Sie den Eintrag aus.
 
 1. Wählen Sie dann Ihr Speicherkonto aus.
 
@@ -174,7 +174,7 @@ Set-AzStorageAccount -ResourceGroupName $rgName -Name $accountName -AccessTier H
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
-1. Suchen Sie im Azure-Portal nach **Alle Ressourcen** , und wählen Sie den Eintrag aus.
+1. Suchen Sie im Azure-Portal nach **Alle Ressourcen**, und wählen Sie den Eintrag aus.
 
 1. Wählen Sie dann Ihr Speicherkonto aus.
 
@@ -182,7 +182,7 @@ Set-AzStorageAccount -ResourceGroupName $rgName -Name $accountName -AccessTier H
 
 1. Wählen Sie unter **Blob-Eigenschaften** die Option **Ebene ändern** aus.
 
-1. Wählen Sie die Zugriffsebene **Heiß** , **Kalt** oder **Archiv** aus. Wenn sich Ihr Blob derzeit im Archiv befindet und Sie es auf einer Onlineebene aktivieren möchten, können Sie auch eine der Aktivierungsprioritäten **Standard** oder **Hoch** auswählen.
+1. Wählen Sie die Zugriffsebene **Heiß**, **Kalt** oder **Archiv** aus. Wenn sich Ihr Blob derzeit im Archiv befindet und Sie es auf einer Onlineebene aktivieren möchten, können Sie auch eine der Aktivierungsprioritäten **Standard** oder **Hoch** auswählen.
 
 1. Wählen Sie unten **Speichern** aus.
 
@@ -269,7 +269,7 @@ Während der Aktivierung können Sie den Vorgang „Get Blob Properties“ verwe
 
 **Ab wann werden mir nach dem Festlegen der Ebene eines Blobs die entsprechenden Gebühren berechnet?**
 
-Die Berechnung für ein Blob basiert immer auf der Ebene, die in der Eigenschaft **Access Tier** (Zugriffsebene) des Blobs angegeben ist. Wenn Sie eine neue Onlineebene für ein Blob festlegen, übernimmt die **Access Tier** -Eigenschaft (Zugriffsebene) sofort die neue Ebene für alle Übergänge. Die Aktivierung eines Blobs von der Offlinearchivebene in einer heißen oder kalten Ebene kann jedoch mehrere Stunden dauern. In diesem Fall werden Ihnen die Kosten für die Archivspeicherebene berechnet, bis die Aktivierung abgeschlossen ist. Anschließend wird die neue Ebene in der **Access Tier** -Eigenschaft (Zugriffsebene) angezeigt. Nach der Aktivierung auf der Onlineebene erfolgt die Abrechnung für dieses Blob mit dem Preis für die Ebene „Heiß“ oder „Kalt“.
+Die Berechnung für ein Blob basiert immer auf der Ebene, die in der Eigenschaft **Access Tier** (Zugriffsebene) des Blobs angegeben ist. Wenn Sie eine neue Onlineebene für ein Blob festlegen, übernimmt die **Access Tier**-Eigenschaft (Zugriffsebene) sofort die neue Ebene für alle Übergänge. Die Aktivierung eines Blobs von der Offlinearchivebene in einer heißen oder kalten Ebene kann jedoch mehrere Stunden dauern. In diesem Fall werden Ihnen die Kosten für die Archivspeicherebene berechnet, bis die Aktivierung abgeschlossen ist. Anschließend wird die neue Ebene in der **Access Tier**-Eigenschaft (Zugriffsebene) angezeigt. Nach der Aktivierung auf der Onlineebene erfolgt die Abrechnung für dieses Blob mit dem Preis für die Ebene „Heiß“ oder „Kalt“.
 
 **Wie kann ich ermitteln, ob eine Gebühr für das frühe Löschen anfällt, wenn ich ein Blob lösche oder aus der Ebene „Kalt“ oder „Archiv“ verschiebe?**
 
@@ -291,6 +291,6 @@ Evaluieren von „Heiß“, „Kalt“ und „Archiv“ in GPv2- und Blob Storag
 - [Verwalten des Azure Blob Storage-Lebenszyklus](storage-lifecycle-management-concepts.md)
 - [Informationen zum Aktivieren von Blobdaten aus der Archivzugriffsebene](storage-blob-rehydration.md)
 - [Ermitteln, ob Premium-Leistung für Ihre App vorteilhaft ist](storage-blob-performance-tiers.md)
-- [Auswerten der Nutzung vorhandener Speicherkonten durch Aktivierung von Azure Storage-Metriken](../common/storage-enable-and-view-metrics.md)
+- [Auswerten der Nutzung vorhandener Speicherkonten durch Aktivierung von Azure Storage-Metriken](./monitor-blob-storage.md)
 - Prüfen der Preise für „Hot“, „Cool“ und „Archiv“ in Blob Storage- und GPv2-Konten nach Region unter [Preise für Azure Storage](https://azure.microsoft.com/pricing/details/storage/)
 - [Überprüfen der Preise für Datenübertragungen unter Datenübertragungen – Preisdetails](https://azure.microsoft.com/pricing/details/data-transfers/)

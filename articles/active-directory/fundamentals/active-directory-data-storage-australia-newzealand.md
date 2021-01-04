@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 7/21/2020
 ms.custom: it-pro, seodec18, references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 812abe141f8130a198178668dc4f212f373d9bcd
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 4d7c37e64e4f1b339ae66fe3d9135b1874476eb3
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94334940"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94836970"
 ---
 # <a name="customer-data-storage-for-australian-and-new-zealand-customers-in-azure-active-directory"></a>Speicherung von Kundendaten für Kunden in Australien und Neuseeland in Azure Active Directory 
 
@@ -27,7 +27,7 @@ Weitere Informationen zur Datenaufbewahrung bei Microsoft-Diensten in Azure AD f
 
 Seit dem 26. Februar 2020 speichert Microsoft Kundendaten in Azure AD für neue Mandanten mit Rechnungsadresse aus Australien oder Neuseeland in den Rechenzentren in Australien. Zwischen dem 1. Mai 2020 und dem 31. März 2021 migriert Microsoft vorhandene Mandanten mit Rechnungsadresse in Australien oder Neuseeland in die Rechenzentren in Australien. Kunden müssen dafür nicht tätig werden. Der Migrationsprozess beinhaltet keinerlei Downtime für Kunden und wirkt sich auch nicht negativ auf die Funktionalität eines Mandanten während der Migration aus.
 
-Außerdem unterstützen bestimmte Azure AD-Features das Speichern von Kundendaten in Australien noch nicht. Weitere Informationen zu Features finden Sie auf der [Azure AD-Datenkarte](https://msit.powerbi.com/view?r=eyJrIjoiYzEyZTc5OTgtNTdlZS00ZTVkLWExN2ItOTM0OWU4NjljOGVjIiwidCI6IjcyZjk4OGJmLTg2ZjEtNDFhZi05MWFiLTJkN2NkMDExZGI0NyIsImMiOjV9). Bei Microsoft Azure Multi-Factor Authentication werden Kundendaten beispielsweise in den USA gespeichert und global verarbeitet. Weitere Informationen finden Sie unter [Datenresidenz und Kundendaten für Azure Multi-Factor Authentication](../authentication/concept-mfa-data-residency.md).
+Außerdem unterstützen bestimmte Azure AD-Features das Speichern von Kundendaten in Australien noch nicht. Weitere Informationen zu Features finden Sie auf der [Azure AD-Datenkarte](https://msit.powerbi.com/view?r=eyJrIjoiYzEyZTc5OTgtNTdlZS00ZTVkLWExN2ItOTM0OWU4NjljOGVjIiwidCI6IjcyZjk4OGJmLTg2ZjEtNDFhZi05MWFiLTJkN2NkMDExZGI0NyIsImMiOjV9). Bei Microsoft Azure AD Multi-Factor Authentication werden Kundendaten beispielsweise in den USA gespeichert und global verarbeitet. Weitere Informationen finden Sie unter [Datenresidenz und Kundendaten für Azure AD Multi-Factor Authentication](../authentication/concept-mfa-data-residency.md).
 
 > [!NOTE]
 > Produkte und Dienste von Microsoft sowie Drittanbieteranwendungen, die mit Azure AD integriert sind, haben Zugriff auf Kundendaten. Evaluieren Sie alle von Ihnen verwendeten Produkte, Dienste und Anwendungen, um zu ermitteln, wie Kundendaten vom jeweiligen Produkt, Dienst und von der jeweiligen Anwendung verarbeitet werden und ob die Anforderungen an die Datenspeicherung in Ihrem Unternehmen erfüllt werden. Weitere Informationen zur Datenaufbewahrung finden Sie im Microsoft Trust Center im Abschnitt [Wo sich Ihre Daten befinden](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located).

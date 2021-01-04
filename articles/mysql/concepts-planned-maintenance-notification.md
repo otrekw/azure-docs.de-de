@@ -6,12 +6,12 @@ ms.author: ambhatna
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/21/2020
-ms.openlocfilehash: c85624d9eced3130a1c7b99943095688beee62bd
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: ff197f8add65782a594d64661ffecdaced4598c2
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93417587"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94919623"
 ---
 # <a name="planned-maintenance-notification-in-azure-database-for-mysql---single-server"></a>Benachrichtigung über geplante Wartung in Azure Database for MySQL – Einzelserver
 
@@ -78,7 +78,7 @@ Bei einem vorübergehenden Fehler handelt es sich um einen Fehler, der sich von 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Sollten Sie Fragen oder Vorschläge im Zusammenhang mit der Verwendung von Azure Database for MySQL haben, senden Sie eine E-Mail an das zuständige Team ( *AskAzureDBforMySQL@service.microsoft.com* ).
+- Sollten Sie Fragen oder Vorschläge im Zusammenhang mit der Verwendung von Azure Database for MySQL haben, senden Sie eine E-Mail an das zuständige Team (AskAzureDBforMySQL@service.microsoft.com).
 - Anleitungen zum Erstellen einer Warnung zu einer Metrik finden Sie unter [Einrichten von Warnungen](howto-alert-on-metric.md).
 - [Beheben von Verbindungsproblemen mit Azure Database for MySQL – Einzelserver](howto-troubleshoot-common-connection-issues.md)
 - [Behandeln vorübergehender Fehler und effizientes Verbinden mit Azure Database for MySQL – Einzelserver](concepts-connectivity.md)

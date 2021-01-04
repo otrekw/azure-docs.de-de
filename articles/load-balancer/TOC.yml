@@ -33,9 +33,11 @@
       href: tutorial-load-balancer-standard-public-zonal-portal.md
     - name: Konfigurieren der Portweiterleitung in Load Balancer
       href: tutorial-load-balancer-port-forwarding-portal.md
+    - name: 'Erstellen eines regionsübergreifenden Lastenausgleichs: Portal'
+      href: tutorial-cross-region-portal.md
 - name: Beispiele
   items:
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: cli-samples.md
     - name: Azure PowerShell
       href: powershell-samples.md
@@ -59,7 +61,7 @@
           href: load-balancer-insights.md
         - name: Metriken und Diagnosen für den Lastenausgleich im Standard-Tarif
           href: load-balancer-standard-diagnostics.md
-        - name: Azure Monitor-Protokolle für Load Balancer vom Typ „Basic“
+        - name: Azure Monitor-Protokolle für Load Balancer
           href: load-balancer-monitor-log.md
         - name: Abrufen von Load Balancer-Metriken mit REST
           href: load-balancer-query-metrics-rest-api.md
@@ -107,7 +109,7 @@
           href: upgrade-InternalBasic-To-PublicStandard.md
     - name: Erstellen des öffentlichen Lastenausgleichs mit IPv6
       items:
-        - name: Azure-Befehlszeilenschnittstelle
+        - name: Azure CLI
           href: ../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-cli.md
         - name: Azure PowerShell
           href: ../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md
@@ -122,7 +124,7 @@
       items:
         - name: Portal
           href: load-balancer-multiple-ip.md
-        - name: Azure-Befehlszeilenschnittstelle
+        - name: Azure CLI
           href: load-balancer-multiple-ip-cli.md
         - name: Azure PowerShell
           href: load-balancer-multiple-ip-powershell.md
@@ -154,7 +156,7 @@
       href: 'https://azure.microsoft.com/resources/samples/?service=load-balancer'
     - name: Azure PowerShell
       href: /powershell/module/az.network
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: /cli/azure/network/lb
     - name: .NET
       href: /dotnet/api/microsoft.azure.management.network.models

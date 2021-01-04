@@ -9,27 +9,30 @@
       href: text-analytics-user-scenarios.md
     - name: Neues
       href: whats-new.md
+- name: Verantwortungsvolle Verwendung von KI
+  items:
+    - name: Transparenzhinweise
+      items:
+        - name: Für Textanalyse
+          href: /legal/cognitive-services/text-analytics/transparency-note?context=/azure/cognitive-services/text-analytics/context/context
+          displayName: 'Transparency note for Text Analytics, Text Analytics Transparency, Responsible AI, Responsible use of AI'
+        - name: Für Gesundheitsdaten
+          href: /legal/cognitive-services/text-analytics/transparency-note-health?context=/azure/cognitive-services/text-analytics/context/context
+          displayName: 'Transparency note for Text Analytics for Health, Text Analytics Transparency for Health, Responsible AI, Responsible use of AI, Text Analytics Health'
+        - name: Für personenbezogene Informationen
+          href: /legal/cognitive-services/text-analytics/transparency-note-personally-identifiable-information?context=/azure/cognitive-services/text-analytics/context/context
+          displayName: 'Transparency note for Text Analytics PII, Transparency note for Text Analytics Personally Identifiable Information, Text Analytics Transparency for PII, Responsible AI, Responsible use of AI, Text Analytics PII'
+        - name: Für Stimmungsanalyse
+          href: /legal/cognitive-services/text-analytics/transparency-note-sentiment-analysis?context=/azure/cognitive-services/text-analytics/context/context
+          displayName: 'Transparency note for Text Analytics Sentiment Analysis, Text Analytics Transparency for Sentiment Analysis, Responsible AI, Responsible use of AI, Text Analytics Sentiment Analysis, Sentiment Analysis Transparency Note'
+    - name: Integration und verantwortungsvolle Verwendung
+      href: /legal/cognitive-services/text-analytics/guidance-integration-responsible-use?context=/azure/cognitive-services/text-analytics/context/context
+      displayName: 'Responsible deployment, Responsible use, Responsible integration, AI deployment, AI use'
 - name: Schnellstarts
   expanded: true
   items:
-    - name: Clientbibliothek
-      items:
-        - name: Analysieren von Text mit der Clientbibliothek
-          href: quickstarts/text-analytics-sdk.md
-    - name: REST-API
-      items:
-        - name: Verwenden von Java
-          href: quickstarts/java.md
-        - name: Verwenden von Python
-          href: quickstarts/python.md
-        - name: Verwenden von Node.js
-          href: quickstarts/nodejs.md
-        - name: Verwenden von PHP
-          href: quickstarts/php.md
-        - name: Verwenden von Go
-          href: quickstarts/go.md
-        - name: Verwenden von Ruby
-          href: quickstarts/ruby.md
+    - name: Verwenden der Clientbibliothek und der REST-API
+      href: quickstarts/client-libraries-rest-api.md
 - name: Tutorials
   items:
     - name: Integrieren von Power BI zum Analysieren von Kundenfeedback
@@ -62,7 +65,7 @@
       href: How-tos/text-analytics-how-to-call-api.md
     - name: Spracherkennung
       href: How-tos/text-analytics-how-to-language-detection.md
-    - name: Stimmungsanalyse
+    - name: Standpunktanalyse und Opinion Mining
       href: How-tos/text-analytics-how-to-sentiment-analysis.md
     - name: Schlüsselwortextraktion
       href: How-tos/text-analytics-how-to-keyword-extraction.md
@@ -92,6 +95,8 @@
       href: /powershell/module/azurerm.cognitiveservices/
     - name: Textanalyse-API
       items:
+        - name: v3.1.preview.3
+          href: 'https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/'
         - name: v3.0
           href: 'https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0'
         - name: V2
@@ -111,7 +116,7 @@
         - name: V2
           items:
             - name: .NET
-              href: /dotnet/api/overview/azure/cognitiveservices/client/textanalytics?view=azure-dotnet
+              href: /dotnet/api/overview/azure/cognitiveservices/client?view=azure-dotnet
             - name: Python
               href: /python/api/overview/azure/cognitiveservices/textanalytics?view=azure-python
             - name: Java

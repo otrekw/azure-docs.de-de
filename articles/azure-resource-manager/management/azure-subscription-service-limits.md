@@ -3,12 +3,12 @@ title: Grenzwerte und Kontingente von Azure-Abonnements
 description: Stellt eine Liste allgemeiner Azure-Abonnements und Diensteinschränkungen, Kontingenten und Einschränkungen bereit. Dieser Artikel enthält Informationen zum Erhöhen von Grenzwerten und Höchstwerten.
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 54eb25e302d49be9e3ab1febeb5c636d267d7e4f
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 4d56c5c3fd33d1cda05e23d5bc53e7540428671b
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94577837"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96547847"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen
 
@@ -312,6 +312,10 @@ Die folgende Tabelle gilt für v1, v2, Standard und WAF SKUs, sofern nichts ande
 
 [!INCLUDE [private-link-limits](../../../includes/private-link-limits.md)]
 
+## <a name="purview-limits"></a>Purview-Grenzwerte
+
+Die aktuellen Werte für Azure Purview-Kontingente finden Sie auf der [Seite „Azure Purview-Kontingent“](../../purview/how-to-manage-quotas.md)
+
 ### <a name="traffic-manager-limits"></a>Traffic Manager-Grenzwerte
 
 [!INCLUDE [traffic-manager-limits](../../../includes/traffic-manager-limits.md)]
@@ -398,7 +402,7 @@ Weitere Informationen finden Sie unter [Größen virtueller Computer](../../virt
 
 #### <a name="disk-encryption-sets"></a>Datenträgerverschlüsselungssätze
 
-Pro Region und Abonnement können maximal 50 Datenträgerverschlüsselungssätze erstellt werden. Weitere Informationen finden Sie in der Dokumentation zur Verschlüsselung für [Linux](../../virtual-machines/linux/disk-encryption.md#restrictions)- oder [Windows](../../virtual-machines/windows/disk-encryption.md#restrictions)-VMs. Wenn Sie das Kontingent erhöhen müssen, wenden Sie sich an den Azure-Support.
+Pro Region und Abonnement können maximal 50 Datenträgerverschlüsselungssätze erstellt werden. Weitere Informationen finden Sie in der Dokumentation zur Verschlüsselung für [Linux](../../virtual-machines/disk-encryption.md#restrictions)- oder [Windows](../../virtual-machines/disk-encryption.md#restrictions)-VMs. Wenn Sie das Kontingent erhöhen müssen, wenden Sie sich an den Azure-Support.
 
 ### <a name="managed-virtual-machine-disks"></a>Verwaltete VM-Datenträger
 

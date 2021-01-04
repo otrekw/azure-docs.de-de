@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: bde95006865a2aab2da4a5d6d27ccccc14d74d12
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 8e12a74ee689ba7b013b1c4a6881deac78680be0
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94408921"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94701047"
 ---
 # <a name="security-control-v2-data-protection"></a>Sicherheitskontrolle V2: Datenschutz
 
@@ -34,9 +34,9 @@ Sie können Azure SQL Information Protection verwenden, um die Klassifizierung u
 
 - [Implementieren von Azure SQL Data Discovery](../../azure-sql/database/data-discovery-and-classification-overview.md)
 
-**Verantwortlichkeit** : Shared
+**Verantwortlichkeit**: Shared
 
-**Sicherheitsverantwortliche beim Kunden** ( [weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Sicherheitsverantwortliche beim Kunden** ([weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Anwendungssicherheit und DevOps-Funktionen](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)  
 
@@ -50,19 +50,19 @@ Sie können Azure SQL Information Protection verwenden, um die Klassifizierung u
 |--|--|--|--|
 | DP-2 | 13.2, 2.10 | SC-7, AC-4 |
 
-Schützen Sie vertrauliche Daten, indem Sie den Zugriff mithilfe der rollenbasierten Zugriffssteuerung in Azure (Azure RBAC), der netzwerkbasierten Zugriffssteuerungen und bestimmter Steuerungen in Azure-Diensten (z. B. Verschlüsselung in SQL und anderen Datenbanken) einschränken. 
+Schützen Sie vertrauliche Daten, indem Sie den Zugriff mithilfe der rollenbasierten Zugriffssteuerung von Azure (Azure RBAC), der netzwerkbasierten Zugriffssteuerungen und bestimmter Steuerungen in Azure-Diensten (z. B. Verschlüsselung in SQL und anderen Datenbanken) einschränken. 
 
 Um eine konsistente Zugriffssteuerung sicherzustellen, sollten alle Zugriffssteuerungstypen an der Segmentierungsstrategie des Unternehmens ausgerichtet werden. Bei der Segmentierungsstrategie des Unternehmens sollte auch der Speicherort vertraulicher und unternehmenskritischer Daten und Systeme berücksichtigt werden.
 
 Für die zugrunde liegende Plattform, die von Microsoft verwaltet wird, behandelt Microsoft alle Kundeninhalte als vertraulich und schützt Kundendaten vor Verlust und Gefährdung. Um die Sicherheit von Kundendaten innerhalb von Azure zu gewährleisten, hat Microsoft eine Reihe von Standard-Datenschutzsteuerungen und -funktionen implementiert.
 
-- [Rollenbasierte Zugriffssteuerung in Azure (Role-Based Access Control, RBAC)](../../role-based-access-control/overview.md)
+- [Rollenbasierte Zugriffssteuerung von Azure (Azure RBAC)](../../role-based-access-control/overview.md)
 
 - [Grundlegendes zum Schutz von Kundendaten in Azure](../fundamentals/protection-customer-data.md)
 
-**Verantwortlichkeit** : Shared
+**Verantwortlichkeit**: Shared
 
-**Sicherheitsverantwortliche beim Kunden** ( [weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Sicherheitsverantwortliche beim Kunden** ([weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Anwendungssicherheit und DevOps-Funktionen](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
 
@@ -88,9 +88,9 @@ Wenn Compliance hinsichtlich Datenverlust (Data Loss Prevention, DLP) erforderli
 
 - [Aktivieren von Azure Storage ATP](../../storage/common/azure-defender-storage-configure.md?tabs=azure-security-center)
 
-**Verantwortlichkeit** : Shared
+**Verantwortlichkeit**: Shared
 
-**Sicherheitsverantwortliche beim Kunden** ( [weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Sicherheitsverantwortliche beim Kunden** ([weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Sicherheitsvorgänge](/azure/cloud-adoption-framework/organize/cloud-security) 
 
@@ -116,9 +116,9 @@ Azure ermöglicht standardmäßig die Verschlüsselung von Daten während der Ü
 
 - [Doppelte Verschlüsselung für Azure-Daten während der Übertragung](../fundamentals/double-encryption.md#data-in-transit)
 
-**Verantwortlichkeit** : Shared
+**Verantwortlichkeit**: Shared
 
-**Sicherheitsverantwortliche beim Kunden** ( [weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Sicherheitsverantwortliche beim Kunden** ([weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Sicherheitsarchitektur](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -146,9 +146,9 @@ Azure bietet standardmäßig Verschlüsselung für ruhende Daten. Bei streng ver
 
 - [Doppelte Verschlüsselung für ruhende Daten in Azure](../fundamentals/double-encryption.md#data-at-rest)
 
-**Verantwortlichkeit** : Shared
+**Verantwortlichkeit**: Shared
 
-**Sicherheitsverantwortliche beim Kunden** ( [weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Sicherheitsverantwortliche beim Kunden** ([weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Sicherheitsarchitektur](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 

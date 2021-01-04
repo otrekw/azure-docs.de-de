@@ -6,17 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.custom: how-to
+ms.custom: how-to, devx-track-azurecli
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 09/30/2020
-ms.openlocfilehash: cfa6dcb0b1fc173bdf3612308227b8309491e9fa
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 2953f85a5c21cdd670d6e133d09ffacf06f178ef
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93312742"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842701"
 ---
 # <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace"></a>Konfigurieren von Azure Private Link für einen Azure Machine Learning-Arbeitsbereich
 
@@ -39,7 +39,7 @@ Die Verwendung eines Azure Machine Learning-Arbeitsbereichs mit Private Link ist
 
 ## <a name="create-a-workspace-that-uses-a-private-endpoint"></a>Erstellen eines Arbeitsbereichs, der einen privaten Endpunkt verwendet
 
-Verwenden Sie eine der folgenden Methoden, um einen Arbeitsbereich mit einem privaten Endpunkt zu erstellen. Jede dieser Methoden __erfordert ein vorhandenes virtuelles Netzwerk__ :
+Verwenden Sie eine der folgenden Methoden, um einen Arbeitsbereich mit einem privaten Endpunkt zu erstellen. Jede dieser Methoden __erfordert ein vorhandenes virtuelles Netzwerk__:
 
 > [!TIP]
 > Wenn Sie einen Arbeitsbereich, einen privaten Endpunkt und ein virtuelles Netzwerk gleichzeitig erstellen möchten, lesen Sie die Informationen unter [Verwenden einer Azure Resource Manager-Vorlage zum Erstellen eines Arbeitsbereichs für Azure Machine Learning](how-to-create-workspace-template.md).

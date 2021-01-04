@@ -1,14 +1,17 @@
 ---
 title: Unterstützung der Bewertung physischer Server in Azure Migrate
 description: Informationen zur Unterstützung der Bewertung physischer Server mit der Azure Migrate-Serverbewertung
+author: rashi-ms
+ms.author: rajosh
+ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 06/03/2020
-ms.openlocfilehash: 58ecba6bcedc036e31046aef292e482085ad7cc6
-ms.sourcegitcommit: 8ad5761333b53e85c8c4dabee40eaf497430db70
+ms.openlocfilehash: cfbbc1d218f590241fab804e389acd689c009dac
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2020
-ms.locfileid: "93148404"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96754010"
 ---
 # <a name="support-matrix-for-physical-server-assessment"></a>Unterstützungsmatrix für die Bewertung physischer Server 
 
@@ -31,7 +34,7 @@ Zum Bewerten von physischen Servern erstellen Sie ein Azure Migrate-Projekt, und
 
 ## <a name="physical-server-requirements"></a>Anforderungen für physische Server
 
-**Bereitstellung des physischen Servers** : Der physische Server kann eigenständig sein oder in einem Cluster bereitgestellt werden.
+**Bereitstellung des physischen Servers**: Der physische Server kann eigenständig sein oder in einem Cluster bereitgestellt werden.
 
 **Betriebssystem:** Alle Windows- und Linux-Betriebssysteme können für die Migration bewertet werden.
 

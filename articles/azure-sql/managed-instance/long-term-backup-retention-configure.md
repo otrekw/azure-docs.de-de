@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 04/29/2020
-ms.openlocfilehash: 8b0d6665b440516d29cc9aeb0b6e50f509528574
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: ec193eab02d937e9d93b8632fa171fec8227d6c2
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92503435"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94987489"
 ---
 # <a name="manage-azure-sql-managed-instance-long-term-backup-retention-powershell"></a>Verwalten der langfristigen Sicherungsaufbewahrung für Azure SQL Managed Instance (PowerShell)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -48,7 +48,7 @@ Für **Remove-AzSqlInstanceDatabaseLongTermRetentionBackup** müssen Sie über e
 > [!NOTE]
 > Die Rolle „Mitwirkender“ für die verwaltete Instanz besitzt keine Berechtigung zum Löschen von LTR-Sicherungen.
 
-RBAC-Berechtigungen können im Bereich *Abonnement* oder *Ressourcengruppe* erteilt werden. Für den Zugriff auf LTR-Sicherungen, die zu einer gelöschten Instanz gehören, muss die Berechtigung jedoch im Bereich *Abonnement* dieser Instanz erteilt werden.
+Azure RBAC-Berechtigungen können im Bereich *Abonnement* oder *Ressourcengruppe* erteilt werden. Für den Zugriff auf LTR-Sicherungen, die zu einer gelöschten Instanz gehören, muss die Berechtigung jedoch im Bereich *Abonnement* dieser Instanz erteilt werden.
 
 - `Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups/delete`
 

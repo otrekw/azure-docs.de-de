@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/07/2020
+ms.date: 12/01/2020
 ms.author: memildin
-ms.openlocfilehash: 6b54f02b39e233dcf35f0d18682ca102883d76c3
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 85dffd4d96a78bab9dd890d9ad37572f3e524f06
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791867"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96487931"
 ---
 # <a name="configure-email-notifications-for-security-alerts"></a>Konfigurieren von E-Mail-Benachrichtigungen für Sicherheitswarnungen 
 
@@ -31,9 +31,9 @@ Wenn Sie eigene Einstellungen für Benachrichtigungs-E-Mails definieren möchten
 
 Zur Vermeidung von Warnungsmüdigkeit wird die Menge der ausgehenden E-Mails von Security Center begrenzt. Für jedes Abonnement wird von Security Center Folgendes gesendet:
 
-- Maximal **vier** E-Mails pro Tag für Warnungen mit **hohem Schweregrad**
-- Maximal **zwei** E-Mails pro Tag für Warnungen mit **mittlerem Schweregrad**
-- Maximal **eine** E-Mail pro Tag für Warnungen mit **niedrigem Schweregrad**
+- maximal eine E-Mail alle **6 Stunden** (4 E-Mails pro Tag) für Warnungen mit **hohem Schweregrad**
+- maximal eine E-Mail alle **12 Stunden** (2 E-Mails pro Tag) für Warnungen mit **mittlerem Schweregrad**
+- maximal eine E-Mail alle **24 Stunden** für Warnungen mit **niedrigem Schweregrad**
 
 :::image type="content" source="./media/security-center-provide-security-contacts/email-notification-settings.png" alt-text="Konfigurieren der Details des Kontakts, der E-Mails zu Sicherheitswarnungen erhalten soll." :::
  
@@ -62,10 +62,9 @@ Sie können E-Mail-Benachrichtigungen an Einzelpersonen oder an alle Benutzer mi
 1. Wählen Sie **Speichern** aus, um die Sicherheitskontaktinformationen für Ihr Abonnement zu übernehmen.
 
 
-## <a name="next-steps"></a>Nächste Schritte
-
+## <a name="see-also"></a>Weitere Informationen
 Weitere Informationen zu Sicherheitswarnungen finden Sie auf den folgenden Seiten:
 
 - [Sicherheitswarnungen (Referenzhandbuch)](alerts-reference.md): Enthält Informationen zu den Sicherheitswarnungen, die im Threat Protection-Modul von Azure Security Center ggf. angezeigt werden.
 - [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center](security-center-managing-and-responding-alerts.md): Hier wird beschrieben, wie Sie Sicherheitswarnungen verwalten und darauf reagieren.
-- [Automatisieren von Reaktionen auf Security Center-Auslöser](workflow-automation.md): Verwenden der Automatisierung, um auf Security Center-Auslöser mit benutzerdefinierter Benachrichtigungslogik zu reagieren
+- [Workflowautomatisierung](workflow-automation.md): Automatisieren von Reaktionen auf Warnungen mit benutzerdefinierter Benachrichtigungslogik

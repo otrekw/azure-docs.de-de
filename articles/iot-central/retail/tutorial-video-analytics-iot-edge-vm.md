@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: 23173432db9364f25901e6e9b285d390c6a63a34
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: f798e65b1517430bc67af793ebb517c586d5d58f
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94426544"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763875"
 ---
 # <a name="tutorial-create-an-iot-edge-instance-for-video-analytics-linux-vm"></a>Tutorial: Erstellen einer IoT Edge-Instanz für die Videoanalyse (Linux-VM)
 
@@ -51,15 +51,15 @@ Verwenden Sie die Informationen in der folgenden Tabelle, um das Formular **Benu
 | Subscription | Wählen Sie Ihr Azure-Abonnement. |
 | Resource group | *lva-rg*: Die Ressourcengruppe, die Sie im vorherigen Tutorial erstellt haben. |
 | Region       | *USA, Osten* |
-| Präfix der DNS-Bezeichnung | Wählen Sie ein eindeutiges DNS-Präfix für die VM aus. |
+| Präfix der DNS-Bezeichnung | Wählen Sie ein eindeutiges DNS-Präfix für die VM aus. Es darf nur aus alphabetischen Zeichen bestehen und darf keine Zahlen oder Sonderzeichen enthalten. |
 | Administratorbenutzername | *AzureUser* |
 | Administratorkennwort | Geben Sie ein Kennwort ein. Notieren Sie sich das Kennwort in der Datei *scratchpad.txt* zur späteren Verwendung. |
 | Bereichs-ID | Die **Bereichs-ID**, die Sie sich im vorherigen Tutorial beim Hinzufügen des Gatewaygeräts in der Datei *scratchpad.txt* notiert haben. |
 | Geräte-ID | *gateway-001*: Das Gatewaygerät, das Sie im vorherigen Tutorial erstellt haben |
-| Geräteschlüssel | Der Primärschlüssel des Geräts, den Sie sich im vorherigen Tutorial beim Hinzufügen des Gatewaygeräts in der Datei *scratchpad.txt* notiert haben. |
+| Geräteschlüssel | Der **Primärschlüssel des Geräts**, den Sie sich im vorherigen Tutorial beim Hinzufügen des Gatewaygeräts in der Datei *scratchpad.txt* notiert haben |
 | IoT Central-App-Host | Die **Anwendungs-URL**, die Sie sich im vorherigen Tutorial in der Datei *scratchpad.txt* notiert haben. Beispiel: *traders.azureiotcentral.com*. |
-| API-Token für IoT Central-App | Das API-Token für den Operator, das Sie sich im vorherigen Tutorial notiert haben. |
-| Schlüssel für die IoT Central-Gerätebereitstellung | Das SAS-Token (Shared Access Signature) für die primäre Gruppe, das Sie sich im vorherigen Tutorial in der Datei *scratchpad.txt* notiert haben. |
+| API-Token für IoT Central-App | Das **API-Token für den Operator**, das Sie sich im vorherigen Tutorial in der Datei *scratchpad.txt* notiert haben |
+| Schlüssel für die IoT Central-Gerätebereitstellung | Der **Primärschlüssel für die Gruppe „SAS-IoT-Devices“** , den Sie sich im vorherigen Tutorial in der Datei *scratchpad.txt* notiert haben |
 | Größe des virtuellen Computers | *Standard_DS1_v2* |
 | Ubuntu-Betriebssystemversion | *18.04-LTS* |
 | Standort | *[resourceGroup().location]* |

@@ -3,20 +3,20 @@ title: Erstellen/Planen von Pipelines, Kettenaktivitäten in Data Factory
 description: Es wird beschrieben, wie Sie eine Datenpipeline in Azure Data Factory erstellen, um Daten zu verschieben und zu transformieren. Erstellen Sie einen datengesteuerten Workflow zum Erzeugen von fertigen Informationen.
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 15b61653fcd9428abe41f61ac89b2a37302983c7
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 83b4d14d46677c731b7fb9faae2217492368d4b2
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369222"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96496057"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Pipelines und Aktivitäten in Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
@@ -34,7 +34,7 @@ In diesem Artikel erhalten Sie Informationen zu Pipelines und Aktivitäten in Az
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="overview"></a>Übersicht
-Eine Data Factory kann eine oder mehrere Pipelines haben. Bei einer Pipeline handelt es sich um eine logische Gruppierung von Aktivitäten, die zusammen eine Aufgabe bilden. Die Aktivitäten in einer Pipeline definieren Aktionen, die Sie auf Ihre Daten anwenden. Sie können beispielsweise eine Kopieraktivität zum Kopieren von Daten aus einer SQL Server-Datenbank in eine Azure Blob Storage-Instanz verwenden. Verwenden Sie dann eine Hive-Aktivität, die ein Hive-Skript auf einen Azure HDInsight-Cluster anwendet, um Daten aus dem Blob Storage zu verarbeiten/transformieren, um Ausgabedaten zu produzieren. Verwenden Sie abschließend eine zweite Kopieraktivität, um die Ausgabedaten in Azure Synapse Analytics (ehemals SQL Data Warehouse) zu kopieren, auf deren Grundlage dann BI-Berichtslösungen (Business Intelligence) erstellt werden.
+Eine Data Factory kann eine oder mehrere Pipelines haben. Bei einer Pipeline handelt es sich um eine logische Gruppierung von Aktivitäten, die zusammen eine Aufgabe bilden. Die Aktivitäten in einer Pipeline definieren Aktionen, die Sie auf Ihre Daten anwenden. Sie können beispielsweise eine Kopieraktivität zum Kopieren von Daten aus einer SQL Server-Datenbank in eine Azure Blob Storage-Instanz verwenden. Verwenden Sie dann eine Hive-Aktivität, die ein Hive-Skript auf einen Azure HDInsight-Cluster anwendet, um Daten aus dem Blob Storage zu verarbeiten/transformieren, um Ausgabedaten zu produzieren. Kopieren Sie schließlich die Ausgabedaten mit einer zweiten Kopieraktivität in Azure Synapse Analytics, auf dessen Basis Business Intelligence-Berichtslösungen (BI) erstellt werden.
 
 Eine Aktivität kann über null oder mehr [Eingabedatasets](data-factory-create-datasets.md) verfügen und ein oder mehrere [Ausgabedatasets](data-factory-create-datasets.md) erstellen. Das folgende Diagramm zeigt die Beziehung zwischen Pipeline, Aktivität und Dataset in der Data Factory an:
 
@@ -65,7 +65,7 @@ Weitere Informationen finden Sie im Artikel [Datentransformationsaktivitäten](d
 Falls Sie Daten in einen/aus einem Datenspeicher verschieben müssen, der von der Kopieraktivität nicht unterstützt wird, oder Daten mit Ihrer eigenen Logik transformieren möchten, erstellen Sie eine **benutzerdefinierte .NET-Aktivität**. Informationen zum Erstellen und Verwenden einer benutzerdefinierten Aktivität finden Sie unter [Verwenden von benutzerdefinierten Aktivitäten in einer Azure Data Factory-Pipeline](data-factory-use-custom-activities.md).
 
 ## <a name="schedule-pipelines"></a>Planen von Pipelines
-Eine Pipeline ist nur zwischen ihrer **start** - und ihrer **end** -Zeit aktiv. Sie wird weder vor der Startzeit noch nach der Endzeit ausgeführt. Wenn die Pipeline angehalten wird, wird sie unabhängig von Start- und Endzeit nicht ausgeführt. Wenn eine Pipeline ausgeführt werden soll, darf sie nicht angehalten werden. Informationen zur Planung und Ausführung in Azure Data Factory finden Sie unter [Planung und Ausführung](data-factory-scheduling-and-execution.md) .
+Eine Pipeline ist nur zwischen ihrer **start**- und ihrer **end**-Zeit aktiv. Sie wird weder vor der Startzeit noch nach der Endzeit ausgeführt. Wenn die Pipeline angehalten wird, wird sie unabhängig von Start- und Endzeit nicht ausgeführt. Wenn eine Pipeline ausgeführt werden soll, darf sie nicht angehalten werden. Informationen zur Planung und Ausführung in Azure Data Factory finden Sie unter [Planung und Ausführung](data-factory-scheduling-and-execution.md) .
 
 ## <a name="pipeline-json"></a>Pipeline-JSON
 Sehen wir uns an, wie eine Pipeline im JSON-Format definiert wird. Die generische Struktur für eine Pipeline sieht wie folgt aus:
@@ -306,7 +306,7 @@ Sobald eine Pipeline erstellt/bereitgestellt ist, können Sie sie mit den Blätt
 - [Überwachen und Verwalten von Azure Data Factory-Pipelines mit der App „Überwachung und Verwaltung“](data-factory-monitor-manage-app.md)
 
 ## <a name="onetime-pipeline"></a>Pipeline mit einmaliger Ausführung
-Sie können eine Pipeline erstellen und zur regelmäßigen Ausführung (z.B. stündlich oder täglich) innerhalb der in der Pipelinedefinition angegebenen Start- und Endzeiten planen. Weitere Informationen finden Sie unter „Planen von Aktivitäten“. Sie können auch eine Pipeline erstellen, die nur einmal ausgeführt wird. Legen Sie zu diesem Zweck wie im folgenden JSON-Beispiel gezeigt die **pipelineMode** -Eigenschaft in der Pipelinedefinition auf **onetime** (einmalig) fest. Der Standardwert für diese Eigenschaft lautet **scheduled** (geplant).
+Sie können eine Pipeline erstellen und zur regelmäßigen Ausführung (z.B. stündlich oder täglich) innerhalb der in der Pipelinedefinition angegebenen Start- und Endzeiten planen. Weitere Informationen finden Sie unter „Planen von Aktivitäten“. Sie können auch eine Pipeline erstellen, die nur einmal ausgeführt wird. Legen Sie zu diesem Zweck wie im folgenden JSON-Beispiel gezeigt die **pipelineMode**-Eigenschaft in der Pipelinedefinition auf **onetime** (einmalig) fest. Der Standardwert für diese Eigenschaft lautet **scheduled** (geplant).
 
 ```json
 {
@@ -346,8 +346,8 @@ Sie können eine Pipeline erstellen und zur regelmäßigen Ausführung (z.B. st�
 
 Beachten Sie Folgendes:
 
-* Es werden keine Start- und Endzeiten ( **start** und **end** ) für die Pipeline angegeben.
-* Die Verfügbarkeit ( **availability** ) von Ein- und Ausgabedatasets ( **frequency** und **interval** ) wird angegeben, auch wenn die Werte von Data Factory nicht verwendet werden.
+* Es werden keine Start- und Endzeiten (**start** und **end**) für die Pipeline angegeben.
+* Die Verfügbarkeit (**availability**) von Ein- und Ausgabedatasets (**frequency** und **interval**) wird angegeben, auch wenn die Werte von Data Factory nicht verwendet werden.
 * Die Diagrammansicht zeigt einmalig ausgeführte Pipelines nicht an. Dieses Verhalten ist beabsichtigt.
 * Einmalige Pipelines können nicht aktualisiert werden. Sie können eine einmalige Pipeline klonen, umbenennen, deren Eigenschaften aktualisieren und sie bereitstellen, um eine andere Pipeline zu erstellen.
 

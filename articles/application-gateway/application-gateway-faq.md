@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/26/2020
 ms.author: victorh
 ms.custom: references_regions
-ms.openlocfilehash: 8df24b44d648343c46532eed443717f444bd0058
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: d46c1d8efb5234d47c80ca4256c2f56d56ccf805
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93397789"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862172"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Häufig gestellte Fragen zu Application Gateway
 
@@ -133,7 +133,7 @@ Ja. Die Application Gateway v1-SKU wird weiterhin unterstützt. Es wird jedoch 
 
 ### <a name="does-application-gateway-v2-support-proxying-requests-with-ntlm-authentication"></a>Unterstützt Application Gateway V2 Proxyanforderungen mit NTLM-Authentifizierung?
 
-Nein. Application Gateway V2 unterstützt noch keine Proxyanforderungen mit NTLM-Authentifizierung.
+Nein. Application Gateway V2 unterstützt keine Proxyanforderungen mit NTLM-Authentifizierung.
 
 ### <a name="does-application-gateway-affinity-cookie-support-samesite-attribute"></a>Unterstützt das Affinitätscookie von Application Gateway das SameSite-Attribut?
 Das [v80-Update](https://chromiumdash.appspot.com/schedule) des [Chromium-Browsers](https://www.chromium.org/Home) enthielt erstmals ein Mandat, bei dem HTTP-Cookies ohne SameSite-Attribut als „SameSite=Lax“ behandelt werden. Das bedeutet, dass das Affinitätscookie von Application Gateway nicht vom Browser in einem Drittanbieterkontext gesendet wird. 
@@ -249,11 +249,11 @@ Wenn Sie jedoch Application Gateway v2 nur mit privater IP-Adresse verwenden mö
 2. Erstellen Sie keine Listener für die öffentliche Front-End-IP-Adresse. Application Gateway lauscht nicht über die öffentliche IP-Adresse auf Datenverkehr, wenn keine Listener dafür erstellt werden.
 3. Erstellen Sie für das Application Gateway-Subnetz eine [Netzwerksicherheitsgruppe](../virtual-network/network-security-groups-overview.md) mit der folgenden Konfiguration in der Reihenfolge der Priorität:
     
-    a. Lassen Sie Datenverkehr von der Quelle als **GatewayManager** -Diensttag zu, das Ziel als **Beliebig** und den Zielport als **65200-65535**. Dieser Portbereich ist für die Kommunikation mit der Azure-Infrastruktur erforderlich. Diese Ports werden von der Zertifikatauthentifizierung geschützt (gesperrt). Externe Entitäten einschließlich der Gatewaybenutzeradministratoren können ohne entsprechende Zertifikate keine Änderungen an diesen Endpunkten vornehmen.
+    a. Lassen Sie Datenverkehr von der Quelle als **GatewayManager**-Diensttag zu, das Ziel als **Beliebig** und den Zielport als **65200-65535**. Dieser Portbereich ist für die Kommunikation mit der Azure-Infrastruktur erforderlich. Diese Ports werden von der Zertifikatauthentifizierung geschützt (gesperrt). Externe Entitäten einschließlich der Gatewaybenutzeradministratoren können ohne entsprechende Zertifikate keine Änderungen an diesen Endpunkten vornehmen.
     
-    b. Lassen Sie Datenverkehr von der Quelle als **AzureLoadBalancer** -Diensttag und Ziel und Zielport als **Beliebig** zu.
+    b. Lassen Sie Datenverkehr von der Quelle als **AzureLoadBalancer**-Diensttag und Ziel und Zielport als **Beliebig** zu.
     
-    c. Lehnen Sie sämtlichen eingehenden Datenverkehr von der Quelle als **Internet** -Diensttag und Ziel und Zielport als **Beliebig** ab. Weisen Sie dieser Regel die *geringste Priorität* in den Eingangsregeln zu.
+    c. Lehnen Sie sämtlichen eingehenden Datenverkehr von der Quelle als **Internet**-Diensttag und Ziel und Zielport als **Beliebig** ab. Weisen Sie dieser Regel die *geringste Priorität* in den Eingangsregeln zu.
     
     d. Behalten Sie die Standardregeln wie das Zulassen des VirtualNetwork-Eingangs bei, sodass der Zugriff auf die private IP-Adresse nicht blockiert wird.
     
@@ -466,12 +466,9 @@ Sie können auch eine Resource Manager-Vorlage verwenden, die die beliebte [GoAc
 
 In der Regel wird ein unbekannter Status angezeigt, wenn der Zugriff auf das Back-End durch eine Netzwerksicherheitsgruppe (NSG), einen benutzerdefinierten DNS oder durch benutzerdefiniertes Routing für das Application Gateway-Subnetz blockiert wird. Weitere Informationen finden Sie unter [Back-End-Integrität, Diagnoseprotokolle und Metriken für Application Gateway](application-gateway-diagnostics.md).
 
-### <a name="is-there-any-case-where-nsg-flow-logs-wont-show-allowed-traffic"></a>Gibt es einen Fall, in dem der zulässige Datenverkehr nicht in NSG-Flussprotokollen angezeigt wird?
+### <a name="are-nsg-flow-logs-supported-on-nsgs-associated-to-application-gateway-v2-subnet"></a>Werden NSG-Datenflussprotokolle in Netzwerksicherheitsgruppen unterstützt, die dem Application Gateway v2-Subnetz zugeordnet sind?
 
-Ja. Entspricht Ihre Konfiguration dem folgenden Szenario, wird zulässiger Datenverkehr nicht in Ihren NSG-Flussprotokollen angezeigt:
-- Sie haben Application Gateway v2 bereitgestellt.
-- Im Application Gateway-Subnetz ist eine NSG vorhanden.
-- Sie haben NSG-Flussprotokolle für diese NSG aktiviert.
+Wenn Sie über eine Netzwerksicherheitsgruppe im Application Gateway v2-Subnetz (Standard_v2, WAF_v2) verfügen, und wenn darin die NSG-Datenflussprotokolle aktiviert sind, kommt es aufgrund aktueller Plattformeinschränkungen zu nicht deterministischem Verhalten, und dieses Szenario wird derzeit nicht unterstützt.
 
 ### <a name="does-application-gateway-store-customer-data"></a>Speichert Application Gateway Kundendaten?
 

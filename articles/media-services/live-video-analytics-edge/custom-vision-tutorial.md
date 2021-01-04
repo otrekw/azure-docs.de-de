@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie mit Azure Custom Vision ein Containermodell e
 ms.topic: tutorial
 ms.date: 09/08/2020
 zone_pivot_groups: ams-lva-edge-programming-languages
-ms.openlocfilehash: 685aab603b2589a97b4c80ef0f8c5860617f1147
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: b4d9f82d99542bde216f0eaa1459d0f6c1a52659
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358261"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498335"
 ---
 # <a name="tutorial-analyze-live-video-with-live-video-analytics-on-iot-edge-and-azure-custom-vision"></a>Tutorial: Analysieren von Livevideo mit Live Video Analytics in IoT Edge and Azure Custom Vision
 
@@ -203,8 +203,8 @@ Wenn Sie die Graphtopologie für dieses Tutorial in einem Browser öffnen, sehen
 
     > [!div class="mx-imgBorder"]
     > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="Screenshot von „Ausführliche Meldung anzeigen“.":::
-1. Drücken Sie die **F5** -Taste, um eine Debugsitzung zu starten. Es werden dann Nachrichten im **Terminalfenster** ausgegeben.
-1. Der Code von operations.json beginnt mit Aufrufen der direkten Methoden `GraphTopologyList` und `GraphInstanceList`. Wenn Sie nach dem Durcharbeiten vorheriger Schnellstartanleitungen eine Ressourcenbereinigung durchgeführt haben, werden bei diesem Prozess leere Listen zurückgegeben, und anschließend wird die Ausführung angehalten. Drücken Sie die **EINGABETASTE** , um den Vorgang fortzusetzen.
+1. Drücken Sie die **F5**-Taste, um eine Debugsitzung zu starten. Es werden dann Nachrichten im **Terminalfenster** ausgegeben.
+1. Der Code von operations.json beginnt mit Aufrufen der direkten Methoden `GraphTopologyList` und `GraphInstanceList`. Wenn Sie nach dem Durcharbeiten vorheriger Schnellstartanleitungen eine Ressourcenbereinigung durchgeführt haben, werden bei diesem Prozess leere Listen zurückgegeben, und anschließend wird die Ausführung angehalten. Drücken Sie die **EINGABETASTE**, um den Vorgang fortzusetzen.
     
    Im **Terminalfenster** werden die nächsten Aufrufe direkter Methoden angezeigt:
     
@@ -245,7 +245,7 @@ Wenn Sie die Graphtopologie für dieses Tutorial in einem Browser öffnen, sehen
     
 1. Die Ausgabe im **Terminalfenster** wird an einer Aufforderung **Drücken Sie die EINGABETASTE, um den Vorgang fortzusetzen** angehalten. Warten Sie noch mit dem Drücken der **EINGABETASTE**. Scrollen Sie nach oben, um die JSON-Antwortnutzlasten für die aufgerufenen direkten Methoden anzuzeigen.
 1. Wechseln Sie in Visual Studio Code zum **Ausgabefenster**. Es werden Meldungen angezeigt, die vom Modul „Live Video Analytics in IoT Edge“ an den IoT-Hub gesendet werden. Im folgenden Abschnitt dieses Tutorials sind diese Meldungen beschrieben.
-1. Der Mediengraph wird weiter ausgeführt, und es werden Ergebnisse ausgegeben. Der RTSP-Simulator führt das Quellvideo als Schleife aus. Wechseln Sie zum Beenden des Mediengraphs zurück zum **Terminalfenster** , und drücken Sie die **EINGABETASTE**.
+1. Der Mediengraph wird weiter ausgeführt, und es werden Ergebnisse ausgegeben. Der RTSP-Simulator führt das Quellvideo als Schleife aus. Wechseln Sie zum Beenden des Mediengraphs zurück zum **Terminalfenster**, und drücken Sie die **EINGABETASTE**.
 Mit den nächsten Aufrufen wird die Ressourcenbereinigung durchgeführt:
     
    * Mit dem Aufruf von `GraphInstanceDeactivate` wird die Graphinstanz deaktiviert.
@@ -391,6 +391,6 @@ Wenn Sie die anderen Tutorials und Schnellstartanleitungen durcharbeiten möchte
 Zusätzliches für fortgeschrittene Benutzer:
 
 * Verwenden Sie eine [IP-Kamera](https://en.wikipedia.org/wiki/IP_camera) mit RTSP-Unterstützung anstelle des RTSP-Simulators. IP-Kameras, die RTSP unterstützen, finden Sie auf der [Seite mit den ONVIF-konformen Produkten](https://www.onvif.org/conformant-products/). Suchen Sie nach Geräten, die mit den Profilen G, S oder T konform sind.
-* Verwenden Sie ein AMD64- oder x64-Linux-Gerät anstelle eines virtuellen Azure-Linux-Computers. Dieses Gerät muss sich im gleichen Netzwerk befinden wie die IP-Kamera. Sie können die Anleitungen unter [Installieren der Azure IoT Edge-Runtime unter Linux](../../iot-edge/how-to-install-iot-edge-linux.md) befolgen.
+* Verwenden Sie ein AMD64- oder x64-Linux-Gerät anstelle eines virtuellen Azure-Linux-Computers. Dieses Gerät muss sich im gleichen Netzwerk befinden wie die IP-Kamera. Sie können die Anleitungen unter [Installieren der Azure IoT Edge-Runtime unter Linux](../../iot-edge/how-to-install-iot-edge.md) befolgen.
 
 Registrieren Sie das Gerät anschließend beim Azure IoT Hub, indem Sie die Anweisungen in [Bereitstellen Ihres ersten IoT Edge-Moduls auf einem virtuellen Linux-Gerät](../../iot-edge/quickstart-linux.md) ausführen.

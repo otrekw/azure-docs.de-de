@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 01/09/2019
 ms.author: vikancha
-ms.openlocfilehash: 9b6e752f8352db565239aba4a990752b1c397f5f
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 716a8853a2e2e0988cc50f5289f448d7a4adc9be
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92517258"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608706"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>Installieren von NVIDIA GPU-Treibern für virtuelle Computer der Serie N mit Linux
 
@@ -22,6 +22,9 @@ Wenn Sie die GPU-Funktionen von Azure-VMs der N-Serie nutzen möchten, die von N
 Wenn Sie NVIDIA-GPU-Treiber manuell installieren möchten, finden Sie in diesem Artikel Informationen zu unterstützten Distributionen und Treibern sowie Schritte zur Installation und Überprüfung. Informationen zur manuellen Einrichtung von Treibern stehen auch für [Windows-VMs](../windows/n-series-driver-setup.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) zur Verfügung.
 
 Informationen zu Spezifikationen von virtuellen Computern der N-Serie, Speicherkapazitäten und Details zu den Datenträgern finden Sie unter [GPU-optimierte Größen von virtuellen Linux-Computern](../sizes-gpu.md?toc=/azure/virtual-machines/linux/toc.json). 
+
+> [!NOTE]
+> Dieser Artikel enthält Verweise auf den Begriff *Blacklist*, der von Microsoft nicht mehr verwendet wird. Sobald der Begriff aus der Software entfernt wurde, wird er auch aus diesem Artikel entfernt.
 
 [!INCLUDE [virtual-machines-n-series-linux-support](../../../includes/virtual-machines-n-series-linux-support.md)]
 
@@ -98,7 +101,9 @@ sudo reboot
   
    sudo reboot
 
-2. Install the latest [Linux Integration Services for Hyper-V and Azure](https://www.microsoft.com/download/details.aspx?id=55106).
+2. Install the latest [Linux Integration Services for Hyper-V and Azure](https://www.microsoft.com/download/details.aspx?id=55106). Check if LIS is required by verifying the results of lspci. If all GPU devices are listed as expected, installing LIS is not required.
+
+Skip this step if you plan to use CentOS 7.8(or higher) as LIS is no longer required for these versions.
 
    ```bash
    wget https://aka.ms/lis
@@ -156,7 +161,7 @@ RDMA-Netzwerkkonnektivität kann auf virtuellen Computern der N-Serie (etwa NC24
 
 Stellen Sie RDMA-fähige VMs der N-Serie über eines der Images aus dem Azure Marketplace bereit, das RDMA-Konnektivität für VMs der N-Serie unterstützt:
   
-* **Ubuntu 16.04 LTS** : Konfigurieren Sie RDMA-Treiber auf der VM, und registrieren Sie sich bei Intel, um Intel MPI herunterzuladen:
+* **Ubuntu 16.04 LTS**: Konfigurieren Sie RDMA-Treiber auf der VM, und registrieren Sie sich bei Intel, um Intel MPI herunterzuladen:
 
   [!INCLUDE [virtual-machines-common-ubuntu-rdma](../../../includes/virtual-machines-common-ubuntu-rdma.md)]
 
@@ -225,7 +230,7 @@ Stellen Sie zum Installieren von NVIDIA GRID-Treibern auf virtuellen Computern d
    sudo ./NVIDIA-Linux-x86_64-grid.run
    ``` 
 
-6. Wenn Sie gefragt werden, ob Sie mit dem Hilfsprogramm „nvidia-xconfig“ Ihre X-Konfigurationsdatei aktualisieren möchten, klicken Sie auf **Ja** .
+6. Wenn Sie gefragt werden, ob Sie mit dem Hilfsprogramm „nvidia-xconfig“ Ihre X-Konfigurationsdatei aktualisieren möchten, klicken Sie auf **Ja**.
 
 7. Nachdem die Installation abgeschlossen ist, kopieren Sie „/etc/nvidia/gridd.conf.template“ in eine neue Datei „gridd.conf at location /etc/nvidia/“.
 
@@ -264,7 +269,7 @@ Stellen Sie zum Installieren von NVIDIA GRID-Treibern auf virtuellen Computern d
    sudo yum install hyperv-daemons
    ```
 
-2. Deaktivieren Sie den Nouveau-Kerneltreiber, da er nicht mit dem NVIDIA-Treiber kompatibel ist. (Verwenden Sie den NVIDIA-Treiber nur auf virtuellen NV- oder NV2-Computern.) Erstellen Sie zu diesem Zweck eine Datei in `/etc/modprobe.d`, und nennen Sie sie `nouveau.conf`. Die Datei muss den folgenden Inhalt enthalten:
+2. Deaktivieren Sie den Nouveau-Kerneltreiber, da er nicht mit dem NVIDIA-Treiber kompatibel ist. (Verwenden Sie den NVIDIA-Treiber nur auf virtuellen NV- oder NV3-Computern.) Erstellen Sie zu diesem Zweck eine Datei in `/etc/modprobe.d`, und nennen Sie sie `nouveau.conf`. Die Datei muss den folgenden Inhalt enthalten:
 
    ```
    blacklist nouveau
@@ -272,7 +277,9 @@ Stellen Sie zum Installieren von NVIDIA GRID-Treibern auf virtuellen Computern d
    blacklist lbm-nouveau
    ```
  
-3. Starten Sie den virtuellen Computer neu, und installieren Sie die aktuellsten [Linux-Integrationsdienste für Hyper-V und Azure](https://www.microsoft.com/download/details.aspx?id=55106).
+3. Starten Sie den virtuellen Computer neu, und installieren Sie die aktuellsten [Linux-Integrationsdienste für Hyper-V und Azure](https://www.microsoft.com/download/details.aspx?id=55106). Überprüfen Sie, ob LIS erforderlich ist, indem Sie die Ergebnisse von lspci überprüfen. Wenn alle GPU-Geräte erwartungsgemäß aufgeführt sind, ist die Installation von LIS nicht erforderlich. 
+
+Überspringen Sie diesen Schritt, wenn Sie CentOS/RHEL 7.8 und höher verwenden.
  
    ```bash
    wget https://aka.ms/lis
@@ -298,7 +305,7 @@ Stellen Sie zum Installieren von NVIDIA GRID-Treibern auf virtuellen Computern d
 
    sudo ./NVIDIA-Linux-x86_64-grid.run
    ``` 
-6. Wenn Sie gefragt werden, ob Sie mit dem Hilfsprogramm „nvidia-xconfig“ Ihre X-Konfigurationsdatei aktualisieren möchten, klicken Sie auf **Ja** .
+6. Wenn Sie gefragt werden, ob Sie mit dem Hilfsprogramm „nvidia-xconfig“ Ihre X-Konfigurationsdatei aktualisieren möchten, klicken Sie auf **Ja**.
 
 7. Nachdem die Installation abgeschlossen ist, kopieren Sie „/etc/nvidia/gridd.conf.template“ in eine neue Datei „gridd.conf at location /etc/nvidia/“.
   
@@ -373,6 +380,7 @@ Erstellen Sie dann einen Eintrag für Ihr Updateskript in `/etc/rc.d/rc3.d`, dam
 
 * Sie können den Persistenzmodus mit `nvidia-smi` festlegen, damit die Ausgabe des Befehls schneller erfolgt, wenn Sie Karten abfragen müssen. Führen Sie zum Festlegen des Persistenzmodus `nvidia-smi -pm 1` aus. Beachten Sie, dass die Moduseinstellung verloren geht, wenn der virtuelle Computer neu gestartet wird. Sie haben aber die Möglichkeit, per Skript festzulegen, dass der Modus immer beim Start festgelegt werden soll.
 * Wenn Sie die NVIDIA CUDA-Treiber auf die neueste Version aktualisiert haben und feststellen, dass RDMA-Verbindungen nicht mehr funktionieren, [installieren Sie die RDMA-Treiber erneut](#rdma-network-connectivity), um diese Konnektivität wiederherzustellen. 
+* Wenn eine bestimmte CentOS/RHEL-Betriebssystemversion (oder ein Kernel) für LIS nicht unterstützt wird, wird der Fehler „Nicht unterstützte Kernel Version“ ausgelöst. Melden Sie diesen Fehler zusammen mit der Betriebssystem- und Kernelversion.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

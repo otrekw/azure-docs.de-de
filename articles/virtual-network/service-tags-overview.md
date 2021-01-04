@@ -7,18 +7,18 @@ documentationcenter: na
 author: allegradomel
 ms.service: virtual-network
 ms.devlang: NA
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/30/2020
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: 60d3607a543cac5b8ce71819eb60394d8b8827bf
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.openlocfilehash: d01136ea4377bd7d35a2e11b4bcf654bcf677fbe
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94331133"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97401558"
 ---
 # <a name="virtual-network-service-tags"></a>Diensttags in virtuellen Netzwerken
 <a name="network-service-tags"></a>
@@ -43,7 +43,7 @@ In den Spalten wird angegeben, ob das jeweilige Tag:
 Standardmäßig spiegeln Diensttags die Bereiche für die gesamte Cloud wider. Einige Diensttags ermöglichen eine präzisere Steuerung, indem sie die entsprechenden IP-Adressbereiche auf eine bestimmte Region beschränken. Das Diensttag **Storage** beispielsweise repräsentiert Azure Storage für die gesamte Cloud, **Storage.WestUS** schränkt den Bereich jedoch auf die IP-Adressbereiche der Region „USA, Westen“ ein. Die folgende Tabelle gibt an, ob die einzelnen Diensttags einen solchen regionalen Bereich unterstützen.  
 
 | Tag | Zweck | Eingehend oder ausgehend möglich? | Regional möglich? | Einsatz mit Azure Firewall möglich? |
-| --- | -------- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| --- | -------- |:---:|:---:|:---:|
 | **ActionGroup** | Aktionsgruppe | Eingehend | Nein | Nein |
 | **ApiManagement** | Verwaltungsdatenverkehr für dedizierte Azure API Management-Bereitstellungen. <br/><br/>*Hinweis:* Dieses Tag stellt den Azure API Management-Dienstendpunkt für die Steuerungsebene pro Region dar. Dadurch können Kunden Verwaltungsvorgänge für die APIs, Vorgänge, Richtlinien und NamedValues ausführen, die für den API Management Dienst konfiguriert sind.  | Eingehend | Ja | Ja |
 | **ApplicationInsightsAvailability** | Verfügbarkeit von Application Insights | Eingehend | Nein | Nein |
@@ -64,6 +64,7 @@ Standardmäßig spiegeln Diensttags die Bereiche für die gesamte Cloud wider. E
 | **AzureDataExplorerManagement** | Azure Data Explorer-Verwaltung | Eingehend | Nein | Nein |
 | **AzureDataLake** | Azure Data Lake Storage Gen1. | Ausgehend | Nein | Ja |
 | **AzureDevSpaces** | Azure Dev Spaces | Ausgehend | Nein | Nein |
+| **AzureDevOps** | Azure Dev Ops.<br/><br/>*Hinweis: Dieses Tag ist derzeit nicht über das Azure-Portal konfigurierbar.*| Eingehend | Nein | Ja |
 | **AzureDigitalTwins** | Azure Digital Twins.<br/><br/>*Hinweis:* Dieses Tag oder die von diesem Tag abgedeckten IP-Adressen können verwendet werden, um den Zugriff auf Endpunkte einzuschränken, die für Ereignisrouten konfiguriert sind. *Dieses Tag ist derzeit nicht über das Azure-Portal konfigurierbar.* | Eingehend | Nein | Ja |
 | **AzureEventGrid** | Azure Event Grid: | Beide | Nein | Nein |
 | **AzureFrontDoor.Frontend** <br/> **AzureFrontDoor.Backend** <br/> **AzureFrontDoor.FirstParty**  | Azure Front Door | Beide | Nein | Nein |

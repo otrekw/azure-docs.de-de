@@ -3,14 +3,14 @@ title: Erstellen von Updatebereitstellungen für die Azure Automation-Updateverw
 description: In diesem Artikel wird beschrieben, wie Sie Updatebereitstellungen planen und deren Status anzeigen.
 services: automation
 ms.subservice: update-management
-ms.date: 10/27/2020
+ms.date: 12/09/2020
 ms.topic: conceptual
-ms.openlocfilehash: 41ccecfb844f11a0d234271bcddc1851d3c02fda
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: ec0d6d618edad87b76861ea834adb2f29531e6f5
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92742291"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929666"
 ---
 # <a name="how-to-deploy-updates-and-review-results"></a>Bereitstellen von Updates und Überprüfen von Ergebnissen
 
@@ -20,7 +20,7 @@ In jedem Szenario zielt die von Ihnen erstellte Bereitstellung auf diesen ausgew
 
 * Das Betriebssystem wird automatisch vorab ausgewählt, basierend auf dem Betriebssystem des Computers.
 * Der zu aktualisierende Zielcomputer wird automatisch auf sich selbst als Ziel festgelegt.
-* Wenn Sie den Zeitplan konfigurieren, können Sie **Jetzt aktualisieren** , „Einmalig am“ oder „Verwendet einen wiederkehrenden Zeitplan“ angeben.
+* Wenn Sie den Zeitplan konfigurieren, können Sie **Jetzt aktualisieren**, „Einmalig am“ oder „Verwendet einen wiederkehrenden Zeitplan“ angeben.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Melden Sie sich auf dem Azure-Portal an.
 
@@ -37,15 +37,15 @@ Um eine neue Updatebereitstellung durchzuführen, führen Sie die folgenden Schr
 
 1. Im Portal zum Planen einer Bereitstellung:
 
-   * Für einen oder mehrere Computer navigieren Sie zu **Automation-Konten** , und wählen Sie in der Liste Ihr Automation-Konto mit aktivierter Updateverwaltung aus.
-   * Für einen virtuellen Azure-Computer navigieren Sie zu **Virtuelle Computer** , und wählen Sie Ihren virtuellen Computer in der Liste aus.
-   * Für einen Arc-fähigen Server navigieren Sie zu **Server – Azure Arc** , und wählen Sie Ihren Server in der Liste aus.
+   * Für einen oder mehrere Computer navigieren Sie zu **Automation-Konten**, und wählen Sie in der Liste Ihr Automation-Konto mit aktivierter Updateverwaltung aus.
+   * Für einen virtuellen Azure-Computer navigieren Sie zu **Virtuelle Computer**, und wählen Sie Ihren virtuellen Computer in der Liste aus.
+   * Für einen Arc-fähigen Server navigieren Sie zu **Server – Azure Arc**, und wählen Sie Ihren Server in der Liste aus.
 
 2. Gehen Sie wie folgt vor, um abhängig von der ausgewählten Ressource zur Updateverwaltung zu navigieren:
 
-   * Wenn Sie Ihr Automation-Konto ausgewählt haben, wechseln Sie unter **Updateverwaltung** zu **Updateverwaltung** , und wählen Sie dann **Updatebereitstellung planen** aus.
-   * Wenn Sie einen virtuellen Azure-Computer ausgewählt haben, wechseln Sie zu **Gast- und Hostupdates** , und wählen Sie dann **Zur Updateverwaltung wechseln** aus.
-   * Wenn Sie einen Arc-fähigen Server ausgewählt haben, wechseln Sie zur **Updateverwaltung** , und wählen Sie dann **Updatebereitstellung planen** aus.
+   * Wenn Sie Ihr Automation-Konto ausgewählt haben, wechseln Sie unter **Updateverwaltung** zu **Updateverwaltung**, und wählen Sie dann **Updatebereitstellung planen** aus.
+   * Wenn Sie einen virtuellen Azure-Computer ausgewählt haben, wechseln Sie zu **Gast- und Hostupdates**, und wählen Sie dann **Zur Updateverwaltung wechseln** aus.
+   * Wenn Sie einen Arc-fähigen Server ausgewählt haben, wechseln Sie zur **Updateverwaltung**, und wählen Sie dann **Updatebereitstellung planen** aus.
 
 3. Geben Sie unter **Neue Updatebereitstellung**  im Feld **Name** einen eindeutigen Namen für Ihre Bereitstellung ein.
 
@@ -64,7 +64,7 @@ Um eine neue Updatebereitstellung durchzuführen, führen Sie die folgenden Schr
     > [!NOTE]
     > Diese Option ist nicht verfügbar, wenn Sie einen virtuellen Azure-Computer oder einen Arc-fähigen Server ausgewählt haben. Der Computer wird automatisch als Ziel für die geplante Bereitstellung festgelegt.
 
-7. Verwenden Sie den Bereich **Updateklassifizierungen** , um [Updateklassifizierungen](view-update-assessments.md#work-with-update-classifications) für Produkte anzugeben. Deaktivieren Sie für jedes Produkt alle unterstützten Updateklassifizierungen, die nicht in Ihre Updatebereitstellung eingeschlossen werden sollen.
+7. Verwenden Sie den Bereich **Updateklassifizierungen**, um [Updateklassifizierungen](view-update-assessments.md#work-with-update-classifications) für Produkte anzugeben. Deaktivieren Sie für jedes Produkt alle unterstützten Updateklassifizierungen, die nicht in Ihre Updatebereitstellung eingeschlossen werden sollen.
 
     Wenn Ihre Bereitstellung nur für ausgewählte Updates gelten soll, ist es erforderlich, alle vorab ausgewählten Updateklassifizierungen zu deaktivieren, wenn die Option  **Updates einschließen/ausschließen** wie im nächsten Schritt beschrieben konfiguriert wird. Dadurch wird sichergestellt, dass nur die Updates, die Sie in diese Bereitstellung *einschließen* möchten, auf den Zielcomputern installiert werden.
 
@@ -81,7 +81,7 @@ Um eine neue Updatebereitstellung durchzuführen, führen Sie die folgenden Schr
     > [!NOTE]
     > Diese Option unterscheidet sich, wenn Sie einen Arc-fähigen Server ausgewählt haben. Sie können **Jetzt aktualisieren** oder eine Startzeit, die 20 Minuten in der Zukunft liegt, auswählen.
 
-10. Verwenden Sie **Wiederholung** , um anzugeben, ob die Bereitstellung einmal oder nach einem wiederkehrenden Zeitplan erfolgt, und wählen Sie dann **OK** aus.
+10. Verwenden Sie **Wiederholung**, um anzugeben, ob die Bereitstellung einmal oder nach einem wiederkehrenden Zeitplan erfolgt, und wählen Sie dann **OK** aus.
 
 11. Wählen Sie im Bereich **Vor und nach dem Vorgang auszuführende Skripts** die Skripts aus, die vor und nach Ihrer Bereitstellung ausgeführt werden sollen. Weitere Informationen finden Sie unter [Verwalten von Pre- und Post-Skripts](pre-post-scripts.md).
 
@@ -95,7 +95,7 @@ Um eine neue Updatebereitstellung durchzuführen, führen Sie die folgenden Schr
     > [!NOTE]
     > Damit unter Ubuntu keine Updates außerhalb der Wartungsfenster angewandt werden, konfigurieren Sie das Paket `Unattended-Upgrade` erneut, um automatische Updates zu deaktivieren. Weitere Informationen zur Konfiguration dieses Pakets finden Sie im [Thema zu automatischen Updates im Ubuntu-Serverhandbuch](https://help.ubuntu.com/lts/serverguide/automatic-updates.html).
 
-13. Verwenden Sie das Feld **Neustartoptionen** , um die Methode zum Behandeln von Neustarts während der Bereitstellung anzugeben. Die folgenden Optionen sind verfügbar: 
+13. Verwenden Sie das Feld **Neustartoptionen**, um die Methode zum Behandeln von Neustarts während der Bereitstellung anzugeben. Die folgenden Optionen sind verfügbar: 
     * Neustart, falls erforderlich (Standard)
     * Immer neu starten
     * Nie neu starten
@@ -121,7 +121,7 @@ Sie können auch ein Beispielrunbook zum Erstellen einer wöchentlichen Updatebe
 
 ## <a name="check-deployment-status"></a>Überprüfen des Bereitstellungsstatus
 
-Nach dem Start Ihrer geplanten Bereitstellung wird ihr Status auf der Registerkarte **Verlauf** unter **Updateverwaltung** angezeigt. Der Status lautet **In Bearbeitung** , wenn die Bereitstellung derzeit ausgeführt wird. Nach erfolgreichem Abschluss der Bereitstellung ändert sich der Status in **Erfolgreich**. Wenn bei einzelnen oder mehreren Updates in der Bereitstellung Fehler auftreten, wird der Status als **Fehlgeschlagen** angezeigt.
+Nach dem Start Ihrer geplanten Bereitstellung wird ihr Status auf der Registerkarte **Verlauf** unter **Updateverwaltung** angezeigt. Der Status lautet **In Bearbeitung**, wenn die Bereitstellung derzeit ausgeführt wird. Nach erfolgreichem Abschluss der Bereitstellung ändert sich der Status in **Erfolgreich**. Wenn bei einzelnen oder mehreren Updates in der Bereitstellung Fehler auftreten, wird der Status als **Fehlgeschlagen** angezeigt.
 
 ## <a name="view-results-of-a-completed-update-deployment"></a>Anzeigen der Ergebnisse einer abgeschlossenen Updatebereitstellung
 
@@ -142,7 +142,7 @@ Wählen Sie **Alle Protokolle** aus, um alle von der Bereitstellung erstellten P
 
 Wählen Sie **Ausgabe** aus, um den Auftragsdatenstrom des Runbooks anzuzeigen, das für die Verwaltung der Updatebereitstellung auf den Ziel-VMs verantwortlich ist.
 
-Klicken Sie auf **Fehler** , um ausführliche Informationen zu Fehlern bei der Bereitstellung anzuzeigen.
+Klicken Sie auf **Fehler**, um ausführliche Informationen zu Fehlern bei der Bereitstellung anzuzeigen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 2b474ae184374a2c91dcba15517048556686ec35
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 8eaadc031039b22e209db1023c65da39e1e096b1
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92782228"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483282"
 ---
 # <a name="customer-managed-keys-for-azure-storage-encryption"></a>Kundenseitig verwaltete Schlüssel für die Azure Storage-Verschlüsselung
 
@@ -113,7 +113,7 @@ Zum Widerrufen des Zugriffs auf von Kunden verwaltete Schlüssel können Sie [Po
 
 ## <a name="customer-managed-keys-for-azure-managed-disks"></a>Von Kunden verwaltete Schlüssel für verwaltete Azure-Datenträger
 
-Mit von Kunden verwalteten Schlüsseln kann auch die Verschlüsselung von verwalteten Azure-Datenträgern verwaltet werden. Das Verhalten der von Kunden verwalteten Schlüssel unterscheidet sich für verwaltete Datenträger von dem für Azure Storage-Ressourcen. Weitere Informationen finden Sie unter [Serverseitige Verschlüsselung von Azure Managed Disks (Windows)](../../virtual-machines/windows/disk-encryption.md) bzw. [Serverseitige Verschlüsselung von Azure Managed Disks (Linux)](../../virtual-machines/linux/disk-encryption.md).
+Mit von Kunden verwalteten Schlüsseln kann auch die Verschlüsselung von verwalteten Azure-Datenträgern verwaltet werden. Das Verhalten der von Kunden verwalteten Schlüssel unterscheidet sich für verwaltete Datenträger von dem für Azure Storage-Ressourcen. Weitere Informationen finden Sie unter [Serverseitige Verschlüsselung von Azure Managed Disks (Windows)](../../virtual-machines/disk-encryption.md) bzw. [Serverseitige Verschlüsselung von Azure Managed Disks (Linux)](../../virtual-machines/disk-encryption.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

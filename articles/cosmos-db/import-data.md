@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: tutorial
 ms.date: 10/23/2020
 ms.author: dech
-ms.openlocfilehash: 7823c63cf618808cb1ab4400c39f4bc64b7af338
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 1cee4d2ad1bc7f362a045a5991624ec43521b8d2
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427546"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96341647"
 ---
 # <a name="tutorial-use-data-migration-tool-to-migrate-your-data-to-azure-cosmos-db"></a>Tutorial: Migrieren Ihrer Daten zu Azure Cosmos DB mithilfe des Datenmigrationstools
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -24,7 +24,7 @@ In diesem Tutorial erfahren Sie, wie Sie das Azure Cosmos DB-Datenmigrationstool
 
 * **[SQL-API:](./introduction.md)** Sie können eine beliebige Quelloption des Datenmigrationstools verwenden, um Daten in kleinem Umfang zu importieren. [Erfahren Sie mehr über Migrationsoptionen zum Importieren von Daten in großem Umfang](cosmosdb-migrationchoices.md).
 * **[Tabellen-API:](table-introduction.md)** Daten können mithilfe des Datenmigrationstools oder mithilfe von [AzCopy](table-import.md#migrate-data-by-using-azcopy) importiert werden. Weitere Informationen finden Sie unter [Importieren von Daten für die Verwendung mit der Tabellen-API von Azure Cosmos DB](table-import.md).
-* **[Azure Cosmos DB-API für MongoDB:](mongodb-introduction.md)** Das Datenmigrationstool weist keine Unterstützung der Azure Cosmos DB-API für MongoDB auf (weder als Quelle noch als Ziel). Wenn Sie die Daten in Azure Cosmos DB in oder aus Sammlungen migrieren möchten, hilft Ihnen die Anleitung unter [Migrieren von MongoDB-Daten zu einer Cosmos-Datenbank mit der Azure Cosmos DB-API für MongoDB](../dms/tutorial-mongodb-cosmos-db.md?toc=%252fazure%252fcosmos-db%252ftoc.json%253ftoc%253d%252fazure%252fcosmos-db%252ftoc.json) weiter. Sie können weiterhin das Datenmigrationstool verwenden, um Daten von MongoDB in Azure Cosmos DB-SQL-API-Sammlungen für die Verwendung mit der SQL-API zu exportieren.
+* **[Azure Cosmos DB-API für MongoDB:](mongodb-introduction.md)** Das Datenmigrationstool weist keine Unterstützung der Azure Cosmos DB-API für MongoDB auf (weder als Quelle noch als Ziel). Wenn Sie die Daten in Azure Cosmos DB in oder aus Sammlungen migrieren möchten, hilft Ihnen die Anleitung unter [Migrieren von MongoDB-Daten zu einer Cosmos-Datenbank mit der Azure Cosmos DB-API für MongoDB](../dms/tutorial-mongodb-cosmos-db.md?toc=%2fazure%2fcosmos-db%2ftoc.json%253ftoc%253d%2fazure%2fcosmos-db%2ftoc.json) weiter. Sie können weiterhin das Datenmigrationstool verwenden, um Daten von MongoDB in Azure Cosmos DB-SQL-API-Sammlungen für die Verwendung mit der SQL-API zu exportieren.
 * **[Cassandra-API:](graph-introduction.md)** Das Datenmigrationstool wird nicht als Importtool für Cassandra-API-Konten unterstützt. [Erfahren Sie mehr über Migrationsoptionen zum Importieren von Daten in die Cassandra-API](cosmosdb-migrationchoices.md#azure-cosmos-db-cassandra-api).
 * **[Gremlin-API:](graph-introduction.md)** Das Datenmigrationstool wird derzeit nicht als Importtool für Gremlin-API-Konten unterstützt. [Erfahren Sie mehr über Migrationsoptionen zum Importieren von Daten in die Gremlin-API](cosmosdb-migrationchoices.md#other-apis). 
 
@@ -70,8 +70,8 @@ Das Importtool verfügt zwar über eine grafische Benutzeroberfläche (dtui.exe)
 
 Der Quellcode des Migrationstools ist auf GitHub in [diesem Repository](https://github.com/azure/azure-documentdb-datamigrationtool) verfügbar. Sie können die Lösung herunterladen und lokal kompilieren oder eine [vorkompilierte Binärdatei herunterladen](https://aka.ms/csdmtool), und dann eine der folgenden Dateien ausführen:
 
-* **Dtui.exe** : GUI-Version des Tools
-* **Dt.exe** : Befehlszeilenversion des Tools
+* **Dtui.exe**: GUI-Version des Tools
+* **Dt.exe**: Befehlszeilenversion des Tools
 
 ## <a name="select-data-source"></a>Auswählen einer Datenquelle
 
@@ -100,8 +100,8 @@ Die Verbindungszeichenfolge hat folgendes Format:
 
 `AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>`
 
-* `<CosmosDB Endpoint>` ist der Endpunkt-URI. Diesen Wert können Sie im Azure-Portal ermitteln. Navigieren Sie zu Ihrem Azure Cosmos-Konto. Öffnen Sie den Bereich **Übersicht** , und kopieren Sie den Wert von **URI**.
-* `<AccountKey>` ist das „Kennwort“ oder der **PRIMÄRSCHLÜSSEL**. Diesen Wert können Sie im Azure-Portal ermitteln. Navigieren Sie zu Ihrem Azure Cosmos-Konto. Öffnen Sie einen der Bereiche **Verbindungszeichenfolgen** oder **Schlüssel** , und kopieren Sie das „Kennwort“ oder den Wert von **PRIMÄRSCHLÜSSEL**.
+* `<CosmosDB Endpoint>` ist der Endpunkt-URI. Diesen Wert können Sie im Azure-Portal ermitteln. Navigieren Sie zu Ihrem Azure Cosmos-Konto. Öffnen Sie den Bereich **Übersicht**, und kopieren Sie den Wert von **URI**.
+* `<AccountKey>` ist das „Kennwort“ oder der **PRIMÄRSCHLÜSSEL**. Diesen Wert können Sie im Azure-Portal ermitteln. Navigieren Sie zu Ihrem Azure Cosmos-Konto. Öffnen Sie einen der Bereiche **Verbindungszeichenfolgen** oder **Schlüssel**, und kopieren Sie das „Kennwort“ oder den Wert von **PRIMÄRSCHLÜSSEL**.
 * `<CosmosDB Database>` ist der Name der Cosmos DB-Datenbank.
 
 Beispiel: `AccountEndpoint=https://myCosmosDBName.documents.azure.com:443/;AccountKey=wJmFRYna6ttQ79ATmrTMKql8vPri84QBiHTt6oinFkZRvoe7Vv81x9sn6zlVlBY10bEPMgGM982wfYXpWXWB9w==;Database=myDatabaseName`
@@ -131,7 +131,7 @@ dt.exe /s:JsonFile /s.Files:D:\\CompanyData\\Companies.json /t:DocumentDBBulk /t
 ## <a name="import-from-mongodb"></a><a id="MongoDB"></a>Importieren aus MongoDB
 
 > [!IMPORTANT]
-> Wenn Sie den Import in ein Cosmos-Konto durchführen, das mit der Azure Cosmos DB-API für MongoDB konfiguriert wurde, hilft Ihnen diese [Anleitung](../dms/tutorial-mongodb-cosmos-db.md?toc=%252fazure%252fcosmos-db%252ftoc.json%253ftoc%253d%252fazure%252fcosmos-db%252ftoc.json) weiter.
+> Wenn Sie den Import in ein Cosmos-Konto durchführen, das mit der Azure Cosmos DB-API für MongoDB konfiguriert wurde, hilft Ihnen diese [Anleitung](../dms/tutorial-mongodb-cosmos-db.md?toc=%2fazure%2fcosmos-db%2ftoc.json%253ftoc%253d%2fazure%2fcosmos-db%2ftoc.json) weiter.
 
 Mit der Importprogrammoption für MongoDB-Dateiquellen können Sie Dateien aus einer einzelnen MongoDB-Sammlung importieren, Dokumente optional mit einer Abfrage filtern und die Dokumentstruktur mithilfe einer Projektion ändern.  
 
@@ -159,7 +159,7 @@ dt.exe /s:MongoDB /s.ConnectionString:mongodb://<dbuser>:<dbpassword>@<host>:<po
 ## <a name="import-mongodb-export-files"></a><a id="MongoDBExport"></a>Importieren von MongoDB-Exportdateien
 
 > [!IMPORTANT]
-> Falls Sie Daten in ein Azure Cosmos DB-Konto mit Unterstützung für MongoDB importieren, befolgen Sie diese [Anweisungen](../dms/tutorial-mongodb-cosmos-db.md?toc=%252fazure%252fcosmos-db%252ftoc.json%253ftoc%253d%252fazure%252fcosmos-db%252ftoc.json).
+> Falls Sie Daten in ein Azure Cosmos DB-Konto mit Unterstützung für MongoDB importieren, befolgen Sie diese [Anweisungen](../dms/tutorial-mongodb-cosmos-db.md?toc=%2fazure%2fcosmos-db%2ftoc.json%253ftoc%253d%2fazure%2fcosmos-db%2ftoc.json).
 
 Mit der Importprogrammoption für JSON-Dateiquellen und MongoDB-Exportdateien können Sie eine oder mehrere JSON-Dateien importieren, die mit dem mongoexport-Dienstprogramm erzeugt wurden.  
 
@@ -386,7 +386,7 @@ Die Verbindungszeichenfolge für das Azure Cosmos DB-Konto kann im Azure-Portal 
 > [!NOTE]
 > Verwenden Sie den Befehl „Überprüfen“, um sicherzustellen, dass auf die im Feld „Verbindungszeichenfolge“ angegebene Azure Cosmos DB-Instanz zugegriffen werden kann.
 
-Zum Importieren von Daten in eine einzelne Sammlung geben Sie den Namen der Sammlung ein, aus der Daten importiert werden sollen, und klicken dann auf die Schaltfläche „Hinzufügen“. Zum Importieren von Daten in mehrere Sammlungen geben Sie entweder jeden Sammlungsnamen einzeln ein, oder geben Sie mit der folgenden Syntax mehrere Sammlungen an: *Sammlungspräfix* [Startindex - Endindex]. Wenn Sie mehrere Sammlungen mit der obigen Syntax angeben, müssen Sie folgende Richtlinien beachten:
+Zum Importieren von Daten in eine einzelne Sammlung geben Sie den Namen der Sammlung ein, aus der Daten importiert werden sollen, und klicken dann auf die Schaltfläche „Hinzufügen“. Zum Importieren von Daten in mehrere Sammlungen geben Sie entweder jeden Sammlungsnamen einzeln ein, oder geben Sie mit der folgenden Syntax mehrere Sammlungen an: *Sammlungspräfix*[Startindex - Endindex]. Wenn Sie mehrere Sammlungen mit der obigen Syntax angeben, müssen Sie folgende Richtlinien beachten:
 
 1. Nur Namensmuster im ganzzahligen Bereich werden unterstützt. Durch Angabe von „Sammlung[0-3]“ werden beispielsweise folgende Sammlungen erstellt: Sammlung0, Sammlung1, Sammlung2, Sammlung3.
 2. Sie können eine abgekürzte Syntax verwenden: Durch Angabe von „Sammlung[3]“ wird der gleiche Satz von Sammlungen erstellt wie in Schritt 1.
@@ -445,7 +445,7 @@ Sie können die Verbindungszeichenfolge für das Azure Cosmos DB-Konto wie unter
 > [!NOTE]
 > Verwenden Sie den Befehl „Überprüfen“, um sicherzustellen, dass auf die im Feld „Verbindungszeichenfolge“ angegebene Azure Cosmos DB-Instanz zugegriffen werden kann.
 
-Zum Importieren in eine einzelne Sammlung geben Sie den Namen der Sammlung ein, in die die Daten importiert werden sollen, und klicken Sie dann auf die Schaltfläche „Hinzufügen“. Zum Importieren von Daten in mehrere Sammlungen geben Sie jeden Sammlungsnamen einzeln ein. Sie können auch die folgende Syntax verwenden, um mehrere Sammlungen anzugeben: *Sammlungspräfix* [Startindex - Endindex]. Wenn Sie mehrere Sammlungen mit der obigen Syntax angeben, müssen Sie folgende Richtlinien beachten:
+Zum Importieren in eine einzelne Sammlung geben Sie den Namen der Sammlung ein, in die die Daten importiert werden sollen, und klicken Sie dann auf die Schaltfläche „Hinzufügen“. Zum Importieren von Daten in mehrere Sammlungen geben Sie jeden Sammlungsnamen einzeln ein. Sie können auch die folgende Syntax verwenden, um mehrere Sammlungen anzugeben: *Sammlungspräfix*[Startindex - Endindex]. Wenn Sie mehrere Sammlungen mit der obigen Syntax angeben, müssen Sie folgende Richtlinien beachten:
 
 1. Nur Namensmuster im ganzzahligen Bereich werden unterstützt. Durch Angabe von „Sammlung[0-3]“ werden beispielsweise folgende Sammlungen erstellt: Sammlung0, Sammlung1, Sammlung2, Sammlung3.
 2. Sie können eine abgekürzte Syntax verwenden: Durch Angabe von „Sammlung[3]“ wird der gleiche Satz von Sammlungen erstellt wie in Schritt 1.

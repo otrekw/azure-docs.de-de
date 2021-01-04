@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/06/2020
 ms.openlocfilehash: 956406ec5ac99be5973f1928bbb89db10e68b339
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92533766"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000493"
 ---
 # <a name="run-apache-hive-queries-with-apache-hadoop-in-hdinsight-using-rest"></a>Ausführen von Apache Hive-Abfragen mit Apache Hadoop in HDInsight mit REST
 

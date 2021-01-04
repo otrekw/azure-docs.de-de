@@ -7,14 +7,14 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 11/03/2020
+ms.date: 11/18/2020
 ms.custom: generated
-ms.openlocfilehash: cf8c8e7d56f4eff351361edd148f91e81a07bfbb
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 8225d50e9991ff632fb831c63e194551dbe02b31
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94649142"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451887"
 ---
 # <a name="azure-resource-provider-operations"></a>Vorgänge für Azure-Ressourcenanbieter
 
@@ -843,6 +843,7 @@ Azure-Dienst: [Application Gateway](../application-gateway/index.yml), [Azure Ba
 > | Microsoft.Network/azureFirewalls/networkRuleCollections/read | Ruft NetworkRuleCollection für Azure Firewall ab |
 > | Microsoft.Network/azureFirewalls/networkRuleCollections/write | Erstellt oder aktualisiert NetworkRuleCollection für Azure Firewall |
 > | Microsoft.Network/azureFirewalls/networkRuleCollections/delete | Löscht NetworkRuleCollection für Azure Firewall |
+> | Microsoft.Network/azureWebCategories/read | Ruft Azure-WebCategories ab. |
 > | Microsoft.Network/bastionHosts/read | Ruft einen Bastionhost ab. |
 > | Microsoft.Network/bastionHosts/write | Erstellt oder aktualisiert einen Bastionhost. |
 > | Microsoft.Network/bastionHosts/delete | Löscht einen Bastionhost. |
@@ -1242,6 +1243,8 @@ Azure-Dienst: [Application Gateway](../application-gateway/index.yml), [Azure Ba
 > | Microsoft.Network/virtualHubs/bgpConnections/read | Ruft eine untergeordnete Hub-BGP-Verbindungsressource des virtuellen Hubs ab. |
 > | Microsoft.Network/virtualHubs/bgpConnections/write | Erstellt oder aktualisiert eine untergeordnete Hub-BGP-Verbindungsressource des virtuellen Hubs. |
 > | Microsoft.Network/virtualHubs/bgpConnections/delete | Löscht eine untergeordnete Hub-BGP-Verbindungsressource des virtuellen Hubs. |
+> | Microsoft.Network/virtualHubs/bgpConnections/advertisedRoutes/action | Ruft durch einen virtuellen Router angekündigte Routen ab. |
+> | Microsoft.Network/virtualHubs/bgpConnections/learnedRoutes/action | Ruft durch einen virtuellen Router gelernte Routen ab. |
 > | Microsoft.Network/virtualHubs/hubRouteTables/read | Ruft eine untergeordnete Routingtabellenressource des virtuellen Hubs ab. |
 > | Microsoft.Network/virtualHubs/hubRouteTables/write | Erstellt oder aktualisiert eine untergeordnete Routingtabellenressource des virtuellen Hubs. |
 > | Microsoft.Network/virtualHubs/hubRouteTables/delete | Löscht eine untergeordnete Routingtabellenressource des virtuellen Hubs. |
@@ -1329,6 +1332,9 @@ Azure-Dienst: [Application Gateway](../application-gateway/index.yml), [Azure Ba
 > | microsoft.network/vpngateways/startpacketcapture/action | Startet die VPN-Gateway-Paketerfassung mit der entsprechenden Ressource. |
 > | microsoft.network/vpngateways/stoppacketcapture/action | Beendet die VPN-Gateway-Paketerfassung mit der sasURL. |
 > | microsoft.network/vpngateways/listvpnconnectionshealth/action | Ruft die Verbindungsintegrität für alle oder eine Teilmenge der Verbindungen auf einem VpnGateway ab. |
+> | microsoft.network/vpnGateways/natRules/read | Ruft eine NAT-Regelressource ab. |
+> | microsoft.network/vpnGateways/natRules/write | Legt eine NAT-Regelressource fest. |
+> | microsoft.network/vpnGateways/natRules/delete | Löscht eine NAT-Regelressource. |
 > | microsoft.network/vpnGateways/vpnConnections/read | Ruft VpnConnection ab. |
 > | microsoft.network/vpnGateways/vpnConnections/write | Legt VpnConnection fest. |
 > | microsoft.network/vpnGateways/vpnConnections/delete | Löscht VpnConnection. |
@@ -1934,6 +1940,9 @@ Azure-Dienst: [Azure Maps](../azure-maps/index.yml)
 > | Microsoft.Maps/accounts/delete | Löscht ein Maps-Konto. |
 > | Microsoft.Maps/accounts/listKeys/action | Führt Schlüssel für ein Maps-Konto auf. |
 > | Microsoft.Maps/accounts/regenerateKey/action | Generiert einen neuen primären oder sekundären Schlüssel für ein Maps-Konto. |
+> | Microsoft.Maps/accounts/creators/write | Erstellt oder aktualisiert eine Creator-Instanz. |
+> | Microsoft.Maps/accounts/creators/read | Ruft eine Creator-Instanz ab. |
+> | Microsoft.Maps/accounts/creators/delete | Löscht eine Creator-Instanz. |
 > | Microsoft.Maps/accounts/eventGridFilters/delete | Löscht einen Event Grid-Filter. |
 > | Microsoft.Maps/accounts/eventGridFilters/read | Ruft einen Event Grid-Filter ab. |
 > | Microsoft.Maps/accounts/eventGridFilters/write | Erstellt oder aktualisiert einen Event Grid-Filter. |
@@ -2103,6 +2112,7 @@ Azure-Dienst: [Azure SignalR Service](../azure-signalr/index.yml)
 > | Microsoft.SignalRService/locations/checknameavailability/action | Überprüft, ob ein Name für die Verwendung mit einem neuen SignalR-Dienst verfügbar ist. |
 > | Microsoft.SignalRService/locations/operationresults/signalr/read | Fragt die Ergebnisse eines standortbasierten asynchronen Vorgangs ab |
 > | Microsoft.SignalRService/locations/operationStatuses/operationId/read | Fragt den Status eines standortbasierten asynchronen Vorgangs ab |
+> | Microsoft.SignalRService/locations/operationStatuses/signalr/read | Fragt den Status eines standortbasierten asynchronen Vorgangs ab |
 > | Microsoft.SignalRService/locations/usages/read | Ruft den Kontingentbedarf für den Azure SignalR Service ab. |
 > | Microsoft.SignalRService/operationresults/read | Fragt die Ergebnisse eines asynchronen Vorgangs auf Anbieterebene ab |
 > | Microsoft.SignalRService/operations/read | Auflisten der Vorgänge für Azure SignalR Service. |
@@ -2610,6 +2620,7 @@ Azure-Dienst: [App Service](../app-service/index.yml), [Azure Functions](../azur
 > | Microsoft.Web/staticSites/getuser/Action | Hiermit werden die Informationen eines Benutzers für eine statische Website abgerufen. |
 > | Microsoft.Web/staticSites/listsecrets/action | Hiermit werden die Geheimnisse für eine statische Website aufgelistet. |
 > | Microsoft.Web/staticSites/resetapikey/Action | Hiermit wird der API-Schlüssel für eine statische Website zurückgesetzt. |
+> | Microsoft.Web/staticSites/zipdeploy/action | Stellt eine statische Website aus gezippten Inhalten bereit. |
 > | Microsoft.Web/staticSites/authproviders/listusers/Action | Hiermit werden die Benutzer für eine statische Website aufgelistet. |
 > | Microsoft.Web/staticSites/authproviders/users/Delete | Hiermit wird ein Benutzer für eine statische Website gelöscht. |
 > | Microsoft.Web/staticSites/authproviders/users/Write | Hiermit wird ein Benutzer für eine statische Website aktualisiert. |
@@ -2617,6 +2628,7 @@ Azure-Dienst: [App Service](../app-service/index.yml), [Azure Functions](../azur
 > | Microsoft.Web/staticSites/build/Delete | Hiermit wird ein Build für eine statische Website gelöscht. |
 > | Microsoft.Web/staticSites/builds/listfunctionappsettings/Action | Hiermit werden Funktions-App-Einstellungen für den Build einer statischen Website aufgelistet. |
 > | Microsoft.Web/staticSites/builds/listappsettings/Action | Listet App-Einstellungen für den Aufbau einer statischen Website auf. |
+> | Microsoft.Web/staticSites/builds/zipdeploy/action | Stellt einen Build einer statischen Website aus gezippten Inhalten bereit. |
 > | Microsoft.Web/staticSites/builds/config/Write | Erstellt oder aktualisiert App-Einstellungen für den Aufbau einer statischen Website. |
 > | Microsoft.Web/staticSites/config/Write | Erstellt oder aktualisiert App-Einstellungen für eine statische Website. |
 > | Microsoft.Web/staticSites/customdomains/Write | Hiermit wird eine benutzerdefinierte Domäne für eine statische Website erstellt. |
@@ -3850,7 +3862,7 @@ Azure-Dienst: [Azure Cosmos DB](../cosmos-db/index.yml)
 
 ### <a name="microsoftsql"></a>Microsoft.Sql
 
-Azure-Dienst: [Azure SQL-Datenbank](../azure-sql/database/index.yml), [Azure SQL Mabaged Instance](../azure-sql/managed-instance/index.yml), [Azure Synapse Analytics (früher SQL Data Warehouse)](../synapse-analytics/sql-data-warehouse/index.yml)
+Azure-Dienst: [Azure SQL-Datenbank](../azure-sql/database/index.yml), [Azure SQL Managed Instance](../azure-sql/managed-instance/index.yml), [Azure Synapse Analytics](../synapse-analytics/index.yml)
 
 > [!div class="mx-tableFixed"]
 > | Aktion | BESCHREIBUNG |
@@ -3931,6 +3943,8 @@ Azure-Dienst: [Azure SQL-Datenbank](../azure-sql/database/index.yml), [Azure SQL
 > | Microsoft.Sql/locations/serverAdministratorOperationResults/read | Ergebnisse des Vorgangs für den Azure Active Directory-Serveradministrator. |
 > | Microsoft.Sql/locations/serverKeyAzureAsyncOperation/read | Ruft gegenwärtig ausgeführte Vorgänge für Serverschlüssel von Transparent Data Encryption ab. |
 > | Microsoft.Sql/locations/serverKeyOperationResults/read | Ruft gegenwärtig ausgeführte Vorgänge für Serverschlüssel von Transparent Data Encryption ab. |
+> | Microsoft.Sql/locations/serverTrustGroupAzureAsyncOperation/read | Ruft den Status des asynchronen Vorgangs der Server-Vertrauensstellungsgruppe ab. |
+> | Microsoft.Sql/locations/serverTrustGroupOperationResults/read | Ruft das Ergebnis des Vorgangs der Server-Vertrauensstellungsgruppe ab. |
 > | Microsoft.Sql/locations/serverTrustGroups/write | Erstellt eine Serververtrauensstellungsgruppe mit den angegebenen Parametern. |
 > | Microsoft.Sql/locations/serverTrustGroups/delete | Löscht die vorhandene SQL Server-Vertrauensstellungsgruppe. |
 > | Microsoft.Sql/locations/serverTrustGroups/read | Gibt die vorhandenen SQL Server-Vertrauensstellungsgruppen zurück. |
@@ -3946,12 +3960,12 @@ Azure-Dienst: [Azure SQL-Datenbank](../azure-sql/database/index.yml), [Azure SQL
 > | Microsoft.Sql/locations/virtualNetworkRulesAzureAsyncOperation/read | Gibt die Details des asynchronen Vorgangs in Azure für die angegebene VNET-Regel zurück.  |
 > | Microsoft.Sql/locations/virtualNetworkRulesOperationResults/read | Gibt die Details der VNET-Regeln zurück.  |
 > | Microsoft.Sql/managedInstances/tdeCertificates/action | Erstellt oder aktualisiert das TDE-Zertifikat. |
-> | Microsoft.Sql/managedInstances/joinServerTrustGroup/action | Bestimmt, ob ein Benutzer einer Serververtrauensgruppe beitreten darf. |
+> | Microsoft.Sql/managedInstances/failover/action | Vom Kunden initiiertes Failover für verwaltete Instanzen. |
+> | Microsoft.Sql/managedInstances/joinServerTrustGroup/action | Bestimmt, ob ein Benutzer einen verwalteten Server in eine Server-Vertrauensstellungsgruppe einbinden darf. |
 > | Microsoft.Sql/managedInstances/export/action | Exportiert Systemdatenbank und SMK-Schlüssel. |
 > | Microsoft.Sql/managedInstances/read | Gibt die Liste der verwalteten Instanzen zurück oder ruft die Eigenschaften für die angegebene verwaltete Instanz ab. |
 > | Microsoft.Sql/managedInstances/write | Erstellt eine verwaltete Instanz mit den angegebenen Parametern oder aktualisiert die Eigenschaften oder Markierungen für die verwaltete Instanz. |
 > | Microsoft.Sql/managedInstances/delete | Löscht eine vorhandene verwaltete Instanz. |
-> | Microsoft.Sql/managedInstances/failover/action | Vom Kunden initiiertes Failover für verwaltete Instanzen. |
 > | Microsoft.Sql/managedInstances/administrators/read | Ruft eine Liste der Administratoren für verwaltete Instanzen ab. |
 > | Microsoft.Sql/managedInstances/administrators/write | Erstellt oder aktualisiert den Administrator für verwaltete Instanzen mit den angegebenen Parametern. |
 > | Microsoft.Sql/managedInstances/administrators/delete | Löscht einen vorhandenen Administrator einer verwalteten Instanz. |
@@ -4100,11 +4114,11 @@ Azure-Dienst: [Azure SQL-Datenbank](../azure-sql/database/index.yml), [Azure SQL
 > | Microsoft.Sql/servers/databases/dataMaskingPolicies/rules/delete | Dient zum Löschen von Datenmaskierungsrichtlinien-Regeln für eine bestimmte Datenbank. |
 > | Microsoft.Sql/servers/databases/dataWarehouseQueries/read | Gibt die Data Warehouse-Verteilungsabfrageinformationen für die ausgewählte Abfrage-ID zurück. |
 > | Microsoft.Sql/servers/databases/dataWarehouseQueries/dataWarehouseQuerySteps/read | Gibt die verteilten Abfrageschrittinformationen von Data Warehouse-Abfragen für die ausgewählte Schritt-ID zurück. |
-> | Microsoft.Sql/servers/databases/dataWarehouseUserActivities/read | Ruft die Benutzeraktivitäten eines dedizierten Azure Synapse Analytics-SQL-Pools ab (einschließlich ausgeführter und angehaltener Abfragen). |
+> | Microsoft.Sql/servers/databases/dataWarehouseUserActivities/read | Ruft die Benutzeraktivitäten einer SQL Data Warehouse-Instanz ab, einschließlich ausgeführte und angehaltene Abfragen. |
 > | Microsoft.Sql/servers/databases/extendedAuditingSettings/read | Dient zum Abrufen von Details zur erweiterten Blobüberwachungsrichtlinie, die für eine bestimmte Datenbank konfiguriert ist. |
 > | Microsoft.Sql/servers/databases/extendedAuditingSettings/write | Dient zum Ändern der erweiterten Blobüberwachungsrichtlinie für eine bestimmte Datenbank. |
-> | Microsoft.Sql/servers/databases/extensions/read | Ruft eine Collection von Erweiterungen für die Datenbank ab. |
-> | Microsoft.Sql/servers/databases/extensions/write | Ändert die Erweiterung für eine bestimmte Datenbank. |
+> | Microsoft.Sql/servers/databases/extensions/write | Führt einen Datenbankerweiterungs-Vorgang aus. |
+> | Microsoft.Sql/servers/databases/extensions/read | Ruft einen Datenbankerweiterungs-Vorgang ab. |
 > | Microsoft.Sql/servers/databases/extensions/importExtensionOperationResults/read | Ruft aktuell ausgeführte Importvorgänge ab. |
 > | Microsoft.Sql/servers/databases/geoBackupPolicies/read | Ruft Richtlinien für die Geosicherung einer bestimmten Datenbank ab. |
 > | Microsoft.Sql/servers/databases/geoBackupPolicies/write | Erstellt oder aktualisiert eine Richtlinie für die Geosicherung einer Datenbank. |
@@ -5140,6 +5154,7 @@ Azure-Dienst: [Cognitive Services](../cognitive-services/index.yml)
 > | Microsoft.CognitiveServices/accounts/TextAnalytics/entities/action | Die API gibt eine Liste bekannter Entitäten und allgemeiner benannter Entitäten in einem bestimmten Dokument zurück (\"Person\", \"Location\", \"Organization\" usw.). |
 > | Microsoft.CognitiveServices/accounts/TextAnalytics/keyphrases/action | Die API gibt eine Liste von Zeichenfolgen zurück, die die wichtigsten Themen im Eingabetext angeben. |
 > | Microsoft.CognitiveServices/accounts/TextAnalytics/sentiment/action | Die API gibt eine numerische Bewertung zwischen 0 und 1 zurück.<br>Werte nahe 1 zeigen eine positive Absicht an, Werte nahe 0 zeigen eine negative Absicht an.<br>Eine Bewertung von 0,5 gibt das Fehlen der Stimmung an (z. B.<br>bei einer faktischen Aussage). |
+> | Microsoft.CognitiveServices/accounts/TextAnalytics/analyze/action | Übermittelt eine Sammlung von Textdokumenten für die Analyse. Gibt eine oder mehrere eindeutige Aufgaben an, die ausgeführt werden sollen. |
 > | Microsoft.CognitiveServices/accounts/TextTranslation/detect/action | Identifiziert die Sprache eines Textabschnitts. |
 > | Microsoft.CognitiveServices/accounts/TextTranslation/breaksentence/action | Erkennt die Positionierung von Satzgrenzen in einem Textabschnitt. |
 > | Microsoft.CognitiveServices/accounts/TextTranslation/translate/action | Übersetzt Text. |
@@ -5496,29 +5511,29 @@ Azure-Dienst: [Notification Hubs](../notification-hubs/index.yml)
 > | Microsoft.NotificationHubs/CheckNamespaceAvailability/action | Prüft, ob ein bestimmter Name einer Namespaceressource innerhalb des NotificationHub-Diensts verfügbar ist. |
 > | Microsoft.NotificationHubs/Namespaces/write | Dient zum Erstellen einer Namespaceressource und zum Aktualisieren ihrer Eigenschaften. Die Eigenschaften für Markierungen und Kapazität des Namespace können aktualisiert werden. |
 > | Microsoft.NotificationHubs/Namespaces/read | Dient zum Abrufen der Liste mit Beschreibungen für Namespaceressourcen. |
-> | Microsoft.NotificationHubs/Namespaces/Delete | Dient zum Löschen von Namespaceressourcen. |
+> | Microsoft.NotificationHubs/Namespaces/delete | Dient zum Löschen von Namespaceressourcen. |
 > | Microsoft.NotificationHubs/Namespaces/authorizationRules/action | Dient zum Abrufen der Liste mit Beschreibungen für Namespace-Autorisierungsregeln. |
 > | Microsoft.NotificationHubs/Namespaces/CheckNotificationHubAvailability/action | Prüft, ob ein bestimmter NotificationHub-Name innerhalb eines Namespaces verfügbar ist. |
 > | Microsoft.NotificationHubs/Namespaces/authorizationRules/write | Dient zum Erstellen von Autorisierungsregeln auf Namespaceebene und zum Aktualisieren der dazugehörigen Eigenschaften. Aktualisiert werden können die Zugriffsrechte für Autorisierungsregeln sowie der primäre und der sekundäre Schlüssel. |
 > | Microsoft.NotificationHubs/Namespaces/authorizationRules/read | Dient zum Abrufen der Liste mit Beschreibungen für Namespace-Autorisierungsregeln. |
-> | Microsoft.NotificationHubs/Namespaces/authorizationRules/delete | Dient zum Löschen von Namespace-Autorisierungsregeln. Die standardmäßige Namespace-Autorisierungsregel kann nicht gelöscht werden.  |
+> | Microsoft.NotificationHubs/Namespaces/authorizationRules/delete | Dient zum Löschen von Namespace-Autorisierungsregeln. Die standardmäßige Namespace-Autorisierungsregel kann nicht gelöscht werden. |
 > | Microsoft.NotificationHubs/Namespaces/authorizationRules/listkeys/action | Dient zum Abrufen der Verbindungszeichenfolge für den Namespace. |
 > | Microsoft.NotificationHubs/Namespaces/authorizationRules/regenerateKeys/action | Namespace-Autorisierungsregel zum erneuten Generieren des primären/sekundären Schlüssels. Geben Sie den Schlüssel an, der neu generiert werden soll. |
-> | Microsoft.NotificationHubs/namespaces/diagnosticSettings/read | Dient zum Abrufen der Liste mit Ressourcenbeschreibungen für Namespacediagnoseeinstellungen. |
-> | Microsoft.NotificationHubs/namespaces/diagnosticSettings/write | Dient zum Abrufen der Liste mit Ressourcenbeschreibungen für Namespacediagnoseeinstellungen. |
-> | Microsoft.NotificationHubs/namespaces/logDefinitions/read | Dient zum Abrufen der Liste mit Ressourcenbeschreibungen für Namespaceprotokolle. |
 > | Microsoft.NotificationHubs/Namespaces/NotificationHubs/write | Dient zum Erstellen eines Notification Hubs und zum Aktualisieren seiner Eigenschaften. Zu diesen Einstellungen zählen in erster Linie PNS-Anmeldeinformationen, Autorisierungsregeln und Gültigkeitsdauer. |
 > | Microsoft.NotificationHubs/Namespaces/NotificationHubs/read | Dient zum Abrufen einer Liste mit Notification Hub-Ressourcenbeschreibungen. |
-> | Microsoft.NotificationHubs/Namespaces/NotificationHubs/Delete | Dient zum Löschen von Notification Hub-Ressourcen. |
+> | Microsoft.NotificationHubs/Namespaces/NotificationHubs/delete | Dient zum Löschen von Notification Hub-Ressourcen. |
 > | Microsoft.NotificationHubs/Namespaces/NotificationHubs/authorizationRules/action | Dient zum Abrufen der Liste mit Notification Hub-Autorisierungsregeln. |
 > | Microsoft.NotificationHubs/Namespaces/NotificationHubs/pnsCredentials/action | Dient zum Abrufen aller Notification Hub-PNS-Anmeldeinformationen. Hierzu zählen Anmeldeinformationen für WNS, MPNS, APNS, GCM und Baidu. |
-> | Microsoft.NotificationHubs/Namespaces/NotificationHubs/debugSend/action | Dient zum Senden einer Test-Pushbenachrichtigung. |
+> | Microsoft.NotificationHubs/Namespaces/NotificationHubs/debugSend/action | Sendet zu Testzwecken eine Pushbenachrichtigung an 10 entsprechende Geräte. |
 > | Microsoft.NotificationHubs/Namespaces/NotificationHubs/authorizationRules/write | Dient zum Erstellen von Notification Hub-Autorisierungsregeln und zum Aktualisieren der dazugehörigen Eigenschaften. Aktualisiert werden können die Zugriffsrechte für Autorisierungsregeln sowie der primäre und der sekundäre Schlüssel. |
 > | Microsoft.NotificationHubs/Namespaces/NotificationHubs/authorizationRules/read | Dient zum Abrufen der Liste mit Notification Hub-Autorisierungsregeln. |
 > | Microsoft.NotificationHubs/Namespaces/NotificationHubs/authorizationRules/delete | Dient zum Löschen von Notification Hub-Autorisierungsregeln. |
 > | Microsoft.NotificationHubs/Namespaces/NotificationHubs/authorizationRules/listkeys/action | Dient zum Abrufen der Notification Hub-Verbindungszeichenfolge. |
 > | Microsoft.NotificationHubs/Namespaces/NotificationHubs/authorizationRules/regenerateKeys/action | Notification Hub-Autorisierungsregel zum erneuten Generieren des primären/sekundären Schlüssels. Geben Sie den Schlüssel an, der neu generiert werden soll. |
 > | Microsoft.NotificationHubs/Namespaces/NotificationHubs/metricDefinitions/read | Dient zum Abrufen der Liste mit Ressourcenbeschreibungen für Namespacemetriken. |
+> | Microsoft.NotificationHubs/namespaces/providers/Microsoft.Insights/diagnosticSettings/read | Ruft Namespace-Diagnoseeinstellungen ab. |
+> | Microsoft.NotificationHubs/namespaces/providers/Microsoft.Insights/diagnosticSettings/write | Erstellt oder aktualisiert eine Namespace-Diagnoseeinstellung. |
+> | Microsoft.NotificationHubs/namespaces/providers/Microsoft.Insights/logDefinitions/read | Ruft die verfügbaren Protokolle für den Namespace ab. |
 > | Microsoft.NotificationHubs/operationResults/read | Gibt Vorgangsergebnisse für den Notification Hubs-Anbieter zurück. |
 > | Microsoft.NotificationHubs/operations/read | Gibt eine Liste unterstützter Vorgänge für den Notification Hubs-Anbieter zurück. |
 
@@ -5566,7 +5581,25 @@ Azure-Dienst: [Azure Spatial Anchors](../spatial-anchors/index.yml)
 > | Aktion | BESCHREIBUNG |
 > | --- | --- |
 > | Microsoft.MixedReality/register/action | Registriert ein Abonnement für den Mixed Reality-Ressourcenanbieter. |
+> | Microsoft.MixedReality/unregister/action | Hebt die Registrierung eines Abonnements für den Mixed Reality-Ressourcenanbieter auf. |
+> | Microsoft.MixedReality/locations/checknameavailability/read | Prüft die Verfügbarkeit des Namens. |
+> | Microsoft.MixedReality/ObjectUnderstandingAccounts/delete | Löscht ein Object Understanding-Konto. |
+> | Microsoft.MixedReality/ObjectUnderstandingAccounts/listkeys/action | Listet die Schlüssel eines Object Understanding-Kontos auf. |
+> | Microsoft.MixedReality/ObjectUnderstandingAccounts/read | Listet die Eigenschaften eines Object Understanding-Kontos auf. |
+> | Microsoft.MixedReality/ObjectUnderstandingAccounts/regeneratekeys/action | Regeneriert die Schlüssel eines Object Understanding-Kontos. |
+> | Microsoft.MixedReality/ObjectUnderstandingAccounts/write | Aktualisiert die Eigenschaften eines Object Understanding-Kontos. |
+> | Microsoft.MixedReality/operations/read | Listet verfügbare Vorgänge für die Microsoft Mixed Reality auf. |
+> | Microsoft.MixedReality/RemoteRenderingAccounts/delete | Löscht ein Remote Rendering-Konto. |
+> | Microsoft.MixedReality/RemoteRenderingAccounts/listkeys/action | Listet Schlüssel eines Remote Rendering-Kontos auf. |
+> | Microsoft.MixedReality/RemoteRenderingAccounts/read | Liest die Eigenschaften eines Remote Rendering-Kontos. |
+> | Microsoft.MixedReality/RemoteRenderingAccounts/regeneratekeys/action | Regeneriert die Schlüssel eines Remote Rendering-Kontos. |
+> | Microsoft.MixedReality/RemoteRenderingAccounts/write | Aktualisiert die Eigenschaften eines Remote Rendering-Kontos. |
+> | Microsoft.MixedReality/RemoteRenderingAccounts/keys/read | Liest Schlüssel eines Remote Rendering-Kontos. |
 > | Microsoft.MixedReality/remoteRenderingAccounts/providers/Microsoft.Insights/metricDefinitions/read | Ruft die verfügbaren Metriken für Microsoft.MixedReality/remoteRenderingAccounts ab |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/listkeys/action | Listet Schlüssel eines Spatial Anchors-Kontos auf. |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/read | Liest die Eigenschaften eines Spatial Anchors-Kontos. |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/regeneratekeys/action | Regeneriert die Schlüssel eines Spatial Anchors-Kontos. |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/keys/read | Liest Schlüssel eines Spatial Anchors-Kontos. |
 > | Microsoft.MixedReality/spatialAnchorsAccounts/providers/Microsoft.Insights/diagnosticSettings/read | Ruft die Diagnoseeinstellung für Microsoft.MixedReality/spatialAnchorsAccounts ab |
 > | Microsoft.MixedReality/spatialAnchorsAccounts/providers/Microsoft.Insights/diagnosticSettings/write | Erstellt oder aktualisiert die Diagnoseeinstellung für Microsoft.MixedReality/spatialAnchorsAccounts |
 > | Microsoft.MixedReality/spatialAnchorsAccounts/providers/Microsoft.Insights/metricDefinitions/read | Ruft die verfügbaren Metriken für Microsoft.MixedReality/spatialAnchorsAccounts ab |
@@ -5931,6 +5964,11 @@ Azure-Dienst: [Azure Stack Edge](../databox-online/azure-stack-edge-overview.md)
 > | Microsoft.DataBoxEdge/dataBoxEdgeDevices/roles/read | Listet die Rollen auf oder ruft sie ab. |
 > | Microsoft.DataBoxEdge/dataBoxEdgeDevices/roles/write | Erstellt oder aktualisiert die Rollen. |
 > | Microsoft.DataBoxEdge/dataBoxEdgeDevices/roles/delete | Löscht die Rollen. |
+> | Microsoft.DataBoxEdge/dataBoxEdgeDevices/roles/addons/read | Listet die ArmApiRes_addons auf oder ruft sie ab. |
+> | Microsoft.DataBoxEdge/dataBoxEdgeDevices/roles/addons/read | Listet die ArmApiRes_addons auf oder ruft sie ab. |
+> | Microsoft.DataBoxEdge/dataBoxEdgeDevices/roles/addons/write | Erstellt oder aktualisiert die ArmApiRes_addons. |
+> | Microsoft.DataBoxEdge/dataBoxEdgeDevices/roles/addons/delete | Löscht die ArmApiRes_addons. |
+> | Microsoft.DataBoxEdge/dataBoxEdgeDevices/roles/addons/operationResults/read | Listet die Vorgangsergebnisse auf oder ruft sie ab |
 > | Microsoft.DataBoxEdge/dataBoxEdgeDevices/roles/monitoringConfig/write | Erstellt oder aktualisiert die Überwachungskonfiguration. |
 > | Microsoft.DataBoxEdge/dataBoxEdgeDevices/roles/monitoringConfig/delete | Löscht die Überwachungskonfiguration. |
 > | Microsoft.DataBoxEdge/dataBoxEdgeDevices/roles/monitoringConfig/read | Listet die Überwachungskonfiguration oder ruft sie ab. |
@@ -6543,64 +6581,64 @@ Azure-Dienst: [Schlüsseltresor](../key-vault/index.yml)
 > | Microsoft.KeyVault/managedHSMs/delete | Hiermit wird ein verwaltetes Hardwaresicherheitsmodul (HSM) gelöscht. |
 > | Microsoft.KeyVault/operations/read | Listet die verfügbaren Vorgänge für den Microsoft.KeyVault-Ressourcenanbieter auf. |
 > | Microsoft.KeyVault/vaults/read | Dient zum Anzeigen der Eigenschaften eines Schlüsseltresors. |
-> | Microsoft.KeyVault/vaults/write | Dient zum Erstellen eines neuen Schlüsseltresors oder zum Aktualisieren der Eigenschaften einer vorhandenen Schlüsseltresors. |
-> | Microsoft.KeyVault/vaults/delete | Dient zum Löschen eines Schlüsseltresors. |
+> | Microsoft.KeyVault/vaults/write | Dient zum Erstellen eines neuen Schlüsseltresors oder zum Aktualisieren der Eigenschaften eines vorhandenen Schlüsseltresors. Bestimmte Eigenschaften erfordern möglicherweise mehr Berechtigungen. |
+> | Microsoft.KeyVault/vaults/delete | Hiermit wird ein Schlüsseltresor gelöscht. |
 > | Microsoft.KeyVault/vaults/deploy/action | Ermöglicht den Zugriff auf Geheimnisse in einem Schlüsseltresor beim Bereitstellen von Azure-Ressourcen. |
-> | Microsoft.KeyVault/vaults/accessPolicies/write | Dient zum Aktualisieren einer vorhandenen Zugriffsrichtlinie durch Zusammenführen oder Ersetzen oder zum Hinzufügen einer neuen Zugriffsrichtlinie zu einem Tresor. |
+> | Microsoft.KeyVault/vaults/accessPolicies/write | Aktualisiert eine vorhandene Zugriffsrichtlinie durch Zusammenführen oder Ersetzen oder fügt dem Schlüsseltresor eine neue Zugriffsrichtlinie hinzu. |
 > | Microsoft.KeyVault/vaults/eventGridFilters/read | Hiermit wird „Microsoft.KeyVault“ darüber benachrichtigt, dass ein EventGrid-Abonnement für Key Vault angezeigt wird. |
 > | Microsoft.KeyVault/vaults/eventGridFilters/write | Hiermit wird „Microsoft.KeyVault“ darüber benachrichtigt, dass ein EventGrid-Abonnement für Key Vault erstellt wird. |
 > | Microsoft.KeyVault/vaults/eventGridFilters/delete | Hiermit wird „Microsoft.KeyVault“ darüber benachrichtigt, dass ein EventGrid-Abonnement für Key Vault gelöscht wird. |
 > | Microsoft.KeyVault/vaults/keys/read | Listet die Schlüssel in einem angegebenen Tresor auf oder liest die aktuelle Version eines angegebenen Schlüssels. |
-> | Microsoft.KeyVault/vaults/keys/write | Erstellt einen neuen Schlüssel oder aktualisiert einen vorhandenen Schlüssel. |
+> | Microsoft.KeyVault/vaults/keys/write | Erstellt die erste Version eines neuen Schlüssels, wenn er nicht vorhanden ist. Wenn er bereits vorhanden ist, wird der vorhandene Schlüssel ohne Änderungen zurückgegeben. Diese API erstellt keine nachfolgenden Versionen und aktualisiert vorhandene Schlüssel nicht. |
 > | Microsoft.KeyVault/vaults/keys/versions/read | Listet die Versionen eines angegebenen Schlüssels auf oder liest die angegebene Version eines Schlüssels. |
 > | Microsoft.KeyVault/vaults/secrets/read | Zeigt die Eigenschaften (aber nicht den Wert) eines Geheimnisses an |
-> | Microsoft.KeyVault/vaults/secrets/write | Erstellt ein neues Geheimnis oder aktualisiert den Wert eines vorhandenen Geheimnisses |
+> | Microsoft.KeyVault/vaults/secrets/write | Erstellt ein neues Geheimnis oder aktualisiert den Wert eines vorhandenen Geheimnisses. |
 > | **DataAction** | **Beschreibung** |
 > | Microsoft.KeyVault/vaults/certificatecas/delete | Löscht den Zertifikataussteller. |
 > | Microsoft.KeyVault/vaults/certificatecas/read | Liest den Zertifikataussteller. |
 > | Microsoft.KeyVault/vaults/certificatecas/write | Schreibt den Zertifikataussteller. |
 > | Microsoft.KeyVault/vaults/certificatecontacts/write | Verwaltet einen Zertifikatkontakt. |
-> | Microsoft.KeyVault/vaults/certificates/delete | Löscht ein Zertifikat. |
+> | Microsoft.KeyVault/vaults/certificates/delete | Löscht ein Zertifikat. Alle Versionen werden gelöscht. |
 > | Microsoft.KeyVault/vaults/certificates/read | Listet Zertifikate in einem angegebenen Schlüsseltresor auf oder ruft Informationen zu einem Zertifikat ab. |
 > | Microsoft.KeyVault/vaults/certificates/backup/action | Erstellt die Sicherungsdatei eines Zertifikats. Die Datei kann verwendet werden, um das Zertifikat in einem Key Vault desselben Abonnements wiederherzustellen. Es können Einschränkungen gelten. |
 > | Microsoft.KeyVault/vaults/certificates/purge/action | Bereinigt ein Zertifikat. Es kann anschließend nicht mehr wiederhergestellt werden. |
 > | Microsoft.KeyVault/vaults/certificates/update/action | Aktualisiert die angegebenen Attribute, die dem jeweiligen Zertifikat zugeordnet sind. |
-> | Microsoft.KeyVault/vaults/certificates/create/action | Erstellt ein neues Zertifikat. |
-> | Microsoft.KeyVault/vaults/certificates/import/action | Importiert ein vorhandenes gültiges Zertifikat mit einem privaten Schlüssel in Azure Key Vault. Das zu importierende Zertifikat kann im PFX- oder PEM-Format vorliegen. |
+> | Microsoft.KeyVault/vaults/certificates/create/action | Erstellt ein neues Zertifikat. Wenn das Zertifikat nicht vorhanden ist, wird die erste Version erstellt. Andernfalls wird eine neue Version erstellt. |
+> | Microsoft.KeyVault/vaults/certificates/import/action | Importiert ein vorhandenes gültiges Zertifikat mit einem privaten Schlüssel.<br>Das zu importierende Zertifikat kann im PFX- oder PEM-Format vorliegen.<br>Wenn das Zertifikat nicht in Key Vault vorhanden ist, wird die erste Version mit dem angegebenen Inhalt erstellt.<br>Andernfalls wird eine neue Version mit dem angegebenen Inhalt erstellt. |
 > | Microsoft.KeyVault/vaults/certificates/recover/action | Stellt das gelöschte Zertifikat wieder her. Der Vorgang führt die Umkehrung des Löschvorgangs aus. Der Vorgang gilt in Tresoren, die für vorläufiges Löschen aktiviert sind, und muss während des Aufbewahrungsintervalls ausgegeben werden. |
-> | Microsoft.KeyVault/vaults/certificates/restore/action | Stellt ein gesichertes Zertifikat und alle zugehörigen Versionen in einem Tresor wieder her. |
+> | Microsoft.KeyVault/vaults/certificates/restore/action | Hiermit wird ein Zertifikat mit allen zugehörigen Versionen aus einer von Key Vault generierten Sicherungsdatei wiederhergestellt. |
 > | Microsoft.KeyVault/vaults/keys/read | Listet Schlüssel im angegebenen Tresor auf oder liest Eigenschaften und öffentliche Informationen eines Schlüssels.<br>Bei asymmetrischen Schlüsseln legt dieser Vorgang den öffentlichen Schlüssel offen und beinhaltet die Fähigkeit, Algorithmen für öffentliche Schlüssel durchzuführen, z. B. Verschlüsselung und Überprüfung der Signatur.<br>Private Schlüssel und symmetrische Schlüssel werden nie offengelegt. |
 > | Microsoft.KeyVault/vaults/keys/update/action | Aktualisiert die angegebenen Attribute, die dem jeweiligen Schlüssel zugeordnet sind. |
-> | Microsoft.KeyVault/vaults/keys/create/action | Erstellt einen neuen Schlüssel. |
-> | Microsoft.KeyVault/vaults/keys/import/action | Importiert einen extern erstellten Schlüssel, speichert ihn und gibt Schlüsselparameter und Attribute an den Client zurück. |
+> | Microsoft.KeyVault/vaults/keys/create/action | Erstellt einen neuen Schlüssel. Wenn der Schlüssel nicht vorhanden ist, wird die erste Version erstellt. Andernfalls wird eine neue Version mit dem angegebenen Wert erstellt. |
+> | Microsoft.KeyVault/vaults/keys/import/action | Importiert einen extern erstellten Schlüssel. Wenn der Schlüssel nicht vorhanden ist, wird die erste Version mit dem importierten Material erstellt. Andernfalls wird eine neue Version mit dem importierten Material erstellt. |
 > | Microsoft.KeyVault/vaults/keys/recover/action | Stellt den gelöschten Schlüssel wieder her. Der Vorgang führt die Umkehrung des Löschvorgangs aus. Der Vorgang gilt in Tresoren, die für vorläufiges Löschen aktiviert sind, und muss während des Aufbewahrungsintervalls ausgegeben werden. |
-> | Microsoft.KeyVault/vaults/keys/restore/action | Stellt einen gesicherten Schlüssel und alle zugehörigen Versionen in einem Tresor wieder her. |
-> | Microsoft.KeyVault/vaults/keys/delete | Löscht einen Schlüssel. |
+> | Microsoft.KeyVault/vaults/keys/restore/action | Hiermit wird ein Schlüssel mit allen zugehörigen Versionen aus einer von Key Vault generierten Sicherungsdatei wiederhergestellt. |
+> | Microsoft.KeyVault/vaults/keys/delete | Löscht einen Schlüssel. Alle Versionen werden gelöscht. |
 > | Microsoft.KeyVault/vaults/keys/backup/action | Erstellt die Sicherungsdatei eines Schlüssels. Die Datei kann verwendet werden, um den Schlüssel in einem Key Vault desselben Abonnements wiederherzustellen. Es können Einschränkungen gelten. |
 > | Microsoft.KeyVault/vaults/keys/purge/action | Bereinigt einen Schlüssel. Er kann anschließend nicht mehr wiederhergestellt werden. |
 > | Microsoft.KeyVault/vaults/keys/encrypt/action | Verschlüsselt Klartext mit einem Schlüssel. Hinweis: Wenn es sich um einen asymmetrischen Schlüssel handelt, kann dieser Vorgang mit einem Prinzipal mit Lesezugriff durchgeführt werden. |
 > | Microsoft.KeyVault/vaults/keys/decrypt/action | Entschlüsselt Chiffretext mit einem Schlüssel. |
-> | Microsoft.KeyVault/vaults/keys/wrap/action | Umschließt einen symmetrischen Schlüssel mit einem Key Vault-Schlüssel. Hinweis: Wenn es sich um einen asymmetrischen Key Vault-Schlüssel handelt, kann dieser Vorgang mit Lesezugriff durchgeführt werden. |
+> | Microsoft.KeyVault/vaults/keys/wrap/action | Umschließt einen symmetrischen Schlüssel mit einem Key Vault-Schlüssel. Hinweis: Wenn es sich um einen asymmetrischen Key Vault-Schlüssel handelt, kann dieser Vorgang mit einem Prinzipal mit Lesezugriff durchgeführt werden. |
 > | Microsoft.KeyVault/vaults/keys/unwrap/action | Hebt die Umschließung eines symmetrischen Schlüssels mit einem Key Vault-Schlüssel auf. |
-> | Microsoft.KeyVault/vaults/keys/sign/action | Signiert einen Hash mit einem Schlüssel. |
-> | Microsoft.KeyVault/vaults/keys/verify/action | Überprüft einen Hash. Hinweis: Wenn es sich um einen asymmetrischen Schlüssel handelt, kann dieser Vorgang mit einem Prinzipal mit Lesezugriff durchgeführt werden. |
-> | Microsoft.KeyVault/vaults/secrets/delete | Löscht ein Geheimnis. |
+> | Microsoft.KeyVault/vaults/keys/sign/action | Signiert einen Nachrichtenhash (Hash) mit einem Schlüssel. |
+> | Microsoft.KeyVault/vaults/keys/verify/action | Überprüft die Signatur eines Nachrichtenhashs (Hash) mit einem Schlüssel. Hinweis: Wenn es sich um einen asymmetrischen Schlüssel handelt, kann dieser Vorgang mit einem Prinzipal mit Lesezugriff durchgeführt werden. |
+> | Microsoft.KeyVault/vaults/secrets/delete | Mit diesem Befehl wird ein Geheimnis gelöscht. Alle Versionen werden gelöscht. |
 > | Microsoft.KeyVault/vaults/secrets/backup/action | Erstellt die Sicherungsdatei eines Geheimnisses. Die Datei kann verwendet werden, um das Geheimnis in einem Key Vault desselben Abonnements wiederherzustellen. Es können Einschränkungen gelten. |
 > | Microsoft.KeyVault/vaults/secrets/purge/action | Bereinigt ein Geheimnis. Es kann anschließend nicht mehr wiederhergestellt werden. |
 > | Microsoft.KeyVault/vaults/secrets/update/action | Aktualisiert die angegebenen Attribute, die dem jeweiligen Geheimnis zugeordnet sind. |
 > | Microsoft.KeyVault/vaults/secrets/recover/action | Stellt das gelöschte Geheimnis wieder her. Der Vorgang führt die Umkehrung des Löschvorgangs aus. Der Vorgang gilt in Tresoren, die für vorläufiges Löschen aktiviert sind, und muss während des Aufbewahrungsintervalls ausgegeben werden. |
-> | Microsoft.KeyVault/vaults/secrets/restore/action | Stellt ein gesichertes Geheimnis und alle zugehörigen Versionen in einem Tresor wieder her. |
+> | Microsoft.KeyVault/vaults/secrets/restore/action | Hiermit wird ein Geheimnis mit allen zugehörigen Versionen aus einer von Key Vault generierten Sicherungsdatei wiederhergestellt. |
 > | Microsoft.KeyVault/vaults/secrets/readMetadata/action | Listet die Eigenschaften eines Geheimnisses auf oder zeigt sie an, nicht aber dessen Wert. |
 > | Microsoft.KeyVault/vaults/secrets/getSecret/action | Ruft den Wert eines Geheimnisses ab. |
-> | Microsoft.KeyVault/vaults/secrets/setSecret/action | Erstellt ein neues Geheimnis. |
+> | Microsoft.KeyVault/vaults/secrets/setSecret/action | Legt den Wert eines Geheimnisses fest. Wenn das Geheimnis nicht vorhanden ist, wird die erste Version erstellt. Andernfalls wird eine neue Version mit dem angegebenen Wert erstellt. |
 > | Microsoft.KeyVault/vaults/storageaccounts/read | Hiermit wird die Definition von verwalteten Speicherkonten und SAS gelesen. |
 > | Microsoft.KeyVault/vaults/storageaccounts/set/action | Hiermit wird die Definition eines verwalteten Speicherkontos erstellt oder aktualisiert. |
 > | Microsoft.KeyVault/vaults/storageaccounts/delete | Hiermit wird die Definition eines verwalteten Speicherkontos gelöscht. |
-> | Microsoft.KeyVault/vaults/storageaccounts/backup/action | Hiermit wird eine Sicherung der Definition eines verwalteten Speicherkontos und der zugehörigen SAS (Shared Access Signature) erstellt. |
+> | Microsoft.KeyVault/vaults/storageaccounts/backup/action | Hiermit wird eine Sicherungsdatei der Definition eines verwalteten Speicherkontos und der zugehörigen SAS (Shared Access Signature) erstellt. |
 > | Microsoft.KeyVault/vaults/storageaccounts/purge/action | Hiermit wird die vorläufig gelöschte Definition eines verwalteten Speicherkontos oder einer SAS (Shared Access Signature) endgültig gelöscht. |
 > | Microsoft.KeyVault/vaults/storageaccounts/regeneratekey/action | Hiermit wird der Zugriffsschlüssel eines verwalteten Speicherkontos erneut generiert. |
 > | Microsoft.KeyVault/vaults/storageaccounts/recover/action | Hiermit wird die vorläufig gelöschte Definition eines verwalteten Speicherkontos oder einer SAS (Shared Access Signature) wiederhergestellt. |
-> | Microsoft.KeyVault/vaults/storageaccounts/restore/action | Hiermit wird die Definition eines verwalteten Speicherkontos und der zugehörigen SAS (Shared Access Signature) wiederhergestellt. |
+> | Microsoft.KeyVault/vaults/storageaccounts/restore/action | Hiermit wird die Definition eines verwalteten Speicherkontos und der zugehörigen SAS (Shared Access Signature) aus einer von Key Vault generierten Sicherungsdatei erstellt. |
 > | Microsoft.KeyVault/vaults/storageaccounts/sas/set/action | Hiermit wird die SAS-Definition (Shared Access Signature) für ein verwaltetes Speicherkonto erstellt oder aktualisiert. |
 > | Microsoft.KeyVault/vaults/storageaccounts/sas/delete | Hiermit wird die SAS-Definition (Shared Access Signature) für ein verwaltetes Speicherkonto gelöscht. |
 
@@ -6618,6 +6656,9 @@ Azure-Dienst: [Security Center](../security-center/index.yml)
 > | Microsoft.Security/advancedThreatProtectionSettings/read | Ruft die Einstellungen des erweiterten Schutzes vor Bedrohungen für die Ressource ab. |
 > | Microsoft.Security/advancedThreatProtectionSettings/write | Aktualisiert die Einstellungen des erweiterten Schutzes vor Bedrohungen für die Ressource. |
 > | Microsoft.Security/alerts/read | Ruft alle verfügbaren Sicherheitswarnungen ab. |
+> | Microsoft.Security/alertsSuppressionRules/read | Ruft alle verfügbaren Regeln zur Unterdrückung von Sicherheitswarnungen ab. |
+> | Microsoft.Security/alertsSuppressionRules/write | Erstellt eine neue Regel zur Unterdrückung von Sicherheitswarnungen oder aktualisiert eine vorhandene Regel. |
+> | Microsoft.Security/alertsSuppressionRules/delete | Löscht eine Regel zur Unterdrückung von Sicherheitswarnungen. |
 > | Microsoft.Security/applicationWhitelistings/read | Ruft die Anwendungszulassungslisten ab. |
 > | Microsoft.Security/applicationWhitelistings/write | Erstellt eine neue Anwendungszulassungsliste oder aktualisiert eine bereits vorhandene. |
 > | Microsoft.Security/assessmentMetadata/read | Abrufen der verfügbaren Sicherheitsbewertungs-Metadaten für Ihr Abonnement |
@@ -6651,6 +6692,8 @@ Azure-Dienst: [Security Center](../security-center/index.yml)
 > | Microsoft.Security/locations/alerts/read | Ruft alle verfügbaren Sicherheitswarnungen ab. |
 > | Microsoft.Security/locations/alerts/dismiss/action | Schließt eine Sicherheitswarnung. |
 > | Microsoft.Security/locations/alerts/activate/action | Aktiviert eine Sicherheitswarnung. |
+> | Microsoft.Security/locations/alerts/resolve/action | Löst eine Sicherheitswarnung auf. |
+> | Microsoft.Security/locations/alerts/simulate/action | Simuliert eine Sicherheitswarnung. |
 > | Microsoft.Security/locations/jitNetworkAccessPolicies/read | Ruft die JIT-Netzwerkzugriffsrichtlinien ab. |
 > | Microsoft.Security/locations/jitNetworkAccessPolicies/write | Erstellt eine neue JIT-Netzwerkzugriffsrichtlinie oder aktualisiert eine bereits vorhandene. |
 > | Microsoft.Security/locations/jitNetworkAccessPolicies/delete | Löscht die JIT-Netzwerkzugriffsrichtlinien. |
@@ -6665,6 +6708,10 @@ Azure-Dienst: [Security Center](../security-center/index.yml)
 > | Microsoft.Security/pricings/read | Ruft die Tarifeinstellungen für den Bereich ab. |
 > | Microsoft.Security/pricings/write | Aktualisiert die Tarifeinstellungen für den Bereich. |
 > | Microsoft.Security/pricings/delete | Löscht die Tarifeinstellungen für den Bereich. |
+> | Microsoft.Security/secureScoreControlDefinitions/read | Ruft die Definition einer Sicherheitsbewertungssteuerung ab. |
+> | Microsoft.Security/secureScoreControls/read | Ruft eine berechnete Sicherheitsbewertungssteuerung für Ihr Abonnement ab. |
+> | Microsoft.Security/secureScores/read | Ruft eine berechnete Sicherheitsbewertung für Ihr Abonnement ab. |
+> | Microsoft.Security/secureScores/secureScoreControls/read | Ruft eine berechnete Sicherheitsbewertungssteuerung für Ihre Sicherheitsbewertungsberechnung ab. |
 > | Microsoft.Security/securityContacts/read | Ruft den Sicherheitskontakt ab. |
 > | Microsoft.Security/securityContacts/write | Aktualisiert den Sicherheitskontakt. |
 > | Microsoft.Security/securityContacts/delete | Löscht den Sicherheitskontakt. |
@@ -6676,6 +6723,12 @@ Azure-Dienst: [Security Center](../security-center/index.yml)
 > | Microsoft.Security/securityStatusesSummaries/read | Ruft die Zusammenfassungen der Sicherheitsstatus für den Bereich ab. |
 > | Microsoft.Security/settings/read | Ruft die Einstellungen für den Bereich ab. |
 > | Microsoft.Security/settings/write | Aktualisiert die Einstellungen für den Bereich. |
+> | Microsoft.Security/sqlVulnerabilityAssessments/baselineRules/action | Fügt der Baseline eine Liste der Regelergebnisse hinzu. |
+> | Microsoft.Security/sqlVulnerabilityAssessments/baselineRules/read | Gibt die Baseline der Datenbanken zurück (alle Regeln, die der Baseline hinzugefügt wurden) oder ruft Regelbaselineergebnisse für die angegebene Regel-ID ab. |
+> | Microsoft.Security/sqlVulnerabilityAssessments/baselineRules/write | Ändert das Regelbaselineergebnis. |
+> | Microsoft.Security/sqlVulnerabilityAssessments/baselineRules/delete | Entfernt das Regelergebnis aus der Baseline. |
+> | Microsoft.Security/sqlVulnerabilityAssessments/scans/read | Gibt die Liste der Überprüfungsdatensätze für eine Sicherheitsrisikobewertung zurück oder ruft den Überprüfungsdatensatz für die angegebene Überprüfungs-ID ab. |
+> | Microsoft.Security/sqlVulnerabilityAssessments/scans/scanResults/read | Gibt die Liste der Regelergebnisse für eine Sicherheitsrisikobewertung zurück oder ruft das Regelergebnis für die angegebene Regel-ID ab. |
 > | Microsoft.Security/tasks/read | Ruft alle verfügbaren Sicherheitsempfehlungen ab. |
 > | Microsoft.Security/webApplicationFirewalls/read | Ruft die Web Application Firewalls ab. |
 > | Microsoft.Security/webApplicationFirewalls/write | Erstellt eine neue Web Application Firewall oder aktualisiert eine bereits vorhandene. |
@@ -6732,7 +6785,8 @@ Azure-Dienst: [Azure Sentinel](../sentinel/index.yml)
 > | Microsoft.SecurityInsights/dataConnectors/write | Aktualisiert einen Datenconnector. |
 > | Microsoft.SecurityInsights/dataConnectors/delete | Löscht einen Datenconnector. |
 > | Microsoft.SecurityInsights/entities/read | Ruft den Sentinel-Entitätsgraphen ab. |
-> | Microsoft.SecurityInsights/entities/timeline/action | Ruft die Entitätszeitachse für einen bestimmten Bereich ab. |
+> | Microsoft.SecurityInsights/entities/gettimeline/action | Ruft die Entitätszeitachse für einen bestimmten Bereich ab. |
+> | Microsoft.SecurityInsights/entities/getInsights/action | Ruft Entitätsinformationen für einen bestimmten Bereich ab. |
 > | Microsoft.SecurityInsights/entities/relations/read | Ruft eine Beziehung zwischen der Entität und den zugehörigen Ressourcen ab. |
 > | Microsoft.SecurityInsights/entities/relations/write | Aktualisiert eine Beziehung zwischen der Entität und den zugehörigen Ressourcen. |
 > | Microsoft.SecurityInsights/entities/relations/delete | Löscht eine Beziehung zwischen der Entität und den zugehörigen Ressourcen. |
@@ -8699,6 +8753,7 @@ Azure-Dienst: [Kostenverwaltung + Abrechnung](../cost-management-billing/index.y
 > | Microsoft.Billing/billingAccounts/billingSubscriptions/read |  |
 > | Microsoft.Billing/billingAccounts/billingSubscriptions/move/action |  |
 > | Microsoft.Billing/billingAccounts/billingSubscriptions/validateMoveEligibility/action |  |
+> | Microsoft.Billing/billingAccounts/billingSubscriptions/downloadDocuments/action | Lädt die Rechnung über den Downloadlink aus der Liste herunter. |
 > | Microsoft.Billing/billingAccounts/customers/read |  |
 > | Microsoft.Billing/billingAccounts/customers/billingPermissions/read |  |
 > | Microsoft.Billing/billingAccounts/departments/read |  |
@@ -8712,7 +8767,6 @@ Azure-Dienst: [Kostenverwaltung + Abrechnung](../cost-management-billing/index.y
 > | Microsoft.Billing/billingAccounts/products/move/action |  |
 > | Microsoft.Billing/billingAccounts/products/validateMoveEligibility/action |  |
 > | Microsoft.Billing/departments/read |  |
-> | Microsoft.Billing/invoices/download/action | Lädt die Rechnung über den Downloadlink aus der Liste herunter. |
 > | Microsoft.Billing/invoices/download/action | Lädt die Rechnung über den Downloadlink aus der Liste herunter. |
 > | Microsoft.Billing/operations/read |  |
 
@@ -9338,69 +9392,76 @@ Azure-Dienst: [Site Recovery](../site-recovery/index.yml)
 > | Aktion | BESCHREIBUNG |
 > | --- | --- |
 > | Microsoft.RecoveryServices/register/action | Registriert das Abonnement für den angegebenen Ressourcenanbieter. |
-> | Microsoft.RecoveryServices/Locations/backupPreValidateProtection/action |  |
-> | Microsoft.RecoveryServices/Locations/backupStatus/action | Überprüft den Sicherungsstatus für Recovery Services-Tresore. |
-> | Microsoft.RecoveryServices/Locations/backupValidateFeatures/action | Überprüft Features. |
+> | microsoft.recoveryservices/Locations/backupPreValidateProtection/action |  |
+> | microsoft.recoveryservices/Locations/backupStatus/action | Überprüft den Sicherungsstatus für Recovery Services-Tresore. |
+> | microsoft.recoveryservices/Locations/backupValidateFeatures/action | Überprüft Features. |
 > | Microsoft.RecoveryServices/locations/allocateStamp/action | „AllocateStamp“ ist ein interner Vorgang des Diensts. |
 > | Microsoft.RecoveryServices/locations/checkNameAvailability/action | Überprüft die Verfügbarkeit des Ressourcennamens als API, um sicherzustellen, dass der Ressourcenname verfügbar ist. |
 > | Microsoft.RecoveryServices/locations/allocatedStamp/read | „GetAllocatedStamp“ ist ein interner Vorgang des Diensts. |
-> | Microsoft.RecoveryServices/Locations/backupProtectedItem/write | Dient zum Erstellen eines geschützten Elements für die Sicherung. |
-> | Microsoft.RecoveryServices/Locations/backupProtectedItems/read | Gibt die Liste mit allen geschützten Elementen zurück. |
+> | microsoft.recoveryservices/Locations/backupProtectedItem/write | Dient zum Erstellen eines geschützten Elements für die Sicherung. |
+> | microsoft.recoveryservices/Locations/backupProtectedItems/read | Gibt die Liste mit allen geschützten Elementen zurück. |
 > | Microsoft.RecoveryServices/locations/operationStatus/read | Ruft den Vorgangsstatus eines angegebenen Vorgangs ab. |
 > | Microsoft.RecoveryServices/operations/read | Der Vorgang gibt die Liste der Vorgänge für einen Ressourcenanbieter zurück. |
-> | Microsoft.RecoveryServices/Vaults/backupJobsExport/action | Dient zum Exportieren von Aufträgen. |
-> | Microsoft.RecoveryServices/Vaults/backupSecurityPIN/action | Gibt Informationen zur Sicherheits-PIN für Recovery Services-Tresore zurück. |
-> | Microsoft.RecoveryServices/Vaults/backupValidateOperation/action | Überprüft Vorgang für geschütztes Element. |
+> | microsoft.recoveryservices/Vaults/backupCrossRegionRestore/action | Wiederherstellungspunkte für die regionsübergreifende Wiederherstellung geschützter Elemente. |
+> | microsoft.recoveryservices/Vaults/backupCrrJob/action | Ruft Auftragsdetails der regionsübergreifenden Wiederherstellung in der sekundären Region für den Recovery Services-Tresor ab. |
+> | microsoft.recoveryservices/Vaults/backupCrrJobs/action | Listet Aufträge der regionsübergreifenden Wiederherstellung in der sekundären Region für den Recovery Services-Tresor auf. |
+> | microsoft.recoveryservices/Vaults/backupJobsExport/action | Dient zum Exportieren von Aufträgen. |
+> | microsoft.recoveryservices/Vaults/backupSecurityPIN/action | Gibt Informationen zur Sicherheits-PIN für Recovery Services-Tresore zurück. |
+> | microsoft.recoveryservices/Vaults/backupValidateOperation/action | Überprüft Vorgang für geschütztes Element. |
 > | Microsoft.RecoveryServices/Vaults/write | Der Vorgang „Tresor erstellen“ erstellt eine Azure-Ressource vom Typ „Tresor“. |
 > | Microsoft.RecoveryServices/Vaults/read | Der Vorgang „Tresor abrufen“ ruft ein Objekt ab, das die Azure-Ressource vom Typ „Tresor“ darstellt. |
 > | Microsoft.RecoveryServices/Vaults/delete | Der Vorgang „Tresor löschen“ löscht die angegebene Azure-Ressource vom Typ „Tresor“. |
-> | Microsoft.RecoveryServices/Vaults/backupconfig/read | Gibt die Konfiguration für Recovery Services-Tresore zurück. |
-> | Microsoft.RecoveryServices/Vaults/backupconfig/write | Aktualisiert die Konfiguration für Recovery Services-Tresore. |
-> | Microsoft.RecoveryServices/Vaults/backupEncryptionConfigs/read | Ruft die Verschlüsselungskonfiguration für Sicherungsressourcen ab. |
-> | Microsoft.RecoveryServices/Vaults/backupEncryptionConfigs/write | Aktualisiert die Verschlüsselungskonfiguration für Sicherungsressourcen. |
-> | Microsoft.RecoveryServices/Vaults/backupEngines/read | Gibt alle Sicherungsverwaltungsserver zurück, die beim Tresor registriert sind. |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/refreshContainers/action | Aktualisiert die Containerliste. |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/backupProtectionIntent/delete | Löscht einen beabsichtigten Sicherungsschutz. |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/backupProtectionIntent/read | Ruft einen beabsichtigten Sicherungsschutz ab. |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/backupProtectionIntent/write | Erstellt einen beabsichtigten Sicherungsschutz. |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/operationResults/read | Gibt den Status des Vorgangs zurück. |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/operationsStatus/read | Gibt den Status des Vorgangs zurück. |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectableContainers/read | Ruft alle schützbaren Container ab. |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/delete | Löscht den registrierten Container. |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/inquire/action | Führt die Abfrage für Workloads innerhalb eines Containers durch. |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/read | Gibt alle registrierten Container zurück. |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/write | Erstellt einen registrierten Container. |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/items/read | Ruft alle Elemente in einem Container ab. |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/operationResults/read | Ruft das Ergebnis eines Vorgangs ab, der für den Schutzcontainer ausgeführt wurde. |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/operationsStatus/read | Ruft den Status eines Vorgangs ab, der für den Schutzcontainer ausgeführt wurde. |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/backup/action | Führt eine Sicherung für geschützte Elemente aus. |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/delete | Löscht geschützte Elemente. |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/read | Gibt Objektdetails des geschützten Elements zurück. |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/write | Dient zum Erstellen eines geschützten Elements für die Sicherung. |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/operationResults/read | Ruft das Ergebnis eines Vorgangs ab, der für geschützte Elemente ausgeführt wurde. |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/operationsStatus/read | Gibt den Status eines Vorgangs zurück, der für geschützte Elemente ausgeführt wurde. |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/provisionInstantItemRecovery/action | Dient zum Bereitstellen der sofortigen Elementwiederherstellung für geschützte Elemente. |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/read | Dient zum Abrufen von Wiederherstellungspunkten für geschützte Elemente. |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/restore/action | Dient zum Wiederherstellen von Wiederherstellungspunkten für geschützte Elemente. |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/revokeInstantItemRecovery/action | Dient zum Widerrufen der sofortigen Elementwiederherstellung für geschützte Elemente. |
-> | Microsoft.RecoveryServices/Vaults/backupJobs/cancel/action | Dient zum Abbrechen des Auftrags. |
-> | Microsoft.RecoveryServices/Vaults/backupJobs/read | Gibt alle Auftragsobjekte zurück. |
-> | Microsoft.RecoveryServices/Vaults/backupJobs/operationResults/read | Gibt das Ergebnis von Auftragsvorgängen zurück. |
-> | Microsoft.RecoveryServices/Vaults/backupJobs/operationsStatus/read | Gibt den Status des Auftragsvorgangs zurück. |
-> | Microsoft.RecoveryServices/Vaults/backupOperationResults/read | Gibt das Ergebnis eines Sicherungsvorgangs für Recovery Services-Tresore zurück. |
-> | Microsoft.RecoveryServices/Vaults/backupOperations/read | Gibt den Status eines Sicherungsvorgangs für Recovery Services-Tresore zurück. |
-> | Microsoft.RecoveryServices/Vaults/backupPolicies/delete | Dient zum Löschen einer Schutzrichtlinie. |
-> | Microsoft.RecoveryServices/Vaults/backupPolicies/read | Gibt alle Schutzrichtlinien zurück. |
-> | Microsoft.RecoveryServices/Vaults/backupPolicies/write | Erstellt Schutzrichtlinien. |
-> | Microsoft.RecoveryServices/Vaults/backupPolicies/operationResults/read | Dient zum Abrufen der Ergebnisse von Richtlinienvorgängen. |
-> | Microsoft.RecoveryServices/Vaults/backupPolicies/operations/read | Dient zum Abrufen des Status von Richtlinienvorgängen. |
-> | Microsoft.RecoveryServices/Vaults/backupProtectableItems/read | Gibt die Liste mit allen schützbaren Elementen zurück. |
-> | Microsoft.RecoveryServices/Vaults/backupProtectedItems/read | Gibt die Liste mit allen geschützten Elementen zurück. |
-> | Microsoft.RecoveryServices/Vaults/backupProtectionContainers/read | Gibt alle zum Abonnement gehörenden Container zurück. |
-> | Microsoft.RecoveryServices/Vaults/backupProtectionIntents/read | Listet den gesamten beabsichtigten Sicherungsschutz auf. |
-> | Microsoft.RecoveryServices/Vaults/backupstorageconfig/read | Gibt die Speicherkonfiguration für Recovery Services-Tresore zurück. |
-> | Microsoft.RecoveryServices/Vaults/backupstorageconfig/write | Aktualisiert Speicherkonfiguration für Recovery Services-Tresore. |
-> | Microsoft.RecoveryServices/Vaults/backupUsageSummaries/read | Gibt Zusammenfassungen für geschützte Elemente und geschützte Server für einen Recovery Services-Tresor zurück. |
+> | microsoft.recoveryservices/Vaults/backupAadProperties/read | Ruft AAD-Eigenschaften für die Authentifizierung in der dritten Region für die regionsübergreifende Wiederherstellung ab. |
+> | microsoft.recoveryservices/Vaults/backupconfig/read | Gibt die Konfiguration für Recovery Services-Tresore zurück. |
+> | microsoft.recoveryservices/Vaults/backupconfig/write | Aktualisiert die Konfiguration für Recovery Services-Tresore. |
+> | microsoft.recoveryservices/Vaults/backupCrrOperationResults/read | Gibt das Ergebnis eines CRR-Vorgangs für einen Recovery Services-Tresor zurück. |
+> | microsoft.recoveryservices/Vaults/backupCrrOperationsStatus/read | Gibt den Status des CRR-Vorgangs für den Recovery Services-Tresor zurück. |
+> | microsoft.recoveryservices/Vaults/backupEncryptionConfigs/read | Ruft die Verschlüsselungskonfiguration für Sicherungsressourcen ab. |
+> | microsoft.recoveryservices/Vaults/backupEncryptionConfigs/write | Aktualisiert die Verschlüsselungskonfiguration für Sicherungsressourcen. |
+> | microsoft.recoveryservices/Vaults/backupEngines/read | Gibt alle Sicherungsverwaltungsserver zurück, die beim Tresor registriert sind. |
+> | microsoft.recoveryservices/Vaults/backupFabrics/refreshContainers/action | Aktualisiert die Containerliste. |
+> | microsoft.recoveryservices/Vaults/backupFabrics/backupProtectionIntent/delete | Löscht einen beabsichtigten Sicherungsschutz. |
+> | microsoft.recoveryservices/Vaults/backupFabrics/backupProtectionIntent/read | Ruft einen beabsichtigten Sicherungsschutz ab. |
+> | microsoft.recoveryservices/Vaults/backupFabrics/backupProtectionIntent/write | Erstellt einen beabsichtigten Sicherungsschutz. |
+> | microsoft.recoveryservices/Vaults/backupFabrics/operationResults/read | Gibt den Status des Vorgangs zurück. |
+> | microsoft.recoveryservices/Vaults/backupFabrics/operationsStatus/read | Gibt den Status des Vorgangs zurück. |
+> | microsoft.recoveryservices/Vaults/backupFabrics/protectableContainers/read | Ruft alle schützbaren Container ab. |
+> | microsoft.recoveryservices/Vaults/backupFabrics/protectionContainers/delete | Löscht den registrierten Container. |
+> | microsoft.recoveryservices/Vaults/backupFabrics/protectionContainers/inquire/action | Führt die Abfrage für Workloads innerhalb eines Containers durch. |
+> | microsoft.recoveryservices/Vaults/backupFabrics/protectionContainers/read | Gibt alle registrierten Container zurück. |
+> | microsoft.recoveryservices/Vaults/backupFabrics/protectionContainers/write | Erstellt einen registrierten Container. |
+> | microsoft.recoveryservices/Vaults/backupFabrics/protectionContainers/items/read | Ruft alle Elemente in einem Container ab. |
+> | microsoft.recoveryservices/Vaults/backupFabrics/protectionContainers/operationResults/read | Ruft das Ergebnis eines Vorgangs ab, der für den Schutzcontainer ausgeführt wurde. |
+> | microsoft.recoveryservices/Vaults/backupFabrics/protectionContainers/operationsStatus/read | Ruft den Status eines Vorgangs ab, der für den Schutzcontainer ausgeführt wurde. |
+> | microsoft.recoveryservices/Vaults/backupFabrics/protectionContainers/protectedItems/backup/action | Führt eine Sicherung für geschützte Elemente aus. |
+> | microsoft.recoveryservices/Vaults/backupFabrics/protectionContainers/protectedItems/delete | Löscht geschützte Elemente. |
+> | microsoft.recoveryservices/Vaults/backupFabrics/protectionContainers/protectedItems/read | Gibt Objektdetails des geschützten Elements zurück. |
+> | microsoft.recoveryservices/Vaults/backupFabrics/protectionContainers/protectedItems/write | Dient zum Erstellen eines geschützten Elements für die Sicherung. |
+> | microsoft.recoveryservices/Vaults/backupFabrics/protectionContainers/protectedItems/operationResults/read | Ruft das Ergebnis eines Vorgangs ab, der für geschützte Elemente ausgeführt wurde. |
+> | microsoft.recoveryservices/Vaults/backupFabrics/protectionContainers/protectedItems/operationsStatus/read | Gibt den Status eines Vorgangs zurück, der für geschützte Elemente ausgeführt wurde. |
+> | microsoft.recoveryservices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/accessToken/action | Ruft das AccessToken für die regionsübergreifende Wiederherstellung ab. |
+> | microsoft.recoveryservices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/provisionInstantItemRecovery/action | Dient zum Bereitstellen der sofortigen Elementwiederherstellung für geschützte Elemente. |
+> | microsoft.recoveryservices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/read | Dient zum Abrufen von Wiederherstellungspunkten für geschützte Elemente. |
+> | microsoft.recoveryservices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/restore/action | Dient zum Wiederherstellen von Wiederherstellungspunkten für geschützte Elemente. |
+> | microsoft.recoveryservices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/revokeInstantItemRecovery/action | Dient zum Widerrufen der sofortigen Elementwiederherstellung für geschützte Elemente. |
+> | microsoft.recoveryservices/Vaults/backupJobs/cancel/action | Dient zum Abbrechen des Auftrags. |
+> | microsoft.recoveryservices/Vaults/backupJobs/read | Gibt alle Auftragsobjekte zurück. |
+> | microsoft.recoveryservices/Vaults/backupJobs/operationResults/read | Gibt das Ergebnis von Auftragsvorgängen zurück. |
+> | microsoft.recoveryservices/Vaults/backupJobs/operationsStatus/read | Gibt den Status des Auftragsvorgangs zurück. |
+> | microsoft.recoveryservices/Vaults/backupOperationResults/read | Gibt das Ergebnis eines Sicherungsvorgangs für Recovery Services-Tresore zurück. |
+> | microsoft.recoveryservices/Vaults/backupOperations/read | Gibt den Status eines Sicherungsvorgangs für Recovery Services-Tresore zurück. |
+> | microsoft.recoveryservices/Vaults/backupPolicies/delete | Dient zum Löschen einer Schutzrichtlinie. |
+> | microsoft.recoveryservices/Vaults/backupPolicies/read | Gibt alle Schutzrichtlinien zurück. |
+> | microsoft.recoveryservices/Vaults/backupPolicies/write | Erstellt Schutzrichtlinien. |
+> | microsoft.recoveryservices/Vaults/backupPolicies/operationResults/read | Dient zum Abrufen der Ergebnisse von Richtlinienvorgängen. |
+> | microsoft.recoveryservices/Vaults/backupPolicies/operations/read | Dient zum Abrufen des Status von Richtlinienvorgängen. |
+> | microsoft.recoveryservices/Vaults/backupProtectableItems/read | Gibt die Liste mit allen schützbaren Elementen zurück. |
+> | microsoft.recoveryservices/Vaults/backupProtectedItems/read | Gibt die Liste mit allen geschützten Elementen zurück. |
+> | microsoft.recoveryservices/Vaults/backupProtectionContainers/read | Gibt alle zum Abonnement gehörenden Container zurück. |
+> | microsoft.recoveryservices/Vaults/backupProtectionIntents/read | Listet den gesamten beabsichtigten Sicherungsschutz auf. |
+> | microsoft.recoveryservices/Vaults/backupstorageconfig/read | Gibt die Speicherkonfiguration für Recovery Services-Tresore zurück. |
+> | microsoft.recoveryservices/Vaults/backupstorageconfig/write | Aktualisiert Speicherkonfiguration für Recovery Services-Tresore. |
+> | microsoft.recoveryservices/Vaults/backupUsageSummaries/read | Gibt Zusammenfassungen für geschützte Elemente und geschützte Server für einen Recovery Services-Tresor zurück. |
 > | Microsoft.RecoveryServices/Vaults/certificates/write | Der Vorgang „Ressourcenzertifikat aktualisieren“ aktualisiert das Zertifikat für die Ressourcen-/Tresoranmeldeinformationen. |
 > | Microsoft.RecoveryServices/Vaults/extendedInformation/read | Der Vorgang „Ausführliche Informationen abrufen“ ruft die ausführlichen Informationen zu einem Objekt ab, das die Azure-Ressource vom Typ „Tresor“ darstellt. |
 > | Microsoft.RecoveryServices/Vaults/extendedInformation/write | Der Vorgang „Ausführliche Informationen abrufen“ ruft die ausführlichen Informationen zu einem Objekt ab, das die Azure-Ressource vom Typ „Tresor“ darstellt. |
@@ -9409,14 +9470,14 @@ Azure-Dienst: [Site Recovery](../site-recovery/index.yml)
 > | Microsoft.RecoveryServices/Vaults/monitoringAlerts/write | Löst die Warnung auf. |
 > | Microsoft.RecoveryServices/Vaults/monitoringConfigurations/read | Ruft die Konfiguration von Recovery Services-Tresorbenachrichtigungen ab. |
 > | Microsoft.RecoveryServices/Vaults/monitoringConfigurations/write | Konfiguriert E-Mail-Benachrichtigungen für den Recovery Services-Tresor. |
-> | Microsoft.RecoveryServices/Vaults/privateEndpointConnectionProxies/delete | Warten Sie einige Minuten, und versuchen Sie es dann erneut. Wenn das Problem weiterhin besteht, wenden Sie sich an den Microsoft-Support. |
-> | Microsoft.RecoveryServices/Vaults/privateEndpointConnectionProxies/read | Ruft alle schützbaren Container ab. |
-> | Microsoft.RecoveryServices/Vaults/privateEndpointConnectionProxies/validate/action | Ruft alle schützbaren Container ab. |
-> | Microsoft.RecoveryServices/Vaults/privateEndpointConnectionProxies/write | Ruft alle schützbaren Container ab. |
-> | Microsoft.RecoveryServices/Vaults/privateEndpointConnectionProxies/operationsStatus/read | Ruft alle schützbaren Container ab. |
-> | Microsoft.RecoveryServices/Vaults/privateEndpointConnections/delete | Löscht Anforderungen für einen privaten Endpunkt. Dieser Aufruf wird durch einen Backup-Admin ausgeführt. |
-> | Microsoft.RecoveryServices/Vaults/privateEndpointConnections/write | Genehmigt Anforderungen für einen privaten Endpunkt oder lehnt sie ab. Dieser Aufruf wird durch einen Backup-Admin ausgeführt. |
-> | Microsoft.RecoveryServices/Vaults/privateEndpointConnections/operationsStatus/read | Gibt den Vorgangsstatus für die Verbindung eines privaten Endpunkts zurück. |
+> | microsoft.recoveryservices/Vaults/privateEndpointConnectionProxies/delete | Warten Sie einige Minuten, und versuchen Sie es dann erneut. Wenn das Problem weiterhin besteht, wenden Sie sich an den Microsoft-Support. |
+> | microsoft.recoveryservices/Vaults/privateEndpointConnectionProxies/read | Ruft alle schützbaren Container ab. |
+> | microsoft.recoveryservices/Vaults/privateEndpointConnectionProxies/validate/action | Ruft alle schützbaren Container ab. |
+> | microsoft.recoveryservices/Vaults/privateEndpointConnectionProxies/write | Ruft alle schützbaren Container ab. |
+> | microsoft.recoveryservices/Vaults/privateEndpointConnectionProxies/operationsStatus/read | Ruft alle schützbaren Container ab. |
+> | microsoft.recoveryservices/Vaults/privateEndpointConnections/delete | Löscht Anforderungen für einen privaten Endpunkt. Dieser Aufruf wird durch einen Backup-Admin ausgeführt. |
+> | microsoft.recoveryservices/Vaults/privateEndpointConnections/write | Genehmigt Anforderungen für einen privaten Endpunkt oder lehnt sie ab. Dieser Aufruf wird durch einen Backup-Admin ausgeführt. |
+> | microsoft.recoveryservices/Vaults/privateEndpointConnections/operationsStatus/read | Gibt den Vorgangsstatus für die Verbindung eines privaten Endpunkts zurück. |
 > | Microsoft.RecoveryServices/Vaults/registeredIdentities/write | Der Vorgang „Dienstcontainer registrieren“ kann zum Registrieren eines Containers beim Wiederherstellungsdienst verwendet werden. |
 > | Microsoft.RecoveryServices/Vaults/registeredIdentities/read | Der Vorgang „Container abrufen“ kann zum Abrufen der für eine Ressource registrierten Container verwendet werden. |
 > | Microsoft.RecoveryServices/Vaults/registeredIdentities/delete | Der Vorgang „Registrierung des Containers aufheben“ kann zum Aufheben der Registrierung eines Containers verwendet werden. |
@@ -9532,7 +9593,7 @@ Azure-Dienst: [Site Recovery](../site-recovery/index.yml)
 > | Microsoft.RecoveryServices/vaults/replicationVaultSettings/read | Liest alles.  |
 > | Microsoft.RecoveryServices/vaults/replicationVaultSettings/write | Erstellt oder aktualisiert  |
 > | Microsoft.RecoveryServices/vaults/replicationvCenters/read | Dienst zum Lesen beliebiger vCenter |
-> | Microsoft.RecoveryServices/Vaults/usages/read | Gibt Nutzungsdetails für einen Recovery Services-Tresor zurück. |
+> | microsoft.recoveryservices/Vaults/usages/read | Gibt Nutzungsdetails für einen Recovery Services-Tresor zurück. |
 > | Microsoft.RecoveryServices/vaults/usages/read | Liest Tresorverwendungen. |
 > | Microsoft.RecoveryServices/Vaults/vaultTokens/read | Der Vorgang „Tresortoken“ kann zum Abrufen des Tresortokens für Back-End-Vorgänge auf Tresorebene verwendet werden. |
 

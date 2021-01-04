@@ -1,6 +1,6 @@
 ---
 title: Leistungsoptimierung mit Zwischenspeichern von Resultsets
-description: Übersicht über das Feature „Zwischenspeichern von Resultsets“ für Synapse SQL-Pool in Azure Synapse Analytics
+description: Übersicht über das Feature „Zwischenspeichern von Resultsets“ für dedizierte SQL-Pools in Azure Synapse Analytics
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 10/10/2019
 ms.author: xiaoyul
 ms.reviewer: nidejaco;
 ms.custom: azure-synapse
-ms.openlocfilehash: 933ec541e358f1839c1b4d24acd19e439ea26375
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 2b54277d0306244dc4ab6740fdd30e52668dd63c
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92541280"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460768"
 ---
 # <a name="performance-tuning-with-result-set-caching"></a>Leistungsoptimierung mit Zwischenspeichern von Resultsets
 
-Wenn das Zwischenspeichern von Resultsets aktiviert ist, werden die Abfrageergebnisse von Synapse SQL in der Benutzerdatenbank automatisch zwischengespeichert, damit sie wiederholt verwendet werden können.  Dies ermöglicht es, dass nachfolgende Abfrageausführungen die Ergebnisse direkt aus dem permanenten Cache erhalten und so keine Neuberechnung erforderlich ist.   Durch das Zwischenspeichern von Resultsets wird die Abfrageleistung verbessert und die Nutzung von Computeressourcen verringert.  Außerdem belegen Abfragen, die das zwischengespeicherte Resultset verwenden, keine Parallelitätsslots und werden daher auf vorhandene Parallelitätslimits nicht angerechnet. Aus Sicherheitsgründen können Benutzer nur dann auf die zwischengespeicherten Ergebnisse zugreifen, wenn sie über dieselben Datenzugriffsberechtigungen wie die Benutzer verfügen, die die zwischengespeicherten Ergebnisse erstellen.  
+Wenn das Zwischenspeichern von Resultsets aktiviert ist, werden die Abfrageergebnisse von dedizierten SQL-Pools in der Benutzerdatenbank automatisch zwischengespeichert, damit sie wiederholt verwendet werden können.  Dies ermöglicht es, dass nachfolgende Abfrageausführungen die Ergebnisse direkt aus dem permanenten Cache erhalten und so keine Neuberechnung erforderlich ist.   Durch das Zwischenspeichern von Resultsets wird die Abfrageleistung verbessert und die Nutzung von Computeressourcen verringert.  Außerdem belegen Abfragen, die das zwischengespeicherte Resultset verwenden, keine Parallelitätsslots und werden daher auf vorhandene Parallelitätslimits nicht angerechnet. Aus Sicherheitsgründen können Benutzer nur dann auf die zwischengespeicherten Ergebnisse zugreifen, wenn sie über dieselben Datenzugriffsberechtigungen wie die Benutzer verfügen, die die zwischengespeicherten Ergebnisse erstellen.  
 
 ## <a name="key-commands"></a>Schlüsselbefehle
 
@@ -47,7 +47,7 @@ Sobald das Zwischenspeichern von Resultsets für eine Datenbank aktiviert wurde,
 > - Wenn die Daten in den ORDER BY-Spalten nicht eindeutig sind, gibt es für Zeilen mit identischen Werten in den ORDER BY-Spalten keine garantierte Zeilenreihenfolge. Dabei spielt es keine Rolle, ob die Zwischenspeicherung von Resultsets aktiviert ist.
 
 > [!IMPORTANT]
-> Die Vorgänge zum Erstellen des Resultsetcaches und zum Abrufen von Daten aus dem Cache erfolgen im Steuerknoten einer Synapse SQL-Pool-Instanz.
+> Die Vorgänge zum Erstellen des Resultsetcaches und zum Abrufen von Daten aus dem Cache erfolgen im Steuerknoten einer Instanz des dedizierten SQL-Pools.
 > Wenn das Zwischenspeichern von Resultsets aktiviert ist (ON), können ausgeführte Abfragen, die ein großes Resultset zurückgeben (z. B. >1 GB), eine starke Drosselung in dem Kontrollknoten verursachen und die gesamte Abfrageantwort auf der Instanz verlangsamen.  Diese Abfragen werden häufig beim Durchsuchen von Daten oder ETL-Vorgängen verwendet. Benutzer sollten das Zwischenspeichern von Resultsets auf der Datenbank deaktivieren, bevor sie diese Abfragetypen ausführen, um den Kontrollknoten nicht zu belasten und Leistungsprobleme zu verursachen.  
 
 Führen Sie diese Abfrage für die Zeit aus, die zum Zwischenspeichern von Resultsets für eine Abfrage benötigt wird:
@@ -85,7 +85,7 @@ WHERE request_id = <'Your_Query_Request_ID'>
 
 Die maximale Größe des Resultsetcaches ist 1 TB pro Datenbank.  Wenn sich die zugrundeliegenden Abfragedaten ändern, werden die zwischengespeicherten Ergebnisse automatisch ungültig gemacht.  
 
-Die Cacheentfernung wird von Synapse SQL nach diesem Zeitplan automatisch verwaltet:
+Die Cacheentfernung wird von dedizierten SQL-Pools nach diesem Zeitplan automatisch verwaltet:
 
 - Alle 48 Stunden, wenn das Resultset nicht verwendet oder ungültig gemacht wurde.
 - Wenn sich der Resultsetcache der maximalen Größe nähert.

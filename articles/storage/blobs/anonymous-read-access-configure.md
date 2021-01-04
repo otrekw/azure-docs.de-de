@@ -10,12 +10,12 @@ ms.date: 11/03/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: blobs
-ms.openlocfilehash: a808a6bb0d4dc75f02147bbfdd74d17b34e96f6e
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: feac7b890c973b1541c5362f860432687082953f
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93313980"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96533875"
 ---
 # <a name="configure-anonymous-public-read-access-for-containers-and-blobs"></a>Konfigurieren des anonymen, öffentlichen Lesezugriffs auf Container und Blobs
 
@@ -51,9 +51,9 @@ Wenn Sie den öffentlichen Zugriff für das Speicherkonto nicht zulassen, wird d
 > [!IMPORTANT]
 > Durch Verweigerung des öffentlichen Zugriffs für ein Speicherkonto werden die Einstellungen für den öffentlichen Zugriff für alle Container in diesem Konto außer Kraft gesetzt. Wenn der öffentliche Zugriff für das Speicherkonto verweigert wird, tritt bei künftigen anonymen Anforderungen für dieses Konto ein Fehler auf. Bevor Sie diese Einstellung ändern, sollten Sie sich mit den Auswirkungen auf Clientanwendung befassen, die ggf. anonym auf Daten in Ihrem Speicherkonto zugreifen. Weitere Informationen finden Sie unter [Verhindern des anonymem, öffentlichen Lesezugriffs auf Container und Blobs](anonymous-read-access-prevent.md).
 
-Konfigurieren Sie die **AllowBlobPublicAccess** -Eigenschaft des Kontos, um den öffentlichen Zugriff für ein Speicherkonto zuzulassen oder nicht zuzulassen. Diese Eigenschaft ist für alle Speicherkonten verfügbar, die mit dem Azure Resource Manager-Bereitstellungsmodell erstellt wurden. Weitere Informationen finden Sie unter [Speicherkontoübersicht](../common/storage-account-overview.md).
+Konfigurieren Sie die **AllowBlobPublicAccess**-Eigenschaft des Kontos, um den öffentlichen Zugriff für ein Speicherkonto zuzulassen oder nicht zuzulassen. Diese Eigenschaft ist für alle Speicherkonten verfügbar, die mit dem Azure Resource Manager-Bereitstellungsmodell erstellt wurden. Weitere Informationen finden Sie unter [Speicherkontoübersicht](../common/storage-account-overview.md).
 
-Die Eigenschaft **AllowBlobPublicAccess** wird nicht standardmäßig festgelegt und gibt erst dann einen Wert zurück, wenn Sie sie explizit festgelegt haben. Das Speicherkonto gestattet den öffentlichen Zugriff, wenn der Eigenschaftswert entweder **NULL** oder **true** ist.
+Die Eigenschaft **AllowBlobPublicAccess** wird nicht standardmäßig für ein Speicherkonto festgelegt und gibt erst dann einen Wert zurück, wenn Sie sie explizit festgelegt haben. Das Speicherkonto gestattet den öffentlichen Zugriff, wenn der Eigenschaftswert entweder **NULL** oder **true** ist.
 
 # <a name="azure-portal"></a>[Azure portal](#tab/portal)
 
@@ -129,7 +129,7 @@ az storage account show \
 
 # <a name="template"></a>[Vorlage](#tab/template)
 
-Erstellen Sie eine Vorlage mit der Eigenschaft **AllowBlobPublicAccess** , die auf **true** oder **false** festgelegt ist, um den öffentlichen Zugriff für ein Speicherkonto mit einer Vorlage zuzulassen oder nicht zuzulassen. Die folgenden Schritte beschreiben, wie eine Vorlage im Azure-Portal erstellt wird.
+Erstellen Sie eine Vorlage mit der Eigenschaft **AllowBlobPublicAccess**, die auf **true** oder **false** festgelegt ist, um den öffentlichen Zugriff für ein Speicherkonto mit einer Vorlage zuzulassen oder nicht zuzulassen. Die folgenden Schritte beschreiben, wie eine Vorlage im Azure-Portal erstellt wird.
 
 1. Klicken Sie im Azure-Portal auf **Ressource erstellen**.
 1. Geben Sie in **Marketplace durchsuchen** den Begriff **Vorlagenbereitstellung** ein, und drücken Sie dann die **EINGABETASTE**.
@@ -176,7 +176,7 @@ Erstellen Sie eine Vorlage mit der Eigenschaft **AllowBlobPublicAccess** , die a
 
 Das Zulassen oder Untersagen des öffentlichen Blobzugriffs erfordert Version 2019-04-01 oder höher des Azure Storage-Ressourcenanbieters. Weitere Informationen finden Sie unter [REST-API des Azure Storage-Ressourcenanbieters](/rest/api/storagerp/).
 
-Die Beispiele in diesem Abschnitt zeigten, wie die **AllowBlobPublicAccess** -Eigenschaft für das Speicherkonto gelesen werden kann, um zu ermitteln, ob der öffentliche Zugriff derzeit zulässig oder nicht zulässig ist. Weitere Informationen darüber, wie Sie überprüfen können, ob die Einstellung für den öffentlichen Zugriff eines Kontos so konfiguriert ist, dass anonymer Zugriff verhindert wird, finden Sie unter [Behandeln von anonymem öffentlichem Zugriff](anonymous-read-access-prevent.md#remediate-anonymous-public-access).
+Die Beispiele in diesem Abschnitt zeigten, wie die **AllowBlobPublicAccess**-Eigenschaft für das Speicherkonto gelesen werden kann, um zu ermitteln, ob der öffentliche Zugriff derzeit zulässig oder nicht zulässig ist. Weitere Informationen darüber, wie Sie überprüfen können, ob die Einstellung für den öffentlichen Zugriff eines Kontos so konfiguriert ist, dass anonymer Zugriff verhindert wird, finden Sie unter [Behandeln von anonymem öffentlichem Zugriff](anonymous-read-access-prevent.md#remediate-anonymous-public-access).
 
 ## <a name="set-the-public-access-level-for-a-container"></a>Festlegen der öffentlichen Zugriffsebene auf einen Container
 
@@ -197,7 +197,7 @@ Führen Sie die folgenden Schritte aus, um die öffentliche Zugriffsebene für e
 1. Navigieren Sie zu Ihrer Speicherkontoübersicht im Azure-Portal.
 1. Wählen Sie auf dem Menüblatt unter **Blob-Dienst** die Option **Container** aus.
 1. Wählen Sie die Container aus, für die Sie die öffentliche Zugriffsebene festlegen möchten.
-1. Klicken Sie auf **Zugriffsebene ändern** , um die Einstellungen für den öffentlichen Zugriff aufzurufen.
+1. Klicken Sie auf **Zugriffsebene ändern**, um die Einstellungen für den öffentlichen Zugriff aufzurufen.
 1. Wählen Sie aus der Dropdownliste **Öffentliche Zugriffsebene** den gewünschten Eintrag aus, und klicken Sie auf „OK“, damit die Änderungen auf die ausgewählten Container angewendet werden.
 
     ![Screenshot: Festlegen der öffentlichen Zugriffsebene im Azure-Portal](./media/anonymous-read-access-configure/configure-public-access-container.png)

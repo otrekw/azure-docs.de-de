@@ -9,11 +9,11 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 02/10/2020
 ms.openlocfilehash: 0941e3d5141b5b8841f5d37e3db0d0b1b1474547
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130271"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019819"
 ---
 # <a name="real-time-twitter-sentiment-analysis-in-azure-stream-analytics"></a>Twitter-Standpunktanalyse in Echtzeit in Azure Stream Analytics
 
@@ -79,7 +79,7 @@ Damit ein Prozess Daten an einen Event Hub senden kann, benötigt der Event Hub 
 
 5.  Nachdem die Richtlinie bereitgestellt wurde, wählen Sie die Richtlinie aus der Liste der Richtlinien für gemeinsamen Zugriff aus.
 
-6.  Suchen Sie das Feld namens **Verbindungszeichenfolge – Primärschlüssel** , und wählen Sie neben der Verbindungszeichenfolge die Schaltfläche „Kopieren“ aus.
+6.  Suchen Sie das Feld namens **Verbindungszeichenfolge – Primärschlüssel**, und wählen Sie neben der Verbindungszeichenfolge die Schaltfläche „Kopieren“ aus.
  
 7.  Fügen Sie die Verbindungszeichenfolge in einen Texteditor ein. Sie benötigen diese Verbindungszeichenfolge für den nächsten Abschnitt, nachdem Sie einige kleine Änderungen vorgenommen haben.
 
@@ -142,7 +142,7 @@ Bevor die Anwendung ausgeführt wird, benötigt diese bestimmte Informationen vo
 
 Nun, da wir einen Datenstrom von Tweet-Ereignissen von Twitter in Echtzeit haben, können wir einen Stream Analytics-Auftrag einrichten, um diese Ereignisse in Echtzeit zu analysieren.
 
-1. Navigieren Sie im Azure-Portal zu Ihrer Ressourcengruppe, und wählen Sie **+ Hinzufügen** aus. Suchen Sie dann nach **Stream Analytics-Auftrag** , und wählen Sie **Erstellen** aus.
+1. Navigieren Sie im Azure-Portal zu Ihrer Ressourcengruppe, und wählen Sie **+ Hinzufügen** aus. Suchen Sie dann nach **Stream Analytics-Auftrag**, und wählen Sie **Erstellen** aus.
 
 2. Vergeben Sie einen Namen für den Auftrag `socialtwitter-sa-job`, und geben Sie ein Abonnement, eine Ressourcengruppe und einen Speicherort an.
 
@@ -207,10 +207,10 @@ In dieser Schrittanleitung schreiben Sie die aggregierten Tweet-Ereignisse aus d
 
 2. Klicken Sie auf der Seite **Ausgaben** auf **+&nbsp;Hinzufügen** und **Blobspeicher/Data Lake Storage Gen2**.
 
-   * **Ausgabealias** : Verwenden Sie den Namen `TwitterStream-Output`. 
-   * **Importoptionen** : Wählen Sie **Speicher aus Ihren Abonnements auswählen** aus.
-   * **Speicherkonto** : Wählen Sie dann Ihr Speicherkonto aus.
-   * **Container** : Wählen Sie **Neu erstellen** aus, und geben Sie `socialtwitter` ein.
+   * **Ausgabealias**: Verwenden Sie den Namen `TwitterStream-Output`. 
+   * **Importoptionen**: Wählen Sie **Speicher aus Ihren Abonnements auswählen** aus.
+   * **Speicherkonto**: Wählen Sie dann Ihr Speicherkonto aus.
+   * **Container**: Wählen Sie **Neu erstellen** aus, und geben Sie `socialtwitter` ein.
    
 4. Wählen Sie **Speichern** aus.   
 

@@ -7,12 +7,12 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
 ms.custom: references_regions
-ms.openlocfilehash: 90a5f0f84c72895a8450a42260b07f6dbea15e37
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: b4e35296a999070a6f536f4a52cfb7c3a1d4f42a
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94428026"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186489"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-it-service-management-connector"></a>Verbinden von Azure mit ITSM-Tools mithilfe des ITSM-Connectors
 
@@ -145,7 +145,7 @@ Verwenden Sie das folgende Verfahren, um ein Arbeitselement zu erstellen:
 
 7. Wählen Sie einen Typ für das **Arbeitselement** aus.
 
-8. Wenn Sie vordefinierte Felder mit festen Werten ausfüllen möchten, wählen Sie **Benutzerdefinierte Vorlage verwenden** aus. Wählen Sie andernfalls in der Liste **Vorlagen** eine vorhandene [Vorlage](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-overview#template-definitions) aus, und geben Sie die festen Werte in den Vorlagenfeldern ein.
+8. Wenn Sie vordefinierte Felder mit festen Werten ausfüllen möchten, wählen Sie **Benutzerdefinierte Vorlage verwenden** aus. Wählen Sie andernfalls in der Liste **Vorlagen** eine vorhandene [Vorlage](#template-definitions) aus, und geben Sie die festen Werte in den Vorlagenfeldern ein.
 
 9. Durch Aktivieren von **Einzelne Arbeitselemente für jedes Konfigurationselement erstellen** erhält jedes Konfigurationselement ein eigenes Arbeitselement. Pro Konfigurationselement gibt es ein Arbeitselement. Die Aktualisierung erfolgt entsprechend den erstellten Warnungen.
 
@@ -329,4 +329,3 @@ Kontaktieren Sie uns bei Fragen oder Feedback zum ITSM-Connector über [omsitsmf
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Hinzufügen von ITSM-Produkten/-Diensten zum ITSM-Connector](./itsmc-connections.md)
-

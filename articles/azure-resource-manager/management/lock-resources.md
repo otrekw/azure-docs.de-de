@@ -1,15 +1,15 @@
 ---
 title: Sperren von Ressourcen, um Änderungen zu verhindern
-description: Verhindern Sie, dass Benutzer kritische Azure-Ressourcen aktualisieren oder löschen, indem Sie eine Sperre für alle Benutzer und Rollen anwenden.
+description: Verhindern Sie, dass Benutzer Azure-Ressourcen aktualisieren oder löschen, indem Sie eine Sperre für alle Benutzer und Rollen anwenden.
 ms.topic: conceptual
-ms.date: 11/03/2020
+ms.date: 11/11/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 57b4fecd0293c714dfd910ae2ad4866397646ce8
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: f1073d8c4a6902ea00a9b4098ef87bc411b3e6c0
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340140"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555667"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>Sperren von Ressourcen, um unerwartete Änderungen zu verhindern
 
@@ -32,9 +32,9 @@ Das Anwenden von Sperren kann zu unerwarteten Ergebnissen führen, da einige Vor
 
 * Eine Schreibschutzsperre für ein **Speicherkonto** hindert alle Benutzer am Auflisten der Schlüssel. Der Vorgang zum Auflisten von Schlüsseln wird über eine POST-Anforderung behandelt, da die zurückgegebenen Schlüssel für Schreibvorgänge zur Verfügung stehen.
 
-* Das Festlegen einer Schreibschutzsperre für eine **App Service** -Ressource verhindert, dass der Server-Explorer von Visual Studio Dateien für die Ressource anzeigen kann, da für diese Interaktion Schreibzugriff erforderlich ist.
+* Das Festlegen einer Schreibschutzsperre für eine **App Service**-Ressource verhindert, dass der Server-Explorer von Visual Studio Dateien für die Ressource anzeigen kann, da für diese Interaktion Schreibzugriff erforderlich ist.
 
-* Eine Schreibschutzsperre für eine **Ressourcengruppe** , die einen **virtuellen Computer** enthält, hindert alle Benutzer am Starten bzw. Neustarten des virtuellen Computers. Diese Vorgänge erfordern eine POST-Anforderung.
+* Eine Schreibschutzsperre für eine **Ressourcengruppe**, die einen **virtuellen Computer** enthält, hindert alle Benutzer am Starten bzw. Neustarten des virtuellen Computers. Diese Vorgänge erfordern eine POST-Anforderung.
 
 * Eine Löschschutzsperre für eine **Ressourcengruppe** verhindert, dass mit Azure Resource Manager automatisch Bereitstellungen aus dem Verlauf [gelöscht](../templates/deployment-history-deletions.md) werden. Wenn im Verlauf 800 Bereitstellungen erreicht werden, treten bei weiteren Bereitstellungen Fehler auf.
 
@@ -74,19 +74,91 @@ Um alle Elemente für den Dienst zu löschen, einschließlich der gesperrten Inf
 
 ### <a name="arm-template"></a>ARM-Vorlage
 
-Wenn Sie eine Sperre mithilfe einer Resource Manager-Vorlage bereitstellen, verwenden Sie je nach Umfang der Sperre unterschiedliche Werte für den Namen und den Typ.
+Wenn Sie eine Azure Resource Manager-Vorlage (ARM-Vorlage) zum Bereitstellen einer Sperre verwenden, müssen Sie den Bereich der Sperre und den Bereich der Bereitstellung beachten. Um eine Sperre auf den Bereitstellungsbereich anzuwenden, z. B. das Sperren einer Ressourcengruppe oder eines Abonnements, legen Sie die Eigenschaft „scope“ nicht fest. Wenn Sie eine Ressource innerhalb des Bereitstellungsbereichs sperren, legen Sie den Bereich ordnungsgemäß fest.
 
-Beim Anwenden einer Sperre für eine **Ressource** verwenden Sie die folgenden Formate:
+Die folgende Vorlage wendet eine Sperre auf die Ressourcengruppe an, in der sie bereitgestellt ist. Beachten Sie, dass für die Sperrressource keine Eigenschaft „scope“vorhanden ist, weil der Bereich der Sperre mit dem Bereich der Bereitstellung übereinstimmt. Diese Vorlage wird auf Ressourcengruppenebene bereitgestellt.
 
-* Name: `{resourceName}/Microsoft.Authorization/{lockName}`
-* Typ: `{resourceProviderNamespace}/{resourceType}/providers/locks`
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {  
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Authorization/locks",
+            "apiVersion": "2016-09-01",
+            "name": "rgLock",
+            "properties": {
+                "level": "CanNotDelete",
+                "notes": "Resource Group should not be deleted."
+            }
+        }
+    ]
+}
+```
 
-Beim Anwenden einer Sperre für eine **Ressourcengruppe** oder ein **Abonnement** verwenden Sie die folgenden Formate:
+Um eine Ressourcengruppe zu erstellen und zu sperren, stellen Sie die folgende Vorlage auf Abonnementebene bereit.
 
-* Name: `{lockName}`
-* Typ: `Microsoft.Authorization/locks`
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "rgName": {
+            "type": "string"
+        },
+        "rgLocation": {
+            "type": "string"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.Resources/resourceGroups",
+            "apiVersion": "2019-10-01",
+            "name": "[parameters('rgName')]",
+            "location": "[parameters('rgLocation')]",
+            "properties": {}
+        },
+        {
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2020-06-01",
+            "name": "lockDeployment",
+            "resourceGroup": "[parameters('rgName')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Resources/resourceGroups/', parameters('rgName'))]"
+            ],
+            "properties": {
+                "mode": "Incremental",
+                "template": {
+                    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+                    "contentVersion": "1.0.0.0",
+                    "parameters": {},
+                    "variables": {},
+                    "resources": [
+                        {
+                            "type": "Microsoft.Authorization/locks",
+                            "apiVersion": "2016-09-01",
+                            "name": "rgLock",
+                            "properties": {
+                                "level": "CanNotDelete",
+                                "notes": "Resource group and its resources should not be deleted."
+                            }
+                        }
+                    ],
+                    "outputs": {}
+                }
+            }
+        }
+    ],
+    "outputs": {}
+}
+```
 
-Das folgende Beispiel zeigt eine Vorlage, die einen App Service-Plan, eine Website und eine Sperre für die Website erstellt. Der Ressourcentyp der Sperre ist der Ressourcentyp der zu sperrenden Ressource und **/providers/locks**. Der Name der Sperre wird erstellt, indem der Ressourcenname mit **/Microsoft.Authorization/** und dem Namen der Sperre verkettet wird.
+Wenn Sie eine Sperre auf eine **Ressource** in der Ressourcengruppe anwenden, fügen Sie die Eigenschaft „scope“ hinzu. Legen Sie „scope“ auf den Namen der zu sperrenden Ressource fest.
+
+Das folgende Beispiel zeigt eine Vorlage, die einen App Service-Plan, eine Website und eine Sperre für die Website erstellt. Der Bereich der Sperre wird auf die Website festgelegt.
 
 ```json
 {
@@ -95,6 +167,10 @@ Das folgende Beispiel zeigt eine Vorlage, die einen App Service-Plan, eine Websi
   "parameters": {
     "hostingPlanName": {
       "type": "string"
+    },
+    "location": {
+        "type": "string",
+        "defaultValue": "[resourceGroup().location]"
     }
   },
   "variables": {
@@ -103,9 +179,9 @@ Das folgende Beispiel zeigt eine Vorlage, die einen App Service-Plan, eine Websi
   "resources": [
     {
       "type": "Microsoft.Web/serverfarms",
-      "apiVersion": "2019-08-01",
+      "apiVersion": "2020-06-01",
       "name": "[parameters('hostingPlanName')]",
-      "location": "[resourceGroup().location]",
+      "location": "[parameters('location')]",
       "sku": {
         "tier": "Free",
         "name": "f1",
@@ -117,9 +193,9 @@ Das folgende Beispiel zeigt eine Vorlage, die einen App Service-Plan, eine Websi
     },
     {
       "type": "Microsoft.Web/sites",
-      "apiVersion": "2019-08-01",
+      "apiVersion": "2020-06-01",
       "name": "[variables('siteName')]",
-      "location": "[resourceGroup().location]",
+      "location": "[parameters('location')]",
       "dependsOn": [
         "[resourceId('Microsoft.Web/serverfarms', parameters('hostingPlanName'))]"
       ],
@@ -128,9 +204,10 @@ Das folgende Beispiel zeigt eine Vorlage, die einen App Service-Plan, eine Websi
       }
     },
     {
-      "type": "Microsoft.Web/sites/providers/locks",
+      "type": "Microsoft.Authorization/locks",
       "apiVersion": "2016-09-01",
-      "name": "[concat(variables('siteName'), '/Microsoft.Authorization/siteLock')]",
+      "name": "siteLock",
+      "scope": "[concat('Microsoft.Web/sites/', variables('siteName'))]",
       "dependsOn": [
         "[resourceId('Microsoft.Web/sites', variables('siteName'))]"
       ],
@@ -142,8 +219,6 @@ Das folgende Beispiel zeigt eine Vorlage, die einen App Service-Plan, eine Websi
   ]
 }
 ```
-
-Ein Beispiel für das Festlegen einer Sperre für eine Ressourcengruppe finden Sie unter [Erstellen und Sperren einer Ressourcengruppe](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-deployments/create-rg-lock-role-assignment).
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 

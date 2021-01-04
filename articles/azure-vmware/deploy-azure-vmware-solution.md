@@ -2,14 +2,13 @@
 title: Bereitstellen und Konfigurieren von Azure VMware Solution
 description: Erfahren Sie, wie Sie die in der Planungsphase gesammelten Informationen verwenden, um die private Azure VMware Solution-Cloud bereitzustellen.
 ms.topic: tutorial
-ms.author: tredavis
 ms.date: 11/09/2020
-ms.openlocfilehash: 264ad99b21150f391c367eba2da31f0d08f4ab08
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 7e31b9236a3c75009d15bde35019036b6db55cab
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94336334"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861516"
 ---
 # <a name="deploy-and-configure-azure-vmware-solution"></a>Bereitstellen und Konfigurieren von Azure VMware Solution
 
@@ -30,7 +29,7 @@ Verwenden Sie die Informationen, die Sie im Artikel [Planen der Azure VMware Sol
 [!INCLUDE [create-avs-private-cloud-azure-portal](includes/create-private-cloud-azure-portal-steps.md)]
 
 >[!NOTE]
->Eine umfassende Übersicht über diesen Schritt vermittelt das Video [Azure VMware Solution: Bereitstellen](https://www.youtube.com/embed/1JLB3L2WDWI). 
+>Eine umfassende Übersicht über diesen Schritt vermittelt das Video [Azure VMware Solution: Bereitstellen](https://www.youtube.com/embed/gng7JjxgayI).
 
 ## <a name="create-the-jump-box"></a>Erstellen der Jumpbox (Jump Server)
 

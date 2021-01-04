@@ -5,12 +5,12 @@ description: Erfahren Sie, wie Sie einen NGINX-Eingangscontroller, der Ihre eige
 services: container-service
 ms.topic: article
 ms.date: 08/17/2020
-ms.openlocfilehash: f8ea245444fa5e8e042644bd3f7a34ed021ccd1d
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: a70a1549e5c585694217b32c69ddae915c25ff71
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93131036"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94681481"
 ---
 # <a name="create-an-https-ingress-controller-and-use-your-own-tls-certificates-on-azure-kubernetes-service-aks"></a>Erstellen eines HTTPS-Eingangscontrollers und Verwenden Ihrer eigenen TLS-Zertifikate in Azure Kubernetes Service (AKS)
 
@@ -38,7 +38,7 @@ Verwenden Sie zum Erstellen des Eingangscontrollers `Helm` zum Installieren von 
 Der Eingangscontroller muss ebenfalls auf einem Linux-Knoten geplant werden. Windows Server-Knoten dürfen nicht auf dem Eingangscontroller ausgeführt werden. Ein Knotenselektor wird mit dem Parameter `--set nodeSelector` angegeben, um den Kubernetes-Scheduler anzuweisen, den NGINX-Eingangscontroller auf einem Linux-basierten Knoten auszuführen.
 
 > [!TIP]
-> Im folgenden Beispiel wird der Kubernetes-Namespace *ingress-basic* für die Eingangsressourcen erstellt. Geben Sie ggf. einen Namespace für Ihre eigene Umgebung an. Wenn in Ihrem AKS-Cluster die RBAC nicht aktiviert ist, fügen Sie den Helm-Befehlen `--set rbac.create=false` hinzu.
+> Im folgenden Beispiel wird der Kubernetes-Namespace *ingress-basic* für die Eingangsressourcen erstellt. Geben Sie ggf. einen Namespace für Ihre eigene Umgebung an. Wenn in Ihrem AKS-Cluster die rollenbasierte Zugriffssteuerung (RBAC) von Kubernetes nicht aktiviert ist, fügen Sie den Helm-Befehlen `--set rbac.create=false` hinzu.
 
 > [!TIP]
 > Wenn Sie die [Beibehaltung der Clientquell-IP][client-source-ip] für Anforderungen an Container in Ihrem Cluster aktivieren möchten, fügen Sie dem Helm-Installationsbefehl `--set controller.service.externalTrafficPolicy=Local` hinzu. Die Clientquell-IP wird in der Anforderungskopfzeile unter *X-Forwarded-For* gespeichert. Bei der Verwendung eines Eingangscontrollers mit aktivierter Clientquell-IP-Beibehaltung funktioniert TLS-Pass-Through nicht.
@@ -81,11 +81,11 @@ Es wurden noch keine Eingangsregeln erstellt. Wenn Sie zu der öffentlichen IP-A
 
 ## <a name="generate-tls-certificates"></a>Generieren von TLS-Zertifikaten
 
-In diesem Artikel generieren wir ein selbstsigniertes Zertifikat mit `openssl`. Für die Produktion sollten Sie ein vertrauenswürdiges, signiertes Zertifikat über einen Anbieter oder Ihre eigene Zertifizierungsstelle anfordern. Im nächsten Schritt generieren Sie ein Kubernetes- *Geheimnis* unter Verwendung des TLS-Zertifikats und des privaten Schlüssels, der von OpenSSL generiert wurde.
+In diesem Artikel generieren wir ein selbstsigniertes Zertifikat mit `openssl`. Für die Produktion sollten Sie ein vertrauenswürdiges, signiertes Zertifikat über einen Anbieter oder Ihre eigene Zertifizierungsstelle anfordern. Im nächsten Schritt generieren Sie ein Kubernetes-*Geheimnis* unter Verwendung des TLS-Zertifikats und des privaten Schlüssels, der von OpenSSL generiert wurde.
 
 Im folgenden Beispiel wird ein RSA X509-Zertifikat (2048 Bit) namens *aks-ingress-tls.crt* generiert, das für 365 Tage gültig ist. Die private Schlüsseldatei heißt *aks-ingress-tls.key*. Für ein Kubernetes-TLS-Geheimnis sind beide Dateien erforderlich.
 
-Dieser Artikel verwendet den allgemeinen Antragstellernamen *demo.azure.com* , der nicht geändert werden muss. Geben Sie für die Produktion Ihre eigenen Organisationswerte für den `-subj`-Parameter an:
+Dieser Artikel verwendet den allgemeinen Antragstellernamen *demo.azure.com*, der nicht geändert werden muss. Geben Sie für die Produktion Ihre eigenen Organisationswerte für den `-subj`-Parameter an:
 
 ```console
 openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
@@ -111,9 +111,9 @@ kubectl create secret tls aks-ingress-tls \
 
 Ein Eingangscontroller und ein Geheimnis für Ihr Zertifikat wurden konfiguriert. Nun führen wir zwei Demoanwendungen im AKS-Cluster-aus. In diesem Beispiel wird Helm verwendet, um mehrere Instanzen einer einfachen Hallo-Welt-Anwendung auszuführen.
 
-Um den Eingangscontroller in Aktion zu sehen, führen Sie zwei Demoanwendungen im AKS-Cluster aus. In diesem Beispiel verwenden Sie `kubectl apply`, um mehrere Instanzen einer einfachen *Hallo Welt* -Anwendung auszuführen.
+Um den Eingangscontroller in Aktion zu sehen, führen Sie zwei Demoanwendungen im AKS-Cluster aus. In diesem Beispiel verwenden Sie `kubectl apply`, um mehrere Instanzen einer einfachen *Hallo Welt*-Anwendung auszuführen.
 
-Erstellen Sie die Datei *aks-helloworld.yaml* , und kopieren Sie den folgenden YAML-Beispielcode hinein:
+Erstellen Sie die Datei *aks-helloworld.yaml*, und kopieren Sie den folgenden YAML-Beispielcode hinein:
 
 ```yml
 apiVersion: apps/v1
@@ -151,7 +151,7 @@ spec:
     app: aks-helloworld
 ```
 
-Erstellen Sie die Datei *ingress-demo.yaml* , und kopieren Sie den folgenden YAML-Beispielcode hinein:
+Erstellen Sie die Datei *ingress-demo.yaml*, und kopieren Sie den folgenden YAML-Beispielcode hinein:
 
 ```yml
 apiVersion: apps/v1
@@ -325,7 +325,7 @@ Mehr Kontrolle bietet eine andere Vorgehensweise, bei der Sie einzelne Ressource
 helm list --namespace ingress-basic
 ```
 
-Suchen Sie nach einer Chart mit dem Namen *nginx-ingress* , wie in der folgenden Beispielausgabe gezeigt:
+Suchen Sie nach einer Chart mit dem Namen *nginx-ingress*, wie in der folgenden Beispielausgabe gezeigt:
 
 ```
 $ helm list --namespace ingress-basic

@@ -11,11 +11,11 @@ ms.workload: identity
 ms.date: 08/05/2020
 ms.author: chmutali
 ms.openlocfilehash: 53707261070e8efbd014614ee700df63a0925ef8
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94352726"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95999704"
 ---
 # <a name="tutorial-configure-sap-successfactors-to-active-directory-user-provisioning"></a>Tutorial: Konfigurieren der Benutzerbereitstellung von SAP SuccessFactors in Active Directory 
 In diesem Tutorial werden die Schritte vorgestellt, die Sie zum Bereitstellen von Benutzern aus SuccessFactors Employee Central in sowohl Active Directory (AD) als auch Azure AD ausführen müssen, wobei einige E-Mail-Adressen optional in SuccessFactors zurückgeschrieben werden. 
@@ -164,9 +164,9 @@ Dieser Abschnitt enthält die Schritte zum Konfigurieren der Bereitstellung von 
 
 3. Klicken Sie auf **Unternehmensanwendungen** und dann auf **Alle Anwendungen**.
 
-4. Klicken Sie auf **Anwendung hinzufügen** , und wählen Sie die Kategorie **Alle** aus.
+4. Klicken Sie auf **Anwendung hinzufügen**, und wählen Sie die Kategorie **Alle** aus.
 
-5. Suchen Sie nach **SuccessFactors to Active Directory User Provisioning** , und fügen Sie die App aus dem Katalog hinzu.
+5. Suchen Sie nach **SuccessFactors to Active Directory User Provisioning**, und fügen Sie die App aus dem Katalog hinzu.
 
 6. Sobald die App hinzugefügt wurde und der Bildschirm mit den App-Details angezeigt wird, wählen Sie **Bereitstellung** aus.
 
@@ -193,7 +193,7 @@ Um Active Directory lokal bereitzustellen, muss der Bereitstellungs-Agent auf ei
 
    ![Installationsbildschirm](./media/workday-inbound-tutorial/pa_install_screen_1.png "Installationsbildschirm")
    
-1. Nachdem die Installation abgeschlossen ist, wird der Assistent gestartet, und der Bildschirm **Azure AD verbinden** wird angezeigt. Klicken Sie auf die Schaltfläche **Authentifizieren** , um eine Verbindung mit Ihrer Azure AD-Instanz herzustellen.
+1. Nachdem die Installation abgeschlossen ist, wird der Assistent gestartet, und der Bildschirm **Azure AD verbinden** wird angezeigt. Klicken Sie auf die Schaltfläche **Authentifizieren**, um eine Verbindung mit Ihrer Azure AD-Instanz herzustellen.
 
    ![Herstellen einer Verbindung mit Azure AD](./media/workday-inbound-tutorial/pa_install_screen_2.png "Herstellen einer Verbindung mit Azure AD")
    
@@ -208,7 +208,7 @@ Um Active Directory lokal bereitzustellen, muss der Bereitstellungs-Agent auf ei
 
    ![Verzeichnis hinzufügen](./media/workday-inbound-tutorial/pa_install_screen_4.png "Verzeichnis hinzufügen")
   
-1. Sie werden daraufhin aufgefordert, die Anmeldeinformationen für die Verbindung mit der AD-Domäne einzugeben. Auf dem gleichen Bildschirm können Sie die **Domänencontrollerpriorität auswählen** , um Domänencontroller anzugeben, die der Agent zum Senden von Bereitstellungsanforderungen verwenden soll.
+1. Sie werden daraufhin aufgefordert, die Anmeldeinformationen für die Verbindung mit der AD-Domäne einzugeben. Auf dem gleichen Bildschirm können Sie die **Domänencontrollerpriorität auswählen**, um Domänencontroller anzugeben, die der Agent zum Senden von Bereitstellungsanforderungen verwenden soll.
 
    ![Anmeldeinformationen für die Domäne](./media/workday-inbound-tutorial/pa_install_screen_5.png)
    
@@ -220,7 +220,7 @@ Um Active Directory lokal bereitzustellen, muss der Bereitstellungs-Agent auf ei
    > Wenn Sie über mehrere AD-Domänen verfügen (z.B. na.contoso.com, emea.contoso.com), fügen Sie jede Domäne einzeln der Liste hinzu.
    > Es reicht nicht aus, nur die übergeordnete Domäne (z.B. „contoso.com“) hinzufügen. Sie müssen jede untergeordnete Domäne mit dem Agent registrieren.
    
-1. Überprüfen Sie die Konfigurationsdetails, und klicken Sie auf **Bestätigen** , um den Agent zu registrieren.
+1. Überprüfen Sie die Konfigurationsdetails, und klicken Sie auf **Bestätigen**, um den Agent zu registrieren.
   
    ![Bestätigungsbildschirm](./media/workday-inbound-tutorial/pa_install_screen_7.png "Bestätigungsbildschirm")
    
@@ -243,11 +243,11 @@ In diesem Schritt stellen Sie im Azure-Portal Konnektivität zwischen SuccessFac
 
 1. Vervollständigen Sie den Abschnitt **Administratoranmeldeinformationen** wie folgt:
 
-   * **Administratorbenutzername** : Geben Sie den Benutzernamen des Benutzerkontos für die SuccessFactors-API ein, und fügen Sie die Unternehmens-ID an. Verwenden Sie das Format **Benutzername\@Unternehmens-ID**.
+   * **Administratorbenutzername**: Geben Sie den Benutzernamen des Benutzerkontos für die SuccessFactors-API ein, und fügen Sie die Unternehmens-ID an. Verwenden Sie das Format **Benutzername\@Unternehmens-ID**.
 
-   * **Administratorkennwort** : Geben Sie das Kennwort des Benutzerkontos für die SuccessFactors-API ein. 
+   * **Administratorkennwort**: Geben Sie das Kennwort des Benutzerkontos für die SuccessFactors-API ein. 
 
-   * **Mandanten-URL** : Geben Sie den Namen des Dienstendpunkts für die SuccessFactors-OData-API ein. Geben Sie nur den Hostnamen des Servers ohne „http“ oder „https“ ein. Dieser Wert sollte folgendes Format aufweisen: **<API-Servername>.successfactors.com**.
+   * **Mandanten-URL**: Geben Sie den Namen des Dienstendpunkts für die SuccessFactors-OData-API ein. Geben Sie nur den Hostnamen des Servers ohne „http“ oder „https“ ein. Dieser Wert sollte folgendes Format aufweisen: **<API-Servername>.successfactors.com**.
 
    * **Active Directory-Gesamtstruktur:** Der „Name“ Ihrer Active Directory-Domäne, mit dem diese beim Agent registriert wurde. Wählen Sie über die Dropdownliste die Zieldomäne für die Bereitstellung aus. Dieser Wert ist meist eine Zeichenfolge wie: *contoso.com*
 
@@ -256,7 +256,7 @@ In diesem Schritt stellen Sie im Azure-Portal Konnektivität zwischen SuccessFac
         > [!NOTE]
         > Diese Einstellung wird nur für die Benutzerkontoerstellung verwendet, wenn das Attribut *parentDistinguishedName* nicht in den Attributzuordnungen konfiguriert ist. Diese Einstellung wird nicht zum Suchen von Benutzern oder für Updatevorgänge verwendet. Der Suchvorgang schließt die gesamte Domänenteilstruktur ein.
 
-   * **Benachrichtigungs-E-Mail** : Geben Sie Ihre E-Mail-Adresse ein, und aktivieren Sie das Kontrollkästchen „E-Mail senden, wenn Fehler auftritt“.
+   * **Benachrichtigungs-E-Mail**: Geben Sie Ihre E-Mail-Adresse ein, und aktivieren Sie das Kontrollkästchen „E-Mail senden, wenn Fehler auftritt“.
     > [!NOTE]
     > Der Azure AD-Bereitstellungsdienst sendet eine E-Mail-Benachrichtigung, wenn der Bereitstellungsauftrag in den Zustand [Quarantäne](../app-provisioning/application-provisioning-quarantine-status.md) wechselt.
 
@@ -302,34 +302,34 @@ In diesem Abschnitt konfigurieren Sie den Fluss von Benutzerdaten aus SuccessFac
   >Eine vollständige Liste der SuccessFactors-Attribute, die von der Anwendung unterstützt werden, finden Sie in der [SuccessFactors-Attributreferenz](../app-provisioning/sap-successfactors-attribute-reference.md).
 
 
-1. Klicken Sie auf eine vorhandene Attributzuordnung, um sie zu aktualisieren. Oder klicken Sie am unteren Bildschirmrand auf **Neue Zuordnung hinzufügen** , um neue Zuordnungen hinzuzufügen. Eine einzelne Attributzuordnung unterstützt die folgenden Eigenschaften:
+1. Klicken Sie auf eine vorhandene Attributzuordnung, um sie zu aktualisieren. Oder klicken Sie am unteren Bildschirmrand auf **Neue Zuordnung hinzufügen**, um neue Zuordnungen hinzuzufügen. Eine einzelne Attributzuordnung unterstützt die folgenden Eigenschaften:
 
       * **Zuordnungstyp**
 
          * **Direkt:** schreibt den Wert des SuccessFactors-Attributs unverändert in das AD-Attribut.
 
-         * **Konstant** : Schreibt einen statischen, konstanten Zeichenfolgenwert in das AD-Attribut.
+         * **Konstant**: Schreibt einen statischen, konstanten Zeichenfolgenwert in das AD-Attribut.
 
          * **Ausdruck:** ermöglicht das Schreiben eines benutzerdefinierten Werts basierend auf einem oder mehreren SuccessFactors-Attributen in das AD-Attribut. [Weitere Informationen finden Sie im Artikel zu Ausdrücken](../app-provisioning/functions-for-customizing-application-data.md).
 
       * **Quellattribut:** das Benutzerattribut aus SuccessFactors
 
-      * **Standardwert** : Optional. Wenn das Quellattribut einen leeren Wert aufweist, wird von der Zuordnung stattdessen dieser Wert geschrieben.
+      * **Standardwert**: Optional. Wenn das Quellattribut einen leeren Wert aufweist, wird von der Zuordnung stattdessen dieser Wert geschrieben.
             Die meisten Konfigurationen sehen vor, dieses Feld leer zu lassen.
 
-      * **Zielattribut** : Das Benutzerattribut in Active Directory.
+      * **Zielattribut**: Das Benutzerattribut in Active Directory.
 
       * **Objekte mit diesem Attribut abgleichen:** gibt an, ob diese Zuordnung zum eindeutigen Bestimmen von Benutzern zwischen SuccessFactors und Active Directory verwendet werden soll. Dieser Wert wird meist im Feld „Worker-ID“ für SuccessFactors festgelegt, das in der Regel einem der Mitarbeiter-ID-Attribute in Active Directory zugeordnet ist.
 
-      * **Rangfolge für Abgleich** : Es können mehrere Attribute für den Abgleich festgelegt werden. Falls mehrere vorhanden sind, werden sie entsprechend der in diesem Feld festgelegten Reihenfolge ausgewertet. Sobald eine Übereinstimmung gefunden wird, werden keine weiteren Attribute für den Abgleich mehr ausgewertet.
+      * **Rangfolge für Abgleich**: Es können mehrere Attribute für den Abgleich festgelegt werden. Falls mehrere vorhanden sind, werden sie entsprechend der in diesem Feld festgelegten Reihenfolge ausgewertet. Sobald eine Übereinstimmung gefunden wird, werden keine weiteren Attribute für den Abgleich mehr ausgewertet.
 
       * **Diese Zuordnung anwenden**
 
-         * **Immer** : Wenden Sie diese Zuordnung sowohl bei der Aktion zum Erstellen eines Benutzers als auch bei der zum Aktualisieren eines Benutzers an.
+         * **Immer**: Wenden Sie diese Zuordnung sowohl bei der Aktion zum Erstellen eines Benutzers als auch bei der zum Aktualisieren eines Benutzers an.
 
-         * **Nur während der Erstellung** : Wenden Sie diese Zuordnung nur bei der Aktion zum Erstellen eines Benutzers an.
+         * **Nur während der Erstellung**: Wenden Sie diese Zuordnung nur bei der Aktion zum Erstellen eines Benutzers an.
 
-1. Klicken Sie oben im Abschnitt „Attributzuordnung“ auf **Speichern** , um Ihre Zuordnungen zu speichern.
+1. Klicken Sie oben im Abschnitt „Attributzuordnung“ auf **Speichern**, um Ihre Zuordnungen zu speichern.
 
 Sobald Ihre Attributzuordnungskonfiguration abgeschlossen ist, können Sie jetzt [den Benutzerbereitstellungsdienst aktivieren und starten](#enable-and-launch-user-provisioning).
 

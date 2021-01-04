@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: d62ed31a68d9469a1bd1fc66e479b0f91db2f916
-ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
+ms.openlocfilehash: 0a1cac0fe61ea13a18224ea5992b5c7c1ba69d8a
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94372267"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96510334"
 ---
 # <a name="what-is-azure-security-center"></a>Was ist Azure Security Center?
 
@@ -29,19 +29,19 @@ Der Schutz Ihrer Ressourcen ist eine gemeinsame Aufgabe, die von Ihrem Cloudanbi
 
 Azure Security Center ist die Lösung für die drei größten Herausforderungen in Bezug auf die Sicherheit:
 
--   **Sich schnell ändernde Workloads** : Dies ist gleichzeitig eine Stärke und eine Schwäche der Cloud. Einerseits werden Benutzer in die Lage versetzt, mehr zu erreichen. Andererseits stellt sich die folgende Frage: Wie können Sie sicherstellen, dass die sich ständig ändernden Dienste, die von Benutzern verwendet und erstellt werden, Ihren Sicherheitsstandards entsprechen und auf den bewährten Sicherheitsmethoden basieren?
+-   **Sich schnell ändernde Workloads**: Dies ist gleichzeitig eine Stärke und eine Schwäche der Cloud. Einerseits werden Benutzer in die Lage versetzt, mehr zu erreichen. Andererseits stellt sich die folgende Frage: Wie können Sie sicherstellen, dass die sich ständig ändernden Dienste, die von Benutzern verwendet und erstellt werden, Ihren Sicherheitsstandards entsprechen und auf den bewährten Sicherheitsmethoden basieren?
 
--   **Immer ausgefeiltere Angriffe** : Unabhängig davon, wo Sie Ihre Workloads ausführen – die Angriffe werden immer komplexer und ausgefeilter. Sie müssen Ihre öffentlichen Cloudworkloads schützen. Bei dieser Aufgabe handelt es sich praktisch um eine internetfähige Workload, die dazu führen kann, dass Sie noch angreifbarer sind, wenn Sie sich nicht an die bewährten Sicherheitsmethoden halten.
+-   **Immer ausgefeiltere Angriffe**: Unabhängig davon, wo Sie Ihre Workloads ausführen – die Angriffe werden immer komplexer und ausgefeilter. Sie müssen Ihre öffentlichen Cloudworkloads schützen. Bei dieser Aufgabe handelt es sich praktisch um eine internetfähige Workload, die dazu führen kann, dass Sie noch angreifbarer sind, wenn Sie sich nicht an die bewährten Sicherheitsmethoden halten.
 
--   **Mangel an Personen mit Sicherheitskenntnissen** : Die Anzahl von Sicherheitswarnungen und Warnsystemen übersteigt bei Weitem die Anzahl von verfügbaren Administratoren mit dem erforderlichen Hintergrund und der Erfahrung, die zum Schützen Ihrer Umgebungen benötigt wird. Es ist eine ständige Herausforderung, hinsichtlich der neuesten Angriffstechniken immer auf dem Laufenden zu bleiben. Da sich der Sicherheitsbereich ständig ändert, ist es unmöglich, auf demselben Stand zu verharren.
+-   **Mangel an Personen mit Sicherheitskenntnissen**: Die Anzahl von Sicherheitswarnungen und Warnsystemen übersteigt bei Weitem die Anzahl von verfügbaren Administratoren mit dem erforderlichen Hintergrund und der Erfahrung, die zum Schützen Ihrer Umgebungen benötigt wird. Es ist eine ständige Herausforderung, hinsichtlich der neuesten Angriffstechniken immer auf dem Laufenden zu bleiben. Da sich der Sicherheitsbereich ständig ändert, ist es unmöglich, auf demselben Stand zu verharren.
 
 Damit Sie diese Herausforderungen in Bezug auf den Schutz bewältigen können, werden mit Security Center Tools für folgende Zwecke bereitgestellt:
 
--   **Erhöhung des Sicherheitsstatus** : Mit Security Center wird Ihre Umgebung bewertet, damit Sie den Status Ihrer Ressourcen verstehen können und ob sie sicher sind oder nicht.
+-   **Erhöhung des Sicherheitsstatus**: Mit Security Center wird Ihre Umgebung bewertet, damit Sie den Status Ihrer Ressourcen verstehen können und ob sie sicher sind oder nicht.
 
--   **Schutz vor Bedrohungen** : Security Center bewertet Ihre Workloads und löst Empfehlungen zur Vermeidung von Bedrohungen sowie Sicherheitswarnungen aus.
+-   **Schutz vor Bedrohungen**: Security Center bewertet Ihre Workloads und löst Empfehlungen zur Vermeidung von Bedrohungen sowie Sicherheitswarnungen aus.
 
--   **Schnellerer Aufbau des Schutzes** : In Security Center werden alle Vorgänge mit Cloudgeschwindigkeit durchgeführt. Aufgrund der nativen Integration ist die Bereitstellung von Security Center einfach, und Sie erhalten eine automatische Bereitstellung und den Schutz durch Azure-Dienste.
+-   **Schnellerer Aufbau des Schutzes**: In Security Center werden alle Vorgänge mit Cloudgeschwindigkeit durchgeführt. Aufgrund der nativen Integration ist die Bereitstellung von Security Center einfach, und Sie erhalten eine automatische Bereitstellung und den Schutz durch Azure-Dienste.
 
 > [!NOTE]
 > Dieser Dienst unterstützt [Azure Lighthouse](../lighthouse/overview.md). Dies ermöglicht es Dienstanbietern, sich bei ihrem eigenen Mandanten anzumelden, um von Kunden delegierte Abonnements und Ressourcengruppen zu verwalten. In Azure Security Center-Szenarien muss ein Abonnement anstelle einzelner Ressourcengruppen delegiert werden.

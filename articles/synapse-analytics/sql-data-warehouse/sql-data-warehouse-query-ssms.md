@@ -1,6 +1,6 @@
 ---
-title: Herstellen einer Verbindung mit SSMS
-description: Verwenden Sie SQL Server Management Studio (SSMS), um in Azure Synapse Analytics eine Verbindung mit einem dedizierten SQL-Pool herzustellen und Abfragen durchzuführen.
+title: Herstellen einer Verbindung mit einem dedizierten SQL-Pool (früher SQL DW) mit SSMS
+description: Verwenden Sie SQL Server Management Studio (SSMS), um in Azure Synapse Analytics eine Verbindung mit einem dedizierten SQL-Pool (früher SQL DW) herzustellen und Abfragen durchzuführen.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,14 +11,14 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: c2fab8f02f31897a2e3d38094b9bd365f8e921e9
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 950cb4c40a534f252ec8b0daa5a57eb87c098450
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325319"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96450476"
 ---
-# <a name="connect-to-a-dedicated-sql-pool-in-azure-synapse-analytics-with-sql-server-management-studio-ssms"></a>Herstellen einer Verbindung mit einem dedizierten SQL-Pool in Azure Synapse Analytics mithilfe von SQL Server Management Studio (SSMS)
+# <a name="connect-to-a-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics-with-sql-server-management-studio-ssms"></a>Herstellen einer Verbindung mit einem dedizierten SQL-Pool (früher SQL DW) in Azure Synapse Analytics mithilfe von SQL Server Management Studio (SSMS)
 
 > [!div class="op_single_selector"]
 >
@@ -28,17 +28,17 @@ ms.locfileid: "93325319"
 > * [sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md)
 > * [SSMS](sql-data-warehouse-query-ssms.md)
 
-Verwenden Sie SQL Server Management Studio (SSMS), um in Azure Synapse eine Verbindung mit einem Data Warehouse herzustellen und es abzufragen.
+Verwenden Sie SQL Server Management Studio (SSMS), um eine Verbindung mit einem dedizierten SQL-Pool (früher SQL DW) herzustellen und Abfragen durchzuführen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Für dieses Tutorial benötigen Sie Folgendes:
 
-* Einen vorhandenen dedizierten SQL-Pool. Informationen zu dessen Erstellung finden Sie unter [Erstellen eines dedizierten SQL-Pools](create-data-warehouse-portal.md).
+* Einen vorhandenen dedizierten SQL-Pool. Informationen zu dessen Erstellung finden Sie unter [Erstellen eines dedizierten SQL-Pools (früher SQL DW)](create-data-warehouse-portal.md).
 * SQL Server Management Studio (SSMS) muss installiert sein. [Laden Sie SSMS kostenlos herunter](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), falls Sie noch nicht über die Anwendung verfügen.
-* Den vollqualifizierten SQL-Servernamen. Informationen dazu finden Sie unter [Herstellen einer Verbindung mit einem dedizierten SQL-Pool](sql-data-warehouse-connect-overview.md).
+* Den vollqualifizierten SQL-Servernamen. Diese Informationen finden Sie unter [Dedizierter SQL-Pool (früher SQL DW)](sql-data-warehouse-connect-overview.md).
 
-## <a name="1-connect-to-your-dedicated-sql-pool"></a>1. Herstellen einer Verbindung mit Ihrem dedizierten SQL-Pool
+## <a name="1-connect-to-your-dedicated-sql-pool-formerly-sql-dw"></a>1. Herstellen einer Verbindung mit Ihrem dedizierten SQL-Pool (früher SQL DW)
 
 1. Öffnen Sie SSMS.
 2. Öffnen Sie den Objekt-Explorer, indem Sie **Datei**  > **Objekt-Explorer verbinden** auswählen.

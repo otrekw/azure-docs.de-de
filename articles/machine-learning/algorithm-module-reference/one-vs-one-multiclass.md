@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/16/2019
-ms.openlocfilehash: 1c08ba51b815386783c3412e9238d2e96da03ff9
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.date: 11/13/2020
+ms.openlocfilehash: 92ef5b372113d0d226335b8ec464a75a5a684bc3
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94377041"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94592905"
 ---
 # <a name="one-vs-one-multiclass"></a>One-vs-One Multiclass
 
@@ -31,6 +31,8 @@ Dieses Modul implementiert die One-vs-One-Methode, mit der pro Klassenpaar ein b
 Im Wesentlichen erstellt das Modul eine Zusammenstellung einzelner Modelle und führt die Ergebnisse anschließend zusammen, um ein einzelnes Modell zu erstellen, das alle Klassen vorhersagt. Als Grundlage für ein One-vs-One-Modell kann jeder Binärklassifizierer verwendet werden.  
 
 Ein Beispiel: Angenommen, Sie konfigurieren ein Modell vom Typ [Two-Class Support Vector Machine](two-class-support-vector-machine.md) und stellen dieses Modell als Eingabe für das Modul „One-vs-One Multiclass“ bereit. Das Modul erstellt daraufhin Modelle vom Typ „Two-Class Support Vector Machine“ (2-Klassen-Support Vector Machine) für alle Elemente der Ausgabeklasse. Anschließend wendet es die One-vs-One-Methode an, um die Ergebnisse für alle Klassen zu kombinieren.  
+
+Das Modul verwendet OneVsOneClassifier von „sklearn“, und Sie können [hier](https://scikit-learn.org/stable/modules/generated/sklearn.multiclass.OneVsOneClassifier.html) weitere Details erfahren.
 
 ## <a name="how-to-configure-the-one-vs-one-multiclass-classifier"></a>Konfigurieren des Klassifizierers für „One-vs-One Multiclass“  
 

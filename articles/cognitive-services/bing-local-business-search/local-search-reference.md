@@ -10,19 +10,19 @@ ms.subservice: bing-local-business
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: rosh
-ms.openlocfilehash: 2a9c6b924f564c96c6018fbc395ad226a383280f
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 9791d99598fe3d043c42a37e2f4993edd6c5b3ba
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94364648"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96487132"
 ---
 # <a name="bing-local-business-search-api-v7-reference"></a>Referenz für die API für die Bing-Suche nach ortsansässigen Unternehmen v7
 
 > [!WARNING]
-> Die APIs der Bing-Suche werden von Cognitive Services auf Bing-Suchdienste umgestellt. Ab dem **30. Oktober 2020** müssen alle neuen Instanzen der Bing-Suche mit dem [hier](https://aka.ms/cogsvcs/bingmove) dokumentierten Prozess bereitgestellt werden.
+> Die APIs der Bing-Suche werden von Cognitive Services auf Bing-Suchdienste umgestellt. Ab dem **30. Oktober 2020** müssen alle neuen Instanzen der Bing-Suche mit dem [hier](/bing/search-apis/bing-web-search/create-bing-search-service-resource) dokumentierten Prozess bereitgestellt werden.
 > APIs der Bing-Suche, die mit Cognitive Services bereitgestellt wurden, werden noch drei Jahre lang oder bis zum Ablauf Ihres Enterprise Agreement unterstützt (je nachdem, was zuerst geschieht).
-> Eine Anleitung zur Migration finden Sie unter [Bing-Suchdienste](https://aka.ms/cogsvcs/bingmigration).
+> Eine Anleitung zur Migration finden Sie unter [Bing-Suchdienste](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 Die API für die Suche nach ortsansässigen Unternehmen sendet eine Suchabfrage an Bing, um Ergebnisse zu erhalten, die Restaurants, Hotels oder andere lokale Unternehmen umfassen. Für Orte kann die Abfrage den Namen des ortsansässigen Unternehmens oder eine Kategorie angeben (z.B. Restaurants in meiner Nähe). Entitätsergebnisse enthalten Personen, Orte oder Gegenstände. Orte sind in diesem Zusammenhang Geschäftsentitäten, Staaten, Länder/Regionen, usw.  
 
@@ -172,7 +172,7 @@ Definiert den Abfragekontext, den Bing für die Anforderung verwendet hat.
   
 |Element|Beschreibung|type|  
 |-------------|-----------------|----------|  
-|adultIntent|Ein boolescher Wert, der angibt, ob die angegebene Abfrage nicht jugendfreie Inhalte aufweist. Der Wert ist **TRUE** , wenn die Abfrage nicht jugendfreie Inhalte aufweist, andernfalls ist er **FALSE**.|Boolean|  
+|adultIntent|Ein boolescher Wert, der angibt, ob die angegebene Abfrage nicht jugendfreie Inhalte aufweist. Der Wert ist **TRUE**, wenn die Abfrage nicht jugendfreie Inhalte aufweist, andernfalls ist er **FALSE**.|Boolean|  
 |alterationOverrideQuery|Die zu verwendende Abfragezeichenfolge, um Bing zu zwingen, die ursprüngliche Zeichenfolge zu verwenden. Wenn die Abfragezeichenfolge z.B. *saling downwind* lautet, lautet die Abfragezeichenfolge zum Überschreiben *+saling downwind*. Denken Sie daran, die Abfragezeichenfolge mit den Ergebnissen in *%2Bsaling+downwind* zu codieren.<br /><br /> Dieses Feld ist nur enthalten, wenn die ursprüngliche Abfragezeichenfolge einen Rechtschreibfehler enthält.|String|  
 |alteredQuery|Die Abfragezeichenfolge, die von Bing verwendet wird, um die Abfrage auszuführen. Bing verwendet die geänderte Abfragezeichenfolge, wenn die ursprüngliche Abfragezeichenfolge Rechtschreibfehler enthielt. Wenn die Abfragezeichenfolge z.B. `saling downwind` lautet, lautet die geänderten Abfragezeichenfolge `sailing downwind`.<br /><br /> Dieses Feld ist nur enthalten, wenn die ursprüngliche Abfragezeichenfolge einen Rechtschreibfehler enthält.|String|  
 |askUserForLocation|Ein boolescher Wert, der angibt, ob Bing den Standort des Benutzers benötigt, um genaue Ergebnisse bereitzustellen. Wenn Sie den Standort des Benutzers mithilfe der [X-MSEdge-ClientIP](#clientip)- und [X-Search-Location](#location)-Header angegeben haben, können Sie dieses Feld ignorieren.<br /><br /> Für standortaktivierte Abfragen (z.B. „Wetter heute“ oder „Restaurants in meiner Nähe“), die den Standort des Benutzers benötigen, um genaue Ergebnisse zu liefern, ist dieses Feld auf **TRUE** festgelegt.<br /><br /> Für standortaktivierte Abfragen, die den Standort beinhalten (z.B. „Wetter in Seattle“), ist dieses Feld auf **FALSE** festgelegt. Dieses Feld wird auch für Abfragen auf **FALSE** festgelegt, die nicht standortaktiviert sind, z.B. „Beste Verkäufer“.|Boolean|  

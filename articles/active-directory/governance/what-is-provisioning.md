@@ -11,12 +11,12 @@ ms.date: 10/30/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ef6f6068bce7a676e55eca10ae9198b2238a143
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 640367d1b833f61e8a83fe9ce6b14d6d799cf9b9
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93135090"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96172451"
 ---
 # <a name="what-is-provisioning"></a>Was bedeutet bereitstellen?
 
@@ -42,10 +42,10 @@ Die Bereitstellung aus dem Personalsystem für Azure AD umfasst die Erstellung v
 
 Gängigstes Szenario: Ein neuer Mitarbeiter wird eingestellt und in das Personalsystem aufgenommen.  Anschließend wird der Mitarbeiter automatisch als neuer Benutzer in Azure AD bereitgestellt. Es ist bei Neueinstellungen also kein Eingriff durch das Verwaltungspersonal erforderlich.  Die Bereitstellung aus dem Personalsystem kann im Allgemeinen die unten angegebenen Szenarien umfassen.
 
-- **Einstellung neuer Mitarbeiter** : Wenn einem Personalsystem ein neuer Mitarbeiter hinzugefügt wird, wird in Active Directory, Azure AD und optional in den Verzeichnissen für andere Anwendungen, die von Azure AD unterstützt werden, automatisch ein Benutzerkonto erstellt. Die E-Mail-Adresse wird hierbei in das Personalsystem zurückgeschrieben.
-- **Aktualisierung von Mitarbeiterattributen und -profilen** : Wenn in dem Personalsystem ein Mitarbeiterdatensatz aktualisiert wird (z. B. der Name, Titel oder Vorgesetzte), wird das entsprechende Benutzerkonto in Azure Active Directory, Azure AD und optional in anderen von Azure AD unterstützten Anwendungen automatisch aktualisiert.
-- **Kündigung von Mitarbeitern** : Wenn von der Personalabteilung für einen Mitarbeiter der Vorgang zur Kündigung durchgeführt wird, wird sein Benutzerkonto automatisch für die Anmeldung blockiert bzw. in Active Directory, Azure AD und anderen Anwendungen entfernt.
-- **Erneute Einstellung von Mitarbeitern** : Wenn für einen Mitarbeiter in der Cloudumgebung der Personalabteilung der Vorgang für die erneute Einstellung durchgeführt wird, kann sein altes Konto automatisch reaktiviert oder erneut bereitgestellt werden (je nach bevorzugter Vorgehensweise).
+- **Einstellung neuer Mitarbeiter**: Wenn einem Personalsystem ein neuer Mitarbeiter hinzugefügt wird, wird in Active Directory, Azure AD und optional in den Verzeichnissen für andere Anwendungen, die von Azure AD unterstützt werden, automatisch ein Benutzerkonto erstellt. Die E-Mail-Adresse wird hierbei in das Personalsystem zurückgeschrieben.
+- **Aktualisierung von Mitarbeiterattributen und -profilen**: Wenn in dem Personalsystem ein Mitarbeiterdatensatz aktualisiert wird (z. B. der Name, Titel oder Vorgesetzte), wird das entsprechende Benutzerkonto in Azure Active Directory, Azure AD und optional in anderen von Azure AD unterstützten Anwendungen automatisch aktualisiert.
+- **Kündigung von Mitarbeitern**: Wenn von der Personalabteilung für einen Mitarbeiter der Vorgang zur Kündigung durchgeführt wird, wird sein Benutzerkonto automatisch für die Anmeldung blockiert bzw. in Active Directory, Azure AD und anderen Anwendungen entfernt.
+- **Erneute Einstellung von Mitarbeitern**: Wenn für einen Mitarbeiter in der Cloudumgebung der Personalabteilung der Vorgang für die erneute Einstellung durchgeführt wird, kann sein altes Konto automatisch reaktiviert oder erneut bereitgestellt werden (je nach bevorzugter Vorgehensweise).
 
 Es gibt drei Bereitstellungsoptionen für die personalbasierte Bereitstellung mit Azure AD:
 
@@ -59,7 +59,7 @@ Weitere Informationen finden Sie unter [Worum handelt es sich bei der personalba
 
 ![App-Bereitstellung](media/what-is-provisioning/cloud-3b.png)
 
-In Azure AD steht der Begriff **[App-Bereitstellung](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)** für die automatische Erstellung von Kopien der Benutzeridentitäten in den Anwendungen, auf die Benutzer Zugriff benötigen. Dies gilt für Anwendungen mit eigenem Datenspeicher, bei denen es sich nicht um Azure AD oder Active Directory handelt. Zusätzlich zur Erstellung von Benutzeridentitäten umfasst die App-Bereitstellung auch die Wartung und Entfernung von Benutzeridentitäten für diese Apps, wenn sich der Status oder die Rollen des Benutzers ändern. Ein häufiges Szenario ist die Bereitstellung eines Azure AD-Benutzers in Anwendungen wie [Dropbox](https://docs.microsoft.com/azure/active-directory/saas-apps/dropboxforbusiness-provisioning-tutorial), [Salesforce](https://docs.microsoft.com/azure/active-directory/saas-apps/salesforce-provisioning-tutorial) oder [ServiceNow](https://docs.microsoft.com/azure/active-directory/saas-apps/servicenow-provisioning-tutorial), da diese Anwendungen jeweils über ein eigenes Benutzerrepository verfügen, das sich von Azure AD unterscheidet.
+In Azure AD steht der Begriff **[App-Bereitstellung](../app-provisioning/user-provisioning.md)** für die automatische Erstellung von Kopien der Benutzeridentitäten in den Anwendungen, auf die Benutzer Zugriff benötigen. Dies gilt für Anwendungen mit eigenem Datenspeicher, bei denen es sich nicht um Azure AD oder Active Directory handelt. Zusätzlich zur Erstellung von Benutzeridentitäten umfasst die App-Bereitstellung auch die Wartung und Entfernung von Benutzeridentitäten für diese Apps, wenn sich der Status oder die Rollen des Benutzers ändern. Ein häufiges Szenario ist die Bereitstellung eines Azure AD-Benutzers in Anwendungen wie [Dropbox](../saas-apps/dropboxforbusiness-provisioning-tutorial.md), [Salesforce](../saas-apps/salesforce-provisioning-tutorial.md) oder [ServiceNow](../saas-apps/servicenow-provisioning-tutorial.md), da diese Anwendungen jeweils über ein eigenes Benutzerrepository verfügen, das sich von Azure AD unterscheidet.
 
 Weitere Informationen finden Sie unter [Worum handelt es sich bei der App-Bereitstellung?](what-is-app-provisioning.md).
 

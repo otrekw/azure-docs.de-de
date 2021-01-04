@@ -11,12 +11,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 03/19/2020
   ms.author: trbye
-  ms.openlocfilehash: e8ffb5469f8aa2997a6e94b0a3836e7d954e9c07
-  ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+  ms.openlocfilehash: c4a765c14815015bcf70a4718fe8d189fe0d0c49
+  ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 11/12/2020
-  ms.locfileid: "94555900"
+  ms.lasthandoff: 12/05/2020
+  ms.locfileid: "96620964"
 landingContent:
 - title: Informationen zur Spracherkennung
   linkLists:
@@ -39,13 +39,15 @@ landingContent:
   - linkListType: how-to-guide
     links:
     - text: Auswählen eines Spracherkennungsmodus
-      url: how-to-choose-recognition-mode.md
+      url: ./get-started-speech-to-text.md
     - text: Ändern der Ausgangssprache für die Spracherkennung
       url: how-to-specify-source-language.md
     - text: Verbessern der Genauigkeit mit Custom Speech
-      url: how-to-custom-speech.md
+      url: ./custom-speech-overview.md
     - text: Verwenden komprimierter Audioeingabeformate
       url: how-to-use-codec-compressed-audio-input-streams.md
+    - text: Migrieren von v2.0 zu v3.0
+      url: migrate-v2-to-v3.md
   - linkListType: tutorial
     links:
     - text: Verbessern der Genauigkeit mithilfe von Mandantenmodellen

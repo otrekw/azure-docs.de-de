@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/20/2018
 ms.author: normesta
 ms.reviewer: fryu
-ms.openlocfilehash: 5deece615e9d7de1e71e33164560c1c26212ec08
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 6c1d9b813db15900521968865c1036d53ad53f41
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92676793"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95544784"
 ---
 # <a name="monitor-and-troubleshoot-a-cloud-storage-application"></a>Überwachung und Problembehandlung für eine Cloudspeicheranwendung
 
@@ -37,7 +37,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com)
 
 ## <a name="turn-on-logging-and-metrics"></a>Aktivieren von Protokollierung und Metriken
 
-Wählen Sie im linken Menü **Ressourcengruppen** , **myResourceGroup** und dann Ihr Speicherkonto in der Ressourcenliste aus.
+Wählen Sie im linken Menü **Ressourcengruppen**, **myResourceGroup** und dann Ihr Speicherkonto in der Ressourcenliste aus.
 
 Legen Sie unter **Diagnostics settings (classic)** (Diagnoseeinstellungen (klassisch)) die Option **Status** auf **Ein** fest. Stellen Sie sicher, dass alle Optionen unter **Blob-Eigenschaften** aktiviert sind.
 
@@ -83,11 +83,11 @@ Die folgende Abbildung zeigt eine Beispielwarnung für den simulierten Fehler au
 
 In Speicherprotokollen werden Daten in einem Satz von Blobs in einem Blobcontainer mit dem Namen **$logs** in Ihrem Speicherkonto gespeichert. Dieser Container wird nicht angezeigt, wenn Sie die Blobcontainer in Ihrem Konto auflisten. Sie können seinen Inhalt aber anzeigen, wenn Sie direkt darauf zugreifen.
 
-In diesem Szenario verwenden Sie [Microsoft Message Analyzer](https://technet.microsoft.com/library/jj649776.aspx) für die Interaktion mit Ihrem Azure Storage-Konto.
+In diesem Szenario verwenden Sie [Microsoft Message Analyzer](/message-analyzer/microsoft-message-analyzer-operating-guide) für die Interaktion mit Ihrem Azure Storage-Konto.
 
 ### <a name="download-microsoft-message-analyzer"></a>Herunterladen von Microsoft Message Analyzer
 
-Laden Sie [Microsoft Message Analyzer](https://docs.microsoft.com/message-analyzer/installing-and-upgrading-message-analyzer) herunter, und installieren Sie die Anwendung.
+Laden Sie [Microsoft Message Analyzer](/message-analyzer/installing-and-upgrading-message-analyzer) herunter, und installieren Sie die Anwendung.
 
 Starten Sie die Anwendung, und wählen Sie **File** > **Open** > **From Other File Sources** (Datei > Öffnen > Aus anderen Dateiquellen) aus.
 
@@ -99,7 +99,7 @@ Wenn die Verbindung hergestellt wurde, erweitern Sie die Container in der Speich
 
 ![Der Screenshot zeigt den Microsoft Message Analyzer und hebt die ausgewählte Protokolldatei hervor.](media/storage-monitor-troubleshoot-storage-application/figure4.png)
 
-Klicken Sie im Dialogfeld **New Session** (Neue Sitzung) auf **Start** , um das Protokoll anzuzeigen.
+Klicken Sie im Dialogfeld **New Session** (Neue Sitzung) auf **Start**, um das Protokoll anzuzeigen.
 
 Wenn das Protokoll geöffnet wird, können Sie die Speicherereignisse anzeigen. Wie Sie in der folgenden Abbildung sehen können, wurde `SASClientOtherError` für das Speicherkonto ausgelöst. Weitere Informationen zur Speicherprotokollierung finden Sie unter [Speicheranalyse](../common/storage-analytics.md).
 

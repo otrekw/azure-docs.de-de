@@ -7,11 +7,11 @@ ms.date: 01/15/2020
 ms.author: antchu
 ms.custom: mvc, devx-track-python, devx-track-azurepowershell
 ms.openlocfilehash: ca9ce27583168dfee1a597fce559afad38a3a8c7
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422925"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994603"
 ---
 # <a name="tutorial-apply-machine-learning-models-in-azure-functions-with-python-and-tensorflow"></a>Tutorial: Anwenden von Machine Learning-Modellen in Azure Functions mit Python und TensorFlow
 
@@ -49,14 +49,14 @@ In diesem Artikel wird beschrieben, wie Sie Python, TensorFlow und Azure Functio
     cd functions-python-tensorflow-tutorial
     ```
 
-    - *start* : Dies ist der Arbeitsordner für das Tutorial.
-    - *end* : Dies ist das Endergebnis und die vollständige Implementierung zu Referenzzwecken.
-    - *resources* : Enthält das Machine Learning-Modell und Hilfsbibliotheken.
-    - *frontend* : Eine Website, über die die Funktions-App aufgerufen wird.
+    - *start*: Dies ist der Arbeitsordner für das Tutorial.
+    - *end*: Dies ist das Endergebnis und die vollständige Implementierung zu Referenzzwecken.
+    - *resources*: Enthält das Machine Learning-Modell und Hilfsbibliotheken.
+    - *frontend*: Eine Website, über die die Funktions-App aufgerufen wird.
     
 ## <a name="create-and-activate-a-python-virtual-environment"></a>Erstellen und Aktivieren einer virtuellen Python-Umgebung
 
-Navigieren Sie zum Ordner *start* , und führen Sie die folgenden Befehle aus, um eine virtuelle Umgebung mit dem Namen `.venv` zu erstellen und zu aktivieren. Achten Sie darauf, dass Sie Python 3.7 verwenden. Diese Version wird von Azure Functions unterstützt.
+Navigieren Sie zum Ordner *start*, und führen Sie die folgenden Befehle aus, um eine virtuelle Umgebung mit dem Namen `.venv` zu erstellen und zu aktivieren. Achten Sie darauf, dass Sie Python 3.7 verwenden. Diese Version wird von Azure Functions unterstützt.
 
 
 # <a name="bash"></a>[Bash](#tab/bash)
@@ -122,7 +122,7 @@ In Azure Functions handelt es sich bei einem Funktionsprojekt um einen Container
     func init --worker-runtime python
     ```
 
-    Nach der Initialisierung enthält der Ordner *start* verschiedene Dateien für das Projekt, z. B. die Konfigurationsdateien [local.settings.json](functions-run-local.md#local-settings-file) und [host.json](functions-host-json.md). Da *local.settings.json* aus Azure heruntergeladene Geheimnisse enthalten kann, wird die Datei in der *GITIGNORE* -Datei standardmäßig aus der Quellcodeverwaltung ausgeschlossen.
+    Nach der Initialisierung enthält der Ordner *start* verschiedene Dateien für das Projekt, z. B. die Konfigurationsdateien [local.settings.json](functions-run-local.md#local-settings-file) und [host.json](functions-host-json.md). Da *local.settings.json* aus Azure heruntergeladene Geheimnisse enthalten kann, wird die Datei in der *GITIGNORE*-Datei standardmäßig aus der Quellcodeverwaltung ausgeschlossen.
 
     > [!TIP]
     > Da ein Funktionsprojekt an eine bestimmte Runtime gebunden ist, müssen alle Funktionen des Projekts in derselben Sprache geschrieben werden.
@@ -146,7 +146,7 @@ In Azure Functions handelt es sich bei einem Funktionsprojekt um einen Container
     
 1. Navigieren Sie zur URL ```http://localhost:7071/api/classify?name=Azure```, nachdem in der Ausgabe der `classify`-Endpunkt angezeigt wird. Die Meldung „Hello Azure!“ sollte in der Ausgabe angezeigt werden.
 
-1. Verwenden Sie **STRG**-**C** , um den Host zu beenden.
+1. Verwenden Sie **STRG**-**C**, um den Host zu beenden.
 
 
 ## <a name="import-the-tensorflow-model-and-add-helper-code"></a>Importieren des TensorFlow-Modells und Hinzufügen von Hilfscode
@@ -229,7 +229,7 @@ Um ein eigenes Modell unter dem Free-Tarif des Custom Vision-Diensts zu erstelle
 
 ## <a name="update-the-function-to-run-predictions"></a>Aktualisieren der Funktion zum Durchführen von Vorhersagen
 
-1. Öffnen Sie *classify/\_\_init\_\_.py* in einem Text-Editor, und fügen Sie nach den vorhandenen `import`-Anweisungen die folgenden Zeilen hinzu, um die JSON-Standardbibliothek und die *predict* -Hilfsmethoden zu importieren:
+1. Öffnen Sie *classify/\_\_init\_\_.py* in einem Text-Editor, und fügen Sie nach den vorhandenen `import`-Anweisungen die folgenden Zeilen hinzu, um die JSON-Standardbibliothek und die *predict*-Hilfsmethoden zu importieren:
 
     :::code language="python" source="~/functions-python-tensorflow-tutorial/end/classify/__init__.py" range="1-6" highlight="5-6":::
 

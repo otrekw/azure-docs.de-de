@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/23/2019
 ms.author: thweiss
 ms.custom: devx-track-js
-ms.openlocfilehash: ef999d4b452f3f31942e1fb2ddb46efe760acff0
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: c3cdc0a9fb9fa236fae37a52194f446278a42f72
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93342146"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616245"
 ---
 # <a name="how-to-model-and-partition-data-on-azure-cosmos-db-using-a-real-world-example"></a>Modellieren und Partitionieren von Daten in Azure Cosmos DB anhand eines praktischen Beispiels
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -21,6 +21,8 @@ ms.locfileid: "93342146"
 Dieser Artikel veranschaulicht auf Grundlage verschiedener Azure Cosmos DB-Konzepte wie [Datenmodellierung](modeling-data.md), [Partitionierung](partitioning-overview.md) und [bereitgestelltem Durchsatz](request-units.md) die Erstellung eines Datenentwurfs anhand einer praktischen Übung.
 
 Wenn Sie normalerweise mit relationalen Datenbanken arbeiten, haben Sie sich wahrscheinlich bestimmte Gewohnheiten und Vorstellungen im Hinblick auf das Entwerfen eines Datenmodells angeeignet. Die meisten dieser bewährten Methoden lassen sich aufgrund der spezifischen Einschränkungen, aber auch der einzigartigen Vorteile von Azure Cosmos DB, nicht gut umsetzen und können dazu führen, dass Sie sich für suboptimale Lösungen entscheiden. Dieser Artikel führt Sie Schritt für Schritt durch den gesamten Modellierungsprozess für einen realen Anwendungsfall in Azure Cosmos DB – von der Elementmodellierung bis hin zur Zusammenstellung der Entitäten und Containerpartitionierung.
+
+[Laden Sie Quellcode aus der Community herunter, oder sehen Sie ihn sich an](https://github.com/jwidmer/AzureCosmosDbBlogExample), der die Konzepte aus diesem Artikel veranschaulicht. Dieses Codebeispiel wurde von einem Mitglied der Community beigesteuert. Das Azure Cosmos DB-Team bietet hierzu keinen Support an.
 
 ## <a name="the-scenario"></a>Szenario
 

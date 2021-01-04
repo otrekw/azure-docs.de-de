@@ -1,18 +1,18 @@
 ---
 title: Integrierte Richtliniendefinitionen für Azure Cache for Redis
 description: Hier finden Sie eine Liste der integrierten Azure Policy-Richtliniendefinitionen für Azure Cache for Redis. Diese integrierten Richtliniendefinitionen bieten allgemeine Ansätze für die Verwaltung von Azure-Ressourcen.
-ms.date: 11/17/2020
+ms.date: 11/20/2020
 ms.topic: reference
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 849e6667eff1daab7cbebec1fb09928c887d3a38
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 2f186a7ac33114e7746ee4365fc16706bad06eb2
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94741012"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94991287"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-cache-for-redis"></a>Integrierte Azure Policy-Definitionen für Azure Cache for Redis
 

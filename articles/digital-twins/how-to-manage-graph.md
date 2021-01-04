@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 11/03/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 78e0bfb0af494ecae2865fcc42679b8fcce44916
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 73aa6f8f6ee36aeeb41fbc54afe217ac776a4ebc
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359577"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94533877"
 ---
 # <a name="manage-a-graph-of-digital-twins-using-relationships"></a>Verwalten eines Graphen von digitalen Zwillingen mithilfe von Beziehungen
 
@@ -25,7 +25,13 @@ Dieser Artikel konzentriert sich auf die Verwaltung von Beziehungen und den Grap
 ## <a name="prerequisites"></a>Voraussetzungen
 
 [!INCLUDE [digital-twins-prereq-instance.md](../../includes/digital-twins-prereq-instance.md)]
-    
+
+## <a name="ways-to-manage-graph"></a>Möglichkeiten zum Verwalten von Graphen
+
+[!INCLUDE [digital-twins-ways-to-manage.md](../../includes/digital-twins-ways-to-manage.md)]
+
+Sie können den Graphen auch mit dem Beispiel „ADT Explorer“ (Azure Digital Twins Explorer) ändern, mit dem Sie Ihre Zwillinge und Graphen visualisieren und das SDK im Hintergrund verwenden können. Im nächsten Abschnitt wird dieses Beispiel ausführlich beschrieben.
+
 [!INCLUDE [visualizing with Azure Digital Twins explorer](../../includes/digital-twins-visualization.md)]
 
 ## <a name="create-relationships"></a>Erstellen von Beziehungen
@@ -41,7 +47,7 @@ Sie müssen Folgendes angeben, um eine Beziehung zu erstellen:
 * Eine Beziehungs-ID (`relId` im nachfolgenden Codebeispiel): Der spezifische Name für diese Beziehung, z. B. _Beziehung1_.
 
 Die Beziehungs-ID muss innerhalb des angegebenen Quellzwillings eindeutig sein. Sie muss nicht global eindeutig sein.
-Für den Zwilling *foo* muss z. B. jede bestimmte Beziehungs-ID eindeutig sein. Ein weiterer Zwilling *bar* kann jedoch eine ausgehende Beziehung aufweisen, die derselben ID einer *foo* -Beziehung entspricht.
+Für den Zwilling *foo* muss z. B. jede bestimmte Beziehungs-ID eindeutig sein. Ein weiterer Zwilling *bar* kann jedoch eine ausgehende Beziehung aufweisen, die derselben ID einer *foo*-Beziehung entspricht.
 
 Im folgenden Codebeispiel wird veranschaulicht, wie Sie in Ihrer Azure Digital Twins-Instanz eine Beziehung erstellen.
 
@@ -67,7 +73,7 @@ public async static Task CreateRelationship(DigitalTwinsClient client, string sr
             
         }
 ```
-In Ihrer Hauptmethode können Sie jetzt die `CreateRelationship()`-Funktion aufrufen, um eine _Enthält_ -Beziehung wie die folgende zu erstellen: 
+In Ihrer Hauptmethode können Sie jetzt die `CreateRelationship()`-Funktion aufrufen, um eine _Enthält_-Beziehung wie die folgende zu erstellen: 
 
 ```csharp
 await CreateRelationship(client, srcId, targetId, "contains");
@@ -135,7 +141,7 @@ Sie können die abgerufenen Beziehungen verwenden, um zu anderen Zwillingen in I
 
 ### <a name="find-incoming-relationships-to-a-digital-twin"></a>Suchen von eingehenden Beziehungen zu einem digitalen Zwilling
 
-Azure Digital Twins verfügt auch über eine API, um alle _ *eingehenden* * Beziehungen für einen bestimmten Zwilling zu finden. Dies ist oft nützlich bei der umgekehrten Navigation oder beim Löschen eines Zwillings.
+Azure Digital Twins verfügt auch über eine API, um alle _ *eingehenden** Beziehungen für einen bestimmten Zwilling zu finden. Dies ist oft nützlich bei der umgekehrten Navigation oder beim Löschen eines Zwillings.
 
 Das Codebeispiel oben hat sich auf die Suche nach ausgehenden Beziehungen von einem Zwilling konzentriert. Das folgende Beispiel ist ähnlich strukturiert, findet aber stattdessen *eingehende* Beziehungen vom Zwilling.
 
@@ -219,7 +225,8 @@ Sie können jetzt diese Methode aufrufen, um eine Beziehung wie folgt zu lösche
 ```csharp
 await DeleteRelationship(client, srcId, relId);
 ```
-## <a name="create-a-twin-graph"></a>Erstellen eines Zwillingsgraphen 
+
+## <a name="runnable-twin-graph-sample"></a>Ausführbares Zwillingsgraphenbeispiel
 
 Der folgende ausführbare Codeausschnitt verwendet die Beziehungsvorgänge aus diesem Artikel, um einen Zwillingsgraphen aus digitalen Zwillingen und Beziehungen zu erstellen.
 
@@ -458,7 +465,7 @@ Betrachten Sie die folgende Datentabelle, in der eine Reihe von digitalen Zwilli
 
 Eine Möglichkeit zum Übernehmen dieser Daten in Azure Digital Twins besteht darin, die Tabelle in eine CSV-Datei zu konvertieren und Code zu schreiben, um die Datei in Befehle zum Erstellen von Zwillingen und Beziehungen zu interpretieren. Das folgende Codebeispiel veranschaulicht das Lesen der Daten aus der CSV-Datei und das Erstellen eines Zwillingsgraphen in Azure Digital Twins.
 
-Im folgenden Code hat die CSV-Datei den Namen *data.csv* , und es gibt einen Platzhalter, der für den **Hostnamen** Ihrer Azure Digital Twins-Instanz steht. Das Beispiel nutzt auch mehrere Pakete, die Sie dem Projekt zur Unterstützung dieses Prozesses hinzufügen können.
+Im folgenden Code hat die CSV-Datei den Namen *data.csv*, und es gibt einen Platzhalter, der für den **Hostnamen** Ihrer Azure Digital Twins-Instanz steht. Das Beispiel nutzt auch mehrere Pakete, die Sie dem Projekt zur Unterstützung dieses Prozesses hinzufügen können.
 
 ```csharp
 using System;
@@ -575,9 +582,6 @@ namespace creating_twin_graph_from_csv
 }
 
 ```
-## <a name="manage-relationships-with-cli"></a>Verwalten von Beziehungen mit der CLI
-
-Zwillinge und ihre Beziehungen können auch über die Azure Digital Twins-Befehlszeilenschnittstelle (CLI) verwaltet werden. Die Befehle finden Sie unter [*Vorgehensweise: Verwenden der Azure Digital Twins-Befehlszeilenschnittstelle*](how-to-use-cli.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -9,18 +9,82 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 09/10/2020
-ms.openlocfilehash: 0afd1f2f8dd06c3c224d64304eec2e18489a7e81
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 4998469fa353fef9e8a91d078349150d9f739ac2
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94489130"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96779412"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning: Anmerkungen zu dieser Version
 
 In diesem Artikel erhalten Sie Informationen zu Azure Machine Learning-Versionen.  Den vollständigen SDK-Referenzinhalt finden Sie auf der Hauptseite der Referenz zum [**Azure Machine Learning SDK für Python**](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py).
 
 Sehen Sie die [Liste der bekannten Probleme](resource-known-issues.md) an, um mehr über bekannte Fehler und Problemumgehungen zu erfahren.
+
+## <a name="2020-12-07"></a>2020-12-07
+
+### <a name="azure-machine-learning-sdk-for-python-v1190"></a>Azure Machine Learning SDK für Python v1.19.0
++ **Fehlerbehebungen und Verbesserungen**
+  + **azureml-automl-core**
+    + Die experimentelle Unterstützung für Testdaten wurde zu AutoMLStep hinzugefügt.
+    + Die anfängliche Kernimplementierung des Features für die Testsatzerfassung wurde hinzugefügt.
+    + Verweise auf „sklearn.externals.joblib“ wurden verschoben, um eine direkte Abhängigkeit von „joblib“ zu erreichen.
+    + Es wurde der neue AutoML-Aufgabentyp „image-instance-segmentation“ eingeführt.
+  + **azureml-automl-runtime**
+    + Die anfängliche Kernimplementierung des Features für die Testsatzerfassung wurde hinzugefügt.
+    + Wenn alle Zeichenfolgen in einer Textspalte eine Länge von genau einem Zeichen aufweisen, funktioniert der TFIDF-Word-Gram-Featurizer nicht, da sein Tokenizer die Zeichenfolgen mit weniger als zwei Zeichen ignoriert. Die aktuelle Codeänderung ermöglicht es AutoML, diesen Anwendungsfall zu behandeln.
+    + Es wurde der neue AutoML-Aufgabentyp „image-instance-segmentation“ eingeführt.
+  + **azureml-contrib-automl-dnn-nlp**
+    + Anfänglicher PR für das neue dnn-nlp-Paket.
+  + **azureml-contrib-automl-dnn-vision**
+    + Es wurde der neue AutoML-Aufgabentyp „image-instance-segmentation“ eingeführt.
+  + **azureml-contrib-automl-pipeline-steps**
+    + Dieses neue Paket ist für das Erstellen von Schritten verantwortlich, die für viele Szenarien zum Trainieren/Rückschließen von Modellen erforderlich sind. Außerdem wird der Code für Training/Rückschlüsse in das Paket „azureml.train.automl.runtime“ verschoben, sodass alle zukünftigen Fehlerbehebungen automatisch über kuratierte Umgebungsversionen zur Verfügung stehen würden.
+  + **azureml-contrib-dataset**
+    + Es wurde der neue AutoML-Aufgabentyp „image-instance-segmentation“ eingeführt.
+  + **azureml-core**
+    + Die anfängliche Kernimplementierung des Features für die Testsatzerfassung wurde hinzugefügt.
+    + Die XREF-Warnungen für Dokumentationen im Paket „azureml-core“ wurden behoben.
+    + Fehlerbehebungen für Dokumentzeichenfolgen für das Feature „Befehlsunterstützung“ im SDK
+    + Die Befehlseigenschaft wurde zu RunConfiguration hinzugefügt. Das Feature ermöglicht es Benutzern, einen eigentlichen Befehl oder ausführbare Dateien auf der Compute-Instanz über das AzureML SDK auszuführen.
+    + Benutzer können ein leeres Experiment mit der ID dieses Experiments löschen.
+  + **azureml-dataprep**
+    + Die Datasetunterstützung für Spark wurde hinzugefügt, die mit Scala 2.12 erstellt wurden. Dies ergänzt die bestehende 2.11-Unterstützung.
+  + **azureml-mlflow**
+    + AzureML-MLflow fügt Absicherungen in Remoteskripts hinzu, um ein vorzeitiges Beenden von übermittelten Ausführungen zu vermeiden.
+  + **azureml-pipeline-core**
+    + Es wurde ein Fehler beim Festlegen einer Standardpipeline für einen über die Benutzeroberfläche erstellten Pipelineendpunkt behoben.
+  + **azureml-pipeline-steps**
+    + Die experimentelle Unterstützung für Testdaten wurde zu AutoMLStep hinzugefügt.
+  + **azureml-tensorboard**
+    + Die XREF-Warnungen für Dokumentationen im Paket „azureml-core“ wurden behoben.
+  + **azureml-train-automl-client**
+    + Die experimentelle Unterstützung für Testdaten wurde zu AutoMLStep hinzugefügt.
+    + Die anfängliche Kernimplementierung des Features für die Testsatzerfassung wurde hinzugefügt.
+    + Es wurde der neue AutoML-Aufgabentyp „image-instance-segmentation“ eingeführt.
+  + **azureml-train-automl-runtime**
+    + Die anfängliche Kernimplementierung des Features für die Testsatzerfassung wurde hinzugefügt.
+    + Es wurde das Berechnungsergebnis der unformatierten Erklärungen für das beste AutoML-Modell korrigiert, wenn die AutoML-Modelle mithilfe der Einstellung „validation_size“ trainiert werden.
+    + Verweise auf „sklearn.externals.joblib“ wurden verschoben, um eine direkte Abhängigkeit von „joblib“ zu erreichen.
+  + **azureml-train-core**
+    + „HyperDriveRun.get_children_sorted_by_primary_metric()“ sollte jetzt schneller abgeschlossen werden.
+    + Die Fehlerbehandlung im Hyperdrive SDK wurde verbessert.
+    +  Alle Schätzerklassen wurden zugunsten der Verwendung von „ScriptRunConfig“ zur Konfiguration von Experimentausführungen als veraltet markiert. Zu den veralteten Klassen gehören:
+        + MMLBaseEstimator
+        + Estimator
+        + PyTorch 
+        + TensorFlow 
+        + Chainer 
+        + SKLearn
+    + Die Verwendung von „Nccl“ und „Gloo“ als gültige Eingabetypen für Schätzerklassen wurde zugunsten der Verwendung von „PyTorchConfiguration“ mit „ScriptRunConfig“ als veraltet markiert.
+    + Die Verwendung von „Mpi“ als gültige Eingabetypen für Schätzerklassen wurde zugunsten der Verwendung von „MpiConfiguration“ mit „ScriptRunConfig“ als veraltet markiert.
+    + Die Befehlseigenschaft wurde zu RunConfiguration hinzugefügt. Das Feature ermöglicht es Benutzern, einen eigentlichen Befehl oder ausführbare Dateien auf der Compute-Instanz über das AzureML SDK auszuführen.
+
+    +  Alle Schätzerklassen wurden zugunsten der Verwendung von „ScriptRunConfig“ zur Konfiguration von Experimentausführungen als veraltet markiert. Zu den veralteten Klassen gehören: + MMLBaseEstimator + Estimator + PyTorch + TensorFlow + Chainer + SKLearn
+    + Die Verwendung von „Nccl“ und „Gloo“ als gültiger Eingabetyp für Schätzerklassen wurde zugunsten der Verwendung von „PyTorchConfiguration“ mit „ScriptRunConfig“ als veraltet markiert. 
+    + Die Verwendung von „Mpi“ als gültiger Eingabetyp für Schätzerklassen wurde zugunsten der Verwendung von „MpiConfiguration“ mit „ScriptRunConfig“ als veraltet markiert.
+
 
 
 ## <a name="2020-11-09"></a>11.9.2020
@@ -43,16 +107,10 @@ Sehen Sie die [Liste der bekannten Probleme](resource-known-issues.md) an, um me
     + Die Dokumentation für `OutputDatasetConfig.register_on_complete` wurde verbessert, sodass das Verhalten eingeschlossen wird, das angewendet wird, wenn der Name bereits vorhanden ist.
     + Wenn Namen für Dataseteingabe und -ausgabe angegeben werden, die möglicherweise zu Konflikten mit allgemeinen Umgebungsvariablen führen könnten, führt dies nun zu einer Warnung.
     + Der Zweck des `grant_workspace_access`-Parameters beim Registrieren von Datenspeichern wurde neu bestimmt. Legen Sie ihn auf `True` fest, um auf Daten in einem virtuellen Netzwerk in Machine Learning Studio zuzugreifen.
-      [Weitere Informationen](https://docs.microsoft.com/azure/machine-learning/how-to-enable-studio-virtual-network)
+      [Weitere Informationen](./how-to-enable-studio-virtual-network.md)
     + Die verknüpfte Dienst-API wurde optimiert. Anstatt eine Ressourcen-ID anzugeben, verfügen Sie über die drei eigenständigen Parameter sub_id, rg und name, die in der Konfiguration definiert sind.
     + Damit Kunden Probleme mit beschädigten Token selbst lösen können, aktivieren Sie die Synchronisierung für Arbeitsbereichstoken als öffentliche Methode.
     + Diese Änderung ermöglicht es, dass eine leere Zeichenfolge als Wert für scrip_param verwendet werden kann.
-  + **azureml-pipeline-core**
-    + Hierbei handelt es sich um ein SDK, das den SynapseCompute-Typ und SynapseSparkStep unterstützt. Kunden können Experimente und Pipelineausführungen in Synapse Spark-Pools ausführen.
-  + **azureml-pipeline-steps**
-    + Hierbei handelt es sich um ein SDK, das den SynapseCompute-Typ und SynapseSparkStep unterstützt. Kunden können Experimente und Pipelineausführungen in Synapse Spark-Pools ausführen.
-  + **azureml-synapse**
-    + Fügen Sie den Magic-Befehl in Synapse und SparkMonitor hinzu, damit Benutzer Synapse-Aufträge übermitteln und den Fortschritt des im Notebook ausgeführten Auftrags anzeigen können.
   + **azureml-train-automl-client**
     +  Die Verarbeitung von kurzen Zeitreihen wurde verbessert, indem sie mit gaußschem Rauschen aufgefüllt werden dürfen.
   + **azureml-train-automl-runtime**
@@ -90,7 +148,6 @@ Weitere Informationen zum [Taggen von Bildern in einem Bezeichnungsprojekt](how-
     + Es wurde ein Problem behoben, bei dem die Vorhersagen von VotingRegressor nach der Neuanpassung des Modells ungenau sein konnten.
   + **azureml-core**
     + Weitere Details über die Beziehung zwischen der AKS-Bereitstellungskonfiguration und den Azure Kubernetes Service-Konzepten wurden hinzugefügt.
-    + Kunden können das SDK für verknüpfte Dienste verwenden, um den Synapse-Arbeitsbereich mit dem AML-Arbeitsbereich zu verknüpfen. CRUD wird unterstützt.
     + Unterstützung für Umgebungsclientbezeichnungen. Benutzer können Umgebungen beschriften und über Bezeichnungen darauf verweisen.
   + **azureml-dataprep**
     + Bessere Fehlermeldung bei der Verwendung von derzeit nicht unterstütztem Spark mit Scala 2.12.
@@ -107,6 +164,16 @@ Weitere Informationen zum [Taggen von Bildern in einem Bezeichnungsprojekt](how-
   + **azureml-train-automl-client**
     + Es wurde ein Problem behoben, bei dem „get_output“ einen XGBoostError auslösen konnte.
 
+### <a name="azure-machine-learning-studio-notebooks-experience-october-update"></a>Azure Machine Learning Studio Notebooks-Oberfläche (Aktualisierung vom Oktober)
++ **Neue Features**
+  + [Volle Unterstützung für virtuelle Netzwerke](./how-to-enable-studio-virtual-network.md)
+  + [Fokusmodus](./how-to-run-jupyter-notebooks.md#focus-mode)
+  + Notebooks speichern Strg-S
+  + Zeilennummern
+
++ **Fehlerbehebungen und Verbesserungen**
+  + Verbesserung der Geschwindigkeit und Kernelzuverlässigkeit
+  + Updates der Jupyter Widget-Benutzeroberfläche
 
 ## <a name="2020-10-12"></a>2020-10-12
 
@@ -200,7 +267,7 @@ Weitere Informationen zum [Taggen von Bildern in einem Bezeichnungsprojekt](how-
     + AzureML MLflow-Dokumentation und Notebook-Beispiele aktualisiert. 
     + Neue Unterstützung für MLflow-Projekte mit AzureML-Backend
     + Unterstützung für MLflow-Modellregistrierung
-    + RBAC-Unterstützung für AzureML-MLflow-Vorgänge hinzugefügt. 
+    + Azure RBAC-Unterstützung für AzureML-MLflow-Vorgänge hinzugefügt. 
     
   + **azureml-pipeline-core**
     + Dokumentation zu den PipelineOutputFileDataset.parse_*-Methoden verbessert.

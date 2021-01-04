@@ -6,14 +6,14 @@ ms.reviewer: dhgandhi
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 10/22/2020
+ms.date: 11/17/2020
 ms.author: banders
-ms.openlocfilehash: 69d6544485e356741634749dd91ba6485cfbb31c
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 4cc213db19a567f18c5ff483b64a75e3bbeef892
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92460681"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94962109"
 ---
 # <a name="transfer-azure-subscriptions-between-subscribers-and-csps"></a>Übertragen von Azure-Abonnements zwischen Abonnenten und CSPs
 
@@ -25,7 +25,7 @@ Wenn Sie bereits über Reservierungen verfügen, sind diese nach der Übertragun
 
 ## <a name="transfer-ea-subscriptions-to-a-csp-partner"></a>Übertragen von Enterprise Agreement-Abonnements auf einen CSP-Partner
 
-CSP-Partner mit direkter Abrechnung, die als [Azure Expert Managed Services Provider (MSP)](https://partner.microsoft.com/membership/azure-expert-msp) zertifiziert sind, können die Übertragung von Azure-Abonnements für ihre Kunden anfordern, die über ein direktes Enterprise Agreement (EA) verfügen. Abonnementübertragungen sind nur für Kunden zulässig, die eine Microsoft-Kundenvereinbarung (Microsoft Customer Agreement, MCA) akzeptiert und einen Azure-Plan erworben haben.
+CSP-Partner mit direkter Abrechnung, die als [Azure Expert Managed Services Provider (MSP)](https://partner.microsoft.com/membership/azure-expert-msp) zertifiziert sind, können die Übertragung von Azure-Abonnements für ihre Kunden anfordern, die über ein direktes Enterprise Agreement (EA) verfügen. Abonnementübertragungen sind nur für Kunden zulässig, die mit dem CSP-Programm eine Microsoft-Kundenvereinbarung (Microsoft Customer Agreement, MCA) akzeptiert und einen Azure-Plan erworben haben.
 
 Wenn die Anforderung genehmigt wird, kann der CSP seinen Kunden eine kombinierte Rechnung stellen. Weitere Informationen zum Übertragen von Abonnements durch CSPs finden Sie unter [Übernehmen des Abrechnungsbesitzes für Azure-Abonnements für Ihr MPA-Konto](mpa-request-ownership.md).
 
@@ -58,7 +58,7 @@ Um andere Abonnements von einem CSP-Partner auf ein anderes Azure-Angebot zu üb
 
 1. Erstellen Sie Azure-Zielabonnements.
 1. Stellen Sie sicher, dass sich Quell- und Zielabonnement im gleichen Azure Active Directory-Mandanten (Azure AD) befinden. Weitere Informationen zum Ändern eines Azure AD-Mandanten finden Sie unter [Zuordnen oder Hinzufügen eines Azure-Abonnements zu Ihrem Azure Active Directory-Mandanten](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
-    Beachten Sie, dass das Änderungsverzeichnis nicht das CSP-Abonnement ist. Sie nehmen beispielsweise eine Übertragung von einem CSP-Abonnement zu einem Abonnement mit nutzungsbasierter Bezahlung vor. Sie müssen das Verzeichnis des Abonnements mit nutzungsbasierter Bezahlung so ändern, dass es dem Verzeichnis entspricht.
+    Hinweis: Die Option „Verzeichnis ändern“ wird für das CSP-Abonnement nicht unterstützt. Sie nehmen beispielsweise eine Übertragung von einem CSP-Abonnement zu einem Abonnement mit nutzungsbasierter Bezahlung vor. Sie müssen das Verzeichnis des Abonnements mit nutzungsbasierter Bezahlung so ändern, dass es dem Verzeichnis entspricht.
 
     > [!IMPORTANT]
     >  - Wenn Sie ein Abonnement einem anderen Verzeichnis zuordnen, verlieren Benutzer, denen Rollen über [Azure RBAC](../../role-based-access-control/role-assignments-portal.md) zugewiesen wurden, ihren Zugriff. Klassische Abonnementadministratoren (Dienstadministrator und Co-Admin) verlieren ebenfalls ihren Zugriff.

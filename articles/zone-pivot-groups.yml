@@ -132,7 +132,7 @@ groups:
     title: C++
 - id: programming-languages-text-analytics
   title: Programmiersprachen
-  prompt: Auswählen einer Programmiersprache
+  prompt: Wählen Sie eine Clientbibliothekssprache oder REST-API aus.
   pivots:
   - id: programming-language-csharp
     title: C#
@@ -142,8 +142,8 @@ groups:
     title: JavaScript
   - id: programming-language-java
     title: Java
-  - id: programming-language-other
-    title: Weitere Sprachen...
+  - id: rest-api
+    title: REST-API
 - id: programming-languages-set-ten
   title: Programmiersprachen
   prompt: Auswählen einer Programmiersprache
@@ -166,6 +166,18 @@ groups:
     title: Java
   - id: programming-language-python
     title: Python
+- id: programming-languages-set-conmod
+  title: Programmiersprachen
+  prompt: Auswählen einer Programmiersprache
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-python
+    title: Python
+  - id: programming-language-rest-api
+    title: REST-API
 - id: programming-languages-set-fifteen
   title: Programmiersprachen
   prompt: Auswählen einer Programmiersprache
@@ -244,6 +256,20 @@ groups:
     title: REST
   - id: programmer-tool-spx
     title: Befehlszeilenschnittstelle (CLI)
+- id: programming-languages-set-twenty-six
+  title: Programmiersprachen
+  prompt: Auswählen einer Programmiersprache
+  pivots:
+  - id: programming-language-ansi-c
+    title: C
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-javascript
+    title: JavaScript
+  - id: programming-language-python
+    title: Python
 - id: cogsvcs-text-analytics-features
   title: Textanalysefunktionen
   prompt: Auswählen eines Angebots für Textanalysefunktionen
@@ -254,6 +280,20 @@ groups:
     title: Spracherkennung
   - id: text-analytics-sentiment-analysis
     title: Standpunktanalyse
+- id: programming-languages-set-functions-lang-workers
+  title: Programmiersprachen
+  prompt: Auswählen einer Programmiersprache
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-javascript
+    title: JavaScript
+  - id: programming-language-powershell
+    title: PowerShell
+  - id: programming-language-python
+    title: Python
 - id: programming-languages-set-functions
   title: Programmiersprachen
   prompt: Auswählen einer Programmiersprache
@@ -270,20 +310,24 @@ groups:
     title: Python
   - id: programming-language-typescript
     title: TypeScript
-- id: programming-languages-text-analytics
+- id: programming-languages-set-functions-full
   title: Programmiersprachen
   prompt: Auswählen einer Programmiersprache
   pivots:
   - id: programming-language-csharp
     title: C#
-  - id: programming-language-python
-    title: Python
   - id: programming-language-java
     title: Java
   - id: programming-language-javascript
     title: JavaScript
+  - id: programming-language-powershell
+    title: PowerShell
+  - id: programming-language-python
+    title: Python
+  - id: programming-language-typescript
+    title: TypeScript
   - id: programming-language-other
-    title: Weitere Sprachen...
+    title: Sonstiges
 - id: programming-languages-metrics-monitor
   title: Programmiersprachen
   prompt: Auswählen einer Programmiersprache
@@ -298,6 +342,22 @@ groups:
     title: JavaScript
   - id: programming-language-rest-api
     title: REST-API
+- id: programming-languages-computer-vision
+  title: Programmiersprachen
+  prompt: Auswählen einer Programmiersprache
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-python
+    title: Python
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-javascript
+    title: JavaScript
+  - id: programming-language-go
+    title: Go
+  - id: programming-language-rest-api
+    title: REST-API
 - id: programming-languages-set-diberry-3core
   title: Programmiersprachen
   prompt: Auswählen einer Programmiersprache
@@ -308,6 +368,18 @@ groups:
     title: JavaScript
   - id: programming-language-python
     title: Python
+- id: programming-languages-set-luis
+  title: Programmiersprachen
+  prompt: Treffen einer Auswahl
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-javascript
+    title: JavaScript
+  - id: programming-language-python
+    title: Python
+  - id: rest-api
+    title: REST-API
 - id: java-build-tools-set
   title: Buildtools
   prompt: Buildtool auswählen
@@ -366,34 +438,6 @@ groups:
     title: Java
   - id: programming-language-more
     title: Weitere Sprachen...
-- id: programming-languages-set-fifteen
-  title: Programmiersprachen
-  prompt: Auswählen einer Programmiersprache
-  pivots:
-  - id: programming-language-csharp
-    title: C#
-  - id: programming-language-go
-    title: Go
-  - id: programming-language-java
-    title: Java
-  - id: programming-language-more
-    title: Weitere Sprachen...
-- id: programming-languages-set-sixteen
-  title: Programmiersprachen
-  prompt: Auswählen einer Programmiersprache
-  pivots:
-  - id: programming-language-csharp
-    title: C#
-  - id: programming-language-cpp
-    title: C++
-  - id: programming-language-go
-    title: Go
-  - id: programming-language-java
-    title: Java
-  - id: programming-language-python
-    title: Python
-  - id: programming-language-more
-    title: Weitere Sprachen...
 - id: programming-languages-set-seventeen
   title: Programmiersprachen
   prompt: Auswählen einer Programmiersprache
@@ -414,6 +458,18 @@ groups:
     title: Go
   - id: programming-language-python
     title: Python
+- id: programming-languages-set-face
+  title: Programmiersprachen
+  prompt: Auswählen einer Programmiersprache
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-go
+    title: Go
+  - id: programming-language-python
+    title: Python
+  - id: programming-language-rest-api
+    title: REST-API
 - id: programming-languages-set-two-with-js
   title: Programmiersprachen
   prompt: Auswählen einer Programmiersprache
@@ -872,10 +928,18 @@ groups:
     title: Python
   - id: programming-languages-objectivec-swift
     title: Objective-C/Swift
+- id: b2c-policy-type
+  title: Azure AD B2C-Richtlinientyp
+  prompt: Auswählen eines Richtlinientyps
+  pivots:
+  - id: b2c-user-flow
+    title: Benutzerflow
+  - id: b2c-custom-policy
+    title: Benutzerdefinierte Richtlinie
 metadata:
-  ms.openlocfilehash: c3dea69800b4ad3614adf953053cc43d32de94b9
-  ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+  ms.openlocfilehash: 8c246dacc9a8b1f5370352489a156fa0ebc92742
+  ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 11/17/2020
-  ms.locfileid: "94701737"
+  ms.lasthandoff: 12/15/2020
+  ms.locfileid: "97503725"

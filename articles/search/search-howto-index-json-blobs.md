@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/25/2020
-ms.openlocfilehash: d41146b01b6b81804cdba31fbbf2541ba7ae0f03
-ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
+ms.openlocfilehash: a3c44d667b6baaf16e109dfb88c22c16a1ea2ce1
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94372374"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94697202"
 ---
 # <a name="how-to-index-json-blobs-using-a-blob-indexer-in-azure-cognitive-search"></a>Indizieren von JSON-Blobs mit einem Blobindexer in der kognitiven Azure-Suche
 
@@ -22,7 +22,7 @@ In diesem Artikel wird beschrieben, wie Sie einen [Blobindexer](search-indexer-o
 
 Sie können das [Portal](#json-indexer-portal), [REST-APIs](#json-indexer-rest) oder das [.NET SDK](#json-indexer-dotnet) verwenden, um JSON-Inhalt zu indizieren. JSON-Dokumente befinden sich grundsätzlich in einem Blobcontainer eines Azure Storage-Kontos. Anleitungen zum Übertragen von JSON-Dokumenten von anderen Nicht-Azure-Plattformen finden Sie unter [Importieren von Daten in der kognitiven Azure-Suche](search-what-is-data-import.md).
 
-JSON-Blobs in Azure Blob Storage bestehen normalerweise entweder aus einem einzelnen JSON-Dokument (Analysemodus `json`) oder einer Sammlung von JSON-Entitäten. Bei Sammlungen kann das Blob ein **Array** wohlgeformter JSON-Elemente enthalten (Analysemodus `jsonArray`). Blobs können auch aus mehreren einzelnen JSON-Entitäten zusammengesetzt sein, die durch einen Zeilenvorschub getrennt werden (Analysemodus `jsonLines`). Der **parsingMode** -Parameter in der Anforderung bestimmt die Ausgabestrukturen.
+JSON-Blobs in Azure Blob Storage bestehen normalerweise entweder aus einem einzelnen JSON-Dokument (Analysemodus `json`) oder einer Sammlung von JSON-Entitäten. Bei Sammlungen kann das Blob ein **Array** wohlgeformter JSON-Elemente enthalten (Analysemodus `jsonArray`). Blobs können auch aus mehreren einzelnen JSON-Entitäten zusammengesetzt sein, die durch einen Zeilenvorschub getrennt werden (Analysemodus `jsonLines`). Der **parsingMode**-Parameter in der Anforderung bestimmt die Ausgabestrukturen.
 
 > [!NOTE]
 > Weitere Informationen zum Indizieren mehrerer Suchdokumente aus einem einzelnen Blob finden Sie unter [1:n-Indizierung](search-howto-index-one-to-many-blobs.md).
@@ -39,7 +39,7 @@ Es wird empfohlen, die gleiche Region oder den gleichen Speicherort für Azure C
 
 [Melden Sie sich beim Azure-Portal an](https://portal.azure.com/), und [erstellen Sie einen Blobcontainer](../storage/blobs/storage-quickstart-blobs-portal.md), der Ihre Daten enthält. Die öffentliche Zugriffsebene kann auf jeden der gültigen Werte festgelegt werden.
 
-Sie benötigen den Namen des Speicherkontos, den Containernamen und einen Zugriffsschlüssel zum Abrufen Ihrer Daten im **Datenimport** -Assistenten.
+Sie benötigen den Namen des Speicherkontos, den Containernamen und einen Zugriffsschlüssel zum Abrufen Ihrer Daten im **Datenimport**-Assistenten.
 
 ### <a name="2---start-import-data-wizard"></a>2\. Starten des Datenimport-Assistenten
 
@@ -53,7 +53,7 @@ Auf der Seite **Datenquelle** muss die Quelle **Azure Blob Storage** lauten und 
 
 + **Zu extrahierende Daten** muss *Inhalt und Metadaten* sein. Durch die Auswahl dieser Option kann der Assistent ein Indexschema ableiten und so die Felder für den Importvorgang zuordnen.
    
-+ **Analysemodus** muss auf *JSON* , *JSON-Array* oder *JSON-Zeilen* festgelegt sein. 
++ **Analysemodus** muss auf *JSON*, *JSON-Array* oder *JSON-Zeilen* festgelegt sein. 
 
   *JSON* definiert jedes Blob als einzelnes Suchdokument, das als unabhängiges Element in Suchergebnissen angezeigt wird. 
 
@@ -91,7 +91,7 @@ Falls Sie noch nicht mit Indexern vertraut sind: Ein *Indexer* ist eine Ressourc
 
    :::image type="content" source="media/search-howto-index-json/import-wizard-json-indexer.png" alt-text="Definition des Blobindexers" border="false":::
 
-Klicken Sie auf **OK** , um den Assistenten auszuführen und alle Objekte zu erstellen. Die Indizierung wird sofort durchgeführt.
+Klicken Sie auf **OK**, um den Assistenten auszuführen und alle Objekte zu erstellen. Die Indizierung wird sofort durchgeführt.
 
 Sie können den Datenimport auf den Portalseiten überwachen. Fortschrittsbenachrichtigungen geben den Indizierungsstatus an und wie viele Dokumente hochgeladen werden. 
 
@@ -108,15 +108,15 @@ Sie können die REST-API für die Indizierung von JSON-Blobs in einem dreiteilig
 
 Sie können den [REST-Beispielcode](#rest-example) am Ende dieses Abschnitts überprüfen, der zeigt, wie alle drei Objekte erstellt werden. Dieser Abschnitt enthält auch Informationen über [JSON-Analysemodi](#parsing-modes), [einzelne Blobs](#parsing-single-blobs), [JSON-Arrays](#parsing-arrays) und [geschachtelte Arrays](#nested-json-arrays).
 
-Verwenden Sie für die Indizierung von JSON-Code auch [Postman](search-get-started-postman.md) und die REST-API, um diese Objekte zu erstellen:
+Verwenden Sie für die Indizierung von JSON-Code auch [Postman oder Visual Studio Code](search-get-started-rest.md) und die REST-API, um diese Objekte zu erstellen:
 
 + [Index](/rest/api/searchservice/create-index)
 + [Datenquelle](/rest/api/searchservice/create-data-source)
 + [Indexer](/rest/api/searchservice/create-indexer)
 
-Die Reihenfolge der Vorgänge erfordert, dass Sie Objekte in der angegebenen Reihenfolge erstellen und aufrufen. Im Gegensatz zum Portalworkflow erfordert ein Codeansatz einen verfügbaren Index, um die JSON-Dokumente zu akzeptieren, die über die **Indexer erstellen** -Anforderung gesendet werden.
+Die Reihenfolge der Vorgänge erfordert, dass Sie Objekte in der angegebenen Reihenfolge erstellen und aufrufen. Im Gegensatz zum Portalworkflow erfordert ein Codeansatz einen verfügbaren Index, um die JSON-Dokumente zu akzeptieren, die über die **Indexer erstellen**-Anforderung gesendet werden.
 
-JSON-Blobs in Azure Blob Storage bestehen normalerweise entweder aus einem einzelnen JSON-Dokument oder einem JSON-„Array“. Mit dem Blobindexer in der kognitiven Azure-Suche können beide Fälle analysiert werden. Dies richtet sich danach, wie Sie den **parsingMode** -Parameter in der Anforderung festlegen.
+JSON-Blobs in Azure Blob Storage bestehen normalerweise entweder aus einem einzelnen JSON-Dokument oder einem JSON-„Array“. Mit dem Blobindexer in der kognitiven Azure-Suche können beide Fälle analysiert werden. Dies richtet sich danach, wie Sie den **parsingMode**-Parameter in der Anforderung festlegen.
 
 | JSON-Dokument | parsingMode | BESCHREIBUNG | Verfügbarkeit |
 |--------------|-------------|--------------|--------------|
@@ -126,7 +126,7 @@ JSON-Blobs in Azure Blob Storage bestehen normalerweise entweder aus einem einze
 
 ### <a name="1---assemble-inputs-for-the-request"></a>1 – Zusammenstellen der Eingaben für die Anforderung
 
-Für jede Anforderung müssen Sie den Dienstnamen und den Administratorschlüssel für die kognitive Azure-Suche (im POST-Header) sowie den Namen des Speicherkontos und den Schlüssel für Blob Storage angeben. Sie können [Postman](search-get-started-postman.md) zum Senden von HTTP-Anforderungen an die kognitive Azure-Suche verwenden.
+Für jede Anforderung müssen Sie den Dienstnamen und den Administratorschlüssel für die kognitive Azure-Suche (im POST-Header) sowie den Namen des Speicherkontos und den Schlüssel für Blob Storage angeben. Sie können ein [Web-API-Testtool](search-get-started-rest.md) zum Senden von HTTP-Anforderungen an Azure Cognitive Search verwenden.
 
 Kopieren Sie die folgenden vier Werten in den Editor, sodass Sie sie in eine Anforderung einfügen können:
 
@@ -139,7 +139,7 @@ Sie finden diese Werte im Portal:
 
 1. Kopieren Sie in den Portalseiten für die kognitive Azure-Suche die Suchdienst-URL von der Seite „Übersicht“.
 
-2. Klicken Sie im linken Navigationsbereich auf **Schlüssel** , und kopieren Sie dann entweder den primären oder sekundären Schlüssel (sie sind identisch).
+2. Klicken Sie im linken Navigationsbereich auf **Schlüssel**, und kopieren Sie dann entweder den primären oder sekundären Schlüssel (sie sind identisch).
 
 3. Wechseln Sie zu den Portalseiten für Ihr Speicherkonto. Klicken Sie im linken Navigationsbereich unter **Einstellungen** auf die Option **Zugriffsschlüssel**. Diese Seite enthält sowohl den Kontonamen als auch den Schlüssel. Kopieren Sie den Namen des Speicherkontos und einen der Schlüssel in den Editor.
 
@@ -289,7 +289,7 @@ Das .NET SDK ist der REST-API vollständig gleichgestellt. Es wird empfohlen, da
 
 ## <a name="parsing-modes"></a>Analysemodi
 
-JSON-Blobs können mehrere Formulare annehmen. Der **parsingMode** -Parameter im JSON-Indexer bestimmt, wie JSON-Blobinhalt in einem Index der kognitiven Azure-Suche analysiert und strukturiert wird:
+JSON-Blobs können mehrere Formulare annehmen. Der **parsingMode**-Parameter im JSON-Indexer bestimmt, wie JSON-Blobinhalt in einem Index der kognitiven Azure-Suche analysiert und strukturiert wird:
 
 | parsingMode | BESCHREIBUNG |
 |-------------|-------------|

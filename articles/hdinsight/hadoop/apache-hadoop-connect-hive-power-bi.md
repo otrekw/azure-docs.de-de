@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/24/2020
 ms.openlocfilehash: e66329b93ebd7d90258ab4670b77ca849a28189b
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547995"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96024060"
 ---
 # <a name="visualize-apache-hive-data-with-microsoft-power-bi-using-odbc-in-azure-hdinsight"></a>Visualisieren von Apache Hive-Daten mit Microsoft Power BI mithilfe von ODBC in Azure HDInsight
 
@@ -52,11 +52,11 @@ Die Hive-Tabelle **hivesampletable** ist in allen HDInsight-Clustern enthalten.
 
 1. Wählen Sie im Dialogfeld **Daten abrufen** links die Option **Andere** und rechts die Option **ODBC** aus, und wählen Sie anschließend unten **Verbinden** aus.
 
-1. Wählen Sie in der Dropdownliste des Dialogfelds **Aus ODBC** den im letzten Abschnitt erstellten Datenquellennamen aus. Klicken Sie anschließend auf **OK** .
+1. Wählen Sie in der Dropdownliste des Dialogfelds **Aus ODBC** den im letzten Abschnitt erstellten Datenquellennamen aus. Klicken Sie anschließend auf **OK**.
 
 1. Bei der ersten Verwendung wird das Dialogfeld **ODBC-Treiber** geöffnet. Wählen Sie im linken Menü die Option **Standard oder Benutzerdefiniert** aus. Wählen Sie anschließend **Verbinden** aus, um den **Navigator** zu öffnen.
 
-1. Erweitern Sie im Dialogfeld **Navigator** die Optionen **ODBC > HIVE > Standard** , wählen Sie **hivesampletable** aus, und wählen Sie anschließend **Laden** aus.
+1. Erweitern Sie im Dialogfeld **Navigator** die Optionen **ODBC > HIVE > Standard**, wählen Sie **hivesampletable** aus, und wählen Sie anschließend **Laden** aus.
 
 ## <a name="visualize-data"></a>Visualisieren von Daten
 

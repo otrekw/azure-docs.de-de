@@ -6,17 +6,17 @@ documentationcenter: na
 author: yitoh
 ms.service: ddos-protection
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: 133a27d8aef6c9df16ffcabfb4fac6c118665890
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 104c9dcd3b7fd931e4f54841c9de9d17cfd72353
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92904923"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96937320"
 ---
 # <a name="azure-ddos-protection-standard-features"></a>Funktionen von Azure DDoS Protection Standard
 
@@ -48,7 +48,7 @@ Der Azure DDoS Protection Basic-Dienst schützt Kunden und verhindert Auswirkung
 
 ## <a name="ddos-protection-telemetry-monitoring-and-alerting"></a>DDoS Protection: Telemetriedaten, Überwachung und Warnungen
 
-DDoS Protection Standard stellt während der Dauer eines DDoS-Angriffs umfangreiche Telemetriedaten über [Azure Monitor](/azure/azure-monitor/overview) zur Verfügung. Sie können Warnungen für alle Azure Monitor-Metriken konfigurieren, die DDoS Protection verwendet. Sie können die Protokollierung mit Splunk (Azure Event Hubs), Azure Monitor-Protokolle und Azure Storage für die erweiterte Analyse über die Schnittstelle für die Azure Monitor-Diagnose integrieren.
+DDoS Protection Standard stellt während der Dauer eines DDoS-Angriffs umfangreiche Telemetriedaten über [Azure Monitor](../azure-monitor/overview.md) zur Verfügung. Sie können Warnungen für alle Azure Monitor-Metriken konfigurieren, die DDoS Protection verwendet. Sie können die Protokollierung mit Splunk (Azure Event Hubs), Azure Monitor-Protokolle und Azure Storage für die erweiterte Analyse über die Schnittstelle für die Azure Monitor-Diagnose integrieren.
 
 ### <a name="ddos-mitigation-policies"></a>DDoS-Entschärfungsrichtlinien
 
@@ -72,7 +72,7 @@ Weitere Informationen finden Sie unter [Verwalten des Azure DDoS-Standardschutzs
 
 ## <a name="web-application-firewall-for-resource-attacks"></a>Web Application Firewall für Ressourcenangriffe
 
-Speziell für Ressourcenangriffe auf die Anwendungsschicht sollten Sie Web Application Firewall (WAF) konfigurieren, um Webanwendungen zu schützen. WAF untersucht eingehenden Webdatenverkehr, um SQL-Einfügungen, Cross-Site Scripting, DDoS und andere Schicht 7-Angriffe zu blockieren. Azure stellt [WAF als Feature von Application Gateway](/azure/application-gateway/application-gateway-web-application-firewall-overview) bereit, das zentralisierten Schutz Ihrer Webanwendungen vor allgemeinen Exploits und Sicherheitsrisiken bietet. Über den [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?search=WAF&page=1) sind andere WAF-Angebote bei Azure-Partnern erhältlich, die möglicherweise für Ihre Anforderungen besser geeignet sind.
+Speziell für Ressourcenangriffe auf die Anwendungsschicht sollten Sie Web Application Firewall (WAF) konfigurieren, um Webanwendungen zu schützen. WAF untersucht eingehenden Webdatenverkehr, um SQL-Einfügungen, Cross-Site Scripting, DDoS und andere Schicht 7-Angriffe zu blockieren. Azure stellt [WAF als Feature von Application Gateway](../web-application-firewall/ag/ag-overview.md) bereit, das zentralisierten Schutz Ihrer Webanwendungen vor allgemeinen Exploits und Sicherheitsrisiken bietet. Über den [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?search=WAF&page=1) sind andere WAF-Angebote bei Azure-Partnern erhältlich, die möglicherweise für Ihre Anforderungen besser geeignet sind.
 
 Auch Web Application Firewalls sind anfällig für volumetrische und Zustandserschöpfungsangriffe. Sie sollten zum Schutz vor volumetrischen Angriffen und Protokollangriffen unbedingt DDoS Protection Standard auf dem virtuellen WAF-Netzwerk aktivieren. Weitere Informationen finden Sie im Abschnitt [DDoS Protection – Referenzarchitekturen](ddos-protection-reference-architectures.md).
 

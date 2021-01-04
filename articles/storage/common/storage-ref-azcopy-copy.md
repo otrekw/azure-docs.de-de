@@ -8,12 +8,12 @@ ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: a5c0d8bb47b337b0415565a0b6dad5c6822d0b94
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: fd71f4eb56974b93637c23eddc81e5f33ce788b8
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92781735"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96512153"
 ---
 # <a name="azcopy-copy"></a>azcopy copy
 
@@ -107,6 +107,14 @@ Hochladen von Dateien und Verzeichnissen unter Verwendung eines SAS-Tokens und P
 ```azcopy
 azcopy cp "/path/*foo/*bar*" "https://[account].blob.core.windows.net/[container]/[path/to/directory]?[SAS]" --recursive
 ```
+
+Hochladen von Dateien und Verzeichnissen in ein Azure Storage-Konto und Festlegen der in der Abfragezeichenfolge codierten Tags für das Blob. 
+
+- Verwenden Sie die folgende Syntax, um die Tags „{key = "bla bla", val = "foo"}“ und „{key = "bla bla 2", val = "bar"}“ festzulegen: `azcopy cp "/path/*foo/*bar*" "https://[account].blob.core.windows.net/[container]/[path/to/directory]?[SAS]" --blob-tags="bla%20bla=foo&bla%20bla%202=bar"`
+    
+- Schlüssel und Werte werden URL-codiert, und Schlüssel-Wert-Paare werden durch ein kaufmännisches Und-Zeichen (&) getrennt.
+
+- Wenn Sie Tags für die Blobs festlegen, sind in SAS zusätzliche Berechtigungen („t“ für Tags) erforderlich, ohne die der Dienst einen Autorisierungsfehler zurückgibt.
 
 Herunterladen einer einzelnen Datei unter Verwendung der OAuth-Authentifizierung. Wenn Sie sich noch nicht bei AzCopy angemeldet haben, führen Sie vor dem Ausführen des folgenden Befehls den Befehl `azcopy login` aus.
 
@@ -214,9 +222,19 @@ Kopieren einer Teilmenge der Buckets unter Verwendung eines Platzhaltersymbols (
 - azcopy cp "https://s3.amazonaws.com/[bucket*name]/" "https://[destaccount].blob.core.windows.net?[SAS]" --recursive
 ```
 
+Übertragen von Dateien und Verzeichnissen in ein Azure Storage-Konto und Festlegen der in der angegebenen Abfragezeichenfolge codierten Tags für das Blob. 
+
+- Verwenden Sie die folgende Syntax, um die Tags „{key = "bla bla", val = "foo"}“ und „{key = "bla bla 2", val = "bar"}“ festzulegen: `azcopy cp "https://[account].blob.core.windows.net/[source_container]/[path/to/directory]?[SAS]" "https://[account].blob.core.windows.net/[destination_container]/[path/to/directory]?[SAS]" --blob-tags="bla%20bla=foo&bla%20bla%202=bar"`
+        
+- Schlüssel und Werte werden URL-codiert, und Schlüssel-Wert-Paare werden durch ein kaufmännisches Und-Zeichen (&) getrennt.
+    
+- Wenn Sie Tags für die Blobs festlegen, sind in SAS zusätzliche Berechtigungen („t“ für Tags) erforderlich, ohne die der Dienst einen Autorisierungsfehler zurückgibt.
+
 ## <a name="options"></a>Tastatur
 
 **--backup:** aktiviert SeBackupPrivilege unter Windows für Uploads oder SeRestorePrivilege für Downloads, damit AzCopy alle Dateien unabhängig von ihren Dateisystemberechtigungen lesen und alle Berechtigungen wiederherstellen kann. Erfordert, dass das Konto, unter dem AzCopy ausgeführt wird, bereits über diese Berechtigungen verfügt (z. B. Administratorrechte hat oder Mitglied der Gruppe `Backup Operators` ist). Dieses Flag aktiviert die Berechtigungen, die das Konto bereits hat.
+
+**--blob-tags** string: Dient zum Festlegen von Tags für Blobs, um Daten in Ihrem Speicherkonto zu kategorisieren.
 
 **--blob-type** string  Definiert den Typ des Blobs am Ziel. Wird zum Hochladen von Blobs und beim Kopieren zwischen Konten verwendet (Standardeinstellung: `Detect`). Gültige Werte sind unter anderem `Detect`, `BlockBlob`, `PageBlob` und `AppendBlob`. Beim Kopieren zwischen Konten bewirkt der Wert `Detect`, dass AzCopy den Typ des Zielblobs anhand des Typs des Quellblobs bestimmt. Beim Hochladen einer Datei bestimmt `Detect` anhand der Dateierweiterung, ob es sich um eine VHD- oder VHDX-Datei handelt. Eine VHD- oder VHDX-Datei wird von AzCopy als Seitenblob behandelt. (Standardwert: „Detect“)
 

@@ -1,23 +1,23 @@
 ---
 title: Automatisieren von VMware-Migrationsvorgängen ohne Agent in Azure Migrate
 description: Erfahren Sie, wie Sie eine große Anzahl von VMware-VMs mithilfe von Skripts in Azure Migrate migrieren.
-author: rahulgup
-ms.service: azure-migrate
-ms.topic: article
-ms.date: 10/30/2020
+author: rahulg1190
 ms.author: rahugup
-ms.openlocfilehash: e1b34db7f2473e16d3ebde11376652f654f2f778
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.manager: bsiva
+ms.topic: how-to
+ms.date: 10/30/2020
+ms.openlocfilehash: cdae1fe13f8e08cb6b817f8ec6431c77013020d7
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93377954"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96754265"
 ---
 # <a name="scale-migration-of-vmware-vms"></a>Skalieren der Migration von VMware-VMs 
 
-In diesem Artikel wird erläutert, wie Sie mithilfe von Skripts eine große Anzahl von VMware-VMs ohne einen Agent migrieren. Für das Skalieren einer Migration verwenden Sie das [Azure Migrate-PowerShell-Modul](https://aka.ms/azuremigratepowershellvmware). 
+In diesem Artikel wird erläutert, wie Sie mithilfe von Skripts eine große Anzahl von VMware-VMs ohne einen Agent migrieren. Für das Skalieren einer Migration verwenden Sie das [Azure Migrate-PowerShell-Modul](./tutorial-migrate-vmware-powershell.md). 
 
-Die Skripts zur Automatisierung der VMware-Migration mit Azure Migrate stehen auf GitHub im Repository mit den [Azure PowerShell-Beispielen](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/migrate-at-scale-vmware-agentles) zum Download zur Verfügung. Mithilfe der Skripts können Sie VMware-VMs ohne Agent zu Azure migrieren. Die in diesen Skripts verwendeten Azure Migrate-PowerShell-Befehle sind [hier](https://aka.ms/azuremigratepowershellvmware) dokumentiert.
+Die Skripts zur Automatisierung der VMware-Migration mit Azure Migrate stehen auf GitHub im Repository mit den [Azure PowerShell-Beispielen](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/migrate-at-scale-vmware-agentles) zum Download zur Verfügung. Mithilfe der Skripts können Sie VMware-VMs ohne Agent zu Azure migrieren. Die in diesen Skripts verwendeten Azure Migrate-PowerShell-Befehle sind [hier](./tutorial-migrate-vmware-powershell.md) dokumentiert.
 
 ## <a name="current-limitations"></a>Aktuelle Einschränkungen
 - Diese Skripts unterstützen die Migration von VMware-VMs mit allen Datenträgern. Sie können die Skripts anpassen, wenn Sie die an eine VMware-VM angefügten Datenträger selektiv replizieren möchten. 
@@ -26,7 +26,7 @@ Die Skripts zur Automatisierung der VMware-Migration mit Azure Migrate stehen au
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - [Absolvieren Sie das Tutorial zur Ermittlung](tutorial-discover-vmware.md), um Azure und VMware für die Migration vorzubereiten.
-- Es empfiehlt sich, das zweite Tutorial zum [Bewerten virtueller VMware-Computer](tutorial-assess-vmware.md) zu absolvieren, bevor Sie sie zu Azure migrieren.
+- Es empfiehlt sich, das zweite Tutorial zum [Bewerten virtueller VMware-Computer](./tutorial-assess-vmware-azure-vm.md) zu absolvieren, bevor Sie sie zu Azure migrieren.
 - Sie verfügen über das Azure PowerShell-Modul `Az`. Wenn Sie PowerShell installieren oder aktualisieren müssen, führen Sie die [Schritte zum Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/install-az-ps) aus.
 
 ## <a name="install-azure-migrate-powershell-module"></a>Installieren des Azure Migrate-PowerShell-Moduls
@@ -123,4 +123,4 @@ Wenn Sie das Skript zum Starten der Replikation von VMs ausführen und dabei die
 ".\AzMigrate_StartReplication.ps1" .\Input.csv 
 ```
 
-Weitere Informationen zum Verwenden von Azure PowerShell zum Migrieren von VMware-VMs mit Azure Migrate finden Sie im [Tutorial](https://aka.ms/azuremigratepowershellvmware).
+Weitere Informationen zum Verwenden von Azure PowerShell zum Migrieren von VMware-VMs mit Azure Migrate finden Sie im [Tutorial](./tutorial-migrate-vmware-powershell.md).

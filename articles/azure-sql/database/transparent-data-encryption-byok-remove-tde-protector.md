@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 02/24/2020
-ms.openlocfilehash: a879ac81859c855bb7b7bc2eddb1e3c9b62adb34
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 31298be4d50c7f562e2e2b9adbf889b165b197e5
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321408"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461868"
 ---
 # <a name="remove-a-transparent-data-encryption-tde-protector-using-powershell"></a>Entfernen einer Transparent Data Encryption (TDE)-Schutzvorrichtung mithilfe von PowerShell
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -35,13 +35,13 @@ Beachten Sie: Sobald die TDE-Schutzvorrichtung in Key Vault gelöscht ist, begin
 In diesem Leitfaden werden zwei Ansätze behandelt, die jeweils vom gewünschten Ergebnis nach der Reaktion auf kompromittierte Vorfälle abhängen:
 
 - **Verhindern des Zugriffs** auf die Datenbanken in Azure SQL-Datenbank/Azure Synapse Analytics.
-- **Verhindern des Zugriffs** auf die Datenbanken in Azure SQL-Datenbank/Azure Synapse Analytics (früher SQL Data Warehouse).
+- **Verhindern des Zugriffs** auf die Datenbanken in Azure SQL-Datenbank/Azure Synapse Analytics
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Sie müssen über ein Azure-Abonnement verfügen und ein Administrator für dieses Abonnement sein.
 - Azure PowerShell muss installiert sein und ausgeführt werden.
-- In diesem Leitfaden wird davon ausgegangen, dass Sie bereits einen Schlüssel aus Azure Key Vault als TDE-Schutzvorrichtung für eine Azure SQL-Datenbank- oder Azure Synapse-Instanz (vormals SQL Data Warehouse) verwenden. Weitere Informationen finden Sie unter [Transparent Data Encryption mit BYOK-Unterstützung](transparent-data-encryption-byok-overview.md).
+- In diesem Leitfaden wird davon ausgegangen, dass Sie bereits einen Schlüssel aus Azure Key Vault als TDE-Schutzvorrichtung für Azure SQL-Datenbank oder Azure Synapse verwenden. Weitere Informationen finden Sie unter [Transparent Data Encryption mit BYOK-Unterstützung](transparent-data-encryption-byok-overview.md).
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

@@ -1,6 +1,6 @@
 ---
-title: Wiederherstellen eines gelöschten dedizierten SQL-Pools
-description: Anleitung für das Wiederherstellen eines dedizierten SQL-Pools in Azure Synapse Analytics.
+title: Wiederherstellen eines gelöschten dedizierten SQL-Pools (früher SQL Data Warehouse)
+description: Anleitung für das Wiederherstellen eines gelöschten dedizierten SQL-Pools in Azure Synapse Analytics.
 services: synapse-analytics
 author: anumjs
 manager: craigg
@@ -8,37 +8,37 @@ ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
 ms.date: 08/29/2018
-ms.author: anjangsh
+ms.author: joanpo
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 29edf6ebd451bf05fe24249eeacb416a70001d56
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 7264791654bf1b646338f0d429930b63f0cc3a06
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93313571"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96449924"
 ---
-# <a name="restore-a-deleted-dedicated-sql-pool-in-azure-synapse-analytics"></a>Wiederherstellen eines dedizierten SQL-Pools in Azure Synapse Analytics
+# <a name="restore-a-deleted-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Wiederherstellen eines gelöschten dedizierten SQL-Pools (früher SQL Data Warehouse) in Azure Synapse Analytics
 
-In diesem Artikel erfahren Sie, wie Sie einen dedizierten SQL-Pool im Azure-Portal oder mithilfe von PowerShell wiederherstellen.
+In diesem Artikel erfahren Sie, wie Sie einen dedizierten SQL-Pool (früher SQL Data Warehouse) im Azure-Portal oder mithilfe von PowerShell wiederherstellen.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-**Überprüfen Sie Ihre DTU-Kapazität.** Jeder dedizierte SQL-Pool wird von einem [logischen SQL-Server](../../azure-sql/database/logical-servers.md) gehostet (z. B. myserver.database.windows.net), der über ein DTU-Standardkontingent verfügt.  Vergewissern Sie sich, dass der Server über ein ausreichendes DTU-Kontingent für die Datenbankwiederherstellung verfügt. Informationen zum Berechnen des DTU-Bedarfs bzw. zur Anforderung weiterer DTUs finden Sie unter [Anfordern einer DTU-Kontingentänderung](sql-data-warehouse-get-started-create-support-ticket.md).
+**Überprüfen Sie Ihre DTU-Kapazität.** Jeder dedizierte SQL-Pool (früher SQL Data Warehouse) wird von einem [logischen SQL-Server](../../azure-sql/database/logical-servers.md) gehostet (z. B. myserver.database.windows.net), der über ein DTU-Standardkontingent verfügt.  Vergewissern Sie sich, dass der Server über ein ausreichendes DTU-Kontingent für die Datenbankwiederherstellung verfügt. Informationen zum Berechnen des DTU-Bedarfs bzw. zur Anforderung weiterer DTUs finden Sie unter [Anfordern einer DTU-Kontingentänderung](sql-data-warehouse-get-started-create-support-ticket.md).
 
 ## <a name="restore-a-deleted-data-warehouse-through-powershell"></a>Wiederherstellen einer gelöschten Data Warehouse-Instanz mit PowerShell
 
-Verwenden Sie das Cmdlet [Restore-AzSqlDatabase](/powershell/module/az.sql/restore-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json), um einen gelöschten dedizierten SQL-Pool wiederherzustellen. Wenn der entsprechende Server ebenfalls gelöscht wurde, können Sie diese Data Warehouse-Instanz nicht wiederherstellen.
+Mit dem Cmdlet [Restore-AzSqlDatabase](/powershell/module/az.sql/restore-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) können Sie einen gelöschten dedizierten SQL-Pool (früher SQL Data Warehouse) wiederherstellen. Wenn der entsprechende Server ebenfalls gelöscht wurde, können Sie diese Data Warehouse-Instanz nicht wiederherstellen.
 
 1. Bevor Sie beginnen, müssen Sie [Azure PowerShell installieren](/powershell/azure/?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
 2. Öffnen Sie PowerShell.
 3. Stellen Sie eine Verbindung mit Ihrem Azure-Konto her, und listen Sie alle Abonnements auf, die Ihrem Konto zugeordnet sind.
-4. Wählen Sie das Abonnement aus, das den gelöschten dedizierten SQL-Pool enthält, der wiederhergestellt werden soll.
+4. Wählen Sie das Abonnement aus, das den gelöschten dedizierten SQL-Pool (früher SQL Data Warehouse) enthält, der wiederhergestellt werden soll.
 5. Rufen Sie die spezifische gelöschte Data Warehouse-Instanz ab.
-6. Wiederherstellen des gelöschten dedizierten SQL-Pools
-    1. Zum Wiederherstellen des gelöschten dedizierten SQL-Pools auf einem anderen Server müssen Sie den Namen des anderen Servers angeben.  Dieser Server kann sich auch in einer anderen Ressourcengruppe und Region befinden.
+6. Wiederherstellen eines gelöschten dedizierten SQL-Pools (früher SQL Data Warehouse)
+    1. Zum Wiederherstellen des dedizierten SQL-Pools (früher SQL Data Warehouse) auf einem anderen Server müssen Sie den Namen des anderen Servers angeben.  Dieser Server kann sich auch in einer anderen Ressourcengruppe und Region befinden.
     1. Für die Wiederherstellung in einem anderen Abonnement verwenden Sie die Schaltfläche [Verschieben](../../azure-resource-manager/management/move-resource-group-and-subscription.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#use-the-portal), um den Server in ein anderes Abonnement zu verschieben.
 7. Überprüfen Sie, ob die wiederhergestellte Data Warehouse-Instanz online ist.
 8. Nach Abschluss der Wiederherstellung können Sie Ihre wiederhergestellte Data Warehouse-Instanz konfigurieren. Befolgen Sie hierzu die Anleitung [Konfigurieren der Datenbank nach der Wiederherstellung](../../azure-sql/database/disaster-recovery-guidance.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#configure-your-database-after-recovery).
@@ -87,5 +87,5 @@ $RestoredDatabase.status
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Wiederherstellen eines vorhandenen dedizierten SQL-Pools](sql-data-warehouse-restore-active-paused-dw.md)
-- [Wiederherstellen eines dedizierten SQL-Pools aus einer Geosicherung](sql-data-warehouse-restore-from-geo-backup.md)
+- [Wiederherstellen eines vorhandenen dedizierten SQL-Pools (früher SQL Data Warehouse)](sql-data-warehouse-restore-active-paused-dw.md)
+- [Wiederherstellen eines dedizierten SQL-Pools (früher SQL Data Warehouse) aus einer Geosicherung](sql-data-warehouse-restore-from-geo-backup.md)

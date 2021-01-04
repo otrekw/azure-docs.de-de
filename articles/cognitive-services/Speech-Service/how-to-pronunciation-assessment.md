@@ -12,12 +12,12 @@ ms.date: 09/29/2020
 ms.author: yulili
 ms.custom: references_regions
 zone_pivot_groups: programming-languages-set-nineteen
-ms.openlocfilehash: 245a00acb07d1c0e769a243413fccdf64d544f5a
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 1cc313daf0e76ddd14865959410b07d9bdc189d7
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93135468"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94984920"
 ---
 # <a name="pronunciation-assessment"></a>Aussprachebewertung
 
@@ -154,12 +154,12 @@ double pronunciationScore = pronunciationAssessmentResult.pronunciationScore;
 
 In dieser Tabelle sind die Konfigurationsparameter für die Aussprachebewertung aufgeführt.
 
-| Parameter | BESCHREIBUNG | Erforderlich/optional |
+| Parameter | BESCHREIBUNG | Erforderlich? |
 |-----------|-------------|---------------------|
 | ReferenceText | Der Text, für den die Aussprache ausgewertet wird. | Erforderlich |
-| GradingSystem | Das Punktesystem zur Kalibrierung der Bewertung. Zulässige Werte sind `FivePoint` und `HundredMark`. Die Standardeinstellung ist `FivePoint`. | Optional |
-| Granularität | Die Granularität der Auswertung. Akzeptierte Werte sind `Phoneme`, für das die Bewertung auf Volltext-, Wort- und Phonemebene, `Word`, für das die Bewertung auf Volltext und Wortebene und `FullText`, für das nur die Bewertung auf der Volltextebene angezeigt wird. Die Standardeinstellung ist `Phoneme`. | Optional |
-| EnableMiscue | Aktiviert die Fehlschlagsberechnung. Wenn diese Option aktiviert ist, werden die ausgesprochenen Wörter mit dem Referenztext verglichen und auf der Grundlage des Vergleichs mit Auslassung/Einfügung gekennzeichnet. Zulässige Werte sind `False` und `True`. Die Standardeinstellung ist `False`. | Optional |
+| GradingSystem | Das Punktesystem zur Kalibrierung der Bewertung. Das `FivePoint`-System gibt eine 0-5-Gleitkommabewertung und `HundredMark` eine 0-100-Gleitkommabewertung aus. Standardwert: `FivePoint`. | Optional |
+| Granularität | Die Granularität der Auswertung. Akzeptierte Werte sind `Phoneme`, für das die Bewertung auf Volltext-, Wort- und Phonemebene, `Word`, für das die Bewertung auf Volltext und Wortebene und `FullText`, für das nur die Bewertung auf der Volltextebene angezeigt wird. Standardwert: `Phoneme`. | Optional |
+| EnableMiscue | Aktiviert die Fehlschlagsberechnung. Wenn diese Option aktiviert ist, werden die ausgesprochenen Wörter mit dem Referenztext verglichen und auf der Grundlage des Vergleichs mit Auslassung/Einfügung gekennzeichnet. Zulässige Werte sind `False` und `True`. Standardwert: `False`. | Optional |
 | ScenarioId | Eine GUID, die ein benutzerdefiniertes Punktesystem angibt. | Optional |
 
 ### <a name="pronunciation-assessment-result-parameters"></a>Ergebnisparameter für die Aussprachebewertung

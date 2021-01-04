@@ -7,12 +7,12 @@ author: mimckitt
 ms.author: mimckitt
 ms.topic: conceptual
 ms.date: 11/06/2020
-ms.openlocfilehash: 1dcefefe02d91506c494cdf91e75ca951ccf43bb
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 408ba76c44d1161a4b91ccc037721796c7b94661
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94365469"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500749"
 ---
 # <a name="azure-boot-diagnostics"></a>Azure-Startdiagnose
 
@@ -41,10 +41,10 @@ Wenn Sie eine VM im Azure-Portal erstellen, ist die Startdiagnose mithilfe eines
 :::image type="content" source="./media/boot-diagnostics/boot-diagnostics-enable-portal.png" alt-text="Screenshot der Aktivierung der verwalteten Startdiagnose während der VM-Erstellung":::
 
 ### <a name="enable-managed-boot-diagnostics-using-cli"></a>Aktivieren der verwalteten Startdiagnose mithilfe der Befehlszeilenschnittstelle
-Die Startdiagnose mit einem verwalteten Speicherkonto wird ab Version 2.12.0 der Azure-Befehlszeilenschnittstelle unterstützt. Wenn Sie keinen Namen oder URI für ein Speicherkonto eingeben, wird ein verwaltetes Konto verwendet. Weitere Informationen und Codebeispiele finden Sie in der [Dokumentation der Befehlszeilenschnittstelle zur Startdiagnose](https://docs.microsoft.com/cli/azure/vm/boot-diagnostics?view=azure-cli-latest&preserve-view=true).
+Die Startdiagnose mit einem verwalteten Speicherkonto wird ab Version 2.12.0 der Azure-Befehlszeilenschnittstelle unterstützt. Wenn Sie keinen Namen oder URI für ein Speicherkonto eingeben, wird ein verwaltetes Konto verwendet. Weitere Informationen und Codebeispiele finden Sie in der [Dokumentation der Befehlszeilenschnittstelle zur Startdiagnose](/cli/azure/vm/boot-diagnostics?preserve-view=true&view=azure-cli-latest).
 
 ### <a name="enable-managed-boot-diagnostics-using-azure-resource-manager-arm-templates"></a>Aktivieren der verwalteten Startdiagnose mithilfe von ARM-Vorlagen (Azure Resource Manager)
-Ab API-Version 2020-06-01 wird die verwaltete Startdiagnose unterstützt. Weitere Informationen finden Sie unter [Instanzansicht der Startdiagnose](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#bootdiagnostics).
+Ab API-Version 2020-06-01 wird die verwaltete Startdiagnose unterstützt. Weitere Informationen finden Sie unter [Instanzansicht der Startdiagnose](/rest/api/compute/virtualmachines/createorupdate#bootdiagnostics).
 
 ```ARM Template
             "name": "[parameters('virtualMachineName')]",

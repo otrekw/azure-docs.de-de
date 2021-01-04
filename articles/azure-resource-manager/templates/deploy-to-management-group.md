@@ -2,13 +2,13 @@
 title: Bereitstellen von Ressourcen in einer Verwaltungsgruppe
 description: In diesem Artikel wird beschrieben, wie Sie Ressourcen auf der Verwaltungsgruppenebene in einer Azure Resource Manager-Vorlage bereitstellen.
 ms.topic: conceptual
-ms.date: 10/22/2020
-ms.openlocfilehash: 084ab69f463334569d37efd9187bfe587bfc524d
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.date: 11/24/2020
+ms.openlocfilehash: 79cdb35de40501dfc0794155dcf807cced94bfa7
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92668926"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95798588"
 ---
 # <a name="management-group-deployments-with-arm-templates"></a>Bereitstellung von Verwaltungsgruppen mit ARM-Vorlagen
 
@@ -106,6 +106,14 @@ Ausführlichere Informationen über Bereitstellungsbefehle und -optionen für di
 * [Verwenden einer Bereitstellungsschaltfläche zum Bereitstellen von Vorlagen aus einem GitHub-Repository](deploy-to-azure-button.md)
 * [Bereitstellen von ARM-Vorlagen über Cloud Shell](deploy-cloud-shell.md)
 
+## <a name="deployment-location-and-name"></a>Bereitstellungsspeicherort und -name
+
+Für Bereitstellungen auf Verwaltungsgruppenebene müssen Sie einen Speicherort für die Bereitstellung angeben. Der Speicherort der Bereitstellung ist vom Speicherort der Ressourcen getrennt, die Sie bereitstellen. Der Bereitstellungsspeicherort gibt an, wo Bereitstellungsdaten gespeichert werden sollen. Die Bereitstellungen von [Abonnement](deploy-to-subscription.md) und [Mandant](deploy-to-tenant.md) benötigen auch einen Speicherort. Für [Ressourcengruppe](deploy-to-resource-group.md)nbereitstellungen wird der Speicherort der Ressourcengruppe zum Speichern der Bereitstellungsdaten verwendet.
+
+Sie können einen Namen für die Bereitstellung angeben oder den Bereitstellungsstandardnamen verwenden. Der Standardname ist der Name der Vorlagendatei. Wenn Sie z.B. eine Vorlage mit dem Namen **azuredeploy.json** bereitstellen, wird **azuredeploy** als Standardname für die Bereitstellung erstellt.
+
+Der Speicherort für jeden Bereitstellungsnamen ist unveränderlich. Sie können keine Bereitstellung an einem Speicherort erstellen, wenn bereits eine Bereitstellung mit demselben Namen an einem anderen Speicherort vorhanden ist. Wenn Sie z. B. eine Verwaltungsgruppenbereitstellung mit dem Namen **deployment1** in **centralus** erstellen, können Sie später keine weitere Bereitstellung mit dem Namen **deployment1**, aber einen Speicherort **westus** erstellen. Wenn Sie den Fehlercode `InvalidDeploymentLocation` erhalten, verwenden Sie entweder einen anderen Namen oder denselben Speicherort wie bei der vorherigen Bereitstellung für diesen Namen.
+
 ## <a name="deployment-scopes"></a>Bereitstellungsbereiche
 
 Bei der Bereitstellung in einer Verwaltungsgruppe können Sie Ressourcen an folgenden Orten bereitstellen:
@@ -113,7 +121,8 @@ Bei der Bereitstellung in einer Verwaltungsgruppe können Sie Ressourcen an folg
 * In der Zielverwaltungsgruppe des Vorgangs
 * In einer anderen Verwaltungsgruppe im Mandanten
 * In Abonnements in der Verwaltungsgruppe
-* In Ressourcengruppen in der Verwaltungsgruppe (durch zwei geschachtelte Bereitstellungen)
+* In Ressourcengruppen in der Verwaltungsgruppe
+* Im Mandanten für die Ressourcengruppe
 * [Erweiterungsressourcen](scope-extension-resources.md) können auf Ressourcen angewendet werden.
 
 Der Benutzer, der die Vorlage bereitstellt, muss Zugriff auf den angegebenen Bereich besitzen.
@@ -130,7 +139,7 @@ Ressourcen, die im Ressourcenabschnitt der Vorlage definiert sind, werden vom Be
 
 Um eine andere Verwaltungsgruppe als Ziel zu verwenden, fügen Sie eine geschachtelte Bereitstellung hinzu, und geben Sie die `scope`-Eigenschaft an. Legen Sie die Eigenschaft `scope` auf einen Wert im Format `Microsoft.Management/managementGroups/<mg-name>` fest.
 
-:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/scope-mg.json" highlight="10,17,22":::
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/scope-mg.json" highlight="10,17,18,22":::
 
 ### <a name="scope-to-subscription"></a>Bereich: Abonnement
 
@@ -138,23 +147,29 @@ Sie können auch Abonnements innerhalb einer Verwaltungsgruppe als Bereitstellun
 
 Um ein Abonnement innerhalb der Verwaltungsgruppe als Ziel zu verwenden, verwenden Sie eine geschachtelte Bereitstellung und die `subscriptionId`-Eigenschaft.
 
-:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/mg-to-subscription.json" highlight="10,18":::
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/mg-to-subscription.json" highlight="9,10,18":::
 
 ### <a name="scope-to-resource-group"></a>Bereich: Ressourcengruppe
 
-Fügen Sie zwei geschachtelte Bereitstellungen hinzu, um eine Ressourcengruppe innerhalb dieses Abonnements als Bereitstellungsziel zu verwenden. Das Ziel der ersten ist das Abonnement, das die Ressourcengruppe enthält. Das Ziel der zweiten ist die Ressourcengruppe, wofür die Eigenschaft `resourceGroup` festgelegt wird.
+Sie können auch Ressourcengruppen innerhalb der Verwaltungsgruppe als Bereitstellungsziel verwenden. Der Benutzer, der die Vorlage bereitstellt, muss Zugriff auf den angegebenen Bereich besitzen.
 
-:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/mg-to-resource-group.json" highlight="10,21,25":::
+Um eine Ressourcengruppe innerhalb der Verwaltungsgruppe als Bereitstellungsziel zu verwenden, verwenden Sie eine geschachtelte Bereitstellung. Legen Sie die Eigenschaften `subscriptionId` und `resourceGroup` fest. Legen Sie keinen Speicherort für die geschachtelte Bereitstellung fest, da Sie am Speicherort der Ressourcengruppe bereitgestellt wird.
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/mg-to-resource-group.json" highlight="9,10,18":::
 
 Informationen zur Verwendung einer Verwaltungsgruppenbereitstellung zum Erstellen einer Ressourcengruppe in einem Abonnement und zum Bereitstellen eines Speicherkontos für diese Ressourcengruppe finden Sie unter [Bereitstellen in Abonnements und Ressourcengruppen](#deploy-to-subscription-and-resource-group).
 
-## <a name="deployment-location-and-name"></a>Bereitstellungsspeicherort und -name
+### <a name="scope-to-tenant"></a>Bereich: Mandant
 
-Für Bereitstellungen auf Verwaltungsgruppenebene müssen Sie einen Speicherort für die Bereitstellung angeben. Der Speicherort der Bereitstellung ist vom Speicherort der Ressourcen getrennt, die Sie bereitstellen. Der Bereitstellungsspeicherort gibt an, wo Bereitstellungsdaten gespeichert werden sollen.
+Sie können Ressourcen im Mandanten erstellen, indem Sie den `scope` auf `/` festlegen. Der Benutzer, der die Vorlage bereitstellt, muss über den [erforderlichen Zugriff zum Bereitstellen im Mandanten](deploy-to-tenant.md#required-access) verfügen.
 
-Sie können einen Namen für die Bereitstellung angeben oder den Bereitstellungsstandardnamen verwenden. Der Standardname ist der Name der Vorlagendatei. Wenn Sie z.B. eine Vorlage mit dem Namen **azuredeploy.json** bereitstellen, wird **azuredeploy** als Standardname für die Bereitstellung erstellt.
+Sie können eine geschachtelte Bereitstellung mit festgelegtem `scope` und `location` verwenden.
 
-Der Speicherort für jeden Bereitstellungsnamen ist unveränderlich. Sie können keine Bereitstellung an einem Speicherort erstellen, wenn bereits eine Bereitstellung mit demselben Namen an einem anderen Speicherort vorhanden ist. Wenn Sie den Fehlercode `InvalidDeploymentLocation` erhalten, verwenden Sie entweder einen anderen Namen oder denselben Speicherort wie bei der vorherigen Bereitstellung für diesen Namen.
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/management-group-to-tenant.json" highlight="9,10,14":::
+
+Alternativ können Sie den Bereich für einige Ressourcentypen wie z. B. Verwaltungsgruppen auf `/` festlegen.
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/management-group-create-mg.json" highlight="12,15":::
 
 ## <a name="azure-policy"></a>Azure Policy
 
@@ -234,77 +249,79 @@ Aus einer Bereitstellung auf Verwaltungsgruppenebene können Sie ein Abonnement 
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "nestedsubId": {
-      "type": "string"
+    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "nestedsubId": {
+            "type": "string"
+        },
+        "nestedRG": {
+            "type": "string"
+        },
+        "storageAccountName": {
+            "type": "string"
+        },
+        "nestedLocation": {
+            "type": "string"
+        }
     },
-    "nestedRG": {
-      "type": "string"
-    },
-    "storageAccountName": {
-      "type": "string"
-    },
-    "nestedLocation": {
-      "type": "string"
-    }
-  },
-  "resources": [
-    {
-      "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2020-06-01",
-      "name": "nestedSub",
-      "location": "[parameters('nestedLocation')]",
-      "subscriptionId": "[parameters('nestedSubId')]",
-      "properties": {
-        "mode": "Incremental",
-        "template": {
-          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-          "contentVersion": "1.0.0.0",
-          "parameters": {
-          },
-          "variables": {
-          },
-          "resources": [
-            {
-              "type": "Microsoft.Resources/resourceGroups",
-              "apiVersion": "2020-06-01",
-              "name": "[parameters('nestedRG')]",
-              "location": "[parameters('nestedLocation')]",
-            },
-            {
-              "type": "Microsoft.Resources/deployments",
-              "apiVersion": "2020-06-01",
-              "name": "nestedSubRG",
-              "resourceGroup": "[parameters('nestedRG')]",
-              "dependsOn": [
-                "[parameters('nestedRG')]"
-              ],
-              "properties": {
+    "resources": [
+        {
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2020-06-01",
+            "name": "nestedSub",
+            "location": "[parameters('nestedLocation')]",
+            "subscriptionId": "[parameters('nestedSubId')]",
+            "properties": {
                 "mode": "Incremental",
                 "template": {
-                  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-                  "contentVersion": "1.0.0.0",
-                  "resources": [
-                    {
-                      "type": "Microsoft.Storage/storageAccounts",
-                      "apiVersion": "2019-04-01",
-                      "name": "[parameters('storageAccountName')]",
-                      "location": "[parameters('nestedLocation')]",
-                      "sku": {
-                        "name": "Standard_LRS"
-                      }
-                    }
-                  ]
+                    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+                    "contentVersion": "1.0.0.0",
+                    "parameters": {
+                    },
+                    "variables": {
+                    },
+                    "resources": [
+                        {
+                            "type": "Microsoft.Resources/resourceGroups",
+                            "apiVersion": "2020-06-01",
+                            "name": "[parameters('nestedRG')]",
+                            "location": "[parameters('nestedLocation')]"
+                        }
+                    ]
                 }
-              }
             }
-          ]
+        },
+        {
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2020-06-01",
+            "name": "nestedRG",
+            "subscriptionId": "[parameters('nestedSubId')]",
+            "resourceGroup": "[parameters('nestedRG')]",
+            "dependsOn": [
+                "nestedSub"
+            ],
+            "properties": {
+                "mode": "Incremental",
+                "template": {
+                    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+                    "contentVersion": "1.0.0.0",
+                    "resources": [
+                        {
+                            "type": "Microsoft.Storage/storageAccounts",
+                            "apiVersion": "2019-04-01",
+                            "name": "[parameters('storageAccountName')]",
+                            "location": "[parameters('nestedLocation')]",
+                            "kind": "StorageV2",
+                            "sku": {
+                                "name": "Standard_LRS"
+                            }
+                        }
+                    ]
+                }
+            }
         }
-      }
-    }
-  ]
+    ]
 }
 ```
 

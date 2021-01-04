@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: kenwith
-ms.openlocfilehash: 8e345b27fdb2604c0c3264d6935cb9cff8aeec9c
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 7edb7b498450625faf90f0601e19745ad632635a
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94656733"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94835661"
 ---
 # <a name="plan-an-azure-active-directory-my-apps-deployment"></a>Planen einer Bereitstellung von „Meine Apps“ in Azure Active Directory
 
@@ -26,7 +26,7 @@ ms.locfileid: "94656733"
 * Entdecken aller mit Azure AD verbundenen Ressourcen Ihres Unternehmens, z. B. Anwendungen, und Zugriff auf diese
 * Anfordern von Zugriff auf neue Apps und Gruppen
 * Verwalten des Zugriffs auf diese Ressourcen für andere Benutzer
-* Verwalten der Self-Service-Kennwortzurücksetzung und der Einstellungen für Azure Multi-Factor Authentication
+* Verwalten der Self-Service-Kennwortzurücksetzung und der Einstellungen für Azure AD Multi-Factor Authentication
 * Verwalten Ihrer Geräte
 
 Administratoren können damit Folgendes verwalten:
@@ -54,7 +54,7 @@ Administratoren können damit Folgendes verwalten:
 
 „Meine Apps“ ist kostenlos und erfordert auf der Ebene „Basic“ keine Lizenzen. Die Anzahl der Objekte in Ihrem Verzeichnis und die zusätzlichen Funktionen, die Sie bereitstellen möchten, können jedoch zusätzliche Lizenzen erfordern. Allgemeine Azure AD-Szenarien mit Lizenzanforderungen umfassen die folgenden Sicherheitsfeatures:
 
-* [Azure Multi-Factor Authentication](../authentication/concept-mfa-howitworks.md)
+* [Azure AD Multi-Factor Authentication](../authentication/concept-mfa-howitworks.md)
 * [Gruppenbasierte Mitgliedschaft](../fundamentals/active-directory-manage-groups.md)
 * [Self-Service-Kennwortzurücksetzung](../authentication/tutorial-enable-sspr.md)
 * [Azure Active Directory Identity Protection](../identity-protection/overview-identity-protection.md)
@@ -312,4 +312,4 @@ Verwenden Sie die am wenigsten privilegierte Rolle, um eine erforderliche Aufgab
 Sie können Ihre Rollen mithilfe von [Privileged Identity Management](../privileged-identity-management/pim-configure.md) (PIM) verwalten, um zusätzliche Überwachung, Kontrolle und Zugriffsprüfungen für Benutzer mit Verzeichnisberechtigungen bereitzustellen.
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Planen einer Bereitstellung von Azure Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)
+[Planen einer Bereitstellung von Azure AD Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)

@@ -2,14 +2,14 @@
 title: 'Azure Arc-fähige Server: Übersicht'
 description: Hier erfahren Sie, wie Sie außerhalb von Azure gehostete Server mithilfe von Servern mit Azure Arc-Unterstützung wie eine Azure-Ressource verwalten.
 keywords: Azure Automation, DSC, PowerShell, Desired State Configuration, Updateverwaltung, Änderungsnachverfolgung, Bestand, Runbooks, Python, grafisch, Hybrid
-ms.date: 11/04/2020
+ms.date: 11/12/2020
 ms.topic: overview
-ms.openlocfilehash: b9d38b2395d922e3e2a7daec654cd73de7267ee1
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 8368f89b8e471698ede3e9e8eb691e69f494b6e2
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360580"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183395"
 ---
 # <a name="what-is-azure-arc-enabled-servers"></a>Was sind Server mit Azure Arc-Aktivierung?
 
@@ -29,7 +29,7 @@ Wenn Sie Ihren Computer mit Servern mit Azure Arc-Unterstützung verbinden, kö
 
 - Vereinfachen der Bereitstellung mit anderen Azure-Diensten wie Azure Automation [State Configuration](../../automation/automation-dsc-overview.md) und Azure Monitor Log Analytics-Arbeitsbereich unter Verwendung der unterstützten [Azure-VM-Erweiterungen](manage-vm-extensions.md) für Ihren Azure-fremden Windows- oder Linux-Computer. Dies schließt die Konfiguration nach der Bereitstellung oder die Softwareinstallation unter Verwendung der benutzerdefinierten Skripterweiterung mit ein.
 
-- Verwalten Sie Betriebssystemupdates für Ihre Windows- und Linux-Server mithilfe der [Updateverwaltung](../../automation/update-management/update-mgmt-overview.md) in Azure Automation.
+- Verwalten Sie Betriebssystemupdates für Ihre Windows- und Linux-Server mithilfe der [Updateverwaltung](../../automation/update-management/overview.md) in Azure Automation.
 
     > [!NOTE]
     > Zum aktuellen Zeitpunkt wird das Aktivieren der Updateverwaltung direkt von einem Arc-fähigen Server aus nicht unterstützt. Informationen zu den Anforderungen und wie Sie die Updateverwaltung für Ihren Server aktivieren, finden Sie unter [Aktivieren der Updateverwaltung aus Ihrem Automation-Konto](../../automation/update-management/enable-from-automation-account.md).
@@ -45,6 +45,15 @@ Erfasste und in einem Log Analytics-Arbeitsbereich gespeicherte Protokolldaten 
 Eine definitive Liste der unterstützten Regionen mit Azure Arc-fähigen Servern finden Sie auf der Seite [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=azure-arc).
 
 In den meisten Fällen sollte der Standort, den Sie beim Erstellen des Installationsskripts auswählen, die Azure-Region sein, die dem Standort Ihres Computers geografisch am nächsten ist. Ruhende Daten werden innerhalb der geografischen Azure-Region gespeichert, in der sich die von Ihnen angegebene Region befindet, was ggf. auch Auswirkungen auf die Wahl der Region hat, wenn Data Residency-Anforderungen erfüllt werden müssen. Wenn die Azure-Region, mit der Ihr Computer eine Verbindung herstellt, von einem Ausfall betroffen ist, wird der verbundene Computer zwar nicht beeinträchtigt, es kann jedoch sein, dass Verwaltungsvorgänge mit Azure nicht abgeschlossen werden können. Wenn Sie über mehrere Standorte verfügen, die einen geografisch redundanten Dienst unterstützen, empfiehlt es sich im Falle eines regionalen Ausfalls, die Computer an den einzelnen Standorten jeweils mit einer anderen Azure-Region zu verbinden.
+
+Die folgenden Metadateninformationen zum verbundenen Computer werden gesammelt und in der Region gespeichert, in der die Azure Arc-Computerressource konfiguriert ist:
+
+- Betriebssystemname und -version
+- Computername
+- Vollqualifizierter Domänenname (FQDN) des Computers
+- Version des Connected Machine-Agents
+
+Wenn der Computer beispielsweise mit Azure Arc in der Region „USA, Osten“ registriert ist, werden diese Daten in der Region „USA“ gespeichert.
 
 ### <a name="agent-status"></a>Agent-Status
 

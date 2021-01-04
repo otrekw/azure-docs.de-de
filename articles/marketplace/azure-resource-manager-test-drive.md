@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/19/2020
 ms.author: trkeya
 author: trkeya
-ms.openlocfilehash: 0b445f9d4fdda0b1fac9dcdb4344533cfd7d37a9
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: fd3fa04d2d7e868476838788dd9cf0e27c07aeca
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491238"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461761"
 ---
 # <a name="azure-resource-manager-test-drive"></a>Azure Resource Manager-Testversion
 
@@ -20,7 +20,7 @@ Verwenden Sie diesen Typ, wenn Sie über ein Angebot auf Azure Marketplace oder 
 
 Wenn Sie mit ARM-Vorlagen nicht vertraut sind, lesen Sie [Was ist Azure Resource Manager?](../azure-resource-manager/management/overview.md) und [Verstehen der Struktur und Syntax von ARM-Vorlagen](../azure-resource-manager/templates/template-syntax.md), um zu erfahren, wie Sie Ihre eigenen Vorlagen erstellen und testen können.
 
-Informationen zu einer **gehosteten** oder **Logik-App** -Testversion finden Sie unter [Was ist eine Testversion?](what-is-test-drive.md)
+Informationen zu einer **gehosteten** oder **Logik-App**-Testversion finden Sie unter [Was ist eine Testversion?](what-is-test-drive.md)
 
 ## <a name="technical-configuration"></a>Technische Konfiguration
 
@@ -28,16 +28,16 @@ Eine Bereitstellungsvorlage enthält alle Azure-Ressourcen, aus denen Ihre Lösu
 
 - **Regionen** (erforderlich): Es gibt derzeit 26 von Azure unterstützte Regionen, in denen Ihre Testversion zur Verfügung gestellt werden kann. In der Regel sollten Sie Ihre Testversion in den Regionen zur Verfügung stellen, in denen Sie die größte Anzahl von Kunden erwarten, damit sie für eine optimale Leistung die nächstgelegene Region auswählen können. Sie müssen sicherstellen, dass in Ihrem Abonnement alle Ressourcen in jeder von Ihnen ausgewählten Region bereitgestellt werden können.
 
-- **Instanzen** : Wählen Sie den Typ („Heiß“ oder „Kalt“) und die Anzahl von verfügbaren Instanzen aus. Diese wird mit der Anzahl der Regionen multipliziert, in denen Ihr Angebot verfügbar ist.
+- **Instanzen**: Wählen Sie den Typ („Heiß“ oder „Kalt“) und die Anzahl von verfügbaren Instanzen aus. Diese wird mit der Anzahl der Regionen multipliziert, in denen Ihr Angebot verfügbar ist.
 
-  - **Heiß** : Dieser Instanztyp wird bereits bereitgestellt, und auf ihn kann in jeder ausgewählten Region zugegriffen werden. Die Kunden haben sofort Zugriff auf Instanzen vom Typ *Heiß* und müssen nicht auf die Bereitstellung warten. Der Nachteil dabei ist, dass diese Instanzen immer unter Ihrem Azure-Abonnement ausgeführt werden, sodass höhere Betriebszeitkosten anfallen. Es wird dringend empfohlen, mindestens eine Instanz des Typs *Heiß* festzulegen, da die meisten Kunden nicht auf eine vollständige Bereitstellung warten möchten. Wenn keine Instanz vom Typ *Heiß* verfügbar ist, nimmt die Verwendung durch die Kunden ab.
+  - **Heiß**: Dieser Instanztyp wird bereits bereitgestellt, und auf ihn kann in jeder ausgewählten Region zugegriffen werden. Die Kunden haben sofort Zugriff auf Instanzen vom Typ *Heiß* und müssen nicht auf die Bereitstellung warten. Der Nachteil dabei ist, dass diese Instanzen immer unter Ihrem Azure-Abonnement ausgeführt werden, sodass höhere Betriebszeitkosten anfallen. Es wird dringend empfohlen, mindestens eine Instanz des Typs *Heiß* festzulegen, da die meisten Kunden nicht auf eine vollständige Bereitstellung warten möchten. Wenn keine Instanz vom Typ *Heiß* verfügbar ist, nimmt die Verwendung durch die Kunden ab.
 
-  - **Kalt** : Dieser Instanztyp stellt die Gesamtzahl von Instanzen dar, die pro Region bereitgestellt werden können. Bei Instanzen des Typs „Kalt“ muss die Bereitstellung der gesamten Resource Manager-Vorlage für die Testversion durchgeführt werden, wenn der Kunde die Testversion anfordert. Daher dauert das Laden von Instanzen des Typs *Kalt* weitaus länger als das Laden von Instanzen des Typs *Heiß*. Sie müssen jedoch nur für die Dauer der Testversion bezahlen. Instanzen vom Typ „Kalt“ werden *nicht* wie Instanzen vom Typ *Heiß* stets im Azure-Abonnement ausgeführt.
+  - **Kalt**: Dieser Instanztyp stellt die Gesamtzahl von Instanzen dar, die pro Region bereitgestellt werden können. Bei Instanzen des Typs „Kalt“ muss die Bereitstellung der gesamten Resource Manager-Vorlage für die Testversion durchgeführt werden, wenn der Kunde die Testversion anfordert. Daher dauert das Laden von Instanzen des Typs *Kalt* weitaus länger als das Laden von Instanzen des Typs *Heiß*. Sie müssen jedoch nur für die Dauer der Testversion bezahlen. Instanzen vom Typ „Kalt“ werden *nicht* wie Instanzen vom Typ *Heiß* stets im Azure-Abonnement ausgeführt.
 
 - **Azure Resource Manager-Vorlage für Testversion:** Laden Sie die ZIP-Datei mit Ihrer Azure Resource Manager-Vorlage hoch. Im Schnellstartartikel [Erstellen und Bereitstellen von Azure Resource Manager-Vorlagen über das Azure-Portal](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md) erhalten Sie weitere Informationen zum Erstellen einer Azure Resource Manager-Vorlage.
 
     > [!note]
-    > Für eine erfolgreiche Veröffentlichung ist es wichtig, die Formatierung der Resource Manager-Vorlage zu überprüfen. Hierfür gibt es zwei Möglichkeiten: (1) Verwendung eines [Online-API-Tools](https://docs.microsoft.com/rest/api/resources/deployments/validate) oder (2) Durchführung einer [Testbereitstellung](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-portal).
+    > Für eine erfolgreiche Veröffentlichung ist es wichtig, die Formatierung der Resource Manager-Vorlage zu überprüfen. Hierfür gibt es zwei Möglichkeiten: (1) Verwendung eines [Online-API-Tools](/rest/api/resources/deployments/validate) oder (2) Durchführung einer [Testbereitstellung](../azure-resource-manager/templates/deploy-portal.md).
 
 - **Dauer der Testversion** (erforderlich): Geben Sie die Anzahl von Stunden ein, für die die Testversion aktiv bleiben soll. Nach Ablauf dieses Zeitraums wird die Testversion automatisch beendet. Verwenden Sie nur ganze Zahlen (z. B. „2“ Stunden ist zulässig, „1,5“ hingegen nicht).
 
@@ -300,16 +300,16 @@ Im letzten Abschnitt werden die Eingaben vorgenommen, um die Testversionen durch
 
    ![Azure-Abonnements](media/test-drive/azure-subscriptions.png)
 
-2. Rufen Sie eine **Azure AD-Mandanten-ID** ab. Wenn Sie bereits über eine Mandanten-ID verfügen, finden Sie sie im Azure-Portal unter **Azure Active Directory** > **Eigenschaften** > **Verzeichnis-ID** :
+2. Rufen Sie eine **Azure AD-Mandanten-ID** ab. Wenn Sie bereits über eine Mandanten-ID verfügen, finden Sie sie im Azure-Portal unter **Azure Active Directory** > **Eigenschaften** > **Verzeichnis-ID**:
 
    ![Azure Active Directory-Eigenschaften](media/test-drive/azure-active-directory-properties.png)
 
    Wenn Sie über keine Mandanten-ID verfügen, erstellen Sie eine neue in Azure Active Directory. Wenn Sie Hilfe bei der Einrichtung benötigen, finden Sie weitere Informationen unter [Schnellstart: Einrichten eines Mandanten](../active-directory/develop/quickstart-create-new-tenant.md).
 
-3. **Azure AD-App-ID** : Erstellen und registrieren Sie eine neue Anwendung. In dieser Anwendung werden Vorgänge in Ihrer Testversionsinstanz ausgeführt.
+3. **Azure AD-App-ID**: Erstellen und registrieren Sie eine neue Anwendung. In dieser Anwendung werden Vorgänge in Ihrer Testversionsinstanz ausgeführt.
 
    1. Navigieren Sie zu dem neu erstellten oder einem bereits vorhandenen Verzeichnis, und wählen Sie Azure Active Directory im Filterbereich aus.
-   2. Suchen Sie **App-Registrierungen** , und wählen Sie **Hinzufügen** aus.
+   2. Suchen Sie **App-Registrierungen**, und wählen Sie **Hinzufügen** aus.
    3. Geben Sie einen Anwendungsnamen an.
    4. Wählen Sie den **Typ** **Web-App/API** aus.
    5. Geben Sie einen beliebigen Wert in der Anmelde-URL an. Dieses Feld wird nicht verwendet.

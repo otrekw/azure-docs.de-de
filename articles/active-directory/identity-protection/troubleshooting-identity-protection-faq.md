@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec45ce7634b7bc0a8f38f354112cdc2e172f1e17
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 6eb63a4a0b7b7fdefd636d3460b182f8d907dd36
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93288367"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96558928"
 ---
 # <a name="frequently-asked-questions-identity-protection-in-azure-active-directory"></a>Häufig gestellte Fragen zu Identity Protection in Azure Active Directory
 
@@ -37,8 +37,8 @@ Wenn Sie ein Azure AD Identity Protection-Kunde sind, wechseln Sie zur Ansicht 
 
 ## <a name="why-was-my-sign-in-blocked-but-identity-protection-didnt-generate-a-risk-detection"></a>Warum wurde meine Anmeldung blockiert, ohne dass Identity Protection eine Risikoerkennung generiert?
 Anmeldungen können aus verschiedenen Gründen blockiert werden. Hierbei ist Folgendes wichtig: Identity Protection generiert nur dann eine Risikoerkennung, wenn bei der Authentifizierungsanforderung korrekte Anmeldeinformationen verwendet werden. Wenn ein Benutzer falsche Anmeldeinformationen verwendet, wird dies von Identity Protection nicht gekennzeichnet, da kein Risiko einer Kompromittierung von Anmeldeinformationen besteht. Ein solches entsteht nur, wenn ein böswilliger Akteur die richtigen Informationen verwendet. Im Folgenden finden Sie einige Gründe, aus denen die Anmeldung eines Benutzers blockiert werden kann, ohne dass Identity Protection eine Erkennung generiert:
-* Eine **IP-Adresse kann blockiert werden** , wenn schädliche Aktivitäten von dieser Adresse erkannt werden. In der Meldung zur Blockierung der IP-Adresse wird nicht unterschieden, ob die Anmeldeinformationen richtig waren oder nicht. Wenn eine IP-Adresse blockiert ist und keine richtigen Anmeldeinformationen verwendet werden, wird keine Identity Protection-Erkennung generiert.
-* **[Smart Lockout](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-smart-lockout)** kann nach mehreren Fehlversuchen die Anmeldung eines Kontos blockieren.
+* Eine **IP-Adresse kann blockiert werden**, wenn schädliche Aktivitäten von dieser Adresse erkannt werden. In der Meldung zur Blockierung der IP-Adresse wird nicht unterschieden, ob die Anmeldeinformationen richtig waren oder nicht. Wenn eine IP-Adresse blockiert ist und keine richtigen Anmeldeinformationen verwendet werden, wird keine Identity Protection-Erkennung generiert.
+* **[Smart Lockout](../authentication/howto-password-smart-lockout.md)** kann nach mehreren Fehlversuchen die Anmeldung eines Kontos blockieren.
 * Es kann eine **Richtlinie für bedingten Zugriff** in Kraft sein, die andere Bedingungen als Risikostufen verwendet, um eine Authentifizierungsanforderung zu blockieren.
 
 ### <a name="how-can-i-get-a-report-of-detections-of-a-specific-type"></a>Wie kann ich einen Bericht mit Erkennungen eines bestimmten Typs abrufen?
@@ -76,15 +76,17 @@ Alle Risikoerkennungen sind im Artikel [Was bedeutet Risiko?](concept-identity-p
 - Darüber hinaus geben wir die Informationen an unsere Machine Learning-Systeme weiter, um die künftige Risikobewertung zu verbessern.
 
     > [!NOTE]
-    > Wenn für den Benutzer bereits eine Bereinigung durchgeführt wurde, klicken Sie nicht auf **Gefährdung bestätigen** , weil dadurch der Anmelde- und Benutzerrisikostatus auf **Als gefährdet bestätigt** und die Risikostufe auf **Hoch** festgelegt wird.
+    > Wenn für den Benutzer bereits eine Bereinigung durchgeführt wurde, klicken Sie nicht auf **Gefährdung bestätigen**, weil dadurch der Anmelde- und Benutzerrisikostatus auf **Als gefährdet bestätigt** und die Risikostufe auf **Hoch** festgelegt wird.
 
 **Sicherheit bestätigen** (bei Anmeldung): Informiert Azure AD Identity Protection darüber, dass die Anmeldung vom Identitätsinhaber durchgeführt wurde und keine Gefährdung vorliegt.
 
 - Nach Erhalt dieses Feedbacks wird der Anmelde- und Benutzerrisikostatus auf **Als sicher bestätigt** und die Risikostufe auf **-** festgelegt.
 
-- Darüber hinaus geben wir die Informationen an unsere Machine Learning-Systeme weiter, um die künftige Risikobewertung zu verbessern.
+- Darüber hinaus geben wir die Informationen an unsere Machine Learning-Systeme weiter, um die künftige Risikobewertung zu verbessern. 
 
     > [!NOTE]
+    >Derzeit reicht die Auswahl von „Sicherheit bestätigen“ bei einer Anmeldung nicht aus, zu verhindern, dass zukünftige Anmeldungen mit denselben Eigenschaften als riskant gekennzeichnet werden. Die beste Möglichkeit, das System zu trainieren, die Eigenschaften eines Benutzers zu erlernen, ist die Verwendung der Richtlinie für riskante Anmeldungen mit MFA. Wenn eine riskante Anmeldung für MFA angefordert wird und der Benutzer erfolgreich auf die Anforderung antwortet, kann die Anmeldung erfolgreich durchgeführt werden und dazu beitragen, das System mit dem Verhalten des legitimen Benutzers zu trainieren.
+    >
     > Wenn Sie davon ausgehen, dass der Benutzer nicht gefährdet ist, verwenden Sie anstelle von **Als sicher bestätigt** auf Anmeldeebene die Option **Benutzerrisiko ignorieren** auf Benutzerebene. Durch **Benutzerrisiko verwerfen** auf Benutzerebene werden das Benutzerrisiko und alle vergangenen riskanten Anmeldungen und Risikoerkennungen geschlossen.
 
 ### <a name="why-am-i-seeing-a-user-with-a-low-or-above-risk-score-even-if-no-risky-sign-ins-or-risk-detections-are-shown-in-identity-protection"></a>Warum sehe ich einen Benutzer mit einer niedrigen (oder höheren) Risikobewertung, auch wenn in Identity Protection keine riskanten Anmeldungen oder Risikoerkennungen angezeigt werden?
@@ -93,8 +95,4 @@ Da das Benutzerrisiko naturgemäß kumulativ zunimmt und nicht abläuft, kann f�
 
 ### <a name="why-does-a-sign-in-have-a-sign-in-risk-aggregate-score-of-high-when-the-detections-associated-with-it-are-of-low-or-medium-risk"></a>Warum liegt die Bewertung „Hoch“ für „Anmelderisiko (aggregiert)“ vor, wenn die zugehörigen Erkennungen ein niedriges oder mittleres Risiko aufweisen?
 
-Die hohe aggregierte Risikobewertung könnte auf anderen Faktoren der Anmeldung oder darauf basieren, dass für diese Anmeldung mehrere Erkennungen ausgelöst wurden. Umgekehrt kann die aggregierte Risikobewertung „Mittel“ vorliegen, obwohl die mit der Anmeldung verknüpften Erkennungen ein hohes Risiko aufweisen. 
-
-### <a name="why-is-the-detection-which-is-linked-to-a-risky-sign-in-have-a-different-risk-level-than-the-sign-in-risk-level-real-time"></a>Warum ist die mit einer riskanten Anmeldung verknüpfte Erkennung eine andere Risikostufe als die Risikostufe der Anmeldung (Echtzeit)? 
-
-Wir haben kürzlich Verbesserungen an der Methode zur Berechnung des Anmelderisikos in Echtzeit vorgenommen. Die zwischen der Risikostufe der Erkennung und der Risikostufe der Anmeldung beobachtete Abweichung ist ein Ergebnis dieser Änderungen. Beachten Sie, dass das Anmelderisiko in Echtzeit der Wert ist, der während der Richtliniendurchsetzung verwendet wird. 
+Die hohe aggregierte Risikobewertung könnte auf anderen Faktoren der Anmeldung oder darauf basieren, dass für diese Anmeldung mehrere Erkennungen ausgelöst wurden. Umgekehrt kann die aggregierte Risikobewertung „Mittel“ vorliegen, obwohl die mit der Anmeldung verknüpften Erkennungen ein hohes Risiko aufweisen.

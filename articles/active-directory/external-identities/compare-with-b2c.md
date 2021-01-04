@@ -12,12 +12,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 420cc2bc38d079fa95f6b90ed20cb31e994f4ea3
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: 6be0720b7eafb251b262d5cd182bdf06e201402d
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93027073"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96173072"
 ---
 # <a name="what-are-external-identities-in-azure-active-directory"></a>Worum handelt es sich bei „Externe Identitäten“ in Azure Active Directory?
 
@@ -51,7 +51,7 @@ Sichern und verwalten Sie Kunden und Partner über die Grenzen Ihrer Organisatio
 
 ## <a name="about-multitenant-applications"></a>Informationen zu mehrinstanzenfähigen Anwendungen
 
-Wenn Sie eine App als Dienst bereitstellen und die Benutzerkonten Ihrer Kunden nicht verwalten möchten, ist eine mehrinstanzenfähige App wahrscheinlich die richtige Wahl für Sie. Wenn Sie für andere Azure AD-Mandanten vorgesehene Anwendungen entwickeln, können Sie sie auf Benutzer aus einer einzelnen Organisation (einzelner Mandant) oder auf Benutzer aus einer beliebigen Organisation ausrichten, die bereits über einen Azure AD-Mandanten verfügt (mehrinstanzenfähige Anwendungen). App-Registrierungen in Azure AD sind standardmäßig Registrierungen mit einem einzelnen Mandanten, können aber mehrinstanzenfähig gemacht werden. Diese mehrinstanzenfähige Anwendung wird von Ihnen einmalig bei Ihrer eigenen Azure AD-Instanz registriert. Danach kann die Anwendung von jedem Azure AD-Benutzer aus einer beliebigen Organisation verwendet werden, ohne dass Sie weitere Schritte ausführen müssen. Weitere Informationen finden Sie unter [Verwalten der Identität in mehrinstanzenfähigen Anwendungen](https://docs.microsoft.com/azure/architecture/multitenant-identity/) sowie unter [Gewusst wie: Anmelden von Azure Active Directory-Benutzern mit dem mehrinstanzenfähigen Anwendungsmuster](../develop/howto-convert-app-to-be-multi-tenant.md).
+Wenn Sie eine App als Dienst bereitstellen und die Benutzerkonten Ihrer Kunden nicht verwalten möchten, ist eine mehrinstanzenfähige App wahrscheinlich die richtige Wahl für Sie. Wenn Sie für andere Azure AD-Mandanten vorgesehene Anwendungen entwickeln, können Sie sie auf Benutzer aus einer einzelnen Organisation (einzelner Mandant) oder auf Benutzer aus einer beliebigen Organisation ausrichten, die bereits über einen Azure AD-Mandanten verfügt (mehrinstanzenfähige Anwendungen). App-Registrierungen in Azure AD sind standardmäßig Registrierungen mit einem einzelnen Mandanten, können aber mehrinstanzenfähig gemacht werden. Diese mehrinstanzenfähige Anwendung wird von Ihnen einmalig bei Ihrer eigenen Azure AD-Instanz registriert. Danach kann die Anwendung von jedem Azure AD-Benutzer aus einer beliebigen Organisation verwendet werden, ohne dass Sie weitere Schritte ausführen müssen. Weitere Informationen finden Sie unter [Verwalten der Identität in mehrinstanzenfähigen Anwendungen](/azure/architecture/multitenant-identity/) sowie unter [Gewusst wie: Anmelden von Azure Active Directory-Benutzern mit dem mehrinstanzenfähigen Anwendungsmuster](../develop/howto-convert-app-to-be-multi-tenant.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

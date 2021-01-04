@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 06/18/2019
 ms.reviewer: dariac
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 9650633e1eaffdb588b3a31cd5a2f305c36e7a25
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 26fd8bc73fad3ea313641fc4b1e0f454ee2c0813
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92741310"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347777"
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>Lokale Git-Bereitstellung in Azure App Service
 
@@ -31,9 +31,9 @@ Ausführen der Schritte in dieser Anleitung:
   git clone https://github.com/Azure-Samples/nodejs-docs-hello-world.git
   ```
 
-[!INCLUDE [Prepare repository](../../includes/app-service-deploy-prepare-repo.md)]
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [Prepare repository](../../includes/app-service-deploy-prepare-repo.md)]
 
 ## <a name="deploy-with-kudu-build-server"></a>Bereitstellen mit Kudu-Buildserver
 
@@ -45,7 +45,7 @@ Die einfachste Möglichkeit zum Aktivieren einer lokalen Git-Bereitstellung für
 
 ### <a name="get-the-deployment-url"></a>Abrufen der Bereitstellungs-URL
 
-Um die URL zum Aktivieren der lokalen Git-Bereitstellung für eine vorhandene App abzurufen, führen Sie [`az webapp deployment source config-local-git`](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config-local-git) in Cloud Shell aus. Ersetzen Sie \<app-name> und \<group-name> durch die Namen Ihrer App und der zugehörigen Azure-Ressourcengruppe.
+Um die URL zum Aktivieren der lokalen Git-Bereitstellung für eine vorhandene App abzurufen, führen Sie [`az webapp deployment source config-local-git`](/cli/azure/webapp/deployment/source#az-webapp-deployment-source-config-local-git) in Cloud Shell aus. Ersetzen Sie \<app-name> und \<group-name> durch die Namen Ihrer App und der zugehörigen Azure-Ressourcengruppe.
 
 ```azurecli-interactive
 az webapp deployment source config-local-git --name <app-name> --resource-group <group-name>
@@ -54,7 +54,7 @@ az webapp deployment source config-local-git --name <app-name> --resource-group 
 > Wenn Sie einen Linux-App Service-Plan verwenden, müssen Sie diesen Parameter hinzufügen: --runtime python|3.7
 
 
-Oder führen Sie zum Erstellen einer neuen Git-fähigen App [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) in Cloud Shell mit dem Parameter `--deployment-local-git` aus. Ersetzen Sie \<app-name>, \<group-name> und \<plan-name> durch die Namen für Ihre neue Git-App, die zugehörige Azure-Ressourcengruppe und den zugehörigen Azure App Service-Plan.
+Oder führen Sie zum Erstellen einer neuen Git-fähigen App [`az webapp create`](/cli/azure/webapp#az-webapp-create) in Cloud Shell mit dem Parameter `--deployment-local-git` aus. Ersetzen Sie \<app-name>, \<group-name> und \<plan-name> durch die Namen für Ihre neue Git-App, die zugehörige Azure-Ressourcengruppe und den zugehörigen Azure App Service-Plan.
 
 ```azurecli-interactive
 az webapp create --name <app-name> --resource-group <group-name> --plan <plan-name> --deployment-local-git
@@ -100,7 +100,7 @@ Wenn Ihr Konto über die erforderlichen Berechtigungen verfügt, können Sie Azu
 
 So aktivieren Sie die lokale Git-Bereitstellung für Ihre App mit Azure Pipelines (Vorschau):
 
-1. Suchen Sie im [Azure-Portal](https://portal.azure.com) nach **App Services** , und wählen Sie den Eintrag aus. 
+1. Suchen Sie im [Azure-Portal](https://portal.azure.com) nach **App Services**, und wählen Sie den Eintrag aus. 
 
 1. Wählen Sie Ihre Azure App Service-App und dann im linken Menü **Bereitstellungscenter** aus.
    
@@ -121,7 +121,7 @@ So aktivieren Sie die lokale Git-Bereitstellung für Ihre App mit Azure Pipeline
    
 1. Überprüfen Sie auf der Seite **Zusammenfassung** die Einstellungen, und wählen Sie **Weiter** aus.
    
-1. Wenn die Azure-Pipeline bereit ist, kopieren Sie die Git-Repository-URL von der Seite **Bereitstellungscenter** , um sie im nächsten Schritt zu verwenden. 
+1. Wenn die Azure-Pipeline bereit ist, kopieren Sie die Git-Repository-URL von der Seite **Bereitstellungscenter**, um sie im nächsten Schritt zu verwenden. 
    
    ![Die Git-Repository-URL kopieren](media/app-service-deploy-local-git/vsts-repo-ready.png)
 
@@ -149,10 +149,10 @@ Möglicherweise werden die folgenden häufigen Fehlermeldungen angezeigt, wenn S
 ---|---|---|
 |`Unable to access '[siteURL]': Failed to connect to [scmAddress]`|Die App wird nicht ordnungsgemäß ausgeführt.|Starten Sie die App im Azure-Portal. Die Git-Bereitstellung ist nicht verfügbar, wenn die Web-App beendet wurde.|
 |`Couldn't resolve host 'hostname'`|Die Adressinformationen für die ‚azure‘-Remotewebsite sind falsch.|Verwenden Sie den Befehl `git remote -v`, um alle Remotewebsites zusammen mit der jeweils zugehörigen URL aufzulisten. Überprüfen Sie, ob die URL für die 'azure'-Remotewebsite korrekt ist. Entfernen Sie diese Remote-Website bei Bedarf und erstellen Sie sie mit der korrekten URL neu.|
-|`No refs in common and none specified; doing nothing. Perhaps you should specify a branch such as 'master'.`|Sie haben während `git push` keinen Branch angegeben, oder Sie haben den Wert `push.default` in `.gitconfig` nicht festgelegt.|Führen Sie `git push` erneut aus, und geben Sie dabei den Masterbranch an: `git push azure master`.|
-|`src refspec [branchname] does not match any.`|Sie haben versucht, einen anderen Branch als „master“ mithilfe von Push in das ‚azure‘-Remoterepository zu übertragen.|Führen Sie `git push` erneut aus, und geben Sie dabei den Masterbranch an: `git push azure master`.|
+|`No refs in common and none specified; doing nothing. Perhaps you should specify a branch such as 'main'.`|Sie haben während `git push` keinen Branch angegeben, oder Sie haben den Wert `push.default` in `.gitconfig` nicht festgelegt.|Führen Sie `git push` erneut aus, und geben Sie dabei den Hauptbranch an: `git push azure master`.|
+|`src refspec [branchname] does not match any.`|Sie haben versucht, einen anderen Branch als den Hauptbranch mithilfe von Push in das „azure“-Remoterepository zu übertragen.|Führen Sie `git push` erneut aus, und geben Sie dabei den Masterbranch an: `git push azure master`.|
 |`RPC failed; result=22, HTTP code = 5xx.`|Dieser Fehler kann auftreten, wenn Sie versuchen, ein großes Git-Repository über HTTPS mithilfe von Push zu übertragen.|Ändern Sie die Git-Konfiguration auf dem lokalen Computer, um den `postBuffer` zu vergrößern. Beispiel: `git config --global http.postBuffer 524288000`.|
-|`Error - Changes committed to remote repository but your web app not updated.`|Sie haben eine Node.js-App mit einer Datei von Typ _package.json_ bereitgestellt, die zusätzliche erforderliche Module angibt.|Überprüfen Sie die Fehlermeldungen vom Typ `npm ERR!` vor diesem Fehler, um mehr Kontext zu erhalten. Es folgen die bekannten Ursachen für diesen Fehler und die entsprechenden Meldungen vom Typ `npm ERR!`:<br /><br />**Falsch formatierte „package.json“-Datei** : `npm ERR! Couldn't read dependencies.`<br /><br />**Systemeigenes Modul verfügt über keine binäre Verteilung für Windows** :<br />`npm ERR! \cmd "/c" "node-gyp rebuild"\ failed with 1` <br />oder <br />`npm ERR! [modulename@version] preinstall: \make || gmake\ `|
+|`Error - Changes committed to remote repository but your web app not updated.`|Sie haben eine Node.js-App mit einer Datei von Typ _package.json_ bereitgestellt, die zusätzliche erforderliche Module angibt.|Überprüfen Sie die Fehlermeldungen vom Typ `npm ERR!` vor diesem Fehler, um mehr Kontext zu erhalten. Es folgen die bekannten Ursachen für diesen Fehler und die entsprechenden Meldungen vom Typ `npm ERR!`:<br /><br />**Falsch formatierte „package.json“-Datei**: `npm ERR! Couldn't read dependencies.`<br /><br />**Systemeigenes Modul verfügt über keine binäre Verteilung für Windows**:<br />`npm ERR! \cmd "/c" "node-gyp rebuild"\ failed with 1` <br />oder <br />`npm ERR! [modulename@version] preinstall: \make || gmake\ `|
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

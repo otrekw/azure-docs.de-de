@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/31/2020
 ms.author: trbye
-ms.openlocfilehash: 5685a2553b95308a1c18c3e490737338f609b594
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.openlocfilehash: 7d4d1acac591bfe6ce40efcf6166357d43718363
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94330936"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024958"
 ---
 # <a name="improve-synthesis-with-the-audio-content-creation-tool"></a>Verbessern der Synthese mit dem Audioinhaltserstellungs-Tool
 
@@ -33,13 +33,13 @@ Audioinhaltserstellung ist ein kostenloses Tool, die Nutzung des in Anspruch gen
 
 ### <a name="step-1---create-an-azure-account"></a>Schritt 1: Erstellen eines Azure-Kontos
 
-Für das Arbeiten mit der Audioinhaltserstellung benötigen Sie ein [Microsoft-Konto](https://account.microsoft.com/account) und ein [Azure-Konto](https://azure.microsoft.com/free/ai/). Befolgen Sie diese Anweisungen, um [das Konto einzurichten](get-started.md#new-resource). 
+Für das Arbeiten mit der Audioinhaltserstellung benötigen Sie ein [Microsoft-Konto](https://account.microsoft.com/account) und ein [Azure-Konto](https://azure.microsoft.com/free/ai/). Befolgen Sie diese Anweisungen, um [das Konto einzurichten](./overview.md#try-the-speech-service-for-free). 
 
 Das [Azure-Portal](https://portal.azure.com/) ist der zentrale Ort zum Verwalten Ihres Azure-Kontos. Sie können die Sprachressource erstellen, den Zugriff auf das Produkt verwalten und alles von einfachen Web-Apps bis zu komplexen Cloudbereitstellungen überwachen. 
 
 ### <a name="step-2---create-a-speech-resource"></a>Schritt 2: Erstellen einer Speech-Ressource
 
-Nachdem Sie sich für das Azure-Konto registriert haben, müssen Sie eine Speech-Ressource unter Ihrem Azure-Konto erstellen, um auf die Speech-Dienste zuzugreifen. Sehen Sie sich die Anweisungen zum [Erstellen einer Speech-Ressource](https://docs.microsoft.com/azure/cognitive-services/speech-service/overview#create-the-azure-resource) an. 
+Nachdem Sie sich für das Azure-Konto registriert haben, müssen Sie eine Speech-Ressource unter Ihrem Azure-Konto erstellen, um auf die Speech-Dienste zuzugreifen. Sehen Sie sich die Anweisungen zum [Erstellen einer Speech-Ressource](./overview.md#create-the-azure-resource) an. 
 
 Es dauert einen Moment, bis die neue Speech-Ressource bereitgestellt wird. Sobald die Bereitstellung abgeschlossen ist können Sie Ihre Reise in der Audioinhaltserstellung antreten. 
 
@@ -49,7 +49,7 @@ Es dauert einen Moment, bis die neue Speech-Ressource bereitgestellt wird. Sobal
 ### <a name="step-3---log-into-the-audio-content-creation-with-your-azure-account-and-speech-resource"></a>Schritt 3: Anmelden bei der Audioinhaltserstellung mit Ihrem Azure-Konto und der Speech-Ressource
 
 1. Nachdem Sie das Azure-Konto und die Speech-Ressource erhalten haben, können Sie sich bei der [Audioinhaltserstellung](https://aka.ms/audiocontentcreation) anmelden, indem Sie auf **Erste Schritte** klicken.
-2. Die **Speech-Ressource** wird angezeigt. Wählen Sie die Speech-Ressource aus, mit der Sie arbeiten möchten. Klicken Sie auf **Zu Studio wechseln** , um mit Ihrer Audioerstellung zu beginnen. Sie können hier auch eine neue Speech-Ressource erstellen, indem Sie auf **Neu erstellen** klicken. Bei Ihrer nächsten Anmeldung beim Audioinhaltserstellungs-Tool stellen wir eine direkte Verknüpfung Ihres Kontos mit den Audioarbeitsdateien unter der aktuellen Sprachressource her. 
+2. Die **Speech-Ressource** wird angezeigt. Wählen Sie die Speech-Ressource aus, mit der Sie arbeiten möchten. Klicken Sie auf **Zu Studio wechseln**, um mit Ihrer Audioerstellung zu beginnen. Sie können hier auch eine neue Speech-Ressource erstellen, indem Sie auf **Neu erstellen** klicken. Bei Ihrer nächsten Anmeldung beim Audioinhaltserstellungs-Tool stellen wir eine direkte Verknüpfung Ihres Kontos mit den Audioarbeitsdateien unter der aktuellen Sprachressource her. 
 3. Sie können Ihre Speech-Ressource jederzeit ändern, indem Sie im oberen Navigationsbereich die Option **Einstellungen** auswählen.
 
 ## <a name="how-to-use-the-tool"></a>So verwenden Sie das Tool:
@@ -63,7 +63,7 @@ Das folgende Diagramm zeigt die erforderlichen Schritte zum Optimieren der Sprac
 2. [Erstellen Sie eine Datei zur Audiooptimierung](#create-an-audio-tuning-file) als Nur-Text- oder SSML-Skript. Geben Sie Ihre Inhalte in der Audioinhaltserstellung ein.
 3. Wählen Sie die Stimme und die Sprache für Ihren Skriptinhalt aus. Audio Content Creation umfasst alle [Stimmen der Microsoft-Sprachsynthese](language-support.md#text-to-speech). Sie können eine Standardstimme, eine neuronale Stimme oder Ihre eigene benutzerdefinierte Stimme verwenden.
    >[!NOTE]
-   > Der Zugriff auf benutzerdefinierte neuronale Stimmen ist nur eingeschränkt möglich. Hiermit können Sie High-Definition-Stimmen erstellen, die wie natürliche Stimmen klingen. Weitere Einzelheiten finden Sie unter [Zulassung](https://aka.ms/ignite2019/speech/ethics).
+   > Der Zugriff auf benutzerdefinierte neuronale Stimmen ist nur eingeschränkt möglich. Hiermit können Sie High-Definition-Stimmen erstellen, die wie natürliche Stimmen klingen. Weitere Einzelheiten finden Sie unter [Zulassung](./text-to-speech.md).
 
 4. Klicken Sie auf das Symbol **Wiedergeben** (ein Dreieck), um eine Vorschau der Standardausgabe der Synthese wiederzugeben. Verbessern Sie dann die Ausgabe, indem Sie Aussprache, Pausen, Tonhöhe, Geschwindigkeit, Intonation, Sprachstil usw. anpassen. Eine umfassende Liste der Optionen finden Sie unter [Markupsprache für Sprachsynthese](speech-synthesis-markup.md). In [diesem Video](https://www.youtube.com/watch?v=O1wIJ7mts_w) wird gezeigt, wie Sie die Sprachausgabe mit Audio Content Creation optimieren. 
 5. Speichern und [exportieren Sie die optimierten Audiodaten](#export-tuned-audio). Nachdem Sie die Optimierungsspur im System gespeichert haben, können Sie die Ausgabe weiter bearbeiten. Wenn Sie mit der Ausgabe zufrieden sind, können Sie mit der Exportfunktion eine Aufgabe zur Audioerstellung erstellen. Sie können den Status der Exportaufgabe beobachten und die Ausgabe für die Verwendung in Ihren Apps und Produkten herunterladen.
@@ -80,7 +80,7 @@ Es gibt zwei Möglichkeiten, Ihre Inhalte in das Audio Content Creation-Tool zu 
 
 **Option 2:**
 
-1. Klicken Sie auf **Hochladen** , um Textdateien zu importieren. Sowohl Nur-Text als auch SSML werden unterstützt. Wenn die Skriptdatei mehr als 20.000 Zeichen umfasst, teilen Sie die Datei nach Absätzen, Zeichen oder regulären Ausdrücken. 
+1. Klicken Sie auf **Hochladen**, um Textdateien zu importieren. Sowohl Nur-Text als auch SSML werden unterstützt. Wenn die Skriptdatei mehr als 20.000 Zeichen umfasst, teilen Sie die Datei nach Absätzen, Zeichen oder regulären Ausdrücken. 
 3. Stellen Sie beim Hochladen Ihrer Textdateien sicher, dass die Datei die folgenden Anforderungen erfüllt:
 
    | Eigenschaft | Wert/Hinweise |
@@ -110,7 +110,7 @@ Welcome to use Audio Content Creation to customize audio output for your product
 
 Nachdem Sie Ihre Audioausgabe überprüft haben und mit der Optimierung und den Anpassungen zufrieden sind, können Sie die Audiodatei exportieren.
 
-1. Klicken Sie auf **Exportieren** , um eine Aufgabe zur Audioerstellung zu erstellen. Der **Export in eine Audiobibliothek** wird empfohlen, da dadurch die lange Audioausgabe und die gesamten Audioausgabefunktionen unterstützt werden. Sie können die Audiodaten auch direkt auf den lokalen Datenträger herunterladen, allerdings sind nur die ersten zehn Minuten verfügbar.
+1. Klicken Sie auf **Exportieren**, um eine Aufgabe zur Audioerstellung zu erstellen. Der **Export in eine Audiobibliothek** wird empfohlen, da dadurch die lange Audioausgabe und die gesamten Audioausgabefunktionen unterstützt werden. Sie können die Audiodaten auch direkt auf den lokalen Datenträger herunterladen, allerdings sind nur die ersten zehn Minuten verfügbar.
 2. Wählen Sie das Ausgabeformat für die Audiooptimierung aus. Eine Liste der unterstützten Formate und Abtastraten finden Sie unten.
 3. Sie können den Status der Aufgabe auf der Registerkarte der **Exportaufgabe** anzeigen. Wenn die Aufgabe zu einem Fehler führt, finden Sie auf der Seite mit den ausführlichen Informationen einen vollständigen Bericht.
 4. Wenn die Aufgabe abgeschlossen wurde, steht Ihre Audiodatei auf der Registerkarte **Audio Library** (Audiobibliothek) zum Download zur Verfügung.
@@ -131,12 +131,12 @@ Wenn mehrere Benutzer die Audioinhaltserstellung verwenden möchten, können Sie
 
 Führen Sie diese Schritte aus, um einen Benutzer zu einer Sprachressource hinzuzufügen, damit er/sie die Audioinhaltserstellung verwenden kann.
 
-1. Suchen Sie im [Azure-Portal](https://portal.azure.com/) nach **Cognitive Services** , und wählen Sie die Sprachressource aus, der Sie Benutzer hinzufügen möchten.
-2. Klicken Sie auf **Zugriffssteuerung (IAM)** . Klicken Sie auf die Registerkarte **Rollenzuweisungen** , um alle Rollenzuweisungen für dieses Abonnement anzuzeigen.
+1. Suchen Sie im [Azure-Portal](https://portal.azure.com/) nach **Cognitive Services**, und wählen Sie die Sprachressource aus, der Sie Benutzer hinzufügen möchten.
+2. Klicken Sie auf **Zugriffssteuerung (IAM)** . Klicken Sie auf die Registerkarte **Rollenzuweisungen**, um alle Rollenzuweisungen für dieses Abonnement anzuzeigen.
     :::image source="media/audio-content-creation/access-control-roles.png" alt-text="Registerkarte „Rollenzuweisung“":::
-1. Klicken Sie auf **Hinzufügen** > **Rollenzuweisung hinzufügen** , um den Bereich „Rollenzuweisung hinzufügen“ zu öffnen. Wählen Sie in der Dropdownliste „Rolle“ die Rolle **Cognitive Service-Benutzer** aus. Wenn Sie den Benutzer zum Besitzer dieser Sprachressource machen möchten, können Sie die Rolle **Besitzer** auswählen.
+1. Klicken Sie auf **Hinzufügen** > **Rollenzuweisung hinzufügen**, um den Bereich „Rollenzuweisung hinzufügen“ zu öffnen. Wählen Sie in der Dropdownliste „Rolle“ die Rolle **Cognitive Service-Benutzer** aus. Wenn Sie den Benutzer zum Besitzer dieser Sprachressource machen möchten, können Sie die Rolle **Besitzer** auswählen.
 1. Wählen Sie in der Liste einen Benutzer aus. Wenn Sie den Benutzer nicht in der Liste sehen, können Sie ihn im Feld „Auswählen“ eingeben, um das Verzeichnis nach Anzeigenamen und E-Mail-Adressen zu durchsuchen. Wenn sich der Benutzer nicht im Verzeichnis befindet, können Sie das [Microsoft-Konto](https://account.microsoft.com/account) des Benutzers eingeben (das in Azure Active Directory als vertrauenswürdig eingestuft ist).
-1. Klicken Sie auf **Speichern** , um die Rolle zuzuweisen. Nach einigen Augenblicken wird dem Benutzer die Rolle Cognitive Service-Benutzer im Umfang der Sprachressource zugewiesen.
+1. Klicken Sie auf **Speichern**, um die Rolle zuzuweisen. Nach einigen Augenblicken wird dem Benutzer die Rolle Cognitive Service-Benutzer im Umfang der Sprachressource zugewiesen.
 
     :::image source="media/audio-content-creation/add-role-first.png" alt-text="Dialogfeld „Rolle hinzufügen“":::
 
@@ -145,8 +145,8 @@ Führen Sie diese Schritte aus, um einen Benutzer zu einer Sprachressource hinzu
 Benutzer, die sich in der gleichen Sprachressource befinden, sehen ihre Arbeit gegenseitig im Audioinhaltserstellungs-Studio. Wenn Sie möchten, dass jeder einzelne Benutzer über einen einzelnen und privaten Arbeitsbereich in der Audioinhaltserstellung verfügt, erstellen Sie [eine neue Sprachressource](#step-2---create-a-speech-resource) für jeden Benutzer, und geben Sie jedem Benutzer den eindeutigen Zugriff auf die Sprachressource. 
 
 ### <a name="remove-users-from-a-speech-resource"></a>Entfernen von Benutzern aus einer Sprachressource
-1. Suchen Sie im Azure-Portal nach **Cognitive Services** , und wählen Sie die Sprachressource aus, aus der Sie Benutzer entfernen möchten.
-2. Klicken Sie auf **Zugriffssteuerung (IAM)** . Klicken Sie auf die Registerkarte **Rollenzuweisungen** , um alle Rollenzuweisungen für die betreffende Sprachressource anzuzeigen.
+1. Suchen Sie im Azure-Portal nach **Cognitive Services**, und wählen Sie die Sprachressource aus, aus der Sie Benutzer entfernen möchten.
+2. Klicken Sie auf **Zugriffssteuerung (IAM)** . Klicken Sie auf die Registerkarte **Rollenzuweisungen**, um alle Rollenzuweisungen für die betreffende Sprachressource anzuzeigen.
 3. Wählen Sie die Benutzer aus, die Sie entfernen möchten, und klicken Sie auf **Entfernen** > **Ok**.
     :::image source="media/audio-content-creation/remove-user.png" alt-text="Schaltfläche „Entfernen“":::
 
@@ -160,7 +160,7 @@ Wenn einer der Benutzer imstande sein soll, anderen Benutzern Zugriff zu erteile
 
 ## <a name="see-also"></a>Weitere Informationen
 
-* [API für lange Audioinhalte](https://aka.ms/long-audio-api)
+* [API für lange Audioinhalte](./long-audio-api.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

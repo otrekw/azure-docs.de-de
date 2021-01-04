@@ -6,18 +6,18 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.custom: how-to, contperfq1, data4ml
+ms.custom: how-to, contperf-fy21q1, data4ml
 ms.author: sihhu
 author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 07/31/2020
-ms.openlocfilehash: f82c3b894a54dc08b0f6dd73108d6f4b2c17f8d6
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 28e70a5d5a6ac4cd51f5ed3fc85afd47a5af68d8
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93359832"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033271"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Erstellen von Azure Machine Learning-Datasets
 
@@ -124,7 +124,7 @@ mnist_ds = Dataset.File.from_files(path=web_paths)
 [Registrieren Sie Ihr Dataset](#register-datasets), um Datasets in Ihrem Arbeitsbereich experimentübergreifend wiederverwenden und freigeben zu können. 
 
 > [!TIP] 
-> Laden Sie Dateien aus einem lokalen Verzeichnis hoch, und erstellen Sie ein FileDataset-Element in einer einzelnen Methode mit der öffentlichen Vorschaumethode [upload_directory()](/python/api/azureml-core/azureml.data.filedataset?preserve-view=true&view=azure-ml-py#methods). Diese Methode ist eine [experimentelle](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py#stable-vs-experimental) Previewfunktion und kann jederzeit geändert werden. 
+> Laden Sie Dateien aus einem lokalen Verzeichnis hoch, und erstellen Sie ein FileDataset-Element in einer einzelnen Methode mit der öffentlichen Vorschaumethode [upload_directory()](/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory?preserve-view=true&view=azure-ml-py#upload-directory-src-dir--target--pattern-none--overwrite-false--show-progress-true-). Diese Methode ist eine [experimentelle](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py#stable-vs-experimental) Previewfunktion und kann jederzeit geändert werden. 
 > 
 >  Mit dieser Methode werden Daten in den zugrunde liegenden Speicher hochgeladen, was zu Speicherkosten führt. 
 ### <a name="create-a-tabulardataset"></a>Erstellen eines TabularDataset-Elements
@@ -208,7 +208,7 @@ dataset = Dataset.Tabular.from_delimited_files(path = [(datastore, ('data/prepar
 ```
 
 > [!TIP]
-> Erstellen und registrieren Sie ein TabularDataset-Element aus einem In-Memory-Spark- oder -Pandas-Datenrahmen mit einer einzelnen Methode mithilfe der öffentlichen Vorschaumethoden [`register_spark_dataframe()`](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py#methods) und [`register_pandas_dataframe()`](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py#methods). Diese Registrierungsmethoden sind [experimentelle](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py#stable-vs-experimental) Previewfunktionen und können jederzeit geändert werden. 
+> Erstellen und registrieren Sie ein TabularDataset-Element aus einem In-Memory-Spark- oder -Pandas-Datenrahmen mit einer einzelnen Methode mithilfe der öffentlichen Vorschaumethoden [`register_spark_dataframe()`](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?preserve-view=true&view=azure-ml-py#methods) und [`register_pandas_dataframe()`](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?preserve-view=true&view=azure-ml-py#methods). Diese Registrierungsmethoden sind [experimentelle](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py#stable-vs-experimental) Previewfunktionen und können jederzeit geändert werden. 
 > 
 >  Mit ihnen werden Daten in den zugrunde liegenden Speicher hochgeladen, was zu Speicherkosten führt. 
 

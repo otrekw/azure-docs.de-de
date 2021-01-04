@@ -10,12 +10,12 @@ author: sdgilley
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, fasttrack-edit
-ms.openlocfilehash: 2c9d00f1d78d2dea46d4ff4a08433360e00c7b9d
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 4425fdf488665ad555c73c59682041cb23a9ca66
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445624"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96447332"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces"></a>Erstellen und Verwalten von Azure Machine Learning-Arbeitsbereichen 
 
@@ -27,6 +27,10 @@ Wenn sich Ihre Anforderungen ändern oder die Anforderungen an die Automatisieru
 
 * Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://aka.ms/AMLFree) noch heute aus.
 * Wenn Sie das Python SDK verwenden, [installieren Sie das SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py).
+
+## <a name="limitations"></a>Einschränkungen
+
+[!INCLUDE [register-namespace](../../includes/machine-learning-register-namespace.md)]
 
 ## <a name="create-a-workspace"></a>Erstellen eines Arbeitsbereichs
 
@@ -131,8 +135,12 @@ Wenn Sie Probleme beim Zugriff auf Ihr Abonnement haben, finden Sie weitere Info
    Subscription |Wählen Sie das gewünschte Azure-Abonnement aus.
    Resource group | Verwenden Sie eine vorhandene Ressourcengruppe in Ihrem Abonnement, oder geben Sie einen Namen ein, um eine neue Ressourcengruppe zu erstellen. Eine Ressourcengruppe enthält verwandte Ressourcen für eine Azure-Lösung. In diesem Beispiel verwenden wir **docs-aml**. Die Rolle *Mitwirkender* oder *Besitzer* ist für die Verwendung einer vorhandenen Ressourcengruppe erforderlich.  Weitere Informationen zum Zugriff finden Sie unter [Verwalten des Zugriffs auf einen Azure Machine Learning-Arbeitsbereich](how-to-assign-roles.md).
    Region | Wählen Sie die Azure-Region aus, die Ihren Benutzern und den Datenressourcen am nächsten ist, um Ihren Arbeitsbereich zu erstellen.
+   | Speicherkonto | Das Standardspeicherkonto für den Arbeitsbereich. Standardmäßig wird ein neues erstellt. |
+   | Key Vault | Die Azure Key Vault-Instanz, die vom Arbeitsbereich verwendet wird. Standardmäßig wird eine neue erstellt. |
+   | Application Insights | Die Application Insights-Instanz für den Arbeitsbereich. Standardmäßig wird eine neue erstellt. |
+   | Container Registry | Die Azure Container Registry-Instanz für den Arbeitsbereich. Standardmäßig wird _keine_ neue anfänglich für den Arbeitsbereich erstellt. Stattdessen wird sie einmal erstellt, sobald Sie sie benötigen, wenn Sie während Training oder Bereitstellung ein Docker-Image erstellen. |
 
-    ![Konfigurieren des Arbeitsbereichs](./media/how-to-manage-workspace/create-workspace-form.png)
+   :::image type="content" source="media/how-to-manage-workspace/create-workspace-form.png" alt-text="Konfigurieren Sie Ihren Arbeitsbereich.":::
 
 1. Wählen Sie **Überprüfen + erstellen** aus, nachdem die Konfiguration des Arbeitsbereichs abgeschlossen ist. Verwenden Sie optional die Abschnitte [Netzwerk](#networking) und [Erweitert](#advanced), um weitere Einstellungen für den Arbeitsbereich zu konfigurieren.
 
@@ -163,7 +171,7 @@ Das Azure Machine Learning Python SDK bietet die Klasse [PrivateEndpointConfig](
 
    :::image type="content" source="media/how-to-manage-workspace/select-private-endpoint.png" alt-text="Auswahl des privaten Endpunkts":::  
 
-1. Legen Sie im Formular __Privaten Endpunkt erstellen__ den Speicherort, den Namen und das zu verwendende virtuelle Netzwerk fest. Wenn Sie den Endpunkt mit einer privaten DNS-Zone verwenden möchten, klicken Sie auf __In private DNS-Zone integrieren__ , und wählen Sie im Feld __Private DNS-Zone__ die gewünschte Zone aus. Klicken Sie auf __OK__ , um den Endpunkt zu erstellen.   
+1. Legen Sie im Formular __Privaten Endpunkt erstellen__ den Speicherort, den Namen und das zu verwendende virtuelle Netzwerk fest. Wenn Sie den Endpunkt mit einer privaten DNS-Zone verwenden möchten, klicken Sie auf __In private DNS-Zone integrieren__, und wählen Sie im Feld __Private DNS-Zone__ die gewünschte Zone aus. Klicken Sie auf __OK__, um den Endpunkt zu erstellen.   
 
    :::image type="content" source="media/how-to-manage-workspace/create-private-endpoint.png" alt-text="Erstellen des privaten Endpunkts":::   
 
@@ -181,7 +189,7 @@ Wenn Sie einen privaten Endpunkt erstellen, wird eine neue private DNS-Zone name
 
 1. Wählen Sie im [Azure-Portal](https://portal.azure.com) die Ressourcengruppe aus, die den Arbeitsbereich enthält. Wählen Sie dann die Ressource namens __privatelink.api.azureml.ms__ für die private DNS-Zone aus.
 2. Klicken Sie unter __Einstellungen__ auf __VNET-Verknüpfungen__.
-3. Wählen Sie __Hinzufügen__. Geben Sie auf der Seite __VNET-Verknüpfung hinzufügen__ einen eindeutigen __Linknamen__ an, und wählen Sie dann das __virtuelle Netzwerk__ aus, das hinzugefügt werden soll. Klicken Sie auf __OK__ , um die Netzwerkverknüpfung hinzuzufügen.
+3. Wählen Sie __Hinzufügen__. Geben Sie auf der Seite __VNET-Verknüpfung hinzufügen__ einen eindeutigen __Linknamen__ an, und wählen Sie dann das __virtuelle Netzwerk__ aus, das hinzugefügt werden soll. Klicken Sie auf __OK__, um die Netzwerkverknüpfung hinzuzufügen.
 
 Weitere Informationen finden Sie unter [DNS-Konfiguration für private Azure-Endpunkte](../private-link/private-endpoint-dns.md).
 
@@ -191,7 +199,7 @@ Azure Security Center bietet einheitliche Funktionen für die Sicherheitsverwalt
 
 ### <a name="advanced"></a>Erweitert
 
-Standardmäßig werden Metriken und Metadaten für den Arbeitsbereich in einer Azure Cosmos DB-Instanz gespeichert, die von Microsoft verwaltet wird. Diese Daten werden mit von Microsoft verwalteten Schlüsseln verschlüsselt.
+Standardmäßig werden Metadaten für den Arbeitsbereich in einer Azure Cosmos DB-Instanz gespeichert, die von Microsoft verwaltet wird. Diese Daten werden mit von Microsoft verwalteten Schlüsseln verschlüsselt.
 
 Wählen Sie __Arbeitsbereich mit hohen geschäftlichen Auswirkungen__ im Portal aus oder legen Sie `hbi_workspace=true ` in Python fest, um die von Microsoft in Ihrem Arbeitsbereich gesammelten Daten zu beschränken. Weitere Informationen zu dieser Einstellung finden Sie unter [Verschlüsselung ruhender Daten](concept-data-encryption.md#encryption-at-rest).
 
@@ -200,7 +208,7 @@ Wählen Sie __Arbeitsbereich mit hohen geschäftlichen Auswirkungen__ im Portal 
 
 #### <a name="use-your-own-key"></a>Eigenen Schlüssel verwenden
 
-Sie können einen eigenen Schlüssel für die Datenverschlüsselung bereitstellen. Hierdurch wird die Azure Cosmos DB-Instanz erstellt, die Metriken und Metadaten in Ihrem Azure-Abonnement speichert.
+Sie können einen eigenen Schlüssel für die Datenverschlüsselung bereitstellen. Damit wird die Azure Cosmos DB-Instanz erstellt, die Metadaten in Ihrem Azure-Abonnement speichert.
 
 [!INCLUDE [machine-learning-customer-managed-keys.md](../../includes/machine-learning-customer-managed-keys.md)]
 
@@ -242,7 +250,7 @@ from azureml.core import Workspace
 
     :::image type="content" source="media/how-to-manage-workspace/advanced-workspace.png" alt-text="Kundenseitig verwaltete Schlüssel":::
 
-1. Wählen Sie im Formular __Schlüssel aus Azure Key Vault auswählen__ eine vorhandene Azure Key Vault-instanz, einen darin enthaltenen Schlüssel sowie die Schlüsselversion aus. Dieser Schlüssel wird zum Verschlüsseln der in Azure Cosmos DB gespeicherten Daten verwendet. Klicken Sie abschließend auf die Schaltfläche __Auswählen__ , um diesen Schlüssel zu verwenden.
+1. Wählen Sie im Formular __Schlüssel aus Azure Key Vault auswählen__ eine vorhandene Azure Key Vault-instanz, einen darin enthaltenen Schlüssel sowie die Schlüsselversion aus. Dieser Schlüssel wird zum Verschlüsseln der in Azure Cosmos DB gespeicherten Daten verwendet. Klicken Sie abschließend auf die Schaltfläche __Auswählen__, um diesen Schlüssel zu verwenden.
 
    :::image type="content" source="media/how-to-manage-workspace/select-key-vault.png" alt-text="Auswählen des Schlüssels":::
 

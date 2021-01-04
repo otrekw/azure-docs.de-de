@@ -1,7 +1,7 @@
 ---
 title: Überwachen und Erfassen von Daten von Machine Learning-Webdienst-Endpunkten
 titleSuffix: Azure Machine Learning
-description: Überwachen Sie Webdienste, die mit Azure Machine Learning bereitgestellt werden, mithilfe von Azure Application Insights.
+description: Erfahren Sie, wie Sie Daten von Modellen erfassen, die in Webdienst-Endpunkten in Azure Kubernetes Service (AKS) oder Azure Container Instances (ACI) bereitgestellt wurden.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ author: blackmist
 ms.date: 09/15/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, data4ml
-ms.openlocfilehash: 1f02c9b080b87b4fbffcd1870dd139b9d32de0c7
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 5d49a88b89f9e2f4e2c2e6fa8ef18a01c803e3f7
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93357670"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94536590"
 ---
 # <a name="monitor-and-collect-data-from-ml-web-service-endpoints"></a>Überwachen und Erfassen von Daten von ML-Webdienst-Endpunkten
 
@@ -143,7 +143,7 @@ Verwenden Sie den folgenden Code, um Azure Application Insights zu deaktivieren:
 Sie können Azure Application Insights auch in Azure Machine Learning Studio aktivieren. Sobald Ihr Modell als Webdienst bereitgestellt werden kann, führen Sie die folgenden Schritte aus, um Application Insights zu aktivieren:
 
 1. Melden Sie sich unter https://ml.azure.com bei Studio an.
-1. Navigieren Sie zu **Modelle** , und wählen Sie das bereitzustellende Modell aus.
+1. Navigieren Sie zu **Modelle**, und wählen Sie das bereitzustellende Modell aus.
 1. Wählen Sie **+ Bereitstellen** aus.
 1. Füllen Sie das Formular **Modell bereitstellen** aus.
 1. Erweitern Sie das Menü **Erweitert**.

@@ -10,14 +10,14 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
-ms.custom: contperfq1
+ms.custom: contperf-fy21q1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ed8d645c5bedf6df087fa9c948415c6a1df24e9
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 242e0e4614994c30d0a14b8fe3d7a5c2b217bb5a
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92783180"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033339"
 ---
 # <a name="what-is-identity-protection"></a>Was ist Identity Protection?
 
@@ -59,7 +59,7 @@ Identity Protection identifiziert Risiken in folgenden Klassifizierungen:
 
 Weitere Informationen zu diesen Risiken sowie zu deren Berechnung finden Sie im Artikel [Was bedeutet Risiko?](concept-identity-protection-risks.md).
 
-Die Risikosignale können Korrekturmaßnahmen zur Folge haben, die unter Umständen dazu führen, dass Benutzer die Azure Multi-Factor Authentication verwenden oder ihr Kennwort per Self-Service-Kennwortzurücksetzung zurücksetzen müssen oder blockiert werden, bis ein Administrator aktiv wird.
+Die Risikosignale können Korrekturmaßnahmen zur Folge haben, die unter Umständen dazu führen, dass Benutzer die Azure AD Multi-Factor Authentication verwenden oder ihr Kennwort per Self-Service-Kennwortzurücksetzung zurücksetzen müssen oder blockiert werden, bis ein Administrator aktiv wird.
 
 ## <a name="risk-investigation"></a>Risikountersuchung
 

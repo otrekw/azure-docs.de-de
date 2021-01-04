@@ -302,5 +302,5 @@ Nachdem Sie sich nun mit den Grundlagen von Queue Storage vertraut gemacht haben
 - [REST-API für Azure-Speicherdienste](/rest/api/storageservices/)
 
 [Azure Queue Storage-Clientbibliothek für Python]: https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-queue
-[Azure-SDK für Python]: https://github.com/azure/azure-sdk-for-python
+[Azure SDK für Python]: https://github.com/azure/azure-sdk-for-python
 [Azure Storage Team Blog]: https://techcommunity.microsoft.com/t5/azure-storage/bg-p/AzureStorageBlog

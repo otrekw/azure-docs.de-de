@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: f91928812dd2f9f850b5e4c3af16ce5c82608e05
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 90e215ea445c8c700e351149e9c7a91d9a595252
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371051"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96859520"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>Referenzleitfaden zur Authentifizierungsverwaltung von Azure Active Directory-Vorgänge
 
@@ -95,7 +95,7 @@ Kennwörter allein sind nicht sicher genug, um böswillige Akteure davon abzuhal
 
 ### <a name="on-premises-outage-authentication-resiliency"></a>Lokale Authentifizierungsresilienz für Ausfälle
 
-Abgesehen von der Einfachheit und der Aktivierung der Ermittlung kompromittierter Anmeldeinformationen, bieten die Azure AD-Kennworthashsynchronisierung und Azure MFA Benutzern die vorteilhafte Möglichkeit, trotz Ausfällen aufgrund von Cyberangriffen wie [NotPetya](https://www.microsoft.com/security/blog/2018/02/05/overview-of-petya-a-rapid-cyberattack/) auf SaaS-Anwendungen und Microsoft 365 zugreifen zu können. Es ist auch möglich, die Kennworthashsynchronisierung im Zusammenhang mit Verbunddiensten zu aktivieren. Das Aktivieren der Kennworthashsynchronisierung ermöglicht ein Fallback für die Authentifizierung, wenn Verbunddienste nicht verfügbar sind.
+Abgesehen von der Einfachheit und der Aktivierung der Ermittlung kompromittierter Anmeldeinformationen, bieten die Azure AD-Kennworthashsynchronisierung und Azure AD MFA Benutzern die vorteilhafte Möglichkeit, trotz Ausfällen aufgrund von Cyberangriffen wie [NotPetya](https://www.microsoft.com/security/blog/2018/02/05/overview-of-petya-a-rapid-cyberattack/) auf SaaS-Anwendungen und Microsoft 365 zugreifen zu können. Es ist auch möglich, die Kennworthashsynchronisierung im Zusammenhang mit Verbunddiensten zu aktivieren. Das Aktivieren der Kennworthashsynchronisierung ermöglicht ein Fallback für die Authentifizierung, wenn Verbunddienste nicht verfügbar sind.
 
 Wenn Ihre lokale Organisation nicht über eine Resilienzstrategie für Ausfälle oder über eine Strategie verfügt, die nicht mit Azure AD integriert ist, sollten Sie die Azure AD-Kennworthashsynchronisierung bereitstellen und einen Notfallwiederherstellungsplan definieren, der die Kennworthashsynchronisierung enthält. Indem Sie die Azure AD-Kennworthashsynchronisierung aktivieren, ermöglichen Sie Benutzern die Authentifizierung bei Azure AD, wenn Ihre lokale Active Directory-Lösung nicht verfügbar ist.
 
@@ -160,7 +160,7 @@ Ein standardisiertes Verfahren für das einmalige Anmelden im gesamten Unternehm
 > [!NOTE]
 > Wenn Sie nicht über einen Mechanismus zum Ermitteln nicht verwalteter Anwendungen in Ihrer Organisation verfügen, empfehlen wir Ihnen, einen Ermittlungsprozess mithilfe einer CASB-Lösung (Cloud Access Security Broker) wie [Microsoft Cloud App Security](https://www.microsoft.com/enterprise-mobility-security/cloud-app-security) zu implementieren.
 
-Letztlich wird empfohlen, dass Sie Ihre [Anwendungen im App-Katalog aufführen](../azuread-dev/howto-app-gallery-listing.md), wenn Sie über einen Azure AD-App-Katalog verfügen und Anwendungen verwenden, die SSO mit Azure AD unterstützen.
+Letztlich wird empfohlen, dass Sie Ihre [Anwendungen im App-Katalog aufführen](../develop/v2-howto-app-gallery-listing.md), wenn Sie über einen Azure AD-App-Katalog verfügen und Anwendungen verwenden, die SSO mit Azure AD unterstützen.
 
 #### <a name="single-sign-on-recommended-reading"></a>Empfohlene Artikel zu SSO
 
@@ -255,7 +255,7 @@ Der bedingte Zugriff ist ein wichtiges Tool zur Verbesserung der Sicherheit Ihre
 
 #### <a name="conditional-access-recommended-reading"></a>Empfohlene Artikel zum bedingten Zugriff
 
-- [Best Practices für den bedingten Zugriff in Azure Active Directory](../conditional-access/best-practices.md)
+- [Best Practices für den bedingten Zugriff in Azure Active Directory](../conditional-access/overview.md)
 - [Konfigurationen für den Identitäts- und Gerätezugriff](/microsoft-365/enterprise/microsoft-365-policies-configurations)
 - [Referenz zu den Einstellungen für den bedingten Azure Active Directory-Zugriff](../conditional-access/concept-conditional-access-conditions.md)
 - [Allgemeine Richtlinien für bedingten Zugriff](../conditional-access/concept-conditional-access-policy-common.md)
@@ -288,7 +288,7 @@ Wenn die Legacyauthentifizierung in Ihrer Umgebung umfassend verwendet wird, sol
 
 #### <a name="legacy-authentication-recommended-reading"></a>Empfohlene Artikel zur Legacyauthentifizierung
 
-- [Aktivieren und Deaktivieren des POP3- oder IMAP4-Zugriffs auf E-Mail-Postfächer in Exchange Server](/exchange/clients/pop3-and-imap4/configure-mailbox-access?view=exchserver-2019)
+- [Aktivieren und Deaktivieren des POP3- oder IMAP4-Zugriffs auf E-Mail-Postfächer in Exchange Server](/exchange/clients/pop3-and-imap4/configure-mailbox-access)
 
 ### <a name="consent-grants"></a>Zuweisung von Einwilligungen
 

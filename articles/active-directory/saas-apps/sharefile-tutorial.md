@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/04/2020
 ms.author: jeedes
-ms.openlocfilehash: ac7382f60d5c49ac8c784566af4d9db8ea78956b
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.openlocfilehash: e0cabcbaaf8e84ac1bdfd13c0ef4ab14f326fcf7
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94331303"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182285"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-citrix-sharefile"></a>Tutorial: Azure Active Directory-Integration mit Citrix ShareFile
 
@@ -88,7 +88,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
     - `https://<tenant-name>.sharefile1.eu/saml/info`
     - `https://<tenant-name>.sharefile.eu/saml/info`
 
-    c. Geben Sie im Textfeld **Antwort-URL** eine URL nach folgendem Muster ein:
+    c. Geben Sie im Textfeld **Antwort-URL** eine URL nach folgendem Muster ein: 
     
     - `https://<tenant-name>.sharefile.com/saml/acs`
     - `https://<tenant-name>.sharefile.eu/saml/<URL path>`
@@ -190,7 +190,7 @@ In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmel
 
 2. Rufen Sie direkt die Citrix ShareFile-Anmelde-URL auf, und initiieren Sie den Anmeldeflow.
 
-3. Sie können den Microsoft-Zugriffsbereich verwenden. Wenn Sie im Zugriffsbereich auf die Kachel „Citrix ShareFile“ klicken, werden Sie zur Anmelde-URL für Citrix ShareFile umgeleitet. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+3. Sie können den Microsoft-Zugriffsbereich verwenden. Wenn Sie im Zugriffsbereich auf die Kachel „Citrix ShareFile“ klicken, werden Sie zur Anmelde-URL für Citrix ShareFile umgeleitet. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
 
 
 ## <a name="next-steps"></a>Nächste Schritte

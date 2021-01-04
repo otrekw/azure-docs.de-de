@@ -11,12 +11,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: 55083da596f15409ed460e498438f9eaea10dfa8
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 7936699832a09f535729c42b12fec2d5c49a11a0
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92633228"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350941"
 ---
 # <a name="create-an-azure-ssis-integration-runtime-in-azure-data-factory"></a>Erstellen einer Azure-SSIS Integration Runtime in Azure Data Factory | Microsoft-Dokumentation
 
@@ -43,7 +43,7 @@ In diesem Artikel wird veranschaulicht, wie Sie eine Azure-SSIS IR mit dem Azure
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-- **Azure-Abonnement** . Falls Sie noch nicht über ein Abonnement verfügen, können Sie ein [kostenloses Testkonto](https://azure.microsoft.com/pricing/free-trial/) erstellen.
+- **Azure-Abonnement**. Falls Sie noch nicht über ein Abonnement verfügen, können Sie ein [kostenloses Testkonto](https://azure.microsoft.com/pricing/free-trial/) erstellen.
 
 - **Azure SQL-Datenbank-Server oder SQL Managed Instance (optional)** . Wenn Sie noch nicht über einen Datenbankserver oder eine verwaltete Instanz verfügen, erstellen Sie einen bzw. eine im Azure-Portal, bevor Sie beginnen. Mit Data Factory wird wiederum eine SSISDB-Instanz auf diesem Datenbankserver erstellt. 
 
@@ -126,7 +126,7 @@ Führen Sie auf der Seite **Allgemeine Einstellungen** des Bereichs **Integratio
 
    6. Wählen Sie unter **Edition/Lizenz** die SQL Server-Edition für Ihre Integration Runtime aus: Standard oder Enterprise. Wählen Sie Enterprise aus, wenn Sie erweiterte Funktionen für Ihre Integration Runtime verwenden möchten.
 
-   7. Wählen Sie unter **Sparen Sie Geld** die Option „Azure-Hybridvorteil“ für Ihre Integration Runtime aus: **Ja** oder **Nein** . Wählen Sie **Ja** , wenn Sie eine eigene SQL Server-Lizenz mit Software Assurance verwenden möchten, um bei der Hybridnutzung von Kostenersparnissen zu profitieren.
+   7. Wählen Sie unter **Sparen Sie Geld** die Option „Azure-Hybridvorteil“ für Ihre Integration Runtime aus: **Ja** oder **Nein**. Wählen Sie **Ja**, wenn Sie eine eigene SQL Server-Lizenz mit Software Assurance verwenden möchten, um bei der Hybridnutzung von Kostenersparnissen zu profitieren.
 
    8. Wählen Sie **Weiter** aus.
 
@@ -136,7 +136,7 @@ Auf der Seite **Bereitstellungseinstellungen** des Bereichs **Integration runtim
 
 ##### <a name="creating-ssisdb"></a>Erstellen von SSISDB
 
-Wenn Sie Ihre Pakete in SSISDB bereitstellen möchten (Projektbereitstellungsmodell), aktivieren Sie auf der Seite **Bereitstellungseinstellungen** des Bereichs **Integration runtime setup** (Integration Runtime-Setup) das Kontrollkästchen **Vom Azure SQL-Datenbank-Server/von der verwalteten Instanz gehosteten SSIS-Katalog (SSISDB) zum Speichern Ihrer Projekte/Pakete/Umgebungen/Ausführungsprotokolle erstellen** . Wenn Sie Ihre Pakete im Dateisystem, in Azure Files oder SQL Server-Datenbank (MSDB) bereitstellen möchten, das bzw. die von Azure SQL Managed Instance gehostet wird (Paketbereitstellungsmodell), müssen Sie weder eine SSISDB erstellen noch das Kontrollkästchen aktivieren.
+Wenn Sie Ihre Pakete in SSISDB bereitstellen möchten (Projektbereitstellungsmodell), aktivieren Sie auf der Seite **Bereitstellungseinstellungen** des Bereichs **Integration runtime setup** (Integration Runtime-Setup) das Kontrollkästchen **Vom Azure SQL-Datenbank-Server/von der verwalteten Instanz gehosteten SSIS-Katalog (SSISDB) zum Speichern Ihrer Projekte/Pakete/Umgebungen/Ausführungsprotokolle erstellen**. Wenn Sie Ihre Pakete im Dateisystem, in Azure Files oder SQL Server-Datenbank (MSDB) bereitstellen möchten, das bzw. die von Azure SQL Managed Instance gehostet wird (Paketbereitstellungsmodell), müssen Sie weder eine SSISDB erstellen noch das Kontrollkästchen aktivieren.
 
 Aktivieren Sie dieses Kontrollkästchen unabhängig von Ihrem Bereitstellungsmodell, wenn Sie den von Azure SQL Managed Instance gehosteten SQL Server-Agent zum Orchestrieren/Planen Ihrer Paketausführungen verwenden möchten, da dies durch SSISDB aktiviert wird. Weitere Informationen finden Sie unter [Planen der Ausführung von SSIS-Paketen mit einem Agent für die verwaltete Azure SQL-Instanz](./how-to-invoke-ssis-package-managed-instance-agent.md).
    
@@ -166,6 +166,9 @@ Wenn Sie das Kontrollkästchen aktivieren, führen Sie die folgenden Schritte au
 
 Wählen Sie ggf. **Verbindung testen** und – bei erfolgreichem Test – **Weiter** aus.
 
+> [!NOTE]
+   > Wenn Sie den Azure SQL-Datenbankserver zum Hosten von SSISDB verwenden, werden Ihre Daten standardmäßig im georedundanten Speicher für Sicherungen gespeichert. Wenn Sie nicht möchten, dass Ihre Daten in anderen Regionen repliziert werden, befolgen Sie die Anweisungen zum [Konfigurieren der Redundanz für Sicherungsspeicher mithilfe von PowerShell](../azure-sql/database/automated-backups-overview.md?tabs=single-database#configure-backup-storage-redundancy-by-using-powershell).
+   
 ##### <a name="creating-azure-ssis-ir-package-stores"></a>Erstellen von Azure-SSIS IR-Paketspeichern
 
 Aktivieren Sie auf der Seite **Bereitstellungseinstellungen** des Bereichs **Integration runtime setup** (Integration Runtime-Setup) das Kontrollkästchen **Create package stores to manage your packages that are deployed into file system/Azure Files/SQL Server database (MSDB) hosted by Azure SQL Managed Instance** (Paketspeicher zum Verwalten Ihrer Pakete erstellen, die im Dateisystem/in Azure Files/der SQL Server-Datenbank (MSDB) bereitgestellt werden, wobei zum Hosten Azure SQL Managed Instance verwendet wird), wenn Sie Ihre in MSDB, im Dateisystem oder in Azure Files (Paketbereitstellungsmodell) bereitgestellten Pakete mit Azure-SSIS IR-Paketspeichern verwalten möchten.
@@ -183,7 +186,7 @@ Führen Sie im Bereich **Paketspeicher hinzufügen** die folgenden Schritte aus.
    1. Wählen Sie unter **Mit Paketspeicher verknüpfter Dienst** Ihren vorhandenen verknüpften Dienst zum Speichern der Zugriffsinformationen für das Dateisystem/Azure Files/die verwaltete Azure SQL-Instanz aus, in dem bzw. der Ihre Pakete bereitgestellt werden, oder erstellen Sie einen neuen Dienst, indem Sie **Neu** auswählen. Führen Sie im Bereich **Neuer verknüpfter Dienst** die folgenden Schritte aus.
    
       > [!NOTE]
-      > Für den Zugriff auf Azure Files können Sie die verknüpften Dienste **Azure File Storage** oder **Dateisystem** verwenden. Wenn Sie den verknüpften Dienst **Azure File Storage** verwenden, unterstützt der Azure-SSIS IR-Paketspeicher derzeit nur die **Standardauthentifizierungsmethode** . ( **Kontoschlüssel** und **SAS-URI** werden nicht unterstützt.) Wenn Sie die **Standardauthentifizierung** für den verknüpften Dienst **Azure File Storage** nutzen möchten, können Sie `?feature.upgradeAzureFileStorage=false` an die ADF-Portal-URL in Ihrem Browser anfügen. Alternativ können Sie den verknüpften Dienst **Dateisystem** verwenden, um stattdessen auf Azure Files zuzugreifen. 
+      > Für den Zugriff auf Azure Files können Sie die verknüpften Dienste **Azure File Storage** oder **Dateisystem** verwenden. Wenn Sie den verknüpften Dienst **Azure File Storage** verwenden, unterstützt der Azure-SSIS IR-Paketspeicher derzeit nur die **Standardauthentifizierungsmethode**. (**Kontoschlüssel** und **SAS-URI** werden nicht unterstützt.) Wenn Sie die **Standardauthentifizierung** für den verknüpften Dienst **Azure File Storage** nutzen möchten, können Sie `?feature.upgradeAzureFileStorage=false` an die ADF-Portal-URL in Ihrem Browser anfügen. Alternativ können Sie den verknüpften Dienst **Dateisystem** verwenden, um stattdessen auf Azure Files zuzugreifen. 
 
       ![Bereitstellungseinstellungen für verknüpfte Dienste](./media/tutorial-create-azure-ssis-runtime-portal/deployment-settings-linked-service.png)
 
@@ -191,7 +194,7 @@ Führen Sie im Bereich **Paketspeicher hinzufügen** die folgenden Schritte aus.
          
       1. Geben Sie unter **Beschreibung** die Beschreibung Ihres verknüpften Diensts ein. 
          
-      1. Wählen Sie unter **Typ** einen der Typen **Azure File Storage** , **Verwaltete Azure SQL-Instanz** oder **Dateisystem** aus.
+      1. Wählen Sie unter **Typ** einen der Typen **Azure File Storage**, **Verwaltete Azure SQL-Instanz** oder **Dateisystem** aus.
 
       1. Sie können **Verbinden über Integration Runtime** ignorieren, da wir immer Ihre Azure-SSIS IR zum Abrufen der Zugriffsinformationen für Paketspeicher verwenden.
 
@@ -199,7 +202,7 @@ Führen Sie im Bereich **Paketspeicher hinzufügen** die folgenden Schritte aus.
 
          1. Wählen Sie unter **Kontoauswahlmethode** eine der Methoden **Aus Azure-Abonnement** oder **Manuell eingeben** aus.
          
-         1. Wenn Sie **Aus Azure-Abonnement** auswählen, wählen Sie die entsprechenden Werte für **Azure-Abonnement** , **Speicherkontoname** und **Dateifreigabe** aus.
+         1. Wenn Sie **Aus Azure-Abonnement** auswählen, wählen Sie die entsprechenden Werte für **Azure-Abonnement**, **Speicherkontoname** und **Dateifreigabe** aus.
             
          1. Wenn Sie **Manuell eingeben** auswählen, geben Sie unter **Host** `\\<storage account name>.file.core.windows.net\<file share name>`, unter **Benutzername** `Azure\<storage account name>` und unter **Kennwort** `<storage account key>` ein, oder wählen Sie Ihren **Azure Key Vault** aus, in dem diese Werte als Geheimnis gespeichert sind.
 
@@ -213,7 +216,7 @@ Führen Sie im Bereich **Paketspeicher hinzufügen** die folgenden Schritte aus.
 
             1. Geben Sie unter **Datenbankname** `msdb` ein.
                
-            1. Wählen Sie unter **Authentifizierungstyp** einen der Typen **SQL-Authentifizierung** , **Verwaltete Identität** oder **Dienstprinzipal** aus.
+            1. Wählen Sie unter **Authentifizierungstyp** einen der Typen **SQL-Authentifizierung**, **Verwaltete Identität** oder **Dienstprinzipal** aus.
 
             1. Wenn Sie **SQL-Authentifizierung** auswählen, geben Sie die entsprechenden Werte für **Benutzername** und **Kennwort** ein, oder wählen Sie Ihren **Azure Key Vault** aus, in dem diese Werte als Geheimnis gespeichert sind.
 
@@ -237,7 +240,7 @@ Führen Sie auf der Seite **Erweiterte Einstellungen** des Bereichs **Integratio
 
    1. Legen Sie unter **Maximale Anzahl von parallelen Ausführungen pro Knoten** die maximale Anzahl von Paketen fest, die in Ihrem Integration Runtime-Cluster pro Knoten gleichzeitig ausgeführt werden sollen. Nur unterstützte Paketzahlen werden angezeigt. Wählen Sie eine niedrigere Anzahl aus, wenn Sie mehrere Kerne verwenden möchten, um ein einzelnes großes Paket auszuführen, das compute- oder arbeitsspeicherintensiv ist. Wählen Sie eine hohe Anzahl aus, wenn Sie mindestens ein kleines Paket in einem einzelnen Kern ausführen möchten.
 
-   1. Aktivieren Sie das Kontrollkästchen **Azure-SSIS IR mit zusätzlichen Systemkonfigurationen/Komponenteninstallationen anpassen** , um festzulegen, ob Sie benutzerdefinierte Standard-/Express-Setups für Ihre Azure-SSIS IR-Instanz hinzufügen möchten. Weitere Informationen finden Sie unter [Anpassen des Setups für Azure-SSIS Integration Runtime](./how-to-configure-azure-ssis-ir-custom-setup.md).
+   1. Aktivieren Sie das Kontrollkästchen **Azure-SSIS IR mit zusätzlichen Systemkonfigurationen/Komponenteninstallationen anpassen**, um festzulegen, ob Sie benutzerdefinierte Standard-/Express-Setups für Ihre Azure-SSIS IR-Instanz hinzufügen möchten. Weitere Informationen finden Sie unter [Anpassen des Setups für Azure-SSIS Integration Runtime](./how-to-configure-azure-ssis-ir-custom-setup.md).
 
       Führen Sie die unten angegebenen Schritte aus, falls Sie das Kontrollkästchen aktivieren.
 
@@ -245,13 +248,13 @@ Führen Sie auf der Seite **Erweiterte Einstellungen** des Bereichs **Integratio
    
       1. Geben Sie für **SAS-URI des Containers für benutzerdefinierte Setups** den SAS-URI des Containers ein, in dem Sie Skripts und zugehörige Dateien für benutzerdefinierte Standard-Setups speichern.
 
-      1. Wählen Sie für **benutzerdefinierte Express-Setups** die Option **Neu** aus, um den Bereich **Benutzerdefiniertes Express-Setup hinzufügen** zu öffnen, und wählen Sie dann im Dropdown Menü **Typ des benutzerdefinierten Express-Setups** einen Typ aus, z. B. **Befehl „cmdkey“ ausführen** , **Umgebungsvariable hinzufügen** , **Lizenzierte Komponente installieren** usw.
+      1. Wählen Sie für **benutzerdefinierte Express-Setups** die Option **Neu** aus, um den Bereich **Benutzerdefiniertes Express-Setup hinzufügen** zu öffnen, und wählen Sie dann im Dropdown Menü **Typ des benutzerdefinierten Express-Setups** einen Typ aus, z. B. **Befehl „cmdkey“ ausführen**, **Umgebungsvariable hinzufügen**, **Lizenzierte Komponente installieren** usw.
 
          Bei Auswahl des Typs **Lizenzierte Komponente installieren** können Sie im Dropdownmenü **Komponentenname** alle integrierten Komponenten unserer ISV-Partner auswählen und bei Bedarf im Feld **Lizenzschlüssel**/**Lizenzdatei** den erworbenen Produktlizenzschlüssel eingeben/die erworbene Produktlizenzdatei hochladen.
   
          Ihre hinzugefügten benutzerdefinierten Express-Setups werden auf der Seite **Erweiterte Einstellungen** angezeigt. Um diese zu entfernen, können Sie die entsprechenden Kontrollkästchen aktivieren und dann **Löschen** auswählen.
 
-   1. Aktivieren Sie das Kontrollkästchen **VNET für die Einbindung Ihrer Azure-SSIS Integration Runtime-Instanz auswählen, Erstellung bestimmter Netzwerkressourcen für ADF ermöglichen und optional eigene statische öffentliche IP-Adressen verwenden** , um festzulegen, ob Sie Ihre Integration Runtime mit einem virtuellen Netzwerk verknüpfen möchten. 
+   1. Aktivieren Sie das Kontrollkästchen **VNET für die Einbindung Ihrer Azure-SSIS Integration Runtime-Instanz auswählen, Erstellung bestimmter Netzwerkressourcen für ADF ermöglichen und optional eigene statische öffentliche IP-Adressen verwenden**, um festzulegen, ob Sie Ihre Integration Runtime mit einem virtuellen Netzwerk verknüpfen möchten. 
 
       Aktivieren Sie dieses Kontrollkästchen, wenn Sie einen Azure SQL-Datenbankserver mit IP-Firewallregeln/VNET-Dienstendpunkten oder eine verwaltete Instanz mit privatem Endpunkt zum Hosten der SSISDB verwenden oder Zugriff auf lokale Daten benötigen (d. h., dass lokale Datenquellen oder Ziele in Ihren SSIS-Paketen vorhanden sind), ohne eine selbstgehostete IR zu konfigurieren. Weitere Informationen finden Sie im Artikel zum [Verknüpfen einer Azure-SSIS Integration Runtime mit einem virtuellen Netzwerk](./join-azure-ssis-integration-runtime-virtual-network.md). 
 
@@ -269,15 +272,15 @@ Führen Sie auf der Seite **Erweiterte Einstellungen** des Bereichs **Integratio
 
       1. Wählen Sie unter **Subnetzname** den Namen des Subnetzes für Ihr virtuelles Netzwerk aus. Es sollte mit dem übereinstimmen, der für Ihren Azure SQL-Datenbankserver mit VNET-Dienstendpunkten zum Hosten der SSISDB verwendet wird. Oder es sollte ein anderes Subnetz sein als das, das für Ihre verwaltete Instanz mit einem privaten Endpunkt zum Hosten der SSISDB verwendet wird. Andernfalls kann es sich um ein beliebiges Subnetz handeln, damit Ihre eigenen statischen öffentlichen IP-Adressen für Azure-SSIS IR verwendet werden.
 
-      1. Aktivieren Sie das Kontrollkästchen **Statische öffentliche IP-Adressen für die Azure-SSIS Integration Runtime einbringen** , um festzulegen, ob Sie Ihre eigenen statischen öffentlichen IP-Adressen für Azure-SSIS IR verwenden möchten, damit Sie sie in der Firewall für Ihre Datenquellen zulassen können.
+      1. Aktivieren Sie das Kontrollkästchen **Statische öffentliche IP-Adressen für die Azure-SSIS Integration Runtime einbringen**, um festzulegen, ob Sie Ihre eigenen statischen öffentlichen IP-Adressen für Azure-SSIS IR verwenden möchten, damit Sie sie in der Firewall für Ihre Datenquellen zulassen können.
 
          Führen Sie die unten angegebenen Schritte aus, falls Sie das Kontrollkästchen aktivieren.
 
-         1. Wählen Sie für **Erste statische öffentliche IP-Adresse** die erste statische öffentliche IP-Adresse aus, die den Anforderungen für Ihre Azure-SSIS IR entspricht. Klicken Sie auf den Link **Neue erstellen** , wenn Sie über keine statischen öffentlichen IP-Adressen verfügen, um diese im Azure-Portal zu erstellen. Klicken Sie dann hier auf die Schaltfläche „Aktualisieren“, um sie auszuwählen.
+         1. Wählen Sie für **Erste statische öffentliche IP-Adresse** die erste statische öffentliche IP-Adresse aus, die den Anforderungen für Ihre Azure-SSIS IR entspricht. Klicken Sie auf den Link **Neue erstellen**, wenn Sie über keine statischen öffentlichen IP-Adressen verfügen, um diese im Azure-Portal zu erstellen. Klicken Sie dann hier auf die Schaltfläche „Aktualisieren“, um sie auszuwählen.
       
-         1. Wählen Sie für **Zweite statische öffentliche IP-Adresse** die zweite statische öffentliche IP-Adresse aus, die den Anforderungen für Ihre Azure-SSIS IR entspricht. Klicken Sie auf den Link **Neue erstellen** , wenn Sie über keine statischen öffentlichen IP-Adressen verfügen, um diese im Azure-Portal zu erstellen. Klicken Sie dann hier auf die Schaltfläche „Aktualisieren“, um sie auszuwählen.
+         1. Wählen Sie für **Zweite statische öffentliche IP-Adresse** die zweite statische öffentliche IP-Adresse aus, die den Anforderungen für Ihre Azure-SSIS IR entspricht. Klicken Sie auf den Link **Neue erstellen**, wenn Sie über keine statischen öffentlichen IP-Adressen verfügen, um diese im Azure-Portal zu erstellen. Klicken Sie dann hier auf die Schaltfläche „Aktualisieren“, um sie auszuwählen.
 
-   1. Aktivieren Sie das Kontrollkästchen **Selbstgehostete Integration Runtime als Proxy für Ihre Azure-SSIS Integration Runtime-Instanz einrichten** , um festzulegen, ob Sie eine selbstgehostete IR als Proxy für Ihre Azure-SSIS IR-Instanz konfigurieren möchten. Weitere Informationen finden Sie unter [Konfigurieren einer selbstgehosteten IR als Proxy](./self-hosted-integration-runtime-proxy-ssis.md). 
+   1. Aktivieren Sie das Kontrollkästchen **Selbstgehostete Integration Runtime als Proxy für Ihre Azure-SSIS Integration Runtime-Instanz einrichten**, um festzulegen, ob Sie eine selbstgehostete IR als Proxy für Ihre Azure-SSIS IR-Instanz konfigurieren möchten. Weitere Informationen finden Sie unter [Konfigurieren einer selbstgehosteten IR als Proxy](./self-hosted-integration-runtime-proxy-ssis.md). 
 
       Führen Sie die unten angegebenen Schritte aus, falls Sie das Kontrollkästchen aktivieren.
 
@@ -302,7 +305,7 @@ Führen Sie auf der Seite **Erweiterte Einstellungen** des Bereichs **Integratio
 
 #### <a name="connections-pane"></a>Bereich „Verbindungen“
 
-Wechseln Sie im Bereich **Verbindungen** von **Verwaltungshub** zur Seite **Integration Runtimes** , und wählen Sie **Aktualisieren** aus. 
+Wechseln Sie im Bereich **Verbindungen** von **Verwaltungshub** zur Seite **Integration Runtimes**, und wählen Sie **Aktualisieren** aus. 
 
    ![Bereich „Verbindungen“](./media/tutorial-create-azure-ssis-runtime-portal/connections-pane.png)
 
@@ -310,11 +313,11 @@ Wechseln Sie im Bereich **Verbindungen** von **Verwaltungshub** zur Seite **Inte
 
 ### <a name="azure-ssis-integration-runtimes-in-the-portal"></a>Azure SSIS Integration Runtimes im Portal
 
-1. Wechseln Sie auf der Azure Data Factory-Benutzeroberfläche zur Registerkarte **Bearbeiten** , und wählen Sie **Verbindungen** aus. Wechseln Sie anschließend zur Registerkarte **Integration Runtimes** , um die vorhandenen Integration Runtimes Ihrer Data Factory-Instanz anzuzeigen.
+1. Wechseln Sie auf der Azure Data Factory-Benutzeroberfläche zur Registerkarte **Bearbeiten**, und wählen Sie **Verbindungen** aus. Wechseln Sie anschließend zur Registerkarte **Integration Runtimes**, um die vorhandenen Integration Runtimes Ihrer Data Factory-Instanz anzuzeigen.
 
    ![Anzeigen vorhandener IRs](./media/tutorial-create-azure-ssis-runtime-portal/view-azure-ssis-integration-runtimes.png)
 
-1. Wählen Sie **Neu** aus, um eine neue Azure-SSIS IR zu erstellen, und öffnen Sie den Bereich **Integration Runtime-Setup** .
+1. Wählen Sie **Neu** aus, um eine neue Azure-SSIS IR zu erstellen, und öffnen Sie den Bereich **Integration Runtime-Setup**.
 
    ![Integration Runtime über das Menü](./media/tutorial-create-azure-ssis-runtime-portal/edit-connections-new-integration-runtime-button.png)
 

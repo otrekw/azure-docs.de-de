@@ -7,15 +7,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/11/2020
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: anandsub
-ms.openlocfilehash: 3c7765d65b63c9cee83a76a13448506f61aa8472
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: fa71dc1e6b3a09827f2ad3d9f714622da5a36222
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637155"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862444"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>Überwachen einer Integrationslaufzeit in Azure Data Factory
 
@@ -39,7 +39,7 @@ Das Cmdlet gibt für verschiedene Arten der Integrationslaufzeit unterschiedlich
 
 ## <a name="azure-integration-runtime"></a>Azure-Integrationslaufzeit
 
-Die Computeressource für eine Azure-Integrationslaufzeit wird in Azure vollständig flexibel verwaltet. Die folgende Tabelle enthält Beschreibungen für Eigenschaften, die vom **Get-AzDataFactoryV2IntegrationRuntime** -Befehl zurückgegeben werden:
+Die Computeressource für eine Azure-Integrationslaufzeit wird in Azure vollständig flexibel verwaltet. Die folgende Tabelle enthält Beschreibungen für Eigenschaften, die vom **Get-AzDataFactoryV2IntegrationRuntime**-Befehl zurückgegeben werden:
 
 ### <a name="properties"></a>Eigenschaften
 
@@ -72,7 +72,7 @@ Dieser Abschnitt enthält Beschreibungen für Eigenschaften, die vom Get-AzDataF
 
 ### <a name="properties"></a>Eigenschaften
 
-Die folgende Tabelle enthält Beschreibungen von Überwachungseigenschaften für **jeder Knoten** :
+Die folgende Tabelle enthält Beschreibungen von Überwachungseigenschaften für **jeder Knoten**:
 
 | Eigenschaft | BESCHREIBUNG | 
 | -------- | ----------- | 
@@ -82,7 +82,7 @@ Die folgende Tabelle enthält Beschreibungen von Überwachungseigenschaften für
 | Verfügbarer Arbeitsspeicher | Verfügbarer Arbeitsspeicher auf einem Knoten der selbstgehosteten Integrationslaufzeit. Dieser Wert steht für eine Momentaufnahme nahezu in Echtzeit. | 
 | CPU-Auslastung | CPU-Auslastung für einen Knoten der selbstgehosteten Integrationslaufzeit. Dieser Wert steht für eine Momentaufnahme nahezu in Echtzeit. |
 | Netzwerk (Eingang/Ausgang) | Netzwerkauslastung für einen Knoten der selbstgehosteten Integrationslaufzeit. Dieser Wert steht für eine Momentaufnahme nahezu in Echtzeit. | 
-| Gleichzeitige Aufträge (ausgeführt/Limit) | **Wird ausgeführt** . Anzahl von Aufträgen oder Aufgaben, die auf den einzelnen Knoten ausgeführt werden. Dieser Wert steht für eine Momentaufnahme nahezu in Echtzeit. <br/><br/>**Limit** . Mit „Limit“ wird angegeben, wie viele Aufträge für einen Knoten jeweils gleichzeitig ausgeführt werden können. Dieser Wert wird basierend auf der Größe des Computers definiert. Wenn Zeitüberschreitungen für Aktivitäten auftreten, können Sie das Limit auch dann erhöhen, um die gleichzeitige Ausführung von Aufträgen in erweiterten Szenarien hochzuskalieren, wenn CPU, Arbeitsspeicher oder Netzwerk nicht voll ausgelastet sind. Diese Funktion ist auch für eine selbstgehostete Integrationslaufzeit mit einem einzelnen Knoten verfügbar. |
+| Gleichzeitige Aufträge (ausgeführt/Limit) | **Wird ausgeführt**. Anzahl von Aufträgen oder Aufgaben, die auf den einzelnen Knoten ausgeführt werden. Dieser Wert steht für eine Momentaufnahme nahezu in Echtzeit. <br/><br/>**Limit**. Mit „Limit“ wird angegeben, wie viele Aufträge für einen Knoten jeweils gleichzeitig ausgeführt werden können. Dieser Wert wird basierend auf der Größe des Computers definiert. Wenn Zeitüberschreitungen für Aktivitäten auftreten, können Sie das Limit auch dann erhöhen, um die gleichzeitige Ausführung von Aufträgen in erweiterten Szenarien hochzuskalieren, wenn CPU, Arbeitsspeicher oder Netzwerk nicht voll ausgelastet sind. Diese Funktion ist auch für eine selbstgehostete Integrationslaufzeit mit einem einzelnen Knoten verfügbar. |
 | Role | Bei einer selbstgehosteten Integrationslaufzeit mit mehreren Knoten gibt es zwei Arten von Rollen: Verteiler und Worker. Alle Knoten sind Worker. Dies bedeutet, dass alle Knoten zum Ausführen von Aufträgen verwendet werden können. Es ist nur ein Verteilerknoten vorhanden, der zum Durchführen der Pullvorgänge für Aufgaben bzw. Aufträge von Clouddiensten und Verteilen an die einzelnen Workerknoten genutzt wird. Der Verteilerknoten ist auch ein Workerknoten. |
 
 Einige Einstellungen der Eigenschaften sind sinnvoller, wenn in der selbstgehosteten Integrationslaufzeit (d.h. in einem Szenario mit Aufskalieren) mindestens zwei Knoten enthalten sind.
@@ -104,7 +104,7 @@ Die folgende Tabelle enthält die möglichen Statuswerte eines Knotens einer sel
 | Online | Der Knoten ist mit dem Data Factory-Dienst verbunden. |
 | Offline | Knoten ist offline. |
 | Wird aktualisiert | Der Knoten wird automatisch aktualisiert. |
-| Eingeschränkt | Es besteht ein Konnektivitätsproblem. Dies kann ein Problem mit HTTP-Port 8050, mit der Service Bus-Konnektivität oder mit der Synchronisierung von Anmeldeinformationen sein. |
+| Eingeschränkt | Es besteht ein Konnektivitätsproblem. Dies kann auf ein Problem mit HTTP-Port 8060, mit der Service Bus-Konnektivität oder mit der Synchronisierung von Anmeldeinformationen zurückzuführen sein. |
 | Inaktiv | Die Konfiguration des Knotens unterscheidet sich von der Konfiguration anderer Mehrheitsknoten. |
 
 Ein Knoten kann inaktiv sein, wenn er keine Verbindungen mit anderen Knoten herstellen kann.
@@ -120,7 +120,7 @@ Die folgende Tabelle enthält die möglichen Statuswerte einer selbstgehosteten 
 | Offline | Kein Knoten ist online. |
 | Eingeschränkt | Nicht alle Knoten in dieser selbstgehosteten Integrationslaufzeit weisen einen fehlerfreien Status auf. Dieser Status ist eine Warnung, dass einige Knoten unter Umständen ausgefallen sind. Dieser Status kann aufgrund eines Problems mit der Synchronisierung von Anmeldeinformationen auf einem Verteiler- oder Workerknoten auftreten. |
 
-Rufen Sie die JSON-Nutzlast, die die ausführlichen Eigenschaften der selbstgehosteten Integrationslaufzeit enthält, und deren Momentaufnahmewerte während der Ausführung des Cmdlets mithilfe des **Get-AzDataFactoryV2IntegrationRuntimeMetric** -Cmdlets ab.
+Rufen Sie die JSON-Nutzlast, die die ausführlichen Eigenschaften der selbstgehosteten Integrationslaufzeit enthält, und deren Momentaufnahmewerte während der Ausführung des Cmdlets mithilfe des **Get-AzDataFactoryV2IntegrationRuntimeMetric**-Cmdlets ab.
 
 ```powershell
 Get-AzDataFactoryV2IntegrationRuntimeMetric -name $integrationRuntimeName -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName | ConvertTo-Json 
@@ -224,7 +224,7 @@ Die folgende Tabelle enthält die möglichen allgemeinen Status einer Azure-SSIS
 
 ### <a name="monitor-the-azure-ssis-integration-runtime-in-azure-portal"></a>Überwachen der Azure-SSIS Integration Runtime im Azure-Portal
 
-Zur Überwachung Ihrer Azure-SSIS IR im Azure-Portal wechseln Sie in der ADF-Benutzeroberfläche zur Seite **Integration Runtimes** des **Überwachungshubs** . Hier werden alle Integration Runtimes angezeigt.
+Zur Überwachung Ihrer Azure-SSIS IR im Azure-Portal wechseln Sie in der ADF-Benutzeroberfläche zur Seite **Integration Runtimes** des **Überwachungshubs**. Hier werden alle Integration Runtimes angezeigt.
 
 ![Überwachen aller Integration Runtimes](media/monitor-integration-runtime/monitor-integration-runtimes.png)
 
@@ -234,7 +234,7 @@ Wählen Sie als Nächstes den Namen Ihrer Azure-SSIS IR aus, um die Überwachung
 
 #### <a name="status-tile"></a>Kachel „STATUS“
 
-Auf der Kachel **STATUS** Ihrer Azure-SSIS IR-Überwachungsseite wird der allgemeine Status angezeigt, z. B. **Wird ausgeführt** oder **Beendet** . Wenn Sie den Status **Wird ausgeführt** auswählen, wird ein Fenster mit einer aktiven Schaltfläche zum **Beenden** angezeigt, mit der Sie Ihre Azure-SSIS IR beenden können. Wenn Sie den Status **Beendet** auswählen, wird ein Fenster mit einer aktiven Schaltfläche zum **Starten** angezeigt, mit der Sie Ihre Azure-SSIS IR starten können. Das Popupfenster verfügt auch über eine Schaltfläche **SSIS-Paket ausführen** zur automatischen Generierung einer ADF-Pipeline mit der Aktivität „SSIS-Paket ausführen“, die auf Ihrer Azure-SSIS IR ausgeführt wird (siehe [Ausführen eines SSIS-Pakets als Aktivität „SSIS-Paket ausführen“ in ADF-Pipelines](./how-to-invoke-ssis-package-ssis-activity.md)) und ein Textfeld **Ressourcen-ID** , aus dem Sie die Ressourcen-ID Ihrer Azure-SSIS IR kopieren können (`/subscriptions/YourAzureSubscripton/resourcegroups/YourResourceGroup/providers/Microsoft.DataFactory/factories/YourADF/integrationruntimes/YourAzureSSISIR`). Das Suffix der Ressourcen-ID Ihrer Azure-SSIS IR, das Ihre ADF- und Azure-SSIS IR-Namen enthält, bildet eine Cluster-ID, die verwendet werden kann, um zusätzliche kostenpflichtige/lizenzierte SSIS-Komponenten von unabhängigen Softwareanbietern (ISVs) zu erwerben und sie an Ihre Azure-SSIS IR zu binden (siehe [Installieren kostenpflichtiger oder lizenzierter benutzerdefinierter Komponenten für Azure SSIS Integration Runtime](./how-to-develop-azure-ssis-ir-licensed-components.md)).
+Auf der Kachel **STATUS** Ihrer Azure-SSIS IR-Überwachungsseite wird der allgemeine Status angezeigt, z. B. **Wird ausgeführt** oder **Beendet**. Wenn Sie den Status **Wird ausgeführt** auswählen, wird ein Fenster mit einer aktiven Schaltfläche zum **Beenden** angezeigt, mit der Sie Ihre Azure-SSIS IR beenden können. Wenn Sie den Status **Beendet** auswählen, wird ein Fenster mit einer aktiven Schaltfläche zum **Starten** angezeigt, mit der Sie Ihre Azure-SSIS IR starten können. Das Popupfenster verfügt auch über eine Schaltfläche **SSIS-Paket ausführen** zur automatischen Generierung einer ADF-Pipeline mit der Aktivität „SSIS-Paket ausführen“, die auf Ihrer Azure-SSIS IR ausgeführt wird (siehe [Ausführen eines SSIS-Pakets als Aktivität „SSIS-Paket ausführen“ in ADF-Pipelines](./how-to-invoke-ssis-package-ssis-activity.md)) und ein Textfeld **Ressourcen-ID**, aus dem Sie die Ressourcen-ID Ihrer Azure-SSIS IR kopieren können (`/subscriptions/YourAzureSubscripton/resourcegroups/YourResourceGroup/providers/Microsoft.DataFactory/factories/YourADF/integrationruntimes/YourAzureSSISIR`). Das Suffix der Ressourcen-ID Ihrer Azure-SSIS IR, das Ihre ADF- und Azure-SSIS IR-Namen enthält, bildet eine Cluster-ID, die verwendet werden kann, um zusätzliche kostenpflichtige/lizenzierte SSIS-Komponenten von unabhängigen Softwareanbietern (ISVs) zu erwerben und sie an Ihre Azure-SSIS IR zu binden (siehe [Installieren kostenpflichtiger oder lizenzierter benutzerdefinierter Komponenten für Azure SSIS Integration Runtime](./how-to-develop-azure-ssis-ir-licensed-components.md)).
 
 ![Überwachen Ihrer Azure-SSIS IR – Kachel „STATUS“](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-status.png)
 

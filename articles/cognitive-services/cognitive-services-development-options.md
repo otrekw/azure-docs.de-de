@@ -8,12 +8,12 @@ ms.author: erhopf
 ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: 4eaa33778287bfcda45547c24e6abe0606b6baa7
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: a952bfa45515b9d35549d03d18fd94103679344d
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94368796"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349468"
 ---
 # <a name="cognitive-services-development-options"></a>Entwicklungsoptionen für Cognitive Services
 
@@ -49,9 +49,9 @@ Sehen wir uns einmal die verschiedenen Möglichkeiten des Arbeitens mit Cognitiv
 
 Mit Cognitive Services-Clientbibliotheken und REST-APIs erhalten Sie direkten Zugriff auf Ihren Dienst. Diese Tools bieten den programmgesteuerten Zugriff auf Cognitive Services und die ihnen zugrunde liegenden Modelle, und ermöglichen es Ihnen oftmals, Ihre Modelle und Lösungen programmgesteuert anzupassen. 
 
-* **Zielbenutzer** : Entwickler und Datenanalysten
+* **Zielbenutzer**: Entwickler und Datenanalysten
 * **Vorteile:** Bieten größtmögliche Flexibilität zum Aufrufen der Dienste aus jeder Sprache und Umgebung. 
-* **Benutzeroberfläche** : nicht zutreffend – nur Code
+* **Benutzeroberfläche**: nicht zutreffend – nur Code
 * **Abonnement(s)** : Azure-Konto + Cognitive Services-Ressourcen
 
 Wenn Sie mehr über die verfügbaren Clientbibliotheken und REST APIs erfahren möchten, verwenden Sie unsere [Übersicht zu Cognitive Services](index.yml), um einen Dienst auszuwählen, und steigen Sie mit einem unserer Schnellstarts zu maschinellem Sehen, Entscheidungsfindung, Sprachverständnis und gesprochener Sprache praktisch ein.
@@ -60,9 +60,9 @@ Wenn Sie mehr über die verfügbaren Clientbibliotheken und REST APIs erfahren m
 
 Cognitive Services für Big Data ermöglicht die direkte Einbettung intelligenter, kontinuierlich optimierter Modelle in Apache Spark&trade; und SQL-Berechnungen. Dank dieser Tools müssen sich Entwickler nicht mehr um sämtliche Netzwerkdetails kümmern und können sich stattdessen auf die Erstellung intelligenter, verteilter Anwendungen konzentrieren. Cognitive Services für Big Data unterstützt die folgenden Plattformen und Connectors: Azure Databricks, Azure Synapse, Azure Kubernetes Service und Datenconnectors.
 
-* **Zielbenutzer** : Datenanalysten und Datentechniker
+* **Zielbenutzer**: Datenanalysten und Datentechniker
 * **Vorteile:** Azure Cognitive Services für Big Data ermöglicht es Benutzern, mithilfe von Apache Spark&trade; mehrere Terabyte an Daten durch Cognitive Services zu leiten. Es ist ganz einfach, umfangreiche intelligente Anwendungen mit einem beliebigen Datenspeicher zu erstellen.
-* **Benutzeroberfläche** : nicht zutreffend – nur Code
+* **Benutzeroberfläche**: nicht zutreffend – nur Code
 * **Abonnement(s)** : Azure-Konto + Cognitive Services-Ressourcen
 
 Wenn Sie mehr zu Big Data für Cognitive Services erfahren möchten, ist die [Übersicht](./big-data/cognitive-services-for-big-data.md) ein guter Ausgangspunkt. Wenn Sie bereit sind, in das Erstellen von Builds einzusteigen, testen Sie unsere [Python](./big-data/samples-python.md)- oder [Scala](./big-data/samples-scala.md)-Beispiele.
@@ -71,45 +71,45 @@ Wenn Sie mehr zu Big Data für Cognitive Services erfahren möchten, ist die [Ü
 
 Sowohl [Azure Functions-](../azure-functions/index.yml) als auch [Azure App Service-Webaufträge](../app-service/index.yml) bieten Integrationsdienste mit vorgelagerter Codeerstellung, die für Entwickler entworfen wurden und auf [Azure App Services](../app-service/index.yml) aufbauen. Diese Produkte stellen eine serverlose Infrastruktur zum Schreiben von Code zur Verfügung. Innerhalb dieses Codes können Si Aufrufe an Ihre Dienste mithilfe unserer Clientbibliotheken und REST-APIs vornehmen. 
 
-* **Zielbenutzer** : Entwickler und Datenanalysten
+* **Zielbenutzer**: Entwickler und Datenanalysten
 * **Vorteile:** Serverloser Computedienst, der die Ausführung von ereignisgesteuertem Code ermöglicht. 
-* **Benutzeroberfläche** : Ja
+* **Benutzeroberfläche**: Ja
 * **Abonnement(s)** : Azure-Konto + Cognitive Services-Ressource + Azure Functions-Abonnement
 
 ### <a name="azure-logic-apps"></a>Azure Logic Apps 
 
 [Azure Logic Apps](../logic-apps/index.yml) teilt mit Power Automate den Workflow-Designer und die Connectors, bietet aber erweiterte Kontrolle, einschließlich Integrationen in Visual Studio und DevOps. Power Automate macht die Integration mit Ihren Cognitive Services-Ressourcen dank dienstspezifischer Connectors einfach, die einen Proxy oder Wrapper für die APIs bereitstellen. Es handelt sich um die gleichen Connectors, die in Power Automate zur Verfügung stehen. 
 
-* **Zielbenutzer** : Entwickler, Integratoren, IT-Experten, DevOps
+* **Zielbenutzer**: Entwickler, Integratoren, IT-Experten, DevOps
 * **Vorteile:** Designer-First (deklaratives) Entwicklungsmodell, das erweiterte Optionen und Integration in einer Lösung mit geringem Codeanteil bietet
-* **Benutzeroberfläche** : Ja
+* **Benutzeroberfläche**: Ja
 * **Abonnement(s)** : Azure-Konto + Cognitive Services-Ressourcen + Logic Apps-Bereitstellung
 
 ### <a name="power-automate"></a>Power Automate 
 
 Power Automate ist ein Dienst der [Power Platform](/power-platform/), der Sie beim Erstellen automatisierter Workflows zwischen Apps und Services unterstützt, ohne dass Sie Code schreiben müssten. Wir bieten verschiedene Connectors, um Ihnen die Interaktion mit Ihrer Cognitive Services-Ressource in einer Power Automate-Lösung zu erleichtern. Power Automate basiert auf Logic Apps. 
 
-* **Zielbenutzer** : Geschäftsbenutzer (Analysten) und Sharepoint-Administratoren
+* **Zielbenutzer**: Geschäftsbenutzer (Analysten) und Sharepoint-Administratoren
 * **Vorteile:** Automatisieren Sie sich wiederholende manuelle Aufgaben, indem Sie einfach Mausklicks, Tastendrücke und Kopieren-/Einfügen-Schritte auf Ihrem Desktop aufzeichnen!
-* **Tools mit Benutzeroberfläche** : Ja – nur Benutzeroberfläche
+* **Tools mit Benutzeroberfläche**: Ja – nur Benutzeroberfläche
 * **Abonnement(s)** : Azure-Konto + Cognitive Services-Ressource + Power Automate-Abonnement + Office 365-Abonnement
 
 ### <a name="ai-builder"></a>AI Builder 
 
 [AI Builder](/ai-builder/overview) ist eine Microsoft Power Platform-Funktion, die Sie verwenden können, um die Unternehmensleistung zu steigern, indem Sie Prozesse automatisieren und Ergebnisse vorhersagen. Dank AI Builder können Ihre Lösungen die Leistungsfähigkeit von KI mithilfe einer Point-and-Klick-Oberfläche nutzen. Viele Cognitive Services, wie die Formularerkennung, die Textanalyse und maschinelles Sehen, wurden hier direkt integriert, und Sie brauchen keine eigenen Cognitive Services zu erschaffen. 
 
-* **Zielbenutzer** : Geschäftsbenutzer (Analysten) und Sharepoint-Administratoren
+* **Zielbenutzer**: Geschäftsbenutzer (Analysten) und Sharepoint-Administratoren
 * **Vorteile:** Eine schlüsselfertige Lösung, die die Leistungsfähigkeit von KI über eine Point-and-Klick-Benutzeroberfläche verfügbar macht. Es sind keine Fähigkeiten zur Codeerstellung oder Datenanalyse erforderlich.
-* **Tools mit Benutzeroberfläche** : Ja – nur Benutzeroberfläche
+* **Tools mit Benutzeroberfläche**: Ja – nur Benutzeroberfläche
 * **Abonnement(s)** : AI Builder
 
 ### <a name="continuous-integration-and-deployment"></a>Continuous Integration und Continuous Deployment
 
 Sie können Azure DevOps- und GitHub-Aktionen verwenden, um Ihre Bereitstellungen zu verwalten. Im [Erläuterungsabschnitt unten](#continuous-integration-and-delivery-with-devops-and-github-actions) gibt es zwei Beispiele für CI/CD-Integrationen zum Trainieren und Bereitstellen von benutzerdefinierten Modellen für den Speech- und den Language Understanding-Dienst (LUIS). 
 
-* **Zielbenutzer** : Entwickler, Datenanalysten und Datentechniker
+* **Zielbenutzer**: Entwickler, Datenanalysten und Datentechniker
 * **Vorteile:** Ermöglicht Ihnen das programmgesteuerte Anpassen, Aktualisieren und Bereitstellen von Anwendungen und Modellen. Die regelmäßige Nutzung Ihrer Daten zum Verbessern und Aktualisieren Ihrer Modelle für Sprachverständnis, maschinelles Sehen, Sprachausgabe und Entscheidungsfindung bietet beträchtliche Vorteile. 
-* **Tools mit Benutzeroberfläche** : nicht zutreffend – nur Code 
+* **Tools mit Benutzeroberfläche**: nicht zutreffend – nur Code 
 * **Abonnement(s)** : Azure-Konto + Cognitive Services-Ressource + GitHub-Konto
 
 ## <a name="tools-to-customize-and-configure-models"></a>Tools zum Anpassen und Konfigurieren von Modellen
@@ -133,7 +133,7 @@ Die Tools, die Sie zum Trainieren und Konfigurieren von Modellen verwenden, unte
 | Sprache | QnA Maker | https://www.qnamaker.ai/ | [Schnellstart](./qnamaker/quickstarts/create-publish-knowledge-base.md) |
 | Sprache | Textübersetzung/Benutzerdefinierter Translator | https://portal.customtranslator.azure.ai/ | [Schnellstart](./translator/custom-translator/quickstart-build-deploy-custom-model.md) |
 | Spracheingabe/-ausgabe | Benutzerdefinierte Befehle | https://speech.microsoft.com/ | [Schnellstart](./speech-service/custom-commands.md) |
-| Spracheingabe/-ausgabe | Custom Speech | https://speech.microsoft.com/ | [Schnellstart](./speech-service/how-to-custom-speech.md) |
+| Spracheingabe/-ausgabe | Custom Speech | https://speech.microsoft.com/ | [Schnellstart](./speech-service/custom-speech-overview.md) |
 | Spracheingabe/-ausgabe | Custom Voice | https://speech.microsoft.com/ | [Schnellstart](./speech-service/how-to-custom-voice.md) |  
 
 ### <a name="continuous-integration-and-delivery-with-devops-and-github-actions"></a>Continuous Integration und Continuous Delivery mit DevOps- und GitHub-Aktionen

@@ -1,25 +1,25 @@
 ---
 title: Azure App Configuration-REST-API – Azure Active Directory-Autorisierung
 description: Verwenden von Azure Active Directory zur Autorisierung bei Azure App Configuration über die REST-API
-author: lisaguthrie
-ms.author: lcozzens
+author: AlexandraKemperMS
+ms.author: alkemper
 ms.service: azure-app-configuration
 ms.topic: reference
 ms.date: 08/17/2020
-ms.openlocfilehash: bebab7c06062726f7b5c7868f984cadda3b4c98e
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: f144c1f09f87e0b915daf86ba0391c2934e60095
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93423725"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932675"
 ---
 # <a name="azure-active-directory-authorization---rest-api-reference"></a>Azure Active Directory-Autorisierung – REST-API-Referenz
 
-Bei Verwendung der Azure Active Directory-Authentifizierung (Azure AD) erfolgt die Autorisierung über die rollenbasierte Zugriffssteuerung (RBAC) in Azure. In Azure RBAC müssen Benutzer Rollen zugewiesen werden, damit Zugriff auf Ressourcen gewährt wird. Jede Rolle enthält eine Reihe von Aktionen, die Benutzer ausführen können, die der Rolle zugewiesen sind.
+Bei Verwendung der Azure Active Directory-Authentifizierung (Azure AD) erfolgt die Autorisierung über die rollenbasierte Zugriffssteuerung (RBAC). Für die RBAC müssen Benutzer Rollen zugewiesen werden, damit ihnen Zugriff auf Ressourcen gewährt wird. Jede Rolle enthält eine Reihe von Aktionen, die alle Benutzer ausführen können, die der Rolle zugewiesen sind.
 
 ## <a name="roles"></a>Rollen
 
-Die folgenden integrierten Rollen sind standardmäßig in Azure-Abonnements verfügbar:
+Die folgenden Rollen sind standardmäßig in Azure-Abonnements verfügbar:
 
 - **Azure App Configuration-Datenbesitzer:** Diese Rolle ermöglicht Vollzugriff auf alle Vorgänge.
 - **Azure App Configuration-Datenleser:** Diese Rolle ermöglicht Lesevorgänge.
@@ -32,7 +32,7 @@ Rollen enthalten eine Liste von Aktionen, die Benutzer ausführen können, die d
 - `Microsoft.AppConfiguration/configurationStores/keyValues/write`: Diese Aktion ermöglicht Schreibzugriff auf App Configuration-Schlüsselwertressourcen.
 - `Microsoft.AppConfiguration/configurationStores/keyValues/delete`: Diese Aktion ermöglicht das Löschen von App Configuration-Schlüsselwertressourcen. Beachten Sie, dass beim Löschen einer Ressource der Schlüsselwert zurückgegeben wird, der gelöscht wurde.
 
-## <a name="errors"></a>Errors
+## <a name="error"></a>Fehler
 
 ```http
 HTTP/1.1 403 Forbidden
@@ -43,4 +43,4 @@ HTTP/1.1 403 Forbidden
 
 ## <a name="managing-role-assignments"></a>Verwalten von Rollenzuweisungen
 
-Die Verwaltung von Rollenzuweisungen erfolgt mithilfe von [Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)-Prozeduren, die in allen Azure-Diensten als Standard gelten. Dies kann über die Azure-Befehlszeilenschnittstelle, über PowerShell, über das Azure-Portal usw. durchgeführt werden. Die offizielle Dokumentation zum Erstellen von Rollenzuweisungen finden Sie [hier](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal).
+Sie können Rollenzuweisungen mithilfe von [RBAC-Prozeduren](../role-based-access-control/overview.md) verwalten, die in allen Azure-Diensten als Standard gelten. Sie können hierfür die Azure-Befehlszeilenschnittstelle, PowerShell und das Azure-Portal verwenden. Weitere Informationen finden Sie unter [Hinzufügen oder Entfernen von Azure-Rollenzuweisungen über das Azure-Portal](../role-based-access-control/role-assignments-portal.md).

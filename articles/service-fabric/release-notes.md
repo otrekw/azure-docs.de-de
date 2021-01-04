@@ -5,12 +5,12 @@ ms.date: 06/10/2019
 ms.topic: conceptual
 hide_comments: true
 hideEdit: true
-ms.openlocfilehash: 01574407801c0a6b0a5e0ddc438af4d3965dc090
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 9960f15f2f91b51b73727ab421eb58dddc5bb2b3
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93131546"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96485568"
 ---
 # <a name="service-fabric-releases"></a>Service Fabric-Versionen
 
@@ -29,17 +29,17 @@ Wir freuen uns, Ihnen mitteilen zu können, dass die Einführung von Release 7.
 ## <a name="what-is-new-in-service-fabric-7"></a>Was ist neu in Service Fabric 7.2?
 Dieses Release bietet eine Vielzahl von wichtigen Features und Verbesserungen. Hier sehen Sie einige der wichtigsten Features:
 ## <a name="key-announcements-in-72"></a>Wichtige Ankündigungen in 7.2
-- **Vorschau** : [**Verwaltete Service Fabric-Cluster**](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-managed-clusters-are-now-in-public-preview/ba-p/1721572) befinden sich nun in der öffentlichen Vorschau. Verwaltete Service Fabric-Cluster sollen die Clusterbereitstellung und -verwaltung vereinfachen, indem die zugrunde liegenden Ressourcen, aus denen sich der Service Fabric-Cluster zusammensetzt, in einer einzelnen ARM-Ressource gekapselt werden. Weitere Einzelheiten finden Sie unter [Übersicht über verwaltete Service Fabric-Cluster](https://docs.microsoft.com/azure/service-fabric/overview-managed-cluster).
-- **Vorschau** : [**Die Unterstützung zustandsloser Dienste mit mehr Instanzen als Knoten**](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies) befindet sich nun in der öffentlichen Vorschau. Eine Platzierungsrichtlinie ermöglicht das Erstellen mehrerer zustandsloser Instanzen einer Partition auf einem Knoten.
+- **Vorschau**: [**Verwaltete Service Fabric-Cluster**](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-managed-clusters-are-now-in-public-preview/ba-p/1721572) befinden sich nun in der öffentlichen Vorschau. Verwaltete Service Fabric-Cluster sollen die Clusterbereitstellung und -verwaltung vereinfachen, indem die zugrunde liegenden Ressourcen, aus denen sich der Service Fabric-Cluster zusammensetzt, in einer einzelnen ARM-Ressource gekapselt werden. Weitere Einzelheiten finden Sie unter [Übersicht über verwaltete Service Fabric-Cluster](./overview-managed-cluster.md).
+- **Vorschau**: [**Die Unterstützung zustandsloser Dienste mit mehr Instanzen als Knoten**](./service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md) befindet sich nun in der öffentlichen Vorschau. Eine Platzierungsrichtlinie ermöglicht das Erstellen mehrerer zustandsloser Instanzen einer Partition auf einem Knoten.
 - [**FabricObserver (FO) 3.0**](https://aka.ms/sf/fabricobserver) ist nun verfügbar.
     - Sie können FabricObserver jetzt in Linux- und Windows-Clustern ausführen.
     - Sie können jetzt benutzerdefinierte Observer-Plug-Ins erstellen. Weitere Informationen und Code finden Sie in der [Infodatei zum Plug-In](https://github.com/microsoft/service-fabric-observer/blob/master/Documentation/Plugins.md) und im [Beispielprojekt für das Plug-In](https://github.com/microsoft/service-fabric-observer/tree/master/SampleObserverPlugin).
     - Sie können jetzt sämtliche Observer-Einstellungen über ein Upgrade von Anwendungsparametern ändern. Dies bedeutet, dass Sie FO nicht mehr erneut bereitstellen müssen, um bestimmte Observer-Einstellungen zu ändern. Weitere Informationen finden Sie im [Beispiel](https://github.com/microsoft/service-fabric-observer/blob/master/Documentation/Using.md#parameterUpdates).
 - [**Unterstützung für Ubuntu 18.04 OneBox-Containerimages**](https://hub.docker.com/_/microsoft-service-fabric-onebox)
-- **Vorschau** : [**Schlüsseltresorverweise für Service Fabric-Anwendungen unterstützen **NUR Geheimnisse mit Versionsangabe**. Geheimnisse ohne Versionsangabe werden nicht unterstützt.** ](https://docs.microsoft.com/azure/service-fabric/service-fabric-keyvault-references)
+- **Vorschau**: [**Schlüsseltresorverweise für Service Fabric-Anwendungen unterstützen **NUR Geheimnisse mit Versionsangabe**. Geheimnisse ohne Versionsangabe werden nicht unterstützt.**](./service-fabric-keyvault-references.md)
 - Das SF SDK erfordert das neueste Update 16.7.6 für VS 2019 oder Version 16.8 Preview 4, um neue zustandslose, zustandsbehaftete oder Akteurprojekte in .NET Framework zu erstellen. Wenn Sie nicht über das neueste VS-Update verfügen, verwenden Sie nach dem Erstellen des Dienstprojekts den Paket-Manager, um Microsoft.ServiceFabric.Services (Version 4.2.x) für zustandsbehaftete oder zustandslose Projekte und Microsoft.ServiceFabric.Actors (Version 4.2.x) für Akteurprojekte von nuget.org zu installieren.
 - **RunToCompletion:** Service Fabric unterstützt das Konzept der Ausführung bis zum Abschluss für ausführbare Gastanwendungsdateien. Wenn die Ausführung des Replikats mit diesem Update abgeschlossen ist, werden die diesem Replikat zugewiesenen Clusterressourcen freigegeben.
-- [**Die Unterstützung der Ressourcengovernance wurde verbessert**](https://docs.microsoft.com/azure/service-fabric/service-fabric-resource-governance), sodass jetzt auch die Angaben für Anforderungen und Grenzwerte für CPU- und Arbeitsspeicherressourcen möglich sind.
+- [**Die Unterstützung der Ressourcengovernance wurde verbessert**](./service-fabric-resource-governance.md), sodass jetzt auch die Angaben für Anforderungen und Grenzwerte für CPU- und Arbeitsspeicherressourcen möglich sind.
 
 ### <a name="service-fabric-72-releases"></a>Service Fabric 7.2-Releases
 | Veröffentlichungsdatum | Release | Weitere Informationen |
@@ -110,13 +110,13 @@ Dies ist die neueste Version von Service Fabric mit wichtigen Features und umfan
 ### <a name="key-announcements"></a>Wichtige Ankündigungen
  - [**KeyVaultReference-Unterstützung für Anwendungsgeheimnisse (Vorschau)**](./service-fabric-keyvault-references.md): Service Fabric-Anwendungen, für die [verwaltete Identitäten](./concepts-managed-identity.md) aktiviert sind, können nun direkt auf eine Key Vault-Geheimnis-URL als Umgebungsvariable, Anwendungsparameter oder Containerrepository-Anmeldeinformationen verweisen. Service Fabric löst das Geheimnis mithilfe der verwalteten Identität der Anwendung automatisch auf. 
      
-- **Verbesserte Upgradesicherheit für zustandslose Dienste** : Um die Verfügbarkeit während eines Anwendungsupgrades zu gewährleisten, haben wir neue Konfigurationen eingeführt, um die [Mindestanzahl von Instanzen für zustandslose Dienste](/dotnet/api/system.fabric.description.statelessservicedescription?view=azure-dotnet) zu definieren, die als verfügbar erachtet werden. Zuvor war dieser Wert für alle Dienste 1 und konnte nicht geändert werden. Mit dieser neuen Sicherheitsüberprüfung pro Dienst können Sie sicherstellen, dass Ihre Dienste bei Anwendungsupgrades, Clusterupgrades und anderen Wartungsarbeiten, die von den Integritäts- und Sicherheitsüberprüfungen von Service Fabric abhängig sind, eine Mindestanzahl von aktiven Instanzen beibehalten.
+- **Verbesserte Upgradesicherheit für zustandslose Dienste**: Um die Verfügbarkeit während eines Anwendungsupgrades zu gewährleisten, haben wir neue Konfigurationen eingeführt, um die [Mindestanzahl von Instanzen für zustandslose Dienste](/dotnet/api/system.fabric.description.statelessservicedescription?view=azure-dotnet) zu definieren, die als verfügbar erachtet werden. Zuvor war dieser Wert für alle Dienste 1 und konnte nicht geändert werden. Mit dieser neuen Sicherheitsüberprüfung pro Dienst können Sie sicherstellen, dass Ihre Dienste bei Anwendungsupgrades, Clusterupgrades und anderen Wartungsarbeiten, die von den Integritäts- und Sicherheitsüberprüfungen von Service Fabric abhängig sind, eine Mindestanzahl von aktiven Instanzen beibehalten.
   
 - [**Resourceneinschränkungen für Benutzerdienste**](./service-fabric-resource-governance.md#enforcing-the-resource-limits-for-user-services): Benutzer können Ressourceneinschränkungen für die Benutzerdienste auf einem Knoten einrichten, um Szenarien wie die Erschöpfung von Ressourcen der Systemdienste von Service Fabric zu verhindern. 
   
 - [**Sehr hohe Dienstverschiebungskosten**](./service-fabric-cluster-resource-manager-movement-cost.md) für einen Replikattyp. Replikate mit sehr hohen Verschiebungskosten werden nur verschoben, wenn eine Einschränkungsverletzung im Cluster vorliegt, die nicht auf andere Weise behoben werden kann. Weitere Informationen dazu, wann die Nutzung von „sehr hohen“ Verschiebungskosten angemessen ist, sowie weitere Überlegungen finden Sie im verknüpften Dokument.
   
--  **Zusätzliche Clustersicherheitsüberprüfungen** : In diesem Release haben wir eine konfigurierbare Quorumsicherheitsüberprüfung für den Seedknoten eingeführt. Auf diese Weise können Sie anpassen, wie viele Seedknoten während des Lebenszyklus von Clustern und in Verwaltungsszenarien verfügbar sein müssen. Vorgänge, die den Cluster unter den konfigurierten Wert bringen würden, werden blockiert. Zurzeit ist der Standardwert immer ein Quorum der Seedknoten. Wenn Sie z.B. 7 Seedknoten verwenden, würde ein Vorgang, der Sie unter 5 Seedknoten bringen würde, standardmäßig blockiert. Mit dieser Änderung können Sie den minimal sicheren Wert auf 6 festlegen, sodass nur ein Seedknoten gleichzeitig ausfallen darf.
+-  **Zusätzliche Clustersicherheitsüberprüfungen**: In diesem Release haben wir eine konfigurierbare Quorumsicherheitsüberprüfung für den Seedknoten eingeführt. Auf diese Weise können Sie anpassen, wie viele Seedknoten während des Lebenszyklus von Clustern und in Verwaltungsszenarien verfügbar sein müssen. Vorgänge, die den Cluster unter den konfigurierten Wert bringen würden, werden blockiert. Zurzeit ist der Standardwert immer ein Quorum der Seedknoten. Wenn Sie z.B. 7 Seedknoten verwenden, würde ein Vorgang, der Sie unter 5 Seedknoten bringen würde, standardmäßig blockiert. Mit dieser Änderung können Sie den minimal sicheren Wert auf 6 festlegen, sodass nur ein Seedknoten gleichzeitig ausfallen darf.
    
 - Unterstützung für [**Verwaltung des Sicherungs- und Wiederherstellungsdiensts in Service Fabric Explorer**](./service-fabric-backuprestoreservice-quickstart-azurecluster.md) hinzugefügt. Dies ermöglicht die folgenden Aktivitäten direkt aus SFX heraus: Ermitteln des Sicherungs- und Wiederherstellungsdiensts, Erstellen von Sicherungsrichtlinien, Aktivieren automatischer Sicherungen, Erstellen von Ad-hoc-Sicherungen, Auslösen von Wiederherstellungsvorgängen und Durchsuchen vorhandener Sicherungen.
 
@@ -152,7 +152,7 @@ Dies sind die Neuigkeiten in Service Fabric 6.5:
 
 - [Replikatlebenszyklusereignisse](service-fabric-diagnostics-event-generation-operational.md#replica-events) wurden für zustandsbehaftete Dienste hinzugefügt.
 
-- [Bessere Sichtbarkeit der Status von Startknoten](service-fabric-understand-and-troubleshoot-with-system-health-reports.md#seed-node-status), einschließlich Clusterebenenwarnungen, wenn ein Startknoten (Seedknoten) fehlerhaft ist ( *Ausgefallen* , *Entfernt* oder *Unbekannt* ).
+- [Bessere Sichtbarkeit der Status von Startknoten](service-fabric-understand-and-troubleshoot-with-system-health-reports.md#seed-node-status), einschließlich Clusterebenenwarnungen, wenn ein Startknoten (Seedknoten) fehlerhaft ist (*Ausgefallen*, *Entfernt* oder *Unbekannt*).
 
 - Das [Service Fabric Application Disaster Recovery-Tool](https://github.com/Microsoft/Service-Fabric-AppDRTool) ermöglicht, dass zustandsbehaftete Service Fabric-Dienste nach einem Notfall im primären SF-Cluster schnell wiederhergestellt werden können. Daten aus dem primären Cluster werden ständig in der sekundären Standbyanwendung über regelmäßige Sicherung und Wiederherstellung synchronisiert.
 

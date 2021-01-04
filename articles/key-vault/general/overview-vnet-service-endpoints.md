@@ -9,12 +9,12 @@ ms.date: 01/02/2019
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: e491b89ec5e6488228dd8befed669a13842f9d15
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 9cbce00e2c2743aec57cd857b6f38d20bce33698
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93288564"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96532906"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>VNET-Dienstendpunkte für Azure Key Vault
 
@@ -71,7 +71,7 @@ Es folgt eine Liste der vertrauenswürdigen Dienste, denen Zugriff auf einen Sch
 |Exchange Online und SharePoint Online|Zulassen des Zugriffs auf den Kundenschlüssel für die Azure Storage Service-Dienstverschlüsselung mit [Kundenschlüssel](/microsoft-365/compliance/customer-key-overview).|
 |Azure Information Protection|Zulassen des Zugriffs auf den Mandantenschlüssel für [Azure Information Protection](/azure/information-protection/what-is-information-protection)|
 |Azure App Service|[Bereitstellen eines Azure-Web-App-Zertifikats über Key Vault](https://azure.github.io/AppService/2016/05/24/Deploying-Azure-Web-App-Certificate-through-Key-Vault.html).|
-|Azure SQL-Datenbank|[Transparent Data Encryption mit BYOK-Unterstützung (Bring Your Own Key) für Azure SQL-Datenbank und Azure Synapse Analytics (ehemals SQL Data Warehouse)](../../azure-sql/database/transparent-data-encryption-byok-overview.md?view=sql-server-2017&viewFallbackFrom=azuresqldb-current)|
+|Azure SQL-Datenbank|[Transparent Data Encryption mit BYOK-Unterstützung (Bring Your Own Key) für Azure SQL-Datenbank und Azure Synapse Analytics](../../azure-sql/database/transparent-data-encryption-byok-overview.md?view=sql-server-2017&viewFallbackFrom=azuresqldb-current).|
 |Azure Storage|[Storage Service Encryption mit von Kunden verwalteten Schlüsseln in Azure Key Vault](../../storage/common/customer-managed-keys-configure-key-vault.md).|
 |Azure Data Lake Store|[Datenverschlüsselung in Azure Data Lake Store](../../data-lake-store/data-lake-store-encryption.md) mit von Kunden verwalteten Schlüsseln.|
 |Azure Databricks|[Ein schneller, einfacher und kollaborativer Analysedienst auf Basis von Apache Spark](/azure/databricks/scenarios/what-is-azure-databricks)|
@@ -80,7 +80,7 @@ Es folgt eine Liste der vertrauenswürdigen Dienste, denen Zugriff auf einen Sch
 |Azure Event Hubs|[Zulassen des Zugriffs auf einen Schlüsseltresor für Szenarien mit kundenseitig verwalteten Schlüsseln](../../event-hubs/configure-customer-managed-key.md)|
 |Azure-Servicebus|[Zulassen des Zugriffs auf einen Schlüsseltresor für Szenarien mit kundenseitig verwalteten Schlüsseln](../../service-bus-messaging/configure-customer-managed-key.md)|
 |Azure Import/Export| [Verwenden kundenseitig verwalteter Schlüssel in Azure Key Vault für den Import/Export-Dienst](../../storage/common/storage-import-export-encryption-key-portal.md)
-|Azure Container Registry|[Registrierungsverschlüsselung mithilfe kundenseitig verwalteter Schlüssel](../../container-registry/container-registry-customer-managed-keys.md)<br><br/>[Übertragen von Artefakten in eine andere Registrierung](../../container-registry/container-registry-transfer-images.md)
+|Azure Container Registry|[Registrierungsverschlüsselung mithilfe kundenseitig verwalteter Schlüssel](../../container-registry/container-registry-customer-managed-keys.md)
 
 > [!NOTE]
 > Sie müssen die relevanten Key Vault-Zugriffsrichtlinien so einrichten, dass die entsprechenden Dienste Zugriff auf den Schlüsseltresor erhalten.

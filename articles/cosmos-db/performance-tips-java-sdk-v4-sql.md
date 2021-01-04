@@ -8,13 +8,13 @@ ms.devlang: java
 ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: anfeldma
-ms.custom: devx-track-java, contperfq2
-ms.openlocfilehash: 6b87a06620a6e20ff67bde6fde9ed01aaef7fc9e
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.custom: devx-track-java, contperf-fy21q2
+ms.openlocfilehash: 79f8c868b68cba1cff3e99e88e989fcc4d2a3df2
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93339715"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97029038"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-java-sdk-v4"></a>Leistungstipps für das Azure Cosmos DB Java SDK v4
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -40,11 +40,11 @@ Im Anschluss finden Sie einige Optionen zur Optimierung der Datenbankleistung:
 * **Verbindungsmodus: Verwenden des direkten Modus**
 <a id="direct-connection"></a>
     
-    Als Standardverbindungsmodus des Java SDK wird der direkte Modus verwendet. Sie können den Verbindungsmodus im Client-Generator mithilfe der Methode *directMode()* oder *gatewayMode()* wie unten gezeigt konfigurieren. Um einen der beiden Modi mit den Standardeinstellungen zu konfigurieren, rufen Sie beide Methoden ohne Argumente auf. Andernfalls übergeben Sie eine Konfigurationseinstellungs-Klasseninstanz als Argument ( *DirectConnectionConfig* für *directMode()* und *GatewayConnectionConfig* für *gatewayMode()* ). Weitere Informationen zu verschiedenen Konnektivitätsoptionen finden Sie im Artikel zu den [Konnektivitätsmodi](sql-sdk-connection-modes.md).
+    Als Standardverbindungsmodus des Java SDK wird der direkte Modus verwendet. Sie können den Verbindungsmodus im Client-Generator mithilfe der Methode *directMode()* oder *gatewayMode()* wie unten gezeigt konfigurieren. Um einen der beiden Modi mit den Standardeinstellungen zu konfigurieren, rufen Sie beide Methoden ohne Argumente auf. Andernfalls übergeben Sie eine Konfigurationseinstellungs-Klasseninstanz als Argument (*DirectConnectionConfig* für *directMode()* und *GatewayConnectionConfig* für *gatewayMode()* ). Weitere Informationen zu verschiedenen Konnektivitätsoptionen finden Sie im Artikel zu den [Konnektivitätsmodi](sql-sdk-connection-modes.md).
     
     ### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a> Java V4 SDK
 
-    # <a name="async"></a>[Asynchron](#tab/api-async)
+    # <a name="async"></a>[Async](#tab/api-async)
 
     Java SDK V4 (Maven com.azure::azure-cosmos) Async-API
 
@@ -108,13 +108,13 @@ Weitere Informationen finden Sie in den Anweisungen für [Windows](../virtual-ne
 
 * **Verwenden der niedrigsten für die Anwendung erforderlichen Konsistenzebene**
 
-    Wenn Sie eine *CosmosClient* -Klasse erstellen, wird *Sitzung* als Standardkonsistenz festgelegt, falls keine andere explizite Angabe gemacht wird. Wenn die Konsistenz *Sitzung* für Ihre Anwendungslogik nicht erforderlich ist, legen Sie die *Konsistenz* auf *Letztlich* fest. Hinweis: Es wird empfohlen, mindestens *Sitzung* für die Konsistenz bei Anwendungen zu verwenden, die den Azure Cosmos DB-Änderungsfeedprozessor verwenden.
+    Wenn Sie eine *CosmosClient*-Klasse erstellen, wird *Sitzung* als Standardkonsistenz festgelegt, falls keine andere explizite Angabe gemacht wird. Wenn die Konsistenz *Sitzung* für Ihre Anwendungslogik nicht erforderlich ist, legen Sie die *Konsistenz* auf *Letztlich* fest. Hinweis: Es wird empfohlen, mindestens *Sitzung* für die Konsistenz bei Anwendungen zu verwenden, die den Azure Cosmos DB-Änderungsfeedprozessor verwenden.
 
 * **Verwenden der Async-API zum Ausschöpfen des bereitgestellten Durchsatzes**
 
     Das Azure Cosmos DB Java SDK v4 bündelt die APIs „Sync“ und „Async“. Grob gesagt implementiert die Async-API SDK-Funktionen, während die Sync-API ein einfacher Wrapper ist, der blockierende Aufrufe der Async-API durchführt. Dies steht im Kontrast zum älteren Azure Cosmos DB Async Java SDK v2, das nur die Async-API enthielt, und dem älteren Azure Cosmos DB Sync Java SDK v2, das lediglich die Sync-API enthielt und eine vollständig unterschiedliche Implementierung erforderte. 
     
-    Die Auswahl der API wird während der Clientinitialisierung getroffen. Eine *CosmosAsyncClient* -Klasse unterstützt die Async-API, während die *CosmosClient* -Klasse die Sync-API unterstützt. 
+    Die Auswahl der API wird während der Clientinitialisierung getroffen. Eine *CosmosAsyncClient*-Klasse unterstützt die Async-API, während die *CosmosClient*-Klasse die Sync-API unterstützt. 
     
     Die Async-API implementiert nicht blockierende E/A-Vorgänge und ist die beste Wahl, wenn Sie den Durchsatz beim Ausgeben von Anforderungen an Azure Cosmos DB voll ausschöpfen möchten. 
     
@@ -124,13 +124,13 @@ Weitere Informationen finden Sie in den Anweisungen für [Windows](../virtual-ne
     
     Bei Verwendung der Sync-API ermöglicht eine geografische Kollokation einen höheren und konsistenteren Durchsatz (siehe [Bereitstellen von Clients in derselben Azure-Region für eine bessere Leistung](#collocate-clients)), der Durchsatz der Async-API wird jedoch nicht erreicht.
 
-    Einige Benutzer sind möglicherweise auch nicht mit [Project Reactor](https://projectreactor.io/) vertraut. Dabei handelt es sich um das Reactive Streams-Framework, das zum Implementieren der Async-API des Azure Cosmos DB Java SDK v4 verwendet wird. Wenn dies ein Problem darstellt, empfiehlt es sich, den [Einführungsleitfaden zu Reactor-Mustern](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-pattern-guide.md) durchzulesen und sich mithilfe dieser [Einführung in das reaktive Programmieren](https://tech.io/playgrounds/929/reactive-programming-with-reactor-3/Intro) damit vertraut zu machen. Wenn Sie Azure Cosmos DB bereits mit einer Async-Schnittstelle verwendet haben und es sich bei dem verwendeten SDK um das Azure Cosmos DB Async Java SDK v2 gehandelt hat, sind Sie möglicherweise mit [ReactiveX](http://reactivex.io/)/[RxJava](https://github.com/ReactiveX/RxJava) vertraut, sind sich aber nicht sicher, was sich bei Project Reactor geändert hat. Sehen Sie sich in diesem Fall unseren [Leitfaden mit dem Vergleich von Reactor und RxJava](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-rxjava-guide.md) an.
+    Einige Benutzer sind möglicherweise auch nicht mit [Project Reactor](https://projectreactor.io/) vertraut. Dabei handelt es sich um das Reactive Streams-Framework, das zum Implementieren der Async-API des Azure Cosmos DB Java SDK v4 verwendet wird. Wenn dies ein Problem darstellt, empfiehlt es sich, den [Einführungsleitfaden zu Reactor-Mustern](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/main/reactor-pattern-guide.md) durchzulesen und sich mithilfe dieser [Einführung in das reaktive Programmieren](https://tech.io/playgrounds/929/reactive-programming-with-reactor-3/Intro) damit vertraut zu machen. Wenn Sie Azure Cosmos DB bereits mit einer Async-Schnittstelle verwendet haben und es sich bei dem verwendeten SDK um das Azure Cosmos DB Async Java SDK v2 gehandelt hat, sind Sie möglicherweise mit [ReactiveX](http://reactivex.io/)/[RxJava](https://github.com/ReactiveX/RxJava) vertraut, sind sich aber nicht sicher, was sich bei Project Reactor geändert hat. Sehen Sie sich in diesem Fall unseren [Leitfaden mit dem Vergleich von Reactor und RxJava](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/main/reactor-rxjava-guide.md) an.
 
     Die folgenden Codeausschnitte zeigen, wie Sie Ihren Azure Cosmos DB-Client für Async- oder Sync-API-Vorgänge initialisieren:
 
     ### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a> Java V4 SDK
 
-    # <a name="async"></a>[Asynchron](#tab/api-async)
+    # <a name="async"></a>[Async](#tab/api-async)
 
     Java SDK V4 (Maven com.azure::azure-cosmos) Async-API
 
@@ -154,7 +154,7 @@ Weitere Informationen finden Sie in den Anweisungen für [Windows](../virtual-ne
 
         :::image type="content" source="./media/performance-tips-async-java/rntbdtransportclient.png" alt-text="Darstellung der Architektur im direkten Modus" border="false":::
 
-        Die clientseitige Architektur, die im direkten Modus eingesetzt wird, ermöglicht vorhersagbare Netzwerkauslastungen und Multiplexzugriff auf Azure Cosmos DB-Replikate. Das obige Diagramm zeigt, wie Clientanforderungen im direkten Modus an Replikate im Cosmos DB-Back-End weitergeleitet werden. Bei der Architektur für den direkten Modus werden auf Clientseite bis zu 10  *Kanäle* pro DB-Replikat zugeordnet. Ein Kanal ist eine TCP-Verbindung mit einem vorgeschalteten Anforderungspuffer, der 30 Anforderungen aufnehmen kann. Die zu einem Replikat gehörenden Kanäle werden nach Bedarf dynamisch vom **Dienstendpunkt** des Replikats zugeordnet. Wenn der Benutzer eine Anforderung im direkten Modus übermittelt, leitet der **TransportClient** die Anforderung basierend auf dem Partitionsschlüssel an den richtigen Dienstendpunkt weiter. In der **Anforderungswarteschlange** werden die Anforderungen vor dem Dienstendpunkt gepuffert.
+        Die clientseitige Architektur, die im direkten Modus eingesetzt wird, ermöglicht vorhersagbare Netzwerkauslastungen und Multiplexzugriff auf Azure Cosmos DB-Replikate. Das obige Diagramm zeigt, wie Clientanforderungen im direkten Modus an Replikate im Cosmos DB-Back-End weitergeleitet werden. Bei der Architektur für den direkten Modus werden auf Clientseite bis zu 10 *Kanäle* pro DB-Replikat zugeordnet. Ein Kanal ist eine TCP-Verbindung mit einem vorgeschalteten Anforderungspuffer, der 30 Anforderungen aufnehmen kann. Die zu einem Replikat gehörenden Kanäle werden nach Bedarf dynamisch vom **Dienstendpunkt** des Replikats zugeordnet. Wenn der Benutzer eine Anforderung im direkten Modus übermittelt, leitet der **TransportClient** die Anforderung basierend auf dem Partitionsschlüssel an den richtigen Dienstendpunkt weiter. In der **Anforderungswarteschlange** werden die Anforderungen vor dem Dienstendpunkt gepuffert.
 
     * ***Konfigurationsoptionen für den direkten Modus** _
 
@@ -162,7 +162,7 @@ Weitere Informationen finden Sie in den Anweisungen für [Windows](../virtual-ne
 
         Diese Konfigurationseinstellungen steuern das Verhalten der zugrunde liegenden Architektur des weiter oben behandelten direkten Modus.
 
-        Verwenden Sie als ersten Schritt die folgenden empfohlenen Konfigurationseinstellungen. Diese *DirectConnectionConfig* -Optionen sind erweiterte Konfigurationseinstellungen, die sich auf unerwartete Weise auf die SDK-Leistung auswirken können. Es wird empfohlen, dass Benutzer diese nicht ändern, es sei denn, sie kennen die möglichen Auswirkungen und dies ist absolut notwendig. Wenden Sie sich an das [Azure Cosmos DB-Team](mailto:CosmosDBPerformanceSupport@service.microsoft.com), wenn Sie mit diesem speziellen Thema Probleme haben.
+        Verwenden Sie als ersten Schritt die folgenden empfohlenen Konfigurationseinstellungen. Diese *DirectConnectionConfig*-Optionen sind erweiterte Konfigurationseinstellungen, die sich auf unerwartete Weise auf die SDK-Leistung auswirken können. Es wird empfohlen, dass Benutzer diese nicht ändern, es sei denn, sie kennen die möglichen Auswirkungen und dies ist absolut notwendig. Wenden Sie sich an das [Azure Cosmos DB-Team](mailto:CosmosDBPerformanceSupport@service.microsoft.com), wenn Sie mit diesem speziellen Thema Probleme haben.
 
         | Konfigurationsoption       | Standard   |
         | :------------------:       | :-----:   |
@@ -198,7 +198,7 @@ Weitere Informationen finden Sie in den Anweisungen für [Windows](../virtual-ne
 
 * **Optimieren der Seitengröße für Abfragen/Lesefeeds, um die Leistung zu verbessern**
 
-    Wenn mehrere Dokumente mithilfe der Lesefeedfunktion (z. B. *readItems* ) gleichzeitig gelesen werden oder eine SQL-Abfrage ( *queryItems* ) ausgegeben wird, werden die Ergebnisse bei der Rückgabe segmentiert, falls das Resultset zu groß ist. Ergebnisse werden standardmäßig in Blöcken mit je 100 Elementen oder 1 MB zurückgegeben (je nachdem, welcher Grenzwert zuerst erreicht wird).
+    Wenn mehrere Dokumente mithilfe der Lesefeedfunktion (z. B. *readItems*) gleichzeitig gelesen werden oder eine SQL-Abfrage (*queryItems*) ausgegeben wird, werden die Ergebnisse bei der Rückgabe segmentiert, falls das Resultset zu groß ist. Ergebnisse werden standardmäßig in Blöcken mit je 100 Elementen oder 1 MB zurückgegeben (je nachdem, welcher Grenzwert zuerst erreicht wird).
 
     Angenommen, die Anwendung gibt eine Abfrage an Azure Cosmos DB aus, und die Anwendung erfordert alle Abfrageergebnisse, um die Aufgabe abzuschließen zu können. Durch Anpassen des Anforderungsheaderfelds [x-ms-max-item-count](/rest/api/cosmos-db/common-cosmosdb-rest-request-headers) können Sie die Seitengröße erhöhen, um die Anzahl von Netzwerkroundtrips zu verringern, die zum Abrufen aller entsprechenden Ergebnisse erforderlich sind. 
 
@@ -208,7 +208,7 @@ Weitere Informationen finden Sie in den Anweisungen für [Windows](../virtual-ne
     
     In einigen Anwendungen benötigen Sie möglicherweise nicht alle Abfrageergebnisse. Falls nur einige wenige Ergebnisse angezeigt werden müssen (etwa, wenn von der Benutzeroberfläche oder Anwendungs-API gleichzeitig nur zehn Ergebnisse zurückgegeben werden), können Sie die Seitengröße auch auf „10“ verringern, um den durch Lese- und Abfragevorgänge beanspruchten Durchsatz zu reduzieren.
 
-    Sie können auch das Argument für die bevorzugte Seitengröße der *byPage* -Methode festlegen, anstatt das REST-Headerfeld direkt zu ändern. Beachten Sie, dass mit [x-ms-max-item-count](/rest/api/cosmos-db/common-cosmosdb-rest-request-headers) oder dem Argument der *byPage* -Methode für die bevorzugte Seitengröße nur eine Obergrenze für die Seitengröße und keine absolute Anforderung festgelegt wird. Aus mehreren Gründen gibt Azure Cosmos DB möglicherweise Seiten zurück, die kleiner als die bevorzugte Seitengröße sind. 
+    Sie können auch das Argument für die bevorzugte Seitengröße der *byPage*-Methode festlegen, anstatt das REST-Headerfeld direkt zu ändern. Beachten Sie, dass mit [x-ms-max-item-count](/rest/api/cosmos-db/common-cosmosdb-rest-request-headers) oder dem Argument der *byPage*-Methode für die bevorzugte Seitengröße nur eine Obergrenze für die Seitengröße und keine absolute Anforderung festgelegt wird. Aus mehreren Gründen gibt Azure Cosmos DB möglicherweise Seiten zurück, die kleiner als die bevorzugte Seitengröße sind. 
 
 * **Verwenden des geeigneten Planers (Vermeiden des Diebstahls von Eventloop-E/A-Threads in Netty)**
 
@@ -237,7 +237,7 @@ Weitere Informationen finden Sie in den Anweisungen für [Windows](../virtual-ne
 
         Die Wartezeit einer synchronen Protokollierung ist notwendigerweise ein Faktor der Berechnung der Gesamtwartezeit des Threads, der Anforderungen generiert. Eine asynchrone Protokollierung wie [log4j2](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Flogging.apache.org%2Flog4j%2Flog4j-2.3%2Fmanual%2Fasync.html&data=02%7C01%7CCosmosDBPerformanceInternal%40service.microsoft.com%7C36fd15dea8384bfe9b6b08d7c0cf2113%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637189868158267433&sdata=%2B9xfJ%2BWE%2F0CyKRPu9AmXkUrT3d3uNA9GdmwvalV3EOg%3D&reserved=0) wird empfohlen, um den Protokollierungsaufwand von Hochleistungsanwendungsthreads zu entkoppeln.
 
-    _ * **Deaktivieren der Netty-Protokollierung** _
+    _ ***Deaktivieren der Netty-Protokollierung** _
 
         Netty library logging is chatty and needs to be turned off (suppressing sign in the configuration may not be enough) to avoid additional CPU costs. If you are not in debugging mode, disable netty's logging altogether. So if you are using log4j to remove the additional CPU costs incurred by ``org.apache.log4j.Category.callAppenders()`` from netty add the following line to your codebase:
 
@@ -271,7 +271,7 @@ Weitere Informationen finden Sie in den Anweisungen für [Windows](../virtual-ne
 
     Geben Sie beim API-Aufruf mit Punktschreibvorgängen wie unten gezeigt Elementpartitionsschlüssel an, um die Leistung zu verbessern:
 
-    # <a name="async"></a>[Asynchron](#tab/api-async)
+    # <a name="async"></a>[Async](#tab/api-async)
 
     Java SDK V4 (Maven com.azure::azure-cosmos) Async-API
 
@@ -287,7 +287,7 @@ Weitere Informationen finden Sie in den Anweisungen für [Windows](../virtual-ne
 
     Geben Sie also nicht wie unten gezeigt nur die Elementinstanz an:
 
-    # <a name="async"></a>[Asynchron](#tab/api-async)
+    # <a name="async"></a>[Async](#tab/api-async)
 
     Java SDK V4 (Maven com.azure::azure-cosmos) Async-API
 
@@ -357,7 +357,7 @@ Weitere Informationen finden Sie in den Anweisungen für [Windows](../virtual-ne
 
     Alle SDKs fangen diese Antwort implizit ab, berücksichtigen den vom Server angegebenen Header vom Typ „retry-after“ und wiederholen die Anforderung. Wenn nicht mehrere Clients gleichzeitig auf Ihr Konto zugreifen, wird die nächste Wiederholung erfolgreich ausgeführt.
 
-    Falls mehrere Clients kumulativ und kontinuierlich die Anforderungsrate überschreiten, reicht die intern vom Client festgelegte Standardanzahl von neun Wiederholungen unter Umständen nicht aus. In diesem Fall löst der Client für die Anwendung eine *CosmosClientException* -Klasse mit dem Statuscode 429 aus. Die standardmäßige Wiederholungsanzahl kann durch Verwendung von „setRetryOptions“ für die ConnectionPolicy-Instanz geändert werden. Die *CosmosClientException* -Klasse mit dem Statuscode 429 wird standardmäßig nach einer kumulierten Wartezeit von 30 Sekunden zurückgegeben, wenn die Anforderung weiterhin die Anforderungsrate übersteigt. Dies gilt auch, wenn die aktuelle Wiederholungsanzahl unter der maximalen Wiederholungsanzahl liegt – ganz gleich, ob es sich dabei um den Standardwert (9) oder um einen benutzerdefinierten Wert handelt.
+    Falls mehrere Clients kumulativ und kontinuierlich die Anforderungsrate überschreiten, reicht die intern vom Client festgelegte Standardanzahl von neun Wiederholungen unter Umständen nicht aus. In diesem Fall löst der Client für die Anwendung eine *CosmosClientException*-Klasse mit dem Statuscode 429 aus. Die standardmäßige Wiederholungsanzahl kann durch Verwendung von „setRetryOptions“ für die ConnectionPolicy-Instanz geändert werden. Die *CosmosClientException*-Klasse mit dem Statuscode 429 wird standardmäßig nach einer kumulierten Wartezeit von 30 Sekunden zurückgegeben, wenn die Anforderung weiterhin die Anforderungsrate übersteigt. Dies gilt auch, wenn die aktuelle Wiederholungsanzahl unter der maximalen Wiederholungsanzahl liegt – ganz gleich, ob es sich dabei um den Standardwert (9) oder um einen benutzerdefinierten Wert handelt.
 
     Das automatisierte Wiederholungsverhalten trägt zwar bei den meisten Anwendungen zur Verbesserung der Resilienz und Nutzbarkeit bei, kann bei Leistungsbenchmarks aber auch hinderlich sein (insbesondere beim Ermitteln der Latenz). Die Wartezeit für den Client nimmt stark zu, wenn das Experiment die Serverdrosselung erreicht und damit die automatische Wiederholung durch das Client-SDK auslöst. Ermitteln Sie zur Vermeidung von Latenzspitzenwerten bei Leistungsexperimenten die von den einzelnen Vorgängen zurückgegebene Belastung, und stellen Sie sicher, dass die Anforderungen die reservierte Anforderungsrate nicht überschreiten. Weitere Informationen finden Sie unter [Anforderungseinheiten in DocumentDB](request-units.md).
 

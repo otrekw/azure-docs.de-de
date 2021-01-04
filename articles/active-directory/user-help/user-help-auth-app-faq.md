@@ -9,21 +9,21 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 10/20/2020
+ms.date: 12/01/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 017898249f1ad32a37b7ccd6bce17fe3d32843f3
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: f0cb7d4ebe428da4a370433b3e90a829f30489db
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92480308"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96512204"
 ---
 # <a name="frequently-asked-questions-faq-about-the-microsoft-authenticator-app"></a>Häufig gestellte Fragen zur Microsoft Authenticator-App
 
 In diesem Artikel werden häufig gestellte Fragen zur Microsoft Authenticator-App beantwortet. Wenn Sie keine Antwort auf Ihre Frage finden, wechseln Sie zum [Forum zur Microsoft Authenticator-App](https://social.technet.microsoft.com/Forums/en-US/home?forum=MicrosoftAuthenticatorApp).
 
-Die Microsoft Authenticator-App ersetzt die Azure Authenticator-App und ist die empfohlene App für Azure Multi-Factor Authentication. Die Microsoft Authenticator-App ist für [Android](https://app.adjust.com/e3rxkc_7lfdtm?fallback=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcom.azure.authenticator) und [iOS](https://app.adjust.com/e3rxkc_7lfdtm?fallback=https%3A%2F%2Fitunes.apple.com%2Fus%2Fapp%2Fmicrosoft-authenticator%2Fid983156458) verfügbar.
+Die Microsoft Authenticator-App ersetzt die Azure Authenticator-App und ist die empfohlene App für Azure AD Multi-Factor Authentication. Die Microsoft Authenticator-App ist für [Android](https://app.adjust.com/e3rxkc_7lfdtm?fallback=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcom.azure.authenticator) und [iOS](https://app.adjust.com/e3rxkc_7lfdtm?fallback=https%3A%2F%2Fitunes.apple.com%2Fus%2Fapp%2Fmicrosoft-authenticator%2Fid983156458) verfügbar.
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 
@@ -32,6 +32,14 @@ Die Microsoft Authenticator-App ersetzt die Azure Authenticator-App und ist die 
 **F:** Bedeutet die Registrierung eines Geräts die Zustimmung für den Zugriff auf das Gerät durch das Unternehmen oder den Dienst?
 
 **A:** Durch das Registrieren eines Geräts erhält Ihr Gerät Zugriff auf die Dienste Ihrer Organisation, ohne dass Sie Ihrer Organisation erlauben, auf Ihr Gerät zuzugreifen.
+
+## <a name="too-many-app-permissions"></a>Zu viele App-Berechtigungen
+
+**F:** Warum fordert die App so viele Berechtigungen an?
+
+**A:** Hier ist die vollständige Liste der Berechtigungen, die möglicherweise erforderlich sind, sowie Hinweise zu deren Verwendung in der App. Die jeweils angezeigten Berechtigungen hängen vom Typ Ihres Telefons ab.
+
+- **Speicherort:** Manchmal möchte Ihre Organisation Ihren Standort kennen, bevor sie Ihnen Zugriff auf bestimmte Ressourcen gewährt. Diese Berechtigung wird von der App nur angefordert, wenn Ihre Organisation über eine Richtlinie verfügt, die einen Standort erfordert. 
 
 ### <a name="legacy-apns-support-deprecated"></a>Unterstützung für ältere APNs als veraltet markiert
 
@@ -96,13 +104,13 @@ Die Microsoft Authenticator-App ersetzt die Azure Authenticator-App und ist die 
 
 **F:** Warum erhalte ich nur dann Benachrichtigungen, wenn die App geöffnet ist? Wenn die App geschlossen ist, erhalte ich keine Benachrichtigungen.
 
-**A:** Wenn Sie auch mit aktiviertem Rufton Benachrichtigungen, aber keine Warnung erhalten, sollten Sie Ihre App-Einstellungen überprüfen. Stellen Sie sicher, dass Sound oder Vibrieren bei Benachrichtigungen für die App aktiviert ist. Wenn Sie überhaupt keine Benachrichtigungen erhalten, überprüfen Sie Folgendes:<ul><li>Ist Ihr Telefon im Nicht-stören-Modus oder stummgeschaltet? Diese Modi können verhindern, dass Apps Benachrichtigungen senden.</li><li>Erhalten Sie Benachrichtigungen von anderen Apps? Wenn dies nicht der Fall ist, liegt möglicherweise ein Problem mit den Netzwerkverbindungen auf Ihrem Mobiltelefon oder mit dem Benachrichtigungskanal von Android oder Apple vor. Sie können versuchen, Ihre Netzwerkverbindungen über Ihre Telefoneinstellungen aufzulösen. Unter Umständen müssen Sie sich an Ihren Internetanbieter wenden, damit dieser mit dem Benachrichtigungskanal von Android oder Apple hilft.</li><li>Können Sie nur für bestimmte Konten in der App Benachrichtigungen erhalten? Falls Ja, entfernen Sie das problematische Konto aus Ihrer App, fügen Sie es erneut hinzu, sodass Benachrichtigungen möglich sind, und prüfen Sie, ob das Problem damit behoben ist.</li></ul>Wenn Sie alle diese Schritte versucht haben und immer noch Probleme auftreten, sollten Sie Ihre Protokolldateien zur Diagnose einsenden. Öffnen Sie die App, wechseln Sie zu **Hilfe** , und wählen Sie dann **Protokolle senden** aus. Wechseln Sie anschließend zum [Internetforum zur Microsoft Authenticator-App](https://social.technet.microsoft.com/Forums/en-US/home?forum=MicrosoftAuthenticatorApp), und informieren Sie uns über Ihr Problem und wie Sie bisher versucht haben, es zu lösen.
+**A:** Wenn Sie auch mit aktiviertem Rufton Benachrichtigungen, aber keine Warnung erhalten, sollten Sie Ihre App-Einstellungen überprüfen. Stellen Sie sicher, dass Sound oder Vibrieren bei Benachrichtigungen für die App aktiviert ist. Wenn Sie überhaupt keine Benachrichtigungen erhalten, überprüfen Sie Folgendes:<ul><li>Ist Ihr Telefon im Nicht-stören-Modus oder stummgeschaltet? Diese Modi können verhindern, dass Apps Benachrichtigungen senden.</li><li>Erhalten Sie Benachrichtigungen von anderen Apps? Wenn dies nicht der Fall ist, liegt möglicherweise ein Problem mit den Netzwerkverbindungen auf Ihrem Mobiltelefon oder mit dem Benachrichtigungskanal von Android oder Apple vor. Sie können versuchen, Ihre Netzwerkverbindungen über Ihre Telefoneinstellungen aufzulösen. Unter Umständen müssen Sie sich an Ihren Internetanbieter wenden, damit dieser mit dem Benachrichtigungskanal von Android oder Apple hilft.</li><li>Können Sie nur für bestimmte Konten in der App Benachrichtigungen erhalten? Falls Ja, entfernen Sie das problematische Konto aus Ihrer App, fügen Sie es erneut hinzu, sodass Benachrichtigungen möglich sind, und prüfen Sie, ob das Problem damit behoben ist.</li></ul>Wenn Sie alle diese Schritte versucht haben und immer noch Probleme auftreten, sollten Sie Ihre Protokolldateien zur Diagnose einsenden. Öffnen Sie die App, wechseln Sie zu **Hilfe**, und wählen Sie dann **Protokolle senden** aus. Wechseln Sie anschließend zum [Internetforum zur Microsoft Authenticator-App](https://social.technet.microsoft.com/Forums/en-US/home?forum=MicrosoftAuthenticatorApp), und informieren Sie uns über Ihr Problem und wie Sie bisher versucht haben, es zu lösen.
 
 ### <a name="switch-to-push-notifications"></a>Umstellen auf Pushbenachrichtigungen
 
 **F:** Ich verwende die Überprüfungscodes in der App, aber wie wechsle ich zu Pushbenachrichtigungen?
 
-**A:** Sie können Benachrichtigungen für Ihr Geschäfts-, Schul- oder Unikonto (falls dies von Ihrem Administrator gestattet ist) oder für Ihr privates Microsoft-Konto einrichten. Für Konten von Drittanbietern wie Google oder Facebook ist es nicht möglich, Benachrichtigungen zu aktivieren.<br>Wenn Sie in Ihrem privaten Konto Benachrichtigungen empfangen möchten, müssen Sie Ihr Gerät mit dem Konto neu registrieren. Wechseln Sie zu **Konto hinzufügen** , wählen Sie **Persönliches Microsoft-Konto** aus, und melden Sie sich dann mit Ihrem Benutzernamen und Kennwort an.<br>Ihre Organisation entscheidet, ob One-Click-Benachrichtigungen für Ihr Geschäfts-, Schul- oder Unikonto zugelassen sind.
+**A:** Sie können Benachrichtigungen für Ihr Geschäfts-, Schul- oder Unikonto (falls dies von Ihrem Administrator gestattet ist) oder für Ihr privates Microsoft-Konto einrichten. Für Konten von Drittanbietern wie Google oder Facebook ist es nicht möglich, Benachrichtigungen zu aktivieren.<br>Wenn Sie in Ihrem privaten Konto Benachrichtigungen empfangen möchten, müssen Sie Ihr Gerät mit dem Konto neu registrieren. Wechseln Sie zu **Konto hinzufügen**, wählen Sie **Persönliches Microsoft-Konto** aus, und melden Sie sich dann mit Ihrem Benutzernamen und Kennwort an.<br>Ihre Organisation entscheidet, ob One-Click-Benachrichtigungen für Ihr Geschäfts-, Schul- oder Unikonto zugelassen sind.
 
 ### <a name="notifications-for-other-accounts"></a>Benachrichtigungen für andere Konten
 
@@ -126,7 +134,7 @@ Die Microsoft Authenticator-App ersetzt die Azure Authenticator-App und ist die 
 
 **F:** Wie entferne ich ein Konto aus der App?
 
-**A:** Tippen Sie auf die Kachel des Kontos, das Sie aus der App entfernen möchten, um die Vollbildansicht des Kontos zu laden. Tippen Sie auf **Konto entfernen** , um das Konto aus der App zu entfernen.<br>Wenn Sie ein Gerät besitzen, das bei Ihrer Organisation registriert ist, müssen Sie möglicherweise einen weiteren Schritt ausführen, um Ihr Konto zu entfernen. Auf diesen Geräten wird Authenticator automatisch als Geräteadministrator registriert. Wenn Sie die App vollständig deinstallieren möchten, müssen Sie die Registrierung der App zuerst in den App-Einstellungen aufheben.
+**A:** Tippen Sie auf die Kachel des Kontos, das Sie aus der App entfernen möchten, um die Vollbildansicht des Kontos zu laden. Tippen Sie auf **Konto entfernen**, um das Konto aus der App zu entfernen.<br>Wenn Sie ein Gerät besitzen, das bei Ihrer Organisation registriert ist, müssen Sie möglicherweise einen weiteren Schritt ausführen, um Ihr Konto zu entfernen. Auf diesen Geräten wird Authenticator automatisch als Geräteadministrator registriert. Wenn Sie die App vollständig deinstallieren möchten, müssen Sie die Registrierung der App zuerst in den App-Einstellungen aufheben.
 
 ### <a name="too-many-permissions"></a>Zu viele Berechtigungen
 
@@ -180,7 +188,7 @@ Die Microsoft Authenticator-App ersetzt die Azure Authenticator-App und ist die 
 
 **F:** Warum kann ich Benachrichtigungen auf meiner Apple Watch nicht genehmigen oder verweigern?
 
-**A:** Stellen Sie zunächst sicher, dass Sie Authenticator auf Ihrem iPhone auf Version 6.0.0 oder höher aktualisiert haben. Danach öffnen Sie die Microsoft Authenticator-Begleit-App auf Ihrer Apple Watch und suchen nach Konten, unter denen sich eine **Set Up** -Schaltfläche befindet. Schließen Sie den Einrichtungsprozess ab, um Benachrichtigungen für diese Konten zu genehmigen.
+**A:** Stellen Sie zunächst sicher, dass Sie Authenticator auf Ihrem iPhone auf Version 6.0.0 oder höher aktualisiert haben. Danach öffnen Sie die Microsoft Authenticator-Begleit-App auf Ihrer Apple Watch und suchen nach Konten, unter denen sich eine **Set Up**-Schaltfläche befindet. Schließen Sie den Einrichtungsprozess ab, um Benachrichtigungen für diese Konten zu genehmigen.
 
 ### <a name="apple-watch-communication-error"></a>Apple Watch-Kommunikationsfehler
 
@@ -198,7 +206,7 @@ Die Microsoft Authenticator-App ersetzt die Azure Authenticator-App und ist die 
 
 **F:** Meine Apple Watch-Begleit-App ist abgestürzt. Kann ich Ihnen meine Absturzprotokolle zur Untersuchung senden?
 
-**A:** Sie müssen zuerst sicherstellen, dass Sie sich entschieden haben, Ihre Analysen für uns freizugeben. Als TestFlight-Benutzer sind Sie bereits registriert. Andernfalls wechseln Sie zu **Einstellungen > Datenschutz > Analyse** , und wählen Sie sowohl die Option **iPhone- und Watch-Analyse freigeben** als auch **Für App-Entwickler freigeben** aus.<br>Nachdem Sie sich angemeldet haben, können Sie versuchen, den Absturz zu reproduzieren, damit Ihre Absturzprotokolle automatisch zur Untersuchung an uns gesendet werden. Wenn Sie den Absturz jedoch nicht reproduzieren können, können Sie die Protokolldateien manuell kopieren und an uns senden.<ol><li>Öffnen die Watch-App auf Ihrem Telefon, wechseln Sie zu **Einstellungen > Allgemein** , und klicken Sie dann auf **Watch-Analyse kopieren**.</li><li>Suchen Sie den entsprechenden Absturz unter **Einstellungen > Datenschutz > Analyse > Analysedaten** , und kopieren Sie dann den gesamten Text manuell.</li><li>Öffnen Sie Authenticator auf Ihrem Telefon, und fügen Sie den kopierten Text auf der Seite **Protokolle senden** in das Textfeld **Share with App Developers** (Mit App-Entwicklern teilen) ein.</li></ol>
+**A:** Sie müssen zuerst sicherstellen, dass Sie sich entschieden haben, Ihre Analysen für uns freizugeben. Als TestFlight-Benutzer sind Sie bereits registriert. Andernfalls wechseln Sie zu **Einstellungen > Datenschutz > Analyse**, und wählen Sie sowohl die Option **iPhone- und Watch-Analyse freigeben** als auch **Für App-Entwickler freigeben** aus.<br>Nachdem Sie sich angemeldet haben, können Sie versuchen, den Absturz zu reproduzieren, damit Ihre Absturzprotokolle automatisch zur Untersuchung an uns gesendet werden. Wenn Sie den Absturz jedoch nicht reproduzieren können, können Sie die Protokolldateien manuell kopieren und an uns senden.<ol><li>Öffnen die Watch-App auf Ihrem Telefon, wechseln Sie zu **Einstellungen > Allgemein**, und klicken Sie dann auf **Watch-Analyse kopieren**.</li><li>Suchen Sie den entsprechenden Absturz unter **Einstellungen > Datenschutz > Analyse > Analysedaten**, und kopieren Sie dann den gesamten Text manuell.</li><li>Öffnen Sie Authenticator auf Ihrem Telefon, und fügen Sie den kopierten Text auf der Seite **Protokolle senden** in das Textfeld **Share with App Developers** (Mit App-Entwicklern teilen) ein.</li></ol>
 
 ## <a name="next-steps"></a>Nächste Schritte
 

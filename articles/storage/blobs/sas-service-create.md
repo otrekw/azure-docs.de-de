@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 10/30/2020
+ms.date: 11/20/2020
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 66ad9f84985c7f35d410c6b1c3508efd33526c83
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: f55cfcf6d6ec369cdf871e8ba38bd81774dacd8e
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93147708"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97092311"
 ---
 # <a name="create-a-service-sas-for-a-container-or-blob"></a>Erstellen einer Dienst-SAS für einen Container oder ein Blob
 
@@ -32,7 +32,7 @@ Mit dem folgenden Codebeispiel wird eine SAS für einen Container erstellt. Wenn
 
 Eine Dienst-SAS wird mit dem Kontozugriffsschlüssel signiert. Verwenden Sie die [StorageSharedKeyCredential](/dotnet/api/azure.storage.storagesharedkeycredential)-Klasse, um die Informationen zu erstellen, die zum Signieren der SAS verwendet werden. Erstellen Sie als Nächstes ein neues [BlobSasBuilder](/dotnet/api/azure.storage.sas.blobsasbuilder)-Objekt, und rufen Sie [ToSasQueryParameters](/dotnet/api/azure.storage.sas.blobsasbuilder.tosasqueryparameters) auf, um die SAS-Tokenzeichenfolge abzurufen.
 
-:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Security.cs" id="Snippet_GetContainerSasUri":::
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Sas.cs" id="Snippet_GetServiceSasUriForContainer":::
 
 ### <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
 
@@ -114,13 +114,13 @@ function getContainerSasUri(containerClient, sharedKeyCredential, storedPolicyNa
 
 Mit dem folgenden Codebeispiel wird eine SAS für ein Blob erstellt. Wenn der Name einer vorhandenen gespeicherten Zugriffsrichtlinie angegeben wird, wird diese Richtlinie der SAS zugewiesen. Wenn keine gespeicherte Zugriffsrichtlinie angegeben wird, erstellt der Code eine Ad-hoc-SAS für das Blob.
 
-### <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
+# <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
 
 Eine Dienst-SAS wird mit dem Kontozugriffsschlüssel signiert. Verwenden Sie die [StorageSharedKeyCredential](/dotnet/api/azure.storage.storagesharedkeycredential)-Klasse, um die Informationen zu erstellen, die zum Signieren der SAS verwendet werden. Erstellen Sie als Nächstes ein neues [BlobSasBuilder](/dotnet/api/azure.storage.sas.blobsasbuilder)-Objekt, und rufen Sie [ToSasQueryParameters](/dotnet/api/azure.storage.sas.blobsasbuilder.tosasqueryparameters) auf, um die SAS-Tokenzeichenfolge abzurufen.
 
-:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Security.cs" id="Snippet_GetBlobSasUri":::
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Sas.cs" id="Snippet_GetServiceSasUriForBlob":::
 
-### <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
+# <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
 
 Um eine Dienst-SAS für ein Blob zu erstellen, rufen Sie die Methode [CloudBlob.GetSharedAccessSignature](/dotnet/api/microsoft.azure.storage.blob.cloudblob.getsharedaccesssignature) auf.
 
@@ -203,6 +203,14 @@ function getBlobSasUri(containerClient, blobName, sharedKeyCredential, storedPol
 ```
 
 ---
+
+## <a name="create-a-service-sas-for-a-directory"></a>Erstellen einer Dienst-SAS für ein Verzeichnis
+
+In einem Speicherkonto mit einem aktivierten hierarchischen Namespace können Sie eine Dienst-SAS für ein Verzeichnis erstellen. Stellen Sie zum Erstellen der Dienst-SAS sicher, dass Sie Version 12.5.0 oder höher des [Azure.Storage.Files.DataLake](https://www.nuget.org/packages/Azure.Storage.Files.DataLake/)-Pakets installiert haben.
+
+Im folgenden Beispiel wird gezeigt, wie Sie eine Dienst-SAS für ein Verzeichnis mit der v12-Clientbibliothek für .NET erstellen:
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Sas.cs" id="Snippet_GetServiceSasUriForDirectory":::
 
 [!INCLUDE [storage-blob-dotnet-resources-include](../../../includes/storage-blob-dotnet-resources-include.md)]
 

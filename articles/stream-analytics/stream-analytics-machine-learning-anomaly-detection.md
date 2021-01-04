@@ -8,11 +8,11 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/21/2019
 ms.openlocfilehash: c57a3920dac3e18e248109fafdf61fdfa871c54d
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93123709"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023396"
 ---
 # <a name="anomaly-detection-in-azure-stream-analytics"></a>Anomalieerkennung in Azure Stream Analytics
 
@@ -76,7 +76,7 @@ FROM AnomalyDetectionStep
 
 Permanente Anomalien im Ereignisdatenstrom einer Zeitreihe sind Änderungen bei der Verteilung der Werte im Ereignisdatenstrom, wie Änderungen des Zuverlässigkeitsgrads und Trends. In Stream Analytics werden diese Anomalien mithilfe des auf Machine Learning basierenden [AnomalyDetection_ChangePoint](/stream-analytics-query/anomalydetection-changepoint-azure-stream-analytics)-Operators erkannt.
 
-Permanente Änderungen dauern viel länger als Spitzen und Senken und könnten auf katastrophale Ereignisse hinweisen. Permanente Änderungen sind in der Regel mit bloßem Auge nicht sichtbar, können aber mit dem **AnomalyDetection_ChangePoint** -Operator erkannt werden.
+Permanente Änderungen dauern viel länger als Spitzen und Senken und könnten auf katastrophale Ereignisse hinweisen. Permanente Änderungen sind in der Regel mit bloßem Auge nicht sichtbar, können aber mit dem **AnomalyDetection_ChangePoint**-Operator erkannt werden.
 
 Die folgende Abbildung ist ein Beispiel für die Änderung des Zuverlässigkeitsgrads:
 
@@ -116,7 +116,7 @@ Die Leistungsfähigkeit dieser Modelle hängt von der Verlaufsgröße, der Fenst
 
 * **Verlaufsgröße** – Die Modellleistung verhält sich linear zur **Verlaufsgröße**. Je länger die Verlaufsgröße, umso mehr Zeit benötigen die Modelle, um ein neues Ereignis zu bewerten. Dies liegt daran, dass das neue Ereignis von den Modellen mit jedem vergangenen Ereignis im Verlaufspuffer verglichen wird.
 * **Fensterdauer** – Die **Fensterdauer** sollte widerspiegeln, wie lange die Erfassung der Anzahl von Ereignissen dauert, die durch die Verlaufsgröße angegeben ist. Wenn diese Anzahl von Ereignisse im Fenster nicht erreicht wird, werden die fehlenden Werte von Azure Stream Analytics vervollständigt. Daher besteht eine direkte Beziehung zwischen der CPU-Auslastung und der Verlaufsgröße.
-* **Ereignislast** – Je größer die **Ereignislast** , desto mehr Arbeit müssen die Modelle leisten, was sich wiederum auf die CPU-Auslastung auswirkt. Der Auftrag kann durch eine extreme Parallelverarbeitung horizontal skaliert werden. Dabei muss die Verwendung zusätzlicher Eingabepartitionen für die Geschäftslogik jedoch sinnvoll sein.
+* **Ereignislast** – Je größer die **Ereignislast**, desto mehr Arbeit müssen die Modelle leisten, was sich wiederum auf die CPU-Auslastung auswirkt. Der Auftrag kann durch eine extreme Parallelverarbeitung horizontal skaliert werden. Dabei muss die Verwendung zusätzlicher Eingabepartitionen für die Geschäftslogik jedoch sinnvoll sein.
 * Bei der **Partitionierung auf Funktionsebene** - **Partitionierung auf Funktionsebene** wird ```PARTITION BY``` innerhalb des Funktionsaufrufs der Anomalieerkennung verwendet. Durch diese Partitionierung entsteht ein Mehraufwand, da der Zustand für mehrere Modelle gleichzeitig aufrechterhalten werden muss. Die Partitionierung auf Funktionsebene wird in Szenarien wie der Partitionierung auf Geräteebene verwendet.
 
 ### <a name="relationship"></a>Beziehung
@@ -152,7 +152,7 @@ Codebeispiele zum Ausführen der oben genannten Konfigurationen ohne Partitionie
 > Um eine genauere Schätzung zu erhalten, passen Sie die Beispiele an Ihr Szenario an.
 
 ### <a name="identifying-bottlenecks"></a>Identifizieren von Engpässen
-Verwenden Sie den Bereich „Metriken“ in ihrem Azure Stream Analytics-Auftrag, um Engpässe in Ihrer Pipeline zu identifizieren. Überprüfen Sie **Eingabe-/Ausgabeereignisse** hinsichtlich des Durchsatzes sowie ["Wasserzeichenverzögerung"](https://azure.microsoft.com/blog/new-metric-in-azure-stream-analytics-tracks-latency-of-your-streaming-pipeline/) oder **Ereignisse im Rückstand** , um festzustellen, ob der Auftrag mit der Eingangsrate Schritt halten kann. Suchen Sie für Event Hub-Metriken nach **Gedrosselte Anforderungen** , und passen Sie die Schwellenwerteinheiten (TU) entsprechend an. Überprüfen Sie für Cosmos DB-Metriken **Max. genutzte RU/Sek. pro Partitionsschlüsselbereich** unter „Durchsatz“, um sicherzustellen, dass Ihre Partitionsschlüsselbereiche gleichmäßig genutzt werden. Überwachen Sie für Azure SQL-DB **Protokoll-E/A** und **CPU**.
+Verwenden Sie den Bereich „Metriken“ in ihrem Azure Stream Analytics-Auftrag, um Engpässe in Ihrer Pipeline zu identifizieren. Überprüfen Sie **Eingabe-/Ausgabeereignisse** hinsichtlich des Durchsatzes sowie ["Wasserzeichenverzögerung"](https://azure.microsoft.com/blog/new-metric-in-azure-stream-analytics-tracks-latency-of-your-streaming-pipeline/) oder **Ereignisse im Rückstand**, um festzustellen, ob der Auftrag mit der Eingangsrate Schritt halten kann. Suchen Sie für Event Hub-Metriken nach **Gedrosselte Anforderungen**, und passen Sie die Schwellenwerteinheiten (TU) entsprechend an. Überprüfen Sie für Cosmos DB-Metriken **Max. genutzte RU/Sek. pro Partitionsschlüsselbereich** unter „Durchsatz“, um sicherzustellen, dass Ihre Partitionsschlüsselbereiche gleichmäßig genutzt werden. Überwachen Sie für Azure SQL-DB **Protokoll-E/A** und **CPU**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

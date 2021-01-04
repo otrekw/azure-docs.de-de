@@ -7,12 +7,12 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.custom: references_regions
 ms.date: 10/21/2020
-ms.openlocfilehash: 5790094571563d3ca8576480a6296a73756fb6a6
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 7420a7c6355fbcd70ce57fbb36ab29d1241df31f
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94540415"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96453319"
 ---
 # <a name="monitoring-in-azure-database-for-mariadb"></a>Überwachung in Azure Database for MariaDB
 Die Überwachung der Daten zu Ihren Servern unterstützt Sie bei der Problembehandlung und der Optimierung Ihrer Workloads. Azure Database for MariaDB bietet verschiedene Metriken, die Einblicke in das Verhalten Ihres Servers ermöglichen.
@@ -67,7 +67,6 @@ Im Dokument [Benachrichtigungen zu geplanten Wartungen](./concepts-planned-maint
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen dazu, wie Sie mit dem Azure-Portal, der REST-API oder der CLI auf Metriken zugreifen bzw. diese exportieren, finden Sie unter [Überblick über Metriken in Microsoft Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md).
+- Weitere Informationen dazu, wie Sie mit dem Azure-Portal, der REST-API oder der CLI auf Metriken zugreifen bzw. diese exportieren, finden Sie unter [Überblick über Metriken in Microsoft Azure](../azure-monitor/platform/data-platform.md).
 - Anleitungen zum Erstellen einer Warnung zu einer Metrik finden Sie unter [Einrichten von Warnungen](howto-alert-metric.md).
 - Im Artikel [Benachrichtigungen zu geplanten Wartungen in Azure Database for MariaDB](./concepts-planned-maintenance-notification.md) finden Sie weitere Informationen zum Einrichten von Benachrichtigungen.
-

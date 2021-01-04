@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: overview
 ms.date: 04/17/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 78f228a5e188bc930a9e7484f4c982ba746331dd
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: e0a45bde32fed651c4b38d203b3c75a6d928e7c5
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357775"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96327082"
 ---
 # <a name="azure-key-vault-keys-secrets-and-certificates-overview"></a>Übersicht über Schlüssel, Geheimnisse und Zertifikate in Azure Key Vault
 
@@ -48,7 +48,7 @@ Speicherkontoschlüssel|/storageaccount|Unterstützt|Nicht unterstützt
 |||
 - **Kryptografische Schlüssel:** Unterstützt mehrere Schlüsseltypen und Algorithmen und ermöglicht die Verwendung von softwaregeschützten und durch HSM geschützten Schlüsseln. Weitere Informationen finden Sie unter [Informationen zu Azure Key Vault-Schlüsseln](../keys/about-keys.md).
 - **Geheimnisse:** Bieten einen sicheren Speicher für Geheimnisse wie Kennwörter und Datenbank-Verbindungszeichenfolgen. Weitere Informationen finden Sie unter [Informationen zu Azure Key Vault-Geheimnissen](../secrets/about-secrets.md).
-- **Zertifikate** : Unterstützen Zertifikate, die auf Schlüsseln und Geheimnissen aufbauen, und fügt ein Feature für die automatisierte Verlängerung hinzu. Weitere Informationen finden Sie unter [Informationen zu Azure Key Vault-Zertifikaten](../certificates/about-certificates.md).
+- **Zertifikate**: Unterstützen Zertifikate, die auf Schlüsseln und Geheimnissen aufbauen, und fügt ein Feature für die automatisierte Verlängerung hinzu. Weitere Informationen finden Sie unter [Informationen zu Azure Key Vault-Zertifikaten](../certificates/about-certificates.md).
 - **Azure-Speicherkontenschlüssel:** Kann die Schlüssel eines Azure Storage-Kontos für Sie verwalten. Intern kann Key Vault Schlüssel für ein Azure Storage-Konto auflisten (synchronisieren) und die Schlüssel in regelmäßigen Abständen erneut generieren (rotieren). Weitere Informationen finden Sie unter [Verwalten von Speicherkontoschlüsseln mit Key Vault und der Azure-Befehlszeilenschnittstelle](../secrets/overview-storage-keys.md).
 
 Weitere allgemeine Informationen zu Key Vault finden Sie unter [Informationen zu Azure Key Vault](overview.md). Weitere Informationen zu Pools verwalteter HSMs finden Sie unter [Was ist verwaltetes HSM von Azure Key Vault?](../managed-hsm/overview.md).
@@ -58,16 +58,16 @@ Weitere allgemeine Informationen zu Key Vault finden Sie unter [Informationen zu
 
 In den JOSE-Spezifikationen finden Sie relevante Datentypen für Schlüssel, Verschlüsselung und Signatur.  
 
--   **algorithm** : ein unterstützter Algorithmus für einen Schlüsselvorgang, z.B. RSA1_5.  
--   **ciphertext-value** : Verschlüsselungstextoktette, codiert mit Base64URL.  
--   **digest-value** : die Ausgabe eines Hashalgorithmus, codiert mit Base64URL.  
--   **key-type** : einer der unterstützten Schlüsseltypen, z.B. RSA (Rivest-Shamir-Adleman).  
--   **plaintext-value** : Klartextoktette, codiert mit Base64URL.  
--   **signature-value** : die Ausgabe eines Signaturalgorithmus, codiert mit Base64URL.  
--   **base64URL** : ein mit Base64URL [RFC4648] codierter Binärwert.  
--   **boolean** : entweder TRUE oder FALSE.  
--   **Identity** : eine Identität in Azure Active Directory (AAD).  
--   **IntDate** : ein dezimaler JSON-Wert, der die Anzahl von Sekunden von 1970-01-01T0:0:0Z UTC bis zum angegebenen UTC-Datum / zur angegebenen UTC-Uhrzeit darstellt. Details in Bezug auf Datum/Uhrzeit im Allgemeinen und UTC im Besonderen finden Sie der Dokumentation zu RFC 3339.  
+-   **algorithm**: ein unterstützter Algorithmus für einen Schlüsselvorgang, z.B. RSA1_5.  
+-   **ciphertext-value**: Verschlüsselungstextoktette, codiert mit Base64URL.  
+-   **digest-value**: die Ausgabe eines Hashalgorithmus, codiert mit Base64URL.  
+-   **key-type**: einer der unterstützten Schlüsseltypen, z.B. RSA (Rivest-Shamir-Adleman).  
+-   **plaintext-value**: Klartextoktette, codiert mit Base64URL.  
+-   **signature-value**: die Ausgabe eines Signaturalgorithmus, codiert mit Base64URL.  
+-   **base64URL**: ein mit Base64URL [RFC4648] codierter Binärwert.  
+-   **boolean**: entweder TRUE oder FALSE.  
+-   **Identity**: eine Identität in Azure Active Directory (AAD).  
+-   **IntDate**: ein dezimaler JSON-Wert, der die Anzahl von Sekunden von 1970-01-01T0:0:0Z UTC bis zum angegebenen UTC-Datum / zur angegebenen UTC-Uhrzeit darstellt. Details in Bezug auf Datum/Uhrzeit im Allgemeinen und UTC im Besonderen finden Sie der Dokumentation zu RFC 3339.  
 
 ## <a name="objects-identifiers-and-versioning"></a>Objekte, Bezeichner und Versionsverwaltung
 
@@ -75,6 +75,7 @@ In Key Vault gespeicherte Objekte werden versioniert, wenn eine neue Instanz ein
 
 Für die Adressierung von Objekten in Key Vault können Sie eine Version angeben oder bei Vorgängen für die aktuelle Version des Objekts die Version weglassen. Bei einem Schlüssel mit dem Namen `MasterKey` führt das Durchführen von Vorgängen ohne Angabe einer Version beispielsweise dazu, dass die neueste verfügbare Version verwendet wird. Das Ausführen von Vorgängen mit dem versionsspezifischen Bezeichner veranlasst das System, die spezifische Version des Objekts zu verwenden.  
 
+### <a name="vault-name-and-object-name"></a>Tresorname und Objektname
 Objekte werden in Key Vault über eine URL eindeutig identifiziert. Unabhängig vom geografischen Standort dürfen keine zwei Objekte im System die gleiche URL aufweisen. Die vollständige URL zu einem Objekt wird Objektbezeichner genannt. Die URL besteht aus einem Präfix, das den Schlüsseltresor, den Objekttyp, den vom Benutzer bereitgestellten Objektnamen und eine Objektversion identifiziert. Beim Objektnamen wird Groß-/Kleinschreibung nicht unterschieden, und er ist unveränderlich. Bezeichner, die nicht die Objektversion enthalten, heißen Basisbezeichner.  
 
 Weitere Informationen finden Sie unter [Authentifizierung, Anforderungen und Antworten](authentication-requests-and-responses.md).
@@ -90,7 +91,7 @@ Ein Objektbezeichner hat das folgende allgemeine Format (abhängig vom Container
 
 Hierbei gilt:  
 
-| Element | Beschreibung |  
+| Element | BESCHREIBUNG |  
 |-|-|  
 |`vault-name` oder `hsm-name`|Der Name eines Schlüsseltresors oder Pools verwalteter HSMs im Microsoft Azure Key Vault-Dienst.<br /><br />Schlüsseltresornamen und Namen von Pools verwalteter HSMs werden vom Benutzer ausgewählt und sind global eindeutig.<br /><br />Der Name des Schlüsseltresors und des Pools verwalteter HSMs muss zwischen 3 und 24 Zeichen lang sein und darf nur die Ziffern 0-9, die Buchstaben a-z und A-Z sowie das Minuszeichen („-“) enthalten.|  
 |`object-type`|Die Art des Objekts (Schlüssel, Geheimnisse oder Zertifikate)|  

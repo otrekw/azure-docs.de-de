@@ -14,12 +14,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 484a44a7a9840409e3f5770c743e5cd62e0cef66
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 824ae8d39d934ebc58fc75185e36f5faa11109a9
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92910303"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325365"
 ---
 # <a name="azure-active-directory-code-samples-v10-endpoint"></a>Azure Active Directory-Codebeispiele (v1.0-Endpunkt)
 
@@ -65,7 +65,7 @@ Die folgenden Beispiele zeigen, wie rollenbasierte Zugriffssteuerung (RBAC) impl
 
 Plattform | Beispiel |
  -------- | ------------------- |
-![Diese Abbildung zeigt das ASP.NET Framework-Logo.](media/sample-v2-code/logo-netframework.png)</p> ASP.NET 4.5 | [dotnet-webapp-groupclaims](https://github.com/Azure-Samples/active-directory-dotnet-webapp-groupclaims) </p>  [dotnet-webapp-roleclaims](https://github.com/Azure-Samples/active-directory-dotnet-webapp-roleclaims) | Eine .NET 4.5 MVC-Web-App, die Azure AD- **Rollen** für die Autorisierung verwendet
+![Diese Abbildung zeigt das ASP.NET Framework-Logo.](media/sample-v2-code/logo-netframework.png)</p> ASP.NET 4.5 | [dotnet-webapp-groupclaims](https://github.com/Azure-Samples/active-directory-dotnet-webapp-groupclaims) </p>  [dotnet-webapp-roleclaims](https://github.com/Azure-Samples/active-directory-dotnet-webapp-roleclaims) | Eine .NET 4.5 MVC-Web-App, die Azure AD-**Rollen** für die Autorisierung verwendet
 
 ## <a name="desktop-and-mobile-public-client-applications-calling-microsoft-graph-or-a-web-api"></a>Desktop und mobile öffentliche Clientanwendungen, die Microsoft Graph oder eine Web-API aufrufen
 
@@ -102,7 +102,7 @@ ASP.NET-Web-App  | ![Diese Abbildung zeigt das .NET Framework-Logo.](media/sampl
 
 Im folgende Beispiel wird gezeigt, wie eine NodeJS-Web-API mit Azure AD geschützt wird.
 
-In den vorherigen Abschnitten dieses Artikels finden Sie auch andere Beispiele, die veranschaulichen, wie eine Clientanwendung eine ASP. NET- oder ASP. NET Core- **Web-API** **aufruft**. Diese Beispiele werden in diesem Abschnitt nicht noch einmal erwähnt, aber Sie finden sie in der letzten Spalte der Tabellen weiter oben oder unten.
+In den vorherigen Abschnitten dieses Artikels finden Sie auch andere Beispiele, die veranschaulichen, wie eine Clientanwendung eine ASP. NET- oder ASP. NET Core-**Web-API** **aufruft**. Diese Beispiele werden in diesem Abschnitt nicht noch einmal erwähnt, aber Sie finden sie in der letzten Spalte der Tabellen weiter oben oder unten.
 
 | Plattform | Beispiel |
 |--------|-------------------|

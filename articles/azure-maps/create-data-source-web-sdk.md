@@ -1,20 +1,20 @@
 ---
-title: Erstellen einer Datenquelle für eine Karte | Microsoft Azure Maps
+title: Erstellen einer Datenquelle für eine Karte in Microsoft Azure Maps
 description: 'Hier wird erläutert, wie Sie eine Datenquelle für eine Karte erstellen. Sie erfahren mehr über die Datenquellen, die vom Azure Maps Web SDK verwendet werden: GeoJSON-Quellen und Vektorkacheln.'
 author: rbrundritt
 ms.author: richbrun
-ms.date: 08/08/2019
+ms.date: 12/07/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: 9c82b74ffdc8672dc3d84a98a036c6083bc6c309
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: d09dddbceed773cd723897cc9730198b68be0ff7
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895918"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96903614"
 ---
 # <a name="create-a-data-source"></a>Erstellen einer Datenquelle
 
@@ -86,7 +86,7 @@ Azure Maps hält den offenen Standard [Mapbox Vector Tile Specification](https:/
 - Straßenkacheln: [Dokumentation](/rest/api/maps/renderv2/getmaptilepreview) | [Details zum Datenformat](https://developer.tomtom.com/maps-api/maps-api-documentation-vector/tile)
 - Verkehrsmeldungen: [Dokumentation](/rest/api/maps/traffic/gettrafficincidenttile) | [Details zum Datenformat](https://developer.tomtom.com/traffic-api/traffic-api-documentation-traffic-incidents/vector-incident-tiles)
 - Verkehrsfluss: [Dokumentation](/rest/api/maps/traffic/gettrafficflowtile) | [Details zum Datenformat](https://developer.tomtom.com/traffic-api/traffic-api-documentation-traffic-flow/vector-flow-tiles)
-- In Azure Maps Creator können Sie über [Render V2 – Get Map Tiles](/rest/api/maps/renderv2/getmaptilepreview) auch benutzerdefinierte Vektorkacheln erstellen und auf diese zugreifen.
+- In Azure Maps Creator (Vorschau) können Sie über [Render V2 – Get Map Tiles](/rest/api/maps/renderv2/getmaptilepreview) auch benutzerdefinierte Vektorkacheln erstellen und auf diese zugreifen.
 
 > [!TIP]
 > Wenn Sie Vektor- oder Rasterbildkacheln des Azure Maps-Renderdiensts mit dem Web-SDK verwenden, können Sie `atlas.microsoft.com` durch den Platzhalter `{azMapsDomain}` ersetzen. Dieser Platzhalter wird durch dieselbe Domäne ersetzt, die von der Karte verwendet wird, und automatisch an dieselben Authentifizierungsdetails angefügt. Dies vereinfacht die Authentifizierung beim Renderdienst bei Verwendung der Azure Active Directory-Authentifizierung erheblich.

@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 003203ef1a25102f9fd3c50001603dbd5d33ce5a
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 48c835070329b5cb0892b10760d37708e46bfa1d
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94565969"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96559132"
 ---
 # <a name="tutorial-manipulating-models"></a>Tutorial: Bearbeiten von Modellen
 
@@ -176,7 +176,7 @@ In diesem Tutorial wird MRTK für die Objektinteraktion verwendet. Der größte 
 1. Betätigen Sie die Wiedergabeschaltfläche von Unity, um die Szene wiederzugeben, und öffnen Sie das Menü **Model Tools** (Modelltools) innerhalb von **AppMenu**.
 ![Ansichtscontroller](./media/model-with-view-controller.png)
 
-**AppMenu** verfügt über ein Untermenü **Model Tools** (Modelltools), das einen Ansichtscontroller für die Bindung mit dem Modell implementiert. Wenn das GameObject-Element eine **RemoteBounds**-Komponente enthält, fügt der Ansichtscontroller eine [**BoundingBox**](https://microsoft.github.io/MixedRealityToolkit-Unity/Documentation/README_BoundingBox.html)-Komponente hinzu. Dabei handelt es sich um eine MRTK-Komponente, die einen Begrenzungsrahmen um ein Objekt mit einem **BoxCollider**-Element rendert. Ein [**ObjectManipulator**](https://microsoft.github.io/MixedRealityToolkit-Unity/version/releases/2.3.0/api/Microsoft.MixedReality.Toolkit.Experimental.UI.ObjectManipulator.html?q=ObjectManipulator)-Element ist für Handinteraktionen zuständig. Diese Skripts ermöglichen es uns, das per Remotezugriff gerenderte Modell zu verschieben, zu drehen und zu skalieren.
+**AppMenu** verfügt über ein Untermenü **Model Tools** (Modelltools), das einen Ansichtscontroller für die Bindung mit dem Modell implementiert. Wenn das GameObject-Element eine **RemoteBounds**-Komponente enthält, fügt der Ansichtscontroller eine [**BoundingBox**](https://microsoft.github.io/MixedRealityToolkit-Unity/Documentation/README_BoundingBox.html)-Komponente hinzu. Dabei handelt es sich um eine MRTK-Komponente, die einen Begrenzungsrahmen um ein Objekt mit einem **BoxCollider**-Element rendert. Ein [**ObjectManipulator**](https://microsoft.github.io/MixedRealityToolkit-Unity/version/releases/2.5.1/api/Microsoft.MixedReality.Toolkit.UI.ObjectManipulator.html)-Element ist für Handinteraktionen zuständig. Diese Skripts ermöglichen es uns, das per Remotezugriff gerenderte Modell zu verschieben, zu drehen und zu skalieren.
 
 1. Bewegen Sie die Maus in den Spielbereich, und klicken Sie darauf, um den Fokus zu legen.
 1. Halten Sie die linke UMSCHALTTASTE mithilfe der [MRTK-Handsimulation](https://microsoft.github.io/MixedRealityToolkit-Unity/Documentation/InputSimulation/InputSimulationService.html#hand-simulation) gedrückt.

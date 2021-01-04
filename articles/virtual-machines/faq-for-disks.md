@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/15/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 3d199ae202cbe99176f3ca5d0ae82ecdeec84ca4
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: dcfef81f2d7f3413489490d97c143fdec7e11bed
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94684507"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499321"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Häufig gestellte Fragen zu Azure-IaaS-VM-Datenträgern sowie zu verwalteten und nicht verwalteten Premium-Datenträgern
 
@@ -76,7 +76,7 @@ Bei Verwendung von verwalteten Datenträgern werden für Verfügbarkeitsgruppen 
 
 Sie richten ein privates Speicherkonto für die VM-Diagnose ein.
 
-**Welcher Support für rollenbasierte Zugriffssteuerung steht für verwaltete Datenträger zur Verfügung?**
+**Welcher Support für rollenbasierte Zugriffssteuerung in Azure steht für verwaltete Datenträger zur Verfügung?**
 
 Managed Disks unterstützt drei zentrale Standardrollen:
 
@@ -151,7 +151,7 @@ Die Azure-Datenträgerreservierung bietet die Option, SSD Premium in den angegeb
 Reservierungen werden in Form von Datenträgern vorgenommen, nicht nach Kapazität. Anders ausgedrückt: Wenn Sie einen P80-Datenträger (32 TiB) reservieren, erhalten Sie einen einzelnen P80-Datenträger. Sie können diese Reservierung nicht in zwei kleinere P70-Datenträger (16 TiB) aufteilen. Sie können natürlich beliebig viele (oder wenige) Datenträger reservieren, auch zwei separate P70-Datenträger (16 TiB).
 
 **Wie wird die Azure-Datenträgerreservierung angewandt?**     
-Die Datenträgerreservierung folgt einem Modell, das reservierten VM-Instanzen ähnelt. Der Unterschied besteht darin, dass eine Datenträgerreservierung im Gegensatz zu einer VM-Instanz nicht auf verschiedene SKUs angewandt werden kann. Weitere Informationen zu VM-Instanzen finden Sie unter [Kostensparen mit Azure Reserved VM Instances](./linux/prepay-reserved-vm-instances.md).     
+Die Datenträgerreservierung folgt einem Modell, das reservierten VM-Instanzen ähnelt. Der Unterschied besteht darin, dass eine Datenträgerreservierung im Gegensatz zu einer VM-Instanz nicht auf verschiedene SKUs angewandt werden kann. Weitere Informationen zu VM-Instanzen finden Sie unter [Kostensparen mit Azure Reserved VM Instances](./prepay-reserved-vm-instances.md).     
 
 **Kann ich meinen über die Azure-Datenträgerreservierung erworbenen Datenspeicher in mehreren Regionen verwenden?**     
 Azure-Datenträgerreservierungen werden für eine bestimmte Region und SKU erworben (z. B. P30 in „USA, Osten 2“) und können daher nicht außerhalb dieser Vorgaben verwendet werden. Sie können jederzeit eine zusätzliche Azure-Datenträgerreservierung für Ihre Datenträger-Speicheranforderungen in anderen Regionen oder SKUs erwerben.    

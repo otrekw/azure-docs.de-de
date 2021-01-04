@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: jeedes
-ms.openlocfilehash: d9850c83fc949aa3a2b0521dfa0d41d49b7283bd
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: a84d4d71e5190c455441d1e627381be86ef5e129
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92515626"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608526"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-peakon"></a>Tutorial: Azure Active Directory-Integration von Peakon
 
@@ -52,25 +52,25 @@ Um die Integration von Peakon in Azure AD konfigurieren zu können, müssen Sie 
 
 **Führen Sie die folgenden Schritte aus, um Peakon aus dem Katalog hinzuzufügen:**
 
-1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory** .
+1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**.
 
     ![Schaltfläche „Azure Active Directory“](common/select-azuread.png)
 
-2. Navigieren Sie zu **Unternehmensanwendungen** , und wählen Sie die Option **Alle Anwendungen** aus.
+2. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie die Option **Alle Anwendungen** aus.
 
     ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
-3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung** , um eine neue Anwendung hinzuzufügen.
+3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
 
     ![Schaltfläche „Neue Anwendung“](common/add-new-app.png)
 
-4. Geben Sie im Suchfeld den Namen **Peakon** ein, wählen Sie im Ergebnisbereich den Eintrag **Peakon** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen** , um die Anwendung hinzuzufügen.
+4. Geben Sie im Suchfeld den Namen **Peakon** ein, wählen Sie im Ergebnisbereich den Eintrag **Peakon** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
      ![Peakon in der Ergebnisliste](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
 
-In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Peakon mithilfe eines Testbenutzers namens **Britta Simon** .
+In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Peakon mithilfe eines Testbenutzers namens **Britta Simon**.
 Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Peakon eingerichtet werden.
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens über Azure AD bei Peakon müssen Sie die folgenden Bausteine ausführen:
@@ -96,7 +96,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Peakon d
 
     ![Auswahlmodus für einmaliges Anmelden](common/select-saml-option.png)
 
-3. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Symbol **Bearbeiten** , um das Dialogfeld **Grundlegende SAML-Konfiguration** zu öffnen.
+3. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Symbol **Bearbeiten**, um das Dialogfeld **Grundlegende SAML-Konfiguration** zu öffnen.
 
     ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
@@ -108,7 +108,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Peakon d
 
     b. Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein: `https://app.peakon.com/saml/<companyid>/assert`
 
-5. Klicken Sie auf **Zusätzliche URLs festlegen** , und führen Sie den folgenden Schritt aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
+5. Klicken Sie auf **Zusätzliche URLs festlegen**, und führen Sie den folgenden Schritt aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
 
     ![Screenshot, auf dem „Zusätzliche URLs festlegen“ ausgewählt und das Textfeld „Anmelde-URL“ hervorgehoben ist](common/metadata-upload-additional-signon.png)
 
@@ -117,7 +117,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Peakon d
     > [!NOTE]
     > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch den tatsächlichen Bezeichner und die tatsächliche Antwort-URL. Darauf wird später im Tutorial eingegangen. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
-6. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen** , um das Ihrer Anforderung entsprechende Zertifikat ( **Zertifikat (Rohdaten)** ) aus den angegebenen Optionen herunterzuladen und auf Ihrem Computer zu speichern.
+6. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um das Ihrer Anforderung entsprechende Zertifikat (**Zertifikat (Rohdaten)** ) aus den angegebenen Optionen herunterzuladen und auf Ihrem Computer zu speichern.
 
     ![Downloadlink für das Zertifikat](common/certificateraw.png)
 
@@ -139,11 +139,11 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Peakon d
 
     ![Die Konfiguration](./media/peakon-tutorial/tutorial_peakon_config.png)
 
-3. Klicken Sie auf der Seite **Integrationen** auf **Einmaliges Anmelden** .
+3. Klicken Sie auf der Seite **Integrationen** auf **Einmaliges Anmelden**.
 
     ![Einmaliges Anmelden](./media/peakon-tutorial/tutorial_peakon_single.png)
 
-4. Klicken Sie unter dem Abschnitt **Einmaliges Anmelden** auf **Aktivieren** .
+4. Klicken Sie unter dem Abschnitt **Einmaliges Anmelden** auf **Aktivieren**.
 
     ![Aktivieren](./media/peakon-tutorial/tutorial_peakon_enable.png)
 
@@ -155,19 +155,19 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Peakon d
 
     b. Fügen Sie in das Textfeld **SSO-Abmelde-URL** den Wert der **Abmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
 
-    c. Klicken Sie auf **Datei auswählen** , um das aus dem Azure-Portal heruntergeladene Zertifikat in das Feld „Zertifikat“ hochzuladen.
+    c. Klicken Sie auf **Datei auswählen**, um das aus dem Azure-Portal heruntergeladene Zertifikat in das Feld „Zertifikat“ hochzuladen.
 
-    d. Klicken Sie auf das **Symbol** , um den Wert für **Entity ID** (Entitäts-ID) zu kopieren, und fügen Sie ihn im Azure-Portal im Abschnitt **Grundlegende SAML-Konfiguration** ins Textfeld **Bezeichner** ein.
+    d. Klicken Sie auf das **Symbol**, um den Wert für **Entity ID** (Entitäts-ID) zu kopieren, und fügen Sie ihn im Azure-Portal im Abschnitt **Grundlegende SAML-Konfiguration** ins Textfeld **Bezeichner** ein.
 
-    e. Klicken Sie auf das **Symbol** , um den Wert für **Reply URL (ACS)** (Antwort-URL (ACS)) zu kopieren, und fügen Sie ihn im Azure-Portal im Abschnitt **Grundlegende SAML-Konfiguration** ins Textfeld **Antwort-URL** ein.
+    e. Klicken Sie auf das **Symbol**, um den Wert für **Reply URL (ACS)** (Antwort-URL (ACS)) zu kopieren, und fügen Sie ihn im Azure-Portal im Abschnitt **Grundlegende SAML-Konfiguration** ins Textfeld **Antwort-URL** ein.
 
-    f. Klicken Sie unten auf der Seite auf **Speichern** .
+    f. Klicken Sie unten auf der Seite auf **Speichern**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers 
 
 Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im Azure-Portal.
 
-1. Wählen Sie im Azure-Portal im linken Bereich die Option **Azure Active Directory** , **Benutzer** und dann **Alle Benutzer** aus.
+1. Wählen Sie im Azure-Portal im linken Bereich die Option **Azure Active Directory**, **Benutzer** und dann **Alle Benutzer** aus.
 
     ![Links „Benutzer und Gruppen“ und „Alle Benutzer“](common/users.png)
 
@@ -184,9 +184,9 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
     b. Geben Sie im Feld **Benutzername** **brittasimon@yourcompanydomain.extension** ein.  
     Zum Beispiel, BrittaSimon@contoso.com
 
-    c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen** , und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
+    c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Erstellen** .
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -204,15 +204,15 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
     ![Link „Benutzer und Gruppen“](common/users-groups-blade.png)
 
-4. Klicken Sie auf die Schaltfläche **Benutzer hinzufügen** , und wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+4. Klicken Sie auf die Schaltfläche **Benutzer hinzufügen**, und wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 
     ![Bereich „Zuweisung hinzufügen“](common/add-assign-user.png)
 
-5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **Britta Simon** aus, und klicken Sie dann unten im Bildschirm auf die Schaltfläche **Auswählen** .
+5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **Britta Simon** aus, und klicken Sie dann unten im Bildschirm auf die Schaltfläche **Auswählen**.
 
-6. Wenn Sie einen beliebigen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** in der Liste die entsprechende Rolle für den Benutzer aus, und klicken Sie dann unten auf dem Bildschirm auf **Auswählen** .
+6. Wenn Sie einen beliebigen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** in der Liste die entsprechende Rolle für den Benutzer aus, und klicken Sie dann unten auf dem Bildschirm auf **Auswählen**.
 
-7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen** .
+7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
 ### <a name="create-peakon-test-user"></a>Erstellen eines Peakon-Testbenutzers
 
@@ -229,17 +229,17 @@ Im Fall von Peakon ist die Bereitstellung eine manuelle Aufgabe.
 
 3. Klicken Sie oben rechts auf der Seite auf **Add employee** (Mitarbeiter hinzufügen).
 
-      ![Mitarbeiter hinzufügen](./media/peakon-tutorial/tutorial_peakon_addemployee.png)
+    ![Mitarbeiter hinzufügen](./media/peakon-tutorial/tutorial_peakon_addemployee.png)
 
 3. Führen Sie auf der Dialogfeldseite **Neuer Mitarbeiter** die folgenden Schritte aus:
 
-     ![Neuer Mitarbeiter](./media/peakon-tutorial/tutorial_peakon_create.png)
+    ![Neuer Mitarbeiter](./media/peakon-tutorial/tutorial_peakon_create.png)
 
-    a. Geben Sie im Textfeld **Name** den Vornamen **Britta** und den Nachnamen **simon** ein.
+    1. Geben Sie im Textfeld **Name** den Vornamen **Britta** und den Nachnamen **simon** ein.
 
-    b. Geben Sie im Textfeld **Email** die E-Mail-Adresse ein, z. B. **Brittasimon\@contoso.com** .
+    1. Geben Sie im Textfeld **Email** die E-Mail-Adresse ein, z. B. **Brittasimon\@contoso.com**.
 
-    c. Klicken Sie auf **Mitarbeiter erstellen** .
+    1. Klicken Sie auf **Mitarbeiter erstellen**.
 
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens 
 

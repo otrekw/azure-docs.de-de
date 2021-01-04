@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb766150339820f9356fe94311cd1ff33dda5480
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 3b77ab0832fa19149c270d6ba5a6641069548cbe
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92462805"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96172719"
 ---
 # <a name="ssh"></a>SSH  
 
@@ -42,20 +42,19 @@ SSH mit Azure AD
 
 * **Benutzer:** Startet den SSH-Client, um eine Verbindung mit den Linux®-VMs einzurichten, und stellt Anmeldeinformationen für die Authentifizierung bereit
 
-* **Webbrowser** : Die Komponente, mit der der Benutzer interagiert. Der Webbrowser kommuniziert mit dem Identitätsanbieter (Azure AD), um den Benutzer sicher zu authentifizieren und autorisieren.
+* **Webbrowser**: Die Komponente, mit der der Benutzer interagiert. Der Webbrowser kommuniziert mit dem Identitätsanbieter (Azure AD), um den Benutzer sicher zu authentifizieren und autorisieren.
 
-* **SSH-Client** : Steuert den Verbindungseinrichtungsprozess
+* **SSH-Client**: Steuert den Verbindungseinrichtungsprozess
 
-* **Azure AD** : Authentifiziert die Identität des Benutzers mithilfe des Geräteflows und erstellt das Token für die Linux-VMs
+* **Azure AD**: Authentifiziert die Identität des Benutzers mithilfe des Geräteflows und erstellt das Token für die Linux-VMs
 
-* **Linux-VM** : Akzeptiert das Token und stellt eine erfolgreiche Verbindung bereit
+* **Linux-VM**: Akzeptiert das Token und stellt eine erfolgreiche Verbindung bereit
 
 ## <a name="implement-ssh-with-azure-ad"></a>Implementieren von SSH mit Azure AD 
 
-* [Vorschau: Anmelden bei einem virtuellen Linux-Computer in Azure mit der Azure Active Directory-Authentifizierung](https://docs.microsoft.com/azure/virtual-machines/linux/login-using-aad) 
+* [Vorschau: Anmelden bei einem virtuellen Linux-Computer in Azure mit der Azure Active Directory-Authentifizierung](../../virtual-machines/linux/login-using-aad.md) 
 
-* [Microsoft Identity Platform und der OAuth 2.0-Flow für die Geräteautorisierungsgenehmigung](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-device-code)
+* [Microsoft Identity Platform und der OAuth 2.0-Flow für die Geräteautorisierungsgenehmigung](../develop/v2-oauth2-device-code.md)
 
 * [Integration mit Azure Active Directory (akamai.com)](https://learn.akamai.com/webhelp/enterprise-application-access/enterprise-application-access/GUID-6B16172C-86CC-48E8-B30D-8E678BF3325F.html)
 
- 

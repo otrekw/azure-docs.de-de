@@ -8,12 +8,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
-ms.openlocfilehash: da046fd633120944231ee440605367bdb730cbff
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.custom: data4ml
+ms.openlocfilehash: 5abb222a6211e2f3f92c002a49987ac54edc78e2
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94543220"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97346655"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>Erstellen eines Datenbeschriftungsprojekts und Exportieren der Beschriftungen 
 
@@ -109,7 +110,7 @@ Wenn Sie dem Dataset neue Bilder hinzufügen möchten, verwenden Sie die inkreme
 
 Wenn Sie Ihrem Projekt weitere Bilder hinzufügen möchten, verwenden Sie [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/), um sie in den entsprechenden Ordner im Blobspeicher hochzuladen. 
 
-Aktivieren Sie das Kontrollkästchen **Enable incremental refresh** (Inkrementelle Aktualisierung aktivieren), wenn das Projekt den Datenspeicher kontinuierlich auf neue Daten überwachen soll.
+Aktivieren Sie das Kontrollkästchen **Enable incremental refresh** (Inkrementelle Aktualisierung aktivieren), wenn das Projekt den Datenspeicher kontinuierlich auf neue Daten überwachen soll. Ist die Option aktiviert, werden diese Daten werden einmal pro Tag in Ihr Projekt gepullt.
 
 Deaktivieren Sie dieses Kontrollkästchen, wenn neue Bilder, die im Datenspeicher angezeigt werden, nicht dem Projekt hinzugefügt werden sollen.
 
@@ -250,7 +251,7 @@ Gehen Sie wie folgt vor, um einem Projekt Beschriftungen hinzuzufügen:
 
 ## <a name="export-the-labels"></a>Exportieren der Beschriftungen
 
-Sie können die Beschriftungsdaten für Machine Learning-Experimente jederzeit exportieren. Bildbeschriftungen können im [COCO-Format](http://cocodataset.org/#format-data) oder als Azure Machine Learning-Dataset exportiert werden. Verwenden Sie die Schaltfläche **Exportieren** auf der Seite **Projektdetails** Ihres Beschriftungsprojekts.
+Sie können die Beschriftungsdaten für Machine Learning-Experimente jederzeit exportieren. Bildbeschriftungen können im [COCO-Format](http://cocodataset.org/#format-data) oder als [Azure Machine Learning-Dataset mit Beschriftungen](how-to-use-labeled-dataset.md) exportiert werden. Verwenden Sie die Schaltfläche **Exportieren** auf der Seite **Projektdetails** Ihres Beschriftungsprojekts.
 
 Die COCO-Datei wird im Standardblobspeicher des Azure Machine Learning-Arbeitsbereichs in einem Ordner unter *export/coco* erstellt. Sie können im Abschnitt **Datasets** von Machine Learning auf das exportierte Azure Machine Learning-Dataset zugreifen. Die Seite mit Datasetdetails bietet auch Beispielcode für den Zugriff auf Ihre Beschriftungen aus Python.
 

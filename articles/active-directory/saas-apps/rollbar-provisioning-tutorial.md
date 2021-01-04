@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: Zhchia
-ms.openlocfilehash: 544e01ef96165cd6c96a97761a3e758b93b1b15b
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 79076db9de4122c19fcb03bbfc938214097e19f6
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94352692"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181593"
 ---
 # <a name="tutorial-configure-rollbar-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Rollbar für die automatische Benutzerbereitstellung
 
@@ -36,7 +36,7 @@ In diesem Tutorial werden die Schritte beschrieben, die Sie sowohl in Rollbar al
 Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits über die folgenden Voraussetzungen verfügen:
 
 * [Azure AD-Mandant](../develop/quickstart-create-new-tenant.md) 
-* Ein Benutzerkonto in Azure AD mit der [Berechtigung](../users-groups-roles/directory-assign-admin-roles.md) für die Konfiguration von Bereitstellungen (z.B. Anwendungsadministrator, Cloudanwendungsadministrator, Anwendungsbesitzer oder Globaler Administrator). 
+* Ein Benutzerkonto in Azure AD mit der [Berechtigung](../roles/permissions-reference.md) für die Konfiguration von Bereitstellungen (z.B. Anwendungsadministrator, Cloudanwendungsadministrator, Anwendungsbesitzer oder Globaler Administrator). 
 * Einen [Rollbar-Mandanten](https://rollbar.com/pricing/) mit einem Enterprise-Plan
 * Ein Benutzerkonto in Rollbar mit Administratorrechten
 
@@ -57,7 +57,7 @@ Bevor Sie Rollbar für die automatische Benutzerbereitstellung mit Azure AD kon
 
     ![Rollbar-Identitätsanbieter](media/rollbar-provisioning-tutorial/idp.png)
 
-3. Scrollen Sie nach unten zu **Bereitstellungsoptionen**. Kopieren Sie das Zugriffstoken. Dieser Wert wird im Azure-Portal auf der Registerkarte „Bereitstellung“ Ihrer Rollbar-Anwendung im Feld **Geheimes Token** eingegeben. Aktivieren Sie das Kontrollkästchen **Benutzer- und Teambereitstellung aktivieren** , und klicken Sie auf **Speichern**.
+3. Scrollen Sie nach unten zu **Bereitstellungsoptionen**. Kopieren Sie das Zugriffstoken. Dieser Wert wird im Azure-Portal auf der Registerkarte „Bereitstellung“ Ihrer Rollbar-Anwendung im Feld **Geheimes Token** eingegeben. Aktivieren Sie das Kontrollkästchen **Benutzer- und Teambereitstellung aktivieren**, und klicken Sie auf **Speichern**.
 
     ![Rollbar-Zugriffstoken](media/rollbar-provisioning-tutorial/token.png)
 
@@ -97,7 +97,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![Screenshot der Dropdownliste „Bereitstellungsmodus“ mit aufgerufener Option „Automatisch“](common/provisioning-automatic.png)
 
-5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** den zuvor abgerufenen Wert für das Zugriffstoken im Feld **Geheimes Token** ein. Klicken Sie auf **Verbindung testen** , um sicherzustellen, dass Azure AD eine Verbindung mit Rollbar herstellen kann. Vergewissern Sie sich im Falle eines Verbindungsfehlers, dass Ihr Rollbar-Konto über Administratorberechtigungen verfügt, und wiederholen Sie den Vorgang.
+5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** den zuvor abgerufenen Wert für das Zugriffstoken im Feld **Geheimes Token** ein. Klicken Sie auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit Rollbar herstellen kann. Vergewissern Sie sich im Falle eines Verbindungsfehlers, dass Ihr Rollbar-Konto über Administratorberechtigungen verfügt, und wiederholen Sie den Vorgang.
 
     ![Bereitstellung](./media/rollbar-provisioning-tutorial/admin.png)
 
@@ -109,7 +109,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 8. Wählen Sie im Abschnitt **Zuordnungen** die Option **Azure Active Directory-Benutzer mit Rollbar synchronisieren** aus.
 
-9. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit Rollbar synchronisiert werden. Beachten Sie, dass die als **übereinstimmende** Eigenschaften ausgewählten Attribute für den Abgleich der Benutzerkonten in Rollbar für Updatevorgänge verwendet werden. Wenn Sie sich dafür entscheiden, das [übereinstimmende Zielattribut](../app-provisioning/customize-application-attributes.md) zu ändern, müssen Sie sicherstellen, dass die Rollbar-API das Filtern von Benutzern anhand dieses Attributs unterstützt. Wählen Sie die Schaltfläche **Speichern** , um alle Änderungen zu übernehmen.
+9. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit Rollbar synchronisiert werden. Beachten Sie, dass die als **übereinstimmende** Eigenschaften ausgewählten Attribute für den Abgleich der Benutzerkonten in Rollbar für Updatevorgänge verwendet werden. Wenn Sie sich dafür entscheiden, das [übereinstimmende Zielattribut](../app-provisioning/customize-application-attributes.md) zu ändern, müssen Sie sicherstellen, dass die Rollbar-API das Filtern von Benutzern anhand dieses Attributs unterstützt. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
    |attribute|type|
    |---|---|
@@ -122,7 +122,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 10. Wählen Sie im Abschnitt **Zuordnungen** die Option **Azure Active Directory-Gruppen mit Rollbar synchronisieren** aus.
 
-11. Überprüfen Sie im Abschnitt **Attributzuordnung** die Gruppenattribute, die von Azure AD mit Rollbar synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden verwendet, um die Gruppen in Rollbar für Updatevorgänge abzugleichen. Wählen Sie die Schaltfläche **Speichern** , um alle Änderungen zu übernehmen.
+11. Überprüfen Sie im Abschnitt **Attributzuordnung** die Gruppenattribute, die von Azure AD mit Rollbar synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden verwendet, um die Gruppen in Rollbar für Updatevorgänge abzugleichen. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
       |attribute|type|
       |---|---|

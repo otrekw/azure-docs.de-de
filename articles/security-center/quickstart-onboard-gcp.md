@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: bbaa44fb64becee85b29cd44bee44e593ec55bf6
-ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
+ms.openlocfilehash: 1095222f332e7a66f684feddf1fdab17704ca658
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94372641"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96573543"
 ---
 #  <a name="connect-your-gcp-accounts-to-azure-security-center"></a>Verbinden Ihrer GCP-Konten mit Azure Security Center
 
@@ -44,6 +44,8 @@ Im nachstehenden Screenshot sehen Sie GCP-Projekte, die auf dem Übersichtsdashb
 
 ## <a name="connect-your-gcp-account"></a>Herstellen einer Verbindung mit Ihrem GCP-Konto
 
+Führen Sie die folgenden Schritte aus, um Ihren GCP-Cloudconnector zu erstellen: 
+
 ### <a name="step-1-set-up-gcp-security-command-center-with-security-health-analytics"></a>Schritt 1: Einrichten von GCP Security Command Center mit Security Health Analytics
 
 Für alle GCP-Projekte in Ihrer Organisation müssen Sie außerdem folgende Schritte ausführen:
@@ -60,7 +62,7 @@ Wenn Sie Security Health Analytics erstmalig aktivieren, kann es mehrere Stunden
 ### <a name="step-2-enable-gcp-security-command-center-api"></a>Schritt 2: Aktivieren der GCP Security Command Center-API
 
 1. Wählen Sie in der **Cloud Console-API-Bibliothek** von Google das Projekt aus, das Sie mit Azure Security Center verbinden möchten.
-1. Suchen Sie in der API-Bibliothek nach **Security Command Center API** , und wählen Sie diesen Eintrag aus.
+1. Suchen Sie in der API-Bibliothek nach **Security Command Center API**, und wählen Sie diesen Eintrag aus.
 1. Wählen Sie auf der Seite der API **ENABLE** (Aktivieren) aus.
 
 Erfahren Sie mehr über die [Security Command Center-API](https://cloud.google.com/security-command-center/docs/reference/rest/).

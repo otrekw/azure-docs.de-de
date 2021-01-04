@@ -8,12 +8,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 10/14/2020
 ms.author: apimpm
-ms.openlocfilehash: 2317e61111c3ad328e8f112e7d9567f3f5d47990
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 5e5c59d611cb7f4b5333b9919488e6fc083611cd
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93379342"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96779242"
 ---
 # <a name="tutorial-monitor-published-apis"></a>Tutorial: Überwachen von veröffentlichten APIs
 
@@ -26,6 +26,8 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Einrichten einer Warnungsregel 
 > * Anzeigen von Aktivitätsprotokollen
 > * Aktivieren und Anzeigen von Ressourcenprotokollen
+
+Sie können auch die integrierte [Analyse](howto-use-analytics.md) von API Management verwenden, um die Nutzung und Leistung Ihrer APIs zu überwachen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -149,7 +151,7 @@ Wenn Sie die Sammlung von Gatewayprotokollen (GatewayLogs) oder Metriken in eine
 
     :::image type="content" source="media/api-management-howto-use-azure-monitor/logs-menu-item.png" alt-text="Screenshot: Element „Protokolle“ im Menü „Überwachung“":::
 
-Führen Sie Abfragen aus, um die Daten anzuzeigen. Es stehen mehrere [Beispielabfragen](../azure-monitor/log-query/saved-queries.md) zur Verfügung. Sie können aber auch eine eigene Abfrage verwenden. Mit der folgenden Abfrage werden beispielsweise die Daten der letzten 24 Stunden aus der Tabelle „GatewayLogs“ abgerufen:
+Führen Sie Abfragen aus, um die Daten anzuzeigen. Es stehen mehrere [Beispielabfragen](../azure-monitor/log-query/example-queries.md) zur Verfügung. Sie können aber auch eine eigene Abfrage verwenden. Mit der folgenden Abfrage werden beispielsweise die Daten der letzten 24 Stunden aus der Tabelle „GatewayLogs“ abgerufen:
 
 ```kusto
 ApiManagementGatewayLogs
@@ -158,7 +160,7 @@ ApiManagementGatewayLogs
 
 Weitere Informationen zur Verwendung von Ressourcenprotokollen für API Management finden Sie hier:
 
-* [Erste Schritte mit Azure Monitor Log Analytics](../azure-monitor/log-query/get-started-portal.md) oder in der [Demoumgebung von Log Analytics](https://portal.loganalytics.io/demo).
+* [Erste Schritte mit Azure Monitor Log Analytics](../azure-monitor/log-query/log-analytics-tutorial.md) oder in der [Demoumgebung von Log Analytics](https://portal.loganalytics.io/demo).
 
 * [Übersicht über Protokollabfragen in Azure Monitor](../azure-monitor/log-query/log-query-overview.md)
 

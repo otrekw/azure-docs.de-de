@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: d5da6576258d3e33296781bbc262494220140ddc
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 37c237cdaf6c0d4f766d4b2e39c10e3e96215463
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94489283"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187832"
 ---
 # <a name="connect-a-downstream-iot-edge-device-to-an-azure-iot-edge-gateway-preview"></a>Verbinden eines nachgeschalteten IoT Edge-Geräts mit einem Azure IoT Edge-Gateway (Vorschau)
 
@@ -172,7 +172,7 @@ Stellen Sie unter Linux sicher, dass der Benutzer **iotedge** Leseberechtigungen
      type: "docker"
      env: {}
      config:
-       image: "mcr.microsoft.com/azureiotedge-agent:1.2.0-rc1"
+       image: "mcr.microsoft.com/azureiotedge-agent:1.2.0-rc2"
        auth: {}
    ```
 
@@ -202,7 +202,7 @@ Stellen Sie unter Linux sicher, dass der Benutzer **iotedge** Leseberechtigungen
 
 Während sich dieses Feature noch in der öffentlichen Vorschau befindet, müssen Sie Ihr IoT Edge-Gerät so konfigurieren, dass die öffentlichen Vorschauversionen der IoT Edge-Runtimemodule verwendet werden. Im vorherigen Abschnitt finden Sie Schritte für das Konfigurieren von edgeAgent beim Start. Sie müssen auch die Runtimemodule in Bereitstellungen für Ihr Gerät konfigurieren.
 
-1. Konfigurieren Sie das edgeHub-Modul so, dass das öffentliche Vorschauimage verwendet wird: `mcr.microsoft.com/azureiotedge-hub:1.2.0-rc1`.
+1. Konfigurieren Sie das edgeHub-Modul so, dass das öffentliche Vorschauimage verwendet wird: `mcr.microsoft.com/azureiotedge-hub:1.2.0-rc2`.
 
 1. Konfigurieren Sie die folgenden Umgebungsvariablen für das edgeHub-Modul:
 
@@ -211,7 +211,7 @@ Während sich dieses Feature noch in der öffentlichen Vorschau befindet, müsse
    | `experimentalFeatures__enabled` | `true` |
    | `experimentalFeatures__nestedEdgeEnabled` | `true` |
 
-1. Konfigurieren Sie das edgeAgent-Modul so, dass das öffentliche Vorschauimage verwendet wird: `mcr.microsoft.com/azureiotedge-hub:1.2.0-rc1`.
+1. Konfigurieren Sie das edgeAgent-Modul so, dass das öffentliche Vorschauimage verwendet wird: `mcr.microsoft.com/azureiotedge-hub:1.2.0-rc2`.
 
 ## <a name="network-isolate-downstream-devices"></a>Isolieren von nachgeschalteten Geräten im Netzwerk
 
@@ -366,7 +366,7 @@ agent:
   type: "docker"
   env: {}
   config:
-    image: "{Parent FQDN or IP}:443/azureiotedge-agent:1.2.0-rc1"
+    image: "{Parent FQDN or IP}:443/azureiotedge-agent:1.2.0-rc2"
     auth: {}
 ```
 

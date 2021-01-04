@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 09/22/2019
 ms.author: dech
-ms.openlocfilehash: c869069e40780b1fd399758e84b0ffba311398e3
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 7b52a066f80b686a0e424d8f63d520d46691a72a
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93334173"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187815"
 ---
 # <a name="enable-notebooks-for-azure-cosmos-db-accounts-preview"></a>Aktivieren von Notebooks für Azure Cosmos DB-Konten (Vorschau)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -65,7 +65,7 @@ In diesem Beispiel wird **GettingStarted.ipynb**. verwendet.
 
 So führen Sie das Notebook aus:
 1. Wählen Sie die erste Codezelle mit Python-Code aus. 
-1. Klicken Sie auf **Ausführen** , um die Zelle auszuführen. Sie können zum Ausführen der Zelle auch **UMSCHALT+EINGABE** verwenden.
+1. Klicken Sie auf **Ausführen**, um die Zelle auszuführen. Sie können zum Ausführen der Zelle auch **UMSCHALT+EINGABE** verwenden.
 1. Aktualisieren Sie den Ressourcenbereich, um die Datenbank und den Container anzuzeigen, die erstellt wurden.
 
     :::image type="content" source="media/enable-notebooks/run-first-notebook-cell.png" alt-text="Ausführen des Notebooks mit ersten Schritten":::
@@ -76,4 +76,4 @@ Sie können auch **Neues Notebook** auswählen, um ein neues Notebook zu erstell
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen zu den Vorteilen von [Jupyter Notebooks in Azure Cosmos DB](cosmosdb-jupyter-notebooks.md)
+- Erfahren Sie mehr über die Vorteile von [Jupyter Notebooks in Azure Cosmos DB](cosmosdb-jupyter-notebooks.md).

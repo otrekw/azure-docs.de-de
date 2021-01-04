@@ -3,12 +3,12 @@ title: Häufig gestellte Fragen (FAQ) – Azure Event Hubs | Microsoft-Dokumenta
 description: Dieser Artikel enthält eine Liste häufig gestellter Fragen (FAQ) zu Azure Event Hubs sowie die zugehörigen Antworten.
 ms.topic: article
 ms.date: 10/27/2020
-ms.openlocfilehash: 3b55521c9f90192891b450e3e161607a334c3a00
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: c756d0bccd9b2ad303bd97d3bfb7aed8b0b82b09
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92909708"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "96002788"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Häufig gestellte Fragen zu Event Hubs
 
@@ -58,70 +58,7 @@ Event Hubs gibt umfassende Metriken aus, die den Zustand Ihrer Ressourcen in [Az
 ### <a name="where-does-azure-event-hubs-store-customer-data"></a><a name="in-region-data-residency"></a>Wo speichert Azure Event Hubs Kundendaten?
 Azure Event Hubs speichert Kundendaten. Diese Daten werden von Event Hubs automatisch in einer einzigen Region gespeichert, sodass dieser Dienst in der Region automatisch die Anforderungen an Datenresidenz erfüllt, einschließlich der im [Trust Center](https://azuredatacentermap.azurewebsites.net/) angegebenen Anforderungen.
 
-### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>Welche Ports muss ich in der Firewall öffnen? 
-Sie können die folgenden Protokolle mit Azure Service Bus verwenden, um Nachrichten zu senden und zu empfangen:
-
-- AMQP
-- HTTP
-- Apache Kafka
-
-In der folgenden Tabelle finden Sie die ausgehenden Ports, die Sie öffnen müssen, um diese Protokolle für die Kommunikation mit Azure Event Hubs verwenden zu können. 
-
-| Protocol | Ports | Details | 
-| -------- | ----- | ------- | 
-| AMQP | 5671 und 5672 | Weitere Informationen finden Sie im [AMQP 1.0 in Azure Service Bus und Event Hubs – Protokollleitfaden](../service-bus-messaging/service-bus-amqp-protocol-guide.md). | 
-| HTTP, HTTPS | 80, 443 |  |
-| Kafka | 9093 | Weitere Informationen finden Sie unter [Verwenden von Azure Event Hubs aus Apache Kafka-Anwendungen](event-hubs-for-kafka-ecosystem-overview.md).
-
-### <a name="what-ip-addresses-do-i-need-to-allow"></a>Welche IP-Adressen muss ich zulassen?
-Um die richtigen IP-Adressen zu ermitteln, die Sie in die Zulassungsliste für Ihre Verbindungen aufnehmen sollten, führen Sie die folgenden Schritte aus:
-
-1. Führen Sie den folgenden Befehl an einer Eingabeaufforderung aus: 
-
-    ```
-    nslookup <YourNamespaceName>.servicebus.windows.net
-    ```
-2. Notieren Sie sich die IP-Adresse, die in `Non-authoritative answer` zurückgegeben werden. 
-
-Wenn Sie **Zonenredundanz** für Ihren Namespace verwenden, müssen Sie einige zusätzliche Schritte durchführen: 
-
-1. Führen Sie zunächst nslookup für den Namespace aus.
-
-    ```
-    nslookup <yournamespace>.servicebus.windows.net
-    ```
-2. Notieren Sie sich den Namen im Abschnitt **non-authoritative answer** (nicht autorisierende Antwort), der in einem der folgenden Formate vorliegt: 
-
-    ```
-    <name>-s1.cloudapp.net
-    <name>-s2.cloudapp.net
-    <name>-s3.cloudapp.net
-    ```
-3. Führen Sie den Befehl „nslookup“ für jeden Namen mit den Suffixen s1, s2 und s3 aus, um die IP-Adressen aller drei Instanzen zu erhalten, die in drei Verfügbarkeitszonen ausgeführt werden. 
-
-    > [!NOTE]
-    > Die vom `nslookup`-Befehl zurückgegebene IP-Adresse ist keine statische IP-Adresse. Allerdings bleibt sie gleich, bis die zugrunde liegende Bereitstellung gelöscht oder in einen anderen Cluster verschoben wird.
-
-### <a name="where-can-i-find-client-ip-sending-or-receiving-messages-to-my-namespace"></a>Wo finde ich die Client-IP-Adresse, die Nachrichten an meinen Namespace sendet oder von diesem empfängt?
-Aktivieren Sie zunächst die [IP-Filterung](event-hubs-ip-filtering.md) für den Namespace. 
-
-Aktivieren Sie dann Diagnoseprotokolle für [Event Hubs-Verbindungsereignisse für virtuelle Netzwerke](event-hubs-diagnostic-logs.md#event-hubs-virtual-network-connection-event-schema), indem Sie den Anweisungen unter [Aktivieren von Diagnoseprotokollen](event-hubs-diagnostic-logs.md#enable-diagnostic-logs) folgen. Es wird die IP-Adresse angezeigt, für die die Verbindung verweigert wird.
-
-```json
-{
-    "SubscriptionId": "0000000-0000-0000-0000-000000000000",
-    "NamespaceName": "namespace-name",
-    "IPAddress": "1.2.3.4",
-    "Action": "Deny Connection",
-    "Reason": "IPAddress doesn't belong to a subnet with Service Endpoint enabled.",
-    "Count": "65",
-    "ResourceId": "/subscriptions/0000000-0000-0000-0000-000000000000/resourcegroups/testrg/providers/microsoft.eventhub/namespaces/namespace-name",
-    "Category": "EventHubVNetConnectionEvent"
-}
-```
-
-> [!IMPORTANT]
-> Protokolle virtueller Netzwerke werden nur dann generiert, wenn der Namespace Zugriff über **spezifische IP-Adressen** (IP-Filterregeln) erlaubt. Wenn Sie den Zugriff auf Ihren Namespace mit diesen Features nicht einschränken möchten und dennoch Protokolle virtueller Netzwerke erhalten möchten, um IP-Adressen von Clients zu verfolgen, die sich mit dem Event Hubs-Namespace verbinden, können Sie die folgende Umgehungslösung verwenden: Aktivieren Sie die IP-Filterung, und fügen Sie den gesamten adressierbaren IPv4-Bereich (1.0.0.0/1 bis 255.0.0.0/1) hinzu. Event Hubs unterstützt keine IPv6-Adressbereiche. 
+[!INCLUDE [event-hubs-connectivity](../../includes/event-hubs-connectivity.md)]
 
 ## <a name="apache-kafka-integration"></a>Apache Kafka-Integration
 
@@ -173,7 +110,7 @@ Durchsatzeinheiten (Throughput Units, TUs) werden auf Stundenbasis abgerechnet. 
 Sie können mit nur einer Durchsatzeinheit (Throughput Unit, TU) beginnen und die [automatische Vergrößerung](event-hubs-auto-inflate.md) aktivieren. Mit dem Feature für die automatische Vergrößerung können Sie die TUs erhöhen, wenn sich der Datenverkehr oder die Nutzlast erhöht. Sie können zudem eine Obergrenze für die Anzahl von TUs festlegen.
 
 ### <a name="how-does-auto-inflate-feature-of-event-hubs-work"></a>Wie funktioniert das Feature für die automatische Vergrößerung von Event Hubs?
-Mit dem Feature für die automatische Vergrößerung können Sie die Durchsatzeinheiten (Throughput Units, TUs) hochskalieren. Das bedeutet, dass Sie zunächst eine geringe Anzahl von TUs erwerben können und die TUs über die Funktion für die automatische Vergrößerung zentral hochskaliert werden, wenn der eingehende Datenverkehr zunimmt. Dies bietet Ihnen eine kostengünstige Option und die vollständige Kontrolle über die Anzahl der zu verwaltenden TUs. Dieses Feature betrifft nur das **zentrale Hochskalieren** , das zentrale Herunterskalieren der Anzahl von TUs können Sie vollständig steuern, indem Sie sie aktualisieren. 
+Mit dem Feature für die automatische Vergrößerung können Sie die Durchsatzeinheiten (Throughput Units, TUs) hochskalieren. Das bedeutet, dass Sie zunächst eine geringe Anzahl von TUs erwerben können und die TUs über die Funktion für die automatische Vergrößerung zentral hochskaliert werden, wenn der eingehende Datenverkehr zunimmt. Dies bietet Ihnen eine kostengünstige Option und die vollständige Kontrolle über die Anzahl der zu verwaltenden TUs. Dieses Feature betrifft nur das **zentrale Hochskalieren**, das zentrale Herunterskalieren der Anzahl von TUs können Sie vollständig steuern, indem Sie sie aktualisieren. 
 
 Sie können mit einer niedrigen Anzahl von Durchsatzeinheiten (TUs) beginnen, z.B. mit 2 TUs. Wenn Sie davon ausgehen, dass der Datenverkehr möglicherweise bis auf 15 TUs ansteigen kann, aktivieren Sie das Feature für die automatische Vergrößerung für den Namespace, und legen Sie die maximale Anzahl auf 15 TUs fest. Damit werden die TUs bei zunehmendem Datenverkehr nun automatisch erhöht.
 
@@ -251,7 +188,7 @@ Der Standard-Tarif für Event Hubs ermöglicht eine Aufbewahrung von Nachrichten
 
 ### <a name="how-is-the-event-hubs-storage-size-calculated-and-charged"></a>Wie wird die Event Hubs-Speichergröße berechnet und in Rechnung gestellt?
 
-Die Gesamtgröße aller gespeicherten Ereignisse, einschließlich des gesamten internen Mehraufwands für Ereignisheader oder Speicherstrukturen auf Datenträgern in allen Event Hubs, wird im Laufe des Tages gemessen. Am Ende des Tages wird die maximale Speichergröße berechnet. Das tägliche Speicherkontingent wird auf Grundlage der Mindestanzahl der Durchsatzeinheiten berechnet, die im Laufe des Tages ausgewählt wurden (jede Durchsatzeinheit bietet ein Kontingent von 84 GB). Wenn die Gesamtgröße das berechnete tägliche Speicherkontingent überschreitet, wird der überschüssige Speicher zu Azure Blob Storage-Sätzen in Rechnung gestellt (mit der Rate **lokal redundanter Speicher** ).
+Die Gesamtgröße aller gespeicherten Ereignisse, einschließlich des gesamten internen Mehraufwands für Ereignisheader oder Speicherstrukturen auf Datenträgern in allen Event Hubs, wird im Laufe des Tages gemessen. Am Ende des Tages wird die maximale Speichergröße berechnet. Das tägliche Speicherkontingent wird auf Grundlage der Mindestanzahl der Durchsatzeinheiten berechnet, die im Laufe des Tages ausgewählt wurden (jede Durchsatzeinheit bietet ein Kontingent von 84 GB). Wenn die Gesamtgröße das berechnete tägliche Speicherkontingent überschreitet, wird der überschüssige Speicher zu Azure Blob Storage-Sätzen in Rechnung gestellt (mit der Rate **lokal redundanter Speicher**).
 
 ### <a name="how-are-event-hubs-ingress-events-calculated"></a>Wie werden Eingangsereignisse von Event Hubs berechnet?
 
@@ -305,7 +242,7 @@ Wenn Sie z. B. die Azure Stack Hub-Version 2005 verwenden, ist die Version 20
 
 Ein Beispiel für die Verwendung einer bestimmten Storage-API-Version als Ziel aus Ihrem Code finden Sie in den folgenden Beispielen auf GitHub: 
 
-- [.NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/Sample10_RunningWithDifferentStorageVersion.cs)
+- [.NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/)
 - [Java](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs-checkpointstore-blob/src/samples/java/com/azure/messaging/eventhubs/checkpointstore/blob/EventProcessorWithCustomStorageVersion.java)
 - Python: [Synchron](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob/samples/receive_events_using_checkpoint_store_storage_api_version.py), [asynchron](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob-aio/samples/receive_events_using_checkpoint_store_storage_api_version_async.py)
 - [JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/javascript/receiveEventsWithApiSpecificStorage.js) und [TypeScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/typescript/src/receiveEventsWithApiSpecificStorage.ts)

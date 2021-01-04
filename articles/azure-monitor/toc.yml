@@ -29,10 +29,6 @@
           href: learn/quick-collect-windows-computer.md
     - name: Überwachen von Anwendungen
       items:
-        - name: .NET-Anwendung
-          href: learn/quick-monitor-portal.md
-        - name: .NET Core-Anwendung
-          href: learn/dotnetcore-quick-start.md
         - name: Node.js-Anwendung
           href: learn/nodejs-quick-start.md
         - name: Mobile Anwendung
@@ -89,6 +85,8 @@
               href: samples/resource-manager-web-app.md
             - name: Azure-Funktionen
               href: samples/resource-manager-function-app.md
+        - name: Regeln für die Datensammlung
+          href: samples/resource-manager-data-collection-rules.md
         - name: Diagnoseeinstellungen
           href: samples/resource-manager-diagnostic-settings.md
         - name: Log Analytics-Arbeitsbereiche
@@ -164,6 +162,7 @@
         - name: Bereitstellen von Azure Monitor
           href: deploy.md
         - name: Bedarfsorientiertes Bereitstellen
+          displayName: 'Azure Policy, Policy'
           href: deploy-scale.md
     - name: Verwalten und Konfigurieren
       items:
@@ -191,6 +190,8 @@
               href: platform/metrics-getting-started.md
             - name: Erweiterte Funktionen von Metrik-Explorer
               href: platform/metrics-charts.md
+            - name: Anzeigen mehrerer Ressourcen im Metrik-Explorer
+              href: platform/metrics-dynamic-scope.md
             - name: Beispiele für Metrikdiagramme
               href: platform/metric-chart-samples.md
             - name: Problembehandlung für Metrikdiagramme
@@ -206,7 +207,7 @@
               items:
                 - name: Azure-Portal
                   href: learn/quick-create-workspace.md
-                - name: Azure-Befehlszeilenschnittstelle
+                - name: Azure CLI
                   href: learn/quick-create-workspace-cli.md
                 - name: PowerShell
                   href: platform/powershell-workspace-configuration.md
@@ -248,6 +249,8 @@
               href: /azure/data-explorer/kusto/query/samples?&pivots=azuremonitor
             - name: Standardspalten
               href: platform/log-standard-columns.md
+            - name: Überwachen von Abfragen
+              href: log-query/query-audit.md
             - name: Optimieren von Abfragen
               href: log-query/query-optimization.md
             - name: Functions
@@ -269,6 +272,10 @@
                   href: log-query/resource-expression.md
                 - name: Vereinheitlichen von Anwendungsressourcendaten
                   href: log-query/unify-app-resource-data.md
+                - name: Übersicht über dienstübergreifende Abfragen zwischen Azure Monitor und Azure Data Explorer
+                  href: platform/azure-data-explorer-monitor-cross-service-query.md
+                - name: Azure Data Explorer von Azure Monitor abfragen
+                  href: platform/azure-monitor-data-explorer-proxy.md
         - name: Datenexport
           items:
             - name: Exportieren von Arbeitsbereichsdaten
@@ -351,6 +358,9 @@
             - name: Übersicht
               displayname: Azure Monitor agent
               href: platform/azure-monitor-agent-overview.md
+            - name: Installieren
+              displayname: Azure Monitor agent
+              href: platform/azure-monitor-agent-install.md
             - name: Datensammlung
               displayname: 'data collection rule,Azure Monitor agent'
               href: platform/data-collection-rule-azure-monitor-agent.md
@@ -538,12 +548,14 @@
               href: platform/itsmc-overview.md
             - name: IT Service Management-Verbindungen
               href: platform/itsmc-connections.md
-            - name: Integrieren mit sicherem Export
-              href: platform/it-service-management-connector-secure-webhook-connections.md
+            - name: 'ITSM-Connector: Definition'
+              href: platform/itsmc-definition.md
             - name: Erstellen von Service Manager-Web-Apps
               href: platform/itsmc-service-manager-script.md
-            - name: Beheben von ServiceNow-ITSM-Synchronisierungsproblemen
+            - name: Problembehandlung in ITSM-Connector
               href: platform/itsmc-resync-servicenow.md
+            - name: Integrieren mit sicherem Export
+              href: platform/it-service-management-connector-secure-webhook-connections.md
         - name: Migrieren klassischer Warnungsregeln
           items:
             - name: Informationen zu klassischen Warnungen
@@ -668,6 +680,10 @@
                       href: app/java-standalone-telemetry-processors.md
                     - name: Setup von JVM-Argumenten
                       href: app/java-standalone-arguments.md
+                    - name: "Upgraden vom 2.x\_SDK"
+                      href: app/java-standalone-upgrade-from-2x.md
+                    - name: Problembehandlung
+                      href: app/java-standalone-troubleshoot.md
             - name: Lokale Server
               items:
                 - name: ASP.NET
@@ -740,6 +756,8 @@
               href: app/pre-aggregated-metrics-log-metrics.md
             - name: Protokollbasierte Metrikdefinitionen
               href: platform/app-insights-metrics.md
+            - name: Standardmetriken
+              href: app/standard-metrics.md
         - name: 'Suchen,'
           href: app/diagnostic-search.md
         - name: Profiler
@@ -876,8 +894,6 @@
               items:
                 - name: Eingehende Diagnose für Web-Apps und Dienste
                   href: app/devops.md
-                - name: Leistung in Webanwendungen überwachen
-                  href: app/web-monitor-performance.md
                 - name: 'Trennen von Entwicklung, Test und Produktion'
                   href: app/separate-resources.md
                 - name: Gewusst wie – in Application Insights
@@ -1002,6 +1018,8 @@
           href: insights/container-insights-deployment-hpa-metrics.md
         - name: Überwachen persistenter Volumes (PVs)
           href: insights/container-insights-persistent-volumes.md
+        - name: Registerkarte „Berichte“
+          href: insights/container-insights-reports.md
         - name: Anzeigen von Livedaten
           items:
             - name: Übersicht über Livedaten (Vorschau)
@@ -1133,6 +1151,8 @@
               href: platform/workbooks-tree-visualizations.md
             - name: Graph
               href: platform/workbooks-graph-visualizations.md
+            - name: Zuordnung
+              href: platform/workbooks-map-visualizations.md
             - name: Wabenförmig
               href: platform/workbooks-honey-comb.md
             - name: Gestapelte Säule
@@ -1161,6 +1181,8 @@
               href: platform/workbooks-automate.md
             - name: Gruppen
               href: platform/workbooks-groups.md
+            - name: Bring Your Own Storage (BYOS)
+              href: platform/workbooks-bring-your-own-storage.md
             - name: Transformieren von JSON-Daten mit JSONPath
               href: platform/workbooks-jsonpath.md
             - name: Verschieben von Arbeitsmappen in eine andere Region

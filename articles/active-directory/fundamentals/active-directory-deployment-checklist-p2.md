@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7aebe6fafea7cbbb0b37469a13262529b568e342
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 92d1e5b8ac6492b0b1d819431e4616d32a092cc8
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93077964"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94836919"
 ---
 # <a name="azure-active-directory-feature-deployment-guide"></a>Bereitstellungshandbuch für Azure Active Directory-Features
 
@@ -57,7 +57,7 @@ In dieser Phase aktivieren Administratoren die grundlegenden Sicherheitsfunktion
 | [Bereitstellen von Azure AD Multi-Factor Authentication mit Richtlinien für bedingten Zugriff](../authentication/howto-mfa-getstarted.md) | Legen Sie mithilfe von Richtlinien für bedingten Zugriff fest, dass Benutzer beim Zugriff auf sensible Anwendungen eine zweistufige Überprüfung durchführen müssen. | Azure AD Premium P1 |
 | [Aktivieren der Azure Active Directory Identity Protection](../identity-protection/overview-identity-protection.md) | Aktivieren Sie die Nachverfolgung von riskanten Anmeldungen und kompromittierten Anmeldeinformationen für Benutzer in Ihrer Organisation. | Azure AD Premium P2 |
 | [Verwenden von Risikoerkennungen zum Auslösen von mehrstufiger Authentifizierung und Kennwortänderungen](../authentication/tutorial-risk-based-sspr-mfa.md) | Aktivieren Sie eine Automatisierung, die Ereignisse risikobasiert auslösen kann, z.B. mehrstufige Authentifizierung, Kennwortzurücksetzung und das Blockieren von Anmeldungen. | Azure AD Premium P2 |
-| [Aktivieren der kombinierten Registrierung für die Self-Service-Kennwortzurücksetzung und Azure AD Multi-Factor Authentication](../authentication/concept-registration-mfa-sspr-combined.md) | Ermöglichen Sie Ihren Benutzern die Registrierung über eine gemeinsame Umgebung sowohl für Azure Multi-Factor Authentication als auch Self-Service-Kennwortzurücksetzung. | Azure AD Premium P1 |
+| [Aktivieren der kombinierten Registrierung für die Self-Service-Kennwortzurücksetzung und Azure AD Multi-Factor Authentication](../authentication/concept-registration-mfa-sspr-combined.md) | Ermöglichen Sie Ihren Benutzern die Registrierung über eine gemeinsame Umgebung sowohl für Azure AD Multi-Factor Authentication als auch Self-Service-Kennwortzurücksetzung. | Azure AD Premium P1 |
 
 ## <a name="phase-2-import-users-enable-synchronization-and-manage-devices"></a>Phase 2: Importieren von Benutzern, Aktivieren der Synchronisierung und Verwalten von Geräten
 

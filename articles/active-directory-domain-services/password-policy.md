@@ -2,7 +2,7 @@
 title: Erstellen und Verwenden von Kennwortrichtlinien in Azure AD Domain Services | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie und warum differenzierte Kennwortrichtlinien verwendet werden, um Kontokennwörter in einer verwalteten Azure AD DS-Domäne zu sichern und zu steuern.
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.assetid: 1a14637e-b3d0-4fd9-ba7a-576b8df62ff2
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/06/2020
-ms.author: joflore
-ms.openlocfilehash: 2dbc75ac4f143089db778b260bb2c4bee5b49f6a
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.author: justinha
+ms.openlocfilehash: df132af1675b3f373fe1eab5685c5d2f07813445
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93393165"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96619231"
 ---
 # <a name="password-and-account-lockout-policies-on-azure-active-directory-domain-services-managed-domains"></a>Kennwort- und Kontosperrungsrichtlinien für verwaltete Azure Active Directory Domain Services-Domänen
 

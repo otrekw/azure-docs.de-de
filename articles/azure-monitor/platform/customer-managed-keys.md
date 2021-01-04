@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
-ms.date: 11/09/2020
-ms.openlocfilehash: 62621a36955808ec3f2c796681fe660e6e8524bc
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.date: 11/18/2020
+ms.openlocfilehash: 17648b9bc973285764bb0bd6242506122a043780
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443380"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96454254"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Kundenseitig verwaltete Schlüssel in Azure Monitor 
 
@@ -21,11 +21,13 @@ Es wird empfohlen, vor der Konfiguration die [Einschränkungen](#limitationsandc
 
 ## <a name="customer-managed-key-overview"></a>Übersicht über kundenseitig verwaltete Schlüssel
 
-Die [Verschlüsselung ruhender Daten](../../security/fundamentals/encryption-atrest.md) ist eine übliche Datenschutz- und Sicherheitsanforderung in Organisationen. Sie können die Verschlüsselung ruhender Daten vollständig von Azure verwalten lassen, wobei Ihnen verschiedene Optionen zum genauen Verwalten der Verschlüsselung oder Verschlüsselungsschlüssel bereitstehen.
+Die [Verschlüsselung ruhender Daten](../../security/fundamentals/encryption-atrest.md) ist eine übliche Datenschutz- und Sicherheitsanforderung in Organisationen. Sie können die Verschlüsselung ruhender Daten vollständig von Azure verwalten lassen, wobei Ihnen verschiedene Optionen zum genauen Verwalten der Verschlüsselung und Verschlüsselungsschlüssel bereitstehen.
 
-Mit Azure Monitor wird sichergestellt, dass alle Daten und gespeicherten Abfragen im Ruhezustand mit von Microsoft verwalteten Schlüsseln (MMK) verschlüsselt werden. Azure Monitor bietet auch eine Option für die Verschlüsselung mithilfe eines eigenen Schlüssels, der in Ihrer [Azure Key Vault](../../key-vault/general/overview.md)-Instanz gespeichert ist und vom Speicher für die Datenverschlüsselung verwendet wird. Der Schlüssel kann entweder durch [Software oder Hardware (HSM) geschützt](../../key-vault/general/overview.md) werden. Die Verwendung der Verschlüsselung durch Azure Monitor entspricht der Funktionsweise der [Azure Storage-Verschlüsselung](../../storage/common/storage-service-encryption.md#about-azure-storage-encryption).
+Mit Azure Monitor wird sichergestellt, dass alle Daten und gespeicherten Abfragen im Ruhezustand mit von Microsoft verwalteten Schlüsseln (MMK) verschlüsselt werden. Azure Monitor bietet auch eine Option für die Verschlüsselung mithilfe eines eigenen Schlüssels, der in Ihrer [Azure Key Vault](../../key-vault/general/overview.md)-Instanz gespeichert ist und Ihnen die Kontrolle darüber gibt, den Zugriff auf Ihre Daten jederzeit zu widerrufen. Die Verwendung der Verschlüsselung durch Azure Monitor entspricht der Funktionsweise der [Azure Storage-Verschlüsselung](../../storage/common/storage-service-encryption.md#about-azure-storage-encryption).
 
-Die Funktion für kundenseitig verwaltete Schlüssel wird auf dedizierten Log Analytics-Clustern bereitgestellt. Sie bietet Ihnen die Möglichkeit, Ihre Daten mit [Lockbox](#customer-lockbox-preview) zu schützen und den Zugriff auf Ihre Daten jederzeit zu widerrufen. Daten, die in den letzten 14 Tagen erfasst wurden, werden für einen effizienten Betrieb der Abfrage-Engine auch im Hot-Cache (SSD-gestützt) aufbewahrt. Diese Daten bleiben unabhängig von der Konfiguration kundenseitig verwalteter Schlüssel mit Microsoft-Schlüsseln verschlüsselt, aber Ihre Kontrolle über SSD-Daten entspricht der [Schlüsselsperrung](#key-revocation). Wir arbeiten daran, dass SSD-Daten in der ersten Hälfte des Jahres 2021 mit kundenseitig verwalteten Schlüsseln verschlüsselt werden.
+Der kundenseitig verwaltete Schlüssel wird auf dedizierten Log Analytics-Clustern bereitgestellt, die eine höhere Schutzebene und Kontrolle bieten. In dedizierten Clustern erfasste Daten werden zweimal verschlüsselt: einmal auf der Dienstebene mit von Microsoft verwalteten Schlüsseln oder kundenseitig verwalteten Schlüsseln und einmal auf der Infrastrukturebene mit zwei verschiedenen Verschlüsselungsalgorithmen und zwei verschiedenen Schlüsseln. Die [doppelte Verschlüsselung](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption) schützt vor dem Szenario, dass einer der Verschlüsselungsalgorithmen oder Schlüssel kompromittiert wurde. In diesem Fall werden die Daten weiterhin durch die zusätzliche Verschlüsselungsebene geschützt. Ein dedizierter Cluster ermöglicht Ihnen außerdem das Schützen Ihrer Daten mit [Lockbox](#customer-lockbox-preview).
+
+Daten, die in den letzten 14 Tagen erfasst wurden, werden für einen effizienten Betrieb der Abfrage-Engine auch im Hot-Cache (SSD-gestützt) aufbewahrt. Diese Daten bleiben unabhängig von der Konfiguration kundenseitig verwalteter Schlüssel mit Microsoft-Schlüsseln verschlüsselt, aber Ihre Kontrolle über SSD-Daten entspricht der [Schlüsselsperrung](#key-revocation). Wir arbeiten daran, dass SSD-Daten in der ersten Hälfte des Jahres 2021 mit kundenseitig verwalteten Schlüsseln verschlüsselt werden.
 
 Beim [Preismodell für Log Analytics-Cluster](./manage-cost-storage.md#log-analytics-dedicated-clusters) werden Kapazitätsreservierungen ab 1000 GB/Tag verwendet.
 
@@ -70,81 +72,38 @@ Es gelten die folgenden Regeln:
 1. Gewähren von Berechtigungen für Key Vault
 1. Verknüpfen von Log Analytics-Arbeitsbereichen
 
-Die Konfiguration kundenseitig verwalteter Schlüssel wird im Azure-Portal nicht unterstützt, und die Bereitstellung erfolgt über [PowerShell](https://docs.microsoft.com/powershell/module/az.operationalinsights/)-, [CLI](https://docs.microsoft.com/cli/azure/monitor/log-analytics)- oder [REST](https://docs.microsoft.com/rest/api/loganalytics/)-Anforderungen.
+Die Konfiguration kundenseitig verwalteter Schlüssel wird im Azure-Portal nicht unterstützt, und die Bereitstellung erfolgt über [PowerShell](/powershell/module/az.operationalinsights/)-, [CLI](/cli/azure/monitor/log-analytics)- oder [REST](/rest/api/loganalytics/)-Anforderungen.
 
 ### <a name="asynchronous-operations-and-status-check"></a>Asynchrone Vorgänge und Statusüberprüfung
 
-Einige Konfigurationsschritte werden asynchron ausgeführt, da sie nicht schnell abgeschlossen werden können. Wenn REST-Anforderungen in der Konfiguration verwendet werden, gibt die Antwort anfänglich einen HTTP-Statuscode 200 (OK) und einen Header mit der Eigenschaft *Azure-AsyncOperation* zurück, wenn sie akzeptiert werden:
+Einige Konfigurationsschritte werden asynchron ausgeführt, da sie nicht schnell abgeschlossen werden können. Der `status` in der Antwort enthält eine der folgenden Angaben: „Wird ausgeführt“, „Wird aktualisiert“, „Wird gelöscht“, „Erfolgreich“ oder „Fehler“ einschließlich des Fehlercodes.
+
+# <a name="azure-portal"></a>[Azure portal](#tab/portal)
+
+–
+
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+
+–
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+–
+
+# <a name="rest"></a>[REST](#tab/rest)
+
+Wenn REST verwendet und akzeptiert wird, gibt die Antwort anfänglich den HTTP-Statuscode 200 (OK) und einen Header mit der Eigenschaft *Azure-AsyncOperation* zurück:
 ```json
 "Azure-AsyncOperation": "https://management.azure.com/subscriptions/subscription-id/providers/Microsoft.OperationalInsights/locations/region-name/operationStatuses/operation-id?api-version=2020-08-01"
 ```
 
-Sie können dann den Status des asynchronen Vorgangs prüfen, indem Sie eine GET-Anforderung für den Headerwert *Azure-AsyncOperation* senden:
+Sie können den Status des asynchronen Vorgangs prüfen, indem Sie eine GET-Anforderung für den Headerwert *Azure-AsyncOperation* senden:
 ```rst
 GET https://management.azure.com/subscriptions/subscription-id/providers/microsoft.operationalInsights/locations/region-name/operationstatuses/operation-id?api-version=2020-08-01
 Authorization: Bearer <token>
 ```
 
-Die Antwort enthält Informationen zu dem Vorgang und seinen *Status*. Folgende Werte sind möglich:
-
-Vorgang wird ausgeführt
-```json
-{
-    "id": "Azure-AsyncOperation URL value from the GET operation",
-    "name": "operation-id", 
-    "status" : "InProgress", 
-    "startTime": "2017-01-06T20:56:36.002812+00:00",
-}
-```
-
-Schlüsselbezeichner-Aktualisierungsvorgang wird ausgeführt
-```json
-{
-    "id": "Azure-AsyncOperation URL value from the GET operation",
-    "name": "operation-id", 
-    "status" : "Updating", 
-    "startTime": "2017-01-06T20:56:36.002812+00:00",
-    "endTime": "2017-01-06T20:56:56.002812+00:00",
-}
-```
-
-Clusterlöschvorgang läuft: Wenn Sie einen Cluster löschen, der verknüpfte Arbeitsbereiche enthält, wird die Aufhebung der Verknüpfung für jeden der Arbeitsbereiche asynchron durchgeführt und der Vorgang kann eine Weile dauern.
-Dies trifft nicht zu, wenn Sie einen Cluster ohne verknüpften Arbeitsbereich löschen. In diesem Fall wird der Cluster sofort gelöscht.
-```json
-{
-    "id": "Azure-AsyncOperation URL value from the GET operation",
-    "name": "operation-id", 
-    "status" : "Deleting", 
-    "startTime": "2017-01-06T20:56:36.002812+00:00",
-    "endTime": "2017-01-06T20:56:56.002812+00:00",
-}
-```
-
-Vorgang ist abgeschlossen
-```json
-{
-    "id": "Azure-AsyncOperation URL value from the GET operation",
-    "name": "operation-id", 
-    "status" : "Succeeded", 
-    "startTime": "2017-01-06T20:56:36.002812+00:00",
-    "endTime": "2017-01-06T20:56:56.002812+00:00",
-}
-```
-
-Fehler beim Vorgang
-```json
-{
-    "id": "Azure-AsyncOperation URL value from the GET operation",
-    "name": "operation-id", 
-    "status" : "Failed", 
-    "startTime": "2017-01-06T20:56:36.002812+00:00",
-    "endTime": "2017-01-06T20:56:56.002812+00:00",
-    "error" : { 
-        "code": "error-code",  
-        "message": "error-message" 
-    }
-}
-```
+---
 
 ### <a name="allowing-subscription"></a>Zulassen eines Abonnements
 
@@ -164,7 +123,7 @@ Diese Einstellungen können in Key Vault über die CLI und PowerShell aktualisie
 
 ### <a name="create-cluster"></a>Cluster erstellen
 
-Folgen Sie dem im [Artikel zu dedizierten Clustern](https://docs.microsoft.com/azure/azure-monitor/log-query/logs-dedicated-clusters#creating-a-cluster) beschriebenen Verfahren. 
+Folgen Sie dem im [Artikel zu dedizierten Clustern](../log-query/logs-dedicated-clusters.md#creating-a-cluster) beschriebenen Verfahren. 
 
 > [!IMPORTANT]
 > Kopieren und speichern Sie die Antwort, da Sie die Detail in den nächsten Schritten benötigen werden.
@@ -194,16 +153,25 @@ Aktualisieren Sie „KeyVaultProperties“ im Cluster mit Schlüsselbezeichnerde
 
 Der Vorgang ist asynchron und kann einige Zeit in Anspruch nehmen.
 
+# <a name="azure-portal"></a>[Azure portal](#tab/portal)
+
+–
+
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+
 ```azurecli
 az monitor log-analytics cluster update --name "cluster-name" --resource-group "resource-group-name" --key-name "key-name" --key-vault-uri "key-uri" --key-version "key-version"
 ```
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 ```powershell
 Update-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -ClusterName "cluster-name" -KeyVaultUri "key-uri" -KeyName "key-name" -KeyVersion "key-version"
 ```
 
+# <a name="rest"></a>[REST](#tab/rest)
+
 ```rst
-PATCH https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/cluster-name"?api-version=2020-08-01
+PATCH https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/cluster-name?api-version=2020-08-01
 Authorization: Bearer <token> 
 Content-type: application/json
  
@@ -257,6 +225,8 @@ Nachdem die Aktualisierung des Schlüsselbezeichners abgeschlossen ist, sollte d
 }
 ```
 
+---
+
 ### <a name="link-workspace-to-cluster"></a>Verknüpfen von Arbeitsbereich und Cluster
 
 Sie müssen über Schreibberechtigungen (write) sowohl für Ihren Arbeitsbereich als auch für den Cluster verfügen, um diesen Vorgang auszuführen. Dies umfasst die folgenden Aktionen:
@@ -269,7 +239,7 @@ Sie müssen über Schreibberechtigungen (write) sowohl für Ihren Arbeitsbereich
 
 Dieser Vorgang ist asynchron und kann einige Zeit in Anspruch nehmen.
 
-Folgen Sie dem im [Artikel zu dedizierten Clustern](https://docs.microsoft.com/azure/azure-monitor/log-query/logs-dedicated-clusters#link-a-workspace-to-the-cluster) beschriebenen Verfahren.
+Folgen Sie dem im [Artikel zu dedizierten Clustern](../log-query/logs-dedicated-clusters.md#link-a-workspace-to-the-cluster) beschriebenen Verfahren.
 
 ## <a name="key-revocation"></a>Schlüsselsperrung
 
@@ -307,15 +277,25 @@ Wenn Sie Bring Your Own Storage (BYOS) verwenden und es mit Ihrem Arbeitsbereich
 
 Verknüpfen Sie das Speicherkonto für *Abfragen* mit Ihrem Arbeitsbereich. Abfragen für *gespeicherte Suchvorgänge* werden in Ihrem Speicherkonto gespeichert. 
 
+# <a name="azure-portal"></a>[Azure portal](#tab/portal)
+
+–
+
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+
 ```azurecli
 $storageAccountId = '/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/<storage name>'
 az monitor log-analytics workspace linked-storage create --type Query --resource-group "resource-group-name" --workspace-name "workspace-name" --storage-accounts $storageAccountId
 ```
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
 ```powershell
 $storageAccount.Id = Get-AzStorageAccount -ResourceGroupName "resource-group-name" -Name "storage-account-name"
 New-AzOperationalInsightsLinkedStorageAccount -ResourceGroupName "resource-group-name" -WorkspaceName "workspace-name" -DataSourceType Query -StorageAccountIds $storageAccount.Id
 ```
+
+# <a name="rest"></a>[REST](#tab/rest)
 
 ```rst
 PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/workspaces/<workspace-name>/linkedStorageAccounts/Query?api-version=2020-08-01
@@ -333,21 +313,33 @@ Content-type: application/json
 }
 ```
 
+---
+
 Nach der Konfiguration werden alle neuen Abfragen *gespeicherter Suchvorgänge* in Ihrem Speicher gespeichert.
 
 **Konfigurieren von BYOS für Abfragen für Protokollwarnungen**
 
 Verknüpfen Sie das Speicherkonto für *Warnungen* mit Ihrem Arbeitsbereich. Abfragen für *Protokollwarnungen* werden in Ihrem Speicherkonto gespeichert. 
 
+# <a name="azure-portal"></a>[Azure portal](#tab/portal)
+
+–
+
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+
 ```azurecli
 $storageAccountId = '/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/<storage name>'
 az monitor log-analytics workspace linked-storage create --type ALerts --resource-group "resource-group-name" --workspace-name "workspace-name" --storage-accounts $storageAccountId
 ```
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
 ```powershell
 $storageAccount.Id = Get-AzStorageAccount -ResourceGroupName "resource-group-name" -Name "storage-account-name"
 New-AzOperationalInsightsLinkedStorageAccount -ResourceGroupName "resource-group-name" -WorkspaceName "workspace-name" -DataSourceType Alerts -StorageAccountIds $storageAccount.Id
 ```
+
+# <a name="rest"></a>[REST](#tab/rest)
 
 ```rst
 PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/workspaces/<workspace-name>/linkedStorageAccounts/Alerts?api-version=2020-08-01
@@ -365,9 +357,12 @@ Content-type: application/json
 }
 ```
 
+---
+
 Nach der Konfiguration werden alle neuen Warnungsabfragen in Ihrem Speicher gespeichert.
 
 ## <a name="customer-lockbox-preview"></a>Kunden-Lockbox (Vorschau)
+
 Lockbox bietet Ihnen die Möglichkeit, die Anforderung eines Microsoft-Technikers für den Zugriff auf Ihre Daten während einer Supportanfrage zu genehmigen oder abzulehnen.
 
 In Azure Monitor haben Sie diese Kontrolle über Daten in Arbeitsbereichen, die mit Ihrem dedizierten Log Analytics-Cluster verknüpft sind. Die Lockbox-Kontrolle gilt für Daten, die in einem dedizierten Log Analytics-Cluster gespeichert sind, wo sie in Speicherkonten des Clusters unter Ihrem Lockbox-geschützten Abonnement isoliert aufbewahrt werden.  
@@ -378,13 +373,23 @@ Weitere Informationen finden Sie unter [Kunden-Lockbox für Microsoft Azure](../
 
 - **Abrufen aller Cluster in einer Ressourcengruppe**
   
+  # <a name="azure-portal"></a>[Azure portal](#tab/portal)
+
+  –
+
+  # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+
   ```azurecli
   az monitor log-analytics cluster list --resource-group "resource-group-name"
   ```
 
+  # <a name="powershell"></a>[PowerShell](#tab/powershell)
+
   ```powershell
   Get-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name"
   ```
+
+  # <a name="rest"></a>[REST](#tab/rest)
 
   ```rst
   GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters?api-version=2020-08-01
@@ -426,15 +431,27 @@ Weitere Informationen finden Sie unter [Kunden-Lockbox für Microsoft Azure](../
   }
   ```
 
+  ---
+
 - **Abrufen aller Cluster in einem Abonnement**
+
+  # <a name="azure-portal"></a>[Azure portal](#tab/portal)
+
+  –
+
+  # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
   ```azurecli
   az monitor log-analytics cluster list
   ```
 
+  # <a name="powershell"></a>[PowerShell](#tab/powershell)
+
   ```powershell
   Get-AzOperationalInsightsCluster
   ```
+
+  # <a name="rest"></a>[REST](#tab/rest)
 
   ```rst
   GET https://management.azure.com/subscriptions/<subscription-id>/providers/Microsoft.OperationalInsights/clusters?api-version=2020-08-01
@@ -445,17 +462,29 @@ Weitere Informationen finden Sie unter [Kunden-Lockbox für Microsoft Azure](../
     
   Dieselbe Antwort wie bei „Cluster in einer Ressourcengruppe“, jedoch im Abonnementbereich.
 
+  ---
+
 - **Aktualisieren der *Kapazitätsreservierung* in einem Cluster**
 
   Wenn sich das Datenvolumen Ihrer verknüpften Arbeitsbereiche im Laufe der Zeit ändert und Sie die Kapazitätsreservierungsebene entsprechend aktualisieren möchten. Führen Sie die Schritte zum [Aktualisieren des Clusters](#update-cluster-with-key-identifier-details) aus, und geben Sie den neuen Kapazitätswert an. Dieser kann im Bereich von 1000 bis 3000 GB pro Tag liegen und in 100er Schritten aktualisiert werden. Wenn Sie mehr als 3000 GB pro Tag benötigen, wenden Sie sich an Ihren Microsoft-Kontakt. Beachten Sie, dass Sie nicht den vollständigen REST-Anforderungstext angeben müssen, aber die SKU einschließen sollten:
+
+  # <a name="azure-portal"></a>[Azure portal](#tab/portal)
+
+  –
+
+  # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
   ```azurecli
   az monitor log-analytics cluster update --name "cluster-name" --resource-group "resource-group-name" --sku-capacity daily-ingestion-gigabyte
   ```
 
+  # <a name="powershell"></a>[PowerShell](#tab/powershell)
+
   ```powershell
   Update-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -ClusterName "cluster-name" -SkuCapacity daily-ingestion-gigabyte
   ```
+
+  # <a name="rest"></a>[REST](#tab/rest)
 
   ```rst
   PATCH https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-08-01
@@ -470,6 +499,8 @@ Weitere Informationen finden Sie unter [Kunden-Lockbox für Microsoft Azure](../
   }
   ```
 
+  ---
+
 - **Aktualisieren von *billingType* im Cluster**
 
   Die Eigenschaft *billingType* bestimmt die Abrechnungszuordnung für den Cluster und dessen Daten:
@@ -477,6 +508,20 @@ Weitere Informationen finden Sie unter [Kunden-Lockbox für Microsoft Azure](../
   - *Arbeitsbereiche*: Die Abrechnung wird den Abonnements zugeordnet, die Ihre Arbeitsbereiche proportional hosten.
   
   Führen Sie die Schritte zum [Aktualisieren des Clusters](#update-cluster-with-key-identifier-details) aus, und geben Sie den neuen Wert für „billingType“ an. Beachten Sie, dass Sie nicht den vollständigen REST-Anforderungstext angeben müssen und *billingType* einschließen sollten:
+
+  # <a name="azure-portal"></a>[Azure portal](#tab/portal)
+
+  –
+
+  # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+
+  –
+
+  # <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+  –
+
+  # <a name="rest"></a>[REST](#tab/rest)
 
   ```rst
   PATCH https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-08-01
@@ -490,36 +535,67 @@ Weitere Informationen finden Sie unter [Kunden-Lockbox für Microsoft Azure](../
   }
   ``` 
 
+  ---
+
 - **Aufheben der Verknüpfung mit dem Arbeitsbereich**
 
   Sie brauchen Schreibberechtigungen für den Arbeitsbereich und den Cluster, um diesen Vorgang auszuführen. Sie können die Verknüpfung eines Arbeitsbereichs mit Ihrem Cluster jederzeit aufheben. Neue erfasste Daten werden nach dem Aufheben der Verknüpfung im Log Analytics-Speicher gespeichert und mit dem Microsoft-Schlüssel verschlüsselt. Sie können Daten, die vor und nach dem Aufheben der Verknüpfung im Arbeitsbereich erfasst wurden, nahtlos abfragen, solange der Cluster mit gültigem Key Vault-Schlüssel bereitgestellt und konfiguriert wurde.
 
   Dieser Vorgang ist asynchron und kann einige Zeit in Anspruch nehmen.
 
+  # <a name="azure-portal"></a>[Azure portal](#tab/portal)
+
+  –
+
+  # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+
   ```azurecli
   az monitor log-analytics workspace linked-service delete --resource-group "resource-group-name" --name "cluster-name" --workspace-name "workspace-name"
   ```
 
+  # <a name="powershell"></a>[PowerShell](#tab/powershell)
+
   ```powershell
   Remove-AzOperationalInsightsLinkedService -ResourceGroupName "resource-group-name" -Name "workspace-name" -LinkedServiceName cluster
   ```
+
+  # <a name="rest"></a>[REST](#tab/rest)
 
   ```rest
   DELETE https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>/linkedservices/cluster?api-version=2020-08-01
   Authorization: Bearer <token>
   ```
 
-  - **Überprüfen des Verknüpfungsstatus des Arbeitsbereichs**
+  ---
+
+- **Überprüfen des Verknüpfungsstatus des Arbeitsbereichs**
   
   Führen Sie den Get-Vorgang für den Arbeitsbereich aus, und beobachten Sie, ob die *clusterResourceId*-Eigenschaft unter *features* in der Antwort vorhanden ist. Der verknüpfte Arbeitsbereich verfügt über die *clusterResourceId*-Eigenschaft.
+
+  # <a name="azure-portal"></a>[Azure portal](#tab/portal)
+
+  –
+
+  # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
   ```azurecli
   az monitor log-analytics cluster show --resource-group "resource-group-name" --name "cluster-name"
   ```
 
+  # <a name="powershell"></a>[PowerShell](#tab/powershell)
+
   ```powershell
   Get-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-name" -Name "workspace-name"
   ```
+
+  # <a name="rest"></a>[REST](#tab/rest)
+
+   ```rest
+  GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>?api-version=2020-08-01
+  Authorization: Bearer <token>
+  ```
+
+  ---
 
 - **Löschen des Clusters**
 
@@ -527,18 +603,30 @@ Weitere Informationen finden Sie unter [Kunden-Lockbox für Microsoft Azure](../
   
   Das Aufheben der Verknüpfung ist ein asynchroner Vorgang und kann bis zu 90 Minuten dauern.
 
+  # <a name="azure-portal"></a>[Azure portal](#tab/portal)
+
+  –
+
+  # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+
   ```azurecli
   az monitor log-analytics cluster delete --resource-group "resource-group-name" --name "cluster-name"
   ```
- 
+
+  # <a name="powershell"></a>[PowerShell](#tab/powershell)
+
   ```powershell
   Remove-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -ClusterName "cluster-name"
   ```
+
+  # <a name="rest"></a>[REST](#tab/rest)
 
   ```rst
   DELETE https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-08-01
   Authorization: Bearer <token>
   ```
+
+  ---
   
 - **Wiederherstellen von Cluster und Daten** 
   
@@ -556,7 +644,7 @@ Weitere Informationen finden Sie unter [Kunden-Lockbox für Microsoft Azure](../
 
 - Die Arbeitsbereichverknüpfung mit einem Cluster sollte NUR ausgeführt werden, nachdem Sie sichergestellt haben, dass die Log Analytics-Clusterbereitstellung abgeschlossen wurde. Daten, die vor dem Abschluss an Ihren Arbeitsbereich gesendet wurden, werden gelöscht und können nicht wiederhergestellt werden.
 
-- Die Verschlüsselung mit kundenseitig verwaltetem Schlüssel gilt für Daten, die nach dem Konfigurationszeitpunkt neu erfasst werden. Daten, die vor der Konfiguration erfasst wurden, bleiben mit dem Microsoft-Schlüssel verschlüsselt. Sie können vor und nach der Konfiguration erfasste Daten nahtlos abfragen.
+- Die Verschlüsselung mit kundenseitig verwaltetem Schlüssel gilt für Daten, die nach dem Konfigurationszeitpunkt neu erfasst werden. Daten, die vor der Konfiguration erfasst wurden, bleiben mit dem Microsoft-Schlüssel verschlüsselt. Sie können vor und nach der Konfiguration des kundenseitig verwalteten Schlüssels erfasste Daten nahtlos abfragen.
 
 - Azure Key Vault muss als wiederherstellbar konfiguriert werden. Die folgenden Eigenschaften sind standardmäßig nicht aktiviert und sollten mithilfe der CLI oder PowerShell konfiguriert werden:<br>
   - [Vorläufiges Löschen](../../key-vault/general/soft-delete-overview.md)
@@ -567,6 +655,12 @@ Weitere Informationen finden Sie unter [Kunden-Lockbox für Microsoft Azure](../
 - Azure Key Vault, Cluster und verknüpfte Arbeitsbereiche müssen sich in derselben Region und in demselben Azure Active Directory (Azure AD)-Mandanten befinden, können jedoch in unterschiedlichen Abonnements enthalten sein.
 
 - Die Arbeitsbereichverknüpfung mit dem Cluster schlägt fehl, wenn er mit einem anderen Cluster verknüpft ist.
+
+- Lockbox ist in China derzeit nicht verfügbar. 
+
+- [Doppelte Verschlüsselung](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption) wird automatisch für Cluster konfiguriert, die ab Oktober 2020 in unterstützten Regionen erstellt werden. Sie können überprüfen, ob Ihr Cluster für doppelte Verschlüsselung konfiguriert ist. Dazu verwenden Sie eine GET-Anforderung für den Cluster und beobachten den Wert der Eigenschaft `"isDoubleEncryptionEnabled"`. Bei Clustern mit aktivierter doppelter Verschlüsselung lautet dieser `true`. 
+  - Wenn Sie einen Cluster erstellen und die Fehlermeldung „Die doppelte Verschlüsselung für Cluster wird von <Regionsname> nicht unterstützt.“ erhalten, können Sie den Cluster trotzdem ohne doppelte Verschlüsselung erstellen. Fügen Sie die Eigenschaft `"properties": {"isDoubleEncryptionEnabled": false}` im REST-Anforderungstext hinzu.
+  - Die Einstellung für doppelte Verschlüsselung kann nach dem Erstellen des Clusters nicht mehr geändert werden.
 
 ## <a name="troubleshooting"></a>Problembehandlung
 
@@ -594,8 +688,6 @@ Weitere Informationen finden Sie unter [Kunden-Lockbox für Microsoft Azure](../
 - Einige Vorgänge dauern lange und können einige Zeit in Anspruch nehmen. Dies sind Erstellen des Clusters, Aktualisieren des Clusterschlüssels und Löschen des Clusters. Sie können den Vorgangsstatus auf zwei Arten überprüfen:
   1. Kopieren Sie bei Verwendung von REST den URL-Wert von „Azure-AsyncOperation“ aus der Antwort, und befolgen Sie die [Überprüfung des Status asynchroner Vorgänge](#asynchronous-operations-and-status-check).
   2. Senden Sie eine GET-Anforderung an den Cluster oder Arbeitsbereich, und beobachten Sie die Antwort. Beispielsweise weist der nicht verknüpfte Arbeitsbereich unter *features* nicht die *clusterResourceId* auf.
-
-- Wenn Sie Unterstützung und Hilfe im Zusammenhang mit kundenseitig verwalteten Schlüsseln benötigen, nutzen Sie Ihre Kontakte zu Microsoft.
 
 - Fehlermeldungen
   

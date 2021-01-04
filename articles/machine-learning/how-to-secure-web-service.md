@@ -8,15 +8,15 @@ ms.subservice: core
 ms.reviewer: jmartens
 ms.author: aashishb
 author: aashishb
-ms.date: 03/05/2020
+ms.date: 11/18/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-azurecli
-ms.openlocfilehash: a9b68b2d4298c5e692782e529bae9a9df6359953
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.openlocfilehash: f7e16400f6460f7479cdffd1928126cdd70a8f0c
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94331157"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97503997"
 ---
 # <a name="use-tls-to-secure-a-web-service-through-azure-machine-learning"></a>Verwenden von TLS zum Absichern eines Webdiensts mit Azure Machine Learning
 
@@ -28,7 +28,7 @@ Verwenden Sie [HTTPS](https://en.wikipedia.org/wiki/HTTPS), um den Zugriff auf W
 > [!TIP]
 > Im Azure Machine Learning SDK wird der Begriff „SSL“ für Eigenschaften im Zusammenhang mit sicherer Kommunikation verwendet. Dies bedeutet nicht, dass Ihr Webdienst *TLS* nicht verwendet. SSL ist nur ein gebräuchlicherer Begriff.
 >
-> Insbesondere unterstützen über Azure Machine Learning bereitgestellte Webdienste die TLS-Version 1.2 für neue AKS- und ACI-Bereitstellungen. Wenn Sie mit ACI-Bereitstellungen arbeiten oder eine ältere TLS-Version verwenden, empfiehlt sich eine erneute Bereitstellung, um die neueste TLS-Version zu erhalten.
+> Insbesondere unterstützen über Azure Machine Learning bereitgestellte Webdienste die TLS-Version 1.2 für AKS und ACI. Wenn Sie mit ACI-Bereitstellungen arbeiten oder eine ältere TLS-Version verwenden, empfiehlt sich eine erneute Bereitstellung, um die neueste TLS-Version zu erhalten.
 
 Sowohl TLS als auch SSL beruhen auf *digitalen Zertifikaten*, die zur Verschlüsselung und Identitätsüberprüfung verwendet werden. Weitere Informationen zur Funktionsweise digitaler Zertifikate finden Sie im Wikipedia-Thema [Public key infrastructure](https://en.wikipedia.org/wiki/Public_key_infrastructure) (Public-Key-Infrastruktur).
 
@@ -86,6 +86,9 @@ Beim Bereitstellen in AKS können Sie einen neuen AKS-Cluster erstellen oder ein
 - Wenn Sie einen vorhandenen Cluster anfügen, verwenden Sie **[AksCompute.attach_configuration()](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#&preserve-view=trueattach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)** . Beide geben ein Konfigurationsobjekt mit einer **enable_ssl**-Methode zurück.
 
 Die **enable_ssl**-Methode kann ein Zertifikat verwenden, das von Microsoft bereitgestellt wird, oder ein von Ihnen erworbenes Zertifikat.
+
+> [!WARNING]
+> Wenn Ihr AKS-Cluster mit einem internen Load Balancer konfiguriert ist, wird die Verwendung eines von Microsoft bereitgestellten Zertifikats __nicht unterstützt__. Die Verwendung eines von Microsoft bereitgestellten Zertifikats erfordert eine öffentliche IP-Ressource in Azure, die für AKS nicht verfügbar ist, wenn AKS für den internen Load Balancer konfiguriert ist.
 
   * Wenn Sie ein Zertifikat von Microsoft verwenden, müssen Sie den *leaf_domain_label*-Parameter verwenden. Dieser Parameter generiert den DNS-Namen für den Dienst. Mit dem Wert „contoso“ wird z. B. der Domänenname „contoso\<six-random-characters>.\<azureregion>.cloudapp.azure.com“ erstellt, wobei \<azureregion> die Region ist, in der sich der Dienst befindet. Optional können Sie den *overwrite_existing_domain*-Parameter zum Überschreiben des vorhandenen *leaf_domain_label* verwenden.
 
@@ -159,7 +162,8 @@ Als Nächstes müssen Sie Ihren DNS aktualisieren, so dass er auf den Dienst ver
 
   > [!WARNING]
   > Wenn Sie *leaf_domain_label* zum Erstellen des Diensts mit einem Zertifikat von Microsoft verwendet haben, aktualisieren Sie den DNS-Wert für den Cluster nicht manuell. Der Wert sollte automatisch festgelegt werden.
-
+  >
+  > Wenn Ihr AKS-Cluster mit einem internen Load Balancer konfiguriert ist, wird die Verwendung eines von Microsoft bereitgestellten Zertifikats (durch Festlegen von *leaf_domain_label*) __nicht unterstützt__. Die Verwendung eines von Microsoft bereitgestellten Zertifikats erfordert eine öffentliche IP-Ressource in Azure, die für AKS nicht verfügbar ist, wenn AKS für den internen Load Balancer konfiguriert ist.
   Aktualisieren Sie das DNS der öffentlichen IP-Adresse des AKS-Clusters im linken Bereich auf der Registerkarte **Konfiguration** unter **Einstellungen**. (Siehe folgende Abbildung.) Die öffentliche IP-Adresse ist ein Ressourcentyp, der unter der Ressourcengruppe erstellt wird, die die AKS-Agent-Knoten und weitere Netzwerkressourcen enthält.
 
   [![Azure Machine Learning: Sichern von Webdiensten mit TLS](./media/how-to-secure-web-service/aks-public-ip-address.png)](./media/how-to-secure-web-service/aks-public-ip-address-expanded.png)

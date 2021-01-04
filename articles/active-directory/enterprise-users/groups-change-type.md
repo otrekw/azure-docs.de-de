@@ -6,20 +6,20 @@ documentationcenter: ''
 author: curtand
 manager: daveba
 ms.service: active-directory
-ms.workload: identity
 ms.subservice: enterprise-users
+ms.workload: identity
 ms.topic: how-to
-ms.date: 11/15/2020
+ms.date: 12/02/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0bbd11577f903d70ecace2cb5859a8c2121f483b
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 1a46cc3f4a0f2fb25fc693103a64a319dcec0324
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94647391"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860880"
 ---
 # <a name="change-static-group-membership-to-dynamic-in-azure-active-directory"></a>Ändern der statischen Gruppenmitgliedschaft in „Dynamisch“ in Azure Active Directory
 
@@ -57,7 +57,7 @@ Die folgenden Schritte sind ein Beispiel für die Änderung der Mitgliedschaft e
 ## <a name="change-membership-type-for-a-group-powershell"></a>Ändern des Typs der Mitgliedschaft für eine Gruppe (PowerShell)
 
 > [!NOTE]
-> Zum Ändern der Eigenschaften dynamischer Gruppen müssen Sie Cmdlets aus **der Vorschauversion von** [Azure AD PowerShell Version 2](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0) verwenden. Sie können die Vorschau aus dem [PowerShell-Katalog](https://www.powershellgallery.com/packages/AzureADPreview) installieren.
+> Zum Ändern der Eigenschaften dynamischer Gruppen müssen Sie Cmdlets aus **der Vorschauversion von** [Azure AD PowerShell Version 2](/powershell/azure/active-directory/install-adv2) verwenden. Sie können die Vorschau aus dem [PowerShell-Katalog](https://www.powershellgallery.com/packages/AzureADPreview) installieren.
 
 Hier folgt ein Beispiel für Funktionen, die die Verwaltung der Mitgliedschaft für eine vorhandene Gruppe wechseln. In diesem Beispiel wird darauf geachtet, dass die GroupTypes-Eigenschaft ordnungsgemäß geändert wird und alle Werte erhalten bleiben, die dort vorhanden sind und keine Beziehung zur dynamischen Mitgliedschaft aufweisen.
 

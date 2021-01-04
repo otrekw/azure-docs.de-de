@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 08/21/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: f631f8ee022f501cb30af4aae5cf48294b9ca3c2
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: d7e312f049acc0b74aa0a253864bfce6100044bd
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93125834"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929139"
 ---
 # <a name="use-gpus-for-compute-intensive-workloads-on-azure-kubernetes-service-aks"></a>Verwenden von GPUs für computeintensive Workloads in Azure Kubernetes Service (AKS)
 
@@ -58,13 +58,13 @@ az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 
 Um die GPUs in den Knoten verwenden zu können, muss zunächst ein DaemonSet für das NVIDIA-Geräte-Plug-In bereitgestellt werden. Diese DaemonSet führt einen Pod für jeden Knoten aus, um die erforderlichen Treiber für die GPUs bereitzustellen.
 
-Erstellen Sie zunächst einen Namespace mit dem Befehl [kubectl create namespace][kubectl-create], z.B. *gpu-resources* :
+Erstellen Sie zunächst einen Namespace mit dem Befehl [kubectl create namespace][kubectl-create], z.B. *gpu-resources*:
 
 ```console
 kubectl create namespace gpu-resources
 ```
 
-Erstellen Sie eine Datei mit dem Namen *nvidia-device-plugin-ds.yaml* , und fügen Sie das folgende YAML-Manifest ein. Dieses Manifest wird im Rahmen des Projekts [NVIDIA device plugin for Kubernetes][nvidia-github] (NVIDIA-Geräte-Plug-In für Kubernetes) bereitgestellt.
+Erstellen Sie eine Datei mit dem Namen *nvidia-device-plugin-ds.yaml*, und fügen Sie das folgende YAML-Manifest ein. Dieses Manifest wird im Rahmen des Projekts [NVIDIA device plugin for Kubernetes][nvidia-github] (NVIDIA-Geräte-Plug-In für Kubernetes) bereitgestellt.
 
 ```yaml
 apiVersion: apps/v1
@@ -134,13 +134,13 @@ Registrieren Sie das Feature `GPUDedicatedVHDPreview`:
 az feature register --name GPUDedicatedVHDPreview --namespace Microsoft.ContainerService
 ```
 
-Es kann einige Minuten dauern, bis der Status als **Registriert** angezeigt wird. Sie können den Registrierungsstatus mithilfe des Befehls [az feature list](/cli/azure/feature?view=azure-cli-latest#az-feature-list) überprüfen:
+Es kann einige Minuten dauern, bis der Status als **Registriert** angezeigt wird. Sie können den Registrierungsstatus mithilfe des Befehls [az feature list](/cli/azure/feature#az-feature-list) überprüfen:
 
 ```azurecli
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/GPUDedicatedVHDPreview')].{Name:name,State:properties.state}"
 ```
 
-Wenn der Status als registriert angezeigt wird, können Sie die Registrierung des `Microsoft.ContainerService`-Ressourcenanbieters mit dem Befehl [az provider register](/cli/azure/provider?view=azure-cli-latest#az-provider-register) aktualisieren:
+Wenn der Status als registriert angezeigt wird, können Sie die Registrierung des `Microsoft.ContainerService`-Ressourcenanbieters mit dem Befehl [az provider register](/cli/azure/provider#az-provider-register) aktualisieren:
 
 ```azurecli
 az provider register --namespace Microsoft.ContainerService
@@ -252,7 +252,7 @@ Non-terminated Pods:         (9 in total)
 
 Um die GPU in Aktion zu sehen, planen Sie eine GPU-fähige Workload mit der entsprechenden Ressourcenanforderung. In diesem Beispiel wird ein [TensorFlow](https://www.tensorflow.org/)-Auftrag für das [MNIST-Dataset](http://yann.lecun.com/exdb/mnist/) ausgeführt.
 
-Erstellen Sie eine Datei mit dem Namen *samples-tf-mnist-demo.yaml* , und fügen Sie das folgende YAML-Manifest ein. Das folgende Auftragsmanifest enthält ein Ressourcenlimit von `nvidia.com/gpu: 1`:
+Erstellen Sie eine Datei mit dem Namen *samples-tf-mnist-demo.yaml*, und fügen Sie das folgende YAML-Manifest ein. Das folgende Auftragsmanifest enthält ein Ressourcenlimit von `nvidia.com/gpu: 1`:
 
 > [!NOTE]
 > Wenn Sie beim Aufruf von Treibern einen Versionsfehler erhalten (z. B., dass die CUDA-Treiberversion für die CUDA-Laufzeitversion nicht ausreicht), überprüfen Sie das NVIDIA-Treibermatrix-Kompatibilitätsdiagramm: [https://docs.nvidia.com/deploy/cuda-compatibility/index.html](https://docs.nvidia.com/deploy/cuda-compatibility/index.html)
@@ -289,7 +289,7 @@ kubectl apply -f samples-tf-mnist-demo.yaml
 
 ## <a name="view-the-status-and-output-of-the-gpu-enabled-workload"></a>Anzeigen des Status und der Ausgabe der GPU-fähigen Workload
 
-Überwachen Sie den Status des Auftrags mithilfe des Befehls [kubectl get jobs][kubectl-get] mit dem Argument `--watch`. Es kann einige Minuten dauern, um zunächst das Image zu pullen und das Dataset zu verarbeiten. Wenn die Spalte *ABSCHLÜSSE* die Angabe *1/1* enthält, wurde der Auftrag erfolgreich abgeschlossen. Beenden Sie den Befehl `kubetctl --watch` durch Drücken von *STRG+C* :
+Überwachen Sie den Status des Auftrags mithilfe des Befehls [kubectl get jobs][kubectl-get] mit dem Argument `--watch`. Es kann einige Minuten dauern, um zunächst das Image zu pullen und das Dataset zu verarbeiten. Wenn die Spalte *ABSCHLÜSSE* die Angabe *1/1* enthält, wurde der Auftrag erfolgreich abgeschlossen. Beenden Sie den Befehl `kubetctl --watch` durch Drücken von *STRG+C*:
 
 ```console
 $ kubectl get jobs samples-tf-mnist-demo --watch

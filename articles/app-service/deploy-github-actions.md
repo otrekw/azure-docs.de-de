@@ -6,13 +6,13 @@ ms.topic: article
 ms.date: 09/14/2020
 ms.author: jafreebe
 ms.reviewer: ushan
-ms.custom: devx-track-python, github-actions-azure
-ms.openlocfilehash: 6c768df964d46364a8ca501c078dbecaf1aaa21f
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.custom: devx-track-python, github-actions-azure, devx-track-azurecli
+ms.openlocfilehash: b94e35f504a4c4d6e934ec01b06105f749031e35
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93095559"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007380"
 ---
 # <a name="deploy-to-app-service-using-github-actions"></a>Bereitstellen in App Service mithilfe von GitHub Actions
 
@@ -55,7 +55,7 @@ Mit dem App Service Deployment Center ist die Verwendung von GitHub Actions ganz
 
 Dadurch wird ein Commit der Workflowdatei an das Repository ausgeführt. Der Workflow zum Erstellen und Bereitstellen Ihrer App wird sofort gestartet.
 
-## <a name="set-up-a-work-manually"></a>Manuelles Einrichten eines Workflows
+## <a name="set-up-a-workflow-manually"></a>Manuelles Einrichten eines Workflows
 
 Sie können einen Workflow auch ohne das Deployment Center bereitstellen. Dazu müssen Sie die Anmeldeinformationen für die Bereitstellung generieren. 
 
@@ -80,7 +80,7 @@ Ein Veröffentlichungsprofil stellt Anmeldeinformationen auf App-Ebene dar. Rich
 
 # <a name="service-principal"></a>[Dienstprinzipal](#tab/userlevel)
 
-Sie können mit dem Befehl [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac&preserve-view=true) in der [Azure CLI](/cli/azure/) einen [Dienstprinzipal](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) erstellen. Führen Sie diesen Befehl mit [Azure Cloud Shell](https://shell.azure.com/) im Azure-Portal oder durch Auswählen der Schaltfläche **Ausprobieren** aus.
+Sie können mit dem Befehl [az ad sp create-for-rbac](/cli/azure/ad/sp#az-ad-sp-create-for-rbac) in der [Azure CLI](/cli/azure/) einen [Dienstprinzipal](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) erstellen. Führen Sie diesen Befehl mit [Azure Cloud Shell](https://shell.azure.com/) im Azure-Portal oder durch Auswählen der Schaltfläche **Ausprobieren** aus.
 
 ```azurecli-interactive
 az ad sp create-for-rbac --name "myApp" --role contributor \

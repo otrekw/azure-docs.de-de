@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 09/13/2020
 ms.author: rogarana
-ms.openlocfilehash: 9dc6433170144635ad05033d110f448cf314179b
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 2214dbc9dcbd4ba7728065ee45471e9f94b9e513
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94628848"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95739994"
 ---
 # <a name="overview---on-premises-active-directory-domain-services-authentication-over-smb-for-azure-file-shares"></a>Übersicht – lokale Active Directory Domain Services-Authentifizierung über SMB für Azure-Dateifreigaben
 
@@ -24,7 +24,7 @@ Wenn Sie noch nicht mit Azure-Dateifreigaben vertraut sind, empfiehlt es sich, u
 
 - AD DS-Identitäten, die für die lokale AD DS-Authentifizierung von Azure Files verwendet werden, müssen mit Azure AD synchronisiert sein. Kennworthashsynchronisierung ist optional. 
 - Unterstützt von Azure-Dateisynchronisierung verwaltete Azure-Dateifreigaben.
-- Unterstützt Kerberos-Authentifizierung mit AD mit RC4-HMAC- und [AES 256-Verschlüsselung](./storage-troubleshoot-windows-file-connection-problems.md#azure-files-on-premises-ad-ds-authentication-support-for-aes-256-kerberos-encryption). AES 128-Kerberos-Verschlüsselung wird noch nicht unterstützt.
+- Unterstützt Kerberos-Authentifizierung mit AD mit RC4-HMAC- und [AES 256-Verschlüsselung](./storage-troubleshoot-windows-file-connection-problems.md#azure-files-on-premises-ad-ds-authentication-support-for-aes-256-kerberos-encryption). Die Unterstützung für die AES 256-Verschlüsselung ist zurzeit auf Speicherkonten beschränkt, deren Namen maximal 15 Zeichen lang sind. AES 128-Kerberos-Verschlüsselung wird noch nicht unterstützt.
 - Unterstützt Einmaliges Anmelden.
 - Wird nur auf Clients unterstützt, die auf Betriebssystemversionen nach Windows 7 oder Windows Server 2008 R2 ausgeführt werden.
 - Wird nur für die AD-Gesamtstruktur unterstützt, in der das Speicherkonto registriert ist. Sie können auf Azure-Dateifreigaben standardmäßig nur mit den AD DS-Anmeldeinformationen einer einzelnen Gesamtstruktur zugreifen. Wenn Sie von einer anderen Gesamtstruktur aus auf Ihre Azure-Dateifreigabe zugreifen müssen, stellen Sie sicher, dass Sie die richtige Gesamtstrukturvertrauensstellung konfiguriert haben. Weitere Informationen finden Sie unter [FAQ](storage-files-faq.md#ad-ds--azure-ad-ds-authentication).

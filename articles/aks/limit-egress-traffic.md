@@ -6,12 +6,12 @@ ms.topic: article
 ms.author: jpalma
 ms.date: 11/09/2020
 author: palma21
-ms.openlocfilehash: e3b755ca3ca5338acfc1918bd2085d9fba18b8ac
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: a1d045e66771026d2b4cf7ad44fd6943d2d407f4
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94380210"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94701601"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>Steuern des ausgehenden Datenverkehrs für Clusterknoten in Azure Kubernetes Service (AKS)
 
@@ -65,7 +65,7 @@ Die folgenden vollqualifizierten Domänennamen und Anwendungsregeln sind erforde
 | **`*.data.mcr.microsoft.com`**   | **`HTTPS:443`** | Erforderlich für den auf Azure Content Delivery Network (CDN) basierenden MCR-Speicher. |
 | **`management.azure.com`**       | **`HTTPS:443`** | Erforderlich für Kubernetes-Vorgänge für die Azure-API. |
 | **`login.microsoftonline.com`**  | **`HTTPS:443`** | Erforderlich für die Azure Active Directory-Authentifizierung. |
-| **`packages.microsoft.com`**     | **`HTTPS:443`** | Diese Adresse ist das Microsoft-Paketrepository, das für zwischengespeicherte *apt-get* -Vorgänge verwendet wird.  Beispielpakete sind Moby, PowerShell und Azure CLI. |
+| **`packages.microsoft.com`**     | **`HTTPS:443`** | Diese Adresse ist das Microsoft-Paketrepository, das für zwischengespeicherte *apt-get*-Vorgänge verwendet wird.  Beispielpakete sind Moby, PowerShell und Azure CLI. |
 | **`acs-mirror.azureedge.net`**   | **`HTTPS:443`** | Hierbei handelt es sich um die Adresse für das Repository, das zum Herunterladen und Installieren erforderlicher Binärdateien wie kubenet und Azure CNI benötigt wird. |
 
 ### <a name="azure-china-21vianet-required-network-rules"></a>Für Azure China 21Vianet benötigte Netzwerkregeln
@@ -93,7 +93,7 @@ Die folgenden vollqualifizierten Domänennamen und Anwendungsregeln sind erforde
 | **`.data.mcr.microsoft.com`**                  | **`HTTPS:443`** | Erforderlich für den auf Azure Content Delivery Network (CDN) basierenden MCR-Speicher. |
 | **`management.chinacloudapi.cn`**              | **`HTTPS:443`** | Erforderlich für Kubernetes-Vorgänge für die Azure-API. |
 | **`login.chinacloudapi.cn`**                   | **`HTTPS:443`** | Erforderlich für die Azure Active Directory-Authentifizierung. |
-| **`packages.microsoft.com`**                   | **`HTTPS:443`** | Diese Adresse ist das Microsoft-Paketrepository, das für zwischengespeicherte *apt-get* -Vorgänge verwendet wird.  Beispielpakete sind Moby, PowerShell und Azure CLI. |
+| **`packages.microsoft.com`**                   | **`HTTPS:443`** | Diese Adresse ist das Microsoft-Paketrepository, das für zwischengespeicherte *apt-get*-Vorgänge verwendet wird.  Beispielpakete sind Moby, PowerShell und Azure CLI. |
 | **`*.azk8s.cn`**                               | **`HTTPS:443`** | Hierbei handelt es sich um die Adresse für das Repository, das zum Herunterladen und Installieren erforderlicher Binärdateien wie kubenet und Azure CNI benötigt wird. |
 
 ### <a name="azure-us-government-required-network-rules"></a>Für Azure US Government benötigte Netzwerkregeln
@@ -119,7 +119,7 @@ Die folgenden vollqualifizierten Domänennamen und Anwendungsregeln sind erforde
 | **`*.data.mcr.microsoft.com`**                          | **`HTTPS:443`** | Erforderlich für den auf Azure Content Delivery Network (CDN) basierenden MCR-Speicher. |
 | **`management.usgovcloudapi.net`**                      | **`HTTPS:443`** | Erforderlich für Kubernetes-Vorgänge für die Azure-API. |
 | **`login.microsoftonline.us`**                          | **`HTTPS:443`** | Erforderlich für die Azure Active Directory-Authentifizierung. |
-| **`packages.microsoft.com`**                            | **`HTTPS:443`** | Diese Adresse ist das Microsoft-Paketrepository, das für zwischengespeicherte *apt-get* -Vorgänge verwendet wird.  Beispielpakete sind Moby, PowerShell und Azure CLI. |
+| **`packages.microsoft.com`**                            | **`HTTPS:443`** | Diese Adresse ist das Microsoft-Paketrepository, das für zwischengespeicherte *apt-get*-Vorgänge verwendet wird.  Beispielpakete sind Moby, PowerShell und Azure CLI. |
 | **`acs-mirror.azureedge.net`**                          | **`HTTPS:443`** | Diese Adresse ist für das Repository, das zum Installieren erforderlicher Binärdateien wie kubenet und Azure CNI benötigt wird. |
 
 ## <a name="optional-recommended-fqdn--application-rules-for-aks-clusters"></a>Optional empfohlene FQDNs/Anwendungsregeln für AKS-Cluster
@@ -159,7 +159,7 @@ Die folgenden vollqualifizierten Domänennamen und Anwendungsregeln sind für di
 
 ### <a name="azure-monitor-for-containers"></a>Azure Monitor für Container
 
-Der Zugriff auf Azure Monitor für Container kann auf zwei Arten ermöglicht werden: Sie können das Azure Monitor-Diensttag ( [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags)) zulassen **oder** Zugriff auf die erforderlichen FQDNs/Anwendungsregeln gewähren.
+Der Zugriff auf Azure Monitor für Container kann auf zwei Arten ermöglicht werden: Sie können das Azure Monitor-Diensttag ([ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags)) zulassen **oder** Zugriff auf die erforderlichen FQDNs/Anwendungsregeln gewähren.
 
 #### <a name="required-network-rules"></a>Benötigte Netzwerkregeln
 
@@ -209,8 +209,10 @@ Die folgenden vollqualifizierten Domänennamen und Anwendungsregeln sind für AK
 
 | FQDN                                          | Port      | Zweck      |
 |-----------------------------------------------|-----------|----------|
-| **`gov-prod-policy-data.trafficmanager.net`** | **`HTTPS:443`** | Diese Adresse wird für den ordnungsgemäßen Betrieb von Azure Policy verwendet. (Derzeit als Vorschauversion in AKS) |
-| **`raw.githubusercontent.com`**               | **`HTTPS:443`** | Diese Adresse wird verwendet, um die integrierten Richtlinien aus GitHub abzurufen und so den ordnungsgemäßen Betrieb von Azure Policy sicherzustellen. (Derzeit als Vorschauversion in AKS) |
+| **`data.policy.core.windows.net`** | **`HTTPS:443`** | Diese Adresse wird verwendet, um die Kubernetes-Richtlinien abzurufen und den Konformitätsstatus des Clusters an den Richtliniendienst zu melden. |
+| **`store.policy.core.windows.net`** | **`HTTPS:443`** | Diese Adresse wird zum Abrufen der Gatekeeper-Artefakte integrierter Richtlinien verwendet. |
+| **`gov-prod-policy-data.trafficmanager.net`** | **`HTTPS:443`** | Diese Adresse wird für den ordnungsgemäßen Betrieb von Azure Policy verwendet.  |
+| **`raw.githubusercontent.com`**               | **`HTTPS:443`** | Diese Adresse wird verwendet, um die integrierten Richtlinien aus GitHub abzurufen und so den ordnungsgemäßen Betrieb von Azure Policy sicherzustellen. |
 | **`dc.services.visualstudio.com`**            | **`HTTPS:443`** | Das Azure Policy-Add-On, das Telemetriedaten an den Application Insights-Endpunkt sendet. |
 
 ## <a name="restrict-egress-traffic-using-azure-firewall"></a>Einschränken von ausgehendem Datenverkehr mithilfe von Azure Firewall

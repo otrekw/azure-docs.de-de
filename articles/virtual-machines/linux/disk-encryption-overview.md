@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7079f0b1060be1a260b41e07b9d9299bab57127f
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 91ef5ca35cc96aa2028522d370ffbade45ecc2de
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410809"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96779769"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>Azure Disk Encryption für Linux-VMs 
 
@@ -67,7 +67,7 @@ Nicht von Azure zugelassene Linux-Serverdistributionen unterstützen Azure Disk 
 | Canonical | Ubuntu 14.04.5</br>[für Azure optimierter Kernel aktualisiert auf 4.15 oder eine höhere Version](disk-encryption-troubleshooting.md) | 14.04.5-DAILY-LTS | Canonical:UbuntuServer:14.04.5-DAILY-LTS:latest | Betriebssystem- und andere Datenträger |
 | RedHat | RHEL 7.8 | 7,8 | RedHat:RHEL:7.8:latest | Betriebssystem- und andere Datenträger (siehe der Hinweis unten) |
 | RedHat | RHEL 7.7 | 7,7 | RedHat:RHEL:7.7:latest | Betriebssystem- und andere Datenträger (siehe der Hinweis unten) |
-| RedHat | RHEL 7.7 | 7-LVM | RedHat:RHEL:7-LVM:latest | Betriebssystem- und andere Datenträger (siehe der Hinweis unten) |
+| RedHat | RHEL 7-LVM | 7-LVM | RedHat:RHEL:7-LVM: 7.8.2020111201 | Betriebssystem- und andere Datenträger (siehe der Hinweis unten) |
 | RedHat | RHEL 7.6 | 7.6 | RedHat:RHEL:7.6:latest | Betriebssystem- und andere Datenträger (siehe der Hinweis unten) |
 | RedHat | RHEL 7.5 | 7,5 | RedHat:RHEL:7.5:latest | Betriebssystem- und andere Datenträger (siehe der Hinweis unten) |
 | RedHat | RHEL 7.4 | 7.4 | RedHat:RHEL:7.4:latest | Betriebssystem- und andere Datenträger (siehe der Hinweis unten) |
@@ -77,7 +77,7 @@ Nicht von Azure zugelassene Linux-Serverdistributionen unterstützen Azure Disk 
 | RedHat | RHEL 6.7 | 6.7 | RedHat:RHEL:6.7:latest | Datenträger für Daten (siehe der Hinweis unten) |
 | OpenLogic | CentOS 7.8 | 7,8 | OpenLogic:CentOS:7_8:latest | Betriebssystem- und andere Datenträger |
 | OpenLogic | CentOS 7.7 | 7,7 | OpenLogic:CentOS:7.7:latest | Betriebssystem- und andere Datenträger |
-| OpenLogic | CentOS 7.7 | 7-LVM | OpenLogic:CentOS:7-LVM:latest | Betriebssystem- und andere Datenträger |
+| OpenLogic | CentOS 7-LVM | 7-LVM | OpenLogic:CentOS-LVM:7-LVM:7.8.2020111100 | Betriebssystem- und andere Datenträger |
 | OpenLogic | CentOS 7.6 | 7.6 | OpenLogic:CentOS:7.6:latest | Betriebssystem- und andere Datenträger |
 | OpenLogic | CentOS 7.5 | 7,5 | OpenLogic:CentOS:7.5:latest | Betriebssystem- und andere Datenträger |
 | OpenLogic | CentOS 7.4 | 7.4 | OpenLogic:CentOS:7.4:latest | Betriebssystem- und andere Datenträger |
@@ -139,7 +139,7 @@ In der folgenden Tabelle werden einige der häufig in der Azure Disk Encryption-
 | Begriff | Definition |
 | --- | --- |
 | Azure-Schlüsseltresor | Key Vault ist ein Dienst zum Verwalten kryptografischer Schlüssel, der auf Hardwaresicherheitsmodulen mit FIPS-Überprüfung (Federal Information Processing Standards) basiert. Diese Standards tragen dazu bei, Ihre kryptografischen Schlüssel und vertraulichen Geheimnisse zu schützen. Weitere Informationen finden Sie in der Dokumentation zu [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) und unter [Erstellen und Konfigurieren eines Schlüsseltresors für Azure Disk Encryption](disk-encryption-key-vault.md). |
-| Azure-Befehlszeilenschnittstelle | [Azure CLI](/cli/azure/install-azure-cli) ist für die Verwaltung von Azure-Ressourcen über die Befehlszeile optimiert.|
+| Azure CLI | [Azure CLI](/cli/azure/install-azure-cli) ist für die Verwaltung von Azure-Ressourcen über die Befehlszeile optimiert.|
 | DM-Crypt |[DM-Crypt](https://gitlab.com/cryptsetup/cryptsetup/wikis/DMCrypt) ist das Linux-basierte transparente Subsystem für die Datenträgerverschlüsselung, das zum Aktivieren der Datenträgerverschlüsselung auf virtuellen Linux-Computern verwendet wird. |
 | Schlüsselverschlüsselungsschlüssel (Key encryption key, KEK) | Der asymmetrische Schlüssel (RSA 2048), der zum Schützen oder Umschließen des Geheimnisses verwendet wird. Sie können einen mit Hardwaresicherheitsmodulen geschützten Schlüssel oder einen Schlüssel mit Softwareschutz bereitstellen. Weitere Informationen finden Sie in der Dokumentation zu [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) und unter [Erstellen und Konfigurieren eines Schlüsseltresors für Azure Disk Encryption](disk-encryption-key-vault.md). |
 | PowerShell-Cmdlets | Weitere Informationen finden Sie unter [Azure PowerShell-Cmdlets](/powershell/azure/). |

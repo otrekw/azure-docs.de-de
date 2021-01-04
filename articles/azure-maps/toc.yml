@@ -87,10 +87,12 @@
       href: supported-map-styles.md
     - name: Zoomfaktoren und Linienraster
       href: zoom-levels-and-tile-grid.md
-    - name: Mobility Service-Datenstruktur
+    - name: Mobility Services
       href: mobility-service-data-structure.md
-    - name: Konzepte des Wetterdiensts
+    - name: Konzepte von Wetterdiensten
       href: weather-services-concepts.md
+    - name: Häufig gestellte Fragen zu Wetterdiensten
+      href: weather-services-faq.md
 - name: Anleitungen
   items:
     - name: Verwalten von Azure Maps-Konten
@@ -134,6 +136,8 @@
           href: how-to-request-real-time-data.md
         - name: Anfordern von Echtzeitwetterdaten und prognostizierten Wetterdaten
           href: how-to-request-weather-data.md
+        - name: Höhenangabedaten anfordern
+          href: how-to-request-elevation-data.md
     - name: Entwickeln mit dem Web SDK
       items:
         - name: Kartensteuerelement
@@ -286,7 +290,7 @@
           href: /rest/api/maps/data
         - name: Geolocation-Dienst
           href: /rest/api/maps/geolocation
-        - name: Mobilitätsdienst
+        - name: Mobility Services
           href: /rest/api/maps/mobility
         - name: Renderingdienst
           href: /rest/api/maps/render
@@ -302,7 +306,7 @@
           href: /rest/api/maps/timezone
         - name: Verkehrsinfodienst
           href: /rest/api/maps/traffic
-        - name: Wetterdienst
+        - name: Wetterdienste
           href: /rest/api/maps/weather
         - name: Kartenerstellungsdienst
           items:

@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.subservice: enterprise-users
 ms.topic: reference
 ms.workload: identity
-ms.date: 11/15/2019
+ms.date: 12/02/2019
 ms.author: curtand
 ms.custom: aaddev;it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 07e59e8b13da729f84233459c9a2d3b7edb836fc
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 055f66ed96a293c7bc97cc34012756f0fee27f14
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94650919"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96547116"
 ---
 # <a name="azure-ad-service-limits-and-restrictions"></a>Dienst- und andere Einschränkungen für Azure AD
 

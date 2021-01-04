@@ -9,12 +9,12 @@ ms.author: mariusu
 ms.date: 10/15/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: e6fc3441fac5fe037e9a268d26012761d1fece70
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 8faa6533ba4dc7fad61c045278c5504c5f78d900
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92463197"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888962"
 ---
 # <a name="get-started-with-the-web-calling-sample"></a>Erste Schritte mit dem Webanrufbeispiel
 
@@ -37,7 +37,7 @@ Wenn das [Webanrufbeispiel](https://github.com/Azure-Samples/communication-servi
 
 :::image type="content" source="./media/web-calling-tutorial-page-1.png" alt-text="Web calling tutorial 1 (Webanrufe: Tutorial 1)" lightbox="./media/web-calling-tutorial-page-1.png":::
 
-:::image type="content" source="./media/web-calling-tutorial-page-2.png" alt-text="Web calling tutorial 1 (Webanrufe: Tutorial 1)" lightbox="./media/web-calling-tutorial-page-2.png":::
+:::image type="content" source="./media/web-calling-tutorial-page-2.png" alt-text="Web calling tutorial 2 (Webanrufe: Tutorial 2)" lightbox="./media/web-calling-tutorial-page-2.png":::
 
 
 ## <a name="user-provisioning-and-sdk-initialization"></a>Benutzerbereitstellung und SDK-Initialisierung 
@@ -52,29 +52,29 @@ Klicken Sie auf die Schaltfläche „Show Code“ (Code anzeigen), um den Beispi
 
 Nachdem das SDK initialisiert wurde, sollte Folgendes angezeigt werden:
 
-:::image type="content" source="./media/user-provisioning.png" alt-text="Web calling tutorial 1 (Webanrufe: Tutorial 1)" lightbox="./media/user-provisioning.png":::
+:::image type="content" source="./media/user-provisioning.png" alt-text="Benutzerbereitstellung" lightbox="./media/user-provisioning.png":::
 
 Sie sind jetzt bereit, mit der Communication Services-Ressource Anrufe zu tätigen.
 
 ## <a name="placing-and-receiving-calls"></a>Tätigen und Annehmen von Anrufen
 
-Das Webanruf-SDK für Communication Services ermöglicht **1:1** -, **1:N** - und **Gruppenanrufe** .
+Das Webanruf-SDK für Communication Services ermöglicht **1:1**-, **1:N**- und **Gruppenanrufe**.
 
 Bei ausgehenden 1:1- oder 1:N-Anrufen können Sie mehrere anzurufende Communication Services-Benutzeridentitäten angeben, indem Sie durch Trennzeichen getrennte Werte verwenden. Sie können auch anzurufende herkömmliche Telefonnummern (PSTN) angeben, indem Sie durch Trennzeichen getrennte Werte verwenden. 
 
 Wenn Sie PSTN-Telefonnummern anrufen, geben Sie Ihre alternative Anrufer-ID an. Klicken Sie auf die Schaltfläche „Place call“ (Anrufen), um einen ausgehenden Anruf zu tätigen:
 
-:::image type="content" source="./media/place-a-call.png" alt-text="Web calling tutorial 1 (Webanrufe: Tutorial 1)" lightbox="./media/place-a-call.png":::
+:::image type="content" source="./media/place-a-call.png" alt-text="Tätigen eines Anrufs" lightbox="./media/place-a-call.png":::
 
 Geben Sie zum Beitreten zu einem Gruppenanruf die GUID ein, die den Anruf identifiziert, und klicken Sie auf die Schaltfläche „Join group“ (Gruppe beitreten):
 
-:::image type="content" source="./media/join-a-group-call.png" alt-text="Web calling tutorial 1 (Webanrufe: Tutorial 1)" lightbox="./media/join-a-group-call.png":::
+:::image type="content" source="./media/join-a-group-call.png" alt-text="Teilnehmen an einem Gruppenanruf" lightbox="./media/join-a-group-call.png":::
 
 Klicken Sie auf die Schaltfläche „Show code“ (Code anzeigen), um den Beispielcode für das Tätigen von Anrufen, das Empfangen von Anrufen und das Beitreten zu Gruppenanrufen anzuzeigen.
 
 Ein aktiver Anruf sieht wie folgt aus:
 
-:::image type="content" source="./media/group-call.png" alt-text="Web calling tutorial 1 (Webanrufe: Tutorial 1)" lightbox="./media/group-call.png":::
+:::image type="content" source="./media/group-call.png" alt-text="Gruppenanruf" lightbox="./media/group-call.png":::
 
 Dieses Beispiel enthält auch Codeausschnitte für die folgenden Funktionen:
 
@@ -95,7 +95,7 @@ Weitere Informationen finden Sie in den folgenden Artikeln:
 
 - Machen Sie sich mit der [Verwendung der Clientbibliothek für Anrufe](../quickstarts/voice-video-calling/calling-client-samples.md) vertraut.
 - Informieren Sie sich über die [Funktionsweise von Anrufen](../concepts/voice-video-calling/about-call-types.md).
-- Lesen Sie die [API-Referenzdokumentation](https://docs.microsoft.com/javascript/api/azure-communication-services/@azure/communication-calling/?view=azure-communication-services-js).
+- Lesen Sie die [API-Referenzdokumentation](/javascript/api/azure-communication-services/@azure/communication-calling/?view=azure-communication-services-js).
 
 ## <a name="additional-reading"></a>Zusätzliche Lektüre
 
@@ -103,4 +103,4 @@ Weitere Informationen finden Sie in den folgenden Artikeln:
 - [Redux](https://redux.js.org/): Clientseitige Zustandsverwaltung
 - [Fluent-UI](https://aka.ms/fluent-ui): UI-Bibliothek von Microsoft
 - [React](https://reactjs.org/): Bibliothek zum Erstellen von Benutzeroberflächen
-- [ASP.NET Core](https://docs.microsoft.com/aspnet/core/introduction-to-aspnet-core?view=aspnetcore-3.1&preserve-view=true): Framework für die Erstellung von Webanwendungen
+- [ASP.NET Core](/aspnet/core/introduction-to-aspnet-core?preserve-view=true&view=aspnetcore-3.1): Framework für die Erstellung von Webanwendungen

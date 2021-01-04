@@ -1,6 +1,6 @@
 ---
-title: Tabellendatentypen in einem dedizierten SQL-Pool
-description: Empfehlungen zum Definieren von Tabellendatentypen in einem dedizierten SQL-Pool.
+title: Tabellendatentypen in einem dedizierten SQL-Pool (ehemals SQL DW)
+description: Empfehlungen für das Definieren von Tabellendatentypen für dedizierte SQL-Pools (ehemals SQL DW) in Azure Synapse Analytics.
 services: synapse-analytics
 author: filippopovic
 manager: craigg
@@ -11,20 +11,20 @@ ms.date: 01/06/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: 5bb1d10978171b93ee697b37ee9ac0702d3f898c
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 6526ae2c15bd53af69854309632c83fa65af8d85
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93313084"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96449695"
 ---
-# <a name="table-data-types-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Datentypen für Tabellen in dedizierten SQL-Pools in Azure Synapse Analytics 
+# <a name="table-data-types-for-dedicated-sql-pool-formerly--sql-dw-in-azure-synapse-analytics"></a>Tabellendatentypen für dedizierte SQL-Pools (ehemals SQL DW) in Azure Synapse Analytics 
 
 In diesem Artikel finden Sie Empfehlungen zum Definieren von Tabellendatentypen in einem dedizierten SQL-Pool.
 
 ## <a name="supported-data-types"></a>Unterstützte Datentypen
 
-Dedizierte SQL-Pools unterstützen die am häufigsten verwendeten Datentypen. Eine Liste der unterstützten Datentypen finden Sie in der CREATE TABLE-Anweisung unter [Datentypen](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true#DataTypes).
+Dedizierte SQL-Pools (ehemals SQL DW) unterstützen die am häufigsten verwendeten Datentypen. Eine Liste der unterstützten Datentypen finden Sie in der CREATE TABLE-Anweisung unter [Datentypen](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true#DataTypes).
 
 ## <a name="minimize-row-length"></a>Minimieren der Zeilenlänge
 
@@ -51,7 +51,7 @@ WHERE y.[name] IN ('geography','geometry','hierarchyid','image','text','ntext','
 
 ## <a name="workarounds-for-unsupported-data-types"></a><a name="unsupported-data-types"></a>Problemumgehungen für nicht unterstützte Datentypen
 
-In der folgenden Liste sind die Datentypen aufgeführt, die ein dedizierter SQL-Pool nicht unterstützt. Außerdem werden nützliche Alternativen für nicht unterstützte Datentypen angegeben.
+In der folgenden Liste sind die Datentypen aufgeführt, die ein dedizierter SQL-Pool (ehemals SQL DW) nicht unterstützt. Außerdem werden nützliche Alternativen für nicht unterstützte Datentypen angegeben.
 
 | Nicht unterstützte Datentypen | Problemumgehung |
 | --- | --- |

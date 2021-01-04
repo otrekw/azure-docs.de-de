@@ -1,15 +1,15 @@
 ---
 title: Kontrollen zur Einhaltung gesetzlicher Bestimmungen in Azure Policy für Server mit Azure Arc-Unterstützung (Vorschauversion)
 description: Hier sind die Kontrollen zur Einhaltung gesetzlicher Bestimmungen in Azure Policy aufgeführt, die für Server mit Azure Arc-Unterstützung (Vorschauversion) verfügbar sind. Diese integrierten Richtliniendefinitionen bieten allgemeine Ansätze für die Verwaltung der Compliance Ihrer Azure-Ressourcen.
-ms.date: 11/17/2020
+ms.date: 11/20/2020
 ms.topic: sample
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 24ff0ff7b4f77d938fdb5b7726d273598220957b
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: e91dbcdd06595694e657e7a627daa56304025289
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94699786"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94990012"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-arc-enabled-servers"></a>Kontrollen zur Einhaltung gesetzlicher Bestimmungen in Azure Policy für Server mit Azure Arc-Unterstützung
 

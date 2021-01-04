@@ -3,12 +3,12 @@ title: Lebenszyklusverwaltung von Azure VMware Solution-VMs
 description: Erfahren Sie, wie Sie alle Aspekte des Lebenszyklus Ihrer Azure VMware Solution-VMs mit nativen Tools in Microsoft Azure verwalten.
 ms.topic: conceptual
 ms.date: 09/11/2020
-ms.openlocfilehash: 5280d362c1e7b1bf33579d051c4cc11adb1b7e59
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: ff1032900fa936895f3adfcb0d8a872f24948aca
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545757"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96326810"
 ---
 # <a name="lifecycle-management-of-azure-vmware-solution-vms"></a>Lebenszyklusverwaltung von Azure VMware Solution-VMs
 
@@ -61,7 +61,7 @@ Die Azure-Updateverwaltung in Azure Automation verwaltet Betriebssystemupdates f
 
 2. Der **Log Analytics-Arbeitsbereich** ermöglicht das Sammeln von Protokollen und Leistungsindikatoren über den Log Analytics-Agent oder Erweiterungen. Eine Anleitung zum Erstellen eines Log Analytics-Arbeitsbereichs finden Sie unter [Erstellen eines Log Analytics-Arbeitsbereichs im Azure-Portal](../azure-monitor/learn/quick-create-workspace.md). Wenn Sie es vorziehen, können Sie einen Arbeitsbereich auch über die [CLI](../azure-monitor/learn/quick-create-workspace-cli.md), [PowerShell](../azure-monitor/platform/powershell-workspace-configuration.md) oder eine [Azure Resource Manager-Vorlage](../azure-monitor/samples/resource-manager-workspace.md) erstellen.
 
-3. Informationen zum Aktivieren der Azure-Updateverwaltung für Ihre VMs finden Sie unter [Aktivieren der Updateverwaltung über ein Automation-Konto](../automation/update-management/update-mgmt-enable-automation-account.md). Dabei verknüpfen Sie Ihren Log Analytics-Arbeitsbereich mit Ihrem Automation-Konto. 
+3. Informationen zum Aktivieren der Azure-Updateverwaltung für Ihre VMs finden Sie unter [Aktivieren der Updateverwaltung über ein Automation-Konto](../automation/update-management/enable-from-automation-account.md). Dabei verknüpfen Sie Ihren Log Analytics-Arbeitsbereich mit Ihrem Automation-Konto. 
  
 4. Nachdem Sie der Azure-Updateverwaltung VMs hinzugefügt haben, können Sie [Updates auf VMs bereitstellen und die Ergebnisse überprüfen](../automation/update-management/deploy-updates.md). 
 

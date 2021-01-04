@@ -18,7 +18,7 @@ ms.locfileid: "94844726"
 
 **Dieser Artikel gilt für:** ✔️ Java ✔️ C#
 
-DNS (Domain Name Service) wird verwendet, um Namen von Netzwerkknoten im gesamten Netzwerk zu speichern. In diesem Tutorial wird eine Domäne (beispielsweise „www.contoso.com“) mithilfe eines CNAME-Eintrags zugeordnet. Die benutzerdefinierte Domäne wird durch ein Zertifikat geschützt, und Sie erfahren, wie Sie Transport Layer Security (TLS) erzwingen, was auch als Secure Sockets Layer (SSL) bezeichnet wird. 
+DNS (Domain Name Service) wird verwendet, um Namen von Netzwerkknoten im gesamten Netzwerk zu speichern. In diesem Tutorial wird eine Domäne (beispielsweise www.contoso.com) mithilfe eines CNAME-Eintrags zugeordnet. Die benutzerdefinierte Domäne wird durch ein Zertifikat geschützt, und Sie erfahren, wie Sie Transport Layer Security (TLS) erzwingen, was auch als Secure Sockets Layer (SSL) bezeichnet wird. 
 
 Zertifikate dienen zur Verschlüsselung von Webdatenverkehr. Diese TLS-/SSL-Zertifikate können in Azure Key Vault gespeichert werden. 
 
@@ -166,7 +166,7 @@ Navigieren Sie zur Anwendungsseite.
 
     ![Benutzerdefinierte Domäne](./media/custom-dns-tutorial/custom-domain.png)
 
-3. Geben Sie den vollqualifizierten Domänennamen ein, für den Sie einen CNAME-Eintrag hinzugefügt haben (beispielsweise „www.contoso.com“). Vergewissern Sie sich, dass der Typ des Hostnamenseintrags auf „CNAME“ (<Dienstname>.azuremicroservices.io) festgelegt ist.
+3. Geben Sie den vollqualifizierten Domänennamen ein, für den Sie einen CNAME-Eintrag hinzugefügt haben (beispielsweise www.contoso.com). Vergewissern Sie sich, dass der Typ des Hostnamenseintrags auf „CNAME“ (<Dienstname>.azuremicroservices.io) festgelegt ist.
 4. Klicken Sie auf **Überprüfen**, um die Schaltfläche **Hinzufügen** zu aktivieren.
 5. Klicken Sie auf **Hinzufügen**.
 

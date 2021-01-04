@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/29/2019
 ms.author: terrylan
-ms.openlocfilehash: 46b1cbbd620cf2de8d875927f5745e91fcf608c5
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 8a33e9d462f3105bfee295ac82384a38325f7c7c
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410044"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498794"
 ---
 # <a name="security-services-and-technologies-available-on-azure"></a>Bei Azure verfügbare Sicherheitsdienste und -technologien
 
@@ -67,11 +67,11 @@ Im Laufe der Zeit wird sich diese Liste – ebenso wie Azure – ändern und wac
 ## <a name="identity-and-access-management"></a>Identitäts- und Zugriffsverwaltung
 |Dienst|BESCHREIBUNG|
 |------|--------|
-| [Azure&nbsp;–&nbsp;Rollenbasierte&nbsp;Zugriffssteuerung](../../role-based-access-control/role-assignments-portal.md)|Ein Zugriffssteuerungsfeature, mit dem Benutzer nur auf die Ressourcen zugreifen können, die sie anhand ihrer Rollen innerhalb der Organisation benötigen  |
+| [Rollenbasierte&nbsp;Zugriffssteuerung&nbsp;in Azure](../../role-based-access-control/role-assignments-portal.md)|Ein Zugriffssteuerungsfeature, mit dem Benutzer nur auf die Ressourcen zugreifen können, die sie anhand ihrer Rollen innerhalb der Organisation benötigen  |
 | [Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md)|Ein cloudbasiertes Authentifizierungsrepository, das ein cloudbasiertes Verzeichnis mit mehreren Mandanten sowie Verwaltungsdienste für mehrere Identitäten in Azure unterstützt  |
 | [Azure Active Directory B2C](../../active-directory-b2c/overview.md)|Ein Identitätsverwaltungsdienst, mit dem Sie die Registrierung und Anmeldung von Kunden und deren Verwaltung ihrer Profile bei der Verwendung von Azure-Anwendungen steuern können   |
 | [Azure Active Directory-Domänendienste](../../active-directory-domain-services/overview.md)| Eine cloudbasierte und verwaltete Version von Active Directory Domain Services |
-| [Azure Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md)| Ein Sicherheitsmechanismus, der verschiedene Formen der Authentifizierung und Überprüfung anwendet, bevor der Zugriff auf abgesicherte Informationen zugelassen wird |
+| [Azure AD Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md)| Ein Sicherheitsmechanismus, der verschiedene Formen der Authentifizierung und Überprüfung anwendet, bevor der Zugriff auf abgesicherte Informationen zugelassen wird |
 
 ## <a name="backup-and-disaster-recovery"></a>Backup und Notfallwiederherstellung
 |Dienst|BESCHREIBUNG|
@@ -91,5 +91,5 @@ Im Laufe der Zeit wird sich diese Liste – ebenso wie Azure – ändern und wac
 | [Azure Traffic Manager](../../traffic-manager/traffic-manager-overview.md)| Ein globaler DNS-Lastenausgleich|
 | [Azure Anwendungsproxy](../../active-directory/manage-apps/application-proxy.md)| Ein Authentifizierungs-Front-End für den sicheren Remotezugriff auf lokal gehostete Webanwendungen |
 |[Azure Firewall](../../firewall/overview.md)|Ein verwalteter, cloudbasierter Netzwerksicherheitsdienst, der Ihre Azure Virtual Network-Ressourcen schützt.|
-|[Azure DDoS Protection](../../virtual-network/ddos-protection-overview.md)|Schützt in Kombination mit bewährten Anwendungsentwurfsmethoden vor DDoS-Angriffen.|
+|[Azure DDoS Protection](../../ddos-protection/ddos-protection-overview.md)|Schützt in Kombination mit bewährten Anwendungsentwurfsmethoden vor DDoS-Angriffen.|
 |[Virtual Network-Dienstendpunkte](../../virtual-network/virtual-network-service-endpoints-overview.md)|Erweitern den privaten Adressraum Ihres virtuellen Netzwerks und die Identität Ihres VNET über eine direkte Verbindung auf die Azure-Dienste.|

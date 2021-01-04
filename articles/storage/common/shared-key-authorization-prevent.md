@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: tamram
 ms.reviewer: fryu
-ms.openlocfilehash: 49a89228afd3b46f38afafb8ff16bc63a40dd35b
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: ce0ea938cac4afa043b8770a4d6a98f08ec145ec
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94635210"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96484888"
 ---
 # <a name="prevent-shared-key-authorization-for-an-azure-storage-account-preview"></a>Verhindern der Autorisierung mit gemeinsam verwendeten Schlüsseln für ein Azure Storage-Konto (Vorschau)
 
@@ -77,7 +77,7 @@ In Azure Storage-Protokollen werden Details zu Anforderungen für das Speicherk
 
 Wenn Sie Anforderungen an Ihr Azure Storage-Konto protokollieren möchten, um deren Autorisierung zu untersuchen, können Sie die Azure Storage-Protokollierung in Azure Monitor (Vorschauversion) verwenden. Weitere Informationen finden Sie unter [Überwachen von Azure Storage](../blobs/monitor-blob-storage.md).
 
-Die Azure Storage-Protokollierung in Azure Monitor unterstützt die Verwendung von Protokollabfragen für die Analyse von Protokolldaten. Für die Abfrage von Protokollen können Sie einen Azure Log Analytics-Arbeitsbereich verwenden. Weitere Informationen zu Protokollabfragen finden Sie unter [Tutorial: Erste Schritte mit Log Analytics-Abfragen](../../azure-monitor/log-query/get-started-portal.md).
+Die Azure Storage-Protokollierung in Azure Monitor unterstützt die Verwendung von Protokollabfragen für die Analyse von Protokolldaten. Für die Abfrage von Protokollen können Sie einen Azure Log Analytics-Arbeitsbereich verwenden. Weitere Informationen zu Protokollabfragen finden Sie unter [Tutorial: Erste Schritte mit Log Analytics-Abfragen](../../azure-monitor/log-query/log-analytics-tutorial.md).
 
 #### <a name="create-a-diagnostic-setting-in-the-azure-portal"></a>Erstellen einer Diagnoseeinstellung im Azure-Portal
 
@@ -217,7 +217,7 @@ Einige Azure-Tools bieten die Möglichkeit, die Azure AD-Autorisierung für den
 | AzCopy | Für Blob Storage unterstützt. Weitere Informationen zur Autorisierung von AzCopy-Vorgängen finden Sie in der AzCopy-Dokumentation unter [Auswählen, wie Sie die Autorisierungsanmeldeinformationen bereitstellen](storage-use-azcopy-v10.md#choose-how-youll-provide-authorization-credentials). |
 | Azure Storage-Explorer | Nur für Blob Storage und Azure Data Lake Storage Gen2 unterstützt. Azure AD-Zugriff auf Queue Storage wird nicht unterstützt. Wählen Sie unbedingt den richtigen Azure AD-Mandanten aus. Weitere Informationen finden Sie unter [Erste Schritte mit Storage-Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows#sign-in-to-azure). |
 | Azure PowerShell | Unterstützt. Informationen zum Autorisieren von PowerShell-Befehlen für Befehle für Blob- oder Warteschlangenvorgänge mit Azure AD finden Sie unter [Ausführen von PowerShell-Befehlen mit Azure AD-Anmeldeinformationen für den Zugriff auf Blobdaten](../blobs/authorize-data-operations-powershell.md) und [Ausführen von PowerShell-Befehlen mit Azure AD-Anmeldeinformationen für den Zugriff auf Warteschlangendaten](../queues/authorize-data-operations-powershell.md). |
-| Azure CLI | Unterstützt. Informationen zum Autorisieren von Azure CLI-Befehlen mit Azure AD für den Zugriff auf Blob- und Warteschlangendaten finden Sie unter [Ausführen von Azure CLI-Befehlen mit Azure AD-Anmeldeinformationen für den Zugriff auf Blob- oder Warteschlangendaten](authorize-data-operations-cli.md). |
+| Azure CLI | Unterstützt. Informationen zum Autorisieren von Azure CLI-Befehlen mit Azure AD für den Zugriff auf Blob- und Warteschlangendaten finden Sie unter [Ausführen von Azure CLI-Befehlen mit Azure AD-Anmeldeinformationen für den Zugriff auf Blob- oder Warteschlangendaten](../blobs/authorize-data-operations-cli.md). |
 | Azure IoT Hub | Unterstützt. Weitere Informationen finden Sie unter [IoT Hub-Unterstützung für virtuelle Netzwerke](../../iot-hub/virtual-network-support.md). |
 | Azure Cloud Shell | Azure Cloud Shell ist eine integrierte Shell im Azure-Portal. Azure Cloud Shell hostet Dateien für Persistenz in einer Azure-Dateifreigabe in einem Speicherkonto. Auf diese Dateien kann nicht mehr zugegriffen werden, wenn die Autorisierung mit gemeinsam verwendeten Schlüsseln für dieses Speicherkonto aufgehoben wird. Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit dem Microsoft Azure Files-Speicher](../../cloud-shell/overview.md#connect-your-microsoft-azure-files-storage). <br /><br /> Zum Ausführen von Befehlen in Azure Cloud Shell zum Verwalten von Speicherkonten, für die der Zugriff mit gemeinsam verwendeten Schlüsseln nicht zulässig ist, müssen Sie zunächst sicherstellen, dass Ihnen die erforderlichen Berechtigungen für diese Konten über die rollenbasierte Zugriffssteuerung von Azure (Azure RBAC) erteilt wurden. Weitere Informationen finden Sie unter [Was ist die rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC)?](../../role-based-access-control/overview.md). |
 

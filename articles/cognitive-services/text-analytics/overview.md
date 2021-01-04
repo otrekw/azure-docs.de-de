@@ -8,24 +8,24 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: overview
-ms.date: 11/02/2020
+ms.date: 11/17/2020
 ms.author: aahi
 keywords: Textmining, Stimmungsanalyse, Textanalyse
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 6d10161609abda321ed1be9dfda0acabf2030c9e
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 6cef9dc65a72134e0aa70db5f89f4934263c48b4
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94365294"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563227"
 ---
 # <a name="what-is-the-text-analytics-api"></a>Worum handelt es sich bei der Textanalyse-API?
 
 Die Textanalyse-API ist ein cloudbasierter Dienst für Features zur Verarbeitung natürlicher Sprache, z. B. Textmining und -analyse, einschließlich Stimmungsanalysen, Opinion Mining, Schlüsselbegriffserkennung, Spracherkennung und Erkennung benannter Entitäten.
 
-Die API ist ein Teil von [Azure Cognitive Services](../index.yml), einer Sammlung von Algorithmen für maschinelles Lernen und künstliche Intelligenz (KI) in der Cloud, die Sie für Ihre Entwicklungsprojekte verwenden können. Sie können diese Features mit der [REST-API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/) oder der [Clientbibliothek ](quickstarts/text-analytics-sdk.md) verwenden.
+Die API ist ein Teil von [Azure Cognitive Services](../index.yml), einer Sammlung von Algorithmen für maschinelles Lernen und künstliche Intelligenz (KI) in der Cloud, die Sie für Ihre Entwicklungsprojekte verwenden können. Sie können diese Features mit der [REST-API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/) oder der [Clientbibliothek ](quickstarts/client-libraries-rest-api.md) verwenden.
 
-> [!VIDEO https://channel9.msdn.com/Shows/AI-Show/Understanding-Text-using-Cognitive-Services/player]
+> [!VIDEO https://channel9.msdn.com/Shows/AI-Show/Whats-New-in-Text-Analytics-Opinion-Mining-and-Async-API/player]
 
 ## <a name="sentiment-analysis"></a>Stimmungsanalyse
 
@@ -47,15 +47,24 @@ Die Spracherkennung kann eine Vielzahl von Sprachen, Varianten und Dialekten sow
 
 Die Erkennung benannter Entitäten (NER) kann in Ihrem Text [Entitäten identifizieren und kategorisieren](how-tos/text-analytics-how-to-entity-linking.md), die als Personen, Orte, Organisationen und Mengen erkannt werden. Bekannte Entitäten werden ebenfalls erkannt, und es werden Links zu weiteren Informationen im Internet bereitgestellt.
 
-## <a name="use-containers"></a>Verwenden von Containern
+## <a name="deploy-on-premises-using-docker-containers"></a>Lokales Bereitstellen unter Verwendung von Docker-Containern
 
-[Verwenden Sie die Textanalysecontainer](how-tos/text-analytics-how-to-install-containers.md) als lokale Lösung für das Textmining und die Verwendung der API. Mithilfe dieser Docker-Container können Sie in Ihren Daten Schlüsselbegriffe extrahieren, Sprachen erkennen und die Stimmung erkennen.
+[Verwenden Sie Container für die Textanalyse](how-tos/text-analytics-how-to-install-containers.md), um API-Features lokal bereitzustellen. Mithilfe dieser Docker-Container können Sie den Dienst näher an Ihre Daten heranbringen, um Compliance- oder Sicherheitsanforderungen zu erfüllen oder anderen betrieblichen Anforderungen gerecht zu werden. Die Textanalyse bietet folgende Container:
+
+* Stimmungsanalyse
+* Schlüsselbegriffserkennung (Vorschauversion)
+* Sprachenerkennung (Vorschauversion)
+* Textanalyse für Gesundheit (Vorschauversion)
+
+## <a name="asynchronous-operations"></a>Asynchrone Vorgänge
+
+Der Endpunkt `/analyze` ermöglicht die [asynchrone](how-tos/text-analytics-how-to-call-api.md) Verwendung ausgewählter Features der Textanalyse-API. Hierzu zählen beispielsweise die Erkennung benannter Entitäten und die Schlüsselbegriffserkennung.
 
 ## <a name="typical-workflow"></a>Typischer Workflow
 
 Der Workflow ist einfach: Sie übermitteln Daten für die Analyse und verarbeiten Ausgaben in Ihrem Code. Analysetool werden unverändert (d.h. ohne Konfigurationen oder Anpassungen) verwendet.
 
-1. [Erstellen Sie eine Azure-Ressource](../cognitive-services-apis-create-account.md) für die Textanalyse. [Rufen Sie anschließend den Schlüssel ab](../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource), der für Sie zum Authentifizieren Ihrer Anforderungen generiert wurde.
+1. [Erstellen Sie eine Azure-Ressource](how-tos/text-analytics-how-to-call-api.md) für die Textanalyse. [Rufen Sie anschließend den Schlüssel ab](how-tos/text-analytics-how-to-call-api.md), der für Sie zum Authentifizieren Ihrer Anforderungen generiert wurde.
 
 2. [Formulieren Sie eine Anforderung](how-tos/text-analytics-how-to-call-api.md#json-schema), die Ihre Daten als unformatierten, unstrukturierten Text im JSON-Format enthält.
 
@@ -73,11 +82,11 @@ Sie können mit der Verwendung der Textanalyse-API in Ihren Prozessen beginnen, 
 
 * Minimaler Programmieraufwand:
     * [Extrahieren von Informationen aus Excel mithilfe von Textanalyse und Power Automate](tutorials/extract-excel-information.md)
-    * [Verwenden der Textanalyse-API und von MS Flow zum Ermitteln der Stimmung in Kommentaren in einer Yammer-Gruppe](/Yammer/integrate-yammer-with-other-apps/sentiment-analysis-flow-azure?bc=%252f%252fazure%252fbread%252ftoc.json&toc=%252f%252fazure%252fcognitive-services%252ftext-analytics%252ftoc.json)
+    * [Verwenden der Textanalyse-API und von MS Flow zum Ermitteln der Stimmung in Kommentaren in einer Yammer-Gruppe](/Yammer/integrate-yammer-with-other-apps/sentiment-analysis-flow-azure?bc=%2f%2fazure%2fbread%2ftoc.json&toc=%2f%2fazure%2fcognitive-services%2ftext-analytics%2ftoc.json)
     * [Integrieren von Power BI mit der Textanalyse-API zur Analyse von Kundenfeedback](tutorials/tutorial-power-bi-key-phrases.md)
 * Programmiererfahrung empfohlen:
-    * [Standpunktanalyse für Streamingdaten mit Azure Databricks](/azure/databricks/scenarios/databricks-sentiment-analysis-cognitive-services?bc=%252f%252fazure%252fbread%252ftoc.json&toc=%252f%252fazure%252fcognitive-services%252ftext-analytics%252ftoc.json)
-    * [Erstellen einer Flask-App zum Übersetzen von Text, Analysieren der Stimmung und Synthetisieren von Sprache](../translator/tutorial-build-flask-app-translation-synthesis.md?bc=%252f%252fazure%252fbread%252ftoc.json&toc=%252f%252fazure%252fcognitive-services%252ftext-analytics%252ftoc.json)
+    * [Standpunktanalyse für Streamingdaten mit Azure Databricks](/azure/databricks/scenarios/databricks-sentiment-analysis-cognitive-services?bc=%2f%2fazure%2fbread%2ftoc.json&toc=%2f%2fazure%2fcognitive-services%2ftext-analytics%2ftoc.json)
+    * [Erstellen einer Flask-App zum Übersetzen von Text, Analysieren der Stimmung und Synthetisieren von Sprache](../translator/tutorial-build-flask-app-translation-synthesis.md?bc=%2f%2fazure%2fbread%2ftoc.json&toc=%2f%2fazure%2fcognitive-services%2ftext-analytics%2ftoc.json)
 
 
 <a name="supported-languages"></a>
@@ -100,7 +109,7 @@ Die Textanalyse-API verwendet Unicode-Codierung für die Textdarstellung und die
 
 + [Erstellen Sie eine Azure-Ressource](../cognitive-services-apis-create-account.md) für die Textanalyse, um einen Schlüssel und einen Endpunkt für Ihre Anwendungen zu erhalten.
 
-+ Verwenden Sie die [Schnellstartanleitung](quickstarts/text-analytics-sdk.md), um mit dem Senden von API-Aufrufen zu beginnen. Erfahren Sie, wie Sie mit minimalem Code Text übermitteln, eine Analyse auswählen und Ergebnisse anzeigen.
++ Verwenden Sie die [Schnellstartanleitung](quickstarts/client-libraries-rest-api.md), um mit dem Senden von API-Aufrufen zu beginnen. Erfahren Sie, wie Sie mit minimalem Code Text übermitteln, eine Analyse auswählen und Ergebnisse anzeigen.
 
 + Informationen zu neuen Releases und Features finden Sie unter [What's new in the Text Analytics API?](whats-new.md) (Neuigkeiten bei der Textanalyse-API).
 

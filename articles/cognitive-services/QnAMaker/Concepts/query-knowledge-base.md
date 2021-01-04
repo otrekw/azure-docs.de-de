@@ -3,12 +3,12 @@ title: 'Abfragen der Wissensdatenbank: QnA Maker'
 description: Eine Wissensdatenbank muss veröffentlicht werden. Nach der Veröffentlichung wird die Wissensdatenbank mithilfe der generateAnswer-API am Vorhersageendpunkt der Runtime abgefragt.
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: e8dd056a7b6357b8342d3059e17baa88db92b404
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.openlocfilehash: d8f986299edee46bf5cace7a9f4c805c29b3ce0c
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94376711"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96346204"
 ---
 # <a name="query-the-knowledge-base-for-answers"></a>Abfragen der Wissensdatenbank nach Antworten
 
@@ -18,7 +18,7 @@ Eine Wissensdatenbank muss veröffentlicht werden. Nach der Veröffentlichung wi
 
 # <a name="qna-maker-ga-stable-release"></a>[QnA Maker, allgemeine Verfügbarkeit (stabile Version)](#tab/v1)
 
-Die trainierte und [veröffentlichte](/azure/cognitive-services/qnamaker/quickstarts/create-publish-knowledge-base#publish-the-knowledge-base) QnA Maker-Wissensdatenbank empfängt eine Benutzerabfrage von einem Bot oder einer anderen Clientanwendung über die [GenerateAnswer-API](/azure/cognitive-services/qnamaker/how-to/metadata-generateanswer-usage). Im folgenden Diagramm ist der Prozess nach dem Empfang der Benutzerabfrage dargestellt.
+Die trainierte und [veröffentlichte](../quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base) QnA Maker-Wissensdatenbank empfängt eine Benutzerabfrage von einem Bot oder einer anderen Clientanwendung über die [GenerateAnswer-API](../how-to/metadata-generateanswer-usage.md). Im folgenden Diagramm ist der Prozess nach dem Empfang der Benutzerabfrage dargestellt.
 
 ![Einstufungsmodellprozess für eine Benutzerabfrage](../media/qnamaker-concepts-knowledgebase/ranker-v1.png)
 
@@ -28,7 +28,7 @@ Der Prozess wird in der folgenden Tabelle erläutert:
 
 |Schritt|Zweck|
 |--|--|
-|1|Die Clientanwendung sendet die Benutzerabfrage an die [GenerateAnswer-API](/azure/cognitive-services/qnamaker/how-to/metadata-generateanswer-usage).|
+|1|Die Clientanwendung sendet die Benutzerabfrage an die [GenerateAnswer-API](../how-to/metadata-generateanswer-usage.md).|
 |2|QnA Maker führt die Vorverarbeitung der Benutzerabfrage mit Spracherkennung, Rechtschreibprüfung und Worttrennung durch.|
 |3|Diese Vorverarbeitung hat das Ziel, die Benutzerabfrage so anzupassen, dass die besten Suchergebnisse erzielt werden.|
 |4|Die geänderte Abfrage wird an den Azure Cognitive Search-Index gesendet, der die mit `top` festgelegte Anzahl von Ergebnissen empfängt. Falls diese Ergebnisse die richtige Antwort nicht enthalten, sollten Sie den Wert von `top` leicht erhöhen. Im Allgemeinen eignet sich der Wert „10“ für `top` bei 90 % aller Abfragen.|
@@ -41,7 +41,7 @@ Zu den verwendeten Funktionen gehören u. a. Semantik auf Wortebene, Wichtigkei
 
 # <a name="qna-maker-managed-preview-release"></a>[QnA Maker verwaltet (Vorschauversion)](#tab/v2)
 
-Die trainierte und [veröffentlichte](/azure/cognitive-services/qnamaker/quickstarts/create-publish-knowledge-base#publish-the-knowledge-base) QnA Maker-Wissensdatenbank empfängt eine Benutzerabfrage von einem Bot oder einer anderen Clientanwendung über die [GenerateAnswer-API](/azure/cognitive-services/qnamaker/how-to/metadata-generateanswer-usage). Im folgenden Diagramm ist der Prozess nach dem Empfang der Benutzerabfrage dargestellt.
+Die trainierte und [veröffentlichte](../quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base) QnA Maker-Wissensdatenbank empfängt eine Benutzerabfrage von einem Bot oder einer anderen Clientanwendung über die [GenerateAnswer-API](../how-to/metadata-generateanswer-usage.md). Im folgenden Diagramm ist der Prozess nach dem Empfang der Benutzerabfrage dargestellt.
 
 ![Einstufungsmodellprozess für eine Benutzerabfrage (Vorschau)](../media/qnamaker-concepts-knowledgebase/ranker-v2.png)
 
@@ -51,7 +51,7 @@ Der Prozess wird in der folgenden Tabelle erläutert:
 
 |Schritt|Zweck|
 |--|--|
-|1|Die Clientanwendung sendet die Benutzerabfrage an die [GenerateAnswer-API](/azure/cognitive-services/qnamaker/how-to/metadata-generateanswer-usage).|
+|1|Die Clientanwendung sendet die Benutzerabfrage an die [GenerateAnswer-API](../how-to/metadata-generateanswer-usage.md).|
 |2|QnA Maker führt die Vorverarbeitung der Benutzerabfrage mit Spracherkennung, Rechtschreibprüfung und Worttrennung durch.|
 |3|Diese Vorverarbeitung hat das Ziel, die Benutzerabfrage so anzupassen, dass die besten Suchergebnisse erzielt werden.|
 |4|Die geänderte Abfrage wird an den Azure Cognitive Search-Index gesendet, der die mit `top` festgelegte Anzahl von Ergebnissen empfängt. Falls diese Ergebnisse die richtige Antwort nicht enthalten, sollten Sie den Wert von `top` leicht erhöhen. Im Allgemeinen eignet sich der Wert „10“ für `top` bei 90 % aller Abfragen.|

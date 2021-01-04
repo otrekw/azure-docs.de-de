@@ -10,24 +10,24 @@ ms.reviewer: Blackmist
 ms.author: nigup
 author: nishankgu
 ms.date: 11/09/2020
-ms.custom: how-to, seodec18, devx-track-azurecli, contperfq2
-ms.openlocfilehash: dd8eff01cd52f8d80eb56f3a1ebe924763c8b70c
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.custom: how-to, seodec18, devx-track-azurecli, contperf-fy21q2
+ms.openlocfilehash: 636f63b3f7e43bd8f27d1df58ab82d24bd19a616
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94441698"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033747"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Verwalten des Zugriffs auf einen Azure Machine Learning-Arbeitsbereich
 
 In diesem Artikel erfahren Sie, wie Sie den Zugriff (Autorisierung) auf einen Azure Machine Learning-Arbeitsbereich verwalten können. [Die rollenbasierte Zugriffssteuerung von Azure (Azure RBAC)](../role-based-access-control/overview.md) wird verwendet, um den Zugriff auf Azure-Ressourcen zu verwalten, z. B. die Möglichkeit, neue Ressourcen zu erstellen oder vorhandene zu verwenden. Benutzer in Ihrer Azure Active Directory-Instanz (Azure AD) erhalten bestimmte Rollen, anhand derer sie Zugriff auf Ressourcen erhalten. Azure bietet sowohl integrierte Rollen als auch die Möglichkeit, benutzerdefinierte Rollen zu erstellen.
 
 > [!TIP]
-> Während sich dieser Artikel auf Azure Machine Learning konzentriert, stellen einzelne Dienste, auf die Azure ML angewiesen ist, ihre eigenen RBAC-Einstellungen zur Verfügung. Mithilfe der Informationen in diesem Artikel können Sie z. B. konfigurieren, wer Anforderungen zur Bewertung an ein Modell übermitteln kann, das als Webdienst in Azure Kubernetes Service bereitgestellt wird. Azure Kubernetes Service bietet aber einen eigenen Satz von Azure RBAC-Rollen. Dienstspezifische RBAC-Informationen, die für Azure Machine Learning hilfreich sein können, finden Sie unter den folgenden Links:
+> Während sich dieser Artikel auf Azure Machine Learning konzentriert, stellen einzelne Dienste, auf die Azure ML angewiesen ist, ihre eigenen RBAC-Einstellungen zur Verfügung. Mithilfe der Informationen in diesem Artikel können Sie z. B. konfigurieren, wer Anforderungen zur Bewertung an ein Modell übermitteln kann, das als Webdienst in Azure Kubernetes Service bereitgestellt wird. Azure Kubernetes Service bietet aber einen eigenen Satz von Azure-Rollen. Dienstspezifische RBAC-Informationen, die für Azure Machine Learning hilfreich sein können, finden Sie unter den folgenden Links:
 >
 > * [Steuern des Zugriffs auf Azure Kubernetes-Clusterressourcen](../aks/azure-ad-rbac.md)
 > * [Verwenden von Azure RBAC für die Kubernetes-Autorisierung](../aks/manage-azure-rbac.md)
-> * [Verwenden von Azure RBAC für den Zugriff auf Blobdaten](/storage/common/storage-auth-aad-rbac-portal.md)
+> * [Verwenden von Azure RBAC für den Zugriff auf Blobdaten](../storage/common/storage-auth-aad-rbac-portal.md)
 
 > [!WARNING]
 > Die Anwendung einiger Rollen kann die Funktionalität der Benutzeroberfläche in Azure Machine Learning Studio für andere Benutzer einschränken. Wenn z. B. die Rolle eines Benutzers nicht die Möglichkeit hat, eine Compute-Instanz zu erstellen, ist die Option zum Erstellen einer Compute-Instanz im Studio nicht verfügbar. Dieses Verhalten wird erwartet und verhindert, dass der Benutzer Vorgänge versucht, die einen Fehler vom Typ „Zugriff verweigert“ zurückgeben würden.
@@ -175,7 +175,7 @@ Die folgende Tabelle ist eine Zusammenfassung der Azure Machine Learning-Aktivit
 | Erstellen eines neuen Computeclusters | Nicht erforderlich | Nicht erforderlich | „Besitzer“, „Mitwirkender“ oder benutzerdefinierte Rolle mit folgenden Berechtigungen: `/workspaces/computes/write` |
 | Erstellen einer neuen Computeinstanz | Nicht erforderlich | Nicht erforderlich | „Besitzer“, „Mitwirkender“ oder benutzerdefinierte Rolle mit folgenden Berechtigungen: `/workspaces/computes/write` |
 | Übermitteln eines beliebigen Ausführungstyps | Nicht erforderlich | Nicht erforderlich | „Besitzer“, „Mitwirkender“ oder benutzerdefinierte Rolle mit folgenden Berechtigungen: `"/workspaces/*/read", "/workspaces/environments/write", "/workspaces/experiments/runs/write", "/workspaces/metadata/artifacts/write", "/workspaces/metadata/snapshots/write", "/workspaces/environments/build/action", "/workspaces/experiments/runs/submit/action", "/workspaces/environments/readSecrets/action"` |
-| Veröffentlichen eines Pipelineendpunkts | Nicht erforderlich | Nicht erforderlich | „Besitzer“, „Mitwirkender“ oder benutzerdefinierte Rolle mit folgenden Berechtigungen: `"/workspaces/pipelines/write", "/workspaces/endpoints/pipelines/*", "/workspaces/pipelinedrafts/*", "/workspaces/modules/*"` |
+| Veröffentlichen von Pipelines und Endpunkten | Nicht erforderlich | Nicht erforderlich | „Besitzer“, „Mitwirkender“ oder benutzerdefinierte Rolle mit folgenden Berechtigungen: `"/workspaces/endpoints/pipelines/*", "/workspaces/pipelinedrafts/*", "/workspaces/modules/*"` |
 | Bereitstellen eines registrierten Modells in einer AKS/ACI-Ressource | Nicht erforderlich | Nicht erforderlich | „Besitzer“, „Mitwirkender“ oder benutzerdefinierte Rolle mit folgenden Berechtigungen: `"/workspaces/services/aks/write", "/workspaces/services/aci/write"` |
 | Bewertung anhand eines bereitgestellten AKS-Endpunkts | Nicht erforderlich | Nicht erforderlich | „Besitzer“, „Mitwirkender“ oder benutzerdefinierte Rolle mit der Berechtigung `"/workspaces/services/aks/score/action", "/workspaces/services/aks/listkeys/action"` (ohne Verwendung der Authentifizierung über Azure Active Directory) ODER `"/workspaces/read"` (bei Verwendung der Tokenauthentifizierung) |
 | Zugreifen auf Speicher mithilfe interaktiver Notebooks | Nicht erforderlich | Nicht erforderlich | „Besitzer“, „Mitwirkender“ oder benutzerdefinierte Rolle mit folgenden Berechtigungen: `"/workspaces/computes/read", "/workspaces/notebooks/samples/read", "/workspaces/notebooks/storage/*", "/workspaces/listKeys/action"` |

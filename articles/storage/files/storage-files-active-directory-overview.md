@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: rogarana
-ms.openlocfilehash: 48e9fc4c1efa3517f5de46b7198c868a22331c79
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 0493b66928d944e251e6fe4abda4f1d3d8fb7e23
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92486388"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94695893"
 ---
 # <a name="overview-of-azure-files-identity-based-authentication-options-for-smb-access"></a>Übersicht über die Optionen der identitätsbasierten Authentifizierung mit Azure Files für den SMB-Zugriff
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -26,15 +26,15 @@ Sie sollten die folgenden Begriffe im Zusammenhang mit der Azure AD Domain Serv
 
 -   **Kerberos-Authentifizierung**
 
-    Kerberos ist ein Authentifizierungsprotokoll, das zum Überprüfen der Identität eines Benutzers oder Hosts verwendet wird. Weitere Informationen zu Kerberos finden Sie unter [Kerberos-Authentifizierung: Übersicht](https://docs.microsoft.com/windows-server/security/kerberos/kerberos-authentication-overview).
+    Kerberos ist ein Authentifizierungsprotokoll, das zum Überprüfen der Identität eines Benutzers oder Hosts verwendet wird. Weitere Informationen zu Kerberos finden Sie unter [Kerberos-Authentifizierung: Übersicht](/windows-server/security/kerberos/kerberos-authentication-overview).
 
 -  **Server Message Block-Protokoll (SMB)**
 
-    SMB ist ein Netzwerkprotokoll zur Dateifreigabe nach Industriestandard. SMB ist auch bekannt als Common Internet File System oder CIFS. Weitere Informationen zu SMB finden Sie unter [Microsoft SMB-Protokoll und CIFS-Protokoll (Übersicht)](https://docs.microsoft.com/windows/desktop/FileIO/microsoft-smb-protocol-and-cifs-protocol-overview).
+    SMB ist ein Netzwerkprotokoll zur Dateifreigabe nach Industriestandard. SMB ist auch bekannt als Common Internet File System oder CIFS. Weitere Informationen zu SMB finden Sie unter [Microsoft SMB-Protokoll und CIFS-Protokoll (Übersicht)](/windows/desktop/FileIO/microsoft-smb-protocol-and-cifs-protocol-overview).
 
 -   **Azure Active Directory (Azure AD)**
 
-    Azure Active Directory (Azure AD) ist der mehrinstanzenfähige cloudbasierte Verzeichnis- und Identitätsverwaltungsdienst von Microsoft. Azure AD kombiniert grundlegende Verwaltungsdienste, Zugriffsverwaltung für Anwendungen und Identitätsgovernance in einer einzigen Lösung. In Azure AD eingebundene virtuelle Windows-Computer (VMs) können mit Ihren Azure AD-Anmeldeinformationen auf Azure-Dateifreigaben zugreifen. Weitere Informationen finden Sie unter [Was ist Azure Active Directory?](../../active-directory/fundamentals/active-directory-whatis.md).
+    Azure Active Directory (Azure AD) ist der mehrinstanzenfähige cloudbasierte Verzeichnis- und Identitätsverwaltungsdienst von Microsoft. Azure AD kombiniert grundlegende Verwaltungsdienste, Zugriffsverwaltung für Anwendungen und Identitätsgovernance in einer einzigen Lösung. In Azure AD eingebundene virtuelle Windows-Computer (VMs) können mit Ihren Azure AD-Anmeldeinformationen nicht auf Azure-Dateifreigaben zugreifen. Weitere Informationen finden Sie unter [Was ist Azure Active Directory?](../../active-directory/fundamentals/active-directory-whatis.md).
 
 -   **Azure Active Directory Domain Services (Azure AD DS)**
 
@@ -42,7 +42,7 @@ Sie sollten die folgenden Begriffe im Zusammenhang mit der Azure AD Domain Serv
 
 - **Lokale Active Directory Domain Services (AD DS)**
 
-    Durch die Integration von lokalen Active Directory Domain Services (AD DS) und Azure Files werden Methoden zum Speichern von Verzeichnisdaten bereitgestellt und die Daten Netzwerkbenutzern und Administratoren zur Verfügung gestellt. Sicherheit ist in AD DS über die Anmeldeauthentifizierung und die Zugriffssteuerung für Objekte im Verzeichnis integriert. Mit einer einzigen Netzwerkanmeldung können Administratoren Verzeichnisdaten und die Organisation im gesamten Netzwerk verwalten, und autorisierte Netzwerkbenutzer können überall im Netzwerk auf Ressourcen zugreifen. AD DS wird häufig von Unternehmen in lokalen Umgebungen eingeführt, und AD DS-Anmeldeinformationen werden als Identität für die Zugriffssteuerung verwendet. Weitere Informationen finden Sie unter [Active Directory Domain Services – Übersicht](https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview).
+    Durch die Integration von lokalen Active Directory Domain Services (AD DS) und Azure Files werden Methoden zum Speichern von Verzeichnisdaten bereitgestellt und die Daten Netzwerkbenutzern und Administratoren zur Verfügung gestellt. Sicherheit ist in AD DS über die Anmeldeauthentifizierung und die Zugriffssteuerung für Objekte im Verzeichnis integriert. Mit einer einzigen Netzwerkanmeldung können Administratoren Verzeichnisdaten und die Organisation im gesamten Netzwerk verwalten, und autorisierte Netzwerkbenutzer können überall im Netzwerk auf Ressourcen zugreifen. AD DS wird häufig von Unternehmen in lokalen Umgebungen eingeführt, und AD DS-Anmeldeinformationen werden als Identität für die Zugriffssteuerung verwendet. Weitere Informationen finden Sie unter [Active Directory Domain Services – Übersicht](/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview).
 
 -   **Rollenbasierte Zugriffssteuerung von Azure (Azure RBAC)**
 
@@ -128,7 +128,7 @@ Sobald die Authentifizierung mit Azure AD DS oder lokalen AD DS aktiviert ist,
 
 ### <a name="configure-directory-or-file-level-permissions-for-azure-files"></a>Konfigurieren von Berechtigungen auf Verzeichnis- oder Dateiebene für Azure Files
 
-Azure-Dateifreigaben erzwingen Windows-Standarddateiberechtigungen sowohl auf Verzeichnis- als auch auf Dateiebene, einschließlich des Stammverzeichnisses. Die Konfiguration von Berechtigungen auf Verzeichnis- oder Dateiebene wird über SMB und REST unterstützt. Binden Sie die gewünschte Dateifreigabe von Ihrer VM aus ein, und konfigurieren Sie Berechtigungen mit dem Datei-Explorer unter Windows mit Windows-[icacls](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls) oder mit dem Befehl [Set-ACL](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/get-acl?view=powershell-6).
+Azure-Dateifreigaben erzwingen Windows-Standarddateiberechtigungen sowohl auf Verzeichnis- als auch auf Dateiebene, einschließlich des Stammverzeichnisses. Die Konfiguration von Berechtigungen auf Verzeichnis- oder Dateiebene wird über SMB und REST unterstützt. Binden Sie die gewünschte Dateifreigabe von Ihrer VM aus ein, und konfigurieren Sie Berechtigungen mit dem Datei-Explorer unter Windows mit Windows-[icacls](/windows-server/administration/windows-commands/icacls) oder mit dem Befehl [Set-ACL](/powershell/module/microsoft.powershell.security/get-acl?view=powershell-6).
 
 ### <a name="use-the-storage-account-key-for-superuser-permissions"></a>Verwenden des Speicherkontoschlüssels für Superuserberechtigungen
 
@@ -139,7 +139,7 @@ Ein Benutzer, der den Speicherkontoschlüssel besitzt, kann mit Superuserberecht
 
 ### <a name="preserve-directory-and-file-acls-when-importing-data-to-azure-file-shares"></a>Beibehalten von Verzeichnis- und Datei-Zugriffssteuerungslisten beim Importieren von Daten in Azure-Dateifreigaben
 
-Azure Files unterstützt das Beibehalten von Verzeichnis- oder Datei-Zugriffssteuerungslisten beim Kopieren von Daten in Azure-Dateifreigaben. Sie können Zugriffssteuerungslisten für ein Verzeichnis oder eine Datei mit der Azure-Dateisynchronisierung oder gängigen Dateiverschiebungs-Toolsets in Azure-Dateifreigaben kopieren. Beispielsweise können Sie [robocopy](https://docs.microsoft.com/windows-server/administration/windows-commands/robocopy) mit dem Flag `/copy:s` verwenden, um sowohl die Daten als auch die Zugriffssteuerungslisten in eine Azure-Dateifreigabe zu kopieren. Zugriffssteuerungslisten werden standardmäßig beibehalten. Sie müssen die identitätsbasierte Authentifizierung für Ihr Speicherkonto dazu nicht aktivieren.
+Azure Files unterstützt das Beibehalten von Verzeichnis- oder Datei-Zugriffssteuerungslisten beim Kopieren von Daten in Azure-Dateifreigaben. Sie können Zugriffssteuerungslisten für ein Verzeichnis oder eine Datei mit der Azure-Dateisynchronisierung oder gängigen Dateiverschiebungs-Toolsets in Azure-Dateifreigaben kopieren. Beispielsweise können Sie [robocopy](/windows-server/administration/windows-commands/robocopy) mit dem Flag `/copy:s` verwenden, um sowohl die Daten als auch die Zugriffssteuerungslisten in eine Azure-Dateifreigabe zu kopieren. Zugriffssteuerungslisten werden standardmäßig beibehalten. Sie müssen die identitätsbasierte Authentifizierung für Ihr Speicherkonto dazu nicht aktivieren.
 
 ## <a name="pricing"></a>Preise
 Für das Aktivieren der identitätsbasierten Authentifizierung über SMB in Ihrem Speicherkonto fällt keine zusätzliche Servicegebühr an. Weitere Informationen zu den Preisen finden Sie unter [Azure Files – Preise](https://azure.microsoft.com/pricing/details/storage/files/) und [Azure AD Domain Services – Preise](https://azure.microsoft.com/pricing/details/active-directory-ds/).

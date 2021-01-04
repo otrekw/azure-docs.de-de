@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: 10b10309e438bab3c99cb2ed7202eaa272d24abe
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: dec2c845780b62e9a595c73504037142c511c0e6
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92904940"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94989410"
 ---
 # <a name="manage-ddos-protection-plans-permissions-and-restrictions"></a>Verwalten von DDoS Protection-Plänen: Berechtigungen und Einschränkungen
 
@@ -37,7 +37,7 @@ Zum Arbeiten mit DDoS-Schutzplänen muss Ihr Konto der Rolle [Netzwerkmitwirkend
 | Microsoft.Network/ddosProtectionPlans/delete      | Löschen eines DDoS-Schutzplans            |
 | Microsoft.Network/ddosProtectionPlans/join/action | Verknüpfen eines DDoS-Schutzplans              |
 
-Für eine Aktivierung des DDoS-Schutzes für ein virtuelles Netz müssen Ihrem Konto darüber hinaus die entsprechenden [Aktionen für virtuelle Netzwerke](https://docs.microsoft.com/azure/virtual-network/manage-virtual-network#permissions) zugewiesen werden.
+Für eine Aktivierung des DDoS-Schutzes für ein virtuelles Netz müssen Ihrem Konto darüber hinaus die entsprechenden [Aktionen für virtuelle Netzwerke](../virtual-network/manage-virtual-network.md#permissions) zugewiesen werden.
 
 ## <a name="azure-policy"></a>Azure Policy
 

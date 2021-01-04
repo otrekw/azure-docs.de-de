@@ -10,12 +10,12 @@ ms.date: 11/09/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 48078ed06e36a33b10ee2d761a249159d14c6220
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: e2d74519b9adf9a74e5af180a3da28918a9a8dab
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94444502"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96001880"
 ---
 # <a name="blob-versioning"></a>Blobversionsverwaltung
 
@@ -128,7 +128,7 @@ Die folgende Abbildung zeigt, wie durch das Ändern eines Blobs nach dem Deaktiv
 
 ## <a name="blob-versioning-and-soft-delete"></a>Blobversionsverwaltung und vorläufiges Löschen
 
-Blobversionsverwaltung und vorläufiges Löschen von Blobs arbeiten zusammen, um Ihnen optimalen Datenschutz zu bieten. Wenn Sie vorläufiges Löschen aktivieren, geben Sie an, wie lange Azure Storage ein vorläufig gelöschtes Blob beibehalten soll. Alle vorläufig gelöschten Blobversionen verbleiben im System und können innerhalb der Beibehaltungsdauer für vorläufiges Löschen wiederhergestellt werden. Weitere Informationen zum vorläufigen Löschen von Blobs finden Sie unter [Vorläufiges Löschen für Azure Storage-Blobs](storage-blob-soft-delete.md).
+Blobversionsverwaltung und vorläufiges Löschen von Blobs arbeiten zusammen, um Ihnen optimalen Datenschutz zu bieten. Wenn Sie vorläufiges Löschen aktivieren, geben Sie an, wie lange Azure Storage ein vorläufig gelöschtes Blob beibehalten soll. Alle vorläufig gelöschten Blobversionen verbleiben im System und können innerhalb der Beibehaltungsdauer für vorläufiges Löschen wiederhergestellt werden. Weitere Informationen zum vorläufigen Löschen von Blobs finden Sie unter [Vorläufiges Löschen für Azure Storage-Blobs](./soft-delete-blob-overview.md).
 
 ### <a name="deleting-a-blob-or-version"></a>Löschen eines Blobs oder einer Version
 
@@ -297,4 +297,4 @@ In der folgenden Tabelle wird das Abrechnungsverhalten für ein vorläufig gelö
 
 - [Aktivieren und Verwalten der Blobversionsverwaltung](versioning-enable.md)
 - [Erstellen einer Momentaufnahme eines Blobs](/rest/api/storageservices/creating-a-snapshot-of-a-blob)
-- [Vorläufiges Löschen für Azure Storage-Blobs](storage-blob-soft-delete.md)
+- [Vorläufiges Löschen für Azure Storage-Blobs](./soft-delete-blob-overview.md)

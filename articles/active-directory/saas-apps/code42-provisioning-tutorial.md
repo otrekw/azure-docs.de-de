@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/23/2020
 ms.author: Zhchia
-ms.openlocfilehash: e7f3817a6db288e93b5e0dc99c7b6c9b7bd2e44b
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: ffae286437a476d5ebe08c3ee442d0d52af84eb7
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94355735"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96179338"
 ---
 # <a name="tutorial-configure-code42-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Code42 für die automatische Benutzerbereitstellung
 
@@ -40,7 +40,7 @@ In diesem Tutorial werden die Schritte beschrieben, die Sie sowohl in Code42 als
 Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits über die folgenden Voraussetzungen verfügen:
 
 * [Azure AD-Mandant](../develop/quickstart-create-new-tenant.md)
-* Ein Benutzerkonto in Azure AD mit der [Berechtigung](../users-groups-roles/directory-assign-admin-roles.md) für die Konfiguration von Bereitstellungen (z. B. Anwendungsadministrator, Cloudanwendungsadministrator, Anwendungsbesitzer oder Globaler Administrator).
+* Ein Benutzerkonto in Azure AD mit der [Berechtigung](../roles/permissions-reference.md) für die Konfiguration von Bereitstellungen (z. B. Anwendungsadministrator, Cloudanwendungsadministrator, Anwendungsbesitzer oder Globaler Administrator).
 * Einen Code42-Mandanten mit aktivierter Identitätsverwaltung
 * Ein Code42-Benutzerkonto mit der Berechtigung [Customer Cloud Admin](https://support.code42.com/Administrator/Cloud/Monitoring_and_managing/Roles_reference#Customer_Cloud_Admin) (Administrator für Kundencloud)
 
@@ -56,7 +56,7 @@ In diesem Abschnitt werden Sie durch die Schritte zum Konfigurieren von Azure A
 ### <a name="to-create-a-provisioning-provider-in-code42s-console"></a>So erstellen Sie einen Bereitstellungsanbieter in der Code42-Konsole
 
 1. Melden Sie sich bei Ihrer Code42-Konsole an. Wählen Sie **Administration** aus, um das Navigationsmenü zu erweitern. Wählen Sie **Settings** und dann **Identity Management** aus.
-2. Wählen Sie die Registerkarte **Bereitstellung**. Erweitern Sie dann das Menü **Add provisioning provider** , und wählen Sie **Add SCIM provider** aus.
+2. Wählen Sie die Registerkarte **Bereitstellung**. Erweitern Sie dann das Menü **Add provisioning provider**, und wählen Sie **Add SCIM provider** aus.
 3. Geben Sie im Feld **Display name** einen eindeutigen Namen für den Bereitstellungsanbieter ein. Legen Sie den **Authentifcation credential type** auf **OAuth token** fest. Wählen Sie **Next** aus, um Anmeldeinformationen zu generieren.
 
 > [!NOTE]
@@ -98,7 +98,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![Bereitstellungsmodus „Automatisch“](common/provisioning-automatic.png)
 
-5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** die zuvor von Code42 abgerufenen Werte für **SCIM 2.0 base URL and Access Token** („SCIM 2.0-Basis-URL“ und „Zugriffstoken“) in die Felder **Mandanten-URL** und **Geheimes Token** ein. Klicken Sie auf **Verbindung testen** , um sicherzustellen, dass Azure AD eine Verbindung mit Code42 herstellen kann. Vergewissern Sie bei einem Verbindungsfehler, dass Ihr Code42-Konto über Administratorberechtigungen verfügt, und wiederholen Sie den Vorgang.
+5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** die zuvor von Code42 abgerufenen Werte für **SCIM 2.0 base URL and Access Token** („SCIM 2.0-Basis-URL“ und „Zugriffstoken“) in die Felder **Mandanten-URL** und **Geheimes Token** ein. Klicken Sie auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit Code42 herstellen kann. Vergewissern Sie bei einem Verbindungsfehler, dass Ihr Code42-Konto über Administratorberechtigungen verfügt, und wiederholen Sie den Vorgang.
 
     ![Token](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -110,7 +110,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 8. Wählen Sie im Abschnitt **Zuordnungen** die Option **Azure Active Directory-Benutzer mit Code42 synchronisieren** aus.
 
-9. Überprüfen Sie im Abschnitt **Attributzuordnung** die Benutzerattribute, die aus Azure AD mit Code42 synchronisiert werden. Mit den als **übereinstimmende** Eigenschaften ausgewählten Attributen werden die Benutzerkonten in Code42 bei Aktualisierungsvorgängen abgeglichen. Wenn Sie das [übereinstimmende Zielattribut](../app-provisioning/customize-application-attributes.md) ändern möchten, müssen Sie sicherstellen, dass die Code42-API das Filtern von Benutzern nach diesem Attribut unterstützt. Wählen Sie die Schaltfläche **Speichern** , um alle Änderungen zu übernehmen.
+9. Überprüfen Sie im Abschnitt **Attributzuordnung** die Benutzerattribute, die aus Azure AD mit Code42 synchronisiert werden. Mit den als **übereinstimmende** Eigenschaften ausgewählten Attributen werden die Benutzerkonten in Code42 bei Aktualisierungsvorgängen abgeglichen. Wenn Sie das [übereinstimmende Zielattribut](../app-provisioning/customize-application-attributes.md) ändern möchten, müssen Sie sicherstellen, dass die Code42-API das Filtern von Benutzern nach diesem Attribut unterstützt. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
    |attribute|type|
    |---|---|
@@ -131,7 +131,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 10. Wählen Sie im Abschnitt **Zuordnungen** die Option **Azure Active Directory-Gruppen mit Code42 synchronisieren** aus.
 
-11. Überprüfen Sie im Abschnitt **Attributzuordnung** die Gruppenattribute, die von Azure AD mit Code42 synchronisiert werden. Beachten Sie, dass die als **Übereinstimmungseigenschaften** ausgewählten Attribute für den Abgleich der Gruppen in Code42 für Updatevorgänge verwendet werden. Wählen Sie die Schaltfläche **Speichern** , um alle Änderungen zu übernehmen.
+11. Überprüfen Sie im Abschnitt **Attributzuordnung** die Gruppenattribute, die von Azure AD mit Code42 synchronisiert werden. Beachten Sie, dass die als **Übereinstimmungseigenschaften** ausgewählten Attribute für den Abgleich der Gruppen in Code42 für Updatevorgänge verwendet werden. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
       |attribute|type|
       |---|---|

@@ -12,12 +12,12 @@ ms.date: 07/23/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0adf548b009ad6fe0c85501b9777ff23723b3e24
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 859a4f199e65dd0c3aee9424029f6060683d5fbd
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94413410"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94836086"
 ---
 # <a name="azure-ad-connect-version-release-history-archive"></a>Azure AD Connect: Archiv des Versionsfreigabeverlaufs
 
@@ -212,8 +212,8 @@ Neue Features und Verbesserungen
 - Die Konfiguration des Geräterückschreibens wird nun ausschließlich über den Azure AD Connect-Assistenten verwaltet.
 - Ein neues PowerShell-Modul namens „ADSyncTools.psm1“ zur Behandlung von SQL-Konnektivitätsproblemen und verschiedene andere Problembehandlungstools wurden hinzugefügt. Weitere Informationen zum ADSyncTools-Modul finden Sie [hier](tshoot-connect-tshoot-sql-connectivity.md). 
 - Eine neue Zusatzaufgabe namens „Geräteoptionen konfigurieren“ wurde hinzugefügt. Mit dieser Aufgabe lassen sich die beiden folgenden Vorgänge konfigurieren: 
-  - **Azure AD-Hybrideinbindung** : Wenn Ihre Umgebung über einen lokalen AD-Fußabdruck verfügt und Sie zudem die Funktionen von Azure Active Directory nutzen möchten, können Sie in Azure AD eingebundene Hybridgeräte implementieren. Hierbei handelt es sich um Geräte, die sowohl in Ihr lokales Active Directory als auch in Ihr Azure Active Directory eingebunden sind.
-  - **Geräterückschreiben** : Das Geräterückschreiben ermöglicht den bedingten gerätebasierten Zugriff auf mit AD FS (2012 R2 oder höher) geschützte Geräte.
+  - **Azure AD-Hybrideinbindung**: Wenn Ihre Umgebung über einen lokalen AD-Fußabdruck verfügt und Sie zudem die Funktionen von Azure Active Directory nutzen möchten, können Sie in Azure AD eingebundene Hybridgeräte implementieren. Hierbei handelt es sich um Geräte, die sowohl in Ihr lokales Active Directory als auch in Ihr Azure Active Directory eingebunden sind.
+  - **Geräterückschreiben**: Das Geräterückschreiben ermöglicht den bedingten gerätebasierten Zugriff auf mit AD FS (2012 R2 oder höher) geschützte Geräte.
 
     >[!NOTE] 
     > - Die Option zum Aktivieren des Geräterückschreibens über „Synchronisierungsoptionen anpassen“ wird ausgegraut. 
@@ -1023,7 +1023,7 @@ Veröffentlichung: Februar 2016
 **Neue Features:**
 
 * [Automatic upgrade](how-to-connect-install-automatic-upgrade.md) für Kunden mit Expresseinstellungen.
-* Unterstützung für den globalen Administrator durch Verwenden von Azure Multi-Factor Authentication und Privileged Identity Management im Installations-Assistenten.
+* Unterstützung für den globalen Administrator durch Verwenden von Azure AD Multi-Factor Authentication und Privileged Identity Management im Installations-Assistenten.
   * Sie müssen für Ihren Proxy auch Datenverkehr an https://secure.aadcdn.microsoftonline-p.com zulassen, wenn Sie die Multi-Factor Authentication verwenden.
   * Sie müssen https://secure.aadcdn.microsoftonline-p.com der Liste mit den vertrauenswürdigen Sites hinzufügen, damit die Multi-Factor Authentication richtig funktioniert.
 * Das Ändern der Anmeldemethode des Benutzers nach der Erstinstallation ist zulässig.

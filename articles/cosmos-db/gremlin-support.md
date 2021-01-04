@@ -5,14 +5,14 @@ author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: overview
-ms.date: 10/13/2020
+ms.date: 11/11/2020
 ms.author: sngun
-ms.openlocfilehash: c1af35b754362a230e77c7a3326de8ddb8a09d62
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: a149f0b331a77462aa53b948fedf25dd1331969e
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93082996"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "94683623"
 ---
 # <a name="azure-cosmos-db-gremlin-graph-support-and-compatibility-with-tinkerpop-features"></a>Unterstützung und Kompatibilität von Gremlin-Diagrammen in Azure Cosmos DB mit TinkerPop-Features
 [!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
@@ -32,6 +32,7 @@ In der folgenden Tabelle werden gängige Gremlin-Treiber aufgeführt, die Sie f�
 | [Node.js](https://www.npmjs.com/package/gremlin) | [Gremlin-JavaScript auf GitHub](https://github.com/apache/tinkerpop/tree/master/gremlin-javascript) | [Erstellen von Graph mithilfe von Node.js](create-graph-nodejs.md) | 3.3.4+ |
 | [Python](https://tinkerpop.apache.org/docs/3.3.1/reference/#gremlin-python) | [Gremlin-Python auf GitHub](https://github.com/apache/tinkerpop/tree/master/gremlin-python) | [Erstellen von Graph mithilfe von Python](create-graph-python.md) | 3.2.7 |
 | [PHP](https://packagist.org/packages/brightzone/gremlin-php) | [Gremlin-PHP auf GitHub](https://github.com/PommeVerte/gremlin-php) | [Erstellen von Graph mithilfe von PHP](create-graph-php.md) | 3.1.0 |
+| [Go Lang](https://github.com/supplyon/gremcos/) | [Go Lang](https://github.com/supplyon/gremcos/) | | Diese Bibliothek wird von externen Mitwirkenden erstellt. Das Azure Cosmos DB-Team bietet keine Unterstützung für die Bibliothek, und die Bibliothek wird nicht vom Azure Cosmos DB-Team gewartet. |
 | [Gremlin-Konsole](https://tinkerpop.apache.org/downloads.html) | [TinkerPop-Dokumente](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console) |  [Erstellen von Graph mithilfe der Gremlin-Konsole](create-graph-gremlin-console.md) | 3.2.0 und höher |
 
 ## <a name="supported-graph-objects"></a>Unterstützte Graph-Objekte
@@ -168,7 +169,7 @@ Die von Azure Cosmos DB bereitgestellte, für Schreibvorgänge optimierte Engine
 
 ## <a name="behavior-differences"></a>Unterschiede im Verhalten
 
-* Die Azure Cosmos DB Graph-Engine führt einen Durchlauf mit * **breitenorientiertem Lastenausgleich** _ aus, während TinkerPop Gremlin einen Ansatz vom Typ „Tiefenorientierter Lastenausgleich“ verfolgt. Dieses Verhalten erzielt eine bessere Leistung in einem horizontal skalierbaren System wie Cosmos DB.
+* Die Azure Cosmos DB Graph-Engine führt einen Durchlauf mit ***breitenorientiertem Lastenausgleich** _ aus, während TinkerPop Gremlin einen Ansatz vom Typ „Tiefenorientierter Lastenausgleich“ verfolgt. Dieses Verhalten erzielt eine bessere Leistung in einem horizontal skalierbaren System wie Cosmos DB.
 
 ## <a name="unsupported-features"></a>Nicht unterstützte Funktionen
 
@@ -176,15 +177,15 @@ _ * **[Gremlin Bytecode](https://tinkerpop.apache.org/docs/current/tutorials/gre
 
 _ * **`property(set, 'xyz', 1)`** _: Das Festlegen der Kardinalität wird noch nicht unterstützt. Verwenden Sie stattdessen `property(list, 'xyz', 1)`. Weitere Informationen finden Sie unter [Vertex-Eigenschaften mit TinkerPop](http://tinkerpop.apache.org/docs/current/reference/#vertex-properties).
 
-_ Der * **Schritt `match()`** _ ist derzeit nicht verfügbar. Dieser Schritt bietet deklarative Abfragefunktionen.
+_ Der ***Schritt `match()`** _ ist derzeit nicht verfügbar. Dieser Schritt bietet deklarative Abfragefunktionen.
 
-_ * **Objekte als Eigenschaften** _ werden für Vertices und Edges nicht unterstützt. Eigenschaften können nur primitive Typen oder Arrays sein.
+_ ***Objekte als Eigenschaften** _ werden für Vertices und Edges nicht unterstützt. Eigenschaften können nur primitive Typen oder Arrays sein.
 
-_ * **Sortieren nach Arrayeigenschaften** _ (`order().by(<array property>)`) wird nicht unterstützt. Die Sortierung wird nur von primitiven Typen unterstützt.
+_ ***Sortieren nach Arrayeigenschaften** _ (`order().by(<array property>)`) wird nicht unterstützt. Die Sortierung wird nur von primitiven Typen unterstützt.
 
-_ * **Nicht primitive JSON-Typen** _ werden nicht unterstützt. Verwenden Sie die Typen `string`, `number` oder `true`/`false`. `null`-Werte werden nicht unterstützt. 
+_ ***Nicht primitive JSON-Typen** _ werden nicht unterstützt. Verwenden Sie die Typen `string`, `number` oder `true`/`false`. `null`-Werte werden nicht unterstützt. 
 
-_ Das * **GraphSONv3** _-Serialisierungsmodul wird derzeit nicht unterstützt. Verwenden Sie das `GraphSONv2`-Serialisierungsmodul sowie Reader- und Writerklassen in der Verbindungskonfiguration. Das Format der von der Azure Cosmos DB Gremlin-API zurückgegebenen Ergebnisse ist nicht identisch mit dem GraphSON-Format. 
+_ Das ***GraphSONv3** _-Serialisierungsmodul wird derzeit nicht unterstützt. Verwenden Sie das `GraphSONv2`-Serialisierungsmodul sowie Reader- und Writerklassen in der Verbindungskonfiguration. Das Format der von der Azure Cosmos DB Gremlin-API zurückgegebenen Ergebnisse ist nicht identisch mit dem GraphSON-Format. 
 
 _ **Lambdaausdrücke und -funktionen** werden derzeit nicht unterstützt. Dies umfasst die Funktionen `.map{<expression>}`, `.by{<expression>}` und `.filter{<expression>}`. Weitere Informationen und wie Sie sie mithilfe der Gremlin-Schritte neu schreiben können, finden Sie unter [A Note on Lambdas](http://tinkerpop.apache.org/docs/current/reference/#a-note-on-lambdas) (Hinweis zu Lambdas).
 

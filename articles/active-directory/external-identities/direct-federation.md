@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7cb0223b338457ad5eeea0b0bb40593f57a0d3aa
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 5beae56a5d38c4620481c27c3f42c52602984e6b
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92442081"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860625"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>Direkter Verbund mit AD FS und Drittanbietern für Gastbenutzer (Preview)
 
@@ -45,7 +45,7 @@ Bei direktem Verbund melden sich Gastbenutzer mit ihren eigenen Organisationskon
 ## <a name="limitations"></a>Einschränkungen
 
 ### <a name="dns-verified-domains-in-azure-ad"></a>DNS-verifizierte Domänen in Azure AD
-Die Domäne, mit der Sie einen Verbund einrichten möchten, darf in Azure AD * **nicht** _ DNS-verifiziert werden. Es ist zulässig, einen direkten Verbund mit nicht verwalteten (E-Mail-verifizierten oder „viralen“) Azure AD-Mandanten einzurichten, da sie nicht DNS-verifiziert sind.
+Die Domäne, mit der Sie einen Verbund einrichten möchten, darf in Azure AD ***nicht** _ DNS-verifiziert werden. Es ist zulässig, einen direkten Verbund mit nicht verwalteten (E-Mail-verifizierten oder „viralen“) Azure AD-Mandanten einzurichten, da sie nicht DNS-verifiziert sind.
 
 ### <a name="authentication-url"></a>Authentifizierungs-URL
 Der direkte Verbund ist nur für Richtlinien zulässig, bei denen die Domäne der Authentifizierungs-URL mit der Zieldomäne übereinstimmt, oder wenn es sich bei der Authentifizierungs-URL um einen dieser zulässigen Identitätsanbieter handelt (diese Liste kann geändert werden):
@@ -66,7 +66,7 @@ Wenn Sie beispielsweise den direkten Verbund für _*fabrikam.com** einrichten, b
 Wenn Sie die Metadaten-URL in den Identitätsanbietereinstellungen angeben, verlängert Azure AD das Signaturzertifikat automatisch, wenn es abläuft. Wenn das Zertifikat jedoch aus irgendeinem Grund vor der Ablaufzeit rotiert wird, oder wenn Sie keine Metadaten-URL bereitstellen, kann Azure AD es nicht verlängern. In diesem Fall müssen Sie das Signaturzertifikat manuell aktualisieren.
 
 ### <a name="limit-on-federation-relationships"></a>Limit für Verbundbeziehungen
-Derzeit werden maximal 1.000 Verbundbeziehungen unterstützt. Dieses Limit umfasst sowohl [interne Verbünde](/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0) als auch direkte Verbünde.
+Derzeit werden maximal 1.000 Verbundbeziehungen unterstützt. Dieses Limit umfasst sowohl [interne Verbünde](/powershell/module/msonline/set-msoldomainfederationsettings) als auch direkte Verbünde.
 
 ### <a name="limit-on-multiple-domains"></a>Limit bei mehreren Domänen
 Der direkte Verbund mit mehreren Domänen desselben Mandanten wird derzeit nicht unterstützt.
@@ -146,7 +146,7 @@ Als Nächstes konfigurieren Sie den direkten Verbund mit dem in Schritt 1 in Azu
 
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com/). Wählen Sie im linken Bereich **Azure Active Directory** aus. 
 2. Wählen Sie **Externe Identitäten** > **Alle Identitätsanbieter** aus.
-3. Wählen Sie „Identitätsanbieter“ aus, und wählen Sie dann **Neuer SAML-/WS-Fed-IdP** aus.
+3. Wählen Sie dann **Neuer SAML-/WS-Fed-IdP** aus.
 
     ![Screenshot der Schaltfläche zum Hinzufügen eines neuen SAML- oder WS-Verbund-Identitätsanbieters](media/direct-federation/new-saml-wsfed-idp.png)
 

@@ -10,13 +10,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.date: 08/06/2020
 ms.topic: conceptual
-ms.custom: how-to, contperfq1
-ms.openlocfilehash: 6cb455880852295d7176e813208a93919a2c14bb
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: how-to, contperf-fy21q1
+ms.openlocfilehash: ab7a74166e85f2ba9fd73e7323cf9cd200cf32e4
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93318263"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97031027"
 ---
 # <a name="create-compute-targets-for-model-training-and-deployment-in-azure-machine-learning-studio"></a>Erstellen von Computezielen für Modelltraining und -bereitstellung in Azure Machine Learning Studio
 
@@ -93,7 +93,7 @@ Führen Sie die [oben beschriebenen Schritte](#portal-create) aus, um die Comput
 |Typ des virtuellen Computers |  Wählen Sie CPU oder GPU aus. Dieser Typ kann nach der Erstellung nicht mehr geändert werden.     |
 |Größe des virtuellen Computers     |  Die Größe der unterstützten virtuellen Computer kann in Ihrer Region eingeschränkt sein. Überprüfen Sie die [Verfügbarkeitsliste](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines).     |
 |Aktivieren/Deaktivieren des SSH-Zugriffs     |   Der SSH-Zugriff ist standardmäßig deaktiviert.  Der SSH-Zugriff kann nach der Erstellung nicht mehr geändert werden. Stellen Sie sicher, dass Sie den Zugriff aktivieren, wenn Sie das interaktive Debuggen mit [VS Code Remote](how-to-set-up-vs-code-remote.md) planen.   |
-|Erweiterte Einstellungen     |  Optional. Konfigurieren Sie ein virtuelles Netzwerk. Geben Sie **Ressourcengruppe** , **Virtuelles Netzwerk** und **Subnetz** an, um die Compute-Instanz innerhalb von Azure Virtual Network (VNET) zu erstellen. Weitere Informationen finden Sie unter diesen [Netzwerkanforderungen](./how-to-secure-training-vnet.md) für VNET.  |
+|Erweiterte Einstellungen     |  Optional. Konfigurieren Sie ein virtuelles Netzwerk. Geben Sie **Ressourcengruppe**, **Virtuelles Netzwerk** und **Subnetz** an, um die Compute-Instanz innerhalb von Azure Virtual Network (VNET) zu erstellen. Weitere Informationen finden Sie unter diesen [Netzwerkanforderungen](./how-to-secure-training-vnet.md) für VNET.  |
 
 ### <a name="compute-clusters"></a><a name="amlcompute"></a> Computecluster
 
@@ -108,7 +108,7 @@ Erstellen Sie einen Computecluster mit einem oder mehreren Knoten für Ihre Work
 |Größe des virtuellen Computers     |  Die Größe der unterstützten virtuellen Computer kann in Ihrer Region eingeschränkt sein. Überprüfen Sie die [Verfügbarkeitsliste](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines).     |
 |Mindestanzahl von Knoten | Mindestanzahl von Knoten, die Sie bereitstellen möchten. Wenn Sie eine dedizierte Anzahl von Knoten verwenden möchten, legen Sie diese Anzahl hier fest. Sparen Sie Geld, indem Sie die Mindestanzahl auf 0 festlegen, sodass Sie für keine Knoten bezahlen, wenn sich der Cluster im Leerlauf befindet. |
 |Maximale Knotenanzahl | Maximale Anzahl von Knoten, die Sie bereitstellen möchten. Beim Übermitteln eines Auftrags wird die Computeressource automatisch auf den Höchstwert dieser Knotenanzahl skaliert. |
-|Erweiterte Einstellungen     |  Optional. Konfigurieren Sie ein virtuelles Netzwerk. Geben Sie **Ressourcengruppe** , **Virtuelles Netzwerk** und **Subnetz** an, um die Compute-Instanz innerhalb von Azure Virtual Network (VNET) zu erstellen. Weitere Informationen finden Sie unter diesen [Netzwerkanforderungen](./how-to-secure-training-vnet.md) für VNET.   Fügen Sie außerdem [verwaltete Identitäten](#managed-identity) an, um Zugriff auf Ressourcen zu gewähren.     |
+|Erweiterte Einstellungen     |  Optional. Konfigurieren Sie ein virtuelles Netzwerk. Geben Sie **Ressourcengruppe**, **Virtuelles Netzwerk** und **Subnetz** an, um die Compute-Instanz innerhalb von Azure Virtual Network (VNET) zu erstellen. Weitere Informationen finden Sie unter diesen [Netzwerkanforderungen](./how-to-secure-training-vnet.md) für VNET.   Fügen Sie außerdem [verwaltete Identitäten](#managed-identity) an, um Zugriff auf Ressourcen zu gewähren.     |
 
 #### <a name="set-up-managed-identity"></a><a name="managed-identity"></a> Einrichten einer verwalteten Identität
 
@@ -141,7 +141,7 @@ Sie können einen AKS-Cluster (Azure Kubernetes Service) für umfangreiche Rück
 
 ### <a name="attached-compute"></a>Angefügte Computeressourcen
 
-Um Computeziele zu verwenden, die außerhalb des Azure Machine Learning-Arbeitsbereichs erstellt wurde, müssen Sie sie anfügen. Durch das Anfügen eines Computeziels wird es Ihrem Arbeitsbereich zur Verfügung gestellt.  Verwenden Sie **Angefügte Computeressourcen** , um ein Computeziel für **Training** anzufügen.  Verwenden Sie **Rückschlusscluster** , um einen AKS-Cluster für **Rückschlüsse** anzufügen.
+Um Computeziele zu verwenden, die außerhalb des Azure Machine Learning-Arbeitsbereichs erstellt wurde, müssen Sie sie anfügen. Durch das Anfügen eines Computeziels wird es Ihrem Arbeitsbereich zur Verfügung gestellt.  Verwenden Sie **Angefügte Computeressourcen**, um ein Computeziel für **Training** anzufügen.  Verwenden Sie **Rückschlusscluster**, um einen AKS-Cluster für **Rückschlüsse** anzufügen.
 
 Führen Sie die [oben beschriebenen Schritte](#portal-create) aus, um eine Computeressource anzufügen.  Füllen Sie das Formular anschließend wie folgt aus:
 

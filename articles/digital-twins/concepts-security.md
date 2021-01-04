@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 349f57299387b616373bb5fb4d295da8df8ee493
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.openlocfilehash: d62e7566038af6647cab2992b02184a4ea5ba30b
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93279893"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96344146"
 ---
 # <a name="secure-azure-digital-twins"></a>Schützen von Azure Digital Twins
 
@@ -93,9 +93,9 @@ Wenn ein Benutzer versucht, eine Aktion auszuführen, die für seine Rolle nicht
 
 Ein **Diensttag** steht für eine Gruppe von IP-Adresspräfixen aus einem bestimmten Azure-Dienst. Microsoft verwaltet die Adresspräfixe, für die das Diensttag gilt, und aktualisiert das Tag automatisch, wenn sich die Adressen ändern. Auf diese Weise wird die Komplexität häufiger Updates an Netzwerksicherheitsregeln minimiert. Weitere Informationen zu Diensttags finden Sie unter  [*Tags für virtuelle Netzwerke*](../virtual-network/service-tags-overview.md). 
 
-Sie können Diensttags verwenden, um Netzwerkzugriffssteuerungen für  [Netzwerksicherheitsgruppen](../virtual-network/network-security-groups-overview.md#security-rules) oder [Azure Firewall](../firewall/service-tags.md) zu definieren, indem Sie Diensttags anstelle spezifischer IP-Adressen verwenden, wenn Sie Sicherheitsregeln erstellen. Wenn Sie den Diensttagnamen (in diesem Fall  **AzureDigitalTwins** ) im entsprechenden Feld *Quelle* oder *Ziel* einer Regel angeben, können Sie den Datenverkehr für den entsprechenden Dienst zulassen oder verweigern. 
+Sie können Diensttags verwenden, um Netzwerkzugriffssteuerungen für  [Netzwerksicherheitsgruppen](../virtual-network/network-security-groups-overview.md#security-rules) oder [Azure Firewall](../firewall/service-tags.md) zu definieren, indem Sie Diensttags anstelle spezifischer IP-Adressen verwenden, wenn Sie Sicherheitsregeln erstellen. Wenn Sie den Diensttagnamen (in diesem Fall  **AzureDigitalTwins**) im entsprechenden Feld *Quelle* oder *Ziel* einer Regel angeben, können Sie den Datenverkehr für den entsprechenden Dienst zulassen oder verweigern. 
 
-Im Folgenden finden Sie die Details zum **AzureDigitalTwins** -Diensttag.
+Im Folgenden finden Sie die Details zum **AzureDigitalTwins**-Diensttag.
 
 | Tag | Zweck | Eingehend oder ausgehend möglich? | Regional möglich? | Einsatz mit Azure Firewall möglich? |
 | --- | --- | --- | --- | --- |
@@ -121,7 +121,7 @@ Azure Digital Twins bietet Verschlüsselung von ruhenden Daten und bei der Über
 
 ## <a name="cross-origin-resource-sharing-cors"></a>Ressourcenfreigabe zwischen verschiedenen Ursprüngen (CORS)
 
-**CORS (Cross-Origin Resource Sharing)** wird in Azure Digital Twins derzeit nicht unterstützt. Wenn Sie eine REST-API über eine Browser-App, eine [API Management (APIM)](../api-management/api-management-key-concepts.md)-Schnittstelle oder einen [Power Apps](https://docs.microsoft.com/powerapps/powerapps-overview)-Connector aufrufen, wird daher möglicherweise ein Richtlinienfehler angezeigt.
+**CORS (Cross-Origin Resource Sharing)** wird in Azure Digital Twins derzeit nicht unterstützt. Wenn Sie eine REST-API über eine Browser-App, eine [API Management (APIM)](../api-management/api-management-key-concepts.md)-Schnittstelle oder einen [Power Apps](/powerapps/powerapps-overview)-Connector aufrufen, wird daher möglicherweise ein Richtlinienfehler angezeigt.
 
 Zum Beheben dieses Fehlers können Sie eine der folgenden Maßnahmen ergreifen:
 * Entfernen Sie den CORS-Header `Access-Control-Allow-Origin` aus der Nachricht. Dieser Header gibt an, ob die Antwort freigegeben werden kann. 

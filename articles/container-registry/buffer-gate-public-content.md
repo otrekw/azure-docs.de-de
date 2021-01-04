@@ -4,13 +4,13 @@ description: Methoden und Workflows in Azure Container Registry zum Verwalten vo
 author: dlepow
 ms.topic: article
 ms.author: danlep
-ms.date: 10/29/2020
-ms.openlocfilehash: def1c3a9b8a1086f453c7e71d766ab0dd89b0c2d
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.date: 11/20/2020
+ms.openlocfilehash: 0c92899528d417f9c91f8f8930ca4932dc74e850
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93347521"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024737"
 ---
 # <a name="manage-public-content-with-azure-container-registry"></a>Verwalten öffentlicher Inhalte mit Azure Container Registry
 
@@ -26,6 +26,8 @@ Ohne geeignete Kontrollen können Abhängigkeiten von Inhalten öffentlicher Reg
 ## <a name="authenticate-with-docker-hub"></a>Authentifizieren mit Docker Hub
 
 Wenn Sie derzeit im Rahmen eines Erstellungs- oder Bereitstellungsworkflows öffentliche Images von Docker Hub pullen, empfiehlt es sich in einem ersten Schritt, [die Authentifizierung über ein Docker Hub-Konto durchzuführen](https://docs.docker.com/docker-hub/download-rate-limit/#how-do-i-authenticate-pull-requests), anstatt einen anonymen Pull Request auszuführen.
+
+Beim Ausführen von häufigen anonymen Pull Requests wird möglicherweise ein Docker-Fehler wie `ERROR: toomanyrequests: Too Many Requests.` oder `You have reached your pull rate limit.` angezeigt. Authentifizieren Sie sich bei Docker Hub, um diese Fehler zu verhindern.
 
 > [!NOTE]
 > Ab dem 2. November 2020 gelten [die Grenzwerte für die Downloadrate](https://docs.docker.com/docker-hub/download-rate-limit) für anonyme und authentifizierte Anforderungen an Docker Hub von Docker-Konten im Plan „Free“. Diese Grenzwerte werden durch die IP-Adresse bzw. die Docker-ID erzwungen. 
@@ -49,7 +51,7 @@ Mehrere Azure-Dienste, einschließlich App Service und Azure Container Instances
 * **Imagequelle:** Docker Hub
 * **Repositoryzugriff:** Privat
 * **Anmeldung:** \<Docker Hub username>
-* **Kennwort** : \<Docker Hub token>
+* **Kennwort**: \<Docker Hub token>
 
 Weitere Informationen finden Sie unter [Docker Hub authenticated pulls on App Service](https://azure.github.io/AppService/2020/10/15/Docker-Hub-authenticated-pulls-on-App-Service.html) (Über Docker Hub authentifizierte Pulls in App Service).
 

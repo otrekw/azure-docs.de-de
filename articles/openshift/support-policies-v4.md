@@ -5,13 +5,13 @@ author: sakthi-vetrivel
 ms.author: suvetriv
 ms.service: container-service
 ms.topic: conceptual
-ms.date: 04/24/2020
-ms.openlocfilehash: fe703b9589dcd49298ac45d5a14032ca7e556bfd
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.date: 11/23/2020
+ms.openlocfilehash: c8d52609043f173e896668eadeb8c59493739859
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94408405"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95521137"
 ---
 # <a name="azure-red-hat-openshift-support-policy"></a>Unterstützungsrichtlinien in Azure Red Hat OpenShift
 
@@ -23,6 +23,7 @@ Bestimmte Konfigurationen Ihrer Cluster in Azure Red Hat OpenShift 4 können si
 ## <a name="cluster-configuration-requirements"></a>Clusterkonfigurationsanforderungen
 
 * Alle Clusteroperatoren in OpenShift müssen in einem verwalteten Zustand verbleiben. Die Liste der Clusteroperatoren kann zurückgegeben gegeben werden, indem `oc get clusteroperators` ausgeführt wird.
+* Der Cluster muss mindestens zwei Workerknoten enthalten. Skalieren Sie die Clusterworker nicht auf null (0), oder versuchen Sie, den Cluster ordnungsgemäß herunterzufahren.
 * Entfernen oder ändern Sie die Prometheus- und Alertmanager-Clusterdienste nicht.
 * Entfernen Sie die Alertmanager-Dienstregeln nicht.
 * Entfernen oder ändern Sie die Protokollierung im Azure Red Hat OpenShift-Dienst nicht (MDSD-Pods).

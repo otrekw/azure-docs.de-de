@@ -7,20 +7,20 @@ author: curtand
 manager: daveba
 editor: ''
 ms.service: active-directory
-ms.workload: identity
 ms.subservice: enterprise-users
+ms.workload: identity
 ms.topic: how-to
-ms.date: 11/15/2020
+ms.date: 12/03/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d0136f7677aa722e578ac54c4f7d34338e47b0f7
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 296679135063e2c7e1b7f0e3ffd193c8f18c3acf
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94646609"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576263"
 ---
 # <a name="user-management-enhancements-preview-in-azure-active-directory"></a>Erweiterungen bei der Benutzerverwaltung (Vorschau) – Azure Active Directory
 

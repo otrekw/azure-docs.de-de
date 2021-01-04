@@ -3,25 +3,25 @@ title: Verwenden von Blobindextags zum Verwalten und Suchen von Daten in Azure B
 description: Hier finden Sie Beispiele für die Verwendung von Blobindextags zum Kategorisieren, Verwalten und Abfragen von Daten für Blobobjekte.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 10/19/2020
+ms.date: 11/19/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
 ms.reviewer: klaasl
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 159252cf850fd59f40d1b59e592153f50d7cb813
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 411815ca2f947c47b8dfb0d2e5d61f8ea18f3545
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371969"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95541248"
 ---
 # <a name="use-blob-index-tags-preview-to-manage-and-find-data-on-azure-blob-storage"></a>Verwenden von Blobindextags (Vorschau) zum Verwalten und Suchen von Daten in Azure Blob Storage
 
 Blobindextags kategorisieren Daten in Ihrem Speicherkonto mithilfe von Schlüssel-Wert-Tagattributen. Diese Tags werden automatisch indiziert und als durchsuchbarer mehrdimensionaler Index verfügbar gemacht, um Daten einfach finden zu können. In diesem Artikel wird erörtert, wie Sie Daten mithilfe von Blobindextags festlegen, abrufen und suchen.
 
 > [!NOTE]
-> Der Blobindex befindet sich in der öffentlichen Vorschauphase und ist in den Regionen **Kanada, Mitte** , **Kanada, Osten** , **Frankreich, Mitte** und **Frankreich, Süden** verfügbar. Weitere Informationen zu diesem Feature sowie zu bekannten Problemen und Einschränkungen finden Sie unter [Verwalten und Suchen von Daten in Azure Blob Storage mit Blobindextags (Vorschau)](storage-manage-find-blobs.md).
+> Der Blobindex befindet sich in der öffentlichen Vorschauphase und ist in den Regionen **Kanada, Mitte**, **Kanada, Osten**, **Frankreich, Mitte** und **Frankreich, Süden** verfügbar. Weitere Informationen zu diesem Feature sowie zu bekannten Problemen und Einschränkungen finden Sie unter [Verwalten und Suchen von Daten in Azure Blob Storage mit Blobindextags (Vorschau)](storage-manage-find-blobs.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -36,9 +36,9 @@ Da sich der Blobindex in der Vorschauphase befindet, wird das .NET-Speicherpaket
 
 1. Richten Sie Ihr Visual Studio-Projekt für die ersten Schritte mit der Azure Blob Storage-Clientbibliothek v12 für .NET ein. Weitere Informationen finden Sie unter [Schnellstart: Azure Blob Storage-Clientbibliothek v12 für .NET](storage-quickstart-blobs-dotnet.md).
 
-2. Suchen Sie im NuGet-Paket-Manager nach dem Paket **Azure.Storage.Blobs** , und installieren Sie Version **12.7.0-preview.1** oder höher in Ihrem Projekt. Sie können auch den PowerShell-Befehl `Install-Package Azure.Storage.Blobs -Version 12.7.0-preview.1` ausführen.
+2. Suchen Sie im NuGet-Paket-Manager nach dem Paket **Azure.Storage.Blobs**, und installieren Sie Version **12.7.0-preview.1** oder höher in Ihrem Projekt. Sie können auch den PowerShell-Befehl `Install-Package Azure.Storage.Blobs -Version 12.7.0-preview.1` ausführen.
 
-   Weitere Informationen finden Sie unter [Suchen und Installieren eines Pakets](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-visual-studio#find-and-install-a-package).
+   Weitere Informationen finden Sie unter [Suchen und Installieren eines Pakets](/nuget/consume-packages/install-use-packages-visual-studio#find-and-install-a-package).
 
 3. Fügen Sie die folgenden using-Anweisungen am Anfang Ihrer Codedatei ein.
 
@@ -56,17 +56,17 @@ Da sich der Blobindex in der Vorschauphase befindet, wird das .NET-Speicherpaket
 
 ## <a name="upload-a-new-blob-with-index-tags"></a>Hochladen eines neuen Blobs mit Indextags
 
-Das Hochladen eines neuen Blobs mit Indextags kann vom [Besitzer von Speicherblobdaten](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner) durchgeführt werden. Außerdem können Benutzer mit der Berechtigung `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/write` der [rollenbasierten Zugriffssteuerung](/azure/role-based-access-control/overview) diesen Vorgang ausführen.
+Diese Aufgabe kann von einem [Besitzer von Speicherblobdaten](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner) oder einem Sicherheitsprinzipal ausgeführt werden, dem über eine benutzerdefinierte Azure-Rolle die Berechtigung für den [Azure-Ressourcenanbietervorgang](../../role-based-access-control/resource-provider-operations.md#microsoftstorage) `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/write` erteilt wurde.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
 1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) Ihr Speicherkonto aus. 
 
-2. Navigieren Sie unter **Blob-Dienst** zur Option **Container** , und wählen Sie Ihren Container aus.
+2. Navigieren Sie unter **Blob-Dienst** zur Option **Container**, und wählen Sie Ihren Container aus.
 
 3. Wählen Sie die Schaltfläche **Hochladen** aus, und navigieren Sie in Ihrem lokalen Dateisystem zu einer Datei, um sie als Blockblob hochzuladen.
 
-4. Erweitern Sie das Dropdownmenü **Erweitert** , und wechseln Sie zum Abschnitt **Blobindextags**.
+4. Erweitern Sie das Dropdownmenü **Erweitert**, und wechseln Sie zum Abschnitt **Blobindextags**.
 
 5. Geben Sie die Schlüssel-Wert-Blobindextags ein, die auf Ihre Daten angewendet werden sollen.
 
@@ -114,15 +114,15 @@ static async Task BlobIndexTagsOnCreate()
 
 ## <a name="get-set-and-update-blob-index-tags"></a>Abrufen, Festlegen und Aktualisieren von Blobindextags
 
-Das Abrufen von Blobindextags kann vom [Besitzer von Speicherblobdaten](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner) durchgeführt werden. Außerdem können Benutzer mit der Berechtigung `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/read` der [rollenbasierten Zugriffssteuerung](/azure/role-based-access-control/overview) diesen Vorgang ausführen.
+Das Abrufen von Blobindextags kann von einem [Besitzer von Speicherblobdaten](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner) oder einem Sicherheitsprinzipal durchgeführt werden, dem über eine benutzerdefinierte Azure-Rolle die Berechtigung für den [Azure-Ressourcenanbietervorgang](../../role-based-access-control/resource-provider-operations.md#microsoftstorage) `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/read` erteilt wurde.
 
-Das Festlegen und Aktualisieren von Blobindextags kann vom [Besitzer von Speicherblobdaten](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner) durchgeführt werden. Außerdem können Benutzer mit der Berechtigung `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/write` der [rollenbasierten Zugriffssteuerung](/azure/role-based-access-control/overview) diesen Vorgang ausführen.
+Das Festlegen und Aktualisieren von Blobindextags kann von einem [Besitzer von Speicherblobdaten](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner) oder einem Sicherheitsprinzipal durchgeführt werden, dem über eine benutzerdefinierte Azure-Rolle die Berechtigung für den [Azure-Ressourcenanbietervorgang](../../role-based-access-control/resource-provider-operations.md#microsoftstorage) `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/write` erteilt wurde.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
 1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) Ihr Speicherkonto aus. 
 
-2. Navigieren Sie unter **Blob-Dienst** zur Option **Container** , und wählen Sie Ihren Container aus.
+2. Navigieren Sie unter **Blob-Dienst** zur Option **Container**, und wählen Sie Ihren Container aus.
 
 3. Wählen Sie das Blob aus der Liste der Blobs innerhalb des ausgewählten Containers aus.
 
@@ -193,7 +193,7 @@ static async Task BlobIndexTagsExample()
 
 ## <a name="filter-and-find-data-with-blob-index-tags"></a>Filtern und Suchen von Daten mit Blobindextags
 
-Das Suchen und Filtern nach Blobindextags kann vom [Besitzer von Speicherblobdaten](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner) durchgeführt werden. Außerdem können Benutzer mit der Berechtigung `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/filter/action` der [rollenbasierten Zugriffssteuerung](/azure/role-based-access-control/overview) diesen Vorgang ausführen.
+Diese Aufgabe kann von einem [Besitzer von Speicherblobdaten](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner) oder einem Sicherheitsprinzipal ausgeführt werden, dem über eine benutzerdefinierte Azure-Rolle die Berechtigung für den [Azure-Ressourcenanbietervorgang](../../role-based-access-control/resource-provider-operations.md#microsoftstorage) `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/filter/action` erteilt wurde.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -201,7 +201,7 @@ Im Azure-Portal wendet der Filter für Blobindextags den `@container`-Parameter 
 
 1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) Ihr Speicherkonto aus. 
 
-2. Navigieren Sie unter **Blob-Dienst** zur Option **Container** , und wählen Sie Ihren Container aus.
+2. Navigieren Sie unter **Blob-Dienst** zur Option **Container**, und wählen Sie Ihren Container aus.
 
 3. Wählen Sie die Schaltfläche **Filter für Blobindextags** aus, um innerhalb des ausgewählten Containers zu filtern.
 

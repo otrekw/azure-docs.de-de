@@ -3,18 +3,18 @@ title: Konnektivitätseinstellungen für Azure SQL-Datenbank und Azure Synapse A
 description: In diesem Artikel werden die Auswahlmöglichkeiten für die TLS-Version erläutert und die Proxy- und Umleitungseinstellungen für Azure SQL-Datenbank und Azure Synapse Analytics miteinander verglichen.
 services: sql-database
 ms.service: sql-database
-titleSuffix: Azure SQL Database and Azure Synapse Analytics (formerly SQL Data Warehouse)
+titleSuffix: Azure SQL Database and Azure Synapse Analytics
 ms.topic: how-to
 author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: sstein, vanto
 ms.date: 07/06/2020
-ms.openlocfilehash: 9856d71a6398bcea5b979788846afce17e7955f7
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: e3422f468d1355245fb31e8f04d5f8625f583c37
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94412990"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462192"
 ---
 # <a name="azure-sql-connectivity-settings"></a>Azure SQL-Konnektivitätseinstellungen
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]

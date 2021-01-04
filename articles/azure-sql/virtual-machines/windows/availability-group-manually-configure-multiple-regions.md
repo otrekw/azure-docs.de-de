@@ -8,18 +8,19 @@ editor: monicar
 tags: azure-service-management
 ms.assetid: 388c464e-a16e-4c9d-a0d5-bb7cf5974689
 ms.service: virtual-machines-sql
+ms.subservice: hadr
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 335cc707cb1192d3dbf08f51e78d4e82441dd05a
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 60bb5ac652a80b5ae52c91f91fa0c80440e9cc82
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93094454"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359080"
 ---
 # <a name="configure-a-sql-server-always-on-availability-group-across-different-azure-regions"></a>Konfigurieren einer SQL Server Always On-Verfügbarkeitsgruppe in verschiedenen Azure-Regionen
 
@@ -100,7 +101,7 @@ Gehen Sie wie folgt vor, um ein Replikat in einem Remoterechenzentrum zu erstell
 
    ![Screenshot: Failovercluster-Manager, in dem ein Clustername, „Servername“ und „Eigenschaften“ ausgewählt ist](./media/availability-group-manually-configure-multiple-regions/cluster-name-properties.png)
 
-   Wählen Sie im Dialogfeld **Eigenschaften** die Option **Hinzufügen** unter **IP-Adresse** aus, und fügen Sie dann die IP-Adresse des Clusternamens aus der Remotenetzwerkregion hinzu. Klicken Sie im Dialogfeld **IP-Adresse** auf **OK** , und wählen Sie dann im Dialogfeld **Clustereigenschaften** erneut **OK** aus, um die neue IP-Adresse zu speichern. 
+   Wählen Sie im Dialogfeld **Eigenschaften** die Option **Hinzufügen** unter **IP-Adresse** aus, und fügen Sie dann die IP-Adresse des Clusternamens aus der Remotenetzwerkregion hinzu. Klicken Sie im Dialogfeld **IP-Adresse** auf **OK**, und wählen Sie dann im Dialogfeld **Clustereigenschaften** erneut **OK** aus, um die neue IP-Adresse zu speichern. 
 
    ![Hinzufügen der IP-Adresse des Clusters](./media/availability-group-manually-configure-multiple-regions/add-cluster-ip-address.png)
 
@@ -113,7 +114,7 @@ Gehen Sie wie folgt vor, um ein Replikat in einem Remoterechenzentrum zu erstell
 
 1. Fügen Sie der Verfügbarkeitsgruppenrolle im Cluster eine IP-Adressressource hinzu. 
 
-   Klicken Sie in Failovercluster-Manager mit der rechten Maustaste auf die Verfügbarkeitsgruppenrolle, und wählen Sie **Ressource hinzufügen** , **Weitere Ressourcen** und dann **IP-Adresse** aus.
+   Klicken Sie in Failovercluster-Manager mit der rechten Maustaste auf die Verfügbarkeitsgruppenrolle, und wählen Sie **Ressource hinzufügen**, **Weitere Ressourcen** und dann **IP-Adresse** aus.
 
    ![Erstellen der IP-Adresse](./media/availability-group-manually-configure-multiple-regions/20-add-ip-resource.png)
 

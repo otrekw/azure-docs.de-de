@@ -45,6 +45,10 @@
           href: manage-assets-quickstart.md
         - name: Verschlüsseln von Inhalten mithilfe des Portals
           href: encrypt-content-quickstart.md
+    - name: Verwenden einer ARM-Vorlage
+      items:
+        - name: Erstellen eines Kontos mit ARM
+          href: quickstart-arm-template-account.md
 - name: Tutorials
   items:
     - name: .NET
@@ -236,6 +240,9 @@
         - name: Video on Demand
           displayName: 'failover, bcdr, HA, high availability'
           href: media-services-high-availability-encoding.md
+    - name: Media Services-Architekturen
+      displayName: architectures
+      href: architectures-concept.md
     - name: Problembehandlung
       items:
         - name: Häufig gestellte Fragen
@@ -270,9 +277,13 @@
     - name: Erstellen von Transformationen und Aufträgen
       items:
         - name: Erstellen von Transformationen
-          href: cli-create-transform.md
+          href: how-to-create-transform.md
         - name: Erstellen einer grundlegenden Audiotransformation mit REST
           href: how-to-create-basic-audio-transform.md
+        - name: Erstellen der Transformation „copyAllBitrateNonInterleaved“ mit REST
+          href: how-to-create-copyallbitratenoninterleaved-transform.md
+        - name: Kopieren von Videos ohne Codierung mit REST
+          href: how-to-create-copy-video-audio-transform.md
         - name: Erstellen von Aufträgen
           href: cli-create-jobs.md
         - name: Erstellen von Auftragseingaben mit einer lokalen Datei und .NET
@@ -385,7 +396,7 @@
       displayName: schema
     - name: REST
       href: /rest/api/media/
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: /cli/azure/ams
     - name: SDKs
       items:
@@ -422,7 +433,7 @@
       href: 'https://aka.ms/ams-v3-rest-sdk'
     - name: SDKs/Tools
       items:
-        - name: Azure-Befehlszeilenschnittstelle
+        - name: Azure CLI
           href: /cli/azure/install-azure-cli
         - name: .NET
           href: 'https://aka.ms/ams-v3-dotnet-sdk'

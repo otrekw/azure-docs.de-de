@@ -12,18 +12,18 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 10/12/2020
+ms.date: 11/18/2020
 ms.author: b-juche
-ms.openlocfilehash: 4fa2c724906c8a6bfb294541b6616ddc7ae22df6
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: ee5e1230acd059d69648144b84a8fbfa652ef6e7
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94591647"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96854052"
 ---
 # <a name="create-a-dual-protocol-nfsv3-and-smb-volume-for-azure-netapp-files"></a>Erstellen eines Volumes mit dualem Protokoll (NFSv3 und SMB) für Azure NetApp Files
 
-Azure NetApp Files unterstützt das Erstellen von Volumes mithilfe von NFS (NFSv3 und NFSv4.1), SMBv3 oder dualem Protokoll. In diesem Artikel wird beschrieben, wie Sie ein Volume erstellen, das ein duales Protokoll aus NFSv3 und SMB mit Unterstützung der LDAP-Benutzerzuordnung verwendet.  
+Azure NetApp Files unterstützt das Erstellen von Volumes mithilfe von NFS (NFSv3 und NFSv4.1), SMB3 oder dualem Protokoll. In diesem Artikel wird beschrieben, wie Sie ein Volume erstellen, das ein duales Protokoll aus NFSv3 und SMB mit Unterstützung der LDAP-Benutzerzuordnung verwendet.  
 
 
 ## <a name="before-you-begin"></a>Voraussetzungen 
@@ -51,6 +51,8 @@ Azure NetApp Files unterstützt das Erstellen von Volumes mithilfe von NFS (NFSv
     |-  |-  |-  |-  |-  |
     | UNIX  | NFS   | NFSv3-Modusbits   | UNIX  | NFS und Windows   |
     | NTFS  | Windows   | NTFS-ACLs     | NTFS  |NFS und Windows|
+* UNIX-Benutzer, die das NTFS-Sicherheitsvolume mithilfe von NFS einbinden, werden für den UNIX-Benutzer `root` als Windows-Benutzer `root` und für allen anderen Benutzer als `pcuser` authentifiziert. Stellen Sie bei Verwendung von NFS sicher, dass diese Benutzerkonten in Ihrem Active Directory vorhanden sind, bevor Sie das Volume einbinden. 
+
 
 ## <a name="create-a-dual-protocol-volume"></a>Erstellen eines Dual-Protokoll-Volumes
 

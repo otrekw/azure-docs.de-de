@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/02/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: da2535a9764c909af3a491402311fe263dbb48fb
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: c476fe2af1fb4bddff4799609b164aab14f57b00
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93331149"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187396"
 ---
 ### <a name="is-azure-virtual-wan-in-ga"></a>Ist Azure Virtual WAN allgemein verfügbar?
 
@@ -33,7 +33,7 @@ Virtual WAN ist eine Sammlung von Hubs und Diensten, die innerhalb des Hubs zur 
 
 ### <a name="what-client-does-the-azure-virtual-wan-user-vpn-point-to-site-support"></a>Welcher Client wird für Azure Virtual WAN-Benutzer-VPN (Point-to-Site) unterstützt?
 
-Virtual WAN unterstützt den [Azure-VPN-](https://go.microsoft.com/fwlink/?linkid=2117554), OpenVPN- oder einen beliebigen IKEv2-Client. Die Azure AD-Authentifizierung wird mit dem Azure-VPN-Client unterstützt. Es ist mindestens ein Windows 10-Client mit der Betriebssystemversion 17763.0 oder höher erforderlich.  OpenVPN-Clients können die zertifikatbasierte Authentifizierung unterstützen. Nachdem auf dem Gateway die zertifikatbasierte Authentifizierung ausgewählt wurde, wird die *OVPN* -Datei zum Herunterladen Ihres Geräts angezeigt. IKEv2 unterstützt sowohl die Zertifikat- als auch die RADIUS-Authentifizierung. 
+Virtual WAN unterstützt den [Azure-VPN-](https://go.microsoft.com/fwlink/?linkid=2117554), OpenVPN- oder einen beliebigen IKEv2-Client. Die Azure AD-Authentifizierung wird mit dem Azure-VPN-Client unterstützt. Es ist mindestens ein Windows 10-Client mit der Betriebssystemversion 17763.0 oder höher erforderlich.  OpenVPN-Clients können die zertifikatbasierte Authentifizierung unterstützen. Nachdem auf dem Gateway die zertifikatbasierte Authentifizierung ausgewählt wurde, wird die *OVPN*-Datei zum Herunterladen Ihres Geräts angezeigt. IKEv2 unterstützt sowohl die Zertifikat- als auch die RADIUS-Authentifizierung. 
 
 ### <a name="for-user-vpn-point-to-site--why-is-the-p2s-client-pool-split-into-two-routes"></a>Für Benutzer-VPN (Point-to-Site): Warum ist der P2S-Clientpool in zwei Routen unterteilt?
 
@@ -273,3 +273,7 @@ Informationen finden Sie auf der Seite „Einschränkungen für Azure-Abonnement
 ### <a name="what-are-the-differences-between-the-virtual-wan-types-basic-and-standard"></a>Welche Unterschiede bestehen zwischen den Virtual WAN-Typen („Basic“ und „Standard“)?
 
 Weitere Informationen finden Sie unter [Virtual WANs des Typs „Basic“ und „Standard“](../articles/virtual-wan/virtual-wan-about.md#basicstandard). Informationen zu den Preisen finden Sie auf der Seite [Virtual WAN – Preise](https://azure.microsoft.com/pricing/details/virtual-wan/).
+
+### <a name="does-virtual-wan-store-customer-data"></a>Speichert Virtual WAN Kundendaten? 
+
+Nein. Virtual WAN speichert keine Kundendaten.

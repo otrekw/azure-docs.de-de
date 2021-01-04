@@ -1,18 +1,18 @@
 ---
 title: Schnellstartanleitung zum Hinzufügen von Featureflags zu Spring Boot mit Azure App Configuration
 description: Hier erfahren Sie, wie Sie Spring Boot-Apps Featureflags hinzufügen und diese in Azure App Configuration verwalten.
-author: lisaguthrie
+author: AlexandraKemperMS
 ms.service: azure-app-configuration
 ms.topic: quickstart
-ms.date: 04/18/2020
-ms.author: lcozzens
+ms.date: 08/06/2020
+ms.author: alkemper
 ms.custom: devx-track-java
-ms.openlocfilehash: 64ccc9c91d9ead567035b1f7f35e0a0088b6200b
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: e931b974fc48d07237b2698e7782c48be20745d9
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93124185"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96930710"
 ---
 # <a name="quickstart-add-feature-flags-to-a-spring-boot-app"></a>Schnellstart: Hinzufügen von Featureflags zu einer Spring Boot-App
 
@@ -45,8 +45,8 @@ Verwenden Sie [Spring Initializr](https://start.spring.io/), um ein neues Spring
 
 1. Verwenden Sie die folgenden Optionen:
 
-   * Generieren Sie ein **Maven** -Projekt mit **Java**.
-   * Geben Sie eine **Spring Boot** -Version ab 2.0 an.
+   * Generieren Sie ein **Maven**-Projekt mit **Java**.
+   * Geben Sie eine **Spring Boot**-Version ab 2.0 an.
    * Geben Sie Namen für die **Gruppe** und das **Artefakt** für Ihre Anwendung an.  In diesem Artikel werden `com.example` und `demo` verwendet.
    * Fügen Sie die Abhängigkeit **Spring Web** hinzu.
 
@@ -288,7 +288,7 @@ Verwenden Sie [Spring Initializr](https://start.spring.io/), um ein neues Spring
 
     ![Screenshot: Browserfenster mit einer Begrüßungsnachricht](./media/quickstarts/spring-boot-feature-flag-local-before.png)
 
-1. Wählen Sie im App Configuration-Portal **Feature-Manager** aus, und ändern Sie den Status des **Beta** -Schlüssels in **Ein** :
+1. Wählen Sie im App Configuration-Portal **Feature-Manager** aus, und ändern Sie den Status des **Beta**-Schlüssels in **Ein**:
 
     | Schlüssel | State |
     |---|---|

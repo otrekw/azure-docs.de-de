@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/22/2019
 ms.author: yelevin
-ms.openlocfilehash: 223f3e45f25e3aed3ed6fa15e5b9ea04b17f6c59
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 205cc6eea5d1ac3be2d0e266621067dc8e20d2f9
+ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94655322"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96121742"
 ---
 # <a name="connect-data-from-threat-intelligence-providers"></a>Verknüpfen von Daten von Threat Intelligence-Anbietern
 
@@ -56,6 +56,11 @@ Sie können Bedrohungsindikatoren an Azure Sentinel streamen, indem Sie eines de
 
     Weitere Informationen finden Sie auf der Seite [ThreatConnect-Integrationen](https://threatconnect.com/integrations/) unter „Microsoft Graph Security API“ (Microsoft Graph-Sicherheits-API).
 
+- [EclecticIQ Platform](https://www.eclecticiq.com/solutions)
+
+- [ThreatQ Threat Intelligence Platform](https://www.threatq.com/)
+
+    Weitere Informationen und Anweisungen finden Sie unter [Microsoft Sentinel Connector for ThreatQ integration](https://appsource.microsoft.com/product/web-apps/threatquotientinc1595345895602.microsoft-sentinel-connector-threatq?src=health&tab=Overview) (Microsoft Sentinel-Connector für die ThreatQ-Integration).
 
 ## <a name="connect-azure-sentinel-to-your-threat-intelligence-platform"></a>Verbinden von Azure Sentinel mit Ihrer Threat Intelligence-Plattform
 

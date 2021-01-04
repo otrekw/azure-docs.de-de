@@ -9,13 +9,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/28/2020
-ms.openlocfilehash: 5969c449afe203ec9a014d2da78b56eeeb837590
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.date: 12/08/2020
+ms.openlocfilehash: 327ab63a048e08328cd5b1334b0a697a61ced6c8
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913363"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97346332"
 ---
 # <a name="copy-and-transform-data-in-azure-blob-storage-by-using-azure-data-factory"></a>Kopieren und Transformieren von Daten in Azure Blob Storage mithilfe von Azure Data Factory
 
@@ -76,8 +76,8 @@ Data Factory unterstützt die folgenden Eigenschaften für die Authentifizierung
 
 | Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die **type** -Eigenschaft muss auf **AzureBlobStorage** (empfohlen) oder **AzureStorage** (siehe Hinweise unten) festgelegt werden. |Ja |
-| connectionString | Geben Sie für die **connectionString** -Eigenschaft die Informationen ein, die zum Herstellen einer Verbindung mit Azure Storage erforderlich sind. <br/> Sie können auch den Kontoschlüssel in Azure Key Vault speichern und die `accountKey`-Konfiguration aus der Verbindungszeichenfolge pullen. Weitere Informationen finden Sie in den folgenden Beispielen und im Artikel [Speichern von Anmeldeinformationen in Azure Key Vault](store-credentials-in-key-vault.md). |Ja |
+| type | Die **type**-Eigenschaft muss auf **AzureBlobStorage** (empfohlen) oder **AzureStorage** (siehe Hinweise unten) festgelegt werden. |Ja |
+| connectionString | Geben Sie für die **connectionString**-Eigenschaft die Informationen ein, die zum Herstellen einer Verbindung mit Azure Storage erforderlich sind. <br/> Sie können auch den Kontoschlüssel in Azure Key Vault speichern und die `accountKey`-Konfiguration aus der Verbindungszeichenfolge pullen. Weitere Informationen finden Sie in den folgenden Beispielen und im Artikel [Speichern von Anmeldeinformationen in Azure Key Vault](store-credentials-in-key-vault.md). |Ja |
 | connectVia | Die [Integration Runtime](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden soll. Sie können die Azure Integration Runtime oder eine selbstgehostete Integration Runtime verwenden (sofern sich Ihr Datenspeicher in einem privaten Netzwerk befindet). Wenn diese Eigenschaft nicht angegeben ist, verwendet der Dienst die normale Azure Integration Runtime. |Nein |
 
 >[!NOTE]
@@ -146,8 +146,8 @@ Data Factory unterstützt die folgenden Eigenschaften für die Verwendung der SA
 
 | Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die **type** -Eigenschaft muss auf **AzureBlobStorage** (empfohlen) oder **AzureStorage** (siehe Hinweise unten) festgelegt werden. |Ja |
-| sasUri | Geben Sie den SAS-URI für Azure Storage-Ressourcen wie Blobs oder Container an. <br/>Markieren Sie dieses Feld als **SecureString** , um es sicher in Data Factory zu speichern. Sie können auch das SAS-Token in Azure Key Vault speichern, um die automatische Rotation zu nutzen und den Tokenabschnitt zu entfernen. Weitere Informationen finden Sie in den folgenden Beispielen sowie unter [Speichern von Anmeldeinformationen in Azure Key Vault](store-credentials-in-key-vault.md). |Ja |
+| type | Die **type**-Eigenschaft muss auf **AzureBlobStorage** (empfohlen) oder **AzureStorage** (siehe Hinweise unten) festgelegt werden. |Ja |
+| sasUri | Geben Sie den SAS-URI für Azure Storage-Ressourcen wie Blobs oder Container an. <br/>Markieren Sie dieses Feld als **SecureString**, um es sicher in Data Factory zu speichern. Sie können auch das SAS-Token in Azure Key Vault speichern, um die automatische Rotation zu nutzen und den Tokenabschnitt zu entfernen. Weitere Informationen finden Sie in den folgenden Beispielen sowie unter [Speichern von Anmeldeinformationen in Azure Key Vault](store-credentials-in-key-vault.md). |Ja |
 | connectVia | Die [Integration Runtime](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden soll. Sie können die Azure Integration Runtime oder eine selbstgehostete Integration Runtime verwenden (sofern sich Ihr Datenspeicher in einem privaten Netzwerk befindet). Wenn diese Eigenschaft nicht angegeben ist, verwendet der Dienst die normale Azure Integration Runtime. |Nein |
 
 >[!NOTE]
@@ -230,13 +230,13 @@ Diese Eigenschaften werden für den mit Azure Blob Storage verknüpften Dienst u
 
 | Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die **type** -Eigenschaft muss auf **AzureBlobStorage** festgelegt sein. |Ja |
+| type | Die **type**-Eigenschaft muss auf **AzureBlobStorage** festgelegt sein. |Ja |
 | serviceEndpoint | Geben Sie den Azure Blob Storage-Dienstendpunkt mit dem Muster `https://<accountName>.blob.core.windows.net/` an. |Ja |
 | accountKind | Geben Sie die Art Ihres Speicherkontos an. Zulässige Werte sind: **Storage** (Universell v1), **StorageV2** (Universell v2), **BlobStorage** oder **BlockBlobStorage**. <br/> Bei Verwendung des mit Azure Blob verknüpften Diensts im Datenfluss wird die Authentifizierung per verwalteter Identität oder Dienstprinzipal nicht unterstützt, wenn der Kontotyp leer ist oder der Wert „Storage“ lautet. Geben Sie die richtige Kontoart an, wählen Sie eine andere Authentifizierung aus, oder aktualisieren Sie Ihr Speicherkonto auf „Universell v2“. |Nein |
 | servicePrincipalId | Geben Sie die Client-ID der Anwendung an. | Ja |
-| servicePrincipalKey | Geben Sie den Schlüssel der Anwendung an. Markieren Sie dieses Feld als **SecureString** , um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Ja |
+| servicePrincipalKey | Geben Sie den Schlüssel der Anwendung an. Markieren Sie dieses Feld als **SecureString**, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Ja |
 | tenant | Geben Sie die Mandanteninformationen (Domänenname oder Mandanten-ID) für Ihre Anwendung an. Diese können Sie abrufen, indem Sie im Azure-Portal mit der Maus auf den Bereich oben rechts zeigen. | Ja |
-| azureCloudType | Geben Sie für die Dienstprinzipalauthentifizierung die Art der Azure-Cloudumgebung an, bei der Ihre Azure Active Directory-Anwendung registriert ist. <br/> Zulässige Werte sind **AzurePublic** , **AzureChina** , **AzureUsGovernment** und **AzureGermany**. Standardmäßig wird die Cloudumgebung der Data Factory verwendet. | Nein |
+| azureCloudType | Geben Sie für die Dienstprinzipalauthentifizierung die Art der Azure-Cloudumgebung an, bei der Ihre Azure Active Directory-Anwendung registriert ist. <br/> Zulässige Werte sind **AzurePublic**, **AzureChina**, **AzureUsGovernment** und **AzureGermany**. Standardmäßig wird die Cloudumgebung der Data Factory verwendet. | Nein |
 | connectVia | Die [Integration Runtime](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden soll. Sie können die Azure Integration Runtime oder eine selbstgehostete Integration Runtime verwenden (sofern sich Ihr Datenspeicher in einem privaten Netzwerk befindet). Wenn diese Eigenschaft nicht angegeben ist, verwendet der Dienst die normale Azure Integration Runtime. |Nein |
 
 >[!NOTE]
@@ -284,13 +284,13 @@ Weitere allgemeine Informationen zur Azure Storage-Authentifizierung finden Sie 
     - Weisen Sie ihm **Als Senke** in der **Zugriffssteuerung (IAM)** mindestens die Rolle **Mitwirkender an Storage-Blobdaten** zu.
 
 >[!IMPORTANT]
->Wenn Sie Daten mithilfe von PolyBase oder der COPY-Anweisung aus Blob Storage (als Quelle oder Stagingkomponente) in Azure Synapse Analytics laden und dazu die Authentifizierung per verwalteter Identität für Blob Storage verwenden, müssen Sie unbedingt auch die Schritte 1 bis 3 in [dieser Anleitung](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage) befolgen. Mit diesen Schritten wird der Server bei Azure AD registriert, und Ihrem Server wird die Rolle „Mitwirkender an Storage-Blobdaten“ zugewiesen. Data Factory kümmert sich um den Rest. Wenn Sie Blob Storage mit einem Azure Virtual Network-Endpunkt konfigurieren, muss außerdem im Einstellungsmenü **Firewalls und virtuelle Netzwerke** des Azure Storage-Kontos die Option **Vertrauenswürdigen Microsoft-Diensten den Zugriff auf dieses Speicherkonto erlauben** aktiviert sein (wie für Synapse erforderlich).
+>Wenn Sie Daten mithilfe von PolyBase oder der COPY-Anweisung aus Blob Storage (als Quelle oder Stagingkomponente) in Azure Synapse Analytics laden und dazu die Authentifizierung per verwalteter Identität für Blob Storage verwenden, müssen Sie unbedingt auch die Schritte 1 bis 3 in [dieser Anleitung](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-virtual-network-service-endpoints-with-azure-storage) befolgen. Mit diesen Schritten wird der Server bei Azure AD registriert, und Ihrem Server wird die Rolle „Mitwirkender an Storage-Blobdaten“ zugewiesen. Data Factory kümmert sich um den Rest. Wenn Sie Blob Storage mit einem Azure Virtual Network-Endpunkt konfigurieren, muss außerdem im Einstellungsmenü **Firewalls und virtuelle Netzwerke** des Azure Storage-Kontos die Option **Vertrauenswürdigen Microsoft-Diensten den Zugriff auf dieses Speicherkonto erlauben** aktiviert sein (wie für Synapse erforderlich).
 
 Diese Eigenschaften werden für den mit Azure Blob Storage verknüpften Dienst unterstützt:
 
 | Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die **type** -Eigenschaft muss auf **AzureBlobStorage** festgelegt sein. |Ja |
+| type | Die **type**-Eigenschaft muss auf **AzureBlobStorage** festgelegt sein. |Ja |
 | serviceEndpoint | Geben Sie den Azure Blob Storage-Dienstendpunkt mit dem Muster `https://<accountName>.blob.core.windows.net/` an. |Ja |
 | accountKind | Geben Sie die Art Ihres Speicherkontos an. Zulässige Werte sind: **Storage** (Universell v1), **StorageV2** (Universell v2), **BlobStorage** oder **BlockBlobStorage**. <br/> Bei Verwendung des mit Azure Blob verknüpften Diensts im Datenfluss wird die Authentifizierung per verwalteter Identität oder Dienstprinzipal nicht unterstützt, wenn der Kontotyp leer ist oder der Wert „Storage“ lautet. Geben Sie die richtige Kontoart an, wählen Sie eine andere Authentifizierung aus, oder aktualisieren Sie Ihr Speicherkonto auf „Universell v2“. |Nein |
 | connectVia | Die [Integration Runtime](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden soll. Sie können die Azure Integration Runtime oder eine selbstgehostete Integration Runtime verwenden (sofern sich Ihr Datenspeicher in einem privaten Netzwerk befindet). Wenn diese Eigenschaft nicht angegeben ist, verwendet der Dienst die normale Azure Integration Runtime. |Nein |
@@ -330,7 +330,7 @@ Folgende Eigenschaften werden für Azure Blob Storage unter den `location`-Einst
 
 | Eigenschaft   | Beschreibung                                                  | Erforderlich |
 | ---------- | ------------------------------------------------------------ | -------- |
-| type       | Die **type** -Eigenschaft des Speicherorts im Dataset muss auf **AzureBlobStorageLocation** festgelegt werden. | Ja      |
+| type       | Die **type**-Eigenschaft des Speicherorts im Dataset muss auf **AzureBlobStorageLocation** festgelegt werden. | Ja      |
 | Container  | Der BLOB-Container.                                          | Ja      |
 | folderPath | Der Pfad zum Ordner unter dem angegebenen Container. Wenn Sie einen Platzhalter verwenden möchten, um den Ordner zu filtern, überspringen Sie diese Einstellung, und geben Sie entsprechende Aktivitätsquelleneinstellungen an. | Nein       |
 | fileName   | Der Dateiname unter dem angegebenen Container und Ordnerpfad. Wenn Sie Platzhalter verwenden möchten, um Dateien zu filtern, überspringen Sie diese Einstellung, und geben Sie dies entsprechend in den Aktivitätsquelleneinstellungen an. | Nein       |
@@ -374,15 +374,15 @@ Folgende Eigenschaften werden für Azure Blob Storage unter den `storeSettings`-
 
 | Eigenschaft                 | Beschreibung                                                  | Erforderlich                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
-| type                     | Die **type** -Eigenschaft unter `storeSettings` muss auf **AzureBlobStorageReadSettings** festgelegt werden. | Ja                                           |
+| type                     | Die **type**-Eigenschaft unter `storeSettings` muss auf **AzureBlobStorageReadSettings** festgelegt werden. | Ja                                           |
 | **_Suchen nach den zu kopierenden Dateien:_* |  |  |
 | OPTION 1: statischer Pfad<br> | Kopieren Sie aus dem angegebenen Container oder Ordner/Dateipfad, der im Dataset angegeben ist. Wenn Sie alle Blobs aus einem Container oder Ordner kopieren möchten, geben Sie zusätzlich `wildcardFileName` als `_` an. |  |
-| Option 2: Blobpräfix<br>– prefix | Präfix für den Blobnamen unter dem angegebenen Container, der in einem Dataset zum Filtern von Quellblobs konfiguriert wurde. Es werden die Blobs ausgewählt, deren Namen mit `container_in_dataset/this_prefix` beginnen. Für Blob Storage wird der serverseitige Filter verwendet, dessen Leistung besser ist als die eines Platzhalterfilters. | Nein                                                          |
+| Option 2: Blobpräfix<br>– prefix | Präfix für den Blobnamen unter dem angegebenen Container, der in einem Dataset zum Filtern von Quellblobs konfiguriert wurde. Es werden die Blobs ausgewählt, deren Namen mit `container_in_dataset/this_prefix` beginnen. Für Blob Storage wird der serverseitige Filter verwendet, dessen Leistung besser ist als die eines Platzhalterfilters.<br><br>Wenn Sie das Präfix verwenden und in eine dateibasierte Senke mit Beibehaltung der Hierarchie kopieren, wird der Unterpfad nach dem letzten „/“ im Präfix beibehalten. Wenn Sie beispielsweise `container/folder/subfolder/file.txt` als Quelle haben und das Präfix als `folder/sub` konfigurieren, lautet der beibehaltene Dateipfad `subfolder/file.txt`. | Nein                                                          |
 | OPTION 3: Platzhalter<br>– wildcardFolderPath | Der Ordnerpfad mit Platzhalterzeichen unter dem angegebenen Container, der in einem Dataset für das Filtern von Quellordnern konfiguriert ist. <br>Folgende Platzhalter sind zulässig: `*` (entspricht null [0] oder mehr Zeichen) und `?` (entspricht null [0] oder einem einzelnen Zeichen). Verwenden Sie `^` als Escapezeichen, wenn Ihr Ordnername einen Platzhalter oder dieses Escapezeichen enthält. <br>Weitere Beispiele finden Sie unter [Beispiele für Ordner- und Dateifilter](#folder-and-file-filter-examples). | Nein                                            |
-| OPTION 3: Platzhalter<br>– wildcardFileName | Der Dateiname mit Platzhalterzeichen unter dem angegebenen Container und Ordnerpfad (oder Platzhalterordnerpfad) für das Filtern von Quelldateien. <br>Folgende Platzhalter sind zulässig: `*` (entspricht null [0] oder mehr Zeichen) und `?` (entspricht null [0] oder einem einzelnen Zeichen). Verwenden Sie `^` als Escapezeichen, wenn Ihr Ordnername einen Platzhalter oder dieses Escapezeichen enthält. Weitere Beispiele finden Sie unter [Beispiele für Ordner- und Dateifilter](#folder-and-file-filter-examples). | Ja |
+| OPTION 3: Platzhalter<br>– wildcardFileName | Der Dateiname mit Platzhalterzeichen unter dem angegebenen Container und Ordnerpfad (oder Platzhalterordnerpfad) für das Filtern von Quelldateien. <br>Folgende Platzhalter sind zulässig: `*` (entspricht null [0] oder mehr Zeichen) und `?` (entspricht null [0] oder einem einzelnen Zeichen). Verwenden Sie `^` als Escapezeichen, wenn der tatsächliche Dateiname einen Platzhalter oder dieses Escapezeichen enthält. Weitere Beispiele finden Sie unter [Beispiele für Ordner- und Dateifilter](#folder-and-file-filter-examples). | Ja |
 | OPTION 4: eine Liste von Dateien<br>– fileListPath | Gibt an, dass eine bestimmte Dateigruppe kopiert werden soll. Verweisen Sie auf eine Textdatei, die eine Liste der zu kopierenden Dateien enthält, und zwar eine Datei pro Zeile. Dies ist der relative Pfad zu dem im Dataset konfigurierten Pfad.<br/>Wenn Sie diese Option verwenden, geben Sie keinen Dateinamen im Dataset an. Weitere Beispiele finden Sie unter [Beispiele für Dateilisten](#file-list-examples). |Nein |
 | ***Zusätzliche Einstellungen:** |  | |
-| recursive | Gibt an, ob die Daten rekursiv aus den Unterordnern oder nur aus dem angegebenen Ordner gelesen werden. Beachten Sie Folgendes: Wenn _ *recursive* * auf **TRUE** festgelegt ist und es sich bei der Senke um einen dateibasierten Speicher handelt, werden leere Ordner oder Unterordner nicht in die Senke kopiert und dort auch nicht erstellt. <br>Zulässige Werte sind **true** (Standard) und **false**.<br>Diese Eigenschaft gilt nicht, wenn Sie `fileListPath` konfigurieren. |Nein |
+| recursive | Gibt an, ob die Daten rekursiv aus den Unterordnern oder nur aus dem angegebenen Ordner gelesen werden. Beachten Sie Folgendes: Wenn _ *recursive** auf **TRUE** festgelegt ist und es sich bei der Senke um einen dateibasierten Speicher handelt, werden leere Ordner oder Unterordner nicht in die Senke kopiert und dort auch nicht erstellt. <br>Zulässige Werte sind **true** (Standard) und **false**.<br>Diese Eigenschaft gilt nicht, wenn Sie `fileListPath` konfigurieren. |Nein |
 | deleteFilesAfterCompletion | Gibt an, ob die Binärdateien nach dem erfolgreichen Verschieben in den Zielspeicher aus dem Quellspeicher gelöscht werden. Die Dateien werden einzeln gelöscht, sodass Sie bei einem Fehler der Kopieraktivität feststellen werden, dass einige Dateien bereits ins Ziel kopiert und aus der Quelle gelöscht wurden, wohingegen sich andere weiter im Quellspeicher befinden. <br/>Diese Eigenschaft ist nur im Szenario zum Kopieren von Binärdateien gültig. Standardwert: FALSE. |Nein |
 | modifiedDatetimeStart    | Die Dateien werden anhand des Attributs „Letzte Änderung“ gefiltert. <br>Die Dateien werden ausgewählt, wenn der Zeitpunkt der letzten Änderung innerhalb des Zeitbereichs zwischen `modifiedDatetimeStart` und `modifiedDatetimeEnd` liegt. Die Zeit wird auf die UTC-Zeitzone im Format „2018-12-01T05:00:00Z“ angewendet. <br> Die Eigenschaften können **NULL** sein, was bedeutet, dass kein Dateiattributfilter auf das Dataset angewendet wird.  Wenn `modifiedDatetimeStart` einen datetime-Wert aufweist, aber `modifiedDatetimeEnd` **NULL** ist, werden die Dateien ausgewählt, deren Attribut für die letzte Änderung größer oder gleich dem datetime-Wert ist.  Wenn `modifiedDatetimeEnd` den datetime-Wert aufweist, aber `modifiedDatetimeStart` **NULL** ist, werden die Dateien ausgewählt, deren Attribut für die letzte Änderung kleiner als der datetime-Wert ist.<br/>Diese Eigenschaft gilt nicht, wenn Sie `fileListPath` konfigurieren. | Nein                                            |
 | modifiedDatetimeEnd      | Wie oben.                                               | Nein                                            |
@@ -442,7 +442,7 @@ Folgende Eigenschaften werden für Azure Blob Storage unter den `storeSettings`-
 
 | Eigenschaft                 | Beschreibung                                                  | Erforderlich |
 | ------------------------ | ------------------------------------------------------------ | -------- |
-| type                     | Die **type** -Eigenschaft unter `storeSettings` muss auf **AzureBlobStorageWriteSettings** festgelegt werden. | Ja      |
+| type                     | Die **type**-Eigenschaft unter `storeSettings` muss auf **AzureBlobStorageWriteSettings** festgelegt werden. | Ja      |
 | copyBehavior             | Definiert das Kopierverhalten, wenn es sich bei der Quelle um Dateien aus einem dateibasierten Datenspeicher handelt.<br/><br/>Zulässige Werte sind:<br/><b>- PreserveHierarchy (Standard)</b>: Behält die Dateihierarchie im Zielordner bei. Der relative Pfad der Quelldatei zum Quellordner ist mit dem relativen Pfad der Zieldatei zum Zielordner identisch.<br/><b>- FlattenHierarchy</b>: Alle Dateien aus dem Quellordner befinden sich auf der ersten Ebene des Zielordners. Die Namen für die Zieldateien werden automatisch generiert. <br/><b>- MergeFiles</b>: Alle Dateien aus dem Quellordner werden in einer Datei zusammengeführt. Wenn der Datei- oder Blobname angegeben wurde, entspricht der Name der Zusammenführungsdatei dem angegebenen Namen. Andernfalls wird der Dateiname automatisch generiert. | Nein       |
 | blockSizeInMB | Geben Sie die Blockgröße, die zum Schreiben von Daten in Blockblobs verwendet wird, in Megabyte an. Informieren Sie sich ausführlicher über [Blockblobs](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-block-blobs). <br/>Der zulässige Wert liegt *zwischen 4 und 100 MB*. <br/>Standardmäßig bestimmt Data Factory automatisch die Blockgröße, basierend auf dem Quellspeichertyp und den Daten. Bei einer nicht binären Kopie in Blob Storage beträgt die Standardblockgröße 100 MB, damit sie in maximal 4,95 TB Daten passt. Dies ist möglicherweise nicht optimal, wenn Ihre Daten nicht groß sind – insbesondere, wenn Sie eine selbstgehostete Integration Runtime mit einer schlechten Netzwerkverbindung verwenden, was zu einem Timeout des Vorgangs oder Leistungsproblemen führt. Sie können explizit eine Blockgröße angeben und gleichzeitig sicherstellen, dass `blockSizeInMB*50000` groß genug ist, um die Daten zu speichern. Andernfalls tritt bei der Ausführung der Kopieraktivität ein Fehler auf. | Nein |
 | maxConcurrentConnections | Die Anzahl gleichzeitiger Verbindungen mit dem Speicher. Geben Sie diesen Wert nur an, wenn Sie die gleichzeitigen Verbindungen mit dem Datenspeicher begrenzen möchten. | Nein       |
@@ -505,7 +505,7 @@ Angenommen, Sie haben die folgende Quellordnerstruktur und möchten die Dateien 
 
 ### <a name="some-recursive-and-copybehavior-examples"></a>Beispiele für „recursive“ und „copyBehavior“
 
-Dieser Abschnitt beschreibt das resultierende Verhalten des Kopiervorgangs für verschiedene Kombinationen von **recursive** - und **copyBehavior** -Werten.
+Dieser Abschnitt beschreibt das resultierende Verhalten des Kopiervorgangs für verschiedene Kombinationen von **recursive**- und **copyBehavior**-Werten.
 
 | recursive | copyBehavior | Struktur des Quellordners | Resultierendes Ziel |
 |:--- |:--- |:--- |:--- |
@@ -564,11 +564,11 @@ Verwenden Sie die Einstellung **Partition root path** (Partitionsstammpfad), um 
 
 ![Partitionsstammpfad](media/data-flow/partfile1.png "Vorschau des Partitionsstammpfads")
 
-**Liste der Dateien** : Dies ist eine Dateigruppe. Erstellen Sie eine Textdatei mit einer Liste der relativen Pfade der zu verarbeitenden Dateien. Verweisen Sie auf diese Textdatei.
+**Liste der Dateien**: Dies ist eine Dateigruppe. Erstellen Sie eine Textdatei mit einer Liste der relativen Pfade der zu verarbeitenden Dateien. Verweisen Sie auf diese Textdatei.
 
-**Spalte für die Speicherung im Dateinamen** : Speichern Sie den Namen der Quelldatei in einer Spalte in den Daten. Geben Sie hier einen neuen Spaltennamen ein, um die Zeichenfolge für den Dateinamen zu speichern.
+**Spalte für die Speicherung im Dateinamen**: Speichern Sie den Namen der Quelldatei in einer Spalte in den Daten. Geben Sie hier einen neuen Spaltennamen ein, um die Zeichenfolge für den Dateinamen zu speichern.
 
-**Nach der Fertigstellung** : Wählen Sie aus, ob Sie nach dem Ausführen des Datenflusses nichts mit der Quelldatei anstellen, die Quelldatei löschen oder die Quelldateien verschieben möchten. Die Pfade für das Verschieben sind relative Pfade.
+**Nach der Fertigstellung**: Wählen Sie aus, ob Sie nach dem Ausführen des Datenflusses nichts mit der Quelldatei anstellen, die Quelldatei löschen oder die Quelldateien verschieben möchten. Die Pfade für das Verschieben sind relative Pfade.
 
 Um Quelldateien an einen anderen Speicherort nach der Verarbeitung zu verschieben, wählen Sie zuerst für den Dateivorgang die Option „Verschieben“ aus. Legen Sie dann das Quellverzeichnis („from“/„aus“) fest. Wenn Sie keine Platzhalter für Ihren Pfad verwenden, entspricht die Einstellung „from“ dem Quellordner.
 
@@ -589,7 +589,7 @@ In diesem Fall werden alle Dateien, die aus „/Data/Sales“ erstellt wurden, i
 > [!NOTE]
 > Die Dateivorgänge werden nur ausgeführt, wenn der Datenfluss anhand der Aktivität zum Ausführen des Datenflusses in einer Pipeline über eine Pipelineausführung ausgeführt wird (Debuggen der Pipeline oder Ausführung). Dateivorgänge werden *nicht* im Datenfluss-Debugmodus ausgeführt.
 
-**Nach der letzten Änderung filtern** : Sie können einen Datumsbereich angeben, um die zu verarbeitenden Dateien nach der letzten Änderung zu filtern. Alle Datums-/Uhrzeitangaben erfolgen in UTC. 
+**Nach der letzten Änderung filtern**: Sie können einen Datumsbereich angeben, um die zu verarbeitenden Dateien nach der letzten Änderung zu filtern. Alle Datums-/Uhrzeitangaben erfolgen in UTC. 
 
 ### <a name="sink-properties"></a>Senkeneigenschaften
 
@@ -629,13 +629,13 @@ Ausführliche Informationen zu den Eigenschaften finden Sie unter [Delete-Aktivi
 
 | Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die **type** -Eigenschaft des Datasets muss auf **AzureBlob** festgelegt werden. |Ja |
+| type | Die **type**-Eigenschaft des Datasets muss auf **AzureBlob** festgelegt werden. |Ja |
 | folderPath | Der Pfad zum Container und Ordner in Blob Storage. <br/><br/>Für den Pfad mit Ausnahme des Containernamens werden Platzhalterfilter unterstützt. Folgende Platzhalter sind zulässig: `*` (entspricht null [0] oder mehr Zeichen) und `?` (entspricht null [0] oder einem einzelnen Zeichen). Verwenden Sie `^` als Escapezeichen, wenn Ihr Ordnername einen Platzhalter oder dieses Escapezeichen enthält. <br/><br/>Beispiel: myblobcontainer/myblobfolder/. Weitere Beispiele finden Sie unter [Beispiele für Ordner- und Dateifilter](#folder-and-file-filter-examples). |Ja für die Kopier- oder Suchaktivität, nein für die GetMetadata-Aktivität |
 | fileName | Name oder Platzhalterfilter für die Blobs unter dem angegebenen Wert für **folderPath**. Wenn Sie für diese Eigenschaft keinen Wert angeben, zeigt das Dataset auf alle Blobs im Ordner. <br/><br/>Für Filter sind folgende Platzhalter zulässig: `*` (entspricht null (0) oder mehr Zeichen) und `?` (entspricht null (0) oder einem einzelnen Zeichen).<br/>- Beispiel 1: `"fileName": "*.csv"`<br/>- Beispiel 2: `"fileName": "???20180427.txt"`<br/>Verwenden Sie `^` als Escapezeichen, wenn der tatsächliche Dateiname einen Platzhalter oder dieses Escapezeichen enthält.<br/><br/>Wenn **fileName** nicht für ein Ausgabedataset und **preserveHierarchy** nicht in der Aktivitätssenke angegeben ist, generiert die Kopieraktivität den Blobnamen automatisch mit dem folgenden Muster: *Data.[GUID der Aktivitätsausführungs-ID].[GUID bei Verwendung von „FlattenHierarchy“].[Format, sofern konfiguriert].[Komprimierung, sofern konfiguriert]* . Beispiel: „Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt.gz“. <br/><br/>Wenn Sie Daten aus einer Quelle im Tabellenformat kopieren und dabei anstelle einer Abfrage den Tabellennamen verwenden, lautet das Namensmuster „ *[Tabellenname].[Format].[Komprimierung, sofern konfiguriert]* “. Beispiel: „MyTable.csv“. |Nein |
 | modifiedDatetimeStart | Die Dateien werden anhand des Attributs „Letzte Änderung“ gefiltert. Die Dateien werden ausgewählt, wenn der Zeitpunkt der letzten Änderung innerhalb des Zeitbereichs zwischen `modifiedDatetimeStart` und `modifiedDatetimeEnd` liegt. Die Zeit wird auf die UTC-Zeitzone im Format „2018-12-01T05:00:00Z“ angewandt. <br/><br/> Hinweis: Die Aktivierung dieser Einstellung wirkt sich auf die Gesamtleistung der Datenverschiebung aus, wenn Sie große Dateimengen filtern möchten. <br/><br/> Die Eigenschaften können **NULL** sein, was bedeutet, dass kein Dateiattributfilter auf das Dataset angewendet wird.  Wenn `modifiedDatetimeStart` einen datetime-Wert aufweist, aber `modifiedDatetimeEnd` **NULL** ist, werden die Dateien ausgewählt, deren Attribut für die letzte Änderung größer oder gleich dem datetime-Wert ist.  Wenn `modifiedDatetimeEnd` den datetime-Wert aufweist, aber `modifiedDatetimeStart` **NULL** ist, werden die Dateien ausgewählt, deren Attribut für die letzte Änderung kleiner als der datetime-Wert ist.| Nein |
 | modifiedDatetimeEnd | Die Dateien werden anhand des Attributs „Letzte Änderung“ gefiltert. Die Dateien werden ausgewählt, wenn der Zeitpunkt der letzten Änderung innerhalb des Zeitbereichs zwischen `modifiedDatetimeStart` und `modifiedDatetimeEnd` liegt. Die Zeit wird auf die UTC-Zeitzone im Format „2018-12-01T05:00:00Z“ angewandt. <br/><br/> Hinweis: Die Aktivierung dieser Einstellung wirkt sich auf die Gesamtleistung der Datenverschiebung aus, wenn Sie große Dateimengen filtern möchten. <br/><br/> Die Eigenschaften können **NULL** sein, was bedeutet, dass kein Dateiattributfilter auf das Dataset angewendet wird.  Wenn `modifiedDatetimeStart` einen datetime-Wert aufweist, aber `modifiedDatetimeEnd` **NULL** ist, werden die Dateien ausgewählt, deren Attribut für die letzte Änderung größer oder gleich dem datetime-Wert ist.  Wenn `modifiedDatetimeEnd` den datetime-Wert aufweist, aber `modifiedDatetimeStart` **NULL** ist, werden die Dateien ausgewählt, deren Attribut für die letzte Änderung kleiner als der datetime-Wert ist.| Nein |
-| format | Wenn Sie Dateien unverändert zwischen dateibasierten Speichern kopieren möchten (binäre Kopie), überspringen Sie den Formatabschnitt in den Definitionen der Eingabe- und Ausgabedatasets.<br/><br/>Für das Analysieren oder Generieren von Dateien mit einem bestimmten Format werden die folgenden Dateiformattypen unterstützt: **TextFormat** , **JsonFormat** , **AvroFormat** , **OrcFormat** und **ParquetFormat**. Sie müssen die **type** -Eigenschaft unter **format** auf einen dieser Werte festlegen. Weitere Informationen finden Sie in den Abschnitten [Textformat](supported-file-formats-and-compression-codecs-legacy.md#text-format), [JSON-Format](supported-file-formats-and-compression-codecs-legacy.md#json-format), [Avro-Format](supported-file-formats-and-compression-codecs-legacy.md#avro-format), [Orc-Format](supported-file-formats-and-compression-codecs-legacy.md#orc-format) und [Parquet-Format](supported-file-formats-and-compression-codecs-legacy.md#parquet-format). |Nein (nur für Szenarien mit Binärkopien) |
-| compression | Geben Sie den Typ und den Grad der Komprimierung für die Daten an. Weitere Informationen finden Sie unter [Unterstützte Dateiformate und Codecs für die Komprimierung](supported-file-formats-and-compression-codecs-legacy.md#compression-support).<br/>Unterstützte Typen sind **GZip** , **Deflate** , **BZIP2** und **ZipDeflate**.<br/>Unterstützte Grade sind **Optimal** und **Schnellste**. |Nein |
+| format | Wenn Sie Dateien unverändert zwischen dateibasierten Speichern kopieren möchten (binäre Kopie), überspringen Sie den Formatabschnitt in den Definitionen der Eingabe- und Ausgabedatasets.<br/><br/>Für das Analysieren oder Generieren von Dateien mit einem bestimmten Format werden die folgenden Dateiformattypen unterstützt: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat** und **ParquetFormat**. Sie müssen die **type**-Eigenschaft unter **format** auf einen dieser Werte festlegen. Weitere Informationen finden Sie in den Abschnitten [Textformat](supported-file-formats-and-compression-codecs-legacy.md#text-format), [JSON-Format](supported-file-formats-and-compression-codecs-legacy.md#json-format), [Avro-Format](supported-file-formats-and-compression-codecs-legacy.md#avro-format), [Orc-Format](supported-file-formats-and-compression-codecs-legacy.md#orc-format) und [Parquet-Format](supported-file-formats-and-compression-codecs-legacy.md#parquet-format). |Nein (nur für Szenarien mit Binärkopien) |
+| compression | Geben Sie den Typ und den Grad der Komprimierung für die Daten an. Weitere Informationen finden Sie unter [Unterstützte Dateiformate und Codecs für die Komprimierung](supported-file-formats-and-compression-codecs-legacy.md#compression-support).<br/>Unterstützte Typen sind **GZip**, **Deflate**, **BZIP2** und **ZipDeflate**.<br/>Unterstützte Grade sind **Optimal** und **Schnellste**. |Nein |
 
 >[!TIP]
 >Um alle Blobs in einem Ordner zu kopieren, geben Sie nur **folderPath** an.<br>Sie können einen einzelnen Blob mit einem angegebenen Namen kopieren, indem Sie **folderPath** für den Ordner und **fileName** für den Dateinamen angeben.<br>Sie können eine Teilmenge der Blobs in einen Ordner kopieren, indem Sie **folderPath** für den Ordner und **fileName** für den Platzhalterfilter angeben. 
@@ -674,7 +674,7 @@ Ausführliche Informationen zu den Eigenschaften finden Sie unter [Delete-Aktivi
 
 | Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die **type** -Eigenschaft der Quelle der Kopieraktivität muss auf **BlobSource** festgelegt werden. |Ja |
+| type | Die **type**-Eigenschaft der Quelle der Kopieraktivität muss auf **BlobSource** festgelegt werden. |Ja |
 | recursive | Gibt an, ob die Daten rekursiv aus den Unterordnern oder nur aus dem angegebenen Ordner gelesen werden. Beachten Sie Folgendes: Wenn **recursive** auf **TRUE** festgelegt ist und es sich bei der Senke um einen dateibasierten Speicher handelt, wird ein leerer Ordner oder Unterordner nicht in die Senke kopiert und dort auch nicht erstellt.<br/>Zulässige Werte sind **true** (Standard) und **false**. | Nein |
 | maxConcurrentConnections | Die Anzahl gleichzeitiger Verbindungen mit dem Speicher. Geben Sie diesen Wert nur an, wenn Sie die gleichzeitigen Verbindungen mit dem Datenspeicher begrenzen möchten. | Nein |
 
@@ -714,7 +714,7 @@ Ausführliche Informationen zu den Eigenschaften finden Sie unter [Delete-Aktivi
 
 | Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die **type** -Eigenschaft der Senke der Kopieraktivität muss auf **BlobSink** festgelegt werden. |Ja |
+| type | Die **type**-Eigenschaft der Senke der Kopieraktivität muss auf **BlobSink** festgelegt werden. |Ja |
 | copyBehavior | Definiert das Kopierverhalten, wenn es sich bei der Quelle um Dateien aus einem dateibasierten Datenspeicher handelt.<br/><br/>Zulässige Werte sind:<br/><b>- PreserveHierarchy (Standard)</b>: Behält die Dateihierarchie im Zielordner bei. Der relative Pfad der Quelldatei zum Quellordner entspricht dem relativen Pfad der Zieldatei zum Zielordner.<br/><b>- FlattenHierarchy</b>: Alle Dateien aus dem Quellordner befinden sich auf der ersten Ebene des Zielordners. Die Namen für die Zieldateien werden automatisch generiert. <br/><b>- MergeFiles</b>: Alle Dateien aus dem Quellordner werden in einer Datei zusammengeführt. Wenn der Datei- oder Blobname angegeben wurde, entspricht der Name der Zusammenführungsdatei dem angegebenen Namen. Andernfalls wird der Dateiname automatisch generiert. | Nein |
 | maxConcurrentConnections | Die Anzahl gleichzeitiger Verbindungen mit dem Speicher. Geben Sie diesen Wert nur an, wenn Sie die gleichzeitigen Verbindungen mit dem Datenspeicher begrenzen möchten. | Nein |
 

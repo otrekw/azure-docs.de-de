@@ -5,18 +5,18 @@ services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 629c27602df14c0b35e2063d8db2d0b13bbff99a
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 84e156074d6db837556ba4ed9febdb43bcdf3318
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92635897"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96902303"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Continuous Integration und Continuous Delivery in Azure Data Factory
 
@@ -94,7 +94,7 @@ Im Folgenden finden Sie eine Anleitung zum Einrichten eines Azure Pipelines-Rele
 
     ![Stufenansicht](media/continuous-integration-deployment/continuous-integration-image14.png)
 
-    b.  Erstellen Sie eine neue Aufgabe. Suchen Sie nach **AMR-Vorlagenbereitstellung** , und wählen Sie dann **Hinzufügen** aus.
+    b.  Erstellen Sie eine neue Aufgabe. Suchen Sie nach **AMR-Vorlagenbereitstellung**, und wählen Sie dann **Hinzufügen** aus.
 
     c.  Wählen Sie unter der Aufgabe „Bereitstellung“ das Abonnement, die Ressourcengruppe und den Speicherort für das Data Factory-Ziel aus. Geben Sie die Anmeldeinformationen an, falls dies erforderlich ist.
 
@@ -153,7 +153,7 @@ Es gibt zwei Möglichkeiten, um Geheimnisse zu verarbeiten:
 
 1. Fügen Sie vor der im vorherigen Abschnitt beschriebenen Aufgabe für die Azure Resource Manager-Bereitstellung eine [Azure Key Vault-Aufgabe](/azure/devops/pipelines/tasks/deploy/azure-key-vault) hinzu:
 
-    1.  Erstellen Sie auf der Registerkarte **Tasks** eine neue Aufgabe. Suchen Sie nach **Azure Key Vault** , und fügen Sie die Komponente hinzu.
+    1.  Erstellen Sie auf der Registerkarte **Tasks** eine neue Aufgabe. Suchen Sie nach **Azure Key Vault**, und fügen Sie die Komponente hinzu.
 
     1.  Wählen Sie in der Key Vault-Aufgabe das Abonnement aus, unter dem Sie den Schlüsseltresor erstellt haben. Geben Sie bei Bedarf Anmeldeinformationen an, und wählen Sie anschließend den Schlüsseltresor aus.
 
@@ -167,7 +167,7 @@ Unter Umständen tritt bei der Azure Key Vault-Aufgabe ein Fehler vom Typ „Zug
 
 Für die Bereitstellung kann ein Fehler auftreten, wenn Sie versuchen, aktive Trigger zu aktualisieren. Zum Aktualisieren von aktiven Triggern müssen Sie sie manuell beenden und nach der Bereitstellung wieder starten. Dies ist über eine Azure PowerShell-Aufgabe möglich:
 
-1.  Fügen Sie auf der Registerkarte **Tasks** des Release eine **Azure PowerShell** -Aufgabe hinzu. Wählen Sie die Aufgabenversion „4.*“ aus. 
+1.  Fügen Sie auf der Registerkarte **Tasks** des Release eine **Azure PowerShell**-Aufgabe hinzu. Wählen Sie die Aufgabenversion „4.*“ aus. 
 
 1.  Wählen Sie das Abonnement aus, in dem sich Ihre Factory befindet.
 
@@ -225,7 +225,7 @@ Beim Exportieren einer Resource Manager-Vorlage liest Data Factory diese Datei a
 
 ### <a name="custom-parameter-syntax"></a>Benutzerdefinierte Parametersyntax
 
-Nachstehend finden Sie einige Richtlinien, die beim Erstellen der benutzerdefinierten Parameterdatei, **arm-template-parameters-definition.json** , befolgt werden müssen. Die Datei enthält jeweils einen eigenen Abschnitt für die Entitätstypen „trigger“, „pipeline“, „linked service“, „dataset“, „integration runtime“ und „data flow“.
+Nachstehend finden Sie einige Richtlinien, die beim Erstellen der benutzerdefinierten Parameterdatei, **arm-template-parameters-definition.json**, befolgt werden müssen. Die Datei enthält jeweils einen eigenen Abschnitt für die Entitätstypen „trigger“, „pipeline“, „linked service“, „dataset“, „integration runtime“ und „data flow“.
 
 * Geben Sie den Eigenschaftenpfad unter dem relevanten Entitätstyp ein.
 * Durch das Festlegen eines Eigenschaftennamens auf `*` geben Sie an, dass alle untergeordneten Eigenschaften parametrisiert werden sollen (nicht rekursiv, sondern nur bis zur ersten Ebene). Sie können auch Ausnahmen für diese Konfiguration angeben.
@@ -235,7 +235,7 @@ Nachstehend finden Sie einige Richtlinien, die beim Erstellen der benutzerdefini
       * `-` bedeutet, dass der Standardwert für den Parameter nicht beibehalten werden soll.
       * `|` ist ein Sonderfall für Geheimnisse aus Azure Key Vault für Verbindungszeichenfolgen oder Schlüssel.
    * `<name>` ist der Name des Parameters. Wenn dieser Wert leer ist, wird der Name der Eigenschaft verwendet. Beginnt der Wert mit dem Zeichen `-`, wird der Name gekürzt. `AzureStorage1_properties_typeProperties_connectionString` wird beispielsweise in `AzureStorage1_connectionString` gekürzt.
-   * `<stype>` ist der Typ des Parameters. Wenn `<stype>` leer ist, wird standardmäßig der Typ `string` verwendet. Unterstützte Werte: `string`, `bool`, `number`, `object` und `securestring`.
+   * `<stype>` ist der Typ des Parameters. Wenn `<stype>` leer ist, wird standardmäßig der Typ `string` verwendet. Unterstützte Werte: `string`, `securestring`, `int`, `bool`, `object`, `secureobject` und `array`.
 * Wenn Sie ein Array in der Definitionsdatei angeben, bedeutet dies, dass die entsprechende Eigenschaft in der Vorlage ein Array ist. Data Factory durchläuft alle Objekte im Array anhand der Definition, die im Integration Runtime-Objekt des Arrays angegeben ist. Das zweite Objekt (eine Zeichenfolge) wird zum Namen der Eigenschaft, der bei jeder Iteration als Name für den Parameter verwendet wird.
 * Eine Definition kann nicht spezifisch für eine Ressourceninstanz sein. Jede Definition gilt für alle Ressourcen dieses Typs.
 * Standardmäßig werden alle sicheren Zeichenfolgen parametrisiert, z. B. Key Vault-Geheimnisse, Verbindungszeichenfolgen, Schlüssel und Token.
@@ -250,7 +250,7 @@ Hier ist ein Beispiel dafür angegeben, wie eine Parametrisierungsvorlage ausseh
         "properties": {
             "activities": [{
                 "typeProperties": {
-                    "waitTimeInSeconds": "-::number",
+                    "waitTimeInSeconds": "-::int",
                     "headers": "=::object"
                 }
             }]
@@ -268,7 +268,7 @@ Hier ist ein Beispiel dafür angegeben, wie eine Parametrisierungsvorlage ausseh
             "typeProperties": {
                 "recurrence": {
                     "*": "=",
-                    "interval": "=:triggerSuffix:number",
+                    "interval": "=:triggerSuffix:int",
                     "frequency": "=:-freq"
                 },
                 "maxConcurrency": "="
@@ -317,7 +317,7 @@ Im Folgenden wird das Erstellen der obigen Vorlage mit einer Aufschlüsselung na
 #### <a name="triggers"></a>Trigger
 
 * Unter `typeProperties` werden zwei Eigenschaften parametrisiert. Die erste ist `maxConcurrency`. Diese Eigenschaft besitzt einen Standardwert und ist vom Typ `string`. Der Standardparametername lautet `<entityName>_properties_typeProperties_maxConcurrency`.
-* Die Eigenschaft `recurrence` wird ebenfalls parametrisiert. Darunter werden alle Eigenschaften auf dieser Ebene gemäß Angabe als Zeichenfolgen mit Standardwerten und Parameternamen parametrisiert. Eine Ausnahme ist die `interval`-Eigenschaft, für die beim Parametrisieren der Typ `number` verwendet wird. An den Parameternamen ist das Suffix `<entityName>_properties_typeProperties_recurrence_triggerSuffix` angehängt. Analog dazu ist die Eigenschaft `freq` eine Zeichenfolge und wird als Zeichenfolge parametrisiert. Die Eigenschaft `freq` wird jedoch ohne Standardwert parametrisiert. Der Name wird verkürzt und mit einem Suffix versehen. Beispiel: `<entityName>_freq`.
+* Die Eigenschaft `recurrence` wird ebenfalls parametrisiert. Darunter werden alle Eigenschaften auf dieser Ebene gemäß Angabe als Zeichenfolgen mit Standardwerten und Parameternamen parametrisiert. Eine Ausnahme ist die `interval`-Eigenschaft, für die beim Parametrisieren der Typ `int` verwendet wird. An den Parameternamen ist das Suffix `<entityName>_properties_typeProperties_recurrence_triggerSuffix` angehängt. Analog dazu ist die Eigenschaft `freq` eine Zeichenfolge und wird als Zeichenfolge parametrisiert. Die Eigenschaft `freq` wird jedoch ohne Standardwert parametrisiert. Der Name wird verkürzt und mit einem Suffix versehen. Beispiel: `<entityName>_freq`.
 
 #### <a name="linkedservices"></a>LinkedServices
 
@@ -632,6 +632,18 @@ Wenn Sie eine Factory in der Produktionsumgebung bereitstellen und ein sofort zu
 9.    Stellen Sie das Hotfixrelease für die Test- und Produktionsfactorys bereit. Dieses Release enthält die vorherige Nutzlast der Produktionsumgebung sowie die Korrektur, die Sie in Schritt 5 vorgenommen haben.
 
 10.   Fügen Sie dem Entwicklungsbranch die Änderungen aus dem Hotfix hinzu, damit spätere Releases nicht den gleichen Fehler enthalten.
+
+Das folgende Video ist ein ausführliches Videotutorial, in dem Sie erfahren, wie Sie ein Hotfix in Ihren Umgebungen anwenden. 
+
+> [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4I7fi]
+
+## <a name="exposure-control-and-feature-flags"></a>Anzeigesteuerungs- und Featureflags
+
+Wenn Sie in einem Team arbeiten, gibt es Instanzen, für die Sie Änderungen zusammenführen können, aber nicht möchten, dass sie in Umgebungen mit erhöhten Rechten wie PROD und QA ausgeführt werden. Für dieses Szenario empfiehlt das ADF-Team [das DevOps-Konzept der Verwendung von Featureflags](/azure/devops/migrate/phase-features-with-feature-flags?view=azure-devops). In ADF können Sie [globale Parameter](author-global-parameters.md) und die [Aktivität „IfCondition“](control-flow-if-condition-activity.md) kombinieren, um Logiksätze auf der Grundlage dieser Umgebungsflags auszublenden.
+
+Informationen zum Einrichten eines Featureflags finden Sie im folgenden Videotutorial:
+
+> [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4IxdW]
 
 ## <a name="best-practices-for-cicd"></a>Bewährte Methoden für CI/CD
 

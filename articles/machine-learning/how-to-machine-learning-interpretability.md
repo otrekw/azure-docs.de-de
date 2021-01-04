@@ -1,7 +1,7 @@
 ---
 title: Modellinterpretierbarkeit in Azure Machine Learning (Vorschauversion)
 titleSuffix: Azure Machine Learning
-description: Erfahren Sie, wie Sie mithilfe des Azure Machine Learning SDK erklären können, warum Ihr Modell Vorhersagen trifft. Es kann während des Trainings und der Herleitung von Rückschlüssen verwendet werden, um zu verstehen, wie Ihr Modell Vorhersagen trifft.
+description: Erfahren Sie, wie Sie mithilfe des Python-SDK für Azure Machine Learning verstehen und erläutern können, wie Ihr Machine Learning-Modell während des Trainings Vorhersagen macht und Rückschlüsse zieht.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,13 +10,13 @@ ms.custom: how-to
 ms.author: mithigpe
 author: minthigpen
 ms.reviewer: Luis.Quintanilla
-ms.date: 07/09/2020
-ms.openlocfilehash: f98e18abb8ba06ea632ee9c63c1a726879e825d2
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.date: 11/16/2020
+ms.openlocfilehash: dff0aeaf84ce87ed728d333cb68aee3a349bc111
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93311505"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94699388"
 ---
 # <a name="model-interpretability-in-azure-machine-learning-preview"></a>Modellinterpretierbarkeit in Azure Machine Learning (Vorschauversion)
 
@@ -65,7 +65,7 @@ Erfahren Sie hier mehr über unterstützte Interpretierbarkeitstechniken, unters
 |Interpretierbarkeitstechnik|BESCHREIBUNG|type|
 |--|--|--------------------|
 |SHAP Tree Explainer| Der Tree Explainer von [SHAP](https://github.com/slundberg/shap), der auf den schnellen Schätzalgorithmus für Werte von SHAP für die Polynomialzeit speziell für **Baumstrukturen und Gruppen von Baumstrukturen** ausgelegt ist.|Modellspezifisch|
-|SHAP Deep Explainer| Basierend auf der Erläuterung von SHAP ist DeepExplainer „ein schneller Näherungsalgorithmus für SHAP-Werte in Deep-Learning-Modellen, der auf einer im [NIPS-Paper über SHAP](https://papers.nips.cc/paper/7062-a-unified-approach-to-interpreting-model-predictions) beschriebenen Verbindung mit DeepLIFT aufbaut. **TensorFlow** - und **Keras** -Modelle, die das TensorFlow-Back-End verwenden, werden unterstützt (es gibt auch eine vorläufige Unterstützung für PyTorch)“.|Modellspezifisch|
+|SHAP Deep Explainer| Basierend auf der Erläuterung von SHAP ist DeepExplainer „ein schneller Näherungsalgorithmus für SHAP-Werte in Deep-Learning-Modellen, der auf einer im [NIPS-Paper über SHAP](https://papers.nips.cc/paper/7062-a-unified-approach-to-interpreting-model-predictions) beschriebenen Verbindung mit DeepLIFT aufbaut. **TensorFlow**- und **Keras**-Modelle, die das TensorFlow-Back-End verwenden, werden unterstützt (es gibt auch eine vorläufige Unterstützung für PyTorch)“.|Modellspezifisch|
 |SHAP Linear Explainer| LinearExplainer in SHAP berechnet SHAP-Werte für ein **lineares Modell** und erklärt optional Korrelationen zwischen Features.|Modellspezifisch|
 |SHAP Kernel Explainer| KernelExplainer in SHAP verwendet eine speziell gewichtete lokale lineare Regression zum Schätzen von SHAP-Werten für **alle Modelle**.|Modellagnostisch|
 |Mimic Explainer (Globaler Surrogat)| Der Mimic Explainer basiert auf der Idee des Trainierens von [globalen Surrogatmodellen](https://christophm.github.io/interpretable-ml-book/global.html) zur Nachahmung von Blackboxmodellen. Ein globales Surrogatmodell ist ein eigenständig interpretierbares Modell, das trainiert wird, um die Vorhersagen **eines Blackbox-Modells** so genau wie möglich zu treffen. Data Scientists können das Surrogatmodell interpretieren, um Rückschlüsse in Bezug auf das Blackbox-Modell zu ziehen. Sie können eines der folgenden interpretierbaren Modelle als Surrogatmodell verwenden: LightGBM (LGBMExplainableModel), Linear Regression (LinearExplainableModel), Stochastic Gradient Descent explainable model (SGDExplainableModel) und Decision Tree (DecisionTreeExplainableModel).|Modellagnostisch|

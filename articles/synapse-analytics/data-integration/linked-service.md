@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: feabfe505601276269c2774e3b39dd5cbaa32087
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: fb3c7dd7b3d7e8e42e230eedcd0d1b43af104327
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93359968"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452525"
 ---
 # <a name="secure-a-linked-service-with-private-links"></a>Schützen eines verknüpften Diensts mit Private Link
 
@@ -69,7 +69,7 @@ Jetzt haben Sie eine sichere und private Verbindung zwischen Synapse und Ihrem v
 ## <a name="next-steps"></a>Nächste Schritte
 
 
-Wenn Sie noch besser verstehen möchten, was „Verwalteter privater Endpunkt“ in Synapse Analytics bedeutet, finden Sie weitere Informationen unter [Verwaltete private Endpunkte](../security/synapse-workspace-managed-private-endpoints.md).
+Lesen Sie den Artikel [Verwaltete private Endpunkte](../security/synapse-workspace-managed-private-endpoints.md), um ein noch besseres Verständnis für verwaltete private Endpunkte in Azure Synapse Analytics zu entwickeln.
 
 
-Weitere Informationen zur Datenintegration bei Synapse Analytics finden Sie im Artikel [Erfassen von Daten in einem Data Lake](data-integration-data-lake.md).
+Weitere Informationen zur Datenintegration bei Azure Synapse Analytics finden Sie im Artikel [Erfassen von Daten in einem Data Lake](data-integration-data-lake.md).

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2019
 ms.author: TomSh
-ms.openlocfilehash: 0d893eb2bf7a57e173d7acb8f15104522edbc3bf
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 749c32091ed10d5bb39d7b67c8b737e002fc9909
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94408208"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94693731"
 ---
 # <a name="introduction-to-azure-security"></a>Einführung in die Azure-Sicherheit
 ## <a name="overview"></a>Übersicht
@@ -141,8 +141,8 @@ Bei der Anwendungsdiagnose können Ereignisse in den folgenden Kategorien angeze
 ## <a name="storage"></a>Storage
 Dieser Abschnitt enthält zusätzliche Informationen zu den wichtigsten Features der Azure-Speichersicherheit und zusammenfassende Informationen zu diesen Funktionen.
 
-### <a name="role-based-access-control-rbac"></a>Rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC)
-Sie können Ihr Speicherkonto mit rollenbasierter Zugriffssteuerung (RBAC) sichern. Das Einschränken des Zugriffs auf der Grundlage der Sicherheitsprinzipien [Need to know](https://en.wikipedia.org/wiki/Need_to_know) und [Least Privilege](https://en.wikipedia.org/wiki/Principle_of_least_privilege) ist für Organisationen unerlässlich, die Sicherheitsrichtlinien für den Datenzugriff erzwingen möchten. Diese Zugriffsrechte werden gewährt, indem Gruppen und Anwendungen die jeweils geeignete Azure-Rolle für einen bestimmten Bereich zugewiesen wird. Sie können [in Azure integrierte Rollen](../../role-based-access-control/built-in-roles.md) (z. B. „Speicherkontomitwirkender“) verwenden, um Benutzern Berechtigungen zuzuweisen. Zugriff auf die Speicherschlüssel für ein Speicherkonto mit dem [Azure Resource Manager](../../storage/blobs/security-recommendations.md)-Modell kann über rollenbasierte Zugriffssteuerung (RBAC) gesteuert werden.
+### <a name="azure-role-based-access-control-azure-rbac"></a>Rollenbasierte Zugriffssteuerung von Azure (Azure RBAC)
+Sie können Ihr Speicherkonto mit der rollenbasierten Zugriffssteuerung von Azure (Azure RBAC) sichern. Das Einschränken des Zugriffs auf der Grundlage der Sicherheitsprinzipien [Need to know](https://en.wikipedia.org/wiki/Need_to_know) und [Least Privilege](https://en.wikipedia.org/wiki/Principle_of_least_privilege) ist für Organisationen unerlässlich, die Sicherheitsrichtlinien für den Datenzugriff erzwingen möchten. Diese Zugriffsrechte werden gewährt, indem Gruppen und Anwendungen die jeweils geeignete Azure-Rolle für einen bestimmten Bereich zugewiesen wird. Sie können [in Azure integrierte Rollen](../../role-based-access-control/built-in-roles.md) (z. B. „Speicherkontomitwirkender“) verwenden, um Benutzern Berechtigungen zuzuweisen. Zugriff auf die Speicherschlüssel für ein Speicherkonto mit dem [Azure Resource Manager](../../storage/blobs/security-recommendations.md)-Modell kann über rollenbasierte Azure RBAC gesteuert werden.
 
 ### <a name="shared-access-signature"></a>Shared Access Signature (SAS)
 [Shared Access Signatures (SAS)](../../storage/common/storage-sas-overview.md) ermöglichen den delegierten Zugriff auf Ressourcen in Ihrem Speicherkonto. Eine SAS bietet die Möglichkeit, einem Client für einen bestimmten Zeitraum spezielle eingeschränkte Berechtigungen für Objekte in Ihrem Speicherkonto zu erteilen. Dazu müssen Sie nicht Ihre Kontozugriffsschlüssel freigeben.
@@ -221,7 +221,7 @@ Wenn Sie Netzwerkdatenverkehr zwischen Ihrem Azure Virtual Network und Ihrem lok
 ### <a name="express-route"></a>ExpressRoute
 Microsoft Azure [ExpressRoute](../../expressroute/expressroute-introduction.md) ist ein dedizierter WAN-Link, mit dem Sie Ihre lokalen Netzwerke über eine dedizierte private Verbindung, die von einem Konnektivitätsanbieter bereitgestellt wird, in die Microsoft Cloud erweitern können.
 
-![ExpressRoute](./media/overview/azure-security-fig1.png)
+![ExpressRoute](./media/overview/azure-security-figure-1.png)
 
 Mit ExpressRoute können Sie Verbindungen mit Microsoft-Clouddiensten herstellen, z. B. Microsoft Azure, Microsoft 365 und CRM Online. Die Konnektivität kann über ein Any-to-Any-Netzwerk (IP VPN), ein Point-to-Point-Ethernet-Netzwerk oder eine virtuelle Querverbindung über einen Konnektivitätsanbieter in einer Co-Location-Einrichtung bereitgestellt werden.
 
@@ -231,7 +231,7 @@ ExpressRoute-Verbindungen verlaufen nicht über das öffentliche Internet und k�
 ### <a name="application-gateway"></a>Application Gateway
 Microsoft [Azure Application Gateway](../../application-gateway/overview.md) verfügt über einen [ADC (Application Delivery Controller)](https://en.wikipedia.org/wiki/Application_delivery_controller) als Dienst und damit für Ihre Anwendung über verschiedene Lastenausgleichsfunktionen auf Schicht 7.
 
-![Application Gateway](./media/overview/azure-security-fig2.png)
+![Application Gateway](./media/overview/azure-security-figure-2.png)
 
 Sie können damit die Produktivität von Webfarmen steigern, indem sie die CPU-intensive TLS-Terminierung an das Application Gateway auslagern (auch als „TLS-Auslagerung“ oder „TLS-Bridging“ bekannt). Darüber hinaus werden noch weitere Routingfunktionen der Ebene 7 bereitgestellt. Hierzu zählen etwa die Roundrobin-Verteilung des eingehenden Datenverkehrs, cookiebasierte Sitzungsaffinität, Routing auf URL-Pfadbasis und die Möglichkeit zum Hosten mehrerer Websites hinter einer einzelnen Application Gateway-Instanz. Azure Application Gateway verwendet einen Load Balancer auf der Schicht 7 (Anwendungsschicht).
 
@@ -242,7 +242,7 @@ Application Gateway bietet zahlreiche Application Delivery Controller-Funktionen
 ### <a name="web-application-firewall"></a>Web Application Firewall
 Web Application Firewall ist ein Feature von [Azure Application Gateway](../../application-gateway/overview.md), das Schutz für Webanwendungen bietet, die Application Gateway für ADC-Standardfunktionen (Application Delivery Control, Steuerung der Anwendungsbereitstellung) nutzen. Web Application Firewall schützt sie vor den nach OWASP 10 häufigsten Web-Sicherheitslücken.
 
-![Web Application Firewall](./media/overview/azure-security-fig1.png)
+![Web Application Firewall](./media/overview/azure-security-figure-3.png)
 
 -   Schutz vor Einschleusung von SQL-Befehlen
 
@@ -336,7 +336,7 @@ Microsoft verwendet mehrere Sicherheitsmaßnahmen und -technologien für seine P
 
 -   Die [tokenbasierte Authentifizierung](../../active-directory/develop/authentication-vs-authorization.md) ermöglicht die Authentifizierung über Azure Active Directory.
 
--   Die [rollenbasierte Zugriffssteuerung von Azure (Azure RBAC)](../../role-based-access-control/built-in-roles.md) ermöglicht es Ihnen, den Zugriff auf Grundlage einer zugewiesenen Benutzerrolle zu gewähren. Dies erleichtert es Ihnen, Benutzern nur den zum Ausführen ihrer Aufgaben erforderlichen Zugriff zu erteilen. Sie können RBAC gemäß dem Geschäftsmodell und der Risikotoleranz Ihrer Organisation anpassen.
+-   Die [rollenbasierte Zugriffssteuerung von Azure (Azure RBAC)](../../role-based-access-control/built-in-roles.md) ermöglicht es Ihnen, den Zugriff auf Grundlage einer zugewiesenen Benutzerrolle zu gewähren. Dies erleichtert es Ihnen, Benutzern nur den zum Ausführen ihrer Aufgaben erforderlichen Zugriff zu erteilen. Sie können Azure RBAC gemäß dem Geschäftsmodell und der Risikotoleranz Ihrer Organisation anpassen.
 
 -   [Integrierte Identitätsverwaltung (Hybrididentität)](../../active-directory/hybrid/plan-hybrid-identity-design-considerations-overview.md) ermöglicht es Ihnen, den Benutzerzugriff auf interne Rechenzentren und Cloudplattformen zu kontrollieren, indem Sie eine einzelne Benutzeridentität für die Authentifizierung und Autorisierung für alle Ressourcen erstellen.
 

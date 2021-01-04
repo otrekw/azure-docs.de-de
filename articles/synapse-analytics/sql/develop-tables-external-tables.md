@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: a9f58a9cdf8dea9631443d499548f2aee61eda69
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: c2daef64b110e59da76d8342508c19c7f1b3cd08
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94553674"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452786"
 ---
 # <a name="use-external-tables-with-synapse-sql"></a>Verwenden externer Tabellen mit Synapse SQL
 
-Eine externe Tabelle verweist auf Daten in Hadoop, Azure Storage Blob oder Azure Data Lake Store. Externe Tabellen werden verwendet, um Daten aus Dateien zu lesen oder Daten in Dateien in Azure Storage zu schreiben. Mit Synapse SQL können Sie externe Tabellen verwenden, um Daten aus einem dedizierten SQL-Pool oder einem serverlosen SQL-Pool (Vorschauversion) zu lesen und dorthin zu schreiben.
+Eine externe Tabelle verweist auf Daten in Hadoop, Azure Storage Blob oder Azure Data Lake Store. Externe Tabellen werden verwendet, um Daten aus Dateien zu lesen oder Daten in Dateien in Azure Storage zu schreiben. Mit Synapse SQL können Sie externe Tabellen verwenden, um Daten aus einem dedizierten SQL-Pool oder aus einem serverlosen SQL-Pool zu lesen und dorthin zu schreiben.
 
 ## <a name="external-tables-in-dedicated-sql-pool-and-serverless-sql-pool"></a>Externe Tabellen im dedizierten SQL-Pool und serverlosen SQL-Pool
 

@@ -4,18 +4,18 @@ titleSuffix: Azure Maps
 description: 'Lernen Sie die zwei Methoden zur Authentifizierung von Anforderungen in Azure Maps kennen: Authentifizierung mit gemeinsam verwendetem Schlüssel und Azure Active Directory (Azure AD)-Authentifizierung.'
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 07/27/2020
+ms.date: 12/07/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: dc3792b5eff1b0ba51f5d7938e52e6914660109a
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: d47e98273e696a4b6e827d8ebbc71a297f2861cb
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92889883"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905314"
 ---
 # <a name="authentication-with-azure-maps"></a>Authentifizierung mit Azure Maps
 
@@ -37,7 +37,7 @@ Informationen zum Anzeigen der Schlüssel im Azure-Portal finden Sie unter [Verw
 
 Azure-Abonnements werden mit einem Azure AD-Mandanten bereitgestellt, um eine differenzierte Zugriffssteuerung zu ermöglichen. Azure Maps bietet Authentifizierung für Azure Maps-Dienste unter Verwendung von Azure AD. Azure AD bietet identitätsbasierte Authentifizierung für Benutzer und Anwendungen, die beim Azure AD-Mandanten registriert sind.
 
-Azure Maps akzeptiert **OAuth 2.0** -Zugriffstoken für Azure AD-Mandanten, die einem Azure-Abonnement zugeordnet sind, in dem ein Azure Maps-Konto enthalten ist. Azure Maps akzeptiert auch Token für:
+Azure Maps akzeptiert **OAuth 2.0**-Zugriffstoken für Azure AD-Mandanten, die einem Azure-Abonnement zugeordnet sind, in dem ein Azure Maps-Konto enthalten ist. Azure Maps akzeptiert auch Token für:
 
 * Azure AD-Benutzer
 * Partneranwendungen, für die von Benutzern delegierte Berechtigungen verwendet werden
@@ -127,7 +127,7 @@ Beim Erstellen einer Rollenzuweisung wird sie in der Azure-Ressourcenhierarchie 
 Wenn Sie einer Ressourcengruppe eine Rollenzuweisung zuweisen, kann dies den Zugriff auf mehrere Azure Maps-Konten oder -Ressourcen in der Gruppe aktivieren.
 
 > [!TIP]
-> Die generelle Empfehlung von Microsoft besteht darin, den Zugriff auf den Bereich des Azure Maps-Kontos zuzuweisen, weil dadurch **unbeabsichtigter Zugriff auf andere Azure Maps-Konten** , die sich im selben Azure-Abonnement befinden, verhindert wird.
+> Die generelle Empfehlung von Microsoft besteht darin, den Zugriff auf den Bereich des Azure Maps-Kontos zuzuweisen, weil dadurch **unbeabsichtigter Zugriff auf andere Azure Maps-Konten**, die sich im selben Azure-Abonnement befinden, verhindert wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

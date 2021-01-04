@@ -10,12 +10,12 @@ author: peterclu
 ms.date: 05/05/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: cf4b321425ccaae877c2ff5c9b54f429d95a3515
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: a7fdb370847e72657829d53df019203b0a5b211b
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93312306"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302569"
 ---
 # <a name="reinforcement-learning-preview-with-azure-machine-learning"></a>Lernen durch Bestärkung (Vorschau) mit Azure Machine Learning
 
@@ -52,14 +52,14 @@ Führen Sie diesen Code in einer der folgenden Umgebungen aus. Wir empfehlen Ihn
     - Installieren Sie das [Azure Machine Learning SDK.](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)
     - Installieren Sie das [Azure Machine Learning RL SDK](/python/api/azureml-contrib-reinforcementlearning/?preserve-view=true&view=azure-ml-py): `pip install --upgrade azureml-contrib-reinforcementlearning`.
     - Erstellen Sie eine [Konfigurationsdatei für den Arbeitsbereich](how-to-configure-environment.md#workspace).
-    - Führen Sie das [Setup-Notebook](https://aka.ms/azure-rl-env-setup) für virtuelle Netzwerke aus, um die Netzwerkports zu öffnen, die für das verteilte Lernen durch Bestärkung verwendet werden.
+    - Führen Sie das virtuelle Netzwerk aus, um die Netzwerkports zu öffnen, die für das verteilte vertiefende Lernen verwendet werden.
 
 
 ## <a name="how-to-train-a-pong-playing-agent"></a>Trainieren eines Agents, der Pong spielt
 
-Das Lernen durch Bestärkung ist eine Methode des maschinellen Lernens, die durch das Ausführen von Tätigkeiten lernt. Während andere Techniken für maschinelles Lernen durch passives Übernehmen von Eingabedaten und Finden von darin enthaltenen Mustern lernen, verwendet RL **Trainings-Agents** , um aktiv Entscheidungen zu treffen und aus ihren Ergebnissen zu lernen.
+Das Lernen durch Bestärkung ist eine Methode des maschinellen Lernens, die durch das Ausführen von Tätigkeiten lernt. Während andere Techniken für maschinelles Lernen durch passives Übernehmen von Eingabedaten und Finden von darin enthaltenen Mustern lernen, verwendet RL **Trainings-Agents**, um aktiv Entscheidungen zu treffen und aus ihren Ergebnissen zu lernen.
 
-Ihre Trainings-Agents lernen in einer **simulierten Umgebung** , Pong zu spielen. Trainings-Agents treffen mit jedem Frame des Spiels eine Entscheidung, um das Paddle nach oben oder unten zu verschieben oder die Position beizubehalten. Sie treffen anhand des Zustands des Spiels (ein RGB-Bild des Bildschirms) eine Entscheidung.
+Ihre Trainings-Agents lernen in einer **simulierten Umgebung**, Pong zu spielen. Trainings-Agents treffen mit jedem Frame des Spiels eine Entscheidung, um das Paddle nach oben oder unten zu verschieben oder die Position beizubehalten. Sie treffen anhand des Zustands des Spiels (ein RGB-Bild des Bildschirms) eine Entscheidung.
 
 RL setzt **Belohnungen** ein, um dem Agent mitzuteilen, ob seine Entscheidungen erfolgreich sind. In dieser Umgebung erhält der Agent eine positive Belohnung, wenn er einen Punkt erhält, und eine negative Belohnung, wenn ein Punkt gegen ihn erzielt wird. Über viele Iterationen hinweg lernt der Trainings-Agent, eine Aktion ausgehend vom aktuellen Zustand auszuführen, die die Summe der erwarteten zukünftigen Belohnungen optimiert.
 
@@ -67,7 +67,7 @@ Für eine solche Optimierung in RL wird in der Regel ein Modell eines **Deep Neu
 
 Das Training ist beendet, wenn der Agent im Durchschnitt 18 Belohnungen pro Trainingsepoche erhält. Das heißt, dass der Agent seinen Gegner in Spielen mit bis zu 21 Punkten um durchschnittlich mindestens 18 Punkte geschlagen hat.
 
-Die Iteration durch Simulation und erneutes Trainieren eines DNN ist rechenintensiv und erfordert große Datenmengen. Eine Möglichkeit zum Verbessern der Leistung von RL-Aufträgen besteht in der **Parallelisierung** , sodass mehrere Trainings-Agents gleichzeitig agieren und lernen können. Das Verwalten einer verteilten RL-Umgebung kann jedoch eine komplexe Aufgabe sein.
+Die Iteration durch Simulation und erneutes Trainieren eines DNN ist rechenintensiv und erfordert große Datenmengen. Eine Möglichkeit zum Verbessern der Leistung von RL-Aufträgen besteht in der **Parallelisierung**, sodass mehrere Trainings-Agents gleichzeitig agieren und lernen können. Das Verwalten einer verteilten RL-Umgebung kann jedoch eine komplexe Aufgabe sein.
 
 Azure Machine Learning stellt das Framework bereit, um das komplexe Hochskalieren Ihrer RL-Workloads zu handhaben.
 
@@ -117,7 +117,7 @@ exp = Experiment(workspace=ws, name=experiment_name)
 
 ### <a name="specify-a-virtual-network"></a>Festlegen eines virtuellen Netzwerks
 
-Für RL-Aufträge, die mehrere Computeziele verwenden, müssen Sie ein virtuelles Netzwerk mit geöffneten Ports festlegen, mithilfe derer Worker- und Hauptknoten miteinander kommunizieren können. Das virtuelle Netzwerk kann sich in einer beliebigen Ressourcengruppe befinden. Es sollte sich jedoch in derselben Region wie Ihr Arbeitsbereich befinden. Weitere Informationen zum Einrichten des virtuellen Netzwerks finden Sie im [Notebook zum Einrichten eines Arbeitsbereichs](https://aka.ms/azure-rl-env-setup), das Sie im Abschnitt „Voraussetzungen“ finden. Hier geben Sie den Namen des virtuellen Netzwerks in der Ressourcengruppe an.
+Für RL-Aufträge, die mehrere Computeziele verwenden, müssen Sie ein virtuelles Netzwerk mit geöffneten Ports festlegen, mithilfe derer Worker- und Hauptknoten miteinander kommunizieren können. Das virtuelle Netzwerk kann sich in einer beliebigen Ressourcengruppe befinden. Es sollte sich jedoch in derselben Region wie Ihr Arbeitsbereich befinden. Weitere Informationen zum Einrichten des virtuellen Netzwerks finden Sie im Notebook zum Einrichten eines Arbeitsbereichs, das Sie im Abschnitt „Voraussetzungen“ finden. Hier geben Sie den Namen des virtuellen Netzwerks in der Ressourcengruppe an.
 
 ```python
 vnet = 'your_vnet'

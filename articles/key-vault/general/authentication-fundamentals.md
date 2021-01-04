@@ -7,12 +7,12 @@ ms.date: 09/25/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: 30c26fcc48b1051944c181c0d24ae9e3c89ce477
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 6de0fc52ae265a47ca7f52d46e5f44b74c1277aa
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94565822"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96530917"
 ---
 # <a name="key-vault-authentication-fundamentals"></a>Grundlagen der Key Vault-Authentifizierung
 
@@ -116,8 +116,6 @@ Key Vault-Rollenzuweisungen sind verschiedene in Azure integrierte Rollen mit al
 * Azure RBAC-Berechtigungen können im großen Stil verwaltet werden, da diese Rollen Benutzern auf der Ebene eines einzelnen Abonnements, einer Ressourcengruppe oder eines Schlüsseltresors zugewiesen werden können. Ein Benutzer erhält die Berechtigungen auf Datenebene für alle Schlüsseltresore innerhalb des Bereichs der Azure RBAC-Zuweisung. Dadurch entfällt die Notwendigkeit, Zugriffsrichtlinienberechtigungen einzeln speziellen Benutzern oder Anwendungen für jeweils einen Schlüsseltresor zuzuweisen.
 
 * Azure RBAC-Berechtigungen sind mit Privileged Identity Management (PIM) kompatibel. Auf diese Weise können Sie Just-In-Time-Zugriffssteuerungen für privilegierte Rollen wie „Key Vault-Administrator“ konfigurieren. Dies ist eine bewährte Sicherheitsmaßnahme, die dem Prinzip minimaler Berechtigungen folgt, da kein dauerhafter Zugriff auf Ihre Schlüsseltresore gewährt wird.
-
-* Azure RBAC-Berechtigungen können auch objektweise zugewiesen werden, sodass Sie beispielsweise einen Benutzer daran hindern können, bestimmte Vorgänge mit einigen Ihrer Schlüsseltresorobjekte auszuführen. So können mehrere Anwendungen einen Schlüsseltresor gemeinsam nutzen, während der Zugriff zwischen den Anwendungen weiterhin isoliert wird.
 
 Weitere Informationen zu Azure RBAC für Key Vault finden Sie in den folgenden Dokumenten:
 

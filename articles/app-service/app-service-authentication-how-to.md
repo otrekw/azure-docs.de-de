@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie das Feature zur Authentifizierung und Autoris
 ms.topic: article
 ms.date: 07/08/2020
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: ad83e7ad5e1ffc03bf7c62df9b28512e19a62100
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 85fd7fdba4c62f4837a419af44c83f7e46cb9e39
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92739799"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96601780"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Erweiterte Verwendung der Authentifizierung und Autorisierung in Azure App Service
 
@@ -24,6 +24,7 @@ Sehen Sie sich eines der folgenden Tutorials an, um sofort loszulegen:
 * [Konfigurieren Ihrer App Service-Anwendung zur Verwendung der Microsoft-Kontoanmeldung](configure-authentication-provider-microsoft.md)
 * [Konfigurieren Ihrer App Service-Anwendung zur Verwendung der Twitter-Anmeldung](configure-authentication-provider-twitter.md)
 * [Konfigurieren Ihrer App für die Anmeldung über einen OpenID Connect-Anbieter (Vorschau)](configure-authentication-provider-openid-connect.md)
+* [Konfigurieren Ihrer App für die Anmeldung mithilfe einer Apple-Anmeldung (Vorschau)](configure-authentication-provider-apple.md)
 
 ## <a name="use-multiple-sign-in-providers"></a>Verwenden mehrerer Anmeldungsanbieter
 
@@ -41,6 +42,7 @@ Fügen Sie auf der Anmeldeseite, der Navigationsleiste oder an einer anderen Ste
 <a href="/.auth/login/facebook">Log in with Facebook</a>
 <a href="/.auth/login/google">Log in with Google</a>
 <a href="/.auth/login/twitter">Log in with Twitter</a>
+<a href="/.auth/login/apple">Log in with Apple</a>
 ```
 
 Wenn der Benutzer auf einen der Links klickt, wird die entsprechende Anmeldeseite geöffnet, um den Benutzer anzumelden.
@@ -170,21 +172,21 @@ Senden Sie von Ihrem Clientcode (z. B. einer mobilen App oder JavaScript im Bro
 
 Wenn das Zugriffstoken Ihres Anbieters (nicht das [Sitzungstoken](#extend-session-token-expiration-grace-period)) abgelaufen ist, müssen Sie den Benutzer erneut authentifizieren, bevor Sie dieses Token erneut verwenden. Sie können den Tokenablauf vermeiden, indem Sie einen `GET`-Aufruf an den `/.auth/refresh`-Endpunkt Ihrer Anwendung durchführen. Bei einem Aufruf aktualisiert App Service automatisch die Zugriffstoken im [Tokenspeicher](overview-authentication-authorization.md#token-store) für den authentifizierten Benutzer. Bei nachfolgenden Anforderungen von Token durch Ihren App-Code werden die aktualisierten Token abgerufen. Damit die Tokenaktualisierung funktioniert, muss der Tokenspeicher jedoch [Aktualisierungstoken](https://auth0.com/learn/refresh-tokens/) für Ihren Anbieter enthalten. Die jeweilige Methode zum Abrufen von Aktualisierungstoken ist von den einzelnen Anbietern dokumentiert, die folgende Liste stellt jedoch eine kurze Zusammenfassung dar:
 
-- **Google** : Fügen Sie einen Abfragezeichenfolgen-Parameter vom Typ `access_type=offline` an Ihren `/.auth/login/google`-API-Aufruf an. Bei Verwendung des Mobile Apps SDK können Sie den Parameter einer der `LogicAsync`-Überladungen hinzufügen (siehe [Google-Aktualisierungstoken](https://developers.google.com/identity/protocols/OpenIDConnect#refresh-tokens)).
-- **Facebook** : Stellt keine Aktualisierungstoken bereit. Langlebige Token laufen nach 60 ab (siehe [Verlängern von Zugriffsschlüsseln für Seiten](https://developers.facebook.com/docs/facebook-login/access-tokens/expiration-and-extension)).
-- **Twitter** : Zugriffstoken laufen nicht ab (siehe [Häufig gestellte Fragen zu OAuth für Twitter](https://developer.twitter.com/en/docs/basics/authentication/FAQ)).
-- **Microsoft-Konto** : Wählen Sie beim [Konfigurieren der Authentifizierungseinstellungen für das Microsoft-Konto](configure-authentication-provider-microsoft.md) den Bereich `wl.offline_access` aus.
+- **Google**: Fügen Sie einen Abfragezeichenfolgen-Parameter vom Typ `access_type=offline` an Ihren `/.auth/login/google`-API-Aufruf an. Bei Verwendung des Mobile Apps SDK können Sie den Parameter einer der `LogicAsync`-Überladungen hinzufügen (siehe [Google-Aktualisierungstoken](https://developers.google.com/identity/protocols/OpenIDConnect#refresh-tokens)).
+- **Facebook**: Stellt keine Aktualisierungstoken bereit. Langlebige Token laufen nach 60 ab (siehe [Verlängern von Zugriffsschlüsseln für Seiten](https://developers.facebook.com/docs/facebook-login/access-tokens/expiration-and-extension)).
+- **Twitter**: Zugriffstoken laufen nicht ab (siehe [Häufig gestellte Fragen zu OAuth für Twitter](https://developer.twitter.com/en/docs/authentication/faq)).
+- **Microsoft-Konto**: Wählen Sie beim [Konfigurieren der Authentifizierungseinstellungen für das Microsoft-Konto](configure-authentication-provider-microsoft.md) den Bereich `wl.offline_access` aus.
 - **Azure Active Directory:** Führen Sie in [https://resources.azure.com](https://resources.azure.com) folgende Schritte aus:
     1. Wählen Sie am oberen Seitenrand die Option **Lesen/Schreiben** aus.
-    2. Navigieren Sie im linken Browser zu **subscriptions** > ** _\<subscription\_name_** > **resourceGroups** > **_ \<resource\_group\_name> _** > **providers** > **Microsoft.Web** > **sites** > **_ \<app\_name>_** > **config** > **authsettings** . 
-    3. Klicken Sie auf **Bearbeiten** .
+    2. Navigieren Sie im linken Browser zu **subscriptions** > ** _\<subscription\_name_** > **resourceGroups** > **_ \<resource\_group\_name> _** > **providers** > **Microsoft.Web** > **sites** > **_ \<app\_name>_** > **config** > **authsettings**. 
+    3. Klicken Sie auf **Bearbeiten**.
     4. Ändern Sie die folgende Eigenschaft. Ersetzen Sie _\<app\_id>_ durch die ID der Azure Active Directory-Anwendung des Diensts, auf den Sie zugreifen möchten.
 
         ```json
         "additionalLoginParams": ["response_type=code id_token", "resource=<app_id>"]
         ```
 
-    5. Klicken Sie auf **Put** . 
+    5. Klicken Sie auf **Put**. 
 
 Sobald Ihr Anbieter konfiguriert ist, können Sie im Tokenspeicher [das Aktualisierungstoken und die Ablaufzeit für das Zugriffstoken suchen](#retrieve-tokens-in-app-code). 
 
@@ -221,11 +223,11 @@ az webapp auth update --resource-group <group_name> --name <app_name> --token-re
 
 ## <a name="limit-the-domain-of-sign-in-accounts"></a>Beschränken der Domäne von Anmeldekonten
 
-Die Anmeldung über mehrere Domänen ist sowohl bei Microsoft-Konten als auch bei Azure Active Directory möglich. Microsoft-Konten lassen beispielsweise _outlook.com_ -, _live.com_ - und _hotmail.com_ -Konten zu. Azure AD lässt eine beliebige Anzahl von benutzerdefinierten Domänen für die Anmeldekonten zu. Möglicherweise möchten Sie aber, dass Ihre Benutzer möglichst schnell direkt zu Ihrer eigenen Azure AD-Anmeldeseite (etwa `contoso.com`) gelangen. Gehen Sie folgendermaßen vor, um den Domänennamen der Anmeldekonten vorzuschlagen.
+Die Anmeldung über mehrere Domänen ist sowohl bei Microsoft-Konten als auch bei Azure Active Directory möglich. Microsoft-Konten lassen beispielsweise _outlook.com_-, _live.com_- und _hotmail.com_-Konten zu. Azure AD lässt eine beliebige Anzahl von benutzerdefinierten Domänen für die Anmeldekonten zu. Möglicherweise möchten Sie aber, dass Ihre Benutzer möglichst schnell direkt zu Ihrer eigenen Azure AD-Anmeldeseite (etwa `contoso.com`) gelangen. Gehen Sie folgendermaßen vor, um den Domänennamen der Anmeldekonten vorzuschlagen.
 
-Navigieren Sie in [https://resources.azure.com](https://resources.azure.com) zu **subscriptions** > ** _\<subscription\_name_** > **resourceGroups** > **_ \<resource\_group\_name> _** > **providers** > **Microsoft.Web** > **sites** > **_ \<app\_name> _** > **config** > **authsettings** . 
+Navigieren Sie in [https://resources.azure.com](https://resources.azure.com) zu **subscriptions** > ** _\<subscription\_name_** > **resourceGroups** > **_ \<resource\_group\_name> _** > **providers** > **Microsoft.Web** > **sites** > **_ \<app\_name> _** > **config** > **authsettings**. 
 
-Klicken Sie auf **Bearbeiten** , ändern Sie die folgende Eigenschaft, und klicken Sie dann auf **Put** . Achten Sie darauf, _\<domain\_name>_ durch die gewünschte Domäne zu ersetzen.
+Klicken Sie auf **Bearbeiten**, ändern Sie die folgende Eigenschaft, und klicken Sie dann auf **Put**. Achten Sie darauf, _\<domain\_name>_ durch die gewünschte Domäne zu ersetzen.
 
 ```json
 "additionalLoginParams": ["domain_hint=<domain_name>"]
@@ -251,9 +253,9 @@ Für jede Windows-App können Sie das Autorisierungsverhalten des IIS-Webservers
 
 1. Navigieren Sie zu `https://<app-name>.scm.azurewebsites.net/DebugConsole`.
 
-1. Navigieren Sie im Browser-Explorer Ihrer App Service-Dateien zu *site/wwwroot* . Wenn keine *Web.config* -Datei vorhanden ist, erstellen Sie diese, indem Sie **+**  > **Neue Datei** auswählen. 
+1. Navigieren Sie im Browser-Explorer Ihrer App Service-Dateien zu *site/wwwroot*. Wenn keine *Web.config*-Datei vorhanden ist, erstellen Sie diese, indem Sie **+**  > **Neue Datei** auswählen. 
 
-1. Wählen Sie das Freihandwerkzeug für *Web.config.* aus, um die Datei zu bearbeiten. Fügen Sie den folgenden Konfigurationscode hinzu, und klicken Sie auf **Speichern** . Wenn *Web.config* bereits vorhanden ist, fügen Sie einfach das `<authorization>`-Element mit allen zugehörigen Werten hinzu. Fügen Sie die Konten, die Sie zulassen möchten, im `<allow>`-Element hinzu.
+1. Wählen Sie das Freihandwerkzeug für *Web.config.* aus, um die Datei zu bearbeiten. Fügen Sie den folgenden Konfigurationscode hinzu, und klicken Sie auf **Speichern**. Wenn *Web.config* bereits vorhanden ist, fügen Sie einfach das `<authorization>`-Element mit allen zugehörigen Werten hinzu. Fügen Sie die Konten, die Sie zulassen möchten, im `<allow>`-Element hinzu.
 
     ```xml
     <?xml version="1.0" encoding="utf-8"?>
@@ -315,7 +317,6 @@ Im Folgenden finden Sie mögliche Konfigurationsoptionen in der Datei:
         "enabled": <true|false>
     },
     "globalValidation": {
-        "requireAuthentication": <true|false>,
         "unauthenticatedClientAction": "RedirectToLoginPage|AllowAnonymous|Return401|Return403",
         "redirectToProvider": "<default provider alias>",
         "excludedPaths": [
@@ -349,13 +350,13 @@ Im Folgenden finden Sie mögliche Konfigurationsoptionen in der Datei:
             }
         },
         "preserveUrlFragmentsForLogins": <true|false>,
-        "allowedExternalRedirectUri": [
+        "allowedExternalRedirectUrls": [
             "https://uri1.azurewebsites.net/",
             "https://uri2.azurewebsites.net/",
             "url_scheme_of_your_app://easyauth.callback"
         ],
         "cookieExpiration": {
-            "convention": "FixedTime|IdentityProviderDerived",
+            "convention": "FixedTime|IdentityDerived",
             "timeToExpiration": "<timespan>"
         },
         "nonce": {
@@ -437,13 +438,26 @@ Im Folgenden finden Sie mögliche Konfigurationsoptionen in der Datei:
                 "consumerSecretSettingName": "APP_SETTING_CONTAINING TWITTER_CONSUMER_SECRET"
             }
         },
+        "apple": {
+            "enabled": <true|false>,
+            "registration": {
+                "clientId": "<client id>",
+                "clientSecretSettingName": "APP_SETTING_CONTAINING_APPLE_SECRET"
+            },
+            "login": {
+                "scopes": [
+                    "profile",
+                    "email"
+                ]
+            }
+        },
         "openIdConnectProviders": {
             "<providerName>": {
                 "enabled": <true|false>,
                 "registration": {
                     "clientId": "<client id>",
                     "clientCredential": {
-                        "secretSettingName": "<name of app setting containing client secret>"
+                        "clientSecretSettingName": "<name of app setting containing client secret>"
                     },
                     "openIdConnectConfiguration": {
                         "authorizationEndpoint": "<url specifying authorization endpoint>",
@@ -455,7 +469,7 @@ Im Folgenden finden Sie mögliche Konfigurationsoptionen in der Datei:
                 },
                 "login": {
                     "nameClaimType": "<name of claim containing name>",
-                    "scope": [
+                    "scopes": [
                         "openid",
                         "profile",
                         "email"
@@ -486,7 +500,7 @@ Sie können die von der App verwendete Runtimeversion ändern. Die neue Runtimev
 
 #### <a name="view-the-current-runtime-version"></a>Anzeigen der aktuellen Runtimeversion
 
-Sie können die aktuelle Version der Plattformauthentifizierungs-Middleware entweder mithilfe der Azure CLI oder über einen der built0-in-Versions-HTTP-Endpunkte in ihrer App anzeigen.
+Sie können die aktuelle Version der Plattformauthentifizierungs-Middleware entweder mithilfe der Azure CLI oder über einen der HTTP-Endpunkte der integrierten Version in ihrer App anzeigen.
 
 ##### <a name="from-the-azure-cli"></a>Über die Azure CLI
 

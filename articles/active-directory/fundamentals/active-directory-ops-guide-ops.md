@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: 2de3f78b58e10a4fbf65bb00d516448a089f85b6
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: d5a8fe4192c3778e259ed18239a4198398d8807b
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370949"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94836834"
 ---
 # <a name="azure-active-directory-general-operations-guide-reference"></a>Allgemeiner Betriebsleitfaden für Azure Active Directory – Referenz
 
@@ -43,7 +43,7 @@ Für die Verwaltung von Azure Active Directory ist die kontinuierliche Ausführu
 | Überwachen von Hybrid-Protokollen: Passthrough-Authentifizierungs-Agents | Team für IAM-Vorgänge (Identity & Access Management, Identitäts- und Zugriffsverwaltung) |
 | Überwachen von Hybrid-Protokollen: Dienst für das Kennwortrückschreiben | Team für IAM-Vorgänge (Identity & Access Management, Identitäts- und Zugriffsverwaltung) |
 | Überwachen von Hybrid-Protokollen: Lokales Kennwortschutzgateway | Team für IAM-Vorgänge (Identity & Access Management, Identitäts- und Zugriffsverwaltung) |
-| Überwachen von Hybrid-Protokollen: Azure MFA NPS-Erweiterung (falls zutreffend) | Team für IAM-Vorgänge (Identity & Access Management, Identitäts- und Zugriffsverwaltung) |
+| Überwachen von Hybrid-Protokollen: Azure AD MFA NPS-Erweiterung (falls zutreffend) | Team für IAM-Vorgänge (Identity & Access Management, Identitäts- und Zugriffsverwaltung) |
 
 Beim Überprüfen Ihrer Liste stellen Sie ggf. fest, dass Sie entweder einen Besitzer für Aufgaben zuweisen müssen, denen kein Besitzer zugeteilt ist, oder Aufgaben anpassen müssen, deren Besitzer nicht den obigen Empfehlungen entspricht.
 
@@ -86,7 +86,7 @@ Wenn Sie den Zustand Ihrer Umgebung überwachen, müssen Sie sofort alle Warnung
 
 ### <a name="on-premises-agents-logs"></a>Lokale Agent-Protokolle
 
-Einige Identitäts- und Zugriffsverwaltungsdienste erfordern lokale Agents, um Hybridszenarien zu ermöglichen. Beispiele sind Kennwortzurücksetzung, Passthrough-Authentifizierung (PTA), Azure AD-Anwendungsproxy und Azure MFA NPS-Erweiterung. Es ist von entscheidender Bedeutung, dass die Baseline des Betriebsteams die Integrität dieser Komponenten überwacht, indem sie die Protokolle der Komponenten-Agents mit Lösungen wie System Center Operations Manager oder SIEM archiviert und analysiert. Es ist ebenso wichtig, dass Ihr Team für Vorgänge im Bereich Informationssicherheit oder Ihr Helpdesk versteht, wie Sie Fehlermuster beheben können.
+Einige Identitäts- und Zugriffsverwaltungsdienste erfordern lokale Agents, um Hybridszenarien zu ermöglichen. Beispiele sind Kennwortzurücksetzung, Passthrough-Authentifizierung (PTA), Azure AD-Anwendungsproxy und die Azure AD MFA NPS-Erweiterung. Es ist von entscheidender Bedeutung, dass die Baseline des Betriebsteams die Integrität dieser Komponenten überwacht, indem sie die Protokolle der Komponenten-Agents mit Lösungen wie System Center Operations Manager oder SIEM archiviert und analysiert. Es ist ebenso wichtig, dass Ihr Team für Vorgänge im Bereich Informationssicherheit oder Ihr Helpdesk versteht, wie Sie Fehlermuster beheben können.
 
 #### <a name="on-premises-agents-logs-recommended-reading"></a>Empfohlene Artikel für lokale Agent-Protokolle
 
@@ -94,7 +94,7 @@ Einige Identitäts- und Zugriffsverwaltungsdienste erfordern lokale Agents, um H
 - [Problembehandlung bei der Self-Service-Kennwortzurücksetzung – Azure Active Directory](../authentication/troubleshoot-sspr.md)
 - [Grundlegendes zu Azure AD-Anwendungsproxyconnectors](../manage-apps/application-proxy-connectors.md)
 - [Azure AD Connect: Behandeln von Passthrough-Authentifizierungsproblemen](../hybrid/tshoot-connect-pass-through-authentication.md#collecting-pass-through-authentication-agent-logs)
-- [Fehlercodes zur Problembehandlung für die Azure MFA NPS-Erweiterung](../authentication/howto-mfa-nps-extension-errors.md)
+- [Fehlercodes zur Problembehandlung für die Azure AD MFA NPS-Erweiterung](../authentication/howto-mfa-nps-extension-errors.md)
 
 ### <a name="on-premises-agents-management"></a>Verwaltung lokaler Agents
 
@@ -166,9 +166,9 @@ Das Active Directory-Verwaltungsebenenmodell wurde entwickelt, um Identitätssys
 
 Das [Ebenenmodell](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material) besteht aus drei Ebenen und umfasst nur Verwaltungskonten, nicht Standardbenutzerkonten.
 
-- **Ebene 0** : Direkte Kontrolle von Unternehmensidentitäten innerhalb der Umgebung. Ebene 0 umfasst Konten, Gruppen und andere Ressourcen, die direkt oder indirekt über die administrative Steuerung der Active Directory-Gesamtstruktur, Domänen oder Domänencontroller und aller darin enthaltenen Ressourcen verfügen. Die Sicherheitsempfindlichkeit aller Ressourcen der Ebene 0 ist gleichwertig, da sie sich effektiv alle gegenseitig kontrollieren.
-- **Ebene 1** : Kontrolle von Unternehmensservern und -anwendungen. Zu den Ressourcen der Ebene 1 gehören Serverbetriebssysteme, Clouddienste und Unternehmensanwendungen. Administratorkonten der Ebene 1 haben die administrative Kontrolle über einen erheblichen Teil des Geschäftswerts, der auf diesen Ressourcen gehostet wird. Eine allgemeine Beispielrolle sind Serveradministratoren, die diese Betriebssysteme mit der Möglichkeit pflegen, auf alle Unternehmensdienste einwirken zu können.
-- **Ebene 2** : Kontrolle von Benutzerarbeitsstationen und -geräten. Administratorkonten der Ebene 2 haben die administrative Kontrolle über einen erheblichen Teil des Geschäftswerts, der auf Benutzerarbeitsstationen und -geräten gehostet wird. Beispiele sind Helpdesk- und Computersupport-Administratoren, da sie auf die Integrität fast aller Benutzerdaten Einfluss nehmen können.
+- **Ebene 0**: Direkte Kontrolle von Unternehmensidentitäten innerhalb der Umgebung. Ebene 0 umfasst Konten, Gruppen und andere Ressourcen, die direkt oder indirekt über die administrative Steuerung der Active Directory-Gesamtstruktur, Domänen oder Domänencontroller und aller darin enthaltenen Ressourcen verfügen. Die Sicherheitsempfindlichkeit aller Ressourcen der Ebene 0 ist gleichwertig, da sie sich effektiv alle gegenseitig kontrollieren.
+- **Ebene 1**: Kontrolle von Unternehmensservern und -anwendungen. Zu den Ressourcen der Ebene 1 gehören Serverbetriebssysteme, Clouddienste und Unternehmensanwendungen. Administratorkonten der Ebene 1 haben die administrative Kontrolle über einen erheblichen Teil des Geschäftswerts, der auf diesen Ressourcen gehostet wird. Eine allgemeine Beispielrolle sind Serveradministratoren, die diese Betriebssysteme mit der Möglichkeit pflegen, auf alle Unternehmensdienste einwirken zu können.
+- **Ebene 2**: Kontrolle von Benutzerarbeitsstationen und -geräten. Administratorkonten der Ebene 2 haben die administrative Kontrolle über einen erheblichen Teil des Geschäftswerts, der auf Benutzerarbeitsstationen und -geräten gehostet wird. Beispiele sind Helpdesk- und Computersupport-Administratoren, da sie auf die Integrität fast aller Benutzerdaten Einfluss nehmen können.
 
 Sperren Sie den Zugriff auf lokale Identitätskomponenten wie Azure AD Connect, AD FS und SQL-Dienste auf dieselbe Weise wie bei Domänencontrollern.
 

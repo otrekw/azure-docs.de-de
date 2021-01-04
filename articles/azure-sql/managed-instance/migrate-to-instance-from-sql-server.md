@@ -11,17 +11,17 @@ author: bonova
 ms.author: bonova
 ms.reviewer: ''
 ms.date: 07/11/2019
-ms.openlocfilehash: 7e7775f289e0221862d11c585ae85a5b0bc6cc27
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 2761b97e595f5e11b00e75cd778ee269b12bfcae
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92788549"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94917799"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-managed-instance"></a>Migration einer SQL Server-Instanz zu Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-Dieser Artikel enthält Informationen zu den Methoden, mit denen eine SQL Server 2005-Instanz (oder eine höhere Version) zu [Azure SQL Managed Instance](sql-managed-instance-paas-overview.md) migriert wird. Informationen zum Migrieren zu einer Einzeldatenbank oder einem Pool für elastische Datenbanken finden Sie unter [Migrieren zu SQL-Datenbank](../database/migrate-to-database-from-sql-server.md). Weitere Informationen zum Migrieren von anderen Plattformen finden Sie im [Leitfaden zur Azure-Datenbankmigration](https://datamigration.microsoft.com/).
+Dieser Artikel enthält Informationen zu den Methoden, mit denen eine SQL Server 2005-Instanz (oder eine höhere Version) zu [Azure SQL Managed Instance](sql-managed-instance-paas-overview.md) migriert wird. Informationen im Zusammenhang mit der Migration zu einer Einzeldatenbank oder zu einem Pool für elastische Datenbanken finden Sie unter [Migrationsübersicht: SQL Server zu SQL-Datenbank](../migration-guides/database/sql-server-to-sql-database-overview.md). Informationen im Zusammenhang mit der Migration von anderen Plattformen sowie Informationen zu Tools und Optionen finden Sie unter [Migrieren zu Azure SQL](../migration-guides/index.yml).
 
 > [!NOTE]
 > Wenn Sie Azure SQL Managed Instance schnell ausprobieren möchten, ist es vielleicht besser, zum [Leitfaden für den Schnellstart](quickstart-content-reference-guide.md) zu wechseln, statt diese Seite zu lesen.

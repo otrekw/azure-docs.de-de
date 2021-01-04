@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: pafarley
-ms.openlocfilehash: d98f2390be3b3f4b3770125185cb33daa5ff6371
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 43c39c40af6e02861211a8666fefa57c34072f32
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93143638"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905195"
 ---
 # <a name="content-moderation-reviews-workflows-and-jobs"></a>Inhaltsmoderationsüberprüfungen, -workflows und -aufträge
 
@@ -26,7 +26,7 @@ Durch die Kombination von computergestützter Moderation und Human-in-the-Loop-F
 Bei einer Überprüfung wird der Inhalt in das Überprüfungstool hochgeladen. Sie können es anzeigen, indem Sie auf seinen Inhaltstyp unter der Registerkarte **Review** (Überprüfung) auf dem Dashboard klicken. Vom Überprüfungsbildschirm aus können Sie die angewendeten Tags ändern und ggf. Ihre eigenen benutzerdefinierten Tags anwenden. Wenn Sie eine Überprüfung übermitteln, werden die Ergebnisse an einen angegebenen Rückrufendpunkt gesendet und die Inhalte auf der Website entfernt.
 
 > [!div class="mx-imgBorder"]
-> ![Website zum Überprüfungstool mit ausgewählter Registerkarte „Review“ (Überprüfung)](./Review-Tool-user-Guide/images/review-tab.png)
+> ![Hervorgehobenes Dropdownmenü „Review“ (Überprüfen). Diese Inhaltstypen werden angezeigt: Bild, Text und Video.](./Review-Tool-user-Guide/images/review-tab.png)
 
 ### <a name="manage-reviews"></a>Verwalten von Überprüfungen
 
@@ -37,12 +37,12 @@ Mit der **Aktionsschaltfläche** (die drei Punkte anzeigt) für die einzelnen Ü
 > [!div class="mx-imgBorder"]
 > ![Website zum Überprüfungstool auf dem Bildschirm „Review“ (Überprüfung)](./Review-Tool-user-Guide/images/manage-reviews.png)
 
-Verwenden Sie die Symbolleiste für die **Suche** , um die Überprüfungen nach einer Vielzahl von Kategorien wie Überprüfungsstatus, Tags, Inhaltstyp, untergeordneten Teams, zugewiesenen Benutzern und Erstellungs-/Änderungsdatum zu sortieren.
+Verwenden Sie die Symbolleiste für die **Suche**, um die Überprüfungen nach einer Vielzahl von Kategorien wie Überprüfungsstatus, Tags, Inhaltstyp, untergeordneten Teams, zugewiesenen Benutzern und Erstellungs-/Änderungsdatum zu sortieren.
 
 > [!div class="mx-imgBorder"]
-> ![Website zum Überprüfungstool mit ausgewählter Registerkarte „Review“ (Überprüfung)](./Review-Tool-user-Guide/images/review-search.png)
+> ![Die Suchsymbolleiste wird angezeigt. Darin enthalten: verschiedene Kombinationsfelder zum Eingeben von Suchkriterien wie Überprüfungsstatus und Tags](./Review-Tool-user-Guide/images/review-search.png)
 
-Informationen zum Erstellen von Überprüfungen finden Sie im [Leitfaden für das Prüfungstool](./review-tool-user-guide/review-moderated-images.md), Informationen zur programmgesteuerten Erstellung finden Sie in der [Anleitung für die REST-API](./try-review-api-review.md).
+Informationen zum Erstellen von Überprüfungen finden Sie im [Leitfaden für das Prüfungstool](./review-tool-user-guide/review-moderated-images.md), Informationen zur programmgesteuerten Erstellung finden Sie in der [Anleitung für die API-Konsole](./try-review-api-review.md).
 
 ## <a name="workflows"></a>Workflows
 
@@ -80,13 +80,13 @@ Workflows werden als JSON-Zeichenfolgen definiert, wodurch sie programmgesteuert
 }
 ```
 
-Informationen zum Erstellen und Verwenden von Workflows finden Sie im [Leitfaden für das Prüfungstool](./review-tool-user-guide/workflows.md), Informationen zur programmgesteuerten Erstellung und Verwendung finden Sie in der [Anleitung für die REST-API](./try-review-api-workflow.md).
+Informationen zum Erstellen und Verwenden von Workflows finden Sie im [Leitfaden für das Prüfungstool](./review-tool-user-guide/workflows.md), Informationen zur programmgesteuerten Erstellung und Verwendung finden Sie in der [Anleitung für die API-Konsole](./try-review-api-workflow.md).
 
 ## <a name="jobs"></a>Aufträge
 
 Ein Moderationsauftrag dient als eine Art Wrapper für die Funktionen der Inhaltsmoderation und von Workflows und Überprüfungen. Der Auftrag durchsucht Ihre Inhalte mithilfe der Bildmoderations-API oder der Textmoderations-API in Content Moderator und vergleicht sie dann mit dem festgelegten Workflow. Basierend auf den Workflowergebnissen wird für die Inhalte im [Prüfungstool](./review-tool-user-guide/human-in-the-loop.md) eine Überprüfung erstellt oder nicht. Während Überprüfungen und Workflows über die jeweils zugehörige API erstellt und konfiguriert werden können, können Sie über die Auftrags-API einen detaillierten Bericht des gesamten Prozesses abrufen (der an einen angegebenen Rückrufendpunkt gesendet werden kann).
 
-Informationen zur Verwendung von Aufträgen finden Sie in der [Anleitung für die REST-API](./try-review-api-job.md).
+Informationen zu den ersten Schritten mit Aufträgen finden Sie im [Leitfaden für die API-Konsole](./try-review-api-job.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/02/2020
-ms.openlocfilehash: f0295c27f1d193b0dcd7829a11b4aabe0edb659b
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 4bab8def514df21d948d67f3cfba846c43917be2
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93286340"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96530934"
 ---
 # <a name="how-to-index-encrypted-blobs-using-blob-indexers-and-skillsets-in-azure-cognitive-search"></a>Indizieren verschlüsselter Blobs mithilfe von Blobindexern und Skillsets in Azure Cognitive Search
 
@@ -36,7 +36,7 @@ Bei diesem Beispiel wird vorausgesetzt, dass Sie Ihre Dateien bereits in Azure B
 
 + [Azure Storage (in englischer Sprache)](https://azure.microsoft.com/services/storage/)
 + [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) im selben Abonnement wie Azure Cognitive Search. **Vorläufiges Löschen** und **Löschschutz** müssen für den Schlüsseltresor aktiviert sein.
-+ [Azure Cognitive Search](search-create-service-portal.md) in einem [abrechenbaren Tarif](search-sku-tier.md#tiers) (mindestens Basic in einer beliebigen Region)
++ [Azure Cognitive Search](search-create-service-portal.md) in einem [abrechenbaren Tarif](search-sku-tier.md#tier-descriptions) (mindestens Basic in einer beliebigen Region)
 + [Azure-Funktion](https://azure.microsoft.com/services/functions/)
 + [Postman-Desktop-App](https://www.getpostman.com/)
 
@@ -52,7 +52,7 @@ Der Skill „DecryptBlobFile“ verwendet die URL und das SAS-Token für die ein
 
 1. Wählen Sie **das Abonnement aus, in dem sich Ihre Azure Key Vault-Instanz befindet** (diese Anleitung funktioniert nicht, wenn Sie ein anderes Abonnement auswählen), und wählen Sie entweder eine vorhandene Ressourcengruppe aus, oder erstellen Sie eine neue (wenn Sie eine neue erstellen, müssen Sie auch eine Region für die Bereitstellung auswählen).
 
-1. Wählen Sie **Überprüfen und erstellen** aus, stimmen Sie den Bedingungen zu, und klicken Sie dann auf **Erstellen** , um die Azure-Funktion bereitzustellen.
+1. Wählen Sie **Überprüfen und erstellen** aus, stimmen Sie den Bedingungen zu, und klicken Sie dann auf **Erstellen**, um die Azure-Funktion bereitzustellen.
 
     ![ARM-Vorlage im Portal](media/indexing-encrypted-blob-files/arm-template.jpg "ARM-Vorlage im Portal")
 
@@ -72,7 +72,7 @@ Der Skill „DecryptBlobFile“ verwendet die URL und das SAS-Token für die ein
      
         ![Hinzufügen einer Zugriffsrichtlinienvorlage in Key Vault](media/indexing-encrypted-blob-files/keyvault-add-access-policy.jpg "Zugriffsrichtlinienvorlage in Key Vault")
 
-    1. Klicken Sie auf der Zugriffsrichtlinienseite auf **Speichern** , bevor Sie die Seite verlassen, um die Zugriffsrichtlinie hinzuzufügen.
+    1. Klicken Sie auf der Zugriffsrichtlinienseite auf **Speichern**, bevor Sie die Seite verlassen, um die Zugriffsrichtlinie hinzuzufügen.
      
          ![Speichern einer Zugriffsrichtlinie in Key Vault](media/indexing-encrypted-blob-files/keyvault-save-access-policy.jpg "Speichern einer Zugriffsrichtlinie in Key Vault")
 
@@ -128,29 +128,28 @@ Rufen Sie den Wert für `admin-key` ab, indem Sie den zuvor notierten Azure Cogn
 
 ![Postman-App, Registerkarte mit den Variablen](media/indexing-encrypted-blob-files/postman-variables-window.jpg "Fenster mit den Postman-Variablen")
 
-
 | Variable    | Ursprung |
 |-------------|-----------------|
 | `admin-key` | Auf der Seite **Schlüssel** des Azure Cognitive Search-Diensts  |
-| `search-service-name` | Der Name des Azure Cognitive Search-Diensts. Die URL ist `https://{{search-service-name}}.search.windows.net`. | 
-| `storage-connection-string` | Wählen Sie im Speicherkonto auf der Registerkarte **Zugriffsschlüssel** **key1** > **Verbindungszeichenfolge** aus. | 
-| `storage-container-name` | Der Name des Blobcontainers, der die verschlüsselten Dateien enthält, die indiziert werden sollen. | 
-| `function-uri` |  In der Azure-Funktion unter **Zusammenfassung** auf der Hauptseite | 
-| `function-code` | In der Azure-Funktion, indem Sie zu **App-Schlüssel** navigieren, klicken, um den **Standardschlüssel** anzuzeigen, und den Wert kopieren | 
+| `search-service-name` | Der Name des Azure Cognitive Search-Diensts. Die URL ist `https://{{search-service-name}}.search.windows.net`. |
+| `storage-connection-string` | Wählen Sie im Speicherkonto auf der Registerkarte **Zugriffsschlüssel** **key1** > **Verbindungszeichenfolge** aus. |
+| `storage-container-name` | Der Name des Blobcontainers, der die verschlüsselten Dateien enthält, die indiziert werden sollen. |
+| `function-uri` |  In der Azure-Funktion unter **Zusammenfassung** auf der Hauptseite |
+| `function-code` | In der Azure-Funktion, indem Sie zu **App-Schlüssel** navigieren, klicken, um den **Standardschlüssel** anzuzeigen, und den Wert kopieren |
 | `api-version` | Übernehmen Sie **2020-06-30**. |
-| `datasource-name` | Übernehmen Sie **encrypted-blobs-ds**. | 
-| `index-name` | Übernehmen Sie **encrypted-blobs-idx**. | 
-| `skillset-name` | Übernehmen Sie **encrypted-blobs-ss**. | 
-| `indexer-name` | Übernehmen Sie **encrypted-blobs-ixr**. | 
+| `datasource-name` | Übernehmen Sie **encrypted-blobs-ds**. |
+| `index-name` | Übernehmen Sie **encrypted-blobs-idx**. |
+| `skillset-name` | Übernehmen Sie **encrypted-blobs-ss**. |
+| `indexer-name` | Übernehmen Sie **encrypted-blobs-ixr**. |
 
 ### <a name="review-the-request-collection-in-postman"></a>Überprüfen der Auflistung von Anforderungen in Postman
 
-Beim Ausführen dieser Anleitung müssen Sie vier HTTP-Anforderungen ausgeben: 
+Beim Ausführen dieser Anleitung müssen Sie vier HTTP-Anforderungen ausgeben:
 
-- **PUT-Anforderung zum Erstellen des Index** : Dieser Index enthält die Daten, die von Azure Cognitive Search verwendet und zurückgegeben werden.
-- **POST-Anforderung zum Erstellen der Datenquelle** : Diese Datenquelle verbindet Ihren Azure Cognitive Search-Dienst mit Ihrem Speicherkonto und somit mit verschlüsselten Blobdateien. 
-- **PUT-Anforderung zum Erstellen des Skillsets** : Das Skillset gibt die benutzerdefinierte Skilldefinition für die Azure-Funktion an, die die Blobdateidaten entschlüsselt, und ein [DocumentExtractionSkill](cognitive-search-skill-document-extraction.md) zum Extrahieren des Texts aus den einzelnen Dokumenten nach der Entschlüsselung.
-- **PUT-Anforderung zum Erstellen des Indexers** : Beim Ausführen des Indexers werden die Daten gelesen, das Skillset wird angewendet, und die Ergebnisse werden gespeichert. Diese Anforderung muss zuletzt ausgeführt werden.
+- **PUT-Anforderung zum Erstellen des Index**: Dieser Index enthält die Daten, die von Azure Cognitive Search verwendet und zurückgegeben werden.
+- **POST-Anforderung zum Erstellen der Datenquelle**: Diese Datenquelle verbindet Ihren Azure Cognitive Search-Dienst mit Ihrem Speicherkonto und somit mit verschlüsselten Blobdateien. 
+- **PUT-Anforderung zum Erstellen des Skillsets**: Das Skillset gibt die benutzerdefinierte Skilldefinition für die Azure-Funktion an, die die Blobdateidaten entschlüsselt, und ein [DocumentExtractionSkill](cognitive-search-skill-document-extraction.md) zum Extrahieren des Texts aus den einzelnen Dokumenten nach der Entschlüsselung.
+- **PUT-Anforderung zum Erstellen des Indexers**: Beim Ausführen des Indexers werden die Daten gelesen, das Skillset wird angewendet, und die Ergebnisse werden gespeichert. Diese Anforderung muss zuletzt ausgeführt werden.
 
 Der [Quellcode](https://github.com/Azure-Samples/azure-search-postman-samples/blob/master/index-encrypted-blobs/Index%20encrypted%20Blob%20files.postman_collection.json) enthält eine Postman-Sammlung, in der die vier Anforderungen sowie einige nützliche Anschlussanforderungen enthalten sind. Wählen Sie zum Ausgeben der Anforderungen in Postman die jeweilige Registerkarte für die Anforderung und jeweils **Senden** aus.
 

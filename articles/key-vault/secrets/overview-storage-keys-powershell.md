@@ -9,14 +9,17 @@ ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/10/2019
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 50fbaf5092e793369daaa71fc7364dfd406e03b3
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 3bced101516e91259ea9018fe3c4aa44f867cbe6
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94444893"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96023107"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-azure-powershell"></a>Verwalten von Speicherkontoschlüsseln mit Key Vault und Azure PowerShell
+> [!IMPORTANT]
+> Wir empfehlen die Verwendung der Azure Storage-Integration in Azure Active Directory (Azure AD), dem cloudbasierten Identitäts- und Zugriffsverwaltungsdienst von Microsoft. Die Azure AD-Integration ist für [Azure-Blobs und -Warteschlangen](../../storage/common/storage-auth-aad.md) verfügbar und bietet tokenbasierten OAuth2-Zugriff auf Azure Storage (genau wie Azure Key Vault).
+> Azure AD ermöglicht es Ihnen, Ihre Clientanwendung zu authentifizieren, indem Sie eine Anwendungs- oder Benutzeridentität anstelle von Speicherkontoanmeldeinformationen verwenden. Sie können eine [von Azure AD verwaltete Identität](../../active-directory/managed-identities-azure-resources/index.yml) verwenden, wenn Sie Ihre Clientanwendung in Azure ausführen. Verwaltete Identitäten machen die Clientauthentifizierung und das Speichern von Anmeldeinformationen in oder mit Ihrer Anwendung überflüssig. Verwenden Sie die folgende Lösung nur, wenn keine Azure AD Authentifizierung möglich ist.
 
 Ein Azure-Speicherkonto verwendet Anmeldeinformationen, die sich aus einem Kontonamen und einem Schlüssel zusammensetzen. Der Schlüssel wird automatisch generiert und fungiert eher als ein Kennwort denn als ein kryptografischer Schlüssel. Key Vault verwaltet Speicherkontoschlüssel, indem sie im Speicherkonto regelmäßig neu generiert werden, und stellt SAS-Token für den delegierten Zugriff auf Ressourcen in Ihrem Speicherkonto zur Verfügung.
 
@@ -28,12 +31,6 @@ Wenn Sie das Feature für verwaltete Speicherkontoschlüssel verwenden, sollten 
 - Ihre Speicherkontoschlüssel sollten nur durch Key Vault verwaltet werden. Verwalten Sie die Schlüssel nicht selbst, und vermeiden Sie es, die Key Vault-Prozesse zu beeinträchtigen.
 - Speicherkontoschlüssel sollten nur von einem einzigen Key Vault-Objekt verwaltet werden. Lassen Sie es nicht zu, dass die Schlüssel aus mehreren Objekten verwaltet werden.
 - Generieren Sie Schlüssel nur mit Key Vault neu. Generieren Sie Ihre Speicherkontoschlüssel nicht manuell neu.
-
-Wir empfehlen die Verwendung der Azure Storage-Integration in Azure Active Directory (Azure AD), dem cloudbasierten Identitäts- und Zugriffsverwaltungsdienst von Microsoft. Die Azure AD-Integration ist für [Azure-Blobs und -Warteschlangen](../../storage/common/storage-auth-aad.md) verfügbar und bietet tokenbasierten OAuth2-Zugriff auf Azure Storage (genau wie Azure Key Vault).
-
-Azure AD ermöglicht es Ihnen, Ihre Clientanwendung zu authentifizieren, indem Sie eine Anwendungs- oder Benutzeridentität anstelle von Speicherkontoanmeldeinformationen verwenden. Sie können eine [von Azure AD verwaltete Identität](../../active-directory/managed-identities-azure-resources/index.yml) verwenden, wenn Sie Ihre Clientanwendung in Azure ausführen. Verwaltete Identitäten machen die Clientauthentifizierung und das Speichern von Anmeldeinformationen in oder mit Ihrer Anwendung überflüssig.
-
-Azure AD verwendet rollenbasierte Zugriffssteuerung in Azure (Role-Based Access Control, Azure RBAC), um die Autorisierung zu verwalten. Dies wird auch von Key Vault unterstützt.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -256,14 +253,20 @@ Content Type : application/vnd.ms-sastoken-storage
 Tags         :
 ```
 
-Sie können jetzt das Cmdlet [Get-AzKeyVaultSecret](/powershell/module/az.keyvault/get-azkeyvaultsecret) und die `Name`-Eigenschaft des Geheimnisses verwenden, um den Inhalt dieses Geheimnisses anzuzeigen.
+Sie können jetzt das Cmdlet [Get-AzKeyVaultSecret](/powershell/module/az.keyvault/get-azkeyvaultsecret) und mit den Parametern `VaultName` und `Name` verwenden, um den Inhalt dieses Geheimnisses anzuzeigen.
 
 ```azurepowershell-interactive
-Write-Host (Get-AzKeyVaultSecret -VaultName <YourKeyVaultName> -Name <SecretName>).SecretValue | ConvertFrom-SecureString -AsPlainText
+$secret = Get-AzKeyVaultSecret -VaultName <YourKeyVaultName> -Name <SecretName>
+$ssPtr = [System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($secret.SecretValue)
+try {
+   $secretValueText = [System.Runtime.InteropServices.Marshal]::PtrToStringBSTR($ssPtr)
+} finally {
+   [System.Runtime.InteropServices.Marshal]::ZeroFreeBSTR($ssPtr)
+}
+Write-Output $secretValueText
 ```
 
 Die Ausgabe dieses Befehls zeigt die Zeichenfolge Ihrer SAS-Definition an.
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 

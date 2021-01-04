@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: damendo
-ms.openlocfilehash: 5e048729aa1d37a63678451525f8f37612c8c464
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 548db64bd93dd561f9c69e9f594d01f4c0825db9
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426740"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94948339"
 ---
 # <a name="azure-role-based-access-control-permissions-required-to-use-network-watcher-capabilities"></a>Erforderliche Berechtigungen der rollenbasierten Zugriffssteuerung von Azure zum Verwenden von Network Watcher-Funktionen
 
@@ -90,6 +90,7 @@ Durch Azure RBAC-Berechtigungen (rollenbasierte Zugriffssteuerung) können Sie M
 | Action                                                              | BESCHREIBUNG                                                           |
 | ---------                                                           | -------------                                                  |
 | Microsoft.Network/networkWatchers/topology/action                   | Topologie abrufen                                                   |
+| Microsoft.Network/networkWatchers/topology/read                     | Wie oben                                                  |
 
 ## <a name="reachability-report"></a>Erreichbarkeitsbericht
 
@@ -107,7 +108,7 @@ Network Watcher-Funktionen erfordern folgende Aktionen:
 | Microsoft.Authorization/\*/Read                                     | Wird zum Abrufen von Azure-Rollenzuweisungen und Richtliniendefinitionen verwendet.          |
 | Microsoft.Resources/subscriptions/resourceGroups/Read               | Wird zum Auflisten aller Ressourcengruppen eines Abonnements verwendet.    |
 | Microsoft.Storage/storageAccounts/Read                              | Wird verwendet, um die Eigenschaften für das angegebene Speicherkonto abzurufen.   |
-| Microsoft.Storage/storageAccounts/listServiceSas/Action, </br> Microsoft.Storage/storageAccounts/listAccountSas/Action, <br> Microsoft.Storage/storageAccounts/listKeys/Action| Wird zum Abrufen von Shared Access Signatures (SAS) verwendet, die den [sicheren Zugriff auf das Speicherkonto](https://docs.microsoft.com/azure/storage/common/storage-sas-overview) und das Schreiben in das Speicherkonto ermöglichen. |
+| Microsoft.Storage/storageAccounts/listServiceSas/Action, </br> Microsoft.Storage/storageAccounts/listAccountSas/Action, <br> Microsoft.Storage/storageAccounts/listKeys/Action| Wird zum Abrufen von Shared Access Signatures (SAS) verwendet, die den [sicheren Zugriff auf das Speicherkonto](../storage/common/storage-sas-overview.md) und das Schreiben in das Speicherkonto ermöglichen. |
 | Microsoft.Compute/virtualMachines/Read, </br> Microsoft.Compute/virtualMachines/Write| Wird für das Anmelden an der VM, Durchführen einer Paketerfassung und Hochladen in das Speicherkonto verwendet.|
 | Microsoft.Compute/virtualMachines/extensions/Read </br> Microsoft.Compute/virtualMachines/extensions/Write| Wird verwendet, um das Vorhandensein der Network Watcher-Erweiterung zu überprüfen und bei Bedarf die Installation durchzuführen. |
 | Microsoft.Compute/virtualMachineScaleSets/Read, </br> Microsoft.Compute/virtualMachineScaleSets/Write| Wird zum Zugreifen auf VM-Skalierungsgruppen, Durchführen von Paketerfassungen und Hochladen in ein Speicherkonto verwendet.|

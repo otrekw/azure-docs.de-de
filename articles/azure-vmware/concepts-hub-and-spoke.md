@@ -3,12 +3,12 @@ title: 'Konzept: Integrieren einer Azure VMware Solution-Bereitstellung in eine 
 description: Hier erfahren Sie, wie Sie eine Azure VMware Solution-Bereitstellung in eine Hub-and-Spoke-Architektur in Azure integrieren.
 ms.topic: conceptual
 ms.date: 10/26/2020
-ms.openlocfilehash: da4a5f5ec6fa2b0a2733e8d1bf0243ec75f38d55
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 788ef9886e0d102a549e84cd01c658e9e4131c63
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94577718"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967447"
 ---
 # <a name="integrate-azure-vmware-solution-in-a-hub-and-spoke-architecture"></a>Integrieren von Azure VMware Solution in eine Hub-and-Spoke-Architektur
 
@@ -38,7 +38,7 @@ Diese Architektur besteht aus den folgenden Hauptkomponenten:
 
 - **Lokaler Standort:** Lokale Rechenzentren des Kunden, die über ExpressRoute-Verbindungen mit Azure verbunden sind.
 
-- **Private Azure VMware Solution-Cloud:** Das aus einem oder mehreren vSphere-Clustern bestehende Azure VMware Solution SDDC (Software Defined Data Center), jeweils mit maximal 16 Knoten.
+- **Private Azure VMware Solution-Cloud:** Das aus einem oder mehreren vSphere-Clustern bestehende Azure VMware Solution SDDC (Software Defined Data Center), jeweils mit maximal 16 Hosts.
 
 - **ExpressRoute-Gateway:** Ermöglicht die Kommunikation zwischen privater Azure VMware Solution-Cloud, freigegebenen Diensten im virtuellen Hub-Netzwerk und Workloads, die in virtuellen Spoke-Netzwerken ausgeführt werden.
 

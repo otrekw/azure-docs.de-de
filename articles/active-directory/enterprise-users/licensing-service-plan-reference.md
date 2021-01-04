@@ -8,20 +8,20 @@ author: kkern
 manager: mtillman
 editor: ''
 ms.service: active-directory
+ms.subservice: enterprise-users
 ms.topic: reference
 ms.workload: identity
-ms.subservice: enterprise-users
-ms.date: 11/15/2020
+ms.date: 12/02/2020
 ms.author: kakern
 ms.reviewer: kakern
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: db07f18b97936389d9b2360f7d4476c67d9f284a
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 78da02a5312a45026e28f1749606186a783af976
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94646898"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96545859"
 ---
 # <a name="product-names-and-service-plan-identifiers-for-licensing"></a>Produktnamen und Serviceplanbezeichner für die Lizenzierung
 

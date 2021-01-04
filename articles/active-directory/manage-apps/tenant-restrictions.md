@@ -33,13 +33,13 @@ In diesem Artikel konzentrieren wir uns auf Mandanteneinschränkungen für Micro
 
 Die Lösung umfasst folgende Komponenten:
 
-1. **Azure AD** : Wenn der `Restrict-Access-To-Tenants: <permitted tenant list>`-Header vorhanden ist, stellt Azure AD nur Sicherheitstoken für die zugelassenen Mandanten aus.
+1. **Azure AD**: Wenn der `Restrict-Access-To-Tenants: <permitted tenant list>`-Header vorhanden ist, stellt Azure AD nur Sicherheitstoken für die zugelassenen Mandanten aus.
 
-2. **Lokale Proxyserver-Infrastruktur** : Bei dieser Infrastruktur handelt es sich um ein Proxygerät, das zur TLS-Überprüfung (Transport Layer Security) geeignet ist. Sie müssen den Proxy so konfigurieren, dass er den Header mit der Liste der zulässigen Mandanten in den für Azure AD bestimmten Datenverkehr einfügt.
+2. **Lokale Proxyserver-Infrastruktur**: Bei dieser Infrastruktur handelt es sich um ein Proxygerät, das zur TLS-Überprüfung (Transport Layer Security) geeignet ist. Sie müssen den Proxy so konfigurieren, dass er den Header mit der Liste der zulässigen Mandanten in den für Azure AD bestimmten Datenverkehr einfügt.
 
-3. **Clientsoftware** : Zur Unterstützung von Mandanteneinschränkungen muss Clientsoftware Token direkt von Azure AD anfordern, damit Datenverkehr von der Proxyinfrastruktur abgefangen werden kann. Browserbasierte Microsoft 365-Anwendungen unterstützen derzeit Mandanteneinschränkungen, ebenso wie Office-Clients, die eine moderne Authentifizierung verwenden (wie OAuth 2.0).
+3. **Clientsoftware**: Zur Unterstützung von Mandanteneinschränkungen muss Clientsoftware Token direkt von Azure AD anfordern, damit Datenverkehr von der Proxyinfrastruktur abgefangen werden kann. Browserbasierte Microsoft 365-Anwendungen unterstützen derzeit Mandanteneinschränkungen, ebenso wie Office-Clients, die eine moderne Authentifizierung verwenden (wie OAuth 2.0).
 
-4. **Moderne Authentifizierung** : Clouddienste müssen eine moderne Authentifizierung verwenden, um Mandanteneinschränkungen nutzen und den Zugriff auf nicht zugelassene Mandanten blockieren zu können. Microsoft 365-Clouddienste müssen so konfiguriert werden, dass sie standardmäßig moderne Authentifizierungsprotokolle verwenden. Aktuelle Informationen zur Unterstützung von moderner Authentifizierung in Microsoft 365 finden Sie unter [Office 2013: Public Preview für moderne Authentifizierung angekündigt](https://www.microsoft.com/en-us/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/).
+4. **Moderne Authentifizierung**: Clouddienste müssen eine moderne Authentifizierung verwenden, um Mandanteneinschränkungen nutzen und den Zugriff auf nicht zugelassene Mandanten blockieren zu können. Microsoft 365-Clouddienste müssen so konfiguriert werden, dass sie standardmäßig moderne Authentifizierungsprotokolle verwenden. Aktuelle Informationen zur Unterstützung von moderner Authentifizierung in Microsoft 365 finden Sie unter [Office 2013: Public Preview für moderne Authentifizierung angekündigt](https://www.microsoft.com/en-us/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/).
 
 Das folgende Diagramm veranschaulicht den allgemeinen Datenverkehrsfluss. Mandanteneinschränkungen erfordern die TLS-Überprüfung nur bei Datenverkehr für Azure AD, nicht bei Datenverkehr für die Microsoft 365-Clouddienste. Diese Unterscheidung ist wichtig, da der durch die Authentifizierung bedingte Datenverkehr für Azure AD in der Regel erheblich geringer ausfällt als der Datenverkehr für SaaS-Anwendungen wie Exchange Online und SharePoint Online.
 
@@ -85,7 +85,7 @@ Die Header müssen folgende Elemente enthalten:
 >
 > Zur Überprüfung, ob eine Verzeichnis-ID oder ein Domänenname sich auf denselben Mandanten beziehen, verwenden Sie diese ID oder Domäne anstelle von <tenant> in der folgenden URL: `https://login.microsoftonline.com/<tenant>/v2.0/.well-known/openid-configuration`.  Wenn die Ergebnisse mit der Domäne und der ID identisch sind, beziehen sie sich auf denselben Mandanten. 
 
-Um zu verhindern, dass Benutzer ihre eigenen HTTP-Header mit nicht genehmigten Mandanten einfügen, muss der Proxy den *Restrict-Access-To-Tenants* -Header ersetzen, falls er in der eingehenden Anforderung bereits vorhanden ist.
+Um zu verhindern, dass Benutzer ihre eigenen HTTP-Header mit nicht genehmigten Mandanten einfügen, muss der Proxy den *Restrict-Access-To-Tenants*-Header ersetzen, falls er in der eingehenden Anforderung bereits vorhanden ist.
 
 Für Clients muss bei allen Anforderungen an „login.microsoftonline.com“, „login.microsoft.com“ oder „login.windows.net“ die Verwendung des Proxys erzwungen werden. Wenn Clients also z. B. mithilfe von PAC-Dateien zur Verwendung des Proxys angewiesen werden, sollten Endbenutzer die PAC-Dateien nicht bearbeiten oder deaktivieren können.
 

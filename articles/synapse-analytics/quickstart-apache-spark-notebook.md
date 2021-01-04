@@ -9,16 +9,16 @@ ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: quickstart
 ms.date: 10/16/2020
-ms.openlocfilehash: b20f2ce88695cb68de496d126c5e3cd52f9eb6c8
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 38b0f23a44a16125726e7810b2045d244a2e6b06
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93316135"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96454645"
 ---
 # <a name="quickstart-create-a-serverless-apache-spark-pool-in-azure-synapse-analytics-using-web-tools"></a>Schnellstart: Erstellen eines serverlosen Apache Spark-Pools in Azure Synapse Analytics mithilfe von Webtools
 
-In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe von Webtools einen serverlosen Apache Spark-Pool (Vorschauversion) in Azure Synapse erstellen. Anschließend wird gezeigt, wie Sie eine Verbindung mit dem Apache Spark-Pool herstellen und Spark SQL-Abfragen für Dateien und Tabellen ausführen. Apache Spark ermöglicht schnelle Datenanalysen und Clustercomputing mit In-Memory-Verarbeitung. Informationen zu Spark in Azure Synapse finden Sie unter [Was ist Apache Spark in Azure Synapse Analytics?](./spark/apache-spark-overview.md).
+In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe von Webtools einen serverlosen Apache Spark-Pool in Azure Synapse erstellen. Anschließend wird gezeigt, wie Sie eine Verbindung mit dem Apache Spark-Pool herstellen und Spark SQL-Abfragen für Dateien und Tabellen ausführen. Apache Spark ermöglicht schnelle Datenanalysen und Clustercomputing mit In-Memory-Verarbeitung. Informationen zu Spark in Azure Synapse finden Sie unter [Was ist Apache Spark in Azure Synapse Analytics?](./spark/apache-spark-overview.md).
 
 > [!IMPORTANT]
 > Die Abrechnung für Spark-Instanzen erfolgt anteilsmäßig auf Minutenbasis und ist unabhängig von der Verwendung. Fahren Sie daher Ihre Spark-Instanz herunter, wenn Sie sie nicht mehr benötigen, oder legen Sie ein kurzes Timeout fest. Weitere Informationen finden Sie im Abschnitt **Bereinigen von Ressourcen** in diesem Artikel.

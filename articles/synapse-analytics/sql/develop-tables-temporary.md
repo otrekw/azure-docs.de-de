@@ -10,18 +10,18 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: dd285e8029d8e140380b0f90c60081d0e1f8dd56
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 06faa1da71331c299245a93af96166880e7732de
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93305029"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451786"
 ---
 # <a name="temporary-tables-in-synapse-sql"></a>Temporäre Tabellen in Synapse SQL
 
 Dieser Artikel enthält wichtige Anleitungen zur Verwendung von temporären Tabellen. Zudem werden die Grundsätze von temporären Tabellen auf Sitzungsebene in Synapse SQL behandelt. 
 
-Die Ressourcen sowohl des dedizierten SQL-Pools als auch des serverlosen SQL-Pools (Vorschauversion) können temporäre Tabellen verwenden. Beim serverlosen SQL-Pool gibt es Einschränkungen, die am Ende dieses Artikels erläutert werden. 
+Die Ressourcen sowohl des dedizierten SQL-Pools als auch des serverlosen SQL-Pools können temporäre Tabellen verwenden. Beim serverlosen SQL-Pool gibt es Einschränkungen, die am Ende dieses Artikels erläutert werden. 
 
 ## <a name="temporary-tables"></a>Temporäre Tabellen
 
@@ -226,7 +226,7 @@ Beim dedizierten SQL-Pool gibt es einige Implementierungseinschränkungen für t
 - Sichten können nicht in temporären Tabellen erstellt werden.
 - Temporäre Tabellen können nur mit Hash- oder Roundrobin-Verteilung erstellt werden.  Die Verteilung replizierter temporärer Tabellen wird nicht unterstützt. 
 
-## <a name="temporary-tables-in-serverless-sql-pool-preview"></a>Temporäre Tabellen im serverlosen SQL-Pool (Vorschauversion)
+## <a name="temporary-tables-in-serverless-sql-pool"></a>Temporäre Tabellen im serverlosen SQL-Pool
 
 Temporäre Tabellen im serverlosen SQL-Pool werden zwar unterstützt, ihre Verwendung ist aber begrenzt. Sie können nicht in Abfragen verwendet werden, die auf Dateien ausgerichtet sind. 
 

@@ -5,12 +5,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/27/2020
 ms.custom: devx-track-csharp, mvc, cli-validate, devx-track-azurecli
-ms.openlocfilehash: 633e3a6386b9e6098e167c7fdd542d98c16fae48
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 1f6757a9f78e3c400d92fd65a0795ceae7570c99
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92737885"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347573"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>Tutorial: Schützen der Azure SQL-Datenbank-Verbindung von App Service mittels einer verwalteten Identität
 
@@ -47,7 +47,9 @@ Dieser Artikel fährt dort fort, wo Sie hier aufgehört haben: [Tutorial: Erstel
 
 Vergewissern Sie sich zum Debuggen Ihrer App mit SQL-Datenbank als Back-End, dass Sie Clientverbindung von Ihrem Computer zugelassen haben. Falls nicht, fügen Sie die Client-IP mithilfe der Schritte unter the steps at [IP-Firewallregeln für Azure SQL-Datenbank and SQL Data Warehouse](../azure-sql/database/firewall-configure.md#use-the-azure-portal-to-manage-server-level-ip-firewall-rules) hinzu.
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+Bereiten Sie die Umgebung für die Azure CLI vor.
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
 ## <a name="grant-database-access-to-azure-ad-user"></a>Gewähren von Datenbankzugriff für Azure AD-Benutzer
 
@@ -55,7 +57,7 @@ Aktivieren Sie zunächst die Azure AD-Authentifizierung für SQL-Datenbank, ind
 
 Enthält Ihr Azure AD-Mandant noch keinen Benutzer, erstellen Sie einen anhand der Schritte unter [Hinzufügen oder Löschen von Benutzern in Azure Active Directory](../active-directory/fundamentals/add-users-azure-active-directory.md).
 
-Ermitteln Sie die Objekt-ID des Azure AD-Benutzers mithilfe von [`az ad user list`](/cli/azure/ad/user?view=azure-cli-latest#az-ad-user-list), und ersetzen Sie den Platzhalter *\<user-principal-name>* . Das Ergebnis wird in einer Variablen gespeichert.
+Ermitteln Sie die Objekt-ID des Azure AD-Benutzers mithilfe von [`az ad user list`](/cli/azure/ad/user#az-ad-user-list), und ersetzen Sie den Platzhalter *\<user-principal-name>* . Das Ergebnis wird in einer Variablen gespeichert.
 
 ```azurecli-interactive
 azureaduser=$(az ad user list --filter "userPrincipalName eq '<user-principal-name>'" --query [].objectId --output tsv)
@@ -64,7 +66,7 @@ azureaduser=$(az ad user list --filter "userPrincipalName eq '<user-principal-na
 > Wenn Sie eine Liste mit allen Benutzerprinzipalnamen in Azure AD anzeigen möchten, führen Sie `az ad user list --query [].userPrincipalName` aus.
 >
 
-Fügen Sie diesen Azure AD-Benutzer in Cloud Shell mithilfe des Befehls [`az sql server ad-admin create`](/cli/azure/sql/server/ad-admin?view=azure-cli-latest#az-sql-server-ad-admin-create) als Active Directory-Administrator hinzu. Ersetzen Sie im folgenden Befehl *\<server-name>* durch den Namen des SQL-Datenbank-Servers (ohne das Suffix `.database.windows.net`).
+Fügen Sie diesen Azure AD-Benutzer in Cloud Shell mithilfe des Befehls [`az sql server ad-admin create`](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-create) als Active Directory-Administrator hinzu. Ersetzen Sie im folgenden Befehl *\<server-name>* durch den Namen des SQL-Datenbank-Servers (ohne das Suffix `.database.windows.net`).
 
 ```azurecli-interactive
 az sql server ad-admin create --resource-group myResourceGroup --server-name <server-name> --display-name ADMIN --object-id $azureaduser
@@ -75,9 +77,9 @@ Weitere Informationen zum Hinzufügen eines Active Directory-Administrators fin
 ## <a name="set-up-visual-studio"></a>Einrichten von Visual Studio
 
 ### <a name="windows-client"></a>Windows-Client
-Visual Studio für Windows ist in die Azure AD-Authentifizierung integriert. Fügen Sie in Visual Studio Ihren Azure AD-Benutzer hinzu, um in Visual Studio entwickeln und debuggen zu können. Wählen Sie dazu über das Menü **Datei** > **Kontoeinstellungen** aus, und klicken Sie auf **Konto hinzufügen** .
+Visual Studio für Windows ist in die Azure AD-Authentifizierung integriert. Fügen Sie in Visual Studio Ihren Azure AD-Benutzer hinzu, um in Visual Studio entwickeln und debuggen zu können. Wählen Sie dazu über das Menü **Datei** > **Kontoeinstellungen** aus, und klicken Sie auf **Konto hinzufügen**.
 
-Wählen Sie über das Menü **Extras** > **Optionen** und anschließend **Azure Service Authentication** (Azure-Dienstauthentifizierung) > **Kontoauswahl** aus, um den Azure AD-Benutzer für die Azure-Dienstauthentifizierung festzulegen. Wählen Sie den Azure AD-Benutzer aus, den Sie hinzugefügt haben, und klicken Sie auf **OK** .
+Wählen Sie über das Menü **Extras** > **Optionen** und anschließend **Azure Service Authentication** (Azure-Dienstauthentifizierung) > **Kontoauswahl** aus, um den Azure AD-Benutzer für die Azure-Dienstauthentifizierung festzulegen. Wählen Sie den Azure AD-Benutzer aus, den Sie hinzugefügt haben, und klicken Sie auf **OK**.
 
 Nun können Sie Ihre App mit der SQL-Datenbank als Back-End entwickeln und debuggen und dabei die Azure AD-Authentifizierung verwenden.
 
@@ -87,7 +89,7 @@ Visual Studio für Mac ist nicht in die Azure AD-Authentifizierung integriert. D
 
 Wenn die Azure CLI auf dem lokalen Computer installiert ist, führen Sie den folgenden Befehl aus, um sich mit Ihrem Azure AD-Benutzerkonto bei der Azure CLI anzumelden:
 
-```bash
+```azurecli
 az login --allow-no-subscriptions
 ```
 Nun können Sie Ihre App mit der SQL-Datenbank als Back-End entwickeln und debuggen und dabei die Azure AD-Authentifizierung verwenden.
@@ -151,8 +153,8 @@ Unter [Tutorial: Erstellen einer ASP.NET Core- und SQL-Datenbank-App in Azure Ap
 Als Nächstes stellen Sie den Entity Framework-Datenbankkontext mit dem Zugriffstoken für SQL-Datenbank bereit. Fügen Sie in *Data\MyDatabaseContext.cs* den folgenden Code innerhalb der geschweiften Klammern des leeren Konstruktors `MyDatabaseContext (DbContextOptions<MyDatabaseContext> options)` hinzu:
 
 ```csharp
-var conn = (Microsoft.Data.SqlClient.SqlConnection)Database.GetDbConnection();
-conn.AccessToken = (new Microsoft.Azure.Services.AppAuthentication.AzureServiceTokenProvider()).GetAccessTokenAsync("https://database.windows.net/").Result;
+var connection = (SqlConnection)Database.GetDbConnection();
+connection.AccessToken = (new Microsoft.Azure.Services.AppAuthentication.AzureServiceTokenProvider()).GetAccessTokenAsync("https://database.windows.net/").Result;
 ```
 
 > [!NOTE]
@@ -174,7 +176,7 @@ Als Nächstes konfigurieren Sie Ihre App Service-App so, dass sie beim Herstell
 
 ### <a name="enable-managed-identity-on-app"></a>Aktivieren einer verwalteten Identität für die App
 
-Verwenden Sie den Befehl [az webapp identity assign](/cli/azure/webapp/identity?view=azure-cli-latest#az-webapp-identity-assign) in Cloud Shell, um eine verwaltete Identität für Ihre Azure-App zu aktivieren. Ersetzen Sie im folgenden Befehl den Platzhalter *\<app-name>* .
+Verwenden Sie den Befehl [az webapp identity assign](/cli/azure/webapp/identity#az-webapp-identity-assign) in Cloud Shell, um eine verwaltete Identität für Ihre Azure-App zu aktivieren. Ersetzen Sie im folgenden Befehl den Platzhalter *\<app-name>* .
 
 ```azurecli-interactive
 az webapp identity assign --resource-group myResourceGroup --name <app-name>
@@ -206,7 +208,7 @@ Beispiel für die Ausgabe:
 
 Melden Sie sich in Cloud Shell mithilfe des Befehls „sqlcmd“ bei SQL-Datenbank an. Ersetzen Sie _\<server-name>_ _durch den Namen Ihres Servers, \<db-name>_ durch den von Ihrer App verwendeten Datenbanknamen sowie _\<aad-user-name>_ und _\<aad-password>_ durch die Anmeldeinformationen Ihres Azure AD-Benutzers.
 
-```azurecli-interactive
+```bash
 sqlcmd -S <server-name>.database.windows.net -d <db-name> -U <aad-user-name> -P "<aad-password>" -G -l 30
 ```
 
@@ -220,7 +222,7 @@ ALTER ROLE db_ddladmin ADD MEMBER [<identity-name>];
 GO
 ```
 
-*\<identity-name>* ist der Name der verwalteten Identität in Azure AD. Wird die Identität vom System zugewiesen, ist der Name immer mit dem Namen Ihrer App Service-App identisch. Wenn Sie Berechtigungen für eine Azure AD-Gruppe erteilen möchten, verwenden Sie stattdessen den Anzeigenamen der Gruppe (etwa *myAzureSQLDBAccessGroup* ).
+*\<identity-name>* ist der Name der verwalteten Identität in Azure AD. Wird die Identität vom System zugewiesen, ist der Name immer mit dem Namen Ihrer App Service-App identisch. Wenn Sie Berechtigungen für eine Azure AD-Gruppe erteilen möchten, verwenden Sie stattdessen den Anzeigenamen der Gruppe (etwa *myAzureSQLDBAccessGroup*).
 
 Geben Sie `EXIT` ein, um zur Cloud Shell-Eingabeaufforderung zurückzukehren.
 
@@ -239,11 +241,11 @@ az webapp config connection-string delete --resource-group myResourceGroup --nam
 
 Nun müssen die Änderungen nur noch in Azure veröffentlicht werden.
 
-Wurden Sie vom **[Tutorial: Erstellen einer ASP.NET-App in Azure mit SQL-Datenbank](app-service-web-tutorial-dotnet-sqldatabase.md)** weitergeleitet, veröffentlichen Sie Ihre Änderungen in Visual Studio. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt **DotNetAppSqlDb** , und wählen Sie **Veröffentlichen** aus.
+Wurden Sie vom **[Tutorial: Erstellen einer ASP.NET-App in Azure mit SQL-Datenbank](app-service-web-tutorial-dotnet-sqldatabase.md)** weitergeleitet, veröffentlichen Sie Ihre Änderungen in Visual Studio. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt **DotNetAppSqlDb**, und wählen Sie **Veröffentlichen** aus.
 
 ![Veröffentlichen über den Projektmappen-Explorer](./media/app-service-web-tutorial-dotnet-sqldatabase/solution-explorer-publish.png)
 
-Klicken Sie auf der Veröffentlichungsseite auf **Veröffentlichen** . 
+Klicken Sie auf der Veröffentlichungsseite auf **Veröffentlichen**. 
 
 Wurden Sie vom **[Tutorial: Erstellen einer ASP.NET Core- und SQL-Datenbank-App in Azure App Service](tutorial-dotnetcore-sqldb-app.md)** weitergeleitet, veröffentlichen Sie Ihre Änderungen mithilfe von Git mit den folgenden Befehlen:
 

@@ -3,15 +3,20 @@ title: Azure Event Grid – Handbuch zur Problembehandlung
 description: Dieser Artikel bietet eine Liste mit Fehlercodes, Fehlermeldungen, Beschreibungen und empfohlenen Aktionen.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 1dd464339e7654f8886224ff07cf368b4724ff82
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 79533918ccc6995f459b39f058de9e01091c0958
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93041397"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94592990"
 ---
 # <a name="troubleshoot-azure-event-grid-errors"></a>Problembehandlung von Azure Event Grid-Fehlern
-In diesem Handbuch zur Problembehandlung erhalten Sie eine Liste mit Azure Event Grid-Fehlercodes und -Fehlermeldungen sowie deren Beschreibungen und empfohlenen Aktionen, die Sie ausführen sollten, wenn diese Fehler bei Ihnen auftreten. 
+In diesem Handbuch zur Problembehandlung finden Sie die folgenden Informationen: 
+
+- Azure Event Grid-Fehlercodes
+- Fehlermeldungen
+- Beschreibungen der Fehler
+- Empfohlene Maßnahmen, die Sie ausführen sollten, wenn Sie diese Fehlermeldungen erhalten. 
 
 ## <a name="error-code-400"></a>Fehlercode: 400
 | Fehlercode | Fehlermeldung | BESCHREIBUNG | Empfehlung |
@@ -32,26 +37,16 @@ In diesem Handbuch zur Problembehandlung erhalten Sie eine Liste mit Azure Event
 | Fehlercode | Fehlermeldung | BESCHREIBUNG | Empfohlene Maßnahme |
 | ---------- | ------------- | ----------- | ------------------ |
 | HttpStatusCode.Forbidden <br/>403 | Die Veröffentlichung in {Topic/Domain} durch Client-{IpAddress} wird aufgrund von IpAddress-Filterregeln abgelehnt. | Für das Thema oder die Domäne sind IP-Firewallregeln konfiguriert, und der Zugriff ist nur auf konfigurierte IP-Adressen beschränkt. | Fügen Sie die IP-Adresse den IP-Firewallregeln hinzu, siehe [Konfigurieren der IP-Firewall.](configure-firewall.md) |
-| HttpStatusCode.Forbidden <br/> 403 | Die Veröffentlichung in {Topic/Domain} durch den Client wird abgelehnt, weil die Anforderung vom privaten Endpunkt stammt und keine passende private Endpunktverbindung für die Ressource gefunden wurde. | Für das Thema oder die Domäne sind private Endpunkte konfiguriert, und die Veröffentlichungsanforderung stammte von einem privaten Endpunkt, der nicht konfiguriert/genehmigt ist. | Konfigurieren Sie einen privaten Endpunkt für das Thema bzw. die Domäne. [Konfigurieren privater Endpunkte](configure-private-endpoints.md) |
+| HttpStatusCode.Forbidden <br/> 403 | Die Veröffentlichung in {Topic/Domain} durch den Client wird abgelehnt, weil die Anforderung vom privaten Endpunkt stammt und keine passende private Endpunktverbindung für die Ressource gefunden wurde. | Das Thema oder die Domäne hat private Endpunkte, und die Veröffentlichungsanforderung stammte von einem privaten Endpunkt, der nicht konfiguriert oder genehmigt ist. | Konfigurieren Sie einen privaten Endpunkt für das Thema bzw. die Domäne. [Konfigurieren privater Endpunkte](configure-private-endpoints.md) |
 
-## <a name="troubleshoot-event-subscription-validation"></a>Problembehandlung bei der Überprüfung von Ereignisabonnements
+Überprüfen Sie auch, ob sich Ihr Webhook hinter einem Azure Application Gateway oder einer Web Application Firewall befindet. Wenn dies der Fall ist, deaktivieren Sie die folgenden Firewallregeln, und führen Sie erneut einen HTTP POST-Aufruf aus:
 
-Wenn bei der Erstellung eines Ereignisabonnements eine Fehlermeldung wie `The attempt to validate the provided endpoint https://your-endpoint-here failed. For more details, visit https://aka.ms/esvalidation` angezeigt wird, weist dies darauf hin, dass im Überprüfungshandshake ein Fehler aufgetreten ist. Überprüfen Sie Folgendes, um diesen Fehler zu beheben:
+- 920300 (Fehlender Accept-Header für Anforderung)
+- 942430 (Eingeschränkte Anomalieerkennung für SQL-Zeichen (Argumente): Anzahl von Sonderzeichen überschritten (12))
+- 920230 (Mehrere URL-Codierungen erkannt)
+- 942130 (Angriff mit Einschleusung von SQL-Befehlen: SQL-Tautologie erkannt.)
+- 931130 (Möglicher RFI-Angriff (Remote File Inclusion) = Domänenexterner Verweis/Link)
 
-- Führen Sie einen „HTTP POST“-Aufruf an Ihre Webhook-URL mit einem [SubscriptionValidationEvent](webhook-event-delivery.md#validation-details)-Beispielanforderungstext unter Verwendung von Postman oder curl oder einem ähnlichen Tool aus.
-- Wenn Ihr Webhook einen Handshake-Mechanismus mit synchroner Überprüfung implementiert, überprüfen Sie, ob der Überprüfungscode als Teil der Antwort zurückgegeben wird.
-- Wenn Ihr Webhook einen Handshake-Mechanismus mit asynchroner Überprüfung implementiert, überprüfen Sie, ob Ihr „HTTP POST“-Aufruf „200 OK“ zurückgibt.
-- Wenn Ihr Webhook „403 (Forbidden)“ in der Antwort zurückgibt, überprüfen Sie, ob sich Ihr Webhook hinter einem Azure Application Gateway oder einer Web Application Firewall befindet. Wenn dies der Fall ist, müssen Sie diese Firewallregeln deaktivieren und erneut einen „HTTP POST“-Aufruf ausführen:
-
-  920300 (Fehlender Accept-Header in Anforderung; das können wir beheben)
-
-  942430 (Eingeschränkte Anomalieerkennung für SQL-Zeichen (Argumente): Anzahl von Sonderzeichen überschritten (12))
-
-  920230 (Mehrere URL-Codierungen erkannt)
-
-  942130 (Angriff mit Einschleusung von SQL-Befehlen: SQL-Tautologie erkannt.)
-
-  931130 (Möglicher RFI-Angriff (Remote File Inclusion) = Domänenexterner Verweis/Link)
 
 
 ## <a name="next-steps"></a>Nächste Schritte

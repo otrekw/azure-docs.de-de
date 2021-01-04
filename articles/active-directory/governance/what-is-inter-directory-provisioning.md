@@ -11,12 +11,12 @@ ms.date: 10/30/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4cbca2d00d10b6595b8a1d13251dd88c65667541
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: df199afd85c788299334087321c3edac8482698d
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93134937"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96168507"
 ---
 # <a name="what-is-inter-directory-provisioning"></a>Worum handelt es sich bei der Bereitstellung zwischen Verzeichnissen?
 
@@ -35,7 +35,7 @@ Von Azure AD werden aktuell drei Methoden für die Bereitstellung zwischen Verz
 
 - [Azure AD Connect-Cloudbereitstellung:](../cloud-provisioning/what-is-cloud-provisioning.md) Dieser neue Microsoft-Agent wurde entwickelt, um Sie beim Erreichen Ihrer Hybrididentitätsziele zu unterstützen.  Er bietet eine einfache Bereitstellung zwischen Verzeichnissen zwischen Active Directory und Azure AD.
 
-- [Microsoft Identity Manager:](https://docs.microsoft.com/microsoft-identity-manager/microsoft-identity-manager-2016) Die lokale Identitäts- und Zugriffsverwaltungslösung von Microsoft, die Sie bei der Verwaltung der Benutzer, Anmeldeinformationen und Richtlinien sowie des Zugriffs innerhalb Ihrer Organisation unterstützt. Darüber hinaus bietet MIM eine erweiterte Bereitstellung zwischen Verzeichnissen, um die Erstellung von Umgebungen mit Hybrididentität für Active Directory, Azure AD und andere Verzeichnisse zu ermöglichen.
+- [Microsoft Identity Manager:](/microsoft-identity-manager/microsoft-identity-manager-2016) Die lokale Identitäts- und Zugriffsverwaltungslösung von Microsoft, die Sie bei der Verwaltung der Benutzer, Anmeldeinformationen und Richtlinien sowie des Zugriffs innerhalb Ihrer Organisation unterstützt. Darüber hinaus bietet MIM eine erweiterte Bereitstellung zwischen Verzeichnissen, um die Erstellung von Umgebungen mit Hybrididentität für Active Directory, Azure AD und andere Verzeichnisse zu ermöglichen.
 
 ### <a name="key-benefits"></a>Hauptvorteile
 
@@ -45,7 +45,7 @@ Die Möglichkeit zur Bereitstellung zwischen Verzeichnissen bietet erhebliche Ge
 - [Passthrough-Authentifizierung](../hybrid/how-to-connect-pta.md): Eine Anmeldemethode, die Benutzern die Verwendung des gleichen Kennworts lokal und in der Cloud ermöglicht, die zusätzliche Infrastruktur einer Verbundumgebung jedoch nicht erfordert.
 - [Verbundintegration](../hybrid/how-to-connect-fed-whatis.md): Kann zum Konfigurieren einer Hybridumgebung mithilfe einer lokalen AD FS-Infrastruktur verwendet werden. Er bietet auch AD FS-Verwaltungsfunktionen wie die Zertifikaterneuerung und zusätzliche AD FS-Serverbereitstellungen.
 - [Synchronisierung](../hybrid/how-to-connect-sync-whatis.md): Dieser Prozess ist verantwortlich für das Erstellen von Benutzern, Gruppen und anderen Objekten.  Er stellt auch sicher, dass Identitätsinformationen für Ihre lokalen Benutzer und Gruppen denen in der Cloud entsprechen.  Diese Synchronisierung umfasst auch Kennworthashes.
-- [Systemüberwachung](../hybrid/whatis-hybrid-identity-health.md): Bietet eine stabile Überwachung und einen zentralen Ort im Azure-Portal, um diese Aktivität anzuzeigen. 
+- [Systemüberwachung](../hybrid/whatis-azure-ad-connect.md): Bietet eine stabile Überwachung und einen zentralen Ort im Azure-Portal, um diese Aktivität anzuzeigen. 
 
 
 ## <a name="next-steps"></a>Nächste Schritte 

@@ -9,13 +9,13 @@ ms.subservice: billing
 ms.topic: how-to
 ms.date: 10/26/2020
 ms.author: banders
-ms.custom: contperfq2
-ms.openlocfilehash: 05b93fd02ec229306d4e3e150b1e8baab072b597
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: 776c207387ee55b998615131baf77e6c13655b49
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92672000"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033936"
 ---
 # <a name="change-contact-information-for-an-azure-billing-account"></a>Ändern der Kontaktinformationen für ein Azure-Abrechnungskonto
 
@@ -23,11 +23,11 @@ Dieser Artikel unterstützt Sie beim Aktualisieren der Kontaktinformationen für
 
 Wenn Sie Ihre Azure Active Directory-Benutzerprofilinformationen aktualisieren möchten, kann nur ein Benutzeradministrator die Änderungen vornehmen. Wenn Sie nicht über die Benutzeradministratorrolle verfügen, wenden Sie sich an den Benutzeradministrator. Weitere Informationen zum Ändern des Profils eines Benutzers finden Sie unter [Hinzufügen oder Aktualisieren von Benutzerprofilinformationen mit Azure Active Directory](../../active-directory/fundamentals/active-directory-users-profile-azure-portal.md).
 
-*Käuferadresse* : Bei der Käuferadresse handelt es sich um die Anschrift und die Kontaktinformationen der Organisation oder der Person, die für ein Abrechnungskonto verantwortlich ist. Sie wird auf allen für das Abrechnungskonto generierten Rechnungen angezeigt.
+*Käuferadresse*: Bei der Käuferadresse handelt es sich um die Anschrift und die Kontaktinformationen der Organisation oder der Person, die für ein Abrechnungskonto verantwortlich ist. Sie wird auf allen für das Abrechnungskonto generierten Rechnungen angezeigt.
 
-*Rechnungsadresse* : Bei der Rechnungsadresse handelt es sich um die Anschrift und die Kontaktinformationen der Organisation oder der Person, die für die für ein Abrechnungskonto generierten Rechnungen verantwortlich ist. Bei einem Abrechnungskonto für ein Microsoft-Onlineabonnementprogramm (Microsoft Online Service Program, MOSP) gibt es eine Rechnungsadresse, die auf allen für das Konto generierten Rechnungen angezeigt wird. Bei einem Abrechnungskonto für eine Microsoft-Kundenvereinbarung (Microsoft Customer Agreement, MCA) gibt es eine Rechnungsadresse für jedes Abrechnungsprofil, die auf der für das jeweilige Abrechnungsprofil generierten Rechnung angezeigt wird.
+*Rechnungsadresse*: Bei der Rechnungsadresse handelt es sich um die Anschrift und die Kontaktinformationen der Organisation oder der Person, die für die für ein Abrechnungskonto generierten Rechnungen verantwortlich ist. Bei einem Abrechnungskonto für ein Microsoft-Onlineabonnementprogramm (Microsoft Online Service Program, MOSP) gibt es eine Rechnungsadresse, die auf allen für das Konto generierten Rechnungen angezeigt wird. Bei einem Abrechnungskonto für eine Microsoft-Kundenvereinbarung (Microsoft Customer Agreement, MCA) gibt es eine Rechnungsadresse für jedes Abrechnungsprofil, die auf der für das jeweilige Abrechnungsprofil generierten Rechnung angezeigt wird.
 
-*Kontakt-E-Mail-Adresse für Dienst- und Marketing-E-Mails* : Sie können eine E-Mail-Adresse angeben, die sich von der E-Mail-Adresse unterscheidet, mit der Sie sich anmelden, um wichtige abrechnungs- und dienstbezogene Benachrichtigungen sowie Benachrichtigungen zu Empfehlungen für Ihr Azure-Konto zu erhalten. Dienstbenachrichtigungs-E-Mails, z. B. zu dringenden Sicherheitsproblemen, Preisänderungen oder Breaking Changes bei Diensten, die von Ihrem Konto genutzt werden, werden immer an Ihre Anmeldeadresse gesendet.
+*Kontakt-E-Mail-Adresse für Dienst- und Marketing-E-Mails*: Sie können eine E-Mail-Adresse angeben, die sich von der E-Mail-Adresse unterscheidet, mit der Sie sich anmelden, um wichtige abrechnungs- und dienstbezogene Benachrichtigungen sowie Benachrichtigungen zu Empfehlungen für Ihr Azure-Konto zu erhalten. Dienstbenachrichtigungs-E-Mails, z. B. zu dringenden Sicherheitsproblemen, Preisänderungen oder Breaking Changes bei Diensten, die von Ihrem Konto genutzt werden, werden immer an Ihre Anmeldeadresse gesendet.
 
 ## <a name="update-an-mosp-billing-account-address"></a>Aktualisieren einer Adresse für ein MOSP-Abrechnungskonto
 

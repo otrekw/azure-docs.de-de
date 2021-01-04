@@ -6,16 +6,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 10/07/2020
+ms.date: 12/11/2020
 ms.author: aahi
 ms.reviewer: sumeh, assafi
 ms.custom: devx-track-js
-ms.openlocfilehash: a4428d200cf99457f9370d7516dccf2e344e3319
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 69a7e63a5dcd892c1085367bd9747ffae9a835bf
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94816551"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97366381"
 ---
 <a name="HOLTop"></a>
 
@@ -42,6 +42,7 @@ ms.locfileid: "94816551"
 * Sobald Sie über Ihr Azure-Abonnement verfügen, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="Erstellen einer Textanalyseressource"  target="_blank"> erstellen Sie eine Textanalyseressource <span class="docon docon-navigate-external x-hidden-focus"></span></a> im Azure-Portal, um Ihren Schlüssel und Endpunkt zu erhalten. Klicken Sie nach Abschluss der Bereitstellung auf **Zu Ressource wechseln**.
     * Sie benötigen den Schlüssel und den Endpunkt der von Ihnen erstellten Ressource, um Ihre Anwendung mit der Textanalyse-API zu verbinden. Der Schlüssel und der Endpunkt werden weiter unten in der Schnellstartanleitung in den Code eingefügt.
     * Sie können den kostenlosen Tarif (`F0`) verwenden, um den Dienst zu testen, und später für die Produktion auf einen kostenpflichtigen Tarif upgraden.
+* Sie benötigen eine Textanalyse-Ressource des Standard-Tarifs (S), um das Analyze-Feature nutzen zu können.
 
 ## <a name="setting-up"></a>Einrichten
 
@@ -67,7 +68,7 @@ npm init
 Installieren Sie die NPM-Pakete vom Typ `@azure/ai-text-analytics`:
 
 ```console
-npm install --save @azure/ai-text-analytics@5.1.0-beta.1
+npm install --save @azure/ai-text-analytics@5.1.0-beta.3
 ```
 
 > [!TIP]
@@ -256,15 +257,16 @@ async function sentimentAnalysisWithOpinionMining(client){
             console.log(`\t\tSentence sentiment: ${sentence.sentiment}`)
             console.log(`\t\tSentences Scores:`);
             console.log(`\t\tPositive: ${sentence.confidenceScores.positive.toFixed(2)} \tNegative: ${sentence.confidenceScores.negative.toFixed(2)} \tNeutral: ${sentence.confidenceScores.neutral.toFixed(2)}`);
-            console.log("    Mined opinions");
+            console.log("\tMined opinions");
             for (const { aspect, opinions } of sentence.minedOpinions) {
-                console.log(`      - Aspect text: ${aspect.text}`);
-                console.log(`        Aspect sentiment: ${aspect.sentiment}`);
-                console.log("        Aspect confidence scores:", aspect.confidenceScores);
-                console.log("        Aspect opinions");
-                for (const { text, sentiment } of opinions) {
-                console.log(`        - Text: ${text}`);
-                console.log(`          Sentiment: ${sentiment}`);
+                console.log(`\t\tAspect text: ${aspect.text}`);
+                console.log(`\t\tAspect sentiment: ${aspect.sentiment}`);
+                console.log(`\t\tAspect Positive: ${aspect.confidenceScores.positive.toFixed(2)} \tNegative: ${aspect.confidenceScores.negative.toFixed(2)}`);
+                console.log("\t\tAspect opinions:");
+                for (const { text, sentiment, confidenceScores } of opinions) {
+                    console.log(`\t\tOpinion text: ${text}`);
+                    console.log(`\t\tOpinion sentiment: ${sentiment}`);
+                    console.log(`\t\tOpinion Positive: ${confidenceScores.positive.toFixed(2)} \tNegative: ${confidenceScores.negative.toFixed(2)}`);
                 }
             }
         });
@@ -279,32 +281,35 @@ Führen Sie in Ihrem Konsolenfenster Ihren Code mit `node index.js` aus.
 
 ```console
 ID: 0
-        // Document Sentiment: positive
-        // Document Scores:
-                // Positive: 0.84  Negative: 0.16  Neutral: 0.00
-        // Sentences Sentiment(1):
-                // Sentence sentiment: positive
-                // Sentences Scores:
-                // Positive: 0.84  Negative: 0.16  Neutral: 0.00
-    // Mined opinions
-      // - Aspect text: food
-        // Aspect sentiment: negative
-        // Aspect confidence scores: { positive: 0.01, negative: 0.99 }
-        // Aspect opinions
-        // - Text: unacceptable
-          // Sentiment: negative
-      // - Aspect text: service
-        // Aspect sentiment: negative
-        // Aspect confidence scores: { positive: 0.01, negative: 0.99 }
-        // Aspect opinions
-        // - Text: unacceptable
-          // Sentiment: negative
-      // - Aspect text: concierge
-        // Aspect sentiment: positive
-        // Aspect confidence scores: { positive: 1, negative: 0 }
-        // Aspect opinions
-        // - Text: nice
-          // Sentiment: positive
+        Document Sentiment: positive
+        Document Scores:
+                Positive: 0.84  Negative: 0.16  Neutral: 0.00
+        Sentences Sentiment(1):
+                Sentence sentiment: positive
+                Sentences Scores:
+                Positive: 0.84  Negative: 0.16  Neutral: 0.00
+        Mined opinions
+                Aspect text: food
+                Aspect sentiment: negative
+                Aspect Positive: 0.01   Negative: 0.99
+                Aspect opinions:
+                Opinion text: unacceptable
+                Opinion sentiment: negative
+                Opinion Positive: 0.01  Negative: 0.99
+                Aspect text: service
+                Aspect sentiment: negative
+                Aspect Positive: 0.01   Negative: 0.99
+                Aspect opinions:
+                Opinion text: unacceptable
+                Opinion sentiment: negative
+                Opinion Positive: 0.01  Negative: 0.99
+                Aspect text: concierge
+                Aspect sentiment: positive
+                Aspect Positive: 1.00   Negative: 0.00
+                Aspect opinions:
+                Opinion text: nice
+                Opinion sentiment: positive
+                Opinion Positive: 1.00  Negative: 0.00
 ```
 
 # <a name="version-30"></a>[Version 3.0](#tab/version-3)
@@ -699,7 +704,7 @@ Document ID: 0
                 Text: BASIC     Score: 0.33
 ```
 
-# <a name="version-21"></a>[Version 2.1](#tab/version-2)
+# <a name="version-21"></a>[Version 2.1](#tab/version-2)
 
 > [!NOTE]
 > In Version 2.1 ist die Entitätsverknüpfung in der NER-Antwort enthalten.
@@ -820,6 +825,71 @@ Führen Sie in Ihrem Konsolenfenster Ihren Code mit `node index.js` aus.
     { id: '3', keyPhrases: [ 'fútbol' ] }
 ]
 ```
+
+---
+
+## <a name="use-the-api-asynchronously-with-the-analyze-operation"></a>Asynchrones Verwenden der API mit dem Analyze-Vorgang
+
+# <a name="version-31-preview"></a>[Version 3.1-Preview](#tab/version-3-1)
+
+> [!CAUTION]
+> Sie benötigen eine Textanalyse-Ressource des Standard-Tarifs (S), um Analyze-Vorgänge durchführen zu können.  
+
+Erstellen Sie die neue Funktion `analyze_example()`, die die Funktion `beginAnalyze()` aufruft. Daraus resultiert ein zeitintensiver Vorgang, aus dem Ergebnisse abgerufen werden.
+
+```javascript
+const documents = [
+  "Microsoft was founded by Bill Gates and Paul Allen.",
+];
+
+async function analyze_example(client) {
+  console.log("== Analyze Sample ==");
+
+  const tasks = {
+    entityRecognitionTasks: [{ modelVersion: "latest" }]
+  };
+  const poller = await client.beginAnalyze(documents, tasks);
+  const resultPages = await poller.pollUntilDone();
+
+  for await (const page of resultPages) {
+    const entitiesResults = page.entitiesRecognitionResults![0];
+    for (const doc of entitiesResults) {
+      console.log(`- Document ${doc.id}`);
+      if (!doc.error) {
+        console.log("\tEntities:");
+        for (const entity of doc.entities) {
+          console.log(`\t- Entity ${entity.text} of type ${entity.category}`);
+        }
+      } else {
+        console.error("  Error:", doc.error);
+      }
+    }
+  }
+}
+
+analyze_example(textAnalyticsClient);
+```
+
+### <a name="output"></a>Ausgabe
+
+```console
+== Analyze Sample ==
+- Document 0
+        Entities:
+        - Entity Microsoft of type Organization
+        - Entity Bill Gates of type Person
+        - Entity Paul Allen of type Person
+```
+
+Sie können den Analyze-Vorgang auch verwenden, um personenbezogene Informationen zu erkennen und Schlüsselbegriffe zu extrahieren. Die Analyze-Beispiele für [JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/textanalytics/ai-text-analytics/samples/javascript/beginAnalyze.js) und [TypeScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/textanalytics/ai-text-analytics/samples/typescript/src/beginAnalyze.ts) finden Sie auf GitHub.
+
+# <a name="version-30"></a>[Version 3.0](#tab/version-3)
+
+Dieses Feature ist in Version 3.0 nicht verfügbar.
+
+# <a name="version-21"></a>[Version 2.1](#tab/version-2)
+
+Dieses Feature ist in Version 2.1 nicht verfügbar.
 
 ---
 

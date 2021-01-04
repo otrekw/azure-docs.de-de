@@ -1,7 +1,7 @@
 ---
-title: Erstellen eines Verbindungsmonitors (Vorschau) – ARMClient
+title: 'Erstellen eines Verbindungsmonitors: ARM-Vorlage'
 titleSuffix: Azure Network Watcher
-description: Erfahren Sie, wie Sie mithilfe von ARMClient einen Verbindungsmonitor (Vorschau) erstellen.
+description: Hier erfahren Sie, wie Sie einen Verbindungsmonitors mithilfe von ARMClient erstellen.
 services: network-watcher
 documentationcenter: na
 author: vinigam
@@ -10,24 +10,25 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/30/2020
+ms.date: 11/23/2020
 ms.author: vinigam
-ms.openlocfilehash: 5a351e550cac9edcc8ce1c54fbe5c57d012ee607
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: c3b228d2652d5f7dcf7c6596ee5425b3f5f9a4d8
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94447449"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95544002"
 ---
-# <a name="create-a-connection-monitor-preview-using-the-armclient"></a>Erstellen eines Verbindungsmonitors (Vorschau) mithilfe von ARMClient
+# <a name="create-a-connection-monitor-using-the-arm-template"></a>Erstellen eines Verbindungsmonitors mithilfe einer ARM-Vorlage
 
-Hier erfahren Sie, wie Sie einen Verbindungsmonitor (Vorschau) erstellen, um die Kommunikation zwischen Ihren Ressourcen mithilfe von ARMClient zu überwachen. Er unterstützt Hybrid- und Azure-Cloudbereitstellungen.
+Hier erfahren Sie, wie Sie mithilfe von ARMClient einen Verbindungsmonitor erstellen, um die Kommunikation zwischen Ihren Ressourcen zu überwachen. Er unterstützt Hybrid- und Azure-Cloudbereitstellungen.
+
 
 ## <a name="before-you-begin"></a>Voraussetzungen 
 
-In Verbindungsmonitoren, die Sie im Verbindungsmonitor (Vorschau) erstellen, können Sie sowohl lokale Computer als auch Azure-VMs als Quellen hinzufügen. Mit diesen Verbindungsmonitoren kann auch die Konnektivität mit Endpunkten überwacht werden. Die Endpunkte können sich in Azure oder einer beliebigen anderen URL oder IP-Adresse befinden.
+In Verbindungsmonitoren, die Sie im Feature „Verbindungsmonitor“ erstellen, können Sie sowohl lokale Computer als auch Azure-VMs als Quellen hinzufügen. Mit diesen Verbindungsmonitoren kann auch die Konnektivität mit Endpunkten überwacht werden. Die Endpunkte können sich in Azure oder einer beliebigen anderen URL oder IP-Adresse befinden.
 
-Der Verbindungsmonitor (Vorschau) umfasst die folgenden Entitäten:
+Der Verbindungsmonitor umfasst die folgenden Entitäten:
 
 * **Verbindungsmonitorressource**: Dies ist eine regionsspezifische Azure-Ressource. Alle folgenden Entitäten sind Eigenschaften einer Verbindungsmonitorressource.
 * **Endpunkt**: Eine Quelle oder ein Ziel, die bzw. das an Konnektivitätsprüfungen beteiligt ist. Beispiele für Endpunkte umfassen Azure-VMs, lokale Agents, URLs und IP-Adressen.
@@ -359,7 +360,7 @@ armclient PUT $ARM/$SUB/$NW/connectionMonitors/$connectionMonitorName/?api-versi
 
 * Endpunkte
     * name: Der eindeutige Name für jeden Endpunkt.
-    * resourceId: Bei Azure-Endpunkten bezieht sich die Ressourcen-ID auf die ID der Azure Resource Manager-Ressource für virtuelle Computer. Bei Azure-fremden Endpunkten bezieht sich die Ressourcen-ID auf die ID der Azure Resource Manager-Ressource für den Log Analytics-Arbeitsbereich, der mit Nicht-Azure-Agents verknüpft ist.
+    * resourceId: Bei Azure-Endpunkten bezieht sich die Ressourcen-ID auf die ID der Azure Resource Manager-Ressource für virtuelle Computer. Bei Azure-fremden Endpunkten bezieht sich die Ressourcen-ID auf die ID der Azure Resource Manager-Ressource für den Log Analytics-Arbeitsbereich, der mit Azure-fremden Agents verknüpft ist.
     * address: Dies trifft nur zu, wenn entweder keine Ressourcen-ID angegeben oder die Ressourcen-ID der Log Analytics-Arbeitsbereich ist. Bei Verwendung mit Log Analytics-Ressourcen-ID bezieht sich dies auf den FQDN des Agents, der für die Überwachung verwendet werden kann. Bei Verwendung ohne Ressourcen-ID kann dies die URL oder IP-Adresse eines beliebigen öffentlichen Endpunkts sein.
     * filter: Bei Azure-fremden Endpunkten verwenden Sie Filter, um Agents aus dem Log Analytics-Arbeitsbereich auszuwählen, die für die Überwachung in der Verbindungsmonitorressource verwendet werden. Wenn keine Filter festgelegt sind, können alle Agents, die zum Log Analytics-Arbeitsbereich gehören, für die Überwachung verwendet werden.
         * type: Legen Sie den Typ auf „Agent Address“ fest.
@@ -368,7 +369,7 @@ armclient PUT $ARM/$SUB/$NW/connectionMonitors/$connectionMonitorName/?api-versi
 * Testgruppen
     * name: Geben Sie der Testgruppe einen Namen.
     * testConfigurations: Die Testkonfigurationen, die darauf basieren, welche Quellendpunkte mit Zielendpunkten verbunden sind.
-    * sources: Treffen Sie eine Auswahl aus den oben erstellten Endpunkten. Auf Azure-basierten Quellendpunkten muss die Azure Network Watcher-Erweiterung installiert sein, und bei nicht auf Azure basierenden Quellendpunkten muss der Azure Log Analytics-Agent installiert sein. Informationen zum Installieren eines Agents für Ihre Quelle finden Sie unter [Installieren von Überwachungs-Agents](https://docs.microsoft.com/azure/network-watcher/connection-monitor-preview#install-monitoring-agents).
+    * sources: Treffen Sie eine Auswahl aus den oben erstellten Endpunkten. Auf Azure-basierten Quellendpunkten muss die Azure Network Watcher-Erweiterung installiert sein, und bei nicht auf Azure basierenden Quellendpunkten muss der Azure Log Analytics-Agent installiert sein. Informationen zum Installieren eines Agents für Ihre Quelle finden Sie unter [Installieren von Überwachungs-Agents](./connection-monitor-overview.md#install-monitoring-agents).
     * destinations: Treffen Sie eine Auswahl aus den oben erstellten Endpunkten. Sie können die Konnektivität mit Azure-VMs oder anderen Endpunkten (öffentliche IP-Adresse, URL oder FQDN) überwachen, indem Sie diese als Ziele festlegen. In einer einzelnen Testgruppe können Sie Azure-VMs, Office 365-URLs, Dynamics 365-URLs und benutzerdefinierte Endpunkte hinzufügen.
     * disable: Verwenden Sie dieses Feld, um die Überwachung für alle in der Testgruppe angegebenen Quellen und Ziele zu deaktivieren.
 
@@ -400,5 +401,5 @@ Für Verbindungsmonitore gelten die folgenden Skalierungslimits:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Erfahren Sie, wie Sie [Überwachungsdaten analysieren und Warnungen festlegen](https://docs.microsoft.com/azure/network-watcher/connection-monitor-preview#analyze-monitoring-data-and-set-alerts).
-* Erfahren Sie, wie Sie [Probleme in Ihrem Netzwerk diagnostizieren](https://docs.microsoft.com/azure/network-watcher/connection-monitor-preview#diagnose-issues-in-your-network).
+* Erfahren Sie, wie Sie [Überwachungsdaten analysieren und Warnungen festlegen](./connection-monitor-overview.md#analyze-monitoring-data-and-set-alerts).
+* Erfahren Sie, wie Sie [Probleme in Ihrem Netzwerk diagnostizieren](./connection-monitor-overview.md#diagnose-issues-in-your-network).

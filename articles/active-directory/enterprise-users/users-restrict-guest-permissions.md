@@ -5,7 +5,7 @@ services: active-directory
 author: curtand
 ms.author: curtand
 manager: daveba
-ms.date: 11/15/2020
+ms.date: 12/03/2020
 ms.topic: how-to
 ms.service: active-directory
 ms.subservice: enterprise-users
@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cac88e57ce0135295ac4b7078111102fa69e6838
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 8e940c6eb2710ea43e756e4ea7956a39df9e0ce8
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94646592"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575549"
 ---
 # <a name="restrict-guest-access-permissions-preview-in-azure-active-directory"></a>Einschränken von Gastzugriffsberechtigungen (Vorschau) in Azure Active Directory
 
@@ -155,7 +155,8 @@ Dienste, die aktuell nicht unterstützt werden, weisen möglicherweise Kompatibi
 Frage | Antwort
 -------- | ------
 Wo gelten diese Berechtigungen? | Diese Berechtigungen auf Verzeichnisebene werden für alle Azure AD-Dienste und -Portale erzwungen, einschließlich Microsoft Graph, PowerShell v2, das Azure-Portal und das Portal „Meine Apps“. Microsoft 365-Dienste, die Microsoft 365-Gruppen für Zusammenarbeitsszenarien nutzen, sind ebenfalls betroffen, insbesondere Outlook, Microsoft Teams und SharePoint.
-Auf welche Bereiche des Portals „Meine Apps“ wirkt sich auf dieses Feature aus? | Diese neuen Berechtigungen werden in der Gruppenfunktion im Portal „Meine Apps“ berücksichtigt. Dies umfasst alle Pfade zum Anzeigen der Gruppenliste und Gruppenmitgliedschaften in „Meine Apps“. An der Verfügbarkeit der Gruppenkachel wurden keine Änderungen vorgenommen. Die Verfügbarkeit der Gruppenkachel wird weiterhin durch die vorhandene Gruppeneinstellung im Azure-Verwaltungsportal gesteuert.
+Wie wirken sich eingeschränkte Berechtigungen darauf aus, welche Gruppen Gäste sehen können? | Unabhängig davon, ob Sie die standardmäßigen oder eingeschränkte Gastberechtigungen verwenden, können Gäste die Liste der Gruppen oder Benutzer nicht auflisten. Gäste können Gruppen anzeigen, in denen sie Mitglied sind. Abhängig von ihren Berechtigungen können sie dafür das Azure-Portal oder das Portal „Meine Apps“ verwenden:<li>**Standardberechtigungen:** Um im Azure-Portal die Gruppen zu finden, deren Mitglied sie sind, müssen Gäste in der Liste **Alle Benutzer** nach ihrer Objekt-ID suchen und dann **Gruppen** auswählen. Dort wird die Liste der Gruppen angezeigt, denen sie angehören. Dies schließt auch alle Gruppendetails wie Name, E-Mail-Adresse usw. ein. Im Portal „Meine Apps“ wird eine Liste der Gruppen angezeigt, deren Besitzer sie sind und in denen sie Mitglied sind.</li><li>**Eingeschränkte Berechtigungen für Gastbenutzer:** Sie können im Azure-Portal weiterhin die Liste der Gruppen finden, deren Mitglied sie sind, indem Sie in der Liste „Alle Benutzer“ nach ihrer Objekt-ID suchen und dann „Gruppen“ auswählen. Es werden jedoch nur sehr begrenzte Details zur Gruppe angezeigt, insbesondere die Objekt-ID. Die Spalten „Name“ und „E-Mail-Adresse“ sind standardmäßig leer, und der Gruppentyp lautet „Unbekannt“. Im Portal „Meine Apps“ können sie nicht auf die Liste der Gruppen zugreifen, deren Besitzer sie sind oder in denen sie Mitglied sind.</li><br>Einen ausführlicheren Vergleich der Verzeichnisberechtigungen aus der Graph-API finden Sie unter [Standardbenutzerberechtigungen](../fundamentals/users-default-permissions.md#member-and-guest-users).
+Auf welche Bereiche des Portals „Meine Apps“ wirkt sich auf dieses Feature aus? | Diese neuen Berechtigungen werden in der Gruppenfunktion im Portal „Meine Apps“ berücksichtigt. Dies umfasst alle Pfade zum Anzeigen der Gruppenliste und Gruppenmitgliedschaften in „Meine Apps“. An der Verfügbarkeit der Gruppenkachel wurden keine Änderungen vorgenommen. Die Verfügbarkeit der Gruppenkachel wird weiterhin durch die vorhandene Gruppeneinstellung im Azure-Portal gesteuert.
 Haben diese Berechtigungen Vorrang vor Gasteinstellungen in SharePoint oder Microsoft Teams? | Nein. Diese vorhandenen Einstellungen steuern weiterhin die Benutzeroberfläche und den Zugriff in diesen Anwendungen. Wenn beispielsweise Probleme in SharePoint angezeigt werden, überprüfen Sie Ihre Einstellungen für externe Freigaben.
 Welche Kompatibilitätsprobleme in Planner und Yammer sind bekannt? | <li>Wenn die Berechtigungen auf „eingeschränkt“ festgelegt sind, haben Gäste, die sich bei der Planner-App angemeldet haben oder auf Planner in Microsoft Teams zugreifen, keinen Zugriff auf Ihre Pläne oder Aufgaben.<li>Wenn die Berechtigungen auf „eingeschränkt“ festgelegt sind, können Gäste, die sich bei Yammer angemeldet haben, die Gruppe nicht verlassen.
 Werden die vorhandenen Gastberechtigungen in meinem Mandanten geändert? | An Ihren aktuellen Einstellungen wurden keine Änderungen vorgenommen. Die Abwärtskompatibilität mit Ihren vorhandenen Einstellungen bleibt gewahrt. Sie entscheiden, wann Sie Änderungen vornehmen möchten.

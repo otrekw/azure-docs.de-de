@@ -11,16 +11,16 @@ ms.topic: how-to
 ms.date: 10/27/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b82edf39185067e4c761c7598b159a655dfc370c
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 20df5fc3a4d7c392be62df2b7778854d1e2e1cba
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92735413"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109061"
 ---
 # <a name="set-redirect-urls-to-b2clogincom-for-azure-active-directory-b2c"></a>Festlegen von Umleitungs-URLs zu b2clogin.com für Azure Active Directory B2C
 
-Wenn Sie einen Identitätsanbieter für die Registrierung und Anmeldung in Ihrer Azure Active Directory B2C-Anwendung (Azure AD B2C) einrichten, müssen Sie eine Umleitungs-URL angeben. Für die Authentifizierung von Benutzern in Azure AD B2C sollte in Ihren Anwendungen und APIs nicht mehr auf *login.microsoftonline.com* verwiesen werden. Verwenden Sie stattdessen für alle neuen Anwendungen *b2clogin.com* , und migrieren Sie vorhandene Anwendungen von *login.microsoftonline.com* nach *b2clogin.com*.
+Wenn Sie einen Identitätsanbieter für die Registrierung und Anmeldung in Ihrer Azure Active Directory B2C-Anwendung (Azure AD B2C) einrichten, müssen Sie eine Umleitungs-URL angeben. Für die Authentifizierung von Benutzern in Azure AD B2C sollte in Ihren Anwendungen und APIs nicht mehr auf *login.microsoftonline.com* verwiesen werden. Verwenden Sie stattdessen für alle neuen Anwendungen *b2clogin.com*, und migrieren Sie vorhandene Anwendungen von *login.microsoftonline.com* nach *b2clogin.com*.
 
 ## <a name="deprecation-of-loginmicrosoftonlinecom"></a>Einstellung von login.microsoftonline.com
 
@@ -53,7 +53,7 @@ Bei Verwendung von *b2clogin.com* als Umleitungs-URL:
 
 * Der im Cookieheader von Microsoft-Diensten verbrauchte Speicherplatz wird reduziert.
 * Ihre Umleitungs-URLs müssen keinen Verweis auf Microsoft mehr enthalten.
-* Clientseitiger JavaScript-Code wird in angepassten Seiten unterstützt (derzeit als [Vorschaufunktion](user-flow-javascript-overview.md)). Aufgrund von Sicherheitseinschränkungen werden JavaScript-Code und HTML-Formularelemente von benutzerdefinierten Seiten entfernt, wenn Sie *login.microsoftonline.com* verwenden.
+* Clientseitiger JavaScript-Code wird in angepassten Seiten unterstützt (derzeit als [Vorschaufunktion](javascript-and-page-layout.md)). Aufgrund von Sicherheitseinschränkungen werden JavaScript-Code und HTML-Formularelemente von benutzerdefinierten Seiten entfernt, wenn Sie *login.microsoftonline.com* verwenden.
 
 ## <a name="overview-of-required-changes"></a>Übersicht über erforderliche Änderungen
 
@@ -61,7 +61,7 @@ Sie müssen möglicherweise eine Reihe von Änderungen vornehmen, um Ihre Anwend
 
 * Ändern Sie die Umleitungs-URL in den Anwendungen Ihres Identitätsanbieters so, dass auf *b2clogin.com* verwiesen wird.
 * Aktualisieren Sie Ihre Azure AD B2C-Anwendungen so, dass *b2clogin.com* in den Verweisen auf Benutzerflows und Tokenendpunkte verwendet wird. Dieser Schritt kann das Aktualisieren der Verwendung einer Authentifizierungsbibliothek wie Microsoft Authentication Library (MSAL) umfassen.
-* Aktualisieren Sie alle **zulässigen Ursprünge** , die Sie in den CORS-Einstellungen zur [Anpassung der Benutzeroberfläche](custom-policy-ui-customization.md) definiert haben.
+* Aktualisieren Sie alle **zulässigen Ursprünge**, die Sie in den CORS-Einstellungen zur [Anpassung der Benutzeroberfläche](customize-ui-with-html.md) definiert haben.
 
 Ein alter Endpunkt kann wie folgt aussehen:
 - <b><code>https://login.microsoft.com/</b>\<tenant-name\>.onmicrosoft.com/\<policy-name\>/oauth2/v2.0/authorize</code>
@@ -113,7 +113,7 @@ Informationen zur Migration von Azure API Management-APIs, die durch Azure AD B2
 
 ### <a name="msalnet-validateauthority-property"></a>MSAL.NET: Eigenschaft „ValidateAuthority“
 
-Wenn Sie [MSAL.NET][msal-dotnet] v2 oder früher verwenden, legen Sie die **ValidateAuthority** -Eigenschaft bei der Clientinstanziierung auf `false` fest, um Umleitungen zu *b2clogin.com* zuzulassen. Für MSAL.NET v3 und höher ist es nicht erforderlich, diesen Wert auf `false` festzulegen.
+Wenn Sie [MSAL.NET][msal-dotnet] v2 oder früher verwenden, legen Sie die **ValidateAuthority**-Eigenschaft bei der Clientinstanziierung auf `false` fest, um Umleitungen zu *b2clogin.com* zuzulassen. Für MSAL.NET v3 und höher ist es nicht erforderlich, diesen Wert auf `false` festzulegen.
 
 ```csharp
 ConfidentialClientApplication client = new ConfidentialClientApplication(...); // Can also be PublicClientApplication

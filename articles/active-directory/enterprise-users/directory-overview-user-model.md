@@ -6,7 +6,7 @@ author: curtand
 manager: daveba
 ms.author: curtand
 ms.reviewer: krbain
-ms.date: 11/15/2020
+ms.date: 12/02/2020
 ms.topic: overview
 ms.service: active-directory
 ms.subservice: enterprise-users
@@ -14,12 +14,12 @@ ms.workload: identity
 services: active-directory
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e86d61f71a49a502a91b16761fc9feccea6faafd
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: ce4330b72ef7e1440689e0ec4af9009f551553a3
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94650936"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96547269"
 ---
 # <a name="what-is-enterprise-user-management"></a>Was beinhaltet die Verwaltung von Unternehmensbenutzern?
 
