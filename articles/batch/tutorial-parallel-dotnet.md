@@ -1,16 +1,16 @@
 ---
-title: Ausführen einer parallelen Workload mithilfe der .NET-API
+title: Tutorial – Ausführen einer parallelen Workload mithilfe der .NET-API
 description: 'Tutorial: Paralleles Transcodieren von Mediendateien mit ffmpeg in Azure Batch per .NET-Clientbibliothek in Batch'
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 09/29/2020
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 396d0f6a2ef9a8c24fc92b641c889ef9e1a7df49
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: a990a5480a8a6462bb6ef9f84070b78768628fd0
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578296"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106528"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-net-api"></a>Tutorial: Ausführen einer parallelen Workload mit Azure Batch über die .NET-API
 
@@ -317,7 +317,7 @@ Löschen Sie die Ressourcengruppe, das Batch-Konto und das Speicherkonto, wenn d
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie Folgendes gelernt:
+In diesem Tutorial haben Sie gelernt, wie die folgenden Aufgaben ausgeführt werden:
 
 > [!div class="checklist"]
 > * Hinzufügen eines Anwendungspakets zu Ihrem Batch-Konto
@@ -332,6 +332,3 @@ Weitere Beispiele zur Verwendung der .NET-API zum Planen und Verarbeiten von Bat
 
 > [!div class="nextstepaction"]
 > [C#-Beispiele für Batch](https://github.com/Azure-Samples/azure-batch-samples/tree/master/CSharp)
-
-
-Das Problem wurde behoben, indem die Instanzvariable auf LowPriorityNodeCount=0 und DedicatedNodeCount=5 festgelegt wurde, und der Auftrag konnte abgeschlossen werden.

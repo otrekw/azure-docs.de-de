@@ -3,12 +3,12 @@ title: Schützen von Azure VMware Solution-VMs mit Azure Security Center-Integra
 description: Erfahren Sie, wie Sie Ihre Azure VMware Solution-VMs über ein einziges Dashboard in Azure Security Center mit den nativen Sicherheitstools von Azure schützen.
 ms.topic: how-to
 ms.date: 11/06/2020
-ms.openlocfilehash: 53669f2988a7ff7ab1150b155a65c7a187c6f1c8
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: e461e7e49619f7063c0583975f36a2e3dfe5a724
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94369843"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96937337"
 ---
 # <a name="protect-your-azure-vmware-solution-vms-with-azure-security-center-integration"></a>Schützen von Azure VMware Solution-VMs mit Azure Security Center-Integration
 
@@ -173,7 +173,7 @@ Nachdem Sie Datenquellen mit Azure Sentinel verbunden haben, können Sie Regeln 
         |where count_ > 3
         ```
         
-    - Zuordnungsentität
+    - Entitäten zuordnen
     - Abfrageplanung
     - Benachrichtigungsschwellenwert
     - Ereignisgruppierung

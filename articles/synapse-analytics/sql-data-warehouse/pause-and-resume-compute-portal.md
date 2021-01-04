@@ -1,6 +1,6 @@
 ---
-title: 'Schnellstart: Anhalten und Fortsetzen von Computeressourcen im dedizierten SQL-Pool (vormals SQL DW) über das Azure-Portal'
-description: Verwenden Sie das Azure-Portal, um Computeressourcen für den SQL-Pool anzuhalten und Kosten zu sparen. Setzen Sie die Computeressourcen fort, wenn Sie das Data Warehouse verwenden möchten.
+title: 'Schnellstart: Anhalten und Fortsetzen von Computeressourcen im dedizierten Synapse-SQL-Pool über das Azure-Portal'
+description: Über das Azure-Portal können Sie Computeressourcen für den dedizierten SQL-Pool anhalten, um Kosten zu sparen. Setzen Sie die Computeressourcen fort, wenn Sie das Data Warehouse verwenden möchten.
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 11/23/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 88f6782a0f81b94977b37bd8f87bf26a0d4c8a72
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 7d258243dae06461d21e9b5f0346e419f034eea9
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96457679"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109696"
 ---
-# <a name="quickstart-pause-and-resume-compute-in-dedicated-sql-pool-formerly-sql-dw-via-the-azure-portal"></a>Schnellstart: Anhalten und Fortsetzen von Computeressourcen im dedizierten SQL-Pool (vormals SQL DW) über das Azure-Portal
+# <a name="quickstart-pause-and-resume-compute-in-dedicated-sql-pool-via-the-azure-portal"></a>Schnellstart: Anhalten und Fortsetzen von Computeressourcen im dedizierten Synapse-SQL-Pool über das Azure-Portal
 
-Mit dem Azure-Portal können Sie die Computeressourcen des dedizierten SQL-Pools (vormals SQL DW) anhalten und fortsetzen. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
+Über das Azure-Portal können Sie Computeressourcen für den dedizierten SQL-Pool anhalten und fortsetzen. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Melden Sie sich auf dem Azure-Portal an.
 
@@ -40,9 +40,8 @@ Um Kosten zu senken, können Sie Computeressourcen bei Bedarf anhalten und forts
 Führen Sie die folgenden Schritte aus, um einen dedizierten SQL-Pool anzuhalten:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
-2. Klicken Sie auf der linken Navigationsseite des Azure-Portals auf **Dedizierter SQL-Pool (vormals SQL DW)** .
-2. Wählen Sie auf der Seite **Dedizierter SQL-Pool (vormals SQL DW)** die Option **mySampleDataWarehouse** aus, um den SQL-Pool zu öffnen. 
-3. Beachten Sie, dass auf der Seite **mySampleDataWarehouse** für **Status** der Wert **Online** angezeigt wird.
+2. Navigieren Sie zu Ihrer Seite **Dedizierter SQL-Pool**, um den SQL-Pool zu öffnen. 
+3. Beachten Sie, dass für **Status** der Wert **Online** angezeigt wird.
 
     ![Computerressourcen online](././media/pause-and-resume-compute-portal/compute-online.png)
 
@@ -62,8 +61,7 @@ Führen Sie die folgenden Schritte aus, um einen dedizierten SQL-Pool anzuhalten
 
 Führen Sie die folgenden Schritte aus, um einen dedizierten SQL-Pool fortzusetzen:
 
-1. Klicken Sie auf der linken Seite des Azure-Portals auf **Dedizierter SQL-Pool (vormals SQL DW)** .
-2. Wählen Sie auf der Seite **Dedizierter SQL-Pool (vormals SQL DW)** die Option **mySampleDataWarehouse** aus, um die Seite für den SQL-Pool zu öffnen. 
+1. Navigieren Sie zu Ihrer Seite **Dedizierter SQL-Pool**, um den SQL-Pool zu öffnen.
 3. Beachten Sie, dass auf der Seite **mySampleDataWarehouse** für **Status** der Wert **Angehalten** angezeigt wird.
 
     ![Computeressourcen offline](././media/pause-and-resume-compute-portal/compute-offline.png)

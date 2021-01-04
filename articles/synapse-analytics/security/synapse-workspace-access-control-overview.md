@@ -9,12 +9,12 @@ ms.subservice: security
 ms.date: 12/03/2020
 ms.author: billgib
 ms.reviewer: jrasnick
-ms.openlocfilehash: 36c4ce34d6b0c4df119d5531cda725605cfd0bc1
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: 256fec97819cde0f6f62d59b34416c92e1edfd20
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96523717"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109605"
 ---
 # <a name="synapse-access-control"></a>Synapse-Zugriffssteuerung 
 
@@ -34,14 +34,14 @@ Die Zugriffssteuerung kann mithilfe von Sicherheitsgruppen, die auf die Aufgaben
 
 ## <a name="access-control-elements"></a>Elemente der Zugriffssteuerung
 
-### <a name="creating-and-managing-synapse-resources"></a>Erstellen und Verwalten von Synapse-Ressourcen
+### <a name="creating-and-managing-synapse-compute-resources"></a>Erstellen und Verwalten von Synapse-Computeressourcen
 
 Mit Azure-Rollen wird die Verwaltung folgender Ressourcen gesteuert: 
 - Dedizierte SQL-Pools 
 - Apache Spark-Pools 
 - Integration Runtimes 
 
-Zum Erstellen dieser Ressourcen müssen Sie ein Azure-Besitzer oder ein Mitwirkender für die Ressourcengruppe sein.  Um sie zu verwalten, müssen Sie ein Azure-Besitzer oder ein Mitwirkender für die Ressourcengruppe oder die einzelnen Ressourcen sein. 
+Um diese Ressourcen *erstellen* zu können, müssen Sie ein Azure-Besitzer oder ein Mitwirkender für die Ressourcengruppe sein.  Um sie nach der Erstellung *verwalten* zu können, müssen Sie ein Azure-Besitzer oder ein Mitwirkender für die Ressourcengruppe oder die einzelnen Ressourcen sein. 
 
 ### <a name="developing-and-executing-code-in-synapse"></a>Entwickeln und Ausführen von Code in Synapse 
 
@@ -82,7 +82,7 @@ Beispiele für SQL-Skripts zum Erteilen von SQL-Berechtigungen für SQL-Pools fi
 
  ### <a name="accessing-system-managed-data-in-storage"></a>Zugreifen auf systemseitig verwaltete Daten im Speicher
 
-Serverlose SQL-Pools und Apache Spark-Tabellen speichern Daten in einem ADLS Gen2-Container, der dem Arbeitsbereich zugeordnet ist.  Benutzern und der Arbeitsbereichs-MSI muss das Zugriffsrecht „Mitwirkender an Storage-Blobdaten“ für diesen ADLS Gen2-Speichercontainer zugewiesen werden.  
+Die Daten von serverlosen SQL-Pools und Apache Spark-Tabellen werden in einem ADLS Gen2-Container gespeichert, der dem Arbeitsbereich zugeordnet ist. Vom Benutzer installierte Apache Spark-Bibliotheken werden ebenfalls in demselben Speicherkonto verwaltet.  Zur Unterstützung dieser Anwendungsfälle muss Benutzern und der Arbeitsbereichs-MSI das Zugriffsrecht **Mitwirkender an Storage-Blobdaten** für diesen ADLS Gen2-Speichercontainer des Arbeitsbereichs erteilt werden.  
 
 ## <a name="using-security-groups-as-a-best-practice"></a>Verwenden von Sicherheitsgruppen als bewährte Methode
 

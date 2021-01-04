@@ -2,51 +2,45 @@
 title: Unterschiede zu Azure Data Factory
 description: Erfahren Sie, wie sich die Datenintegrationsfunktionen von Azure Synapse Analytics von denen in Azure Data Factory unterscheiden.
 services: synapse-analytics
-author: djpmsft
+author: kromerm
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.date: 11/06/2020
-ms.author: daperlov
+ms.date: 12/10/2020
+ms.author: makromer
 ms.reviewer: jrasnick
-ms.openlocfilehash: 10f5336dd4c8a02acf623b1b14226ca676006953
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 8818d4db489cef8203ae515c18c61e215d577033
+ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357648"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97387614"
 ---
 # <a name="data-integration-in-azure-synapse-analytics-versus-azure-data-factory"></a>Datenintegration in Azure Synapse Analytics im Vergleich zu Azure Data Factory
 
-In Azure Synapse Analytics basieren die Datenintegrationsfunktionen wie Synapse-Pipelines und Datenflüsse auf denen von Azure Data Factory. Weitere Informationen finden Sie unter [Was ist Azure Data Factory?](../../data-factory/introduction.md). Fast alle Funktionen sind identisch oder ähnlich, und die Dokumentation wird von den beiden Diensten gemeinsam genutzt. In diesem Artikel werden die aktuellen Unterschiede zwischen Azure Data Factory und Azure Synapse hervorgehoben und identifiziert.
+In Azure Synapse Analytics basieren die Datenintegrationsfunktionen wie Synapse-Pipelines und Datenflüsse auf denen von Azure Data Factory. Weitere Informationen finden Sie unter [Was ist Azure Data Factory?](../../data-factory/introduction.md).
 
-Überprüfen Sie den Moniker am Anfang des Artikels, um zu sehen, ob eine Azure Data Factory-Funktion oder ein diesbezüglicher Artikel für Azure Synapse gilt.
 
-![„Gilt für“-Moniker](../media/concepts-data-factory-differences/applies-to-moniker.png "„Gilt für“-Moniker")
+## <a name="available-features-in-adf--azure-synapse-analytics"></a>Verfügbare Funktionen in ADF und Azure Synapse Analytics
 
-## <a name="features-in-azure-data-factory-not-planned-for-azure-synapse"></a>Funktionen in Azure Data Factory, die nicht für Azure Synapse geplant sind
+Sehen Sie in der folgenden Tabelle nach, welche Funktionen zur Verfügung stehen:
 
-Die folgenden Funktionen sind in Azure Data Factory verfügbar, sie sind aber nicht für Azure Synapse geplant.
+| Kategorie                 | Funktion    |  Azure Data Factory  | Azure Synapse Analytics |
+| ------------------------ | ---------- | :------------------: | :---------------------: |
+| **Integration Runtime**  | Verwenden von SSIS und SSIS Integration Runtime | ✓ | ✗ |
+|                          | Unterstützung für regionsübergreifende Integration Runtime (Datenflüsse) | ✓ | ✗ |
+|                          | Integration Runtime-Freigabe | ✓<br><small>*Kann für verschiedene Data Factory-Instanzen freigegeben werden* | ✗ |
+|                          | Gültigkeitsdauer | ✓ | ✗ |
+| **Azure Pipelines-Aktivitäten** | Aktivität „SSIS-Paket“ | ✓ | ✗ |
+|                          | Unterstützung für Power Query-Aktivität | ✓ | ✓ |
+| **Vorlagenkatalog und Knowledge Center** | Lösungsvorlagen | ✓<br><small>*Azure Data Factory-Vorlagenkatalog* | ✓<br><small>*Knowledge Center für den Synapse-Arbeitsbereich* |
+| **Integration von Git-Repository** | Git-Integration | ✓ | ✓ |
+| **Überwachung**           | Überwachen von Spark-Aufträgen für den Datenfluss | ✗ | ✓<br><small>*Nutzen der Synapse Spark-Pools* |
+|                          | Integration in Azure Monitor | ✓ | ✗ |
 
-* **Übertragen von SSIS-Paketen per Lift & Shift:** Sie haben in Azure Data Factory die Möglichkeit, SSIS-Pakete mithilfe der SSIS-Integration Runtime per Lift & Shift zu übertragen. Die SSIS-Integration Runtime und die Aktivität „SSIS-Paket ausführen“ sind in Synapse-Arbeitsbereichen nicht verfügbar. 
-* **Gültigkeitsdauer:** Die Gültigkeitsdauer ist eine Einstellung in der Azure Integration Runtime, die dem Spark-Cluster ermöglicht, in Zuordnungsdatenflüssen für einen gewissen Zeitraum nach Abschluss eines Datenflusses aktiv (*warm*) zu bleiben. Dieses Feature ist in Synapse-Arbeitsbereichen nicht verfügbar.
+> [!Note]
+> **Gültigkeitsdauer** ist eine Azure Integration Runtime-Einstellung, die es dem Spark-Cluster ermöglicht, während eines bestimmten Zeitraums nach einer Ausführung des Datenflusses *betriebsbereit zu bleiben*.
+>
 
-## <a name="azure-synapse-features-not-supported-in-azure-data-factory"></a>In Azure Data Factory nicht unterstützte Azure Synapse-Funktionen
-
-Die folgenden Funktionen sind in Azure Synapse verfügbar, sie sind aber nicht für Azure Data Factory geplant.
-
-* **Spark-Auftragsüberwachung von Zuordnungsdatenflüssen:** In Synapse ist die Spark-Engine im Abonnement des Benutzers enthalten, sodass Benutzer ausführliche Spark-Protokolle anzeigen können. In Azure Data Factory erfolgt die Auftragsausführung auf einem von Azure Data Factory verwalteten Spark-Cluster, und diese Informationen sind nicht verfügbar. 
-
-## <a name="azure-data-factory-features-that-behave-differently-in-synapse"></a>Azure Data Factory-Funktionen, die sich in Synapse anders verhalten
-
-Die folgenden Funktionen verhalten sich entweder anders oder sind zurzeit in Azure Synapse nicht vorhanden. 
-
-* **Wranglingdatenflüsse:** Die Aktivität „Wranglingdatenfluss“ ist zurzeit nur in Azure Data Factory verfügbar.
-* **Der Lösungsvorlagenkatalog:** In Azure Data Factory können Benutzer Pipelinevorlagen im Lösungsvorlagenkatalog suchen. In Synapse-Arbeitsbereichen enthält das Knowledge Center andere Vorlagen sowie zusätzliche Datasets und SQL-Skripts. 
-* **Git-Integration und eine native CI/CD-Lösung:** Zurzeit kann ein Synapse-Arbeitsbereich keine Verbindung mit einem Git-Repository herstellen. Außerdem wird nicht derselbe Prozess für Continuous Integration und Continuous Delivery wie in Azure Data Factory ausgeführt.
-* **Integration mit Azure Monitor:** Synapse-Arbeitsbereiche werden nicht wie Azure Data Factory mit Azure Monitor integriert.
-* **Hybridkonfiguration für die Integration Runtime:** Ein Benutzer kann innerhalb eines Synapse-Arbeitsbereichs nicht sowohl über eine verwaltete VNET-IR als auch über eine Azure IR verfügen. Diese Funktionalität wird in Azure Data Factory unterstützt.
-* **Integration Runtime-Freigabe:** Selbstgehostete Integration Runtimes können nicht zwischen Synapse-Arbeitsbereichen freigegeben werden. Diese Funktionalität wird in Azure Data Factory unterstützt.
-* **Regionsübergreifende Integration Runtimes für Datenflüsse:** Datenflüsse können nicht in Integration Runtimes in anderen Regionen als ein Synapse-Arbeitsbereich ausgeführt werden. Diese Funktionalität wird in Azure Data Factory unterstützt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

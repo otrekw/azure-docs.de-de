@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/16/2019
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: f3b492534bedde50d2413b88fa38cd6325ed5df7
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 32aa64a9343a8e3c62af4322b3320b28ce805064
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91328257"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97369190"
 ---
 # <a name="azure-security-benchmark-introduction"></a>Einführung zum Azure Security-Vergleichstest
 
@@ -27,7 +27,7 @@ Der Azure-Sicherheitsvergleichstest enthält eine Sammlung von wirkungsvollen Si
 - **Dienstbaselines:** Diese wenden die Kontrollelemente auf einzelne Azure-Dienste an, um Empfehlungen für die Sicherheitskonfiguration des jeweiligen Diensts zu geben.
 
 ## <a name="implement-the-azure-security-benchmark"></a>Implementieren des Azure-Sicherheitsvergleichstests
-- **Planen** Sie die Implementierung Ihres Azure-Sicherheitsvergleichstests, indem Sie die [Dokumentation](overview.md) für die Unternehmenskontrollelemente und dienstspezifischen Grundwerte zurate ziehen, um Ihr Kontrollframework und dessen Einhaltung der Richtlinien wie CIS (Controls v7.1) und NIST (SP800-53) zu planen.
+- **Planen** Sie die Implementierung Ihres Azure-Sicherheitsvergleichstests, indem Sie die [Dokumentation](overview.md) für die Unternehmenskontrollelemente und die dienstspezifischen Baselines zurate ziehen, um Ihr Kontrollframework und dessen Einhaltung der Richtlinien wie CIS (Controls v7.1) und NIST (SP 800-800-53) zu planen.
 - **Überwachen** Sie die Compliance des Status Ihres Azure-Sicherheitsvergleichstests (und anderer Steuerelementsätze) mit dem Azure Security Center-[Dashboard für die Einhaltung gesetzlicher Bestimmungen](../../security-center/security-center-compliance-dashboard.md).
 - **Richten Sie Schutzmaßnahmen ein**, um sichere Konfigurationen zu automatisieren und die Einhaltung des Azure-Sicherheitsvergleichstests (und anderer Anforderungen in Ihrer Organisation) mit Azure Blueprints und Azure Policy durchzusetzen.
  

@@ -3,12 +3,12 @@ title: Vorbereitung der Bereitstellung von eigenständigen Clustern
 description: Diese Dokumentation erläutert die Vorbereitung der Umgebung und Erstellung der Clusterkonfiguration. Diese Aktionen müssen vor der Bereitstellung eines Clusters durchgeführt werden, der eine Produktionsworkload verarbeiten soll.
 ms.topic: conceptual
 ms.date: 9/11/2018
-ms.openlocfilehash: 9e5ad37d803b2042fd57b0a325570e69d7b73038
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 277c7e047815b3b4171f7cced203ecbe5b68b155
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91842953"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509171"
 ---
 # <a name="plan-and-prepare-your-service-fabric-standalone-cluster-deployment"></a>Planen und Vorbereiten der Bereitstellung eines eigenständigen Service Fabric-Clusters
 
@@ -103,7 +103,7 @@ Wenn ein Clusteradministrator einen eigenständigen Service Fabric-Cluster konfi
 5. Wenn die Clustercomputer nicht über das Internet erreichbar sind, legen Sie in der Clusterkonfiguration Folgendes fest:
    * Deaktivieren der Telemetrie: Legen Sie unter *properties* die Option *"enableTelemetry": false* fest.
    * Automatisches Herunterladen von Fabric-Versionen und Benachrichtigungen zum nahenden Supportende der aktuellen Clusterversion deaktivieren: Legen Sie unter *properties* die Option *"fabricClusterAutoupgradeEnabled": true* fest.
-   * Selbst wenn der Netzwerk-/Internetzugriff auf die in der Whitelist aufgeführten Domänen beschränkt ist, sind die unten aufgeführten Domänen für ein automatisches Upgrade erforderlich: go.microsoft.com, download.microsoft.com.
+   * Selbst wenn der Netzwerk-/Internetzugriff auf zulässige Domänen beschränkt ist, sind die unten aufgeführten Domänen für ein automatisches Upgrade erforderlich: go.microsoft.com, download.microsoft.com.
 
 6. Legen Sie geeignete Service Fabric-Virenschutzausschlüsse fest:
 

@@ -7,12 +7,12 @@ ms.date: 9/12/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: a815295c4f2ab78cbd3aff82949d7c28197afd82
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: a0dd00709dbe8a1b0e037fe22750adea7e071162
+ms.sourcegitcommit: 287c20509c4cf21d20eea4619bbef0746a5cd46e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791918"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97372001"
 ---
 # <a name="introduction-to-azure-defender-for-kubernetes"></a>Einführung in Azure Defender für Kubernetes
 
@@ -20,7 +20,7 @@ Azure Kubernetes Service (AKS) ist der verwaltete Dienst von Microsoft für die 
 
 Azure Security Center und AKS bilden das beste cloudnative Kubernetes-Sicherheitsangebot und ermöglichen Umgebungshärtung, Workloadschutz und Laufzeitschutz, wie im Folgenden beschrieben.
 
-Aktivieren Sie zur Bedrohungserkennung für Ihre Kubernetes-Cluster **Azure Defender für Kubernetes** .
+Aktivieren Sie zur Bedrohungserkennung für Ihre Kubernetes-Cluster **Azure Defender für Kubernetes**.
 
 Die Bedrohungserkennung auf Hostebene für Ihre Linux-AKS-Knoten ist verfügbar, wenn Sie [Azure Defender für Server](defender-for-servers-introduction.md) aktivieren.
 
@@ -31,7 +31,7 @@ Die Bedrohungserkennung auf Hostebene für Ihre Linux-AKS-Knoten ist verfügbar,
 |Status des Release:|Allgemein verfügbar (Generally Available, GA)|
 |Preise:|**Azure Defender für Kubernetes** wird gemäß den Angaben in der [Preisübersicht](security-center-pricing.md) abgerechnet.|
 |Erforderliche Rollen und Berechtigungen:|**Sicherheitsadministrator** kann Warnungen verwerfen.<br>Der **Sicherheitsleseberechtigte** kann Ergebnisse anzeigen.|
-|Clouds:|![Ja](./media/icons/yes-icon.png) Kommerzielle Clouds<br>![Nein](./media/icons/no-icon.png) National/Sovereign (US Gov, China Gov, andere Gov)|
+|Clouds:|![Ja](./media/icons/yes-icon.png) Kommerzielle Clouds<br>![Ja](./media/icons/yes-icon.png) China Gov<br>![Nein](./media/icons/no-icon.png) US Gov, andere Gov|
 |||
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-kubernetes"></a>Welche Vorteile bietet Azure Defender für Kubernetes?
@@ -72,7 +72,7 @@ Sie können sehen, dass Security Center die folgenden Elemente empfängt und ana
 - Überwachungsprotokolle vom API-Server
 - Unformatierte Sicherheitsereignisse vom Log Analytics-Agent
 - Clusterkonfigurationsinformationen vom AKS-Cluster
-- Workloadkonfiguration von Azure Policy (über das **Azure Policy-Add-On für Kubernetes** ) [Weitere Informationen zu den bewährten Methoden zum Workloadschutz mithilfe der Kubernetes-Zugangssteuerung](container-security.md#workload-protection-best-practices-using-kubernetes-admission-control)
+- Workloadkonfiguration von Azure Policy (über das **Azure Policy-Add-On für Kubernetes**) [Weitere Informationen zu den bewährten Methoden zum Workloadschutz mithilfe der Kubernetes-Zugangssteuerung](container-security.md#workload-protection-best-practices-using-kubernetes-admission-control)
 
 :::image type="content" source="./media/defender-for-kubernetes-intro/kubernetes-service-security-center-integration-detailed.png" alt-text="Allgemeine Architektur der Interaktion zwischen Azure Security Center, dem Azure Kubernetes-Dienst und Azure Policy" lightbox="./media/defender-for-kubernetes-intro/kubernetes-service-security-center-integration-detailed.png":::
 

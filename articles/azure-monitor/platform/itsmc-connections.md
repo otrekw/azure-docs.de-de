@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/12/2020
-ms.openlocfilehash: 410281ce67faf345539701389d4b03351d403b99
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: a0ef8d9f28f90db77686c3139c8b45eccfb669aa
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186064"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938816"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>Verbinden von ITSM-Produkten/-Diensten mit dem ITSM-Connector
 Dieser Artikel bietet Informationen dazu, wie Sie die Verbindung zwischen Ihrem ITSM-Produkt bzw. -Dienst und dem ITSM-Connector (ITSMC) in Log Analytics konfigurieren, um Arbeitselemente zentral zu verwalten. Weitere Informationen zu ITSMC finden Sie in der [Übersicht](./itsmc-overview.md).
@@ -25,8 +25,7 @@ Die folgenden ITSM-Produkte und -Dienste werden unterstützt. Wählen Sie ein Pr
 
 > [!NOTE]
 > 
-> Ab dem 1. Oktober 2020 werden ITSM-Integrationen von Cherwell und Provance in Azure-Warnungen für neue Kunden nicht mehr aktiviert. Neue ITSM-Verbindungen werden nicht unterstützt. 
-> Bestehende ITSM-Verbindungen werden unterstützt.
+> Unseren Cherwell- und Provance-Kunden schlagen wir die Verwendung der [Webhookaktion](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups#webhook) für Cherwell- und Provance-Endpunkte als weitere Lösung für die Integration vor.
 
 ## <a name="connect-system-center-service-manager-to-it-service-management-connector-in-azure"></a>Verbinden von System Center Service Manager mit dem ITSM-Connector in Azure
 
@@ -310,8 +309,7 @@ Die folgenden Abschnitte enthalten ausführliche Informationen zum Verbinden Ihr
 
 > [!NOTE]
 > 
-> Ab dem 1. Oktober 2020 wird die ITSM-Integration von Provance in Azure-Warnungen für neue Kunden nicht mehr aktiviert. Neue ITSM-Verbindungen werden nicht unterstützt. 
-> Bestehende ITSM-Verbindungen werden unterstützt.
+> Unseren Provance-Kunden schlagen wir die Verwendung der [Webhookaktion](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups#webhook) für Cherwell- und Provance-Endpunkte als weitere Lösung für die Integration vor.
 
 ### <a name="prerequisites"></a>Voraussetzungen
 
@@ -368,8 +366,7 @@ Die folgenden Abschnitte enthalten ausführliche Informationen zum Verbinden Ihr
 
 > [!NOTE]
 > 
-> Ab dem 1. Oktober 2020 wird die ITSM-Integration von Cherwell in Azure-Warnungen für neue Kunden nicht mehr aktiviert. Neue ITSM-Verbindungen werden nicht unterstützt. 
-> Bestehende ITSM-Verbindungen werden unterstützt.
+> Unseren Cherwell-Kunden schlagen wir die Verwendung der [Webhookaktion](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups#webhook) für Cherwell- und Provance-Endpunkte als weitere Lösung für die Integration vor.
 
 ### <a name="prerequisites"></a>Voraussetzungen
 

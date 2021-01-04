@@ -1,18 +1,18 @@
 ---
 title: 'Schnellstart: Erstellen eines Azure Purview-Kontos im Azure-Portal (Vorschauversion)'
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie ein Azure Purview-Konto erstellen und Berechtigungen für dessen Verwendung konfigurieren.
-author: hophan
+author: hophanms
 ms.author: hophan
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: quickstart
 ms.date: 10/23/2020
-ms.openlocfilehash: c9e0b155a4cf34373bb6d851241dc62ddd661045
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 3119152e4a7d0dc799dfe273722101c95c11c0c9
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602365"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400385"
 ---
 # <a name="quickstart-create-an-azure-purview-account-in-the-azure-portal"></a>Schnellstart: Erstellen eines Azure Purview-Kontos im Azure-Portal
 
@@ -30,6 +30,10 @@ In dieser Schnellstartanleitung wird ein Azure Purview-Konto erstellt.
 * Ihr Konto muss zum Erstellen von Ressourcen im Abonnement berechtigt sein.
 
 * Wenn durch **Azure Policy** alle Anwendungen an der Erstellung eines **Speicherkontos** und eines **EventHub-Namespace** gehindert werden, benötigen Sie eine Richtlinienausnahme mit einem Tag, das im Rahmen der Erstellung eines Purview-Kontos eingegeben werden kann. Das liegt in erster Linie daran, dass für ein Purview-Konto jeweils eine verwaltete Ressourcengruppe mit einem darin enthaltenen Speicherkonto und einem EventHub-Namespace erstellt werden muss.
+
+    > [!important]
+    > Sie müssen diesen Schritt nicht ausführen, wenn Sie nicht über Azure Policy verfügen oder eine vorhandene Azure Policy-Instanz die Erstellung eines **Speicherkontos** und **EventHub-Namespaces** nicht blockiert.
+
     1. Suchen Sie im Azure-Portal nach **Policy**.
     1. Gehen Sie wie unter [Tutorial: Erstellen einer benutzerdefinierten Richtliniendefinition](https://docs.microsoft.com/azure/governance/policy/tutorials/create-custom-policy-definition) beschrieben vor, oder ändern Sie die vorhandene Richtlinie, um zwei Ausnahmen mit dem Operator `not` und dem Tag `resourceBypass` hinzuzufügen:
 
@@ -151,7 +155,7 @@ Sollten nach dem Klicken auf „Hinzufügen“ zwei Optionen angezeigt werden, d
 
 1. Wählen Sie **Rollenzuweisung hinzufügen** aus.
 
-1. Geben Sie für den Rollentyp der Rolle **Datenkurator für Purview** oder **Datenquellenadministrator für Purview** einen entsprechenden Wert an – abhängig davon, wofür der Dienstprinzipal verwendet werden soll. (Weitere Informationen finden Sie unter [Rollenbasierte Zugriffssteuerung auf der Datenebene von Azure Purview](catalog-permissions.md).)
+1. Geben Sie für den Rollentyp der Rolle **Datenkurator für Purview** oder **Datenquellenadministrator für Purview** einen entsprechenden Wert an – abhängig davon, wofür der Sicherheitsprinzipal verwendet werden soll (weitere Informationen finden Sie unter [Katalogberechtigungen](catalog-permissions.md) und [Anwendungs- und Dienstprinzipalobjekte in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)).
 
 1. Behalten Sie unter **Zugriff zuweisen zu** den Standardwert **Benutzer, Gruppe oder Dienstprinzipal** bei.
 

@@ -3,12 +3,12 @@ title: Bewährte Methoden
 description: Erfahren Sie, welche bewährten Methoden und nützlichen Tipps es für das Entwickeln Ihrer Azure Batch-Lösungen gibt.
 ms.date: 11/18/2020
 ms.topic: conceptual
-ms.openlocfilehash: 6aaed76ad398b5278850dd66ce1da6d5bd33807f
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 0f19fceca0212bd0a05d7caa311403b173c19de5
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95254662"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563176"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch: bewährte Methoden
 
@@ -140,6 +140,10 @@ Ein [Serverknoten](nodes-and-pools.md#nodes) ist ein virtueller Azure-Computer (
 ### <a name="idempotent-start-tasks"></a>Idempotente Startaufgaben
 
 Wie andere Aufgaben auch sollte die [Knotenstartaufgabe](jobs-and-tasks.md#start-task) idempotent sein, da sie bei jedem Neustart des Knotens erneut ausgeführt wird. Bei einer idempotenten Aufgabe handelt es sich um eine Aufgabe, die bei mehreren Wiederholungen ein konsistentes Ergebnis erzeugt.
+
+### <a name="isolated-nodes"></a>Isolierte Knoten
+
+Ziehen Sie die Verwendung von isolierten VM-Größen für Workloads mit Compliance- oder regulatorischen Anforderungen in Betracht. Zu den unterstützten isolierten Größen im Konfigurationsmodus des virtuellen Computers gehören `Standard_E80ids_v4`, `Standard_M128ms`, `Standard_F72s_v2`, `Standard_G5`, `Standard_GS5` und `Standard_E64i_v3`. Weitere Informationen zu isolierten VM-Größen finden Sie unter [Isolation von virtuellen Computern in Azure](https://docs.microsoft.com/azure/virtual-machines/isolation).
 
 ### <a name="manage-long-running-services-via-the-operating-system-services-interface"></a>Verwalten zeitintensiver Dienste über die Betriebssystem-Diensteschnittstelle
 

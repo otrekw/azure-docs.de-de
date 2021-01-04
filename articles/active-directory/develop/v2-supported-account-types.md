@@ -12,12 +12,12 @@ ms.date: 07/14/2020
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 50a0859b58e2db0d3f644db01cfcde8c533b6871
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f0895cfc14b0237db8f2f762602fee949354e6cb
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86518129"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347454"
 ---
 # <a name="supported-account-types"></a>Unterstützte Kontotypen
 
@@ -43,7 +43,7 @@ In der öffentlichen Microsoft Azure-Cloud können die meisten App-Typen Benutze
 Einige Kontotypen können mit bestimmten Authentifizierungsabläufen nicht verwendet werden. Auf dem Desktop betrifft dies beispielsweise UWP- oder Daemon-Anwendungen:
 
 - Daemon-Anwendungen können nur mit Azure AD-Organisationen verwendet werden. Es wäre nicht sinnvoll, eine Daemon-Anwendung zu verwenden, um persönliche Microsoft-Konten zu manipulieren. Dazu würde niemals Administratorzustimmung erteilt.
-- Sie können den integrierten Windows-Authentifizierungsflow nur mit Geschäfts-, Schul- oder Unikonten (in Ihrer oder einer anderen Organisation) verwenden. Die integrierte Windows-Authentifizierung funktioniert mit Domänenkonten und setzt voraus, dass die Computer in die Domäne oder in Azure AD eingebunden sind. Dieser Flow ist für persönliche Microsoft-Konten nicht sinnvoll.
+- Sie können den integrierten Windows-Authentifizierungsflow nur mit Geschäfts-, Schul- oder Unikonten (in Ihrer oder einer anderen Organisation) verwenden. Die integrierte Windows-Authentifizierung funktioniert mit Domänenkonten und setzt voraus, dass die Computer in eine Domäne oder in Azure AD eingebunden sind. Dieser Flow ist für persönliche Microsoft-Konten nicht sinnvoll.
 - Die [Gewährung der Kennwortanmeldeinformationen des Ressourcenbesitzers](./v2-oauth-ropc.md) (Benutzername/Kennwort) kann nicht mit persönlichen Microsoft-Konten verwendet werden. Persönliche Microsoft-Konten erfordern, dass der Benutzer bei jeder Anmeldesitzung dem Zugriff auf persönliche Ressourcen zustimmt. Daher ist dieses Verhalten mit nicht-interaktiven Flows nicht kompatibel.
 
 ## <a name="account-types-in-national-clouds"></a>Kontotypen in nationalen Clouds

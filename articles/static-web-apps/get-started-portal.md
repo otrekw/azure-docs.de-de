@@ -1,20 +1,20 @@
 ---
 title: 'Schnellstart: Erstellen Ihrer ersten statischen Web-App mit Azure Static Web Apps und dem Azure-Portal'
-description: Hier wird beschrieben, wie Sie mit dem Azure-Portal eine Instanz von Azure Static Web Apps erstellen.
+description: Erfahren Sie, wie Sie mit dem Azure-Portal eine statische Website für Azure Static Web Apps bereitstellen.
 services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 09/03/2020
 ms.author: cshoe
-ms.openlocfilehash: b009b34be69e48ae6205cd9ab88d1583ca9c6561
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: aab99721b61ababe218e509ab1078198b5f4152b
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91280560"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97030364"
 ---
-# <a name="quickstart-building-your-first-static-web-app-in-the-azure-portal"></a>Schnellstart: Erstellen Ihrer ersten statischen Web-App im Azure-Portal
+# <a name="quickstart-building-your-first-static-site-in-the-azure-portal"></a>Schnellstart: Erstellen Ihrer ersten statischen Website im Azure-Portal
 
 Azure Static Web Apps veröffentlicht eine Website in einer Produktionsumgebung, indem Apps aus einem GitHub-Repository erstellt werden. In dieser Schnellstartanleitung stellen Sie über das Azure-Portal eine Webanwendung in Azure Static Web Apps bereit.
 
@@ -51,7 +51,7 @@ Konfigurieren Sie im Abschnitt _Grundlagen_ zunächst Ihre neue App, und verknü
 
 Geben Sie nach der Anmeldung mit GitHub die Informationen zum Repository ein.
 
-:::image type="content" source="media/getting-started-portal/repository-details.png" alt-text="Abschnitt „Grundlagen“":::
+:::image type="content" source="media/getting-started-portal/repository-details.png" alt-text="Details zum Repository":::
 
 1. Wählen Sie Ihre bevorzugte _Organisation_ aus.
 1. Wählen Sie in der Dropdownliste _Repository_ den Eintrag **my-first-web-static-app** aus.
@@ -94,18 +94,18 @@ Geben Sie nach der Anmeldung mit GitHub die Informationen zum Repository ein.
 
 1. Klicken Sie auf **Überprüfen + erstellen**.
 
-    :::image type="content" source="media/getting-started-portal/review-create.png" alt-text="Abschnitt „Grundlagen“":::
+    :::image type="content" source="media/getting-started-portal/review-create.png" alt-text="Schaltfläche „Bewerten + erstellen“":::
 
     > [!NOTE]
     > Sie können die [Workflowdatei](github-actions-workflow.md) bearbeiten, um diese Werte nach der Erstellung der App zu ändern.
 
 1. Klicken Sie auf **Erstellen**.
 
-    :::image type="content" source="media/getting-started-portal/create-button.png" alt-text="Abschnitt „Grundlagen“":::
+    :::image type="content" source="media/getting-started-portal/create-button.png" alt-text="Schaltfläche „Erstellen“":::
 
 1. Wählen Sie **Zu Ressource wechseln** aus.
 
-    :::image type="content" source="media/getting-started-portal/resource-button.png" alt-text="Abschnitt „Grundlagen“":::
+    :::image type="content" source="media/getting-started-portal/resource-button.png" alt-text="Schaltfläche „Zu Ressource wechseln“":::
 
 [!INCLUDE [view website](../../includes/static-web-apps-get-started-view-website.md)]
 

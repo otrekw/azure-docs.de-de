@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.custom: mvc, seodec18
 ms.date: 12/07/2018
 ms.author: mbaldwin
-ms.openlocfilehash: b911181abea06894873e64da51afbb8799f1066a
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 42bfa52721160a469db2aa0507dadfa85ff41389
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927837"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97508270"
 ---
 # <a name="troubleshooting-the-azure-dedicated-hsm-service"></a>Behandeln von Problemen mit dem Azure Dedicated HSM-Dienst
 
@@ -29,7 +29,7 @@ Der Dienst „Azure Dedicated HSM“ verfügt über zwei besondere Facetten. Die
 
 ## <a name="hsm-registration"></a>HSM-Registrierung
 
-Dedicated HSM ist nicht frei für die Nutzung zugänglich, weil bei diesem Dienst Hardwareressourcen in der Cloud bereitgestellt werden und es sich daher um eine wertvolle Ressource handelt, die geschützt werden muss. Aus diesem Grund nutzen wir einen Whitelistingprozess per E-Mail über HSMrequest@microsoft.com. 
+Dedicated HSM ist nicht frei für die Nutzung zugänglich, weil bei diesem Dienst Hardwareressourcen in der Cloud bereitgestellt werden und es sich daher um eine wertvolle Ressource handelt, die geschützt werden muss. Aus diesem Grund nutzen wir einen Positivlistenprozess per E-Mail über HSMrequest@microsoft.com. 
 
 ### <a name="getting-access-to-dedicated-hsm"></a>Anfordern des Zugriffs auf Dedicated HSM
 
@@ -69,7 +69,7 @@ Für Bereitstellungen kann ein Fehler auftreten, wenn Sie zwei HSMs pro Stempel 
 Wenn die Kapazitätsgrenze für einen bestimmten Stempel oder eine Region nahezu erreicht ist (also fast alle verfügbaren HSMs bereitgestellt wurden), kann dies zu Bereitstellungsfehlern führen. Jeder Stempel verfügt über 11 HSMs für Kunden. Dies sind also 22 pro Region. Pro Stempel sind zudem drei Ersatzgeräte und ein Testgerät vorhanden. Wenn Sie der Meinung sind, dass Sie ggf. eine Grenze erreicht haben, können Sie eine E-Mail an HSMrequest@microsoft.com senden, um Informationen zum Stand bestimmter Stempel zu erhalten.
 
 ###  <a name="how-do-i-see-hsms-when-provisioned"></a>Anzeigen von HSMs nach der Bereitstellung
-Da Dedicated HSM ein auf die Whitelist gesetzter Dienst ist, wird er im Azure-Portal als „Ausgeblendeter Typ“ angesehen. Zum Anzeigen der HSM-Ressourcen müssen Sie das Kontrollkästchen „Ausgeblendete Typen anzeigen“ wie unten dargestellt aktivieren. Die NIC-Ressource folgt immer auf das HSM und ist ein guter Ort, um die IP-Adresse des HSM zu ermitteln, bevor SSH für die Verbindungsherstellung genutzt wird.
+Da Dedicated HSM ein auf die Positivliste gesetzter Dienst ist, wird er im Azure-Portal als „Ausgeblendeter Typ“ angesehen. Zum Anzeigen der HSM-Ressourcen müssen Sie das Kontrollkästchen „Ausgeblendete Typen anzeigen“ wie unten dargestellt aktivieren. Die NIC-Ressource folgt immer auf das HSM und ist ein guter Ort, um die IP-Adresse des HSM zu ermitteln, bevor SSH für die Verbindungsherstellung genutzt wird.
 
 ![Screenshot, auf dem die Option „Ausgeblendete Typen anzeigen“ aktiviert ist](./media/troubleshoot/hsm-provisioned.png)
 
@@ -100,7 +100,7 @@ Speichern Sie die Anmeldeinformationen beim Initialisieren des HSM auf sichere W
 
 Die Angabe falscher Anmeldeinformationen für HSMs kann sehr negative Folgen haben. Unten ist das Standardverhalten für HSM-Rollen angegeben.
 
-| Role | Schwellenwert (Anzahl von Wiederholungsversuchen) | Ergebnis bei zu vielen fehlerhaften Anmeldeversuchen | Wiederherstellung |
+| Rolle | Schwellenwert (Anzahl von Wiederholungsversuchen) | Ergebnis bei zu vielen fehlerhaften Anmeldeversuchen | Wiederherstellung |
 |--|--|--|--|
 | HSM-Anmeldung | 3 |  HSM wird auf Null zurückgesetzt (alle HSM-Objektidentitäten und alle Partitionen sind verloren)  |  Das HSM muss neu initialisiert werden. Inhalte können aus Sicherungen wiederhergestellt werden. | 
 | Partitionsanmeldung | 10 |  Die Partition wird auf Null zurückgesetzt. |  Die Partition muss neu initialisiert werden. Inhalte können aus der Sicherung wiederhergestellt werden. |  

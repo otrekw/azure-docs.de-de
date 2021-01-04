@@ -1,20 +1,20 @@
 ---
-title: 'Schnellstart: Erstellen Ihrer ersten statischen Web-App mit Azure Static Web Apps'
-description: Hier erfahren Sie, wie Sie eine Azure Static Web Apps-Website erstellen.
+title: 'Schnellstart: Erstellen Ihrer ersten statischen Website mit Azure Static Web Apps'
+description: Erfahren Sie, wie Sie eine statische Website für Azure Static Web Apps bereitstellen.
 services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 08/13/2020
 ms.author: cshoe
-ms.openlocfilehash: a78f74b4aadd26af141ed84ca99a092693f56af5
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: eb2356451c349f894c9ca74b1359f6a02d0e002a
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94369561"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562513"
 ---
-# <a name="quickstart-building-your-first-static-web-app"></a>Schnellstart: Erstellen Ihrer ersten statischen Web-App
+# <a name="quickstart-building-your-first-static-site-with-azure-static-web-apps"></a>Schnellstart: Erstellen Ihrer ersten statischen Website mit Azure Static Web Apps
 
 Azure Static Web Apps veröffentlicht eine Website in einer Produktionsumgebung, indem Apps aus einem GitHub-Repository erstellt werden. In dieser Schnellstartanleitung stellen Sie mithilfe der Visual Studio Code-Erweiterung eine Webanwendung in Azure Static Web Apps bereit.
 
@@ -52,7 +52,7 @@ Falls Sie noch nicht über ein Azure-Abonnement verfügen, können Sie ein [kost
 
     :::image type="content" source="media/getting-started/extension-create-app.png" alt-text="Erstellen einer statischen Web-App":::
 
-1. Wählen Sie den Branch **master** aus, und drücken Sie die **EINGABETASTE**.
+1. Wählen Sie den **main**-Branch aus, und drücken Sie die **EINGABETASTE**.
 
     :::image type="content" source="media/getting-started/extension-branch.png" alt-text="Branchname":::
 

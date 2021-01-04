@@ -4,12 +4,12 @@ ms.author: dobett
 ms.service: iot-pnp
 ms.topic: include
 ms.date: 11/24/2020
-ms.openlocfilehash: cd7d4d3653dc775a949da229e4005d297f7810aa
-ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
+ms.openlocfilehash: 2eff30333362d461f196972fbaedbeac8f2ae7c9
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96126099"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033862"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -27,7 +27,7 @@ Wenn Sie das Beispiel ausführen, um eine Verbindung mit IoT Central herzustell
 
 Mit der Funktion `main` werden folgende Aktionen ausgeführt:
 
-* Bereitstellen des Geräts mithilfe von DPS. Die Bereitstellungsinformationen enthalten die Modell-ID.
+* Bereitstellen des Geräts mithilfe von DPS. Die Bereitstellungsinformationen enthalten die Modell-ID. IoT Central verwendet die Modell-ID zum Identifizieren oder Generieren der Gerätevorlage für dieses Gerät. Weitere Informationen finden Sie unter [Zuordnen eines Geräts zu einer Gerätevorlage](../articles/iot-central/core/concepts-get-connected.md#associate-a-device-with-a-device-template).
 * Erstellen eines Objekts vom Typ `Device_client` und Festlegen der Modell-ID `dtmi:com:example:Thermostat;1` vor dem Öffnen der Verbindung
 * Senden der Eigenschaft `maxTempSinceLastReboot` an IoT Central
 * Erstellen eines Listeners für den Befehl `getMaxMinReport`
@@ -113,7 +113,7 @@ async def main():
     # ...
 ```
 
-Die Funktion `provision_device` verwendet DPS, um das Gerät bereitzustellen und bei IoT Central zu registrieren. Die Funktion enthält die Gerätemodell-ID in der Bereitstellungsnutzlast:
+Die Funktion `provision_device` verwendet DPS, um das Gerät bereitzustellen und bei IoT Central zu registrieren. Die Funktion enthält die Gerätemodell-ID, die IoT Central zum [Zuordnen eines Geräts zu einer Gerätevorlage](../articles/iot-central/core/concepts-get-connected.md#associate-a-device-with-a-device-template) in der Bereitstellungsnutzlast verwendet:
 
 ```python
 async def provision_device(provisioning_host, id_scope, registration_id, symmetric_key, model_id):

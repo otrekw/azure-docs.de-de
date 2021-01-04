@@ -1,18 +1,18 @@
 ---
 title: Vorlagenfunktionen – Objekte
-description: Hier werden die Funktionen beschrieben, die in einer Azure Resource Manager-Vorlage zum Arbeiten mit Objekten verwendet werden können.
+description: Informationen zu den Funktionen, die in einer Azure Resource Manager-Vorlage (ARM-Vorlage) zum Arbeiten mit Objekten verwendet werden können.
 ms.topic: conceptual
 ms.date: 11/18/2020
-ms.openlocfilehash: 7ed317b3506f00e71bbf97d5564cacec05032744
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 5e13177db1a7cf2f19a822363cb3884474566add
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "96004516"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920439"
 ---
 # <a name="object-functions-for-arm-templates"></a>Objektfunktionen für ARM-Vorlagen
 
-Resource Manager stellt mehrere Funktionen für das Arbeiten mit Objekten in Ihrer ARM-Vorlage (Azure Resource Manager) bereit.
+Resource Manager stellt mehrere Funktionen für das Arbeiten mit Objekten in Ihrer Azure Resource Manager-Vorlage (ARM-Vorlage) bereit:
 
 * [contains](#contains)
 * [createObject](#createobject)
@@ -792,4 +792,4 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Eine Beschreibung der Abschnitte in einer Azure Resource Manager-Vorlage finden Sie unter [Grundlegendes zur Struktur und Syntax von ARM-Vorlagen](template-syntax.md).
+* Eine Beschreibung der Abschnitte in einer ARM-Vorlage finden Sie unter [Grundlegendes zur Struktur und Syntax von ARM-Vorlagen](template-syntax.md).

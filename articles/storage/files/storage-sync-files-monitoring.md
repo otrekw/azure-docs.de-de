@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 09/28/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 59c489fac8bf02263cc51833675af414d5de6a52
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 87d0b740ec4f7ffb8966b386c273c023f69c42d8
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94686003"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008298"
 ---
 # <a name="monitor-azure-file-sync"></a>Überwachen der Azure-Dateisynchronisierung
 
@@ -46,10 +46,10 @@ In Azure Monitor sind die folgenden Metriken für die Azure-Dateisynchronisierun
 |-|-|
 | Bytes synchronisiert | Größe der übertragenen Daten (Upload und Download).<br><br>Einheit: Byte<br>Aggregationstyp: SUM<br>Verfügbare Dimensionen: Name des Serverendpunkts, Synchronisierungsrichtung, Name der Synchronisierungsgruppe |
 | Cloudtieringrückruf | Größe der zurückgerufenen Daten.<br><br>**Hinweis**: Diese Metrik wird in Zukunft entfernt. Verwenden Sie die Metrik „ Cloudtiering-Rückrufgröße“, um die Größe der zurückgerufenen Daten zu überwachen.<br><br>Einheit: Byte<br>Aggregationstyp: SUM<br>Verfügbare Dimension: Servername |
-| Cloudtiering-Rückrufgröße | Größe der zurückgerufenen Daten.<br><br>Einheit: Byte<br>Aggregationstyp: SUM<br>Verfügbare Dimension: Servername, Name der Synchronisierungsgruppe |
-| Cloudtiering-Rückrufgröße nach Anwendung | Größe der zurückgerufenen Daten nach Anwendung.<br><br>Einheit: Byte<br>Aggregationstyp: SUM<br>Verfügbare Dimension: Anwendungsname, Servername, Name der Synchronisierungsgruppe |
-| Cloudtiering-Rückrufdurchsatz | Größe des Datenrückruf-Durchsatzes.<br><br>Einheit: Byte<br>Aggregationstyp: SUM<br>Verfügbare Dimension: Servername, Name der Synchronisierungsgruppe |
-| Dateien ohne Synchronisierung | Anzahl von Dateien, für die keine Synchronisierung möglich ist.<br><br>Einheit: Anzahl<br>Aggregationstyp: SUM<br>Verfügbare Dimensionen: Name des Serverendpunkts, Synchronisierungsrichtung, Name der Synchronisierungsgruppe |
+| Cloudtiering-Rückrufgröße | Größe der zurückgerufenen Daten.<br><br>Einheit: Byte<br>Aggregationstyp: SUM<br>Verfügbare Dimensionen: Servername, Name der Synchronisierungsgruppe |
+| Cloudtiering-Rückrufgröße nach Anwendung | Größe der zurückgerufenen Daten nach Anwendung.<br><br>Einheit: Byte<br>Aggregationstyp: SUM<br>Verfügbare Dimensionen: Anwendungsname, Servername, Name der Synchronisierungsgruppe |
+| Cloudtiering-Rückrufdurchsatz | Größe des Datenrückruf-Durchsatzes.<br><br>Einheit: Byte<br>Aggregationstyp: SUM<br>Verfügbare Dimensionen: Servername, Name der Synchronisierungsgruppe |
+| Dateien ohne Synchronisierung | Anzahl von Dateien, für die keine Synchronisierung möglich ist.<br><br>Einheit: Anzahl<br>Aggregationstypen: Durchschnitt, Summe<br>Verfügbare Dimensionen: Name des Serverendpunkts, Synchronisierungsrichtung, Name der Synchronisierungsgruppe |
 | Dateien synchronisiert | Anzahl der übertragenen Dateien (Upload und Download)<br><br>Einheit: Anzahl<br>Aggregationstyp: SUM<br>Verfügbare Dimensionen: Name des Serverendpunkts, Synchronisierungsrichtung, Name der Synchronisierungsgruppe |
 | Onlinestatus des Servers | Anzahl von Taktsignalen, die vom Server empfangen wurden.<br><br>Einheit: Anzahl<br>Aggregationstyp: Maximum<br>Verfügbare Dimension: Servername |
 | Ergebnis der Synchronisierungssitzung | Ergebnis der Synchronisierungssitzung (1 = erfolgreiche Synchronisierungssitzung, 0 = fehlerhafte Synchronisierungssitzung)<br><br>Einheit: Anzahl<br>Aggregationstypen: Maximum<br>Verfügbare Dimensionen: Name des Serverendpunkts, Synchronisierungsrichtung, Name der Synchronisierungsgruppe |

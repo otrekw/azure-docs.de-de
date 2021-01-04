@@ -7,12 +7,12 @@ author: vladvino
 ms.author: apimpm
 ms.topic: quickstart
 ms.date: 09/14/2020
-ms.openlocfilehash: 19080679291b88b693c95bd71f8ddc0e59286356
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: fdf7e842959e09a8ec35017031f745cb16d13c6d
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90057349"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400402"
 ---
 # <a name="quickstart-create-a-new-azure-api-management-service-instance-using-visual-studio-code"></a>Schnellstart: Erstellen einer neuen Azure API Management-Dienstinstanz mithilfe von Visual Studio Code
 
@@ -55,7 +55,7 @@ Eine neue API Management-Instanz und eine übergeordnete Ressourcengruppe werde
 >
 > Die SKU *Verbrauch* kann in weniger als einer Minute erstellt werden. Die Erstellung anderer SKUs kann jedoch 30 bis 40 Minuten dauern.
 
-An diesem Punkt können Sie Ihre erste API importieren und veröffentlichen. Darüber hinaus können Sie gängige API Management-Vorgänge innerhalb der Erweiterung für Visual Studio Code durchführen. Weitere Informationen finden Sie in der Dokumentation zur [API Management-Erweiterung für Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-apimanagement&ssr=false#overview).
+An diesem Punkt können Sie Ihre erste API importieren und veröffentlichen. Darüber hinaus können Sie gängige API Management-Vorgänge innerhalb der Erweiterung für Visual Studio Code durchführen. Weitere Informationen finden Sie im [Tutorial](visual-studio-code-tutorial.md).
 
 ![Neu erstellte API Management-Instanz im Bereich der API Management-Erweiterung in Visual Studio Code](./media/vscode-create-service-instance/vscode-apim-instance.png)
 
@@ -70,4 +70,4 @@ Alternativ können Sie auf **Delete API Management** (API Management-Instanz l�
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Importieren und Veröffentlichen Ihrer ersten API](import-and-publish.md)
+> [Importieren und Verwalten von APIs mit der API Management-Erweiterung](visual-studio-code-tutorial.md)

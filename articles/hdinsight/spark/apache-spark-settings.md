@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: 231ab5cc93d98d7356d47472b7e160ddd3ade790
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: c2e2daf6d8c9afa6ffef03b088ec9a7dc144cf47
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545938"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97504932"
 ---
 # <a name="configure-apache-spark-settings"></a>Konfigurieren von Apache Spark-Einstellungen
 
@@ -85,7 +85,7 @@ In der folgenden Abbildung sind wichtige Spark-Objekte dargestellt: das Treiberp
 
 Spark-Aufträge verwenden Workerressourcen, insbesondere Arbeitsspeicher. Daher werden Spark-Konfigurationswerte für Executors von Workerknoten häufig angepasst.
 
-Dabei werden die folgenden drei Schlüsselparameter zur Optimierung von Spark-Konfigurationen zur Verbesserung von Anwendungsanforderungen häufig angepasst: `spark.executor.instances`, `spark.executor.cores` und `spark.executor.memory`. Ein Executor ist ein Prozess, der für eine Spark-Anwendung gestartet wird. Ein Executor wird auf dem Workerknoten ausgeführt und ist für die Ausführung der Aufgaben für die Anwendung zuständig. Die Standardanzahl von Workerknoten und deren Größe für jeden Cluster bestimmen die Anzahl der Executors und deren Größe. Diese Werte werden in `spark-defaults.conf` auf den Hauptknoten des Clusters gespeichert.  Sie können diese Werte in einem ausgeführten Cluster durch Auswählen von **Custom spark-defaults** auf der Ambari-Webbenutzeroberfläche bearbeiten.  Nachdem Sie Änderungen vorgenommen haben, werden Sie aufgefordert, alle betroffenen Dienste neu zu starten ( **Restart** ).
+Dabei werden die folgenden drei Schlüsselparameter zur Optimierung von Spark-Konfigurationen zur Verbesserung von Anwendungsanforderungen häufig angepasst: `spark.executor.instances`, `spark.executor.cores` und `spark.executor.memory`. Ein Executor ist ein Prozess, der für eine Spark-Anwendung gestartet wird. Ein Executor wird auf dem Workerknoten ausgeführt und ist für die Ausführung der Aufgaben für die Anwendung zuständig. Die Standardanzahl von Workerknoten und deren Größe für jeden Cluster bestimmen die Anzahl der Executors und deren Größe. Diese Werte werden in `spark-defaults.conf` auf den Hauptknoten des Clusters gespeichert.  Sie können diese Werte in einem ausgeführten Cluster durch Auswählen von **Custom spark-defaults** auf der Ambari-Webbenutzeroberfläche bearbeiten.  Nachdem Sie Änderungen vorgenommen haben, werden Sie aufgefordert, alle betroffenen Dienste neu zu starten (**Restart**).
 
 > [!NOTE]  
 > Diese drei Konfigurationsparameter können auf Clusterebene (für alle Anwendungen, die im Cluster ausgeführt werden) konfiguriert und auch für jede einzelne Anwendung angegeben werden.
@@ -121,7 +121,7 @@ YARN steuert den maximal von den Containern auf jedem Spark-Knoten verwendeten G
 
 ![Übersicht über die YARN-Spark-Arbeitsspeicherverwaltung](./media/apache-spark-settings/hdi-yarn-spark-memory.png)
 
-## <a name="change-parameters-for-an-application-running-in-jupyter-notebook"></a>Ändern der Parameter für eine Anwendung, die im Jupyter Notebook ausgeführt wird
+## <a name="change-parameters-for-an-application-running-in-jupyter-notebook"></a>Ändern der Parameter für eine in Jupyter Notebook ausgeführte Anwendung
 
 Spark-Cluster in HDInsight enthalten standardmäßig eine Reihe von Komponenten. Jede dieser Komponenten umfasst Standardkonfigurationswerte, die nach Bedarf überschrieben werden können.
 
@@ -133,12 +133,12 @@ Spark-Cluster in HDInsight enthalten standardmäßig eine Reihe von Komponenten.
 |Jupyter Notebook und Apache Zeppelin-Notebooks|Interaktive browserbasierte Benutzeroberfläche zur Interaktion mit dem Spark-Cluster.|
 |ODBC-Treiber|Verbindet Spark-Cluster in HDInsight mit BI-Tools (Business Intelligence), z. B. Microsoft Power BI und Tableau.|
 
-Für Anwendungen, die im Jupyter Notebook ausgeführt werden, können Sie mit dem Befehl `%%configure` Konfigurationsänderungen im eigentlichen Notebook vornehmen. Die Konfigurationsänderungen werden auf die Spark-Aufträge angewendet, die über Ihre Notebook-Instanz ausgeführt werden. Nehmen Sie diese Änderungen am Anfang der Anwendung vor, bevor Sie die erste Codezelle ausführen. Die geänderte Konfiguration wird auf die Livy-Sitzung angewendet, wenn sie erstellt wird.
+Bei Anwendungen, die in Jupyter Notebook ausgeführt werden, können Sie mit dem Befehl `%%configure` Konfigurationsänderungen direkt im Notebook selbst vornehmen. Die Konfigurationsänderungen werden auf die Spark-Aufträge angewendet, die über Ihre Notebook-Instanz ausgeführt werden. Nehmen Sie diese Änderungen am Anfang der Anwendung vor, bevor Sie die erste Codezelle ausführen. Die geänderte Konfiguration wird auf die Livy-Sitzung angewendet, wenn sie erstellt wird.
 
 > [!NOTE]  
 > Zum Ändern der Konfiguration zu einem späteren Zeitpunkt in der Anwendung verwenden Sie den Parameter `-f` (force). Dadurch geht jedoch der gesamte Fortschritt in der Anwendung verloren.
 
-Der folgende Code zeigt, wie die Konfiguration für eine in einem Jupyter Notebook ausgeführte Anwendung geändert wird.
+Der folgende Code zeigt, wie Sie die Konfiguration für eine in Jupyter Notebook ausgeführte Anwendung ändern.
 
 ```
 %%configure

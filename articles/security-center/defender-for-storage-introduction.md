@@ -7,18 +7,19 @@ ms.date: 9/22/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 9b2855f82927b6f1707fd748f097dd357818ac4b
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 8979e315f188a5c21cce206c24f195f72096d438
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341973"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516515"
 ---
 # <a name="introduction-to-azure-defender-for-storage"></a>Einführung in Azure Defender für Storage
 
-**Azure Defender für Storage** erkennt potenziell schädliche Aktivitäten in Ihren Azure Storage-Konten. Ihre Daten können geschützt werden, und zwar unabhängig davon, ob Sie als Blobcontainer, Dateifreigaben oder Data Lakes gespeichert werden.
 
-Dank dieser Schutzebene können Sie auch *ohne* fundierte Sicherheitskenntnisse etwas gegen Bedrohungen unternehmen und Ihre Systeme für die Sicherheitsüberwachung verwalten.
+Bei **Azure Defender für Storage** handelt es sich um eine native intelligente Azure-Sicherheitsebene, die ungewöhnliche und potenziell schädliche Versuche erkennt, auf Ihre Speicherkonten zuzugreifen oder diese unbefugt zu nutzen. Das Tool verwendet die erweiterten Funktionen von künstlicher Sicherheitsintelligenz und [Microsoft Threat Intelligence](https://go.microsoft.com/fwlink/?linkid=2128684), um kontextbezogene Sicherheitswarnungen und entsprechende Empfehlungen bereitzustellen.
+
+Bei Anomalien im Rahmen von Aktivitäten werden Sicherheitswarnungen ausgelöst. Diese Warnungen sind in Azure Security Center integriert und werden mit Informationen zu verdächtigen Aktivitäten und Empfehlungen zur Untersuchung und Beseitigung von Bedrohungen auch per E-Mail an Abonnementadministratoren gesendet.
 
 
 ## <a name="availability"></a>Verfügbarkeit
@@ -36,14 +37,14 @@ Dank dieser Schutzebene können Sie auch *ohne* fundierte Sicherheitskenntnisse 
 
 Sicherheitswarnungen werden ausgelöst, wenn Folgendes vorliegt:
 
-- **Verdächtige Aktivitäten**: Auf das Speicherkonto wurde z. B. erfolgreich über eine IP-Adresse zugegriffen, bei der es sich um einen bekannten aktiven Exitknoten von Tor handelt.
-- **Anormales Verhalten**: Beispielsweise Änderungen des Zugriffsmusters für ein Speicherkonto.
-- **Upload potenzieller Malware**: Hashzuverlässigkeitsanalyse zeigt an, dass eine hochgeladene Datei Schadsoftware enthält.
+- **Verdächtige Zugriffsmuster**, z. B. der erfolgreiche Zugriff von einem Tor-Exitknoten oder von einer IP-Adresse, die von Microsoft Threat Intelligence als verdächtig eingestuft wird
+- **Verdächtige Aktivitäten**, z. B. anormale Datenextraktionen oder ungewöhnliche Änderungen der Zugriffsberechtigungen
+- **Upload schädlicher Inhalte**, z. B. das Hochladen von potenziellen Malware-Dateien (basierend auf Hashzuverlässigkeitsanalysen) oder das Hosting von Phishinginhalten
 
-Warnungen enthalten Details zum Incident, durch den sie ausgelöst wurden, sowie Empfehlungen zur Untersuchung und Eindämmung von Bedrohungen.
+Warnungen enthalten Details zum Incident, durch den sie ausgelöst wurden, sowie Empfehlungen zur Untersuchung und Eindämmung von Bedrohungen. Warnungen können in Azure Sentinel oder in ein anderes SIEM-Tool eines Drittanbieters oder in ein anderes externes Tool exportiert werden.
 
 > [!TIP]
-> Sie können Speicherwarnungen simulieren, indem Sie die Anweisungen in [diesem Blogbeitrag](https://techcommunity.microsoft.com/t5/azure-security-center/validating-atp-for-azure-storage-detections-in-azure-security/ba-p/1068131) befolgen.
+> Eine bewährte Methode ist das [Konfigurieren von Azure Defender für Storage](https://docs.microsoft.com/azure/storage/common/azure-defender-storage-configure?tabs=azure-security-center) auf Abonnementebene. Sie können das Tool jedoch auch [für einzelne Speicherkonten konfigurieren](https://docs.microsoft.com/azure/storage/common/azure-defender-storage-configure?tabs=azure-portal).
 
 
 ## <a name="what-is-hash-reputation-analysis-for-malware"></a>Was ist Hashzuverlässigkeitsanalyse für Schadsoftware?

@@ -1,15 +1,15 @@
 ---
 title: 'Azure-Schnellstart: Ausführen Ihres ersten Batch-Auftrags im Azure-Portal'
-description: Hier erfahren Sie, wie Sie über das Azure-Portal ein Batch-Konto, einen Pool mit Computeknoten sowie einen Auftrag erstellen, um einfache Aufgaben für den Pool auszuführen.
+description: In dieser Schnellstartanleitung wird gezeigt, wie Sie das Azure-Portal verwenden, um ein Batch-Konto, einen Pool von Computeknoten und einen Auftrag zu erstellen, der grundlegende Aufgaben im Pool ausführt.
 ms.topic: quickstart
 ms.date: 08/17/2020
 ms.custom: mvc
-ms.openlocfilehash: cf65a681764a848f8132ec44b8ba313ef1a83235
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d8584ecea8ddd5934771dbe5945a6172a28c801c
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88511370"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106474"
 ---
 # <a name="quickstart-run-your-first-batch-job-in-the-azure-portal"></a>Schnellstart: Ausführen Ihres ersten Batch-Auftrags im Azure-Portal
 
@@ -65,7 +65,7 @@ Nachdem Sie nun über ein Batch-Konto verfügen, können Sie einen Beispielpool 
 
 Batch erstellt den Pool sofort, aber es dauert einige Minuten, bis die Computeknoten zugeordnet und gestartet wurden. Während dieses Zeitraums lautet der **Zuweisungsstatus** des Pools **Größe ändern**. Während für den Pool die Größenänderung durchgeführt wird, können Sie einen Auftrag und Aufgaben erstellen.
 
-Nach einigen Minuten ändert sich der Zuordnungsstatus in **Bereit**, und die Knoten werden gestartet. Wählen Sie zum Überprüfen des Knotenstatus den Pool und dann **Knoten**aus. Wenn der Status eines Knotens **Leerlauf** lautet, ist er zum Ausführen von Aufgaben bereit.
+Nach einigen Minuten ändert sich der Zuordnungsstatus in **Bereit**, und die Knoten werden gestartet. Wählen Sie zum Überprüfen des Knotenstatus den Pool und dann **Knoten** aus. Wenn der Status eines Knotens **Leerlauf** lautet, ist er zum Ausführen von Aufgaben bereit.
 
 ## <a name="create-a-job"></a>Erstellen eines Auftrags
 
@@ -97,7 +97,7 @@ Wiederholen Sie die obigen Schritte, um eine zweite Aufgabe zu erstellen. Geben 
 
 Die von Ihnen erstellten Beispielaufgaben werden in wenigen Minuten abgeschlossen. Wählen Sie zum Anzeigen der Ausgabe einer abgeschlossenen Aufgabe die Aufgabe und dann **Dateien auf Knoten** aus. Wählen Sie die Datei `stdout.txt` aus, um die Standardausgabe der Aufgabe anzuzeigen. Der Inhalt lautet in etwa wie folgt:
 
-:::image type="content" source="media/quick-create-portal/task-output.png" alt-text="Screenshot: Batch-Dienst in Azure Marketplace":::
+:::image type="content" source="media/quick-create-portal/task-output.png" alt-text="Screenshot: Ausgabe einer abgeschlossenen Aufgabe":::
 
 Darin sind die Azure Batch-Umgebungsvariablen zu sehen, die auf dem Knoten festgelegt sind. Beim Erstellen Ihrer eigenen Batch-Aufträge und -Aufgaben können Sie auf diese Umgebungsvariablen in Aufgabenbefehlszeilen sowie in den Apps und Skripts verweisen, die über die Befehlszeilen ausgeführt werden.
 

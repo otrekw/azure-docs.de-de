@@ -1,17 +1,17 @@
 ---
 title: 'Tutorial: Erstellen und Bereitstellen einer Vorlage'
-description: Erstellen Sie Ihre erste Azure Resource Manager-Vorlage. In diesem Tutorial lernen Sie die Syntax der Vorlagendatei kennen und erfahren, wie Sie ein Speicherkonto bereitstellen.
+description: Erstellen Sie Ihre erste Azure Resource Manager-Vorlage (ARM-Vorlage). In diesem Tutorial lernen Sie die Syntax der Vorlagendatei kennen und erfahren, wie Sie ein Speicherkonto bereitstellen.
 author: mumian
 ms.date: 09/28/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: 25ddcc2c3a890b407b2116f64ebab577e30c9457
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 191eacbc9cc66ccfb9b378cb5e8a90b4e0fb20e6
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613185"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107022"
 ---
 # <a name="tutorial-create-and-deploy-your-first-arm-template"></a>Tutorial: Erstellen und Bereitstellen Ihrer ersten ARM-Vorlage
 
@@ -19,7 +19,7 @@ Dieses Tutorial enthält eine Einführung in ARM-Vorlagen (Azure Resource Manage
 
 Dieses Tutorial ist das erste einer Reihe. Im Laufe der Reihe ändern Sie die Startvorlage Schritt für Schritt, bis Sie alle wichtigen Bestandteile einer ARM-Vorlage erkundet haben. Diese Elemente sind die Bausteine für weitaus komplexere Vorlagen. Wir hoffen, dass Sie am Ende der Reihe Ihre eigenen Vorlagen erstellen können und bereit sind, Ihre Bereitstellungen mit Vorlagen zu automatisieren.
 
-Weitere Informationen zu den Vorteilen der Verwendung von Vorlagen und der Automatisierung von Bereitstellungen mit Vorlagen finden Sie unter [Azure-Ressourcen-Manager-Vorlagen](overview.md).
+Weitere Informationen zu den Vorteilen der Verwendung von Vorlagen und der Automatisierung von Bereitstellungen mit Vorlagen finden Sie unter [ARM-Vorlagen: Übersicht](overview.md).
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
@@ -29,7 +29,7 @@ Zunächst sorgen wir dafür, dass Sie über die Tools verfügen, die Sie zum Ers
 
 ### <a name="editor"></a>Editor
 
-Vorlagen sind JSON-Dateien. Zum Erstellen von Vorlagen benötigen Sie einen guten JSON-Editor. Wir empfehlen Visual Studio Code mit der Erweiterung „Azure Resource Manager-Tools“. Informationen zum Installieren dieser Tools finden Sie bei Bedarf unter [Schnellstart: Erstellen von Azure Resource Manager-Vorlagen mit Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md).
+Vorlagen sind JSON-Dateien. Zum Erstellen von Vorlagen benötigen Sie einen guten JSON-Editor. Wir empfehlen Visual Studio Code mit der Erweiterung „Azure Resource Manager-Tools“. Informationen zum Installieren dieser Tools finden Sie bei Bedarf unter [Schnellstart: Erstellen von ARM-Vorlagen mit Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md).
 
 ### <a name="command-line-deployment"></a>Befehlszeilenbereitstellung
 
@@ -52,7 +52,7 @@ Okay, Sie sind bereit, mehr über Vorlagen zu erfahren.
 1. Öffnen Sie Visual Studio Code mit installierter Erweiterung „Azure Resource Manager-Tools“.
 1. Wählen Sie im Menü **Datei** zum Erstellen einer neuen Datei **Neue Datei** aus.
 1. Wählen Sie im Menü **Datei** die Option **Speichern unter**.
-1. Nennen Sie die Datei **azuredeploy**, und wählen Sie die Dateierweiterung **JSON** aus. Der vollständige Name der Datei lautet **azuredeploy.json**.
+1. Nennen Sie die Datei _azuredeploy_, und wählen Sie die Dateierweiterung _JSON_ aus. Der vollständige Name der Datei lautet _azuredeploy.json_.
 1. Speichern Sie die Datei auf Ihrer Arbeitsstation. Wählen Sie einen einprägsamen Pfad aus, da Sie diesen Pfad später beim Bereitstellen der Vorlage angeben.
 1. Kopieren Sie den folgenden JSON-Code, und fügen Sie ihn in die Datei ein:
 
@@ -64,17 +64,17 @@ Okay, Sie sind bereit, mehr über Vorlagen zu erfahren.
     }
     ```
 
-    Die VS Code-Umgebung sieht wie folgt aus:
+    Die Visual Studio Code-Umgebung sieht wie folgt aus:
 
-    ![Resource Manager-Vorlage, Visual Studio Code, erste Vorlage](./media/template-tutorial-create-first-template/resource-manager-visual-studio-code-first-template.png)
+    ![ARM-Vorlage, Visual Studio Code, erste Vorlage](./media/template-tutorial-create-first-template/resource-manager-visual-studio-code-first-template.png)
 
     Diese Vorlage stellt keine Ressourcen bereit. Wir beginnen mit einer leeren Vorlage, damit Sie sich mit den Schritten zum Bereitstellen einer Vorlage vertraut machen und so die Wahrscheinlichkeit minimieren, dass etwas schief geht.
 
     Die JSON-Datei enthält die folgenden Elemente:
 
-    - **$schema**: Gibt den Speicherort der JSON-Schemadatei an. Die Schemadatei beschreibt die Eigenschaften, die innerhalb einer Vorlage verfügbar sind. Das Schema definiert z. B. **resources** als eine der gültigen Eigenschaften für eine Vorlage. Machen Sie sich keine Sorgen, dass das Datum für das Schema der 01.04.2019 ist. Diese Schemaversion ist aktuell und umfasst alle neuesten Features. Das Schemadatum wurde nicht geändert, da seit seiner Einführung keine Breaking Changes vorgenommen wurden.
-    - **contentVersion**: Gibt die Version der Vorlage an (z. B. 1.0.0.0). Sie können einen beliebigen Wert für dieses Element resources. Mit diesem Wert können Sie wichtige Änderungen in der Vorlage dokumentieren. Bei der Bereitstellung von Ressourcen mithilfe der Vorlage kann mit diesem Wert sichergestellt werden, dass die richtige Vorlage verwendet wird.
-    - **resources**: Enthält die Ressourcen, die Sie bereitstellen oder aktualisieren möchten. Zurzeit ist das Element leer, aber Sie werden später Ressourcen hinzufügen.
+    - `$schema`: Gibt den Speicherort der JSON-Schemadatei an. Die Schemadatei beschreibt die Eigenschaften, die innerhalb einer Vorlage verfügbar sind. Das Schema definiert z. B. `resources` als eine der gültigen Eigenschaften für eine Vorlage. Machen Sie sich keine Sorgen, dass das Datum für das Schema der 01.04.2019 ist. Diese Schemaversion ist aktuell und umfasst alle neuesten Features. Das Schemadatum wurde nicht geändert, da seit seiner Einführung keine Breaking Changes vorgenommen wurden.
+    - `contentVersion`: Gibt die Version der Vorlage an (z. B. 1.0.0.0). Sie können einen beliebigen Wert für dieses Element resources. Mit diesem Wert können Sie wichtige Änderungen in der Vorlage dokumentieren. Bei der Bereitstellung von Ressourcen mithilfe der Vorlage kann mit diesem Wert sichergestellt werden, dass die richtige Vorlage verwendet wird.
+    - `resources`: Enthält die Ressourcen, die Sie bereitstellen oder aktualisieren möchten. Zurzeit ist das Element leer, aber Sie werden später Ressourcen hinzufügen.
 
 1. Speichern Sie die Datei .
 
@@ -83,6 +83,8 @@ Herzlichen Glückwunsch, Sie haben Ihre erste Vorlage erstellt.
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
 Melden Sie sich mit Ihren Azure-Anmeldeinformationen an, um Azure PowerShell/Azure CLI zu verwenden.
+
+Wählen Sie die Registerkarten in den folgenden Codeabschnitten aus, um zwischen Azure PowerShell und der Azure CLI zu wählen. Die CLI-Beispiele in diesem Artikel sind für die Bash-Shell geschrieben.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -98,7 +100,7 @@ az login
 
 ---
 
-Wenn Sie über mehrere Azure-Abonnements verfügen, wählen Sie dasjenige aus, das Sie verwenden möchten:
+Wenn Sie über mehrere Azure-Abonnements verfügen, wählen Sie das Abonnement aus, das Sie verwenden möchten. Ersetzen Sie `[SubscriptionID/SubscriptionName]` und die eckigen Klammern `[]` durch Ihre Abonnementinformationen:
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -114,10 +116,9 @@ az account set --subscription [SubscriptionID/SubscriptionName]
 
 ---
 
-
 ## <a name="create-resource-group"></a>Ressourcengruppe erstellen
 
-Beim Bereitstellen einer Vorlage geben Sie eine Ressourcengruppe an, die die bereitgestellten Ressourcen enthalten soll. Erstellen Sie die Ressourcengruppe vor dem Ausführen des Bereitstellungsbefehls entweder mit der Azure CLI oder Azure PowerShell. Wählen Sie die Registerkarten im folgenden Codeabschnitt aus, um zwischen Azure PowerShell und der Azure CLI zu wählen. Die CLI-Beispiele in diesem Artikel sind für die Bash-Shell geschrieben.
+Beim Bereitstellen einer Vorlage geben Sie eine Ressourcengruppe an, die die bereitgestellten Ressourcen enthalten soll. Erstellen Sie die Ressourcengruppe vor dem Ausführen des Bereitstellungsbefehls entweder mit der Azure CLI oder Azure PowerShell.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -139,7 +140,7 @@ az group create \
 
 ## <a name="deploy-template"></a>Bereitstellen der Vorlage
 
-Zum Bereitstellen der Vorlage verwenden Sie entweder die Azure CLI oder Azure PowerShell. Verwenden Sie die Ressourcengruppe aus, die Sie erstellt haben. Geben Sie der Bereitstellung einen Namen, damit Sie sie im Bereitstellungsverlauf problemlos identifizieren können. Erstellen Sie der Einfachheit halber auch eine Variable, in der der Pfad zur Vorlagendatei gespeichert wird. Mit dieser Variablen können Sie die Bereitstellungsbefehle leichter ausführen, da Sie den Pfad nicht bei jeder Bereitstellung erneut eingeben müssen.
+Zum Bereitstellen der Vorlage verwenden Sie entweder die Azure CLI oder Azure PowerShell. Verwenden Sie die Ressourcengruppe aus, die Sie erstellt haben. Geben Sie der Bereitstellung einen Namen, damit Sie sie im Bereitstellungsverlauf problemlos identifizieren können. Erstellen Sie der Einfachheit halber auch eine Variable, in der der Pfad zur Vorlagendatei gespeichert wird. Mit dieser Variablen können Sie die Bereitstellungsbefehle leichter ausführen, da Sie den Pfad nicht bei jeder Bereitstellung erneut eingeben müssen. Ersetzen Sie `{provide-the-path-to-the-template-file}` und die geschweiften Klammern `{}` durch den Pfad zu Ihrer Vorlagendatei.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -178,7 +179,7 @@ Der Bereitstellungsbefehl gibt Ergebnisse zurück. Suchen Sie nach `Provisioning
 ---
 
 > [!NOTE]
-> Wenn bei der Bereitstellung ein Fehler aufgetreten ist, verwenden Sie den Schalter **verbose**, um Informationen zu den erstellten Ressourcen abzurufen. Verwenden Sie den Schalter **debug**, um weitere Informationen zum Debuggen zu erhalten.
+> Wenn bei der Bereitstellung ein Fehler aufgetreten ist, verwenden Sie den Schalter `verbose`, um Informationen zu den erstellten Ressourcen abzurufen. Verwenden Sie den Schalter `debug`, um weitere Informationen zum Debuggen zu erhalten.
 
 ## <a name="verify-deployment"></a>Überprüfen der Bereitstellung
 

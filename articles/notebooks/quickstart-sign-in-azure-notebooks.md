@@ -3,12 +3,12 @@ title: Anmelden bei Azure Notebooks (Vorschauversion)
 description: Melden Sie sich schnell bei Azure Notebooks (Vorschauversion) an, und legen Sie eine Benutzer-ID fest. So haben Sie die Möglichkeit, auf gespeicherte Projekte zuzugreifen und Notebooks für andere Benutzer freizugeben.
 ms.topic: quickstart
 ms.date: 04/15/2019
-ms.openlocfilehash: 8a2d9836cd005ab11106c569929a6776d605da50
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 168da5d4d36cd4cfadb4ef120ddfabbd261cafaf
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85830416"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109452"
 ---
 # <a name="quickstart-sign-in-and-set-a-user-id-for-azure-notebooks-preview"></a>Schnellstart: Anmelden und Festlegen einer Benutzer-ID für Azure Notebooks (Vorschauversion).
 
@@ -59,4 +59,4 @@ Um sich abzumelden, wählen Sie Ihren Benutzernamen oben rechts auf der Seite un
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Schnellstart: Erstellen und Freigeben eines Notebooks](quickstart-create-share-jupyter-notebook.md)
+> [Schnellstart: Exportieren eines Jupyter Notebook-Projekts](quickstart-export-jupyter-notebook-project.md)

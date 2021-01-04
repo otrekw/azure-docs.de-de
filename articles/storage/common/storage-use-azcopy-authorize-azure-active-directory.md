@@ -4,15 +4,15 @@ description: Sie können Autorisierungsanmeldeinformationen für AzCopy-Vorgäng
 author: normesta
 ms.service: storage
 ms.topic: how-to
-ms.date: 11/03/2020
+ms.date: 12/11/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: b13b5e1e27e9717066ff8f1aa8e245e8d9f54bbb
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 43002fdfbdce146b52774aa4182445bf34dd7199
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498114"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97360287"
 ---
 # <a name="authorize-access-to-blobs-with-azcopy-and-azure-active-directory-azure-ad"></a>Autorisieren des Zugriffs auf Blobs mit AzCopy und Azure Active Directory (Azure AD)
 
@@ -73,7 +73,7 @@ Dieser Befehl gibt einen Authentifizierungscode und die URL einer Website zurüc
 
 Daraufhin wird ein Anmeldefenster geöffnet. Melden Sie sich in diesem Fenster mit Ihren Azure-Kontoanmeldeinformationen bei Ihrem Azure-Konto an. Wenn Sie sich erfolgreich angemeldet haben, können Sie das Browserfenster schließen und mit der Verwendung von AzCopy beginnen.
 
-<a id="service-principal"></a>
+<a id="managed-identity"></a>
 
 ## <a name="authorize-a-managed-identity"></a>Erstellen und Autorisieren einer verwalteten Identität
 
@@ -116,6 +116,8 @@ azcopy login --identity --identity-resource-id "<resource-id>"
 ```
 
 Ersetzen Sie den Platzhalter `<resource-id>` durch die Ressourcen-ID der benutzerseitig zugewiesenen verwalteten Identität.
+
+<a id="service-principal"></a>
 
 ## <a name="authorize-a-service-principal"></a>Autorisieren eines Dienstprinzipals
 
@@ -181,8 +183,113 @@ Ersetzen Sie den Platzhalter `<path-to-certificate-file>` mit einem relativen od
 > [!NOTE]
 > Erwägen Sie, eine Eingabeaufforderung wie in diesem Beispiel zu verwenden. So erscheint das Kennwort nicht im Befehlsverlauf Ihrer Konsole. 
 
-<a id="managed-identity"></a>
+## <a name="authorize-without-a-keyring-linux"></a>Autorisieren ohne einen Schlüsselbund (Linux)
 
+Wenn es in Ihrem Betriebssystem keinen Geheimnisspeicher wie z. B. einen *Schlüsselbund* gibt, funktioniert der Befehl `azcopy login` nicht. Stattdessen können Sie vor dem Ausführen der einzelnen Vorgänge In-Memory-Umgebungsvariablen festlegen. Weil diese Werte nach Abschluss des Vorgangs aus dem Arbeitsspeicher entfernt werden, müssen Sie sie jedes Mal festlegen, wenn Sie einen azcopy-Befehl ausführen.
+
+### <a name="authorize-a-user-identity"></a>Autorisieren einer Benutzeridentität
+
+Nachdem Sie überprüft haben, ob Ihrer Benutzeridentität die erforderliche Berechtigungsstufe gewährt wurde, geben Sie den folgenden Befehl ein, und drücken Sie die EINGABETASTE.
+
+```bash
+export AZCOPY_AUTO_LOGIN_TYPE=DEVICE
+```
+
+Führen Sie dann einen beliebigen azcopy-Befehl aus (beispielsweise: `azcopy list https://contoso.blob.core.windows.net`).
+
+Dieser Befehl gibt einen Authentifizierungscode und die URL einer Website zurück. Öffnen Sie die Website, geben Sie den Code ein, und wählen Sie dann die Schaltfläche **Weiter** aus.
+
+![Erstellen eines Containers](media/storage-use-azcopy-v10/azcopy-login.png)
+
+Daraufhin wird ein Anmeldefenster geöffnet. Melden Sie sich in diesem Fenster mit Ihren Azure-Kontoanmeldeinformationen bei Ihrem Azure-Konto an. Nachdem Sie sich erfolgreich angemeldet haben, kann der Vorgang abgeschlossen werden.
+
+### <a name="authorize-by-using-a-system-wide-managed-identity"></a>Autorisieren mithilfe einer systemweiten verwalteten Identität
+
+Stellen Sie zunächst sicher, dass Sie eine systemweite verwaltete Identität auf Ihrem virtuellen Computer aktiviert haben. Siehe [Systemseitig zugewiesene verwaltete Identität](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#system-assigned-managed-identity).
+
+Geben Sie den folgenden Befehl ein, und drücken Sie die EINGABETASTE.
+
+```bash
+export AZCOPY_AUTO_LOGIN_TYPE=MSI
+```
+
+Führen Sie dann einen beliebigen azcopy-Befehl aus (beispielsweise: `azcopy list https://contoso.blob.core.windows.net`).
+
+### <a name="authorize-by-using-a-user-assigned-managed-identity"></a>Autorisieren mithilfe einer benutzerseitig zugewiesenen verwalteten Identität
+
+Stellen Sie zunächst sicher, dass Sie eine vom Benutzer zugewiesene verwaltete Identität auf Ihrem virtuellen Computer aktiviert haben. Siehe [Benutzerseitig zugewiesene verwaltete Identität](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#user-assigned-managed-identity).
+
+Geben Sie den folgenden Befehl ein, und drücken Sie die EINGABETASTE.
+
+```bash
+export AZCOPY_AUTO_LOGIN_TYPE=MSI
+```
+
+Geben Sie dann einen der folgenden Befehle ein, und drücken Sie die EINGABETASTE.
+
+```bash
+export AZCOPY_MSI_CLIENT_ID=<client-id>
+```
+
+Ersetzen Sie den Platzhalter `<client-id>` durch die Client-ID der benutzerseitig zugewiesenen verwalteten Identität.
+
+```bash
+export AZCOPY_MSI_OBJECT_ID=<object-id>
+```
+
+Ersetzen Sie den Platzhalter `<object-id>` durch die Objekt-ID der benutzerseitig zugewiesenen verwalteten Identität.
+
+```bash
+export AZCOPY_MSI_RESOURCE_STRING=<resource-id>
+```
+
+Ersetzen Sie den Platzhalter `<resource-id>` durch die Ressourcen-ID der benutzerseitig zugewiesenen verwalteten Identität.
+
+Nachdem Sie diese Variablen festgelegt haben, können Sie einen beliebigen azcopy-Befehl ausführen (beispielsweise: `azcopy list https://contoso.blob.core.windows.net`).
+
+### <a name="authorize-a-service-principal"></a>Autorisieren eines Dienstprinzipals
+
+Sie müssen sich interaktiv mindestens ein Mal anmelden, bevor Sie ein Skript ausführen, damit Sie in AzCopy die Anmeldeinformationen Ihres Dienstprinzipals bereitstellen können.  Diese Anmeldedaten werden in einer gesicherten, verschlüsseln Datei gespeichert, damit Ihr Skript diese vertraulichen Daten nicht weitergeben muss.
+
+Sie können sich mit einem geheimen Clientschlüssel oder mit dem Kennwort eines Zertifikats, das für die App-Registrierung Ihres Dienstprinzipals verwendet wird, bei Ihrem Konto anmelden.
+
+#### <a name="authorize-a-service-principal-by-using-a-client-secret"></a>Autorisieren eines Dienstprinzipals unter Verwendung eines geheimen Clientschlüssels
+
+Geben Sie den folgenden Befehl ein, und drücken Sie die EINGABETASTE.
+
+```bash
+export AZCOPY_AUTO_LOGIN_TYPE=SPN
+export AZCOPY_SPA_APPLICATION_ID=<application-id>
+export AZCOPY_SPA_CLIENT_SECRET=<client-secret>
+```
+
+Ersetzen Sie den Platzhalter `<application-id>` mit der Anwendungs-ID der App-Registrierung Ihres Dienstprinzipals. Ersetzen Sie den Platzhalter `<client-secret>` durch den geheimen Clientschlüssel.
+
+> [!NOTE]
+> Verwenden Sie ggf. eine Eingabeaufforderung, um das Kennwort vom Benutzer zu erfassen. Auf diese Weise wird Ihr Kennwort in Ihrem Befehlsverlauf nicht angezeigt. 
+
+Führen Sie dann einen beliebigen azcopy-Befehl aus (beispielsweise: `azcopy list https://contoso.blob.core.windows.net`).
+
+#### <a name="authorize-a-service-principal-by-using-a-certificate"></a>Autorisieren eines Dienstprinzipals mithilfe eines Zertifikats
+
+Wenn Sie lieber Ihre eigenen Anmeldedaten für die Autorisierung verwenden möchten, dann können Sie ein Zertifikat in Ihre App-Registrierung hochladen und dieses zum Anmelden verwenden.
+
+Sie müssen nicht nur Ihr Zertifikat in Ihre App-Registrierung hochladen, sondern benötigen außerdem eine Kopie des Zertifikat, die auf dem Computer oder dem virtuellen Computer gespeichert ist, auf dem AzCopy ausgeführt wird. Diese Kopie des Zertifikats sollte das .PFX oder .PEM-Format haben und den privaten Schlüssel enthalten. Der private Schlüssel sollte mit einem Kennwort geschützt sein. 
+
+Geben Sie den folgenden Befehl ein, und drücken Sie die EINGABETASTE.
+
+```bash
+export AZCOPY_AUTO_LOGIN_TYPE=SPN
+export AZCOPY_SPA_CERT_PATH=<path-to-certificate-file>
+export AZCOPY_SPA_CERT_PASSWORD=<certificate-password>
+```
+
+Ersetzen Sie den Platzhalter `<path-to-certificate-file>` mit einem relativen oder vollqualifizierten Pfad zur Zertifikatdatei. AzCopy speichert den Pfad zu diesem Zertifikat, speichert jedoch keine Kopie des Zertifikats. Achten Sie darauf, dass das Zertifikat dort bleibt, wo es ist. Ersetzen Sie den Platzhalter `<certificate-password>` durch das Kennwort des Zertifikats.
+
+> [!NOTE]
+> Verwenden Sie ggf. eine Eingabeaufforderung, um das Kennwort vom Benutzer zu erfassen. Auf diese Weise wird Ihr Kennwort in Ihrem Befehlsverlauf nicht angezeigt. 
+
+Führen Sie dann einen beliebigen azcopy-Befehl aus (beispielsweise: `azcopy list https://contoso.blob.core.windows.net`).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

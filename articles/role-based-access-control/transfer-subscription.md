@@ -8,14 +8,14 @@ ms.service: role-based-access-control
 ms.devlang: na
 ms.topic: how-to
 ms.workload: identity
-ms.date: 10/06/2020
+ms.date: 12/10/2020
 ms.author: rolyon
-ms.openlocfilehash: ad0ba3c63f6f0ef6e7e02051031cf215c2e72cce
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 92b27690ab1f2ca8d98eb2231c5a27bc508613f8
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94648241"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095422"
 ---
 # <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory"></a>Übertragen eines Azure-Abonnements in ein anderes Azure AD-Verzeichnis
 
@@ -53,7 +53,12 @@ Im Folgenden finden Sie einige Gründe, warum Sie ein Abonnement übertragen mö
 - Ein Teil Ihres Unternehmens wurde in ein separates Unternehmen aufgeteilt, und Sie müssen einige Ihrer Ressourcen in ein anderes Azure AD-Verzeichnis verschieben.
 - Sie möchten einige Ihrer Ressourcen zur Sicherheitsisolierung in einem anderen Azure AD-Verzeichnis verwalten.
 
-Das Übertragen eines Abonnements ist mit Ausfallzeiten verbunden, um den Vorgang abzuschließen. Abhängig von Ihrem Szenario kann es besser sein, die Ressourcen einfach erneut zu erstellen und die Daten in das Zielverzeichnis und das Abonnement zu kopieren.
+### <a name="alternate-approaches"></a>Alternative Ansätze
+
+Das Übertragen eines Abonnements ist mit Ausfallzeiten verbunden, um den Vorgang abzuschließen. Abhängig von Ihrem Szenario können Sie die folgenden alternativen Ansätze in Erwägung ziehen:
+
+- Erstellen Sie die Ressourcen neu, und kopieren Sie die Daten in das Zielverzeichnis und das Zielabonnement.
+- Verwenden Sie eine Architektur mit mehreren Verzeichnissen, und belassen Sie das Abonnement im Quellverzeichnis. Verwenden Sie Azure Lighthouse zum Delegieren von Ressourcen, damit Benutzer im Zielverzeichnis auf das Abonnement im Quellverzeichnis zugreifen können. Weitere Informationen finden Sie unter [Azure Lighthouse in Unternehmensszenarien](../lighthouse/concepts/enterprise.md).
 
 ### <a name="understand-the-impact-of-transferring-a-subscription"></a>Verstehen der Auswirkungen der Übertragung eines Abonnements
 
@@ -383,3 +388,4 @@ Wenn Sie beabsichtigen, Benutzern im Quellverzeichnis den Zugriff zu entziehen, 
 - [Übertragen des Abrechnungsbesitzes eines Azure-Abonnements an ein anderes Konto](../cost-management-billing/manage/billing-subscription-transfer.md)
 - [Übertragen von Azure-Abonnements zwischen Abonnenten und CSPs](../cost-management-billing/manage/transfer-subscriptions-subscribers-csp.md)
 - [Zuordnen oder Hinzufügen eines Azure-Abonnements zu Ihrem Azure Active Directory-Mandanten](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
+- [Azure Lighthouse in Unternehmensszenarien](../lighthouse/concepts/enterprise.md)

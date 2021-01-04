@@ -7,19 +7,19 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 09/16/2020
-ms.openlocfilehash: b783366958380f391dc76583c42988badc9915c8
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.date: 12/12/2020
+ms.openlocfilehash: 1e9d63c88cf0cd6f65db99b2bc878797770d53cd
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92056479"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368629"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-the-azure-portal"></a>Schnellstart: Erstellen eines Index für Azure Cognitive Search im Azure-Portal
 
-Der **Datenimport**-Assistent ist ein Tool im Azure-Portal, das Sie durch die Erstellung eines Suchindex führt, sodass Sie innerhalb weniger Minuten interessante Abfragen erstellen können. 
+Erstellen Sie Ihren ersten Index mithilfe des Assistenten zum **Importieren von Daten** und einer integrierten Beispieldatenquelle, die fiktive Hoteldaten umfasst. Der Assistent führt Sie durch die Erstellung eines Suchindex („hotels-sample-index“), sodass Sie innerhalb weniger Minuten interessante Abfragen schreiben können. 
 
-Der Assistent verfügt auch über Seiten für die KI-Anreicherung, sodass Sie Text und Struktur aus Bilddateien und unstrukturiertem Text extrahieren können. Die Inhaltsverarbeitung mit KI umfasst optische Zeichenerkennung (Optical Character Recognition, OCR), Schlüsselbegriffserkennung und Entitätsextraktion sowie Bildanalyse.
+Der Assistent enthält auch eine Seite für KI-Anreicherung, sodass Sie Text und eine Struktur aus Bilddateien und unstrukturiertem Text extrahieren können. In dieser Schnellstartanleitung werden diese Optionen jedoch nicht verwendet. Eine ähnliche exemplarische Vorgehensweise, die KI-Anreicherung umfasst, finden Sie unter [Schnellstart: Erstellen eines kognitiven Skillsets](cognitive-search-quickstart-blob.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -49,11 +49,11 @@ Für dieses Tutorial verwenden Sie ein integriertes Beispieldataset, das über d
 
 1. [Suchen Sie Ihren Suchdienst](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/), und klicken Sie auf der Übersichtsseite auf der Befehlsleiste auf **Daten importieren**, um einen Suchindex zu erstellen und aufzufüllen.
 
-   :::image type="content" source="media/search-get-started-portal/import-data-cmd.png" alt-text="Listen mit Indizes, Indexern und Datenquellen":::
+   :::image type="content" source="media/search-get-started-portal/import-data-cmd.png" alt-text="Befehl zum Importieren von Daten":::
 
 1. Klicken Sie im Assistenten auf **Mit Ihren Daten verbinden** > **Beispiele** > **hotels-sample**. Diese Datenquelle ist integriert. Wenn Sie eine eigene Datenquelle erstellen, müssen Sie einen Namen, einen Typ und Verbindungsinformationen angeben. Nach der Erstellung wird sie zu einer vorhandenen Datenquelle, die in anderen Importvorgängen wiederverwendet werden kann.
 
-   :::image type="content" source="media/search-get-started-portal/import-datasource-sample.png" alt-text="Listen mit Indizes, Indexern und Datenquellen":::
+   :::image type="content" source="media/search-get-started-portal/import-datasource-sample.png" alt-text="Auswählen des Beispieldatasets":::
 
 1. Wechseln Sie zur nächsten Seite.
 
@@ -63,7 +63,7 @@ Der Assistent unterstützt die Erstellung einer [Pipeline für KI-Anreicherung](
 
 Überspringen Sie diesen Schritt vorerst, und wechseln Sie direkt zu **Zielindex anpassen**.
 
-   :::image type="content" source="media/search-get-started-portal/skip-cog-skill-step.png" alt-text="Listen mit Indizes, Indexern und Datenquellen":::
+   :::image type="content" source="media/search-get-started-portal/skip-cog-skill-step.png" alt-text="Überspringen des Schritts zu kognitiven Qualifikationen":::
 
 > [!TIP]
 > Sie können ein Beispiel für die AI-Indizierung in einem [Schnellstart](cognitive-search-quickstart-blob.md) oder [Tutorial](cognitive-search-tutorial-blob.md) durchgehen.
@@ -83,11 +83,11 @@ Speicheranforderungen ändern sich nicht als Folge Ihrer Auswahl. Wenn Sie z. B.
 
 Standardmäßig durchsucht der Assistent die Datenquelle nach eindeutigen Bezeichnern als Grundlage für das Schlüsselfeld. *Zeichenfolgen* werden durch Attribute als **Abrufbar** und **Durchsuchbar** gekennzeichnet. *Ganze Zahlen* werden durch Attribute als **Abrufbar**, **Filterbar**, **Sortierbar** und **Facettierbar** gekennzeichnet.
 
-1. Übernehmen Sie die Standardeinstellungen. 
+1. Übernehmen Sie die Standardeinstellungen.
 
    Wenn Sie den Assistenten ein zweites Mal unter Verwendung einer vorhandenen Quelle mit Hoteldaten ausführen, wird der Index nicht mit Standardattributen konfiguriert. Sie müssen Attribute für künftige Importe manuell auswählen. 
 
-   :::image type="content" source="media/search-get-started-portal/hotelsindex.png" alt-text="Listen mit Indizes, Indexern und Datenquellen":::
+   :::image type="content" source="media/search-get-started-portal/hotelsindex.png" alt-text="Generierter Hotelindex":::
 
 2. Wechseln Sie zur nächsten Seite.
 
@@ -100,7 +100,7 @@ Mit diesem Objekt wird ein ausführbarer Prozess definiert. Sie könnten zwar au
 
 Klicken Sie auf **Senden**, um den Indexer zu erstellen und gleichzeitig auszuführen.
 
-  :::image type="content" source="media/search-get-started-portal/hotels-indexer.png" alt-text="Listen mit Indizes, Indexern und Datenquellen":::
+  :::image type="content" source="media/search-get-started-portal/hotels-indexer.png" alt-text="Hotelindexer":::
 
 ## <a name="monitor-progress"></a>Fortschritt überwachen
 
@@ -108,7 +108,7 @@ Der Assistent sollte die Liste der Indexer anzeigen, in der Sie den Fortschritt 
 
 Es kann einige Minuten dauern, bis die Seite im Portal aktualisiert ist, aber der neu erstellte Indexer sollte in der Liste angezeigt werden. Der Status sollte „In Bearbeitung“ oder „Erfolgreich“ lauten, und die Anzahl indizierter Dokumente sollte angegeben sein.
 
-   :::image type="content" source="media/search-get-started-portal/indexers-inprogress.png" alt-text="Listen mit Indizes, Indexern und Datenquellen":::
+   :::image type="content" source="media/search-get-started-portal/indexers-inprogress.png" alt-text="Statusmeldung des Indexers":::
 
 ## <a name="view-the-index"></a>Anzeigen des Index
 
@@ -116,13 +116,13 @@ Die Hauptseite des Diensts enthält Links zu den Ressourcen, die in Ihrem Azure 
 
 Warten Sie, bis die Portalseite aktualisiert wurde. Nach einigen Minuten sollte der Index mit der Dokumentanzahl und der Speichergröße angezeigt werden.
 
-   :::image type="content" source="media/search-get-started-portal/indexes-list.png" alt-text="Listen mit Indizes, Indexern und Datenquellen":::
+   :::image type="content" source="media/search-get-started-portal/indexes-list.png" alt-text="Liste „Indizes“ im Dashboard des Diensts":::
 
 In dieser Liste können Sie auf den gerade erstellten Index für *hotels-sample* klicken und das Indexschema anzeigen. Optional können Sie auch neue Felder hinzufügen. 
 
 Auf der Registerkarte **Felder** wird das Indexschema angezeigt. Scrollen Sie in der Liste nach unten, um ein neues Feld einzugeben. In den meisten Fällen ist es nicht möglich, bereits vorhandene Felder zu ändern. Vorhandene Felder verfügen über eine physische Darstellung in Azure Cognitive Search und können daher nicht geändert werden (auch nicht im Code). Wenn Sie ein vorhandenes Feld grundlegend ändern möchten, erstellen Sie einen neuen Index, wobei der ursprüngliche Index verworfen wird.
 
-   :::image type="content" source="media/search-get-started-portal/sample-index-def.png" alt-text="Listen mit Indizes, Indexern und Datenquellen":::
+   :::image type="content" source="media/search-get-started-portal/sample-index-def.png" alt-text="Beispiel für Indexdefinition":::
 
 Andere Konstrukte, z.B. Bewertungsprofile und CORS-Optionen, können jederzeit hinzugefügt werden.
 
@@ -140,15 +140,15 @@ Der **Suchexplorer** ist nur auf die Verarbeitung von [REST-API-Anforderungen](/
 
 1. Klicken Sie auf der Befehlsleiste auf **Suchexplorer** .
 
-   :::image type="content" source="media/search-get-started-portal/search-explorer-cmd.png" alt-text="Listen mit Indizes, Indexern und Datenquellen":::
+   :::image type="content" source="media/search-get-started-portal/search-explorer-cmd.png" alt-text="Suchexplorerbefehl":::
 
 2. Wählen Sie in der Dropdownliste **Index** den Eintrag *hotels-sample-index* aus. Klicken Sie auf die Dropdownliste **API-Version**, um herauszufinden, welche REST-APIs verfügbar sind. Verwenden Sie für die Abfragen unten die allgemein verfügbare Version (2020-06-30).
 
-   :::image type="content" source="media/search-get-started-portal/search-explorer-changeindex.png" alt-text="Listen mit Indizes, Indexern und Datenquellen":::
+   :::image type="content" source="media/search-get-started-portal/search-explorer-changeindex.png" alt-text="Index- und API-Befehle":::
 
 3. Fügen Sie über die Suchleiste die folgenden Abfragezeichenfolgen ein, und klicken Sie auf **Suchen**.
 
-   :::image type="content" source="media/search-get-started-portal/search-explorer-query-string-example.png" alt-text="Listen mit Indizes, Indexern und Datenquellen":::
+   :::image type="content" source="media/search-get-started-portal/search-explorer-query-string-example.png" alt-text="Abfragezeichenfolge und Schaltfläche „Suchen“":::
 
 ## <a name="example-queries"></a>Beispielabfragen
 
@@ -188,8 +188,8 @@ Facettenfilter werden in Suchanfragen eingebunden. Sie können den Parameter „
 
 #### <a name="example-faceted-with-scope-reduction-searchfacetcategorytop2"></a>Beispiel (facettiert mit Verringerung des Umfangs): `search=*&facet=Category&$top=2`
 
-* **search=** * ist eine leere Suche. Bei einer leeren Suche wird alles durchsucht. Eine leere Abfrage kann beispielsweise übermittelt werden, um den vollständigen Satz von Dokumenten zu filtern oder zu facettieren – etwa, wenn eine Navigationsstruktur mit Facetten alle Hotels im Index enthalten soll.
-* **facet** gibt eine Navigationsstruktur zurück, die Sie an ein Benutzeroberflächenelement übergeben können. Er gibt Kategorien und eine Anzahl zurück. In diesem Fall basieren alle Kategorien auf einem Feld, das praktischerweise *Kategorie* heißt. In Azure Cognitive Search steht zwar keine Aggregation zur Verfügung, mit `facet` lässt sich jedoch eine Art Aggregation erreichen, die eine Anzahl von Dokumenten in den einzelnen Kategorien liefert.
+* **search=** _ ist eine leere Suche. Bei einer leeren Suche wird alles durchsucht. Eine leere Abfrage kann beispielsweise übermittelt werden, um den vollständigen Satz von Dokumenten zu filtern oder zu facettieren – etwa, wenn eine Navigationsstruktur mit Facetten alle Hotels im Index enthalten soll.
+_ **facet** gibt eine Navigationsstruktur zurück, die Sie an ein UI-Steuerelement übergeben können. Er gibt Kategorien und eine Anzahl zurück. In diesem Fall basieren alle Kategorien auf einem Feld, das praktischerweise *Kategorie* heißt. In Azure Cognitive Search steht zwar keine Aggregation zur Verfügung, mit `facet` lässt sich jedoch eine Art Aggregation erreichen, die eine Anzahl von Dokumenten in den einzelnen Kategorien liefert.
 
 * **$top=2** gibt zwei Dokumente zurück und zeigt, dass Sie mithilfe von `top` die Ergebnisse sowohl verringern als auch erhöhen können.
 

@@ -1,22 +1,25 @@
 ---
 title: Neuerungen in Azure Migrate
 description: Erfahren Sie mehr über die Neuerungen und aktuellen Updates des Azure Migrate-Diensts.
-author: bsiva
-ms.author: bsiva
-ms.manager: abhemraj
 ms.topic: overview
+author: anvar-ms
+ms.author: anvar
+ms.manager: bsiva
 ms.date: 04/19/2020
 ms.custom: mvc
-ms.openlocfilehash: e39b8f7ee7b76a1955e02a7140524f812be086b5
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 7ff9d9c6624016d4b1ea94072d52de1c42d73913
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96752446"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400470"
 ---
 # <a name="whats-new-in-azure-migrate"></a>Neuerungen in Azure Migrate
 
 [Azure Migrate](migrate-services-overview.md) unterstützt Sie beim Ermitteln, Bewerten und Migrieren von lokalen Servern, Apps und Daten in die Microsoft Azure Cloud. In diesem Artikel werden die neuen Releases und Features in Azure Migrate zusammengefasst.
+## <a name="update-december-2020"></a>Update (Dezember 2020)
+- Azure Migrate installiert jetzt automatisch den VM-Agent von Azure auf den VMware-VMs, während diese mit der Methode ohne Agent der VMware-Migration zu Azure migriert werden.
+- Die Migration von VMware-VMs mit der Azure Migrate-Servermigration (Replikation ohne Agents) zu Azure-VMs mit Datenträgern, die mithilfe der serverseitigen Verschlüsselung (SSE) mit vom Kunden verwalteten Schlüsseln (CMK) verschlüsselt sind, ist nun über das Azure-Portal verfügbar.
 
 ## <a name="update-september-2020"></a>Update (September 2020)
 - Die Migration von Servern zu Verfügbarkeitszonen wird jetzt unterstützt.
@@ -25,7 +28,7 @@ ms.locfileid: "96752446"
 - Abhängigkeitsanalyse (ohne Agent) kann nun gleichzeitig für 1.000 VMs ausgeführt werden.
 - Abhängigkeitsanalyse (ohne Agent) kann nun maßstabsgerecht mithilfe von PowerShell-Skripts aktiviert oder deaktiviert werden. [Weitere Informationen.](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/dependencies-at-scale)
 - Visualisieren Sie Netzwerkverbindungen in Power BI mithilfe der mit Abhängigkeitsanalyse erfassten Daten (ohne Agent) [Weitere Informationen.](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/dependencies-at-scale)
-- Die Migration von VMware-VMs mit einer Datenträgergröße von bis zu 32 TB wird jetzt unter Verwendung von Azure Migrate unterstützt: Servermigrationsmethode ohne Agent für VMware-Migration. 
+- Die Migration von VMware-VMs mit einer Datenträgergröße von bis zu 32 TB wird jetzt unter Verwendung von Azure Migrate unterstützt: Servermigrationsmethode ohne Agent für VMware-Migration.
 
 ## <a name="update-august-2020"></a>Update (August 2020)
 

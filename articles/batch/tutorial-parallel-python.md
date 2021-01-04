@@ -1,16 +1,16 @@
 ---
-title: Ausführen einer parallelen Workload mithilfe der Python-API
+title: Tutorial – Ausführen einer parallelen Workload mithilfe der Python-API
 description: Tutorial – Paralleles Verarbeiten von Mediendateien mit ffmpeg in Azure Batch per Batch Python-Clientbibliothek
 ms.devlang: python
 ms.topic: tutorial
 ms.date: 11/29/2018
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: 34cea5e0b60c0a7ee8c3d31dd02a6f7e975de738
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7013ef1e9b6dda4554b665fa8199edb86a8a9adb
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87853329"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106511"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-python-api"></a>Tutorial: Ausführen einer parallelen Workload mit Azure Batch über die Python-API
 
@@ -268,7 +268,7 @@ Löschen Sie die Ressourcengruppe, das Batch-Konto und das Speicherkonto, wenn d
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie Folgendes gelernt:
+In diesem Tutorial haben Sie gelernt, wie die folgenden Aufgaben ausgeführt werden:
 
 > [!div class="checklist"]
 > * Authentifizieren mit Batch- und Storage-Konten

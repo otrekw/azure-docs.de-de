@@ -7,13 +7,13 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.reviewer: mamccrea
 ms.custom: mvc, devx-track-js
-ms.date: 06/16/2020
-ms.openlocfilehash: 092e07ed01fb870cdcd9a3fd63d46d30cef96007
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.date: 12/15/2020
+ms.openlocfilehash: 085ac8c2ca7cfafcf0e40152458acf68dd847937
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96780840"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97605529"
 ---
 # <a name="javascript-user-defined-functions-in-azure-stream-analytics"></a>Benutzerdefinierte JavaScript-Funktionen in Azure Stream Analytics
  
@@ -215,6 +215,14 @@ Bei der Ausgabe dieser Abfrage handelt es sich um den datetime-Eingabewert in **
 Samstag, 28. Dezember 2019
 ```
 
+## <a name="user-logging"></a>Benutzerprotokollierung
+Mit dem Protokollierungsmechanismus können Sie benutzerdefinierte Informationen erfassen, während ein Auftrag ausgeführt wird. Protokolldaten können bspw. verwendet werden, um in Echtzeit den benutzerdefinierten Code zu debuggen oder dessen die Richtigkeit zu bewerten. Dieser Mechanismus ist über die Methode „Console.Log()“ verfügbar.
+
+```javascript
+console.log('my error message');
+```
+
+Sie können über die [Diagnoseprotokolle](data-errors.md) auf Protokollmeldungen zugreifen.
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Machine Learning-UDF](./machine-learning-udf.md)

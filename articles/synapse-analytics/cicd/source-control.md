@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
-ms.openlocfilehash: b6cadbf5c3a33c1a954a47f37b33ad8703f40b69
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 2f1fe7c25327e8ecab9b450cab167391d8949b0a
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350737"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008163"
 ---
 # <a name="source-control-in-azure-synapse-studio"></a>Quellcodeverwaltung in Azure Synapse Studio
 
@@ -138,6 +138,24 @@ Wenn Sie zum ersten Mal von Synapse Studio aus eine Verbindung mit GitHub herste
 
 Nachdem Sie diese Schritte ausgeführt haben, kann Ihr Arbeitsbereich eine Verbindung sowohl mit den privaten als auch öffentlichen Repositorys in Ihrer Organisation herstellen. Wenn keine Verbindung hergestellt werden kann, löschen Sie den Browsercache und versuchen es noch mal.
 
+#### <a name="already-connected-to-github-using-a-personal-account"></a>Bereits über ein persönliches Konto mit GitHub verbunden
+
+Wenn Sie bereits mit GitHub verbunden sind und nur Berechtigungen zum Zugriff auf ein persönliches Konto erteilt haben, führen Sie die folgenden Schritte aus, um Berechtigungen für eine Organisation zu erteilen.
+
+1. Wechseln Sie zu GitHub, und öffnen Sie die **Einstellungen**.
+
+    ![Öffnen der GitHub-Einstellungen](media/github-settings.png)
+
+1. Wählen Sie **Anwendungen** aus. Auf der Registerkarte **Autorisierte OAuth-Apps** sollte *Azure Synapse* angezeigt werden.
+
+    ![Autorisieren von OAuth-Apps](media/authorize-app.png)
+
+1. Wählen Sie *Azure Synapse* aus, und gewähren Sie Zugriff auf Ihre Organisation.
+
+    ![Erteilen einer Organisationsberechtigung](media/grant-organization-permission.png)
+
+Nachdem Sie diese Schritte beendet haben, kann Ihr Arbeitsbereich eine Verbindung sowohl mit den öffentlichen als auch den privaten Repositorys in Ihrer Organisation herstellen.
+
 ## <a name="version-control"></a>Versionskontrolle
 
 Versionskontrollsysteme (auch als _Quellcodeverwaltung_ bezeichnet) ermöglichen Entwicklern die Zusammenarbeit an Code und das Nachverfolgen von Änderungen. Die Quellcodeverwaltung ist ein wichtiges Tool für Projekte, an denen mehrere Entwickler arbeiten.
@@ -163,6 +181,7 @@ Synapse Studio generiert standardmäßig die Arbeitsbereichsvorlagen und speiche
 ```
 
 In Azure Synapse Studio kann jeweils nur ein Veröffentlichungsbranch vorhanden sein. Wenn Sie einen neuen Branch für die Veröffentlichung angeben, wird der vorherige Branch für die Veröffentlichung nicht gelöscht. Wenn Sie den vorherigen Branch für die Veröffentlichung entfernen möchten, löschen Sie ihn manuell.
+
 
 ### <a name="publish-code-changes"></a>Veröffentlichen von Codeänderungen
 
@@ -192,7 +211,7 @@ Nachdem Sie die Zuordnung zum aktuellen Repository entfernt haben, können Sie I
 
 ## <a name="best-practices-for-git-integration"></a>Bewährte Methoden für die Git-Integration
 
--   **Berechtigungen** Sobald Sie über ein Git-Repository verfügen, das mit Ihrem Arbeitsbereich verbunden ist, kann jeder Benutzer, der mit einer beliebigen Rolle Zugriff auf das Git-Repository in Ihrem Arbeitsbereich hat, Artefakte wie SQL-Skript, Notebook, Definition des Spark-Auftrags, Dataset, Datenfluss und Pipeline im Git-Modus aktualisieren. Normalerweise möchten Sie nicht, dass jedes Teammitglied die Berechtigung zum Aktualisieren des Arbeitsbereichs hat. Erteilen Sie die Git-Repositoryberechtigung nur den Artefaktautoren von Synapse. 
+-   **Berechtigungen** Sobald Sie über ein Git-Repository verfügen, das mit Ihrem Arbeitsbereich verbunden ist, kann jeder Benutzer, der mit einer beliebigen Rolle auf Ihr Git-Repository in Ihrem Arbeitsbereich zugreifen kann, Artefakte wie SQL-Skript, Notebook, Definition des Spark-Auftrags, Dataset, Datenfluss und Pipeline im Git-Modus aktualisieren. Normalerweise möchten Sie nicht, dass jedes Teammitglied die Berechtigung zum Aktualisieren des Arbeitsbereichs hat. Erteilen Sie die Git-Repositoryberechtigung nur den Artefaktautoren von Synapse. 
 -   **Zusammenarbeit**. Es wird empfohlen, keine direkten Eincheckvorgänge im Kollaborationsbranch zuzulassen. Diese Einschränkung kann dazu beitragen, Fehler zu vermeiden, da jeder Eincheckvorgang einen Pull Request-Prozess durchläuft, der unter [Erstellen von Featurebranches](source-control.md#creating-feature-branches) beschrieben ist.
 -   **Synapse-Livemodus**. Nach dem Veröffentlichen im Git-Modus werden alle Änderungen im Synapse-Livemodus angezeigt. Im Synapse-Livemodus ist die Veröffentlichung deaktiviert. Wenn Sie die richtige Berechtigung erhalten haben, können Sie außerdem Artefakte im Livemodus anzeigen und ausführen. 
 -   **Bearbeiten von Artefakten in Studio**. Nur in Synapse Studio können Sie die Quellcodeverwaltung des Arbeitsbereichs aktivieren und Änderungen automatisch mit Git synchronisieren. Jede Änderung über das SDK oder PowerShell wird nicht mit Git synchronisiert. Sie sollten Artefakte immer in Studio bearbeiten, wenn Git aktiviert ist.

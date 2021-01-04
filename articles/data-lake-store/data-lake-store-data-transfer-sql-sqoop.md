@@ -67,7 +67,7 @@ Bevor Sie mit diesem Lernprogramm beginnen können, benötigen Sie Folgendes:
     GO
     ```
 
-1. Führen Sie den folgenden Befehl aus, um **Table1**einige Beispieldaten hinzuzufügen. Lassen Sie **Table2** leer. Später importieren Sie Daten aus **Table1** in Data Lake Storage Gen1. Anschließend exportieren Sie Daten aus Data Lake Storage Gen1 in **Table2**.
+1. Führen Sie den folgenden Befehl aus, um **Table1** einige Beispieldaten hinzuzufügen. Lassen Sie **Table2** leer. Später importieren Sie Daten aus **Table1** in Data Lake Storage Gen1. Anschließend exportieren Sie Daten aus Data Lake Storage Gen1 in **Table2**.
 
     ```tsql
     INSERT INTO [dbo].[Table1] VALUES (1,'Neal','Kell'), (2,'Lila','Fulton'), (3, 'Erna','Myers'), (4,'Annette','Simpson');
@@ -121,9 +121,9 @@ In einem HDInsight-Cluster sind die Sqoop-Pakete bereits verfügbar. Wenn Sie de
     -rwxrwxrwx   0 sshuser hdfs         18 2016-02-26 21:09 adl://hdiadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1/part-m-00003
     ```
 
-   Jede **part-m** *-Datei entspricht einer Zeile in der Quelltabelle **Table1**.
+   Jede **part-m-*** Datei entspricht einer Zeile in der Quelltabelle **Table1**.
 
-### <a name="export-data-from-data-lake-storage-gen1-into-azure-sql-database"></a>Sie können den Inhalt der part-m-*-Dateien anzeigen und überprüfen.
+### <a name="export-data-from-data-lake-storage-gen1-into-azure-sql-database"></a>Sie können den Inhalt der part-m-* Dateien anzeigen und überprüfen.
 
 1. Exportieren von Daten aus Data Lake Storage Gen1 in Azure SQL-Datenbank Exportieren Sie die Daten aus dem Data Lake Storage Gen1-Konto in die leere Tabelle **Table2** in Azure SQL-Datenbank.
 

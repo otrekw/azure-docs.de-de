@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 03/24/2020
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 99c8bc00beb7b189b200e0b02435262ae34835d2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5727a08159f750a69920f66f4b743c187aa00885
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91856091"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588963"
 ---
 # <a name="create-a-cicd-pipeline-for-php-with-azure-devops-starter"></a>Erstellen einer CI/CD-Pipeline für PHP mit Azure DevOps Starter
 
@@ -64,9 +64,9 @@ Wenn Sie kein Azure-Abonnement haben, erhalten Sie über [Visual Studio Dev Esse
 
  Von DevOps Starter wird ein Git-Repository in Azure Repos oder auf GitHub erstellt. Führen Sie die folgenden Schritte aus, um das Repository anzuzeigen und Codeänderungen an Ihrer Anwendung vorzunehmen:
 
-1. Wählen Sie auf der linken Seite des DevOps Starter-Dashboards den Link für Ihren Masterbranch aus. Über diesen Link wird die Ansicht des neu erstellten Git-Repositorys geöffnet.
+1. Klicken Sie auf der linken Seite des DevOps Starter-Dashboards auf den Link für Ihren Mainbranch. Über diesen Link wird die Ansicht des neu erstellten Git-Repositorys geöffnet.
 
-1. Wählen Sie oben rechts im Browser die Option **Klonen** aus, um die Repository-Klon-URL anzuzeigen. Sie können Ihr Git-Repository in Ihrer bevorzugten IDE klonen. Bei den nächsten Schritten können Sie den Webbrowser verwenden, um Codeänderungen vorzunehmen und direkt an den Masterbranch zu committen.
+1. Wählen Sie oben rechts im Browser die Option **Klonen** aus, um die Repository-Klon-URL anzuzeigen. Sie können Ihr Git-Repository in Ihrer bevorzugten IDE klonen. Bei den nächsten Schritten können Sie den Webbrowser verwenden, um Codeänderungen vorzunehmen und direkt an den Mainbranch zu committen.
 
 1. Navigieren Sie links zur Datei **resources/views/welcome.blade.php**.
 

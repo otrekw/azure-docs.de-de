@@ -1,18 +1,18 @@
 ---
 title: Vorlagenfunktionen – Bereitstellung
-description: Hier werden die Funktionen beschrieben, die in einer Azure Resource Manager-Vorlage zum Abrufen von Informationen zur Bereitstellung verwendet werden können.
+description: Informationen zu den Funktionen, die in einer Azure Resource Manager-Vorlage (ARM-Vorlage) zum Abrufen von Informationen zur Bereitstellung verwendet werden können.
 ms.topic: conceptual
 ms.date: 11/18/2020
-ms.openlocfilehash: 9d6a1783bcd6d84c181edae84063ed7c0964c3d8
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: e63caef669a2c28d29cd0bbd649b0997cea14ee1
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "96004567"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920519"
 ---
 # <a name="deployment-functions-for-arm-templates"></a>Bereitstellungsfunktionen für ARM-Vorlagen
 
-Resource Manager stellt die folgenden Funktionen zum Abrufen von Werten im Zusammenhang mit der aktuellen Bereitstellung Ihrer ARM-Vorlage (Azure Resource Manager) bereit:
+Resource Manager stellt die folgenden Funktionen zum Abrufen von Werten im Zusammenhang mit der aktuellen Bereitstellung Ihrer Azure Resource Manager-Vorlage (ARM-Vorlage) bereit:
 
 * [deployment](#deployment)
 * [Umgebung](#environment)
@@ -303,7 +303,7 @@ Gibt einen Parameterwert zurück. Der spezifizierte Parametername muss im Parame
 
 Der Wert des angegebenen Parameters.
 
-### <a name="remarks"></a>Hinweise
+### <a name="remarks"></a>Bemerkungen
 
 In der Regel verwenden Sie Parameter zum Festlegen von Ressourcenwerten. Im folgenden Beispiel wird der Name der Website mit dem Parameterwert festgelegt, der während der Bereitstellung übergeben wird.
 
@@ -434,7 +434,7 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 | arrayOutput | Array | [1, 2, 3] |
 | crossOutput | String | option 1 |
 
-Weitere Informationen zur Verwendung von Parametern finden Sie unter [Parameter in Azure Resource Manager-Vorlagen](template-parameters.md).
+Weitere Informationen zur Verwendung von Parametern finden Sie unter [Parameter in ARM-Vorlagen](template-parameters.md).
 
 ## <a name="variables"></a>variables
 
@@ -452,7 +452,7 @@ Gibt den Wert der Variablen zurück. Der angegebene Variablenname muss im Variab
 
 Der Wert der angegebenen Variablen.
 
-### <a name="remarks"></a>Hinweise
+### <a name="remarks"></a>Bemerkungen
 
 In der Regel verwenden Sie Variablen, um Ihre Vorlage zu vereinfachen, indem Sie komplexe Werte nur einmal erstellen. Das folgende Beispiel erstellt einen eindeutigen Namen für ein Speicherkonto.
 
@@ -571,8 +571,8 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 | exampleOutput3 | String | myVariable |
 | exampleOutput4 |  Object | {"property1": "value1", "property2": "value2"} |
 
-Weitere Informationen zur Verwendung von Variablen finden Sie unter [Variablen in einer Azure Resource Manager-Vorlage](template-variables.md).
+Weitere Informationen zur Verwendung von Variablen finden Sie unter [Variablen in einer ARM-Vorlage](template-variables.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Eine Beschreibung der Abschnitte in einer Azure Resource Manager-Vorlage finden Sie unter [Grundlegendes zur Struktur und Syntax von ARM-Vorlagen](template-syntax.md).
+* Eine Beschreibung der Abschnitte in einer ARM-Vorlage finden Sie unter [Grundlegendes zur Struktur und Syntax von ARM-Vorlagen](template-syntax.md).

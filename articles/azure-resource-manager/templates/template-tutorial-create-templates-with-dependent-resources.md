@@ -5,12 +5,12 @@ author: mumian
 ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: a43fa12e72484e97b828648cd7d610f5cf15ea4e
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: d1e5848e568f42fb8a77c65c775962f27a5a03df
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96931587"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588035"
 ---
 # <a name="tutorial-create-arm-templates-with-dependent-resources"></a>Tutorial: Erstellen von ARM-Vorlagen mit abhängigen Ressourcen
 
@@ -46,7 +46,7 @@ Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie F
 
 „Azure-Schnellstartvorlagen“ ist ein Repository für ARM-Vorlagen. Statt eine Vorlage von Grund auf neu zu erstellen, können Sie eine Beispielvorlage verwenden und diese anpassen. Die in diesem Tutorial verwendete Vorlage heißt [Deploy a simple Windows VM](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/) (Bereitstellen eines einfachen virtuellen Windows-Computers).
 
-1. Wählen Sie in Visual Studio Code **Datei**>**Datei öffnen** aus.
+1. Wählen Sie in Visual Studio Code **Datei** > **Datei öffnen** aus.
 2. Fügen Sie in **Dateiname** die folgende URL ein:
 
     ```url
@@ -54,18 +54,18 @@ Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie F
     ```
 
 3. Wählen Sie **Öffnen** aus, um die Datei zu öffnen.
-4. Wählen Sie **Datei**>**Speichern unter** aus, um eine Kopie der Datei als **azuredeploy.json** auf dem lokalen Computer zu speichern.
+4. Wählen Sie **Datei** > **Speichern unter** aus, um eine Kopie der Datei als _azuredeploy.json_ auf dem lokalen Computer zu speichern.
 
 ## <a name="explore-the-template"></a>Untersuchen der Vorlage
 
 Sehen Sie sich die Vorlage in diesem Abschnitt an, und versuchen Sie, die folgenden Fragen zu beantworten:
 
 * Wie viele Azure-Ressourcen sind in dieser Vorlage definiert?
-* Bei einer der Ressourcen handelt es sich um ein Azure-Speicherkonto.  Sieht die Definition wie die Definition im letzten Tutorial aus?
+* Bei einer der Ressourcen handelt es sich um ein Azure-Speicherkonto. Sieht die Definition wie die Definition im letzten Tutorial aus?
 * Finden Sie die Vorlagenreferenzen für die in dieser Vorlage definierten Ressourcen?
 * Finden Sie die Abhängigkeiten der Ressourcen?
 
-1. Reduzieren Sie in Visual Studio Code die Elemente, bis unter **resources** nur die Elemente der ersten und zweiten Ebene angezeigt werden:
+1. Reduzieren Sie in Visual Studio Code die Elemente, bis unter `resources` nur die Elemente der ersten und zweiten Ebene angezeigt werden:
 
     ![ARM-Vorlagen in Visual Studio Code](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-visual-studio-code.png)
 
@@ -96,7 +96,7 @@ Sehen Sie sich die Vorlage in diesem Abschnitt an, und versuchen Sie, die folgen
 
     ![ARM-Vorlagen in Visual Studio Code: „dependsOn“ für virtuelles Netzwerk](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-virtual-network-definition.png)
 
-    Das Element „dependsOn“ bietet die Möglichkeit, eine Ressource als von einer oder mehreren Ressourcen abhängig zu definieren. Diese Ressource hängt von einer weiteren Ressource ab:
+    Das `dependsOn`-Element bietet die Möglichkeit, eine Ressource als von mindestens einer Ressource abhängig zu definieren. Diese Ressource hängt von einer weiteren Ressource ab:
 
     * `Microsoft.Network/networkSecurityGroups`
 
@@ -124,7 +124,7 @@ Durch die Angabe der Abhängigkeiten wird die Lösung von Resource Manager effiz
 
     ![Azure-Portal, Cloud Shell, Datei hochladen](./media/template-tutorial-use-template-reference/azure-portal-cloud-shell-upload-file.png)
 
-1. Wählen Sie **Dateien hochladen/herunterladen** und dann **Hochladen** aus. Betrachten Sie hierzu den vorherigen Screenshot. Wählen Sie die Datei aus, die Sie zuvor gespeichert haben. Nach dem Hochladen der Datei können Sie den Befehl **ls** und den Befehl **cat** verwenden, um zu überprüfen, ob die Datei hochgeladen wurde.
+1. Wählen Sie **Dateien hochladen/herunterladen** und dann **Hochladen** aus. Betrachten Sie hierzu den vorherigen Screenshot. Wählen Sie die Datei aus, die Sie zuvor gespeichert haben. Nach dem Hochladen der Datei können Sie den Befehl `ls` und den Befehl `cat` verwenden, um zu überprüfen, ob die Datei hochgeladen wurde.
 
 1. Führen Sie das folgende PowerShell-Skript aus, um die Vorlage bereitzustellen.
 

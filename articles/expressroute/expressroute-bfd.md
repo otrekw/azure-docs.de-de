@@ -5,35 +5,35 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: article
-ms.date: 11/1/2018
+ms.date: 12/14/2020
 ms.author: duau
-ms.openlocfilehash: fd1cad4031d83fd0e17286bfaabb77aa746b646a
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 254f5909e7ed8db4dc18ade2677a3213b268cf41
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92202326"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97511262"
 ---
 # <a name="configure-bfd-over-expressroute"></a>Konfigurieren von BFD über ExpressRoute
 
-ExpressRoute unterstützt Bidirectional Forwarding Detection (BFD) sowohl über privates als auch Microsoft-Peering. Durch die Aktivierung von BFD über ExpressRoute können Sie die Erkennung von Verbindungsfehlern zwischen MSEE-Geräten (Microsoft Enterprise Edge) und den Routern beschleunigen, auf denen Sie die ExpressRoute-Leitung (CE/PE) beenden. Sie können ExpressRoute Customer-Edge-Routinggeräte oder Partner Edge-Routinggeräte beenden (wenn Sie den verwalteten Layer 3-Verbindungsdienst verwendet haben). In diesem Dokument werden die Notwendigkeit von BFD und die Vorgehensweise zur Aktivierung von BFD über ExpressRoute erläutert.
+ExpressRoute unterstützt Bidirectional Forwarding Detection (BFD) sowohl über privates als auch Microsoft-Peering. Wenn Sie BFD über ExpressRoute aktivieren, können Sie die Erkennung von Verbindungsfehlern zwischen MSEE-Geräten (Microsoft Enterprise Edge) und den Routern beschleunigen, auf denen die ExpressRoute-Leitung konfiguriert wird (CE/PE). Sie können ExpressRoute über Ihre Edgeroutinggeräte oder über Edgeroutinggeräte von Partnern konfigurieren (wenn Sie den verwalteten Layer 3-Verbindungsdienst verwenden). In diesem Dokument werden die Notwendigkeit von BFD und die Vorgehensweise zur Aktivierung von BFD über ExpressRoute erläutert.
 
 ## <a name="need-for-bfd"></a>Notwendigkeit von BFD
 
 Das folgende Diagramm zeigt den Vorteil der Aktivierung von BFD über die ExpressRoute-Leitung: [![1]][1]
 
-Sie können die ExpressRoute-Leitung entweder über Layer 2-Verbindungen oder über verwaltete Layer 3-Verbindungen aktivieren. In beiden Fällen ist das darüber liegende BGP für die Erkennung von Verbindungsfehlern in dem Pfad verantwortlich, wenn sich im ExpressRoute-Verbindungspfad mehrere Layer 2-Geräte befinden.
+Sie können die ExpressRoute-Leitung entweder über Layer 2-Verbindungen oder über verwaltete Layer 3-Verbindungen aktivieren. In beiden Fällen ist die übergeordnete BGP-Sitzung für die Erkennung von Verbindungsfehlern im Pfad verantwortlich, wenn sich im ExpressRoute-Verbindungspfad mehrere Layer 2-Geräte befinden.
 
-Auf den MSEE-Geräten sind keepalive und hold-time im BGP in der Regel für eine Dauer von 60 bzw. 180 Sekunden konfiguriert. Folglich würde es nach Auftreten eines Verbindungsfehlers bis zu drei Minuten dauern, um den Verbindungsfehler zu erkennen und den Datenverkehr über eine alternative Verbindung weiterzuleiten.
+Auf den MSEE-Geräten sind die BGP-Werte „keep-alive“ und „hold-time“ in der Regel mit 60 bzw. 180 Sekunden konfiguriert. Aus diesem Grund kann es bei einem Verbindungsfehler bis zu drei Minuten dauern, um den Fehler zu erkennen und den Datenverkehr über eine alternative Verbindung weiterzuleiten.
 
-Sie können die BGP-Zeitgeber steuern, indem Sie für keepalive und hold-time im BGP auf dem Customer Edge-Peeringgerät niedrigere Werte konfigurieren. Wenn die BGP-Zeitgeber zwischen den beiden Peeringgeräten nicht übereinstimmen, würden in der BGP-Sitzung niedrigere Zeitgeberwerte zwischen den Peers verwendet. Der Wert für keepalive im BGP kann auf nur drei Sekunden festgelegt werden und der Wert für hold-time in der Größenordnung auf mehr als zehn Sekunden. Das dynamische Festlegen von BGP-Zeitgebern wird jedoch weniger bevorzugt, da das Protokoll prozessintensiv ist.
+Sie können die BGP-Zeitgeber steuern, indem Sie auf Ihrem Edgepeeringgerät niedrigere Werte für „keep-alive“ und „hold-time“ konfigurieren. Wenn auf den beiden Peeringgeräten nicht dieselben BGP-Zeitgeberwerte verwendet werden, wird die BGP-Sitzung mit dem kleineren Wert festgelegt. Der BGP-Wert für „keep-alive“ kann auf nur drei Sekunden, der Wert für „hold-time“ auf nur zehn Sekunden festgelegt werden. Das Festlegen eines sehr aggressiven BGP-Zeitgeberwerts wird nicht empfohlen, weil das Protokoll prozessintensiv ist.
 
 In diesem Szenario kann BFD helfen. Mit BFD können Verbindungsfehler mit geringem Mehraufwand in einem Zeitintervall von unter 1 Sekunde erkannt werden. 
 
 
 ## <a name="enabling-bfd"></a>Aktivieren von BFD
 
-BFD wird standardmäßig unter allen neu erstellten privaten ExpressRoute-Peeringschnittstellen auf den MSEE-Geräten konfiguriert. Daher müssen Sie zum Aktivieren von BFD nur auf Ihren CEs/PEs (sowohl auf den primären als auch den sekundären Geräten) BFD konfigurieren. BFD wird in zwei Schritten konfiguriert: Sie müssen BFD in der Schnittstelle konfigurieren und anschließend mit der BGP-Sitzung verknüpfen.
+BFD wird standardmäßig unter allen neu erstellten privaten ExpressRoute-Peeringschnittstellen auf den MSEE-Geräten konfiguriert. Um BFD zu aktivieren, müssen Sie das Feature nur auf Ihren primären und sekundären Geräten konfigurieren. Die Konfiguration von BFD erfolgt in zwei Schritten. Sie konfigurieren BFD in der Schnittstelle und verknüpfen das Feature anschließend mit der BGP-Sitzung.
 
 Eine CE/PE-Beispielkonfiguration (unter Verwendung von Cisco IOS XE) ist unten dargestellt. 
 
@@ -62,10 +62,10 @@ router bgp 65020
 
 ## <a name="bfd-timer-negotiation"></a>Aushandlung des BFD-Zeitgebers
 
-Zwischen BFD-Peers bestimmt der langsamere der beiden Peers die Übertragungsrate. BFD-Übertragung auf MSEE-Geräten/Empfangsintervalle werden auf 300 Millisekunden festgelegt. In bestimmten Szenarien kann das Intervall auf einen höheren Wert von 750 Millisekunden festgelegt werden. Durch das Konfigurieren höherer Werte können Sie erzwingen, dass diese Intervalle länger sind; kürzere Intervalle können jedoch nicht erzwungen werden.
+Zwischen BFD-Peers bestimmt der langsamere der beiden Peers die Übertragungsrate. BFD-Übertragung auf MSEE-Geräten/Empfangsintervalle werden auf 300 Millisekunden festgelegt. In bestimmten Szenarien kann das Intervall auf einen höheren Wert von 750 Millisekunden festgelegt werden. Durch Konfigurieren eines höheren Werts können Sie längere Intervalle erzwingen, eine Verkürzung ist jedoch nicht möglich.
 
 >[!NOTE]
->Wenn Sie georedundante ExpressRoute-Leitungen konfiguriert haben oder IPSec-VPN-Konnektivität zwischen Standorten als Sicherung verwenden; durch die Aktivierung von BFD könnte der Failover nach einem ExpressRoute-Konnektivitätsfehler schneller erfolgen. 
+>Wenn Sie georedundante ExpressRoute-Leitungen konfiguriert haben oder eine S2S-IPsec-VPN-Verbindung als Backup verwenden. Die Aktivierung von BFD hilft bei einem schnelleren Failover nach einem ExpressRoute-Konnektivitätsfehler. 
 >
 
 ## <a name="next-steps"></a>Nächste Schritte

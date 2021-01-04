@@ -11,14 +11,14 @@ ms.topic: conceptual
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/19/2020
+ms.date: 12/10/2020
 ms.author: memildin
-ms.openlocfilehash: cf297cdeec88a31950d007246f987957db80e247
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: ecfb4bdbd523dd1514333a2185186eab0a7e4aaa
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92785883"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97032676"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>Integrieren von Sicherheitslösungen in Azure Security Center
 Dieses Dokument unterstützt Sie bei der Verwaltung von bereits mit Azure Security Center verbundenen Sicherheitslösungen sowie beim Hinzufügen neuer Lösungen.
@@ -30,7 +30,7 @@ Mit Security Center können Sie ganz einfach integrierte Sicherheitslösungen in
 - **Integrierte Erkennungen:** Sicherheitsereignisse von Partnerlösungen werden automatisch gesammelt, aggregiert und im Rahmen der Security Center-Warnungen und -Vorfälle angezeigt. Diese Ereignisse werden mit Erkennungen anderer Quellen zusammengeführt, um erweiterte Bedrohungserkennungsfunktionen bereitzustellen.
 - **Einheitliche Integritätsüberwachung und -verwaltung:** Mithilfe integrierter Integritätsereignisse können Kunden alle Partnerlösungen auf einen Blick überwachen. Es ist eine grundlegende Verwaltung verfügbar – mit einfachem Zugriff auf die erweiterte Konfiguration über die Partnerlösung.
 
-Derzeit umfassen die integrierten Sicherheitslösungen Sicherheitsrisikobewertung durch [Qualys](https://www.qualys.com/public-cloud/#azure), [Rapid7](https://www.rapid7.com/products/insightvm/) und Microsoft Application Gateway-Webanwendungsfirewall.
+Derzeit umfassen integrierte Sicherheitslösungen die Sicherheitsrisikobewertung durch [Qualys](https://www.qualys.com/public-cloud/#azure), [Rapid7](https://www.rapid7.com/products/insightvm/) und [Microsoft Azure Web Application Firewall für Azure Application Gateway](../web-application-firewall/ag/ag-overview.md).
 
 > [!NOTE]
 > Security Center installiert den Log Analytics-Agent nicht auf virtuellen Appliances von Partnern, da die meisten Sicherheitsanbieter die Ausführung externer Agents auf ihren Appliances untersagen.
@@ -49,7 +49,7 @@ Azure Security Center bietet auch eine Sicherheitsrisikoanalyse für Folgendes:
 
 ## <a name="manage-integrated-azure-security-solutions-and-other-data-sources"></a>Verwalten integrierter Azure-Sicherheitslösungen und anderer Datenquellen
 
-1. Öffnen Sie im [Azure-Portal](https://azure.microsoft.com/features/azure-portal/) das **Security Center** .
+1. Öffnen Sie im [Azure-Portal](https://azure.microsoft.com/features/azure-portal/) das **Security Center**.
 
 1. Wählen Sie im Menü von Security Center **Sicherheitslösungen** aus.
 
@@ -75,8 +75,8 @@ Eine Partnerlösung kann den folgenden Status aufweisen:
 
 Wählen Sie **ANZEIGEN** aus, um zusätzliche Informationen und Optionen anzuzeigen, z. B.:
 
-   - **Lösungskonsole** : Öffnet die Verwaltungsoberfläche für diese Lösung.
-   - **Virtuellen Computer verknüpfen** : Öffnet die Seite „Anwendungen verknüpfen“. Hier können Sie Ressourcen mit der Partnerlösung verknüpfen.
+   - **Lösungskonsole**: Öffnet die Verwaltungsoberfläche für diese Lösung.
+   - **Virtuellen Computer verknüpfen**: Öffnet die Seite „Anwendungen verknüpfen“. Hier können Sie Ressourcen mit der Partnerlösung verknüpfen.
    - **Lösung löschen**
    - **Konfigurieren**
 
@@ -91,11 +91,11 @@ Security Center erkennt Sicherheitslösungen automatisch, die in Azure ausgefüh
 > Aktivieren Sie **Azure Defender-** auf Abonnementebene für das Feature „Ermittelte Lösungen“. Weitere Informationen zu den Tarifen finden Sie unter [Preise](security-center-pricing.md).
 >
 
-Wählen Sie unterhalb einer Lösung die Option **VERBINDEN** , um die Integration in Security Center durchzuführen und über Sicherheitswarnungen benachrichtigt zu werden.
+Wählen Sie unterhalb einer Lösung die Option **VERBINDEN**, um die Integration in Security Center durchzuführen und über Sicherheitswarnungen benachrichtigt zu werden.
 
 ### <a name="add-data-sources"></a>Hinzufügen von Datenquellen
 
-Der Abschnitt **Datenquellen hinzufügen** enthält weitere verfügbare Datenquellen, mit denen eine Verbindung hergestellt werden kann. Klicken Sie **HINZUFÜGEN** , um eine Anleitung zum Hinzufügen von Daten aus einer dieser Quellen anzuzeigen.
+Der Abschnitt **Datenquellen hinzufügen** enthält weitere verfügbare Datenquellen, mit denen eine Verbindung hergestellt werden kann. Klicken Sie **HINZUFÜGEN**, um eine Anleitung zum Hinzufügen von Daten aus einer dieser Quellen anzuzeigen.
 
 ![Datenquellen](./media/security-center-partner-integration/add-data-sources.png)
 

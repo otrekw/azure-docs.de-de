@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 11/09/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 4fa0f4d87567bd77faacfd2373dba0d2b8996446
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: 81a1263d0eacbffa77e2e35e4594e23235394183
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94873368"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97108670"
 ---
 # <a name="localization-string-ids"></a>Lokalisierungszeichenfolgen-IDs
 
@@ -442,7 +442,7 @@ Im Folgenden finden Sie die IDs für Fehlermeldungen für das [technische Profil
 
 ## <a name="azure-ad-mfa-error-messages"></a>Azure AD MFA-Fehlermeldungen
 
-Im Folgenden finden Sie die IDs für Fehlermeldungen für ein [technisches Profil mit Azure AD MFA](multi-factor-auth-technical-profile.md):
+Im Folgenden finden Sie die IDs der Fehlermeldungen für ein [technisches Azure AD MFA-Profil](multi-factor-auth-technical-profile.md):
 
 | id | Standardwert |
 | -- | ------------- |
@@ -547,5 +547,5 @@ Im Folgenden finden Sie die IDs für Fehlermeldungen zu Transformationen von Ans
 
 Die folgenden Artikel enthalten Lokalisierungsbeispiele:
 
-- [Sprachanpassung mit benutzerdefinierter Richtlinie in Azure Active Directory B2C](custom-policy-localization.md)
-- [Sprachanpassung mit Benutzerflows in Azure Active Directory B2C](user-flow-language-customization.md)
+- [Sprachanpassung mit benutzerdefinierter Richtlinie in Azure Active Directory B2C](language-customization.md)
+- [Sprachanpassung mit Benutzerflows in Azure Active Directory B2C](language-customization.md)

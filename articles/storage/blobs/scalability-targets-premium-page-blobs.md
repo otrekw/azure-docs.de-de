@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 2c238bf3911283db5d09fdd5679d784c5e5401f8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 23a176bfa5e3861dbc4ad5c03ea54fc847d3f56b
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88654802"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96922541"
 ---
 # <a name="scalability-and-performance-targets-for-premium-page-blob-storage-accounts"></a>Skalierungs- und Leistungsziele für Seitenblob-Speicherkonten mit Premium-Leistung
 
@@ -37,7 +37,7 @@ Seitenblob-Speicherkonten mit Premium-Leistung weisen folgende Skalierbarkeitszi
 
 <sup>2</sup> Alle Daten (Antworten), die von einem Speicherkonto empfangen werden
 
-Ein Seitenblobkonto mit Premium-Leistung ist ein universelles Konto, das für Premium-Leistung konfiguriert ist. Es werden Speicherkonten vom Typ „Universell v2“ empfohlen.
+Ein Seitenblobkonto mit Premium-Leistung ist ein universelles Konto, das für Premium-Leistung konfiguriert wurde. Es werden Speicherkonten vom Typ „Universell v2“ empfohlen.
 
 Wenn Sie Seitenblob-Speicherkonten mit Premium-Leistung für nicht verwaltete Datenträger verwenden und Ihre Anwendung die Skalierbarkeitsziele eines einzelnen Speicherkontos überschreitet, empfiehlt Microsoft die Migration zu verwalteten Datenträgern. Weitere Informationen zu verwalteten Datenträgern finden Sie in der [Übersicht über Azure Disk Storage für virtuelle Computer](../../virtual-machines/managed-disks-overview.md).
 

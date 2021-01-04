@@ -6,12 +6,12 @@ ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: 445e7ce2d6e609d75bff38bb3d049a87f184be12
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 46b32ae7aeb971c9391a69e3ca3d01f669774248
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613593"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106902"
 ---
 # <a name="tutorial-use-azure-quickstart-templates"></a>Tutorial: Verwenden von Azure-Schnellstartvorlagen
 
@@ -34,10 +34,10 @@ Diese Vorlage funktioniert für die Bereitstellung von Speicherkonten und App Se
 ## <a name="find-template"></a>Suchen nach Vorlagen
 
 1. Öffnen Sie [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/).
-1. Geben Sie **Linux-Web-App bereitstellen** in die **Suche** ein.
-1. Wählen Sie die Vorlage mit dem Titel **Deploy a basic Linux web app** aus. Hier ist der [direkte Link](https://azure.microsoft.com/resources/templates/101-webapp-basic-linux/), falls Sie sie nicht finden können.
+1. Geben Sie _Linux-Web-App bereitstellen_ in die **Suche** ein.
+1. Wählen Sie die Kachel mit dem Titel **Deploy a basic Linux web app** (Grundlegende Linux-Web-App bereitstellen) aus. Hier ist der [direkte Link](https://azure.microsoft.com/resources/templates/101-webapp-basic-linux/), falls Sie sie nicht finden können.
 1. Wählen Sie **Auf GitHub suchen** aus.
-1. Wählen Sie **azuredeploy.json** aus.
+1. Wählen Sie _azuredeploy.json_ aus.
 1. Überprüfen Sie die Vorlage. Suchen Sie insbesondere nach der Ressource `Microsoft.Web/sites`.
 
     ![Website: Resource Manager-Schnellstartvorlage](./media/template-tutorial-quickstart-template/resource-manager-template-quickstart-template-web-site.png)
@@ -48,15 +48,15 @@ Zusammenführen der Schnellstartvorlage mit der vorhandenen Vorlage:
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/quickstart-template/azuredeploy.json" range="1-108" highlight="32-45,49,85-100":::
 
-Der Web-App-Name muss in Azure eindeutig sein. Zum Vermeiden von doppelten Namen wurde die Variable **webAppPortalName** von **"webAppPortalName": "[concat(parameters('webAppName'), '-webapp')]"** zu **"webAppPortalName": "[concat(parameters('webAppName'), uniqueString(resourceGroup().id))]"** aktualisiert.
+Der Web-App-Name muss in Azure eindeutig sein. Zum Vermeiden von doppelten Namen wurde die Variable `webAppPortalName` von `"webAppPortalName": "[concat(parameters('webAppName'), '-webapp')]"` zu `"webAppPortalName": "[concat(parameters('webAppName'), uniqueString(resourceGroup().id))]"` aktualisiert.
 
 Fügen Sie am Ende der `Microsoft.Web/serverfarms`-Definition ein Komma hinzu, um die Ressourcendefinition von der `Microsoft.Web/sites`-Definition zu trennen.
 
 In dieser neuen Ressource sind einige wichtige Features zu beachten.
 
-Sie werden feststellen, dass Sie ein Element mit dem Namen **dependsOn** enthält, das auf den App Service-Plan festgelegt ist. Diese Einstellung ist erforderlich, da der App Service-Plan vorhanden sein muss, bevor die Web-App erstellt wird. Das **dependsOn**-Element teilt Resource Manager mit, wie die Ressourcen für die Bereitstellung zu sortieren sind.
+Sie werden feststellen, dass sie ein Element mit dem Namen `dependsOn` enthält, das auf den App Service-Plan festgelegt ist. Diese Einstellung ist erforderlich, da der App Service-Plan vorhanden sein muss, bevor die Web-App erstellt wird. Das `dependsOn`-Element teilt Resource Manager mit, wie die Ressourcen für die Bereitstellung zu sortieren sind.
 
-Die **serverFarmId**-Eigenschaft verwendet die Funktion [resourceId](template-functions-resource.md#resourceid). Diese Funktion ruft den eindeutigen Bezeichner für eine Ressource ab. In diesem Fall wird der eindeutige Bezeichner für den App Service-Plan abgerufen. Die Web-App ist einem bestimmten App Service-Plan zugeordnet.
+Die `serverFarmId`-Eigenschaft verwendet die Funktion [resourceId](template-functions-resource.md#resourceid). Diese Funktion ruft den eindeutigen Bezeichner für eine Ressource ab. In diesem Fall wird der eindeutige Bezeichner für den App Service-Plan abgerufen. Die Web-App ist einem bestimmten App Service-Plan zugeordnet.
 
 ## <a name="deploy-template"></a>Bereitstellen der Vorlage
 
@@ -91,7 +91,7 @@ az deployment group create \
 ---
 
 > [!NOTE]
-> Wenn bei der Bereitstellung ein Fehler aufgetreten ist, verwenden Sie den Schalter **verbose**, um Informationen zu den erstellten Ressourcen abzurufen. Verwenden Sie den Schalter **debug**, um weitere Informationen zum Debuggen zu erhalten.
+> Wenn bei der Bereitstellung ein Fehler aufgetreten ist, verwenden Sie den Schalter `verbose`, um Informationen zu den erstellten Ressourcen abzurufen. Verwenden Sie den Schalter `debug`, um weitere Informationen zum Debuggen zu erhalten.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

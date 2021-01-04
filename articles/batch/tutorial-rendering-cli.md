@@ -1,15 +1,15 @@
 ---
-title: Rendern einer Szene in der Cloud
+title: Tutorial – Rendern einer Szene in der Cloud
 description: Tutorial – Rendern einer Autodesk 3ds Max-Szene mit Arnold per Batch Rendering-Dienst und Azure-Befehlszeilenschnittstelle
 ms.topic: tutorial
 ms.date: 03/05/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 579a5446cb199bb73f98e2e1cbb0948f062470a8
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: e0858e838ba73862ef7f15040915c5f5cd3c751b
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94542387"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106341"
 ---
 # <a name="tutorial-render-a-scene-with-azure-batch"></a>Tutorial: Rendern einer Szene mit Azure Batch 
 
@@ -346,7 +346,7 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 > * Skalieren des Pools und Rendern einer Szene mit mehreren Frames
 > * Herunterladen der gerenderten Ausgabe
 
-Weitere Informationen zum Rendering auf Cloudebene finden Sie in den Optionen für den Batch Rendering-Dienst. 
+Weitere Informationen zum Rendering auf Cloudebene finden Sie in der Dokumentation zum Batch Rendering.
 
 > [!div class="nextstepaction"]
 > [Batch Rendering-Dienst](batch-rendering-service.md)

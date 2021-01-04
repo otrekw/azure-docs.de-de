@@ -2,25 +2,19 @@
 title: Benutzerdefinierte Azure-Rollen – Azure RBAC
 description: Informationen zum Erstellen benutzerdefinierter Azure-Rollen mit der rollenbasierten Zugriffssteuerung von Azure (Azure RBAC) für die präzise Verwaltung des Zugriffs auf Azure-Ressourcen.
 services: active-directory
-documentationcenter: ''
 author: rolyon
 manager: mtillman
-ms.assetid: e4206ea9-52c3-47ee-af29-f6eef7566fa5
 ms.service: role-based-access-control
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/13/2020
+ms.date: 12/11/2020
 ms.author: rolyon
-ms.reviewer: bagovind
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fd737a22a37d6edc47c2769a470af00537d720eb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eddbd9cb695f3ff7eabd9f2549d0a868d8826eb9
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87124152"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97369122"
 ---
 # <a name="azure-custom-roles"></a>Benutzerdefinierte Azure-Rollen
 
@@ -32,6 +26,52 @@ ms.locfileid: "87124152"
 Wenn die [integrierten Azure-Rollen](built-in-roles.md) die Anforderungen Ihrer Organisation nicht erfüllen, können Sie Ihre eigenen benutzerdefinierten Rollen erstellen. Genauso wie integrierte Rollen können auch benutzerdefinierte Rollen Benutzern, Gruppen und Dienstprinzipalen im Verwaltungsgruppen-, Abonnement- und Ressourcengruppenbereich zugewiesen werden.
 
 Benutzerdefinierte Rollen können von Abonnements, die demselben Azure AD-Verzeichnis vertrauen, gemeinsam genutzt werden. Es gilt ein Limit von **5.000** benutzerdefinierte Rollen pro Verzeichnis. (Für Azure Deutschland und Azure China 21ViaNet beträgt das Limit 2.000 benutzerdefinierte Rollen.) Benutzerdefinierte Rollen können über das Azure-Portal, mit Azure PowerShell, über die Azure CLI oder mithilfe der REST-API erstellt werden.
+
+## <a name="steps-to-create-a-custom-role"></a>Schritte zum Erstellen einer benutzerdefinierten Rolle
+
+Dies sind die grundlegenden Schritte zum Erstellen einer benutzerdefinierten Rolle.
+
+1. Bestimmen Sie die Berechtigungen, die Sie benötigen.
+
+    Wenn Sie eine benutzerdefinierte Rolle erstellen, müssen Sie die Vorgänge kennen, die zum Definieren der Berechtigungen verfügbar sind. In der Regel beginnen Sie mit einer vorhandenen integrierten Rolle und ändern sie Ihren Anforderungen entsprechend. Sie fügen die Vorgänge der `Actions`- oder `NotActions`-Eigenschaft der [Rollendefinition](role-definitions.md) hinzu. Wenn Sie über Datenvorgänge verfügen, fügen Sie diese der `DataActions`- oder `NotDataActions`-Eigenschaft hinzu.
+
+    Weitere Informationen finden Sie im nächsten Abschnitt [Ermitteln der erforderlichen Berechtigungen](#how-to-determine-the-permissions-you-need).
+
+1. Entscheiden Sie, wie Sie die benutzerdefinierte Rolle erstellen möchten.
+
+    Benutzerdefinierte Rollen können im [Azure-Portal](custom-roles-portal.md), mit [Azure PowerShell](custom-roles-powershell.md), [Azure CLI](custom-roles-cli.md) oder der [REST-API](custom-roles-rest.md) erstellt werden.
+
+1. Erstellen Sie die benutzerdefinierte Rolle.
+
+    Das geht am einfachsten über das Azure-Portal. Die Schritte zum Erstellen einer benutzerdefinierten Rolle über das Azure-Portal finden Sie unter [Erstellen oder Aktualisieren von benutzerdefinierten Azure-Rollen über das Azure-Portal](custom-roles-portal.md).
+
+1. Testen Sie die benutzerdefinierte Rolle.
+
+    Sobald Sie über Ihre benutzerdefinierte Rolle verfügen, müssen Sie sie testen, um sicherzustellen, dass sie wie erwartet funktioniert. Wenn Sie später Anpassungen vornehmen müssen, können Sie die benutzerdefinierte Rolle aktualisieren.
+
+## <a name="how-to-determine-the-permissions-you-need"></a>Ermitteln der erforderlichen Berechtigungen
+
+Azure verfügt über Tausende von Berechtigungen, die Sie potenziell zu Ihrer benutzerdefinierten Rolle hinzufügen können. Nachfolgend werden einige Methoden aufgeführt, mit denen Sie die Berechtigungen ermitteln können, die Sie Ihrer benutzerdefinierten Rolle hinzufügen sollten:
+
+- Sehen Sie sich die vorhandenen [integrierten Rollen](built-in-roles.md) an.
+
+    Möglicherweise möchten Sie eine vorhandene Rolle ändern oder Berechtigungen kombinieren, die in mehreren Rollen verwendet werden.
+
+- Listen Sie die Azure-Dienste auf, auf die Sie Zugriff gewähren möchten.
+
+- Bestimmen Sie die [Ressourcenanbieter, die den Azure-Diensten zugeordnet sind](../azure-resource-manager/management/azure-services-resource-providers.md).
+
+    Azure-Dienste stellen ihre Funktionalität und Berechtigungen über [Ressourcenanbieter](../azure-resource-manager/management/overview.md) zur Verfügung. Beispielsweise stellt der Microsoft.Compute-Ressourcenanbieter VM-Ressourcen bereit, und der Ressourcenanbieter Microsoft.Billing stellt Abonnement- und Abrechnungsressourcen zur Verfügung. Wenn Sie die Ressourcenanbieter kennen, können Sie die erforderlichen Berechtigungen für Ihre benutzerdefinierte Rolle eingrenzen und ermitteln.
+
+    Wenn Sie mithilfe des Azure-Portals eine benutzerdefinierte Rolle erstellen, können Sie auch die Ressourcenanbieter ermitteln, indem Sie nach Schlüsselwörtern suchen. Diese Suchfunktion wird unter [Erstellen oder Aktualisieren von benutzerdefinierten Azure-Rollen mithilfe des Azure-Portals](custom-roles-portal.md#step-4-permissions) beschrieben.
+
+    ![Der Bereich „Berechtigungen hinzufügen“ mit Ressourcenanbietern](./media/custom-roles-portal/add-permissions-provider.png)
+
+- Suchen Sie nach den [verfügbaren Berechtigungen](resource-provider-operations.md), um die gewünschten Berechtigungen zu ermitteln.
+
+    Wenn Sie über das Azure-Portal eine benutzerdefinierte Rolle erstellen, können Sie anhand von Schlüsselwörtern nach Berechtigungen suchen. Sie können z.B. nach Berechtigungen im Zusammenhang mit *VMs* oder mit der *Abrechnung* suchen. Sie können auch alle Berechtigungen als CSV-Datei herunterladen und dann diese Datei durchsuchen. Diese Suchfunktion wird unter [Erstellen oder Aktualisieren von benutzerdefinierten Azure-Rollen mithilfe des Azure-Portals](custom-roles-portal.md#step-4-permissions) beschrieben.
+
+    ![Die Liste „Berechtigungen hinzufügen“](./media/custom-roles-portal/add-permissions-list.png)
 
 ## <a name="custom-role-example"></a>Beispiel einer benutzerdefinierten Rolle
 
@@ -115,7 +155,7 @@ Wenn Sie eine benutzerdefinierte Rolle erstellt haben, wird sie im Azure-Portal 
 
 In der folgenden Tabelle wird erläutert, was die Eigenschaften der benutzerdefinierten Rollen bedeuten.
 
-| Eigenschaft | Erforderlich | type | BESCHREIBUNG |
+| Eigenschaft | Erforderlich | type | Beschreibung |
 | --- | --- | --- | --- |
 | `Name`</br>`roleName` | Ja | String | Der Anzeigename der benutzerdefinierten Rolle. Obwohl es sich bei einer Rollendefinition um eine Ressource auf Verwaltungsgruppen- oder Abonnementebene handelt, kann eine solche Definition in mehreren Abonnements verwendet werden, die dasselbe Azure AD-Verzeichnis gemeinsam nutzen. Der Anzeigename muss im Bereich des Azure AD-Verzeichnisses eindeutig sein. Er kann Buchstaben, Ziffern, Leerzeichen und Sonderzeichen enthalten. Die maximale Anzahl von Zeichen ist 128. |
 | `Id`</br>`name` | Ja | String | Die eindeutige ID der benutzerdefinierten Rolle. Für Azure PowerShell und Azure CLI wird diese ID automatisch generiert, wenn Sie eine neue Rolle erstellen. |
@@ -150,26 +190,6 @@ Eine Zeichenfolge kann auch mehrere Platzhalter enthalten. Die folgende Zeichenf
 ```
 Microsoft.CostManagement/*/query/*
 ```
-
-## <a name="steps-to-create-a-custom-role"></a>Schritte zum Erstellen einer benutzerdefinierten Rolle
-
-Im Folgenden werden die Schritte erläutert, die Sie zum Erstellen einer benutzerdefinierten Rolle befolgen müssen:
-
-1. Entscheiden Sie, wie Sie die benutzerdefinierte Rolle erstellen möchten.
-
-    Benutzerdefinierte Rollen können im Azure-Portal, mit Azure PowerShell, über die Azure CLI oder die REST-API erstellt werden.
-
-1. Bestimmen Sie die Berechtigungen, die Sie benötigen.
-
-    Wenn Sie eine benutzerdefinierte Rolle erstellen, müssen Sie die Vorgänge kennen, die zum Definieren der Berechtigungen verfügbar sind. Wie Sie die Liste der Vorgänge anzeigen, erfahren Sie unter [Vorgänge für Azure Resource Manager-Ressourcenanbieter](resource-provider-operations.md). Sie fügen die Vorgänge der `Actions`- oder `NotActions`-Eigenschaft der [Rollendefinition](role-definitions.md) hinzu. Wenn Sie über Datenvorgänge verfügen, fügen Sie diese der `DataActions`- oder `NotDataActions`-Eigenschaft hinzu.
-
-1. Erstellen Sie die benutzerdefinierte Rolle.
-
-    In der Regel beginnen Sie mit einer vorhandenen integrierten Rolle und ändern sie Ihren Anforderungen entsprechend. Das geht am einfachsten über das Azure-Portal. Die Schritte zum Erstellen einer benutzerdefinierten Rolle über das Azure-Portal finden Sie unter [Erstellen oder Aktualisieren von benutzerdefinierten Azure-Rollen über das Azure-Portal](custom-roles-portal.md).
-
-1. Testen Sie die benutzerdefinierte Rolle.
-
-    Sobald Sie über Ihre benutzerdefinierte Rolle verfügen, müssen Sie sie testen, um sicherzustellen, dass sie wie erwartet funktioniert. Wenn Sie später Anpassungen vornehmen müssen, können Sie die benutzerdefinierte Rolle aktualisieren.
 
 ## <a name="who-can-create-delete-update-or-view-a-custom-role"></a>Rollen zum Erstellen, Löschen, Aktualisieren oder Anzeigen einer benutzerdefinierten Rolle
 

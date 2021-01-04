@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 05/29/2018
 ms.author: ccompy
 ms.custom: mvc, seodec18
-ms.openlocfilehash: c8a4b6998d1471a79dd789ed6528e22b07f2015c
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 95a4d00a27a0da363561f469b4c5e9e2ad16463c
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92540974"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97510497"
 ---
 # <a name="configure-your-app-service-environment-with-forced-tunneling"></a>Konfigurieren Ihrer App Service-Umgebung mit erzwungenem Tunneling
 
@@ -101,9 +101,9 @@ Führen Sie die folgenden Schritte aus, um das Tunneling für den gesamten ausge
     "userWhitelistedIpRanges": ["11.22.33.44/32", "55.66.77.0/24"]
     ```
 
-   Klicken Sie oben auf **PUT** . Diese Option löst einen Skalierungsvorgang für Ihre App Service-Umgebung aus und passt die Firewall an.
+   Klicken Sie oben auf **PUT**. Diese Option löst einen Skalierungsvorgang für Ihre App Service-Umgebung aus und passt die Firewall an.
 
-_So erstellen Sie Ihre ASE mit den Ausgangsadressen_ : Befolgen Sie die Anleitung unter [Erstellen einer App Service-Umgebung mit einer Vorlage][template], und rufen Sie die entsprechende Vorlage ab.  Bearbeiten Sie den Abschnitt „resources“ in der Datei „azuredeploy.json“, aber nicht im Block „properties“, und fügen Sie eine Zeile für **userWhitelistedIpRanges** mit Ihren Werten ein.
+_So erstellen Sie Ihre ASE mit den Ausgangsadressen_: Befolgen Sie die Anleitung unter [Erstellen einer App Service-Umgebung mit einer Vorlage][template], und rufen Sie die entsprechende Vorlage ab.  Bearbeiten Sie den Abschnitt „resources“ in der Datei „azuredeploy.json“, aber nicht im Block „properties“, und fügen Sie eine Zeile für **userWhitelistedIpRanges** mit Ihren Werten ein.
 
 ```json
 "resources": [
@@ -131,7 +131,7 @@ _So erstellen Sie Ihre ASE mit den Ausgangsadressen_ : Befolgen Sie die Anleitun
 
 Durch diese Änderungen wird Datenverkehr an Azure Storage direkt aus der ASE gesendet und der Zugriff auf Azure SQL von zusätzlichen Adressen zur VIP der ASE ermöglicht.
 
-   ![Tunnelerzwingung mit SQL-Whitelist][3]
+   ![Tunnelerzwingung mit SQL-Zulassungsliste][3]
 
 ## <a name="preventing-issues"></a>Verhindern von Problemen ##
 

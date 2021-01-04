@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 10/25/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: bddc4c64feb31f78bed482bbd729ab1c4b8e676e
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: c7f7f162355b919c395dd0ee6d03b2bc5526e3da
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96171414"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96936691"
 ---
 # <a name="tutorial-for-extending-azure-ad-b2c-to-protect-on-premises-applications-using-strata"></a>Tutorial: Erweitern von Azure AD B2C zum Schützen lokaler Anwendungen mithilfe von Strata
 
@@ -83,7 +83,7 @@ Wenden Sie sich an [Strata](https://www.strata.io/contact/), um die Software zu 
 
    c. Fügen Sie einen Umleitungs-URI für Ihre Anwendung hinzu. Dieser URI entspricht dem Parameter `oauthRedirectURL` der Konfiguration des Azure AD B2C-Connectors für Ihren Orchestrator, z. B. `https://example.com/oidc-endpoint`.
 
-2. **Erstellen eines Benutzerflows**: Erstellen Sie einen [Benutzerflow für die Registrierung und Anmeldung](./tutorial-create-user-flows.md).
+2. **Erstellen eines Benutzerflows**: Erstellen Sie einen [Benutzerflow für Registrierung und Anmeldung](./tutorial-create-user-flows.md).
 
 3. **Hinzufügen eines Identitätsanbieters**: Wählen Sie aus, ob die Benutzeranmeldung über ein lokales Konto oder einen sozialen oder Unternehmens [identitätsanbieter](./tutorial-add-identity-providers.md) erfolgen soll.
 

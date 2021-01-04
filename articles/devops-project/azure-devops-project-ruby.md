@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 03/24/2020
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: b7ab2fb13be10d5992f1b26973e9735ac238090a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9e2f7115560148a1d3b9d2671be54c1ba4d61946
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91856057"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588912"
 ---
 # <a name="create-a-cicd-pipeline-for-ruby-on-rails-by-using-azure-devops-starter"></a>Erstellen einer CI/CD-Pipeline für Ruby on Rails mit Azure DevOps Starter
 
@@ -63,9 +63,9 @@ Mit Azure DevOps Starter wird eine CI/CD-Pipeline in Azure Repos erstellt. Sie k
 
 Von Azure DevOps Starter wird ein Git-Repository in Azure Pipelines oder auf GitHub erstellt. Gehen Sie wie folgt vor, um das Repository anzuzeigen und Codeänderungen an der App vorzunehmen:
 
-1. Klicken Sie auf der linken Seite des DevOps Starter-Dashboards auf den Link für Ihren Masterbranch. Über den Link wird eine Ansicht des neu erstellten Git-Repositorys geöffnet.
+1. Klicken Sie auf der linken Seite des DevOps Starter-Dashboards auf den Link für Ihren Mainbranch. Über den Link wird eine Ansicht des neu erstellten Git-Repositorys geöffnet.
 
-1. Wählen Sie zum Anzeigen der Repository-Klon-URL oben rechts **Klonen** aus. Sie können Ihr Git-Repository in Ihrer bevorzugten IDE klonen. Bei den nächsten Schritten können Sie den Webbrowser verwenden, um Codeänderungen direkt am Masterbranch vorzunehmen und für Codeänderungen einen Commit auszuführen.
+1. Wählen Sie zum Anzeigen der Repository-Klon-URL oben rechts **Klonen** aus. Sie können Ihr Git-Repository in Ihrer bevorzugten IDE klonen. Bei den nächsten Schritten können Sie den Webbrowser verwenden, um Codeänderungen direkt am Mainbranch vorzunehmen und für Codeänderungen einen Commit auszuführen.
 
 1. Navigieren Sie links zur Datei *app/views/pages/home.html.erb*, und wählen Sie dann **Bearbeiten** aus.
 

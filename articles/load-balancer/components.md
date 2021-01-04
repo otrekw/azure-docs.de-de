@@ -11,19 +11,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/04/2020
 ms.author: allensu
-ms.openlocfilehash: bf7a35e8cedbe62aafb29aa6d9dc8fcb42e90b2e
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 6ddfe581bb3f2f584fdec0229981321297c9a77f
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94693765"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97399196"
 ---
 # <a name="azure-load-balancer-components"></a>Azure Load Balancer-Komponenten
 
 Azure Load Balancer umfasst ein paar Hauptkomponenten. Diese Komponenten können in Ihrem Abonnement auf folgende Weise konfiguriert werden:
 
 * Azure-Portal
-* Azure-Befehlszeilenschnittstelle
+* Azure CLI
 * Azure PowerShell
 * Resource Manager-Vorlagen
 
@@ -44,7 +44,7 @@ Die Art der IP-Adresse bestimmt den **Typ** des erstellten Lastenausgleichs. Wen
 
 ![Beispiel für einen mehrstufigen Lastenausgleich](./media/load-balancer-overview/load-balancer.png)
 
-Load Balancer kann über mehrere Front-End-IP-Adressen verfügen. Erfahren Sie mehr zu [mehreren Front-Ends](load-balancer-multivip-overview.md).
+Der Lastenausgleich kann über mehrere Front-End-IP-Adressen verfügen. Erfahren Sie mehr zu [mehreren Front-Ends](load-balancer-multivip-overview.md).
 
 ## <a name="backend-pool"></a>Back-End-Pool
 
@@ -64,9 +64,9 @@ Sie können den gewünschten Fehlerschwellenwert für Ihre Integritätstests def
 - eine Leerlauftimeout auftritt
 - der virtuelle Computer heruntergefahren wird
 
-Load Balancer verfügt über verschiedene Integritätstesttypen für Endpunkte: TCP, HTTP und HTTPS. [Erfahren Sie mehr zu Load Balancer-Integritätstests](load-balancer-custom-probe-overview.md).
+Der Lastenausgleich verfügt über verschiedene Integritätstesttypen für Endpunkte: TCP, HTTP und HTTPS. [Erfahren Sie mehr zu Load Balancer-Integritätstests](load-balancer-custom-probe-overview.md).
 
-Vom Load Balancer im Tarif „Basic“ werden keine HTTPS-Tests unterstützt. Vom Load Balancer im Tarif „Basic“ werden alle TCP-Verbindungen (einschließlich aktiver Verbindungen) beendet.
+Vom Lastenausgleich im Tarif „Basic“ werden keine HTTPS-Tests unterstützt. Vom Lastenausgleich im Tarif „Basic“ werden alle TCP-Verbindungen (einschließlich aktiver Verbindungen) beendet.
 
 ## <a name="load-balancing-rules"></a>Lastenausgleichsregeln
 
@@ -74,9 +74,7 @@ Mithilfe einer Lastenausgleichsregel wird definiert, wie eingehender Datenverkeh
 
 Verwenden Sie z. B. eine Lastenausgleichsregel für Port 80, um Datenverkehr von Ihrer Front-End-IP-Adresse an Port 80 ihrer Back-End-Instanzen umzuleiten.
 
-<p align="center">
-  <img src="./media/load-balancer-components/lbrules.svg" alt= "Figure depicts how Azure Load Balancer directs frontend port 80 to three instances of backend port 80." width="512" title="Lastenausgleichsregeln">
-</p>
+:::image type="content" source="./media/load-balancer-components/lbrules.png" alt-text="Referenzdiagramm für Lastenausgleichsregel" border="false":::
 
 *Abbildung: Lastenausgleichsregeln*
 
@@ -106,13 +104,9 @@ Weitere Informationen zu [Hochverfügbarkeitsports](load-balancer-ha-ports-overv
 
 ## <a name="inbound-nat-rules"></a>Eingehende NAT-Regeln
 
-Eine NAT-Regel für eingehenden Datenverkehr leitet eingehenden Datenverkehr, der an eine Kombination aus Front-End-IP-Adresse und Port gesendet wird weiter. Der Datenverkehr wird an einen **bestimmten** virtuellen Computer oder eine Instanz im Back-End-Pool gesendet. Der Portweiterleitung liegt die gleiche hashbasierte Verteilung zugrunde wie dem Lastenausgleich.
+Eine NAT-Regel für eingehenden Datenverkehr leitet eingehenden Datenverkehr weiter, der an eine Kombination aus Front-End-IP-Adresse und Port gesendet wird. Der Datenverkehr wird an einen **bestimmten** virtuellen Computer oder eine Instanz im Back-End-Pool gesendet. Der Portweiterleitung liegt die gleiche hashbasierte Verteilung zugrunde wie dem Lastenausgleich.
 
-Beispielsweise, wenn Sie RDP-Sitzungen (Remote Desktop Protocol, Remotedesktopprotokoll) oder SSH-Sitzungen (Secure Shell) zum Trennen von VM-Instanzen innerhalb eines Back-End-Pools verwenden möchten. Ports können mehrere interne Endpunkte unter derselben Front-End-IP-Adresse zugeordnet werden. Sie können die Front-End-IP-Adressen verwenden, um für Ihre VMs die Remoteverwaltung ohne zusätzliche Jumpbox durchzuführen.
-
-<p align="center">
-  <img src="./media/load-balancer-components/inboundnatrules.svg" alt="Figure depicts how Azure Load Balancer directs frontend ports 3389, 443, and 80 to backend ports with the same values on separate servers." width="512" title="Eingehende NAT-Regeln">
-</p>
+:::image type="content" source="./media/load-balancer-components/inboundnatrules.png" alt-text="Referenzdiagramm für NAT-Regel für eingehenden Datenverkehr" border="false":::
 
 *Abbildung: NAT-Regeln für eingehenden Datenverkehr*
 
@@ -126,9 +120,13 @@ Erfahren Sie mehr zu [ausgehenden Verbindungen und Regeln](load-balancer-outboun
 
 Vom Lastenausgleich im Tarif „Basic“ werden keine Ausgangsregeln unterstützt.
 
+:::image type="content" source="./media/load-balancer-components/outbound-rules.png" alt-text="Referenzdiagramm für Ausgangsregel" border="false":::
+
+*Abbildung: Ausgangsregeln*
+
 ## <a name="limitations"></a>Einschränkungen
 
-- Informationen zu Load Balancer-[Grenzwerten](../azure-resource-manager/management/azure-subscription-service-limits.md) 
+- Informationen zu [Grenzwerten](../azure-resource-manager/management/azure-subscription-service-limits.md) des Lastenausgleichs 
 - Load Balancer ermöglicht den Lastenausgleich und die Portweiterleitung für bestimmte TCP- oder UDP-Protokolle. Für Lastenausgleichsregeln und NAT-Regeln für eingehenden Datenverkehr werden TCP und UDP unterstützt, aber keine anderen IP-Protokolle, z. B. ICMP.
 - Für den ausgehenden Datenfluss von einer Back-End-VM zum Front-End einer internen Load Balancer-Instanz tritt ein Fehler auf.
 - Eine Lastenausgleichsregel kann sich nicht über zwei virtuelle Netzwerke erstrecken.  Front-Ends und ihre Back-End-Instanzen müssen sich im gleichen virtuellen Netzwerk befinden.  
@@ -136,14 +134,14 @@ Vom Lastenausgleich im Tarif „Basic“ werden keine Ausgangsregeln unterstütz
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Informationen zu den ersten Schritten mit einer Load Balancer-Instanz finden Sie unter [Schnellstart: Erstellen einer Load Balancer Standard-Instanz für den Lastenausgleich virtueller Computer im Azure-Portal](quickstart-load-balancer-standard-public-portal.md).
+- Informationen zu den ersten Schritten mit einem Load Balancer finden Sie unter [Erstellen eines öffentlichen Load Balancers Standard](quickstart-load-balancer-standard-public-portal.md).
 - Weitere Informationen zu [Azure Load Balancer](load-balancer-overview.md).
 - Informieren Sie sich über [öffentliche IP-Adressen](../virtual-network/virtual-network-public-ip-address.md).
 - Informieren Sie sich über [private IP-Adressen](../virtual-network/private-ip-addresses.md).
-- Informationen zu [Standard Load Balancer und Verfügbarkeitszonen](load-balancer-standard-availability-zones.md)
-- Weitere Informationen zu [Diagnosen für Standard Load Balancer](load-balancer-standard-diagnostics.md).
+- Informationen zu [Load Balancer Standard und Verfügbarkeitszonen](load-balancer-standard-availability-zones.md).
+- Weitere Informationen zu [Diagnosen für Load Balancer Standard](load-balancer-standard-diagnostics.md).
 - Informationen zur [TCP-Zurücksetzung bei Leerlauf](load-balancer-tcp-reset.md).
-- Informationen zu [Load Balancer Standard mit Lastenausgleichsregeln für HA-Ports](load-balancer-ha-ports-overview.md)
+- Weitere Informationen zu [Load Balancer Standard mit Lastenausgleichsregeln für HA-Ports](load-balancer-ha-ports-overview.md).
 - Weitere Informationen zu [Netzwerksicherheitsgruppen](../virtual-network/network-security-groups-overview.md).
 - Lesen Sie weitere Informationen zu [Load Balancer-Grenzwerten](../azure-resource-manager/management/azure-subscription-service-limits.md#load-balancer).
 - Erfahren Sie mehr über die Verwendung der [Portweiterleitung](./tutorial-load-balancer-port-forwarding-portal.md).

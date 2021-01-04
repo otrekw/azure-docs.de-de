@@ -8,12 +8,12 @@ ms.subservice: iot-central-retail
 ms.topic: overview
 ms.date: 10/20/2019
 ms.custom: mqtt
-ms.openlocfilehash: 8925b98269b67bfb8a96cb057982ee4e396f17ed
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 41232ba3899d098c019674e4ca4a0a8f2f7d465f
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "81686227"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97345958"
 ---
 # <a name="architecture-of-iot-central-connected-logistics-application-template"></a>Architektur der IoT Central-Anwendungsvorlage für vernetzte Logistik
 
@@ -27,7 +27,7 @@ Partner und Kunden können die App-Vorlage verwenden und die unten angegebenen A
 1. Ein Satz aus IoT-Tags zum Senden von Telemetriedaten an ein Gatewaygerät
 2. Gatewaygeräte senden Telemetrie und aggregierte Erkenntnisse an IoT Central
 3. Daten werden zur Bearbeitung an den gewünschten Azure-Dienst geroutet
-4. Mithilfe von Azure-Diensten wie ASA oder Azure Functions können Datenströme neu formatiert und an die gewünschten Speicherkonten gesendet werden 
+4. Mithilfe von Azure-Diensten wie ASA oder Azure Functions können Datenströme neu formatiert und an die gewünschten Speicherkonten gesendet werden
 5. Verschiedene Geschäftsworkflows können durch Endbenutzer-Geschäftsanwendungen unterstützt werden
 
 ## <a name="details"></a>Details
@@ -37,7 +37,7 @@ In den folgenden Abschnitten werden die einzelnen Komponenten der Architektur f�
 IoT-Tags bieten Sensorfunktionen zur Übermittlung von physikalischen, umweltspezifischen und umgebungsbezogenen Informationen wie Temperatur, Luftfeuchtigkeit, Erschütterung, Neigung und Licht. IoT-Tags sind in der Regel über Zigbee (802.15.4) mit einem Gatewaygerät verbunden. Tags sind kostengünstigere Sensoren und können daher nach Beendigung eines typischen Logistikprojekts entsorgt werden, um Probleme bei der Retourenlogistik zu vermeiden.
 
 ## <a name="gateway"></a>Gateway
-Gateways können mit ihren Umgebungssensorfunktionen ebenfalls als IoT-Tags fungieren. Ein Gateway ermöglicht über Mobilfunk- oder WLAN-Kanäle die Upstreamkonnektivität mit der Azure IoT-Cloud (MQTT).  Für die Kommunikation mit nachgeschalteten IoT-Tags werden Bluetooth-, NFC- und 802.15.4 WSN-Modi (Wireless Sensor Network) verwendet. Gateways bieten sichere End-to-End-Cloudkonnektivität und unterstützen die Kopplung von IoT-Tags, das Aggregieren von Sensordaten, die Aufbewahrung von Daten sowie die Möglichkeit, Alarmschwellenwerte zu konfigurieren.
+Gateways können mit ihren Umgebungssensorfunktionen ebenfalls als IoT-Tags fungieren. Ein Gateway ermöglicht über Mobilfunk- oder WLAN-Kanäle die Upstreamkonnektivität mit der Azure IoT-Cloud (MQTT).  Für die Kommunikation mit nachgeschalteten IoT-Tags werden Bluetooth-, NFC- und 802.15.4 WSN-Modi (Wireless Sensor Network) verwendet. Gateways bieten sichere End-to-End-Cloudkonnektivität und unterstützen die Kopplung von IoT-Tags, das Aggregieren von Sensordaten, die Aufbewahrung von Daten sowie die Möglichkeit zum Konfigurieren von Alarmschwellenwerten.
 
 ## <a name="device-management-with-iot-central"></a>Geräteverwaltung mit IoT Central 
 Azure IoT Central ist eine Plattform für die Lösungsentwicklung, die die Konnektivität, Konfiguration und Verwaltung von IoT-Geräten vereinfacht. Die Plattform verringert Aufwand und Kosten von Entwicklungen für IoT-Geräteverwaltung, -betrieb und verwandte Entwicklungen erheblich. Kunden und Partner können eine End-to-End-Enterprise-Lösung aufbauen, um eine digitale Feedbackschleife in der Logistik zu realisieren.

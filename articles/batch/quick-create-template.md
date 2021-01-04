@@ -1,15 +1,15 @@
 ---
 title: 'Azure-Schnellstart: Erstellen eines Batch-Kontos – Azure Resource Manager-Vorlage'
-description: In dieser Schnellstartanleitung wird beschrieben, wie Sie einen Batch-Auftrag in der Azure CLI ausführen. Erstellen und verwalten Sie Azure-Ressourcen über die Befehlszeile oder in Skripts.
+description: In dieser Schnellstartanleitung wird gezeigt, wie Sie mithilfe einer ARM-Vorlage ein Batch-Konto erstellen.
 ms.topic: quickstart
 ms.date: 08/17/2020
 ms.custom: subject-armqs
-ms.openlocfilehash: 606862b31ba4921e39e693735507fca39282091c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: fc6f1537b32c8ced2cfc2bf09f16106f791001fc
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88642400"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106579"
 ---
 # <a name="quickstart-create-a-batch-account-by-using-arm-template"></a>Schnellstart: Erstellen eines Batch-Kontos mithilfe einer ARM-Vorlage
 

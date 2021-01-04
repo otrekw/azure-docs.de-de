@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 01/17/2020
+ms.date: 12/11/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 7008cfcdeb4615b42839f92a6df71357f9acf911
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 2c9c4cd643e2e4b89f9a7d8f44a6569d0dde2b37
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96484990"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97357380"
 ---
 # <a name="storage-account-overview"></a>Speicherkontoübersicht
 
@@ -54,7 +54,7 @@ Speicherkonten vom Typ „Universell v1“ ermöglichen Zugriff auf alle Azure S
 - Warteschlangen
 - Tabellen
 
-In den meisten Fällen sollten Sie Konten vom Typ „Allgemein v2“ verwenden. Konten vom Typ „Allgemein v1“ können für folgende Szenarien verwendet werden:
+Microsoft empfiehlt für die meisten Szenarien Allgemein v2-Konten. Konten vom Typ „Allgemein v1“ können für folgende Szenarien verwendet werden:
 
 - Ihre Anwendungen erfordern das klassische Azure-Bereitstellungsmodell. Allgemein v2- und Blob Storage-Konten unterstützen nur das Azure Resource Manager-Bereitstellungsmodell.
 
@@ -152,7 +152,7 @@ Sie können eine der folgenden Methoden verwenden, um Zugriff auf die Daten in I
 
 - **Azure Active Directory:** Verwenden Sie Anmeldeinformationen von Azure Active Directory (Azure AD), um einen Benutzer, eine Gruppe oder eine andere Identität für den Zugriff auf Blob- und Warteschlangendaten zu authentifizieren. Wenn die Authentifizierung einer Identität erfolgreich war, gibt Azure AD ein Token zurück, das zum Autorisieren der Anforderung bei Azure Blob Storage oder Azure Queue Storage verwendet wird. Weitere Informationen finden Sie unter [Authentifizieren des Zugriffs auf Azure Storage mit Azure Active Directory](storage-auth-aad.md).
 - **Autorisierung mit freigegebenen Schlüsseln**: Verwenden Sie den Zugriffsschlüssel für Ihr Speicherkonto, um eine Verbindungszeichenfolge zu erstellen, die Ihre Anwendung zur Laufzeit für den Zugriff auf Azure Storage verwendet. Die Werte in der Verbindungszeichenfolge werden verwendet, um den *Autorisierungsheader* zu generieren, der an Azure Storage übergeben wird. Weitere Informationen hierzu finden Sie unter [Konfigurieren von Azure Storage-Verbindungszeichenfolgen](storage-configure-connection-string.md).
-- **Shared Access Signature (SAS):** Verwenden Sie eine Shared Access Signature, um den Zugriff auf Ressourcen in Ihrem Speicherkonto zu delegieren, wenn Sie nicht die Azure AD-Autorisierung nutzen. Eine Shared Access Signature ist ein Token, das alle Informationen kapselt, die zum Autorisieren einer Zugriffsanforderung für Azure Storage in der URL erforderlich sind. In der Shared Access Signature können Sie die Speicherressource, die gewährten Berechtigungen und das Intervall angeben, in dem die Berechtigungen gültig sind. Weitere Informationen finden Sie unter [Verwenden von Shared Access Signatures (SAS)](storage-sas-overview.md).
+- **Shared Access Signature (SAS):** Eine Shared Access Signature (SAS) ist ein Token, das delegierten Zugriff auf Ressourcen in Ihrem Speicherkonto ermöglicht. Das SAS-Token kapselt alle Informationen, die zum Autorisieren einer Zugriffsanforderung für Azure Storage in der URL erforderlich sind. Beim Erstellen eines SAS können Sie die Berechtigungen angeben, die das Token einer Ressource erteilt, sowie den Zeitraum, in dem die Berechtigungen gültig sind. Ein SAS-Token kann mit Azure AD-Anmeldeinformationen oder einem gemeinsam genutzten Schlüssel signiert werden. Weitere Informationen finden Sie unter [Gewähren von eingeschränktem Zugriff auf Azure Storage-Ressourcen mithilfe von SAS (Shared Access Signature)](storage-sas-overview.md).
 
 > [!NOTE]
 > Die Authentifizierung von Benutzern oder Anwendungen mithilfe von Azure AD-Anmeldeinformationen bietet mehr Sicherheit und Benutzerfreundlichkeit als andere Autorisierungsmethoden. Während Sie weiterhin die Autorisierung mit gemeinsam verwendetem Schlüssel mit Ihren Anwendungen verwenden können, macht Azure AD das Speichern Ihrer Kontozugriffsschlüssel mit Ihrem Code überflüssig. Sie können auch weiterhin Shared Access Signatures für zum Gewähren eines differenzierten Zugriffs auf Ressourcen in Ihrem Speicherkonto verwenden. Azure AD bietet jedoch ähnliche Funktionen, bei denen Sie weder SAS-Token verwalten noch sich um das Widerrufen einer gefährdeten SAS kümmern müssen.
@@ -192,3 +192,5 @@ Weitere Informationen zur Azure Storage REST-API finden Sie unter [Azure Storage
 
 - [Erstellen eines Speicherkontos](storage-account-create.md)
 - [Erstellen eines Blockblob-Speicherkontos](../blobs/storage-blob-create-account-block-blob.md)
+- [Durchführen eines Upgrades auf ein Speicherkonto vom Typ „Allgemein v2“](storage-account-upgrade.md)
+- [Wiederherstellen eines gelöschten Speicherkontos](storage-account-recover.md)

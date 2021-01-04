@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 12/14/2018
-ms.openlocfilehash: 8d1ff372009c6158f2148847dd77126bcb4d189f
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.date: 12/09/2020
+ms.openlocfilehash: d89fd8b4102333603fa71b2cc28a49b732b91b08
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461237"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920889"
 ---
 # <a name="bulk-copy-from-a-database-with-a-control-table"></a>Massenkopieren aus einer Datenbank mit einer Steuertabelle
 
@@ -44,7 +44,7 @@ Die Vorlage definiert die folgenden Parameter:
 - *Data_Destination_Container* ist der Stammordnerpfad, in den die Daten in Ihrem Zielspeicher kopiert werden. 
 - *Data_Destination_Directory* ist der Verzeichnispfad unter dem Stammelement, in den die Daten in Ihrem Zielspeicher kopiert werden. 
 
-Die letzten drei Parameter, die den Pfad im Zielspeicher definieren, werden nur angezeigt, wenn es sich bei dem ausgewählten Ziel um einen dateibasierten Speicher handelt. Wenn Sie „Azure Synapse Analytics (vormals SQL DW)“ als Zielspeicher auswählen, sind diese Parameter nicht erforderlich. Die Tabellennamen und das Schema in Azure Synapse Analytics müssen jedoch den Tabellennamen und dem Schema in der Quelldatenbank entsprechen.
+Die letzten drei Parameter, die den Pfad im Zielspeicher definieren, werden nur angezeigt, wenn es sich bei dem ausgewählten Ziel um einen dateibasierten Speicher handelt. Wenn Sie „Azure Synapse Analytics“ als Zielspeicher auswählen, sind diese Parameter nicht erforderlich. Die Tabellennamen und das Schema in Azure Synapse Analytics müssen jedoch den Tabellennamen und dem Schema in der Quelldatenbank entsprechen.
 
 ## <a name="how-to-use-this-solution-template"></a>So verwenden Sie diese Lösungsvorlage
 
@@ -94,7 +94,7 @@ Die letzten drei Parameter, die den Pfad im Zielspeicher definieren, werden nur 
 
     ![Überprüfen des Ergebnisses](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable8.png)
 
-9. (Optional:) Wenn Sie „Azure Synapse Analytics (vormals SQL DW)“ als Datenziel ausgewählt haben, müssen Sie eine Verbindung mit Azure Blob Storage für den Stagingprozess eingeben, da dies für Azure Synapse Analytics PolyBase erforderlich ist. Die Vorlage generiert automatisch einen Containerpfad für Ihren Blob Storage. Überprüfen Sie nach der Pipelineausführung, ob der Container erstellt wurde.
+9. (Optional:) Wenn Sie „Azure Synapse Analytics“ als Datenziel auswählen, müssen Sie eine Verbindung mit Azure Blob Storage für den Stagingprozess eingeben, da dies für Azure Synapse Analytics PolyBase erforderlich ist. Die Vorlage generiert automatisch einen Containerpfad für Ihren Blob Storage. Überprüfen Sie nach der Pipelineausführung, ob der Container erstellt wurde.
     
     ![PolyBase-Einstellung](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable9.png)
        

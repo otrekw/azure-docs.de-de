@@ -4,12 +4,12 @@ ms.author: dobett
 ms.service: iot-pnp
 ms.topic: include
 ms.date: 11/24/2020
-ms.openlocfilehash: 4b19ae1b584a2d300e4144e79ef76245c71035cf
-ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
+ms.openlocfilehash: 6a6baa14d7521f4a85350af7b08b5fcbe82ddf6b
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96126112"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033835"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -27,7 +27,7 @@ Wenn Sie das Beispiel ausführen, um eine Verbindung mit IoT Central herzustell
 
 Die `main`-Methode:
 
-* Erstellen eines Objekts vom Typ `client` und Festlegen der Modell-ID `dtmi:com:example:Thermostat;1` vor dem Öffnen der Verbindung
+* Erstellen eines Objekts vom Typ `client` und Festlegen der Modell-ID `dtmi:com:example:Thermostat;1` vor dem Öffnen der Verbindung IoT Central verwendet die Modell-ID zum Identifizieren oder Generieren der Gerätevorlage für dieses Gerät. Weitere Informationen finden Sie unter [Zuordnen eines Geräts zu einer Gerätevorlage](../articles/iot-central/core/concepts-get-connected.md#associate-a-device-with-a-device-template).
 * Erstellen eines Befehlshandlers
 * Starten einer Schleife, um alle zehn Sekunden Temperaturtelemetriedaten zu senden
 * Senden der Eigenschaft `maxTempSinceLastReboot` an IoT Central. IoT Central ignoriert die Eigenschaft `serialNumber`, da sie nicht Teil des Gerätemodells ist.
@@ -83,7 +83,7 @@ async function main() {
 }
 ```
 
-Die Funktion `provisionDevice` zeigt, wie das Gerät mithilfe von DPS die Registrierung bei IoT Central durchführt und eine Verbindung mit IoT Central herstellt. Die Nutzlast beinhaltet die Modell-ID:
+Die Funktion `provisionDevice` zeigt, wie das Gerät mithilfe von DPS die Registrierung bei IoT Central durchführt und eine Verbindung mit IoT Central herstellt. Die Nutzlast enthält die Modell-ID, die IoT Central zum [Zuordnen des Geräts zu einer Gerätevorlage](../articles/iot-central/core/concepts-get-connected.md#associate-a-device-with-a-device-template) verwendet:
 
 ```javascript
 async function provisionDevice(payload) {

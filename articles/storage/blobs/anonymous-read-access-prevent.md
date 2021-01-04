@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/02/2020
+ms.date: 12/09/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: blobs
-ms.openlocfilehash: f12a899d3b6daa3b233e6a799871afca1e24d046
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: 179e60a41a9cd6a2277959b3cd31159c796d845d
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96533745"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96937286"
 ---
 # <a name="prevent-anonymous-public-read-access-to-containers-and-blobs"></a>Verhindern von anonymem öffentlichem Lesezugriff auf Container und Blobs
 
@@ -287,6 +287,23 @@ Nachdem Sie die Richtlinie mit der Auswirkung „Deny“ erstellt und einem Bere
 Die folgende Abbildung zeigt den Fehler, der beim Erstellen eines Speicherkontos auftritt, das den öffentlichen Zugriff erlaubt (die Standardeinstellung für ein neues Konto), wenn eine Richtlinie mit der Auswirkung „Deny“ erfordert, dass der öffentliche Zugriff nicht gestattet wird.
 
 :::image type="content" source="media/anonymous-read-access-prevent/deny-policy-error.png" alt-text="Screenshot mit dem Fehler, der beim Erstellen eines Speicherkontos bei einem Verstoß gegen die Richtlinie auftritt":::
+
+## <a name="permissions-for-allowing-or-disallowing-public-access"></a>Berechtigungen zum Zulassen oder Ablehnen von öffentlichem Zugriff
+
+Zum Festlegen der Eigenschaft **AllowBlobPublicAccess** für das Speicherkonto muss ein Benutzer Berechtigungen zum Erstellen und Verwalten von Speicherkonten haben. Azure RBAC-Rollen (Role-Based Access Control, Rollenbasierte Zugriffssteuerung), die diese Berechtigungen bieten, enthalten die Aktion **Microsoft.Storage/storageAccounts/write** oder **Microsoft.Storage/storageAccounts/\** _. In diese Aktion sind folgende Rollen integriert:
+
+- Die Azure Resource Manager-Rolle [Besitzer](../../role-based-access-control/built-in-roles.md#owner)
+- Die Azure Resource Manager-Rolle [Mitwirkender](../../role-based-access-control/built-in-roles.md#contributor)
+- Die Rolle [Speicherkontomitwirkender](../../role-based-access-control/built-in-roles.md#storage-account-contributor)
+
+Diese Rollen bieten keinen Zugriff auf Daten in einem Speicherkonto über Azure Active Directory (Azure AD). Sie enthalten jedoch die Aktion „_*Microsoft.Storage/storageAccounts/listkeys/action**“, die Zugriff auf die Kontozugriffsschlüssel gewährt. Bei dieser Berechtigung kann ein Benutzer mithilfe der Kontozugriffsschlüssel auf alle Daten in einem Speicherkonto zuzugreifen.
+
+Rollenzuweisungen müssen auf die Ebene des Speicherkontos oder höher eingeschränkt werden, damit ein Benutzer den öffentlichen Zugriff für das Speicherkonto zulassen oder ablehnen darf. Weitere Informationen zum Rollenbereich finden Sie unter [Grundlegendes zum Bereich für Azure RBAC](../../role-based-access-control/scope-overview.md).
+
+Beschränken Sie die Zuweisung dieser Rollen unbedingt auf diejenigen Benutzer, denen es möglich sein muss, ein Speicherkonto zu erstellen oder dessen Eigenschaften zu aktualisieren. Verwenden Sie das Prinzip der geringsten Rechte, um sicherzustellen, dass Benutzer die geringsten Berechtigungen haben, die sie zum Ausführen ihrer Aufgaben benötigen. Weitere Informationen zum Verwalten des Zugriffs mit Azure RBAC finden Sie unter [Bewährte Methoden für Azure RBAC](../../role-based-access-control/best-practices.md).
+
+> [!NOTE]
+> Die zu „Administrator für klassisches Abonnement“ gehörigen Rollen „Dienstadministrator“ und „Co-Administrator“ schließen die Entsprechung der Azure Resource Manager-Rolle [Besitzer](../../role-based-access-control/built-in-roles.md#owner) ein. Weil die Rolle **Besitzer** alle Aktionen einschließt, kann ein Benutzer mit einer dieser administrativen Rollen auch Speicherkonten erstellen und verwalten. Weitere Informationen finden Sie unter [Administratorrollen für klassische Abonnements, Azure-Rollen und Azure AD-Rollen](../../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

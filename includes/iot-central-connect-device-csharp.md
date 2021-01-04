@@ -4,12 +4,12 @@ ms.author: dobett
 ms.service: iot-pnp
 ms.topic: include
 ms.date: 11/25/2020
-ms.openlocfilehash: 3668d4e5164ad731058f944feaef66029c2ed2a9
-ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
+ms.openlocfilehash: f4536beae18a50d3e1d42fc1593cf826c94418f8
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96126091"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033851"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -27,7 +27,7 @@ Wenn Sie das Beispiel ausführen, um eine Verbindung mit IoT Central herzustell
 
 In *Program.cs* ruft die `main`-Methode `SetupDeviceClientAsync` zu folgenden Zwecken auf:
 
-* Verwenden der Modell-ID `dtmi:com:example:Thermostat;1` beim Bereitstellen des Geräts mit DPS
+* Verwenden der Modell-ID `dtmi:com:example:Thermostat;1` beim Bereitstellen des Geräts mit DPS IoT Central verwendet die Modell-ID zum Identifizieren oder Generieren der Gerätevorlage für dieses Gerät. Weitere Informationen finden Sie unter [Zuordnen eines Geräts zu einer Gerätevorlage](../articles/iot-central/core/concepts-get-connected.md#associate-a-device-with-a-device-template).
 * Erstellen einer **DeviceClient**-Instanz zum Herstellen einer Verbindung mit IoT Central
 
 ```csharp

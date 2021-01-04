@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 07/09/2018
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: ad62b59587f5ef7823e601cd8b6b526b75b8fd03
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2f968bfd0c3d2884c123b82ccf132d77b117ac9a
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91854612"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589031"
 ---
 # <a name="create-a-cicd-pipeline-for-go-using-azure-devops-starter"></a>Erstellen einer CI/CD-Pipeline für Go mit Azure DevOps Starter
 
@@ -60,9 +60,9 @@ Mit DevOps Starter wird eine CI/CD-Pipeline in Azure Pipelines erstellt. Sie kö
 
 Von DevOps Starter wird ein Git-Repository in Azure Repos oder auf GitHub erstellt. Gehen Sie wie folgt vor, um das Repository anzuzeigen und Codeänderungen an der App vorzunehmen:
 
-1. Klicken Sie auf der linken Seite von DevOps Starter auf den Link für Ihren Masterbranch. Über den Link wird eine Ansicht des neu erstellten Git-Repositorys geöffnet.
+1. Klicken Sie auf der linken Seite von DevOps Starter auf den Link für Ihren Mainbranch. Über den Link wird eine Ansicht des neu erstellten Git-Repositorys geöffnet.
 
-1. Wählen Sie zum Anzeigen der Repository-Klon-URL oben rechts **Klonen** aus. Sie können Ihr Git-Repository in Ihrer bevorzugten IDE klonen. Bei den nächsten Schritten können Sie den Webbrowser verwenden, um Codeänderungen direkt am Masterbranch vorzunehmen und für Codeänderungen einen Commit auszuführen.
+1. Wählen Sie zum Anzeigen der Repository-Klon-URL oben rechts **Klonen** aus. Sie können Ihr Git-Repository in Ihrer bevorzugten IDE klonen. Bei den nächsten Schritten können Sie den Webbrowser verwenden, um Codeänderungen direkt am Mainbranch vorzunehmen und für Codeänderungen einen Commit auszuführen.
 
 1. Gehen Sie auf der linken Seite zur Datei *views/index.html*, und wählen Sie dann **Bearbeiten** aus.
 

@@ -3,12 +3,12 @@ title: Azure Application Insights-Übersichtsdashboard | Microsoft-Dokumentation
 description: Es wird beschrieben, wie Sie Anwendungen mit Azure Application Insights und dem Übersichtsdashboard überwachen.
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 714488d88b269f252dfd6677f847db315969a270
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1b0708fa70d3a3ecb406f1d974bb1f2b47e55b40
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90970604"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97504099"
 ---
 # <a name="application-insights-overview-dashboard"></a>Application Insights-Übersichtsdashboard
 
@@ -53,7 +53,7 @@ Wählen Sie Folgendes, um zurück zur Übersichtsoberfläche zu navigieren:
 
 ## <a name="troubleshooting"></a>Problembehandlung
 
-Wenn Sie **Kacheleinstellungen konfigurieren** auswählen und einen benutzerdefinierten Zeitbereich über 31 Tagen festlegen, werden im Dashboard keine Daten angezeigt, die über 31 Tage hinausgehen. Dies gilt selbst bei der standardmäßigen Datenaufbewahrung von 90 Tagen. Für dieses Verhalten gibt es derzeit keine Problemumgehung.
+Derzeit gilt für in einem Dashboard angezeigte Daten ein Limit von 30 Tagen. Wenn Sie einen Zeitfilter über 30 Tage hinaus auswählen, oder wenn Sie **Kacheleinstellungen konfigurieren** auswählen und einen benutzerdefinierten Zeitbereich von mehr als 30 Tagen festlegen, werden im Dashboard keine Daten angezeigt, die über 30 Tage hinausgehen. Dies gilt selbst bei der standardmäßigen Datenaufbewahrung von 90 Tagen. Für dieses Verhalten gibt es derzeit keine Problemumgehung.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

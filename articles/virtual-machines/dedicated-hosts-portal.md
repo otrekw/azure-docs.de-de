@@ -5,25 +5,19 @@ author: cynthn
 ms.service: virtual-machines
 ms.topic: how-to
 ms.workload: infrastructure
-ms.date: 09/04/2020
+ms.date: 12/07/2020
 ms.author: cynthn
-ms.openlocfilehash: a6bef4944207e26f2de93daa89fa1418c5c44c4f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b166363a8c64a4a4c5d34efa55dcaefa09d6df49
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91373036"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007941"
 ---
 # <a name="deploy-vms-and-scale-sets-to-dedicated-hosts-using-the-portal"></a>Bereitstellen von VMs und Skalierungsgruppen auf dedizierten Hosts über das Portal 
 
 Dieser Artikel führt Sie durch die Erstellung eines [dedizierten Azure-Hosts](dedicated-hosts.md) zum Hosten Ihrer virtuellen Computer (VMs). 
 
-
-> [!IMPORTANT]
-> Außerdem wird darin die automatische Platzierung von VMs und Skalierungsgruppeninstanzen behandelt. Automatische Platzierung befindet sich zurzeit in der öffentlichen Vorschau.
-> Um an der Vorschau teilzunehmen, füllen Sie die Onboardingumfrage für die Vorschau unter [https://aka.ms/vmss-adh-preview](https://aka.ms/vmss-adh-preview) aus.
-> Sie müssen die folgende URL verwenden, um im Azure-Portal auf die Previewfunktion zuzugreifen: [https://aka.ms/vmssadh](https://aka.ms/vmssadh).
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="limitations"></a>Einschränkungen
 
@@ -42,7 +36,7 @@ Sie können auch sowohl Verfügbarkeitszonen als auch Fehlerdomänen verwenden.
 In diesem Beispiel erstellen Sie eine Hostgruppe mit einer Verfügbarkeitszone und zwei Fehlerdomänen. 
 
 
-1. Öffnen Sie das [Azure-Portal](https://portal.azure.com). Wenn Sie die Vorschau für die **automatische Platzierung** testen möchten, verwenden Sie die folgende URL: [https://aka.ms/vmssadh](https://aka.ms/vmssadh).
+1. Öffnen Sie das [Azure-Portal](https://portal.azure.com). 
 1. Wählen Sie links oben **Ressource erstellen** aus.
 1. Suchen Sie nach **Hostgruppe**, und wählen Sie dann in den Ergebnissen **Hostgruppen** aus.
 1. Wählen Sie auf der Seite **Hostgruppen** die Option **Erstellen** aus.
@@ -52,7 +46,7 @@ In diesem Beispiel erstellen Sie eine Hostgruppe mit einer Verfügbarkeitszone u
 1. Wählen Sie unter **Standort** die Option **USA, Osten** aus.
 1. Wählen Sie unter **Verfügbarkeitszone** die Option **1** aus.
 1. Wählen Sie für **Fault domain count** (Anzahl von Fehlerdomänen) die Option **2** aus.
-1. Wenn Sie die URL für die **automatische Platzierung** verwendet haben, wählen Sie diese Option aus, um VMs und Skalierungsgruppeninstanzen automatisch einem verfügbaren Host in dieser Gruppe zuzuweisen.
+1. Wählen Sie **Automatische Platzierung** aus, um virtuelle Computer und Skalierungsgruppeninstanzen automatisch einem verfügbaren Host in dieser Gruppe zuzuweisen.
 1. Wählen Sie **Bewerten + erstellen** aus, und warten Sie auf die Überprüfung.
 1. Wenn die Meldung **Überprüfung erfolgreich** angezeigt wird, wählen Sie **Erstellen** aus, um die Hostgruppe zu erstellen.
 
@@ -86,25 +80,14 @@ Beim Festlegen der Anzahl der Fehlerdomänen für die Hostgruppe werden Sie aufg
 1. Wählen Sie unter **Verfügbarkeitsoptionen** die Option **Verfügbarkeitszone** aus, und wählen Sie in der Dropdownliste *1* aus.
 1. Wählen Sie für die Größe **Größe ändern** aus. Wählen Sie in der Liste der verfügbaren Größen eine der Esv3-Serie aus, z. B. **Standard E2s v3**. Möglicherweise müssen Sie den Filter löschen, um alle verfügbaren Größen anzuzeigen.
 1. Füllen Sie die restlichen Felder auf der Registerkarte **Grundeinstellungen** nach Bedarf aus.
-1. Wählen Sie oben auf der Seite die Registerkarte **Erweitert** und im Abschnitt **Host** den Eintrag *myHostGroup* für **Hostgruppe**  und *myHost* für den **Host** aus. 
+1. Wenn Sie angeben möchten, welchen Host Sie für Ihre VM verwenden möchten, wählen Sie oben auf der Seite die Registerkarte **Erweitert** und im Abschnitt **Host** die Option *myHostGroup* für die **Hostgruppe** und *myHost* für den **Host** aus. Andernfalls wird Ihr virtueller Computer automatisch auf einem Host mit Kapazität platziert.
     ![Auswählen von Hostgruppe und Host](./media/dedicated-hosts-portal/advanced.png)
 1. Belassen Sie die übrigen Standardeinstellungen, und wählen Sie dann die Schaltfläche **Überprüfen + erstellen** am unteren Rand der Seite aus.
 1. Wenn eine Meldung über die erfolgreiche Validierung angezeigt wird, wählen Sie **Erstellen** aus.
 
 Die Bereitstellung des virtuellen Computers dauert ein paar Minuten.
 
-## <a name="create-a-scale-set-preview"></a>Erstellen einer Skalierungsgruppe(Vorschau)
-
-> [!IMPORTANT]
-> Virtual Machine Scale Sets auf Dedicated Hosts befindet sich derzeit in der öffentlichen Vorschau.
->
-> Um an der Vorschau teilzunehmen, füllen Sie die Onboardingumfrage für die Vorschau unter [https://aka.ms/vmss-adh-preview](https://aka.ms/vmss-adh-preview) aus.
->
-> Sie müssen die folgende URL verwenden, um im Azure-Portal auf die Previewfunktion zuzugreifen: [https://aka.ms/vmssadh](https://aka.ms/vmssadh).
->
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. 
->
-> Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+## <a name="create-a-scale-set"></a>Erstellen einer Skalierungsgruppe 
 
 Wenn Sie eine Skalierungsgruppe bereitstellen, geben Sie die Hostgruppe an.
 

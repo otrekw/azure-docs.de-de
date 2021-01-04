@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 10/15/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: d8afa769c90c5cf9450343cda1a65809062468fb
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: c4c9808813de80beea55e083c5bd80667ae2861f
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888690"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033118"
 ---
 # <a name="communication-services-logs"></a>Communication Services-Protokolle
 
@@ -39,6 +39,7 @@ Communication Services bietet drei Arten von Protokollen, die Sie aktivieren kö
 * **Nutzungsprotokolle** – Stellt Nutzungsdaten bereit, die den einzelnen abgerechneten Dienstangeboten zugeordnet sind.
 * **Chat-Betriebsprotokolle**: Stellt grundlegende Informationen zum Chatdienst bereit.
 * **SMS-Betriebsprotokolle**: Stellt grundlegende Informationen zum SMS-Dienst bereit.
+* **Authentifizierungsbetriebsprotokolle**: Stellt grundlegende Informationen zum Authentifizierungsdienst bereit.
 
 ### <a name="usage-logs-schema"></a>Schema für Nutzungsprotokolle
 
@@ -100,3 +101,23 @@ Communication Services bietet drei Arten von Protokollen, die Sie aktivieren kö
 | SdkType | Der in der Anforderung verwendete SDK-Typ. |
 | PlatformType | Der in der Anforderung verwendete Plattformtyp. |
 | Methode | Die in der Anforderung verwendete Methode. |
+
+### <a name="authentication-operational-logs"></a>Authentifizierungsbetriebsprotokolle
+
+| Eigenschaft | BESCHREIBUNG |
+| -------- | ---------------|
+| TimeGenerated | Der Zeitstempel (UTC), wann das Protokoll generiert wurde. |
+| Vorgangsname | Der mit der Protokollaufzeichnung verbundene Vorgang. |
+| CorrelationID | Die ID für korrelierte Ereignisse. Kann verwendet werden, um korrelierte Ereignisse zwischen verschiedenen Tabellen zu identifizieren. |
+| OperationVersion | Die `api-version`, die dem Vorgang zugeordnet ist, wenn für `operationName` eine API verwendet wurde. Wenn keine API für diesen Vorgang vorhanden ist, entspricht die Version der Version dieses Vorgangs für den Fall, dass sich die dem Vorgang zugeordneten Eigenschaften in Zukunft ändern. |
+| Kategorie | Die Protokollkategorie des Ereignisses. „category“ ist die Granularität, mit der Sie Protokolle für eine bestimmte Ressource aktivieren oder deaktivieren können. Die Eigenschaften, die im Eigenschaftenblob eines Ereignisses angezeigt werden, sind für eine bestimmte Protokollkategorie und einen Ressourcentyp gleich. |
+| ResultType | Der Status des Vorgangs. |
+| ResultSignature | Der Unterstatus des Vorgangs. Wenn dieser Vorgang einem REST-API-Aufruf entspricht, ist dieses Feld der HTTP-Statuscode des entsprechenden REST-Aufrufs. |
+| DurationMs | Die Dauer des Vorgangs in Millisekunden. |
+| CallerIpAddress | Die IP-Adresse des Aufrufers, wenn der Vorgang einem API-Aufruf entspricht, der von einer Entität mit einer öffentlich verfügbaren IP-Adresse stammt. |
+| Ebene | Der Schweregrad des Ereignisses. |
+| URI | Der URI der Anforderung. |
+| SdkType | Der in der Anforderung verwendete SDK-Typ. |
+| PlatformType | Der in der Anforderung verwendete Plattformtyp. |
+| Identität | Die Communication Services-Identität im Zusammenhang mit dem Vorgang. |
+| Bereiche | Die Communication Services-Bereiche, die im Zugriffstoken vorhanden sind. |

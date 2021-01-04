@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/06/2020
+ms.date: 12/13/2020
 ms.author: memildin
-ms.openlocfilehash: d92047a5b24f04ee7e0d08454867ec9e1a52a8b1
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: d3492685efbf70b69e5bafba919d38a4f06fb666
+ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96754373"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97387469"
 ---
 # <a name="pricing-of-azure-security-center"></a>Preise für Azure Security Center
 Azure Security Center ermöglicht eine einheitliche Sicherheitsverwaltung und erweiterten Schutz vor Bedrohungen für Workloads, die in Azure, lokal und in anderen Clouds ausgeführt werden. Security Center bietet Transparenz und Kontrolle für Hybridcloud-Workloads, aktive Abwehrmaßnahmen zur Verringerung Ihrer Anfälligkeit für Bedrohungen sowie eine intelligente Erkennung, damit Sie mit der schnellen Entwicklung bei Cyberrisiken Schritt halten können.
@@ -68,12 +68,24 @@ Nachfolgend sehen Sie die Preisseite für ein Beispielabonnement. Sie werden fes
 
 ## <a name="faq---pricing-and-billing"></a>Häufig gestellte Fragen: Preise und Abrechnung 
 
-### <a name="how-can-i-track-who-in-my-organization-enabled-azure-defender-changes-in-azure-security-center"></a>Wie kann ich nachverfolgen, wer in meiner Organisation Änderungen an Azure Defender in Azure Security Center aktiviert hat?
+- [Wie kann ich nachverfolgen, wer in meiner Organisation Änderungen an Azure Defender in Azure Security Center aktiviert hat?](#how-can-i-track-who-in-my-organization-enabled-azure-defender-changes-in-security-center)
+- [Welche Pläne werden für Security Center angeboten?](#what-are-the-plans-offered-by-security-center)
+- [Wie kann ich Azure Defender für mein Abonnement aktivieren?](#how-do-i-enable-azure-defender-for-my-subscription)
+- [Kann ich Azure Defender für Server nur für einen Teil der Server meines Abonnements aktivieren?](#can-i-enable-azure-defender-for-servers-on-a-subset-of-servers-in-my-subscription)
+- [Für mein Abonnement ist Azure Defender für Server aktiviert. Muss ich für Server bezahlen, die nicht ausgeführt werden?](#my-subscription-has-azure-defender-for-servers-enabled-do-i-pay-for-not-running-servers)
+- [Werden mir für Computer, auf denen der Log Analytics-Agent nicht installiert ist, Kosten berechnet?](#will-i-be-charged-for-machines-without-the-log-analytics-agent-installed)
+- [Wenn ein Log Analytics-Agent Daten an mehrere Arbeitsbereiche meldet, werden mir dann zweimal Kosten berechnet?](#if-a-log-analytics-agent-reports-to-multiple-workspaces-will-i-be-charged-twice)
+- [Wenn ein Log Analytics-Agent Daten an mehrere Arbeitsbereiche meldet, sind die kostenlosen 500 MB für die Datenerfassung dann für alle Arbeitsbereiche verfügbar?](#if-a-log-analytics-agent-reports-to-multiple-workspaces-is-the-500-mb-free-data-ingestion-available-on-all-of-them)
+- [Wird die kostenlose Datenerfassung von 500 MB für einen gesamten Arbeitsbereich oder ausschließlich pro Computer berechnet?](#is-the-500-mb-free-data-ingestion-calculated-for-an-entire-workspace-or-strictly-per-machine)
+
+### <a name="how-can-i-track-who-in-my-organization-enabled-azure-defender-changes-in-security-center"></a>Wie kann ich nachverfolgen, wer in meiner Organisation Änderungen an Azure Defender in Security Center aktiviert hat?
 In einem Azure-Abonnement gibt es möglicherweise mehrere Administratoren mit Berechtigungen zum Ändern der Tarifeinstellungen. Verwenden Sie das Azure-Aktivitätsprotokoll, um herauszufinden, welcher Benutzer eine Änderung vorgenommen hat.
 
-Falls die Informationen des Benutzers nicht in der Spalte **Ereignis initiiert von** aufgeführt sind, sollten Sie sich die relevanten Details des Ereignisses ansehen.
+:::image type="content" source="media/security-center-pricing/logged-change-to-pricing.png" alt-text="Azure-Aktivitätsprotokoll mit einem Preisänderungsereignis":::
 
-:::image type="content" source="media/security-center-pricing/logged-change-to-pricing.png" alt-text="Azure-Ereignisprotokoll mit Preisänderungsereignis":::
+Wenn die Informationen des Benutzers nicht in der Spalte **Ereignis initiiert von** aufgeführt sind, sollten Sie sich in den JSON-Daten des Ereignisses die relevanten Details ansehen.
+
+:::image type="content" source="media/security-center-pricing/tracking-pricing-changes-in-activity-log.png" alt-text="Azure-Aktivitätsprotokoll: JSON-Explorer":::
 
 
 ### <a name="what-are-the-plans-offered-by-security-center"></a>Welche Pläne werden für Security Center angeboten? 
@@ -85,7 +97,7 @@ Für Security Center gibt es zwei Angebote:
 ### <a name="how-do-i-enable-azure-defender-for-my-subscription"></a>Wie kann ich Azure Defender für mein Abonnement aktivieren? 
 Sie können die folgenden Methoden verwenden, um Azure Defender für Ihr Abonnement zu aktivieren: 
 
-|Methode  |Anweisungen  |
+|Methode  |Instructions  |
 |---------|---------|
 |Azure Security Center-Seiten im Azure-Portal|[Aktivieren von Azure Defender](#enable-azure-defender)|
 |REST-API|[Pricings-API](/rest/api/securitycenter/pricings)|
@@ -115,6 +127,10 @@ Ja. Wenn Sie Ihren Log Analytics-Agent so konfiguriert haben, dass Daten an zwei
 ### <a name="if-a-log-analytics-agent-reports-to-multiple-workspaces-is-the-500-mb-free-data-ingestion-available-on-all-of-them"></a>Wenn ein Log Analytics-Agent Daten an mehrere Arbeitsbereiche meldet, sind die kostenlosen 500 MB für die Datenerfassung dann für alle Arbeitsbereiche verfügbar?
 Ja. Wenn Sie Ihren Log Analytics-Agent so konfiguriert haben, dass Daten an zwei oder mehr unterschiedliche Log Analytics-Arbeitsbereiche (Multi-Homing) gesendet werden, können Sie 500 MB für die Datenerfassung kostenlos nutzen. Dieser Wert wird pro Knoten, pro Meldungsarbeitsbereich und pro Tag berechnet und ist für jeden Arbeitsbereich verfügbar, für den Lösungen vom Typ „Sicherheit“ oder „Antischadsoftware“ installiert sind. Ihnen werden Kosten für alle Daten berechnet, die über die 500 MB hinaus erfasst werden.
 
+### <a name="is-the-500-mb-free-data-ingestion-calculated-for-an-entire-workspace-or-strictly-per-machine"></a>Wird die kostenlose Datenerfassung von 500 MB für einen gesamten Arbeitsbereich oder ausschließlich pro Computer berechnet?
+Für jeden Computer, der mit dem Arbeitsbereich verbunden ist, stehen Ihnen pro Tag 500 MB für die Datenerfassung kostenlos zur Verfügung. Dies gilt speziell für Sicherheitsdatentypen, die direkt von Azure Security Center erfasst werden.
+
+Bei diesen Daten handelt es sich um eine tägliche Durchschnittsrate für alle Knoten. Selbst wenn also einige Computer 100 MB und andere 800 MB senden, werden Ihnen keine zusätzlichen Kosten in Rechnung gestellt, wenn die Summe die kostenlose Obergrenze von **[Anzahl der Computer] x 500 MB** nicht überschreitet.
 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Artikel wurden die Preisoptionen von Security Center beschrieben. Verwandte Informationen finden Sie hier:

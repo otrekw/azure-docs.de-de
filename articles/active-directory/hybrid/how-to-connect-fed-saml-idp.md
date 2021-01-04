@@ -14,12 +14,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 20088ccc79abe978eb5b3f1c98e958f6c26bcb86
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: cfe3d995cef888d2f0e973a6a6b2a06e0dd6cb54
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96861798"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563210"
 ---
 #  <a name="use-a-saml-20-identity-provider-idp-for-single-sign-on"></a>Verwenden eines SAML 2.0-Identitätsanbieters (IdP, Identity Provider) für einmaliges Anmelden
 
@@ -273,7 +273,7 @@ Diese Prozedur zeigt, wie Azure AD ein einzelner Benutzer hinzugefügt wird.
 Weitere Informationen zum Check-Out „New-MsolUser“ finden Sie unter [/previous-versions/azure/dn194096(v=azure.100)](/previous-versions/azure/dn194096(v=azure.100)).
 
 >[!NOTE]
->Der Wert „UserPrinciplName“ muss mit dem Wert übereinstimmen, den Sie für „IDPEmail“ in Ihrem SAML 2.0-Anspruch senden, und der Wert „ImmutableID“ muss mit dem Wert übereinstimmen, der in Ihrer „NameID“-Assertion gesendet wurde.
+>Der Wert „UserPrincipalName“ muss mit dem Wert übereinstimmen, den Sie für „IDPEmail“ in Ihrem SAML 2.0-Anspruch senden, und der Wert „ImmutableID“ muss mit dem Wert übereinstimmen, der in Ihrer „NameID“-Assertion gesendet wurde.
 
 ## <a name="verify-single-sign-on-with-your-saml-20-idp"></a>Überprüfen des einmaligen Anmeldens mit Ihrem SAML 2.0-IdP
 Bevor Sie als Administrator das einmalige Anmelden (auch als Identitätsverbund bekannt) überprüfen und verwalten, überprüfen Sie die Informationen, und führen Sie die Schritte in den folgenden Artikeln aus, um das einmalige Anmelden mit Ihrem auf SAML 2.0 SP-Lite basierenden Identitätsanbieter einzurichten.

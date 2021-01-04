@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 11/19/2020
+ms.date: 12/10/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 28637f35294e9c70cbf0e96fb2cdcb1853d2ba39
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 9b40ff3a5c9ce2103cde00b26543711d4c05efb0
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94992725"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97028375"
 ---
 ::: zone target="docs"
 
@@ -47,7 +47,7 @@ In diesem Tutorial werden folgende Themen behandelt:
 Stellen Sie Folgendes sicher, bevor Sie beginnen:
 
 * Sie haben die Schritte ausgeführt in [Tutorial: Kopieren von Daten auf die Azure Data Box Disk und Durchführen der Überprüfung](data-box-deploy-copy-data.md).
-* Die Durchführung der Kopieraufträge ist abgeschlossen, und auf der Seite **Verbindung herstellen und Daten kopieren** werden keine Fehler angezeigt. Die Versandvorbereitung kann nicht durchgeführt werden, wenn noch Kopieraufträge in Bearbeitung oder auf der Seite **Verbindung herstellen und Daten kopieren** Fehler aufgeführt sind.
+* Die Durchführung der Kopieraufträge ist abgeschlossen, und auf der Seite **Verbindung herstellen und Daten kopieren** werden keine Fehler angezeigt. Die **Versandvorbereitung** kann nicht durchgeführt werden, wenn noch Kopieraufträge in Bearbeitung oder auf der Seite **Verbindung herstellen und Daten kopieren** Fehler aufgeführt sind.
 
 ## <a name="prepare-to-ship"></a>Vorbereiten des Versands
 
@@ -63,8 +63,8 @@ Nach dem Datenkopiervorgang bereiten Sie das Gerät vor und versenden es. Wenn d
 
 Vergewissern Sie sich vor der Vorbereitung für den Versand, dass Kopieraufträge abgeschlossen sind.
 
-1. Wechseln Sie auf der lokalen Webbenutzeroberfläche zur Seite **Für den Versand vorbereiten**, und beginnen Sie mit der Versandvorbereitung. 
-2. Schalten Sie das Gerät auf der lokalen Webbenutzeroberfläche aus. Ziehen Sie die Kabel vom Gerät ab. 
+1. Wechseln Sie auf der lokalen Webbenutzeroberfläche zur Seite **Für den Versand vorbereiten**, und beginnen Sie mit der Versandvorbereitung.
+2. Schalten Sie das Gerät auf der lokalen Webbenutzeroberfläche aus. Ziehen Sie die Kabel vom Gerät ab.
 
 Die nächsten Schritte hängen davon ab, wo Sie das Gerät zurückgeben.
 
@@ -74,7 +74,7 @@ Die nächsten Schritte hängen davon ab, wo Sie das Gerät zurückgeben.
 
 ## <a name="ship-data-box-back"></a>Zurücksenden der Data Box
 
-Vergewissern Sie sich, dass die Daten vollständig auf das Gerät kopiert wurden, und dass die **Versandvorbereitung** erfolgreich war. Die Vorgehensweise hängt von der Region ab, in der das Gerät versendet wird.
+Vergewissern Sie sich, dass die Daten vollständig auf das Gerät kopiert wurden, und dass die **Versandvorbereitung** erfolgreich war. Die Vorgehensweise ist abhängig von der Region, in der das Gerät versendet wird.
 
 ::: zone-end
 
@@ -82,14 +82,14 @@ Vergewissern Sie sich, dass die Daten vollständig auf das Gerät kopiert wurden
 
 Wenn Sie das Gerät in den USA, in Kanada oder in Europa zurücksenden möchten, gehen Sie wie folgt vor:
 
-1. Vergewissern Sie sich, dass das Gerät ausgeschaltet ist und die Kabel entfernt wurden. 
+1. Vergewissern Sie sich, dass das Gerät ausgeschaltet ist und die Kabel entfernt wurden.
 2. Wickeln Sie das mit dem Gerät gelieferte Netzkabel auf, und befestigen Sie es sicher an der Rückseite des Geräts.
 3. Stellen Sie sicher, dass das Adressetikett auf dem Freihanddisplay angezeigt wird, und vereinbaren Sie einen Abholtermin mit Ihrem Kurierdienst. Falls das Adressetikett beschädigt oder nicht mehr vorhanden ist oder nicht in der E-Ink-Anzeige angezeigt wird, wenden Sie sich an den Microsoft-Support. Sofern dies vom Support empfohlen wird, können Sie im Azure-Portal zu **Übersicht > Versandetikett herunterladen** navigieren. Laden Sie das Versandetikett herunter, und bringen Sie es am Gerät an. 
 4. Planen Sie die Abholung durch UPS, falls Sie das Gerät zurücksenden. So planen Sie die Abholung:
 
     * Rufen Sie Ihre lokale UPS-Versandstelle an (landes-/regionsspezifische gebührenfreie Telefonnummer).
-    * Geben Sie bei dem Telefonat die Nachverfolgungsnummer für die Rücksendung an, die Sie in der E-Ink-Anzeige oder auf dem gedruckten Etikett finden.
-    * Wenn Sie keine Nachverfolgungsnummer angeben, fordert UPS eine Zusatzgebühr, die Sie bei der Abholung entrichten müssen.
+    * Geben Sie bei dem Telefonat die Nachverfolgungsnummer für die Rücksendung an, die Sie in der E-Ink-Anzeige oder auf dem gedruckten Etikett finden. Wenn Sie die Nachverfolgungsnummer nicht angeben, wird bei der Abholung eine zusätzliche Gebühr erhoben.
+    * Falls während der Planung einer Abholung Probleme auftreten oder wenn Sie aufgefordert werden, zusätzliche Gebühren zu bezahlen, wenden Sie sich an Azure Data Box Operations. Senden Sie eine E-Mail an [adbops@microsoft.com](mailto:adbops@microsoft.com).
 
     Wenn Sie keine Abholung planen können oder möchten, können Sie die Data Box auch an der nächstgelegenen Versandstelle abgeben.
 4. Nachdem die Data Box vom Kurierdienst abgeholt und eingescannt wurde, wird der Status der Bestellung im Portal in **Abgeholt** geändert. Außerdem wird eine Nachverfolgungs-ID angezeigt.
@@ -153,7 +153,7 @@ Nachdem die Daten in Azure hochgeladen wurden, löscht die Data Box die Daten au
 
 6. Nachdem die Abholung gebucht wurde, erhalten Sie eine E-Mail-Bestätigung von Quantium Solutions. Die E-Mail-Bestätigung enthält auch Informationen zum Nachnahme-Rücksendeschein („Chakubarai“).
 
-Den Support von Quantium Solution erreichen Sie bei Bedarf wie folgt (in japanische Sprache): 
+Den Support von Quantium Solutions erreichen Sie bei Bedarf wie folgt (in japanische Sprache):
 
 * E-Mail-Adresse: Customerservice.JP@quantiumsolutions.com 
 * Telefonnummer: 03-5755-0150 
@@ -173,7 +173,7 @@ Nachdem die Daten in Azure hochgeladen wurden, löscht die Data Box die Daten au
 ## <a name="singapore"></a>[Singapur](#tab/in-singapore)
 
 1. Bewahren Sie den Originalversandkarton des Geräts für den Rückversand auf.
-2. Notieren Sie sich die Nachverfolgungsnummer (als Referenznummer auf der Seite „Für den Versand vorbereiten“ der lokalen Webbenutzeroberfläche von Data Box angezeigt). Diese ist verfügbar, wenn der Schritt zur Versandvorbereitung erfolgreich abgeschlossen wurde. Laden Sie das Adressetikett von dieser Seite herunter, und bringen Sie es auf dem Versandkarton an.
+2. Notieren Sie sich die Nachverfolgungsnummer (als Referenznummer auf der Seite **Versandvorbereitung** der lokalen Webbenutzeroberfläche von Data Box angezeigt). Die Nachverfolgungsnummer ist nach erfolgreichem Abschluss der **Versandvorbereitung** verfügbar. Laden Sie das Adressetikett von dieser Seite herunter, und bringen Sie es auf dem Versandkarton an.
 3. Schalten Sie das Gerät aus, und entfernen Sie die Kabel.
 4. Wickeln Sie das mitgelieferte Netzkabel auf, und befestigen Sie es sicher an der Rückseite des Geräts. 
 5. Senden Sie eine E-Mail an den SingPost-Kundendienst, indem Sie die folgende E-Mail-Vorlage mit der Nachverfolgungsnummer verwenden:
@@ -209,8 +209,8 @@ Nachdem die Daten in Azure hochgeladen wurden, löscht die Data Box die Daten au
 
 1. Verpacken Sie das Gerät für den Rückversand im Originalkarton.
 2. Wickeln Sie das mitgelieferte Netzkabel auf, und befestigen Sie es sicher an der Rückseite des Geräts.
-3. Notieren Sie sich die Nachverfolgungsnummer, die auf der lokalen Webbenutzeroberfläche von Data Box auf der Seite **Für den Versand vorbereiten** als Referenznummer angezeigt wird. Sie ist nach erfolgreichem Abschluss der Versandvorbereitung verfügbar. Laden Sie das Adressetikett von dieser Seite herunter, und bringen Sie es am Versandkarton an.
-4. Fordern Sie beim Azure Data Box Operations-Team einen Rückgabecode an. Ein Rückgabecode ist für den Rückversand des Pakets an das Rechenzentrum erforderlich. Senden Sie eine E-Mail an [adbops@microsoft.com](mailto:adbops@microsoft.com). Notieren Sie diesen Code gut sichtbar auf dem Adressetikett neben der Rücksendeadresse.
+3. Notieren Sie sich die Nachverfolgungsnummer, die auf der lokalen Webbenutzeroberfläche von Data Box auf der Seite **Für den Versand vorbereiten** als Referenznummer angezeigt wird. Die Nachverfolgungsnummer ist nach erfolgreichem Abschluss der Versandvorbereitung verfügbar. Laden Sie das Adressetikett von dieser Seite herunter, und bringen Sie es am Versandkarton an.
+4. Fordern Sie beim Azure Data Box Operations-Team einen Rückgabecode an. Ein Rückgabecode ist für den Rückversand des Pakets an das Rechenzentrum erforderlich. Senden Sie eine E-Mail an [adbops@microsoft.com](mailto:adbops@microsoft.com). Notieren Sie diesen Code auf dem Adressetikett neben der Rücksendeadresse. Dort ist er gut sichtbar.
 5. Vereinbaren Sie eine Abholung mit DHL mit einer der folgenden Methoden:
  
    * Reservieren Sie online bei DHL Express für Südafrika unter [**Schedule a Pickup**](https://mydhl.express.dhl/za/en/schedule-pickup.html#/schedule-pickup#label-reference) (Buchen Sie eine Abholung) einen Abholtermin.
@@ -231,7 +231,7 @@ Nachdem die Daten in Azure hochgeladen wurden, löscht die Data Box die Daten au
 
     * Alternativ können Sie das Paket auch in einem DHL-Paketshop in Ihrer Nähe abgeben.
 
-6. Sollten Probleme auftreten, senden Sie eine E-Mail mit Einzelheiten zu dem aufgetretenen Problem an [Priority.Support@dhl.com](mailto:Priority.Support@dhl.com). Geben Sie im Betreff die Frachtbriefnummer an. Sie können auch die Nummer +27(0)119213902 anrufen.
+6. Sollten Probleme auftreten, senden Sie eine E-Mail mit Einzelheiten zu den Problemen an [Priority.Support@dhl.com](mailto:Priority.Support@dhl.com). Geben Sie im Betreff die Frachtbriefnummer an. Sie können auch die Nummer +27(0)119213902 anrufen.
 
 ::: zone target="chromeless"
 
@@ -249,16 +249,16 @@ Nachdem die Daten in Azure hochgeladen wurden, löscht die Data Box die Daten au
 
 1. Verpacken Sie das Gerät für den Rückversand im Originalkarton.
 2. Wickeln Sie das mitgelieferte Netzkabel auf, und befestigen Sie es sicher an der Rückseite des Geräts.
-3. Rufen Sie unter **(852) 2318 1213** die Hotline von **Quantium Solutions** an (Geschäftszeiten: Montag bis Freitag, 9 bis 18 Uhr).  
+3. Rufen Sie unter **(852) 2318 1213** die Hotline von **Quantium Solutions** an (Geschäftszeiten: Montag bis Freitag von 9 bis 18 Uhr).  
 4. Geben Sie „Microsoft Azure Pickup“ (Microsoft Azure-Abholung) sowie die Referenz- und die Sendungsverfolgungsnummer (oberhalb des Strichcodes) auf dem Rücksendeetikett an, um eine Abholung zu veranlassen.
 5. Sie erhalten eine mündliche Bestätigung des Abholplans. Sollte der Kurier den Abholtermin nicht einhalten, rufen Sie die Hotline von Quantium Solutions an, um eine alternative Lösung zu finden.
-6. Wenn Sie eine Abholung mit Quantium vereinbart haben, leiten Sie die Bestätigung unter Verwendung der folgenden Vorlage an [Microsoft Data Box Operations Asia](mailto:adbo@microsoft.com) weiter:
+6. Wenn Sie eine Abholung mit Quantium Solutions vereinbart haben, leiten Sie die Bestätigung unter Verwendung der folgenden Vorlage an [Microsoft Data Box Operations Asia](mailto:adbo@microsoft.com) weiter:
 
     ```output
     To: adbo@microsoft.com
     Subject: Microsoft Data Box Job: [order name] has completed copy
     Body:
-    We have confirmed the pickup details with Quantium.
+    We have confirmed the pickup details with Quantium Solutions.
 
        * Requestor name:
        * Requestor contact number:
@@ -266,7 +266,7 @@ Nachdem die Daten in Azure hochgeladen wurden, löscht die Data Box die Daten au
        * Pickup time:
     ```
 
-Sollten Probleme auftreten, senden Sie eine E-Mail an Data Box Operations Asia ([adbo@microsoft.com](mailto:adbo@microsoft.com)). Geben Sie dabei im Betreff den Auftragsnamen an, und beschreiben Sie das Problem.
+Sollten Probleme auftreten, senden Sie eine E-Mail mit Einzelheiten zu den Problemen an Data Box Operations Asia [adbo@microsoft.com](mailto:adbo@microsoft.com). Geben Sie im Betreff den Auftragsnamen an.
 
 ::: zone target="chromeless"
 
@@ -283,7 +283,7 @@ Nachdem die Daten in Azure hochgeladen wurden, löscht die Data Box die Daten au
 <!--## [In Korea](#tab/in-korea) 
 
 1. Retain the original box used to ship the device for return shipment.
-2. Note down the tracking number (shown as reference number on the Prepare to Ship page of the Data Box local web UI). This is available after the prepare to ship step successfully completes. Download the shipping label from this page and paste on the packing box. 
+2. Note down the tracking number (shown as reference number on the **Prepare to Ship** page of the Data Box local web UI). The tracking number is available after the **Prepare to ship** step successfully completes. Download the shipping label from this page and paste on the packing box. 
 3. Power off the device and remove the cables.
 4. Spool and securely place the power cord that was provided with the device in the back of the device. 
 
@@ -322,11 +322,11 @@ Once the upload to Azure is complete, the Data Box erases the data on its disks 
 
 ## <a name="self-managed"></a>[Selbst verwalteter Versand](#tab/in-selfmanaged)
 
-Wenn Sie Data Box in US-Regierungsbehörden, Japan, Singapur, Südkorea, Indien, Südafrika oder Westeuropa verwenden und bei der Auftragserstellung die Option für den selbst verwalteten Versand ausgewählt haben, gehen Sie wie folgt vor: 
+Wenn Sie Data Box in US Government, Japan, Singapur, Südkorea, Indien, Südafrika oder Westeuropa verwenden und bei der Auftragserstellung die Option für selbst verwalteten Versand ausgewählt haben, gehen Sie wie folgt vor.
 
-1. Notieren Sie sich den Autorisierungscode, der auf der Seite „Für den Versand vorbereiten“ der lokalen Webbenutzeroberfläche von Data Box angezeigt wird, nachdem dieser Schritt erfolgreich abgeschlossen wurde.
+1. Notieren Sie sich den Autorisierungscode, der auf der Seite **Versandvorbereitung** der lokalen Webbenutzeroberfläche von Data Box angezeigt wird, nachdem dieser Schritt erfolgreich abgeschlossen wurde.
 2. Schalten Sie das Gerät aus, und entfernen Sie die Kabel. Wickeln Sie das mitgelieferte Netzkabel auf, und befestigen Sie es sicher an der Rückseite des Geräts.
-3. Senden Sie eine E-Mail an das Azure Data Box Operations-Team, wenn Sie bereit sind, das Gerät zurückzusenden. Verwenden Sie dafür die folgende Vorlage:
+3. Wenn Sie zum Rückversand des Geräts bereit sind, senden Sie eine E-Mail an das Azure Data Box Operations-Team. Verwenden Sie dafür die Vorlage unten.
 
     ```
     To: adbops@microsoft.com

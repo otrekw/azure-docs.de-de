@@ -5,12 +5,12 @@ ms.assetid: 35fa18ec-21d8-41bf-af2b-e5e92703401d
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.custom: accessibility
-ms.openlocfilehash: 8009d0d4ac971d81e25b276b19605bc6a70cff02
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 81c4ccef688622ec20d111383359053b82045996
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96745671"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938085"
 ---
 # <a name="supported-devices"></a>Unterstützte Geräte
 
@@ -23,7 +23,7 @@ Wenn Sie Azure-Ressourcen über ein mobiles Gerät verwalten müssen, testen Sie
 Es wird empfohlen, den neuesten Browser zu verwenden, der mit Ihrem Betriebssystem kompatibel ist. Die folgenden Browser werden unterstützt:
 
 * Microsoft Edge (neueste Version)
-* Internet Explorer 11
+* Internet Explorer 11 (wird bis 31. März 2021 unterstützt)
 * Safari (neueste Version, nur auf Mac)
 * Chrome (neueste Version)
 * Firefox (neueste Version)

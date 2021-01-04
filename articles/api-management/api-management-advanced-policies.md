@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/13/2020
 ms.author: apimpm
-ms.openlocfilehash: 46bcdac41497eea91b5af0c512a7118e33d5d7c3
-ms.sourcegitcommit: 18046170f21fa1e569a3be75267e791ca9eb67d0
+ms.openlocfilehash: 3a37cde79cef59eaf9c3ef130bfbae9cff958bd7
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2020
-ms.locfileid: "94638902"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96919444"
 ---
 # <a name="api-management-advanced-policies"></a>API Management – Erweiterte Richtlinien
 
@@ -78,7 +78,7 @@ Die zweite Ablaufsteuerungsrichtlinie befindet sich im Abschnitt für den ausgeh
 ```xml
 <policies>
     <inbound>
-        <set-variable name="isMobile" value="@(context.Request.Headers["User-Agent"].Contains("iPad") || context.Request.Headers["User-Agent"].Contains("iPhone"))" />
+        <set-variable name="isMobile" value="@(context.Request.Headers.GetValueOrDefault("User-Agent","").Contains("iPad") || context.Request.Headers.GetValueOrDefault("User-Agent","").Contains("iPhone"))" />
         <base />
         <choose>
             <when condition="@(context.Variables.GetValueOrDefault<bool>("isMobile"))">
@@ -303,7 +303,7 @@ Das folgende Beispiel veranschaulicht das Beschränken der Anzahl der Anforderun
 
 ### <a name="attributes"></a>Attributes
 
-| attribute | BESCHREIBUNG                                                                                        | Erforderlich | Standard |
+| Attribut | BESCHREIBUNG                                                                                        | Erforderlich | Standard |
 | --------- | -------------------------------------------------------------------------------------------------- | -------- | ------- |
 | Schlüssel       | Eine Zeichenfolge. Ausdruck zulässig. Gibt den Bereich der Parallelität an. Kann von mehreren Richtlinien verwendet werden. | Ja      | –     |
 | max-count | Eine ganze Zahl. Gibt eine maximale Anzahl von Anforderungen an, die an die Richtlinie weitergeleitet werden können           | Ja      | –     |
@@ -356,7 +356,7 @@ Eine beliebige Zeichenfolge kann als Wert für die Protokollierung in Event Hubs
 
 ### <a name="attributes"></a>Attributes
 
-| attribute     | BESCHREIBUNG                                                               | Erforderlich                                                             |
+| Attribut     | BESCHREIBUNG                                                               | Erforderlich                                                             |
 | ------------- | ------------------------------------------------------------------------- | -------------------------------------------------------------------- |
 | logger-id     | Die ID des Protokollierungstools, das bei Ihrem API Management-Dienst registriert ist         | Ja                                                                  |
 | partition-id  | Gibt den Index der Partition an, an die Nachrichten gesendet werden.             | Optional. Dieses Attribut darf nicht genutzt werden, wenn `partition-key` verwendet wird. |
@@ -401,7 +401,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 ### <a name="attributes"></a>Attributes
 
-| attribute    | BESCHREIBUNG                                                                                           | Erforderlich | Standard |
+| Attribut    | BESCHREIBUNG                                                                                           | Erforderlich | Standard |
 | ------------ | ----------------------------------------------------------------------------------------------------- | -------- | ------- |
 | status-code  | Gibt den Statuscode der Antwort an und wird verwendet, um ein passendes Beispiel oder Schema auszuwählen                 | Nein       | 200     |
 | content-type | Gibt den Headerwert `Content-Type` für die Antwort an und wird verwendet, um ein passendes Beispiel oder Schema auszuwählen | Nein       | Keine    |
@@ -460,7 +460,7 @@ Im folgenden Beispiel wird mit einem exponentiellen Wiederholungsalgorithmus bis
 
 ### <a name="attributes"></a>Attributes
 
-| attribute        | BESCHREIBUNG                                                                                                                                           | Erforderlich | Standard |
+| Attribut        | BESCHREIBUNG                                                                                                                                           | Erforderlich | Standard |
 | ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
 | condition        | Ein boolesches Literal oder ein [Ausdruck](api-management-policy-expressions.md), mit dem angegeben wird, ob Wiederholungsversuche beendet (`false`) oder fortgesetzt (`true`) werden sollen.      | Ja      | –     |
 | count            | Eine positive Zahl, mit der die maximale Anzahl von Wiederholungsversuchen angegeben wird.                                                                                | Ja      | –     |
@@ -520,7 +520,7 @@ Mit der `return-response`-Richtlinie wird die Pipelineausführung abgebrochen un
 
 ### <a name="attributes"></a>Attributes
 
-| attribute              | BESCHREIBUNG                                                                                                                                                                          | Erforderlich  |
+| Attribut              | BESCHREIBUNG                                                                                                                                                                          | Erforderlich  |
 | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------- |
 | response-variable-name | Der Name der Kontextvariablen, auf die beispielsweise von einer vorgelagerten [send-request](api-management-advanced-policies.md#SendRequest)-Richtlinie verwiesen wird und die ein `Response`-Objekt enthält. | Optional. |
 
@@ -592,7 +592,7 @@ Diese Beispielrichtlinie zeigt ein Beispiel für die Verwendung der `send-one-wa
 
 ### <a name="attributes"></a>Attributes
 
-| attribute     | BESCHREIBUNG                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Erforderlich | Standard  |
+| Attribut     | BESCHREIBUNG                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Erforderlich | Standard  |
 | ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | -------- |
 | mode="string" | Bestimmt, ob dies eine neue Anforderung oder eine Kopie der aktuellen Anforderung ist. Im Ausgangsmodus wird der Anforderungstext durch „mode=copy“ nicht initialisiert.                                                                                                                                                                                                                                                                                                                                                                                                                                                                | Nein       | Neu      |
 | name          | Gibt den Namen des festzulegenden Headers an.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Ja      | –      |
@@ -676,7 +676,7 @@ In diesem Beispiel ist eine Möglichkeit dargestellt, wie Sie ein Verweistoken m
 
 ### <a name="attributes"></a>Attributes
 
-| attribute                       | BESCHREIBUNG                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Erforderlich | Standard  |
+| Attribut                       | BESCHREIBUNG                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Erforderlich | Standard  |
 | ------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | -------- |
 | mode="string"                   | Bestimmt, ob dies eine neue Anforderung oder eine Kopie der aktuellen Anforderung ist. Im Ausgangsmodus wird der Anforderungstext durch „mode=copy“ nicht initialisiert.                                                                                                                                                                                                                                                                                                                                                                                                                                                                | Nein       | Neu      |
 | response-variable-name="string" | Der Name der Kontextvariable, die ein Antwortobjekt empfängt. Wenn die Variable nicht vorhanden ist, wird sie bei erfolgreicher Ausführung der Richtlinie erstellt und ist dann über die Sammlung [`context.Variable`](api-management-policy-expressions.md#ContextVariables) zugänglich.                                                                                                                                                                                                                                                                                                                          | Ja      | –      |
@@ -721,7 +721,7 @@ Beachten Sie die Verwendung von [Eigenschaften](api-management-howto-properties.
 
 ### <a name="attributes"></a>Attributes
 
-| attribute         | BESCHREIBUNG                                            | Erforderlich | Standard |
+| Attribut         | BESCHREIBUNG                                            | Erforderlich | Standard |
 | ----------------- | ------------------------------------------------------ | -------- | ------- |
 | url="string"      | Proxy-URL im Format http://host:port.             | Ja      | –     |
 | username="string" | Der Benutzername, der für die Authentifizierung mit dem Proxy verwendet wird. | Nein       | –     |
@@ -827,7 +827,7 @@ Dieses Beispiel zeigt, wie Sie eine 401-Antwort zurückgeben, wenn das Autorisie
 
 ### <a name="attributes"></a>Attributes
 
-| attribute       | BESCHREIBUNG                                                | Erforderlich | Standard |
+| Attribut       | BESCHREIBUNG                                                | Erforderlich | Standard |
 | --------------- | ---------------------------------------------------------- | -------- | ------- |
 | code="integer"  | Der zurückzugebende HTTP-Statuscode.                            | Ja      | –     |
 | reason="string" | Eine Beschreibung des Grunds zum Zurückgeben des Statuscodes. | Ja      | –     |
@@ -854,7 +854,7 @@ Mit der `set-variable`-Richtlinie wird eine [Kontext](api-management-policy-expr
 Im folgenden Beispiel wird eine set-variable-Richtlinie im Abschnitt für den eingehenden Datenverkehr veranschaulicht. Diese "set-variable"-Richtlinie erstellt die boolesche [Kontext](api-management-policy-expressions.md#ContextVariables)variable `isMobile`, die auf "true" festgelegt wird, wenn der `User-Agent`-Anforderungsheader den Text `iPad` oder `iPhone` enthält.
 
 ```xml
-<set-variable name="IsMobile" value="@(context.Request.Headers["User-Agent"].Contains("iPad") || context.Request.Headers["User-Agent"].Contains("iPhone"))" />
+<set-variable name="IsMobile" value="@(context.Request.Headers.GetValueOrDefault("User-Agent","").Contains("iPad") || context.Request.Headers.GetValueOrDefault("User-Agent","").Contains("iPhone"))" />
 ```
 
 ### <a name="elements"></a>Elemente
@@ -865,7 +865,7 @@ Im folgenden Beispiel wird eine set-variable-Richtlinie im Abschnitt für den ei
 
 ### <a name="attributes"></a>Attributes
 
-| attribute | BESCHREIBUNG                                                              | Erforderlich |
+| Attribut | BESCHREIBUNG                                                              | Erforderlich |
 | --------- | ------------------------------------------------------------------------ | -------- |
 | name      | Der Name der Variablen.                                                | Ja      |
 | value     | Der Wert der Variablen. Dies kann ein Ausdruck oder ein Literalwert sein. | Ja      |
@@ -951,7 +951,7 @@ Die `trace`-Richtlinie fügt der API-Inspektor-Ausgabe, Application Insights-Tel
 
 ### <a name="attributes"></a>Attributes
 
-| attribute | BESCHREIBUNG                                                                                                               | Erforderlich | Standard |
+| Attribut | BESCHREIBUNG                                                                                                               | Erforderlich | Standard |
 | --------- | ------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
 | source    | Das Zeichenfolgenliteral ist für die Ablaufverfolgungsanzeige aussagekräftig und gibt die Quelle der Nachricht an.                                   | Ja      | –     |
 | severity  | Legt den Schweregrad der Ablaufverfolgung fest. Zulässige Werte sind `verbose`, `information` und `error` (vom niedrigsten zum höchsten Schweregrad). | Nein       | Ausführlich |
@@ -1024,7 +1024,7 @@ Im folgenden Beispiel sind zwei `choose`-Richtlinien als unmittelbar untergeordn
 
 ### <a name="attributes"></a>Attributes
 
-| attribute | BESCHREIBUNG                                                                                                                                                                                                                                                                                                                                                                                                            | Erforderlich | Standard |
+| Attribut | BESCHREIBUNG                                                                                                                                                                                                                                                                                                                                                                                                            | Erforderlich | Standard |
 | --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
 | für       | Bestimmt, ob die `wait`-Richtlinie wartet, bis alle unmittelbar untergeordneten Richtlinien abgeschlossen sind, oder nur eine. Zulässige Werte sind:<br /><br /> - `all`: Es wird gewartet, bis alle unmittelbar untergeordneten Richtlinien abgeschlossen sind.<br />– any: Es wird gewartet, bis eine beliebige unmittelbar untergeordnete Richtlinie abgeschlossen ist. Nachdem die erste unmittelbar untergeordnete Richtlinie abgeschlossen wurde, wird die `wait`-Richtlinie abgeschlossen, und die Ausführung aller anderen unmittelbar untergeordneten Richtlinien wird beendet. | Nein       | alle     |
 

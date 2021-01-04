@@ -6,14 +6,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 11/30/2020
+ms.date: 12/09/2020
 ms.author: banders
-ms.openlocfilehash: 8c3ab3f4f9bc56e9651a98e5c011cad65f21fd9d
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: ca55773b2deb74ea0647ed33df4040065762f94a
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348982"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938476"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-from-other-accounts"></a>Übernehmen des Abrechnungsbesitzes für Azure-Abonnements von anderen Konten
 
@@ -22,6 +22,14 @@ Die Übernahme des Azure-Abonnementbesitzes kann beispielsweise erforderlich sei
 Dieser Artikel bezieht sich auf ein Abrechnungskonto für eine Microsoft-Kundenvereinbarung. [Überprüfen Sie, ob Sie Zugriff auf eine Microsoft-Kundenvereinbarung haben.](#check-for-access)
 
 Der Abrechnungsbesitz kann nur mit der Rolle **Rechnungsabschnitt (Besitzer)** oder **Rechnungsabschnitt (Mitwirkender)** angefordert werden. Weitere Informationen finden Sie unter [Rollen und Aufgaben für einen Rechnungsabschnitt](understand-mca-roles.md#invoice-section-roles-and-tasks).
+
+Die Person, von der Sie den Abrechnungsbesitz anfordern, muss eine der folgenden Rollen haben:
+
+- Bei einer Microsoft-Kundenvereinbarung für Unternehmen muss der Benutzer ein Abrechnungsbesitzer sein.
+- Bei einem Konzernvertrag (Enterprise Agreement, EA) muss der Benutzer ein Kontobesitzer sein.
+- Bei einem Abrechnungskonto für das Microsoft Online-Dienstprogramm muss der Benutzer ein Kontoadministrator sein.
+
+Weitere Informationen finden Sie unter [Anzeigen von sämtlichen Abrechnungskonten im Azure-Portal](view-all-accounts.md).
 
 ## <a name="request-billing-ownership"></a>Anfordern des Abrechnungsbesitzes
 
@@ -42,7 +50,7 @@ Der Abrechnungsbesitz kann nur mit der Rolle **Rechnungsabschnitt (Besitzer)** o
 1. Wählen Sie in der Liste einen Rechnungsabschnitt aus. Nachdem Sie den Besitz der Abonnements übernommen haben, wird deren Nutzung diesem Abschnitt der Rechnung für dieses Abrechnungsprofil zugewiesen.
 1. Wählen Sie links unten die Option **Übertragungsanforderungen** und anschließend **Neue Anforderung hinzufügen** aus.  
     [![Screenshot: Auswählen von Übertragungsanforderungen](./media/mca-request-billing-ownership/mca-select-transfer-requests.png)](./media/mca-request-billing-ownership/mca-select-transfer-requests.png#lightbox)
-1. Geben Sie die E-Mail-Adresse des Benutzers ein, dessen Abrechnungsbesitz Sie übernehmen möchten. Der Benutzer muss ein Kontoadministrator für ein Abrechnungskonto eines Microsoft Online Services-Programms oder ein Kontobesitzer für ein Enterprise Agreement sein. Weitere Informationen finden Sie unter [Anzeigen von sämtlichen Abrechnungskonten im Azure-Portal](view-all-accounts.md). Wählen Sie **Übertragungsanforderung senden** aus.  
+1. Geben Sie die E-Mail-Adresse des Benutzers ein, dessen Abrechnungsbesitz Sie übernehmen möchten. Wählen Sie **Übertragungsanforderung senden** aus.  
     [![Screenshot: Senden einer Übertragungsanforderung](./media/mca-request-billing-ownership/mca-send-transfer-requests.png)](./media/mca-request-billing-ownership/mca-send-transfer-requests.png#lightbox)
 1. Der Benutzer erhält eine E-Mail mit der Aufforderung, Ihre Übertragungsanforderung zu prüfen.  
     ![Screenshot: E-Mail mit Aufforderung zur Prüfung der Übertragungsanforderung](./media/mca-request-billing-ownership/mca-review-transfer-request-email.png)
@@ -68,6 +76,7 @@ Der Abrechnungsbesitz kann nur mit der Rolle **Rechnungsabschnitt (Besitzer)** o
 1. Wählen Sie den Rechnungsabschnitt, für den die Übertragungsanforderung gesendet wurde, in der Liste aus.
 1. Wählen Sie links unten die Option **Übertragungsanforderungen** aus. Auf der Seite „Übertragungsanforderungen“ werden folgende Informationen angezeigt:  
     [![Screenshot: Liste mit Übertragungsanforderungen](./media/mca-request-billing-ownership/mca-select-transfer-requests-for-status.png)](./media/mca-request-billing-ownership/mca-select-transfer-requests-for-status.png#lightbox)
+
    |Column|Definition|
    |---------|---------|
    |Anforderungsdatum|Das Datum, an dem die Übertragungsanforderung gesendet wurde.|

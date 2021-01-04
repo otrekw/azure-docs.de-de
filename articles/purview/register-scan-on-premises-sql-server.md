@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 09/18/2020
-ms.openlocfilehash: a807c76a08bf075973cd0f358c67b61b10b40ba0
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 9003366ec0d64057ca7426d5b6b99986bc21fc9d
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96550494"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920300"
 ---
 # <a name="register-and-scan-an-on-premises-sql-server"></a>Registrieren und Überprüfen einer lokalen SQL Server-Datenquelle
 
@@ -31,6 +31,10 @@ Für eine lokale SQL Server-Datenquelle wird Folgendes unterstützt:
 - Jede Version von SQL ab SQL Server 2019 bis zurück zu SQL Server 2000
 
 - Authentifizierungsmethode: SQL-Authentifizierung
+
+### <a name="known-limitations"></a>Bekannte Einschränkungen
+
+Azure Purview unterstützt nicht die Überprüfung von [Ansichten](https://docs.microsoft.com/sql/relational-databases/views/views?view=sql-server-ver15) in SQL Server. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

@@ -1,18 +1,18 @@
 ---
 title: Vorlagenfunktionen – logisch
-description: Hier werden die Funktionen beschrieben, die in einer Azure Resource Manager-Vorlage zum Bestimmen von logischen Werten verwendet werden können.
+description: Informationen zu den Funktionen, die in einer Azure Resource Manager-Vorlage (ARM-Vorlage) zum Bestimmen von logischen Werten verwendet werden können.
 ms.topic: conceptual
 ms.date: 11/18/2020
-ms.openlocfilehash: b54c104c8af5bb742b2c82d8a075515b8696501b
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 27d94f10374daf0b9a351469579a5eb659cf5445
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "96004550"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920447"
 ---
 # <a name="logical-functions-for-arm-templates"></a>Logikfunktionen für ARM-Vorlagen
 
-Resource Manager stellt mehrere Funktionen zum Durchführen von Vergleichen in Ihren Azure Resource Manager-Vorlagen (ARM) bereit.
+Resource Manager stellt mehrere Funktionen zum Durchführen von Vergleichen in Ihren Azure Resource Manager-Vorlagen (ARM-Vorlagen) bereit:
 
 * [and](#and)
 * [bool](#bool)
@@ -227,7 +227,7 @@ Gibt den zweiten Parameter zurück, wenn der erste Parameter **True** ist, ander
 
 ### <a name="remarks"></a>Bemerkungen
 
-Wenn die Bedingung zutrifft (**True**), wird nur der Wert „True“ ausgewertet. Wenn die Bedingung nicht zutrifft (**False**), wird nur der Wert „False“ ausgewertet. Mit der **if**-Funktion („Wenn“) können Sie Ausdrücke einschließen, die nur bedingt gültig sind. Beispielsweise können Sie auf eine Ressource verweisen, die unter der einen Bedingung, nicht aber unter der anderen Bedingung vorhanden ist. Ein Beispiel für die bedingte Auswertung von Ausdrücken wird im nächsten Abschnitt gezeigt.
+Wenn die Bedingung zutrifft (**True**), wird nur der Wert „True“ ausgewertet. Wenn die Bedingung nicht zutrifft (**False**), wird nur der Wert „False“ ausgewertet. Mit der `if`-Funktion („Wenn“) können Sie Ausdrücke einschließen, die nur bedingt gültig sind. Beispielsweise können Sie auf eine Ressource verweisen, die unter der einen Bedingung, nicht aber unter der anderen Bedingung vorhanden ist. Ein Beispiel für die bedingte Auswertung von Ausdrücken wird im nächsten Abschnitt gezeigt.
 
 ### <a name="examples"></a>Beispiele
 
@@ -542,4 +542,4 @@ Die Ausgabe aus dem vorherigen Beispiel lautet wie folgt:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Eine Beschreibung der Abschnitte in einer Azure Resource Manager-Vorlage finden Sie unter [Grundlegendes zur Struktur und Syntax von ARM-Vorlagen](template-syntax.md).
+* Eine Beschreibung der Abschnitte in einer ARM-Vorlage finden Sie unter [Grundlegendes zur Struktur und Syntax von ARM-Vorlagen](template-syntax.md).

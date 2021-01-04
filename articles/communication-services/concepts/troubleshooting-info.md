@@ -8,12 +8,12 @@ ms.author: manoskow
 ms.date: 10/23/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 775075765c8c8eaa94541c0f094c1f7743fe59d9
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 88ad060c1ba28285051a91bd928a2a7116dff1ce
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94886786"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96937541"
 ---
 # <a name="troubleshooting-in-azure-communication-services"></a>Problembehandlung in Azure Communication Services
 
@@ -165,6 +165,25 @@ Navigieren Sie in Android Studio zum Gerätedatei-Explorer, indem Sie im Simulat
    
 
 ---
+
+
+## <a name="calling-client-library-error-codes"></a>Fehlercodes der Clientbibliothek für Telefonie
+
+Die Clientbibliothek für Telefonie von Azure Communication Services verwendet die folgenden Fehlercodes, um Sie beim Beheben von Anrufproblemen zu unterstützen. Diese Fehlercodes werden durch die `call.callEndReason`-Eigenschaft bereitgestellt, nachdem ein Anruf beendet wurde.
+
+| Fehlercode | BESCHREIBUNG | Auszuführende Aktion |
+| -------- | ---------------| ---------------|
+| 403 | Unzulässig/Authentifizierungsfehler. | Stellen Sie sicher, dass Ihr Communication Services-Token gültig und nicht abgelaufen ist. |
+| 404 | Anruf nicht gefunden. | Stellen Sie sicher, dass die Telefonnummer, die Sie anrufen (oder die Telefonkonferenz, der Sie beitreten möchten), vorhanden ist. |
+| 408 | Timeout des Anrufcontrollers. | Timeout des Anrufcontrollers beim Warten auf Protokollmeldungen von Benutzerendpunkten. Stellen Sie sicher, dass die Clients verbunden und verfügbar sind. |
+| 410 | Fehler des lokalen Medienstapels oder der Medieninfrastruktur. | Stellen Sie sicher, dass Sie die neueste Clientbibliothek in einer unterstützten Umgebung verwenden. |
+| 430 | Nachricht kann nicht an die Clientanwendung übermittelt werden. | Stellen Sie sicher, dass die Clientanwendung ausgeführt wird und verfügbar ist. |
+| 480 | Remoteclientendpunkt ist nicht registriert. | Stellen Sie sicher, dass der Remoteendpunkt verfügbar ist. |
+| 481 | Fehler beim Verarbeiten des eingehenden Anrufs. | Reichen Sie eine Supportanfrage über das Azure-Portal ein. |
+| 487 | Der Anruf wurde abgebrochen, lokal abgelehnt, aufgrund eines Endpunktkonfliktfehlers beendet, oder das Medienangebot konnte nicht generiert werden. | Erwartetes Verhalten. |
+| 490, 491, 496, 487, 498 | Netzwerkprobleme des lokalen Endpunkts. | Überprüfen Sie Ihr Netzwerk. |
+| 500, 503, 504 | Communication Services-Infrastrukturfehler. | Reichen Sie eine Supportanfrage über das Azure-Portal ein. |
+| 603 | Anruf global durch Communication Services-Remoteteilnehmer abgelehnt. | Erwartetes Verhalten. |
 
 
 ## <a name="related-information"></a>Verwandte Informationen

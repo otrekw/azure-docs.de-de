@@ -3,12 +3,12 @@ title: 'Analysieren von Livevideos ohne Aufzeichnung: Azure'
 description: Ein Mediendiagramm kann auch nur verwendet werden, um Analysen aus einem Livevideostream zu extrahieren, ohne dass dieser am Edge oder in der Cloud aufgezeichnet werden muss. Dieses Konzept wird in diesem Artikel erläutert.
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 5dda18b68cb19d29623f2120fe07d7cc617f0c2f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 25a7cadc47603b726542fa391d441e1fbca78908
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90893036"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97398969"
 ---
 # <a name="analyzing-live-video-without-any-recording"></a>Analysieren von Livevideos ohne Aufzeichnung
 
@@ -33,14 +33,16 @@ Das unten gezeigte Mediendiagramm besteht aus einem [RTSP-Quellknoten](media-gra
 Das unten gezeigte Mediendiagramm ermöglicht Ihnen, einen Livevideostream mit einem benutzerdefinierten Custom Vision-Modell zu analysieren, das in einem separaten Modul gepackt ist. Die JSON-Darstellung der Diagrammtopologie eines solchen Mediendiagramms finden Sie [hier](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/httpExtension/topology.json). [Hier](https://github.com/Azure/live-video-analytics/tree/master/utilities/video-analysis) finden Sie einige Beispiele zum Umschließen von Modellen in IoT Edge-Modulen, die als Rückschlussdienst ausgeführt werden.
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/analyze-live-video/motion-detected-frames.svg" alt-text="Livevideoanalysen, die auf Bewegungserkennung basieren":::
+> :::image type="content" source="./media/analyze-live-video/motion-detected-frames.svg" alt-text="Live Video Analytics basierend auf einem externen Rückschlussmodul":::
 
-In diesem Mediendiagramm verringert der Verarbeitungsknoten für die Frameratenfilterung die Framerate des eingehenden Livevideostreams, bevor er ihn an einen [Verarbeitungsknoten mit HTTP-Erweiterung](media-graph-concept.md#http-extension-processor) sendet. Dieser sendet die Bildframes (in den Formaten JPEG, BMP oder PNG) per REST an einen externen Rückschlussdienst. Die Ergebnisse des externen Rückschlussdiensts werden vom HTTP-Erweiterungsknoten abgerufen und über den Senkenknoten für IoT Hub-Meldungen an den IoT Edge-Hub weitergeleitet. Diese Art von Mediendiagramm können Sie verwenden, um Lösungen für eine Vielzahl von Szenarien zu erstellen, z. B. zum Analysieren der Zeitreihenverteilung von Fahrzeugen an einer Kreuzung, von Bewegungsmustern der Kunden in einem Einzelhandelsgeschäft usw.
+In diesem Mediengraphen wird die Videoeingabe von der RTSP-Quelle an einen [HTTP-Erweiterungsprozessorknoten](media-graph-concept.md#http-extension-processor) gesendet, der Einzelbilder (in den Formaten JPEG, BMP oder PNG) über REST an einen externen Rückschlussdienst sendet. Die Ergebnisse des externen Rückschlussdiensts werden vom HTTP-Erweiterungsknoten abgerufen und über den Senkenknoten für IoT Hub-Meldungen an den IoT Edge-Hub weitergeleitet. Diese Art von Mediendiagramm können Sie verwenden, um Lösungen für eine Vielzahl von Szenarien zu erstellen, z. B. zum Analysieren der Zeitreihenverteilung von Fahrzeugen an einer Kreuzung, von Bewegungsmustern der Kunden in einem Einzelhandelsgeschäft usw.
+>[!TIP]
+> Sie können die Bildfrequenz im HTTP-Erweiterungsprozessorknoten mithilfe des Felds `samplingOptions` verwalten, bevor Sie es downstream senden.
 
-Als Erweiterung dieses Beispiels können Sie vor dem Verarbeitungsknoten zur Frameratenfilterung einen Verarbeitungsknoten zur Bewegungserkennung verwenden. Damit reduzieren Sie die Auslastung des Rückschlussdiensts, da er nur verwendet wird, wenn im Video Bewegungsaktivitäten enthalten sind.
+Als Erweiterung dieses Beispiels können Sie vor dem HTTP-Erweiterungsprozessorknoten einen Verarbeitungsknoten zur Bewegungserkennung verwenden. Damit reduzieren Sie die Auslastung des Rückschlussdiensts, da er nur verwendet wird, wenn im Video Bewegungsaktivitäten enthalten sind.
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/analyze-live-video/custom-model.svg" alt-text="Livevideoanalysen, die auf Bewegungserkennung basieren":::
+> :::image type="content" source="./media/analyze-live-video/custom-model.svg" alt-text="Live Video Analytics basierend auf Frames mit erkannter Bewegung über ein externes Rückschlussmodul":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -2,13 +2,13 @@
 title: Verbinden eines Hybridcomputers mit Azure Arc-fähigen Servern
 description: Hier erfahren Sie, wie Sie Ihren Hybridcomputer mit Azure Arc-fähigen Servern verbinden und registrieren.
 ms.topic: quickstart
-ms.date: 11/12/2020
-ms.openlocfilehash: 3779d95ac138e83b1d953f744e07ae553890a5d7
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.date: 12/15/2020
+ms.openlocfilehash: 68869854cbfcf6d7297137e6239b2229a20c04a1
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94576843"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516785"
 ---
 # <a name="quickstart-connect-hybrid-machine-with-azure-arc-enabled-servers"></a>Schnellstart: Verbinden eines Hybridcomputers mit Azure Arc-fähigen Servern
 
@@ -29,6 +29,9 @@ Mit [Azure Arc-fähigen Servern](../overview.md) können Sie Ihre Windows- und 
     * Sollte der Computer für die Kommunikation über das Internet eine Verbindung über eine Firewall oder über einen Proxyserver herstellen, sorgen Sie dafür, dass die [aufgeführten](../agent-overview.md#networking-configuration) URLs nicht blockiert werden.
 
     * Von Azure Arc-fähigen Servern werden nur die [hier](../overview.md#supported-regions) angegebenen Regionen unterstützt.
+
+> [!WARNING]
+> Der Linux-Hostname oder Windows-Computername darf keines der reservierten Wörter bzw. keine Marken im Namen verwenden. Andernfalls schlägt der Versuch fehl, den verbundenen Computer bei Azure zu registrieren. Eine Liste der reservierten Wörter finden Sie unter [Beheben von Fehlern bei reservierten Ressourcennamen](../../../azure-resource-manager/templates/error-reserved-resource-name.md).
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 

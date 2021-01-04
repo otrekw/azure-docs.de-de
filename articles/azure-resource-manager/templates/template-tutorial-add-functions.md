@@ -6,12 +6,12 @@ ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: 67c88e98d966a21163aafefcad8363086d5b3bf4
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 52b5bd0650b3a069adc3ef7f101c48a4674deaab
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96931043"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107106"
 ---
 # <a name="tutorial-add-template-functions-to-your-arm-template"></a>Tutorial: Hinzufügen von Vorlagenfunktionen zu Ihrer ARM-Vorlage
 
@@ -33,11 +33,11 @@ Der Standort des Speicherkontos ist auf **USA, Osten** hartcodiert. Möglicherwe
 
 ## <a name="use-function"></a>Verwenden einer Funktion
 
-Wenn Sie das vorherige Tutorial dieser Reihe durchgeführt haben, haben Sie bereits eine Funktion verwendet. Beim Hinzufügen von `"[parameters('storageName')]"` haben Sie die Funktion [parameters](template-functions-deployment.md#parameters) verwendet. Die Klammern geben an, dass es sich bei der Syntax innerhalb der Klammern um einen [Vorlagenausdruck](template-expressions.md) handelt. Resource Manager löst die Syntax auf, anstatt sie als Literalwert zu behandeln.
+Wenn Sie das vorherige Tutorial dieser Reihe durchgeführt haben, haben Sie bereits eine Funktion verwendet. Beim Hinzufügen von `"[parameters('storageName')]"` haben Sie die [parameters](template-functions-deployment.md#parameters)-Funktion verwendet. Die Klammern geben an, dass es sich bei der Syntax innerhalb der Klammern um einen [Vorlagenausdruck](template-expressions.md) handelt. Resource Manager löst die Syntax auf, anstatt sie als Literalwert zu behandeln.
 
 Funktionen rufen während der Bereitstellung dynamisch Werte ab und erhöhen dadurch die Flexibilität Ihrer Vorlage. In diesem Tutorial verwenden Sie eine Funktion, um den Standort der Ressourcengruppe abzurufen, die Sie für die Bereitstellung verwenden.
 
-Das folgende Beispiel zeigt die Änderungen, die Sie vornehmen, um einen Parameter namens **location** hinzuzufügen.  Der Standardwert des Parameters ruft die Funktion [resourceGroup](template-functions-resource.md#resourcegroup) auf. Diese Funktion gibt ein Objekt mit Informationen zu der für die Bereitstellung verwendeten Ressourcengruppe zurück. Eine der Eigenschaften im Objekt ist eine Standorteigenschaft. Wenn Sie den Standardwert verwenden, wird für das Speicherkonto der gleiche Standort verwendet wie für die Ressourcengruppe. Die Ressourcen in einer Ressourcengruppe müssen nicht den gleichen Standort haben. Sie können bei Bedarf auch einen anderen Standort angeben.
+Das folgende Beispiel zeigt die Änderungen, die Sie vornehmen, um einen Parameter namens `location` hinzuzufügen. Der Standardwert des Parameters ruft die Funktion [resourceGroup](template-functions-resource.md#resourcegroup) auf. Diese Funktion gibt ein Objekt mit Informationen zu der für die Bereitstellung verwendeten Ressourcengruppe zurück. Eine der Eigenschaften im Objekt ist eine Standorteigenschaft. Wenn Sie den Standardwert verwenden, wird für das Speicherkonto der gleiche Standort verwendet wie für die Ressourcengruppe. Die Ressourcen in einer Ressourcengruppe müssen nicht den gleichen Standort haben. Sie können bei Bedarf auch einen anderen Standort angeben.
 
 Kopieren Sie die gesamte Datei, und ersetzen Sie Ihre Vorlage durch den Inhalt der Datei.
 
@@ -47,7 +47,7 @@ Kopieren Sie die gesamte Datei, und ersetzen Sie Ihre Vorlage durch den Inhalt d
 
 In den vorherigen Tutorials haben Sie ein Speicherkonto in der Region „USA, Osten“ erstellt, Ihre Ressourcengruppe wurde aber in „USA, Mitte“ erstellt. In diesem Tutorial wird Ihr Speicherkonto in der gleichen Region erstellt wie die Ressourcengruppe. Verwenden Sie den Standardwert für den Standort, damit Sie diesen Parameterwert nicht angeben müssen. Da Sie ein Speicherkonto an einem anderen Standort erstellen, müssen Sie einen neuen Namen für das Speicherkonto angeben. Verwenden Sie beispielsweise anstelle von **store1** das Präfix **store2**.
 
-Falls Sie die Ressourcengruppe noch nicht erstellt haben, folgen Sie den Anweisungen unter [Erstellen einer Ressourcengruppe](template-tutorial-create-first-template.md#create-resource-group). Dieses Beispiel setzt voraus, dass Sie die Variable **templateFile** wie im [ersten Tutorial](template-tutorial-create-first-template.md#deploy-template) beschrieben auf den Pfad zur Vorlagendatei festgelegt haben.
+Falls Sie die Ressourcengruppe noch nicht erstellt haben, folgen Sie den Anweisungen unter [Erstellen einer Ressourcengruppe](template-tutorial-create-first-template.md#create-resource-group). Dieses Beispiel setzt voraus, dass Sie die Variable `templateFile` wie im [ersten Tutorial](template-tutorial-create-first-template.md#deploy-template) beschrieben auf den Pfad zur Vorlagendatei festgelegt haben.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -74,7 +74,7 @@ az deployment group create \
 ---
 
 > [!NOTE]
-> Wenn bei der Bereitstellung ein Fehler aufgetreten ist, verwenden Sie den Schalter **verbose**, um Informationen zu den erstellten Ressourcen abzurufen. Verwenden Sie den Schalter **debug**, um weitere Informationen zum Debuggen zu erhalten.
+> Wenn bei der Bereitstellung ein Fehler aufgetreten ist, verwenden Sie den Schalter `verbose`, um Informationen zu den erstellten Ressourcen abzurufen. Verwenden Sie den Schalter `debug`, um weitere Informationen zum Debuggen zu erhalten.
 
 ## <a name="verify-deployment"></a>Überprüfen der Bereitstellung
 

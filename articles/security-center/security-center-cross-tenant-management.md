@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/11/2019
 ms.author: memildin
-ms.openlocfilehash: 68338341d47b8fa15d0bd88ea23e951210105fc4
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: d76ecc55c2e156199b2db789721946fd1f36de27
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92340783"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96922902"
 ---
 # <a name="cross-tenant-management-in-security-center"></a>Mandantenübergreifende Verwaltung in Security Center
 
@@ -30,10 +30,8 @@ Mithilfe der mandantenübergreifenden Verwaltung können Sie den Sicherheitsstat
 
 ## <a name="set-up-cross-tenant-management"></a>Einrichten der mandantenübergreifenden Verwaltung
 
-Richten Sie die mandantenübergreifende Verwaltung ein, indem Sie den Zugriff auf Ressourcen verwalteter Mandanten mithilfe der [delegierten Azure-Ressourcenverwaltung](../lighthouse/concepts/azure-delegated-resource-management.md) an Ihren eigenen Mandanten delegieren.
+Die delegierte Azure-Ressourcenverwaltung ist eine der Hauptkomponenten von Azure Lighthouse. Richten Sie die mandantenübergreifende Verwaltung ein, indem Sie den Zugriff auf Ressourcen verwalteter Mandanten anhand der folgenden Anweisungen aus der Azure Lighthouse-Dokumentation an Ihren eigenen Mandanten delegieren: [Delegierte Azure-Ressourcenverwaltung](../lighthouse/concepts/azure-delegated-resource-management.md).
 
-> [!NOTE]
-> Die delegierte Azure-Ressourcenverwaltung ist eine der Hauptkomponenten von Azure Lighthouse.
 
 ## <a name="how-does-cross-tenant-management-work-in-security-center"></a>Funktionsweise der mandantenübergreifenden Verwaltung in Azure Security Center
 

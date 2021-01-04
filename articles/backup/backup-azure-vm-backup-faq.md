@@ -1,15 +1,14 @@
 ---
 title: 'Häufig gestellte Fragen (FAQ): Sichern virtueller Azure-Computer'
 description: In diesem Artikel finden Sie Antworten auf häufig gestellte Fragen zum Sichern von virtuellen Azure-Computern mit dem Azure Backup-Dienst.
-ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: 0f4f990654cc23fde7cf1ad2e37ba1ada76d94e3
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: ba2779305302e91f68cb2664c90f53fdf9a9ca55
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96324787"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008349"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Häufig gestellte Fragen – Sicherung von Azure-VMs
 
@@ -165,9 +164,18 @@ Für Vorgänge wie Geheimnis-/Schlüsselrollover ist dieser Schritt nicht erford
 
 Ja, dieser Zugriff ist möglich. Weitere Informationen finden Sie in [diesem Artikel](./backup-azure-arm-restore-vms.md#post-restore-steps).
 
+### <a name="can-i-cancel-an-in-progress-restore-job"></a>Kann ich einen aktuellen Wiederherstellungsauftrag abbrechen?
+Nein, Sie können den Wiederherstellungsauftrag, der gerade ausgeführt wird, nicht abbrechen.
+
 ### <a name="why-restore-operation-is-taking-long-time-to-complete"></a>Warum dauert der Wiederherstellungsvorgang so lange?
 
 Die gesamte Wiederherstellungszeit hängt von den Eingabe-/Ausgabevorgängen pro Sekunde (IOPS) und dem Durchsatz des Speicherkontos ab. Wenn das Zielspeicherkonto mit anderen anwendungsbezogenen Lese- und Schreibvorgängen beschäftigt ist, kann sich dies auf die gesamte Wiederherstellungszeit auswirken. Wählen Sie zum Verbessern des Wiederherstellungsvorgangs ein Speicherkonto ohne andere Anwendungsdaten aus.
+
+### <a name="how-do-we-handle-create-new-virtual-machine-restore-type-conflicts-with-governance-policies"></a>Wie handhaben wir Wiederherstellungskonflikte des Typs „Neuen virtuellen Computer erstellen“ mit Governancerichtlinien?
+
+Azure Backup verwendet „angefügte“ Datenträger aus Wiederherstellungspunkten und untersucht nicht Ihre Imageverweise oder -kataloge. Deshalb können Sie in der Richtlinie „storageProfile.osDisk.createOption as Attach“ aktivieren. Dann lautet die Skriptbedingung wie folgt:
+
+`if (storageProfile.osDisk.createOption == "Attach") then { exclude <Policy> }`
 
 ## <a name="manage-vm-backups"></a>Verwalten von VM-Sicherungen
 

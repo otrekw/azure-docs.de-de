@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 03/24/2020
 ms.author: mlearned
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: b6aa0a1bd14072e6ea4ea42004209f332f46a2d3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dec41f1b9de6920338360edeb18b9878a8c86432
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91856074"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588929"
 ---
 # <a name="create-a-cicd-pipeline-for-python-with-azure-devops-starter"></a>Erstellen einer CI/CD-Pipeline für Python mit Azure DevOps Starter
 
@@ -67,11 +67,11 @@ Mit DevOps Starter wird eine CI/CD-Pipeline in Azure Pipelines erstellt. Sie kö
 
 Von DevOps Starter wird ein Git-Repository in Azure Repos oder auf GitHub erstellt. Gehen Sie wie folgt vor, um das Repository anzuzeigen und Codeänderungen an Ihrer Anwendung vorzunehmen: 
 
-1. Klicken Sie auf der linken Seite des DevOps Starter-Dashboards auf den Link für Ihren Masterbranch. Über diesen Link wird die Ansicht des neu erstellten Git-Repositorys geöffnet.
+1. Klicken Sie auf der linken Seite des DevOps Starter-Dashboards auf den Link für Ihren Mainbranch. Über diesen Link wird die Ansicht des neu erstellten Git-Repositorys geöffnet.
 
-1. Wählen Sie oben rechts im Browser die Option **Klonen** aus, um die Repository-Klon-URL anzuzeigen. Sie können Ihr Git-Repository in Ihrer bevorzugten IDE klonen. Bei den nächsten Schritten können Sie den Webbrowser verwenden, um Codeänderungen direkt am Masterbranch vorzunehmen und für Codeänderungen einen Commit auszuführen.
+1. Wählen Sie oben rechts im Browser die Option **Klonen** aus, um die Repository-Klon-URL anzuzeigen. Sie können Ihr Git-Repository in Ihrer bevorzugten IDE klonen. Bei den nächsten Schritten können Sie den Webbrowser verwenden, um Codeänderungen direkt am Mainbranch vorzunehmen und für Codeänderungen einen Commit auszuführen.
 
-1. Navigieren Sie auf der linken Seite zur Datei**app/templates/app/index.html**.
+1. Navigieren Sie auf der linken Seite zur Datei **app/templates/app/index.html**.
 
 1. Wählen Sie **Bearbeiten** aus, und ändern Sie den Text an einigen Stellen. Ändern Sie beispielsweise einige Textstellen für eines der div-Tags.
 

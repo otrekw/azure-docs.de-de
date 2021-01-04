@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/26/2020
+ms.date: 12/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 67acf675c6636c5d1066d4fe25310d875fa7c064
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3f92bfe98a45117264c957481a75493de652abc9
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85201513"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97508100"
 ---
 # <a name="define-an-azure-active-directory-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definieren eines technischen Azure Active Directory-Profils in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C
 
@@ -64,13 +64,13 @@ Beim Lesen, Aktualisieren oder Löschen eines vorhandenen Benutzerkontos ist der
 
 Beim Erstellen eines neuen Benutzerkontos ist der Eingabeanspruch ein Schlüssel, der ein lokales oder Verbundkonto eindeutig identifiziert. Zum Beispiel bei einem lokalen Konto: **signInNames.emailAddress** oder **signInNames.userName**. Bei einem Verbundkonto: **alternativeSecurityId**.
 
-Das [InputClaimsTransformations](technicalprofiles.md#inputclaimstransformations)-Element kann eine Sammlung von Eingabeanspruchstransformations-Elementen enthalten, die zum Ändern des Eingabeanspruchs oder zum Generieren eines neuen Eingabeanspruchs verwendet werden.
+Das [InputClaimsTransformations](technicalprofiles.md#input-claims-transformations)-Element kann eine Sammlung von Eingabeanspruchstransformations-Elementen enthalten, die zum Ändern des Eingabeanspruchs oder zum Generieren eines neuen Eingabeanspruchs verwendet werden.
 
 ## <a name="outputclaims"></a>OutputClaims
 
 Das **OutputClaims**-Element enthält eine Liste von Ansprüchen, die vom technischen Azure AD-Profil zurückgegeben wurden. Sie müssen den Namen des Anspruchs, der in Ihrer Richtlinie definiert ist, dem Namen, der in Azure Active Directory definiert wurde, zuordnen. Sie können auch Ansprüche, die nicht von Azure Active Directory zurückgegeben wurden, einfügen, sofern Sie das `DefaultValue`-Attribut festlegen.
 
-Das [OutputClaimsTransformations](technicalprofiles.md#outputclaimstransformations)-Element darf eine Sammlung von **OutputClaimsTransformation**-Elementen, die zum Ändern der Ausgabeansprüche oder zum Generieren neuer verwendet werden, enthalten.
+Das [OutputClaimsTransformations](technicalprofiles.md#output-claims-transformations)-Element darf eine Sammlung von **OutputClaimsTransformation**-Elementen, die zum Ändern der Ausgabeansprüche oder zum Generieren neuer verwendet werden, enthalten.
 
 Das technische Profil **AAD-UserWriteUsingLogonEmail** erstellt z.B. ein lokales Konto und gibt die folgenden Ansprüche zurück:
 
@@ -251,9 +251,9 @@ Das folgende technische Profil löscht ein Social Media-Benutzerkonto mit **alte
 | Vorgang | Ja | Der Vorgang, der ausgeführt werden soll. Mögliche Werte: `Read`, `Write`, `DeleteClaims` oder `DeleteClaimsPrincipal`. |
 | RaiseErrorIfClaimsPrincipalDoesNotExist | Nein | Es wird ein Fehler ausgelöst, wenn das Benutzerobjekt im Verzeichnis nicht vorhanden ist. Mögliche Werte: `true` oder `false`. |
 | RaiseErrorIfClaimsPrincipalAlreadyExists | Nein | Es wird ein Fehler ausgelöst, wenn das Benutzerobjekt bereits vorhanden ist. Mögliche Werte: `true` oder `false`.|
-| ApplicationObjectId | Nein | Die Anwendungsobjekt-ID für vorhandene Attribute. Wert: ObjectId einer Anwendung. Weitere Informationen finden Sie unter [Verwenden von benutzerdefinierten Attributen in einer benutzerdefinierten Richtlinie für die Profilbearbeitung](custom-policy-custom-attributes.md). |
-| ClientId | Nein | Die Client-ID für den Zugriff auf den Mandanten als Drittanbieter. Weitere Informationen finden Sie unter [Verwenden von benutzerdefinierten Attributen in einer benutzerdefinierten Richtlinie für die Profilbearbeitung](custom-policy-custom-attributes.md). |
-| IncludeClaimResolvingInClaimsHandling  | Nein | Gibt bei Eingabe- und Ausgabeansprüchen an, ob die [Anspruchsauflösung](claim-resolver-overview.md) im technischen Profil enthalten ist. Mögliche Werte sind `true` oder `false` (Standardwert). Wenn Sie im technischen Profil eine Anspruchsauflösung verwenden möchten, legen Sie für diese Einstellung den Wert `true` fest. |
+| ApplicationObjectId | Nein | Die Anwendungsobjekt-ID für vorhandene Attribute. Wert: ObjectId einer Anwendung. Weitere Informationen finden Sie unter [Benutzerdefinierte Attribute](user-flow-custom-attributes.md?pivots=b2c-custom-policy). |
+| ClientId | Nein | Die Client-ID für den Zugriff auf den Mandanten als Drittanbieter. Weitere Informationen finden Sie unter [Verwenden von benutzerdefinierten Attributen in einer benutzerdefinierten Richtlinie für die Profilbearbeitung](user-flow-custom-attributes.md?pivots=b2c-custom-policy). |
+| IncludeClaimResolvingInClaimsHandling  | Nein | Gibt bei Eingabe- und Ausgabeansprüchen an, ob die [Anspruchsauflösung](claim-resolver-overview.md) im technischen Profil enthalten ist. Mögliche Werte sind `true` oder `false` (Standardwert). Wenn Sie im technischen Profil eine Anspruchsauflösung verwenden möchten, legen Sie für diese Einstellung den Wert `true` fest. |
 
 ### <a name="ui-elements"></a>Benutzeroberflächenelemente
  
@@ -269,7 +269,7 @@ Die folgenden Einstellungen können verwendet werden, um die Fehlermeldung zu ko
 
 Im folgenden Artikel finden Sie ein Beispiel für die Verwendung eines technischen Azure AD-Profils:
 
-- [Hinzufügen von Ansprüchen und Anpassen von Benutzereingaben mit benutzerdefinierten Richtlinien in Azure Active Directory B2C](custom-policy-configure-user-input.md)
+- [Hinzufügen von Ansprüchen und Anpassen von Benutzereingaben mit benutzerdefinierten Richtlinien in Azure Active Directory B2C](configure-user-input.md)
 
 
 

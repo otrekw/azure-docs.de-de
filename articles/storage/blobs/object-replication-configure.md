@@ -10,12 +10,12 @@ ms.date: 11/09/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: e3503a9eef5c11db35684ca61fb1ee39525a465d
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 9f2b0dccde0532646457a0841fc2798e103d8cc7
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427597"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347947"
 ---
 # <a name="configure-object-replication-for-block-blobs"></a>Konfigurieren der Objektreplikation für Blockblobs
 
@@ -314,7 +314,7 @@ $destPolicy = Get-AzStorageObjectReplicationPolicy -ResourceGroupName $rgname `
 $destPolicy | ConvertTo-Json -Depth 5 > c:\temp\json.txt
 ```
 
-Wenn Sie die JSON-Datei verwenden möchten, um die Replikationsrichtlinie für das Quellkonto mit PowerShell zu konfigurieren, müssen Sie die lokale Datei abrufen und aus JSON in ein Objekt konvertieren. Rufen Sie dann den Befehl [Set-AzStorageObjectReplicationPolicy](/powershell/module/az.storage/set-azstorageobjectreplicationpolicy) auf, um die Richtlinie für das Quellkonto zu konfigurieren, wie im folgenden Beispiel gezeigt. Denken Sie daran, die Werte in eckigen Klammern und den Dateipfad durch Ihre eigenen Werte zu ersetzen:
+Wenn Sie die JSON-Datei verwenden möchten, um die Replikationsrichtlinie für das Quellkonto mit PowerShell zu definieren, müssen Sie die lokale Datei abrufen und aus JSON in ein Objekt konvertieren. Rufen Sie dann den Befehl [Set-AzStorageObjectReplicationPolicy](/powershell/module/az.storage/set-azstorageobjectreplicationpolicy) auf, um die Richtlinie für das Quellkonto zu konfigurieren, wie im folgenden Beispiel gezeigt. Denken Sie daran, die Werte in eckigen Klammern und den Dateipfad durch Ihre eigenen Werte zu ersetzen:
 
 ```powershell
 $object = Get-Content -Path C:\temp\json.txt | ConvertFrom-Json

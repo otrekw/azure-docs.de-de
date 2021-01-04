@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/16/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 72d774b4ced6471ff7b355b2cb43c3c9127b5975
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: f0c9a01e43f12e8fbe597c85c22b79c0994305e3
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658518"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938867"
 ---
 # <a name="supported-postgresql-major-versions"></a>Unterstützte PostgreSQL-Hauptversionen
 
@@ -38,10 +38,10 @@ Das aktuelle Nebenrelease ist 9.5.20. Informationen zu Verbesserungen und Fehler
 ## <a name="managing-upgrades"></a>Verwalten von Upgrades
 Das PostgreSQL-Projekt gibt regelmäßig kleinere Releases aus, um gemeldete Fehler zu beheben. Azure Database for PostgreSQL führt automatische Patches der Server mit diesen Nebenreleases während der monatlichen Dienstbereitstellung durch. 
 
-Automatische direkte Upgrades für Hauptversionen werden nicht unterstützt. Zum Upgrade auf die nächste Hauptversion haben Sie folgende Möglichkeiten: 
-   * Informieren Sie sich über verschiedene Methoden der Durchführung von [Upgrades von Hauptversionen mithilfe von Sicherungen und Wiederherstellungen](./how-to-upgrade-using-dump-and-restore.md).
+Automatische direkte Upgrades für Hauptversionen werden nicht unterstützt. Zum Upgrade auf eine höhere Hauptversion haben Sie folgende Möglichkeiten: 
+   * Verwenden Sie eine der Methoden, die in [Upgrades von Hauptversionen mithilfe von Sicherungen und Wiederherstellungen](./how-to-upgrade-using-dump-and-restore.md) dokumentiert sind.
    * Verwenden Sie [pg_dump and pg_restore](./howto-migrate-using-dump-and-restore.md), um einen Datenbankserver auf einen Server zu verschieben, der mit der neuen Engineversion erstellt wurde.
-   * Alternativ können Sie mit dem [Azure Database Migration Service](..\dms\tutorial-azure-postgresql-to-azure-postgresql-online-portal.md) ein Upgrade von PostgreSQL 10 auf Version 11 durchführen.
+   * Verwenden Sie [Azure Database Migration Service](..\dms\tutorial-azure-postgresql-to-azure-postgresql-online-portal.md) für die Durchführung von Onlineupgrades.
 
 ### <a name="version-syntax"></a>Versionssyntax
 Vor PostgreSQL-Version 10 wurde ein _Hauptversionsupgrade_ von der [PostgreSQL-Versionsrichtlinie](https://www.postgresql.org/support/versioning/) als eine Erhöhung der ersten _oder_ zweiten Versionsziffer betrachtet. Beispielsweise wurde ein Upgrade von 9.5 auf 9.6 als _Hauptversionsupgrade_ angesehen. Ab Version 10 gilt nur eine Änderung der ersten Ziffer als Hauptversionsupgrade. So ist der Schritt von 10.0 auf 10.1 beispielsweise ein _Nebenreleaseupgrade_. Version 10 auf 11 ist ein _Hauptversionsupgrade_.

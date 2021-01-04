@@ -1,18 +1,18 @@
 ---
 title: Vorlagenfunktionen – Arrays
-description: Hier werden die Funktionen beschrieben, die in einer Azure Resource Manager-Vorlage zum Arbeiten mit Arrays verwendet werden können.
+description: Informationen zu den Funktionen, die in einer Azure Resource Manager-Vorlage (ARM-Vorlage) zum Arbeiten mit Arrays verwendet werden können.
 ms.topic: conceptual
 ms.date: 11/18/2020
-ms.openlocfilehash: 85f910f6143fd16f996a200172d0efd852897d8c
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 40a6815bb10ce9725405d68498b9a554706f3af8
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "96004618"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920554"
 ---
 # <a name="array-functions-for-arm-templates"></a>Arrayfunktionen für ARM-Vorlagen
 
-Resource Manager stellt mehrere Funktionen für das Arbeiten mit Arrays in Ihrer ARM-Vorlage (Azure Resource Manager) bereit.
+Resource Manager stellt mehrere Funktionen für das Arbeiten mit Arrays in Ihrer Azure Resource Manager-Vorlage (ARM-Vorlage) bereit:
 
 * [array](#array)
 * [concat](#concat)
@@ -889,7 +889,7 @@ Sie können diese Funktion mit einem Array verwenden, um bei der Erstellung von 
 
 ---
 
-Weitere Informationen zur Verwendung dieser Funktion mit einem Array finden Sie unter [Erstellen mehrerer Instanzen von Ressourcen im Azure-Ressourcen-Manager](copy-resources.md).
+Weitere Informationen zum Verwenden dieser Funktion mit einem Array finden Sie unter [Ressourceniteration in ARM-Vorlagen](copy-resources.md).
 
 ## <a name="max"></a>max
 
@@ -1381,4 +1381,4 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Eine Beschreibung der Abschnitte in einer Azure Resource Manager-Vorlage finden Sie unter [Grundlegendes zur Struktur und Syntax von ARM-Vorlagen](template-syntax.md).
+* Eine Beschreibung der Abschnitte in einer ARM-Vorlage finden Sie unter [Grundlegendes zur Struktur und Syntax von ARM-Vorlagen](template-syntax.md).

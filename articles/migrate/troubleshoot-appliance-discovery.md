@@ -6,12 +6,12 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: 26bb61e0c5a473a56c57391b53009419453956fd
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 90abe6bf680f6a186b970631dcd0a42d6d36bf94
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96753415"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97511585"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>Behandeln von Problemen bei der Azure Migrate-Appliance und der Ermittlung
 
@@ -41,6 +41,13 @@ Dies kann der Fall sein, wenn sich der Appliancecomputer hinter einem Proxy befi
 - Stellen Sie sicher, dass Sie die Anmeldeinformationen für die Autorisierung angeben, wenn der Proxy diese benötigt.
 - Wenn Sie einen URL-basierten Firewallproxy zum Steuern der ausgehenden Verbindungen verwenden, fügen Sie die [folgenden URLs](migrate-appliance.md#url-access) einer Zulassungsliste hinzu.
 - Wenn Sie für die Internetverbindung einen abfangenden Proxy verwenden, importieren Sie das Proxyzertifikat [mit diesen Schritten](./migrate-appliance.md) in die Appliance-VM.
+
+
+## <a name="clicking-on-login-button-opens-a-new-tab-with-no-device-code"></a>Beim Klicken auf die Schaltfläche „Anmelden“ wird eine neue Registerkarte ohne Gerätecode geöffnet.
+
+Wenn sich nach dem Klicken auf „Anmelden“ im Appliance-Konfigurationsmanager eine neue Registerkarte ohne Code öffnet, wechseln Sie zurück zur Registerkarte des Appliance-Konfigurationsmanagers und Sie finden den Gerätecode mit Fettformatierung unter der Schaltfläche „Anmelden“, wie im folgenden Screenshot gezeigt. Kopieren Sie den Code, und fügen Sie ihn auf der Registerkarte „Anmelden“ ein, um sich bei Azure zu authentifizieren.
+
+![Gerätecode](./media/troubleshoot-appliance-discovery/code.png)
 
 ## <a name="cant-sign-into-azure-from-the-appliance-web-app"></a>Anmeldung bei Azure über die Appliance-Web-App ist nicht möglich
 

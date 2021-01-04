@@ -3,25 +3,25 @@ title: 'Schnellstart: Verwenden von Azure Storage v11 für .NET zum Verwalten ei
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe der Azure Storage-Clientbibliothek für .NET eine Warteschlange erstellen und ihr Nachrichten hinzufügen. Im Anschluss erfahren Sie dann, wie Sie Nachrichten aus der Warteschlange lesen und verarbeiten.
 author: mhopkins-msft
 ms.author: mhopkins
+ms.reviewer: dineshm
 ms.date: 07/24/2020
+ms.topic: quickstart
 ms.service: storage
 ms.subservice: queues
-ms.topic: quickstart
-ms.reviewer: dineshm
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f7368025993c91490d808ef0ae5f5f66233fe666
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 23703dc507aa909aea4711289a4d7d5c5e6a170e
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93345617"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588198"
 ---
 # <a name="quickstart-use-the-azure-storage-sdk-v11-for-net-to-manage-a-queue"></a>Schnellstart: Verwenden des Azure Storage SDK v11 für .NET zum Verwalten einer Warteschlange
 
-In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe der Azure Storage-Clientbibliothek, Version 11 für .NET, eine Warteschlange erstellen und dieser Nachrichten hinzufügen. Im Anschluss erfahren Sie dann, wie Sie Nachrichten aus der Warteschlange lesen und verarbeiten.
+In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe der Azure Storage-Clientbibliothek v11 für .NET eine Warteschlange erstellen und ihr Nachrichten hinzufügen. Im Anschluss erfahren Sie dann, wie Sie Nachrichten aus der Warteschlange lesen und verarbeiten.
 
 > [!NOTE]
-> In dieser Schnellstartanleitung wird eine Legacy-Version der Azure Queue Storage-Clientbibliothek verwendet. Informationen zu den ersten Schritten mit der neuesten Version finden Sie unter [Schnellstart: Azure Queue Storage-Clientbibliothek v12 für .NET](storage-quickstart-queues-dotnet.md).
+> In dieser Schnellstartanleitung wird eine Legacy-Version der Azure Queue Storage-Clientbibliothek verwendet. Informationen zu den ersten Schritten mit der neuesten Version finden Sie unter [Schnellstart: Azure Queue Storage-Clientbibliothek v12 für .NET](storage-quickstart-queues-dotnet.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -56,7 +56,7 @@ Verwenden Sie [Git](https://git-scm.com/), um eine Kopie der Anwendung in Ihre E
 git clone https://github.com/Azure-Samples/storage-queues-dotnet-quickstart.git
 ```
 
-Mit diesem Befehl wird das Repository in Ihren lokalen Git-Ordner geklont. Suchen Sie zum Öffnen der Visual Studio-Projektmappe nach dem Ordner *storage-queues-dotnet-quickstart* , öffnen Sie ihn, und doppelklicken Sie auf *storage-queues-dotnet-quickstart.sln*.
+Mit diesem Befehl wird das Repository in Ihren lokalen Git-Ordner geklont. Suchen Sie zum Öffnen der Visual Studio-Projektmappe nach dem Ordner `storage-queues-dotnet-quickstart`, öffnen Sie ihn, und doppelklicken Sie auf `storage-queues-dotnet-quickstart.sln`.
 
 [!INCLUDE [storage-copy-connection-string-portal](../../../includes/storage-copy-connection-string-portal.md)]
 
@@ -98,7 +98,7 @@ Die Beispielanwendung erstellt eine Warteschlange und fügt ihr eine Nachricht h
 
 ### <a name="windows"></a>Windows
 
-Wenn Sie Visual Studio als Editor verwenden, können Sie **F5** drücken, um die Ausführung zu starten.
+Wenn Sie Visual Studio als Editor verwenden, können Sie `F5` drücken, um die Ausführung zu starten.
 
 Navigieren Sie andernfalls zu Ihrem Anwendungsverzeichnis, und führen Sie die Anwendung mit dem Befehl `dotnet run` aus.
 
@@ -148,7 +148,7 @@ Erkunden Sie als Nächstes den Beispielcode, um sich mit der Funktionsweise vert
 
 ### <a name="try-parsing-the-connection-string"></a>Versuchtes Analysieren der Verbindungszeichenfolge
 
-In dem Beispiel wird als Erstes überprüft, ob die Umgebungsvariable eine Verbindungszeichenfolge enthält, die analysiert werden kann, um ein Objekt vom Typ [CloudStorageAccount](/dotnet/api/microsoft.azure.cosmos.table.cloudstorageaccount) zu erstellen, das auf das Speicherkonto verweist. Um zu überprüfen, ob die Verbindungszeichenfolge gültig ist, wird in dem Beispiel die Methode [TryParse](/dotnet/api/microsoft.azure.cosmos.table.cloudstorageaccount.tryparse) verwendet. Wenn **TryParse** erfolgreich ist, wird die Variable *storageAccount* initialisiert, und **true** wird zurückgegeben.
+Im Beispiel wird zuerst überprüft, ob die Umgebungsvariable eine Verbindungszeichenfolge enthält, die analysiert werden kann, um ein Objekt vom Typ [`CloudStorageAccount`](/dotnet/api/microsoft.azure.cosmos.table.cloudstorageaccount) zu erstellen, das auf das Speicherkonto verweist. Zur Überprüfung, ob die Verbindungszeichenfolge gültig ist, wird im Beispiel die Methode [`TryParse`](/dotnet/api/microsoft.azure.cosmos.table.cloudstorageaccount.tryparse) verwendet. Wenn `TryParse` erfolgreich ist, wird die Variable `storageAccount` initialisiert, und `true` wird zurückgegeben.
 
 ```csharp
 // Retrieve the connection string for use with the application. The storage connection string is stored
@@ -204,7 +204,7 @@ Console.WriteLine("Message expiration time: {0}", message.ExpirationTime.ToStrin
 Console.WriteLine();
 ```
 
-Um eine Nachricht hinzuzufügen, die nicht abläuft, verwenden Sie `Timespan.FromSeconds(-1)` in Ihrem Aufruf von [AddMessageAsync](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.addmessageasync).
+Wenn Sie eine Nachricht, die nicht abläuft, hinzufügen möchten, verwenden Sie `Timespan.FromSeconds(-1)` in Ihrem Aufruf von [`AddMessageAsync`](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.addmessageasync).
 
 ```csharp
 await queue.AddMessageAsync(message, TimeSpan.FromSeconds(-1), null, null, null);
@@ -262,19 +262,19 @@ if (queue != null)
 
 ## <a name="resources-for-developing-net-applications-with-queues"></a>Ressourcen für die Entwicklung von .NET-Anwendungen mit Warteschlangen
 
-Für die .NET-Entwicklung mit Azure-Warteschlangen stehen folgende zusätzliche Ressourcen zur Verfügung:
+Für die .NET-Entwicklung mit Azure Queue Storage stehen diese zusätzlichen Ressourcen zur Verfügung:
 
 ### <a name="binaries-and-source-code"></a>Binärdateien und Quellcode
 
 - Laden Sie die NuGet-Pakete für die aktuelle Version der [Azure Storage-Clientbibliothek für .NET](/dotnet/api/overview/azure/storage) herunter.
-  - [Common](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/)
+  - [Common](https://www.nuget.org/packages/microsoft.azure.storage.common/)
   - [Warteschlangen](https://www.nuget.org/packages/Azure.Storage.Queues/)
 - Zeigen Sie den [Quellcode der .NET-Clientbibliothek](https://github.com/Azure/azure-storage-net) auf GitHub an.
 
-### <a name="client-library-reference-and-samples"></a>Clientbibliothek – Referenz und Beispiele
+### <a name="azure-storage-client-library-reference-and-samples"></a>Azure Storage-Clientbibliothek – Referenz und Beispiele
 
-- Weitere Informationen zur .NET-Clientbibliothek finden Sie in der [Referenz zur .NET-API](/dotnet/api/overview/azure/storage).
-- Erkunden Sie [Queue Storage-Beispiele](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=dotnet&term=queues), die unter Verwendung der .NET-Clientbibliothek geschrieben wurden.
+- Weitere Informationen zu den .NET-Clientbibliotheken finden Sie in der [Azure Storage-Clientbibliotheken für .NET-Referenz](/dotnet/api/overview/azure/storage).
+- Erkunden Sie [Queue Storage-Beispiele](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=dotnet&term=queues), die mithilfe der .NET-Clientbibliothek geschrieben wurden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
-ms.openlocfilehash: 5dbd49312b58dc656e2239e8a0a4acea614023de
-ms.sourcegitcommit: e5f9126c1b04ffe55a2e0eb04b043e2c9e895e48
+ms.openlocfilehash: d38c57a8c8504e1e03406f7cd8a0b61725cb0511
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96317135"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008083"
 ---
 # <a name="continuous-integration-and-delivery-for-azure-synapse-workspace"></a>Continuous Integration und Continuous Delivery für Azure Synapse-Arbeitsbereiche
 
@@ -107,7 +107,13 @@ Verwenden Sie die Erweiterung für die [Synapse-Arbeitsbereichsbereitstellung](h
 
      ![Erweiterung hinzufügen](media/add-extension-task.png)
 
-1.  Geben Sie in der Aufgabe die entsprechenden Informationen zum Git-Repository von **workspace_publish** an, und wählen Sie die Ressourcengruppe, die Region, den Namen und die Cloudumgebung für den Zielarbeitsbereich aus. Geben Sie bei Bedarf Parameter und Werte an.
+1.  Wählen Sie in der Aufgabe **...** neben dem Feld **Vorlage** aus, um die Vorlagendatei auszuwählen.
+
+1. Wählen Sie **…** neben dem Feld **Vorlagenparameter** aus, um die Parameterdatei auszuwählen.
+
+1. Wählen Sie die Verbindung, die Ressourcengruppe und den Namen des Zielarbeitsbereichs aus. 
+
+1. Wählen Sie **…** neben dem Feld **Vorlagenparameter überschreiben** aus, und geben Sie die gewünschten Parameterwerte für den Zielarbeitsbereich ein. 
 
     ![Synapse-Arbeitsbereichsbereitstellung](media/create-release-artifacts-deployment.png)
 

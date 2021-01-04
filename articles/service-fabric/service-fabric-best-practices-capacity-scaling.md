@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 96cd460ddfea863eb27a1087ff59f3b87acf65d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 41cfff11e44a3d052614aa3c81a4623f59bbbbf5
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90531303"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095286"
 ---
 # <a name="capacity-planning-and-scaling-for-azure-service-fabric"></a>Kapazitätsplanung und Skalierung für Azure Service Fabric
 
@@ -50,21 +50,11 @@ Die [vertikale Skalierung](./virtual-machine-scale-set-scale-node-type-scale-out
 > [!NOTE]
 > Der primäre Knotentyp, der zustandsbehaftete Service Fabric-Systemdienste hostet, muss mindestens die Dauerhaftigkeitsstufe „Silber“ aufweisen. Nachdem Sie die Dauerhaftigkeitsstufe „Silber“ aktiviert haben, werden Clustervorgänge wie das Aktualisieren, Hinzufügen oder Entfernen von Knoten langsamer durchgeführt, da im System die Optimierung der Datensicherheit Vorrang vor der Geschwindigkeit von Vorgängen hat.
 
-Die vertikale Skalierung einer VM-Skalierungsgruppe ist ein destruktiver Vorgang. Führen Sie stattdessen eine horizontale Skalierung Ihres Clusters aus, indem Sie eine neue Skalierungsgruppe mit der gewünschten SKU hinzufügen. Migrieren Sie dann Ihre Dienste zur gewünschten SKU, um die sichere vertikale Skalierung abzuschließen. Die Änderung der SKU einer VM-Skalierungsgruppenressource ist ein destruktiver Vorgang, da für die Hosts ein Reimaging durchgeführt wird, bei dem alle lokal persistenten Zustände entfernt werden.
+Die vertikale Skalierung einer VM-Skalierungsgruppe durch einfaches Ändern der SKU ist ein destruktiver Vorgang, weil für die Hosts ein Reimaging durchgeführt wird, bei dem alle lokal persistenten Zustände entfernt werden. Skalieren Sie den Cluster stattdessen horizontal durch Hinzufügen einer neuen Skalierungsgruppe mit der gewünschten SKU, und migrieren Sie die Dienste dann zur neuen Skalierungsgruppe, um den vertikalen Skalierungsvorgang sicher abzuschließen.
 
-Für Ihren Cluster werden [Knoteneigenschaften und Platzierungseinschränkungen](./service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints) in Service Fabric verwendet, um festzulegen, wo die Anwendungsdienste gehostet werden. Wenn Sie Ihren primären Knotentyp vertikal skalieren, deklarieren Sie identische Eigenschaftswerte für `"nodeTypeRef"`. Sie finden diese Werte in der Service Fabric-Erweiterung für VM-Skalierungsgruppen. 
-
-Der folgende Codeausschnitt einer Resource Manager-Vorlage zeigt die Eigenschaften, die Sie deklarieren. Er enthält den gleichen Wert für die neu bereitgestellten Skalierungsgruppen, zu denen Sie skalieren. Er wird nur als temporärer zustandsbehafteter Dienst für Ihren Cluster unterstützt.
-
-```json
-"settings": {
-   "nodeTypeRef": ["[parameters('primaryNodetypeName')]"]
-}
-```
+Für Ihren Cluster werden [Knoteneigenschaften und Platzierungseinschränkungen](./service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints) in Service Fabric verwendet, um festzulegen, wo die Anwendungsdienste gehostet werden. Wenn Sie einen primären Knotentyp vertikal skalieren, stellen Sie einen zweiten primären Knotentyp bereit und legen dann (`"isPrimary": false`) für den ursprünglichen primären Knotentyp fest. Anschließend deaktivieren Sie die Knoten und entfernen die Skalierungsgruppe und die zugehörigen Ressourcen. Weitere Informationen finden Sie unter [Hochskalieren des primären Knotentyps eines Service Fabric-Clusters](service-fabric-scale-up-primary-node-type.md).
 
 > [!NOTE]
-> Führen Sie den Cluster nicht länger als für den Abschluss eines erfolgreichen vertikalen Skalierungsvorgangs erforderlich mit mehreren Skalierungsgruppen aus, die den gleichen Eigenschaftswert für `nodeTypeRef` verwenden.
->
 > Überprüfen Sie Vorgänge immer in Testumgebungen, bevor Sie Änderungen in der Produktionsumgebung vornehmen. Standardmäßig weisen die Systemdienste des Service Fabric-Clusters nur für den primären Zielknotentyp eine Platzierungseinschränkung auf.
 
 Führen Sie nach dem Deklarieren der Knoteneigenschaften und Platzierungseinschränkungen die folgenden Schritte für jeweils eine VM-Instanz aus. Dies ermöglicht, dass die Systemdienste (und Ihre zustandsbehafteten Dienste) ordnungsgemäß auf der VM-Instanz heruntergefahren werden, die Sie entfernen, und gleichzeitig neue Replikate an anderer Stelle erstellt werden.

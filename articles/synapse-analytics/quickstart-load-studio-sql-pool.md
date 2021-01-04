@@ -6,15 +6,15 @@ author: kevinvngo
 ms.service: synapse-analytics
 ms.subservice: sql
 ms.topic: quickstart
-ms.date: 11/16/2020
+ms.date: 12/11/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 312c57c103bf733bc72c5de1d22ab3239d5b5e96
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 86ef610af605c657868824eefe2e6e706f6963ac
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96484664"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97360180"
 ---
 # <a name="quickstart-bulk-loading-with-synapse-sql"></a>Schnellstart: Massenladen mit Synapse SQL
 
@@ -39,26 +39,25 @@ Das Massenladen von Daten unter Verwendung von dedizierten SQL-Pools ist ganz ei
 
 ### <a name="steps"></a>Schritte
 
-1. Wählen Sie im Bereich für den Quellspeicherort das Speicherkonto und die Datei bzw. den Ordner aus, die bzw. den Sie als Quelle für den Ladevorgang verwenden möchten. Der Assistent versucht automatisch, Parquet-Dateien zu erkennen. Werden keine Dateien vom Typ „Parquet“ erkannt, wird standardmäßig das CSV-Format (durch Trennzeichen getrennter Text) verwendet.
+1. Wählen Sie im Bereich für den Quellspeicherort das Speicherkonto und die Datei bzw. den Ordner aus, die bzw. den Sie als Quelle für den Ladevorgang verwenden möchten. Der Assistent versucht automatisch, Parquet-Dateien und CSV-Dateien (durch Trennzeichen getrennte Textdateien) zu erkennen, einschließlich der Zuordnung der Quellfelder aus der Datei zu den entsprechenden SQL-Zieldatentypen. 
 
    ![Auswählen des Quellspeicherorts](./sql/media/bulk-load/bulk-load-source-location.png)
 
-2. Wählen Sie die Dateiformateinstellungen einschließlich des Speicherkontos aus, in das abgelehnte Zeilen geschrieben werden sollen (Fehlerdatei). Aktuell werden nur CSV- und Parquet-Dateien unterstützt.
+2. Wählen Sie die Dateiformateinstellungen einschließlich Ihrer Fehlereinstellungen für den Fall aus, dass es während des Massenladevorgangs abgelehnte Zeilen gibt. Sie können „Datenvorschau“ auswählen, um zu sehen, wie die Datei von der COPY-Anweisung analysiert wird. Dies ist hilfreich beim Konfigurieren der Dateiformateinstellungen. Wählen Sie nach jeder Änderung einer Dateiformateinstellung „Datenvorschau“ aus, um zu sehen, wie die Datei mit der aktualisierten Einstellung von der COPY-Anweisung analysiert wird:
 
-    ![Auswählen der Dateiformateinstellungen](./sql/media/bulk-load/bulk-load-file-format-settings.png)
-
-3. Sie können „Datenvorschau“ auswählen, um zu sehen, wie die Datei von der COPY-Anweisung analysiert wird, was beim Konfigurieren der Dateiformateinstellungen hilfreich ist. Wählen Sie nach jeder Änderung einer Dateiformateinstellung „Datenvorschau“ aus, um zu sehen, wie die Datei mit der aktualisierten Einstellung von der COPY-Anweisung analysiert wird: ![Anzeigen einer Datenvorschau](./sql/media/bulk-load/bulk-load-file-format-settings-preview-data.png) 
+   ![Anzeigen einer Datenvorschau](./sql/media/bulk-load/bulk-load-file-format-settings-preview-data.png) 
 
 > [!NOTE]  
 >
 > - Das Anzeigen einer Vorschau für die Daten mit mehrstelligen Feldabschlusszeichen wird im Massenladen-Assistenten nicht unterstützt. Der Massenladen-Assistent zeigt eine Vorschau der Daten in einer einzelnen Spalte an, wenn ein mehrstelliges Feldabschlusszeichen angegeben wird. 
-> - Die Angabe von mehrstelligen Zeilenabschlusszeichen wird in der Copy-Anweisung unterstützt. Im Massenladen-Assistenten wird dies jedoch nicht unterstützt, und es wird ein Fehler ausgelöst.
+> - Bei Auswahl von „Infer column names“ (Spaltennamen ableiten) analysiert der Assistent zum Massenladen die Spaltennamen aus der ersten Zeile, die durch das Feld „Erste Zeile“ angegeben wird. Der Assistent zum Massenladen erhöht automatisch den Wert von „FIRSTROW“ in der COPY-Anweisung um „1“, damit diese Kopfzeile ignoriert wird. 
+> - Die Angabe von mehrstelligen Zeilenabschlusszeichen wird in der COPY-Anweisung unterstützt. Im Assistenten zum Massenladen wird dies jedoch nicht unterstützt, wodurch ein Fehler ausgelöst wird.
 
-4. Wählen Sie den zum Laden verwendeten dedizierten SQL-Pool aus, und geben Sie an, ob es sich um einen Ladevorgang für eine bereits vorhandene oder für eine neue Tabelle handelt: ![Auswählen des Zielspeicherorts](./sql/media/bulk-load/bulk-load-target-location.png)
+3. Wählen Sie den zum Laden verwendeten dedizierten SQL-Pool aus, und geben Sie an, ob es sich um einen Ladevorgang für eine bereits vorhandene oder für eine neue Tabelle handelt: ![Auswählen des Zielspeicherorts](./sql/media/bulk-load/bulk-load-target-location.png)
+4. Wählen Sie die Option zum Konfigurieren der Spaltenzuordnung aus, und vergewissern Sie sich, dass die Spaltenzuordnung korrekt ist. Beachten Sie, dass Spaltennamen automatisch erkannt werden, wenn „Infer column names“ (Spaltennamen ableiten) aktiviert wurde. Bei neuen Tabellen muss die Spaltenzuordnung unbedingt konfiguriert werden, um die Datentypen der Zielspalten zu aktualisieren:
 
-5. Wählen Sie die Option zum Konfigurieren der Spaltenzuordnung aus, und vergewissern Sie sich, dass die Spaltenzuordnung korrekt ist. Beachten Sie, dass Spaltennamen automatisch erkannt werden, wenn „Infer column names“ (Spaltennamen ableiten) aktiviert wurde. Bei neuen Tabellen muss die Spaltenzuordnung unbedingt konfiguriert werden, um die Datentypen der Zielspalten zu aktualisieren: ![Konfigurieren der Spaltenzuordnung](./sql/media/bulk-load/bulk-load-target-location-column-mapping.png)
-
-6. Wählen Sie die Option zum Öffnen des Skripts aus. Daraufhin wird ein T-SQL-Skript mit der COPY-Anweisung generiert, um Daten aus Ihrem Data Lake zu laden: ![Öffnen des SQL-Skripts](./sql/media/bulk-load/bulk-load-target-final-script.png)
+   ![Konfigurieren der Spaltenzuordnung](./sql/media/bulk-load/bulk-load-target-location-column-mapping.png)
+5. Wählen Sie die Option zum Öffnen des Skripts aus. Daraufhin wird ein T-SQL-Skript mit der COPY-Anweisung generiert, um Daten aus Ihrem Data Lake zu laden: ![Öffnen des SQL-Skripts](./sql/media/bulk-load/bulk-load-target-final-script.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

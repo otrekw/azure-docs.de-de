@@ -11,13 +11,13 @@ ms.topic: troubleshooting
 ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: japere
-ms.custom: contperfq2
-ms.openlocfilehash: 8cbc683f06b809ec4d9c63a61d73a0c731a92cd7
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: 59d733bfe5580e64d531eeac1db443982a308517
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94651617"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033628"
 ---
 # <a name="troubleshoot-problems-signing-in-to-an-application-from-azure-ad-my-apps"></a>Beheben von Anmeldeproblemen bei einer Anwendung aus „Meine Apps“ in Azure AD
 
@@ -61,6 +61,7 @@ Der Zugriff auf „Meine Apps“ kann aufgrund eines Problems mit dem Benutzerko
 -   [Überprüfen des Multi-Factor Authentication-Status eines Benutzers](#check-a-users-multi-factor-authentication-status)
 -   [Überprüfen der Kontaktinformationen für die Authentifizierung eines Benutzers](#check-a-users-authentication-contact-info)
 -   [Überprüfen der Gruppenmitgliedschaften eines Benutzers](#check-a-users-group-memberships)
+-   [Überprüfen, ob ein Benutzer über mehr als 999 App-Rollenzuweisungen verfügt](#check-if-a-user-has-more-than-999-app-role-assignments)
 -   [Überprüfen der zugewiesenen Lizenzen eines Benutzers](#check-a-users-assigned-licenses)
 -   [Zuweisen einer Lizenz zu einem Benutzer](#assign-a-user-a-license)
 
@@ -138,6 +139,16 @@ Um die Gruppenmitgliedschaften eines Benutzers zu überprüfen, führen Sie die 
 5.  Wählen Sie **Alle Benutzer**.
 6.  **Suchen** Sie nach dem Benutzer, an dem Sie interessiert sind, und **wählen Sie die entsprechende Zeile aus**.
 7.  Wählen Sie **Gruppen** aus, um zu ermitteln, in welchen Gruppen der Benutzer Mitglied ist.
+
+### <a name="check-if-a-user-has-more-than-999-app-role-assignments"></a>Überprüfen, ob ein Benutzer über mehr als 999 App-Rollenzuweisungen verfügt
+Wenn ein Benutzer über mehr als 999 App-Rollenzuweisungen verfügt, werden ihm möglicherweise unter „Meine Apps“ nicht alle Apps angezeigt.
+
+Dies liegt daran, dass im Portal „Meine Apps“ derzeit nur maximal 999 App-Rollenzuweisungen gelesen werden, um die dem Benutzer zugewiesenen Apps zu ermitteln. Sind einem Benutzer mehr als 999 Apps zugewiesen, kann nicht gesteuert werden, welche dieser Apps im Portal „Meine Apps“ angezeigt werden.
+
+Gehen Sie wie folgt vor, um die Anzahl der einem Benutzer erteilten App-Rollenzuweisungen zu überprüfen:
+1. Installieren Sie das PowerShell-Modul von [**Microsoft Graph**](https://github.com/microsoftgraph/msgraph-sdk-powershell).
+2. Führen Sie `Connect-MgGraph -Scopes "Directory.Read.All"` aus, und authentifizieren Sie sich als **globaler Administrator**.
+3. Führen Sie `$m = Get-MgUserAppRoleAssignment -UserId "<userId>" | Measure; $m.Count` aus, um die Anzahl der App-Rollenzuweisungen zu ermitteln, die dem Benutzer derzeit erteilt sind.
 
 ### <a name="check-a-users-assigned-licenses"></a>Überprüfen der zugewiesenen Lizenzen eines Benutzers
 Um die einem Benutzer zugewiesenen Lizenzen zu überprüfen, führen Sie die folgenden Schritte aus:

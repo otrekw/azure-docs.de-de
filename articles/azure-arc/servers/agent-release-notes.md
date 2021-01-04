@@ -2,13 +2,13 @@
 title: Neuerungen im Agent für Azure Arc-fähige Server
 description: Dieser Artikel enthält Versionshinweise für den Agent für Azure Arc-fähige Server. Für viele der zusammengefassten Issues werden Links zu weiteren Informationen bereitgestellt.
 ms.topic: conceptual
-ms.date: 11/10/2020
-ms.openlocfilehash: 5322a92bfc67d9f80c2271a3ef9b5626455e9ad7
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.date: 12/14/2020
+ms.openlocfilehash: 3a01113d0d6416fb050f5c66191d5c420b7ac137
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445284"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505646"
 ---
 # <a name="whats-new-with-azure-arc-enabled-servers-agent"></a>Neuerungen im Agent für Azure Arc-fähige Server
 
@@ -17,6 +17,16 @@ Der Connected Machine-Agent für Azure Arc-fähige Server wird ständig verbesse
 - Neueste Versionen
 - Bekannte Probleme
 - Behebung von Programmfehlern
+
+## <a name="december-2020"></a>Dezember 2020
+
+### <a name="new-feature"></a>Neues Feature
+
+Hinzugefügt: Unterstützung für Windows Server 2008 R2
+
+### <a name="fixed"></a>Fest
+
+Ein Problem wurde behoben, das verhindert, dass die benutzerdefinierte Skripterweiterung für Linux erfolgreich installiert wird.
 
 ## <a name="november-2020"></a>November 2020
 
@@ -71,7 +81,7 @@ Version: 0.11
 
 ### <a name="known-issues"></a>Bekannte Probleme
 
-Wenn Sie eine ältere Version des Linux-Agents verwenden und diesen für die Verwendung eines Proxyservers konfiguriert haben, müssen Sie die Proxyservereinstellung nach dem Upgrade neu konfigurieren. Führen Sie hierzu `sudo azcmagent_proxy add http://proxyserver.local:83` aus.
+Wenn Sie eine ältere Version des Linux-Agents verwenden und dieser für die Verwendung eines Proxyservers konfiguriert ist, müssen Sie die Proxyservereinstellung nach dem Upgrade neu konfigurieren. Führen Sie hierzu `sudo azcmagent_proxy add http://proxyserver.local:83` aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

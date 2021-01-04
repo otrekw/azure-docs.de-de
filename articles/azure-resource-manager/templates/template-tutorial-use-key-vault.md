@@ -6,12 +6,12 @@ ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: 75eb977559573b72883de3ddbc27391c7e299a6f
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: ae2361d12dfe18cadd80dd3b84405b2b17751e59
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96929315"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97584084"
 ---
 # <a name="tutorial-integrate-azure-key-vault-in-your-arm-template-deployment"></a>Tutorial: Integrieren von Azure Key Vault in Ihre Bereitstellung einer ARM-Vorlage
 
@@ -43,6 +43,7 @@ Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie F
     ```console
     openssl rand -base64 32
     ```
+
     Vergewissern Sie sich, dass das generierte Kennwort die Kennwortanforderungen für den virtuellen Computer erfüllt. Jeder Azure-Dienst hat bestimmte Kennwortanforderungen. Informationen zu den Kennwortanforderungen für virtuelle Computer finden Sie unter [Welche Anforderungen an das Kennwort gelten beim Erstellen eines virtuellen Computers?](../../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).
 
 ## <a name="prepare-a-key-vault"></a>Vorbereiten eines Schlüsseltresors
@@ -53,7 +54,7 @@ In diesem Abschnitt erstellen Sie einen Schlüsseltresor und fügen ihm ein Gehe
 * Hinzufügen eines Geheimnisses zum Schlüsseltresor. Das Geheimnis enthält das Administratorkennwort für den virtuellen Computer.
 
 > [!NOTE]
-> Wenn Sie als Benutzer, der die Vorlage für virtuelle Maschinen bereitstellt, nicht Besitzer oder ein Mitwirkender für den Schlüsseltresor sind, muss der Besitzer oder ein Mitwirkender Ihnen Zugriff auf die Berechtigung *Microsoft.KeyVault/vaults/deploy/action* für den Schlüsseltresor gewähren. Weitere Informationen finden Sie unter [Verwenden von Azure Key Vault zum Übergeben eines sicheren Parameterwerts während der Bereitstellung](./key-vault-parameter.md).
+> Wenn Sie als Benutzer, der die Vorlage für virtuelle Maschinen bereitstellt, nicht Besitzer oder ein Mitwirkender für den Schlüsseltresor sind, muss der Besitzer oder ein Mitwirkender Ihnen Zugriff auf die Berechtigung `Microsoft.KeyVault/vaults/deploy/action` für den Schlüsseltresor gewähren. Weitere Informationen finden Sie unter [Verwenden von Azure Key Vault zum Übergeben eines sicheren Parameterwerts während der Bereitstellung](./key-vault-parameter.md).
 
 Wählen Sie zum Ausführen des folgenden Azure PowerShell-Skripts die Option **Testen Sie es.** aus, um Azure Cloud Shell zu öffnen. Klicken Sie zum Einfügen des Skripts mit der rechten Maustaste auf den Shellbereich, und wählen Sie **Einfügen** aus.
 
@@ -79,7 +80,7 @@ Write-Host "Press [ENTER] to continue ..."
 > * Der Standardname für das Geheimnis lautet **vmAdminPassword**. Er ist in der Vorlage hartcodiert.
 > * Damit die Vorlage das Geheimnis abrufen kann, müssen Sie die Zugriffsrichtlinie **Zugriff auf Azure Resource Manager für Vorlagenbereitstellung aktivieren** für den Schlüsseltresor aktivieren. Diese Richtlinie ist in der Vorlage aktiviert. Weitere Informationen zu dieser Zugriffsrichtlinie finden Sie unter [Bereitstellen von Schlüsseltresoren und Geheimnissen](./key-vault-parameter.md#deploy-key-vaults-and-secrets).
 
-Die Vorlage enthält einen Ausgabewert mit dem Namen *keyVaultId*. Sie verwenden diese ID zusammen mit dem Geheimnisnamen, um den Geheimniswert später in diesem Tutorial abzurufen. Die Ressourcen-ID hat das folgende Format:
+Die Vorlage enthält einen Ausgabewert mit dem Namen `keyVaultId`. Sie verwenden diese ID zusammen mit dem Geheimnisnamen, um den Geheimniswert später in diesem Tutorial abzurufen. Die Ressourcen-ID hat das folgende Format:
 
 ```json
 /subscriptions/<SubscriptionID>/resourceGroups/mykeyvaultdeploymentrg/providers/Microsoft.KeyVault/vaults/<KeyVaultName>
@@ -87,7 +88,7 @@ Die Vorlage enthält einen Ausgabewert mit dem Namen *keyVaultId*. Sie verwenden
 
 Beim Kopieren und Einfügen der ID wird diese möglicherweise auf mehrere Zeilen aufgeteilt. Führen Sie die Zeilen zusammen, und löschen Sie die zusätzlichen Leerzeichen.
 
-Führen Sie zum Überprüfen der Bereitstellung den folgenden PowerShell-Befehl im gleichen Shellbereich aus, um das Geheimnis als Klartext abzurufen. Der Befehl funktioniert nur in der gleichen Shellsitzung, da er die Variable *$keyVaultName* verwendet, die im vorherigen PowerShell-Skript definiert wurde.
+Führen Sie zum Überprüfen der Bereitstellung den folgenden PowerShell-Befehl im gleichen Shellbereich aus, um das Geheimnis als Klartext abzurufen. Der Befehl funktioniert nur in der gleichen Shellsitzung, da er die Variable `$keyVaultName` verwendet, die im vorherigen PowerShell-Skript definiert wurde.
 
 ```azurepowershell
 (Get-AzKeyVaultSecret -vaultName $keyVaultName  -name "vmAdminPassword").SecretValueText
@@ -146,14 +147,14 @@ Bei der Methode mit statischer ID muss die Vorlagendatei nicht geändert werden.
     ```
 
     > [!IMPORTANT]
-    > Ersetzen Sie den Wert für **id** durch die Ressourcen-ID des zuvor erstellten Schlüsseltresors. „secretName“ wird als **vmAdminPassword** hartcodiert.  Informationen finden Sie unter [Vorbereiten eines Schlüsseltresors](#prepare-a-key-vault).
+    > Ersetzen Sie den Wert für `id` durch die Ressourcen-ID des zuvor erstellten Schlüsseltresors. `secretName` wird als **vmAdminPassword** hartcodiert.  Informationen finden Sie unter [Vorbereiten eines Schlüsseltresors](#prepare-a-key-vault).
 
     ![Integrieren von Key Vault und Resource Manager-Vorlage: VM-Bereitstellung – Parameterdatei](./media/template-tutorial-use-key-vault/resource-manager-tutorial-create-vm-parameters-file.png)
 
 1. Ändern Sie die folgenden Werte:
 
-    * **adminUsername:** Der Name des Administratorkontos für den virtuellen Computer.
-    * **dnsLabelPrefix:** Der Name des dnsLabelPrefix-Werts.
+    * `adminUsername`: Der Name des Administratorkontos für den virtuellen Computer.
+    * `dnsLabelPrefix`: Benennen Sie den `dnsLabelPrefix`-Wert.
 
     Beispiele für Namen finden Sie in der vorherigen Abbildung.
 
@@ -167,7 +168,7 @@ Bei der Methode mit statischer ID muss die Vorlagendatei nicht geändert werden.
 
     ![Azure-Portal, Cloud Shell, Datei hochladen](./media/template-tutorial-use-template-reference/azure-portal-cloud-shell-upload-file.png)
 
-1. Wählen Sie **Dateien hochladen/herunterladen** und dann **Hochladen** aus. Laden Sie *azuredeploy.json* und *azuredeploy.parameters.json* in Cloud Shell hoch. Nach dem Hochladen der Datei können Sie den Befehl **ls** und den Befehl **cat** verwenden, um zu überprüfen, ob die Datei hochgeladen wurde.
+1. Wählen Sie **Dateien hochladen/herunterladen** und dann **Hochladen** aus. Laden Sie *azuredeploy.json* und *azuredeploy.parameters.json* in Cloud Shell hoch. Nach dem Hochladen der Datei können Sie den Befehl `ls` und den Befehl `cat` verwenden, um zu überprüfen, ob die Datei hochgeladen wurde.
 
 1. Führen Sie das folgende PowerShell-Skript aus, um die Vorlage bereitzustellen.
 
@@ -193,7 +194,7 @@ Testen Sie nach erfolgreicher Bereitstellung des virtuellen Computers die Anmeld
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com).
 
 1. Wählen Sie **Ressourcengruppen** >  **\<*YourResourceGroupName*>**  > **simpleWinVM** aus.
-1. Wählen Sie oben die Option **Connectors** aus.
+1. Wählen Sie oben die Option **Verbinden** aus.
 1. Wählen Sie **RDP-Datei herunterladen** aus, und melden Sie sich gemäß den Anweisungen unter Verwendung des im Schlüsseltresor gespeicherten Kennworts bei dem virtuellen Computer an.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen

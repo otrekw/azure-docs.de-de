@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 10/25/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: a427c77ec23bb933f96d8aec54ca33169aee84d4
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 671ca73cfa898be532521599d1211d2a8081eb4b
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576025"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563261"
 ---
 # <a name="azure-synapse-analytics-frequently-asked-questions"></a>Azure Synapse Analytics: Häufig gestellte Fragen
 
@@ -59,7 +59,7 @@ A: Der Ausgangspunkt ist, dass von Azure Synapse die integrierte Kostenanalyse u
 
 A: Für Synapse-Arbeitsbereiche werden benutzerdefinierte Ordner unterstützt.
 
-### <a name="q-can-i-link-more-than-one-power-bi-workspaces-to-a-single-azure-synapse-workspace"></a>F: Kann ich mehr als einen Power BI-Arbeitsbereich mit einem einzelnen Azure Synapse-Arbeitsbereich verknüpfen?
+### <a name="q-can-i-link-more-than-one-power-bi-workspace-to-a-single-azure-synapse-workspace"></a>F: Kann ich mehrere Power BI-Arbeitsbereiche mit einem einzelnen Azure Synapse-Arbeitsbereich verknüpfen?
     
 A: Derzeit können Sie mit einem Azure Synapse-Arbeitsbereich nur einen Power BI-Arbeitsbereich verknüpfen. 
 
@@ -69,7 +69,7 @@ A: Synapse Link für Apache Spark befindet sich in der Phase „Allgemeine Verf�
 
 ### <a name="q-does-azure-synapse-workspace-support-cicd"></a>F: Wird für den Azure Synapse-Arbeitsbereich CI/CD unterstützt? 
 
-A: Ja! Alle Pipelineartefakte, Notebooks, SQL-Skripts und Spark-Auftragsdefinitionen befinden sich in Git. Alle Pooldefinitionen werden als ARM-Vorlagen in Git gespeichert. Dedizierte SQL-Poolobjekte (Schemas, Tabellen, Sichten usw.) werden über Datenbankprojekte mit CI/CD-Unterstützung verwaltet.
+A: Ja! Alle Pipelineartefakte, Notebooks, SQL-Skripts und Spark-Auftragsdefinitionen werden sich in Git befinden. Alle Pooldefinitionen werden in Git als ARM-Vorlagen gespeichert. Dedizierte SQL-Poolobjekte (Schemas, Tabellen, Sichten usw.) werden über Datenbankprojekte mit CI/CD-Unterstützung verwaltet.
 
 ## <a name="pipelines"></a>Pipelines
 
@@ -91,11 +91,11 @@ A: Aktuell müssen Sie Ihre Azure Data Factory-Pipelines und die zugehörigen 
 
 A: Apache Spark für Synapse ist mit Apache Spark identisch, verfügt aber zusätzlich über Unterstützung für Integrationen mit anderen Diensten (AAD, Azure ML usw.) und zusätzliche Bibliotheken (mssparkutils, Hummingbird) sowie vorab optimierte Leistungskonfigurationen.
 
-Alle Workloads, die derzeit unter Apache Spark ausgeführt werden, sind ohne Änderungen auch unter MSFT Spark ausführbar. 
+Alle Workloads, die zurzeit unter Apache Spark ausgeführt werden, werden ohne Änderungen auch unter Apache Spark für Azure Synapse ausgeführt. 
 
 ### <a name="q-what-versions-of-spark-are-available"></a>F: Welche Versionen von Spark sind verfügbar?
 
-A: Azure Synapse Apache Spark verfügt über umfassende Unterstützung von Spark 2.4. Eine vollständige Liste mit den Kernkomponenten und derzeit unterstützten Versionen finden Sie unter [Versionsunterstützung für Apache Spark](./spark/apache-spark-version-support.md).
+A: Azure Synapse Apache Spark verfügt über umfassende Unterstützung von Spark 2.4. Eine vollständige Liste mit den Kernkomponenten und den zurzeit unterstützten Versionen finden Sie unter [Versionsunterstützung für Apache Spark](./spark/apache-spark-version-support.md).
 
 ### <a name="q-is-there-an-equivalent-of-dbutils-in-azure-synapse-spark"></a>F: Gibt es in Azure Synapse Spark eine Option, die DBUtils entspricht?
 
@@ -121,7 +121,7 @@ Die einfachste Lösungsmöglichkeit ist das Aufbereiten der Daten mit Spark und 
  
 Bei diesem Szenario sollte für jeden Entwickler ein serverloser Spark-Pool vorhanden sein, für den die Nutzung einer geringen Zahl von Spark-Ressourcen festgelegt ist. Da für serverlose Spark-Pools erst dann Kosten anfallen, wenn sie aktiv genutzt werden, kann bei mehreren vorhandenen Entwicklern eine Kostenreduzierung erzielt werden. Von den Pools werden Metadaten (Spark-Tabellen) gemeinsam genutzt, damit die Zusammenarbeit leicht möglich ist.
 
-### <a name="q-how-do-i-include-manage-and-install-libraries"></a>F: Wie kann ich Bibliotheken einfügen, verwalten und installieren? 
+### <a name="q-how-do-i-include-manage-and-install-libraries"></a>F: Wie kann ich Bibliotheken einfügen, verwalten und installieren?
 
 A:  Sie können externe Pakete mit der Datei „requirements.txt“ über den Synapse-Arbeitsbereich oder das Azure-Portal installieren, während Sie den Spark-Pool erstellen. Weitere Informationen finden Sie unter [Verwalten von Bibliotheken für Apache Spark in Azure Synapse Analytics](./spark/apache-spark-azure-portal-add-libraries.md).
 
@@ -140,7 +140,7 @@ A: Eine „Verschiebung“ oder „Migration“ ist nicht möglich. Sie können 
 A: Standardmäßig werden alle neuen dedizierten SQL-Pools in einem Arbeitsbereich bereitgestellt. Bei Bedarf können Sie aber trotzdem noch einen dedizierten SQL-Pool (vormals SQL DW) basierend auf dem Formfaktor „Eigenständig“ erstellen. 
 
 
-### <a name="q-what-are-the-functional-differences-between-dedicated-sql-pools-and-serverless-sql-pool"></a>F: Welche Funktionsunterschiede gibt es zwischen dedizierten SQL-Pools und serverlosen SQL-Pools? 
+### <a name="q-what-are-the-functional-differences-between-dedicated-sql-pools-and-serverless-sql-pools"></a>F: Welche Funktionsunterschiede gibt es zwischen dedizierten SQL-Pools und serverlosen SQL-Pools?
 
 A: Eine vollständige Liste mit den Unterschieden finden Sie unter [T-SQL-Funktionsunterschiede in Synapse SQL](./sql/overview-features.md).
 

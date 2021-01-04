@@ -5,22 +5,22 @@ description: In dieser Schnellstartanleitung erfahren Sie, wie Sie einen Lastena
 services: load-balancer
 documentationcenter: na
 author: asudbring
-manager: twooley
+manager: KumudD
 Customer intent: I want to create a load balancer by using an Azure Resource Manager template so that I can load balance internet traffic to VMs.
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/26/2020
+ms.date: 12/09/2020
 ms.author: allensu
 ms.custom: mvc,subject-armqs
-ms.openlocfilehash: 66d702846bac5825239e891ce47f8cca5bb857f0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 378ab88f4dee0c725e89f77cc6b2ffe049ff877a
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90984411"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008434"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-by-using-an-arm-template"></a>Schnellstart: Erstellen eines öffentlichen Lastenausgleichs für den Lastenausgleich virtueller Computer mithilfe einer ARM-Vorlage
 
@@ -51,7 +51,8 @@ Die Lastenausgleichs-SKU und die SKU für öffentliche IP-Adressen müssen über
 In der Vorlage wurden mehrere Azure-Ressourcen definiert:
 
 - [**Microsoft.Network/loadBalancers**](/azure/templates/microsoft.network/loadbalancers)
-- [**Microsoft.Network/publicIPAddresses**](/azure/templates/microsoft.network/publicipaddresses): Für den Lastenausgleich und jeweils die drei virtuellen Computer.
+- [**Microsoft.Network/publicIPAddresses**](/azure/templates/microsoft.network/publicipaddresses): Für den Lastenausgleich, den Bastionhost und jeweils die drei virtuellen Computer.
+- [**Microsoft.Network/bastionHosts**](/azure/templates/microsoft.network/bastionhosts)
 - [**Microsoft.Network/networkSecurityGroups**](/azure/templates/microsoft.network/networksecuritygroups)
 - [**Microsoft.Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks)
 - [**Microsoft.Compute/virutalMachines**](/azure/templates/microsoft.compute/virtualmachines) (3).
@@ -131,6 +132,8 @@ Wählen Sie im Azure-Portal die Ressourcengruppe aus, die den Lastenausgleich en
 
 In dieser Schnellstartanleitung führen Sie die folgenden Schritte aus:
 
+* Erstellen eines virtuellen Netzwerks für Lastenausgleich und virtuelle Computer.
+* Erstellen eines Azure-Bastionhosts für die Verwaltung.
 * Erstellen eines Lastenausgleichs im Tarif „Standard“ und Anfügen von virtuellen Computern an diesen
 * Konfigurieren der Datenverkehrsregel für den Lastenausgleich sowie des Integritätstests
 * Testen des Lastenausgleichs

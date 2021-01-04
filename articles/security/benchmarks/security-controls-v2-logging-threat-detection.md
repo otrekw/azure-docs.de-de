@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 99e7a8fcb34c963cfab366f1913508a7ff3f4a51
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: c5a855ffe06a17d8ec1bfe249dbe7bc41d1166af
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94408701"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97369071"
 ---
 # <a name="security-control-v2-logging-and-threat-detection"></a>Sicherheitskontrolle V2: Protokollierung und Bedrohungserkennung
 
@@ -20,7 +20,7 @@ Die Protokollierung und Bedrohungserkennung umfasst alle Steuerelemente zum Erke
 
 ## <a name="lt-1-enable-threat-detection-for-azure-resources"></a>LT-1: Aktivieren der Bedrohungserkennung für Azure-Ressourcen
 
-| Azure-ID | ID(s) von CIS-Steuerelementen v7.1 | ID(s) von NIST SP800-53 r4 |
+| Azure-ID | ID(s) von CIS-Steuerelementen v7.1 | ID(s) von NIST SP 800-53 r4 |
 |--|--|--|--|
 | LT-1 | 6.7 | AU-3, AU-6, AU-12, SI-4 |
 
@@ -38,9 +38,9 @@ Zusätzlich können Sie mithilfe von Azure Sentinel Analyseregeln erstellen, anh
 
 - [Cyber Threat Intelligence mit Azure Sentinel](/azure/architecture/example-scenario/data/sentinel-threat-intelligence)
 
-**Verantwortlichkeit** : Kunde
+**Verantwortlichkeit**: Kunde
 
-**Sicherheitsverantwortliche beim Kunden** ( [weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Sicherheitsverantwortliche beim Kunden** ([weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Infrastruktur- und Endpunktsicherheit](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
@@ -54,7 +54,7 @@ Zusätzlich können Sie mithilfe von Azure Sentinel Analyseregeln erstellen, anh
 
 ## <a name="lt-2-enable-threat-detection-for-azure-identity-and-access-management"></a>LT-2: Aktivieren der Bedrohungserkennung für die Identitäts- und Zugriffsverwaltung in Azure
 
-| Azure-ID | ID(s) von CIS-Steuerelementen v7.1 | ID(s) von NIST SP800-53 r4 |
+| Azure-ID | ID(s) von CIS-Steuerelementen v7.1 | ID(s) von NIST SP 800-53 r4 |
 |--|--|--|--|
 | LT-2 | 6,8 | AU-3, AU-6, AU-12, SI-4 |
 
@@ -75,9 +75,9 @@ Auch Azure Security Center kann bestimmte verdächtige Aktivitäten melden, wie 
 
 - [Bedrohungsschutz in Azure Security Center](../../security-center/azure-defender.md)
 
-**Verantwortlichkeit** : Kunde
+**Verantwortlichkeit**: Kunde
 
-**Sicherheitsverantwortliche beim Kunden** ( [weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Sicherheitsverantwortliche beim Kunden** ([weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Infrastruktur- und Endpunktsicherheit](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
@@ -91,7 +91,7 @@ Auch Azure Security Center kann bestimmte verdächtige Aktivitäten melden, wie 
 
 ## <a name="lt-3-enable-logging-for-azure-network-activities"></a>LT-3: Aktivieren der Protokollierung für Azure-Netzwerkaktivitäten
 
-| Azure-ID | ID(s) von CIS-Steuerelementen v7.1 | ID(s) von NIST SP800-53 r4 |
+| Azure-ID | ID(s) von CIS-Steuerelementen v7.1 | ID(s) von NIST SP 800-53 r4 |
 |--|--|--|--|
 | LT-3 | 9.3, 12.2, 12.5, 12.8 | AU-3, AU-6, AU-12, SI-4 |
 
@@ -109,9 +109,9 @@ Aktivieren und Sammeln Sie für die Sicherheitsanalyse NSG-Ressourcenprotokolle 
 
 - [Sammeln von Erkenntnissen zu Ihrer DNS-Infrastruktur mit der DNS Analytics-Lösung](../../azure-monitor/insights/dns-analytics.md)
 
-**Verantwortlichkeit** : Kunde
+**Verantwortlichkeit**: Kunde
 
-**Sicherheitsverantwortliche beim Kunden** ( [weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Sicherheitsverantwortliche beim Kunden** ([weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Infrastruktur- und Endpunktsicherheit](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
@@ -125,7 +125,7 @@ Aktivieren und Sammeln Sie für die Sicherheitsanalyse NSG-Ressourcenprotokolle 
 
 ## <a name="lt-4-enable-logging-for-azure-resources"></a>LT-4: Aktivieren der Protokollierung für Azure-Ressourcen
 
-| Azure-ID | ID(s) von CIS-Steuerelementen v7.1 | ID(s) von NIST SP800-53 r4 |
+| Azure-ID | ID(s) von CIS-Steuerelementen v7.1 | ID(s) von NIST SP 800-53 r4 |
 |--|--|--|--|
 | LT-4 | 6.2, 6.3, 8.8 | AU-3, AU-12 |
 
@@ -137,9 +137,9 @@ Sie können mithilfe von Azure Security Center und Azure Policy Ressourcenprotok
 
 - [Grundlegendes zur Datensammlung in Azure Security Center](../../security-center/security-center-enable-data-collection.md)
 
-**Verantwortlichkeit** : Shared
+**Verantwortlichkeit**: Shared
 
-**Sicherheitsverantwortliche beim Kunden** ( [weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Sicherheitsverantwortliche beim Kunden** ([weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Sicherheitsvorgänge](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
@@ -151,7 +151,7 @@ Infrastruktur- und Endpunktsicherheit
 
 ## <a name="lt-5-centralize-security-log-management-and-analysis"></a>LT-5: Zentralisieren der Verwaltung und Analyse von Sicherheitsprotokollen
 
-| Azure-ID | CIS Controls v7.1 ID(s) | ID(s) von NIST SP800-53 r4 |
+| Azure-ID | CIS Controls v7.1 ID(s) | ID(s) von NIST SP 800-53 r4 |
 |--|--|--|--|
 | LT-5 | 6.5, 6.6 | AU-3, SI-4 |
 
@@ -167,9 +167,9 @@ Viele Unternehmen verwenden Azure Sentinel für „heiße“ Daten, die häufig 
 
 - [Durchführen des Onboardings für Azure Sentinel](../../sentinel/quickstart-onboard.md)
 
-**Verantwortlichkeit** : Kunde
+**Verantwortlichkeit**: Kunde
 
-**Sicherheitsverantwortliche beim Kunden** ( [weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Sicherheitsverantwortliche beim Kunden** ([weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Sicherheitsarchitektur](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
@@ -179,7 +179,7 @@ Viele Unternehmen verwenden Azure Sentinel für „heiße“ Daten, die häufig 
 
 ## <a name="lt-6-configure-log-storage-retention"></a>LT-6: Konfigurieren der Aufbewahrungsdauer von Protokollen im Speicher
 
-| Azure-ID | CIS Controls v7.1 ID(s) | ID(s) von NIST SP800-53 r4 |
+| Azure-ID | CIS Controls v7.1 ID(s) | ID(s) von NIST SP 800-53 r4 |
 |--|--|--|--|
 | LT-6 | 6.4 | AU-3, AU-11 |
 
@@ -193,9 +193,9 @@ In Azure Monitor können Sie den Aufbewahrungszeitraum des Log Analytics-Arbeits
 
 - [Exportieren von Azure Security Center-Warnungen und -Empfehlungen](../../security-center/continuous-export.md)
 
-**Verantwortlichkeit** : Kunde
+**Verantwortlichkeit**: Kunde
 
-**Sicherheitsverantwortliche beim Kunden** ( [weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Sicherheitsverantwortliche beim Kunden** ([weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Sicherheitsarchitektur](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
@@ -207,7 +207,7 @@ In Azure Monitor können Sie den Aufbewahrungszeitraum des Log Analytics-Arbeits
 
 ## <a name="lt-7-use-approved-time-synchronization-sources"></a>LT-7: Verwenden von genehmigten Zeitsynchronisierungsquellen
 
-| Azure-ID | CIS Controls v7.1 ID(s) | ID(s) von NIST SP800-53 r4 |
+| Azure-ID | CIS Controls v7.1 ID(s) | ID(s) von NIST SP 800-53 r4 |
 |--|--|--|--|
 | LT-7 | 6.1 | AU-8 |
 
@@ -221,9 +221,9 @@ Alle Protokolle, die in Azure von Ressourcen generiert werden, enthalten Zeitste
 
 - [Deaktivieren eingehender UDP für Azure-Dienste](https://support.microsoft.com/help/4558520/how-to-disable-inbound-udp-for-azure-services)
 
-**Verantwortlichkeit** : Shared
+**Verantwortlichkeit**: Shared
 
-**Sicherheitsverantwortliche beim Kunden** ( [weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Sicherheitsverantwortliche beim Kunden** ([weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Richtlinien und Standards](/azure/cloud-adoption-framework/organize/cloud-security-policy-standards)
 

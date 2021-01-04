@@ -2,14 +2,14 @@
 title: Anforderungsgrenzwerte und -drosselung
 description: Beschreibt, wie eine Begrenzung von Azure Resource Manager-Anforderungen genutzt wird, wenn Abonnementgrenzwerte erreicht wurden.
 ms.topic: conceptual
-ms.date: 03/24/2020
+ms.date: 12/15/2020
 ms.custom: seodec18
-ms.openlocfilehash: 4d387749261747eb9ea1ea26629ade4fe8729856
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 181ed1a3059d86f78e40a9949448af77a551efbc
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80239364"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563125"
 ---
 # <a name="throttling-resource-manager-requests"></a>Begrenzen von Resource Manager-Anforderungen
 
@@ -65,6 +65,13 @@ Verwenden Sie zum Überprüfen von VM-Instanzen innerhalb einer VM-Skalierungsgr
 ### <a name="azure-resource-graph-throttling"></a>Azure Resource Graph-Drosselung
 
 [Azure Resource Graph](../../governance/resource-graph/overview.md) begrenzt die Anzahl der Anforderungen nach seinen Vorgängen. Die Schritte in diesem Artikel zum Bestimmen der verbleibenden Anforderungen und zum Reagieren bei Erreichen des Grenzwerts gelten auch für Resource Graph. Resource Graph legt jedoch einen eigenen Grenzwert und eine eigene Rücksetzrate fest. Weitere Informationen finden Sie unter [Resource Graph-Drosselungsheader](../../governance/resource-graph/concepts/guidance-for-throttled-requests.md#understand-throttling-headers).
+
+### <a name="other-resource-providers"></a>Andere Ressourcenanbieter
+
+Informationen zur Drosselung bei anderen Ressourcenanbietern finden Sie hier:
+
+* [Anleitung zur Drosselung von Azure Key Vault](../../key-vault/general/overview-throttling.md)
+* [AKS-Problembehandlung](../../aks/troubleshooting.md#im-receiving-429---too-many-requests-errors)
 
 ## <a name="error-code"></a>Fehlercode
 

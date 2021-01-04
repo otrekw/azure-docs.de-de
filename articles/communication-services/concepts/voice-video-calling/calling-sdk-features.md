@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: f621d11553101c2c0bcfce804b26c218ae58670c
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: f47ee36c0e7806afc10f8f0907825378c2d24410
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576467"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505544"
 ---
 # <a name="calling-client-library-overview"></a>Übersicht über die Clientbibliothek für Telefonie
 
@@ -69,7 +69,7 @@ Die folgende Tabelle enthält die unterstützten Browser und Versionen, die derz
 
 \* Hinweis: Neben den beiden vorherigen Releases wird auch die neueste Version von Chrome unterstützt.<br/>
 
-** Hinweis: Safari wird ab Version 13.1 unterstützt. Ausgehende Videodaten werden für Safari macOS noch nicht unterstützt, für iOS dagegen schon. Die ausgehende Bildschirmfreigabe wird in der Desktopversion von iOS unterstützt.
+** Hinweis: Safari wird ab Version 13.1 unterstützt. Ausgehende Videodaten werden für Safari macOS noch nicht unterstützt, für iOS dagegen schon. Die ausgehende Bildschirmfreigabe wird in der Desktopversion von iOS unterstützt. 1:1- und Gruppenanrufe sind für Safari zurzeit nicht verfügbar.
 
 ## <a name="calling-client---browser-security-model"></a>Anrufclient: Browsersicherheitsmodell
 
@@ -90,6 +90,15 @@ Durch das folgende iframe-Element wird beispielsweise sowohl Kamera- als auch Mi
 ```html
 <iframe allow="camera *; microphone *">
 ```
+
+## <a name="calling-client-library-streaming-support"></a>Streamingunterstützung der Clientbibliothek für Telefonie
+Die Clientbibliothek für Telefonie von Communication Services unterstützt die folgenden Streamingkonfigurationen:
+
+|           |Web | Android/iOS|
+|-----------|----|------------|
+|Anzahl der ausgehenden Datenströme, die gleichzeitig gesendet werden können. |1 Video- und 1 Bildschirmfreigabe | 1 Video- und 1 Bildschirmfreigabe|
+|Anzahl der eingehenden Datenströme, die gleichzeitig gerendert werden können. |1 Video- und 1 Bildschirmfreigabe| 6 Video- und 1 Bildschirmfreigabe |
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

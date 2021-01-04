@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/23/2020
+ms.date: 12/09/2020
 ms.author: b-juche
-ms.openlocfilehash: db1e8ce2e4fe9ae81bc2299ae70e9ff83941b5b4
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 7c78d5fa89d6d4f3c73bdd1fe9b6d2fdae97c011
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95245873"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96937473"
 ---
 # <a name="cross-region-replication-of-azure-netapp-files-volumes"></a>Regionsübergreifende Replikation von Azure NetApp Files-Volumes
 
@@ -38,14 +38,15 @@ Die Azure NetApp Files-Volumereplikation ist derzeit in den folgenden festen Reg
 * USA, Süden-Mitte und USA, Osten
 * USA, Süden-Mitte und USA, Osten 2 
 * USA, Osten 2 und USA, Mitte 
-* Europa, Norden und Europa, Westen
-* Vereinigtes Königreich, Süden und Vereinigtes Königreich, Westen
 * Australien, Osten und Australien, Südosten
 * Kanada, Mitte und Kanada, Osten
-* Japan, Osten und Japan, Westen
-* Vereinigtes Königreich, Süden und Deutschland, Westen-Mitte
-* Asien, Südosten und Australien, Osten
 * „Indien, Mitte“ und „Indien, Süden“
+* „Deutschland, Westen-Mitte“ und „Deutschland, Norden“
+* Japan, Osten und Japan, Westen
+* Europa, Norden und Europa, Westen
+* Asien, Südosten und Australien, Osten
+* Vereinigtes Königreich, Süden und Deutschland, Westen-Mitte
+* Vereinigtes Königreich, Süden und Vereinigtes Königreich, Westen
 
 ## <a name="service-level-objectives"></a>Servicelevel-Zielpunkte (SLO)
 

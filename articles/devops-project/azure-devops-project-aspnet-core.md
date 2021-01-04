@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 03/24/2020
 ms.author: mlearned
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 99be6dc42a9b644166054d61e88a1e0ac329d2ad
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 63d3ac356e4f2c1d17e1511227f5089b7ff4266f
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91854722"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589156"
 ---
 # <a name="create-a-cicd-pipeline-for-net-with-azure-devops-starter"></a>Erstellen einer CI/CD-Pipeline für .NET mit Azure DevOps Starter
 
@@ -66,9 +66,9 @@ Mit DevOps Starter wird eine CI/CD-Pipeline in Azure DevOps erstellt. Sie könne
 
 Von DevOps Starter wurde ein Git-Repository in Azure Repos oder auf GitHub erstellt. Gehen Sie wie folgt vor, um das Repository anzuzeigen und Codeänderungen an Ihrer Anwendung vorzunehmen:
 
-1. Klicken Sie auf der linken Seite des DevOps Starter-Dashboards auf den Link für Ihren **Masterbranch**. Über diesen Link wird die Ansicht des neu erstellten Git-Repositorys geöffnet.
+1. Klicken Sie auf der linken Seite des DevOps Starter-Dashboards auf den Link für Ihren **Mainbranch**. Über diesen Link wird die Ansicht des neu erstellten Git-Repositorys geöffnet.
 
-2. Bei den nächsten Schritten können Sie den Webbrowser verwenden, um Codeänderungen direkt am **Masterbranch** vorzunehmen und für Codeänderungen einen Commit auszuführen. Sie können auch Ihr Git-Repository in Ihrer bevorzugten IDE klonen, indem Sie **Klonen** oben rechts auf der Repositoryseite auswählen. 
+2. Bei den nächsten Schritten können Sie den Webbrowser verwenden, um Codeänderungen direkt am **Mainbranch** vorzunehmen und für Codeänderungen einen Commit auszuführen. Sie können auch Ihr Git-Repository in Ihrer bevorzugten IDE klonen, indem Sie **Klonen** oben rechts auf der Repositoryseite auswählen. 
 
 3. Navigieren Sie links in der Anwendungsdateistruktur zu **Application/aspnet-core-dotnet-core/Pages/Index.cshtml**.
 

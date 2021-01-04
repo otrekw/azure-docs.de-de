@@ -7,65 +7,38 @@ author: brjohnstmsft
 ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/23/2020
-translation.priority.mt:
-- de-de
-- es-es
-- fr-fr
-- it-it
-- ja-jp
-- ko-kr
-- pt-br
-- ru-ru
-- zh-cn
-- zh-tw
-ms.openlocfilehash: 6ea8bc2551df4f85e4b856dc9cf1c06a9bd571fd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 12/14/2020
+ms.openlocfilehash: 0dbf418d0a673dd0799f0f638e454c484f837fd7
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88923448"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516606"
 ---
 # <a name="lucene-query-syntax-in-azure-cognitive-search"></a>Lucene-Abfragesyntax in Azure Cognitive Search
 
-Sie können für Azure Cognitive Search basierend auf der umfassenden Syntax des [Lucene-Abfrageparsers](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html) spezielle Abfragen schreiben: Platzhaltersuche, Fuzzysuche, NEAR-Suche und Suche mit regulären Ausdrücken sind einige Beispiele hierfür. Der Großteil der Syntax des Lucene-Abfrageparsers wird [in Azure Cognitive Search unverändert implementiert](search-lucene-query-architecture.md). Die einzige Ausnahme sind *Bereichssuchen*, die in Azure Cognitive Search mit `$filter`-Ausdrücken erstellt werden. 
+Beim Erstellen von Abfragen können Sie die Syntax des [Lucene-Abfrageparsers](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html) für spezielle Abfrageformen verwenden: Platzhaltersuche, Fuzzysuche, NEAR-Suche und Suche mit regulären Ausdrücken. Der Großteil der Syntax des Lucene-Abfrageparsers wird [in Azure Cognitive Search unverändert implementiert](search-lucene-query-architecture.md). Die einzige Ausnahme sind *Bereichssuchen*, die mit **`$filter`** -Ausdrücken erstellt werden. 
 
-> [!NOTE]
-> Die vollständige Lucene-Syntax wird für Abfrageausdrücke verwendet, die im **search**-Parameter der [Dokumente durchsuchen](/rest/api/searchservice/search-documents)-API übergeben werden. Sie sollte nicht mit der [OData-Syntax](query-odata-filter-orderby-syntax.md) verwechselt werden, die für den [$filter](search-filters.md)-Parameter dieser API verwendet wird. Für diese unterschiedlichen Syntaxen gelten eigene Regeln für das Erstellen von Abfragen, das Auskommentieren von Zeichenfolgen usw.
+Die vollständige Lucene-Syntax wird für Abfrageausdrücke verwendet, die im Parameter **`search`** einer Anforderung zum [Durchsuchen von Dokumenten (REST-API)](/rest/api/searchservice/search-documents) übergeben werden. Sie ist nicht zu verwechseln mit der [OData-Syntax](query-odata-filter-orderby-syntax.md), die für die Ausdrücke [ **`$filter`**](search-filters.md) und [ **`$orderby`** ](search-query-odata-orderby.md) in derselben Anforderung verwendet wird. Für OData-Parameter gelten eine andere Syntax und andere Regeln für das Erstellen von Abfragen, das Auskommentieren von Zeichenfolgen usw.
 
-## <a name="invoke-full-parsing"></a>Aufrufen der vollständigen Analyse
+## <a name="example-full-syntax"></a>Beispiel (vollständige Syntax)
 
-Legen Sie den Suchparameter `queryType` fest, um den gewünschten Parser anzugeben. Gültige Werte sind `simple|full` (der Standardwert ist `simple`) und `full` für Lucene. 
+Legen Sie den Parameter **`queryType`** fest, um die vollständige Lucene-Syntax anzugeben. Im folgenden Beispiel wird die in-Field-Suche und die Begriffsverstärkung aufgerufen. Diese Abfrage sucht nach Hotels, bei denen das Kategoriefeld den Begriff „budget“ enthält. Allen Dokumenten, die den Ausdruck „recently renovated“ enthalten, wird aufgrund des Werts für die Begriffsverstärkung (3) ein höherer Rang zugewiesen.  
 
-<a name="bkmk_example"></a> 
-
-### <a name="example-showing-full-syntax"></a>Beispiel für die vollständige Syntax
-
-Im folgenden Beispiel wird mithilfe der Lucene-Abfragesyntax (dies wird im Parameter `queryType=full` deutlich) eine Suche nach Dokumenten im Index durchgeführt. Bei dieser Abfrage werden Hotels zurückgegeben, bei denen das Kategoriefeld den Begriff „budget“ enthält und alle durchsuchbaren Felder die Wörter „recently renovated“ enthalten. Dokumenten mit dem Ausdruck „recently renovated“ wird aufgrund des Werts für die Begriffsverstärkung (3) ein höherer Rang zugewiesen.  
-
-Der Parameter `searchMode=all` ist in diesem Beispiel wichtig. Bei Abfragen mit Operatoren sollten Sie generell `searchMode=all` festlegen, um sicherzustellen, dass *alle* Kriterien abgeglichen werden.
-
-```
-GET /indexes/hotels/docs?search=category:budget AND \"recently renovated\"^3&searchMode=all&api-version=2020-06-30&querytype=full
-```
-
- Alternativ können Sie POST verwenden:  
-
-```
-POST /indexes/hotels/docs/search?api-version=2020-06-30
+```http
+POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30
 {
-  "search": "category:budget AND \"recently renovated\"^3",
   "queryType": "full",
+  "search": "category:budget AND \"recently renovated\"^3",
   "searchMode": "all"
 }
 ```
 
-Weitere Beispiele finden Sie unter [Beispiele für die Lucene-Abfragesyntax zum Erstellen von Abfragen in Azure Cognitive Search](search-query-lucene-examples.md). Ausführliche Informationen zur Angabe sämtlicher Abfrageparameter finden Sie unter [Durchsuchen von Dokumenten (REST-API für Azure Cognitive Search)](/rest/api/searchservice/Search-Documents).
+Der Parameter **`searchMode`** ist in diesem Beispiel relevant. Bei Abfragen mit Operatoren sollten Sie generell `searchMode=all` festlegen, um sicherzustellen, dass *alle* Kriterien abgeglichen werden.  
 
-> [!NOTE]  
->  Azure Cognitive Search unterstützt darüber hinaus die [einfache Abfragesyntax](query-simple-syntax.md), eine unkomplizierte und stabile Abfragesprache, die für die einfache Schlüsselwortsuche verwendet werden kann.  
+Weitere Beispiele finden Sie unter [Beispiele für die Lucene-Abfragesyntax](search-query-lucene-examples.md). Ausführliche Informationen zur Abfrageanforderung und zu den entsprechenden Parametern finden Sie unter [Durchsuchen von Dokumenten (REST-API)](/rest/api/searchservice/Search-Documents).
 
-##  <a name="syntax-fundamentals"></a><a name="bkmk_syntax"></a> Grundlagen der Syntax  
+## <a name="syntax-fundamentals"></a><a name="bkmk_syntax"></a> Grundlagen der Syntax  
 
 Die folgenden Syntaxgrundlagen gelten für alle Abfragen mit der Lucene-Syntax.  
 
@@ -95,39 +68,15 @@ Stellen Sie sicher, dass alle unsicheren und reservierten Zeichen in einer URL c
 
 Unsichere Zeichen sind ``" ` < > # % { } | \ ^ ~ [ ]``. Reservierte Zeichen sind `; / ? : @ = + &`.
 
-###  <a name="query-size-limits"></a><a name="bkmk_querysizelimits"></a> Abfragegrößenlimits
+## <a name="boolean-operators"></a><a name="bkmk_boolean"></a> Boolesche Operatoren
 
- Die Größe der Abfragen, die Sie an Azure Cognitive Search senden können, ist begrenzt. Insbesondere können Sie maximal 1.024 Klauseln (durch AND, OR usw. getrennte Ausdrücke) verwenden. Für die Größe der einzelnen Begriffe in einer Abfrage gilt zudem ein Grenzwert von ungefähr 32 KB. Wenn Ihre Anwendung programmgesteuert Suchabfragen generiert, sollten Sie durch den Anwendungsentwurf sicherstellen, dass sie keine Abfragen unbegrenzter Größe erzeugt.  
+Sie können boolesche Operatoren in eine Abfragezeichenfolge einbetten, um die Genauigkeit einer Übereinstimmung zu erhöhen. Die vollständige Syntax unterstützt neben Zeichenoperatoren auch Textoperatoren. Geben Sie boolesche Operatoren in Textform (AND, OR, NOT) immer in Großbuchstaben an.
 
-### <a name="precedence-operators-grouping"></a>Rangfolgenoperatoren (Gruppierung)
-
- Sie können mithilfe von Klammern Unterabfragen erstellen, die Operatoren innerhalb der Anweisung in Klammern enthalten. Beispielsweise sucht `motel+(wifi||luxury)` nach Dokumenten, die den Begriff „motel“ und entweder „wifi“ oder „luxury“ (oder beides) enthalten.
-
-Die Feldgruppierung funktioniert ähnlich, beschränkt die Gruppierung jedoch auf ein einzelnes Feld. Beispielsweise durchsucht `hotelAmenities:(gym+(wifi||pool))` das Feld „hotelAmenities“ nach „gym“ und „wifi“ oder nach „gym“ und „pool“.  
-
-##  <a name="boolean-search"></a><a name="bkmk_boolean"></a> Boolesche Suche
-
- Geben Sie boolesche Operatoren in Textform (AND, OR, NOT) immer in Großbuchstaben an.  
-
-### <a name="or-operator-or-or-"></a>OR-Operator `OR` oder `||`
-
-Der OR-Operator ist ein vertikaler Balken bzw. ein senkrechter Strich. Beispiel: `wifi || luxury` sucht nach Dokumenten, die „wifi“ oder „luxury“ oder beides enthalten. Da OR der standardmäßige Konjunktionsoperator ist, könnten Sie ihn auch weglassen, d. h. `wifi luxury` entspricht `wifi || luxury`.
-
-### <a name="and-operator-and--or-"></a>AND-Operator `AND`, `&&` oder `+`
-
-Der AND-Operator ist ein kaufmännisches Und-Zeichen oder ein Pluszeichen. Beispiel: `wifi && luxury` sucht nach Dokumenten, die sowohl „wifi“ als auch „luxury“ enthalten. Das Pluszeichen (+) wird für erforderliche Begriffe verwendet. Beispielsweise legt `+wifi +luxury` fest, dass beide Begriffe im Feld eines einzelnen Dokuments vorkommen müssen.
-
-### <a name="not-operator-not--or--"></a>NOT-Operator `NOT`, `!` oder `-`
-
-Der NOT-Operator ist ein Minuszeichen (-). Beispiel: `wifi –luxury` sucht nach Dokumenten, die den Begriff `wifi` enthalten und/oder `luxury` nicht enthalten.
-
-Der Parameter **searchMode** in einer Abfrageanforderung steuert, ob ein Begriff mit dem NOT-Operator mit anderen Begriffen in der Abfrage per AND oder OR verknüpft wird (vorausgesetzt, dass es keinen Operator „`+`“ oder „`|`“ für die anderen Begriffe gibt). Gültige Werte sind `any` oder `all`.
-
-`searchMode=any` erhöht die Trefferquote von Abfragen, weil mehr Ergebnisse einbezogen werden, und `-` wird standardmäßig als „OR NOT“ interpretiert. So stimmt beispielsweise `wifi -luxury` mit Dokumenten überein, die entweder den Begriff `wifi` enthalten oder die den Begriff `luxury` nicht enthalten.
-
-`searchMode=all` erhöht die Genauigkeit von Abfragen, weil weniger Ergebnisse einbezogen werden und „-“ standardmäßig als „AND NOT“ interpretiert wird. So stimmt beispielsweise `wifi -luxury` mit Dokumenten überein, die den Begriff `wifi` enthalten und die nicht den Begriff „Luxus“ enthalten. Dies ist wohl ein intuitiveres Verhalten für den `-`-Operator. Daher sollten Sie die Verwendung von `searchMode=all` statt `searchMode=any` in Betracht ziehen, wenn Sie Suchen im Hinblick auf die Genauigkeit statt auf die Trefferquote optimieren möchten *und* Ihre Benutzer den `-`-Operator häufig bei Suchen verwenden.
-
-Berücksichtigen Sie bei der Entscheidung über eine **searchMode**-Einstellung die Benutzerinteraktionsmuster für Abfragen in verschiedenen Anwendungen. Benutzer, die nach Informationen suchen, beziehen eher einen Operator in eine Abfrage mit ein – im Gegensatz zu e-Commerce-Websites mit mehr integrierten Navigationsstrukturen.
+|Textoperator | Zeichen | Beispiel | Verwendung |
+|--------------|----------- |--------|-------|
+| AND | `&`, `+` | `wifi + luxury` | Gibt Begriffe an, die eine Übereinstimmung enthalten muss. In dem Beispiel sucht das Abfragemodul nach Dokumenten, die sowohl `wifi` als auch `luxury` enthalten. Das Pluszeichen (`+`) wird für erforderliche Begriffe verwendet. Beispielsweise legt `+wifi +luxury` fest, dass beide Begriffe im Feld eines einzelnen Dokuments vorkommen müssen.|
+| oder | `|` | `wifi | luxury` | Findet eine Übereinstimmung, wenn einer der beiden Begriffe gefunden wird. In dem Beispiel gibt das Abfragemodul eine Übereinstimmung für Dokumente zurück, die entweder `wifi` oder `luxury` oder beide Begriffe enthalten. Da OR der standardmäßige Konjunktionsoperator ist, könnten Sie ihn auch weglassen, d. h. `wifi luxury` entspricht `wifi | luxury`.|
+| NICHT | `!`, `-` | `wifi –luxury` | Gibt Übereinstimmungen für Dokumente zurück, die den Begriff ausschließen. Beispiel: `wifi –luxury` sucht nach Dokumenten, die den Begriff `wifi`, aber nicht den Begriff `luxury` enthalten. <br/><br/>Der Parameter `searchMode` in einer Abfrageanforderung steuert, ob ein Begriff mit dem NOT-Operator mit anderen Begriffen in der Abfrage per AND oder OR verknüpft wird (vorausgesetzt, dass es keinen Operator „`+`“ oder „`|`“ für die anderen Begriffe gibt). Gültige Werte sind `any` oder `all`.  <br/><br/>`searchMode=any` erhöht die Trefferquote von Abfragen, weil mehr Ergebnisse einbezogen werden, und `-` wird standardmäßig als „OR NOT“ interpretiert. So stimmt beispielsweise `wifi -luxury` mit Dokumenten überein, die entweder den Begriff `wifi` enthalten oder die den Begriff `luxury` nicht enthalten.  <br/><br/>`searchMode=all` erhöht die Genauigkeit von Abfragen, weil weniger Ergebnisse einbezogen werden und „-“ standardmäßig als „AND NOT“ interpretiert wird. So stimmt beispielsweise `wifi -luxury` mit Dokumenten überein, die den Begriff `wifi` enthalten und die nicht den Begriff „Luxus“ enthalten. Dies ist wohl ein intuitiveres Verhalten für den `-`-Operator. Daher sollten Sie die Verwendung von `searchMode=all` statt `searchMode=any` in Betracht ziehen, wenn Sie Suchen im Hinblick auf die Genauigkeit statt auf die Trefferquote optimieren möchten *und* Ihre Benutzer den `-`-Operator häufig bei Suchen verwenden.<br/><br/>Berücksichtigen Sie bei der Entscheidung über eine `searchMode`-Einstellung die Benutzerinteraktionsmuster für Abfragen in verschiedenen Anwendungen. Benutzer, die nach Informationen suchen, beziehen eher einen Operator in eine Abfrage mit ein – im Gegensatz zu e-Commerce-Websites mit mehr integrierten Navigationsstrukturen. |
 
 ##  <a name="fielded-search"></a><a name="bkmk_fields"></a>Feldbezogene Suche
 
@@ -148,14 +97,13 @@ Das in `fieldName:searchExpression` angegebene Feld muss ein Feld vom Typ `searc
 
 Bei einer Fuzzysuche werden Übereinstimmungen mit einer ähnlichen Konstruktion gefunden, wobei ein Begriff bis zu maximal 50 Begriffen erweitert wird, die die Abstandskriterien von zwei oder weniger erfüllen. Weitere Informationen finden Sie unter [Fuzzysuche](search-query-fuzzy.md).
 
- Verwenden Sie für eine Fuzzysuche das Tildezeichen „~“ am Ende eines einzelnen Worts mit einem optionalen Parameter, einer Zahl zwischen 0 und 2 (Standardwert), der die Edit-Distanz angibt. Beispielsweise würden bei „blue~“ oder „blue~1“ die Werte „blue“, „blues“ und „glue“ zurückgegeben.
+Verwenden Sie für eine Fuzzysuche das Tildezeichen „~“ am Ende eines einzelnen Worts mit einem optionalen Parameter, einer Zahl zwischen 0 und 2 (Standardwert), der die Edit-Distanz angibt. Beispielsweise würden bei „blue~“ oder „blue~1“ die Werte „blue“, „blues“ und „glue“ zurückgegeben.
 
- Die Fuzzysuche kann nur auf Begriffe, nicht auf Ausdrücke, angewendet werden. Sie können aber die Tilde an jeden Begriff in einem mehrteiligen Namen oder Ausdruck einzeln anfügen. So würde beispielsweise „Unviersty~ of~ „Wshington~“ mit „University of Washington“ übereinstimmen.
+Die Fuzzysuche kann nur auf Begriffe, nicht auf Ausdrücke, angewendet werden. Sie können aber die Tilde an jeden Begriff in einem mehrteiligen Namen oder Ausdruck einzeln anfügen. So würde beispielsweise „Unviersty~ of~ „Wshington~“ mit „University of Washington“ übereinstimmen.
  
 ##  <a name="proximity-search"></a><a name="bkmk_proximity"></a> NEAR-Suche
 
 NEAR-Suchen werden verwendet, um Begriffe zu suchen, die in einem Dokument nahe beieinander liegen. Fügen Sie ein Tildesymbol „~“ Symbol am Ende eines Ausdrucks ein, gefolgt von der Anzahl der Wörter, die den NEAR-Bereich bilden. Beispielsweise finden Sie mit der Abfrage `"hotel airport"~5` die Begriffe „hotel“ und „airport“, wenn sie in einem Abstand von fünf Wörtern voneinander in einem Dokument vorkommen.  
-
 
 ##  <a name="term-boosting"></a><a name="bkmk_termboost"></a> Begriffsverstärkung
 
@@ -194,9 +142,27 @@ Wenn Sie das Analysetool „de.lucene“ (deutsches Lucene) verwendeten, würde 
 
 Andererseits sind die Microsoft-Analysetools (in diesem Fall das Analysetool „de.microsoft“) etwas komplexer und verwenden Lemmatisierung statt Wortstammerkennung. Dies bedeutet, dass alle generierten Token gültige deutsche Wörter sein sollten. Beispielsweise bleiben „beenden“', „beendet“ und „Beendigung“ meistens ganz im Index und wären eine bevorzugte Wahl bei Szenarien, die sehr viel auf Platzhalter und Fuzzysuche angewiesen sind.
 
-##  <a name="scoring-wildcard-and-regex-queries"></a><a name="bkmk_searchscoreforwildcardandregexqueries"></a> Bewerten von Platzhalterabfragen und Abfragen mit regulären Ausdrücken
+## <a name="scoring-wildcard-and-regex-queries"></a> Bewerten von Platzhalterabfragen und Abfragen mit regulären Ausdrücken
 
 Azure Cognitive Search verwendet für Textabfragen die häufigkeitsbasierte Bewertung ([TF-IDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf)). Für Platzhalterabfragen und Abfragen mit regulären Ausdrücken, bei denen die Anzahl von Begriffen groß sein kann, wird der Häufigkeitsfaktor jedoch ignoriert. Dadurch wird verhindert, dass Übereinstimmungen für seltenere Begriffe bei der Rangzuweisung bevorzugt behandelt werden. Alle Übereinstimmungen werden bei Platzhalterabfragen und Abfragen mit regulären Ausdrücken gleich behandelt.
+
+## <a name="special-characters"></a>Sonderzeichen
+
+Unter bestimmten Umständen möchten Sie möglicherweise nach einem Sonderzeichen suchen, z. B. nach dem Emoji ❤ oder dem €-Zeichen. Stellen Sie in solchen Fällen sicher, dass das verwendete Analysetool diese Zeichen nicht herausfiltert. Das Standardanalysetool umgeht viele Sonderzeichen und schließt sie aus Ihrem Index aus.
+
+Zu den Analysetools, die Sonderzeichen tokenisieren, gehört das Leerzeichen-Analysetool, das alle durch Leerzeichen getrennten Zeichensequenzen als Token berücksichtigt (sodass die Zeichenfolge „❤“ als Token angesehen würde). Ein Sprachanalysetool wie das Microsoft-Analysetool für englische Sprache („en.microsoft“) würde auch die Zeichenfolge „€“ als Token ansehen. Sie können [ein Analysetool testen](/rest/api/searchservice/test-analyzer), um herauszufinden, welche Token für eine bestimmte Abfrage generiert werden.
+
+Wenn Sie Unicode-Zeichen verwenden, stellen Sie sicher, dass die Symbole in der Abfrage-URL ordnungsgemäß mit Escapezeichen versehen werden (z. B. muss für „❤“ die Escapefolge `%E2%9D%A4+` verwendet werden). Postman übernimmt diese Übersetzung automatisch.  
+
+## <a name="precedence-grouping"></a>Rangfolge (Gruppierung)
+
+Sie können mithilfe von Klammern Unterabfragen erstellen, die Operatoren innerhalb der Anweisung in Klammern enthalten. Beispielsweise sucht `motel+(wifi|luxury)` nach Dokumenten, die den Begriff „motel“ und entweder „wifi“ oder „luxury“ (oder beides) enthalten.
+
+Die Feldgruppierung funktioniert ähnlich, beschränkt die Gruppierung jedoch auf ein einzelnes Feld. Beispielsweise durchsucht `hotelAmenities:(gym+(wifi|pool))` das Feld „hotelAmenities“ nach „gym“ und „wifi“ oder nach „gym“ und „pool“.  
+
+## <a name="query-size-limits"></a> Abfragegrößenlimits
+
+Die Größe der Abfragen, die Sie an Azure Cognitive Search senden können, ist begrenzt. Insbesondere können Sie maximal 1.024 Klauseln (durch AND, OR usw. getrennte Ausdrücke) verwenden. Für die Größe der einzelnen Begriffe in einer Abfrage gilt zudem ein Grenzwert von ungefähr 32 KB. Wenn Ihre Anwendung programmgesteuert Suchabfragen generiert, sollten Sie durch den Anwendungsentwurf sicherstellen, dass sie keine Abfragen unbegrenzter Größe erzeugt.  
 
 ## <a name="see-also"></a>Weitere Informationen
 

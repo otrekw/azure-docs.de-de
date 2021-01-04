@@ -1,19 +1,19 @@
 ---
-title: 'Azure Monitor Application Insights Java: Konfigurationsoptionen'
-description: Konfigurationsoptionen für Azure Monitor Application Insights Java
+title: Konfigurationsoptionen – Azure Monitor Application Insights für Java
+description: Konfigurieren von Azure Monitor Application Insights für Java
 ms.topic: conceptual
 ms.date: 11/04/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: e9240253b385a0b53868c5a8a79c751c2f7c09c0
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 73e3d8834fcb41f863fe2e3d686b812bb6174e70
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96601083"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97507658"
 ---
-# <a name="configuration-options-for-azure-monitor-application-insights-java"></a>Konfigurationsoptionen für Azure Monitor Application Insights Java
+# <a name="configuration-options---azure-monitor-application-insights-for-java"></a>Konfigurationsoptionen – Azure Monitor Application Insights für Java
 
 > [!WARNING]
 > **Bei einem Upgrade von Vorschauversion 3.0**
@@ -184,9 +184,9 @@ Weitere Informationen finden Sie in der [Dokumentation zu Telemetrieprozessoren]
 
 „Log4j“, „Logback“ und „java.util.logging“ werden automatisch instrumentiert, und die Protokollierung dieser Protokollierungsframeworks wird automatisch erfasst.
 
-Die Protokollierung wird standardmäßig nur gesammelt, wenn diese auf der Ebene `INFO` oder höher erfolgt.
+Eine Protokollierung erfolgt nur, wenn erstens der für das Protokollierungsframework konfigurierte Schwellenwert und zweitens auch der in Application Insights konfigurierte Schwellenwert erreicht wird.
 
-Verwenden Sie den folgenden JSON-Code, wenn Sie diese Sammlungsebene ändern möchten:
+Der Application Insights-Standardschwellenwert lautet `INFO`. Wenn Sie diesen Wert ändern möchten, ist das folgendermaßen möglich:
 
 ```json
 {

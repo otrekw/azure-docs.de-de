@@ -7,17 +7,18 @@ author: MashaMSFT
 editor: monicar
 tags: azure-service-management
 ms.service: virtual-machines-sql
+ms.subservice: hadr
 ms.topic: overview
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: d5bd2fc150ee1d35127eeb9dbf3dc1eeffdc9659
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 33be57832d9364b859042cd38349c2437bcfcb18
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94685935"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97358145"
 ---
 # <a name="failover-cluster-instances-with-sql-server-on-azure-virtual-machines"></a>Failoverclusterinstanzen mit SQL Server in Azure Virtual Machines
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -50,7 +51,7 @@ SQL Server auf Azure-VMs bietet verschiedene Optionen als freigegebene Speicher
 |---------|---------|---------|---------|
 |**Betriebssystemversion (Min.)**| All |Windows Server 2012|Windows Server 2016|
 |**Mindestversion von SQL Server**|All|SQL Server 2012|SQL Server 2016|
-|**Unterstützte VM-Verfügbarkeit** |Verfügbarkeitsgruppen mit Näherungsplatzierungsgruppen |Verfügbarkeitsgruppen und Verfügbarkeitszonen|Verfügbarkeitsgruppen |
+|**Unterstützte VM-Verfügbarkeit** |Verfügbarkeitsgruppen mit Näherungsplatzierungsgruppen (Für SSD Premium) </br> Dieselbe Verfügbarkeitszone (Für SSD Ultra) |Verfügbarkeitsgruppen und Verfügbarkeitszonen|Verfügbarkeitsgruppen |
 |**Unterstützt FileStream**|Ja|Nein|Ja |
 |**Azure-Blobcache**|Nein|Nein|Ja|
 
@@ -69,12 +70,16 @@ Im restlichen Teil dieses Abschnitts werden die Vorteile und Einschränkungen de
 - Unterstützt freigegebenen Azure SSD Premium- und Azure Ultra-Datenträgerspeicher.
 - Kann einen einzelnen freigegebenen Datenträger oder Striping für mehrere freigegebene Datenträger verwenden, um einen freigegebenen Speicherpool zu erstellen. 
 - Unterstützt Filestream.
+- SSD Premium-Instanzen unterstützen Verfügbarkeitsgruppen. 
 
 
 **Einschränkungen:** 
-- Virtuelle Computer müssen sich in derselben Verfügbarkeitsgruppe und in derselben Näherungsplatzierungsgruppe befinden.
-- Verfügbarkeitszonen werden nicht unterstützt.
+- Es wird empfohlen, die virtuellen Computer in derselben Verfügbarkeitsgruppe und Näherungsplatzierungsgruppe zu platzieren.
+- Ultra Disks unterstützen keine Verfügbarkeitsgruppen. 
+- Verfügbarkeitszonen werden für Ultra Disks unterstützt, aber die VMs müssen sich in derselben Verfügbarkeitszone befinden, was die Verfügbarkeit des virtuellen Computers einschränkt. 
+- Unabhängig von der gewählten Hardwareverfügbarkeitslösung liegt die Verfügbarkeit des Failoverclusters immer bei 99,9 %, wenn freigegebene Azure-Datenträger verwendet werden. 
 - Zwischenspeichern von SSD Premium-Datenträgern wird nicht unterstützt.
+
  
 Informationen zu den ersten Schritten finden Sie unter [SQL Server-Failoverclusterinstanz mit freigegebenen Azure-Datenträgern](failover-cluster-instance-azure-shared-disks-manually-configure.md). 
 
@@ -171,4 +176,4 @@ Lesen Sie [bewährte Methoden für Clusterkonfigurationen](hadr-cluster-best-pra
 Weitere Informationen finden Sie unter 
 
 - [Windows-Clustertechnologie](/windows-server/failover-clustering/failover-clustering-overview)   
-- [SQL Server-Failoverclusterinstanzen](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)
+- [SQL Server-Failoverclusterinstanzen](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)

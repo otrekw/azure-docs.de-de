@@ -1,23 +1,23 @@
 ---
-title: 'Schnellstart: Azure Queue Storage-Bibliothek v12 – JavaScript'
-description: Erfahren Sie, wie Sie die Azure Queue Storage-Bibliothek v12 für JavaScript verwenden, um eine Warteschlange zu erstellen und dieser Nachrichten hinzuzufügen. Dann lernen Sie, wie Sie Nachrichten in der Warteschlange lesen und löschen. Zudem erfahren Sie, wie Sie eine Warteschlange löschen.
+title: 'Schnellstart: Azure Queue Storage-Clientbibliothek v12 – JavaScript'
+description: Hier erfahren Sie, wie Sie mithilfe der Azure Queue Storage-Clientbibliothek v12 für JavaScript eine Warteschlange erstellen und ihr Nachrichten hinzufügen. Dann lernen Sie, wie Sie Nachrichten in der Warteschlange lesen und löschen. Zudem erfahren Sie, wie Sie eine Warteschlange löschen.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 12/13/2019
+ms.topic: quickstart
 ms.service: storage
 ms.subservice: queues
-ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: 5f50e42bc33adb8f40520f3f98bf1dcfba190a41
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 23c58526ba481a56b371bd077661d8d0bc7d45c7
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96491909"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586532"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-javascript"></a>Schnellstart: Azure Queue Storage-Clientbibliothek v12 für JavaScript
 
-Beginnen Sie mit dem Einsatz der Azure Queue Storage-Clientbibliothek v12 für JavaScript. Azure Queue Storage ist ein Dienst für die Speicherung einer großen Anzahl von Nachrichten, die später abgerufen und verarbeitet werden. Führen Sie die nachfolgenden Schritte aus, um das Paket zu installieren und den Beispielcode für grundlegende Aufgaben zu testen.
+Beginnen Sie mit dem Einsatz der Azure Queue Storage-Clientbibliothek v12 für JavaScript. Azure Queue Storage ist ein Dienst zum Speichern einer großen Anzahl von Nachrichten, die später abgerufen und verarbeitet werden. Führen Sie die nachfolgenden Schritte aus, um das Paket zu installieren und den Beispielcode für grundlegende Aufgaben zu testen.
 
 Mit der Azure Queue Storage-Clientbibliothek v12 für JavaScript können Sie Folgendes ausführen:
 
@@ -33,7 +33,7 @@ Zusätzliche Ressourcen:
 
 - [API-Referenzdokumentation](/javascript/api/@azure/storage-queue/)
 - [Quellcode der Bibliothek](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-queue)
-- [Paket (Node Package Manager)](https://www.npmjs.com/package/@azure/storage-queue)
+- [Paket (npm)](https://www.npmjs.com/package/@azure/storage-queue)
 - [Beispiele](../common/storage-samples-javascript.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -44,11 +44,11 @@ Zusätzliche Ressourcen:
 
 ## <a name="setting-up"></a>Einrichten
 
-In diesem Abschnitt wird beschrieben, wie Sie ein Projekt zur Verwendung mit der Azure Queue Storage-Clientbibliothek v12 für JavaScript vorbereiten.
+In diesem Abschnitt wird beschrieben, wie Sie ein Projekt zum Arbeiten mit der Azure Queue Storage-Clientbibliothek v12 für JavaScript vorbereiten.
 
 ### <a name="create-the-project"></a>Erstellen des Projekts
 
-Erstellen Sie eine Node.js-Anwendung mit dem Namen *queues-quickstart-v12*.
+Erstellen der Node.js-Anwendung `queues-quickstart-v12`
 
 1. Erstellen Sie in einem Konsolenfenster (z. B. cmd, PowerShell oder Bash) ein neues Verzeichnis für das Projekt.
 
@@ -56,13 +56,13 @@ Erstellen Sie eine Node.js-Anwendung mit dem Namen *queues-quickstart-v12*.
     mkdir queues-quickstart-v12
     ```
 
-1. Wechseln Sie zum neu erstellten Verzeichnis *queues-quickstart-v12*.
+1. Wechseln Sie zum neu erstellten Verzeichnis `queues-quickstart-v12`.
 
     ```console
     cd queues-quickstart-v12
     ```
 
-1. Erstellen Sie eine neue Textdatei mit dem Namen *package.json*. Diese Datei definiert das Node.js-Projekt. Speichern Sie diese Datei im Verzeichnis *queues-quickstart-v12*. Der Inhalt der Datei ist nachstehend aufgeführt:
+1. Erstellen Sie eine neue Textdatei mit dem Namen `package.json`. Diese Datei definiert das Node.js-Projekt. Speichern Sie diese Datei im Verzeichnis `queues-quickstart-v12`. Hier ist der Inhalt der Datei:
 
     ```json
     {
@@ -87,13 +87,13 @@ Erstellen Sie eine Node.js-Anwendung mit dem Namen *queues-quickstart-v12*.
 
 ### <a name="install-the-package"></a>Installieren des Pakets
 
-Installieren Sie das Paket mit der Azure Queue Storage-Clientbibliothek für JavaScript mithilfe des Befehls `npm install` im Verzeichnis *queues-quickstart-v12*.
+Installieren Sie das Paket mit der Azure Queue Storage-Clientbibliothek für JavaScript mithilfe des Befehls `npm install` im Verzeichnis `queues-quickstart-v12`.
 
 ```console
 npm install
 ```
 
- Dieser Befehl liest die Datei *package.json* und installiert das Paket mit der Azure Queue Storage-Clientbibliothek v12 für JavaScript sowie alle Bibliotheken, von denen die Bibliothek abhängig ist.
+Dieser Befehl liest die Datei `package.json` und installiert das Paket mit der Azure Queue Storage-Clientbibliothek v12 für JavaScript sowie alle Bibliotheken, von denen die Bibliothek abhängig ist.
 
 ### <a name="set-up-the-app-framework"></a>Einrichten des App-Frameworks
 
@@ -110,7 +110,7 @@ npm install
     const uuidv1 = require("uuid/v1");
 
     async function main() {
-        console.log("Azure Queue storage v12 - JavaScript quickstart sample");
+        console.log("Azure Queue Storage client library v12 - JavaScript quickstart sample");
         // Quick start code goes here
     }
 
@@ -118,13 +118,13 @@ npm install
 
     ```
 
-1. Speichern Sie die neue Datei als *queues-quickstart-v12.js* im Verzeichnis *queues-quickstart-v12*.
+1. Speichern Sie die neue Datei als `queues-quickstart-v12.js` im Verzeichnis `queues-quickstart-v12`.
 
 [!INCLUDE [storage-quickstart-credentials-include](../../../includes/storage-quickstart-credentials-include.md)]
 
 ## <a name="object-model"></a>Objektmodell
 
-Azure Queue Storage ist ein Dienst für die Speicherung einer großen Anzahl von Nachrichten. Eine Warteschlangennachricht kann bis zu 64 KB groß sein. Eine Warteschlange kann Millionen Nachrichten enthalten, bis die maximale Kapazität eines Speicherkontos erreicht ist. Warteschlangen werden häufig verwendet, um ein Arbeits-Backlog zur asynchronen Verarbeitung zu erstellen. Queue Storage bietet drei Arten von Ressourcen:
+Azure Queue Storage ist ein Dienst für die Speicherung großer Nachrichtenmengen. Eine Warteschlangennachricht kann bis zu 64 KB groß sein. Eine Warteschlange kann Millionen Nachrichten enthalten, bis die maximale Kapazität eines Speicherkontos erreicht ist. Warteschlangen werden häufig verwendet, um ein Arbeits-Backlog zur asynchronen Verarbeitung zu erstellen. Queue Storage bietet drei Arten von Ressourcen:
 
 - Das Speicherkonto
 - Eine Warteschlange im Speicherkonto
@@ -136,13 +136,13 @@ Im folgenden Diagramm ist die Beziehung zwischen diesen Ressourcen dargestellt.
 
 Verwenden Sie die folgenden JavaScript-Klassen für die Interaktion mit folgenden Ressourcen:
 
-- [QueueServiceClient](/javascript/api/@azure/storage-queue/queueserviceclient): Mit dem `QueueServiceClient` können Sie alle Warteschlangen in Ihrem Speicherkonto verwalten.
-- [QueueClient](/javascript/api/@azure/storage-queue/queueclient): Mit der `QueueClient`-Klasse können Sie eine einzelne Warteschlange und die darin enthaltenen Nachrichten verwalten und bearbeiten.
-- [QueueMessage](/javascript/api/@azure/storage-queue/queuemessage): Die `QueueMessage`-Klasse repräsentiert die einzelnen Objekte, die beim Aufrufen von [receiveMessages](/javascript/api/@azure/storage-queue/queueclient#receivemessages-queuereceivemessageoptions-) in einer Warteschlange zurückgegeben werden.
+- [`QueueServiceClient`](/javascript/api/@azure/storage-queue/queueserviceclient): Mit dem `QueueServiceClient` können Sie alle Warteschlangen in Ihrem Speicherkonto verwalten.
+- [`QueueClient`](/javascript/api/@azure/storage-queue/queueclient): Mit der `QueueClient`-Klasse können Sie eine einzelne Warteschlange und die darin enthaltenen Nachrichten verwalten und bearbeiten.
+- [`QueueMessage`](/javascript/api/@azure/storage-queue/queuemessage): Die `QueueMessage`-Klasse repräsentiert die einzelnen Objekte, die beim Aufrufen von [`ReceiveMessages`](/javascript/api/@azure/storage-queue/queueclient#receivemessages-queuereceivemessageoptions-) in einer Warteschlange zurückgegeben werden.
 
 ## <a name="code-examples"></a>Codebeispiele
 
-Diese Beispielcodeausschnitte veranschaulichen, wie folgende Vorgänge mit der Azure Queue Storage-Clientbibliothek für JavaScript ausgeführt werden:
+Diese Beispielcodeausschnitte veranschaulichen, wie folgende Aktionen mit der Azure Queue Storage-Clientbibliothek für JavaScript ausgeführt werden:
 
 - [Abrufen der Verbindungszeichenfolge](#get-the-connection-string)
 - [Erstellen einer Warteschlange](#create-a-queue)
@@ -155,7 +155,7 @@ Diese Beispielcodeausschnitte veranschaulichen, wie folgende Vorgänge mit der A
 
 ### <a name="get-the-connection-string"></a>Abrufen der Verbindungszeichenfolge
 
-Der folgende Code ruft die Verbindungszeichenfolge für das Speicherkonto aus der Umgebungsvariable ab, die im Abschnitt [Konfigurieren der Speicherverbindungszeichenfolge](#configure-your-storage-connection-string) erstellt wurde.
+Der folgende Code ruft die Verbindungszeichenfolge für das Speicherkonto aus der Umgebungsvariablen ab, die im Abschnitt [Konfigurieren der Speicherverbindungszeichenfolge](#configure-your-storage-connection-string) erstellt wurde.
 
 Fügen Sie diesen Code in der `main`-Funktion hinzu:
 
@@ -171,12 +171,12 @@ const AZURE_STORAGE_CONNECTION_STRING = process.env.AZURE_STORAGE_CONNECTION_STR
 
 ### <a name="create-a-queue"></a>Erstellen einer Warteschlange
 
-Legen Sie einen Namen für die neue Warteschlange fest. Der folgende Code hängt einen UUID-Wert an den Warteschlangennamen an, damit dieser eindeutig ist.
+Legen Sie einen Namen für die neue Warteschlange fest. Der folgende Code fügt einen UUID-Wert an den Warteschlangennnamen an, um sicherzustellen, dass er eindeutig ist.
 
 > [!IMPORTANT]
-> Warteschlangennamen dürfen nur Kleinbuchstaben, Ziffern und Bindestriche enthalten und müssen mit einem Buchstaben oder einer Ziffer beginnen. Vor und nach jedem Bindestrich muss ein Zeichen stehen, das kein Bindestrich ist. Der Name muss außerdem zwischen 3 und 63 Zeichen lang sein. Weitere Informationen zum Benennen von Warteschlangen finden Sie unter [Benennen von Warteschlangen und Metadaten](/rest/api/storageservices/naming-queues-and-metadata).
+> Warteschlangennamen dürfen nur Kleinbuchstaben, Ziffern und Bindestriche enthalten und müssen mit einem Buchstaben oder einer Ziffer beginnen. Vor und nach jedem Bindestrich muss ein Zeichen stehen, das kein Bindestrich ist. Der Name muss außerdem zwischen 3 und 63 Zeichen lang sein. Weitere Informationen finden Sie unter [Benennen von Warteschlangen und Metadaten](/rest/api/storageservices/naming-queues-and-metadata).
 
-Erstellen Sie eine Instanz der [QueueClient](/javascript/api/@azure/storage-queue/queueclient)-Klasse. Rufen Sie dann die [create](/javascript/api/@azure/storage-queue/queueclient#create-queuecreateoptions-)-Methode auf, um die Warteschlange in Ihrem Speicherkonto zu erstellen.
+Erstellen Sie eine Instanz der [`QueueClient`](/javascript/api/@azure/storage-queue/queueclient)-Klasse. Rufen Sie dann die [`create`](/javascript/api/@azure/storage-queue/queueclient#create-queuecreateoptions-)-Methode auf, um die Warteschlange in Ihrem Speicherkonto zu erstellen.
 
 Fügen Sie diesen Code am Ende der `main`-Funktion hinzu:
 
@@ -197,7 +197,7 @@ console.log("Queue created, requestId:", createQueueResponse.requestId);
 
 ### <a name="add-messages-to-a-queue"></a>Hinzufügen von Nachrichten zu einer Warteschlange
 
-Der folgende Codeausschnitt fügt der Warteschlange durch Aufrufen der [sendMessage](/javascript/api/@azure/storage-queue/queueclient#sendmessage-string--queuesendmessageoptions-)-Methode Nachrichten hinzu. Zudem wird die [QueueMessage](/javascript/api/@azure/storage-queue/queuemessage) gespeichert, die vom dritten `sendMessage`-Aufruf zurückgegeben wird. Die zurückgegebene `sendMessageResponse` wird später im Programm zum Aktualisieren des Nachrichteninhalts verwendet.
+Der folgende Codeausschnitt fügt der Warteschlange durch Aufrufen der [`sendMessage`](/javascript/api/@azure/storage-queue/queueclient#sendmessage-string--queuesendmessageoptions-)-Methode Nachrichten hinzu. Außerdem speichert er die [`QueueMessage`](/javascript/api/@azure/storage-queue/queuemessage), die vom dritten `sendMessage`-Aufruf zurückgegeben wird. Die zurückgegebene `sendMessageResponse` wird später im Programm zum Aktualisieren des Nachrichteninhalts verwendet.
 
 Fügen Sie diesen Code am Ende der `main`-Funktion hinzu:
 
@@ -214,7 +214,7 @@ console.log("Messages added, requestId:", sendMessageResponse.requestId);
 
 ### <a name="peek-at-messages-in-a-queue"></a>Einsehen von Nachrichten in einer Warteschlange
 
-Durch Aufrufen der [peekMessages](/javascript/api/@azure/storage-queue/queueclient#peekmessages-queuepeekmessagesoptions-)-Methode können Sie die Nachrichten in der Warteschlange einsehen. Die `peekMessages`-Methode ruft mindestens eine Nachricht vom Anfang der Warteschlange ab, ändert aber nicht die Sichtbarkeit der Nachricht.
+Durch Aufrufen der [`peekMessages`](/javascript/api/@azure/storage-queue/queueclient#peekmessages-queuepeekmessagesoptions-)-Methode können Sie die Nachrichten in der Warteschlange einsehen. Diese Methode ruft mindestens eine Nachricht vom Anfang der Warteschlange ab, ändert aber nicht die Sichtbarkeit der Nachricht.
 
 Fügen Sie diesen Code am Ende der `main`-Funktion hinzu:
 
@@ -232,7 +232,7 @@ for (i = 0; i < peekedMessages.peekedMessageItems.length; i++) {
 
 ### <a name="update-a-message-in-a-queue"></a>Aktualisieren einer Nachricht in einer Warteschlange
 
-Aktualisieren Sie den Inhalt einer Nachricht, indem Sie die [updateMessage](/javascript/api/@azure/storage-queue/queueclient#updatemessage-string--string--string--undefined---number--queueupdatemessageoptions-)-Methode aufrufen. Die `updateMessage`-Methode kann das Sichtbarkeitstimeout und den Inhalt einer Nachricht ändern. Beim Nachrichteninhalt muss es sich um eine UTF-8-codierte Zeichenfolge handeln, die bis zu 64 KB groß sein darf. Übergeben Sie zusammen mit dem neuen Inhalt die Objekte `messageId` und `popReceipt` aus der Antwort, die weiter oben im Code gespeichert wurde. Die `sendMessageResponse`-Eigenschaften identifizieren die Nachricht, die aktualisiert werden soll.
+Aktualisieren Sie den Inhalt einer Nachricht durch Aufrufen der [`updateMessage`](/javascript/api/@azure/storage-queue/queueclient#updatemessage-string--string--string--undefined---number--queueupdatemessageoptions-)-Methode. Diese Methode kann das Sichtbarkeitstimeout und den Inhalt einer Nachricht ändern. Beim Nachrichteninhalt muss es sich um eine UTF-8-codierte Zeichenfolge handeln, die bis zu 64 KB groß sein darf. Übergeben Sie zusammen mit dem neuen Inhalt die Objekte `messageId` und `popReceipt` aus der Antwort, die weiter oben im Code gespeichert wurde. Die `sendMessageResponse`-Eigenschaften identifizieren die Nachricht, die aktualisiert werden soll.
 
 ```javascript
 console.log("\nUpdating the third message in the queue...");
@@ -249,7 +249,7 @@ console.log("Message updated, requestId:", updateMessageResponse.requestId);
 
 ### <a name="receive-messages-from-a-queue"></a>Empfangen von Nachrichten aus einer Warteschlange
 
-Laden Sie zuvor hinzugefügte Nachrichten durch Aufrufen der [receiveMessages](/javascript/api/@azure/storage-queue/queueclient#receivemessages-queuereceivemessageoptions-)-Methode herunter. Übergeben Sie im Feld `numberOfMessages` die maximale Anzahl von Nachrichten, die für diesen Aufruf empfangen werden dürfen.
+Laden Sie zuvor hinzugefügte Nachrichten durch Aufrufen der [`receiveMessages`](/javascript/api/@azure/storage-queue/queueclient#receivemessages-queuereceivemessageoptions-)-Methode herunter. Übergeben Sie im Feld `numberOfMessages` die maximale Anzahl von Nachrichten, die für diesen Aufruf empfangen werden dürfen.
 
 Fügen Sie diesen Code am Ende der `main`-Funktion hinzu:
 
@@ -266,7 +266,7 @@ console.log("Messages received, requestId:", receivedMessagesResponse.requestId)
 
 Löschen Sie Nachrichten aus einer Warteschlange, nachdem sie empfangen und verarbeitet wurden. In diesem Fall besteht die Verarbeitung nur darin, dass die Nachricht in der Konsole angezeigt wird.
 
-Sie löschen Nachrichten, indem Sie die [deleteMessage](/javascript/api/@azure/storage-queue/queueclient#deletemessage-string--string--queuedeletemessageoptions-)-Methode aufrufen. Alle Nachrichten, die nicht explizit gelöscht werden, werden schlussendlich wieder in der Warteschlange angezeigt und ggf. erneut verarbeitet.
+Löschen Sie Nachrichten durch Aufrufen der [`deleteMessage`](/javascript/api/@azure/storage-queue/queueclient#deletemessage-string--string--queuedeletemessageoptions-)-Methode. Alle Nachrichten, die nicht explizit gelöscht werden, werden schlussendlich wieder in der Warteschlange angezeigt und ggf. erneut verarbeitet.
 
 Fügen Sie diesen Code am Ende der `main`-Funktion hinzu:
 
@@ -289,7 +289,7 @@ for (i = 0; i < receivedMessagesResponse.receivedMessageItems.length; i++) {
 
 ### <a name="delete-a-queue"></a>Löschen einer Warteschlange
 
-Der folgende Code bereinigt die von der App erstellten Ressourcen, indem die Warteschlange mithilfe der [delete](/javascript/api/@azure/storage-queue/queueclient#delete-queuedeleteoptions-)-Methode gelöscht wird.
+Der folgende Code bereinigt die von der App erstellten Ressourcen, indem die Warteschlange mithilfe der [`delete`](/javascript/api/@azure/storage-queue/queueclient#delete-queuedeleteoptions-)-Methode gelöscht wird.
 
 Fügen Sie diesen Code am Ende der `main`-Funktion hinzu, und speichern Sie die Datei:
 
@@ -304,7 +304,7 @@ console.log("Queue deleted, requestId:", deleteQueueResponse.requestId);
 
 Diese App erstellt drei Nachrichten und fügt sie einer Azure-Warteschlange hinzu. Der Code listet die Nachrichten in der Warteschlange auf, ruft sie ab und löscht sie und löscht letztendlich die Warteschlange.
 
-Navigieren Sie im Konsolenfenster zu dem Verzeichnis, das die Datei *queues-quickstart-v12.js* enthält, und führen Sie dann den folgenden `node`-Befehl aus, um die App auszuführen.
+Navigieren Sie in Ihrem Konsolenfenster zu dem Verzeichnis, das die Datei `queues-quickstart-v12.js` enthält, und führen Sie dann die App mit dem folgenden `node`-Befehl aus.
 
 ```console
 node queues-quickstart-v12.js
@@ -313,7 +313,7 @@ node queues-quickstart-v12.js
 Die Ausgabe der App sieht etwa wie das folgende Beispiel aus:
 
 ```output
-Azure Queue storage v12 - JavaScript quickstart sample
+Azure Queue Storage client library v12 - JavaScript quickstart sample
 
 Creating queue...
          quickstartc095d120-1d04-11ea-af30-090ee231305f
@@ -356,6 +356,5 @@ Tutorials, Beispiele, Schnellstartanleitungen und weiteres Dokumentationsmateria
 > [!div class="nextstepaction"]
 > [Dokumentation zu Azure für JavaScript](/azure/developer/javascript/)
 
-- Weitere Informationen finden Sie in der [Azure Storage Queue-Clientbibliothek für JavaScript](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-queue).
-- Weitere Beispiel-Apps für Azure Queue Storage finden Sie bei den [
-Beispielen für die Azure Queue Storage-Clientbibliothek v12 für JavaScript](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-queue/samples).
+- Weitere Informationen finden Sie in der [Azure Queue Storage-Clientbibliothek für JavaScript](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-queue).
+- Weitere Informationen zu Azure Queue Storage-Beispiel-Apps finden Sie unter [Azure Queue Storage-Clientbibliothek v12 für JavaScript – Beispiele](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-queue/samples).

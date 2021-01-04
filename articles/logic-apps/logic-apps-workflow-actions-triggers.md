@@ -7,12 +7,12 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 3dbfcacb6ea5922a01d52dfe39189f09f48d4b4a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 7423f8d8f2a566801048457ad5f5c44f3c1097ec
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96006080"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920048"
 ---
 # <a name="schema-reference-guide-for-trigger-and-action-types-in-azure-logic-apps"></a>Schemareferenzhandbuch zu Trigger- und Aktionstypen für Azure Logic Apps
 
@@ -1506,7 +1506,7 @@ Im Gegensatz zu anderen Aktionen verfügt die Aktion **Response** über speziell
 
 * Ihr Workflow kann die Aktion **Response** überall verwenden, *mit Ausnahme* innerhalb von **Foreach**-Schleifen, **Until**-Schleifen, z.B. sequenziellen Schleifen, und parallelen Branches. 
 
-* Die ursprüngliche HTTP-Anforderung ruft die Antwort Ihres Workflows nur ab, wenn alle für die Aktion **Response** erforderlichen Aktionen innerhalb des [Timeoutlimits für HTTP-Anforderungen](../logic-apps/logic-apps-limits-and-config.md#request-limits) beendet wurden.
+* Die ursprüngliche Anforderung ruft die Antwort Ihres Workflows nur ab, wenn alle für die Aktion **Response** erforderlichen Aktionen innerhalb des [HTTP-Timeoutlimits](../logic-apps/logic-apps-limits-and-config.md#http-limits) beendet wurden.
 
   Wenn Ihr Workflow aber eine andere Logik-App als geschachtelten Workflow aufruft, wartet der übergeordnete Workflow, bis der geschachtelte Workflow abgeschlossen ist. Hierbei spielt es keine Rolle, wie viel Zeit vergeht, bis der geschachtelte Workflow abgeschlossen ist.
 

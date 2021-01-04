@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: chnwamba
 ms.custom: devx-track-js
-ms.openlocfilehash: 6f96b74726684d37795c94be74e48611b4145402
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: a22d06137c3ec17851280605ac85c94ef8b342cd
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350210"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563074"
 ---
 # <a name="deploy-static-rendered-nextjs-websites-on-azure-static-web-apps-preview"></a>Bereitstellen von statisch gerenderten Next.js-Websites in Azure Static Web Apps (Vorschauversion)
 
@@ -125,7 +125,7 @@ Bei Azure Static Web Apps wird Ihre App aus einem GitHub-Repository bereitgestel
 1. Pushen Sie Ihre Änderungen zu GitHub.
 
     ```bash
-    git push origin master
+    git push origin main
     ```
 
 ## <a name="deploy-your-static-website"></a>Bereitstellen Ihrer statischen Website
@@ -155,7 +155,7 @@ Das neue Azure Static Web Apps-Konto benötigt Zugriff auf das Repository mit Ih
 1. Klicken Sie auf die Schaltfläche **Mit GitHub anmelden**.
 1. Wählen Sie die **Organisation** aus, unter der Sie das Repository für Ihr Next.js-Projekt erstellt haben. Unter Umständen ist dies Ihr GitHub-Benutzername.
 1. Suchen Sie nach dem Namen des zuvor erstellten Repositorys, und wählen Sie ihn aus.
-1. Wählen Sie in der Dropdownliste *Branch* die Option **master** als Branch aus.
+1. Wählen Sie in der Dropdownliste *Branch* die Option **main** als Branch aus.
 
    :::image type="content" source="media/deploy-nextjs/connect-github.png" alt-text="Verbinden mit GitHub":::
 
@@ -189,7 +189,7 @@ https://github.com/<YOUR_GITHUB_USERNAME>/nextjs-starter/actions
 
 Als Sie die App erstellt haben, wurde von Azure Static Web Apps in Ihrem Repository eine GitHub Actions-Workflowdatei erstellt. Sie müssen diese Datei in Ihr lokales Repository einfügen, damit Ihr Git-Verlauf synchronisiert wird.
 
-Wechseln Sie zurück zum Terminal, und führen Sie den folgenden Befehl aus: `git pull origin master`.
+Wechseln Sie zurück zum Terminal, und führen Sie den folgenden Befehl aus: `git pull origin main`.
 
 ## <a name="configure-dynamic-routes"></a>Konfigurieren dynamischer Routen
 

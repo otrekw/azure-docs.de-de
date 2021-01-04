@@ -6,12 +6,12 @@ ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 49bc1a77e2e25cb069a89812603ff562b8a4c1cd
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 9e04006a0908832c623230d89caa62b0985f32e4
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96931451"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97587943"
 ---
 # <a name="tutorial-deploy-virtual-machine-extensions-with-arm-templates"></a>Tutorial: Bereitstellen von VM-Erweiterungen mit ARM-Vorlagen
 
@@ -42,7 +42,7 @@ Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie F
 
 ## <a name="prepare-a-powershell-script"></a>Vorbereiten eines PowerShell-Skripts
 
-Sie können ein PowerShell-Inlineskript oder eine Skriptdatei verwenden.  In diesem Tutorial wird die Verwendung einer Skriptdatei erläutert. Ein PowerShell-Skript mit folgendem Inhalt ist auf [GitHub](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-vm-extension/installWebServer.ps1) verfügbar:
+Sie können ein PowerShell-Inlineskript oder eine Skriptdatei verwenden. In diesem Tutorial wird die Verwendung einer Skriptdatei erläutert. Ein PowerShell-Skript mit folgendem Inhalt ist auf [GitHub](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-vm-extension/installWebServer.ps1) verfügbar:
 
 ```azurepowershell
 Install-WindowsFeature -name Web-Server -IncludeManagementTools
@@ -105,22 +105,22 @@ Fügen Sie der vorhandenen Vorlage eine VM-Erweiterungsressource mit folgendem I
 
 Weitere Informationen zu dieser Ressourcendefinition finden Sie in der [Erweiterungsreferenz](/azure/templates/microsoft.compute/virtualmachines/extensions). Im Anschluss sind einige zentrale Elemente aufgeführt:
 
-* **name:** Da es sich bei der Erweiterungsressource um eine untergeordnete Ressource des VM-Objekts handelt, muss der Name mit dem VM-Namenspräfix versehen werden. Weitere Informationen finden Sie unter [Festlegen von Name und Typ für untergeordnete Ressourcen](child-resource-name-type.md).
-* **dependsOn:** Erstellen Sie die Erweiterungsressource nach der Erstellung des virtuellen Computers.
-* **fileUris:** Die Speicherorte der Skriptdateien. Falls Sie sich gegen die Verwendung des angegebenen Speicherorts entscheiden, müssen Sie die Werte aktualisieren.
-* **commandToExecute:** Dieser Befehl ruft das Skript auf.
+* `name` Da es sich bei der Erweiterungsressource um eine untergeordnete Ressource des VM-Objekts handelt, muss der Name mit dem VM-Namenspräfix versehen werden. Weitere Informationen finden Sie unter [Festlegen von Name und Typ für untergeordnete Ressourcen](child-resource-name-type.md).
+* `dependsOn` Erstellen Sie die Erweiterungsressource nach der Erstellung des virtuellen Computers.
+* `fileUris` Die Speicherorte der Skriptdateien. Falls Sie sich gegen die Verwendung des angegebenen Speicherorts entscheiden, müssen Sie die Werte aktualisieren.
+* `commandToExecute`: Dieser Befehl ruft das Skript auf.
 
-Wenn Sie ein Inlineskript verwenden möchten, entfernen Sie **fileUris**, und aktualisieren Sie **commandToExecute** wie folgt:
+Wenn Sie ein Inlineskript verwenden, entfernen Sie `fileUris`, und aktualisieren Sie `commandToExecute`:
 
 ```powershell
 powershell.exe Install-WindowsFeature -name Web-Server -IncludeManagementTools && powershell.exe remove-item 'C:\\inetpub\\wwwroot\\iisstart.htm' && powershell.exe Add-Content -Path 'C:\\inetpub\\wwwroot\\iisstart.htm' -Value $('Hello World from ' + $env:computername)
 ```
 
-Dieses Inlineskript aktualisiert auch den Inhalt der Datei „iisstart.html“.
+Dieses Inlineskript aktualisiert auch den Inhalt der Datei _iisstart.html_.
 
 Außerdem müssen Sie den HTTP-Port öffnen, um auf den Webserver zugreifen zu können.
 
-1. Suchen Sie in der Vorlage nach **securityRules**.
+1. Suchen Sie in der Vorlage nach `securityRules`.
 1. Fügen Sie die folgende Regel neben **default-allow-3389** hinzu.
 
     ```json
@@ -141,7 +141,7 @@ Außerdem müssen Sie den HTTP-Port öffnen, um auf den Webserver zugreifen zu k
 
 ## <a name="deploy-the-template"></a>Bereitstellen der Vorlage
 
-Informationen zum Bereitstellungsverfahren finden Sie im Abschnitt „Bereitstellen der Vorlage“ unter [Tutorial: Erstellen von ARM-Vorlagen mit abhängigen Ressourcen](./template-tutorial-create-templates-with-dependent-resources.md#deploy-the-template). Es empfiehlt sich, ein generiertes Kennwort für das Administratorkonto des virtuellen Computers zu verwenden. Informationen finden Sie in diesem Artikel im Abschnitt [Voraussetzungen](#prerequisites).
+Informationen zum Bereitstellungsverfahren finden Sie im Abschnitt **Bereitstellen der Vorlage** unter [Tutorial: Erstellen von ARM-Vorlagen mit abhängigen Ressourcen](./template-tutorial-create-templates-with-dependent-resources.md#deploy-the-template). Es empfiehlt sich, ein generiertes Kennwort für das Administratorkonto des virtuellen Computers zu verwenden. Informationen finden Sie in diesem Artikel im Abschnitt [Voraussetzungen](#prerequisites).
 
 Rufen Sie mithilfe des folgenden Befehls in Cloud Shell die öffentliche IP-Adresse des virtuellen Computers ab:
 

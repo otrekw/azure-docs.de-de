@@ -5,16 +5,16 @@ author: mumian
 ms.date: 12/09/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: b798e5ceb72ece3989fb81014555f2bc0fea5926
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 2d50903f464c03157ee393787af6ddfdad975aed
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96931400"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588028"
 ---
 # <a name="tutorial-import-sql-bacpac-files-with-arm-templates"></a>Tutorial: Importieren von SQL-BACPAC-Dateien mit ARM-Vorlagen
 
-Hier erfahren Sie, wie Sie die Azure SQL-Datenbank-Erweiterung verwenden, um eine BACPAC-Datei mit Azure Resource Manager-Vorlagen (ARM-Vorlagen) zu importieren. Bereitstellungsartefakte sind sämtliche Dateien, die zusätzlich zu Hauptvorlagendateien für eine Bereitstellung benötigt werden. Die BACPAC-Datei ist ein Artefakt.
+Erfahren Sie, wie Sie die Azure SQL-Datenbank-Erweiterung verwenden, um eine [BACPAC](/sql/relational-databases/data-tier-applications/data-tier-applications#bacpac)-Datei mit Azure Resource Manager-Vorlagen (ARM-Vorlagen) zu importieren. Bereitstellungsartefakte sind sämtliche Dateien, die zusätzlich zu Hauptvorlagendateien für eine Bereitstellung benötigt werden. Die BACPAC-Datei ist ein Artefakt.
 
 In diesem Tutorial erstellen Sie eine Vorlage zum Bereitstellen eines [logischen SQL-Servers](../../azure-sql/database/logical-servers.md) und einer einzelnen Datenbank, und Sie importieren eine BACPAC-Datei. Informationen zum Bereitstellen von Azure-VM-Erweiterungen unter Verwendung von ARM-Vorlagen finden Sie unter [Tutorial: Bereitstellen von VM-Erweiterungen mit ARM-Vorlagen](./template-tutorial-deploy-vm-extensions.md).
 
@@ -55,7 +55,7 @@ Die BACPAC-Datei muss in einem Azure Storage-Konto gespeichert werden, damit si
 * Hochladen der BACPAC-Datei in den Container
 * Zeigen Sie den Speicherkontoschlüssel und die Blob-URL an.
 
-1. Wählen Sie **Ausprobieren** aus, um Cloud Shell zu öffnen. Fügen Sie dann das folgende PowerShell-Skript im Shell-Fenster ein:
+1. Wählen Sie **Ausprobieren** aus, um die Shell zu öffnen. Fügen Sie dann das folgende PowerShell-Skript im Shell-Fenster ein:
 
     ```azurepowershell-interactive
     $projectName = Read-Host -Prompt "Enter a project name that is used to generate Azure resource names"
@@ -120,7 +120,7 @@ Die in diesem Tutorial verwendete Vorlage befindet sich auf [GitHub](https://raw
 
 ## <a name="edit-the-template"></a>Bearbeiten der Vorlage
 
-1. Fügen Sie am Ende des Abschnitts **parameters** zwei weitere Parameter hinzu, um den Speicherkontoschlüssel und die BACPAC-URL festzulegen:
+1. Fügen Sie am Ende des Abschnitts `parameters` zwei weitere Parameter hinzu, um den Speicherkontoschlüssel und die BACPAC-URL festzulegen:
 
     ```json
         "storageAccountKey": {
@@ -137,7 +137,7 @@ Die in diesem Tutorial verwendete Vorlage befindet sich auf [GitHub](https://raw
         }
     ```
 
-    Fügen Sie nach **adminPassword** ein Komma ein. Drücken Sie zum Formatieren der JSON-Datei in Visual Studio Code UMSCHALT+ALT+F.
+    Fügen Sie nach der schließenden geschweiften Klammer (`}`) der `adminPassword`-Eigenschaft ein Komma hinzu. Drücken Sie zum Formatieren der JSON-Datei in Visual Studio Code UMSCHALT+ALT+F.
 
     Informationen zum Abrufen dieser beiden Werte finden Sie unter [Vorbereiten einer BACPAC-Datei](#prepare-a-bacpac-file).
 
@@ -196,11 +196,11 @@ Die in diesem Tutorial verwendete Vorlage befindet sich auf [GitHub](https://raw
 
         Informationen zur Ressourcendefinition finden Sie in der [Referenz zur SQL-Datenbank-Erweiterung](/azure/templates/microsoft.sql/servers/databases/extensions). Im Anschluss sind einige zentrale Elemente aufgeführt:
 
-        * **dependsOn:** Die Erweiterungsressource muss nach der Erstellung der Datenbank erstellt werden.
-        * **storageKeyType:** Geben Sie die Art des zu verwendenden Speicherschlüssels an. Der Wert kann entweder `StorageAccessKey` oder `SharedAccessKey` sein. Verwenden Sie in diesem Tutorial `StorageAccessKey`.
-        * **storageKey:** Geben Sie den Schlüssel für das Speicherkonto an, in dem die BACPAC-Datei gespeichert ist. Bei Verwendung des Speicherschlüsseltyps `SharedAccessKey` muss ein Fragezeichen (?) vorangestellt werden.
-        * **storageUri:** Geben Sie die URL der in einem Speicherkonto gespeicherten BACPAC-Datei an.
-        * **administratorLoginPassword:** Das Kennwort des SQL-Administrators. Verwenden Sie ein generiertes Kennwort. Siehe [Voraussetzungen](#prerequisites).
+        * `dependsOn` Die Erweiterungsressource muss nach der Erstellung der Datenbank erstellt werden.
+        * `storageKeyType` Geben Sie die Art des zu verwendenden Speicherschlüssels an. Der Wert kann entweder `StorageAccessKey` oder `SharedAccessKey` sein. Verwenden Sie in diesem Tutorial `StorageAccessKey`.
+        * `storageKey` Geben Sie den Schlüssel für das Speicherkonto an, in dem die BACPAC-Datei gespeichert ist. Bei Verwendung des Speicherschlüsseltyps `SharedAccessKey` muss ein Fragezeichen (?) vorangestellt werden.
+        * `storageUri` Geben Sie die URL der in einem Speicherkonto gespeicherten BACPAC-Datei an.
+        * `administratorLoginPassword` Das Kennwort des SQL-Administrators. Verwenden Sie ein generiertes Kennwort. Siehe [Voraussetzungen](#prerequisites).
 
 Die fertige Vorlage sieht folgendermaßen aus:
 

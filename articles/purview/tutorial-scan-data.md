@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/01/2020
-ms.openlocfilehash: 802b7d2ca5d96bf385c4b8f0ee0cdaa3db181a1c
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: feda969a5818402f4a5f2dadc80c70c324ad7492
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96922572"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97559963"
 ---
 # <a name="tutorial-scan-data-with-azure-purview-preview"></a>Tutorial: Überprüfen von Daten mit Azure Purview (Vorschau)
 
@@ -146,10 +146,11 @@ Führen Sie nach Abschluss der Katalogkonfiguration die folgenden Skripts im Pow
 
    Bei der Ausführung des Befehls wird möglicherweise ein Popupfenster angezeigt, in dem Sie sich mit Ihren Azure Active Directory-Anmeldeinformationen anmelden können.
 
-1. Verwenden Sie den folgenden Befehl, um das Starter Kit auszuführen. Ersetzen Sie die Platzhalter `CatalogName`, `TenantID`, `SubscriptionID`, `newresourcegroupname` und `CatalogResourceGroupName`. Verwenden Sie für `newresourcegroupname` einen eindeutigen Namen für die Ressourcengruppe, die den Datenbestand enthält.
 
-> [!IMPORTANT]
-> Für **newresourcegroupname** dürfen nur Zahlen und Kleinbuchstaben verwendet werden, und der Name darf maximal 17 Zeichen lang sein. **Großbuchstaben und Sonderzeichen sind nicht zulässig.** Diese Einschränkung stammt aus den Benennungsregeln für Speicherkonten.
+1. Verwenden Sie den folgenden Befehl, um das Starter Kit auszuführen. Ersetzen Sie die Platzhalter `CatalogName`, `TenantID`, `SubscriptionID`, `NewResourceGroupName` und `CatalogResourceGroupName`. Verwenden Sie für `NewResourceGroupName` einen eindeutigen Namen (der ausschließlich aus alphanumerischen Kleinbuchstaben besteht) für die Ressourcengruppe, die den Datenbestand enthält.
+
+   > [!IMPORTANT]
+   > Für **newresourcegroupname** dürfen nur Zahlen und Kleinbuchstaben verwendet werden, und der Name darf maximal 17 Zeichen lang sein. **Großbuchstaben und Sonderzeichen sind nicht zulässig.** Diese Einschränkung stammt aus den Benennungsregeln für Speicherkonten.
 
    ```powershell
    .\RunStarterKit.ps1 -CatalogName <CatalogName> -TenantId <TenantID>`

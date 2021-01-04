@@ -1,20 +1,20 @@
 ---
-title: 'Schnellstart: Erstellen Ihrer ersten statischen Web-App mit Azure Static Web Apps und der Azure CLI'
-description: Hier wird beschrieben, wie Sie mit der Azure Static Web Apps-Befehlszeilenschnittstelle eine Instanz von Azure Static Web Apps erstellen.
+title: 'Schnellstart: Erstellen Ihrer ersten statischen Website mit Azure Static Web Apps und der CLI'
+description: Erfahren Sie, wie Sie mit der Azure CLI eine statische Website für Azure Static Web Apps bereitstellen.
 services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 08/13/2020
 ms.author: cshoe
-ms.openlocfilehash: ed49892284b53844c5c578b752a598cdbdd9b946
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: ca05194c0d8e63290a9cab8d9f7903daa192069b
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92320342"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97030347"
 ---
-# <a name="quickstart-building-your-first-static-web-app-using-the-azure-cli"></a>Schnellstart: Erstellen Ihrer ersten statischen Web-App mithilfe der Azure CLI
+# <a name="quickstart-building-your-first-static-site-using-the-azure-cli"></a>Schnellstart: Erstellen Ihrer ersten statischen Website mithilfe der Azure CLI
 
 Azure Static Web Apps veröffentlicht eine Website in einer Produktionsumgebung, indem Apps aus einem GitHub-Repository erstellt werden. In dieser Schnellstartanleitung stellen Sie über die Azure CLI eine Web-Anwendung in Azure Static Web Apps bereit.
 

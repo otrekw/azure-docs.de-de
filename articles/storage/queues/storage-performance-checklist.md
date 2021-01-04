@@ -1,58 +1,60 @@
 ---
-title: 'Checkliste zu Leistung und Skalierbarkeit für Queue Storage: Azure Storage'
-description: Eine Checkliste mit bewährten Methoden für die Entwicklung leistungsstarker Anwendungen mit Queue Storage.
-services: storage
+title: Checkliste zu Leistung und Skalierbarkeit für Queue Storage – Azure Storage
+description: Eine Checkliste mit bewährten Methoden für die Entwicklung leistungsstarker Anwendungen mit Queue Storage.
 author: tamram
-ms.service: storage
-ms.topic: overview
-ms.date: 10/10/2019
+services: storage
 ms.author: tamram
+ms.date: 10/10/2019
+ms.topic: overview
+ms.service: storage
 ms.subservice: queues
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6e86950581255bd4e3a78b0b4a3f599a24a3cad0
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 4040a81d5b509ddbdd355953e28721a7c9fccfb8
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93345753"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97585665"
 ---
-# <a name="performance-and-scalability-checklist-for-queue-storage"></a>Checkliste zu Leistung und Skalierbarkeit für Queue Storage
+<!-- docutune:casing "Timeout and Server Busy errors" -->
 
-Microsoft hat eine Reihe bewährter Methoden für die Entwicklung leistungsstarker Anwendungen mit Queue Storage zusammengestellt. Diese Checkliste enthält wichtige Methoden, mit denen Entwickler die Leistung optimieren können. Beachten Sie diese Methoden beim Entwerfen Ihrer Anwendung und während des gesamten Prozesses.
+# <a name="performance-and-scalability-checklist-for-queue-storage"></a>Checkliste zu Leistung und Skalierbarkeit für Queue Storage
+
+Microsoft hat eine Reihe bewährter Methoden für die Entwicklung leistungsstarker Anwendungen mit Queue Storage zusammengestellt. Diese Checkliste enthält wichtige Methoden, mit denen Entwickler die Leistung optimieren können. Beachten Sie diese Methoden beim Entwerfen Ihrer Anwendung und während des gesamten Prozesses.
 
 Azure Storage verfügt über Skalierbarkeits- und Leistungsziele für die Kapazität, Transaktionsrate und Bandbreite. Weitere Informationen zu Azure Storage-Skalierbarkeitszielen finden Sie unter [Skalierbarkeits- und Leistungsziele für Standardspeicherkonten](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json) und [Skalierbarkeits- und Leistungsziele für Queue Storage](scalability-targets.md).
 
 ## <a name="checklist"></a>Checkliste
 
-In diesem Artikel werden bewährte Methoden für die Leistung in einer Checkliste zusammengefasst, an der Sie sich beim Entwickeln Ihrer Queue Storage-Anwendung orientieren können.
+In diesem Artikel werden bewährte Methoden für die Leistung in einer Checkliste zusammengefasst, an der Sie sich beim Entwickeln Ihrer Queue Storage-Anwendung orientieren können.
 
 | Vorgehensweise | Category | Überlegungen zum Entwurf |
-| --- | --- | --- |
-| &nbsp; |Skalierbarkeitsziele |[Können Sie Ihre Anwendung so entwerfen, dass sie nicht mehr als die maximale Anzahl von Speicherkonten verwendet?](#maximum-number-of-storage-accounts) |
-| &nbsp; |Skalierbarkeitsziele |[Vermeiden Sie es, die Kapazitäts- und Transaktionsgrenzwerte zu erreichen?](#capacity-and-transaction-targets) |
-| &nbsp; |Netzwerk |[Haben clientseitige Geräte genügend Bandbreite und ist die Wartezeit gering genug, um die erforderliche Leistung zu erzielen?](#throughput) |
-| &nbsp; |Netzwerk |[Ist die Qualität der Netzwerkverbindung von clientseitigen Geräten gut?](#link-quality) |
-| &nbsp; |Netzwerk |[Befindet sich die Clientanwendung in der gleichen Region wie das Speicherkonto?](#location) |
-| &nbsp; |Direkter Clientzugriff |[Verwenden Sie Shared Access Signatures (SAS) und Cross-Origin Resource Sharing (CORS), um den direkten Zugriff auf Azure Storage zu ermöglichen?](#sas-and-cors) |
-| &nbsp; |.NET-Konfiguration |[Verwenden Sie .NET Core 2.1 oder höher, um eine optimale Leistung zu erzielen?](#use-net-core) |
-| &nbsp; |.NET-Konfiguration |[Haben Sie Ihren Client zur Verwendung einer ausreichenden Anzahl gleichzeitiger Verbindungen konfiguriert?](#increase-default-connection-limit) |
-| &nbsp; |.NET-Konfiguration |[Für .NET-Anwendungen: Haben Sie .NET für die Verwendung einer ausreichenden Anzahl von Threads konfiguriert?](#increase-minimum-number-of-threads) |
-| &nbsp; |Parallelität |[Haben Sie sichergestellt, dass die Parallelität entsprechend begrenzt ist, sodass weder die Clientkapazitäten noch die Skalierbarkeitsziele überschritten werden?](#unbounded-parallelism) |
-| &nbsp; |Tools |[Verwenden Sie die aktuellen Versionen der von Microsoft bereitgestellten Clientbibliotheken und -tools?](#client-libraries-and-tools) |
-| &nbsp; |Wiederholungsversuche |[Verwenden Sie eine Wiederholungsrichtlinie mit exponentiellem Backoff für Drosselungsfehler und Timeouts?](#timeout-and-server-busy-errors) |
-| &nbsp; |Wiederholungsversuche |[Vermeidet Ihre Anwendung Wiederholungsversuche für nicht wiederholbare Fehler?](#non-retryable-errors) |
-| &nbsp; |Konfiguration |[Haben Sie den Nagle-Algorithmus deaktiviert, um die Leistung kleiner Anforderungen zu verbessern?](#disable-nagle) |
-| &nbsp; |Nachrichtengröße |[Sind Ihre Nachrichten kompakt, um die Leistung der Warteschlange zu verbessern?](#message-size) |
-| &nbsp; |Massenabruf |[Rufen Sie mehrere Nachrichten mit einem einzigen GET-Vorgang ab?](#batch-retrieval) |
-| &nbsp; |Abrufhäufigkeit |[Rufen Sie häufig genug ab, um die gefühlte Latenz der Anwendung zu reduzieren?](#queue-polling-interval) |
-| &nbsp; |Aktualisieren von Nachrichten |[Verwenden Sie den Vorgang „UpdateMessage“, um den Fortschritt bei der Nachrichtenverarbeitung zu speichern, sodass bei einem Fehler nicht die gesamte Nachricht erneut verarbeitet werden muss?](#use-update-message) |
-| &nbsp; |Aufbau |[Verwenden Sie Warteschlangen, um die gesamte Anwendung besser skalierbar zu machen, indem Sie Arbeitsauslastungen mit langer Laufzeit aus dem kritischen Pfad heraushalten und unabhängig skalieren?](#application-architecture) |
+|--|--|--|
+| &nbsp; | Skalierbarkeitsziele | [Können Sie Ihre Anwendung so entwerfen, dass sie nicht mehr als die maximale Anzahl von Speicherkonten verwendet?](#maximum-number-of-storage-accounts) |
+| &nbsp; | Skalierbarkeitsziele | [Vermeiden Sie es, die Kapazitäts- und Transaktionsgrenzwerte zu erreichen?](#capacity-and-transaction-targets) |
+| &nbsp; | Netzwerk | [Haben clientseitige Geräte genügend Bandbreite und ist die Wartezeit gering genug, um die erforderliche Leistung zu erzielen?](#throughput) |
+| &nbsp; | Netzwerk | [Ist die Qualität der Netzwerkverbindung von clientseitigen Geräten gut?](#link-quality) |
+| &nbsp; | Netzwerk | [Befindet sich die Clientanwendung in der gleichen Region wie das Speicherkonto?](#location) |
+| &nbsp; | Direkter Clientzugriff | [Verwenden Sie Shared Access Signatures (SAS) und Cross-Origin Resource Sharing (CORS), um den direkten Zugriff auf Azure Storage zu ermöglichen?](#sas-and-cors) |
+| &nbsp; | .NET-Konfiguration | [Verwenden Sie .NET Core 2.1 oder höher, um eine optimale Leistung zu erzielen?](#use-net-core) |
+| &nbsp; | .NET-Konfiguration | [Haben Sie Ihren Client zur Verwendung einer ausreichenden Anzahl gleichzeitiger Verbindungen konfiguriert?](#increase-default-connection-limit) |
+| &nbsp; | .NET-Konfiguration | [Für .NET-Anwendungen: Haben Sie .NET für die Verwendung einer ausreichenden Anzahl von Threads konfiguriert?](#increase-the-minimum-number-of-threads) |
+| &nbsp; | Parallelität | [Haben Sie sichergestellt, dass die Parallelität entsprechend begrenzt ist, sodass weder die Clientkapazitäten noch die Skalierbarkeitsziele überschritten werden?](#unbounded-parallelism) |
+| &nbsp; | Tools | [Verwenden Sie die aktuellen Versionen der von Microsoft bereitgestellten Clientbibliotheken und -tools?](#client-libraries-and-tools) |
+| &nbsp; | Wiederholungsversuche | [Verwenden Sie eine Wiederholungsrichtlinie mit exponentiellem Backoff für Drosselungsfehler und Timeouts?](#timeout-and-server-busy-errors) |
+| &nbsp; | Wiederholungsversuche | [Vermeidet Ihre Anwendung Wiederholungsversuche für nicht wiederholbare Fehler?](#non-retryable-errors) |
+| &nbsp; | Konfiguration | [Haben Sie den Nagle-Algorithmus deaktiviert, um die Leistung kleiner Anforderungen zu verbessern?](#disable-nagles-algorithm) |
+| &nbsp; | Nachrichtengröße | [Sind Ihre Nachrichten kompakt, um die Leistung der Warteschlange zu verbessern?](#message-size) |
+| &nbsp; | Massenabruf | [Rufen Sie mehrere Nachrichten in einem einzigen GET-Vorgang ab?](#batch-retrieval) |
+| &nbsp; | Abrufhäufigkeit | [Rufen Sie häufig genug ab, um die gefühlte Latenz der Anwendung zu reduzieren?](#queue-polling-interval) |
+| &nbsp; | Aktualisierungsnachricht | [Führen Sie einen Vorgang zum Aktualisieren von Nachrichten aus, um den Fortschritt bei der Nachrichtenverarbeitung zu speichern, sodass bei einem Fehler nicht die gesamte Nachricht erneut verarbeitet werden muss?](#perform-an-update-message-operation) |
+| &nbsp; | Aufbau | [Verwenden Sie Warteschlangen, um die gesamte Anwendung besser skalierbar zu machen, indem Sie Arbeitsauslastungen mit langer Laufzeit aus dem kritischen Pfad heraushalten und unabhängig skalieren?](#application-architecture) |
 
 ## <a name="scalability-targets"></a>Skalierbarkeitsziele
 
-Wenn Ihre Anwendung eines der Skalierbarkeitsziele erreicht oder überschreitet, kann es zu erhöhter Transaktionslatenz oder Drosselung kommen. Wenn Azure Storage Ihre Anwendung drosselt, beginnt der Dienst, die Fehlercodes 503 (Server ausgelastet) oder 500 (Timeout bei Vorgang) zurückzugeben. Diese Fehler zu vermeiden, indem Sie innerhalb der Grenzwerte der Skalierbarkeitsziele bleiben, trägt maßgeblich dazu bei, die Leistung Ihrer Anwendung zu verbessern.
+Wenn Ihre Anwendung eines der Skalierbarkeitsziele erreicht oder überschreitet, kann es zu erhöhter Transaktionslatenz oder Drosselung kommen. Wenn Azure Storage Ihre Anwendung drosselt, beginnt der Dienst mit der Rückgabe der Fehlercodes 503 (`Server Busy`) oder 500 (`Operation Timeout`). Diese Fehler zu vermeiden, indem Sie innerhalb der Grenzwerte der Skalierbarkeitsziele bleiben, trägt maßgeblich dazu bei, die Leistung Ihrer Anwendung zu verbessern.
 
-Weitere Informationen zu den Skalierbarkeitszielen für den Warteschlangendienst finden Sie unter [Skalierbarkeits- und Leistungsziele in Azure Storage](./scalability-targets.md#scale-targets-for-queue-storage).
+Weitere Informationen zu den Skalierbarkeitszielen für Queue Storage finden Sie unter [Skalierbarkeits- und Leistungsziele in Azure Storage](./scalability-targets.md#scale-targets-for-queue-storage).
 
 ### <a name="maximum-number-of-storage-accounts"></a>Maximale Anzahl von Speicherkonten
 
@@ -78,17 +80,17 @@ Wie in den folgenden Abschnitten beschrieben, sind die Bandbreite und die Qualit
 
 #### <a name="throughput"></a>Throughput
 
-Bei der Bandbreite liegt das Problem häufig in der Clientkapazität. Größere Azure-Instanzen verfügen über NICs mit höherer Kapazität. Daher sollten Sie erwägen, eine größere Instanz oder mehr VMs zu verwenden, wenn Sie höhere Netzwerkgrenzwerte auf einem einzelnen Computer benötigen. Wenn Sie von einer lokalen Anwendung auf Azure Storage zugreifen, gilt dieselbe Regel: Informieren Sie sich über die Netzwerkkapazität des Clientgeräts und die Netzwerkverbindung mit dem Azure Storage-Speicherort, und optimieren Sie diese, oder entwerfen Sie Ihre Anwendung entsprechend diesen Kapazitätsgrenzen.
+Bei der Bandbreite liegt das Problem häufig in der Clientkapazität. Größere Azure-Instanzen verfügen über NICs mit höherer Kapazität. Daher sollten Sie erwägen, eine größere Instanz oder mehr VMs zu verwenden, wenn Sie höhere Netzwerkgrenzwerte auf einem einzelnen Computer benötigen. Wenn Sie aus einer lokalen Anwendung auf Azure Storage zugreifen, gilt dieselbe Regel: Informieren Sie sich über die Netzwerkkapazität des Clientgeräts und die Netzwerkverbindung mit dem Azure Storage-Speicherort, und optimieren Sie sie, oder entwerfen Sie Ihre Anwendung entsprechend diesen Kapazitätsgrenzen.
 
 #### <a name="link-quality"></a>Verbindungsqualität
 
-Bedenken Sie wie bei jeder Netzwerknutzung, dass Netzwerkbedingungen, die zu Fehlern und Paketverlusten führen, den effektiven Durchsatz verringern. Die Verwendung von WireShark oder NetMon kann bei der Diagnose dieses Problems helfen.
+Bedenken Sie wie bei jeder Netzwerknutzung, dass Netzwerkbedingungen, die zu Fehlern und Paketverlusten führen, den effektiven Durchsatz verringern. Die Verwendung von Wireshark oder Netzwerkmonitor kann bei der Diagnose dieses Problems helfen.
 
-### <a name="location"></a>Position
+### <a name="location"></a>Standort
 
-In jeder verteilten Umgebung wird die beste Leistung erzielt, indem der Client in der Nähe des Servers platziert wird. Zum Zugriff auf den Azure-Speicher mit der niedrigsten Latenz befindet sich der beste Standort für den Client innerhalb derselben Azure-Region. Wenn Sie beispielsweise über eine Azure-Web-App verfügen, die Azure Storage verwendet, sollten Sie beide in derselben Region bereitstellen (z. B. „USA, Westen“ oder „Asien, Südosten“). Durch die räumliche Zusammenlegung von Ressourcen werden die Wartezeit und die Kosten verringert, da die Bandbreitennutzung innerhalb einer Region kostenlos ist.
+In jeder verteilten Umgebung wird die beste Leistung erzielt, indem der Client in der Nähe des Servers platziert wird. Zum Zugriff auf den Azure-Speicher mit der niedrigsten Latenz befindet sich der beste Standort für den Client innerhalb derselben Azure-Region. Wenn Sie beispielsweise eine Azure-Web-App haben, die Azure Storage verwendet, sollten Sie beide in derselben Region bereitstellen (z. B. „USA, Westen“ oder „Asien, Südosten“). Durch die räumliche Zusammenlegung von Ressourcen werden die Wartezeit und die Kosten verringert, da die Bandbreitennutzung innerhalb einer Region kostenlos ist.
 
-Wenn Clientanwendungen auf Azure Storage zugreifen, aber nicht in Azure gehostet werden (z. B. Apps für mobile Geräte oder lokale Unternehmensdienste), können Sie die Wartezeit reduzieren, indem Sie für das Speicherkonto eine Region in der Nähe dieser Clients verwenden. Wenn Ihre Clients weit verteilt sind (z. B. einige in Nordamerika und andere in Europa), kann es sinnvoll sein, ein Speicherkonto pro Region zu verwenden. Diese Vorgehensweise ist einfacher zu implementieren, wenn die in der Anwendung gespeicherten Daten speziell für bestimmte Benutzer gelten und keine Datenreplikation zwischen den Speicherkonten erforderlich ist.
+Wenn Clientanwendungen auf Azure Storage zugreifen, in Azure aber nicht gehostet werden (z. B. Apps für mobile Geräte oder lokale Unternehmensdienste), können Sie die Wartezeit verkürzen, indem Sie für das Speicherkonto eine Region in der Nähe dieser Clients verwenden. Wenn Ihre Clients weit verteilt sind (z. B. einige in Nordamerika und andere in Europa), kann es sinnvoll sein, ein Speicherkonto pro Region zu verwenden. Diese Vorgehensweise ist einfacher zu implementieren, wenn die in der Anwendung gespeicherten Daten speziell für bestimmte Benutzer gelten und keine Datenreplikation zwischen den Speicherkonten erforderlich ist.
 
 ## <a name="sas-and-cors"></a>SAS und CORS
 
@@ -112,7 +114,7 @@ Entwickeln Sie Ihre Azure Storage-Anwendungen mit .NET Core 2.1 oder höher, 
 
 Weitere Informationen zu den Leistungsverbesserungen in .NET Core finden Sie in den folgenden Blogbeiträgen:
 
-- [Performance Improvements in .NET Core 3.0](https://devblogs.microsoft.com/dotnet/performance-improvements-in-net-core-3-0/) (Leistungsverbesserungen in .NET Core 3.0)
+- [Performance improvements in .NET Core 3.0](https://devblogs.microsoft.com/dotnet/performance-improvements-in-net-core-3-0/) (Leistungsverbesserungen in .NET Core 3.0)
 - [Performance Improvements in .NET Core 2.1](https://devblogs.microsoft.com/dotnet/performance-improvements-in-net-core-2-1/) (Leistungsverbesserungen in .NET Core 2.1)
 
 ### <a name="increase-default-connection-limit"></a>Erhöhen des Standardverbindungslimits
@@ -129,7 +131,7 @@ Für andere Programmiersprachen erfahren Sie das Verbindungslimit aus der zugeh�
 
 Weitere Informationen finden Sie im Blogbeitrag [Webdienste: Gleichzeitige Verbindungen](/archive/blogs/darrenj/web-services-concurrent-connections).
 
-### <a name="increase-minimum-number-of-threads"></a>Erhöhen der Mindestanzahl von Threads
+### <a name="increase-the-minimum-number-of-threads"></a>Erhöhen der Mindestanzahl von Threads
 
 Wenn Sie synchrone Aufrufe zusammen mit asynchronen Aufgaben verwenden, können Sie die Anzahl der Threads im Threadpool erhöhen:
 
@@ -137,7 +139,7 @@ Wenn Sie synchrone Aufrufe zusammen mit asynchronen Aufgaben verwenden, können 
 ThreadPool.SetMinThreads(100,100); //(Determine the right number for your application)  
 ```
 
-Weitere Informationen finden Sie unter der [ThreadPool.SetMinThreads](/dotnet/api/system.threading.threadpool.setminthreads)-Methode.
+Weitere Informationen finden Sie unter der Methode [`ThreadPool.SetMinThreads`](/dotnet/api/system.threading.threadpool.setminthreads).
 
 ## <a name="unbounded-parallelism"></a>Uneingeschränkte Parallelität
 
@@ -153,19 +155,19 @@ Azure Storage gibt einen Fehler zurück, wenn der Dienst eine Anforderung nicht
 
 ### <a name="timeout-and-server-busy-errors"></a>Timeoutfehler und Fehler durch ausgelasteten Server
 
-Azure Storage kann Ihre Anwendung drosseln, wenn sie sich den Skalierbarkeitsgrenzwerten nähert. In einigen Fällen kann Azure Storage eine Anforderung möglicherweise aufgrund vorübergehender Bedingungen nicht verarbeiten. In beiden Fällen kann der Dienst einen Fehler 503 (Server ausgelastet) oder 500 (Timeout) zurückgeben. Diese Fehler können auch auftreten, wenn der Dienst Datenpartitionen ausgleicht, um einen höheren Durchsatz zu ermöglichen. In der Regel wiederholt die Clientanwendung den Vorgang, der einen dieser Fehler verursacht. Wenn Azure Storage Ihre Anwendung drosselt, weil die Skalierbarkeitsziele überschritten wurden, oder der Dienst die Anforderung aus einem anderen Grund nicht ausführen konnte, verschlimmern aggressive Wiederholungsversuche jedoch meist das Problem. Aus diesem Grund wird eine Wiederholungsrichtlinie mit exponentiellem Backoff empfohlen (dies ist das Standardverhalten der Clientbibliotheken). Beispielsweise kann Ihre Anwendung nach 2 Sekunden, dann nach 4 Sekunden, nach 10 Sekunden und nach 30 Sekunden einen Wiederholungsversuch starten und dann komplett aufgeben. So kann die Anwendung die Last des Diensts deutlich reduzieren, anstatt Probleme, die zu einer Drosselung führen können, weiter zu verschärfen.
+Azure Storage kann Ihre Anwendung drosseln, wenn sie sich den Skalierbarkeitsgrenzwerten nähert. In einigen Fällen kann Azure Storage eine Anforderung möglicherweise aufgrund vorübergehender Bedingungen nicht verarbeiten. In beiden Fällen gibt der Dienst möglicherweise einen Fehler vom Typ „503“ (`Server Busy`) oder „500“ (`Timeout`) zurück. Diese Fehler können auch auftreten, wenn der Dienst Datenpartitionen ausgleicht, um einen höheren Durchsatz zu ermöglichen. In der Regel wiederholt die Clientanwendung den Vorgang, der einen dieser Fehler verursacht. Wenn Azure Storage Ihre Anwendung drosselt, weil die Skalierbarkeitsziele überschritten wurden, oder der Dienst die Anforderung aus einem anderen Grund nicht ausführen konnte, verschlimmern aggressive Wiederholungsversuche jedoch meist das Problem. Aus diesem Grund wird eine Wiederholungsrichtlinie mit exponentiellem Backoff empfohlen (dies ist das Standardverhalten der Clientbibliotheken). Beispielsweise kann Ihre Anwendung nach 2 Sekunden, dann nach 4 Sekunden, nach 10 Sekunden und nach 30 Sekunden einen Wiederholungsversuch starten und dann komplett aufgeben. So kann die Anwendung die Last des Diensts deutlich reduzieren, anstatt Probleme, die zu einer Drosselung führen können, weiter zu verschärfen.
 
 Verbindungsfehler können sofort wiederholt werden, da sie kein Ergebnis einer Drosselung sind und nur vorübergehend bestehen sollten.
 
 ### <a name="non-retryable-errors"></a>Nicht behebbare Fehler
 
-Die Clientbibliotheken berücksichtigen bei Wiederholungsversuchen, welche Fehler behoben werden können und welche nicht. Wenn Sie die Azure Storage-REST-API direkt aufrufen, sollten Sie bei einigen Fehlern jedoch keinen Wiederholungsversuch ausführen. Bei einem Fehler vom Typ 400 (ungültige Anforderung) hat die Clientanwendung beispielsweise eine Anforderung gesendet, die aufgrund eines unerwarteten Formats nicht verarbeitet werden konnte. Das erneute Senden dieser Anforderung führt jedes Mal zur selben Antwort und ist daher nicht sinnvoll. Wenn Sie die Azure Storage-REST-API direkt aufrufen, sollten Sie die potenziellen Fehler kennen und wissen, ob ein Wiederholungsversuch ausgeführt werden sollte.
+Die Clientbibliotheken berücksichtigen bei Wiederholungsversuchen, welche Fehler behoben werden können und welche nicht. Wenn Sie die Azure Storage-REST-API direkt aufrufen, sollten Sie bei einigen Fehlern jedoch keinen Wiederholungsversuch ausführen. Bei einem Fehler vom Typ „400“ (`Bad Request`) beispielsweise hat die Clientanwendung eine Anforderung gesendet, die aufgrund eines unerwarteten Formats nicht verarbeitet werden konnte. Das erneute Senden dieser Anforderung führt jedes Mal zur selben Antwort und ist daher nicht sinnvoll. Wenn Sie die Azure Storage-REST-API direkt aufrufen, sollten Sie die potenziellen Fehler kennen und wissen, ob ein Wiederholungsversuch ausgeführt werden sollte.
 
 Weitere Informationen zu Azure Storage-Fehlercodes finden Sie unter [Status- und Fehlercodes](/rest/api/storageservices/status-and-error-codes2).
 
-## <a name="disable-nagle"></a>Deaktivieren des Nagle-Algorithmus
+## <a name="disable-nagles-algorithm"></a>Deaktivieren des Nagle-Algorithmus
 
-Der Nagle-Algorithmus ist in TCP/IP-Netzwerken weit verbreitet, um die Netzwerkleistung zu verbessern. Er ist jedoch nicht unter allen Umständen optimal (z. B. hoch interaktive Umgebungen). Der Nagle-Algorithmus wirkt sich negativ auf die Leistung von Anforderungen an den Azure-Tabellenspeicherdienst aus und sollte daher möglichst deaktiviert werden.
+Der Nagle-Algorithmus ist in TCP/IP-Netzwerken weit verbreitet, um die Netzwerkleistung zu verbessern. Er ist jedoch nicht unter allen Umständen optimal (z. B. hoch interaktive Umgebungen). Der Nagle-Algorithmus wirkt sich auf die Leistung von Anforderungen an Azure Table Storage negativ aus. Deshalb sollten Sie ihn möglichst deaktivieren.
 
 ## <a name="message-size"></a>Nachrichtengröße
 
@@ -173,17 +175,17 @@ Die Leistung der Warteschlange und der Skalierbarkeit sinkt, wenn die Nachrichte
 
 ## <a name="batch-retrieval"></a>Batchabruf
 
-Sie können bis zu 32 Nachrichten aus einer Warteschlange in einem einzigen Vorgang abrufen. Der Batchabruf kann die Anzahl von Roundtrips von der Clientanwendung reduzieren, was besonders bei Umgebungen mit langer Wartezeit (z. B. mobile Geräte) nützlich ist.
+Sie können bis zu 32 Nachrichten aus einer Warteschlange in einem einzigen Vorgang abrufen. Der Batchabruf kann die Anzahl von Roundtrips aus der Clientanwendung reduzieren, was besonders bei Umgebungen mit langer Wartezeit (z. B. mobile Geräte) nützlich ist.
 
 ## <a name="queue-polling-interval"></a>Abrufintervall für die Warteschlange
 
 Die meisten Anwendungen fragen Nachrichten aus einer Warteschlange ab. Für die Anwendung kann es sich dabei um die größte Quelle für Transaktionen handeln. Wählen Sie das Abrufintervall mit Bedacht aus: Abrufe, die zu häufig stattfinden, können dazu führen, dass die Anwendung die Skalierbarkeitsziele für die Warteschlange erreicht. Bei 200.000 Transaktionen für 0,01 US-Dollar (zum Redaktionszeitpunkt) betragen die Kosten für einen einzelnen Prozessor, der im Monat einen Abruf pro Sekunde macht, jedoch weniger als 15 Cent. Daher sind Kosten üblicherweise kein Auswahlkriterium für das Abrufintervall.
 
-Aktuelle Datenkosteninformationen finden Sie unter [Preise für Azure Storage](https://azure.microsoft.com/pricing/details/storage/).
+Aktuelle Datenkosteninformationen finden Sie unter [Preise für Azure Storage](https://azure.microsoft.com/pricing/details/storage/).
 
-## <a name="use-update-message"></a>Verwenden von „UpdateMessage“
+## <a name="perform-an-update-message-operation"></a>Ausführen eines Vorgangs zum Aktualisieren von Nachrichten
 
-Sie können den **UpdateMessage** -Vorgang verwenden, um das Unsichtbarkeitszeitlimit zu erhöhen oder die Statusinformationen einer Nachricht zu aktualisieren. Die Verwendung von **UpdateMessage** kann effizienter sein als ein Workflow, bei dem ein Auftrag nach Abschluss jedes Auftragsschritts von einer Warteschlange in die nächste verschoben wird. Ihre Anwendung kann den Auftragsstatus in der Nachricht speichern und dann weiterarbeiten, anstatt die Nachricht jedes Mal für den nächsten Schritt erneut in die Warteschlange zu stellen. Beachten Sie, dass jeder **UpdateMessage** -Vorgang auf das Skalierbarkeitsziel angerechnet wird.
+Sie können einen Vorgang zum Aktualisieren von Nachrichten ausführen, um das Unsichtbarkeits-Timeout zu erhöhen oder die Zustandsinformationen einer Nachricht zu aktualisieren. Dieser Ansatz kann effizienter sein als ein Workflow, bei dem ein Auftrag nach Abschluss jedes Auftragsschritts von einer Warteschlange in die nächste verschoben wird. Ihre Anwendung kann den Auftragsstatus in der Nachricht speichern und dann weiterarbeiten, anstatt die Nachricht jedes Mal für den nächsten Schritt erneut in die Warteschlange zu stellen. Beachten Sie, dass jeder Vorgang zum Aktualisieren von Nachrichten auf das Skalierbarkeitsziel angerechnet wird.
 
 ## <a name="application-architecture"></a>Anwendungsarchitektur
 

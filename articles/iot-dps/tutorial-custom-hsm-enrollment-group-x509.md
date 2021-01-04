@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 6845923d65b5fbe5a9f010474330ce2bbed948e1
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 25d084b8af148707685b2cbb4368394a12d99db2
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96780092"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97005306"
 ---
 # <a name="tutorial-provision-multiple-x509-devices-using-enrollment-groups"></a>Tutorial: Bereitstellen mehrerer X.509-Geräte mit Registrierungsgruppen
 
@@ -195,7 +195,7 @@ Erstellen Sie die Zertifikatkette wie folgt:
 3. Führen Sie den folgenden Befehl aus, um eine PEM-Datei mit der vollständigen Zertifikatkette zu erstellen, die das neue Gerätezertifikat enthält.
 
     ```Bash
-    cd ./certs && cat new-device.cert.pem azure-iot-test-only.intermediate.cert.pem azure-iot-test-only.root.ca.cert.pem > new-device-full-chain.cert.pem
+    cd ./certs && cat new-device.cert.pem azure-iot-test-only.intermediate.cert.pem azure-iot-test-only.root.ca.cert.pem > new-device-full-chain.cert.pem && cd ..
     ```
 
     Verwenden Sie einen Text-Editor, und öffnen Sie die Datei unter *./certs/new-device-full-chain.cert.pem* mit der Zertifikatkette. Der Text der Zertifikatkette enthält die gesamte Kette mit allen drei Zertifikaten. Sie verwenden diesen Text später in diesem Tutorial als Zertifikatkette mit dem Code für das benutzerdefinierte HSM.
@@ -241,48 +241,85 @@ Aktualisieren Sie den Stubcode für das benutzerdefinierte HSM für dieses Tutor
     static const char* const COMMON_NAME = "custom-hsm-device-01";
     ```
 
-4. Aktualisieren Sie in derselben Datei den Zeichenfolgenwert der Zeichenfolgenkonstante `CERTIFICATE`, indem Sie Ihren Zertifikatkettentext verwenden, den Sie nach dem Generieren Ihrer Zertifikate unter *./certs/new-device-full-chain.cert.pem* gespeichert haben.
+4. In derselben Datei müssen Sie den Zeichenfolgenwert der konstanten Zeichenfolge `CERTIFICATE` mithilfe Ihres Zertifikatkettentexts aktualisieren, den Sie nach dem Generieren Ihrer Zertifikate unter *./certs/new-device-full-chain.cert.pem* gespeichert haben.
 
-    > [!IMPORTANT]
-    > Beim Kopieren des Texts in Visual Studio fällt Ihnen unter Umständen auf, dass der Text analysiert und mit Codeabstandselementen usw. aktualisiert wird. In diesem Fall müssen Sie diese Abstands- und Analyseelemente entfernen, indem Sie einmal **STRG+Z** drücken.
-
-    Aktualisieren Sie den Zertifikattext so, dass er das unten angegebene Muster ohne zusätzliche Leerstellen bzw. Analyse durch Visual Studio aufweist:
+    Die Syntax des Zertifikattexts muss dem unten angegebenen Muster ohne zusätzliche Leerstellen oder eine Analyse durch Visual Studio entsprechen.
 
     ```c
     // <Device/leaf cert>
     // <intermediates>
     // <root>
     static const char* const CERTIFICATE = "-----BEGIN CERTIFICATE-----\n"
-    "MIIFOjCCAyKgAwIBAgIJAPzMa6s7mj7+MA0GCSqGSIb3DQEBCwUAMCoxKDAmBgNV"
+    "MIIFOjCCAyKgAwIBAgIJAPzMa6s7mj7+MA0GCSqGSIb3DQEBCwUAMCoxKDAmBgNV\n"
         ...
-    "MDMwWhcNMjAxMTIyMjEzMDMwWjAqMSgwJgYDVQQDDB9BenVyZSBJb1QgSHViIENB"
-    "\n-----END CERTIFICATE-----\n"
+    "MDMwWhcNMjAxMTIyMjEzMDMwWjAqMSgwJgYDVQQDDB9BenVyZSBJb1QgSHViIENB\n"
+    "-----END CERTIFICATE-----\n"
     "-----BEGIN CERTIFICATE-----\n"
-    "MIIFPDCCAySgAwIBAgIBATANBgkqhkiG9w0BAQsFADAqMSgwJgYDVQQDDB9BenVy"
+    "MIIFPDCCAySgAwIBAgIBATANBgkqhkiG9w0BAQsFADAqMSgwJgYDVQQDDB9BenVy\n"
         ...
-    "MTEyMjIxMzAzM1owNDEyMDAGA1UEAwwpQXp1cmUgSW9UIEh1YiBJbnRlcm1lZGlh"
-    "\n-----END CERTIFICATE-----\n"
+    "MTEyMjIxMzAzM1owNDEyMDAGA1UEAwwpQXp1cmUgSW9UIEh1YiBJbnRlcm1lZGlh\n"
+    "-----END CERTIFICATE-----\n"
     "-----BEGIN CERTIFICATE-----\n"
-    "MIIFOjCCAyKgAwIBAgIJAPzMa6s7mj7+MA0GCSqGSIb3DQEBCwUAMCoxKDAmBgNV"
+    "MIIFOjCCAyKgAwIBAgIJAPzMa6s7mj7+MA0GCSqGSIb3DQEBCwUAMCoxKDAmBgNV\n"
         ...
-    "MDMwWhcNMjAxMTIyMjEzMDMwWjAqMSgwJgYDVQQDDB9BenVyZSBJb1QgSHViIENB"
-    "\n-----END CERTIFICATE-----";        
+    "MDMwWhcNMjAxMTIyMjEzMDMwWjAqMSgwJgYDVQQDDB9BenVyZSBJb1QgSHViIENB\n"
+    "-----END CERTIFICATE-----";        
     ```
 
-5. Aktualisieren Sie in derselben Datei den Zeichenfolgenwert der Zeichenfolgenkonstante `PRIVATE_KEY` mit dem privaten Schlüssel für Ihr Gerätezertifikat.
+    Das ordnungsgemäße Aktualisieren dieses Zeichenfolgenwerts in diesem Schritt kann sehr mühsam sein und zu Fehlern führen. Wenn Sie die richtige Syntax in Ihrer Git Bash-Eingabeaufforderung generieren möchten, kopieren Sie die folgenden Bash-Shell-Befehle, und fügen Sie sie in Ihre Git Bash-Eingabeaufforderung ein. Drücken Sie dann die **EINGABETASTE**. Diese Befehle generieren die Syntax für den Wert der Zeichenfolgenkonstante `CERTIFICATE`.
 
-    > [!IMPORTANT]
-    > Beim Kopieren des Texts in Visual Studio fällt Ihnen unter Umständen auf, dass der Text analysiert und mit Codeabstandselementen usw. aktualisiert wird. In diesem Fall müssen Sie diese Abstands- und Analyseelemente entfernen, indem Sie einmal **STRG+Z** drücken.
+    ```Bash
+    input="./certs/new-device-full-chain.cert.pem"
+    bContinue=true
+    prev=
+    while $bContinue; do
+        if read -r next; then
+          if [ -n "$prev" ]; then   
+            echo "\"$prev\\n\""
+          fi
+          prev=$next  
+        else
+          echo "\"$prev\";"
+          bContinue=false
+        fi  
+    done < "$input"
+    ```
 
-    Aktualisieren Sie den Text des privaten Schlüssels so, dass er das unten angegebene Muster ohne zusätzliche Leerstellen bzw. Analyse durch Visual Studio aufweist:
+    Kopieren Sie den ausgegebenen Zertifikattext für den neuen konstanten Wert, und fügen Sie ihn ein. 
+
+
+5. In derselben Datei muss der Zeichenfolgenwert der Konstante `PRIVATE_KEY` mit dem privaten Schlüssel für Ihr Gerätezertifikat ebenfalls aktualisiert werden.
+
+    Die Syntax des Texts zum privaten Schlüssel muss dem unten angegebenen Muster ohne zusätzliche Leerstellen oder eine Analyse durch Visual Studio entsprechen.
 
     ```c
     static const char* const PRIVATE_KEY = "-----BEGIN RSA PRIVATE KEY-----\n"
-    "MIIJJwIBAAKCAgEAtjvKQjIhp0EE1PoADL1rfF/W6v4vlAzOSifKSQsaPeebqg8U"
+    "MIIJJwIBAAKCAgEAtjvKQjIhp0EE1PoADL1rfF/W6v4vlAzOSifKSQsaPeebqg8U\n"
         ...
-    "X7fi9OZ26QpnkS5QjjPTYI/wwn0J9YAwNfKSlNeXTJDfJ+KpjXBcvaLxeBQbQhij"
-    "\n-----END RSA PRIVATE KEY-----";
+    "X7fi9OZ26QpnkS5QjjPTYI/wwn0J9YAwNfKSlNeXTJDfJ+KpjXBcvaLxeBQbQhij\n"
+    "-----END RSA PRIVATE KEY-----";
     ```
+
+    Das ordnungsgemäße Aktualisieren dieses Zeichenfolgenwerts in diesem Schritt kann ebenfalls sehr mühsam sein und zu Fehlern führen. Wenn Sie die richtige Syntax in Ihrer Git Bash-Eingabeaufforderung generieren möchten, kopieren Sie die folgenden Bash-Shell-Befehle, und fügen Sie sie ein. Drücken Sie dann die **EINGABETASTE**. Diese Befehle generieren die Syntax für den Wert der Zeichenfolgenkonstante `PRIVATE_KEY`.
+
+    ```Bash
+    input="./private/new-device.key.pem"
+    bContinue=true
+    prev=
+    while $bContinue; do
+        if read -r next; then
+          if [ -n "$prev" ]; then   
+            echo "\"$prev\\n\""
+          fi
+          prev=$next  
+        else
+          echo "\"$prev\";"
+          bContinue=false
+        fi  
+    done < "$input"
+    ```
+
+    Kopieren Sie den ausgegebenen Text zum privaten Schlüssel für den neuen konstanten Wert, und fügen Sie ihn ein. 
 
 6. Speichern Sie *custom_hsm_example.c*.
 

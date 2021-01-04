@@ -6,14 +6,14 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.custom: contperfq1
-ms.date: 10/2/2020
-ms.openlocfilehash: 022e2e25c96473f49468f2bd48e5ee997933baea
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.custom: contperf-fy21q1
+ms.date: 12/9/2020
+ms.openlocfilehash: c11e0702a7825b719417288c5ebbf93defde186c
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348711"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97029243"
 ---
 # <a name="outputs-from-azure-stream-analytics"></a>Ausgaben von Azure Stream Analytics
 
@@ -25,12 +25,12 @@ Für einige Ausgabetypen wird die [Partitionierung](#partitioning) unterstützt,
 
 | Ausgabetyp | Partitionierung | Sicherheit | 
 |-------------|--------------|----------|
-|[Azure Data Lake Storage Gen 1](azure-data-lake-storage-gen1-output.md)|Ja|Azure Active Directory-Benutzer </br> MSI|
-|[Azure SQL-Datenbank](sql-database-output.md)|Ja, optional|SQL-Benutzerauthentifizierung </br> MSI (Vorschau)|
-|[Azure Synapse Analytics](azure-synapse-analytics-output.md)|Ja|SQL-Benutzerauthentifizierung|
-|[Blob Storage und Azure Data Lake Gen 2](blob-storage-azure-data-lake-gen2-output.md)|Ja|MSI </br> Zugriffsschüssel|
-|[Azure Event Hubs](event-hubs-output.md)|Ja, Sie müssen die Partitionsschlüsselspalte in der Ausgabekonfiguration festlegen.|Zugriffsschüssel|
-|[Power BI](power-bi-output.md)|Nein|Azure Active Directory-Benutzer </br> MSI|
+|[Azure Data Lake Storage Gen 1](azure-data-lake-storage-gen1-output.md)|Ja|Azure Active Directory-Benutzer </br> , verwaltete Identität|
+|[Azure SQL-Datenbank](sql-database-output.md)|Ja, optional|SQL-Benutzerauthentifizierung, </br> Verwaltete Identität (Vorschau)|
+|[Azure Synapse Analytics](azure-synapse-analytics-output.md)|Ja|SQL-Benutzerauthentifizierung, </br> Verwaltete Identität (Vorschau)|
+|[Blob Storage und Azure Data Lake Gen 2](blob-storage-azure-data-lake-gen2-output.md)|Ja|Zugriffsschlüssel, </br> Verwaltete Identität (Vorschau)|
+|[Azure Event Hubs](event-hubs-output.md)|Ja, Sie müssen die Partitionsschlüsselspalte in der Ausgabekonfiguration festlegen.|Zugriffsschlüssel, </br> Verwaltete Identität (Vorschau)|
+|[Power BI](power-bi-output.md)|Nein|Azure Active Directory-Benutzer, </br> Verwaltete Identität|
 |[Azure Table Storage](table-storage-output.md)|Ja|Kontoschlüssel|
 |[Azure Service Bus-Warteschlangen](service-bus-queues-output.md)|Ja|Zugriffsschüssel|
 |[Azure Service Bus-Themen](service-bus-topics-output.md)|Ja|Zugriffsschüssel|

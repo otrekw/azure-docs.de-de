@@ -1,22 +1,22 @@
 ---
 title: 'Tutorial: Bereitstellen einer lokalen Azure Resource Manager-Vorlage'
-description: Erfahren Sie, wie Sie eine Azure Resource Manager-Vorlage von Ihrem lokalen Computer bereitstellen.
+description: Erfahren Sie, wie Sie eine Azure Resource Manager-Vorlage (ARM-Vorlage) von Ihrem lokalen Computer bereitstellen.
 ms.date: 05/20/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: fe13376ced428713703f2bd5cf33941129dec1d9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 640d314711e34119dac5e1c5bf9fa245685b6f38
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91611621"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368135"
 ---
-# <a name="tutorial-deploy-a-local-azure-resource-manager-template"></a>Tutorial: Bereitstellen einer lokalen Azure Resource Manager-Vorlage
+# <a name="tutorial-deploy-a-local-arm-template"></a>Tutorial: Bereitstellen einer lokalen ARM-Vorlage
 
-Erfahren Sie, wie Sie eine Azure Resource Manager-Vorlage von Ihrem lokalen Computer bereitstellen. Dieser Schritt dauert ungefähr **8 Minuten**.
+Erfahren Sie, wie Sie eine Azure Resource Manager-Vorlage (ARM-Vorlage) von Ihrem lokalen Computer bereitstellen. Dieser Schritt dauert ungefähr **8 Minuten**.
 
-Dieses Tutorial ist das erste einer Reihe. Während Sie die Reihe durchlaufen, modularisieren Sie die Vorlage, indem Sie eine verknüpfte Vorlage erstellen, die verknüpfte Vorlage in einem Speicherkonto speichern und sie mit dem SAS-Token sichern. Sie erfahren außerdem, wie Sie eine DevOp-Pipeline zum Bereitstellen von Vorlagen erstellen. Diese Reihe konzentriert sich auf die Vorlagenbereitstellung.  Wenn Sie sich mit der Vorlagenentwicklung vertraut machen möchten, verwenden Sie die [Tutorials für Anfänger](./template-tutorial-create-first-template.md).
+Dieses Tutorial ist das erste einer Reihe. Während Sie die Reihe durchlaufen, modularisieren Sie die Vorlage, indem Sie eine verknüpfte Vorlage erstellen, die verknüpfte Vorlage in einem Speicherkonto speichern und sie mit dem SAS-Token sichern. Sie erfahren außerdem, wie Sie eine DevOps-Pipeline zum Bereitstellen von Vorlagen erstellen. Diese Reihe konzentriert sich auf die Vorlagenbereitstellung. Wenn Sie sich mit der Vorlagenentwicklung vertraut machen möchten, verwenden Sie die [Tutorials für Anfänger](./template-tutorial-create-first-template.md).
 
 ## <a name="get-tools"></a>Erforderliche Tools
 
@@ -29,23 +29,24 @@ Zum Bereitstellen der Vorlage benötigen Sie entweder Azure PowerShell oder die 
 - [Installieren von Azure PowerShell](/powershell/azure/install-az-ps)
 - [Installieren der Azure CLI unter Windows](/cli/azure/install-azure-cli-windows)
 - [Installieren der Azure CLI unter Linux](/cli/azure/install-azure-cli-linux)
+- [Installieren der Azure CLI unter macOS](/cli/azure/install-azure-cli-macos)
 
 Melden Sie sich nach der Installation von Azure PowerShell oder der Azure CLI zum ersten Mal an. Hilfe finden Sie unter [Anmelden –PowerShell](/powershell/azure/install-az-ps#sign-in) oder [Anmelden – Azure CLI](/cli/azure/get-started-with-azure-cli#sign-in).
 
 ### <a name="editor-optional"></a>Editor (optional)
 
-Vorlagen sind JSON-Dateien. Zum Bewerten/Bearbeiten von Vorlagen benötigen Sie einen guten JSON-Editor. Wir empfehlen Visual Studio Code mit der Erweiterung „Azure Resource Manager-Tools“. Informationen zum Installieren dieser Tools finden Sie bei Bedarf unter [Schnellstart: Erstellen von Azure Resource Manager-Vorlagen mit Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md).
+Vorlagen sind JSON-Dateien. Zum Bewerten/Bearbeiten von Vorlagen benötigen Sie einen guten JSON-Editor. Wir empfehlen Visual Studio Code mit der Erweiterung „Azure Resource Manager-Tools“. Informationen zum Installieren dieser Tools finden Sie bei Bedarf unter [Schnellstart: Erstellen von ARM-Vorlagen mit Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md).
 
 ## <a name="review-template"></a>Überprüfen der Vorlage
 
-Die Vorlage stellt ein Speicherkonto, einen App Service-Plan und eine Web-App bereit. Wenn Sie die Vorlage erstellen möchten, können Sie das [Tutorial zu Schnellstartvorlagen](template-tutorial-quickstart-template.md) durchgehen. Für den Abschluss dieses Tutorials ist es jedoch nicht erforderlich.
+Die Vorlage stellt ein Speicherkonto, einen App Service-Plan und eine Web-App bereit. Wenn Sie die Vorlage erstellen möchten, können Sie das [Tutorial zu Schnellstartvorlagen](template-tutorial-quickstart-template.md) durcharbeiten. Für den Abschluss dieses Tutorials ist es jedoch nicht erforderlich.
 
 :::code language="json" source="~/resourcemanager-templates/get-started-deployment/local-template/azuredeploy.json":::
 
 > [!IMPORTANT]
-> Speicherkontonamen müssen zwischen 3 und 24 Zeichen lang sein und dürfen nur Zahlen und Kleinbuchstaben enthalten. Der Name muss eindeutig sein. In der Vorlage ist der Name des Speicherkontos der Projektname mit „store“ am Ende, und der Projektname muss zwischen 3 und 11 Zeichen haben. Daher muss der Projektname die Anforderungen des Speicherkontonamens erfüllen und weniger als 11 Zeichen enthalten.
+> Speicherkontonamen müssen zwischen 3 und 24 Zeichen lang sein und dürfen nur Zahlen und Kleinbuchstaben enthalten. Der Name muss eindeutig sein. In der Vorlage ist der Name des Speicherkontos der Projektname, an den **store** angefügt wird. Der Projektname muss zwischen 3 und 11 Zeichen lang sein. Daher muss der Projektname die Anforderungen des Speicherkontonamens erfüllen und weniger als 11 Zeichen enthalten.
 
-Speichern Sie eine Kopie der Vorlage auf dem lokalen Computer mit der Erweiterung „.json“, z. B. „azurebereitstellung.json“. Diese Vorlage können Sie später im Tutorial bereitstellen.
+Speichern Sie eine Kopie der Vorlage mit der Erweiterung _JSON_ auf dem lokalen Computer, z. B. _azurebereitstellung.json_. Diese Vorlage können Sie später im Tutorial bereitstellen.
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
@@ -65,7 +66,7 @@ az login
 
 ---
 
-Wenn Sie über mehrere Azure-Abonnements verfügen, wählen Sie dasjenige aus, das Sie verwenden möchten:
+Wenn Sie über mehrere Azure-Abonnements verfügen, wählen Sie das Abonnement aus, das Sie verwenden möchten. Ersetzen Sie `[SubscriptionID/SubscriptionName]` und die eckigen Klammern `[]` durch Ihre Abonnementinformationen:
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -129,9 +130,9 @@ New-AzResourceGroupDeployment `
   -verbose
 ```
 
-Weitere Informationen zum Bereitstellen von Vorlagen mit Azure PowerShell finden Sie unter [Bereitstellen von Ressourcen mit Resource Manager-Vorlagen und Azure PowerShell](./deploy-powershell.md).
+Weitere Informationen zum Bereitstellen von Vorlagen mit Azure PowerShell finden Sie unter [Bereitstellen von Ressourcen mit ARM-Vorlagen und Azure PowerShell](./deploy-powershell.md).
 
-# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
 echo "Enter the same project name:"
@@ -148,7 +149,7 @@ az deployment group create \
   --verbose
 ```
 
-Weitere Informationen zum Bereitstellen von Vorlagen mit der Azure CLI finden Sie unter [Bereitstellen von Ressourcen mit Resource Manager-Vorlagen und Azure CLI](./deploy-cli.md).
+Weitere Informationen zum Bereitstellen von Vorlagen mit der Azure CLI finden Sie unter [Bereitstellen von Ressourcen mit ARM-Vorlagen und der Azure CLI](./deploy-cli.md).
 
 ---
 

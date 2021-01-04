@@ -4,12 +4,12 @@ description: Enthält eine Zusammenfassung der Unterstützungseinstellungen und 
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.custom: references_regions
-ms.openlocfilehash: 70a81b42ad2fb417902a627afb1651d572844648
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: be0c576da6e38233423a79f562f767de806d7640
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96548510"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008366"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Supportmatrix für Azure Backup
 
@@ -67,7 +67,7 @@ Im Folgenden werden die Informationen zur Unterstützung beim Sichern von Azure-
 
 **Computer** | **Gesicherte Elemente** | **Location** | **Funktionen**
 --- | --- | --- | ---
-**Azure-VM-Sicherung mit VM-Erweiterung** | Gesamte VM | Sicherung in einem Tresor | Die Erweiterung ist installiert, wenn Sie die Sicherung für eine VM aktivieren.<br/><br/> Eine Sicherung pro Tag<br/><br/> App-fähige Sicherung für Windows-VMs, dateikonsistente Sicherung für Linux-VMs. Sie können die App-Konsistenz für Linux-Computer mit benutzerdefinierten Skripts konfigurieren.<br/><br/> Wiederherstellen von VMs oder Datenträgern<br/><br/> Die Sicherung einer Azure-VM an einem lokalen Speicherort ist nicht möglich
+**Azure-VM-Sicherung mit VM-Erweiterung** | Gesamte VM | Sicherung in einem Tresor | Die Erweiterung ist installiert, wenn Sie die Sicherung für eine VM aktivieren.<br/><br/> Eine Sicherung pro Tag<br/><br/> App-fähige Sicherung für Windows-VMs, dateikonsistente Sicherung für Linux-VMs. Sie können die App-Konsistenz für Linux-Computer mit benutzerdefinierten Skripts konfigurieren.<br/><br/> Wiederherstellen von VMs oder Datenträgern<br/><br/>[Das Sichern und Wiederherstellen von Active Directory-Domänencontrollern](active-directory-backup-restore.md) wird unterstützt.<br><br> Die Sicherung einer Azure-VM an einem lokalen Speicherort ist nicht möglich
 **Azure-VM-Sicherung mit MARS-Agent** | Dateien, Ordner, Systemstatus | Sicherung in einem Tresor | Drei Sicherungen pro Tag<br/><br/> Wenn Sie spezifische Dateien oder Ordner anstelle der gesamten VM sichern möchten, kann der MARS-Agent neben der VM-Erweiterung ausgeführt werden.
 **Azure-VM mit DPM** | Dateien, Ordner, Volumes, Systemstatus, App-Daten | Die Sicherung erfolgt im lokalen Speicher der Azure-VM, auf der DPM ausgeführt wird. Der DPM führt dann die Sicherung in einem Tresor durch. | App-fähige Momentaufnahmen<br/><br/> Vollständige Granularität für Sicherung und Wiederherstellung.<br/><br/> Linux-Unterstützung für VMs (Hyper-V/VMware).<br/><br/> Oracle wird nicht unterstützt.
 **Azure-VM mit MABS** | Dateien, Ordner, Volumes, Systemstatus, App-Daten | Die Sicherung erfolgt im lokalen Speicher der Azure-VM, auf der MABS ausgeführt wird. MABS erstellt die Sicherung dann im Tresor. | App-fähige Momentaufnahmen<br/><br/> Vollständige Granularität für Sicherung und Wiederherstellung.<br/><br/> Linux-Unterstützung für VMs (Hyper-V/VMware).<br/><br/> Oracle wird nicht unterstützt.
@@ -152,7 +152,7 @@ In Azure Backup wurde ein Feature zur regionsübergreifenden Wiederherstellung h
 | ---------------------- | ------------------------------------------------------------ | ----------------- |
 | Azure VM               | Ja.   Wird für verschlüsselte VMs und VMs mit Datenträgern mit weniger als 4 TB unterstützt | Alle öffentlichen Azure-Regionen  |
 | SQL/SAP HANA | Ja                                                          | Alle öffentlichen Regionen außer Frankreich |
-| MARS-Agent/lokal  | Nein                                                           | N/V               |
+| MARS-Agent/lokal  | Nein                                                           | –               |
 | AFS (Azure-Dateifreigaben)                 | Nein                                                           | –               |
 
 ## <a name="next-steps"></a>Nächste Schritte

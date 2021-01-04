@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: f0e69e3f62d3b9e4debb5761d877dcdfdd246f60
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 077500e0188d1cc20864d436a2e2fd711b180702
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94886021"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97560235"
 ---
 # <a name="chat-concepts"></a>Chatkonzepte
 
@@ -46,8 +46,9 @@ Die Chatarchitektur besteht aus zwei zentralen Teilen: 1) einem vertrauenswürdi
 
 Ein Communication Services-Chat teilt vom Benutzer sowie vom System generierte Nachrichten, die als **Threadaktivitäten** bezeichnet werden. Threadaktivitäten werden generiert, wenn ein Chatthread aktualisiert wird. Wenn Sie `List Messages` oder `Get Messages` in einem Chatthread aufrufen, enthält das Ergebnis die vom Benutzer generierten Textnachrichten sowie die Systemnachrichten in chronologischer Reihenfolge. Auf diese Weise können Sie ermitteln, wann ein Mitglied hinzugefügt oder entfernt wurde oder wann das Thema des Chatthreads aktualisiert wurde. Die folgende Nachrichtentypen werden unterstützt:  
 
- - `Text`: Die von einem Benutzer als Teil der Chatkonversation verfasste und versendete Nachricht 
- - `ThreadActivity/AddMember`: Eine Systemnachricht, die angibt, dass mindestens ein Mitglied zum Chatthread hinzugefügt wurde Beispiel:
+ - `Text`: Die von einem Benutzer als Teil der Chatkonversation verfasste und gesendete Nur-Text-Nachricht. 
+ - `RichText/HTML`: Eine formatierte Textnachricht. Beachten Sie, dass Communication Services-Benutzer derzeit keine RichText-Nachrichten senden können. Dieser Nachrichtentyp wird von Nachrichten unterstützt, die in Teams-Interoperabilitätsszenarien von Teams-Benutzern an Communication Services-Benutzer gesendet werden.
+ - `ThreadActivity/AddMember`: Eine Systemnachricht, die angibt, dass mindestens ein Mitglied zum Chatthread hinzugefügt wurde. Beispiel:
 
 ```xml
 
@@ -92,6 +93,30 @@ Ein Communication Services-Chat teilt vom Benutzer sowie vom System generierte N
 
 ```
 
+- `ThreadActivity/MemberJoined`: Eine Systemnachricht, die generiert wird, wenn ein Gastbenutzer dem Teams-Besprechungschat beitritt. Communication Services-Benutzer können Teams-Besprechungschats als Gast beitreten. Beispiel:  
+```xml
+{ 
+  "id": "1606351443605", 
+  "type": "ThreadActivity/MemberJoined", 
+  "version": "1606347753409", 
+  "priority": "normal", 
+  "content": "{\"eventtime\":1606351443080,\"initiator\":\"8:orgid:8a53fd2b5ef150bau8442ad732a6ac6b_0e8deebe7527544aa2e7bdf3ce1b8733\",\"members\":[{\"id\":\"8:acs:9b665d83-8164-4923-ad5d-5e983b07d2d7_00000006-7ef9-3bbe-b274-5a3a0d0002b1\",\"friendlyname\":\"\"}]}", 
+  "senderId": " 19:meeting_curGQFTQ8tifs3EK9aTusiszGpkZULzNTTy2dbfI4dCJEaik@thread.v2", 
+  "createdOn": "2020-11-29T00:44:03.6950000Z" 
+} 
+```
+- `ThreadActivity/MemberLeft`: Eine Systemnachricht, die generiert wird, wenn ein Gastbenutzer den Teams-Besprechungschat verlässt. Communication Services-Benutzer können Teams-Besprechungschats als Gast beitreten. Beispiel: 
+```xml
+{ 
+  "id": "1606347703429", 
+  "type": "ThreadActivity/MemberLeft", 
+  "version": "1606340753429", 
+  "priority": "normal", 
+  "content": "{\"eventtime\":1606340755385,\"initiator\":\"8:orgid:8a53fd2b5u8150ba81442ad732a6ac6b_0e8deebe7527544aa2e7bdf3ce1b8733\",\"members\":[{\"id\":\"8:acs:9b665753-8164-4923-ad5d-5e983b07d2d7_00000006-7ef9-3bbe-b274-5a3a0d0002b1\",\"friendlyname\":\"\"}]}", 
+  "senderId": "19:meeting_9u7hBcYiADudn41Djm0n9DTVyAHuMZuh7p0bDsx1rLVGpnMk@thread.v2", 
+  "createdOn": "2020-11-29T23:42:33.4290000Z" 
+} 
+```
 - `ThreadActivity/TopicUpdate`: Systemnachricht, die angibt, dass das Thema aktualisiert wurde Beispiel:
 
 ```xml

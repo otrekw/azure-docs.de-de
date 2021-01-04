@@ -3,15 +3,15 @@ title: Windows Virtual Desktop-Hostpool zum Überwachen von Dienstupdates – Az
 description: Erfahren Sie, wie Sie einen Hostpool für die Überwachung von Dienstupdates erstellen, bevor Updates in der Produktion bereitgestellt werden.
 author: Heidilohr
 ms.topic: tutorial
-ms.date: 03/13/2020
+ms.date: 12/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: b8eb8378480b8784939e3ab63327e73e3705c74a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ead4c0aa7d8d71642fd8a4635edbabcafee5b6c2
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90526509"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563244"
 ---
 # <a name="tutorial-create-a-host-pool-to-validate-service-updates"></a>Tutorial: Erstellen eines Hostpools zum Überprüfen von Dienstupdates
 
@@ -66,6 +66,20 @@ Die Ergebnisse des Cmdlets sollte der folgenden Ausgabe ähneln:
     LoadBalancerType    : BreadthFirst
     ValidationEnvironment : True
 ```
+
+## <a name="enable-your-validation-environment-with-the-azure-portal"></a>Aktivieren Ihrer Überprüfungsumgebung über das Azure-Portal
+
+Sie können auch das Azure-Portal verwenden, um Ihre Überprüfungsumgebung zu aktivieren.
+
+So verwenden Sie das Azure-Portal, um Ihren Überprüfungshostpool zu konfigurieren
+
+1. Melden Sie sich unter <https://portal.azure.com> beim Azure-Portal an.
+2. Suchen Sie nach **Windows Virtual Desktop**, und wählen Sie diese Option aus.
+3. Wählen Sie auf der Seite „Windows Virtual Desktop“ die Option **Hostpools** aus.
+4. Wählen Sie den Namen des Hostpools aus, den Sie bearbeiten möchten.
+5. Wählen Sie **Eigenschaften** aus.
+6. Wählen Sie im Feld „Überprüfungsumgebung“ **Ja** aus, um die Überprüfungsumgebung zu aktivieren.
+7. Wählen Sie **Speichern** aus. Dadurch werden die neuen Einstellungen angewendet.
 
 ## <a name="update-schedule"></a>Zeitplan für Updates
 
