@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/27/2020
 ms.author: albecker1
 ms.custom: include file
-ms.openlocfilehash: cc0dd5e76227c0814659b74afc2ac46c8ca4de73
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a51cd242eb26709464aa502938cd04807aea721
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87102674"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97805604"
 ---
 ## <a name="common-scenarios"></a>Häufige Szenarios
 Die folgenden Szenarien können von einem Bursting stark profitieren:
@@ -47,7 +47,7 @@ Die folgenden Beispiele zeigen, wie das Bursting mit verschiedenen Kombinationen
     - Bereitgestellte MB/s: 25
     - MB/s bei max. Burst: 170 
 - 2 P10-Datenträger für Daten 
-    - Bereitgestellte MB/s: 25
+    - Bereitgestellte MB/s:
     - MB/s bei max. Burst: 170
 
  Wenn der virtuelle Computer gestartet wird, werden Daten vom Betriebssystemdatenträger abgerufen. Da der Betriebssystemdatenträger Teil eines virtuellen Computers ist, der gerade gestartet wird, ist der Betriebssystemdatenträger mit Bursting-Guthaben gefüllt. Diese Guthaben ermöglichen es dem Betriebssystemdatenträger, seinen Start mit einem Burst von 170 MB/s auszuführen, wie unten gezeigt:
