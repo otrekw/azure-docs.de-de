@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 869cf5a47831844b04e0461a95fb7d16aa4d1569
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 520b2eff91faf2e333ab0a5df7bcc85e6a47c80a
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97110998"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97585189"
 ---
 # <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>Anpassen der Benutzeroberfläche in Azure Active Directory B2C
 
@@ -29,9 +29,7 @@ Das Branding und Anpassen der Benutzeroberfläche, die Azure Active Directory B2
 > [!TIP]
 > Wenn Sie nur das Bannerlogo, das Hintergrundbild und die Hintergrundfarbe Ihrer Benutzerflowseiten ändern möchten, können Sie das Feature [Unternehmensbranding](company-branding.md) ausprobieren.
 
-
 ## <a name="custom-html-and-css-overview"></a>Übersicht zu benutzerdefiniertem HTML und CSS
-
 
 Azure AD B2C führt mithilfe von [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) (ursprungsübergreifende Ressourcenfreigabe) den Code im Browser Ihres Kunden aus. Zur Laufzeit wird Inhalt über eine URL geladen, die Sie in Ihrem Benutzerflow oder Ihrer benutzerdefinierten Richtlinie angeben. Der Inhalt jeder Seite in der Benutzererfahrung wird von der URL geladen, die Sie für die jeweilige Seite angeben. Nachdem Inhalt über die URL geladen wurde, wird er mit einem von Azure AD B2C eingefügten HTML-Fragment zusammengeführt, und die Seite wird für Ihren Kunden angezeigt.
 
@@ -121,7 +119,6 @@ https://contoso.blob.core.windows.net/fr/myHTML/unified.html
 ## <a name="prerequisites"></a>Voraussetzungen
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
-
 
 ### <a name="1-create-your-html-content"></a>1. Erstellen des HTML-Inhalts
 
@@ -235,7 +232,6 @@ Führen Sie die folgenden Schritte aus, um zu überprüfen, ob Sie bereit sind:
 1. Wählen Sie **Anforderung senden** aus.
     Das Ergebnis sollte `XHR status: 200` lauten. 
     Wenn ein Fehler ausgegeben wird, sollten Sie sich vergewissern, ob Ihre CORS-Einstellungen richtig sind. Außerdem müssen Sie unter Umständen Ihren Browsercache löschen oder eine InPrivate-Browsersitzung öffnen, indem Sie STRG+UMSCHALT+P drücken.
-
 
 ::: zone pivot="b2c-user-flow"
 
@@ -391,10 +387,7 @@ So verwenden Sie das Beispiel
 1. Ändern Sie nun die Richtlinie, die auf Ihre HTML-Datei verweist, wie zuvor erwähnt.
 1. Falls Schriftarten, Bilder oder CSS-Dateien fehlen, überprüfen Sie die Verweise in der Erweiterungsrichtlinie und die HTML-Dateien (\*.html).
 
-
 ## <a name="next-steps"></a>Nächste Schritte
 
 Erfahren Sie, wie Sie [clientseitigen JavaScript-Code](javascript-and-page-layout.md) aktivieren.
-
-
 

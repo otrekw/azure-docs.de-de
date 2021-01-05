@@ -4,12 +4,12 @@ description: Rufen Sie die Anzahl der Seitenaufrufe und Sitzungen, Webclientdate
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 0588a3eac4ced6cec1e7aea431c6555bbe8bff0a
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 6678c662c4646a8181b1617ccddf9b8718c957bf
+ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97559878"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97858551"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights für Webseiten
 
@@ -107,7 +107,7 @@ Jede Konfigurationsoption ist im Codeausschnitt oben in einer eigenen Zeile aufg
 
 Folgende Konfigurationsoptionen stehen zur Verfügung:
 
-| Name | Typ | BESCHREIBUNG
+| Name | type | BESCHREIBUNG
 |------|------|----------------
 | src | Zeichenfolge **[erforderlich]** | Die vollständige URL, von der das SDK geladen werden soll. Dieser Wert wird für das Attribut „src“ eines dynamisch hinzugefügten &lt;script /&gt;-Tags verwendet. Sie können die öffentliche CDN-Adresse oder eine privat gehostete nehmen.
 | name | Zeichenfolge *[optional]* | Der globale Name des initialisierten SDK. Der Standardwert ist `appInsights`. ```window.appInsights``` ist daher ein Verweis auf die initialisierte Instanz. Hinweis: Wenn Sie einen Namenswert angeben oder es scheint, als sei eine frühere Instanz (über den globalen Namen „appInsightsSDK“) zugewiesen, wird dieser Namenswert ebenfalls im globalen Namespace als ```window.appInsightsSDK=<name value>``` definiert. Dies wird durch den Initialisierungscode des SDK erzwungen, um sicherzustellen, dass die richtigen Methoden für das Ausschnittsgerüst und den Proxy initialisiert und aktualisiert werden.
@@ -339,7 +339,7 @@ Breaking Changes in der SDK V2-Version:
 - Um bessere API-Signaturen zu ermöglichen, wurden einige API-Aufrufe, wie z. B. „trackPageView“ und „trackException“, aktualisiert. Eine Ausführung in Internet Explorer 8 und früheren Versionen des Browsers wird nicht unterstützt.
 - Beim Umschlag für die Telemetriedaten gibt es infolge von Datenschemaaktualisierungen Feldname- und Strukturänderungen.
 - `context.operation` wurde in `context.telemetryTrace` verschoben. Einige Felder wurden ebenfalls geändert (`operation.id` --> `telemetryTrace.traceID`).
-  - Zum manuellen Aktualisieren der derzeitigen PageView-ID (z. B. in SPA-Apps) verwenden Sie `appInsights.properties.context.telemetryTrace.traceID = Util.generateW3CId()`.
+  - Zum manuellen Aktualisieren der derzeitigen PageView-ID (z. B. in SPA-Apps) verwenden Sie `appInsights.properties.context.telemetryTrace.traceID = Microsoft.ApplicationInsights.Telemetry.Util.generateW3CId()`.
     > [!NOTE]
     > Damit die Ablaufverfolgungs-ID eindeutig bleibt, verwenden Sie dort, wo Sie zuvor `Util.newId()` verwendet haben, jetzt `Util.generateW3CId()`. Beide werden letztendlich zur Vorgangs-ID.
 

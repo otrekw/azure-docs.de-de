@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
 ms.date: 12/07/2020
-ms.openlocfilehash: cf8b6670817132c8c0c0a09194b9aca4bbc8073c
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: a74244cc45e1a3d2116f98ac73290d184f4affc0
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96923411"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97632059"
 ---
 # <a name="create-stateful-and-stateless-workflows-in-visual-studio-code-with-the-azure-logic-apps-preview-extension"></a>Erstellen zustandsbehafteter und zustandsloser Workflows in Visual Studio Code mit der Erweiterung „Azure Logic Apps (Vorschau)“
 
@@ -181,7 +181,7 @@ Logik-Apps, die Sie mithilfe der **Azure Logic Apps-Erweiterung (Private Vorscha
 
       * Vergewissern Sie sich unter **Azure Logic Apps V2: Panelmodus**, dass **Panelmodus aktivieren** ausgewählt ist.
 
-      * Vergewissern Sie sich unter **Azure Logic Apps V2: Projektlaufzeit**, dass die Version auf **~3** festgelegt ist.
+      * Legen Sie unter **Azure Logic Apps V2: Projektlaufzeit**, dass die Version auf **~3** festgelegt ist.
 
         > [!IMPORTANT]
         > Zur Verwendung von [Inlinecode-Aktionen](../logic-apps/logic-apps-add-run-inline-code.md), die derzeit für macOS und Linux nicht verfügbar sind, ist für die Einstellung **Projektlaufzeit** die Version 3 erforderlich.
@@ -769,7 +769,7 @@ Sie können Ihre Logik-App als neue Ressource veröffentlichen, wodurch automati
 
       1. Wählen Sie entweder eine vorhandene Application Insights-Ressource, oder **erstellen Sie eine neue Application Insights-Ressource**.
 
-      1. Navigieren Sie im [Azure-Portal](htpps://portal.azure.com) zu Ihrer Application Insights-Ressource.
+      1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrer Application Insights-Ressource.
 
       1. Wählen Sie im Ressourcenmenü **Übersicht** aus. Suchen Sie den **Instrumentierungsschlüssel**, und kopieren Sie ihn.
 
