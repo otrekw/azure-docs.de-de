@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/28/2020
 ms.author: yitoh
-ms.openlocfilehash: e2f5528fde977520dc0aa0215a480a40ef8f1e7d
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 6c628d93c112a770c85a10d0eff958614a7cf4cb
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94989614"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814158"
 ---
 # <a name="quickstart-create-and-configure-azure-ddos-protection-standard-using-azure-cli"></a>Schnellstart: Erstellen und Konfigurieren eines Azure DDoS Protection Standard-Plans über die Azure CLI
 
@@ -24,7 +24,7 @@ Erfahren Sie, wie Sie mit der Verwendung von Azure DDoS Protection Standard übe
 
 Ein DDoS-Schutzplan definiert abonnementübergreifend eine Reihe von virtuellen Netzwerken, für die der DDoS-Schutzstandard aktiviert ist. Sie können einen DDoS-Schutzplan für Ihre Organisation konfigurieren und virtuelle Netzwerke über verschiedene Abonnements hinweg mit demselben Plan verknüpfen. 
 
-In dieser Schnellstartanleitung erstellen Sie einen DDoS-Schutzplan und verknüpfen ihn mit einem virtuellen Netzwerk. 
+In diesem Schnellstart erstellen Sie einen DDoS-Schutzplan und verknüpfen ihn mit einem virtuellen Netzwerk. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -134,4 +134,4 @@ Wenn Sie einen DDoS-Schutzplan löschen möchten, müssen Sie zuerst die Zuordnu
 Informationen zum Anzeigen und Konfigurieren von Telemetriedaten für Ihren DDoS-Schutzplan, finden Sie in den Tutorials.
 
 > [!div class="nextstepaction"]
-> [Anzeigen und Konfigurieren der DDoS Protection-Telemetrie](telemetry-monitoring-alerting.md)
+> [Anzeigen und Konfigurieren der DDoS Protection-Telemetrie](telemetry.md)

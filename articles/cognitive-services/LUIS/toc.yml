@@ -36,8 +36,6 @@
       items:
         - name: Korrigieren von unsicheren Vorhersagen
           href: luis-tutorial-review-endpoint-utterances.md
-        - name: Testen von Datasets in Batches
-          href: luis-tutorial-batch-testing.md
         - name: Hinzufügen von Mustern zur Verbesserung von Vorhersagen
           href: luis-tutorial-pattern.md
     - name: Verwenden mit einem Bot
@@ -93,8 +91,6 @@
       items:
         - name: Interaktives Testen
           href: luis-concept-test.md
-        - name: Testen in Batches
-          href: luis-concept-batch-test.md
     - name: Datenverwaltung
       items:
         - name: Ändern von Daten
@@ -229,7 +225,7 @@
         - name: Konfigurieren von Containern
           href: luis-container-configuration.md
         - name: Verwenden von Containerinstanzen
-          href: deploy-luis-on-container-instances.md
+          href: ../containers/azure-container-instance-recipe.md
         - name: Einschränkungen für Container
           href: luis-container-limitations.md
           displayName: 'phrase list recommendations, multi-language, translator, locale, language, English, Chinese, French, German, Italian, Korean, Portuguese, Spanish, Turkish, Keigo, subculture, dictation, speech, Bing Spell Check, foreign words, Hybrid languages, Tokenization, space, special character, compound words, tokens'
@@ -414,7 +410,7 @@
       displayName: 'FAQ, import'
     - name: Preise und Einschränkungen
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/'
-    - name: Compliance
+    - name: Kompatibilität
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Verschlüsselung
       href: luis-encryption-of-data-at-rest.md

@@ -3,16 +3,14 @@ title: 'Konzepte: Updates und Upgrades für private Clouds'
 description: Hier erfahren Sie mehr über die wichtigsten Upgradeprozesse und Features in Azure VMware Solution.
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 380e97eae559145a9ef5ed7b6e7bf14f18039eed
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 6fb65a0e192fbf1f054857223b3fdaf58fc6a903
+ms.sourcegitcommit: 31d242b611a2887e0af1fc501a7d808c933a6bf6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91316799"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97809648"
 ---
 # <a name="azure-vmware-solution-private-cloud-updates-and-upgrades"></a>Azure VMware Solution: Updates und Upgrades für private Clouds
-
-## <a name="overview"></a>Übersicht
 
 Einer der Hauptvorteile von privaten Azure VMware Solution-Clouds besteht darin, dass die Plattform für Sie verwaltet wird. Die Plattformwartung umfasst automatische Updates eines von VMware überprüften Softwarepakets, wodurch sichergestellt wird, dass Sie mithilfe der neuesten Version der überprüften Software für private Clouds in Azure VMware Solution arbeiten.
 

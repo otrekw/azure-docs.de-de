@@ -8,12 +8,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: chalton
-ms.openlocfilehash: f209be383e445e3b0c011e0bfb4266a191a8d931
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5098d897d84ff6af31d430c0ddd2e26d8d6b08a7
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85080867"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814294"
 ---
 # <a name="document-extraction-cognitive-skill"></a>Kognitive Qualifikation „Dokumentextrahierung“
 
@@ -34,7 +34,7 @@ Microsoft.Skills.Util.DocumentExtractionSkill
 
 Bei den Parametern wird zwischen Groß- und Kleinschreibung unterschieden.
 
-| Eingaben            | Zulässige Werte | BESCHREIBUNG |
+| Eingaben | Zulässige Werte | BESCHREIBUNG |
 |-----------------|----------------|-------------|
 | `parsingMode`   | `default` <br/> `text` <br/> `json`  | Legen Sie diesen Parameter auf `default` fest, um die Dokumentextrahierung aus Dateien durchzuführen, die keine reinen Text- oder JSON-Dateien sind. Legen Sie diesen Parameter auf `text` fest, um die Leistung von Nur-Text-Dateien zu verbessern. Legen Sie diesen Parameter auf `json` fest, um strukturierte Inhalte aus JSON-Dateien zu extrahieren. Wenn der Parameter `parsingMode` nicht explizit definiert ist, wird er auf `default` festgelegt. |
 | `dataToExtract` | `contentAndMetadata` <br/> `allMetadata` | Legen Sie diesen Parameter auf `contentAndMetadata` fest, um aus jeder Datei alle Metadaten und Textinhalte zu extrahieren. Legen Sie diesen Parameter auf `allMetadata` fest, um nur die [Inhaltstyp-spezifischen Metadaten](search-howto-indexing-azure-blob-storage.md#ContentSpecificMetadata) zu extrahieren (z.B. Metadaten, die nur für PNG-Dateien eindeutig sind). Wenn der Parameter `dataToExtract` nicht explizit definiert ist, wird er auf `contentAndMetadata` festgelegt. |
@@ -100,11 +100,11 @@ Dieses Dateiverweisobjekt kann auf eine von drei Arten generiert werden:
     "outputs": [
       {
         "name": "content",
-        "targetName": "content"
+        "targetName": "extracted_content"
       },
       {
         "name": "normalized_images",
-        "targetName": "normalized_images"
+        "targetName": "extracted_normalized_images"
       }
     ]
   }

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/28/2020
 ms.author: yitoh
-ms.openlocfilehash: 49fa0c849a6b2eab0647922a711c50b4fe762584
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 69f9b5a74566879ecf8f15f23e689ebb731da45a
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93095661"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814141"
 ---
 # <a name="quickstart-create-and-configure-azure-ddos-protection-standard-using-azure-powershell"></a>Schnellstart: Erstellen und Konfigurieren von Azure DDoS Protection Standard mit Azure PowerShell
 
@@ -39,13 +39,13 @@ In diesem Schnellstart erstellen Sie einen DDoS-Schutzplan und verknüpfen ihn m
 
 In Azure ordnen Sie verwandte Ressourcen einer Ressourcengruppe zu. Sie können entweder eine vorhandene Ressourcengruppe verwenden oder eine neue erstellen.
 
-Erstellen Sie mit [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) eine Ressourcengruppe. In diesem Beispiel legen wir für die Ressourcengruppe den Namen _MyResourceGroup_ fest, und wir verwenden den Standort _USA, Osten_ :
+Erstellen Sie mit [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) eine Ressourcengruppe. In diesem Beispiel legen wir für die Ressourcengruppe den Namen _MyResourceGroup_ fest, und wir verwenden den Standort _USA, Osten_:
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name MyResourceGroup -Location "East US"
 ```
 
-Erstellen Sie nun einen DDoS-Schutzplan mit dem Namen _MyDdosProtectionPlan_ :
+Erstellen Sie nun einen DDoS-Schutzplan mit dem Namen _MyDdosProtectionPlan_:
 
 ```azurepowershell-interactive
 New-AzDdosProtectionPlan -ResourceGroupName MyResourceGroup -Name MyDdosProtectionPlan -Location "East US"
@@ -91,7 +91,7 @@ Stellen Sie sicher, dass der Befehl die korrekten Details Ihres DDoS-Schutzplans
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Sie können Ihre Ressourcen für das nächste Tutorial beibehalten. Löschen Sie die Ressourcengruppe _MyResourceGroup_ , wenn Sie sie nicht mehr benötigen. Wenn Sie die Ressourcengruppe löschen, werden auch der DDoS-Schutzplan und alle zugehörigen Ressourcen gelöscht. 
+Sie können Ihre Ressourcen für das nächste Tutorial beibehalten. Löschen Sie die Ressourcengruppe _MyResourceGroup_, wenn Sie sie nicht mehr benötigen. Wenn Sie die Ressourcengruppe löschen, werden auch der DDoS-Schutzplan und alle zugehörigen Ressourcen gelöscht. 
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name MyResourceGroup
@@ -114,4 +114,4 @@ Wenn Sie einen DDoS-Schutzplan löschen möchten, müssen Sie zuerst die Zuordnu
 Informationen zum Anzeigen und Konfigurieren von Telemetriedaten für Ihren DDoS-Schutzplan, finden Sie in den Tutorials.
 
 > [!div class="nextstepaction"]
-> [Anzeigen und Konfigurieren der DDoS Protection-Telemetrie](telemetry-monitoring-alerting.md)
+> [Anzeigen und Konfigurieren der DDoS Protection-Telemetrie](telemetry.md)

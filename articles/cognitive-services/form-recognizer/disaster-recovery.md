@@ -9,16 +9,16 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 168dcf994d00ba1cb2070665ada5a55cf86cfa4a
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 747ceb0106f437f9e2442c2b8c68c0b73a9107a6
+ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97359811"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97808254"
 ---
 # <a name="back-up-and-recover-your-form-recognizer-models"></a>Sichern und Wiederherstellen Ihrer Modelle für die Formularerkennung
 
-Wenn Sie eine Ressource für die Formularerkennung im Azure-Portal erstellen, geben Sie eine Region an. Ab diesem Zeitpunkt bleiben Ihre Ressource und alle zugehörigen Vorgänge mit der jeweiligen Azure-Serverregion verknüpft. Es ist selten, aber nicht unmöglich, dass ein Netzwerkproblem auftritt, das eine ganze Region betrifft. Wenn Ihre Lösung immer verfügbar sein muss, dann sollten Sie sie so konzipieren, dass entweder ein Failover in eine andere Region durchgeführt oder die Workload auf zwei oder mehr Regionen verteilt wird. Beide Ansätze setzen voraus, dass mindestens zwei Ressourcen für die Formularerkennung in unterschiedlichen Regionen vorliegen und dass es möglich ist, [benutzerdefinierte Modelle](./quickstarts/curl-train-extract.md) regionsübergreifend zu synchronisieren.
+Wenn Sie eine Ressource für die Formularerkennung im Azure-Portal erstellen, geben Sie eine Region an. Ab diesem Zeitpunkt bleiben Ihre Ressource und alle zugehörigen Vorgänge mit der jeweiligen Azure-Serverregion verknüpft. Es ist selten, aber nicht unmöglich, dass ein Netzwerkproblem auftritt, das eine ganze Region betrifft. Wenn Ihre Lösung immer verfügbar sein muss, dann sollten Sie sie so konzipieren, dass entweder ein Failover in eine andere Region durchgeführt oder die Workload auf zwei oder mehr Regionen verteilt wird. Beide Ansätze setzen voraus, dass mindestens zwei Ressourcen für die Formularerkennung in unterschiedlichen Regionen vorliegen und dass es möglich ist, benutzerdefinierte Modelle regionsübergreifend zu synchronisieren.
 
 Die Kopier-API unterstützt dieses Szenario, indem sie es Ihnen ermöglicht, benutzerdefinierte Modelle von einem Formularerkennungskonto in andere Konten zu kopieren, die in einer beliebigen unterstützten geografischen Region vorliegen können. Der vorliegende Leitfaden zeigt, wie Sie die REST-API zum Kopieren mit cURL verwenden. Sie können auch einen HTTP-Anforderungsdienst wie Postman verwenden, um die Anforderungen auszugeben.
 
