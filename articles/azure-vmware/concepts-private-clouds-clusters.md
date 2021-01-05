@@ -3,12 +3,12 @@ title: Konzepte – Private Clouds und Cluster
 description: Hier erfahren Sie mehr über die wichtigsten Funktionen von softwaredefinierten Azure VMware Solution-Rechenzentren und vSphere-Clustern.
 ms.topic: conceptual
 ms.date: 10/27/2020
-ms.openlocfilehash: af34bb0d83d9571ae91dce90cab198a61cfe82a1
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 7f8508abed3446c58a683454bc49ec7dbb49d051
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967379"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97825091"
 ---
 #  <a name="azure-vmware-solution-private-cloud-and-cluster-concepts"></a>Azure VMware Solution: Konzepte – Private Clouds und Cluster
 
@@ -48,18 +48,8 @@ Hosts, die zum Erstellen oder Skalieren von Clustern verwendet werden, stammen a
 
 ## <a name="vmware-software-versions"></a>Versionen von VMware-Software
 
-Im Folgenden die aktuellen in Clustern privater Azure VMware Solution-Clouds verwendeten VMware-Softwareversionen:
+[!INCLUDE [vmware-software-versions](includes/vmware-software-versions.md)]
 
-| Software              |    Version   |
-| :---                  |     :---:    |
-| VCSA/vSphere/ESXi |    6.7 U3    | 
-| ESXi                  |    6.7 U3    | 
-| vSAN                  |    6.7 U3    |
-| NSX-T                 |      2.5     |
-
-Bei allen neuen Clustern in einer privaten Cloud stimmt die Softwareversion mit der aktuell ausgeführten überein. Für alle neuen privaten Clouds in einem Abonnement wird die aktuelle Version des Softwarestapels installiert.
-
-Die allgemeinen Upgraderichtlinien und -prozesse für die Azure VMware Solution-Plattformsoftware werden unter [Updates und Upgrades für private Clouds](concepts-upgrades.md) beschrieben.
 
 ## <a name="host-maintenance-and-lifecycle-management"></a>Hostwartung und Lebenszyklusverwaltung
 

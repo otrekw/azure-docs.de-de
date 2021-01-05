@@ -11,17 +11,16 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 - 'Role: Technical Support'
-- devx-track-azurecli
-ms.openlocfilehash: bdd9d5fd878094326331e60fc1a639eef08b7ea3
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 9487fc562fa099d2650aabc8d15fc1449c7fcb5c
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92792462"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97825172"
 ---
 # <a name="iot-hub-device-streams-preview"></a>IoT Hub-Gerätestreams (Vorschau)
 
-Azure IoT Hub- *Gerätestreams* vereinfachen das Erstellen sicherer bidirektionaler TCP-Tunnel für eine Vielzahl von Szenarios mit Kommunikation zwischen Cloud und Gerät. Ein Gerätestream wird durch einen IoT Hub- *Streamingendpunkt* vermittelt, der als Proxy zwischen Ihrem Gerät und den Dienstendpunkten fungiert. Dieses Setup ist im folgenden Diagramm dargestellt. Es eignet sich besonders, wenn die Geräte sich hinter einer Netzwerkfirewall oder in einem privaten Netzwerk befinden. So erfüllen IoT Hub-Gerätestreams die Kundenanforderung, IoT-Geräte firewallfreundlich zu erreichen, ohne Eingangs- und Ausgangsports der Netzwerkfirewall weit zu öffnen.
+Azure IoT Hub-*Gerätestreams* vereinfachen das Erstellen sicherer bidirektionaler TCP-Tunnel für eine Vielzahl von Szenarios mit Kommunikation zwischen Cloud und Gerät. Ein Gerätestream wird durch einen IoT Hub-*Streamingendpunkt* vermittelt, der als Proxy zwischen Ihrem Gerät und den Dienstendpunkten fungiert. Dieses Setup ist im folgenden Diagramm dargestellt. Es eignet sich besonders, wenn die Geräte sich hinter einer Netzwerkfirewall oder in einem privaten Netzwerk befinden. So erfüllen IoT Hub-Gerätestreams die Kundenanforderung, IoT-Geräte firewallfreundlich zu erreichen, ohne Eingangs- und Ausgangsports der Netzwerkfirewall weit zu öffnen.
 
 ![„Übersicht über IoT Hub-Gerätestreams“](./media/iot-hub-device-streams-overview/iot-hub-device-streams-overview.png )
 
@@ -57,7 +56,7 @@ Die programmgesteuerte Erstellung eines Gerätestreams mit dem SDK umfasst die f
 
 1. Die Geräteanwendung registriert einen Rückruf, um im Voraus benachrichtigt zu werden, wenn ein neuer Gerätestream zum Gerät initiiert wird. Dieser Schritt findet in der Regel statt, wenn das Gerät gestartet wird und eine Verbindung mit der IoT Hub-Instanz herstellt.
 
-2. Das dienstseitige Programm initiiert bei Bedarf einen Gerätestream durch Bereitstellen der Geräte-ID ( _nicht_ der IP-Adresse).
+2. Das dienstseitige Programm initiiert bei Bedarf einen Gerätestream durch Bereitstellen der Geräte-ID (_nicht_ der IP-Adresse).
 
 3. IoT Hub benachrichtigt das dienstseitige Programm durch Aufrufen des in Schritt 1 registrierten Rückrufs. Das Gerät kann die Anforderung der Streaminitiierung annehmen oder ablehnen. Diese Logik kann speziell auf Ihr Anwendungsszenario zugeschnitten sein. Wenn die Streamanforderung vom Gerät abgelehnt wird, informiert IoT Hub den Dienst entsprechend. Andernfalls folgen die unten aufgeführten Schritte.
 
@@ -83,7 +82,7 @@ Ein eingerichteter Stream wird beendet, wenn eine der TCP-Verbindungen mit dem G
 
 ## <a name="connectivity-requirements"></a>Konnektivitätsanforderungen
 
-Sowohl die Geräte- als auch die Dienstseite eines Gerätestreams muss dazu in der Lage sein, TLS-fähige Verbindungen mit IoT Hub und dem zugehörigen Streamingendpunkt herzustellen. Hierfür ist eine ausgehende Konnektivität über Port 443 mit diesen Endpunkten erforderlich. Den diesen Endpunkten zugeordneten Hostnamen finden Sie auf der IoT Hub-Registerkarte *Übersicht* , wie in der folgenden Abbildung gezeigt:
+Sowohl die Geräte- als auch die Dienstseite eines Gerätestreams muss dazu in der Lage sein, TLS-fähige Verbindungen mit IoT Hub und dem zugehörigen Streamingendpunkt herzustellen. Hierfür ist eine ausgehende Konnektivität über Port 443 mit diesen Endpunkten erforderlich. Den diesen Endpunkten zugeordneten Hostnamen finden Sie auf der IoT Hub-Registerkarte *Übersicht*, wie in der folgenden Abbildung gezeigt:
 
 ![„Gerätestreamingendpunkte“](./media/iot-hub-device-streams-overview/device-stream-in-portal.png)
 
@@ -183,7 +182,7 @@ Das Beispiel mit lokalem Proxy zeigt eine Möglichkeit zum Aktivieren eines Tunn
 
 Dieser Abschnitt beschreibt die Verwendung von Gerätestreams, um für Benutzer das Herstellen einer SSH-Verbindung mit einem Gerät über Gerätestreams zu ermöglichen. (Die Situation ist für RDP oder andere Client-/Server-Anwendungen ähnlich, da dort der entsprechende Port des Protokolls verwendet wird.)
 
-Das Setup nutzt zwei Programme für *lokale Proxys* , die in der folgenden Abbildung dargestellt sind: *Lokaler Geräteproxy* und *Lokaler Dienstproxy*. Die lokalen Proxyprogramme sind für die Durchführung des [Handshakes zur Gerätestreaminitiierung](#device-stream-creation-flow) mit IoT Hub sowie für die Interaktion mit dem SSH-Client und dem SSH-Daemon über reguläre Client-/Server-Sockets zuständig.
+Das Setup nutzt zwei Programme für *lokale Proxys*, die in der folgenden Abbildung dargestellt sind: *Lokaler Geräteproxy* und *Lokaler Dienstproxy*. Die lokalen Proxyprogramme sind für die Durchführung des [Handshakes zur Gerätestreaminitiierung](#device-stream-creation-flow) mit IoT Hub sowie für die Interaktion mit dem SSH-Client und dem SSH-Daemon über reguläre Client-/Server-Sockets zuständig.
 
 ![„Gerätestream-Proxysetup für SSH/RDP“](./media/iot-hub-device-streams-overview/iot-hub-device-streams-ssh.png)
 

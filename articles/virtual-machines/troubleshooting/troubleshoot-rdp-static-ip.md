@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/08/2018
 ms.author: genli
-ms.openlocfilehash: 49f3f44c7de8c700d0093c5eb6f166a1dffb34a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bf19a6f77a87f2424f9e7b889e48119d57d1e2e5
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86087247"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97820981"
 ---
 #  <a name="cannot-remote-desktop-to-azure-virtual-machines-because-of-static-ip"></a>Remotedesktopverbindung mit Azure Virtual Machines aufgrund einer statischen IP-Adresse nicht möglich
 
@@ -63,13 +63,13 @@ Verwenden Sie zum Beheben dieses Problems die serielle Konsole, um DHCP zu aktiv
 3. Wenn DHCP deaktiviert ist, sollten Sie die Konfiguration Ihrer Netzwerkschnittstelle so ändern, dass DHCP verwendet wird:
 
     ```console
-    netsh interface ip set address name="<NIC Name>" source=dhc
+    netsh interface ip set address name="<NIC Name>" source=dhcp
     ```
 
     Führen Sie beispielsweise den folgenden Befehl aus, wenn die Netzwerkschnittstelle den Namen „Ethernet 2“ hat:
 
     ```console
-    netsh interface ip set address name="Ethernet 2" source=dhc
+    netsh interface ip set address name="Ethernet 2" source=dhcp
     ```
 
 4. Fragen Sie die IP-Konfiguration erneut ab, um sicherzustellen, dass die Netzwerkschnittstelle jetzt richtig eingerichtet ist. Die neue IP-Adresse sollte mit der IP-Adresse übereinstimmen, die von Azure bereitgestellt wird.

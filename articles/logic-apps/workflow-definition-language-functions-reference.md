@@ -3,15 +3,15 @@ title: Referenzhandbuch für Funktionen in Ausdrücken
 description: Referenzhandbuch für Funktionen in Ausdrücken für Azure Logic Apps und Power Automate
 services: logic-apps
 ms.suite: integration
-ms.reviewer: estfan, logicappspm
+ms.reviewer: estfan, logicappspm, azla
 ms.topic: conceptual
 ms.date: 09/04/2020
-ms.openlocfilehash: a4646263eeb93a33a03e32107b46bb6dc104ce06
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 5c03d9b64f957f6ef8450197477f185dc8d15b2d
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96326300"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97825863"
 ---
 # <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-power-automate"></a>Referenzhandbuch für die Verwendung von Funktionen in Ausdrücken für Azure Logic Apps und Power Automate
 
@@ -1678,7 +1678,7 @@ decodeUriComponent('<value>')
 In diesem Beispiel werden die Escapezeichen in dieser Zeichenfolge durch decodierte-Versionen ersetzt:
 
 ```
-decodeUriComponent('http%3A%2F%2Fcontoso.com')
+decodeUriComponent('https%3A%2F%2Fcontoso.com')
 ```
 
 Dies ist das zurückgegebene Ergebnis: `"https://contoso.com"`
@@ -1753,7 +1753,7 @@ In diesem Beispiel wird eine URI-codierte Version für diese Zeichenfolge erstel
 encodeUriComponent('https://contoso.com')
 ```
 
-Dies ist das zurückgegebene Ergebnis: `"http%3A%2F%2Fcontoso.com"`
+Dies ist das zurückgegebene Ergebnis: `"https%3A%2F%2Fcontoso.com"`
 
 <a name="empty"></a>
 
@@ -4174,7 +4174,7 @@ In diesem Beispiel wird ein Array aus dem Wert erstellt, den der „feedUrl“-S
 triggerFormDataMultiValues('feedUrl')
 ```
 
-Dieses Array wird als Beispielergebnis zurückgegeben: `["http://feeds.reuters.com/reuters/topNews"]`
+Dieses Array wird als Beispielergebnis zurückgegeben: `["https://feeds.a.dj.com/rss/RSSMarketsMain.xml"]`
 
 <a name="triggerFormDataValue"></a>
 
@@ -4205,7 +4205,7 @@ In diesem Beispiel wird eine Zeichenfolge aus dem Wert erstellt, den der „feed
 triggerFormDataValue('feedUrl')
 ```
 
-Diese Zeichenfolge wird als Beispielergebnis zurückgegeben: `"http://feeds.reuters.com/reuters/topNews"`
+Diese Zeichenfolge wird als Beispielergebnis zurückgegeben: `"https://feeds.a.dj.com/rss/RSSMarketsMain.xml"`
 
 <a name="triggerMultipartBody"></a>
 
@@ -4336,7 +4336,7 @@ In diesem Beispiel wird eine URI-codierte Version für diese Zeichenfolge erstel
 uriComponent('https://contoso.com')
 ```
 
-Dies ist das zurückgegebene Ergebnis: `"http%3A%2F%2Fcontoso.com"`
+Dies ist das zurückgegebene Ergebnis: `"https%3A%2F%2Fcontoso.com"`
 
 <a name="uriComponentToBinary"></a>
 
@@ -4363,7 +4363,7 @@ uriComponentToBinary('<value>')
 In diesem Beispiel wird die binäre Version für diese URI-codierte Zeichenfolge erstellt:
 
 ```
-uriComponentToBinary('http%3A%2F%2Fcontoso.com')
+uriComponentToBinary('https%3A%2F%2Fcontoso.com')
 ```
 
 Dies ist das zurückgegebene Ergebnis:
@@ -4398,7 +4398,7 @@ uriComponentToString('<value>')
 In diesem Beispiel wird die decodierte Zeichenfolgenversion für diese URI-codierte Zeichenfolge erstellt:
 
 ```
-uriComponentToString('http%3A%2F%2Fcontoso.com')
+uriComponentToString('https%3A%2F%2Fcontoso.com')
 ```
 
 Dies ist das zurückgegebene Ergebnis: `"https://contoso.com"`
@@ -4458,7 +4458,7 @@ uriPath('<uri>')
 In diesem Beispiel wird der `path`-Wert dieses URIs abgerufen:
 
 ```
-uriPath('http://www.contoso.com/catalog/shownew.htm?date=today')
+uriPath('https://www.contoso.com/catalog/shownew.htm?date=today')
 ```
 
 Dies ist das zurückgegebene Ergebnis: `"/catalog/shownew.htm"`
@@ -4488,7 +4488,7 @@ uriPathAndQuery('<uri>')
 In diesem Beispiel werden der `path`- und der `query`-Wert dieses URIs abgerufen:
 
 ```
-uriPathAndQuery('http://www.contoso.com/catalog/shownew.htm?date=today')
+uriPathAndQuery('https://www.contoso.com/catalog/shownew.htm?date=today')
 ```
 
 Dies ist das zurückgegebene Ergebnis: `"/catalog/shownew.htm?date=today"`
@@ -4518,7 +4518,7 @@ uriPort('<uri>')
 In diesem Beispiel wird der `port`-Wert dieses URIs zurückgegeben:
 
 ```
-uriPort('http://www.localhost:8080')
+uriPort('https://www.localhost:8080')
 ```
 
 Dies ist das zurückgegebene Ergebnis: `8080`
@@ -4548,7 +4548,7 @@ uriQuery('<uri>')
 In diesem Beispiel wird der `query`-Wert dieses URIs zurückgegeben:
 
 ```
-uriQuery('http://www.contoso.com/catalog/shownew.htm?date=today')
+uriQuery('https://www.contoso.com/catalog/shownew.htm?date=today')
 ```
 
 Dies ist das zurückgegebene Ergebnis: `"?date=today"`
@@ -4578,7 +4578,7 @@ uriScheme('<uri>')
 In diesem Beispiel wird der `scheme`-Wert dieses URIs zurückgegeben:
 
 ```
-uriScheme('http://www.contoso.com/catalog/shownew.htm?date=today')
+uriScheme('https://www.contoso.com/catalog/shownew.htm?date=today')
 ```
 
 Dies ist das zurückgegebene Ergebnis: `"http"`
@@ -4918,16 +4918,16 @@ Hier ist das Ergebnis: `30`
 
 *Beispiel 8*
 
-In diesem Beispiel wird angenommen, dass Sie über diese XML-Zeichenfolge verfügen, die den XML-Dokumentnamespace `xmlns="http://contoso.com"` enthält:
+In diesem Beispiel wird angenommen, dass Sie über diese XML-Zeichenfolge verfügen, die den XML-Dokumentnamespace `xmlns="https://contoso.com"` enthält:
 
 ```xml
-<?xml version="1.0"?><file xmlns="http://contoso.com"><location>Paris</location></file>
+<?xml version="1.0"?><file xmlns="https://contoso.com"><location>Paris</location></file>
 ```
 
-In diesen Ausdrücken wird einer der XPath-Ausdrücke `/*[name()="file"]/*[name()="location"]` oder `/*[local-name()="file" and namespace-uri()="http://contoso.com"]/*[local-name()="location"]` verwendet, um nach Knoten zu suchen, die mit dem Knoten `<location></location>` übereinstimmen. Diese Beispiele zeigen die Syntax, die Sie im Logik-App-Designer oder im Ausdrucks-Editor verwenden:
+In diesen Ausdrücken wird einer der XPath-Ausdrücke `/*[name()="file"]/*[name()="location"]` oder `/*[local-name()="file" and namespace-uri()="https://contoso.com"]/*[local-name()="location"]` verwendet, um nach Knoten zu suchen, die mit dem Knoten `<location></location>` übereinstimmen. Diese Beispiele zeigen die Syntax, die Sie im Logik-App-Designer oder im Ausdrucks-Editor verwenden:
 
 * `xpath(xml(body('Http')), '/*[name()="file"]/*[name()="location"]')`
-* `xpath(xml(body('Http')), '/*[local-name()="file" and namespace-uri()="http://contoso.com"]/*[local-name()="location"]')`
+* `xpath(xml(body('Http')), '/*[local-name()="file" and namespace-uri()="https://contoso.com"]/*[local-name()="location"]')`
 
 Dies ist der Ergebnisknoten, der mit dem `<location></location>`-Knoten übereinstimmt: 
 
