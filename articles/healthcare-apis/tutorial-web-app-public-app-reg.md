@@ -9,12 +9,12 @@ ms.reviewer: matjazl
 ms.author: cavoeg
 author: caitlinv39
 ms.date: 01/03/2020
-ms.openlocfilehash: f559c87a5c3285bf966f9389d623b2262e93cbca
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: bf357dcc9c4790632a1131278edc41c13ac810b1
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94425812"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97802608"
 ---
 # <a name="client-application-registration"></a>Registrieren einer Clientanwendung
 Im vorherigen Tutorial haben Sie Azure API for FHIR bereitgestellt und eingerichtet. Nachdem Sie Azure API for FHIR eingerichtet haben, registrieren Sie nun eine öffentliche Clientanwendung. Weitere Details und Informationen zur Problembehandlung finden Sie in der vollständigen Schrittanleitung zum [Registrieren einer öffentlichen Client-App](register-public-azure-ad-client-app.md). Die wichtigsten Schritte für dieses Tutorial sind jedoch nachfolgend aufgeführt.
@@ -22,7 +22,7 @@ Im vorherigen Tutorial haben Sie Azure API for FHIR bereitgestellt und eingerich
 1. Navigieren Sie zu Azure Active Directory.
 1. Wählen Sie **App-Registrierung** --> **Neue Registrierung** aus.
 1. Benennen Sie Ihre Anwendung.
-1. Wählen Sie **Öffentlicher Client/nativ (mobil und Desktop)** aus, und legen Sie den Umleitungs-URI auf https://www.getpostman.com/oauth2/callback fest.
+1. Wählen Sie **Öffentlicher Client/nativ (mobil und Desktop)** aus, und legen Sie den Umleitungs-URI auf `https://www.getpostman.com/oauth2/callback` fest.
 
    :::image type="content" source="media/tutorial-web-app/register-public-app.png" alt-text="Screenshot: Bereich „Anwendung registrieren“ und Name und Umleitungs-URL einer Beispielanwendung":::
 

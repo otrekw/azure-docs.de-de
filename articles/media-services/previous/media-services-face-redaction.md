@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 11/17/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: df2962c8d428694a663acddf5922829f8b913b92
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 1a7bd36a6e3f3cc5b785745fc51f0aede3b47b74
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94737488"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97803305"
 ---
 # <a name="redact-faces-with-azure-media-analytics"></a>Bearbeiten von Gesichtern mit Azure Media Analytics
 
@@ -385,4 +385,4 @@ namespace FaceRedaction
 
 [Azure Media Services Analytics – Übersicht](./legacy-components.md)
 
-[Azure Media Analytics-Demos](https://azuremedialabs.azurewebsites.net/demos/Analytics.html)
+[Azure Media Analytics-Demos](http://amslabs.azurewebsites.net/demos/Analytics.html)

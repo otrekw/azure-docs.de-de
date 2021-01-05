@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 10/22/2019
 ms.author: chrupa
-ms.openlocfilehash: 556cc7fb5f735346a35903840501cf8f8e1be033
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 30fcaccbb4b87212cc4474b418712ba849156a8e
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92372173"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97803169"
 ---
 # <a name="partner-ecosystem-for-azure-api-for-fhir"></a>Partnerökosystem für die Azure API for FHIR
 Wir freuen uns, dass die Azure API for FHIR in allgemeiner Verfügbarkeit für alle Azure-Kunden veröffentlicht wurde. Wir freuen uns noch mehr über die Lösungen, die Sie mit unserem Dienst erstellen werden.  
@@ -23,7 +23,7 @@ Beim Erstellen einer End-to-End-Lösung um die Azure API for FHIR benötigen Sie
 
 | Partner          | Funktionen                               | Unterstützte Länder/Regionen         | Contact                                                                                                                                |
 |------------------|--------------------------------------------|-----------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
-| Medal            | Aufheben der Identifizierung, Konvertierung von veraltetem FHIR  | USA                         | [Kontakt](http://www.medal.com/)                                                                                           |
+| Medal            | Aufheben der Identifizierung, Konvertierung von veraltetem FHIR  | USA                         | [Kontakt](https://asab.squarespace.com/asab-medal/)                                                                                           |
 | Rhapsody         | Konvertierung von veraltetem FHIR                     | USA, Australien, Neuseeland | [Kontakt](https://rhapsody.health/contact-us)                                                                                          |
 | iNTERFACEWARE    | Konvertierung von veraltetem FHIR                     | USA, Kanada                 | [Kontakt](https://www.interfaceware.com/contact)                                                                                  |
 | Darena Solutions | Anwendungsentwicklung, Systemintegrator | USA                         | [Kontakt](https://www.darenasolutions.com/contact)                                                                                     |

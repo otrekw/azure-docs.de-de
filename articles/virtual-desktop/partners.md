@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 7a1b178450a1aa06db07d7b1ef525f7f781db9ef
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: e116c590e07ffcdb1b7c8ae2e30b2e76bb909bff
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602817"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97802710"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Partnerintegration für Windows Virtual Desktop
 
@@ -62,7 +62,7 @@ Sobald Sie startbereit sind, können Sie alle Workflowskripts, die Sie für Ausl
 Mit Automai können Sie dieselben Skripts für Leistungstests, Funktionstests, Leistungsüberwachung und sogar robotergestützte Prozessautomatisierung auf einer einzelnen Plattform verwenden.
 
 - [Zur gemeinsamen Lösungsübersicht](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4B76N).
-- [Zur Partnerwebsite](https://www.automai.com/wvd-testing-monitoring?hs_preview=EyZXkOWu-30742040580).
+- [Zur Partnerwebsite](https://www.automai.com/windows-virtual-desktop-performance-testing/).
 
 ## <a name="cloudhouse"></a>Cloudhouse
 

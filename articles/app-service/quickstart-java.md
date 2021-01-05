@@ -10,12 +10,13 @@ ms.date: 08/01/2020
 ms.author: jafreebe
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 3c5a04bd14bdcbf250908db78c622b963f191d91
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+adobe-target: true
+ms.openlocfilehash: b54df350e3f59720a92d7c1e74e28d9fcafddf94
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93333085"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97802472"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service"></a>Schnellstart: Erstellen einer Java-App in Azure App Service
 
@@ -82,7 +83,7 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.12.0:config
 1. Wenn die Eingabeaufforderung für die **Web-App-Option** angezeigt wird, übernehmen Sie die Standardoption `<create>`, indem Sie die EINGABETASTE drücken, oder wählen Sie eine vorhandene App aus.
 1. Wenn die Eingabeaufforderung für die **Betriebssystemoption** angezeigt wird, wählen Sie **Windows** aus, indem Sie `3` eingeben.
 1. Wenn die Eingabeaufforderung für die **Tarifoption** angezeigt wird, wählen Sie **B2** aus, in dem Sie `2` eingeben.
-1. Verwenden Sie die Java-Standardversion ( **Java 8** ), indem Sie die EINGABETASTE drücken.
+1. Verwenden Sie die Java-Standardversion (**Java 8**), indem Sie die EINGABETASTE drücken.
 1. Drücken Sie abschließend in der letzten Eingabeaufforderung die EINGABETASTE, um die Auswahl zu bestätigen.
 
     Die Zusammenfassungsausgabe sieht in etwa wie der unten gezeigte Codeausschnitt aus.
@@ -114,8 +115,8 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.12.0:config
 1. Wenn die Eingabeaufforderung für die **Web-App-Option** angezeigt wird, übernehmen Sie die Standardoption `<create>`, indem Sie die EINGABETASTE drücken, oder wählen Sie eine vorhandene App aus.
 1. Wenn die Eingabeaufforderung für die **Betriebssystemoption** angezeigt wird, wählen Sie **Windows** aus, indem Sie `3` eingeben.
 1. Wenn die Eingabeaufforderung für die **Tarifoption** angezeigt wird, wählen Sie **B2** aus, in dem Sie `2` eingeben.
-1. Verwenden Sie die Java-Standardversion ( **Java 8** ), indem Sie die EINGABETASTE drücken.
-1. Verwenden Sie den Standardwebcontainer ( **Tomcat 8.5** ), indem Sie die EINGABETASTE drücken.
+1. Verwenden Sie die Java-Standardversion (**Java 8**), indem Sie die EINGABETASTE drücken.
+1. Verwenden Sie den Standardwebcontainer (**Tomcat 8.5**), indem Sie die EINGABETASTE drücken.
 1. Drücken Sie abschließend in der letzten Eingabeaufforderung die EINGABETASTE, um die Auswahl zu bestätigen.
 
     Die Zusammenfassungsausgabe sieht in etwa wie der unten gezeigte Codeausschnitt aus.
@@ -152,7 +153,7 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.12.0:config
 1. Wenn die Eingabeaufforderung für die **Web-App-Option** angezeigt wird, übernehmen Sie die Standardoption `<create>`, indem Sie die EINGABETASTE drücken, oder wählen Sie eine vorhandene App aus.
 1. Wenn die Eingabeaufforderung für die **Betriebssystemoption** angezeigt wird, wählen Sie **Linux** aus, indem Sie die EINGABETASTE drücken.
 1. Wenn die Eingabeaufforderung für die **Tarifoption** angezeigt wird, wählen Sie **B2** aus, in dem Sie `2` eingeben.
-1. Verwenden Sie die Java-Standardversion ( **Java 8** ), indem Sie die EINGABETASTE drücken.
+1. Verwenden Sie die Java-Standardversion (**Java 8**), indem Sie die EINGABETASTE drücken.
 1. Drücken Sie abschließend in der letzten Eingabeaufforderung die EINGABETASTE, um die Auswahl zu bestätigen.
 
     ```
@@ -181,8 +182,8 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.12.0:config
 1. Wenn die Eingabeaufforderung für die **Web-App-Option** angezeigt wird, übernehmen Sie die Standardoption `<create>`, indem Sie die EINGABETASTE drücken, oder wählen Sie eine vorhandene App aus.
 1. Wenn die Eingabeaufforderung für die **Betriebssystemoption** angezeigt wird, wählen Sie **Linux** aus, indem Sie die EINGABETASTE drücken.
 1. Wenn die Eingabeaufforderung für die **Tarifoption** angezeigt wird, wählen Sie **B2** aus, in dem Sie `2` eingeben.
-1. Verwenden Sie die Java-Standardversion ( **Java 8** ), indem Sie die EINGABETASTE drücken.
-1. Verwenden Sie den Standardwebcontainer ( **Tomcat 8.5** ), indem Sie die EINGABETASTE drücken.
+1. Verwenden Sie die Java-Standardversion (**Java 8**), indem Sie die EINGABETASTE drücken.
+1. Verwenden Sie den Standardwebcontainer (**Tomcat 8.5**), indem Sie die EINGABETASTE drücken.
 1. Drücken Sie abschließend in der letzten Eingabeaufforderung die EINGABETASTE, um die Auswahl zu bestätigen.
 
     ```
@@ -211,14 +212,14 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.12.0:config
 
 Sie können bei Bedarf die Konfigurationen für App Service direkt in der Datei `pom.xml` ändern. Im Folgenden sind einige gängige Konfigurationen aufgeführt:
 
-Eigenschaft | Erforderlich | Beschreibung | Version
+Eigenschaft | Erforderlich | BESCHREIBUNG | Version
 ---|---|---|---
 `<schemaVersion>` | false | Gibt die Version des Konfigurationsschemas an. Folgende Werte werden unterstützt: `v1` und `v2`. | 1.5.2
 `<subscriptionId>` | false | Geben Sie die Abonnement-ID an. | 0.1.0+
 `<resourceGroup>` | true | Azure-Ressourcengruppe für Ihre Web-App. | 0.1.0+
 `<appName>` | true | Der Name Ihrer Web-App. | 0.1.0+
-`<region>` | true | Gibt die Region an, in der Ihre Web-App gehostet wird. Der Standardwert ist **westeurope**. Alle gültigen Regionen finden Sie im Abschnitt [Unterstützten Regionen](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme). | 0.1.0+
-`<pricingTier>` | false | Der Tarif für Ihre Web-App. Für Produktionsworkloads lautet der Standardwert **P1V2** , für Entwicklungs- und Testworkloads in Java ist der empfohlene Mindestwert hingegen **B2**. [Weitere Informationen](https://azure.microsoft.com/pricing/details/app-service/linux/)| 0.1.0+
+`<region>` | true | Gibt die Region an, in der Ihre Web-App gehostet wird. Der Standardwert ist **westeurope**. Alle gültigen Regionen finden Sie im Abschnitt [Unterstützten Regionen](https://github.com/microsoft/azure-maven-plugins/blob/develop/azure-webapp-maven-plugin/README.md). | 0.1.0+
+`<pricingTier>` | false | Der Tarif für Ihre Web-App. Für Produktionsworkloads lautet der Standardwert **P1V2**, für Entwicklungs- und Testworkloads in Java ist der empfohlene Mindestwert hingegen **B2**. [Weitere Informationen](https://azure.microsoft.com/pricing/details/app-service/linux/)| 0.1.0+
 `<runtime>` | true | Details zur Konfiguration der Laufzeitumgebung finden Sie [hier](https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Web-App:-Configuration-Details). | 0.1.0+
 `<deployment>` | true | Details zur Konfiguration der Bereitstellung finden Sie [hier](https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Web-App:-Configuration-Details). | 0.1.0+
 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: ril
 ms.reviewer: juliako
-ms.openlocfilehash: 1a106874277f64a006584f9deb98fb9729263b1b
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 048635a33c3d84416dae00b731b386572aa3f89d
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93040715"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97802574"
 ---
 # <a name="redact-faces-with-azure-media-analytics-walkthrough"></a>Exemplarische Vorgehensweise: Bearbeiten von Gesichtern mit Azure Media Analytics
 
@@ -74,7 +74,7 @@ Die Ausgabe umfasst sowohl eine Anmerkungen-JSON-Datei mit Gesichtsspeicherort-D
     ![Screenshot: Option zum Hochladen der Textdatei](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough006.png)
 
 3. (Optional) Nehmen Sie Änderungen an der annotations.json-Datei vor, verstärken Sie z.B. die Rahmen, die den Begrenzungsrahmen bilden. 
-4. Klicken Sie mit der rechten Maustaste auf die im ersten Durchgang ausgegebene Ressource, wählen Sie den Redactor aus, und führen Sie den **Redact** -Modus aus. 
+4. Klicken Sie mit der rechten Maustaste auf die im ersten Durchgang ausgegebene Ressource, wählen Sie den Redactor aus, und führen Sie den **Redact**-Modus aus. 
 
     ![Screenshot: Azure Media Redactor mit ausgewählter Option „Second Pass: Redact mode“ (Zweiter Durchgang: Bearbeitungsmodus)](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough007.png)
 
@@ -133,6 +133,6 @@ Wenn Sie als Entwickler versuchen, die JSON-Anmerkungsdaten zu analysieren, such
 ## <a name="related-links"></a>Verwandte Links
 [Azure Media Services Analytics – Übersicht](./legacy-components.md)
 
-[Azure Media Analytics-Demos](https://azuremedialabs.azurewebsites.net/demos/Analytics.html)
+[Azure Media Analytics-Demos](http://amslabs.azurewebsites.net/demos/Analytics.html)
 
 [Ankündigung der Gesichtsbearbeitung mit Azure Media Analytics](https://azure.microsoft.com/blog/azure-media-redactor/)
