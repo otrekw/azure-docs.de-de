@@ -3,12 +3,12 @@ title: Verwalten und Überwachen von SQL Server-Datenbanken auf einem virtuelle
 description: In diesem Artikel wird beschrieben, wie auf einer Azure-VM ausgeführte SQL Server-Datenbanken verwaltet und überwacht werden.
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: b0df22002521c8148cac1200e79aeb0ae5a60546
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: e37e6fc211b34b7e427b66db374a705faafd25f9
+ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96021502"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97858733"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>Verwalten und Überwachen gesicherter SQL Server-Datenbanken
 
@@ -20,7 +20,7 @@ Wenn Sie noch keine Sicherungen für Ihre SQL Server-Datenbanken konfiguriert ha
 
 Azure Backup zeigt alle geplanten und bedarfsgesteuerten Vorgänge im Portal unter **Sicherungsaufträge** an – mit Ausnahme der geplanten Protokollsicherungen, da diese sehr häufig erfolgen können. Zu den in diesem Portal angezeigten Aufträgen gehören Datenbankermittlung und -registrierung, Konfiguration der Sicherung sowie Sicherungs- und Wiederherstellungsvorgänge.
 
-![Das Portal „Sicherungsaufträge“](./media/backup-azure-sql-database/jobs-list.png)
+![Das Portal „Sicherungsaufträge“](./media/backup-azure-sql-database/sql-backup-jobs-list.png)
 
 Ausführliche Informationen zu Überwachungsszenarios finden Sie unter [Monitoring in the Azure portal](backup-azure-monitoring-built-in-monitor.md) (Überwachung im Azure-Portal) und [Monitoring using Azure Monitor](backup-azure-monitoring-use-azuremonitor.md) (Überwachung mithilfe von Azure Monitor).  
 
@@ -36,13 +36,9 @@ So überwachen Sie Datenbanksicherungswarnungen:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
-2. Wählen Sie im Tresordashboard **Warnungen und Ereignisse** aus.
+2. Wählen Sie auf dem Tresordashboard die Option **Sicherungswarnungen** aus.
 
-   ![Auswählen von „Warnungen und Ereignisse“](./media/backup-azure-sql-database/vault-menu-alerts-events.png)
-
-3. Wählen Sie unter **Warnungen und Ereignisse** die Option **Sicherungswarnungen** aus.
-
-   ![Auswählen von „Sicherungswarnungen“](./media/backup-azure-sql-database/backup-alerts-dashboard.png)
+   ![Auswählen von „Sicherungswarnungen“](./media/backup-azure-sql-database/sql-backup-alerts-list.png)
 
 ## <a name="stop-protection-for-a-sql-server-database"></a>Beenden des Schutzes für eine SQL Server-Datenbank
 
