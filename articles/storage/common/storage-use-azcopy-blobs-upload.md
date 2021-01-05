@@ -4,16 +4,16 @@ description: Dieser Artikel enthält eine Sammlung von AzCopy-Beispielbefehlen, 
 author: normesta
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/08/2020
+ms.date: 12/11/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 11d40805cda2ea2e3693c6c93034ae19f1f0fcc0
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: ec88a3c740ceda7ccf352f8f32f94e2cd52d0988
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96907398"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97358757"
 ---
 # <a name="upload-files-to-azure-blob-storage-by-using-azcopy-v10"></a>Hochladen von Dateien in Azure Blob Storage mithilfe von AzCopy v10
 
@@ -135,9 +135,11 @@ Mit der Option `--exclude-pattern` können Sie auch Dateien ausschließen. Weite
 
 Die Optionen `--include-pattern` und `--exclude-pattern` gelten nur für Dateinamen und nicht für den Pfad.  Wenn Sie alle Textdateien in einer Verzeichnisstruktur kopieren möchten, verwenden Sie die Option `–recursive`, um die gesamte Verzeichnisstruktur abzurufen. Verwenden Sie dann `–include-pattern`, und geben Sie `*.txt` an, um alle Textdateien abzurufen.
 
-### <a name="upload-files-that-were-modified-after-a-date-and-time"></a>Hochladen von Dateien, die nach einem bestimmten Datum und einer bestimmten Uhrzeit geändert wurden 
+### <a name="upload-files-that-were-modified-before-or-after-a-date-and-time"></a>Hochladen von Dateien, die vor oder nach einem bestimmten Datum und einer bestimmten Uhrzeit geändert wurden 
 
-Verwenden Sie den Befehl [azcopy copy](storage-ref-azcopy-copy.md) mit der Option `--include-after`. Geben Sie ein Datum und eine Uhrzeit im ISO 8601-Format an (z. B. `2020-08-19T15:04:00Z`). 
+Verwenden Sie den Befehl [azcopy copy](storage-ref-azcopy-copy.md) mit der Option `--include-before` oder `--include-after`. Geben Sie ein Datum und eine Uhrzeit im ISO 8601-Format an (z. B. `2020-08-19T15:04:00Z`). 
+
+In den folgenden Beispielen werden Dateien hochgeladen, die am oder nach dem angegebenen Datum geändert wurden.
 
 |    |     |
 |--------|-----------|

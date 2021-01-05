@@ -28,14 +28,6 @@
       href: tutorial-sync-data-factory.md
     - name: Synchronisieren von Daten mit der SQL-Datensynchronisierung
       href: tutorial-sync-data-sync.md
-    - name: Erstellen einer End-to-End-IoT-Lösung mit SQL Edge
-      items:
-        - name: Einrichten von Azure-Ressourcen
-          href: tutorial-deploy-azure-resources.md
-        - name: Einrichten von IoT Edge-Modulen
-          href: tutorial-set-up-iot-edge-modules.md
-        - name: Bereitstellen eines Modells in SQL Edge
-          href: tutorial-run-ml-model-on-sql-edge.md
 - name: Konzepte
   items:
     - name: Bereitstellen
@@ -138,6 +130,18 @@
       href: create-stream-analytics-job.md
     - name: Problembehandlung bei Bereitstellungsproblemen
       href: troubleshoot.md
+- name: Proben
+  items:
+    - name: Vorhersage von Eisenerz und Kieselerde
+      items:
+        - name: Einrichten von Azure-Ressourcen
+          href: tutorial-deploy-azure-resources.md
+        - name: Einrichten von IoT Edge-Modulen
+          href: tutorial-set-up-iot-edge-modules.md
+        - name: Bereitstellen eines Modells in SQL Edge
+          href: tutorial-run-ml-model-on-sql-edge.md
+    - name: 'Erneuerbare Energie: Analyse von Windturbinen'
+      href: tutorial-renewable-energy-demo.md
 - name: Verweis
   items:
     - name: Transact-SQL-Referenz (T-SQL)

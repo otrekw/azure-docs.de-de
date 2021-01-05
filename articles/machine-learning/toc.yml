@@ -297,6 +297,9 @@
         - name: Git-Integration
           displayName: github gitlab
           href: concept-train-model-git-integration.md
+        - name: Problembehandlung für Umgebungen
+          displayName: 'troubleshoot, envrionment, debug, image'
+          href: how-to-troubleshoot-environments.md
     - name: Arbeiten mit Daten
       items:
         - name: Bezeichnen von Daten
@@ -354,14 +357,6 @@
         - name: Optimieren von Hyperparametern
           displayName: 'parameter, hyperparameter, hyperdrive'
           href: how-to-tune-hyperparameters.md
-        - name: Arbeiten mit MLflow
-          items:
-            - name: Nachverfolgen von Experimenten mit MLflow
-              displayName: 'log, monitor, deploy, metrics,  model registry, register'
-              href: how-to-use-mlflow.md
-            - name: Nachverfolgen von Azure Databricks-Ausführungen mit MLflow
-              displayName: 'log, monitor, deploy, metrics, databricks'
-              href: how-to-use-mlflow-azure-databricks.md
         - name: Scikit-learn
           href: how-to-train-scikit-learn.md
         - name: TensorFlow
@@ -404,6 +399,17 @@
           href: how-to-use-secrets-in-runs.md
         - name: Vertiefendes Lernen
           href: how-to-use-reinforcement-learning.md
+    - name: Arbeiten mit MLflow
+      items:
+        - name: Nachverfolgen von Experimenten mit MLflow
+          displayName: 'log, monitor, metrics, model registry, register'
+          href: how-to-use-mlflow.md
+        - name: Nachverfolgen von Azure Databricks-Ausführungen mit MLflow
+          displayName: 'log, monitor, deploy, metrics, databricks'
+          href: how-to-use-mlflow-azure-databricks.md
+        - name: Bereitstellen von MLflow-Modellen
+          displayName: 'log, monitor, deploy, metrics, databricks'
+          href: how-to-deploy-models-with-mlflow.md
     - name: Automatisiertes maschinelles Lernen
       displayName: 'automl, auto ml'
       items:
@@ -468,9 +474,9 @@
               href: /azure/iot-edge/tutorial-deploy-machine-learning?context=azure/machine-learning/service/context/ml-context
             - name: FPGA-Rückschluss
               href: how-to-deploy-fpga-web-service.md
-        - name: Problembehandlung und Debuggen
+        - name: Behandeln von Problemen bei der Bereitstellung
           href: how-to-troubleshoot-deployment.md
-        - name: Problembehandlung und Debuggen (lokal)
+        - name: Behandeln von Problemen bei der Bereitstellung (lokal)
           href: how-to-troubleshoot-deployment-local.md
         - name: Verwenden eines Webdiensts
           displayName: create client consume request response synchronous
@@ -536,12 +542,12 @@
             - name: Ausführen von Python-Code
               displayName: 'feature extraction, feature engineering'
               href: how-to-designer-python.md
-        - name: Debugging und Problembehandlung für Pipelines
+        - name: Behandeln von Problemen bei Pipelines
           displayName: designer
           href: how-to-debug-pipelines.md
         - name: Protokollieren von Pipelinedaten in Application Insights
           href: how-to-log-pipelines-application-insights.md
-        - name: Debuggen und Problembehandlung für den Schritt zur parallelen Ausführung
+        - name: Behandeln von Problemen mit ParallelRunStep
           displayName: debug_batch consume pipeline parallelrunstep inference
           href: how-to-debug-parallel-run-step.md
     - name: Azure Pipelines für CI/CD
@@ -601,11 +607,10 @@
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Preise
       href: 'https://azure.microsoft.com/pricing/details/machine-learning-services/'
+    - name: Diensteinschränkungen
+      href: resource-limits-quotas-capacity.md
     - name: Regionale Verfügbarkeit
       href: 'https://azure.microsoft.com/regions/services/'
-    - name: Bekannte Probleme
-      displayName: 'bugs, errors, troubleshoot'
-      href: resource-known-issues.md
     - name: Benutzerforum
       href: 'https://docs.microsoft.com/answers/topics/azure-machine-learning.html'
     - name: Stack Overflow

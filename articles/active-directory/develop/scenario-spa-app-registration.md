@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 05/19/2020
 ms.author: hahamil
 ms.custom: aaddev
-ms.openlocfilehash: c9fde904d6befebfcfd87b55bd7b2bf4e4c825f2
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: e42b6b7ffa39110ce356094de690bb353a3fb10f
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443822"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107786"
 ---
 # <a name="single-page-application-app-registration"></a>Single-Page-Webanwendung: App-Registrierung
 
@@ -27,13 +27,15 @@ Führen Sie die folgenden Schritte aus, um eine Single-Page-Webanwendung (Single
 
 Führen Sie für MSAL.js 1.0- und für MSAL.js 2.0-basierte Anwendungen zunächst die folgenden Schritte aus, um die App-Erstregistrierung zu erstellen.
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Wenn Ihr Konto Zugriff auf mehrere Mandanten hat, wählen Sie im oberen Menü den Filter **Verzeichnis und Abonnement** aus, und wählen Sie dann den Mandanten aus, der die App-Registrierung enthalten soll, die Sie erstellen möchten.
-1. Suchen Sie nach **Azure Active Directory** , und wählen Sie diese Option aus.
-1. Wählen Sie unter **Verwalten** die Option **App-Registrierungen** aus.
-1. Wählen Sie **Neue Registrierung** aus, geben Sie einen **Namen** für die Anwendung ein, und wählen Sie die **Unterstützten Kontotypen** für die Anwendung aus. Geben Sie **KEINEN** **Umleitungs-URI** ein. Eine Beschreibung der verschiedenen Kontotypen finden Sie unter [Registrieren einer neuen Anwendung mit dem Azure-Portal](quickstart-register-app.md).
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Wenn Sie Zugriff auf mehrere Mandanten haben, verwenden Sie im Menü am oberen Rand den Filter **Verzeichnis + Abonnement** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::, um den Mandanten auszuwählen, für den Sie eine Anwendung registrieren möchten.
+1. Suchen Sie nach **Azure Active Directory**, und wählen Sie diese Option aus.
+1. Wählen Sie unter **Verwalten** Folgendes aus: **App-Registrierungen** > **Neue Registrierung**.
+1. Geben Sie einen **Namen** für Ihre Anwendung ein. Benutzern Ihrer App wird wahrscheinlich dieser Namen angezeigt. Sie können ihn später ändern.
+1. Wählen Sie **Unterstützte Kontotypen** für die Anwendung aus. Geben Sie **KEINEN** **Umleitungs-URI** ein. Eine Beschreibung der verschiedenen Kontotypen finden Sie unter [Registrieren einer Anwendung](quickstart-register-app.md).
 1. Wählen Sie **Registrieren** aus, um die App-Registrierung zu erstellen.
 
-Konfigurieren Sie als Nächstes die App-Registrierung mit einem **Umleitungs-URI** , um anzugeben, wohin die Microsoft Identity Platform den Client zusammen mit allen Sicherheitstoken umleiten soll. Führen Sie die Schritte aus, die für die in Ihrer Anwendung verwendete Version von MSAL.js gelten:
+Konfigurieren Sie als Nächstes die App-Registrierung mit einem **Umleitungs-URI**, um anzugeben, wohin die Microsoft Identity Platform den Client zusammen mit allen Sicherheitstoken umleiten soll. Führen Sie die Schritte aus, die für die in Ihrer Anwendung verwendete Version von MSAL.js gelten:
 
 - [MSAL.js 2.0 mit dem Authentifizierungscodeflow](#redirect-uri-msaljs-20-with-auth-code-flow) (empfohlen)
 - [MSAL.js 1.0 mit dem impliziten Flow](#redirect-uri-msaljs-10-with-implicit-flow)
@@ -43,7 +45,7 @@ Konfigurieren Sie als Nächstes die App-Registrierung mit einem **Umleitungs-URI
 Führen Sie die folgenden Schritte aus, um einen Umleitungs-URI für eine App hinzuzufügen, die MSAL.js 2.0 oder höher verwendet. MSAL.js 2.0 (und höher) unterstützt den Autorisierungscodeflow mit PKCE und CORS als Reaktion auf [Einschränkungen bei Browsern, die Cookies von Drittanbietern blockieren](reference-third-party-cookies-spas.md). Der Flow zur impliziten Genehmigung wird von MSAL.js 2.0 und höheren Versionen nicht unterstützt.
 
 1. Wählen Sie im Azure-Portal die App-Registrierung aus, die Sie zuvor im Abschnitt [Erstellen der App-Registrierung](#create-the-app-registration) erstellt haben.
-1. Wählen Sie unter **Verwalten** die Option **Authentifizierung** aus, und wählen Sie dann **Plattform hinzufügen** aus.
+1. Wählen Sie unter **Verwalten** die Optionen **Authentifizierung** > **Plattform hinzufügen** aus.
 1. Wählen Sie unter **Webanwendungen** die Kachel **Single-Page-Webanwendung** aus.
 1. Geben Sie unter **Umleitungs-URIs** einen [Umleitungs-URI](reply-url.md) ein. Aktivieren Sie **KEINES** der beiden Kontrollkästchen unter **Implizite Genehmigung**.
 1. Wählen Sie **Konfigurieren** aus, um den Vorgang zum Hinzufügen des Umleitungs-URIs abzuschließen.
@@ -57,15 +59,15 @@ Befolgen Sie das [Tutorial](tutorial-v2-javascript-auth-code.md), um weitere Anl
 Führen Sie die folgenden Schritte aus, um einen Umleitungs-URI für eine Single-Page-App hinzuzufügen, die MSAL.js 1.3 (oder eine frühere Version) und den Flow zur impliziten Genehmigung verwendet. Der Autorisierungscodeflow wird von Anwendungen, die MSAL.js 1.3 oder eine frühere Version verwenden, nicht unterstützt.
 
 1. Wählen Sie im Azure-Portal die App-Registrierung aus, die Sie zuvor im Abschnitt [Erstellen der App-Registrierung](#create-the-app-registration) erstellt haben.
-1. Wählen Sie unter **Verwalten** die Option **Authentifizierung** aus, und wählen Sie dann **Plattform hinzufügen** aus.
+1. Wählen Sie unter **Verwalten** die Optionen **Authentifizierung** > **Plattform hinzufügen** aus.
 1. Wählen Sie unter **Webanwendungen** die Kachel **Single-Page-Webanwendung** aus.
 1. Geben Sie unter **Umleitungs-URIs** einen [Umleitungs-URI](reply-url.md) ein.
-1. Aktivieren Sie den **impliziten Flow** :
+1. Aktivieren Sie den **impliziten Flow**:
     - Wenn Ihre Anwendung Benutzer anmeldet, wählen Sie **ID-Token** aus.
     - Wenn Ihre Anwendung auch eine geschützte Web-API aufrufen muss, wählen Sie **Zugriffstoken** aus. Weitere Informationen zu diesen Tokentypen finden Sie unter [ID-Token](id-tokens.md) und [Zugriffstoken](access-tokens.md).
 1. Wählen Sie **Konfigurieren** aus, um den Vorgang zum Hinzufügen des Umleitungs-URIs abzuschließen.
 
-Sie haben jetzt die Registrierung Ihrer Single-Page-Webanwendung (Single-Page Application, SPA) abgeschlossen und einen Umleitungs-URI konfiguriert, an den der Client umgeleitet wird und alle Sicherheitstoken gesendet werden. Wenn Sie einen oder beide Tokentypen ( **ID-Token** und **Zugriffstoken** ) auswählen, haben Sie den Flow zur impliziten Genehmigung aktiviert.
+Sie haben jetzt die Registrierung Ihrer Single-Page-Webanwendung (Single-Page Application, SPA) abgeschlossen und einen Umleitungs-URI konfiguriert, an den der Client umgeleitet wird und alle Sicherheitstoken gesendet werden. Wenn Sie einen oder beide Tokentypen (**ID-Token** und **Zugriffstoken**) auswählen, haben Sie den Flow zur impliziten Genehmigung aktiviert.
 
 Befolgen Sie das [Tutorial](tutorial-v2-javascript-spa.md), um weitere Anleitungen zu erhalten.
 
@@ -79,4 +81,4 @@ Wenn alle von einer App-Registrierung dargestellten Single-Page-Webanwendungen i
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Konfigurieren Sie als Nächstes den Code Ihrer App, um die in den vorherigen Schritten erstellte App-Registrierung zu verwenden: [Codekonfiguration der App](scenario-spa-app-configuration.md).
+Konfigurieren Sie den Code Ihrer App, um die in den vorherigen Schritten erstellte App-Registrierung zu verwenden: [Codekonfiguration der App](scenario-spa-app-configuration.md).

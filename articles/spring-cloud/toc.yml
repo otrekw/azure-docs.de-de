@@ -95,6 +95,10 @@
           href: diagnostic-services.md
         - name: Streamen von Protokollen in Echtzeit
           href: spring-cloud-howto-log-streaming.md
+        - name: Application Insights unter Verwendung des Java-In-Process-Agents
+          href: spring-cloud-howto-application-insights.md
+        - name: Metriken zum Resilience4J-Trennschalter
+          href: spring-cloud-howto-circuit-breaker-metrics.md
     - name: Sicher
       items:
         - name: Aktivieren einer systemseitig zugewiesenen verwalteten Identität

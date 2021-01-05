@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 6ca0513f95bc490087f3c84eeecc4ea623f64604
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: 421fb7b0c91171756f55ad25c918955870054e3e
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94517086"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97511279"
 ---
 # <a name="develop-secure-applications-on-azure"></a>Entwickeln sicherer Anwendungen in Azure
 In diesem Artikel werden Sicherheitsaktivitäten und -kontrollen vorgestellt, die Sie berücksichtigen sollten, wenn Sie Anwendungen für die Cloud entwickeln. Es werden Sicherheitsfragen und -konzepten behandelt, die Sie während der Implementierungs- und Überprüfungsphase von Microsoft [Security Development Lifecycle (SDL)](/previous-versions/windows/desktop/cc307891(v=msdn.10)) berücksichtigen müssen. Das Ziel ist, Ihnen das Festlegen von Aktivitäten und Azure-Diensten zu ermöglichen, mit denen Sie eine sicherere Anwendung entwickeln können.
@@ -38,7 +38,7 @@ Führen Sie vor dem Einchecken von Code [Code Reviews](/azure/devops/learn/devop
 
 ### <a name="perform-static-code-analysis"></a>Ausführen statischer Codeanalysen
 
-[Statische Codeanalysen](https://owasp.org/www-community/controls/Static_Code_Analysis) (auch bekannt als *Quellcodeanalyse* ) werden in der Regel als Teil eines Code Reviews durchgeführt. Die statische Codeanalyse verwendet herkömmlicherweise Tools zur Analyse von ausgeführtem Code, um potenzielle Sicherheitslücken in nicht ausgeführtem Code zu finden, indem Methoden wie [Taint-Prüfung](https://en.wikipedia.org/wiki/Taint_checking) und [Datenflussanalyse](https://en.wikipedia.org/wiki/Data-flow_analysis) eingesetzt werden.
+[Statische Codeanalysen](https://owasp.org/www-community/controls/Static_Code_Analysis) (auch bekannt als *Quellcodeanalyse*) werden in der Regel als Teil eines Code Reviews durchgeführt. Die statische Codeanalyse verwendet herkömmlicherweise Tools zur Analyse von ausgeführtem Code, um potenzielle Sicherheitslücken in nicht ausgeführtem Code zu finden, indem Methoden wie [Taint-Prüfung](https://en.wikipedia.org/wiki/Taint_checking) und [Datenflussanalyse](https://en.wikipedia.org/wiki/Data-flow_analysis) eingesetzt werden.
 
 Azure Marketplace bietet [Entwicklertools](https://azuremarketplace.microsoft.com/marketplace/apps/category/developer-tools?page=1&search=code%20review), die statische Codeanalyse ausführen und bei Code Reviews helfen.
 
@@ -48,21 +48,21 @@ Behandeln Sie alle Eingaben als nicht vertrauenswürdig, um Ihre Anwendung vor d
 
 Überprüfen Sie Eingaben zu einem frühen Zeitpunkt im Datenfluss, um sicherzustellen, dass nur ordnungsgemäß formatierte Daten in den Workflow gelangen. Sie möchten vermeiden, dass falsch formatierte Daten dauerhaft in Ihrer Datenbank gespeichert werden oder eine Fehlfunktion in einer Downstreamkomponente auslösen.
 
-Blacklisting und Whitelisting sind zwei allgemeine Ansätze zur Durchführung einer Syntaxüberprüfung der Eingabe:
+Aufnehmen in die Sperrliste und Setzen auf die Positivliste sind zwei allgemeine Ansätze zur Durchführung einer Syntaxüberprüfung der Eingabe:
 
-  - Beim Blacklisting wird versucht, zu bestätigen, dass eine Benutzereingabe keinen „bekannt bösartigen“ Inhalt aufweist.
+  - Beim Aufnehmen in die Sperrliste wird versucht, zu bestätigen, dass eine bestimmte Benutzereingabe keinen „bekannt bösartigen“ Inhalt aufweist.
 
-  - Beim Whitelisting wird versucht, zu bestätigen, dass eine Benutzereingabe einem Satz „bekannt gutartiger“ Eingaben entspricht. Zeichenbasiertes Whitelisting ist eine Form des Whitelistings, bei der eine Anwendung überprüft, ob die Benutzereingabe nur „bekannt gutartige“ Zeichen enthält bzw. ob die Eingabe einem bekannten Format entspricht.
+  - Beim Setzen auf die Positivliste wird versucht, zu bestätigen, dass eine bestimmte Benutzereingabe einem Satz „bekannt gutartiger“ Eingaben entspricht. Zeichenbasiertes Setzen auf die Positivliste ist eine Form des Setzens auf die Positivliste, bei der eine Anwendung überprüft, ob die Benutzereingabe nur „bekannt gutartige“ Zeichen enthält bzw. ob die Eingabe einem bekannten Format entspricht.
     Dies kann beispielsweise die Überprüfung umfassen, ob ein Benutzername nur alphanumerische Zeichen enthält, oder ob er genau zwei Zahlen enthält.
 
-Whitelisting ist der zu bevorzugende Ansatz zum Erstellen sicherer Software.
-Blacklisting ist anfällig für Fehler, da es nicht möglich ist, eine vollständige Liste potenziell schädlicher Eingaben aufzustellen.
+Setzen auf die Positivliste ist der zu bevorzugende Ansatz zum Erstellen sicherer Software.
+Aufnehmen in die Sperrliste ist anfällig für Fehler, da es nicht möglich ist, eine vollständige Liste potenziell schädlicher Eingaben aufzustellen.
 
 Führen Sie diese Arbeit auf dem Server aus, nicht auf dem Client (oder auf dem Server und auf dem Client).
 
 ### <a name="verify-your-applications-outputs"></a>Überprüfen der Ausgaben Ihrer Anwendung
 
-Jede Ausgabe, die Sie entweder visuell oder innerhalb eines Dokuments darstellen, sollte immer codiert und mit Escapezeichen versehen sein. Das [Versehen mit Escapezeichen](https://owasp.org/www-community/Injection_Theory#Escaping_.28aka_Output_Encoding.29), auch bekannt als *Ausgabecodierung* , wird verwendet, um sicherzustellen, dass nicht vertrauenswürdige Daten kein Transportmittel für einen Einschleusungsangriff sind. Das Versehen mit Escapezeichen in Kombination mit Datenüberprüfung bietet Verteidigungsebenen, um die Sicherheit des Systems als Ganzes zu erhöhen.
+Jede Ausgabe, die Sie entweder visuell oder innerhalb eines Dokuments darstellen, sollte immer codiert und mit Escapezeichen versehen sein. Das [Versehen mit Escapezeichen](https://owasp.org/www-community/Injection_Theory#Escaping_.28aka_Output_Encoding.29), auch bekannt als *Ausgabecodierung*, wird verwendet, um sicherzustellen, dass nicht vertrauenswürdige Daten kein Transportmittel für einen Einschleusungsangriff sind. Das Versehen mit Escapezeichen in Kombination mit Datenüberprüfung bietet Verteidigungsebenen, um die Sicherheit des Systems als Ganzes zu erhöhen.
 
 Das Versehen mit Escapezeichen stellt sicher, dass alles als *Ausgabe* angezeigt wird. Das Versehen mit Escapezeichen teilt außerdem dem Interpreter mit, dass die Daten nicht zur Ausführung bestimmt sind, und dies verhindert, dass Angriffe funktionieren können. Dies ist eine weitere gängige Angriffstechnik namens *Cross-Site Scripting* (XSS).
 

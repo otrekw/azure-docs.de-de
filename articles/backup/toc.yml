@@ -94,6 +94,8 @@
       href: backup-architecture.md
     - name: Leitfaden und bewährte Methoden
       href: guidance-best-practices.md
+    - name: Glossarbegriffe
+      href: azure-backup-glossary.md
 - name: Anleitungen
   items:
     - name: Tresore
@@ -164,6 +166,8 @@
               href: backup-azure-manage-vms.md
             - name: Verwalten von Wiederherstellungspunkten
               href: manage-recovery-points.md
+            - name: Ändern der Sicherungsrichtlinie mit der Azure CLI
+              href: modify-vm-policy-cli.md
     - name: Sicherung einer SQL Server-Datenbank auf einem virtuellen Azure-Computer
       items:
         - name: Übersicht

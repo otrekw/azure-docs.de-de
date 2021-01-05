@@ -7,45 +7,13 @@
       href: overview.md
     - name: Neues
       href: whats-new.md
-- name: Schnellstarts
+- name: Erste Schritte mit der Formularerkennung
   expaned: true
   items:
-    - name: Verwenden der Clientbibliothek
+    - name: Verwenden der Clientbibliothek oder REST-API
       href: quickstarts/client-library.md
     - name: Verwenden des Samplebezeichnungstools
-      items:
-        - name: Trainieren eines benutzerdefinierten Modells mit Bezeichnungen
-          href: quickstarts/label-tool.md
-    - name: Verwenden der REST-API
-      items:
-        - name: Trainieren und Verwenden eines benutzerdefinierten Modells ohne Bezeichnungen
-          items:
-            - name: cURL
-              href: quickstarts/curl-train-extract.md
-            - name: Python
-              href: quickstarts/python-train-extract.md
-        - name: Trainieren und Verwenden eines benutzerdefinierten Modells mit Bezeichnungen
-          items:
-            - name: Python
-              href: quickstarts/python-labeled-data.md
-        - name: Verwenden eines vordefinierten Belegmodells
-          items:
-            - name: cURL
-              href: quickstarts/curl-receipts.md
-            - name: Python
-              href: quickstarts/python-receipts.md
-        - name: Verwenden eines vordefinierten Visitenkartenmodells
-          items:
-            - name: Python
-              href: quickstarts/python-business-cards.md
-        - name: Verwenden eines vorgefertigten Rechnungsmodells
-          items:
-            - name: Python
-              href: quickstarts/python-invoices.md
-        - name: Abrufen von Textlayoutinformationen
-          items:
-            - name: Python
-              href: quickstarts/python-layout.md
+      href: quickstarts/label-tool.md
 - name: Tutorials
   items:
     - name: Verwenden der Formularerkennung mit Cognitive Search
@@ -77,7 +45,8 @@
           href: form-recognizer-container-configuration.md
           displayName: 'docker, container, run, billing, apikey, logging'
         - name: Verwenden von Containerinstanzen
-          href: deploy-form-recognizer-on-container-instances.md
+          maintainContext: true
+          href: ../containers/azure-container-instance-recipe.md
         - name: "Dokumentation zu Cognitive\_Services-Containern"
           href: ../containers/index.yml
     - name: Sichern und Wiederherstellen von Modellen
@@ -114,7 +83,7 @@
       href: 'https://go.microsoft.com/fwlink/?linkid=2087185'
     - name: Sprachunterstützung
       href: language-support.md
-    - name: Compliance
+    - name: Kompatibilität
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Verschlüsselung
       href: form-recognizer-encryption-of-data-at-rest.md

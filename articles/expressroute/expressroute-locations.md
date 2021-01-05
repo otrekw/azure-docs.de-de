@@ -6,14 +6,14 @@ author: duongau
 ms.service: expressroute
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 11/25/2020
+ms.date: 12/10/2020
 ms.author: duau
-ms.openlocfilehash: fdb5b06a7e0b0001728954c1cdff37aa8e2484f4
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.openlocfilehash: cc844059d14a182db11e18f95e676b38762f6a0d
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96763569"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97561646"
 ---
 # <a name="expressroute-connectivity-partners-and-peering-locations"></a>ExpressRoute-Konnektivitätspartner und Peeringstandorte
 
@@ -52,7 +52,7 @@ Die folgende Tabelle bietet eine Übersicht über die Azure-Regionen mit Express
 | **Südkorea** | Korea, Mitte, Korea, Süden |Busan, Seoul|
 | **Vereinigte Arabische Emirate** | VAE, Mitte; VAE, Norden | Dubai, Dubai2 |
 | **Südafrika** | „Südafrika, Westen“, „Südafrika, Norden“ |Kapstadt, Johannesburg |
-| **Südamerika** | Brasilien Süd |Sao Paulo |
+| **Südamerika** | Brasilien Süd |Bogota, Sao Paulo |
 
 
 ## <a name="regions-and-geopolitical-boundaries-for-national-clouds"></a>Regionen und geopolitische Grenzen für nationale Clouds
@@ -86,7 +86,7 @@ Die folgende Tabelle enthält die Standorte nach Service Provider. [Hier](expres
 | **[BBIX](https://www.bbix.net/en/service/ix/)** | Unterstützt | Unterstützt | Tokio |
 | **[BCX](https://www.bcx.co.za/solutions/connectivity/data-networks)** |Unterstützt |Unterstützt |Kapstadt, Johannesburg|
 | **[Bell Canada](https://business.bell.ca/shop/enterprise/cloud-connect-access-to-cloud-partner-services)** |Unterstützt |Unterstützt |Montreal, Toronto, Quebec City |
-| **[British Telecom](https://www.globalservices.bt.com/en/solutions/products/cloud-connect-azure)** |Unterstützt |Unterstützt |Amsterdam, Amsterdam2, Hongkong SAR, Johannesburg, London, London2, Newport(Wales), Paris, Sao Paulo, Silicon Valley, Singapur, Sydney, Tokio, Washington DC |
+| **[British Telecom](https://www.globalservices.bt.com/en/solutions/products/cloud-connect-azure)** |Unterstützt |Unterstützt |Amsterdam, Amsterdam2, Chicago, Hongkong SAR, Johannesburg, London, London2, Newport(Wales), Paris, Sao Paulo, Silicon Valley, Singapur, Sydney, Tokio, Washington DC |
 | **[C3ntro](https://www.c3ntro.com/data1/express-route1.php)** |Unterstützt |Unterstützt |Miami |
 | **CDC** | Unterstützt | Unterstützt | Canberra, Canberra2 |
 | **[CenturyLink Cloud Connect](https://www.centurylink.com/cloudconnect)** |Unterstützt |Unterstützt |Amsterdam2, Chicago, Dublin, Frankfurt, Hongkong, Las Vegas, London2, New York, Paris, San Antonio, Silicon Valley, Tokio, Toronto, Washington DC, Washington DC2 |

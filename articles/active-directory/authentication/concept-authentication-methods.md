@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 09/15/2020
+ms.date: 12/14/2020
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.custom: contperfq4
-ms.openlocfilehash: c5b2003a290152533a0a8c0f88fe8eb1a410ccf9
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.custom: contperf-fy20q4
+ms.openlocfilehash: 24b29cfb1f58a61193f67ba924e583d4264dfc51
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96744328"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562122"
 ---
 # <a name="what-authentication-and-verification-methods-are-available-in-azure-active-directory"></a>Welche Authentifizierungs- und Prüfmethoden stehen in Azure Active Directory zur Verfügung?
 
@@ -28,7 +28,9 @@ Die sichersten Anmeldeereignisse erzielen Sie mit kennwortlosen Authentifizierun
 
 Bei der Benutzeranmeldung bietet Azure AD Multi-Factor Authentication (MFA) zusätzliche Sicherheit im Vergleich zur alleinigen Verwendung eines Kennworts. Der Benutzer kann aufgefordert werden, sich zusätzlich in einer anderen Form zu authentifizieren, z. B. durch die Antwort auf eine Pushbenachrichtigung, die Eingabe eines Codes von einem Software- oder Hardwaretoken oder die Beantwortung einer SMS oder eines Telefonanrufs.
 
-Um die Umgebung für das Onboarding von Benutzern zu vereinfachen und diese sowohl für MFA als auch für SSPR zu registrieren, empfiehlt es sich, [die kombinierte Registrierung von Sicherheitsinformationen zu aktivieren](howto-registration-mfa-sspr-combined.md). Aus Resilienzgründen ist es empfehlenswert, Benutzer aufzufordern, mehrere Authentifizierungsmethoden zu registrieren. Wenn eine Methode bei der Anmeldung oder bei SSPR für einen Benutzer nicht verfügbar ist, kann er sich wahlweise mit einer anderen Methode authentifizieren. Weitere Informationen finden Sie unter [Erstellen einer robusten Verwaltungsstrategie für die Zugriffssteuerung (Azure AD)](concept-resilient-controls.md).
+Um die Umgebung für das Onboarding von Benutzern zu vereinfachen und diese sowohl für MFA als auch für SSPR (Self-Service Password Reset, Self-Service-Kennwortzurücksetzung) zu registrieren, empfiehlt es sich, [die kombinierte Registrierung von Sicherheitsinformationen zu aktivieren](howto-registration-mfa-sspr-combined.md). Aus Resilienzgründen ist es empfehlenswert, Benutzer aufzufordern, mehrere Authentifizierungsmethoden zu registrieren. Wenn eine Methode bei der Anmeldung oder bei SSPR für einen Benutzer nicht verfügbar ist, kann er sich wahlweise mit einer anderen Methode authentifizieren. Weitere Informationen finden Sie unter [Erstellen einer robusten Verwaltungsstrategie für die Zugriffssteuerung (Azure AD)](concept-resilient-controls.md).
+
+[Dieses Video](https://www.youtube.com/watch?v=LB2yj4HSptc&feature=youtu.be) soll Sie bei der Wahl der besten Authentifizierungsmethode zum Schutz Ihrer Organisation unterstützen.
 
 ## <a name="authentication-method-strength-and-security"></a>Stärke und Sicherheit von Authentifizierungsmethoden
 
@@ -47,7 +49,10 @@ In der folgenden Tabelle sind die Sicherheitsaspekte der verfügbaren Authentifi
 | Sprache                          | Medium   | Medium    | Medium       |
 | Kennwort                       | Niedrig      | High      | High         |
 
-Weitere Informationen zur Sicherheit finden Sie unter [Authentifizierungsrisiken und Angriffsvektoren](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/all-your-creds-are-belong-to-us/ba-p/855124).
+Aktuelle Informationen zur Sicherheit finden Sie in unseren Blogbeiträgen:
+
+- [Die Verwendung des Telefonnetzes für die Authentifizierung sollte eingestellt werden.](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/it-s-time-to-hang-up-on-phone-transports-for-authentication/ba-p/1751752)
+- [Authentifizierungsrisiken und Angriffsvektoren](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/all-your-creds-are-belong-to-us/ba-p/855124)
 
 > [!TIP]
 > Aus Gründen der Flexibilität und Benutzerfreundlichkeit empfehlen wir, die Microsoft Authenticator-App zu verwenden. Diese Authentifizierungsmethode bietet die bestmögliche Benutzererfahrung und verfügt über mehrere Modi, z. B. kennwortlose Authentifizierung, MFA-Pushbenachrichtigungen und OATH-Codes.

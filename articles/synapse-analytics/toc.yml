@@ -502,7 +502,7 @@
               items:
                 - name: Hinzufügen eines Azure Stream Analytics-Auftrags
                   href: ./sql-data-warehouse/sql-data-warehouse-integrate-azure-stream-analytics.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-        - name: Tools zum Herstellen einer Verbindung mit Synapse-Arbeitsbereichen
+        - name: Herstellen einer Verbindung mit Tools und Anwendungen
           items:
             - name: Übersicht
               href: sql/connect-overview.md
@@ -510,14 +510,20 @@
               href: sql/get-started-azure-data-studio.md
             - name: Verbindungszeichenfolgen
               href: sql/connection-strings.md
-            - name: Abfragen mit sqlcmd
-              href: sql/get-started-connect-sqlcmd.md
             - name: Abfragen mit SSMS
               href: sql/get-started-ssms.md
-            - name: Abfragen mit Visual Studio
-              href: sql/get-started-visual-studio.md
             - name: Herstellen einer Verbindung mit Power BI Desktop
               href: sql/get-started-power-bi-professional.md
+            - name: Abfragen mit SSDT für Visual Studio
+              href: sql/get-started-visual-studio.md
+            - name: Abfragen mithilfe von .NET Core
+              href: ../azure-sql/database/connect-query-dotnet-core.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Abfragen mithilfe von Visual Studio .NET
+              href: ../azure-sql/database/connect-query-dotnet-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Abfragen mithilfe von Python
+              href: ../azure-sql/database/connect-query-python.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Abfragen mit sqlcmd
+              href: sql/get-started-connect-sqlcmd.md
 - name: Apache Spark
   items:
     - name: Übersicht
@@ -1107,6 +1113,10 @@
           href: ./machine-learning/tutorial-cognitive-services-anomaly.md
         - name: Konfigurieren von Cognitive Services für Azure Synapse
           href: ./machine-learning/tutorial-configure-cognitive-services-synapse.md
+- name: Vorgehensweise
+  items:
+    - name: Planen und Verwalten von Kosten
+      href: plan-manage-costs.md
 - name: Verweis
   items:
     - name: Azure CLI

@@ -30,16 +30,17 @@
           href: create-cluster.md
 - name: Tutorials
   items:
-    - name: 1. Erstellen/Verwalten eines Auftrags
-      href: stream-analytics-manage-job.md
-    - name: 2. Ausführen von Azure Functions
+    - name: Visualisieren von betrügerischen Anrufen in Power BI
+      href: stream-analytics-real-time-fraud-detection.md
+    - name: Ausführen von Azure Functions
       href: stream-analytics-with-azure-functions.md
-    - name: 3. Bereitstellen mit CI/CD in Azure Pipelines
-      href: stream-analytics-tools-visual-studio-cicd-vsts.md
-    - name: 4. Ausführen einer benutzerdefinierten C#-Funktion
+    - name: Ausführen einer benutzerdefinierten C#-Funktion
       href: stream-analytics-edge-csharp-udf.md
-    - name: 5. Erstellen eines benutzerdefinierten .NET-Deserialisierers
+    - name: Erstellen eines benutzerdefinierten .NET-Deserialisierers
       href: custom-deserializer.md
+    - name: "Erstellen eines IoT\_Edge-Auftrags"
+      href: /azure/iot-edge/tutorial-deploy-stream-analytics?view=iotedge-2018-06
+      maintainContext: true
 - name: Beispiele
   items:
     - name: Codebeispiele
@@ -56,6 +57,8 @@
       href: develop-locally.md
     - name: Sicherheit
       items:
+        - name: Verbinden von Aufträgen mit Azure Virtual Network (VNet)
+          href: connect-job-to-vnet.md
         - name: Sicherheitskontrollen von Azure Policy
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md
@@ -129,6 +132,8 @@
           href: repartition.md
         - name: Erhöhen des Durchsatzes Ihres Auftrags
           href: stream-analytics-scale-jobs.md
+    - name: IoT Edge
+      href: stream-analytics-edge.md
     - name: Zustände eines Auftrags
       href: job-states.md
     - name: Fensterfunktionen
@@ -181,35 +186,31 @@
           href: stream-analytics-job-reliability.md
         - name: Verwenden der SQL-Referenzdaten
           href: sql-reference-data.md
-        - name: Authentifizieren mit einer verwalteten Identität
-          items:
-            - name: ADLS Gen 1
-              href: stream-analytics-managed-identities-adls.md
-              displayName: 'managed identity, identities, authenticate'
-            - name: Blob Storage
-              href: blob-output-managed-identity.md
-              displayName: 'managed identity, identities, authenticate'
-            - name: Event Hubs
-              href: event-hubs-managed-identity.md
-              displayName: 'managed identity, identities, authenticate'
-            - name: Power BI
-              href: powerbi-output-managed-identity.md
-              displayName: 'managed identity, identities, authenticate'
-            - name: Azure SQL und Azure Synapse
-              href: sql-database-output-managed-identity.md
-              displayName: 'managed identity, identities, authenticate'
         - name: Verschlüsseln Ihrer Daten
           href: data-protection.md
         - name: Georedundanz
           href: geo-redundancy.md
+    - name: Authentifizieren mit einer verwalteten Identität
+      items:
+        - name: ADLS Gen 1
+          href: stream-analytics-managed-identities-adls.md
+          displayName: 'managed identity, identities, authenticate'
+        - name: Blob Storage
+          href: blob-output-managed-identity.md
+          displayName: 'managed identity, identities, authenticate'
+        - name: Event Hubs
+          href: event-hubs-managed-identity.md
+          displayName: 'managed identity, identities, authenticate'
+        - name: Power BI
+          href: powerbi-output-managed-identity.md
+          displayName: 'managed identity, identities, authenticate'
+        - name: Azure SQL und Azure Synapse
+          href: sql-database-output-managed-identity.md
+          displayName: 'managed identity, identities, authenticate'
     - name: Erstellen von Lösungen
       items:
         - name: Twitter-Stimmungsanalyse
           href: stream-analytics-twitter-sentiment-analysis-trends.md
-        - name: Betrugsermittlung in Echtzeit
-          href: stream-analytics-real-time-fraud-detection.md
-        - name: Ausführen von Aufträgen in IoT Edge
-          href: stream-analytics-edge.md
         - name: Ausführen von Aufträgen in Azure Stack
           href: on-azure-stack.md
         - name: Analysieren von Sensordaten von Mauthäuschen
@@ -287,6 +288,8 @@
           href: debug-locally-using-job-diagram-vs-code.md
         - name: Untersuchen von Aufträgen
           href: visual-studio-code-explore-jobs.md
+        - name: Erstellen und Debuggen eines benutzerdefinierten .NET-Deserialisierers
+          href: visual-studio-code-custom-deserializer.md
         - name: Felder in „JobConfig.json“
           href: job-config-json.md
     - name: Problembehandlung

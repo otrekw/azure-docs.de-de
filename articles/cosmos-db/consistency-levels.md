@@ -5,13 +5,13 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 10/12/2020
-ms.openlocfilehash: 742ff2e6cff4569b5b7eeb131cd4394277b6c3cd
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.date: 12/09/2020
+ms.openlocfilehash: a480c8f2dfdda0ce7a1eb879554fb79c96adbe1e
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93100455"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347811"
 ---
 # <a name="consistency-levels-in-azure-cosmos-db"></a>Konsistenzebenen in Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -44,13 +44,16 @@ Die Lesekonsistenz gilt für einen einzelnen Lesevorgang innerhalb einer logisch
 
 Sie können die Standardkonsistenzebene für Ihr Azure Cosmos-Konto jederzeit konfigurieren. Die für Ihr Konto konfigurierte Standardkonsistenzebene gilt für alle Azure Cosmos-Datenbanken und -Container in diesem Konto. Bei allen in einem Container oder einer Datenbank ausgeführten Lesevorgängen und Abfragen wird standardmäßig die angegebene Konsistenzebene verwendet. Weitere Informationen finden Sie unter [Konfigurieren der Standardkonsistenzebene](how-to-manage-consistency.md#configure-the-default-consistency-level). Sie können auch die Standardkonsistenzebene für eine bestimmte Anforderung außer Kraft setzen. Weitere Informationen hierzu finden Sie im Artikel [Außerkraftsetzen der Standardkonsistenzebene](how-to-manage-consistency.md?#override-the-default-consistency-level).
 
+> [!IMPORTANT]
+> Nach dem Ändern der Standardkonsinstenzebene müssen alle SDK-Instanzen neu erstellt werden. Dies kann durch einen Neustart der Anwendung erreicht werden. Dadurch wird sichergestellt, dass das SDK die neue Standardkonsistenzebene verwendet.
+
 ## <a name="guarantees-associated-with-consistency-levels"></a>Garantien in Zusammenhang mit Konsistenzebenen
 
 Azure Cosmos DB garantiert, dass 100 Prozent aller Leseanforderungen die Konsistenzgarantie für jede ausgewählte Konsistenzebene erfüllen. Die genauen Definitionen der fünf Konsistenzebenen in Azure Cosmos DB – unter Verwendung der TLA+-Spezifikationssprache – finden Sie im GitHub-Repository [azure-cosmos-tla](https://github.com/Azure/azure-cosmos-tla).
 
 Im Folgenden wird die Semantik der fünf Konsistenzebenen beschrieben:
 
-- **Starke Konsistenz** : Starke Konsistenz bietet garantierte Linearisierbarkeit. Linearisierbarkeit bedeutet die gleichzeitige Verarbeitung von Anforderungen. Die Lesevorgänge geben garantiert die neueste Version eines Elements zurück, für die ein Commit ausgeführt wurde. Einem Client wird nie ein partieller Schreibvorgang bzw. ein Schreibvorgang, für den kein Commit ausgeführt wurde, angezeigt. Benutzer haben immer die Garantie, dass sie den neuesten Schreibvorgang lesen, für den ein Commit ausgeführt wurde.
+- **Starke Konsistenz**: Starke Konsistenz bietet garantierte Linearisierbarkeit. Linearisierbarkeit bedeutet die gleichzeitige Verarbeitung von Anforderungen. Die Lesevorgänge geben garantiert die neueste Version eines Elements zurück, für die ein Commit ausgeführt wurde. Einem Client wird nie ein partieller Schreibvorgang bzw. ein Schreibvorgang, für den kein Commit ausgeführt wurde, angezeigt. Benutzer haben immer die Garantie, dass sie den neuesten Schreibvorgang lesen, für den ein Commit ausgeführt wurde.
 
   In der folgenden Grafik wird die starke Konsistenz anhand von Noten veranschaulicht. Nachdem die Daten in die Region „USA, Westen 2“ geschrieben wurden, erhalten Sie beim Lesen der Daten aus anderen Regionen den neuesten Wert:
 
@@ -58,8 +61,8 @@ Im Folgenden wird die Semantik der fünf Konsistenzebenen beschrieben:
 
 - **Begrenzte Veraltung (Bounded staleness)** : Die Lesevorgänge berücksichtigen immer die Garantie der Präfixkonsistenz. Lesevorgänge bleiben höchstens um *„K“* Versionen (Updates) eines Elements oder um ein durch *„T“* definiertes Zeitintervall hinter Schreibvorgängen zurück, je nachdem, was zuerst erreicht wird. Wenn Sie also die begrenzte Veraltung auswählen, kann die Veraltung auf zwei Arten konfiguriert werden:
 
-- Anhand der Anzahl von Versionen ( *K* ) des Elements
-- Das Zeitintervall ( *T* ) kann hinter den Schreibvorgängen liegen.
+- Anhand der Anzahl von Versionen (*K*) des Elements
+- Das Zeitintervall (*T*) kann hinter den Schreibvorgängen liegen.
 
 Bei einem Konto mit einer einzelnen Region ist der Mindestwert von *K* und *T* 10 Schreibvorgänge oder 5 Sekunden. Bei Konten mit mehreren Regionen ist der Mindestwert von *K* und *T* 100.000 Schreibvorgänge oder 300 Sekunden.
 
@@ -89,7 +92,7 @@ Für Clients außerhalb der Sitzung, die Schreibvorgänge ausführen, gelten fol
 
   :::image type="content" source="media/consistency-levels/session-consistency.gif" alt-text="Abbildung: Konsistenzebene „Sitzung“":::
 
-- **Präfixkonsistenz** : Die zurückgegebenen Updates enthalten ein bestimmtes Präfix aller Updates ohne Lücken. Die konsistente Präfixkonsistenzebene garantiert, dass für Lesevorgänge niemals Schreibvorgänge in falscher Reihenfolge angezeigt werden.
+- **Präfixkonsistenz**: Die zurückgegebenen Updates enthalten ein bestimmtes Präfix aller Updates ohne Lücken. Die konsistente Präfixkonsistenzebene garantiert, dass für Lesevorgänge niemals Schreibvorgänge in falscher Reihenfolge angezeigt werden.
 
 Wenn Schreibvorgänge in der Reihenfolge `A, B, C` erfolgen, wird einem Client entweder `A`, `A,B` oder `A,B,C`, aber niemals falsche Permutationen wie `A,C` oder `B,A,C` angezeigt. Die Präfixkonsistenz bietet Schreibwartezeiten, Verfügbarkeit und Lesedurchsatz, die mit der letztlichen Konsistenz vergleichbar sind. Darüber hinaus stellt sie Reihenfolgengarantien für Szenarien bereit, in denen die Reihenfolge relevant ist.
 
@@ -113,9 +116,9 @@ Die letztliche Konsistenz stellt die schwächste Form der Konsistenz dar, da ein
 
 In der Praxis erhalten Sie häufig stärkere Konsistenzgarantien. Die Konsistenzgarantien für einen Lesevorgang entsprechen der Aktualität und der Sortierung des Zustands der angeforderten Datenbank. Die Lesekonsistenz ist an die Sortierung und Verbreitung der Schreib-/Aktualisierungsvorgänge gebunden.  
 
-Wenn keine Schreibvorgänge für die Datenbank ausgeführt werden, liefert ein Lesevorgang mit der Konsistenzebene **letztliche Konsistenz** , **Sitzungskonsistenz** oder **Präfixkonsistenz** wahrscheinlich die gleichen Ergebnisse wie ein Lesevorgang mit starker Konsistenzebene.
+Wenn keine Schreibvorgänge für die Datenbank ausgeführt werden, liefert ein Lesevorgang mit der Konsistenzebene **letztliche Konsistenz**, **Sitzungskonsistenz** oder **Präfixkonsistenz** wahrscheinlich die gleichen Ergebnisse wie ein Lesevorgang mit starker Konsistenzebene.
 
-Wenn Ihr Azure Cosmos-Konto mit einer anderen Konsistenzebene als der starken Konsistenz konfiguriert ist, können Sie anhand der *PBS* -Metrik (Probabilistically Bounded Staleness) die Wahrscheinlichkeit ermitteln, dass Ihre Clients starke und konsistente Lesevorgänge für Ihre Workloads erzielen. Diese Metrik wird im Azure-Portal verfügbar gemacht. Weitere Informationen finden Sie unter [Überwachen der PBS-Metrik (Probabilistically Bounded Staleness)](how-to-manage-consistency.md#monitor-probabilistically-bounded-staleness-pbs-metric).
+Wenn Ihr Azure Cosmos-Konto mit einer anderen Konsistenzebene als der starken Konsistenz konfiguriert ist, können Sie anhand der *PBS*-Metrik (Probabilistically Bounded Staleness) die Wahrscheinlichkeit ermitteln, dass Ihre Clients starke und konsistente Lesevorgänge für Ihre Workloads erzielen. Diese Metrik wird im Azure-Portal verfügbar gemacht. Weitere Informationen finden Sie unter [Überwachen der PBS-Metrik (Probabilistically Bounded Staleness)](how-to-manage-consistency.md#monitor-probabilistically-bounded-staleness-pbs-metric).
 
 PBS (Probabilistic Bounded Staleness) zeigt, wie letztendlich Ihre letztendliche Konsistenz ist. Diese Metrik gibt Aufschluss darüber, wie oft Sie eine stärkere Konsistenz erreichen können als die Konsistenzebene, die Sie aktuell in Ihrem Azure Cosmos-Konto konfiguriert haben. Das heißt, Sie sehen die Wahrscheinlichkeit (gemessen in Millisekunden), dass stark konsistente Lesevorgänge in Regionen mit Schreib- und Lesevorgängen auftreten.
 
@@ -153,7 +156,7 @@ Die exakte RTT-Latenz richtet sich nach der physischen Entfernung und der Azure-
 
 ## <a name="consistency-levels-and-data-durability"></a><a id="rto"></a>Konsistenzebenen und Datendauerhaftigkeit
 
-Bei einer global verteilten Datenbankumgebung besteht eine direkte Beziehung zwischen der Konsistenzebene und der Datendauerhaftigkeit bei einem Ausfall in der gesamten Region. Wenn Sie Ihren Plan für die Geschäftskontinuität entwickeln, müssen Sie wissen, wie viel Zeit maximal vergehen darf, bis die Anwendung nach einer Störung vollständig wiederhergestellt ist. Die Zeit, die für die vollständige Wiederherstellung einer Anwendung erforderlich ist, wird als **RTO** ( **Recovery Time Objective** ) bezeichnet. Sie müssen auch wissen, über welchen Zeitraum kürzlich durchgeführte Datenupdates maximal verloren gehen dürfen, wenn die Anwendung nach einer Störung wiederhergestellt wird. Der Zeitraum der Updates, der verloren gehen darf, wird als **RPO** ( **Recovery Point Objective** ) bezeichnet.
+Bei einer global verteilten Datenbankumgebung besteht eine direkte Beziehung zwischen der Konsistenzebene und der Datendauerhaftigkeit bei einem Ausfall in der gesamten Region. Wenn Sie Ihren Plan für die Geschäftskontinuität entwickeln, müssen Sie wissen, wie viel Zeit maximal vergehen darf, bis die Anwendung nach einer Störung vollständig wiederhergestellt ist. Die Zeit, die für die vollständige Wiederherstellung einer Anwendung erforderlich ist, wird als **RTO** (**Recovery Time Objective**) bezeichnet. Sie müssen auch wissen, über welchen Zeitraum kürzlich durchgeführte Datenupdates maximal verloren gehen dürfen, wenn die Anwendung nach einer Störung wiederhergestellt wird. Der Zeitraum der Updates, der verloren gehen darf, wird als **RPO** (**Recovery Point Objective**) bezeichnet.
 
 In der folgenden Tabelle wird die Beziehung zwischen dem Konsistenzmodell und der Datendauerhaftigkeit bei einem regionsweiten Ausfall definiert. Beachten Sie unbedingt, dass es in einem verteilten System auch bei starker Konsistenz unmöglich ist, eine verteilte Datenbank mit einem RPO- und RTO-Wert von 0 (null) zu erzielen. Grund ist das [CAP-Theorem](https://en.wikipedia.org/wiki/CAP_theorem).
 

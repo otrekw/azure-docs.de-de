@@ -10,22 +10,78 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 11/20/2020
+ms.date: 12/15/2020
 ms.author: yohaddad
-ms.openlocfilehash: 9cc86167b9d92289aa2edb605d8037a1bf6a9dcb
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: adaea28d105b72152e1af28cc9d79da19c548c2c
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96338723"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97561408"
 ---
 # <a name="azure-guest-os"></a>Azure-Gastbetriebssystem
 Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MSRC), die auf das Azure-Gastbetriebssystem angewendet wurden. Durchsuchen Sie diesen Artikel, um zu ermitteln, ob ein bestimmtes Update für das Gastbetriebssystem gilt, das Sie verwenden. Updates werden für die [Familie][family-explain], in der sie eingeführt wurden, immer in die jeweils neueste Version übertragen.
 
+## <a name="december-2020-guest-os"></a>Gastbetriebssystem für Dezember 2020
+>[!NOTE] 
+
+>Das Gastbetriebssystem für Dezember wird derzeit auf Clouddienst-VMs eingeführt, die für automatische Updates konfiguriert sind. Wenn die Bereitstellung abgeschlossen ist, wird diese Version für manuelle Updates über das Azure-Portal und Konfigurationsdateien verfügbar gemacht. Die folgenden Patches sind im Gastbetriebssystem für Dezember enthalten. Änderungen der Liste vorbehalten. 
+
+| Produktkategorie | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
+| --- | --- | --- | --- | --- |
+|  Rel 20-12 |  [4592440]  |  Letztes kumulatives Update | 6.26 | 8\. Dezember 2020 |
+|  Rel 20-12 |  [4580325]  |  Flash-Update | 3.92, 4.85, 5.50, 6.26 | 13. Oktober 2020 |
+|  Rel 20-12 |  [4586768]  |  Kumulative IE-Updates | 2.105, 3.92, 4.85 | 10. November 2020 |
+|  Rel 20-12 |  [4593226]  |  Letztes kumulatives Update | 5.50 | 8\. Dezember 2020 |
+|  Rel 20-12 |  [4052623]  |  Defender | 5.50, 6.26 | 13. Dezember 2020 |
+|  Rel 20-12 |  [4578952]  |  .NET Framework 3.5: Sicherheits- und Qualitätsrollup | 2.105 | 10. November 2020 |
+|  Rel 20-12 |  [4578955]  |  .NET Framework 4.5.2: Sicherheits- und Qualitätsrollup | 2.105 | 10. November 2020 |
+|  Rel 20-12 |  [4578953]  |  .NET Framework 3.5: Sicherheits- und Qualitätsrollup | 4.85 | 10. November 2020 |
+|  Rel 20-12 |  [4578956]  |  .NET Framework 4.5.2: Sicherheits- und Qualitätsrollup | 4.85 | 10. November 2020 |
+|  Rel 20-12 |  [4578950]  |  .NET Framework 3.5: Sicherheits- und Qualitätsrollup | 3.92 | 10. November 2020 |
+|  Rel 20-12 |  [4578954]  |  .NET Framework 4.5.2: Sicherheits- und Qualitätsrollup | 3.92 | 10. November 2020 |
+|  Rel 20-12 |  [4578966]  |  Kumulatives Update für .NET Framework 3.5 und 4.7.2 | 6.26 | 13. Oktober 2020 |
+|  Rel 20-12 |  [4592471]  |  Monatlicher Rollup | 2.105 | 8\. Dezember 2020 |
+|  Rel 20-12 |  [4592468]  |  Monatlicher Rollup | 3.92 | 8\. Dezember 2020 |
+|  Rel 20-12 |  [4592484]  |  Monatlicher Rollup | 4.85 | 8\. Dezember 2020 |
+|  Rel 20-12 |  [4566426]  |  Wartungsstapelaktualisierung | 3.92 | 14. Jul 2020 |
+|  Rel 20-12 |  [4566425]  |  Wartungsstapelaktualisierung | 4.85 | 14. Jul 2020 |
+|  Rel 20-12 OOB |  [4578013]  |  Eigenständiges Sicherheitsupdate | 4.85 | 19. August 2020 |
+|  Rel 20-12 |  [4576750]  |  Wartungsstapelaktualisierung | 5.50 | 8\. September 2020 |
+|  Rel 20-12 |  [4592510]  |  Wartungsstapelaktualisierung | 2.105 | 8\. Dezember 2020 |
+|  Rel 20-12 |  [4587735]  |  Wartungsstapelaktualisierung | 6.26 | 10. November 2020 |
+|  Rel 20-12 |  [4494175]  |  Microcode | 5.50 | 1\. September 2020 |
+|  Rel 20-12 |  [4494174]  |  Microcode | 6.26 | 3\. September 2020 |
+
+[4592440]: https://support.microsoft.com/kb/4592440
+[4580325]: https://support.microsoft.com/kb/4580325
+[4586768]: https://support.microsoft.com/kb/4586768
+[4593226]: https://support.microsoft.com/kb/4593226
+[4052623]: https://support.microsoft.com/kb/4052623
+[4578952]: https://support.microsoft.com/kb/4578952
+[4578955]: https://support.microsoft.com/kb/4578955
+[4578953]: https://support.microsoft.com/kb/4578953
+[4578956]: https://support.microsoft.com/kb/4578956
+[4578950]: https://support.microsoft.com/kb/4578950
+[4578954]: https://support.microsoft.com/kb/4578954
+[4578966]: https://support.microsoft.com/kb/4578966
+[4592471]: https://support.microsoft.com/kb/4592471
+[4592468]: https://support.microsoft.com/kb/4592468
+[4592484]: https://support.microsoft.com/kb/4592484
+[4566426]: https://support.microsoft.com/kb/4566426
+[4566425]: https://support.microsoft.com/kb/4566425
+[4578013]: https://support.microsoft.com/kb/4578013
+[4576750]: https://support.microsoft.com/kb/4576750
+[4592510]: https://support.microsoft.com/kb/4592510
+[4587735]: https://support.microsoft.com/kb/4587735
+[4494175]: https://support.microsoft.com/kb/4494175
+[4494174]: https://support.microsoft.com/kb/4494174
+
+
 ## <a name="november-2020-guest-os"></a>Gastbetriebssystem für November 2020
 >[!NOTE] 
 
->Das Gastbetriebssystem für November wird derzeit auf Clouddienst-VMs eingeführt, die für automatische Updates konfiguriert sind. Wenn die Bereitstellung abgeschlossen ist, wird diese Version für manuelle Updates über das Azure-Portal und Konfigurationsdateien verfügbar gemacht. Die folgenden Patches sind im Gastbetriebssystem für Oktober enthalten. Änderungen der Liste vorbehalten. 
+>Das Gastbetriebssystem für November wird derzeit auf Clouddienst-VMs eingeführt, die für automatische Updates konfiguriert sind. Wenn die Bereitstellung abgeschlossen ist, wird diese Version für manuelle Updates über das Azure-Portal und Konfigurationsdateien verfügbar gemacht. Die folgenden Patches sind im Gastbetriebssystem für November enthalten. Änderungen der Liste vorbehalten. 
 
 | Produktkategorie | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
 | --- | --- | --- | --- | --- |

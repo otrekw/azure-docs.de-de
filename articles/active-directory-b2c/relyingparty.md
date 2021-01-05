@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/11/2020
+ms.date: 12/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 2d00942331b7e6c881803af366d1c08e173462b3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9c50bd71f4e2e5bbe12518f5a5d1cd486af9723a
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90023787"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509750"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -77,8 +77,35 @@ Das optionale **RelyingParty**-Element enthält die folgenden Elemente:
 | Element | Vorkommen | BESCHREIBUNG |
 | ------- | ----------- | ----------- |
 | DefaultUserJourney | 1:1 | Die standardmäßige User Journey für die Anwendung der vertrauenden Seite. |
+| Endpunkte | 0:1 | Eine Liste mit Endpunkten. Weitere Informationen finden Sie unter [UserInfo-Endpunkt](userinfo-endpoint.md). |
 | UserJourneyBehaviors | 0:1 | Der Bereich für die Verhalten der User Journey. |
 | TechnicalProfile | 1:1 | Ein technisches Profil, das von der Anwendung der vertrauenden Seite unterstützt wird. Das technische Profil stellt einen Vertrag für das Kontaktieren von Azure AD B2C durch die Anwendung der vertrauenden Seite bereit. |
+
+## <a name="endpoints"></a>Endpunkte
+
+Das Element **Endpoints** enthält das folgende Element:
+
+| Element | Vorkommen | BESCHREIBUNG |
+| ------- | ----------- | ----------- |
+| Endpunkt | 1:1 | Ein Verweis auf einen Endpunkt.|
+
+Das Element **Endpoint** enthält die folgenden Attribute:
+
+| Attribut | Erforderlich | BESCHREIBUNG |
+| --------- | -------- | ----------- |
+| Id | Ja | Ein eindeutiger Bezeichner des Endpunkts|
+| UserJourneyReferenceId | Ja | Ein Bezeichner der User Journey in der Richtlinie. Weitere Informationen finden Sie unter [User Journeys](userjourneys.md).  | 
+
+Das folgende Beispiel zeigt eine vertrauende Seite mit [UserInfo-Endpunkt](userinfo-endpoint.md):
+
+```xml
+<RelyingParty>
+  <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
+  <Endpoints>
+    <Endpoint Id="UserInfo" UserJourneyReferenceId="UserInfoJourney" />
+  </Endpoints>
+  ...
+```
 
 ## <a name="defaultuserjourney"></a>DefaultUserJourney
 
@@ -117,7 +144,7 @@ Das **UserJourneyBehaviors**-Element enthält die folgenden Elemente:
 | SessionExpiryInSeconds | 0:1 | Die Lebensdauer des als Integer angegebenen Azure AD B2C-Sitzungscookies, das bei erfolgreicher Authentifizierung im Benutzerbrowser gespeichert wird. |
 | JourneyInsights | 0:1 | Kopieren des Azure Application Insights-Instrumentierungsschlüssels, der verwendet werden soll. |
 | ContentDefinitionParameters | 0:1 | Die Liste von Schlüssel-Wert-Paaren, die an der LoadUri-Parameter der ContentDefinition angefügt wird. |
-|ScriptExecution| 0:1| Die unterstützten [JavaScript](javascript-samples.md)-Ausführungsmodi. Mögliche Werte: `Allow` und `Disallow` (Standardwert).
+|ScriptExecution| 0:1| Die unterstützten [JavaScript](javascript-and-page-layout.md)-Ausführungsmodi. Mögliche Werte: `Allow` und `Disallow` (Standardwert).
 
 ### <a name="singlesignon"></a>SingleSignOn
 
@@ -126,7 +153,7 @@ Das **SingleSignOn**-Element enthält das folgende Attribut:
 | attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | `Scope` | Ja | Der Bereich des SSO-Verhaltens. Mögliche Werte: `Suppressed`, `Tenant`, `Application` oder `Policy`. Der Wert `Suppressed` gibt an, dass das Verhalten unterdrückt wird, und der Benutzer wird immer aufgefordert, einen Identitätsanbieter auszuwählen.  Der Wert `Tenant` gibt an, dass das Verhalten auf alle Richtlinien im Mandanten angewendet wird. Beispielsweise wird ein Benutzer, der durch zwei User Journeys für Richtlinien eines Mandanten navigiert nicht, dazu aufgefordert, einen Identitätsanbieter auszuwählen. Der Wert `Application` gibt an, dass das Verhalten auf alle Richtlinien für die Anwendung angewendet wird, die die Anforderung stellt. Beispielsweise wird ein Benutzer, der durch zwei User Journeys für Richtlinien einer Anwendung navigiert, nicht dazu aufgefordert, einen Identitätsanbieter auszuwählen. Der Wert `Policy` gibt an, dass das Verhalten nur auf eine Richtlinie angewendet wird. Beispielsweise wird ein Benutzer, der durch zwei User Journeys für Richtlinien eines Vertrauensframeworks navigiert, dazu aufgefordert, einen Identitätsanbieter auszuwählen, wenn er zwischen Richtlinien wechselt. |
-| KeepAliveInDays | Ja | Steuert, wie lange der Benutzer angemeldet bleibt. Durch Festlegen des Werts auf 0 wird die Funktion „Angemeldet bleiben“ deaktiviert. Weitere Informationen finden Sie unter [Angemeldet bleiben](custom-policy-keep-me-signed-in.md). |
+| KeepAliveInDays | Ja | Steuert, wie lange der Benutzer angemeldet bleibt. Durch Festlegen des Werts auf 0 wird die Funktion „Angemeldet bleiben“ deaktiviert. Weitere Informationen finden Sie unter [Angemeldet bleiben](session-behavior.md?pivots=b2c-custom-policy#enable-keep-me-signed-in-kmsi). |
 |EnforceIdTokenHintOnLogout| Nein|  Erzwingt, dass ein zuvor ausgestelltes ID-Token als Hinweis bezüglich der aktuellen authentifizierten Sitzung des Endbenutzers mit dem Client an den Abmeldeendpunkt übergeben wird. Mögliche Werte: `false` (Standard) oder `true`. Weitere Informationen finden Sie unter [Webanmeldung mit OpenID Connect](openid-connect.md).  |
 
 
@@ -165,7 +192,7 @@ Das **ContentDefinitionParameter**-Element enthält das folgende Attribut:
 | --------- | -------- | ----------- |
 | Name | Ja | Der Name des Schlüssel-Wert-Paars. |
 
-Weitere Informationen finden Sie unter [Konfigurieren der Benutzeroberfläche mit dynamischen Inhalten mithilfe von benutzerdefinierten Richtlinien](custom-policy-ui-customization.md#configure-dynamic-custom-page-content-uri).
+Weitere Informationen finden Sie unter [Konfigurieren der Benutzeroberfläche mit dynamischen Inhalten mithilfe von benutzerdefinierten Richtlinien](customize-ui-with-html.md#configure-dynamic-custom-page-content-uri).
 
 ## <a name="technicalprofile"></a>TechnicalProfile
 

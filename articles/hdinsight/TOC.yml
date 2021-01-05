@@ -419,7 +419,7 @@
               href: ./spark/apache-spark-improve-performance-iocache.md
             - name: Verwenden von Notebooks mit Apache Spark
               items:
-                - name: Verwenden eines lokalen Jupyter Notebooks
+                - name: Verwenden einer lokalen Jupyter Notebook-Instanz
                   href: ./spark/apache-spark-jupyter-notebook-install-locally.md
                 - name: Jupyter Notebook-Kernel
                   href: ./spark/apache-spark-jupyter-notebook-kernels.md
@@ -437,7 +437,7 @@
                   href: ./spark/apache-spark-run-machine-learning-automl.md
         - name: Problembehandlung
           items:
-            - name: Erstellung des Jupyter-Notebooks nicht möglich
+            - name: "Erstellung der Jupyter\_Notebook-Instanz nicht möglich"
               href: ./spark/troubleshoot-jupyter-notebook-convert.md
             - name: Ausnahme „OutOfMemoryError“
               href: ./spark/apache-spark-troubleshoot-outofmemory.md

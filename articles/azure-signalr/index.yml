@@ -1,6 +1,6 @@
 ### YamlMime:Landing
 title: Dokumentation zu Azure SignalR Service
-summary: Azure SignalR Service ist ein verwalteter Azure-Dienst, der Entwicklern hilft, Webanwendungen mit Echtzeitfunktionen einfach zu erstellen.
+summary: Azure SignalR Service ist ein verwalteter Azure-Dienst, der Entwicklern die einfache Erstellung von Webanwendungen mit Echtzeitfunktionen ermöglicht.
 metadata:
   title: Dokumentation zu Azure SignalR Service
   description: Hier erfahren Sie, wie Sie eine Echtzeit-Web-App im serverlosen Modus oder Servermodus einfach erstellen und skalieren. Grundlage ist ein Websocket, das zahlreiche Sprachen und Frameworks unterstützt.
@@ -9,12 +9,12 @@ metadata:
   author: v-chmccl
   ms.author: wesmc
   ms.date: 03/11/2020
-  ms.openlocfilehash: d60587516fe021085e39227d45865ed10f81990e
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: 377d0c8daa864b6ee936fbb487ef8a7235ee638e
+  ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "91855417"
+  ms.lasthandoff: 12/28/2020
+  ms.locfileid: "97796736"
 landingContent:
 - title: Info zu Azure SignalR Service
   linkLists:

@@ -12,12 +12,12 @@ ms.date: 11/30/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: e71ab0293dade56c14dce7318fc96021a040b102
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: e0185cc8786dc101375262ddfd187c5d8e7e054f
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96433301"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509562"
 ---
 # <a name="how-to-provide-optional-claims-to-your-app"></a>Gewusst wie: Bereitstellen optionaler Ansprüche für Ihre App
 
@@ -124,28 +124,29 @@ Dieses OptionalClaims-Objekt bewirkt, dass das an den Client zurückgegebene ID-
 
 Sie können optionale Ansprüche für Ihre Anwendung über die Benutzeroberfläche oder das Anwendungsmanifest konfigurieren.
 
-1. Öffnen Sie das [Azure-Portal](https://portal.azure.com). Suchen Sie nach **Azure Active Directory**, und wählen Sie diese Option aus.
-1. Wählen Sie im Abschnitt **Verwalten** die Option **App-Registrierungen** aus.
+1. Öffnen Sie das [Azure-Portal](https://portal.azure.com). 
+1. Suchen Sie nach **Azure Active Directory**, und wählen Sie diese Option aus.
+1. Wählen Sie unter **Verwalten** die Option **App-Registrierungen** aus.
 1. Wählen Sie in der Liste die Anwendung aus, für die Sie optionale Ansprüche konfigurieren möchten.
 
 **Konfigurieren optionaler Ansprüche über die Benutzeroberfläche:**
 
 [![Konfigurieren optionaler Ansprüche in der Benutzeroberfläche](./media/active-directory-optional-claims/token-configuration.png)](./media/active-directory-optional-claims/token-configuration.png)
 
-1. Wählen Sie im Abschnitt **Verwalten** die Option **Tokenkonfiguration** aus.
+1. Wählen Sie unter **Verwalten** die Option **Tokenkonfiguration** aus.
 1. Wählen Sie **Optionalen Anspruch hinzufügen** aus.
 1. Wählen Sie den Tokentyp aus, den Sie konfigurieren möchten.
 1. Wählen Sie die hinzuzufügenden optionalen Ansprüche aus.
 1. Wählen Sie **Hinzufügen**.
 
 > [!NOTE]
-> Die Benutzeroberflächenoption auf dem Blatt **Tokenkonfiguration** ist nicht für Apps verfügbar, die derzeit in einem Azure AD B2C-Mandanten registriert sind. Bei Anwendungen, die in einem B2C-Mandanten registriert sind, können die optionalen Ansprüche durch Bearbeiten des Anwendungsmanifests konfiguriert werden. Weitere Informationen finden Sie unter [Hinzufügen von Ansprüchen und Anpassen von Benutzereingaben mit benutzerdefinierten Richtlinien in Azure Active Directory B2C](../../active-directory-b2c/custom-policy-configure-user-input.md) 
+> Die Benutzeroberflächenoption auf dem Blatt **Tokenkonfiguration** ist nicht für Apps verfügbar, die derzeit in einem Azure AD B2C-Mandanten registriert sind. Bei Anwendungen, die in einem B2C-Mandanten registriert sind, können die optionalen Ansprüche durch Bearbeiten des Anwendungsmanifests konfiguriert werden. Weitere Informationen finden Sie unter [Hinzufügen von Ansprüchen und Anpassen von Benutzereingaben mit benutzerdefinierten Richtlinien in Azure Active Directory B2C](../../active-directory-b2c/configure-user-input.md) 
 
 **Konfigurieren optionaler Ansprüche über das Anwendungsmanifest:**
 
 [![Zeigt, wie optionale Ansprüche mithilfe des Anwendungsmanifests konfiguriert werden.](./media/active-directory-optional-claims/app-manifest.png)](./media/active-directory-optional-claims/app-manifest.png)
 
-1. Wählen Sie im Abschnitt **Verwalten** die Option **Manifest** aus. Ein webbasierter Manifest-Editor wird geöffnet, mit dem Sie das Manifest bearbeiten können. Optional können Sie **Herunterladen** wählen und das Manifest lokal bearbeiten und dann **Hochladen** verwenden, um es wieder auf Ihre Anwendung anzuwenden. Weitere Informationen zum Anwendungsmanifest finden Sie im Artikel [Grundlegendes zum Azure AD-Anwendungsmanifest](reference-app-manifest.md).
+1. Wählen Sie unter **Verwalten** die Option **Manifest** aus. Ein webbasierter Manifest-Editor wird geöffnet, mit dem Sie das Manifest bearbeiten können. Optional können Sie **Herunterladen** wählen und das Manifest lokal bearbeiten und dann **Hochladen** verwenden, um es wieder auf Ihre Anwendung anzuwenden. Weitere Informationen zum Anwendungsmanifest finden Sie im Artikel [Grundlegendes zum Azure AD-Anwendungsmanifest](reference-app-manifest.md).
 
     Der folgende Eintrag im Anwendungsmanifest fügt ID-, Zugriffs- und SAML-Token die optionalen Ansprüche „auth_time“, „ipaddr“ und „upn“ hinzu.
 
@@ -225,22 +226,19 @@ Innerhalb der SAML-Token werden diese Ansprüche mit dem folgenden URI-Format au
 
 ## <a name="configuring-groups-optional-claims"></a>Konfigurieren von optionalen Gruppenansprüchen
 
-   > [!NOTE]
-   > Die Fähigkeit, Gruppennamen für Benutzer und Gruppen auszugeben, die lokal synchronisiert werden, befindet sich in der Phase der öffentlichen Vorschau.
-
 Dieser Abschnitt behandelt die Konfigurationsoptionen unter den optionalen Ansprüchen, um die in Gruppenansprüchen verwendeten Gruppenattribute von der Standardgruppen-ObjectID in von lokalem Windows Active Directory synchronisierte Attribute zu ändern. Sie können optionale Gruppenansprüche für Ihre Anwendung über die Benutzeroberfläche oder das Anwendungsmanifest konfigurieren.
 
 > [!IMPORTANT]
-> Unter [Konfigurieren von Gruppenansprüchen für Anwendungen mit Azure AD](../hybrid/how-to-connect-fed-group-claims.md) finden Sie weitere Informationen, einschließlich wichtiger Einschränkungen bei der öffentlichen Vorschau von Gruppenansprüchen aus lokalen Attributen.
+> Unter [Konfigurieren von Gruppenansprüchen für Anwendungen mit Azure AD](../hybrid/how-to-connect-fed-group-claims.md) finden Sie weitere Informationen, einschließlich wichtiger Einschränkungen für Gruppenansprüche aus lokalen Attributen.
 
 **Konfigurieren optionaler Gruppenansprüche über die Benutzeroberfläche:**
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 1. Wählen Sie nach der Authentifizierung Ihren Azure AD-Mandanten aus, indem Sie ihn in der rechten oberen Ecke der Seite auswählen.
-1. Wählen Sie im Menü auf der linken Seite **Azure Active Directory** aus.
-1. Wählen Sie im Abschnitt **Verwalten** die Option **App-Registrierungen** aus.
+1. Suchen Sie nach **Azure Active Directory**, und wählen Sie diese Option aus.
+1. Wählen Sie unter **Verwalten** die Option **App-Registrierungen** aus.
 1. Wählen Sie in der Liste die Anwendung aus, für die Sie optionale Ansprüche konfigurieren möchten.
-1. Klicken Sie im Abschnitt **Verwalten** auf **Tokenkonfiguration**.
+1. Wählen Sie unter **Verwalten** die Option **Tokenkonfiguration** aus.
 1. Wählen Sie **Anspruchsgruppen hinzufügen** aus.
 1. Wählen Sie die zurückzugebenden Gruppentypen aus (**Sicherheitsgruppen** oder **Verzeichnisrollen**, **Alle Gruppen** und/oder **Der Anwendung zugewiesene Gruppen**). Die Option **Der Anwendung zugewiesene Gruppen** umfasst nur Gruppen, die der Anwendung zugewiesen sind. Die Option **Alle Gruppen** umfasst **SecurityGroup**, **DirectoryRole** und **DistributionList** aber nicht **Der Anwendung zugewiesene Gruppen**. 
 1. Optional: Wählen Sie die Eigenschaften des jeweiligen Tokentyps aus, um den Wert des Gruppenanspruchs so zu ändern, dass er lokale Gruppenattribute enthält, oder um den Anspruchstyp in eine Rolle zu ändern.
@@ -250,9 +248,9 @@ Dieser Abschnitt behandelt die Konfigurationsoptionen unter den optionalen Anspr
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 1. Wählen Sie nach der Authentifizierung Ihren Azure AD-Mandanten aus, indem Sie ihn in der rechten oberen Ecke der Seite auswählen.
-1. Wählen Sie im Menü auf der linken Seite **Azure Active Directory** aus.
+1. Suchen Sie nach **Azure Active Directory**, und wählen Sie diese Option aus.
 1. Wählen Sie in der Liste die Anwendung aus, für die Sie optionale Ansprüche konfigurieren möchten.
-1. Wählen Sie im Abschnitt **Verwalten** die Option **Manifest** aus.
+1. Wählen Sie unter **Verwalten** die Option **Manifest** aus.
 1. Fügen Sie den folgenden Eintrag mit dem Manifest-Editor hinzu:
 
    Gültige Werte sind:
@@ -382,13 +380,13 @@ Im folgenden Beispiel verwenden Sie die Benutzeroberfläche für die **Tokenkonf
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 1. Wählen Sie nach der Authentifizierung Ihren Azure AD-Mandanten aus, indem Sie ihn in der rechten oberen Ecke der Seite auswählen.
 
-1. Wählen Sie im Menü auf der linken Seite **Azure Active Directory** aus.
+1. Suchen Sie nach **Azure Active Directory**, und wählen Sie diese Option aus.
 
-1. Wählen Sie im Abschnitt **Verwalten** die Option **App-Registrierungen** aus.
+1. Wählen Sie unter **Verwalten** die Option **App-Registrierungen** aus.
 
 1. Suchen Sie in der Liste nach der Anwendung, für die Sie optionale Ansprüche konfigurieren möchten, und klicken Sie darauf.
 
-1. Klicken Sie im Abschnitt **Verwalten** auf **Tokenkonfiguration**.
+1. Wählen Sie unter **Verwalten** die Option **Tokenkonfiguration** aus.
 
 1. Klicken Sie auf **Optionalen Anspruch hinzufügen**, wählen Sie den Tokentyp **ID** und dann in der Liste der Ansprüche **upn** aus, und klicken Sie anschließend auf **Hinzufügen**.
 
@@ -404,9 +402,9 @@ Im folgenden Beispiel verwenden Sie die Benutzeroberfläche für die **Tokenkonf
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 1. Wählen Sie nach der Authentifizierung Ihren Azure AD-Mandanten aus, indem Sie ihn in der rechten oberen Ecke der Seite auswählen.
-1. Wählen Sie im Menü auf der linken Seite **Azure Active Directory** aus.
+1. Suchen Sie nach **Azure Active Directory**, und wählen Sie diese Option aus.
 1. Suchen Sie in der Liste nach der Anwendung, für die Sie optionale Ansprüche konfigurieren möchten, und klicken Sie darauf.
-1. Klicken Sie im Abschnitt **Verwalten** auf **Manifest**, um den Inline-Manifest-Editor zu öffnen.
+1. Wählen Sie unter **Verwalten** die Option **Manifest** aus, um den Inline-Manifest-Editor zu öffnen.
 1. Das Manifest kann mit diesem Editor direkt bearbeitet werden. Das Manifest folgt dem Schema für die [Anwendungsentität](./reference-app-manifest.md). Das Manifest wird nach dem Speichern automatisch formatiert. Neue Elemente werden der `OptionalClaims`-Eigenschaft hinzugefügt.
 
     ```json

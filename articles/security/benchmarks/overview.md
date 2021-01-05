@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 2471aaad4ef10b611ab4ad812c5b1566cc7c4a07
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 3bc97a932e622838315f717cc7b036a559787805
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94412679"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97369156"
 ---
 # <a name="overview-of-the-azure-security-benchmark-v2"></a>Übersicht über den Azure-Sicherheitsvergleichstest (V2)
 
@@ -21,11 +21,11 @@ Der Azure-Sicherheitsvergleichstest bietet ausführliche bewährte Methoden und 
 
 Dieser Vergleichstest ist Teil einer Gruppe ganzheitlichen Sicherheitsanleitungen, zu der auch Folgendes gehört:
 
-- **Cloud Adoption Framework** : Leitfaden für Sicherheit, einschließlich [Strategie](/azure/cloud-adoption-framework/strategy/define-security-strategy), [Rollen und Verantwortlichkeiten](/azure/cloud-adoption-framework/organize/cloud-security), [10 wichtigste bewährte Methoden für die Sicherheit in Azure](/azure/cloud-adoption-framework/get-started/security#step-1-establish-essential-security-practices)und [Referenzimplementierung](/azure/cloud-adoption-framework/ready/enterprise-scale/).
-- **Azure Well-Architected Framework​** : Leitfaden zum [Absichern Ihrer Workloads](/assessments/?mode=pre-assessment&session=local) in Azure.
-- **Bewährte Sicherheitsmethoden von Microsoft** : [Empfehlungen](/security/compass/microsoft-security-compass-introduction) mit Beispielen für Azure.
+- **Cloud Adoption Framework**: Leitfaden für Sicherheit, einschließlich [Strategie](/azure/cloud-adoption-framework/strategy/define-security-strategy), [Rollen und Verantwortlichkeiten](/azure/cloud-adoption-framework/organize/cloud-security), [10 wichtigste bewährte Methoden für die Sicherheit in Azure](/azure/cloud-adoption-framework/get-started/security#step-1-establish-essential-security-practices)und [Referenzimplementierung](/azure/cloud-adoption-framework/ready/enterprise-scale/).
+- **Azure Well-Architected Framework​**: Leitfaden zum [Absichern Ihrer Workloads](/assessments/?mode=pre-assessment&session=local) in Azure.
+- **Bewährte Sicherheitsmethoden von Microsoft**: [Empfehlungen](/security/compass/microsoft-security-compass-introduction) mit Beispielen für Azure.
 
- Der Azure-Sicherheitsvergleichstest konzentriert sich auf cloudorientierte Kontrollbereiche. Diese Kontrollmechanismen stehen im Einklang mit bekannten Sicherheitsvergleichstests, wie sie beispielsweise vom Center for Internet Security (CIS) Controls, Version 7.1, und dem National Institute of Standards and Technology (NIST) SP800-53 beschrieben werden.
+ Der Azure-Sicherheitsvergleichstest konzentriert sich auf cloudorientierte Kontrollbereiche. Diese Kontrollmechanismen stehen im Einklang mit bekannten Sicherheitsvergleichstests, wie sie beispielsweise von Center for Internet Security (CIS) Controls, Version 7.1, und vom National Institute of Standards and Technology (NIST) SP800-800-53 beschrieben werden.
 Die folgenden Steuerungsmechanismen werden im Azure-Sicherheitsvergleichstest verwendet:
 
 | Kontrollbereiche für den Azure-Sicherheitsvergleichstest | Beschreibung 
@@ -46,12 +46,12 @@ Die folgenden Steuerungsmechanismen werden im Azure-Sicherheitsvergleichstest ve
 
 Jede Empfehlung umfasst die folgenden Informationen:
 
-- **Azure-ID** : Die Azure-Sicherheitsbenchmark-ID, die der Empfehlung entspricht.
+- **Azure-ID**: Die Azure-Sicherheitsbenchmark-ID, die der Empfehlung entspricht.
 - **CIS Controls v7.1 ID(s)** : Die Kontrollen in CIS Controls 7.1, die dieser Empfehlung entsprechen.
-- **NIST SP800-53 r4 ID(s)** : Die Kontrollen in NIST SP800-53 r4 (moderat), die dieser Empfehlung entsprechen.
-- **Details** : Enthält die Begründung für die Empfehlung sowie Links zu Implementierungsanleitungen. Wenn die Empfehlung von Azure Security Center unterstützt wird, ist dies hier ebenfalls angegeben.
-- **Verantwortlichkeit** : Ob der Kunde, der Dienstanbieter oder beide für die Umsetzung dieser Empfehlung verantwortlich ist. Die Sicherheitsverantwortlichkeiten werden in der öffentlichen Cloud geteilt. Einige Sicherheitskontrollen sind nur für den Clouddienstanbieter verfügbar, weshalb der Anbieter für diese verantwortlich ist. Dabei handelt es sich um allgemeine Beobachtungen. Für einige einzelne Dienste unterscheidet sich die Verantwortlichkeit von den Angaben im Azure-Sicherheitsvergleichstest. Diese Unterschiede werden in den grundlegenden Empfehlungen für den jeweiligen Dienst beschrieben.
-- **Sicherheitsverantwortliche beim Kunden** : [Die Sicherheitsverantwortlichen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions) in der Kundenorganisation, die für den jeweiligen Kontrollbereich ggf. verantwortlich, rechenschaftspflichtig oder ansprechbar sind. Sie können je nach der Sicherheitsorganisationsstruktur Ihres Unternehmens und den Rollen und Verantwortlichkeiten, die Sie im Zusammenhang mit der Azure-Sicherheit einrichten, von Organisation zu Organisation unterschiedlich sein.
+- **ID(s) von NIST SP 800-53 r4:** Die Kontrollen in NIST r4-800-53 r4 (moderat), die dieser Empfehlung entsprechen
+- **Details**: Enthält die Begründung für die Empfehlung sowie Links zu Implementierungsanleitungen. Wenn die Empfehlung von Azure Security Center unterstützt wird, ist dies hier ebenfalls angegeben.
+- **Verantwortlichkeit**: Ob der Kunde, der Dienstanbieter oder beide für die Umsetzung dieser Empfehlung verantwortlich ist. Die Sicherheitsverantwortlichkeiten werden in der öffentlichen Cloud geteilt. Einige Sicherheitskontrollen sind nur für den Clouddienstanbieter verfügbar, weshalb der Anbieter für diese verantwortlich ist. Dabei handelt es sich um allgemeine Beobachtungen. Für einige einzelne Dienste unterscheidet sich die Verantwortlichkeit von den Angaben im Azure-Sicherheitsvergleichstest. Diese Unterschiede werden in den grundlegenden Empfehlungen für den jeweiligen Dienst beschrieben.
+- **Sicherheitsverantwortliche beim Kunden**: [Die Sicherheitsverantwortlichen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions) in der Kundenorganisation, die für den jeweiligen Kontrollbereich ggf. verantwortlich, rechenschaftspflichtig oder ansprechbar sind. Sie können je nach der Sicherheitsorganisationsstruktur Ihres Unternehmens und den Rollen und Verantwortlichkeiten, die Sie im Zusammenhang mit der Azure-Sicherheit einrichten, von Organisation zu Organisation unterschiedlich sein.
 
 > [!NOTE]
 > Die Kontrollzuordnungen zwischen dem Azure-Sicherheitsvergleichstest und branchenüblichen Vergleichstests (wie NIST und CIS) weisen lediglich darauf hin, dass ein bestimmtes Azure-Feature verwendet werden kann, um eine in NIST oder CIS definierte Kontrollanforderung ganz oder teilweise zu erfüllen. Sie sollten sich darüber im Klaren sein, dass eine solche Implementierung nicht notwendigerweise zu einer vollständigen Einhaltung der entsprechenden Kontrollmechanismen in CIS oder NIST führt.

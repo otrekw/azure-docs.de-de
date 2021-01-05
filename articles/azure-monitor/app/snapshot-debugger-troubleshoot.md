@@ -1,19 +1,21 @@
 ---
 title: Problembehandlung für den Azure Application Insights-Momentaufnahmedebugger
-description: Dieser Artikel enthält Schritte zur Problembehandlung sowie Informationen, um Entwickler bei der Aktivierung oder Verwendung des Application Insights-Momentaufnahmedebuggers zu unterstützen.
+description: Dieser Artikel enthält Schritte zur Problembehandlung sowie Informationen, um Entwickler bei der Aktivierung und Verwendung des Application Insights-Momentaufnahmedebuggers zu unterstützen.
 ms.topic: conceptual
 author: cweining
 ms.date: 03/07/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 49a4ab0315dad539a594a20e53eae9fd2890e551
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 5dd1f799634fac223670db5c38effbe7fc29cf6f
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94504967"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97560898"
 ---
 # <a name="troubleshoot-problems-enabling-application-insights-snapshot-debugger-or-viewing-snapshots"></a><a id="troubleshooting"></a> Behandeln von Problemen beim Aktivieren des Application Insights-Momentaufnahmedebuggers oder Anzeigen von Momentaufnahmen
-Wenn Sie den Application Insights-Momentaufnahmedebugger für Ihre Anwendung aktiviert haben, aber keine Momentaufnahmen für Ausnahmen angezeigt werden, können Sie diese Anweisungen zur Problembehandlung verwenden. Es kann viele verschiedene Gründe geben, warum keine Momentaufnahmen generiert werden. Sie können die Integritätsprüfung für Momentaufnahmen ausführen, um einige der möglichen Ursachen zu ermitteln.
+Wenn Sie den Application Insights-Momentaufnahmedebugger für Ihre Anwendung aktiviert haben, aber keine Momentaufnahmen für Ausnahmen angezeigt werden, können Sie diese Anweisungen zur Problembehandlung verwenden.
+
+Es kann viele verschiedene Gründe geben, warum keine Momentaufnahmen generiert werden. Sie können zunächst die Integritätsprüfung für Momentaufnahmen ausführen, um einige der möglichen Ursachen zu ermitteln.
 
 ## <a name="use-the-snapshot-health-check"></a>Verwenden der Integritätsprüfung für Momentaufnahmen
 Einige verbreitete Probleme führen dazu, dass „Debugmomentaufnahme öffnen“ nicht angezeigt wird. Beispiele wären etwa die Verwendung eines veralteten Snapshot Collectors, das Erreichen des täglichen Uploadlimits oder ein zeitaufwendiger Uploadvorgang für die Momentaufnahme. Verwenden Sie die Integritätsprüfung für Momentaufnahmen, um verbreitete Probleme zu behandeln.
@@ -57,12 +59,34 @@ Um die Einstellung zu überprüfen, öffnen Sie die Datei „web.config“, und 
 > Wenn „targetFramework“ 4.7 oder höher ist, bestimmt Windows die verfügbaren Protokolle. In Azure App Service ist TLS 1.2 verfügbar. Wenn Sie jedoch Ihren eigenen virtuellen Computer verwenden, müssen Sie möglicherweise TLS 1.2 im Betriebssystem aktivieren.
 
 ## <a name="preview-versions-of-net-core"></a>Vorschauversionen von .NET Core
-Wenn die Anwendung eine Vorschauversion von .NET Core verwendet und der Momentaufnahmedebugger über den [Application Insights-Bereich](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json) im Portal aktiviert wurde, wird der Momentaufnahmedebugger möglicherweise nicht gestartet. Befolgen Sie zuerst die Anleitung unter [Aktivieren des Momentaufnahmedebuggers für andere Umgebungen](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json), um **zusätzlich** zur Aktivierung im [Application Insights-Bereich](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json) das NuGet-Paket [Microsoft.ApplicationInsights.SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) in die Anwendung einzubinden.
+Wenn Sie eine Vorschauversion von .NET Core verwenden oder Ihre Anwendung direkt oder indirekt über eine abhängige Assembly auf das Application Insights SDK verweist, befolgen Sie die Anweisungen zum [Aktivieren des Momentaufnahmedebuggers für andere Umgebungen](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json).
 
+## <a name="check-the-diagnostic-services-site-extension-status-page"></a>Überprüfen der Seite „Status“ der Websiteerweiterung für Diagnosedienste
+Wenn der Momentaufnahmedebugger über den Bereich [Application Insights](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json) im Portal aktiviert wurde, erfolgte die Aktivierung über die Websiteerweiterung für Diagnosedienste.
+
+Sie können die Statusseite dieser Erweiterung unter der folgenden URL überprüfen: `https://{site-name}.scm.azurewebsites.net/DiagnosticServices`.
+
+> [!NOTE]
+> Die Domäne des Links zur Statusseite hängt von der Cloud ab.
+Diese Domäne ist mit der Kudu-Verwaltungswebsite für App Service identisch.
+
+Auf dieser Statusseite wird der Installationsstatus von Profiler und den Snapshot Collector-Agents angezeigt. Wenn ein unerwarteter Fehler aufgetreten ist, wird er zusammen mit Vorschlägen zur Behebung angezeigt.
+
+Sie können die Kudu-Verwaltungswebsite für App Service dazu verwenden, die Basis-URL dieser Statusseite abzurufen:
+1. Öffnen Sie im Azure-Portal Ihre App Service-Anwendung.
+2. Wählen Sie **Erweiterte Tools** aus, oder suchen Sie nach **Kudu**.
+3. Klicken Sie auf **Starten**.
+4. Nachdem Sie zur Kudu-Verwaltungswebsite navigiert sind, fügen Sie an die URL **die Zeichenfolge `/DiagnosticServices` an und drücken dann die EINGABETASTE**.
+ Das Ergebnis sieht wie folgt aus: `https://<kudu-url>/DiagnosticServices`.
+
+Damit zeigen Sie eine Statusseite ähnlich der folgenden an: ![Statusseite der Diagnosedienste](./media/diagnostic-services-site-extension/status-page.png)
 
 ## <a name="upgrade-to-the-latest-version-of-the-nuget-package"></a>Upgraden auf die neueste Version des NuGet-Pakets
+Abhängig von der Aktivierung des Momentaufnahmedebuggers gibt es folgende Optionen:
 
-Wenn der Momentaufnahmedebugger über den [Application Insights-Bereich im Portal](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json) aktiviert wurde, sollte in Ihrer Anwendung bereits das aktuellste NuGet-Paket ausgeführt werden. Wurde der Momentaufnahmedebugger durch Einbinden des NuGet-Pakets [Microsoft.ApplicationInsights.SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) aktiviert, verwenden Sie den NuGet-Paket-Manager in Visual Studio, um sicherzustellen, dass Sie die neueste Version von „Microsoft.ApplicationInsights.SnapshotCollector“ verwenden.
+* Wenn der Momentaufnahmedebugger über den [Application Insights-Bereich im Portal](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json) aktiviert wurde, sollte in Ihrer Anwendung bereits das aktuellste NuGet-Paket ausgeführt werden.
+
+* Wurde der Momentaufnahmedebugger durch Einbinden des NuGet-Pakets [Microsoft.ApplicationInsights.SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) aktiviert, verwenden Sie den NuGet-Paket-Manager in Visual Studio, um sicherzustellen, dass Sie die neueste Version von „Microsoft.ApplicationInsights.SnapshotCollector“ verwenden.
 
 Informationen zu den neuesten Updates und Fehlerbehebungen [finden Sie in den Versionshinweisen](./snapshot-collector-release-notes.md).
 
@@ -71,12 +95,12 @@ Informationen zu den neuesten Updates und Fehlerbehebungen [finden Sie in den Ve
 Nachdem eine Momentaufnahme erstellt wurde, wird eine Minidumpdatei (DMP) auf dem Datenträger erstellt. Diese Minidumpdatei wird durch einen separaten Uploaderprozess erstellt und zusammen mit allen dazugehörigen PDB-Dateien in den Speicher des Application Insights-Momentaufnahmedebuggers hochgeladen. Nachdem die Minidumpdatei erfolgreich hochgeladen wurde, wird sie vom Datenträger gelöscht. Die Protokolldateien für den Uploaderprozess bleiben auf dem Datenträger erhalten. In einer App Service-Umgebung finden Sie diese Protokolle unter `D:\Home\LogFiles`. Verwenden Sie die Verwaltungswebsite von Kudu für App Service, um nach diesen Protokolldateien zu suchen.
 
 1. Öffnen Sie im Azure-Portal Ihre App Service-Anwendung.
-2. Klicken Sie auf _*Erweiterte Tools**, oder suchen Sie nach **Kudu**.
-3. Klicken Sie auf **Start**.
+2. Wählen Sie **Erweiterte Tools** aus, oder suchen Sie nach **Kudu**.
+3. Klicken Sie auf **Starten**.
 4. Wählen Sie im Dropdown-Listenfeld **Debugging-Konsole** die Option **CMD** aus.
-5. Klicken Sie auf **LogFiles**.
+5. Wählen Sie **LogFiles** aus.
 
-Daraufhin sollte mindestens eine Datei mit einem Namen angezeigt werden, der mit `Uploader_` oder `SnapshotUploader_` beginnt und die Erweiterung `.log` aufweist. Klicken Sie auf das entsprechende Symbol, um Protokolldateien herunterzuladen oder in einem Browser zu öffnen.
+Daraufhin sollte mindestens eine Datei mit einem Namen angezeigt werden, der mit `Uploader_` oder `SnapshotUploader_` beginnt und die Erweiterung `.log` aufweist. Wählen Sie das entsprechende Symbol aus, um Protokolldateien herunterzuladen oder in einem Browser zu öffnen.
 Der Dateiname enthält ein eindeutiges Suffix, mit dem die App Service-Instanz identifiziert wird. Wenn Ihre App Service-Instanz auf mehreren Computern gehostet wird, werden separate Protokolldateien für jeden Computer erstellt. Wenn der Uploader eine neue Minidumpdatei erkennt, wird diese in der Protokolldatei erfasst. Hier ist ein Beispiel für eine erfolgreiche Momentaufnahme und einen Upload angegeben:
 
 ```
@@ -108,7 +132,7 @@ SnapshotUploader.exe Information: 0 : Deleted D:\local\Temp\Dumps\c12a605e73c443
 > Das obige Beispiel stammt aus Version 1.2.0 des NuGet-Pakets „Microsoft.ApplicationInsights.SnapshotCollector“. In früheren Versionen hatte der Uploader-Prozess die Bezeichnung `MinidumpUploader.exe`, und das Protokoll enthielt weniger Details.
 
 Im vorherigen Beispiel lautet der Instrumentierungsschlüssel `c12a605e73c44346a984e00000000000`. Dieser Wert sollte dem Instrumentierungsschlüssel für Ihre Anwendung entsprechen.
-Die Minidumpdatei ist einer Momentaufnahme mit der ID `139e411a23934dc0b9ea08a626db16c5` zugeordnet. Sie können diese ID später verwenden, um nach der zugehörigen Ausnahmetelemetrie in Application Insights Analytics zu suchen.
+Die Minidumpdatei ist einer Momentaufnahme mit der ID `139e411a23934dc0b9ea08a626db16c5` zugeordnet. Sie können diese ID später verwenden, um nach dem zugehörigen Ausnahmedatensatz in Application Insights Analytics zu suchen.
 
 Der Uploader sucht alle 15 Minuten nach neuen PDB-Dateien. Hier sehen Sie ein Beispiel:
 
@@ -126,11 +150,14 @@ SnapshotUploader.exe Information: 0 : Deleted PDB scan marker : D:\local\Temp\Du
 Bei Anwendungen, die _nicht_ in App Service gehostet werden, befinden sich die Uploaderprotokolle im selben Ordner wie die Minidumpdateien: `%TEMP%\Dumps\<ikey>` (`<ikey>` steht hierbei für Ihren Instrumentierungsschlüssel).
 
 ## <a name="troubleshooting-cloud-services"></a>Problembehandlung bei Cloud Services
-Für Rollen in Cloud Services ist der standardmäßige temporäre Ordner möglicherweise zu klein, um die MiniDump-Dateien zu speichern, was dazu führt, dass Momentaufnahmen verloren gehen.
+In Cloud Services ist der standardmäßige temporäre Ordner möglicherweise zu klein, um die Minidump-Dateien zu speichern, was dazu führt, dass Momentaufnahmen verloren gehen.
+
 Der erforderliche Speicherplatz hängt vom gesamten Arbeitssatz Ihrer Anwendung und der Anzahl gleichzeitiger Momentaufnahmen ab.
-Der Arbeitssatz einer 32-Bit-ASP.NET-Webrolle liegt in der Regel zwischen 200 MB und 500 MB.
-Lassen Sie mindestens zwei gleichzeitige Momentaufnahmen zu.
-Wenn Ihre Anwendung beispielsweise 1 GB des gesamten Arbeitssatzes verwendet, sollten Sie sicherstellen, dass ein Speicherplatz von mindestens 2 GB zum Speichern von Momentaufnahmen zur Verfügung steht.
+
+Der Arbeitssatz einer 32-Bit-ASP.NET-Webrolle liegt in der Regel zwischen 200 MB und 500 MB. Lassen Sie mindestens zwei gleichzeitige Momentaufnahmen zu.
+
+Wenn Ihre Anwendung beispielsweise 1 GB des gesamten Arbeitssatzes verwendet, sollten Sie sicherstellen, dass ein Speicherplatz von mindestens 2 GB zum Speichern von Momentaufnahmen zur Verfügung steht.
+
 Führen Sie die folgenden Schritte aus, um Ihre Clouddienstrolle mit einer dedizierten lokalen Ressource für Momentaufnahmen zu konfigurieren.
 
 1. Fügen Sie Ihrem Clouddienst eine neue lokale Ressource hinzu, indem Sie die Clouddienst-Definitionsdatei (.csdef) bearbeiten. Im folgenden Beispiel wird eine Ressource namens `SnapshotStore` mit einer Größe von 5 GB definiert.
@@ -187,7 +214,7 @@ Der Snapshot Collector überprüft einige bekannte Speicherorte und stellt dabei
 - APPDATA
 - TEMP
 
-Wenn kein geeigneter Ordner gefunden werden kann, meldet der Snapshot Collector einen Fehler, dass _kein geeigneter Momentaufnahmeordner gefunden wurde_.
+Kann kein geeigneter Ordner gefunden werden, meldet Snapshot Collector einen Fehler, dass _kein geeigneter Momentaufnahmeordner gefunden wurde_.
 
 Bei einem fehlerhaften Kopiervorgang meldet Snapshot Collector den Fehler `ShadowCopyFailed`.
 
@@ -222,7 +249,7 @@ Oder Sie können „appsettings.json“ mit einer .NET Core-Anwendung verwenden:
 
 ## <a name="use-application-insights-search-to-find-exceptions-with-snapshots"></a>Suchen nach Ausnahmen mit Momentaufnahmen über die Application Insights-Suche
 
-Wenn eine Momentaufnahme erstellt wird, wird die auslösende Ausnahme mit einer Momentaufnahme-ID gekennzeichnet. Diese Momentaufnahme-ID ist als benutzerdefinierte Eigenschaft enthalten, wenn die Ausnahmetelemetrie an Application Insights gemeldet wird. In Application Insights können Sie über die **Suche** nach sämtlicher Telemetrie mit der benutzerdefinierten Eigenschaft `ai.snapshot.id` suchen.
+Wenn eine Momentaufnahme erstellt wird, wird die auslösende Ausnahme mit einer Momentaufnahme-ID gekennzeichnet. Diese Momentaufnahme-ID ist als benutzerdefinierte Eigenschaft enthalten, wenn die Ausnahme an Application Insights gemeldet wird. In Application Insights können Sie über die **Suche** nach sämtlichen Datensätzen mit der benutzerdefinierten Eigenschaft `ai.snapshot.id` suchen.
 
 1. Navigieren Sie im Azure-Portal zu Ihrer Application Insights-Ressource.
 2. Klicken Sie auf **Suchen**.
@@ -230,16 +257,18 @@ Wenn eine Momentaufnahme erstellt wird, wird die auslösende Ausnahme mit einer 
 
 ![Suchen nach Telemetrie im Portal mit einer Momentaufnahme-ID](./media/snapshot-debugger/search-snapshot-portal.png)
 
-Wenn bei dieser Suche keine Ergebnisse zurückgegeben werden, wurden Application Insights im ausgewählten Zeitraum keine Momentaufnahmen für Ihre Anwendung gemeldet.
+Wenn bei dieser Suche keine Ergebnisse zurückgegeben werden, wurden Application Insights im ausgewählten Zeitraum keine Momentaufnahmen gemeldet.
 
-Um über die Uploaderprotokolle nach einer bestimmten Momentaufnahme-ID zu suchen, geben Sie die jeweilige ID in das Suchfeld ein. Wenn Sie für eine Momentaufnahme, die Ihres Wissens nach hochgeladen wurde, keine Telemetrie finden können, gehen Sie folgendermaßen vor:
+Um über die Uploaderprotokolle nach einer bestimmten Momentaufnahme-ID zu suchen, geben Sie die jeweilige ID in das Suchfeld ein. Wenn Sie für eine Momentaufnahme, die Ihres Wissens nach hochgeladen wurde, keine Datensätze finden können, gehen Sie folgendermaßen vor:
 
 1. Vergewissern Sie sich, dass Sie die Suche in der richtigen Application Insights-Ressource durchführen, indem Sie den Instrumentierungsschlüssel überprüfen.
 
 2. Passen Sie mithilfe des Zeitstempels aus dem Uploaderprotokoll den Filter „Zeitbereich“ an, um den jeweiligen Zeitbereich bei der Suche zu berücksichtigen.
 
-Wenn trotzdem keine Ausnahme mit dieser Momentaufnahme-ID angezeigt wird, wurde Application Insights die Ausnahmetelemetrie nicht gemeldet. Diese Situation kann vorkommen, wenn Ihre Anwendung abgestürzt ist, nachdem die Momentaufnahme erfasst wurde, jedoch bevor die Ausnahmetelemetrie gemeldet wurde. Überprüfen Sie in diesem Fall die App Service-Protokolle unter `Diagnose and solve problems`, um festzustellen, ob unerwartete Neustarts oder Ausnahmefehler vorliegen.
+Wenn trotzdem keine Ausnahme mit dieser Momentaufnahme-ID angezeigt wird, wurde Application Insights der Ausnahmedatensatz nicht gemeldet. Diese Situation kann vorkommen, wenn Ihre Anwendung abgestürzt ist, nachdem die Momentaufnahme erfasst wurde, jedoch bevor der Ausnahmedatensatz gemeldet wurde. Überprüfen Sie in diesem Fall die App Service-Protokolle unter `Diagnose and solve problems`, um festzustellen, ob unerwartete Neustarts oder Ausnahmefehler vorliegen.
 
 ## <a name="edit-network-proxy-or-firewall-rules"></a>Bearbeiten von Netzwerkproxy- oder Firewallregeln
 
-Wenn Ihre Anwendung über einen Proxy oder über eine Firewall mit dem Internet verbunden ist, müssen Sie ggf. die Regeln bearbeiten, damit Ihre Anwendung mit dem Momentaufnahmedebugger-Dienst kommunizieren kann. Die vom Momentaufnahmedebugger verwendeten IP-Adressen sind im Azure Monitor-Diensttag enthalten.
+Wenn Ihre Anwendung über einen Proxy oder über eine Firewall mit dem Internet verbunden ist, müssen Sie unter Umständen die Regeln aktualisieren, damit sie mit dem Momentaufnahmedebugger-Dienst kommunizieren kann.
+
+Die vom Application Insights-Momentaufnahmedebugger verwendeten IP-Adressen sind im Azure Monitor-Diensttag enthalten. Weitere Informationen finden Sie in der [Dokumentation zu Diensttags](https://docs.microsoft.com/azure/virtual-network/service-tags-overview).

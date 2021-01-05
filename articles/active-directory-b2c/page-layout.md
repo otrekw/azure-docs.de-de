@@ -11,20 +11,28 @@ ms.topic: reference
 ms.date: 08/24/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 868d99a82009dc8545fc24ad1cfa1da3959da131
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: beb38be985457ea36b2cea9a6dc337ba305d503f
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88852070"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97108500"
 ---
 # <a name="page-layout-versions"></a>Seitenlayoutversionen
 
 Seitenlayoutpakete werden regelmäßig aktualisiert, um Korrekturen und Verbesserungen in ihre Seitenelemente aufzunehmen. Das folgende Änderungsprotokoll gibt die in den einzelnen Versionen eingeführten Änderungen an.
 
-[!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
-
 ## <a name="self-asserted-page-selfasserted"></a>Selbstbestätigte Seite (selbstbestätigt)
+
+**2.1.1**
+
+- Zusätzlich zu `intro` wurde das UXString-Element `heading` zur Anzeige als Titel auf der Seite hinzugefügt. Dies ist standardmäßig ausgeblendet.
+- Unterstützung für das Speichern von Kennwörtern in iCloud-Schlüsselbund hinzugefügt
+- Unterstützung für die Verwendung einer Richtlinie oder des QueryString-Parameters `pageFlavor` zum Auswählen des Layouts (klassisch, oceanBlue oder slateGray) hinzugefügt
+- Haftungsausschlüsse auf selbstbestätigter Seite hinzugefügt
+- Der Fokus liegt nun auf dem ersten bearbeitbaren Feld, wenn die Seite geladen wird.
+- Der Fokus liegt nun auf dem ersten Fehlerfeld, wenn bei mehreren Feldern Fehler auftreten.
+- Der Fokus liegt nun auf der Schaltfläche „Ändern“, nachdem der E-Mail-Prüfcode überprüft wurde.
 
 **2.1.0**
 
@@ -39,11 +47,16 @@ Seitenlayoutpakete werden regelmäßig aktualisiert, um Korrekturen und Verbesse
 - Die Felder für Benutzername/E-Mail-Adresse und Kennwort verwenden jetzt das HTML-Element `form`, damit Microsoft Edge und Internet Explorer (IE) diese Informationen ordnungsgemäß speichern können.
 - Konfigurierbare Verzögerung bei Validierung von Benutzereingaben für verbesserte Benutzerfreundlichkeit hinzugefügt.
 - Korrekturen zur Barrierefreiheit
-- Sie können nun [in den HTML-Tags](custom-policy-ui-customization.md#guidelines-for-using-custom-page-content) das Attribut `data-preload="true"` hinzufügen, um die Ladereihenfolge für CSS und JavaScript zu steuern.
+- Ein Problem mit der Barrierefreiheit wurde behoben, sodass Fehlermeldungen nun von der Sprachausgabe gelesen werden. 
+- Der Fokus liegt jetzt auf dem Kennwortfeld, nachdem die E-Mail überprüft wurde.
+- `autofocus` aus dem CheckBox-Steuerelement entfernt 
+- Unterstützung für ein Anzeigesteuerelement für die Überprüfung der Telefonnummer hinzugefügt
+- Sie können nun das Attribut `data-preload="true"` hinzufügen [in Ihren HTML-Tags](customize-ui-with-html.md#guidelines-for
   - Laden Sie verknüpfte CSS-Dateien zur gleichen Zeit wie Ihre HTML-Vorlage, damit zwischen dem Laden der Dateien kein „Flackern“ auftritt.
   - Sie steuern damit die Reihenfolge, in der die `script`-Tags vor dem Laden der Seite abgerufen und ausgeführt werden.
-- Als E-Mail-Feld wird jetzt `type=email` verwendet, und bei Tastaturen von Mobilgeräten werden jetzt die richtigen Vorschläge angezeigt
-- Unterstützung für den Google Chrome-Übersetzer
+- Als E-Mail-Feld wird jetzt `type=email` verwendet, und bei Tastaturen von Mobilgeräten werden jetzt die richtigen Vorschläge angezeigt.
+- Unterstützung für den Chrome-Übersetzer
+- Unterstützung für Unternehmensbranding auf Benutzerflowseiten hinzugefügt
 
 **1.1.0**
 
@@ -58,6 +71,15 @@ Seitenlayoutpakete werden regelmäßig aktualisiert, um Korrekturen und Verbesse
 
 ## <a name="unified-sign-in-sign-up-page-with-password-reset-link-unifiedssp"></a>Vereinheitlichte Anmeldungs- und Registrierungsseite mit Link zur Kennwortzurücksetzung (unifiedssp)
 
+**2.1.1**
+- Zusätzlich zu `intro` wurde das UXString-Element `heading` zur Anzeige als Titel auf der Seite hinzugefügt. Dies ist standardmäßig ausgeblendet.
+- Unterstützung für die Verwendung einer Richtlinie oder des QueryString-Parameters `pageFlavor` zum Auswählen des Layouts (klassisch, oceanBlue oder slateGray) hinzugefügt
+- Unterstützung für das Speichern von Kennwörtern in iCloud-Schlüsselbund hinzugefügt
+- Der Fokus liegt nun auf dem ersten Fehlerfeld, wenn bei mehreren Feldern Fehler auftreten.
+- Der Fokus liegt nun auf dem ersten bearbeitbaren Feld, wenn die Seite geladen wird.
+- Neuer Speicherort für den Link zur Auswahl des Anspruchsanbieters hinzugefügt (`bottomUnderFormClaimsProviderSelections`)
+- Nicht mehr verwendete UXStrings entfernt
+
 **2.1.0**
 
 - Unterstützung für mehrere Registrierungslinks hinzugefügt.
@@ -67,11 +89,12 @@ Seitenlayoutpakete werden regelmäßig aktualisiert, um Korrekturen und Verbesse
 
 - Die Felder für Benutzername/E-Mail-Adresse und Kennwort verwenden jetzt das HTML-Element `form`, damit Microsoft Edge und Internet Explorer (IE) diese Informationen ordnungsgemäß speichern können.
 - Korrekturen zur Barrierefreiheit
-- Sie können nun [in den HTML-Tags](custom-policy-ui-customization.md#guidelines-for-using-custom-page-content) das Attribut `data-preload="true"` hinzufügen, um die Ladereihenfolge für CSS und JavaScript zu steuern.
+- Sie können nun [in den HTML-Tags](customize-ui-with-html.md#guidelines-for-using-custom-page-content) das Attribut `data-preload="true"` hinzufügen, um die Ladereihenfolge für CSS und JavaScript zu steuern.
   - Laden Sie verknüpfte CSS-Dateien zur gleichen Zeit wie Ihre HTML-Vorlage, damit zwischen dem Laden der Dateien kein „Flackern“ auftritt.
   - Sie steuern damit die Reihenfolge, in der die `script`-Tags vor dem Laden der Seite abgerufen und ausgeführt werden.
-- Als E-Mail-Feld wird jetzt `type=email` verwendet, und bei Tastaturen von Mobilgeräten werden jetzt die richtigen Vorschläge angezeigt
-- Unterstützung für den Google Chrome-Übersetzer
+- Als E-Mail-Feld wird jetzt `type=email` verwendet, und bei Tastaturen von Mobilgeräten werden jetzt die richtigen Vorschläge angezeigt.
+- Unterstützung für den Chrome-Übersetzer
+- Unterstützung für Mandantenbranding auf Benutzerflowseiten hinzugefügt
 
 **1.1.0**
 
@@ -83,6 +106,12 @@ Seitenlayoutpakete werden regelmäßig aktualisiert, um Korrekturen und Verbesse
 
 ## <a name="mfa-page-multifactor"></a>MFA-Seite (Multi-Factor)
 
+**1.2.2**
+- Problem mit dem automatischen Auffüllen des Prüfcodes bei Verwendung von iOS behoben
+- Problem mit dem Umleiten eines Tokens von Android Webview an die vertrauende Seite behoben 
+- Zusätzlich zu `intro` wurde das UXString-Element `heading` zur Anzeige als Titel auf der Seite hinzugefügt. Dies ist standardmäßig ausgeblendet.  
+- Unterstützung für die Verwendung einer Richtlinie oder des QueryString-Parameters `pageFlavor` zum Auswählen des Layouts (klassisch, oceanBlue oder slateGray) hinzugefügt
+
 **1.2.1**
 
 - Korrekturen zur Barrierefreiheit in Standardvorlagen
@@ -90,11 +119,12 @@ Seitenlayoutpakete werden regelmäßig aktualisiert, um Korrekturen und Verbesse
 **1.2.0**
 
 - Korrekturen zur Barrierefreiheit
-- Sie können nun [in den HTML-Tags](custom-policy-ui-customization.md#guidelines-for-using-custom-page-content) das Attribut `data-preload="true"` hinzufügen, um die Ladereihenfolge für CSS und JavaScript zu steuern.
+- Sie können nun [in den HTML-Tags](customize-ui-with-html.md#guidelines-for-using-custom-page-content) das Attribut `data-preload="true"` hinzufügen, um die Ladereihenfolge für CSS und JavaScript zu steuern.
   - Laden Sie verknüpfte CSS-Dateien zur gleichen Zeit wie Ihre HTML-Vorlage, damit zwischen dem Laden der Dateien kein „Flackern“ auftritt.
   - Sie steuern damit die Reihenfolge, in der die `script`-Tags vor dem Laden der Seite abgerufen und ausgeführt werden.
 - Als E-Mail-Feld wird jetzt `type=email` verwendet, und bei Tastaturen von Mobilgeräten werden jetzt die richtigen Vorschläge angezeigt
-- Unterstützung für den Google Chrome-Übersetzer
+- Unterstützung für den Chrome-Übersetzer
+- Unterstützung für Mandantenbranding auf Benutzerflowseiten hinzugefügt
 
 **1.1.0**
 
@@ -115,7 +145,7 @@ Seitenlayoutpakete werden regelmäßig aktualisiert, um Korrekturen und Verbesse
 **1.2.0**
 
 - Korrekturen zur Barrierefreiheit
-- Sie können nun [in den HTML-Tags](custom-policy-ui-customization.md#guidelines-for-using-custom-page-content) das Attribut `data-preload="true"` hinzufügen, um die Ladereihenfolge für CSS und JavaScript zu steuern.
+- Sie können nun [in den HTML-Tags](customize-ui-with-html.md#guidelines-for-using-custom-page-content) das Attribut `data-preload="true"` hinzufügen, um die Ladereihenfolge für CSS und JavaScript zu steuern.
   - Laden Sie verknüpfte CSS-Dateien zur gleichen Zeit wie Ihre HTML-Vorlage, damit zwischen dem Laden der Dateien kein „Flackern“ auftritt.
   - Sie steuern damit die Reihenfolge, in der die `script`-Tags vor dem Laden der Seite abgerufen und ausgeführt werden.
 - Als E-Mail-Feld wird jetzt `type=email` verwendet, und bei Tastaturen von Mobilgeräten werden jetzt die richtigen Vorschläge angezeigt
@@ -136,7 +166,7 @@ Seitenlayoutpakete werden regelmäßig aktualisiert, um Korrekturen und Verbesse
 **1.2.0**
 
 - Korrekturen zur Barrierefreiheit
-- Sie können nun [in den HTML-Tags](custom-policy-ui-customization.md#guidelines-for-using-custom-page-content) das Attribut `data-preload="true"` hinzufügen, um die Ladereihenfolge für CSS und JavaScript zu steuern.
+- Sie können nun [in den HTML-Tags](customize-ui-with-html.md#guidelines-for-using-custom-page-content) das Attribut `data-preload="true"` hinzufügen, um die Ladereihenfolge für CSS und JavaScript zu steuern.
   - Laden Sie verknüpfte CSS-Dateien zur gleichen Zeit wie Ihre HTML-Vorlage, damit zwischen dem Laden der Dateien kein „Flackern“ auftritt.
   - Sie steuern damit die Reihenfolge, in der die `script`-Tags vor dem Laden der Seite abgerufen und ausgeführt werden.
 - Als E-Mail-Feld wird jetzt `type=email` verwendet, und bei Tastaturen von Mobilgeräten werden jetzt die richtigen Vorschläge angezeigt
@@ -148,4 +178,4 @@ Seitenlayoutpakete werden regelmäßig aktualisiert, um Korrekturen und Verbesse
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen dazu, wie Sie die Benutzeroberfläche Ihrer Anwendungen in benutzerdefinierten Richtlinien anpassen können, finden Sie unter [Anpassen der Benutzeroberfläche einer Anwendung mithilfe einer benutzerdefinierten Richtlinie](custom-policy-ui-customization.md).
+Weitere Informationen dazu, wie Sie die Benutzeroberfläche Ihrer Anwendungen in benutzerdefinierten Richtlinien anpassen können, finden Sie unter [Anpassen der Benutzeroberfläche einer Anwendung mithilfe einer benutzerdefinierten Richtlinie](customize-ui-with-html.md).

@@ -15,9 +15,11 @@
 - name: Tutorials
   items:
     - name: "Anzeigen und Konfigurieren der DDoS\_Protection-Telemetrie"
-      href: telemetry-monitoring-alerting.md
-    - name: Konfigurieren der Berichte und Datenflussprotokolle zur Entschärfung von DDoS-Angriffen
-      href: reports-and-flow-logs.md
+      href: telemetry.md
+    - name: Anzeigen und Konfigurieren der DDoS-Diagnoseprotokollierung
+      href: diagnostic-logging.md
+    - name: Anzeigen und Konfigurieren von DDoS-Schutzwarnungen
+      href: alerts.md
 - name: Konzepte
   items:
     - name: Arten von Angriffen

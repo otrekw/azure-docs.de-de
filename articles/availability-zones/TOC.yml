@@ -12,7 +12,7 @@
       href: az-overview.md
     - name: Dokumentation zu Verfügbarkeitszonen
       items:
-        - name: 'Regionen, die Verfügbarkeitszonen unterstützen'
+        - name: 'Azure-Dienste, die Verfügbarkeitszonen unterstützen'
           href: az-region.md
         - name: Virtuelle Computer
           items:

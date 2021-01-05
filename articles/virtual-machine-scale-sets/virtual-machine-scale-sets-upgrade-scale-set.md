@@ -9,12 +9,12 @@ ms.subservice: management
 ms.date: 03/10/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: 7577c8510746d1140c1f8b70081f600d992ae512
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c255a3d68b1a24e25c1c0e308faa3fd364a15861
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96016674"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97358740"
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>Ändern einer VM-Skalierungsgruppe
 
@@ -350,12 +350,12 @@ Einige Eigenschaften können mit Ausnahmen je nach aktuellem Wert geändert werd
 
 - **singlePlacementGroup:** Wenn für singlePlacementGroup die Option „true“ festgelegt ist, kann diese in „false“ geändert werden. Wenn für „singlePlacementGroup“ jedoch „false“ festgelegt ist, kann die Einstellung **nicht** in „true“ geändert werden.
 - **Subnetz:** Das Subnetz einer Skalierungsgruppe kann geändert werden, solange sich das ursprüngliche und das neue Subnetz im selben virtuellen Netzwerk befinden.
+- **imageReferenceSku:** Imageverweis-SKU kann für unterstützte [Linux-Distributionen](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros), Server-/Clientimages unter Windows und Images ohne [Planinformationen](https://docs.microsoft.com/azure/virtual-machines/linux/cli-ps-findimage#view-plan-properties) aktualisiert werden. 
 
 ### <a name="properties-that-require-deallocation-to-change"></a>Eigenschaften, für die zur Änderung die Aufhebung der Zuordnung erforderlich ist
 Einige Eigenschaften können nur in bestimmte Werte geändert werden, wenn die Zuordnung der virtuellen Computer in der Skalierungsgruppe aufgehoben wird. Zu diesen Eigenschaften zählen folgende:
 
-- **SKU-Name:** Wird die neue VM-SKU auf der Hardware, auf der sich die Skalierungsgruppe derzeit befindet, nicht unterstützt, müssen Sie die Zuordnung der virtuellen Computer in der Skalierungsgruppe aufheben, bevor Sie den SKU-Namen ändern. Weitere Informationen finden Sie unter [Ändern der Größe einer Azure-VM](../virtual-machines/windows/resize-vm.md).
-
+- **SKU-Name:** Wird die neue VM-SKU auf der Hardware, auf der sich die Skalierungsgruppe derzeit befindet, nicht unterstützt, müssen Sie die Zuordnung der virtuellen Computer in der Skalierungsgruppe aufheben, bevor Sie den SKU-Namen ändern. Weitere Informationen finden Sie unter [Ändern der Größe einer Azure-VM](../virtual-machines/windows/resize-vm.md). 
 
 ## <a name="vm-specific-updates"></a>VM-spezifische Updates
 Bestimmte Änderungen können statt auf die globalen Skalierungsgruppeneigenschaften auf spezifische virtuelle Computer angewendet werden. Derzeit wird als VM-spezifische Aktualisierung nur das Anfügen von Datenträgern an virtuelle Computer in der Skalierungsgruppe bzw. das Trennen dieser Datenträger unterstützt. Dieses Feature befindet sich in der Vorschauphase. Weitere Informationen finden Sie in der [Vorschaudokumentation](https://github.com/Azure/vm-scale-sets/tree/master/preview/disk).
@@ -372,7 +372,7 @@ Anwendungen werden häufig auch über ein benutzerdefiniertes Image bereitgestel
 Bei Verwendung von Azure-Plattformimages können Sie das Image durch Ändern von *imageReference* aktualisieren. (Weitere Informationen finden Sie in der [REST-API-Dokumentation](/rest/api/compute/virtualmachinescalesets/createorupdate).)
 
 >[!NOTE]
-> Bei Plattformimages wird als Imagereferenzversion häufig „aktuelle Version“ angegeben. Beim Erstellen, Aufskalieren und Durchführen eines Reimagings werden die virtuellen Computer mit der neuesten verfügbaren Version erstellt. Das bedeutet jedoch **nicht**, dass das Betriebssystemimage im Lauf der Zeit automatisch aktualisiert wird, wenn neue Imageversionen veröffentlicht werden. Es befindet sich derzeit ein separates Feature in der Vorschau, das automatische Betriebssystemupgrades bereitstellt. Weitere Informationen finden Sie in der [Dokumentation zu automatischen Betriebssystemupgrades](virtual-machine-scale-sets-automatic-upgrade.md).
+> Bei Plattformimages wird als Imagereferenzversion häufig „aktuelle Version“ angegeben. Beim Erstellen, horizontalen Hochskalieren und Durchführen eines Reimagings werden die virtuellen Computer mit der neuesten verfügbaren Version erstellt. Das bedeutet jedoch **nicht**, dass das Betriebssystemimage im Lauf der Zeit automatisch aktualisiert wird, wenn neue Imageversionen veröffentlicht werden. Es befindet sich derzeit ein separates Feature in der Vorschau, das automatische Betriebssystemupgrades bereitstellt. Weitere Informationen finden Sie in der [Dokumentation zu automatischen Betriebssystemupgrades](virtual-machine-scale-sets-automatic-upgrade.md).
 
 Bei Verwendung von benutzerdefinierten Images können Sie das Image durch Aktualisieren der *imageReference*-ID aktualisieren. (Weitere Informationen finden Sie in der [REST-API-Dokumentation](/rest/api/compute/virtualmachinescalesets/createorupdate).)
 
