@@ -5,20 +5,20 @@ services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
 ms.topic: article
-ms.date: 03/26/2020
+ms.date: 12/22/2020
 ms.author: tyao
-ms.openlocfilehash: f260bfc7b097931cc1a978e790c1d9dd966703ac
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 60a4ef47bc30955c918983d54f613cbdb5cbed73
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94563510"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746761"
 ---
 # <a name="configure-an-ip-restriction-rule-with-a-web-application-firewall-for-azure-front-door"></a>Konfigurieren einer IP-Einschränkungsregel mit einer Web Application Firewall für Azure Front Door
 
 In diesem Artikel wird erläutert, wie Sie IP-Einschränkungsregeln in Web Application Firewall (WAF) für Azure Front Door über das Azure-Portal, die Azure-Befehlszeilenschnittstelle, Azure PowerShell oder eine Azure Resource Manager-Vorlage konfigurieren.
 
-Eine auf IP-Adressen basierende Zugriffssteuerungsregel ist eine benutzerdefinierte WAF-Regel, mit der Sie den Zugriff auf Ihre Webanwendungen steuern können. Dazu ist in der Regel eine Liste von IP-Adressen oder IP-Adressbereichen im CIDR-Format (Classless Inter-Domain Routing) angegeben.
+Eine auf IP-Adressen basierende Zugriffssteuerungsregel ist eine benutzerdefinierte WAF-Regel, mit der Sie den Zugriff auf Ihre Webanwendungen steuern können. Dazu ist in der Regel eine Liste von IP-Adressen oder IP-Adressbereichen im CIDR-Format (Classless Inter-Domain Routing) angegeben. Es gibt zwei Typen von Übereinstimmungsvariablen in der IP-Adressübereinstimmung: **RemoteAddr** und **SocketAddr**. „RemoteAddr“ ist die ursprüngliche Client-IP, die normalerweise über den X-Forwarded-For-Anforderungsheader gesendet wird. „SocketAddr“ ist die Quell-IP-Adresse, die WAF sieht. Wenn sich Ihr Benutzer hinter einem Proxy befindet, ist „SocketAddr“ oft die Adresse des Proxyservers.
 
 Standardmäßig kann auf Ihre Webanwendungen über das Internet zugegriffen werden. Wenn Sie den Zugriff auf Clients entsprechend einer Liste bekannter IP-Adressen oder IP-Adressbereiche einschränken möchten, können Sie eine IP-Abgleichregel erstellen, die die Liste der IP-Adressen als abzugleichende Werte enthält und in der der Operator auf „Nicht“ (Negation ist wahr) und die Aktion auf **Blockieren** festgelegt wird. Nachdem eine IP-Einschränkungsregel angewandt wurde, erhalten Anforderungen von Adressen, die nicht in dieser Zulassungsliste enthalten sind, die Antwort „403 (Nicht zulässig)“.
 
@@ -55,7 +55,7 @@ Gehen Sie zum Erstellen eines Azure Front Door-Profils gemäß den Anweisungen u
    |Name der benutzerdefinierten Regel     |FdWafCustRule|
    |Status     |Aktiviert|
    |Regeltyp     |Match|
-   |Priority    |100|
+   |Priorität    |100|
    |Übereinstimmungstyp     |IP-Adresse|
    |Übereinstimmungsvariable|RemoteAddr|
    |Vorgang|Enthält nicht|

@@ -93,6 +93,8 @@
       href: manage.md
     - name: VM-Skalierungsgruppen
       items:
+        - name: 'Aktualisieren oder Löschen einer vorhandenen Azure Load Balancer-Instanz, die von einer VM-Skalierungsgruppe verwendet wird'
+          href: update-load-balancer-with-vm-scale-set.md
         - name: 'Verwendung mit einer vorhandenen Azure Load Balancer-Instanz: Portal'
           href: configure-vm-scale-set-portal.md
         - name: 'Verwendung mit einer vorhandenen Azure Load Balancer-Instanz: PowerShell'

@@ -2,14 +2,14 @@
 title: Dienstkontingente und Limits
 description: Erfahren Sie mehr über Azure Batch-Standardkontingente, Limits und Einschränkungen sowie die Anforderung von Kontingentsteigerungen.
 ms.topic: conceptual
-ms.date: 06/03/2020
+ms.date: 12/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: b2039794a0c8a13070c9d81b83869ca4097bd02e
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 11c9ad1e916ad7e64b59cc13c0967d2b9daed4aa
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96325966"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814634"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Batch-Dienst – Kontingente und Limits
 
@@ -33,7 +33,7 @@ Beachten Sie, dass Kontingente keine garantierten Werte darstellen. Kontingente 
 
 ### <a name="cores-quotas-in-batch-service-mode"></a>Kernkontingente im Batch-Dienstmodus
 
-Die Erzwingung dedizierter Kernkontingente wurde verbessert. Die Änderungen werden in Phasen bereitgestellt und bis Ende Dezember 2020 für alle Batch-Konten abgeschlossen.
+Die Erzwingung dedizierter Kernkontingente wurde verbessert. Die Änderungen werden in Phasen bereitgestellt und bis Ende Januar 2021 für alle Batch-Konten abgeschlossen.
 
 Kernkontingente sind für alle VM-Serien verfügbar, die von Batch unterstützt werden. Sie werden im Portal auf der Seite **Kontingente** angezeigt. Kontingentgrenzen für VM-Serien können wie unten beschrieben über eine Supportanfrage aktualisiert werden.
 
@@ -70,7 +70,7 @@ Die Poolgrößenbeschränkungen werden vom Batch-Dienst festgelegt. Im Gegensatz
 
 ## <a name="other-limits"></a>Andere Limits
 
-Zusätzliche Beschränkungen, die vom Batch-Dienst festgelegt werden. Im Gegensatz zu [Ressourcenkontingenten](#resource-quotas) können diese Werte nicht geändert werden.
+Diese zusätzlichen Beschränkungen werden vom Batch-Dienst festgelegt. Im Gegensatz zu [Ressourcenkontingenten](#resource-quotas) können diese Werte nicht geändert werden.
 
 | **Ressource** | **Maximales Limit** |
 | --- | --- |
@@ -80,6 +80,7 @@ Zusätzliche Beschränkungen, die vom Batch-Dienst festgelegt werden. Im Gegensa
 | Anwendungspakete pro Pool | 10 |
 | Maximale Lebensdauer von Tasks | 180 Tage<sup>1</sup> |
 | [Bereitstellungen](virtual-file-mount.md) pro Computeknoten | 10 |
+| Zertifikate pro Pool | 12 |
 
 <sup>1</sup> Die maximale Lebensdauer eines Tasks (vom Hinzufügen zum Auftrag bis zum Abschluss) beträgt 180 Tage. Abgeschlossene Tasks bleiben sieben Tage lang erhalten. Daten für Tasks, die nicht innerhalb der maximalen Lebensdauer abgeschlossen wurden, stehen hingegen nicht zur Verfügung.
 
@@ -91,7 +92,7 @@ So zeigen Sie die Kontingente Ihres Batch-Kontos im [Azure-Portal](https://porta
 1. Wählen Sie im Menü des Batch-Kontos die Option **Kontingente** aus.
 1. Zeigen Sie die Kontingente an, die derzeit für das Batch-Konto gelten.
 
-:::image type="content" source="./media/batch-quota-limit/account-quota-portal.png" alt-text="Batch-Kontokontingente":::
+:::image type="content" source="./media/batch-quota-limit/account-quota-portal.png" alt-text="Screenshot der Kontingente Ihres Batch-Kontos im Azure-Portal.":::
 
 ## <a name="increase-a-quota"></a>Erhöhen eines Kontingents
 
@@ -100,26 +101,26 @@ Sie können über das [Azure-Portal](https://portal.azure.com) eine Kontingenter
 1. Wählen Sie auf Ihrem Portaldashboard die Kachel **Hilfe und Support** oder das Fragezeichen ( **?** ) in der oberen rechten Ecke des Portals.
 1. Wählen Sie **Neue Supportanfrage** > **Grundlagen** aus.
 1. Gehen Sie unter **Grundlegende Einstellungen** wie folgt vor:
-   
+
     1. **Problemtyp** > **Grenzwerte für Dienste und Abonnements (Kontingente)**
-   
+
     1. Wählen Sie Ihr Abonnement aus.
-   
+
     1. **Kontingenttyp** > **Batch**
-      
+
        Wählen Sie **Weiter** aus.
-    
+
 1. Unter **Details** finden Sie folgende Informationen:
-      
+
     1. Geben Sie unter **Details angeben** den Speicherort, den Kontingenttyp und das Batch-Konto an.
-    
-       ![Erhöhen des Batch-Kontingente][quota_increase]
+
+       :::image type="content" source="media/batch-quota-limit/quota-increase.png" alt-text="Screenshot des Bildschirms mit den Details zu den Kontingenten beim Anfordern einer Kontingenterhöhung.":::
 
        Es gibt folgende Kontingenttypen:
 
        * **Pro Batch-Konto**  
          Spezifische Werte für ein einzelnes Batch-Konto, einschließlich dedizierter und mit niedriger Priorität versehener Kerne, sowie die Anzahl der Aufträge und Pools.
-        
+
        * **Pro Region**  
          Werte, die für alle Batch-Konten in einer Region gelten und die Anzahl der Batch-Konten pro Region und Abonnement beinhalten.
 
@@ -130,11 +131,11 @@ Sie können über das [Azure-Portal](https://portal.azure.com) eine Kontingenter
        Wählen Sie **Weiter** aus.
 
 1. Gehen Sie unter **Kontaktinformationen** wie folgt vor:
-   
+
     1. Wählen Sie eine **bevorzugte Kontaktmethode** aus.
-   
+
     1. Überprüfen Sie die erforderlichen Kontaktdetails, und geben Sie sie ein.
-   
+
        Wählen Sie **Erstellen** aus, um die Supportanfrage zu übermitteln.
 
 Nachdem Sie die Supportanfrage übermittelt haben, wird sich der Azure-Support mit Ihnen in Verbindung setzen. Kontingentanfragen können innerhalb weniger Minuten abgeschlossen werden oder bis zu zwei Werktage dauern.

@@ -1,19 +1,19 @@
 ---
 title: Sicherheitsfilter zum Einschränken von Ergebnissen
 titleSuffix: Azure Cognitive Search
-description: Hier finden Sie Informationen zu Sicherheitsberechtigungen auf Dokumentebene für Azure Cognitive Search-Suchergebnisse sowie zur Verwendung von Sicherheitsfiltern und Benutzeridentitäten.
+description: Hier erfahren Sie, wie Sie Sicherheitsberechtigungen auf Dokumentebene für Azure Cognitive Search-Suchergebnisse unter Verwendung von Sicherheitsfiltern und Benutzeridentitäten implementieren.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/04/2020
-ms.openlocfilehash: 8562fd1afaa01e362bd6d95fd4dcf90cf3145c5a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 12/16/2020
+ms.openlocfilehash: 8bd162fcf2011d2ccce716564763e7f54f19ff69
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88928522"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631802"
 ---
 # <a name="security-filters-for-trimming-results-in-azure-cognitive-search"></a>Sicherheitsfilter zum Einschränken von Ergebnissen in der kognitiven Azure-Suche
 
@@ -62,7 +62,7 @@ Angenommen, es gibt einen Index von gesicherten Dateien, und auf jede Datei kann
   
 Geben Sie eine HTTP POST-Anforderung an den URL-Endpunkt Ihres Indexes aus. Der Hauptteil der HTTP-Anforderung ist ein JSON-Objekt, das die Dokumente enthält, die hinzugefügt werden sollen:
 
-```
+```http
 POST https://[search service].search.windows.net/indexes/securedfiles/docs/index?api-version=2020-06-30  
 Content-Type: application/json
 api-key: [admin key]
@@ -110,17 +110,18 @@ Wenn Sie ein vorhandenes Dokument mit der Liste der Gruppen aktualisieren müsse
 ```
 
 Vollständige Details zum Hinzufügen oder Aktualisieren von Dokumenten finden Sie unter [Dokumente bearbeiten](/rest/api/searchservice/addupdate-or-delete-documents).
-   
+
 ## <a name="apply-the-security-filter"></a>Anwenden der Sicherheitsfilter
 
 Für das Kürzen von Dokumenten basierend auf dem `group_ids`-Zugriff sollten Sie eine Suchabfrage mit einem `group_ids/any(g:search.in(g, 'group_id1, group_id2,...'))`-Filter eingeben, bei der „group_id1, group_id2,...“ die Gruppen sind, zu denen der Aussteller der Suchanforderung gehört.
+
 Dieser Filter vergleicht alle Dokumente, für die das `group_ids`-Feld einen der angegebenen Bezeichner enthält.
 Vollständige Details zum Durchsuchen von Dokumenten mithilfe der kognitiven Azure-Suche finden Sie unter [Durchsuchen von Dokumenten](/rest/api/searchservice/search-documents).
 Beachten Sie, dass dieses Beispiel veranschaulicht, wie Sie Dokumente mithilfe einer POST-Anforderung durchsuchen.
 
 Geben Sie die HTTP POST-Anforderung aus:
 
-```
+```http
 POST https://[service name].search.windows.net/indexes/securedfiles/docs/search?api-version=2020-06-30
 Content-Type: application/json  
 api-key: [admin or query key]
@@ -152,12 +153,12 @@ Es sollten die Dokumente zurückgegeben werden, bei denen `group_ids` entweder �
  ]
 }
 ```
-## <a name="conclusion"></a>Zusammenfassung
 
-Auf diese Weise können Sie Ergebnisse basierend auf der Benutzeridentität und der `search.in()`-Funktion der kognitiven Azure-Suche filtern. Sie können mithilfe dieser Funktion Prinzipalbezeichner für den anfordernden Benutzer übergeben, um sie mit den Prinzipalbezeichnern zu vergleichen, die dem entsprechenden Zieldokument zugeordnet sind. Wenn eine Suchanforderung verarbeitet wird, filtert die `search.in`-Funktion die Suchergebnisse heraus, für die keiner der Prinzipale des Benutzers über Lesezugriff verfügt. Der Prinzipalbezeichner kann beispielsweise Sicherheitsgruppen, Rollen oder sogar die Identität des Benutzers darstellen.
- 
-## <a name="see-also"></a>Weitere Informationen
+## <a name="next-steps"></a>Nächste Schritte
 
-+ [Auf der Active Directory-Identität basierende Zugriffssteuerung mit Filtern der kognitiven Azure-Suche](search-security-trimming-for-azure-search-with-aad.md)
-+ [Filter in Azure Cognitive Search](search-filters.md)
-+ [Datensicherheit und Zugriffssteuerung in Vorgängen der kognitiven Azure-Suche](search-security-overview.md)
+In diesem Artikel wurde ein Muster zum Filtern von Ergebnissen auf der Grundlage der Benutzeridentität und der `search.in()`-Funktion beschrieben. Sie können mithilfe dieser Funktion Prinzipalbezeichner für den anfordernden Benutzer übergeben, um sie mit den Prinzipalbezeichnern zu vergleichen, die dem entsprechenden Zieldokument zugeordnet sind. Wenn eine Suchanforderung verarbeitet wird, filtert die `search.in`-Funktion die Suchergebnisse heraus, für die keiner der Prinzipale des Benutzers über Lesezugriff verfügt. Der Prinzipalbezeichner kann beispielsweise Sicherheitsgruppen, Rollen oder sogar die Identität des Benutzers darstellen.
+
+Um ein alternatives Muster, das auf Active Directory basiert, anzuzeigen oder erneut auf andere Sicherheitsfeatures zuzugreifen, verwenden Sie die folgenden Links.
+
+* [Sicherheitsfilter zum Einschränken von Ergebnissen mit Active Directory-Identitäten](search-security-trimming-for-azure-search-with-aad.md)
+* [Sicherheit in der kognitiven Azure-Suche](search-security-overview.md)

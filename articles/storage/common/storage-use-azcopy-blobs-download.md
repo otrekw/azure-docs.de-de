@@ -8,12 +8,12 @@ ms.date: 12/11/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: ea8300447b9aa596e8678038982771263a4c76f6
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 382adb36712fbf4bee83044c8b2d096223eb6269
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97358774"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97630036"
 ---
 # <a name="download-blobs-from-azure-blob-storage-by-using-azcopy-v10"></a>Herunterladen von Blobs aus Azure Blob Storage mithilfe AzCopy v10
 
@@ -143,7 +143,7 @@ Verwenden Sie dann den Befehl [azcopy copy](storage-ref-azcopy-copy.md) mit der 
 
 #### <a name="download-a-blob-snapshot"></a>Herunterladen einer Blobmomentaufnahme
 
-Sie können eine [Blobmomentaufnahme](/azure/storage/blobs/snapshots-overview.md) herunterladen, indem Sie auf den **DateTime**-Wert einer Blobmomentaufnahme verweisen. 
+Sie können eine [Blobmomentaufnahme](/azure/storage/blobs/snapshots-overview) herunterladen, indem Sie auf den **DateTime**-Wert einer Blobmomentaufnahme verweisen. 
 
 |    |     |
 |--------|-----------|

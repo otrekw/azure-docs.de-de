@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 669f4baa723b78b8933f3a75fc361c468f9e2df9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e3bd667bc7fce8f9fb10b852cae7a6c4ad198d75
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88002389"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97797195"
 ---
 # <a name="fslogix-profile-containers-and-azure-files"></a>FSLogix-Profilcontainer und Azure Files
 
@@ -87,7 +87,7 @@ Um sicherzustellen, dass die Windows Virtual Desktop-Umgebung gemäß Best Pract
 
 - Das Azure Files-Speicherkonto muss sich in derselben Region wie die Sitzungshost-VMs befinden.
 - Die Azure Files-Berechtigungen müssen den unter [Requirements – Profile Containers](/fslogix/fslogix-storage-config-ht) (Anforderungen – Profilcontainer) beschriebenen Berechtigungen entsprechen.
-- Jeder Hostpool muss basierend auf dem gleichen Masterimage VMs des gleichen Typ und der gleichen Größe enthalten.
+- Jede Hostpool-VM muss basierend auf dem gleichen Masterimage VMs des gleichen Typ und der gleichen Größe enthalten.
 - Jede Hostpool-VM muss sich in der gleichen Ressourcengruppe befinden, um Verwaltung, Skalierung und Aktualisierung zu unterstützen.
 - Um eine optimale Leistung zu erbringen, sollten sich die Speicherlösung und der FSLogix-Profilcontainer am gleichen Rechenzentrumsstandort befinden.
 - Das Speicherkonto mit dem Masterimage muss sich in der gleichen Region und im gleichen Abonnement befinden, in der bzw. dem die VMs bereitgestellt werden.

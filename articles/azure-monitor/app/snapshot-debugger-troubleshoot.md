@@ -3,14 +3,15 @@ title: Problembehandlung für den Azure Application Insights-Momentaufnahmedebug
 description: Dieser Artikel enthält Schritte zur Problembehandlung sowie Informationen, um Entwickler bei der Aktivierung und Verwendung des Application Insights-Momentaufnahmedebuggers zu unterstützen.
 ms.topic: conceptual
 author: cweining
+ms.author: cweining
 ms.date: 03/07/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 5dd1f799634fac223670db5c38effbe7fc29cf6f
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 3e45b5a48f9a7fb66d7539e83f385203ae371ad7
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97560898"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673551"
 ---
 # <a name="troubleshoot-problems-enabling-application-insights-snapshot-debugger-or-viewing-snapshots"></a><a id="troubleshooting"></a> Behandeln von Problemen beim Aktivieren des Application Insights-Momentaufnahmedebuggers oder Anzeigen von Momentaufnahmen
 Wenn Sie den Application Insights-Momentaufnahmedebugger für Ihre Anwendung aktiviert haben, aber keine Momentaufnahmen für Ausnahmen angezeigt werden, können Sie diese Anweisungen zur Problembehandlung verwenden.
@@ -70,7 +71,7 @@ Sie können die Statusseite dieser Erweiterung unter der folgenden URL überprü
 > Die Domäne des Links zur Statusseite hängt von der Cloud ab.
 Diese Domäne ist mit der Kudu-Verwaltungswebsite für App Service identisch.
 
-Auf dieser Statusseite wird der Installationsstatus von Profiler und den Snapshot Collector-Agents angezeigt. Wenn ein unerwarteter Fehler aufgetreten ist, wird er zusammen mit Vorschlägen zur Behebung angezeigt.
+Auf dieser Statusseite wird der Installationsstatus von Profiler und den Snapshot Collector-Agents angezeigt. Wenn ein unerwarteter Fehler aufgetreten ist, wird er zusammen mit Vorschlägen zur Behebung angezeigt.
 
 Sie können die Kudu-Verwaltungswebsite für App Service dazu verwenden, die Basis-URL dieser Statusseite abzurufen:
 1. Öffnen Sie im Azure-Portal Ihre App Service-Anwendung.
