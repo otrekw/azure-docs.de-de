@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/08/2019
 ms.author: mlottner
-ms.openlocfilehash: 74e0e8daa662f4dd49f1886972236b5b0a3b100a
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 3e48ed870bf405a82441678b5e8c01d199e7ebff
+ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348856"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97835005"
 ---
 # <a name="quickstart-create-an-azureiotsecurity-module-twin"></a>Schnellstart: Erstellen eines Azure IoT-Sicherheitsmodulzwillings
 
@@ -65,10 +65,10 @@ Verwenden Sie die folgende Anleitung, um für ein Gerät manuell einen neuen _az
 
 1. Wählen Sie auf Ihrer Azure IoT Hub-Instanz im Menü **Explorer** die Option **IoT-Geräte**.
 1. Geben Sie die Geräte-ID ein, oder wählen Sie im Feld **Gerät abfragen** eine Option aus, und klicken Sie auf **Geräte abfragen**.
-    ![Geräte abfragen](./media/quickstart/verify-security-module-twin.png)
+    :::image type="content" source="./media/quickstart/verify-security-module-twin.png" alt-text="Geräte abfragen":::
 1. Wählen Sie das Gerät aus, oder doppelklicken Sie darauf, um die Seite „Gerätedetails“ zu öffnen.
 1. Wählen Sie das Menü **Modulidentitäten** aus, und bestätigen Sie das Vorhandensein des Moduls **azureiotsecurity** in der Liste mit den Modulidentitäten, die dem Gerät zugeordnet sind.
-    ![Einem Gerät zugeordnete Module](./media/quickstart/verify-security-module-twin-3.png)
+    :::image type="content" source="./media/quickstart/verify-security-module-twin-3.png" alt-text="Einem Gerät zugeordnete Module":::
 
 Weitere Informationen zum Anpassen der Eigenschaften von Modulzwillingen für Defender für IoT finden Sie unter [Tutorial: Konfigurieren von Sicherheits-Agents](how-to-agent-configuration.md).
 

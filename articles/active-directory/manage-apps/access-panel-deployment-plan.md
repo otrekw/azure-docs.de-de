@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/27/2019
+ms.date: 12/31/2020
 ms.author: kenwith
-ms.openlocfilehash: 7edb7b498450625faf90f0601e19745ad632635a
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 209760b51e0f3ab931fa43ef88406f15c75ac079
+ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94835661"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97832538"
 ---
 # <a name="plan-an-azure-active-directory-my-apps-deployment"></a>Planen einer Bereitstellung von „Meine Apps“ in Azure Active Directory
 

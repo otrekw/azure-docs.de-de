@@ -110,6 +110,8 @@
       href: tutorial-security-incident.md
     - name: Verbessern der Einhaltung gesetzlicher Vorschriften
       href: security-center-compliance-dashboard.md
+    - name: Verwalten von Sicherheitsrichtlinien
+      href: tutorial-security-policy.md
 - name: Konzepte
   items:
     - name: Verwaltung des Cloudsicherheitsstatus
@@ -120,11 +122,6 @@
           href: secure-score-security-controls.md
         - name: Übersicht über Sicherheitsempfehlungen
           href: security-center-recommendations.md
-        - name: Übersicht über Sicherheitsrichtlinien
-          href: tutorial-security-policy.md
-        - name: Integrierte Sicherheitsrichtlinien
-          displayName: 'samples, policy'
-          href: ./policy-reference.md
         - name: Verwenden von Empfehlungen zur Verbesserung der Sicherheit
           href: security-center-using-recommendations.md
         - name: Sicherheitsbaseline
@@ -224,14 +221,9 @@
         - name: Härten Ihrer Docker-Hosts
           displayName: containers
           href: harden-docker-hosts.md
-    - name: Verwenden von Azure Defender für SQL
-      items:
-        - name: Konfigurieren von Azure Defender für SQL auf Azure-VMs
+        - name: Verwenden von Azure Defender für SQL
           href: defender-for-sql-usage.md
           displayName: 'hybrid, arc'
-        - name: Anpassen der Information Protection-Richtlinie für SQL
-          displayName: 'sql, database, data discovery'
-          href: security-center-info-protection-policy.md
     - name: Verwenden von Azure Defender für Containerregistrierungen
       items:
         - name: Überprüfen Ihrer Registrierungsimages auf Sicherheitsrisiken
@@ -281,6 +273,9 @@
       href: security-center-investigation-user-data.md
     - name: Erreichen von mandantenweiter Transparenz
       href: security-center-management-groups.md
+    - name: Anpassen der Information Protection-Richtlinie für SQL
+      displayName: 'sql, database, data discovery'
+      href: security-center-info-protection-policy.md
 - name: Verweis
   items:
     - name: REST-APIs
@@ -297,6 +292,9 @@
           href: faq-vms.md
         - name: Vorhandene Benutzer von Azure Log Analytics
           href: faq-azure-monitor-logs.md
+    - name: Integrierte Sicherheitsrichtlinien
+      displayName: 'samples, policy'
+      href: policy-reference.md
     - name: 'Azure-Roadmap: Blog'
       href: 'https://azure.microsoft.com/updates/?product=security-center'
     - name: 'Endpoint Protection: Bewertung und Empfehlungen'
