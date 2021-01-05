@@ -3,17 +3,17 @@ title: Telemetrie-, Eigenschaften- und Befehlsnutzlasten in Azure IoT Central | 
 description: Mithilfe von Azure IoT Central-Gerätevorlagen können Sie die Telemetriedaten, Eigenschaften und Befehle angeben, die ein Gerät implementieren muss. Hier erfahren Sie Grundlegendes zum Format der Daten, die ein Gerät mit IoT Central austauschen kann.
 author: dominicbetts
 ms.author: dobett
-ms.date: 11/05/2020
+ms.date: 12/19/2020
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: 5b1bbce68be19c2dbb08f7d69611b719b450a370
-ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
+ms.openlocfilehash: c29af68433f29d7bdd363bedfa6d36316b952f4c
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96121762"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97795342"
 ---
 # <a name="telemetry-property-and-command-payloads"></a>Telemetrie-, Eigenschaften- und Befehlsnutzlasten
 

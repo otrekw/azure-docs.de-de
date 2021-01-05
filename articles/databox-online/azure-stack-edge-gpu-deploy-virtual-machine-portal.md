@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 11/02/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro device so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: 89ef196cb5a124b8b1100871c408400f3fceef5c
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 04ba9777fe9e8470e6f02c83f3996d098023e05e
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96465431"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97763454"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-the-azure-portal"></a>Bereitstellen von VMs auf einem Azure Stack Edge Pro-GPU-Gerät über das Azure-Portal
 
@@ -123,7 +123,7 @@ Führen Sie diese Schritte aus, um eine VM zu erstellen, nachdem Sie ein VM-Imag
     |---------|---------|
     |Name des virtuellen Computers     |         |
     |Image     | Wählen Sie aus den VM-Images aus, die auf dem Gerät verfügbar sind.        |
-    |Size     | Wählen Sie aus den [Unterstützten VM-Größen](azure-stack-edge-gpu-deploy-virtual-machine-templates.md#supported-vm-sizes) aus.        |
+    |Size     | Wählen Sie aus den [Unterstützten VM-Größen](azure-stack-edge-gpu-virtual-machine-sizes.md) aus.        |
     |Username     | Verwenden Sie den Standardbenutzernamen *azureuser*.        |
     |Authentifizierungsart    | Wählen Sie einen öffentlichen SSH-Schlüssel oder ein benutzerdefiniertes Kennwort aus.       |
     |Kennwort     | Geben Sie ein Kennwort ein, um sich beim virtuellen Computer anzumelden. Das Kennwort muss mindestens zwölf Zeichen lang sein und die definierten [Komplexitätsanforderungen](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm) erfüllen.        |

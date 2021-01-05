@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: f8b555c4022fcf2532a7350839d2357c96562f4c
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 18d36e37554a5d2b37488b7a1525f8290dc03da0
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791850"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97763267"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Microsoft Azure-Speicher: Überwachung, Diagnose und Problembehandlung
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -120,11 +120,10 @@ Sie können das [Azure-Portal](https://portal.azure.com) verwenden, um die Integ
 
 Das [Azure-Portal](https://portal.azure.com) kann auch Benachrichtigungen zu Vorfällen bereitstellen, die die verschiedenen Azure-Dienste beeinträchtigen.
 Hinweis: Diese Informationen waren bisher, zusammen mit Verlaufsdaten, auf dem [Azure-Dienstdashboard](https://status.azure.com)verfügbar.
-
-Während das [Azure-Portal](https://portal.azure.com) Zustandsinformationen innerhalb der Azure-Rechenzentren (Inside-out-Überwachung) sammelt, könnten Sie auch einen Outside-in-Ansatz in Erwägung ziehen, um synthetische Transaktionen zu generieren, die in regelmäßigen Abständen von mehreren Standorten aus auf Ihre in Azure gehostete Webanwendung zugreifen. Die von [Dynatrace](https://www.dynatrace.com/en/synthetic-monitoring) und Application Insights für Azure DevOps angebotenen Dienste sind Beispiele für diesen Ansatz. Weitere Informationen zu Application Insights für Azure DevOps finden Sie in [Anhang 5: Überwachung mit Application Insights für Azure DevOps](#appendix-5).
+Weitere Informationen zu Application Insights für Azure DevOps finden Sie in [Anhang 5: Überwachung mit Application Insights für Azure DevOps](#appendix-5).
 
 ### <a name="monitoring-capacity"></a><a name="monitoring-capacity"></a>Kapazitätsüberwachung
-Speichermetriken speichern nur Kapazitätsmetriken für den Blob-Dienst, weil Blobs in der Regel den größten Teil der gespeicherten Daten ausmachen. (Es ist zum Redaktionszeitpunkt nicht möglich, Speichermetriken zu verwenden, um die Kapazität Ihrer Tabellen und Warteschlangen zu überwachen.) Sie finden diese Daten in der Tabelle **$MetricsCapacityBlob** , wenn Sie die Überwachung für den Blob-Dienst aktiviert haben. Speichermetriken zeichnen diese Daten einmal täglich auf, und Sie können anhand des Wert von **RowKey** bestimmen, ob die Zeile eine Entität enthält, die sich auf Benutzerdaten (Wert **data** ) oder Analysedaten (Wert **analytics** ) bezieht. Jede gespeicherte Entität enthält Informationen zum verwendeten Speicheranteil ( **Capacity** , gemessen in Bytes) sowie zur aktuellen Anzahl von Containern ( **ContainerCount** ) und Blobs ( **ObjectCount** ) im Speicherkonto. Weitere Informationen über die in der Tabelle **$MetricsCapacityBlob** gespeicherten Kapazitätsmetriken finden Sie unter [Tabellenschema der Speicher-Analytikmetriken](/rest/api/storageservices/Storage-Analytics-Metrics-Table-Schema).
+Speichermetriken speichern nur Kapazitätsmetriken für den Blob-Dienst, weil Blobs in der Regel den größten Teil der gespeicherten Daten ausmachen. (Es ist zum Redaktionszeitpunkt nicht möglich, Speichermetriken zu verwenden, um die Kapazität Ihrer Tabellen und Warteschlangen zu überwachen.) Sie finden diese Daten in der Tabelle **$MetricsCapacityBlob** , wenn Sie die Überwachung für den Blob-Dienst aktiviert haben. Speichermetriken zeichnen diese Daten einmal täglich auf, und Sie können anhand des Wert von **RowKey** bestimmen, ob die Zeile eine Entität enthält, die sich auf Benutzerdaten (Wert **data**) oder Analysedaten (Wert **analytics**) bezieht. Jede gespeicherte Entität enthält Informationen zum verwendeten Speicheranteil (**Capacity**, gemessen in Bytes) sowie zur aktuellen Anzahl von Containern (**ContainerCount**) und Blobs (**ObjectCount**) im Speicherkonto. Weitere Informationen über die in der Tabelle **$MetricsCapacityBlob** gespeicherten Kapazitätsmetriken finden Sie unter [Tabellenschema der Speicher-Analytikmetriken](/rest/api/storageservices/Storage-Analytics-Metrics-Table-Schema).
 
 > [!NOTE]
 > Sie sollten diese Werte überwachen, um früh zu erkennen, dass Sie sich den Kapazitätsgrenzen Ihres Speicherkontos nähern. Im Azure-Portal können Sie Warnregeln hinzufügen, um benachrichtigt zu werden, wenn die Gesamtspeichernutzung die von Ihnen festgelegten Grenzwerte über- oder unterschreitet.
@@ -134,9 +133,9 @@ Speichermetriken speichern nur Kapazitätsmetriken für den Blob-Dienst, weil Bl
 Hilfe für die Schätzung der Größe der verschiedenen Speicherobjekte wie Blobs finden Sie im Blogbeitrag [Microsoft Azure-Speicherabrechnung verstehen – Bandbreite, Transaktionen und Kapazität](/archive/blogs/patrick_butler_monterde/azure-storage-understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity).
 
 ### <a name="monitoring-availability"></a><a name="monitoring-availability"></a>Verfügbarkeitsüberwachung
-Sie sollten die Verfügbarkeit des Speicherdiensts in Ihrem Speicherkonto überwachen, indem Sie in den Tabellen für Stunden- oder Minutenmetriken den Wert in der Spalte **Availability** überwachen: **$MetricsHourPrimaryTransactionsBlob** , **$MetricsHourPrimaryTransactionsTable** , **$MetricsHourPrimaryTransactionsQueue** , **$MetricsMinutePrimaryTransactionsBlob** , **$MetricsMinutePrimaryTransactionsTable** , **$MetricsMinutePrimaryTransactionsQueue** , **$MetricsCapacityBlob** . Die Spalte **Availability** enthält einen Prozentwert, der die Verfügbarkeit des Diensts oder API-Vorgangs in der jeweiligen Zeile darstellt. (Der Wert von **RowKey** gibt Aufschluss darüber, ob die Zeile allgemeine Metriken für den Dienst oder Metriken für einen bestimmten API-Vorgang enthält.)
+Sie sollten die Verfügbarkeit des Speicherdiensts in Ihrem Speicherkonto überwachen, indem Sie in den Tabellen für Stunden- oder Minutenmetriken den Wert in der Spalte **Availability** überwachen: **$MetricsHourPrimaryTransactionsBlob**, **$MetricsHourPrimaryTransactionsTable**, **$MetricsHourPrimaryTransactionsQueue**, **$MetricsMinutePrimaryTransactionsBlob**, **$MetricsMinutePrimaryTransactionsTable**, **$MetricsMinutePrimaryTransactionsQueue**, **$MetricsCapacityBlob**. Die Spalte **Availability** enthält einen Prozentwert, der die Verfügbarkeit des Diensts oder API-Vorgangs in der jeweiligen Zeile darstellt. (Der Wert von **RowKey** gibt Aufschluss darüber, ob die Zeile allgemeine Metriken für den Dienst oder Metriken für einen bestimmten API-Vorgang enthält.)
 
-Jeder unter 100 % liegende Wert zeigt an, dass einige Speicheranfragen fehlschlagen. Zur Ermittlung der Fehlerursache können Sie die anderen Spalten in den Metrikdaten untersuchen, in denen die Anzahl von Anfragen mit verschiedenen Fehlerarten (beispielsweise **ServerTimeoutError** ) angezeigt wird. Aufgrund von vorübergehenden Servertimeouts, die beispielsweise auftreten können, wenn der Server Partitionen verschiebt, um eine bessere Lastverteilung der Anforderungen zu erreichen, ist mit dem vorübergehenden Absinken der **Verfügbarkeit** auf unter 100 Prozent zu rechnen. Solche zeitweiligen Bedingungen sollten von der Wiederholungslogik in Ihrer Clientanwendung behandelt werden. Im Artikel [Protokollierte Speicheranalysevorgänge und Statusmeldungen](/rest/api/storageservices/Storage-Analytics-Logged-Operations-and-Status-Messages) sind die Transaktionsarten aufgeführt, die die Speichermetriken in ihrer Berechnung der **Verfügbarkeit** enthalten.
+Jeder unter 100 % liegende Wert zeigt an, dass einige Speicheranfragen fehlschlagen. Zur Ermittlung der Fehlerursache können Sie die anderen Spalten in den Metrikdaten untersuchen, in denen die Anzahl von Anfragen mit verschiedenen Fehlerarten (beispielsweise **ServerTimeoutError**) angezeigt wird. Aufgrund von vorübergehenden Servertimeouts, die beispielsweise auftreten können, wenn der Server Partitionen verschiebt, um eine bessere Lastverteilung der Anforderungen zu erreichen, ist mit dem vorübergehenden Absinken der **Verfügbarkeit** auf unter 100 Prozent zu rechnen. Solche zeitweiligen Bedingungen sollten von der Wiederholungslogik in Ihrer Clientanwendung behandelt werden. Im Artikel [Protokollierte Speicheranalysevorgänge und Statusmeldungen](/rest/api/storageservices/Storage-Analytics-Logged-Operations-and-Status-Messages) sind die Transaktionsarten aufgeführt, die die Speichermetriken in ihrer Berechnung der **Verfügbarkeit** enthalten.
 
 Im [Azure-Portal](https://portal.azure.com) können Sie Warnregeln hinzufügen, um benachrichtigt zu werden, wenn die **Verfügbarkeit** den von Ihnen festgelegten Grenzwert unterschreitet.
 
@@ -183,7 +182,7 @@ Nachdem Sie anhand der Messdaten ermittelt haben, wo die mögliche Ursache des L
 Die [Anleitungen zur Problembehandlung] weiter unten liefern weitere Informationen zu einigen bekannten leistungsbezogenen Problemen, die auftreten können.
 
 ### <a name="diagnosing-errors"></a><a name="diagnosing-errors"></a>Fehlerdiagnose
-Benutzer Ihrer Anwendung können Sie über Fehler informieren, die von der Clientanwendung gemeldet werden. Speichermetriken erfassen auch die Anzahl verschiedener Fehlerarten in Ihren Speicherdiensten (beispielsweise wie **NetworkError** , **ClientTimeoutError** oder **AuthorizationError** ). Während Speichermetriken nur die Anzahl der verschiedenen Fehlerarten verzeichnen, können Sie durch die Untersuchung von Serverseite, Clientseite und Netzwerkprotokollen weitere Informationen zu Einzelanfragen erhalten. In der Regel liefert der vom Speicherdienst zurückgegebene HTTP-Statuscode einen Hinweis auf den Grund für das Scheitern der Anfrage.
+Benutzer Ihrer Anwendung können Sie über Fehler informieren, die von der Clientanwendung gemeldet werden. Speichermetriken erfassen auch die Anzahl verschiedener Fehlerarten in Ihren Speicherdiensten (beispielsweise wie **NetworkError**, **ClientTimeoutError** oder **AuthorizationError**). Während Speichermetriken nur die Anzahl der verschiedenen Fehlerarten verzeichnen, können Sie durch die Untersuchung von Serverseite, Clientseite und Netzwerkprotokollen weitere Informationen zu Einzelanfragen erhalten. In der Regel liefert der vom Speicherdienst zurückgegebene HTTP-Statuscode einen Hinweis auf den Grund für das Scheitern der Anfrage.
 
 > [!NOTE]
 > Denken Sie daran, dass Sie mit einigen intermittierenden Fehlern rechnen müssen, beispielsweise Fehler aufgrund von vorübergehenden Netzwerkbedingungen oder Anwendungsfehler.
@@ -260,9 +259,9 @@ Im folgenden Codebeispiel wird die Verwendung einer benutzerdefinierten Clientan
 
 # <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
-Wenn die Speicherclientbibliothek im Client eine Speicherausnahme ( **StorageException** ) ausgibt, enthält die Eigenschaft **RequestInformation** ein Objekt vom Typ **RequestResult** mit einer Eigenschaft vom Typ **ServiceRequestID** . Auf ein Objekt vom Typ **RequestResult** kann auch über eine **OperationContext** -Instanz zugegriffen werden.
+Wenn die Speicherclientbibliothek im Client eine Speicherausnahme (**StorageException**) ausgibt, enthält die Eigenschaft **RequestInformation** ein Objekt vom Typ **RequestResult** mit einer Eigenschaft vom Typ **ServiceRequestID**. Auf ein Objekt vom Typ **RequestResult** kann auch über eine **OperationContext**-Instanz zugegriffen werden.
 
-Das folgende Codebeispiel zeigt, wie zum Festlegen eines benutzerdefinierten Werts vom Typ **ClientRequestId** ein **OperationContext** -Objekt mit dem Speicherdienst verknüpft wird. Es zeigt auch, wie der Wert **ServerRequestId** aus der Antwortnachricht abgerufen werden kann.
+Das folgende Codebeispiel zeigt, wie zum Festlegen eines benutzerdefinierten Werts vom Typ **ClientRequestId** ein **OperationContext**-Objekt mit dem Speicherdienst verknüpft wird. Es zeigt auch, wie der Wert **ServerRequestId** aus der Antwortnachricht abgerufen werden kann.
 
 ```csharp
 //Parse the connection string for the storage account.
@@ -362,7 +361,7 @@ Der Speicherdienst berechnet die Metrik **AverageE2ELatency** nur für erfolgrei
 #### <a name="investigating-client-performance-issues"></a>Untersuchung von Clientleistungsproblemen
 Mögliche Gründe für eine langsame Clientreaktion sind z. B. eine begrenzte Anzahl verfügbarer Verbindungen oder Threads oder begrenzte Ressourcen wie CPU, Arbeitsspeicher oder Netzwerkbandbreite. Möglicherweise können Sie das Problem lösen, indem Sie den Clientcode zugunsten einer höheren Effizienz ändern (z. B. durch Verwendung von asynchronen Aufrufen an den Speicherdienst) oder indem Sie einen größeren virtuellen Computer (mit mehr Kernen und mehr Arbeitsspeicher) verwenden.
 
-Für den Tabellen- und Warteschlangendienst kann der Nagle-Algorithmus auch höhere **AverageE2ELatency** -Werte verglichen mit **AverageServerLatency** verursachen: Weitere Informationen finden Sie im Beitrag [Nagle's Algorithm is Not Friendly towards Small Requests](/archive/blogs/windowsazurestorage/nagles-algorithm-is-not-friendly-towards-small-requests) (Nagle-Algorithmus geht nicht freundlich mit kleinen Anfragen um). Sie können den Nagle-Algorithmus im Code deaktivieren, indem Sie die Klasse **ServicePointManager** im **System.Net** -Namespace verwenden. Sie sollten dies tun, bevor Sie Aufrufe an die Tabellen- oder Warteschlangendienste in Ihrer Anwendung senden, da dies keinen Einfluss auf die bereits offenen Verbindungen hat. Das folgende Beispiel stammt aus der Methode **Application_Start** in einer Workerrolle.
+Für den Tabellen- und Warteschlangendienst kann der Nagle-Algorithmus auch höhere **AverageE2ELatency**-Werte verglichen mit **AverageServerLatency** verursachen: Weitere Informationen finden Sie im Beitrag [Nagle's Algorithm is Not Friendly towards Small Requests](/archive/blogs/windowsazurestorage/nagles-algorithm-is-not-friendly-towards-small-requests) (Nagle-Algorithmus geht nicht freundlich mit kleinen Anfragen um). Sie können den Nagle-Algorithmus im Code deaktivieren, indem Sie die Klasse **ServicePointManager** im **System.Net**-Namespace verwenden. Sie sollten dies tun, bevor Sie Aufrufe an die Tabellen- oder Warteschlangendienste in Ihrer Anwendung senden, da dies keinen Einfluss auf die bereits offenen Verbindungen hat. Das folgende Beispiel stammt aus der Methode **Application_Start** in einer Workerrolle.
 
 # <a name="net-v12"></a>[.NET v12](#tab/dotnet)
 
@@ -459,14 +458,14 @@ Ihre Metriken zeigen einen Anstieg bei **PercentTimeoutError** für einen Ihrer 
 >
 >
 
-Die Metrik **PercentTimeoutError** ist eine Aggregation der folgenden Metriken: **ClientTimeoutError** , **AnonymousClientTimeoutError** , **SASClientTimeoutError** , **ServerTimeoutError** , **AnonymousServerTimeoutError** und **SASServerTimeoutError** .
+Die Metrik **PercentTimeoutError** ist eine Aggregation der folgenden Metriken: **ClientTimeoutError**, **AnonymousClientTimeoutError**, **SASClientTimeoutError**, **ServerTimeoutError**, **AnonymousServerTimeoutError** und **SASServerTimeoutError**.
 
 Die Server-Timeouts werden durch einen Fehler auf dem Server verursacht. Clienttimeouts treten auf, wenn ein Vorgang auf dem Server das vom Client angegebene Timeout überschritten hat. Beispiel: Ein Client, der die Speicherclientbibliothek verwendet, kann mithilfe der Eigenschaft **ServerTimeout** der Klasse **QueueRequestOptions** ein Timeout für einen Vorgang festlegen.
 
 Server-Timeouts zeigen ein Problem mit dem Speicherdienst an, das weitere Untersuchung erfordert. Sie können Metriken verwenden, um zu überprüfen, ob Sie die Skalierbarkeitsgrenzen für den Dienst erreichen, und alle Verkehrsspitzen zu identifizieren, die dieses Problem verursachen könnten. Wenn das Problem periodisch auftritt, kann es durch Lastenausgleich im Dienst verursacht sein. Wenn das Problem anhält und nicht dadurch verursacht wird, dass Ihre Anwendung die Dienst-Skalierbarkeitsgrenzen erreicht, sollten Sie eine Support-Problemstellung eröffnen. In Bezug auf Client-Timeouts müssen Sie entscheiden, ob das Zeitlimit auf einen angemessenen Wert im Client festgelegt ist und entweder den im Client eingestellten Timeout-Wert ändern oder untersuchen, wie Sie die Leistung des Speicherdiensts verbessern können – beispielsweise durch die Optimierung Ihrer Tabellenabfragen oder die Reduzierung der Größe Ihrer Nachrichten.
 
 ### <a name="metrics-show-an-increase-in-percentnetworkerror"></a><a name="metrics-show-an-increase-in-PercentNetworkError"></a>Metriken zeigen Anstieg bei PercentNetworkError an
-Ihre Metriken zeigen einen Anstieg bei **PercentNetworkError** für einen Ihrer Speicherdienste an. Die Metrik **PercentNetworkError** ist eine Aggregation der folgenden Metriken: **NetworkError** , **AnonymousNetworkError** und **SASNetworkError** . Diese treten auf, wenn der Speicherdienst bei einer Speicheranfrage des Client einen Netzwerkfehler entdeckt.
+Ihre Metriken zeigen einen Anstieg bei **PercentNetworkError** für einen Ihrer Speicherdienste an. Die Metrik **PercentNetworkError** ist eine Aggregation der folgenden Metriken: **NetworkError**, **AnonymousNetworkError** und **SASNetworkError**. Diese treten auf, wenn der Speicherdienst bei einer Speicheranfrage des Client einen Netzwerkfehler entdeckt.
 
 Die häufigste Ursache für diesen Fehler ist eine Trennung der Client-Verbindung vor Ablauf eines Timeouts im Speicherdienst. Untersuchen Sie den Code in Ihrem Client, um herauszufinden, warum und wann der Client die Verbindung zum Speicherdienst abbricht. Sie können auch Wireshark oder TCPing verwenden, um Netzwerkverbindungsprobleme über den Client zu untersuchen. Die Beschreibung dieser Tools finden Sie in den [Anhänge].
 
@@ -489,7 +488,7 @@ In diesem Szenario sollten Sie untersuchen, warum der SAS-Token abläuft, bevor 
 
 * In der Regel sollten Sie keine Startzeit festlegen, wenn Sie eine SAS für einen Client zur sofortigen Verwendung erstellen. Wenn es kleine Zeitunterschiede zwischen dem die SAS generierenden Host und dem Speicherdienst gibt, kann der Speicherdienst eine noch nicht gültige SAS empfangen.
 * Stellen Sie keine sehr kurze Ablaufzeit für eine SAS ein. Auch hier können kleine Zeitunterschiede zwischen dem die SAS generierenden Host und dem Speicherdienst dazu führen, dass eine SAS scheinbar früher als erwartet abläuft.
-* Stimmt der Versionsparameter im SAS-Schlüssel (zum Beispiel **sv=2015-04-05** ) mit der von Ihnen verwendeten Version der Speicher-Clientbibliothek überein? Sie sollten immer die neueste Version der [Speicherclientbibliothek](https://www.nuget.org/packages/WindowsAzure.Storage/) verwenden.
+* Stimmt der Versionsparameter im SAS-Schlüssel (zum Beispiel **sv=2015-04-05**) mit der von Ihnen verwendeten Version der Speicher-Clientbibliothek überein? Sie sollten immer die neueste Version der [Speicherclientbibliothek](https://www.nuget.org/packages/WindowsAzure.Storage/) verwenden.
 * Wenn Sie Ihren Speicherzugriffsschlüssel neu erstellen, können dadurch vorhandene SAS-Token ungültig werden. Dieses Problem kann auftreten, wenn Sie SAS-Token mit einer langen Ablaufzeit zum Cachen von Clientanwendungen generieren.
 
 Wenn Sie die Speicher-Clientbibliothek verwenden, um SAS-Token zu erstellen, ist es einfach, einen gültigen Token anzulegen. Wenn Sie allerdings die Speicher-REST-API verwenden und die SAS-Token manuell anlegen, sollten Sie sorgfältig das Thema [Delegating Access with a Shared Access Signature](/rest/api/storageservices/delegate-access-with-shared-access-signature) (Zugriffsdelegierung mit einer Shared Access Signature) lesen.
@@ -633,12 +632,12 @@ Zu den Ausnahmedetails im Client gehört die vom Tabellenspeicherdienst zugewies
 
 Das serverseitige Protokoll enthält noch einen anderen Eintrag mit dem gleichen Wert für **client-request-id** (813ea74f…). Bei diesem handelt es sich um einen erfolgreichen Löschvorgang für die gleiche Entität (vom gleichen Client). Dieser erfolgreiche Löschvorgang erfolgte unmittelbar vor der fehlgeschlagenen Löschanfrage.
 
-Die wahrscheinlichste Ursache dieses Szenarios ist, dass der Client eine Löschanforderung für die Entität an den Tabellendienst gesendet hat, die erfolgreich war, für die er jedoch keine Bestätigung vom Server empfangen hat (vielleicht aufgrund eines temporären Netzwerkproblems). Der Client hat den Vorgang dann automatisch wiederholt (unter Verwendung derselben **Clientanfrage-ID** ), und diese Wiederholung ist fehlgeschlagen, weil die Entität bereits gelöscht wurde.
+Die wahrscheinlichste Ursache dieses Szenarios ist, dass der Client eine Löschanforderung für die Entität an den Tabellendienst gesendet hat, die erfolgreich war, für die er jedoch keine Bestätigung vom Server empfangen hat (vielleicht aufgrund eines temporären Netzwerkproblems). Der Client hat den Vorgang dann automatisch wiederholt (unter Verwendung derselben **Clientanfrage-ID**), und diese Wiederholung ist fehlgeschlagen, weil die Entität bereits gelöscht wurde.
 
 Wenn dieses Problem häufig auftritt, sollten Sie untersuchen, warum der Client keine Bestätigungen aus dem Tabellendienst erhält. Wenn das Problem intermittierend ist, sollten Sie den Fehler "HTTP (404) Nicht gefunden" eingrenzen und im Client protokollieren, aber dem Client die Fortführung erlauben.
 
 ### <a name="the-client-is-receiving-http-409-conflict-messages"></a><a name="the-client-is-receiving-409-messages"></a>Der Client empfängt HTTP 409 (Konflikt)-Meldungen
-Die folgende Tabelle enthält einen Auszug aus dem serverseitigen Protokoll für zwei Clientvorgänge: **DeleteIfExists** , unmittelbar gefolgt von **CreateIfNotExists** unter Verwendung des gleichen Blobcontainernamens. Jeder Clientvorgang führt zu zwei an den Server gesendeten Anforderungen: **GetContainerProperties** (um zu prüfen, ob der Container vorhanden ist) und anschließend entweder **DeleteContainer** oder **CreateContainer** .
+Die folgende Tabelle enthält einen Auszug aus dem serverseitigen Protokoll für zwei Clientvorgänge: **DeleteIfExists**, unmittelbar gefolgt von **CreateIfNotExists** unter Verwendung des gleichen Blobcontainernamens. Jeder Clientvorgang führt zu zwei an den Server gesendeten Anforderungen: **GetContainerProperties** (um zu prüfen, ob der Container vorhanden ist) und anschließend entweder **DeleteContainer** oder **CreateContainer**.
 
 | Timestamp | Vorgang | Ergebnis | Containername | Clientanfrage-ID |
 | --- | --- | --- | --- | --- |
@@ -657,8 +656,8 @@ Die **PercentSuccess** -Metrik erfasst den Prozentsatz der erfolgreichen Vorgän
 Es ist wichtig zu beachten, dass diese Vorgänge erfolgreich abgeschlossen wurden und somit keinen Einfluss auf andere Metriken wie die Verfügbarkeit haben. Hier sind einige Beispiele für Vorgänge, die erfolgreich ausgeführt werden, aber zu erfolglosen HTTP-Statuscodes führen:
 
 * **ResourceNotFound** (Nicht Gefunden, 404), beispielsweise von einer GET-Anfrage an ein nicht existierendes Blob
-* **ResourceAlreadyExists** (Konflikt, 409), beispielsweise von einem Vorgang des Typs **CreateIfNotExist** , wenn die Ressource bereits vorhanden ist.
-* **ConditionNotMet** (Nicht geändert, 304), beispielsweise von einem bedingten Vorgang, bei dem ein Client einen **ETag** -Wert und einen HTTP-Header vom Typ **If-None-Match** sendet, um ein Image nur dann anzufordern, wenn es seit dem letzten Vorgang aktualisiert wurde.
+* **ResourceAlreadyExists** (Konflikt, 409), beispielsweise von einem Vorgang des Typs **CreateIfNotExist**, wenn die Ressource bereits vorhanden ist.
+* **ConditionNotMet** (Nicht geändert, 304), beispielsweise von einem bedingten Vorgang, bei dem ein Client einen **ETag**-Wert und einen HTTP-Header vom Typ **If-None-Match** sendet, um ein Image nur dann anzufordern, wenn es seit dem letzten Vorgang aktualisiert wurde.
 
 Eine Liste bekannter REST API-Fehlercodes, die von den Speicherdiensten zurückgegeben werden, finden Sie auf der Seite [Bekannte REST API-Fehlercodes](/rest/api/storageservices/Common-REST-API-Error-Codes).
 
@@ -746,11 +745,11 @@ Das folgende Verfahren zeigt, wie Sie detaillierte Paketinformationen für Daten
 
 1. Starten Sie Wireshark auf Ihrem lokalen Computer.
 2. Wählen Sie im Abschnitt **Start** die lokale Netzwerkschnittstelle oder mit dem Internet verbundene Schnittstellen aus.
-3. Klicken Sie auf **Capture Options** .
-4. Fügen Sie einen Filter zum Textfeld **Capture Filter** hinzu. Beispielsweise wird Wireshark durch **host contosoemaildist.table.core.windows.net** so konfiguriert, dass nur Pakete erfasst werden, die an den Tabellenspeicherdienst-Endpunkt im **contosoemaildist** -Speicherkonto oder von diesem Tabellenspeicherdienst-Endpunkt gesendet werden. Sehen Sie sich die [vollständige Liste der Erfassungsfilter](https://wiki.wireshark.org/CaptureFilters)an.
+3. Klicken Sie auf **Capture Options**.
+4. Fügen Sie einen Filter zum Textfeld **Capture Filter** hinzu. Beispielsweise wird Wireshark durch **host contosoemaildist.table.core.windows.net** so konfiguriert, dass nur Pakete erfasst werden, die an den Tabellenspeicherdienst-Endpunkt im **contosoemaildist**-Speicherkonto oder von diesem Tabellenspeicherdienst-Endpunkt gesendet werden. Sehen Sie sich die [vollständige Liste der Erfassungsfilter](https://wiki.wireshark.org/CaptureFilters)an.
 
    ![Screenshot, der zeigt, wie Sie einen Filter zum Textfeld „Erfassungsfilter“ hinzufügen.][6]
-5. Klicken Sie auf **Start** . Wireshark wird nun alle an oder aus dem Tabellendienstendpunkt gesendeten Pakete erfassen, wenn Sie Ihre Clientanwendung auf dem lokalen Computer verwenden.
+5. Klicken Sie auf **Start**. Wireshark wird nun alle an oder aus dem Tabellendienstendpunkt gesendeten Pakete erfassen, wenn Sie Ihre Clientanwendung auf dem lokalen Computer verwenden.
 6. Wenn Sie fertig sind, klicken Sie im Hauptmenü auf **Capture** (Erfassen) und anschließend auf **Stop** (Beenden).
 7. Um die erfassten Daten in einer Wireshark-Erfassungsdatei zu speichern, klicken Sie im Hauptmenü auf **File** (Datei) und anschließend auf **Save** (Speichern).
 
@@ -772,8 +771,8 @@ Viele Tools ermöglichen das Herunterladen von Speichermetrikdaten aus dem Azure
 
 Um Speicherprotokollierungsdaten in Excel zu importieren, nachdem Sie diese aus dem BLOB-Speicher heruntergeladen haben, gehen Sie folgendermaßen vor:
 
-* Klicken Sie im Menü **Daten** auf **Von Text** .
-* Navigieren Sie zur Protokollierungsdatei, die Sie anzeigen möchten, und klicken Sie auf **Importieren** .
+* Klicken Sie im Menü **Daten** auf **Von Text**.
+* Navigieren Sie zur Protokollierungsdatei, die Sie anzeigen möchten, und klicken Sie auf **Importieren**.
 * Wählen Sie in Schritt 1 des **Textimport-Assistenten** die Option **Getrennt** aus.
 
 Wählen Sie in Schritt 1 des **Textimport-Assistenten** die Option **Semikolon** als einziges Trennzeichen und doppelte Anführungszeichen als **Textbegrenzungszeichen** aus. Klicken Sie anschließend auf **Fertigstellen** und wählen Sie aus, wo Sie die Datei in Ihrer Arbeitsmappe ablegen möchten.

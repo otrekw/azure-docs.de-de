@@ -7,12 +7,12 @@ ms.topic: quickstart
 author: bwren
 ms.author: bwren
 ms.date: 03/10/2020
-ms.openlocfilehash: ef0e3a451a5687278acaf1e857012027a5e657a3
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: bf38291e26c46d26bbf8cb110d18e9526fb3f777
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186761"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97797178"
 ---
 # <a name="quickstart-monitor-an-azure-virtual-machine-with-azure-monitor"></a>Schnellstart: Überwachen eines virtuellen Azure-Computers mit Azure Monitor
 [Azure Monitor](../overview.md) beginnt sofort nach der Erstellung virtueller Azure-Computer mit der Datenerfassung. Diese Schnellstartanleitung bietet eine kurze Übersicht darüber, welche Daten für einen virtuellen Azure-Computer automatisch gesammelt werden und wie sie im Azure-Portal angezeigt werden können. Anschließend erfahren Sie, wie Sie [Azure Monitor für VMs](../insights/vminsights-overview.md) für Ihren virtuellen Computer aktivieren, sodass Agents auf dem virtuellen Computer Daten aus dem Gastbetriebssystem erfassen und analysieren können (einschließlich Prozesse und deren Abhängigkeiten).
@@ -73,7 +73,7 @@ Wenn Sie einen neuen Log Analytics-Arbeitsbereich erstellen, muss er für die P
 
 ### <a name="data-collection-from-linux-vm"></a>Datensammlung auf Linux-VM
 
-1. Wählen Sie **Syslog**.  
+1. Wählen Sie **Daten** und dann **Syslog** aus.
 
 2. Fügen Sie ein Ereignisprotokoll hinzu, indem Sie den Namen des Protokolls eingeben.  Geben Sie **Syslog** ein, und wählen Sie dann das Pluszeichen ( **+** ) aus.  
 

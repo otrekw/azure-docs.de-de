@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 03/26/2020
-ms.openlocfilehash: 119f1eaa838b404a3dbdc22f692f559816810dde
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 55221fa529688fbae1698a094ea31f6a3f765100
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578687"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97796243"
 ---
 # <a name="tutorial-train-and-deploy-a-model-from-the-cli"></a>Tutorial: Trainieren und Bereitstellen eines Modells über die Befehlszeilenschnittstelle
 
@@ -307,10 +307,10 @@ Weitere Informationen zu Dateien für Laufzeitkonfigurationen finden Sie unter [
 Verwenden Sie den folgenden Befehl, um eine Trainingsausführung auf dem Computeziel `cpu-cluster` zu starten:
 
 ```azurecli-interactive
-az ml run submit-script -c mnist -e myexperiment --source-directory scripts -t runoutput.json
+az ml run submit-script -c mnist -e tutorial-cli --source-directory scripts -t runoutput.json
 ```
 
-Dieser Befehl gibt einen Namen für das Experiment an (`myexperiment`). Das Experiment speichert Informationen zu dieser Ausführung im Arbeitsbereich.
+Dieser Befehl gibt einen Namen für das Experiment an (`tutorial-cli`). Das Experiment speichert Informationen zu dieser Ausführung im Arbeitsbereich.
 
 Der Parameter `-c mnist` gibt die Datei `.azureml/mnist.runconfig` an.
 
@@ -327,7 +327,7 @@ Dieser Text wird aus dem Trainingsskript protokolliert und zeigt die Genauigkeit
 
 Wenn Sie das Trainingsskript untersuchen, sehen Sie, dass es beim Speichern der trainierten Modelle in `outputs/sklearn_mnist_model.pkl` auch den Alphawert verwendet.
 
-Das Modell wurde im Verzeichnis `./outputs` auf dem Computeziel gespeichert, auf dem es trainiert wurde. In diesem Fall ist dies die Azure Machine Learning Compute-Instanz in der Azure-Cloud. Der Trainingsprozess lädt automatisch die Inhalte des Verzeichnisses `./outputs` aus dem Computeziel, in dem das Training erfolgt, in Ihren Azure Machine Learning-Arbeitsbereich hoch. Es wird als Teil des Experiments gespeichert (`myexperiment` in diesem Beispiel).
+Das Modell wurde im Verzeichnis `./outputs` auf dem Computeziel gespeichert, auf dem es trainiert wurde. In diesem Fall ist dies die Azure Machine Learning Compute-Instanz in der Azure-Cloud. Der Trainingsprozess lädt automatisch die Inhalte des Verzeichnisses `./outputs` aus dem Computeziel, in dem das Training erfolgt, in Ihren Azure Machine Learning-Arbeitsbereich hoch. Es wird als Teil des Experiments gespeichert (`tutorial-cli` in diesem Beispiel).
 
 ## <a name="register-the-model"></a>Registrieren des Modells
 
@@ -345,13 +345,13 @@ Die Ausgabe dieses Befehls ähnelt dem folgenden JSON-Code:
 {
   "createdTime": "2019-09-19T15:25:32.411572+00:00",
   "description": "",
-  "experimentName": "myexperiment",
+  "experimentName": "tutorial-cli",
   "framework": "Custom",
   "frameworkVersion": null,
   "id": "mymodel:1",
   "name": "mymodel",
   "properties": "",
-  "runId": "myexperiment_1568906070_5874522d",
+  "runId": "tutorial-cli_1568906070_5874522d",
   "tags": "",
   "version": 1
 }

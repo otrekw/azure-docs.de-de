@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: jeedes
-ms.openlocfilehash: 9a5cb1e589481bb424507d08879da8cc1b14ff1c
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 0dd66e246e5e172ad359f5e6e953b360e6e74ebd
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92448196"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97796974"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-google-cloud-g-suite-connector"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Google Cloud (G Suite) Connector
 
@@ -37,7 +37,7 @@ Für die ersten Schritte benötigen Sie Folgendes:
 - Eine Google Apps-Abonnement oder ein Google Cloud Platform-Abonnement.
 
 > [!NOTE]
-> Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden. Dieses Dokument wurde unter Verwendung der neuen Benutzeroberfläche für das einmalige Anmelden (Single-Sign-On, SSO) erstellt. Wenn Sie noch die alte Benutzeroberfläche verwenden, sieht das Setup anders aus. Sie können die neue Benutzeroberfläche in den SSO-Einstellungen der G Suite-Anwendung aktivieren. Wechseln Sie zu **Azure AD, Unternehmensanwendungen** , wählen Sie **Google Cloud (G Suite) Connector** und dann **Einmaliges Anmelden** aus, und klicken Sie auf **Neue Benutzeroberfläche ausprobieren** .
+> Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden. Dieses Dokument wurde unter Verwendung der neuen Benutzeroberfläche für das einmalige Anmelden (Single-Sign-On, SSO) erstellt. Wenn Sie noch die alte Benutzeroberfläche verwenden, sieht das Setup anders aus. Sie können die neue Benutzeroberfläche in den SSO-Einstellungen der G Suite-Anwendung aktivieren. Wechseln Sie zu **Azure AD, Unternehmensanwendungen**, wählen Sie **Google Cloud (G Suite) Connector** und dann **Einmaliges Anmelden** aus, und klicken Sie auf **Neue Benutzeroberfläche ausprobieren**.
 
 Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen beachten:
 
@@ -82,7 +82,7 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 
 * Google Cloud (G Suite) Connector unterstützt **SP-initiiertes** einmaliges Anmelden.
 
-* Google Cloud (G Suite) Connector unterstützt die [**automatisierte** Benutzerbereitstellung](./google-apps-provisioning-tutorial.md).
+* Google Cloud (G Suite) Connector unterstützt die [**automatisierte** Benutzerbereitstellung](g-suite-provisioning-tutorial.md).
 * Nachdem Sie Google Cloud (G Suite) Connector konfiguriert haben, können Sie die Sitzungssteuerung erzwingen, um vertrauliche Unternehmensdaten in Echtzeit vor Exfiltration und Infiltration zu schützen. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-aad) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
 
 ## <a name="adding-google-cloud-g-suite-connector-from-the-gallery"></a>Hinzufügen von Google Cloud (G Suite) Connector aus dem Katalog
@@ -91,14 +91,14 @@ Zum Konfigurieren der Integration von Google Cloud (G Suite) Connector in Azure
 
 1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim [Azure-Portal](https://portal.azure.com) an.
 1. Wählen Sie im linken Navigationsbereich den Dienst **Azure Active Directory** aus.
-1. Navigieren Sie zu **Unternehmensanwendungen** , und wählen Sie dann **Alle Anwendungen** aus.
+1. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie dann **Alle Anwendungen** aus.
 1. Wählen Sie zum Hinzufügen einer neuen Anwendung **Neue Anwendung** aus.
 1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** im Suchfeld **Google Cloud (G Suite) Connector** ein.
 1. Wählen Sie im Ergebnisbereich **Google Cloud (G Suite) Connector** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-google-cloud-g-suite-connector"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für Google Cloud (G Suite) Connector
 
-Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Google Cloud (G Suite) Connector mithilfe eines Testbenutzers mit dem Namen **B.Simon** . Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Google Cloud (G Suite) Connector eingerichtet werden.
+Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Google Cloud (G Suite) Connector mithilfe eines Testbenutzers mit dem Namen **B.Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Google Cloud (G Suite) Connector eingerichtet werden.
 
 Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD mit Google Cloud (G Suite) Connector zu konfigurieren und zu testen:
 
@@ -113,9 +113,9 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD 
 
 Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal zu aktivieren.
 
-1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **Google Cloud (G Suite) Connector** zum Abschnitt **Verwalten** , und wählen Sie **Einmaliges Anmelden** aus.
+1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **Google Cloud (G Suite) Connector** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
 1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
-1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Bearbeitungs- bzw. Stiftsymbol für **Grundlegende SAML-Konfiguration** , um die Einstellungen zu bearbeiten.
+1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Bearbeitungs- bzw. Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
 
    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
@@ -162,7 +162,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
     > [!NOTE]
     > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Google Cloud (G Suite) Connector stellt bei der SSO-Konfiguration keinen Wert für die Entitäts-ID bzw. den Entitätsbezeichner bereit. Wenn Sie die Option **Use a domain specific issuer** (Domänenspezifischen Aussteller verwenden) deaktivieren, lautet der Wert des Bezeichners daher `google.com`. Wenn Sie die Option **Use a domain specific issuer** (Domänenspezifischen Aussteller verwenden) aktivieren, lautet er `google.com/a/<yourdomainname.com>`. Das Aktivieren/Deaktivieren der Option **Use a domain specific issuer** (Domänenspezifischen Aussteller verwenden) wird im Abschnitt **Konfigurieren des einmaligen Anmeldens für Google Cloud (G Suite) Connector** weiter unten in diesem Tutorial beschrieben. Weitere Informationen erhalten Sie vom [Supportteam für den Google Cloud (G Suite) Connector-Client](https://www.google.com/contact/).
 
-1. Die Google Cloud (G Suite) Connector-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt ein Beispiel für diese Attributzuordnungen: Der Standardwert von **Eindeutige Benutzer-ID** lautet **user.userprincipalname** , Google Cloud (G Suite) Connector erwartet jedoch, dass dieser Wert der E-Mail-Adresse des Benutzers zugeordnet ist. Hierfür können Sie das **user.mail** -Attribut aus der Liste verwenden oder den entsprechenden Attributwert gemäß der Konfiguration in Ihrer Organisation angeben.
+1. Die Google Cloud (G Suite) Connector-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt ein Beispiel für diese Attributzuordnungen: Der Standardwert von **Eindeutige Benutzer-ID** lautet **user.userprincipalname**, Google Cloud (G Suite) Connector erwartet jedoch, dass dieser Wert der E-Mail-Adresse des Benutzers zugeordnet ist. Hierfür können Sie das **user.mail**-Attribut aus der Liste verwenden oder den entsprechenden Attributwert gemäß der Konfiguration in Ihrer Organisation angeben.
 
     ![image](common/default-attributes.png)
 
@@ -184,16 +184,16 @@ In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Nam
 1. Führen Sie unter den Eigenschaften für **Benutzer** die folgenden Schritte aus:
    1. Geben Sie im Feld **Name** die Zeichenfolge `B.Simon` ein.  
    1. Geben Sie im Feld **Benutzername** die Zeichenfolge username@companydomain.extension ein. Beispiel: `B.Simon@contoso.com`.
-   1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen** , und notieren Sie sich den Wert aus dem Feld **Kennwort** .
-   1. Klicken Sie auf **Erstellen** .
+   1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert aus dem Feld **Kennwort**.
+   1. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
 In diesem Abschnitt ermöglichen Sie B.Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie Zugriff auf Google Cloud (G Suite) Connector gewähren.
 
-1. Wählen Sie im Azure-Portal **Unternehmensanwendungen**  > **Alle Anwendungen** aus.
+1. Wählen Sie im Azure-Portal **Unternehmensanwendungen** > **Alle Anwendungen** aus.
 1. Wählen Sie in der Anwendungsliste **Google Cloud (G Suite) Connector** aus.
-1. Navigieren Sie auf der Übersichtsseite der App zum Abschnitt **Verwalten** , und wählen Sie **Benutzer und Gruppen** aus.
+1. Navigieren Sie auf der Übersichtsseite der App zum Abschnitt **Verwalten**, und wählen Sie **Benutzer und Gruppen** aus.
 
    ![Link „Benutzer und Gruppen“](common/users-groups-blade.png)
 
@@ -201,19 +201,19 @@ In diesem Abschnitt ermöglichen Sie B.Simon die Verwendung des einmaligen Anmel
 
     ![Link „Benutzer hinzufügen“](common/add-assign-user.png)
 
-1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **B. Simon** aus, und klicken Sie dann unten auf dem Bildschirm auf die Schaltfläche **Auswählen** .
-1. Wenn Sie einen beliebigen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** die entsprechende Rolle für den Benutzer in der Liste aus, und klicken Sie dann im unteren Bildschirmbereich auf die Schaltfläche **Auswählen** .
-1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen** .
+1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **B. Simon** aus, und klicken Sie dann unten auf dem Bildschirm auf die Schaltfläche **Auswählen**.
+1. Wenn Sie einen beliebigen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** die entsprechende Rolle für den Benutzer in der Liste aus, und klicken Sie dann im unteren Bildschirmbereich auf die Schaltfläche **Auswählen**.
+1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
 ## <a name="configure-google-cloud-g-suite-connector-sso"></a>Konfigurieren des einmaligen Anmeldens für Google Cloud (G Suite) Connector
 
 1. Öffnen Sie in Ihrem Browser eine neue Registerkarte, und melden Sie sich mit Ihrem Administratorkonto bei der [Google Cloud (G Suite) Connector-Verwaltungskonsole](https://admin.google.com/) an.
 
-2. Klicken Sie auf **Sicherheit** . Wenn der Link nicht angezeigt wird, kann er unter dem Menü **Weitere Steuerelemente** im unteren Bereich des Bildschirms versteckt sein.
+2. Klicken Sie auf **Sicherheit**. Wenn der Link nicht angezeigt wird, kann er unter dem Menü **Weitere Steuerelemente** im unteren Bereich des Bildschirms versteckt sein.
 
     ![Klicken Sie auf "Sicherheit".][10]
 
-3. Klicken Sie auf der Seite **Sicherheit** auf **Einmaliges Anmelden (SSO) einrichten** .
+3. Klicken Sie auf der Seite **Sicherheit** auf **Einmaliges Anmelden (SSO) einrichten**.
 
     ![Klicken Sie auf "SSO".][11]
 
@@ -221,7 +221,7 @@ In diesem Abschnitt ermöglichen Sie B.Simon die Verwendung des einmaligen Anmel
 
     ![Konfigurieren von SSO][12]
 
-    a. Wählen Sie **Einmaliges Anmelden mit externem Identitätsanbieter einrichten** .
+    a. Wählen Sie **Einmaliges Anmelden mit externem Identitätsanbieter einrichten**.
 
     b. Fügen Sie in Google Cloud (G Suite) Connector im Feld **URL der Anmeldeseite** den Wert der **Anmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
 
@@ -236,13 +236,13 @@ In diesem Abschnitt ermöglichen Sie B.Simon die Verwendung des einmaligen Anmel
 
     f. Fügen Sie in Google Cloud (G Suite) Connector im Feld **Kennwort-URL ändern** den Wert der **URL für Kennwortänderung** ein, den Sie aus dem Azure-Portal kopiert haben.
 
-    g. Klicken Sie auf **Speichern** .
+    g. Klicken Sie auf **Speichern**.
 
 ### <a name="create-google-cloud-g-suite-connector-test-user"></a>Erstellen eines Google Cloud (G Suite) Connector-Testbenutzers
 
 In diesem Abschnitt [erstellen Sie in Google Cloud (G Suite) Connector](https://support.google.com/a/answer/33310?hl=en) einen Benutzer namens B.Simon. Nachdem der Benutzer manuell in Google Cloud (G Suite) Connector erstellt wurde, kann er sich mit seinen Microsoft 365-Anmeldeinformationen anmelden.
 
-Google Cloud (G Suite) Connector unterstützt auch die automatische Benutzerbereitstellung. Zum Konfigurieren der automatischen Benutzerbereitstellung müssen Sie zuerst [Google Cloud (G Suite) Connector entsprechend konfigurieren](./google-apps-provisioning-tutorial.md).
+Google Cloud (G Suite) Connector unterstützt auch die automatische Benutzerbereitstellung. Zum Konfigurieren der automatischen Benutzerbereitstellung müssen Sie zuerst [Google Cloud (G Suite) Connector entsprechend konfigurieren](g-suite-provisioning-tutorial.md).
 
 > [!NOTE]
 > Stellen Sie sicher, dass der Benutzer bereits in Google Cloud (G Suite) Connector vorhanden ist, wenn die Bereitstellung in Azure AD vor dem Testen des einmaligen Anmeldens nicht aktiviert wurde.
@@ -264,7 +264,7 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Google Cloud (G Suite) Connector�
 
 - [Was ist der bedingte Zugriff in Azure Active Directory?](../conditional-access/overview.md)
 
-- [Konfigurieren der Benutzerbereitstellung](./google-apps-provisioning-tutorial.md)
+- [Konfigurieren der Benutzerbereitstellung](g-suite-provisioning-tutorial.md)
 
 - [Testen von Google Cloud (G Suite) Connector mit Azure AD](https://aad.portal.azure.com/)
 

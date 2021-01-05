@@ -3,16 +3,16 @@ title: Azure IoT Central – häufig gestellte Fragen | Microsoft-Dokumentation
 description: Häufig gestellte Fragen (FAQ) zu Azure IoT Central und die zugehörigen Antworten
 author: dominicbetts
 ms.author: dobett
-ms.date: 09/23/2020
+ms.date: 12/20/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: cbe0dbe55f903c25556698a5d510bf9e67b408be
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: acabaf843f8acfe7bc0b5e9456dee09bde74bef7
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92126719"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97796039"
 ---
 # <a name="frequently-asked-questions-for-iot-central"></a>Häufig gestellte Fragen zu IoT Central
 
@@ -38,11 +38,11 @@ Wenn ein Operator die Blockierung eines Geräts aufhebt, wird der Status auf den
 
 Wenn auf der Seite **Geräte** der Gerätestatus **Warten auf Genehmigung** angezeigt wird, ist die Option **Automatisch genehmigen** deaktiviert:
 
-:::image type="content" source="media/howto-faq/auto-approve.png" alt-text="Screenshot eines blockierten Geräts":::
+:::image type="content" source="media/howto-faq/auto-approve.png" alt-text="Screenshot einer Anwendung mit deaktivierter Option „Automatisch genehmigen“":::
 
 Ein Operator muss ein Gerät explizit genehmigen, bevor es mit dem Senden von Daten beginnt. Geräte, die auf der Seite **Geräte** nicht manuell registriert wurden, aber eine Verbindung mit gültigen Anmeldeinformationen hergestellt haben, weisen den Gerätestatus **Warten auf Genehmigung** auf. Diese Geräte können auf der Seite **Geräte** mithilfe der Schaltfläche **Genehmigen** von Operatoren genehmigt werden:
 
-:::image type="content" source="media/howto-faq/approve-device.png" alt-text="Screenshot eines blockierten Geräts":::
+:::image type="content" source="media/howto-faq/approve-device.png" alt-text="Screenshot der Genehmigung eines Geräts":::
 
 **Wie ordne ich einem Gerät eine Gerätevorlage zu?**
 

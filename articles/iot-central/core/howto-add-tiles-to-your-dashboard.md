@@ -3,15 +3,15 @@ title: Konfigurieren Ihres Dashboards in Azure IoT Central | Microsoft-Dokumenta
 description: In diesem Artikel erfahren Sie, wie Sie als Ersteller das Standarddashboard Ihrer Azure IoT Central-Anwendung mit Kacheln konfigurieren.
 author: TheJasonAndrew
 ms.author: v-anjaso
-ms.date: 11/06/2020
+ms.date: 12/19/2020
 ms.topic: how-to
 ms.service: iot-central
-ms.openlocfilehash: 2ea2dd18cd5816c7c1406ac201421a2983e431a3
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 73c78f514f974b97eb178177f12dc4ceff7ede63
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491997"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97797008"
 ---
 # <a name="configure-the-application-dashboard"></a>Konfigurieren des Anwendungsdashboards
 
