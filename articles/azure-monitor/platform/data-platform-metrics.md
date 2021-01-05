@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: f64a91e3b285c265296c361366a10443eda18201
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: b7af6b489aeb919fd1db0e45ddba58a21b1c3633
+ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94489428"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97760135"
 ---
 # <a name="azure-monitor-metrics-overview"></a>Überblick über Metriken in Azure Monitor
 Metriken in Azure Monitor sind ein Feature von Azure Monitor, das numerische Daten aus [überwachten Ressourcen](../monitor-reference.md) in einer Zeitreihendatenbank erfasst. Metriken sind numerische Werte, die in regelmäßigen Abständen erfasst werden und einen Aspekt eines Systems zu einem bestimmten Zeitpunkt beschreiben. Metriken in Azure Monitor sind einfach gehalten und unterstützen Szenarien vom Typ „Nahezu in Echtzeit“, sodass sie besonders für Warnungen und die schnelle Erkennung von Problemen hilfreich sind. Sie können sie interaktiv mit dem Metrik-Explorer analysieren, sich proaktiv mit einer Warnung benachrichtigen lassen, wenn ein Wert einen Schwellenwert überschreitet, oder sie in einer Arbeitsmappe oder einem Dashboard visualisieren.
@@ -56,7 +56,7 @@ Es gibt drei grundlegende Quellen von Metriken, die von Azure Monitor erfasst we
 ## <a name="metrics-explorer"></a>Metrik-Explorer
 Verwenden Sie den [Metrik-Explorer](metrics-charts.md), um die Daten in Ihrer Metrikdatenbank interaktiv zu analysieren und die Werte mehrerer Metriken im zeitlichen Verlauf in Diagrammen darzustellen. Sie können die Diagramme an ein Dashboard anheften, um sie mit anderen Visualisierungen anzuzeigen. Zudem haben Sie die Möglichkeit, Metriken mit der [REST-API für die Azure-Überwachung](rest-api-walkthrough.md) abzurufen.
 
-![Metrik-Explorer](media/data-platform/metrics-explorer.png)
+![Metrik-Explorer](media/data-platform-metrics/metrics-explorer.png)
 
 - Unter [Erste Schritte mit dem Azure-Metrik-Explorer](metrics-getting-started.md) finden Sie Informationen zu den ersten Schritten mit dem Metrik-Explorer.
 

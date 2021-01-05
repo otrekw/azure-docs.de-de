@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 09/22/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: e72784dbdcf08d672a8498609ca3a5bbd11e632d
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 72079cc399eea249bce4d285e2c3c4fbf9304708
+ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93319028"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97760604"
 ---
 # <a name="track-azure-databricks-ml-experiments-with-mlflow-and-azure-machine-learning-preview"></a>Nachverfolgen für ML-Experimente in Azure Databricks mit MLflow und Azure Machine Learning (Vorschau)
 
@@ -58,7 +58,7 @@ Weitere Erläuterungen zu diesen Schritten finden Sie in den folgenden Abschnitt
 
 ## <a name="install-libraries"></a>Installieren von Bibliotheken
 
-Navigieren Sie zum Installieren von Bibliotheken in Ihrem Cluster zur Registerkarte **Bibliotheken** , und klicken Sie auf **Neue installieren**.
+Navigieren Sie zum Installieren von Bibliotheken in Ihrem Cluster zur Registerkarte **Bibliotheken**, und klicken Sie auf **Neue installieren**.
 
  ![MLflow mit Azure Databricks](./media/how-to-use-mlflow-azure-databricks/azure-databricks-cluster-libraries.png)
 
@@ -69,7 +69,7 @@ Geben Sie im Feld **Paket** den Namen „azureml-mlflow“ ein, und klicken Sie 
 ## <a name="set-up-your-notebook"></a>Einrichten Ihres Notebooks 
 
 Klicken Sie in der linken Navigation auf 
-1. **Arbeitsbereiche** , wenn Ihr Azure Databricks-Cluster eingerichtet wurde. 
+1. **Arbeitsbereiche**, wenn Ihr Azure Databricks-Cluster eingerichtet wurde. 
 1. Erweitern Sie das Dropdown Menü „Arbeitsbereiche“, und klicken Sie auf **Importieren**.
 1. Ziehen Sie das Experimentnotebook dorthin, oder suchen Sie danach, um den Azure Databricks-Arbeitsbereich zu importieren.
 1. Wählen Sie **Importieren** aus. Ihr Experimentnotebook wird automatisch geöffnet.
@@ -156,9 +156,9 @@ Nachdem Ihr Modell trainiert wurde, können Sie Ihre Modelle auf dem Back-End-Na
 
 Der Back-End-Nachverfolgungsserver ist standardmäßig der Azure Databricks-Arbeitsbereich. Wenn Sie [nicht festgelegt haben, dass MLflow Tracking nur im Azure Machine Learning-Arbeitsbereich verfolgt werden soll](#set-mlflow-tracking-to-only-track-in-your-azure-machine-learning-workspace), ist der Back-End-Nachverfolgungsserver der Azure Machine Learning-Arbeitsbereich.   
 
-* **Falls kein registriertes Modell mit dem angegebenen Namen vorhanden ist** , registriert die Methode ein neues Modell, erstellt die erste Version und gibt das MLflow-Objekt „ModelVersion“ zurück. 
+* **Falls kein registriertes Modell mit dem angegebenen Namen vorhanden ist**, registriert die Methode ein neues Modell, erstellt die erste Version und gibt das MLflow-Objekt „ModelVersion“ zurück. 
 
-* **Wenn bereits ein registriertes Modell mit dem Namen vorhanden ist** , erstellt die Methode eine neue Modellversion und gibt das Versionsobjekt zurück. 
+* **Wenn bereits ein registriertes Modell mit dem Namen vorhanden ist**, erstellt die Methode eine neue Modellversion und gibt das Versionsobjekt zurück. 
 
 ```python
 mlflow.spark.log_model(model, artifact_path = "model", 
@@ -180,8 +180,8 @@ Wenn Sie bereit sind, einen Endpunkt für die ML-Modelle zu erstellen, können S
 Sie können die [mlflow.azureml.deploy](https://www.mlflow.org/docs/latest/python_api/mlflow.azureml.html#mlflow.azureml.deploy)-API nutzen, um ein Modell in Ihrem Azure Machine Learning-Arbeitsbereich bereitzustellen. Wenn Sie das Modell nur im Azure Databricks-Arbeitsbereich registriert haben, wie im Abschnitt [Registrieren von Modellen mit MLflow](#register-models-with-mlflow) beschrieben, geben Sie den `model_name`-Parameter an, um das Modell im Azure Machine Learning-Arbeitsbereich zu registrieren. 
 
 Azure Databricks-Ausführungen können an den folgenden Endpunkten bereitgestellt werden: 
-* [Azure Container Instance](how-to-use-mlflow.md#deploy-to-aci)
-* [Azure Kubernetes Service](how-to-use-mlflow.md#deploy-to-aks)
+* [Azure Container Instance](how-to-deploy-models-with-mlflow.md#deploy-to-aci)
+* [Azure Kubernetes Service](how-to-deploy-models-with-mlflow.md#deploy-to-aks)
 
 ### <a name="deploy-models-to-adb-endpoints-for-batch-scoring"></a>Bereitstellen von Modellen für Azure Databricks-Endpunkte zur Batchbewertung 
 

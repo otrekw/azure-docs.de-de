@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 09/07/2020
 ms.author: alkohli
-ms.openlocfilehash: c12935a4b0b9cbbf088ba7b9c5ea804be0ce85a1
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 8ea0c27fdd64bae1e6fe9443df76c86e0eb89a75
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96447364"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97762916"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-using-azure-cli-and-python"></a>Bereitstellen von VMs auf Ihrem Azure Stack Edge Pro-GPU-Gerät mit der Azure CLI und Python
 
@@ -27,7 +27,7 @@ In diesem Tutorial wird beschrieben, wie Sie einen virtuellen Computer auf Ihrem
 
 Der Bereitstellungsworkflow ist im folgenden Diagramm dargestellt.
 
-![VM-Bereitstellungsworkflow](media/azure-stack-edge-j-series-deploy-virtual-machine-powershell/vm-workflow_r.svg)
+![VM-Bereitstellungsworkflow](media/azure-stack-edge-gpu-deploy-virtual-machine-powershell/vm-workflow-r.svg)
 
 Die allgemeine Zusammenfassung des Bereitstellungsworkflows lautet wie folgt:
 
@@ -43,7 +43,7 @@ Die allgemeine Zusammenfassung des Bereitstellungsworkflows lautet wie folgt:
 10. Erstellen eines VNET
 11. Erstellen einer VNIC mithilfe der VNet-Subnetz-ID
 
-Eine ausführliche Erläuterung des Workflowdiagramms finden Sie unter [Bereitstellen von VMs auf Ihrem Azure Stack Edge Pro-Gerät mithilfe von Azure PowerShell](azure-stack-edge-j-series-deploy-virtual-machine-powershell.md). Informationen zum Herstellen einer Verbindung mit Azure Resource Manager finden Sie unter [Herstellen einer Verbindung mit Azure Resource Manager mithilfe von Azure PowerShell](azure-stack-edge-j-series-connect-resource-manager.md).
+Eine ausführliche Erläuterung des Workflowdiagramms finden Sie unter [Bereitstellen von VMs auf Ihrem Azure Stack Edge Pro-Gerät mithilfe von Azure PowerShell](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md). Informationen zum Herstellen einer Verbindung mit Azure Resource Manager finden Sie unter [Herstellen einer Verbindung mit Azure Resource Manager mithilfe von Azure PowerShell](azure-stack-edge-j-series-connect-resource-manager.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
