@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 08/14/2020
+ms.date: 12/23/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2f3e825f908ffe475b05a5e6748d9505e7283b50
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: a2e670525840b801df874e3f8dcbdbadc0955a12
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92362698"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746302"
 ---
 # <a name="planning-azure-active-directory-access-reviews-deployment"></a>Planen der Bereitstellung von Azure Active Directory-Zugriffsüberprüfungen
 
@@ -55,11 +55,11 @@ Die Planung der Bereitstellung von Zugriffsüberprüfungen ist von entscheidende
 
 Die Aktivierung von Zugriffsüberprüfungen bietet die folgenden Hauptvorteile:
 
-* **Zusammenarbeit bei der Kontrolle** . Mithilfe von Zugriffsüberprüfungen können Organisationen den Zugriff auf alle Ressourcen verwalten, welche die Benutzer benötigen. Wenn ihre Benutzer Dateien freigeben und zusammenarbeiten, können Organisationen sicher sein, dass nur autorisierte Benutzer Zugriff auf die Informationen haben.
+* **Zusammenarbeit bei der Kontrolle**. Mithilfe von Zugriffsüberprüfungen können Organisationen den Zugriff auf alle Ressourcen verwalten, welche die Benutzer benötigen. Wenn ihre Benutzer Dateien freigeben und zusammenarbeiten, können Organisationen sicher sein, dass nur autorisierte Benutzer Zugriff auf die Informationen haben.
 
 * **Risikomanagement:** Mit Zugriffsüberprüfungen können Organisationen den Zugriff auf Daten und Anwendungen überprüfen und so das Risiko von Datenlecks und Datenaustritt verringern. Dies schließt Funktionen ein, um regelmäßig den Zugriff externer Partner auf Unternehmensressourcen zu überprüfen. 
 
-* **Erfüllung von Compliance und Governance** : Mit Zugriffsüberprüfungen können Sie den Lebenszyklus des Zugriffs auf Gruppen, Apps und Websites steuern und erneut bestätigen. Sie können nachverfolgte Überprüfungen von in Ihrer Organisation verwendeten compliance- oder risikokritischen Anwendungen kontrollieren. 
+* **Erfüllung von Compliance und Governance**: Mit Zugriffsüberprüfungen können Sie den Lebenszyklus des Zugriffs auf Gruppen, Apps und Websites steuern und erneut bestätigen. Sie können nachverfolgte Überprüfungen von in Ihrer Organisation verwendeten compliance- oder risikokritischen Anwendungen kontrollieren. 
 
 * **Kostensenkung:** Zugriffsüberprüfungen werden in der Cloud erstellt und funktionieren nativ mit Cloudressourcen wie Gruppen, Anwendungen und Zugriffspaketen. Die Verwendung von Zugriffsüberprüfungen ist kostengünstiger als das Entwickeln eigener Tools oder ein anderweitiges Upgrade Ihres lokalen Toolsets.
 

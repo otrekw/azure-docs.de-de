@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 06/17/2020
+ms.date: 12/23/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b4a18ad04064ef8356e21d106843d6c946f50741
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 426e28048ae370919529ea710717a3a3867d999d
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92362721"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746251"
 ---
 # <a name="use-azure-ad-access-reviews-to-manage-users-excluded-from-conditional-access-policies"></a>Verwenden von Azure AD-Zugriffsüberprüfungen zum Verwalten von Benutzern, die aus Richtlinien für den bedingten Zugriff ausgeschlossen sind
 
@@ -65,15 +65,15 @@ Führen Sie diese Schritte aus, um eine neue Azure AD-Gruppe und eine Richtlinie
 
 1. Melden Sie sich beim Azure-Portal an.
 
-2. Klicken Sie im linken Navigationsbereich auf **Azure Active Directory** und dann auf **Gruppen** .
+2. Klicken Sie im linken Navigationsbereich auf **Azure Active Directory** und dann auf **Gruppen**.
 
-3. Klicken Sie im oberen Menü auf **Neue Gruppe** , um den Gruppenbereich zu öffnen.
+3. Klicken Sie im oberen Menü auf **Neue Gruppe**, um den Gruppenbereich zu öffnen.
 
-4. Wählen Sie in der Liste **Gruppentyp** die Option **Sicherheit** . Geben Sie einen Namen und eine Beschreibung an.
+4. Wählen Sie in der Liste **Gruppentyp** die Option **Sicherheit**. Geben Sie einen Namen und eine Beschreibung an.
 
 5. Stellen Sie sicher, dass Sie den Typ **Mitgliedschaft** auf **Zugewiesen** festlegen.
 
-6. Wählen Sie die Benutzer aus, die Teil dieser Ausschlussgruppe sein sollen, und klicken Sie anschließend auf **Erstellen** .
+6. Wählen Sie die Benutzer aus, die Teil dieser Ausschlussgruppe sein sollen, und klicken Sie anschließend auf **Erstellen**.
 
 ![Neuer Gruppenbereich in Azure Active Directory](./media/conditional-access-exclusion/new-group.png)
 
@@ -81,17 +81,17 @@ Führen Sie diese Schritte aus, um eine neue Azure AD-Gruppe und eine Richtlinie
 
 Sie können jetzt eine Richtlinie für bedingten Zugriff erstellen, die diese Ausschlussgruppe verwendet.
 
-1. Klicken Sie im linken Navigationsbereich auf **Azure Active Directory** und dann auf **Bedingter Zugriff** , um das Blatt **Richtlinien** zu öffnen.
+1. Klicken Sie im linken Navigationsbereich auf **Azure Active Directory** und dann auf **Bedingter Zugriff**, um das Blatt **Richtlinien** zu öffnen.
 
-2. Klicken Sie auf **Neue Richtlinie** , um den Bereich **Neu** zu öffnen.
+2. Klicken Sie auf **Neue Richtlinie**, um den Bereich **Neu** zu öffnen.
 
 3. Geben Sie einen Namen an.
 
-4. Klicken Sie unter „Zuweisungen“ auf **Benutzer und Gruppen** .
+4. Klicken Sie unter „Zuweisungen“ auf **Benutzer und Gruppen**.
 
-5. Wählen Sie auf der Registerkarte **Einschließen** die Option **Alle Benutzer** .
+5. Wählen Sie auf der Registerkarte **Einschließen** die Option **Alle Benutzer**.
 
-6. Aktivieren Sie auf der Registerkarte **Ausschließen** das Kontrollkästchen **Benutzer und Gruppen** , und klicken Sie dann auf **Ausgeschlossene Benutzer auswählen** .
+6. Aktivieren Sie auf der Registerkarte **Ausschließen** das Kontrollkästchen **Benutzer und Gruppen**, und klicken Sie dann auf **Ausgeschlossene Benutzer auswählen**.
 
 7. Wählen Sie die Ausschlussgruppe aus, die Sie erstellt haben.
 
@@ -150,15 +150,15 @@ Angenommen, Sie verfügen über eine Richtlinie für bedingten Zugriff, die den 
 
 Nachdem Sie nun alles eingerichtet haben (Gruppe, Richtlinie für bedingten Zugriff und Zugriffsüberprüfungen), können Sie die Ergebnisse der Überprüfungen überwachen und nachverfolgen.
 
-1. Öffnen Sie im Azure-Portal das Blatt **Zugriffsüberprüfungen** .
+1. Öffnen Sie im Azure-Portal das Blatt **Zugriffsüberprüfungen**.
 
 2. Öffnen Sie das Steuerelement und das Programm, das Sie für die Verwaltung der Ausschlussgruppe erstellt haben.
 
-3. Klicken Sie auf **Ergebnisse** , um anzuzeigen, für wen der Verbleib auf der Liste genehmigt und wer entfernt wurde.
+3. Klicken Sie auf **Ergebnisse**, um anzuzeigen, für wen der Verbleib auf der Liste genehmigt und wer entfernt wurde.
 
     ![Ergebnisse der Zugriffsüberprüfungen zeigen, wer genehmigt wurde](./media/conditional-access-exclusion/access-reviews-results.png)
 
-4. Klicken Sie anschließend auf **Überwachungsprotokolle** , um die Aktionen anzuzeigen, die während der Überprüfung durchgeführt wurden.
+4. Klicken Sie anschließend auf **Überwachungsprotokolle**, um die Aktionen anzuzeigen, die während der Überprüfung durchgeführt wurden.
 
     ![Überwachungsprotokolle von Zugriffsüberprüfungen, die Aktionen auflisten](./media/conditional-access-exclusion/access-reviews-audit-logs.png)
 
