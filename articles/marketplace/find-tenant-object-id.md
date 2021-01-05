@@ -6,12 +6,12 @@ ms.topic: article
 author: keferna
 ms.author: keferna
 ms.date: 10/09/2020
-ms.openlocfilehash: db09943085cb7934bca5d7f2dc24ba692613ee19
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 2b1ba0779649c4955987c7dae9802cefaba89b79
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426900"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109339"
 ---
 # <a name="find-tenant-id-object-id-and-partner-association-details"></a>Suchen der Mandanten-ID, der Objekt-ID und der Partnerzuordnungsdetails
 
@@ -29,7 +29,7 @@ Wenn Sie Screenshots dieser Elemente in Azure Cloud Shell für die Unterstützun
 
     :::image type="content" source="media/tenant-and-object-id/icon-azure-ad.png" alt-text="Das Azure Active Directory-Symbol im Azure-Portal.":::
 
-3. Wählen Sie **Gruppen** aus. Ihre Mandanten-ID befindet sich im Feld **Mandanteninformationen**.
+3. Wählen Sie **Übersicht**. Ihre Mandanten-ID sollte unter **Basisinformationen** angezeigt werden.
 
     :::image type="content" source="media/tenant-and-object-id/select-groups-1.png" alt-text="Wählen Sie Gruppen im Azure-Portal aus.":::
 
@@ -62,7 +62,7 @@ Wenn Sie Screenshots dieser Elemente in Azure Cloud Shell für die Unterstützun
 
     :::image type="content" source="media/tenant-and-object-id/azure-ad-admin-center.png" alt-text="Azure Active Directory Admin Center.":::
 
-6. Suchen Sie **Rollenzuweisungen** , indem Sie im linken Menü **Zugriffssteuerung (IAM)** und dann **Rollenzuweisungen** auswählen.
+6. Suchen Sie **Rollenzuweisungen**, indem Sie im linken Menü **Zugriffssteuerung (IAM)** und dann **Rollenzuweisungen** auswählen.
 
     :::image type="content" source="https://docs.microsoft.com/azure/role-based-access-control/media/role-assignments-portal/role-assignments.png" alt-text="Rollenzuweisungen für Azure-Ressourcen":::
 

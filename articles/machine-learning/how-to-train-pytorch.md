@@ -8,21 +8,21 @@ ms.subservice: core
 ms.author: minxia
 author: mx-iao
 ms.reviewer: peterlu
-ms.date: 09/28/2020
+ms.date: 12/10/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: b03395b9c615466a4d64d8760db8ac23a040d832
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: ed368615395614bc0d3e9a6f06727da8c64d8486
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360937"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97559640"
 ---
 # <a name="train-pytorch-models-at-scale-with-azure-machine-learning"></a>Bedarfsgerechtes Trainieren von PyTorch-Modellen mit Azure Machine Learning
 
 In diesem Artikel erfahren Sie, wie Sie Ihre [PyTorch](https://pytorch.org/)-Trainingsskripts im Unternehmensumfang mit Azure Machine Learning ausführen.
 
-Die Beispielskripts in diesem Artikel werden dazu verwendet, Hühner- und Truthahnbilder zu klassifizieren, um ein neuronales Deep Learning-Netz (DNN) aufzubauen, basierend auf dem [Tutorial](https://pytorch.org/tutorials/beginner/transfer_learning_tutorial.html) zum Transferlernen von PyTorch. 
+Die Beispielskripts in diesem Artikel werden dazu verwendet, Hühner- und Truthahnbilder zu klassifizieren, um ein neuronales Deep Learning-Netz (DNN) aufzubauen, basierend auf dem [Tutorial](https://pytorch.org/tutorials/beginner/transfer_learning_tutorial.html) zum Transferlernen von PyTorch. Lerntransfer ist ein Verfahren, bei dem das bei der Lösung eines Problems gewonnene Wissen auf ein anderes, aber verwandtes Problem angewandt wird. Aufgrund des damit geringeren Aufwands an Daten, Zeit und Computeressourcen wird der Trainingsprozess rationalisiert.
 
 Unabhängig davon, ob Sie ein PyTorch-Deep Learning-Modell von Grund auf trainieren, oder ob Sie ein vorhandenes Modell in die Cloud bringen, können Sie Azure Machine Learning zum Aufskalieren von Open-Source-Trainingsaufträgen mithilfe elastischer Cloud-Computeressourcen verwenden. Sie können produktionsgeeignete Modelle mit Azure Machine Learning erstellen, bereitstellen, überwachen sowie die Versionen verwalten. 
 
@@ -114,7 +114,7 @@ Weitere Informationen zu Computezielen finden Sie im Artikel [Was ist ein Comput
 
 ### <a name="define-your-environment"></a>Definieren der Umgebung
 
-Um die Azure ML-[Umgebung](concept-environments.md) zu definieren, die die Abhängigkeiten Ihres Trainingsskripts kapselt, können Sie entweder eine benutzerdefinierte Umgebung definieren oder eine von Azure ML zusammengestellte Umgebung verwenden.
+Um die Azure ML-[Umgebung](concept-environments.md) zu definieren, die die Abhängigkeiten Ihres Trainingsskripts kapselt, können Sie entweder eine benutzerdefinierte Umgebung definieren oder eine von Azure ML zusammengestellte Umgebung verwenden.
 
 #### <a name="use-a-curated-environment"></a>Verwenden einer zusammengestellten Umgebung
 Azure ML bietet vorgefertigte, zusammengestellte Umgebungen, falls Sie keine eigene Umgebung definieren möchten. Azure ML verfügt über mehrere unterschiedliche CPU- und GPU-Umgebungen für PyTorch, die verschiedenen Versionen von PyTorch entsprechen. Weitere Informationen finden Sie [hier](resource-curated-environments.md).
@@ -213,13 +213,13 @@ run.wait_for_completion(show_output=True)
 ### <a name="what-happens-during-run-execution"></a>Was passiert während der Ausführung
 Die Ausführung durchläuft die folgenden Phasen:
 
-- **Vorbereitung** : Ein Docker-Image wird entsprechend der definierten Umgebung erstellt. Das Image wird in die Containerregistrierung des Arbeitsbereichs hochgeladen und für spätere Ausführungen zwischengespeichert. Darüber hinaus werden Protokolle in den Ausführungsverlauf gestreamt, mit deren Hilfe der Status überwacht werden kann. Wenn stattdessen eine zusammengestellte Umgebung angegeben wird, wird das zwischengespeicherte Image verwendet, das diese zusammengestellte Umgebung unterstützt.
+- **Vorbereitung**: Ein Docker-Image wird entsprechend der definierten Umgebung erstellt. Das Image wird in die Containerregistrierung des Arbeitsbereichs hochgeladen und für spätere Ausführungen zwischengespeichert. Darüber hinaus werden Protokolle in den Ausführungsverlauf gestreamt, mit deren Hilfe der Status überwacht werden kann. Wenn stattdessen eine zusammengestellte Umgebung angegeben wird, wird das zwischengespeicherte Image verwendet, das diese zusammengestellte Umgebung unterstützt.
 
-- **Skalierung** : Der Cluster versucht ein Hochskalieren, wenn der Batch KI-Cluster mehr Knoten zur Ausführung benötigt, als derzeit verfügbar sind.
+- **Skalierung**: Der Cluster versucht ein Hochskalieren, wenn der Batch KI-Cluster mehr Knoten zur Ausführung benötigt, als derzeit verfügbar sind.
 
 - **Wird ausgeführt:** Alle Skripts im Skriptordner werden auf das Computeziel hochgeladen, Datenspeicher werden bereitgestellt oder kopiert, und `script` wird ausgeführt. Ausgaben aus „stdout“ und dem Ordner **./logs** werden in den Ausführungsverlauf gestreamt und können zur Überwachung der Ausführung verwendet werden.
 
-- **Nachbearbeitung** : Der Ordner **./outputs** der Ausführung wird in den Ausführungsverlauf kopiert.
+- **Nachbearbeitung**: Der Ordner **./outputs** der Ausführung wird in den Ausführungsverlauf kopiert.
 
 ## <a name="register-or-download-a-model"></a>Registrieren oder Herunterladen eines Modells
 
@@ -253,7 +253,7 @@ Azure ML unterstützt die Ausführung verteilter PyTorch-Aufträge sowohl mit H
 
 Ihr Trainingscode muss mit Horovod für verteiltes Training instrumentiert werden. Weitere Informationen zur Verwendung von Horovod mit PyTorch finden Sie in der [Horovod-Dokumentation](https://horovod.readthedocs.io/en/stable/pytorch.html).
 
-Stellen Sie außerdem sicher, dass Ihre Trainingsumgebung das **horovod** -Paket enthält. Wenn Sie eine zusammengestellte PyTorch-Umgebung verwenden, ist Horovod bereits als eine der Abhängigkeiten enthalten. Wenn Sie Ihre eigene Umgebung verwenden, stellen Sie sicher, dass die Horovod-Abhängigkeit enthalten ist, z. B.:
+Stellen Sie außerdem sicher, dass Ihre Trainingsumgebung das **horovod**-Paket enthält. Wenn Sie eine zusammengestellte PyTorch-Umgebung verwenden, ist Horovod bereits als eine der Abhängigkeiten enthalten. Wenn Sie Ihre eigene Umgebung verwenden, stellen Sie sicher, dass die Horovod-Abhängigkeit enthalten ist, z. B.:
 
 ```yaml
 channels:
@@ -283,7 +283,7 @@ src = ScriptRunConfig(source_directory=project_folder,
 Ein vollständiges Tutorial zum Ausführen von verteiltem PyTorch mit Horovod in Azure ML finden Sie unter [Verteiltes PyTorch mit Horovod](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks/pytorch/distributed-pytorch-with-horovod).
 
 ### <a name="distributeddataparallel"></a>DistributedDataParallel
-Wenn Sie das in PyTorch integrierte [DistributedDataParallel](https://pytorch.org/tutorials/intermediate/ddp_tutorial.html)-Modul verwenden, das mit dem **torch.distributed** -Paket im Trainingscode erstellt wird, können Sie den verteilten Auftrag auch über Azure ML starten.
+Wenn Sie das in PyTorch integrierte [DistributedDataParallel](https://pytorch.org/tutorials/intermediate/ddp_tutorial.html)-Modul verwenden, das mit dem **torch.distributed**-Paket im Trainingscode erstellt wird, können Sie den verteilten Auftrag auch über Azure ML starten.
 
 Um einen verteilten PyTorch-Auftrag mit DistributedDataParallel auszuführen, geben Sie eine [PyTorchConfiguration](/python/api/azureml-core/azureml.core.runconfig.pytorchconfiguration?preserve-view=true&view=azure-ml-py) für den `distributed_job_config`-Parameter des ScriptRunConfig-Konstruktors an. Wenn Sie das NCCL-Back-End für torch.distributed verwenden möchten, geben Sie `communication_backend='Nccl'` in PyTorchConfiguration an. Der folgende Code konfiguriert einen auf 2 Knoten verteilten Auftrag. Das NCCL-Back-End ist das empfohlene Back-End für verteiltes GPU-Training mit PyTorch.
 

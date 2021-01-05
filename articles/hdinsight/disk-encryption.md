@@ -8,12 +8,12 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/10/2020
-ms.openlocfilehash: a9a90fbb2eedd6db2873d4ac2a5fea94c05c7eed
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4e895cdba1bfc16eac0450bd05271f0e41985b7b
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96005655"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359758"
 ---
 # <a name="azure-hdinsight-double-encryption-for-data-at-rest"></a>Doppelte Verschlüsselung für ruhende Daten in Azure HDInsight
 
@@ -119,15 +119,24 @@ HDInsight unterstützt nur Azure Key Vault. Falls Sie einen eigenen Schlüsseltr
 
 Sie können nun einen neuen HDInsight-Cluster erstellen. Kundenseitig verwaltete Schlüssel können ausschließlich im Rahmen der Clustererstellung auf neue Cluster angewendet werden. Die Verschlüsselung kann nicht aus Clustern mit kundenseitig verwalteten Schlüsseln entfernt werden, und der kundenseitig verwaltete Schlüssel kann keinen vorhandenen Clustern hinzugefügt werden.
 
+Ab dem [Release November 2020](hdinsight-release-notes.md#release-date-11182020) unterstützt HDInsight die Erstellung von Clustern mit Schlüssel-URIs mit und ohne Version. Wenn Sie den Cluster mit einem versionslosen Schlüssel-URI erstellen, versucht der HDInsight-Cluster, die automatische Rotation des Schlüssels auszuführen, wenn der Schlüssel in Ihrer Azure Key Vault-Instanz aktualisiert wird. Wenn Sie den Cluster mit einem Schlüssel-URI mit Versionsangabe erstellen, müssen Sie eine manuelle Schlüsselrotation ausführen, wie unter [Rotieren des Verschlüsselungsschlüssels](#rotating-the-encryption-key) erläutert.
+
+Für Cluster, die vor dem Release November 2020 erstellt wurden, müssen Sie die Schlüsselrotation manuell mit dem Schlüssel-URI mit Versionsangabe ausführen.
+
 #### <a name="using-the-azure-portal"></a>Verwenden des Azure-Portals
 
-Geben Sie während der Clustererstellung den vollständigen **Schlüsselbezeichner** (einschließlich Schlüsselversion) an. Beispiel: `https://contoso-kv.vault.azure.net/keys/myClusterKey/46ab702136bc4b229f8b10e8c2997fa4`. Darüber hinaus müssen Sie die verwaltete Identität dem Cluster zuweisen und den Schlüssel-URI angeben.
+Während der Clustererstellung können Sie entweder einen Schlüssel mit Versionsangabe oder einen versionslosen Schlüssel auf folgende Weise verwenden:
+
+- **Mit Versionsangabe**: Geben Sie während der Clustererstellung den vollständigen **Schlüsselbezeichner** (einschließlich Schlüsselversion) an. Beispiel: `https://contoso-kv.vault.azure.net/keys/myClusterKey/46ab702136bc4b229f8b10e8c2997fa4`.
+- **Versionslos**: Geben Sie während der Clustererstellung nur den **Schlüsselbezeichner** an. Beispiel: `https://contoso-kv.vault.azure.net/keys/myClusterKey`.
+
+Darüber hinaus müssen Sie die verwaltete Identität dem Cluster zuweisen.
 
 ![Neuen Cluster erstellen](./media/disk-encryption/create-cluster-portal.png)
 
 #### <a name="using-azure-cli"></a>Verwenden der Azure-Befehlszeilenschnittstelle
 
-Im folgenden Beispiel wird mithilfe der Azure-Befehlszeilenschnittstelle ein neuer Apache Spark-Cluster mit aktivierter Datenträgerverschlüsselung erstellt. Weitere Informationen finden Sie in der Dokumentation der Azure-Befehlszeilenschnittstelle unter [az hdinsight create](/cli/azure/hdinsight#az-hdinsight-create).
+Im folgenden Beispiel wird mithilfe der Azure-Befehlszeilenschnittstelle ein neuer Apache Spark-Cluster mit aktivierter Datenträgerverschlüsselung erstellt. Weitere Informationen finden Sie in der Dokumentation der Azure-Befehlszeilenschnittstelle unter [az hdinsight create](/cli/azure/hdinsight#az-hdinsight-create). Der Parameter `encryption-key-version` ist optional.
 
 ```azurecli
 az hdinsight create -t spark -g MyResourceGroup -n MyCluster \
@@ -141,7 +150,7 @@ az hdinsight create -t spark -g MyResourceGroup -n MyCluster \
 
 #### <a name="using-azure-resource-manager-templates"></a>Verwenden von Azure-Ressourcen-Manager-Vorlagen
 
-Im folgenden Beispiel wird mithilfe einer Azure Resource Manager-Vorlage ein neuer Apache Spark-Cluster mit aktivierter Datenträgerverschlüsselung erstellt. Weitere Informationen finden Sie unter [Was sind ARM-Vorlagen?](../azure-resource-manager/templates/overview.md).
+Im folgenden Beispiel wird mithilfe einer Azure Resource Manager-Vorlage ein neuer Apache Spark-Cluster mit aktivierter Datenträgerverschlüsselung erstellt. Weitere Informationen finden Sie unter [Was sind ARM-Vorlagen?](../azure-resource-manager/templates/overview.md). Die Resource Manager-Vorlageneigenschaft `diskEncryptionKeyVersion` ist optional.
 
 In diesem Beispiel wird PowerShell verwendet, um die Vorlage aufzurufen.
 
@@ -355,7 +364,7 @@ Der Inhalt der Resource Manager-Vorlage `azuredeploy.json`:
 
 ### <a name="rotating-the-encryption-key"></a>Rotieren des Verschlüsselungsschlüssels
 
-In manchen Szenarien müssen unter Umständen die vom HDInsight-Cluster verwendeten Verschlüsselungsschlüssel geändert werden, nachdem der Cluster bereits erstellt wurde. Hierzu können Sie das Portal verwenden. Für diesen Vorgang muss der Cluster sowohl auf den aktuellen Schlüssel als auch auf den vorgesehenen neuen Schlüssel zugreifen können, andernfalls schlägt der Vorgang zum Rotieren des Schlüssels fehl.
+Mit Azure-Portal oder Azure CLI können Sie die Verschlüsselungsschlüssel ändern, die auf dem ausgeführten Cluster verwendet werden. Für diesen Vorgang muss der Cluster sowohl auf den aktuellen Schlüssel als auch auf den vorgesehenen neuen Schlüssel zugreifen können, andernfalls schlägt der Vorgang zum Rotieren des Schlüssels fehl. Für Cluster, die nach dem Release November 2020 erstellt werden, können Sie auswählen, ob Ihr neuer Schlüssel eine Version haben soll oder nicht. Für Cluster, die vor dem Release November 2020 erstellt wurden, müssen Sie einen Schlüssel mit Versionsangabe verwenden, wenn Sie den Verschlüsselungsschlüssel rotieren.
 
 #### <a name="using-the-azure-portal"></a>Verwenden des Azure-Portals
 

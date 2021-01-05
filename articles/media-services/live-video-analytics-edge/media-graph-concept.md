@@ -3,12 +3,12 @@ title: 'Mediengraphkonzept: Azure'
 description: Mit einem Mediengraph können Sie definieren, von welchem Ort Medien erfasst, wie diese verarbeitet und wohin die Ergebnisse übermittelt werden sollen. Dieser Artikel bietet eine detaillierte Beschreibung des Konzepts eines Mediengraphs.
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: 7def82160547b759c7ab4c40c681052747261920
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6f23e7db8cecb46106a63fdecdb6ba04dbd99682
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91567077"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97401099"
 ---
 # <a name="media-graph"></a>Mediendiagramm
 
@@ -41,7 +41,7 @@ Die Werte für die Parameter in der Topologie werden angegeben, wenn Sie Graphin
 Der Lebenszyklus von Graphtopologien und Graphinstanzen ist im folgenden Zustandsdiagramm dargestellt.
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/media-graph/graph-topology-lifecycle.svg" alt-text="Mediendiagramm":::
+> :::image type="content" source="./media/media-graph/graph-topology-lifecycle.svg" alt-text="Lebenszyklus von Graphtopologie und Graphinstanz":::
 
 Sie beginnen mit [der Erstellung einer Graphtopologie](direct-methods.md#graphtopologyset). Dann erstellen Sie für jeden Livevideofeed, den Sie mit dieser Topologie verarbeiten möchten, [eine Graphinstanz](direct-methods.md#graphinstanceset). 
 
@@ -70,7 +70,7 @@ Live Video Analytics in IoT Edge unterstützt die folgenden Knotentypen innerhal
 
 #### <a name="rtsp-source"></a>RTSP-Quelle 
 
-Ein RTSP-Quellknoten ermöglicht Ihnen das Erfassen von Medien von einem [RTSP](https://tools.ietf.org/html/rfc2326 server). Überwachungs- und IP-basierte Kameras übertragen ihre Daten in einem Protokoll namens RTSP (Real-Time-Streaming-Protocol), das sich von anderen Geräten wie Smartphones und Videokameras unterscheidet. Dieses Protokoll wird für das Einrichten und Steuern der Mediensitzungen zwischen einem Server (der Kamera) und einem Client verwendet. Der RTSP-Quellknoten in einem Mediengraph fungiert als Client und kann eine Sitzung mit einem RTSP-Server einrichten. Viele Geräte, etwa die meisten [IP-Kameras](https://en.wikipedia.org/wiki/IP_camera), verfügen über einen integrierten RTSP-Server. [ONVIF](https://www.onvif.org/) schreibt in ihrer Definition von Geräten, die mit den [Profilen G, S und T](https://www.onvif.org/wp-content/uploads/2019/12/ONVIF_Profile_Feature_overview_v2-3.pdf) kompatibel sind, RTSP-Unterstützung zwingend vor. Für den RTSP-Quellknoten muss eine RTSP-URL zusammen mit Anmeldeinformationen angegeben werden, um eine authentifizierte Verbindung herzustellen.
+Ein RTSP-Quellknoten ermöglicht Ihnen das Erfassen von Medien von einem [RTSP](https://tools.ietf.org/html/rfc2326)-Server. Überwachungs- und IP-basierte Kameras übertragen ihre Daten in einem Protokoll namens RTSP (Real-Time-Streaming-Protocol), das sich von anderen Geräten wie Smartphones und Videokameras unterscheidet. Dieses Protokoll wird für das Einrichten und Steuern der Mediensitzungen zwischen einem Server (der Kamera) und einem Client verwendet. Der RTSP-Quellknoten in einem Mediengraph fungiert als Client und kann eine Sitzung mit einem RTSP-Server einrichten. Viele Geräte, etwa die meisten [IP-Kameras](https://en.wikipedia.org/wiki/IP_camera), verfügen über einen integrierten RTSP-Server. [ONVIF](https://www.onvif.org/) schreibt in ihrer Definition von Geräten, die mit den [Profilen G, S und T](https://www.onvif.org/wp-content/uploads/2019/12/ONVIF_Profile_Feature_overview_v2-3.pdf) kompatibel sind, RTSP-Unterstützung zwingend vor. Für den RTSP-Quellknoten muss eine RTSP-URL zusammen mit Anmeldeinformationen angegeben werden, um eine authentifizierte Verbindung herzustellen.
 
 #### <a name="iot-hub-message-source"></a>IoT Hub-Nachrichtenquelle 
 
@@ -87,6 +87,8 @@ Mithilfe des Verarbeitungsknotens für die Bewegungserkennung können Sie Bewegu
 #### <a name="frame-rate-filter-processor"></a>Verarbeitungsknoten für Bildfrequenzfilter  
 
 Der Verarbeitungsknoten für Bildfrequenzfilter ermöglicht es Ihnen, mit einer angegebenen Rate Einzelbilder als Stichproben aus dem eingehenden Videodatenstrom zu ziehen. Dadurch können Sie die Anzahl der Einzelbilder verringern, die zur weiteren Verarbeitung an Downstreamkomponenten (wie etwa den Verarbeitungsknoten für die HTTP-Erweiterung) gesendet werden.
+>[!WARNING]
+> Dieser Prozessor ist im neuesten Release des „Live Video Analytics in IoT Edge“-Moduls **veraltet**. Die Verwaltung der Bildfrequenz wird jetzt in den Graph-Erweiterungsprozessoren selbst unterstützt.
 
 #### <a name="http-extension-processor"></a>Verarbeitungsknoten für die HTTP-Erweiterung
 
@@ -108,8 +110,9 @@ Ein Knoten der Medienobjektsenke ermöglicht Ihnen das Schreiben von Mediendaten
 
 #### <a name="file-sink"></a>Dateisenke  
 
-Der Dateisenkknoten ermöglicht Ihnen das Schreiben von Mediendaten (Video und/oder Audio) an einen Speicherort im lokalen Dateisystem des IoT Edge-Geräts. Es kann nur einen Dateisenkknoten in einem Mediengraph geben, und dieser muss im Datenstrom unterhalb eines Signalgate-Verarbeitungsknotens liegen. Dadurch wird die Dauer der Ausgabedateien auf die Werte beschränkt, die in den Eigenschaften des Signalgate-Verarbeitungsknotens angegeben sind.
-
+Der Dateisenkknoten ermöglicht Ihnen das Schreiben von Mediendaten (Video und/oder Audio) an einen Speicherort im lokalen Dateisystem des IoT Edge-Geräts. Es kann nur einen Dateisenkknoten in einem Mediengraph geben, und dieser muss im Datenstrom unterhalb eines Signalgate-Verarbeitungsknotens liegen. Dadurch wird die Dauer der Ausgabedateien auf die Werte beschränkt, die in den Eigenschaften des Signalgate-Verarbeitungsknotens angegeben sind. Um sicherzustellen, dass auf Ihrem Edgegerät genügend Speicherplatz zur Verfügung steht, können Sie auch die maximale Größe festlegen, die das „Live Video Analytics in IoT Edge“-Modul zum Speichern von Daten verwenden kann.  
+> [!NOTE]
+Wenn die Dateisenke voll ist, werden die ältesten Daten vom „Live Video Analytics in IoT Edge“-Modul gelöscht und durch die neuen ersetzt.
 #### <a name="iot-hub-message-sink"></a>IoT Hub-Nachrichtensenke  
 
 Ein Knoten der IoT Hub-Nachrichtensenke ermöglicht Ihnen das Veröffentlichen von Ereignissen im IoT Edge-Hub. Der IoT Edge-Hub kann auf diese Weise Daten an andere Module oder Apps auf dem Edge-Gerät oder an IoT Hub in der Cloud weiterleiten (über Routen, die im Bereitstellungsmanifest angegeben sind). Der Knoten der IoT Hub-Nachrichtensenke kann Ereignisse von im Datenstrom aufwärts gelegenen Verarbeitungsknoten annehmen, etwa von einem Verarbeitungsknoten für die Bewegungserkennung oder einem externen Rückschlussdienst über einen Verarbeitungsknoten für die HTTP-Erweiterung.

@@ -9,12 +9,12 @@ ms.subservice: machine-learning
 ms.date: 11/13/2020
 ms.author: midesa
 ms.reviewer: jrasnick
-ms.openlocfilehash: ced78955c71f37a5a6f5231f61e5327428834f00
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: ca55186a53b228aa97cc82d33a09aa3ffe455eee
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95919030"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97092005"
 ---
 # <a name="machine-learning-with-apache-spark"></a>Maschinelles Lernen mit Apache Spark
 
@@ -43,7 +43,7 @@ Weitere Informationen zu den Möglichkeiten des maschinellen Lernens finden Sie 
 ### <a name="sparkml-and-mllib"></a>SparkML und MLlib
 Dank seiner verteilten In-Memory-Datenverarbeitungsfunktionen eignet sich Spark besonders für iterative Algorithmen beim maschinellen Lernen und für Graphberechnungen. ```spark.ml``` bietet einen einheitlichen Satz von allgemeinen APIs, die Benutzer beim Erstellen und Optimieren von Machine Learning-Pipelines unterstützen. Weitere Informationen zu ```spark.ml``` finden Sie im [Apache Spark ML-Programmierleitfaden](https://spark.apache.org/docs/1.2.2/ml-guide.html).
 
-### <a name="azure-machine-learning-automl"></a>Azure Machine Learning AutoML
+### <a name="azure-machine-learning-automated-ml"></a>Azure Machine Learning AutoML (automatisiertes maschinelles Lernen)
 [Azure Machine Learning AutoML](https://docs.microsoft.com/azure/machine-learning/concept-automated-ml) (automatisiertes maschinelles Lernen) hilft dabei, den Prozess der Entwicklung von Machine Learning-Modellen zu automatisieren. Es versetzt Data Scientists, Analysten und Entwickler in die Lage, ML-Modelle mit hoher Skalierbarkeit, Effizienz und Produktivität zu erstellen und gleichzeitig die Modellqualität zu erhalten. Die Komponenten zur Ausführung des Azure Machine Learning AutoML SDKs sind direkt in die Synapse-Runtime integriert.
 
 ### <a name="open-source-libraries"></a>Open-Source-Bibliotheken
@@ -68,7 +68,7 @@ Die Registrierung eines Modells ermöglicht es Ihnen, Metadaten zu Modellen in I
 Für die ersten Schritte mit dem maschinellen Lernen in Azure Synapse Analytics sollten Sie sich unbedingt die folgenden Tutorials ansehen:
 - [Analysieren von Daten mit Azure Synapse-Notebooks](../spark/apache-spark-data-visualization-tutorial.md)
 
-- [Trainieren eines Machine Learning-Modells mit AutoML](../spark/apache-spark-azure-machine-learning-tutorial.md)
+- [Tutorial: Trainieren eines Machine Learning-Modells in Python in Azure Synapse mit Apache Spark und automatisiertem maschinellem Lernen](../spark/apache-spark-azure-machine-learning-tutorial.md)
 
 - [Trainieren eines Machine Learning-Modells mit Apache Spark MLlib](../spark/apache-spark-machine-learning-mllib-notebook.md)
   

@@ -1,21 +1,21 @@
 ---
 title: Konfigurieren von Apps im Portal
-description: Erfahren Sie, wie Sie allgemeine Einstellungen für eine App Service-App im Azure-Portal konfigurieren. App-Einstellungen, Verbindungszeichenfolgen, Plattform, Sprachstapel, Container usw.
+description: Erfahren Sie, wie Sie allgemeine Einstellungen für eine App Service-App im Azure-Portal konfigurieren. App-Einstellungen, App-Konfiguration, Verbindungszeichenfolgen, Plattform, Sprachstapel, Container usw.
 keywords: Azure App Service, Web-App, App-Einstellungen, Umgebungsvariablen
 ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
 ms.topic: article
-ms.date: 08/13/2019
+ms.date: 12/07/2020
 ms.custom: devx-track-csharp, seodec18, devx-track-azurecli
-ms.openlocfilehash: 76cfefa3f104ecef69e28fecd1c37fc336b0ce8c
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 4594a3a7ac7af7acf75fa5c47e2eab3246fc00e7
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96854647"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97346756"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>Konfigurieren einer App Service-App im Azure-Portal
 
-In diesem Thema wird erläutert, wie Sie allgemeine Einstellungen für Web-Apps, ein mobiles Back-End oder eine API-App über das [Azure-Portal] konfigurieren.
+In diesem Artikel wird erläutert, wie Sie allgemeine Einstellungen für Web-Apps, ein mobiles Back-End oder eine API-App über das [Azure-Portal] konfigurieren.
 
 ## <a name="configure-app-settings"></a>Konfigurieren von App-Einstellungen
 
@@ -118,7 +118,10 @@ Suchen Sie im [Azure-Portal] die Option **App Services**, wählen Sie sie aus, u
 
 Für ASP.NET- und ASP.NET Core-Entwickler entspricht die Einstellung von Verbindungszeichenfolgen in App Service der Einstellung in `<connectionStrings>` in *Web.config*, aber die Werte, die Sie in App Service festlegen, überschreiben die in *Web.config*. Sie können Entwicklungseinstellungen (z. B. eine Datenbankdatei) in *Web.config* und Produktionsgeheimnisse (z. B. SQL-Datenbank-Anmeldeinformationen) sicher in App Service beibehalten. Der gleiche Code verwendet Ihre Entwicklungseinstellungen, wenn Sie lokal debuggen, und verwendet Ihre Produktionsgeheimnisse, wenn sie in Azure bereitgestellt werden.
 
-Für andere Sprachstapel sollten Sie stattdessen besser [App-Einstellungen](#configure-app-settings) verwenden, da Verbindungszeichenfolgen spezielle Formatierung in den Variablenschlüsseln erfordern, um auf die Werte zuzugreifen. Hier ist jedoch eine Ausnahme: Bestimmte Azure-Datenbanktypen werden zusammen mit der App gesichert, wenn Sie ihre Verbindungszeichenfolgen in Ihrer App konfigurieren. Weitere Informationen finden Sie unter [Was wird gesichert?](manage-backup.md#what-gets-backed-up). Wenn Sie diese automatisierte Sicherung nicht benötigen, verwenden Sie App-Einstellungen.
+Für andere Sprachstapel sollten Sie stattdessen besser [App-Einstellungen](#configure-app-settings) verwenden, da Verbindungszeichenfolgen spezielle Formatierung in den Variablenschlüsseln erfordern, um auf die Werte zuzugreifen. 
+
+> [!NOTE]
+> In einem Fall sollten Sie Verbindungszeichenfolgen anstelle von App-Einstellungen für Nicht-.NET-Sprachen verwenden: bestimmte Azure-Datenbanktypen werden _nur_ dann, wenn Sie eine Verbindungszeichenfolge für die Datenbank in Ihrer App Service-App konfigurieren, zusammen mit der App gesichert. Weitere Informationen finden Sie unter [Was wird gesichert?](manage-backup.md#what-gets-backed-up). Wenn Sie diese automatisierte Sicherung nicht benötigen, verwenden Sie App-Einstellungen.
 
 Zur Laufzeit stehen Verbindungszeichenfolgen als Umgebungsvariablen zur Verfügung, wobei sie mit Präfixen für die folgenden Verbindungstypen versehen werden:
 
@@ -228,21 +231,27 @@ Suchen Sie im [Azure-Portal] die Option **App Services**, wählen Sie sie aus, u
 
 ![Pfadzuordnungen](./media/configure-common/open-path.png)
 
-Auf der Seite **Pfadzuordnungen** wird je nach BS-Typ Unterschiedliches angezeigt.
+> [!NOTE] 
+> Auf der Registerkarte **Pfadzuordnungen** werden möglicherweise betriebssystemspezifische Einstellungen angezeigt, die sich von dem hier gezeigten Beispiel unterscheiden.
 
 ### <a name="windows-apps-uncontainerized"></a>Windows-Apps (nicht in Containern)
 
 Für Windows-Apps können Sie die IIS-Handlerzuordnungen und virtuelle Anwendungen und Verzeichnisse anpassen.
 
-Mit Handlerzuordnungen können Sie benutzerdefinierte Skriptprozessoren hinzufügen, die Anforderungen für bestimmte Dateierweiterungen verarbeiten. Um einen benutzerdefinierten Handler hinzuzufügen, klicken Sie auf **Neuer Handler**. Konfigurieren Sie den Handler folgendermaßen:
+Mit Handlerzuordnungen können Sie benutzerdefinierte Skriptprozessoren hinzufügen, die Anforderungen für bestimmte Dateierweiterungen verarbeiten. Um einen benutzerdefinierten Handler hinzuzufügen, klicken Sie auf **Neue Handlerzuordnung**. Konfigurieren Sie den Handler folgendermaßen:
 
 - **Erweiterung**. Die zu verarbeitende Dateierweiterung wie *\*.php* oder *handler.fcgi*.
 - **Skriptprozessor**. Der absolute Pfad des Skriptprozessors zu Ihnen. Anforderungen für Dateien, die dieser Dateierweiterung entsprechen, werden vom Skriptprozessor verarbeitet. Verwenden Sie den Pfad `D:\home\site\wwwroot` , um auf das Stammverzeichnis Ihrer App zu verweisen.
 - **Argumente**. Optionale Befehlszeilenargumente für den Skriptprozessor.
 
-Für jede App ist der Standardstammpfad (`/`) `D:\home\site\wwwroot` zugeordnet, wo Ihr Code standardmäßig bereitgestellt wird. Wenn Ihr App-Stamm sich in einem anderen Ordner befindet oder Ihr Repository über mehrere Anwendungen verfügt, können Sie virtuelle Anwendungen und Verzeichnisse hier bearbeiten oder hinzufügen. Klicken Sie auf **Neue virtuelle Anwendung oder neues virtuelles Verzeichnis** .
+Für jede App ist der Standardstammpfad (`/`) `D:\home\site\wwwroot` zugeordnet, wo Ihr Code standardmäßig bereitgestellt wird. Wenn Ihr App-Stamm sich in einem anderen Ordner befindet oder Ihr Repository über mehrere Anwendungen verfügt, können Sie virtuelle Anwendungen und Verzeichnisse hier bearbeiten oder hinzufügen. 
 
-Um die virtuellen Anwendungen und Verzeichnisse zu konfigurieren, geben Sie jedes virtuelle Verzeichnis und den zugehörigen physischen Pfad relativ zum Stammverzeichnis der Website (`D:\home`) an. Sie haben außerdem die Möglichkeit, mit dem Kontrollkästchen **Anwendung** ein virtuelles Verzeichnis als Anwendung zu markieren.
+Klicken Sie auf der Registerkarte **Pfadzuordnungen **auf** Neue virtuelle Anwendung oder neues virtuelles Verzeichnis**. 
+
+- Wenn Sie ein virtuelles Verzeichnis einem physischen Pfad zuordnen möchten, lassen Sie das Kontrollkästchen **Verzeichnis** aktiviert. Geben Sie das virtuelle Verzeichnis und den entsprechenden relativen (physischen) Pfad zum Stammverzeichnis der Website an (`D:\home`).
+- Wenn Sie ein virtuelles Verzeichnis als Webanwendung markieren möchten, deaktivieren Sie das Kontrollkästchen **Verzeichnis**.
+  
+  ![Kontrollkästchen „Verzeichnis“](./media/configure-common/directory-check-box.png)
 
 ### <a name="containerized-apps"></a>Container-Apps
 

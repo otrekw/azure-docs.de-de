@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 11/06/2020
 ms.author: b-juche
-ms.openlocfilehash: c6194469837997108964feda82d406c9108641b9
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: a07898692c8af70fab0d2634ed1513f0f3666a4d
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94369238"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505459"
 ---
 # <a name="troubleshoot-capacity-pool-issues"></a>Problembehandlung bei Kapazitätspools
 
@@ -33,7 +33,7 @@ In diesem Artikel werden Lösungen für möglicherweise beim Verwalten von Kapaz
 | Probleme beim Löschen eines Kapazitätspools  |  Stellen Sie sicher, dass Sie alle Volumes und Momentaufnahmen von Azure NetApp Files aus dem Abonnement entfernen, in dem Sie den Kapazitätspool löschen möchten. <br> Wenn Sie bereits alle Volumes und Momentaufnahmen entfernt haben und den Kapazitätspool immer noch nicht löschen können, sind möglicherweise weiterhin Verweise auf Ressourcen vorhanden, ohne im Portal angezeigt zu werden. Reichen Sie in diesem Fall ein Supportticket ein, und geben Sie an, dass Sie die oben beschriebenen Schritte ausgeführt haben. |
 | Fehler `Requested throughput not available` bei Volumeerstellung oder -änderung | Der verfügbare Durchsatz für ein Volume wird durch die Größe des Kapazitätspools und den Servicelevel festgelegt. Wenn Sie nicht über genügend Durchsatz verfügen, sollten Sie die Poolgröße heraufsetzen oder den vorhandenen Volumedurchsatz anpassen. | 
 
-## <a name="issues-moving-a-capacity-pool"></a>Probleme beim Verschieben eines Kapazitätspools 
+## <a name="issues-when-changing-the-capacity-pool-of-a-volume"></a>Probleme beim Ändern des Kapazitätspools eines Volumes 
 
 > [!IMPORTANT] 
 > Die Registrierung für die unter [Dynamisches Ändern der Dienstebene eines Volumes](dynamic-change-volume-service-level.md) beschriebene öffentliche Vorschau wurde bis auf Weiteres ausgesetzt.

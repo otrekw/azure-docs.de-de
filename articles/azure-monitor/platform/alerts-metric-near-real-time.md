@@ -5,14 +5,14 @@ author: harelbr
 ms.author: harelbr
 services: monitoring
 ms.topic: conceptual
-ms.date: 12/3/2020
+ms.date: 12/15/2020
 ms.subservice: alerts
-ms.openlocfilehash: dfcc1f15ebec1337cfa7d484319c7b942ff052b2
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 8f59f3488f6c8f5b35ec68d93db656447f882a92
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96548238"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97510681"
 ---
 # <a name="supported-resources-for-metric-alerts-in-azure-monitor"></a>Unterstützte Ressourcen für Metrikwarnungen in Azure Monitor
 
@@ -41,10 +41,10 @@ Im Folgenden finden Sie die vollständige Liste der Azure Monitor-Metrikquellen,
 |Microsoft.ClassicCompute/domainNames/slots/roles | Nein | Nein | [Cloud Services (klassisch)](./metrics-supported.md#microsoftclassiccomputedomainnamesslotsroles) |
 |Microsoft.ClassicCompute/virtualMachines | Nein | Nein | [Virtuelle Computer (klassisch)](./metrics-supported.md#microsoftclassiccomputevirtualmachines) |
 |Microsoft.ClassicStorage/storageAccounts | Ja | Nein | [Speicherkonten (klassisch)](./metrics-supported.md#microsoftclassicstoragestorageaccounts) |
-|Microsoft.ClassicStorage/storageAccounts/blobServices | Ja | Nein | |
-|Microsoft.ClassicStorage/storageAccounts/fileServices | Ja | Nein | |
-|Microsoft.ClassicStorage/storageAccounts/queueServices | Ja | Nein | |
-|Microsoft.ClassicStorage/storageAccounts/tableServices | Ja | Nein | |
+|Microsoft.ClassicStorage/storageAccounts/blobServices | Ja | Nein | [Speicherkonten (klassisch): Blobs](./metrics-supported.md#microsoftclassicstoragestorageaccountsblobservices) |
+|Microsoft.ClassicStorage/storageAccounts/fileServices | Ja | Nein | [Speicherkonten (klassisch): Dateien](./metrics-supported.md#microsoftclassicstoragestorageaccountsfileservices) |
+|Microsoft.ClassicStorage/storageAccounts/queueServices | Ja | Nein | [Speicherkonten (klassisch): Warteschlangen](./metrics-supported.md#microsoftclassicstoragestorageaccountsqueueservices) |
+|Microsoft.ClassicStorage/storageAccounts/tableServices | Ja | Nein | [Speicherkonten (klassisch): Tabellen](./metrics-supported.md#microsoftclassicstoragestorageaccountstableservices) |
 |Microsoft.CognitiveServices/accounts | Ja | Nein | [Cognitive Services](./metrics-supported.md#microsoftcognitiveservicesaccounts) |
 |Microsoft.Compute/virtualMachines | Ja | Ja<sup>1</sup> | [Virtuelle Computer](./metrics-supported.md#microsoftcomputevirtualmachines) |
 |Microsoft.Compute/virtualMachineScaleSets | Ja | Nein |[Skalierungsgruppen für virtuelle Computer](./metrics-supported.md#microsoftcomputevirtualmachinescalesets) |
@@ -57,10 +57,9 @@ Im Folgenden finden Sie die vollständige Liste der Azure Monitor-Metrikquellen,
 |Microsoft.DataShare/accounts | Ja | Nein | |
 |Microsoft.DBforMariaDB/servers | Nein | Nein | [DB for MariaDB](./metrics-supported.md#microsoftdbformariadbservers) |
 |Microsoft.DBforMySQL/servers | Nein | Nein |[Datenbank für MySQL](./metrics-supported.md#microsoftdbformysqlservers)|
-|Microsoft.DBforPostgreSQL/flexibleServers | Ja | Nein | |
 |Microsoft.DBforPostgreSQL/servers | Nein | Nein | [Datenbank für PostgreSQL](./metrics-supported.md#microsoftdbforpostgresqlservers)|
 |Microsoft.DBforPostgreSQL/serversv2 | Nein | Nein | [DB for PostgreSQL V2](./metrics-supported.md#microsoftdbforpostgresqlserversv2)|
-|Microsoft.DBforPostgreSQL/singleservers | Nein | Nein | [DB for PostgreSQL (Einzelserver)](./metrics-supported.md#microsoftdbforpostgresqlsingleservers)|
+|Microsoft.DBforPostgreSQL/flexibleServers | Ja | Nein | [DB for PostgreSQL (flexible Server)](./metrics-supported.md#microsoftdbforpostgresqlflexibleservers)|
 |Microsoft.Devices/IotHubs | Ja | Nein |[IoT Hub](./metrics-supported.md#microsoftdevicesiothubs) |
 |Microsoft.Devices/provisioningServices| Ja | Nein | [Device Provisioning Service-Instanzen](./metrics-supported.md#microsoftdevicesprovisioningservices) |
 |Microsoft.DigitalTwins/digitalTwinsInstances | Ja | Nein | |
@@ -104,7 +103,10 @@ Im Folgenden finden Sie die vollständige Liste der Azure Monitor-Metrikquellen,
 |Microsoft.Sql/servers/databases | Nein | Ja | [SQL-Datenbanken](./metrics-supported.md#microsoftsqlserversdatabases) |
 |Microsoft.Sql/servers/elasticPools | Nein | Ja | [Pools für elastische SQL-Datenbanken](./metrics-supported.md#microsoftsqlserverselasticpools) |
 |Microsoft.Storage/storageAccounts |Ja | Nein | [Speicherkonten](./metrics-supported.md#microsoftstoragestorageaccounts)|
-|Microsoft.Storage/storageAccounts/services | Ja| Nein | [Blobdienste](./metrics-supported.md#microsoftstoragestorageaccountsblobservices), [Dateidienste](./metrics-supported.md#microsoftstoragestorageaccountsfileservices), [Warteschlangendienste](./metrics-supported.md#microsoftstoragestorageaccountsqueueservices) und [Tabellendienste](./metrics-supported.md#microsoftstoragestorageaccountstableservices)|
+|Microsoft.Storage/storageAccounts/blobServices | Ja| Nein | [Speicherkonten: Blobs](./metrics-supported.md#microsoftstoragestorageaccountsblobservices) |
+|Microsoft.Storage/storageAccounts/fileServices | Ja| Nein | [Speicherkonten: Dateien](./metrics-supported.md#microsoftstoragestorageaccountsfileservices) |
+|Microsoft.Storage/storageAccounts/queueServices | Ja| Nein | [Speicher Konten: Warteschlangen](./metrics-supported.md#microsoftstoragestorageaccountsqueueservices) |
+|Microsoft.Storage/storageAccounts/tableServices | Ja| Nein | [Speicher Konten: Tabellen](./metrics-supported.md#microsoftstoragestorageaccountstableservices) |
 |Microsoft.StorageCache/caches | Ja | Nein | |
 |Microsoft.StorageSync/storageSyncServices | Ja | Nein | [Speichersynchronisierungsdienste](./metrics-supported.md#microsoftstoragesyncstoragesyncservices) |
 |Microsoft.StreamAnalytics/streamingjobs | Ja | Nein | [Stream Analytics](./metrics-supported.md#microsoftstreamanalyticsstreamingjobs) |
@@ -115,7 +117,7 @@ Im Folgenden finden Sie die vollständige Liste der Azure Monitor-Metrikquellen,
 |Microsoft.Web/hostingEnvironments/multiRolePools | Ja | Nein | [Pools mit mehreren Rollen für die App Service-Umgebung](./metrics-supported.md#microsoftwebhostingenvironmentsmultirolepools)|
 |Microsoft.Web/hostingEnvironments/workerPools | Ja | Nein | [Workerpools für die App Service-Umgebung](./metrics-supported.md#microsoftwebhostingenvironmentsworkerpools)|
 |Microsoft.Web/serverfarms | Ja | Nein | [App Service-Pläne](./metrics-supported.md#microsoftwebserverfarms)|
-|Microsoft.Web/sites | Ja | Nein | [App Services](./metrics-supported.md#microsoftwebsites-excluding-functions) und [Functions](./metrics-supported.md#microsoftwebsites-functions)|
+|Microsoft.Web/sites | Ja | Nein | [App Services und Functions](./metrics-supported.md#microsoftwebsites)|
 |Microsoft.Web/sites/slots | Ja | Nein | [App Service-Slots](./metrics-supported.md#microsoftwebsitesslots)|
 
 <sup>1</sup> Für Netzwerkmetriken (Eingehender Netzwerkverkehr gesamt, Ausgehender Netzwerkverkehr gesamt, Eingehende Datenflüsse, Ausgehende Datenflüsse, Maximale Erstellungsrate für eingehende Datenflüsse, Maximale Erstellungsrate für ausgehende Datenflüsse) sowie benutzerdefinierte Metriken virtueller Computer nicht unterstützt.

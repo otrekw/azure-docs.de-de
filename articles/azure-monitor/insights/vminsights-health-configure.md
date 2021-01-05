@@ -5,13 +5,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 09/08/2020
-ms.openlocfilehash: f41a43e76993a03554d32fc7f3ce3149848989a9
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.date: 12/14/2020
+ms.openlocfilehash: 427bdec2b5e5ab14d566375d5ad8f9da9dc3e81b
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94686500"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505595"
 ---
 # <a name="configure-monitoring-in-azure-monitor-for-vms-guest-health-preview"></a>Konfigurieren der Überwachung für das Feature „Gastintegrität“ von Azure Monitor für VMs (Vorschau)
 Mit dem Feature „Gastintegrität“ von Azure Monitor für VMs können Sie Informationen zur Integrität eines virtuellen Computers anzeigen. Dies wird anhand von verschiedenen Leistungsmessungen definiert, für die in regelmäßigen Abständen Stichproben genommen werden. In diesem Artikel wird beschrieben, wie Sie die Standardüberwachung mit dem Azure-Portal ändern können. Darüber hinaus enthält er auch eine Beschreibung der grundlegenden Konzepte von „Monitoren“ (Überwachungskomponenten), die zum [Konfigurieren der Überwachung per Datensammlungsregel](vminsights-health-configure-dcr.md) erforderlich sind.
@@ -24,7 +24,7 @@ Mit dem Feature „Gastintegrität“ von Azure Monitor für VMs können Sie Inf
 ## <a name="enable-or-disable-monitors"></a>Aktivieren oder Deaktivieren von Monitoren
 Sowohl Einheitenmonitore als auch Aggregatmonitore verfügen über die Einstellung **Status der Integritätsüberwachung**, mit der Sie die Option aktivieren und deaktivieren können. Wenn ein Monitor aktiviert ist, wird seine Integrität angezeigt und zum Festlegen der Integrität der VM verwendet. Wenn ein Monitor deaktiviert ist, wird seine Integrität nicht berechnet und nicht verwendet, um die Integrität der VM festzulegen.
 
-| Einstellung | BESCHREIBUNG |
+| Einstellung | Beschreibung |
 |:---|:---|
 | Aktiviert | Der Monitor wird unabhängig von der Einstellung des übergeordneten Elements aktiviert. |
 | Disabled | Der Monitor wird unabhängig von der Einstellung des übergeordneten Elements deaktiviert. |
@@ -34,10 +34,16 @@ Wenn ein Monitor deaktiviert ist, werden alle Kriterien als nicht verfügbar ang
 
 ![Deaktivierter Monitor](media/vminsights-health-configure/disabled-monitor.png)
 
+
+> [!NOTE]
+> Wenn ein übergeordneter Monitor deaktiviert ist, werden alle untergeordneten Monitore ebenfalls deaktiviert. Wenn Sie den untergeordneten Monitor explizit aktivieren, wird das übergeordnete Element ebenfalls aktiviert, aber sein Konfigurationsstatus bleibt unverändert. In diesem Fall wird im übergeordneten Monitor die folgende Meldung angezeigt.
+>
+> *Es liegt eine Diskrepanz vor, weil der konfigurierte Status des Monitors „Deaktiviert“ lautet, dies jedoch im Integritätsstatus nicht widerspiegelt wird. Dies liegt entweder daran, dass die konfigurierten Änderungen noch weitergegeben werden oder einer der untergeordneten Monitore explizit aktiviert wurde.*
+
 ## <a name="enable-or-disable-virtual-machine"></a>Aktivieren oder Deaktivieren eines virtuellen Computers
 Sie können die Überwachung für einen virtuellen Computer deaktivieren, um alle Monitore vorübergehend anzuhalten. Ein Beispiel für die Deaktivierung der Überwachung einer VM ist die Durchführung von Wartungsarbeiten.
 
-| Einstellung | BESCHREIBUNG |
+| Einstellung | Beschreibung |
 |:---|:---|
 | Aktiviert  | Der Integritätsstatus des Computers wird angezeigt. |
 | Disabled | Der Integritätsstatus des Computers wird als **Deaktiviert** angezeigt. Es werden keine Warnungen erstellt. |

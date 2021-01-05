@@ -12,12 +12,12 @@ ms.date: 08/03/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a5fcbf80850fd9de77e6f9a431afea6d48cb14d1
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 6abc3316e18fc70a2969bc220fd75e10e10f0e6e
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94949410"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97507777"
 ---
 # <a name="manage-azure-ad-b2c-user-accounts-with-microsoft-graph"></a>Verwalten von Azure AD B2C-Benutzerkonten mit Microsoft Graph
 
@@ -115,7 +115,7 @@ Wenn bei Benutzermigrationsvorgängen die Konten, die Sie migrieren möchten, ü
 
 ### <a name="extension-properties"></a>Erweiterungseigenschaften
 
-Für jede kundenorientierte Anwendung gelten spezifische Anforderungen im Hinblick auf die Informationen, die erfasst werden sollen. Der Azure AD B2C-Mandant umfasst einen integrierten Satz von in Eigenschaften gespeicherten Informationen, z. B. Vorname, Nachname, Ort und Postleitzahl. Mit Azure AD B2C haben Sie die Möglichkeit, den für die einzelnen Kundenkonten gespeicherten Satz von Eigenschaften zu erweitern. Weitere Informationen zum Definieren benutzerdefinierter Attribute finden Sie unter [Benutzerdefinierte Attribute (Benutzerflows)](user-flow-custom-attributes.md) und [Benutzerdefinierte Attribute (benutzerdefinierte Richtlinien)](custom-policy-custom-attributes.md).
+Für jede kundenorientierte Anwendung gelten spezifische Anforderungen im Hinblick auf die Informationen, die erfasst werden sollen. Der Azure AD B2C-Mandant umfasst einen integrierten Satz von in Eigenschaften gespeicherten Informationen, z. B. Vorname, Nachname, Ort und Postleitzahl. Mit Azure AD B2C haben Sie die Möglichkeit, den für die einzelnen Kundenkonten gespeicherten Satz von Eigenschaften zu erweitern. Weitere Informationen zum Definieren benutzerdefinierter Attribute finden Sie unter [Definieren benutzerdefinierter Attribute in Azure Active Directory B2C](user-flow-custom-attributes.md).
 
 Die Microsoft Graph-API unterstützt das Erstellen und Aktualisieren eines Benutzers mit Erweiterungsattributen. Erweiterungsattribute in den Graph-API werden gemäß der Konvention `extension_ApplicationClientID_attributename` benannt, wobei `ApplicationClientID` die **Anwendungs-ID (Client)** der Anwendung `b2c-extensions-app` ist (im Azure-Portal unter **App-Registrierungen** > **Alle Anwendungen**). Beachten Sie, dass die **Anwendungs-ID (Client)** in der Darstellung im Namen des Erweiterungsattributs keine Bindestriche enthält. Beispiel:
 

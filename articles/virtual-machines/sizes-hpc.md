@@ -6,15 +6,15 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 12/03/2020
+ms.date: 12/09/2020
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: 21b1004a347dec3a7f2a6460d8b853350bf36ff0
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 5559e491be15f8f848329405736fc977267c70cc
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96571044"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938595"
 ---
 # <a name="high-performance-computing-vm-sizes"></a>High-Performance Computing (HPC): VM-Größen
 
@@ -29,6 +29,9 @@ VMs der [HB-Serie](hb-series.md) sind für Anwendungen mit hohen Anforderungen a
 VMs der [HC-Serie](hc-series.md) sind für Anwendungen mit hohen Anforderungen an die Rechenleistung optimiert, z. B. implizite Finite-Elemente-Analysen, Molekulardynamik oder Chemoinformatik. HC-VMs bieten 44 Intel-Prozessorkerne des Modells Xeon Platinum 8168, 8 GB RAM pro CPU-Kern und kein Hyperthreading. Die Intel Xeon Platinum-Plattform unterstützt Intels umfangreiches Ökosystem von Softwaretools, etwa die Intel Math Kernel Library.
 
 VMs der [H-Serie](h-series.md) sind für Anwendungen optimiert, für die Anforderungen hinsichtlich hoher CPU-Frequenzen oder großem Arbeitsspeicher pro Kern gelten. Virtuelle Computer der H-Serie bieten 8 oder 16 Intel-Prozessorkerne des Modells Xeon E5 2667 v3, 7 oder 14 GB RAM pro CPU-Kern und kein Hyperthreading. Die H-Serie unterstützt Mellanox EDR InfiniBand mit 56 GBit/s in einer FAT-Strukturkonfiguration ohne Blocks für einheitliche RDMA-Leistung. Virtuelle Computer der H-Serie unterstützen Intel MPI 5.x und MS-MPI.
+
+> [!NOTE]
+> Alle VMs der HBv2-, HB- und HC-Serie haben exklusiven Zugriff auf die physischen Server. Es ist nur ein virtueller Computer pro physischem Server vorhanden, und für diese VM-Größen gibt es keine freigegebene Mehrinstanzenfähigkeit mit anderen VMs.
 
 > [!NOTE]
 > Die Außerbetriebnahme von [A8- bis A11-VMs](./sizes-previous-gen.md#a-series---compute-intensive-instances) ist für März 2021 geplant. Weitere Informationen finden Sie im [HPC-Migrationsleitfaden](https://azure.microsoft.com/resources/hpc-migration-guide/).

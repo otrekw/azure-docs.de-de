@@ -3,12 +3,12 @@ title: Mandantenübergreifende Verwaltungsmöglichkeiten
 description: Die delegierte Azure-Ressourcenverwaltung ermöglicht eine mandantenübergreifende Verwaltungserfahrung.
 ms.date: 11/19/2020
 ms.topic: conceptual
-ms.openlocfilehash: 95b9bcf6bb9530afc9f6a23c323b6931e8975ad1
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4550921fdefdca440b6757e7a3b7a03337599d16
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95905122"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97510650"
 ---
 # <a name="cross-tenant-management-experiences"></a>Mandantenübergreifende Verwaltungsmöglichkeiten
 
@@ -90,7 +90,7 @@ Die meisten Aufgaben und Dienste können auf delegierten Ressourcen über verwal
 
 [Azure Monitor](../../azure-monitor/index.yml):
 
-- Anzeigen von Warnungen für delegierte Abonnements mit der Möglichkeit, Warnungen in allen Abonnements anzuzeigen
+- Anzeigen von Warnungen für delegierte Abonnements mit der Möglichkeit, Warnungen in allen Abonnements anzuzeigen und zu aktualisieren
 - Anzeigen von Aktivitätsprotokolldetails für delegierte Abonnements
 - Log Analytics: Abfragen von Daten aus Remotearbeitsbereichen in mehreren Mandanten
 - Erstellen von Warnungen in Kundenmandanten, die eine Automatisierung auslösen, wie z. B. Azure Automation-Runbooks oder Azure Functions im verwaltenden Mandanten über Webhooks

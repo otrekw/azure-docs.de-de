@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 - device-developer
-ms.openlocfilehash: 1a050daa3a4b3ae9be5ef40961c40adaa90dc72b
-ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
+ms.openlocfilehash: 90246459663980de25e301817f651e7719e8f380
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96121808"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033176"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>Herstellen einer Verbindung mit Azure IoT Central
 
@@ -178,11 +178,21 @@ Dieser Ansatz ist nützlich, wenn Sie mit IoT Central experimentieren oder Gerä
 
 ## <a name="associate-a-device-with-a-device-template"></a>Zuordnen eines Geräts zu einer Gerätevorlage
 
-Wenn das Gerät eine Verbindung herstellt, ordnet IoT Central automatisch einem Gerät eine Gerätevorlage zu. Ein Gerät sendet eine Modell-ID, wenn es eine Verbindung herstellt. IoT Central verwendet die Modell-ID, um die Gerätevorlage für dieses bestimmte Gerätemodell zu identifizieren. Der Ermittlungsvorgang funktioniert wie folgt:
+Wenn das Gerät eine Verbindung herstellt, ordnet IoT Central automatisch einem Gerät eine Gerätevorlage zu. Ein Gerät sendet eine [Modell-ID](../../iot-pnp/iot-plug-and-play-glossary.md#model-id), wenn es eine Verbindung herstellt. IoT Central verwendet die Modell-ID, um die Gerätevorlage für dieses bestimmte Gerätemodell zu identifizieren. Der Ermittlungsvorgang funktioniert wie folgt:
 
 1. Wenn die Gerätevorlage bereits in der IoT Central-Anwendung veröffentlicht ist, ist das Gerät der Gerätevorlage zugeordnet.
-1. Wenn die Gerätevorlage nicht bereits in der IoT Central-Anwendung veröffentlicht ist, sucht IoT Central im öffentlichen Modellrepository nach dem Gerätemodell. Wenn IoT Central das Modell findet, wird es verwendet, um eine einfache Gerätevorlage zu generieren.
+1. Wenn die Gerätevorlage nicht bereits in der IoT Central-Anwendung veröffentlicht ist, sucht IoT Central im [öffentlichen Modellrepository](https://github.com/Azure/iot-plugandplay-models) nach dem Gerätemodell. Wenn IoT Central das Modell findet, wird es verwendet, um eine einfache Gerätevorlage zu generieren.
 1. Wenn IoT Central das Modell nicht im öffentlichen Modellrepository findet, wird das Gerät als **Nicht zugeordnet** gekennzeichnet. Ein Operator kann eine Gerätevorlage für das Gerät erstellen und dann das nicht zugeordnete Gerät zur neuen Gerätevorlage migrieren.
+
+Der folgende Screenshot zeigt, wie Sie die Modell-ID einer Gerätevorlage in IoT Central anzeigen. Wählen Sie in einer Gerätevorlage eine Komponente aus, und wählen Sie dann **Identität anzeigen** aus:
+
+:::image type="content" source="media/concepts-get-connected/model-id.png" alt-text="Screenshot der Modell-ID in der Thermostatgerätevorlage.":::
+
+Sie können das [Thermostatmodell](https://github.com/Azure/iot-plugandplay-models/blob/main/dtmi/com/example/thermostat-1.json) im öffentlichen Modellrepository anzeigen. Die Definition der Modell-ID sieht so aus:
+
+```json
+"@id": "dtmi:com:example:Thermostat;1"
+```
 
 ## <a name="device-status-values"></a>Werte für den Gerätestatus
 

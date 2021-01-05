@@ -8,17 +8,18 @@ editor: ''
 tags: azure-service-management
 ms.assetid: 53981f7e-8370-4979-b26a-93a5988d905f
 ms.service: virtual-machines-sql
+ms.subservice: hadr
 ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/27/2020
 ms.author: mathoma
-ms.openlocfilehash: 194c6a5cead400e1bac78ba42cb7238b64bd3b7b
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 1a0d1018991be9d78623b0826aeab3d13958e996
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96327473"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97504133"
 ---
 # <a name="business-continuity-and-hadr-for-sql-server-on-azure-virtual-machines"></a>Geschäftskontinuität und HADR für SQL Server in Azure Virtual Machines
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -84,9 +85,13 @@ Sie können eine Notfallwiederherstellungslösung für Ihre SQL Server-Datenban
 
 Wenn Sie über [Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?rtc=1&activetab=software-assurance-default-pivot:primaryr3) verfügen, können Sie hybride Notfallwiederherstellungspläne mit SQL Server implementieren, ohne dass zusätzliche Lizenzierungskosten für die passive Notfallwiederherstellungsinstanz anfallen.
 
-In der folgenden Abbildung verwendet das Setup SQL Server auf einem virtuellen Azure-Computer mit 12 Kernen als Notfallwiederherstellungsreplikat für eine lokale SQL Server-Bereitstellung mit 12 Kernen. Bisher haben Sie für die lokale und die Azure Virtual Machines-Bereitstellung Lizenzen für 12 SQL Server-Kerne erwerben müssen. Im neuen Vorteilsprogramm können Sie nun passive Replikate nutzen, die auf einer Azure-VM ausgeführt werden. Jetzt müssen Sie nur noch Lizenzen für 12 lokal ausgeführte SQL Server-Kerne erwerben, solange die Notfallwiederherstellungskriterien für das passive Replikat auf der Azure-VM erfüllt sind.
+Beispielsweise können Sie zwei kostenlose passive sekundäre Replikate haben, wenn alle drei Replikate in Azure gehostet werden: 
 
-![Kostenloses Notfallwiederherstellungsreplikat in Azure](./media/business-continuity-high-availability-disaster-recovery-hadr-overview/free-dr-replica-azure.png)
+![Zwei kostenlose passive Replikate bei ausschließlichem Hosten in Azure](./media/business-continuity-high-availability-disaster-recovery-hadr-overview/failover-with-primary-in-azure.png)
+
+Alternativ können Sie eine Hybridfailoverumgebung mit einem lizenzierten primären lokalen Replikat, einem kostenlosen passiven Replikat für die Hochverfügbarkeit, einem kostenlosen passiven Replikat für die lokale Notfallwiederherstellung und einem kostenlosen passiven Replikat für die Notfallwiederherstellung in Azure konfigurieren:
+
+![Drei kostenlose passive Replikate in Hybridumgebung mit einem primären lokalen Replikat](./media/business-continuity-high-availability-disaster-recovery-hadr-overview/hybrid-with-primary-on-prem.png)
 
 Weitere Informationen finden Sie in den [Produktlizenzierungsbedingungen](https://www.microsoft.com/licensing/product-licensing/products). 
 

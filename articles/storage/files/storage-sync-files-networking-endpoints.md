@@ -8,12 +8,12 @@ ms.date: 5/11/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 02d9e65f5422b7b12900d051f01c1d6f55e8685b
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 61ff5d05eb74804af69b90d839115a8468619275
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844675"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96921718"
 ---
 # <a name="configuring-azure-file-sync-network-endpoints"></a>Konfigurieren von Netzwerkendpunkten für die Azure-Dateisynchronisierung
 Azure Files und die Azure-Dateisynchronisierung verfügen über zwei Arten von Endpunkten für den Zugriff auf Azure-Dateifreigaben: 
@@ -34,7 +34,7 @@ In diesem Artikel wird Folgendes vorausgesetzt:
 
 Außerdem zu beachten:
 - Falls Sie Azure PowerShell verwenden möchten, [installieren Sie die neueste Version](/powershell/azure/install-az-ps).
-- Falls Sie die Azure CLI verwenden möchten, [installieren Sie die neueste Version](/cli/azure/install-azure-cli?view=azure-cli-latest).
+- Falls Sie die Azure CLI verwenden möchten, [installieren Sie die neueste Version](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true).
 
 ## <a name="create-the-private-endpoints"></a>Erstellen der privaten Endpunkte
 Beim Erstellen eines privaten Endpunkts für eine Azure-Ressource werden die folgenden Ressourcen bereitgestellt:
@@ -588,7 +588,7 @@ Wenn Sie das Speicherkonto auf bestimmte virtuelle Netzwerke beschränken, lasse
 Mit der Azure-Dateisynchronisierung können Sie den Zugriff auf bestimmte virtuelle Netzwerke nur über private Endpunkte beschränken. Die Verwendung von Dienstendpunkten für die Beschränkung des Zugriffs auf den öffentlichen Endpunkt auf bestimmte virtuelle Netzwerke wird von der Azure-Dateisynchronisierung nicht unterstützt. Dies bedeutet, dass der öffentliche Endpunkt des Speichersynchronisierungsdiensts den Status „Aktiviert“ oder „Deaktiviert“ haben kann.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
-Dies ist über das Azure-Portal nicht möglich. Die Registerkarten für Azure PowerShell bzw. die Azure CLI enthalten eine Anleitung zum Deaktivieren des öffentlichen Endpunkts für den Speichersynchronisierungsdienst. 
+Dies ist über das Azure-Portal nicht möglich. Die Azure PowerShell-Registerkarte enthält Anleitungen zum Deaktivieren des öffentlichen Endpunkts für den Speichersynchronisierungsdienst. 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 Zum Deaktivieren des Zugriffs auf den öffentlichen Endpunkt des Speichersynchronisierungsdiensts legen wir die `incomingTrafficPolicy`-Eigenschaft für den Speichersynchronisierungsdienst auf `AllowVirtualNetworksOnly` fest. Legen Sie `incomingTrafficPolicy` stattdessen auf `AllowAllTraffic` fest, wenn Sie den Zugriff auf den öffentlichen Endpunkt des Speichersynchronisierungsdiensts aktivieren möchten. Achten Sie darauf, dass Sie `<storage-sync-service-resource-group>` und `<storage-sync-service>` entsprechend ersetzen.
@@ -603,23 +603,11 @@ $storageSyncService = Get-AzResource `
         -ResourceType "Microsoft.StorageSync/storageSyncServices"
 
 $storageSyncService.Properties.incomingTrafficPolicy = "AllowVirtualNetworksOnly"
-$storageSyncService = $storageSyncService | Set-AzResource -Confirm:$false -Force
+$storageSyncService = $storageSyncService | Set-AzResource -Confirm:$false -Force -UsePatchSemantics
 ```
 
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
-Zum Deaktivieren des Zugriffs auf den öffentlichen Endpunkt des Speichersynchronisierungsdiensts legen wir die `incomingTrafficPolicy`-Eigenschaft für den Speichersynchronisierungsdienst auf `AllowVirtualNetworksOnly` fest. Legen Sie `incomingTrafficPolicy` stattdessen auf `AllowAllTraffic` fest, wenn Sie den Zugriff auf den öffentlichen Endpunkt des Speichersynchronisierungsdiensts aktivieren möchten. Achten Sie darauf, dass Sie `<storage-sync-service-resource-group>` und `<storage-sync-service>` entsprechend ersetzen.
-
-```bash
-storageSyncServiceResourceGroupName="<storage-sync-service-resource-group>"
-storageSyncServiceName="<storage-sync-service>"
-
-az resource update \
-        --resource-group $storageSyncServiceResourceGroupName \
-        --name $storageSyncServiceName \
-        --resource-type "Microsoft.StorageSync/storageSyncServices" \
-        --set "properties.incomingTrafficPolicy=AllowVirtualNetworksOnly" \
-        --output none
-```
+<a name="azure-cli-does-not-support-setting-the-incomingtrafficpolicy-property-on-the-storage-sync-service-please-select-the-azure-powershell-tab-to-get-instructions-on-how-to-disable-the-storage-sync-service-public-endpoint"></a>Das Festlegen der `incomingTrafficPolicy`-Eigenschaft für den Speichersynchronisierungsdienst wird von Azure CLI nicht unterstützt. Die Azure PowerShell-Registerkarte enthält Anleitungen zum Deaktivieren des öffentlichen Endpunkts für den Speichersynchronisierungsdienst.
 ---
 
 ## <a name="see-also"></a>Weitere Informationen

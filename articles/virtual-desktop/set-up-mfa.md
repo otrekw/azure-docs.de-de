@@ -3,15 +3,15 @@ title: 'Einrichten von Azure Multi-Factor Authentication für Windows Virtual De
 description: Erfahren Sie, wie Sie Azure Multi-Factor Authentication einrichten, um die Sicherheit in Windows Virtual Desktop zu erhöhen.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 10/20/2020
+ms.date: 12/10/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 35af8191cfe237175cbd6669797d1744ac3ecd49
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 00aba5d169a05eab25dcc63ca813955e71d09598
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92312648"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97092379"
 ---
 # <a name="enable-azure-multifactor-authentication-for-windows-virtual-desktop"></a>Aktivieren von Azure Multi-Factor Authentication für Windows Virtual Desktop
 
@@ -40,10 +40,10 @@ Voraussetzungen für die ersten Schritte:
 Hier erfahren Sie, wie Sie eine Richtlinie für bedingten Zugriff erstellen, die beim Herstellen einer Verbindung mit Windows Virtual Desktop Multi-Factor Authentication erfordert:
 
 1. Melden Sie sich beim **Azure-Portal** als globaler Administrator, Sicherheitsadministrator oder Administrator für bedingten Zugriff an.
-2. Navigieren Sie zu **Azure Active Directory** > **Sicherheit** > **Bedingter Zugriff** .
-3. Wählen Sie **Neue Richtlinie** .
+2. Navigieren Sie zu **Azure Active Directory** > **Sicherheit** > **Bedingter Zugriff**.
+3. Wählen Sie **Neue Richtlinie**.
 4. Benennen Sie Ihre Richtlinie. Es wird empfohlen, dass Unternehmen einen aussagekräftigen Standard für die Namen ihrer Richtlinien erstellen.
-5. Klicken Sie unter **Zuweisungen** auf **Benutzer und Gruppen** .
+5. Klicken Sie unter **Zuweisungen** auf **Benutzer und Gruppen**.
 6. Wählen Sie unter **Einschließen** **Benutzer und Gruppen auswählen** > **Benutzer und Gruppen** aus, und wählen Sie die Gruppe aus, die Sie in der [Voraussetzungsphase](#prerequisites) erstellt haben.
 7. Wählen Sie **Fertig** aus.
 8. Wählen Sie unter **Cloud-Apps oder -Aktionen** > **Einschließen** die Option **Apps auswählen** aus.
@@ -67,10 +67,10 @@ Hier erfahren Sie, wie Sie eine Richtlinie für bedingten Zugriff erstellen, die
    > 
    > Wenn Sie Windows Virtual Desktop (klassisch) verwenden und die Richtlinie für bedingten Zugriff den gesamten Zugriff blockiert und nur Windows Virtual Desktop-App-IDs ausnimmt, können Sie das Problem beheben, indem Sie der Richtlinie die App-ID „9cdead84-a844-4324-93f2-b2e6bb768d07“ hinzufügen. Wenn Sie diese App-ID nicht hinzufügen, wird die Feedermittlung für Ressourcen von Windows Virtual Desktop (klassisch) blockiert.
 
-10. Wechseln Sie zu **Bedingungen** > **Client-Apps** , und wählen Sie dann aus, wo Sie die Richtlinie anwenden möchten:
+10. Wechseln Sie zu **Bedingungen** > **Client-Apps**, und wählen Sie dann aus, wo Sie die Richtlinie anwenden möchten:
     
-    - Aktivieren Sie **Browser** , wenn die Richtlinie auf den Webclient angewandt werden soll.
-    - Aktivieren Sie **Mobile Apps und Desktopclients** , wenn die Richtlinie auf andere Clients angewandt werden soll.
+    - Aktivieren Sie **Browser**, wenn die Richtlinie auf den Webclient angewandt werden soll.
+    - Aktivieren Sie **Mobile Apps und Desktopclients**, wenn die Richtlinie auf andere Clients angewandt werden soll.
     - Aktivieren Sie beide Kontrollkästchen, wenn die Richtlinie auf alle Clients angewandt werden soll.
    
     > [!div class="mx-imgBorder"]
@@ -82,12 +82,15 @@ Hier erfahren Sie, wie Sie eine Richtlinie für bedingten Zugriff erstellen, die
     > ![Screenshot der Seite „Cloud-Apps oder -aktionen“. Die Windows Virtual Desktop- und Windows Virtual Desktop-Client-Apps werden rot hervorgehoben.](media/cloud-apps-enterprise.png)
 
     >[!NOTE]
-    >Um die App-ID der auszuwählenden App zu finden, wechseln Sie zu **Unternehmensanwendungen** , und wählen Sie **Microsoft-Anwendungen** aus dem Dropdownmenü für den Anwendungstyp aus.
+    >Um die App-ID der auszuwählenden App zu finden, wechseln Sie zu **Unternehmensanwendungen**, und wählen Sie **Microsoft-Anwendungen** aus dem Dropdownmenü für den Anwendungstyp aus.
 
-12. Wählen Sie unter **Zugriffssteuerung** > **Erteilen** die Option **Zugriff erteilen** , dann **Mehrstufige Authentifizierung erforderlich** und anschließend **Auswählen** aus.
-13. Wählen Sie unter **Zugriffssteuerung** > **Sitzung** die Option **Anmeldehäufigkeit** aus, und legen Sie den Wert auf die gewünschte Zeitspanne zwischen Eingabeaufforderungen fest. Klicken Sie dann auf **Auswählen** . Durch Festlegen des Werts auf **1** und der Einheit auf **Stunden** wird eine mehrstufige Authentifizierung erforderlich, wenn eine Verbindung eine Stunde nach der letzten Verbindung gestartet wird.
+12. Wählen Sie unter **Zugriffssteuerung** > **Erteilen** die Option **Zugriff erteilen**, dann **Mehrstufige Authentifizierung erforderlich** und anschließend **Auswählen** aus.
+13. Wählen Sie unter **Zugriffssteuerung** > **Sitzung** die Option **Anmeldehäufigkeit** aus, und legen Sie den Wert auf die gewünschte Zeitspanne zwischen Eingabeaufforderungen fest. Klicken Sie dann auf **Auswählen**. Durch Festlegen des Werts auf **1** und der Einheit auf **Stunden** wird eine mehrstufige Authentifizierung erforderlich, wenn eine Verbindung eine Stunde nach der letzten Verbindung gestartet wird.
 14. Bestätigen Sie die Einstellungen und legen Sie **Richtlinie aktivieren** auf **Ein** fest.
 15. Wählen Sie **Erstellen** aus, um die Richtlinie zu aktivieren.
+
+>[!NOTE]
+>Wenn Sie den Webclient verwenden, um sich über Ihren Browser bei Windows Virtual Desktop anzumelden, listet das Protokoll die Client-App-ID als a85cf173-4192-42f8-81fa-777a763e6e2c (Windows Virtual Desktop-Client) auf. Dies liegt daran, dass die Client-App intern mit der Server-App-ID verknüpft ist, in der die Richtlinie für bedingten Zugriff festgelegt wurde. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

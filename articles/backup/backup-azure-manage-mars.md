@@ -4,12 +4,12 @@ description: Erfahren Sie etwas über das Verwalten und Überwachen von MARS-Age
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: b3b648ca27a407640b42932fe2ed7c32f5109114
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 25f0c41b535f9403d0a7027687cc5261cd437275
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89145568"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368595"
 ---
 # <a name="manage-microsoft-azure-recovery-services-mars-agent-backups-by-using-the-azure-backup-service"></a>Verwalten von MARS-Agent-Sicherungen (Microsoft Azure Recovery Services) mit dem Azure Backup-Dienst
 
@@ -189,6 +189,19 @@ Das Verwalten der Sicherungsrichtlinie für MARS erfolgt über die MARS-Konsole 
   1. Installieren Sie den Agent, und registrieren Sie sich erneut beim gleichen Tresor und mit der gleichen Passphrase.
   1. Starten Sie den MARS-Client, um die Aufbewahrungsdauer entsprechend Ihren Anforderungen zu verlängern.
 - Der neu wiederhergestellte Computer, der mit MARS geschützt wird, führt weiter Sicherungen durch.  
+
+## <a name="configuring-antivirus-for-the-mars-agent"></a>Konfigurieren des Antivirenprogramms für den MARS-Agent
+
+Wir empfehlen die folgende Konfiguration für Ihre Antivirussoftware, um Konflikte mit dem Betrieb des MARS-Agent zu vermeiden.
+
+1. **Hinzufügen von Pfadausschlüssen**: Um eine Beeinträchtigung der Leistung und mögliche Konflikte zu vermeiden, schließen Sie die folgenden Pfade von der Echtzeitüberwachung durch die Antivirensoftware aus:
+    1. `%ProgramFiles%\Microsoft Azure Recovery Services Agent` und Unterordner
+    1. **Ablageordner**: Wenn sich der Ablageordner nicht am Standardspeicherort befindet, fügen Sie ihn ebenfalls den Ausschlüssen hinzu.  [Hier finden Sie die Schritte](backup-azure-file-folder-backup-faq.md#how-to-check-if-scratch-folder-is-valid-and-accessible), mit denen Sie den Speicherort des Ablageordners bestimmen.
+1. **Hinzufügen von Binärausschlüssen**: Um die Beeinträchtigung von Sicherungs- und Konsolenaktivitäten zu vermeiden, schließen Sie Prozesse für die folgenden Binärdateien von der Echtzeitüberwachung durch die Antivirussoftware aus:
+    1. `%ProgramFiles%\Microsoft Azure Recovery Services Agent\bin\cbengine.exe`
+
+>[!NOTE]
+>Der Ausschluss dieser Pfade reicht zwar für die meisten Antivirenprogramme aus, aber einige können weiterhin den MARS-Agent-Betrieb stören. Wenn unerwartete Fehler auftreten, deinstallieren Sie die Antivirensoftware vorübergehend, und beobachten Sie, ob das Problem beseitigt ist. Wenn das Problem dadurch behoben wird, informieren Sie sich beim Hersteller der Antivirussoftware über die richtige Konfiguration seines Produkts.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

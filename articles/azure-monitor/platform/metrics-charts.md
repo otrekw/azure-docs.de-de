@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 1150cdb64c5fe7d1b2241cdc0ad1a6eb0a36f47f
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: be3d3f11e90c17bd8c4792418500da651039e480
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168561"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562802"
 ---
 # <a name="advanced-features-of-azure-metrics-explorer"></a>Erweiterte Funktionen von Azure Metrik-Explorer
 
@@ -35,18 +35,18 @@ Wenn Sie beispielsweise über fünf Speicherkonten verfügen und wissen möchten
 
 ### <a name="multiple-metrics-on-the-same-chart"></a>Mehrere Metriken in demselben Diagramm
 
-Zuerst [erstellen Sie ein neues Diagramm](metrics-getting-started.md#create-your-first-metric-chart). Klicken Sie auf **Metrik hinzufügen** , und wiederholen Sie die Schritte, um eine weitere Metrik im gleichen Diagramm hinzuzufügen.
+Zuerst [erstellen Sie ein neues Diagramm](metrics-getting-started.md#create-your-first-metric-chart). Klicken Sie auf **Metrik hinzufügen**, und wiederholen Sie die Schritte, um eine weitere Metrik im gleichen Diagramm hinzuzufügen.
 
    > [!NOTE]
    > In der Regel wird davon abgeraten, in einem Diagramm Metriken mit unterschiedlichen Maßeinheiten (d.h. „Millisekunden“ und „Kilobytes“) oder deutlich abweichender Skala zu verwenden. In diesem Fall sollten Sie vielmehr verschiedene Diagramme verwenden. Klicken Sie auf die Schaltfläche „Diagramm hinzufügen“, um mehrere Diagramme im Metrik-Explorer zu erstellen.
 
 ### <a name="multiple-charts"></a>Mehrere Diagramme
 
-Klicken Sie auf **Diagramm hinzufügen** , und erstellen Sie ein weiteres Diagramm mit einer anderen Metrik.
+Klicken Sie auf **Diagramm hinzufügen**, und erstellen Sie ein weiteres Diagramm mit einer anderen Metrik.
 
 ### <a name="order-or-delete-multiple-charts"></a>Sortieren oder Löschen mehrerer Diagramme
 
-Klicken Sie zum Sortieren oder Löschen mehrerer Diagramme auf die Auslassungszeichen ( **...** ), um das Diagrammmenü zu öffnen, und wählen Sie das entsprechende Menüelement ( **Nach oben** , **Nach unten** oder **Löschen** ) aus.
+Klicken Sie zum Sortieren oder Löschen mehrerer Diagramme auf die Auslassungszeichen ( **...** ), um das Diagrammmenü zu öffnen, und wählen Sie das entsprechende Menüelement (**Nach oben**, **Nach unten** oder **Löschen**) aus.
 
 ## <a name="changing-aggregation"></a>Ändern der Aggregation
 
@@ -54,18 +54,18 @@ Wenn Sie einem Diagramm eine Metrik hinzufügen, wählt der Metrik-Explorer auto
 
 Bei Metriken handelt es sich um die Reihe von Messwerten (oder „Metrikwerte“), die über den Zeitraum erfasst werden. Wenn Sie ein Diagramm zeichnen, werden die Werte der ausgewählten Metrik separat über das *Aggregationsintervall* aggregiert. Sie wählen die Dauer des Aggregationsintervalls [mithilfe des Zeitauswahlbereichs im Metrik-Explorer](metrics-getting-started.md#select-a-time-range) aus. Wenn Sie das Aggregationsintervall nicht explizit auswählen, wird die Zeitgranularität automatisch basierend auf dem aktuell ausgewählten Zeitraum ausgewählt. Sobald das Aggregationsintervall festgelegt ist, werden die Metrikwerte, die während jedes Aggregationsintervalls erfasst wurden, aggregiert und in das Diagramm eingefügt (jeweils ein Datenpunkt pro Aggregationsintervall).
 
-Angenommen, das Diagramm zeigt die Metrik **Serverantwortzeit** mit dem Aggregationstyp **Average** (Durchschnitt) über den Zeitraum **letzte 24 Stunden** :
+Angenommen, das Diagramm zeigt die Metrik **Serverantwortzeit** mit dem Aggregationstyp **Average** (Durchschnitt) über den Zeitraum **letzte 24 Stunden**:
 
 - Wenn die Zeitgranularität auf 30 Minuten festgelegt ist, wird das Diagramm aus 48 aggregierten Datenpunkten gezeichnet (z. B. werden beim Liniendiagramm 48 Punkte auf der Diagrammzeichnungsfläche verbunden). Das heißt, 24 Stunden x 2 Datenpunkte pro Stunde. Jeder Datenpunkt stellt den *Durchschnitt* aller erfassten Antwortzeiten für Serveranforderungen dar, die während des jeweils relevanten 30-Minuten-Zeitraums aufgetreten sind.
 - Wenn Sie die Zeitgranularität auf 15 Minuten festlegen, erhalten Sie 96 aggregierte Datenpunkte.  Das heißt, 24 Stunden x 4 Datenpunkte pro Stunde.
 
-Im Metrik-Explorer sind fünf Aggregationstypen für grundlegende Statistiken verfügbar: **Sum** , **Count** , **Min** , **Max** und **Average** . Der Aggregationstyp **Sum** wird manchmal auch als **Total** bezeichnet. Bei vielen Metriken blendet Metrik-Explorer die Aggregationen aus, die vollkommen irrelevant sind und nicht verwendet werden können.
+Im Metrik-Explorer sind fünf Aggregationstypen für grundlegende Statistiken verfügbar: **Sum**, **Count**, **Min**, **Max** und **Average**. Der Aggregationstyp **Sum** wird manchmal auch als **Total** bezeichnet. Bei vielen Metriken blendet Metrik-Explorer die Aggregationen aus, die vollkommen irrelevant sind und nicht verwendet werden können.
 
-- **Sum** : Die Summe aller Werte, die über das Aggregationsintervall erfasst wurden.
-- **Count** : Die Anzahl der Messwerte, die über das Aggregationsintervall erfasst wurden. **Count** entspricht in dem Fall, dass die Metrik immer mit dem Wert 1 erfasst wird, dem Aggregationstyp **Sum** . Dies tritt üblicherweise auf, wenn die Metrik die Anzahl unterschiedlicher Ereignisse nachverfolgt und jeder Messwert ein Ereignis darstellt (d. h., der Code löst bei jedem Eintreffen einer neuen Anforderung einen Metrikdatensatz aus).
-- **Average** : Der Durchschnitt der Metrikwerte, die über das Aggregationsintervall erfasst wurden.
-- **Min** : Der niedrigste Wert, der über das Aggregationsintervall erfasst wurde.
-- **Max** : Der höchste Wert, der über das Aggregationsintervall erfasst wurde.
+- **Sum**: Die Summe aller Werte, die über das Aggregationsintervall erfasst wurden.
+- **Count**: Die Anzahl der Messwerte, die über das Aggregationsintervall erfasst wurden. **Count** entspricht in dem Fall, dass die Metrik immer mit dem Wert 1 erfasst wird, dem Aggregationstyp **Sum**. Dies tritt üblicherweise auf, wenn die Metrik die Anzahl unterschiedlicher Ereignisse nachverfolgt und jeder Messwert ein Ereignis darstellt (d. h., der Code löst bei jedem Eintreffen einer neuen Anforderung einen Metrikdatensatz aus).
+- **Average**: Der Durchschnitt der Metrikwerte, die über das Aggregationsintervall erfasst wurden.
+- **Min**: Der niedrigste Wert, der über das Aggregationsintervall erfasst wurde.
+- **Max**: Der höchste Wert, der über das Aggregationsintervall erfasst wurde.
 
 ## <a name="apply-filters-to-charts"></a>Anwenden von Filtern auf Diagramme
 
@@ -77,15 +77,15 @@ Sie können Filter auf Diagramme anwenden, die Metriken mit Dimensionen aufweise
 
 2. Wählen Sie aus, nach welcher Dimension (Eigenschaft) gefiltert werden soll.
 
-   ![Screenshot mit den Dimensionen (Eigenschaften), die gefiltert werden können.](./media/metrics-charts/00006.png)
+   ![Screenshot mit den Dimensionen (Eigenschaften), die gefiltert werden können.](./media/metrics-charts/028.png)
 
 3. Wählen Sie beim Zeichnen des Diagramms aus, welche Dimensionswerte eingeschlossen werden sollen (in diesem Beispiel werden die Filterergebnisse erfolgreicher Speichertransaktionen gezeigt):
 
-   ![Screenshot, der das Herausfiltern der erfolgreichen Speichertransaktionen zeigt.](./media/metrics-charts/00007.png)
+   ![Screenshot, der das Herausfiltern der erfolgreichen Speichertransaktionen zeigt.](./media/metrics-charts/029.png)
 
 4. Klicken Sie nach der Auswahl der Filterwerte außerhalb des Filterselektors, um ihn zu schließen. Nun zeigt das Diagramm an, wie viele Speichertransaktionen fehlerhaft sind:
 
-   ![Screenshot, der anzeigt, wie viele Speichertransaktionen fehlerhaft sind.](./media/metrics-charts/00008.png)
+   ![Screenshot, der anzeigt, wie viele Speichertransaktionen fehlerhaft sind.](./media/metrics-charts/030.png)
 
 5. Sie können die Schritte 1 bis 4 wiederholen, um mehrere Filter auf dieselben Diagramme anzuwenden.
 
@@ -97,20 +97,20 @@ Sie können eine Metrik nach Dimension unterteilen, um die verschiedenen Segment
 
 ### <a name="apply-splitting"></a>Anwenden des Teilens
 
-1. Klicken Sie oberhalb des Diagramms auf **Teilung anwenden** .
+1. Klicken Sie oberhalb des Diagramms auf **Teilung anwenden**.
  
    > [!NOTE]
    > Das Teilen kann nicht bei Diagrammen verwendet werden, die mehrere Metriken aufweisen. Auch können Sie zwar mehrere Filter anwenden, jedoch kann nur eine Teilungsdimension auf ein beliebiges einzelnes Diagramm angewendet werden.
 
 2. Wählen Sie eine Dimension, in der Ihr Diagramm segmentiert werden soll:
 
-   ![Screenshot, der die ausgewählte Dimension anzeigt, in der Sie Ihr Diagramm segmentieren möchten.](./media/metrics-charts/00010.png)
+   ![Screenshot, der die ausgewählte Dimension anzeigt, in der Sie Ihr Diagramm segmentieren möchten.](./media/metrics-charts/031.png)
 
    Das Diagramm zeigt nun mehrere Zeilen an, eine Zeile für jedes Segment der Dimension:
 
-   ![Screenshot, der mehrere Zeilen anzeigt: eine Zeile für jedes Segment der Dimension.](./media/metrics-charts/00012.png)
+   ![Screenshot, der mehrere Zeilen anzeigt: eine Zeile für jedes Segment der Dimension.](./media/metrics-charts/032.png)
 
-3. Klicken Sie außerhalb des **Gruppierungsselektors** , um ihn zu schließen.
+3. Klicken Sie außerhalb des **Gruppierungsselektors**, um ihn zu schließen.
 
    > [!NOTE]
    > Blenden Sie in einer Dimension durch Filtern und Teilen Segmente aus, die für Ihr Szenario nicht relevant sind, und stellen Sie eine bessere Übersichtlichkeit der Diagramme sicher.
@@ -123,9 +123,13 @@ Ein Beispiel: Wenn die Menge an erfolgreichen Anforderungen von 99,99 Prozent au
 
 Ein weiteres Beispiel wären Schwankungen beim verfügbaren Arbeitsspeicher, bei denen der Wert aus technischen Gründen niemals „0“ erreicht. Wenn Sie hier den Bereich auf einen höheren Wert festlegen, ist eine geringere Arbeitsspeicherverfügbarkeit leichter zu erkennen. 
 
-Verwenden Sie zum Steuern des Bereichs der Y-Achse das Diagrammmenü „...“, und wählen Sie **Diagramm bearbeiten** aus, um auf die erweiterten Diagrammeinstellungen zuzugreifen. Ändern Sie die Werte im Abschnitt für den Bereich der Y-Achse, oder verwenden Sie die Schaltfläche **Automatisch** , um die Standardwerte wiederherzustellen.
+Verwenden Sie zum Steuern des Bereichs der Y-Achse das Diagrammmenü „...“, und wählen Sie **Diagrammeinstellungen** aus, um auf die erweiterten Diagrammeinstellungen zuzugreifen.
 
-![Screenshot, auf dem die Option "Diagramm bearbeiten" hervorgehoben ist.](./media/metrics-charts/00014-manually-set-granularity.png)
+![Screenshot, auf dem die Option „Diagrammeinstellungen“ hervorgehoben ist.](./media/metrics-charts/033.png)
+
+ Ändern Sie die Werte im Abschnitt für den Bereich der Y-Achse, oder verwenden Sie die Schaltfläche **Automatisch**, um die Standardwerte wiederherzustellen.
+ 
+ ![Screenshot, auf dem der Abschnitt für den Bereich der Y-Achse hervorgehoben ist.](./media/metrics-charts/034.png)
 
 > [!WARNING]
 > Wenn Sie die Grenzen der Y-Achse für Diagramme festlegen möchten, die verschiedene Anzahlwerte oder Summen für einen Zeitraum nachverfolgen und somit Anzahl-, Summen-, Minimum- oder Maximum-Aggregationen verwenden, muss in der Regel anstelle der automatischen Standardwerte auch eine feste Zeitgranularität angegeben werden. Dies ist erforderlich, da sich die Werte in Diagrammen ändern, wenn der Benutzer die Größe des Browserfensters oder die Bildschirmauflösung ändert, was eine automatische Änderung der Zeitgranularität zur Folge hat. Die resultierende Änderung der Zeitgranularität wirkt sich auf die Darstellung des Diagramms aus und macht die aktuelle Auswahl des Y-Achsenbereichs ungültig.
@@ -136,9 +140,9 @@ Nachdem Sie die Diagramme konfiguriert haben, werden den Diagrammlinien automati
 
 Um die Farbe einer Diagrammlinie zu ändern, klicken Sie auf den farbigen Balken in der zum Diagramm gehörenden Legende. Das Dialogfeld für die Farbauswahl wird geöffnet. Verwenden Sie die Farbauswahl, um die Farbe für die Linie zu konfigurieren.
 
-Nachdem Sie die Diagrammfarben konfiguriert haben, bleiben sie in dieser Form erhalten, wenn Sie das Diagramm an ein Dashboard anheften. Im folgenden Abschnitt wird erläutert, wie Sie ein Diagramm anheften.
+![Screenshot, der das Ändern der Farbe zeigt.](./media/metrics-charts/035.png)
 
-![Screenshot, der zeigt, wie Sie ein Diagramm anheften.](./media/metrics-charts/018.png)
+Nachdem Sie die Diagrammfarben konfiguriert haben, bleiben sie in dieser Form erhalten, wenn Sie das Diagramm an ein Dashboard anheften. Im folgenden Abschnitt wird erläutert, wie Sie ein Diagramm anheften.
 
 ## <a name="pin-charts-to-dashboards"></a>Anheften von Diagrammen an Dashboards
 
@@ -146,21 +150,21 @@ Nach der Konfiguration der Diagramme sollten Sie sie zu Dashboards hinzufügen, 
 
 So heften Sie ein konfiguriertes Diagramm an ein Dashboard an
 
-Klicken Sie nach der Konfiguration Ihres Diagramms rechts oben im Diagramm auf das Menü **Diagrammaktionen** und dann auf **An Dashboard anheften** .
+Klicken Sie nach der Konfiguration Ihres Diagramms rechts oben im Diagramm auf **An Dashboard anheften**.
 
-![Abbildung eines Diagramms mit Metriken](./media/metrics-charts/00013.png)
+![Screenshot, der das Anheften an das Diagramm zeigt.](./media/metrics-charts/036.png)
 
 ## <a name="create-alert-rules"></a>Erstellen von Warnungsregeln
 
 Sie können die Kriterien, die Sie zum Visualisieren Ihrer Metriken festgelegt haben, als Grundlage für eine Metrik basierend auf einer Warnungsregel verwenden. Die neue Warnungsregel enthält Ihre Dimensionen für Zielressource, Metrik, Teilung und Filter aus dem Diagramm. Sie können diese Einstellungen später im Erstellungsbereich für Warnungsregeln ändern.
 
-### <a name="to-create-a-new-alert-rule-click-new-alert-rule"></a>Zum Erstellen einer neuen Warnungsregel klicken Sie auf **Neue Warnungsregel** .
+### <a name="to-create-a-new-alert-rule-click-new-alert-rule"></a>Zum Erstellen einer neuen Warnungsregel klicken Sie auf **Neue Warnungsregel**.
 
-![Schaltfläche „Neue Warnungsregel“ rot hervorgehoben](./media/metrics-charts/015.png)
+![Schaltfläche „Neue Warnungsregel“ rot hervorgehoben](./media/metrics-charts/042.png)
 
 Sie wechseln in den Bereich zum Erstellen von Warnungsregeln, in dem die zugrunde liegenden Metrikdimensionen aus dem Diagramm vorab ausgefüllt wurden, um das Generieren benutzerdefinierter Warnungsregeln zu vereinfachen.
 
-![Erstellen einer Warnungsregel](./media/metrics-charts/016.png)
+![Erstellen einer Warnungsregel](./media/metrics-charts/041.png)
 
 Lesen Sie [diesen Artikel](alerts-metric.md), um mehr über das Einrichten von Metrikwarnungen zu erfahren.
 

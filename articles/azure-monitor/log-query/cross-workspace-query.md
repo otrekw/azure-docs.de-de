@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/01/2020
-ms.openlocfilehash: 8eb163c95fb1426ebae8956d50f6d8f6aec6fd7f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 1a6b328bc076ffa619921a8698549e95e6f15c60
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96013648"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400759"
 ---
 # <a name="perform-log-query-in-azure-monitor-that-span-across-workspaces-and-apps"></a>Ausführen arbeitsbereichs- und anwendungsübergreifender Protokollabfragen in Azure Monitor
 
@@ -22,7 +22,7 @@ Es gibt zwei Methoden zum Abfragen von Daten, die in mehreren Arbeitsbereichen u
 2. Implizit durch Verwendung von [Abfragen im Ressourcenkontext](../platform/design-logs-deployment.md#access-mode). Wenn Sie Abfragen im Kontext einer bestimmten Ressource, Ressourcengruppe oder eines Abonnements ausführen, werden die relevanten Daten aus allen Arbeitsbereichen abgerufen, die Daten für diese Ressourcen enthalten. Application Insights-Daten, die in Apps gespeichert werden, werden nicht abgerufen.
 
 > [!IMPORTANT]
-> Wenn Sie eine [arbeitsbereichsbasierte Application Insights-Ressource](../app/create-workspace-resource.md) verwenden, werden Telemetriedaten in einem Log Analytics-Arbeitsbereich mit allen anderen Protokolldaten gespeichert. Verwenden Sie den log()-Ausdruck, um eine Abfrage zu schreiben, die Anwendungen in mehreren Arbeitsbereichen umfasst. Für mehrere Anwendungen im gleichen Arbeitsbereich benötigen Sie keine arbeitsbereichübergreifende Abfrage.
+> Wenn Sie eine [arbeitsbereichsbasierte Application Insights-Ressource](../app/create-workspace-resource.md) verwenden, werden Telemetriedaten in einem Log Analytics-Arbeitsbereich mit allen anderen Protokolldaten gespeichert. Verwenden Sie den workspace()-Ausdruck, um eine Abfrage zu schreiben, die Anwendungen in mehreren Arbeitsbereichen umfasst. Für mehrere Anwendungen im gleichen Arbeitsbereich benötigen Sie keine arbeitsbereichübergreifende Abfrage.
 
 
 ## <a name="cross-resource-query-limits"></a>Ressourcenübergreifende Abfragelimits 

@@ -7,12 +7,12 @@ author: zr-msft
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zarhoads
-ms.openlocfilehash: fbbd5dbbc51cdb3b0d3c3783fa6ed72b76d26284
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 693cabac616dca8e108a2029c173a5e1b71c2695
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900365"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516736"
 ---
 # <a name="best-practices-for-application-developers-to-manage-resources-in-azure-kubernetes-service-aks"></a>Bewährte Anwendungsentwicklermethoden zum Verwalten von Ressourcen in Azure Kubernetes Service (AKS)
 
@@ -27,21 +27,21 @@ Dieser Artikel zu bewährten Methoden konzentriert sich darauf, wie Sie Ihre Clu
 
 ## <a name="define-pod-resource-requests-and-limits"></a>Definieren von Podressourcenanforderungen und -grenzwerten
 
-**Best Practice-Anleitung** : Legen Sie Podanforderungen und -grenzwerte für alle Pods in Ihren YAML-Manifesten fest. Wenn der AKS-Cluster *Ressourcenkontingente* verwendet, wird Ihre Bereitstellung möglicherweise abgelehnt, wenn Sie diese Werte nicht definieren.
+**Best Practice-Anleitung**: Legen Sie Podanforderungen und -grenzwerte für alle Pods in Ihren YAML-Manifesten fest. Wenn der AKS-Cluster *Ressourcenkontingente* verwendet, wird Ihre Bereitstellung möglicherweise abgelehnt, wenn Sie diese Werte nicht definieren.
 
 Eine primäre Methode zum Verwalten der Computeressourcen in einem AKS-Cluster ist die Verwendung von Podanforderungen und -grenzwerten. Diese Anforderungen und Grenzwerte teilen dem Kubernetes-Planer mit, welche Computeressourcen einem Pod zugewiesen werden sollten.
 
 * **Podanforderungen für CPU/Arbeitsspeicher** definieren eine vom Pod regelmäßig benötigte festgelegte CPU-Leistung und Arbeitsspeichermenge.
     * Wenn der Kubernetes-Planer versucht, einen Pod auf einem Knoten zu platzieren, wird anhand der Podanforderungen bestimmt, auf welchem Knoten genügend Ressourcen für die Planung verfügbar wird.
     * Wenn Sie keine Podanforderung festlegen, wird diese standardmäßig auf den definierten Grenzwert festgelegt.
-    * Es ist sehr wichtig, die Leistung Ihrer Anwendung zu überwachen, um diese Anforderungen anzupassen. Wenn nicht genügend Anforderungen gestellt werden, kann die Leistung der Anwendung aufgrund der Überplanung eines Knotens beeinträchtigt werden. Wenn Anforderungen überschätzt werden, kann es zu erhöhten Schwierigkeiten bei der Planung Ihrer Anwendung kommen.
+    * Es ist sehr wichtig, die Leistung Ihrer Anwendung zu überwachen, um diese Anforderungen anzupassen. Wenn nicht genügend Podressourcen angefordert werden, kann die Leistung der Anwendung aufgrund der Überplanung eines Knotens beeinträchtigt werden. Wenn Anforderungen überschätzt werden, kann es zu erhöhten Schwierigkeiten bei der Planung Ihrer Anwendung kommen.
 * **Podgrenzwerte für CPU/Arbeitsspeicher** sind das Maximum an CPU-Leistung und Arbeitsspeichermenge, das ein Pod verwenden kann. Mithilfe von Speichergrenzwerten können Sie definieren, welche Pods bei Knoteninstabilität aufgrund unzureichender Ressourcen beendet werden sollen. Ohne geeignete Grenzwerte werden Pods beendet, bis der Ressourcendruck sich erhöht. Unabhängig davon, ob ein Pod den CPU-Grenzwert für einen bestimmten Zeitraum überschreiten kann, wird er nicht wegen Überschreitung des CPU-Limits beendet. 
     * Mithilfe von Podgrenzwerten definieren Sie, wann ein Pod die Kontrolle über den Ressourcenverbrauch verloren hat. Wird ein Grenzwert überschritten, wird der Pod zum Beenden priorisiert, um die Knotenintegrität beizubehalten und die Auswirkungen auf Pods zu minimieren, die den Knoten gemeinsam nutzen.
     * Wenn Sie keinen Podgrenzwert festlegen, wird standardmäßig der höchste verfügbare Wert auf einem bestimmten Knoten festgelegt.
     * Legen Sie keinen Podgrenzwert fest, der höher ist, als Ihre Knoten unterstützen können. Jeder AKS-Knoten reserviert eine bestimmte Menge von CPU-Leistung und Arbeitsspeichermenge für die Kubernetes-Kernkomponenten. Ihre Anwendung versucht möglicherweise, zu viele Ressourcen auf dem Knoten für die erfolgreiche Ausführung anderer Pods zu beanspruchen.
     * Auch hier ist es sehr wichtig, die Leistung Ihrer Anwendung zu verschiedenen Zeitpunkten während des Tags oder der Woche zu überwachen. Bestimmen Sie die Spitzennachfrage, und passen Sie die Podgrenzwerte den Ressourcen an, die erforderlich sind, um die maximalen Anforderungen der Anwendung zu erfüllen.
 
-Es ist eine **bewährte Methode und sehr wichtig** , diese Anforderungen und Grenzwerte in Ihren Podspezifikationen basierend auf den oben genannten Informationen zu definieren. Wenn Sie diese Werte nicht angeben, kann der Kubernetes-Planer nicht die Ressourcen berücksichtigen, die Ihre Anwendungen für die Planung von Entscheidungen benötigen.
+Es ist eine **bewährte Methode und sehr wichtig**, diese Anforderungen und Grenzwerte in Ihren Podspezifikationen basierend auf den oben genannten Informationen zu definieren. Wenn Sie diese Werte nicht angeben, kann der Kubernetes-Planer nicht die Ressourcen berücksichtigen, die Ihre Anwendungen für die Planung von Entscheidungen benötigen.
 
 Wenn der Planer einen Pod auf einem Knoten mit unzureichenden Ressourcen platziert, wird die Anwendungsleistung beeinträchtigt. Es wird Clusteradministratoren dringend empfohlen, *Ressourcenkontingente* auf einem Namespace festzulegen, der von Ihnen das Festlegen von Ressourcenanforderungen und -grenzwerten anfordert. Weitere Informationen finden Sie unter [Ressourcenkontingente auf AKS-Clustern][resource-quotas].
 
@@ -74,7 +74,7 @@ Weitere Informationen zu Ressourcenverwaltung und Zuweisungen finden Sie unter [
 
 ## <a name="develop-and-debug-applications-against-an-aks-cluster"></a>Entwickeln und Debuggen von Anwendungen für einen AKS-Cluster
 
-**Best Practice-Anleitung** : Entwicklungsteams sollten einen AKS-Cluster mithilfe von Bridge to Kubernetes bereitstellen und debuggen.
+**Best Practice-Anleitung**: Entwicklungsteams sollten einen AKS-Cluster mithilfe von Bridge to Kubernetes bereitstellen und debuggen.
 
 Mit Bridge to Kubernetes können Sie Anwendungen direkt für einen AKS-Cluster entwickeln, debuggen und testen. Entwickler in einem Team arbeiten zusammen, um während des gesamten Lebenszyklus der Anwendung zu erstellen und zu testen. Sie können weiterhin vorhandene Tools wie Visual Studio oder Visual Studio Code verwenden. Es wird eine Erweiterung für Bridge to Kubernetes installiert, mit der Sie direkt in einem AKS-Cluster entwickeln können.
 
@@ -84,7 +84,7 @@ Bridge to Kubernetes ist für die Verwendung mit auf Linux-Pods und -Knoten ausg
 
 ## <a name="use-the-visual-studio-code-extension-for-kubernetes"></a>Verwenden der Visual Studio Code-Erweiterung für Kubernetes
 
-**Best Practice-Anleitung** : Installieren und verwenden Sie die VS Code-Erweiterung für Kubernetes beim Schreiben von YAML-Manifesten. Sie können die Erweiterung auch für integrierte Bereitstellungslösungen verwenden, was Besitzern von Anwendungen helfen kann, die nur selten mit dem AKS-Cluster interagieren.
+**Best Practice-Anleitung**: Installieren und verwenden Sie die VS Code-Erweiterung für Kubernetes beim Schreiben von YAML-Manifesten. Sie können die Erweiterung auch für integrierte Bereitstellungslösungen verwenden, was Besitzern von Anwendungen helfen kann, die nur selten mit dem AKS-Cluster interagieren.
 
 Die [Visual Studio Code-Erweiterung für Kubernetes][vscode-kubernetes] hilft Ihnen, Anwendungen in AKS zu entwickeln und bereitzustellen. Die Erweiterung bietet Intellisense für Kubernetes-Ressourcen sowie Helm-Diagramme und Vorlagen. Sie können Kubernetes-Ressourcen auch in Visual Studio Code durchsuchen, bereitstellen und bearbeiten. Die Erweiterung bietet auch eine Intellisense-Überprüfung für Ressourcenanforderungen oder Grenzwerte, die in den Podspezifikationen festgelegt werden:
 

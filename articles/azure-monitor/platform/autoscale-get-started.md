@@ -4,12 +4,12 @@ description: Informationen zum Skalieren Ihrer Ressource Web-App, Clouddienst, v
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: 364309301b403234936da1bac6e1b74af24c2fdb
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: bf0194e82acde0406cfeb57af027831f92a90c92
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96573305"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938306"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>Erste Schritte mit der automatischen Skalierung in Azure
 In diesem Artikel wird beschrieben, wie Sie Ihre automatische Skalierungseinstellung für Ihre Ressource im Microsoft Azure-Portal einrichten.
@@ -136,9 +136,11 @@ Wenn der Pfad der Integritätsprüfung angegeben ist, sendet App Service auf all
 > [!NOTE]
 > Denken Sie daran, dass der App Service-Plan auf mindestens 2 Instanzen aufskaliert und **mindestens der Basic-Tarif** verwendet werden muss, damit der Lastenausgleichsausschluss erfolgt. Wenn Sie nur über eine Instanz verfügen, wird diese auch dann nicht aus dem Lastenausgleich entfernt, wenn sie fehlerhaft ist. 
 
-Die verbleibenden fehlerfreien Instanzen werden möglicherweise stärker ausgelastet. Um zu vermeiden, dass die verbleibenden Instanzen überlastet werden, wird nicht mehr als die Hälfte der Instanzen ausgeschlossen. Wenn z. B. ein App Service-Plan auf vier Instanzen aufskaliert wird und drei fehlerhaft sind, werden höchstens zwei von der Lastenausgleichsrotation ausgeschlossen. Die anderen beiden Instanzen (1 fehlerfrei und 1 fehlerhaft) empfangen weiterhin Anforderungen. Sollten im ungünstigsten Fall alle Instanzen fehlerhaft sein, wird keine Instanz ausgeschlossen. Wenn Sie dieses Verhalten überschreiben möchten, können Sie die App-Einstellung `WEBSITE_HEALTHCHECK_MAXUNHEALTHYWORKERPERCENT` auf einen Wert zwischen `0` und `100` festlegen. Ein höherer Wert führt dazu, dass mehr fehlerhafte Instanzen entfernt werden. (Der Standardwert ist „50“.)
+Außerdem wird der Pfad der Integritätsüberprüfung gepingt, wenn Instanzen hinzugefügt oder neu gestartet werden, z. B. bei Aufskalierungen, manuellen Neustarts oder beim Bereitstellen von Code über die SCM-Site. Wenn bei der Integritätsprüfung während dieser Vorgänge ein Fehler auftritt, werden die fehlerhaften Instanzen nicht dem Lastenausgleich hinzugefügt. Dadurch wird verhindert, dass sich diese Vorgänge negativ auf die Verfügbarkeit Ihrer Anwendung auswirken.
 
-Wenn eine Instanz für eine Stunde fehlerhaft bleibt, wird sie durch eine neue Instanz ersetzt. Pro Stunde wird höchstens eine Instanz ersetzt, wobei der Maximalwert bei drei Instanzen pro Tag und App Service-Plan liegt.
+Bei Verwendung der Integritätsprüfung werden die verbleibenden fehlerfreien Instanzen möglicherweise stärker ausgelastet. Um zu vermeiden, dass die verbleibenden Instanzen überlastet werden, wird nicht mehr als die Hälfte der Instanzen ausgeschlossen. Wenn z. B. ein App Service-Plan auf vier Instanzen aufskaliert wird und drei fehlerhaft sind, werden höchstens zwei von der Lastenausgleichsrotation ausgeschlossen. Die anderen beiden Instanzen (1 fehlerfrei und 1 fehlerhaft) empfangen weiterhin Anforderungen. Sollten im ungünstigsten Fall alle Instanzen fehlerhaft sein, wird keine Instanz ausgeschlossen. Wenn Sie dieses Verhalten überschreiben möchten, können Sie die App-Einstellung `WEBSITE_HEALTHCHECK_MAXUNHEALTHYWORKERPERCENT` auf einen Wert zwischen `0` und `100` festlegen. Ein höherer Wert führt dazu, dass mehr fehlerhafte Instanzen entfernt werden. (Der Standardwert ist „50“.)
+
+Wenn bei den Integritätsprüfungen für alle Apps einer Instanz eine Stunde lang Fehler auftreten, wird die Instanz ersetzt. Pro Stunde wird höchstens eine Instanz ersetzt, wobei der Maximalwert bei drei Instanzen pro Tag und App Service-Plan liegt.
 
 ### <a name="monitoring"></a>Überwachung
 
@@ -146,7 +148,7 @@ Nachdem Sie den Pfad der Integritätsüberprüfung der Anwendung angegeben haben
 
 ## <a name="moving-autoscale-to-a-different-region"></a>Verschieben der Autoskalierung in eine andere Region
 In diesem Abschnitt wird beschrieben, wie Sie die Autoskalierung von Azure in eine andere Region im selben Abonnement und in derselben Ressourcengruppe verschieben. Sie können die Einstellungen für die Autoskalierung mithilfe der REST-API verschieben.
-### <a name="prerequisite"></a>Voraussetzungen
+### <a name="prerequisite"></a>Voraussetzung
 1. Stellen Sie sicher, dass das Abonnement und die Ressourcengruppe verfügbar sind und die Details in der Quell- und der Zielregion identisch sind.
 1. Stellen Sie sicher, dass die Autoskalierung von Azure in der [Azure-Zielregion für das Verschieben](https://azure.microsoft.com/global-infrastructure/services/?products=monitor&regions=all) verfügbar ist.
 

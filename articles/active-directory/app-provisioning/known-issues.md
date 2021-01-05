@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 11/19/2020
+ms.date: 12/14/2020
 ms.reviewer: arvinh
-ms.openlocfilehash: e0a77e1e4757c8951756c3e41479628c293dfd8f
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 78e9d7355b8c96295456f8aa9cb80b1d3bdd2fab
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96174831"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509545"
 ---
 # <a name="known-issues-application-provisioning"></a>Bekannte Probleme: Bereitstellung von Anwendungen
 In diesem Artikel werden bekannte Probleme behandelt, die Sie bei der App-Bereitstellung berücksichtigen sollten. Sie können Ihr Feedback zum Anwendungsbereitstellungsdienst über UserVoice angeben. Weitere Informationen finden Sie auf der [UserVoice-Seite zur Azure AD-Anwendungsbereitstellung](https://aka.ms/appprovisioningfeaturerequest). Wir beobachten UserVoice genau, damit wir den Dienst verbessern können. 
@@ -57,6 +57,10 @@ Azure AD kann derzeit keine NULL-Attribute bereitstellen. Wenn ein Attribut für
 
 Ausdrücke für die Attributzuordnung können über maximal 10.000 Zeichen verfügen. 
 
+**Nicht unterstützte Bereichsfilter**
+
+Verzeichniserweiterungen, appRoleAssignments, userType und accountExpires werden nicht als Bereichsfilter unterstützt.
+
 
 ## <a name="service-issues"></a>Dienstprobleme 
 
@@ -64,7 +68,8 @@ Ausdrücke für die Attributzuordnung können über maximal 10.000 Zeichen verf
 
 - Das Bereitstellen von Kennwörtern wird nicht unterstützt. 
 - Das Bereitstellen von geschachtelten Gruppen wird nicht unterstützt. 
-- Die Bereitstellung von B2C-Mandanten wird aufgrund der Größe der Mandanten nicht unterstützt. 
+- Die Bereitstellung von B2C-Mandanten wird aufgrund der Größe der Mandanten nicht unterstützt.
+- Nicht alle Bereitstellungs-Apps sind in allen Clouds verfügbar. Beispielsweise ist Atlassian noch nicht in der Government-Cloud verfügbar. Wir arbeiten mit App-Entwicklern daran, ihre Apps in alle Clouds zu integrieren.
 
 **Die automatische Bereitstellung ist in meiner OICD-basierten Anwendung nicht verfügbar**
 

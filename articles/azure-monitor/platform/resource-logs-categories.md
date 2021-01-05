@@ -3,13 +3,13 @@ title: 'Azure Monitor-Ressourcenprotokolle: unterstützte Dienste und Kategorien
 description: 'Referenz zu Azure Monitor: Erläuterung der unterstützten Dienste und Ereignisschemas für Azure-Ressourcenprotokolle.'
 ms.subservice: logs
 ms.topic: reference
-ms.date: 06/03/2020
-ms.openlocfilehash: 1fd6f07151c93b64c150f01e5c0b5c7f4cffed85
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.date: 12/09/2020
+ms.openlocfilehash: c7b2d48b40843930bba78f54d2294769d952daf6
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94593007"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96931227"
 ---
 # <a name="supported-categories-for-azure-resource-logs"></a>Unterstützte Kategorien für Azure-Ressourcenprotokolle
 
@@ -20,6 +20,11 @@ ms.locfileid: "94593007"
 
 Ein Schema wird mit einer Kombination aus dem Ressourcentyp (in der `resourceId`-Eigenschaft verfügbar) und dem `category`-Element eindeutig identifiziert. Es gibt ein allgemeines Schema für alle Ressourcenprotokolle mit dienstspezifischen Feldern, die dann für verschiedene Protokollkategorien hinzugefügt werden. Weitere Informationen finden Sie unter [Allgemeines und dienstspezifisches Schema für Azure-Ressourcenprotokolle]().
 
+
+## <a name="costs"></a>Kosten
+
+Das Senden und Speichern von Daten an und in Log Analytics, Azure Storage und/oder Event Hub ist mit Kosten verbunden. Sie können die Kosten bezahlen, um die Daten an diese Speicherorte zu senden und dort zu speichern.  Ressourcenprotokolle sind ein Datentyp, den Sie an diese Speicherorte senden können. Es entstehen zusätzliche [Kosten, um einige Kategorien von Ressourcenprotokollen](https://azure.microsoft.com/pricing/details/monitor/) nach diesen Speicherorten zu exportieren, während bei anderen keine Exportkosten entstehen. Spezifische Exportkosten sind in der folgenden Tabelle aufgeführt.
+
 ## <a name="supported-log-categories-per-resource-type"></a>Unterstützte Protokollkategorien pro Ressourcentyp
 
 Es folgt eine Liste der Arten von Protokollen, die für jeden Ressourcentyp verfügbar sind. 
@@ -27,17 +32,11 @@ Es folgt eine Liste der Arten von Protokollen, die für jeden Ressourcentyp verf
 Einige Kategorien werden möglicherweise nur für bestimmte Ressourcentypen unterstützt. Wenn Sie der Meinung sind, dass eine Ressource fehlt, lesen Sie die ressourcenspezifische Dokumentation. Beispielsweise sind Kategorien des Typs „Microsoft.Sql/servers/databases“ nicht für alle Datenbanktypen verfügbar. Weitere Informationen finden Sie unter den [Informationen zur SQL-Datenbank-Diagnoseprotokollierung](../../azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md). 
 
 Wenn Sie noch etwas vermissen, können Sie unten in diesem Artikel einen GitHub-Kommentar öffnen.
-
-## <a name="microsoftaadiamtenants"></a>microsoft.aadiam/tenants
-
-|Category|Anzeigename der Kategorie|
-|---|---|
-|Signin|Signin|
-
-
 ## <a name="microsoftanalysisservicesservers"></a>Microsoft.AnalysisServices/servers
 
-|Category|Anzeigename der Kategorie|
+Kosten: Kostenlos 
+
+|Category |Anzeigename der Kategorie|
 |---|---|
 |Engine|Engine|
 |Dienst|Dienst|
@@ -45,14 +44,18 @@ Wenn Sie noch etwas vermissen, können Sie unten in diesem Artikel einen GitHub-
 
 ## <a name="microsoftapimanagementservice"></a>Microsoft.ApiManagement/service
 
-|Category|Anzeigename der Kategorie|
+Kosten: Kostenlos 
+
+|Category |Anzeigename der Kategorie|
 |---|---|
 |GatewayLogs|Protokolle im Zusammenhang mit dem ApiManagement-Gateway|
 
 
 ## <a name="microsoftappplatformspring"></a>Microsoft.AppPlatform/Spring
 
-|Category|Anzeigename der Kategorie|
+Kosten: Kostenlos 
+
+|Category |Anzeigename der Kategorie|
 |---|---|
 |ApplicationConsole|Anwendungskonsole|
 |SystemLogs|Systemprotokolle|
@@ -60,23 +63,29 @@ Wenn Sie noch etwas vermissen, können Sie unten in diesem Artikel einen GitHub-
 
 ## <a name="microsoftautomationautomationaccounts"></a>Microsoft.Automation/automationAccounts
 
-|Category|Anzeigename der Kategorie|
+Kosten: Kostenlos 
+
+|Category |Anzeigename der Kategorie|
 |---|---|
+|DscNodeStatus|DSC-Knotenstatus|
 |JobLogs|Auftragsprotokolle|
 |JobStreams|Auftragsdatenströme|
-|DscNodeStatus|DSC-Knotenstatus|
 
 
 ## <a name="microsoftbatchbatchaccounts"></a>Microsoft.Batch/batchAccounts
 
-|Category|Anzeigename der Kategorie|
+Kosten: Kostenlos 
+
+|Category |Anzeigename der Kategorie|
 |---|---|
 |ServiceLog|Dienstprotokolle|
 
 
 ## <a name="microsoftbatchaiworkspaces"></a>Microsoft.BatchAI/workspaces
 
-|Category|Anzeigename der Kategorie|
+Kosten: Kostenlos 
+
+|Category |Anzeigename der Kategorie|
 |---|---|
 |BaiClusterEvent|BaiClusterEvent|
 |BaiClusterNodeEvent|BaiClusterNodeEvent|
@@ -85,58 +94,77 @@ Wenn Sie noch etwas vermissen, können Sie unten in diesem Artikel einen GitHub-
 
 ## <a name="microsoftblockchainblockchainmembers"></a>Microsoft.Blockchain/blockchainMembers
 
-|Category|Anzeigename der Kategorie|
+Kosten: Kostenlos 
+
+|Category |Anzeigename der Kategorie|
 |---|---|
 |BlockchainApplication|Blockchainanwendung|
+|FabricOrderer|Fabric-Orderer|
+|FabricPeer|Fabric-Peer|
 |Proxy|Proxy|
 
 
 ## <a name="microsoftblockchaincordamembers"></a>Microsoft.Blockchain/cordaMembers
 
-|Category|Anzeigename der Kategorie|
+Kosten: Kostenlos 
+
+|Category |Anzeigename der Kategorie|
 |---|---|
 |BlockchainApplication|Blockchainanwendung|
 
 
 ## <a name="microsoftcdncdnwebapplicationfirewallpolicies"></a>Microsoft.Cdn/cdnwebapplicationfirewallpolicies
 
-|Category|Anzeigename der Kategorie|
+Kosten: Kostenlos 
+
+|Category |Anzeigename der Kategorie|
 |---|---|
 |WebApplicationFirewallLogs|Web Application Firewall-Protokolle|
 
 
 ## <a name="microsoftcdnprofiles"></a>Microsoft.Cdn/profiles
 
-|Category|Anzeigename der Kategorie|
+Kosten: Kostenlos 
+
+|Category |Anzeigename der Kategorie|
 |---|---|
 |AzureCdnAccessLog|Azure CDN-Zugriffsprotokoll|
 
 
 ## <a name="microsoftcdnprofilesendpoints"></a>Microsoft.Cdn/profiles/endpoints
 
-|Category|Anzeigename der Kategorie|
+Kosten: Kostenlos 
+
+|Category |Anzeigename der Kategorie|
 |---|---|
-|CoreAnalytics|Ruft die Metriken des Endpunkts ab, z. B. Bandbreite, ausgehender Datenverkehr usw.|
+|CoreAnalytics|Ruft die Metriken des Endpunkts ab, z.B. Bandbreite, ausgehenden Datenverkehr usw.|
 
 
 ## <a name="microsoftclassicnetworknetworksecuritygroups"></a>Microsoft.ClassicNetwork/networksecuritygroups
 
-|Category|Anzeigename der Kategorie|
+Kosten: Kostenlos 
+
+|Category |Anzeigename der Kategorie|
 |---|---|
 |Regelflussereignis der Netzwerksicherheitsgruppe|Regelflussereignis der Netzwerksicherheitsgruppe|
 
 
 ## <a name="microsoftcognitiveservicesaccounts"></a>Microsoft.CognitiveServices/accounts
 
-|Category|Anzeigename der Kategorie|
+Kosten: Kostenlos 
+
+|Category |Anzeigename der Kategorie|
 |---|---|
 |Audit|Überwachungsprotokolle|
 |RequestResponse|Anforderungs- und Antwortprotokolle|
+|Trace|Ablaufverfolgungsprotokolle|
 
 
 ## <a name="microsoftcontainerregistryregistries"></a>Microsoft.ContainerRegistry/registries
 
-|Category|Anzeigename der Kategorie|
+Kosten: Kostenlos 
+
+|Category |Anzeigename der Kategorie|
 |---|---|
 |ContainerRegistryLoginEvents|Anmeldeereignisse|
 |ContainerRegistryRepositoryEvents|RepositoryEvent-Protokolle|
@@ -144,7 +172,9 @@ Wenn Sie noch etwas vermissen, können Sie unten in diesem Artikel einen GitHub-
 
 ## <a name="microsoftcontainerservicemanagedclusters"></a>Microsoft.ContainerService/managedClusters
 
-|Category|Anzeigename der Kategorie|
+Kosten: Kostenlos 
+
+|Category |Anzeigename der Kategorie|
 |---|---|
 |cluster-autoscaler|Automatische Kubernetes-Clusterskalierung|
 |kube-apiserver|Kubernetes-API-Server|
@@ -155,14 +185,18 @@ Wenn Sie noch etwas vermissen, können Sie unten in diesem Artikel einen GitHub-
 
 ## <a name="microsoftcustomprovidersresourceproviders"></a>Microsoft.CustomProviders/resourceproviders
 
-|Category|Anzeigename der Kategorie|
+Kosten: Kostenlos 
+
+|Category |Anzeigename der Kategorie|
 |---|---|
 |AuditLogs|Überwachungsprotokolle für MiniRP-Aufrufe|
 
 
 ## <a name="microsoftdatabricksworkspaces"></a>Microsoft.Databricks/workspaces
 
-|Category|Anzeigename der Kategorie|
+Kosten: Kostenlos 
+
+|Category |Anzeigename der Kategorie|
 |---|---|
 |accounts|Databricks-Konten|
 |clusters|Databricks-Cluster|
@@ -176,16 +210,11 @@ Wenn Sie noch etwas vermissen, können Sie unten in diesem Artikel einen GitHub-
 |Arbeitsbereich|Databricks-Arbeitsbereich|
 
 
-## <a name="microsoftdatacatalogdatacatalogs"></a>Microsoft.DataCatalog/datacatalogs
-
-|Category|Anzeigename der Kategorie|
-|---|---|
-|ScanStatusLogEvent|ScanStatus|
-
-
 ## <a name="microsoftdatafactoryfactories"></a>Microsoft.DataFactory/factories
 
-|Category|Anzeigename der Kategorie|
+Kosten: Kostenlos 
+
+|Category |Anzeigename der Kategorie|
 |---|---|
 |ActivityRuns|Pipeline-Aktivitätsausführungsprotokoll|
 |PipelineRuns|Pipelineausführungsprotokoll|
@@ -194,31 +223,70 @@ Wenn Sie noch etwas vermissen, können Sie unten in diesem Artikel einen GitHub-
 
 ## <a name="microsoftdatalakestoreaccounts"></a>Microsoft.DataLakeStore/accounts
 
-|Category|Anzeigename der Kategorie|
+Kosten: Kostenlos 
+
+|Category |Anzeigename der Kategorie|
 |---|---|
 |Audit|Überwachungsprotokolle|
 |Requests|Anforderungsprotokolle|
 
 
+## <a name="microsoftdatashareaccounts"></a>Microsoft.DataShare/accounts
+
+Kosten: Kostenlos 
+
+|Category |Anzeigename der Kategorie|
+|---|---|
+|ReceivedShareSnapshots|Empfangene Freigabemomentaufnahmen|
+|SentShareSnapshots|Gesendete Freigabemomentaufnahmen|
+|Freigaben|Freigaben|
+|ShareSubscriptions|Freigabeabonnements|
+
+
 ## <a name="microsoftdbformariadbservers"></a>Microsoft.DBforMariaDB/servers
 
-|Category|Anzeigename der Kategorie|
+Kosten: Kostenlos 
+
+|Category |Anzeigename der Kategorie|
 |---|---|
 |MySqlAuditLogs|MariaDB-Überwachungsprotokolle|
 |MySqlSlowLogs|MariaDB-Serverprotokolle|
 
 
+## <a name="microsoftdbformysqlflexibleservers"></a>Microsoft.DBforMySQL/flexibleServers
+
+Kosten: Kostenlos 
+
+|Category |Anzeigename der Kategorie|
+|---|---|
+|MySqlAuditLogs|MySQL-Überwachungsprotokolle|
+|MySqlSlowLogs|Protokolle zu langsamen MySQL-Abfragen|
+
+
 ## <a name="microsoftdbformysqlservers"></a>Microsoft.DBforMySQL/servers
 
-|Category|Anzeigename der Kategorie|
+Kosten: Kostenlos 
+
+|Category |Anzeigename der Kategorie|
 |---|---|
 |MySqlAuditLogs|MySQL-Überwachungsprotokolle|
 |MySqlSlowLogs|MySQL Server-Protokolle|
 
 
+## <a name="microsoftdbforpostgresqlflexibleservers"></a>Microsoft.DBforPostgreSQL/flexibleServers
+
+Kosten: Kostenlos 
+
+|Category |Anzeigename der Kategorie|
+|---|---|
+|PostgreSQLLogs|PostgreSQL-Serverprotokolle|
+
+
 ## <a name="microsoftdbforpostgresqlservers"></a>Microsoft.DBforPostgreSQL/servers
 
-|Category|Anzeigename der Kategorie|
+Kosten: Kostenlos 
+
+|Category |Anzeigename der Kategorie|
 |---|---|
 |PostgreSQLLogs|PostgreSQL-Serverprotokolle|
 |QueryStoreRuntimeStatistics|Laufzeitstatistik des PostgreSQL-Abfragespeichers|
@@ -227,21 +295,18 @@ Wenn Sie noch etwas vermissen, können Sie unten in diesem Artikel einen GitHub-
 
 ## <a name="microsoftdbforpostgresqlserversv2"></a>Microsoft.DBforPostgreSQL/serversv2
 
-|Category|Anzeigename der Kategorie|
-|---|---|
-|PostgreSQLLogs|PostgreSQL-Serverprotokolle|
+Kosten: Kostenlos 
 
-
-## <a name="microsoftdbforpostgresqlsingleservers"></a>Microsoft.DBforPostgreSQL/singleservers
-
-|Category|Anzeigename der Kategorie|
+|Category |Anzeigename der Kategorie|
 |---|---|
 |PostgreSQLLogs|PostgreSQL-Serverprotokolle|
 
 
 ## <a name="microsoftdesktopvirtualizationapplicationgroups"></a>Microsoft.DesktopVirtualization/applicationgroups
 
-|Category|Anzeigename der Kategorie|
+Kosten: Kostenlos 
+
+|Category |Anzeigename der Kategorie|
 |---|---|
 |Prüfpunkt|Prüfpunkt|
 |Fehler|Fehler|
@@ -250,7 +315,9 @@ Wenn Sie noch etwas vermissen, können Sie unten in diesem Artikel einen GitHub-
 
 ## <a name="microsoftdesktopvirtualizationhostpools"></a>Microsoft.DesktopVirtualization/hostpools
 
-|Category|Anzeigename der Kategorie|
+Kosten: Kostenlos 
+
+|Category |Anzeigename der Kategorie|
 |---|---|
 |Prüfpunkt|Prüfpunkt|
 |Verbindung|Verbindung|
@@ -261,7 +328,9 @@ Wenn Sie noch etwas vermissen, können Sie unten in diesem Artikel einen GitHub-
 
 ## <a name="microsoftdesktopvirtualizationworkspaces"></a>Microsoft.DesktopVirtualization/workspaces
 
-|Category|Anzeigename der Kategorie|
+Kosten: Kostenlos 
+
+|Category |Anzeigename der Kategorie|
 |---|---|
 |Prüfpunkt|Prüfpunkt|
 |Fehler|Fehler|
@@ -271,7 +340,9 @@ Wenn Sie noch etwas vermissen, können Sie unten in diesem Artikel einen GitHub-
 
 ## <a name="microsoftdevicesiothubs"></a>Microsoft.Devices/IotHubs
 
-|Category|Anzeigename der Kategorie|
+Kosten: Kostenlos 
+
+|Category |Anzeigename der Kategorie|
 |---|---|
 |C2DCommands|C2D-Befehle|
 |C2DTwinOperations|C2D-Zwillingsvorgänge|
@@ -291,7 +362,9 @@ Wenn Sie noch etwas vermissen, können Sie unten in diesem Artikel einen GitHub-
 
 ## <a name="microsoftdevicesprovisioningservices"></a>Microsoft.Devices/provisioningServices
 
-|Category|Anzeigename der Kategorie|
+Kosten: Kostenlos 
+
+|Category |Anzeigename der Kategorie|
 |---|---|
 |DeviceOperations|Gerätevorgänge|
 |ServiceOperations|Dienstoperationen|
@@ -299,28 +372,25 @@ Wenn Sie noch etwas vermissen, können Sie unten in diesem Artikel einen GitHub-
 
 ## <a name="microsoftdocumentdbdatabaseaccounts"></a>Microsoft.DocumentDB/databaseAccounts
 
-|Category|Anzeigename der Kategorie|
+Kosten: Kostenlos 
+
+|Category |Anzeigename der Kategorie|
 |---|---|
 |CassandraRequests|CassandraRequests|
 |ControlPlaneRequests|ControlPlaneRequests|
 |DataPlaneRequests|DataPlaneRequests|
+|GremlinRequests|GremlinRequests|
 |MongoRequests|MongoRequests|
 |PartitionKeyRUConsumption|PartitionKeyRUConsumption|
 |PartitionKeyStatistics|PartitionKeyStatistics|
 |QueryRuntimeStatistics|QueryRuntimeStatistics|
 
 
-## <a name="microsoftenterpriseknowledgegraphservices"></a>Microsoft.EnterpriseKnowledgeGraph/services
-
-|Category|Anzeigename der Kategorie|
-|---|---|
-|AuditEvent|AuditEvent-Protokoll|
-|DataIssue|DataIssue-Protokoll|
-|Requests|Konfigurationsprotokoll|
-
 ## <a name="microsofteventgriddomains"></a>Microsoft.EventGrid/domains
 
-|Category|Anzeigename der Kategorie|
+Kosten: Kostenlos 
+
+|Category |Anzeigename der Kategorie|
 |---|---|
 |DeliveryFailures|Protokolle für Zustellungsfehler|
 |PublishFailures|Protokolle für Veröffentlichungsfehler|
@@ -328,14 +398,18 @@ Wenn Sie noch etwas vermissen, können Sie unten in diesem Artikel einen GitHub-
 
 ## <a name="microsofteventgridsystemtopics"></a>Microsoft.EventGrid/systemTopics
 
-|Category|Anzeigename der Kategorie|
+Kosten: Kostenlos 
+
+|Category |Anzeigename der Kategorie|
 |---|---|
 |DeliveryFailures|Protokolle für Zustellungsfehler|
 
 
 ## <a name="microsofteventgridtopics"></a>Microsoft.EventGrid/topics
 
-|Category|Anzeigename der Kategorie|
+Kosten: Kostenlos 
+
+|Category |Anzeigename der Kategorie|
 |---|---|
 |DeliveryFailures|Protokolle für Zustellungsfehler|
 |PublishFailures|Protokolle für Veröffentlichungsfehler|
@@ -343,11 +417,13 @@ Wenn Sie noch etwas vermissen, können Sie unten in diesem Artikel einen GitHub-
 
 ## <a name="microsofteventhubnamespaces"></a>Microsoft.EventHub/namespaces
 
-|Category|Anzeigename der Kategorie|
+Kosten: Kostenlos 
+
+|Category |Anzeigename der Kategorie|
 |---|---|
 |ArchiveLogs|Archivprotokolle|
 |AutoScaleLogs|Protokolle zur automatischen Skalierung|
-|CustomerManagedKeyUserLogs|Protokolle für von Kunden verwaltete Schlüssel|
+|CustomerManagedKeyUserLogs|Protokolle für kundenseitig verwalteten Schlüssel|
 |EventHubVNetConnectionEvent|VNet/IP-Filterung-Verbindungsprotokolle|
 |KafkaCoordinatorLogs|Kafka-Koordinatorprotokolle|
 |KafkaUserErrorLogs|Kafka-Benutzerfehlerprotokolle|
@@ -356,14 +432,18 @@ Wenn Sie noch etwas vermissen, können Sie unten in diesem Artikel einen GitHub-
 
 ## <a name="microsofthealthcareapisservices"></a>Microsoft.HealthcareApis/services
 
-|Category|Anzeigename der Kategorie|
+Kosten: Kostenlos 
+
+|Category |Anzeigename der Kategorie|
 |---|---|
 |AuditLogs|Überwachungsprotokolle|
 
 
 ## <a name="microsoftinsightsautoscalesettings"></a>Microsoft.Insights/AutoscaleSettings
 
-|Category|Anzeigename der Kategorie|
+Kosten: Kostenlos 
+
+|Category |Anzeigename der Kategorie|
 |---|---|
 |AutoscaleEvaluations|Bewertungen der Autoskalierung|
 |AutoscaleScaleActions|Skalierungsaktionen der Autoskalierung|
@@ -371,7 +451,9 @@ Wenn Sie noch etwas vermissen, können Sie unten in diesem Artikel einen GitHub-
 
 ## <a name="microsoftinsightscomponents"></a>Microsoft.Insights/Components
 
-|Category|Anzeigename der Kategorie|
+Kosten: Kostenlos 
+
+|Category |Anzeigename der Kategorie|
 |---|---|
 |AppAvailabilityResults|Verfügbarkeitsergebnisse|
 |AppBrowserTimings|Browserzeiten|
@@ -386,50 +468,53 @@ Wenn Sie noch etwas vermissen, können Sie unten in diesem Artikel einen GitHub-
 |AppTraces|Traces|
 
 
-## <a name="microsoftiotspacesgraph"></a>Microsoft.IoTSpaces/Graph
-
-|Category|Anzeigename der Kategorie|
-|---|---|
-|Audit|Audit|
-|Ausgehende Daten|Ausgehende Daten|
-|Eingehende Daten|Eingehende Daten|
-|Bei Betrieb|Bei Betrieb|
-|Trace|Trace|
-|UserDefinedFunction|UserDefinedFunction|
-
-
 ## <a name="microsoftkeyvaultvaults"></a>Microsoft.KeyVault/vaults
 
-|Category|Anzeigename der Kategorie|
+Kosten: Kostenlos 
+
+|Category |Anzeigename der Kategorie|
 |---|---|
 |AuditEvent|Überwachungsprotokolle|
 
 
 ## <a name="microsoftkustoclusters"></a>Microsoft.Kusto/Clusters
 
-|Category|Anzeigename der Kategorie|
+Kosten: Kostenlos 
+
+|Category |Anzeigename der Kategorie|
 |---|---|
+|Befehl|Befehl|
 |FailedIngestion|Fehlgeschlagene Erfassungsvorgänge|
+|IngestionBatching|Batchverarbeitung der Datenerfassung|
+|Abfrage|Abfrage|
 |SucceededIngestion|Erfolgreiche Erfassungsvorgänge|
+|TableDetails|Tabellendetails|
+|TableUsageStatistics|Tabellenverwendungsstatistik|
 
 
 ## <a name="microsoftlogicintegrationaccounts"></a>Microsoft.Logic/integrationAccounts
 
-|Category|Anzeigename der Kategorie|
+Kosten: Kostenlos 
+
+|Category |Anzeigename der Kategorie|
 |---|---|
 |IntegrationAccountTrackingEvents|Integrationskonto –Nachverfolgen von Ereignissen|
 
 
 ## <a name="microsoftlogicworkflows"></a>Microsoft.Logic/workflows
 
-|Category|Anzeigename der Kategorie|
+Kosten: Kostenlos 
+
+|Category |Anzeigename der Kategorie|
 |---|---|
 |WorkflowRuntime|Diagnoseereignisse zur Workflowlaufzeit|
 
 
 ## <a name="microsoftmachinelearningservicesworkspaces"></a>Microsoft.MachineLearningServices/workspaces
 
-|Category|Anzeigename der Kategorie|
+Kosten: Kostenlos 
+
+|Category |Anzeigename der Kategorie|
 |---|---|
 |AmlComputeClusterEvent|AmlComputeClusterEvent|
 |AmlComputeClusterNodeEvent|AmlComputeClusterNodeEvent|
@@ -440,14 +525,18 @@ Wenn Sie noch etwas vermissen, können Sie unten in diesem Artikel einen GitHub-
 
 ## <a name="microsoftmediamediaservices"></a>Microsoft.Media/mediaservices
 
-|Category|Anzeigename der Kategorie|
+Kosten: Kostenlos 
+
+|Category |Anzeigename der Kategorie|
 |---|---|
 |KeyDeliveryRequests|Schlüsselübermittlungsanforderungen|
 
 
 ## <a name="microsoftnetworkapplicationgateways"></a>Microsoft.Network/applicationGateways
 
-|Category|Anzeigename der Kategorie|
+Kosten: Kostenlos 
+
+|Category |Anzeigename der Kategorie|
 |---|---|
 |ApplicationGatewayAccessLog|Application Gateway-Zugriffsprotokoll|
 |ApplicationGatewayFirewallLog|Application Gateway-Firewallprotokoll|
@@ -456,7 +545,9 @@ Wenn Sie noch etwas vermissen, können Sie unten in diesem Artikel einen GitHub-
 
 ## <a name="microsoftnetworkazurefirewalls"></a>Microsoft.Network/azurefirewalls
 
-|Category|Anzeigename der Kategorie|
+Kosten: Kostenlos 
+
+|Category |Anzeigename der Kategorie|
 |---|---|
 |AzureFirewallApplicationRule|Azure Firewall-Anwendungsregel|
 |AzureFirewallNetworkRule|Azure Firewall-Netzwerkregel|
@@ -464,21 +555,27 @@ Wenn Sie noch etwas vermissen, können Sie unten in diesem Artikel einen GitHub-
 
 ## <a name="microsoftnetworkbastionhosts"></a>Microsoft.Network/bastionHosts
 
-|Category|Anzeigename der Kategorie|
+Kosten: Kostenlos 
+
+|Category |Anzeigename der Kategorie|
 |---|---|
 |BastionAuditLogs|Bastion-Überwachungsprotokolle|
 
 
 ## <a name="microsoftnetworkexpressroutecircuits"></a>Microsoft.Network/expressRouteCircuits
 
-|Category|Anzeigename der Kategorie|
+Kosten: Kostenlos 
+
+|Category |Anzeigename der Kategorie|
 |---|---|
 |PeeringRouteLog|Routentabellenprotokolle zum Peering|
 
 
 ## <a name="microsoftnetworkfrontdoors"></a>Microsoft.Network/frontdoors
 
-|Category|Anzeigename der Kategorie|
+Kosten: Kostenlos 
+
+|Category |Anzeigename der Kategorie|
 |---|---|
 |FrontdoorAccessLog|Frontdoor-Zugriffsprotokoll|
 |FrontdoorWebApplicationFirewallLog|Frontdoor-Web Application Firewall-Protokoll|
@@ -486,7 +583,9 @@ Wenn Sie noch etwas vermissen, können Sie unten in diesem Artikel einen GitHub-
 
 ## <a name="microsoftnetworkloadbalancers"></a>Microsoft.Network/loadBalancers
 
-|Category|Anzeigename der Kategorie|
+Kosten: Kostenlos 
+
+|Category |Anzeigename der Kategorie|
 |---|---|
 |LoadBalancerAlertEvent|Load Balancer-Warnereignisse|
 |LoadBalancerProbeHealthStatus|Integritätsstatus der Load Balancer-Stichprobe|
@@ -494,15 +593,20 @@ Wenn Sie noch etwas vermissen, können Sie unten in diesem Artikel einen GitHub-
 
 ## <a name="microsoftnetworknetworksecuritygroups"></a>Microsoft.Network/networksecuritygroups
 
-|Category|Anzeigename der Kategorie|
+Kosten: Kostenlos 
+
+|Category |Anzeigename der Kategorie|
 |---|---|
 |NetworkSecurityGroupEvent|Ereignis der Netzwerksicherheitsgruppe|
+|NetworkSecurityGroupFlowEvent|Regelflussereignis der Netzwerksicherheitsgruppe|
 |NetworkSecurityGroupRuleCounter|Regelzähler der Netzwerksicherheitsgruppe|
 
 
 ## <a name="microsoftnetworkpublicipaddresses"></a>Microsoft.Network/publicIPAddresses
 
-|Category|Anzeigename der Kategorie|
+Kosten: Kostenlos 
+
+|Category |Anzeigename der Kategorie|
 |---|---|
 |DDoSMitigationFlowLogs|Datenflussprotokolle von Entscheidungen zur DDoS-Risikominderung|
 |DDoSMitigationReports|Berichte zur DDoS-Risikominderung|
@@ -511,14 +615,18 @@ Wenn Sie noch etwas vermissen, können Sie unten in diesem Artikel einen GitHub-
 
 ## <a name="microsoftnetworktrafficmanagerprofiles"></a>Microsoft.Network/trafficManagerProfiles
 
-|Category|Anzeigename der Kategorie|
+Kosten: Kostenlos 
+
+|Category |Anzeigename der Kategorie|
 |---|---|
 |ProbeHealthStatusEvents|Traffic Manager-Testintegritätsergebnisse (Ereignis)|
 
 
 ## <a name="microsoftnetworkvirtualnetworkgateways"></a>Microsoft.Network/virtualNetworkGateways
 
-|Category|Anzeigename der Kategorie|
+Kosten: Kostenlos 
+
+|Category |Anzeigename der Kategorie|
 |---|---|
 |GatewayDiagnosticLog|Gatewaydiagnoseprotokolle|
 |IKEDiagnosticLog|IKE-Diagnoseprotokolle|
@@ -529,21 +637,27 @@ Wenn Sie noch etwas vermissen, können Sie unten in diesem Artikel einen GitHub-
 
 ## <a name="microsoftnetworkvirtualnetworks"></a>Microsoft.Network/virtualNetworks
 
-|Category|Anzeigename der Kategorie|
+Kosten: Kostenlos 
+
+|Category |Anzeigename der Kategorie|
 |---|---|
 |VMProtectionAlerts|VM-Schutz-Warnungen|
 
 
 ## <a name="microsoftpowerbidedicatedcapacities"></a>Microsoft.PowerBIDedicated/capacities
 
-|Category|Anzeigename der Kategorie|
+Kosten: Kostenlos 
+
+|Category |Anzeigename der Kategorie|
 |---|---|
 |Engine|Engine|
 
 
 ## <a name="microsoftrecoveryservicesvaults"></a>Microsoft.RecoveryServices/Vaults
 
-|Category|Anzeigename der Kategorie|
+Kosten: Kostenlos 
+
+|Category |Anzeigename der Kategorie|
 |---|---|
 |AddonAzureBackupAlerts|Add-On: Azure Backup-Warnungsdaten|
 |AddonAzureBackupJobs|Add-On: Azure Backup-Auftragsdaten|
@@ -563,35 +677,45 @@ Wenn Sie noch etwas vermissen, können Sie unten in diesem Artikel einen GitHub-
 
 ## <a name="microsoftrelaynamespaces"></a>Microsoft.Relay/namespaces
 
-|Category|Anzeigename der Kategorie|
+Kosten: Kostenlos 
+
+|Category |Anzeigename der Kategorie|
 |---|---|
 |HybridConnectionsEvent|HybridConnections Events|
 
 
 ## <a name="microsoftsearchsearchservices"></a>Microsoft.Search/searchServices
 
-|Category|Anzeigename der Kategorie|
+Kosten: Kostenlos 
+
+|Category |Anzeigename der Kategorie|
 |---|---|
 |OperationLogs|Vorgangsprotokolle|
 
 
 ## <a name="microsoftservicebusnamespaces"></a>Microsoft.ServiceBus/namespaces
 
-|Category|Anzeigename der Kategorie|
+Kosten: Kostenlos 
+
+|Category |Anzeigename der Kategorie|
 |---|---|
 |OperationalLogs|Betriebsprotokolle|
 
 
 ## <a name="microsoftsignalrservicesignalr"></a>Microsoft.SignalRService/SignalR
 
-|Category|Anzeigename der Kategorie|
+Kosten: Kostenlos 
+
+|Category |Anzeigename der Kategorie|
 |---|---|
 |AllLogs|Protokolle für Azure SignalR Service|
 
 
 ## <a name="microsoftsqlmanagedinstances"></a>Microsoft.Sql/managedInstances
 
-|Category|Anzeigename der Kategorie|
+Kosten: Kostenlos 
+
+|Category |Anzeigename der Kategorie|
 |---|---|
 |DevOpsOperationsAudit|Überwachungsprotokolle für DevOps-Vorgänge|
 |ResourceUsageStats|Nutzungsstatistiken zu Ressourcen|
@@ -600,7 +724,9 @@ Wenn Sie noch etwas vermissen, können Sie unten in diesem Artikel einen GitHub-
 
 ## <a name="microsoftsqlmanagedinstancesdatabases"></a>Microsoft.Sql/managedInstances/databases
 
-|Category|Anzeigename der Kategorie|
+Kosten: Kostenlos 
+
+|Category |Anzeigename der Kategorie|
 |---|---|
 |Errors|Errors|
 |QueryStoreRuntimeStatistics|Laufzeitstatistik des Abfragespeichers|
@@ -610,7 +736,9 @@ Wenn Sie noch etwas vermissen, können Sie unten in diesem Artikel einen GitHub-
 
 ## <a name="microsoftsqlserversdatabases"></a>Microsoft.Sql/servers/databases
 
-|Category|Anzeigename der Kategorie|
+Kosten: Kostenlos 
+
+|Category |Anzeigename der Kategorie|
 |---|---|
 |AutomaticTuning|Automatische Optimierung|
 |Blöcke|Blöcke|
@@ -632,7 +760,9 @@ Wenn Sie noch etwas vermissen, können Sie unten in diesem Artikel einen GitHub-
 
 ## <a name="microsoftstoragestorageaccountsblobservices"></a>Microsoft.Storage/storageAccounts/blobServices
 
-|Category|Anzeigename der Kategorie|
+Kosten: Dies wird wie im Abschnitt „Plattformprotokolle“ der Seite [Azure Monitor – Preise](https://azure.microsoft.com/pricing/details/monitor/) beschrieben bezahlt. 
+
+|Category |Anzeigename der Kategorie|
 |---|---|
 |StorageDelete|StorageDelete|
 |StorageRead|StorageRead|
@@ -641,7 +771,9 @@ Wenn Sie noch etwas vermissen, können Sie unten in diesem Artikel einen GitHub-
 
 ## <a name="microsoftstoragestorageaccountsfileservices"></a>Microsoft.Storage/storageAccounts/fileServices
 
-|Category|Anzeigename der Kategorie|
+Kosten: Dies wird wie im Abschnitt „Plattformprotokolle“ der Seite [Azure Monitor – Preise](https://azure.microsoft.com/pricing/details/monitor/) beschrieben bezahlt. 
+
+|Category |Anzeigename der Kategorie|
 |---|---|
 |StorageDelete|StorageDelete|
 |StorageRead|StorageRead|
@@ -650,7 +782,9 @@ Wenn Sie noch etwas vermissen, können Sie unten in diesem Artikel einen GitHub-
 
 ## <a name="microsoftstoragestorageaccountsqueueservices"></a>Microsoft.Storage/storageAccounts/queueServices
 
-|Category|Anzeigename der Kategorie|
+Kosten: Dies wird wie im Abschnitt „Plattformprotokolle“ der Seite [Azure Monitor – Preise](https://azure.microsoft.com/pricing/details/monitor/) beschrieben bezahlt. 
+ 
+|Category |Anzeigename der Kategorie|
 |---|---|
 |StorageDelete|StorageDelete|
 |StorageRead|StorageRead|
@@ -659,7 +793,9 @@ Wenn Sie noch etwas vermissen, können Sie unten in diesem Artikel einen GitHub-
 
 ## <a name="microsoftstoragestorageaccountstableservices"></a>Microsoft.Storage/storageAccounts/tableServices
 
-|Category|Anzeigename der Kategorie|
+Kosten: Dies wird wie im Abschnitt „Plattformprotokolle“ der Seite [Azure Monitor – Preise](https://azure.microsoft.com/pricing/details/monitor/) beschrieben bezahlt. 
+ 
+|Category |Anzeigename der Kategorie|
 |---|---|
 |StorageDelete|StorageDelete|
 |StorageRead|StorageRead|
@@ -668,22 +804,64 @@ Wenn Sie noch etwas vermissen, können Sie unten in diesem Artikel einen GitHub-
 
 ## <a name="microsoftstreamanalyticsstreamingjobs"></a>Microsoft.StreamAnalytics/streamingjobs
 
-|Category|Anzeigename der Kategorie|
+Kosten: Kostenlos 
+
+|Category |Anzeigename der Kategorie|
 |---|---|
 |Erstellen|Erstellen|
 |Ausführung|Ausführung|
 
 
+## <a name="microsoftsynapseworkspaces"></a>Microsoft.Synapse/workspaces
+
+Kosten: Kostenlos 
+
+|Category |Anzeigename der Kategorie|
+|---|---|
+|BuiltinSqlReqsEnded|Integrierter SQL-Pool, beendete Anforderungen|
+|GatewayApiRequests|Synapse-Gateway-API-Anforderungen|
+|SQLSecurityAuditEvents|SQL-Sicherheitsüberwachungsereignis|
+|SynapseRbacOperations|Synapse-RBAC-Vorgänge|
+
+
+## <a name="microsoftsynapseworkspacesbigdatapools"></a>Microsoft.Synapse/workspaces/bigDataPools
+
+Kosten: Kostenlos 
+
+|Category |Anzeigename der Kategorie|
+|---|---|
+|BigDataPoolAppsEnded|Big Data-Pool, beendete Anwendungen|
+
+
+## <a name="microsoftsynapseworkspacessqlpools"></a>Microsoft.Synapse/workspaces/sqlPools
+
+Kosten: Kostenlos 
+
+|Category |Anzeigename der Kategorie|
+|---|---|
+|DmsWorkers|DMS-Worker|
+|ExecRequests|Ausführungsanforderungen|
+|RequestSteps|Anforderungsschritte|
+|SqlRequests|SQL-Anforderungen|
+|SQLSecurityAuditEvents|SQL-Sicherheitsüberwachungsereignis|
+|Wartevorgänge|Wartevorgänge|
+
+
 ## <a name="microsoftwebhostingenvironments"></a>microsoft.web/hostingenvironments
 
-|Category|Anzeigename der Kategorie|
+Kosten: Kostenlos 
+
+|Category |Anzeigename der Kategorie|
 |---|---|
 |AppServiceEnvironmentPlatformLogs|Plattformprotokolle der App Service-Umgebung|
 
 
 ## <a name="microsoftwebsites"></a>microsoft.web/sites
 
-|Category|Anzeigename der Kategorie|
+Kosten: Kostenlos 
+
+
+|Category |Anzeigename der Kategorie|
 |---|---|
 |AppServiceAppLogs|App Service-Anwendungsprotokolle|
 |AppServiceAuditLogs|Zugriffsüberwachungsprotokolle|
@@ -691,13 +869,14 @@ Wenn Sie noch etwas vermissen, können Sie unten in diesem Artikel einen GitHub-
 |AppServiceFileAuditLogs|Überwachungsprotokolle für Website-Inhaltsänderungen|
 |AppServiceHTTPLogs|HTTP-Protokolle|
 |FunctionAppLogs|Funktionsanwendungsprotokolle|
-|ScanLogs|Protokolle für Antivirenscans|
 
 
 ## <a name="microsoftwebsitesslots"></a>microsoft.web/sites/slots
 
+Kosten: Kostenlos 
 
-|Category|Anzeigename der Kategorie|
+
+|Category |Anzeigename der Kategorie|
 |---|---|
 |AppServiceAppLogs|App Service-Anwendungsprotokolle|
 |AppServiceAuditLogs|Zugriffsüberwachungsprotokolle|
@@ -705,7 +884,6 @@ Wenn Sie noch etwas vermissen, können Sie unten in diesem Artikel einen GitHub-
 |AppServiceFileAuditLogs|Überwachungsprotokolle für Website-Inhaltsänderungen|
 |AppServiceHTTPLogs|HTTP-Protokolle|
 |FunctionAppLogs|Funktionsanwendungsprotokolle|
-|ScanLogs|Protokolle für Antivirenscans|
 
 
 ## <a name="next-steps"></a>Nächste Schritte

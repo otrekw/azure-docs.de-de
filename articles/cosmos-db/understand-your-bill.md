@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/04/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 3ac90b79053e59047dbe64598688e77b9df059d1
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: b51be165d3d05ae753c7e0e5536a157fbbacf1ab
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93358710"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938629"
 ---
 # <a name="understand-your-azure-cosmos-db-bill"></a>Grundlegendes zu Ihrer Azure Cosmos DB-Rechnung
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -130,7 +130,7 @@ Angenommen, Sie erstellen einen Azure Cosmos-Container in der Region „USA, Wes
 |**Element** |**Nutzung (Monat)**|**Rate** |**Monatliche Kosten** |
 |---------|---------|---------|-------|
 |Durchsatzabrechnung für Container in „USA, Westen“ (Schreibanforderungen für alle Regionen)       | 10.000 RUs/Sek. x 24 x 30    |0,016 US-Dollar pro 100 RUs/Sek. pro Stunde    |1\.152 US-Dollar |
-|Durchsatzabrechnung für drei zusätzliche Regionen „USA, Osten“, „Europa, Norden“ und „Asien, Osten“ (Schreibanforderungen für alle Regionen)        | (3+1) x 10.000 RUs/Sek. x 24 x 30    |0,016 US-Dollar pro 100 RUs/Sek. pro Stunde   |4\.608 US-Dollar |
+|Durchsatzabrechnung für drei zusätzliche Regionen „USA, Osten“, „Europa, Norden“ und „Asien, Osten“ (Schreibanforderungen für alle Regionen)        | 3 x 10.000 RUs/Sek. x 24 x 30    |0,016 US-Dollar pro 100 RUs/Sek. pro Stunde   |3\.456 US-Dollar |
 |Speicherabrechnung für Container in „USA, Westen“      | 250 GB    |0,25 US-Dollar/GB  |62,50 US-Dollar|
 |Speicherabrechnung für 3 zusätzliche Regionen „USA, Osten“, „Europa, Norden“ und „Asien, Osten“      | 3 x 250 GB    |0,25 US-Dollar/GB  |187,50 US-Dollar|
 |**Gesamt**     |     |  |**6.010 US-Dollar**|

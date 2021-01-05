@@ -5,16 +5,16 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 07/27/2020
+ms.date: 12/14/2020
 ms.author: jgao
-ms.openlocfilehash: 232a1ae5d125a2ea1d5723e85073fb3dd02420cc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4a7f21410bb97db0a7974870efb812c9954ac241
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87293771"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97503555"
 ---
-# <a name="configure-development-environment-for-deployment-scripts-in-templates-preview"></a>Konfigurieren der Entwicklungsumgebung für Bereitstellungsskripts in Vorlagen (Vorschauversion)
+# <a name="configure-development-environment-for-deployment-scripts-in-templates"></a>Konfigurieren der Entwicklungsumgebung für Bereitstellungsskripts in Vorlagen
 
 Hier erfahren Sie, wie Sie eine Bereitstellungsumgebung für das Erstellen und Testen von Bereitstellungsskripts mit einem Bereitstellungsskriptimage erstellen. Sie können entweder eine [Azure-Containerinstanz](../../container-instances/container-instances-overview.md) erstellen oder [Docker](https://docs.docker.com/get-docker/) verwenden. Beide Varianten werden in diesem Artikel beschrieben.
 

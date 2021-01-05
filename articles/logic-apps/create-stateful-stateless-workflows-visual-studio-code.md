@@ -1,114 +1,51 @@
 ---
-title: Erstellen von Automatisierungsworkflows (Vorschau) in Visual Studio Code
-description: Erstellen von zustandslosen oder zustandsbehafteten Automatisierungsworkflows mit der Azure Logic Apps (Vorschau)-Erweiterung in Visual Studio Code, um Apps, Daten, Clouddienste und lokale Systeme zu integrieren
+title: Erstellen von Logic Apps-Workflows (Vorschau) in Visual Studio Code
+description: Erstellen Sie Workflows für Automatisierungs- und Integrationsszenarien in Visual Studio Code mit der Erweiterung „Azure Logic Apps (Vorschau)“, und führen Sie sie aus.
 services: logic-apps
 ms.suite: integration
-ms.reviewer: deli, rohitha, vikanand, hongzili, sopai, absaafan, logicappspm
+ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
-ms.date: 11/17/2020
-ms.openlocfilehash: 14809cb28870e88cfa584c4f02360d50beabf901
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.date: 12/07/2020
+ms.openlocfilehash: cf8b6670817132c8c0c0a09194b9aca4bbc8073c
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94981040"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96923411"
 ---
-# <a name="create-stateful-or-stateless-workflows-in-visual-studio-code-with-the-azure-logic-apps-preview-extension"></a>Erstellen zustandsbehafteter oder zustandsloser Workflows in Visual Studio Code mit der Azure Logic Apps (Vorschau)-Erweiterung
+# <a name="create-stateful-and-stateless-workflows-in-visual-studio-code-with-the-azure-logic-apps-preview-extension"></a>Erstellen zustandsbehafteter und zustandsloser Workflows in Visual Studio Code mit der Erweiterung „Azure Logic Apps (Vorschau)“
 
 > [!IMPORTANT]
 > Diese Funktion befindet sich in der öffentlichen Vorschauphase, wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Zum Erstellen von Logik-App-Workflows, die über Apps, Daten, Clouddienste und Systeme hinweg integriert werden können, können Sie mit Visual Studio Code und der Azure Logic Apps-Erweiterung (Vorschau) [*zustandsbehaftete* und *zustandslose* Logik-App-Workflows](#stateful-stateless) lokal in Ihrer Entwicklungsumgebung erstellen und ausführen.
+Mit [Azure Logic Apps (Vorschau)](logic-apps-overview-preview.md) können Sie Automatisierungs- und Integrationslösungen für Apps, Daten, Clouddienste und Systeme erstellen, indem Sie Logik-Apps erstellen und ausführen, die [*zustandsbehaftete* und *zustandslose* Workflows](logic-apps-overview-preview.md#stateful-stateless) mit der neuen Erweiterung „Azure Logic Apps (Vorschau)“ in Visual Studio Code integrieren. Mit diesem neuen Logik-App-Typ können Sie mehrere Workflows erstellen, die von der neu gestalteten Azure Logic Apps-Runtime (Vorschau) unterstützt werden. Diese Runtime bietet Portabilität, eine bessere Leistung und mehr Flexibilität bei der Bereitstellung und Ausführung in verschiedenen Hostingumgebungen – nicht nur in Azure, sondern auch in Docker-Containern. Weitere Informationen zum neuen Logik-App-Typ finden Sie unter [Übersicht über die Vorschauversion von Azure Logic Apps](logic-apps-overview-preview.md).
 
-![Screenshot, der Visual Studio Code und einen Logik-App-Workflow zeigt.](./media/create-stateful-stateless-workflows-visual-studio-code/visual-studio-code-logic-apps-overview.png)
+![Screenshot, der Visual Studio Code, Logik-App-Projekt und Workflow zeigt.](./media/create-stateful-stateless-workflows-visual-studio-code/visual-studio-code-logic-apps-overview.png)
 
-Die Logik-Apps, die Sie mit der Erweiterung der öffentlichen Vorschau erstellen, verwenden den neuen **Logik-App**-Ressourcentyp (Vorschau) und werden in Ihrer lokalen Umgebung von der [Azure Functions](../azure-functions/functions-overview.md)-Runtime unterstützt. Dieser neue Ressourcentyp kann mehrere Workflows enthalten und ähnelt in gewisser Weise dem **Funktions-App**-Ressourcentyp, der mehrere Funktionen enthalten kann.
+In Visual Studio Code können Sie zunächst ein Projekt erstellen, das *lokal* erstellt wird und die Workflows Ihrer Logik-App in Ihrer Entwicklungsumgebung mit der Erweiterung „Azure Logic Apps (Vorschau)“ ausführt. Sie können zwar auch mit dem [Erstellen einer neuen **Logic Apps (Vorschau)** -Ressource im Azure-Portal](create-stateful-stateless-workflows-azure-portal.md) beginnen, aber beide Ansätze bieten Ihnen die Möglichkeit, ihre Logik-App in denselben Hostingumgebungen bereitzustellen und auszuführen.
 
-In der Zwischenzeit gibt es weiterhin den ursprünglichen **Logic Apps**-Ressourcentyp, mit dem Sie in Visual Studio Code und im Azure-Portal erstellen und diesen dort verwenden können. Die Erfahrungen für den ursprünglichen Ressourcentyp sind jedoch vom neuen Ressourcentyp getrennt. Zurzeit können sowohl **Logic Apps**- als auch **Logik-App (Vorschau)** -Ressourcentypen gleichzeitig in Visual Studio Code und im Azure-Portal vorhanden sein. Sie können alle bereitgestellten Logik-Apps in Ihrem Azure-Abonnement anzeigen und darauf zugreifen, aber sie werden getrennt in ihren eigenen Kategorien und Abschnitten angezeigt und aufbewahrt.
+In der Zwischenzeit können Sie weiterhin den ursprünglichen Logik-App-Typ erstellen. Trotz der Unterschiede bei der Entwicklung in Visual Studio Code zwischen dem ursprünglichen und dem neuen Logik-App-Typ kann Ihr Azure-Abonnement beide Typen enthalten. Sie können alle bereitgestellten Logik-Apps in Ihrem Azure-Abonnement anzeigen und darauf zugreifen, aber die Apps werden getrennt in ihren eigenen Kategorien und Abschnitten angeordnet.
 
-Dieser Artikel bietet eine allgemeine [Übersicht über diese öffentliche Vorschau](#whats-new), es werden verschiedene Aspekte des **Logik-App (Vorschau)** -Ressourcentyps und die Vorgehensweise zum Erstellen dieser Ressource mithilfe von Visual Studio Code beschrieben:
+In diesem Artikel erfahren Sie, wie Sie Ihre Logik-App und einen Workflow in Visual Studio Code erstellen, indem Sie die Erweiterung „Azure Logic Apps (Vorschau)“ verwenden und diese Aufgaben auf hoher Ebene ausführen:
 
-* Worin sich [zustandsbehaftete und zustandslose](#stateful-stateless) Logik-Apps voneinander unterscheiden.
+* Erstellen eines Projekts für Ihre Logik-App und eines Workflows.
 
-* Wie Sie die [Einrichtungsanforderungen](#prerequisites) erfüllen und [Visual Studio Code für die Erweiterung der öffentlichen Vorschau einrichten](#set-up).
+* Hinzufügen eines Triggers und einer Aktion.
 
-* Wie Sie neue **Logik-App (Vorschau)** -Workflows erstellen, indem Sie [ein Projekt erstellen und eine Workflowvorlage auswählen](#create-project).
+* Lokales Ausführen, Testen, Debuggen und Überprüfen des Ausführungsverlaufs.
 
-* Wie Sie Ihre neuen Logik-Apps in Visual Studio Code lokal ausführen und debuggen.
+* Bereitstellen in Azure, was die optionale Aktivierung von Application Insights beinhaltet.
 
-* Wie Sie diese neuen Logik-Apps direkt aus Visual Studio Code [in Azure](#publish-azure) oder [in einem Docker-Container](#deploy-docker) veröffentlichen, den Sie überall ausführen können. Weitere Informationen zu Docker finden Sie unter [Was ist Docker?](/dotnet/architecture/microservices/container-docker-introduction/docker-defined).
+* Verwalten Ihrer bereitgestellten Logik-App in Visual Studio Code und im Azure-Portal.
 
-<a name="whats-new"></a>
+* Aktivieren des Ausführungsverlaufs für zustandslose Workflows.
 
-## <a name="whats-in-this-public-preview"></a>Inhalt dieser öffentlichen Vorschauversion
+* Aktivieren oder Öffnen von Application Insights nach der Bereitstellung.
 
-Die Azure Logic Apps (Vorschau)-Erweiterung bietet viele aktuelle und zusätzliche Logic Apps-Funktionen für Ihre lokale Entwicklungserfahrung in Visual Studio Code, z. B.:
-
-* Erstellen von Logik-Apps für Integrations- und Automatisierungsworkflows von [390 und mehr Connectors](/connectors/connector-reference/connector-reference-logicapps-connectors) für SaaS-Apps (Software-as-a-Service)- und PaaS (Platform-as-a-Service)-Apps und -Dienste, zuzüglich Connectors für lokale Systeme.
-
-  * Einige verwaltete Connectors wie Azure Service Bus, Azure Event Hubs und SQL Server werden ähnlich wie integrierte native Trigger und Aktionen wie die HTTP-Aktion ausgeführt.
-
-  * Erstellen und Bereitstellen von Logik-Apps, die überall ausgeführt werden können, weil der Azure Logic Apps-Dienst SAS-Verbindungszeichenfolgen (Shared Access Signature) generiert, die diese Logik-Apps zum Senden von Anforderungen an den Runtime-Endpunkt der Cloudverbindung verwenden können. Der Logic Apps-Dienst speichert diese Verbindungszeichenfolgen mit anderen Anwendungseinstellungen, sodass Sie diese Werte problemlos in Azure Key Vault speichern können, wenn Sie in Azure bereitstellen.
-
-    > [!NOTE]
-    > Standardmäßig wird die [systemseitig zugewiesene verwaltete Identität](../logic-apps/create-managed-service-identity.md) einer **Logik-App**-Ressource (Vorschau) automatisch aktiviert, um Verbindungen zur Laufzeit zu authentifizieren. Diese Identität unterscheidet sich von den Anmeldeinformationen für die Authentifizierung oder der Verbindungszeichenfolge, die Sie verwenden, wenn Sie eine Verbindung herstellen. Wenn Sie diese Identität deaktivieren, funktionieren Verbindungen zur Laufzeit nicht.
-
-* Erstellen Sie zustandslose Logik-Apps, die nur im Arbeitsspeicher ausgeführt werden, damit Sie schneller beendet werden, schneller reagieren, einen höheren Durchsatz aufweisen und sich kostengünstiger ausführen lassen, weil die Ausführungsverläufe und -daten zwischen Aktionen nicht dauerhaft in externem Speicher gespeichert werden. Optional können Sie den Ausführungsverlauf für leichteres Debuggen aktivieren. Weitere Informationen finden Sie unter [Zustandsbehaftete Logik-Apps im Vergleich zu zustandslosen Logik-Apps](#stateful-stateless).
-
-* Führen Sie Ihre Logik-Apps lokal in der Visual Studio Code-Entwicklungsumgebung aus, und debuggen Sie sie dort.
-
-* Veröffentlichen Sie Ihre Logik-Apps aus Visual Studio Code, und stellen Sie sie direkt in verschiedenen Hostumgebungen bereit, z. B. [Azure App Service](../app-service/environment/intro.md) und [Docker-Container](/dotnet/core/docker/introduction).
+* Bereitstellen in einem Docker-Container, den Sie überall ausführen können.
 
 > [!NOTE]
-> Informationen zu aktuellen bekannten Problemen finden Sie auf der [GitHub-Seite „Bekannte Probleme“](https://github.com/Azure/logicapps/blob/master/articles/logic-apps-public-preview-known-issues.md) der Vorschauerweiterung.
-
-<a name="stateful-stateless"></a>
-
-## <a name="stateful-versus-stateless-logic-apps"></a>Zustandsbehaftete Logik-Apps im Vergleich zu zustandslosen Logik-Apps
-
-* *Zustandsbehaftet*
-
-  Erstellen Sie zustandsbehaftete Logik-Apps, wenn Sie Daten aus vorherigen Ereignissen beibehalten, überprüfen oder referenzieren müssen. Diese Logik-Apps behalten die Eingabe und Ausgabe für jede Aktion und deren Workflowzustände im externen Speicher bei, wodurch die Ausführungsdetails und der Ausführungsverlauf nach Abschluss der jeweiligen Ausführung überprüft werden können. Zustandsbehaftete Logik-Apps bieten hohe Resilienz, wenn es zu Ausfällen kommen sollte. Nachdem Dienste und Systeme wiederhergestellt wurden, können Sie unterbrochene Logik-App-Ausführungen aus dem gespeicherten Zustand rekonstruieren und die Logik-Apps bis zum Abschluss erneut ausführen. Die Ausführung zustandsbehafteter Workflows kann bis zu ein Jahr lang fortgesetzt werden.
-
-* *Zustandslos*
-
-  Erstellen Sie zustandslose Logik-Apps, wenn Sie Daten aus vorherigen Ereignissen nicht zur späteren Überprüfung in externem Speicher speichern, überprüfen oder referenzieren müssen. Diese Logik-Apps behalten die Eingabe und Ausgabe für jede Aktion und deren Workflowzustände nur im Arbeitsspeicher bei, anstatt diese Informationen in den externen Speicher zu übertragen. Daher sind die Ausführungen zustandsloser Logik-Apps kürzer, in der Regel nicht länger als 5 Minuten, sie haben eine schnellere Leistung mit schnelleren Antwortzeiten, einen höheren Durchsatz und niedrigere Ausführungskosten, weil die Ausführungsdetails und der Ausführungsverlauf nicht im externen Speicher aufbewahrt werden. Wenn es aber zu Ausfällen kommen sollte, werden unterbrochene Ausführungen nicht automatisch wiederhergestellt, weshalb der Aufrufer unterbrochene Ausführungen manuell erneut übermitteln muss. Diese Logik-Apps können nur synchron ausgeführt werden. Um das Debuggen zu vereinfachen, können Sie den [Ausführungsverlauf aktivieren](#run-history), was Auswirkungen auf die Leistung hat.
-
-  Zustandslose Workflows unterstützen derzeit nur *Aktionen* für in Azure bereitgestellte [verwaltete Connectors](../connectors/apis-list.md#managed-api-connectors), keine Aktionen für Trigger. Wählen Sie den [integrierten Anforderungs-, Event Hubs- oder Service Bus-Trigger](../connectors/apis-list.md#built-ins) aus, der nativ in der Logic Apps-Runtime ausgeführt wird, um Ihren Workflow zu starten. Weitere Informationen zu nicht unterstützten Triggern, Aktionen und Connectors finden Sie unter [Nicht unterstützte oder nicht verfügbare Funktionen](#unsupported).
-
-Informationen zur Art und Weise, wie sich geschachtelte Logik-Apps zwischen zustandsbehafteten und zustandslosen Logik-Apps unterschiedlich verhalten, finden Sie unter [Unterschiede im geschachtelten Verhalten zwischen zustandsbehafteten und zustandslosen Logik-Apps](#nested-behavior).
-
-<a name="pricing-model"></a>
-
-## <a name="pricing-model"></a>Preismodell
-
-Wenn Sie den neuen **Logik-App (Vorschau)** -Ressourcentyp bereitstellen, werden Sie aufgefordert, einen Hostingplan auszuwählen, insbesondere den [App Service-Plan oder Premium-Plan](../azure-functions/functions-scale.md), der als Preismodell verwendet werden soll. Wenn Sie den App Service-Plan auswählen, werden Sie außerdem aufgefordert, einen [Tarif](../app-service/overview-hosting-plans.md) auszuwählen. Während der öffentlichen Vorschauphase entstehen durch das Ausführen von Logik-Apps im App Service keine *zusätzlichen* Gebühren zum ausgewählten Plan.
-
-Zustandsbehaftete Logik-Apps verwenden [externen Speicher](../azure-functions/functions-scale.md#storage-account-requirements), sodass das Azure Storage-Preismodell auf Speichertransaktionen angewendet wird, die von der Azure Logic Apps-Runtime ausgeführt werden. Beispielsweise werden Warteschlangen für die Zeitplanung verwendet, während Tabellen und Blobs zum Speichern von Workflowzuständen verwendet werden.
-
-Weitere Informationen zu den Preismodellen, die für diesen neuen Ressourcentyp gelten, finden Sie in den folgenden Themen:
-
-* [Skalierung und Hosting von Azure Functions](../azure-functions/functions-scale.md)
-* [Hochskalieren einer App in Azure App Service](../app-service/manage-scale-up.md)
-* [Azure Functions – Preisdetails](https://azure.microsoft.com/pricing/details/functions/)
-* [App Service-Preisdetails](https://azure.microsoft.com/pricing/details/app-service/windows/)
-* [Azure Storage – Preisdetails](https://azure.microsoft.com/pricing/details/storage/)
-
-<a name="unsupported"></a>
-
-## <a name="unavailable-or-unsupported-capabilities"></a>Nicht verfügbare oder nicht unterstützte Funktionen
-
-Diese Funktionen sind für diese öffentliche Vorschau nicht verfügbar oder werden nicht unterstützt:
-
-* Das Erstellen der neuen **Logik-App**-Ressource (Vorschau) ist zurzeit unter macOS nicht verfügbar.
-
-* Es werden noch nicht alle Azure-Regionen unterstützt. Überprüfen Sie für derzeit verfügbare Regionen die [Regionenliste](https://github.com/Azure/logicapps/blob/master/articles/logic-apps-public-preview-known-issues.md#available-regions).
-
-* Verwenden Sie den [integrierten Anforderungs-, HTTP-, Event Hubs- oder Service Bus-Trigger](../connectors/apis-list.md), der nativ in der Logic Apps-Runtime ausgeführt wird, um Ihren Workflow zu starten. Derzeit werden [Unternehmensconnectors](../connectors/apis-list.md#enterprise-connectors), [lokale Datengatewaytrigger](../connectors/apis-list.md#on-premises-connectors), webhook-basierte Trigger, „Gleitendes Fenster“-Trigger, [benutzerdefinierte Connectors](../connectors/apis-list.md#custom-apis-and-connectors), Integrationskonten, ihre Artefakte und [ihre Connectors](../connectors/apis-list.md#integration-account-connectors) in dieser Vorschauversion nicht unterstützt. Da die Funktionalität „Aufrufen einer Azure-Funktion“ nicht verfügbar ist, verwenden Sie vorerst die HTTP-*Aktion*, um die Anforderungs-URL für die Azure-Funktion aufzurufen.
-
-  Mit Ausnahme der zuvor angegebenen Trigger können *zustandsbehaftete* Workflows im Gegensatz zu integrierten Triggern und Aktionen, die nativ mit der Logic Apps-Laufzeit ausgeführt werden, sowohl Trigger als auch Aktionen für [verwaltete Connectors](../connectors/apis-list.md#managed-api-connectors) verwenden, die in Azure bereitgestellt werden. *Zustandslose* Workflows unterstützen derzeit nur *Aktionen* für verwaltete Connectors, keine für Trigger. Obwohl Sie Connectors in Azure für zustandslose Workflows aktivieren können, zeigt der Designer keine verwalteten Connectortrigger an, die Sie auswählen können.
-
-* Sie können den neuen **Logik-App**-Ressourcentyp (Vorschau) nur für einen [Premium- oder App Service-Hostingplan in Azure](#publish-azure) oder einen [Docker-Container](#deploy-docker) bereitstellen, nicht für [Integrationsdienstumgebungen (Integration Service Environment, ISEs)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md). Hostingpläne für den **Verbrauch** werden weder unterstützt, noch stehen sie zur Bereitstellung dieses Ressourcentyps zur Verfügung.
+> Informationen zu aktuellen bekannten Problemen finden Sie in GitHub unter [Logic Apps Public Preview Known Issues](https://github.com/Azure/logicapps/blob/master/articles/logic-apps-public-preview-known-issues.md) (Bekannte Probleme der öffentlichen Vorschauversion von Logic Apps).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -122,16 +59,34 @@ Diese Funktionen sind für diese öffentliche Vorschau nicht verfügbar oder wer
 
   Wenn Sie sich entschließen, einen anderen [E-Mail-Connector zu verwenden, der von Azure Logic Apps unterstützt wird](/connectors/), z. B. Outlook.com oder [Gmail](../connectors/connectors-google-data-security-privacy-policy.md), können Sie dennoch das Beispiel durcharbeiten, und die allgemeinen übergeordneten Schritte sind identisch, doch Ihre Benutzeroberfläche und deren Optionen können sich in gewisser Weise unterscheiden. Wenn Sie beispielsweise den Outlook.com-Connector verwenden, verwenden Sie stattdessen Ihr persönliches Microsoft-Konto, um sich anzumelden.
 
+<a name="storage-requirements"></a>
+
 ### <a name="storage-requirements"></a>Speicheranforderungen
+
+#### <a name="windows-and-linux"></a>Windows und Linux
 
 1. Laden Sie den [Azure Storage-Emulator 5.10](https://go.microsoft.com/fwlink/p/?linkid=717179) herunter, und installieren Sie ihn.
 
 1. Zum Ausführen des Emulators benötigen Sie eine lokale SQL-DB-Installation, z. B. die kostenlose [SQL Server 2019 Express Edition](https://go.microsoft.com/fwlink/p/?linkid=866658). Weitere Informationen finden Sie unter [Verwenden des Azure Storage-Emulators für Entwicklung und Tests](../storage/common/storage-use-emulator.md).
 
    > [!IMPORTANT]
-   > Bevor Sie den Logik-App-Designer öffnen, um Ihren Logik-App-Workflow zu erstellen, stellen Sie sicher, dass Sie den Emulator starten. Andernfalls erhalten Sie die Meldung: `Workflow design time could not be started`.
+   > Bevor Sie den Designer öffnen, um Ihren Workflow zu erstellen, stellen Sie sicher, dass Sie den Emulator starten. Andernfalls erhalten Sie die Meldung: `Workflow design time could not be started`.
    >
    > ![Screenshot, der den ausgeführten Azure Storage-Emulator zeigt.](./media/create-stateful-stateless-workflows-visual-studio-code/start-storage-emulator.png)
+
+#### <a name="macos"></a>macOS
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und [erstellen Sie ein Azure Storage Konto](../storage/common/storage-account-create.md?tabs=azure-portal), das eine [Voraussetzung für Azure Functions](../azure-functions/storage-considerations.md) ist.
+
+1. [Suchen Sie die Verbindungszeichenfolge für das Speicherkonto, und kopieren Sie sie.](../storage/common/storage-account-keys-manage.md?tabs=azure-portal#view-account-access-keys) Beispiel:
+
+   `DefaultEndpointsProtocol=https;AccountName=fabrikamstorageacct;AccountKey=<access-key>;EndpointSuffix=core.windows.net`
+
+   ![Screenshot, der das Azure-Portal mit Speicherkonto-Zugriffsschlüsseln und kopierter Verbindungszeichenfolge anzeigt.](./media/create-stateful-stateless-workflows-visual-studio-code/find-storage-account-connection-string.png)
+
+1. Speichern Sie die Zeichenfolge an einem sicheren Ort, sodass Sie die Zeichenfolge später den **local.settings.json**-Dateien in dem Projekt hinzufügen können, das Sie zum Erstellen Ihrer Logik-App in Visual Studio Code verwenden.
+
+Wenn Sie zu einem späteren Zeitpunkt versuchen, den Designer für einen Workflow in ihrer Logik-App zu öffnen, erhalten Sie diese Meldung: `Workflow design time could not be started`. Nach Anzeige dieser Meldung müssen Sie die Verbindungszeichenfolge des Speicherkontos den beiden **local.settings.json**-Dateien im Projekt hinzufügen und erneut versuchen, den Designer zu öffnen.
 
 ### <a name="tools"></a>Tools
 
@@ -141,31 +96,19 @@ Diese Funktionen sind für diese öffentliche Vorschau nicht verfügbar oder wer
 
   * [C# für Visual Studio Code-Erweiterung](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp), mit der die F5-Funktionalität in die Lage versetzt wird, Ihre Logik-App auszuführen.
 
-  * [Azure Functions Core Tools](../azure-functions/functions-run-local.md), entweder Version [3.0.2931](https://github.com/Azure/azure-functions-core-tools/releases/tag/3.0.2931) oder [2.7.2936](https://github.com/Azure/azure-functions-core-tools/releases/tag/2.7.2936) über Microsoft Installer (MSI). Diese Tools enthalten eine Version derselben Runtime, auf der die Azure Functions-Runtime basiert, die in Visual Studio Code ausgeführt wird.
+  * [Azure Functions Core Tools 3.0.2931 oder höher](https://github.com/Azure/azure-functions-core-tools/releases/tag/3.0.2931) mit Verwendung von Microsoft Installer (MSI).
+
+    Diese Tools enthalten eine Version derselben Runtime, auf der die Azure Functions-Runtime basiert, die die Erweiterung in der Vorschau in Visual Studio Code verwendet.
 
     > [!IMPORTANT]
     > Wenn Sie über eine Installation verfügen, die älter als diese Versionen ist, deinstallieren Sie diese Version zuerst, oder stellen Sie sicher, dass die PATH-Umgebungsvariable auf die Version verweist, die Sie herunterladen und installieren.
-    >
-    > Wenn Sie die [**Inlinecode**-Aktion](../logic-apps/logic-apps-add-run-inline-code.md) zum Ausführen von JavaScript-Code verwenden möchten, müssen Sie die Azure Functions-Laufzeitversion 3x verwenden, weil die Aktion die Version 2x nicht unterstützt. Außerdem wird diese Aktion derzeit nicht unter Linux-Betriebssystemen unterstützt.
 
-  * [Azure Logic Apps (Vorschau)-Erweiterung für Visual Studio Code](https://go.microsoft.com/fwlink/p/?linkid=2143167). Diese Erweiterung in der öffentlichen Vorschau bietet Ihnen die Möglichkeit, zustandsbehaftete und zustandslose Logik-Apps zu erstellen und sie lokal in Visual Studio Code auszuführen.
+  * [Azure Logic Apps (Vorschau)-Erweiterung für Visual Studio Code](https://go.microsoft.com/fwlink/p/?linkid=2143167). Diese Erweiterung bietet Ihnen die Möglichkeit, Logik-Apps zu erstellen, in denen Sie zustandsbehaftete und zustandslose Workflows erstellen können, die lokal in Visual Studio Code ausgeführt werden, und diese Logik-Apps dann direkt in Azure oder Docker-Containern bereitzustellen.
 
-    Zurzeit können Sie sowohl die ursprüngliche **Azure Logic Apps**-Erweiterung als auch die neue **Azure Logic Apps (Vorschau)** -Erweiterung gleichzeitig in Visual Studio Code installiert haben. Wenn Sie das Azure-Symbol auf der Visual Studio Code-Symbolleiste auswählen, können Sie alle in Azure bereitgestellten Logik-Apps anzeigen, aber jeder Ressourcentyp wird in seinen eigenen Erweiterungsabschnitten angezeigt, **Logic Apps** und **Azure Logic Apps (Vorschau)** .
+    Zurzeit können Sie die ursprüngliche Azure Logic Apps-Erweiterung und die Public Preview-Erweiterung in Visual Studio Code parallel installieren. Obwohl sich die Entwicklungsumgebungen in gewisser Weise zwischen den Erweiterungen unterscheiden, kann Ihr Azure-Abonnement beide Logik-App-Typen enthalten, die Sie mit den Erweiterungen erstellen. Visual Studio Code zeigt alle bereitgestellten Logik-Apps in Ihrem Azure-Abonnement an, organisiert sie aber in verschiedenen Abschnitten nach Erweiterungsnamen, **Logik-Apps** und **Azure Logic Apps (Vorschau)** .
 
     > [!IMPORTANT]
-    > Wenn Sie Logik-Apps mithilfe der **Azure Logic Apps (Private Vorschau)** -Erweiterung erstellt haben, funktionieren diese Logik-Apps nicht mit der öffentlichen Vorschauerweiterung. Sie können diese Logik-Apps jedoch migrieren, indem Sie die private Vorschauerweiterung deinstallieren, die erforderliche Bereinigung ausführen und die öffentliche Vorschauerweiterung installieren. Anschließend können Sie dann Ihr neues Projekt in Visual Studio Code erstellen und Ihre zuvor erstellte **workflow.definition**-Datei der Logik-App in Ihr neues Projekt kopieren.
-    >
-    > Stellen Sie also vor der Installation der öffentlichen Vorschauerweiterung sicher, dass Sie alle früheren Versionen deinstallieren, und löschen Sie die folgenden Artefakte:
-    >
-    > * Den Ordner **Microsoft.Azure.Functions.ExtensionBundle.Workflows**, der vorherige Erweiterungsbündel enthält und sich in einem dieser beiden Pfade befindet:
-    >
-    >   * `C:\Users\{userName}\AppData\Local\Temp\Functions\ExtensionBundles`
-    >
-    >   * `C:\Users\{userName}.azure-functions-core-tools\Functions\ExtensionBundles`
-    >
-    > * Den Ordner **microsoft.azure.workflows.webjobs.extension**, der der [NuGet](/nuget/what-is-nuget)-Cache für die private Vorschauerweiterung ist und sich in diesem Pfad befindet:
-    >
-    >   `C:\Users\{userName}\.nuget\packages`
+    > Wenn Sie Logik-Apps mithilfe der früheren Erweiterung in der privaten Vorschau erstellt haben, funktionieren diese Logik-Apps nicht mit der Public Preview-Erweiterung. Sie können diese Logik-Apps jedoch migrieren, nachdem Sie die Erweiterung in der privaten Vorschau deinstalliert, die zugehörigen Dateien gelöscht und die Public Preview-Erweiterung installiert haben. Anschließend erstellen Sie ein neues Projekt in Visual Studio Code und kopieren Ihre zuvor erstellte **workflow.definition**-Datei der Logik-App in Ihr neues Projekt. Weitere Informationen finden Sie unter [Migration von der Erweiterung in der privaten Vorschau](#migrate-private-preview).
 
     Führen Sie zum Installieren der **Azure Logic Apps (Vorschau)** -Erweiterung die folgenden Schritte aus:
 
@@ -173,13 +116,41 @@ Diese Funktionen sind für diese öffentliche Vorschau nicht verfügbar oder wer
 
     1. Geben Sie in das Suchfeld für Erweiterungen `azure logic apps preview` ein. Wählen Sie in der Ergebnisliste **Azure Logic Apps (Vorschau)** **>** **Installieren** aus.
 
-       Nach Abschluss der Installation wird die Erweiterung der öffentlichen Vorschau in der Lite **Erweiterungen: Installiert** angezeigt.
+       Nach Abschluss der Installation wird die Erweiterung in der Vorschau in der Liste **Erweiterungen: Installiert** angezeigt.
 
        ![Screenshot, der die Liste der installierten Erweiterungen in Visual Studio Code mit unterstrichener Erweiterung „Azure Logic Apps (Vorschau)“ zeigt.](./media/create-stateful-stateless-workflows-visual-studio-code/azure-logic-apps-extension-installed.png)
 
+* Zum lokalen Ausführen von webhookbasierten Triggern und Aktionen wie des [integrierten HTTP-Webhook-Triggers](../connectors/connectors-native-webhook.md) in Visual Studio Code müssen Sie die [Weiterleitung für die Rückruf-URL einrichten](#webhook-setup).
+
 * Zum Testen der Beispiel-Logik-App, die Sie in diesem Artikel erstellen, benötigen Sie ein Tool, das Aufrufe an den Anforderungstrigger senden kann, wobei es sich um den ersten Schritt in der Beispiel-Logik-App handelt. Falls Sie nicht über ein solches Tool verfügen, können Sie [Postman](https://www.postman.com/downloads/) herunterladen, installieren und verwenden.
 
-* Zur Vereinfachung der Diagnoseprotokollierungs- und Ablaufverfolgungsfunktion können Sie eine [Application Insights](../azure-monitor/app/app-insights-overview.md)-Ressource hinzufügen und verwenden. Sie können diese Ressource während der Bereitstellung der Logik-App erstellen oder im Azure-Portal, nachdem Sie Ihre Logik-App bereitgestellt haben.
+* Wenn Sie Ihre Logik-App erstellen und mit Einstellungen bereitstellen, die die Verwendung von [Application Insights](../azure-monitor/app/app-insights-overview.md) unterstützen, können Sie optional die Diagnoseprotokollierung und Ablaufverfolgung für Ihre Logik-App aktivieren. Dies können Sie entweder tun, wenn Sie Ihre Logik-App über Visual Studio Code bereitstellen, oder nach der Bereitstellung. Sie benötigen eine Application Insights-Instanz, können aber diese Ressource entweder [im Voraus](../azure-monitor/app/create-workspace-resource.md), beim Bereitstellen Ihrer Logik-App oder nach der Bereitstellung erstellen.
+
+<a name="migrate-private-preview"></a>
+
+## <a name="migrate-from-private-preview-extension"></a>Migration von der Erweiterung in der privaten Vorschau
+
+Logik-Apps, die Sie mithilfe der **Azure Logic Apps-Erweiterung (Private Vorschau)** erstellt haben, funktionieren nicht mit der Public Preview-Erweiterung. Sie können diese Logik-Apps jedoch zu einem neuen Visual Studio Code-Projekt migrieren, indem Sie die folgenden Schritte ausführen:
+
+1. Deinstallieren Sie die Erweiterung in der privaten Vorschau.
+
+1. Löschen Sie die zugehörigen Erweiterungsbündel und NuGet-Paketordner an den folgenden Speicherorten:
+
+   * Den Ordner **Microsoft.Azure.Functions.ExtensionBundle.Workflows**, der vorherige Erweiterungsbündel enthält und sich in einem dieser beiden Pfade befindet:
+
+     * `C:\Users\{userName}\AppData\Local\Temp\Functions\ExtensionBundles`
+
+     * `C:\Users\{userName}.azure-functions-core-tools\Functions\ExtensionBundles`
+
+   * Den Ordner **microsoft.azure.workflows.webjobs.extension**, der der [NuGet](/nuget/what-is-nuget)-Cache für die Erweiterung in der privaten Vorschau ist und sich in diesem Pfad befindet:
+
+     `C:\Users\{userName}\.nuget\packages`
+
+1. Installieren Sie die Erweiterung **Azure Logic Apps (Vorschau)** .
+
+1. Erstellen Sie ein neues Projekt in Visual Studio Code.
+
+1. Kopieren Sie die **workflow.definition**-Datei der zuvor erstellten Logik-App in das neue Projekt.
 
 <a name="set-up"></a>
 
@@ -187,7 +158,7 @@ Diese Funktionen sind für diese öffentliche Vorschau nicht verfügbar oder wer
 
 1. Um sicherzustellen, dass alle Erweiterungen ordnungsgemäß installiert sind, laden Sie Visual Studio Code neu, oder starten Sie es erneut.
 
-1. Aktivieren oder überprüfen Sie, dass Visual Studio Code Erweiterungsupdates automatisch sucht und installiert, damit Ihre öffentliche Vorschauerweiterung die neuesten Updates erhält.
+1. Aktivieren oder bestätigen Sie, dass Visual Studio Code Erweiterungsupdates automatisch sucht und installiert, damit Ihre Public Preview-Erweiterung die neuesten Updates erhält. Andernfalls müssen Sie die veraltete Version manuell deinstallieren und die neueste Version installieren.
 
    Gehen Sie wie folgt vor, um diese Einstellung zu überprüfen:
 
@@ -197,7 +168,7 @@ Diese Funktionen sind für diese öffentliche Vorschau nicht verfügbar oder wer
 
    1. Vergewissern Sie sich, dass **Updates automatisch suchen** und **Automatische Aktualisierung** ausgewählt sind.
 
-1. Aktivieren oder überprüfen Sie, dass diese **Azure Logic Apps (Vorschau)** -Erweiterungseinstellungen in Visual Studio Code eingerichtet sind:
+1. Aktivieren oder bestätigen Sie, dass diese Erweiterungseinstellungen über die richtige Auswahl verfügen:
 
    * **Azure Logic Apps V2: Panelmodus**
    * **Azure Logic Apps V2: Projektlaufzeit**
@@ -206,10 +177,14 @@ Diese Funktionen sind für diese öffentliche Vorschau nicht verfügbar oder wer
 
    1. Wechseln Sie auf der Registerkarte **Benutzer** zu **>** **Erweiterungen** **>** **Azure Logic Apps (Vorschau)** .
 
-   1. Vergewissern Sie sich unter **Azure Logic Apps V2: Panelmodus**, dass **Panelmodus aktivieren** ausgewählt ist. Legen Sie unter **Azure Logic Apps V2: Projektlaufzeit** die Version auf **~3** oder **~2** fest, basierend auf der [Version der Azure Functions Core Tools](#prerequisites), die Sie zuvor installiert haben.
+   1. Bestätigen Sie diese Erweiterungseinstellungen:
 
-      > [!IMPORTANT]
-      > Wenn Sie die [**Inlinecode**-Aktion](../logic-apps/logic-apps-add-run-inline-code.md) zum Ausführen von JavaScript-Code verwenden möchten, stellen Sie sicher, dass Sie Projektlaufzeitversion 3 verwenden, weil die Aktion die Version 2 nicht unterstützt. Außerdem wird diese Aktion derzeit nicht unter Linux-Betriebssystemen unterstützt.
+      * Vergewissern Sie sich unter **Azure Logic Apps V2: Panelmodus**, dass **Panelmodus aktivieren** ausgewählt ist.
+
+      * Vergewissern Sie sich unter **Azure Logic Apps V2: Projektlaufzeit**, dass die Version auf **~3** festgelegt ist.
+
+        > [!IMPORTANT]
+        > Zur Verwendung von [Inlinecode-Aktionen](../logic-apps/logic-apps-add-run-inline-code.md), die derzeit für macOS und Linux nicht verfügbar sind, ist für die Einstellung **Projektlaufzeit** die Version 3 erforderlich.
 
       ![Screenshot, der die Visual Studio Code-Einstellungen für die Erweiterung „Azure Logic Apps (Vorschau)“ zeigt.](./media/create-stateful-stateless-workflows-visual-studio-code/azure-logic-apps-preview-settings.png)
 
@@ -217,19 +192,19 @@ Diese Funktionen sind für diese öffentliche Vorschau nicht verfügbar oder wer
 
 ## <a name="connect-to-your-azure-account"></a>Herstellen einer Verbindung mit Ihrem Azure-Konto
 
-1. Wählen Sie in der Visual Studio Code-Symbolleiste das Azure-Symbol aus.
+1. Wählen Sie auf der Aktivitätsleiste von Visual Studio Code das Azure-Symbol aus.
 
-   ![Screenshot, der die Visual Studio Code-Symbolleiste mit ausgewähltem Azure-Symbol zeigt.](./media/create-stateful-stateless-workflows-visual-studio-code/visual-studio-code-azure-icon.png)
+   ![Screenshot, der die Visual Studio Code-Aktivitätsleiste mit ausgewähltem Azure-Symbol zeigt.](./media/create-stateful-stateless-workflows-visual-studio-code/visual-studio-code-azure-icon.png)
 
 1. Wählen Sie im Azure-Bereich unter **Azure: Logic Apps (Vorschau)** die Option **Bei Azure anmelden** aus. Wenn die Authentifizierungsseite für Visual Studio Code angezeigt wird, melden Sie sich mit Ihrem Azure-Konto an.
 
    ![Screenshot, der den Azure-Bereich und den ausgewählten Link für die Azure-Anmeldung zeigt.](./media/create-stateful-stateless-workflows-visual-studio-code/sign-in-azure-subscription.png)
 
-   Nachdem Sie sich angemeldet haben, werden im Azure-Bereich die Abonnements in Ihrem Azure-Konto angezeigt. Wenn Sie die öffentlich verfügbare Logic Apps-Erweiterung haben, finden Sie alle ursprünglichen Logic Apps-Ressourcen, die Sie mit der ursprünglichen Erweiterung erstellt haben, im Abschnitt **Logic Apps** der veröffentlichten Erweiterung und nicht im Abschnitt **Logik-Apps (Vorschau)** der Erweiterungsvorschauversion.
+   Nachdem Sie sich angemeldet haben, werden im Azure-Bereich die Abonnements in Ihrem Azure-Konto angezeigt. Wenn Sie auch über die öffentlich herausgegebene Erweiterung verfügen, finden Sie alle Logik-Apps, die Sie mit dieser Erweiterung erstellt haben, im Abschnitt **Logic Apps** und nicht im Abschnitt **Logic Apps (Vorschau)** .
    
    Wenn die erwarteten Abonnements nicht angezeigt werden oder der Bereich nur bestimmte Abonnements anzeigen soll, führen Sie die folgenden Schritte aus:
 
-   1. Bewegen Sie in der Liste Abonnements den Zeiger neben das erste Abonnement, bis die Schaltfläche (Filtersymbol) **Abonnements auswählen** angezeigt wird. Wählen Sie das Filtersymbol aus.
+   1. Bewegen Sie in der Liste „Abonnements“ den Zeiger neben das erste Abonnement, bis die Schaltfläche (Filtersymbol) **Abonnements auswählen** angezeigt wird. Wählen Sie das Filtersymbol aus.
 
       ![Screenshot, der den Azure-Bereich und das ausgewählte Filtersymbol zeigt.](./media/create-stateful-stateless-workflows-visual-studio-code/filter-subscription-list.png)
 
@@ -241,7 +216,7 @@ Diese Funktionen sind für diese öffentliche Vorschau nicht verfügbar oder wer
 
 ## <a name="create-a-local-project"></a>Erstellen eines lokalen Projekts
 
-Bevor Sie Ihre Logik-App erstellen können, erstellen Sie ein lokales Projekt, damit Sie Ihre Logik-App aus Visual Studio Code verwalten und bereitstellen können. Das zugrunde liegende Projekt ähnelt stark einem Azure Functions-Projekt, das auch als Funktions-App-Projekt bezeichnet wird. Diese Projekttypen sind jedoch voneinander getrennt, sodass Logik-App-Workflows und -Funktionen nicht im selben Projekt vorhanden sein können.
+Bevor Sie Ihre Logik-App erstellen können, erstellen Sie ein lokales Projekt, damit Sie Ihre Logik-App aus Visual Studio Code verwalten und bereitstellen können. Das zugrunde liegende Projekt ähnelt stark einem Azure Functions-Projekt, das auch als Funktions-App-Projekt bezeichnet wird. Diese Projekttypen sind jedoch voneinander getrennt, sodass Logik-Apps und Funktions-App nicht im selben Projekt vorhanden sein können.
 
 1. Erstellen Sie auf Ihrem Computer einen *leeren* lokalen Ordner, der für das Projekt verwendet werden soll, das Sie später in Visual Studio Code erstellen werden.
 
@@ -261,27 +236,27 @@ Bevor Sie Ihre Logik-App erstellen können, erstellen Sie ein lokales Projekt, d
 
    ![Screenshot, der die Liste der Workflowvorlagen mit ausgewähltem „Zustandsbehafteter Workflow“ zeigt.](./media/create-stateful-stateless-workflows-visual-studio-code/select-stateful-stateless-workflow.png)
 
-1. Geben Sie einen Namen für Ihren Logik-App-Workflow ein, und drücken Sie die EINGABETASTE. In diesem Beispiel wird `example-workflow` als Name verwendet.
+1. Geben Sie einen Namen für Ihren Workflow ein, und drücken Sie die EINGABETASTE. In diesem Beispiel wird `Fabrikam-Stateful-Workflow` als Name verwendet.
 
-   ![Screenshot, der das Feld „Neuen zustandsbehafteten Workflow erstellen (3/4)“ und „example-workflow“ als Workflownamen zeigt.](./media/create-stateful-stateless-workflows-visual-studio-code/name-your-workflow.png)
+   ![Screenshot, der das Feld „Neuen zustandsbehafteten Workflow erstellen (3/3)“ und „Fabrikam-Stateful-Workflow“ als Workflownamen zeigt.](./media/create-stateful-stateless-workflows-visual-studio-code/name-your-workflow.png)
 
-1. Wählen Sie in der nächsten angezeigten Liste **In aktuellem Fenster öffnen** aus.
+   Visual Studio Code schließt die Erstellung des Projekts ab und öffnet die **workflow.json**-Datei für den Workflow.
 
-   ![Screenshot, der eine Liste mit ausgewählter Option „In aktuellem Fenster öffnen“ zeigt.](./media/create-stateful-stateless-workflows-visual-studio-code/select-project-location.png)
+1. Öffnen Sie in der Visual Studio-Symbolleiste den Explorer-Bereich, falls er nicht bereits geöffnet ist.
 
-   Visual Studio Code wird neu geladen, öffnet den Explorer-Bereich und zeigt Ihr Projekt an, das nun automatisch generierte Projektdateien enthält. Beispielsweise verfügt das Projekt über einen Ordner, der den Namen Ihres Logik-App-Workflows trägt. In diesem Ordner enthält die **workflow.json**-Datei die zugrunde liegende JSON-Definition Ihres Logik-App-Workflows.
+   Im Explorer-Bereich wird Ihr Projekt angezeigt, das nun automatisch generierte Projektdateien enthält. Beispielsweise verfügt das Projekt über einen Ordner, der den Namen Ihres Workflows trägt. In diesem Ordner enthält die **workflow.json**-Datei die zugrunde liegende JSON-Definition Ihres Workflows.
 
-   ![Screenshot, der das Explorer-Fenster mit Projektordner, Workflowordner und der Datei „workflow.json“ zeigt.](./media/create-stateful-stateless-workflows-visual-studio-code/local-project-created.png)
+   ![Screenshot, der den Explorer-Bereich mit Projektordner, Workflowordner und der Datei „workflow.json“ zeigt.](./media/create-stateful-stateless-workflows-visual-studio-code/local-project-created.png)
 
 <a name="open-workflow-definition-designer"></a>
 
-## <a name="open-the-workflow-definition-file-in-logic-app-designer"></a>Öffnen der Workflowdefinitionsdatei im Logik-App-Designer
+## <a name="open-the-workflow-definition-file-in-the-designer"></a>Öffnen der Workflowdefinitionsdatei im Designer
 
 1. Überprüfen Sie die auf Ihrem Computer installierten Versionen mit folgendem Befehl:
 
    `..\Users\{yourUserName}\dotnet --list-sdks`
 
-   Wenn Sie über .NET Core SDK 5.x verfügen, kann diese Version Sie möglicherweise daran hindern, die zugrunde liegende Workflowdefinition der Logik-App im Designer zu öffnen. Anstatt diese Version zu deinstallieren, erstellen Sie im Stammverzeichnis Ihres Projekts eine **global.json**-Datei, die auf Ihre .NET Core Runtime 3.x-Version verweist, die höher als 3.1.201 ist, z. B.:
+   Wenn Sie über .NET Core SDK 5.x verfügen, kann diese Version Sie möglicherweise daran hindern, die zugrunde liegende Workflowdefinition der Logik-App im Designer zu öffnen. Anstatt diese Version zu deinstallieren, erstellen Sie auf der Stammebene Ihres Projekts eine **global.json**-Datei, die auf Ihre .NET Core Runtime 3.x-Version verweist, die höher als 3.1.201 ist, z. B.:
 
    ```json
    {
@@ -292,39 +267,49 @@ Bevor Sie Ihre Logik-App erstellen können, erstellen Sie ein lokales Projekt, d
    }
    ```
 
-   Stellen Sie sicher, dass Sie dem Projekt diese **global.json**-Datei explizit im Stammverzeichnis in Visual Studio Code hinzufügen. Andernfalls wird der Designer nicht geöffnet.
+   Stellen Sie sicher, dass Sie dem Projekt diese **global.json**-Datei explizit auf der Stammebene in Visual Studio Code hinzufügen. Andernfalls wird der Designer nicht geöffnet.
 
-1. Wenn Visual Studio Code unter Windows oder Linux ausgeführt wird, stellen Sie sicher, dass der Azure Storage-Emulator ausgeführt wird. Weitere Informationen finden Sie in den [Voraussetzungen](#prerequisites).
+1. Wenn Sie Visual Studio Code unter Windows oder Linux ausführen, stellen Sie sicher, dass der Azure Storage-Emulator ausgeführt wird. Weitere Informationen finden Sie in den [Voraussetzungen](#prerequisites). Wenn Sie Visual Studio Code unter macOS ausführen, fahren Sie mit dem nächsten Schritt fort.
 
 1. Erweitern Sie den Projektordner für Ihren Workflow. Öffnen Sie das Kontextmenü der Datei **workflow.json**, und wählen Sie **Im Designer öffnen** aus.
 
    ![Screenshot, der den Explorer-Bereich und das Kontextmenüfenster für die Datei „workflow.json“ mit ausgewähltem „In Designer öffnen“ zeigt.](./media/create-stateful-stateless-workflows-visual-studio-code/open-definition-file-in-designer.png)
 
-   Wenn Sie die Fehlermeldung erhalten, dass die `Workflow design time could not be started`, stellen Sie sicher, dass der Azure Storage-Emulator ausgeführt wird. Probieren Sie andernfalls die folgenden Problembehandlungsvorschläge aus:
+   Wenn Sie die Fehlermeldung `Workflow design time could not be started` erhalten, überprüfen Sie die folgenden Bedingungen:
 
-   Überprüfen Sie in Visual Studio Code die Ausgabe der Vorschauerweiterung.
+   * **Windows oder Linux**: Vergewissern Sie sich, dass der Azure Storage-Emulator ausgeführt wird. Weitere Informationen finden Sie unter [Beheben von Fehlern und Problemen](#troubleshooting).
 
-   1. Wählen Sie im Menü **Ansicht** die Option **Ausgabe** aus.
+   * **macOS**: Probieren Sie die folgende Lösung aus, und wenn dies nicht erfolgreich ist, lesen Sie [Beheben von Fehlern und Problemen](#troubleshooting).
 
-   1. Wählen Sie in der Liste auf der **Ausgabe**-Titelleiste **Azure Logic Apps** aus, damit Sie die Ausgabe für die Vorschauerweiterung anzeigen können, z. B.:
+     1. Öffnen Sie in Ihrem Projekt die **local.settings.json**-Dateien, die Sie im Stammordner Ihres Projekts und im **workflow-designtime**-Ordner finden.
 
-      ![Screenshot, der das Ausgabefenster von Visual Studio Code mit ausgewählten „Azure Logic Apps“ zeigt.](./media/create-stateful-stateless-workflows-visual-studio-code/check-outout-window-azure-logic-apps.png)
+        ![Screenshot, der den Explorer-Bereich und die „local.settings.json“-Dateien in Ihrem Projekt zeigt.](./media/create-stateful-stateless-workflows-visual-studio-code/local-settings-json-files.png)
 
-   1. Überprüfen Sie die Ausgabe, und prüfen Sie, ob diese Fehlermeldung angezeigt wird:
+     1. Suchen Sie in jeder Datei nach der `AzureWebJobsStorage`-Eigenschaft, z. B.:
 
-      ```text
-      A host error has occurred during startup operation '{operationID}'.
-      System.Private.CoreLib: The file 'C:\Users\{userName}\AppData\Local\Temp\Functions\
-      ExtensionBundles\Microsoft.Azure.Functions.ExtensionBundle.Workflows\1.1.1\bin\
-      DurableTask.AzureStorage.dll' already exists.
-      Value cannot be null. (Parameter 'provider')
-      Application is shutting down...
-      Initialization cancellation requested by runtime.
-      Stopping host...
-      Host shutdown completed.
-      ```
+        ```json
+        {
+           "IsEncrypted": false,
+           "Values": {
+              "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+              "FUNCTIONS_WORKER_RUNTIME": "dotnet"
+            }
+        }
+        ```
 
-      Dieser Fehler kann auftreten, wenn Sie zuvor versucht haben, den Designer zu öffnen, und dann Ihr Projekt eingestellt oder gelöscht haben. Um diesen Fehler zu beheben, löschen Sie den Ordner **ExtensionBundles** an diesem Speicherort **...\Benutzer\\{Ihr-Benutzername}\AppData\Local\Temp\Functions\ExtensionBundles**, und versuchen Sie erneut, die Datei **workflow.json** im Designer zu öffnen.
+      1. Ersetzen Sie den `AzureWebJobsStorage`-Eigenschaftswert durch die Verbindungszeichenfolge aus Ihrem Speicherkonto, die Sie zuvor gespeichert haben. Beispiel:
+
+         ```json
+         {
+            "IsEncrypted": false,
+            "Values": {
+               "AzureWebJobsStorage": "DefaultEndpointsProtocol=https;AccountName=fabrikamstorageacct;AccountKey=<access-key>;EndpointSuffix=core.windows.net",
+               "FUNCTIONS_WORKER_RUNTIME": "dotnet"
+            }
+         }
+         ```
+
+      1. Speichern Sie die Änderungen, und versuchen Sie, die Datei **workflow.json** im Designer erneut zu öffnen.
 
 1. Wählen Sie in der Liste **Enable connectors in Azure** (Connectors in Azure aktivieren) die Option **Use connectors from Azure** (Connectors aus Azure verwenden) aus, die für alle verwalteten Connectors gilt, die im Azure-Portal verfügbar sind, nicht nur für Connectors für Azure-Dienste.
 
@@ -333,29 +318,30 @@ Bevor Sie Ihre Logik-App erstellen können, erstellen Sie ein lokales Projekt, d
    > [!NOTE]
    > Zustandslose Workflows unterstützen derzeit nur *Aktionen* für in Azure bereitgestellte [verwaltete Connectors](../connectors/apis-list.md#managed-api-connectors), keine Aktionen für Trigger. Obwohl Sie die Möglichkeit haben, Connectors in Azure für zustandslose Workflows zu aktivieren, zeigt der Designer keine verwalteten Connectortrigger an, die Sie auswählen können.
 
+1. Wählen Sie in der Liste **Abonnement auswählen** das Azure-Abonnement aus, das für Ihr Logik-App-Projekt verwendet werden soll.
+
+   ![Screenshot, der den Explorer-Bereich mit dem Feld „Abonnement auswählen“ und dem ausgewählten Abonnement zeigt.](./media/create-stateful-stateless-workflows-visual-studio-code/select-azure-subscription.png)
+
 1. Wählen Sie in der Liste der Ressourcengruppen **Neue Ressourcengruppe erstellen** aus.
 
    ![Screenshot, der den Explorer-Bereich mit der Liste der Ressourcengruppen und ausgewähltem „Neue Ressourcengruppe erstellen“ zeigt.](./media/create-stateful-stateless-workflows-visual-studio-code/create-select-resource-group.png)
 
-1. Geben Sie einen Namen für die Ressourcengruppe an, und drücken Sie die EINGABETASTE. In diesem Beispiel wird `example-logic-app-preview-rg` verwendet.
+1. Geben Sie einen Namen für die Ressourcengruppe an, und drücken Sie die EINGABETASTE. In diesem Beispiel wird `Fabrikam-Workflows-RG` verwendet.
 
    ![Screenshot, der den Explorer-Bereich und das Feld für den Namen der Ressourcengruppe zeigt.](./media/create-stateful-stateless-workflows-visual-studio-code/enter-name-for-resource-group.png)
 
-1. Suchen Sie in der Liste der Standorte eine [unterstützte Azure-Region](https://github.com/Azure/logicapps/blob/master/articles/logic-apps-public-preview-known-issues.md#available-regions), die für die Erstellung Ihrer Ressourcengruppe und Ressourcen verwendet werden soll, und wählen Sie diese aus. In diesem Beispiel wird **USA, Westen-Mitte** verwendet.
-
-   > [!IMPORTANT]
-   > Derzeit werden nicht alle Regionen unterstützt, aber Updates zum Hinzufügen weiterer Regionen werden kommen. Die Auswahl einer nicht unterstützten Region kann z. B. beim Erstellen von Verbindungen zu Problemen führen. Informationen zu derzeit unterstützten Regionen finden Sie auf der [GitHub-Seite zu bekannten Problemen](https://github.com/Azure/logicapps/blob/master/articles/logic-apps-public-preview-known-issues.md#available-regions) der Vorschauerweiterung.
+1. Suchen Sie in der Liste der Speicherorte die Azure-Region, die für die Erstellung Ihrer Ressourcengruppe und Ressourcen verwendet werden soll, und wählen Sie diese aus. In diesem Beispiel wird **USA, Westen-Mitte** verwendet.
 
    ![Screenshot, der den Explorer-Bereich mit der Liste der Standorte und ausgewähltem „USA, Westen-Mitte“ zeigt.](./media/create-stateful-stateless-workflows-visual-studio-code/select-azure-region.png)
 
-   Nachdem Sie diesen Schritt ausgeführt haben, öffnet Visual Studio Code den Logik-App-Designer.
+   Nachdem Sie diesen Schritt ausgeführt haben, öffnet Visual Studio Code den Workflow-Designer.
 
    > [!NOTE]
    > Wenn Visual Studio Code die Workflow-Entwurfszeit-API startet, wird eine Meldung angezeigt, dass der Startvorgang ein paar Sekunden dauern kann. Sie können diese Meldung ignorieren oder **OK** auswählen.
 
-   Nachdem der Logik-App-Designer angezeigt wird, wird die Eingabeaufforderung **Vorgang auswählen** im Designer standardmäßig ausgewählt angezeigt, wodurch der Bereich **Aktion hinzufügen** angezeigt wird.
+   Sobald der Designer angezeigt wird, wird die Eingabeaufforderung **Vorgang auswählen** im Designer standardmäßig ausgewählt angezeigt, wodurch der Bereich **Aktion hinzufügen** angezeigt wird.
 
-   ![Screenshot, der den Logik-App-Designer zeigt.](./media/create-stateful-stateless-workflows-visual-studio-code/workflow-app-designer.png)
+   ![Screenshot, der den Workflow-Designer zeigt.](./media/create-stateful-stateless-workflows-visual-studio-code/workflow-app-designer.png)
 
 1. Als Nächstes [fügen Sie Ihrem Workflow einen Trigger und Aktionen hinzu](#add-trigger-actions).
 
@@ -363,9 +349,9 @@ Bevor Sie Ihre Logik-App erstellen können, erstellen Sie ein lokales Projekt, d
 
 ## <a name="add-a-trigger-and-actions"></a>Hinzufügen eines Triggers und von Aktionen
 
-Nachdem Sie den Logik-App-Designer über das Kontextmenü Ihrer Datei **workflow.json** geöffnet haben, wird die Eingabeaufforderung **Vorgang auswählen** im Designer standardmäßig ausgewählt angezeigt. Sie können nun mit dem Erstellen Ihres Workflows beginnen, indem Sie einen Trigger und Aktionen hinzufügen.
+Nachdem Sie den Designer geöffnet haben, wird die Eingabeaufforderung **Vorgang auswählen** im Designer standardmäßig ausgewählt angezeigt. Sie können nun mit dem Erstellen Ihres Workflows beginnen, indem Sie einen Trigger und Aktionen hinzufügen.
 
-Der Logik-App-Workflow in diesem Beispiel verwendet diesen Triggern und die folgenden Aktionen:
+Der Workflow in diesem Beispiel verwendet diesen Triggern und die folgenden Aktionen:
 
 * Den integrierten [Anforderungstrigger](../connectors/connectors-native-reqres.md), **Beim Empfang einer HTTP-Anforderung**, der eingehende Aufrufe oder Anforderungen empfängt und einen Endpunkt erstellt, der von anderen Diensten oder Logik-Apps aufgerufen werden kann.
 
@@ -379,24 +365,16 @@ Der Logik-App-Workflow in diesem Beispiel verwendet diesen Triggern und die folg
 
 1. Geben Sie in das Suchfeld **Vorgang auswählen** die Zeichenfolge `when a http request` ein, und wählen Sie den integrierten Anforderungstrigger namens **Beim Empfang einer HTTP-Anforderung** aus.
 
-   ![Screenshot, der den Logik-App-Designer mit dem Bereich **Trigger hinzufügen** mit ausgewähltem Trigger „Beim Empfang einer HTTP-Anforderung“ zeigt.](./media/create-stateful-stateless-workflows-visual-studio-code/add-request-trigger.png)
+   ![Screenshot, der den Workflow-Designer mit dem Bereich **Trigger hinzufügen** mit ausgewähltem Trigger „Beim Empfang einer HTTP-Anforderung“ zeigt.](./media/create-stateful-stateless-workflows-visual-studio-code/add-request-trigger.png)
 
    Wenn der Trigger im Designer angezeigt wird, wird der Detailbereich des Triggers geöffnet, um die Eigenschaften, Einstellungen und anderen Aktionen des Triggers anzuzeigen.
 
-   ![Screenshot, der den Logik-App-Designer mit dem ausgewählten Trigger „Beim Empfang einer HTTP-Anforderung“ und geöffnetem Triggerdetailbereich zeigt.](./media/create-stateful-stateless-workflows-visual-studio-code/request-trigger-added-to-designer.png)
+   ![Screenshot, der den Workflow-Designer mit dem ausgewählten Trigger „Beim Empfang einer HTTP-Anforderung“ und geöffnetem Triggerdetailbereich zeigt.](./media/create-stateful-stateless-workflows-visual-studio-code/request-trigger-added-to-designer.png)
 
    > [!TIP]
    > Wenn der Detailbereich nicht angezeigt wird, stellen Sie sicher, dass der Trigger im Designer ausgewählt ist.
 
-1. Wenn Sie ein Element im Designer löschen müssen, führen Sie diese Schritte aus:
-
-   1. Wählen Sie im Designer das Element aus, das den Detailbereich des Elements auf der rechten Seite öffnet.
-
-   1. Erweitern Sie das Visual Studio Code-Fenster ausreichend, sodass die Schaltfläche mit den Auslassungspunkten ( **...** ) neben dem Trigger- oder Aktionsnamen in der rechten oberen Ecke angezeigt wird. 
-
-   1. Öffnen Sie das Menü mit den Auslassungspunkten ( **...** ), und wählen Sie **Löschen** aus. Um das Löschen zu bestätigen, wählen Sie **OK** aus.
-
-      ![Screenshot, der das ausgewählte Element im Designer mit geöffnetem Detailbereich mit ausgewählter Schaltfläche mit Auslassungspunkten und mit der Option „Löschen“ zeigt.](./media/create-stateful-stateless-workflows-visual-studio-code/delete-item-from-designer.png)
+1. Wenn Sie ein Element aus dem Designer löschen müssen, [führen Sie diese Schritte aus](#delete-from-designer).
 
 ### <a name="add-the-office-365-outlook-action"></a>Hinzufügen der Office 365 Outlook-Aktion
 
@@ -408,14 +386,11 @@ Der Logik-App-Workflow in diesem Beispiel verwendet diesen Triggern und die folg
 
    In diesem Beispiel wird die Office 365 Outlook-Aktion **E-Mail senden (V2)** ausgewählt und verwendet.
 
-   ![Screenshot, der den Logik-App-Designer und den Bereich **Aktion hinzufügen** mit ausgewählter Office 365 Outlook-Aktion „E-Mail senden“ zeigt.](./media/create-stateful-stateless-workflows-visual-studio-code/add-send-email-action.png)
+   ![Screenshot, der den Workflow-Designer und den Bereich **Aktion hinzufügen** mit ausgewählter Office 365 Outlook-Aktion „E-Mail senden“ zeigt.](./media/create-stateful-stateless-workflows-visual-studio-code/add-send-email-action.png)
 
 1. Wählen Sie im Detailbereich der Aktion **Anmelden** aus, damit Sie eine Verbindung mit Ihrem E-Mail-Konto herstellen können.
 
-   ![Screenshot, der den Logik-App-Designer und den Bereich **E-Mail senden (V2)** mit ausgewähltem „Anmelden“ zeigt.](./media/create-stateful-stateless-workflows-visual-studio-code/send-email-action-sign-in.png)
-
-   > [!NOTE]
-   > Wenn Sie die Fehlermeldung `Failed to create connection...` erhalten, haben Sie möglicherweise eine derzeit nicht unterstützte Region für Ihre Logik-App ausgewählt. Updates zum Hinzufügen weiterer Regionen werden kommen. In der Zwischenzeit finden Sie Informationen zu derzeit unterstützten Regionen auf der [GitHub-Seite zu bekannten Problemen](https://github.com/Azure/logicapps/blob/master/articles/logic-apps-public-preview-known-issues.md#available-regions) der Vorschauerweiterung.
+   ![Screenshot, der den Workflow-Designer und den Bereich **E-Mail senden (V2)** mit ausgewähltem „Anmelden“ zeigt.](./media/create-stateful-stateless-workflows-visual-studio-code/send-email-action-sign-in.png)
 
 1. Wenn Visual Studio Code Sie zur Zustimmung für den Zugriff auf Ihr E-Mail-Konto auffordert, wählen Sie **Öffnen** aus.
 
@@ -429,20 +404,20 @@ Der Logik-App-Workflow in diesem Beispiel verwendet diesen Triggern und die folg
    > [!NOTE]
    > Wenn zu viel Zeit verstrichen ist, bevor Sie die Eingabeaufforderungen erfüllt haben, kommt es beim Authentifizierungsprozess zum Timeout, und er schlägt fehl. Kehren Sie in diesem Fall zum Designer zurück, und wiederholen Sie die Anmeldung, um die Verbindung zu erstellen.
 
-1. Wenn die Vorschauerweiterung von Azure Logic Apps Sie zur Zustimmung für den Zugriff auf Ihr E-Mail-Konto auffordert, wählen Sie **Öffnen** aus. Befolgen Sie die nachfolgende Aufforderung, um den Zugriff zuzulassen.
+1. Wenn die Erweiterung „Azure Logic Apps (Vorschau)“ Sie zur Zustimmung für den Zugriff auf Ihr E-Mail-Konto auffordert, wählen Sie **Öffnen** aus. Befolgen Sie die nachfolgende Aufforderung, um den Zugriff zuzulassen.
 
-   ![Screenshot, der die Aufforderung der Vorschauerweiterung zur Zulassung des Zugriffs zeigt.](./media/create-stateful-stateless-workflows-visual-studio-code/allow-preview-extension-open-uri.png)
+   ![Screenshot, der die Aufforderung der Erweiterung in der Vorschau zur Zulassung des Zugriffs zeigt.](./media/create-stateful-stateless-workflows-visual-studio-code/allow-preview-extension-open-uri.png)
 
    > [!TIP]
    > Um zukünftige Eingabeaufforderungen zu vermeiden, wählen Sie **Für diese Erweiterung nicht mehr nachfragen** aus.
 
-   Nachdem Visual Studio Code die Verbindung erstellt hat, zeigen einige Connectors die Meldung `The connection will be valid for {n} days only.` an. Dieses Zeitlimit gilt nur für die Dauer des Erstellens Ihrer Logik-App in Visual Studio Code. Nach der Bereitstellung gilt dieses Limit nicht mehr, da sich Ihre Logik-App zur Laufzeit mittels der automatisch aktivierten [vom System zugewiesenen verwalteten Identität](../logic-apps/create-managed-service-identity.md) authentifizieren kann. Diese verwaltete Identität unterscheidet sich von den Anmeldeinformationen für die Authentifizierung oder der Verbindungszeichenfolge, die Sie verwenden, wenn Sie eine Verbindung herstellen. Wenn Sie diese vom System zugewiesene verwaltete Identität deaktivieren, funktionieren Verbindungen zur Laufzeit nicht.
+   Nachdem Visual Studio Code die Verbindung erstellt hat, zeigen einige Connectors die Meldung `The connection will be valid for {n} days only` an. Dieses Zeitlimit gilt nur für die Dauer der Erstellung Ihrer Logik-App in Visual Studio Code. Nach der Bereitstellung gilt dieses Limit nicht mehr, da sich Ihre Logik-App zur Laufzeit mittels der automatisch aktivierten [vom System zugewiesenen verwalteten Identität](../logic-apps/create-managed-service-identity.md) authentifizieren kann. Diese verwaltete Identität unterscheidet sich von den Anmeldeinformationen für die Authentifizierung oder der Verbindungszeichenfolge, die Sie verwenden, wenn Sie eine Verbindung herstellen. Wenn Sie diese vom System zugewiesene verwaltete Identität deaktivieren, funktionieren Verbindungen zur Laufzeit nicht.
 
 1. Wenn die Aktion **E-Mail senden** im Designer nicht ausgewählt angezeigt wird, wählen Sie diese Aktion aus.
 
 1. Geben Sie im Detailbereich der Aktion auf der Registerkarte **Parameter** die erforderlichen Informationen für die Aktion an, z. B.:
 
-   ![Screenshot, der den Logik-App-Designer mit Details für die Office 365 Outlook-Aktion „E-Mail senden“ zeigt.](./media/create-stateful-stateless-workflows-visual-studio-code/send-email-action-details.png)
+   ![Screenshot, der den Workflow-Designer mit Details für die Office 365 Outlook-Aktion „E-Mail senden“ zeigt.](./media/create-stateful-stateless-workflows-visual-studio-code/send-email-action-details.png)
 
    | Eigenschaft | Erforderlich | Wert | BESCHREIBUNG |
    |----------|----------|-------|-------------|
@@ -452,21 +427,121 @@ Der Logik-App-Workflow in diesem Beispiel verwendet diesen Triggern und die folg
    ||||
 
    > [!NOTE]
-   > Wenn Sie Änderungen im Detailbereich auf der Registerkarte **Einstellungen**, **Ausführen nach** oder **Statisches Ergebnis** vornehmen möchten, stellen Sie sicher, dass Sie **Fertig** ausgewählt haben, um die Änderungen zu übernehmen, bevor Sie zwischen Registerkarten wechseln oder den Fokus innerhalb des Designers verschieben. Andernfalls behält Visual Studio Code Ihre Änderungen nicht. Weitere Informationen finden Sie auf der [GitHub-Seite „Bekannte Probleme“](https://github.com/Azure/logicapps/blob/master/articles/logic-apps-public-preview-known-issues.md) der Vorschauerweiterung.
+   > Wenn Sie Änderungen im Detailbereich auf der Registerkarte **Einstellungen**, **Statisches Ergebnis** oder **Ausführen nach** vornehmen möchten, stellen Sie sicher, dass Sie **Fertig** ausgewählt haben, um die Änderungen zu übernehmen, bevor Sie zwischen Registerkarten wechseln oder den Fokus innerhalb des Designers verschieben. Andernfalls behält Visual Studio Code Ihre Änderungen nicht. Weitere Informationen finden Sie in GitHub unter [Logic Apps Public Preview Known Issues](https://github.com/Azure/logicapps/blob/master/articles/logic-apps-public-preview-known-issues.md) (Bekannte Probleme der öffentlichen Vorschauversion von Logic Apps).
 
 1. Wählen Sie im Designer **Speichern** aus.
 
-Führen Sie als Nächstes Ihren Workflow lokal in Visual Studio Code aus und debuggen Sie ihn.
+> [!IMPORTANT]
+> Zum lokalen Ausführen eines Workflows, der einen webhookbasierten Trigger oder Aktionen verwendet, wie z. B. den [integrierten Trigger oder eine Aktion des HTTP-Webhooks](../connectors/connectors-native-webhook.md), müssen Sie diese Funktion aktivieren, indem Sie die [Weiterleitung für die Rückruf-URL des Webhooks einrichten](#webhook-setup).
 
-<a name="debug-test-locally"></a>
+<a name="webhook-setup"></a>
 
-## <a name="run-and-debug-locally"></a>Lokales Ausführen und Debuggen
+## <a name="enable-locally-running-webhooks"></a>Aktivieren lokal ausgeführter Webhooks
+
+Wenn Sie einen webhookbasierten Trigger oder eine Aktion wie z. B. **HTTP-Webhook** verwenden und eine Logik-App in Azure ausgeführt wird, abonniert die Logic Apps-Runtime den Dienstendpunkt, indem eine Rückruf-URL mit diesem Endpunkt erzeugt und registriert wird. Der Trigger oder die Aktion wartet dann darauf, dass der Dienstendpunkt die URL aufruft. Wenn Sie jedoch in Visual Studio Code arbeiten, beginnt die generierte Rückruf-URL mit `http://localhost:7071/...`. Diese URL gilt für den Localhost-Server, der privat ist, sodass der Dienstendpunkt diese URL nicht aufrufen kann.
+
+Zum lokalen Ausführen von webhookbasierten Triggern und Aktionen in Visual Studio Code müssen Sie eine öffentliche URL einrichten, die den Localhost-Server verfügbar macht und Aufrufe vom Dienstendpunkt sicher an die Webhookrückruf-URL weiterleitet. Sie können einen Weiterleitungsdienst und ein Tool wie [**ngrok**](https://ngrok.com/) verwenden, mit dem ein HTTP-Tunnel für den Localhost-Port geöffnet wird, oder Ihr eigenes Tool verwenden.
+
+#### <a name="set-up-call-forwarding-using-ngrok"></a>Einrichten der Aufrufweiterleitung mit **ngrok**
+
+1. [Registrieren Sie sich für ein **ngrok**-Konto](https://dashboard.ngrok.com/signup), wenn Sie keines besitzen. Andernfalls [melden Sie sich bei Ihrem Konto an](https://dashboard.ngrok.com/login).
+
+1. Rufen Sie Ihr persönliches Authentifizierungstoken ab, das Ihr **ngrok**-Client benötigt, um eine Verbindung mit Ihrem Konto herzustellen und den Zugriff zu authentifizieren.
+
+   1. Um Ihre [Authentifizierungstokenseite](https://dashboard.ngrok.com/auth/your-authtoken) zu finden, erweitern Sie in Ihrem Kontodashboardmenü die Option **Authentifizierung**, und wählen Sie **Ihr Authentifizierungstoken** aus.
+
+   1. Kopieren Sie das Token aus dem Feld **Ihr Authentifizierungstoken** an einen sicheren Speicherort.
+
+1. Laden Sie von der [**ngrok**-Downloadseite](https://ngrok.com/download) oder [Ihrem Kontodashboard](https://dashboard.ngrok.com/get-started/setup) die gewünschte **ngrok**-Version herunter, und extrahieren Sie die ZIP-Datei. Weitere Informationen finden Sie unter [Schritt 1: Unzip to install](https://ngrok.com/download) (Zum Installieren entzippen).
+
+1. Öffnen Sie auf Ihrem Computer das Eingabeaufforderungstool. Wechseln Sie zu dem Speicherort, wo sich die Datei **ngrok.exe** befindet.
+
+1. Stellen Sie eine Verbindung des **ngrok**-Clients mit Ihrem **ngrok**-Konto her, indem Sie den folgenden Befehl ausführen. Weitere Informationen finden Sie unter [Schritt 2: Connect your account](https://ngrok.com/download) (Stellen Sie eine Verbindung mit Ihrem Konto her).
+
+   `ngrok authtoken <your_auth_token>`
+
+1. Öffnen Sie den HTTP-Tunnel zum Localhost-Port 7071, indem Sie den folgenden Befehl ausführen. Weitere Informationen finden Sie unter [Schritt 3: Fire it up](https://ngrok.com/download) (Starten Sie es).
+
+   `ngrok http 7071`
+
+1. In der Ausgabe finden Sie folgende Zeile:
+
+   `http://<domain>.ngrok.io -> http://localhost:7071`
+
+1. Kopieren und speichern Sie die URL mit dem folgenden Format: `http://<domain>.ngrok.io`
+
+#### <a name="set-up-the-forwarding-url-in-your-app-settings"></a>Einrichten der Weiterleitungs-URL in ihren App-Einstellungen
+
+1. Öffnen Sie in Visual Studio Code auf der Stammebene des Projekts die Datei **local.settings.json**.
+
+1. Fügen Sie im `Values`-Objekt eine Eigenschaft mit dem Namen `Workflows.WebhookRedirectHostUri` hinzu, und legen Sie den Wert auf die Weiterleitungs-URL fest, die Sie zuvor erstellt haben. Beispiel:
+
+   ```json
+   {
+      "IsEncrypted": false,
+      "Values": {
+         "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+         "FUNCTIONS_WORKER_RUNTIME": "dotnet",
+         "FUNCTIONS_V2_COMPATIBILITY_MODE": "true",
+         "Workflows.WebhookRedirectHostUri": "http://xxxXXXXxxxXXX.ngrok.io",
+         <...>
+      }
+   }
+   ```
+
+Wenn Sie zum ersten Mal eine lokale Debugsitzung starten oder den Workflow ohne Debuggen ausführen, registriert die Logic Apps-Runtime den Workflow beim Dienstendpunkt und abonniert diesen Endpunkt zur Benachrichtigung über Webhookvorgänge. Wenn Sie den Workflow das nächste Mal ausführen, wird die Runtime nicht registriert oder erneut abonniert, weil die Abonnementregistrierung bereits im lokalen Speicher vorhanden ist.
+
+Wenn Sie die Debugsitzung für eine Workflowausführung beenden, die lokal ausgeführte webhookbasierte Trigger oder Aktionen verwendet, werden die vorhandenen Abonnementregistrierungen nicht gelöscht. Wenn Sie die Registrierung aufheben möchten, müssen Sie die Abonnementregistrierungen manuell entfernen oder löschen.
+
+> [!NOTE]
+> Nachdem der Workflow gestartet wurde, werden im Terminalfenster möglicherweise Fehler wie in diesem Beispiel angezeigt:
+>
+> `message='Http request failed with unhandled exception of type 'InvalidOperationException' and message: 'System.InvalidOperationException: Synchronous operations are disallowed. Call ReadAsync or set AllowSynchronousIO to true instead.`
+>
+> Öffnen Sie in diesem Fall die Datei **local.settings.json** auf der Stammebene des Projekts, und stellen Sie sicher, dass die Eigenschaft auf `true` festgelegt ist:
+>
+> `"FUNCTIONS_V2_COMPATIBILITY_MODE": "true"`
+
+<a name="manage-breakpoints"></a>
+
+## <a name="manage-breakpoints-for-debugging"></a>Verwalten von Haltepunkten zum Debuggen
+
+Bevor Sie Ihren Logik-App-Workflow ausführen und testen, indem Sie eine Debugsitzung starten, können Sie in der Datei **workflow.json** für jeden Workflow [Haltepunkte](https://code.visualstudio.com/docs/editor/debugging#_breakpoints) festlegen. Es ist kein anderes Setup erforderlich. 
+
+Haltepunkte werden derzeit jedoch nur für Aktionen unterstützt, nicht für Trigger. Jede Aktionsdefinition enthält diese Haltepunktpositionen:
+
+* Legen Sie den Starthaltepunkt in der Zeile fest, die den Namen der Aktion enthält. Wenn dieser Haltepunkt während der Debugsitzung erreicht wird, können Sie die Eingaben der Aktion überprüfen, bevor sie ausgewertet werden.
+
+* Legen Sie den Endhaltepunkt in der Zeile fest, die die schließende geschweifte Klammer ( **}** ) der Aktion enthält. Wenn dieser Haltepunkt während der Debugsitzung erreicht wird, können Sie die Ergebnisse der Aktion überprüfen, bevor die Ausführung der Aktion endet.
+
+Um einen Haltepunkt hinzuzufügen, führen Sie diese Schritte aus:
+
+1. Öffnen Sie die Datei **workflow.json** für den Workflow, den Sie debuggen möchten.
+
+1. Wählen Sie in der Zeile, in der Sie den Haltepunkt festlegen möchten, das Innere der linken Spalte aus. Um den Haltepunkt zu entfernen, wählen Sie den Haltepunkt aus.
+
+   Wenn Sie die Debugsitzung starten, wird die Ausführungsansicht auf der linken Seite des Codefensters angezeigt, während die Debugsymbolleiste im oberen Bereich angezeigt wird.
+
+   > [!NOTE]
+   > Wenn die Ausführungsansicht nicht automatisch angezeigt wird, drücken Sie STRG+UMSCHALT+D.
+
+1. Um die verfügbaren Informationen zu überprüfen, wenn ein Haltepunkt erreicht wird, untersuchen Sie in der Ausführungsansicht den Bereich **Variablen**.
+
+1. Um die Workflowausführung fortzusetzen, wählen Sie auf der Symbolleiste „Debuggen“ **Fortsetzen** (Wiedergabeschaltfläche) aus. 
+
+Während der Workflowausführung können Sie jederzeit Haltepunkte hinzufügen und entfernen. Wenn Sie jedoch die **workflow.json**-Datei nach dem Start der Ausführung aktualisieren, werden Haltepunkte nicht automatisch aktualisiert. Um die Haltepunkte zu aktualisieren, starten Sie die Logik-App neu.
+
+Allgemeine Informationen finden Sie unter [Breakpoints – Visual Studio Code](https://code.visualstudio.com/docs/editor/debugging#_breakpoints) (Haltepunkte – Visual Studio Code).
+
+<a name="run-test-debug-locally"></a>
+
+## <a name="run-test-and-debug-locally"></a>Lokales Ausführen, Testen und Debuggen
 
 Um Ihre Logik-App zu testen, führen Sie die folgenden Schritte aus, um eine Debugsitzung zu starten und die URL für den Endpunkt zu finden, der durch den Anforderungstrigger erstellt wird. Sie benötigen diese URL, damit Sie später eine Anforderung an diesen Endpunkt senden können.
 
-1. Damit Sie einen zustandslosen Logik-App-Workflow leichter debuggen können, können Sie [den Ausführungsverlauf für diesen Workflow aktivieren](#run-history).
+1. Damit Sie einen zustandslosen Workflow leichter debuggen können, können Sie [den Ausführungsverlauf für diesen Workflow aktivieren](#enable-run-history-stateless).
 
-1. Öffnen Sie auf der Symbolleiste von Visual Studio Code das Menü **Ausführen**, und wählen Sie **Debuggen starten** (F5) aus.
+1. Öffnen Sie auf der Aktivitätsleiste von Visual Studio Code das Menü **Ausführen**, und wählen Sie **Debuggen starten** (F5) aus.
 
    Das **Terminal** fenster wird geöffnet, sodass Sie die Debugsitzung überprüfen können.
 
@@ -580,21 +655,21 @@ Um Ihre Logik-App zu testen, führen Sie die folgenden Schritte aus, um eine Deb
 
 <a name="return-response"></a>
 
-## <a name="return-a-response-to-the-caller"></a>Zurückgeben einer Antwort an den Aufrufer
+## <a name="return-a-response"></a>Zurückgeben einer Antwort
 
 Um eine Antwort an den Aufrufer zurückzugeben, der eine Anforderung an Ihre Logik-App gesendet hat, können Sie die integrierte [Antwortaktion](../connectors/connectors-native-reqres.md) für einen Workflow verwenden, der mit dem Anforderungstrigger gestartet wird.
 
-1. Wählen Sie im Logik-App-Designer unter der Aktion **E-Mail senden** die Option **Neuer Schritt** aus.
+1. Wählen Sie im Workflow-Designer unter der Aktion **E-Mail senden** die Option **Neuer Schritt** aus.
 
    Die Eingabeaufforderung **Vorgang auswählen** wird im Designer angezeigt, und der Bereich **Aktion hinzufügen** wird erneut geöffnet, sodass Sie die nächste Aktion auswählen können.
 
 1. Vergewissern Sie sich, dass im Bereich **Aktion hinzufügen** unter dem Suchfeld **Aktion auswählen** die Option **Integriert** ausgewählt ist. Geben Sie `response` in das Suchfeld ein, und wählen Sie die Aktion **Antwort** aus.
 
-   ![Screenshot, der den Logik-App-Designer mit ausgewählter Antwortaktion zeigt.](./media/create-stateful-stateless-workflows-visual-studio-code/add-response-action.png)
+   ![Screenshot, der den Workflow-Designer mit ausgewählter Antwortaktion zeigt.](./media/create-stateful-stateless-workflows-visual-studio-code/add-response-action.png)
 
    Wenn die Aktion **Antwort** im Designer angezeigt wird, wird automatisch der Detailbereich der Aktion geöffnet.
 
-   ![Screenshot, der den Logik-App-Designer mit geöffnetem Detailbereich der Aktion „Antwort“ und die auf den Wert der Eigenschaft „Text“ der Aktion „E-Mail senden“ festgelegte Eigenschaft „Text“ zeigt.](./media/create-stateful-stateless-workflows-visual-studio-code/response-action-details.png)
+   ![Screenshot, der den Workflow-Designer mit geöffnetem Detailbereich der Aktion „Antwort“ und die auf den Wert der Eigenschaft „Text“ der Aktion „E-Mail senden“ festgelegte Eigenschaft „Text“ zeigt.](./media/create-stateful-stateless-workflows-visual-studio-code/response-action-details.png)
 
 1. Geben Sie auf der Registerkarte **Parameter** die erforderlichen Informationen für die Funktion an, die Sie aufrufen möchten.
 
@@ -618,9 +693,9 @@ Um eine Antwort an den Aufrufer zurückzugeben, der eine Anforderung an Ihre Log
 
 ## <a name="retest-your-logic-app"></a>Erneutes Testen Ihrer Logik-App
 
-Nachdem Sie Aktualisierungen an Ihrer Logik-App vorgenommen haben, können Sie einen weiteren Test ausführen, indem Sie den Debugger in Visual Studio erneut ausführen und eine weitere Anforderung senden, um Ihre aktualisierte Logik-App auszulösen, ähnlich wie die Schritte unter [Debuggen und Testen Ihrer Logik-App](#debug-test-locally).
+Nachdem Sie Aktualisierungen an Ihrer Logik-App vorgenommen haben, können Sie einen weiteren Test ausführen, indem Sie den Debugger in Visual Studio erneut ausführen und eine weitere Anforderung senden, um Ihre aktualisierte Logik-App auszulösen, ähnlich wie die Schritte unter [Lokales Ausführen, Testen und Debuggen](#run-test-debug-locally).
 
-1. Öffnen Sie auf der Symbolleiste von Visual Studio Code das Menü **Ausführen**, und wählen Sie **Debuggen starten** (F5) aus.
+1. Öffnen Sie auf der Aktivitätsleiste von Visual Studio Code das Menü **Ausführen**, und wählen Sie **Debuggen starten** (F5) aus.
 
 1. Senden Sie in Postman oder Ihrem Tool zum Erstellen und Senden von Anforderungen eine weitere Anforderung, um Ihren Workflow auszulösen.
 
@@ -632,20 +707,20 @@ Nachdem Sie Aktualisierungen an Ihrer Logik-App vorgenommen haben, können Sie e
 
 1. Um die Debugsitzung zu beenden, wählen Sie im menü **Ausführen** den Eintrag **Debuggen beenden** (UMSCHALT+F5) aus.
 
-<a name="publish-azure"></a>
+<a name="deploy-azure"></a>
 
-## <a name="publish-to-azure"></a>Veröffentlichen in Azure
+## <a name="deploy-to-azure"></a>Bereitstellen in Azure
 
-In Visual Studio Code können Sie Ihr Projekt direkt in Azure bereitstellen, das Ihre Logik-App mit dem neuen Ressourcentyp **Logik-App (Vorschau)** veröffentlicht. Ähnlich wie bei der Funktions-App-Ressource in Azure Functions erfordert die Bereitstellung für diesen neuen Ressourcentyp, dass Sie einen [Hostingplan und Tarif](../app-service/overview-hosting-plans.md) auswählen, die Sie während der Bereitstellung einrichten können. Weitere Informationen zu Hostingplänen und Preisen finden Sie in diesen Themen:
+In Visual Studio Code können Sie Ihr Projekt direkt in Azure veröffentlichen, wo Ihre Logik-App mit dem neuen Ressourcentyp **Logic Apps (Vorschau)** bereitgestellt wird. Ähnlich wie bei der Funktions-App-Ressource in Azure Functions erfordert die Bereitstellung für diesen neuen Ressourcentyp, dass Sie einen [Hostingplan und Tarif](../app-service/overview-hosting-plans.md) auswählen, die Sie während der Bereitstellung einrichten können. Weitere Informationen zu Hostingplänen und Preisen finden Sie in diesen Themen:
 
 * [Hochskalieren einer App in Azure App Service](../app-service/manage-scale-up.md)
 * [Skalierung und Hosting von Azure Functions](../azure-functions/functions-scale.md)
 
 Sie können Ihre Logik-App als neue Ressource veröffentlichen, wodurch automatisch alle zusätzlichen erforderlichen Ressourcen erstellt werden, z. B. ein [Azure-Speicherkonto, ähnlich den Funktions-App-Anforderungen](../azure-functions/storage-considerations.md). Alternativ können Sie Ihre Logik-App in einer zuvor bereitgestellten **Logik-App**-Ressource (Vorschau) veröffentlichen, die diese Logik-App überschreibt.
 
-### <a name="publish-as-a-new-logic-app-preview-resource"></a>Veröffentlichen als neue Logik-App (Vorschau)-Ressource
+### <a name="publish-to-a-new-logic-app-preview-resource"></a>Veröffentlichen als neue Ressource „Logic Apps (Vorschau)“
 
-1. Wählen Sie in der Visual Studio Code-Symbolleiste das Azure-Symbol aus.
+1. Wählen Sie auf der Aktivitätsleiste von Visual Studio Code das Azure-Symbol aus.
 
 1. Wählen Sie auf der Symbolleiste des Bereichs **Azure: Logic Apps (Vorschau)** die Option **In Logik-App bereitstellen** aus.
 
@@ -663,7 +738,7 @@ Sie können Ihre Logik-App als neue Ressource veröffentlichen, wodurch automati
 
 1. Um Ihre neue **Logik-App (Vorschau)** -Ressource zu erstellen, gehen Sie wie folgt vor:
 
-   1. Geben Sie einen global eindeutigen Namen für Ihre neue Logik-App an, wobei es sich um den Namen handelt, der für die **Logik-App (Vorschau)** -Ressource verwendet werden soll. In diesem Beispiel wird `example-logic-app-preview` verwendet.
+   1. Geben Sie einen global eindeutigen Namen für Ihre neue Logik-App an, wobei es sich um den Namen handelt, der für die **Logik-App (Vorschau)** -Ressource verwendet werden soll. In diesem Beispiel wird `Fabrikam-Workflows-App` verwendet.
 
       ![Screenshot, der den Bereich „Azure: Logic Apps (Vorschau)“ und eine Aufforderung zur Eingabe eines Namens für die neue, zu erstellende Logik-App zeigt.](./media/create-stateful-stateless-workflows-visual-studio-code/enter-logic-app-name.png)
 
@@ -688,42 +763,108 @@ Sie können Ihre Logik-App als neue Ressource veröffentlichen, wodurch automati
 
       ![Screenshot, der den Bereich „Azure: Logic Apps (Vorschau)“und eine Aufforderung zum Erstellen oder Auswählen eines Speicherkontos zeigt.](./media/create-stateful-stateless-workflows-visual-studio-code/create-storage-account.png)
 
-   1. Zur Vereinfachung der Diagnoseprotokollierungs- und Ablaufverfolgungsfunktion können Sie eine vorhandene Application Insights-Ressource auswählen. Andernfalls können Sie **Neue Application Insights-Ressource erstellen** auswählen oder Application Insights im Azure-Portal einrichten, nachdem Sie Ihre App bereitgestellt haben.
+   1. Wenn die Erstellungs- und Bereitstellungseinstellungen Ihrer Logik-App die Verwendung von [Application Insights](../azure-monitor/app/app-insights-overview.md) unterstützen, können Sie optional die Diagnoseprotokollierung und Ablaufverfolgung für Ihre Logik-App aktivieren. Dies können Sie entweder tun, wenn Sie Ihre Logik-App über Visual Studio Code bereitstellen, oder nach der Bereitstellung. Sie benötigen eine Application Insights-Instanz, können aber diese Ressource entweder [im Voraus](../azure-monitor/app/create-workspace-resource.md), beim Bereitstellen Ihrer Logik-App oder nach der Bereitstellung erstellen.
 
-      Stellen Sie vor der Bereitstellung sicher, dass Sie das `logLevel`-Objekt dem `logging`-Objekt in der Datei **host.json** hinzugefügt haben, die sich auf der Stammebene Ihres Projekts befindet, und legen Sie den `Host.Triggers.Workflow` auf `Information` fest, z. B.:
+      Gehen Sie folgendermaßen vor, um die Protokollierung und Ablaufverfolgung jetzt zu aktivieren:
 
-      ```json
-      "logLevel": {
-         "Host.Triggers.Workflow": "Information"
-      },
-      ```
+      1. Wählen Sie entweder eine vorhandene Application Insights-Ressource, oder **erstellen Sie eine neue Application Insights-Ressource**.
 
-      So sieht die Datei **host.json** ungefähr aus:
+      1. Navigieren Sie im [Azure-Portal](htpps://portal.azure.com) zu Ihrer Application Insights-Ressource.
 
-      ```json
-      {
-         "version": "2.0",
-         "logging": {
-            "applicationInsights": {
-               "samplingExcludedTypes": "Request",
-               "samplingSettings": {
-                  "isEnabled": true
-               }
-            },
-            "logLevel": {
-               "Host.Triggers.Workflow": "Information"
+      1. Wählen Sie im Ressourcenmenü **Übersicht** aus. Suchen Sie den **Instrumentierungsschlüssel**, und kopieren Sie ihn.
+
+      1. Öffnen Sie in Visual Studio Code auf der Stammebene des Projekts die Datei **local.settings.json**.
+
+      1. Fügen Sie im `Values`-Objekt die `APPINSIGHTS_INSTRUMENTATIONKEY`-Eigenschaft hinzu, und legen Sie den Wert auf den Instrumentierungsschlüssel fest, z. B.:
+
+         ```json
+         {
+            "IsEncrypted": false,
+            "Values": {
+               "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+               "FUNCTIONS_WORKER_RUNTIME": "dotnet",
+               "APPINSIGHTS_INSTRUMENTATIONKEY": <instrumentation-key>
             }
          }
-      }
-      ``` 
+         ```
 
-   Wenn Sie fertig sind, beginnt Visual Studio Code mit der Erstellung und Bereitstellung der Ressourcen, die für das Veröffentlichen Ihrer Logik-App erforderlich sind.
+         > [!TIP]
+         > Sie können überprüfen, ob die Trigger- und Aktionsnamen in der Application Insights-Instanz ordnungsgemäß angezeigt werden.
+         >
+         > 1. Navigieren Sie im Azure-Portal zu Ihrer Application Insights-Ressource.
+         >
+         > 2. Wählen Sie im Ressourcenmenü unter **Untersuchen** die Option **Anwendungszuordnung** aus.
+         >
+         > 3. Überprüfen Sie die Vorgangsnamen, die in der Zuordnung angezeigt werden.
+         >
+         > Einige eingehende Anforderungen von integrierten Triggern werden in der Anwendungszuordnung möglicherweise als Duplikate angezeigt. 
+         > Anstatt das `WorkflowName.ActionName`-Format zu verwenden, verwenden diese Duplikate den Workflownamen als Vorgangsnamen und haben ihren Ursprung auf dem Azure Functions-Host.
+
+      1. Anschließend können Sie den Schweregrad der Ablaufverfolgungsdaten, die ihre Logik-App sammelt und an Ihre Application Insights-Instanz sendet, optional anpassen.
+
+         Bei jedem workflowbezogenen Ereignis, wenn z. B. ein Workflow ausgelöst oder eine Aktion ausgeführt wird, gibt die Runtime verschiedene Ablaufverfolgungen aus. Diese Ablaufverfolgungen decken die Lebensdauer des Workflows ab und umfassen die folgenden Ereignistypen, sind aber nicht darauf beschränkt:
+
+         * Dienstaktivität, z. B. Starten, Beenden und Fehler.
+         * Aufträge und Verteileraktivität.
+         * Workflowaktivität, z. B. Trigger, Aktion und Ausführen.
+         * Speicheranforderungsaktivität, z. B. Erfolg oder Fehler.
+         * HTTP-Anforderungsaktivität, z. B. eingehend, ausgehend, Erfolg und Fehler.
+         * Ad-hoc-Entwicklungsablaufverfolgungen, z. B. Debugmeldungen.
+
+         Jeder Ereignistyp wird einem Schweregrad zugewiesen. Beispielsweise erfasst die `Trace`-Ebene die detailliertesten Nachrichten, während die `Information`-Ebene allgemeine Aktivitäten in Ihrem Workflow erfasst, z. B. wann Logik-App, Workflow, Trigger und Aktionen gestartet und beendet werden. In dieser Tabelle werden die Schweregrade und deren Ablaufverfolgungstypen beschrieben:
+
+         | Schweregrad | Ablaufverfolgungstyp |
+         |----------------|------------|
+         | Kritisch | Protokolle, in denen ein nicht behebbarer Fehler in Ihrer Logik-App beschrieben wird. |
+         | Debuggen | Protokolle, die Sie für die Untersuchung während der Entwicklung verwenden können, z. B. eingehende und ausgehende HTTP-Aufrufe. |
+         | Fehler | Protokolle, die auf einen Fehler bei der Workflowausführung hindeuten, aber nicht auf einen allgemeinen Fehler in Ihrer Logik-App. |
+         | Information | Protokolle, die die allgemeine Aktivität in ihrer Logik-App oder im Workflow nachverfolgen, z. B.: <p><p>– Wann ein Trigger, eine Aktion oder eine Ausführung gestartet und beendet wird. <br>– Wann Ihre Logik-App gestartet oder beendet wird. |
+         | Trace | Protokolle, die die detailliertesten Meldungen enthalten, z. B. Speicheranforderungen oder Verteileraktivität, sowie alle Meldungen, die sich auf die Workflowausführungsaktivität beziehen. |
+         | Warnung | Protokolle, die einen ungewöhnlichen Status in Ihrer Logik-App hervorheben, jedoch nicht verhindern, dass sie ausgeführt wird. |
+         |||
+
+         Um den Schweregrad festzulegen, öffnen Sie auf der Stammebene des Projekts die Datei **host.json**, und suchen Sie nach dem `logging`-Objekt. Dieses Objekt steuert die Protokollfilterung für alle Workflows in Ihrer Logik-App und folgt dem [ASP.NET Core-Layout für die Protokolltypfilterung](/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1&preserve-view=true#log-filtering).
+
+         ```json
+         {
+            "version": "2.0",
+            "logging": {
+               "applicationInsights": {
+                  "samplingExcludedTypes": "Request",
+                  "samplingSettings": {
+                     "isEnabled": true
+                  }
+               }
+            }
+         }
+         ```
+
+         Wenn das `logging`-Objekt kein `logLevel`-Objekt enthält, das die `Host.Triggers.Workflow`-Eigenschaft enthält, fügen Sie diese Elemente hinzu. Legen Sie die Eigenschaft auf den Schweregrad für den gewünschten Ablaufverfolgungstyp fest, z. B.:
+
+         ```json
+         {
+            "version": "2.0",
+            "logging": {
+               "applicationInsights": {
+                  "samplingExcludedTypes": "Request",
+                  "samplingSettings": {
+                     "isEnabled": true
+                  }
+               },
+               "logLevel": {
+                  "Host.Triggers.Workflow": "Information"
+               }
+            }
+         }
+         ```
+
+   Wenn Sie die Bereitstellungsschritte abgeschlossen haben, beginnt Visual Studio Code mit der Erstellung und Bereitstellung der Ressourcen, die für das Veröffentlichen Ihrer Logik-App erforderlich sind.
 
 1. Um den Bereitstellungsprozess zu überwachen und zu überprüfen, wählen Sie im Menü **Ansicht** die Option **Ausgabe** aus. Wählen Sie in der Liste der Symbolleiste des Ausgabefensters **Azure Logic Apps** aus.
 
    ![Screenshot, der das Ausgabefenster mit in der Symbolleistenliste ausgewähltem „Azure Logic Apps“ zusammen mit Bereitstellungsfortschritt und -statuswerten zeigt.](./media/create-stateful-stateless-workflows-visual-studio-code/logic-app-deployment-output-window.png)
 
-   Wenn Visual Studio Code die Bereitstellung Ihres Logik-App-Workflows in Azure abschließt, wird diese Meldung angezeigt:
+   Wenn Visual Studio Code die Bereitstellung Ihrer Logik-App in Azure abschließt, wird diese Meldung angezeigt:
 
    ![Screenshot, der eine Meldung zeigt, dass die Bereitstellung in Azure erfolgreich abgeschlossen wurde.](./media/create-stateful-stateless-workflows-visual-studio-code/deployment-to-azure-completed.png)
 
@@ -731,15 +872,33 @@ Sie können Ihre Logik-App als neue Ressource veröffentlichen, wodurch automati
 
 Als Nächstes erfahren Sie, wie Sie diese Aufgaben ausführen:
 
-* [Finden Ihrer bereitgestellten Logik-App im Azure-Portal](#find-manage-deployed-workflows-portal) oder [in Visual Studio Code](#find-manage-deployed-workflows-vs-code).
+* [Hinzufügen eines leeren Workflows zum Projekt](#add-workflow-existing-project).
 
-* [Aktivieren des Ausführungsverlauf für zustandslose Logik-App-Workflows](#run-history).
+* [Verwalten bereitgestellter Logik-Apps in Visual Studio Code](#manage-deployed-apps-vs-code) oder mithilfe des [Azure-Portals](#manage-deployed-apps-portal).
 
-* [Aktivieren der Überwachung für bereitgestellte **Logik-App**-Ressourcen (Vorschau)](#enable-monitoring).
+* [Aktivieren des Ausführungsverlaufs für zustandslose Workflows](#enable-run-history-stateless).
 
-<a name="find-manage-deployed-workflows-vs-code"></a>
+* [Aktivieren der Überwachungsansicht im Azure-Portal für eine bereitgestellte Logik-App](#enable-monitoring).
 
-## <a name="find-and-manage-deployed-logic-apps-in-visual-studio-code"></a>Suchen und Verwalten bereitgestellter Logik-Apps in Visual Studio Code
+<a name="add-workflow-existing-project"></a>
+
+## <a name="add-blank-workflow-to-project"></a>Hinzufügen eines leeren Workflows zum Projekt
+
+Ihr Logik-App-Projekt kann mehrere Workflows enthalten. Um dem Projekt einen leeren Workflow hinzuzufügen, führen Sie die folgenden Schritte aus:
+
+1. Wählen Sie auf der Aktivitätsleiste von Visual Studio Code das Azure-Symbol aus.
+
+1. Wählen Sie im Azure-Bereich neben **Azure: Logic Apps (Vorschau)** die Option **Workflow erstellen** (Symbol für Azure Logic Apps) aus.
+
+1. Wählen Sie den Workflowtyp aus, den Sie hinzufügen möchten, **Zustandsbehaftet** oder **Zustandslos**.
+
+1. Geben Sie einen Namen für den Workflow ein.
+
+Wenn Sie fertig sind, wird in Ihrem Projekt ein neuer Workflowordner zusammen mit einer **workflow.json**-Datei für die Workflowdefinition angezeigt.
+
+<a name="manage-deployed-apps-vs-code"></a>
+
+## <a name="manage-deployed-logic-apps-in-visual-studio-code"></a>Verwalten bereitgestellter Logik-Apps in Visual Studio Code
 
 In Visual Studio Code können Sie alle bereitgestellten Logik-Apps in Ihrem Azure-Abonnement anzeigen, unabhängig davon, ob es sich um den ursprünglichen **Logic Apps**- oder den **Logik-App (Vorschau)** -Ressourcentyp handelt, und Aufgaben auswählen, die Ihnen bei der Verwaltung dieser Logik-Apps helfen. Für den Zugriff auf beide Ressourcentypen benötigen Sie aber beide Erweiterungen für Visual Studio Code: **Azure Logic Apps** und **Azure Logic Apps (Vorschau)** .
 
@@ -757,9 +916,9 @@ In Visual Studio Code können Sie alle bereitgestellten Logik-Apps in Ihrem Azur
 
    Um den Workflow zu bearbeiten, haben Sie folgende Optionen:
 
-   * Öffnen Sie in Visual Studio Code die **workflow.json**-Datei des Projekts im Logik-App-Designer, nehmen Sie Ihre Änderungen vor, und stellen Sie Ihre Logik-App erneut in Azure bereit.
+   * Öffnen Sie in Visual Studio Code die **workflow.json**-Datei des Projekts im Workflow-Designer, nehmen Sie Ihre Änderungen vor, und stellen Sie Ihre Logik-App erneut in Azure bereit.
 
-   * [Suchen Sie im Azure-Portal nach Ihrer Logik-App](#find-manage-deployed-workflows-portal), und öffnen Sie sie. Suchen, bearbeiten und speichern Sie den Workflow.
+   * [Suchen Sie im Azure-Portal nach Ihrer Logik-App](#manage-deployed-apps-portal), und öffnen Sie sie. Suchen, bearbeiten und speichern Sie den Workflow.
 
 1. Um die bereitgestellte Logik-App im Azure-Portal zu öffnen, öffnen Sie das Kontextmenü der Logik-App, und wählen Sie **Im Portal öffnen** aus.
 
@@ -771,9 +930,9 @@ In Visual Studio Code können Sie alle bereitgestellten Logik-Apps in Ihrem Azur
 
    ![Screenshot, der das Azure-Portal und die Suchleiste mit Suchergebnissen für die bereitgestellte Logik-App zeigt, die ausgewählt angezeigt wird.](./media/create-stateful-stateless-workflows-visual-studio-code/find-deployed-workflow-azure-portal.png)
 
-<a name="find-manage-deployed-workflows-portal"></a>
+<a name="manage-deployed-apps-portal"></a>
 
-## <a name="find-and-manage-deployed-logic-apps-in-the-portal"></a>Suchen und Verwalten bereitgestellter Logik-Apps im Portal
+## <a name="manage-deployed-logic-apps-in-the-portal"></a>Verwalten bereitgestellter Logik-Apps im Portal
 
 Im Azure-Portal können Sie alle bereitgestellten Logik-Apps anzeigen, die in Ihrem Azure-Abonnement enthalten sind, unabhängig davon, ob es sich um den ursprünglichen **Logic Apps**-Ressourcentyp oder den **Logik-App (Vorschau)** -Ressourcentyp handelt. Zurzeit wird jeder Ressourcentyp in Azure als separate Kategorien organisiert und verwaltet. Um Logik-Apps zu finden, die vom Ressourcentyp **Logik-App (Vorschau)** sind, gehen Sie wie folgt vor:
 
@@ -803,13 +962,13 @@ Im Azure-Portal können Sie alle bereitgestellten Logik-Apps anzeigen, die in Ih
 
    ![Screenshot, der den Bereich „Übersicht“ des ausgewählten Workflows zeigt, während im Menü „Workflow“ der ausgewählte Befehl „Designer“ angezeigt wird.](./media/create-stateful-stateless-workflows-visual-studio-code/workflow-overview-pane-select-designer.png)
 
-   Der Logik-App-Designer wird geöffnet und zeigt den Workflow an, den Sie in Visual Studio Code erstellt haben. Sie können jetzt Änderungen an diesem Workflow im Azure-Portal vornehmen.
+   Der Workflow-Designer wird geöffnet und zeigt den Workflow an, den Sie in Visual Studio Code erstellt haben. Sie können jetzt Änderungen an diesem Workflow im Azure-Portal vornehmen.
 
-   ![Screenshot, der den Logik-App-Designer und den aus Visual Studio Code bereitgestellten Workflow zeigt.](./media/create-stateful-stateless-workflows-visual-studio-code/opened-workflow-designer.png)
+   ![Screenshot, der den Workflow-Designer und den aus Visual Studio Code bereitgestellten Workflow zeigt.](./media/create-stateful-stateless-workflows-visual-studio-code/opened-workflow-designer.png)
 
-<a name="add-workflows"></a>
+<a name="add-workflow-portal"></a>
 
-## <a name="add-a-workflow-to-deployed-logic-apps"></a>Hinzufügen eines Workflows zu bereitgestellten Logik-Apps
+## <a name="add-another-workflow-in-the-portal"></a>Hinzufügen eines weiteren Workflows im Portal
 
 Über das Azure-Portal können Sie einer **Logik-App**-Ressource (Vorschau), die Sie aus Visual Studio Code bereitgestellt haben, leere Workflows hinzufügen und diese Workflows im Azure-Portal erstellen.
 
@@ -821,27 +980,25 @@ Im Azure-Portal können Sie alle bereitgestellten Logik-Apps anzeigen, die in Ih
 
 1. Geben Sie im Bereich **Neuer Workflow** einen Namen für den Workflow an. Wählen Sie entweder **Zustandsbehaftet** oder **Zustandslos** **>** **Erstellen** aus.
 
-   Nachdem Azure ihren neuen Workflow bereitgestellt hat, der im Bereich **Workflows** angezeigt wird, wählen Sie diesen Workflow aus, um Verwaltungsaufgaben und andere Aufgaben auszuführen, z. B. das Öffnen des Logik-App-Designers oder der Codeansicht.
+   Nachdem Azure Ihren neuen Workflow bereitgestellt hat, der im Bereich **Workflows** angezeigt wird, wählen Sie diesen Workflow aus, um die Verwaltung und andere Aufgaben auszuführen, z. B. das Öffnen des Designers oder der Codeansicht.
 
    ![Screenshot, der den ausgewählten Workflow mit Verwaltungs- und Überprüfungsoptionen zeigt.](./media/create-stateful-stateless-workflows-visual-studio-code/view-new-workflow.png)
 
    Wenn Sie z. B. den Designer für einen neuen Workflow öffnen, wird ein leerer Zeichenbereich angezeigt. Sie können diesen Workflow jetzt im Azure-Portal erstellen.
 
-   ![Screenshot, der den Logik-App-Designer und einen leeren Workflow zeigt.](./media/create-stateful-stateless-workflows-visual-studio-code/opened-blank-workflow-designer.png)
+   ![Screenshot, der den Workflow-Designer und einen leeren Workflow zeigt.](./media/create-stateful-stateless-workflows-visual-studio-code/opened-blank-workflow-designer.png)
 
-<a name="run-history"></a>
+<a name="enable-run-history-stateless"></a>
 
-## <a name="run-history-for-stateless-logic-app-workflows"></a>Ausführungsverlauf für zustandslose Logik-App-Workflows
+## <a name="enable-run-history-for-stateless-workflows"></a>Aktivieren des Ausführungsverlaufs für zustandslose Workflows
 
-Damit Sie einen zustandslosen Logik-App-Workflow leichter debuggen können, können Sie den Ausführungsverlauf für diesen Workflow entweder in Visual Studio Code oder im Azure-Portal aktivieren und dann den Ausführungsverlauf wieder deaktivieren, wenn Sie fertig sind.
+Damit Sie einen zustandslosen Workflow debuggen können, können Sie den Ausführungsverlauf für diesen Workflow aktivieren und wieder deaktivieren, wenn Sie fertig sind. Führen Sie diese Schritte für Visual Studio Code aus. Wenn Sie im Azure-Portal arbeiten, lesen Sie [Aktivieren des Ausführungsverlaufs für zustandslose Workflows](create-stateful-stateless-workflows-azure-portal.md#enable-run-history-stateless).
 
-### <a name="for-a-stateless-logic-app-workflow-in-visual-studio-code"></a>Für einen zustandslosen Logik-App-Workflow in Visual Studio Code
-
-Wenn Sie den zustandslosen Logik-App-Workflow lokal in Visual Studio Code bearbeiten und ausführen, führen Sie folgende Schritte aus:
-
-1. Suchen und erweitern Sie in Ihrem Projekt den Ordner **workflow-designtime**. Suchen und öffnen Sie die Datei **local.settings.json**.
+1. Erweitern Sie in Ihrem Visual Studio Code-Projekt den Ordner **workflow-designtime**, und öffnen Sie die Datei **local.settings.json**.
 
 1. Fügen Sie die Eigenschaft `Workflows.{yourWorkflowName}.operationOptions` hinzu, und legen Sie deren Wert auf `WithStatelessRunHistory` fest, z. B.:
+
+   **Windows oder Linux**
 
    ```json
    {
@@ -854,37 +1011,27 @@ Wenn Sie den zustandslosen Logik-App-Workflow lokal in Visual Studio Code bearbe
    }
    ```
 
-1. Um den Ausführungsverlauf zu deaktivieren, wenn Sie fertig sind, löschen Sie entweder die Eigenschaft `Workflows.{yourWorkflowName}.OperationOptions` und deren Wert, oder Sie legen die Eigenschaft auf `None` fest.
+   **macOS**
 
-### <a name="for-a-stateless-logic-app-workflow-in-the-azure-portal"></a>Für einen zustandslosen Logik-App-Workflow im Azure-Portal
+   ```json
+   {
+      "IsEncrypted": false,
+      "Values": {
+         "AzureWebJobsStorage": "DefaultEndpointsProtocol=https;AccountName=fabrikamstorageacct; \
+             AccountKey=<access-key>;EndpointSuffix=core.windows.net",
+         "FUNCTIONS_WORKER_RUNTIME": "dotnet",
+         "Workflows.{yourWorkflowName}.OperationOptions": "WithStatelessRunHistory"
+      }
+   }
+   ```
 
-Wenn Sie Ihr Projekt bereits im Azure-Portal bereitgestellt haben, führen Sie die folgenden Schritte aus:
-
-1. Suchen Sie im [Azure-Portal](https://portal.azure.com) Ihre **Logik-App (Vorschau)** -Ressource, und öffnen Sie sie.
-
-1. Wählen Sie im Menü der Logik-App unter **Einstellungen** die Option **Konfiguration** aus.
-
-1. Wählen Sie auf der Registerkarte **Anwendungseinstellungen** die Option **Neue Anwendungseinstellung** aus.
-
-1. Geben Sie im Bereich **Anwendungseinstellung hinzufügen/bearbeiten** in das Feld **Name** den Namen dieser Vorgangsoption ein: 
-
-   `Workflows.{yourWorkflowName}.OperationOptions`
-
-1. Geben Sie in dass Feld **Wert** den folgenden Wert ein: `WithStatelessRunHistory`
-
-   Beispiel:
-
-   ![Screenshot, der das Azure-Portal und die Logik-App-Ressource (Vorschau) mit dem geöffneten Bereich „Konfiguration“ > „Neue Anwendungseinstellung“ < „Anwendungseinstellung hinzufügen/bearbeiten“ und der auf „WithStatelessRunHistory“ festgelegten Option „Workflow.{NameIhresWorkflows}.OperationOptions“ zeigt.](./media/create-stateful-stateless-workflows-visual-studio-code/stateless-operation-options-run-history.png)
-
-1. Wenn Sie fertig sind, wählen Sie **OK**. Wählen Sie im Bereich **Konfiguration** den Befehl **Speichern** aus.
-
-Fahren Sie mit dem nächsten Abschnitt fort, um die Überwachung der bereitgestellten Logik-App-Ressource (Vorschau) zu aktivieren.
+1. Um den Ausführungsverlauf zu deaktivieren, wenn Sie fertig sind, legen Sie entweder die Eigenschaft `Workflows.{yourWorkflowName}.OperationOptions` auf `None` fest oder löschen die Eigenschaft und ihren Wert.
 
 <a name="enable-monitoring"></a>
 
-## <a name="enable-monitoring-for-deployed-logic-app-preview-resources"></a>Aktivieren der Überwachung für bereitgestellte Logik-App (Vorschau)-Ressourcen
+## <a name="enable-monitoring-view-in-the-azure-portal"></a>Aktivieren der Überwachungsansicht im Azure-Portal
 
-Um die Überwachung für eine bereitgestellte **Logik-App**-Ressource (Vorschau) zu aktivieren, führen Sie die folgenden Schritte aus:
+Nachdem Sie eine Ressource von **Logic Apps (Vorschau)** aus Visual Studio Code in Azure bereitgestellt haben, können Sie jeden verfügbaren Ausführungsverlauf und die Details für einen Workflow in dieser Ressource überprüfen, indem Sie das Azure-Portal und die **Monitor**-Umgebung für diesen Workflow verwenden. Sie müssen jedoch zunächst die **Monitor**-Ansichtsfunktion für diese Logik-App-Ressource aktivieren.
 
 1. Suchen Sie im [Azure-Portal](https://portal.azure.com) die bereitgestellte **Logik-App (Vorschau)** -Ressource, und wählen Sie sie aus.
 
@@ -894,57 +1041,104 @@ Um die Überwachung für eine bereitgestellte **Logik-App**-Ressource (Vorschau)
 
 1. Wenn Sie fertig sind, wählen Sie auf der **CORS**-Symbolleiste **Speichern** aus.
 
-   ![Screenshot, der das Azure-Portal mit einer bereitgestellten Logic Apps (Vorschau)-Ressource zeigt. Im Ressourcenmenü ist „CORS“ ausgewählt, mit einem neuen Eintrag für „Zulässige Ursprünge“, der auf das Platzhalterzeichen „*“ festgelegt ist.](./media/create-stateful-stateless-workflows-visual-studio-code/enable-run-history-deployed-logic-app.png)
+   ![Screenshot, der das Azure-Portal mit einer bereitgestellten Ressource von „Logic Apps (Vorschau)“ zeigt. Im Ressourcenmenü ist „CORS“ ausgewählt, mit einem neuen Eintrag für „Zulässige Ursprünge“, der auf das Platzhalterzeichen „*“ festgelegt ist.](./media/create-stateful-stateless-workflows-visual-studio-code/enable-run-history-deployed-logic-app.png)
+
+<a name="enable-open-application-insights"></a>
+
+## <a name="enable-or-open-application-insights-after-deployment"></a>Aktivieren oder Öffnen von Application Insights nach der Bereitstellung
+
+Während der Workflowausführung gibt Ihre Logik-App Telemetriedaten zusammen mit anderen Ereignissen aus. Sie können diese Telemetrie verwenden, um auf verschiedene Weise einen besseren Einblick in die Qualität der Workflowausführung und die Arbeitsweise der Logic Apps-Runtime zu bekommen. Sie können den Workflow überwachen, indem Sie [Application Insights](../azure-monitor/app/app-insights-overview.md) verwenden, wodurch nahezu in Echtzeit Telemetriedaten (Livemetriken) bereitgestellt werden. Mithilfe dieser Funktion können Sie Fehler und Leistungsprobleme leichter untersuchen, wenn Sie diese Daten zum Diagnostizieren von Problemen, Einrichten von Warnungen und Erstellen von Diagrammen verwenden.
+
+Wenn die Erstellungs- und Bereitstellungseinstellungen Ihrer Logik-App die Verwendung von [Application Insights](../azure-monitor/app/app-insights-overview.md) unterstützen, können Sie optional die Diagnoseprotokollierung und Ablaufverfolgung für Ihre Logik-App aktivieren. Dies können Sie entweder tun, wenn Sie Ihre Logik-App über Visual Studio Code bereitstellen, oder nach der Bereitstellung. Sie benötigen eine Application Insights-Instanz, können aber diese Ressource entweder [im Voraus](../azure-monitor/app/create-workspace-resource.md), beim Bereitstellen Ihrer Logik-App oder nach der Bereitstellung erstellen.
+
+Gehen Sie folgendermaßen vor, um Application Insights auf einer bereitgestellten Logik-App zu aktivieren oder Application Insights-Daten zu überprüfen, wenn sie bereits aktiviert sind:
+
+1. Suchen Sie im Azure-Portal nach Ihrer bereitgestellten Logik-App.
+
+1. Wählen Sie im Menü der Logik-App unter **Einstellungen** die Option **Application Insights** aus.
+
+1. Wenn Application Insights nicht aktiviert ist, wählen Sie im Bereich **Application Insights** die Option **Application Insights aktivieren** aus. Nachdem der Bereich aktualisiert wurde, wählen Sie unten **Anwenden** aus.
+
+   Wenn Application Insights aktiviert ist, wählen Sie im Bereich **Application Insights** die Option **Application Insights-Daten anzeigen** aus.
+
+Nachdem Application Insights geöffnet wurde, können Sie verschiedene Metriken für Ihre Logik-App überprüfen. Weitere Informationen finden Sie unter [Azure Logic Apps Running Anywhere – Monitor with Application Insights – part 1](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-monitor-with-application/ba-p/1877849) (Ausführen von Azure Logic Apps an beliebigem Ort: Überwachen mit Application Insights – Teil 1).
 
 <a name="deploy-docker"></a>
 
-## <a name="deploy-to-docker-container"></a>Bereitstellen in einem Docker-Container
+## <a name="deploy-to-docker"></a>Bereitstellen in Docker
 
-Mithilfe des [.NET Core CLI-Tools (Befehlszeilenschnittstelle)](/dotnet/core/tools/) können Sie Ihr Projekt erstellen und dann Ihren Build veröffentlichen. Anschließend können Sie einen [Docker-Container](/visualstudio/docker/tutorials/docker-tutorial#what-is-a-container) als Ziel für die Bereitstellung Ihres Logik-App-Workflows erstellen und verwenden. Weitere Informationen finden Sie in diesen Themen:
+Sie können Ihre Logik-App in einem [Docker-Container](/visualstudio/docker/tutorials/docker-tutorial#what-is-a-container) als Hostingumgebung bereitstellen, indem Sie die [.NET CLI](/dotnet/core/tools/) verwenden. Mit diesen Befehlen können Sie das Projekt Ihrer Logik-App erstellen und veröffentlichen. Anschließend können Sie einen Docker-Container als Ziel für die Bereitstellung Ihrer Logik-App erstellen und ausführen.
 
+Wenn Sie mit Docker nicht vertraut sind, lesen Sie die folgenden Themen:
+
+* [Was ist Docker?](/dotnet/architecture/microservices/container-docker-introduction/docker-defined)
 * [Introduction to Containers and Docker (Einführung in Container und Docker)](/dotnet/architecture/microservices/container-docker-introduction/)
 * [Einführung in .NET and Docker](/dotnet/core/docker/introduction)
-* [Docker-Terminologie](/dotnet/architecture/microservices/container-docker-introduction/docker-terminology)
-* [Tutorial: Erste Schritte mit Docker](/visualstudio/docker/tutorials/docker-tutorial)
+* [Docker containers, images, and registries (Docker-Container, -Images und -Registrierungen)](/dotnet/architecture/microservices/container-docker-introduction/docker-containers-images-registries)
+* [Tutorial: Erste Schritte mit Docker (Visual Studio Code)](/visualstudio/docker/tutorials/docker-tutorial)
 
-1. Um Ihr Projekt zu erstellen, öffnen Sie eine Eingabeaufforderung, und führen Sie den folgenden Befehl aus:
+### <a name="requirements"></a>Anforderungen
+
+* Das Azure Storage-Konto, das Ihre Logik-App für die Bereitstellung verwendet
+
+* Eine Docker-Datei für einen .NET-Workflow, den Sie beim Aufbau Ihres Docker-Containers verwenden
+
+   Diese Docker-Beispieldatei stellt z. B. eine Logik-App mit einem zustandsbehafteten Workflow bereit. Die Datei gibt die Verbindungszeichenfolge und den Zugriffsschlüssel für das Azure Storage-Konto an, das zum Veröffentlichen der Logik-App im Azure-Portal verwendet wurde.
+
+   ```text
+   FROM mcr.microsoft.com/dotnet/core/sdk3.1 AS installer-env
+
+   COPY . /src/dotnet-function-app
+   RUN cd /src/dotnet-function-app && \
+       mkdir -p /home/site/wwwroot && \
+       dotnet publish *.csproj --output /home/site/wwwroot
+
+   FROM mcr.microsoft.com/azure-functions/dotnet:3.0
+   ENV AzureWebJobsStorage <storage-account-connection-string>
+   ENV AzureWebJobsScriptRoot=/home/site/wwwroot \
+       AzureFunctionsJobHost__Logging__Console__IsEnabled=true \
+       FUNCTIONS_V2_COMPATIBILITY_MODE=true
+
+   COPY --from=installer-env ["/home/site/wwwroot", "/home/site/wwwroot"]
+   ```
+
+   Weitere Informationen finden Sie unter [Best practices for writing Dockerfiles](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/) (Bewährte Methoden zum Schreiben von Docker-Dateien).
+
+### <a name="build-and-publish-your-app"></a>Erstellen und Veröffentlichen Ihrer App
+
+1. Um das Projekt Ihrer Logik-App lokal zu erstellen, öffnen Sie eine Eingabeaufforderung, und führen Sie den folgenden Befehl aus:
 
    `dotnet build -c release`
 
    Weitere Informationen finden Sie auf der Referenzseite zu [dotnet build](/dotnet/core/tools/dotnet-build/).
 
-1. Veröffentlichen Sie Ihren Build, indem Sie den folgenden Befehl ausführen:
+1. Veröffentlichen Sie den Build des Projekts in einem Ordner, der für die Bereitstellung in der Hostingumgebung verwendet wird, indem Sie den folgenden Befehl ausführen:
 
    `dotnet publish -c release`
 
    Weitere Informationen finden Sie auf der Referenzseite zu [dotnet publish](/dotnet/core/tools/dotnet-publish/).
 
-1. Erstellen Sie einen Docker-Container, indem Sie eine Docker-Datei für einen .NET-Workflow verwenden und den folgenden Befehl ausführen:
+### <a name="access-to-your-storage-account"></a>Zugriff auf Ihr Speicherkonto
 
-   `docker build --tag local/workflowcontainer .`
+Bevor Sie Ihren Docker-Container erstellen und ausführen, müssen Sie die Verbindungszeichenfolge abrufen, die die Zugriffsschlüssel für Ihr Speicherkonto enthält.
 
-   Hier sehen Sie eine Docker-Beispieldatei, die eine zustandsbehaftete Logik-App bereitstellt und die Verbindungszeichenfolge für das Azure Storage Konto angibt, das zum Veröffentlichen der Logik-App im Azure-Portal verwendet wurde. Informationen zum Suchen und Kopieren der Verbindungszeichenfolge des Speicherkontos im Azure-Portal finden Sie unter [Anzeigen von Kontozugriffsschlüsseln](../storage/common/storage-account-keys-manage.md?tabs=azure-portal#view-account-access-keys).
+1. Wählen Sie im Azure-Portal im Menü des Speicherkontos unter **Einstellungen** die Option **Zugriffsschlüssel** aus. 
 
    ![Screenshot, der das Azure-Portal mit Speicherkonto-Zugriffsschlüsseln und kopierter Verbindungszeichenfolge anzeigt.](./media/create-stateful-stateless-workflows-visual-studio-code/find-storage-account-connection-string.png)
 
-   Die Verbindungszeichenfolge ähnelt folgendem Beispiel:
+1. Kopieren Sie unter **Verbindungszeichenfolge** die Verbindungszeichenfolge Ihres Speicherkontos. Die Verbindungszeichenfolge ähnelt folgendem Beispiel:
 
-   `DefaultEndpointsProtocol=https;AccountName=fabrikamstorageaccount;AccountKey={access-key};EndpointSuffix=core.windows.net`
+   `DefaultEndpointsProtocol=https;AccountName=fabrikamstorageacct;AccountKey={access-key};EndpointSuffix=core.windows.net`
 
-   Dies ist das Format für die Docker-Datei:
+   Weitere Informationen finden Sie unter [Anzeigen von Kontozugriffsschlüsseln](../storage/common/storage-account-keys-manage.md?tabs=azure-portal#view-account-access-keys).
 
+1. Speichern Sie die Verbindungszeichenfolge an einem sicheren Ort. In Ihrem Logik-App-Projekt müssen Sie diese Zeichenfolge beiden **local.settings.json**-Dateien hinzufügen. Außerdem müssen Sie diese Zeichenfolge Ihrer Docker-Datei hinzufügen.
 
-   ```text
-   FROM mcr.microsoft.com/azure-functions/dotnet:3.0.14492-appservice
+### <a name="build-and-run-your-docker-container-image"></a>Erstellen und Ausführen Ihres Docker-Containerimages
 
-   ENV AzureWebJobsStorage <storage-account-connection-string>
-   ENV AZURE_FUNCTIONS_ENVIRONMENT Development
-   ENV AzureWebJobsScriptRoot=/home/site/wwwroot
-   ENV AzureFunctionsJobHost__Logging__Console__IsEnabled=true
-   ENV FUNCTIONS_V2_COMPATIBILITY_MODE=true
+1. Erstellen Sie Ihr Docker-Containerimage mit Ihrer Docker-Datei, und führen Sie den folgenden Befehl aus:
 
-   COPY ./bin/Release/netcoreapp3.1/publish/ /home/site/wwwroot
-   ```
+   `docker build --tag local/workflowcontainer .`
 
    Weitere Informationen finden Sie unter [docker build](https://docs.docker.com/engine/reference/commandline/build/).
 
@@ -956,75 +1150,107 @@ Mithilfe des [.NET Core CLI-Tools (Befehlszeilenschnittstelle)](/dotnet/core/t
 
    Weitere Informationen finden Sie unter [docker run](https://docs.docker.com/engine/reference/commandline/run/).
 
-1. Um die Rückruf-URL für den Anforderungstrigger abzurufen, senden Sie diese Anforderung:
+### <a name="get-callback-url-for-request-trigger"></a>Abrufen der Rückruf-URL für den Anforderungstrigger
 
-   `POST /runtime/webhooks/workflow/api/management/workflows/{workflow-name}/triggers/{trigger-name}/listCallbackUrl?api-version=2019-10-01-edge-preview&code={master-key}`
+Um die Rückruf-URL für den Anforderungstrigger abzurufen, senden Sie diese Anforderung:
 
-   Der Wert <*master-key*> ist in dem Azure-Speicherkonto definiert, das Sie für `AzureWebJobsStorage` in der Datei **azure-webjobs-secrets/{deployment-name}/host.json** festgelegt haben, in der Sie den Wert im folgenden Abschnitt finden können:
+`POST /runtime/webhooks/workflow/api/management/workflows/{workflow-name}/triggers/{trigger-name}/listCallbackUrl?api-version=2020-05-01-preview&code={master-key}`
 
-   ```json
-   {
-     <...>
-     "masterKey": {
-        "name": "master",
-        "value": "<master-key>",
-        "encrypted": false
-     },
-     <...>
+Der Wert <*master-key*> ist in dem Azure Storage-Konto definiert, das Sie für `AzureWebJobsStorage` in der Datei **azure-webjobs-secrets/{deployment-name}/host.json** festgelegt haben, in der Sie den Wert im folgenden Abschnitt finden können:
+
+```json
+{
+   <...>
+   "masterKey": {
+      "name": "master",
+      "value": "<master-key>",
+      "encrypted": false
+   },
+   <...>
    }
-   ```
+```
 
-<a name="nested-behavior"></a>
+<a name="delete-from-designer"></a>
 
-## <a name="nested-behavior-differences-between-stateful-and-stateless-logic-apps"></a>Unterschiede im Verhalten von geschachtelten zustandsbehafteten und geschachtelten zustandslosen Logik-Apps
+## <a name="delete-items-from-the-designer"></a>Löschen von Elementen aus dem Designer
 
-Sie können einen [Logik-App-Workflow aus anderen Logik-App-Workflows heraus aufrufbar machen](../logic-apps/logic-apps-http-endpoint.md), die in derselben **Logik-App-Ressource (Vorschau)** vorhanden sind, indem Sie den [Anforderungstrigger](../connectors/connectors-native-reqres.md), [HTTP-Webhook](../connectors/connectors-native-webhook.md)-Trigger oder verwaltete Connectortrigger verwenden, die vom [Typ ApiConnectionWehook](../logic-apps/logic-apps-workflow-actions-triggers.md#apiconnectionwebhook-trigger) sind und HTTPS-Anforderungen empfangen können.
+Führen Sie einen der folgenden Schritte aus, um ein Element in Ihrem Workflow aus dem Designer zu löschen:
 
-Im Folgenden sind die Verhaltensmuster aufgeführt, die geschachtelte Logik-App-Workflows einhalten können, nachdem ein übergeordneter Workflow einen untergeordneten Workflow aufgerufen hat:
+* Wählen Sie das Element aus, öffnen Sie das Kontextmenü des Elements (UMSCHALT+F10), und wählen Sie **Löschen** aus. Klicken Sie auf **OK**, um dies zu bestätigen.
 
-* Asynchrones Abrufmuster
+* Wählen Sie das Element aus, und drücken Sie dann die ENTF-Taste. Klicken Sie auf **OK**, um dies zu bestätigen.
 
-  Der übergeordnete Workflow wartet nicht auf eine Antwort auf seinen ursprünglichen Aufruf, sondern überprüft fortlaufend den Ausführungsverlauf Verlauf des untergeordneten Workflows, bis dessen Ausführung beendet wird. Standardmäßig halten zustandsbehaftete Workflows dieses Muster ein, das sich ideal für untergeordnete Workflows mit langer Laufzeit eignet, die [Anforderungstimeout-Limits](../logic-apps/logic-apps-limits-and-config.md) überschreiten können.
+* Wählen Sie das Element aus, sodass der Detailbereich für dieses Element geöffnet wird. Öffnen Sie in der oberen rechten Ecke des Bereichs das Menü mit den Auslassungspunkten ( **...** ), und wählen Sie **Löschen** aus. Klicken Sie auf **OK**, um dies zu bestätigen.
 
-* Synchrones Muster („Fire and Forget“)
+  ![Screenshot, der ein ausgewähltes Element im Designer mit geöffnetem Detailbereich sowie die ausgewählte Schaltfläche mit Auslassungspunkten und den Befehl „Löschen“ zeigt.](./media/create-stateful-stateless-workflows-visual-studio-code/delete-item-from-designer.png)
 
-  Der untergeordnete Workflow bestätigt den Aufruf durch sofortige Rückgabe einer `202 ACCEPTED`-Antwort, und der übergeordnete Workflow fährt mit der nächsten Aktion fort, ohne auf die Ergebnisse des untergeordneten Workflows zu warten. Stattdessen empfängt der übergeordnete Workflow die Ergebnisse, wenn der untergeordnete Workflow abgeschlossen ist. Untergeordnete zustandsbehaftete Workflows, die keine Antwortaktion enthalten, folgen immer dem synchronen Muster. Für untergeordnete zustandsbehaftete Workflows steht Ihnen der Ausführungsverlauf zur Prüfung zur Verfügung.
-
-  Um dieses Verhalten zu aktivieren, legen Sie in der JSON-Definition des Workflows die `operationOptions`-Eigenschaft auf `DisableAsyncPattern` fest. Weitere Informationen finden Sie unter [Trigger- und Aktionstypen: Optionen für Vorgänge](../logic-apps/logic-apps-workflow-actions-triggers.md#operation-options).
-
-* Auslösen und Warten
-
-  Bei einem untergeordneten zustandslosen Workflow wartet der übergeordnete Workflow auf eine Antwort, mit der die Ergebnisse vom untergeordneten Workflow zurückgegeben werden. Dieses Muster funktioniert ähnlich wie die Verwendung des integrierten [HTTP-Triggers oder der HTTP-Aktion](../connectors/connectors-native-http.md), um einen untergeordneten Workflow aufzurufen. Untergeordnete zustandslose Workflows, die keine Antwortaktion enthalten, geben sofort eine `202 ACCEPTED`-Antwort zurück, aber der übergeordnete Workflow wartet, bis der untergeordnete Workflow abgeschlossen ist, bevor er mit der nächsten Aktion fortfährt. Diese Verhalten gelten nur für untergeordnete zustandslose Workflows.
-
-Diese Tabelle gibt das Verhalten des untergeordneten Workflows an, je nachdem, ob der übergeordnete und untergeordnete Workflow zustandsbehaftete, zustandslose oder gemischte Workflowtypen sind:
-
-| Übergeordneter Workflow | Untergeordneter Workflow | Untergeordnetes Verhalten |
-|-----------------|----------------|----------------|
-| Zustandsbehaftet | Zustandsbehaftet | Asynchron oder synchron mit `"operationOptions": "DisableAsyncPattern"`-Einstellung |
-| Zustandsbehaftet | Zustandslos | Auslösen und Warten |
-| Zustandslos | Zustandsbehaftet | Synchron |
-| Zustandslos | Zustandslos | Auslösen und Warten |
-||||
-
-## <a name="limits"></a>Grenzwerte
-
-Obwohl viele [vorhandene Limits für Azure Logic Apps](../logic-apps/logic-apps-limits-and-config.md) für diesen Ressourcentyp identisch sind, finden Sie hier die Unterschiede in dieser öffentlichen Vorschauerweiterung:
-
-* Verwaltete Connectors: 50 Anforderungen pro Minute und Verbindung
-
-* Für die [Inlinecodeaktion für JavaScript](../logic-apps/logic-apps-add-run-inline-code.md)-Aktion haben sich diese Limits geändert:
-
-  * Das Limit für Codezeichen erhöht sich von 1.024 Zeichen auf 100.000 Zeichen.
-
-  * Die Zeitbeschränkung für das Ausführen des Codes erhöht sich von fünf Sekunden auf 15 Sekunden.
+  > [!TIP]
+  > Wenn das Menü mit den Auslassungspunkten nicht sichtbar ist, erweitern Sie das Visual Studio Code-Fenster, sodass im Detailbereich die Schaltfläche mit den Auslassungspunkten ( **...** ) in der oberen rechten Ecke angezeigt wird.
 
 <a name="troubleshooting"></a>
 
 ## <a name="troubleshoot-errors-and-problems"></a>Beheben von Fehlern und Problemen
 
+<a name="designer-fails-to-open"></a>
+
+### <a name="opening-designer-fails-with-error-workflow-design-time-could-not-be-started"></a>Beim Öffnen des Designers tritt ein Fehler auf mit der Meldung: „Workflowentwurfszeit konnte nicht gestartet werden.“
+
+1. Öffnen Sie in Visual Studio Code das Fenster „Ausgabe“. Wählen Sie im Menü **Ansicht** die Option **Ausgabe** aus.
+
+1. Wählen Sie in der Liste auf der Titelleiste des Fensters „Ausgabe“ **Azure Logic Apps (Vorschau)** aus, damit Sie die Ausgabe für die Erweiterung überprüfen können, z. B.:
+
+   ![Screenshot, der das Fenster „Ausgabe“ mit ausgewählten „Azure Logic Apps“ zeigt.](./media/create-stateful-stateless-workflows-visual-studio-code/check-outout-window-azure-logic-apps.png)
+
+1. Überprüfen Sie die Ausgabe, und prüfen Sie, ob diese Fehlermeldung angezeigt wird:
+
+   ```text
+   A host error has occurred during startup operation '{operationID}'.
+   System.Private.CoreLib: The file 'C:\Users\{userName}\AppData\Local\Temp\Functions\
+   ExtensionBundles\Microsoft.Azure.Functions.ExtensionBundle.Workflows\1.1.1\bin\
+   DurableTask.AzureStorage.dll' already exists.
+   Value cannot be null. (Parameter 'provider')
+   Application is shutting down...
+   Initialization cancellation requested by runtime.
+   Stopping host...
+   Host shutdown completed.
+   ```
+
+   Dieser Fehler kann auftreten, wenn Sie zuvor versucht haben, den Designer zu öffnen, und dann Ihr Projekt eingestellt oder gelöscht haben. Um diesen Fehler zu beheben, löschen Sie den Ordner **ExtensionBundles** an diesem Speicherort **...\Benutzer\\{Ihr-Benutzername}\AppData\Local\Temp\Functions\ExtensionBundles**, und versuchen Sie erneut, die Datei **workflow.json** im Designer zu öffnen.
+
+<a name="missing-triggers-actions"></a>
+
+### <a name="new-triggers-and-actions-are-missing-from-the-designer-picker-for-previously-created-workflows"></a>In der Designerauswahl für zuvor erstellte Workflows fehlen neue Trigger und Aktionen.
+
+„Azure Logic Apps (Vorschau)“ unterstützt integrierte Aktionen für Azure-Funktionsvorgänge, Liquid-Vorgänge und XML-Vorgänge wie **XML-Validierung** und **Transformieren von XML**. Allerdings werden diese Aktionen für zuvor erstellte Logik-Apps möglicherweise nicht für Sie zur Auswahl in der Designerauswahl angezeigt, wenn Visual Studio Code eine veraltete Version des Erweiterungspakets `Microsoft.Azure.Functions.ExtensionBundle.Workflows` verwendet.
+
+Außerdem werden der Connector für **Azure-Funktionsvorgänge** und Aktionen nicht in der Designerauswahl angezeigt, es sei denn, Sie haben **Connectors von Azure verwenden** beim Erstellen Ihrer Logik-App aktiviert oder ausgewählt. Wenn Sie die von Azure bereitgestellten Connectors zum Zeitpunkt der Erstellung der App nicht aktiviert haben, können Sie sie in Visual Studio Code von Ihrem Projekt aus aktivieren. Öffnen Sie das **workflow.json**-Kontextmenü, und wählen Sie **Connectors von Azure verwenden** aus.
+
+Führen Sie zur Korrektur des Problems mit dem veralteten Paket die folgenden Schritte zum Löschen des veralteten Pakets aus. Dann aktualisiert Visual Studio Code das Erweiterungspaket automatisch auf die neueste Version.
+
+> [!NOTE]
+> Diese Lösung gilt nur für Logik-Apps, die Sie mit Visual Studio Code mit der Erweiterung „Azure Logic Apps (Vorschau)“ erstellen und bereitstellen, nicht die Logik-Apps, die Sie mit dem Azure-Portal erstellt haben. Siehe [Neue Trigger und Aktionen fehlen in der Designerauswahl für früher erstellte Workflows](create-stateful-stateless-workflows-azure-portal.md#missing-triggers-actions).
+
+1. Speichern Sie sämtliche Arbeit, die Sie nicht verlieren möchten, und schließen Sie Visual Studio.
+
+1. Navigieren Sie auf Ihrem Computer zum folgenden Ordner, der Ordner mit Versionsangaben für das vorhandene Paket enthält:
+
+   `...\Users\{your-username}\.azure-functions-core-tools\Functions\ExtensionBundles\Microsoft.Azure.Functions.ExtensionBundle.Workflows`
+
+1. Löschen Sie den Versionsordner für das frühere Paket. Wenn Sie z. B. einen Ordner für Version 1.1.3 haben, löschen Sie diesen Ordner.
+
+1. Navigieren Sie nun zum folgenden Ordner, der Ordner mit Versionsangaben für das erforderliche NuGet-Paket enthält:
+
+   `...\Users\{your-username}\.nuget\packages\microsoft.azure.workflows.webjobs.extension`
+
+1. Löschen Sie den Versionsordner für das frühere Paket. Wenn Sie z. B. einen Ordner für Version 1.0.0.8-preview haben, löschen Sie diesen Ordner.
+
+1. Öffnen Sie Visual Studio Code, Ihr Projekt und die **workflow.json**-Datei im Designer erneut.
+
+Die fehlenden Trigger und Aktionen werden nun im Designer angezeigt.
+
 <a name="400-bad-request"></a>
 
-### <a name="400-bad-request"></a>„400 – Ungültige Anforderung“
+### <a name="400-bad-request-appears-on-a-trigger-or-action"></a>„400 – Ungültige Anforderung“ wird für einen Trigger oder eine Aktion angezeigt
 
 Wenn Sie nach einem Fehler in einer Ausführung diese Ausführung in der Überwachungsansicht untersuchen, kann dieser Fehler bei einem Trigger oder einer Aktion mit einem längeren Namen angezeigt werden. Ein solcher Name kann dazu führen, dass der zugrunde liegende URI (Uniform Resource Identifier) das Standardzeichenlimit überschreitet.
 
@@ -1061,7 +1287,7 @@ Um dieses Problem zu beheben und längere URIs zuzulassen, bearbeiten Sie die Re
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wir freuen uns, von Ihren Erfahrungen mit dieser öffentlichen Vorschauerweiterung zu hören!
+Teilen Sie uns bitte Ihre Erfahrungen mit der Erweiterung „Azure Logic Apps (Vorschau)“ mit!
 
 * Bei Fehlern oder Problemen [erstellen Sie Ihre Probleme in GitHub](https://github.com/Azure/logicapps/issues).
 * Bei Fragen, Anforderungen, Kommentaren und anderem Feedback [verwenden Sie dieses Feedbackformular](https://aka.ms/lafeedback).

@@ -6,12 +6,12 @@ ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: 31ae4605b6cc9e26c89beea692fe61fcbda49c4c
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 22bdf93e7236ae5220a6bb7c6ead898628bb51a1
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96621500"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007584"
 ---
 # <a name="azure-cache-for-redis-with-azure-private-link-public-preview"></a>Azure Cache for Redis mit Azure Private Link (Public Preview)
 In diesem Artikel erfahren Sie, wie Sie im Azure-Portal ein virtuelles Netzwerk und eine Azure Cache for Redis-Instanz mit einem privaten Endpunkt erstellen. Außerdem erfahren Sie, wie Sie einer vorhandenen Azure Cache for Redis-Instanz einen privaten Endpunkt hinzufügen.
@@ -224,7 +224,12 @@ PATCH  https://management.azure.com/subscriptions/{subscription}/resourceGroups/
 ```
 
 ### <a name="are-network-security-groups-nsg-enabled-for-private-endpoints"></a>Sind Netzwerksicherheitsgruppen (NSGs) für private Endpunkte aktiviert?
-Nein, sie sind für private Endpunkte deaktiviert. Wenn jedoch andere Ressourcen im Subnetz vorhanden sind, gilt die Netzwerksicherheitsgruppen-Erzwingung für diese Ressourcen.
+Nein, sie sind für private Endpunkte deaktiviert. Während Subnetzen, die den privaten Endpunkt enthalten, eine NSG zugeordnet sein kann, gelten die Regeln nicht für den vom privaten Endpunkt verarbeiteten Datenverkehr. Sie müssen die [Durchsetzung von Netzwerkrichtlinien deaktivieren](../private-link/disable-private-endpoint-network-policy.md), um private Endpunkte in einem Subnetz bereitzustellen zu können. Die NSG wird weiterhin für andere Workloads erzwungen, die im selben Subnetz gehostet werden. Für Routen in einem beliebigen Clientsubnetz wird ein /32-Präfix verwendet. Zum Ändern des Standardverhaltens für das Routing ist eine ähnliche benutzerdefinierte Route erforderlich. 
+
+Steuern Sie den Datenverkehr, indem Sie auf Quellclients NSG-Regeln für ausgehenden Datenverkehr verwenden. Stellen Sie einzelne Routen mit /32-Präfix zum Außerkraftsetzen von Routen privater Endpunkte bereit. NSG-Datenflussprotokolle und Überwachungsinformationen für ausgehende Verbindungen werden weiterhin unterstützt und können verwendet werden.
+
+### <a name="can-i-use-firewall-rules-with-private-endpoints"></a>Kann ich Firewallregeln mit privaten Endpunkten verwenden?
+Nein, dies ist eine aktuelle Beschränkung privater Endpunkte. Der private Endpunkt funktioniert nicht ordnungsgemäß, wenn Firewallregeln für den Cache konfiguriert sind.
 
 ### <a name="how-can-i-connect-to-a-clustered-cache"></a>Wie stelle ich eine Verbindung mit einem gruppierten Cache her?
 `publicNetworkAccess` muss auf `Disabled` festgelegt sein, und es kann nur eine private Endpunktverbindung geben.

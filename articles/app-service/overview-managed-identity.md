@@ -7,12 +7,12 @@ ms.date: 05/27/2020
 ms.author: mahender
 ms.reviewer: yevbronsh
 ms.custom: devx-track-csharp, devx-track-python, devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: c734c0ceb9c4d5418edc51a2c3ad3c052637ad31
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 4c7ba5806707e818f0ef13717d5f00b542c37614
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94696981"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97092736"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>Verwenden verwalteter Identitäten für App Service und Azure Functions
 
@@ -109,7 +109,7 @@ In den folgenden Schritten werden Sie durch das Erstellen einer App und das Zuwe
 
 1. Installieren Sie bei Bedarf Azure PowerShell mithilfe der Anleitungen in der [Azure PowerShell-Dokumentation](/powershell/azure/), und führen Sie dann `Login-AzAccount` aus, um eine Verbindung mit Azure herzustellen.
 
-2. Erstellen Sie eine Funktions-App mit Azure PowerShell. Weitere Beispiele zur Verwendung von Azure PowerShell mit Azure Functions finden Sie in der [Az-Funktionenreferenz](/powershell/module/az.functions/?view=azps-4.1.0#functions):
+2. Erstellen Sie eine Funktions-App mit Azure PowerShell. Weitere Beispiele zur Verwendung von Azure PowerShell mit Azure Functions finden Sie in der [Az-Funktionenreferenz](/powershell/module/az.functions/#functions):
 
     ```azurepowershell-interactive
     # Create a resource group.
@@ -219,7 +219,7 @@ In den folgenden Schritten werden Sie durch das Erstellen einer App und das Zuwe
 
 1. Installieren Sie bei Bedarf Azure PowerShell mithilfe der Anleitungen in der [Azure PowerShell-Dokumentation](/powershell/azure/), und führen Sie dann `Login-AzAccount` aus, um eine Verbindung mit Azure herzustellen.
 
-2. Erstellen Sie eine Funktions-App mit Azure PowerShell. Weitere Beispiele zur Verwendung von Azure PowerShell mit Azure Functions finden Sie in der [Az-Funktionenreferenz](/powershell/module/az.functions/?view=azps-4.1.0#functions). Im folgenden Skript wird auch `New-AzUserAssignedIdentity` verwendet, die gemäß [Erstellen, Auflisten oder Löschen einer vom Benutzer zugewiesenen verwalteten Identität mit Azure PowerShell](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md) separat installiert werden muss.
+2. Erstellen Sie eine Funktions-App mit Azure PowerShell. Weitere Beispiele zur Verwendung von Azure PowerShell mit Azure Functions finden Sie in der [Az-Funktionenreferenz](/powershell/module/az.functions/#functions). Im folgenden Skript wird auch `New-AzUserAssignedIdentity` verwendet, die gemäß [Erstellen, Auflisten oder Löschen einer vom Benutzer zugewiesenen verwalteten Identität mit Azure PowerShell](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md) separat installiert werden muss.
 
     ```azurepowershell-interactive
     # Create a resource group.
@@ -308,7 +308,7 @@ Eine App kann mithilfe ihrer verwalteten Identität Token für den Zugriff auf a
 Sie müssen die Zielressource möglicherweise für den Zugriff über die Anwendung konfigurieren. Wenn Sie beispielsweise ein Token für den Zugriff auf Key Vault anfordern, müssen Sie sicherstellen, dass Sie eine Zugriffsrichtlinie hinzugefügt haben, die die Identität Ihrer Anwendung enthält. Andernfalls werden Ihre Aufrufe von Key Vault abgelehnt, auch wenn diese das Token enthalten. Informationen zu den Ressourcen, die Azure Active Directory-Token unterstützen, finden Sie unter [Azure-Dienste, die die Azure AD-Authentifizierung unterstützen](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication).
 
 > [!IMPORTANT]
-> Die Back-End-Dienste für verwaltete Identitäten behalten pro Ressourcen-URI für ca. 8 Stunden einen Cache bei. Wenn Sie die Zugriffsrichtlinie einer bestimmten Zielressource aktualisieren und sofort ein Token für diese Ressource abrufen, erhalten Sie möglicherweise weiterhin ein zwischengespeichertes Token mit veralteten Berechtigungen, bis dieses Token abläuft. Zurzeit gibt es keine Möglichkeit, eine Tokenaktualisierung zu erzwingen.
+> Die Back-End-Dienste für verwaltete Identitäten behalten pro Ressourcen-URI für ca. 24 Stunden einen Cache bei. Wenn Sie die Zugriffsrichtlinie einer bestimmten Zielressource aktualisieren und sofort ein Token für diese Ressource abrufen, erhalten Sie möglicherweise weiterhin ein zwischengespeichertes Token mit veralteten Berechtigungen, bis dieses Token abläuft. Zurzeit gibt es keine Möglichkeit, eine Tokenaktualisierung zu erzwingen.
 
 Zum Abrufen eines Tokens in App Service und Azure Functions ist ein einfaches REST-Protokoll verfügbar. Dies kann für alle Anwendungen und Sprachen verwendet werden. Für .NET und Java bietet das Azure SDK eine Abstraktion über dieses Protokoll und bietet so die Möglichkeit zur lokalen Entwicklung.
 
@@ -522,7 +522,8 @@ Update-AzFunctionApp -Name $functionAppName -ResourceGroupName $resourceGroupNam
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-> [!div class="nextstepaction"]
-> [Sicheres Zugreifen auf eine SQL-Datenbank mit einer verwalteten Identität](app-service-web-tutorial-connect-msi.md)
+- [Sicheres Zugreifen auf eine SQL-Datenbank mit einer verwalteten Identität](app-service-web-tutorial-connect-msi.md)
+- [Tutorial: Zugreifen auf Azure-Speicher über eine Web-App](scenario-secure-app-access-storage.md)
+- [Tutorial: Zugreifen auf Microsoft Graph über eine geschützte App als App](scenario-secure-app-access-microsoft-graph-as-app.md)
 
 [Microsoft.Azure.Services.AppAuthentication-Referenz]: ../key-vault/general/service-to-service-authentication.md

@@ -4,12 +4,12 @@ description: In diesem Artikel erfahren Sie, wie Sie den Zugriff auf Event Hubs
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: e5d52b82ad6bbcb8dc7c028d3eba25a584590840
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 26c921213168e1028f311eabaa417efdb76f5c97
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92332432"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97510089"
 ---
 # <a name="authenticate-access-to-event-hubs-resources-using-shared-access-signatures-sas"></a>Authentifizieren des Zugriffs auf Event Hubs-Ressourcen mit Shared Access Signatures (SAS)
 Die Shared Access Signature (SAS) ermöglicht Ihnen die präzise Steuerung des Zugriffstyps, den Sie den Clients mit der Shared Access Signature gewähren. Folgende Kontrollen können Sie beispielsweise in einer SAS festlegen: 

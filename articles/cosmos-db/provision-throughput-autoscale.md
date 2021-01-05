@@ -5,14 +5,14 @@ author: kirillg
 ms.author: kirillg
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 06/04/2020
+ms.date: 12/11/2020
 ms.custom: seo-nov-2020
-ms.openlocfilehash: aaedca5acf7861db05f0ec724e05449316379829
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: ba0dd347c4ee2cb41b34c2fc34f1848a7295dc3a
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94337541"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368663"
 ---
 # <a name="create-azure-cosmos-containers-and-databases-with-autoscale-throughput"></a>Erstellen von Azure Cosmos-Containern und -Datenbanken mit automatisch skaliertem Durchsatz
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -59,7 +59,7 @@ Der Einstiegspunkt für den maximalen Durchsatz `Tmax` bei Autoskalierung beträ
 
 ## <a name="enable-autoscale-on-existing-resources"></a>Aktivieren der Autoskalierung für vorhandene Ressourcen
 
-Verwenden Sie das [Azure-Portal](how-to-provision-autoscale-throughput.md#enable-autoscale-on-existing-database-or-container), um Autoskalierung für vorhandene Datenbanken oder Container zu aktivieren. Sie können jederzeit zwischen per Autoskalierung bereitgestelltem Durchsatz und Standarddurchsatz (manuell) wechseln. Weitere Informationen finden Sie in dieser [Dokumentation](autoscale-faq.md#how-does-the-migration-between-autoscale-and-standard-manual-provisioned-throughput-work). Derzeit kann für alle APIs nur das Azure-Portal verwendet werden, um die Autoskalierung für bereits vorhandene Ressourcen zu aktivieren.
+Verwenden Sie [Azure-Portal](how-to-provision-autoscale-throughput.md#enable-autoscale-on-existing-database-or-container), eine [Azure Resource Manager-Vorlage](how-to-provision-autoscale-throughput.md#azure-resource-manager), [CLI](how-to-provision-autoscale-throughput.md#azure-cli) oder [PowerShell](how-to-provision-autoscale-throughput.md#azure-powershell), um die automatische Skalierung für eine vorhandene Datenbank oder einen Container zu aktivieren. Sie können jederzeit zwischen per Autoskalierung bereitgestelltem Durchsatz und Standarddurchsatz (manuell) wechseln. Weitere Informationen finden Sie in dieser [Dokumentation](autoscale-faq.md#how-does-the-migration-between-autoscale-and-standard-manual-provisioned-throughput-work).
 
 ## <a name="throughput-and-storage-limits-for-autoscale"></a><a id="autoscale-limits"></a> Durchsatz- und Speicherlimits für die Autoskalierung
 

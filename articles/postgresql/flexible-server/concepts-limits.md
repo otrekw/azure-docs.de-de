@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: f270ac736bb5dbc429dc8659cc88e63d0b51a523
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: cc17a66aceb6ab3eba9a18f8f07902822f4c81bb
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94366637"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96937660"
 ---
 # <a name="limits-in-azure-database-for-postgresql---flexible-server"></a>Beschränkungen in Azure Database for PostgreSQL – Flexible Server
 
@@ -116,6 +116,7 @@ Eine PostgreSQL-Verbindung kann selbst im Leerlauf ca. 10 MB Arbeitsspeicher be
 
 * Azure AD-Authentifizierung wird noch nicht unterstützt. Wenn Sie die Azure AD-Authentifizierung benötigen, wird die Option [Einzelserver](../overview-single-server.md) empfohlen.
 * Lesereplikate werden noch nicht unterstützt. Wenn Sie die Lesereplikate benötigen, wird die Option [Einzelserver](../overview-single-server.md) empfohlen.
+* Das Verschieben von Ressourcen in ein anderes Abonnement wird nicht unterstützt. 
 
 
 ## <a name="next-steps"></a>Nächste Schritte

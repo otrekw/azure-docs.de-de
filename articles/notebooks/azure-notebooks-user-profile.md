@@ -3,12 +3,12 @@ title: Benutzerprofil und ID für die Nutzung von Azure Notebooks Preview
 description: Es wird beschrieben, wie Sie Ihr Benutzerprofil und die Benutzer-ID mit Azure Notebooks erstellen und verwalten. Dies fließt in die URL von freigegebenen Notebooks ein.
 ms.topic: conceptual
 ms.date: 02/25/2019
-ms.openlocfilehash: 9a1ff7f92faec21f537f068f0a33473700ddfed8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 30d70365fcc0c72df01b4dc059b6e0f4cc607bba
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85831351"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109503"
 ---
 # <a name="your-profile-and-user-id-for-azure-notebooks-preview"></a>Ihr Profil und Ihre Benutzer-ID für Azure Notebooks Preview
 
@@ -54,11 +54,11 @@ Zum Bearbeiten Ihres Profils verwenden Sie den Befehl **Edit Profile Information
 | Profilfoto | Ein Bild, das auf Ihrer Profilseite angezeigt wird. |
 | Azure-Kontoinformationen | Ihr Anzeigename, Ihre Benutzer-ID und Ihr öffentliches E-Mail-Konto. Das E-Mail-Konto stellt ein Mittel für andere Benutzer dar, mit Ihnen in Kontakt zu treten, und kann sich von dem [Konto](azure-notebooks-user-account.md) unterscheiden, das Sie für die Anmeldung bei Azure Notebooks selbst verwenden. |
 | Profilinformationen | Ihr Standort, Ihr Unternehmen, Ihre Position, Ihre Website und eine kurze Beschreibung Ihrer Person. |
-| Soziale Profile | Ihre GItHub-, Twitter- und Facebook-IDs, wenn Sie diese teilen möchten. |
+| Soziale Profile | Ihre GitHub-, Twitter- und Facebook-IDs, wenn Sie diese teilen möchten. |
 | Datenschutzeinstellungen | Bietet zwei Befehle:<ul><li>**Export My Profile** (Mein Profil exportieren): erstellt eine *ZIP*-Datei mit allen Informationen, die Azure Notebooks in Ihrem Profil speichert, einschließlich Ihres Fotos, Ihrer Profilinformationen und der Sicherheitsprotokolle, und lädt sie herunter.</li><li>**Delete My Account** (Mein Konto löschen): löscht endgültig alle Ihre in Azure Notebooks gespeicherten persönlichen Informationen.</li></ul> |
 | Enable Site Features (Websitefunktionen aktivieren) | Ermöglicht es Ihnen, Verhaltensaspekte von Azure Notebooks zu steuern:<ul><li>**Unified Frontend for Notebooks** (Einheitliches Front-End für Notebooks): ermöglicht einen schnelleren Start von Notebooks und größere Beständigkeit.</li><li>**Run in JupyterLab by default** (Standardmäßig in JupyterLab ausführen): Azure Notebooks stellt als Standard eine einfache Benutzeroberfläche zur Verfügung, die für die meisten Benutzer geeignet ist. JupyterLab stellt erfahrenen Benutzern einer umfassendere, aber kompliziertere Oberfläche zur Verfügung.</li><li>**VNext Website** (VNext-Website): aktiviert das in dieser Dokumentation verwendete modernisierte Weblayout.</li></ul> |
 
 ## <a name="next-steps"></a>Nächste Schritte  
 
 > [!div class="nextstepaction"]
-> [Tutorial: Erstellen und Ausführen einer Jupyter Notebook-Datei mit Python](tutorial-create-run-jupyter-notebook.md)
+> [Schnellstart: Exportieren eines Jupyter Notebook-Projekts](quickstart-export-jupyter-notebook-project.md)
