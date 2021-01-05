@@ -16,7 +16,7 @@
           href: common-questions-discovery-assessment.md
         - name: Tool für die Servermigration
           href: common-questions-server-migration.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Entdecken
       items:
@@ -172,12 +172,12 @@
           href: how-to-migrate.md
         - name: Vorbereiten von Computern für die Migration
           href: prepare-for-migration.md
+        - name: "Vorbereiten von Windows\_2003-Servern für die Migration"
+          href: prepare-windows-server-2003-migration.md
         - name: Migrieren von virtuellen VMware-Computern
           items:
             - name: Migrieren von virtuellen VMware-Computern zu verschlüsselten virtuellen Azure-Computern
               href: how-to-migrate-vmware-vms-with-cmk-disks.md
-            - name: "Vorbereiten von Windows\_2003-Servern für die Migration"
-              href: prepare-windows-server-2003-migration.md
         - name: Skalieren der Migration
           items:
             - name: Automatisieren der Migration zahlreicher virtueller Computer
