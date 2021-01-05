@@ -8,12 +8,12 @@ ms.custom: mvc
 ms.devlang: ruby
 ms.topic: quickstart
 ms.date: 5/26/2020
-ms.openlocfilehash: 20e51100eba595f9261be24e0e3675aa565479cd
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 4eba3fabee50e0011d5a63297c726a9647dd84c0
+ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94535553"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97831532"
 ---
 # <a name="quickstart-use-ruby-to-connect-and-query-data-in-azure-database-for-mysql"></a>Schnellstart: Verwenden von Ruby zum Herstellen einer Verbindung und zum Abfragen von Daten in Azure Database for MySQL
 
@@ -72,7 +72,7 @@ Rufen Sie die Verbindungsinformationen ab, die zum Herstellen einer Verbindung m
 ## <a name="connect-and-create-a-table"></a>Herstellen einer Verbindung und Erstellen einer Tabelle
 Verwenden Sie den folgenden Code, um eine Verbindung herzustellen und eine Tabelle zu erstellen, indem Sie eine SQL-Anweisung des Typs **CREATE TABLE** gefolgt von SQL-Anweisungen des Typs **INSERT INTO** zum Hinzufügen von Zeilen zur Tabelle nutzen.
 
-Im Code wird die [mysql2::client](https://www.rubydoc.info/gems/mysql2)-Klasse verwendet, um eine Verbindung mit dem MySQL-Server herzustellen. Anschließend wird die ```query()```-Methode aufgerufen, um die Befehle DROP, CREATE TABLE und INSERT INTO auszuführen. Rufen Sie zum Schluss ```close()``` auf, um die Verbindung vor dem Beenden zu schließen.
+Im Code wird die mysql2::client-Klasse verwendet, um eine Verbindung mit dem MySQL-Server herzustellen. Anschließend wird die ```query()```-Methode aufgerufen, um die Befehle DROP, CREATE TABLE und INSERT INTO auszuführen. Rufen Sie zum Schluss ```close()``` auf, um die Verbindung vor dem Beenden zu schließen.
 
 Ersetzen Sie die Zeichenfolgen `host`, `database`, `username` und `password` durch Ihre eigenen Werte.
 ```ruby
@@ -117,7 +117,7 @@ end
 ## <a name="read-data"></a>Lesen von Daten
 Verwenden Sie den folgenden Code, um die Daten mit einer SQL-Anweisung des Typs **SELECT** zu verbinden und zu lesen.
 
-Im Code wird eine [mysql2::client](https://www.rubydoc.info/gems/mysql2)-Klasse verwendet, um mit der ```new()```-Methode eine Verbindung mit Azure Database for MySQL herzustellen. Anschließend wird die ```query()```-Methode aufgerufen, um die SELECT-Befehle auszuführen. Anschließend wird die ```close()```-Methode aufgerufen, um die Verbindung vor dem Beenden zu schließen.
+Im Code wird eine mysql2::client-Klasse verwendet, um mit der ```new()```-Methode eine Verbindung mit Azure Database for MySQL herzustellen. Anschließend wird die ```query()```-Methode aufgerufen, um die SELECT-Befehle auszuführen. Anschließend wird die ```close()```-Methode aufgerufen, um die Verbindung vor dem Beenden zu schließen.
 
 Ersetzen Sie die Zeichenfolgen `host`, `database`, `username` und `password` durch Ihre eigenen Werte.
 
@@ -156,7 +156,7 @@ end
 ## <a name="update-data"></a>Aktualisieren von Daten
 Verwenden Sie den folgenden Code, um die Daten mit einer SQL-Anweisung des Typs **UPDATE** zu verbinden und zu aktualisieren.
 
-Im Code wird eine .new()-Methode der [mysql2::client](https://www.rubydoc.info/gems/mysql2)-Klasse verwendet, um eine Verbindung mit der Azure-Datenbank für MySQL herzustellen. Dann wird die Methode ```query()``` aufgerufen, um die UPDATE-Befehle auszuführen. Anschließend wird die ```close()```-Methode aufgerufen, um die Verbindung vor dem Beenden zu schließen.
+Im Code wird eine .new()-Methode der [mysql2::client](https://rubygems.org/gems/mysql2-client-general_log)-Klasse verwendet, um eine Verbindung mit der Azure-Datenbank für MySQL herzustellen. Dann wird die Methode ```query()``` aufgerufen, um die UPDATE-Befehle auszuführen. Anschließend wird die ```close()```-Methode aufgerufen, um die Verbindung vor dem Beenden zu schließen.
 
 Ersetzen Sie die Zeichenfolgen `host`, `database`, `username` und `password` durch Ihre eigenen Werte.
 
@@ -241,5 +241,5 @@ az group delete \
 > [Migrieren der Datenbank mit Export und Import](./concepts-migrate-import-export.md) <br/>
 
 > [!div class="nextstepaction"]
-> [Weitere Informationen zum MySQL2-Client](https://www.rubydoc.info/gems/mysql2) <br/>
+> [Weitere Informationen zum MySQL2-Client](https://rubygems.org/gems/mysql2-client-general_log) <br/>
 

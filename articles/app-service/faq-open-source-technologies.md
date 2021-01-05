@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18, devx-track-python
-ms.openlocfilehash: 512776f2498a88f1fda9b5e7f0e2db0ddd32b955
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 36dfbf0fda060a8f273fee64098d6234b575088c
+ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88962327"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97831838"
 ---
 # <a name="open-source-technologies-faqs-for-web-apps-in-azure"></a>Häufig gestellte Fragen zu Open-Source-Technologien für Web-Apps in Azure | Microsoft-Dokumentation
 
@@ -169,9 +169,9 @@ Eine weitere Möglichkeit besteht darin, einen WebJob zu schreiben, der gemäß 
 
 ## <a name="where-do-i-find-the-log-files-for-jetty"></a>Wo finde ich die Protokolldateien für Jetty?
 
-Für Marketplace- und benutzerdefinierte Bereitstellungen befindet sich die Protokolldatei im Ordner „D:\home\site\wwwroot\bin\jetty-distribution-9.1.2.v20140210\logs“. Beachten Sie, dass der Speicherort des Ordners von der verwendeten Version von Jetty abhängt. Der hier angegebene Pfad gilt z.B. für Jetty 9.1.2. Suchen Sie nach „jetty_*YYYY_MM_DD*.stderrout.log“.
+Für Marketplace- und benutzerdefinierte Bereitstellungen befindet sich die Protokolldatei im Ordner „D:\home\site\wwwroot\bin\jetty-distribution-9.1.2.v20140210\logs“. Beachten Sie, dass der Speicherort des Ordners von der verwendeten Version von Jetty abhängt. Der hier angegebene Pfad gilt z.B. für Jetty 9.1.2. Suchen Sie nach „jetty_ *YYYY_MM_DD*.stderrout.log“.
 
-Für Bereitstellungen über „App-Einstellungen“ im Portal befindet sich die Protokolldatei in „D:\home\LogFiles“. Suchen Sie nach „jetty_*YYYY_MM_DD*.stderrout.log“.
+Für Bereitstellungen über „App-Einstellungen“ im Portal befindet sich die Protokolldatei in „D:\home\LogFiles“. Suchen Sie nach „jetty_ *YYYY_MM_DD*.stderrout.log“.
 
 ## <a name="can-i-send-email-from-my-azure-web-app"></a>Kann ich E-Mail aus meiner Azure-Web-App senden?
 
@@ -181,24 +181,24 @@ App Service bietet keine integrierte E-Mail-Funktion. Einige guten Alternativen 
 
 Wenn Sie vor Kurzem zu Azure migriert sind, leitet WordPress Sie zur alten Domänen-URL um. Dies wird durch eine Einstellung in der MySQL-Datenbank verursacht.
 
-WordPress Buddy+ ist eine Erweiterung für Azure-Websites, mit deren Hilfe Sie die Umleitungs-URL direkt in der Datenbank aktualisieren können. Weitere Informationen zur Verwendung von WordPress Buddy+ finden Sie unter [WordPress tools and MySQL migration with WordPress Buddy+](https://sharepointforum.org/threads/wordpress-tools-and-mysql-migration-with-wordpress-buddy.82929/) (WordPress-Tools und MySQL-Migration mit WordPress Buddy+).
+WordPress Buddy+ ist eine Erweiterung für Azure-Websites, mit deren Hilfe Sie die Umleitungs-URL direkt in der Datenbank aktualisieren können. Weitere Informationen zur Verwendung von WordPress Buddy+ finden Sie unter [WordPress tools and MySQL migration with WordPress Buddy+](https://www.electrongeek.com/blog/2016/12/21/wordpress-buddy-site-extension-for-app-service-on-windows) (WordPress-Tools und MySQL-Migration mit WordPress Buddy+).
 
 Wenn Sie die Umleitungs-URL lieber manuell mithilfe von SQL-Abfragen oder PHPMyAdmin aktualisieren, gehen Sie wie unter [WordPress: Redirecting to wrong URL](/archive/blogs/azureossds/wordpress-redirecting-to-wrong-url) (WordPress: Umleitung zur falschen URL) beschrieben vor.
 
 ## <a name="how-do-i-change-my-wordpress-sign-in-password"></a>Wie ändere ich mein WordPress-Anmeldungskennwort?
 
-Wenn Sie Ihr WordPress-Anmeldungskennwort vergessen haben, können es mit WordPress Buddy+ aktualisieren. Um Ihr Kennwort zurückzusetzen, installieren Sie die Erweiterung für Azure-Websites WordPress Buddy+, und führen Sie die Schritte unter [WordPress tools and MySQL migration with WordPress Buddy+](https://sharepointforum.org/threads/wordpress-tools-and-mysql-migration-with-wordpress-buddy.82929/) (WordPress-Tools und MySQL-Migration mit WordPress Buddy+) aus.
+Wenn Sie Ihr WordPress-Anmeldungskennwort vergessen haben, können es mit WordPress Buddy+ aktualisieren. Um Ihr Kennwort zurückzusetzen, installieren Sie die Erweiterung für Azure-Websites WordPress Buddy+, und führen Sie die Schritte unter [WordPress tools and MySQL migration with WordPress Buddy+](https://www.electrongeek.com/blog/2016/12/21/wordpress-buddy-site-extension-for-app-service-on-windows) (WordPress-Tools und MySQL-Migration mit WordPress Buddy+) aus.
 
 ## <a name="i-cant-sign-in-to-wordpress-how-do-i-resolve-this"></a>Ich kann mich nicht bei WordPress anmelden. Wie löse ich dieses Problem?
 
-Wenn Sie sich nach einer vor Kurzem erfolgten Installation eines Plug-Ins aus WordPress ausgesperrt haben, verfügen Sie möglicherweise über ein fehlerhaftes Plug-In. WordPress Buddy+ ist eine Erweiterung für Azure-Websites, mit der Sie WordPress-Plug-Ins deaktivieren können. Weitere Informationen finden Sie unter [WordPress tools and MySQL migration with WordPress Buddy+](https://sharepointforum.org/threads/wordpress-tools-and-mysql-migration-with-wordpress-buddy.82929/) (WordPress-Tools und MySQL-Migration mit WordPress Buddy+).
+Wenn Sie sich nach einer vor Kurzem erfolgten Installation eines Plug-Ins aus WordPress ausgesperrt haben, verfügen Sie möglicherweise über ein fehlerhaftes Plug-In. WordPress Buddy+ ist eine Erweiterung für Azure-Websites, mit der Sie WordPress-Plug-Ins deaktivieren können. Weitere Informationen finden Sie unter [WordPress tools and MySQL migration with WordPress Buddy+](https://www.electrongeek.com/blog/2016/12/21/wordpress-buddy-site-extension-for-app-service-on-windows) (WordPress-Tools und MySQL-Migration mit WordPress Buddy+).
 
 ## <a name="how-do-i-migrate-my-wordpress-database"></a>Wie migriere ich meine WordPress-Datenbank?
 
 Sie haben mehrere Optionen zum Migrieren der MySQL-Datenbank, die mit Ihrer WordPress-Website verbunden ist:
 
 * Entwickler: Verwenden Sie die [Eingabeaufforderung oder PHPMyAdmin](/archive/blogs/azureossds/migrating-data-between-mysql-databases-using-kudu-console-azure-app-service).
-* Andere Benutzer: Verwenden Sie [WordPress Buddy+](https://sharepointforum.org/threads/wordpress-tools-and-mysql-migration-with-wordpress-buddy.82929/).
+* Andere Benutzer: Verwenden Sie [WordPress Buddy+](https://www.electrongeek.com/blog/2016/12/21/wordpress-buddy-site-extension-for-app-service-on-windows).
 
 ## <a name="how-do-i-help-make-wordpress-more-secure"></a>Wie kann ich WordPress sicherer machen?
 
