@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/21/2018
-ms.openlocfilehash: c304354f378708c43c25ef8b92b7b80b37ac03af
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 19370eee9d9fa524de9beeaa85a15521580bd8e6
+ms.sourcegitcommit: 17e9cb8d05edaac9addcd6e0f2c230f71573422c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97563108"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97707689"
 ---
 # <a name="azure-networking-monitoring-solutions-in-azure-monitor"></a>Azure-Netzwerküberwachungslösungen in Azure Monitor
 
@@ -104,6 +104,21 @@ Auf Application Insights kann über die Registerkarte „Erkenntnisse“ in Ihre
 
 [ ![Screenshot einer Application Gateway-Arbeitsmappe](media/azure-networking-analytics/azure-appgw-workbook.png)](media/azure-networking-analytics/application-gateway-workbook.png#lightbox)
 
+### <a name="new-capabilities-with-azure-monitor-network-insights-workbook"></a>Neue Funktionen auf der Azure Monitor-Arbeitsmappe mit Netzwerkerkenntnissen
+
+> [!NOTE]
+> Azure Monitor-Arbeitsmappen mit Erkenntnissen verursachen keine zusätzlichen Kosten. Der Log Analytics-Arbeitsbereich wird weiterhin nach Verbrauch abgerechnet.
+
+Mithilfe der Arbeitsmappe mit Netzwerkerkenntnissen können Sie die neuesten Funktionen von Azure Monitor und Log Analytics nutzen, einschließlich:
+
+* Zentrale Konsole für die Überwachung und Problembehandlung mit [Metriken](../insights/network-insights-overview.md#resource-health-and-metrics) und Protokolldaten
+
+* Flexible Canvas zur Unterstützung der Erstellung von aussagekräftigen benutzerdefinierten [Visualisierungen](../platform/workbooks-overview.md#visualizations)
+
+* Verwenden und [Freigeben von Arbeitsmappenvorlagen](../platform/workbooks-overview.md#workbooks-versus-workbook-templates) in einer größeren Community
+
+Weitere Informationen zu den Funktionen der neuen Arbeitsmappenlösung finden Sie unter der [Übersicht über Arbeitsmappen](../platform/workbooks-overview.md).
+
 ## <a name="migrating-from-azure-gateway-analytics-solution-to-azure-monitor-workbooks"></a>Migrieren von der Azure Gateway-Analyselösung zu Azure Monitor-Arbeitsmappen
 
 > [!NOTE]
@@ -119,21 +134,6 @@ Auf Application Insights kann über die Registerkarte „Erkenntnisse“ in Ihre
 3. Wenn alle Metriken und Protokollerkenntnisse angezeigt werden und Sie die Azure Gateway-Analyselösung aus Ihrem Arbeitsbereich entfernen möchten, können Sie sie auf der zugehörigen Ressourcenseite löschen.
 
 [ ![Screenshot der Option „Löschen“ für die Azure Application Gateway-Analyselösung](media/azure-networking-analytics/azure-appgw-analytics-delete.png)](media/azure-networking-analytics/application-gateway-analytics-delete.png#lightbox)
-
-### <a name="new-capabilities-with-azure-monitor-network-insights-workbook"></a>Neue Funktionen auf der Azure Monitor-Arbeitsmappe mit Netzwerkerkenntnissen
-
-> [!NOTE]
-> Azure Monitor-Arbeitsmappen mit Erkenntnissen verursachen keine zusätzlichen Kosten. Der Log Analytics-Arbeitsbereich wird weiterhin nach Verbrauch abgerechnet.
-
-Mithilfe der Arbeitsmappe mit Netzwerkerkenntnissen können Sie die neuesten Funktionen von Azure Monitor und Log Analytics nutzen, einschließlich:
-
-* Zentrale Konsole für die Überwachung und Problembehandlung mit [Metriken](../insights/network-insights-overview.md#resource-health-and-metrics) und Protokolldaten
-
-* Flexible Canvas zur Unterstützung der Erstellung von aussagekräftigen benutzerdefinierten [Visualisierungen](../platform/workbooks-overview.md#visualizations)
-
-* Verwenden und [Freigeben von Arbeitsmappenvorlagen](../platform/workbooks-overview.md#workbooks-versus-workbook-templates) in einer größeren Community
-
-Weitere Informationen zu den Funktionen der neuen Arbeitsmappenlösung finden Sie unter der [Übersicht über Arbeitsmappen](../platform/workbooks-overview.md).
 
 ## <a name="azure-network-security-group-analytics-solution-in-azure-monitor"></a>Analyselösung der Azure-Netzwerksicherheitsgruppe in Azure Monitor
 

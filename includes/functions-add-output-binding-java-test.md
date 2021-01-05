@@ -4,15 +4,13 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 03/18/2020
 ms.author: glenga
-ms.openlocfilehash: eb54439f89cc2443eeed2d3b63dfbe7fedb4bf17
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 179ae760f146a5ac3041a54065ae12147f3f9bf0
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "80673446"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97739812"
 ---
-## <a name="update-the-tests"></a>Aktualisieren der Tests
-
 Da der Archetyp auch eine Reihe von Tests erstellt, müssen Sie diese Tests aktualisieren, um den neuen Parameter `msg` in der Signatur der Methode `run` zu behandeln.  
 
 Navigieren Sie zum Speicherort Ihres Testcodes (unter _src/test/java_), öffnen Sie die Projektdatei *Function.java*, und ersetzen Sie die Codezeile unter `//Invoke` durch den folgenden Code:
