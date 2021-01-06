@@ -3,14 +3,14 @@ title: Senden einer E-Mail aus einem Azure Automation-Runbook
 description: Dieser Artikel beschreibt, wie Sie eine E-Mail aus einem Runbook heraus versenden können.
 services: automation
 ms.subservice: process-automation
-ms.date: 07/15/2019
+ms.date: 01/05/2021
 ms.topic: conceptual
-ms.openlocfilehash: a81ae680a5f04eca0a6cc01ee24b474cc5daabea
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 65fa226b368baa3b1d4f376600e610a518c48c02
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97005204"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97900320"
 ---
 # <a name="send-an-email-from-a-runbook"></a>Senden einer E-Mail aus einem Runbook
 
@@ -67,7 +67,7 @@ Weitere Möglichkeiten zum Erstellen einer Azure Key Vault-Instanz und zum Speic
 
 Um Azure Key Vault innerhalb eines Runbooks zu verwenden, müssen Sie die folgenden Module in Ihr Automation-Konto importieren:
 
-* [Az.Profile](https://www.powershellgallery.com/packages/Az.Profile)
+* [Az.Accounts](https://www.powershellgallery.com/packages/Az.Accounts)
 * [Az.KeyVault](https://www.powershellgallery.com/packages/Az.KeyVault)
 
 Anweisungen finden Sie unter [Importieren von Az-Modulen](shared-resources/modules.md#import-az-modules).
@@ -142,7 +142,7 @@ Wird die Test-E-Mail zuerst nicht angezeigt, überprüfen Sie den **Junk-** und 
 
 1. Wenn das Runbook nicht mehr benötigt wird, wählen Sie es in der Runbookliste aus, und klicken Sie auf **Löschen**.
 
-2. Löschen Sie den Schlüsseltresor mithilfe des Cmdlets [Remove-AzKeyVault](/powershell/module/az.keyvault/remove-azkeyvault?view=azps-3.7.0).
+2. Löschen Sie den Schlüsseltresor mithilfe des Cmdlets [Remove-AzKeyVault](/powershell/module/az.keyvault/remove-azkeyvault).
 
 ```azurepowershell-interactive
 $VaultName = "<your KeyVault name>"

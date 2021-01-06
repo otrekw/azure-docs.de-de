@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc3dce8bb51299eb78bd2958eebf7a69594318a4
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 3bba64f8c07545107d57f79ae94dab96e517815f
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96546470"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97900704"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>Identifizieren und Beheben von Lizenzzuweisungsproblemen für eine Gruppe in Azure Active Directory
 
@@ -68,7 +68,6 @@ Klicken Sie auf ein Produkt, um zu ermitteln, welche Benutzer und Gruppen Lizenz
 
 Betrachten Sie das folgende Beispiel. Einem Benutzer ist eine Lizenz für Office 365 Enterprise *E1* direkt zugewiesen worden, wobei alle Pläne aktiviert wurden. Der Benutzer wurde einer Gruppe hinzugefügt, der das Produkt Office 365 Enterprise *E3* zugewiesen ist. Das E3-Produkt enthält Dienstpläne, die sich nicht mit den in E1 enthaltenen Plänen überschneiden dürfen. Daher tritt bei der Gruppenlizenzzuweisung der Fehler „Widersprüchliche Servicepläne“ auf. Bei diesem Beispiel stehen die folgenden Dienstpläne in Konflikt:
 
-- SharePoint Online (Plan 2) steht in Konflikt mit SharePoint Online (Plan 1).
 - Exchange Online (Plan 2) steht in Konflikt mit Exchange Online (Plan 1).
 
 Zur Behebung dieses Konflikts müssen zwei der Pläne deaktiviert werden. Sie können die dem Benutzer direkt zugewiesene E1-Lizenz deaktivieren. Eine andere Möglichkeit besteht darin, die gesamte Gruppenlizenzzuweisung zu ändern und die Pläne für die E3-Lizenz zu deaktivieren. Alternativ können Sie dem Benutzer auch die E1-Lizenz entziehen, falls sie im Kontext der E3-Lizenz redundant ist.

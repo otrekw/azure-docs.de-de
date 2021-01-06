@@ -1,19 +1,19 @@
 ---
 title: 'Azure VMware Solution by CloudSimple: Sichern virtueller Workloadcomputer in der privaten Cloud mit Veeam'
 description: Beschreibt, wie Sie Ihre virtuellen Computer mit Veeam B&R 9.5 sichern können, die in einer Azure-basierten privaten CloudSimple-Cloud ausgeführt werden.
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/16/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: cb883b70d1ae9f2894c7679633a586586922aa18
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 7be606b3e23a594e67acf3f169d88353403d8577
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92419946"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97899336"
 ---
 # <a name="back-up-workload-vms-on-cloudsimple-private-cloud-using-veeam-br"></a>Sichern von Workload-VMs in einer privaten CloudSimple-Cloud mithilfe von Veeam B&R
 

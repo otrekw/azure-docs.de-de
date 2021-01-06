@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol, rosssmi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 03069bc37333cbd26dfe4f40ce4496f3afe768ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 672a3f95efad24c07379fafe8b22088dc731c2df
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91266041"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881160"
 ---
 # <a name="how-to-require-app-protection-policy-and-an-approved-client-app-for-cloud-app-access-with-conditional-access"></a>Gewusst wie: Erzwingen einer App-Schutzrichtlinie und einer genehmigten Client-App für den Zugriff auf Cloud-Apps mithilfe des bedingten Zugriffs
 
@@ -60,8 +60,8 @@ Organisationen müssen die folgenden Schritte ausführen, um die Verwendung eine
    1. Wählen Sie **Mobile Apps und Desktopclients** aus, und deaktivieren Sie alle anderen Optionen.
 1. Wählen Sie unter **Zugriffssteuerungen** > **Erteilen** die folgenden Optionen aus:
    - **Genehmigte Client-App erforderlich**
-   - **App-Schutzrichtlinie erforderlich (Vorschau)**
-   - **Alle ausgewählten Kontrollen anfordern**
+   - **App-Schutzrichtlinie erforderlich**
+   - **Eine der ausgewählten Steuerungen anfordern**
 1. Bestätigen Sie die Einstellungen und legen Sie **Richtlinie aktivieren** auf **Ein** fest.
 1. Wählen Sie **Erstellen** aus, um die Richtlinie zu erstellen und zu aktivieren.
 
@@ -89,7 +89,7 @@ Die Schritte zum Erstellen von App-Schutzrichtlinien für Android und iOS finden
 
 ## <a name="scenario-2-browser-apps-require-approved-apps-with-app-protection-policies"></a>Szenario 2: Browser-Apps erfordern genehmigte Apps mit App-Schutzrichtlinien.
 
-In diesem Szenario hat Contoso entschieden, dass der gesamte mobile Webbrowserzugriff auf Microsoft 365-Ressourcen genehmigte Client-Apps wie Microsoft Edge für iOS und Android erfordert, die durch eine App-Schutzrichtlinie geschützt sind. Alle Benutzer melden sich bereits mit Azure AD-Anmeldeinformationen an. Außerdem wurden ihnen Lizenzen zugewiesen, die Azure AD Premium P1 oder P2 und Microsoft Intune umfassen.
+In diesem Szenario hat Contoso entschieden, dass der gesamte mobile Webbrowserzugriff auf Microsoft 365-Ressourcen genehmigte Client-Apps wie Edge für iOS und Android erfordert, die durch eine App-Schutzrichtlinie geschützt sind. Alle Benutzer melden sich bereits mit Azure AD-Anmeldeinformationen an. Außerdem wurden ihnen Lizenzen zugewiesen, die Azure AD Premium P1 oder P2 und Microsoft Intune umfassen.
 
 Organisationen müssen die folgenden Schritte ausführen, um die Verwendung einer genehmigten Client-App auf mobilen Geräten zu erzwingen.
 
@@ -111,8 +111,8 @@ Organisationen müssen die folgenden Schritte ausführen, um die Verwendung eine
    1. Wählen Sie **Browser** aus, und deaktivieren Sie alle anderen Optionen.
 1. Wählen Sie unter **Zugriffssteuerungen** > **Erteilen** die folgenden Optionen aus:
    - **Genehmigte Client-App erforderlich**
-   - **App-Schutzrichtlinie erforderlich (Vorschau)**
-   - **Alle ausgewählten Kontrollen anfordern**
+   - **App-Schutzrichtlinie erforderlich**
+   - **Eine der ausgewählten Steuerungen anfordern**
 1. Bestätigen Sie die Einstellungen und legen Sie **Richtlinie aktivieren** auf **Ein** fest.
 1. Wählen Sie **Erstellen** aus, um die Richtlinie zu erstellen und zu aktivieren.
 
@@ -144,7 +144,7 @@ Organisationen müssen die folgenden drei Schritte ausführen, um die Verwendung
    1. Wählen Sie **Mobile Apps und Desktopclients** aus, und deaktivieren Sie alle anderen Optionen.
 1. Wählen Sie unter **Zugriffssteuerungen** > **Erteilen** die folgenden Optionen aus:
    - **Genehmigte Client-App erforderlich**
-   - **App-Schutzrichtlinie erforderlich (Vorschau)**
+   - **App-Schutzrichtlinie erforderlich**
    - **Eine der ausgewählten Steuerungen anfordern**
 1. Bestätigen Sie die Einstellungen und legen Sie **Richtlinie aktivieren** auf **Ein** fest.
 1. Wählen Sie **Erstellen** aus, um die Richtlinie zu erstellen und zu aktivieren.

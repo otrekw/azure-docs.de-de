@@ -1,25 +1,25 @@
 ---
 title: 'Azure VMware Solution by CloudSimple: Einrichten von vCenter-Identitätsquellen für die private Cloud'
 description: Beschreibt, wie Sie Ihr vCenter für die private Cloud für die Authentifizierung mit Azure Active Directory einrichten können, damit Ihre VMware-Administratoren auf vCenter zugreifen können.
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/15/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 60090dec56a177fac6ddad946d97142b484355af
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: a76fecb942c5c6da926e37149245e82dcbc4661b
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425743"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97899149"
 ---
 # <a name="set-up-vcenter-identity-sources-to-use-active-directory"></a>Einrichten von vCenter-Identitätsquellen für die Verwendung von Active Directory
 
 ## <a name="about-vmware-vcenter-identity-sources"></a>Informationen zu VMware vCenter-Identitätsquellen
 
-VMware vCenter unterstützt verschiedene Identitätsquellen für die Authentifizierung von Benutzern, die auf vCenter zugreifen.  Ihr vCenter für die private CloudSimple-Cloud kann für die Authentifizierung mit Azure Active Directory (Azure AD) eingerichtet werden, damit Ihre VMware-Administratoren auf vCenter zugreifen können. Wenn das Setup abgeschlossen ist, kann der **cloudowner** -Benutzer vCenter Benutzer aus der Identitätsquelle hinzufügen.  
+VMware vCenter unterstützt verschiedene Identitätsquellen für die Authentifizierung von Benutzern, die auf vCenter zugreifen.  Ihr vCenter für die private CloudSimple-Cloud kann für die Authentifizierung mit Azure Active Directory (Azure AD) eingerichtet werden, damit Ihre VMware-Administratoren auf vCenter zugreifen können. Wenn das Setup abgeschlossen ist, kann der **cloudowner**-Benutzer vCenter Benutzer aus der Identitätsquelle hinzufügen.  
 
 Sie können Ihre Active Directory-Domäne und Domänencontroller auf eine der folgenden Arten einrichten:
 
@@ -33,7 +33,7 @@ In diesem Leitfaden werden die Aufgaben zum Einrichten von Active Directory-Dom�
 Eskalieren Sie vor dem [Hinzufügen einer Identitätsquelle](#add-an-identity-source-on-vcenter) vorübergehend Ihre [vCenter-Berechtigungen](escalate-private-cloud-privileges.md).
 
 > [!CAUTION]
-> Neue Benutzer müssen lediglich *Cloud-Owner-Group* , *Cloud-Global-Cluster-Admin-Group* , *Cloud-Global-Storage-Admin-Group* , *Cloud-Global-Network-Admin-Group* oder *Cloud-Global-VM-Admin-Group* hinzugefügt werden.  Benutzer, die der Gruppe *Administratoren* hinzugefügt wurden, werden automatisch entfernt.  Nur Dienstkonten dürfen der Gruppe *Administratoren* hinzugefügt werden, und Dienstkonten dürfen nicht für die Anmeldung bei der vSphere-Webbenutzeroberfläche verwendet werden.   
+> Neue Benutzer müssen lediglich *Cloud-Owner-Group*, *Cloud-Global-Cluster-Admin-Group*, *Cloud-Global-Storage-Admin-Group*, *Cloud-Global-Network-Admin-Group* oder *Cloud-Global-VM-Admin-Group* hinzugefügt werden.  Benutzer, die der Gruppe *Administratoren* hinzugefügt wurden, werden automatisch entfernt.  Nur Dienstkonten dürfen der Gruppe *Administratoren* hinzugefügt werden, und Dienstkonten dürfen nicht für die Anmeldung bei der vSphere-Webbenutzeroberfläche verwendet werden.   
 
 
 ## <a name="identity-source-options"></a>Optionen für Identitätsquellen
@@ -121,7 +121,7 @@ Nachdem die Netzwerkverbindung hergestellt wurde, führen Sie die Schritte unter
 
     ![Einmaliges Anmelden](media/OnPremAD02.png)
 
-5. Öffnen Sie die Registerkarte **Identitätsquellen** , und klicken Sie auf **+** , um eine neue Identitätsquelle hinzuzufügen.
+5. Öffnen Sie die Registerkarte **Identitätsquellen**, und klicken Sie auf **+**, um eine neue Identitätsquelle hinzuzufügen.
 
     ![Identitätsquellen](media/OnPremAD03.png)
 

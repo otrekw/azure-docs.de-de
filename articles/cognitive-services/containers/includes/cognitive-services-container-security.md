@@ -7,14 +7,14 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 11/11/2020
+ms.date: 12/17/2020
 ms.author: aahi
-ms.openlocfilehash: bb9b0da609169288521d21ee6d5e412a786c7549
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 4b106ebc5606c4e5a290e12728d4e2011e80f6a2
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94574344"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861832"
 ---
 ## <a name="azure-cognitive-services-container-security"></a>Containersicherheit in Azure Cognitive Services
 
@@ -44,7 +44,7 @@ Der Host sollte **Port 443** und die folgenden Domänen in der Zulassungsliste a
 
 #### <a name="disable-deep-packet-inspection"></a>Deaktivieren der eingehenden Paketuntersuchung
 
-> [Eingehende Paketuntersuchung](https://en.wikipedia.org/wiki/Deep_packet_inspection) (Deep Packet Inspection, DPI) ist eine Art der Datenverarbeitung, bei der die in einem Computernetzwerk gesendeten Daten im Detail untersucht werden. Die zur Verfügung stehenden Maßnahmen sind Blockieren, Umleiten oder Protokollieren von Daten.
+[Eingehende Paketuntersuchung](https://en.wikipedia.org/wiki/Deep_packet_inspection) (Deep Packet Inspection, DPI) ist eine Art der Datenverarbeitung, bei der die in einem Computernetzwerk gesendeten Daten im Detail untersucht werden. Die zur Verfügung stehenden Maßnahmen sind Blockieren, Umleiten oder Protokollieren von Daten.
 
 Deaktivieren Sie DPI für die sicheren Kanäle, die von Cognitive Services-Containern zu Microsoft-Servern erstellt werden. Andernfalls funktionieren die Container nicht ordnungsgemäß.
 

@@ -6,12 +6,12 @@ ms.author: sread
 ms.date: 03/30/2020
 ms.topic: article
 ms.service: multiple
-ms.openlocfilehash: 7fb72b9a7d0d655f99d1e5cf194f7c6f26976a37
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b2cac7a8310482305467a1cb3ed3127eb18ae416
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95976192"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97915775"
 ---
 # <a name="set-up-micro-focus-cics-bankdemo-for-micro-focus-enterprise-developer-40-on-azure"></a>Einrichten von Micro Focus CICS BankDemo für Micro Focus Enterprise Developer 4.0 in Azure
 
@@ -28,7 +28,7 @@ CICS steht für „Customer Information Control System“, die Transaktionsplatt
 
 - [SQL Server 2017 Express Edition](https://www.microsoft.com/sql-server/sql-server-editions-express). Laden Sie die Software auf die Enterprise Developer-VM herunter, und installieren Sie sie. Enterprise Server erfordert eine Datenbank für die Verwaltung von CICS-Regionen, und die BankDemo-Anwendung verwendet auch eine SQL Server-Datenbank namens BANKDEMO. Bei dieser Demo wird davon ausgegangen, dass Sie SQL Server Express für beide Datenbanken verwenden. Wählen Sie beim Installationsprozess die Standardinstallation aus.
 
-- [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017) (SSMS). SSMS wird verwendet, um die Datenbanken zu verwalten und ein T-SQL-Skript auszuführen. Laden Sie die Software auf die Enterprise Developer-VM herunter, und installieren Sie sie.
+- [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017&preserve-view=true) (SSMS). SSMS wird verwendet, um die Datenbanken zu verwalten und ein T-SQL-Skript auszuführen. Laden Sie die Software auf die Enterprise Developer-VM herunter, und installieren Sie sie.
 
 - [Visual Studio 2019](https://azure.microsoft.com/downloads/) mit dem neuesten Service Pack oder [Visual Studio Community](https://visualstudio.microsoft.com/vs/community/), das Sie kostenlos herunterladen können.
 

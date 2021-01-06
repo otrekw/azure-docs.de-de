@@ -75,7 +75,7 @@
         - name: 'Häufig gestellte Fragen: Recovery Services-Tresore'
           href: backup-azure-backup-faq.md
         - name: 'Häufig gestellte Fragen: Backup Center'
-          href: backup-center-faq.md
+          href: backup-center-faq.yml
         - name: 'Häufig gestellte Fragen: Azure-VM-Sicherung'
           href: backup-azure-vm-backup-faq.md
         - name: 'Häufig gestellte Fragen: MARS-Agent'
@@ -468,7 +468,7 @@
       href: ./policy-reference.md
 - name: Ressourcen
   items:
-    - name: Kompatibilität
+    - name: Compliance
       href: compliance-offerings.md
     - name: Azure-Roadmap
       href: 'https://azure.microsoft.com/roadmap/'

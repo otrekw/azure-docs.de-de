@@ -1,19 +1,19 @@
 ---
 title: 'Schnellstart: Erstellen einer Azure VMware-VM in einer privaten Cloud – Azure VMware Solution by CloudSimple'
 description: Hier erfahren Sie, wie eine VMware-VM in der privaten CloudSimple-Cloud erstellt wird. Greifen Sie über das Azure-Portal auf das CloudSimple-Portal zu.
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/16/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: fd67a5a7f1bf665333e06c66f73c7f18727a3e12
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: c741f01ccc3e34ec991aa77fc850fd9f60c4d8aa
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427766"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97899285"
 ---
 # <a name="create-vmware-virtual-machines-on-your-private-cloud"></a>Erstellen von virtuellen VMware-Computern in Ihrer privaten Cloud
 
@@ -28,7 +28,7 @@ Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim 
 1. Wählen Sie **Alle Dienste** aus.
 2. Suchen Sie nach **CloudSimple Services**.
 3. Wählen Sie den CloudSimple-Dienst aus, über den Sie Ihre private Cloud erstellen möchten.
-4. Klicken Sie auf der Seite **Übersicht** auf **Go to the CloudSimple portal** , um eine neue Browserregisterkarte für das CloudSimple-Portal zu öffnen.  Melden Sie sich nach Aufforderung mit Ihren Azure-Anmeldeinformationen an.  
+4. Klicken Sie auf der Seite **Übersicht** auf **Go to the CloudSimple portal**, um eine neue Browserregisterkarte für das CloudSimple-Portal zu öffnen.  Melden Sie sich nach Aufforderung mit Ihren Azure-Anmeldeinformationen an.  
 
     ![Starten des CloudSimple-Portals](media/launch-cloudsimple-portal.png)
 
@@ -46,7 +46,7 @@ Um auf vCenter zuzugreifen, starten Sie im CloudSimple-Portal. Klicken Sie auf d
   > Verwenden Sie für ISO-Uploads den vSphere HTML5-Client.  Die Verwendung eines Flash-Clients kann zu einem Fehler führen.
 
 1. Rufen Sie die ISO- oder vSphere-Vorlage ab, die Sie auf vCenter hochladen möchten, um einen virtuellen Computer zu erstellen, damit er in Ihrem lokalen System zur Verfügung steht.
-2. Klicken Sie in vCenter, auf das Symbol **Datenträger** , und wählen Sie **vsanDatastore** aus. Klicken Sie auf **Dateien** und dann auf **Neuer Ordner**.
+2. Klicken Sie in vCenter, auf das Symbol **Datenträger**, und wählen Sie **vsanDatastore** aus. Klicken Sie auf **Dateien** und dann auf **Neuer Ordner**.
     ![vCenter-ISO](media/vciso00.png)
 
 3. Erstellen Sie einen Ordner mit dem Namen „ISOs and Templates“.
@@ -57,7 +57,7 @@ Um auf vCenter zuzugreifen, starten Sie im CloudSimple-Portal. Klicken Sie auf d
 
 1. Klicken Sie in vCenter auf das Symbol **Hosts und Cluster**.
 
-2. Klicken Sie mit der rechten Maustaste auf **Workload** , und wählen Sie **Neuer virtueller Computer** aus.
+2. Klicken Sie mit der rechten Maustaste auf **Workload**, und wählen Sie **Neuer virtueller Computer** aus.
     ![Screenshot, der die Menüoption „Neuer virtueller Computer“ hervorhebt.](media/vcvm01.png)
 
 3. Wählen Sie **Neuen virtuellen Computer erstellen** aus, und klicken Sie auf **Weiter**.
@@ -84,7 +84,7 @@ Um auf vCenter zuzugreifen, starten Sie im CloudSimple-Portal. Klicken Sie auf d
 10. Ein Auswahlfenster wird geöffnet. Wählen Sie die Datei aus, die Sie zuvor in den Ordner „ISO-Dateien und Vorlagen“ hochgeladen haben, und klicken Sie auf **OK**.
     ![Neuer virtueller Computer](media/vcvm10.png)
 
-11. Überprüfen Sie die Einstellungen, und klicken Sie auf **OK** , um den virtuellen Computer zu erstellen.
+11. Überprüfen Sie die Einstellungen, und klicken Sie auf **OK**, um den virtuellen Computer zu erstellen.
     ![Screenshot, der zeigt, wo Sie die Einstellungen überprüfen.](media/vcvm11.png)
 
 Der virtuelle Computer wird jetzt den Workload-Computeressourcen hinzugefügt und ist einsatzbereit. 

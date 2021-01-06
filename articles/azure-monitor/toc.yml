@@ -127,7 +127,7 @@
           href: platform/personal-data-mgmt.md
         - name: 'Anwendungsdatensammlung, -vermerkdauer und -speicherung'
           href: app/data-retention-privacy.md
-    - name: Alerts
+    - name: Warnungen
       items:
         - name: Übersicht
           href: platform/alerts-overview.md
@@ -1090,6 +1090,8 @@
           href: insights/redis-cache-insights-overview.md
         - name: Azure Cosmos DB
           href: insights/cosmosdb-insights-overview.md
+        - name: Azure Data Explorer (Vorschau)
+          href: insights/data-explorer.md
         - name: Netzwerke
           href: insights/network-insights-overview.md
         - name: Key Vault

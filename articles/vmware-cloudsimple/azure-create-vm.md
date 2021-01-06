@@ -1,19 +1,19 @@
 ---
 title: 'Azure VMware Solution by CloudSimple: Erstellen eines virtuellen Computers in Azure mit VM-Vorlagen'
 description: Beschreibt, wie virtuelle Computer in Azure mithilfe von VM-Vorlagen in der VMware-Infrastruktur für Ihre private CloudSimple-Cloud erstellt werden.
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/16/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: ee3029de9826aee17dc76d0e69f08b3c1068423b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b01afe60a78a746eb0dc5f03cc7b45989f8cf81e
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96014500"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97898758"
 ---
 # <a name="create-a-virtual-machine-in-azure-using-vm-templates-on-the-vmware-infrastructure"></a>Erstellen eines virtuellen Computers in Azure mithilfe von VM-Vorlagen für die VMware-Infrastruktur
 

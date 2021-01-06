@@ -9,12 +9,13 @@ ms.date: 04/09/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 761b031916dd9ead71f5be6a6887208a1f200f58
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: 385a67e117bf0cf9508b81d014e3accac4725744
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91966133"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97914908"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-x509-certificates"></a>Erstellen und Bereitstellen eines IoT Edge-Geräts mithilfe von X.509-Zertifikaten
 
@@ -164,7 +165,7 @@ Wenn Sie eine Registrierungsgruppe erstellen, haben Sie die Möglichkeit, ein ü
 
 1. Laden Sie im Azure-Portal auf derselben Seite „Zertifikatdetails“ das neu generierte Verifizierungszertifikat hoch.
 
-1. Wählen Sie **Überprüfen**aus.
+1. Wählen Sie **Überprüfen** aus.
 
 ### <a name="create-enrollment-group"></a>Erstellen einer Registrierungsgruppe
 
@@ -178,7 +179,7 @@ Weitere Informationen zu Registrierungen im Device Provisioning-Dienst finden Si
 
    * **Gruppenname**: Geben Sie einen einprägsamen Namen für diese Gruppenregistrierung an.
 
-   * **Nachweistyp**: Wählen Sie **Certificate**aus.
+   * **Nachweistyp**: Wählen Sie **Certificate** aus.
 
    * **IoT Edge-Gerät**: Wählen Sie **True** aus. Bei einer Gruppenregistrierung müssen alle Geräte IoT Edge-Geräte sein, oder keines von ihnen darf ein IoT Edge-Gerät sein.
 

@@ -1,19 +1,19 @@
 ---
 title: Azure VMware Solution by CloudSimple – Sicherheit für CloudSimple-Dienste
 description: Enthält eine Beschreibung der Modelle für gemeinsame Verantwortung, mit denen für CloudSimple-Dienste für Sicherheit gesorgt wird.
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/20/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 7310c037511fdf1a7d6f3763fd61d292078ea83e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d62eec72a884470ade03897a0533e62c6f1b0f71
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86998890"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97898792"
 ---
 # <a name="cloudsimple-security-overview"></a>CloudSimple-Sicherheit: Übersicht
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: af7cc9d83b87c8a772a190c431d6946eec4dda86
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 9e5f7d4e3c358c05713301ac1b1b896062f12bee
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96483129"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97914755"
 ---
 # <a name="azure-security-baseline-for-windows-virtual-machines"></a>Azure-Sicherheitsbaseline für virtuelle Windows-Computer
 
@@ -893,7 +893,7 @@ In den meisten Fällen sind die Microsoft-Basisvorlagen in Kombination mit Azure
 
 * [Informationen zum Erstellen von ARM-Vorlagen](./ps-template.md)
 
-* [Hochladen einer benutzerdefinierten VM-VHD in Azure](/azure-stack/operator/azure-stack-add-vm-image?view=azs-1910)
+* [Hochladen einer benutzerdefinierten VM-VHD in Azure](/azure-stack/operator/azure-stack-add-vm-image?view=azs-1910&preserve-view=true)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -1083,7 +1083,7 @@ Wenn Sie Azure Disk Encryption verwenden, können Sie die Azure-VM mit den Versc
 
 * [Sichern und Wiederherstellen einer verschlüsselten VM](../../backup/backup-azure-vms-encryption.md)
 
-**Azure Security Center-Überwachung:** Nicht zutreffend
+**Azure Security Center-Überwachung**: Nicht zutreffend
 
 **Verantwortlichkeit**: Kunde
 
@@ -1137,7 +1137,7 @@ Kennzeichnen Sie außerdem die Abonnements (z. B. Produktion, Nicht-Produktion)
 
 * [„Guide to Test, Training, and Exercise Programs for IT Plans and Capabilities“ des National Institute of Standards and Technology (NIST)](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf)
 
-**Azure Security Center-Überwachung:** Nicht zutreffend
+**Azure Security Center-Überwachung**: Nicht zutreffend
 
 **Verantwortlichkeit**: Kunde
 

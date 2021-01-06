@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 7/14/2020
 ms.author: raynew
-ms.openlocfilehash: 7466f037f0a39b67023b9ebcc27c2e19b27f42ab
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 79558bd2c8e9bfec0aff47d254944977d271a762
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96485262"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97587813"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Unterstützungsmatrix für die Notfallwiederherstellung von lokalen Hyper-V-VMs in Azure
 
@@ -131,6 +131,7 @@ Multipfad (MPIO) | Ja | Ja
 Lokal redundanter Speicher | Ja | Ja
 Georedundanter Speicher | Ja | Ja
 Georedundanter Speicher mit Lesezugriff | Ja | Ja
+Zonenredundanter Speicher | Nein | Nein
 Speicherebene „Kalt“ | Nein | Nein
 Speicherebene „Heiß“| Nein | Nein
 Blockblobs | Nein | Nein

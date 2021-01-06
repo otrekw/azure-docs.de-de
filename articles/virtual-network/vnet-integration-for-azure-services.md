@@ -12,19 +12,19 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 12/01/2020
 ms.author: kumud
-ms.openlocfilehash: 814158ad68e63760c1f2a1bce3eeff812de3c13e
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: a25d6d0d1990682287b5962a7bd93a0c525db133
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96938731"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882363"
 ---
 # <a name="integrate-azure-services-with-virtual-networks-for-network-isolation"></a>Integrieren von Azure-Diensten mit virtuellen Netzwerken zur Netzwerkisolation
 
 Die VNet-Integration (virtuelles Netzwerk) für einen Azure-Dienst ermöglicht es Ihnen, den Zugriff auf den Dienst nur auf Ihre virtuelle Netzwerkinfrastruktur zu beschränken. Die VNet-Infrastruktur umfasst auch virtuelle Netzwerke mit Peering und lokale Netzwerke.
 
 Die VNet-Integration bietet Azure-Diensten die Vorteile der Netzwerkisolation und kann durch eine oder mehrere der folgenden Methoden erreicht werden:
-- [Bereitstellen dedizierter Instanzen des Diensts in einem virtuellen Netzwerk](virtual-network-service-endpoints-overview.md). Auf die Dienste kann dann innerhalb des virtuellen Netzwerks und von lokalen Netzwerken aus privat zugegriffen werden.
+- [Bereitstellen dedizierter Instanzen des Diensts in einem virtuellen Netzwerk](virtual-network-for-azure-services.md). Auf die Dienste kann dann innerhalb des virtuellen Netzwerks und von lokalen Netzwerken aus privat zugegriffen werden.
 - Verwenden von [Privaten Endpunkten](../private-link/private-endpoint-overview.md), die eine private und sichere Verbindung zwischen Ihnen und dem Dienst herstellen, der von [Azure Private Link](../private-link/private-link-overview.md) unterstützt wird. Ein privater Endpunkt verwendet eine private IP-Adresse in Ihrem VNet und bindet den Dienst so effektiv in das virtuelle Netzwerk ein.
 - Zugreifen auf den Dienst unter Verwendung öffentlicher Endpunkte, indem ein virtuelles Netzwerk mithilfe von [Dienstendpunkten](virtual-network-service-endpoints-overview.md) auf den Dienst erweitert wird. Durch Dienstendpunkte können Dienstressourcen an das virtuelle Netzwerk gebunden werden.
 - Verwenden von [Diensttags](service-tags-overview.md), um Datenverkehr zu Ihren Azure-Ressourcen von und zu öffentlichen IP-Endpunkten zuzulassen oder zu verweigern.

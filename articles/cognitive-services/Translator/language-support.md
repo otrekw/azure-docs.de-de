@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/10/2020
 ms.author: swmachan
-ms.openlocfilehash: c7e859b05450b95cf9c75421599dd9c54a639cdc
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 6163f059581c2699d0b2780545c3ad5ec80f2907
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97606843"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882414"
 ---
 # <a name="language-and-region-support-for-text-and-speech-translation"></a>Sprach- und Regionsunterstützung für Text- und Sprachübersetzung
 
@@ -256,7 +256,7 @@ Referenzdokumentation zu den Vorgängen [Dictionary Lookup](reference/v3-0-dicti
 | Norwegisch      | `nb`          |
 | Persisch      | `fa`          |
 | Polnisch      | `pl`          |
-| Portugiesisch (Brasilien)     | `pt-br`          |
+| Portugiesisch (Brasilien)     | `pt`          |
 | Rumänisch      | `ro`          |
 | Russisch      | `ru`          |
 | Serbisch (Lateinisch)      | `sr-Latn`          |

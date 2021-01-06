@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 3518935991409d87917582558a34ad7c54841e23
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 5e6188ca2e8e0972e86bed578144a29a96570876
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92173664"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97901197"
 ---
 # <a name="github-actions-workflows-for-azure-static-web-apps-preview"></a>GitHub Actions-Workflows für Azure Static Web Apps (Vorschau)
 
@@ -63,7 +63,7 @@ jobs:
         ###### Repository/Build Configurations - These values can be configured to match you app requirements. ######
         app_location: '/' # App source code path
         api_location: 'api' # Api source code path - optional
-        app_artifact_location: 'dist' # Built app content directory - optional
+        output_location: 'dist' # Built app content directory - optional
         ###### End of Repository/Build Configurations ######
 
   close_pull_request_job:
@@ -132,7 +132,7 @@ with:
     ###### Repository/Build Configurations - These values can be configured to match you app requirements. ######
     app_location: '/' # App source code path
     api_location: 'api' # Api source code path - optional
-    app_artifact_location: 'dist' # Built app content directory - optional
+    output_location: 'dist' # Built app content directory - optional
     ###### End of Repository/Build Configurations ######
 ```
 
@@ -140,7 +140,7 @@ with:
 |---|---|---|
 | `app_location` | Speicherort Ihres Anwendungscodes.<br><br>Geben Sie beispielsweise `/` ein, wenn sich Ihr Quellcode für die Anwendung im Stammverzeichnis des Repositorys befindet, oder `/app`, wenn Ihr Anwendungscode in einem Verzeichnis mit dem Namen `app` enthalten ist. | Ja |
 | `api_location` | Speicherort Ihres Azure Functions-Codes.<br><br>Geben Sie beispielsweise `/api` ein, wenn sich Ihr App-Code in einem Ordner mit dem Namen `api` befindet. Wenn im Ordner keine Azure Functions-App erkannt wird, tritt für den Buildvorgang kein Fehler auf. Im Workflow wird angenommen, dass Sie keine API benötigen. | Nein |
-| `app_artifact_location` | Speicherort des Verzeichnisses für die Buildausgabe relativ zu `app_location`.<br><br>Wenn sich Ihr Quellcode für die Anwendung beispielsweise unter `/app` befindet und vom Buildskript Dateien im Ordner `/app/build` ausgegeben werden, legen Sie `build` als Wert für `app_artifact_location` fest. | Nein |
+| `output_location` | Speicherort des Verzeichnisses für die Buildausgabe relativ zu `app_location`.<br><br>Wenn sich Ihr Quellcode für die Anwendung beispielsweise unter `/app` befindet und vom Buildskript Dateien im Ordner `/app/build` ausgegeben werden, legen Sie `build` als Wert für `output_location` fest. | Nein |
 
 Die Werte `repo_token`, `action` und `azure_static_web_apps_api_token` werden für Sie von Azure Static Web Apps festgelegt und sollten nicht manuell geändert werden.
 
@@ -163,7 +163,7 @@ Sie können den Workflow so anpassen, dass in allen Ordnern Ihres Repositorys na
 |---------------------|-------------|
 | `routes_location` | Definiert den Verzeichnisspeicherort, an dem die Datei _routes.json_ zu finden ist. Dieser Speicherort ist relativ zum Stammverzeichnis des Repositorys. |
 
- Die explizite Angabe des Speicherorts Ihrer Datei _routes.json_ ist besonders wichtig, falls diese Datei während des Buildschritts Ihres Front-End-Frameworks nicht standardmäßig nach `app_artifact_location` verschoben wird.
+ Die explizite Angabe des Speicherorts Ihrer Datei _routes.json_ ist besonders wichtig, falls diese Datei während des Buildschritts Ihres Front-End-Frameworks nicht standardmäßig nach `output_location` verschoben wird.
 
 ## <a name="environment-variables"></a>Umgebungsvariablen
 
@@ -189,7 +189,7 @@ jobs:
           ###### Repository/Build Configurations
           app_location: "/"
           api_location: "api"
-          app_artifact_location: "public"
+          output_location: "public"
           ###### End of Repository/Build Configurations ######
         env: # Add environment variables here
           HUGO_VERSION: 0.58.0

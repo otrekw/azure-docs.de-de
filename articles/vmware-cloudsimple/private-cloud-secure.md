@@ -1,19 +1,19 @@
 ---
 title: Azure VMware Solution by CloudSimple – Sichere private Cloud
 description: Informationen zum Absichern einer privaten CloudSimple-Cloud in Azure VMware Solution by CloudSimple
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/19/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 000e43a7861bd155ebbd7175db96dd323731464b
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 5e70745cd6e2f6a2a13581052f65e014bd0d0481
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92518210"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97899166"
 ---
 # <a name="how-to-secure-your-private-cloud-environment"></a>Absichern Ihrer privaten Cloudumgebung
 
@@ -37,7 +37,7 @@ Der Standardbenutzer `CloudOwner@cloudsimple.local` wird in der vCenter-SSO-Dom�
 
 ### <a name="add-new-users-to-vcenter"></a>Hinzufügen neuer Benutzer zu vCenter
 
-1. [Eskalieren Sie Berechtigungen](escalate-private-cloud-privileges.md) für **CloudOwner\@cloudsimple.local** -Benutzer in der privaten Cloud.
+1. [Eskalieren Sie Berechtigungen](escalate-private-cloud-privileges.md) für **CloudOwner\@cloudsimple.local**-Benutzer in der privaten Cloud.
 2. Melden Sie sich mit **CloudOwner\@cloudsimple.local** bei vCenter an.
 3. [Fügen Sie vCenter SSO-Benutzer hinzu](https://docs.vmware.com/en/VMware-vSphere/5.5/com.vmware.vsphere.security.doc/GUID-72BFF98C-C530-4C50-BF31-B5779D2A4BBB.html).
 4. Fügen Sie Benutzer zu [SSO-Gruppen in vCenter](https://docs.vmware.com/en/VMware-vSphere/5.5/com.vmware.vsphere.security.doc/GUID-CDEA6F32-7581-4615-8572-E0B44C11D80D.html) hinzu.
@@ -51,7 +51,7 @@ Sie können zusätzliche Identitätsanbieter zur vCenter SSO-Domäne Ihrer priva
 * [Verwenden Sie Active Directory als Identitätsanbieter](set-vcenter-identity.md) für die private vCenter-Cloud.
 * [Verwenden Sie Azure AD als Identitätsanbieter](azure-ad.md) für die private vCenter-Cloud.
 
-1. [Eskalieren Sie Berechtigungen](escalate-private-cloud-privileges.md) für **CloudOwner\@cloudsimple.local** -Benutzer in der privaten Cloud.
+1. [Eskalieren Sie Berechtigungen](escalate-private-cloud-privileges.md) für **CloudOwner\@cloudsimple.local**-Benutzer in der privaten Cloud.
 2. Melden Sie sich mit **CloudOwner\@cloudsimple.local** bei vCenter an.
 3. Fügen Sie Benutzer aus dem Identitätsanbieter zu [SSO-Gruppen für vCenter](https://docs.vmware.com/en/VMware-vSphere/5.5/com.vmware.vsphere.security.doc/GUID-CDEA6F32-7581-4615-8572-E0B44C11D80D.html) hinzu.
 
