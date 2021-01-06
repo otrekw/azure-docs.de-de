@@ -6,14 +6,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 12/08/2020
+ms.date: 12/24/2020
 ms.author: memildin
-ms.openlocfilehash: bdca5a753a49c26587db27892b54c2cb88910c83
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 823992ba6d3b175c8d20a001f8298a5c4af9a1ae
+ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96862461"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97832708"
 ---
 # <a name="continuously-export-security-center-data"></a>Fortlaufendes Exportieren von Security Center-Daten
 
@@ -24,6 +24,7 @@ Mit dem **fortlaufenden Export** können Sie umfassend anpassen, *was* exportier
 - Alle Warnungen mit einem hohen Schweregrad werden an eine Azure Event Hub-Instanz gesendet.
 - Alle Ergebnisse mit einem mittleren oder höheren Schweregrad bei Überprüfungen der Sicherheitsrisikobewertung Ihrer SQL Server-Instanzen werden an einen bestimmten Log Analytics-Arbeitsbereich gesendet.
 - Bestimmte Empfehlungen werden bei Erstellung an eine Event Hub-Instanz oder einen Log Analytics-Arbeitsbereich gesendet. 
+- Die Sicherheitsbewertung für ein Abonnement wird immer an einen Log Analytics-Arbeitsbereich gesendet, wenn sich die Bewertung für eine Kontrolle um 0,01 oder mehr ändert. 
 
 In diesem Artikel wird erläutert, wie Sie den fortlaufenden Export in Log Analytics-Arbeitsbereiche und Azure Event Hubs konfigurieren.
 
@@ -45,8 +46,18 @@ In diesem Artikel wird erläutert, wie Sie den fortlaufenden Export in Log Analy
 |||
 
 
+## <a name="what-data-types-can-be-exported"></a>Welche Datentypen können exportiert werden?
 
+Die folgenden Datentypen können mithilfe des fortlaufende Exports exportiert werden, wenn sie sich ändern:
 
+- Sicherheitswarnungen
+- Sicherheitsempfehlungen 
+- Sicherheitsergebnisse, die Sie als „Unter“empfehlungen betrachten können, z. B. Ergebnisse von Sicherheitsrisikobewertungs-Prüfungen oder bestimmte Systemupdates. Sie können sie ohne ihre „übergeordneten“ Empfehlungen einschließen, z. B. „Auf Ihren Computern sollten Systemupdates installiert werden“.
+- Sicherheitsbewertung (pro Abonnement oder pro Kontrolle)
+- Daten zur Einhaltung gesetzlicher Bestimmungen
+
+> [!NOTE]
+> Der Export von Daten zur Sicherheitsbewertung und zur Einhaltung gesetzlicher Bestimmungen ist eine Previewfunktion und nicht in Government Clouds verfügbar. 
 
 ## <a name="set-up-a-continuous-export"></a>Einrichten eines fortlaufenden Exports 
 
@@ -67,7 +78,7 @@ Die folgenden Schritte sind unabhängig davon erforderlich, ob Sie einen fortlau
     Im Folgenden finden Sie die Exportoptionen. Es gibt eine Registerkarte für jedes verfügbare Exportziel. 
 
 1. Wählen Sie den Datentyp, den Sie exportieren möchten, und dann Filter für die einzelnen Typen aus (z. B. nur Warnungen mit hohem Schweregrad exportieren).
-1. Wenn Ihre Auswahl eine dieser vier Empfehlungen enthält, können Sie optional die Ergebnisse der Sicherheitsrisikobewertung mit aufnehmen:
+1. Wenn Ihre Auswahl eine dieser Empfehlungen enthält, können Sie optional die Ergebnisse der Sicherheitsrisikobewertung mit aufnehmen:
     - Ergebnisse der Sicherheitsrisikobewertung in Ihren SQL Datenbanken müssen beseitigt werden
     - Ergebnisse der Sicherheitsrisikobewertung in Ihren SQL Server-Instanzen auf Computern müssen beseitigt werden (Vorschau)
     - Sicherheitsrisiken in Azure Container Registry-Images müssen behoben werden (unterstützt von Qualys).
@@ -216,6 +227,9 @@ Nein. Der fortlaufende Export wurde für das Streaming von **Ereignissen** konzi
 
 - Vor dem Aktivieren des Exports empfangene **Warnungen** werden nicht exportiert.
 - **Empfehlungen** werden immer dann gesendet, wenn sich der Konformitätszustand einer Ressource ändert. Wenn eine Ressource z. B. von „fehlerfrei“ in „fehlerhaft“ wechselt. Daher werden, wie bei Warnungen, keine Empfehlungen für Ressourcen exportiert, deren Zustand sich seit der Aktivierung des Exports nicht geändert hat.
+- **Sicherheitsbewertung (Vorschau)** pro Sicherheitskontrolle oder Abonnement wird gesendet, wenn sich die Bewertung einer Sicherheitskontrolle um 0,01 oder mehr ändert. 
+- **Der Status der Einhaltung gesetzlicher Bestimmungen (Vorschau)** wird gesendet, wenn sich der Status der Compliance der Ressource ändert.
+
 
 
 ### <a name="why-are-recommendations-sent-at-different-intervals"></a>Warum werden Empfehlungen in unterschiedlichen Intervallen gesendet?

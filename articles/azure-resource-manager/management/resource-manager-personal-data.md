@@ -3,12 +3,12 @@ title: Personenbezogene Daten
 description: Erfahren Sie, wie Sie persönliche Daten verwalten, die mit Azure Resource Manager-Vorgängen verknüpft sind.
 ms.topic: conceptual
 ms.date: 05/14/2018
-ms.openlocfilehash: 22cfc1b6096980f3d10db404a1c4e02f2de355d2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1e531f7cd9992536bcc191637111761c5bbdefa2
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75476608"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97693702"
 ---
 # <a name="manage-personal-data-associated-with-azure-resource-manager"></a>Verwalten von mit Azure Resource Manager verknüpften persönlichen Daten
 
@@ -26,13 +26,13 @@ Verwenden Sie diese Referenzen als Hilfe, um **Bereitstellungen** im Verlauf auf
 
 * [List By Resource Group](/rest/api/resources/deployments/listbyresourcegroup) (Nach Ressourcengruppe gruppieren)
 * [Get-AzResourceGroupDeployment](/powershell/module/az.resources/Get-AzResourceGroupDeployment)
-* [az group deployment list](/cli/azure/group/deployment#az-group-deployment-list)
+* [az deployment group list](/cli/azure/deployment/group#az_deployment_group_list)
 
 Verwenden Sie diese Referenzen als Hilfe, um **Bereitstellungen** aus dem Verlauf zu löschen:
 
 * [Löschen](/rest/api/resources/deployments/delete)
 * [Remove-AzResourceGroupDeployment](/powershell/module/az.resources/Remove-AzResourceGroupDeployment)
-* [az group deployment delete](/cli/azure/group/deployment#az-group-deployment-delete)
+* [az deployment group delete](/cli/azure/deployment/group#az_deployment_group_delete)
 
 ## <a name="delete-personal-data-in-resource-group-names"></a>Löschen von persönlichen Daten in Ressourcengruppennamen
 

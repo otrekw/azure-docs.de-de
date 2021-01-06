@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: sudbalas
-ms.openlocfilehash: 3f28c50be73b2b87ed8b25429cfa2dee9a663f1b
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: ee1c59c71834ab9d80f1ed66a002e211bdcacbbf
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452175"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97796498"
 ---
 # <a name="secure-access-to-a-key-vault"></a>Sicherer Zugriff auf einen Schlüsseltresor
 
@@ -186,8 +186,8 @@ Die folgende Tabelle fasst die Zugriffsberechtigungen für unsere Rollen und die
 | --- | --- | --- | --- |
 | Sicherheitsteam | [Key Vault-Mitwirkender](../../role-based-access-control/built-in-roles.md#key-vault-contributor) | Zertifikate: alle Vorgänge <br> Schlüssel: alle Vorgänge <br> Geheimnisse: alle Vorgänge | [Key Vault-Administrator (Vorschau)](../../role-based-access-control/built-in-roles.md#key-vault-administrator-preview) |
 | Entwickler und&nbsp;Operatoren | Berechtigung zum Bereitstellen von Schlüsseltresoren<br><br> **Hinweis**: Mit dieser Berechtigung können die bereitgestellten VMs Geheimnisse aus einem Schlüsseltresor abrufen. | Keine | Keine |
-| Prüfer | Keine | Zertifikate: Auflisten <br> Schlüssel: Auflisten<br>Geheimnisse: Auflisten<br><br> **Hinweis**: Diese Berechtigung ermöglicht es den Prüfern, Attribute (Tags, Aktivierungsdaten, Verfallsdaten) auf Schlüssel und Geheimnisse zu überprüfen, die nicht in den Protokollen ausgegeben werden. | [Key Vault Reader (Vorschau)]https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#key-vault-reader-preview |
-| Azure Storage-Konto | Keine | Schlüssel: get, list, wrapKey, unwrapKey <br> | [Key Vault Crypto Service Encryption](../../role-based-access-control/built-in-roles.md#key-vault-crypto-service-encryption-preview) |
+| Prüfer | Keine | Zertifikate: Auflisten <br> Schlüssel: Auflisten<br>Geheimnisse: Auflisten<br><br> **Hinweis**: Diese Berechtigung ermöglicht es den Prüfern, Attribute (Tags, Aktivierungsdaten, Verfallsdaten) auf Schlüssel und Geheimnisse zu überprüfen, die nicht in den Protokollen ausgegeben werden. | [Key Vault Reader (Vorschau)](../../role-based-access-control/built-in-roles.md#key-vault-reader-preview) |
+| Azure Storage-Konto | Keine | Schlüssel: get, list, wrapKey, unwrapKey <br> | [Key Vault Crypto Service Encryption-Benutzer](../../role-based-access-control/built-in-roles.md#key-vault-crypto-service-encryption-user-preview) |
 | Application | Keine | Geheimnisse: get, list <br> Zertifikate: get, list | [Key Vault Reader (Vorschau)](../../role-based-access-control/built-in-roles.md#key-vault-reader-preview), [Key Vault Secret User (Vorschau)](../../role-based-access-control/built-in-roles.md#key-vault-secrets-user-preview) |
 
 Die drei Teamrollen benötigen neben Schlüsseltresor-Berechtigungen auch Zugriff auf andere Ressourcen. Damit Entwickler oder Operatoren VMs (oder das Web-Apps-Feature von Azure App Service) bereitstellen können, müssen diese den Zugriff bereitstellen. Prüfer benötigen Lesezugriff auf das Speicherkonto mit den gespeicherten Schlüsseltresorprotokollen.

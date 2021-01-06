@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/30/2020
+ms.date: 12/23/2020
 ms.author: memildin
-ms.openlocfilehash: 07a94685fb3655aa5aa21a8658b9d975c764daff
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: 3899b00038f3c12add4dbf49a7f05e07141d8606
+ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96512277"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97755853"
 ---
 # <a name="azure-defender-for-sql-servers-on-machines"></a>Azure Defender für SQL-Server auf Computern 
 
@@ -108,7 +108,7 @@ Sie können die Ergebnisse der Sicherheitsrisikobewertung direkt aus Security Ce
     Die Sicherheitsüberprüfungen werden in jeder Ansicht nach **Schweregrad** sortiert. Klicken Sie auf eine bestimmte Sicherheitsüberprüfung, um einen Detailbereich mit einer **Beschreibung** anzuzeigen sowie **Empfehlungen zur Behebung von Problemen** und andere verwandte Informationen wie zur **Auswirkung** oder **Benchmark** zu erhalten.
 
 ## <a name="azure-defender-for-sql-alerts"></a>Azure Defender für SQL – Warnungen
-Warnungen werden bei ungewöhnlichen und potenziell schädlichen Zugriffsversuchen oder Exploitvorgängen für SQL-Computer generiert. Diese Ereignisse können Warnungen auslösen, die im [Abschnitt „Warnungen für SQL-Datenbank und Azure Synapse Analytics“ der Referenzseite für Warnungen](alerts-reference.md#alerts-sql-db-and-warehouse) gezeigt werden.
+Warnungen werden bei ungewöhnlichen und potenziell schädlichen Zugriffsversuchen oder Exploitvorgängen für SQL-Computer generiert. Diese Ereignisse können Warnungen auslösen, die auf der [Warnungsreferenzseite](alerts-reference.md#alerts-sql-db-and-warehouse) angezeigt werden.
 
 ## <a name="explore-and-investigate-security-alerts"></a>Erkunden und Untersuchen von Sicherheitswarnungen
 
@@ -131,4 +131,3 @@ Verwandte Informationen finden Sie im folgenden Artikel:
 - [Sicherheitswarnungen für Azure SQL-Datenbank und Azure Synapse Analytics](alerts-reference.md#alerts-sql-db-and-warehouse)
 - [Einrichten einer E-Mail-Benachrichtigung für Sicherheitswarnungen](security-center-provide-security-contact-details.md)
 - [Weitere Informationen zu Azure Sentinel](../sentinel/index.yml)
-- [Datensicherheitspaket in Azure Security Center](../azure-sql/database/azure-defender-for-sql.md)

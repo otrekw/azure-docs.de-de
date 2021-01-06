@@ -1,18 +1,18 @@
 ---
 title: Vorlagensyntax und -ausdrücke
-description: Beschreibt die deklarative JSON-Syntax für Azure Resource Manager-Vorlagen.
+description: Beschreibt die deklarative JSON-Syntax für Azure Resource Manager-Vorlagen (ARM-Vorlagen).
 ms.topic: conceptual
 ms.date: 03/17/2020
-ms.openlocfilehash: baddedae1b918502e579d2ed230e0779960f45e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 44a386ed849771dfba717c8d1414e64422d0c7bd
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82203827"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97797042"
 ---
-# <a name="syntax-and-expressions-in-azure-resource-manager-templates"></a>Syntax und Ausdrücke in Azure Resource Manager-Vorlagen
+# <a name="syntax-and-expressions-in-arm-templates"></a>Syntax und Ausdrücke in ARM-Vorlagen
 
-Die grundlegende Syntax der Vorlage ist JSON. Allerdings können Sie Ausdrücke verwenden, um die JSON-Werte zu erweitern, die in der Vorlage zur Verfügung stehen.  Ausdrücke beginnen und enden mit Klammern, entsprechend `[` und `]`. Der Wert des Ausdrucks wird bei der Bereitstellung der Vorlage ausgewertet. Ein Ausdruck kann eine Zeichenfolge, eine ganze Zahl, einen booleschen Wert, ein Array oder ein Objekt zurückgeben.
+Die grundlegende Syntax der Azure Resource Manager-Vorlage (ARM-Vorlage) ist in JSON-Format (JavaScript Object Notation). Allerdings können Sie Ausdrücke verwenden, um die JSON-Werte zu erweitern, die in der Vorlage zur Verfügung stehen.  Ausdrücke beginnen und enden mit Klammern, entsprechend `[` und `]`. Der Wert des Ausdrucks wird bei der Bereitstellung der Vorlage ausgewertet. Ein Ausdruck kann eine Zeichenfolge, eine ganze Zahl, einen booleschen Wert, ein Array oder ein Objekt zurückgeben.
 
 Ein Vorlagenausdruck darf aus maximal 24.576 Zeichen bestehen.
 
@@ -31,7 +31,7 @@ Azure Resource Manager bietet [Funktionen](template-functions.md), die Sie in ei
 
 Innerhalb des Ausdrucks ruft die Syntax `resourceGroup()` eine der Funktionen auf, die Resource Manager für die Verwendung innerhalb einer Vorlage bereitstellt. Hier ist dies die Funktion [resourceGroup](template-functions-resource.md#resourcegroup). Genau wie in JavaScript haben Funktionsaufrufe das Format `functionName(arg1,arg2,arg3)`. Die Syntax `.location` ruft eine Eigenschaft des Objekts ab, das von dieser Funktion zurückgegeben wird.
 
-Bei Vorlagenfunktionen und ihren Parametern wird Groß-und Kleinschreibung nicht unterschieden. Der Resource Manager löst beispielsweise **variables('var1')** und **VARIABLES('VAR1')** identisch auf. Bei der Auswertung wird die Groß-/Kleinschreibung beibehalten, sofern diese nicht ausdrücklich durch die Funktion geändert wird (z.B. mit „toUpper“ oder „toLower“). Für spezielle Ressourcentypen gelten möglicherweise Vorgaben zur Groß-/Kleinschreibung, die sich davon unterscheiden, wie Funktionen ausgewertet werden.
+Bei Vorlagenfunktionen und ihren Parametern wird Groß-und Kleinschreibung nicht unterschieden. Beispielsweise löst Resource Manager `variables('var1')` und `VARIABLES('VAR1')` identisch auf. Bei der Auswertung bleibt die Groß-/Kleinschreibung erhalten, sofern diese nicht ausdrücklich durch die Funktion geändert wird (z. B. mit `toUpper` oder `toLower`). Für spezielle Ressourcentypen gelten möglicherweise Vorgaben zur Groß-/Kleinschreibung, die sich davon unterscheiden, wie Funktionen ausgewertet werden.
 
 Verwenden Sie einfache Anführungszeichen, um einen Zeichenfolgenwert als Parameter an eine Funktion zu übergeben.
 
@@ -123,7 +123,7 @@ Die gleiche Formatierung gilt auch, wenn Werte aus einer Parameterdatei übergeb
 
 ## <a name="null-values"></a>NULL-Werte
 
-Um eine Eigenschaft auf Null festzulegen, können Sie **null** oder **[json('null')]** verwenden. Die [json-Funktion](template-functions-object.md#json) gibt ein leeres Objekt zurück, wenn Sie `null` als Parameter angeben. In beiden Fällen wird dies von Resource Manager-Vorlagen so behandelt, als ob die Eigenschaft nicht vorhanden ist.
+Zur Festlegung einer Eigenschaft auf NULL, können Sie `null` oder `[json('null')]` verwenden. Die [json-Funktion](template-functions-object.md#json) gibt ein leeres Objekt zurück, wenn Sie `null` als Parameter angeben. In beiden Fällen wird dies von Resource Manager-Vorlagen so behandelt, als ob die Eigenschaft nicht vorhanden ist.
 
 ```json
 "stringValue": null,
@@ -132,5 +132,5 @@ Um eine Eigenschaft auf Null festzulegen, können Sie **null** oder **[json('nul
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Unter [Funktionen von Azure-Ressourcen-Manager-Vorlagen](template-functions.md)finden Sie eine vollständige Liste der Vorlagenfunktionen.
-* Weitere Informationen zu Vorlagendateien finden Sie unter [Verstehen der Struktur und Syntax von Azure Resource Manager-Vorlagen](template-syntax.md).
+* Eine vollständige Liste der Funktionen in einer Vorlage finden Sie unter [Funktionen von ARM-Vorlagen](template-functions.md).
+* Weitere Informationen zu Vorlagendateien finden Sie unter [Verstehen der Struktur und Syntax von ARM-Vorlagen](template-syntax.md).

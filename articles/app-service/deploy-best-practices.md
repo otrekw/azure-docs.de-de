@@ -7,12 +7,12 @@ ms.assetid: bb51e565-e462-4c60-929a-2ff90121f41d
 ms.topic: article
 ms.date: 07/31/2019
 ms.author: jafreebe
-ms.openlocfilehash: 37c1854aeb1a1fa3d9283c00b07c665b213b306c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 74bd7bc159f7f5974452adf6b2f51148d869b4ed
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708151"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589235"
 ---
 # <a name="deployment-best-practices"></a>Bewährte Methoden der Bereitstellung
 
@@ -45,9 +45,9 @@ Verwenden Sie nach Möglichkeit immer [Bereitstellungsslots](deploy-staging-slot
 
 Wenn Ihr Projekt designierte Branches für Tests, QA und Staging hat, sollte jeder dieser Branches kontinuierlich in einem Stagingslot bereitgestellt werden. (Dies wird als [Gitflow-Design](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow) bezeichnet.) Dies ermöglicht es den Projektbeteiligten, den bereitgestellten Branch einfach zu bewerten und zu testen. 
 
-Continuous Deployment sollte nie für Ihren Produktionsslot aktiviert werden. Stattdessen sollte Ihr Produktionsbranch (häufig Master) in einem Nicht-Produktionsslot bereitgestellt werden. Wenn Sie bereit sind, den Basisbranch freizugeben, tauschen Sie ihn in den Produktionsslot. Der Austausch in die Produktion – anstatt in der Produktion bereitzustellen – verhindert Ausfallzeiten und ermöglicht es Ihnen, ein Rollback der Änderungen auszuführen, indem Sie einen erneuten Austausch vornehmen. 
+Continuous Deployment sollte nie für Ihren Produktionsslot aktiviert werden. Stattdessen sollte Ihr Produktionsbranch (häufig der Hauptbranch) in einem Nicht-Produktionsslot bereitgestellt werden. Wenn Sie bereit sind, den Basisbranch freizugeben, tauschen Sie ihn in den Produktionsslot. Der Austausch in die Produktion – anstatt in der Produktion bereitzustellen – verhindert Ausfallzeiten und ermöglicht es Ihnen, ein Rollback der Änderungen auszuführen, indem Sie einen erneuten Austausch vornehmen. 
 
-![Diagramm: Flow zwischen Entwicklungs-, Staging- und Masterbranches und Slots, in denen diese bereitgestellt sind](media/app-service-deploy-best-practices/slot_flow_code_diagam.png)
+![Diagramm: Flow zwischen Entwicklungs-, Staging- und Hauptbranches und Slots, in denen diese bereitgestellt sind.](media/app-service-deploy-best-practices/slot_flow_code_diagam.png)
 
 ### <a name="continuously-deploy-containers"></a>Kontinuierliches Bereitstellen von Containern
 
@@ -84,7 +84,7 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - uses: actions/checkout@master
+    - uses: actions/checkout@main
 
     -name: Authenticate using a Service Principal
       uses: azure/actions/login@v1

@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 09/02/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 29ebe2f0ec4d4c39154272bbbdf4d0c9ede9fd95
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: e5ad0b6dca7718166517b52148fbc6dd49f38869
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96928187"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97674011"
 ---
 # <a name="use-arm-template-test-toolkit"></a>Verwenden des Resource Manager-Vorlagen-Testtoolkits
 
@@ -282,4 +282,5 @@ Im nächsten Beispiel sehen Sie, wie die Tests ausgeführt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu den Standardtests finden Sie unter [Standardtestfälle für das Resource Manager-Vorlagen-Testtoolkit](test-cases.md).
+- Weitere Informationen zu den Standardtests finden Sie unter [Standardtestfälle für das Resource Manager-Vorlagen-Testtoolkit](test-cases.md).
+- Ein Microsoft Learn-Modul, das die Verwendung des Testtoolkits behandelt, finden Sie unter [Anzeigen einer Vorschau von Änderungen und Überprüfen von Azure-Ressourcen mithilfe von „Was-wäre-wenn“ und dem ARM-Vorlagen-Testtoolkit](/learn/modules/arm-template-test/).

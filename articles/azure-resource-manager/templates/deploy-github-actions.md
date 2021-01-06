@@ -4,16 +4,16 @@ description: In diesem Artikel wird beschrieben, wie Sie Azure Resource Manager-
 ms.topic: conceptual
 ms.date: 10/13/2020
 ms.custom: github-actions-azure, devx-track-azurecli
-ms.openlocfilehash: 4cda8307d417880469e6043b84c3ac55ed30071c
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 4c1f59e9a18e7359ae543b0311baea0c2a4ab8d6
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905841"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97674331"
 ---
 # <a name="deploy-arm-templates-by-using-github-actions"></a>Bereitstellen von ARM-Vorlagen mithilfe von GitHub Actions
 
-Bei [GitHub Actions](https://help.github.com/actions/getting-started-with-github-actions/about-github-actions) handelt es sich um eine Featuresammlung in GitHub, mit der sich Ihre Softwareentwicklungsworkflows am selben Ort automatisieren lassen, an dem Sie auch den Code speichern und gemeinsam an Pull Requests und Problemen arbeiten.
+Bei [GitHub Actions](https://docs.github.com/en/free-pro-team@latest/actions) handelt es sich um eine Featuresammlung in GitHub, mit der sich Ihre Softwareentwicklungsworkflows am selben Ort automatisieren lassen, an dem Sie auch den Code speichern und gemeinsam an Pull Requests und Problemen arbeiten.
 
 Verwenden Sie die [Aktion zum Bereitstellen einer Azure Resource Manager-Vorlage](https://github.com/marketplace/actions/deploy-azure-resource-manager-arm-template), um die Bereitstellung einer Azure Resource Manager-Vorlage (ARM-Vorlage) in Azure zu automatisieren.
 
@@ -21,7 +21,7 @@ Verwenden Sie die [Aktion zum Bereitstellen einer Azure Resource Manager-Vorlage
 
 - Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Ein GitHub-Konto. Falls Sie noch nicht über ein Konto verfügen, können Sie sich [kostenlos](https://github.com/join) registrieren.
-    - Ein GitHub-Repository, in dem Sie Ihre Resource Manager-Vorlagen und Ihre Workflowdateien speichern können. Informationen zum Erstellen eines neuen Repositorys finden Sie [in diesem Hilfeartikel](https://help.github.com/en/enterprise/2.14/user/articles/creating-a-new-repository).
+    - Ein GitHub-Repository, in dem Sie Ihre Resource Manager-Vorlagen und Ihre Workflowdateien speichern können. Informationen zum Erstellen eines neuen Repositorys finden Sie [in diesem Hilfeartikel](https://docs.github.com/en/free-pro-team@latest/github/creating-cloning-and-archiving-repositories/creating-a-new-repository).
 
 
 ## <a name="workflow-file-overview"></a>Übersicht über die Workflowdatei
@@ -158,3 +158,6 @@ Wenn Ihre Ressourcengruppe und das Repository nicht mehr benötigt werden, berei
 
 > [!div class="nextstepaction"]
 > [Erstellen Ihrer ersten ARM-Vorlage](./template-tutorial-create-first-template.md)
+
+> [!div class="nextstepaction"]
+> [Learn-Modul: Automatisieren der Bereitstellung von ARM-Vorlagen mithilfe von GitHub Actions](/learn/modules/deploy-templates-command-line-github-actions/)

@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: b82dd4ea8a74c51606b7a388b8d6ede07b1057c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 02276ebf8e8a2289db2a1f6eac506443cea61c31
+ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89461543"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97682707"
 ---
 # <a name="azure-stream-analytics-solution-patterns"></a>Lösungsmuster in Azure Stream Analytics
 
@@ -20,7 +20,7 @@ Wie viele andere Dienste in Azure wird Stream Analytics am besten mit anderen Di
 
 ## <a name="create-a-stream-analytics-job-to-power-real-time-dashboarding-experience"></a>Erstellen eines Stream Analytics-Auftrags zur Förderung von Dashboarding in Echtzeit
 
-Mithilfe von Azure Stream Analytics können Sie schnell Echtzeitdashboards und Warnungen bereitstellen. Eine einfache Lösung erfasst Ereignisse von Event Hubs oder IoT Hub und [speist das Power BI-Dashboard mit einem Streamingdataset](/power-bi/service-real-time-streaming). Weitere Informationen finden Sie in dem ausführlichen Tutorial [Analysieren von Telefonanrufdaten mit Stream Analytics und Visualisieren der Ergebnisse in einem Power BI-Dashboard](stream-analytics-manage-job.md).
+Mithilfe von Azure Stream Analytics können Sie schnell Echtzeitdashboards und Warnungen bereitstellen. Eine einfache Lösung erfasst Ereignisse von Event Hubs oder IoT Hub und [speist das Power BI-Dashboard mit einem Streamingdataset](/power-bi/service-real-time-streaming). Weitere Informationen finden Sie in dem ausführlichen Tutorial [Analysieren von betrügerischen Anrufdaten mit Stream Analytics und Visualisieren der Ergebnisse in einem Power BI-Dashboard](stream-analytics-real-time-fraud-detection.md).
 
 ![ASA – Power BI-Dashboard](media/stream-analytics-solution-patterns/power-bi-dashboard.png)
 

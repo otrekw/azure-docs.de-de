@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 12/15/2020
 ms.author: tomfitz
-ms.openlocfilehash: a1ce7f8f718b364dc4b47593cf9ea37e8baf1e72
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: fa70d88b046cf38aa74582066d230c15580465b9
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97563091"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673969"
 ---
 # <a name="arm-template-deployment-what-if-operation"></a>ARM-Vorlagenbereitstellung: Was-wäre-wenn-Vorgang
 
@@ -396,6 +396,7 @@ Sie können den Was-wäre-wenn-Vorgang über die Azure-SDKs verwenden.
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Wenn Sie falsche Ergebnisse von Was-wäre-wenn-Vorgängen bemerken, melden Sie die Probleme unter [https://aka.ms/whatifissues](https://aka.ms/whatifissues).
+- Ein Microsoft Learn-Modul, das die Verwendung von „Was-wäre-wenn“ behandelt, finden Sie unter [Anzeigen einer Vorschau von Änderungen und Überprüfen von Azure-Ressourcen mithilfe von „Was-wäre-wenn“ und dem ARM-Vorlagen-Testtoolkit](/learn/modules/arm-template-test/).
 - Informationen zum Bereitstellen von Vorlagen mit Azure PowerShell finden Sie unter [Bereitstellen von Ressourcen mit ARM-Vorlagen und Azure PowerShell](deploy-powershell.md).
 - Informationen zum Bereitstellen von Vorlagen mit Azure CLI finden Sie unter [Bereitstellen von Ressourcen mit ARM-Vorlagen und Azure CLI](deploy-cli.md).
 - Informationen zum Bereitstellen von Vorlagen mit REST finden Sie unter [Bereitstellen von Ressourcen mit ARM-Vorlagen und der Resource Manager-REST-API](deploy-rest.md).

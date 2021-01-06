@@ -3,16 +3,14 @@ title: Verarbeiten großer Nachrichten mittels Blockerstellung („Chunking“)
 description: Erfahren Sie, wie Sie große Nachrichten verarbeiten, indem Sie Blockerstellung in automatisierten Aufgaben und Workflows verwenden, die Sie mit Azure Logic Apps erstellen.
 services: logic-apps
 ms.suite: integration
-author: DavidCBerry13
-ms.author: daberry
 ms.topic: article
-ms.date: 12/03/2019
-ms.openlocfilehash: 54828dded5196c86946d99a9cd8cec7a42533661
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 12/18/2020
+ms.openlocfilehash: de4af34182fc1a95968e95d322a6ec35101a3dc9
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83117562"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97695867"
 ---
 # <a name="handle-large-messages-with-chunking-in-azure-logic-apps"></a>Verarbeiten von großen Nachrichten durch Blockerstellung in Azure Logic Apps
 
@@ -40,8 +38,57 @@ Dienste, die mit Logic Apps kommunizieren, haben möglicherweise eigene Nachrich
 
 Für Connectors, die Blockerstellung unterstützen, ist das zugrunde liegende Blockerstellungsprotokolls für Endbenutzer nicht sichtbar. Allerdings unterstützen nicht alle Connectors Blockerstellung, sodass diese Connectors Laufzeitfehler generieren, wenn eingehende Nachrichten die Größenbeschränkungen des jeweiligen Connectors überschreiten.
 
-> [!NOTE]
-> Bei Aktionen mit Segmentierung können Sie den Triggertext nicht übergeben oder Ausdrücke wie `@triggerBody()?['Content']` verwenden. Stattdessen können Sie für Textdatei- oder JSON-Dateiinhalte die Aktionen [**Verfassen**](../logic-apps/logic-apps-perform-data-operations.md#compose-action) oder [Create a variable](../logic-apps/logic-apps-create-variables-store-values.md) (Variable erstellen) verwenden, um den Inhalt zu verarbeiten. Wenn der Triggertext andere Inhaltstypen wie beispielsweise Mediendateien enthält, müssen Sie weitere Schritte ausführen, um diesen Inhalt zu verarbeiten.
+
+Für Aktionen, die Segmentierung unterstützen und dafür aktiviert sind, können Sie keine Trigger-Bodys, Variablen oder Ausdrücke wie z. B. `@triggerBody()?['Content']` verwenden, da durch die Verwendung einer dieser Eingaben verhindert wird, dass der Segmentierungsvorgang stattfindet. Verwenden Sie stattdessen die Aktion [**Compose**](../logic-apps/logic-apps-perform-data-operations.md#compose-action). Insbesondere müssen Sie ein `body`-Feld erstellen, indem Sie die Aktion **Compose** verwenden, um die Datenausgabe des Trigger-Bodys, der Variablen, des Ausdrucks usw. zu speichern, z. B.:
+
+```json
+"Compose": {
+    "inputs": {
+        "body": "@variables('myVar1')"
+    },
+    "runAfter": {
+        "Until": [
+            "Succeeded"
+        ]
+    },
+    "type": "Compose"
+},
+```
+Verwenden Sie dann in der Segmentierungsaktion `@body('Compose')`, um auf die Daten zu verweisen.
+
+```json
+"Create_file": {
+    "inputs": {
+        "body": "@body('Compose')",
+        "headers": {
+            "ReadFileMetadataFromServer": true
+        },
+        "host": {
+            "connection": {
+                "name": "@parameters('$connections')['sftpwithssh_1']['connectionId']"
+            }
+        },
+        "method": "post",
+        "path": "/datasets/default/files",
+        "queries": {
+            "folderPath": "/c:/test1/test1sub",
+            "name": "tt.txt",
+            "queryParametersSingleEncoded": true
+        }
+    },
+    "runAfter": {
+        "Compose": [
+            "Succeeded"
+        ]
+    },
+    "runtimeConfiguration": {
+        "contentTransfer": {
+            "transferMode": "Chunked"
+        }
+    },
+    "type": "ApiConnection"
+},
+```
 
 <a name="set-up-chunking"></a>
 

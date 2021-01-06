@@ -5,14 +5,14 @@ services: application gateway
 author: amsriva
 ms.service: application-gateway
 ms.topic: conceptual
-ms.date: 11/16/2019
+ms.date: 12/17/2020
 ms.author: amsriva
-ms.openlocfilehash: 16c6dd28d47573c2ad5b0d5a331b0dc48e7aacef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 77239cd8586b8fb07abf6862be436979541bdb99
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85253629"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631689"
 ---
 # <a name="application-gateway-tls-policy-overview"></a>TLS-Richtlinienübersicht für Azure Application Gateway
 
@@ -23,6 +23,18 @@ Mit der TLS-Richtlinie können Sie die TLS-Protokollversion sowie Verschlüsselu
 ## <a name="predefined-tls-policy"></a>Vordefinierte TLS-Richtlinie
 
 Application Gateway verfügt über drei vordefinierte Sicherheitsrichtlinien. Sie können Ihr Gateway mit diesen Richtlinien konfigurieren, um das gewünschte Maß an Sicherheit zu erhalten. Die Richtliniennamen werden mit dem Jahr und Monat versehen, in dem sie konfiguriert wurden. Jede Richtlinie bietet verschiedene TLS-Protokollversionen und Verschlüsselungssammlungen. Verwenden Sie möglichst die neuesten TLS-Richtlinien, um ein Höchstmaß an TLS-Sicherheit zu gewährleisten.
+
+## <a name="known-issue"></a>Bekanntes Problem
+Die folgenden DHE-Verschlüsselungsverfahren werden von Application Gateway v2 nicht unterstützt, und sie werden nicht für die TLS-Verbindungen mit Clients verwendet, obwohl sie in den vordefinierten Richtlinien erwähnt werden. Anstelle der DIT-Verschlüsselungsverfahren werden sichere und schnellere ECDHE-Verschlüsselungsverfahren empfohlen.
+
+- TLS_DHE_RSA_WITH_AES_128_GCM_SHA256
+- TLS_DHE_RSA_WITH_AES_128_CBC_SHA
+- TLS_DHE_RSA_WITH_AES_256_GCM_SHA384
+- TLS_DHE_RSA_WITH_AES_256_CBC_SHA
+- TLS_DHE_DSS_WITH_AES_128_CBC_SHA256
+- TLS_DHE_DSS_WITH_AES_128_CBC_SHA
+- TLS_DHE_DSS_WITH_AES_256_CBC_SHA256
+- TLS_DHE_DSS_WITH_AES_256_CBC_SHA
 
 ### <a name="appgwsslpolicy20150501"></a>AppGwSslPolicy20150501
 
@@ -39,7 +51,7 @@ Application Gateway verfügt über drei vordefinierte Sicherheitsrichtlinien. Si
 |   ---      |  ---       |
 |Name     | AppGwSslPolicy20170401        |
 |MinProtocolVersion     | TLSv1_1        |
-|Standard| False |
+|Standard| Falsch |
 |CipherSuites     |TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256<br>TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384<br>TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA<br>TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA<br>TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256<br>TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384<br>TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384<br>TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256<br>TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA<br>TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA<br>TLS_RSA_WITH_AES_256_GCM_SHA384<br>TLS_RSA_WITH_AES_128_GCM_SHA256<br>TLS_RSA_WITH_AES_256_CBC_SHA256<br>TLS_RSA_WITH_AES_128_CBC_SHA256<br>TLS_RSA_WITH_AES_256_CBC_SHA<br>TLS_RSA_WITH_AES_128_CBC_SHA |
   
 ### <a name="appgwsslpolicy20170401s"></a>AppGwSslPolicy20170401S
@@ -48,12 +60,16 @@ Application Gateway verfügt über drei vordefinierte Sicherheitsrichtlinien. Si
 |---|---|
 |Name     | AppGwSslPolicy20170401S        |
 |MinProtocolVersion     | TLSv1_2        |
-|Standard| False |
+|Standard| Falsch |
 |CipherSuites     |TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 <br>    TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 <br>    TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA <br>TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA <br>TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256<br>TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384<br>TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384<br>TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256<br>TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA<br>TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA<br>TLS_RSA_WITH_AES_256_GCM_SHA384<br>TLS_RSA_WITH_AES_128_GCM_SHA256<br>TLS_RSA_WITH_AES_256_CBC_SHA256<br>TLS_RSA_WITH_AES_128_CBC_SHA256<br>TLS_RSA_WITH_AES_256_CBC_SHA<br>TLS_RSA_WITH_AES_128_CBC_SHA<br> |
 
 ## <a name="custom-tls-policy"></a>Benutzerdefinierte TLS-Richtlinie
 
 Wenn eine vordefinierte TLS-Richtlinie für Ihre Anforderungen konfiguriert werden muss, müssen Sie eine eigene benutzerdefinierte TLS-Richtlinie definieren. Mit einer benutzerdefinierten TLS-Richtlinie haben Sie die uneingeschränkte Kontrolle über die zu unterstützende Mindestversion des TLS-Protokolls sowie über unterstützte Verschlüsselungssammlungen und deren jeweilige Priorität.
+
+> [!IMPORTANT]
+> Wenn Sie eine benutzerdefinierte SSL-Richtlinie in der Application Gateway v1 SKU (Standard oder WAF) verwenden, stellen Sie sicher, dass Sie das obligatorische Verschlüsselungsverfahren „TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256“ der Liste hinzufügen. Dieses Verschlüsselungsverfahren ist erforderlich, damit Metriken und Protokollierung in der Application Gateway v1 SKU aktiviert werden können.
+> Dies ist nicht obligatorisch für die Application Gateway v2-SKU (Standard_v2 oder WAF_v2).
  
 ### <a name="tlsssl-protocol-versions"></a>TLS/SSL-Protokollversionen
 
@@ -97,17 +113,6 @@ Application Gateway unterstützt die folgenden Verschlüsselungssammlungen. Aus 
 
 > [!NOTE]
 > Die für die Verbindung verwendeten TLS-Verschlüsselungssammlungen basieren auf dem Typ des verwendeten Zertifikats. In Verbindungen zwischen Client und Anwendungsgateways basieren die verwendeten Verschlüsselungssammlungen auf dem Typ des Serverzertifikats auf dem Anwendungsgatewaylistener. In Verbindungen zwischen Anwendungsgateways und Back-End-Pools basieren die verwendeten Verschlüsselungssammlungen auf dem Typ des Serverzertifikats auf den Back-End-Poolservern.
-
-## <a name="known-issue"></a>Bekanntes Problem
-Application Gateway v2 unterstützt derzeit nicht die folgenden Verschlüsselungen nicht:
-- DHE-RSA-AES128-GCM-SHA256
-- DHE-RSA-AES128-SHA
-- DHE-RSA-AES256-GCM-SHA384
-- DHE-RSA-AES256-SHA
-- DHE-DSS-AES128-SHA256
-- DHE-DSS-AES128-SHA
-- DHE-DSS-AES256-SHA256
-- DHE-DSS-AES256-SHA
 
 ## <a name="next-steps"></a>Nächste Schritte
 

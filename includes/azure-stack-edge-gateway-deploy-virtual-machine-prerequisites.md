@@ -2,14 +2,14 @@
 author: alkohli
 ms.service: databox
 ms.topic: include
-ms.date: 08/31/2020
+ms.date: 12/21/2020
 ms.author: alkohli
-ms.openlocfilehash: 3a17e73c66c2296cc36b24e3b0a8abfcab00e46a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f2443765ecc9116193cefbc729ced25fa5657e59
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89419396"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97763426"
 ---
 Bevor Sie virtuelle Computer auf Ihrem Azure Stack Edge-Gerät bereitstellen können, müssen Sie den Client so konfigurieren, dass er über Azure Resource Manager über Azure PowerShell eine Verbindung mit dem Gerät herstellt. Ausführliche Schritte finden Sie unter [Herstellen einer Verbindung mit Azure Resource Manager auf Ihrem Azure Stack Edge-Gerät](../articles/databox-online/azure-stack-edge-j-series-connect-resource-manager.md).
 
@@ -34,13 +34,15 @@ Stellen Sie sicher, dass die folgenden Schritte für den Zugriff auf das Gerät 
 
     Aktivieren Sie Compute für die Netzwerkschnittstelle. Azure Stack Edge erstellt und verwaltet einen virtuellen Switch, der dieser Netzwerkschnittstelle entspricht. Geben Sie zu diesem Zeitpunkt keine bestimmten IP-Adressen für Kubernetes ein. Die Aktivierung von Compute kann mehrere Minuten dauern.
 
-    <!--If you decide to use another network interface for compute, make sure that you:
-    
-    - Delete all the VMs that you have deployed using Azure Resource Manager.
-    
-    - Delete all virtual network interfaces and the virtual network associated with this network interface. 
-    
-    - You can now enable another network interface for compute.-->
+    > [!NOTE]
+    > Wählen Sie beim Erstellen von GPU-VMs eine Netzwerkschnittstelle aus, die mit dem Internet verbunden ist. Auf diese Weise können Sie die GPU-Erweiterung auf Ihrem Gerät installieren.
 
-<!--1. You may also need to configure TLS 1.2 on your client machine if running older versions of AzCopy.--> 
 
+1. Aktivieren Sie die VM-Rolle im Azure-Portal. In diesem Schritt wird ein eindeutiges Abonnement für Ihr Gerät erstellt, das zum Erstellen von VMs über die lokalen APIs des Geräts verwendet wird. 
+
+    1. Um die VM-Rolle zu aktivieren, wechseln Sie im Azure-Portal zur Azure Stack Edge-Ressource für Ihr Azure Stack Edge-Gerät. Wechseln Sie zu **Edgecomputing -> Virtuelle Computer**.
+
+        ![VM-Image hinzufügen 1](../articles/databox-online/media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-image-1.png)
+
+    1. Wählen Sie **Virtuelle Computer** aus, um zur Seite **Übersicht** zu wechseln. **Aktivieren** Sie die Cloudverwaltung für virtuelle Computer.
+        ![VM-Image hinzufügen 2](../articles/databox-online/media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-image-2.png)

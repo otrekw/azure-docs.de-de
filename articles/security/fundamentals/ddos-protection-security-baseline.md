@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 1c1a5a96742d380ce42c0aea8c77a199083df47f
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: cbc22f9b55f8d20880b43516a2a5bc8f55d389f5
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492249"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814498"
 ---
 # <a name="azure-security-baseline-for-azure-ddos-protection-standard"></a>Azure-Sicherheitsbaseline für Azure DDoS Protection Standard
 
@@ -38,7 +38,7 @@ Diese Sicherheitsbaseline wendet Empfehlungen des [Azure-Sicherheitsvergleichste
 
 Aktivieren Sie die Diagnoseeinstellungen für das Azure-Aktivitätsprotokoll, und senden Sie die Protokolle zwecks Archivierung an einen Log Analytics-Arbeitsbereich, eine Azure Event Hub-Instanz oder ein Azure-Speicherkonto. Aktivitätsprotokolle geben Einblick in die Vorgänge, die für Ihre Azure Cache for Redis-Instanzen auf Steuerungsebene erfolgen. Mit Azure-Aktivitätsprotokollen können Sie die Antworten auf die Fragen „Was“, „Wer“ und „Wann“ für alle Schreibvorgänge (PUT, POST, DELETE) auf Steuerungsebene ermitteln, die für Ihre Azure DDoS Protection-Instanzen stattfinden.
 
-- [Konfigurieren von Warnungen für DDoS-Schutzmetriken](../../ddos-protection/telemetry-monitoring-alerting.md#configure-alerts-for-ddos-protection-metrics)
+- [Anzeigen und Konfigurieren der DDoS-Diagnoseprotokollierung](../../ddos-protection/diagnostic-logging.md)
 
 - [Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor](../../azure-monitor/platform/activity-log.md)
 
@@ -60,7 +60,7 @@ Aktivieren Sie die Diagnoseeinstellungen für das Azure-Aktivitätsprotokoll, un
 
 **Leitfaden**: Aktivieren Sie die Diagnoseeinstellungen für das Azure-Aktivitätsprotokoll, und senden Sie die Protokolle an einen Log Analytics-Arbeitsbereich. Außerdem können Sie Abfragen in Log Analytics durchführen, um Suchbegriffe zu ermitteln, Trends auszumachen, Muster zu analysieren und viele weitere Erkenntnisse auf Grundlage der Aktivitätsprotokolldaten zu gewinnen, die möglicherweise für Recovery Services-Tresore gesammelt wurden.
 
-- [ Informationen über den Zugriff auf Telemetrie, Protokolle und Angriffsanalysen für den DDoS Protection Standard-Dienst](../../ddos-protection/telemetry-monitoring-alerting.md#configure-alerts-for-ddos-protection-metrics)
+- [ Informationen über den Zugriff auf Telemetrie, Protokolle und Angriffsanalysen für den DDoS Protection Standard-Dienst](../../ddos-protection/telemetry.md)
 
 - [Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor](../../azure-monitor/platform/activity-log.md)
 
@@ -76,7 +76,7 @@ Aktivieren Sie die Diagnoseeinstellungen für das Azure-Aktivitätsprotokoll, un
 
 Integrieren Sie einen Log Analytics-Arbeitsbereich in Azure Sentinel, da er eine Lösung für die Sicherheitsorchestrierung mit automatisierter Reaktion (Security Orchestration Automated Response, SOAR) bereitstellt. Dadurch können Playbooks (automatisierte Lösungen) erstellt und zum Beheben von Sicherheitsproblemen verwendet werden. Darüber hinaus können Sie benutzerdefinierte Protokollwarnungen in Ihrem Log Analytics-Arbeitsbereich mithilfe von Azure Monitor erstellen.
 
-- [Konfigurieren von Warnungen für DDoS-Metriken](https://azure.microsoft.com/blog/holiday-season-is-ddos-season/)
+- [Konfigurieren von Warnungen für DDoS-Metriken](../../ddos-protection/alerts.md)
 
 - [Durchführen des Onboardings für Azure Sentinel](../../sentinel/quickstart-onboard.md)
 
@@ -524,7 +524,7 @@ Testen Sie Ihre Annahmen darüber, wie Ihre Dienste auf einen Angriff reagieren,
 
 Wählen Sie mithilfe der Warnungskonfiguration von Azure Monitor jede der verfügbaren DDoS-Schutzmetriken zum Warnen aus, wenn während eines Angriffs eine aktive Entschärfung vorhanden ist. Wenn die Bedingungen erfüllt sind, wird eine E-Mail mit einer Warnung an die angegebene Adresse gesendet
 
-- [Konfigurieren von Warnungen für DDoS-Schutzmetriken](../../ddos-protection/telemetry-monitoring-alerting.md#configure-alerts-for-ddos-protection-metrics)
+- [Konfigurieren von Warnungen für DDoS-Schutzmetriken](../../ddos-protection/alerts.md)
 
 - [Konfigurieren des fortlaufenden Exports](../../security-center/continuous-export.md)
 

@@ -6,12 +6,12 @@ author: su-jie
 ms.author: sujie
 ms.date: 11/10/2019
 ms.topic: how-to
-ms.openlocfilehash: 0122e67714efb201584a52f1cb763528dbb0b925
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bbd83fb3ef3225fc19c48bb4c5962d6559cf32f8
+ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90903794"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97708448"
 ---
 # <a name="test-stream-analytics-queries-locally-with-sample-data-using-visual-studio-code"></a>Lokales Testen von Stream Analytics-Abfragen mit Beispieldaten mithilfe von Visual Studio Code
 
@@ -59,7 +59,7 @@ Bereiten Sie zuerst Dateien mit Beispieldaten für die Eingabe vor. Wenn auf Ihr
 
     ![Eingeben von lokalen Dateipfaden in Visual Studio](./media/vscode-local-run/local-file-path.png)
 
-6. Wählen Sie **Datenvorschau** aus, um eine Vorschau der Eingabedaten anzuzeigen. Der Serialisierungstyp für Ihre Daten wird automatisch erkannt, wenn es sich um JSON oder CSV handelt. Verwenden Sie die Auswahl, um Ihre Daten im **Tabellen**- oder **Roh**format anzuzeigen. Die folgende Tabelle ist ein Beispiel für Daten im **Tabellenformat**:
+6. Wählen Sie **Datenvorschau** aus, um eine Vorschau der Eingabedaten anzuzeigen. Der Serialisierungstyp für Ihre Daten wird automatisch erkannt, wenn es sich um JSON oder CSV handelt. Verwenden Sie die Auswahl, um Ihre Daten im **Tabellen**- oder **Roh** format anzuzeigen. Die folgende Tabelle ist ein Beispiel für Daten im **Tabellenformat**:
 
      ![Vorschau lokaler Daten im Tabellenformat](./media/vscode-local-run/local-file-preview-table.png)
 
