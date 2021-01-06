@@ -3,12 +3,12 @@ title: Allgemeine Fragen zu VMware-Notfallwiederherstellung mit Azure Site Recov
 description: Hier erhalten Sie Antworten auf allgemeine Fragen zur Notfallwiederherstellung von lokalen virtuellen VMware-Computern in Azure mithilfe von Azure Site Recovery.
 ms.date: 11/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: 8f292e7f624b80e8e13514a714c5759d88fbe57c
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: a272486eea111ab8c8e489556986f12f382e3f65
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94379989"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97587791"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>Allgemeine Fragen zur VMware-zu-Azure-Replikation
 
@@ -146,6 +146,10 @@ Beim Replizieren von VMware-VMs zu Azure ist die Replikation fortlaufend.
 ### <a name="can-i-extend-replication"></a>Kann ich die Replikation erweitern?
 
 Eine erweiterte oder verkettete Replikation wird nicht unterstützt. Fordern Sie dieses Feature im [Feedbackforum](https://feedback.azure.com/forums/256299-site-recovery/suggestions/6097959).
+
+### <a name="how-can-i-track-progress-of-initial-replicationsynchronization"></a>Wie kann ich den Fortschritt der Erstreplikation/-synchronisierung verfolgen?
+
+Diese Funktion ist seit kurzem in den Site Recovery-Diensten enthalten. Aktualisieren Sie Ihre Site Recovery-Infrastruktur (Konfigurationsserver, horizontal skalierte Prozessserver) und den Mobilitäts-Agent auf Version 9.36 oder höher, um genaue Details zu erhalten. [Hier](vmware-azure-enable-replication.md#monitor-initial-replication) erfahren Sie mehr darüber, wie Sie den Fortschritt verfolgen.
 
 ### <a name="can-i-do-an-offline-initial-replication"></a>Kann ich eine erste Offlinereplikation durchführen?
 

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: 334cbef7460306ef2954881a1cab918573e1e371
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: fb2a8a7bb14758ab21eb2183a119f456b53c8562
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91400637"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654948"
 ---
 # <a name="set-up-vmware-disaster-recovery-in-a-multi-tenancy-environment-with-the-cloud-solution-provider-csp-program"></a>Einrichten der VMware-Notfallwiederherstellung in einer mehrinstanzenfähigen Umgebung mit dem Cloud Solution Provider-Programm (CSP)
 
@@ -40,7 +40,7 @@ Zum Einrichten der VMware-Replikation müssen Sie die folgenden Aktionen ausfüh
     ![Die Seite „Kontoinformationen“](./media/vmware-azure-multi-tenant-csp-disaster-recovery/customer-add-filled.png)
 
 5. Klicken Sie dann auf **Weiter: Abonnements**.
-6. Aktivieren Sie auf der Seite zur Auswahl des Abonnements das Kontrollkästchen**Microsoft Azure**. Sie können weitere Abonnements sofort oder zu einem späteren Zeitpunkt hinzufügen.
+6. Aktivieren Sie auf der Seite zur Auswahl des Abonnements das Kontrollkästchen **Microsoft Azure**. Sie können weitere Abonnements sofort oder zu einem späteren Zeitpunkt hinzufügen.
 7. Bestätigen Sie auf der Seite **Überprüfung** die Mandantendetails, und klicken Sie dann auf **Senden**.
 8. Nachdem Sie das Mandantenkonto erstellt haben, wird eine Bestätigungsseite mit den Details des Standardkontos und dem Kennwort dieses Abonnements angezeigt. Speichern Sie die Informationen, und ändern Sie das Kennwort später auf der Anmeldungsseite des Azure-Portals den Anforderungen entsprechend.
 
@@ -65,22 +65,22 @@ Sie können nun alle Site Recovery-Vorgänge für den Mandanten über das Azure-
 ## <a name="assign-tenant-access-to-the-subscription"></a>Zuweisen des Mandantenzugriffs auf das Abonnement
 
 1. Stellen Sie sicher, dass die Infrastruktur für die Notfallwiederherstellung eingerichtet wurde. Unabhängig davon, ob der Typ der Notfallwiederherstellung „Verwaltet“ oder „Self-Service“ ist, greifen Partner über das CSP-Portal auf Abonnements des Mandanten zu. Richten Sie den Tresor ein, und registrieren Sie die Infrastruktur für die Abonnements des Mandanten.
-2. Geben Sie dem Mandanten das [erstellte Konto](#create-a-tenant-account) an.
-3. Sie können auch über das CSP-Portal wie folgt dem Mandantenabonnement neue Benutzer hinzufügen:
+1. Geben Sie dem Mandanten das [erstellte Konto](#create-a-tenant-account) an.
+1. Sie können auch über das CSP-Portal wie folgt dem Mandantenabonnement neue Benutzer hinzufügen:
 
-    a) Wechseln Sie zur CSP-Abonnementseite des Mandanten, und wählen Sie die Option **Benutzer und Lizenzen** aus.
+    1. Wechseln Sie zur CSP-Abonnementseite des Mandanten, und wählen Sie die Option **Benutzer und Lizenzen** aus.
 
-      ![Der CSP-Seite mit dem Abonnement des Mandanten](./media/vmware-azure-multi-tenant-csp-disaster-recovery/users-and-licences.png)
+       ![Der CSP-Seite mit dem Abonnement des Mandanten](./media/vmware-azure-multi-tenant-csp-disaster-recovery/users-and-licences.png)
 
-    b) Erstellen Sie nun einen neuen Benutzer, indem Sie die relevanten Details eingeben und Berechtigungen auswählen. Sie können aber auch eine Liste der Benutzer als CSV-Datei hochladen.
-    
-    c) Wechseln Sie, nachdem Sie einen neuen Benutzer erstellt haben, zurück zum Azure-Portal. Wählen Sie auf der Seite **Abonnement** das gewünschte Abonnement aus.
+    1. Erstellen Sie nun einen neuen Benutzer, indem Sie die relevanten Details eingeben und Berechtigungen auswählen. Sie können aber auch eine Liste der Benutzer als CSV-Datei hochladen.
 
-    d) Wählen Sie **Zugriffssteuerung (IAM)** aus, und klicken Sie dann auf **Rollenzuweisungen**.
+    1. Wechseln Sie, nachdem Sie einen neuen Benutzer erstellt haben, zurück zum Azure-Portal. Wählen Sie auf der Seite **Abonnement** das gewünschte Abonnement aus.
 
-    e) Klicken Sie auf **Rollenzuweisung hinzufügen**, um einen Benutzer mit dem entsprechenden Zugriffsumfang hinzuzufügen. Die über das CSP-Portal erstellten Benutzer werden auf der Registerkarte „Rollenzuweisungen“ angezeigt.
+    1. Wählen Sie **Zugriffssteuerung (IAM)** aus, und klicken Sie dann auf **Rollenzuweisungen**.
 
-      ![Hinzufügen eines Benutzers](./media/vmware-azure-multi-tenant-csp-disaster-recovery/add-user-subscription.png)
+    1. Klicken Sie auf **Rollenzuweisung hinzufügen**, um einen Benutzer mit dem entsprechenden Zugriffsumfang hinzuzufügen. Die über das CSP-Portal erstellten Benutzer werden auf der Registerkarte „Rollenzuweisungen“ angezeigt.
+
+        ![Hinzufügen eines Benutzers](./media/vmware-azure-multi-tenant-csp-disaster-recovery/add-user-subscription.png)
 
 - Für die meisten Verwaltungsvorgänge ist die Rolle *Mitwirkender* ausreichend. Benutzer mit dieser Zugriffsebene können fast alle Aufgaben für ein Abonnement ausführen, jedoch keine Zugriffsebenen ändern (wofür die Zugriffsebene *Besitzer* erforderlich ist).
 - Site Recovery verfügt auch über drei [vordefinierte Benutzerrollen](site-recovery-role-based-linked-access-control.md), die bei Bedarf zur weiteren Einschränkung von Zugriffsebenen verwendet werden können.
