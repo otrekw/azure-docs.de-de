@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 07/07/2020
+ms.date: 01/04/2021
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro;
-ms.openlocfilehash: cc4f775c3cf4c016173c485d57f203b4665c6393
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 3c320b8faf5ccb0b1aec521909b152dff171cbd7
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370643"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97862589"
 ---
 # <a name="classic-subscription-administrator-roles-azure-roles-and-azure-ad-roles"></a>Administratorrollen für klassische Abonnements, Azure-Rollen und Azure AD-Rollen
 
@@ -44,7 +44,7 @@ Kontoadministrator, Dienstadministrator und Co-Administrator sind die drei Rolle
 
 | Administrator für klassisches Abonnement | Begrenzung | Berechtigungen | Notizen |
 | --- | --- | --- | --- |
-| Kontoadministrator | 1 pro Azure-Konto | <ul><li>Verwalten der Abrechnung im [Azure-Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)</li><li>Verwalten aller Abonnements in einem Konto</li><li>Erstellen neuer Abonnements</li><li>Kündigen von Abonnements</li><li>Ändern der Abrechnung für ein Abonnement</li><li>Ändern des Dienstadministrators</li></ul> | Vom Konzept her der für die Abrechnung zuständige Besitzer des Abonnements.<br>Der Kontoadministrator kann nicht auf das Azure-Portal zugreifen. |
+| Kontoadministrator | 1 pro Azure-Konto | <ul><li>Verwalten der Abrechnung im [Azure-Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)</li><li>Verwalten aller Abonnements in einem Konto</li><li>Erstellen neuer Abonnements</li><li>Kündigen von Abonnements</li><li>Ändern der Abrechnung für ein Abonnement</li><li>Ändern des Dienstadministrators</li></ul> | Vom Konzept her der für die Abrechnung zuständige Besitzer des Abonnements. |
 | Dienstadministrator | 1 pro Azure-Abonnement | <ul><li>Verwalten von Diensten im [Azure-Portal](https://portal.azure.com)</li><li>Kündigen des Abonnements</li><li>Zuweisen von Benutzern zur Rolle „CO-Administrator“</li></ul> | Standardmäßig ist der Kontoadministrator für ein neues Abonnement gleichzeitig auch der Dienstadministrator.<br>Der Dienstadministrator verfügt über gleichwertigen Zugriff wie ein Benutzer, dem für den Abonnementbereich die Rolle „Besitzer“ zugewiesen ist.<br>Der Dienstadministrator hat Vollzugriff auf das Azure-Portal. |
 | Co-Administrator | 200 pro Abonnement | <ul><li>Gleiche Zugriffsrechte wie der Dienstadministrator, aber kann die Zuordnung von Abonnements zu Azure-Verzeichnissen nicht ändern</li><li>Zuweisen von Benutzern zur Rolle „Co-Administrator“, aber kann den Dienstadministrator nicht ändern</li></ul> | Der Co-Administrator verfügt über gleichwertigen Zugriff wie ein Benutzer, dem für den Abonnementbereich die Rolle „Besitzer“ zugewiesen ist. |
 

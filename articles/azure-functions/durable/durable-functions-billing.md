@@ -5,18 +5,18 @@ author: cgillum
 ms.topic: overview
 ms.date: 08/31/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 504ef93a0002895bc5662d95ad269c8593170ee2
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 2ec1b080c195a47caafd0120240b5fb61ede062b
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "74233010"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97932281"
 ---
 # <a name="durable-functions-billing"></a>Abrechnung von Durable Functions
 
 [Durable Functions](durable-functions-overview.md) wird auf dieselbe Weise wie Azure Functions in Rechnung gestellt. Weitere Informationen finden Sie unter [Azure Functions – Preise](https://azure.microsoft.com/pricing/details/functions/).
 
-Beim Ausführen von Orchestratorfunktionen im [Nutzungsplan](../functions-scale.md#consumption-plan) von Azure Functions sind einige Verhaltensweisen zu beachten, die bei der Abrechnung auftreten. In den folgenden Abschnitten werden diese Verhaltensweisen und ihre Auswirkungen ausführlicher beschrieben.
+Beim Ausführen von Orchestratorfunktionen im [Nutzungsplan](../consumption-plan.md) von Azure Functions sind einige Verhaltensweisen zu beachten, die bei der Abrechnung auftreten. In den folgenden Abschnitten werden diese Verhaltensweisen und ihre Auswirkungen ausführlicher beschrieben.
 
 ## <a name="orchestrator-function-replay-billing"></a>Abrechnung für die Wiedergabe von Orchestratorfunktionen
 
@@ -45,7 +45,7 @@ Mehrere Faktoren tragen zu den tatsächlichen Azure Storage-Kosten bei, die durc
 
 * Eine einzelne Funktions-App ist einem einzelnen Aufgabenhub zugeordnet, der einen Azure Storage-Ressourcensatz nutzt. Diese Ressourcen werden von allen Durable Functions in einer Funktions-App gemeinsam verwendet. Die tatsächliche Anzahl von Funktionen in der Funktions-App wirkt sich nicht auf Azure Storage-Transaktionskosten aus.
 * Jede Funktions-App-Instanz ruft mithilfe eines Abrufalgorithmus für exponentielles Backoff intern mehrere Warteschlangen im Speicherkonto ab. Eine App-Instanz im Leerlauf ruft die Warteschlangen seltener als eine aktive App ab, wodurch geringere Transaktionskosten anfallen. Weitere Informationen zum Verhalten von Durable Functions beim Abrufen von Warteschlangen finden Sie im Abschnitt zum Abrufen von Warteschlangen im Artikel [Leistung und Skalierbarkeit](durable-functions-perf-and-scale.md#queue-polling).
-* Wenn die Ausführung im Nutzungs- oder Premium-Plan von Azure Functions erfolgt, ruft der [Azure Functions-Skalierungscontroller](../functions-scale.md#how-the-consumption-and-premium-plans-work) in regelmäßigen Abständen alle Aufgabenhubwarteschlangen im Hintergrund ab. Bei einer leichten bis mittleren Skalierung einer Funktions-App werden diese Warteschlangen nur von einer einzelnen Skalierungscontroller-Instanz abgefragt. Wenn die Funktions-App auf eine große Anzahl von Instanzen erweitert wird, können weitere Skalierungscontroller-Instanzen hinzugefügt werden. Diese zusätzlichen Skalierungscontroller-Instanzen können die Gesamtkosten für die Warteschlangentransaktion erhöhen.
+* Wenn die Ausführung im Nutzungs- oder Premium-Plan von Azure Functions erfolgt, ruft der [Azure Functions-Skalierungscontroller](../event-driven-scaling.md) in regelmäßigen Abständen alle Aufgabenhubwarteschlangen im Hintergrund ab. Bei einer leichten bis mittleren Skalierung einer Funktions-App werden diese Warteschlangen nur von einer einzelnen Skalierungscontroller-Instanz abgefragt. Wenn die Funktions-App auf eine große Anzahl von Instanzen erweitert wird, können weitere Skalierungscontroller-Instanzen hinzugefügt werden. Diese zusätzlichen Skalierungscontroller-Instanzen können die Gesamtkosten für die Warteschlangentransaktion erhöhen.
 * Jede Funktions-App-Instanz konkurriert um einen Satz von Blob-Leases. Diese Instanzen rufen in regelmäßigen Abständen den Azure-Blob-Dienst auf, um gehaltene Leases zu erneuern oder um neue Leases abzurufen. Die Anzahl der Blobleases hängt von der konfigurierten Partitionsanzahl des Aufgabenhubs ab. Das horizontale Hochskalieren auf eine größere Anzahl von Funktions-App-Instanzen erhöht wahrscheinlich die Azure Storage-Transaktionskosten für diese Leasevorgänge.
 
 Weitere Informationen zu den Preisen für Azure Storage finden Sie in der [Übersicht über die Preise für Azure Storage](https://azure.microsoft.com/pricing/details/storage/). 

@@ -4,12 +4,12 @@ description: 'Hier finden Sie einen Vergleich der für Integrationsaufträge opt
 ms.topic: overview
 ms.date: 04/09/2018
 ms.custom: mvc
-ms.openlocfilehash: 2c17b311811fd2cba46db379fcc766c04dd9d56d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 81b143219fd0b53d4cd00761af6b767c173ed88d
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91403074"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934865"
 ---
 # <a name="choose-the-right-integration-and-automation-services-in-azure"></a>Auswählen der richtigen Integrations- und Automatisierungsdienste in Azure
 
@@ -78,9 +78,9 @@ Azure Functions basiert auf dem WebJobs SDK und verfügt daher über viele gleic
 
 |  | Functions | WebJobs mit WebJobs SDK |
 | --- | --- | --- |
-|**[Serverloses App-Modell](https://azure.microsoft.com/solutions/serverless/) mit [automatischer Skalierung](functions-scale.md#how-the-consumption-and-premium-plans-work)**|✔||
+|**[Serverloses App-Modell](https://azure.microsoft.com/solutions/serverless/) mit [automatischer Skalierung](event-driven-scaling.md)**|✔||
 |**[Entwicklung und Tests im Browser](functions-create-first-azure-function.md)** |✔||
-|**[Nutzungsbasierte Bezahlung](functions-scale.md#consumption-plan)**|✔||
+|**[Nutzungsbasierte Bezahlung](consumption-plan.md)**|✔||
 |**[Integration in Logic Apps](functions-twitter-email.md)**|✔||
 | **Auslösende Ereignisse** |[Zeitgeber](functions-bindings-timer.md)<br>[Azure Storage-Warteschlangen und -Blobs](functions-bindings-storage-blob.md)<br>[Azure Service Bus-Warteschlangen und -Themen](functions-bindings-service-bus.md)<br>[Azure Cosmos DB](functions-bindings-cosmosdb.md)<br>[Azure Event Hubs](functions-bindings-event-hubs.md)<br>[HTTP/WebHook (GitHub, Slack)](functions-bindings-http-webhook.md)<br>[Azure Event Grid](functions-bindings-event-grid.md)|[Zeitgeber](functions-bindings-timer.md)<br>[Azure Storage-Warteschlangen und -Blobs](functions-bindings-storage-blob.md)<br>[Azure Service Bus-Warteschlangen und -Themen](functions-bindings-service-bus.md)<br>[Azure Cosmos DB](functions-bindings-cosmosdb.md)<br>[Azure Event Hubs](functions-bindings-event-hubs.md)<br>[Dateisystem](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Files/FileTriggerAttribute.cs)|
 | **Unterstützte Sprachen**  |C#<br>F#<br>JavaScript<br>Java<br>Python<br>PowerShell |C#<sup>1</sup>|
