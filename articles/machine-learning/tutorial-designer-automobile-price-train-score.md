@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 09/28/2020
 ms.custom: designer
-ms.openlocfilehash: ca812fc7548e3c70f1faa1e1ed6a34afda3872af
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 2e46da1657a7473d3ff8cdf4ac43e5341b143455
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96575974"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97796107"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer"></a>Tutorial: Prognostizieren von Automobilpreisen mit dem Designer
 
@@ -272,7 +272,7 @@ Nachdem die Einrichtung Ihrer Pipeline jetzt abgeschlossen ist, können Sie eine
     > [!NOTE]
     > Experimente fassen ähnliche Pipelineausführungen in einer Gruppe zusammen. Wenn Sie eine Pipeline mehrmals ausführen, können Sie für weitere Ausführungen das gleiche Experiment auswählen.
 
-    1. Geben Sie unter **Neuer Experimentname** einen aussagekräftigen Namen ein.
+    1. Geben Sie für **Name des neuen Experiments** die Zeichenfolge **Tutorial-CarPrices** ein.
 
     1. Klicken Sie auf **Submit** (Senden).
     

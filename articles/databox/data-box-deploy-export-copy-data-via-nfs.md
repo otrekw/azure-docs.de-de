@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 10/01/2020
+ms.date: 12/18/2020
 ms.author: alkohli
-ms.openlocfilehash: bd8e6d4175c57bd31c3fd83bf6f9669d2b65ffb2
-ms.sourcegitcommit: 487a9f5272300d60df2622c3d13e794d54680f90
+ms.openlocfilehash: 64bb5e94c4b18626d1f85d7e61252aae74202eb9
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91660841"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680616"
 ---
-# <a name="tutorial-copy-data-from-azure-data-box-via-nfs-preview"></a>Tutorial: Kopieren von Daten aus Azure Data Box über NFS (Vorschau)
+# <a name="tutorial-copy-data-from-azure-data-box-via-nfs"></a>Tutorial: Kopieren von Daten aus Azure Data Box über NFS
 
 In diesem Tutorial wird beschrieben, wie Sie über NFS eine Verbindung mit der lokalen Webbenutzeroberfläche Ihrer Data Box herstellen und Daten von dieser auf einen lokalen Datenserver kopieren. Die Daten auf Ihrer Data Box werden aus Ihrem Azure Storage-Konto exportiert.
 
@@ -26,8 +26,6 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Voraussetzungen
 > * Herstellen einer Verbindung mit der Data Box
 > * Kopieren von Daten aus Data Box
-
-[!INCLUDE [Data Box feature is in preview](../../includes/data-box-feature-is-preview-info.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -79,11 +77,11 @@ Nachdem Sie eine Verbindung mit den Data Box-Freigaben hergestellt haben, kopier
 
 [!INCLUDE [data-box-export-review-logs](../../includes/data-box-export-review-logs.md)]
 
- Sie können jetzt mit dem Kopieren der Daten beginnen. Wenn Sie einen Linux-Hostcomputer verwenden, verwenden Sie ein Kopierhilfsprogramm wie Robocopy. Einige der verfügbaren Alternativen in Linux sind [rsync](https://rsync.samba.org/), [FreeFileSync](https://www.freefilesync.org/), [Unison](https://www.cis.upenn.edu/~bcpierce/unison/) oder [Ultracopier](https://ultracopier.first-world.info/).  
+ Sie können jetzt mit dem Kopieren der Daten beginnen. Wenn Sie einen Linux-Hostcomputer verwenden, verwenden Sie ein Kopierhilfsprogramm wie Robocopy. Einige der verfügbaren Alternativen in Linux sind [`rsync`](https://rsync.samba.org/), [FreeFileSync](https://www.freefilesync.org/), [Unison](https://www.cis.upenn.edu/~bcpierce/unison/) oder [Ultracopier](https://ultracopier.first-world.info/).  
 
 Der `cp`-Befehl ist eine der besten Optionen zum Kopieren eines Verzeichnisses. Weitere Informationen zur Verwendung finden Sie auf den [Handbuchseiten zum cp-Befehl](http://man7.org/linux/man-pages/man1/cp.1.html).
 
-Befolgen Sie die nachstehenden Richtlinien, wenn Sie die rsync-Option für einen Multithread-Kopiervorgang verwenden:
+Befolgen Sie die nachstehenden Richtlinien, wenn Sie die `rsync`-Option für einen Multithread-Kopiervorgang verwenden:
 
 * Installieren Sie je nach Dateisystem, das Ihr Linux-Client verwendet, das **CIFS Utils**- oder **NFS Utils**-Paket.
 
@@ -91,7 +89,7 @@ Befolgen Sie die nachstehenden Richtlinien, wenn Sie die rsync-Option für einen
 
     `sudo apt-get install nfs-utils`
 
-* Installieren Sie **Rsync** und **Parallel** (variiert abhängig von der verteilten Linux-Version).
+* Installieren Sie `rsync` und **Parallel** (variiert abhängig von der verteilten Linux-Version).
 
     `sudo apt-get install rsync`
    

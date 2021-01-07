@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/11/2020
+ms.date: 12/29/2020
 ms.author: jeedes
-ms.openlocfilehash: 3a53a5b7e60ef214a3db58d9e280e9dee8fec609
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 11aac69816714611c168cd05c2828dd1ae85786e
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97355884"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97813648"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-aws-clientvpn"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit AWS ClientVPN
 
@@ -89,7 +89,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
     |
 
     > [!NOTE]
-    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächlichen Werte für Anmelde-URL und Antwort-URL. Wenden Sie sich an das [Clientsupportteam von AWS ClientVPN](https://aws.amazon.com/contact-us/), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
+    > Hierbei handelt es sich um Beispielwerte.  Ersetzen Sie diese Werte durch die tatsächlichen Werte für Anmelde-URL und Antwort-URL.  Die Anmelde-URL und die Antwort-URL können denselben Wert aufweisen (http://127.0.0.1:35001).  Ausführliche Informationen finden Sie unter [AWS ClientVPN-Dokumentation](https://docs.aws.amazon.com/vpn/latest/clientvpn-admin/client-authentication.html#ad).   Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen. Wenden Sie sich bei Konfigurationsproblemen an das [AWS ClientVPN-Supportteam](https://aws.amazon.com/contact-us/). 
 
 1. Navigieren Sie im Azure Active Directory-Dienst zu **App-Registrierungen**, und wählen Sie dann **Alle Anwendungen** aus.
 

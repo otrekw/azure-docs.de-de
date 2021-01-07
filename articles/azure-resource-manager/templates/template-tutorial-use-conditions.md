@@ -5,12 +5,12 @@ author: mumian
 ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: f044863be7d0bfaaad57d3974a1d2856b27927ea
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: bc6dc5b385a39ddb1c4f1663649ea21e5ed14767
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97589133"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97669311"
 ---
 # <a name="tutorial-use-condition-in-arm-templates"></a>Tutorial: Verwenden von Bedingungen in ARM-Vorlagen
 
@@ -34,6 +34,8 @@ In diesem Tutorial wird nur ein grundlegendes Szenario der Verwendung von Beding
 * [Bedingtes Bereitstellen einer Ressource in einer ARM-Vorlage](/azure/architecture/building-blocks/extending-templates/conditional-deploy).
 * [Vorlagenfunktion: If](./template-functions-logical.md#if) (Wenn).
 * [Vergleichsfunktionen für ARM-Vorlagen](./template-functions-comparison.md)
+
+Ein Microsoft Learn-Modul, das Bedingungen behandelt, finden Sie unter [Verwalten komplexer Cloudbereitstellungen mithilfe erweiterter ARM-Vorlagenfunktionen](/learn/modules/manage-deployments-advanced-arm-template-features/).
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 

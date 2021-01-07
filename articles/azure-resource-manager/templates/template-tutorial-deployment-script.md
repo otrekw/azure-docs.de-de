@@ -8,15 +8,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 12/14/2020
+ms.date: 12/16/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: ec7b951581efd0a25b44d298b1f1bfb997167d88
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 7eda805a5fdf24a7a55b9296a0f0a1c9a5bfc576
+ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97589099"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97683489"
 ---
 # <a name="tutorial-use-deployment-scripts-to-create-a-self-signed-certificate"></a>Tutorial: Verwenden von Bereitstellungsskripts zum Erstellen eines selbstsignierten Zertifikats
 
@@ -34,13 +34,15 @@ Dieses Tutorial enthält die folgenden Aufgaben:
 > * Debuggen des fehlerhaften Skripts
 > * Bereinigen von Ressourcen
 
+Ein Microsoft Learn-Modul, das Bereitstellungsskripts behandelt, finden Sie unter [Erweitern von ARM-Vorlagen mithilfe von Bereitstellungsskripts](/learn/modules/extend-resource-manager-template-deployment-scripts/).
+
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie Folgendes:
 
 * **[Visual Studio Code](https://code.visualstudio.com/) mit der Erweiterung „Azure Resource Manager-Tools“.** Weitere Informationen finden Sie unter [Schnellstart: Erstellen von ARM-Vorlagen mit Visual Studio Code](./quickstart-create-templates-use-visual-studio-code.md).
 
-* **Vom Benutzer zugewiesene verwaltete Identität mit der Rolle „Mitwirkender“ auf Abonnementebene.** Diese Identität wird zum Ausführen von Bereitstellungsskripts verwendet. Informationen zur Erstellung finden Sie unter [Benutzerseitig zugewiesene verwaltete Identität](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md). Sie benötigen die Identitäts-ID beim Bereitstellen der Vorlage. Das Format der Identität lautet:
+* **Eine vom Benutzer zugewiesene verwaltete Identität**. Diese Identität wird verwendet, um Azure-spezifische Aktionen im Skript durchzuführen. Informationen zur Erstellung finden Sie unter [Benutzerseitig zugewiesene verwaltete Identität](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md). Sie benötigen die Identitäts-ID beim Bereitstellen der Vorlage. Das Format der Identität lautet:
 
   ```json
   /subscriptions/<SubscriptionID>/resourcegroups/<ResourceGroupName>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<IdentityID>
@@ -253,7 +255,7 @@ Vom Bereitstellungsskript wird dem Schlüsseltresor ein Zertifikat hinzugefügt.
 
     Die `deploymentScripts`-Ressource ist von der Schlüsseltresorressource und der Ressource für die Rollenzuweisung abhängig. Sie verfügt über die folgenden Eigenschaften:
 
-    * `identity`: Im Bereitstellungsskript wird eine vom Benutzer zugewiesene verwaltete Identität genutzt, um die Skripts auszuführen.
+    * `identity`: Das Bereitstellungsskript verwendet eine vom Benutzer zugewiesene verwaltete Identität, um die Vorgänge im Skript auszuführen.
     * `kind`: Geben Sie den Typ des Skripts an. Derzeit werden nur PowerShell-Skripts unterstützt.
     * `forceUpdateTag`: Ermitteln Sie, ob das Bereitstellungsskript auch dann ausgeführt werden sollte, wenn sich die Skriptquelle nicht geändert hat. Kann der aktuelle Zeitstempel oder eine GUID sein. Weitere Informationen finden Sie unter [Mehrmaliges Ausführen des Skripts](./deployment-script-template.md#run-script-more-than-once).
     * `azPowerShellVersion`: Gibt die zu verwendende Version des Azure PowerShell-Moduls an. Derzeit werden für das Bereitstellungsskript die Versionen 2.7.0, 2.8.0 und 3.0.0 unterstützt.

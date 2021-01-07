@@ -5,14 +5,14 @@ author: rahulg1190
 ms.author: rahugup
 ms.manager: bsiva
 ms.topic: tutorial
-ms.date: 04/15/2020
+ms.date: 01/02/2021
 ms.custom: MVC
-ms.openlocfilehash: af1c321e5c537fbd3af770cb392c538e6056e075
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: bd560a6ef4a3b4ab5eb4632e7741c764f6e314e1
+ms.sourcegitcommit: c538b6e4cf27b992500c079ad9c914c05d55eb7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96752871"
+ms.lasthandoff: 01/03/2021
+ms.locfileid: "97854926"
 ---
 # <a name="migrate-machines-as-physical-servers-to-azure"></a>Migrieren von Computern als physische Server zu Azure
 
@@ -109,7 +109,7 @@ Bereiten Sie die Bereitstellung der Appliance wie folgt vor:
 - Sie bereiten einen Computers für das Hosten der Replikationsappliance vor. [Überprüfen](migrate-replication-appliance.md#appliance-requirements) Sie die Computeranforderungen.
 - Die Replikationsappliance verwendet MySQL. Überprüfen Sie die [Optionen](migrate-replication-appliance.md#mysql-installation) für die Installation von MySQL auf der Appliance.
 - Überprüfen Sie die Azure-URLs, die die Replikationsappliance für den Zugriff auf [öffentliche](migrate-replication-appliance.md#url-access) und [behördliche](migrate-replication-appliance.md#azure-government-url-access) Clouds benötigt.
-- Überprüfen Sie die [Portzugriffsanforderungen] (migrate-replication-appliance.md#port-access) für die Replikationsappliance.
+- Überprüfen Sie die [Portzugriffsanforderungen](migrate-replication-appliance.md#port-access) für die Replikationsappliance.
 
 > [!NOTE]
 > Die Replikationsappliance sollte nicht auf einem zu replizierenden Quellcomputer oder auf der Ermittlungs- und Bewertungsappliance von Azure Migrate installiert werden, die Sie unter Umständen bereits installiert haben.

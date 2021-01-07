@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 704449a9d70a38f9a05a68df290a4c0d0e6aeb54
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 2aaa301a95f3f07ca81d20daba3ef28b812da0e6
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92318910"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672354"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-alcumus-info-exchange"></a>Tutorial: Azure Active Directory-Integration mit Alcumus Info Exchange
 
@@ -63,7 +63,7 @@ Zum Konfigurieren der Integration von Alcumus Info Exchange in Azure AD müssen 
 
 4. Geben Sie **Alcumus Info Exchange** in das Suchfeld ein, wählen Sie im Ergebnisbereich **Alcumus Info Exchange** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
-     ![Alcumus Info Exchange in der Ergebnisliste](common/search-new-app.png)
+    ![Alcumus Info Exchange in der Ergebnisliste](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
 
@@ -143,7 +143,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
     ![Dialogfeld „Benutzer“](common/user-properties.png)
 
     a. Geben Sie im Feld **Name** den Namen **BrittaSimon** ein.
-  
+
     b. Geben Sie im Feld **Benutzername** Folgendes ein: **brittasimon\@ihreunternehmensdomäne.erweiterung**.  
     Zum Beispiel, BrittaSimon@contoso.com
 
@@ -159,7 +159,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
     ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
-2. Wählen Sie in der Anwendungsliste **Alcumus Info Exchange**aus.
+2. Wählen Sie in der Anwendungsliste **Alcumus Info Exchange** aus.
 
     ![Alcumus Info Exchange-Link in der Anwendungsliste](common/all-applications.png)
 
@@ -179,7 +179,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 ### <a name="create-alcumus-info-exchange-test-user"></a>Erstellen eines Alcumus Info Exchange-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in Alcumus Info Exchange einen Benutzer namens Britta Simon. Wenden Sie sich an das  [Supportteam von Alcumus Info Exchange](mailto:helpdesk@alcumusgroup.com), um die Benutzer in der Alcumus Info Exchange-Plattform hinzufügen zu lassen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+In diesem Abschnitt erstellen Sie in Alcumus Info Exchange einen Benutzer namens Britta Simon. Wenden Sie sich an das [Supportteam von Alcumus Info Exchange](mailto:helpdesk@alcumusgroup.com), um die Benutzer in der Alcumus Info Exchange-Plattform hinzufügen zu lassen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
 

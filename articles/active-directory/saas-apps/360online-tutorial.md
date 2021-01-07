@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 1f3de29e5f046da56638876a35ca983792a4ce6c
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: d2e7935de23dcbdccfa6f4efa602dbab42931075
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92319125"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673845"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-360-online"></a>Tutorial: Azure Active Directory-Integration mit 360 Online
 
@@ -63,7 +63,7 @@ Zum Konfigurieren der Integration von 360 Online in Azure AD müssen Sie 360 Onl
 
 4. Geben Sie im Suchfeld **360 Online** ein, wählen Sie im Ergebnisbereich **360 Online** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
-     ![360 Online in der Ergebnisliste](common/search-new-app.png)
+    ![360 Online in der Ergebnisliste](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
 
@@ -141,7 +141,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
     ![Dialogfeld „Benutzer“](common/user-properties.png)
 
     a. Geben Sie im Feld **Name** den Namen **BrittaSimon** ein.
-  
+
     b. Geben Sie im Feld **Benutzername** Folgendes ein: **brittasimon\@ihreunternehmensdomäne.erweiterung**.  
     Zum Beispiel, BrittaSimon@contoso.com
 
@@ -177,7 +177,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 ### <a name="create-360-online-test-user"></a>Erstellen eines 360 Online-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in 360 Online eine Benutzerin namens Britta Simon. Lassen Sie sich beim Hinzufügen der Benutzer auf der 360 Online-Plattform ggf. vom  [360 Online-Supportteam](mailto:360online@software-innovation.com) unterstützen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+In diesem Abschnitt erstellen Sie in 360 Online eine Benutzerin namens Britta Simon. Lassen Sie sich beim Hinzufügen der Benutzer auf der 360 Online-Plattform ggf. vom [360 Online-Supportteam](mailto:360online@software-innovation.com) unterstützen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
 

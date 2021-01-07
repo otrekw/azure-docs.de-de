@@ -6,18 +6,21 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: dff98a5c54d2fee350e2b35dc00148c19ea233b8
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 15a77835e3e618c17b9839aa5a010cd4d29cebe1
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94956499"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97653111"
 ---
 # <a name="add-a-tlsssl-certificate-in-azure-app-service"></a>Hinzufügen eines TLS-/SSL-Zertifikats in Azure App Service
 
 Von [Azure App Service](overview.md) wird ein hochgradig skalierbarer Webhostingdienst mit Self-Patching bereitgestellt. In diesem Artikel erfahren Sie, wie Sie ein privates oder öffentliches Zertifikat in App Service erstellen, hochladen oder importieren. 
 
 Nach dem Hinzufügen eines Zertifikats zu Ihrer App Service- oder [Funktions-App](../azure-functions/index.yml) können Sie [damit einen benutzerdefinierten DNS-Namen schützen](configure-ssl-bindings.md) oder [es in Ihrem Anwendungscode verwenden](configure-ssl-certificate-in-code.md).
+
+> [!NOTE]
+> Ein in eine App hochgeladenes Zertifikat wird in einer Bereitstellungseinheit gespeichert, die an die Kombination aus Ressourcengruppe und Region der App gebunden ist (intern *Webspace* genannt). Dadurch wird das Zertifikat für andere Apps in derselben Kombination aus Ressourcengruppe und Region zugänglich. 
 
 In der folgenden Tabelle sind die Optionen zum Hinzufügen von Zertifikaten in App Service aufgeführt:
 
@@ -145,7 +148,7 @@ Klicken Sie auf der Seite **Key Vault-Status** auf **Key Vault-Repository**, um 
 |-|-|
 | Name | Ein eindeutiger Name aus alphanumerischen Zeichen und Bindestrichen. |
 | Resource group | Es wird empfohlen, die gleiche Ressourcengruppe wie bei Ihrem App Service-Zertifikat auszuwählen. |
-| Standort | Wählen Sie denselben Speicherort wie bei Ihrer App Service-App aus. |
+| Position | Wählen Sie denselben Speicherort wie bei Ihrer App Service-App aus. |
 | Tarif | Weitere Informationen finden Sie unter [Key Vault – Preise](https://azure.microsoft.com/pricing/details/key-vault/). |
 | Zugriffsrichtlinien| Definiert die Anwendungen und den zulässigen Zugriff auf die Tresorressourcen. Sie können dies später konfigurieren, indem Sie die Schritte unter [Zuweisen einer Key Vault-Zugriffsrichtlinie im Azure-Portal](../key-vault/general/assign-access-policy-portal.md) durchführen. |
 | Zugriff über virtuelles Netzwerk | Beschränkt den Tresorzugriff auf bestimmte virtuelle Azure-Netzwerke. Sie können dies später konfigurieren, indem Sie die Schritte unter [Konfigurieren von Azure Key Vault-Firewalls und virtuellen Netzwerken](../key-vault/general/network-security.md) durchführen. |

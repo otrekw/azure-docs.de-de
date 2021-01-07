@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 12/11/2020
+ms.date: 12/18/2020
 ms.author: alkohli
-ms.openlocfilehash: 1035f7fb34ed5b2b11e3ef472ccda7cccc30f652
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 4b5bbe19ddeda7c6b313186b7e24532a294f7253
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97359029"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680841"
 ---
-# <a name="tutorial-return-azure-data-box-preview"></a>Tutorial: Zurücksenden von Azure Data Box (Vorschau)
+# <a name="tutorial-return-azure-data-box"></a>Tutorial: Zurücksenden von Azure Data Box
 
 In diesem Tutorial wird beschrieben, wie Azure Data Box zurückgesendet wird, und die Daten werden gelöscht, nachdem das Gerät in den Azure-Daten empfangen wurde.
 
@@ -27,8 +27,6 @@ In diesem Tutorial werden folgende Themen behandelt:
 > * Vorbereiten des Versands
 > * Senden der Data Box an Microsoft
 > * Löschen von Daten von der Data Box
-
-[!INCLUDE [Data Box feature is in preview](../../includes/data-box-feature-is-preview-info.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

@@ -7,12 +7,12 @@ ms.author: allensu
 ms.service: private-link
 ms.topic: tutorial
 ms.date: 9/25/2020
-ms.openlocfilehash: c9866ac2c14e4deb29326ffdd1a93a7d8eae1ea3
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 477856bd5772cdc0a9ec00d81adf9c50847afdd0
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96484803"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631948"
 ---
 # <a name="tutorial-connect-to-an-azure-cosmos-account-using-an-azure-private-endpoint"></a>Tutorial: Herstellen einer Verbindung mit einem Azure Cosmos-Konto mithilfe eines privaten Endpunkts in Azure
 
@@ -208,13 +208,9 @@ In diesem Abschnitt erstellen Sie ein Cosmos DB-Konto und konfigurieren den pri
 
 5. Klicken Sie auf **OK**.
 
-10. Wählen Sie im Abschnitt **Einstellungen** des CosmosDB-Kontos die Option **Schlüssel** aus.
+6. Wählen Sie im Abschnitt **Einstellungen** des CosmosDB-Kontos die Option **Schlüssel** aus.
 
-11. Wählen Sie **myResourceGroup** aus.
-
-12. Wählen Sie das Speicherkonto aus, das Sie im vorherigen Schritt erstellt haben.
-
-14. Wählen Sie „Kopieren“ für **PRIMÄRE VERBINDUNGSZEICHENFOLGE** aus.
+7. Wählen Sie „Kopieren“ für **PRIMÄRE VERBINDUNGSZEICHENFOLGE** aus.
 
 ## <a name="test-connectivity-to-private-endpoint"></a>Testen der Verbindung mit dem privaten Endpunkt
 
@@ -234,7 +230,7 @@ In diesem Abschnitt verwenden Sie den virtuellen Computer, den Sie im vorherigen
 
 7. Öffnen Sie Windows PowerShell auf dem Server, nachdem Sie eine Verbindung hergestellt haben.
 
-8. Geben Sie `nslookup <storage-account-name>.documents.azure.com` ein. Ersetzen Sie **\<storage-account-name>** durch den Namen des Speicherkontos, das Sie in den vorherigen Schritten erstellt haben. 
+8. Geben Sie `nslookup <cosmosdb-account-name>.documents.azure.com` ein. Ersetzen Sie **\<cosmosdb-account-name>** durch den Namen des Cosmos DB-Kontos, das Sie in den vorherigen Schritten erstellt haben. 
 
     ```powershell
     Server:  UnKnown

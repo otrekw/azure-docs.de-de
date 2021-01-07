@@ -9,14 +9,14 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 813cb567ab3edddd6fb37cee050dc5e38ee4289f
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 444e7c9ad06c6f2ad584c0701fa652b901a4c3e7
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96904889"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680777"
 ---
-# <a name="tutorial---migrate-web-service-from-google-maps"></a>Tutorial: Migrieren von Webdiensten aus Google Maps
+# <a name="tutorial-migrate-web-service-from-google-maps"></a>Tutorial: Migrieren von Webdiensten aus Google Maps
 
 Sowohl Azure als auch Google Maps ermöglichen den Zugriff auf räumliche APIs über REST-Webdienste. Die API-Schnittstellen dieser Plattformen bieten ähnliche Funktionen. Die Namenskonventionen und Antwortobjekte unterscheiden sich jedoch jeweils.
 
@@ -29,7 +29,7 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Berechnen einer Entfernungsmatrix
 > * Abrufen von Zeitzonendetails
 
-Außerdem lernen Sie Folgendes: 
+Außerdem lernen Sie Folgendes:
 
 > [!div class="checklist"]
 > * Wahl des Azure Maps-REST-Diensts für die Migration von einem Google Maps-Webdienst
@@ -56,8 +56,7 @@ Die folgenden Dienst-APIs stehen in Azure Maps derzeit nicht zur Verfügung:
 - Geolocation
 - Details zu Orten und Fotos: Telefonnummern und Website-URL stehen in der Azure Maps-Such-API zur Verfügung.
 - Karten-URLs
-- Nächstgelegene Straßen: Diese Information kann wie [hier](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Basic%20snap%20to%20road%20logic
-) beschrieben über das Web-SDK ermittelt werden, sie steht aktuell jedoch nicht als Dienst zur Verfügung.
+- Nächstgelegene Straßen: Diese Information kann wie [hier](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Basic%20snap%20to%20road%20logic) beschrieben über das Web-SDK ermittelt werden, sie steht aktuell jedoch nicht als Dienst zur Verfügung.
 - Statische Straßenansicht
 
 Azure Maps verfügt über mehrere zusätzliche REST-Webdienste, die möglicherweise von Interesse sind:
@@ -65,7 +64,7 @@ Azure Maps verfügt über mehrere zusätzliche REST-Webdienste, die möglicherwe
 - [Räumliche Vorgänge:](/rest/api/maps/spatial) Lagern Sie komplexe räumliche Berechnungen und Vorgänge, wie z. B. Geofencing, in einen Dienst aus.
 - [Datenverkehr:](/rest/api/maps/traffic) Greifen Sie in Echtzeit auf den Datenverkehrsfluss und die Vorfallsdaten zu.
 
-## <a name="prerequisites"></a>Voraussetzungen 
+## <a name="prerequisites"></a>Voraussetzungen
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 2. [Erstellen eines Azure Maps-Kontos](quick-demo-map-app.md#create-an-azure-maps-account)
@@ -123,17 +122,17 @@ Machen Sie sich mit den [bewährten Methoden für die Suche](how-to-use-best-pra
 
 Die Azure Maps-API für die umgekehrte Geocodierung bietet einige zusätzliche Features, die in Google Maps nicht verfügbar sind. Es empfiehlt sich ggf., diese Features im Zuge der App-Migration in Ihre Anwendung zu integrieren:
 
-- Abrufen von Daten zu Geschwindigkeitsbegrenzungen
-- Abrufen von Informationen zur Straßennutzung: lokale Straße, Umgehungsstraße, eingeschränkte Zufahrt, Auffahrt und Ähnliches
-- Abrufen der Straßenseite einer Koordinate
+* Abrufen von Daten zu Geschwindigkeitsbegrenzungen
+* Abrufen von Informationen zur Straßennutzung: lokale Straße, Umgehungsstraße, eingeschränkte Zufahrt, Auffahrt und Ähnliches
+* Abrufen der Straßenseite einer Koordinate
 
 ## <a name="search-for-points-of-interest"></a>Suchen nach Points of Interest
 
 Daten zu Points of Interest können in Google Maps mithilfe der Such-API für Orte gesucht werden. Diese API bietet drei verschiedene Möglichkeiten zum Suchen nach Points of Interest:
 
-- **Suchen von Orten aus Text:** Sucht nach einem Point of Interest anhand des Namens, der Adresse oder der Telefonnummer.
-- **Umgebungssuche:** Sucht nach Points of Interest innerhalb einer bestimmten Entfernung zum Standort.
-- **Textsuche:** Sucht nach Orten anhand von Freiformtext (mit Point of Interest und Standortangabe). Beispiele sind „Pizza in New York“ oder „Restaurants auf der Hauptstraße“.
+* **Suchen von Orten aus Text:** Sucht nach einem Point of Interest anhand des Namens, der Adresse oder der Telefonnummer.
+* **Umgebungssuche:** Sucht nach Points of Interest innerhalb einer bestimmten Entfernung zum Standort.
+* **Textsuche:** Sucht nach Orten anhand von Freiformtext (mit Point of Interest und Standortangabe). Beispiele sind „Pizza in New York“ oder „Restaurants auf der Hauptstraße“.
 
 Azure Maps stellt mehrere Such-APIs für Points of Interest bereit:
 
@@ -192,9 +191,9 @@ Die folgende Tabelle enthält die API-Parameter von Google Maps sowie die vergle
 
 Berechnen Sie Routen und Wegbeschreibungen mithilfe von Azure Maps. Azure Maps verfügt über viele der gleichen Funktionen wie der Routenplanungsdienst von Google Maps, z. B.:
 
-- Ankunfts- und Abfahrzeiten
-- Routen anhand des echtzeitbasierten und vorhergesagten Verkehrsaufkommens
-- Unterschiedliche Fortbewegungsarten (beispielsweise mit dem Auto, zu Fuß oder mit dem Fahrrad)
+* Ankunfts- und Abfahrzeiten
+* Routen anhand des echtzeitbasierten und vorhergesagten Verkehrsaufkommens
+* Unterschiedliche Fortbewegungsarten (beispielsweise mit dem Auto, zu Fuß oder mit dem Fahrrad)
 
 > [!NOTE]
 > Bei Azure Maps müssen alle Wegpunkte Koordinaten sein. Adressen müssen zuerst geocodiert werden.
@@ -231,16 +230,16 @@ In der folgenden Tabelle werden die API-Parameter von Google Maps den vergleichb
 
 Die Routen-API von Azure Maps verfügt über zusätzliche Features, die in Google Maps nicht verfügbar sind. Wenn Sie Ihre App migrieren, empfiehlt es sich ggf., diese Features zu verwenden, da sie unter Umständen hilfreich sind.
 
-- Unterstützung für den Routentyp: kürzeste, schnellste, attraktivste und kraftstoffeffizienteste
-- Unterstützung für zusätzliche Reisemodi: Bus, Motorrad, Taxi, Lkw und Kleinbus
-- Unterstützung für 150 Wegpunkte
-- Berechnung mehrerer Fahrzeiten in einer einzelnen Anforderung: bisheriger Verkehr, aktueller Verkehr, kein Verkehr
-- Vermeidung zusätzlicher Straßentypen: Straßen von Fahrgemeinschaften, ungepflasterte Straßen, bereits verwendete Straßen
-- Eigene Angabe zu vermeidender Bereiche
-- Höhenbegrenzung für die Route
-- Auf Motorangaben basierende Route: Berechnen Sie Routen für Fahrzeuge mit Verbrennungs- oder Elektromotor basierend auf Motorangaben und dem verbleibenden Kraftstoff bzw. Ladestand.
-- Unterstützung von Routenparametern für Nutzfahrzeuge (Fahrzeugabmessungen, Gewicht, Anzahl der Achsen, Art der Ladung und Ähnliches)
-- Angabe der maximale Fahrzeuggeschwindigkeit
+* Unterstützung für den Routentyp: kürzeste, schnellste, attraktivste und kraftstoffeffizienteste
+* Unterstützung für zusätzliche Reisemodi: Bus, Motorrad, Taxi, Lkw und Kleinbus
+* Unterstützung für 150 Wegpunkte
+* Berechnung mehrerer Fahrzeiten in einer einzelnen Anforderung: bisheriger Verkehr, aktueller Verkehr, kein Verkehr
+* Vermeidung zusätzlicher Straßentypen: Straßen von Fahrgemeinschaften, ungepflasterte Straßen, bereits verwendete Straßen
+* Eigene Angabe zu vermeidender Bereiche
+* Höhenbegrenzung für die Route
+* Auf Motorangaben basierende Route: Berechnen Sie Routen für Fahrzeuge mit Verbrennungs- oder Elektromotor basierend auf Motorangaben und dem verbleibenden Kraftstoff bzw. Ladestand.
+* Unterstützung von Routenparametern für Nutzfahrzeuge (Fahrzeugabmessungen, Gewicht, Anzahl der Achsen, Art der Ladung und Ähnliches)
+* Angabe der maximale Fahrzeuggeschwindigkeit
 
 Darüber hinaus unterstützt der Routendienst in Azure Maps auch die [Berechnung von Bereichen für Routen](/rest/api/maps/route/getrouterange). Diese werden auch als Isochrone bezeichnet. Hierzu wird ein Polygon für einen Bereich generiert, der von einem Ausgangspunkt aus in beliebiger Richtung zu erreichen ist (innerhalb eines bestimmten Zeitraums oder mit einer bestimmten Kraftstoffmenge bzw. einer bestimmten Akkuladung).
 
@@ -290,7 +289,7 @@ Neben der Möglichkeit, ein statisches Kartenbild zu generieren, bietet der Azur
 
 Fügen Sie Marker mithilfe des Parameters `markers` in der URL hinzu. Der Parameter `markers` übernimmt einen Stil und eine Liste von Positionen, die auf der Karte mit diesem Stil gerendert werden sollen, wie im Folgenden dargestellt:
 
-```
+```text
 &markers=markerStyles|markerLocation1|markerLocation2|...
 ```
 
@@ -300,21 +299,20 @@ Geben Sie Markerpositionen im Format „Breitengrad,Längengrad“ an.
 
 Fügen Sie Markerstile im Format `optionName:value` hinzu, und trennen Sie mehrere Stile jeweils durch einen senkrechten Strich (\|) voneinander. Beispiel: „Optionsname1:Wert1\|Optionsname2:Wert2“. Beachten Sie, dass die Optionsnamen und -werte durch einen Doppelpunkt (:) getrennt sind. Verwenden sie die folgenden Stiloptionsnamen für die Gestaltung von Markern in Google Maps:
 
-- `color`: die Farbe des Standardmarkersymbols. Dabei kann es sich um eine hexadezimale 24-Bit-Farbe (`0xrrggbb`) oder einen der folgenden Werte handeln: `black`, `brown`, `green`, `purple`, `yellow`, `blue`, `gray`, `orange`, `red`, `white`.
-- `label`: ein einzelnes alphanumerisches Zeichen in Großschreibung, das oberhalb des Symbols angezeigt wird.
-- `size`: die Größe des Markers. Kann `tiny`, `mid` oder `small` sein.
+* `color`: die Farbe des Standardmarkersymbols. Dabei kann es sich um eine hexadezimale 24-Bit-Farbe (`0xrrggbb`) oder einen der folgenden Werte handeln: `black`, `brown`, `green`, `purple`, `yellow`, `blue`, `gray`, `orange`, `red`, `white`.
+* `label`: ein einzelnes alphanumerisches Zeichen in Großschreibung, das oberhalb des Symbols angezeigt wird.
+* `size`: die Größe des Markers. Kann `tiny`, `mid` oder `small` sein.
 
 Verwenden Sie die folgenden Stiloptionsnamen für benutzerdefinierte Symbole in Google Maps:
 
-- `anchor`: gibt an, wie das Symbolbild an der Koordinate ausgerichtet wird. Es kann sich um einen Pixelwert (x,y) oder einen der folgenden Werte handeln: `top`, `bottom`, `left`, `right`, `center`, `topleft`, `topright`, `bottomleft` oder `bottomright`.
-- `icon`: eine URL, die auf das Symbolbild verweist.
+* `anchor`: gibt an, wie das Symbolbild an der Koordinate ausgerichtet wird. Es kann sich um einen Pixelwert (x,y) oder einen der folgenden Werte handeln: `top`, `bottom`, `left`, `right`, `center`, `topleft`, `topright`, `bottomleft` oder `bottomright`.
+* `icon`: eine URL, die auf das Symbolbild verweist.
 
 In diesem Beispiel fügen wir der Karte einen roten, mittelgroßen Marker mit dem Längengrad -110 und dem Breitengrad 45 hinzu:
 
-```
+```text
 &markers=color:red|size:mid|45,-110
 ```
-
 
 ![Google Maps-Marker](media/migrate-google-maps-web-services/google-maps-marker.png)
 
@@ -322,7 +320,7 @@ In diesem Beispiel fügen wir der Karte einen roten, mittelgroßen Marker mit de
 
 Geben Sie in der URL den Parameter `pins` an, um einem statischen Kartenbild Marker hinzuzufügen. Geben Sie wie in Google Maps einen Stil und eine Liste mit Positionen im Parameter an. Der Parameter `pins` kann mehrmals angegeben werden, um Marker mit unterschiedlichen Stilen zu unterstützen.
 
-```
+```text
 &pins=iconType|pinStyles||pinLocation1|pinLocation2|...
 ```
 
@@ -332,27 +330,27 @@ In Azure Maps muss die Stecknadelposition im Format „Längengrad Breitengrad�
 
 `iconType` gibt die Art der zu erstellenden Stecknadel an. Die folgenden Werte sind möglich:
 
-- `default`: das Standardsymbol für Pins.
-- `none`: Es wird kein Symbol angezeigt, sondern nur Bezeichnungen gerendert.
-- `custom`: gibt an, dass ein benutzerdefiniertes Symbol verwendet werden soll. Eine URL, die auf das Symbolbild verweist, kann am Ende des Parameters `pins` nach den Informationen zur Pinposition hinzugefügt werden.
-- `{udid}`: eine Unique Data ID (UDID) für ein Symbol, das in der Azure Maps-Datenspeicher-Plattform gespeichert ist.
+* `default`: das Standardsymbol für Pins.
+* `none`: Es wird kein Symbol angezeigt, sondern nur Bezeichnungen gerendert.
+* `custom`: gibt an, dass ein benutzerdefiniertes Symbol verwendet werden soll. Eine URL, die auf das Symbolbild verweist, kann am Ende des Parameters `pins` nach den Informationen zur Pinposition hinzugefügt werden.
+* `{udid}`: eine Unique Data ID (UDID) für ein Symbol, das in der Azure Maps-Datenspeicher-Plattform gespeichert ist.
 
 Fügen Sie Stecknadelstile im Format `optionNameValue` hinzu. Trennen Sie mehrere Stile jeweils durch einen senkrechten Strich (\|). Beispiel: `iconType|optionName1Value1|optionName2Value2`. Optionsname und -wert werden nicht voneinander getrennt. Verwenden Sie die folgenden Stiloptionsnamen für die Gestaltung von Markern:
 
-- `al`: gibt die Deckkraft (Alpha) des Markers an. Wählen Sie eine Zahl zwischen 0 und 1 aus.
-- `an`: gibt den Pinanker an. Geben Sie x- und y-Pixelwerte im Format „x y“ an.
-- `co`: die Farbe des Pins. Geben Sie eine hexadezimale 24-Bit-Farbe an: `000000` bis `FFFFFF`.
-- `la`: gibt den Bezeichnungsanker an. Geben Sie x- und y-Pixelwerte im Format „x y“ an.
-- `lc`: die Farbe der Bezeichnung. Geben Sie eine hexadezimale 24-Bit-Farbe an: `000000` bis `FFFFFF`.
-- `ls`: die Größe der Bezeichnung in Pixel. Wählen Sie eine Zahl größer Null aus.
-- `ro`: ein Wert in Grad, um den das Symbol gedreht werden soll. Wählen Sie eine Zahl zwischen -360 und 360 aus.
-- `sc`: ein Skalierungswert für das Pinsymbol. Wählen Sie eine Zahl größer Null aus.
+* `al`: gibt die Deckkraft (Alpha) des Markers an. Wählen Sie eine Zahl zwischen 0 und 1 aus.
+* `an`: gibt den Pinanker an. Geben Sie x- und y-Pixelwerte im Format „x y“ an.
+* `co`: die Farbe des Pins. Geben Sie eine hexadezimale 24-Bit-Farbe an: `000000` bis `FFFFFF`.
+* `la`: gibt den Bezeichnungsanker an. Geben Sie x- und y-Pixelwerte im Format „x y“ an.
+* `lc`: die Farbe der Bezeichnung. Geben Sie eine hexadezimale 24-Bit-Farbe an: `000000` bis `FFFFFF`.
+* `ls`: die Größe der Bezeichnung in Pixel. Wählen Sie eine Zahl größer Null aus.
+* `ro`: ein Wert in Grad, um den das Symbol gedreht werden soll. Wählen Sie eine Zahl zwischen -360 und 360 aus.
+* `sc`: ein Skalierungswert für das Pinsymbol. Wählen Sie eine Zahl größer Null aus.
 
 Geben Sie Bezeichnungswerte für jede Stecknadelposition an. Diese Vorgehensweise ist effizienter als einen einzelnen Bezeichnungswert auf alle Marker in der Positionsliste anzuwenden. Der Bezeichnungswert kann eine Zeichenfolge mit mehreren Zeichen sein. Schließen Sie die Zeichenfolge in einfache Anführungszeichen ein, um sicherzustellen, dass sie nicht mit einem Stil- oder Positionswert verwechselt wird.
 
 In diesem Beispiel fügen wir ein rotes (`FF0000`) Standardsymbol mit der Bezeichnung „Space Needle“ darunter (15 50) hinzu. Das Symbol hat den Längengrad -122,349300 und den Breitengrad 47,620180:
 
-```
+```text
 &pins=default|coFF0000|la15 50||'Space Needle' -122.349300 47.620180
 ```
 
@@ -360,7 +358,7 @@ In diesem Beispiel fügen wir ein rotes (`FF0000`) Standardsymbol mit der Bezeic
 
 Fügen Sie drei Stecknadeln mit den Bezeichnungswerten „1“, „2“ und „3“ hinzu:
 
-```
+```text
 &pins=default||'1'-122 45|'2'-119.5 43.2|'3'-121.67 47.12
 ```
 
@@ -372,7 +370,7 @@ Fügen Sie drei Stecknadeln mit den Bezeichnungswerten „1“, „2“ und „3
 
 Fügen Sie einem statischen Kartenbild mithilfe des Parameters `path` in der URL Linien und ein Polygon hinzu. Der Parameter `path` akzeptiert einen Stil und eine Liste von Positionen, die auf der Karte gerendert werden sollen, wie im Anschluss zu sehen:
 
-```
+```text
 &path=pathStyles|pathLocation1|pathLocation2|...
 ```
 
@@ -382,14 +380,14 @@ Pfadpositionen werden im Format `latitude1,longitude1|latitude2,longitude2|…`a
 
 Fügen Sie Pfadstile im Format `optionName:value` hinzu, und trennen Sie sie jeweils durch einen senkrechten Strich (\|). Optionsname und -wert müssen jeweils durch einen Doppelpunkt (:) getrennt werden: `optionName1:value1|optionName2:value2`. Die folgenden Stiloptionsnamen können für den Stil von Pfaden in Google Maps verwendet werden:
 
-- `color`: die Farbe der Pfad- oder Polygonumrandung. Dabei kann es sich um eine hexadezimale 24-Bit-Farbe (`0xrrggbb`), eine hexadezimale 32-Bit-Farbe (`0xrrggbbbaa`) oder einen der folgenden Werte handeln: „black“, „brown“, „green“, „purple“, „yellow“, „blue“, „gray“, „orange“, „red“, „white“.
-- `fillColor`: die Farbe zum Ausfüllen des Pfadbereichs (Polygon). Dabei kann es sich um eine hexadezimale 24-Bit-Farbe (`0xrrggbb`), eine hexadezimale 32-Bit-Farbe (`0xrrggbbbaa`) oder einen der folgenden Werte handeln: „black“, „brown“, „green“, „purple“, „yellow“, „blue“, „gray“, „orange“, „red“, „white“.
-- `geodesic`: gibt an, ob der Pfad eine Linie sein soll, die der Erdkrümmung folgt.
-- `weight`: die Stärke der Pfadlinie in Pixel.
+* `color`: die Farbe der Pfad- oder Polygonumrandung. Dabei kann es sich um eine hexadezimale 24-Bit-Farbe (`0xrrggbb`), eine hexadezimale 32-Bit-Farbe (`0xrrggbbbaa`) oder einen der folgenden Werte handeln: „black“, „brown“, „green“, „purple“, „yellow“, „blue“, „gray“, „orange“, „red“, „white“.
+* `fillColor`: die Farbe zum Ausfüllen des Pfadbereichs (Polygon). Dabei kann es sich um eine hexadezimale 24-Bit-Farbe (`0xrrggbb`), eine hexadezimale 32-Bit-Farbe (`0xrrggbbbaa`) oder einen der folgenden Werte handeln: „black“, „brown“, „green“, „purple“, „yellow“, „blue“, „gray“, „orange“, „red“, „white“.
+* `geodesic`: gibt an, ob der Pfad eine Linie sein soll, die der Erdkrümmung folgt.
+* `weight`: die Stärke der Pfadlinie in Pixel.
 
 Fügen Sie der Karte im URL-Parameter eine rote Linie mit Deckkraft und Pixelstärke zwischen den Koordinaten hinzu. Im folgenden Beispiel hat die Linie eine Deckkraft von 50 Prozent und eine Stärke von vier Pixeln. Als Koordinaten werden der Längengrad -110 und der Breitengrad 45 und Längengrad: –100, Breitengrad: 50 verwendet.
 
-```
+```text
 &path=color:0xFF000088|weight:4|45,-110|50,-100
 ```
 
@@ -399,7 +397,7 @@ Fügen Sie der Karte im URL-Parameter eine rote Linie mit Deckkraft und Pixelst�
 
 Geben Sie in der URL den Parameter `path` an, um einem statischen Kartenbild Linien und Polygone hinzuzufügen. Geben Sie in diesem Parameter wie in Google Maps einen Stil und eine Liste mit Positionen an. Geben Sie den Parameter `path` mehrmals an, um mehrere Kreise, Linien und Polygone mit unterschiedlichen Stilen zu rendern.
 
-```
+```text
 &path=pathStyles||pathLocation1|pathLocation2|...
 ```
 
@@ -407,16 +405,16 @@ Bei Azure Maps müssen die Koordinaten für Pfadpositionen im Format „Längeng
 
 Fügen Sie Pfadstile mit dem Format `optionNameValue` hinzu. Trennen Sie mehrere Stile jeweils durch einen senkrechten Strich (\|): `optionName1Value1|optionName2Value2`. Optionsname und -wert werden nicht voneinander getrennt. Verwenden Sie die folgenden Stiloptionsnamen für die Gestaltung von Pfaden in Azure Maps:
 
-- `fa`: die Deckkraft der Füllfarbe (Alpha), die beim Rendern von Polygonen verwendet wird. Wählen Sie eine Zahl zwischen 0 und 1 aus.
-- `fc`: die Füllfarbe, die zum Rendern des Bereichs eines Polygons verwendet wird.
-- `la`: die Deckkraft der Linienfarbe (Alpha), die zum Rendern von Linien und der Umrandung von Polygonen verwendet wird. Wählen Sie eine Zahl zwischen 0 und 1 aus.
-- `lc`: die Linienfarbe, die zum Rendern von Linien und der Umrandung von Polygonen verwendet wird.
-- `lw`: die Breite der Linie in Pixel.
-- `ra`: gibt einen Kreisradius in Metern an.
+* `fa`: die Deckkraft der Füllfarbe (Alpha), die beim Rendern von Polygonen verwendet wird. Wählen Sie eine Zahl zwischen 0 und 1 aus.
+* `fc`: die Füllfarbe, die zum Rendern des Bereichs eines Polygons verwendet wird.
+* `la`: die Deckkraft der Linienfarbe (Alpha), die zum Rendern von Linien und der Umrandung von Polygonen verwendet wird. Wählen Sie eine Zahl zwischen 0 und 1 aus.
+* `lc`: die Linienfarbe, die zum Rendern von Linien und der Umrandung von Polygonen verwendet wird.
+* `lw`: die Breite der Linie in Pixel.
+* `ra`: gibt einen Kreisradius in Metern an.
 
 Fügen Sie im URL-Parameter eine rote Linie mit Deckkraft und Pixelstärke zwischen den Koordinaten hinzu. Im folgenden Beispiel hat die Linie eine Deckkraft von 50 Prozent und eine Stärke von vier Pixeln. Als Koordinaten werden der Längengrad -110 und der Breitengrad 45 und Längengrad: –100, Breitengrad: 50 verwendet.
 
-```
+```text
 &path=lcFF0000|la.5|lw4||-110 45|-100 50
 ```
 
@@ -481,11 +479,15 @@ Zusätzlich zu diesem API bietet Azure Maps eine Reihe von Zeitzonen-APIs. Diese
 
 Azure Maps stellt Clientbibliotheken für die folgenden Programmiersprachen bereit:
 
-- JavaScript, TypeScript, Node.js: [Dokumentation](how-to-use-services-module.md) \| [NPM-Paket](https://www.npmjs.com/package/azure-maps-rest)
+* JavaScript, TypeScript, Node.js: [Dokumentation](how-to-use-services-module.md) \| [NPM-Paket](https://www.npmjs.com/package/azure-maps-rest)
 
 Die folgenden Open-Source-Clientbibliotheken stehen für andere Programmiersprachen zur Verfügung:
 
-- .NET Standard 2.0: [GitHub-Projekt](https://github.com/perfahlen/AzureMapsRestServices) \| [NuGet-Paket](https://www.nuget.org/packages/AzureMapsRestToolkit/)
+* .NET Standard 2.0: [GitHub-Projekt](https://github.com/perfahlen/AzureMapsRestServices) \| [NuGet-Paket](https://www.nuget.org/packages/AzureMapsRestToolkit/)
+
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+Es muss keine Bereinigung von Ressourcen durchgeführt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -493,18 +495,3 @@ Weitere Informationen zu den Azure Maps-REST-Diensten:
 
 > [!div class="nextstepaction"]
 > [Bewährte Suchmethoden](how-to-use-best-practices-for-search.md)
-
-> [!div class="nextstepaction"]
-> [Suchen nach einer Adresse](how-to-search-for-address.md)
-
-> [!div class="nextstepaction"]
-> [Bewährte Methoden für den Azure Maps-Routendienst](how-to-use-best-practices-for-routing.md)
-
-> [!div class="nextstepaction"]
-> [Azure Maps-REST-Dienste-API – Referenzdokumentation](/rest/api/maps/)
-
-> [!div class="nextstepaction"]
-> [Codebeispiele](/samples/browse/?products=azure-maps)
-
-> [!div class="nextstepaction"]
-> [Verwenden des Dienstmoduls (Web SDK)](how-to-use-best-practices-for-routing.md)

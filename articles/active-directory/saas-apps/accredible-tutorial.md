@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 3329d092e27e7d8885daa87650734cd8e84202c9
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: cf74b563352ccd0f62e583bccccd72078cbb2046
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92313653"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673789"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-accredible"></a>Tutorial: Azure Active Directory-Integration mit Accredible
 
@@ -63,7 +63,7 @@ Zum Konfigurieren der Integration von Accredible in Azure AD müssen Sie Accredi
 
 4. Geben Sie im Suchfeld **Accredible** ein, wählen Sie im Ergebnisbereich **Accredible** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
-     ![Accredible in der Ergebnisliste](common/search-new-app.png)
+    ![Accredible in der Ergebnisliste](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
 
@@ -148,7 +148,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
     ![Dialogfeld „Benutzer“](common/user-properties.png)
 
     a. Geben Sie im Feld **Name** den Namen **BrittaSimon** ein.
-  
+
     b. Geben Sie im Feld **Benutzername** Folgendes ein: **brittasimon\@ihreunternehmensdomäne.erweiterung**.  
     Zum Beispiel, BrittaSimon@contoso.com
 
@@ -164,7 +164,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
     ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
-2. Wählen Sie in der Anwendungsliste **Accredible**aus.
+2. Wählen Sie in der Anwendungsliste **Accredible** aus.
 
     ![Accredible-Link in der Anwendungsliste](common/all-applications.png)
 
@@ -184,7 +184,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 ### <a name="create-accredible-test-user"></a>Erstellen eines Accredible-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in Accredible eine Benutzerin namens „Britta Simon“. Sie müssen die E-Mail-ID des Benutzers an das  [Accredible-Supportteam](mailto:support@accredible.com) senden, das die E-Mail-überprüft und Ihnen dann die Einladungs-E-Mail sendet, sodass Sie Benutzer zur Accredible-Plattform hinzufügen können.
+In diesem Abschnitt erstellen Sie in Accredible eine Benutzerin namens „Britta Simon“. Sie müssen die E-Mail-ID des Benutzers/der Benutzerin an das [Accredible-Supportteam](mailto:support@accredible.com) senden, das die E-Mail-überprüft und Ihnen dann die Einladungs-E-Mail sendet, sodass Sie Benutzer zur Accredible-Plattform hinzufügen können.
 
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
 

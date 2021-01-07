@@ -1,6 +1,6 @@
 ---
 title: 'Tutorial: Apache Spark-Streaming und Apache Kafka – Azure HDInsight'
-description: Erfahren Sie, wie Sie Apache Spark-Streaming verwenden, um Daten in oder aus Apache Kafka zu streamen. In diesem Tutorial streamen Sie Daten mithilfe eines Jupyter Notebooks aus Spark in HDInsight.
+description: Erfahren Sie, wie Sie Apache Spark-Streaming verwenden, um Daten in oder aus Apache Kafka zu streamen. In diesem Tutorial streamen Sie Daten mithilfe eines Jupyter Notebooks aus Spark in HDInsight.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,seodec18,seoapr2020
 ms.date: 04/22/2020
-ms.openlocfilehash: 8aa7401a2ee7a0d87736e6b18fc814f983e2afa0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9af0349326cf82ed9d050c367b6ed784c9ea9ce9
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82184196"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97821127"
 ---
 # <a name="tutorial-use-apache-spark-structured-streaming-with-apache-kafka-on-hdinsight"></a>Tutorial: Verwenden von strukturiertem Apache Spark-Streaming mit Apache Kafka in HDInsight
 
@@ -184,7 +184,7 @@ Dieses Beispiel zeigt, wie Sie strukturiertes Spark-Streaming mit Kafka in HDIns
 
 1. Spark-Streaming beinhaltet Mikrobatchverarbeitung. Das bedeutet, dass Daten als Batches vorliegen und Executors für die Datenbatches ausgeführt werden. Ist das Leerlauftimeout des Executors geringer als die für die Verarbeitung des Batches benötigte Zeit, werden die Executors ständig hinzugefügt und entfernt. Ist das Leerlauftimeout der Executors länger als die Batchdauer, wird der Executor nie entfernt. **Daher wird empfohlen, die dynamische Zuteilung zu deaktivieren, indem Sie „spark.dynamicAllocation.enabled“ bei der Ausführung von Streaminganwendungen auf „false“ festlegen.**
 
-    Laden Sie die vom Notebook verwendeten Pakete, indem Sie die folgenden Informationen in einer Zelle des Notebooks eingeben. Führen Sie den Befehl mit **STRG+EINGABETASTE**aus.
+    Laden Sie die vom Notebook verwendeten Pakete, indem Sie die folgenden Informationen in einer Zelle des Notebooks eingeben. Führen Sie den Befehl mit **STRG+EINGABETASTE** aus.
 
     ```configuration
     %%configure -f

@@ -1,18 +1,18 @@
 ---
 title: Registrieren und Überprüfen von Azure SQL-Datenbank
 description: In diesem Tutorial wird beschrieben, wie Sie Azure SQL-Datenbank überprüfen.
-author: hophan
+author: hophanms
 ms.author: hophan
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 10/02/2020
-ms.openlocfilehash: 1fbeedd8643a777b29ebe4993eed7b664240621c
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 15708e35fa27bb4a1f72368df6f49ff747eb799b
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920279"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97739789"
 ---
 # <a name="register-and-scan-an-azure-sql-database"></a>Registrieren und Überprüfen von Azure SQL-Datenbank
 
@@ -28,7 +28,7 @@ Die Datenquelle vom Typ „Azure SQL-Datenbank“ unterstützt die folgenden Fu
 
 ### <a name="known-limitations"></a>Bekannte Einschränkungen
 
-Azure Purview unterstützt nicht die Überprüfung von [Ansichten](https://docs.microsoft.com/sql/relational-databases/views/views?view=sql-server-ver15) in Azure SQL-Datenbank. 
+Azure Purview unterstützt nicht die Überprüfung von [Ansichten](https://docs.microsoft.com/sql/relational-databases/views/views?view=sql-server-ver15&preserve-view=true) in Azure SQL-Datenbank. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -89,7 +89,7 @@ Zur Nutzung eines Dienstprinzipals können Sie einen vorhandenen Dienstprinzipal
 Der Dienstprinzipal oder die verwaltete Identität muss über die Berechtigung zum Abrufen von Metadaten für die Datenbank, die Schemas und die Tabellen verfügen. Darüber hinaus muss das Abfragen der Tabellen möglich sein, damit Stichproben für die Klassifizierung genommen werden können.
 
 - [Konfigurieren und Verwalten der Azure Active Directory-Authentifizierung mit Azure SQL](https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-configure)
-- Bei Verwendung einer verwalteten Identität verfügt Ihr Purview-Konto über eine eigene verwaltete Identität, bei der es sich im Grunde um den Purview-Namen handelt, den Sie bei der Erstellung eingegeben haben. Sie müssen einen Azure AD-Benutzer in Azure SQL-Datenbank erstellen, indem Sie genau den Namen der verwalteten Identität von Purview oder Ihren eigenen Dienstprinzipal angeben. Führen Sie dazu die Schritte im Tutorial unter [Erstellen des Dienstprinzipalbenutzers in Azure SQL-Datenbank](https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-service-principal-tutorial#create-the-service-principal-user-in-azure-sql-database) aus. Sie müssen der Identität die Berechtigung `db_owner` (**empfohlen**) zuweisen. SQL-Beispielsyntax für das Erstellen eines Benutzers und Gewähren der Berechtigung:
+- Bei Verwendung einer verwalteten Identität verfügt Ihr Purview-Konto über eine eigene verwaltete Identität, bei der es sich im Grunde um den Purview-Namen handelt, den Sie bei der Erstellung eingegeben haben. Sie müssen einen Azure AD-Benutzer in Azure SQL-Datenbank erstellen, indem Sie genau den Namen der verwalteten Identität von Purview oder Ihren eigenen Dienstprinzipal angeben. Führen Sie dazu die Schritte im Tutorial unter [Erstellen des Dienstprinzipalbenutzers in Azure SQL-Datenbank](https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-service-principal-tutorial#create-the-service-principal-user-in-azure-sql-database) aus. Sie müssen der Identität die richtige Berechtigung (z. B. `db_owner` oder `db_datareader`) zuweisen. SQL-Beispielsyntax für das Erstellen eines Benutzers und Gewähren der Berechtigung:
 
     ```sql
     CREATE USER [Username] FROM EXTERNAL PROVIDER
@@ -100,7 +100,7 @@ Der Dienstprinzipal oder die verwaltete Identität muss über die Berechtigung z
     ```
 
     > [!Note]
-    > `Username` ist Ihr eigener Dienstprinzipal oder eine verwaltete Identität von Purview.
+    > `Username` ist Ihr eigener Dienstprinzipal oder eine verwaltete Identität von Purview. Weitere Informationen finden Sie unter den [festen Datenbankrollen und ihren Möglichkeiten](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/database-level-roles?view=sql-server-ver15&preserve-view=true#fixed-database-roles).
     
 ##### <a name="add-service-principal-to-key-vault-and-purviews-credential"></a>Hinzufügen des Dienstprinzipals zum Schlüsseltresor und zu den Anmeldeinformationen von Purview
 
@@ -113,7 +113,7 @@ Es ist erforderlich, die Anwendungs-ID und das Geheimnis des Dienstprinzipals ab
 1. Kopieren Sie die Werte von **Anwendungs-ID (Client)** unter **Übersicht** und **Geheimer Clientschlüssel** unter **Zertifikate und Geheimnisse**.
 1. Navigieren zum Schlüsseltresor
 1. Wählen Sie **Einstellungen > Geheimnisse** aus.
-1. Wählen Sie **+ Generieren/Importieren** aus, und geben Sie unter **Name** einen gewünschten Namen und unter **Geheimer Clientschlüssel** Ihres Dienstprinzipals den **Wert** ein.
+1. Wählen Sie **+ Generieren/Importieren** aus, und geben Sie unter **Name** einen gewünschten Namen und den **Wert** als **Geheimen Clientschlüssel** Ihres Dienstprinzipals ein.
 1. Wählen Sie **Erstellen** aus, um den Vorgang abzuschließen.
 1. Falls für Ihren Schlüsseltresor noch keine Verbindung mit Purview hergestellt wurde, müssen Sie eine [neue Schlüsseltresorverbindung erstellen](manage-credentials.md#create-azure-key-vaults-connections-in-your-azure-purview-account).
 1. [Erstellen Sie abschließend neue Anmeldeinformationen](manage-credentials.md#create-a-new-credential), indem Sie den Dienstprinzipal zum Einrichten Ihrer Überprüfung verwenden.

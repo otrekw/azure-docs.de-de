@@ -12,53 +12,27 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/10/2020
-ms.openlocfilehash: a864b2b3e0379a8b0a1d67c97a63b3d5c52f9e58
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 1d8859f4790610e72ad517f74bbbbf0cf77d9316
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92669722"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97705199"
 ---
-# <a name="quickstart-use-net-and-c-in-visual-studio-to-connect-to-and-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Schnellstart: Verwenden Sie .NET und C# in Visual Studio, um eine Verbindung mit einer Datenbank in Azure SQL-Datenbank oder Azure SQL Managed Instance herzustellen und die Datenbank abzufragen.
-[!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
+# <a name="quickstart-use-net-and-c-in-visual-studio-to-connect-to-and-query-a-database"></a>Schnellstart: Herstellen einer Verbindung mit einer Datenbank und Abfragen der Datenbank mit .NET und C# in Visual Studio
+[!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-In dieser Schnellstartanleitung erfahren Sie, wie Sie mit [.NET Framework](https://www.microsoft.com/net/) und C#-Code in Visual Studio eine Datenbank in Azure SQL-Datenbank mit Transact-SQL-Anweisungen abfragen.
+In dieser Schnellstartanleitung erfahren Sie, wie Sie mit [.NET Framework](https://www.microsoft.com/net/) und C#-Code in Visual Studio eine Datenbank in Azure SQL oder Synapse SQL mit Transact-SQL-Anweisungen abfragen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Für die Durchführung dieses Schnellstarts benötigen Sie Folgendes:
 
 - Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-- Eine Datenbank in Azure SQL-Datenbank In den folgenden Schnellstartanleitungen erfahren Sie jeweils, wie Sie eine Datenbank in Azure SQL-Datenbank erstellen und anschließend konfigurieren:
-
-  | Aktion | SQL-Datenbank | Verwaltete SQL-Instanz | SQL Server auf Azure-VMs |
-  |:--- |:--- |:---|:---|
-  | Erstellen| [Portal](single-database-create-quickstart.md) | [Portal](../managed-instance/instance-create-quickstart.md) | [Portal](../virtual-machines/windows/sql-vm-create-portal-quickstart.md)
-  || [BEFEHLSZEILENSCHNITTSTELLE (CLI)](scripts/create-and-configure-database-cli.md) | [BEFEHLSZEILENSCHNITTSTELLE (CLI)](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
-  || [PowerShell](scripts/create-and-configure-database-powershell.md) | [PowerShell](../managed-instance/scripts/create-configure-managed-instance-powershell.md) | [PowerShell](../virtual-machines/windows/sql-vm-create-powershell-quickstart.md)
-  | Konfigurieren | [IP-Firewallregel auf Serverebene](firewall-create-server-level-portal-quickstart.md)| [Verbindung von einem virtuellen Computer](../managed-instance/connect-vm-instance-configure.md)|
-  |||[Verbindungen von lokalen Computern](../managed-instance/point-to-site-p2s-configure.md) | [Connect to SQL Server (Herstellen einer Verbindung mit SQL Server)](../virtual-machines/windows/sql-vm-create-portal-quickstart.md)
-  |Laden der Daten|Laden von Adventure Works gemäß Schnellstartanleitung|[Wiederherstellen von Wide World Importers](../managed-instance/restore-sample-database-quickstart.md) | [Wiederherstellen von Wide World Importers](../managed-instance/restore-sample-database-quickstart.md) |
-  |||Wiederherstellen oder Importieren von Adventure Works über eine [BACPAC-Datei](database-import.md) von [GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)| Wiederherstellen oder Importieren von Adventure Works über eine [BACPAC-Datei](database-import.md) von [GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)|
-  |||
-
-  > [!IMPORTANT]
-  > Die Skripts in diesem Artikel sind für die Adventure Works-Datenbank geschrieben. Bei einer verwalteten SQL-Instanz müssen Sie entweder die Adventure Works-Datenbank in eine Instanzdatenbank importieren oder die Skripts in diesem Artikel zur Verwendung der Wide World Importers-Datenbank anpassen.
-
 - [Visual Studio 2019](https://www.visualstudio.com/downloads/) – Community, Professional oder Enterprise Edition.
+- Eine Datenbank, in der Sie eine Abfrage ausführen können.
 
-## <a name="get-server-connection-information"></a>Ermitteln von Serververbindungsinformationen
-
-Ermitteln Sie die Verbindungsinformationen, die Sie zum Herstellen einer Verbindung mit der Datenbank benötigen. In den weiteren Verfahren benötigen Sie den vollqualifizierten Server- oder Hostnamen, den Datenbanknamen und die Anmeldeinformationen.
-
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
-
-2. Navigieren Sie zur Seite **SQL-Datenbanken** oder **Verwaltete SQL-Instanzen** .
-
-3. Auf der Seite **Übersicht** finden Sie den vollqualifizierten Servernamen für eine Datenbank in Azure SQL-Datenbank neben **Servername** oder den vollqualifizierten Servernamen (oder die IP-Adresse) für Azure SQL Managed Instance bzw. für SQL Server auf einem virtuellen Azure-Computer neben **Host** . Um den Namen des Servers oder Hosts zu kopieren, zeigen Sie darauf, und wählen Sie das Symbol **Kopieren** aus.
-
-> [!NOTE]
-> Verbindungsinformationen für SQL Server auf einem virtuellen Azure-Computer finden Sie unter [Herstellen einer Verbindung mit einer SQL Server-Instanz](../virtual-machines/windows/sql-vm-create-portal-quickstart.md#connect-to-sql-server).
+  [!INCLUDE[create-configure-database](../includes/create-configure-database.md)]
 
 ## <a name="create-code-to-query-the-database-in-azure-sql-database"></a>Schreiben von Code zum Abfragen der Datenbank in Azure SQL-Datenbank
 
@@ -70,7 +44,7 @@ Ermitteln Sie die Verbindungsinformationen, die Sie zum Herstellen einer Verbind
    
 1. Wählen Sie **Projekt** >  **NuGet-Pakete verwalten** aus. 
    
-1. Wählen Sie in **NuGet-Paket-Manager** die Registerkarte **Durchsuchen** aus, suchen Sie nach **Microsoft.Data.SqlClient** , und wählen Sie die Option aus.
+1. Wählen Sie in **NuGet-Paket-Manager** die Registerkarte **Durchsuchen** aus, suchen Sie nach **Microsoft.Data.SqlClient**, und wählen Sie die Option aus.
    
 1. Wählen Sie auf der Seite **Microsoft.Data.SqlClient** die Option **Installieren** aus. 
    - Wählen Sie bei Aufforderung **OK** aus, um die Installation fortzusetzen. 
@@ -79,9 +53,6 @@ Ermitteln Sie die Verbindungsinformationen, die Sie zum Herstellen einer Verbind
 1. Wenn die Installation abgeschlossen ist, können Sie den **NuGet-Paket-Manager** schließen. 
    
 1. Ersetzen Sie den Inhalt von **Program.cs** im Code-Editor durch den folgenden Code. Ersetzen Sie Ihre Werte für `<your_server>`, `<your_username>`, `<your_password>` und `<your_database>`.
-   
-   >[!IMPORTANT]
-   >Der Code in diesem Beispiel verwendet die AdventureWorksLT-Beispieldaten, die Sie beim Erstellen Ihrer Datenbank als Datenquelle auswählen können. Wenn Ihre Datenbank unterschiedliche Daten aufweist, verwenden Sie Tabellen aus Ihrer eigenen Datenbank in der SELECT-Abfrage. 
    
    ```csharp
    using System;
@@ -107,12 +78,7 @@ Ermitteln Sie die Verbindungsinformationen, die Sie zum Herstellen einer Verbind
                        Console.WriteLine("\nQuery data example:");
                        Console.WriteLine("=========================================\n");
                        
-                       StringBuilder sb = new StringBuilder();
-                       sb.Append("SELECT TOP 20 pc.Name as CategoryName, p.name as ProductName ");
-                       sb.Append("FROM [SalesLT].[ProductCategory] pc ");
-                       sb.Append("JOIN [SalesLT].[Product] p ");
-                       sb.Append("ON pc.productcategoryid = p.productcategoryid;");
-                       String sql = sb.ToString();
+                       String sql = "SELECT name, collation_name FROM sys.databases";
    
                        using (SqlCommand command = new SqlCommand(sql, connection))
                        {
@@ -139,8 +105,8 @@ Ermitteln Sie die Verbindungsinformationen, die Sie zum Herstellen einer Verbind
 
 ## <a name="run-the-code"></a>Ausführen des Codes
 
-1. Um die App auszuführen, wählen Sie **Debuggen** > **Debuggen starten** , oder wählen Sie **Start** in der Symbolleiste, oder drücken Sie **F5** .
-1. Stellen Sie sicher, dass die obersten 20 Kategorie-/Produktzeilen aus Ihrer Datenbank zurückgegeben werden, und schließen Sie dann das Anwendungsfenster.
+1. Um die App auszuführen, wählen Sie **Debuggen** > **Debuggen starten**, oder wählen Sie **Start** in der Symbolleiste, oder drücken Sie **F5**.
+1. Überprüfen Sie, ob die Datenbanknamen und Sortierungen zurückgegeben werden, und schließen Sie dann das App-Fenster.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
