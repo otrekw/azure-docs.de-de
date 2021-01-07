@@ -6,12 +6,12 @@ ms.author: cshoe
 ms.service: azure-functions
 ms.topic: tutorial
 ms.date: 06/17/2020
-ms.openlocfilehash: 75e3886e31592b0672487bacd5ff2266e07e39cd
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 766ad12daeb6d2763f7ed5fe026cd4a0021eaf33
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182501"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937041"
 ---
 # <a name="tutorial-establish-azure-functions-private-site-access"></a>Tutorial: Einrichten von privatem Websitezugriff für Azure Functions
 
@@ -130,7 +130,7 @@ Im ersten Schritt dieses Tutorials wird ein neuer virtueller Computer in einem v
 
 ## <a name="create-an-azure-functions-app"></a>Erstellen einer Azure Functions-App
 
-Im nächsten Schritt wird in Azure eine Funktions-App mit [Verbrauchsplan](functions-scale.md#consumption-plan) erstellt. Später in diesem Tutorial wird Ihr Funktionscode für diese Ressource bereitgestellt.
+Im nächsten Schritt wird in Azure eine Funktions-App mit [Verbrauchsplan](consumption-plan.md) erstellt. Später in diesem Tutorial wird Ihr Funktionscode für diese Ressource bereitgestellt.
 
 1. Wählen Sie im Portal im oberen Bereich der Ressourcengruppenansicht die Option **Hinzufügen** aus.
 1. Wählen Sie **Compute > Funktions-App** aus.
@@ -149,7 +149,7 @@ Im nächsten Schritt wird in Azure eine Funktions-App mit [Verbrauchsplan](funct
 
     | Einstellung      | Vorgeschlagener Wert  | BESCHREIBUNG      |
     | ------------ | ---------------- | ---------------- |
-    | _Speicherkonto_ | Global eindeutiger Name | Erstellen Sie ein Speicherkonto, das von Ihrer Funktions-App verwendet wird. Speicherkontonamen müssen zwischen 3 und 24 Zeichen lang sein und dürfen nur Zahlen und Kleinbuchstaben enthalten. Sie können auch ein vorhandenes Konto verwenden, das die [Anforderungen an das Speicherkonto](./functions-scale.md#storage-account-requirements) erfüllen muss. |
+    | _Speicherkonto_ | Global eindeutiger Name | Erstellen Sie ein Speicherkonto, das von Ihrer Funktions-App verwendet wird. Speicherkontonamen müssen zwischen 3 und 24 Zeichen lang sein und dürfen nur Zahlen und Kleinbuchstaben enthalten. Sie können auch ein vorhandenes Konto verwenden, das die [Anforderungen an das Speicherkonto](storage-considerations.md#storage-account-requirements) erfüllen muss. |
     | _Betriebssystem_ | Bevorzugtes Betriebssystem | Ein Betriebssystem ist für Sie basierend auf Ihrer Runtimestapelauswahl vorab ausgewählt, aber Sie können die Einstellung ggf. ändern. |
     | _Planen_ | Nutzung | Der [Hostingplan](./functions-scale.md) bestimmt die Skalierung der Funktions-App und die Ressourcenverfügbarkeit für die jeweilige Instanz. |
 1. Wählen Sie **Überprüfen + erstellen** aus, um die App-Konfigurationsauswahl zu überprüfen.

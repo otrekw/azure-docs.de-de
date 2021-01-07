@@ -3,12 +3,12 @@ title: Bereitstellen des Blaupausenbeispiels „PCI-DSS v3.2.1“
 description: Bereitstellungsschritte für das Blaupausenbeispiel „Payment Card Industry Data Security Standard v3.2.1“, einschließlich Details zum Blaupausenartefaktparameter.
 ms.date: 08/19/2020
 ms.topic: sample
-ms.openlocfilehash: a7917f09e5e5ff898bd155f0961e5c9765b8d791
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a0b1d635a073dc19e41a7ba73e130d6028daca99
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88649209"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955670"
 ---
 # <a name="deploy-the-pci-dss-v321-blueprint-sample"></a>Bereitstellen des Blaupausenbeispiels „PCI-DSS v3.2.1“
 
@@ -93,7 +93,7 @@ Die folgende Tabelle enthält eine Aufstellung der Parameter des Blaupausenartef
 
 |Artefaktname|Artefakttyp|Parametername|BESCHREIBUNG|
 |-|-|-|-|
-|\[Vorschau\]: Audit PCI v3.2.1:2018 steuert und stellt spezifische VM-Erweiterungen zur Unterstützung der Überwachungsanforderungen bereit.|Richtlinienzuweisung|Liste der Ressourcentypen | Überwachen der Diagnoseeinstellung für ausgewählte Ressourcentypen. Standardmäßig sind alle Ressourcen ausgewählt| 
+|PCI v3.2.1:2018|Richtlinienzuweisung|Liste der Ressourcentypen | Überwachen der Diagnoseeinstellung für ausgewählte Ressourcentypen. Standardmäßig sind alle Ressourcen ausgewählt| 
 |Allowed locations (Zulässige Speicherorte)|Richtlinienzuweisung|Liste der zulässigen Speicherorte|Liste der Standorte im Rechenzentrum für jede dort bereitzustellende Ressource. Diese Liste kann an die gewünschten Azure-Standorte weltweit angepasst werden. Wählen Sie Standorte aus, die Sie zulassen möchten.| 
 |Zulässige Speicherorte für Ressourcengruppen|Richtlinienzuweisung |Zulässiger Standort |Mit dieser Richtlinie können Sie die Standorte einschränken, an denen Ihr Unternehmen Ressourcengruppen erstellen kann. Wird zur Erzwingung Ihrer Geokonformitätsanforderungen verwendet.| 
 |Bereitstellen von Überwachung auf SQL-Server-Instanzen|Richtlinienzuweisung|Aufbewahrung (Tage)|Dauer der Datenaufbewahrung in Tagen. Der Standardwert ist 180, PCI erfordert jedoch 365.| 

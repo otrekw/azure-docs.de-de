@@ -4,12 +4,12 @@ description: 'Azure CLI-Skriptbeispiel: Erstellen einer Azure-Funktion, die eine
 ms.topic: sample
 ms.date: 04/20/2017
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: b95ec2da96e385ba4595a5552e64d6cc039c0e16
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 13120ad4478febf9281ff423a3a7a8f8f3b25845
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94565329"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934406"
 ---
 # <a name="create-a-function-app-with-a-named-storage-account-connection"></a>Erstellen einer Funktions-App mit einer benannten Speicherkontoverbindung 
 
@@ -37,7 +37,7 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Erstellen Sie eine Ressourcengruppe mit einem Speicherort. |
 | [az storage account create](/cli/azure/storage/account#az-storage-account-create) | Erstellen Sie ein Speicherkonto. |
-| [az functionapp create](/cli/azure/functionapp#az-functionapp-create) | Erstellt eine Funktions-App im serverlosen [Verbrauchsplan](../functions-scale.md#consumption-plan). |
+| [az functionapp create](/cli/azure/functionapp#az-functionapp-create) | Erstellt eine Funktions-App im serverlosen [Verbrauchsplan](../consumption-plan.md). |
 | [az storage account show-connection-string](/cli/azure/storage/account#az-storage-account-show-connection-string) | Ruft die Verbindungszeichenfolge für das Konto ab. |
 | [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) | Legt die Verbindungszeichenfolge als App-Einstellung in der Funktions-App fest. |
 

@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: aapowell
-ms.openlocfilehash: 5f511a898b3b2964f954ba150b05f02486456dcf
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: e49a84f5ac507ac80481313c103701a88934083a
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92171497"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97900772"
 ---
 # <a name="tutorial-publish-a-hugo-site-to-azure-static-web-apps-preview"></a>Tutorial: Veröffentlichen einer Hugo-Website in Azure Static Web Apps (Vorschauversion)
 
@@ -77,7 +77,7 @@ Erstellen Sie mithilfe der Hugo-Befehlszeilenschnittstelle (Command Line Interfa
 
 Sie benötigen ein Repository auf GitHub, um eine Verbindung mit Azure Static Web Apps herzustellen. In den folgenden Schritten wird veranschaulicht, wie Sie ein Repository für Ihre Website erstellen.
 
-1. Erstellen Sie über [https://github.com/new](https://github.com/new) ein leeres GitHub-Repository mit dem Namen **hugo-static-app** . (Erstellen Sie keine README-Datei.)
+1. Erstellen Sie über [https://github.com/new](https://github.com/new) ein leeres GitHub-Repository mit dem Namen **hugo-static-app**. (Erstellen Sie keine README-Datei.)
 
 1. Fügen Sie das GitHub-Repository als Remoteressource zu Ihrem lokalen Repository hinzu. Fügen Sie unbedingt den GitHub-Benutzernamen anstelle des Platzhalters `<YOUR_USER_NAME>` im folgenden Befehl hinzu:
 
@@ -98,8 +98,8 @@ In den folgenden Schritten wird gezeigt, wie Sie eine neue statische Website-App
 ### <a name="create-the-application"></a>Erstellen der Anwendung
 
 1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com).
-1. Klicken Sie auf **Ressource erstellen** .
-1. Suchen Sie nach **Static Web Apps** .
+1. Klicken Sie auf **Ressource erstellen**.
+1. Suchen Sie nach **Static Web Apps**.
 1. Klicken Sie auf **Static Web Apps (Vorschau)** .
 1. Klicken Sie auf **Erstellen**
 
@@ -115,9 +115,9 @@ In den folgenden Schritten wird gezeigt, wie Sie eine neue statische Website-App
 
 1. Wählen Sie unter _SKU_ die Option **Free** aus.
 
-   :::image type="content" source="./media/publish-hugo/basic-app-details.png" alt-text="Erstellen einer Azure Static Web Apps-Ressource im Portal":::
+   :::image type="content" source="./media/publish-hugo/basic-app-details.png" alt-text="Eingegebene Details":::
 
-1. Klicken Sie auf die Schaltfläche **Mit GitHub anmelden** .
+1. Klicken Sie auf die Schaltfläche **Mit GitHub anmelden**.
 
 1. Wählen Sie die **Organisation** aus, unter der Sie das Repository erstellt haben.
 
@@ -125,7 +125,7 @@ In den folgenden Schritten wird gezeigt, wie Sie eine neue statische Website-App
 
 1. Wählen Sie unter _Branch_ die Option **Master** aus.
 
-   :::image type="content" source="./media/publish-hugo/completed-github-info.png" alt-text="Erstellen einer Azure Static Web Apps-Ressource im Portal":::
+   :::image type="content" source="./media/publish-hugo/completed-github-info.png" alt-text="Eingegebene GitHub-Informationen":::
 
 ### <a name="build"></a>Entwickeln
 
@@ -141,15 +141,15 @@ Als Nächstes fügen Sie Konfigurationseinstellungen hinzu, die beim Buildprozes
 
 ### <a name="review-and-create"></a>Überprüfen und Erstellen
 
-1. Klicken Sie auf die Schaltfläche **Bewerten + erstellen** , um sicherzustellen, dass alle Details stimmen.
+1. Klicken Sie auf die Schaltfläche **Bewerten + erstellen**, um sicherzustellen, dass alle Details stimmen.
 
-1. Klicken Sie auf **Erstellen** , um mit der Erstellung der Azure Static Web Apps-Instanz zu beginnen und einen GitHub Actions-Vorgang für die Bereitstellung anzugeben.
+1. Klicken Sie auf **Erstellen**, um mit der Erstellung der Azure Static Web Apps-Instanz zu beginnen und einen GitHub Actions-Vorgang für die Bereitstellung anzugeben.
 
 1. Warten Sie, bis der GitHub Actions-Vorgang abgeschlossen wurde.
 
-1. Klicken Sie im Azure-Portal im Fenster _Übersicht_ der neu erstellten Azure Static Web Apps-Ressource auf den Link _URL_ , um Ihre bereitgestellte Anwendung zu öffnen.
+1. Klicken Sie im Azure-Portal im Fenster _Übersicht_ der neu erstellten Azure Static Web Apps-Ressource auf den Link _URL_, um Ihre bereitgestellte Anwendung zu öffnen.
 
-   :::image type="content" source="./media/publish-hugo/deployed-app.png" alt-text="Erstellen einer Azure Static Web Apps-Ressource im Portal":::
+   :::image type="content" source="./media/publish-hugo/deployed-app.png" alt-text="Bereitgestellte Anwendung":::
 
 #### <a name="custom-hugo-version"></a>Benutzerdefinierte Hugo-Version
 
@@ -176,7 +176,7 @@ jobs:
           # For more information regarding Static Web App workflow configurations, please visit: https://aka.ms/swaworkflowconfig
           app_location: "/" # App source code path
           api_location: "api" # Api source code path - optional
-          app_artifact_location: "public" # Built app content directory - optional
+          output_location: "public" # Built app content directory - optional
           ###### End of Repository/Build Configurations ######
         env:
           HUGO_VERSION: 0.58.0

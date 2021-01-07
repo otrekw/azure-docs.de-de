@@ -5,12 +5,12 @@ ms.date: 12/2/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp, mvc, devx-track-python, devx-track-azurepowershell, devx-track-azurecli
 zone_pivot_groups: programming-languages-set-functions-full
-ms.openlocfilehash: f270f74f97a9b9306d7b23dacec12c38f418dbd1
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: fb85920b04e3cd457dc36d1ba1fd0f18dcd7abb6
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96921826"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937058"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>Erstellen einer Funktion unter Linux mit einem benutzerdefinierten Container
 
@@ -20,7 +20,7 @@ In diesem Tutorial erstellen Sie Code und stellen ihn anschließend in Azure Fun
 Von Azure Functions wird jede Sprache oder Runtime mit [benutzerdefinierten Handlern](functions-custom-handlers.md) unterstützt. Für einige Sprachen (beispielsweise die in diesem Tutorial verwendete Programmiersprache R) müssen Sie die Runtime oder zusätzliche Bibliotheken als Abhängigkeiten installieren, die die Verwendung eines benutzerdefinierten Containers erfordern.
 ::: zone-end
 
-Die Bereitstellung Ihres Funktionscodes in einem benutzerdefinierten Linux-Container erfordert Hosting im [Premium-Tarif](functions-premium-plan.md#features) oder in einem [Dedizierten Tarif (App Service-Tarif)](functions-scale.md#app-service-plan). Das Abschließen dieses Tutorials verursacht Kosten von einigen USD auf Ihrem Azure-Konto, die Sie durch [Bereinigen der Ressourcen](#clean-up-resources) minimieren können, wenn Sie fertig sind.
+Die Bereitstellung Ihres Funktionscodes in einem benutzerdefinierten Linux-Container erfordert Hosting im [Premium-Tarif](functions-premium-plan.md) oder in einem [Dedizierten Tarif (App Service-Tarif)](dedicated-plan.md). Das Abschließen dieses Tutorials verursacht Kosten von einigen USD auf Ihrem Azure-Konto, die Sie durch [Bereinigen der Ressourcen](#clean-up-resources) minimieren können, wenn Sie fertig sind.
 
 Sie können auch einen Azure App Service-Standardcontainer verwenden. Dies ist unter [Schnellstart: Erstellen Ihrer ersten unter Linux gehosteten Funktion unter Verwendung von Befehlszeilentools](./create-first-function-cli-csharp.md?pivots=programming-language-python) beschrieben. Unterstützte Basisimages für Azure Functions finden Sie im [Azure Functions-Repository für Basisimages](https://hub.docker.com/_/microsoft-azure-functions-base).
 
