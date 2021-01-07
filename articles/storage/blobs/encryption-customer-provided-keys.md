@@ -5,21 +5,21 @@ description: Clients, die Anforderungen an Azure Blob Storage richten, haben die
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 09/17/2020
+ms.date: 12/14/2020
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: abdc83019205fc39e1e85a53da7e49f8a7d4f11c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fcc5c02c4a37e205622470260d3c620ad76d07d8
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91618725"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97694697"
 ---
 # <a name="provide-an-encryption-key-on-a-request-to-blob-storage"></a>Angeben eines Verschlüsselungsschlüssels bei Richten einer Anforderung an Blob Storage
 
-Clients, die Anforderungen an Azure Blob Storage richten, haben die Möglichkeit, einen Verschlüsselungsschlüssel anforderungsbezogen anzugeben. Die Einbeziehung des Verschlüsselungsschlüssels in die Anforderung ermöglicht eine präzise Steuerung der Verschlüsselungseinstellungen für Blob-Speichervorgänge. Vom Kunden bereitgestellte Schlüssel können in Azure Key Vault oder einem anderen Schlüsselspeicher gespeichert werden.
+Clients, die Anforderungen an Azure Blob Storage richten, haben die Möglichkeit, einen AES-256-Verschlüsselungsschlüssel anforderungsbezogen anzugeben. Die Einbeziehung des Verschlüsselungsschlüssels in die Anforderung ermöglicht eine präzise Steuerung der Verschlüsselungseinstellungen für Blob-Speichervorgänge. Vom Kunden bereitgestellte Schlüssel können in Azure Key Vault oder einem anderen Schlüsselspeicher gespeichert werden.
 
 [!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
@@ -45,7 +45,7 @@ Für REST-Aufrufe können Clients mithilfe der folgenden Header Informationen zu
 |---------------|-------------|
 |`x-ms-encryption-key` |Erforderlich bei Schreib- und Leseanforderungen. Ein Base64-codierter AES-256-Verschlüsselungsschlüsselwert. |
 |`x-ms-encryption-key-sha256`| Erforderlich bei Schreib- und Leseanforderungen. Der Base64-codierte SHA256 des Verschlüsselungsschlüssels. |
-|`x-ms-encryption-algorithm` | Erforderlich bei Schreibanforderungen, optional bei Leseanforderungen. Gibt den Algorithmus an, der beim Verschlüsseln von Daten mit dem angegebenen Schlüssel verwendet werden soll. Muss AES256 sein. |
+|`x-ms-encryption-algorithm` | Erforderlich bei Schreibanforderungen, optional bei Leseanforderungen. Gibt den Algorithmus an, der beim Verschlüsseln von Daten mit dem angegebenen Schlüssel verwendet werden soll.  Der Wert dieses Headers muss auf `AES256` festgelegt sein. |
 
 Die Angabe von Verschlüsselungsschlüsseln bei der Anforderung ist optional. Wenn Sie aber einen der oben aufgeführten Header für einen Schreibvorgang angeben, müssen Sie alle Schlüssel angeben.
 

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 2011fa8e85f10f12ae914b02710bbd65f5700403
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: f0f64d910d03e42008c5fe6fef28a5b9c0917abd
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95913044"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814464"
 ---
 # <a name="optimize-azure-data-lake-storage-gen2-for-performance"></a>Optimieren von Azure Data Lake Storage Gen2 im Hinblick auf Leistung
 
@@ -21,11 +21,11 @@ Azure Data Lake Storage Gen2 unterstützt hohe Durchsätze für E/A-intensive An
 
 ![Leistung von Data Lake Storage Gen2](./media/data-lake-storage-performance-tuning-guidance/throughput.png)
 
-Data Lake Storage Gen2 kann skaliert werden, um den erforderlichen Durchsatz für sämtliche Analyseszenarien bereitzustellen. Standardmäßig bietet ein Data Lake Storage Gen2-Konto automatisch genügend Durchsatz, um die Anforderungen eines breiten Spektrums an Anwendungsfällen zu erfüllen. Sollten Kunden das Standardlimit erreichen, kann das Data Lake Storage Gen2-Konto für die Bereitstellung eines höheren Durchsatzes konfiguriert werden. Wenden Sie sich hierzu an den [Azure-Support](https://azure.microsoft.com/support/faq/).
+Data Lake Storage Gen2 kann skaliert werden, um den erforderlichen Durchsatz für sämtliche Analyseszenarien bereitzustellen. Standardmäßig bietet ein Data Lake Storage Gen2-Konto in seiner Standardkonfiguration genügend Durchsatz, um die Anforderungen eines breiten Spektrums an Anwendungsfällen zu erfüllen. Sollten Kunden das Standardlimit erreichen, kann das Data Lake Storage Gen2-Konto für die Bereitstellung eines höheren Durchsatzes konfiguriert werden. Wenden Sie sich hierzu an den [Azure-Support](https://azure.microsoft.com/support/faq/).
 
 ## <a name="data-ingestion"></a>Datenerfassung
 
-Bei der Erfassung von Daten aus einem Quellsystem in Data Lake Storage Gen2 ist zu berücksichtigen, dass es bei der Quellhardware, bei der Quellnetzwerkhardware und bei der Netzwerkkonnektivität mit Data Lake Storage Gen2 zu Engpässen kommen kann.  
+Bei der Erfassung von Daten aus einem Quellsystem in Data Lake Storage Gen2 ist zu berücksichtigen, dass es bei der Quellhardware, bei der Quellnetzwerkhardware oder bei der Netzwerkkonnektivität mit Data Lake Storage Gen2 zu Engpässen kommen kann.  
 
 ![Diagramm, das die Faktoren aufzeigt, die beim Erfassen von Daten aus einem Quellsystem in Data Lake Storage Gen2 zu berücksichtigen sind.](./media/data-lake-storage-performance-tuning-guidance/bottleneck.png)
 
@@ -43,7 +43,7 @@ Bei der Netzwerkkonnektivität zwischen Ihren Quelldaten und Data Lake Storage G
 
 Nachdem Sie die oben genannten Engpässe bei der Quellhardware und der Netzwerkkonnektivität behoben haben, können Sie nun Ihre Erfassungstools konfigurieren. In der folgenden Tabelle werden wichtige Einstellungen für verschiedene gängige Erfassungstools zusammengefasst und ausführliche Artikel zu ihrer Leistungsoptimierung angegeben.  Weitere Informationen darüber, welches Tool für Ihr Szenario geeignet ist, finden Sie in diesem [Artikel](data-lake-storage-data-scenarios.md).
 
-| Tool               | Einstellungen     | Weitere Informationen                                                                 |
+| Tool               | Einstellungen | Weitere Informationen                                                                 |
 |--------------------|------------------------------------------------------|------------------------------|
 | DistCp            | -m (Mapper)   | [Link](data-lake-storage-use-distcp.md#performance-considerations-while-using-distcp)                             |
 | Azure Data Factory| parallelCopies    | [Link](../../data-factory/copy-activity-performance.md)                          |
