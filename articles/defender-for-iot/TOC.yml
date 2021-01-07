@@ -3,6 +3,8 @@
 - name: Übersicht
   href: overview.md
   items:
+    - name: Neuigkeiten
+      href: release-notes.md
     - name: Lösungsarchitektur
       href: architecture.md
 - name: Schnellstarts

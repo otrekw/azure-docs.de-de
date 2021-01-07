@@ -19,7 +19,7 @@
       items:
         - name: Azure-Portal
           href: event-hubs-create.md
-        - name: Azure CLI
+        - name: Azure-Befehlszeilenschnittstelle
           href: event-hubs-quickstart-cli.md
         - name: Azure PowerShell
           href: event-hubs-quickstart-powershell.md
@@ -275,26 +275,14 @@
           href: /java/api/com.microsoft.azure.management.eventhub?view=azure-java-stable
     - name: Python
       items:
-        - name: "Migrieren von azure-eventhub Version\_1 zu Version\_5"
-          href: 'https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub/migration_guide.md'
         - name: Clientbibliothek
-          items:
-            - name: azure-eventhub Version 5
-              href: /python/api/azure-eventhub/?view=azure-python
-            - name: azure-eventhub Version 1
-              href: /python/api/azure-eventhub/?view=azure-python-previous
+          href: /python/api/overview/azure/eventhub-readme?view=azure-python
         - name: Verwaltungsbibliothek
           href: /python/api/overview/azure/event-hub?view=azure-python
     - name: JavaScript
       items:
-        - name: Migrieren von azure/eventhubs Version 2 zu Version 5
-          href: 'https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/event-hubs/migrationguide.md'
         - name: Clientbibliothek
-          items:
-            - name: azure/eventhubs Version 5
-              href: /javascript/api/@azure/event-hubs/?view=azure-node-latest
-            - name: azure/eventhubs Version 2
-              href: /javascript/api/@azure/event-hubs/?view=azure-node-legacy
+          href: /javascript/api/overview/azure/event-hubs-readme?view=azure-node-latest
         - name: Verwaltungsbibliothek
           href: /javascript/api/@azure/arm-eventhub/?view=azure-node-latest
     - name: Go
