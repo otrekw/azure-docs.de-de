@@ -211,6 +211,8 @@
       href: /rest/api/securityinsights/
     - name: Schema zur Netzwerknormalisierung
       href: normalization-schema.md
+    - name: UEBA-Anreicherungen
+      href: ueba-enrichments.md
 - name: Ressourcen
   items:
     - name: Nützliche Ressourcen

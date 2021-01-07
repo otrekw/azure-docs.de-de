@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 10/07/2020
+ms.date: 12/28/2020
 ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2408db2d91740350405f11e2a1250ab9b3a4fe31
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 56818862b6bc4eb38b819185aceb121e6e78488e
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96181202"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97803526"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>Bereitstellungsberichte im Azure Active Directory-Portal (Vorschau)
 
@@ -44,6 +44,7 @@ In diesem Thema erhalten Sie einen Überblick über den Bereitstellungsbericht.
 ### <a name="who-can-access-the-data"></a>Wer kann auf die Daten zugreifen?
 * Anwendungsbesitzer können Protokolle für Anwendungen in ihrem Besitz anzeigen.
 * Benutzer mit den Rollen „Sicherheitsadministrator“, „Sicherheitsleseberechtigter“, „Berichtsleser“, „Anwendungsadministrator“ und „Cloudanwendungsadministrator“
+* Benutzer in einer benutzerdefinierten Rolle mit der Berechtigung [provisioningLogs](https://docs.microsoft.com/azure/active-directory/roles/custom-enterprise-app-permissions#full-list-of-permissions)
 * Globale Administratoren
 
 
@@ -56,7 +57,7 @@ Ihrem Mandanten muss eine Azure AD Premium-Lizenz zugewiesen sein, damit der Ge
 Die Bereitstellungsprotokolle bieten Antworten auf die folgenden Fragen:
 
 * Welche Gruppen wurden erfolgreich in ServiceNow erstellt?
-* Welche Rollen wurden aus Amazon Web Services importiert?
+* Welche Benutzer wurden erfolgreich aus Adobe entfernt?
 * Welche Benutzer konnten in Dropbox nicht erstellt werden?
 
 Sie können auf die Bereitstellungsprotokolle zugreifen, indem Sie im [Azure-Portal](https://portal.azure.com) auf dem Blatt **Azure Active Directory** im Abschnitt **Überwachung** die Option **Bereitstellungsprotokolle** auswählen. Bei einigen Bereitstellungsdatensätzen kann es bis zu zwei Stunden dauern, bis sie im Portal angezeigt werden.
@@ -219,7 +220,9 @@ Die Registerkarte **Zusammenfassung** bietet eine Übersicht über die Vorgänge
 
 - Möglicherweise werden übersprungene Ereignisse für Benutzer aufgeführt, die nicht dem Gültigkeitsbereich angehören. Dies entspricht dem erwarteten Verhalten, insbesondere dann, wenn der Synchronisierungsbereich auf alle Benutzer und Gruppen festgelegt ist. Der Dienst wertet alle Objekte im Mandanten aus, auch solche, die außerhalb des Gültigkeitsbereichs liegen. 
 
-- Die Bereitstellungsprotokolle sind zurzeit in der Government-Cloud nicht verfügbar. Wenn Sie nicht auf die Bereitstellungsprotokolle zugreifen können, verwenden Sie als temporäre Problemumgehung die Überwachungsprotokolle.  
+- Die Bereitstellungsprotokolle sind zurzeit in der Government-Cloud nicht verfügbar. Wenn Sie nicht auf die Bereitstellungsprotokolle zugreifen können, verwenden Sie als temporäre Problemumgehung die Überwachungsprotokolle. 
+
+- Die Bereitstellungsprotokolle zeigen keine Rollenimporte an (gilt für AWS, SalesForce und ZenDesk). Die Protokolle für Rollenimporte finden Sie in den Überwachungsprotokollen. 
 
 ## <a name="error-codes"></a>Fehlercodes
 

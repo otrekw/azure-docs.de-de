@@ -123,6 +123,8 @@
           href: troubleshoot-cross-region-replication.md
         - name: Problembehandlung für Volumes mit dualem Protokoll
           href: troubleshoot-dual-protocol-volumes.md
+        - name: Problembehandlung für NFSv4.1-Kerberos-Volumes
+          href: troubleshoot-nfsv41-kerberos-volumes.md
         - name: Problembehandlung für Momentaufnahmenrichtlinien
           href: troubleshoot-snapshot-policies.md
         - name: Beheben von Ressourcenanbieterfehlern

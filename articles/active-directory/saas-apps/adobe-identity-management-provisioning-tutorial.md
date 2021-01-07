@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/27/2020
 ms.author: Zhchia
-ms.openlocfilehash: aafdbe631426b4b0c8c762a81457369bc474f479
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 7b4dd01b74f81318338196a40949d339f13d16da
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96181122"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673299"
 ---
 # <a name="tutorial-configure-adobe-identity-management-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Adobe Identity Management für die automatische Benutzerbereitstellung
 
@@ -57,15 +57,15 @@ Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits �
 
 2. Klicken Sie auf **Synchronisation hinzufügen**.
 
-      ![Hinzufügen](media/adobe-identity-management-provisioning-tutorial/add-sync.png)
+    ![Hinzufügen](media/adobe-identity-management-provisioning-tutorial/add-sync.png)
 
 3. Wählen Sie **Benutzer aus Microsoft Azure synchronisieren** aus, und klicken Sie auf **Weiter**.
 
-      ![Synchronisierung](media/adobe-identity-management-provisioning-tutorial/sync-users.png)
+    ![Screenshot mit ausgewählter Option „Benutzer aus Microsoft Azure Active Directory synchronisieren“](media/adobe-identity-management-provisioning-tutorial/sync-users.png)
 
 4. Kopieren und speichern Sie **Mandanten-URL** und **Geheimes Token**. Diese Werte werden im Azure-Portal auf der Registerkarte „Bereitstellung“ Ihrer Adobe Identity Management-Anwendung im Feld **Mandanten-URL** bzw. **Geheimes Token** eingegeben.
 
-      ![Synchronisierung](media/adobe-identity-management-provisioning-tutorial/token.png)
+    ![Synchronisierung](media/adobe-identity-management-provisioning-tutorial/token.png)
 
 ## <a name="step-3-add-adobe-identity-management-from-the-azure-ad-application-gallery"></a>Schritt 3: Hinzufügen von Adobe Identity Management aus dem Azure AD-Anwendungskatalog
 

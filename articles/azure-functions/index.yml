@@ -1,20 +1,20 @@
 ### YamlMime:Landing
 title: Dokumentation zu Azure Functions
-summary: Azure Functions ist ein serverloser Computedienst, mit dem Sie ereignisgesteuerten Code ausführen können, ohne eine explizite Infrastruktur bereitstellen oder verwalten zu müssen. Die Funktionen für bedarfsgesteuertes Computing (Compute On-Demand) ermöglichen eine einfache Integration und direkte Unterstützungsfunktionalität. Sie können damit auch Web-APIs bereitstellen, auf Datenbankänderungen reagieren, IoT-Datenströme verarbeiten und Nachrichtenwarteschlangen verwalten.
+summary: Azure Functions ist ein bedarfsgesteuerter Clouddienst, der sämtliche ständig aktualisierte Infrastrukturen und Ressourcen bereitstellt, die zum Ausführen Ihrer Anwendungen erforderlich sind. Stattdessen können Sie sich ganz auf die Codeelemente konzentrieren, die für Sie am wichtigsten sind, und Azure Functions kümmert sich um den Rest. Sie können mit Azure Functions Web-APIs erstellen, auf Datenbankänderungen reagieren, IoT-Datenströme verarbeiten, Nachrichtenwarteschlangen verwalten und vieles mehr.
 metadata:
   title: Dokumentation zu Azure Functions
-  description: Azure Functions ist ein serverloser Computedienst, mit dem Sie ereignisgesteuerten Code ausführen können, ohne eine explizite Infrastruktur bereitstellen oder verwalten zu müssen. Die Funktionen für bedarfsgesteuertes Computing (Compute On-Demand) ermöglichen eine einfache Integration und direkte Unterstützungsfunktionalität. Sie können damit auch Web-APIs bereitstellen, auf Datenbankänderungen reagieren, IoT-Datenströme verarbeiten und Nachrichtenwarteschlangen verwalten.
+  description: Azure Functions ist ein bedarfsgesteuerter Clouddienst, der sämtliche ständig aktualisierte Infrastrukturen und Ressourcen bereitstellt, die zum Ausführen Ihrer Anwendungen erforderlich sind. Stattdessen können Sie sich ganz auf die Codeelemente konzentrieren, die für Sie am wichtigsten sind, und Azure Functions kümmert sich um den Rest. Sie können mit Azure Functions Web-APIs erstellen, auf Datenbankänderungen reagieren, IoT-Datenströme verarbeiten, Nachrichtenwarteschlangen verwalten und vieles mehr.
   ms.service: azure-functions
   ms.topic: landing-page
   author: ggailey777
   ms.author: azfundocs
   ms.date: 09/17/2019
-  ms.openlocfilehash: e6c3cb1a9d536ed898c48c45f57434dc4bf66970
-  ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+  ms.openlocfilehash: 74acabf21252acfd79520d7f24ff79503734a235
+  ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 12/15/2020
-  ms.locfileid: "97505289"
+  ms.lasthandoff: 01/05/2021
+  ms.locfileid: "97901520"
 landingContent:
 - title: Informationen zu Azure Functions
   linkLists:

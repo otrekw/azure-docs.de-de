@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 11/16/2020
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 90942e4deebdc65fe26ce94f04a15fe2b8c0684c
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: 960b3c29f97c43e1247018a60f6c6310c7cf02de
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96512068"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724662"
 ---
 # <a name="troubleshoot-azure-file-shares-performance-issues"></a>Problembehandlung bei Leistungsproblemen mit Azure-Dateifreigaben
 
@@ -46,7 +46,7 @@ Wenn Sie überprüfen möchten, ob Ihre Freigabe gerade gedrosselt wird, können
 ### <a name="solution"></a>Lösung
 
 - Wenn Sie eine Standarddateifreigabe verwenden, aktivieren Sie [große Dateifreigaben](./storage-files-how-to-create-large-file-share.md?tabs=azure-portal) für Ihr Speicherkonto. Große Dateifreigaben unterstützen bis zu 10.000 IOPS pro Freigabe.
-- Wenn Sie eine Premium-Dateifreigabe verwenden, erhöhen Sie die Größe der bereitgestellten Dateifreigabe, um den IOPS-Grenzwert heraufzusetzen. Weitere Informationen finden Sie im [Azure Files-Planungsleitfaden](./storage-files-planning.md#understanding-provisioning-for-premium-file-shares) im Abschnitt „Grundlegendes zur Bereitstellung für Premium-Dateifreigaben“.
+- Wenn Sie eine Premium-Dateifreigabe verwenden, erhöhen Sie die Größe der bereitgestellten Dateifreigabe, um den IOPS-Grenzwert heraufzusetzen. Weitere Informationen finden Sie unter [Grundlegendes zur Bereitstellung für Premium-Dateifreigaben](./understanding-billing.md#provisioned-billing).
 
 ### <a name="cause-2-metadata-or-namespace-heavy-workload"></a>Ursache 2: Hohe Arbeitsauslastung bei Metadaten oder Namespace
 

@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.date: 01/17/2020
 ms.author: kenwith
 ms.reviewer: mimart
-ms.openlocfilehash: 0682115727068c928418d97fbf92ed32897c39d4
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 0793547c4eafcad256664546240a07c1bcb0e628
+ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94656750"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97709009"
 ---
 # <a name="integrate-with-azure-ad-application-proxy-on-a-network-device-enrollment-service-ndes-server"></a>Integrieren in den Azure AD-Anwendungsproxy auf einem NDES-Server (Network Device Enrollment Service, Registrierungsdienst für Netzwerke)
 
@@ -81,7 +81,7 @@ Der Azure Active Directory-Anwendungsproxy basiert auf Azure. Dadurch erhalten S
 
 1. Klicken Sie auf **Hinzufügen**, um die Anwendung zu speichern.
 
-1. Überprüfen Sie, ob Sie über den Azure AD-Anwendungsproxy auf Ihren NDES-Server zugreifen können, indem Sie den in Schritt 10 kopierten Link in einen Browser einfügen. Es sollte eine Standardwillkommensseite von IIS angezeigt werden.
+1. Testen Sie, ob Sie über den Azure AD-Anwendungsproxy auf Ihren NDES-Server zugreifen können, indem Sie den in Schritt 15 kopierten Link in einen Browser einfügen. Es sollte eine Standardwillkommensseite von IIS angezeigt werden.
 
 1. Fügen Sie der vorhandenen URL, die Sie im vorherigen Schritt eingefügt haben, als letzten Test den Pfad *mscep.dll* hinzu:
 

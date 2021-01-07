@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 6eff662ac0140e7a64cc3bab28856178708cb9b2
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: edb1d419900147b586ba1ff257d4307b237be537
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400674"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746727"
 ---
 # <a name="control-storage-account-access-for-serverless-sql-pool-in-azure-synapse-analytics"></a>Steuern des Speicherkontozugriffs für einen serverlosen SQL-Pool in Azure Synapse Analytics
 
@@ -89,9 +89,67 @@ Sie können die folgenden Kombinationen aus Autorisierungstypen und Azure Storag
 
 \* SAS-Token und Azure AD-Identität können für den Zugriff auf Speicher verwendet werden, der nicht durch eine Firewall geschützt ist.
 
-> [!IMPORTANT]
-> Beim Zugriff auf Speicher, der mit der Firewall geschützt ist, kann nur die verwaltete Identität verwendet werden. Sie müssen [vertrauenswürdige Microsoft-Dienste zulassen](../../storage/common/storage-network-security.md#trusted-microsoft-services) und der [systemseitig zugewiesenen Identität](../../active-directory/managed-identities-azure-resources/overview.md) für diese Ressourceninstanz explizit [eine Azure-Rolle zuweisen](../../storage/common/storage-auth-aad.md#assign-azure-roles-for-access-rights). In diesem Fall entspricht der Zugriffsbereich für die Instanz der Azure-Rolle, die der verwalteten Identität zugewiesen ist.
->
+
+### <a name="querying-firewall-protected-storage"></a>Abfragen von Speicher, der durch eine Firewall geschützt ist
+
+Beim Zugriff auf Speicher, der mit der Firewall geschützt ist, kann die **Benutzeridentität** oder die **verwaltete Identität** verwendet werden.
+
+#### <a name="user-identity"></a>Benutzeridentität
+
+Für den Zugriff auf den mit der Firewall geschützten Speicher über die Benutzeridentität können Sie das PowerShell-Modul „Az.Storage“ verwenden.
+#### <a name="configuration-via-powershell"></a>Konfiguration per PowerShell
+
+Führen Sie diese Schritte aus, um die Speicherkontofirewall zu konfigurieren und eine Ausnahme für den Synapse-Arbeitsbereich hinzuzufügen.
+
+1. Öffnen Sie PowerShell, oder [installieren Sie PowerShell](https://docs.microsoft.com/powershell/scripting/install/installing-powershell-core-on-windows?view=powershell-7.1&preserve-view=true ).
+2. Installieren Sie das aktualisierte Az-Modul. Storage-Modul: 
+    ```powershell
+    Install-Module -Name Az.Storage -RequiredVersion 3.0.1-preview -AllowPrerelease
+    ```
+    > [!IMPORTANT]
+    > Stellen Sie sicher, dass Sie mindestens Version 3.0.1 verwenden. Ihre Az.Storage-Version können Sie mithilfe des folgenden Befehls überprüfen:  
+    > ```powershell 
+    > Get-Module -ListAvailable -Name  Az.Storage | select Version
+    > ```
+    > 
+
+3. Stellen Sie eine Verbindung mit Ihrem Azure-Mandanten her: 
+    ```powershell
+    Connect-AzAccount
+    ```
+4. Definieren Sie Variablen in PowerShell: 
+    - Ressourcengruppenname: Sie finden diesen Namen im Azure-Portal in der Übersicht des Synapse-Arbeitsbereichs.
+    - Kontoname: Name des Speicherkontos, das durch Firewallregeln geschützt ist
+    - Mandanten-ID: Sie finden diese ID im Azure-Portal in Azure Active Directory in den Mandanteninformationen.
+    - Ressourcen-ID: Sie finden diese ID im Azure-Portal in der Übersicht des Synapse-Arbeitsbereichs.
+
+    ```powershell
+        $resourceGroupName = "<resource group name>"
+        $accountName = "<storage account name>"
+        $tenantId = "<tenant id>"
+        $resourceId = "<Synapse workspace resource id>"
+    ```
+    > [!IMPORTANT]
+    > Stellen Sie sicher, dass die Ressourcen-ID dieser Vorlage entspricht.
+    >
+    > Es ist wichtig, **resourcegroups** in Kleinbuchstaben zu schreiben.
+    > Beispiel für eine Ressourcen-ID: 
+    > ```
+    > /subscriptions/{subscription-id}/resourcegroups/{resource-group}/providers/Microsoft.Synapse/workspaces/{name-of-workspace}
+    > ```
+    > 
+5. Fügen Sie eine Speichernetzwerkregel hinzu: 
+    ```powershell
+        Add-AzStorageAccountNetworkRule -ResourceGroupName $resourceGroupName -Name $accountName -TenantId $tenantId -ResourceId $resourceId
+    ```
+6. Vergewissern Sie sich, dass die Regel in Ihrem Speicherkonto angewendet wurde: 
+    ```powershell
+        $rule = Get-AzStorageAccountNetworkRuleSet -ResourceGroupName $resourceGroupName -Name $accountName
+        $rule.ResourceAccessRules
+    ```
+
+#### <a name="managed-identity"></a>Verwaltete Identität
+Sie müssen [vertrauenswürdige Microsoft-Dienste zulassen](../../storage/common/storage-network-security.md#trusted-microsoft-services) und der [systemseitig zugewiesenen Identität](../../active-directory/managed-identities-azure-resources/overview.md) für diese Ressourceninstanz explizit [eine Azure-Rolle zuweisen](../../storage/common/storage-auth-aad.md#assign-azure-roles-for-access-rights). In diesem Fall entspricht der Zugriffsbereich für die Instanz der Azure-Rolle, die der verwalteten Identität zugewiesen ist.
 
 ## <a name="credentials"></a>Anmeldeinformationen
 

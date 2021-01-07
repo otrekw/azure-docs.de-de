@@ -4,16 +4,16 @@ description: Erfahren Sie, wie Sie eine identitätsbasierte Authentifizierung ü
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 04/21/2020
+ms.date: 01/03/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: contperf-fy21q1, devx-track-azurecli
-ms.openlocfilehash: deed7c3dce2d7da1940a8a4871efac7453e2cf60
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 340455450cd6a18adfd8d0843fee423f82f10a45
+ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033679"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97858398"
 ---
 # <a name="enable-azure-active-directory-domain-services-authentication-on-azure-files"></a>Aktivieren der Azure Active Directory Domain Services-Authentifizierung über Azure Files
 
@@ -22,8 +22,7 @@ ms.locfileid: "97033679"
 Wenn Sie noch nicht mit Azure-Dateifreigaben vertraut sind, empfiehlt es sich, unsere [Planhinweisliste](storage-files-planning.md) zu lesen, bevor Sie die folgende Artikelreihe lesen.
 
 > [!NOTE]
-> Azure Files unterstützt Kerberos-Authentifizierung mit Azure AD DS mit RC4-HMAC-Verschlüsselung. AES-Kerberos-Verschlüsselung wird noch nicht unterstützt.
-> Azure Files unterstützt die Authentifizierung für Azure AD DS mit vollständiger Synchronisierung mit Azure AD. Wenn Sie die bereichsbezogene Synchronisierung in Azure AD DS aktiviert haben, bei der nur eine begrenzte Gruppe von Identitäten von Azure AD synchronisiert wird, wird die Authentifizierung und Autorisierung nicht unterstützt.
+> Azure Files unterstützt Kerberos-Authentifizierung mit Azure AD DS mit RC4-HMAC- und AES 256-Verschlüsselung. Azure Files unterstützt die Authentifizierung für Azure AD DS mit vollständiger Synchronisierung mit Azure AD. Wenn Sie die bereichsbezogene Synchronisierung in Azure AD DS aktiviert haben, bei der nur eine begrenzte Gruppe von Identitäten von Azure AD synchronisiert wird, wird die Authentifizierung und Autorisierung nicht unterstützt.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -59,7 +58,7 @@ Bevor Sie Azure AD über SMB für Azure-Dateifreigaben aktivieren, sollten Sie s
 
 ## <a name="regional-availability"></a>Regionale Verfügbarkeit
 
-Die Azure Files-Authentifizierung bei Azure AD DS ist in [allen öffentlichen Azure-Regionen und Azure Government-Regionen](https://azure.microsoft.com/global-infrastructure/locations/) verfügbar.
+Die Azure Files-Authentifizierung bei Azure AD DS ist in [allen öffentlichen Azure-Regionen, Azure Government-Regionen und chinesischen Regionen](https://azure.microsoft.com/global-infrastructure/locations/) verfügbar.
 
 ## <a name="overview-of-the-workflow"></a>Übersicht über den Workflow
 

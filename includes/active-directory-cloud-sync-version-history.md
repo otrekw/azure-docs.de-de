@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 3fc2475569765116d46a175629f25d9d49634942
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 77866fcb72515d5167d9f06b7d9ad91c59bc7945
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95993947"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97700581"
 ---
 In diesem Artikel werden die veröffentlichten Versionen und Features des Azure Active Directory Connect-Bereitstellungs-Agent aufgeführt. Das Azure AD-Team aktualisiert den Bereitstellungs-Agent regelmäßig mit neuen Features und Funktionen. Der Bereitstellungs-Agent wird automatisch aktualisiert, wenn eine neue Version veröffentlicht wird. 
 
@@ -28,6 +28,8 @@ Microsoft stellt direkte Unterstützung für die neueste Agent-Version und die u
 * Unterstützung für PHS-Filterung nur für Objekte im Gültigkeitsbereich (ursprünglich wurden Kennworthashes für alle Objekte synchronisiert)
 * Es wurde ein Problem mit dem Arbeitsspeicherleck im Agent behoben.
 * Verbesserte Bereitstellungsprotokolle
+* Unterstützung für das Konfigurieren des [LDAP-Verbindungstimeouts](../articles/active-directory/cloud-provisioning/how-to-manage-registry-options.md#configure-ldap-connection-timeout) 
+* Unterstützung für das Konfigurieren der [Empfehlungsverfolgung](../articles/active-directory/cloud-provisioning/how-to-manage-registry-options.md#configure-referral-chasing) 
 
 
 ## <a name="11960"></a>1.1.96.0

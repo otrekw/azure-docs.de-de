@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 07/06/2020
+ms.date: 12/16/2020
 ms.author: justinha
-ms.openlocfilehash: d8f2e77b7225306844cec85363a2971eaac4eebd
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 5b48d326efad889adbcf25d487ee27b8200f558f
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96620255"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97693925"
 ---
 # <a name="known-issues-network-configuration-alerts-in-azure-active-directory-domain-services"></a>Bekannte Probleme: Netzwerkkonfigurationswarnungen in Azure Active Directory Domain Services
 
@@ -40,12 +40,14 @@ Auf die Netzwerksicherheitsgruppe für eine verwaltete Domäne werden die folgen
 
 | Priority | Name | Port | Protocol | `Source` | Destination | Aktion |
 |----------|------|------|----------|--------|-------------|--------|
-| 101      | AllowSyncWithAzureAD | 443 | TCP | AzureActiveDirectoryDomainServices | Any | Allow |
-| 201      | AllowRD | 3389 | TCP | CorpNetSaw | Any | Allow |
 | 301      | AllowPSRemoting | 5986| TCP | AzureActiveDirectoryDomainServices | Any | Allow |
+| 201      | AllowRD | 3389 | TCP | CorpNetSaw | Any | Deny<sup>1</sup> |
 | 65000    | AllVnetInBound | Any | Any | VirtualNetwork | VirtualNetwork | Allow |
 | 65001    | AllowAzureLoadBalancerInBound | Any | Any | AzureLoadBalancer | Any | Allow |
 | 65500    | DenyAllInBound | Any | Any | Any | Any | Verweigern |
+
+
+<sup>1</sup>Optional zum Debuggen. Zulassen, wenn dies für die erweiterte Problembehandlung erforderlich ist.
 
 > [!NOTE]
 > Sie können auch eine zusätzliche Regel einrichten, die eingehenden Datenverkehr zulässt, wenn Sie [Secure LDAP (LDAPS) konfigurieren][configure-ldaps]. Diese zusätzliche Regel ist für die korrekte LDAPS-Kommunikation erforderlich.

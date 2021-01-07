@@ -1,20 +1,21 @@
 ---
-title: Überwachen von Azure Queue Storage | Microsoft-Dokumentation
+title: Überwachen von Azure Queue Storage
 description: Erfahren Sie, wie Sie die Leistung und Verfügbarkeit von Azure Queue Storage überwachen können. Überwachen Sie Azure Queue Storage-Daten, erfahren Sie mehr über die Konfiguration, und analysieren Sie Metrik- und Protokolldaten.
 author: normesta
 services: storage
-ms.service: storage
-ms.topic: conceptual
-ms.date: 10/26/2020
 ms.author: normesta
 ms.reviewer: fryu
+ms.date: 10/26/2020
+ms.topic: conceptual
+ms.service: storage
+ms.subservice: queues
 ms.custom: monitoring, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 15bc943052218761327fa57ce8ff6f5d32bfb116
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 18991f83bfb365d1ced141fa44267502671854b8
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96855089"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588293"
 ---
 # <a name="monitoring-azure-queue-storage"></a>Überwachen von Azure Queue Storage
 
@@ -59,9 +60,9 @@ Damit Sie Ressourcenprotokolle erfassen können, müssen Sie eine Diagnoseeinste
 
 | Kategorie | BESCHREIBUNG |
 |:---|:---|
-| StorageRead | Lesevorgänge für Objekte. |
-| StorageWrite | Schreibvorgänge für Objekte. |
-| StorageDelete | Löschvorgänge für Objekte. |
+| **StorageRead** | Lesevorgänge für Objekte. |
+| **StorageWrite** | Schreibvorgänge für Objekte. |
+| **StorageDelete** | Löschvorgänge für Objekte. |
 
 ## <a name="creating-a-diagnostic-setting"></a>Erstellen einer Diagnoseeinstellung
 
@@ -95,7 +96,7 @@ Eine allgemeine Anleitung finden Sie unter [Erstellen einer Diagnoseeinstellung 
    > [!div class="mx-imgBorder"]
    > ![Seite „Ressourcenprotokolle“](media/monitor-queue-storage/diagnostic-logs-page.png)
 
-6. Geben Sie im Feld **Name** auf der Seite einen Namen für diese Ressourcenprotokolleinstellung ein. Wählen Sie dann aus, welche Vorgänge (Lese-, Schreib- und Löschvorgänge) protokolliert und wohin die Protokolle gesendet werden sollen.
+6. Geben Sie im **Namensfeld** auf der Seite einen Namen für diese Ressourcenprotokolleinstellung ein. Wählen Sie dann aus, welche Vorgänge (Lese-, Schreib- und Löschvorgänge) protokolliert und wohin die Protokolle gesendet werden sollen.
 
 #### <a name="archive-logs-to-a-storage-account"></a>Archivieren von Protokollen in einem Speicherkonto
 
@@ -152,10 +153,10 @@ Wenn Sie Ihre Protokolle in einem Speicherkonto archivieren, bezahlen Sie für d
 Aktivieren Sie Protokolle mit dem PowerShell-Cmdlet [Set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting) unter Angabe des Parameters `StorageAccountId`.
 
 ```powershell
-Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -StorageAccountId <storage-account-resource-id> -Enabled $true -Category <operatons-to-log> -RetentionEnabled <retention-bool> -RetentionInDays <number-of-days>
+Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -StorageAccountId <storage-account-resource-id> -Enabled $true -Category <operations-to-log> -RetentionEnabled <retention-bool> -RetentionInDays <number-of-days>
 ```
 
-Ersetzen Sie den Platzhalter `<storage-service-resource--id>` in diesem Codeausschnitt durch die Ressourcen-ID des Warteschlangendiensts. Sie finden die Ressourcen-ID im Azure-Portal, indem Sie die Seite **Eigenschaften** Ihres Speicherkontos öffnen.
+Ersetzen Sie den Platzhalter `<storage-service-resource--id>` in diesem Codeausschnitt durch die Ressourcen-ID der Warteschlange. Sie finden die Ressourcen-ID im Azure-Portal, indem Sie die Seite **Eigenschaften** Ihres Speicherkontos öffnen.
 
 Sie können `StorageRead`, `StorageWrite` und `StorageDelete` als Wert für den Parameter **Category** angeben.
 
@@ -163,7 +164,7 @@ Hier sehen Sie ein Beispiel:
 
 `Set-AzDiagnosticSetting -ResourceId /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/queueServices/default -StorageAccountId /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myloggingstorageaccount -Enabled $true -Category StorageWrite,StorageDelete`
 
-Eine Beschreibung der einzelnen Parameter finden Sie unter [Archivieren von Azure-Ressourcenprotokollen mithilfe von Azure PowerShell](../../azure-monitor/platform/resource-logs.md#send-to-azure-storage).
+Eine Beschreibung der einzelnen Parameter finden Sie unter [Archivieren von Azure-Ressourcenprotokollen mit Azure PowerShell](../../azure-monitor/platform/resource-logs.md#send-to-azure-storage).
 
 #### <a name="stream-logs-to-an-event-hub"></a>Streamen von Protokollen an einen Event Hub
 
@@ -172,7 +173,7 @@ Wenn Sie Ihre Protokolle an einen Event Hub streamen, bezahlen Sie für die Meng
 Aktivieren Sie Protokollen mit dem PowerShell-Cmdlet [Set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting) und dem Parameter `EventHubAuthorizationRuleId`.
 
 ```powershell
-Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -EventHubAuthorizationRuleId <event-hub-namespace-and-key-name> -Enabled $true -Category <operatons-to-log> -RetentionEnabled <retention-bool> -RetentionInDays <number-of-days>
+Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -EventHubAuthorizationRuleId <event-hub-namespace-and-key-name> -Enabled $true -Category <operations-to-log> -RetentionEnabled <retention-bool> -RetentionInDays <number-of-days>
 ```
 
 Hier sehen Sie ein Beispiel:
@@ -186,7 +187,7 @@ Eine Beschreibung der einzelnen Parameter finden Sie unter [Streamen von Daten a
 Aktivieren Sie Protokollen mit dem PowerShell-Cmdlet [Set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting) und dem Parameter `WorkspaceId`.
 
 ```powershell
-Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -WorkspaceId <log-analytics-workspace-resource-id> -Enabled $true -Category <operatons-to-log> -RetentionEnabled <retention-bool> -RetentionInDays <number-of-days>
+Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -WorkspaceId <log-analytics-workspace-resource-id> -Enabled $true -Category <operations-to-log> -RetentionEnabled <retention-bool> -RetentionInDays <number-of-days>
 ```
 
 Hier sehen Sie ein Beispiel:
@@ -197,7 +198,7 @@ Weitere Informationen finden Sie unter [Streamen von Azure-Ressourcenprotokollen
 
 ### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
-1. Öffnen Sie zunächst [Azure Cloud Shell](../../cloud-shell/overview.md), oder falls Sie die Azure-CLI lokal [installiert](/cli/azure/install-azure-cli) haben, öffnen Sie eine Befehlskonsolenanwendung wie Windows PowerShell.
+1. Öffnen Sie zunächst [Azure Cloud Shell](../../cloud-shell/overview.md), oder falls Sie die [Azure-Befehlszeilenschnittstelle lokal installiert](/cli/azure/install-azure-cli) haben, öffnen Sie eine Befehlskonsolenanwendung wie PowerShell.
 
 2. Wenn Ihre Identität mehreren Abonnements zugeordnet ist, legen Sie das aktive Abonnement auf das Abonnement des Speicherkontos fest, für das Sie Protokolle aktivieren möchten.
 
@@ -211,15 +212,15 @@ Weitere Informationen finden Sie unter [Streamen von Azure-Ressourcenprotokollen
 
 Wenn Sie Ihre Protokolle in einem Speicherkonto archivieren, bezahlen Sie für die Menge an Protokolldaten, die an das Speicherkonto gesendet werden. Die genauen Preise finden Sie im Abschnitt **Plattformprotokolle** auf der Seite [Azure Monitor – Preise](https://azure.microsoft.com/pricing/details/monitor/#platform-logs).
 
-Aktivieren Sie Protokolle mit dem Befehl [az monitor diagnostic-settings create](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create).
+Aktivieren Sie die Protokolle mit dem Befehl [`az monitor diagnostic-settings create`](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create).
 
 ```azurecli-interactive
 az monitor diagnostic-settings create --name <setting-name> --storage-account <storage-account-name> --resource <storage-service-resource-id> --resource-group <resource-group> --logs '[{"category": <operations>, "enabled": true "retentionPolicy": {"days": <number-days>, "enabled": <retention-bool}}]'
 ```
 
-Ersetzen Sie den Platzhalter `<storage-service-resource--id>` in diesem Codeausschnitt durch die Ressourcen-ID des Warteschlangendiensts. Sie finden die Ressourcen-ID im Azure-Portal, indem Sie die Seite **Eigenschaften** Ihres Speicherkontos öffnen.
+Ersetzen Sie den Platzhalter `<storage-service-resource--id>` in diesem Codeausschnitt durch die Ressourcen-ID der Warteschlange. Sie finden die Ressourcen-ID im Azure-Portal, indem Sie die Seite **Eigenschaften** Ihres Speicherkontos öffnen.
 
-Sie können `StorageRead`, `StorageWrite` und `StorageDelete` als Wert für den Parameter **Category** angeben.
+Sie können `StorageRead`, `StorageWrite` und `StorageDelete` als Wert für den Parameter `category` angeben.
 
 Hier sehen Sie ein Beispiel:
 
@@ -231,7 +232,7 @@ Eine Beschreibung der einzelnen Parameter finden Sie unter [Archivieren von Ress
 
 Wenn Sie Ihre Protokolle an einen Event Hub streamen, bezahlen Sie für die Menge an Protokolldaten, die an den Event Hub gesendet werden. Die genauen Preise finden Sie im Abschnitt **Plattformprotokolle** auf der Seite [Azure Monitor – Preise](https://azure.microsoft.com/pricing/details/monitor/#platform-logs).
 
-Aktivieren Sie Protokolle mit dem Befehl [az monitor diagnostic-settings create](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create).
+Aktivieren Sie die Protokolle mit dem Befehl [`az monitor diagnostic-settings create`](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create).
 
 ```azurecli-interactive
 az monitor diagnostic-settings create --name <setting-name> --event-hub <event-hub-name> --event-hub-rule <event-hub-namespace-and-key-name> --resource <storage-account-resource-id> --logs '[{"category": <operations>, "enabled": true "retentionPolicy": {"days": <number-days>, "enabled": <retention-bool}}]'
@@ -245,7 +246,7 @@ Eine Beschreibung der einzelnen Parameter finden Sie unter [Streamen von Daten a
 
 #### <a name="send-logs-to-log-analytics"></a>Senden von Protokollen an Log Analytics
 
-Aktivieren Sie Protokolle mit dem Befehl [az monitor diagnostic-settings create](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create).
+Aktivieren Sie die Protokolle mit dem Befehl [`az monitor diagnostic-settings create`](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create).
 
 ```azurecli-interactive
 az monitor diagnostic-settings create --name <setting-name> --workspace <log-analytics-workspace-resource-id> --resource <storage-account-resource-id> --logs '[{"category": <category name>, "enabled": true "retentionPolicy": {"days": <days>, "enabled": <retention-bool}}]'
@@ -265,7 +266,7 @@ Eine Azure Resource Manager-Vorlage zum Erstellen einer Diagnoseeinstellung find
 
 ## <a name="analyzing-metrics"></a>Analysieren von Metriken
 
-Mit dem Metrik-Explorer können Sie Metriken für Azure Storage mit Metriken aus anderen Azure-Diensten analysieren. Öffnen Sie den Metrik-Explorer, indem Sie im Menü **Azure Monitor** die Option **Metriken** auswählen. Ausführliche Informationen zur Verwendung dieses Tools finden Sie unter [Erste Schritte mit dem Azure-Metrik-Explorer](../../azure-monitor/platform/metrics-getting-started.md).
+Mit dem Metrik-Explorer in Azure können Sie Metriken für Azure Storage mit Metriken aus anderen Azure-Diensten analysieren. Öffnen Sie den Metrik-Explorer, indem Sie im Menü **Azure Monitor** die Option **Metriken** auswählen. Ausführliche Informationen zur Verwendung dieses Tools finden Sie unter [Erste Schritte mit dem Azure-Metrik-Explorer](../../azure-monitor/platform/metrics-getting-started.md).
 
 Dieses Beispiel zeigt, wie Sie **Transaktionen** auf der Kontoebene anzeigen.
 
@@ -295,7 +296,7 @@ Eine Liste aller von Azure Monitor unterstützten Metriken (einschließlich Azur
 
 Sie können die Metrikdefinition Ihres Speicherkontos oder des Queue Storage-Diensts auflisten. Verwenden Sie das Cmdlet [Get-AzMetricDefinition](/powershell/module/az.monitor/get-azmetricdefinition).
 
-Ersetzen Sie in diesem Beispiel den Platzhalter `<resource-ID>` durch die Ressourcen-ID des gesamten Speicherkontos oder die Ressourcen-ID des Queue Storage-Diensts. Sie finden diese Ressourcen-IDs im Azure-Portal auf der jeweiligen Seite **Eigenschaften** Ihres Speicherkontos.
+Ersetzen Sie in diesem Beispiel den Platzhalter `<resource-ID>` durch die Ressourcen-ID des gesamten Speicherkontos oder die Ressourcen-ID der Warteschlange. Sie finden diese Ressourcen-IDs im Azure-Portal auf der jeweiligen Seite **Eigenschaften** Ihres Speicherkontos.
 
 ```powershell
    $resourceId = "<resource-ID>"
@@ -304,7 +305,7 @@ Ersetzen Sie in diesem Beispiel den Platzhalter `<resource-ID>` durch die Ressou
 
 #### <a name="reading-metric-values"></a>Lesen von Metrikwerten
 
-Sie können die Metrikwerte auf der Kontoebene Ihres Speicherkontos oder des Queue Storage-Diensts lesen. Verwenden Sie das Cmdlet [Get-AzMetric](/powershell/module/Az.Monitor/Get-AzMetric).
+Sie können die Metrikwerte auf der Kontoebene Ihres Speicherkontos oder des Queue Storage-Diensts lesen. Verwenden Sie das Cmdlet [Get-AzMetric](/powershell/module/az.monitor/get-azmetric).
 
 ```powershell
    $resourceId = "<resource-ID>"
@@ -315,9 +316,9 @@ Sie können die Metrikwerte auf der Kontoebene Ihres Speicherkontos oder des Que
 
 #### <a name="list-the-account-level-metric-definition"></a>Auflisten der Metrikdefinition auf Kontoebene
 
-Sie können die Metrikdefinition Ihres Speicherkontos oder des Queue Storage-Diensts auflisten. Verwenden Sie den Befehl [az monitor metrics list-definitions](/cli/azure/monitor/metrics#az-monitor-metrics-list-definitions).
+Sie können die Metrikdefinition Ihres Speicherkontos oder des Queue Storage-Diensts auflisten. Verwenden Sie den Befehl [`az monitor metrics list-definitions`](/cli/azure/monitor/metrics#az-monitor-metrics-list-definitions).
 
-Ersetzen Sie in diesem Beispiel den Platzhalter `<resource-ID>` durch die Ressourcen-ID des gesamten Speicherkontos oder die Ressourcen-ID des Queue Storage-Diensts. Sie finden diese Ressourcen-IDs im Azure-Portal auf der jeweiligen Seite **Eigenschaften** Ihres Speicherkontos.
+Ersetzen Sie in diesem Beispiel den Platzhalter `<resource-ID>` durch die Ressourcen-ID des gesamten Speicherkontos oder die Ressourcen-ID der Warteschlange. Sie finden diese Ressourcen-IDs im Azure-Portal auf der jeweiligen Seite **Eigenschaften** Ihres Speicherkontos.
 
 ```azurecli-interactive
    az monitor metrics list-definitions --resource <resource-ID>
@@ -325,7 +326,7 @@ Ersetzen Sie in diesem Beispiel den Platzhalter `<resource-ID>` durch die Ressou
 
 #### <a name="read-account-level-metric-values"></a>Lesen der Metrikwerte auf der Kontoebene
 
-Sie können die Metrikwerte Ihres Speicherkontos oder des Queue Storage-Diensts lesen. Verwenden Sie den Befehl [az monitor metrics list](/cli/azure/monitor/metrics#az-monitor-metrics-list).
+Sie können die Metrikwerte Ihres Speicherkontos oder des Queue Storage-Diensts lesen. Verwenden Sie den Befehl [`az monitor metrics list`](/cli/azure/monitor/metrics#az-monitor-metrics-list).
 
 ```azurecli-interactive
    az monitor metrics list --resource <resource-ID> --metric "UsedCapacity" --interval PT1H
@@ -333,9 +334,9 @@ Sie können die Metrikwerte Ihres Speicherkontos oder des Queue Storage-Diensts 
 
 ### <a name="net"></a>[.NET](#tab/azure-portal)
 
-Azure Monitor bietet das [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/) zum Lesen von Metrikdefinition und -werten. Die [Beispielcode](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/) zeigt, wie das SDK mit unterschiedlichen Parametern verwendet wird. Sie benötigen `0.18.0-preview` oder eine höhere Version für Speichermetriken.
+Azure Monitor bietet das [.NET SDK](https://www.nuget.org/packages/microsoft.azure.management.monitor/) zum Lesen von Metrikdefinition und -werten. Die [Beispielcode](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/) zeigt, wie das SDK mit unterschiedlichen Parametern verwendet wird. Sie benötigen `0.18.0-preview` oder eine höhere Version für Speichermetriken.
 
-Ersetzen Sie in diesen Beispielen den Platzhalter `<resource-ID>` durch die Ressourcen-ID des gesamten Speicherkontos oder des Queue Storage-Diensts. Sie finden diese Ressourcen-IDs im Azure-Portal auf der jeweiligen Seite **Eigenschaften** Ihres Speicherkontos.
+Ersetzen Sie in diesen Beispielen den Platzhalter `<resource-ID>` durch die Ressourcen-ID des gesamten Speicherkontos oder der Warteschlange. Sie finden diese Ressourcen-IDs im Azure-Portal auf der jeweiligen Seite **Eigenschaften** Ihres Speicherkontos.
 
 Ersetzen Sie die Variable `<subscription-ID>` durch die ID Ihres Abonnements. Eine Anleitung zum Abrufen von Werten für `<tenant-ID>`, `<application-ID>`, und `<AccessKey>` finden Sie unter [Erstellen einer Azure AD-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff über das Portal](../../active-directory/develop/howto-create-service-principal-portal.md).
 
@@ -485,11 +486,11 @@ Eine ausführliche Referenz zu den in diesen Protokollen angezeigten Feldern fin
 > [!NOTE]
 > Azure Storage-Protokolle in Azure Monitor befinden sich in der öffentlichen Vorschauphase und stehen in allen Regionen für die öffentliche Cloud für Vorschautests zur Verfügung. Diese Vorschauversion ermöglicht Protokolle für Blobs (einschließlich Azure Data Lake Storage Gen2), Dateien, Warteschlangen, Tabellen, Universell V1-Premium-Speicherkonten und Universell V2-Speicherkonten. Klassische Speicherkonten werden nicht unterstützt.
 
-Protokolleinträge werden nur erstellt, wenn Anforderungen für den Dienstendpunkt gestellt wurden. Wenn z. B. ein Speicherkonto Aktivität im Warteschlangenendpunkt, jedoch nicht im Tabellen- oder Blob-Endpunkt aufweist, werden nur Protokolle für den Warteschlangendienst erstellt. Azure Storage-Protokolle enthalten ausführliche Informationen über erfolgreiche und fehlgeschlagene Anforderungen an einen Speicherdienst. Anhand dieser Informationen können einzelne Anforderungen überwacht und Probleme mit einem Speicherdienst untersucht werden. Anforderungen werden auf Grundlage der besten Leistung protokolliert.
+Protokolleinträge werden nur erstellt, wenn Anforderungen für den Dienstendpunkt gestellt wurden. Wenn z. B. ein Speicherkonto Aktivität im Warteschlangenendpunkt, jedoch nicht im Tabellen- oder Blobendpunkt aufweist, werden nur Protokolle für Queue Storage erstellt. Azure Storage-Protokolle enthalten ausführliche Informationen über erfolgreiche und fehlgeschlagene Anforderungen an einen Speicherdienst. Anhand dieser Informationen können einzelne Anforderungen überwacht und Probleme mit einem Speicherdienst untersucht werden. Anforderungen werden auf Grundlage der besten Leistung protokolliert.
 
 ### <a name="log-authenticated-requests"></a>Protokollieren von authentifizierten Anforderungen
 
- Die folgenden Typen authentifizierter Anforderungen werden protokolliert:
+Die folgenden Typen authentifizierter Anforderungen werden protokolliert:
 
 - Erfolgreiche Anforderungen
 - Fehlerhafte Anforderungen, einschließlich Timeout-, Drosselungs-, Netzwerk- und Autorisierungsfehler sowie anderer Fehler
@@ -500,12 +501,12 @@ Anforderungen, die durch den Queue Storage-Dienst selbst erfolgen, z. B. Protok
 
 ### <a name="log-anonymous-requests"></a>Protokollieren anonymer Anforderungen
 
- Die folgenden Typen anonymer Anforderungen werden protokolliert:
+Die folgenden Typen anonymer Anforderungen werden protokolliert:
 
 - Erfolgreiche Anforderungen
 - Serverfehler
 - Timeoutfehler für Client und Server
-- Mit Fehlercode 304 (nicht geändert) fehlgeschlagene GET-Anforderungen
+- Fehler bei `GET`-Anforderungen mit dem Fehlercode 304 (`Not Modified`)
 
 Alle anderen fehlgeschlagenen, anonymen Anforderungen werden nicht protokolliert. Eine vollständige Liste der protokollierten Daten finden Sie unter [Protokollierte Storage Analytics-Vorgänge und -Statusmeldungen](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) und [Storage Analytics-Protokollformat](monitor-queue-storage-reference.md).
 
@@ -521,7 +522,7 @@ Hier sehen Sie ein Beispiel:
 
 ### <a name="accessing-logs-in-an-event-hub"></a>Zugreifen auf Protokolle in einem Event Hub
 
-An einen Event Hub gesendete Protokolle werden nicht als Datei gespeichert. Sie können jedoch überprüfen, ob der Event Hub die Protokollinformationen empfangen hat. Wechseln Sie im Azure-Portal zu Ihrem Event Hub, und vergewissern Sie sich, dass die Anzahl **eingehender Nachrichten** größer als Null ist.
+An einen Event Hub gesendete Protokolle werden nicht als Datei gespeichert. Sie können jedoch überprüfen, ob der Event Hub die Protokollinformationen empfangen hat. Wechseln Sie im Azure-Portal zu Ihrem Event Hub, und vergewissern Sie sich, dass die Anzahl `incoming requests` größer als Null ist.
 
 ![Überwachungsprotokolle](media/monitor-queue-storage/event-hub-log.png)
 
@@ -533,11 +534,11 @@ Mithilfe von Azure Monitor-Protokollabfragen können Sie auf Protokolle zugreife
 
 Weitere Informationen finden Sie unter [Erste Schritte mit Log Analytics in Azure Monitor](../../azure-monitor/log-query/log-analytics-tutorial.md).
 
-Die Daten werden in der **StorageQueueLogs**-Tabelle gespeichert.
+Die Daten werden in der `StorageQueueLogs`-Tabelle gespeichert.
 
 #### <a name="sample-kusto-queries"></a>Kusto-Beispielabfragen
 
-Im Folgenden finden Sie einige Abfragen, die Sie in die **Protokollsuchleiste** eingeben können, um die Überwachung Ihres Queue Storage zu vereinfachen. Diese Abfragen arbeiten mit der [neuen Sprache](../../azure-monitor/log-query/log-query-overview.md).
+Im Folgenden finden Sie einige Abfragen, die Sie in die **Protokollsuchleiste** eingeben können, um die Überwachung Ihrer Warteschlangen zu vereinfachen. Diese Abfragen arbeiten mit der [neuen Sprache](../../azure-monitor/log-query/log-query-overview.md).
 
 > [!IMPORTANT]
 > Wenn Sie **Protokolle** im Speicherkonto-Ressourcengruppenmenü auswählen, wird Log Analytics geöffnet, wobei der Abfragebereich auf die aktuelle Ressourcengruppe festgelegt ist. Dies bedeutet, dass Protokollabfragen nur Daten aus dieser Ressourcengruppe umfassen. Wenn Sie eine Abfrage ausführen möchten, die Daten aus anderen Ressourcen oder Daten aus anderen Azure-Diensten enthält, wählen Sie im Menü **Azure Monitor** die Option **Protokolle** aus. Ausführliche Informationen finden Sie unter [Protokollabfragebereich und Zeitbereich in Azure Monitor Log Analytics](../../azure-monitor/log-query/scope.md).
@@ -601,7 +602,7 @@ Verwenden Sie diese Abfragen, um Ihre Azure Storage-Konten zu überwachen:
 
 **Unterstützt Azure Storage Metriken für verwaltete oder nicht verwaltete Datenträger?**
 
-Nein. Die Metriken für Datenträger werden von Azure Compute unterstützt. Weitere Informationen finden Sie unter [Metriken pro Datenträger für verwaltete und nicht verwaltete Datenträger](https://azure.microsoft.com/blog/per-disk-metrics-managed-disks/).
+Nein. Compute-Instanzen unterstützen die Metriken auf Datenträgern. Weitere Informationen finden Sie unter [Metriken pro Datenträger für verwaltete und nicht verwaltete Datenträger](https://azure.microsoft.com/blog/per-disk-metrics-managed-disks/).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

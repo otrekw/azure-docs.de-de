@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/20/2020
 ms.author: Zhchia
-ms.openlocfilehash: 141dd37dff8403825df713de8f7176d4dd9d20f8
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 4eaac716d06b102a07872059af28da4986889caa
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97008043"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673435"
 ---
 # <a name="tutorial-configure-bizagi-studio-for-digital-process-automation-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Bizagi Studio for Digital Process Automation für die automatische Benutzerbereitstellung
 
@@ -132,7 +132,16 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitst
    |name.familyName|String|
    |name.formatted|String|
    |phoneNumbers[type eq "mobile"].value|String|
+
+   Sie können benutzerdefinierte Erweiterungsattribute hinzufügen, indem Sie zu **Erweiterte Optionen anzeigen > Attributliste für Bizagi bearbeiten** navigieren. Den benutzerdefinierten Erweiterungsattributen muss das Präfix **urn:ietf:params:scim:schemas:extension:bizagi:2.0:UserProperties:** vorangestellt sein. Wenn ein benutzerdefiniertes Erweiterungsattribut z. B. **IdentificationNumber** lautet, muss das Attribut in folgender Form hinzugefügt werden: **urn:ietf:params:scim:schemas:extension:bizagi:2.0:UserProperties:IdentificationNumber**. Wählen Sie **Speichern** aus, um Ihre Änderungen zu committen.
    
+    ![Bearbeiten Sie die Attributliste.](media/bizagi-studio-for-digital-process-automation-provisioning-tutorial/edit.png)  
+
+   Weitere Informationen zum Hinzufügen benutzerdefinierter Attribute finden Sie unter [Anpassen von Anwendungsattributen](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes).
+
+> [!NOTE]
+> Es werden nur Basistypeigenschaften unterstützt (z. B. String, Integer, Boolean, DateTime usw.). Mit parametrischen Tabellen oder mehreren Typen verknüpfte Eigenschaften werden noch nicht unterstützt.
+
 10. Anleitungen zum Konfigurieren von Bereichsfiltern finden Sie im [Tutorial: Bereichsfilter](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
 
 11. Um den Azure AD-Bereitstellungsdienst für Bizagi Studio for Digital Process Automation zu aktivieren, ändern Sie im Abschnitt **Einstellungen** den **Bereitstellungsstatus** in **Ein**.

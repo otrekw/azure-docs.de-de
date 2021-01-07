@@ -137,6 +137,8 @@
           href: batch-automatic-scaling.md
         - name: Auswählen einer VM-Größe für Computeknoten
           href: batch-pool-vm-sizes.md
+        - name: Wechseln von einem Clouddienst zu VM-Pools
+          href: batch-pool-cloud-service-to-virtual-machine-configuration.md
         - name: Konfigurieren des Zugriffs auf Computeknoten
           href: pool-endpoint-configuration.md
         - name: Erstellen eines Pools mit Shared Image Gallery
@@ -239,7 +241,7 @@
           href: ../data-factory/transform-data-using-dotnet-custom-activity.md?toc=%2fazure%2fbatch%2ftoc.json
 - name: Verweis
   items:
-    - name: Azure CLI
+    - name: Azure-Befehlszeilenschnittstelle
       href: /cli/azure/batch
     - name: Azure PowerShell
       href: /powershell/module/az.batch

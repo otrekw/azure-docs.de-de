@@ -2,21 +2,21 @@
 title: Auswählen der Autorisierung des Zugriffs auf Warteschlangendaten mit der Azure CLI
 titleSuffix: Azure Storage
 description: Geben Sie an, wie Vorgänge für Warteschlangendaten mit der Azure CLI autorisiert werden. Sie können Datenvorgänge mit Azure AD-Anmeldeinformationen, dem Kontozugriffsschlüssel oder einem SAS-Token (Shared Access Signature) autorisieren.
-services: storage
 author: tamram
-ms.service: storage
-ms.topic: how-to
-ms.date: 11/13/2020
+services: storage
 ms.author: tamram
 ms.reviewer: ozgun
+ms.date: 11/13/2020
+ms.topic: how-to
+ms.service: storage
 ms.subservice: common
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e753f5b09b6cd03744ba8520c668a8227e56e8a1
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: 01b78fa3250f371cfc4d713668531664ef8c139e
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94637253"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97587603"
 ---
 # <a name="choose-how-to-authorize-access-to-queue-data-with-azure-cli"></a>Auswählen der Autorisierung des Zugriffs auf Warteschlangendaten mit der Azure CLI
 
@@ -32,22 +32,22 @@ Azure CLI-Befehle zum Lesen und Schreiben von Warteschlangendaten enthalten den 
 - Legen Sie den Parameter `--auth-mode` auf `login` fest, um sich mit einem Azure AD-Sicherheitsprinzipal anzumelden (empfohlen).
 - Legen Sie den Parameter `--auth-mode` auf den Legacywert `key` fest, damit versucht wird, den Kontozugriffsschlüssel für die Autorisierung abzurufen. Wenn Sie den Parameter `--auth-mode` weglassen, versucht die Azure CLI ebenfalls, den Zugriffsschlüssel abzurufen.
 
-Damit Sie den Parameter `--auth-mode` verwenden können, vergewissern Sie sich, dass mindestens Version 2.0.46 der Azure CLI installiert ist. Führen Sie `az --version` aus, um Ihre installierte Version zu überprüfen.
+Damit Sie den Parameter `--auth-mode` verwenden können, vergewissern Sie sich, dass mindestens Version v2.0.46 der Azure-Befehlszeilenschnittstelle installiert ist. Führen Sie `az --version` aus, um Ihre installierte Version zu überprüfen.
 
 > [!IMPORTANT]
-> Wenn Sie den Parameter `--auth-mode` weglassen oder auf `key`festlegen, versucht die Azure CLI, den Kontozugriffsschlüssel für die Autorisierung zu verwenden. In diesem Fall empfiehlt Microsoft, den Zugriffsschlüssel entweder im Befehl oder in der Umgebungsvariablen **AZURE_STORAGE_KEY** bereitzustellen. Weitere Informationen zu Umgebungsvariablen finden Sie im Abschnitt [Festlegen von Umgebungsvariablen für Autorisierungsparameter](#set-environment-variables-for-authorization-parameters).
+> Wenn Sie den Parameter `--auth-mode` weglassen oder auf `key`festlegen, versucht die Azure CLI, den Kontozugriffsschlüssel für die Autorisierung zu verwenden. In diesem Fall empfiehlt Microsoft, den Zugriffsschlüssel entweder im Befehl oder in der Umgebungsvariablen `AZURE_STORAGE_KEY` bereitzustellen. Weitere Informationen zu Umgebungsvariablen finden Sie im Abschnitt [Festlegen von Umgebungsvariablen für Autorisierungsparameter](#set-environment-variables-for-authorization-parameters).
 >
 > Wenn Sie den Zugriffsschlüssel nicht angeben, versucht die Azure CLI, den Azure Storage-Ressourcenanbieter aufzurufen, um den Schlüssel für jeden Vorgang abzurufen. Das Ausführen vieler Datenvorgänge, für die ein Aufruf des Ressourcenanbieters erforderlich ist, kann zu einer Drosselung führen. Weitere Informationen zu Grenzwerten für Ressourcenanbieter finden Sie unter [Skalierbarkeits- und Leistungsziele für den Azure Storage-Ressourcenanbieter](../common/scalability-targets-resource-provider.md).
 
 ## <a name="authorize-with-azure-ad-credentials"></a>Autorisieren mit Azure AD-Anmeldeinformationen
 
-Wenn Sie sich mit Azure AD-Anmeldeinformationen bei der Azure-Befehlszeilenschnittstelle anmelden, wird ein OAuth 2.0-Zugriffstoken zurückgegeben. Dieses Token wird dann automatisch von der Befehlszeilenschnittstelle verwendet, um nachfolgende Vorgänge für Blob- oder Queue Storage-Daten zu autorisieren. Für unterstützte Vorgänge müssen Sie mit dem Befehl keinen Kontoschlüssel und kein SAS-Token mehr übergeben.
+Wenn Sie sich mit Azure AD-Anmeldeinformationen bei der Azure-Befehlszeilenschnittstelle anmelden, wird ein OAuth 2.0-Zugriffstoken zurückgegeben. Dieses Token wird dann automatisch von der Azure-Befehlszeilenschnittstelle verwendet, um nachfolgende Vorgänge für Blobspeicher- oder Queue Storage-Daten zu autorisieren. Für unterstützte Vorgänge müssen Sie mit dem Befehl keinen Kontoschlüssel und kein SAS-Token mehr übergeben.
 
 Sie können einem Azure AD-Sicherheitsprinzipal über die rollenbasierte Zugriffssteuerung (Azure RBAC) Berechtigungen für Warteschlangendaten zuweisen. Weitere Informationen zu Azure-Rollen in Azure Storage finden Sie unter [Verwalten der Zugriffsrechte für Azure Storage-Daten mit Azure RBAC](../common/storage-auth-aad-rbac-portal.md).
 
 ### <a name="permissions-for-calling-data-operations"></a>Berechtigungen für das Aufrufen von Datenvorgängen
 
-Die Azure Storage-Erweiterungen werden für Vorgänge für Warteschlangendaten unterstützt. Welche Vorgänge Sie aufrufen können, hängt von den Berechtigungen des Azure AD-Sicherheitsprinzipals ab, mit dem Sie sich bei der Azure-Befehlszeilenschnittstelle anmelden. Die Berechtigungen für Azure Storage-Warteschlangen werden über die rollenbasierte Zugriffssteuerung von Azure zugewiesen. Wenn Ihnen beispielsweise die Rolle **Storage-Warteschlangendatenleser** zugewiesen ist, können Sie Skriptbefehle ausführen, die Daten aus einer Warteschlange lesen. Wenn Ihnen die Rolle **Mitwirkender an Storage-Warteschlangendaten** zugewiesen ist, können Sie Skriptbefehle ausführen, die eine Warteschlange bzw. die darin enthaltenen Daten lesen, schreiben oder löschen.
+Die Azure Storage-Erweiterungen werden für Vorgänge für Warteschlangendaten unterstützt. Welche Vorgänge Sie aufrufen können, hängt von den Berechtigungen des Azure AD-Sicherheitsprinzipals ab, mit dem Sie sich bei der Azure-Befehlszeilenschnittstelle anmelden. Die Berechtigungen für Warteschlangen werden über Azure RBAC zugewiesen. Wenn Ihnen beispielsweise die Rolle **Storage-Warteschlangendatenleser** zugewiesen ist, können Sie Skriptbefehle ausführen, die Daten aus einer Warteschlange lesen. Wenn Ihnen die Rolle **Mitwirkender an Storage-Warteschlangendaten** zugewiesen ist, können Sie Skriptbefehle ausführen, die eine Warteschlange bzw. die darin enthaltenen Daten lesen, schreiben oder löschen.
 
 Einzelheiten zu den Berechtigungen, die für die einzelnen Azure Storage-Vorgänge für Warteschlangen erforderlich sind, finden Sie unter [Aufrufen von Speichervorgängen mit OAuth-Token](/rest/api/storageservices/authorize-with-azure-active-directory#call-storage-operations-with-oauth-tokens).  
 
@@ -60,7 +60,7 @@ Im folgenden Beispiel sehen Sie, wie mithilfe Ihrer Azure AD-Anmeldeinformatione
     > [!IMPORTANT]
     > Die Azure-Rollenzuweisungen können einige Minuten dauern.
 
-1. Rufen Sie mithilfe des `--auth-mode`-Parameters, für den `login` festgelegt wurde, den Befehl [az storage queue create](/cli/azure/storage/queue#az-storage-queue-create) auf, um die Warteschlange mithilfe Ihrer Azure AD-Anmeldeinformationen zu erstellen. Denken Sie daran, die Platzhalterwerte in eckigen Klammern durch Ihre eigenen Werte zu ersetzen:
+1. Rufen Sie mithilfe des `--auth-mode`-Parameters, für den `login` festgelegt wurde, den Befehl [`az storage queue create`](/cli/azure/storage/queue#az-storage-queue-create) auf, um die Warteschlange mithilfe Ihrer Azure AD-Anmeldeinformationen zu erstellen. Denken Sie daran, die Platzhalterwerte in eckigen Klammern durch Ihre eigenen Werte zu ersetzen:
 
     ```azurecli
     az storage queue create \
@@ -98,13 +98,13 @@ az storage queue create \
 
 Sie können Autorisierungsparameter in Umgebungsvariablen angeben, um zu vermeiden, dass diese in jeden Aufruf eines Azure Storage-Datenvorgangs eingeschlossen werden müssen. In der folgenden Tabelle werden die verfügbaren Umgebungsvariablen beschrieben.
 
-| Umgebungsvariable                  | BESCHREIBUNG                                                                                                                                                                                                                                                                                                                                                                     |
-|---------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|    AZURE_STORAGE_ACCOUNT              |    Der Name des Speicherkontos. Diese Variable sollte in Verbindung mit dem Speicherkontoschlüssel oder einem SAS-Token verwendet werden. Ist keines von beiden vorhanden, versucht die Azure CLI, den Speicherkonto-Zugriffsschlüssel mithilfe des authentifizierten Azure AD-Kontos abzurufen. Wenn eine große Anzahl von Befehlen gleichzeitig ausgeführt wird, kann der Drosselungsgrenzwert des Azure Storage-Ressourcenanbieters erreicht werden. Weitere Informationen zu Grenzwerten für Ressourcenanbieter finden Sie unter [Skalierbarkeits- und Leistungsziele für den Azure Storage-Ressourcenanbieter](../common/scalability-targets-resource-provider.md).             |
-|    AZURE_STORAGE_KEY                  |    Der Speicherkontoschlüssel. Diese Variable muss in Verbindung mit dem Speicherkontonamen verwendet werden.                                                                                                                                                                                                                                                                          |
-|    AZURE_STORAGE_CONNECTION_STRING    |    Eine Verbindungszeichenfolge, die den Speicherkontoschlüssel oder ein SAS-Token enthält. Diese Variable muss in Verbindung mit dem Speicherkontonamen verwendet werden.                                                                                                                                                                                                                       |
-|    AZURE_STORAGE_SAS_TOKEN            |    Ein SAS-Token (Shared Access Signature). Diese Variable muss in Verbindung mit dem Speicherkontonamen verwendet werden.                                                                                                                                                                                                                                                            |
-|    AZURE_STORAGE_AUTH_MODE            |    Der Autorisierungsmodus, mit dem der Befehl ausgeführt werden soll. Zulässige Werte sind `login` (empfohlen) oder `key`. Wenn Sie `login` angeben, verwendet die Azure CLI Ihre Azure AD-Anmeldeinformationen, um den Datenvorgang zu autorisieren. Wenn Sie den Legacymodus `key` angeben, versucht die Azure CLI, den Kontozugriffsschlüssel abzufragen und den Befehl mit dem Schlüssel zu autorisieren.    |
+| Umgebungsvariable | BESCHREIBUNG |
+|--|--|
+| **AZURE_STORAGE_ACCOUNT** | Der Name des Speicherkontos. Diese Variable sollte in Verbindung mit dem Speicherkontoschlüssel oder einem SAS-Token verwendet werden. Ist keines von beiden vorhanden, versucht die Azure CLI, den Speicherkonto-Zugriffsschlüssel mithilfe des authentifizierten Azure AD-Kontos abzurufen. Wenn eine große Anzahl von Befehlen gleichzeitig ausgeführt wird, kann der Drosselungsgrenzwert des Azure Storage-Ressourcenanbieters erreicht werden. Weitere Informationen zu Grenzwerten für Ressourcenanbieter finden Sie unter [Skalierbarkeits- und Leistungsziele für den Azure Storage-Ressourcenanbieter](../common/scalability-targets-resource-provider.md). |
+| **AZURE_STORAGE_KEY** | Der Speicherkontoschlüssel. Diese Variable muss in Verbindung mit dem Speicherkontonamen verwendet werden. |
+| **AZURE_STORAGE_CONNECTION_STRING** | Eine Verbindungszeichenfolge, die den Speicherkontoschlüssel oder ein SAS-Token enthält. Diese Variable muss in Verbindung mit dem Speicherkontonamen verwendet werden. |
+| **AZURE_STORAGE_SAS_TOKEN** | Ein SAS-Token (Shared Access Signature). Diese Variable muss in Verbindung mit dem Speicherkontonamen verwendet werden. |
+| **AZURE_STORAGE_AUTH_MODE** | Der Autorisierungsmodus, mit dem der Befehl ausgeführt werden soll. Zulässige Werte sind `login` (empfohlen) oder `key`. Wenn Sie `login` angeben, verwendet die Azure CLI Ihre Azure AD-Anmeldeinformationen, um den Datenvorgang zu autorisieren. Wenn Sie den Legacymodus `key` angeben, versucht die Azure CLI, den Kontozugriffsschlüssel abzufragen und den Befehl mit dem Schlüssel zu autorisieren. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

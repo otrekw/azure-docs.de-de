@@ -205,8 +205,16 @@
           href: partner-center-portal/create-iot-edge-module-asset.md
     - name: Angebote für verwaltete Dienste
       items:
+        - name: Planen eines Angebots für einen verwalteten Dienst
+          href: plan-managed-service-offer.md
         - name: Erstellen eines Angebots für einen verwalteten Dienst
-          href: partner-center-portal/create-new-managed-service-offer.md
+          href: create-managed-service-offer.md
+        - name: Konfigurieren einer Auflistung für einen verwalteten Dienst
+          href: create-managed-service-offer-listing.md
+        - name: Hinzufügen einer Vorschauzielgruppe
+          href: create-managed-service-offer-preview.md
+        - name: Pläne erstellen
+          href: create-managed-service-offer-plans.md
     - name: "Power\_BI-App-Angebote"
       items:
         - name: "Planen eines Power\_BI-App-Angebots"
