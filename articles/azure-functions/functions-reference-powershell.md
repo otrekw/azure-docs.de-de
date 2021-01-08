@@ -525,7 +525,7 @@ Mehrere Module werden häufig vom PowerShell-Sprachworker verwendet. Diese Modul
 Die aktuelle Liste der Module lautet wie folgt:
 
 * [Microsoft.PowerShell.Archive:](https://www.powershellgallery.com/packages/Microsoft.PowerShell.Archive) Modul für die Arbeit mit Archiven, z. B. `.zip`, `.nupkg` und anderen
-* **ThreadJob** : Eine threadbasierte Implementierung der PowerShell-Auftrags APIs
+* **ThreadJob**: Eine threadbasierte Implementierung der PowerShell-Auftrags APIs
 
 Von Azure Functions wird standardmäßig die neueste Version dieser Module verwendet. Um eine bestimmte Modulversion zu verwenden, legen Sie diese bestimmte Version im Ordner `Modules` Ihrer Funktionsanwendung ab.
 
@@ -567,9 +567,9 @@ Abhängig von Ihrem Anwendungsfall kann Durable Functions die Skalierbarkeit erh
 
 ### <a name="considerations-for-using-concurrency"></a>Überlegungen zur Verwendung von Parallelität
 
-PowerShell ist standardmäßig eine _Singlethread_ -Skriptsprache. Parallelität kann jedoch mithilfe mehrerer PowerShell-Runspaces im gleichen Prozess hinzugefügt werden. Die Anzahl der erstellten Runspaces entspricht der Anwendungseinstellung ```PSWorkerInProcConcurrencyUpperBound```. Der Durchsatz hängt von der im ausgewählten Plan verfügbaren CPU-Anzahl und Arbeitsspeichergröße ab.
+PowerShell ist standardmäßig eine _Singlethread_-Skriptsprache. Parallelität kann jedoch mithilfe mehrerer PowerShell-Runspaces im gleichen Prozess hinzugefügt werden. Die Anzahl der erstellten Runspaces entspricht der Anwendungseinstellung ```PSWorkerInProcConcurrencyUpperBound```. Der Durchsatz hängt von der im ausgewählten Plan verfügbaren CPU-Anzahl und Arbeitsspeichergröße ab.
 
-Azure PowerShell verwendet einige Kontexte und Status auf _Prozessebene_ , die Ihnen viel Eingabearbeit ersparen können. Wenn Sie jedoch Parallelität in Ihrer Funktions-App aktivieren und Aktionen aufrufen, die den Zustand ändern, könnte es zu Racebedingungen kommen. Diese Racebedingungen sind schwierig zu debuggen, da ein Aufruf von einem bestimmten Zustand abhängt, während ein anderer Aufruf diesen Zustand ändert.
+Azure PowerShell verwendet einige Kontexte und Status auf _Prozessebene_, die Ihnen viel Eingabearbeit ersparen können. Wenn Sie jedoch Parallelität in Ihrer Funktions-App aktivieren und Aktionen aufrufen, die den Zustand ändern, könnte es zu Racebedingungen kommen. Diese Racebedingungen sind schwierig zu debuggen, da ein Aufruf von einem bestimmten Zustand abhängt, während ein anderer Aufruf diesen Zustand ändert.
 
 Parallelität hat in Azure PowerShell einen enormen Wert, da einige Vorgänge sehr viel Zeit in Anspruch nehmen können. Sie müssen dabei jedoch umsichtig vorgehen. Wenn Sie vermuten, dass eine Racebedingung vorliegt, legen Sie die App-Einstellung „PSWorkerInProcConcurrencyUpperBound“ auf `1` fest, und verwenden Sie stattdessen [Isolation auf Sprachworkerprozess-Ebene](functions-app-settings.md#functions_worker_process_count) für Parallelität.
 

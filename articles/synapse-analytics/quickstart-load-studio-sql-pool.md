@@ -9,57 +9,58 @@ ms.topic: quickstart
 ms.date: 12/11/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 86ef610af605c657868824eefe2e6e706f6963ac
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 53b6810b0042df382fd1f553bc4bd0fae61793b3
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97360180"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672796"
 ---
-# <a name="quickstart-bulk-loading-with-synapse-sql"></a>Schnellstart: Massenladen mit Synapse SQL
+# <a name="quickstart-bulk-loading-with-synapse-studio"></a>Schnellstart: Massenladen mit Synapse Studio
 
-Das Laden von Daten ist mit dem Massenladen-Assistenten in Synapse Studio ganz einfach. Der Massenladen-Assistent führt Sie durch die Erstellung eines T-SQL-Skripts mit der [COPY-Anweisung](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true) zum Massenladen von Daten. 
+Das Laden von Daten ist mit dem Massenladen-Assistenten in Synapse Studio ganz einfach. Synapse Studio ist ein Feature von Azure Synapse Analytics. Der Massenladen-Assistent führt Sie durch die Erstellung eines T-SQL-Skripts mit der [COPY-Anweisung](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true) zum Massenladen von Daten in einen dedizierten SQL-Pool. 
 
 ## <a name="entry-points-to-the-bulk-load-wizard"></a>Einstiegspunkte für den Massenladen-Assistenten
 
-Das Massenladen von Daten unter Verwendung von dedizierten SQL-Pools ist ganz einfach und kann mit einem Rechtsklick auf die folgenden Bereiche in Synapse Studio durchgeführt werden:
+Sie können Daten per Massenladen laden, indem Sie mit der rechten Maustaste in Synapse Studio auf eine Datei oder einen Ordner aus einem Azure Storage-Konto klicken, das an Ihren Arbeitsbereich angefügt ist.
 
-- Eine Datei oder ein Ordner aus einem mit Ihrem Arbeitsbereich verknüpften Azure-Speicherkonto ![Rechtsklick auf eine Datei oder einen Ordner aus einem Speicherkonto](./sql/media/bulk-load/bulk-load-entry-point-0.png)
+![Screenshot: Klicken mit der rechten Maustaste auf eine Datei oder einen Ordner aus einem Speicherkonto](./sql/media/bulk-load/bulk-load-entry-point-0.png)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Dieser Assistent generiert eine COPY-Anweisung, die AAD-Passthrough für die Authentifizierung verwendet. Ihr [Azure AD-Benutzer benötigt Zugriff](
-./sql-data-warehouse/quickstart-bulk-load-copy-tsql-examples.md#d-azure-active-directory-authentication) auf den Arbeitsbereich. Dazu muss ihm mindestens die Azure-Rolle „Mitwirkender an Storage-Blobdaten“ für das ADLS Gen2-Konto zugewiesen sein. 
+- Der Assistent generiert eine COPY-Anweisung, die Azure AD-Passthrough (Azure Active Directory) für die Authentifizierung verwendet. Ihr [Azure AD-Benutzer benötigt Zugriff](./sql-data-warehouse/quickstart-bulk-load-copy-tsql-examples.md#d-azure-active-directory-authentication) auf den Arbeitsbereich. Dazu muss ihm mindestens die Azure-Rolle „Mitwirkender an Storage-Blobdaten“ für das Azure Data Lake Storage Gen2-Konto zugewiesen sein. 
 
 - Falls Sie als Ziel für den Ladevorgang eine neue Tabelle erstellen, müssen Sie über die erforderlichen [Berechtigungen für die Verwendung der COPY-Anweisung](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true#permissions) sowie über Berechtigungen für die Tabellenerstellung verfügen.
 
-- Der verknüpfte Dienst, der dem ADLS Gen2-Konto zugeordnet ist, muss über **Zugriff auf die Datei**/**den Ordner** verfügen. Wenn für den verknüpften Dienst beispielsweise „Verwaltete Identität“ als Authentifizierungsmechanismus verwendet wird, muss die verwaltete Identität für den Arbeitsbereich mindestens über Speicherblob-Leseberechtigung für das Speicherkonto verfügen.
+- Der verknüpfte Dienst, der dem Data Lake Storage Gen2-Konto zugeordnet ist, *muss über Zugriff auf die zu ladende Datei oder den zu ladenden Ordner verfügen*. Wenn für den verknüpften Dienst beispielsweise „Verwaltete Identität“ als Authentifizierungsmechanismus verwendet wird, muss die verwaltete Identität für den Arbeitsbereich mindestens über die Storage-Blobdatenleseberechtigung für das Speicherkonto verfügen.
 
-- Wenn für Ihren Arbeitsbereich ein VNET aktiviert ist, stellen Sie sicher, dass für die integrierte Laufzeit, die den verknüpften Diensten des ADLS Gen2-Kontos für den Speicherort der Quelldaten und der Fehlerdatei zugeordnet ist, die interaktive Erstellung aktiviert ist. Die interaktive Erstellung ist für die automatische Schemaerkennung sowie zum Anzeigen einer Vorschau der Quelldateiinhalte und zum Durchsuchen von ADLS Gen2-Speicherkonten innerhalb des Assistenten erforderlich.
+- Wenn für Ihren Arbeitsbereich ein virtuelles Netzwerk aktiviert ist, stellen Sie sicher, dass für die integrierte Laufzeit, die den verknüpften Diensten des Data Lake Storage Gen2-Kontos für den Speicherort der Quelldaten und der Fehlerdatei zugeordnet ist, interaktives Authoring aktiviert ist. Interaktives Authoring ist für die automatische Schemaerkennung sowie zum Anzeigen einer Vorschau der Quelldateiinhalte und zum Durchsuchen von Data Lake Storage Gen2-Speicherkonten innerhalb des Assistenten erforderlich.
 
-### <a name="steps"></a>Schritte
+## <a name="steps"></a>Schritte
 
-1. Wählen Sie im Bereich für den Quellspeicherort das Speicherkonto und die Datei bzw. den Ordner aus, die bzw. den Sie als Quelle für den Ladevorgang verwenden möchten. Der Assistent versucht automatisch, Parquet-Dateien und CSV-Dateien (durch Trennzeichen getrennte Textdateien) zu erkennen, einschließlich der Zuordnung der Quellfelder aus der Datei zu den entsprechenden SQL-Zieldatentypen. 
+1. Wählen Sie im Bereich für den **Quellspeicherort** das Speicherkonto und die Datei bzw. den Ordner aus, die bzw. den Sie als Quelle für den Ladevorgang verwenden möchten. Der Assistent versucht automatisch, Parquet-Dateien und CSV-Dateien (durch Trennzeichen getrennte Textdateien) zu erkennen, einschließlich der Zuordnung der Quellfelder aus der Datei zu den entsprechenden SQL-Zieldatentypen. 
 
-   ![Auswählen des Quellspeicherorts](./sql/media/bulk-load/bulk-load-source-location.png)
+   ![Screenshot: Auswählen eines Quellspeicherorts](./sql/media/bulk-load/bulk-load-source-location.png)
 
-2. Wählen Sie die Dateiformateinstellungen einschließlich Ihrer Fehlereinstellungen für den Fall aus, dass es während des Massenladevorgangs abgelehnte Zeilen gibt. Sie können „Datenvorschau“ auswählen, um zu sehen, wie die Datei von der COPY-Anweisung analysiert wird. Dies ist hilfreich beim Konfigurieren der Dateiformateinstellungen. Wählen Sie nach jeder Änderung einer Dateiformateinstellung „Datenvorschau“ aus, um zu sehen, wie die Datei mit der aktualisierten Einstellung von der COPY-Anweisung analysiert wird:
+2. Wählen Sie die Dateiformateinstellungen einschließlich Ihrer Fehlereinstellungen für den Fall aus, dass es während des Massenladevorgangs abgelehnte Zeilen gibt. Sie können auch **Datenvorschau** auswählen, um zu sehen, wie die Datei von der COPY-Anweisung analysiert wird. Dies ist hilfreich beim Konfigurieren der Dateiformateinstellungen. Wählen Sie nach jeder Änderung einer Dateiformateinstellung **Datenvorschau** aus, um zu sehen, wie die Datei mit der aktualisierten Einstellung von der COPY-Anweisung analysiert wird.
 
-   ![Anzeigen einer Datenvorschau](./sql/media/bulk-load/bulk-load-file-format-settings-preview-data.png) 
+   ![Screenshot: Anzeigen der Datenvorschau](./sql/media/bulk-load/bulk-load-file-format-settings-preview-data.png) 
 
-> [!NOTE]  
->
-> - Das Anzeigen einer Vorschau für die Daten mit mehrstelligen Feldabschlusszeichen wird im Massenladen-Assistenten nicht unterstützt. Der Massenladen-Assistent zeigt eine Vorschau der Daten in einer einzelnen Spalte an, wenn ein mehrstelliges Feldabschlusszeichen angegeben wird. 
-> - Bei Auswahl von „Infer column names“ (Spaltennamen ableiten) analysiert der Assistent zum Massenladen die Spaltennamen aus der ersten Zeile, die durch das Feld „Erste Zeile“ angegeben wird. Der Assistent zum Massenladen erhöht automatisch den Wert von „FIRSTROW“ in der COPY-Anweisung um „1“, damit diese Kopfzeile ignoriert wird. 
-> - Die Angabe von mehrstelligen Zeilenabschlusszeichen wird in der COPY-Anweisung unterstützt. Im Assistenten zum Massenladen wird dies jedoch nicht unterstützt, wodurch ein Fehler ausgelöst wird.
+   > [!NOTE]  
+   >
+   > - Vom Massenladen-Assistenten wird das Anzeigen einer Vorschau für die Daten mit mehrstelligen Feldabschlusszeichen nicht unterstützt. Der Assistent zeigt eine Vorschau der Daten in einer einzelnen Spalte an, wenn ein mehrstelliges Feldabschlusszeichen angegeben wird. 
+   > - Bei Auswahl von **Infer column names** (Spaltennamen ableiten) analysiert der Assistent zum Massenladen die Spaltennamen aus der ersten Zeile, die durch das Feld **Erste Zeile** angegeben wird. Der Massenladen-Assistent erhöht automatisch den Wert `FIRSTROW` in der COPY-Anweisung um „1“, damit diese Kopfzeile ignoriert wird. 
+   > - Die Angabe von mehrstelligen Zeilenabschlusszeichen wird in der COPY-Anweisung unterstützt. Der Massenladen-Assistent unterstützt dies jedoch nicht, und es wird ein Fehler ausgelöst.
 
-3. Wählen Sie den zum Laden verwendeten dedizierten SQL-Pool aus, und geben Sie an, ob es sich um einen Ladevorgang für eine bereits vorhandene oder für eine neue Tabelle handelt: ![Auswählen des Zielspeicherorts](./sql/media/bulk-load/bulk-load-target-location.png)
-4. Wählen Sie die Option zum Konfigurieren der Spaltenzuordnung aus, und vergewissern Sie sich, dass die Spaltenzuordnung korrekt ist. Beachten Sie, dass Spaltennamen automatisch erkannt werden, wenn „Infer column names“ (Spaltennamen ableiten) aktiviert wurde. Bei neuen Tabellen muss die Spaltenzuordnung unbedingt konfiguriert werden, um die Datentypen der Zielspalten zu aktualisieren:
+3. Wählen Sie den zum Laden verwendeten dedizierten SQL-Pool aus, und geben Sie an, ob es sich um einen Ladevorgang für eine bereits vorhandene oder für eine neue Tabelle handelt.
+   ![Screenshot: Auswählen eines Zielspeicherorts](./sql/media/bulk-load/bulk-load-target-location.png)
+4. Wählen Sie die Option **Spaltenzuordnung konfigurieren** aus, und vergewissern Sie sich, dass die Spaltenzuordnung korrekt ist. Beachten Sie, dass Spaltennamen automatisch erkannt werden, wenn Sie **Infer column names** (Spaltennamen ableiten) aktiviert haben. Bei neuen Tabellen muss die Spaltenzuordnung unbedingt konfiguriert werden, um die Datentypen der Zielspalten zu aktualisieren.
 
-   ![Konfigurieren der Spaltenzuordnung](./sql/media/bulk-load/bulk-load-target-location-column-mapping.png)
-5. Wählen Sie die Option zum Öffnen des Skripts aus. Daraufhin wird ein T-SQL-Skript mit der COPY-Anweisung generiert, um Daten aus Ihrem Data Lake zu laden: ![Öffnen des SQL-Skripts](./sql/media/bulk-load/bulk-load-target-final-script.png)
+   ![Screenshot: Konfigurieren der Spaltenzuordnung](./sql/media/bulk-load/bulk-load-target-location-column-mapping.png)
+5. Wählen Sie **Skript öffnen** aus. Ein T-SQL-Skript mit der COPY-Anweisung wird generiert, um Daten aus Ihrem Data Lake zu laden.
+   ![Screenshot: Öffnen des SQL-Skripts](./sql/media/bulk-load/bulk-load-target-final-script.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Lesen Sie den [Artikel zur COPY-Anweisung](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true#syntax), um weitere Informationen zu Kopierfunktionen zu erhalten.
-- Lesen Sie den [Übersichtsartikel zum Laden von Daten](./sql-data-warehouse/design-elt-data-loading.md#what-is-elt).
+- Weitere Informationen zur Verwendung eines ETL-Prozesses (Extrahieren, Transformieren und Laden) finden Sie in der [Übersicht über das Laden von Daten](./sql-data-warehouse/design-elt-data-loading.md#what-is-elt).

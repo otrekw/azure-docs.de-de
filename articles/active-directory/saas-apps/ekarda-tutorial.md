@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 06/15/2020
+ms.date: 12/24/2020
 ms.author: jeedes
-ms.openlocfilehash: 7bb74732074482c12d3bc760e259bb014ccf006f
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: d9e118620cb38e94cfc18d01d31888ac0a444bb7
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96179261"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97813427"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ekarda"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit ekarda
 
@@ -25,8 +25,6 @@ In diesem Tutorial erfahren Sie, wie Sie ekarda in Azure Active Directory (Azure
 * Steuern Sie in Azure AD, wer Zugriff auf ekarda hat.
 * Ermöglichen Sie es Ihren Benutzern, sich mit ihrem Azure AD-Konto automatisch bei ekarda anzumelden.
 * Verwalten Sie Ihre Konten zentral im Azure-Portal.
-
-Weitere Informationen zur Integration von SaaS-Apps (Software as a Service) in Azure AD finden Sie unter [Worum handelt es sich beim einmaligen Anmelden (Single Sign-On, SSO)?](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -41,13 +39,12 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 
 * ekarda unterstützt SP- und IDP-initiiertes einmaliges Anmelden.
 * ekarda unterstützt die Just-In-Time-Benutzerbereitstellung.
-* Nach dem Konfigurieren von ekarda können Sie die Sitzungssteuerung erzwingen. Diese schützt in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten. Die Sitzungssteuerung basiert auf der App-Steuerung für bedingten Zugriff. [Hier](/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
 
 ## <a name="add-ekarda-from-the-gallery"></a>Hinzufügen von ekarda aus dem Katalog
 
 Fügen Sie zum Konfigurieren der Integration von ekarda in Azure AD ekarda über den Katalog zur Liste mit den verwalteten SaaS-Apps hinzu:
 
-1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim [Azure-Portal](https://portal.azure.com) an.
+1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim Azure-Portal an.
 
 1. Wählen Sie im linken Bereich den Dienst **Azure Active Directory** aus.
 1. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie die Option **Alle Anwendungen** aus.
@@ -55,7 +52,7 @@ Fügen Sie zum Konfigurieren der Integration von ekarda in Azure AD ekarda übe
 1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **ekarda** in das Suchfeld ein.
 1. Wählen Sie im Ergebnisbereich **ekarda** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-ekarda"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für ekarda
+## <a name="configure-and-test-azure-ad-sso-for-ekarda"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für ekarda
 
 Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit ekarda mithilfe eines Testbenutzers mit dem Namen **B. Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in ekarda eingerichtet werden.
 
@@ -73,7 +70,7 @@ Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD 
 
 Führen Sie die folgenden Schritte im Azure-Portal aus, um das einmalige Anmelden von Azure AD zu aktivieren:
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
+1. Melden Sie sich beim Azure-Portal an.
 1. Navigieren Sie auf der Anwendungsintegrationsseite für **ekarda** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
 1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
 1. Wählen Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** das Stiftsymbol aus, um die Einstellungen für **Grundlegende SAML-Konfiguration** zu bearbeiten.
@@ -95,7 +92,7 @@ Führen Sie die folgenden Schritte im Azure-Portal aus, um das einmalige Anmelde
 
 1. Wenn Sie die Anwendung im SP-initiierten Modus konfigurieren möchten, wählen Sie **Zusätzliche URLs festlegen** aus, und führen Sie den folgenden Schritt aus:
 
-    * Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://my.ekarda.com/users/saml_sso/<COMPANY_ID>`.
+    Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://my.ekarda.com/users/saml_sso/<COMPANY_ID>`.
 
     > [!NOTE]
     > Die Werte in den beiden vorherigen Schritten sind nicht real. Aktualisieren Sie sie mit den tatsächlichen Werten für Bezeichner, Antwort-URL und Anmelde-URL. Diese Werte erhalten Sie vom [Supportteam für den ekarda-Client](mailto:contact@ekarda.com). Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
@@ -129,19 +126,24 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 1. Wählen Sie in der Anwendungsliste **ekarda** aus.
 1. Navigieren Sie auf der Übersichtsseite der App zum Abschnitt **Verwalten**, und wählen Sie **Benutzer und Gruppen** aus.
 
-   ![Screenshot: Abschnitt „Verwalten“ mit hervorgehobener Option „Benutzer und Gruppen“](common/users-groups-blade.png)
-
 1. Wählen Sie die Schaltfläche **Benutzer hinzufügen** und anschließend im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 
-    ![Screenshot: Abschnitt „Benutzer und Gruppen“ mit hervorgehobener Option zum Hinzufügen eines Benutzers](common/add-assign-user.png)
-
 1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste der Benutzer die Option **B.Simon** aus. Wählen Sie anschließend am unteren Bildschirmrand **Auswählen** aus.
-1. Falls Sie in der SAML-Assertion einen Rollenwert erwarten, wählen Sie im Dialogfeld **Rolle auswählen** die entsprechende Rolle für den Benutzer aus der Liste aus. Wählen Sie anschließend am unteren Bildschirmrand **Auswählen** aus.
+1. Wenn den Benutzern eine Rolle zugewiesen werden soll, können Sie sie im Dropdownmenü **Rolle auswählen** auswählen. Wurde für diese App keine Rolle eingerichtet, ist die Rolle „Standardzugriff“ ausgewählt.
 1. Wählen Sie im Dialogfeld **Zuweisung hinzufügen** die Option **Zuweisen** aus.
 
 ## <a name="configure-ekarda-sso"></a>Konfigurieren des einmaligen Anmeldens von ekarda
 
-1. Melden Sie sich in einem anderen Webbrowserfenster bei der ekarda-Unternehmenswebsite als Administrator an.
+1. Wenn Sie die Konfiguration in ekarda automatisieren möchten, müssen Sie die **Browsererweiterung „Meine Apps“ für die sichere Anmeldung** installieren, indem Sie auf **Erweiterung installieren** klicken.
+
+    ![Erweiterung „Meine Apps“](common/install-myappssecure-extension.png)
+
+2. Klicken Sie nach dem Hinzufügen der Erweiterung zum Browser auf **ekarda einrichten**, um zur Anwendung ekarda weitergeleitet zu werden. Geben Sie dort die Administratoranmeldeinformationen ein, um sich bei ekarda anzumelden. Die Browsererweiterung konfiguriert die Anwendung automatisch für Sie und automatisiert die Schritte 3 bis 6.
+
+    ![Einrichtungskonfiguration](common/setup-sso.png)
+
+3. Wenn Sie ekarda manuell einrichten möchten, melden Sie sich in einem anderen Webbrowserfenster als Administrator bei der ekarda-Unternehmenswebsite an.
+
 1. Wählen Sie **Admin** > **My Account** (Verwaltung > Mein Konto) aus.
 
     ![Screenshot: Benutzeroberfläche der ekarda-Website mit hervorgehobener Option „My Account“ (Mein Konto) im Verwaltungsmenü](./media/ekarda-tutorial/ekarda.png)
@@ -166,16 +168,20 @@ In diesem Abschnitt wird in ekarda ein Benutzer namens B. Simon erstellt. ekard
 
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens
 
-In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mithilfe des Portals „Meine Apps“.
+In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mit den folgenden Optionen:
 
-Wenn Sie im Zugriffsbereich die Kachel „ekarda“ auswählen, sollten Sie automatisch bei der ekarda-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Portal „Meine Apps“ finden Sie unter [Anmelden beim Portal „Meine Apps“ und Starten von Apps über dieses](../user-help/my-apps-portal-end-user-access.md).
+#### <a name="sp-initiated"></a>SP-initiiert:
 
-## <a name="additional-resources"></a>Zusätzliche Ressourcen
+* Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch werden Sie zur Anmelde-URL für ekarda weitergeleitet, wo Sie den Anmeldeflow initiieren können.
 
-* [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](./tutorial-list.md)
-* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
-* [Was ist bedingter Zugriff?](../conditional-access/overview.md)
-* [ekarda mit Azure AD ausprobieren](https://aad.portal.azure.com/)
-* Verwenden Sie die [eCard-Unternehmenslösung von ekarda](https://ekarda.com/ecards-ecards-with-logo-for-business-corporate-enterprise), um einer beliebigen Anzahl von Mitarbeitern das Senden von eCards mit Ihrem Unternehmenslogo an Kunden und Kollegen zu ermöglichen. Erfahren Sie mehr über das [Bereitstellen von ekarda als SSO-Lösung](https://support.ekarda.com/#SSO-Implementation).
-* [Was ist Sitzungssteuerung in Microsoft Cloud App Security?](/cloud-app-security/proxy-intro-aad)
-* [Schützen von Apps mit der App-Steuerung für bedingten Zugriff von Microsoft Cloud App Security](/cloud-app-security/proxy-intro-aad)
+* Rufen Sie direkt die ekarda-Anmelde-URL auf, und initiieren Sie den Anmeldeflow.
+
+#### <a name="idp-initiated"></a>IDP-initiiert:
+
+* Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch sollten Sie automatisch bei der ekarda-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben.
+
+Sie können auch den Microsoft-Bereich „Meine Apps“ verwenden, um die Anwendung in einem beliebigen Modus zu testen. Beim Klicken auf die Kachel „ekarda“ in „Meine Apps“ geschieht Folgendes: Wenn Sie die Anwendung im SP-Modus konfiguriert haben, werden Sie zum Initiieren des Anmeldeflows zur Anmeldeseite der Anwendung weitergeleitet. Wenn Sie die Anwendung im IDP-Modus konfiguriert haben, sollten Sie automatisch bei der ekarda-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+
+## <a name="next-steps"></a>Nächste Schritte
+
+Nach dem Konfigurieren von ekarda können Sie die Sitzungssteuerung erzwingen. Diese schützt in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten. Die Sitzungssteuerung basiert auf der App-Steuerung für bedingten Zugriff. [Hier](/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.

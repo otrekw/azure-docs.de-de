@@ -8,12 +8,12 @@ ms.date: 10/16/2020
 ms.service: azure-resource-manager
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.openlocfilehash: feabac62564729338e41bf30eaf8d9f5a6317126
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 56505c95e65911cafbaaa403cd09332695439d97
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148998"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97825677"
 ---
 # <a name="quickstart-create-an-azure-app-configuration-store-by-using-an-arm-template"></a>Schnellstart: Erstellen eines Azure App Configuration-Speichers per ARM-Vorlage
 
@@ -25,7 +25,7 @@ In dieser Schnellstartanleitung wird Folgendes beschrieben:
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Wenn Ihre Umgebung die Voraussetzungen erfüllt und Sie mit der Verwendung von ARM-Vorlagen vertraut sind, klicken Sie auf die Schaltfläche **In Azure bereitstellen** . Die Vorlage wird im Azure-Portal geöffnet.
+Wenn Ihre Umgebung die Voraussetzungen erfüllt und Sie mit der Verwendung von ARM-Vorlagen vertraut sind, klicken Sie auf die Schaltfläche **In Azure bereitstellen**. Die Vorlage wird im Azure-Portal geöffnet.
 
 [![In Azure bereitstellen](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-app-configuration-store-kv%2Fazuredeploy.json)
 
@@ -46,10 +46,10 @@ In der Schnellstartanleitung wird das Element `copy` verwendet, um mehrere Insta
 
 Zwei Azure-Ressourcen sind in der Vorlage definiert:
 
-- [Microsoft.AppConfiguration/configurationStores](/azure/templates/microsoft.appconfiguration/2020-06-01/configurationstores): Erstellen eines App Configuration-Speichers
-- Microsoft.AppConfiguration/configurationStores/keyValues: Erstellen eines Schlüsselwerts im App Configuration-Speicher
+- [Microsoft.AppConfiguration/configurationStores](/azure/templates/microsoft.appconfiguration/2020-07-01-preview/configurationstores): Erstellen eines App Configuration-Speichers
+- [Microsoft.AppConfiguration/configurationStores/keyValues](/azure/templates/microsoft.appconfiguration/2020-07-01-preview/configurationstores/keyvalues): Erstellen eines Schlüsselwerts im App Configuration-Speicher
 
-> [!NOTE]
+> [!TIP]
 > Der Name der Ressource `keyValues` ist eine Kombination aus Schlüssel und Bezeichnung. Der Schlüssel und die Bezeichnung werden mit dem Trennzeichen `$` verknüpft. Die Bezeichnung ist optional. Im obigen Beispiel wird von der Ressource `keyValues` mit dem Namen `myKey` ein Schlüsselwert ohne Bezeichnung erstellt.
 >
 > Bei der Prozentcodierung, die auch als URL-Codierung bezeichnet wird, können Schlüssel oder Bezeichnungen Zeichen enthalten, die in Ressourcennamen von ARM-Vorlagen nicht zulässig sind. Da auch `%` kein zulässiges Zeichen ist, wird stattdessen `~` verwendet. Führen Sie die folgenden Schritte aus, um einen Namen richtig zu codieren:
@@ -59,6 +59,13 @@ Zwei Azure-Ressourcen sind in der Vorlage definiert:
 > 3. Ersetzen Sie `%` durch `~`.
 >
 > Um beispielsweise ein Schlüssel-Wert-Paar mit dem Schlüsselnamen `AppName:DbEndpoint` und der Bezeichnung `Test` zu erstellen, sollte der Ressourcenname `AppName~3ADbEndpoint$Test` lauten.
+
+> [!NOTE]
+> App Configuration ermöglicht den Schlüssel-Wert-Datenzugriff über eine [private Verbindung](concept-private-endpoint.md) von Ihrem virtuellen Netzwerk. Wenn das Feature aktiviert ist, werden alle Anforderungen für Ihre App Configuration-Daten über das öffentliche Netzwerk standardmäßig verweigert. Da die ARM-Vorlage außerhalb des virtuellen Netzwerks ausgeführt wird, ist der Datenzugriff über eine ARM-Vorlage nicht zulässig. Um den Datenzugriff über eine ARM-Vorlage bei Verwendung einer privaten Verbindung zuzulassen, können Sie den Zugriff auf das öffentliche Netzwerk mithilfe des folgenden Azure CLI-Befehls aktivieren. In diesem Szenario ist es wichtig, die Sicherheitsauswirkungen zu berücksichtigen, die sich durch die Aktivierung des Zugriffs auf das öffentliche Netzwerk ergeben.
+>
+> ```azurecli-interactive
+> az appconfig update -g MyResourceGroup -n MyAppConfiguration --enable-public-network true
+> ```
 
 ## <a name="deploy-the-template"></a>Bereitstellen der Vorlage
 
@@ -86,7 +93,7 @@ Read-Host -Prompt "Press [ENTER] to continue ..."
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 1. Geben Sie im Azure-Portal im Suchfeld den Suchbegriff **App Configuration** ein. Wählen Sie in der Liste den Eintrag **App Configuration** aus.
 1. Wählen Sie die neu erstellte App Configuration-Ressource aus.
-1. Klicken Sie unter **Vorgänge** auf **Konfigurations-Explorer** .
+1. Klicken Sie unter **Vorgänge** auf **Konfigurations-Explorer**.
 1. Vergewissern Sie sich, dass zwei Schlüsselwerte vorhanden sind.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen

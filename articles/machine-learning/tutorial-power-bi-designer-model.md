@@ -1,7 +1,7 @@
 ---
 title: 'Tutorial: Erstellen des Vorhersagemodells mithilfe von Drag & Drop (Teil 1 von 2)'
 titleSuffix: Azure Machine Learning
-description: Erfahren Sie, wie Sie mit Designer ein Vorhersagemodell für maschinelles Lernen erstellen, damit Sie es für die Vorhersage von Ergebnissen in Microsoft Power BI verwenden können.
+description: Erfahren Sie, wie Sie mit dem Designer ein Machine Learning-Vorhersagemodell erstellen und bereitstellen. Sie können das Modell später nutzen, um Ergebnisse in Microsoft Power BI vorherzusagen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,160 +10,177 @@ ms.author: samkemp
 author: samuel100
 ms.reviewer: sdgilley
 ms.date: 12/11/2020
-ms.openlocfilehash: f0e1ffe60069a2379f8eddab1aae74db2b4eac50
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.custom: designer
+ms.openlocfilehash: 995979c7fe100637aa8e241489805fb09d6723f7
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97370661"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814787"
 ---
-# <a name="tutorial--power-bi-integration---drag-and-drop-to-create-the-predictive-model-part-1-of-2"></a>Tutorial:  Power BI-Integration: Erstellen des Vorhersagemodells mithilfe von Drag & Drop (Teil 1 von 2)
+# <a name="tutorial-power-bi-integration---drag-and-drop-to-create-the-predictive-model-part-1-of-2"></a>Tutorial: Power BI-Integration: Erstellen des Vorhersagemodells mithilfe von Drag & Drop (Teil 1 von 2)
 
-Im ersten Teil dieses Tutorials trainieren Sie ein Vorhersagemodell für maschinelles Lernen mithilfe von Azure Machine Learning-Designer – einer Benutzeroberfläche für die Erstellung mithilfe von Drag & Drop und wenig Programmieraufwand– und stellen es bereit. In Teil 2 verwenden Sie das Modell anschließend, um Ergebnisse in Microsoft Power BI vorherzusagen.
+In Teil 1 dieses Tutorials wird ein Vorhersagemodell für maschinelles Lernen mithilfe von Code in Azure Machine Learning-Designer trainiert und bereitgestellt. Der Designer ist eine Drag & Drop-Benutzeroberfläche mit wenig Code. In Teil 2 verwenden Sie das Modell, um Ergebnisse in Microsoft Power BI vorherzusagen.
 
 In diesem Tutorial führen Sie Folgendes durch:
 
 > [!div class="checklist"]
 > * Erstellen einer Compute-Instanz von Azure Machine Learning
 > * Erstellen eines Rückschlussclusters für Azure Machine Learning
-> * Erstellen eines Datasets
+> * Erstellen Sie ein Dataset.
 > * Trainieren eines Regressionsmodells
 > * Bereitstellen des Modells auf einem Echtzeit-Bewertungsendpunkt
 
 
-Es bestehen drei verschiedene Möglichkeiten, das zu verwendende Modell in Power BI zu erstellen und bereitzustellen.  In diesem Artikel wird Option B behandelt: Trainieren und Bereitstellen mithilfe von Designer.  In dieser Option wird eine Benutzeroberfläche für die Erstellung mit wenig Programmieraufwand (eine Drag & Drop-Benutzeroberfläche) veranschaulicht.  
+Es gibt drei Möglichkeiten, wie Sie das zu verwendende Modell in Power BI erstellen und bereitstellen können.  In diesem Artikel wird Option B behandelt: Trainieren und Bereitstellen mithilfe des Designers.  Bei dieser Option handelt es sich um eine Benutzeroberfläche für die Erstellung mit wenig Code, bei der die Designerschnittstelle verwendet wird.  
 
-Stattdessen können Sie Folgendes verwenden:
+Stattdessen können Sie aber auch eine der anderen Optionen nutzen:
 
-* [Option A: Trainieren und Bereitstellen von Modellen mithilfe von Notebooks](tutorial-power-bi-custom-model.md): ein Benutzererlebnis mit Schwerpunkt auf der Codeerstellung, das in Azure Machine Learning Studio gehostete Jupyter-Notebooks verwendet.
-* [Option C: Trainieren und Bereitstellen von Modellen mithilfe von automatisiertem ML](tutorial-power-bi-automated-model.md): ein Benutzererlebnis ohne Codeerstellung, das die Vorbereitung der Daten und das Trainieren des Modells vollständig automatisiert.
+* [Option A: Trainieren und Bereitstellen von Modellen – Verwenden von Jupyter Notebooks](tutorial-power-bi-custom-model.md). Bei dieser codebasierten Erstellung werden in Azure Machine Learning Studio gehostete Jupyter Notebooks verwendet.
+* [Option C: Trainieren und Bereitstellen von Modellen mit automatisiertem maschinellen Lernen](tutorial-power-bi-automated-model.md). Bei dieser Erstellung ohne Code werden die Datenaufbereitung und das Modelltraining vollständig automatisiert.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Ein Azure-Abonnement ([eine kostenlose Testversion ist](https://aka.ms/AMLFree) verfügbar). 
-- Ein Azure Machine Learning-Arbeitsbereich. Wenn Sie noch nicht über einen Arbeitsbereich verfügen, befolgen Sie die Anleitung zum [Erstellen eines Azure Machine Learning-Arbeitsbereichs](./how-to-manage-workspace.md#create-a-workspace).
+- Ein Azure-Abonnement. Falls Sie noch nicht über ein Abonnement verfügen, können Sie eine [kostenlose Testversion](https://aka.ms/AMLFree) nutzen. 
+- Ein Azure Machine Learning-Arbeitsbereich. Falls Sie noch nicht über einen Arbeitsbereich verfügen, helfen Ihnen die Informationen unter [Erstellen und Verwalten von Azure Machine Learning-Arbeitsbereichen](./how-to-manage-workspace.md#create-a-workspace) weiter.
 - Kenntnisse von Machine Learning-Workflows auf Einstiegsniveau.
 
 
-## <a name="create-compute-for-training-and-scoring"></a>Erstellen von Computeressourcen für Schulung und Bewertung
+## <a name="create-compute-to-train-and-score"></a>Erstellen einer Compute-Instanz zum Trainieren und Bewerten
 
-In diesem Abschnitt erstellen Sie eine *Compute-Instanz*, die zum Trainieren von Machine Learning-Modellen verwendet wird. Außerdem erstellen Sie einen *Rückschlusscluster*, der zum Hosten des bereitgestellten Modells für die Echtzeitbewertung verwendet wird.
+In diesem Abschnitt erstellen Sie eine *Compute-Instanz*. Compute-Instanzen werden dazu verwendet, um Machine Learning-Modelle zu trainieren. Außerdem erstellen Sie einen *Rückschlusscluster*, um das bereitgestellte Modell für die Echtzeitbewertung zu hosten.
 
-Melden Sie sich beim [Azure Machine Learning Studio](https://ml.azure.com) an, und wählen Sie im Menü auf der linken Seite **Compute** aus, gefolgt von **Neu**:
+Melden Sie sich bei [Azure Machine Learning Studio](https://ml.azure.com) an. Wählen Sie im Menü auf der linken Seite **Compute** und dann **Neu** aus:
 
-:::image type="content" source="media/tutorial-power-bi/create-new-compute.png" alt-text="Screenshot, der das Erstellen einer Compute-Instanz darstellt":::
+:::image type="content" source="media/tutorial-power-bi/create-new-compute.png" alt-text="Screenshot: Erstellen einer Compute-Instanz":::
 
-Wählen Sie auf dem dann angezeigten Bildschirm **Compute-Instanz erstellen** eine VM-Größe aus (wählen Sie für dieses Tutorial `Standard_D11_v2` aus), gefolgt von **Weiter**. Geben Sie auf der Seite „Einstellungen“ einen gültigen Namen für Ihre Compute-Instanz an, und wählen Sie dann **Erstellen** aus. 
+Wählen Sie auf der Seite **Compute-Instanz erstellen** eine Größe für den virtuellen Computer aus. Wählen Sie für dieses Tutorial einen virtuellen Computer vom Typ **Standard_D11_v2** aus. Wählen Sie **Weiter** aus. 
+
+Benennen Sie Ihre Compute-Instanz auf der Seite **Einstellungen**. Klicken Sie anschließend auf **Erstellen**. 
 
 >[!TIP]
-> Die Compute-Instanz kann außerdem zum Erstellen und Ausführen von Notebooks verwendet werden.
+> Sie können auch die Compute-Instanz verwenden, um Notebooks zu erstellen und auszuführen.
 
-Sie können nun sehen, dass der **Status** Ihrer Compute-Instanz **Creating** (Wird erstellt) ist – die Bereitstellung des Computers dauert etwa 4 Minuten. Wählen Sie während des Wartens die Registerkarte **Inference Cluster** (Rückschlusscluster) auf der Computeseite aus, gefolgt von **Neu**:
+Der **Status** Ihrer Compute-Instanz ist jetzt **Wird erstellt**. Die Bereitstellung des Computers dauert ungefähr vier Minuten. 
 
-:::image type="content" source="media/tutorial-power-bi/create-cluster.png" alt-text="Screenshot zur Erstellung eines Rückschlussclusters":::
+Während Sie warten, wählen Sie auf der Seite **Compute** die Registerkarte **Rückschlusscluster** aus. Wählen Sie anschließend **Neu** aus:
 
-Wählen Sie auf der dann angezeigten Seite **Create inference cluster** (Rückschlusscluster erstellen) eine Region aus, gefolgt von einer VM-Größe (wählen Sie für dieses Tutorial `Standard_D11_v2` aus), und wählen Sie dann **Weiter** aus. Führen Sie auf der Seite **Einstellungen konfigurieren** Folgendes aus:
+:::image type="content" source="media/tutorial-power-bi/create-cluster.png" alt-text="Screenshot: Erstellung eines Rückschlussclusters":::
 
-1. Geben Sie einen gültigen Computenamen an
-1. Wählen Sie **Dev-Test** als Zweck des Clusters aus (bewirkt die Erstellung eines Einzelknotens zum Hosten des bereitgestellten Modells)
+Wählen Sie auf der Seite **Rückschlusscluster erstellen** eine Region und eine Größe für den virtuellen Computer aus. Wählen Sie für dieses Tutorial einen virtuellen Computer vom Typ **Standard_D11_v2** aus. Wählen Sie **Weiter** aus. 
+
+Führen Sie auf der Seite **Einstellungen konfigurieren** Folgendes aus:
+
+1. Geben Sie einen gültigen Computenamen an.
+1. Wählen Sie **Dev-Test** als Clusterzweck aus. Mit dieser Option wird ein einzelner Knoten erstellt, um das bereitgestellte Modell zu hosten.
 1. Klicken Sie auf **Erstellen**.
 
-Sie können nun sehen, dass der **Status** Ihres Rückschlussclusters **Creating** (Wird erstellt) ist – die Bereitstellung Ihres Einzelknotenclusters nimmt etwa 4 Minuten in Anspruch.
+Der **Status** Ihres Rückschlussclusters ist jetzt **Wird erstellt**. Die Bereitstellung des Clusters mit einem einzelnen Knoten dauert ungefähr vier Minuten.
 
 ## <a name="create-a-dataset"></a>Erstellen eines Datasets
 
-In diesem Tutorial verwenden Sie das [Diabetes-Dataset](https://www4.stat.ncsu.edu/~boos/var.select/diabetes.html), das in den [Azure Open Datasets](https://azure.microsoft.com/services/open-datasets/) verfügbar gemacht wird.
+In diesem Tutorial verwenden Sie das [Diabetes-Dataset](https://www4.stat.ncsu.edu/~boos/var.select/diabetes.html). Dieses Dataset ist in [Azure Open Datasets](https://azure.microsoft.com/services/open-datasets/) verfügbar.
 
-Wählen Sie zum Erstellen des Datasets im Menü auf der linken Seite **Datasets** und dann **Dataset erstellen** aus – es werden die folgenden Optionen angezeigt:
+Wählen Sie zum Erstellen des Datasets im Menü auf der linken Seite die Option **Datasets** aus. Wählen Sie anschließend **Dataset erstellen** aus. Die folgenden Optionen werden angezeigt:
 
 :::image type="content" source="media/tutorial-power-bi/create-dataset.png" alt-text="Screenshot: Erstellen eines neuen Datasets":::
 
-Wählen Sie **Aus Open Datasets** aus, und führen Sie dann auf dem Bildschirm **Dataset aus Open Datasets erstellen** Folgendes aus:
+Wählen Sie die Option **Aus Open Datasets** aus. Gehen Sie auf der Seite **Dataset aus Open Datasets erstellen** wie folgt vor:
 
-1. Suchen Sie mithilfe der Suchleiste nach *Diabetes*
+1. Suchen Sie über die Suchleiste nach *diabetes*.
 1. Wählen Sie **Beispiel: Diabetes** aus.
 1. Wählen Sie **Weiter** aus.
-1. Geben Sie einen Namen für Ihr Dataset ein: *Diabetes*
+1. Geben Sie Ihrem Dataset den Namen *diabetes*.
 1. Klicken Sie auf **Erstellen**.
 
-Sie können die Daten durchsuchen, indem Sie das Dataset auswählen, gefolgt von **Explore** (Durchsuchen):
+Wählen Sie zum Untersuchen der Daten zuerst das Dataset und dann die Option **Erkunden** aus:
 
-:::image type="content" source="media/tutorial-power-bi/explore-dataset.png" alt-text="Screenshot zum Durchsuchen von Datasets":::
+:::image type="content" source="media/tutorial-power-bi/explore-dataset.png" alt-text="Screenshot: Erkunden eines Datasets":::
 
-Die Daten weisen 10 grundlegende Eingabevariablen (wie etwa Alter, Geschlecht, BMI, durchschnittlicher Blutdruck und sechs das Blutserum betreffende Werte) und eine Zielvariable mit dem Namen **Y** auf (ein quantitatives Maß für den Fortschritt des Diabetes ein Jahr nach dem Ermitteln der Grundlinie).
+Die Daten enthalten zehn grundlegende Eingabevariablen, z. B. Alter, Geschlecht, BMI, durchschnittliche Blutdruckwerte und sechs auf das Blutserum bezogene Werte. Außerdem ist eine Zielvariable mit dem Namen **Y** vorhanden. Bei dieser Zielvariablen handelt es sich um ein quantitatives Maß für den Fortschritt der Diabetes-Erkrankung ein Jahr nach der Ermittlung der Grundwerte.
 
-## <a name="create-a-machine-learning-model-using-designer"></a>Erstellen eines Machine Learning-Modells mithilfe von Designer
+## <a name="create-a-machine-learning-model-by-using-the-designer"></a>Erstellen eines Machine Learning-Modells mithilfe des Designers
 
-Nachdem Sie den Computer und die Datasets erstellt haben, können Sie mit dem Erstellen des Machine Learning-Modells mithilfe von Designer fortfahren. Wählen Sie im Azure Machine Learning Studio **Designer** aus, gefolgt von **Neue Pipeline**:
+Nachdem Sie die Compute-Instanz und Datasets erstellt haben, können Sie den Designer verwenden, um das Machine Learning-Modell zu erstellen. Wählen Sie in Azure Machine Learning Studio **Designer** und dann **Neue Pipeline** aus:
 
-:::image type="content" source="media/tutorial-power-bi/create-designer.png" alt-text="Screenshot zum Erstellen einer neuen Pipeline":::
+:::image type="content" source="media/tutorial-power-bi/create-designer.png" alt-text="Screenshot: Erstellen einer neuen Pipeline":::
 
-Sie sehen einen leeren *Zeichenbereich*, in dem außerdem ein **Menü „Einstellungen“** angezeigt wird:
+Sie sehen eine leere *Canvas* und das Menü **Einstellungen**:
 
-:::image type="content" source="media/tutorial-power-bi/select-compute.png" alt-text="Screenshot zum Auswählen eines Computeziels":::
+:::image type="content" source="media/tutorial-power-bi/select-compute.png" alt-text="Screenshot: Auswählen eines Computeziels":::
 
-Wählen Sie im Menü **Einstellungen** **Computeziel auswählen** und anschließend die Compute-Instanz aus, die Sie zuvor erstellt haben, gefolgt von **Speichern**. Ändern Sie den **Entwurfsnamen** in etwas leichter zu Merkendes (beispielsweise *Diabetesmodell*), und geben Sie eine Beschreibung ein.
+Wählen Sie im Menü **Einstellungen** die Option **Computeziel auswählen** aus. Wählen Sie die zuvor erstellte Compute-Instanz und dann **Speichern** aus. Ändern Sie den **Entwurfsnamen** in etwas leichter zu Merkendes, z. B. *Diabetesmodell*. Geben Sie abschließend eine Beschreibung ein.
 
-Erweitern Sie als nächstes in den aufgelisteten Ressourcen **Datasets**, und suchen Sie das **Diabetes**-Dataset. Ziehen Sie dieses Modul auf den Zeichenbereich, und legen Sie es dort ab:
+Erweitern Sie in der Liste der Objekte die Option **Datasets**, und suchen Sie nach dem **Diabetes**-Dataset. Ziehen Sie diese Komponente auf die Canvas:
 
-:::image type="content" source="media/tutorial-power-bi/drag-component.png" alt-text="Screenshot zum Ablegen einer Komponente im Zeichenbereich":::
+:::image type="content" source="media/tutorial-power-bi/drag-component.png" alt-text="Screenshot: Ziehen einer Komponente auf die Canvas":::
 
-Ziehen Sie anschließend die folgenden Komponenten auf den Zeichenbereich, und legen Sie sie ab:
+Ziehen Sie als nächstes die folgenden Komponenten auf die Canvas:
 
-1. Lineare Regression (in **Machine Learning-Algorithmen**)
-1. Modell trainieren (in **Modelltraining**)
+1. **Lineare Regression** (in **Machine Learning-Algorithmen**)
+1. **Modell trainieren** (in **Modelltraining**)
 
-Ihr Zeichenbereich sollte nun so aussehen (beachten Sie, dass an Ober- und Unterkante der Komponenten kleine Kreise dargestellt werden, die als „Ports“ bezeichnet werden – unten rot hervorgehoben):
+Beachten Sie in der Canvas die Kreise am oberen und unteren Rand der Komponenten. Diese Kreise sind Ports.
 
-:::image type="content" source="media/tutorial-power-bi/connections.png" alt-text="Screenshot, der nicht verbundene Komponenten zeigt":::
+:::image type="content" source="media/tutorial-power-bi/connections.png" alt-text="Screenshot: Ports auf nicht verbundenen Komponenten":::
  
-Als nächstes müssen Sie diese Komponenten miteinander *verdrahten*. Wählen Sie den Port an der Unterkante des **Diabetes**-Datasets aus, und ziehen Sie ihn auf den Port rechts oben an der Komponente **Modell trainieren**. Wählen Sie den Port an der Unterkante der Komponente **Lineare Regression** aus, und ziehen Sie ihn auf den Port links oben an der Komponente **Modell trainieren**.
+*Verbinden* Sie jetzt die Komponenten. Wählen Sie den Port am unteren Rand des Datasets **Diabetes** aus. Ziehen Sie ihn auf den Port rechts oben in der Komponente **Modell trainieren**. Wählen Sie den Port am unteren Rand der Komponente **Lineare Regression** aus. Ziehen Sie ihn auf den Port links oben in der Komponente **Modell trainieren**.
 
-Wählen Sie die Spalte im Dataset aus, die als die vorherzusagende Bezeichnungsvariable (Zielvariable) verwendet werden soll. Wählen Sie die Komponente **Modell trainieren** aus, gefolgt von **Spalte bearbeiten**. Wählen Sie im Dialogfeld den Eintrag **Spaltennamen eingeben** aus, gefolgt von **Y** in der Dropdownliste:
+Wählen Sie die Datasetspalte aus, die als Bezeichnungsvariable (Ziel) für die Vorhersage verwendet werden soll. Wählen Sie die Komponente **Modell trainieren** und dann **Spalte bearbeiten** aus. 
 
-:::image type="content" source="media/tutorial-power-bi/label-columns.png" alt-text="Screenshot zur Auswahl der Bezeichnungsspalte":::
+Wählen Sie im Dialogfeld **Spaltenname eingeben** > **Y** aus:
+
+:::image type="content" source="media/tutorial-power-bi/label-columns.png" alt-text="Screenshot: Auswählen einer Bezeichnungsspalte":::
 
 Wählen Sie **Speichern** aus. Ihr Machine Learning-*Workflow* sollte wie folgt aussehen:
 
-:::image type="content" source="media/tutorial-power-bi/connected-diagram.png" alt-text="Screenshot mit der Darstellung der verbundenen Komponenten":::
+:::image type="content" source="media/tutorial-power-bi/connected-diagram.png" alt-text="Screenshot: Darstellung der verbundenen Komponenten":::
 
-Wählen Sie **Submit** (Senden) und dann unter „Experiment“ **Neues erstellen** aus. Geben Sie einen Namen für das Experiment ein, gefolgt von **Submit** (Senden).
+Klicken Sie auf **Submit** (Senden). Wählen Sie unter **Experiment** die Option **Neues erstellen** aus. Benennen Sie das Experiment, und wählen Sie dann **Übermitteln** aus.
 
 >[!NOTE]
-> Die erste Ausführung Ihres Experiments sollte etwa 5 Minuten in Anspruch nehmen. Nachfolgende Ausführungen erfolgen viel schneller – Designer speichert die bereits ausgeführten Komponenten zwischen, um die Wartezeit zu verringern.
+> Die erste Ausführung des Experiments sollte ungefähr fünf Minuten dauern. Nachfolgende Ausführungen sind viel schneller, da der Designer Komponenten zwischenspeichert, die ausgeführt wurden, um die Wartezeit zu verringern.
 
-Wenn das Experiment abgeschlossen ist, wird Folgendes angezeigt:
+Wenn das Experiment abgeschlossen ist, sehen Sie die folgende Ansicht:
 
-:::image type="content" source="media/tutorial-power-bi/completed-run.png" alt-text="Screenshot einer abgeschlossenen Ausführung":::
+:::image type="content" source="media/tutorial-power-bi/completed-run.png" alt-text="Screenshot: Abgeschlossene Ausführung":::
 
-Sie können die Protokolle des Experiments untersuchen, indem Sie **Modell trainieren** auswählen, gefolgt von **Ausgaben + Protokolle**.
+Um die Experimentprotokolle zu überprüfen, wählen Sie **Modell trainieren** und dann **Ausgaben und Protokolle** aus.
 
 ## <a name="deploy-the-model"></a>Bereitstellen des Modells
 
-Wählen Sie zum Bereitstellen des Modells **Rückschlusspipeline erstellen** (oben im Zeichenbereich) aus, gefolgt von **Echtzeit-Rückschlusspipeline**:
+Wählen Sie zum Bereitstellen des Modells im oberen Bereich der Canvas **Rückschlusspipeline erstellen** > **Echtzeit-Rückschlusspipeline** aus.
 
-:::image type="content" source="media/tutorial-power-bi/pipeline.png" alt-text="Screenshot zum Erstellen einer Echtzeit-Rückschlusspipeline":::
+:::image type="content" source="media/tutorial-power-bi/pipeline.png" alt-text="Screenshot: Position zum Auswählen einer Echtzeit-Rückschlusspipeline":::
  
-Die Pipeline fasst lediglich die Komponenten, die zum Ausführen der Modellbewertung erforderlich sind. Wenn Sie die Daten bewerten, sind Ihnen die Werte der Zielvariablen nicht bekannt, daher können wir **Y** aus dem Dataset entfernen. Fügen Sie zum Entfernen dem Zeichenbereich eine Komponente **Spalten in Dataset auswählen** hinzu. Verdrahten Sie die Komponente so, dass das Diabetes-Dataset als Eingabe fungiert und die Ergebnisse die Ausgabe in die Komponente **Modell bereitstellen** darstellen:
+Die Pipeline fasst lediglich die Komponenten, die zum Bewerten des Modells erforderlich sind. Wenn Sie die Daten bewerten, sind Ihnen die Zielvariablenwerte nicht bekannt. Sie können daher **Y** aus dem Dataset entfernen. 
 
-:::image type="content" source="media/tutorial-power-bi/remove-column.png" alt-text="Screenshot, der das Entfernen einer Spalte zeigt":::
+Fügen Sie zum Entfernen von **Y** eine **Select Columns in Dataset**-Komponente (Spalten im Dataset auswählen) in der Canvas hinzu. Stellen Sie eine Verbindung mit der Komponente her, damit das Diabetes-Dataset die Eingabe darstellt. Die Ergebnisse werden in der Komponente **Score Model** (Modell bewerten) ausgegeben:
 
-Wählen Sie im Zeichenbereich die Komponente **Spalten in einem Dataset auswählen** aus, gefolgt von **Spalten bearbeiten**. Wählen Sie im Dialogfeld „Spalten auswählen“ **Nach Name** aus, und achten Sie darauf, dass alle Eingabevariablen ausgewählt sind, **nicht** jedoch das Ziel:
+:::image type="content" source="media/tutorial-power-bi/remove-column.png" alt-text="Screenshot: Entfernen einer Spalte":::
 
-:::image type="content" source="media/tutorial-power-bi/removal-settings.png" alt-text="Screenshot zum Entfernen einer Spalteneinstellung":::
+Wählen Sie in der Canvas die Komponente **Select Columns in Dataset** (Spalten im Dataset auswählen) und dann **Spalten bearbeiten** aus. 
 
-Wählen Sie **Speichern** aus. Wählen Sie schließlich die Komponente **Modell bewerten** aus, und stellen Sie sicher, dass das Kontrollkästchen **Append score columns to output** (Bewertungsspalten an die Ausgabe anfügen) deaktiviert ist (nur die Vorhersagen werden zurück gesendet, anstelle von Eingaben *und* Vorhersagen, wodurch sich die Wartezeit verringert):
+Wählen Sie im Dialogfeld **Spalten auswählen** die Option **Nach Name** aus. Stellen Sie dann sicher, dass alle Eingabevariablen ausgewählt sind, während das Ziel *nicht* ausgewählt ist:
 
-:::image type="content" source="media/tutorial-power-bi/score-settings.png" alt-text="Screenshot mit Darstellung der Einstellungen für die Komponente „Modell bewerten“":::
+:::image type="content" source="media/tutorial-power-bi/removal-settings.png" alt-text="Screenshot: Entfernen von Spalteneinstellungen":::
+
+Wählen Sie **Speichern** aus. 
+
+Wählen Sie abschließend die Komponente **Score Modell** (Modell bewerten) aus, und vergewissern Sie sich, dass das Kontrollkästchen **Append score columns to output** (Bewertungsspalten an die Ausgabe anfügen) deaktiviert ist. Um die Wartezeit zu verringern, werden die Vorhersagen ohne die Eingaben zurückgesendet.
+
+:::image type="content" source="media/tutorial-power-bi/score-settings.png" alt-text="Screenshot: Einstellungen für die Komponente „Score Model“ (Modell bewerten)":::
 
 Wählen Sie im oberen Bereich der Canvas die Option **Senden** aus.
 
-Wenn Sie die Rückschlusspipeline erfolgreich ausgeführt haben, können Sie das Modell anschließend Ihrem Rückschlusscluster hinzufügen. Wählen Sie **Bereitstellen** aus, wodurch das Dialogfeld **Echtzeitendpunkt einrichten** angezeigt wird. Wählen Sie **Neuen Echtzeitendpunkt bereitstellen** aus, geben Sie dem Endpunkt den Namen **Mein-Diabetesmodell**, wählen Sie den Rückschluss aus, den Sie zuvor erstellt haben, und wählen Sie **Bereitstellen** aus:
+Nachdem Sie die Rückschlusspipeline erfolgreich ausgeführt haben, können Sie das Modell anschließend für Ihren Rückschlusscluster bereitstellen. Klicken Sie auf **Bereitstellen**. 
 
-:::image type="content" source="media/tutorial-power-bi/endpoint-settings.png" alt-text="Screenshot der Echtzeitendpunkt-Einstellungen":::
+Wählen Sie im Dialogfeld **Echtzeitendpunkt einrichten** die Option **Neuen Echtzeitendpunkt bereitstellen** aus. Geben Sie dem Endpunkt den Namen *Mein-Diabetesmodell*. Wählen Sie den zuvor erstellten Rückschluss und dann **Bereitstellen** aus:
+
+:::image type="content" source="media/tutorial-power-bi/endpoint-settings.png" alt-text="Screenshot: Echtzeitendpunkt-Einstellungen":::
 ## <a name="next-steps"></a>Nächste Schritte
 
 In diesem Tutorial haben Sie erfahren, wie ein Designer-Modell trainiert und bereitgestellt wird. Im nächsten Teil erfahren Sie, wie Sie dieses Modell in Power BI nutzen (bewerten).
 
 > [!div class="nextstepaction"]
-> [Tutorial: Nutzen eines Modells in Power BI](/power-bi/connect-data/service-aml-integrate?context=azure/machine-learning/context/ml-context)
+> [Tutorial: Verwenden von Azure Machine Learning-Modellen in Power BI](/power-bi/connect-data/service-aml-integrate?context=azure/machine-learning/context/ml-context)

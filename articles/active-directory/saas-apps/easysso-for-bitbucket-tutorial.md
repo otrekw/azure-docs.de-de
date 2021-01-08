@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/18/2020
+ms.date: 12/21/2020
 ms.author: jeedes
-ms.openlocfilehash: 0433c0fdc1584ce209eb0409b0e8f5cbfc2719ed
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 21e5da3884cce6e3a7beff297e40fdc48a3ac761
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92454404"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724339"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-easysso-for-bitbucket"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit EasySSO for BitBucket
 
@@ -25,8 +25,6 @@ In diesem Tutorial erfahren Sie, wie Sie EasySSO for BitBucket in Azure Active D
 * Steuern Sie in Azure AD, wer Zugriff auf EasySSO for BitBucket hat.
 * Ermöglichen Sie es Ihren Benutzern, sich mit ihren Azure AD-Konten automatisch bei EasySSO for BitBucket anzumelden.
 * Verwalten Sie Ihre Konten zentral im Azure-Portal.
-
-Weitere Informationen zur Integration von SaaS-Apps (Software as a Service) mit Azure AD finden Sie unter [Einmaliges Anmelden bei Anwendungen in Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -41,23 +39,22 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 
 * EasySSO for BitBucket unterstützt SP- und IdP-initiiertes einmaliges Anmelden.
 * EasySSO for BitBucket unterstützt die Just-In-Time-Benutzerbereitstellung.
-* Nach dem Konfigurieren von EasySSO for BitBucket können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
 
 ## <a name="add-easysso-for-bitbucket-from-the-gallery"></a>Hinzufügen von EasySSO for BitBucket aus dem Katalog
 
 Zum Konfigurieren der Integration von EasySSO for BitBucket in Azure AD müssen Sie EasySSO for BitBucket aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
 
-1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim [Azure-Portal](https://portal.azure.com) an.
+1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim Azure-Portal an.
 1. Wählen Sie im linken Navigationsbereich den Dienst **Azure Active Directory** aus.
-1. Navigieren Sie zu **Unternehmensanwendungen** , und wählen Sie die Option **Alle Anwendungen** aus.
+1. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie die Option **Alle Anwendungen** aus.
 1. Wählen Sie zum Hinzufügen einer neuen Anwendung **Neue Anwendung** aus.
 1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **EasySSO for BitBucket** in das Suchfeld ein.
 1. Wählen Sie in den Ergebnissen die Option **EasySSO for BitBucket** aus, und fügen Sie die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-easysso-for-bitbucket"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für EasySSO for BitBucket
+## <a name="configure-and-test-azure-ad-sso-for-easysso-for-bitbucket"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für EasySSO for BitBucket
 
-Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit EasySSO for BitBucket mithilfe eines Testbenutzers namens **B.Simon** . Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in EasySSO for BitBucket eingerichtet werden.
+Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit EasySSO for BitBucket mithilfe eines Testbenutzers namens **B.Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in EasySSO for BitBucket eingerichtet werden.
 
 Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit EasySSO for BitBucket die folgenden Schritte aus:
 
@@ -72,7 +69,7 @@ Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD 
 
 Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal zu aktivieren.
 
-1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **EasySSO for BitBucket** zum Abschnitt **Verwalten** . Wählen Sie **Einmaliges Anmelden** aus.
+1. Navigieren Sie im Azure-Portal auf der Anwendungsintegrationsseite für **EasySSO for BitBucket** zum Abschnitt **Verwalten**. Wählen Sie **Einmaliges Anmelden** aus.
 1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
 1. Wählen Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** das Stiftsymbol für **Grundlegende SAML-Konfiguration** aus, um die Einstellungen zu bearbeiten.
 
@@ -120,10 +117,10 @@ In diesem Abschnitt wird über das Azure-Portal ein Testbenutzer namens „B.Sim
 1. Wählen Sie im Azure-Portal im linken Bereich **Azure Active Directory** > **Benutzer** > **Alle Benutzer** aus.
 1. Wählen Sie oben im Bildschirm die Option **Neuer Benutzer** aus.
 1. Führen Sie unter den Eigenschaften für **Benutzer** die folgenden Schritte aus:
-   1. Geben Sie unter **Name**`B.Simon` ein.  
+   1. Geben Sie unter **Name**`B.Simon` ein.
    1. Geben Sie unter **Benutzername** einen Benutzernamen im Format username@companydomain.extension ein. Beispiel: `B.Simon@contoso.com`.
-   1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen** , und notieren Sie sich das Kennwort.
-   1. Klicken Sie auf **Erstellen** .
+   1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich das Kennwort.
+   1. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -131,24 +128,30 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 1. Wählen Sie im Azure-Portal **Unternehmensanwendungen** > **Alle Anwendungen** aus.
 1. Wählen Sie in der Anwendungsliste **EasySSO for BitBucket** aus.
-1. Navigieren Sie auf der Übersichtsseite der App zum Abschnitt **Verwalten** , und wählen Sie **Benutzer und Gruppen** aus.
+1. Navigieren Sie auf der Übersichtsseite der App zum Abschnitt **Verwalten**, und wählen Sie **Benutzer und Gruppen** aus.
 
-   ![Screenshot: Abschnitt „Verwalten“ mit hervorgehobener Option „Benutzer und Gruppen“](common/users-groups-blade.png)
-
-1. Klicken Sie auf **Benutzer hinzufügen** . Wählen Sie im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
-
-    ![Screenshot: Seite „Benutzer und Gruppen“ mit hervorgehobener Option zum Hinzufügen eines Benutzers](common/add-assign-user.png)
+1. Klicken Sie auf **Benutzer hinzufügen**. Wählen Sie im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 
 1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste **Benutzer** den Eintrag **B. Simon** aus, und wählen Sie dann im unteren Bereich des Bildschirms die Option **Auswählen** aus.
-1. Falls Sie in der SAML-Assertion einen Rollenwert erwarten, wählen Sie im Dialogfeld **Rolle auswählen** die entsprechende Rolle für den Benutzer aus der Liste aus. Wählen Sie anschließend am unteren Bildschirmrand **Auswählen** aus.
+1. Wenn den Benutzern eine Rolle zugewiesen werden soll, können Sie sie im Dropdownmenü **Rolle auswählen** auswählen. Wurde für diese App keine Rolle eingerichtet, ist die Rolle „Standardzugriff“ ausgewählt.
 1. Wählen Sie im Dialogfeld **Zuweisung hinzufügen** die Option **Zuweisen** aus.
 
 ## <a name="configure-easysso-for-bitbucket-sso"></a>Konfigurieren des einmaligen Anmeldens für EasySSO for BitBucket
 
-1. Melden Sie sich mit Administratorrechten bei Ihrer Atlassian BitBucket-Instanz an, und navigieren Sie zum Abschnitt **Administration** (Verwaltung). 
+1. Wenn Sie die Konfiguration in Zoom automatisieren möchten, müssen Sie die **Browsererweiterung zur sicheren Anmeldung bei „Meine Apps“** installieren, indem Sie auf **Erweiterung installieren** klicken.
+
+    ![Erweiterung „Meine Apps“](common/install-myappssecure-extension.png)
+
+2. Klicken Sie nach dem Hinzufügen der Erweiterung zum Browser auf **Zoom einrichten**. Sie werden dann zur Anwendung Zoom weitergeleitet. Geben Sie dort die Administratoranmeldeinformationen ein, um sich bei Zoom anzumelden. Die Browsererweiterung konfiguriert die Anwendung automatisch für Sie und automatisiert die Schritte 3 bis 10.
+
+    ![Einrichtungskonfiguration](common/setup-sso.png)
+
+3. Wenn Sie Zoom manuell einrichten möchten, melden Sie sich in einem anderen Webbrowserfenster als Administrator bei der Zoom-Unternehmenswebsite an.
+
+1. Navigieren Sie zum Abschnitt **Administration** (Verwaltung).
 
     ![Screenshot: BitBucket-Instanz mit hervorgehobenem Zahnradsymbol](./media/easysso-for-bitbucket-tutorial/bitbucket-admin-1.png)
-1. Suchen Sie nach **EasySSO** , und wählen Sie diese Option aus.
+1. Suchen Sie nach **EasySSO**, und wählen Sie diese Option aus.
 
     ![Screenshot: Option „EasySSO“](./media/easysso-for-bitbucket-tutorial/bitbucket-admin-2.png)
 
@@ -160,7 +163,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
     ![Screenshot: Registerkarte „Certificates“ (Zertifikate) mit verschiedenen hervorgehobenen Optionen](./media/easysso-for-bitbucket-tutorial/bitbucket-admin-4.png)
 
-1. Suchen Sie nach dem **Zertifikat (Base64)** oder nach der **Metadatendatei** , das bzw. die Sie im vorherigen Abschnitt dieses Tutorials gespeichert haben. Fahren Sie mit einem der folgenden Schritte fort:
+1. Suchen Sie nach dem **Zertifikat (Base64)** oder nach der **Metadatendatei**, das bzw. die Sie im vorherigen Abschnitt dieses Tutorials gespeichert haben. Fahren Sie mit einem der folgenden Schritte fort:
 
     - Verwenden Sie die **Metadatendatei** des App-Verbunds, die Sie als lokale Datei auf Ihren Computer heruntergeladen haben. Wählen Sie das Optionsfeld **Hochladen** aus, und folgen Sie dem spezifischen Pfad für Ihr Betriebssystem.
 
@@ -186,38 +189,20 @@ Falls Sie die automatische Benutzerbereitstellung bei erstmaliger Anmeldung eine
 
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens 
 
-### <a name="idp-initiated-workflow"></a>IdP-initiierter Workflow
+In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mit den folgenden Optionen:
 
-In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
+#### <a name="sp-initiated"></a>SP-initiiert:
 
-Wenn Sie die Kachel „EasySSO for BitBucket“ auswählen, sollten Sie automatisch bei der BitBucket-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen finden Sie unter [Anmelden beim Portal „Meine Apps“ und Starten von Apps über dieses](../user-help/my-apps-portal-end-user-access.md).
+* Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch werden Sie zur Anmelde-URL für EasySSO for BitBucket weitergeleitet, wo Sie den Anmeldeflow initiieren können.
 
-### <a name="sp-initiated-workflow"></a>SP-initiierter Workflow
+* Rufen Sie direkt die EasySSO for BitBucket-Anmelde-URL auf, und initiieren Sie den Anmeldeflow.
 
-In diesem Abschnitt wird die Azure AD-Konfiguration für einmaliges Anmelden über die BitBucket-Schaltfläche **SAML Login** (SAML-Anmeldung) getestet.
+#### <a name="idp-initiated"></a>IDP-initiiert:
 
-![Screenshot: Anmeldebildschirm mit hervorgehobener Schaltfläche für die SAML-Anmeldung](./media/easysso-for-bitbucket-tutorial/bitbucket-admin-7.png)
+* Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch sollten Sie automatisch bei der EasySSO for BitBucket-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben.
 
-In diesem Szenario wird davon ausgegangen, dass Sie auf der BitBucket EasySSO-Konfigurationsseite auf der Registerkarte **Look & Feel** (Erscheinungsbild) die Option **SAML Login Button** (SAML-Anmeldeschaltfläche) aktiviert haben. Öffnen Sie Ihre BitBucket-Anmelde-URL im Inkognitomodus des Browsers, um Beeinträchtigungen der vorhandenen Sitzungen zu vermeiden. Wählen Sie die Schaltfläche **SAML Login** (SAML-Anmeldung) aus. Sie werden zum Azure AD-Benutzerauthentifizierungsflow umgeleitet. Nach erfolgreichem Abschluss des Vorgangs werden Sie als authentifizierter Benutzer über SAML wieder zu Ihrer BitBucket-Instanz umgeleitet.
+Sie können auch den Microsoft-Bereich „Meine Apps“ verwenden, um die Anwendung in einem beliebigen Modus zu testen. Beim Klicken auf die Kachel „EasySSO for BitBucket“ in „Meine Apps“ geschieht Folgendes: Wenn Sie die Anwendung im SP-Modus konfiguriert haben, werden Sie zum Initiieren des Anmeldeflows zur Anmeldeseite der Anwendung weitergeleitet. Wenn Sie die Anwendung im IDP-Modus konfiguriert haben, sollten Sie automatisch bei der EasySSO for BitBucket-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-Nach der Rückkehr von Azure AD wird gegebenenfalls der folgende Bildschirm angezeigt:
+## <a name="next-steps"></a>Nächste Schritte
 
-![Screenshot: EasySSO-Fehlerbildschirm mit hervorgehobener Referenznummer](./media/easysso-for-bitbucket-tutorial/bitbucket-admin-8.png)
-
-Folgen Sie in diesem Fall den Anweisungen auf [dieser Seite](https://techtime.co.nz/display/TECHTIME/EasySSO+How+to+get+the+logs#EasySSOHowtogetthelogs-RETRIEVINGTHELOGS), um Zugriff auf die Datei **atlassian-bitbucket.log** zu erhalten. Details zum Fehler können anhand der Referenz-ID auf der EasySSO-Fehlerseite ermittelt werden.
-
-Sollten Probleme auftreten, wenden Sie sich an das [EasySSO-Supportteam](mailto:support@techtime.co.nz).
-
-## <a name="additional-resources"></a>Zusätzliche Ressourcen
-
-- [Tutorials zur Integration von SaaS-Anwendungen in Azure Active Directory](./tutorial-list.md)
-
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
-
-- [Was ist der bedingte Zugriff in Azure Active Directory?](../conditional-access/overview.md)
-
-- [Testen von EasySSO for BitBucket mit Azure AD](https://aad.portal.azure.com/)
-
-- [Was ist Sitzungssteuerung in Microsoft Cloud App Security?](/cloud-app-security/proxy-intro-aad)
-
-- [Schützen von Apps mit der App-Steuerung für bedingten Zugriff von Microsoft Cloud App Security](/cloud-app-security/proxy-intro-aad)
+Nach dem Konfigurieren von EasySSO for BitBucket können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.

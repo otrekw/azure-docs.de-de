@@ -3,14 +3,14 @@ title: Erstellen Ihrer ersten dauerhaften Funktion in Azure mit Python
 description: Hier erfahren Sie, wie Sie eine dauerhafte Azure-Funktion in Python mithilfe von Visual Studio Code erstellen und veröffentlichen.
 author: anthonychu
 ms.topic: quickstart
-ms.date: 04/04/2020
+ms.date: 12/23/2020
 ms.reviewer: azfuncdf, antchu
-ms.openlocfilehash: 5d624027259212d804ced26a6daaffb853984a98
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 0cc321563de645aeb1d204b67b0ab72053d79c7e
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96012628"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97763556"
 ---
 # <a name="create-your-first-durable-function-in-python"></a>Erstellen Ihrer ersten dauerhaften Funktion in Python
 
@@ -40,7 +40,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
 
 In diesem Abschnitt wird mithilfe von Visual Studio Code ein lokales Azure Functions-Projekt erstellt. 
 
-1. Drücken Sie in Visual Studio Code F1 (oder STRG+UMSCHALT+P bzw. BEFEHL+UMSCHALT-P), um die Befehlspalette zu öffnen. Suchen Sie in der Befehlspalette den Befehl `Azure Functions: Create New Project...`, und wählen Sie ihn aus.
+1. Drücken Sie in Visual Studio Code F1 (oder <kbd>STRG/BEFEHLSTASTE+UMSCHALT+P</kbd>), um die Befehlspalette zu öffnen. Suchen Sie in der Befehlspalette den Befehl `Azure Functions: Create New Project...`, und wählen Sie ihn aus.
 
     ![Erstellen einer Funktion](media/quickstart-python-vscode/functions-create-project.png)
 
@@ -60,18 +60,33 @@ Von Visual Studio Code werden bei Bedarf die Azure Functions Core Tools installi
 
 Außerdem wird die Datei „requirements.txt“ im Stammordner erstellt. Darin sind die Python-Pakete angegeben, die zum Ausführen ihrer Funktions-App erforderlich sind.
 
+## <a name="update-azure-functions-extension-bundles-version"></a>Aktualisieren der Version von Azure Functions-Erweiterungsbündeln
+
+Für Python Azure Functions ist Version 2.x der [Azure Functions-Erweiterungsbündel](../functions-bindings-register.md#access-extensions-in-non-net-languages) erforderlich. Erweiterungsbündel werden in *host.json* konfiguriert.
+
+1. Öffnen Sie *host.json* im Projekt. Aktualisieren Sie das `version`-Element des Erweiterungsbündels auf `[2.*, 3.0.0)`. Dadurch wird ein Versionsbereich angegeben, der größer als oder gleich 2.0 und kleiner als 3.0 ist.
+
+    ```json
+    "extensionBundle": {
+    "id": "Microsoft.Azure.Functions.ExtensionBundle",
+    "version": "[2.*, 3.0.0)"
+    }
+    ```
+
+1. VS Code muss erneut geladen werden, damit die aktualisierte Erweiterungsbündelversion angegeben wird. Führen Sie in der Befehlspalette eine Suche nach dem Befehl *Entwickler: Fenster erneut laden* aus, und führen Sie ihn aus.
+
 ## <a name="install-azure-functions-durable-from-pypi"></a>Installieren von „azure-functions-durable“ aus Pypi
 
 Beim Erstellen des Projekts hat die VS Code-Erweiterung von Azure Functions automatisch eine virtuelle Umgebung mit der von Ihnen ausgewählten Python-Version erstellt. Aktivieren Sie die virtuelle Umgebung in einem Terminal, und installieren Sie einige Abhängigkeiten, die von Azure Functions und Durable Functions benötigt werden.
 
-1. Öffnen Sie die Datei `requirements.txt` im Editor, und ändern Sie ihren Inhalt wie folgt:
+1. Öffnen Sie die Datei *requirements.txt* im Editor, und ändern Sie ihren Inhalt wie folgt:
 
     ```
     azure-functions
-    azure-functions-durable>=1.0.0b6
+    azure-functions-durable>=1.0.0b12
     ```
 
-1. Öffnen Sie das integrierte Terminal des Editors im aktuellen Ordner (`` Ctrl-Shift-` ``).
+1. Öffnen Sie das integrierte Terminal des Editors im aktuellen Ordner (<kbd>STRG+UMSCHALT+`</kbd>).
 
 1. Aktivieren Sie im integrierten Terminal die virtuelle Umgebung im aktuellen Ordner:
 
@@ -203,7 +218,7 @@ Mit Azure Functions Core-Tools können Sie ein Azure Functions-Projekt auf dem l
     }
     ```
 
-1. Drücken Sie in VS Code **UMSCHALT+F5**, um das Debuggen zu beenden.
+1. Drücken Sie in VS Code<kbd>UMSCHALT+F5</kbd>, um das Debuggen zu beenden.
 
 Nachdem Sie sichergestellt haben, dass die Funktion auf Ihrem lokalen Computer richtig ausgeführt wird, können Sie das Projekt in Azure veröffentlichen.
 

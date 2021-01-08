@@ -41,29 +41,29 @@ Mit einem CNAME-Eintrag wird eine Domäne einer anderen zugeordnet. Sie können 
 
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com), und melden Sie sich mit Ihrem Azure-Konto an.
 
-1. Suchen Sie nach **Static Web Apps** , und wählen Sie die Option aus.
+1. Suchen Sie nach **Static Web Apps**, und wählen Sie die Option aus.
 
 1. Wählen Sie auf der Seite _Static Web Apps_ den Namen Ihrer App aus.
 
-1. Klicken Sie im Menü auf **Benutzerdefinierte Domänen** .
+1. Klicken Sie im Menü auf **Benutzerdefinierte Domänen**.
 
-1. Klicken Sie auf die Schaltfläche **Hinzufügen** .
+1. Klicken Sie auf die Schaltfläche **Hinzufügen**.
 
-1. Kopieren Sie im Fenster _Benutzerdefinierte Domänen_ die URL im Feld **Wert** .
+1. Kopieren Sie im Fenster _Benutzerdefinierte Domänen_ die URL im Feld **Wert**.
 
 ### <a name="configure-dns-provider"></a>Konfigurieren des DNS-Anbieters
 
 1. Melden Sie sich bei der Website Ihres Domänenanbieters an.
 
-2. Suchen Sie die Seite für die Verwaltung von DNS-Einträgen. Da jeder Domänenanbieter eine eigene Benutzeroberfläche für DNS-Einträge hat, finden Sie Informationen dazu jeweils in der Dokumentation des Anbieters. Suchen Sie nach Bereichen der Website, die mit **Domänenname** , **DNS** oder **Namenserververwaltung** gekennzeichnet sind.
+2. Suchen Sie die Seite für die Verwaltung von DNS-Einträgen. Da jeder Domänenanbieter eine eigene Benutzeroberfläche für DNS-Einträge hat, finden Sie Informationen dazu jeweils in der Dokumentation des Anbieters. Suchen Sie nach Bereichen der Website, die mit **Domänenname**, **DNS** oder **Namenserververwaltung** gekennzeichnet sind.
 
-3. Die Seite für DNS-Einträge erreichen Sie häufig in Ihren Kontoinformationen über einen Link wie **Eigene Domänen** . Navigieren Sie auf diese Seite, und suchen Sie nach einem Link, der einen ähnlichen Namen wie **Zonendatei** , **DNS-Einträge** oder **Erweiterte Konfiguration** hat.
+3. Die Seite für DNS-Einträge erreichen Sie häufig in Ihren Kontoinformationen über einen Link wie **Eigene Domänen**. Navigieren Sie auf diese Seite, und suchen Sie nach einem Link, der einen ähnlichen Namen wie **Zonendatei**, **DNS-Einträge** oder **Erweiterte Konfiguration** hat.
 
     Der folgende Screenshot zeigt ein Beispiel für eine Seite mit DNS-Einträgen:
 
     :::image type="content" source="media/custom-domain/example-record-ui.png" alt-text="Beispiel für die Konfiguration eines DNS-Anbieters":::
 
-4. Erstellen Sie einen neuen **CNAME** -Eintrag mit den folgenden Werten:
+4. Erstellen Sie einen neuen **CNAME**-Eintrag mit den folgenden Werten:
 
     | Einstellung             | Wert                     |
     | ------------------- | ------------------------- |
@@ -80,11 +80,11 @@ Mit einem CNAME-Eintrag wird eine Domäne einer anderen zugeordnet. Sie können 
 
 1. Geben Sie Ihre Domäne (einschließlich `www`) im Abschnitt _Benutzerdefinierte Domäne überprüfen_ ein.
 
-1. Klicken Sie auf die Schaltfläche **Überprüfen** .
+1. Klicken Sie auf die Schaltfläche **Überprüfen**.
 
-Nachdem die benutzerdefinierte Domäne nun konfiguriert wurde, kann es mehrere Stunden dauern, bis die Änderungen vom DNS-Anbieter an alle weltweiten Standorte weitergegeben wurden. Sie können den Stand der Weitergabe unter [dnspropagation.net](https://dnspropagation.net) überprüfen. Geben Sie Ihre benutzerdefinierte Domäne (einschließlich `www`) ein, wählen Sie in der Dropdownliste die Option „CNAME“ aus, und klicken Sie auf **Starten** .
+Nachdem die benutzerdefinierte Domäne nun konfiguriert wurde, kann es mehrere Stunden dauern, bis die Änderungen vom DNS-Anbieter an alle weltweiten Standorte weitergegeben wurden. Sie können den Stand der Weitergabe unter [dnspropagation.net](https://dnspropagation.net) überprüfen. Geben Sie Ihre benutzerdefinierte Domäne (einschließlich `www`) ein, wählen Sie in der Dropdownliste die Option „CNAME“ aus, und klicken Sie auf **Starten**.
 
-Nachdem Ihre DNS-Änderungen eingefügt wurden, gibt die Website die automatisch generierte URL Ihrer statischen Web-App zurück (z. B. _random-name-123456789c.azurestaticapps.net_ ).
+Nachdem Ihre DNS-Änderungen eingefügt wurden, gibt die Website die automatisch generierte URL Ihrer statischen Web-App zurück (z. B. _random-name-123456789c.azurestaticapps.net_).
 
 ## <a name="configure-a-root-domain"></a>Konfigurieren einer Stammdomäne
 
@@ -100,15 +100,15 @@ Es kann vorkommen, dass bei Ihnen der gesamte Datenverkehr, der an eine Unterdom
 
 1. Melden Sie sich bei der Website Ihres Domänenanbieters an.
 
-2. Suchen Sie die Seite für die Verwaltung von DNS-Einträgen. Da jeder Domänenanbieter eine eigene Benutzeroberfläche für DNS-Einträge hat, finden Sie Informationen dazu jeweils in der Dokumentation des Anbieters. Suchen Sie nach Bereichen der Website, die mit **Domänenname** , **DNS** oder **Namenserververwaltung** gekennzeichnet sind.
+2. Suchen Sie die Seite für die Verwaltung von DNS-Einträgen. Da jeder Domänenanbieter eine eigene Benutzeroberfläche für DNS-Einträge hat, finden Sie Informationen dazu jeweils in der Dokumentation des Anbieters. Suchen Sie nach Bereichen der Website, die mit **Domänenname**, **DNS** oder **Namenserververwaltung** gekennzeichnet sind.
 
-3. Die Seite für DNS-Einträge erreichen Sie häufig in Ihren Kontoinformationen über einen Link wie **Eigene Domänen** . Navigieren Sie auf diese Seite, und suchen Sie nach einem Link, der einen ähnlichen Namen wie **Zonendatei** , **DNS-Einträge** oder **Erweiterte Konfiguration** hat.
+3. Die Seite für DNS-Einträge erreichen Sie häufig in Ihren Kontoinformationen über einen Link wie **Eigene Domänen**. Navigieren Sie auf diese Seite, und suchen Sie nach einem Link, der einen ähnlichen Namen wie **Zonendatei**, **DNS-Einträge** oder **Erweiterte Konfiguration** hat.
 
     Der folgende Screenshot zeigt ein Beispiel für eine Seite mit DNS-Einträgen:
 
     :::image type="content" source="media/custom-domain/example-record-ui.png" alt-text="Beispiel für die Konfiguration eines DNS-Anbieters":::
 
-4. Erstellen Sie einen neuen **CNAME** -Eintrag mit den folgenden Werten, und ersetzen Sie `www.example.com` durch den Namen Ihrer benutzerdefinierten Domäne.
+4. Erstellen Sie einen neuen **CNAME**-Eintrag mit den folgenden Werten, und ersetzen Sie `www.example.com` durch den Namen Ihrer benutzerdefinierten Domäne.
 
     | Einstellung | Wert                  |
     | ------- | ---------------------- |
