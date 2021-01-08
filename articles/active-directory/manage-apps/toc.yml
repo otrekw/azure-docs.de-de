@@ -37,16 +37,12 @@
     - name: Azure PowerShell-Beispiele für den Anwendungsproxy
       href: application-proxy-powershell-samples.md
 - name: Konzepte
-  expanded: false
+  expanded: true
   items:
     - name: Bewährte Methoden für die App-Verwaltung
       href: application-management-fundamentals.md
     - name: Allgemeine App-Verwaltungsszenarien
       href: common-scenarios.md
-    - name: Anzeigen von Apps in Ihrem Mandanten
-      href: application-types.md
-    - name: Zuweisen von Benutzern zu Apps
-      href: ways-users-get-assigned-to-applications.md
     - name: Planen der Integration von Cloud-Apps
       items:
         - name: Erste Schritte bei der App-Integration
@@ -286,6 +282,10 @@
       href: application-proxy-faq.md
     - name: Versionsverlauf des Anwendungsproxys
       href: application-proxy-release-version-history.md
+    - name: Gründe für die Anzeige von Apps in Unternehmensanwendungen
+      href: application-types.md
+    - name: Gründe für die Zuweisung von Benutzern zu einer App
+      href: ways-users-get-assigned-to-applications.md
 - name: Ressourcen
   items:
     - name: Support- und Hilfeoptionen für Entwickler

@@ -6,19 +6,19 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: tutorial
-ms.date: 05/06/2019
-ms.openlocfilehash: 1fffeec1434cb066487bf383589554edec2e6a86
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 12/17/2020
+ms.openlocfilehash: 2353d15707fe215bfcab7912f2a9c598c4af7e49
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75443693"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97822011"
 ---
 # <a name="tutorial-custom-net-deserializers-for-azure-stream-analytics"></a>Tutorial: Benutzerdefinierte .NET-Deserialisierer für Azure Stream Analytics
 
 Azure Stream Analytics verfügt über [integrierte Unterstützung von drei Datenformaten](stream-analytics-parsing-json.md): JSON, CSV und Avro. Mit benutzerdefinierten .NET-Deserialisierern können Sie Daten aus anderen Formaten lesen. Hierzu zählen unter anderem [Protokollpuffer](https://developers.google.com/protocol-buffers/), [Bond](https://github.com/Microsoft/bond) und andere benutzerdefinierte Formate für Cloud- und Edgeaufträge.
 
-In diesem Tutorial erfahren Sie, wie Sie mithilfe von Visual Studio einen benutzerdefinierten .NET-Deserialisierer für einen Azure Stream Analytics-Cloudauftrag erstellen. 
+In diesem Tutorial erfahren Sie, wie Sie mithilfe von Visual Studio einen benutzerdefinierten .NET-Deserialisierer für einen Azure Stream Analytics-Cloudauftrag erstellen. Informationen zur Erstellung von .NET-Deserialisierern in Visual Studio Code finden Sie unter [Erstellen von benutzerdefinierten .NET-Deserialisierern für Azure Stream Analytics in Visual Studio Code](visual-studio-code-custom-deserializer.md).
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -26,17 +26,16 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Erstellen eines benutzerdefinierten Deserialisierers für Protokollpuffer
 > * Erstellen eines Azure Stream Analytics-Auftrags in Visual Studio
 > * Konfigurieren Ihres Stream Analytics-Auftrags für die Verwendung des benutzerdefinierten Deserialisierers
-> * Lokales Ausführen Ihres Stream Analytics-Auftrags, um den benutzerdefinierten Deserialisierer zu testen
+> * Lokales Ausführen Ihres Stream Analytics-Auftrags, um den benutzerdefinierten Deserialisierer zu testen und zu debuggen
+
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen.
 
-* Installieren Sie [Visual Studio 2017](https://www.visualstudio.com/downloads/) oder [Visual Studio 2015](https://www.visualstudio.com/vs/older-downloads/). Die Editionen Enterprise (Ultimate/Premium), Professional und Community werden unterstützt. Die Express-Edition wird nicht unterstützt.
+* Installieren Sie [Visual Studio 2019 (empfohlen)](https://www.visualstudio.com/downloads/) oder [Visual Studio 2017](https://www.visualstudio.com/vs/older-downloads/). Die Editionen Enterprise (Ultimate/Premium), Professional und Community werden unterstützt. Die Express-Edition wird nicht unterstützt. 
 
-* [Installieren Sie die Stream Analytics-Tools für Visual Studio](stream-analytics-tools-for-visual-studio-install.md), oder führen Sie ein Update auf die neueste Version durch. Die folgenden Versionen von Visual Studio werden unterstützt:
-   * Visual Studio 2015
-   * Visual Studio 2017
+* [Installieren Sie die Stream Analytics-Tools für Visual Studio](stream-analytics-tools-for-visual-studio-install.md), oder führen Sie ein Update auf die neueste Version durch. 
 
 * Öffnen Sie **Cloud-Explorer** in Visual Studio, und melden Sie sich bei Ihrem Azure-Abonnement an.
 
@@ -116,11 +115,13 @@ Sie haben erfolgreich einen benutzerdefinierten Deserialisierer für Ihren Strea
 
 ## <a name="debug-your-deserializer"></a>Debuggen Ihres Deserialisierers
 
-Sie können Ihren benutzerdefinierten .NET-Deserialisierer genau wie .NET-Standardcode lokal debuggen. 
+Sie können Ihren benutzerdefinierten .NET-Deserialisierer genau wie .NET-Standardcode lokal debuggen.
 
-1. Fügen Sie Ihrer Funktion Breakpoints hinzu.
+1. Klicken Sie mit der rechten Maustaste auf den Projektnamen **ProtobufCloudDeserializer**, und legen Sie das Projekt als Startprojekt fest.
 
-2. Drücken Sie **F5**, um das Debuggen zu starten. Das Programm hält wie erwartet an den von Ihnen festgelegten Breakpoints an.
+2. Fügen Sie Ihrer Funktion Breakpoints hinzu.
+
+3. Drücken Sie **F5**, um das Debuggen zu starten. Das Programm hält wie erwartet an den von Ihnen festgelegten Breakpoints an.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

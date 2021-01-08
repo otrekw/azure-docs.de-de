@@ -9,16 +9,23 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: d257c66de8fb62fb57c573d91966f3e7d8d1b123
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 6024aae68183fbe02125ef4207e9fbce8abd6a2b
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96904957"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97679067"
 ---
-# <a name="tutorial---migrate-web-service-from-bing-maps"></a>Tutorial: Migrieren von Webdiensten aus Bing Karten
+# <a name="tutorial-migrate-web-service-from-bing-maps"></a>Tutorial: Migrieren von Webdiensten aus Bing Karten
 
-Sowohl Azure als auch Bing Karten ermöglichen den Zugriff auf räumliche APIs über REST-Webdienste. Die API-Schnittstellen für diese Plattformen bieten ähnliche Funktionen, verwenden jedoch unterschiedliche Namenskonventionen und Antwortobjekte.
+Sowohl Azure als auch Bing Karten ermöglichen den Zugriff auf räumliche APIs über REST-Webdienste. Die API-Schnittstellen für diese Plattformen bieten ähnliche Funktionen, verwenden jedoch unterschiedliche Namenskonventionen und Antwortobjekte. In diesem Tutorial lernen Sie Folgendes:
+
+> * Geocodierung vorwärts/reversiert
+> * Suchen nach Points of Interest
+> * Berechnen von Routen und Wegbeschreibungen
+> * Abrufen eines Kartenbilds
+> * Berechnen einer Entfernungsmatrix
+> * Abrufen von Zeitzonendetails
 
 In der folgenden Tabelle finden Sie die Azure Maps-Dienst-APIs, die ähnliche Funktionen wie die aufgelisteten Dienst-APIs von Bing Karten bereitstellen.
 
@@ -59,6 +66,12 @@ Lesen Sie unbedingt auch die folgenden Anleitungen zu bewährten Methoden:
 -   [Bewährte Suchmethoden](./how-to-use-best-practices-for-search.md)
 -   [Bewährte Methoden für den Azure Maps-Routendienst](./how-to-use-best-practices-for-routing.md)
 
+## <a name="prerequisites"></a>Voraussetzungen
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
+2. [Erstellen eines Azure Maps-Kontos](quick-demo-map-app.md#create-an-azure-maps-account)
+3. [Abrufen eines Primärschlüssels](quick-demo-map-app.md#get-the-primary-key-for-your-account) (auch primärer Schlüssel oder Abonnementschlüssel genannt) Weitere Informationen zur Authentifizierung in Azure Maps finden Sie unter [Verwalten der Authentifizierung in Azure Maps](how-to-manage-authentication.md).
+
 ## <a name="geocoding-addresses"></a>Geocodierung von Adressen
 
 Bei der Geocodierung handelt es sich um den Prozess, bei dem eine Adresse (z. B. `"1 Microsoft way, Redmond, WA"`) in eine Koordinate (z. B. Längengrad: –122,1298, Breitengrad: 47,64005) konvertiert wird. Anschließend werden die Koordinaten dann häufig verwendet, um eine Ortsmarke auf einer Karte zu positionieren oder eine Karte zu zentrieren.
@@ -91,9 +104,9 @@ Die folgenden Tabellen enthalten Querverweise zwischen den API-Parametern von Bi
 
 Azure Maps unterstützt darüber hinaus:
 
--   `countrySecondarySubdivision`: Landkreise, Verwaltungsbezirke
--   `countryTertiarySubdivision`: Benannte Gebiete, Stadtteile, Kantone, Gemeinden
--   `ofs`: Durchblättern der Ergebnisse in Kombination mit dem `maxResults`-Parameter.
+* `countrySecondarySubdivision`: Landkreise, Verwaltungsbezirke
+* `countryTertiarySubdivision`: Benannte Gebiete, Stadtteile, Kantone, Gemeinden
+* `ofs`: Durchblättern der Ergebnisse in Kombination mit dem `maxResults`-Parameter.
 
 **Standort nach Abfrage (Freiform-Adresszeichenfolge)**
 
@@ -109,10 +122,10 @@ Azure Maps unterstützt darüber hinaus:
 
 Azure Maps unterstützt darüber hinaus:
 
--   `typeahead`: Gibt an, ob die Abfrage als Teileingabe interpretiert wird und die Suche in den Vorhersagemodus (Vorschlagssuche/AutoComplete) wechselt.
--   `countrySet`: Eine kommagetrennte Liste mit ISO2-Ländercodes, auf die die Suche eingeschränkt werden soll.
--   `lat`/`lon`, `topLeft`/`btmRight`, `radius`: Geben Sie den Standort und das Gebiet des Benutzers an, um für den Ort relevantere Ergebnisse zu erzielen.
--   `ofs`: Durchblättern der Ergebnisse in Kombination mit dem `maxResults`-Parameter.
+* `typeahead`: Gibt an, ob die Abfrage als Teileingabe interpretiert wird und die Suche in den Vorhersagemodus (Vorschlagssuche/AutoComplete) wechselt.
+* `countrySet`: Eine kommagetrennte Liste mit ISO2-Ländercodes, auf die die Suche eingeschränkt werden soll.
+* `lat`/`lon`, `topLeft`/`btmRight`, `radius`: Geben Sie den Standort und das Gebiet des Benutzers an, um für den Ort relevantere Ergebnisse zu erzielen.
+* `ofs`: Durchblättern der Ergebnisse in Kombination mit dem `maxResults`-Parameter.
 
 Ein Beispiel für die Verwendung des Suchdiensts finden Sie [hier](./how-to-search-for-address.md). Lesen Sie unbedingt die Dokumentation mit [bewährten Methoden für die Suche](./how-to-use-best-practices-for-search.md).
 
@@ -142,9 +155,9 @@ Lesen Sie unbedingt die Dokumentation mit [bewährten Methoden für die Suche](.
 
 Die Azure Maps-API für die umgekehrte Geocodierung bietet einige zusätzliche Funktionen, die in Bing Karten nicht verfügbar sind und bei der Migration Ihrer App hilfreich sein können:
 
--   Abrufen von Daten zur Geschwindigkeitsbegrenzung
--   Abrufen von Informationen zur Straßennutzung: lokale Straße, Umgehungsstraße, eingeschränkte Zufahrt, Bodenschwellen usw.
--   Die Straßenseite, auf der die Koordinate liegt
+* Abrufen von Daten zur Geschwindigkeitsbegrenzung
+* Abrufen von Informationen zur Straßennutzung: lokale Straße, Umgehungsstraße, eingeschränkte Zufahrt, Bodenschwellen usw.
+* Die Straßenseite, auf der die Koordinate liegt
 
 **Entitätstyp-Vergleichstabelle**
 
@@ -174,10 +187,10 @@ Mehrere der Azure Maps Such-APIs unterstützen den Vorhersagemodus, der für Sze
 
 Sie können Azure Maps zum Berechnen von Routen und Wegbeschreibungen verwenden. Azure Maps verfügt über viele der gleichen Funktionen wie der Routenplanungsdienst von Bing Karten, z. B.:
 
--   Ankunfts- und Abfahrzeiten
--   Routen unter Berücksichtigung des echtzeitbasierten und vorhergesagten Verkehrsaufkommens
--   Unterschiedliche Transportmodi wie mit dem Auto, zu Fuß oder per LKW
--   Optimierung der Wegpunktreihenfolge (Traveling Salesmen)
+* Ankunfts- und Abfahrzeiten
+* Routen unter Berücksichtigung des echtzeitbasierten und vorhergesagten Verkehrsaufkommens
+* Unterschiedliche Transportmodi wie mit dem Auto, zu Fuß oder per LKW
+* Optimierung der Wegpunktreihenfolge (Traveling Salesmen)
 
 > [!NOTE]
 > Bei Azure Maps müssen alle Wegpunkte Koordinaten sein. Adressen müssen zunächst geocodiert werden.
@@ -237,21 +250,21 @@ Arbeiten Sie auch unbedingt die Dokumentation mit [bewährten Methoden für die 
 
 Die Routenplanungs-API von Azure Maps bietet viele zusätzliche Funktionen, die in Bing Karten nicht verfügbar sind und bei der Migration Ihrer App hilfreich sein können:
 
--   Unterstützung für den Routentyp: kürzeste, schnellste, attraktivste und kraftstoffeffizienteste
--   Unterstützung für zusätzliche Reisemodi: Fahrrad, Bus, Motorrad, Taxi, Lkw und Kleinbus.
--   Unterstützung für 150 Wegpunkte
--   Berechnung mehrerer Fahrzeiten in einer einzelnen Anforderung: bisheriger Verkehr, aktueller Verkehr, kein Verkehr
--   Vermeidung zusätzlicher Straßentypen: Straßen von Fahrgemeinschaften, ungepflasterte Straßen, bereits verwendete Straßen
--   Routenplanung nach Motorisierung: Berechnen Sie Routen für Verbrennungs- oder Elektrofahrzeuge basierend auf den Angaben zum verbleibenden Kraftstoff bzw. der verbleibenden Laufzeit.
--   Angabe der maximale Fahrzeuggeschwindigkeit
+* Unterstützung für den Routentyp: kürzeste, schnellste, attraktivste und kraftstoffeffizienteste
+* Unterstützung für zusätzliche Reisemodi: Fahrrad, Bus, Motorrad, Taxi, Lkw und Kleinbus.
+* Unterstützung für 150 Wegpunkte
+* Berechnung mehrerer Fahrzeiten in einer einzelnen Anforderung: bisheriger Verkehr, aktueller Verkehr, kein Verkehr
+* Vermeidung zusätzlicher Straßentypen: Straßen von Fahrgemeinschaften, ungepflasterte Straßen, bereits verwendete Straßen
+* Routenplanung nach Motorisierung: Berechnen Sie Routen für Verbrennungs- oder Elektrofahrzeuge basierend auf den Angaben zum verbleibenden Kraftstoff bzw. der verbleibenden Laufzeit.
+* Angabe der maximale Fahrzeuggeschwindigkeit
 
 ## <a name="snap-coordinates-to-road"></a>Ausrichten von Koordinaten an Straßen
 
 Es gibt mehrere Möglichkeiten, in Azure Maps Koordinaten an Straßen auszurichten.
 
--   Verwenden Sie die Wegbeschreibungs-API, um Koordinaten an einer logischen Wegführung entlang des Straßennetzwerks auszurichten.
--   Verwenden Sie das Azure Maps Web SDK, um einzelne Koordinaten auf Vektorkacheln an der nächstgelegenen Straße auszurichten.
--   Verwenden Sie die Azure Maps-Vektorkacheln direkt, um einzelne Koordinaten auszurichten.
+* Verwenden Sie die Wegbeschreibungs-API, um Koordinaten an einer logischen Wegführung entlang des Straßennetzwerks auszurichten.
+* Verwenden Sie das Azure Maps Web SDK, um einzelne Koordinaten auf Vektorkacheln an der nächstgelegenen Straße auszurichten.
+* Verwenden Sie die Azure Maps-Vektorkacheln direkt, um einzelne Koordinaten auszurichten.
 
 **Verwenden der Wegbeschreibungs-API zum Ausrichten von Koordinaten**
 
@@ -259,8 +272,8 @@ Azure Maps kann mithilfe der [Wegbeschreibungs](/rest/api/maps/route/postroutedi
 
 Es gibt zwei verschiedene Möglichkeiten, die Wegbeschreibungs-API zum Ausrichten von Koordinaten an Straßen zu verwenden.
 
--   Bei 150-Koordinaten oder weniger kann die Übergabe als Wegpunkte in der API zum Abrufen von Wegbeschreibungen erfolgen. Bei diesem Ansatz können zwei verschiedene Typen von ausgerichteten Daten abgerufen werden: Die Anweisungen zur Wegführung enthalten die einzelnen ausgerichteten Wegpunkte, während der Wegführungspfad einen Satz interpolierter Koordinaten aufweist, die den gesamten Pfad zwischen den Koordinaten ausfüllen.
--   Bei mehr als 150 Koordinaten kann die API zum Veröffentlichen von Wegbeschreibungen verwendet werden. Die Anfangs- und Endkoordinaten müssen im Abfrageparameter übergeben werden, aber alle Koordinaten können in den `supportingPoints`-Parameter im Textkörper der POST-Anforderung im Format einer GeoJSON-Geometriesammlung von Punkten übergeben werden. Die einzigen ausgerichteten Daten, die bei diesem Ansatz verfügbar sind, sind der Wegführungspfad, bei dem es sich um einen Satz interpolierter Koordinaten handelt, die den gesamten Pfad zwischen den Koordinaten ausfüllen. [Hier sehen Sie ein Beispiel](https://azuremapscodesamples.azurewebsites.net/?sample=Snap%20points%20to%20logical%20route%20path) für diesen Ansatz, das das Dienstmodul im Azure Maps Web SDK verwendet.
+* Bei 150-Koordinaten oder weniger kann die Übergabe als Wegpunkte in der API zum Abrufen von Wegbeschreibungen erfolgen. Bei diesem Ansatz können zwei verschiedene Typen von ausgerichteten Daten abgerufen werden: Die Anweisungen zur Wegführung enthalten die einzelnen ausgerichteten Wegpunkte, während der Wegführungspfad einen Satz interpolierter Koordinaten aufweist, die den gesamten Pfad zwischen den Koordinaten ausfüllen.
+* Bei mehr als 150 Koordinaten kann die API zum Veröffentlichen von Wegbeschreibungen verwendet werden. Die Anfangs- und Endkoordinaten müssen im Abfrageparameter übergeben werden, aber alle Koordinaten können in den `supportingPoints`-Parameter im Textkörper der POST-Anforderung im Format einer GeoJSON-Geometriesammlung von Punkten übergeben werden. Die einzigen ausgerichteten Daten, die bei diesem Ansatz verfügbar sind, sind der Wegführungspfad, bei dem es sich um einen Satz interpolierter Koordinaten handelt, die den gesamten Pfad zwischen den Koordinaten ausfüllen. [Hier sehen Sie ein Beispiel](https://azuremapscodesamples.azurewebsites.net/?sample=Snap%20points%20to%20logical%20route%20path) für diesen Ansatz, das das Dienstmodul im Azure Maps Web SDK verwendet.
 
 In der folgenden Tabelle werden die Parameter der Bing Karten-API den vergleichbaren API-Parametern in Azure Maps gegenübergestellt.
 
@@ -368,9 +381,7 @@ In Bing Karten kann z. B. der Karte mit dem folgenden URL-Parameter eine rote O
 
 > `&pushpin=45,-110;7;AB`
 
-<center>
-
-![Ortsmarke auf einer statischen Karte in Bing Karten](media/migrate-bing-maps-web-service/bing-maps-static-map-pin.jpg)</center>
+![Ortsmarke auf einer statischen Karte in Bing Karten](media/migrate-bing-maps-web-service/bing-maps-static-map-pin.jpg)
 
 **Nachher: Azure Maps**
 
@@ -384,21 +395,21 @@ Hinsichtlich der Positionen von Ortsmarken müssen bei Azure Maps die Koordinate
 
 Der Wert `iconType` gibt den Typ der zu erstellenden Pins an. Er kann die folgenden Werte aufweisen:
 
--   `default`: das Standardsymbol für Pins.
--   `none`: Es wird kein Symbol angezeigt, sondern nur Bezeichnungen gerendert.
--   `custom`: gibt an, dass ein benutzerdefiniertes Symbol verwendet werden soll. Eine URL, die auf das Symbolbild verweist, kann am Ende des Parameters `pins` nach den Informationen zur Pinposition hinzugefügt werden.
--   `{udid}`: eine Unique Data ID (UDID) für ein Symbol, das in der Azure Maps-Datenspeicher-Plattform gespeichert ist.
+* `default`: das Standardsymbol für Pins.
+* `none`: Es wird kein Symbol angezeigt, sondern nur Bezeichnungen gerendert.
+* `custom`: gibt an, dass ein benutzerdefiniertes Symbol verwendet werden soll. Eine URL, die auf das Symbolbild verweist, kann am Ende des Parameters `pins` nach den Informationen zur Pinposition hinzugefügt werden.
+* `{udid}`: eine Unique Data ID (UDID) für ein Symbol, das in der Azure Maps-Datenspeicher-Plattform gespeichert ist.
 
 In Azure Maps werden Pinstile im Format `optionNameValue` hinzugefügt, wobei mehrere Stile durch einen senkrechten Strich (`|`) voneinander getrennt werden, z. B. `iconType|optionName1Value1|optionName2Value2`. Beachten Sie, dass die Optionsnamen und -werte nicht voneinander getrennt werden. Die folgenden Stiloptionsnamen können für den Stil von Ortsmarken in Azure Maps verwendet werden:
 
--   `al`: gibt die Deckkraft (Alpha) der Ortsmarke an. Dies kann eine Zahl zwischen 0 und 1 sein.
--   `an`: gibt den Pinanker an. Die x- und y-Pixelwerte werden im Format `x y` angegeben.
--   `co`: die Farbe des Pins. Dabei muss es sich um eine hexadezimale 24-Bit-Farbe handeln: `000000` in `FFFFFF`.
--   `la`: gibt den Bezeichnungsanker an. Die x- und y-Pixelwerte werden im Format `x y` angegeben.
--   `lc`: die Farbe der Bezeichnung. Dabei muss es sich um eine hexadezimale 24-Bit-Farbe handeln: `000000` in `FFFFFF`.
--   `ls`: die Größe der Bezeichnung in Pixel. Kann eine Zahl größer als 0 sein.
--   `ro`: ein Wert in Grad, um den das Symbol gedreht werden soll. Dies kann eine Zahl zwischen –360 und 360 sein.
--   `sc`: ein Skalierungswert für das Pinsymbol. Kann eine Zahl größer als 0 sein.
+* `al`: gibt die Deckkraft (Alpha) der Ortsmarke an. Dies kann eine Zahl zwischen 0 und 1 sein.
+* `an`: gibt den Pinanker an. Die x- und y-Pixelwerte werden im Format `x y` angegeben.
+* `co`: die Farbe des Pins. Dabei muss es sich um eine hexadezimale 24-Bit-Farbe handeln: `000000` in `FFFFFF`.
+* `la`: gibt den Bezeichnungsanker an. Die x- und y-Pixelwerte werden im Format `x y` angegeben.
+* `lc`: die Farbe der Bezeichnung. Dabei muss es sich um eine hexadezimale 24-Bit-Farbe handeln: `000000` in `FFFFFF`.
+* `ls`: die Größe der Bezeichnung in Pixel. Kann eine Zahl größer als 0 sein.
+* `ro`: ein Wert in Grad, um den das Symbol gedreht werden soll. Dies kann eine Zahl zwischen –360 und 360 sein.
+* `sc`: ein Skalierungswert für das Pinsymbol. Kann eine Zahl größer als 0 sein.
 
 Bezeichnungswerte werden für jede Pinposition angegeben, anstatt einen einzelnen Bezeichnungswert zu verwenden, der für alle Ortsmarken in der Liste der Positionen gilt. Der Bezeichnungswert kann eine Zeichenfolge mit mehreren Zeichen sein und in einfache Anführungszeichen eingeschlossen werden, um sicherzustellen, dass er nicht als Stil- oder Positionswert interpretiert wird.
 
@@ -406,17 +417,13 @@ In Azure Maps kann z. B. ein rotes (`FF0000`) Standardsymbol mit der Bezeichnun
 
 > `&pins=default|coFF0000|la15 50||'Space Needle'-122.349300 47.620180`
 
-<center>
-
-![Ortsmarke auf einer statischen Karte in Azure Maps](media/migrate-bing-maps-web-service/azure-maps-static-map-pin.jpg)</center>
+![Ortsmarke auf einer statischen Karte in Azure Maps](media/migrate-bing-maps-web-service/azure-maps-static-map-pin.jpg)
 
 Im folgenden Beispiel werden drei Pins mit den Bezeichnungswerten „1“, „2“ und „3“ hinzugefügt:
 
 > `&pins=default||'1'-122 45|'2'-119.5 43.2|'3'-121.67 47.12`
 
-<center>
-
-![Mehrere Ortsmarken auf einer statischen Karte in Azure Maps](media/migrate-bing-maps-web-service/azure-maps-static-map-multiple-pins.jpg)</center>
+![Mehrere Ortsmarken auf einer statischen Karte in Azure Maps](media/migrate-bing-maps-web-service/azure-maps-static-map-multiple-pins.jpg)
 
 ### <a name="draw-curve-url-parameter-format-comparison"></a>Vergleich der Formate des Draw curve-URL-Parameters
 
@@ -436,9 +443,7 @@ In Bing Karten kann z. B. eine blaue Linie mit einer Deckkraft von 50 % und ei
 
 `&drawCurve=l,FF000088,4;45,-110_50,-100`
 
-<center>
-
-![Linie auf einer statischen Karte in Bing Karten](media/migrate-bing-maps-web-service/bing-maps-static-map-line.jpg)</center>
+![Linie auf einer statischen Karte in Bing Karten](media/migrate-bing-maps-web-service/bing-maps-static-map-line.jpg)
 
 **Nachher: Azure Maps**
 
@@ -450,20 +455,18 @@ Hinsichtlich der Pfadpositionen müssen bei Azure Maps die Koordinaten im Format
 
 In Azure Maps werden Pfadstile im Format `optionNameValue` hinzugefügt, wobei mehrere Stile durch einen senkrechten Strich (`|`) voneinander getrennt werden, z. B. `optionName1Value1|optionName2Value2`. Beachten Sie, dass die Optionsnamen und -werte nicht voneinander getrennt werden. Die folgenden Stiloptionsnamen können für den Stil von Pfaden in Azure Maps verwendet werden:
 
--   `fa`: die Deckkraft der Füllfarbe (Alpha), die beim Rendern von Polygonen verwendet wird. Dies kann eine Zahl zwischen 0 und 1 sein.
--   `fc`: die Füllfarbe, die zum Rendern des Bereichs eines Polygons verwendet wird.
--   `la`: die Deckkraft der Linienfarbe (Alpha), die zum Rendern von Linien und der Umrandung von Polygonen verwendet wird. Dies kann eine Zahl zwischen 0 und 1 sein.
--   `lc`: die Linienfarbe, die zum Rendern von Linien und der Umrandung von Polygonen verwendet wird.
--   `lw`: die Breite der Linie in Pixel.
--   `ra`: gibt einen Kreisradius in Metern an.
+* `fa`: die Deckkraft der Füllfarbe (Alpha), die beim Rendern von Polygonen verwendet wird. Dies kann eine Zahl zwischen 0 und 1 sein.
+* `fc`: die Füllfarbe, die zum Rendern des Bereichs eines Polygons verwendet wird.
+* `la`: die Deckkraft der Linienfarbe (Alpha), die zum Rendern von Linien und der Umrandung von Polygonen verwendet wird. Dies kann eine Zahl zwischen 0 und 1 sein.
+* `lc`: die Linienfarbe, die zum Rendern von Linien und der Umrandung von Polygonen verwendet wird.
+* `lw`: die Breite der Linie in Pixel.
+* `ra`: gibt einen Kreisradius in Metern an.
 
 In Azure Maps kann z. B. eine blaue Linie mit einer Deckkraft von 50 % und einer Stärke von vier Pixeln der Karte zwischen den Koordinaten (Längengrad: –110, Breitengrad: 45 und Längengrad: –100, Breitengrad: 50) mithilfe des folgenden URL-Parameters hinzugefügt werden:
 
 > `&path=lc0000FF|la.5|lw4||-110 45|-100 50`
 
-<center>
-
-![Linie auf einer statischen Karte in Azure Maps](media/migrate-bing-maps-web-service/azure-maps-static-map-line.jpg)</center>
+![Linie auf einer statischen Karte in Azure Maps](media/migrate-bing-maps-web-service/azure-maps-static-map-line.jpg)
 
 ## <a name="calculate-a-distance-matrix"></a>Berechnen einer Entfernungsmatrix
 
@@ -547,8 +550,8 @@ Lesen Sie unbedingt die Dokumentation mit [bewährten Methoden für die Suche](.
 
 Azure Maps bietet mehrere APIs zum Abrufen von Verkehrsdaten. Zwei Typen von Verkehrsdaten sind verfügbar:
 
--   **Flussdaten**: Stellt Metriken zum Verkehrsfluss auf Straßenabschnitten bereit. Dies wird häufig verwendet, um Straßen farbig zu codieren. Diese Daten werden alle 2 Minuten aktualisiert.
--   **Störungsdaten**: Bietet Daten zu Baustellen, Straßensperrungen, Unfällen und anderen Vorfällen, die sich auf den Verkehr auswirken können. Diese Daten werden jede Minute aktualisiert.
+* **Flussdaten**: Stellt Metriken zum Verkehrsfluss auf Straßenabschnitten bereit. Dies wird häufig verwendet, um Straßen farbig zu codieren. Diese Daten werden alle 2 Minuten aktualisiert.
+* **Störungsdaten**: Bietet Daten zu Baustellen, Straßensperrungen, Unfällen und anderen Vorfällen, die sich auf den Verkehr auswirken können. Diese Daten werden jede Minute aktualisiert.
 
 Bing Karten stellt Verkehrsfluss- und Störungsdaten in seinen interaktiven Kartensteuerelementen zur Verfügung und stellt Störungsdaten auch als Dienst bereit.
 
@@ -602,9 +605,9 @@ Darüber hinaus bietet die Azure Maps-Plattform auch eine Reihe zusätzlicher Ze
 
 Die Dienste für räumliche Daten in Bing Karten bieten drei Hauptfunktionen:
 
--   Batchgeocodierung: Verarbeiten eines großen Batches von Adressengeocodes mit einer einzelnen Anforderung.
--   Abruf von Daten zu Verwaltungsgrenzen: Verwenden Sie eine Koordinate, und rufen Sie eine sich mit ihr schneidende Grenze für einen angegebenen Entitätstyp ab.
--   Hosten und Abfragen von räumlichen Geschäftsdaten: Laden Sie eine einfache 2D-Datentabelle hoch, und greifen Sie mit einigen einfachen räumlichen Abfragen darauf zu.
+* Batchgeocodierung: Verarbeiten eines großen Batches von Adressengeocodes mit einer einzelnen Anforderung.
+* Abruf von Daten zu Verwaltungsgrenzen: Verwenden Sie eine Koordinate, und rufen Sie eine sich mit ihr schneidende Grenze für einen angegebenen Entitätstyp ab.
+* Hosten und Abfragen von räumlichen Geschäftsdaten: Laden Sie eine einfache 2D-Datentabelle hoch, und greifen Sie mit einigen einfachen räumlichen Abfragen darauf zu.
 
 ### <a name="batch-geocode-data"></a>Batchgeocodierung von Daten
 
@@ -660,7 +663,11 @@ Azure Maps stellt Clientbibliotheken für die folgenden Programmiersprachen bere
 
 Open-Source-Clientbibliotheken für andere Programmiersprachen:
 
--   .NET Standard 2.0: [GitHub-Projekt](https://github.com/perfahlen/AzureMapsRestServices) \| [NuGet-Paket](https://www.nuget.org/packages/AzureMapsRestToolkit/)
+* .NET Standard 2.0: [GitHub-Projekt](https://github.com/perfahlen/AzureMapsRestServices) \| [NuGet-Paket](https://www.nuget.org/packages/AzureMapsRestToolkit/)
+
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+Es muss keine Bereinigung von Ressourcen durchgeführt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -668,15 +675,3 @@ Erfahren Sie mehr über Azure Maps-REST-Dienste:
 
 > [!div class="nextstepaction"]
 > [Bewährte Methoden für die Verwendung des Suchdiensts](how-to-use-best-practices-for-search.md)
-
-> [!div class="nextstepaction"]
-> [Bewährte Methoden für die Verwendung des Routingdienst](how-to-use-best-practices-for-search.md)
-
-> [!div class="nextstepaction"]
-> [Verwenden des Dienstmoduls (Web SDK)](how-to-use-best-practices-for-routing.md)
-
-> [!div class="nextstepaction"]
-> [Azure Maps-REST-Dienste-API – Referenzdokumentation](/rest/api/maps/)
-
-> [!div class="nextstepaction"]
-> [Codebeispiele](/samples/browse/?products=azure-maps)

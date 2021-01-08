@@ -2,13 +2,13 @@
 title: Verbinden von Azure VMware Solution mit Ihrer lokalen Umgebung
 description: Es wird beschrieben, wie Sie Azure VMware Solution mit Ihrer lokalen Umgebung verbinden.
 ms.topic: tutorial
-ms.date: 10/02/2020
-ms.openlocfilehash: 2a0cb641df00f3e580e87e38aff382d8e8101fc7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 12/28/2020
+ms.openlocfilehash: 753835b0206d8bbabe42b057fa40a2d6c4c8c414
+ms.sourcegitcommit: 31d242b611a2887e0af1fc501a7d808c933a6bf6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91578763"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97809682"
 ---
 # <a name="connect-azure-vmware-solution-to-your-on-premises-environment"></a>Verbinden von Azure VMware Solution mit Ihrer lokalen Umgebung
 
@@ -26,18 +26,14 @@ Zunächst müssen zwei Voraussetzungen für die Verbindungsherstellung zwischen 
 
 Befolgen Sie die Anleitung im Tutorial[Zusammenfassen lokaler Umgebungen mittels Peering zu einer privaten Cloud](tutorial-expressroute-global-reach-private-cloud.md), um die lokale Konnektivität mit Ihrer privaten Azure VMware Solution-Cloud per ExpressRoute Global Reach herzustellen.
 
-
-
 ## <a name="verify-on-premises-network-connectivity"></a>Überprüfen der Netzwerkkonnektivität für die lokale Umgebung
 
 Sie sollten nun auf Ihrem **lokalen Edgerouter** sehen können, wie die NSX-T-Netzwerksegmente und die Azure VMware Solution-Verwaltungssegmente per ExpressRoute verbunden sind.
 
->[!NOTE]
+>[!IMPORTANT]
 >Die Umgebungen von Unternehmen unterscheiden sich, und in einigen Fällen kann es erforderlich sein, dass für diese Routen die Weitergabe zurück an das lokale Netzwerk zugelassen wird.  
 
-In einigen Umgebungen ist die ExpressRoute-Leitung durch Firewalls geschützt.  Falls keine Firewalls vorhanden sind und keine Routenbereinigung durchgeführt wird, können Sie aus Ihrer lokalen Umgebung einen Ping an Ihren VCenter Server von Azure VMware Solution oder an eine [VM](deploy-azure-vmware-solution.md#add-a-vm-on-the-nsx-t-network-segment) im NSX-T-Segment senden.
-
-Darüber hinaus können Sie von der VM im NSX-T-Segment aus auch Ressourcen in Ihrer lokalen Umgebung erreichen.
+In einigen Umgebungen ist die ExpressRoute-Leitung durch Firewalls geschützt.  Gehen Sie wie folgt vor, falls keine Firewalls vorhanden sind und keine Routenbereinigung durchgeführt wird: Senden Sie aus Ihrer lokalen Umgebung einen Ping an Ihren VCenter Server von Azure VMware Solution oder an eine [VM im NSX-T-Segment](deploy-azure-vmware-solution.md#add-a-vm-on-the-nsx-t-network-segment). Darüber hinaus können Sie von der VM im NSX-T-Segment aus auch Ressourcen in Ihrer lokalen Umgebung erreichen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,6 +1,6 @@
 ---
-title: Verfügbare unterstützte Features in Azure Security Center | Microsoft-Dokumentation
-description: Dieses Dokument enthält eine Liste der von Azure Security Center unterstützten Dienste.
+title: Azure Security Center-Funktionen nach Betriebssystem, Computertyp und Cloud
+description: Hier erfahren Sie, welche Azure Security Center-Funktionen abhängig von Betriebssystem, Typ und Cloudbereitstellung verfügbar sind.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/12/2020
+ms.date: 12/24/2020
 ms.author: memildin
-ms.openlocfilehash: 40d70c7bd740d8c72ddb72047a3bae3586e1aa1f
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: f5d6d6255b48192a5943159599531fac18ebeb26
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445250"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97796991"
 ---
 # <a name="feature-coverage-for-machines"></a>Funktionsabdeckung für Computer
 
@@ -99,10 +99,45 @@ Informationen darüber, wann Empfehlungen für die einzelnen Schutzfunktionen ge
 | McAfee v10+ | Linux-Serverfamilie  | Nein | Ja * *\** _ |
 | Sophos V9+| Linux-Serverfamilie  | Nein | Ja _*\**_  |
 
- _ *\** * Der Abdeckungsstand und die unterstützenden Daten sind zurzeit nur im Log Analytics-Arbeitsbereich verfügbar, der Ihren geschützten Abonnements zugeordnet ist. Sie spiegeln sich nicht im Azure Security Center-Portal wider.
+ _*\**_ Der Abdeckungsstand und die unterstützenden Daten sind zurzeit nur im Log Analytics-Arbeitsbereich verfügbar, der Ihren geschützten Abonnements zugeordnet ist. Sie spiegeln sich nicht im Azure Security Center-Portal wider.
 
 > [!NOTE]
 > Für die Erkennung von System Center Endpoint Protection (SCEP) auf einem virtuellen Computer mit Windows Server 2008 R2 muss SCEP nach PowerShell (ab Version 3.0) installiert werden.
+
+
+
+## <a name="feature-support-in-government-clouds"></a>Funktionsunterstützung in Government-Clouds
+
+| Dienst/Funktion | US Gov | China Gov |
+|------|:----:|:----:|
+|[Just-In-Time-VM-Zugriff](security-center-just-in-time.md) (1)|✔|✔|
+|[Dateiintegritätsüberwachung](security-center-file-integrity-monitoring.md) (1)|✔|✔|
+|[Adaptive Anwendungssteuerungen](security-center-adaptive-application.md) (1)|✔|✔|
+|[Adaptives Erhöhen des Netzwerkschutzes](security-center-adaptive-network-hardening.md) (1)|-|-|
+|[Docker-Hosthärtung](harden-docker-hosts.md) (1)|✔|✔|
+|[Integrierte Sicherheitsrisikobewertung für Computer](deploy-vulnerability-assessment-vm.md) (1)|-|-|
+|[Microsoft Defender für Endpunkt](harden-docker-hosts.md) (1)|✔|-|
+|[Verbinden von AWS-Konten](quickstart-onboard-aws.md) (1)|-|-|
+|[Verbinden von GCP-Konten](quickstart-onboard-gcp.md) (1)|-|-|
+|[Fortlaufendem Export](continuous-export.md)|✔|✔ (2)|
+|[Workflowautomatisierung (Vorschauversion)](workflow-automation.md)|✔|✔|
+|[Empfehlungsausnahmeregeln](exempt-resource.md)|-|-|
+|[Warnungsunterdrückungsregeln](alerts-suppression-rules.md)|✔|✔|
+|[E-Mail-Benachrichtigungen für Sicherheitswarnungen](security-center-provide-security-contact-details.md)|✔|✔|
+|[Ressourcenbestand](asset-inventory.md)|✔|✔|
+|[Azure Defender für App Service](defender-for-app-service-introduction.md)|-|-|
+|[Azure Defender für Storage](defender-for-storage-introduction.md)|✔|-|
+|[Azure Defender für SQL](defender-for-sql-introduction.md)|✔|✔ (2)|
+|[Azure Defender für Key Vault](defender-for-key-vault-introduction.md)|-|-|
+|[Azure Defender für Resource Manager](defender-for-resource-manager-introduction.md)|-|-|
+|[Azure Defender für DNS](defender-for-dns-introduction.md)|-|-|
+|[Azure Defender für Kubernetes](defender-for-kubernetes-introduction.md)|✔|✔|
+|[Azure Defender für Containerregistrierungen](defender-for-container-registries-introduction.md)|✔ (2)|-|
+|||
+
+(1) Erfordert _ *Azure Defender für Server**
+
+(2) Teilweise
 
 
 ## <a name="next-steps"></a>Nächste Schritte

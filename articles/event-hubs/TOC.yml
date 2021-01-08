@@ -19,7 +19,7 @@
       items:
         - name: Azure-Portal
           href: event-hubs-create.md
-        - name: Azure-Befehlszeilenschnittstelle
+        - name: Azure CLI
           href: event-hubs-quickstart-cli.md
         - name: Azure PowerShell
           href: event-hubs-quickstart-powershell.md
@@ -199,9 +199,9 @@
           href: event-hubs-kafka-spark-tutorial.md
         - name: Verbinden von Apache Flink mit einem Event Hub
           href: event-hubs-kafka-flink-tutorial.md
-        - name: Integrieren von Apache Kafka Connect in einen Hub (Vorschau)
+        - name: Integrieren von Apache Kafka Connect
           href: event-hubs-kafka-connect-tutorial.md
-        - name: Integrieren von Apache Kafka Connect (Vorschauversion) mit Debezium
+        - name: Integrieren von Apache Kafka Connect mit Debezium
           href: event-hubs-kafka-connect-debezium.md
         - name: Verbinden von Akka Streams mit einem Event Hub
           href: event-hubs-kafka-akka-streams-tutorial.md

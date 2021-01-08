@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: tutorial
 ms.date: 06/17/2020
 ms.author: sebansal
-ms.openlocfilehash: 6d66648680aa14baa53372732df52a6c247a0117
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 42f649f9dd206b34f0fac8513ba742febed2dbcb
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96483762"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724628"
 ---
 # <a name="creating-and-merging-csr-in-key-vault"></a>Erstellen und Zusammenführen einer Zertifikatsignieranforderung in Key Vault
 
@@ -38,7 +38,34 @@ Key Vault ist eine Partnerschaft mit den folgenden zwei Zertifizierungsstellen e
 Mithilfe der folgenden Schritte können Sie ein Zertifikat mit einer nicht mit Key Vault verbundenen Zertifizierungsstelle erstellen (beispielsweise ist GoDaddy keine vertrauenswürdige Key Vault-Zertifizierungsstelle). 
 
 
-### <a name="azure-powershell"></a>Azure PowerShell
+
+# <a name="portal"></a>[Portal](#tab/azure-portal)
+
+1.  Um eine Zertifikatsignieranforderung (CSR) für die Zertifizierungsstelle Ihrer Wahl zu generieren, navigieren Sie zu der Key Vault-Instanz, der Sie das Zertifikat hinzufügen möchten.
+2.  Wählen Sie auf den Key Vault-Eigenschaftenseiten die Option **Zertifikate** aus.
+3.  Wählen Sie die Registerkarte **Generieren/importieren** aus.
+4.  Wählen Sie auf dem Bildschirm **Zertifikat erstellen** folgende Werte aus:
+    - **Methode der Zertifikaterstellung:** Generieren.
+    - **Zertifikatname:** ContosoManualCSRCertificate.
+    - **Typ der Zertifizierungsstelle (ZS):** Zertifikat wurde durch nicht integrierte Zertifizierungsstelle ausgestellt
+    - **Antragsteller:** `"CN=www.contosoHRApp.com"`
+    - Wählen Sie die anderen Werte nach Wunsch aus. Klicken Sie auf **Erstellen**.
+
+    ![Zertifikateigenschaften](../media/certificates/create-csr-merge-csr/create-certificate.png)  
+
+
+6.  Sie werden feststellen, dass der Zertifikatliste jetzt ein Zertifikat hinzugefügt ist. Wählen Sie dieses neue Zertifikat aus, das Sie soeben erstellt haben. Der aktuelle Status des Zertifikats ist „Deaktiviert“, da es noch nicht von der Zertifizierungsstelle ausgestellt wurde.
+7. Klicken Sie auf die Registerkarte **Zertifikatvorgang**, und wählen Sie **CSR herunterladen** aus.
+
+   ![Screenshot: Hervorgehobene Schaltfläche „CSR herunterladen“](../media/certificates/create-csr-merge-csr/download-csr.png)
+ 
+8.  Übergeben Sie die CSR-Datei an die Zertifizierungsstelle, damit die Anforderung signiert wird.
+9.  Nachdem die Anforderung von der Zertifizierungsstelle signiert wurde, führen Sie die Zertifikatsdatei zurück, um die **signierte Anforderung auf demselben Bildschirm „Zertifikatvorgang“ zusammenzuführen**.
+
+Die Zertifikatanforderung wurde nun erfolgreich zusammengeführt.
+
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 
 
@@ -68,36 +95,11 @@ Mithilfe der folgenden Schritte können Sie ein Zertifikat mit einer nicht mit K
     ```
 
     Die Zertifikatanforderung wurde nun erfolgreich zusammengeführt.
-
-### <a name="azure-portal"></a>Azure-Portal
-
-1.  Um eine Zertifikatsignieranforderung (CSR) für die Zertifizierungsstelle Ihrer Wahl zu generieren, navigieren Sie zu der Key Vault-Instanz, der Sie das Zertifikat hinzufügen möchten.
-2.  Wählen Sie auf den Key Vault-Eigenschaftenseiten die Option **Zertifikate** aus.
-3.  Wählen Sie die Registerkarte **Generieren/importieren** aus.
-4.  Wählen Sie auf dem Bildschirm **Zertifikat erstellen** folgende Werte aus:
-    - **Methode der Zertifikaterstellung:** Generieren.
-    - **Zertifikatname:** ContosoManualCSRCertificate.
-    - **Typ der Zertifizierungsstelle (ZS):** Zertifikat wurde durch nicht integrierte Zertifizierungsstelle ausgestellt
-    - **Antragsteller:** `"CN=www.contosoHRApp.com"`
-    - Wählen Sie die anderen Werte nach Wunsch aus. Klicken Sie auf **Erstellen**.
-
-    ![Zertifikateigenschaften](../media/certificates/create-csr-merge-csr/create-certificate.png)  
-
-
-6.  Sie werden feststellen, dass der Zertifikatliste jetzt ein Zertifikat hinzugefügt ist. Wählen Sie dieses neue Zertifikat aus, das Sie soeben erstellt haben. Der aktuelle Status des Zertifikats ist „Deaktiviert“, da es noch nicht von der Zertifizierungsstelle ausgestellt wurde.
-7. Klicken Sie auf die Registerkarte **Zertifikatvorgang**, und wählen Sie **CSR herunterladen** aus.
-
-   ![Screenshot: Hervorgehobene Schaltfläche „CSR herunterladen“](../media/certificates/create-csr-merge-csr/download-csr.png)
- 
-8.  Übergeben Sie die CSR-Datei an die Zertifizierungsstelle, damit die Anforderung signiert wird.
-9.  Nachdem die Anforderung von der Zertifizierungsstelle signiert wurde, führen Sie die Zertifikatsdatei zurück, um die **signierte Anforderung auf demselben Bildschirm „Zertifikatvorgang“ zusammenzuführen**.
-
-Die Zertifikatanforderung wurde nun erfolgreich zusammengeführt.
+---
 
 > [!NOTE]
 > Wenn Ihre RDN-Werte Kommas aufweisen, können Sie sie auch im Feld **Antragsteller** hinzufügen, indem Sie den Wert in doppelte Anführungszeichen setzen, wie in Schritt 4 gezeigt.
 > Beispieleintrag für „Antragsteller“: `DC=Contoso,OU="Docs,Contoso",CN=www.contosoHRApp.com`. In diesem Beispiel enthält der `OU`-Wert des RDN einen Wert mit einem Komma im Namen. Die resultierende Ausgabe für `OU` lautet **Docs, Contoso**.
-
 
 ## <a name="adding-more-information-to-csr"></a>Hinzufügen von weiteren Informationen zur Zertifikatsignieranforderung
 
@@ -118,6 +120,8 @@ Beispiel
 
 ## <a name="troubleshoot"></a>Problembehandlung
 
+- Weitere Informationen zur Überwachung oder Verwaltung der Antwort auf die Zertifikatanforderung finden Sie [hier](https://docs.microsoft.com/azure/key-vault/certificates/create-certificate-scenarios).
+
 - **Fehlertyp „Der öffentliche Schlüssel des Endentitätszertifikats im angegebenen X.509-Zertifikatinhalt stimmt nicht mit dem öffentlichen Teil des angegebenen privaten Schlüssels überein. Überprüfen Sie die Gültigkeit des Zertifikats.“** . Dieser Fehler kann auftreten, wenn Sie die CSR nicht mit derselben initialisierten CSR-Anforderung zusammenführen. Bei jeder CSR-Erstellung wird ein privater Schlüssel erstellt, der beim Zusammenführen der signierten Anforderung abgeglichen werden muss.
     
 - Wird beim Zusammenführen einer CSR die gesamte Kette zusammengeführt?
@@ -129,6 +133,7 @@ Weitere Informationen finden Sie unter den [Zertifikatvorgängen in der Referenz
 
 - **Fehlertyp „Beim angegebenen Antragstellernamen handelt es sich nicht um einen gültigen X.500-Namen“** : Dieser Fehler kann auftreten, wenn die Werte für „SubjectName“ Sonderzeichen enthalten. Weitere Informationen finden Sie jeweils in den Hinweisen in den Anweisungen zum Azure-Portal und zu PowerShell. 
 
+---
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Authentifizierung, Anforderungen und Antworten](../general/authentication-requests-and-responses.md)

@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 12/16/2020
-ms.openlocfilehash: bc93c3643e329879e5118d1cfb61a356442df808
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 7d93002af866aa653972182a13ea37d37e912ce8
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 12/17/2020
-ms.locfileid: "97618391"
+ms.locfileid: "97630308"
 ---
 # <a name="tutorial-shard-data-on-worker-nodes-in-azure-database-for-postgresql--hyperscale-citus"></a>Tutorial: Sharddaten auf Workerknoten in Azure Database for PostgreSQL – Hyperscale (Citus)
 
@@ -171,8 +171,8 @@ Sie sehen, dass die Shards die gleiche Größe haben. Sie haben bereits festgest
 
 Die Zeilen in der Beispieltabelle `users` sind aufgrund der Eigenschaften der Verteilungsspalte (`email`) gleichmäßig verteilt.
 
-1. Die Anzahl der E-Mail-Adressen war größer oder gleich der Anzahl der Shards.
-2. Die Anzahl der Zeilen pro E-Mail-Adresse war vergleichbar (in diesem Fall genau eine Zeile pro Adresse, da die E-Mail-Adresse als Schlüssel deklariert wurde).
+1. Die Anzahl von E-Mail-Adressen war größer oder gleich der Anzahl von Shards.
+2. Die Anzahl von Zeilen pro E-Mail-Adresse war vergleichbar (in diesem Fall genau eine Zeile pro Adresse, da die E-Mail-Adresse als Schlüssel deklariert wurde).
 
 Jede Auswahl von Tabelle und Verteilungsspalte, die bei einer Eigenschaft Fehler verursachen, hat eine uneinheitliche Datengröße auf den Workerknoten zur Folge, die sogenannte *Datenschiefe*.
 

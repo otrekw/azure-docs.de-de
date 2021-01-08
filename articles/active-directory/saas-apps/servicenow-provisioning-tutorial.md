@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/10/2019
 ms.author: jeedes
-ms.openlocfilehash: 5894a57e6495ca02002c8f32b893e696c7f5679b
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 5c21efc9cb082d915fd87e9ae01606fce18016bc
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350703"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97897281"
 ---
 # <a name="tutorial-configure-servicenow-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von ServiceNow für die automatische Benutzerbereitstellung
 
@@ -50,7 +50,7 @@ Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits �
 
 1. Identifizieren Sie den Namen Ihrer ServiceNow-Instanz. Sie finden den Instanznamen in der URL, die Sie für den Zugriff auf ServiceNow verwenden. Im folgenden Beispiel lautet der Instanzname „dev35214“.
 
-   ![ServiceNow-Instanz](media/servicenow-provisioning-tutorial/servicenow_instance.png)
+   ![ServiceNow-Instanz](media/servicenow-provisioning-tutorial/servicenow-instance.png)
 
 2. Rufen Sie Anmeldeinformationen für einen Administrator in ServiceNow ab. Navigieren Sie zu dem Benutzerprofil in ServiceNow, und stellen Sie sicher, dass der Benutzer Administratorrechte hat. 
 
@@ -94,7 +94,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** die Anmeldeinformationen und den Benutzernahmen für den ServiceNow-Administrator ein. Klicken Sie auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit ServiceNow herstellen kann. Wenn die Verbindung nicht möglich ist, müssen Sie sicherstellen, dass Ihr ServiceNow-Konto über Administratorberechtigungen verfügt. Versuchen Sie es anschließend noch einmal.
 
-    ![Screenshot: Dienstbereitstellungsseite, auf der Sie Administratoranmeldeinformationen eingeben können](./media/servicenow-provisioning-tutorial/provisioning.png)
+    ![Screenshot: Dienstbereitstellungsseite, auf der Sie Administratoranmeldeinformationen eingeben können](./media/servicenow-provisioning-tutorial/servicenow-provisioning.png)
 
 6. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll, und aktivieren Sie das Kontrollkästchen **Bei Fehler E-Mail-Benachrichtigung senden**.
 
@@ -142,11 +142,16 @@ Nachdem Sie die Bereitstellung konfiguriert haben, können Sie mit den folgenden
   
   `Details: Your ServiceNow instance name appears to be invalid.  Please provide a current ServiceNow administrative user name and          password along with the name of a valid ServiceNow instance.`                                                              
 
-   Dieser Fehler weist auf ein Problem bei der Kommunikation mit der ServiceNow-Instanz hin. Vergewissern Sie sich, dass die folgenden Einstellungen in ServiceNow *deaktiviert* sind:
+   Dieser Fehler weist auf ein Problem bei der Kommunikation mit der ServiceNow-Instanz hin. 
+   
+   Sollten bei der Testverbindung Probleme auftreten, **deaktivieren** Sie die folgenden Einstellungen in ServiceNow:
    
    1. Wählen Sie **System Security** > **High security settings** > **Require basic authentication for incoming SCHEMA requests** („Systemsicherheit“ -> „Einstellungen für hohe Sicherheit“ -> „Einfache Authentifizierung für eingehende SCHEMA-Anforderungen erforderlich“).
    2. Wählen Sie **System Properties** > **Web Services** > **Require basic authorization for incoming SOAP requests** („Systemeigenschaften“ -> „Webdienste“ -> „Einfache Authentifizierung für eingehende SOAP-Anforderungen erforderlich“).
 
+   ![Autorisieren der SOAP-Anforderung](media/servicenow-provisioning-tutorial/servicenow-webservice.png)
+
+   Werden die Probleme dadurch behoben, wenden Sie sich an den ServiceNow-Support, und bitten Sie ihn, zur Problembehandlung das SOAP-Debuggen zu aktivieren. 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
 * [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps](../app-provisioning/configure-automatic-user-provisioning-portal.md)

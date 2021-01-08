@@ -12,12 +12,12 @@ ms.date: 09/30/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: bilderkennung, bilderkennungs-app, custom vision
-ms.openlocfilehash: ab747ad5e7b9362e9c587741198a0191c032b124
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 8274ddd0e492d1a27ebc1579fc6efdcc8cc84955
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96018361"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97912983"
 ---
 # <a name="quickstart-build-an-object-detector-with-the-custom-vision-website"></a>Schnellstart: Erstellen einer Objekterkennung mit der Custom Vision-Website
 
@@ -100,6 +100,7 @@ Nach Abschluss des Trainings wird die Leistung des Modells berechnet und angezei
 
 - Die **Genauigkeit** gibt den Anteil der richtig identifizierten Klassifizierungen an. Beispiel: Wenn das Modell 100 Bilder als Hunde identifiziert hat und 99 davon tatsächlich Hunde zeigten, beträgt die Genauigkeit 99 %.
 - Die **Trefferquote** gibt den Anteil der tatsächlichen Klassifizierungen an, die richtig identifiziert wurden. Beispiel: Wenn tatsächlich 100 Bilder von Äpfeln vorhanden sind und das Modell 80 davon als Äpfel identifiziert, beträgt die Trefferquote 80 %.
+- Die **durchschnittliche Genauigkeit** ist der Durchschnittswert der durchschnittlichen Genauigkeit (Average Precision, AP). Die durchschnittliche Genauigkeit ist der Bereich unterhalb der Kurve zu Genauigkeit/Abruf. (Für jede ausgeführte Vorhersage wird die Genauigkeit in Bezug auf den Abruf gezeichnet.)
 
 ![Die Trainingsergebnisse zeigen Gesamtgenauigkeit, Trefferquote und mittlere durchschnittliche Genauigkeit an.](./media/get-started-build-detector/trained-performance.png)
 

@@ -8,14 +8,14 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.date: 08/12/2019
+ms.date: 12/18/2020
 ms.author: mbaldwin
-ms.openlocfilehash: eef4f6b8ee5821e54b5b7709eee7f8dad8749e63
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: b1f7b115c5a8198b53e36672a891903a41a9511b
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94488535"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97704128"
 ---
 # <a name="azure-key-vault-logging"></a>Azure Key Vault-Protokollierung
 
@@ -23,7 +23,7 @@ Nachdem Sie einen oder mehrere Schlüsseltresore erstellt haben, möchten Sie ve
 
 Sie können auf Ihre Protokollinformationen (spätestens) zehn Minuten nach dem Schlüsseltresorvorgang zugreifen. In den meisten Fällen geht es aber schneller.  Die Verwaltung der Protokolle im Speicherkonto ist Ihre Aufgabe:
 
-* Verwenden Sie zum Schützen der Protokolle standardmäßige Azure-Zugriffssteuerungsmethoden, indem Sie einschränken, wer darauf zugreifen kann.
+* Verwenden Sie zum Schützen Ihrer Protokolle in Ihrem Speicherkonto Standardmethoden für die Azure-Zugriffssteuerung, indem Sie einschränken, wer darauf zugreifen kann.
 * Löschen Sie Protokolle, die im Speicherkonto nicht mehr aufbewahrt werden sollen.
 
 Eine Übersicht über Key Vault finden Sie unter [Was ist Azure Key Vault?](overview.md). Informationen dazu, wo Key Vault verfügbar ist, finden Sie auf der [Seite mit der Preisübersicht](https://azure.microsoft.com/pricing/details/key-vault/). Informationen zur Verwendung von Azure Monitor für Key Vault finden Sie [hier](../../azure-monitor/insights/key-vault-insights-overview.md).
@@ -85,6 +85,8 @@ Die folgende Tabelle enthält die **operationName**-Werte und die entsprechenden
 
 ### <a name="operation-names-table"></a>Tabelle mit Vorgangsnamen
 
+# <a name="vault"></a>[Tresor](#tab/Vault)
+
 | operationName | REST-API-Befehl |
 | --- | --- |
 | **Authentifizierung** |Authentifizieren über Azure Active Directory-Endpunkt |
@@ -97,6 +99,12 @@ Die folgende Tabelle enthält die **operationName**-Werte und die entsprechenden
 | **VaultRecover** |Gelöschten Tresor wiederherstellen|
 | **VaultGetDeleted** |[Gelöschten Tresor abrufen](/rest/api/keyvault/vaults/getdeleted) |
 | **VaultListDeleted** |[Gelöschten Tresor auflisten](/rest/api/keyvault/vaults/listdeleted) |
+| **VaultAccessPolicyChangedEventGridNotification** | Ereignis „Tresorzugriffsrichtlinie geändert“ veröffentlicht |
+
+# <a name="keys"></a>[Schlüssel](#tab/Keys)
+
+| operationName | REST-API-Befehl |
+| --- | --- |
 | **KeyCreate** |[Erstellen eines Schlüssels](/rest/api/keyvault/createkey) |
 | **KeyGet** |[Abrufen von Informationen zu einem Schlüssel](/rest/api/keyvault/getkey) |
 | **KeyImport** |[Importieren eines Schlüssels in einen Tresor](/rest/api/keyvault/vaults) |
@@ -116,36 +124,13 @@ Die folgende Tabelle enthält die **operationName**-Werte und die entsprechenden
 | **KeyRecover** |[Einen Schlüssel wiederherstellen](/rest/api/keyvault/recoverdeletedkey) |
 | **KeyGetDeleted** |[Gelöschten Schlüssel abrufen](/rest/api/keyvault/getdeletedkey) |
 | **KeyListDeleted** |[Gelöschte Schlüssel in einem Tresor auflisten](/rest/api/keyvault/getdeletedkeys) |
-| **CertificateGet** |[Abrufen von Informationen zu einem Zertifikat](/rest/api/keyvault/getcertificate) |
-| **CertificateCreate** |[Ein Zertifikat erstellen](/rest/api/keyvault/createcertificate) |
-| **CertificateImport** |[Ein Zertifikat in einen Tresor importieren](/rest/api/keyvault/importcertificate) |
-| **CertificateUpdate** |[Ein Zertifikat aktualisieren](/rest/api/keyvault/updatecertificate) |
-| **CertificateList** |[Die Zertifikate in einem Tresor auflisten](/rest/api/keyvault/getcertificates) |
-| **CertificateListVersions** |[Die Versionen eines Zertifikats auflisten](/rest/api/keyvault/getcertificateversions) |
-| **CertificateDelete** |[Ein Zertifikat löschen](/rest/api/keyvault/deletecertificate) |
-| **CertificatePurge** |[Ein Zertifikat endgültig löschen](/rest/api/keyvault/purgedeletedcertificate) |
-| **CertificateBackup** |[Ein Zertifikat sichern](/rest/api/keyvault/backupcertificate) |
-| **CertificateRestore** |[Ein Zertifikat wiederherstellen](/rest/api/keyvault/restorecertificate) |
-| **CertificateRecover** |[Ein Zertifikat wiederherstellen](/rest/api/keyvault/recoverdeletedcertificate) |
-| **CertificateGetDeleted** |[Gelöschtes Zertifikat abrufen](/rest/api/keyvault/getdeletedcertificate) |
-| **CertificateListDeleted** |[Die gelöschten Zertifikate in einem Tresor auflisten](/rest/api/keyvault/getdeletedcertificates) |
-| **CertificatePolicyGet** |[Zertifikatrichtlinie abrufen](/rest/api/keyvault/getcertificatepolicy) |
-| **CertificatePolicyUpdate** |[Zertifikatrichtlinie aktualisieren](/rest/api/keyvault/updatecertificatepolicy) |
-| **CertificatePolicySet** |[Zertifikatrichtlinie erstellen](/rest/api/keyvault/createcertificate) |
-| **CertificateContactsGet** |[Zertifikatkontakte abrufen](/rest/api/keyvault/getcertificatecontacts) |
-| **CertificateContactsSet** |[Zertifikatkontakte festlegen](/rest/api/keyvault/setcertificatecontacts) |
-| **CertificateContactsDelete** |[Zertifikatkontakte löschen](/rest/api/keyvault/deletecertificatecontacts) |
-| **CertificateIssuerGet** |[Zertifikataussteller abrufen](/rest/api/keyvault/getcertificateissuer) |
-| **CertificateIssuerSet** |[Zertifikataussteller festlegen](/rest/api/keyvault/setcertificateissuer) |
-| **CertificateIssuerUpdate** |[Zertifikataussteller aktualisieren](/rest/api/keyvault/updatecertificateissuer) |
-| **CertificateIssuerDelete** |[Zertifikataussteller löschen](/rest/api/keyvault/deletecertificateissuer) |
-| **CertificateIssuersList** |[Zertifikataussteller auflisten](/rest/api/keyvault/getcertificateissuers) |
-| **CertificateEnroll** |Ein Zertifikat registrieren |
-| **CertificateRenew** |Erneuern eines Zertifikats |
-| **CertificatePendingGet** |Ausstehendes Zertifikat abrufen |
-| **CertificatePendingMerge** |Ausstehende Zertifikatzusammenführung |
-| **CertificatePendingUpdate** |Ausstehende Zertifikataktualisierung |
-| **CertificatePendingDelete** |Ausstehendes Zertifikat löschen |
+| **KeyNearExpiryEventGridNotification** |Ereignis „Schlüssel läuft demnächst ab“ veröffentlicht |
+| **KeyExpiredEventGridNotification** |Ereignis „Schlüssel abgelaufen“ veröffentlicht |
+
+# <a name="secrets"></a>[Geheimnisse](#tab/Secrets)
+
+| operationName | REST-API-Befehl |
+| --- | --- |
 | **SecretSet** |[Erstellen eines geheimen Schlüssels](/rest/api/keyvault/updatecertificate) |
 | **SecretGet** |[Abrufen eines Geheimnisses](/rest/api/keyvault/getsecret) |
 | **SecretUpdate** |[Aktualisieren eines Geheimnisses](/rest/api/keyvault/updatesecret) |
@@ -158,13 +143,17 @@ Die folgende Tabelle enthält die **operationName**-Werte und die entsprechenden
 | **SecretRecover** |[Geheimnis wiederherstellen](/rest/api/keyvault/recoverdeletedsecret) |
 | **SecretGetDeleted** |[Gelöschtes Geheimnis abrufen](/rest/api/keyvault/getdeletedsecret) |
 | **SecretListDeleted** |[Die gelöschten Geheimnisse in einem Tresor auflisten](/rest/api/keyvault/getdeletedsecrets) |
-| **VaultAccessPolicyChangedEventGridNotification** | Ereignis „Tresorzugriffsrichtlinie geändert“ veröffentlicht |
 | **SecretNearExpiryEventGridNotification** |Ereignis „Geheimnis läuft demnächst ab“ veröffentlicht |
 | **SecretExpiredEventGridNotification** |Ereignis „Geheimnis abgelaufen“ veröffentlicht |
-| **KeyNearExpiryEventGridNotification** |Ereignis „Schlüssel läuft demnächst ab“ veröffentlicht |
-| **KeyExpiredEventGridNotification** |Ereignis „Schlüssel abgelaufen“ veröffentlicht |
-| **CertificateNearExpiryEventGridNotification** |Ereignis „Zertifikat läuft demnächst ab“ veröffentlicht |
-| **CertificateExpiredEventGridNotification** |Ereignis „Zertifikat abgelaufen“ veröffentlicht |
+
+# <a name="certificates"></a>[Zertifikate](#tab/Cerificates)
+
+| operationName | REST-API-Befehl |
+| --- | --- |
+
+| **CertificateGet** |[Informationen zu einem Zertifikat abrufen](/rest/api/keyvault/getcertificate) | | **CertificateCreate** |[Zertifikat erstellen](/rest/api/keyvault/createcertificate) | | **CertificateImport** |[Zertifikat in einen Tresor importieren](/rest/api/keyvault/importcertificate) | | **CertificateUpdate** |[Zertifikat aktualisieren](/rest/api/keyvault/updatecertificate) | | **CertificateList** |[Zertifikate in einem Tresor auflisten](/rest/api/keyvault/getcertificates) | | **CertificateListVersions** |[Versionen eines Zertifikats auflisten](/rest/api/keyvault/getcertificateversions) | | **CertificateDelete** |[Zertifikat löschen](/rest/api/keyvault/deletecertificate) | | **CertificatePurge** |[Zertifikat bereinigen](/rest/api/keyvault/purgedeletedcertificate) | | **CertificateBackup** |[Zertifikat sichern](/rest/api/keyvault/backupcertificate) | | **CertificateRestore** |[Zertifikat wiederherstellen (Restore)](/rest/api/keyvault/restorecertificate) | | **CertificateRecover** |[Zertifikat wiederherstellen (Recover)](/rest/api/keyvault/recoverdeletedcertificate) | | **CertificateGetDeleted** |[Gelöschtes Zertifikat abrufen](/rest/api/keyvault/getdeletedcertificate) | | **CertificateListDeleted** |[Gelöschte Zertifikate in einem Tresor auflisten](/rest/api/keyvault/getdeletedcertificates) | | **CertificatePolicyGet** |[Zertifikatrichtlinie abrufen](/rest/api/keyvault/getcertificatepolicy) | | **CertificatePolicyUpdate** |[Zertifikatrichtlinie aktualisieren](/rest/api/keyvault/updatecertificatepolicy) | | **CertificatePolicySet** |[Zertifikatrichtlinie erstellen](/rest/api/keyvault/createcertificate) | | **CertificateContactsGet** |[Zertifikatkontakte abrufen](/rest/api/keyvault/getcertificatecontacts) | | **CertificateContactsSet** |[Zertifikatkontakte festlegen](/rest/api/keyvault/setcertificatecontacts) | | **CertificateContactsDelete** |[Zertifikatkontakte löschen](/rest/api/keyvault/deletecertificatecontacts) | | **CertificateIssuerGet** |[Zertifikataussteller abrufen](/rest/api/keyvault/getcertificateissuer) | | **CertificateIssuerSet** |[Zertifikataussteller festlegen](/rest/api/keyvault/setcertificateissuer) | | **CertificateIssuerUpdate** |[Zertifikataussteller aktualisieren](/rest/api/keyvault/updatecertificateissuer) | | **CertificateIssuerDelete** |[Zertifikataussteller löschen](/rest/api/keyvault/deletecertificateissuer) | | **CertificateIssuersList** |[Zertifikataussteller auflisten](/rest/api/keyvault/getcertificateissuers) | | **CertificateEnroll** |Zertifikat registrieren | | **CertificateRenew** |Zertifikat verlängern | | **CertificatePendingGet** |Ausstehendes Zertifikat abrufen | | **CertificatePendingMerge** |Ausstehende Zertifikatzusammenführung | | **CertificatePendingUpdate** |Ausstehende Zertifikataktualisierung | | **CertificatePendingDelete** |Ausstehendes Zertifikat löschen | | **CertificateNearExpiryEventGridNotification** |Ereignis „Zertifikat läuft demnächst ab“ veröffentlicht |
+<a name="-certificateexpiredeventgridnotification-certificate-expired-event-published-"></a>| **CertificateExpiredEventGridNotification** |Ereignis „Zertifikat abgelaufen“ veröffentlicht |
+---
 
 ## <a name="use-azure-monitor-logs"></a>Verwenden von Azure Monitor-Protokollen
 
@@ -175,6 +164,7 @@ Weitere Informationen, z. B. zur Einrichtung, finden Sie im Artikel zu [Azure K
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Aktivieren der Protokollierung in Key Vault](howto-logging.md)
+- [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/)
 - Ein Tutorial zur Verwendung von Azure Key Vault in einer .NET-Webanwendung finden Sie unter [Verwenden von Azure Key Vault aus einer Webanwendung](tutorial-net-create-vault-azure-web-app.md).
 - Eine Referenz zur Programmierung finden Sie im [Entwicklerhandbuch für den Azure-Schlüsseltresor](developers-guide.md).
 - Eine Liste der Azure PowerShell 1.0-Cmdlets für Azure Key Vault finden Sie unter [Azure Key Vault-Cmdlets](/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault).

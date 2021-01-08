@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 10/22/2020
+ms.date: 12/16/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Mini R device so I can use it to transfer data to Azure.
-ms.openlocfilehash: 54ac683dcc2b124c4a6410b2e8449fa7e969ce8c
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 6d41c186a5d239ad7228c37902f5691085e43dbf
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96464190"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631243"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-mini-r"></a>Tutorial: Vorbereiten der Bereitstellung von Azure Stack Edge Mini R
 
@@ -40,7 +40,7 @@ Führen Sie zum Bereitstellen von Azure Stack Edge Mini R die folgenden Tutoria
 |  | |
 |**Tutorials für die Bereitstellung** |Diese Tutorials sind erforderlich, um Ihr Azure Stack Edge Mini R-Gerät in der Produktionsumgebung bereitzustellen. |
 |**[1. Vorbereiten des Azure-Portals für das Gerät](azure-stack-edge-mini-r-deploy-prep.md)** |Erstellen und konfigurieren Sie Ihre Azure Stack Edge-Ressource, bevor Sie das physische Gerät installieren. |
-|**[2. Installieren des Geräts](azure-stack-edge-mini-r-deploy-install.md)**|Packen Sie Ihr physisches Gerät aus, installieren Sie es in einem Rack, und verkabeln Sie es.  |
+|**[2. Installieren des Geräts](azure-stack-edge-mini-r-deploy-install.md)**|Untersuchen Sie Ihr physisches Gerät, und verkabeln Sie es.  |
 |**[3. Herstellen einer Verbindung mit dem Gerät](azure-stack-edge-mini-r-deploy-connect.md)** |Sobald das Gerät installiert ist, stellen Sie eine Verbindung mit der lokalen Webbenutzeroberfläche des Geräts her.  |
 |**[4. Konfigurieren der Netzwerkeinstellungen](azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy.md)** |Konfigurieren Sie das Netzwerk einschließlich Computenetzwerk und Webproxyeinstellungen für Ihr Gerät.   |
 |**[5. Konfigurieren der Geräteeinstellungen](azure-stack-edge-mini-r-deploy-set-up-device-update-time.md)** |Weisen Sie einen Gerätenamen und eine DNS-Domäne zu, und konfigurieren Sie den Updateserver und die Gerätezeit. |

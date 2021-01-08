@@ -7,12 +7,12 @@ ms.date: 08/10/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 78b42a8ad3685d07b61c4faca384c7ee8f5a5f94
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 8e4e64cd872794354479c29d4aaa000cee45c5a3
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97616387"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97901214"
 ---
 # <a name="troubleshooting-azure-key-vault-access-policy-issues"></a>Behandeln von Problemen mit Schlüsseltresor-Zugriffsrichtlinien
 
@@ -32,7 +32,7 @@ Wenn Sie damit beginnen, Ihren Dienst zu skalieren, steigt die Anzahl von Anford
 ### <a name="i-am-not-able-to-modify-access-policy-how-can-it-be-enabled"></a>Ich kann die Zugriffsrichtlinie nicht ändern. Wie kann sie aktiviert werden?
 Der Benutzer muss über ausreichende AAD-Berechtigungen verfügen, um die Zugriffsrichtlinie zu ändern. In diesem Fall muss der Benutzer über die höhere Rolle „Mitwirkender“ verfügen.
 
-### <a name="i-am-seeing-unkwown-policy-error-what-does-that-mean"></a>Mir wird der Fehler „Unbekannte Richtlinie“ angezeigt. Was bedeutet das?
+### <a name="i-am-seeing-unknown-policy-error-what-does-that-mean"></a>Mir wird der Fehler „Unbekannte Richtlinie“ angezeigt. Was bedeutet das?
 Es gibt zwei verschiedene Gründe dafür, dass im Abschnitt „Unbekannt“ eine Zugriffsrichtlinie angezeigt wird:
 * Es gibt einen Benutzer, der zuvor Zugriff hatte, und aus irgendeinem Grund ist der Benutzer nicht vorhanden.
 * Eine Zugriffsrichtlinie wird über PowerShell, aber für die Anwendungsobjekt-ID und nicht für den Dienstprinzipal hinzugefügt.
