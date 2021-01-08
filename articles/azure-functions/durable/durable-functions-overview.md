@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 12/23/2020
 ms.author: cgillum
 ms.reviewer: azfuncdf
-ms.openlocfilehash: 3725970c982c2d060685bf0b99d12a8fc998f20a
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: 2079a3a7c9ce6817186e743bb09d31facdecf0e7
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97763573"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97931720"
 ---
 # <a name="what-are-durable-functions"></a>Was ist Durable Functions?
 
@@ -697,7 +697,7 @@ Damit eine zuverlässige und lange Ausführung gewährleistet ist, gelten für O
 
 ## <a name="billing"></a>Abrechnung
 
-Durable Functions wird genau wie Azure Functions in Rechnung gestellt. Weitere Informationen finden Sie unter [Azure Functions – Preise](https://azure.microsoft.com/pricing/details/functions/). Beim Ausführen von Orchestratorfunktionen im [Nutzungsplan](../functions-scale.md#consumption-plan) von Azure Functions sind einige Verhaltensweisen zu beachten, die bei der Abrechnung auftreten. Weitere Informationen zu diesen Verhaltensweisen finden Sie im Artikel [Abrechnung von Durable Functions](durable-functions-billing.md).
+Durable Functions wird genau wie Azure Functions in Rechnung gestellt. Weitere Informationen finden Sie unter [Azure Functions – Preise](https://azure.microsoft.com/pricing/details/functions/). Beim Ausführen von Orchestratorfunktionen im [Nutzungsplan](../consumption-plan.md) von Azure Functions sind einige Verhaltensweisen zu beachten, die bei der Abrechnung auftreten. Weitere Informationen zu diesen Verhaltensweisen finden Sie im Artikel [Abrechnung von Durable Functions](durable-functions-billing.md).
 
 ## <a name="jump-right-in"></a>Sofort loslegen
 
