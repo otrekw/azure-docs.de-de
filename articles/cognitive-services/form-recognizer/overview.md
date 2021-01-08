@@ -11,12 +11,12 @@ ms.date: 11/23/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: automatisierte Datenverarbeitung, Dokumentverarbeitung, automatisierte Dateneingabe, Formularverarbeitung
-ms.openlocfilehash: 39243f4428d055ee5d4491c3e87b4b91213f63f1
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: ed940622f72271ef3e606c5068babcb6366c31b6
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353679"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97845529"
 ---
 # <a name="what-is-form-recognizer"></a>Was ist die Formularerkennung?
 
@@ -108,23 +108,21 @@ Mit dem Visitenkartenmodell können Sie Informationen wie Name, Position, Adress
 
 Verwenden Sie das [Beispieltool für die Formularerkennung](https://fott.azurewebsites.net/) oder eine Schnellstartanleitung, um sich mit den ersten Schritten beim Extrahieren von Daten aus Ihren Formularen vertraut zu machen. Sie sollten den kostenlosen Dienst nutzen, wenn Sie die Technologie erlernen. Bedenken Sie, dass die Anzahl der kostenlosen Seiten auf 500 pro Monat beschränkt ist.
 
-* [Schnellstartanleitungen für die Clientbibliothek](./quickstarts/client-library.md) (alle Sprachen, mehrere Szenarien)
+* [Schnellstart zur Clientbibliothek/REST-API](./quickstarts/client-library.md) (alle Sprachen, mehrere Szenarien)
 * Schnellstartanleitungen für Webbenutzeroberfläche
   * [Trainieren mit Beschriftungen: Tool für die Beschriftung von Beispielen](quickstarts/label-tool.md)
-* REST-Schnellstarts
+* REST-Beispiele (GitHub)
  * Extrahieren von Text, Auswahlmarkierungen und Tabellenstruktur aus Dokumenten
-    * [Extrahieren von Layoutdaten: Python](quickstarts/python-layout.md)
+    * [Extrahieren von Layoutdaten: Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-layout.md)
   * Trainieren von benutzerdefinierten Modellen und Extrahieren von Formulardaten
-    * [Trainieren ohne Beschriftungen: cURL](quickstarts/curl-train-extract.md)
-    * [Trainieren ohne Beschriftungen: Python](quickstarts/python-train-extract.md)
-    * [Trainieren mit Beschriftungen: Python](quickstarts/python-labeled-data.md)
+    * [Trainieren ohne Beschriftungen: Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-train-extract.md)
+    * [Trainieren mit Beschriftungen: Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-labeled-data.md)
   * Extrahieren von Daten aus Rechnungen
-    * [Extrahieren von Rechnungsdaten: Python](quickstarts/python-invoices.md)
+    * [Extrahieren von Rechnungsdaten: Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-invoices.md)
   * Extrahieren von Daten aus Verkaufsbelegen
-    * [Extrahieren von Verkaufsbelegdaten: cURL](quickstarts/curl-receipts.md)
-    * [Extrahieren von Verkaufsbelegdaten: Python](quickstarts/python-receipts.md)
+    * [Extrahieren von Verkaufsbelegdaten: Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-receipts.md)
   * Extrahieren von Daten aus Visitenkarten
-    * [Extrahieren von Visitenkartendaten – Python](quickstarts/python-business-cards.md)
+    * [Extrahieren von Visitenkartendaten – Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-business-cards.md)
 
 ### <a name="review-the-rest-apis"></a>Überprüfen der REST-APIs
 
@@ -162,4 +160,4 @@ Wie bei allen Cognitive Services-Diensten müssen Entwickler, die den Formularer
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Durchlaufen Sie eine [Schnellstartanleitung für die Clientbibliothek](quickstarts/client-library.md), um damit zu beginnen, eine Formularverarbeitungs-App mit Formularerkennung in der Sprache Ihrer Wahl zu schreiben.
+Arbeiten Sie eine [Schnellstartanleitung](quickstarts/client-library.md) durch, um damit zu beginnen, eine Formularverarbeitungs-App mit Formularerkennung in der Sprache Ihrer Wahl zu schreiben.

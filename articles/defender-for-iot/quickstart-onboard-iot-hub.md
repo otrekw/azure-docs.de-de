@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/06/2020
 ms.author: mlottner
-ms.openlocfilehash: 786fcd1a0c6d7df2c38a086a830a63f7179d7d40
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: e3768ef233c60f1687bc804778c3dabf32666e1d
+ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96352506"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97835158"
 ---
 # <a name="quickstart-onboard-azure-defender-for-iot-service-in-iot-hub"></a>Schnellstart: Durchführen des Onboardings für den Dienst „Azure Defender für IoT“ in IoT Hub
 
@@ -33,7 +33,7 @@ In diesem Artikel erfahren Sie, wie Sie den Dienst „Defender für IoT“ in Ih
   - Von Defender für IoT werden in Ihrem Log Analytics-Arbeitsbereich standardmäßig zwei Arten von Informationen gespeichert: **Sicherheitswarnungen** und **Empfehlungen**.
   - Sie können noch einen weiteren Informationstyp hinzufügen: **Rohereignisse**. Hinweis: Für die Speicherung von **Rohereignissen** in Log Analytics fallen zusätzliche Speicherkosten an.
 - IoT Hub (Standard-Tarif)
-- Erfüllen aller [Dienstvoraussetzungen](service-prerequisites.md)
+- Stellen Sie sicher, dass alle [Systemanforderungen](quickstart-system-prerequisites.md) erfüllt sind.
 
 ## <a name="enable-defender-for-iot-on-your-iot-hub"></a>Aktivieren von Defender für IoT für Ihre IoT Hub-Instanz
 

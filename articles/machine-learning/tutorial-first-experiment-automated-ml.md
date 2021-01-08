@@ -9,14 +9,14 @@ ms.topic: tutorial
 author: cartacioS
 ms.author: sacartac
 ms.reviewer: nibaccam
-ms.date: 07/10/2020
+ms.date: 12/21/2020
 ms.custom: automl
-ms.openlocfilehash: 4b2769139e74289c4760b5c398c80380afea351f
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 90c827774f38f07b9791a6399a53b0304bbe28c8
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96921893"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97695218"
 ---
 # <a name="tutorial-create-a-classification-model-with-automated-ml-in-azure-machine-learning"></a>Tutorial: Erstellen eines Klassifizierungsmodells mit automatisiertem maschinellem Lernen in Azure Machine Learning
 
@@ -102,9 +102,7 @@ Laden Sie vor dem Konfigurieren Ihres Experiments Ihre Datendatei in Form eines 
         Spaltenüberschriften| Gibt an, wie die Header des Datasets, sofern vorhanden, behandelt werden.| Alle Dateien weisen dieselben Header auf.
         Zeilen überspringen | Gibt an, wie viele Zeilen im Dataset übersprungen werden.| Keine
 
-    1. Das Formular **Schema** ermöglicht eine weitere Konfiguration der Daten für dieses Experiment. Wählen Sie für dieses Beispiel den Umschalter für das Feature **day_of_week** aus, um es für dieses Experiment nicht einzuschließen. Wählen Sie **Weiter** aus.
-
-        ![Konfiguration der Registerkarte „Preview“ (Vorschau)](./media/tutorial-first-experiment-automated-ml/schema-tab-config.gif)
+    1. Das Formular **Schema** ermöglicht eine weitere Konfiguration der Daten für dieses Experiment. Für dieses Beispiel treffen wir keine Auswahlen. Wählen Sie **Weiter** aus.
 
     1. Überprüfen Sie im Formular **Details bestätigen** die zuvor in die Formulare **Grundlegende Infos, Datenspeicher- und Dateiauswahl** und **Einstellungen und Vorschau** eingetragenen Informationen.
     
@@ -112,32 +110,44 @@ Laden Sie vor dem Konfigurieren Ihres Experiments Ihre Datendatei in Form eines 
     
     1. Wählen Sie Ihr Dataset aus, sobald es in der Liste angezeigt wird.
     
-    1. Überprüfen Sie die **Datenvorschau**, um sicherzustellen, dass Sie nicht **day_of_week** einbezogen haben. Klicken Sie dann auf **OK**.
+    1. Überprüfen Sie die **Datenvorschau**, um sicherzustellen, dass Sie nicht **day_of_week** einbezogen haben. Klicken Sie dann auf **Schließen**.
 
     1. Klicken Sie auf **Weiter**.
 
-## <a name="configure-experiment-run"></a>Konfigurieren der Experimentausführung
+## <a name="configure-run"></a>Konfigurieren der Ausführung
 
 Nach dem Laden und Konfigurieren Ihrer Daten können Sie Ihr Experiment einrichten. Dieses Setup umfasst Experimententwurfsaufgaben, etwa das Auswählen der Größe Ihrer Compute-Umgebung und das Angeben der Spalte, die Sie vorhersagen möchten. 
+
+1. Aktivieren Sie das Optionsfeld **Neu erstellen**.
 
 1. Füllen Sie das Formular **Ausführung konfigurieren** folgendermaßen aus:
     1. Geben Sie den folgenden Experimentnamen ein: `my-1st-automl-experiment`
 
     1. Wählen Sie **y** als Zielspalte aus, in der Sie Vorhersagen ausführen möchten. Diese Spalte gibt an, ob der Kunde eine Termineinlage bei der Bank gezeichnet hat.
     
-    1. Wählen Sie **Create a new compute** (Neuen Compute erstellen) aus, und konfigurieren Sie Ihr Computeziel. Ein Computeziel ist eine lokale oder cloudbasierte Ressourcenumgebung, in der Ihr Trainingsskript ausgeführt oder Ihre Dienstbereitstellung gehostet wird. Für dieses Experiment verwenden wir eine cloudbasierte Computeumgebung. 
+    1. Wählen Sie **+Create a new compute** (Neuen Compute erstellen) aus, und konfigurieren Sie Ihr Computeziel. Ein Computeziel ist eine lokale oder cloudbasierte Ressourcenumgebung, in der Ihr Trainingsskript ausgeführt oder Ihre Dienstbereitstellung gehostet wird. Für dieses Experiment verwenden wir eine cloudbasierte Computeumgebung. 
+        1. Füllen Sie das Formular für den **virtuellen Computer** aus, um Ihre Compute-Instanz einzurichten.
 
-        Feld | BESCHREIBUNG | Wert für das Tutorial
-        ----|---|---
-        Computename |Ein eindeutiger Name, der Ihren Computekontext identifiziert.|automl-compute
-        VM-Typ&nbsp;&nbsp;| Wählen Sie den VM-Typ für Ihre Compute-Umgebung aus.|CPU (Zentralprozessor)
-        Größe des virtuellen&nbsp;Computers&nbsp;| Wählen Sie die Größe für Ihren Computes aus.|Standard_DS12_V2
-        Min/Max nodes (Min./Max. Knoten)| Um ein Datenprofil zu erstellen, müssen Sie mindestens einen Knoten angeben.|Min. Knoten: 1<br>Max. Knoten: 6
-        Leerlauf in Sekunden vor dem Herunterskalieren | Leerlaufzeit vor dem automatischen Herunterskalieren des Clusters auf die minimale Knotenanzahl|120 (Standardwert)
-        Erweiterte Einstellungen | Einstellungen zum Konfigurieren und Autorisieren eines virtuellen Netzwerks für Ihr Experiment| Keine
-        1. Wählen Sie **Erstellen** aus, um das Computeziel abzurufen. 
+            Feld | BESCHREIBUNG | Wert für das Tutorial
+            ----|---|---
+            Priorität des virtuellen &nbsp;Computers&nbsp; |Wählen Sie aus, welche Priorität ihr Experiment aufweisen soll.| Dediziert
+            VM-Typ&nbsp;&nbsp;| Wählen Sie den VM-Typ für Ihre Compute-Umgebung aus.|CPU (Zentralprozessor)
+            Größe des virtuellen&nbsp;Computers&nbsp;| Wählen Sie die Größe für Ihren Computes aus. Eine Liste der empfohlenen Größen wird auf der Grundlage Ihrer Daten und des Experimenttyps bereitgestellt. |Standard_DS12_V2
+        
+        1. Wählen Sie **Weiter** aus, um das Formular **Einstellungen konfigurieren** auszufüllen.
+        
+            Feld | BESCHREIBUNG | Wert für das Tutorial
+            ----|---|---
+            Computename |  Ein eindeutiger Name, der Ihren Computekontext identifiziert. | automl-compute
+            Min/Max nodes (Min./Max. Knoten)| Um ein Datenprofil zu erstellen, müssen Sie mindestens einen Knoten angeben.|Min. Knoten: 1<br>Max. Knoten: 6
+            Leerlauf in Sekunden vor dem Herunterskalieren | Leerlaufzeit vor dem automatischen Herunterskalieren des Clusters auf die minimale Knotenanzahl|120 (Standardwert)
+            Erweiterte Einstellungen | Einstellungen zum Konfigurieren und Autorisieren eines virtuellen Netzwerks für Ihr Experiment| Keine               
+
+        1. Wählen Sie **Erstellen** aus, um Ihr Computeziel zu erstellen. 
 
             **Dieser Vorgang nimmt einige Minuten in Anspruch.** 
+
+             ![Seite "Einstellungen"](./media/tutorial-first-experiment-automated-ml/compute-settings.png)
 
         1. Wählen Sie nach der Erstellung in der Dropdownliste Ihr neues Computeziel aus.
 
@@ -159,14 +169,18 @@ Nach dem Laden und Konfigurieren Ihrer Daten können Sie Ihr Experiment einricht
         Parallelität| Die maximale Anzahl paralleler Iterationen pro Iteration| Max.&nbsp;parallele&nbsp;Iterationen: 5
         
         Wählen Sie **Speichern** aus.
+    
+    1. Wählen Sie **Featurisierungseinstellungen anzeigen** aus. Wählen Sie für dieses Beispiel den Umschalter für das Feature **day_of_week** aus, um es für die Featurisierung in diesem Experiment nicht einzuschließen.
 
-1. Wählen Sie **Fertig stellen** aus, um das Experiment auszuführen. Wenn die Vorbereitung des Experiments beginnt, wird der Bildschirm **Ausführungsdetails** geöffnet, auf dem am oberen Rand der **Ausführungsstatus** angezeigt wird.
+        ![Auswahl der Featurisierung](./media/tutorial-first-experiment-automated-ml/featurization-setting-config.gif)   
+ 
+        Wählen Sie **Speichern** aus.
+
+1. Wählen Sie **Fertig stellen** aus, um das Experiment auszuführen. Wenn die Vorbereitung des Experiments beginnt, wird der Bildschirm **Ausführungsdetails** geöffnet, auf dem am oberen Rand der **Ausführungsstatus** angezeigt wird. Dieser Status wird während des Experimentausführung entsprechend aktualisiert. Außerdem werden in der rechten oberen Ecke des Studios Benachrichtigungen angezeigt, die Sie über den Status Ihres Experiments informieren.
 
 >[!IMPORTANT]
 > Die Vorbereitung des Experiments nimmt **10 –15 Minuten** in Anspruch.
-> Sobald es ausgeführt wird, dauert **jede Iteration mindestens zwei bis drei Minuten**.  
-> Klicken Sie von Zeit zu Zeit auf **Aktualisieren**, um den Status der Ausführung während der Experimentausführung anzuzeigen.
->
+> Sobald es ausgeführt wird, dauert **jede Iteration mindestens zwei bis drei Minuten**.  <br> <br>
 > In einer Produktionsumgebung würden Sie in dieser Zeit wahrscheinlich eine kurze Pause machen. Für dieses Tutorial empfehlen wir jedoch, schon während der Ausführung der weiteren Iterationen mit der Untersuchung der getesteten Algorithmen auf der Registerkarte **Modelle** zu beginnen. 
 
 ##  <a name="explore-models"></a>Untersuchen von Modellen
@@ -238,7 +252,7 @@ Löschen Sie nur die Bereitstellungsinstanz aus Azure Machine Learning unter htt
 In diesem Tutorial zum automatisierten maschinellen Lernen haben Sie über die Oberfläche für automatisiertes maschinelles Lernen von Azure Machine Learning ein Klassifizierungsmodell erstellt und bereitgestellt. Weitere Informationen und nächste Schritte finden Sie in diesen Artikeln:
 
 > [!div class="nextstepaction"]
-> [Verwenden eines Webdiensts](how-to-consume-web-service.md#consume-the-service-from-power-bi)
+> [Verwenden eines Webdiensts](https://docs.microsoft.com/power-bi/connect-data/service-aml-integrate?context=azure/machine-learning/context/ml-context)
 
 + Weitere Informationen zu [automatisiertem Machine Learning](concept-automated-ml.md).
 + Weitere Informationen zu Klassifizierungsmetriken und Diagrammen finden Sie im Artikel [Grundlegendes zu den Ergebnissen des automatisierten maschinellen Lernens](how-to-understand-automated-ml.md).

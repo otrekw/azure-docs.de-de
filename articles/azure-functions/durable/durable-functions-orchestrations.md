@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: overview
 ms.date: 09/08/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 5eec15871279f3ca38c726fcd1ef1b21d0d38699
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ba314963058389e171601407ff00411049eecd45
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88750192"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97845423"
 ---
 # <a name="durable-orchestrations"></a>Dauerhafte Orchestrierungen
 
@@ -293,7 +293,7 @@ Es ist nicht möglich, mehrere Parameter direkt an eine Aktivitätsfunktion zu �
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-In .NET können Sie auch Objekte vom Typ [ValueTuples](/dotnet/csharp/tuples) verwenden. Das folgende Beispiel verwendet neue Features von [ValueTuples](/dotnet/csharp/tuples), die mit [C# 7](/dotnet/csharp/whats-new/csharp-7#tuples) hinzugefügt wurden:
+In .NET können Sie auch Objekte vom Typ [ValueTuple](/dotnet/csharp/tuples) verwenden. Im folgenden Beispiel werden neue Features von [ValueTuple](/dotnet/csharp/tuples) verwendet, die mit [C# 7](/dotnet/csharp/whats-new/csharp-7#tuples) hinzugefügt wurden:
 
 ```csharp
 [FunctionName("GetCourseRecommendations")]

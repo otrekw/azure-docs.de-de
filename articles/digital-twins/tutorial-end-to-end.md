@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: f788c9e78790e6872870869e2bc153e1b1451e51
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 64e648cf6ae3c763d3e9ab1a6970f48c84331bad
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94566536"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97845630"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>Tutorial: Erstellen einer End-to-End-Lösung
 
@@ -52,8 +52,6 @@ Hier sind die Komponenten aufgeführt, die mit der Beispiel-App *AdtSampleApp* f
 * Konsolenschnittstelle zum Aufrufen der Azure Digital Twins-API
 * *SampleClientApp*: Azure Digital Twins-Beispiellösung
 * *SampleFunctionsApp*: Eine Azure Functions-App, mit der Ihr Azure Digital Twins-Graph basierend auf den Telemetriedaten von IoT Hub- und Azure Digital Twins-Ereignissen aktualisiert wird
-
-Das Beispielprojekt enthält auch eine Komponente für die interaktive Autorisierung. Bei jedem Start des Projekts wird ein Browserfenster geöffnet, in dem Sie aufgefordert werden, sich mit Ihrem Azure-Konto anzumelden.
 
 ### <a name="instantiate-the-pre-created-twin-graph"></a>Instanziieren des vorab erstellten Zwillingsgraphen
 
@@ -134,7 +132,7 @@ Wenn Sie ein bestimmtes Ziel angeben möchten, müssen Sie **Azure-Funktions-App
 
 Wählen Sie auf der Seite *Functions-Instanz* Ihr Abonnement aus. In einem Feld sollten die *Ressourcengruppen* Ihres Abonnements angezeigt werden.
 
-Wählen Sie die Ressourcengruppe Ihrer Instanz aus, und klicken Sie auf *+ Neue Azure-Funktion erstellen...* .
+Wählen Sie die Ressourcengruppe Ihrer Instanz aus, und klicken Sie auf *+* , um eine neue Azure-Funktion zu erstellen.
 
 :::image type="content" source="media/tutorial-end-to-end/publish-azure-function-3.png" alt-text="Azure-Funktion „Veröffentlichen“ in Visual Studio: Functions-Instanz (vor Funktions-App)":::
 
@@ -290,7 +288,7 @@ iotHubConnectionString = <your-hub-connection-string>
 deviceConnectionString = <your-device-connection-string>
 ```
 
-Speichern Sie die Datei.
+Speichern Sie die Datei .
 
 Führen Sie nun das Projekt **DeviceSimulator** mit der folgenden Symbolleistenschaltfläche aus, um die Ergebnisse der von Ihnen eingerichteten Datensimulation anzuzeigen:
 

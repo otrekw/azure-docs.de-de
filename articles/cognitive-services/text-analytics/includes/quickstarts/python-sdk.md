@@ -5,12 +5,12 @@ ms.subservice: text-analytics
 ms.topic: include
 ms.date: 12/11/2020
 ms.author: aahi
-ms.openlocfilehash: da5aae933de1317dd97f74c97f9c08ca6cc1d090
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 1f99eb203cf4124f3249ab1b74989708bea93c51
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97366393"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97820596"
 ---
 <a name="HOLTop"></a>
 
@@ -60,6 +60,7 @@ pip install --upgrade azure-ai-textanalytics
 
 > [!TIP]
 > Möchten Sie sich sofort die gesamte Codedatei für die Schnellstartanleitung ansehen? Die Datei steht [auf GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/TextAnalytics/python-v3-client-library.py) zur Verfügung. Dort finden Sie die Codebeispiele aus dieser Schnellstartanleitung. 
+
 
 # <a name="version-21"></a>[Version 2.1](#tab/version-2)
 
@@ -171,6 +172,7 @@ client = authenticate_client()
 Erstellen Sie eine Funktion, um das Objekt `TextAnalyticsClient` mit dem oben erstellten Schlüssel (`key`) und Endpunkt (`endpoint`) zu instanziieren. Erstellen Sie anschließend einen neuen Client. Beachten Sie, dass `api_version=TextAnalyticsApiVersion.V3_0` für die Verwendung von Version 3.0 definiert sein muss.
 
 ```python
+# use this code if you're using SDK version is 5.0.0
 from azure.ai.textanalytics import TextAnalyticsClient
 from azure.core.credentials import AzureKeyCredential
 
@@ -178,10 +180,27 @@ def authenticate_client():
     ta_credential = AzureKeyCredential(key)
     text_analytics_client = TextAnalyticsClient(
             endpoint=endpoint, 
-            credential=ta_credential, 
-            api_version=TextAnalyticsApiVersion.V3_0)
+            credential=ta_credential) 
     return text_analytics_client
 
+client = authenticate_client()
+```
+
+Wenn Sie Version 5.1.0 der Clientbibliothek mit `pip install azure-ai-textanalytics --pre` installiert haben, können Sie Version 3.0 der Textanalyse-API mit dem Parameter `api_version` des Clients angeben. Verwenden Sie die folgende `authenticate_client()`-Methode nur, wenn Ihr Client Version 5.1.0 oder höher aufweist.
+
+```python
+# Only use the following code sample if you're using v5.1.0 of the client library, 
+# and are looking to specify v3.0 of the Text Analytics API for your client
+from azure.ai.textanalytics import TextAnalyticsClient, TextAnalyticsApiVersion
+from azure.core.credentials import AzureKeyCredential
+def authenticate_client():
+   ta_credential = AzureKeyCredential(key)
+   text_analytics_client = TextAnalyticsClient(
+     endpoint=endpoint,
+     credential=ta_credential,
+     api_version=TextAnalyticsApiVersion.V3_0
+   )
+   
 client = authenticate_client()
 ```
 

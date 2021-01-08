@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: tutorial
-ms.date: 03/25/2019
+ms.date: 12/21/2020
 ms.author: alkohli
-ms.openlocfilehash: ffbfd3214242d8df5fe33faf465bc1da3eb9986d
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 9d1d22d57464266239aea96f427020351eb749d5
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96580253"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740656"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-hyper-v"></a>Tutorial: Bereitstellen von Azure Data Box Gateway in Hyper-V
 
@@ -57,8 +57,8 @@ Stellen Sie Folgendes sicher, bevor Sie ein Gerät bereitstellen:
   * Mindestens 4 Kerne
   * Mindestens 8 GB RAM
   * Eine Netzwerkschnittstelle
-  * Einen Betriebssystemdatenträger mit 250 GB
-  * Einen virtuellen Datenträger mit 2 TB für Daten
+  * Einen Betriebssystemdatenträger mit 250 GB
+  * Einen virtuellen Datenträger mit 2 TB für Daten
 
 ### <a name="for-the-network-in-the-datacenter"></a>Für das Netzwerk im Datencenter
 
@@ -78,7 +78,7 @@ Zum Erstellen eines virtuellen Geräts benötigen Sie Folgendes:
   * Mindestens vier virtuelle Prozessoren
   * Mindestens 8 GB RAM
   * Eine mit dem Netzwerk verbundene Netzwerkschnittstelle, über die Datenverkehr ins Internet weitergeleitet werden kann.
-  * Einen Betriebssystemdatenträger mit 250 GB
+  * Einen Betriebssystemdatenträger mit 250 GB
   * Einen virtuellen Datenträger mit 2 TB für Systemdaten
 
 ## <a name="bitlocker-considerations"></a>Überlegungen zu BitLocker
@@ -92,10 +92,11 @@ Zum Erstellen eines virtuellen Geräts benötigen Sie Folgendes:
 Führen Sie die folgenden Schritte aus, um ein Gerät im Hypervisor bereitzustellen.
 
 1. Kopieren Sie das Image des virtuellen Geräts auf den lokalen Datenträger Ihres Windows Server-Hosts. Dies ist das VHDX-Image, das Sie über das Azure-Portal heruntergeladen haben. Notieren Sie sich den Speicherort, an den Sie das Image kopiert haben, da Sie es später noch benötigen.
+
 2. Öffnen Sie **Server-Manager**. Klicken Sie in der oberen rechten Ecke auf **Extras**, und wählen Sie **Hyper-V-Manager** aus.
 
-    ![Auswählen von Hyper-V Manager im Server-Manager](./media/data-box-gateway-deploy-provision-hyperv/image1.png)  
-  
+    ![Auswählen von Hyper-V Manager im Server-Manager](./media/data-box-gateway-deploy-provision-hyperv/image1.png)
+
 3. Klicken Sie im **Hyper-V-Manager** unter „Bereich“ mit der rechten Maustaste auf Ihren Systemknoten, um das Kontextmenü zu öffnen. Klicken Sie dann auf **Neu** > **Virtueller Computer**.
 
    ![Erstellen eines neuen virtuellen Computers in Hyper-V Manager](./media/data-box-gateway-deploy-provision-hyperv/image2.png)
@@ -138,10 +139,10 @@ Führen Sie die folgenden Schritte aus, um ein Gerät im Hypervisor bereitzustel
 17. Legen Sie auf der Seite **Datenträgertyp auswählen** den Datenträgertyp für die virtuelle Festplatte auf **Dynamisch erweiterbar** fest (empfohlen). Sie können auch die Option **Feste Größe** für den Datenträger auswählen, aber dies ist unter Umständen mit einer langen Wartezeit verbunden. Die Verwendung der Option **Differenzierend** ist nicht zu empfehlen. Klicken Sie auf **Weiter**.
 
     ![Seite zum Auswählen des Datenträgertyps](./media/data-box-gateway-deploy-provision-hyperv/image13.png)
-18. Geben Sie auf der Seite **Namen und Speicherort angeben** einen **Namen** und einen **Speicherort** (z.B. per Durchsuchen) für den Datenträger an. Klicken Sie auf **Weiter**.
+18. Geben Sie auf der Seite **Namen und Speicherort angeben** einen **Namen** und einen **Speicherort** (z. B. per Durchsuchen) für den Datenträger an. Klicken Sie auf **Weiter**.
 
     ![Seite „Namen und Speicherort angeben“](./media/data-box-gateway-deploy-provision-hyperv/image14.png)
-19. Wählen Sie auf der Seite **Datenträger konfigurieren** die Option **Neue virtuelle Festplatte ohne Inhalt erstellen** aus, und geben Sie als Größe **2 TB** (oder mehr) an.
+19. Wählen Sie auf der Seite **Datenträger konfigurieren** die Option **Neue virtuelle Festplatte ohne Inhalt erstellen** aus, und geben Sie als Größe **2 TB** (oder mehr) an.
 
     2 TB sind die Mindestanforderung, Sie können aber auch einen größeren Datenträger bereitstellen. Beachten Sie, dass Sie den Datenträger nach der Bereitstellung nicht mehr verkleinern können. Der Versuch, den Datenträger zu verkleinern, führt zum Verlust aller lokalen Daten auf dem Gerät. Die Erweiterung des Datenträgers wird nicht unterstützt. Klicken Sie auf **Weiter**.
 
@@ -152,6 +153,11 @@ Führen Sie die folgenden Schritte aus, um ein Gerät im Hypervisor bereitzustel
 21. Wechseln Sie zurück zur Seite **Einstellungen**. Klicken Sie auf **OK**, um die Seite **Einstellungen** zu schließen und zum Hyper-V-Manager-Fenster zurückzukehren.
 
     ![Seite "Einstellungen"](./media/data-box-gateway-deploy-provision-hyperv/image17.png)
+
+Ihr virtueller Computer ist nun vollständig konfiguriert.
+
+> [!NOTE]
+> Sie können keine neue Data Box Gateway-Instanz bereitstellen, indem Sie Ihre konfigurierte virtuelle Festplatte kopieren. Jedes neue virtuelle Data Box Gateway-Gerät muss aus einem virtuellen Geräteimage für Hyper-V bereitgestellt werden, das vom Azure-Portal heruntergeladen wird.
 
 ## <a name="start-the-virtual-device-and-get-the-ip"></a>Starten des virtuellen Geräts und Abrufen der IP-Adresse
 

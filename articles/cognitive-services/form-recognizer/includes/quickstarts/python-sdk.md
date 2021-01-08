@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 10/26/2020
 ms.author: pafarley
-ms.openlocfilehash: 12b49bf81328cc405337b682241aef2cd965c3de
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 9762ca79f73b3333045d1c11376ab315aac2d55e
+ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96356544"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97808656"
 ---
 > [!IMPORTANT]
 > * Im Code dieses Artikels werden der Einfachheit halber synchrone Methoden und ein ungeschützter Anmeldeinformationsspeicher verwendet. Informationen finden Sie in der Referenzdokumentation weiter unten. 
@@ -36,17 +36,23 @@ ms.locfileid: "96356544"
 
 Nach der Installation von Python können Sie die aktuelle Version der Formularerkennungs-Clientbibliothek installieren:
 
-#### <a name="version-30"></a>[Version 3.0](#tab/ga)
+#### <a name="version-20"></a>[Version 2.0](#tab/ga)
 
 ```console
 pip install azure-ai-formrecognizer
 ```
 
-#### <a name="version-31-preview"></a>[Version 3.1 (Vorschau)](#tab/preview)
+> [!NOTE]
+> Für die aktuelle Formularerkennung wird API-Version 2.0 verwendet.
+
+#### <a name="version-21-preview"></a>[Version 2.1 (Vorschau)](#tab/preview)
 
 ```console
 pip install azure-ai-formrecognizer --pre
 ```
+
+> [!NOTE]
+> Für das SDK der Vorschauversion der Formularerkennung wird API-Version 2.1 (Vorschau) verwendet.
 
 ---
 
@@ -91,7 +97,7 @@ Mit der Formularerkennung können Sie zwei verschiedene Clienttypen erstellen. D
 
 Diese Codeausschnitte veranschaulichen, wie die folgenden Aufgaben mit der Formularerkennungs-Clientbibliothek für Python ausgeführt werden:
 
-#### <a name="version-30"></a>[Version 3.0](#tab/ga)
+#### <a name="version-20"></a>[Version 2.0](#tab/ga)
 
 * [Authentifizieren des Clients](#authenticate-the-client)
 * [Erkennen von Formularinhalten](#recognize-form-content)
@@ -100,7 +106,7 @@ Diese Codeausschnitte veranschaulichen, wie die folgenden Aufgaben mit der Formu
 * [Analysieren von Formularen mit einem benutzerdefinierten Modell](#analyze-forms-with-a-custom-model)
 * [Verwalten von benutzerdefinierten Modellen](#manage-your-custom-models)
 
-#### <a name="version-31-preview"></a>[Version 3.1 (Vorschau)](#tab/preview)
+#### <a name="version-21-preview"></a>[Version 2.1 (Vorschau)](#tab/preview)
 
 * [Authentifizieren des Clients](#authenticate-the-client)
 * [Erkennen von Formularinhalten](#recognize-form-content)
@@ -123,7 +129,9 @@ Hier authentifizieren Sie zwei Clientobjekte mithilfe der oben definierten Abonn
 ## <a name="get-assets-for-testing"></a>Ressourcen zum Testen abrufen
 
 Sie müssen Verweise auf die URLs für Ihre Trainings- und Testdaten hinzufügen.
-* Öffnen Sie zum Abrufen der SAS-URL für die Trainingsdaten Ihres benutzerdefinierten Modells den Microsoft Azure Storage-Explorer, klicken Sie mit der rechten Maustaste auf Ihren Container, und wählen Sie **Shared Access Signature abrufen** aus. Stellen Sie sicher, dass die Berechtigungen **Lesen** und **Auflisten**  aktiviert sind, und klicken Sie auf **Erstellen**. Kopieren Sie den Wert im **URL**-Abschnitt. Er muss das Format `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>` aufweisen.
+* [!INCLUDE [get SAS URL](../../includes/sas-instructions.md)]
+  
+   :::image type="content" source="../../media/quickstarts/get-sas-url.png" alt-text="SAS-URL-Abruf":::
 * Verwenden Sie das Beispielformular und die Belegbilder in den Beispielen weiter unten (auch auf [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms) verfügbar). Alternativ können sie die oben aufgeführten Schritte ausführen, um den SAS-URL eines einzelnen Dokuments im Blobspeicher abzurufen. 
 
 > [!NOTE]
@@ -194,11 +202,15 @@ Tax: 104.4 has confidence 0.713
 Total: 1203.39 has confidence 0.774
 ```
 
-#### <a name="version-30"></a>[Version 3.0](#tab/ga)
-
-#### <a name="version-31-preview"></a>[Version 3.1 (Vorschau)](#tab/preview)
 
 ## <a name="recognize-business-cards"></a>Erkennen von Visitenkarten
+
+#### <a name="version-20"></a>[Version 2.0](#tab/ga)
+
+> [!IMPORTANT]
+> Dieses Feature ist in der ausgewählten API-Version nicht verfügbar.
+
+#### <a name="version-21-preview"></a>[Version 2.1 (Vorschau)](#tab/preview)
 
 In diesem Abschnitt wird veranschaulicht, wie Sie mithilfe eines vorab trainierten Modells gängige Felder englischsprachiger Visitenkarten erkennen und extrahieren. Für die Erkennung von Visitenkarten unter einer URL muss die Methode `begin_recognize_business_cards_from_url` verwendet werden. 
 
@@ -207,7 +219,16 @@ In diesem Abschnitt wird veranschaulicht, wie Sie mithilfe eines vorab trainiert
 > [!TIP]
 > Sie können für die Erkennung auch lokale Visitenkartenbilder verwenden. Mehr dazu erfahren Sie bei den [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python)-Methoden, z. B. `begin_recognize_business_cards`. Alternativ finden Sie im Beispielcode auf [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) Szenarien zu lokalen Bildern.
 
+---
+
 ## <a name="recognize-invoices"></a>Erkennen von Rechnungen
+
+#### <a name="version-20"></a>[Version 2.0](#tab/ga)
+
+> [!IMPORTANT]
+> Dieses Feature ist in der ausgewählten API-Version nicht verfügbar.
+
+#### <a name="version-21-preview"></a>[Version 2.1 (Vorschau)](#tab/preview)
 
 In diesem Abschnitt wird veranschaulicht, wie Sie mithilfe eines vorab trainierten Modells gängige Rechnungsfelder erkennen und extrahieren. Für die Erkennung von Rechnungen unter einer URL muss die Methode `begin_recognize_invoices_from_url` verwendet werden. 
 

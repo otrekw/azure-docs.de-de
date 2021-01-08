@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 09/21/2020
 ms.custom: devx-track-java
 ms.author: pafarley
-ms.openlocfilehash: d53863ccf71970cca3900707c844a2e5add050fa
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 6768f46f39920c975e7eccef72563fc0bb7e5180
+ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96356510"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97808588"
 ---
 > [!IMPORTANT]
 > Im Code dieses Artikels werden der Einfachheit halber synchrone Methoden und ein ungeschützter Anmeldeinformationsspeicher verwendet.
@@ -58,7 +58,7 @@ In dieser Schnellstartanleitung wird der Gradle-Abhängigkeits-Manager verwendet
 
 Fügen Sie in die Datei *build.gradle.kts* Ihres Projekts die Clientbibliothek als als `implementation`-Anweisung sowie die erforderlichen Plug-Ins und Einstellungen ein.
 
-#### <a name="version-30"></a>[Version 3.0](#tab/ga)
+#### <a name="version-20"></a>[Version 2.0](#tab/ga)
 ```kotlin
 plugins {
     java
@@ -74,6 +74,10 @@ dependencies {
     implementation(group = "com.azure", name = "azure-ai-formrecognizer", version = "3.0.0")
 }
 ```
+
+> [!NOTE]
+> Für das SDK von Formularerkennung 3.0.0 wird API-Version 2.0 verwendet.
+
 #### <a name="version-31-preview"></a>[Version 3.1 (Vorschau)](#tab/preview)
 ```kotlin
 plugins {
@@ -90,6 +94,10 @@ dependencies {
     implementation(group = "com.azure", name = "azure-ai-formrecognizer", version = "3.1.0-beta.1")
 }
 ```
+
+> [!NOTE]
+> Für das SDK von Formularerkennung 3.1.0 wird API-Version 2.1 (Vorschau) verwendet.
+
 ---
 
 ### <a name="create-a-java-file"></a>Erstellen einer Java-Datei
@@ -120,15 +128,17 @@ Erstellen Sie in der **FormRecognizer**-Klasse der Anwendung Variablen für den 
 
 Fügen Sie in der **main**-Methode der Anwendung Aufrufe für die Methoden hinzu, die in dieser Schnellstartanleitung verwendet werden. Diese werden später definiert. Sie müssen außerdem Verweise auf die URLs für Ihre Trainings- und Testdaten hinzufügen.
 
-* Öffnen Sie zum Abrufen der SAS-URL für die Trainingsdaten Ihres benutzerdefinierten Modells den Microsoft Azure Storage-Explorer, klicken Sie mit der rechten Maustaste auf Ihren Container, und wählen Sie **Shared Access Signature abrufen** aus. Stellen Sie sicher, dass die Berechtigungen **Lesen** und **Auflisten**  aktiviert sind, und klicken Sie auf **Erstellen**. Kopieren Sie den Wert im **URL**-Abschnitt. Er muss das Format `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>` aufweisen.
+* [!INCLUDE [get SAS URL](../../includes/sas-instructions.md)]
+  
+   :::image type="content" source="../../media/quickstarts/get-sas-url.png" alt-text="SAS-URL-Abruf":::
 * Um die URL eines zu testenden Formulars zu erhalten, können Sie anhand der oben beschriebenen Schritte die SAS-URL eines einzelnen Dokuments im Blobspeicher abrufen. Sie können auch die URL eines Dokuments an einem anderen Speicherort verwenden.
 * Verwenden Sie die obige Methode, um auch die URL eines Belegbilds zu erhalten.
 
-#### <a name="version-30"></a>[Version 3.0](#tab/ga)
+#### <a name="version-20"></a>[Version 2.0](#tab/ga)
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_mainvars)]
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_maincalls)]
-#### <a name="version-31-preview"></a>[Version 3.1 (Vorschau)](#tab/preview)
+#### <a name="version-21-preview"></a>[Version 2.1 (Vorschau)](#tab/preview)
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java?name=snippet_mainvars)]
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java?name=snippet_maincalls)]
@@ -165,14 +175,14 @@ Mit der Formularerkennung können Sie zwei verschiedene Clienttypen erstellen. D
 
 Diese Codeausschnitte veranschaulichen, wie die folgenden Aufgaben mit der Formularerkennungs-Clientbibliothek für Java ausgeführt werden:
 
-#### <a name="version-30"></a>[Version 3.0](#tab/ga)
+#### <a name="version-20"></a>[Version 2.0](#tab/ga)
 * [Authentifizieren des Clients](#authenticate-the-client)
 * [Erkennen von Formularinhalten](#recognize-form-content)
 * [Erkennen von Belegen](#recognize-receipts)
 * [Trainieren eines benutzerdefinierten Modells](#train-a-custom-model)
 * [Analysieren von Formularen mit einem benutzerdefinierten Modell](#analyze-forms-with-a-custom-model)
 * [Verwalten von benutzerdefinierten Modellen](#manage-your-custom-models)
-#### <a name="version-31-preview"></a>[Version 3.1 (Vorschau)](#tab/preview)
+#### <a name="version-21-preview"></a>[Version 2.1 (Vorschau)](#tab/preview)
 * [Authentifizieren des Clients](#authenticate-the-client)
 * [Erkennen von Formularinhalten](#recognize-form-content)
 * [Erkennen von Belegen](#recognize-receipts)
@@ -259,11 +269,14 @@ Quantity: null, confidence: 0.927s]
 Total Price: null, confidence: 0.93
 ```
 
-#### <a name="version-30"></a>[Version 3.0](#tab/ga)
-
-#### <a name="version-31-preview"></a>[Version 3.1 (Vorschau)](#tab/preview)
-
 ## <a name="recognize-business-cards"></a>Erkennen von Visitenkarten
+
+#### <a name="version-20"></a>[Version 2.0](#tab/ga)
+
+> [!IMPORTANT]
+> Dieses Feature ist in der ausgewählten API-Version nicht verfügbar.
+
+#### <a name="version-21-preview"></a>[Version 2.1 (Vorschau)](#tab/preview)
 
 In diesem Abschnitt wird veranschaulicht, wie Sie mithilfe eines vorab trainierten Modells gängige Felder englischsprachiger Visitenkarten erkennen und extrahieren.
 
@@ -278,7 +291,16 @@ Der zurückgegebene Wert ist eine Sammlung mit Objekten vom Typ **RecognizedForm
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java?name=snippet_bc_print)]
 
+---
+
 ## <a name="recognize-invoices"></a>Erkennen von Rechnungen
+
+#### <a name="version-20"></a>[Version 2.0](#tab/ga)
+
+> [!IMPORTANT]
+> Dieses Feature ist in der ausgewählten API-Version nicht verfügbar.
+
+#### <a name="version-21-preview"></a>[Version 2.1 (Vorschau)](#tab/preview)
 
 In diesem Abschnitt wird veranschaulicht, wie Sie mithilfe eines vorab trainierten Modells gängige Rechnungsfelder erkennen und extrahieren.
 

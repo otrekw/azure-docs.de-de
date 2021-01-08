@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 200d23f390c9c22af90099e1e136c832287aa10d
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: d8a7bb620b7fcc9c878986d3575e22bb6f0f77bc
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207528"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724132"
 ---
 # <a name="tutorial-securing-azure-remote-rendering-and-model-storage"></a>Tutorial: Schützen von Azure-Remote Rendering und Modellspeicher
 
@@ -255,6 +255,14 @@ Da nun alle Azure-Einstellungen getätigt sind, müssen wir nun ändern, wie Ihr
             get => azureRemoteRenderingAccountID.Trim();
             set => azureRemoteRenderingAccountID = value;
         }
+    
+        [SerializeField]
+        private string azureRemoteRenderingAccountAuthenticationDomain;
+        public string AzureRemoteRenderingAccountAuthenticationDomain
+        {
+            get => azureRemoteRenderingAccountAuthenticationDomain.Trim();
+            set => azureRemoteRenderingAccountAuthenticationDomain = value;
+        }
 
         public override event Action<string> AuthenticationInstructions;
 
@@ -262,7 +270,7 @@ Da nun alle Azure-Einstellungen getätigt sind, müssen wir nun ändern, wie Ihr
 
         string redirect_uri = "https://login.microsoftonline.com/common/oauth2/nativeclient";
 
-        string[] scopes => new string[] { "https://sts.mixedreality.azure.com/mixedreality.signin" };
+        string[] scopes => new string[] { "https://sts." + AzureRemoteRenderingAccountAuthenticationDomain + "/mixedreality.signin" };
 
         public void OnEnable()
         {
@@ -279,7 +287,7 @@ Da nun alle Azure-Einstellungen getätigt sind, müssen wir nun ändern, wie Ihr
 
                 var AD_Token = result.AccessToken;
 
-                return await Task.FromResult(new AzureFrontendAccountInfo(AccountDomain, AzureRemoteRenderingAccountID, "", AD_Token, ""));
+                return await Task.FromResult(new AzureFrontendAccountInfo(AzureRemoteRenderingAccountAuthenticationDomain, AccountDomain, AzureRemoteRenderingAccountID, "", AD_Token, ""));
             }
             else
             {
@@ -369,7 +377,7 @@ Der wichtigste Teil dieser Klasse im Hinblick auf ARR ist diese Zeile:
 return await Task.FromResult(new AzureFrontendAccountInfo(AccountDomain, AzureRemoteRenderingAccountID, "", AD_Token, ""));
 ```
 
-Hier erstellen wir mithilfe von Kontodomäne, Konto-ID und Zugriffstoken ein neues **AzureFrontendAccountInfo**-Objekt. Dieses Token wird dann vom ARR-Dienst zum Abfragen, Erstellen und Verknüpfen von Remote Rendering-Sitzungen verwendet, solange der Benutzer auf der Grundlage der zuvor konfigurierten rollenbasierten Berechtigungen autorisiert ist.
+Hier erstellen wir ein neues **AzureFrontendAccountInfo**-Objekt, indem wir die Komponenten Kontodomäne, Kontoauthentifizierungsdomäne, Konto-ID und Zugriffstoken verwenden. Dieses Token wird dann vom ARR-Dienst zum Abfragen, Erstellen und Verknüpfen von Remote Rendering-Sitzungen verwendet, solange der Benutzer auf der Grundlage der zuvor konfigurierten rollenbasierten Berechtigungen autorisiert ist.
 
 Mit dieser Änderung sehen der aktuelle Zustand der Anwendung und der Zugang zu Ihren Azure-Ressourcen wie folgt aus:
 
@@ -391,6 +399,7 @@ Wenn die AAD-Authentifizierung aktiv ist, müssen Sie sich im Unity Editor jedes
     * Die **Active Directory-Anwendungsclient-ID** ist die *Anwendungs-ID (Client)* in Ihrer AAD-Appregistrierung (siehe Abbildung unten).
     * Die **Azure-Mandanten-ID** ist die *Verzeichnis-ID (Mandant)* in Ihrer AAD-Appregistrierung (siehe Abbildung unten).
     * Die **Azure Remote Rendering-Konto-ID** ist dieselbe **Konto-ID**, die Sie für **RemoteRenderingCoordinator** verwendet haben.
+    * Bei der **Kontoauthentifizierungsdomäne** handelt es sich um dieselbe **Kontoauthentifizierungsdomäne**, die Sie unter **RemoteRenderingCoordinator** verwendet haben.
 
     ![Screenshot: Hervorhebung der Anwendungs-ID (Client) und der Verzeichnis-ID (Mandant)](./media/app-overview-data.png)
 

@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.author: sacartac
 ms.reviewer: nibaccam
 author: cartacioS
-ms.date: 07/10/2020
+ms.date: 12/21/2020
 ms.custom: automl
-ms.openlocfilehash: 8b354abb98c56a572badf2421b0d7dbbd25f7a63
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 31e9ff3fd07a7d305c88d28629f3252db5d857c8
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96921853"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97695444"
 ---
 # <a name="tutorial-forecast-demand-with-automated-machine-learning"></a>Tutorial: Vorhersage des Bedarfs mithilfe von automatisiertem maschinellem Lernen
 
@@ -100,7 +100,7 @@ Laden Sie vor dem Konfigurieren Ihres Experiments Ihre Datendatei in Form eines 
 
     1. Klicken Sie auf **Weiter**.
 
-## <a name="configure-experiment-run"></a>Konfigurieren der Experimentausführung
+## <a name="configure-run"></a>Konfigurieren der Ausführung
 
 Nachdem Sie Ihre Daten geladen und konfiguriert haben, müssen Sie das Remotecomputeziel einrichten und auswählen, für welche Spalte in Ihren Daten Vorhersagen erstellt werden sollen.
 
@@ -111,14 +111,22 @@ Nachdem Sie Ihre Daten geladen und konfiguriert haben, müssen Sie das Remotecom
 
     1. Wählen Sie **Create a new compute** (Neuen Compute erstellen) aus, und konfigurieren Sie Ihr Computeziel. Von automatisiertem maschinellem Lernen wird nur Azure Machine Learning-Compute unterstützt. 
 
-        Feld | BESCHREIBUNG | Wert für das Tutorial
-        ----|---|---
-        Computename |Ein eindeutiger Name, der Ihren Computekontext identifiziert.|bike-compute
-        VM-Typ&nbsp;&nbsp;|Wählen Sie den VM-Typ für Ihre Compute-Umgebung aus.|CPU (Zentralprozessor)
-        Größe des virtuellen&nbsp;Computers&nbsp;| Wählen Sie die Größe für Ihren Computes aus.|Standard_DS12_V2
-        Min/Max nodes (Min./Max. Knoten)| Um ein Datenprofil zu erstellen, müssen Sie mindestens einen Knoten angeben.|Min. Knoten: 1<br>Max. Knoten: 6
-        Leerlauf in Sekunden vor dem Herunterskalieren | Leerlaufzeit vor dem automatischen Herunterskalieren des Clusters auf die minimale Knotenanzahl|120 (Standardwert)
-        Erweiterte Einstellungen | Einstellungen zum Konfigurieren und Autorisieren eines virtuellen Netzwerks für Ihr Experiment| Keine
+        1. Füllen Sie das Formular für den **virtuellen Computer** aus, um Ihre Compute-Instanz einzurichten.
+
+            Feld | BESCHREIBUNG | Wert für das Tutorial
+            ----|---|---
+            Priorität des virtuellen &nbsp;Computers&nbsp; |Wählen Sie aus, welche Priorität ihr Experiment aufweisen soll.| Dediziert
+            VM-Typ&nbsp;&nbsp;| Wählen Sie den VM-Typ für Ihre Compute-Umgebung aus.|CPU (Zentralprozessor)
+            Größe des virtuellen&nbsp;Computers&nbsp;| Wählen Sie die Größe für Ihren Computes aus. Eine Liste der empfohlenen Größen wird auf der Grundlage Ihrer Daten und des Experimenttyps bereitgestellt. |Standard_DS12_V2
+        
+        1. Wählen Sie **Weiter** aus, um das Formular **Einstellungen konfigurieren** auszufüllen.
+        
+             Feld | BESCHREIBUNG | Wert für das Tutorial
+            ----|---|---
+            Computename |  Ein eindeutiger Name, der Ihren Computekontext identifiziert. | bike-compute
+            Min/Max nodes (Min./Max. Knoten)| Um ein Datenprofil zu erstellen, müssen Sie mindestens einen Knoten angeben.|Min. Knoten: 1<br>Max. Knoten: 6
+            Leerlauf in Sekunden vor dem Herunterskalieren | Leerlaufzeit vor dem automatischen Herunterskalieren des Clusters auf die minimale Knotenanzahl|120 (Standardwert)
+            Erweiterte Einstellungen | Einstellungen zum Konfigurieren und Autorisieren eines virtuellen Netzwerks für Ihr Experiment| Keine 
   
         1. Wählen Sie **Erstellen** aus, um das Computeziel abzurufen. 
 
@@ -154,11 +162,11 @@ Schließen Sie die Einrichtung Ihres Experiments mit automatisiertem maschinelle
 
 ## <a name="run-experiment"></a>Ausführen des Experiments
 
-Wählen Sie **Fertig stellen** aus, um Ihr Experiment auszuführen. Im daraufhin geöffneten Bildschirm **Ausführungsdetails** wird oben neben der Ausführungsnummer der **Ausführungsstatus** angezeigt. Dieser Status wird während des Experimentausführung entsprechend aktualisiert.
+Wählen Sie **Fertig stellen** aus, um Ihr Experiment auszuführen. Im daraufhin geöffneten Bildschirm **Ausführungsdetails** wird oben neben der Ausführungsnummer der **Ausführungsstatus** angezeigt. Dieser Status wird während des Experimentausführung entsprechend aktualisiert. Außerdem werden in der rechten oberen Ecke des Studios Benachrichtigungen angezeigt, die Sie über den Status Ihres Experiments informieren.
 
 >[!IMPORTANT]
 > Die Vorbereitung des Experiments nimmt **10 –15 Minuten** in Anspruch.
-> Sobald es ausgeführt wird, dauert **jede Iteration mindestens zwei bis drei Minuten**.  <br> <br>
+> Sobald es ausgeführt wird, dauert **jede Iteration mindestens zwei bis drei Minuten**.<br> <br>
 > In einer Produktionsumgebung würden Sie sich an dieser Stelle wahrscheinlich anderen Dingen zuwenden, da der Prozess eine Weile dauert. Während Sie warten, können Sie sich schon mal mit den getesteten Algorithmen auf der Registerkarte **Modelle** vertraut machen. 
 
 ##  <a name="explore-models"></a>Untersuchen von Modellen
@@ -169,7 +177,7 @@ Während Sie auf den Abschluss aller Experimentmodelle warten, können Sie den *
 
 Im folgenden Beispiel werden die Registerkarten **Details** und **Metriken** durchlaufen, um die Eigenschaften, Metriken und Leistungsdiagramme des ausgewählten Modells anzuzeigen. 
 
-![Ausführungsdetails](./media/tutorial-automated-ml-forecast/explore-models-ui.gif)
+![Ausführungsdetails](./media/tutorial-automated-ml-forecast/explore-models.gif)
 
 ## <a name="deploy-the-model"></a>Bereitstellen des Modells
 
@@ -232,7 +240,7 @@ In diesem Tutorial haben Sie automatisiertes ML in Azure Machine Learning Studio
 Im folgenden Artikel erfahren Sie, wie Sie ein von Power BI unterstütztes Schema erstellen, um die Nutzung Ihres neu bereitstellten Webdiensts zu vereinfachen:
 
 > [!div class="nextstepaction"]
-> [Verwenden eines Webdiensts](how-to-consume-web-service.md#consume-the-service-from-power-bi)
+> [Verwenden eines Webdiensts](https://docs.microsoft.com/power-bi/connect-data/service-aml-integrate?context=azure/machine-learning/context/ml-context)
 
 + Weitere Informationen zu [automatisiertem Machine Learning](concept-automated-ml.md).
 + Weitere Informationen zu Klassifizierungsmetriken und Diagrammen finden Sie im Artikel [Grundlegendes zu den Ergebnissen des automatisierten maschinellen Lernens](how-to-understand-automated-ml.md).

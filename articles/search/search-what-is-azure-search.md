@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 11/24/2020
+ms.date: 12/17/2020
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 01f61eac31c388cd0bf8a857beb7a10944187c6b
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 1814555f738f37523c5b23ae729bf20bff62e1f9
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97027899"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97679520"
 ---
 # <a name="what-is-azure-cognitive-search"></a>Was ist Azure Cognitive Search?
 
@@ -25,8 +25,8 @@ Wenn Sie einen Cognitive Search-Dienst erstellen, erhalten Sie Folgendes:
 + Eine Suchmaschine für die Indizierung und Abfrageausführung
 + Dauerhafte Speicherung der von Ihnen erstellten und verwalteten Suchindizes
 + Eine Abfragesprache für einfache und komplexe Abfragen
-+ KI-basierte Analyse mit Erstellung von durchsuchbarem Inhalt aus Bildern, unformatiertem Text und Anwendungsdateien
-+ Integration in Azure-Daten durch Suchindexer mit Automatisierung von Datenimport und -aktualisierung
++ [KI-basierte Anreicherungen](cognitive-search-concept-intro.md) mit Erstellung von durchsuchbarem Inhalt aus Bildern, unformatiertem Text und Anwendungsdateien
++ Integration in andere Azure-Dienste für die Bereiche Daten, Machine Learning/KI und Sicherheit
 
 Aus architektonischer Sicht befindet sich ein Suchdienst zwischen den externen Datenspeichern, die Ihre nicht indizierten Daten enthalten, und einer Client-App, die Abfrageanforderungen an einen Suchindex sendet und die Antwort verarbeitet.
 
@@ -89,11 +89,11 @@ Unter den Cloudanbietern eignet Azure Cognitive Search sich am besten für die V
 Wichtige Vorteile umfassen:
 
 + Azure-Datenintegration (Crawler) auf Indexebene
-+ Azure-Portal für eine zentrale Verwaltung
-+ Skalierung, Zuverlässigkeit und erstklassige Verfügbarkeit von Azure
-+ Dank der Verarbeitung von Rohdaten durch KI-Funktionen lassen sich die Daten besser durchsuchen – es kann beispielsweise nach Text in Bildern oder nach Mustern in unstrukturierten Inhalten gesucht werden.
++ Azure Private Link-Integration zur Unterstützung von nicht internetbezogenen Sicherheitsanforderungen
++ Integration in die KI-Verarbeitung, um für nicht durchsuchbare Inhaltstypen die Textsuche zu ermöglichen
 + Linguistische und benutzerdefinierte Analyse, mit Analysemodulen für eine robuste Volltextsuche in 56 Sprachen
-+ [Kernfeatures für auf die Suche ausgerichtete Apps](search-features-list.md): Bewertung, Facettennavigation, Vorschläge, Synonyme, geografische Suche und mehr.
++ [Wichtige Features](search-features-list.md): umfangreiche Abfragesprache, Relevanzoptimierung, Facettierung, AutoVervollständigen, Synonyme, geografische Suche und Ergebniszusammensetzung
++ Skalierung, Zuverlässigkeit und erstklassige Verfügbarkeit von Azure
 
 Unter unseren Kunden zählen diejenigen mit Onlinekatalogen, Branchenprogrammen und Anwendungen zur Dokumentermittlung zu denen, die am meisten von den umfassenden Features in Azure Cognitive Search profitieren.
 

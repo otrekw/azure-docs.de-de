@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 11/04/2020
+ms.date: 12/21/2020
 ms.author: jeedes
-ms.openlocfilehash: e0cabcbaaf8e84ac1bdfd13c0ef4ab14f326fcf7
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: d7cafdcbbf44f3f501d54c13d1b4549c446ed8c8
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182285"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97723965"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-citrix-sharefile"></a>Tutorial: Azure Active Directory-Integration mit Citrix ShareFile
 
@@ -51,7 +51,7 @@ Zum Konfigurieren der Integration von Citrix ShareFile in Azure AD müssen Sie C
 1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **Citrix ShareFile** in das Suchfeld ein.
 1. Wählen Sie im Ergebnisbereich **Citrix ShareFile** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
 
-## <a name="configure-and-test-azure-ad-sso"></a>Konfigurieren und Testen des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
+## <a name="configure-and-test-azure-ad-sso-for-citrix-sharefile"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für Citrix ShareFile
 
 In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD bei Citrix ShareFile mithilfe eines Testbenutzers namens **Britta Simon**.
 Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Citrix ShareFile eingerichtet werden.
@@ -60,10 +60,10 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Citrix�
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-sso)** , um Ihren Benutzern die Verwendung dieses Features zu ermöglichen.
     
-    * **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-    * **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+    1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+    1. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
 2. **[Konfigurieren des einmaligen Anmeldens für Citrix ShareFile](#configure-citrix-sharefile-sso)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
-    * **[Erstellen eines Citrix ShareFile-Testbenutzers](#create-citrix-sharefile-test-user)**, um eine Entsprechung von Britta Simon in Citrix ShareFile zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
+    1. **[Erstellen eines Citrix ShareFile-Testbenutzers](#create-citrix-sharefile-test-user)**, um eine Entsprechung von Britta Simon in Citrix ShareFile zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
 3. **[Testen des einmaligen Anmeldens](#test-sso)** , um zu überprüfen, ob die Konfiguration funktioniert
 
 ### <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
@@ -131,7 +131,15 @@ Wenn den Benutzern eine Rolle zugewiesen werden soll, können Sie sie im Dropdow
 
 ## <a name="configure-citrix-sharefile-sso"></a>Konfigurieren des einmaligen Anmeldens für Citrix ShareFile
 
-1. Melden Sie sich in einem anderen Webbrowserfenster bei Ihrer **Citrix ShareFile**-Unternehmenssite als Administrator an.
+1. Wenn Sie die Konfiguration in **Citrix ShareFile** automatisieren möchten, müssen Sie die **Browsererweiterung „Meine Apps“ für die sichere Anmeldung** installieren, indem Sie auf **Erweiterung installieren** klicken.
+
+    ![Erweiterung „Meine Apps“](common/install-myappssecure-extension.png)
+
+2. Klicken Sie nach dem Hinzufügen der Erweiterung zum Browser auf **Citrix ShareFile einrichten**. Sie werden dann zur Anwendung Citrix ShareFile weitergeleitet. Geben Sie dort die Administratoranmeldeinformationen ein, um sich bei Citrix ShareFile anzumelden. Die Browsererweiterung konfiguriert die Anwendung automatisch für Sie und automatisiert die Schritte 3 bis 7.
+
+    ![Einrichtungskonfiguration](common/setup-sso.png)
+
+3. Wenn Sie Citrix ShareFile manuell einrichten möchten, melden Sie sich in einem anderen Webbrowserfenster als Administrator bei der Citrix ShareFile-Unternehmenswebsite an.
 
 1. Klicken Sie auf dem **Dashboard** auf **Settings** (Einstellungen), und wählen Sie **Admin Settings** (Administratoreinstellungen) aus.
 
@@ -184,13 +192,13 @@ Wenn den Benutzern eine Rolle zugewiesen werden soll, können Sie sie im Dropdow
 
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens 
 
-In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mit den folgenden Optionen: 
+In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mit den folgenden Optionen:
 
-1. Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch werden Sie zur Anmelde-URL für Citrix ShareFile weitergeleitet, wo Sie den Anmeldeflow initiieren können. 
+* Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch werden Sie zur Anmelde-URL für Citrix ShareFile weitergeleitet, wo Sie den Anmeldeflow initiieren können.
 
-2. Rufen Sie direkt die Citrix ShareFile-Anmelde-URL auf, und initiieren Sie den Anmeldeflow.
+* Rufen Sie direkt die Citrix ShareFile-Anmelde-URL auf, und initiieren Sie den Anmeldeflow.
 
-3. Sie können den Microsoft-Zugriffsbereich verwenden. Wenn Sie im Zugriffsbereich auf die Kachel „Citrix ShareFile“ klicken, werden Sie zur Anmelde-URL für Citrix ShareFile umgeleitet. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
+* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie unter „Meine Apps“ auf die Kachel „Citrix ShareFile“ klicken, werden Sie zur Anmelde-URL für Citrix ShareFile umgeleitet. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 
 ## <a name="next-steps"></a>Nächste Schritte

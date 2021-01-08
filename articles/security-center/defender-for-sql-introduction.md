@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: security-center
 ms.custom: references_regions
 manager: rkarlin
-ms.openlocfilehash: e9a2259f1e15a94ad1f2a9eabf7d3a2f3ed419f1
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.openlocfilehash: 16f903e34c64214d54fc01fa621f561f1786de08
+ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97387801"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97755989"
 ---
 # <a name="introduction-to-azure-defender-for-sql"></a>Einführung in Azure Defender für SQL
 
@@ -53,7 +53,9 @@ Diese beiden Pläne verfügen über Funktionen zur Ermittlung und Verringerung p
 
 - [Sicherheitsrisikobewertung](../azure-sql/database/sql-vulnerability-assessment.md): der Scandienst, mit dem potenzielle Schwachstellen in der Datenbank ermittelt, nachverfolgt und behoben werden. Bewertungsscans bieten einen Überblick über den Sicherheitszustand Ihrer SQL-Computer und Einzelheiten zu allen Sicherheitsergebnissen.
 
-- [Advanced Threat Protection](../azure-sql/database/threat-detection-overview.md): Der Erkennungsdienst, der Ihre SQL Server-Instanzen kontinuierlich auf Bedrohungen wie die Einschleusung von SQL-Befehlen, Brute-Force-Angriffe und Berechtigungsmissbrauch überwacht. Dieser Dienst bietet aktionsorientierte Sicherheitswarnungen in Azure Security Center mit Details zur verdächtigen Aktivität, Anleitungen zum Minimieren der Bedrohungen und Optionen für die Fortsetzung ihrer Untersuchungen mit Azure Sentinel.
+- [Advanced Threat Protection](../azure-sql/database/threat-detection-overview.md): Der Erkennungsdienst, der Ihre SQL Server-Instanzen kontinuierlich auf Bedrohungen wie die Einschleusung von SQL-Befehlen, Brute-Force-Angriffe und Berechtigungsmissbrauch überwacht. Dieser Dienst bietet aktionsorientierte Sicherheitswarnungen in Azure Security Center mit Details zur verdächtigen Aktivität, Anleitungen zum Minimieren der Bedrohungen und Optionen für die Fortsetzung ihrer Untersuchungen mit Azure Sentinel. 
+    > [!TIP]
+    > Zeigen Sie die Liste mit den Sicherheitswarnungen für SQL-Server [auf der Referenzseite für Warnungen](alerts-reference.md#alerts-sql-db-and-warehouse) an.
 
 
 ## <a name="what-kind-of-alerts-does-azure-defender-for-sql-provide"></a>Über welche Art von Warnungen verfügt Azure Defender für SQL?
@@ -74,8 +76,3 @@ In diesem Artikel haben Sie mehr über Azure Defender für SQL erfahren.
 
 > [!div class="nextstepaction"]
 > [Überprüfen der SQL Server-Instanzen auf Sicherheitsrisiken mit Azure Defender](defender-for-sql-usage.md)
-
-Weitere Informationen finden Sie in den folgenden Artikeln: 
-
-- [Aktivieren von Azure Defender für SQL-Datenbank-Servern](../azure-sql/database/azure-defender-for-sql.md)
-- [Die Liste der Sicherheitswarnungen für SQL Server](alerts-reference.md#alerts-sql-db-and-warehouse)

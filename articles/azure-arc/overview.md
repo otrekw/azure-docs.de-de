@@ -3,12 +3,12 @@ title: Übersicht über Azure Arc
 description: Hier erfahren Sie, was Azure Arc ist und wie es Kunden bei der Verwaltung und Governance ihrer Hybridressourcen mit anderen Azure-Diensten und -Features unterstützt.
 ms.date: 09/23/2020
 ms.topic: overview
-ms.openlocfilehash: 8e48378e5032768b3f56a5d99c1189e282ff37f8
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 8f39dff16037b5f52a050b7d07193b0ad7cab93d
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91714156"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672685"
 ---
 # <a name="azure-arc-overview"></a>Übersicht über Azure Arc
 
@@ -50,7 +50,7 @@ Im Anschluss finden Sie Preisinformationen für die Features, die aktuell mit Az
 
 ### <a name="arc-enabled-servers"></a>Server mit Arc-Aktivierung
 
-Die Funktionalität der Azure Arc-Steuerungsebene wird ohne Zusatzkosten angeboten.Dies umfasst u. a.:
+Die Funktionalität der Azure Arc-Steuerungsebene wird ohne Zusatzkosten angeboten. Dies schließt Folgendes ein:
 
 * Ressourcenorganisation über Azure-Verwaltungsgruppen und -Tags.
 
@@ -79,3 +79,5 @@ In der aktuellen Vorschauphase fallen für Azure Arc-fähige Datendienste keine
 * Weitere Informationen zu Arc-fähigen Kubernetes-Instanzen finden Sie in [dieser Übersicht](./kubernetes/overview.md).
 
 * Weitere Informationen zu Arc-fähigen Datendiensten finden Sie in [dieser Übersicht](https://azure.microsoft.com/services/azure-arc/hybrid-data-services/).
+
+* Informieren Sie sich über Arc-fähige Dienste unter [Schnelleinstieg; Proof of Concept](https://azurearcjumpstart.io/azure_arc_jumpstart/).

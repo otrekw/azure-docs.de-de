@@ -8,12 +8,12 @@ ms.topic: overview
 author: peterclu
 ms.author: peterlu
 ms.date: 08/24/2020
-ms.openlocfilehash: 018a0e3a244d1f0e36ce638d646ab05861c10e38
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: f59ed16f98a22f77b2e67ec2bf829f58dccef611
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94565907"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740503"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>Was ist Azure Machine Learning Studio?
 
@@ -25,6 +25,11 @@ In diesem Artikel wird Folgendes behandelt:
 > - [Verwalten von Assets und Ressourcen](#manage-assets-and-resources) in Studio
 > - Unterschiede zwischen [Azure Machine Learning Studio und Machine Learning Studio (Classic)](#ml-studio-classic-vs-azure-machine-learning-studio)
 
+Es wird empfohlen, den neuesten Browser zu verwenden, der mit Ihrem Betriebssystem kompatibel ist. Die folgenden Browser werden unterstützt:
+  * Microsoft Edge (Die neueste Version von Microsoft Edge. Keine ältere Microsoft Edge-Version.)
+  * Safari (neueste Version, nur auf Mac)
+  * Chrome (neueste Version)
+  * Firefox (neueste Version)
 
 ## <a name="author-machine-learning-projects"></a>Erstellen von Machine Learning-Projekten
 
@@ -33,6 +38,8 @@ Studio bietet abhängig vom Projekttyp und von der Erfahrung der Benutzer versch
 + **Notebooks**
 
   Schreiben Sie eigenen Code, und führen Sie ihn auf verwalteten [Jupyter Notebook-Servern](how-to-run-jupyter-notebooks.md) aus, die direkt in Studio integriert sind. 
+
+:::image type="content" source="media/overview-what-is-azure-ml-studio/notebooks.gif" alt-text="Screenshot: Schreiben und Ausführen von Code in einem Notebook":::
 
 + **Azure Machine Learning-Designer**
 
@@ -94,6 +101,9 @@ In der folgenden Tabelle sind die wichtigsten Unterschiede zwischen ML Studio (C
 | Datendrifterkennung | Nicht unterstützt | [Unterstützt](how-to-monitor-datasets.md) |
 | Datenbezeichnungsprojekte | Nicht unterstützt | [Unterstützt](how-to-create-labeling-projects.md) |
 
+## <a name="troubleshooting"></a>Problembehandlung
+
+* **Fehlende Benutzeroberflächenelemente in Studio** Die rollenbasierte Zugriffssteuerung in Azure kann verwendet werden, um Aktionen einzuschränken, die Sie mit Azure Machine Learning durchführen können. Diese Einschränkungen können verhindern, dass Benutzeroberflächenelemente in Azure Machine Learning Studio angezeigt werden. Wenn Ihnen z. B. eine Rolle zugewiesen wurde, mit der Sie keine Compute-Instanz erstellen können, wird die Option zum Erstellen einer Compute-Instanz nicht in Studio angezeigt. Weitere Informationen finden Sie unter [Verwalten von Benutzern und Rollen](how-to-assign-roles.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

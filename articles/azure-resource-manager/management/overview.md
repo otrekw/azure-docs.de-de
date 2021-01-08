@@ -4,12 +4,12 @@ description: Es wird beschrieben, wie Sie den Azure-Ressourcen-Manager für die 
 ms.topic: overview
 ms.date: 09/01/2020
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: f3b3ebce3dd34637a787895e7724736adfc186fb
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: fad49db94195bbd2f9e5e32f8596f33fab586752
+ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032251"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97858517"
 ---
 # <a name="what-is-azure-resource-manager"></a>Was ist Azure Resource Manager?
 
@@ -33,7 +33,7 @@ Wenn Sie mit dem Azure Resource Manager noch nicht vertraut sind, kennen Sie unt
 
 * **Ressource** : Ein verwaltbares Element, das über Azure verfügbar ist. Virtuelle Computer, Speicherkonten, Web-Apps, Datenbanken und virtuelle Netzwerke sind Beispiele für Ressourcen. Ressourcengruppen, Abonnements, Verwaltungsgruppen und Tags sind ebenfalls Beispiele für Ressourcen.
 * **Ressourcengruppe** : Ein Container, der verwandte Ressourcen für eine Azure-Lösung enthält. Die Ressourcengruppe enthält die Ressourcen, die Sie als Gruppe verwalten möchten. Sie entscheiden in Abhängigkeit davon, was für Ihre Organisation am sinnvollsten ist, welche Ressourcen in eine Ressourcengruppen gehören. Weitere Informationen finden Sie unter [Ressourcengruppen](#resource-groups).
-* **Ressourcenanbieter:** Ein Dienst, der Azure-Ressourcen bereitstellt. Ein allgemeiner Ressourcenanbieter ist beispielsweise „Microsoft.Compute“, der die VM-Ressource bereitstellt. „Microsoft.Storage“ ist ein weiterer allgemeiner Ressourcenanbieter. Weitere Informationen finden Sie unter [Ressourcenanbieter und -typen](resource-providers-and-types.md).
+* **Ressourcenanbieter:** Ein Dienst, der Azure-Ressourcen bereitstellt. Ein gängiger Ressourcenanbieter, von dem die VM-Ressource bereitgestellt wird, ist beispielsweise `Microsoft.Compute`. `Microsoft.Storage` ist ein weiterer gängiger Ressourcenanbieter. Weitere Informationen finden Sie unter [Ressourcenanbieter und -typen](resource-providers-and-types.md).
 * **Resource Manager-Vorlage:** Eine JSON-Datei (JavaScript Object Notation), mit der eine oder mehrere Ressourcen zum Bereitstellen einer Ressourcengruppe, eines Abonnements, einer Verwaltungsgruppe oder eines Mandanten definiert werden. Die Vorlage kann zum konsistenten und wiederholten Bereitstellen der Ressourcen verwendet werden. Weitere Informationen finden Sie in der [Übersicht über die Vorlagenbereitstellung](../templates/overview.md).
 * **Deklarative Syntax** : Bei dieser Syntax können Sie beispielsweise „Here is what I intend to create“ (Dies möchte ich erstellen) eingeben, ohne dafür die Folge der Programmierbefehle für die Erstellung schreiben zu müssen. Die Resource Manager-Vorlage ist ein Beispiel für die deklarative Syntax. In der Datei definieren Sie die Eigenschaften für die Infrastruktur zum Bereitstellen für Azure.  Weitere Informationen finden Sie in der [Übersicht über die Vorlagenbereitstellung](../templates/overview.md).
 
@@ -99,7 +99,7 @@ Beim Definieren der Ressourcengruppe sind einige wichtige Faktoren zu beachten:
 
 ## <a name="resiliency-of-azure-resource-manager"></a>Resilienz von Azure Resource Manager
 
-Der Azure Resource Manager-Dienst ist auf Resilienz und fortlaufende Verfügbarkeit ausgelegt. Resource Manager-Vorgänge und Vorgänge auf Steuerungsebene (an management.azure.com gesendete Anforderungen) in der REST-API haben folgende Eigenschaften:
+Der Azure Resource Manager-Dienst ist auf Resilienz und fortlaufende Verfügbarkeit ausgelegt. Resource Manager-Vorgänge und Vorgänge auf Steuerungsebene (an `management.azure.com` gesendete Anforderungen) in der REST-API haben folgende Eigenschaften:
 
 * Sie sind regionsübergreifend verteilt. Einige Dienste sind regional.
 

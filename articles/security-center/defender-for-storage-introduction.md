@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 8979e315f188a5c21cce206c24f195f72096d438
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: b338b8ee93fb24cff54968630d4ff00deca0b64b
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97516515"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97606724"
 ---
 # <a name="introduction-to-azure-defender-for-storage"></a>Einführung in Azure Defender für Storage
 
@@ -20,7 +20,6 @@ ms.locfileid: "97516515"
 Bei **Azure Defender für Storage** handelt es sich um eine native intelligente Azure-Sicherheitsebene, die ungewöhnliche und potenziell schädliche Versuche erkennt, auf Ihre Speicherkonten zuzugreifen oder diese unbefugt zu nutzen. Das Tool verwendet die erweiterten Funktionen von künstlicher Sicherheitsintelligenz und [Microsoft Threat Intelligence](https://go.microsoft.com/fwlink/?linkid=2128684), um kontextbezogene Sicherheitswarnungen und entsprechende Empfehlungen bereitzustellen.
 
 Bei Anomalien im Rahmen von Aktivitäten werden Sicherheitswarnungen ausgelöst. Diese Warnungen sind in Azure Security Center integriert und werden mit Informationen zu verdächtigen Aktivitäten und Empfehlungen zur Untersuchung und Beseitigung von Bedrohungen auch per E-Mail an Abonnementadministratoren gesendet.
-
 
 ## <a name="availability"></a>Verfügbarkeit
 
@@ -31,6 +30,17 @@ Bei Anomalien im Rahmen von Aktivitäten werden Sicherheitswarnungen ausgelöst.
 |Geschützte Speichertypen:|[Blob Storage](https://azure.microsoft.com/services/storage/blobs/)<br>[Azure Files](../storage/files/storage-files-introduction.md)<br>[Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md)|
 |Clouds:|![Ja](./media/icons/yes-icon.png) Kommerzielle Clouds<br>![Ja](./media/icons/yes-icon.png) US Gov<br>![Nein](./media/icons/no-icon.png) China Gov/andere Gov-Clouds|
 |||
+
+
+## <a name="what-are-the-benefits-of-azure-defender-for-storage"></a>Welche Vorteile hat die Nutzung von Azure Defender für Storage?
+
+Azure Defender für Storage ermöglicht Folgendes:
+
+- **Native Azure-Sicherheit**: Basierend auf der einfachen Aktivierung per Klick sorgt Defender für Storage für den Schutz der Daten, die in Azure-Blobs, Azure Files und Data Lakes gespeichert sind. Als nativer Azure-Dienst ermöglicht Defender für Storage eine zentralisierte Sicherheitsüberwachung für alle Datenressourcen, die von Azure verwaltet werden, und ist in andere Azure-Sicherheitsdienste, z. B. Azure Sentinel, integriert.
+- **Umfassende Suite für die Erkennung**: Die Erkennungsfunktionen in Defender für Storage basieren auf Microsoft Threat Intelligence und decken die wichtigsten Speicherbedrohungen ab, z. B. anonymer Zugriff, kompromittierte Anmeldeinformationen, Social Engineering, Berechtigungsmissbrauch und schädliche Inhalte.
+- **Umfassende Reaktionsmöglichkeiten**: Die Automatisierungstools von Security Center erleichtern es, identifizierte Bedrohungen zu verhindern bzw. darauf zu reagieren. Weitere Informationen hierzu finden Sie unter [Automatisieren der Reaktionen auf Security Center-Trigger](workflow-automation.md).
+
+:::image type="content" source="media/defender-for-storage-introduction/defender-for-storage-high-level-overview.png" alt-text="Allgemeine Übersicht über die Features von Azure Defender für Storage":::
 
 
 ## <a name="what-kind-of-alerts-does-azure-defender-for-storage-provide"></a>Welche Art von Warnungen bietet Azure Defender für Storage?

@@ -1,6 +1,6 @@
 ---
 title: 'Informationen zu Azure Key Vault-Geheimnissen: Azure Key Vault'
-description: Hier finden Sie eine Übersicht über die Azure Key Vault-REST-Schnittstelle sowie Informationen für Entwickler zu Geheimnissen.
+description: Übersicht über Azure Key Vault-Geheimnisse
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -10,16 +10,16 @@ ms.subservice: secrets
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 7aa2feba5a2b2fa47bbb0c055a2f556b8997ab34
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 4ded48fe8f04d2cdba40650974fd5002d659e381
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "82930470"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97705267"
 ---
 # <a name="about-azure-key-vault-secrets"></a>Informationen zu Azure Key Vault-Geheimnissen
 
-Key Vault bietet einen sicheren Speicher für Geheimnisse wie z. B. Kennwörter und Datenbankverbindungszeichenfolgen.
+[Key Vault](../general/overview.md) bietet einen sicheren Speicher für generische Geheimnisse wie z. B. Kennwörter und Datenbankverbindungszeichenfolgen.
 
 Aus Entwicklerperspektive akzeptieren Key Vault-APIs geheime Werte als Zeichenfolge und geben sie auch in dieser Form zurück. Intern speichert und verwaltet Key Vault Geheimnisse als Oktettsequenzen (8-Bit-Bytes), wobei jede Sequenz maximal 25.000 Bytes groß sein darf. Der Key Vault-Dienst bietet keine Semantik für Geheimnisse. Der Dienst akzeptiert nur die Daten, verschlüsselt sie, speichert sie und gibt einen Bezeichner (ID) für das Geheimnis zurück. Der Bezeichner kann dazu verwendet werden, das Geheimnis zu einem späteren Zeitpunkt abzurufen.  
 
@@ -43,6 +43,8 @@ Es gibt zusätzliche schreibgeschützte Attribute, die in alle Antworten einbezo
 
 - *created*: IntDate, optional. Das „created“-Attribut gibt an, wann diese Version des Geheimnisses erstellt wurde. Dieser Wert ist NULL für Geheimnisse, die vor dem Hinzufügen dieses Attributs erstellt wurden. Der Wert muss eine Zahl sein, die einen IntDate-Wert enthält.  
 - *updated*: IntDate, optional. Das updated-Attribut gibt an, wann diese Version des Geheimnisses aktualisiert wurde. Dieser Wert ist NULL für Geheimnisse, die vor dem Hinzufügen dieses Attributs zuletzt aktualisiert wurden. Der Wert muss eine Zahl sein, die einen IntDate-Wert enthält.
+
+Informationen zu allgemeinen Attributen für die einzelnen Key Vault-Objekttyp finden Sie unter [Übersicht über Schlüssel, Geheimnisse und Zertifikate in Azure Key Vault](../general/about-keys-secrets-certificates.md).
 
 ### <a name="date-time-controlled-operations"></a>Durch Datum und Uhrzeit gesteuerte Vorgänge
 
@@ -68,6 +70,12 @@ Die folgenden Berechtigungen können pro Prinzipal im Zugriffssteuerungseintrag 
 
 Weitere Informationen zur Verwendung von Geheimnissen finden Sie unter den [Geheimnisvorgängen in der Referenz zur REST-API für Azure Key Vault](/rest/api/keyvault). Informationen zum Einrichten von Berechtigungen finden Sie unter [Tresore – Erstellen oder Aktualisieren](/rest/api/keyvault/vaults/createorupdate) und [Vaults – Aktualisieren der Zugriffsrichtlinie](/rest/api/keyvault/vaults/updateaccesspolicy). 
 
+Schrittanleitungen zum Steuern des Zugriffs in Key Vault:
+- [Zuweisen einer Key Vault-Zugriffsrichtlinie mithilfe der Befehlszeilenschnittstelle](../general/assign-access-policy-cli.md)
+- [Zuweisen einer Key Vault-Zugriffsrichtlinie mithilfe von PowerShell](../general/assign-access-policy-powershell.md)
+- [Zuweisen einer Key Vault-Zugriffsrichtlinie über das Azure-Portal](../general/assign-access-policy-portal.md)
+- [Gewähren des Zugriffs auf Key Vault-Schlüssel, -Zertifikate und -Geheimnisse mit der rollenbasierten Zugriffssteuerung in Azure (Vorschauversion)](../general/rbac-guide.md)
+
 ## <a name="secret-tags"></a>Geheimnistags  
 Sie können zusätzliche anwendungsspezifische Metadaten in Form von Tags angeben. Key Vault unterstützt bis zu 15 Tags, von denen jedes einen 256 Zeichen langen Namen und einen Wert von 256 Zeichen aufweisen kann.  
 
@@ -76,14 +84,17 @@ Sie können zusätzliche anwendungsspezifische Metadaten in Form von Tags angebe
 
 ## <a name="azure-storage-account-key-management"></a>Verwaltung eines Azure-Speicherkontoschlüssels
 
-Key Vault kann Azure-Speicherkontoschlüssel verwalten:
+Key Vault kann [Azure-Speicherkontoschlüssel](https://docs.microsoft.com/azure/storage/common/storage-account-overview) verwalten:
 
 - Intern kann Key Vault die Schlüssel eines Azure-Speicherkontos auflisten (synchronisieren). 
 - Key Vault kann die Schlüssel in regelmäßigen Abständen erneut generieren (rotieren).
 - Schlüsselwerte werden nie als Antwort an den Aufrufer zurückgegeben.
 - Key Vault verwaltet Schlüssel von Speicherkonten und klassischen Speicherkonten.
 
-Weitere Informationen finden Sie unter [Azure Key Vault-Speicherkontoschlüssel](../secrets/overview-storage-keys.md).
+Weitere Informationen finden Sie unter
+- [Speicherkonto-Zugriffsschlüssel](https://docs.microsoft.com/azure/storage/common/storage-account-keys-manage)
+- [Verwaltung von Speicherkontoschlüsseln in Azure Key Vault](../secrets/overview-storage-keys.md)
+
 
 ## <a name="storage-account-access-control"></a>Speicherkonto-Zugriffssteuerung
 
@@ -109,11 +120,18 @@ Die folgenden Berechtigungen können beim Autorisieren eines Benutzer- oder Anwe
 
 Weitere Informationen finden Sie in der [REST-API-Referenz für Key Vault](/rest/api/keyvault). Informationen zum Einrichten von Berechtigungen finden Sie unter [Tresore – Erstellen oder Aktualisieren](/rest/api/keyvault/vaults/createorupdate) und [Vaults – Aktualisieren der Zugriffsrichtlinie](/rest/api/keyvault/vaults/updateaccesspolicy).
 
+Schrittanleitungen zum Steuern des Zugriffs in Key Vault:
+- [Zuweisen einer Key Vault-Zugriffsrichtlinie mithilfe der Befehlszeilenschnittstelle](../general/assign-access-policy-cli.md)
+- [Zuweisen einer Key Vault-Zugriffsrichtlinie mithilfe von PowerShell](../general/assign-access-policy-powershell.md)
+- [Zuweisen einer Key Vault-Zugriffsrichtlinie über das Azure-Portal](../general/assign-access-policy-portal.md)
+- [Gewähren des Zugriffs auf Key Vault-Schlüssel, -Zertifikate und -Geheimnisse mit der rollenbasierten Zugriffssteuerung in Azure (Vorschauversion)](../general/rbac-guide.md)
+
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Informationen zu Key Vault](../general/overview.md)
 - [Informationen zu Schlüsseln, Geheimnissen und Zertifikaten](../general/about-keys-secrets-certificates.md)
 - [Informationen zu Schlüsseln](../keys/about-keys.md)
 - [Informationen zu Zertifikaten](../certificates/about-certificates.md)
-- [Authentifizierung, Anforderungen und Antworten](../general/authentication-requests-and-responses.md)
+- [Sicherer Zugriff auf einen Schlüsseltresor](../general/secure-your-key-vault.md)
 - [Entwicklerhandbuch für Key Vault](../general/developers-guide.md)

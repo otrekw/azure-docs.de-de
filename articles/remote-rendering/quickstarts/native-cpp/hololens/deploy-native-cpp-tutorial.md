@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 06/08/2020
 ms.topic: quickstart
-ms.openlocfilehash: 4513a1997dc2955e1c5488a4a3740afa88f51623
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: d35d6e75b45c2ea263c2e986c5fc6f414cad16e4
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207273"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724968"
 ---
 # <a name="quickstart-deploy-native-c-sample-to-hololens"></a>Schnellstart: Bereitstellen des nativen C++-Beispiels für HoloLens
 
@@ -39,7 +39,7 @@ Die folgende Software muss installiert werden:
 
 ## <a name="clone-the-arr-samples-repository"></a>Klonen des ARR-Beispielrepositorys
 
-Klonen Sie zuerst das Git-Repository mit den öffentlichen Azure Remote Rendering-Beispielen. Öffnen Sie eine Eingabeaufforderung (`cmd` im Windows-Startmenü), und wechseln Sie in ein Verzeichnis, in dem Sie das ARR-Beispielprojekt speichern möchten.
+Klonen Sie zuerst das Git-Repository mit den globalen Azure Remote Rendering-Beispielen. Öffnen Sie eine Eingabeaufforderung (`cmd` im Windows-Startmenü), und wechseln Sie in ein Verzeichnis, in dem Sie das ARR-Beispielprojekt speichern möchten.
 
 Führen Sie die folgenden Befehle aus:
 
@@ -70,7 +70,8 @@ Da die Kontoanmeldeinformationen im Quellcode des Tutorials hartcodiert sind, m�
     RR::AzureFrontendAccountInfo init;
     init.AccountId = "00000000-0000-0000-0000-000000000000";
     init.AccountKey = "<account key>";
-    init.AccountDomain = "westus2.mixedreality.azure.com"; // <change to your region>
+    init.AccountDomain = "westus2.mixedreality.azure.com"; // <change to the region that the rendering session should be created in>
+    init.AccountAuthenticationDomain = "westus2.mixedreality.azure.com"; // <change to the region the account was created in>
     m_modelURI = "builtin://Engine";
     m_sessionOverride = ""; // If there is a valid session ID to re-use, put it here. Otherwise a new one is created
     m_frontEnd = RR::ApiHandle(RR::AzureFrontend(init));
@@ -78,9 +79,9 @@ Da die Kontoanmeldeinformationen im Quellcode des Tutorials hartcodiert sind, m�
 ```
 
 Ändern Sie die folgenden Werte:
-* `init.AccountId` und `init.AccountKey`, um Ihre Kontodaten zu verwenden. Informationen zum Abrufen von Kontoinformationen finden Sie [hier](../../../how-tos/create-an-account.md#retrieve-the-account-information).
-* Den Regionsteil der Zeichenfolge `init.AccountDomain` für andere Regionen als `westus2` (beispielsweise `"westeurope.mixedreality.azure.com"`)
-* Darüber hinaus kann `m_sessionOverride` in eine vorhandene Sitzungs-ID geändert werden. Sitzungen können außerhalb dieses Beispiels erstellt werden, beispielsweise mithilfe des [PowerShell-Skripts](../../../samples/powershell-example-scripts.md#script-renderingsessionps1) oder durch direkte Verwendung der [REST-API für Sitzungen](../../../how-tos/session-rest-api.md#create-a-session).
+* `init.AccountId`, `init.AccountKey` und `init.AccountAuthenticationDomain`, damit Ihre Kontodaten verwendet werden. Informationen zum Abrufen von Kontoinformationen finden Sie [hier](../../../how-tos/create-an-account.md#retrieve-the-account-information).
+* Geben Sie an, wo die Remote Rendering-Sitzung erstellt werden soll, indem Sie den Regionsteil der Zeichenfolge `init.AccountDomain` für andere Regionen als `westus2` ändern, z. B. `"westeurope.mixedreality.azure.com"`.
+* Darüber hinaus kann `m_sessionOverride` in eine vorhandene Sitzungs-ID geändert werden. Sitzungen können außerhalb dieses Beispiels erstellt werden, beispielsweise mit dem [PowerShell-Skript](../../../samples/powershell-example-scripts.md#script-renderingsessionps1) oder durch direkte Verwendung der [REST-API für Sitzungen](../../../how-tos/session-rest-api.md#create-a-session).
 Die Erstellung einer Sitzung außerhalb des Beispiels wird empfohlen, wenn das Beispiel mehrmals ausgeführt werden soll. Wird keine Sitzung übergeben, wird bei jedem Start eine neue Sitzung erstellt, was mehrere Minuten dauern kann.
 
 Nun kann die Anwendung kompiliert werden.

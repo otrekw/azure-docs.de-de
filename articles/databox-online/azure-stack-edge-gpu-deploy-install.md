@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 09/02/2020
+ms.date: 12/21/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to install Azure Stack Edge Pro in datacenter so I can use it to transfer data to Azure.
-ms.openlocfilehash: 52f0bcbb332b5d5e47440accff9d9895dcef7056
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 830e0a8733d3f5a49cede09b331dc0298ee1ce4d
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96449359"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97734709"
 ---
 # <a name="tutorial-install-azure-stack-edge-pro-with-gpu"></a>Tutorial: Installieren von Azure Stack Edge Pro mit GPU
 
@@ -166,7 +166,7 @@ Bevor Sie mit der Verkabelung Ihres Geräts beginnen, benötigen Sie Folgendes:
 - Mindestens ein Netzwerkkabel (1 GbE, RJ45) zum Anschließen an die Verwaltungsschnittstelle. Das Gerät verfügt über zwei 1-GbE-Netzwerkschnittstellen: eine für die Verwaltung und eine für Daten.
 - Ein SFP+-Kupferkabel (25 GbE) für jede zu konfigurierende Datennetzwerkschnittstelle. Mindestens eine Datennetzwerkschnittstelle („PORT 2“, „PORT 3“, „PORT 4“, „PORT 5“ oder PORT 6“) muss mit dem Internet verbunden sein und über Azure-Konnektivität verfügen.  
 - Zugang zu zwei PDUs (Power Distribution Units) (empfohlen)
-- Mindestens ein 1-GbE-Netzwerkswitch zum Verbinden einer 1-GbE-Netzwerkschnittstelle mit dem Internet für Daten. Es besteht kein Zugriff auf die lokale Webbenutzeroberfläche, wenn der angeschlossene Switch nicht mindestens 1-GbE hat. Wenn Sie eine 25/10-GbE-Schnittstelle für Daten verwenden, benötigen Sie einen 25-GbE- oder 10-GbE-Switch. 
+- Mindestens ein 1-GbE-Netzwerkswitch zum Verbinden einer 1-GbE-Netzwerkschnittstelle mit dem Internet für Daten. Es besteht kein Zugriff auf die lokale Webbenutzeroberfläche, wenn nicht mindestens ein 1-GbE-Switch angeschlossen ist. Wenn Sie eine 25/10-GbE-Schnittstelle für Daten verwenden, benötigen Sie einen 25-GbE- oder 10-GbE-Switch.
 
 > [!NOTE]
 > - Wenn Sie nur eine einzelne Datennetzwerkschnittstelle nutzen, sollten Sie eine 25/10-GbE-Netzwerkschnittstelle wie „PORT 3“, „PORT 4“, „PORT 5“ oder „PORT 6“ verwenden, um Daten an Azure zu senden. 
@@ -188,12 +188,12 @@ Auf dem Azure Stack Edge Pro-Gerät:
 
 - Auf der Rückseite befinden sich zwei Netzwerkkarten für die sechs Ports:
 
-    - **Benutzerdefinierter Microsoft QLogic Cavium 25G NDC-Adapter**: Port 1 bis Port 4.
+    - **Benutzerdefinierter Microsoft `Qlogic` Cavium 25G NDC-Adapter**: Port 1 bis Port 4.
     - **Mellanox Dual Port 25G ConnectX-4-Kanal-Netzwerkadapter**: Port 5 und Port 6.
 
 Eine vollständige Liste der unterstützten Kabel, Switches und Transceiver für diese Netzwerkkarten finden Sie unter:
 
-- [Interoperabilitätsmatrix für Qlogic Cavium 25G NDC-Adapter](https://www.marvell.com/documents/xalflardzafh32cfvi0z/).
+- [Interoperabilitätsmatrix für `Qlogic` Cavium 25G NDC-Adapter](https://www.marvell.com/documents/xalflardzafh32cfvi0z/).
 - [Mit Mellanox Dual Port 25G ConnectX-4-Kanal-Netzwerkadapter kompatible Produkte](https://docs.mellanox.com/display/ConnectX4LxFirmwarev14271016/Firmware+Compatible+Products).  
 
  
@@ -201,15 +201,15 @@ Gehen Sie wie folgt vor, um Ihr Gerät an die Stromversorgung und an das Netzwer
 
 1. Machen Sie sich mit den verschiedenen Anschlüssen auf der Geräterückseite vertraut. Abhängig von der Anzahl der GPUs Ihres Geräts haben Sie möglicherweise eines der folgenden Geräte ab Werk empfangen.
 
-    - Gerät mit 2 PCI-Einschubfächern (Peripherie Component Interconnect) und einer GPU
+    - Gerät mit zwei PCI-Einschubfächern (Peripherie Component Interconnect) und einer GPU
 
         ![Rückseite eines verkabelten Geräts](./media/azure-stack-edge-gpu-deploy-install/ase-two-pci-slots.png)
 
-    - Gerät mit 3 PCI-Einschubfächern und einer GPU
+    - Gerät mit drei PCI-Einschubfächern und einer GPU
 
         ![Rückseite eines verkabelten Geräts 2](./media/azure-stack-edge-gpu-deploy-install/ase-three-pci-slots-one-gpu.png)
 
-    - Gerät mit 3 PCI-Einschubfächern und zwei GPUs
+    - Gerät mit drei PCI-Einschubfächern und zwei GPUs
 
         ![Rückseite eines verkabelten Geräts 3](./media/azure-stack-edge-gpu-deploy-install/ase-three-pci-slots-two-gpu.png)
 

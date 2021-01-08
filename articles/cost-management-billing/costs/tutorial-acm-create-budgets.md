@@ -3,24 +3,24 @@ title: 'Tutorial: Erstellen und Verwalten von Azure-Budgets'
 description: Dieses Tutorial hilft bei der Planung und Abrechnung der Kosten für Azure-Dienste, die Sie in Anspruch nehmen.
 author: bandersmsft
 ms.author: banders
-ms.date: 08/20/2020
+ms.date: 12/16/2020
 ms.topic: tutorial
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 48cf5aea60f66fa8b24fd09e7304be0077f2fdcf
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: c8b0265a72911688f08e0f8c4a39fa657f034472
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132804"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97630138"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>Tutorial: Erstellen und Verwalten von Azure-Budgets
 
 Budgets in Cost Management helfen Ihnen, die organisatorische Verantwortlichkeit zu planen und zu steigern. Mit Budgets können Sie die Azure-Dienste abrechnen, die Sie in einem bestimmten Zeitraum in Anspruch nehmen oder abonnieren. Sie unterstützen Sie dabei, andere über ihre Ausgaben zu informieren, um die Kosten proaktiv zu steuern und die Entwicklung der Ausgaben im Laufe der Zeit zu überwachen. Wenn die erstellte Budgetschwellenwerte überschritten werden, werden nur Benachrichtigungen ausgelöst. Keines Ihrer Ressourcen wird beeinträchtigt, und die Nutzung wird nicht beendet. Sie können Budgets verwenden, um Ausgaben bei der Kostenanalyse zu vergleichen und zu verfolgen.
 
-Kosten- und Nutzungsdaten sind in der Regel innerhalb von 8-24 Stunden verfügbar, und Budgets werden alle 12 bis 14 Stunden anhand dieser Kosten überprüft. Machen Sie sich mit der [Aktualisierung von Kosten- und Nutzungsdaten](./understand-cost-mgt-data.md#cost-and-usage-data-updates-and-retention) vertraut. Wenn ein Budgetschwellenwert erreicht wird, werden E-Mail-Benachrichtigungen normalerweise innerhalb einer Stunde nach der Auswertung gesendet.
+Kosten- und Nutzungsdaten sind in der Regel innerhalb von 8 bis 24 Stunden verfügbar, und Budgets werden alle 24 Stunden anhand dieser Kosten überprüft. Machen Sie sich mit der [Aktualisierung von Kosten- und Nutzungsdaten](./understand-cost-mgt-data.md#cost-and-usage-data-updates-and-retention) vertraut. Wenn ein Budgetschwellenwert erreicht wird, werden E-Mail-Benachrichtigungen normalerweise innerhalb einer Stunde nach der Auswertung gesendet.
 
 Die Budgets werden am Ende eines Zeitraums (monatlich, vierteljährlich oder jährlich) auf den gleichen Budgetbetrag automatisch zurückgesetzt, wenn Sie ein zukünftiges Ablaufdatum auswählen. Da sie auf den gleichen Budgetbetrag zurückgesetzt werden, müssen Sie separate Budgets anlegen, wenn die budgetierten Währungsbeträge für zukünftige Zeiträume abweichen.
 

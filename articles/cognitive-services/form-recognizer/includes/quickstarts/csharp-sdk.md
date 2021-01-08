@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 10/06/2020
 ms.author: pafarley
-ms.openlocfilehash: d7577668d87ecaf2d769136d64990f95fc212fe6
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 4b44a8375bc13709959e2401f9d772fdeab00f52
+ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96356527"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97808605"
 ---
 > [!IMPORTANT]
 > Im Code dieses Artikels werden der Einfachheit halber synchrone Methoden und ein ungeschützter Anmeldeinformationsspeicher verwendet.
@@ -58,17 +58,24 @@ Build succeeded.
 
 Installieren Sie im Anwendungsverzeichnis mit dem folgenden Befehl die Formularerkennungs-Clientbibliothek für .NET:
 
-#### <a name="version-30"></a>[Version 3.0](#tab/ga)
+#### <a name="version-20"></a>[Version 2.0](#tab/ga)
 
 ```console
 dotnet add package Azure.AI.FormRecognizer --version 3.0.0
 ```
 
-#### <a name="version-31-preview"></a>[Version 3.1 (Vorschau)](#tab/preview)
+> [!NOTE]
+> Für das SDK von Formularerkennung 3.0.0 wird API-Version 2.0 verwendet.
+
+#### <a name="version-21-preview"></a>[Version 2.1 (Vorschau)](#tab/preview)
 
 ```console
 dotnet add package Azure.AI.FormRecognizer --version 3.1.0-beta.1
 ```
+
+> [!NOTE]
+> Für das SDK von Formularerkennung 3.1.0 wird API-Version 2.1 (Vorschau) verwendet.
+
 ---
 
 > [!TIP]
@@ -89,9 +96,9 @@ Erstellen Sie in der **Program**-Klasse der Anwendung Variablen für den Schlüs
 
 Fügen Sie in der Methode **Main** der Anwendung einen Aufruf der asynchronen Aufgaben hinzu, die in dieser Schnellstartanleitung verwendet werden. Die Implementierung erfolgt zu einem späteren Zeitpunkt.
 
-#### <a name="version-30"></a>[Version 3.0](#tab/ga)
+#### <a name="version-20"></a>[Version 2.0](#tab/ga)
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_main)]
-#### <a name="version-31-preview"></a>[Version 3.1 (Vorschau)](#tab/preview)
+#### <a name="version-21-preview"></a>[Version 2.1 (Vorschau)](#tab/preview)
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs?name=snippet_main)]
 
 ---
@@ -127,7 +134,7 @@ Sehen Sie sich die Beispiele zum [Trainieren eines Modells](#train-a-custom-mode
 
 Diese Codeausschnitte veranschaulichen, wie die folgenden Aufgaben mit der Formularerkennungs-Clientbibliothek für .NET ausgeführt werden:
 
-#### <a name="version-30"></a>[Version 3.0](#tab/ga)
+#### <a name="version-20"></a>[Version 2.0](#tab/ga)
 
 * [Authentifizieren des Clients](#authenticate-the-client)
 * [Erkennen von Formularinhalten](#recognize-form-content)
@@ -136,7 +143,7 @@ Diese Codeausschnitte veranschaulichen, wie die folgenden Aufgaben mit der Formu
 * [Analysieren von Formularen mit einem benutzerdefinierten Modell](#analyze-forms-with-a-custom-model)
 * [Verwalten von benutzerdefinierten Modellen](#manage-your-custom-models)
 
-#### <a name="version-31-preview"></a>[Version 3.1 (Vorschau)](#tab/preview)
+#### <a name="version-21-preview"></a>[Version 2.1 (Vorschau)](#tab/preview)
 
 * [Authentifizieren des Clients](#authenticate-the-client)
 * [Erkennen von Formularinhalten](#recognize-form-content)
@@ -168,13 +175,15 @@ Wiederholen Sie die oben genannten Schritte für eine neue Methode, mit der ein 
 
 Sie müssen außerdem Verweise auf die URLs für Ihre Trainings- und Testdaten hinzufügen. Fügen Sie diese dem Stamm Ihrer **Program**-Klasse hinzu.
 
-* Öffnen Sie zum Abrufen der SAS-URL für die Trainingsdaten Ihres benutzerdefinierten Modells den Microsoft Azure Storage-Explorer, klicken Sie mit der rechten Maustaste auf Ihren Container, und wählen Sie **Shared Access Signature abrufen** aus. Stellen Sie sicher, dass die Berechtigungen **Lesen** und **Auflisten**  aktiviert sind, und klicken Sie auf **Erstellen**. Kopieren Sie den Wert im **URL**-Abschnitt. Er muss das Format `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>` aufweisen.
-* Führen Sie anschließend die obigen Schritte aus, um die SAS-URL eines einzelnen Dokuments im Blobspeicher abzurufen.
+* [!INCLUDE [get SAS URL](../sas-instructions.md)]
+
+   :::image type="content" source="../../media/quickstarts/get-sas-url.png" alt-text="SAS-URL-Abruf":::
+* Führen Sie anschließend erneut die obigen Schritte aus, um die SAS-URL eines einzelnen Dokuments im Blobspeichercontainer abzurufen. Speichern Sie sie ebenfalls an einem temporären Speicherort.
 * Speichern Sie abschließend die URL der Beispielbilder (unten enthalten und auch auf [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms) verfügbar). 
 
-#### <a name="version-30"></a>[Version 3.0](#tab/ga)
+#### <a name="version-20"></a>[Version 2.0](#tab/ga)
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_urls)]
-#### <a name="version-31-preview"></a>[Version 3.1 (Vorschau)](#tab/preview)
+#### <a name="version-21-preview"></a>[Version 2.1 (Vorschau)](#tab/preview)
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs?name=snippet_urls)]
 
 ---
@@ -289,11 +298,15 @@ Item:
 Total: '1203.39', with confidence '0.774'
 ```
 
-#### <a name="version-30"></a>[Version 3.0](#tab/ga)
-
-#### <a name="version-31-preview"></a>[Version 3.1 (Vorschau)](#tab/preview)
-
 ## <a name="recognize-business-cards"></a>Erkennen von Visitenkarten
+
+#### <a name="version-20"></a>[Version 2.0](#tab/ga)
+
+> [!IMPORTANT]
+> Dieses Feature ist in der ausgewählten API-Version nicht verfügbar.
+
+#### <a name="version-21-preview"></a>[Version 2.1 (Vorschau)](#tab/preview)
+
 
 In diesem Abschnitt wird veranschaulicht, wie Sie mithilfe eines vorab trainierten Modells gängige Felder englischsprachiger Visitenkarten erkennen und extrahieren.
 
@@ -308,7 +321,16 @@ Der zurückgegebene Wert ist eine Sammlung mit Objekten vom Typ `RecognizedForm`
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs?name=snippet_bc_print)]
 
+---
+
 ## <a name="recognize-invoices"></a>Erkennen von Rechnungen
+
+#### <a name="version-20"></a>[Version 2.0](#tab/ga)
+
+> [!IMPORTANT]
+> Dieses Feature ist in der ausgewählten API-Version nicht verfügbar.
+
+#### <a name="version-21-preview"></a>[Version 2.1 (Vorschau)](#tab/preview)
 
 In diesem Abschnitt wird veranschaulicht, wie Sie mithilfe eines vorab trainierten Modells gängige Rechnungsfelder erkennen und extrahieren.
 

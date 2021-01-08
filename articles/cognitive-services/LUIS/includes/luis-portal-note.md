@@ -7,13 +7,13 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: include
-ms.date: 10/16/2020
-ms.openlocfilehash: 5f35547162d5a2fe49320f27e61ad48f3e19d94a
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.date: 12/16/2020
+ms.openlocfilehash: ff16d10ea4fc331588735ded75cb68d57bed93e3
+ms.sourcegitcommit: 31d242b611a2887e0af1fc501a7d808c933a6bf6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97368177"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97812781"
 ---
 > [!NOTE]
-> Ab dem 4. Januar werden die Portale luis.au und luis.eu in ein einzelnes Portal und eine einzelne URL konsolidiert. Wenn Sie eines dieser Portale genutzt haben, werden Sie automatisch zu [luis.ai](https://luis.ai/) weitergeleitet. Sie können dieselben regionalen Ressourcen, die Sie erstellt haben, weiterhin nutzen, und Ihre Anwendungen werden weiterhin in derselben Region erstellt, die Sie ursprünglich ausgewählt haben.
+> Ab dem 4. Januar tritt die Zusammenfassung der regionalen Portale („au.luis.ai“ und „eu.luis.ai“) unter einer gemeinsamen URL zu einem Portal in Kraft. Wenn Sie eines dieser Portale genutzt haben, werden Sie automatisch zu [luis.ai](https://luis.ai/) weitergeleitet. Sie können weiterhin dieselben regionalen Ressourcen nutzen, die Sie erstellt haben, und Ihre Daten werden weiterhin in derselben Region wie Ihre Ressource gespeichert und verarbeitet.

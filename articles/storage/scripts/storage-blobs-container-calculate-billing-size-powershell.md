@@ -7,18 +7,21 @@ ms.service: storage
 ms.subservice: blobs
 ms.devlang: powershell
 ms.topic: sample
-ms.date: 11/07/2017
+ms.date: 12/29/2020
 ms.author: fryu
-ms.openlocfilehash: 2d921a968f50f64788ccbd7637bc04c8492a3f90
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: dfc338844e310102447e2498ee9cce8f28a79b9f
+ms.sourcegitcommit: 31d242b611a2887e0af1fc501a7d808c933a6bf6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96010893"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97809563"
 ---
 # <a name="calculate-the-total-billing-size-of-a-blob-container"></a>Berechnen der Gesamtabrechnungsgröße eines Blobcontainers
 
 Mit diesem Skript berechnen Sie die Größe eines Containers in Azure Blob Storage zur Schätzung der Abrechnungskosten. Mit dem Skript wird die Größe der Blobs im Container addiert.
+
+> [!IMPORTANT]
+> Mit dem in diesem Artikel angegebenen Beispielskript wird die Abrechnungsgröße für Blobmomentaufnahmen ggf. nicht exakt berechnet.
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh-az.md)]
 
@@ -31,7 +34,7 @@ Mit diesem Skript berechnen Sie die Größe eines Containers in Azure Blob Stora
 
 Die Gesamtgröße des Blobcontainers beinhaltet die Größe des eigentlichen Containers sowie die Größe aller Blobs unter dem Container.
 
-In den folgenden Abschnitten erfahren Sie, wie die Speicherkapazität für Blobcontainer und Blobs berechnet wird.  Im folgenden Abschnitt steht Len(X) für die Anzahl von Zeichen in der Zeichenfolge.
+In den folgenden Abschnitten erfahren Sie, wie die Speicherkapazität für Blobcontainer und Blobs berechnet wird. Im folgenden Abschnitt steht Len(X) für die Anzahl von Zeichen in der Zeichenfolge.
 
 ### <a name="blob-containers"></a>Blobcontainer
 
@@ -44,6 +47,7 @@ For-Each Signed Identifier[512 bytes]
 ```
 
 Aufschlüsselung:
+
 * Die 48 Bytes für den Verarbeitungsaufwand für jeden Container setzen sich aus der Uhrzeit der letzten Änderung, Berechtigungen, öffentlichen Einstellungen und einigen Systemmetadaten zusammen.
 
 * Da der Containername als Unicode gespeichert wird, muss die Zeichenanzahl verdoppelt werden.

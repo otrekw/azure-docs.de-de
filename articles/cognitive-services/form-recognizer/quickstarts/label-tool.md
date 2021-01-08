@@ -11,12 +11,12 @@ ms.date: 09/30/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: Verarbeiten von Dokumenten
-ms.openlocfilehash: 7671d8d58ffbd0fca444eefe53c46c99a4e76d37
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: a1cf919e17e22cb6280dce27faceb7cd034a6962
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "96009329"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97845551"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>Trainieren eines Formularerkennungsmodells mit Beschriftungen mithilfe des Tools für die Beschriftung von Beispielen
 
@@ -106,7 +106,7 @@ Sie verwenden die Docker-Engine, um das Tool für die Beschriftung von Beispiele
    Dieser Befehl macht das Tool für die Beschriftung von Beispielen über einen Webbrowser verfügbar. Gehe zu `http://localhost:3000`.
 
 > [!NOTE]
-> Sie können auch die Formularerkennungs-REST-API verwenden, um Dokumente zu beschriften und Modelle zu trainieren. Informationen zum Trainieren und Analysieren mit der REST-API finden Sie unter [Trainieren mit Beschriftungen mit der REST-API und Python](./python-labeled-data.md).
+> Sie können auch die Formularerkennungs-REST-API verwenden, um Dokumente zu beschriften und Modelle zu trainieren. Informationen zum Trainieren und Analysieren mit der REST-API finden Sie unter [Trainieren mit Beschriftungen mit der REST-API und Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-labeled-data.md).
 
 ## <a name="set-up-input-data"></a>Einrichten von Eingabedaten
 
@@ -137,7 +137,9 @@ Geben Sie die folgenden Werte in die Felder ein:
 
 * **Anzeigename**: der Anzeigename der Verbindung.
 * **Beschreibung**: die Beschreibung Ihres Projekts.
-* **SAS-URL**: die Shared Access Signature-URL (SAS) Ihres Azure Blob Storage-Containers. Um die SAS-URL abzurufen, öffnen Sie den Microsoft Azure Storage-Explorer, klicken mit der rechten Maustaste auf Ihren Container und wählen **Abrufen der Shared Access Signature** aus. Legen Sie die Ablaufzeit auf einen Zeitpunkt nach Ihrer Dienstverwendung fest. Stellen Sie sicher, dass die Berechtigungen **Lesen**, **Schreiben**, **Löschen** und **Auflisten** aktiviert sind, und klicken Sie auf **Erstellen**. Kopieren Sie den Wert im **URL**-Abschnitt. Er muss das Format `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>` aufweisen.
+* **SAS-URL**: die Shared Access Signature-URL (SAS) Ihres Azure Blob Storage-Containers. [!INCLUDE [get SAS URL](../includes/sas-instructions.md)]
+
+   :::image type="content" source="../media/quickstarts/get-sas-url.png" alt-text="SAS-URL-Abruf":::
 
 :::image type="content" source="../media/label-tool/connections.png" alt-text="Verbindungseinstellungen des Tools für die Beschriftung von Beispielen":::
 
@@ -223,7 +225,7 @@ Führen Sie die oben genannten Schritte aus, um mindestens fünf Ihrer Formulare
 
 ### <a name="specify-tag-value-types"></a>Angeben von Tagwerttypen
 
-Optional können Sie den erwarteten Datentyp für jedes Tag festlegen. Öffnen Sie das Kontextmenü rechts neben einem Tag, und wählen Sie im Menü einen Typ aus. Diese Funktion ermöglicht es dem Erkennungsalgorithmus, bestimmte Annahmen zu treffen, die die Genauigkeit der Texterkennung verbessern. Außerdem wird sichergestellt, dass die erkannten Werte in der endgültigen JSON-Ausgabe in einem standardisierten Format zurückgegeben werden. 
+Optional können Sie den erwarteten Datentyp für jedes Tag festlegen. Öffnen Sie das Kontextmenü rechts neben einem Tag, und wählen Sie im Menü einen Typ aus. Diese Funktion ermöglicht es dem Erkennungsalgorithmus, bestimmte Annahmen zu treffen, die die Genauigkeit der Texterkennung verbessern. Außerdem wird sichergestellt, dass die erkannten Werte in der endgültigen JSON-Ausgabe in einem standardisierten Format zurückgegeben werden. Informationen zum Werttyp werden in der Datei *fields.json* unter demselben Pfad wie Ihre Beschriftungsdateien gespeichert.
 
 > [!div class="mx-imgBorder"]
 > ![Werttypauswahl mit dem Tool für die Beschriftung von Beispielen](../media/whats-new/formre-value-type.png)
@@ -266,7 +268,7 @@ Derzeit werden die folgenden Werttypen und Variationen unterstützt:
 
 Klicken Sie im linken Bereich auf das Symbol „Trainieren“, um die Seite „Training“ zu öffnen. Klicken Sie dann auf die Schaltfläche **Trainieren**, um mit dem Training des Modells zu beginnen. Sobald der Trainingsprozess abgeschlossen ist, werden folgende Informationen angezeigt:
 
-* **Modell-ID**: Die ID des Modells, das erstellt und trainiert wurde. Jeder Trainingsaufruf erstellt ein neues Modell mit eigener ID. Kopieren Sie diese Zeichenfolge an einen sicheren Speicherort. Sie werden sie benötigen, wenn Sie Vorhersageaufrufe über die [REST-API](./curl-train-extract.md) oder [Clientbibliothek](./client-library.md) ausführen möchten.
+* **Modell-ID**: Die ID des Modells, das erstellt und trainiert wurde. Jeder Trainingsaufruf erstellt ein neues Modell mit eigener ID. Kopieren Sie diese Zeichenfolge an einen sicheren Speicherort. Sie werden sie benötigen, wenn Sie Vorhersageaufrufe über die [REST-API](./client-library.md?pivots=programming-language-rest-api) oder [Clientbibliothek](./client-library.md) ausführen möchten.
 * **Durchschnittliche Genauigkeit**: Die durchschnittliche Genauigkeit des Modells. Sie können die Modellgenauigkeit verbessern, indem Sie weitere Formulare beschriften und erneut ein Training ausführen, um ein neues Modell zu erstellen. Wir empfehlen, zunächst fünf Formulare zu beschriften und dann bei Bedarf weitere Formulare hinzuzufügen.
 * Die Liste der Beschriftungen und die geschätzte Genauigkeit für jede Beschriftung.
 
@@ -276,7 +278,7 @@ Klicken Sie im linken Bereich auf das Symbol „Trainieren“, um die Seite „T
 Untersuchen Sie nach Abschluss des Trainings den Wert **Durchschnittliche Genauigkeit**. Wenn dieser Wert niedrig ist, sollten Sie weitere Eingabedokumente hinzufügen und die oben beschriebenen Schritte wiederholen. Die von Ihnen bereits beschrifteten Dokumente verbleiben im Projektindex.
 
 > [!TIP]
-> Sie können den Trainingsprozess auch mit einem REST-API-Aufruf ausführen. Informationen dazu finden Sie unter [Trainieren mit Beschriftungen mit Python](./python-labeled-data.md).
+> Sie können den Trainingsprozess auch mit einem REST-API-Aufruf ausführen. Informationen dazu finden Sie unter [Trainieren mit Beschriftungen mit Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-labeled-data.md).
 
 ## <a name="compose-trained-models"></a>Erstellen trainierter Modelle
 
@@ -299,7 +301,7 @@ Um Modelle im Tool für die Beschriftung von Beispielen zu erstellen, klicken Si
 Klicken Sie links auf das Symbol für die Vorhersage (Glühbirne), um Ihr Modell zu testen. Laden Sie ein Formulardokument hoch, das Sie im Trainingsprozess nicht verwendet haben. Klicken Sie dann rechts auf die Schaltfläche **Vorhersage**, um die Schlüssel-Wert-Vorhersagen für das Formular zu erhalten. Das Tool wendet Beschriftungen in Begrenzungsrahmen an und meldet die Konfidenz jeder Beschriftung.
 
 > [!TIP]
-> Sie können die Analyse-API auch mit einem REST-Aufruf ausführen. Informationen dazu finden Sie unter [Trainieren mit Beschriftungen mit Python](./python-labeled-data.md).
+> Sie können die Analyse-API auch mit einem REST-Aufruf ausführen. Informationen dazu finden Sie unter [Trainieren mit Beschriftungen mit Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-labeled-data.md).
 
 ## <a name="improve-results"></a>Verbessern der Ergebnisse
 
@@ -326,7 +328,7 @@ Wechseln Sie abschließend auf die Hauptseite (Haussymbol), und klicken Sie auf 
 In dieser Schnellstartanleitung haben Sie erfahren, wie Sie das Formularerkennungstool für die Beschriftung von Beispielen verwenden, um ein Modell mit manuell beschrifteten Daten zu trainieren. Wenn Sie ein eigenes Hilfsprogramm zum Beschriften von Trainingsdaten erstellen möchten, verwenden Sie die REST-APIs für das Trainieren beschrifteter Daten.
 
 > [!div class="nextstepaction"]
-> [Trainieren mit Beschriftungen mit Python](./python-labeled-data.md)
+> [Trainieren mit Beschriftungen mit Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-labeled-data.md)
 
 * [Was ist die Formularerkennung?](../overview.md)
-* [Schnellstarts zum Verwenden der Clientbibliothek für die Formularerkennung](client-library.md)
+* [Formularerkennung: Schnellstart](client-library.md)

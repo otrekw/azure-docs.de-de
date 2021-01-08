@@ -4,14 +4,14 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/16/2020
 ms.author: trbye
-ms.openlocfilehash: 2aec3cc96e123da57166f1c304254d520a96e156
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 27a416db3b27ac25ba7a3b1712c76cd1c8fb632e
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81400517"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97821535"
 ---
-Das Standardformat für Audiostreaming ist WAV (16 kHz oder 8 kHz, 16 Bit und Mono-PCM). Abgesehen von WAV/PCM werden auch die unten aufgeführten komprimierte Eingabeformate unterstützt. Für die Verwendung der folgenden Formate sind [zusätzliche Konfigurationsschritte](../how-to-use-codec-compressed-audio-input-streams.md) erforderlich:
+Das Standardformat für Audiostreaming ist WAV (16 kHz oder 8 kHz, 16 Bit und Mono-PCM). Neben WAV/PCM werden auch die unten aufgeführten komprimierten Eingabeformate unterstützt (per GStreamer).
 
 - MP3
 - OPUS/OGG

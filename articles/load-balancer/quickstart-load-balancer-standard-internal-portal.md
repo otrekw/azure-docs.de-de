@@ -15,16 +15,16 @@ ms.workload: infrastructure-services
 ms.date: 07/30/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 6ac76b3d3cc8fb27734730275836fba0dbfb08fe
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 14203021846e97a53f59c3bc24a1586774613dec
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94700306"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97704332"
 ---
 # <a name="quickstart-create-an-internal-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Schnellstart: Erstellen eines internen Lastenausgleichs für virtuelle Computer über das Azure-Portal
 
-Beginnen Sie mit der Verwendung von Azure Load Balancer, indem Sie über das Azure-Portal einen internen Lastenausgleich und zwei virtuelle Computer erstellen.
+Beginnen Sie mit der Verwendung von Azure Load Balancer, indem Sie über das Azure-Portal einen internen Lastenausgleich und drei virtuelle Computer erstellen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -40,6 +40,8 @@ Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim 
 
 >[!NOTE]
 >Ein Lastenausgleich mit Standard-SKU wird für Produktionsworkloads empfohlen.  Weitere Informationen zu SKUs finden Sie unter **[Azure Load Balancer-SKUs](skus.md)** .
+
+:::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/resources-diagram-internal.png" alt-text="Für den Schnellstart erstellte Load Balancer Standard-Ressourcen." border="false":::
 
 In diesem Abschnitt wird ein Lastenausgleich für virtuelle Computer erstellt. 
 
@@ -208,12 +210,12 @@ In diesem Abschnitt wird eine Lastenausgleichsregel mit folgenden Merkmalen erst
 
 In diesem Abschnitt führen Sie folgende Schritte aus:
 
-* Erstellen von zwei virtuellen Computern für den Back-End-Pool des Lastenausgleichs
+* Erstellen von drei virtuellen Computern für den Back-End-Pool des Lastenausgleichs
 * Installieren von IIS auf den virtuellen Computern, um den Lastenausgleich zu testen
 
 ### <a name="create-virtual-machines"></a>Erstellen von virtuellen Computern
 
-In diesem Abschnitt erstellen Sie zwei virtuelle Computer (**myVM1** und **myVM2**).
+In diesem Abschnitt erstellen Sie drei VMs (**myVM1**, **myVM2** und **myVM3**).
 
 Diese virtuellen Computer werden dem Back-End-Pool des zuvor erstellten Lastenausgleichs hinzugefügt.
 
@@ -262,19 +264,21 @@ Diese virtuellen Computer werden dem Back-End-Pool des zuvor erstellten Lastenau
   
 6. Überprüfen Sie die Einstellungen, und wählen Sie dann die Option **Erstellen**.
 
-7. Führen Sie die Schritte 1 bis 8 aus, um einen weiteren virtuellen Computer mit folgenden Werten zu erstellen. Verwenden Sie für alle übrigen Einstellungen die Werte von **myVM1**:
+7. Führen Sie die Schritte 1 bis 8 aus, um zwei weitere virtuelle Computer mit den unten angegebenen Werten zu erstellen. Verwenden Sie für alle übrigen Einstellungen die Werte von **myVM1**:
 
-    | Einstellung | VM 2|
-    | ------- | ----- |
-    | Name |  **myVM2** |
-    | Verfügbarkeitszone | **2** |
-    | Netzwerksicherheitsgruppe | Wählen Sie die vorhandene Netzwerksicherheitsgruppe (**myNSG**) aus.|
+    | Einstellung | VM 2 | VM 3 |
+    | ------- | ----- | ---- |
+    | Name |  **myVM2** | **myVM3** |
+    | Verfügbarkeitszone | **2** | **3** |
+    | Netzwerksicherheitsgruppe | Wählen Sie die vorhandene Netzwerksicherheitsgruppe (**myNSG**) aus.| Wählen Sie die vorhandene Netzwerksicherheitsgruppe (**myNSG**) aus. |
 
 
 # <a name="basic-sku"></a>[**Basic-SKU**](#tab/option-1-create-internal-load-balancer-basic)
 
 >[!NOTE]
 >Ein Lastenausgleich mit Standard-SKU wird für Produktionsworkloads empfohlen.  Weitere Informationen zu SKUs finden Sie unter **[Azure Load Balancer-SKUs](skus.md)** .
+
+:::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/resources-diagram-internal-basic.png" alt-text="Im Schnellstart erstellte Load Balancer Basic-Ressourcen." border="false":::
 
 In diesem Abschnitt wird ein Lastenausgleich für virtuelle Computer erstellt. 
 
@@ -445,13 +449,13 @@ In diesem Abschnitt wird eine Lastenausgleichsregel mit folgenden Merkmalen erst
 
 In diesem Abschnitt führen Sie folgende Schritte aus:
 
-* Erstellen von zwei virtuellen Computern für den Back-End-Pool des Lastenausgleichs
+* Erstellen von drei virtuellen Computern für den Back-End-Pool des Lastenausgleichs
 * Erstellen einer Verfügbarkeitsgruppe für die virtuellen Computer
 * Installieren von IIS auf den virtuellen Computern, um den Lastenausgleich zu testen
 
 ### <a name="create-virtual-machines"></a>Erstellen von virtuellen Computern
 
-In diesem Abschnitt erstellen Sie zwei virtuelle Computer (**myVM1** und **myVM2**).
+In diesem Abschnitt erstellen Sie drei VMs (**myVM1**, **myVM2** und **myVM3**).
 
 Die beiden virtuellen Computer werden einer Verfügbarkeitsgruppe namens **myAvailabilitySet** hinzugefügt.
 
@@ -498,13 +502,13 @@ Diese virtuellen Computer werden dem Back-End-Pool des zuvor erstellten Lastenau
   
 6. Überprüfen Sie die Einstellungen, und wählen Sie dann die Option **Erstellen**.
 
-7. Führen Sie die Schritte 1 bis 8 aus, um einen weiteren virtuellen Computer mit folgenden Werten zu erstellen. Verwenden Sie für alle übrigen Einstellungen die Werte von **myVM1**:
+7. Führen Sie die Schritte 1 bis 8 aus, um zwei weitere virtuelle Computer mit den unten angegebenen Werten zu erstellen. Verwenden Sie für alle übrigen Einstellungen die Werte von **myVM1**:
 
-    | Einstellung | VM 2 |
-    | ------- | ----- |
-    | Name |  **myVM2** |
-    | Verfügbarkeitsgruppe| Wählen Sie **myAvailabilitySet** aus. |
-    | Netzwerksicherheitsgruppe | Wählen Sie die vorhandene Netzwerksicherheitsgruppe (**myNSG**) aus.|
+    | Einstellung | VM 2 | VM 3 |
+    | ------- | ----- | ---- |
+    | Name |  **myVM2** | **myVM3** |
+    | Verfügbarkeitsgruppe | Wählen Sie **myAvailabilitySet** aus. | Wählen Sie **myAvailabilitySet** aus. |
+    | Netzwerksicherheitsgruppe | Wählen Sie die vorhandene Netzwerksicherheitsgruppe (**myNSG**) aus. | Wählen Sie die vorhandene Netzwerksicherheitsgruppe (**myNSG**) aus. |
 
 ### <a name="add-virtual-machines-to-the-backend-pool"></a>Hinzufügen virtueller Computer zum Back-End-Pool
 
@@ -518,7 +522,7 @@ Die in den vorherigen Schritten erstellten virtuellen Computer müssen dem Back-
 
 4. Wählen Sie im Abschnitt **Virtuelle Computer** die Option **+ Hinzufügen** aus.
 
-5. Aktivieren Sie die Kontrollkästchen neben **myVM1** und **myVM2**.
+5. Aktivieren Sie die Kontrollkästchen neben **myVM1**, **myVM2** und **myVM3**.
 
 6. Wählen Sie **Hinzufügen**.
 
@@ -598,7 +602,7 @@ In diesem Abschnitt wird ein virtueller Computer namens **myTestVM** erstellt.  
    ```
 8. Schließen Sie die Bastion-Sitzung mit **myVM1**.
 
-9. Wiederholen Sie die Schritte 1 bis 6, um IIS und die aktualisierte Datei „iisstart.htm“ auf **myVM2** zu installieren.
+9. Wiederholen Sie die Schritte 1 bis 6, um IIS und die aktualisierte Datei „iisstart.htm“ auf **myVM2** und **myVM3** zu installieren.
 
 
 ## <a name="test-the-load-balancer"></a>Testen des Lastenausgleichs
@@ -630,7 +634,7 @@ Löschen Sie die Ressourcengruppe, den Lastenausgleich und alle dazugehörigen R
 In dieser Schnellstartanleitung führen Sie die folgenden Schritte aus:
 
 * Erstellen einer internen Azure Load Balancer-Instanz (Standard oder Basic)
-* Anfügen von zwei virtuellen Computern an den Lastenausgleich
+* Anfügen von drei virtuellen Computern an den Lastenausgleich
 * Konfigurieren der Lastenausgleichsregel für den Datenverkehr sowie eines Integritätstests und anschließendes Testen des Lastenausgleichs 
 
 Fahren Sie mit dem folgenden Artikel fort, um sich weiter über Azure Load Balancer zu informieren:

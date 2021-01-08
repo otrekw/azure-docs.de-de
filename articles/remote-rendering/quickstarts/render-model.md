@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 01/23/2020
 ms.topic: quickstart
-ms.openlocfilehash: 74bad563de60abc0c1eb7623a81c83fea03f5ee6
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 6258365ab00ab538f3f3502682078d29a391578c
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207222"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724929"
 ---
 # <a name="quickstart-render-a-model-with-unity"></a>Schnellstart: Rendern eines Modells mit Unity
 
@@ -74,8 +74,8 @@ Das von uns gerenderte Standardmodell ist ein [integriertes Beispielmodell](../s
 ![ARR-Kontoinformationen](./media/arr-sample-account-info.png)
 
 > [!IMPORTANT]
-> Im Azure-Portal wird die Domäne Ihres Kontos nur als *mixedreality.azure.com* angezeigt. Dies reicht für die vollständige Verbindungsherstellung nicht aus.
-> Legen Sie **AccountDomain** auf `<region>.mixedreality.azure.com` fest, wobei `<region>` für [eine Ihrer verfügbaren Regionen](../reference/regions.md) steht.
+> Legen Sie **AccountDomain** auf `<region>.mixedreality.azure.com` fest, wobei `<region>` für [eine der verfügbaren Regionen in Ihrer Nähe](../reference/regions.md) steht.\
+> Legen Sie **AccountAuthenticationDomain** gemäß der Anzeige im Azure-Portal auf die [Kontodomäne](../how-tos/create-an-account.md#retrieve-the-account-information) fest.
 
 Wir möchten dieses Projekt später für ein HoloLens-Gerät bereitstellen und dafür eine Verbindung mit dem Remote Rendering-Dienst herstellen. Da es keine einfache Möglichkeit zum Eingeben der Anmeldeinformationen auf dem Gerät gibt, werden die **Anmeldeinformationen in der Unity-Szene gespeichert**.
 
@@ -92,9 +92,7 @@ Glückwunsch! Nun wird ein per Remotezugriff gerendertes Modell angezeigt.
 
 ## <a name="inspecting-the-scene"></a>Überprüfen der Szene
 
-Nachdem die Verbindung für das Rendern per Remotezugriff hergestellt wurde, werden im Inspector-Bereich weitere Statusinformationen angezeigt:
-
-![Wiedergabe des Unity-Beispiels](./media/arr-sample-configure-session-running.png)
+Nachdem die Verbindung für das Rendern per Remotezugriff hergestellt wurde, werden im Inspector-Bereich weitere Statusinformationen angezeigt: ![Wiedergabe des Unity-Beispiels](./media/arr-sample-configure-session-running.png)
 
 Sie können den Szenengraphen erkunden, indem Sie den neuen Knoten auswählen und im Inspector auf **Show children** (Untergeordnete Elemente anzeigen) klicken.
 

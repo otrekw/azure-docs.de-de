@@ -9,12 +9,12 @@ ms.subservice: template
 ms.date: 03/27/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: 2d748f787b40bb26e9faebb028d71c6c3e30ee55
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: d5eba5486e7d26e62379e0112cd4b95322e6dae1
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94516559"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97705233"
 ---
 # <a name="tutorial-install-applications-in-virtual-machine-scale-sets-with-an-azure-template"></a>Tutorial: Installieren von Anwendungen in VM-Skalierungsgruppen mit einer Azure-Vorlage
 Zum Ausführen von Anwendungen auf VM-Instanzen in einer Skalierungsgruppe müssen Sie zuerst die Anwendungskomponenten und erforderlichen Dateien installieren. In einem vorherigen Tutorial wurde beschrieben, wie Sie ein benutzerdefiniertes VM-Image erstellen und verwenden, um Ihre VM-Instanzen bereitzustellen. Dieses benutzerdefinierte Image umfasste manuelle Anwendungsinstallationen und -konfigurationen. Sie können die Installation von Anwendungen auch per Skalierungsgruppe automatisieren, nachdem die einzelnen VM-Instanzen bereitgestellt wurden, oder eine Anwendung aktualisieren, die bereits in einer Skalierungsgruppe ausgeführt wird. In diesem Tutorial lernen Sie Folgendes:
@@ -76,10 +76,10 @@ Wir verwenden die Beispielvorlage, um eine Skalierungsgruppe zu erstellen und di
 az group create --name myResourceGroup --location eastus
 ```
 
-Sie erstellen nun mit [az group deployment create](/cli/azure/group/deployment) eine VM-Skalierungsgruppe. Geben Sie bei entsprechender Aufforderung Ihren eigenen Benutzernamen mit dem dazugehörigen Kennwort jeweils als Anmeldeinformationen für eine VM-Instanz an:
+Erstellen Sie nun mit [az deployment group create](/cli/azure/deployment/group) eine VM-Skalierungsgruppe. Geben Sie bei entsprechender Aufforderung Ihren eigenen Benutzernamen mit dem dazugehörigen Kennwort jeweils als Anmeldeinformationen für eine VM-Instanz an:
 
 ```azurecli-interactive
-az group deployment create \
+az deployment group create \
   --resource-group myResourceGroup \
   --template-uri https://raw.githubusercontent.com/Azure-Samples/compute-automation-configurations/master/scale_sets/azuredeploy.json
 ```
@@ -134,10 +134,10 @@ Um die Definition der benutzerdefinierten Skripterweiterung zu aktualisieren, ä
 }
 ```
 
-Wenden Sie die Konfiguration der benutzerdefinierten Skripterweiterung erneut auf die VM-Instanzen in Ihrer Skalierungsgruppe an, indem Sie [az group deployment create](/cli/azure/group/deployment) verwenden. Die Vorlage *azuredeployv2.json* wird verwendet, um die aktualisierte Version der Anwendung anzuwenden. In der Praxis ändern Sie die vorhandene Vorlage *azuredeploy.json* so, dass sie auf das aktualisierte Installationsskript verweist. Dies wurde im vorherigen Abschnitt veranschaulicht. Geben Sie bei entsprechender Aufforderung denselben Benutzernamen mit dem dazugehörigen Kennwort als Anmeldeinformationen ein, den Sie bei der ursprünglichen Erstellung der Skalierungsgruppe verwendet haben:
+Wenden Sie die Konfiguration der benutzerdefinierten Skripterweiterung erneut auf die VM-Instanzen in Ihrer Skalierungsgruppe an, indem Sie [az deployment group create](/cli/azure/deployment/group) verwenden. Die Vorlage *azuredeployv2.json* wird verwendet, um die aktualisierte Version der Anwendung anzuwenden. In der Praxis ändern Sie die vorhandene Vorlage *azuredeploy.json* so, dass sie auf das aktualisierte Installationsskript verweist. Dies wurde im vorherigen Abschnitt veranschaulicht. Geben Sie bei entsprechender Aufforderung denselben Benutzernamen mit dem dazugehörigen Kennwort als Anmeldeinformationen ein, den Sie bei der ursprünglichen Erstellung der Skalierungsgruppe verwendet haben:
 
 ```azurecli-interactive
-az group deployment create \
+az deployment group create \
   --resource-group myResourceGroup \
   --template-uri https://raw.githubusercontent.com/Azure-Samples/compute-automation-configurations/master/scale_sets/azuredeploy_v2.json
 ```
