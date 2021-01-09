@@ -110,7 +110,7 @@
 - name: Ressourcen
   items:
     - name: Häufig gestellte Fragen
-      href: firewall-faq.md
+      href: firewall-faq.yml
     - name: Verfassen von Vorlagen
       href: ../azure-resource-manager/templates/template-syntax.md
     - name: Azure-Roadmap
