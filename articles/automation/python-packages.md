@@ -3,15 +3,15 @@ title: Verwalten von Python 2-Paketen in Azure Automation
 description: In diesem Artikel wird erläutert, wie Sie Python 2-Pakete in Azure Automation verwalten.
 services: automation
 ms.subservice: process-automation
-ms.date: 02/25/2019
+ms.date: 12/17/2020
 ms.topic: conceptual
 ms.custom: devx-track-python
-ms.openlocfilehash: 1ab0b2def1a22470c1d0b6339e1525cd683b4a0b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fd830afd5628591019902ca583f9cbc8e2a7ecad
+ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90987559"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97683396"
 ---
 # <a name="manage-python-2-packages-in-azure-automation"></a>Verwalten von Python 2-Paketen in Azure Automation
 
@@ -25,11 +25,11 @@ Wählen Sie in Ihrem Automation-Konto unter **Python 2-Pakete** die Option **Fre
 
 Wählen Sie auf der Seite „Python 2-Paket hinzufügen“ ein lokales Paket für den Upload aus. Das Paket kann eine Datei im Format **.whl** oder **.tar.gz** sein. Klicken Sie nach der Auswahl des Pakets auf **OK**, um es hochzuladen.
 
-:::image type="content" source="media/python-packages/upload-package.png" alt-text="Screenshot mit der Seite „Python 2-Pakete“ mit Python 2-Paketen im linken Menü und Hervorhebung von „Python 2-Paket hinzufügen“.":::
+:::image type="content" source="media/python-packages/upload-package.png" alt-text="Screenshot der Seite „Python 2-Paket hinzufügen“ mit Auswahl der hochgeladenen Datei „tar.gz“.":::
 
 Sobald ein Paket importiert wurde, wird es in Ihrem Automation-Konto auf der Seite „Python 2-Pakete“ aufgelistet. Um ein Paket zu entfernen, wählen Sie das Paket aus, und klicken Sie dann auf **Löschen**.
 
-:::image type="content" source="media/python-packages/package-list.png" alt-text="Screenshot mit der Seite „Python 2-Pakete“ mit Python 2-Paketen im linken Menü und Hervorhebung von „Python 2-Paket hinzufügen“.":::
+:::image type="content" source="media/python-packages/package-list.png" alt-text="Screenshot der Seite „Python 2-Pakete“ nach dem Import eines Pakets.":::
 
 ## <a name="import-packages-with-dependencies"></a>Importieren von Paketen mit Abhängigkeiten
 
@@ -47,14 +47,14 @@ Sobald die Pakete heruntergeladen sind, können Sie sie in Ihr Automation-Konto 
 
 ### <a name="runbook"></a>Runbook
 
- Um ein Runbook zu erhalten, importieren Sie aus dem Katalog [Python 2-Pakete aus pypi in Ihr Azure Automation-Konto](https://gallery.technet.microsoft.com/scriptcenter/Import-Python-2-packages-57f7d509). Stellen Sie sicher, dass die Ausführungseinstellungen auf **Azure** festgelegt sind, und starten Sie das Runbook mit den Parametern. Das Runbook erfordert ein „Ausführendes Konto“, damit das Automation-Konto funktioniert. Für jeden Parameter stellen Sie sicher, dass Sie ihn mit dem Parameter starten, wie er in der folgende Liste und Abbildung zu sehen ist:
+ Um ein Runbook zu erhalten, importieren Sie aus der Azure Automation-GitHub-Organisation [Python 2-Pakete aus pypi in Ihr Azure Automation-Konto](https://github.com/azureautomation/import-python-2-packages-from-pypi-into-azure-automation-account). Stellen Sie sicher, dass die Ausführungseinstellungen auf **Azure** festgelegt sind, und starten Sie das Runbook mit den Parametern. Das Runbook erfordert ein „Ausführendes Konto“, damit das Automation-Konto funktioniert. Für jeden Parameter stellen Sie sicher, dass Sie ihn mit dem Parameter starten, wie er in der folgende Liste und Abbildung zu sehen ist:
 
 * -s \<subscriptionId\>
 * -g \<resourceGroup\>
 * -a \<automationAccount\>
 * -m \<modulePackage\>
 
-:::image type="content" source="media/python-packages/import-python-runbook.png" alt-text="Screenshot mit der Seite „Python 2-Pakete“ mit Python 2-Paketen im linken Menü und Hervorhebung von „Python 2-Paket hinzufügen“.":::
+:::image type="content" source="media/python-packages/import-python-runbook.png" alt-text="Screenshot der Seite „Übersicht“ für import_py2package_from_pypi mit dem Bereich „Runbook starten“ auf der rechten Seite.":::
 
 Mithilfe des Runbooks können Sie angeben, welches Paket heruntergeladen werden soll. Verwenden Sie beispielsweise den `Azure`-Parameter, um alle Azure-Module und alle Abhängigkeiten (etwa 105) herunterzuladen.
 

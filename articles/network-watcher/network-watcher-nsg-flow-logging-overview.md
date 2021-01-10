@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 79f442c5ab7db92e69f5396f3f9205212bdf4d4d
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: d6b916ce03c6850f78217f1aac0b63048a6aff3b
+ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97399246"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97858500"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>Einführung in die Datenflussprotokollierung für Netzwerksicherheitsgruppen
 
@@ -353,6 +353,7 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 **Überlegungen zum Speicherkonto:** 
 
 - Standort: Das verwendete Speicherkonto muss sich in derselben Region wie die Netzwerksicherheitsgruppe befinden.
+- Leistungsstufe: Zurzeit werden nur Speicherkonten der Standard-Ebene unterstützt.
 - Rotation von selbstverwalteten Schlüsseln: Wenn Sie die Zugriffsschlüssel für Ihr Speicherkonto ändern oder rotieren, funktionieren die NSG-Datenflussprotokolle nicht mehr. Um dieses Problem zu beheben, müssen Sie die NSG-Datenflussprotokolle deaktivieren und anschließend wieder aktivieren.
 
 **Kosten der Datenflussprotokollierung**: Die NSG-Datenflussprotokollierung wird über die Menge der erzeugten Protokolle abgerechnet. Hohe Datenverkehrsvolumen können zu großen Datenflussprotokollvolumen und den damit verbundenen Kosten führen. Preise für NSG-Datenflussprotokolle enthalten nicht die zugrunde liegenden Kosten der Speicherung. Die Verwendung der Aufbewahrungsrichtlinienfunktion mit NSG-Datenflussprotokollierung bedeutet, dass separate Speicherkosten für längere Zeiträume anfallen. Wenn Sie die Aufbewahrungsrichtlinienfunktion nicht benötigen, empfehlen wir, dass Sie diesen Wert auf 0 festlegen. Weitere Informationen und zusätzliche Details finden Sie unter [Network Watcher – Preise](https://azure.microsoft.com/pricing/details/network-watcher/) und [Preise für Azure Storage](https://azure.microsoft.com/pricing/details/storage/).
@@ -374,7 +375,7 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 **Aktivieren der NSG-Datenflussprotokollierung für alle Netzwerksicherheitsgruppen (NSGs), die einer Ressource angefügt sind**: Datenflussprotokollierung in Azure wird für die einzelne NSG-Ressource konfiguriert. Ein Flow wird nur einer einzigen NSG-Regel zugeordnet. In Szenarien, in denen mehrere NSGs verwendet werden, wird empfohlen, die NSG-Datenflussprotokollierung für alle auf das Subnetz oder die Netzwerkschnittstelle einer Ressource angewandten Netzwerksicherheitsgruppen zu aktivieren. Damit wird sichergestellt, dass der gesamte Datenverkehr aufgezeichnet wird. Weitere Informationen zu Netzwerksicherheitsgruppen finden Sie unter [Auswertung von Datenverkehr](../virtual-network/network-security-group-how-it-works.md). 
 
 Gängige Szenarien:
-1. **Mehrere NSGs an einer NIC:** Falls mehrere NSGs an eine NIC angefügt sind, muss die Datenflussprotokollierung für alle aktiviert werden.
+1. **Mehrere NICs auf einem virtuellen Computer**: Falls einem virtuellen Computer mehrere NICs angefügt sind, muss die Datenflussprotokollierung für alle aktiviert werden.
 1. **NSG auf NIC- und Subnetzebene:** Falls die NSG auf NIC- und auf Subnetzebene konfiguriert ist, muss die Datenflussprotokollierung in beiden NSGs aktiviert werden. 
 
 **Speicherbereitstellung**: Speicher sollte in Abstimmung mit dem erwarteten Datenflussprotokoll-Volumen bereitgestellt werden.

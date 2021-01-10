@@ -1,14 +1,14 @@
 ---
 title: Übersicht über den Connected Machine-Agent für Windows
 description: Dieser Artikel bietet eine ausführliche Übersicht über den Agent für Azure Arc-fähige Server, der die Überwachung von VMs unterstützt, die in Hybridumgebungen gehostet werden.
-ms.date: 12/15/2020
+ms.date: 12/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: 531041b7d7439dd2a48fa9e06eb82796f470e9ed
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: bff76cbaa678ed82538eb6d75633aa94cdce30bf
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97563023"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97723268"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>Übersicht über den Agent für Azure Arc-fähige Server
 
@@ -49,7 +49,7 @@ Der Azure Connected Machine-Agent für Windows und Linux kann abhängig von Ih
 
 Für den Azure Connected Machine-Agent werden offiziell folgende Windows- und Linux-Versionen unterstützt:
 
-- Windows Server 2012 R2 und höher (einschließlich Windows Server Core)
+- Windows Server 2008 R2, Windows Server 2012 R2 und höher (einschließlich Server Core)
 - Ubuntu 16.04 und 18.04 LTS (x64)
 - CentOS Linux 7 (x64)
 - SUSE Linux Enterprise Server (SLES) 15 (x64)
@@ -82,6 +82,10 @@ Um die Sicherheit von Daten bei der Übertragung an Azure zu gewährleisten, wir
 
 Der Connected Machine-Agent für Linux und Windows kommuniziert ausgehend auf sichere Weise über den TCP-Port 443 mit Azure Arc. Wenn der Computer für die Kommunikation über das Internet eine Firewall oder einen Proxyserver durchlaufen muss, sehen Sie sich Folgendes an, um sich mit der erforderlichen Netzwerkkonfiguration vertraut zu machen.
 
+> [!NOTE]
+> Azure Arc-fähige Server unterstützen die Verwendung eines [Log Analytics-Gateways](../../azure-monitor/platform/gateway.md) als Proxy für den Connected Machine-Agent nicht.
+>
+
 Sollte die ausgehende Konnektivität durch Ihre Firewall oder Ihren Proxyserver eingeschränkt sein, stellen Sie sicher, dass die unten aufgeführten URLs nicht blockiert werden. Wenn Sie nur die IP-Adressbereiche oder Domänennamen zulassen, die der Agent für die Kommunikation mit dem Dienst benötigt, müssen Sie auch den Zugriff auf die folgenden Diensttags und URLs zulassen.
 
 Diensttags:
@@ -97,9 +101,11 @@ URLs:
 |---------|---------|
 |`management.azure.com`|Azure Resource Manager|
 |`login.windows.net`|Azure Active Directory|
+|`login.microsoftonline.com`|Azure Active Directory|
 |`dc.services.visualstudio.com`|Application Insights|
 |`*.guestconfiguration.azure.com` |Gastkonfiguration|
 |`*.his.arc.azure.com`|Hybrididentitätsdienst|
+|`www.office.com`|Office 365|
 
 Vorschau-Agents (Version 0.11 und niedriger) benötigen außerdem Zugriff auf die folgenden URLs:
 
@@ -163,7 +169,7 @@ Der Connected Machine-Agent für Windows kann mit einer der folgenden drei Metho
 * Führen Sie das Windows Installer-Paket `AzureConnectedMachineAgent.msi` manuell über die Befehlsshell aus.
 * Verwenden Sie eine Skriptmethode in einer PowerShell-Sitzung.
 
-Nach der Installation des Connected Machine-Agents für Windows werden die folgenden zusätzlichen systemweiten Konfigurationsänderungen angewendet.
+Nach der Installation des Connected Machine-Agents für Windows werden die folgenden systemweiten Konfigurationsänderungen angewendet.
 
 * Die folgenden Installationsordner werden während des Setups erstellt.
 
@@ -215,7 +221,7 @@ Nach der Installation des Connected Machine-Agents für Windows werden die folge
 
 Der Linux-Agent für verbundene Computer wird im bevorzugten Paketformat für die Distribution (RPM oder DEB) bereitgestellt, die im [Paketrepository](https://packages.microsoft.com/) von Microsoft gehostet wird. Der Agent wird installiert und mit dem Shellskriptpaket [Install_linux_azcmagent.sh](https://aka.ms/azcmagent) konfiguriert.
 
-Nach der Installation des Connected Machine-Agents für Linux werden die folgenden zusätzlichen systemweiten Konfigurationsänderungen angewendet.
+Nach der Installation des Connected Machine-Agents für Linux werden die folgenden systemweiten Konfigurationsänderungen angewendet.
 
 * Die folgenden Installationsordner werden während des Setups erstellt.
 

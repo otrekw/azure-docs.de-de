@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: eff738e24b3abce52e80291c55a3ae64c3c8c853
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 55692122461ef1b22b43b0def43e826ac7aeae30
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92904951"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97813784"
 ---
 # <a name="test-through-simulations"></a>Durchführen von Simulationstests
 
@@ -54,15 +54,19 @@ Die Konfiguration sollte jetzt wie folgt aussehen:
 
 1. Melden Sie sich bei https://portal.azure.com an, und wechseln Sie zu Ihrem Abonnement.
 1. Wählen Sie die öffentliche IP-Adresse aus, mit der Sie den Angriff getestet haben.
-1. Wählen Sie unter **Überwachung** die Option **Metriken** .
+1. Wählen Sie unter **Überwachung** die Option **Metriken**.
 1. Wählen Sie für **Metrik** die Option _Unter DDoS-Angriff oder nicht_ aus.
 
 Sobald die Ressource angegriffen wird, sollte der Wert von **0** in **1** geändert werden, wie in der folgenden Abbildung gezeigt:
 
 ![Beispielsimulation eines DDoS-Angriffs: Portal](./media/ddos-attack-simulation/ddos-attack-simulation-example-2.png)
 
+### <a name="breakingpoint-cloud-api-script"></a>BreakingPoint Cloud-API-Skript
+
+Dieses [API-Skript](https://github.com/Azure/Azure-Network-Security/tree/master/Azure%20DDoS%20Protection/Breaking%20Point%20SDK) kann verwendet werden, um DDoS-Tests zu automatisieren, indem es einmalig ausgeführt wird oder indem mithilfe von cron regelmäßige Tests geplant werden. Dies ist nützlich, um zu überprüfen, ob Ihre Protokollierung ordnungsgemäß konfiguriert ist und ob Erkennungs- und Reaktionsprozeduren wirksam sind. Für die Skripts ist ein Linux-Betriebssystem (getestet mit Ubuntu 18.04 LTS) und Python 3 erforderlich. Installieren Sie die erforderlichen Komponenten und den API-Client mithilfe des enthaltenen Skripts oder indem Sie die Dokumentation auf der [BreakingPoint Cloud](http://breakingpoint.cloud/)-Website verwenden.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie, wie Sie [Telemetriedaten zum DDoS-Schutz anzeigen und konfigurieren](telemetry-monitoring-alerting.md).
-- Erfahren Sie, wie Sie [Berichte und Datenflussprotokolle zur Entschärfung von DDoS-Angriffen konfigurieren](reports-and-flow-logs.md).
+- Erfahren Sie, wie Sie [Telemetriedaten zum DDoS-Schutz anzeigen und konfigurieren](telemetry.md).
+- Erfahren Sie mehr zum [Anzeigen und Konfigurieren der DDoS-Diagnoseprotokollierung](diagnostic-logging.md).
 - Erfahren Sie, wie Sie [DDoS Rapid Response einbinden](ddos-rapid-response.md).

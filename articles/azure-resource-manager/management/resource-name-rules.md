@@ -2,13 +2,13 @@
 title: Einschränkungen bei Ressourcennamen
 description: Zeigt die Benennungsregeln und -einschränkungen für Azure-Ressourcen
 ms.topic: conceptual
-ms.date: 12/04/2020
-ms.openlocfilehash: a6aac03277a11cf671f5a618bc85ff987cfdc2dd
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.date: 12/29/2020
+ms.openlocfilehash: edcf3f09b57ed7628611c482effddb210ef8e456
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96608315"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814379"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Benennungsregeln und -einschränkungen für Azure-Ressourcen
 
@@ -170,7 +170,7 @@ In den folgenden Tabellen bezieht sich der Begriff alphanumerisch auf:
 > | galleries | Ressourcengruppe | 1-80 | Alphanumerische Zeichen und Punkte.<br><br>Beginnen und enden Sie mit einem alphanumerischen Zeichen. |
 > | galleries/applications | Katalog | 1-80 | Alphanumerische Zeichen, Bindestriche und Punkte.<br><br>Beginnen und enden Sie mit einem alphanumerischen Zeichen. |
 > | galleries/applications/versions | application | 32-bit integer | Zahlen und Punkte. |
-> | galleries/images | Katalog | 1-80 | Alphanumerische Zeichen, Bindestriche und Punkte.<br><br>Beginnen und enden Sie mit einem alphanumerischen Zeichen. |
+> | galleries/images | Katalog | 1-80 | Alphanumerische Zeichen, Unterstriche, Bindestriche und Punkte.<br><br>Beginnen und enden Sie mit einem alphanumerischen Zeichen. |
 > | galleries/images/versions | image | 32-bit integer | Zahlen und Punkte. |
 > | images | Ressourcengruppe | 1-80 | Alphanumerische Zeichen, Unterstriche, Punkte und Bindestriche.<br><br>Beginnen Sie mit einem alphanumerischen Zeichen. Enden Sie mit einem alphanumerischen Zeichen oder einem Unterstrich. |
 > | snapshots | Ressourcengruppe | 1-80 | Alphanumerische Zeichen, Unterstriche, Punkte und Bindestriche.<br><br>Beginnen Sie mit einem alphanumerischen Zeichen. Enden Sie mit einem alphanumerischen Zeichen oder einem Unterstrich. |
@@ -537,7 +537,7 @@ In den folgenden Tabellen bezieht sich der Begriff alphanumerisch auf:
 > | Entität | `Scope` | Länge | Gültige Zeichen |
 > | --- | --- | --- | --- |
 > | clusters | Ressourcengruppe | 4–63 | Alphanumerische Zeichen und Bindestriche.<br><br>Beginnen und enden Sie mit einem alphanumerischen Zeichen. |
-> | workspaces | Ressourcengruppe | 4–63 | Alphanumerische Zeichen und Bindestriche.<br><br>Beginnen und enden Sie mit einem alphanumerischen Zeichen. |
+> | workspaces | Global | 4–63 | Alphanumerische Zeichen und Bindestriche.<br><br>Beginnen und enden Sie mit einem alphanumerischen Zeichen. |
 
 ## <a name="microsoftoperationsmanagement"></a>Microsoft.OperationsManagement
 

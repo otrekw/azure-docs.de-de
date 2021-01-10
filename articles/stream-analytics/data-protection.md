@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 12/03/2020
-ms.openlocfilehash: 4436289d544de057acef132117346ac53c20b5a7
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 76218003a40c02def3dc62ea8480022d9647938d
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576497"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97723336"
 ---
 # <a name="data-protection-in-azure-stream-analytics"></a>Schutz von Daten in Azure Stream Analytics 
 
@@ -72,7 +72,7 @@ Führen Sie die folgenden Schritte aus, um Ihr Speicherkonto für private Datenr
 
    ![Einstellungen des Speicherkontos für private Daten](./media/data-protection/storage-account-create.png)
 
-1. Für die Authentifizierung mit einer verwalteten Identität (Vorschau) wählen Sie in der Dropdownliste „Authentifizierungsmodus“ die Option **Verwaltete Identität** aus. Wenn Sie „Verwaltete Identität“ auswählen, müssen Sie Ihren Stream Analytics-Auftrag der Zugriffssteuerungsliste des Speicherkontos hinzufügen. Wenn Sie dem Auftrag keinen Zugriff gewähren, kann er keine Vorgänge ausführen. Weitere Informationen zum Gewähren von Zugriff finden Sie unter [Verwenden von Azure RBAC zum Zuweisen des Zugriffs einer verwalteten Identität auf eine andere Ressource](../active-directory/managed-identities-azure-resources/howto-assign-access-portal.md#use-azure-rbac-to-assign-a-managed-identity-access-to-another-resource).
+1. Für die Authentifizierung mit einer verwalteten Identität (Vorschau) wählen Sie in der Dropdownliste „Authentifizierungsmodus“ die Option **Verwaltete Identität** aus. Wenn Sie „Verwaltete Identität“ auswählen, müssen Sie Ihren Stream Analytics-Auftrag der Zugriffssteuerungsliste des Speicherkontos mit der Rolle *Mitwirkender an Storage-Blobdaten* hinzufügen. Wenn Sie dem Auftrag keinen Zugriff gewähren, kann er keine Vorgänge ausführen. Weitere Informationen zum Gewähren von Zugriff finden Sie unter [Verwenden von Azure RBAC zum Zuweisen des Zugriffs einer verwalteten Identität auf eine andere Ressource](../active-directory/managed-identities-azure-resources/howto-assign-access-portal.md#use-azure-rbac-to-assign-a-managed-identity-access-to-another-resource).
 
    :::image type="content" source="media/data-protection/storage-account-create-msi.png" alt-text="Einstellungen für private Datenspeicherkonten mit Authentifizierung durch verwaltete Identitäten":::
 

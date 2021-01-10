@@ -2,13 +2,13 @@
 title: Key Vault-Geheimnis mit Vorlage
 description: Informationen zum Übergeben eines geheimen Schlüssels aus einem Schlüsseltresor als Parameter während der Bereitstellung.
 ms.topic: conceptual
-ms.date: 01/06/2020
-ms.openlocfilehash: eb57e680090a38a5be725daa7b3a118039aa35f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 12/17/2020
+ms.openlocfilehash: 8983d51d90e07e21ac4c9489c7ed553530278d3c
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84677864"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672704"
 ---
 # <a name="use-azure-key-vault-to-pass-secure-parameter-value-during-deployment"></a>Verwenden von Azure Key Vault zum Übergeben eines sicheren Parameterwerts während der Bereitstellung
 
@@ -377,3 +377,4 @@ Die folgende Vorlage erstellt dynamisch die Schlüsseltresor-ID und übergibt si
 
 - Allgemeine Informationen zu Schlüsseltresoren finden Sie unter [Was ist Azure Key Vault?](../../key-vault/general/overview.md)
 - Vollständige Beispiele für Verweise auf geheime Schlüssel finden Sie unter [Key Vault examples](https://github.com/rjmax/ArmExamples/tree/master/keyvaultexamples)(in englischer Sprache).
+- Ein Microsoft Learn-Modul, das das Übergeben eines sicheren Werts aus einem Schlüsseltresor behandelt, finden Sie unter [Verwalten komplexer Cloudbereitstellungen mithilfe erweiterter ARM-Vorlagenfunktionen](/learn/modules/manage-deployments-advanced-arm-template-features/).

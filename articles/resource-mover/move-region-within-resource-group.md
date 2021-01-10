@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 09/08/2020
 ms.author: raynew
-ms.openlocfilehash: 34064fe3fe88a34b0dd2430d7adec3ebcb17ebcc
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 79224c14fc5182df7a699864af3d78c9be36259f
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95528226"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97797273"
 ---
 # <a name="move-resources-across-regions-from-resource-group"></a>Regionsübergreifendes Verschieben von Ressourcen (aus Ressourcengruppe)
 
@@ -57,6 +57,9 @@ In diesem Artikel erfahren Sie, wie Sie Ressourcen in einer bestimmten Ressource
 ## <a name="select-resources-to-move"></a>Auswählen der zu verschiebenden Ressourcen
 
 Wählen Sie die Ressourcen aus, die Sie verschieben möchten. Sie verschieben Ressourcen in eine Zielregion im Abonnement der Quellregion. Wenn Sie das Abonnement ändern möchten, können Sie dies nach dem Verschieben der Ressourcen tun.
+
+> [!NOTE]
+>  Wählen Sie keine zugeordneten Datenträger aus, sonst schlägt der Vorgang fehl. Zugeordnete Datenträger werden automatisch in eine VM-Verschiebung eingeschlossen.
 
 1. Öffnen Sie im Azure-Portal die relevante Ressourcengruppe.
 2. Wählen Sie auf der Seite „Ressourcengruppe“ die Ressourcen aus, die Sie verschieben möchten.

@@ -3,14 +3,14 @@ title: Verwalten von Pre- und Post-Skripts in der Bereitstellung der Updateverwa
 description: In diesem Artikel erfahren Sie, wie Sie Pre- und Post-Skripts für Updatebereitstellungen konfigurieren und verwalten.
 services: automation
 ms.subservice: update-management
-ms.date: 05/17/2019
+ms.date: 12/17/2020
 ms.topic: conceptual
-ms.openlocfilehash: bb2a272829374cfeba5c334ff87268c4928885f5
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 4c37fe107d9256461e5aa632f859ae02c5dc42f5
+ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92221614"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97683409"
 ---
 # <a name="manage-pre-scripts-and-post-scripts"></a>Verwalten von Pre- und Post-Skripts
 
@@ -146,7 +146,7 @@ Pre- und Post-Aufgaben werden nicht nativ auf den virtuellen Azure-Computern in 
 * Ein ausführendes Konto
 * Ein Runbook, das Sie ausführen möchten
 
-Verwenden Sie das Cmdlet [Invoke-AzVMRunCommand](/powershell/module/az.compute/invoke-azvmruncommand?view=azps-3.7.0) für die Interaktion mit Ihren Azure-VMs. Ein Beispiel dafür finden Sie im Runbookbeispiel [Updateverwaltung: Ausführen eines Skripts mit dem Befehl „run“](https://gallery.technet.microsoft.com/Update-Management-Run-40f470dc).
+Verwenden Sie das Cmdlet [Invoke-AzVMRunCommand](/powershell/module/az.compute/invoke-azvmruncommand) für die Interaktion mit Ihren Azure-VMs. Ein Beispiel dafür finden Sie im Runbookbeispiel [Updateverwaltung: Ausführen eines Skripts mit dem Befehl „run“](https://github.com/azureautomation/update-management-run-script-with-run-command).
 
 ### <a name="interact-with-non-azure-machines"></a>Interagieren mit Azure-fremden Computern
 
@@ -157,7 +157,7 @@ Pre- und Post-Aufgaben werden im Azure-Kontext ausgeführt und haben keinen Zugr
 * Ein Runbook, das Sie lokal ausführen möchten
 * Ein übergeordnetes Runbook
 
-Für die Interaktion mit Azure-fremden Computern wird ein übergeordnetes Runbook im Azure-Kontext ausgeführt. Dieses Runbook ruft mit dem Cmdlet [Start-AzAutomationRunbook](/powershell/module/Az.Automation/Start-AzAutomationRunbook?view=azps-3.7.0) ein untergeordnetes Runbook auf. Sie müssen den `RunOn`-Parameter und den Namen des Hybrid Runbook Workers, auf dem das Skript ausgeführt werden soll, angeben. Weitere Informationen finden Sie im Runbookbeispiel [Update Management – run script locally](https://gallery.technet.microsoft.com/Update-Management-Run-6949cc44) (Updateverwaltung – Skript lokal ausführen).
+Für die Interaktion mit Azure-fremden Computern wird ein übergeordnetes Runbook im Azure-Kontext ausgeführt. Dieses Runbook ruft mit dem Cmdlet [Start-AzAutomationRunbook](/powershell/module/Az.Automation/Start-AzAutomationRunbook) ein untergeordnetes Runbook auf. Sie müssen den `RunOn`-Parameter und den Namen des Hybrid Runbook Workers, auf dem das Skript ausgeführt werden soll, angeben. Weitere Informationen finden Sie im Runbookbeispiel [Update Management – run script locally](https://github.com/azureautomation/update-management-run-script-locally) (Updateverwaltung – Skript lokal ausführen).
 
 ## <a name="abort-patch-deployment"></a>Abbrechen der Bereitstellung von Patches
 
@@ -173,7 +173,7 @@ if (<My custom error logic>)
 
 ## <a name="samples"></a>Beispiele
 
-Beispiele für Pre- und Post-Skripts können aus dem [Script Center-Katalog](https://gallery.technet.microsoft.com/scriptcenter/site/search?f%5B0%5D.Type=RootCategory&f%5B0%5D.Value=WindowsAzure&f%5B0%5D.Text=Windows%20Azure&f%5B1%5D.Type=SubCategory&f%5B1%5D.Value=WindowsAzure_automation&f%5B1%5D.Text=Automation&f%5B2%5D.Type=SearchText&f%5B2%5D.Value=update%20management&f%5B3%5D.Type=Tag&f%5B3%5D.Value=Patching&f%5B3%5D.Text=Patching&f%5B4%5D.Type=ProgrammingLanguage&f%5B4%5D.Value=PowerShell&f%5B4%5D.Text=PowerShell) und dem [PowerShell-Katalog](https://www.powershellgallery.com/packages?q=Tags%3A%22UpdateManagement%22+Tags%3A%22Automation%22) heruntergeladen oder über das Azure-Portal importiert werden. Wählen Sie hierzu in Ihrem Automation-Konto unter **Prozessautomatisierung** die Option **Runbookkatalog** aus. Wählen Sie **Updateverwaltung** als Filter aus.
+Beispiele für Pre- und Post-Skripts können aus der [Azure Automation-GitHub-Organisation](https://github.com/azureautomation) und dem [PowerShell-Katalog](https://www.powershellgallery.com/packages?q=Tags%3A%22UpdateManagement%22+Tags%3A%22Automation%22) heruntergeladen oder über das Azure-Portal importiert werden. Wählen Sie hierzu in Ihrem Automation-Konto unter **Prozessautomatisierung** die Option **Runbookkatalog** aus. Wählen Sie **Updateverwaltung** als Filter aus.
 
 ![Katalogliste](./media/pre-post-scripts/runbook-gallery.png)
 
@@ -242,8 +242,8 @@ $variable = Get-AutomationVariable -Name $runId
 ```
 
 > [!NOTE]
-> Für nicht grafische PowerShell-Runbooks sind `Add-AzAccount` und `Add-AzureRMAccount` Aliase für [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0). Sie können diese Cmdlets verwenden, oder Sie können Ihre Module in Ihrem Automation-Konto auf die aktuellen Versionen [aktualisieren](../automation-update-azure-modules.md). Möglicherweise müssen Sie Ihre Module auch dann aktualisieren, wenn Sie gerade ein neues Automation-Konto erstellt haben.
+> Für nicht grafische PowerShell-Runbooks sind `Add-AzAccount` und `Add-AzureRMAccount` Aliase für [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount). Sie können diese Cmdlets verwenden, oder Sie können Ihre Module in Ihrem Automation-Konto auf die aktuellen Versionen [aktualisieren](../automation-update-azure-modules.md). Möglicherweise müssen Sie Ihre Module auch dann aktualisieren, wenn Sie gerade ein neues Automation-Konto erstellt haben.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Einzelheiten zur Updateverwaltung finden Sie unter [Verwalten von Updates und Patches für Ihre VMs](manage-updates-for-vm.md).
+Einzelheiten zur Updateverwaltung finden Sie unter [Verwalten von Updates und Patches für Ihre VMs](manage-updates-for-vm.md).

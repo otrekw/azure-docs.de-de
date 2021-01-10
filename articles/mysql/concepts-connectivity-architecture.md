@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 03/16/2020
-ms.openlocfilehash: 02919c8e31e556ab7b5e7e04fcbde27dcf981736
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 2a557bb436b3bc10cf83beb450761465b43f621f
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97511568"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97655355"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-mysql"></a>Verbindungsarchitektur in Azure Database for MySQL
 In diesem Artikel wird die Verbindungsarchitektur von Azure Database for MySQL beschrieben, und Sie erfahren, wie Datenverkehr von Clients innerhalb und außerhalb von Azure an Ihre Azure Database for MySQL-Instanz weitergeleitet wird.
@@ -21,7 +21,7 @@ Die Verbindung mit Ihrer Azure Database for MySQL-Instanz wird über ein Gateway
 
 :::image type="content" source="./media/concepts-connectivity-architecture/connectivity-architecture-overview-proxy.png" alt-text="Übersicht über die Verbindungsarchitektur":::
 
-Wenn der Client eine Verbindung mit der Datenbank herstellt, wird die Verbindungszeichenfolge für den Server in die Gateway-IP-Adresse aufgelöst. Das Gateway lauscht an Port 3306 auf die IP-Adresse. Innerhalb des Datenbankclusters wird der Datenverkehr an die entsprechende Azure Database for MySQL-Instanz weitergeleitet. Für die Verbindungsherstellung mit Ihrem Server (etwa von Unternehmensnetzwerken aus) muss daher die **clientseitige Firewall geöffnet werden, damit ausgehender Datenverkehr Ihre Gateways erreichen kann**. Weiter unten finden Sie eine vollständige, nach Region aufgeschlüsselte Liste der IP-Adressen, die von unseren Gateways verwendet werden.
+Wenn der Client eine Verbindung mit der Datenbank herstellt, wird die Verbindungszeichenfolge für den Server in die Gateway-IP-Adresse aufgelöst. Das Gateway lauscht an Port 3306 auf die IP-Adresse. Innerhalb des Datenbankclusters wird der Datenverkehr an die entsprechende Azure Database for MySQL-Instanz weitergeleitet. Für die Verbindungsherstellung mit Ihrem Server (etwa von Unternehmensnetzwerken aus) muss daher die **clientseitige Firewall geöffnet werden, damit ausgehender Datenverkehr unsere Gateways erreichen kann**. Weiter unten finden Sie eine vollständige, nach Region aufgeschlüsselte Liste der IP-Adressen, die von unseren Gateways verwendet werden.
 
 ## <a name="azure-database-for-mysql-gateway-ip-addresses"></a>IP-Adressen des Azure Database for MySQL-Gateways
 
@@ -29,7 +29,7 @@ Der Gatewaydienst wird in einer Gruppe von zustandslosen Serverknoten gehostet, 
 
 Im Rahmen der kontinuierlichen Dienstwartung wird die Computehardware, auf der die Gateways gehostet werden, regelmäßig aktualisiert, um eine möglichst sichere und leistungsfähige Umgebung bereitzustellen. Bei einer Aktualisierung der Gatewayhardware wird zuerst ein neuer Ring von Serverknoten erstellt. Dieser neue Ring dient dem Datenverkehr für alle neu erstellten Azure Database for MySQL-Server. Er verfügt über eine andere IP-Adresse als frühere Gatewayringe in derselben Region, damit der Datenverkehr unterschieden werden kann. Sobald der neue Ring voll funktionsfähig ist, wird für die ältere Gatewayhardware, die für die vorhandenen Server genutzt wurde, die Außerbetriebnahme geplant. Kunden, die ihre Server auf der Gatewayhardware ausführen und eine Verbindung mit älteren Gatewayringen herstellen, werden drei Monate vor der Außerbetriebnahme der Gatewayhardware per E-Mail und im Azure-Portal benachrichtigt. Die Außerbetriebnahme von Gateways kann sich in den folgenden Fällen auf die Konnektivität Ihrer Server auswirken: 
 
-* Sie hartcodieren die Gateway-IP-Adressen in den Verbindungszeichenfolgen Ihrer Anwendung. Dies wird **nicht empfohlen**. 
+* Sie codieren die Gateway-IP-Adressen fest in die Verbindungszeichenfolgen Ihrer Anwendung ein. Dies wird **nicht empfohlen**. Sie sollten den vollqualifizierten Domänennamen (FQDN) Ihres Servers im Format „<servername>.mysql.database.azure.com“ in der Verbindungszeichenfolge für Ihre Anwendung verwenden. 
 * Sie aktualisieren die neuen Gateway-IP-Adressen nicht in der clientseitigen Firewall, sodass ausgehender Datenverkehr die neuen Gatewayringe nicht erreichen kann.
 
 Die folgende Tabelle enthält die Gateway-IP-Adressen des Azure Database for MySQL-Gateways für alle Datenregionen. In dieser Tabelle werden immer die aktuellsten Informationen zu den Gateway-IP-Adressen für die einzelnen Regionen aufgeführt. Die Spalten in der folgenden Tabelle stellen Folgendes dar:
@@ -48,7 +48,7 @@ Die folgende Tabelle enthält die Gateway-IP-Adressen des Azure Database for MyS
 | Brasilien Süd |191.233.201.8, 191.233.200.16    |  | 104.41.11.5|
 | Kanada, Mitte |40.85.224.249  | | |
 | Kanada, Osten | 40.86.226.166    | | |
-| USA (Mitte) | 23.99.160.139, 13.67.215.62, 52.182.136.37, 52.182.136.38     | | |
+| USA (Mitte) | 23.99.160.139, 13.67.215.62, 52.182.136.37, 52.182.136.38 | | |
 | China, Osten | 139.219.130.35    | | |
 | China, Osten 2 | 40.73.82.1  | | |
 | China, Norden | 139.219.15.17    | | |

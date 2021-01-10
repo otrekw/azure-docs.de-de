@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/04/2020
 ms.author: deanwe
 ms.custom: references_regions
-ms.openlocfilehash: ffbf3fa3e2d404b7bc5888ef01707cbd816600b3
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: ab056e0685264b03d35ee6b95afad7c6362f9db6
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182851"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97695790"
 ---
 # <a name="azure-automanage-for-virtual-machines"></a>Automatische Azure-Verwaltung für virtuelle Computer
 
@@ -52,7 +52,7 @@ Sie müssen über die Rolle **Mitwirkender** für die Ressourcengruppe verfügen
 > [!NOTE]
 > Wenn Sie Automanage auf einem virtuellen Computer verwenden möchten, der mit einem Arbeitsbereich in einem anderen Abonnement verbunden ist, müssen Sie in jedem Abonnement über die oben beschriebenen Berechtigungen verfügen.
 
-Es ist auch wichtig zu beachten, dass die automatische Verwaltung nur Windows-VMs unterstützt, die sich in den folgenden Regionen befinden: Europa (Westen), USA (Osten), USA (Westen 2), Kanada (Mitte), USA (Westen-Mitte).
+Es ist auch wichtig zu beachten, dass die automatische Verwaltung nur Windows-VMs unterstützt, die sich in den folgenden Regionen befinden: „Europa, Westen“, „USA, Osten“, „USA, Westen 2“, „Kanada, Mitte“, „USA, Westen-Mitte“, „Japan, Osten“.
 
 ## <a name="participating-services"></a>Beteiligte Dienste
 
