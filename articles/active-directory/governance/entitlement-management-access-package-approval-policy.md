@@ -16,12 +16,12 @@ ms.date: 09/16/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2e36b2d4576b43544bec89efd326363344b35be9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 48b5260e883d85899953240f6ee4f83127681c9e
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90993252"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591298"
 ---
 # <a name="change-approval-and-requestor-information-preview-settings-for-an-access-package-in-azure-ad-entitlement-management"></a>Ändern Sie die Einstellungen zu Genehmigungs- und Anfordererinformationen (Vorschau) für ein Zugriffspaket in der Azure Active Directory-Berechtigungsverwaltung.
 
@@ -132,13 +132,15 @@ Wenn Sie beispielsweise Alice und Bob als erste genehmigende Personen aufgeliste
 
 1. Klicken Sie unter der ersten genehmigenden Person, der zweiten genehmigenden Person oder unter beiden auf **Erweiterte Anforderungseinstellungen anzeigen**.
 
-    ![Zugriffspakete – Richtlinie – Erweiterte Anforderungseinstellungen anzeigen](./media/entitlement-management-access-package-approval-policy/alternate-approvers-click-advanced-request.png)
+    :::image type="content" source="media/entitlement-management-access-package-approval-policy/alternate-approvers-click-advanced-request.png" alt-text="Zugriffspakete – Richtlinie – Erweiterte Anforderungseinstellungen anzeigen":::
 
 1. Legen Sie die Umschaltfläche **Wenn keine Aktion ausgeführt wird, an alternative genehmigende Personen weiterleiten?** auf **Ja** fest.
 
 1. Klicken Sie auf **Alternative genehmigende Personen hinzufügen**, und wählen Sie die alternativen genehmigende Personen aus der Liste aus.
 
     ![Zugriffspaket – Richtlinie – Alternative genehmigende Personen hinzufügen](./media/entitlement-management-access-package-approval-policy/alternate-approvers-add.png)
+
+    Wenn Sie als „Erste genehmigende Person“ den Vorgesetzten auswählen, können Sie im Feld „Alternative genehmigende Person“ zusätzlich die Option **Mitglied der zweiten Führungsebene als alternative genehmigende Person** auswählen. Wenn Sie diese Option auswählen, müssen Sie eine stellvertretende genehmigende Person hinzufügen, an die die Anforderung weitergeleitet wird, wenn das System das Mitglied der zweiten Führungsebene nicht finden kann.
 
 1. Geben Sie im Feld **Nach wie viel Tagen an alternative genehmigende Personen weiterleiten?** die Anzahl von Tagen ein, die Sie den genehmigenden Personen zum Genehmigen oder Ablehnen einer Anforderung einräumen. Wenn nach Ablauf der Anforderungsdauer keine der genehmigenden Personen die Anforderung genehmigt oder abgelehnt hat, läuft die Anforderung ab (Timeout), und der Benutzer muss eine weitere Anforderung für das Zugangspaket senden. 
 
@@ -168,12 +170,12 @@ Damit sichergestellt ist, dass Benutzer Zugriff auf die richtigen Zugriffspakete
 
 1. Wenn die Benutzer, die Zugriff auf das Zugriffspaket benötigen, nicht alle die gleiche bevorzugte Sprache verwenden, können Sie die Benutzerfreundlichkeit für Benutzer verbessern, die Zugriff auf myaccess.microsoft.com anfordern. Hierzu können Sie alternative Anzeigezeichenfolgen für verschiedene Sprachen bereitstellen. Wenn z. B. der Webbrowser eines Benutzers auf Spanisch festgelegt ist und Sie die Anzeigezeichenfolgen für Spanisch konfiguriert haben, werden dem anfordernden Benutzer diese Zeichenfolgen angezeigt. Um die Lokalisierung für Anforderungen zu konfigurieren, klicken Sie auf **Lokalisierung hinzufügen**.
     1. Wenn Sie sich im Bereich **Lokalisierungen für Frage hinzufügen** befinden, wählen Sie den **Sprachcode** für die Sprache aus, in die Sie die Frage lokalisieren.
-    1. Geben Sie die Frage in der von Ihnen konfigurierten Sprache im Feld **Lokalisierter Text** ein.
+    1. Geben Sie die Frage in der von Ihnen konfigurierten Sprache das Feld **Lokalisierter Text** ein.
     1. Nachdem Sie alle benötigten Lokalisierungen hinzugefügt haben, klicken Sie auf **Speichern**.
 
     ![Zugriffspaket – Richtlinie – Lokalisierten Text konfigurieren](./media/entitlement-management-access-package-approval-policy/add-localization-question.png)
 
-1. Wählen Sie das **Antwortformat** aus, in dem Anforderer antworten sollen. Mögliche Antwortformate: *Kurzer Text*, *Mehrfachauswahl* und *Langer Text*.
+1. Wählen Sie das **Antwortformat** aus, in dem Anforderer antworten sollen. Antwortformate umfassen: *Kurzer Text*, *Mehrfachauswahl* und *Langer Text*.
  
     ![Zugriffspaket – Richtlinie – „Anzeigen und bearbeiten“ für Antwortformat von Multiple Choice auswählen](./media/entitlement-management-access-package-approval-policy/answer-format-view-edit.png)
  

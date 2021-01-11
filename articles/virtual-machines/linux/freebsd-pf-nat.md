@@ -8,12 +8,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/20/2017
 ms.author: kyliel
-ms.openlocfilehash: 6a20708c5564075c24eb031a39292b020a2ecc00
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c7027dd86945e53149b3c4daeb9d6faee3593e95
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91371319"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97702241"
 ---
 # <a name="how-to-use-freebsds-packet-filter-to-create-a-secure-firewall-in-azure"></a>Verwenden des FreeBSD-Paketfilters zum Erstellen einer sicheren Firewall in Azure
 In diesem Artikel wird erläutert, wie Sie eine NAT-Firewall mithilfe eines FreeBSD-Paketfilters über die Azure Resource Manager-Vorlage für allgemeine Webserverszenarien bereitstellen.
@@ -34,10 +34,10 @@ Die neueste Version der [Azure CLI](/cli/azure/install-az-cli2) muss installiert
 az group create --name myResourceGroup --location westus
 ```
 
-Als Nächstes stellen Sie die Vorlage „pf-freebsd-setup“ mit [az group deployment create](/cli/azure/group/deployment) bereit. Laden Sie „azuredeploy.parameters.json“ unter demselben Pfad herunter, und definieren Sie Ihre eigenen Ressourcenwerte, wie etwa `adminPassword`, `networkPrefix` und `domainNamePrefix`. 
+Als Nächstes stellen Sie die Vorlage „pf-freebsd-setup“ mit [az deployment group create](/cli/azure/deployment/group) bereit. Laden Sie „azuredeploy.parameters.json“ unter demselben Pfad herunter, und definieren Sie Ihre eigenen Ressourcenwerte, wie etwa `adminPassword`, `networkPrefix` und `domainNamePrefix`. 
 
 ```azurecli
-az group deployment create --resource-group myResourceGroup --name myDeploymentName \
+az deployment group create --resource-group myResourceGroup --name myDeploymentName \
     --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/pf-freebsd-setup/azuredeploy.json \
     --parameters '@azuredeploy.parameters.json' --verbose
 ```

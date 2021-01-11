@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 10/16/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 79a99d9f0ca117d8f47d56d76399210a72b91bb7
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: d77e145cabcef2931d5fe6e76599da7931e576e8
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94951654"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97669158"
 ---
 # <a name="define-an-id-token-hint-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definieren eines technischen ID-Tokenhinweisprofils in einer benutzerdefinierten Azure Active Directory B2C-Richtlinie
 
@@ -36,10 +36,10 @@ Bei „id_token_hint“ verfasst der Tokenaussteller (eine App der vertrauenden 
 
 | Name | Anspruch | Beispielwert | BESCHREIBUNG |
 | ---- | ----- | ------------- | ----------- |
-| Zielgruppe | `aud` | `a489fc44-3cc0-4a78-92f6-e413cd853eae` | Identifiziert den vorgesehenen Empfänger des Tokens. Dies ist eine beliebige Zeichenfolge, die vom Tokenaussteller definiert wird. Azure AD B2C überprüft diesen Wert und lehnt das Token ab, wenn es nicht mit der Vorgabe übereinstimmt.  |
-| Issuer (Aussteller) | `iss` |`https://localhost` | Hiermit wird der Sicherheitstokendienst (Tokenaussteller) identifiziert. Dies ist ein beliebiger URI, der vom Tokenaussteller definiert wird. Azure AD B2C überprüft diesen Wert und lehnt das Token ab, wenn es nicht mit der Vorgabe übereinstimmt.  |
-| Ablaufzeit | `exp` | `1600087315` | Die Zeit, zu der das Token ungültig wird (dargestellt als Epochenzeit). Azure AD B2C überprüft diesen Anspruch nicht. |
-| Nicht vor | `nbf` | `1599482515` | Die Zeit, zu der das Token gültig wird (dargestellt als Epochenzeit). Diese Zeit entspricht in der Regel dem Ausstellungszeitpunkt des Tokens. Azure AD B2C überprüft diesen Anspruch nicht. |
+| Zielgruppe | `aud` | `a489fc44-3cc0-4a78-92f6-e413cd853eae` | Identifiziert den vorgesehenen Empfänger des Tokens. Die Zielgruppe ist eine beliebige Zeichenfolge, die vom Tokenaussteller definiert wird. Azure AD B2C überprüft diesen Wert und lehnt das Token ab, wenn es nicht mit der Vorgabe übereinstimmt.  |
+| Issuer (Aussteller) | `iss` |`https://localhost` | Hiermit wird der Sicherheitstokendienst (Tokenaussteller) identifiziert. Der Aussteller ist ein beliebiger URI, der vom Tokenaussteller definiert wird. Azure AD B2C überprüft diesen Wert und lehnt das Token ab, wenn es nicht mit der Vorgabe übereinstimmt.  |
+| Ablaufzeit | `exp` | `1600087315` | Die Zeit, zu der das Token ungültig wird (dargestellt als Epochenzeit). Azure AD B2C überprüft diesen Wert und lehnt das Token ab, wenn es abgelaufen ist.|
+| Nicht vor | `nbf` | `1599482515` | Die Zeit, zu der das Token gültig wird (dargestellt als Epochenzeit). Diese Zeit entspricht in der Regel dem Ausstellungszeitpunkt des Tokens. Azure AD B2C überprüft diesen Wert und lehnt das Token ab, wenn seine Lebensdauer ungültig ist. |
 
  Das folgende Token ist ein Beispiel für ein gültiges ID-Token:
 
@@ -272,7 +272,7 @@ Sowohl beim symmetrischen als auch beim asymmetrischen Ansatz wird das technisch
     </RelyingParty>
     ```
 
-Abhängig von Ihren geschäftlichen Anforderungen müssen Sie möglicherweise Tokenüberprüfungen hinzufügen, um beispielsweise die Ablaufzeit von Token, das Format der E-Mail-Adresse und vieles mehr zu überprüfen. Fügen Sie hierzu Orchestrierungsschritte hinzu, die ein [technisches Profil zur Anspruchstransformation](claims-transformation-technical-profile.md) aufrufen. Fügen Sie auch ein [selbstbestätigtes technisches Profil](self-asserted-technical-profile.md) hinzu, um eine Fehlermeldung anzuzeigen. 
+Abhängig von Ihren geschäftlichen Anforderungen müssen Sie möglicherweise Tokenüberprüfungen hinzufügen, um beispielsweise das Format der E-Mail-Adresse zu überprüfen. Fügen Sie hierzu Orchestrierungsschritte hinzu, die ein [technisches Profil zur Anspruchstransformation](claims-transformation-technical-profile.md) aufrufen. Fügen Sie auch ein [selbstbestätigtes technisches Profil](self-asserted-technical-profile.md) hinzu, um eine Fehlermeldung anzuzeigen. 
 
 ### <a name="create-and-sign-a-token"></a>Erstellen und Signieren eines Tokens
 

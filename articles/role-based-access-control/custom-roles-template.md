@@ -1,6 +1,6 @@
 ---
-title: Erstellen einer benutzerdefinierten Azure-Rolle mithilfe einer Azure Resource Manager-Vorlage – Azure RBAC
-description: Erfahren Sie, wie Sie mithilfe einer Azure Resource Manager-Vorlage (ARM) und der rollenbasierten Zugriffssteuerung (Azure RBAC) eine benutzerdefinierte Azure-Rolle erstellen.
+title: Erstellen oder Aktualisieren benutzerdefinierter Azure-Rollen mithilfe einer Azure Resource Manager-Vorlage – Azure RBAC
+description: Erfahren Sie, wie Sie mithilfe einer Azure Resource Manager-Vorlage (ARM) und der rollenbasierten Zugriffssteuerung (Azure RBAC) benutzerdefinierte Azure-Rollen erstellen oder aktualisieren.
 services: role-based-access-control,azure-resource-manager
 author: rolyon
 manager: mtillman
@@ -8,18 +8,18 @@ ms.service: role-based-access-control
 ms.topic: how-to
 ms.custom: subject-armqs
 ms.workload: identity
-ms.date: 06/25/2020
+ms.date: 12/16/2020
 ms.author: rolyon
-ms.openlocfilehash: 96dfdc0a1c32237c55d4e65bb25989656e2a4ad2
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: beea0c5cecd7bb99973a4692a4cce17e7a69d708
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097021"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631311"
 ---
-# <a name="create-an-azure-custom-role-using-an-arm-template"></a>Erstellen einer benutzerdefinierten Rolle in Azure mithilfe einer ARM-Vorlage
+# <a name="create-or-update-azure-custom-roles-using-an-arm-template"></a>Erstellen oder Aktualisieren benutzerdefinierter Rollen in Azure mithilfe einer ARM-Vorlage
 
-Wenn die [integrierten Azure-Rollen](built-in-roles.md) die Anforderungen Ihrer Organisation nicht erfüllen, können Sie Ihre eigenen [benutzerdefinierten Rollen](custom-roles.md) erstellen. In diesem Artikel wird beschrieben, wie eine benutzerdefinierte Rolle mithilfe einer Azure Resource Manager-Vorlage (ARM) erstellt wird.
+Wenn die [integrierten Azure-Rollen](built-in-roles.md) die Anforderungen Ihrer Organisation nicht erfüllen, können Sie Ihre eigenen [benutzerdefinierten Rollen](custom-roles.md) erstellen. In diesem Artikel wird beschrieben, wie eine benutzerdefinierte Rolle mithilfe einer Azure Resource Manager-Vorlage (ARM) erstellt oder aktualisiert wird.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -66,15 +66,13 @@ Führen Sie diese Schritte aus, um die vorherige Vorlage bereitzustellen.
     $location = Read-Host -Prompt "Enter a location (i.e. centralus)"
     [string[]]$actions = Read-Host -Prompt "Enter actions as a comma-separated list (i.e. action1,action2)"
     $actions = $actions.Split(',')
-
     $templateUri = "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/subscription-deployments/create-role-def/azuredeploy.json"
-
     New-AzDeployment -Location $location -TemplateUri $templateUri -actions $actions
     ```
 
-1. Geben Sie einen Standort für die Bereitstellung ein, z. B. *centralus*.
+1. Geben Sie einen Standort für die Bereitstellung ein, z. B. `centralus`.
 
-1. Geben Sie eine Liste von Aktionen für die benutzerdefinierte Rolle als durch Trennzeichen getrennte Liste ein, z. B. *Microsoft.Resources/resources/read,Microsoft.Resources/subscriptions/resourceGroups/read*.
+1. Geben Sie eine Liste von Aktionen für die benutzerdefinierte Rolle als durch Trennzeichen getrennte Liste ein, z. B. `Microsoft.Resources/resources/read,Microsoft.Resources/subscriptions/resourceGroups/read`.
 
 1. Drücken Sie ggf. die EINGABETASTE, um den Befehl `New-AzDeployment` auszuführen.
 
@@ -152,6 +150,47 @@ Führen Sie diese Schritte aus, um sicherzustellen, dass die benutzerdefinierte 
 1. Stellen Sie sicher, dass die Rolle **Benutzerdefinierte Rolle – RG Reader** aufgeführt ist.
 
    ![Neue benutzerdefinierte Rolle im Azure-Portal](./media/custom-roles-template/custom-role-template-portal.png)
+
+## <a name="update-a-custom-role"></a>Aktualisieren einer benutzerdefinierten Rolle
+
+Ähnlich wie beim Erstellen einer benutzerdefinierten Rolle können Sie auch für das Aktualisieren einer vorhandenen benutzerdefinierte Rolle eine Vorlage verwenden. Um eine benutzerdefinierte Rolle zu aktualisieren, müssen Sie die Rolle angeben, die Sie aktualisieren möchten.
+
+Im Folgenden finden Sie die Änderungen, die Sie an der vorherigen Schnellstartvorlage vornehmen müssen, um die benutzerdefinierte Rolle zu aktualisieren.
+
+- Fügen Sie die Rollen-ID als Parameter ein.
+    ```json
+        ...
+        "roleDefName": {
+          "type": "string",
+          "metadata": {
+            "description": "ID of the role definition"
+          }
+        ...
+    ```
+
+- Fügen Sie den Parameter mit der Rollen-ID in die Rollendefinition ein.
+
+    ```json
+      ...
+      "resources": [
+        {
+          "type": "Microsoft.Authorization/roleDefinitions",
+          "apiVersion": "2018-07-01",
+          "name": "[parameters('roleDefName')]",
+          "properties": {
+            ...
+    ```
+
+Hier sehen Sie ein Beispiel für die Bereitstellung der Vorlage:
+
+```azurepowershell
+$location = Read-Host -Prompt "Enter a location (i.e. centralus)"
+[string[]]$actions = Read-Host -Prompt "Enter actions as a comma-separated list (i.e. action1,action2)"
+$actions = $actions.Split(',')
+$roleDefName = Read-Host -Prompt "Enter the role ID to update"
+$templateFile = "rg-reader-update.json"
+New-AzDeployment -Location $location -TemplateFile $templateFile -actions $actions -roleDefName $roleDefName
+```
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

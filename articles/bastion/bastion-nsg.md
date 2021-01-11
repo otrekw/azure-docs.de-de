@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: conceptual
 ms.date: 12/09/2020
 ms.author: cherylmc
-ms.openlocfilehash: afb751e08faea6dabde72b192d246b48735cff53
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 4fe22e0dae73df7af4fc24ba508ecbecf72dfd05
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96938687"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97795371"
 ---
 # <a name="working-with-nsg-access-and-azure-bastion"></a>Verwenden von NSG-Zugriff und Azure Bastion
 
@@ -40,7 +40,8 @@ _ **Eingehender Datenverkehr:**
 
    * **Eingehender Datenverkehr über das öffentliche Internet:** Azure Bastion erstellt eine öffentliche IP-Adresse, für die Port 443 auf der öffentlichen IP-Adresse für den eingehenden Datenverkehr aktiviert sein muss. Ports 3389/22 müssen NICHT auf dem AzureBastionSubnet geöffnet sein.
    * **Eingehender Datenverkehr von der Azure Bastion-Steuerungsebene:** Aktivieren Sie für Steuerungsebenenkonnektivität den Eingangsport 443 über das Diensttag **GatewayManager**. Dadurch kann die Steuerungsebene (also der Gateway-Manager) mit Azure Bastion kommunizieren.
-   * **Eingehender Datenverkehr von Azure Load Balancer:** Aktivieren Sie für Integritätstests den eingehenden Port 443 aus dem Diensttag **AzureLoadBalancer**. Dadurch kann Azure Load Balancer die Konnektivität erkennen. 
+   * **Eingehender Datenverkehr von der Azure Bastion-Datenebene:** Aktivieren Sie für die Kommunikation auf Datenebene zwischen den zugrunde liegenden Komponenten von Azure Bastion die Ports 8080 und 5701 eingehend vom Diensttag **VirtualNetwork** zum Diensttag **VirtualNetwork**. Dadurch können die Azure Bastion-Komponenten miteinander kommunizieren.
+   * **Eingehender Datenverkehr von Azure Load Balancer:** Aktivieren Sie für Integritätstests den eingehenden Port 443 aus dem Diensttag **AzureLoadBalancer**. Dadurch kann Azure Load Balancer die Konnektivität erkennen.
 
 
    :::image type="content" source="./media/bastion-nsg/inbound.png" alt-text="Screenshot mit eingehenden Sicherheitsregeln für Azure Bastion-Konnektivität.":::
@@ -48,7 +49,9 @@ _ **Eingehender Datenverkehr:**
 * **Ausgehender Datenverkehr:**
 
    * **Ausgehender Datenverkehr für virtuelle Zielcomputer:** Azure Bastion erreicht die Ziel-VMs über die private IP-Adresse. Die Netzwerksicherheitsgruppen müssen ausgehenden Datenverkehr für andere Ziel-VM-Subnetze für die Ports 3389 und 22 zulassen.
+   * **Ausgehender Datenverkehr an die Azure Bastion-Datenebene:** Aktivieren Sie für die Kommunikation auf Datenebene zwischen den zugrunde liegenden Komponenten von Azure Bastion die Ports 8080 und 5701 ausgehend vom Diensttag **VirtualNetwork** zum Diensttag **VirtualNetwork**. Dadurch können die Azure Bastion-Komponenten miteinander kommunizieren.
    * **Ausgehender Datenverkehr für andere öffentliche Endpunkte in Azure:** Azure Bastion muss eine Verbindung mit verschiedenen öffentlichen Endpunkten in Azure herstellen können, um beispielsweise Diagnose- und Messprotokolle zu speichern. Aus diesem Grund benötigt Azure Bastion ausgehende Konnektivität über den Port 443 mit dem Diensttag **AzureCloud**.
+   * **Ausgehender Datenverkehr zum Internet:** Azure Bastion muss in der Lage sein, mit dem Internet zu kommunizieren, damit Sitzungen und Zertifikate überprüft werden können. Aus diesem Grund wird empfohlen, Port 80 ausgehend zum **Internet** zu aktivieren.
 
 
    :::image type="content" source="./media/bastion-nsg/outbound.png" alt-text="Screenshot mit ausgehenden Sicherheitsregeln für Azure Bastion-Konnektivität.":::

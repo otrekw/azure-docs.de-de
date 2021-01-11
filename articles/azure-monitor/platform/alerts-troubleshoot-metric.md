@@ -4,14 +4,14 @@ description: In diesem Artikel werden gängige Probleme mit Azure Monitor-Metrik
 author: harelbr
 ms.author: harelbr
 ms.topic: troubleshooting
-ms.date: 11/25/2020
+ms.date: 01/03/2021
 ms.subservice: alerts
-ms.openlocfilehash: ef8a07f0360338aeb659942967169b0605b08e51
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 9a05fe509e032681a0bf5ed989595a25f66d33c6
+ms.sourcegitcommit: 697638c20ceaf51ec4ebd8f929c719c1e630f06f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97507216"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97857340"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Behandeln von Problemen mit Azure Monitor-Metrikwarnungen 
 
@@ -72,7 +72,7 @@ Um Warnungen für Metriken für Gastbetriebssysteme (z. B. zu Arbeitsspeicher o
 - [Für virtuelle Linux-Computer](./collect-custom-metrics-linux-telegraf.md)
 
 Weitere Informationen zum Erfassen von Daten aus dem Gastbetriebssystem eines virtuellen Computers finden Sie [hier](../insights/monitor-vm-azure.md#guest-operating-system).
-    
+
 > [!NOTE] 
 > Wenn Sie für Gastmetriken das Senden zu einem Log Analytics-Arbeitsbereich konfiguriert haben, werden die Metriken unter der Log Analytics-Arbeitsbereichsressource angezeigt. Die Daten werden dann **erst** angezeigt, nachdem eine Warnungsregel für deren Überwachung erstellt wurde. Führen Sie hierzu die Schritte zum [Konfigurieren der Metrikwarnung für Protokolle](./alerts-metric-logs.md#configuring-metric-alert-for-logs) aus.
 
@@ -265,6 +265,23 @@ Es wird empfohlen, eine *Aggregationsgranularität (Zeitraum)* auszuwählen, die
 -   Metrikwarnungsregel, die mehrere Dimensionen überwacht: wenn eine neue Kombination aus Dimensionswerten hinzugefügt wird
 -   Metrikwarnungsregel, die mehrere Ressourcen überwacht: wenn dem Bereich eine neue Ressource hinzugefügt wird
 -   Metrikwarnungsregel, die eine nicht kontinuierlich ausgegebene Metrik überwacht (seltene Metrik): wenn die Metrik erst nach einem längeren Zeitraum als 24 Stunden wieder ausgegeben wird
+
+## <a name="the-dynamic-thresholds-borders-dont-seem-to-fit-the-data"></a>Die Grenzwerte dynamischer Schwellenwerte scheinen nicht den Daten zu entsprechen.
+
+Wenn sich das Verhalten einer Metrik kürzlich geändert hat, werden die Änderungen nicht zwangsläufig in den Grenzwerten dynamischer Schwellenwerte (obere und untere Grenzen) wiedergegeben, da diese auf der Grundlage der Metrikdaten der letzten 10 Tage berechnet werden. Achten Sie beim Anzeigen der Grenzwerte dynamischer Schwellenwerte für eine bestimmte Metrik darauf, den Metriktrend der letzten Woche zu verwenden und nicht nur den für die letzten Stunden oder Tage.
+
+## <a name="why-is-weekly-seasonality-not-detected-by-dynamic-thresholds"></a>Warum wird die wöchentliche Saisonalität nicht durch dynamische Schwellenwerte erkannt?
+
+Zum Identifizieren der wöchentlichen Saisonalität erfordert das Modell für dynamische Schwellenwerte Verlaufsdaten von mindestens drei Wochen. Sobald genügend Verlaufsdaten verfügbar sind, werden alle wöchentlichen Saisonalitäten ermittelt, die in den Metrikdaten enthalten sind, und das Modell wird entsprechend angepasst. 
+
+## <a name="dynamic-thresholds-shows-a-negative-lower-bound-for-a-metric-even-though-the-metric-always-has-positive-values"></a>Bei dynamischen Schwellenwerten wird für eine Metrik eine negative untere Grenze angezeigt, obwohl die Metrik immer positive Werte aufweist.
+
+Wenn eine Metrik große Schwankungen aufweist, wird durch dynamische Schwellenwerte ein breiteres Modell um die Metrikwerte herum erstellt. Dies kann dazu führen, dass die untere Grenze unter 0 (null) liegt. Diese Ausnahme kann insbesondere in den folgenden Fällen auftreten:
+1. Die Empfindlichkeit ist auf „niedrig“ festgelegt. 
+2. Die Medianwerte liegen nahe bei null.
+3. Die Metrik weist ein irreguläres Verhalten mit hoher Varianz auf (es gibt Spitzen oder Abfälle in den Daten).
+
+Wenn die untere Grenze einen negativen Wert aufweist, bedeutet dies, dass die Metrik aufgrund des unregelmäßigen Verhaltens der Metrik vermutlich einen Nullwert erreichen kann. Sie können erwägen, eine höhere Empfindlichkeit oder eine größere *Aggregationsgranularität (Zeitraum)* auszuwählen, um das Modell weniger sensibel zu machen. Sie können auch die Option *Vor dem folgenden Datum liegende Daten ignorieren* verwenden, um kürzliche Unregelmäßigkeiten aus den Verlaufsdaten für das Erstellen des Modells auszuschließen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

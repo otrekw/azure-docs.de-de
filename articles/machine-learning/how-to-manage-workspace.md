@@ -10,12 +10,12 @@ author: sdgilley
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, fasttrack-edit
-ms.openlocfilehash: 4425fdf488665ad555c73c59682041cb23a9ca66
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 3fca8e74112b90b3cac70adaa955bbf242999705
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96447332"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97739585"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces"></a>Erstellen und Verwalten von Azure Machine Learning-Arbeitsbereichen 
 
@@ -31,6 +31,8 @@ Wenn sich Ihre Anforderungen ändern oder die Anforderungen an die Automatisieru
 ## <a name="limitations"></a>Einschränkungen
 
 [!INCLUDE [register-namespace](../../includes/machine-learning-register-namespace.md)]
+
+Beim Erstellen eines Arbeitsbereichs wird standardmäßig auch eine Azure Container Registry-Instanz (ACR) erstellt.  Da ACR derzeit in Ressourcengruppennamen keine Unicode-Zeichen unterstützt, verwenden Sie eine Ressourcengruppe ohne diese Zeichen.
 
 ## <a name="create-a-workspace"></a>Erstellen eines Arbeitsbereichs
 
@@ -154,6 +156,8 @@ Wenn Sie Probleme beim Zugriff auf Ihr Abonnement haben, finden Sie weitere Info
  1. Um den neuen Arbeitsbereich anzuzeigen, wählen Sie **Zu Ressource wechseln** aus.
  
 ---
+
+
 
 ### <a name="networking"></a>Netzwerk  
 
@@ -368,6 +372,16 @@ Wählen Sie im [Azure-Portal](https://portal.azure.com/) am oberen Rand des zu l
 [!INCLUDE [aml-delete-resource-group](../../includes/aml-delete-resource-group.md)]
 
 ## <a name="troubleshooting"></a>Problembehandlung
+
+* **Unterstützte Browser in Azure Machine Learning Studio:** Es wird empfohlen, den neuesten Browser zu verwenden, der mit Ihrem Betriebssystem kompatibel ist. Die folgenden Browser werden unterstützt:
+  * Microsoft Edge (Die neueste Version von Microsoft Edge. Keine ältere Microsoft Edge-Version.)
+  * Safari (neueste Version, nur auf Mac)
+  * Chrome (neueste Version)
+  * Firefox (neueste Version)
+
+* **Azure-Portal**: 
+  * Wenn Sie direkt über einen Freigabelink aus dem SDK oder dem Azure-Portal zu Ihrem Arbeitsbereich gelangen, können Sie die standardmäßige **Übersichtsseite** mit Abonnementinformationen in der Erweiterung nicht anzeigen. In diesem Szenario können Sie auch nicht zu einem anderen Arbeitsbereich wechseln. Um einen anderen Arbeitsbereich anzuzeigen, wechseln Sie direkt zu [Azure Machine Learning-Studio](https://ml.azure.com) und suchen nach dem Namen des Arbeitsbereichs.
+  * Alle Assets (Datasets, Experimente, Computes usw.) sind nur in [Azure Machine Learning Studio](https://ml.azure.com) verfügbar. Sie sind *nicht* über das Azure-Portal verfügbar.
 
 ### <a name="resource-provider-errors"></a>Fehler der Ressourcenanbieter
 

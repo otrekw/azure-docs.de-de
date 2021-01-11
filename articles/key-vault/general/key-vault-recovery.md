@@ -3,27 +3,39 @@ title: Übersicht über die Azure Key Vault-Wiederherstellung | Microsoft-Dokume
 description: Die Wiederherstellungsfeatures von Key Vault sollen das versehentliche oder böswillige Löschen Ihres Schlüsseltresors und der Geheimnisse, Schlüssel und Zertifikate verhindern, die im Schlüsseltresor gespeichert sind.
 ms.service: key-vault
 ms.subservice: general
-ms.topic: conceptual
-author: ShaneBala-keyvault
-ms.author: sudbalas
-manager: ravijan
+ms.topic: how-to
+ms.author: mbaldwin
+author: msmbaldwin
+manager: rkarlin
 ms.date: 09/30/2020
-ms.openlocfilehash: 86190fa307133360c411aafc070412e7d527039e
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 258d100276b20ea2437ebffb1473492a247657e8
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96324957"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97704213"
 ---
-# <a name="how-to-enable-soft-delete-and-purge-protection"></a>Vorläufiges Löschen und Löschschutz aktivieren
+# <a name="azure-key-vault-recovery-management-with-soft-delete-and-purge-protection"></a>Azure Key Vault-Wiederherstellungsverwaltung mit Schutz durch vorläufiges Löschen und Bereinigungsschutz
 
 In diesem Artikel werden die beiden Wiederherstellungsfeatures vorläufiges Löschen und Löschschutz von Azure Key Vault behandelt. Dieses Dokument enthält eine Übersicht über diese Features und zeigt, wie Sie sie über das Azure-Portal, die Azure-Befehlszeilenschnittstelle und Azure PowerShell verwalten.
 
+Weitere Informationen zu Key Vault finden Sie unter
+- [Übersicht über Key Vault](overview.md)
+- [Übersicht über Schlüssel, Geheimnisse und Zertifikate in Azure Key Vault](about-keys-secrets-certificates.md)
+
+## <a name="prerequisites"></a>Voraussetzungen
+
+* Azure-Abonnement: [Kostenloses Azure-Konto](https://azure.microsoft.com/free/dotnet)
+* [PowerShell-Modul](https://docs.microsoft.com/powershell/azure/install-az-ps).
+* [Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli)
+* Eine Key Vault-Instanz. Diese kann über das [Azure-Portal](../general/quick-create-portal.md), mithilfe der [Azure CLI](../general/quick-create-cli.md) oder per [Azure PowerShell](../general/quick-create-powershell.md) erstellt werden.
+
 ## <a name="what-are-soft-delete-and-purge-protection"></a>Vorläufiges Löschen und Löschschutz
 
-Vorläufiger Löschen und Löschschutz sind zwei verschiedene Key Vault-Wiederherstellungsfeatures.
+[Vorläufiger Löschen](soft-delete-overview.md) und Löschschutz sind zwei verschiedene Key Vault-Wiederherstellungsfeatures.
+
 > [!IMPORTANT]
-> Der Schutz durch vorläufiges Löschen muss für alle Schlüsseltresore aktiviert werden. Die Möglichkeit zum Deaktivieren des vorläufigen Löschens wird im Dezember 2020 eingestellt. Ausführliche Informationen finden Sie [**hier**](soft-delete-change.md).
+> Das Aktivieren des vorläufigen Löschens ist wichtig, um Ihre Schlüsseltresore und Anmeldeinformationen vor versehentlichem Löschen zu schützen. Das Aktivieren von vorläufigem Löschen wird jedoch als Breaking Change betrachtet, da es möglicherweise erforderlich ist, die Anwendungslogik zu ändern oder zusätzliche Berechtigungen für Ihre Dienstprinzipale bereitzustellen. Vergewissern Sie sich vor dem Aktivieren des vorläufigen Löschens anhand der nachfolgenden Anweisungen, ob Ihre Anwendung mit der Änderung kompatibel ist. Nutzen Sie dazu [**dieses Dokument**](soft-delete-change.md).
 
 **Vorläufiges Löschen** soll verhindern, dass Ihr Schlüsseltresor oder die in ihm gespeicherten Schlüssel, Geheimnisse und Zertifikate versehentlich gelöscht werden. Stellen Sie sich das vorläufige Löschen wie einen Papierkorb vor. Wenn Sie einen Schlüsseltresor oder ein Schlüsseltresorobjekt löschen, kann dieser oder dieses für eine vom Benutzer konfigurierbare Dauer (Aufbewahrungszeitraum, standardmäßig 90 Tage) wiederhergestellt werden. Schlüsseltresore, die vorläufig gelöscht wurden, können auch **bereinigt** und dadurch dauerhaft gelöscht werden. Dies ermöglicht es Ihnen, Schlüsseltresore und Schlüsseltresorobjekte mit demselben Namen neu zu erstellen. Sowohl das Wiederherstellen als auch das Löschen von Schlüsseltresoren und -objekten erfordert erweiterte Zugriffsrichtlinienberechtigungen. **Wenn das vorläufige Löschen aktiviert wurde, kann es nicht mehr deaktiviert werden.**
 
@@ -33,6 +45,8 @@ Der **Löschschutz** soll das Löschen von Schlüsseltresoren, Schlüsseln, Gehe
 
 > [!NOTE]
 > Der Löschschutz ist so konzipiert, dass er nicht durch Administratorrollen oder -berechtigungen überschrieben, deaktiviert oder umgangen werden kann. **Nach dem Aktivieren kann der Löschschutz nicht mehr deaktiviert oder überschrieben werden, auch nicht von Microsoft.** Dies bedeutet, dass Sie einen gelöschten Schlüsseltresor entweder wiederherstellen oder warten müssen, bis der Aufbewahrungszeitraum abläuft, bevor Sie den Schlüsseltresornamen wiederverwenden können.
+
+Weitere Informationen zum vorläufigen Löschen finden Sie unter [Übersicht über die Azure Key Vault-Funktion für vorläufiges Löschen](soft-delete-overview.md).
 
 # <a name="azure-portal"></a>[Azure portal](#tab/azure-portal)
 
@@ -370,3 +384,14 @@ Der **Löschschutz** soll das Löschen von Schlüsseltresoren, Schlüsseln, Gehe
   ```powershell
   Remove-AzKeyVaultSecret -VaultName ContosoVault -InRemovedState -name SQLPassword
   ```
+---
+
+## <a name="next-steps"></a>Nächste Schritte
+
+- [PowerShell-Cmdlets für Azure Key Vault](https://docs.microsoft.com/powershell/module/az.keyvault)
+- [Azure CLI-Befehle für Key Vault](https://docs.microsoft.com/cli/azure/keyvault)
+- [Sicherung in Azure Key Vault](backup.md)
+- [Aktivieren der Protokollierung in Key Vault](howto-logging.md)
+- [Sicherer Zugriff auf einen Schlüsseltresor](secure-your-key-vault.md)
+- [Entwicklerhandbuch zu Azure Key Vault](developers-guide.md)
+- [Bewährte Methoden zum Verwenden von Key Vault](best-practices.md)

@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: reference
 ms.date: 07/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 72d7a40c38f3629a70260f223074b456dff9ce38
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 3ae3e12c11f194b3efcc149382dc952bd74d38b5
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182834"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97704315"
 ---
 # <a name="microsoft-azure-attestation-troubleshooting-guide"></a>Microsoft Azure Attestation: Leitfaden zur Problembehandlung
 
@@ -280,7 +280,7 @@ Führen Sie den folgenden Befehl vor den Befehlen vom Typ „Install-Module“ a
 Dem Benutzer wurden die richtigen Rollen zugewiesen. Beim Verwalten der Nachweisrichtlinien mit PowerShell treten aber Autorisierungsprobleme auf.
 
 ### <a name="error"></a>Fehler
-Der Client mit der Objekt-ID <object Id> ist nicht zur Durchführung der Aktion „Microsoft.Authorization/roleassignments/write“ für den Bereich „subscriptions/<subscriptionId>resourcegroups/secure_enclave_poc/providers/Microsoft.Authorization/roleassignments/<role assignmentId>“ berechtigt, oder der Bereich ist ungültig. Wenn der Zugriff erst vor Kurzem gewährt wurde, sollten Sie Ihre Anmeldeinformationen aktualisieren.
+Der Client mit der Objekt-ID &lt;object Id&gt; ist nicht zur Durchführung der Aktion „Microsoft.Authorization/roleassignments/write“ für den Bereich „subcriptions/&lt;subscriptionId&gt;resourcegroups/secure_enclave_poc/providers/Microsoft.Authorization/roleassignments/&lt;role assignmentId&gt;“ berechtigt, oder der Bereich ist ungültig. Wenn der Zugriff erst vor Kurzem gewährt wurde, sollten Sie Ihre Anmeldeinformationen aktualisieren.
 
 ### <a name="troubleshooting-steps"></a>Schritte zur Problembehandlung
 

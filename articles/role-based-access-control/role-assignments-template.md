@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 11/13/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 9bdd70baa906d9dc03a37eecb0388eee5638f153
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 1e05ecd162ccb333c6ab29b0185f6ffcb04a6213
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96184279"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591360"
 ---
 # <a name="add-azure-role-assignments-using-azure-resource-manager-templates"></a>Hinzufügen von Azure-Rollenzuweisungen mithilfe von Azure Resource Manager-Vorlagen
 
@@ -109,14 +109,14 @@ Um die Vorlage zu verwenden, müssen Sie folgendermaßen vorgehen:
 }
 ```
 
-Im Folgenden finden Sie Beispiele für die Befehle [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) und [az group deployment create](/cli/azure/group/deployment#az-group-deployment-create) zum Starten der Bereitstellung in einer Ressourcengruppe mit dem Namen „ExampleGroup“.
+Im Folgenden finden Sie Beispiele für die Befehle [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) und [az deployment group create](/cli/azure/deployment/group#az_deployment_group_create) zum Starten der Bereitstellung in einer Ressourcengruppe mit dem Namen „ExampleGroup“.
 
 ```azurepowershell
 New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateFile rbac-test.json
 ```
 
 ```azurecli
-az group deployment create --resource-group ExampleGroup --template-file rbac-test.json
+az deployment group create --resource-group ExampleGroup --template-file rbac-test.json
 ```
 
 Das folgende Beispiel veranschaulicht die Zuweisung der Rolle „Leser“ zu einem Benutzer für eine Ressourcengruppe nach der Bereitstellung der Vorlage.
@@ -187,24 +187,24 @@ Um die Vorlage zu verwenden, müssen Sie Folgendes eingeben:
 > [!NOTE]
 > Diese Vorlage ist nicht idempotent, es sei denn, derselbe `roleNameGuid`-Wert wird als Parameter bei jeder Bereitstellung der Vorlage bereitgestellt. Wenn keine `roleNameGuid` angegeben wird, wird standardmäßig für jede Bereitstellung eine neue GUID generiert, und bei nachfolgenden Bereitstellungen tritt ein `Conflict: RoleAssignmentExists`-Fehler auf.
 
-Der Bereich der Rollenzuweisung wird von der Bereitstellungsebene bestimmt. Im Folgenden finden Sie Beispiele für die Befehle [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) und [az group deployment create](/cli/azure/group/deployment#az-group-deployment-create) zum Starten der Bereitstellung in einem Ressourcengruppenbereich.
+Der Bereich der Rollenzuweisung wird von der Bereitstellungsebene bestimmt. Im Folgenden finden Sie Beispiele für die Befehle [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) und [az deployment group create](/cli/azure/deployment/group#az_deployment_group_create) zum Starten der Bereitstellung in einem Ressourcengruppenbereich.
 
 ```azurepowershell
 New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateFile rbac-test.json -principalId $objectid -builtInRoleType Reader
 ```
 
 ```azurecli
-az group deployment create --resource-group ExampleGroup --template-file rbac-test.json --parameters principalId=$objectid builtInRoleType=Reader
+az deployment group create --resource-group ExampleGroup --template-file rbac-test.json --parameters principalId=$objectid builtInRoleType=Reader
 ```
 
-Im Folgenden finden Sie Beispiele für die Befehle [New-AzDeployment](/powershell/module/az.resources/new-azdeployment) und [az deployment create](/cli/azure/deployment#az-deployment-create) zum Starten der Bereitstellung in einem Abonnementbereich und zum Angeben des Standorts.
+Im Folgenden finden Sie Beispiele für die Befehle [New-AzDeployment](/powershell/module/az.resources/new-azdeployment) und [az deployment sub create](/cli/azure/deployment/sub#az_deployment_sub_create) zum Starten der Bereitstellung in einem Abonnementbereich und zum Angeben des Standorts.
 
 ```azurepowershell
 New-AzDeployment -Location centralus -TemplateFile rbac-test.json -principalId $objectid -builtInRoleType Reader
 ```
 
 ```azurecli
-az deployment create --location centralus --template-file rbac-test.json --parameters principalId=$objectid builtInRoleType=Reader
+az deployment sub create --location centralus --template-file rbac-test.json --parameters principalId=$objectid builtInRoleType=Reader
 ```
 
 ### <a name="resource-scope"></a>Ressourcenumfang
@@ -290,14 +290,14 @@ Um die Vorlage zu verwenden, müssen Sie Folgendes eingeben:
 }
 ```
 
-Zum Bereitstellen der vorherigen Vorlage verwenden Sie die Befehle für die Ressourcengruppe. Im Folgenden finden Sie Beispiele für die Befehle [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) und [az group deployment create](/cli/azure/group/deployment#az-group-deployment-create) zum Starten der Bereitstellung in einem Ressourcenbereich.
+Zum Bereitstellen der vorherigen Vorlage verwenden Sie die Befehle für die Ressourcengruppe. Im Folgenden finden Sie Beispiele für die Befehle [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) und [az deployment group create](/cli/azure/deployment/group#az_deployment_group_create) zum Starten der Bereitstellung in einem Ressourcenbereich.
 
 ```azurepowershell
 New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateFile rbac-test.json -principalId $objectid -builtInRoleType Contributor
 ```
 
 ```azurecli
-az group deployment create --resource-group ExampleGroup --template-file rbac-test.json --parameters principalId=$objectid builtInRoleType=Contributor
+az deployment group create --resource-group ExampleGroup --template-file rbac-test.json --parameters principalId=$objectid builtInRoleType=Contributor
 ```
 
 Das folgende Beispiel veranschaulicht die Zuweisung der Rolle „Mitwirkender“ zu einem Benutzer für ein Speicherkonto nach dem Bereitstellen der Vorlage.
@@ -360,14 +360,14 @@ Um die Vorlage zu verwenden, müssen Sie Folgendes eingeben:
 }
 ```
 
-Im Folgenden finden Sie Beispiele für die Befehle [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) und [az group deployment create](/cli/azure/group/deployment#az-group-deployment-create) zum Starten der Bereitstellung in einem Ressourcengruppenbereich.
+Im Folgenden finden Sie Beispiele für die Befehle [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) und [az deployment group create](/cli/azure/deployment/group#az_deployment_group_create) zum Starten der Bereitstellung in einem Ressourcengruppenbereich.
 
 ```azurepowershell
 New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup2 -TemplateFile rbac-test.json
 ```
 
 ```azurecli
-az group deployment create --resource-group ExampleGroup2 --template-file rbac-test.json
+az deployment group create --resource-group ExampleGroup2 --template-file rbac-test.json
 ```
 
 Das folgende Beispiel veranschaulicht die Zuweisung der Rolle „Mitwirkender“ zu einem neuen Dienstprinzipal für verwaltete Identitäten nach dem Bereitstellen der Vorlage.
@@ -385,7 +385,7 @@ Wenn Sie in Azure RBAC Zugriff auf eine Azure-Ressource entfernen möchten, entf
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Schnellstart: Erstellen und Bereitstellen von Azure Resource Manager-Vorlagen über das Azure-Portal](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)
-- [Grundlegendes zur Struktur und Syntax von Azure Resource Manager-Vorlagen](../azure-resource-manager/templates/template-syntax.md)
+- [Schnellstart: Erstellen und Bereitstellen von ARM-Vorlagen über das Azure-Portal](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)
+- [Grundlegendes zur Struktur und Syntax von ARM-Vorlagen](../azure-resource-manager/templates/template-syntax.md)
 - [Erstellen von Ressourcengruppen und Ressourcen auf Abonnementebene](../azure-resource-manager/templates/deploy-to-subscription.md)
 - [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/?term=rbac)

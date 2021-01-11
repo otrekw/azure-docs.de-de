@@ -6,20 +6,52 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: seoapr2020, devx-track-azurecli
+ms.custom: seoapr2020, devx-track-azurecli, contperf-fy21q2
 ms.date: 09/02/2020
-ms.openlocfilehash: 35c3901e9a48523a10c1a6aacbc52e6c165e278f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 70918d1dc829ff0114a8c1019524feb934c9f915
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96009788"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97630937"
 ---
 # <a name="customize-azure-hdinsight-clusters-by-using-script-actions"></a>Anpassen von Azure HDInsight-Clustern mithilfe von Skriptaktionen
 
 Azure HDInsight verfügt über eine Konfigurationsmethode namens **Skriptaktionen**, bei der benutzerdefinierte Skripts zum Anpassen des Clusters aufgerufen werden. Diese Skripts werden auch zum Installieren weitere Komponenten und zum Ändern von Konfigurationseinstellungen verwendet. Skriptaktionen können während oder nach der Clustererstellung verwendet werden.
 
 Skriptaktionen können auch als HDInsight-Anwendung im Azure Marketplace veröffentlicht werden. Weitere Informationen zu HDInsight-Anwendungen finden Sie unter [Veröffentlichen von HDInsight-Anwendungen im Azure Marketplace](hdinsight-apps-publish-applications.md).
+
+## <a name="understand-script-actions"></a>Grundlegendes zu Skriptaktionen
+
+Eine Skriptaktion ist ein Bash-Skript, das auf den Knoten in einem HDInsight-Cluster ausgeführt wird. Skriptaktionen verfügen über folgende Merkmale und Features:
+
+- Sie müssen als URI gespeichert werden, der für den HDInsight-Cluster zugänglich ist. Dies sind zwei mögliche Speicherorte:
+
+    - Für reguläre (nicht-ESP-) Cluster:
+      - Data Lake Storage Gen1/Gen2: Der Dienstprinzipal, der von HDInsight zum Zugreifen auf Data Lake Storage genutzt wird, muss über Lesezugriff auf das Skript verfügen. Für in Data Lake Storage Gen1 gespeicherte Skripts wird das folgende URI-Format verwendet: `adl://DATALAKESTOREACCOUNTNAME.azuredatalakestore.net/path_to_file`. Für Data Lake Storage Gen2-Skripts wird das folgende URI-Format verwendet: `abfs://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/<PATH>`.
+      - Ein Blob in einem Azure Storage-Konto, das entweder das primäre oder ein zusätzliches Speicherkonto für den HDInsight-Cluster darstellt. HDInsight wird während der Clustererstellung Zugriff auf beide Typen von Speicherkonten gewährt.
+
+        > [!IMPORTANT]  
+        > Rotieren Sie den Speicherschlüssel für dieses Azure Storage-Konto nicht, da dies dazu führt, dass nachfolgende Skriptaktionen mit darin gespeicherten Skripts fehlschlagen.
+
+      - Ein öffentlicher Dateifreigabedienst, auf den über `http://`-Pfade zugegriffen werden kann. Beispiele sind Azure Blob, GitHub und OneDrive. Beispiel-URIs finden Sie unter [Beispielskripts für Skriptaktionen](#example-script-action-scripts).
+    - Für Cluster mit ESP werden die `wasb://`-, `wasbs://`- und `http[s]://`-URIs unterstützt.
+
+- Die Ausführung kann auf bestimmte Knotentypen beschränkt werden. Beispiele wären etwa Hauptknoten und Workerknoten.
+- Sie können permanent oder *ad-hoc* sein.
+
+    - Permanente Skriptaktionen müssen einen eindeutigen Namen haben. Permanente Skripts werden verwendet, um mithilfe von Skalierungsvorgängen neue Workerknoten anzupassen, die dem Cluster hinzugefügt wurden. Bei Skalierungsvorgängen kann ein permanentes Skript auch Änderungen auf einen anderen Knotentyp anwenden. Ein Beispiel wäre etwa ein Hauptknoten.
+    - *Ad-hoc*-Skripts werden nicht beibehalten. Skriptaktionen, die während der Clustererstellung verwendet werden, werden automatisch zu permanenten Skripts. Sie werden nicht auf Workerknoten angewendet, die dem Cluster hinzugefügt werden, nachdem das Skript ausgeführt wurde. Sie können ein *Ad-hoc*-Skript aber nachträglich in ein permanentes Skript oder ein permanentes Skript in ein *Ad-hoc*-Skript umwandeln. Skripts, deren Ausführung nicht erfolgreich ist, werden nicht zu permanenten Skripts. Dies gilt auch, wenn Sie speziell angeben, dass dies der Fall sein soll.
+
+- Sie können Parameter akzeptieren, die von den Skripts während der Ausführung verwendet werden.
+- Sie werden mit Stammebenenberechtigungen auf den Clusterknoten ausgeführt.
+- Sie können über das Azure-Portal, Azure PowerShell, die Azure CLI oder das HDInsight .NET SDK verwendet werden.
+- Skriptaktionen zum Entfernen oder Ändern von Dienstdateien auf der VM können die Dienstintegrität und -verfügbarkeit beeinträchtigen.
+
+Der Cluster protokolliert den Verlauf aller Skripts, die ausgeführt wurden. Der Verlauf ist hilfreich, wenn Sie die ID eines Skripts für die Herauf- oder Herabstufung von Vorgängen benötigen.
+
+> [!IMPORTANT]  
+> Die von einer Skriptaktion vorgenommenen Änderungen können nicht automatisch rückgängig gemacht werden. Sie können die Änderungen entweder manuell zurückzusetzen oder ein Skript angeben, das sie zurücksetzt.
 
 ## <a name="permissions"></a>Berechtigungen
 
@@ -32,62 +64,25 @@ Weitere Informationen zur Verwendung von Berechtigungen mit in eine Domäne eing
 
 ## <a name="access-control"></a>Zugriffssteuerung
 
-Wenn Sie nicht der Administrator oder Besitzer des Azure-Abonnements sind, muss Ihr Konto mindestens Zugriff vom Typ „Mitwirkender“ auf die Ressourcengruppe haben, die den HDInsight-Cluster enthält.
+Wenn Sie nicht der Administrator oder Besitzer des Azure-Abonnements sind, muss Ihr Konto mindestens Zugriff vom Typ `Contributor` auf die Ressourcengruppe haben, die den HDInsight-Cluster enthält.
 
 Ein Benutzer, der für das Azure-Abonnement mindestens über Zugriff der Stufe „Mitwirkender“ verfügt, muss den Anbieter bereits registriert haben. Die Anbieterregistrierung findet statt, wenn ein Benutzer, der über Abonnementzugriff der Stufe „Mitwirkender“ verfügt, eine Ressource erstellt. Informationen zur Registrierung ohne Erstellung einer Ressource finden Sie unter [Registrieren eines Anbieters mithilfe von REST](/rest/api/resources/providers#Providers_Register).
 
 Weitere Informationen zur Verwendung der Zugriffsverwaltung finden Sie hier:
 
-* [Erste Schritte mit der Zugriffsverwaltung im Azure-Portal](../role-based-access-control/overview.md)
-* [Verwenden von Rollenzuweisungen zum Verwalten Ihrer Azure-Abonnementressourcen](../role-based-access-control/role-assignments-portal.md)
+- [Erste Schritte mit der Zugriffsverwaltung im Azure-Portal](../role-based-access-control/overview.md)
+- [Verwenden von Rollenzuweisungen zum Verwalten Ihrer Azure-Abonnementressourcen](../role-based-access-control/role-assignments-portal.md)
 
-## <a name="understand-script-actions"></a>Grundlegendes zu Skriptaktionen
+## <a name="methods-for-using-script-actions"></a>Methoden für die Verwendung von Skriptaktionen
 
-Eine Skriptaktion ist ein Bash-Skript, das auf den Knoten in einem HDInsight-Cluster ausgeführt wird. Skriptaktionen verfügen über folgende Merkmale und Features:
-
-* Sie müssen als URI gespeichert werden, der für den HDInsight-Cluster zugänglich ist. Dies sind zwei mögliche Speicherorte:
-
-    * Für normale Cluster:
-
-      * ADLS Gen1: Der Dienstprinzipal, der von HDInsight zum Zugreifen auf Data Lake Storage genutzt wird, muss über Lesezugriff auf das Skript verfügen. Für in Data Lake Storage Gen1 gespeicherte Skripts wird das folgende URI-Format verwendet: `adl://DATALAKESTOREACCOUNTNAME.azuredatalakestore.net/path_to_file`.
-
-      * Ein Blob in einem Azure Storage-Konto, das entweder das primäre oder ein zusätzliches Speicherkonto für den HDInsight-Cluster darstellt. HDInsight wird während der Clustererstellung Zugriff auf beide Typen von Speicherkonten gewährt.
-
-        > [!IMPORTANT]  
-        > Rotieren Sie den Speicherschlüssel für dieses Azure Storage-Konto nicht, da dies dazu führt, dass nachfolgende Skriptaktionen mit darin gespeicherten Skripts fehlschlagen.
-
-      * Ein öffentlicher Dateifreigabedienst, auf den über „http://“-Pfade zugegriffen werden kann. Beispiele sind Azure Blob, GitHub und OneDrive. Beispiel-URIs finden Sie unter [Beispielskripts für Skriptaktionen](#example-script-action-scripts).
-
-     * Für Cluster mit ESP werden URIs vom Typ „wasb://“ oder „wasbs://“ oder „http[s]://“ unterstützt.
-
-* Die Ausführung kann auf bestimmte Knotentypen beschränkt werden. Beispiele wären etwa Hauptknoten und Workerknoten.
-
-* Sie können permanent oder `ad hoc` sein.
-
-    Permanente Skriptaktionen müssen einen eindeutigen Namen haben. Permanente Skripts werden verwendet, um mithilfe von Skalierungsvorgängen neue Workerknoten anzupassen, die dem Cluster hinzugefügt wurden. Bei Skalierungsvorgängen kann ein permanentes Skript auch Änderungen auf einen anderen Knotentyp anwenden. Ein Beispiel wäre etwa ein Hauptknoten.
-
-    `Ad hoc`-Skripts werden nicht beibehalten. Skriptaktionen, die während der Clustererstellung verwendet werden, werden automatisch zu permanenten Skripts. Sie werden nicht auf Workerknoten angewendet, die dem Cluster hinzugefügt werden, nachdem das Skript ausgeführt wurde. Sie können dann ein `ad hoc`-Skript in ein permanentes Skript oder ein permanentes Skript in ein `ad hoc`-Skript umwandeln. Skripts, deren Ausführung nicht erfolgreich ist, werden nicht zu permanenten Skripts. Dies gilt auch, wenn Sie speziell angeben, dass dies der Fall sein soll.
-
-* Sie können Parameter akzeptieren, die von den Skripts während der Ausführung verwendet werden.
-
-* Sie werden mit Stammebenenberechtigungen auf den Clusterknoten ausgeführt.
-
-* Sie können über das Azure-Portal, Azure PowerShell, die Azure CLI oder das HDInsight .NET SDK verwendet werden.
-
-* Skriptaktionen zum Entfernen oder Ändern von Dienstdateien auf der VM können die Dienstintegrität und -verfügbarkeit beeinträchtigen.
-
-Der Cluster protokolliert den Verlauf aller Skripts, die ausgeführt wurden. Der Verlauf ist hilfreich, wenn Sie die ID eines Skripts für die Herauf- oder Herabstufung von Vorgängen benötigen.
-
-> [!IMPORTANT]  
-> Die von einer Skriptaktion vorgenommenen Änderungen können nicht automatisch rückgängig gemacht werden. Sie können die Änderungen entweder manuell zurückzusetzen oder ein Skript angeben, das sie zurücksetzt.
+Sie haben die Möglichkeit, eine Skriptaktion zu konfigurieren, die ausgeführt wird, wenn der Cluster erstmalig erstellt wird, oder Sie können sie in einem vorhandenen Cluster ausführen.
 
 ### <a name="script-action-in-the-cluster-creation-process"></a>Skriptaktionen im Clustererstellungsvorgang
 
 Während der Clustererstellung verwendete Skriptaktionen unterscheiden sich geringfügig von Skriptaktionen, die in einem vorhandenen Cluster ausgeführt wurden:
 
-* Das Skript wird automatisch dauerhaft gespeichert.
-
-* Ein Fehler im Skript kann dazu führen, dass die Clustererstellung nicht erfolgreich ist.
+- Das Skript wird automatisch dauerhaft gespeichert.
+- Ein Fehler im Skript kann dazu führen, dass die Clustererstellung nicht erfolgreich ist.
 
 Das folgende Diagramm veranschaulicht, wann Skriptaktionen während des Erstellungsvorgangs ausgeführt werden:
 
@@ -191,9 +186,8 @@ In diesem Beispiel wird die Skriptaktion mithilfe des folgenden Codes hinzugefü
 
 Weitere Informationen zum Bereitstellen einer Vorlage finden Sie hier:
 
-* [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md)
-
-* [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure CLI](../azure-resource-manager/templates/deploy-cli.md)
+- [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md)
+- [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure CLI](../azure-resource-manager/templates/deploy-cli.md)
 
 ### <a name="use-a-script-action-during-cluster-creation-from-azure-powershell"></a>Verwenden einer Skriptaktion während der Clustererstellung mit Azure PowerShell
 

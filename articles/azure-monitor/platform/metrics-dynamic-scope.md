@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/14/2020
 ms.author: riroloff
 ms.subservice: metrics
-ms.openlocfilehash: 724809dbce3ca1b5a36f4da0ba5c03d0f78897f5
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 9d1460a8bebe75a3ee471eb304fcf642d566b5dd
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97577560"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97614641"
 ---
 # <a name="viewing-multiple-resources-in-metrics-explorer"></a>Anzeigen mehrerer Ressourcen in Metrik-Explorer
 
@@ -71,7 +71,7 @@ Nachfolgend finden Sie beispielsweise ein Diagramm der CPU-Auslastung in Prozent
 
 ![Screenshot: Verwenden der Aufteilung zum Anzeigen der CPU-Auslastung in Prozent pro VM](./media/metrics-charts/026.png)
 
-Zusätzlich zur Aufteilung können Sie die Filterfunktion verwenden, um nur die gewünschten Ressourcengruppen anzuzeigen.  Wenn Sie beispielsweise die prozentuale CPU-Auslastung für VMs für eine bestimmte Ressourcengruppe anzeigen möchten, können Sie das Tool „Filter hinzufügen“ verwenden, um nach der Ressourcengruppe zu filtern. In diesem Beispiel filtern wir nach „TailspinToys“. Dadurch werden die mit den Ressourcen in TailspinToysDemo verknüpften Metriken entfernt. 
+Zusätzlich zur Aufteilung können Sie die Filterfunktion verwenden, um nur die gewünschten Ressourcengruppen anzuzeigen.  Wenn Sie beispielsweise die prozentuale CPU-Auslastung für VMs für eine bestimmte Ressourcengruppe anzeigen möchten, können Sie das Tool „Filter hinzufügen“ verwenden, um nach der Ressourcengruppe zu filtern. In diesem Beispiel filtern Sie nach „TailspinToysDemo“. Dadurch werden die mit den Ressourcen in TailspinToys verknüpften Metriken entfernt. 
 
 ![Screenshot: Filtern nach Ressourcengruppe](./media/metrics-charts/027.png)
 
@@ -80,7 +80,7 @@ Zusätzlich zur Aufteilung können Sie die Filterfunktion verwenden, um nur die 
 > [!WARNING] 
 > Sie müssen über die Berechtigung „Überwachungsleser“ auf der Abonnementebene verfügen, um Metriken für mehrere Ressourcen, Ressourcengruppen oder ein Abonnement visuell darstellen zu können. Folgen Sie hierzu den Anweisungen in [diesem Dokument](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal). 
 
-Wenn Sie Ihr Diagramm mit mehreren Ressourcen anheften möchten, folgen Sie den [hier](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts#create-alert-rules) angegebenen Anweisungen. 
+Wenn Sie Ihr Diagramm mit mehreren Ressourcen anheften möchten, folgen Sie den [hier](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts#pin-charts-to-dashboards) angegebenen Anweisungen. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

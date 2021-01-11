@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
-ms.date: 11/16/2020
-ms.openlocfilehash: 0d2248b9c0a289f5e4f9f2f8e987365ab58c49c0
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.date: 12/26/2020
+ms.openlocfilehash: 91375f4460b55617ace0b18b60d59d961a762f4c
+ms.sourcegitcommit: 00aa5afaa9fac91f1059cfed3d8dbc954caaabe2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94988543"
+ms.lasthandoff: 12/27/2020
+ms.locfileid: "97792499"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Verwenden von Autofailover-Gruppen für ein transparentes und koordiniertes Failover mehrerer Datenbanken
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -229,7 +229,7 @@ Wenn Ihre Anwendung SQL Managed Instance als Datenebene verwendet, beachten Sie 
 
 ### <a name="creating-the-secondary-instance"></a>Erstellen der sekundären Instanz
 
-Um eine unterbrechungsfreie Verbindung mit der primären SQL Managed Instance nach einem Failover zu gewährleisten, müssen sich primäre und sekundäre Instanz in der gleichen DNS-Zone befinden. Es wird sichergestellt, dass das gleiche Zertifikat mit mehreren Domänen (SAN) zum Authentifizieren der Clientverbindungen mit einer der zwei Instanzen in der Failovergruppe verwendet werden kann. Wenn Ihre Anwendung für die Bereitstellung in der Produktionsumgebung bereit ist, erstellen Sie eine sekundäre SQL Managed Instance in einer anderen Region, und stellen Sie sicher, dass sie die gleiche DNS-Zone wie die primäre SQL Managed Instance verwendet. Hierzu können Sie den optionalen Parameter `DNS Zone Partner` über das Azure-Portal, PowerShell oder die REST-API angegeben.
+Um eine unterbrechungsfreie Verbindung mit der primären SQL Managed Instance nach einem Failover zu gewährleisten, müssen sich primäre und sekundäre Instanz in der gleichen DNS-Zone befinden. Es wird sichergestellt, dass das gleiche Zertifikat mit mehreren Domänen (SAN) zum Authentifizieren der Clientverbindungen mit einer der zwei Instanzen in der Failovergruppe verwendet werden kann. Wenn Ihre Anwendung für die Bereitstellung in der Produktionsumgebung bereit ist, erstellen Sie eine sekundäre SQL Managed Instance in einer anderen Region, und stellen Sie sicher, dass sie die gleiche DNS-Zone wie die primäre SQL Managed Instance verwendet. Dies können Sie erreichen, indem Sie während der Erstellung den optionalen Parameter angeben. Wenn Sie PowerShell oder die REST-API verwenden, lautet der Name des optionalen Parameters `DNS Zone Partner`, und der Name des entsprechenden optionalen Felds im Azure-Portal lautet „Primäre verwaltete Instanz“.
 
 > [!IMPORTANT]
 > Die erste im Subnetz erstellte verwaltete Instanz bestimmt die DNS-Zone für alle nachfolgenden Instanzen im gleichen Subnetz. Dies bedeutet, dass zwei Instanzen aus dem gleichen Subnetz nicht zu verschiedenen DNS-Zonen gehören können.

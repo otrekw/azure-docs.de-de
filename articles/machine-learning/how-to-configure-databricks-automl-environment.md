@@ -1,7 +1,7 @@
 ---
 title: Entwickeln mit AutoML und Azure Databricks
 titleSuffix: Azure Machine Learning
-description: Hier erfahren Sie, wie Sie eine Entwicklungsumgebung in Azure Machine Learning und Azure Databricks einrichten. Verwenden Sie die Azure ML SDKs für Databricks und Databricks mit AutoML.
+description: Hier erfahren Sie, wie Sie eine Entwicklungsumgebung in Azure Machine Learning und Azure Databricks einrichten. Verwenden Sie die Azure Machine Learning SDKs für Databricks und Databricks mit automatisiertem maschinellem Lernen.
 services: machine-learning
 author: rastala
 ms.author: roastala
@@ -11,14 +11,14 @@ ms.reviewer: larryfr
 ms.date: 10/21/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: ef8ee7718aabb443fda6cd7b276ee53472261913
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 878e6f11645a6478c0d536e9d6d6dac4518c5349
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93423764"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740962"
 ---
-# <a name="set-up-a-development-environment-with-azure-databricks-and-automl-in-azure-machine-learning"></a>Einrichten einer Entwicklungsumgebung mit Azure Databricks und AutoML in Azure Machine Learning 
+# <a name="set-up-a-development-environment-with-azure-databricks-and-automl-in-azure-machine-learning"></a>Einrichten einer Entwicklungsumgebung mit Azure Databricks und automatisiertem maschinellem Lernen in Azure Machine Learning 
 
 Hier erfahren Sie, wie Sie in Azure Machine Learning eine Entwicklungsumgebung konfigurieren, die Azure Databricks und automatisiertes maschinelles Lernen (AutoML) verwendet.
 
@@ -29,10 +29,10 @@ Informationen zu anderen Entwicklungsumgebungen für maschinelles Lernen finden 
 
 ## <a name="prerequisite"></a>Voraussetzung
 
-Einen Azure Machine Learning-Arbeitsbereich. Wenn Sie noch nicht über einen Azure Machine Learning-Arbeitsbereich verfügen, können Sie über das [Azure-Portal](how-to-manage-workspace.md), die [Azure CLI](how-to-manage-workspace-cli.md#create-a-workspace) oder mit [Azure Resource Manager-Vorlagen (ARM)](how-to-create-workspace-template.md) einen erstellen.
+Einen Azure Machine Learning-Arbeitsbereich. Wenn Sie nicht über einen Azure Machine Learning-Arbeitsbereich verfügen, können Sie einen über das [Azure-Portal](how-to-manage-workspace.md), die [Azure-Befehlszeilenschnittstelle](how-to-manage-workspace-cli.md#create-a-workspace) oder über [Azure Resource Manager-Vorlagen](how-to-create-workspace-template.md) erstellen.
 
 
-## <a name="azure-databricks-with-azure-machine-learning-and-automl"></a>Azure Databricks mit Azure Machine Learning und AutoML
+## <a name="azure-databricks-with-azure-machine-learning-and-automl"></a>Azure Databricks mit Azure Machine Learning und automatisiertem maschinellem Lernen
 
 Azure Databricks lässt sich in Azure Machine Learning und die zugehörigen AutoML-Funktionen integrieren. 
 
@@ -120,6 +120,44 @@ So können Sie Azure Databricks testen:
 ![Bereich für Importieren](./media/how-to-configure-environment/azure-db-import.png)
 
 + Erfahren Sie, wie Sie [mit Databricks als Computeziel für das Trainieren von Modellen eine Pipeline erstellen](how-to-create-your-first-pipeline.md).
+
+## <a name="troubleshooting"></a>Problembehandlung
+
+* **Fehler beim Installieren von Paketen**
+
+    Bei der Installation des Azure Machine Learning SDK tritt in Azure Databricks ein Fehler auf, wenn mehrere Pakete installiert werden. Einige Pakete, z.B. `psutil`, können Konflikte verursachen. Um Fehler bei der Installation zu vermeiden, frieren Sie die Bibliotheksversion beim Installieren der Pakete ein. Dieses Problem hängt mit Databricks und nicht mit dem Azure Machine Learning SDK zusammen. Es kann auch mit anderen Bibliotheken auftreten. Beispiel:
+    
+    ```python
+    psutil cryptography==1.5 pyopenssl==16.0.0 ipython==2.2.0
+    ```
+
+    Falls bei Python-Bibliotheken immer wieder Installationsprobleme auftreten, können Sie alternativ Initialisierungsskripts verwenden. Dieser Ansatz wird nicht offiziell unterstützt. Weitere Informationen finden Sie unter [Initialisierungsskripts im Clusterbereich](https://docs.azuredatabricks.net/user-guide/clusters/init-scripts.html#cluster-scoped-init-scripts).
+
+* **Importfehler: Der Name `Timedelta` kann nicht aus `pandas._libs.tslibs` importiert werden:** Wenn dieser Fehler angezeigt wird, wenn Sie automatisiertes Machine Learning verwenden, führen Sie die beiden folgenden Zeilen in Ihrem Notebook aus:
+    ```
+    %sh rm -rf /databricks/python/lib/python3.7/site-packages/pandas-0.23.4.dist-info /databricks/python/lib/python3.7/site-packages/pandas
+    %sh /databricks/python/bin/pip install pandas==0.23.4
+    ```
+
+* **Importfehler: Kein Modul mit dem Namen „pandas.core.indexes“** : Wenn diese Fehlermeldung bei Verwendung von automatisiertem maschinellem Lernen angezeigt wird, gehen Sie folgendermaßen vor:
+
+    1. Führen Sie diesen Befehl aus, um zwei Pakete in Ihrem Azure Databricks-Cluster zu installieren:
+    
+       ```bash
+       scikit-learn==0.19.1
+       pandas==0.22.0
+       ```
+    
+    1. Trennen Sie den Cluster auf, und fügen Sie ihn dann wieder an Ihr Notebook an.
+    
+    Wenn diese Schritte das Problem nicht beheben, versuchen Sie, den Cluster neu zu starten.
+
+* **FailToSendFeather:** Sollte beim Lesen von Daten aus einem Azure Databricks-Cluster ein Fehler vom Typ `FailToSendFeather` auftreten, haben Sie folgende Möglichkeiten:
+    
+    * Upgraden Sie das Paket `azureml-sdk[automl]` auf die aktuelle Version.
+    * Fügen Sie mindestens die Version 1.1.8 von `azureml-dataprep` hinzu.
+    * Fügen Sie mindestens die Version 0.11 von `pyarrow` hinzu.
+  
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 76e19c36f0fa4096966c5dd23d2384b6b30f2271
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: ed57c496443c9d1541bfa9933e7718213da116d7
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95498859"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97845603"
 ---
 # <a name="business-card-concepts"></a>Konzepte zu Visitenkarten
 
@@ -374,7 +374,7 @@ Eine erfolgreiche JSON-Antwort sieht in etwa wie folgendes Beispiel aus: Der rea
 }
 ```
 
-Befolgen Sie die Schnellstartanleitung zum [Extrahieren von Visitenkartendaten](./QuickStarts/python-business-cards.md), um den Vorgang zum Extrahieren von Visitenkartendaten mit Python und der REST-API zu implementieren.
+Befolgen Sie den [Schnellstart](./QuickStarts/client-library.md), um den Vorgang zum Extrahieren von Visitenkartendaten mit Python und der REST-API zu implementieren.
 
 ## <a name="customer-scenarios"></a>Kundenszenarien  
 
@@ -389,7 +389,7 @@ Die Visitenkarten-API unterstützt zudem die [AI Builder-Funktion zur Verarbeit
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Befolgen Sie die Informationen unter [Python-Schnellstart für die Visitenkarten-API](./quickstarts/python-business-cards.md), um mit der Erkennung von Visitenkarten zu beginnen.
+- Befolgen Sie den [Schnellstart](./quickstarts/client-library.md), um mit der Erkennung von Visitenkarten zu beginnen.
 
 ## <a name="see-also"></a>Weitere Informationen
 

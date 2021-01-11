@@ -4,12 +4,12 @@ description: Enthält eine Zusammenfassung der Unterstützungseinstellungen und 
 ms.topic: conceptual
 ms.date: 03/05/2020
 ms.custom: references_regions
-ms.openlocfilehash: b189eceb6b5a7f2e508387c0b91b238ff5fcb088
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 78436981c515b95ccda763d8ac916738b4364953
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92174066"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97734792"
 ---
 # <a name="support-matrix-for-sql-server-backup-in-azure-vms"></a>Unterstützungsmatrix für die SQL Server-Sicherung auf Azure-VMs
 
@@ -39,7 +39,7 @@ Mit Azure Backup können Sie SQL Server-Datenbanken auf Azure-VMs sichern, die
 * SQL Server-Sicherung kann im Azure-Portal oder mit **PowerShell** konfiguriert werden. Die Befehlszeilenschnittstelle wird nicht unterstützt.
 * Die Lösung wird für beide Arten von [Bereitstellungen](../azure-resource-manager/management/deployment-models.md) unterstützt: Azure Resource Manager-VMs und klassische VMs.
 * Alle Sicherungstypen (vollständig/differenziell/Protokoll) und Wiederherstellungsmodelle (einfach/vollständig/massenprotokolliert) werden unterstützt.
-* Die Sicherungstypen „Vollständig“ und „Nur vollständig kopieren“ werden für **schreibgeschützte** Datenbanken unterstützt.
+* Bei **schreibgeschützten** Datenbanken: Es werden nur die Sicherungstypen „Vollständig“ und „Nur vollständig kopieren“ unterstützt.
 * Die native SQL-Komprimierung wird unterstützt, wenn sie vom Benutzer explizit in der Sicherungsrichtlinie aktiviert wurde. Je nachdem, welcher Wert vom Benutzer für dieses Steuerelement festgelegt wurde, überschreibt Azure Backup die Standardwerte auf Instanzebene mit der COMPRESSION- bzw. NO_COMPRESSION-Klausel.
 * Für TDE aktivierte Datenbanksicherungen werden unterstützt. Wenn Sie eine mit TDE verschlüsselte Datenbank in einer anderen SQL Server-Instanz wiederherstellen möchten, müssen Sie zuerst [das Zertifikat auf dem Zielserver wiederherstellen](/sql/relational-databases/security/encryption/move-a-tde-protected-database-to-another-sql-server). Eine Komprimierung der Sicherungen für TDE-fähige Datenbanken für SQL Server 2016 und höhere Versionen ist verfügbar, allerdings für geringere Übertragungsgrößen, wie [hier](https://techcommunity.microsoft.com/t5/sql-server/backup-compression-for-tde-enabled-databases-important-fixes-in/ba-p/385593) erläutert.
 * Sicherungs- und Wiederherstellungsvorgänge für Spiegeldatenbanken und Datenbankmomentaufnahmen werden nicht unterstützt.

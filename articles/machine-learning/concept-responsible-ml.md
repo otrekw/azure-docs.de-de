@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: luquinta
 author: luisquintanilla
-ms.date: 11/16/2020
-ms.openlocfilehash: ff85ed669fb7c3ac43e322eb747c537a30801920
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.date: 12/21/2020
+ms.openlocfilehash: 83bca8a2a81823cd0a8bda1633599292460ddd30
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94701431"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724326"
 ---
 # <a name="what-is-responsible-machine-learning-preview"></a>Was ist verantwortungsvolles maschinelles Lernen? (Vorschauversion)
 
@@ -62,10 +62,7 @@ Wenn Daten zur Analyse verwendet werden, ist es wichtig, dass die Daten während
 
 In herkömmlichen Szenarien werden die Rohdaten in Dateien und Datenbanken gespeichert. Wenn Benutzer Daten analysieren, verwenden sie in der Regel diese Rohdaten. Dies ist bedenklich, da dadurch die Privacy- und Datenschutzgesetze des Einzelnen verletzt werden könnten. Der differenzielle Datenschutz versucht, diesem Problem zu begegnen, indem er den Daten entsprechende „Stördaten“ oder Zufallselemente hinzufügt, sodass die Benutzer keine einzelnen Datenpunkte identifizieren können.
 
-Das Implementieren differenzieller privater Systeme ist schwierig. [WhiteNoise](https://github.com/opendifferentialprivacy/whitenoise-core) ist ein Open-Source-Projekt, das verschiedene Komponenten zum Erstellen globaler, differenzieller privater Systeme enthält. Weitere Informationen zum differenziellen Datenschutz und dem WhiteNoise-Projekt finden Sie im Artikel [Bewahren des Datenschutzes mithilfe des differenziellen Datenschutzes und mit WhiteNoise](./concept-differential-privacy.md).
-
-> [!NOTE]
-> Beachten Sie, dass wir das Toolkit umbenennen und den neuen Namen in den nächsten Wochen einführen werden. 
+Das Implementieren differenzieller privater Systeme ist schwierig. [SmartNoise](https://github.com/opendifferentialprivacy/smartnoise-core) ist ein Open-Source-Projekt, das verschiedene Komponenten zum Erstellen globaler, differenzieller privater Systeme enthält. Weitere Informationen zum differenziellen Datenschutz und dem SmartNoise-Projekt finden Sie im Artikel [Bewahren des Datenschutzes mithilfe des differenziellen Datenschutzes und mit SmartNoise](./concept-differential-privacy.md).
 
 ## <a name="work-on-encrypted-data-with-homomorphic-encryption"></a>Arbeiten mit verschlüsselten Daten mithilfe der homomorphen Verschlüsselung
 

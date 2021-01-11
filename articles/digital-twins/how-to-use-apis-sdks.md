@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: cac0d8cb8a910b735454c9270060364cab2db5fb
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: c9f9cc53c62ed19fa5fbd1e78c840a8a34b6fb84
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187237"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97824650"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>Verwenden der Azure Digital Twins-APIs und SDKs
 
@@ -26,7 +26,7 @@ Dieser Artikel bietet eine Übersicht über die verfügbaren APIs und die Method
 
 Bei den Steuerungsebenen-APIs handelt es sich um [ARM](../azure-resource-manager/management/overview.md)-APIs, die verwendet werden, um Ihre Azure Digital Twins-Instanz als Ganzes zu verwalten, sodass sie Vorgänge wie das Erstellen oder Löschen Ihrer gesamten Instanz abdecken. Sie werden diese auch zum Erstellen und Löschen von Endpunkten verwenden.
 
-Die aktuellste Steuerungsebenen-API-Version ist _**2020-10-31**_.
+Die aktuellste Version der Steuerungsebenen-API ist _**2020-12-01**_.
 
 So verwenden Sie die Steuerungsebenen-APIs
 * Sie können die APIs direkt aufrufen, indem Sie auf den neuesten Swagger im [Swagger-Ordner der Steuerungsebene](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins) verweisen. Dieses Repository enthält auch einen Ordner mit Beispielen, die die Verwendung veranschaulichen.
@@ -81,15 +81,9 @@ Das Azure Digital Twins .NET (C#) SDK ist Teil des Azure SDK für .NET. Es ist O
 > [!NOTE]
 > Weitere Informationen zum SDK-Entwurf finden Sie in den allgemeinen [Entwurfsprinzipien für Azure SDKs](https://azure.github.io/azure-sdk/general_introduction.html) und in den spezifischen [.NET-Entwurfsrichtlinien](https://azure.github.io/azure-sdk/dotnet_introduction.html).
 
-Um das SDK zu verwenden, fügen Sie Ihrem Projekt das NuGet-Paket **Azure.DigitalTwins.Core** hinzu. Sie benötigen auch die aktuelle Version des Pakets **Azure.Identity**.
-
-* In Visual Studio können Sie Pakete mit dem NuGet-Paket-Manager hinzufügen (Zugriff über *Extras > NuGet-Paket-Manager > NuGet-Pakete für Lösung verwalten*). 
-* Sie können das .NET-Befehlszeilentool verwenden:
-
-    ```cmd/sh
-    dotnet add package Azure.DigitalTwins.Core --version 1.0.0-preview.3
-    dotnet add package Azure.identity
-    ```
+Um das SDK zu verwenden, fügen Sie Ihrem Projekt das NuGet-Paket **Azure.DigitalTwins.Core** hinzu. Sie benötigen auch die aktuelle Version des Pakets **Azure.Identity**. In Visual Studio können Sie diese Pakete mit dem NuGet-Paket-Manager hinzufügen (Zugriff über *Extras > NuGet-Paket-Manager > NuGet-Pakete für Lösung verwalten*). Alternativ dazu können Sie das .NET-Befehlszeilentool mit den Befehlen verwenden, die Sie unter den Links zu den NuGet-Paketen unten finden, um sie Ihrem Projekt hinzuzufügen:
+* [**Azure.DigitalTwins.Core**](https://www.nuget.org/packages/Azure.DigitalTwins.Core). Dies ist das Paket für das [Azure Digital Twins-SDK für .NET](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true). 
+* [**Azure.Identity**](https://www.nuget.org/packages/Azure.Identity). Diese Bibliothek stellt Tools bereit, die die Authentifizierung bei Azure unterstützen.
 
 Eine ausführliche exemplarische Vorgehensweise zur Verwendung der APIs in der Praxis finden Sie im [*Tutorial: Programmieren einer Client-App*](tutorial-code.md). 
 

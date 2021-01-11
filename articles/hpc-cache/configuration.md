@@ -4,14 +4,14 @@ description: Erläutert, wie zusätzliche Einstellungen für den Cache konfiguri
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 05/06/2020
+ms.date: 12/21/2020
 ms.author: v-erkel
-ms.openlocfilehash: b01c4d896d5ec600e0fe22e3ca7b7816141776a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 02bf862cdc3b20ef3e5fdb024f474267efa0c70d
+ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86497198"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97760502"
 ---
 # <a name="configure-additional-azure-hpc-cache-settings"></a>Konfigurieren zusätzlicher Azure HPC Cache-Einstellungen
 
@@ -43,7 +43,7 @@ Wenn Sie die MTU-Einstellungen für andere Systemkomponenten nicht ändern möch
 Weitere Informationen zu den MTU-Einstellungen in virtuellen Azure-Netzwerken finden Sie unter [Optimierung der TCP/IP-Leistung für Azure-VMs](../virtual-network/virtual-network-tcpip-performance-tuning.md).
 
 ## <a name="configure-root-squash"></a>Konfigurieren von Root-Squash
-<!-- linked from troubleshoot -->
+<!-- linked from troubleshoot and from access policies -->
 
 Die Einstellung **Root-Squash aktivieren** steuert, wie Azure HPC Cache Anforderungen des Stammbenutzers auf Clientcomputern verarbeitet.
 
@@ -54,6 +54,9 @@ Bei deaktiviertem Root-Squash werden Anforderungen vom Stammbenutzer des Clients
 Wenn der Root-Squash für den Cache festgelegt wird, kann diese Einstellung dazu beitragen, die erforderliche Einstellung ``no_root_squash`` in NAS-Systemen auszugleichen, die als Speicherziele verwendet werden. (Weitere Informationen zu [Voraussetzungen für NFS-Speicherziele](hpc-cache-prerequisites.md#nfs-storage-requirements).) Außerdem kann dadurch die Sicherheit verbessert werden, wenn sie mit Azure-Blobspeicherzielen verwendet wird.
 
 Die Standardeinstellung ist **Ja**. (Caches, die vor April 2020 erstellt wurden, haben die Standardeinstellung **Nein**.)
+
+> [!TIP]
+> Sie können auch Root-Squash für bestimmte Speicherexporte festlegen, indem Sie [Clientzugriffsrichtlinien](access-policies.md#root-squash) anpassen.
 
 ## <a name="view-snapshots-for-blob-storage-targets"></a>Anzeigen von Momentaufnahmen für Blobspeicherziele
 

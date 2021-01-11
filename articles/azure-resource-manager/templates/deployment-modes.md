@@ -3,12 +3,12 @@ title: Bereitstellungsmodi
 description: Beschreibt das Festlegen, ob für Azure Resource Manager eine vollständige oder inkrementelle Bereitstellung verwendet wird.
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: bc499be4185905af7eaf71b3515895de9bee46d3
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 45eee255cec06925095ed0696c669b5c205f8b56
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96184041"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724407"
 ---
 # <a name="azure-resource-manager-deployment-modes"></a>Azure Resource Manager-Bereitstellungsmodi
 
@@ -33,7 +33,7 @@ Wenn Sie in [mehr als einer Ressourcengruppe in einer Vorlage](./deploy-to-resou
 
 Bei der Verarbeitung von Löschungen im vollständigen Modus gibt es zwischen Ressourcentypen einige Unterschiede. Übergeordnete Ressourcen werden automatisch gelöscht, wenn sie nicht in einer Vorlage enthalten sind, die im vollständigen-Modus bereitgestellt wird. Einige untergeordnete Ressourcen werden nicht automatisch gelöscht, wenn sie nicht in der Vorlage enthalten sind. Diese untergeordneten Ressourcen werden jedoch gelöscht, wenn die übergeordnete Ressource gelöscht wird.
 
-Beispiel: Wenn Ihre Ressourcengruppe eine DNS-Zone (Ressourcentyp „Microsoft.Network/dnsZones“) und einen CNAME-Eintrag (Ressourcentyp „Microsoft.Network/dnsZones/CNAME“) enthält, ist die DNS-Zone die übergeordnete Ressource des CNAME-Eintrags. Wenn Sie im vollständigen Modus bereitstellen und die DNS-Zone nicht in Ihre Vorlage aufnehmen, werden sowohl die DNS-Zone als auch der CNAME-Eintrag gelöscht. Wenn Sie die DNS-Zone in Ihre Vorlage aufnehmen, den CNAME-Eintrag jedoch nicht, wird der CNAME-Eintrag nicht gelöscht.
+Beispiel: Wenn Ihre Ressourcengruppe eine DNS-Zone (Ressourcentyp `Microsoft.Network/dnsZones`) und einen CNAME-Eintrag (Ressourcentyp `Microsoft.Network/dnsZones/CNAME`) enthält, ist die DNS-Zone die übergeordnete Ressource des CNAME-Eintrags. Wenn Sie im vollständigen Modus bereitstellen und die DNS-Zone nicht in Ihre Vorlage aufnehmen, werden sowohl die DNS-Zone als auch der CNAME-Eintrag gelöscht. Wenn Sie die DNS-Zone in Ihre Vorlage aufnehmen, den CNAME-Eintrag jedoch nicht, wird der CNAME-Eintrag nicht gelöscht.
 
 Eine Liste der Verarbeitung von Löschungen durch Ressourcentypen finden Sie unter [Löschen von Azure-Ressourcen für Bereitstellungen im vollständigen Modus](complete-mode-deletion.md).
 
@@ -113,19 +113,19 @@ Im folgenden Beispiel ist eine verknüpfte Vorlage mit festgelegtem inkrementell
 ```json
 "resources": [
   {
-      "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2017-05-10",
-      "name": "linkedTemplate",
-      "properties": {
-          "mode": "Incremental",
+    "type": "Microsoft.Resources/deployments",
+    "apiVersion": "2017-05-10",
+    "name": "linkedTemplate",
+    "properties": {
+      "mode": "Incremental",
           <nested-template-or-external-template>
-      }
+    }
   }
 ]
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Weitere Informationen zum Erstellen von Ressourcen-Manager-Vorlagen finden Sie unter [Erstellen von Azure-Ressourcen-Manager-Vorlagen](template-syntax.md).
-* Informationen zum Bereitstellen von Vorlagen finden Sie unter [Bereitstellen einer Anwendung mit einer Azure-Ressourcen-Manager-Vorlage](deploy-powershell.md).
+* Weitere Informationen zum Erstellen von Resource Manager-Vorlagen finden Sie unter [Verstehen der Struktur und Syntax von ARM-Vorlagen](template-syntax.md).
+* Informationen zum Bereitstellen von Ressourcen finden Sie unter [Bereitstellen von Ressourcen mit ARM-Vorlagen und Azure PowerShell](deploy-powershell.md).
 * Informationen zum Anzeigen der Vorgänge für einen Ressourcenanbieter finden Sie unter [Azure-REST-API](/rest/api/).

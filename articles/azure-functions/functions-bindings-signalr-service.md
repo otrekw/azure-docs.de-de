@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/28/2019
 ms.author: cshoe
-ms.openlocfilehash: 1446808b77e5eea78a9912db4c7a8e2dd783f33a
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 9e60fd9a20720d75f96a0b78ee783bd5509a8f90
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92104375"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97763488"
 ---
 # <a name="signalr-service-bindings-for-azure-functions"></a>Bindungen des SignalR-Diensts für Azure Functions
 
@@ -18,6 +18,7 @@ In dieser Gruppe von Artikeln wird erläutert, wie Sie SignalR-Bindungen in Azur
 
 | Action | type |
 |---------|---------|
+| Verarbeiten von Nachrichten von SignalR Service | [Triggerbindung](./functions-bindings-signalr-service-trigger.md) |
 | Zurückgeben der Dienstendpunkt-URL und des Zugriffstokens | [Eingabebindung](./functions-bindings-signalr-service-input.md) |
 | Senden von SignalR Service-Nachrichten |[Ausgabebindung](./functions-bindings-signalr-service-output.md) |
 
@@ -55,5 +56,6 @@ Um die SignalR Service-Anmerkungen in Java-Funktionen verwenden zu können, mü
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+- [Verarbeiten von Nachrichten von SignalR Service (Triggerbindung)](./functions-bindings-signalr-service-trigger.md)
 - [Zurückgeben der Dienstendpunkt-URL und des Zugriffstokens (Eingabebindung)](./functions-bindings-signalr-service-input.md)
 - [Senden von SignalR Service-Nachrichten (Ausgabebindung)](./functions-bindings-signalr-service-output.md)

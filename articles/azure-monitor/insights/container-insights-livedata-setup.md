@@ -4,12 +4,12 @@ description: In diesem Artikel wird beschrieben, wie Sie die Echtzeitansicht von
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.custom: references_regions
-ms.openlocfilehash: 45ed931f734e874e81af837fff5c4a326349cb21
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 62bc7613995296504dfba551cdb631ac3386aa75
+ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95530181"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97830784"
 ---
 # <a name="how-to-set-up-the-live-data-preview-feature"></a>Einrichten der Funktion für Livedaten (Vorschau)
 
@@ -48,7 +48,7 @@ Im Azure-Portal werden Sie aufgefordert, Ihre Anmeldeinformationen für einen Az
 
 Um zu vermeiden, dass zusätzliche Konfigurationsänderungen erforderlich sind, damit die Kubernetes-Benutzerrollenbindung **clusterUser** nach [Aktivierung der Kubernetes RBAC](#configure-kubernetes-rbac-authorization)-Autorisierung auf die Funktion für Livedaten (Vorschau) zugreifen kann, hat AKS eine neue Kubernetes-Clusterrollenbindung mit Namen **clusterMonitoringUser** hinzugefügt. Diese Clusterrollenbindung verfügt standardmäßig über alle erforderlichen Berechtigungen für den Zugriff auf die Kubernetes-API und die Endpunkte, um die Funktion für Livedaten (Vorschau) zu nutzen.
 
-Damit die Funktion für Livedaten (Vorschau) mit diesem neuen Benutzer verwendet werden kann, müssen Sie Mitglied der Rolle [Mitwirkender](../../role-based-access-control/built-in-roles.md#contributor) für die AKS-Clusterressource sein. Azure Monitor für Container ist bei Aktivierung standardmäßig für die Authentifizierung mit diesem Benutzer konfiguriert. Ist die Rollenbindung „clusterMonitoringUser“ in einem Cluster nicht vorhanden, wird stattdessen **clusterUser** für die Authentifizierung verwendet.
+Damit die Funktion für Livedaten (Vorschau) mit diesem neuen Benutzer verwendet werden kann, müssen Sie Mitglied einer der Rollen [Azure Kubernetes Service-Clusterbenutzer](../../role-based-access-control/built-in-roles.md#azure-kubernetes-service-cluster-user-role) oder [Mitwirkender](../../role-based-access-control/built-in-roles.md#contributor) für die AKS-Clusterressource sein. Azure Monitor für Container ist bei Aktivierung standardmäßig für die Authentifizierung mit dem Benutzer clusterMonitoringUser konfiguriert. Ist die Rollenbindung „clusterMonitoringUser“ in einem Cluster nicht vorhanden, wird stattdessen **clusterUser** für die Authentifizierung verwendet. Die Rolle „Mitwirkender“ ermöglicht Ihnen den Zugriff auf clusterMonitoringUser (sofern vorhanden), und mit „Azure Kubernetes Service-Clusterbenutzer“ können Sie auf clusterUser zugreifen. Jede dieser beiden Rollen bietet ausreichenden Zugriff für die Verwendung dieses Features.
 
 AKS hat diese neue Rollenbindung im Januar 2020 veröffentlicht, sodass Cluster, die vor Januar 2020 erstellt wurden, nicht darüber verfügen. Wenn Sie über einen Cluster verfügen, der vor Januar 2020 erstellt wurde, kann die neue Rollenbindung **clusterMonitoringUser** einem vorhandenen Cluster hinzugefügt werden, indem Sie einen PUT-Vorgang für den Cluster ausführen oder einen anderen Vorgang verwenden, mit dem ein PUT-Vorgang für den Cluster ausgeführt wird, wie etwa das Aktualisieren der Clusterversion.
 

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 12/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 5be0d45843eed8c7c0d7d9b6dc4655de01e914c3
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: d064eb0b748c361b76139b1a21d25cec8996e818
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461451"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97734775"
 ---
 # <a name="manage-variables-in-azure-automation"></a>Verwalten von Variablen in Azure Automation
 
@@ -80,11 +80,11 @@ $mytestencryptvar = Get-AutomationVariable -Name TestVariable
 Write-output "The encrypted value of the variable is: $mytestencryptvar"
 ```
 
-## <a name="python-2-functions-to-access-variables"></a>Python 2-Funktionen für den Zugriff auf Variablen
+## <a name="python-functions-to-access-variables"></a>Python-Funktionen für den Zugriff auf Variablen
 
-Die Funktionen in der folgenden Tabelle werden zum Zugreifen auf Variablen in einem Python 2-Runbook verwendet.
+Die Funktionen in der folgenden Tabelle werden zum Zugreifen auf Variablen in einem Python 2- und Python 3-Runbook verwendet. Python 3-Runbooks sind derzeit als Vorschau verfügbar.
 
-|Python 2-Funktionen|BESCHREIBUNG|
+|Python-Funktionen|BESCHREIBUNG|
 |:---|:---|
 |`automationassets.get_automation_variable`|Ruft den Wert einer vorhandenen Variable ab. |
 |`automationassets.set_automation_variable`|Legt den Wert für eine vorhandene Variable fest. |
@@ -135,9 +135,10 @@ $vmValue = Get-AzAutomationVariable -ResourceGroupName "ResourceGroup01" `
 $vmName = $vmValue.Name
 $vmExtensions = $vmValue.Extensions
 ```
+
 ## <a name="textual-runbook-examples"></a>Beispiele für Textrunbooks
 
-### <a name="retrieve-and-set-a-simple-value-from-a-variable"></a>Abrufen und Festlegen eines einfachen Werts einer Variable
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Im folgenden Beispiel wird gezeigt, wie Sie eine Variable in einem Textrunbook festlegen und abrufen. In diesem Beispiel wird davon ausgegangen, dass die Integervariablen `NumberOfIterations` und `NumberOfRunnings` sowie eine Zeichenfolgenvariable mit dem Namen `SampleMessage` erstellt werden.
 
@@ -154,7 +155,7 @@ for ($i = 1; $i -le $NumberOfIterations; $i++) {
 Set-AzAutomationVariable -ResourceGroupName "ResourceGroup01" –AutomationAccountName "MyAutomationAccount" –Name NumberOfRunnings –Value ($NumberOfRunnings += 1)
 ```
 
-### <a name="retrieve-and-set-a-variable-in-a-python-2-runbook"></a>Abrufen und Festlegen einer Variable in einem Python 2-Runbook
+# <a name="python-2"></a>[Python 2](#tab/python2)
 
 Im folgenden Beispiel wird veranschaulicht, wie Sie in einem Python 2-Runbook eine Variable abrufen, eine Variable festlegen und eine Ausnahme für eine nicht vorhandene Variable behandeln.
 
@@ -177,6 +178,32 @@ try:
 except AutomationAssetNotFound:
     print "variable not found"
 ```
+
+# <a name="python-3"></a>[Python 3](#tab/python3)
+
+Im folgenden Beispiel wird veranschaulicht, wie Sie in einem Python 3-Runbook (Vorschau) eine Variable abrufen, eine Variable festlegen und eine Ausnahme für eine nicht vorhandene Variable behandeln.
+
+```python
+import automationassets
+from automationassets import AutomationAssetNotFound
+
+# get a variable
+value = automationassets.get_automation_variable("test-variable")
+print value
+
+# set a variable (value can be int/bool/string)
+automationassets.set_automation_variable("test-variable", True)
+automationassets.set_automation_variable("test-variable", 4)
+automationassets.set_automation_variable("test-variable", "test-string")
+
+# handle a non-existent variable exception
+try:
+    value = automationassets.get_automation_variable("nonexisting variable")
+except AutomationAssetNotFound:
+    print ("variable not found")
+```
+
+---
 
 ## <a name="graphical-runbook-examples"></a>Beispiele für grafische Runbooks
 

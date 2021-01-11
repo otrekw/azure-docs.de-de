@@ -1,22 +1,22 @@
 ---
 title: Verknüpfen von Vorlagen für die Bereitstellung
-description: Beschreibt, wie verknüpfte Vorlagen in einer Azure-Ressourcen-Manager-Vorlage zum Erstellen einer modularen Vorlagenprojektmappe verwendet werden. Zeigt, wie Parameterwerte übergeben, eine Parameterdatei festgelegt und URLs dynamisch erstellt werden.
+description: Beschreibt, wie verknüpfte Vorlagen in einer Azure Resource Manager-Vorlage (ARM-Vorlage) zum Erstellen einer modularen Vorlagenlösung verwendet werden. Zeigt, wie Parameterwerte übergeben, eine Parameterdatei festgelegt und URLs dynamisch erstellt werden.
 ms.topic: conceptual
 ms.date: 12/07/2020
-ms.openlocfilehash: 1e2ccc57b42f8072c9aa28612d534507b9a674ed
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: cac63ccdd13e245baf97695e9b138c29d3db4958
+ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96852097"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97760621"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Verwenden von verknüpften und geschachtelten Vorlagen bei der Bereitstellung von Azure-Ressourcen
 
-Zum Bereitstellen komplexer Lösungen können Sie Ihre Vorlage in viele verwandte Vorlagen unterteilen und diese dann über eine Hauptvorlage gemeinsam bereitstellen. Die zugehörigen Vorlagen können separate Dateien oder in die Hauptvorlage eingebettete Vorlagensyntax sein. In diesem Artikel wird der Begriff **verknüpfte Vorlage** für eine separate Vorlagendatei verwendet, auf die über eine Verknüpfung in der Hauptvorlage verwiesen wird. Der Begriff **geschachtelte Vorlage** wird verwendet, um auf die eingebettete Vorlagensyntax in der Hauptvorlage zu verweisen.
+Zum Bereitstellen komplexer Lösungen können Sie Ihre ARM-Vorlage (Azure Resource Manager) in viele verwandte Vorlagen unterteilen und diese dann über eine Hauptvorlage gemeinsam bereitstellen. Die zugehörigen Vorlagen können separate Dateien oder in die Hauptvorlage eingebettete Vorlagensyntax sein. In diesem Artikel wird der Begriff **verknüpfte Vorlage** für eine separate Vorlagendatei verwendet, auf die über eine Verknüpfung in der Hauptvorlage verwiesen wird. Der Begriff **geschachtelte Vorlage** wird verwendet, um auf die eingebettete Vorlagensyntax in der Hauptvorlage zu verweisen.
 
 Bei kleinen bis mittelgroßen Lösungen lässt sich eine Einzelvorlage einfacher verstehen und verwalten. Sie können alle Ressourcen und Werte in einer einzelnen Datei anzeigen. In erweiterten Szenarien können Sie mithilfe verknüpfter Vorlagen die Lösung in Zielkomponenten unterteilen. Sie können diese Vorlagen mühelos erneut für andere Szenarien verwenden.
 
-Ein entsprechendes Tutorial finden Sie unter [Tutorial: Erstellen verknüpfter Azure Resource Manager-Vorlagen](./deployment-tutorial-linked-template.md).
+Ein Tutorial finden Sie unter [Tutorial: Bereitstellen einer verknüpften Vorlage](./deployment-tutorial-linked-template.md).
 
 > [!NOTE]
 > Für verknüpfte oder geschachtelte Vorlagen können Sie den Bereitstellungsmodus nur auf [Inkrementell](deployment-modes.md) festlegen. Die Hauptvorlage kann jedoch im vollständigen Modus bereitgestellt werden. Wenn Sie die Hauptvorlage im vollständigen Modus bereitstellen und die verknüpfte oder geschachtelte Vorlage auf dieselbe Ressourcengruppe ausgerichtet ist, werden die in der verknüpften oder geschachtelten Vorlage bereitgestellten Ressourcen in die Auswertung für die Bereitstellung im vollständigen Modus aufgenommen. Die kombinierte Sammlung der in der Hauptvorlage und den verknüpften oder geschachtelten Vorlagen bereitgestellten Ressourcen wird mit den vorhandenen Ressourcen in der Ressourcengruppe verglichen. Alle Ressourcen, die nicht in dieser kombinierten Sammlung enthalten sind, werden gelöscht.
@@ -26,7 +26,7 @@ Ein entsprechendes Tutorial finden Sie unter [Tutorial: Erstellen verknüpfter A
 
 ## <a name="nested-template"></a>Geschachtelte Vorlage
 
-Zum Schachteln einer Vorlage fügen Sie der Hauptvorlage eine [Bereitstellungsressource](/azure/templates/microsoft.resources/deployments) hinzu. Geben Sie in der **template**-Eigenschaft die Vorlagensyntax an.
+Zum Schachteln einer Vorlage fügen Sie der Hauptvorlage eine [Bereitstellungsressource](/azure/templates/microsoft.resources/deployments) hinzu. Geben Sie in der `template`-Eigenschaft die Vorlagensyntax an.
 
 ```json
 {
@@ -283,7 +283,7 @@ Im folgenden Beispiel wird eine SQL Server-Instanz bereitgestellt, und ein Schl�
 
 ## <a name="linked-template"></a>Verknüpfte Vorlage
 
-Zum Verknüpfen einer Vorlage fügen Sie der Hauptvorlage eine [Bereitstellungsressource](/azure/templates/microsoft.resources/deployments) hinzu. Geben Sie in der **templateLink**-Eigenschaft den URI der einzuschließenden Vorlage an. Das folgende Beispiel verknüpft eine Vorlage, die sich in einem Speicherkonto befindet.
+Zum Verknüpfen einer Vorlage fügen Sie der Hauptvorlage eine [Bereitstellungsressource](/azure/templates/microsoft.resources/deployments) hinzu. Geben Sie in der `templateLink`-Eigenschaft den URI der einzuschließenden Vorlage an. Das folgende Beispiel verknüpft eine Vorlage, die sich in einem Speicherkonto befindet.
 
 ```json
 {
@@ -310,9 +310,9 @@ Zum Verknüpfen einer Vorlage fügen Sie der Hauptvorlage eine [Bereitstellungsr
 }
 ```
 
-Beim Verweisen auf eine verknüpfte Vorlage darf der Wert von `uri` weder eine lokale Datei noch eine Datei sein, die nur in Ihrem lokalen Netzwerk verfügbar ist. Azure Resource Manager muss auf die Vorlage zugreifen können. Geben Sie einen URI-Wert an, der als **http**- oder **https**-Wert heruntergeladen werden kann. 
+Beim Verweisen auf eine verknüpfte Vorlage darf der Wert von `uri` weder eine lokale Datei noch eine Datei sein, die nur in Ihrem lokalen Netzwerk verfügbar ist. Azure Resource Manager muss auf die Vorlage zugreifen können. Geben Sie einen URI-Wert an, der als HTTP- oder HTTPS-Wert heruntergeladen werden kann.
 
-Sie können auf Vorlagen mit Parametern verweisen, die **http** oder **http** enthalten. Ein gängiges Muster ist beispielsweise die Verwendung des Parameters `_artifactsLocation`. Sie können die verknüpfte Vorlage mit einem Ausdruck wie dem folgenden festlegen:
+Sie können auf Vorlagen mit Parametern verweisen, die HTTP oder HTTPS enthalten. Ein gängiges Muster ist beispielsweise die Verwendung des Parameters `_artifactsLocation`. Sie können die verknüpfte Vorlage mit einem Ausdruck wie dem folgenden festlegen:
 
 ```json
 "uri": "[concat(parameters('_artifactsLocation'), '/shared/os-disk-parts-md.json', parameters('_artifactsLocationSasToken'))]"
@@ -324,47 +324,49 @@ Wenn Sie eine Vorlage in GitHub verknüpfen, verwenden Sie die unformatierte URL
 
 ### <a name="parameters-for-linked-template"></a>Parameter für eine verknüpfte Vorlage
 
-Sie können die Parameter für die verknüpfte Vorlage in einer externen Datei oder inline bereitstellen. Verenden Sie zum Bereitstellen einer externen Parameterdatei die **parametersLink**-Eigenschaft:
+Sie können die Parameter für die verknüpfte Vorlage in einer externen Datei oder inline bereitstellen. Verenden Sie zum Bereitstellen einer externen Parameterdatei die `parametersLink`-Eigenschaft:
 
 ```json
 "resources": [
   {
-  "type": "Microsoft.Resources/deployments",
-  "apiVersion": "2019-10-01",
-  "name": "linkedTemplate",
-  "properties": {
-    "mode": "Incremental",
-    "templateLink": {
-      "uri":"https://mystorageaccount.blob.core.windows.net/AzureTemplates/newStorageAccount.json",
-      "contentVersion":"1.0.0.0"
-    },
-    "parametersLink": {
-      "uri":"https://mystorageaccount.blob.core.windows.net/AzureTemplates/newStorageAccount.parameters.json",
-      "contentVersion":"1.0.0.0"
+    "type": "Microsoft.Resources/deployments",
+    "apiVersion": "2019-10-01",
+    "name": "linkedTemplate",
+    "properties": {
+      "mode": "Incremental",
+      "templateLink": {
+        "uri": "https://mystorageaccount.blob.core.windows.net/AzureTemplates/newStorageAccount.json",
+        "contentVersion": "1.0.0.0"
+      },
+      "parametersLink": {
+        "uri": "https://mystorageaccount.blob.core.windows.net/AzureTemplates/newStorageAccount.parameters.json",
+        "contentVersion": "1.0.0.0"
+      }
     }
-  }
   }
 ]
 ```
 
-Um Parameterwerte inline zu übergeben, verwenden Sie die **parameters**-Eigenschaft.
+Um Parameterwerte inline zu übergeben, verwenden Sie die `parameters`-Eigenschaft.
 
 ```json
 "resources": [
   {
-   "type": "Microsoft.Resources/deployments",
-   "apiVersion": "2019-10-01",
-   "name": "linkedTemplate",
-   "properties": {
-     "mode": "Incremental",
-     "templateLink": {
-      "uri":"https://mystorageaccount.blob.core.windows.net/AzureTemplates/newStorageAccount.json",
-      "contentVersion":"1.0.0.0"
-     },
-     "parameters": {
-      "storageAccountName":{"value": "[parameters('storageAccountName')]"}
+    "type": "Microsoft.Resources/deployments",
+    "apiVersion": "2019-10-01",
+    "name": "linkedTemplate",
+    "properties": {
+      "mode": "Incremental",
+      "templateLink": {
+        "uri": "https://mystorageaccount.blob.core.windows.net/AzureTemplates/newStorageAccount.json",
+        "contentVersion": "1.0.0.0"
+      },
+      "parameters": {
+        "storageAccountName": {
+          "value": "[parameters('storageAccountName')]"
+        }
+      }
     }
-   }
   }
 ]
 ```
@@ -394,7 +396,7 @@ Sie müssen die `contentVersion`-Eigenschaft für die `templateLink`- oder `para
 
 Die vorherigen Beispiele zeigen hartcodierte URL-Werte für die Vorlagenlinks. Dieser Ansatz funktioniert zwar bei einfachen Vorlagen, er funktioniert jedoch nicht gut bei einer großen Anzahl von modularen Vorlagen. Stattdessen können Sie eine statische Variable erstellen, die eine Basis-URL für die Hauptvorlage speichert, und dann aus dieser Basis-URL dynamisch URLs für die verknüpften Vorlagen erstellen. Der Vorteil dieses Ansatzes besteht darin, dass Sie die Vorlage problemlos verschieben oder verzweigen können, da Sie nur die statische Variable in der Hauptvorlage ändern müssen. Die Hauptvorlage übergibt die richtigen URIs an die zerlegten Vorlagen.
 
-Das folgende Beispiel zeigt, wie Sie eine Basis-URL verwenden können, um zwei URLs für verknüpfte Vorlagen (**sharedTemplateUrl** und **vmTemplate**) zu erstellen.
+Das folgende Beispiel zeigt, wie Sie eine Basis-URL verwenden können, um zwei URLs für verknüpfte Vorlagen (`sharedTemplateUrl` und `vmTemplateUrl`) zu erstellen.
 
 ```json
 "variables": {
@@ -404,7 +406,7 @@ Das folgende Beispiel zeigt, wie Sie eine Basis-URL verwenden können, um zwei U
 }
 ```
 
-Sie können auch [deployment()](template-functions-deployment.md#deployment) verwenden, um die Basis-URL für die aktuelle Vorlage zu erhalten. Mit dieser können Sie die URL für die anderen Vorlagen am gleichen Speicherort abrufen. Diese Vorgehensweise ist hilfreich, wenn sich der Speicherort der Vorlage ändert oder wenn Sie es vermeiden möchten, URLs in der Vorlagendatei hart zu codieren. Die Eigenschaft „templateLink“ wird nur zurückgegeben, wenn auf eine Remotevorlage mit einer URL verwiesen wird. Wenn Sie eine lokale Vorlage verwenden, ist diese Eigenschaft nicht verfügbar.
+Sie können auch [deployment()](template-functions-deployment.md#deployment) verwenden, um die Basis-URL für die aktuelle Vorlage zu erhalten. Mit dieser können Sie die URL für die anderen Vorlagen am gleichen Speicherort abrufen. Diese Vorgehensweise ist hilfreich, wenn sich der Speicherort der Vorlage ändert oder wenn Sie es vermeiden möchten, URLs in der Vorlagendatei hart zu codieren. Die `templateLink`-Eigenschaft wird nur zurückgegeben, wenn auf eine Remotevorlage mit einer URL verwiesen wird. Wenn Sie eine lokale Vorlage verwenden, ist diese Eigenschaft nicht verfügbar.
 
 ```json
 "variables": {
@@ -423,49 +425,49 @@ Letztendlich verwenden Sie die Variable in der `uri`-Eigenschaft einer `template
 
 ## <a name="using-copy"></a>Verwenden von „copy“
 
-Wenn Sie mehrere Instanzen einer Ressource mit einer geschachtelten Vorlage erstellen möchten, fügen Sie das Element „copy“ auf der Ebene der Ressource **Microsoft.Resources/deployments** hinzu. Wenn der innere Bereich verwendet wird, können Sie die Kopie innerhalb der geschachtelten Vorlage hinzufügen.
+Wenn Sie mehrere Instanzen einer Ressource mit einer geschachtelten Vorlage erstellen möchten, fügen Sie das `copy`-Element auf der Ebene der Ressource `Microsoft.Resources/deployments` hinzu. Wenn der Bereich `inner` verwendet wird, können Sie die Kopie innerhalb der geschachtelten Vorlage hinzufügen.
 
-In der folgenden Beispielvorlage wird die Verwendung von „copy“ mit einer geschachtelten Vorlage veranschaulicht.
+In der folgenden Beispielvorlage wird die Verwendung von `copy` mit einer geschachtelten Vorlage veranschaulicht.
 
 ```json
 "resources": [
   {
-  "type": "Microsoft.Resources/deployments",
-  "apiVersion": "2019-10-01",
-  "name": "[concat('nestedTemplate', copyIndex())]",
-  // yes, copy works here
-  "copy":{
-    "name": "storagecopy",
-    "count": 2
-  },
-  "properties": {
-    "mode": "Incremental",
-    "expressionEvaluationOptions": {
-    "scope": "inner"
+    "type": "Microsoft.Resources/deployments",
+    "apiVersion": "2019-10-01",
+    "name": "[concat('nestedTemplate', copyIndex())]",
+    // yes, copy works here
+    "copy": {
+      "name": "storagecopy",
+      "count": 2
     },
-    "template": {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "resources": [
-      {
-      "type": "Microsoft.Storage/storageAccounts",
-      "apiVersion": "2019-04-01",
-      "name": "[concat(variables('storageName'), copyIndex())]",
-      "location": "West US",
-      "sku": {
-        "name": "Standard_LRS"
+    "properties": {
+      "mode": "Incremental",
+      "expressionEvaluationOptions": {
+        "scope": "inner"
       },
-      "kind": "StorageV2"
-      // Copy works here when scope is inner
-      // But, when scope is default or outer, you get an error
-      //"copy":{
-      //  "name": "storagecopy",
-      //  "count": 2
-      //}
+      "template": {
+        "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+        "contentVersion": "1.0.0.0",
+        "resources": [
+          {
+            "type": "Microsoft.Storage/storageAccounts",
+            "apiVersion": "2019-04-01",
+            "name": "[concat(variables('storageName'), copyIndex())]",
+            "location": "West US",
+            "sku": {
+              "name": "Standard_LRS"
+            },
+            "kind": "StorageV2"
+            // Copy works here when scope is inner
+            // But, when scope is default or outer, you get an error
+            //"copy":{
+            //  "name": "storagecopy",
+            //  "count": 2
+            //}
+          }
+        ]
       }
-    ]
     }
-  }
   }
 ]
 ```
@@ -476,7 +478,7 @@ Um einen Ausgabewert aus einer verknüpften Vorlage abzurufen, rufen Sie den Eig
 
 Wenn Sie eine Ausgabeeigenschaft von einer verknüpften Vorlage abrufen, darf der Name der Eigenschaft keinen Bindestrich enthalten.
 
-In den folgenden Beispielen wird veranschaulicht, wie Sie auf eine verknüpfte Vorlage verweisen und einen Ausgabewert abrufen. Die verknüpfte Vorlage gibt eine einfache Nachricht zurück.  Zunächst die verknüpfte Vorlage:
+In den folgenden Beispielen wird veranschaulicht, wie Sie auf eine verknüpfte Vorlage verweisen und einen Ausgabewert abrufen. Die verknüpfte Vorlage gibt eine einfache Nachricht zurück. Zunächst die verknüpfte Vorlage:
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/linkedtemplates/helloworld.json":::
 
@@ -613,28 +615,28 @@ Im folgenden Beispiel wird veranschaulicht, wie ein SAS-Token beim Verknüpfen m
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-  "containerSasToken": { "type": "securestring" }
+    "containerSasToken": { "type": "securestring" }
   },
   "resources": [
-  {
-    "type": "Microsoft.Resources/deployments",
-    "apiVersion": "2019-10-01",
-    "name": "linkedTemplate",
-    "properties": {
-    "mode": "Incremental",
-    "templateLink": {
-      "uri": "[concat(uri(deployment().properties.templateLink.uri, 'helloworld.json'), parameters('containerSasToken'))]",
-      "contentVersion": "1.0.0.0"
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2019-10-01",
+      "name": "linkedTemplate",
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[concat(uri(deployment().properties.templateLink.uri, 'helloworld.json'), parameters('containerSasToken'))]",
+          "contentVersion": "1.0.0.0"
+        }
+      }
     }
-    }
-  }
   ],
   "outputs": {
   }
 }
 ```
 
-In PowerShell rufen Sie ein Token für den Container ab und stellen die Vorlagen mit folgenden Befehlen bereit. Beachten Sie, dass der Parameter **containerSasToken** in der Vorlage definiert ist. Es handelt sich nicht um einen Parameter im Befehl **New-AzResourceGroupDeployment**.
+In PowerShell rufen Sie ein Token für den Container ab und stellen die Vorlagen mit folgenden Befehlen bereit. Beachten Sie, dass der Parameter `containerSasToken` in der Vorlage definiert ist. Es handelt sich nicht um einen Parameter im Befehl `New-AzResourceGroupDeployment`.
 
 ```azurepowershell-interactive
 Set-AzCurrentStorageAccount -ResourceGroupName ManageGroup -Name storagecontosotemplates
@@ -680,7 +682,7 @@ Die folgenden Beispiele zeigen gängige Nutzungsszenarien für verknüpften Vorl
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Ein entsprechendes Tutorial finden Sie unter [Tutorial: Erstellen verknüpfter Azure Resource Manager-Vorlagen](./deployment-tutorial-linked-template.md).
-* Informationen zum Definieren der Bereitstellungsreihenfolge Ihrer Ressourcen finden Sie unter [Definieren von Abhängigkeiten in Azure Resource Manager-Vorlagen](define-resource-dependency.md).
-* Informationen, wie Sie eine Ressource definieren und von dieser viele Instanzen erstellen, finden Sie unter [Erstellen mehrerer Instanzen von Ressourcen in Azure Resource Manager](copy-resources.md).
-* Schritte zum Einrichten einer Vorlage in einem Speicherkonto und zum Generieren eines SAS-Tokens finden Sie unter [Bereitstellen von Ressourcen mit Resource Manager-Vorlagen und Azure PowerShell](deploy-powershell.md) oder [Bereitstellen von Ressourcen mit Resource Manager-Vorlagen und Azure-CLI](deploy-cli.md).
+* Ein entsprechendes Tutorial finden Sie unter [Tutorial: Bereitstellen einer verknüpften Vorlage](./deployment-tutorial-linked-template.md).
+* Weitere Informationen zum Definieren der Bereitstellungsreihenfolge Ihrer Ressourcen finden Sie unter [Definieren der Reihenfolge für die Bereitstellung von Ressourcen in ARM-Vorlagen](define-resource-dependency.md).
+* Weitere Informationen dazu, wie Sie eine Ressource definieren, aber viele Instanzen davon erstellen, finden Sie unter [Ressourceniteration in ARM-Vorlagen](copy-resources.md).
+* Schritte zum Einrichten einer Vorlage in einem Speicherkonto und zum Generieren eines SAS-Tokens finden Sie unter [Bereitstellen von Ressourcen mit ARM-Vorlagen und Azure PowerShell](deploy-powershell.md) oder [Bereitstellen von Ressourcen mit ARM-Vorlagen und der Azure-Befehlszeilenschnittstelle](deploy-cli.md).

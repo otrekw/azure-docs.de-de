@@ -3,12 +3,12 @@ title: Problembehandlung für SQL Server-Datenbanksicherungen
 description: Informationen zur Problembehandlung beim Sichern von SQL Server-Datenbanken auf virtuellen Azure-Computern mit Azure Backup
 ms.topic: troubleshooting
 ms.date: 06/18/2019
-ms.openlocfilehash: f215b848bedae333979f0fed8eb7f216fb6e25f4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d702959be70716f0c2bc85920bdb7aa3e061aff1
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91332779"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97733922"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>Problembehandlung für die SQL Server-Datenbanksicherung mit Azure Backup
 
@@ -55,6 +55,40 @@ Gelegentlich können bei Sicherungs- und Wiederherstellungsvorgängen zufällige
     - TriggerExtensionJob.exe
 
 1. SQL bietet ebenfalls einige Richtlinien für die Arbeit mit Antivirussoftware. Nähere Einzelheiten finden Sie in [diesem Artikel](https://support.microsoft.com/help/309422/choosing-antivirus-software-for-computers-that-run-sql-server).
+
+## <a name="faulty-instance-in-a-vm-with-multiple-sql-server-instances"></a>Fehlerhafte Instanz in einer VM mit mehreren SQL Server-Instanzen
+
+Sie können die Wiederherstellung auf einer SQL-VM nur durchführen, wenn für alle SQL-Instanzen, die auf der VM ausgeführt werden, ein fehlerfreier Zustand gemeldet wird. Wenn auch nur eine Instanz fehlerhaft ist, wird die VM nicht als Wiederherstellungsziel angezeigt. Dies kann also ein möglicher Grund sein, warum eine VM mit mehreren Instanzen während des Wiederherstellungsvorgangs nicht in der Dropdownliste „Server“ angezeigt wird.
+
+Sie können die „Sicherungsbereitschaft“ aller SQL-Instanzen auf der VM unter **Sicherung konfigurieren** überprüfen:
+
+![Überprüfen der Sicherungsbereitschaft](./media/backup-sql-server-azure-troubleshoot/backup-readiness.png)
+
+Führen Sie die folgenden Schritte aus, wenn Sie eine Wiederherstellung der fehlerfreien SQL-Instanzen starten möchten:
+
+1. Melden Sie sich bei der SQL-VM an, und wechseln Sie zu `C:\Program Files\Azure Workload Backup\bin`.
+1. Erstellen Sie eine JSON-Datei mit dem Namen `ExtensionSettingsOverrides.json` (sofern sie noch nicht vorhanden ist). Wenn diese Datei bereits auf der VM vorhanden ist, können Sie sie weiter verwenden.
+1. Fügen Sie den folgenden Inhalt hinzu, und speichern Sie die JSON-Datei:
+
+    ```json
+    {
+                  "<ExistingKey1>":"<ExistingValue1>",
+                    …………………………………………………… ,
+              "whitelistedInstancesForInquiry": "FaultyInstance_1,FaultyInstance_2"
+            }
+            
+            Sample content:        
+            { 
+              "whitelistedInstancesForInquiry": "CRPPA,CRPPB "
+            }
+
+    ```
+
+1. Starten Sie den Vorgang **Datenbanken neu ermitteln** auf dem betroffenen Server über das Azure-Portal (an der Stelle, an der die Sicherungsbereitschaft angezeigt wird). Die VM wird als Ziel für Wiederherstellungsvorgänge angezeigt.
+
+    ![Erneutes Ermitteln von Datenbanken](./media/backup-sql-server-azure-troubleshoot/rediscover-dbs.png)
+
+1. Entfernen Sie nach Abschluss des Wiederherstellungsvorgangs den Eintrag *whitelistedInstancesForInquiry* aus der Datei „ExtensionSettingsOverrides.json“.
 
 ## <a name="error-messages"></a>Fehlermeldungen
 
