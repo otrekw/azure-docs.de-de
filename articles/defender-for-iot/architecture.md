@@ -4,21 +4,21 @@ description: Hier erfahren Sie etwas über die Architektur und den Informationsf
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
-author: rkarlin
+author: shhazam-ms
 manager: rkarlin
 editor: ''
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/08/2020
-ms.author: rkarlin
-ms.openlocfilehash: a8697094a3366e3b82ca65f1b962101243b22f84
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.date: 12/02/2020
+ms.author: shhazam
+ms.openlocfilehash: 3b5a586b5db4fb15a32090e601bac5610ece1427
+ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96548918"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97832573"
 ---
 # <a name="azure-defender-for-iot-architecture"></a>Architektur von Azure Defender für IoT
 
@@ -42,8 +42,7 @@ Azure Defender für IoT umfasst die folgenden Komponenten:
 - Azure Defender für IoT-Sensor-VM oder -Appliance
 - Lokale Verwaltungskonsole für lokale Standortverwaltung
 
-
-![Architektur von Defender für IoT](./media/architecture/defender-iot-security-architecture.png)
+:::image type="content" source="./media/architecture/defender-iot-security-architecture-v3.png" alt-text="Architektur von Defender für IoT":::
 
 ### <a name="azure-defender-for-iot-sensors"></a>Azure Defender für IoT-Sensoren
 
@@ -66,14 +65,13 @@ Die Erkennungs-Engine für Protokollverletzungen identifiziert die Verwendung vo
 Mithilfe von maschinellem Lernen warnt die Erkennungs-Engine für Richtlinienverletzungen Benutzer vor jeder Abweichung vom Basisverhalten, z. B. nicht autorisierter Verwendung von bestimmten Funktionscodes, Zugriff auf bestimmte Objekte oder Änderungen an der Gerätekonfiguration. Beispiel: „DeltaV software version changed“ (Version der DeltaV-Software wurde geändert) und Warnungen zu „Unauthorized PLC programming“ (PLC-Programmierung nicht autorisiert). Insbesondere modelliert die Erkennungs-Engine für Richtlinienverletzungen die ICS-Netzwerke als deterministische Sequenzen von Status und Übergängen – mithilfe eines patentierten Verfahrens namens „Industrial Finite State Modeling“ (IFSM). Die Erkennungs-Engine für Richtlinienverletzungen richtet eine Baseline der ICS-Netzwerke ein, sodass die Plattform einen kürzeren Lernzeitraum zum Erstellen einer Baseline des Netzwerks erfordert als generische mathematische Ansätze oder Analysen, die ursprünglich für IT- und nicht für OT-Netzwerke entwickelt wurden.
 
 #### <a name="industrial-malware-detection-engine"></a>Erkennungs-Engine für industrielle Schadsoftware
-Die Erkennungs-Engine für industrielle Schadsoftware identifiziert Verhalten, die auf das Vorhandensein bekannter Schadsoftware hinweisen, z. B. Conficker, Black Energy, Havex, WannaCry, NotPetya und Triton. 
+Die Erkennungs-Engine für industrielle Schadsoftware identifiziert Verhaltensweisen, die auf das Vorhandensein bekannter Schadsoftware hinweisen, z. B. Conficker, Black Energy, Havex, WannaCry, NotPetya und Triton. 
 
 #### <a name="anomaly-detection-engine"></a>Anomalieerkennungs-Engine
 Die Anomalieerkennungs-Engine erkennt ungewöhnliche Maschine-zu-Maschine (M2M)-Kommunikation und -Verhaltensweisen. Durch die Modellierung von ICS-Netzwerken als deterministische Sequenzen von Status und Übergängen erfordert die Plattform einen kürzeren Lernzeitraum als generische mathematische Ansätze oder Analysen, die ursprünglich für IT und nicht für OT entwickelt wurden. Sie erkennt auch Anomalien schneller, mit minimalen falsch positiven Ergebnissen. Warnungen der Anomalieerkennungs-Engine enthalten übermäßig viele SMB-Anmeldeversuche und erkannte PLC-Scans.
 
 #### <a name="operational-incident-detection"></a>Erkennung von Betriebsvorfällen
-Die Erkennung von Betriebsvorfällen erkennt Betriebsprobleme, z. B. Verbindungsunterbrechung, die auf frühe Anzeichen von Gerätefehlern hinweisen können. Beispielsweise wird vermutet, dass das Gerät getrennt ist (nicht reagiert) und dem Befehl „Siemens S7 stop PLC“ Warnungen gesendet wurden.
-
+Die Erkennung von Betriebsvorfällen erkennt Betriebsprobleme, z. B. Verbindungsunterbrechung, die auf frühe Anzeichen von Gerätefehlern hinweisen können. Beispielsweise wird vermutet, dass das Gerät getrennt ist (nicht reagiert) und dem Befehl „Siemens S7 stop PLC“ Warnungen gesendet wurden.
 
 ### <a name="management-consoles"></a>Verwaltungskonsolen
 Die Verwaltung von Azure Defender für IoT in Hybridumgebungen erfolgt über zwei Verwaltungsportale: 
@@ -82,9 +80,9 @@ Die Verwaltung von Azure Defender für IoT in Hybridumgebungen erfolgt über zwe
 - Das Azure-Portal
 
 #### <a name="sensor-console"></a>Sensorkonsole
-Sensorerkennungen werden in der Sensorkonsole angezeigt. Dort können sie in einer Netzwerkübersicht, im Ressourcenbestand und in einer umfangreichen Palette von Berichten (z. B. Risikobewertungsberichten, Data Mining-Abfragen und Angriffsvektoren) angezeigt, untersucht und analysiert werden. Sie können die Konsole auch verwenden, um von Sensormodulen erkannte Bedrohungen anzuzeigen und zu behandeln, Informationen an Drittanbietersysteme weiterzuleiten, Benutzer zu verwalten und vieles mehr.
+Sensorerkennungen werden in der Sensorkonsole angezeigt. Dort können sie in einer Netzwerkübersicht, im Ressourcenbestand und in einer umfangreichen Palette von Berichten (z. B. Risikobewertungsberichten, Data Mining-Abfragen und Angriffsvektoren) angezeigt, untersucht und analysiert werden. Sie können die Konsole auch verwenden, um von Sensormodulen erkannte Bedrohungen anzuzeigen und zu behandeln, Informationen an Partnersysteme weiterzuleiten, Benutzer zu verwalten u. v. m.
 
-![Defender für IoT-Sensorkonsole](./media/architecture/sensor-console.png)
+:::image type="content" source="./media/architecture/sensor-console-v2.png" alt-text="Defender für IoT-Sensorkonsole":::
 
 #### <a name="on-premises-management-console"></a>Lokale Verwaltungskonsole
 Mithilfe der lokalen Verwaltungskonsole können SOC-Operatoren (Security Operations Center) Warnungen verwalten und analysieren, die aus mehreren Sensoren in einem einzigen Dashboard aggregiert wurden. Außerdem bietet die Konsole eine allgemeine Übersicht über die Integrität der OT-Netzwerke.
@@ -93,37 +91,47 @@ Diese Architektur bietet eine umfassende einheitliche Ansicht des Netzwerks auf 
 
 Neben Mehrinstanzenfähigkeit, Überwachung, Datenanalyse und zentralisierter Sensor-Remotesteuerung stellt die Verwaltungskonsole zusätzliche Systemwartungstools (z. B. Warnungsausschluss) und vollständig angepasste Berichterstellungsfeatures für die einzelnen Remote-Appliances bereit. Diese skalierbare Architektur unterstützt sowohl die lokale Verwaltung auf Standortebene und Zonenebene als auch die globale Verwaltung innerhalb des SOC.
 
-Die Verwaltungskonsole kann für eine Konfiguration mit hoher Verfügbarkeit bereitgestellt werden, die eine Sicherungskonsole bietet, in der Sicherungen aller für die Wiederherstellung erforderlichen Konfigurationsdateien regelmäßig empfangen werden. Wenn die Masterkonsole ausfällt, wird automatisch ein Failover der lokalen Standortverwaltungsappliances durchgeführt, um Verfügbarkeit ohne Unterbrechung aufrechtzuerhalten.
+Die Verwaltungskonsole kann für eine Konfiguration mit hoher Verfügbarkeit bereitgestellt werden, die eine Sicherungskonsole bietet, in der Sicherungen aller für die Wiederherstellung erforderlichen Konfigurationsdateien regelmäßig empfangen werden. Wenn die primäre Konsole ausfällt, wird automatisch ein Failover der lokalen Standortverwaltungsappliances durchgeführt, um Verfügbarkeit ohne Unterbrechung aufrechtzuerhalten.
+
+Die enge Integration in Ihre SOC-Workflows und Runbooks ermöglicht eine einfache Priorisierung von Entschärfungsaktivitäten und standortübergreifende Korrelation von Bedrohungen.
+
+- Ganzheitlich – Reduzieren der Komplexität mit einer einzigen vereinheitlichten Plattform für Ressourcenverwaltung, Verwaltung von Risiken und Sicherheitsrisiken sowie Bedrohungsüberwachung mit Reaktion auf Vorfälle.
+
+- Aggregation und Korrelation – Anzeigen, Aggregieren und Analysieren von Daten und Warnungen, die an allen Standorten gesammelt wurden.
+
+- Alle Sensoren steuern – Konfigurieren und Überwachen aller Sensoren von einem einzigen Ort aus.
+
+   :::image type="content" source="media/updates/alerts-and-site-management-v2.png" alt-text="Verwalten aller Warnungen und Informationen":::
 
 #### <a name="azure-portal"></a>Azure-Portal
 
-Das Defender für IoT-Portal in Azure dient zu Ihrer Unterstützung beim:   Kaufen von Lösungsappliances   Installieren und Aktualisieren von Software   Integrieren von Sensoren in Azure   Aktualisieren von Threat Intelligence-Paketen
+Im Portal von Defender für IoT in Azure können Sie folgende Aktionen ausführen:
+
+- Erwerben von Lösungsappliances
+- Installieren und Aktualisieren von Software
+- Integrieren von Sensoren in Azure
+- Aktualisieren von Threat Intelligence-Paketen
 
 ## <a name="embedded-security-agent-built-in-mode"></a>Eingebetteter Sicherheits-Agent: Modus „Integriert“
 
-Im Modus **Integriert** wird Defender für IoT aktiviert, wenn Sie in Ihrem IoT Hub die Option **Sicherheit** aktivieren. Durch Echtzeitüberwachung, Empfehlungen und Warnungen bietet der Modus „Integriert“ Gerätesichtbarkeit und beispiellose Sicherheit in einem Schritt. Der Modus „Integriert“ erfordert keine Agentinstallation auf Geräten, und er verwendet erweiterte Analysen für protokollierte Aktivitäten zum Analysieren und Schützen Ihres Feldgeräts und von IoT Hub.
+Im Modus **Integriert** wird Defender für IoT aktiviert, wenn Sie in Ihrem IoT-Hub die Option **Sicherheit** aktivieren. Durch Echtzeitüberwachung, Empfehlungen und Warnungen bietet der Modus „Integriert“ Gerätesichtbarkeit und beispiellose Sicherheit in einem Schritt. Der Modus „Integriert“ erfordert keine Agentinstallation auf Geräten, und er verwendet erweiterte Analysen für protokollierte Aktivitäten zum Analysieren und Schützen Ihres Feldgeräts und von IoT Hub.
 
 ## <a name="embedded-security-agent-enhanced-mode"></a>Eingebetteter Sicherheits-Agent: Modus „Erweitert“
 
-Nach dem Aktivieren der Option **Sicherheit** in Ihrem IoT Hub und der Installation von Defender für IoT-Geräte-Agents auf Ihren Geräten erfassen, aggregieren und analysieren die Agents im Modus **Erweitert** Sicherheitsereignis-Rohdaten von Ihren Geräten. Sicherheitsereignis-Rohdaten können IP-Verbindungen, die Prozesserstellung, Benutzeranmeldungen und andere sicherheitsrelevante Informationen enthalten. Defender für IoT-Geräte-Agents verarbeiten auch die Ereignisaggregation, um hohe Netzwerkdurchsätze zu vermeiden. Die Agents sind in hohem Maße anpassbar, sodass Sie sie für bestimmte Aufgaben wie das Senden ausschließlich wichtiger Informationen mit dem dringlichsten SLA oder für das Aggregieren umfangreicher Sicherheitsinformationen und Kontextdaten zu größeren Segmenten verwenden und auf diese Weise höhere Servicekosten vermeiden können.
+Nach dem Aktivieren der Option **Sicherheit** in Ihrem IoT-Hub und der Installation von Defender für IoT-Geräte-Agents auf Ihren Geräten erfassen, aggregieren und analysieren die Agents im Modus **Erweitert** Rohdaten von Sicherheitsereignissen auf Ihren Geräten. Sicherheitsereignis-Rohdaten können IP-Verbindungen, die Prozesserstellung, Benutzeranmeldungen und andere sicherheitsrelevante Informationen enthalten. Defender für IoT-Geräte-Agents aggregieren die Ereignisdaten darüber hinaus, um hohe Netzwerkdurchsätze zu vermeiden. Die Agents sind in hohem Maße anpassbar, sodass Sie sie für bestimmte Aufgaben wie das Senden ausschließlich wichtiger Informationen mit dem dringlichsten SLA oder für das Aggregieren umfangreicher Sicherheitsinformationen und Kontextdaten zu größeren Segmenten verwenden und auf diese Weise höhere Servicekosten vermeiden können.
 
 Geräte-Agents und andere Anwendungen verwenden das **Azure Security Center SDK zum Senden von Sicherheitsmeldungen**, um Sicherheitsinformationen an Azure IoT Hub zu senden. IoT Hub ruft diese Informationen ab und leitet sie an den Defender für IoT-Dienst weiter.
 
-Sobald der Defender für IoT-Dienst aktiviert ist, versendet IoT Hub zusätzlich zu den weitergeleiteten Daten alle seine internen Daten für die Analyse durch Defender für IoT. Diese Daten umfassen Cloudvorgangsprotokolle von Geräten, Geräte-Identitäten und die Hub-Konfiguration. Alle diese Informationen tragen dazu bei, die Defender für IoT-Analysepipeline zu erstellen.
+Sobald der Defender für IoT-Dienst aktiviert ist, sendet IoT Hub zusätzlich zu den weitergeleiteten Daten alle seine internen Daten für die Analyse durch Defender für IoT. Diese Daten umfassen Cloudvorgangsprotokolle von Geräten, Geräteidentitäten und die Hubkonfiguration. Alle diese Informationen tragen dazu bei, die Defender für IoT-Analysepipeline zu erstellen.
 
-Die Defender für IoT-Analysepipeline erhält ferner zusätzliche Threat Intelligence-Streams aus verschiedenen Quellen innerhalb von Microsoft sowie von Microsoft-Partnern. Die gesamte Defender für IoT-Analysepipeline arbeitet mit sämtlichen für den Dienst erstellten Kundenkonfigurationen (wie benutzerdefinierte Warnungen und die Verwendung des SDK zum Versenden von Sicherheitsmeldungen).
+Die Defender für IoT-Analysepipeline erhält ferner zusätzliche Threat Intelligence-Streams aus verschiedenen Quellen innerhalb von Microsoft sowie von Microsoft-Partnern. Die gesamte Defender für IoT-Analysepipeline arbeitet mit sämtlichen für den Dienst erstellten Kundenkonfigurationen (wie benutzerdefinierte Warnungen und die Verwendung des SDK zum Senden von Sicherheitsmeldungen).
 
 Bei der Verwendung der Analysepipeline kombiniert Defender für IoT alle Informationsdatenströme, um direkt umsetzbare Empfehlungen und Warnungen zu generieren. Die Pipeline enthält sowohl benutzerdefinierte Regeln, die von Sicherheitsanalytikern und Experten erstellt wurden, als auch nach Abweichungen vom standardmäßigen Geräteverhalten suchende Machine Learning-Modelle und Risikoanalysen.
 
-Defender für IoT-Empfehlungen und -Warnungen (Analysepipeline-Ausgabe) werden in den Log Analytics-Arbeitsbereich des einzelnen Kunden geschrieben. Durch die Einbeziehung der Ereignisrohdaten im Arbeitsbereich sowie der Warnungen und Empfehlungen werden eingehende Untersuchungen und Abfragen möglich, die die genauen Details der festgestellten verdächtigen Aktivitäten verwenden.
+Defender für IoT-Empfehlungen und -Warnungen (Ausgabe der Analysepipeline) werden in den Log Analytics-Arbeitsbereich des jeweiligen Kunden geschrieben. Durch die Einbeziehung der Ereignisrohdaten im Arbeitsbereich sowie der Warnungen und Empfehlungen werden eingehende Untersuchungen und Abfragen möglich, die die genauen Details der festgestellten verdächtigen Aktivitäten verwenden.
 
-## <a name="next-steps"></a>Nächste Schritte
+## <a name="see-also"></a>Weitere Informationen
 
-In diesem Artikel haben Sie die grundlegende Architektur und den Workflow der Defender für IoT-Lösung kennengelernt. Weitere Informationen zu den Voraussetzungen sowie zum Einstieg in Ihre Sicherheitslösung in IoT Hub und zu deren Aktivierung finden Sie in den folgenden Artikeln:
+[Häufig gestellte Fragen zu Defender für IoT](resources-frequently-asked-questions.md)
 
-- [ASC für IoT-Voraussetzungen](service-prerequisites.md)
-- [Erste Schritte](getting-started.md)
-- [Konfigurieren Ihrer IoT-Lösung](quickstart-configure-your-solution.md)
-- [Enable security in IoT Hub (Aktivieren der Sicherheit in IoT Hub)](quickstart-onboard-iot-hub.md)
-- [Häufig gestellte Fragen zu Defender für IoT](resources-frequently-asked-questions.md)
-- [Defender für IoT-Sicherheitswarnungen](concept-security-alerts.md)
+[Systemanforderungen](quickstart-system-prerequisites.md)

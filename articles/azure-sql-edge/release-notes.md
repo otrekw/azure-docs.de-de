@@ -1,6 +1,6 @@
 ---
 title: Versionshinweise für Azure SQL Edge
-description: Versionshinweise mit Informationen zu Neuerungen oder Änderungen in den Azure SQL Edge-Images
+description: Versionshinweise mit Informationen zu Neuerungen oder Änderungen in den Azure SQL Edge-Images
 keywords: Versionshinweise für SQL Edge
 services: sql-edge
 ms.service: sql-edge
@@ -10,182 +10,164 @@ author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sstein
 ms.date: 11/24/2020
-ms.openlocfilehash: bb0c176ee8c145e1268827d79b453628e6f1bc28
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: c18cb1cef9b46b4b3cd2f614945f98abf9de7c58
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95808628"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97704349"
 ---
 # <a name="azure-sql-edge-release-notes"></a>Azure SQL Edge: Versionshinweise 
 
-In diesem Artikel erhalten Sie Informationen zu Neuerungen und Änderungen für neue Azure SQL Edge-Builds.
+In diesem Artikel erhalten Sie Informationen zu Neuerungen und Änderungen für neue Azure SQL Edge-Builds.
 
-## <a name="azure-sql-edge---101"></a>Azure SQL Edge – 1.0.1
+## <a name="azure-sql-edge-101"></a>Azure SQL Edge 1.0.1
 
-### <a name="sql-engine-build-number---15020001553"></a>SQL-Engine-Buildnummer – 15.0.2000.1553
+SQL-Engine-Build 15.0.2000.1553
 
 ### <a name="whats-new"></a>Neuigkeiten
 
-- In berechneten Spalten definierter Datebucket-Ausdruck wird zugelassen.
+- In berechneten Spalten definierter Date_Bucket-Ausdruck wird zugelassen.
 
 ### <a name="fixes"></a>Fehlerbehebungen
 
 - Korrektur der Aufbewahrungsrichtlinie für das Löschen einer Tabelle mit aktivierter Aufbewahrungsrichtlinie mit unbegrenztem Timeout
 - Unterstützung von Streaming- und Aufbewahrungsrichtlinienfeatures durch die DacFx-Bereitstellung 
-- Korrektur der DacFx-Bereitstellung zum Aktivieren der Bereitstellung aus einem geschachtelten Ordner in der SAS-URL 
+- Korrektur der DacFx-Bereitstellung zum Aktivieren der Bereitstellung aus einem geschachtelten Ordner in einer SAS-URL 
 - PREDICT-Korrektur zur Unterstützung langer Spaltennamen in Fehlermeldungen
 
-## <a name="azure-sql-edge---100-rtm"></a>Azure SQL Edge – 1.0.0 (RTM)
+## <a name="azure-sql-edge-100-rtm"></a>Azure SQL Edge 1.0.0 (RTM)
 
-### <a name="sql-engine-build-number---15020001552"></a>SQL-Engine-Buildnummer – 15.0.2000.1552
+SQL-Engine-Build 15.0.2000.1552
 
 ### <a name="whats-new"></a>Neuigkeiten
-1. Auf Ubuntu 18.04 basierende Containerimages. 
-2. Unterstützung für `IGNORE NULL`- und `RESPECT NULL`-Syntax mit `LAST_VALUE()`- und `FIRST_VALUE()`-Funktionen. 
-3. Verbesserungen der Zuverlässigkeit für PREDICT mit ONNX.
-4. Unterstützung für auf der Datenaufbewahrungsrichtlinie basierende Bereinigung.
-   - Ringpufferunterstützung für die Aufgabe „Bereinigung der Datenaufbewahrung“ zur Problembehandlung.
-5. Unterstützung für neue Funktionen 
+- Auf Ubuntu 18.04 basierende Containerimages 
+- Unterstützung für `IGNORE NULL`- und `RESPECT NULL`-Syntax mit `LAST_VALUE()`- und `FIRST_VALUE()`-Funktionen 
+- Verbesserungen der Zuverlässigkeit für PREDICT mit ONNX
+- Unterstützung für auf der Datenaufbewahrungsrichtlinie basierende Bereinigung:
+   - Ringpufferunterstützung für die Aufgabe „Bereinigung der Datenaufbewahrung“ zur Problembehandlung
+- Unterstützung für neue Funktionen: 
    - Schnelle Wiederherstellung
    - Automatische Optimierung von Abfragen
-   - Aktivieren von parallelen Ausführungsszenarien
-6. Verbesserungen der Energiesparfunktion bei niedrigem Energiestatus
-7. Streaming der Unterstützung für neue Funktionen 
-   - [Momentaufnahmefenster](/stream-analytics-query/snapshot-window-azure-stream-analytics): neuer Fenstertyp, der das Gruppieren nach gleichzeitig eintreffenden Ereignissen ermöglicht. 
-   - Aktivieren Sie [TopOne](/stream-analytics-query/topone-azure-stream-analytics) und [CollectTop](/stream-analytics-query/collecttop-azure-stream-analytics) als analytische Funktion. Dadurch können (nach der Spalte Ihrer Wahl sortierte) Datensätze zurückgegeben werden, ohne dass sie Teil eines Fensters sein müssen. 
+   - Szenarien mit paralleler Ausführung
+- Verbesserungen der Energiesparfunktion bei niedrigem Energiestatus
+- Unterstützung für neue Streamingfunktionen: 
+   - [Momentaufnahmefenster:](/stream-analytics-query/snapshot-window-azure-stream-analytics) Ein neuer Fenstertyp ermöglicht Ihnen, nach Ereignissen zu gruppieren, die gleichzeitig eintreffen.
+   - [TopOne](/stream-analytics-query/topone-azure-stream-analytics) und [CollectTop](/stream-analytics-query/collecttop-azure-stream-analytics) können als Analysefunktionen aktiviert werden. Sie können Datensätze sortiert nach einer Spalte Ihrer Wahl zurückgeben. Sie müssen nicht Teil eines Fensters sein. 
    - Verbesserungen bei [MATCH_RECOGNIZE](/stream-analytics-query/match-recognize-stream-analytics). 
 
 ### <a name="fixes"></a>Fehlerbehebungen
-1. Zusätzliche Fehlermeldungen und Details zur Problembehandlung von TQL-Streamingvorgängen. 
-2. Verbesserungen, um die Akkulebensdauer im Leerlaufmodus zu verlängern. 
-3. Fehlerbehebungen für TQL-Streamingmodule: 
-   - Bereinigung für beendeten Streamingauftrag 
-   - Korrekturen für Lokalisierung und Verbesserungen bei der Unicode-Verarbeitung
-   - Verbesserte Debugfähigkeit bei Edge-TSQL-Streaming ermöglicht Benutzern das Abfragen von Auftragsfehlern aus „get_streaming_job“.
-4. Auf der Datenaufbewahrungsrichtlinie basierende Bereinigung
-   - Korrekturen für die Erstellung von Aufbewahrungsrichtlinien und Bereinigungsszenarien.
-5. Korrekturen für Timertasks im Hintergrund, um Energieeinsparungen für den Energiesparmodus zu verbessern.
+- Zusätzliche Fehlermeldungen und Details zur Problembehandlung bei T-SQL-Streamingvorgängen 
+- Verbesserungen zur Verlängerung der Akkulebensdauer im Leerlaufmodus 
+- Korrekturen für die T-SQL-Streaming-Engine: 
+   - Bereinigung für beendete Streamingaufträge 
+   - Korrekturen für die Lokalisierung 
+   - Verbesserte Unicode-Behandlung 
+   - Verbessertes Debuggen bei SQL Edge-T-SQL-Streaming, sodass Benutzer Auftragsfehler aus „get_streaming_job“ abfragen können
+- Auf der Datenaufbewahrungsrichtlinie basierende Bereinigung: 
+    - Korrekturen für die Erstellung von Aufbewahrungsrichtlinien und Bereinigungsszenarien
+- Korrekturen für Timertasks im Hintergrund zur Verbesserung der Energieeinsparungen für den Energiesparmodus
 
 ### <a name="known-issues"></a>Bekannte Probleme 
-1. T-SQL-Funktion „Date_Bucket“ kann in einer berechneten Spalte nicht verwendet werden.
+- Die T-SQL-Funktion „Date_Bucket“ kann in einer berechneten Spalte nicht verwendet werden.
 
 
 ## <a name="ctp-23"></a>CTP 2.3
-### <a name="sql-engine-build-number---15020001549"></a>SQL-Engine-Buildnummer – 15.0.2000.1549
+SQL-Engine-Build 15.0.2000.1549
 ### <a name="whats-new"></a>Neuigkeiten
-1. Unterstützung für benutzerdefinierte Ursprünge in der Date_Bucket()-Funktion. 
-2. Unterstützung für BacPac-Dateien als Teil der SQL-Bereitstellung.
-3. Unterstützung für auf der Datenaufbewahrungsrichtlinie basierende Bereinigung.      
+- Unterstützung für benutzerdefinierte Ursprünge in der Date_Bucket()-Funktion 
+- Unterstützung für BACPAC-Dateien als Teil der SQL-Bereitstellung
+- Unterstützung für auf der Datenaufbewahrungsrichtlinie basierende Bereinigung:      
    - DDL-Unterstützung für das Aktivieren der Aufbewahrungsrichtlinie 
-   - Gespeicherte Bereinigungsprozeduren und Bereinigungstask im Hintergrund
+   - Bereinigung gespeicherter Prozeduren und des Bereinigungstasks im Hintergrund
    - Erweiterte Ereignisse zum Überwachen von Bereinigungstasks
 
 ### <a name="fixes"></a>Fehlerbehebungen
-1. Zusätzliche Fehlermeldungen und Details zur Problembehandlung von TQL-Streamingvorgängen. 
-2. Verbesserungen, um die Akkulebensdauer im Leerlaufmodus zu verlängern. 
-3. Fehlerbehebungen für TQL-Streamingmodule: 
-   - Korrektur hängendes Wasserzeichen mit springendem Substreamfenster 
+- Zusätzliche Fehlermeldungen und Details zur Problembehandlung bei T-SQL-Streamingvorgängen 
+- Verbesserungen zur Verlängerung der Akkulebensdauer im Leerlaufmodus 
+- T-SQL-Streaming-Engine: 
+   - Korrektur des hängenden Wasserzeichens mit springendem Substreamfenster 
    - Korrektur der Frameworkausnahmebehandlung, um sicherzustellen, dass die Erfassung als Fehler mit möglicher Benutzeraktion erfolgt
 
 
 ## <a name="ctp-22"></a>CTP 2.2
-### <a name="sql-engine-build-number---15020001546"></a>SQL-Engine-Buildnummer: 15.0.2000.1546
+SQL-Engine-Build 15.0.2000.1546
 ### <a name="whats-new"></a>Neuigkeiten
-1. Unterstützung für Container ohne Root-Berechtigung 
-2. Unterstützung für Verbrauchs- und Diagnosedatensammlung 
-3. T-SQL-Streamingupdates
+- Unterstützung für Container ohne Root-Berechtigung 
+- Unterstützung für Verbrauchs- und Diagnosedatensammlung 
+- T-SQL-Streamingupdates:
    - Unterstützung für Unicode-Zeichen für Streamobjektnamen
 
 ### <a name="fixes"></a>Fehlerbehebungen
-1. T-SQL-Streamingupdates
+- T-SQL-Streamingupdates:
    - Verbesserungen der Prozessbereinigung
    - Verbesserungen bei Protokollierung und Diagnose
-2. Leistungsverbesserung bei der Datenerfassung
+- Leistungsverbesserung bei der Datenerfassung
 
 ## <a name="ctp-21"></a>CTP 2.1 
-### <a name="sql-engine-build-number---15020001545"></a>SQL-Engine-Buildnummer: 15.0.2000.1545
+SQL-Engine-Build 15.0.2000.1545
 ### <a name="fixes"></a>Fehlerbehebungen
-1. Vorhersage (PREDICT) mit ONNX-Modellen korrigiert, um das CPUID-Problem in ARM zu behandeln 
-2. Behandlung des Fehlerpfads beim Starten des TQL-Streamings verbessert 
-3. Falscher Wert der Wasserzeichenverzögerung in Auftragsmetriken korrigiert, wenn keine Daten vorhanden sind 
-4. Problem mit dem Ausgabeadapter behoben, wenn der Adapter über ein variables Schema zwischen Batches verfügt  
+- Vorhersage (PREDICT) mit ONNX-Modellen zugelassen, um das CPUID-Problem in ARM zu behandeln 
+- Verbesserte Behandlung des Fehlerpfads beim Start des T-SQL-Streamings
+- Wert der Wasserzeichenverzögerung in Auftragsmetriken korrigiert, wenn keine Daten vorhanden sind
+- Problem mit dem Ausgabeadapter behoben, wenn der Adapter über ein variables Schema zwischen Batches verfügt  
 
 ## <a name="ctp-20"></a>CTP 2.0 
-### <a name="sql-engine-build-number---15020001401"></a>SQL-Engine-Buildnummer: 15.0.2000.1401
+SQL-Engine-Build 15.0.2000.1401
 ### <a name="whats-new"></a>Neuigkeiten
-1.  Produktname wurde in „Azure SQL Edge“ geändert
-1.  Funktion „Date_bucket“
-
-    i.  Unterstützung der Typen „Date“, „Time“ und „DateTime“
-3.  Vorhersage (PREDICT) mit ONNX
-    
-    i.  Parameter „RUNTIME“ für ONNX erforderlich 
-    
-4.  Unterstützung von TSQL-Streaming (eingeschränkte Vorschau) 
+-   Produktname in *Azure SQL Edge* geändert
+-  Date_Bucket-Funktion:
+    - Unterstützung der Typen „Date“, „Time“ und „DateTime“
+- Vorhersage (PREDICT) mit ONNX
+    - ONNX-Anforderung für den RUNTIME-Parameter  
+- Unterstützung von T-SQL-Streaming (eingeschränkte Vorschau) 
  
 ### <a name="known-issues"></a>Bekannte Probleme
 
-1. <b>Problem:</b> Mögliche Fehler beim Anwenden von DACPAC beim Start aufgrund eines Zeitsteuerungsproblems.
+- Problem: Mögliche Fehler beim Anwenden von DACPAC beim Start aufgrund eines Zeitsteuerungsproblems.
+- Problemumgehung: Starten Sie SQL Server neu. Andernfalls versucht der Container erneut, das DACPAC anzuwenden.
 
-    <b>Problemumgehung:</b> Wenn Sie SQL Server oder den Container neu starten, wird erneut versucht, DACPAC anzuwenden, und das Problem sollte behoben werden.
 ### <a name="request-support"></a>Anfordern von Support
-1. Support kann auf der [Supportseite](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) angefordert werden.
+Support kann auf der [Supportseite](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) angefordert werden. Wählen Sie die unten aufgeführten Felder aus: 
+- **Problemtyp**: *Technisch* 
+- **Dienst**: *IoT Edge*
+- **Problemtyp:** *Mein Problem bezieht sich auf ein IoT Edge-Modul*
+- **Problemuntertyp:** *Azure SQL Edge*
 
-4. Folgende Felder müssen ausgewählt sein: 
-    * Problemtyp: Technisch 
-    * Dienst: IoT Edge
-    * Problemtyp: Mein Problem bezieht sich auf ein IoT Edge-Modul
-    * Problemuntertyp: Azure SQL Edge
-
-   ![Beispiel für in Supportticket](media/get-support/support-ticket.png)
+:::image type="content" source="media/get-support/support-ticket.png" alt-text="Screenshot eines Beispielsupporttickets":::
 
 ## <a name="ctp-15"></a>CTP 1.5
-### <a name="sql-engine-build-number---15020001331"></a>SQL-Engine-Buildnummer: 15.0.2000.1331
+SQL-Engine-Build 15.0.2000.1331
 ### <a name="whats-new"></a>Neuigkeiten
-1. Funktion „Date_bucket“
-    
-    i. Unterstützung des Typs „DateTimeOffset“
-2. Vorhersage (PREDICT) mit ONNX-Modellen
-
-    i. nvarchar-Unterstützung
+- Date_Bucket-Funktion:
+    - Unterstützung des Typs „DateTimeOffset“
+- Vorhersage (PREDICT) mit ONNX-Modellen:
+  - NVARCHAR-Unterstützung
  
 ## <a name="ctp-14"></a>CTP 1.4
-### <a name="sql-engine-build-number---15020001247"></a>SQL-Engine-Buildnummer: 15.0.2000.1247
+SQL-Engine-Build 15.0.2000.1247
 ### <a name="whats-new"></a>Neuigkeiten
-1.  Vorhersage (PREDICT) mit ONNX-Modellen
- 
-    i.  varchar-Unterstützung
-    
-    ii. Migration zur ONNX-Runtimeversion 1.0 
-2.  Featureunterstützung: Folgende Features sind aktiviert:
+-   Vorhersage (PREDICT) mit ONNX-Modellen:
+    - VARCHAR-Unterstützung
+    - Migration zur ONNX-Runtimeversion 1.0 
 
-    i.   CDC-Unterstützung
-
-    ii.  Verlaufstabelle mit Komprimierung
-
-    iii. Höherer Skalierungsfaktor für Protokoll-Read-Ahead
-
-    iv.  ES-Filterweitergabe für Batchmodus
-
-    v.   Read-Ahead-Optimierungen
+- Die folgenden Features werden aktiviert:
+  - CDC-Unterstützung
+  - Verlaufstabelle mit Komprimierung
+  - Höherer Skalierungsfaktor für Protokoll-Read-Ahead
+  - ES-Filterweitergabe für Batchmodus
+  - Read-Ahead-Optimierungen
  
 ## <a name="ctp-13"></a>CTP 1.3
-### <a name="sql-engine-build-number---15020001147"></a>SQL-Engine-Buildnummer: 15.0.2000.1147
+SQL-Engine-Build 15.0.2000.1147
 ### <a name="whats-new"></a>Neuigkeiten
-1. Azure IoT-Portalbereitstellung 
-
-    i.   Unterstützung der Bereitstellung von AMD64- und ARM-Images
-
-    ii.  Unterstützung der Streamingauftragserstellung
-
-    iii. DACPAC-Bereitstellung
-2. Vorhersage (PREDICT) mit ONNX-Modellen
-
-    i. Unterstützung numerischer Typen
-3. Featureunterstützung: Folgende Features sind aktiviert:
-
-    i.  Weitergabe von Aggregat an Columnstore-Scan
-
-    ii. Karussellscans
-4. Verringerung des Speicher- und Arbeitsspeicherbedarfs
+- Azure IoT-Portalbereitstellung: 
+    - Unterstützung der Bereitstellung von AMD64- und ARM-Images
+    - Unterstützung der Streamingauftragserstellung
+    - DACPAC-Bereitstellung
+- Vorhersage (PREDICT) mit ONNX-Modellen:
+    - Unterstützung numerischer Typen
+- Die folgenden Features werden aktiviert:
+    - Weitergabe von Aggregat an Columnstore-Scan
+    - Karussellscans
+- Verringerung des Speicher- und Arbeitsspeicherbedarfs

@@ -7,12 +7,12 @@ description: Überprüfen und Testen von Änderungen eines Pull Requests direkt 
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container, GitHub-Aktionen, Helm, Service Mesh, Service Mesh-Routing, kubectl, k8s
 manager: gwallace
 ms.custom: devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 9bed61861c80f141270e50b644b32ae42fbe8e77
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 447c41055ededfc55e44bebd92de89b3d23de3c7
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95995562"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591564"
 ---
 # <a name="github-actions--azure-kubernetes-service-preview"></a>GitHub-Aktionen und Azure Kubernetes Service (Vorschau)
 
@@ -103,7 +103,7 @@ Navigieren Sie zum geforkten Repository und klicken Sie auf *Einstellungen*. Kli
 > [!NOTE]
 > Alle aufgeführten Geheimnisse werden von der GitHub-Aktion verwendet und in [.github/workflows/bikes.yml][github-action-yaml] konfiguriert.
 
-Optional: Wenn Sie den Masterbereich nach der PR-Zusammenführung aktualisieren möchten, können Sie das *GATEWAY_HOST*-Geheimnis im Format *<MASTERBEREICH>.gateway.<HOSTSUFFIX>* hinzufügen. In diesem Beispiel ist dies *dev.gateway.fedcab0987.eus.azds.io*. Nachdem Sie Ihre Änderungen im Master-Branch in Ihrem Fork zusammengeführt haben, wird eine weitere Aktion ausgeführt, um die gesamte Anwendung im Master-Entwicklungsbereich neu zu erstellen und auszuführen. In diesem Beispiel ist *dev* der Masterbereich. Diese Aktion wird in [.github/workflows/bikesharing.yml][github-action-bikesharing-yaml] konfiguriert.
+Optional: Wenn Sie den Masterbereich nach der PR-Zusammenführung aktualisieren möchten, können Sie das *GATEWAY_HOST*-Geheimnis im Format *<MASTERBEREICH>.gateway.<HOSTSUFFIX>* hinzufügen. In diesem Beispiel ist dies *dev.gateway.fedcab0987.eus.azds.io*. Nachdem Sie Ihre Änderungen im Mainbranch in Ihrem Fork zusammengeführt haben, wird eine weitere Aktion ausgeführt, um die gesamte Anwendung im Master-Entwicklungsbereich neu zu erstellen und auszuführen. In diesem Beispiel ist *dev* der Masterbereich. Diese Aktion wird in [.github/workflows/bikesharing.yml][github-action-bikesharing-yaml] konfiguriert.
 
 Wenn die Änderungen in Ihrem PR in einem untergeordneten Bereich ausgeführt werden sollen, aktualisieren Sie die Geheimnisse *MASTER_SPACE* und *HOST*. Ein Beispiel: Die Anwendung in *dev* wird mit einem untergeordneten Bereich *dev/azureuser1* ausgeführt. Der PR soll in einem untergeordneten Bereich von *dev/azureuser1* ausgeführt werden:
 
@@ -149,7 +149,7 @@ Verwenden Sie `git push`, um den neuen Branch per Push in Ihr geforktes Reposito
 git push origin bike-images
 ```
 
-Navigieren Sie nach dem Pushen in GitHub zum geforkten Repository und erstellen Sie eine Pull Request mit dem *master*-Branch in Ihrem geforkten Repository als Basisbranch im Vergleich zum *bike-images*-Branch.
+Navigieren Sie nach dem Pushen in GitHub zum geforkten Repository, und erstellen Sie einen Pull Request mit dem *Mainbranch* in Ihrem geforkten Repository als Basisbranch im Vergleich zum *bike-images*-Branch.
 
 Navigieren Sie nach dem Öffnen der Pull Request zur Registerkarte *Aktionen*. Vergewissern Sie sich, dass eine neue Aktion gestartet wurde und der *Bikes*-Dienst erstellt wird.
 
@@ -162,7 +162,7 @@ Nachdem die Aktion abgeschlossen wurde, wird basierend auf den Änderungen in de
 
 Navigieren Sie zum Dienst *bikesharingweb*, indem Sie die URL im Kommentar öffnen. Wählen Sie *Aurelia Briggs (customer)* als Benutzer und dann ein zu mietendes Fahrrad aus. Vergewissern Sie sich, dass das Platzhalterbild für das Fahrrad nicht mehr angezeigt wird.
 
-Wenn Sie Ihre Änderungen im *master*-Branch in Ihrem Fork zusammenführen, wird eine weitere Aktion ausgeführt, um die gesamte Anwendung im übergeordneten Entwicklungsbereich neu zu erstellen und auszuführen. In diesem Beispiel ist der übergeordnete Bereich *dev*. Diese Aktion wird in [.github/workflows/bikesharing.yml][github-action-bikesharing-yaml] konfiguriert.
+Wenn Sie Ihre Änderungen im *Mainbranch* in Ihrem Fork zusammenführen, wird eine weitere Aktion ausgeführt, um die gesamte Anwendung im übergeordneten Entwicklungsbereich neu zu erstellen und auszuführen. In diesem Beispiel ist der übergeordnete Bereich *dev*. Diese Aktion wird in [.github/workflows/bikesharing.yml][github-action-bikesharing-yaml] konfiguriert.
 
 ## <a name="clean-up-your-azure-resources"></a>Bereinigen Ihrer Azure-Ressourcen
 

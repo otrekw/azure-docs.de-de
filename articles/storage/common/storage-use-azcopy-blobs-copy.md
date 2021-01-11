@@ -8,12 +8,12 @@ ms.date: 12/08/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: f536e163e3d19d91c150506ab44fdd9cbc02c693
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 524e3f70f9588cfae2c739722fc1a44e683f9a7f
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96907396"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617288"
 ---
 # <a name="copy-blobs-between-azure-storage-accounts-by-using-azcopy-v10"></a>Kopieren von Blobs zwischen Azure-Speicherkonten mithilfe von AzCopy v10
 
@@ -28,6 +28,8 @@ Lesen Sie den Artikel [Erste Schritte mit AzCopy](storage-use-azcopy-v10.md), um
 ## <a name="guidelines"></a>Richtlinien
 
 Wenden Sie die folgenden Richtlinien auf Ihre AzCopy-Befehle an. 
+
+- Ihr Client muss über Netzwerkzugriff auf die Quell- und Zielspeicherkonten verfügen. Weitere Informationen zum Konfigurieren der Netzwerkeinstellungen für die einzelnen Speicherkonten finden Sie unter [Konfigurieren von Azure Storage-Firewalls und virtuellen Netzwerken](storage-network-security.md?toc=/azure/storage/blobs/toc.json).
 
 - Fügen Sie ein SAS-Token an jede Quell-URL an. 
 
@@ -105,13 +107,13 @@ Der Kopiervorgang verläuft synchron – wenn also der Befehl zurückgegeben wir
 
 Kopieren Sie Blobs in ein anderes Speicherkonto, und fügen Sie dem Zielblob [Blobindextags (Vorschau)](../blobs/storage-manage-find-blobs.md) hinzu.
 
-Wenn Sie Azure AD-Autorisierung verwenden, muss Ihrem Sicherheitsprinzipal die Rolle [Besitzer von Speicherblobdaten](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner) zugewiesen werden, oder ihm muss über eine benutzerdefinierte Azure-Rolle die Berechtigung für `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/write` [Vorgänge für Azure-Ressourcenanbieter](../../role-based-access-control/resource-provider-operations.md#microsoftstorage) erteilt werden. Wenn Sie ein SAS-Token (Shared Access Signature) verwenden, muss es über die SAS-Berechtigung `t` Zugriff auf die Blobtags bieten.
+Wenn Sie Azure AD-Autorisierung verwenden, muss Ihrem Sicherheitsprinzipal die Rolle [Besitzer von Speicherblobdaten](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner) zugewiesen werden, oder ihm muss über eine benutzerdefinierte Azure-Rolle die Berechtigung für `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/write` [Vorgänge für Azure-Ressourcenanbieter](../../role-based-access-control/resource-provider-operations.md#microsoftstorage) erteilt werden. Wenn Sie ein SAS-Token (Shared Access Signature) verwenden, muss es über die SAS-Berechtigung `t` den Zugriff auf die Blobtags ermöglichen.
 
 Verwenden Sie zum Hinzufügen von Tags die Option `--blob-tags` zusammen mit einem URL-codierten Schlüssel-Wert-Paar. 
 
 Wenn Sie beispielsweise den Schlüssel `my tag` und den Wert `my tag value` hinzufügen möchten, würden Sie dem Zielparameter `--blob-tags='my%20tag=my%20tag%20value'` hinzufügen. 
 
-Trennen Sie mehrere Indextags durch ein kaufmännisches Und-Zeichen (`&`).  Wenn Sie beispielsweise den Schlüssel `my second tag` und den Wert `my second tag value` hinzufügen möchten, wäre die gesamte Optionszeichenfolge `--blob-tags='my%20tag=my%20tag%20value&my%20second%20tag=my%20second%20tag%20value'`.
+Trennen Sie mehrere Indextags durch ein kaufmännisches Und-Zeichen (`&`).  Wenn Sie beispielsweise den Schlüssel `my second tag` und den Wert `my second tag value` hinzufügen möchten, würde die gesamte Optionszeichenfolge wie folgt lauten: `--blob-tags='my%20tag=my%20tag%20value&my%20second%20tag=my%20second%20tag%20value'`.
 
 In den folgenden Beispielen wird die Verwendung der Option `--blob-tags` gezeigt.
 

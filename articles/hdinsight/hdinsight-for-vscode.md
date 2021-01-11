@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 10/20/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 302f1a081ca44cf6436f2c318b03e227f6640489
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 1bbc3b3cd755aabd348a238ad65cda132b9a7547
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96001965"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746608"
 ---
 # <a name="use-spark--hive-tools-for-visual-studio-code"></a>Verwenden von Spark- und Hive-Tools für Visual Studio Code
 
@@ -211,29 +211,31 @@ Gehen Sie wie folgt vor, um die Abfragen mithilfe des interaktiven PySpark-Befeh
 
    ![PySpark erfolgreich installiert](./media/hdinsight-for-vscode/pyspark-kernel-installed-successfully.png)
 
-7. Navigieren Sie in der Menüleiste zu **View** > **Command Palette...** (Ansicht > Befehlspalette...), oder verwenden Sie die Tastenkombination **UMSCHALT+STRG+P**, und geben Sie **Python: Select Interpreter to start Jupyter Server** (Interpreter auswählen, um Jupyter-Server zu starten) ein.
+7. Führen Sie an der Eingabeaufforderung **pip install numpy == 1.19.3** aus, und laden Sie dann das VS Code-Fenster neu.
+
+8. Navigieren Sie in der Menüleiste zu **View** > **Command Palette...** (Ansicht > Befehlspalette...), oder verwenden Sie die Tastenkombination **UMSCHALT+STRG+P**, und geben Sie **Python: Select Interpreter to start Jupyter Server** (Interpreter auswählen, um Jupyter-Server zu starten) ein.
 
    ![Select Interpreter to start Jupyter Server (Interpreter auswählen, um Jupyter-Server zu starten)](./media/hdinsight-for-vscode/select-interpreter-to-start-jupyter-server.png)
 
-8. Wählen Sie unten die Python-Option aus.
+9. Wählen Sie unten die Python-Option aus.
 
    ![Auswählen der unten angegebenen Option](./media/hdinsight-for-vscode/choose-the-below-option.png)
     
-9. Navigieren Sie in der Menüleiste zu **View** > **Command Palette...** (Ansicht > Befehlspalette...), oder verwenden Sie die Tastenkombination **UMSCHALT+STRG+P**, und geben Sie **Developer: Fenster neu laden** ein.
+10. Navigieren Sie in der Menüleiste zu **View** > **Command Palette...** (Ansicht > Befehlspalette...), oder verwenden Sie die Tastenkombination **UMSCHALT+STRG+P**, und geben Sie **Developer: Fenster neu laden** ein.
 
-   ![Fenster neu laden](./media/hdinsight-for-vscode/reload-window.png)
+    ![Fenster neu laden](./media/hdinsight-for-vscode/reload-window.png)
 
-10. [Stellen Sie eine Verbindung mit Ihrem Azure-Konto her](#connect-to-an-azure-account), oder verknüpfen Sie einen Cluster, sofern dies noch nicht erfolgt ist.
+11. [Stellen Sie eine Verbindung mit Ihrem Azure-Konto her](#connect-to-an-azure-account), oder verknüpfen Sie einen Cluster, sofern dies noch nicht erfolgt ist.
 
-11. Wählen Sie den gesamten Code aus, klicken Sie mit der rechten Maustaste auf den Skript-Editor, und wählen Sie **Spark: PySpark Interactive/Synapse: PySpark Interactive** aus, um die Abfrage zu übermitteln. 
+12. Wählen Sie den gesamten Code aus, klicken Sie mit der rechten Maustaste auf den Skript-Editor, und wählen Sie **Spark: PySpark Interactive/Synapse: PySpark Interactive** aus, um die Abfrage zu übermitteln. 
 
     ![PySpark Interactive-Kontextmenü](./media/hdinsight-for-vscode/pyspark-interactive-right-click.png)
 
-12. Wählen Sie den Cluster aus, wenn Sie keinen Standardcluster angegeben haben. Nach kurzer Zeit werden die **Python Interactive**-Ergebnisse in einer neuen Registerkarte angezeigt. Klicken Sie auf PySpark, um den Kernel auf **PySpark/Synapse Pyspark** umzustellen. Anschließend wird der Code erfolgreich ausgeführt. Wenn Sie zum Synapse PySpark-Kernel wechseln möchten, empfehlen wir Ihnen, die automatischen Einstellungen im Azure-Portal zu deaktivieren. Andernfalls kann es sehr lange dauern, den Cluster zu aktivieren und den Synapse-Kernel für die erstmalige Verwendung festzulegen. Die Tools unterstützen es auch, dass Sie über das Kontextmenü einen Codeblock anstelle der gesamten Skriptdatei übermitteln:
+13. Wählen Sie den Cluster aus, wenn Sie keinen Standardcluster angegeben haben. Nach kurzer Zeit werden die **Python Interactive**-Ergebnisse in einer neuen Registerkarte angezeigt. Klicken Sie auf PySpark, um den Kernel auf **PySpark/Synapse Pyspark** umzustellen. Anschließend wird der Code erfolgreich ausgeführt. Wenn Sie zum Synapse PySpark-Kernel wechseln möchten, empfehlen wir Ihnen, die automatischen Einstellungen im Azure-Portal zu deaktivieren. Andernfalls kann es sehr lange dauern, den Cluster zu aktivieren und den Synapse-Kernel für die erstmalige Verwendung festzulegen. Die Tools unterstützen es auch, dass Sie über das Kontextmenü einen Codeblock anstelle der gesamten Skriptdatei übermitteln:
 
     ![PySpark Interactive: Python Interactive-Fenster](./media/hdinsight-for-vscode/pyspark-interactive-python-interactive-window.png)
 
-13. Geben Sie **%%info** ein, und drücken Sie dann UMSCHALT+EINGABETASTE, um die Auftragsinformationen anzuzeigen (optional):
+14. Geben Sie **%%info** ein, und drücken Sie dann UMSCHALT+EINGABETASTE, um die Auftragsinformationen anzuzeigen (optional):
 
     ![PySpark: Auftragsinformationen in der interaktiven Ansicht](./media/hdinsight-for-vscode/pyspark-interactive-view-job-information.png)
 
@@ -266,7 +268,8 @@ Das Tool unterstützt auch die **Spark SQL**-Abfrage:
 
 
 > [!NOTE]
-> Version 2020.5.78807 und höher von „ms-python“ wird von dieser Erweiterung nicht unterstützt. Dies ist ein [bekanntes Problem](#known-issues).
+>
+> Das Problem [„Version 2020.5.78807 und höher von ‚ms-python‘ wird von dieser Erweiterung nicht unterstützt“](#issues-changed) wurde behoben. Vorerst kann die neueste Version von ms-python verwendet werden.
 
 ## <a name="submit-pyspark-batch-job"></a>Übermitteln von PySpark-Batchaufträgen
 
@@ -486,13 +489,10 @@ Wählen Sie Azure HDInsight-Explorer aus, um ein Data Lake Storage Gen2-Konto zu
 
 Navigieren Sie auf der Menüleiste zu **Ansicht** > **Befehlspalette**, und geben Sie dann **Azure: Abmelden** ein.
 
-## <a name="known-issues"></a>Bekannte Probleme
+## <a name="issues-changed"></a>Geänderte Probleme
 
-### <a name="ms-python-2020578807-version-is-not-supported-on-this-extention"></a>Version 2020.5.78807 und höher von „ms-python“ wird von dieser Erweiterung nicht unterstützt 
+Das Problem „Version 2020.5.78807 und höher von ‚ms-python‘ wird von dieser Erweiterung nicht unterstützt“ wurde behoben, sodass vorerst die **neueste Version von ms-python** verwendet werden kann.
 
-„Failed to connect to Jupyter notebook.“ (Fehler beim Verbinden mit Jupyter Notebook.) ist ein bekanntes Problem in Python-Version 2020.5.78807 und höher. Es wird empfohlen, dass Benutzer Version **[2020.4.76186](https://github.com/microsoft/vscode-python/releases/download/2020.4.76186/ms-python-release.vsix)** von „ms-python“ verwenden, um dieses Problem zu vermeiden.
-
-![Bekannte Probleme](./media/hdinsight-for-vscode/known-issue.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

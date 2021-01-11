@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/30/2020
 ms.author: yelevin
-ms.openlocfilehash: ba872f221f3bde29f0bb48b04dc2259d3ab4938a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5c715804693571bc421951de1288fc884d2eae8d
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90906292"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746183"
 ---
 # <a name="advanced-multistage-attack-detection-in-azure-sentinel"></a>Erweiterte Erkennung von mehrstufigen Angriffen in Azure Sentinel
 
@@ -49,7 +49,7 @@ Diese Erkennung ist in Azure Sentinel standardmäßig aktiviert. Zum Überprüfe
  Da der Regeltyp **Fusion** nur eine Regel enthält, die nicht verändert werden kann, sind Regelvorlagen für diesen Regeltyp nicht anwendbar.
 
 > [!NOTE]
-> Azure Sentinel verwendet zurzeit 30 Tage an Verlaufsdaten, um die Systeme für das maschinelle Lernen zu trainieren. Diese Daten werden immer mit den Schlüsseln von Microsoft verschlüsselt, wenn sie die Pipeline für maschinelles Lernen durchlaufen. Die Trainingsdaten werden jedoch nicht mit [vom Kunden verwalteten Schlüsseln (Customer Managed Keys, CMK)](customer-managed-keys.md) verschlüsselt, wenn Sie CMK in Ihrem Azure Sentinel-Arbeitsbereich aktiviert haben. Zum Deaktivieren von Fusion navigieren Sie zu **Azure Sentinel** \> **Konfiguration** \> **Analyse \> Aktive Regeln \> Erweiterte mehrstufige Angriffserkennung**, und wählen Sie in der Spalte **Status** die Option **Deaktivieren** aus.
+> Azure Sentinel verwendet zurzeit 30 Tage an Verlaufsdaten, um die Systeme für das maschinelle Lernen zu trainieren. Diese Daten werden immer mit den Schlüsseln von Microsoft verschlüsselt, wenn sie die Pipeline für maschinelles Lernen durchlaufen. Die Trainingsdaten werden jedoch nicht mit [vom Kunden verwalteten Schlüsseln (Customer Managed Keys, CMK)](customer-managed-keys.md) verschlüsselt, wenn Sie CMK in Ihrem Azure Sentinel-Arbeitsbereich aktiviert haben. Zum Deaktivieren von Fusion navigieren Sie zu **Azure Sentinel** \> **Konfiguration** \> **Analyse \> Aktive Regeln \> Erweiterte mehrstufige Angriffserkennung**, und wählen Sie in der Spalte **Status** die Option **Deaktivieren** aus.
 
 ## <a name="attack-detection-scenarios"></a>Szenarien für die Angriffserkennung
 
@@ -84,6 +84,70 @@ Dieses Szenario befindet sich zurzeit in der **Public Preview**.
 - **Anmeldeereignis von einer anonymen IP-Adresse führt zu mehreren Aktivitäten zur VM-Erstellung**
 
 - **Anmeldeereignis eines Benutzers mit kompromittierten Anmeldeinformationen führt zu mehreren Aktivitäten zur VM-Erstellung**
+
+## <a name="credential-harvesting-new-threat-classification"></a>Sammeln von Anmeldeinformationen (neue Bedrohungsklassifizierung)
+
+### <a name="malicious-credential-theft-tool-execution-following-suspicious-sign-in"></a>Ausführung eines Tools für den Diebstahl von Anmeldeinformationen nach einer verdächtigen Anmeldung
+
+**MITRE ATT&CK-Taktiken:** Erstzugriff, Zugriff auf Anmeldeinformationen
+
+**MITRE ATT&CK-Techniken:** Gültiges Konto (T1078), Sicherung von Betriebssystem-Anmeldeinformation (T1003)
+
+**Datenconnector-Quellen:** Azure Active Directory Identity Protection, Microsoft Defender für Endpunkt
+
+**Beschreibung:** Fusion-Vorfälle dieses Typs deuten darauf hin, dass ein bekanntes Tool zum Diebstahl von Anmeldeinformationen nach einer verdächtigen Azure AD-Anmeldung ausgeführt wurde. Dies bedeutet mit sehr hoher Wahrscheinlichkeit, dass das in der Warnungsbeschreibung genannte Benutzerkonto kompromittiert wurde und unter diesem möglicherweise ein Tool wie **Mimikatz** verwendet wurde, um Anmeldeinformationen wie Schlüssel, unverschlüsselte Kennwörter oder Kennworthashes aus dem System zu sammeln. Mithilfe der gesammelten Anmeldeinformationen kann ein Angreifer auf vertrauliche Daten zugreifen, Berechtigungen erhöhen und im gesamten Netzwerk navigieren. Die Permutationen verdächtiger Azure AD-Anmeldewarnungen im Zusammenhang mit der Warnung zum Tool für den Diebstahl von Anmeldeinformationen sind:
+
+- **Unmöglicher Ortswechsel zu atypischen Orten, der zur Ausführung eines böswilligen Tools zum Diebstahl von Anmeldeinformationen führt**
+
+- **Anmeldeereignis von einem unbekannten Ort, das zur Ausführung eines böswilligen Tools zum Diebstahl von Anmeldeinformationen führt**
+
+- **Anmeldeereignis von einem infizierten Gerät, das zur Ausführung eines böswilligen Tools zum Diebstahl von Anmeldeinformationen führt**
+
+- **Anmeldeereignis von einer anonymen IP-Adresse, das zur Ausführung eines böswilligen Tools zum Diebstahl von Anmeldeinformationen führt**
+
+- **Anmeldeereignis eines Benutzers mit kompromittierten Anmeldeinformationen, das zur Ausführung eines böswilligen Tools zum Diebstahl von Anmeldeinformationen führt**
+
+### <a name="suspected-credential-theft-activity-following-suspicious-sign-in"></a>Möglicher Diebstahl von Anmeldeinformationen nach einer verdächtigen Anmeldung
+
+**MITRE ATT&CK-Taktiken:** Erstzugriff, Zugriff auf Anmeldeinformationen
+
+**MITRE ATT&CK-Techniken:** Gültiges Konto (T1078), Anmeldeinformationen aus Kennwortspeichern (T1555), Sicherung von Betriebssystem-Anmeldeinformationen (T1003)
+
+**Datenconnector-Quellen:** Azure Active Directory Identity Protection, Microsoft Defender für Endpunkt
+
+**Beschreibung:** Fusion-Vorfälle dieses Typs deuten darauf hin, dass nach einer verdächtigen Azure AD-Anmeldung eine Aktivität ausgeführt wurde, die Muster des Diebstahls von Anmeldeinformationen aufweist. Dies bedeutet mit sehr hoher Wahrscheinlichkeit, dass das in der Warnungsbeschreibung genannte Benutzerkonto kompromittiert wurde, um unter diesem Anmeldeinformationen wie Schlüssel, unverschlüsselte Kennwörter, Kennworthashes usw. zu stehlen. Mithilfe der gestohlenen Anmeldeinformationen kann ein Angreifer auf vertrauliche Daten zugreifen, Berechtigungen erhöhen und im gesamten Netzwerk navigieren. Die Permutationen verdächtiger Azure AD-Anmeldewarnungen im Zusammenhang mit der Warnung zum Diebstahl von Anmeldeinformationen sind:
+
+- **Unmöglicher Ortswechsel zu atypischen Orten, der zu einer Aktivität zum Diebstahl von Anmeldeinformationen führt**
+
+- **Anmeldeereignis von einem unbekannten Ort, das zu einer Aktivität zum Diebstahl von Anmeldeinformationen führt**
+
+- **Anmeldeereignis von einem infizierten Gerät, das zu einer Aktivität zum Diebstahl von Anmeldeinformationen führt**
+
+- **Anmeldeereignis von einer anonymen IP-Adresse, das zu einer Aktivität zum Diebstahl von Anmeldeinformationen führt**
+
+- **Anmeldeereignis eines Benutzers mit kompromittierten Anmeldeinformationen, das zu einer Aktivität zum Diebstahl von Anmeldeinformationen führt**
+
+## <a name="crypto-mining-new-threat-classification"></a>Crypto Mining (neue Bedrohungsklassifizierung)
+
+### <a name="crypto-mining-activity-following-suspicious-sign-in"></a>Aktivität zum Crypto Mining nach verdächtiger Anmeldung
+
+**MITRE ATT&CK-Taktiken:** Erstzugriff, Zugriff auf Anmeldeinformationen
+
+**MITRE ATT&CK-Techniken:** Gültiges Konto (T1078), Ressourcen-Hijacking (T1496)
+
+**Datenconnector-Quellen:** Azure Active Directory Identity Protection, Azure Defender (Azure Security Center)
+
+**Beschreibung:** Fusion-Vorfälle dieses Typs deuten auf eine Aktivität zum Crypto Mining hin, die einer verdächtigen Anmeldung bei einem Azure AD-Konto zugeordnet ist. Dies bedeutet mit sehr hoher Wahrscheinlichkeit, dass das in der Warnungsbeschreibung genannte Benutzerkonto kompromittiert und zum Übernehmen von Ressourcen in Ihrer Umgebung verwendet wurde, um mit diesen das Mining einer Kryptowährung zu betreiben. Dies kann Ihre Computeressourcen und damit die Computingleistung beeinträchtigen und zu deutlich höheren als den erwarteten Cloudnutzungsgebühren führen. Die Permutationen verdächtiger Azure AD-Anmeldewarnungen im Zusammenhang mit der Warnung zum Crypto Mining sind:  
+
+- **Unmöglicher Ortswechsel zu atypischen Orten, der zu Crypto Mining führt**
+
+- **Anmeldeereignis von einem unbekannten Ort, das zu Crypto Mining führt**
+
+- **Anmeldeereignis von einem infizierten Gerät, das zu Crypto Mining führt**
+
+- **Anmeldeereignis von einer anonymen IP-Adresse, das zu Crypto Mining führt**
+
+- **Anmeldeereignis eines Benutzers mit kompromittierten Anmeldeinformationen, das zu Crypto Mining führt**
 
 ## <a name="data-exfiltration"></a>Datenexfiltration
 
@@ -368,6 +432,26 @@ Dieses Szenario befindet sich zurzeit in der **Public Preview**.
 **Datenconnector-Quellen:** Microsoft Defender für den Endpunkt (vormals MDATP), Palo Alto Networks 
 
 **Beschreibung:** Fusion-Vorfälle dieses Typs deuten darauf hin, dass WMI-Befehle (Windows Management Interface) remote auf einem System ausgeführt wurden. Im Anschluss daran wurden von der Palo Alto Networks-Firewall verdächtige eingehende Aktivitäten erkannt. Dies gibt einen Hinweis darauf, dass ein Angreifer möglicherweise Zugriff auf Ihr Netzwerk erhalten hat und Seitwärtsbewegung, das Heraufstufen von Berechtigungen und/oder das Ausführen bösartiger Nutzlasten versucht. Wie bei allen Living-off-the-Land-Angriffen könnte diese Aktivität auch eine legitime Verwendung von WMI darstellen. Die Remoteausführung eines WMI-Befehls, auf die verdächtige eingehende Firewall-Aktivitäten folgen, steigert aber die Glaubwürdigkeit der Annahme, dass WMI in böswilliger Weise verwendet wird und der Vorfall genauer untersucht werden sollte. In Palo Alto-Protokollen sucht Azure Sentinel hauptsächlich nach [Bedrohungen](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/view-and-manage-logs/log-types-and-severity-levels/threat-logs), und der Datenverkehr wird als verdächtig eingestuft, wenn Bedrohungen durchgelassen werden (verdächtige Daten, Dateien, Überflutungen, Pakete, Scans, Spyware, URLs, Viren, Sicherheitsrisiken, Wildfireviren, Wildfires). Konsultieren Sie außerdem das Palo Alto-Bedrohungsprotokoll, das dem in der Fusion-Vorfallsbeschreibung aufgelisteten [Bedrohungs-/Inhaltstyp](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/use-syslog-for-monitoring/syslog-field-descriptions/threat-log-fields.html) entspricht, um weitere Details zur Benachrichtigung zu erhalten.
+
+### <a name="suspicious-powershell-command-line-following-suspicious-sign-in"></a>Verdächtige PowerShell-Befehlszeile nach verdächtiger Anmeldung
+
+**MITRE ATT&CK-Taktiken:** Erstzugriff, Ausführung
+
+**MITRE ATT&CK-Techniken:** Gültiges Konto (T1078), Befehls- und Skript-Interpreter (T1059)
+
+**Datenconnector-Quellen:** Azure Active Directory Identity Protection, Microsoft Defender für Endpunkt (ehemals MDATP)
+
+**Beschreibung:** Fusion-Vorfälle dieses Typs deuten darauf hin, dass ein Benutzer im Anschluss an eine verdächtige Anmeldung bei einem Azure AD-Konto potenziell böswillige PowerShell-Befehle ausgeführt hat. Dies bedeutet mit sehr hoher Wahrscheinlichkeit, dass das in der Warnungsbeschreibung genannte Konto kompromittiert wurde und weitere schädliche Aktionen durchgeführt wurden. Angreifer nutzen häufig PowerShell, um schädliche Payloads im Arbeitsspeicher auszuführen, ohne Artefakte auf dem Datenträger zu hinterlassen. Dadurch wird die Erkennung durch datenträgerbasierte Sicherheitsmechanismen wie Virenscanner vermieden. Die Permutationen verdächtiger Azure AD-Anmeldebenachrichtigungen im Zusammenhang mit der Warnung über die verdächtige PowerShell-Befehle lauten:
+
+- **Unmöglicher Ortswechsel zu atypischen Orten, der zu einer verdächtigen PowerShell-Befehlszeile führt**
+
+- **Anmeldeereignis von einem unbekannten Ort, das zu einer verdächtigen PowerShell-Befehlszeile führt**
+
+- **Anmeldeereignis von einem infizierten Gerät, das zu einer verdächtigen PowerShell-Befehlszeile führt**
+
+- **Anmeldeereignis von einer anonymen IP-Adresse, das zu einer verdächtigen PowerShell-Befehlszeile führt**
+
+- **Anmeldeereignis eines Benutzers mit kompromittierten Anmeldeinformationen, das zu einer verdächtigen PowerShell-Befehlszeile führt**
 
 ## <a name="malware-c2-or-download"></a>Malware C2 oder Download
 

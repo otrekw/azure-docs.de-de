@@ -11,12 +11,12 @@ author: blackmist
 ms.date: 09/15/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, data4ml
-ms.openlocfilehash: 5d49a88b89f9e2f4e2c2e6fa8ef18a01c803e3f7
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 13b99fe129191b89b5bb2d7f5473e910fa619ce7
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94536590"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97739840"
 ---
 # <a name="monitor-and-collect-data-from-ml-web-service-endpoints"></a>Überwachen und Erfassen von Daten von ML-Webdienst-Endpunkten
 
@@ -157,14 +157,24 @@ Sie können Azure Application Insights auch in Azure Machine Learning Studio akt
 
 ### <a name="query-logs-for-deployed-models"></a>Abfragen von Protokollen für bereitgestellte Modelle
 
-Sie können die `get_logs()`-Funktion verwenden, um Protokolle aus einem zuvor bereitgestellten Webdienst abzurufen. Die Protokolle können ausführliche Informationen zu allen Fehlern enthalten, die während der Bereitstellung aufgetreten sind.
+Protokolle von Echtzeitendpunkten sind Kundendaten. Sie können die `get_logs()`-Funktion verwenden, um Protokolle aus einem zuvor bereitgestellten Webdienst abzurufen. Die Protokolle können ausführliche Informationen zu allen Fehlern enthalten, die während der Bereitstellung aufgetreten sind.
 
 ```python
+from azureml.core import Workspace
 from azureml.core.webservice import Webservice
+
+ws = Workspace.from_config()
 
 # load existing web service
 service = Webservice(name="service-name", workspace=ws)
 logs = service.get_logs()
+```
+
+Wenn Sie über mehrere Mandanten verfügen, müssen Sie vor `ws = Workspace.from_config()` ggf. den folgenden Code für die Authentifizierung hinzufügen:
+
+```python
+from azureml.core.authentication import InteractiveLoginAuthentication
+interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in which your workspace resides")
 ```
 
 ### <a name="view-logs-in-the-studio"></a>Anzeigen von Protokollen in Studio

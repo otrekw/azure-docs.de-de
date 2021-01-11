@@ -3,12 +3,12 @@ title: Wiederherstellen von SQL Server-Datenbanken auf einem virtuellen Azure-Co
 description: In diesem Artikel erfahren Sie, wie Sie SQL Server-Datenbanken wiederherstellen, die auf einem virtuellen Azure-Computer ausgeführt und mit Azure Backup gesichert werden. Zum Wiederherstellen von Datenbanken in einer sekundären Region können Sie auch die regionsübergreifende Wiederherstellung verwenden.
 ms.topic: conceptual
 ms.date: 05/22/2019
-ms.openlocfilehash: bbafd179f4b2f4e91a4bf19da41ffc14e4775e5c
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 7dd8d8d54fa7d33bb4a0935357597d19dd2368c5
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92172164"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97734401"
 ---
 # <a name="restore-sql-server-databases-on-azure-vms"></a>Wiederherstellen von SQL Server-Datenbanken auf virtuellen Azure-Computern
 
@@ -23,12 +23,13 @@ Azure Backup kann auf virtuellen Azure-Computern ausgeführte SQL Server-Datenb
 - Wiederherstellung eines bestimmten Datums oder einer bestimmten Uhrzeit (sekundengenau) mithilfe von Transaktionsprotokollsicherungen. Azure Backup ermittelt automatisch die geeignete vollständige differenzielle Sicherung und die Kette von Protokollsicherungen, die für die Wiederherstellung Ihrer Daten basierend auf dem ausgewählten Zeitpunkt benötigt werden.
 - Wiederherstellung einer bestimmten vollständigen oder differenziellen Sicherung, um die Daten eines bestimmten Wiederherstellungspunkts wiederherzustellen.
 
-## <a name="prerequisites"></a>Voraussetzungen
+## <a name="restore-prerequisites"></a>Voraussetzungen für die Wiederherstellung
 
 Beachten Sie vor dem Wiederherstellen einer Datenbank Folgendes:
 
 - Sie können die Datenbank auf einer SQL Server-Instanz in derselben Azure-Region wiederherstellen.
 - Der Zielserver muss bei demselben Tresor wie die Quelle registriert werden.
+- Wenn auf einem Server mehrere Instanzen ausgeführt werden, sollten alle Instanzen aktiv sein und ausgeführt werden. Andernfalls wird der Server nicht in der Liste der Zielserver angezeigt, auf denen Sie die Datenbank wiederherstellen können. Weitere Informationen finden Sie in den [Schritten zur Problembehandlung](backup-sql-server-azure-troubleshoot.md#faulty-instance-in-a-vm-with-multiple-sql-server-instances).
 - Wenn Sie eine mit TDE verschlüsselte Datenbank in einer anderen SQL Server-Instanz wiederherstellen möchten, müssen Sie zuerst [das Zertifikat auf dem Zielserver wiederherstellen](/sql/relational-databases/security/encryption/move-a-tde-protected-database-to-another-sql-server).
 - [CDC](/sql/relational-databases/track-changes/enable-and-disable-change-data-capture-sql-server)-fähige Datenbanken sollten mithilfe der Option [Als Dateien wiederherstellen](#restore-as-files) wiederhergestellt werden.
 - Starten Sie vor der Wiederherstellung der Masterdatenbank die SQL Server-Instanz mit der Startoption **-m AzureWorkloadBackup** im Einzelbenutzermodus.
@@ -36,7 +37,6 @@ Beachten Sie vor dem Wiederherstellen einer Datenbank Folgendes:
   - Die Verbindung kann nur vom angegebenen Clientnamen geöffnet werden.
 - Beenden Sie für alle Systemdatenbanken („model“, „master“, „msdb“) vor dem Auslösen der Wiederherstellung den SQL Server-Agent-Dienst.
 - Schließen Sie alle Anwendungen, die ggf. versuchen, eine Verbindung mit einer dieser Datenbanken zu verwenden.
-- Wenn auf einem Server mehrere Instanzen ausgeführt werden, müssen alle Instanzen aktiv sein. Andernfalls wird der Server nicht in der Liste mit den Zielservern für die Datenbankwiederherstellung angezeigt.
 
 ## <a name="restore-a-database"></a>Wiederherstellen einer Datenbank
 

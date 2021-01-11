@@ -11,18 +11,22 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 845160d92100a27c32f16eddcd1f36e9e8624e80
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: ea96e1056e6157cfddbdc2f0b6451ed55a74d1de
+ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360597"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97756057"
 ---
 # <a name="monitor-and-view-ml-run-logs-and-metrics"></a>Überwachen und Anzeigen von ML-Ausführungsprotokollen und -metriken
 
-In diesem Artikel erfahren Sie, wie Sie Azure Machine Learning-Ausführungen überwachen und die zugehörigen Protokolle anzeigen. Bevor Sie Protokolle anzeigen können, müssen Sie sie zuerst aktivieren. Weitere Informationen hierzu finden Sie unter [Aktivieren der Protokollierung in Azure ML-Trainingsausführungen](how-to-track-experiments.md).
+Erfahren Sie, wie Sie Azure Machine Learning-Ausführungen überwachen und die zugehörigen Protokolle anzeigen. 
 
-Protokolle helfen bei der Diagnose von Fehlern und Warnungen und beim Nachverfolgen von Leistungsmetriken wie Parametern und Modellgenauigkeit. In diesem Artikel erfahren Sie, wie Sie Protokolle über die folgenden Methoden anzeigen:
+Wenn Sie ein Experiment ausführen, werden Protokolle und Metriken für Sie gestreamt.  Sie können auch eigene hinzufügen.  Informationen zur Vorgehensweise finden Sie unter [Aktivieren der Protokollierung in Azure ML-Trainingsausführungen](how-to-track-experiments.md).
+
+Mithilfe der Protokolle können Sie Fehler und Warnungen für Ihre Ausführungen diagnostizieren. Leistungsmetriken wie Parameter und die Modellgenauigkeit helfen Ihnen beim Nachverfolgen und Überwachen Ihrer Ausführungen.
+
+In diesem Artikel erfahren Sie, wie Sie Protokolle über die folgenden Methoden anzeigen:
 
 > [!div class="checklist"]
 > * Überwachen von Ausführungen in Studio
@@ -32,27 +36,6 @@ Protokolle helfen bei der Diagnose von Fehlern und Warnungen und beim Nachverfol
 > * Anzeigen von Ausgabeprotokollen in Studio
 
 Allgemeine Informationen zum Verwalten von Experimenten finden Sie unter [Starten, Überwachen und Abbrechen von Trainingsausführungen](how-to-manage-runs.md).
-
-## <a name="monitor-runs-in-the-studio"></a>Überwachen von Ausführungen in Studio
-
-Führen Sie die folgenden Schritte aus, um die Ausführungen für ein bestimmtes Computeziel in Ihrem Browser zu überwachen:
-
-1. Wählen Sie in [Azure Machine Learning Studio](https://ml.azure.com/) Ihren Arbeitsbereich aus, und wählen Sie dann links auf der Seite __Compute__ aus.
-
-1. Wählen Sie __Trainingscluster__ aus, um eine Liste der für das Training verwendeten Computeziele anzuzeigen. Wählen Sie dann den Cluster aus.
-
-    ![Auswählen des Trainingsclusters](./media/how-to-track-experiments/select-training-compute.png)
-
-1. Wählen Sie __Ausführungen__ aus. Die Liste der Ausführungen wird angezeigt, die diesen Cluster verwenden. Zum Anzeigen von Details für eine bestimmte Ausführung verwenden Sie den Link in der Spalte __Ausführung__. Zum Anzeigen von Details für ein bestimmtes Experiment verwenden Sie den Link in der Spalte __Experiment__.
-
-    ![Auswählen von Ausführungen für Trainingscluster](./media/how-to-track-experiments/show-runs-for-compute.png)
-    
-    > [!TIP]
-    > Da Trainingscomputeziele freigegebene Ressourcen sind, können zu jedem Zeitpunkt mehrere Ausführungen in die Warteschlange eingereiht oder aktiv sein.
-    > 
-    > Eine Ausführung kann untergeordnete Ausführungen enthalten, sodass ein Trainingsauftrag zu mehreren Einträgen führen kann.
-
-Sobald eine Ausführung abgeschlossen ist, wird sie nicht mehr auf dieser Seite angezeigt. Informationen zu abgeschlossenen Ausführungen finden Sie in Studio im Abschnitt __Experimente__. Wählen Sie dazu das Experiment und die Ausführung aus. Weitere Informationen finden Sie im Abschnitt [Anzeigen von Metriken für abgeschlossene Ausführungen](#view-the-experiment-in-the-web-portal).
 
 ## <a name="monitor-runs-using-the-jupyter-notebook-widget"></a>Überwachen von Ausführungen mit dem Jupyter Notebook-Widget
 
@@ -94,28 +77,28 @@ RunDetails(run).show()
 Bei der Verwendung von **ScriptRunConfig** können Sie ```run.wait_for_completion(show_output = True)``` einsetzen,um anzuzeigen, wenn das Modelltraining abgeschlossen ist. Mithilfe des ```show_output```-Flags erhalten Sie eine ausführlichen Ausgabe. Weitere Informationen finden Sie im Abschnitt „ScriptRunConfig“ unter [Aktivieren der Protokollierung](how-to-track-experiments.md#scriptrun-logs).
 
 <a id="queryrunmetrics"></a>
+
 ## <a name="query-run-metrics"></a>Metriken der Abfrageausführung
 
 Mit ```run.get_metrics()``` können Sie die Metriken eines trainierten Modells anzeigen. Beispielsweise können Sie im obigen Beispiel das beste Modell ermitteln, indem Sie nach dem Modell mit dem niedrigsten mittleren quadratischen Fehlerwert (Mean Square Error, MSE) suchen.
 
 <a name="view-the-experiment-in-the-web-portal"></a>
+
 ## <a name="view-run-records-in-the-studio"></a>Anzeigen von Ausführungsaufzeichnungen in Studio
 
 Sie können abgeschlossene Ausführungsaufzeichnungen, einschließlich protokollierter Metriken, in [Azure Machine Learning Studio](https://ml.azure.com) durchsuchen.
 
-Navigieren Sie zur Registerkarte **Experimente**. Um alle Ihre Ausführungen in Ihrem Arbeitsbereich experimentübergreifend anzuzeigen, wählen Sie die Registerkarte **Alle Ausführungen** aus. Sie können einen Drilldown für die Ausführungen für bestimmte Experimente ausführen, indem Sie den Experimentfilter auf der oberen Menüleiste anwenden. 
+Navigieren Sie zur Registerkarte **Experimente**. Um alle Ihre Ausführungen in Ihrem Arbeitsbereich experimentübergreifend anzuzeigen, wählen Sie die Registerkarte **Alle Ausführungen** aus. Sie können einen Drilldown für die Ausführungen für bestimmte Experimente ausführen, indem Sie den Experimentfilter auf der oberen Menüleiste anwenden.
 
 Wählen Sie für die Ansicht einzelner Experimente die Registerkarte **Alle Experimente** aus. Auf dem Dashboard für die Experimentausführung können Sie nachverfolgte Metriken und Protokolle für jede Ausführung sehen. 
 
-Führen Sie einen Drilldown für eine bestimmte Ausführung aus, um deren Ausgaben oder Protokolle anzuzeigen, oder laden Sie die Momentaufnahme des Experiments herunter, um den Experimentordner für andere freigeben zu können.
-
-Sie können auch die Tabelle der Ausführungsliste bearbeiten, um mehrere Ausführungen auszuwählen und den letzten, den minimalen oder den maximalen protokollierten Wert für Ihre Ausführungen anzuzeigen. Passen Sie Ihre Diagramme an, um die protokollierten Metrikwerte und Aggregate über mehrere Ausführungen zu vergleichen.
+Sie können auch die Tabelle der Ausführungsliste bearbeiten, um mehrere Ausführungen auszuwählen und den letzten, den minimalen oder den maximalen protokollierten Wert für Ihre Ausführungen anzuzeigen. Passen Sie Ihre Diagramme an, um die protokollierten Metrikwerte und Aggregate über mehrere Ausführungen zu vergleichen. 
 
 ![Ausführungsdetails im Azure Machine Learning-Studio](media/how-to-track-experiments/experimentation-tab.gif)
 
-### <a name="format-charts-in-the-studio"></a>Formatieren von Diagrammen in Studio
+### <a name="format-charts"></a>Formatieren von Diagrammen 
 
-Verwenden Sie die folgenden Methoden in den Protokollierungs-APIs, um die Visualisierung Ihrer Metriken durch Studio anzupassen.
+Verwenden Sie die folgenden Methoden in den Protokollierungs-APIs, um die Visualisierung Ihrer Metriken anzupassen.
 
 |Protokollierter Wert|Beispielcode| Formatieren im Portal|
 |----|----|----|
@@ -123,6 +106,80 @@ Verwenden Sie die folgenden Methoden in den Protokollierungs-APIs, um die Visual
 |Protokollieren eines einzelnen numerischen Werts mit mehrfacher Verwendung desselben Metriknamens (z.B. in einer for-Schleife)| `for i in tqdm(range(-10, 10)):    run.log(name='Sigmoid', value=1 / (1 + np.exp(-i))) angle = i / 2.0`| Liniendiagramm mit nur einer Variablen|
 |Wiederholtes Protokollieren einer Zeile mit zwei numerischen Spalten|`run.log_row(name='Cosine Wave', angle=angle, cos=np.cos(angle))   sines['angle'].append(angle)      sines['sine'].append(np.sin(angle))`|Liniendiagramm mit zwei Variablen|
 |Protokollieren einer Tabelle mit zwei numerischen Spalten|`run.log_table(name='Sine Wave', value=sines)`|Liniendiagramm mit zwei Variablen|
+
+
+### <a name="view-log-files-for-a-run"></a>Anzeigen der Protokolldateien zu einer Ausführung 
+
+Protokolldateien sind eine wichtige Ressource zum Debuggen von Azure Machine Learning-Workloads. Führen Sie einen Drilldown für einen bestimmten Testlauf aus, um die zugehörigen Protokolle und Ausgaben anzuzeigen:  
+
+1. Navigieren Sie zur Registerkarte **Experimente**.
+1. Wählen Sie die runID für eine bestimmte Ausführung aus.
+1. Wählen Sie oben auf der Seite **Ausgaben und Protokolle** aus.
+
+:::image type="content" source="media/how-to-monitor-view-training-logs/view-logs.png" alt-text="Screenshot des Abschnitts „Ausgaben und Protokolle“ einer Ausführung":::
+
+In den folgenden Tabellen werden die Inhalte der Protokolldateien in den Ordnern aufgelistet, die in diesem Abschnitt angezeigt werden.
+
+> [!NOTE]
+> Es ist nicht notwendigerweise jede Datei bei jeder Ausführung vorhanden. Beispielsweise ist die Datei „20_image_build_log*.txt“ nur vorhanden, wenn ein neues Image erstellt wird (z. B. wenn Sie die Umgebung ändern).
+
+#### <a name="azureml-logs-folder"></a>`azureml-logs` "
+
+|Datei  |BESCHREIBUNG  |
+|---------|---------|
+|20_image_build_log.txt     | Das Buildprotokoll für das Docker-Image der Trainingsumgebung, optional, einmal pro Ausführung. Nur vorhanden, wenn Sie Ihre Umgebung aktualisieren. Andernfalls wird das zwischengespeicherte Image von AML wiederverwendet. Bei erfolgreicher Ausführung enthält sie Registrierungsdetails für das entsprechende Image.         |
+|55_azureml-execution-<Knoten-ID>.txt     | stdout-/stderr-Protokoll des Hosttools, einmal pro Knoten. Pullt das Image auf das Computeziel. Beachten Sie, dass dieses Protokoll nur vorhanden ist, nachdem Sie Computeressourcen geschützt haben.         |
+|65_job_prep-<Knoten-ID>.txt     |   stdout-/stderr-Protokoll des Skripts zur Auftragsvorbereitung, einmal pro Knoten. Laden Sie Ihren Code auf das Computeziel und in Ihre Datenspeicher herunter (falls angefordert).       |
+|70_driver_log(_x).txt      |  stdout-/stderr-Protokoll des AML-Steuerskripts und des Kundentrainingsskripts, einmal pro Prozess. **Dies ist die Standardausgabe Ihres Skripts. Hier werden die Protokolle Ihres Codes (z. B. print-Anweisungen) angezeigt.** In den meisten Fällen überwachen Sie hier die Protokolle.       |
+|70_mpi_log.txt     |   Protokoll des MPI-Frameworks, optional, einmal pro Ausführung. Nur bei MPI-Ausführungen.   |
+|75_job_post-<Knoten-ID>.txt     |  stdout-/stderr-Protokoll des Skripts zur Auftragsfreigabe, einmal pro Knoten. Senden Sie Protokolle, und geben Sie die Computeressourcen wieder in Azure frei.        |
+|process_info.json      |   Zeigt an, welcher Prozess auf welchem Knoten ausgeführt wird.  |
+|process_status.json      | Zeigt den Prozessstatus an, d. h., ob ein Prozess nicht gestartet wurde, ausgeführt wird oder abgeschlossen wurde.         |
+
+#### <a name="logs--azureml-folder"></a>`logs > azureml` "
+
+|Datei  |BESCHREIBUNG  |
+|---------|---------|
+|110_azureml.log      |         |
+|job_prep_azureml.log     |   Systemprotokoll für die Auftragsvorbereitung        |
+|job_release_azureml.log     | Systemprotokoll für die Auftragsfreigabe        |
+
+#### <a name="logs--azureml--sidecar--node_id-folder"></a>`logs > azureml > sidecar > node_id` "
+
+Wenn Sidecar aktiviert ist, werden die Skripts für die Auftragsvorbereitung und -freigabe im Sidecar-Container ausgeführt.  Es gibt für jeden Knoten einen Ordner. 
+
+|Datei  |BESCHREIBUNG  |
+|---------|---------|
+|start_cms.txt     |  Protokoll des Prozesses, der beim Start des Sidecar-Containers gestartet wird       |
+|prep_cmd.txt      |   Protokoll für ContextManagers, wird beim Ausführen von `job_prep.py` gestartet (teilweise an `azureml-logs/65-job_prep` gestreamt)       |
+|release_cmd.txt     |  Protokoll für ComtextManagers, wird beim Ausführen von `job_release.py` beendet        |
+
+#### <a name="other-folders"></a>Andere Ordner
+
+Für Aufträge zum Trainieren auf mehreren Computeclustern sind für jede Knoten-IP-Adresse Protokolle vorhanden. Die Struktur ist bei den einzelnen Knoten identisch mit der bei Aufträgen mit einzelnen Knoten. Es gibt einen zusätzlichen Protokollordner für die Protokolle zur allgemeinen Ausführung und für stderr und stdout.
+
+Azure Machine Learning protokolliert während des Trainings auch Informationen aus zahlreichen Quellen, wie z. B. aus AutoML oder dem Docker-Container, in dem der Trainingsauftrag ausgeführt wird. Viele dieser Protokolle sind nicht dokumentiert. Wenn Sie Probleme haben und sich an den Microsoft-Support wenden, können diese Protokolle möglicherweise bei der Problembehandlung verwendet werden.
+
+## <a name="monitor-a-compute-cluster"></a>Überwachen eines Computeclusters
+
+Führen Sie die folgenden Schritte aus, um die Ausführungen für ein bestimmtes Computeziel in Ihrem Browser zu überwachen:
+
+1. Wählen Sie in [Azure Machine Learning Studio](https://ml.azure.com/) Ihren Arbeitsbereich aus, und wählen Sie dann links auf der Seite __Compute__ aus.
+
+1. Wählen Sie __Trainingscluster__ aus, um eine Liste der für das Training verwendeten Computeziele anzuzeigen. Wählen Sie dann den Cluster aus.
+
+    ![Auswählen des Trainingsclusters](./media/how-to-track-experiments/select-training-compute.png)
+
+1. Wählen Sie __Ausführungen__ aus. Die Liste der Ausführungen wird angezeigt, die diesen Cluster verwenden. Zum Anzeigen von Details für eine bestimmte Ausführung verwenden Sie den Link in der Spalte __Ausführung__. Zum Anzeigen von Details für ein bestimmtes Experiment verwenden Sie den Link in der Spalte __Experiment__.
+
+    ![Auswählen von Ausführungen für Trainingscluster](./media/how-to-track-experiments/show-runs-for-compute.png)
+    
+    > [!TIP]
+    > Da Trainingscomputeziele freigegebene Ressourcen sind, können zu jedem Zeitpunkt mehrere Ausführungen in die Warteschlange eingereiht oder aktiv sein.
+    > 
+    > Eine Ausführung kann untergeordnete Ausführungen enthalten, sodass ein Trainingsauftrag zu mehreren Einträgen führen kann.
+
+Sobald eine Ausführung abgeschlossen ist, wird sie nicht mehr auf dieser Seite angezeigt. Informationen zu abgeschlossenen Ausführungen finden Sie in Studio im Abschnitt __Experimente__. Wählen Sie dazu das Experiment und die Ausführung aus. Weitere Informationen finden Sie im Abschnitt [Anzeigen von Metriken für abgeschlossene Ausführungen](#view-the-experiment-in-the-web-portal).
 
 
 ## <a name="next-steps"></a>Nächste Schritte

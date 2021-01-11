@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova
 ms.date: 10/22/2020
-ms.openlocfilehash: e67376e2ef79f9711f54ce54d0d91623593ca8ea
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 9a35c0dc8a3b994b015d7a8d64f76f7e10d95a00
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96853287"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97722401"
 ---
 # <a name="connectivity-architecture-for-azure-sql-managed-instance"></a>Konnektivitätsarchitektur für Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -311,12 +311,13 @@ Wenn das virtuelle Netzwerk ein benutzerdefiniertes DNS enthält, muss der benut
 
 **TLS 1.2 wird für ausgehende Verbindungen erzwungen**: Seit Januar 2020 erzwingt Microsoft in sämtlichen Azure-Diensten TLS 1.2 für den dienstinternen Datenverkehr. Für Azure SQL Managed Instance führte dies dazu, dass TLS 1.2 für ausgehende Verbindungen, die für die Replikation verwendet werden, und für verknüpfte Serververbindungen mit SQL Server erzwungen wird. Wenn Sie ältere Versionen von SQL Server als Version 2016 mit SQL Managed Instance verwenden, stellen Sie sicher, dass [TLS 1.2-spezifische Updates](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server) angewandt wurden.
 
-Die folgenden Features von virtuellen Netzwerken werden derzeit von SQL Managed Instance nicht unterstützt:
+Die folgenden Features von virtuellen Netzwerken werden derzeit von SQL Managed Instance *nicht unterstützt*:
 
 - **Microsoft-Peering**: Die Aktivierung von [Microsoft-Peering](../../expressroute/expressroute-faqs.md#microsoft-peering) für ExpressRoute-Verbindungen, die direkt oder transitiv mit einem virtuellen Netzwerk verbunden sind, in dem sich SQL Managed Instance befindet, wirkt sich auf den Datenverkehrsfluss zwischen den Komponenten von SQL Managed Instance innerhalb des virtuellen Netzwerks und den Diensten aus, von denen sie abhängt, und verursacht dadurch Verfügbarkeitsprobleme. SQL Managed Instance-Bereitstellungen im virtuellen Netzwerk mit bereits aktiviertem Microsoft-Peering schlagen wahrscheinlich fehl.
 - **Globales Peering virtueller Netzwerke**: Konnektivität per [Peering virtueller Netzwerke](../../virtual-network/virtual-network-peering-overview.md) über Azure-Regionen hinweg funktioniert nicht für SQL Managed Instances in Subnetzen, die vor dem 22.09.2020 erstellt wurden.
 - **AzurePlatformDNS**: Die Verwendung des AzurePlatformDNS-[Diensttags](../../virtual-network/service-tags-overview.md) zur Blockierung der DNS-Auflösung der Plattform würde dazu führen, dass SQL Managed Instance nicht mehr verfügbar ist. Obwohl SQL Managed Instance kundenspezifisches DNS für die DNS-Auflösung innerhalb der Engine unterstützt, besteht eine Abhängigkeit vom Plattform-DNS für Plattformvorgänge.
 - **NAT-Gateway**: Die Verwendung von [Azure Virtual Network NAT](../../virtual-network/nat-overview.md) zur Steuerung der ausgehenden Konnektivität mit einer bestimmten öffentlichen IP-Adresse würde dazu führen, dass SQL Managed Instance nicht erreichbar ist. Der SQL Managed Instance-Dienst ist aktuell auf die Verwendung eines Basislastenausgleichs beschränkt, der keine parallelen eingehenden und ausgehenden Flows für Virtual Network NAT zulässt.
+- **IPv6 für Azure Virtual Network:** Bei der Bereitstellung von SQL Managed Instance in [virtuellen Netzwerken mit dualem IPv4/IPv6-Stapel](../../virtual-network/ipv6-overview.md) wird ein Fehler erwartet. Das Zuordnen von Netzwerksicherheitsgruppen (NSG) oder Routingtabellen (UDR) mit IPv6-Adresspräfixen zu einem SQL Managed Instance-Subnetz oder das Hinzufügen von IPv6-Adresspräfixen zu einer NSG oder UDR, die bereits dem Managed Instance-Subnetz zugeordnet ist, würden dazu führen, dass SQL Managed Instance nicht verfügbar ist. Bei der Bereitstellung von SQL Managed Instance in einem Subnetz mit einer NSG und UDR, die bereits über IPv6-Präfixe verfügen, wird ein Fehler erwartet.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

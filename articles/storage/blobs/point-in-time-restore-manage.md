@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/23/2020
+ms.date: 12/28/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 2350177373bc99907c437d814d8f01193f18f3fd
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 7bd85c60025475e8208847a12ccc2729743a975a
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95895722"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97803917"
 ---
 # <a name="perform-a-point-in-time-restore-on-block-blob-data"></a>Durchführen einer Point-in-Time-Wiederherstellung von Blockblobdaten
 
@@ -23,7 +23,7 @@ Sie können die Point-in-Time-Wiederherstellung verwenden, um Blockblobs in eine
 Weitere Informationen zur Point-in-Time-Wiederherstellung finden Sie unter [Point-in-Time-Wiederherstellung für Blockblobs](point-in-time-restore-overview.md).
 
 > [!CAUTION]
-> Point-in-Time-Wiederherstellung unterstützt nur Wiederherstellungsvorgänge für Blockblobs. Vorgänge für Container können nicht wiederhergestellt werden. Wenn Sie einen Container aus dem Speicherkonto löschen, indem Sie den Vorgang [Container löschen](/rest/api/storageservices/delete-container) aufrufen, kann dieser Container nicht mit einem Wiederherstellungsvorgang wiederhergestellt werden. Löschen Sie die einzelnen Blobs, anstatt einen Container zu löschen, wenn Sie sie möglicherweise wiederherstellen möchten.
+> Point-in-Time-Wiederherstellung unterstützt nur Wiederherstellungsvorgänge für Blockblobs. Vorgänge für Container können nicht wiederhergestellt werden. Wenn Sie einen Container aus dem Speicherkonto löschen, indem Sie den Vorgang [Container löschen](/rest/api/storageservices/delete-container) aufrufen, kann dieser Container nicht mit einem Wiederherstellungsvorgang wiederhergestellt werden. Löschen Sie die einzelnen Blobs, anstatt einen ganzen Container zu löschen, wenn Sie sie möglicherweise später wiederherstellen möchten.
 
 ## <a name="enable-and-configure-point-in-time-restore"></a>Aktivieren und Konfigurieren von Point-in-Time-Wiederherstellung
 
@@ -107,6 +107,8 @@ Es werden nur Blockblobs wiederhergestellt. Seitenblobs und Anfügeblobs sind in
 > Wenn Sie einen Wiederherstellungsvorgang ausführen, blockiert Azure Storage für die Dauer dieses Vorgangs Datenvorgänge für die Blobs in den Bereichen, die wiederhergestellt werden. Lese-, Schreib- und Löschvorgänge werden am primären Speicherort blockiert. Aus diesem Grund werden Vorgänge wie das Auflisten von Containern im Azure-Portal während des Wiederherstellungsvorgangs möglicherweise nicht erwartungsgemäß ausgeführt.
 >
 > Lesevorgänge aus dem sekundären Speicherort können während des Wiederherstellungsvorgangs fortgesetzt werden, wenn das Speicherkonto georepliziert wird.
+>
+> Die erforderliche Zeit zum Wiederherstellen mehrerer Datensätze ist von der Anzahl der Schreib- und Löschvorgänge abhängig, die während des Wiederherstellungszeitraums vorgenommen werden. Beispielsweise dauert bei einem Konto mit 1 Million Objekten, in dem pro Tag 3.000 Objekte hinzugefügt und 1.000 Objekte gelöscht werden, die Wiederherstellung zu einem Zeitpunkt 30 Tage in der Vergangenheit ungefähr zwei Stunden. Bei einem Konto mit einer solchen Änderungsrate wird davon abgeraten, einen Aufbewahrungszeitraum mit einer Wiederherstellung, die mehr als 90 Tage in der Vergangenheit liegt, anzuwenden.
 
 ### <a name="restore-all-containers-in-the-account"></a>Wiederherstellen aller Container im Konto
 

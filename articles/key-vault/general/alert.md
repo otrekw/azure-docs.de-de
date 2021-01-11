@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 04/06/2020
 ms.author: sudbalas
 Customer intent: As a key vault administrator, I want to learn the options available to monitor the health of my vaults
-ms.openlocfilehash: 9195bb59264731914740e1cca902707603e3502d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 7ff3daded48612fd308396420dca65cd81d9fafc
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96018119"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724696"
 ---
 # <a name="monitoring-and-alerting-for-azure-key-vault"></a>Überwachung und Warnungen für Azure Key Vault
 
@@ -40,7 +40,7 @@ Sobald Sie damit begonnen haben, Ihre Produktionsgeheimnisse im Schlüsseltresor
 
 **Tresorauslastung**: Die Anzahl von Anforderungen pro Sekunde, die ein Schlüsseltresor verarbeiten kann, basiert auf der Art des ausgeführten Vorgangs. Für einige Tresorvorgänge gilt ein niedrigerer Schwellenwert für die Anforderungen pro Sekunde. Diese Metrik aggregiert die Gesamtnutzung Ihres Schlüsseltresors für alle Vorgangstypen, um einen Prozentwert bereitzustellen, der die aktuelle Auslastung des Schlüsseltresors angibt. Eine vollständige Liste der Limits für den Key Vault-Dienst finden Sie im folgenden Dokument. [Grenzwerte des Azure Key Vault-Diensts](service-limits.md)
 
-**Wartezeit für Dienst-API**: Diese Metrik zeigt die durchschnittliche Latenzzeit eines Aufrufs des Schlüsseltresors. Auch wenn Ihr Schlüsselspeicher innerhalb der Dienstlimits arbeitet, kann eine hohe Auslastung des Schlüsselspeichers Wartezeiten verursachen, die zu Fehlern bei nachgelagerten Anwendungen führen. 
+**Wartezeit für Dienst-API:** Diese Metrik zeigt die durchschnittliche Latenz eines Aufrufs des Schlüsseltresors gemessen vom Dienst. Sie umfasst nicht die Zeit, die vom Client oder vom Netzwerk zwischen Client und Dienst verbraucht wird.
 
 **API-Treffer gesamt**: Diese Metrik zeigt alle Aufrufe an Ihren Schlüsseltresor. Anhand dieses Werts können Sie ermitteln, welche Anwendungen Ihren Schlüsseltresor aufrufen. 
 

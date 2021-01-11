@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 06/03/2020
-ms.openlocfilehash: cfbbc1d218f590241fab804e389acd689c009dac
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 2be77a47c4b111dd2f25a8fc9ca35690d1b2d80c
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96754010"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97796753"
 ---
 # <a name="support-matrix-for-physical-server-assessment"></a>Unterstützungsmatrix für die Bewertung physischer Server 
 
@@ -67,7 +67,7 @@ Die folgende Tabelle fasst die Portanforderungen für die Bewertung zusammen.
 **Device** | **Connection**
 --- | ---
 **Appliance** | Eingehende Verbindungen an TCP-Port 3389, um Remotedesktopverbindungen mit der Appliance zu ermöglichen<br/><br/> Eingehende Verbindungen an Port 44368, um per Remotezugriff über die URL ``` https://<appliance-ip-or-name>:44368 ``` auf die Applianceverwaltungs-App zugreifen zu können<br/><br/> Ausgehende Verbindungen an Port 443 (HTTPS), um Ermittlungs- und Leistungsmetadaten an Azure Migrate zu senden
-**Physische Server** | **Windows:** Eingehende Verbindungen am WinRM-Port 5985 (HTTP) zum Pullen von Konfigurations- und Leistungsmetadaten von Windows-Servern. <br/><br/> **Linux:**  Eingehende Verbindungen an Port 22 (TCP) zum Abrufen von Konfigurations- und Leistungsmetadaten von Linux-Servern. |
+**Physische Server** | **Windows:** Eingehende Verbindungen am WinRM-Port 5985 (HTTP) oder 5986 (HTTPS) zum Pullen von Konfigurations- und Leistungsmetadaten von Windows-Servern. <br/><br/> **Linux:**  Eingehende Verbindungen an Port 22 (TCP) zum Abrufen von Konfigurations- und Leistungsmetadaten von Linux-Servern. |
 
 ## <a name="agent-based-dependency-analysis-requirements"></a>Anforderungen der Agent-basierten Abhängigkeitsanalyse
 

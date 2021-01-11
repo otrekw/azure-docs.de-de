@@ -16,12 +16,12 @@ ms.date: 04/13/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 31bdfc7e3eca2a2678b75b80973a1680448737d1
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 5394a2829af4b0cd7a1c817f6aad4ca5451cc4bc
+ms.sourcegitcommit: 00aa5afaa9fac91f1059cfed3d8dbc954caaabe2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97507675"
+ms.lasthandoff: 12/27/2020
+ms.locfileid: "97792431"
 ---
 # <a name="azure-active-directory-pass-through-authentication-quickstart"></a>Azure Active Directory-Passthrough-Authentifizierung: Schnellstart
 
@@ -51,7 +51,7 @@ Stellen Sie sicher, dass die folgenden Voraussetzungen erfüllt werden:
 
 ### <a name="in-your-on-premises-environment"></a>In Ihrer lokalen Umgebung
 
-1. Identifizieren Sie einen Server mit Windows Server 2012 R2 oder höher, auf dem Azure AD Connect ausgeführt werden soll. Wenn nicht bereits aktiviert, [aktivieren Sie TLS 1.2 auf dem Server](./how-to-connect-install-prerequisites.md#enable-tls-12-for-azure-ad-connect). Fügen Sie den Server derselben Active Directory-Gesamtstruktur wie die Benutzer hinzu, deren Kennwörter überprüft werden müssen.
+1. Identifizieren Sie einen Server mit Windows Server 2012 R2 oder höher, auf dem Azure AD Connect ausgeführt werden soll. Wenn nicht bereits aktiviert, [aktivieren Sie TLS 1.2 auf dem Server](./how-to-connect-install-prerequisites.md#enable-tls-12-for-azure-ad-connect). Fügen Sie den Server derselben Active Directory-Gesamtstruktur wie die Benutzer hinzu, deren Kennwörter überprüft werden müssen. Beachten Sie, dass die Installation des Passthroughauthentifizierungs-Agents unter Windows Server Core-Versionen nicht unterstützt wird. 
 2. Installieren Sie die [aktuelle Version von Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594) auf dem Server, den Sie im vorherigen Schritt ausgewählt haben. Wenn Azure AD Connect bereits ausgeführt wird, vergewissern Sie sich, dass die Version 1.1.750.0 oder höher lautet.
 
     >[!NOTE]

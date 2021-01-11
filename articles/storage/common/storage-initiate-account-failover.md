@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 06/11/2020
+ms.date: 12/29/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 300b9b6279231079807f8c923570bddab657ff56
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: 93bcbab9445d83bf17b37b6affc1d2bc70703bbf
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92095890"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814328"
 ---
 # <a name="initiate-a-storage-account-failover"></a>Initiieren eines Speicherkontofailovers
 
@@ -38,6 +38,13 @@ Damit Sie ein Kontofailover für Ihr Speicherkonto ausführen können, müssen S
 
 Weitere Informationen zur Azure Storage-Redundanz finden Sie unter [Azure Storage-Redundanz](storage-redundancy.md).
 
+Beachten Sie, dass die folgenden Funktionen und Dienste bei einem Kontofailover nicht unterstützt werden:
+
+- Das Speicherkontofailover wird von der Azure-Dateisynchronisierung nicht unterstützt. Für Speicherkonten, die Azure-Dateifreigaben enthalten, die als Cloud-Endpunkte in der Azure-Dateisynchronisierung verwendet werden, sollte kein Failover durchgeführt werden. Dies würde das Funktionieren der Synchronisierung beenden und könnte außerdem bei neu einbezogenen Dateien zu unerwartetem Datenverlust führen.
+- ADLS Gen2-Speicherkonten (Konten mit aktiviertem hierarchischen Namespace) werden derzeit nicht unterstützt.
+- Für ein Speicherkonto mit Premium-Blockblobs kann kein Failover durchgeführt werden. Speicherkonten, die Premium-Blockblobs unterstützen, unterstützen derzeit keine Georedundanz.
+- Für ein Speicherkonto mit Containern mit aktivierter [WORM-Unveränderlichkeitsrichtlinie](../blobs/storage-blob-immutable-storage.md) kann kein Failover durchgeführt werden. Entsperrte/gesperrte Richtlinien für die zeitbasierte Aufbewahrung oder die gesetzliche Aufbewahrungspflicht verhindern ein Failover zur Einhaltung der Richtlinien.
+
 ## <a name="initiate-the-failover"></a>Initiieren des Failovers
 
 ## <a name="portal"></a>[Portal](#tab/azure-portal)
@@ -54,7 +61,7 @@ Führen Sie die folgenden Schritte aus, um ein Kontofailover im Azure-Portal zu 
 1. Wählen Sie **Auf Failover vorbereiten** aus.
 1. Lesen Sie die Informationen im Bestätigungsdialogfeld. Geben Sie anschließend **Ja** ein, um das Failover zu bestätigen und zu initiieren.
 
-    :::image type="content" source="media/storage-initiate-account-failover/portal-failover-confirm.png" alt-text="Screenshot: Georeplikation und Failoverstatus":::
+    :::image type="content" source="media/storage-initiate-account-failover/portal-failover-confirm.png" alt-text="Screenshot: Bestätigungsdialogfeld für ein Kontofailover":::
 
 ## <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -62,8 +69,8 @@ Das Feature „Kontofailover“ ist allgemein verfügbar, erfordert aber trotzde
 
 1. Deinstallieren Sie alle älteren Installationen von Azure PowerShell:
 
-    - Entfernen Sie alle früheren Installationen von Azure PowerShell mit der Einstellung **Apps & Features** (unter **Einstellungen** ) aus Windows.
-    - Entfernen Sie alle **Azure** -Module aus `%Program Files%\WindowsPowerShell\Modules`.
+    - Entfernen Sie alle früheren Installationen von Azure PowerShell mit der Einstellung **Apps & Features** (unter **Einstellungen**) aus Windows.
+    - Entfernen Sie alle **Azure**-Module aus `%Program Files%\WindowsPowerShell\Modules`.
 
 1. Vergewissern Sie sich, dass die aktuelle Version von PowerShellGet installiert ist. Öffnen Sie ein Windows PowerShell-Fenster, und führen Sie den folgenden Befehl aus, um die neueste Version zu installieren:
 
@@ -106,7 +113,7 @@ az storage account failover \ --name accountName
 
 Wenn Sie ein Kontofailover für Ihr Speicherkonto initiieren, werden die DNS-Einträge für den sekundären Endpunkt so aktualisiert, dass der sekundäre Endpunkt zum primären Endpunkt wird. Vor dem Initiieren eines Failovers sollten Sie daher die möglichen Auswirkungen auf Ihr Speicherkonto verstehen.
 
-Wenn Sie den Umfang eines wahrscheinlichen Datenverlustes schätzen möchten, bevor Sie ein Failover initiieren, aktivieren Sie die Eigenschaft **Letzte Synchronisierungszeit** . Weitere Informationen zum Überprüfen der Eigenschaft **Letzte Synchronisierungszeit** finden Sie unter [Überprüfen der Eigenschaft „Letzte Synchronisierung“ für ein Speicherkonto](last-sync-time-get.md).
+Wenn Sie den Umfang eines wahrscheinlichen Datenverlustes schätzen möchten, bevor Sie ein Failover initiieren, aktivieren Sie die Eigenschaft **Letzte Synchronisierungszeit**. Weitere Informationen zum Überprüfen der Eigenschaft **Letzte Synchronisierungszeit** finden Sie unter [Überprüfen der Eigenschaft „Letzte Synchronisierung“ für ein Speicherkonto](last-sync-time-get.md).
 
 Die Zeit bis zum Failover nach der Initiierung kann variieren, beträgt aber in der Regel weniger als eine Stunde.
 

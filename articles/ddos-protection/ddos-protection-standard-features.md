@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: 104c9dcd3b7fd931e4f54841c9de9d17cfd72353
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 602bb98f2cdc8a96874eba8dadfa33f3267d19ac
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96937320"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746557"
 ---
 # <a name="azure-ddos-protection-standard-features"></a>Funktionen von Azure DDoS Protection Standard
 
@@ -24,23 +24,23 @@ Die folgenden Abschnitte zeigen die Hauptfeatures des Diensts Azure DDoS Protect
 
 ## <a name="always-on-traffic-monitoring"></a>Stets verfügbare Überwachung des Datenverkehrs
 
-DDoS Protection Standard überwacht die tatsächliche Auslastung des Datenverkehrs und vergleicht sie ständig mit den Schwellenwerten der DDoS-Richtlinie. Bei Überschreitung des Schwellenwerts für den Datenverkehr wird die DDoS-Abwehr automatisch eingeleitet. Sinkt der Datenverkehr wieder unter den Schwellenwert, wird die Abwehr beendet.
+DDoS Protection Standard überwacht die tatsächliche Auslastung des Datenverkehrs und vergleicht sie ständig mit den Schwellenwerten der DDoS-Richtlinie. Bei Überschreitung des Schwellenwerts für den Datenverkehr wird die DDoS-Abwehr automatisch eingeleitet. Sinkt der Datenverkehr wieder unter den Schwellenwert, wird die Entschärfung beendet.
 
 ![Abwehrfunktion von Azure DDoS Protection Standard](./media/ddos-protection-overview/mitigation.png)
 
-Während des Abwehrvorgangs wird der an die geschützte Ressource gesendete Datenverkehr von DDoS Protection umgeleitet und mehrfach überprüft, wie etwa folgendermaßen:
+Während des Entschärfungsvorgangs wird der an die geschützte Ressource gesendete Datenverkehr vom DDoS Protection-Dienst umgeleitet und mehreren Prüfungen unterzogen, z. B.:
 
 - Sicherstellen, dass Pakete den Internetspezifikationen entsprechen und nicht falsch formatiert sind.
 - Interagieren Sie mit dem Client, um zu bestimmen, ob es sich bei dem Datenverkehr möglicherweise um ein gefälschtes Paket handelt (Beispiel: SYN-Authentifizierung oder SYN-Cookie oder durch Verwerfen eines Pakets, damit die Quelle es erneut übermittelt).
 - Übertragungsratenlimits für Pakete, wenn keine andere Erzwingungsmethode ausgeführt werden kann.
 
-DDoS Protection sperrt Angriffsdatenverkehr und leitet den verbleibenden Datenverkehr an das vorgesehene Ziel weiter. Innerhalb weniger Minuten nach Angriffserkennung werden Sie mithilfe der Metriken von Azure Monitor benachrichtigt. Durch Konfigurieren der Protokollierung der DDoS Protection-Telemetrie können Sie für eine zukünftige Analyse die Protokolle in die verfügbaren Optionen schreiben. Metrische Daten werden in Azure Monitor für DDoS Protection Standard 30 Tage lang beibehalten.
+DDoS Protection trennt den Angriffsdatenverkehr und leitet den verbleibenden Datenverkehr an das vorgesehene Ziel weiter. Innerhalb weniger Minuten nach Angriffserkennung werden Sie mithilfe der Metriken von Azure Monitor benachrichtigt. Durch Konfigurieren der Protokollierung der DDoS Protection-Telemetrie können Sie für eine zukünftige Analyse die Protokolle in die verfügbaren Optionen schreiben. Metrische Daten werden in Azure Monitor für DDoS Protection Standard 30 Tage lang beibehalten.
 
 ## <a name="adaptive-real-time-tuning"></a>Adaptive Echtzeitoptimierung
 
-Der Azure DDoS Protection Basic-Dienst schützt Kunden und verhindert Auswirkungen auf andere Kunden. Wenn z.B. ein Dienst für ein typisches Volumen legitimen eingehenden Datenverkehrs bereitgestellt wird, das kleiner ist als die *Triggerrate* der infrastrukturweiten DDoS Protection-Richtlinie, könnte ein DDoS-Angriff auf die Ressourcen dieses Kunden unbemerkt bleiben. Allgemeiner gesagt: Die komplexe Natur aktueller Angriffe (z.B. Multi-Vektor-DDoS), sowie das anwendungsspezifische Verhalten von Mandanten erfordern kundenspezifische, angepasste Schutzrichtlinien. Der Dienst führt diese Anpassung mithilfe von zwei Erkenntnissen durch:
+Der Azure DDoS Protection Basic-Dienst schützt Kunden und verhindert Auswirkungen auf andere Kunden. Wenn z.B. ein Dienst für ein typisches Volumen legitimen eingehenden Datenverkehrs bereitgestellt wird, das kleiner ist als die *Triggerrate* der infrastrukturweiten DDoS Protection-Richtlinie, könnte ein DDoS-Angriff auf die Ressourcen dieses Kunden unbemerkt bleiben. Allgemeiner gesagt: Die komplexe Natur aktueller Angriffe (z. B. Multi-Vektor-DDoS), sowie das anwendungsspezifische Verhalten von Mandanten erfordern kundenspezifische, angepasste Schutzrichtlinien. Der Dienst führt diese Anpassung mithilfe von zwei Erkenntnissen durch:
 
-- Automatische Ermittlung der Datenverkehrsmuster pro Kunde (pro IP) für Schichten 3 und 4
+- Automatische Ermittlung der Datenverkehrsmuster pro Kunde (pro öffentlicher IP-Adresse) für die Schichten 3 und 4
 
 - Minimieren falsch positiver Ergebnisse – davon ausgehend, dass die Skalierung in Azure das Absorbieren signifikanter Datenverkehrsmengen erlaubt
 
@@ -48,7 +48,7 @@ Der Azure DDoS Protection Basic-Dienst schützt Kunden und verhindert Auswirkung
 
 ## <a name="ddos-protection-telemetry-monitoring-and-alerting"></a>DDoS Protection: Telemetriedaten, Überwachung und Warnungen
 
-DDoS Protection Standard stellt während der Dauer eines DDoS-Angriffs umfangreiche Telemetriedaten über [Azure Monitor](../azure-monitor/overview.md) zur Verfügung. Sie können Warnungen für alle Azure Monitor-Metriken konfigurieren, die DDoS Protection verwendet. Sie können die Protokollierung mit Splunk (Azure Event Hubs), Azure Monitor-Protokolle und Azure Storage für die erweiterte Analyse über die Schnittstelle für die Azure Monitor-Diagnose integrieren.
+DDoS Protection Standard stellt über [Azure Monitor](../azure-monitor/overview.md) umfangreiche Telemetriedaten zur Verfügung. Sie können Warnungen für alle Azure Monitor-Metriken konfigurieren, die DDoS Protection verwendet. Sie können die Protokollierung mit Splunk (Azure Event Hubs), Azure Monitor-Protokolle und Azure Storage für die erweiterte Analyse über die Schnittstelle für die Azure Monitor-Diagnose integrieren.
 
 ### <a name="ddos-mitigation-policies"></a>DDoS-Entschärfungsrichtlinien
 

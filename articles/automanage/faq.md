@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: troubleshooting
 ms.date: 09/04/2020
 ms.author: deanwe
-ms.openlocfilehash: 89ad5c2b973a74bc9fa0f6ca2f59f92a26b666e7
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 2b15389ae35a63c71ac4cb9e167e578e7e1e690e
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92891460"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97695776"
 ---
 # <a name="frequently-asked-questions-for-azure-automanage-for-vms"></a>Häufig gestellte Fragen zur automatischen Azure-Verwaltung für VMs
 
@@ -43,7 +43,7 @@ Wenn Sie beim Aktivieren ein neues Automanage-Konto verwenden, müssen Sie entwe
 
 **Welche Regionen werden unterstützt?**
 
-Es werden VMs in den folgenden Regionen unterstützt: Europa (Westen), USA (Osten), USA (Westen 2), Kanada (Mitte), USA (Westen-Mitte).
+Es werden VMs in den folgenden Regionen unterstützt: „Europa, Westen“, „USA, Osten“, „USA, Westen 2“, „Kanada, Mitte“, „USA, Westen-Mitte“, „Japan, Osten“.
 
 
 **Welche Funktionen automatisiert die automatische Azure-Verwaltung?**
@@ -105,7 +105,7 @@ Nein, die automatische Verwaltung wird sie nicht erneut konfigurieren. Wir werde
 
 **Warum weist meine VM im Portal für die automatische Verwaltung den Status „Fehler“ auf?**
 
-Wenn der Status *Fehler* angezeigt wird, können Sie die Bereitstellung über die Ressourcengruppe beheben, in der sich Ihre VM befindet. Wechseln Sie zu **Ressourcengruppen** , wählen Sie Ihre Ressourcengruppe aus, klicken Sie auf **Bereitstellungen** , und beachten Sie dort den Status *Fehler* zusammen mit Fehlerdetails.
+Wenn der Status *Fehler* angezeigt wird, können Sie die Bereitstellung über die Ressourcengruppe beheben, in der sich Ihre VM befindet. Wechseln Sie zu **Ressourcengruppen**, wählen Sie Ihre Ressourcengruppe aus, klicken Sie auf **Bereitstellungen**, und beachten Sie dort den Status *Fehler* zusammen mit Fehlerdetails.
 
 **Wie erhalte ich Unterstützung bei der Problembehandlung für die automatische Verwaltung?**
 

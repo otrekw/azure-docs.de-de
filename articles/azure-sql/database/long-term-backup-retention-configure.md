@@ -10,13 +10,13 @@ ms.topic: how-to
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
-ms.date: 04/14/2020
-ms.openlocfilehash: 3cab3b262f9116903d0b423cd5e4a0ebd03c46fa
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.date: 12/16/2020
+ms.openlocfilehash: 49dfed7faac1e55a40bc7b7ddd5e9555519350a2
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94984429"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617305"
 ---
 # <a name="manage-azure-sql-database-long-term-backup-retention"></a>Verwalten der langfristigen Aufbewahrung von Sicherungen in Azure SQL-Datenbank
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -203,6 +203,7 @@ Restore-AzSqlDatabase -FromLongTermRetentionBackup -ResourceId $ltrBackup.Resour
 
 ## <a name="limitations"></a>Einschränkungen
 - Bei der Wiederherstellung mithilfe einer LTR-Sicherung wird die Eigenschaft für die Leseskalierung deaktiviert. Aktualisieren Sie die Datenbank nach ihrer Erstellung, um die Leseskalierung für die wiederhergestellte Datenbank zu aktivieren.
+- Neim Wiederherstellen aus einer LTR-Sicherung, die erstellt wurde, als die Datenbank zu einem Pool für elastische Datenbanken gehörte, müssen Sie das Servicelevelziel angeben. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/23/2020
-ms.openlocfilehash: 30004306d9ff44df04a26640a2bd7a09256fce25
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: 4c964f3661e120026189a75d331e6db975b41c70
+ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97516685"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97756074"
 ---
 # <a name="credentials-for-source-authentication-in-azure-purview"></a>Anmeldeinformationen für die Quellenauthentifizierung in Azure Purview
 
@@ -73,7 +73,7 @@ Derzeit werden für Purview die folgenden Arten von Anmeldeinformationen unterst
 * SQL-Authentifizierung: Sie fügen das **Kennwort** dem Schlüsseltresor als Geheimnis hinzu.
 * Kontoschlüssel: Sie fügen den **Kontoschlüssel** dem Schlüsseltresor als Geheimnis hinzu.
 
-Hier sind weitere Informationen zum Hinzufügen von Geheimnissen zu einem Schlüsseltresor angegeben: (Artikel zum Schlüsseltresor einfügen)
+Weitere Informationen finden Sie unter [Hinzufügen eines Geheimnisses in Key Vault](../key-vault/secrets/quick-create-portal.md#add-a-secret-to-key-vault).
 
 Nachdem Sie Ihre Geheimnisse in Ihrem Schlüsseltresor gespeichert haben, erstellen Sie Ihre neuen Anmeldeinformationen, indem Sie in der Befehlsleiste für die Anmeldeinformationen die Option „+ Neu“ auswählen. Geben Sie die erforderlichen Informationen an, z. B. die Authentifizierungsmethode und eine Key Vault-Instanz für die Auswahl eines Geheimnisses. Klicken Sie auf „Erstellen“, nachdem Sie alle Details eingegeben haben.
 

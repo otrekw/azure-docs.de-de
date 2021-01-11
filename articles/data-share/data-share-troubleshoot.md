@@ -6,13 +6,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: troubleshooting
-ms.date: 10/15/2020
-ms.openlocfilehash: e29c640494a18bb3be2125a5b53b4f943521fe6c
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.date: 12/16/2020
+ms.openlocfilehash: c93ce9c81ada3c30128846b43041603e132abd88
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94579146"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617237"
 ---
 # <a name="troubleshoot-common-issues-in-azure-data-share"></a>Behandeln allgemeiner Probleme in Azure Data Share 
 
@@ -67,6 +67,10 @@ Die Momentaufnahme kann aus einer Vielzahl von Gründen fehlschlagen. Die ausfü
 * Die Data Share-Verbindung mit dem Quell- oder Zieldatenspeicher wird durch die Firewall blockiert.
 * Das freigegebene Dataset oder der Quell- oder Zieldatenspeicher wird gelöscht.
 
+Bei einem Speicherkonto gibt es die folgenden zusätzlichen Ursachen für Momentaufnahmefehler.
+
+* Die Datei wird an der Quelle geändert, während die Momentaufnahme ausgeführt wird. Dies kann zu einer Datei mit 0 Byte am Ziel führen. Eine nachfolgende Momentaufnahme nach Abschluss der Änderungen an der Quelle sollte erfolgreich sein.
+
 Bei SQL-Quellen gibt es die folgenden zusätzlichen Ursachen für Momentaufnahmefehler. 
 
 * Das SQL-Quell- oder -Zielskript zum Erteilen der Data Share-Berechtigung wird nicht ausgeführt. Möglicherweise wird es auch für Azure SQL-Datenbank oder Azure Synapse Analytics (ehemals Azure SQL DW) mithilfe der SQL-Authentifizierung anstelle der Azure Active Directory-Authentifizierung ausgeführt.  
@@ -75,6 +79,9 @@ Bei SQL-Quellen gibt es die folgenden zusätzlichen Ursachen für Momentaufnahme
 * Der SQL-Quell- oder -Zieldatenspeicher ist durch andere Prozesse gesperrt. Azure Data Share wendet keine Sperren auf den SQL-Quell- und -Zieldatenspeicher an. Vorhandene Sperren für den SQL-Quell- und -Zieldatenspeicher führen jedoch zu einem Momentaufnahmefehler.
 * Auf die SQL-Zieltabelle wird mit einer Fremdschlüsseleinschränkung verwiesen. Wenn bei der Momentaufnahme eine Zieltabelle mit demselben Namen vorhanden ist, löscht Azure Data Share die Tabelle und erstellt eine neue Tabelle. Wenn auf die SQL-Zieltabelle mit einer Fremdschlüsseleinschränkung verwiesen wird, kann die Tabelle nicht gelöscht werden.
 * Die CSV-Zieldatei wird generiert, aber die Daten können nicht in Excel gelesen werden. Dies kann der Fall sein, wenn die SQL-Quelltabelle Daten mit nicht englischen Zeichen enthält. Wählen Sie in Excel die Registerkarte „Daten abrufen“ aus, wählen Sie die CSV-Datei aus, wählen Sie als Dateiursprung „65001: Unicode (UTF-8)“ aus, und laden Sie die Daten.
+
+## <a name="snapshot-issue-after-updating-snapshot-schedule"></a>Momentaufnahmeproblem nach dem Aktualisieren des Momentaufnahmezeitplans
+Nachdem der Datenanbieter den Momentaufnahmezeitplan für die gesendete Freigabe aktualisiert hat, muss der Datenconsumer den früheren Momentaufnahmezeitplan deaktivieren und den aktualisierten Momentaufnahmezeitplan für die empfangene Freigabe erneut aktivieren. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

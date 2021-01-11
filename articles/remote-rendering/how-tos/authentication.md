@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: how-to
-ms.openlocfilehash: dc325fdf68c5afbb122f9e77c5509a6a8053a12e
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 35fd78a9d55dc684045fdb4b83691c1613801421
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427457"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724878"
 ---
 # <a name="configure-authentication"></a>Konfigurieren der Authentifizierung
 
@@ -19,14 +19,17 @@ Azure Remote Rendering verwendet denselben Authentifizierungsmechanismus wie [Az
 * **AccountKey** kann auf der Registerkarte „Schlüssel“ für das Remote Rendering-Konto im Azure-Portal abgerufen werden. Kontoschlüssel werden nur für Entwicklung/Prototypen empfohlen.
     ![Account ID](./media/azure-account-primary-key.png)
 
+* **AccountDomain** kann auf der Registerkarte „Übersicht“ für das Remote Rendering-Konto im Azure-Portal abgerufen werden.
+    ![Kontodomäne](./media/azure-account-domain.png)
+
 * **AuthenticationToken** ist ein Azure AD-Token, das mithilfe der [MSAL-Bibliothek](../../active-directory/develop/msal-overview.md) abgerufen werden kann. Es sind mehrere verschiedene Abläufe zum Akzeptieren von Benutzeranmeldeinformationen und zum Verwenden dieser Anmeldeinformationen zum Abrufen eines Zugriffstokens verfügbar.
 
-* **MRAccessToken** ist ein MR-Token, das beim Sicherheitstokendienst (Security Token Service, STS) von Azure Mixed Reality abgerufen werden kann. Wird beim `https://sts.mixedreality.azure.com`-Endpunkt mithilfe eines ähnlichen wie dem unten dargestellten REST-Aufruf abgerufen:
+* **MRAccessToken** ist ein MR-Token, das beim Sicherheitstokendienst (Security Token Service, STS) von Azure Mixed Reality abgerufen werden kann. Wird beim `https://sts.<accountDomain>`-Endpunkt mithilfe eines ähnlichen wie dem unten dargestellten REST-Aufruf abgerufen:
 
     ```rest
-    GET https://sts.mixedreality.azure.com/Accounts/35d830cb-f062-4062-9792-d6316039df56/token HTTP/1.1
+    GET https://sts.southcentralus.mixedreality.azure.com/Accounts/35d830cb-f062-4062-9792-d6316039df56/token HTTP/1.1
     Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni<truncated>FL8Hq5aaOqZQnJr1koaQ
-    Host: sts.mixedreality.azure.com
+    Host: sts.southcentralus.mixedreality.azure.com
     Connection: Keep-Alive
 
     HTTP/1.1 200 OK
@@ -52,8 +55,8 @@ Kontoschlüssel werden nur während der Entwicklung für die schnelle Prototyper
 
 Zum Steuern der Zugriffsebene, die Ihrem Dienst erteilt wird, verwenden Sie beim Erteilen von rollenbasiertem Zugriff die folgenden Rollen:
 
-* **Remote Rendering-Administrator** : Bietet dem Benutzer Konvertierungs-, Sitzungsverwaltungs-, Rendering- und Diagnosefunktionen für Azure Remote Rendering.
-* **Remote Rendering-Client** : Bietet dem Benutzer Sitzungsverwaltungs-, Rendering- und Diagnosefunktionen für Azure Remote Rendering.
+* **Remote Rendering-Administrator**: Bietet dem Benutzer Konvertierungs-, Sitzungsverwaltungs-, Rendering- und Diagnosefunktionen für Azure Remote Rendering.
+* **Remote Rendering-Client**: Bietet dem Benutzer Sitzungsverwaltungs-, Rendering- und Diagnosefunktionen für Azure Remote Rendering.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

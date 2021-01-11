@@ -6,14 +6,14 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 02/07/2019
+ms.date: 12/15/2020
 ms.custom: seodec18
-ms.openlocfilehash: 9763a0ac3cba15dcfd66b8fad83230e2b0eb356b
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 7239c2e3cb42cb17b01904e8fc226ae2408dbb47
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96491671"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617424"
 ---
 # <a name="azure-stream-analytics-custom-blob-output-partitioning"></a>Benutzerdefinierte Blobausgabepartitionierung in Azure Stream Analytics
 
@@ -25,7 +25,13 @@ Durch Verwendung eines benutzerdefinierten Felds oder von Eingabeattributen ist 
 
 ### <a name="partition-key-options"></a>Optionen für den Partitionsschlüssel
 
-Der für die Partitionierung von Eingabedaten verwendete Partitionsschlüssel oder Spaltenname kann alphanumerische Zeichen mit Bindestrichen, Unterstrichen und Leerzeichen enthalten. Es ist nicht möglich, geschachtelte Felder als Partitionsschlüssel zu verwenden, es sei denn, sie werden in Verbindung mit Aliasen verwendet. Der Partitionsschlüssel muss einen der Typen NVARCHAR(MAX), BIGINT, FLOAT oder BIT (Kompatibilitätsgrad 1.2 oder höher) aufweisen. Weitere Informationen finden Sie unter [Azure Stream Analytics-Datentypen](/stream-analytics-query/data-types-azure-stream-analytics).
+Der Partitionsschlüssel oder Spaltenname zum Partitionieren von Eingabedaten kann alle Zeichen enthalten, die für [Blobnamen](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata) akzeptiert werden. Geschachtelte Felder können nur in Verbindung mit Aliasen als Partitionsschlüssel verwendet werden, Sie können jedoch bestimmte Zeichen verwenden, um eine Hierarchie der Dateien zu erstellen. Beispielsweise können Sie mit der folgenden Abfrage eine Spalte erstellen, in der Daten aus zwei anderen Spalten kombiniert werden, um einen eindeutigen Partitionsschlüssel zu erzeugen.
+
+```sql
+SELECT name, id, CONCAT(name, "/", id) AS nameid
+```
+
+Der Partitionsschlüssel muss einen der Typen NVARCHAR(MAX), BIGINT, FLOAT oder BIT (Kompatibilitätsgrad 1.2 oder höher) aufweisen. DateTime-, Array- und Datensatztypen werden nicht unterstützt, können aber als Partitionsschlüssel verwendet werden, wenn sie in Zeichenfolgen konvertiert werden. Weitere Informationen finden Sie unter [Azure Stream Analytics-Datentypen](/stream-analytics-query/data-types-azure-stream-analytics).
 
 ### <a name="example"></a>Beispiel
 

@@ -3,14 +3,14 @@ title: Azure Automation-Runbooktypen
 description: In diesem Artikel werden die Runbooktypen beschrieben, die Sie in Azure Automation verwenden können, sowie Aspekte, die Sie bei der Auswahl des geeigneten Typs berücksichtigen sollten.
 services: automation
 ms.subservice: process-automation
-ms.date: 03/05/2019
+ms.date: 12/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 24d0123eecc56b56573e94d831283d8d360cd16e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a0c12297f19d30bf13ffbe594e0433c83914a8e
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86185924"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97733959"
 ---
 # <a name="azure-automation-runbook-types"></a>Azure Automation-Runbooktypen
 
@@ -33,9 +33,9 @@ Wenn Sie festlegen, welchen Typ Sie für ein bestimmtes Runbook verwenden möcht
 
 Sie können grafische Runbooks und grafische PowerShell-Workflow-Runbooks im grafischen Editor im Azure-Portal erstellen und bearbeiten. Es ist jedoch nicht möglich, diesen Runbooktyp mit einem anderen Tool zu erstellen oder zu bearbeiten. Hauptfunktionen von grafischen Runbooks:
 
-* Können in Dateien in Ihrem Automation-Konto exportiert und dann in ein anderes Automation-Konto importiert werden 
-* Generieren PowerShell-Code 
-* Können während des Imports in grafische PowerShell-Workflow-Runbooks konvertiert werden und umgekehrt 
+* Werden in Dateien in Ihrem Automation-Konto exportiert und dann in ein anderes Automation-Konto importiert
+* Generieren PowerShell-Code
+* Werden während des Imports in grafische PowerShell-Workflow-Runbooks konvertiert und umgekehrt
 
 ### <a name="advantages"></a>Vorteile
 
@@ -68,7 +68,7 @@ PowerShell-Runbooks basieren auf Windows PowerShell. Sie bearbeiten den Code des
 * Erfordern Kenntnisse zu PowerShell-Skripts
 * Können keine [parallele Verarbeitung](automation-powershell-workflow.md#use-parallel-processing) zum gleichzeitigen Ausführen mehrerer Aktionen nutzen
 * Können keine [Prüfpunkte](automation-powershell-workflow.md#use-checkpoints-in-a-workflow) zum Fortsetzen des Runbooks bei einem Fehler nutzen
-* Sie können nur PowerShell-Workflow- und grafische Runbooks mithilfe des Cmdlets [Start-AzAutomationRunbook](/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.7.0) als untergeordnete Runbooks einfügen, wobei ein neuer Auftrag erstellt wird.
+* Sie können nur PowerShell-Workflow- und grafische Runbooks mithilfe des Cmdlets [Start-AzAutomationRunbook](/powershell/module/az.automation/start-azautomationrunbook) als untergeordnete Runbooks einfügen, wobei ein neuer Auftrag erstellt wird.
 
 ### <a name="known-issues"></a>Bekannte Probleme
 
@@ -76,7 +76,7 @@ Im Folgenden sind aktuell bekannte Probleme mit PowerShell-Runbooks aufgeführt:
 
 * PowerShell-Runbooks können keine unverschlüsselten [Variablenobjekte](./shared-resources/variables.md) mit einem NULL-Wert abrufen.
 * PowerShell-Runbooks können kein Variablenobjekt abrufen, dessen Name `*~*` enthält.
-* Der Vorgang [Get-Process](/powershell/module/microsoft.powershell.management/get-process?view=powershell-7) in einer Schleife in einem PowerShell-Runbook kann nach etwa 80 Iterationen zum Absturz führen.
+* Der Vorgang [Get-Process](/powershell/module/microsoft.powershell.management/get-process) in einer Schleife in einem PowerShell-Runbook kann nach etwa 80 Iterationen zum Absturz führen.
 * Ein PowerShell-Runbook kann einen Fehler verursachen, wenn es versucht, eine große Datenmenge auf einmal in den Ausgabestream zu schreiben. Sie können dieses Problem in der Regel vermeiden, indem Sie nur die für die Arbeit mit großen Objekten benötigten Informationen in die Runbookausgabe einfügen. Anstatt `Get-Process` ohne Einschränkungen zu verwenden, können Sie z. B. nur die erforderlichen Parameter in die Cmdlet-Ausgabe einfügen wie bei `Get-Process | Select ProcessName, CPU`.
 
 ## <a name="powershell-workflow-runbooks"></a>PowerShell-Workflow-Runbooks
@@ -100,18 +100,29 @@ PowerShell-Workflow-Runbooks sind Textrunbooks, die auf einem [Windows PowerShel
 
 ## <a name="python-runbooks"></a>Python-Runbooks
 
-Python-Runbooks werden unter Python-2 kompiliert. Sie können den Code des Runbooks direkt mit dem Text-Editor im Azure-Portal bearbeiten. Sie können auch einen beliebigen Offline-Text-Editor verwenden und das [Runbook in Azure Automation importieren](manage-runbooks.md).
+Python-Runbooks werden unter Python 2 und 3 kompiliert. Python 3-Runbooks sind derzeit als Vorschau verfügbar. Sie können den Code des Runbooks direkt mit dem Text-Editor im Azure-Portal bearbeiten. Sie können auch einen beliebigen Offline-Text-Editor verwenden und das [Runbook in Azure Automation importieren](manage-runbooks.md).
 
 ### <a name="advantages"></a>Vorteile
 
 * Verwendung der stabilen Python-Bibliotheken
-* Können in Azure oder auf Hybrid Runbook Workern unter Linux ausgeführt werden. Windows Hybrid Runbook Workers werden unterstützt, wenn [python2.7](https://www.python.org/downloads/release/latest/python2) installiert ist.
+* Können in Azure oder auf Hybrid Runbook Workern ausgeführt werden.
+* Bei Python 2 werden Windows Hybrid Runbook Workers unterstützt, wenn [Python 2.7](https://www.python.org/downloads/release/latest/python2) installiert ist.
+* Für Python 3-Cloudaufträge wird die Python-Version 3.8 unterstützt. Skripts und Pakete aus einer beliebigen 3.x-Version funktionieren möglicherweise, wenn der Code mit mehreren Versionen kompatibel ist.  
+* Für Python 3-Hybridaufträge auf Windows-Computern können Sie jede beliebige 3.x-Version installieren, die Sie eventuell verwenden möchten.  
+* Für Python 3-Hybridaufträge auf Linux-Computern ist die auf dem Computer installierte Version von Python 3 zum Ausführen von DSC OMSConfig und dem Linux Hybrid Worker erforderlich. Es wird empfohlen, auf Linux-Computern Version 3.6 zu installieren. Andere Versionen sollten jedoch ebenfalls funktionieren, wenn zwischen den Versionen von Python 3 keine Breaking Changes bei Methodensignaturen oder Verträgen aufgetreten sind.
 
 ### <a name="limitations"></a>Einschränkungen
 
 * Erfordern Kenntnisse mit Python-Skripts
-* Unterstützen derzeit nur Python 2. Alle Python 3-spezifischen Funktionen führen zu Fehlern.
 * Erfordern für die Verwendung von Bibliotheken von Drittanbietern das [Importieren der Pakete](python-packages.md) in das Automation-Konto
+* Das Verwenden des Cmdlets **Start-AutomationRunbook** in PowerShell oder einem PowerShell-Workflow zum Starten eines Python 3-Runbooks (Vorschau) funktioniert nicht. Sie können das Cmdlet  **Start-AzAutomationRunbook** aus dem Modul Az.Automation oder das Cmdlet  **Start-AzureRmAutomationRunbook** aus dem Modul AzureRm.Automation verwenden, um diese Einschränkung zu umgehen.  
+* Python 3-Runbooks (Vorschau) und Pakete funktionieren nicht mit PowerShell.
+* Die Verwendung eines Webhooks zum Starten eines Python-Runbooks wird nicht unterstützt.
+* Azure Automation unterstützt  **sys.stderr** nicht.
+
+### <a name="known-issues"></a>Bekannte Probleme
+
+Bei Python 3-Aufträgen tritt manchmal ein Fehler mit der Ausnahmemeldung *Ungültiger Ausführungspfad des Interpreters* auf. Diese Ausnahme wird möglicherweise angezeigt, wenn ein Auftrag verzögert wird, wenn der Start länger als 10 Minuten dauert oder wenn **Start-AutomationRunbook** verwendet wurde, um Python 3-Runbooks zu starten. Wenn der Auftrag verzögert wurde, sollte ein Neustart des Runbooks ausreichen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

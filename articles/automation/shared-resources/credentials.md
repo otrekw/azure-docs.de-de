@@ -3,14 +3,14 @@ title: Verwalten von Anmeldeinformationen in Azure Automation
 description: Dieser Artikel beschreibt, wie Sie Anmeldeinformationsobjekte erstellen und in einem Runbook oder einer DSC-Konfiguration verwenden.
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 12/03/2020
+ms.date: 12/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: ec35653f67c46a7032e834020d8e2ca4ab3125c8
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: caaeb0e40d277ef5e356c0f385a818b831326d6e
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96558833"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97734826"
 ---
 # <a name="manage-credentials-in-azure-automation"></a>Verwalten von Anmeldeinformationen in Azure Automation
 
@@ -51,9 +51,9 @@ Import-Module Orchestrator.AssetManagement.Cmdlets -ErrorAction SilentlyContinue
 > [!NOTE]
 > Vermeiden Sie die Verwendung von Variablen im Parameter `Name` von `Get-AutomationPSCredential`. Durch deren Verwendung kann die Ermittlung von Abhängigkeiten zwischen Runbooks oder DSC-Konfigurationen und Anmeldeinformationsobjekten zur Entwurfszeit erschwert werden.
 
-## <a name="python-2-functions-that-access-credentials"></a>Python 2-Funktionen, die auf Anmeldeinformationen zugreifen
+## <a name="python-functions-that-access-credentials"></a>Python-Funktionen, die auf Anmeldeinformationen zugreifen
 
-Mit der Funktion in der folgenden Tabelle wird auf Anmeldeinformationen in einem Python 2-Runbook zugegriffen.
+Mit der Funktion in der folgenden Tabelle wird auf Anmeldeinformationen in einem Python 2- und Python 3-Runbook zugegriffen. Python 3-Runbooks sind derzeit als Vorschau verfügbar.
 
 | Funktion | BESCHREIBUNG |
 |:---|:---|
@@ -104,6 +104,8 @@ Alternativ können Sie die Methode [GetNetworkCredential](/dotnet/api/system.man
 
 ### <a name="textual-runbook-example"></a>Beispiel für ein Textrunbook
 
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
 Das folgende Beispiel zeigt, wie Sie ein PowerShell-Anmeldeinformationsobjekt in einem Runbook verwenden. Es ruft das Anmeldeinformationsobjekt ab und weist seinen Benutzernamen und das Kennwort Variablen zu.
 
 ```powershell
@@ -126,6 +128,36 @@ $myPsCred = New-Object System.Management.Automation.PSCredential ($userName,$sec
 Connect-AzAccount -Credential $myPsCred
 ```
 
+# <a name="python-2"></a>[Python 2](#tab/python2)
+
+Im folgenden Beispiel wird der Zugriff auf Anmeldeinformationen in Python 2-Runbooks veranschaulicht.
+
+```python
+import automationassets
+from automationassets import AutomationAssetNotFound
+
+# get a credential
+cred = automationassets.get_automation_credential("credtest")
+print cred["username"]
+print cred["password"]
+```
+
+# <a name="python-3"></a>[Python 3](#tab/python3)
+
+Im folgenden Beispiel wird der Zugriff auf Anmeldeinformationen in Python 3-Runbooks (Vorschau) veranschaulicht.
+
+```python
+import automationassets
+from automationassets import AutomationAssetNotFound
+
+# get a credential
+cred = automationassets.get_automation_credential("credtest")
+print (cred["username"])
+print (cred["password"])
+```
+
+---
+
 ### <a name="graphical-runbook-example"></a>Beispiel für ein grafisches Runbook
 
 Sie können einem grafischen Runbook eine Aktivität für das interne `Get-AutomationPSCredential`-Cmdlet hinzufügen, indem Sie im Bibliotheksbereich des grafischen Editors erst mit der rechten Maustaste auf die Anmeldeinformationen und anschließend mit der linken auf **Zur Canvas hinzufügen** klicken.
@@ -139,20 +171,6 @@ Die folgende Abbildung zeigt ein Beispiel für die Verwendung eines Anmeldeinfor
 ## <a name="use-credentials-in-a-dsc-configuration"></a>Verwenden von Anmeldeinformationen in einer DSC-Konfiguration
 
 DSC-Konfigurationen in Azure Automation können mithilfe von `Get-AutomationPSCredential` mit Anmeldeinformationsobjekten arbeiten, können aber gleichzeitig auch Anmeldeinformationsobjekte über Parameter übergeben. Weitere Informationen finden Sie unter [Kompilieren von Konfigurationen in Azure Automation DSC](../automation-dsc-compile.md#credential-assets).
-
-## <a name="use-credentials-in-a-python-2-runbook"></a>Verwenden von Anmeldeinformationen in einem Python 2-Runbook
-
-Im folgenden Beispiel wird der Zugriff auf Anmeldeinformationen in Python 2-Runbooks veranschaulicht.
-
-```python
-import automationassets
-from automationassets import AutomationAssetNotFound
-
-# get a credential
-cred = automationassets.get_automation_credential("credtest")
-print cred["username"]
-print cred["password"]
-```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

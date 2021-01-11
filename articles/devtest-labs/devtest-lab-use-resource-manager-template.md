@@ -3,12 +3,12 @@ title: Anzeigen und Verwenden der Azure Resource Manager-Vorlage eines virtuelle
 description: Es wird beschrieben, wie Sie die Azure Resource Manager-Vorlage eines virtuellen Computers verwenden, um andere virtuelle Computer zu erstellen.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 7f969abe1ca903a226e73c5c70781dce512c2926
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fb7cb38dfb2c1664017f0e342fefecdd464df45f
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91282492"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97696008"
 ---
 # <a name="create-virtual-machines-using-an-azure-resource-manager-template"></a>Erstellen von virtuellen Computern mit einer Azure Resource Manager-Vorlage 
 
@@ -25,7 +25,7 @@ Es gibt zwei Möglichkeiten zum Erstellen von VMs in DevTest Labs mit einer Reso
 
    ![Screenshot der Liste mit VMs als einzelne Elemente in der Liste mit DevTest Labs-VMs](./media/devtest-lab-use-arm-template/devtestlab-lab-vm-single-item.png)
 
-   Diese Art von Resource Manager-Vorlage kann mit dem Azure PowerShell-Befehl **New-AzResourceGroupDeployment** oder dem Azure CLI-Befehl **az group deployment create** bereitgestellt werden. Hierfür sind Administratorberechtigungen erforderlich, sodass Benutzer, denen eine DevTest Labs-Benutzerrolle zugewiesen ist, die Bereitstellung nicht durchführen können. 
+   Diese Art von Resource Manager-Vorlage kann mit dem Azure PowerShell-Befehl **New-AzResourceGroupDeployment** oder dem Azure CLI-Befehl **az deployment group create** bereitgestellt werden. Hierfür sind Administratorberechtigungen erforderlich, sodass Benutzer, denen eine DevTest Labs-Benutzerrolle zugewiesen ist, die Bereitstellung nicht durchführen können. 
 
 - Mit Resource Manager-Vorlagen, für die der Ressourcentyp „Microsoft.Compute/virtualmachines“ verwendet wird, können mehrere VMs als Einzelumgebung in der DevTest Labs-Liste mit den virtuellen Computern bereitgestellt werden:
 

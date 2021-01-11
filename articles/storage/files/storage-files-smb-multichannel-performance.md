@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: ee3d1335de1b2bb3096e88c4d04cd03daaa665f5
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 4f4cd8189c9166ee08c1e4ccd800a1202d3b5893
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "96014099"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724815"
 ---
 # <a name="smb-multichannel-performance"></a>SMB Multichannel-Leistung
 
@@ -63,7 +63,7 @@ In den meisten Szenarien (insbesondere bei Multithreadworkloads) sollte für Cli
 1. Öffnen Sie PowerShell als Administrator, und verwenden Sie den folgenden Befehl: `Get-SmbMultichannelConnection |fl`
 1. Suchen Sie nach den Eigenschaften **MaxChannels** und **CurrentChannels**.
 
-:::image type="content" source="media/storage-files-smb-multichannel-performance/files-smb-multi-channel-connection.PNG" alt-text="Screenshot: Ergebnisse von get-smbmultichannelconnection." lightbox="media/storage-files-smb-multichannel-performance/files-smb-multi-channel-connection.PNG":::
+:::image type="content" source="media/storage-files-smb-multichannel-performance/files-smb-multi-channel-connection.PNG" alt-text="Screenshot der Ergebnisse von Get-SMBMultichannelConnection" lightbox="media/storage-files-smb-multichannel-performance/files-smb-multi-channel-connection.PNG":::
 
 ## <a name="performance-comparison"></a>Leistungsvergleich
 
@@ -81,7 +81,7 @@ Für die Diagramme in diesem Artikel wurde die folgende Konfiguration verwendet:
 |---|---|---|---|---|---|---|---|---|
 | [Standard_D32s_v3](../../virtual-machines/dv3-dsv3-series.md) | 32 | 128 | 256 | 32 | 64000/512 (800)    | 51200/768  | 8|16000 |
 
-:::image type="content" source="media/storage-files-smb-multichannel-performance/files-smb-multi-channel-nic-settings-all-nics.PNG" alt-text="Screenshot: Ergebnisse von get-smbmultichannelconnection." lightbox="media/storage-files-smb-multichannel-performance/files-smb-multi-channel-nic-settings-all-nics.PNG":::
+:::image type="content" source="media/storage-files-smb-multichannel-performance/files-smb-multi-channel-nic-settings-all-nics.PNG" alt-text="Screenshot der Konfiguration von Leistungstests" lightbox="media/storage-files-smb-multichannel-performance/files-smb-multi-channel-nic-settings-all-nics.PNG":::
 
 ### <a name="mutli-threadedmultiple-files-with-smb-multichannel"></a>Mutlithread/mehrere Dateien mit SMB Multichannel
 
@@ -119,7 +119,7 @@ Die folgenden Tipps können Ihnen helfen, die Leistung zu optimieren:
 - Stellen Sie sicher, dass sich Ihr Speicherkonto und Ihr Client in derselben Azure-Region befinden, um Netzwerklatenz zu reduzieren.
 - Verwenden Sie Multithreadanwendungen, und verteilen Sie die Last auf mehrere Dateien.
 - Die Leistungsvorteile von SMB Multichannel erhöhen sich mit der Anzahl von Dateien, auf die die Last verteilt wird.
-- Die Leistung einer Premium-Freigabe wird durch die bereitgestellte Freigabegröße (IOPS/Ausgang/Eingang) und Grenzwerte für eine einzelne Datei beschränkt. Einzelheiten dazu finden Sie unter [Grundlegendes zur Bereitstellung für Premium-Dateifreigaben](storage-files-planning.md#understanding-provisioning-for-premium-file-shares).
+- Die Leistung einer Premium-Freigabe wird durch die bereitgestellte Freigabegröße (IOPS/Ausgang/Eingang) und Grenzwerte für eine einzelne Datei beschränkt. Einzelheiten dazu finden Sie unter [Grundlegendes zur Bereitstellung für Premium-Dateifreigaben](understanding-billing.md#provisioned-billing).
 - Die maximale Leistung eines einzelnen VM-Clients ist weiterhin an VM-Grenzwerte gebunden. Beispielsweise kann [Standard_D32s_v3](../../virtual-machines/dv3-dsv3-series.md) eine maximale Bandbreite von 16.000 MBit/s (oder 2 GBit/s) unterstützen. Die ausgehenden Vorgänge von der VM (Schreibvorgänge in den Speicher) werden gemessen, eingehende Vorgänge (Lesevorgänge aus dem Speicher) hingegen nicht. Die Leistung der Dateifreigabe hängt unter anderem von den Grenzwerten des Computernetzwerks, den CPUs, dem internen Speicher, der verfügbaren Netzwerkbandbreite, den E/A-Größen und der Parallelität ab.
 - Der anfängliche Test dient normalerweise nur dem Aufwärmen. Verwerfen Sie seine Ergebnisse, und wiederholt den Test.
 - Wenn die Leistung durch einen einzelnen Client beschränkt ist und die Workload noch immer unter den bereitgestellten Freigabegrenzwerten liegt, kann eine höhere Leistung erzielt werden, indem die Last auf mehrere Clients verteilt wird.

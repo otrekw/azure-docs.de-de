@@ -3,12 +3,12 @@ title: Sichern und Wiederherstellen von virtuellen Azure-Computern mit PowerShel
 description: Beschreibt das Sichern und Wiederherstellen von virtuellen Azure-Computern mithilfe von Azure Backup und PowerShell
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: ded2bc8a71bf564e31f40ca9f0d6c8049188768b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 610049ec14243abb296aef431eb37533c6169817
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95978368"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97797059"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>Sichern und Wiederherstellen von virtuellen Azure-Computern mit PowerShell
 
@@ -259,6 +259,8 @@ Enable-AzRecoveryServicesBackupProtection -Policy $pol -Name "V2VM" -ResourceGro
 > Wenn Sie die Azure Government-Cloud verwenden, geben Sie im Cmdlet [Set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) für den Parameter **ServicePrincipalName** den Wert `ff281ffe-705c-4f53-9f37-a40e6f2c68f3` an.
 >
 
+Wenn Sie bestimmte Datenträger selektiv sichern und andere ausschließen möchten (wie z. B. in [diesen Szenarien](selective-disk-backup-restore.md#scenarios)), können Sie den Schutz konfigurieren und nur die relevanten Datenträger sichern, wie [hier](selective-disk-backup-restore.md#enable-backup-with-powershell) beschrieben.
+
 ## <a name="monitoring-a-backup-job"></a>Überwachen eines Sicherungsauftrags
 
 Sie können Vorgänge mit langer Ausführungsdauer, z.B. Sicherungsaufträge, ohne das Azure-Portal überwachen. Mit dem Cmdlet [Get-AzRecoveryservicesBackupJob](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupjob) können Sie den Status eines Auftrags abrufen, der sich in Bearbeitung befindet. Dieses Cmdlet ruft die Sicherungsaufträge für einen bestimmten Tresor ab. Dieser Tresor ist im Tresorkontext angegeben. Im folgenden Beispiel wird der Status eines laufenden Auftrags als Array abgerufen und in der Variable „$joblist“ gespeichert.
@@ -338,6 +340,10 @@ $bkpPol.AzureBackupRGName="Contosto_"
 $bkpPol.AzureBackupRGNameSuffix="ForVMs"
 Set-AzureRmRecoveryServicesBackupProtectionPolicy -policy $bkpPol
 ```
+
+### <a name="exclude-disks-for-a-protected-vm"></a>Ausschließen von Datenträgern einer geschützten VM
+
+Die Azure-VM-Sicherung bietet eine Möglichkeit, Datenträger selektiv aus- oder einzuschließen. Dies ist z. B. in [diesen Szenarien](selective-disk-backup-restore.md#scenarios) hilfreich. Wenn die VM bereits durch die Azure-VM-Sicherung geschützt ist und alle Datenträger gesichert sind, können Sie den Schutz so anpassen, dass bestimmte Datenträger wie [hier](selective-disk-backup-restore.md#modify-protection-for-already-backed-up-vms-with-powershell) beschrieben ein- oder ausgeschlossen werden.
 
 ### <a name="trigger-a-backup"></a>Auslösen einer Sicherung
 
@@ -511,6 +517,13 @@ Nachdem der Wiederherstellungsauftrag abgeschlossen ist, verwenden Sie das Cmdle
 $restorejob = Get-AzRecoveryServicesBackupJob -Job $restorejob -VaultId $targetVault.ID
 $details = Get-AzRecoveryServicesBackupJobDetails -Job $restorejob -VaultId $targetVault.ID
 ```
+
+#### <a name="restore-selective-disks"></a>Selektives Wiederherstellen von Datenträgern
+
+Ein Benutzer kann anstelle des gesamten Sicherungssatzes auch nur einige Datenträger selektiv wiederherstellen. Geben Sie die LUNs der gewünschten Datenträger als Parameter an, um anstelle des gesamten Satzes nur diese wiederherzustellen. Eine Beschreibung finden Sie [hier](selective-disk-backup-restore.md#restore-selective-disks-with-powershell).
+
+> [!IMPORTANT]
+> Damit Datenträger einzeln wiederhergestellt werden können, müssen sie auch selektiv gesichert werden. [Hier](selective-disk-backup-restore.md#selective-disk-restore) finden Sie weitere Einzelheiten.
 
 Nachdem Sie die Datenträger wiederhergestellt haben, fahren Sie mit dem nächsten Abschnitt fort, um den virtuellen Computer zu erstellen.
 

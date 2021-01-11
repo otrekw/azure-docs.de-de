@@ -9,12 +9,12 @@ ms.subservice: custom-vision
 ms.topic: how-to
 ms.date: 09/11/2020
 ms.author: pafarley
-ms.openlocfilehash: f4d9cc4c02ab062c73e9dbd977d9ea9e6ccdb60d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 43cd03e8f4a66d18adc33c943481002ff7b326d3
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90532981"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97813206"
 ---
 # <a name="integrate-azure-storage-for-notifications-and-backup"></a>Integrieren von Azure-Speicher für Benachrichtigungen und Sicherungen
 
@@ -206,4 +206,5 @@ Das Feld `"exportStatus"` kann entweder `"ExportCompleted"` oder `"ExportFailed"
 ## <a name="next-steps"></a>Nächste Schritte
 
 In diesem Leitfaden wurde beschrieben, wie Sie ein Projekt zwischen Custom Vision-Ressourcen kopieren und verschieben. Sehen Sie sich als Nächstes die API-Referenzdokumentation an, um sich über weitere Möglichkeiten bei der Verwendung von Custom Vision zu informieren.
-* [Referenzdokumentation zur Rest-API](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Training_3.3/operations/5eb0bcc6548b571998fddeb3)
+* [REST-API-Referenzdokumentation (Training)](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Training_3.3/operations/5eb0bcc6548b571998fddeb3)
+* [REST-API-Referenzdokumentation (Vorhersage)](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Prediction_3.1/operations/5eb37d24548b571998fde5f3)

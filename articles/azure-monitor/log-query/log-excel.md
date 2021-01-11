@@ -6,16 +6,16 @@ ms.topic: conceptual
 author: roygalMS
 ms.author: roygal
 ms.date: 11/03/2020
-ms.openlocfilehash: d903d1bb16ba3576d0092979f1cc6b82fac1c0be
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 6fa181a35c46ed16e4e8c1884e66c54984c418ca
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94507391"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97703448"
 ---
 # <a name="integrate-log-analytics-and-excel"></a>Integrieren von Log Analytics und Excel
 
-Sie können Azure Monitor Log Analytics und Microsoft Excel mithilfe der M-Abfrage und der Log Analytics-API integrieren.  Mit dieser Integration können Sie 500.000 Datensätze an Excel senden.
+Sie können Azure Monitor Log Analytics und Microsoft Excel mithilfe der M-Abfrage und der Log Analytics-API integrieren. Diese Integration ermöglicht Ihnen, bis zu 500.000 Datensätze an Excel zu senden, solange die Gesamtmenge der Ergebnisse 61 MiB nicht überschreitet.
 
 > [!NOTE]
 > Da es sich bei Excel um eine lokale Clientanwendung handelt, wirken sich lokale Hardware- und Softwareeinschränkungen auf die Leistung und die Fähigkeit aus, große Datenmengen zu verarbeiten.
@@ -97,6 +97,9 @@ So importieren Sie die Abfrage:
  
 
    :::image type="content" source="media/log-excel/excel-query-result.png" alt-text="Abfrageergebnisse in Excel" border="true":::
+
+> [!Note]
+> Wenn die Anzahl der Datensätze niedriger als erwartet ist, kann es vorkommen, dass die Menge der Ergebnisse den Grenzwert von 61 MiB überschreitet. Verwenden Sie `project` oder `project-away` in der Abfrage, um die Spalten auf die benötigten zu beschränken.
 
 ##  <a name="refreshing--data"></a>Aktualisieren von Daten
 

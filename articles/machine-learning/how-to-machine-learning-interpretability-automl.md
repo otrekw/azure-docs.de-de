@@ -10,18 +10,18 @@ ms.custom: how-to, automl
 ms.author: mithigpe
 author: minthigpen
 ms.date: 07/09/2020
-ms.openlocfilehash: cf1eb1c72cc93fcb72862b15f3884969915c24dd
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: ce13e0431827bb2c72a03ca33a1ecaefc53d4970
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360648"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97702519"
 ---
 # <a name="interpretability-model-explanations-in-automated-machine-learning-preview"></a>Interpretierbarkeit: Modellerklärungen beim automatisierten maschinellen Lernen (Vorschau)
 
 
 
-In diesem Artikel erfahren Sie, wie Sie in Azure Machine Learning Erklärungen für automatisiertes maschinelles Lernen (ML) erhalten können. Automatisiertes ML unterstützt Sie dabei, die Relevanz von entwickelten Features zu verstehen. 
+In diesem Artikel erfahren Sie, wie Sie in Azure Machine Learning Erklärungen für automatisiertes maschinelles Lernen (AutoML) erhalten können. Automatisiertes maschinelles Lernen hilft Ihnen dabei, die Featurerelevanz der generierten Modelle zu verstehen. 
 
 Alle SDK-Versionen nach 1.0.85 sind standardmäßig auf `model_explainability=True` festgelegt. In SDK Version 1.0.85 und in früheren Versionen müssen die Benutzer `model_explainability=True` im `AutoMLConfig`-Objekt festlegen, um die Interpretierbarkeit des Modells zu nutzen. 
 
@@ -34,15 +34,18 @@ In diesem Artikel werden folgende Vorgehensweisen behandelt:
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Interpretierbarkeitsfeatures. Führen Sie `pip install azureml-interpret` aus, um das erforderliche Paket abzurufen.
-- Vorkenntnisse in Bezug auf die Erstellung von Experimenten für automatisiertes ML. Weitere Informationen zur Verwendung des Azure Machine Learning SDK finden Sie in diesem [Regressionsmodelltutorial](tutorial-auto-train-models.md) oder unter [Konfigurieren automatisierter ML-Experimente](how-to-configure-auto-train.md).
+- Vorkenntnisse in Bezug auf die Erstellung von Experimenten für automatisiertes maschinelles Lernen. Weitere Informationen zur Verwendung des Azure Machine Learning SDK finden Sie in diesem [Regressionsmodelltutorial](tutorial-auto-train-models.md) oder unter [Konfigurieren automatisierter ML-Experimente](how-to-configure-auto-train.md).
 
 ## <a name="interpretability-during-training-for-the-best-model"></a>Interpretierbarkeit während des Trainings nach dem besten Modell
 
-Rufen Sie die Erklärung aus `best_run` ab, darin sind Erklärungen für entwickelte Features enthalten.
+Rufen Sie die Erklärung aus `best_run` ab, darin sind Erklärungen für unbearbeitete und entwickelte Features enthalten.
 
 > [!Warning]
 > Interpretierbarkeit, die Erklärung des besten Modells, ist nicht für Vorhersageexperimente mit automatisiertem maschinellem Lernen verfügbar, die die folgenden Algorithmen als bestes Modell empfehlen: 
-> * ForecastTCN
+> * TCNForecaster
+> * AutoArima
+> * ExponentialSmoothing
+> * Prophet
 > * Durchschnitt 
 > * Naiv
 > * Saisonaler Durchschnitt 
@@ -62,7 +65,7 @@ print(engineered_explanations.get_feature_importance_dict())
 
 ## <a name="interpretability-during-training-for-any-model"></a>Interpretierbarkeit während des Trainings nach einem beliebigen Modell 
 
-Wenn Sie Modellerklärungen berechnen und visualisieren, sind Sie nicht auf eine vorhandene Modellerklärung für ein automatisiertes ML-Modell beschränkt. Sie können auch eine Erläuterung für das Modell mit anderen Testdaten erhalten. Die Schritte in diesem Abschnitt zeigen, wie die Relevanz von entwickelten Features basierend auf Ihren Testdaten berechnet und visualisiert wird.
+Wenn Sie Modellerklärungen berechnen und visualisieren, sind Sie nicht auf eine vorhandene Modellerklärung für ein Modell zum automatisierten maschinellen Lernen beschränkt. Sie können auch eine Erläuterung für das Modell mit anderen Testdaten erhalten. Die Schritte in diesem Abschnitt zeigen, wie die Relevanz von entwickelten Features basierend auf Ihren Testdaten berechnet und visualisiert wird.
 
 ### <a name="retrieve-any-other-automl-model-from-training"></a>Abrufen eines anderen AutoML-Modells aus dem Training
 
@@ -94,7 +97,7 @@ Verwenden Sie die `MimicWrapper`-Klasse, um eine Erläuterung für AutoML-Modell
 
 - Dem Erklärmoduleinrichtungsobjekt
 - Ihrem Arbeitsbereich
-- Ein Surrogatmodell zur Erklärung des automatisierten ML-Modells `fitted_model`
+- Ein Surrogatmodell zur Erklärung des Modells `fitted_model` zum automatisierten maschinellen Lernen
 
 Die MimicWrapper-Klasse verwendet außerdem das `automl_run`-Objekt, in das die Erklärungen für entwickelte Features hochgeladen werden.
 
@@ -113,7 +116,7 @@ explainer = MimicWrapper(ws, automl_explainer_setup_obj.automl_estimator,
 
 ### <a name="use-mimicexplainer-for-computing-and-visualizing-engineered-feature-importance"></a>Verwenden von MimicExplainer zum Berechnen und Visualisieren der Relevanz von entwickelten Features
 
-Sie können die `explain()`-Methode in MimicWrapper mit den transformierten Testbeispielen aufrufen, um die Featurerelevanz für die generierten entwickelten Features abzurufen. Sie können außerdem `ExplanationDashboard` verwenden, um eine Dashboardvisualisierung der Relevanzwerte für die über Featurizer für automatisiertes ML generierten entwickelten Features anzuzeigen.
+Sie können die `explain()`-Methode in MimicWrapper mit den transformierten Testbeispielen aufrufen, um die Featurerelevanz für die generierten entwickelten Features abzurufen. Sie können außerdem `ExplanationDashboard` verwenden, um eine Dashboardvisualisierung der Featurerelevanzwerte der Featurizer für automatisiertes maschinelles Lernen generierten entwickelten Features anzuzeigen.
 
 ```python
 engineered_explanations = explainer.explain(['local', 'global'], eval_dataset=automl_explainer_setup_obj.X_test_transform)
@@ -122,7 +125,7 @@ print(engineered_explanations.get_feature_importance_dict())
 
 ## <a name="interpretability-during-inference"></a>Interpretierbarkeit beim Ziehen von Rückschlüssen
 
-In diesem Abschnitt erfahren Sie, wie ein Modell für automatisiertes ML mit dem Erklärmodul operationalisiert wird, das im vorherigen Abschnitt zum Berechnen der Erklärungen verwendet wurde.
+In diesem Abschnitt erfahren Sie, wie ein Modell für automatisiertes maschinelles Lernen mit dem Erklärmodul operationalisiert wird, das im vorherigen Abschnitt zum Berechnen der Erklärungen verwendet wurde.
 
 ### <a name="register-the-model-and-the-scoring-explainer"></a>Registrieren des Modells und des Erklärmoduls für die Bewertung
 
@@ -200,7 +203,7 @@ service.wait_for_deployment(show_output=True)
 
 ### <a name="inference-with-test-data"></a>Rückschluss mit Testdaten
 
-Ziehen Sie mit einigen Testdaten einen Rückschluss, um den vorhergesagten Wert aus dem automatisierten ML-Modell anzuzeigen. Zeigen Sie die Relevanz der entwickelten Features für den vorhergesagten Wert an.
+Führen Sie mit einigen Testdaten einen Rückschluss aus, um den vorhergesagten Wert aus dem Modell für automatisiertes maschinelles Lernen anzuzeigen. Dies wird derzeit nur über das Azure Machine Learning SDK unterstützt. Zeigen Sie die Featurerelevanzen an, die zu einem vorhergesagten Wert beitragen. 
 
 ```python
 if service.state == 'Healthy':
@@ -217,9 +220,11 @@ if service.state == 'Healthy':
 
 ### <a name="visualize-to-discover-patterns-in-data-and-explanations-at-training-time"></a>Visualisieren, um Muster in Daten und Erläuterungen zur Trainingszeit zu ermitteln
 
-Sie können das Diagramm zur Featurerelevanz in Ihrem Arbeitsbereich in [Azure Machine Learning Studio](https://ml.azure.com) anzeigen. Wählen Sie nach Abschluss der automatisierten ML-Ausführung **Modelldetails anzeigen** aus, um eine bestimmte Ausführung anzuzeigen. Klicken Sie auf die Registerkarte **Erklärungen** , um das Dashboard zur Erklärungsvisualisierung anzuzeigen.
+Sie können das Diagramm zur Featurerelevanz in Ihrem Arbeitsbereich in [Azure Machine Learning Studio](https://ml.azure.com) anzeigen. Wählen Sie nach Abschluss der Ausführung des automatisierten maschinellen Lernens **Modelldetails anzeigen** aus, um eine bestimmte Ausführung anzuzeigen. Klicken Sie auf die Registerkarte **Erklärungen**, um das Dashboard zur Erklärungsvisualisierung anzuzeigen.
 
-[![Architektur von Machine Learning Interpretability](./media/how-to-machine-learning-interpretability-automl/automl-explainability.png)](./media/how-to-machine-learning-interpretability-automl/automl-explainability.png#lightbox)
+[![Architektur von Machine Learning Interpretability](./media/how-to-machine-learning-interpretability-automl/automl-explanation.png)](./media/how-to-machine-learning-interpretability-automl/automl-explanation.png#lightbox)
+
+Weitere Informationen zur Visualisierung von Erläuterungsdashboards und bestimmten Plots finden Sie im [Leitfaden zur Interpretierbarkeit](how-to-machine-learning-interpretability-aml.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
