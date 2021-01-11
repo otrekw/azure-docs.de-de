@@ -6,13 +6,13 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 12/01/2020
-ms.openlocfilehash: 875b84613bede922b01b1043f2d6dab9aedbc2e8
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.date: 12/18/2020
+ms.openlocfilehash: f715a51367a82f190d394ecb8e10dea24ca70e97
+ms.sourcegitcommit: 0830e02635d2f240aae2667b947487db01f5fdef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96436928"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97706914"
 ---
 # <a name="data-transformation-expressions-in-mapping-data-flow"></a>Datentransformationsausdrücke in Mapping Data Flow
 
@@ -1890,6 +1890,28 @@ Wählt einen Spaltenwert nach seiner relativen Position (1-basiert) im Stream au
 * ``toBoolean(byName(4))``  
 * ``toString(byName($colName))``  
 * ``toString(byPosition(1234))``  
+
+## <a name="cached-lookup-functions"></a>Zwischengespeicherte Lookupfunktionen
+Die folgenden Funktionen sind nur verfügbar, wenn ein zwischengespeichertes Lookup verwendet wird und Sie eine zwischengespeicherte Senke eingefügt haben.
+___
+### <code>lookup</code>
+<code><b>lookup(key, key2, ...) => complex[]</b></code><br/><br/>
+Schlägt die erste Zeile der zwischengespeicherten Senke mithilfe der angegebenen Schlüssel, die mit den Schlüsseln der zwischengespeicherten Senke identisch sind, nach.
+* ``cacheSink#lookup(movieId)``  
+___
+### <code>mlookup</code>
+<code><b>mlookup(key, key2, ...) => complex[]</b></code><br/><br/>
+Schlägt alle übereinstimmenden Zeilen der zwischengespeicherten Senke mithilfe der angegebenen Schlüssel, die mit den Schlüsseln der zwischengespeicherten Senke identisch sind, nach.
+* ``cacheSink#mlookup(movieId)``  
+___
+### <code>output</code>
+<code><b>output() => any</b></code><br/><br/>
+Gibt die erste Zeile der Ergebnisse der zwischengespeicherten Senke zurück: * ``cacheSink#output()``  
+___
+### <code>outputs</code>
+<code><b>output() => any</b></code><br/><br/>
+Gibt die gesamte Ausgabe an Zeilen der zwischengespeicherten Senke zurück: * ``cacheSink#outputs()``
+___
 
 ## <a name="window-functions"></a>Fensterfunktionen
 Die folgenden Funktionen stehen nur in Fenstertransformationen zur Verfügung.
