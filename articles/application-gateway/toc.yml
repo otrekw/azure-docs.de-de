@@ -109,7 +109,7 @@
     - name: Grundlegendes zu Preisen
       href: understanding-pricing.md
     - name: Häufig gestellte Fragen
-      href: application-gateway-faq.md
+      href: application-gateway-faq.yml
 - name: Anleitungen
   items:
     - name: Hosten einer einzelnen Website

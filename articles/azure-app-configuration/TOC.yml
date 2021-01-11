@@ -17,7 +17,7 @@
           href: quickstart-aspnet-core-app.md
         - name: .NET Core
           href: quickstart-dotnet-core-app.md
-        - name: .NET Framework
+        - name: ".NET\_Framework"
           href: quickstart-dotnet-app.md
         - name: Azure Functions in .NET Core
           href: quickstart-azure-functions-csharp.md
@@ -54,7 +54,7 @@
           href: enable-dynamic-configuration-java-spring-app.md
     - name: Verwenden von Featureflags
       items:
-        - name: .NET Core
+        - name: ASP.NET Core
           href: use-feature-flags-dotnet-core.md
         - name: Spring Boot
           href: use-feature-flags-spring-boot.md
@@ -110,7 +110,7 @@
           href: concept-disaster-recovery.md
 - name: Anleitungen
   items:
-    - name: Aktivieren einer Funktion für einen Prozentsatz von Benutzern
+    - name: Verwenden von bedingten Featureflags
       href: howto-feature-filters-aspnet-core.md
     - name: Aktivieren einer Funktion für bestimmte Benutzer/Gruppen
       href: howto-targetingfilter-aspnet-core.md

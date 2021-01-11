@@ -146,11 +146,15 @@
       items:
         - name: Beheben von Problemen mit Azure Load Balancer
           href: load-balancer-troubleshoot.md
-        - name: Beheben von häufigen Bereitstellungsfehlern
+        - name: Integritätsteststatus
+          href: load-balancer-troubleshoot-health-probe-status.md
+        - name: Datenverkehr des Back-End-Pools (VM)
+          href: load-balancer-troubleshoot-backend-traffic.md
+        - name: Häufige Bereitstellungsfehler
           href: load-balancer-common-deployment-errors.md
-        - name: Beheben allgemeiner Probleme bei der ausgehenden Verbindung
+        - name: Allgemeine Probleme bei der ausgehenden Verbindung
           href: troubleshoot-outbound-connection.md
-        - name: Beheben von Problemen mit Ressourcenintegrität und eingehender Verfügbarkeit
+        - name: Probleme mit Ressourcenintegrität und eingehender Verfügbarkeit
           href: troubleshoot-rhc.md
 - name: Verweis
   items:
