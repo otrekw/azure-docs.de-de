@@ -3,18 +3,18 @@ title: 'Schnellstart: Ermitteln von Azure-Kosten mithilfe der Kostenanalyse'
 description: In diesem Schnellstart wird beschrieben, wie Sie sich mit der Kostenanalyse einen Überblick über Azure-Kosten für Ihre Organisation verschaffen und wie Sie diese Kosten analysieren.
 author: bandersmsft
 ms.author: banders
-ms.date: 11/20/2020
+ms.date: 01/04/2021
 ms.topic: quickstart
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 1926a5a2ee81b6be4abee5e4064a4a23354da1a1
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 83f2d87e3f4a03ff17526ea5706e4f87b8f39487
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033577"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882448"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Schnellstart: Ermitteln und Analysieren von Kosten mit der Kostenanalyse
 
@@ -72,6 +72,8 @@ Die Kostenvorhersage zeigt eine Projektion der geschätzten Kosten für den ausg
 
 Das Modell verwendet Trainingsdaten aus maximal sechs Monaten, um Kosten für ein Jahr zu projizieren. Zum Ändern der Vorhersage sind mindestens sieben Tage an Trainingsdaten erforderlich. Die Vorhersage basiert auf tiefgreifenden Änderungen (etwa Spitzen und Abfällen) bei Kosten- und Nutzungsmustern. Die Vorhersage generiert keine einzelnen Projektionen für jedes Element in den Eigenschaften vom Typ **Gruppieren nach**. Es wird nur eine Vorhersage für die kumulierten Gesamtkosten abgegeben. Bei der Verwendung mehrerer Währungen bietet das Modell nur Vorhersagen für Kosten in USD.
 
+Da das Modell auf Datenabfällen und -spitzen basiert, können umfangreiche Einkäufe (etwa von reservierten Instanzen) dazu führen, dass Ihre Vorhersage künstlich aufgebläht wird. Der Vorhersagezeitraum und der Umfang der Einkäufe beeinflussen, wie lange die Vorhersage beeinträchtigt ist. Die Vorhersage normalisiert sich wieder, wenn sich die Ausgaben stabilisieren.
+
 ## <a name="customize-cost-views"></a>Anpassen von Kostenansichten
 
 Die Kostenanalyse weist vier integrierte Ansichten auf, die für die häufigsten Ziele optimiert sind:
@@ -123,7 +125,7 @@ Standardmäßig werden in der Kostenanalyse alle Kosten für Verbrauch und Eink�
 
 ![Wechseln zwischen tatsächlichen und amortisierten Kosten, um die auf den Zeitraum verteilten Reservierungseinkäufe anzuzeigen, die den entsprechenden Ressourcen mit Reservierung zugeordnet sind](./media/quick-acm-cost-analysis/metric-picker.png)
 
-Bei den amortisierten Kosten werden Reservierungseinkäufe in tägliche Blöcke unterteilt und auf die Dauer des Reservierungszeitraums aufgeteilt. Beispiel: Anstelle eines Einkaufs in Höhe von 365 USD am 1. Januar sehen Sie für jeden Tag vom 1. Januar bis zum 31. Dezember einen Einkauf in Höhe von 1,00 USD. Zusätzlich zur einfachen Amortisierung werden diese Kosten auch neu zugeteilt und den spezifischen Ressourcen zugeordnet, die die Reservierung genutzt haben. Falls die Kosten von 1,00 USD beispielsweise auf zwei virtuelle Computer aufgeteilt waren, werden für den Tag zwei Gebühren von jeweils 0,50 USD angezeigt. Wenn ein Teil der Reservierung für den Tag nicht genutzt wird, wird eine Gebühr von 0,50 USD für den entsprechenden virtuellen Computer und eine weitere Gebühr von 0,50 USD mit dem Gebührentyp `UnusedReservation` angezeigt. Beachten Sie, dass nicht verwendete Reservierungskosten nur unter den amortisierten Kosten angezeigt werden.
+Bei den amortisierten Kosten werden Reservierungseinkäufe in tägliche Blöcke unterteilt und auf die Dauer des Reservierungszeitraums aufgeteilt. Beispiel: Anstelle eines Einkaufs in Höhe von 365 USD am 1. Januar sehen Sie für jeden Tag vom 1. Januar bis zum 31. Dezember einen Einkauf in Höhe von 1,00 USD. Zusätzlich zur einfachen Amortisierung werden diese Kosten auch neu zugeteilt und den spezifischen Ressourcen zugeordnet, die die Reservierung genutzt haben. Falls die Kosten von 1,00 USD beispielsweise auf zwei virtuelle Computer aufgeteilt waren, werden für den Tag zwei Gebühren von jeweils 0,50 USD angezeigt. Wenn ein Teil der Reservierung für den Tag nicht genutzt wird, wird eine Gebühr von 0,50 USD für den entsprechenden virtuellen Computer und eine weitere Gebühr von 0,50 USD mit dem Gebührentyp `UnusedReservation` angezeigt. Nicht verwendete Reservierungskosten werden nur bei der Ansicht für die amortisierten Kosten angezeigt.
 
 Aufgrund der veränderten Anzeige von Kosten ist es wichtig zu beachten, dass für die Ansicht mit den Ist-Kosten und den amortisierten Kosten unterschiedliche Gesamtwerte angezeigt werden. Im Allgemeinen verringern sich die Gesamtkosten für Monate mit einem Reservierungseinkauf, wenn die amortisierten Kosten angezeigt werden, und sie erhöhen sich für Monate, die auf einen Reservierungseinkauf folgen. Die Amortisierung ist nur für Reservierungseinkäufe verfügbar und gilt derzeit nicht für Azure Marketplace-Einkäufe.
 
@@ -151,17 +153,17 @@ Sehen Sie sich das Video zum [Freigeben und Speichern von Ansichten in Azure Cos
 
 >[!VIDEO https://www.youtube.com/embed/kQkXXj-SmvQ]
 
-Wählen Sie zum Anheften der Kostenanalyse das Stecknadelsymbol oben rechts oder direkt nach „<Subscription Name> | Kostenanalyse“ aus. Beim Anheften der Kostenanalyse wird nur die Diagramm- oder Tabellenhauptansicht gespeichert. Geben Sie das Dashboard frei, um anderen Personen Zugriff auf die Kachel zu gewähren. Beachten Sie, dass hierbei nur die Dashboardkonfiguration freigegeben und anderen Personen kein Zugriff auf die zugrunde liegenden Daten gewährt wird. Wenn Sie nicht für den Zugriff auf die Kosten berechtigt sind, aber über Zugriff auf ein freigegebenes Dashboard verfügen, wird die Meldung „Zugriff verweigert“ angezeigt.
+Wählen Sie zum Anheften der Kostenanalyse das Stecknadelsymbol oben rechts oder direkt nach „<Subscription Name> | Kostenanalyse“ aus. Beim Anheften der Kostenanalyse wird nur die Diagramm- oder Tabellenhauptansicht gespeichert. Geben Sie das Dashboard frei, um anderen Personen Zugriff auf die Kachel zu gewähren. Beim Freigeben wird nur die Dashboardkonfiguration freigegeben, und anderen Personen wird kein Zugriff auf die zugrunde liegenden Daten gewährt. Wenn Sie nicht für den Zugriff auf die Kosten berechtigt sind, aber über Zugriff auf ein freigegebenes Dashboard verfügen, wird die Meldung „Zugriff verweigert“ angezeigt.
 
-Wählen Sie oben auf dem Blatt den Befehl **Teilen** aus, um einen Link zur Kostenanalyse zu teilen. Eine benutzerdefinierte URL wird angezeigt, über die diese spezifische Ansicht für den jeweiligen Bereich geöffnet wird. Wenn Sie keinen Kostenzugriff besitzen und diese URL abrufen, wird die Meldung „Zugriff verweigert“ angezeigt.
+Wählen Sie oben im Fenster den Befehl **Teilen** aus, um einen Link zur Kostenanalyse zu teilen. Eine benutzerdefinierte URL wird angezeigt, über die diese spezifische Ansicht für den jeweiligen Bereich geöffnet wird. Wenn Sie keinen Kostenzugriff besitzen und diese URL abrufen, wird die Meldung „Zugriff verweigert“ angezeigt.
 
 ## <a name="download-usage-data"></a>Herunterladen von Nutzungsdaten
 
 ### <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Es kann vorkommen, dass Sie die Daten zur weiteren Analyse herunterladen, mit Ihren eigenen Daten zusammenführen oder in Ihre eigenen Systeme integrieren müssen. Cost Management verfügt über verschiedene Optionen. Wenn Sie eine Ad-hoc-Zusammenfassung auf hoher Ebene benötigen (etwa wie bei der Kostenanalyse), erstellen Sie als Ausgangspunkt die erforderliche Ansicht. Laden Sie diese dann herunter, indem Sie **Exportieren** und **Daten in CSV herunterladen** oder **Daten in Excel herunterladen** auswählen. Der Excel-Download liefert zusätzlichen Kontext zu der Ansicht, die Sie zum Generieren des Downloads verwendet haben, z.B. Bereich, Abfragekonfiguration, Summe und Generierungsdatum.
+Es kann vorkommen, dass Sie die Daten zur weiteren Analyse herunterladen, mit Ihren eigenen Daten zusammenführen oder in Ihre eigenen Systeme integrieren müssen. Cost Management verfügt über verschiedene Optionen. Wenn Sie eine schnelle Zusammenfassung auf hoher Ebene benötigen (etwa wie bei der Kostenanalyse), erstellen Sie als Ausgangspunkt die erforderliche Ansicht. Laden Sie diese dann herunter, indem Sie **Exportieren** und **Daten in CSV herunterladen** oder **Daten in Excel herunterladen** auswählen. Der Excel-Download liefert zusätzlichen Kontext zu der Ansicht, die Sie zum Generieren des Downloads verwendet haben, z. B. Bereich, Abfragekonfiguration, Summe und Generierungsdatum.
 
-Falls Sie das vollständige nicht aggregierte Dataset benötigen, können Sie es über das Abrechnungskonto herunterladen. Navigieren Sie dann aus der Liste der Dienste im linken Navigationsbereich des Portals zu **Kostenverwaltung und Abrechnung**. Wählen Sie ggf. Ihr Abrechnungskonto aus. Navigieren Sie zu **Nutzung und Gebühren**, und wählen Sie dann das **Downloadsymbol** für den gewünschten Abrechnungszeitraum aus.
+Falls Sie das vollständige nicht aggregierte Dataset benötigen, können Sie es über das Abrechnungskonto herunterladen. Navigieren Sie dann aus der Liste der Dienste im linken Navigationsbereich des Portals zu **Kostenverwaltung und Abrechnung**. Wählen Sie ggf. Ihr Abrechnungskonto aus. Navigieren Sie zu **Nutzung und Gebühren**, und wählen Sie dann das **Downloadsymbol** für einen Abrechnungszeitraum aus.
 
 ### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 

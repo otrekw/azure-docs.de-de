@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: overview
-ms.date: 11/23/2020
+ms.date: 01/05/2021
 ms.author: mbullwin
 keywords: Anomalieerkennung, maschinelles Lernen, Algorithmen
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: d8698a17db8be6a3d5b26d764ef86702320ebfa4
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 425c6cab4a4a5e1329e2d38f49c5058ec8ffc5b9
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97705080"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97901367"
 ---
 # <a name="what-is-the-anomaly-detector-api"></a>Worum handelt es sich bei der Anomalieerkennungs-API?
 
@@ -83,8 +83,17 @@ Nach der Registrierung:
 
 Informationen zu den von Microsoft entwickelten SR-CNN-Algorithmen finden Sie unter [Time-Series Anomaly Detection Service at Microsoft](https://arxiv.org/abs/1906.03821) (Anomalieerkennungsdienst für Zeitreihen bei Microsoft) – akzeptiert von KDD 2019.
 
-
 > [!VIDEO https://www.youtube.com/embed/ERTaAnwCarM]
+
+## <a name="service-availability-and-redundancy"></a>Dienstverfügbarkeit und Redundanz
+
+### <a name="is-the-anomaly-detector-service-zone-resilient"></a>Ist der Anomalieerkennungsdienst zonenresilient?
+
+Ja. Der Anomalieerkennungsdienst ist standardmäßig zonenresilient.
+
+### <a name="how-do-i-configure-the-anomaly-detector-service-to-be-zone-resilient"></a>Wie konfiguriere ich den Anomalieerkennungsdienst so, dass er zonenresilient ist?
+
+Es ist keine Kundenkonfiguration erforderlich, um Zonenresilienz zu ermöglichen. Zonenresilienz für Anomalieerkennungsressourcen ist standardmäßig verfügbar und wird vom Dienst selbst verwaltet.
 
 ## <a name="deploy-on-premises-using-docker-containers"></a>Lokales Bereitstellen unter Verwendung von Docker-Containern
 

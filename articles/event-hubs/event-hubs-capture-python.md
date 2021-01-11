@@ -2,13 +2,13 @@
 title: Lesen erfasster Azure Event Hubs-Daten aus einer Python-App (aktuelles Paket)
 description: In diesem Artikel erfahren Sie, wie Sie Python-Code zum Erfassen von Daten, die an einen Event Hub gesendet werden, sowie zum Lesen der erfassten Ereignisdaten aus einem Azure-Speicherkonto schreiben.
 ms.topic: quickstart
-ms.date: 06/23/2020
-ms.openlocfilehash: f513b35e300141f16ee4c4880bc54aaf37945d65
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.date: 01/04/2021
+ms.openlocfilehash: acc2ce04add5fd837e9edc789e9616a9f04fb4b9
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109911"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97883196"
 ---
 # <a name="capture-event-hubs-data-in-azure-storage-and-read-it-by-using-python-azure-eventhub"></a>Erfassen von Event Hubs-Daten in Azure Storage und Lesen dieser Daten mithilfe von Python (azure-eventhub)
 
@@ -27,7 +27,11 @@ In dieser Schnellstartanleitung führen Sie die folgenden Schritte aus:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Python 2.7 und 3.5 oder höher mit installiertem und aktualisiertem PIP  
+- Installation von Python mit PIP und den folgenden Paketen. Der Code in diesem Artikel wurde anhand dieser Versionen getestet. 
+    - Python 3.7
+    - azure-eventhub 5.2.0
+    - azure-storage-blob 12.6.0
+    - avro-python3 1.10.1
 - Ein Azure-Abonnement. Falls Sie kein Abonnement besitzen, können Sie ein [kostenloses Konto erstellen](https://azure.microsoft.com/free/), bevor Sie beginnen.  
 - Ein aktiver Event Hubs-Namespace und -Event Hub.
 [Erstellen Sie einen Event Hubs-Namespace und einen Event Hub im Namespace](event-hubs-create.md). Notieren Sie sich den Namen des Event Hubs-Namespace, den Namen des Event Hubs und den primären Zugriffsschlüssel für den Namespace. Anweisungen zum Abrufen des Zugriffsschlüssels finden Sie unter [Abrufen einer Event Hubs-Verbindungszeichenfolge](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). Der Standardname des Schlüssels lautet *RootManageSharedAccessKey*. Für diese Schnellstartanleitung benötigen Sie nur den Primärschlüssel. Die Verbindungszeichenfolge ist nicht erforderlich.  
@@ -155,6 +159,13 @@ In diesem Beispiel werden die erfassten Daten in Azure Blob Storage gespeichert.
    pip install azure-eventhub
    pip install avro-python3
    ```
+
+    > [!NOTE]
+    > Der Code in diesem Artikel wurde anhand dieser Versionen getestet. 
+    > - Python 3.7
+    > - azure-eventhub 5.2.0
+    > - azure-storage-blob 12.6.0
+    > - avro-python3 1.10.1
 2. Wechseln Sie zu dem Verzeichnis, in dem Sie *sender.py* und *capturereader.py* gespeichert haben, und führen Sie den folgenden Befehl aus:
    
    ```

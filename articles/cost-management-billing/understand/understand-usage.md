@@ -7,14 +7,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 01/04/2021
 ms.author: banders
-ms.openlocfilehash: 559fe43bbd9b8951a97733ae1250046f65f10404
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 07e3cfdce238d5fc4e2737a49dde6fd624de8506
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92149366"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882499"
 ---
 # <a name="understand-the-terms-in-your-azure-usage-and-charges-file"></a>Grundlegendes zu den Bedingungen in der Datei für die Azure-Nutzung und -Gebühren
 
@@ -126,10 +126,24 @@ UsageDate | Date
 UsageEnd | Date
 UsageStart | Date
 
-
 ## <a name="ensure-charges-are-correct"></a>Sicherstellen, dass Gebühren richtig sind
 
 Weitere Informationen über detaillierte Nutzung und Gebühren finden Sie in den Grundlegenden Informationen zur Rechnung nach [nutzungsbasierter Bezahlung (Pay-as-you-go)](review-individual-bill.md) oder [Microsoft-Kundenvereinbarung](review-customer-agreement-bill.md).
+
+## <a name="unexpected-usage-or-charges"></a>Unerwartete Nutzung oder Gebühren
+
+Wenn eine nicht erkannte Nutzung oder nicht erkannte Gebühren vorliegen, können Sie verschiedene Aktionen ausführen, um die Ursache dafür zu ermitteln:
+
+- Überprüfen der Rechnung mit Gebühren für die Ressource
+- Überprüfen der berechneten Gebühren in der Kostenanalyse
+- Ermitteln und Einbeziehen der für die Ressource zuständigen Personen
+- Analysieren der Überwachungsprotokolle
+- Analysieren von Benutzerberechtigungen für den übergeordneten Bereich der Ressource
+- Erstellen einer [Azure-Supportanfrage](https://go.microsoft.com/fwlink/?linkid=2083458) zum Ermitteln der Gebühren
+
+Weitere Informationen finden Sie unter [Analysieren unerwarteter Gebühren](analyze-unexpected-charges.md).
+
+Beachten Sie, dass die meisten Benutzeraktionen von Azure nicht protokolliert werden. Stattdessen protokolliert Microsoft die Ressourcennutzung für die Abrechnung. Wenn Sie eine Nutzungsspitze in der Vergangenheit erkennen und die Protokollierung nicht aktiviert war, kann Microsoft die Ursache nicht ermitteln. Aktivieren Sie die Protokollierung für den Dienst, für den Sie die erhöhte Nutzung anzeigen möchten, damit das entsprechende technische Team Ihnen bei dem Problem behilflich sein kann.
 
 ## <a name="need-help-contact-us"></a>Sie brauchen Hilfe? Wenden Sie sich an uns.
 

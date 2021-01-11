@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: quickstart
 ms.date: 11/15/2020
 ms.author: memildin
-ms.openlocfilehash: f5cf432e3824ca0bb441a458a08fc7353291cf1f
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: be8123d3c8a4acc684610aeaa9ee263c5defa17d
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96490056"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97813614"
 ---
 # <a name="auto-provisioning-agents-and-extensions-from-azure-security-center"></a>Automatische Bereitstellung von Agents und Erweiterungen aus Azure Security Center
 
@@ -30,6 +30,17 @@ Daten werden wie folgt gesammelt:
 > Mit dem Umfang von Security Center hat auch die Anzahl von Ressourcentypen zugenommen, die überwacht werden können. Zudem sind mehr Erweiterungen verfügbar. Die automatische Bereitstellung wurde erweitert, um durch die Nutzung der Funktionen von Azure Policy zusätzliche Ressourcentypen zu unterstützen.
 
 :::image type="content" source="./media/security-center-enable-data-collection/auto-provisioning-options.png" alt-text="Seite mit den Einstellungen für die automatische Bereitstellung in Security Center":::
+
+
+## <a name="availability"></a>Verfügbarkeit
+
+| Aspekt                  | Details                                                                                                                                                                                                                      |
+|-------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Status des Release:          | **Feature**: Die automatische Bereitstellung ist allgemein verfügbar (GA).<br>**Agent und Erweiterungen:** Der Log Analytics-Agent für virtuelle Azure-Computer ist allgemein verfügbar, der Microsoft Dependency-Agent befindet sich in der Vorschauversion, das Richtlinien-Add-On für Kubernetes ist allgemein verfügbar.                |
+| Preise:                | Kostenlos                                                                                                                                                                                                                         |
+| Unterstützte Ziele: | ![Ja](./media/icons/yes-icon.png) Azure-Computer<br>![Nein](./media/icons/no-icon.png) Azure Arc-Computer<br>![Nein](./media/icons/no-icon.png) Kubernetes-Knoten<br>![Nein](./media/icons/no-icon.png) Virtual Machine Scale Sets |
+| Clouds:                 | ![Ja](./media/icons/yes-icon.png) Kommerzielle Clouds<br>![Ja](./media/icons/yes-icon.png) US Gov, China Gov, andere Gov-Clouds                                                                                                      |
+|                         |                                                                                                                                                                                                                              |
 
 
 ## <a name="why-use-auto-provisioning"></a>Gründe für die Verwendung der automatischen Bereitstellung

@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 12/08/2020
 ms.author: mbaldwin
-ms.openlocfilehash: b5f4f3d2b3eda9f00049cee26ae95850d65257d6
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 729b6ccf1092679a71aa35f49be7d3199d4f4918
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96778868"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936276"
 ---
 # <a name="quickstart-create-a-key-vault-using-the-azure-portal"></a>Schnellstart: Erstellen eines Schlüsseltresors über das Azure-Portal
 
@@ -70,5 +70,5 @@ Wenn Sie die Ressourcen nicht mehr benötigen, löschen Sie die Ressourcengruppe
 In dieser Schnellstartanleitung haben Sie eine Key Vault-Instanz über das Azure-Portal erstellt. Weitere Informationen zu Key Vault und zur Integration in Ihre Anwendungen finden Sie in den folgenden Artikeln:
 
 - [Was ist der Azure-Schlüsseltresor?](overview.md)
+- [Azure Key Vault-Sicherheitsübersicht](security-overview.md)
 - [Entwicklerhandbuch zu Azure-Schlüsseltresor](developers-guide.md)
-- [Bewährte Methoden zum Verwenden von Key Vault](best-practices.md)

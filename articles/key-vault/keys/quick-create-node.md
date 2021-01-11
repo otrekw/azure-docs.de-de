@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: keys
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: 1b23fa9f9cbf7b385a04835149b5d53cc42351eb
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.openlocfilehash: db6bb5c204bfe79b9d7470f651081aa4f4dcf2ed
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97825899"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97932706"
 ---
 # <a name="quickstart-azure-key-vault-key-client-library-for-javascript-version-4"></a>Schnellstart: Azure Key Vault-Schlüsselclientbibliothek für JavaScript (Version 4)
 
@@ -91,7 +91,7 @@ set KEY_VAULT_NAME=<your-key-vault-name>
 ````
 Windows PowerShell
 ```powershell
-$Env:KEY_VAULT_NAME=<your-key-vault-name>
+$Env:KEY_VAULT_NAME="<your-key-vault-name>"
 ```
 
 macOS oder Linux
@@ -274,4 +274,4 @@ In dieser Schnellstartanleitung haben Sie einen Schlüsseltresor erstellt, einen
 - [Informationen zu Schlüsseln](about-keys.md)
 - [Sicherer Zugriff auf einen Schlüsseltresor](../general/secure-your-key-vault.md)
 - [Entwicklerhandbuch zu Azure-Schlüsseltresor](../general/developers-guide.md)
-- [Bewährte Methoden zum Verwenden von Key Vault](../general/best-practices.md)
+- [Azure Key Vault-Sicherheitsübersicht](../general/security-overview.md)

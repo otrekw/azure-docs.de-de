@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 06/30/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 33f7f407c1df45131b0ebb5b14e8fcad2626bffd
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 8243619bc7a32c5fa86b6e108d954674b54394e5
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87077540"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97913724"
 ---
 # <a name="quickstart-create-a-virtual-machine-scale-set-in-the-azure-portal"></a>Schnellstart: Erstellen einer VM-Skalierungsgruppe im Azure-Portal
 
@@ -60,13 +60,12 @@ Sie können eine Skalierungsgruppe mit einem Windows Server-Image oder Linux-Ima
 1. Stellen Sie auf der Registerkarte **Grundlagen** unter **Projektdetails** sicher, dass das richtige Abonnement ausgewählt ist, und wählen Sie dann **Neu erstellen** für „Ressourcengruppe“ aus. Geben Sie *myVMSSResourceGroup* als Name ein, und wählen Sie dann **OK** aus. 
 1. Geben Sie *myScaleSet* als Name für die Skalierungsgruppe ein.
 1. Wählen Sie unter **Region** eine Region in Ihrer Nähe aus.
-1. Übernehmen Sie für **Orchestrierungsmodus** den Standardwert **ScaleSet VMs** (Skalierungsgruppen-VMs).
 1. Wählen Sie unter **Image** ein Marketplace-Image aus. In diesem Beispiel wurde *Ubuntu Server 18.04 LTS* ausgewählt.
 1. Geben Sie den gewünschten Benutzernamen ein, und wählen Sie den bevorzugten Authentifizierungstyp aus.
    - Ein **Kennwort** muss 12 Zeichen lang sein und zur Erfüllung der Komplexitätsanforderungen drei der folgenden vier Elemente enthalten: einen Kleinbuchstaben, einen Großbuchstaben, eine Zahl und ein Sonderzeichen. Weitere Informationen finden Sie im Artikel zu den [Anforderungen an Benutzernamen und Kennwörter](../virtual-machines/windows/faq.md#what-are-the-username-requirements-when-creating-a-vm).
    - Wenn Sie ein Datenträgerimage für Linux-Betriebssysteme auswählen, können Sie stattdessen einen **öffentlichen SSH-Schlüssel** auswählen. Geben Sie nur Ihren öffentlichen Schlüssel an (z.B. *~/.ssh/id_rsa.pub*). Sie können Azure Cloud Shell aus dem Portal verwenden, um [SSH-Schlüssel zu erstellen und zu verwenden](../virtual-machines/linux/mac-create-ssh-keys.md).
    
-    ![Erstellen einer Skalierungsgruppe für virtuelle Computer](./media/virtual-machine-scale-sets-create-portal/quick-create-scaleset.png)
+    :::image type="content" source="./media/virtual-machine-scale-sets-create-portal/quick-create-scale-set.png" alt-text="Abbildung: Erstellungsoptionen für Skalierungsgruppen im Azure-Portal":::
 
 1. Wählen Sie **Weiter** aus, um mit den nächsten Seiten fortzufahren. 
 1. Übernehmen Sie auf den Seiten **Instanz** und **Datenträger** die Standardwerte.

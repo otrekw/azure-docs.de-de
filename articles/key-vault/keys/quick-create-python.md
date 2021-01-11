@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: keys
 ms.topic: quickstart
 ms.custom: devx-track-python, devx-track-azurecli
-ms.openlocfilehash: d3d5fd34ee6c1d73429af63693094acdaed6c9d2
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 7d1e4018382d26e4df289838ffbb03f1c87505e6
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92784608"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935018"
 ---
 # <a name="quickstart-azure-key-vault-keys-client-library-for-python"></a>Schnellstart: Azure Key Vault-Schlüsselclientbibliothek für Python
 
@@ -86,7 +86,7 @@ set KEY_VAULT_NAME=<your-key-vault-name>
 ````
 Windows PowerShell
 ```powershell
-$Env:KEY_VAULT_NAME=<your-key-vault-name>
+$Env:KEY_VAULT_NAME="<your-key-vault-name>"
 ```
 
 macOS oder Linux
@@ -98,7 +98,7 @@ export KEY_VAULT_NAME=<your-key-vault-name>
 
 Mit der Azure Key Vault-Schlüsselclientbibliothek für Python können Sie kryptografische Schlüssel verwalten. Im folgenden Codebeispiel wird gezeigt, wie Sie einen Client erstellen und einen Schlüssel festlegen, abrufen und löschen.
 
-Erstellen Sie eine Datei mit dem Namen *kv_keys.py* , die diesen Code enthält.
+Erstellen Sie eine Datei mit dem Namen *kv_keys.py*, die diesen Code enthält.
 
 ```python
 import os
@@ -211,5 +211,5 @@ az group delete --resource-group KeyVault-PythonQS-rg
 - [Übersicht über den Azure-Schlüsseltresor](../general/overview.md)
 - [Sicherer Zugriff auf einen Schlüsseltresor](../general/secure-your-key-vault.md)
 - [Entwicklerhandbuch zu Azure Key Vault](../general/developers-guide.md)
-- [Bewährte Methoden zum Verwenden von Key Vault](../general/best-practices.md)
+- [Key Vault-Sicherheitsübersicht](../general/security-overview.md)
 - [Authentifizieren mit Key Vault](../general/authentication.md)

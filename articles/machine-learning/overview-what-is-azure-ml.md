@@ -9,12 +9,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 11/04/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: 85080c018749f9aab716eff0a4527363da987007
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 53e6d6e67a90cd1f39aed7f9cd7c2368282b2d1f
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96620476"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97916591"
 ---
 # <a name="what-is-azure-machine-learning"></a>Was ist Azure Machine Learning?
 
@@ -118,7 +118,7 @@ Azure Machine Learning funktioniert mit anderen Diensten der Azure-Plattform und
 + __Virtuelle Azure-Netzwerke:__ Weitere Informationen finden Sie unter [Übersicht zu Isolation und Datenschutz bei virtuellen Netzwerken](how-to-network-security-overview.md).
 + __Azure Pipelines__. Weitere Informationen finden Sie unter [Trainieren und Bereitstellen von Machine Learning-Modellen](/azure/devops/pipelines/targets/azure-machine-learning).
 + __Git-Repository-Protokolle:__ Weitere Informationen finden Sie unter [Git-Integration für Azure Machine Learning](concept-train-model-git-integration.md).
-+ __MLFlow:__ Weitere Informationen finden Sie unter [Nachverfolgen von Metriken und Bereitstellen von Modellen mit MLflow und Azure Machine Learning (Vorschauversion)](how-to-use-mlflow.md). 
++ __MLFlow:__ Weitere Informationen finden Sie unter [Nachverfolgen von Experimentausführungen und Bereitstellen von ML-Modellen mit MLflow und Azure Machine Learning (Vorschauversion)](how-to-use-mlflow.md) und [Bereitstellen von MLflow-Modellen als Azure-Webdienste (Vorschauversion)](how-to-deploy-mlflow-models.md). 
 + __Kubeflow:__ Weitere Informationen finden Sie unter [Erstellen von End-to-End-Workflowpipelines](https://www.kubeflow.org/docs/azure/).
 
 ### <a name="secure-communications"></a>Sichere Kommunikation

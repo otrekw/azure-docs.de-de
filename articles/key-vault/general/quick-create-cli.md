@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: quickstart
 ms.date: 07/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: d84f500560031322cff32005b537037dc897919e
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: e29a692e3fdad1bea7132b3bed50444c7398ba46
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94516763"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936310"
 ---
 # <a name="quickstart-create-a-key-vault-using-the-azure-cli"></a>Schnellstart: Erstellen eines Schlüsseltresors über die Azure CLI
 
@@ -72,5 +72,6 @@ az group delete --name myResourceGroup
 In dieser Schnellstartanleitung haben Sie einen Schlüsseltresor erstellt und diesen gelöscht. Weitere Informationen zu Key Vault und zur Integration in Ihre Anwendungen finden Sie in den folgenden Artikeln:
 
 - [Was ist der Azure-Schlüsseltresor?](overview.md)
-- Sehen Sie sich die Referenz zu den [Azure CLI-Befehlen vom Typ „az keyvault“](/cli/azure/keyvault?view=azure-cli-latest) an.
-- [Bewährte Methoden zum Verwenden von Key Vault](best-practices.md)
+- [Azure Key Vault-Sicherheitsübersicht](security-overview.md)
+- Sehen Sie sich die Referenz zu den [Azure CLI-Befehlen vom Typ „az keyvault“](/cli/azure/keyvault) an.
+

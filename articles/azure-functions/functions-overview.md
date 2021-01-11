@@ -7,16 +7,16 @@ ms.topic: overview
 ms.date: 11/20/2020
 ms.author: cshoe
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: d0641129d641043f10cdb94d9e7f634fb35fbbef
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 41b627259d84539c868f95eb3cf33db5dbdab52c
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032999"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97862409"
 ---
 # <a name="introduction-to-azure-functions"></a>Einführung in Azure Functions
 
-Azure Functions ist eine serverlose Lösung, die es Ihnen ermöglicht, weniger Code zu schreiben, weniger Infrastruktur zu verwalten und Kosten zu sparen. Da durch die Cloudinfrastruktur alle aktuellen Server bereitgestellt werden, die zum Ausführen Ihrer Anwendungen benötigt werden, müssen Sie sich nicht mit der Bereitstellung und Wartung von Servern befassen.
+Azure Functions ist eine serverlose Lösung, die es Ihnen ermöglicht, weniger Code zu schreiben, weniger Infrastruktur zu verwalten und Kosten zu sparen. Da durch die Cloudinfrastruktur alle aktuellen Ressourcen bereitgestellt werden, die zum Ausführen Ihrer Anwendungen benötigt werden, müssen Sie sich nicht mit der Bereitstellung und Wartung von Servern befassen.
 
 Stattdessen können Sie sich ganz auf die Codeelemente konzentrieren, die für Sie am wichtigsten sind, und Azure Functions kümmert sich um den Rest.<br /><br />
 

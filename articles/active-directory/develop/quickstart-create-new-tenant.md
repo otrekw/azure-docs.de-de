@@ -13,12 +13,12 @@ ms.date: 03/12/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: 60d789c4297c400b812cd6c5c19c8c6148cb347d
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: f43cb80a148f5dadb409f506f237cb1210a2000a
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91575978"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97933998"
 ---
 # <a name="quickstart-set-up-a-tenant"></a>Schnellstart: Einrichten eines Mandanten
 
@@ -55,7 +55,7 @@ Viele Entwickler verfügen bereits aufgrund von Diensten oder Abonnements, die m
 > [!TIP]
 > Wenn Sie die Mandanten-ID ermitteln müssen, gehen Sie folgendermaßen vor:
 > * Zeigen Sie mit der Maus auf den Namen Ihres Kontos, um das Verzeichnis bzw. die Mandanten-ID abzurufen, oder
-> * Wählen Sie **Azure Active Directory > Eigenschaften > Verzeichnis-ID** im Azure-Portal aus.
+> * Wählen Sie im Azure-Portal **Azure Active Directory > Eigenschaften > Mandanten-ID** aus.
 
 Sollte Ihrem Konto kein vorhandener Mandant zugeordnet sein, wird unter Ihrem Kontonamen eine GUID angezeigt. In diesem Fall sind Aktionen wie das Registrieren von Apps erst möglich, nachdem Sie die im nächsten Abschnitt beschriebenen Schritte ausgeführt haben.
 

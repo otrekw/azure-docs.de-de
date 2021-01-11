@@ -5,12 +5,12 @@ ms.assetid: 94af2caf-a2ec-4415-a097-f60694b860b3
 ms.topic: overview
 ms.date: 07/06/2020
 ms.custom: devx-track-dotnet, mvc, seodec18
-ms.openlocfilehash: e9c49d472f6cf0b9f0e5b3e2f7728417034059b1
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: d59dfe5b0fe3268dcda20fbc83aa31bba8a8713b
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97007092"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936208"
 ---
 # <a name="app-service-overview"></a>App Service: Übersicht
 
@@ -45,6 +45,12 @@ Von App Service können Web-Apps für unterstützte Anwendungsstapel auch nativ 
 ### <a name="built-in-languages-and-frameworks"></a>Integrierte Sprachen und Frameworks
 
 Von App Service für Linux wird eine Reihe von sprachspezifischen integrierten Images unterstützt. Stellen Sie einfach Ihren Code bereit. Unterstützte Sprachen: Node.js, Java (JRE 8 und JRE 11), PHP, Python, .NET Core und Ruby. Führen Sie [`az webapp list-runtimes --linux`](/cli/azure/webapp#az-webapp-list-runtimes) aus, um die neuesten Sprachen und unterstützten Versionen anzuzeigen. Sollte die für Ihre Anwendung erforderliche Runtime in den integrierten Images nicht unterstützt werden, können Sie sie mit einem benutzerdefinierten Container bereitstellen.
+
+Veraltete Runtimes werden in regelmäßigen Abständen von den Blättern zum Erstellen und Konfigurieren von Web-Apps im Portal entfernt. Diese Runtimes werden im Portal ausgeblendet, wenn sie von der für die Wartung zuständigen Organisation als veraltet eingestuft werden oder wenn bedeutende Sicherheitsrisiken dafür ermittelt wurden. Diese Optionen werden ausgeblendet, damit Kunden zu den neuesten Runtimes gelangen, mit denen sie am besten arbeiten können. 
+
+Wenn eine veraltete Runtime im Portal ausgeblendet wird, werden alle vorhandenen Websites, die diese Version verwenden, weiterhin ausgeführt. Wird eine Runtime vollständig von der App Service-Plattform entfernt, erhalten die Azure-Abonnementbesitzer vor dem Entfernen eine E-Mail-Benachrichtigung.
+
+Wenn Sie eine weitere Web-App mit einer veralteten Runtimeversion erstellen müssen, die nicht mehr im Portal angezeigt wird, finden Sie in den Anleitungen zur Sprachkonfiguration Anweisungen dazu, wie Sie die Runtimeversion Ihrer Website erhalten. Sie können die Azure CLI verwenden, um eine andere Website mit derselben Runtime zu erstellen. Alternativ dazu können Sie im Portal auf dem Blatt „Web-App“ die Schaltfläche **Vorlage exportieren** verwenden, um eine ARM-Vorlage der Website zu exportieren. Sie können diese Vorlage wiederverwenden, um eine neue Website mit derselben Runtime und Konfiguration bereitzustellen.
 
 ### <a name="limitations"></a>Einschränkungen
 

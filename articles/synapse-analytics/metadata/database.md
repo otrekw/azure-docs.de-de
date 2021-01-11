@@ -10,18 +10,18 @@ ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 14ae8b8670db53761d085bc019711e829633601b
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 93602e522338166abac98c3e4a198e1aff392d21
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96451822"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934967"
 ---
 # <a name="azure-synapse-analytics-shared-database"></a>Gemeinsam genutzte Azure Synapse Analytics-Datenbank
 
-Azure Synapse Analytics ermöglicht den verschiedenen Berechnungsengines von Arbeitsbereichen die gemeinsame Nutzung von Datenbanken und Tabellen zwischen serverlosen Apache Spark-Pools und der Engine für serverlose SQL-Pools.
+Azure Synapse Analytics ermöglicht den verschiedenen Berechnungsengines von Arbeitsbereichen die gemeinsame Nutzung von Datenbanken und Tabellen. Derzeit werden die für die Apache Spark-Pools erstellten Datenbanken und Parquet-Tabellen automatisch für die Engine für serverlose SQL-Pools freigegeben.
 
-Eine mit einem Spark-Auftrag erstellte Datenbank wird mit dem gleichen Namen für alle aktuellen und zukünftigen Spark-Pools im Arbeitsbereich sichtbar (einschließlich der Engine für serverlose SQL-Pools).
+Eine mit einem Spark-Auftrag erstellte Datenbank wird mit dem gleichen Namen für alle aktuellen und zukünftigen Spark-Pools im Arbeitsbereich sichtbar (einschließlich der Engine für serverlose SQL-Pools). Sie können mithilfe des serverlosen SQL-Pools keine benutzerdefinierten Objekte (externe Tabellen, Ansichten, Prozeduren) direkt in dieser replizierten Datenbank hinzufügen.
 
 Die Spark-Standarddatenbank `default` wird ebenfalls im Kontext des serverlosen SQL-Pools als Datenbank namens `default` angezeigt.
 

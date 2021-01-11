@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019, devx-track-azurecli
 ms.date: 09/03/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 55a25f4f40668172aa8a9c80dd08d9fafcef78af
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: 2bb718d038dd7b3f5aa6f3bac1ce1de572c8e829
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94516475"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936361"
 ---
 # <a name="quickstart-set-and-retrieve-a-certificate-from-azure-key-vault-using-azure-cli"></a>Schnellstart: Festlegen und Abrufen eines Zertifikats aus Azure Key Vault mit der Azure CLI
 
@@ -91,4 +91,4 @@ In dieser Schnellstartanleitung haben Sie eine Key Vault-Instanz erstellt und e
 
 - [Was ist der Azure-Schlüsseltresor?](../general/overview.md)
 - Sehen Sie sich die Referenz zu den [Azure CLI-Befehlen vom Typ „az keyvault“](/cli/azure/keyvault?view=azure-cli-latest) an.
-- [Bewährte Methoden zum Verwenden von Key Vault](../general/best-practices.md)
+- [Azure Key Vault-Sicherheitsübersicht](../general/security-overview.md)

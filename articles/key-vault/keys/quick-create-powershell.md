@@ -9,12 +9,12 @@ ms.subservice: keys
 ms.topic: quickstart
 ms.date: 03/30/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 3cea28fa278bb699a7fb5aaa0c79bf1e71f59ac1
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: e3570a716eccf131cf19192454bfbc1008a6306e
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91940496"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935035"
 ---
 # <a name="quickstart-set-and-retrieve-a-key-from-azure-key-vault-using-azure-powershell"></a>Schnellstart: Festlegen eines Schlüssels und Abrufen des Schlüssels aus Azure Key Vault mit Azure PowerShell
 
@@ -94,4 +94,4 @@ In dieser Schnellstartanleitung haben Sie eine Key Vault-Instanz erstellt und e
 
 - [Was ist der Azure-Schlüsseltresor?](../general/overview.md)
 - Sehen Sie sich die Referenz zu den [Azure PowerShell-Cmdlets für Key Vault](/powershell/module/az.keyvault/) an.
-- [Bewährte Methoden zum Verwenden von Key Vault](../general/best-practices.md)
+- [Azure Key Vault-Sicherheitsübersicht](../general/security-overview.md)
