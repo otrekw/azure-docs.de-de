@@ -3,18 +3,20 @@ title: Migrieren zu einem Schlüssel einer Azure-Erstellungsressource
 titleSuffix: Azure Cognitive Services
 description: Dieser Artikel beschreibt die Migration der Erstellungsauthentifizierung von Language Understanding (LUIS) von einem E-Mail-Konto in eine Azure-Ressource.
 services: cognitive-services
+author: aahill
+ms.author: aahi
 manager: nitinme
-ms.custom: seodec18
+ms.custom: seodec18, contperf-fy21q2
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
-ms.date: 12/07/2020
-ms.openlocfilehash: 243c9834aa256e26d620c00ac0fa7a262919aabd
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.date: 12/14/2020
+ms.openlocfilehash: 086bc17938064571e8759ecda633fb5f87d1060f
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96762691"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97616812"
 ---
 # <a name="migrate-to-an-azure-resource-authoring-key"></a>Migrieren zu einem Schlüssel einer Azure-Erstellungsressource
 
@@ -26,41 +28,22 @@ Die Erstellungsauthentifizierung von Language Understanding (LUIS) wurde von ein
 
 ## <a name="what-is-migration"></a>Was ist Migration?
 
-Migration ist der Prozess des Änderns der Erstellungsauthentifizierung von einem E-Mail-Konto in eine Azure-Ressource. Ihr Konto wird nach der Migration mit einem Azure-Abonnement und einer Azure-Erstellungsressource verknüpft. *Alle LUIS-Benutzer (App-Besitzer und Projektmitarbeiter) müssen letztendlich migriert werden.*
+Migration ist der Prozess des Änderns der Erstellungsauthentifizierung von einem E-Mail-Konto in eine Azure-Ressource. Ihr Konto wird nach der Migration mit einem Azure-Abonnement und einer Azure-Erstellungsressource verknüpft.
 
-Eine Migration muss über das [LUIS-Portal](https://www.luis.ai) erfolgen. Wenn Sie die Erstellungsschlüssel beispielsweise mithilfe der LUIS-Befehlszeilenschnittstelle erstellen, müssen Sie den Migrationsvorgang trotzdem im LUIS-Portal abschließen. Nach einer Migration können Sie weiterhin Mitautoren bei Ihren Anwendungen haben, doch diese werden auf der Azure-Ressourcenebene hinzugefügt anstatt auf Anwendungsebene.
-
-> [!Note]
-> Vor der Migration werden Mitautoren auf der LUIS-App-Ebene als _Projektmitarbeiter_ bezeichnet. Nach der Migration wird die Azure-Rolle _Mitwirkender_ für dieselbe Funktionalität auf der Azure-Ressourcenebene verwendet.
-
-## <a name="notes-before-you-migrate"></a>Vor der Migration zu beachten
-
-* Die Migration kann nicht rückgängig gemacht werden.
-* Wenn Sie sich bei mehr als einem [LUIS-Portal für eine Region](./luis-reference-regions.md#luis-authoring-regions) angemeldet haben, werden Sie aufgefordert, in mehreren Regionen gleichzeitig zu migrieren.
-* Anwendungen werden automatisch zusammen mit Ihnen migriert, wenn Sie der Besitzer der Anwendung sind.
-* Der Besitzer kann keine Teilmenge zu migrierender Apps auswählen, und der Prozess kann nicht rückgängig gemacht werden.
-* Anwendungen verschwinden aus dem Konto des Projektmitarbeiters, nachdem der Besitzer migriert wurde.
-* Besitzer werden aufgefordert, E-Mails an Projektmitarbeiter zu senden, um sie über die Migration zu informieren.
-* Anwendungen werden nicht zusammen mit Ihnen migriert, wenn Sie ein Projektmitarbeiter der Anwendung sind. Die Projektmitarbeiter werden jedoch dazu aufgefordert, die erforderlichen Apps zu exportieren.
-* Es gibt keine Möglichkeit für einen Besitzer, herauszufinden, ob Projektmitarbeiter migriert wurden.
-* Eine Migration verschiebt Projektmitarbeiter nicht automatisch in die Azure-Erstellungsressource oder fügt sie zu dieser hinzu. Der App-Besitzer ist derjenige, der diesen Schritt nach der Migration ausführen muss. Dieser Schritt erfordert [Berechtigungen für die Azure-Erstellungsressource](./luis-how-to-collaborate.md).
-* Nachdem Projektmitarbeiter der Azure-Ressource zugewiesen wurden, müssen sie eine Migration durchführen, bevor sie auf Anwendungen zugreifen können. Andernfalls haben sie keinen Zugriff zum Erstellen der Anwendungen.
-* Ein migrierter Benutzer kann nicht als Projektmitarbeiter der Anwendung hinzugefügt werden.
-
+Eine Migration muss über das [LUIS-Portal](https://www.luis.ai) erfolgen. Wenn Sie die Erstellungsschlüssel beispielsweise mithilfe der LUIS-Befehlszeilenschnittstelle erstellen, müssen Sie den Migrationsvorgang trotzdem im LUIS-Portal abschließen. Nach einer Migration können Sie weiterhin Mitautoren bei Ihren Anwendungen haben, doch diese werden auf der Azure-Ressourcenebene hinzugefügt anstatt auf Anwendungsebene. Die Kontomigration kann nicht rückgängig gemacht werden.
 
 > [!Note]
-> Wenn Sie eine Vorhersageruntimeressource erstellen müssen, gibt es [einen gesonderten Prozess](luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal), um diese zu erstellen.
+> * Wenn Sie eine Vorhersageruntimeressource erstellen müssen, gibt es [einen gesonderten Prozess](luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal), um diese zu erstellen.
+> * Informationen zu den Auswirkungen auf Ihre Anwendungen und Mitwirkenden finden Sie weiter unten im Abschnitt [Migrationshinweise](#migration-notes). 
+> * Das Erstellen Ihrer LUIS-App ist kostenlos, wie der F0-Tarif zeigt. Hier finden Sie [weitere Informationen zu Tarifen](luis-limits.md#key-limits).
 
 ## <a name="migration-prerequisites"></a>Voraussetzungen für die Migration
 
-* Sie müssen einem gültigen Azure-Abonnement zugeordnet sein. Bitten Sie Ihren Mandantenadministrator, Sie dem Abonnement hinzuzufügen, oder [registrieren Sie sich für ein kostenloses Abonnement](https://azure.microsoft.com/free/cognitive-services).
-* Sie müssen eine LUIS Azure-Erstellungsressource im LUIS-Portal oder im [Azure-Portal](https://portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne) erstellen. Das Erstellen einer Erstellungsressource im LUIS-Portal ist Teil des im nächsten Abschnitt beschriebenen Migrationsprozesses.
-* Wenn Sie als Projektmitarbeiter an Anwendungen mitarbeiten, werden die Anwendungen nicht automatisch migriert. Sie werden aufgefordert, diese Apps zu exportieren, während Sie den Migrationsfluss durchlaufen. Sie können auch die [Export-API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40) verwenden. Sie können die App nach der Migration wieder zurück in LUIS importieren. Beim Importvorgang wird eine neue App mit einer neuen App-ID erstellt, deren Besitzer Sie sind.
+* Ein gültiges Azure-Abonnement. Bitten Sie Ihren Mandantenadministrator, Sie dem Abonnement hinzuzufügen, oder [registrieren Sie sich für ein kostenloses Abonnement](https://azure.microsoft.com/free/cognitive-services).
+* Eine LUIS-Azure-Erstellungsressource aus dem LUIS-Portal oder aus dem [Azure-Portal](https://portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne). 
+    * Das Erstellen einer Erstellungsressource im LUIS-Portal ist Teil des im nächsten Abschnitt beschriebenen Migrationsprozesses.
+* Wenn Sie als Projektmitarbeiter an Anwendungen mitarbeiten, werden die Anwendungen nicht automatisch migriert. Sie werden aufgefordert, diese Apps zu exportieren, während Sie den Migrationsfluss durchlaufen. Sie können auch die [Export-API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40) verwenden. Sie können die App nach der Migration wieder zurück in LUIS importieren. Beim Importvorgang wird eine neue App mit einer neuen App-ID erstellt, deren Besitzer Sie sind.        
 * Wenn Sie der Besitzer der Anwendung sind, müssen Sie Ihre Apps nicht exportieren, da sie automatisch migriert werden. Eine E-Mail-Vorlage mit einer Liste aller Projektmitarbeiter für die einzelnen Anwendung wird zur Verfügung gestellt, sodass sie über den Migrationsprozess benachrichtigt werden können.
-
-> [!Note]
-> Das Erstellen Ihrer LUIS-App ist kostenlos, wie der F0-Tarif zeigt. Hier finden Sie [weitere Informationen zu Tarifen](luis-limits.md#key-limits).
-
 
 ## <a name="migration-steps"></a>Schritte bei der Migration
 
@@ -69,7 +52,7 @@ Eine Migration muss über das [LUIS-Portal](https://www.luis.ai) erfolgen. Wenn 
     > [!div class="mx-imgBorder"]
     > ![Migrationsfenster: Einführung](./media/migrate-authoring-key/notify-azure-migration.png)
 
-2. Wenn Sie bei einer Ihrer Apps über Projektmitarbeiter verfügen, wird eine Liste mit den Namen der Anwendungen angezeigt, die sich in Ihrem Besitz befinden, zusammen mit der Erstellungsregion und den E-Mails der Projektmitarbeiter zu den einzelnen Anwendungen. Wir empfehlen Ihnen, Ihre Projektmitarbeiter per E-Mail über die Migration zu informieren, indem Sie auf die Symbolschaltfläche **Senden** links neben dem Namen der Anwendung klicken.
+2. Wenn Projektmitarbeiter für Ihre Apps vorhanden sind, wird eine Liste mit den Namen der Anwendungen angezeigt, die sich in Ihrem Besitz befinden. Außerdem werden die Erstellungsregion und die E-Mail-Adressen der Projektmitarbeiter für die jeweilige Anwendung angezeigt. Wir empfehlen Ihnen, Ihre Projektmitarbeiter per E-Mail über die Migration zu informieren, indem Sie auf die Symbolschaltfläche **Senden** links neben dem Namen der Anwendung klicken.
 Ein `*`-Symbol wird neben dem Namen der Anwendung angezeigt, wenn ein Projektmitarbeiter Ihrer Anwendung eine Vorhersageressource zugewiesen hat. Nach der Migration werden diesen Apps weiterhin diese Vorhersageressourcen zugewiesen, auch wenn die Projektmitarbeiter keinen Zugriff auf Ihre Anwendungen haben. Diese Zuweisung wird jedoch aufgehoben, wenn der Besitzer der Vorhersageressource [die Schlüssel](./luis-how-to-azure-subscription.md#regenerate-an-azure-key) über das Azure-Portal neu generiert hat.  
 
    > [!div class="mx-imgBorder"]
@@ -117,6 +100,15 @@ Ein `*`-Symbol wird neben dem Anwendungsnamen angezeigt, wenn Sie einer Anwendun
 
 6. Nachdem Sie in allen Regionen erfolgreich migriert sind, klicken Sie auf „Fertig stellen“. Sie haben jetzt Zugriff auf Ihre Anwendungen. Sie können weiterhin alle Ihre Anwendungen in allen Regionen innerhalb des Portals erstellen und verwalten.
 
+## <a name="migration-notes"></a>Migrationshinweise
+
+* Vor der Migration werden Mitautoren auf der LUIS-App-Ebene als _Projektmitarbeiter_ bezeichnet. Nach der Migration wird die Azure-Rolle _Mitwirkender_ für dieselbe Funktionalität auf der Azure-Ressourcenebene verwendet.
+* Wenn Sie sich bei mehr als einem [LUIS-Portal für eine Region](./luis-reference-regions.md#luis-authoring-regions) angemeldet haben, werden Sie aufgefordert, in mehreren Regionen gleichzeitig zu migrieren.
+* Anwendungen werden automatisch zusammen mit Ihnen migriert, wenn Sie der Besitzer der Anwendung sind. Anwendungen werden nicht zusammen mit Ihnen migriert, wenn Sie ein Projektmitarbeiter der Anwendung sind. Die Projektmitarbeiter werden jedoch dazu aufgefordert, die erforderlichen Apps zu exportieren.
+* Anwendungsbesitzer können keine Teilmenge der zu migrierenden Apps auswählen, und es gibt keine Möglichkeit für einen Besitzer, zu ermitteln, ob Projektmitarbeiter die Migration durchgeführt haben.
+* Eine Migration verschiebt Projektmitarbeiter nicht automatisch in die Azure-Erstellungsressource oder fügt sie zu dieser hinzu. Der App-Besitzer ist derjenige, der diesen Schritt nach der Migration ausführen muss. Dieser Schritt erfordert [Berechtigungen für die Azure-Erstellungsressource](./luis-how-to-collaborate.md).
+* Nachdem Mitwirkende der Azure-Ressource zugewiesen wurden, müssen sie eine Migration durchführen, bevor sie auf Anwendungen zugreifen können. Andernfalls haben sie keinen Zugriff zum Erstellen der Anwendungen.
+
 
 ## <a name="using-apps-after-migration"></a>Verwenden von Apps nach der Migration
 
@@ -139,7 +131,6 @@ Sie können einer Erstellungsressource Mitwirkende hinzufügen, indem Sie im Azu
 
 > [!Note]
 > Wenn der Besitzer der LUIS-App migriert ist und den Projektmitarbeiter als Mitwirkenden an der Azure-Ressource hinzugefügt hat, hat der Mitwirkende bis zur eigenen Migration noch keinen Zugriff auf die App.
-
 
 ## <a name="troubleshooting-the-migration-process"></a>Problembehandlung des Migrationsprozesses
 

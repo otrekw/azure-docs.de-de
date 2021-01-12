@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 6830bdd38e8e1f1d649673cfdaf48e8c50ba6c3e
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: b9a41f4d4bb10599d50e58ad6f08d61aaba7ecfc
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94413223"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608781"
 ---
 # <a name="create-the-azure-arc-data-controller"></a>Erstellen des Azure Arc-Datencontrollers
 
@@ -36,7 +36,7 @@ Derzeit werden die folgenden Kubernetes-Dienste und -Distributionen unterstützt
 - Open-Source-Upstreamversion von Kubernetes – in der Regel mit kubeadm bereitgestellt
 
 > [!IMPORTANT]
-> * Die unterstützte Mindestversion von Kubernetes ist v1.17.
+> * Die unterstützte Mindestversion von Kubernetes ist v1.17. Weitere Informationen finden Sie unter [Bekannte Probleme](./release-notes.md#known-issues). 
 > * Die unterstützte Mindestversion von OCP ist 4.3.
 > * Unter [Konnektivitätsanforderungen](connectivity.md) erfahren Sie, welche Konnektivität zwischen Ihrer Umgebung und Azure erforderlich ist.
 > * Informationen zum Konfigurieren Ihres beständigen Speichers finden Sie in der [Anleitung zur Speicherkonfiguration](storage-configuration.md).
@@ -64,10 +64,10 @@ Unabhängig von der gewählten Option müssen Sie während der Erstellung die fo
 Es gibt mehrere Optionen zum Erstellen des Azure Arc-Datencontrollers:
 
 > **Möchten Sie es selbst ausprobieren?**  
-> Mit dem [Azure Arc-Schnelleinstieg](https://github.com/microsoft/azure_arc#azure-arc-enabled-data-services) für Azure Kubernetes Service (AKS), AWS Elastic Kubernetes Service (EKS), Google Cloud Kubernetes Engine (GKE) oder auf einer Azure-VM können Sie schnell die ersten Schritte unternehmen.
+> Mit dem [Azure Arc-Schnelleinstieg](https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_data/) für Azure Kubernetes Service (AKS), AWS Elastic Kubernetes Service (EKS), Google Cloud Kubernetes Engine (GKE) oder auf einer Azure-VM können Sie schnell die ersten Schritte unternehmen.
 > 
 - [Erstellen eines Datencontrollers mit [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]](create-data-controller-using-azdata.md)
 - [Erstellen eines Datencontrollers mit Azure Data Studio](create-data-controller-azure-data-studio.md)
 - [Erstellen eines Datencontrollers über das Azure-Portal mithilfe eines Jupyter Notebooks in Azure Data Studio](create-data-controller-resource-in-azure-portal.md)
 - [Erstellen eines Datencontrollers mit Kubernetes-Tools wie kubectl oder oc](create-data-controller-using-kubernetes-native-tools.md)
-- [Erstellen eines Datencontrollers mit dem Azure Arc-Schnelleinstieg für eine beschleunigte Testbereitstellung](https://github.com/microsoft/azure_arc#azure-arc-enabled-data-services)
+- [Erstellen eines Datencontrollers mit dem Azure Arc-Schnelleinstieg für eine beschleunigte Testbereitstellung](https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_data/)

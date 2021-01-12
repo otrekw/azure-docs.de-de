@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 03/20/2020
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: b7730558e2a660b0cf00a5b6962d1e2275dd472c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 799699662b738804790e3fe18ce9bd579027808d
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96004342"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97616314"
 ---
 # <a name="continuous-deployment-to-azure-app-service"></a>Continuous Deployment in Azure App Service
 
@@ -96,7 +96,7 @@ Wenn Ihr Konto über die erforderlichen Berechtigungen verfügt, können Sie Azu
 
 Damit Azure App Service Continuous Delivery mithilfe von Azure Pipelines einrichten kann, sollte Ihre Azure DevOps-Organisation folgende Berechtigungen besitzen: 
 
-- Ihr Azure-Konto muss über Berechtigungen zum Schreiben in Azure Active Directory und zum Erstellen eines Diensts verfügen. 
+- Ihr Azure-Konto muss über Berechtigungen zum Schreiben in Azure Active Directory und zum Erstellen einer App-Registrierung verfügen. 
   
 - Ihr Azure-Konto muss in Ihrem Azure-Abonnement über die Rolle **Besitzer** verfügen.
 

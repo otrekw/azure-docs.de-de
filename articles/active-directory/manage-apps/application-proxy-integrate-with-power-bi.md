@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c3188571e9188add7bc8f4f4d07ea5a562a79b3
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 8d4515d6140123e8e8784fc2d828242d49c59fc4
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658110"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97616897"
 ---
 # <a name="enable-remote-access-to-power-bi-mobile-with-azure-ad-application-proxy"></a>Ermöglichen des Remotezugriffs auf Power BI Mobile mit dem Azure AD-Anwendungsproxy
 
@@ -153,6 +153,8 @@ Sie können Microsoft Intune verwenden, um die von Ihrem Personal verwendeten Cl
 ## <a name="troubleshooting"></a>Problembehandlung
 
 Sollte die Anwendung eine Fehlerseite zurückgeben, wenn mehrere Minuten lang versucht wird, einen Bericht zu laden, müssen ggf. die Timeouteinstellungen geändert werden. Der Anwendungsproxy unterstützt standardmäßig Anwendungen, die bis zu 85 Sekunden benötigen, um auf eine Anforderung zu reagieren. Diese Einstellung kann auf 180 Sekunden erhöht werden. Legen Sie hierzu das Back-End-Timeout auf der Einstellungsseite des App-Proxys für die Anwendung auf **Lang** fest. Tipps zur Erstellung schneller und zuverlässiger Berichte finden Sie unter [Bewährte Methoden für die Power BI-Leistung](/power-bi/power-bi-reports-performance).
+
+Die Verwendung eines Azure AD-Anwendungsproxys zum Aktivieren der mobilen Power BI-App zum Herstellen einer Verbindung mit dem lokalen Power BI-Berichtsserver wird nicht mit Richtlinien für den bedingten Zugriff unterstützt, die die Microsoft Power BI-App als genehmigte Client-App benötigen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

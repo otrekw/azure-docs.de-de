@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: mbullwin
-ms.openlocfilehash: b02ccea396fc65f9ecfe1d59e953da7440e87951
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 9457c610b256dd4602ef0dc51a47eeffb3c63b49
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94363642"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97705148"
 ---
 # <a name="best-practices-for-using-the-anomaly-detector-api"></a>Best Practices bei der Verwendung der Anomalieerkennungs-API
 
@@ -104,4 +104,4 @@ Wenn Ihre Streamingdaten in einem kurzen Intervall (wie Sekunden oder Minuten) e
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Was ist die Anomalieerkennungs-API?](../overview.md)
-* [Schnellstart: Erkennen von Anomalien in Ihren Zeitreihendaten mit der Anomalieerkennungs-REST-API](../quickstarts/detect-data-anomalies-csharp.md)
+* [Schnellstart: Verwenden der Anomalieerkennungs-Clientbibliothek](../quickstarts/client-libraries.md)

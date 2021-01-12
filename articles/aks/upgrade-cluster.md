@@ -3,17 +3,17 @@ title: Durchführen eines Upgrades für einen Azure Kubernetes Service-Cluster (
 description: Erfahren Sie, wie Sie das Upgrade eines Azure Kubernetes Service-Clusters (AKS) vornehmen, um die neuesten Funktionen und Sicherheitsupdates zu erhalten.
 services: container-service
 ms.topic: article
-ms.date: 11/17/2020
-ms.openlocfilehash: c5de1a02a077ccb5f46b685572c6c43f5951b224
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.date: 12/17/2020
+ms.openlocfilehash: 947d669d436308a550bce31f04c7b1a2b8a8485a
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96751494"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97734351"
 ---
 # <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>Durchführen eines Upgrades für einen Azure Kubernetes Service-Cluster (AKS)
 
-Im Verlauf des Lebenszyklus eines AKS-Clusters müssen Sie häufig ein Upgrade auf die neueste Kubernetes-Version vornehmen. Es ist wichtig, jeweils die aktuelle Kubernetes-Sicherheitsversion anzuwenden oder bei einem Upgrade die neuesten Features zu erhalten. In diesem Artikel wird veranschaulicht, wie Sie die Masterkomponenten oder einen einzelnen Standardknotenpool in einem AKS-Cluster aktualisieren.
+Im Rahmen des AKS-Clusterlebenszyklus müssen regelmäßige Upgrades auf die aktuelle Kubernetes-Version ausgeführt werden. Es ist wichtig, jeweils die aktuellen Sicherheitsversionen anzuwenden oder bei einem Upgrade die neuesten Features zu erhalten. In diesem Artikel wird veranschaulicht, wie Sie die Masterkomponenten oder einen einzelnen Standardknotenpool in einem AKS-Cluster aktualisieren.
 
 Informationen zu AKS-Clustern, für die mehrere Knotenpools oder Windows Server-Knoten verwendet werden, finden Sie unter [Durchführen eines Upgrades für einen Knotenpool in AKS][nodepool-upgrade].
 
@@ -26,27 +26,26 @@ Der Artikel setzt voraus, dass Sie mindestens Version 2.0.65 der Azure-Befehlsze
 
 ## <a name="check-for-available-aks-cluster-upgrades"></a>Suchen nach verfügbaren AKS-Clusterupgrades
 
-Überprüfen Sie mithilfe des Befehls [az aks get-upgrades][az-aks-get-upgrades], welche Kubernetes-Versionen für Ihren Cluster verfügbar sind. Im folgenden Beispiel werden für den Cluster namens *myAKSCluster* in der Ressourcengruppe namens *myResourceGroup* verfügbare Upgrades gesucht:
+Überprüfen Sie mithilfe des Befehls [az aks get-upgrades][az-aks-get-upgrades], welche Kubernetes-Versionen für Ihren Cluster verfügbar sind. Im folgenden Beispiel wird nach verfügbaren Upgrades für *myAKSCluster* in *myResourceGroup* gesucht:
 
 ```azurecli-interactive
 az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster --output table
 ```
 
 > [!NOTE]
-> Beim Upgrade eines unterstützten AKS-Clusters können Nebenversionen von Kubernetes nicht übersprungen werden. Beispielsweise sind Upgrades von *1.12.x* -> *1.13.x* oder *1.13.x* -> *1.14.x* zulässig, ein Upgrade von *1.12.x* -> *1.14.x* ist jedoch nicht möglich.
->
-> Zum Durchführen eines Upgrades von *1.12.x* -> *1.14.x* müssen Sie zuerst ein Upgrade von *1.12.x* -> *1.13.x* und dann ein Upgrade von *1.13.x* -> *1.14.x* durchführen.
->
-> Das Überspringen mehrerer Versionen ist nur möglich, wenn ein Upgrade von einer nicht unterstützten Version auf eine unterstützte Version erfolgt. Beispielsweise kann ein Upgrade von einer nicht unterstützten Version *1.10.x* auf eine unterstützte Version *1.15.x* durchgeführt werden.
+> Beim Upgrade eines unterstützten AKS-Clusters können Nebenversionen von Kubernetes nicht übersprungen werden. Alle Upgrades müssen nacheinander nach der Hauptversionsnummer ausgeführt werden. Beispielsweise sind Upgrades von *1.14.x* -> *1.15.x* oder *1.15.x* -> *1.16.x* zulässig, ein Upgrade von *1.14.x* -> *1.16.x* ist jedoch nicht möglich. 
+> > Das Überspringen mehrerer Versionen ist nur möglich, wenn ein Upgrade von einer _nicht unterstützten Version_ auf eine _unterstützte Version_ erfolgt. Beispielsweise kann ein Upgrade von einer nicht unterstützten Version *1.10.x* auf eine unterstützte Version *1.15.x* durchgeführt werden.
 
-Die Ausgabe im folgenden Beispiel zeigt, dass der Cluster auf die Versionen *1.13.9* und *1.13.10* aktualisiert werden kann:
+Die Ausgabe im folgenden Beispiel zeigt, dass der Cluster auf die Versionen *1.19.1* und *1.19.3* aktualisiert werden kann:
 
 ```console
-Name     ResourceGroup     MasterVersion    NodePoolVersion    Upgrades
--------  ----------------  ---------------  -----------------  ---------------
-default  myResourceGroup   1.12.8           1.12.8             1.13.9, 1.13.10
+Name     ResourceGroup    MasterVersion    Upgrades
+-------  ---------------  ---------------  --------------
+default  myResourceGroup  1.18.10          1.19.1, 1.19.3
 ```
-Wenn kein Upgrade verfügbar ist, erhalten Sie Folgendes:
+
+Wenn kein Upgrade verfügbar ist, wird folgende Meldung angezeigt:
+
 ```console
 ERROR: Table output unavailable. Use the --query option to specify an appropriate query. Use --debug for more info.
 ```
@@ -66,16 +65,6 @@ Für den maximalen Anstieg akzeptiert AKS sowohl ganzzahlige Werte als auch eine
 
 Während eines Upgrades kann der maximale Anstiegswert mindestens „1“ betragen und maximal der Anzahl von Knoten in Ihrem Knotenpool entsprechen. Sie können größere Werte festlegen, aber die maximale Anzahl von Knoten, die für den maximalen Anstieg verwendet wird, ist nicht größer als die Anzahl der Knoten im Pool zum Zeitpunkt des Upgrades.
 
-Bis zur CLI-Version 2.16.0+ benötigen Sie die CLI-Erweiterung *aks-preview*, um den maximalen Anstieg verwenden zu können. Verwenden Sie den Befehl [az extension add][az-extension-add], und suchen Sie dann mit dem Befehl [az extension update][az-extension-update] nach verfügbaren Updates:
-
-```azurecli-interactive
-# Install the aks-preview extension
-az extension add --name aks-preview
-
-# Update the extension to make sure you have the latest version installed
-az extension update --name aks-preview
-```
-
 > [!Important]
 > Die Einstellung des maximalen Anstiegs für einen Knotenpools ist permanent.  Diese Einstellung wird bei nachfolgenden Kubernetes-Upgrades oder bei Knotenversionsupgrades verwendet. Sie können den maximalen Anstiegswert für Ihre Knotenpools jederzeit ändern. Für Produktionsknotenpools wird ein maximaler Anstiegswert von 33 % empfohlen.
 
@@ -93,7 +82,12 @@ az aks nodepool update -n mynodepool -g MyResourceGroup --cluster-name MyManaged
 
 ## <a name="upgrade-an-aks-cluster"></a>Aktualisieren eines AKS-Clusters
 
-Wenn Sie die Liste der verfügbaren Versionen für Ihren AKS-Cluster angezeigt haben, verwenden Sie den Befehl [az aks upgrade][az-aks-upgrade], um den Cluster zu aktualisieren. Während des Upgradevorgangs fügt AKS dem Cluster, auf dem die angegebene Kubernetes-Version ausgeführt wird, einen neuen Pufferknoten (oder die in [max surge](#customize-node-surge-upgrade) konfigurierte Anzahl von Knoten) hinzu. Anschließend wird einer der alten Knoten [abgesperrt und ausgeglichen][kubernetes-drain], um Unterbrechungen bei der Ausführung von Anwendungen zu minimieren. (Wenn Sie „max surge“ verwenden, werden so viele Knoten gleichzeitig [abgesperrt und ausgeglichen][kubernetes-drain], wie als Anzahl der angegebenen Pufferknoten angegeben wurde.) Wenn der alte Knoten vollständig ausgeglichen wurde, wird für diesen ein Reimaging durchgeführt, damit er die neue Version erhält, und er wird zum Pufferknoten, damit der folgende Knoten aktualisiert werden kann. Dieser Prozess wird wiederholt, bis alle Knoten im Cluster aktualisiert wurden. Am Ende des Vorgangs wird der letzte Pufferknoten gelöscht, um die Anzahl der vorhandenen Agent-Knoten und die Zonenbalance beizubehalten.
+Wenn Sie die Liste der verfügbaren Versionen für Ihren AKS-Cluster angezeigt haben, verwenden Sie den Befehl [az aks upgrade][az-aks-upgrade], um den Cluster zu aktualisieren. Während des Upgrades geschieht Folgendes: 
+- AKS fügt dem Cluster, auf dem die angegebene Kubernetes-Version ausgeführt wird, einen neuen Pufferknoten (oder die in [max surge](#customize-node-surge-upgrade) konfigurierte Anzahl von Knoten) hinzu. 
+- Einer der alten Knoten wird [abgesperrt und ausgeglichen][kubernetes-drain], um Unterbrechungen bei der Ausführung von Anwendungen zu minimieren. (Wenn Sie „max surge“ verwenden, werden so viele Knoten gleichzeitig [abgesperrt und ausgeglichen][kubernetes-drain], wie als Anzahl der angegebenen Pufferknoten angegeben wurde.) 
+- Wenn der alte Knoten vollständig ausgeglichen wurde, wird für diesen ein Reimaging durchgeführt, damit er die neue Version erhält, und er wird zum Pufferknoten, damit der folgende Knoten aktualisiert werden kann. 
+- Dieser Prozess wird wiederholt, bis alle Knoten im Cluster aktualisiert wurden. 
+- Am Ende des Vorgangs wird der letzte Pufferknoten gelöscht, um die Anzahl der vorhandenen Agent-Knoten und die Zonenbalance beizubehalten.
 
 ```azurecli-interactive
 az aks upgrade \
@@ -118,18 +112,20 @@ Die Ausgabe im folgenden Beispiel zeigt, dass im Cluster nun Version *1.13.10* a
 
 ```json
 Name          Location    ResourceGroup    KubernetesVersion    ProvisioningState    Fqdn
-------------  ----------  ---------------  -------------------  -------------------  ---------------------------------------------------------------
-myAKSCluster  eastus      myResourceGroup  1.13.10               Succeeded            myaksclust-myresourcegroup-19da35-90efab95.hcp.eastus.azmk8s.io
+------------  ----------  ---------------  -------------------  -------------------  ----------------------------------------------
+myAKSCluster  eastus      myResourceGroup  1.18.10              Succeeded            myakscluster-dns-379cbbb9.hcp.eastus.azmk8s.io
 ```
 
-## <a name="set-auto-upgrade-channel-preview"></a>Festlegen des Kanals für automatische Upgrades (Vorschau)
+## <a name="set-auto-upgrade-channel"></a>Festlegen des Kanals für automatische Upgrades
 
 Zusätzlich zum Ausführen von manuellen Upgrades eines Clusters können Sie für den Cluster auch einen Kanal für automatische Upgrades festlegen. Folgende Upgradekanäle sind verfügbar:
 
-* *Kein*: Damit werden automatische Upgrades deaktiviert, und die aktuelle Kubernetes-Version des Clusters wird beibehalten. Dies ist die Standardeinstellung, die verwendet wird, wenn keine andere Option angegeben wird.
-* *Patch*: Hiermit wird automatisch ein Upgrade des Clusters auf die neueste unterstützte Patchversion durchgeführt, sobald dieses verfügbar wird. Die Nebenversion wird beibehalten. Ein Beispiel: Auf einem Cluster wird derzeit Version *1.17.7* ausgeführt, und die Versionen *1.17.9*, *1.18.4*, *1.18.6* und *1.19.1* sind verfügbar. In diesem Fall wird ein Upgrade auf *1.17.9* ausgeführt.
-* *Stabil*: In diesem Kanal wird automatisch ein Upgrade des Clusters auf die neueste unterstützte Patchversion der Nebenversion *N-1* ausgeführt. *N* steht dabei für die neueste unterstützte Nebenversion. Ein Beispiel: Auf einem Cluster wird derzeit Version *1.17.7* ausgeführt, und die Versionen *1.17.9*, *1.18.4*, *1.18.6* und *1.19.1* sind verfügbar. In diesem Fall wird ein Upgrade auf *1.18.6* ausgeführt.
-* *Schnell*: In diesem Kanal wird automatisch ein Upgrade des Clusters auf die neueste unterstützte Patchversion der neuesten unterstützten Nebenversion ausgeführt. Falls der Cluster eine Kubernetes-Version mit Nebenversion *N-2* aufweist, wobei *N* für die neueste unterstützte Nebenversion steht, wird zuerst ein Upgrade des Clusters auf die neueste unterstützte Patchversion der Nebenversion *N-1* ausgeführt. Ein Beispiel: Auf einem Cluster wird derzeit Version *1.17.7* ausgeführt, und die Versionen *1.17.9*, *1.18.4*, *1.18.6* und *1.19.1* sind verfügbar. In diesem Fall wird zuerst ein Upgrade auf *1.18.6* und dann ein Upgrade auf *1.19.1* ausgeführt.
+|Kanal| Aktion | Beispiel
+|---|---|---|
+| `none`| Automatische Upgrades werden deaktiviert, und die aktuelle Kubernetes-Version des Clusters wird beibehalten.| Standardeinstellung, falls keine Änderung vorgenommen wird|
+| `patch`| Es wird automatisch ein Upgrade des Clusters auf die neueste unterstützte Patchversion durchgeführt, sobald dieses verfügbar wird. Die Nebenversion wird beibehalten.| Ein Beispiel: In einem Cluster wird derzeit Version *1.17.7* ausgeführt, und die Versionen *1.17.9*, *1.18.4*, *1.18.6* und *1.19.1* sind verfügbar. In diesem Fall wird ein Upgrade auf *1.17.9* ausgeführt.|
+| `stable`| In diesem Kanal wird automatisch ein Upgrade des Clusters auf die neueste unterstützte Patchversion der Nebenversion *N-1* ausgeführt. *N* steht dabei für die neueste unterstützte Nebenversion.| Ein Beispiel: Auf einem Cluster wird derzeit Version *1.17.7* ausgeführt, und die Versionen *1.17.9*, *1.18.4*, *1.18.6* und *1.19.1* sind verfügbar. In diesem Fall wird ein Upgrade auf *1.18.6* ausgeführt.
+| `rapid`| In diesem Kanal wird automatisch ein Upgrade des Clusters auf die neueste unterstützte Patchversion der neuesten unterstützten Nebenversion ausgeführt.| Falls der Cluster eine Kubernetes-Version mit Nebenversion *N-2* aufweist, wobei *N* für die neueste unterstützte Nebenversion steht, wird zuerst ein Upgrade des Clusters auf die neueste unterstützte Patchversion der Nebenversion *N-1* ausgeführt. Ein Beispiel: Auf einem Cluster wird derzeit Version *1.17.7* ausgeführt, und die Versionen *1.17.9*, *1.18.4*, *1.18.6* und *1.19.1* sind verfügbar. In diesem Fall wird zuerst ein Upgrade auf *1.18.6* und dann ein Upgrade auf *1.19.1* ausgeführt.
 
 > [!NOTE]
 > Bei den automatischen Clusterupgrades wird immer nur auf Kubernetes-Versionen mit allgemeiner Verfügbarkeit aktualisiert, niemals auf Vorschauversionen.
@@ -156,16 +152,6 @@ Wenn der Vorgang abgeschlossen ist, können Sie die Registrierung des *Microsoft
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerService
-```
-
-Verwenden Sie den Befehl [az extension add][az-extension-add], um die Erweiterung *aks-preview* zu installieren, und suchen Sie dann mit dem Befehl [az extension update][az-extension-update] nach verfügbaren Updates:
-
-```azurecli-interactive
-# Install the aks-preview extension
-az extension add --name aks-preview
-
-# Update the extension to make sure you have the latest version installed
-az extension update --name aks-preview
 ```
 
 Um beim Erstellen eines Clusters den automatischen Upgradekanal festzulegen, verwenden Sie den Parameter *auto-upgrade-channel*, wie im folgenden Beispiel gezeigt.

@@ -6,14 +6,14 @@ ms.author: sidram
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 03/19/2020
+ms.date: 12/21/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 14f7462aec65d2a13eb36b291331c347b995d281
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 01c85311c9ea49be3543edee405cdd66a0659797
+ms.sourcegitcommit: a89a517622a3886b3a44ed42839d41a301c786e0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130679"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97733004"
 ---
 # <a name="integrate-azure-stream-analytics-with-azure-machine-learning-preview"></a>Integrieren von Azure Stream Analytics mit Azure Machine Learning (Vorschau)
 
@@ -83,7 +83,7 @@ INTO output
 FROM input
 ```
 
-Stream Analytics unterstützt bei Azure Machine Learning-Funktionen nur die Übergabe eines Parameters. Sie müssen Ihre Daten möglicherweise vorbereiten, bevor Sie sie als Eingabe an eine benutzerdefinierte Machine Learning-Funktion übergeben können.
+Stream Analytics unterstützt bei Azure Machine Learning-Funktionen nur die Übergabe eines Parameters. Sie müssen Ihre Daten möglicherweise vorbereiten, bevor Sie sie als Eingabe an eine benutzerdefinierte Machine Learning-Funktion übergeben können. Sie müssen sicherstellen, dass die Eingabe in einer benutzerdefinierten ML-Funktion nicht NULL ist, da NULL-Eingaben zu einem Fehler des Auftrags führen.
 
 ## <a name="pass-multiple-input-parameters-to-the-udf"></a>Übergeben mehrerer Eingabeparameter an die benutzerdefinierte Funktion
 
@@ -104,11 +104,18 @@ function createArray(vendorid, weekday, pickuphour, passenger, distance) {
 Sobald Sie die benutzerdefinierte JavaScript-Funktion zu Ihrem Auftrag hinzugefügt haben, können Sie Ihre benutzerdefinierte Azure Machine Learning-Funktion mithilfe der folgenden Abfrage aufrufen:
 
 ```SQL
-SELECT udf.score(
-udf.createArray(vendorid, weekday, pickuphour, passenger, distance)
-)
-INTO output
+WITH 
+ModelInput AS (
+#use JavaScript UDF to construct array that will be used as input to ML UDF
+SELECT udf.createArray(vendorid, weekday, pickuphour, passenger, distance) as inputArray
 FROM input
+)
+
+SELECT udf.score(inputArray)
+INTO output
+FROM ModelInput
+#validate inputArray is not null before passing it to ML UDF to prevent job from failing
+WHERE inputArray is not null
 ```
 
 Der folgende JSON-Code ist eine Beispielanforderung:

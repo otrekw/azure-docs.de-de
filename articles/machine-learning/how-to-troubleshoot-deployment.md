@@ -1,7 +1,7 @@
 ---
-title: Behandeln von Bereitstellungsproblemen bei Remotewebdiensten
+title: Behandeln von Problemen bei der Remotemodellimplementierung
 titleSuffix: Azure Machine Learning
-description: Hier erfahren Sie, wie Sie allgemeine Docker-Bereitstellungsfehler mit Azure Kubernetes Service und Azure Container Instances umgehen, lösen und beheben.
+description: Hier erfahren Sie, wie Sie einige allgemeine Docker-Bereitstellungsfehler mit Azure Kubernetes Service und Azure Container Instances umgehen, lösen und beheben.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,16 +11,16 @@ ms.reviewer: jmartens
 ms.date: 11/25/2020
 ms.topic: troubleshooting
 ms.custom: contperf-fy20q4, devx-track-python, deploy, contperf-fy21q2
-ms.openlocfilehash: 92cd70e864ae0490ce3f9e7435d9518241f93c8e
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 4224e301d6410fc97da1f98cd0dd9577c6341cd3
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97031503"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740622"
 ---
-# <a name="troubleshoot-model-deployment"></a>Behandeln von Problemen bei der Modellimplementierung
+# <a name="troubleshooting-remote-model-deployment"></a>Behandeln von Problemen bei der Remotemodellimplementierung 
 
-Erfahren Sie, wie Sie die häufigsten Fehler bei Docker-Remotebereitstellungen mit Azure Container Instances (ACI) und Azure Kubernetes Service (AKS) mit Azure Machine Learning behandeln, beheben oder umgehen können.
+Hier erfahren Sie, wie Sie allgemeine Fehler beim Bereitstellen eines Modells in Azure Container Instances (ACI) und Azure Kubernetes Service (AKS) mithilfe von Azure Machine Learning beheben, lösen oder umgehen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -177,6 +177,16 @@ Weitere Informationen zum Festlegen von `autoscale_target_utilization`, `autosca
 Der Statuscode 504 gibt an, dass für die Anforderung ein Timeout aufgetreten ist. Das Standardtimeout beträgt 1 Minute.
 
 Sie können das Timeout erhöhen oder versuchen, den Dienst zu beschleunigen, indem Sie unnötige Aufrufe in „score.py“ entfernen. Wenn das Problem durch diese Aktionen nicht behoben werden kann, debuggen Sie die Datei „score.py“ mithilfe der Informationen in diesem Artikel. Der Code kann sich in einem nicht reaktionsfähigen Zustand oder in einer Endlosschleife befinden.
+
+## <a name="other-error-messages"></a>Andere Fehlermeldungen
+
+Führen Sie diese Aktionen für die folgenden Fehler aus:
+
+|Fehler  | Lösung  |
+|---------|---------|
+|Fehler bei der Imageerstellung beim Bereitstellen des Webdiensts.     |  Fügen Sie „pynacl==1.2.1“ als pip-Anhängigkeit zur Conda-Datei für die Imagekonfiguration hinzu.       |
+|`['DaskOnBatch:context_managers.DaskOnBatch', 'setup.py']' died with <Signals.SIGKILL: 9>`     |   Ändern Sie die SKU für virtuelle Computer in Ihrer Bereitstellung in eine Variante mit mehr Arbeitsspeicher. |
+|FPGA-Fehler     |  Um Modelle auf FPGAs bereitzustellen, müssen Sie zuerst ein FPGA-Kontingent anfordern und dessen Genehmigung abwarten. Füllen Sie das Formular zur Kontingentanforderung aus, um Zugriff anzufordern: https://aka.ms/aml-real-time-ai       |
 
 ## <a name="advanced-debugging"></a>Erweitertes Debuggen
 

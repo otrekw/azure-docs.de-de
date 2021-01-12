@@ -11,16 +11,19 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 11/18/2020
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 8560acd9c5a11004c5144441d395863c8b85edba
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 0fa3492555b2870ae7b95abec08bbd3280cdc985
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461402"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97705063"
 ---
 # <a name="use-workspace-behind-a-firewall-for-azure-machine-learning"></a>Verwenden des Arbeitsbereichs hinter einer Firewall für Azure Machine Learning
 
 In diesem Artikel erfahren Sie, wie Sie Azure Firewall konfigurieren, um den Zugriff auf Ihren Azure Machine Learning-Arbeitsbereich und das öffentliche Internet zu steuern. Weitere Informationen zum Schützen von Azure Machine Learning finden Sie unter [Unternehmenssicherheit für Azure Machine Learning](concept-enterprise-security.md).
+
+> [!WARNING]
+> Der Zugriff auf den Datenspeicher hinter einer Firewall wird nur in Code First-Umgebungen unterstützt. Die Verwendung von [Azure Machine Learning Studio](overview-what-is-machine-learning-studio.md) für den Zugriff auf Daten hinter einer Firewall wird nicht unterstützt. Wenn Sie Datenspeicher in einem privaten Netzwerk mit Studio nutzen möchten, müssen Sie zunächst [ein virtuelles Netzwerk einrichten](../virtual-network/quick-create-portal.md) und [Studio Zugriff auf die in einem virtuellen Netzwerk gespeicherten Daten gewähren](how-to-enable-studio-virtual-network.md).
 
 ## <a name="azure-firewall"></a>Azure Firewall
 

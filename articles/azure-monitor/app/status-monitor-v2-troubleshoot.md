@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: df8ebd97ed9e34e0fce85a50297c595732057115
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 472a7f128ea19cdcc9df5a03d171f345c7d601de
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761463"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97616829"
 ---
 # <a name="troubleshooting-application-insights-agent-formerly-named-status-monitor-v2"></a>Behandeln von Problemen mit dem Application Insights-Agent (ehemals „Statusmonitor v2“)
 
@@ -51,6 +51,11 @@ Sie können mithilfe von Problembehandlungstools symptomatisches Verhalten anzei
     0x0000000009b90000  0x4f000   C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\content\Instrumentation64\Microsoft.ApplicationInsights.ExtensionsHost_x64.dll
     0x0000000004d20000  0xb2000   C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\content\Instrumentation64\Microsoft.ApplicationInsights.Extensions.Base_x64.dll
     ```
+
+### <a name="powershell-versions"></a>PowerShell-Versionen
+Dieses Produkt wurde mithilfe von PowerShell v5.1 geschrieben und getestet.
+Dieses Modul ist nicht kompatibel mit den PowerShell-Versionen 6 oder 7.
+Wir empfehlen die Verwendung von PowerShell v5.1 parallel zu neueren Versionen. Weitere Informationen finden Sie unter [Parallele Nutzung von PowerShell 7 mit Windows PowerShell 5.1](https://docs.microsoft.com/powershell/scripting/install/migrating-from-windows-powershell-51-to-powershell-7?view=powershell-7.1#using-powershell-7-side-by-side-with-windows-powershell-51).
 
 ### <a name="conflict-with-iis-shared-configuration"></a>Konflikt mit IIS-Freigabekonfiguration
 

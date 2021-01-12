@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/01/2020
 ms.custom: shresha
-ms.openlocfilehash: 3aedbef079ba62f42ea79afdcd9995d7ee23d9fa
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 15f1a814b302611029cf6459b8d2df93a32a2d36
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95020724"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740554"
 ---
 # <a name="migrating-to-new-azure-time-series-insights-gen2-api-versions"></a>Migrieren zu den neuen Azure Time Series Insights Gen2-API-Versionen
 
@@ -76,7 +76,7 @@ Wenn Sie mithilfe des Power BI-Connectors Abfragen generiert haben, verwenden d
 Um Abfragen auf die neue API-Version und die neue Syntax für Zeitreihenausdrücke zu aktualisieren, müssen Sie die Abfragen über den Explorer neu generieren. Informieren Sie sich über das [Erstellen von Abfragen mit dem Power BI-Connector](./how-to-connect-power-bi.md).
 
 > [!NOTE]
-> Sie müssen die Power BI Desktop-Version von Juli 2020 verwenden. Andernfalls wird möglicherweise ein [Fehler zu einer ungültigen Version der Abfragenutzlast](./how-to-diagnose-troubleshoot.md#problem-power-bi-connector-shows-unable-to-connect) angezeigt.
+> Sie müssen mindestens die Power BI Desktop-Version von Juli 2020 verwenden. Andernfalls wird möglicherweise ein „Fehler zu einer ungültigen Version der Abfragenutzlast“ angezeigt.
 
 ## <a name="migrate-custom-applications"></a>Migrieren von benutzerdefinierten Anwendungen
 

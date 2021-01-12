@@ -5,14 +5,14 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 08/27/2020
+ms.date: 12/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: f5e774e9b7327d4b403f6a09187e97082a77aa78
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: ce90ab160696e2c38d917a391eecb0d51a31282f
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186802"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740588"
 ---
 # <a name="enable-azure-monitor-for-vms-overview"></a>Aktivieren von Azure Monitor für VMs: Übersicht
 
@@ -26,68 +26,27 @@ Dieser Artikel bietet eine Übersicht über die verfügbaren Optionen zum Aktivi
 
 So richten Sie Azure Monitor für VMs ein
 
-* Aktivieren Sie eine einzelne Azure-VM, eine einzelne Azure-VMSS oder einen einzelnen Azure Arc-Computer, indem Sie **Insights** direkt im entsprechenden Menü im Azure-Portal aktivieren.
-* Aktivieren Sie mehrere Azure-VMs, Azure-VMSS oder Azure Arc-Computer mithilfe von Azure Policy. Diese Methode stellt sicher, dass bei bestehenden und neuen virtuellen Computern und Skalierungsgruppen die erforderlichen Abhängigkeiten installiert und ordnungsgemäß konfiguriert werden. Nicht konforme VMs und Skalierungsgruppen werden gemeldet, sodass Sie entscheiden können, ob Sie sie aktivieren und den Zustand korrigieren möchten.
-* Aktivieren Sie mehrere Azure-VMs, Azure Arc-VMs, Azure-VMSS oder Azure Arc-Computer über ein angegebenes Abonnement oder eine angegebene Ressourcengruppe mithilfe von PowerShell.
+* Aktivieren Sie einen einzelnen virtuellen Azure-Computer, eine einzelne Azure-VM-Skalierungsgruppe oder einen einzelnen Azure Arc-Computer, indem Sie direkt im entsprechenden Menü des Azure-Portals die Option **Insights** auswählen.
+* Aktivieren Sie mehrere virtuelle Azure-Computer, Azure-VM-Skalierungsgruppen oder Azure Arc-Computer mithilfe von Azure Policy. Diese Methode stellt sicher, dass bei bestehenden und neuen virtuellen Computern und Skalierungsgruppen die erforderlichen Abhängigkeiten installiert und ordnungsgemäß konfiguriert werden. Nicht konforme virtuelle Computer und Skalierungsgruppen werden gemeldet, sodass Sie entscheiden können, ob Sie sie aktivieren und den Zustand korrigieren möchten.
+* Aktivieren Sie mehrere virtuelle Azure-Computer, virtuelle Azure Arc-Computer, Azure-VM-Skalierungsgruppen oder Azure Arc-Computer innerhalb eines angegebenen Abonnements oder einer angegebenen Ressourcengruppe mithilfe von PowerShell.
 * Aktivieren Sie Azure Monitor für VMs zum Überwachen von virtuellen Computern oder physischen Computern, die in Ihrem Unternehmensnetzwerk oder einer anderen Cloudumgebung gehostet werden.
 
-## <a name="prerequisites"></a>Voraussetzungen
-
-Bevor Sie beginnen, stellen Sie sicher, dass Sie die Informationen in den folgenden Abschnitten verstanden haben. 
-
->[!NOTE]
->Die in diesem Abschnitt beschriebenen Informationen gelten auch für die [Dienstzuordnungslösung](service-map.md).  
-
-### <a name="log-analytics-workspace"></a>Log Analytics-Arbeitsbereich
-
-Azure Monitor für VMs unterstützt einen Log Analytics-Arbeitsbereich in den folgenden Regionen:
-
-- Afrika
-  - Südafrika, Norden
-- Asien-Pazifik
-  - Asien, Osten
-  - Asien, Südosten
-- Australien
-  - Australien (Osten)
-  - Australien, Südosten
-- Azure Government
-  - US Gov Az
-  - US Gov Va
-- Canada
-  - Kanada, Mitte
-- Europa
-  - Nordeuropa
-  - Europa, Westen
-- Indien
-  - Indien, Mitte
-- Japan
-  - Japan, Osten
-- United Kingdom
-  - UK, Süden
-- USA
-  - USA (Mitte)
-  - East US
-  - USA (Ost 2)
-  - USA Nord Mitte
-  - USA Süd Mitte
-  - USA, Westen-Mitte
-  - USA (Westen)
-  - USA, Westen 2
-
-
->[!NOTE]
->Sie können Azure-VMs in jeder Region überwachen. Die VMs selbst sind nicht auf die vom Log Analytics-Arbeitsbereich unterstützten Bereiche beschränkt.
->
-
-Wenn Sie über keinen Log Analytics-Arbeitsbereich verfügen, können Sie einen erstellen, indem Sie eine der folgenden Ressourcen verwenden:
-* [Azure-Befehlszeilenschnittstelle](../learn/quick-create-workspace-cli.md)
-* [PowerShell](../platform/powershell-workspace-configuration.md)
-* [Azure portal](../learn/quick-create-workspace.md)
-* [Azure Resource Manager](../samples/resource-manager-workspace.md)
+## <a name="supported-machines"></a>Unterstützte Computer
+Von Azure Monitor für VMs werden folgende Computer unterstützt:
 
 - Virtueller Azure-Computer
 - Azure-VM-Skalierungsgruppe
-- Mit Azure Arc verbundene Hybrid-VM
+- Hybrid-VM, die mit Azure Arc verbunden ist
+
+
+## <a name="supported-azure-arc-machines"></a>Unterstützte Azure Arc-Computer
+Azure Monitor für VMs ist für Azure Arc-fähige Server in Regionen verfügbar, in denen der Arc-Erweiterungsdienst verfügbar ist. Sie müssen Version 0.9 oder höher des Arc-Agents ausführen.
+
+| Verbundene Quelle | Unterstützt | BESCHREIBUNG |
+|:--|:--|:--|
+| Windows-Agents | Ja | Zusätzlich zum [Log Analytics-Agent für Windows](../platform/log-analytics-agent.md) benötigen Windows-Agents den Dependency-Agent. Weitere Informationen finden Sie unter [Unterstützte Betriebssysteme](../platform/agents-overview.md#supported-operating-systems). |
+| Linux-Agents | Ja | Zusätzlich zum [Log Analytics-Agent für Linux](../platform/log-analytics-agent.md) benötigen Linux-Agents den Dependency-Agent. Weitere Informationen finden Sie unter [Unterstützte Betriebssysteme](#supported-operating-systems). |
+| System Center Operations Manager-Verwaltungsgruppe | Nein | |
 
 ## <a name="supported-operating-systems"></a>Unterstützte Betriebssysteme
 
@@ -101,23 +60,13 @@ In der folgenden Liste finden Sie Überlegungen zur Linux-Unterstützung des Dep
 - Für andere Debian-Distributionen als Version 9.4 wird das Zuordnungsfeature nicht unterstützt, und das Leistungsfeature ist nur über das Azure Monitor-Menü verfügbar. Es ist nicht direkt über den linken Bereich des virtuellen Azure-Computers verfügbar.
 - Der CentOSPlus-Kernel wird unterstützt.
 - Der Linux-Kernel muss für das Spectre-Sicherheitsrisiko gepatcht werden. Weitere Informationen erhalten Sie beim Anbieter der Linux-Distribution.
-
-
-
-## <a name="supported-azure-arc-machines"></a>Unterstützte Azure Arc-Computer
-Azure Monitor für VMs ist für Azure Arc-fähige Server in Regionen verfügbar, in denen der Arc-Erweiterungsdienst verfügbar ist. Sie müssen Version 0.9 oder höher des Arc-Agents ausführen.
-
-| Verbundene Quelle | Unterstützt | BESCHREIBUNG |
-|:--|:--|:--|
-| Windows-Agents | Ja | Zusätzlich zum [Log Analytics-Agent für Windows](../platform/log-analytics-agent.md) benötigen Windows-Agents den Dependency-Agent. Weitere Informationen finden Sie unter [Unterstützte Betriebssysteme](../platform/agents-overview.md#supported-operating-systems). |
-| Linux-Agents | Ja | Zusätzlich zum [Log Analytics-Agent für Linux](../platform/log-analytics-agent.md) benötigen Linux-Agents den Dependency-Agent. Weitere Informationen finden Sie unter [Unterstützte Betriebssysteme](#supported-operating-systems). |
-| System Center Operations Manager-Verwaltungsgruppe | Nein | |
-
+## <a name="log-analytics-workspace"></a>Log Analytics-Arbeitsbereich
+Für Azure Monitor für VMs wird ein Log Analytics-Arbeitsbereich benötigt. Ausführliche Informationen sowie Anforderungen dieses Arbeitsbereichs finden Sie unter [Konfigurieren eines Log Analytics-Arbeitsbereichs für Azure Monitor für VMs](vminsights-configure-workspace.md).
 ## <a name="agents"></a>Agents
 Für Azure Monitor für VMs müssen die folgenden beiden Agents auf jeder zu überwachenden VM oder VM-Skalierungsgruppe installiert sein. Das Installieren dieser Agents und das Herstellen einer Verbindung zwischen ihnen und dem Arbeitsbereich sind die einzigen Voraussetzungen für das Onboarding der Ressource.
 
 - [Log Analytics-Agent:](../platform/log-analytics-agent.md) Dieser Agent erfasst Ereignisse und Leistungsdaten für die VM oder VM-Skalierungsgruppe und übergibt sie an den Log Analytics-Arbeitsbereich. Bei Bereitstellungsmethoden für den Log Analytics-Agent in Azure-Ressourcen wird die VM-Erweiterung für [Windows](../../virtual-machines/extensions/oms-windows.md) und [Linux](../../virtual-machines/extensions/oms-linux.md) verwendet.
-- Dependency-Agent: Dieser Agent erfasst ermittelte Daten über Prozesse, die auf dem virtuellen Computer ausgeführt werden, und Abhängigkeiten von externen Prozessen. Diese Daten werden vom [Zuordnungsfeature in Azure Monitor für VMs](vminsights-maps.md) verwendet. Der Dependency-Agent verwendet den Log Analytics-Agent, um die Daten an Azure Monitor zu senden. Bei Bereitstellungsmethoden für den Dependency-Agent in Azure-Ressourcen wird die VM-Erweiterung für [Windows](../../virtual-machines/extensions/agent-dependency-windows.md) und [Linux](../../virtual-machines/extensions/agent-dependency-linux.md) verwendet.
+- Dependency-Agent: Dieser Agent erfasst ermittelte Daten zu Prozessen, die auf dem virtuellen Computer ausgeführt werden, sowie zu Abhängigkeiten von externen Prozessen. Diese Daten werden vom [Zuordnungsfeature in Azure Monitor für VMs](vminsights-maps.md) genutzt. Der Dependency-Agent verwendet den Log Analytics-Agent, um die Daten an Azure Monitor zu senden. Bei Bereitstellungsmethoden für den Dependency-Agent in Azure-Ressourcen wird die VM-Erweiterung für [Windows](../../virtual-machines/extensions/agent-dependency-windows.md) und [Linux](../../virtual-machines/extensions/agent-dependency-linux.md) verwendet.
 
 > [!NOTE]
 > Beim Log Analytics-Agent handelt es sich um den Agent, der auch in System Center Operations Manager verwendet wird. Azure Monitor für VMs kann Agents überwachen, die auch von Operations Manager überwacht werden, wenn eine direkte Verbindung vorhanden ist und Sie den Dependency-Agent auf ihnen installieren. Agents, die über eine [Verwaltungsgruppenverbindung](../tform/../platform/om-agents.md) mit Azure Monitor verbunden sind, können nicht von Azure Monitor für VMs überwacht werden.
@@ -135,7 +84,7 @@ Im Folgenden sind verschiedene Methoden für die Bereitstellung dieser Agents au
 
 
 ## <a name="management-packs"></a>Management Packs
-Wenn ein Log Analytics-Arbeitsbereich für Azure Monitor für VMs konfiguriert wird, werden zwei Management Packs an alle Windows-Computer weitergeleitet, die mit diesem Arbeitsbereich verbunden sind. Diese Management Packs heißen *Microsoft.IntelligencePacks.ApplicationDependencyMonitor* und *Microsoft.IntelligencePacks.VMInsights* und werden in *%Programfiles%\Microsoft Monitoring Agent\Agent\Health Service State\Management Packs\* geschrieben. 
+Wenn ein Log Analytics-Arbeitsbereich für Azure Monitor für VMs konfiguriert wird, werden zwei Management Packs an alle Windows-Computer weitergeleitet, die mit diesem Arbeitsbereich verbunden sind. Die Management Packs heißen *Microsoft.IntelligencePacks.ApplicationDependencyMonitor* und *Microsoft.IntelligencePacks.VMInsights* und werden in *%Programfiles%\Microsoft Monitoring Agent\Agent\Health Service State\Management Packs* geschrieben. 
 
 Die vom Management Pack *ApplicationDependencyMonitor* verwendete Datenquelle ist * *%Program files%\Microsoft Monitoring Agent\Agent\Health Service State\Resources\<AutoGeneratedID>\Microsoft.EnterpriseManagement.Advisor.ApplicationDependencyMonitorDataSource.dll*. Die vom Management Pack *VMInsights* verwendete Datenquelle ist *%Program files%\Microsoft Monitoring Agent\Agent\Health Service State\Resources\<AutoGeneratedID>\ Microsoft.VirtualMachineMonitoringModule.dll*.
 

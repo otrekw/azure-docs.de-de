@@ -1,14 +1,14 @@
 ---
 title: Neuerungen im Agent für Azure Arc-fähige Server
-description: Dieser Artikel enthält Versionshinweise für den Agent für Azure Arc-fähige Server. Für viele der zusammengefassten Issues werden Links zu weiteren Informationen bereitgestellt.
+description: Dieser Artikel enthält Versionshinweise für den Agent für Azure Arc-fähige Server. Für viele der zusammengefassten Issues werden Links zu ausführlicheren Informationen bereitgestellt.
 ms.topic: conceptual
-ms.date: 12/14/2020
-ms.openlocfilehash: 3a01113d0d6416fb050f5c66191d5c420b7ac137
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.date: 12/21/2020
+ms.openlocfilehash: 4b7fd97d5b7e1cddc1d78e0d24205890e74c45c1
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505646"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97722520"
 ---
 # <a name="whats-new-with-azure-arc-enabled-servers-agent"></a>Neuerungen im Agent für Azure Arc-fähige Server
 
@@ -20,6 +20,8 @@ Der Connected Machine-Agent für Azure Arc-fähige Server wird ständig verbesse
 
 ## <a name="december-2020"></a>Dezember 2020
 
+Version: 1.3
+
 ### <a name="new-feature"></a>Neues Feature
 
 Hinzugefügt: Unterstützung für Windows Server 2008 R2
@@ -30,11 +32,15 @@ Ein Problem wurde behoben, das verhindert, dass die benutzerdefinierte Skripterw
 
 ## <a name="november-2020"></a>November 2020
 
+Version: 1.2
+
 ### <a name="fixed"></a>Fest
 
 Ein Problem wurde behoben, bei dem die Proxykonfiguration nach dem Upgrade auf RPM-basierte Verteilungen verloren gehen konnte.
 
 ## <a name="october-2020"></a>Oktober 2020
+
+Version: 1.1
 
 ### <a name="fixed"></a>Fest
 
@@ -61,7 +67,7 @@ Version: 1.0 (Allgemeine Verfügbarkeit)
 - `azcmagent show --json`-Option zum Ausgeben des Agent-Zustands in einem leicht zu analysierenden Format wurde hinzugefügt.
 - Flag in `azcmagent show`-Ausgabe wurde hinzugefügt, um anzugeben, ob sich der Server auf einem in Azure gehosteten virtuellen Computer befindet.
 - `azcmagent disconnect --force-local-only`-Option wurde hinzugefügt, um das Zurücksetzen des lokalen Agent-Zustands zuzulassen, wenn der Azure-Dienst nicht erreichbar ist.
-- `azcmagent connect --cloud`-Option zur Unterstützung weiterer Clouds wurde hinzugefügt. In diesem Release wird nur Azure vom Dienst zum Zeitpunkt des Agent-Releases unterstützt.
+- Die Option `azcmagent connect --cloud` wurde zur Unterstützung weiterer Clouds hinzugefügt. In diesem Release wird nur Azure vom Dienst zum Zeitpunkt des Agent-Releases unterstützt.
 - Der Agent wurde in von Azure unterstützte Sprachen lokalisiert.
 
 ### <a name="fixed"></a>Fest

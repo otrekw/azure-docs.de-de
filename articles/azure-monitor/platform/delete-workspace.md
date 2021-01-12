@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 05/26/2020
-ms.openlocfilehash: 0858d448cf768dbe6ea48f07247725fac30da860
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.date: 12/20/2020
+ms.openlocfilehash: ed5e4d05a693ff9b0bf8823ba31de17d000d0fb6
+ms.sourcegitcommit: 0830e02635d2f240aae2667b947487db01f5fdef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95758897"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97706880"
 ---
 # <a name="delete-and-recover-azure-log-analytics-workspace"></a>Löschen und Wiederherstellen eines Azure Log Analytics-Arbeitsbereichs
 
@@ -19,7 +19,7 @@ In diesem Artikel werden das Konzept des vorläufigen Löschens eines Azure Log 
 
 ## <a name="considerations-when-deleting-a-workspace"></a>Überlegungen zum Löschen eines Arbeitsbereichs
 
-Wenn Sie einen Log Analytics-Arbeitsbereich löschen, wird ein vorläufiger Löschvorgang durchgeführt, um die Wiederherstellung des Arbeitsbereichs einschließlich der zugehörigen Daten und verbundenen Agents innerhalb von 14 Tagen zu ermöglichen, unabhängig davon, ob der Löschvorgang versehentlich oder gezielt durchgeführt wurde. Nach Ablauf des Zeitraums für vorläufiges Löschen können die Arbeitsbereichsressource und die zugehörigen Daten nicht mehr wiederhergestellt werden. Die Daten werden in die Warteschlange zum dauerhaften Löschen gestellt und innerhalb von 30 Tagen vollständig gelöscht. Der Arbeitsbereichsname wird „freigegeben“ und kann zum Erstellen eines neuen Arbeitsbereichs verwendet werden.
+Wenn Sie einen Log Analytics-Arbeitsbereich löschen, wird ein vorläufiger Löschvorgang durchgeführt, um die Wiederherstellung des Arbeitsbereichs einschließlich der zugehörigen Daten und verbundenen Agents innerhalb von 14 Tagen zu ermöglichen, unabhängig davon, ob der Löschvorgang versehentlich oder gezielt durchgeführt wurde. Nach dem Zeitraum des vorläufigen Löschens sind die Arbeitsbereichsressource die zugehörigen Daten nicht mehr wiederherstellbar und werden in die Warteschlange für die vollständige Löschung innerhalb von 30 Tagen eingereiht. Der Arbeitsbereichsname wird „freigegeben“ und kann zum Erstellen eines neuen Arbeitsbereichs verwendet werden.
 
 > [!NOTE]
 > Wenn Sie das vorläufige Löschen außer Kraft setzen und den Arbeitsbereich dauerhaft löschen möchten, führen Sie die Schritte unter [Dauerhaftes Löschen eines Arbeitsbereichs](#permanent-workspace-delete) aus.
@@ -76,12 +76,15 @@ PS C:\>Remove-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-
 ## <a name="recover-workspace"></a>Wiederherstellen eines Arbeitsbereichs
 Wenn Sie einen Log Analytics-Arbeitsbereich versehentlich oder absichtlich löschen, versetzt der Dienst den Arbeitsbereich in den Zustand des vorläufigen Löschens, sodass von keinem Vorgang darauf zugegriffen werden kann. Der Name des gelöschten Arbeitsbereichs bleibt während des Zeitraums des vorläufigen Löschens erhalten und kann nicht zum Erstellen eines neuen Arbeitsbereichs verwendet werden. Sobald der Zeitraum des vorläufigen Löschens abgelaufen ist, kann der Arbeitsbereich nicht wiederhergestellt werden, er ist für dauerhaftes Löschen geplant, und der Name des Arbeitsbereichs wird freigegeben und kann zum Erstellen eines neuen Arbeitsbereichs verwendet werden.
 
-Während des Zeitraums des vorläufigen Löschens kann der Arbeitsbereich wiederhergestellt werden, einschließlich Daten, Konfiguration und verbundener Agents. Sie benötigen Berechtigungen vom Typ „Mitwirkender“ für das Abonnement und die Ressourcengruppe, in der sich der Arbeitsbereich vor dem vorläufigen Löschen befand. Zum Wiederherstellen des Arbeitsbereichs wird ein Log Analytics-Arbeitsbereich mit den Details des gelöschten Arbeitsbereichs erstellt. Dazu gehört Folgendes:
+Während des Zeitraums des vorläufigen Löschens kann der Arbeitsbereich wiederhergestellt werden, einschließlich Daten, Konfiguration und verbundener Agents. Sie benötigen Berechtigungen vom Typ „Mitwirkender“ für das Abonnement und die Ressourcengruppe, in der sich der Arbeitsbereich vor dem vorläufigen Löschen befand. Zum Wiederherstellen des Arbeitsbereichs wird der Log Analytics-Arbeitsbereich mit den Details des gelöschten Arbeitsbereichs erneut erstellt. Dazu gehört Folgendes:
 
 - Abonnement-ID
 - Ressourcengruppenname
 - Arbeitsbereichname
 - Region
+
+> [!IMPORTANT]
+> Wenn Ihr Arbeitsbereich im Rahmen der Löschung einer Ressourcengruppe gelöscht wurde, muss zuerst die Ressourcengruppe erneut erstellt werden.
 
 ### <a name="azure-portal"></a>Azure-Portal
 
@@ -104,20 +107,19 @@ PS C:\>New-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-nam
 
 Der Arbeitsbereich und alle zugehörigen Daten sind nach dem Wiederherstellungsvorgang wieder vorhanden. Lösungen und verknüpfte Dienste wurden dauerhaft aus dem Arbeitsbereich entfernt, als dieser gelöscht wurde, und sollten daher neu konfiguriert werden, um den zuvor konfigurierten Zustand des Arbeitsbereichs wiederherzustellen. Einige Daten können nach der Wiederherstellung des Arbeitsbereichs möglicherweise nicht abgefragt werden, ehe die zugehörigen Lösungen neu installiert und deren Schemas dem Arbeitsbereich hinzugefügt wurden.
 
-> [!NOTE]
-> * Beim erneuten Erstellen eines Arbeitsbereichs während des Zeitraums des vorläufigen Löschens wird darauf hingewiesen, dass der Name des Arbeitsbereichs bereits verwendet wird. 
- 
 ## <a name="troubleshooting"></a>Problembehandlung
 
 Sie benötigen mindestens die Berechtigungen der Rolle *Log Analytics-Mitwirkender*, um einen Arbeitsbereich zu löschen.
 
-* Wenn Sie sich nicht sicher sind, ob sich der gelöschte Arbeitsbereich im Zustand des vorläufigen Löschens befindet und wiederhergestellt werden kann, klicken Sie auf der Seite *Log Analytics-Arbeitsbereiche* auf [Wiederherstellen](#recover-workspace), um eine Liste vorläufig gelöschter Arbeitsbereiche nach Abonnement anzuzeigen. Dauerhaft gelöschte Arbeitsbereiche sind in der Liste nicht enthalten.
+* Wenn Sie sich nicht sicher sind, ob der gelöschte Arbeitsbereich vorläufig gelöscht wurde und wiederhergestellt werden kann, klicken Sie auf der Seite *Log Analytics-Arbeitsbereiche* auf [Open recycle bin](#recover-workspace) (Papierkorb öffnen), um eine Liste vorläufig gelöschter Arbeitsbereiche nach Abonnement anzuzeigen. Dauerhaft gelöschte Arbeitsbereiche sind in der Liste nicht enthalten.
 * Wenn Sie beim Erstellen eines Arbeitsbereichs die Fehlermeldung *Dieser Arbeitsbereichsname wird bereits verwendet* oder einen *Konflikt* erhalten, kann dies folgende Gründe haben:
   * Der Name des Arbeitsbereichs ist nicht verfügbar und wird bereits von jemandem in Ihrer Organisation oder von einem anderen Kunden verwendet.
-  * Der Arbeitsbereich wurde innerhalb der letzten 14 Tage gelöscht, und der Name wurde für den Zeitraum der vorläufigen Löschung reserviert. Zum Überschreiben der vorübergehenden Löschung und der dauerhaften Löschen des Arbeitsbereichs, um einen neuen, gleichnamigen Arbeitsbereich zu erstellen, gehen Sie folgendermaßen vor, um den Arbeitsbereich zunächst wiederherzustellen und dann dauerhaft zu löschen:<br>
+  * Der Arbeitsbereich wurde innerhalb der letzten 14 Tage gelöscht, und der Name wurde für den Zeitraum der vorläufigen Löschung reserviert. Wenn Sie das vorläufige Löschen außer Kraft setzen und Ihren Arbeitsbereich dauerhaft löschen möchten, um einen neuen, gleichnamigen Arbeitsbereich zu erstellen, gehen Sie wie folgt vor, um den Arbeitsbereich zunächst wiederherzustellen und dann dauerhaft zu löschen:<br>
     1. [Stellen Sie Ihren Arbeitsbereich wieder her.](#recover-workspace)
     2. [Löschen Sie Ihren Arbeitsbereich dauerhaft.](#permanent-workspace-delete)
     3. Erstellen Sie einen neuen Arbeitsbereich mit demselben Arbeitsbereichnamen.
-* Wenn ein Antwortcode 204 angezeigt wird, der *Ressource nicht gefunden* angibt, können aufeinander folgende Versuche, den Vorgang zum Löschen des Arbeitsbereichs zu verwenden, die Ursache sein. 204 ist eine leere Antwort. Das bedeutet in der Regel, dass die Ressource nicht vorhanden ist, sodass der Löschvorgang ohne erfolgte Aktion abgeschlossen wurde.
-  Nachdem der Löschaufruf auf dem Back-End erfolgreich abgeschlossen wurde, können Sie den Arbeitsbereich wiederherstellen und den dauerhaften Löschvorgang mit einer der zuvor vorgeschlagenen Methoden abschließen.
+ 
+      Nachdem der Löschaufruf auf dem Back-End erfolgreich abgeschlossen wurde, können Sie den Arbeitsbereich wiederherstellen und den dauerhaften Löschvorgang mit einer der zuvor vorgeschlagenen Methoden abschließen.
 
+* Sollte beim Löschen eines Arbeitsbereichs ein Antwortcode vom Typ 204 mit *Ressource nicht gefunden* zurückgegeben werden, wurden möglicherweise mehrere Wiederholungsversuche hintereinander ausgeführt. 204 ist eine leere Antwort. Das bedeutet in der Regel, dass die Ressource nicht vorhanden ist, sodass der Löschvorgang ohne erfolgte Aktion abgeschlossen wurde.
+* Wenn Sie Ihre Ressourcengruppe und den enthaltenen Arbeitsbereich löschen, wird der gelöschte Arbeitsbereich auf der Seite [Open recycle bin](#recover-workspace) (Papierkorb öffnen) angezeigt. Beim Wiederherstellen tritt jedoch der Fehler 404 auf, da die Ressourcengruppe nicht vorhanden ist. Erstellen Sie Ihre Ressourcengruppe erneut, und wiederholen Sie anschließend die Wiederherstellung.

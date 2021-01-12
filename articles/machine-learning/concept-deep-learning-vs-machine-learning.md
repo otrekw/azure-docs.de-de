@@ -10,12 +10,12 @@ ms.author: lazzeri
 author: FrancescaLazzeri
 ms.date: 12/15/2020
 ms.custom: contperf-fy21q1,contperfq1
-ms.openlocfilehash: f7c4529c68f79c6ad19f22054fd0b7d2ba5116db
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 17c5cc265b4199d745325bf2c9d9fbca24cc6506
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97562836"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617118"
 ---
 # <a name="deep-learning-vs-machine-learning-in-azure-machine-learning"></a>Vergleich von Deep Learning und Machine Learning in Azure Machine Learning
 
@@ -57,9 +57,9 @@ In der folgenden Tabelle werden die beiden Verfahren ausführlicher verglichen:
 |  **Ausführungszeit** | Das Training nimmt im Vergleich weniger Zeit in Anspruch: von wenigen Sekunden bis hin zu einigen Stunden. | Das Training dauert meist lange, da ein Deep Learning-Algorithmus viele Schichten aufweist. |
 |  **Ausgabe** | Die Ausgabe ist normalerweise ein numerischer Wert, z.B. eine Bewertung oder Klassifizierung. | Die Ausgabe kann mehrere Formate aufweisen, z. B. einen Text, eine Bewertung oder eine Tonausgabe. |
 
-## <a name="transfer-learning"></a>Lerntransfer
+## <a name="transfer-learning"></a>Transferlernen
 
-Das Training von Deep Learning-Modellen erfordert häufig große Mengen an Trainingsdaten, High-End-Computeressourcen (GPU, TPU) und eine längere Trainingszeit. Wenn diese Voraussetzungen in Ihren Szenarien nicht erfüllt sind, können Sie den Trainingsprozess mithilfe eines als „Lerntransfer“ (Transfer Learning) bezeichneten Verfahrens verkürzen.
+Das Training von Deep Learning-Modellen erfordert häufig große Mengen an Trainingsdaten, High-End-Computeressourcen (GPU, TPU) und eine längere Trainingszeit. Wenn diese Voraussetzungen in Ihren Szenarien nicht erfüllt sind, können Sie den Trainingsprozess mithilfe eines als *Lerntransfer* (Transfer Learning) bezeichneten Verfahrens verkürzen.
 
 Lerntransfer ist ein Verfahren, bei dem das bei der Lösung eines Problems gewonnene Wissen auf ein anderes, aber verwandtes Problem angewandt wird.
 

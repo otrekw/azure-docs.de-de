@@ -13,12 +13,12 @@ ms.date: 11/13/2020
 ms.author: kkrishna
 ms.reviewer: marsma, kkrishna, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 96c52c46a75d6d5810dfddf91439c275d14e85f1
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.openlocfilehash: bae8f0955ef45e21d38797789bdea4f62bf5ea28
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94616136"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97614930"
 ---
 # <a name="how-to-add-app-roles-to-your-application-and-receive-them-in-the-token"></a>Vorgehensweise: Hinzufügen von App-Rollen zu Ihrer Anwendung und Empfangen der Rollen im Token
 
@@ -30,7 +30,10 @@ Ein weiterer Ansatz ist die Verwendung von Azure AD-Gruppen und Gruppenansprüc
 
 ## <a name="declare-roles-for-an-application"></a>Deklarieren von Rollen für eine Anwendung
 
-App-Rollen definieren Sie im [Azure-Portal](https://portal.azure.com). Wenn sich ein Benutzer bei der Anwendung anmeldet, gibt Azure AD für den Benutzer einen `roles`-Anspruch für jede einzeln zugewiesene Rolle und für die Gruppenmitgliedschaft aus.
+App-Rollen definieren Sie im [Azure-Portal](https://portal.azure.com). App-Rollen werden in der Regel in einer Anwendungsregistrierung definiert, die einen Dienst, eine App oder eine API darstellt. Wenn sich ein Benutzer bei der Anwendung anmeldet, gibt Azure AD für den Benutzer einen `roles`-Anspruch für jede einzeln zugewiesene Rolle oder jeden einzeln zugewiesenen Dienstprinzipal und für die Gruppenmitgliedschaft aus. Dies kann zum Implementieren der anspruchsbasierten Autorisierung verwendet werden. App-Rollen können [einem Benutzer oder einer Gruppe von Benutzern](../manage-apps/add-application-portal-assign-users.md#assign-users-to-an-app) zugewiesen werden. App-Rollen können auch dem Dienstprinzipal für eine andere Anwendung oder [dem Dienstprinzipal für eine verwaltete Identität](../managed-identities-azure-resources/how-to-assign-app-role-managed-identity-powershell.md) zugewiesen werden.
+
+> [!IMPORTANT]
+> Wenn Sie einer Gruppe einen Dienstprinzipal hinzufügen und dieser Gruppe dann eine App-Rolle zuweisen, fügt Azure AD den ausgegebenen Token derzeit nicht den `roles`-Anspruch hinzu.
 
 Es gibt zwei Möglichkeiten, App-Rollen mithilfe des Azure-Portals zu deklarieren:
 

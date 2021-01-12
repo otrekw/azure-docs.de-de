@@ -1,30 +1,29 @@
 ---
-title: Autoskalierung von Azure HDInsight-Clustern
-description: Verwenden Sie das Azure HDInsight-Features „Autoskalierung“, um Apache Hadoop-Cluster automatisch zu skalieren.
+title: Automatisches Skalieren von Azure HDInsight-Clustern
+description: Das Feature „Autoskalierung“ ermöglicht die automatische Skalierung von Azure HDInsight-Clustern (zeitplangesteuert oder auf der Grundlage von Leistungsmetriken).
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: contperf-fy21q1
-ms.date: 09/14/2020
-ms.openlocfilehash: 09e4412128a3b13abfa91bf0c128372b30b3e686
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.custom: contperf-fy21q1, contperf-fy21q2
+ms.date: 12/14/2020
+ms.openlocfilehash: 2b23b4256e79723ce0b5edafd59186dc345eb791
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033135"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97629254"
 ---
-# <a name="autoscale-azure-hdinsight-clusters"></a>Autoskalierung von Azure HDInsight-Clustern
+# <a name="automatically-scale-azure-hdinsight-clusters"></a>Automatisches Skalieren von Azure HDInsight-Clustern
 
-Mit der kostenlosen automatischen Skalierung von Azure HDInsight können Sie die Anzahl der Workerknoten in Ihrem Cluster basierend auf zuvor festgelegten Kriterien automatisch erhöhen oder verringern. Während der Clustererstellung legen Sie eine minimale und maximale Anzahl von Knoten fest und erstellen die Skalierungskriterien anhand eines Tageszeitplans oder bestimmter Leistungsmetriken. Dann führt die HDInsight-Plattform die übrigen Schritte aus.
+Mit der kostenlosen automatischen Skalierung von Azure HDInsight können Sie die Anzahl der Workerknoten in Ihrem Cluster basierend auf zuvor festgelegten Kriterien automatisch erhöhen oder verringern. Das Feature „Autoskalierung“ skaliert die Anzahl von Knoten innerhalb vorgegebener Grenzwerte – entweder auf der Grundlage von Leistungsmetriken oder nach einem Zeitplan mit Vorgängen zum Hoch- und Herunterskalieren.
 
 ## <a name="how-it-works"></a>Funktionsweise
 
-Das Feature „Autoskalierung“ verwendet zwei Arten von Bedingungen zum Auslösen von Skalierungsereignissen: Schwellenwerte für verschiedene Clusterleistungsmetriken (die sogenannte *lastbasierte Skalierung*) und zeitbasierte Trigger (*zeitplanbasierte Skalierung*). Die lastbasierte Skalierung ändert die Anzahl der Knoten in Ihrem Cluster innerhalb eines von Ihnen festgelegten Bereichs, um eine optimale CPU-Auslastung zu gewährleisten und die Betriebskosten zu minimieren. Bei der zeitplanbasierten Skalierung wird die Anzahl der Knoten im Cluster aufgrund von Vorgängen geändert, die Sie bestimmten Datums- und Uhrzeitangaben zuordnen.
+Das Feature „Autoskalierung“ verwendet zwei Arten von Bedingungen zum Auslösen von Skalierungsereignissen: Schwellenwerte für verschiedene Clusterleistungsmetriken (die sogenannte *lastbasierte Skalierung*) und zeitbasierte Trigger (*zeitplanbasierte Skalierung*). Die lastbasierte Skalierung ändert die Anzahl der Knoten in Ihrem Cluster innerhalb eines von Ihnen festgelegten Bereichs, um eine optimale CPU-Auslastung zu gewährleisten und die Betriebskosten zu minimieren. Bei der zeitplanbasierten Skalierung wird die Anzahl von Knoten in Ihrem Cluster auf der Grundlage eines Zeitplans mit Vorgängen zum Hoch- und Herunterskalieren geändert.
 
 Das folgende Video vermittelt einen Überblick über die Herausforderungen, für die die Autoskalierung Abhilfe schafft. Außerdem wird erläutert, wie dieses Feature Ihnen bei der Steuerung von Kosten mit HDInsight helfen kann.
-
 
 > [!VIDEO https://www.youtube.com/embed/UlZcDGGFlZ0?WT.mc_id=dataexposed-c9-niner]
 
@@ -133,7 +132,7 @@ Weitere Informationen zum Erstellen von HDInsight-Clustern mit dem Azure-Portal 
 
 #### <a name="load-based-autoscaling"></a>Lastbasierte Autoskalierung
 
-Sie können einen HDInsight-Cluster mit lastbasierter Autoskalierung und einer Azure Resource Manager-Vorlage erstellen, indem Sie dem Abschnitt `computeProfile` > `workernode` einen `autoscale`-Knoten mit den Eigenschaften `minInstanceCount` und `maxInstanceCount` hinzufügen, wie im folgenden JSON-Codeausschnitt gezeigt. Eine umfassende Resource Manager-Vorlage finden Sie unter [Schnellstartvorlage: Deploy Spark Cluster with Loadbased Autoscale Enabled](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-autoscale-loadbased) (Bereitstellen eines Spark-Clusters mit aktivierter lastbasierter Autoskalierung, in englischer Sprache).
+Sie können einen HDInsight-Cluster mit lastbasierter Autoskalierung und einer Azure Resource Manager-Vorlage erstellen, indem Sie dem Abschnitt `computeProfile` > `workernode` einen `autoscale`-Knoten mit den Eigenschaften `minInstanceCount` und `maxInstanceCount` hinzufügen, wie im folgenden JSON-Codeausschnitt gezeigt. Eine umfassende Resource Manager-Vorlage finden Sie unter [Schnellstartvorlage: Bereitstellen eines Spark-Clusters mit aktivierter lastbasierter Autoskalierung](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-autoscale-loadbased).
 
 ```json
 {
@@ -161,7 +160,7 @@ Sie können einen HDInsight-Cluster mit lastbasierter Autoskalierung und einer A
 
 #### <a name="schedule-based-autoscaling"></a>Zeitplanbasierte Autoskalierung
 
-Sie können einen HDInsight-Cluster mit zeitplanbasierter Autoskalierung und einer Azure Resource Manager-Vorlage erstellen, indem Sie dem Abschnitt `computeProfile` > `workernode` einen `autoscale`-Knoten hinzufügen. Der `autoscale`-Knoten enthält ein `recurrence` mit einer `timezone` und einem `schedule`. Damit wird beschrieben, wann die Änderung erfolgen wird. Eine umfassende Resource Manager-Vorlage finden Sie unter [Deploy Spark Cluster with schedule-based Autoscale Enabled](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-autoscale-schedulebased) (Bereitstellen eines Spark-Clusters mit aktivierter zeitplanbasierter Autoskalierung, in englischer Sprache).
+Sie können einen HDInsight-Cluster mit zeitplanbasierter Autoskalierung und einer Azure Resource Manager-Vorlage erstellen, indem Sie dem Abschnitt `computeProfile` > `workernode` einen `autoscale`-Knoten hinzufügen. Der `autoscale`-Knoten enthält ein `recurrence` mit einer `timezone` und einem `schedule`. Damit wird beschrieben, wann die Änderung erfolgen wird. Eine umfassende Resource Manager-Vorlage finden Sie unter [Bereitstellen eines Spark-Clusters mit aktivierter zeitplanbasierter Autoskalierung](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-autoscale-schedulebased).
 
 ```json
 {

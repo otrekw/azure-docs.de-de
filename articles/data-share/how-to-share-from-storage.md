@@ -5,13 +5,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: how-to
-ms.date: 08/28/2020
-ms.openlocfilehash: da1683ec48fcae10ff74163a7db089c30ddd7aad
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.date: 12/16/2020
+ms.openlocfilehash: 9dfc8be54fc55842440e376916b2eb9bb04a4610
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92219903"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617084"
 ---
 # <a name="share-and-receive-data-from-azure-blob-storage-and-azure-data-lake-storage"></a>Freigeben und Empfangen von Daten aus Azure Blob Storage und Azure Data Lake Storage
 
@@ -21,7 +21,7 @@ Azure Data Share unterstützt das Freigeben aus dem Speicherkonto über Momentau
 
 Azure Data Share unterstützt die Freigabe von Dateien, Ordnern und Dateisystemen über Azure Data Lake Gen1 und Azure Data Lake Gen2. Außerdem unterstützt es die Freigabe von Blobs, Ordnern und Containern über Azure Blob Storage. Derzeit wird nur das Blockblob unterstützt. Freigegebene Daten aus diesen Quellen können in Azure Data Lake Gen2 oder Azure Blob Storage empfangen werden.
 
-Wenn Dateisysteme, Container oder Ordner in einer auf Momentaufnahmen basierenden Freigabe freigegeben werden, kann der Datenconsumer wahlweise eine vollständige Kopie der Freigabedaten erstellen oder die Funktion der inkrementellen Momentaufnahme nutzen, um nur neue oder aktualisierte Dateien zu kopieren. Die inkrementelle Momentaufnahme basiert auf dem Zeitpunkt der letzten Änderung der Dateien. Vorhandene Dateien mit demselben Namen werden überschrieben.
+Wenn Dateisysteme, Container oder Ordner in einer auf Momentaufnahmen basierenden Freigabe freigegeben werden, kann der Datenconsumer wahlweise eine vollständige Kopie der Freigabedaten erstellen oder die Funktion der inkrementellen Momentaufnahme nutzen, um nur neue oder aktualisierte Dateien zu kopieren. Die inkrementelle Momentaufnahme basiert auf dem Zeitpunkt der letzten Änderung der Dateien. Vorhandene Dateien mit demselben Namen werden während der Momentaufnahme überschrieben. Die aus der Quelle gelöschte Datei wird nicht im Ziel gelöscht. Leere Unterordner in der Quelle werden nicht in das Ziel kopiert. 
 
 ## <a name="share-data"></a>Freigeben von Daten
 
@@ -49,7 +49,7 @@ Erstellen Sie eine Azure Data Share-Ressource in einer Azure-Ressourcengruppe.
 
 1. Suchen Sie nach *Data Share*.
 
-1. Wählen Sie Data Share und dann die Option **Erstellen** aus.
+1. Wählen Sie „Data Share“ und dann die Option **Erstellen** aus.
 
 1. Geben Sie die folgenden Informationen als grundlegende Details Ihrer Azure Data Share-Ressource ein. 
 

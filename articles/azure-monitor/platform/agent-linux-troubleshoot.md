@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
-ms.openlocfilehash: 13959c4a3c798656efdc72b5c8e5f96e4fb2392a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 2b811b1ace646cc4e0a93b937fbb90cfbf7aec0f
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96011896"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97704893"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>Behandeln von Problemen mit dem Log Analytics-Agent für Linux 
 
@@ -241,23 +241,6 @@ Leistungsbezogene Fehler kommen nicht immer vor und sind nur sehr schwer zu repr
 3. OMI neu starten: <br/>
 `sudo scxadmin -restart`
 
-## <a name="issue-you-are-not-seeing-any-data-in-the-azure-portal"></a>Problem: Im Azure-Portal werden keine Daten angezeigt.
-
-### <a name="probable-causes"></a>Mögliche Ursachen
-
-- Fehler beim Onboarding in Azure Monitor
-- Die Verbindung mit Azure Monitor ist blockiert.
-- Daten des Log Analytics-Agents für Linux werden gesichert.
-
-### <a name="resolution"></a>Lösung
-1. Vergewissern Sie sich, dass das Onboarding in Azure Monitor erfolgreich war, indem Sie überprüfen, ob die folgende Datei vorhanden ist: `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsadmin.conf`.
-2. Erneutes Onboarding mithilfe der Befehlszeilenanweisungen `omsadmin.sh`
-3. Wenn Sie einen Proxy verwenden, lesen Sie die Proxylösungsschritte weiter oben.
-4. In einigen Fällen, wenn der Log Analytics-Agent für Linux nicht mit dem Dienst kommunizieren kann, werden Daten auf dem Agent bis zur vollständigen Puffergröße von 50 MB in eine Warteschlange gestellt. Der Agent sollte mit dem folgenden Befehl neu gestartet werden: `/opt/microsoft/omsagent/bin/service_control restart [<workspace id>]`. 
-
-    >[!NOTE]
-    >Dieses Problem wurde ab der Agent-Version 1.1.0-28 behoben.
-
 
 ## <a name="issue-you-are-not-seeing-forwarded-syslog-messages"></a>Problem: Weitergeleitete Syslog-Nachrichten werden nicht angezeigt. 
 
@@ -335,6 +318,7 @@ Dieser Fehler weist darauf hin, dass die Linux-Diagnoseerweiterung (LAD) paralle
 * Die Verbindung mit Azure Monitor ist blockiert.
 * Die VM wurde neu gestartet.
 * Das OMI-Paket wurde manuell auf eine Version aktualisiert, die neuer ist als die vom Log Analytics-Agent für Linux-Paket installierte Version.
+* OMI wurde angehalten und blockiert dadurch den OMS-Agent.
 * Die DSC-Ressource protokolliert einen Fehler vom Typ *Klasse nicht gefunden* in der Protokolldatei `omsconfig.log`.
 * Daten des Log Analytics-Agents werden gesichert.
 * DSC protokolliert die Meldung *Current configuration does not exist. Execute Start-DscConfiguration command with -Path parameter to specify a configuration file and create a current configuration first.* (Die aktuelle Konfiguration ist nicht vorhanden. Führen Sie zunächst den Befehl „Start-DscConfiguration“ mit dem -Path-Parameter aus, um eine Konfigurationsdatei anzugeben und eine aktuelle Konfiguration zu erstellen.) in der Protokolldatei `omsconfig.log`, es ist jedoch keine Protokollmeldung zu `PerformRequiredConfigurationChecks`-Vorgängen vorhanden.
@@ -345,6 +329,7 @@ Dieser Fehler weist darauf hin, dass die Linux-Diagnoseerweiterung (LAD) paralle
 4. Gehen Sie bei der Verwendung eines Proxys gemäß den oben aufgeführten Schritten zur Proxyproblembehandlung vor.
 5. In einigen Azure-Verteilungssystemen wird der omid-OMI-Serverdaemon nach dem Neustart der VM nicht gestartet. Dies führt dazu, dass keine Daten im Zusammenhang mit Audit-, ChangeTracking- oder UpdateManagement-Lösungen angezeigt werden. Die Problemumgehung besteht darin, den OMI-Server durch Ausführen von `sudo /opt/omi/bin/service_control restart`manuell zu starten.
 6. Nachdem das OMI-Paket manuell auf eine neuere Version aktualisiert wurde, muss es manuell neu gestartet werden, damit der Log Analytics-Agent weiterhin funktioniert. Dieser Schritt ist für einige Distributionen erforderlich, bei denen der OMI-Server nach einem Upgrade nicht automatisch gestartet wird. Führen Sie `sudo /opt/omi/bin/service_control restart` aus, um OMI neu zu starten.
+* In einigen Situationen kann OMI angehalten werden. Der OMS-Agent kann in den gesperrten Status wechseln und auf OMI warten. Dabei wird die gesamte Datensammlung blockiert. Der OMS-Agent-Prozess wird ausgeführt, es gibt jedoch keine Aktivitäten. Dies ist daran zu erkennen, dass in `omsagent.log` keine neuen Protokollzeilen (etwa gesendete Heartbeats) vorhanden sind. Starten Sie OMI mit `sudo /opt/omi/bin/service_control restart` neu, um den Agent wiederherzustellen.
 7. Falls ein DSC-Ressourcenfehler vom Typ *Klasse nicht gefunden* in der Datei „omsconfig.log“ angezeigt wird, führen Sie `sudo /opt/omi/bin/service_control restart` aus.
 8. In einigen Fällen, wenn der Log Analytics-Agent für Linux nicht mit Azure Monitor kommunizieren kann, werden Daten auf dem Agent bis zur vollständigen Puffergröße gesichert: 50 MB. Der Agent sollte mit dem folgenden Befehl neu gestartet werden: `/opt/microsoft/omsagent/bin/service_control restart`.
 

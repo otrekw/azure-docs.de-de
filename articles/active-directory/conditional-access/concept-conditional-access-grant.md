@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a8915ae349e33390ce5bb687d7c07a21665a0258
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 34f82fc060586e2df5acefa6b0836171e558aa4a
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96029403"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97615766"
 ---
 # <a name="conditional-access-grant"></a>Bedingter Zugriff: Erteilen
 
@@ -110,6 +110,7 @@ Diese Einstellung gilt für die folgenden iOS- und Android-Apps:
    - Unterstützt als Geräteplattformbedingung nur iOS und Android.
    - Zum Registrieren des Geräts ist eine Broker-App erforderlich. Die Broker-App kann entweder Microsoft Authenticator für iOS, Microsoft Authenticator oder das Microsoft-Unternehmensportal für Android-Geräte sein.
 - Der bedingte Zugriff kann Microsoft Edge im InPrivate-Modus einer genehmigten Client-App nicht berücksichtigen.
+- Die Verwendung eines Azure AD-Anwendungsproxys zum Aktivieren der mobilen Power BI-App zum Herstellen einer Verbindung mit dem lokalen Power BI-Berichtsserver wird nicht mit Richtlinien für den bedingten Zugriff unterstützt, die die Microsoft Power BI-App als genehmigte Client-App benötigen.
 
 Konfigurationsbeispiele finden Sie im Artikel [Gewusst wie: Vorschreiben der Verwendung von genehmigten Client-Apps für den Zugriff auf Cloud-Apps mithilfe des bedingten Zugriffs](app-based-conditional-access.md).
 

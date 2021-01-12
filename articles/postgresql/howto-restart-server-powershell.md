@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 06/08/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 99fc29071086a5c9271b8b2dec00976833a36352
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 2d37de4a1861cb78b4a76c8ca7bc8c3643245b32
+ms.sourcegitcommit: 0830e02635d2f240aae2667b947487db01f5fdef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92489777"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97706965"
 ---
 # <a name="restart-azure-database-for-postgresql-server-using-powershell"></a>Neustarten eines Azure Database for PostgreSQL-Servers mit PowerShell
 
@@ -20,7 +20,8 @@ In diesem Thema wird erläutert, wie Sie einen Azure Database for PostgreSQL-Ser
 
 Der Neustart des Servers wird blockiert, wenn der Dienst ausgelastet ist. Beispielsweise kann der Dienst einen zuvor angeforderten Vorgang (z. B. das Skalieren von virtuellen Kernen) verarbeiten.
 
-Die für einen Neustart benötigte Zeit hängt vom PostgreSQL-Wiederherstellungsprozess ab. Zum Verkürzen der Neustartzeit wird empfohlen, die Aktivitäten auf dem Server vor dem Neustart auf ein Minimum zu beschränken.
+> [!NOTE] 
+> Die für einen Neustart benötigte Zeit hängt von dem PostgreSQL-Wiederherstellungsprozess ab. Um die Neustartzeit zu verkürzen, empfehlen wir, die Aktivitäten auf dem Server vor dem Neustart auf ein Minimum zu beschränken. Sie sollten zudem die Prüfpunkthäufigkeit erhöhen. Darüber hinaus können Sie prüfpunktbezogene Parameterwerte optimieren, einschließlich `max_wal_size`. Außerdem wird empfohlen, vor dem Neustart des Servers den Befehl `CHECKPOINT` auszuführen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

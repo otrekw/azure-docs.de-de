@@ -6,12 +6,12 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/05/2020
-ms.openlocfilehash: 8fabf8169270c3162604b6535a6cf2fb07cd9a9d
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: dc19b95e891235ac35c703adef50a23a9f70fbdb
+ms.sourcegitcommit: 0830e02635d2f240aae2667b947487db01f5fdef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422143"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97706795"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>Lesereplikate in Azure Database for PostgreSQL – Einzelserver
 
@@ -71,6 +71,8 @@ Jedes Replikat ist für die [automatische Vergrößerung](concepts-pricing-tiers
 Das Feature für Lesereplikate verwendet die physische Replikation von PostgreSQL, nicht die logische Replikation. Die Streamingreplikation anhand von Replikationsslots ist der Standardbetriebsmodus. Bei Bedarf wird zum Aufholen der Protokollversand verwendet.
 
 [Erfahren Sie, wie Sie ein Lesereplikat im Azure-Portal erstellen](howto-read-replicas-portal.md).
+
+Ist der PostgreSQL-Quellserver mit kundenseitig verwalteten Schlüsseln verschlüsselt, finden Sie in der [Dokumentation](concepts-data-encryption-postgresql.md) weitere Aspekte.
 
 ## <a name="connect-to-a-replica"></a>Herstellen einer Verbindung mit einem Replikat
 Wenn Sie ein Replikat erstellen, erbt dieses weder die Firewallregeln noch den VNET-Dienstendpunkt des primären Servers. Diese Regeln müssen separat für das Replikat eingerichtet werden.

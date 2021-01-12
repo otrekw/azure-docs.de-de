@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/11/2020
 ms.author: xujiang1
 ms.reviewer: jrasnick
-ms.openlocfilehash: cee6d030a9639a7203a32a3c0957733cecb1f8b6
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 8cf440a517c1a3496b3df438fdd0d2534609908f
+ms.sourcegitcommit: a89a517622a3886b3a44ed42839d41a301c786e0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96445316"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97733110"
 ---
 # <a name="troubleshoot-connectivity-between-azure-synapse-analytics-synapse-studio-and-storage"></a>Behandeln von Problemen bei der Konnektivität zwischen Azure Synapse Analytics Studio und Speicher
 
@@ -24,7 +24,11 @@ Wenn Ihr Speicherkonto nicht über die erforderlichen Berechtigungen verfügt, k
 
 Die detaillierte Fehlermeldung kann variieren, aber die generelle Bedeutung der Fehlermeldung ist: „Diese Anforderung ist zum Durchführen dieses Vorgangs nicht autorisiert.“.
 
-![Speicherkonnektivitätsproblem 1](media/troubleshoot-synapse-studio-and-storage-connectivity/storage-connectivity-issue.1.png)
+Im verknüpften Speicherknoten:  
+![Speicherkonnektivitätsproblem 1](media/troubleshoot-synapse-studio-and-storage-connectivity/storage-connectivity-issue-1.png)
+
+Im Speichercontainerknoten:  
+![Speicherkonnektivitätsproblem 1a](media/troubleshoot-synapse-studio-and-storage-connectivity/storage-connectivity-issue-1a.png)
 
 **LÖSUNG**: Informationen, wie Sie Ihr Konto der erforderlichen Rolle zuweisen, finden Sie unter [Zuweisen einer Azure-Rolle für den Zugriff auf Blob- und Warteschlangendaten über das Azure-Portal](../../storage/common/storage-auth-aad-rbac-portal.md).
 
@@ -33,7 +37,11 @@ Die detaillierte Fehlermeldung kann variieren, aber die generelle Bedeutung der 
 
 Wenn Sie den Pfeil auswählen, um die Speicherstruktur in „Daten“ --> „Verknüpft“ in Synapse Studio zu erweitern, wird möglicherweise das Problem „REQUEST_SEND_ERROR“ im linken Bereich angezeigt. Sehen Sie sich hierzu den folgenden Screenshot des Problemsymptoms an:
 
-![Speicherkonnektivitätsproblem 2](media/troubleshoot-synapse-studio-and-storage-connectivity/storage-connectivity-issue.2.png)
+Im verknüpften Speicherknoten:  
+![Speicherkonnektivitätsproblem 2](media/troubleshoot-synapse-studio-and-storage-connectivity/storage-connectivity-issue-2.png)
+
+Im Speichercontainerknoten:  
+![Speicherkonnektivitätsproblem 2a](media/troubleshoot-synapse-studio-and-storage-connectivity/storage-connectivity-issue-2a.png)
 
 Für dieses Problem kann es mehrere mögliche Ursachen geben:
 
@@ -51,6 +59,7 @@ Sie können den Befehl „nslookup \<storage-account-name\>.dfs.core.windows.net
 
 * Die Speicherressource, auf die Sie zugreifen, ist Azure Data Lake Storage Gen2 und befindet sich gleichzeitig hinter einer Firewall und einem vNet (wobei der private Speicherendpunkt konfiguriert ist).
 * Die Containerressource, auf die Sie zugreifen, wurde gelöscht oder ist nicht vorhanden.
+* Mandantenübergreifend: Der vom Benutzer für die Anmeldung verwendete Arbeitsbereichsmandant ist nicht mit dem Mandanten des Speicherkontos identisch. 
 
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -6,12 +6,12 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 02/25/2020
-ms.openlocfilehash: b267a97b640c9d069f83223206200fc4814c86b9
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: c712af41fdc191cab4fd08c9d8175a849d4f286a
+ms.sourcegitcommit: 0830e02635d2f240aae2667b947487db01f5fdef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488009"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97706769"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql---single-server"></a>Sicherung und Wiederherstellung in Azure Database for PostgreSQL – Einzelserver
 
@@ -59,7 +59,7 @@ Das primäre Mittel zum Steuern der Sicherungsspeicherkosten besteht darin, den 
 
 ## <a name="restore"></a>Restore
 
-Wenn in Azure Database for PostgreSQL eine Wiederherstellung durchgeführt wird, wird aus den Sicherungen des ursprünglichen Servers ein neuer Server erstellt.
+Wenn in Azure Database for PostgreSQL eine Wiederherstellung durchgeführt wird, wird aus den Sicherungen des ursprünglichen Servers ein neuer Server erstellt. 
 
 Es gibt zwei Arten der Wiederherstellung:
 
@@ -68,8 +68,11 @@ Es gibt zwei Arten der Wiederherstellung:
 
 Die geschätzte Wiederherstellungszeit hängt von verschiedenen Faktoren ab, z.B. der Datenbankgröße, Transaktionsprotokollgröße und Netzwerkbandbreite sowie der Gesamtzahl von Datenbanken, die gleichzeitig in derselben Region wiederhergestellt werden müssen. Die Wiederherstellungszeit beträgt für gewöhnlich weniger als 12 Stunden.
 
-> [!IMPORTANT]
-> Gelöschte Server **können nicht** wiederhergestellt werden. Wenn Sie den Server löschen, werden auch alle Datenbanken gelöscht, die zum Server gehören, und können nicht wiederhergestellt werden. Um Serverressourcen nach der Bereitstellung vor versehentlichem Löschen oder unerwarteten Änderungen zu schützen, können Administratoren [Verwaltungssperren](../azure-resource-manager/management/lock-resources.md) nutzen.
+> [!NOTE] 
+> Ist der PostgreSQL-Quellserver mit kundenseitig verwalteten Schlüsseln verschlüsselt, finden Sie in der [Dokumentation](concepts-data-encryption-postgresql.md) weitere Aspekte. 
+
+> [!NOTE]
+> Wenn Sie einen gelöschten PostgreSQL-Server wiederherstellen möchten, befolgen Sie das [hier](howto-restore-dropped-server.md) beschriebene Verfahren.
 
 ### <a name="point-in-time-restore"></a>Wiederherstellung bis zu einem bestimmten Zeitpunkt
 
@@ -81,11 +84,14 @@ Unter Umständen müssen Sie warten, bis die nächste Transaktionsprotokollsiche
 
 ### <a name="geo-restore"></a>Geowiederherstellung
 
-Sie können einen Server in einer anderen Azure-Region wiederherstellen, in der der Dienst verfügbar ist, wenn Sie Ihren Server für georedundante Sicherungen konfiguriert haben. Server, die bis zu 4 TB Speicherkapazität unterstützen, können in der geografisch gekoppelten Region oder in einer beliebigen Region wiederhergestellt werden, die bis zu 16 TB Speicherkapazität unterstützt. Für Server, die bis zu 16 TB Speicherkapazität unterstützen, können Geosicherungen auch in beliebigen Regionen wiederhergestellt werden, die Server mit 16 TB unterstützen. Eine Liste der unterstützten Regionen finden Sie unter [Azure Database for PostgeSQL-Tarife](concepts-pricing-tiers.md).
+Sie können einen Server in einer anderen Azure-Region wiederherstellen, in der der Dienst verfügbar ist, wenn Sie Ihren Server für georedundante Sicherungen konfiguriert haben. Server, die bis zu 4 TB Speicherkapazität unterstützen, können in der geografisch gekoppelten Region oder in einer beliebigen Region wiederhergestellt werden, die bis zu 16 TB Speicherkapazität unterstützt. Für Server, die bis zu 16 TB Speicherkapazität unterstützen, können Geosicherungen auch in beliebigen Regionen wiederhergestellt werden, die Server mit 16 TB unterstützen. Eine Liste der unterstützten Regionen finden Sie unter [Azure Database for PostgreSQL-Tarife](concepts-pricing-tiers.md).
 
 Die Geowiederherstellung ist die Standardoption für die Wiederherstellung, wenn Ihr Server aufgrund eines Incidents in der Region, in der der Server gehostet wird, nicht verfügbar ist. Wenn Ihre Datenbankanwendung wegen eines umfangreichen Incidents in einer Region nicht mehr verfügbar ist, können Sie einen Server aus den georedundanten Sicherungen auf einem Server in einer beliebigen anderen Region wiederherstellen. Zwischen der Erstellung einer Sicherung und der Replikation in einer anderen Region kommt es zu einer Verzögerung. Diese Verzögerung kann bis zu einer Stunde betragen. Folglich kann bei einem Notfall ein Datenverlust von bis zu einer Stunde auftreten.
 
 Während der Geowiederherstellung können folgende Serverkonfigurationen geändert werden: Computegeneration, virtueller Kern, Aufbewahrungszeitraum für die Sicherung und Sicherungsredundanzoptionen. Das Ändern des Tarifs („Basic“, „Allgemein“ oder „Arbeitsspeicheroptimiert“) oder der Größe des Speichers wird nicht unterstützt.
+
+> [!NOTE]
+> Verwendet der Quellserver Infrastrukturmehrfachverschlüsselung, gelten bei der Serverwiederherstellung bestimmte Einschränkungen, u. a. in Bezug auf die verfügbaren Regionen. Weitere Informationen finden Sie unter [Azure Database for PostgreSQL: doppelte Infrastrukturverschlüsselung](concepts-infrastructure-double-encryption.md).
 
 ### <a name="perform-post-restore-tasks"></a>Durchführen der Aufgaben nach der Wiederherstellung
 

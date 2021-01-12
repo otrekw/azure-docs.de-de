@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/3/2019
+ms.date: 12/18/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 7de97fd775853f64803ab62ac397e754d065e4df
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 353c349ebe348addac60c5f9f7b1bf0fbb1fc425
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97509324"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97703313"
 ---
 # <a name="admin-consent-on-the-microsoft-identity-platform"></a>Administratoreinwilligung auf Microsoft Identity Platform
 
@@ -50,10 +50,9 @@ https://graph.microsoft.com/mail.send
 | `client_id` | Erforderlich | Die **Anwendungs-ID (Client-ID)** , die Ihrer App im [Azure-Portal auf der Seite „App-Registrierungen“](https://go.microsoft.com/fwlink/?linkid=2083908) zugewiesen wurde. |
 | `redirect_uri` | Erforderlich |Der Umleitungs-URI, an den die Antwort zur Verarbeitung durch die App gesendet werden soll. Er muss genau mit einem der Umleitungs-URIs übereinstimmen, die Sie im Portal registriert haben. |
 | `state` | Empfohlen | Ein in der Anforderung enthaltener Wert, der auch in der Antwort zurückgegeben wird. Es kann sich um eine Zeichenfolge mit jedem beliebigen Inhalt handeln. Der Status wird verwendet, um Informationen über den Status des Benutzers in der App zu codieren, bevor die Authentifizierungsanforderung aufgetreten ist, z.B. Informationen zu der Seite oder Ansicht, die der Benutzer besucht hat. |
-|`scope` | Erforderlich | Definiert den von der Anwendung angeforderten Satz an Berechtigungen. Dies können entweder statische (mit /.default) oder dynamische Bereiche sein. Dies kann auch die OIDC-Bereiche (`openid`, `profile`, `email`) einschließen. |
+|`scope` | Erforderlich | Definiert den von der Anwendung angeforderten Satz an Berechtigungen. Dies können statische (mit `/.default`) oder dynamische Bereiche sein. Dies kann auch die OIDC-Bereiche (`openid`, `profile`, `email`) einschließen. |
 
-
-An diesem Punkt erzwingt Azure AD, dass sich nur ein Mandantenadministrator anmelden kann, um die Anforderung abzuschließen. Der Administrator wird aufgefordert, alle Berechtigungen zu genehmigen, die Sie für den Parameter `scope` angefordert haben.  Wenn Sie einen statischen Wert (`/.default`) verwendet haben, funktioniert er wie der v1.0-Endpunkt für die Administratoreinwilligung und fordert die Zustimmung für alle Bereiche an, die in den erforderlichen Berechtigungen für die APP gefunden werden.
+An diesem Punkt erzwingt Azure AD, dass sich nur ein Mandantenadministrator anmelden kann, um die Anforderung abzuschließen. Der Administrator wird aufgefordert, alle Berechtigungen zu genehmigen, die Sie für den Parameter `scope` angefordert haben.  Wenn Sie einen statischen Wert (`/.default`) verwendet haben, funktioniert er wie der v1.0-Endpunkt für die Administratoreinwilligung und fordert die Zustimmung für alle Bereiche an, die in den erforderlichen Berechtigungen gefunden werden (Benutzer und App). Zum Anfordern von App-Berechtigungen muss der Wert `/.default` verwendet werden. Wenn Administratoren bei Verwendung von `/.default` eine bestimmte Berechtigung nicht jedes Mal auf dem Bildschirm für die Administratoreinwilligung angezeigt werden soll, empfiehlt es sich, die Berechtigung nicht im Abschnitt für erforderliche Berechtigungen zu platzieren. Stattdessen können Sie eine dynamische Einwilligung verwenden, um die gewünschten Berechtigungen für den Einwilligungsbildschirm zur Laufzeit hinzuzufügen, anstatt `/.default` zu verwenden.
 
 ### <a name="successful-response"></a>Erfolgreiche Antwort
 

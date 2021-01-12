@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 120446472038076e34f62b47ba79348e5de8b972
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c75fcd1fd20e41df5018fcaa07fe83051d7e5f1a
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96010927"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740367"
 ---
 # <a name="how-to-disenroll-a-device-from-azure-iot-hub-device-provisioning-service"></a>Aufheben der Registrierung eines Geräts bei IoT Hub Device Provisioning Service
 
@@ -26,7 +26,7 @@ Die Registrierung eines Geräts beim Device Provisioning Service ermöglicht die
 
 ## <a name="disallow-devices-by-using-an-individual-enrollment-entry"></a>Verweigern von Geräten durch einen Eintrag für die individuelle Registrierung
 
-Individuelle Registrierungen werden auf ein einzelnes Gerät angewendet und können X.509-Zertifikate oder SAS-Token (in einem physischen oder virtuellen TPM) als Nachweismechanismus einsetzen. (Geräte, die SAS-Token als Nachweismechanismus verwenden, können nur über eine individuelle Registrierung bereitgestellt werden.) Um ein Gerät mit einer individuellen Registrierung nicht zuzulassen, können Sie den jeweiligen Registrierungseintrag deaktivieren oder löschen. 
+Individuelle Registrierungen werden auf ein einzelnes Gerät angewendet und können X.509-Zertifikate, TPM Endorsement Keys (in einem physischen oder virtuellen TPM) oder SAS-Token als Nachweismechanismus einsetzen. Um ein Gerät mit einer individuellen Registrierung nicht zuzulassen, können Sie den jeweiligen Registrierungseintrag deaktivieren oder löschen. 
 
 So lassen Sie das Gerät durch Deaktivieren des Registrierungseintrags vorübergehend nicht zu 
 

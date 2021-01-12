@@ -1,7 +1,7 @@
 ---
-title: Lokales Behandeln von Problemen bei der Webdienstbereitstellung
+title: Behandeln von Problemen bei der lokalen Modellimplementierung
 titleSuffix: Azure Machine Learning
-description: Erfahren Sie, wie Sie die häufigen Azure Machine Learning Docker-Bereitstellungsfehler lokal umgehen, lösen und beheben können.
+description: Versuchen Sie es bei der Problembehandlung im Zusammenhang mit Modellimplementierungsfehlern zunächst mit einer lokalen Modellimplementierung.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,16 +11,16 @@ ms.reviewer: luquinta
 ms.date: 11/25/2020
 ms.topic: troubleshooting
 ms.custom: devx-track-python, deploy, contperf-fy21q2
-ms.openlocfilehash: 4f70978e7b7c2315aff4c51d8b019933df78e7e8
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: a879a81ae2bcb4e659c69a801f7c299c10ab3d77
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97028800"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740639"
 ---
-# <a name="troubleshoot-model-deployment-locally"></a>Lokales Behandeln von Problemen bei der Modellimplementierung
+# <a name="troubleshooting-with-a-local-model-deployment"></a>Behandeln von Problemen mit einer lokalen Modellimplementierung
 
-Erfahren Sie, wie Sie die häufigen Bereitstellungsfehler bei Azure Machine Learning Docker-Webdiensten lokal beheben und lösen oder umgehen können.
+Versuchen Sie es bei der Problembehandlung im Zusammenhang mit der Bereitstellung in Azure Container Instances (ACI) oder Azure Kubernetes Service (AKS) zunächst mit einer lokalen Modellimplementierung.  Die Verwendung eines lokalen Webdiensts erleichtert die Erkennung und Behebung allgemeiner Fehler im Zusammenhang mit der Docker-Webdienstbereitstellung für Azure Machine Learning.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -28,13 +28,11 @@ Erfahren Sie, wie Sie die häufigen Bereitstellungsfehler bei Azure Machine Lear
 * Das [Azure Machine Learning SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py).
 * Die [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)
 * Die [CLI-Erweiterung für Azure Machine Learning](reference-azure-machine-learning-cli.md).
-* Zum lokalen Debuggen benötigen Sie eine funktionierende Docker-Installation auf Ihrem lokalen System.
+* Zum lokalen Debuggen können Sie ein Modell für eine [Azure Machine Learning Compute-Instanz](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-local-container-notebook-vm) bereitstellen oder eine funktionierende Docker-Installation auf Ihrem lokalen System verwenden.
 
     Verwenden Sie den Befehl `docker run hello-world` über ein Terminal oder eine Befehlszeile, um Ihre Docker-Installation zu überprüfen. Informationen zur Installation von Docker oder zur Problembehandlung bei Docker-Fehlern finden Sie in der [Docker-Dokumentation](https://docs.docker.com/).
 
 ## <a name="debug-locally"></a>Lokales Debuggen
-
-Wenn bei der Bereitstellung eines Modells für ACI oder AKS Probleme auftreten, versuchen Sie, es als lokalen Webdienst bereitzustellen. Das Verwenden eines lokalen Webdiensts erleichtert die Problembehandlung.
 
 Im Repository [MachineLearningNotebooks](https://github.com/Azure/MachineLearningNotebooks) finden Sie ein beispielhaftes [lokales Bereitstellungsnotebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/deploy-to-local/register-model-deploy-local.ipynb), das Sie erkunden können.
 

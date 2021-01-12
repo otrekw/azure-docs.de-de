@@ -1,7 +1,7 @@
 ---
-title: Erneutes Trainieren von Modellen mit Azure Machine Learning-Designer
+title: Verwenden von Pipelineparametern zum erneuten Trainieren von Modellen im Designer
 titleSuffix: Azure Machine Learning
-description: Hier erfahren Sie, wie Sie Machine Learning-Modelle mit veröffentlichten Pipelines im Azure Machine Learning-Designer erneut trainieren können.
+description: Hier erfahren Sie, wie Sie Modelle mit veröffentlichten Pipelines und Pipelineparametern im Azure Machine Learning-Designer erneut trainieren.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,17 +10,17 @@ author: likebupt
 ms.date: 04/06/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: d754674fe3aa65fa9fd8540b05083979ce96aff8
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 6efb0f095f8a157f723a3b7c0c2b229546ebb36b
+ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96437115"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97708465"
 ---
-# <a name="retrain-models-with-azure-machine-learning-designer"></a>Erneutes Trainieren von Modellen mit Azure Machine Learning-Designer
+# <a name="use-pipeline-parameters-to-retrain-models-in-the-designer"></a>Verwenden von Pipelineparametern zum erneuten Trainieren von Modellen im Designer
 
 
-In dieser Anleitung erfahren Sie, wie Sie Azure Machine Learning-Designer zum erneuten Trainieren eines Machine Learning-Modells verwenden. Sie werden veröffentlichte Pipelines verwenden, um Ihren Workflow zu automatisieren und Parameter festzulegen, um Ihr Modell anhand neuer Daten zu trainieren. 
+In dieser Anleitung erfahren Sie, wie Sie Azure Machine Learning-Designer zum erneuten Trainieren eines Machine Learning-Modells mithilfe von Pipelineparametern verwenden. Sie werden veröffentlichte Pipelines verwenden, um Ihren Workflow zu automatisieren und Parameter festzulegen, um Ihr Modell anhand neuer Daten zu trainieren. Mithilfe von Pipelineparametern können Sie vorhandene Pipelines für verschiedene Aufträge wiederverwenden.  
 
 In diesem Artikel werden folgende Vorgehensweisen behandelt:
 

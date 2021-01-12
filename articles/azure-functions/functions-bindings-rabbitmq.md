@@ -4,22 +4,22 @@ description: Erfahren Sie, wie Sie Azure RabbitMQ-Trigger und -Bindungen in Azur
 author: cachai2
 ms.assetid: ''
 ms.topic: reference
-ms.date: 12/11/2020
+ms.date: 12/17/2020
 ms.author: cachai
 ms.custom: ''
-ms.openlocfilehash: cd6c8de0d9290aab273e25403bb1cb2d8fe07e27
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 2a480f25821f5022295b18ca24abfd2c0fb8a50c
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505665"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746523"
 ---
 # <a name="rabbitmq-bindings-for-azure-functions-overview"></a>Übersicht über RabbitMQ-Bindungen für Azure Functions
 
 > [!NOTE]
-> RabbitMQ-Bindungen werden nur mit **Windows Premium**-Plänen vollständig unterstützt. Im Verbrauchstarif und unter Linux werden sie derzeit nicht unterstützt.
+> RabbitMQ-Bindungen werden nur mit den Plänen **Premium und Dedicated** vollständig unterstützt. Der Verbrauchstarif wird nicht unterstützt.
 
-Die Integration von Azure Functions mit [RabbitMQ](https://www.rabbitmq.com/) erfolgt über [Trigger und Bindungen](./functions-triggers-bindings.md). Die Azure Functions-Erweiterungen für RabbitMQ-Bindungen ermöglichen das Senden und Empfangen von Nachrichten mithilfe der RabbitMQ-API und Functions.
+Die Integration von Azure Functions mit [RabbitMQ](https://www.rabbitmq.com/) erfolgt über [Trigger und Bindungen](./functions-triggers-bindings.md). Die Azure Functions-Erweiterungen für RabbitMQ ermöglichen das Senden und Empfangen von Nachrichten mithilfe der RabbitMQ-API und Functions.
 
 | Aktion | type |
 |---------|---------|
@@ -30,11 +30,11 @@ Die Integration von Azure Functions mit [RabbitMQ](https://www.rabbitmq.com/) er
 
 Wenn Sie mit dieser Erweiterung etwas entwickeln möchten, müssen Sie zunächst einen [RabbitMQ-Endpunkt einrichten](https://github.com/Azure/azure-functions-rabbitmq-extension/wiki/Setting-up-a-RabbitMQ-Endpoint). Weitere Informationen zu RabbitMQ finden Sie auf der [Seite mit den ersten Schritten](https://www.rabbitmq.com/getstarted.html).
 
-### <a name="functions-2x-and-higher"></a>Functions 2.x und höher
+### <a name="functions-3x-and-higher"></a>Functions 3.x und höher
 
 Das Arbeiten mit Triggern und Bindungen erfordert, dass Sie auf das entsprechende Paket verweisen. Das NuGet-Paket wird für .NET-Klassenbibliotheken verwendet, während das Erweiterungspaket für alle anderen Anwendungstypen verwendet wird.
 
-| Sprache                                        | Hinzufügen nach...                                   | Bemerkungen 
+| Sprache                                        | Hinzufügen nach...                                   | Bemerkungen
 |-------------------------------------------------|---------------------------------------------|-------------|
 | C#                                              | Installieren der Version 4.x des [NuGet-Paket] | |
 | C#-Skript, Java, JavaScript, Python, PowerShell | Registrieren des [Erweiterungspaket]          | Die [Azure-Tools-Erweiterung] wird zur Verwendung mit Visual Studio Code empfohlen. |
@@ -46,9 +46,9 @@ Das Arbeiten mit Triggern und Bindungen erfordert, dass Sie auf das entsprechend
 [Aktualisieren Ihrer Erweiterungen]: ./functions-bindings-register.md
 [Azure-Tools-Erweiterung]: https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack
 
-### <a name="functions-1x"></a>Functions 1.x
+### <a name="functions-1x-and-2x"></a>Functions 1.x und 2.x
 
-Die Erweiterungen für RabbitMQ-Bindungen werden für Functions 1.x nicht unterstützt. Verwenden Sie Functions 2.x oder höher.
+Die Erweiterungen für RabbitMQ-Bindungen werden für Functions 1.x und 2.x nicht unterstützt. Verwenden Sie Functions 3.x oder höher.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

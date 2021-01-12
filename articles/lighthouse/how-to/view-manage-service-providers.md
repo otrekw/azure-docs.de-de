@@ -1,18 +1,18 @@
 ---
 title: Dienstanbieter anzeigen und verwalten
 description: Kunden können die Seite „Dienstanbieter“ im Azure-Portal verwenden, um Informationen zu Dienstanbietern, Angeboten von Dienstanbietern und delegierten Ressourcen anzuzeigen.
-ms.date: 10/12/2020
+ms.date: 12/16/2020
 ms.topic: how-to
-ms.openlocfilehash: e94a9fd6562a9fa8bc0f2d84cce477e7907a1e48
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 5ee897503c997ab10fdb489f7921c9d2d001e472
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371102"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617203"
 ---
 # <a name="view-and-manage-service-providers"></a>Dienstanbieter anzeigen und verwalten
 
-Kunden können die Seite **Dienstanbieter** im [Azure-Portal](https://portal.azure.com) verwenden, um Informationen zu Dienstanbietern und deren Angeboten anzuzeigen, um bestimmte Ressourcen an [Azure Lighthouse](../overview.md) zu delegieren und um neue Angebote von Dienstanbietern zu suchen und erwerben.
+Die Seite **Dienstanbieter** im [Azure-Portal](https://portal.azure.com) bietet Kunden Steuerungsmöglichkeiten und Transparenz im Zusammenhang mit ihren Dienstanbietern, die [Azure Lighthouse](../overview.md) nutzen. Kunden können Details zu Dienstanbietern anzeigen, bestimmte Ressourcen delegieren, neue Dienstanbieterangebote kaufen, den Dienstanbieterzugriff entfernen und vieles mehr.
 
 > [!TIP]
 > Zwar beziehen wir uns hier auf Dienstanbieter und Kunden, doch können [Unternehmen, die mehrere Mandanten verwalten](../concepts/enterprise.md), denselben Prozess verwenden, um ihre Verwaltungserfahrung zu konsolidieren.
@@ -41,7 +41,7 @@ In der Spalte **Delegierungen** sieht der Kunde, wie viele Abonnements und/oder 
 
 Ein Kunde kann ein neues Angebot eines Dienstanbieters über die Seite **Dienstanbieterangebote** hinzufügen, indem er **Angebot** hinzufügen auswählt. Der Dienstanbieter muss ein Angebot für diesen Kunden veröffentlicht haben. Der Kunde kann das Angebot dann im Bildschirm **Private Angebote** auswählen und dann **Erstellen** auswählen.
 
-Wenn der Kunde ein Angebot eines Dienstanbieters entfernen möchte, kann er das Papierkorbsymbol in der Zeile für dieses Angebot auswählen. Nach dem Bestätigen des Löschvorgangs hat dieser Dienstanbieter keinen Zugriff mehr auf die Kundenressourcen, die zuvor für dieses Angebot delegiert wurden.
+Wenn der Kunde ein Angebot eines Dienstanbieters entfernen möchte, kann er dazu jederzeit das Papierkorbsymbol in der Zeile für dieses Angebot auswählen. Nach dem Bestätigen des Löschvorgangs hat dieser Dienstanbieter keinen Zugriff mehr auf die Kundenressourcen, die zuvor für dieses Angebot delegiert wurden.
 
 ## <a name="delegate-resources"></a>Delegieren von Ressourcen
 
@@ -85,4 +85,5 @@ Weitere Informationen zum Zuweisen einer Richtlinie und zum Anzeigen der Ergebni
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Erfahren Sie mehr über [Azure Lighthouse](../overview.md).
+- Informieren Sie sich über das [Überwachen der Dienstanbieteraktivität](view-service-provider-activity.md).
 - Erfahren Sie, wie Dienstanbieter auf der Seite **Meine Kunden** im Azure-Portal [Kunden anzeigen und verwalten](view-manage-customers.md) können.

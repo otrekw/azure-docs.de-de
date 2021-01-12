@@ -10,17 +10,19 @@ author: likebupt
 ms.reviewer: peterlu
 ms.date: 10/29/2020
 ms.topic: conceptual
-ms.custom: how-to, deploy, studio
-ms.openlocfilehash: 23c6417741d0753fcdaaf30c89c8f51348cc5dc5
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.custom: how-to, deploy, studio, designer
+ms.openlocfilehash: 35acfc51ae76fdacef11f03b1fbd91ad58650ae6
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94554681"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97722622"
 ---
 # <a name="use-the-studio-to-deploy-models-trained-in-the-designer"></a>Verwenden von Studio zum Bereitstellen von Modellen, die im Designer trainiert wurden
 
-In diesem Artikel erfahren Sie, wie Sie ein trainiertes Modell aus dem Designer als Echtzeitendpunkt in Azure Machine Learning Studio bereitstellen.
+In diesem Artikel erfahren Sie, wie Sie ein Designer-Modell als Echtzeitendpunkt in Azure Machine Learning Studio bereitstellen.
+
+Mit dem Designer trainierte Modelle können nach dem Registrieren oder Herunterladen wie jedes andere Modell verwendet werden. Exportierte Modelle können in Anwendungsfällen wie Internet der Dinge (Internet of Things, IoT) und lokale Bereitstellungen bereitgestellt werden.
 
 Die Bereitstellung in Studio umfasst die folgenden Schritte:
 
@@ -61,7 +63,6 @@ Registrieren Sie nach Anschluss der Trainingspipeline das trainierte Modell in I
 Nachdem Sie das Modell registriert haben, finden Sie es in Studio auf der Ressourcenseite **Modelle**.
     
 ![Screenshot des registrierten Modells auf der Ressourcenseite „Modelle“](./media/how-to-deploy-model-designer/models-asset-page.png)
-
 
 ## <a name="download-the-entry-script-file-and-conda-dependencies-file"></a>Herunterladen des Eingabeskripts und der Conda-Abhängigkeitendatei
 
