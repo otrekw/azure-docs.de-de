@@ -2,19 +2,21 @@
 title: Untergeordnete Ressourcen in Vorlagen
 description: Beschreibt, wie Sie den Namen und Typ für untergeordnete Ressourcen in einer Azure Resource Manager-Vorlage festlegen.
 ms.topic: conceptual
-ms.date: 08/26/2019
-ms.openlocfilehash: 3a69829e674925982c618807f49433a033d8c5f9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 12/21/2020
+ms.openlocfilehash: c594096fd95f663db2120b29c575b341924dcc36
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80743838"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97721942"
 ---
 # <a name="set-name-and-type-for-child-resources"></a>Festlegen von Name und Typ für untergeordnete Ressourcen
 
-Untergeordnete Ressourcen sind Ressourcen, die nur im Kontext einer anderen Ressource verfügbar sind. Beispielsweise kann eine [Erweiterung des virtuellen Computers](/azure/templates/microsoft.compute/2019-03-01/virtualmachines/extensions) nicht ohne einen [virtuellen Computer](/azure/templates/microsoft.compute/2019-03-01/virtualmachines) vorhanden sein. Die Erweiterungsressource ist ein untergeordnetes Element des virtuellen Computers.
+Untergeordnete Ressourcen sind Ressourcen, die nur im Kontext einer anderen Ressource verfügbar sind. Beispielsweise kann eine [Erweiterung des virtuellen Computers](/azure/templates/microsoft.compute/virtualmachines/extensions) nicht ohne einen [virtuellen Computer](/azure/templates/microsoft.compute/virtualmachines) vorhanden sein. Die Erweiterungsressource ist ein untergeordnetes Element des virtuellen Computers.
 
-In einer Resource Manager-Vorlage können Sie die untergeordnete Ressource entweder innerhalb oder außerhalb der übergeordneten Ressource angeben. Im folgenden Beispiel ist die untergeordnete Ressource in der Eigenschaft „resources“ der übergeordneten Ressource enthalten.
+Jede übergeordnete Ressource akzeptiert nur bestimmte Ressourcentypen als untergeordnete Ressourcen. Der Ressourcentyp für die untergeordnete Ressource enthält den Ressourcentyp für die übergeordnete Ressource. Beispielsweise sind **Microsoft.Web/sites/config** und **Microsoft.Web/sites/extensions** beide untergeordnete Ressourcen von **Microsoft.Web/sites**. Die akzeptierten Ressourcentypen werden im [Vorlagenschema](https://github.com/Azure/azure-resource-manager-schemas) der übergeordneten Ressource angegeben.
+
+In einer Azure Resource Manager-Vorlage (ARM-Vorlage) können Sie die untergeordnete Ressource entweder innerhalb oder außerhalb der übergeordneten Ressource angeben. Im folgenden Beispiel ist die untergeordnete Ressource in der Eigenschaft „resources“ der übergeordneten Ressource enthalten.
 
 ```json
 "resources": [
@@ -26,6 +28,8 @@ In einer Resource Manager-Vorlage können Sie die untergeordnete Ressource entwe
   }
 ]
 ```
+
+Untergeordnete Ressourcen können nur mit fünf Ebenen definiert werden.
 
 Im nächsten Beispiel ist die untergeordnete Ressource außerhalb der übergeordneten Ressource angegeben. So können Sie vorgehen, wenn die übergeordnete Ressource nicht in derselben Vorlage bereitgestellt wird oder wenn Sie mithilfe von [copy](copy-resources.md) mehrere untergeordnete Ressourcen erstellen möchten.
 
@@ -132,6 +136,6 @@ Das folgende Beispiel zeigt ein virtuelles Netzwerk und ein Subnetz, die beide a
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Weitere Informationen zum Erstellen von Azure-Ressourcen-Manager-Vorlagen finden Sie unter [Erstellen von Vorlagen](template-syntax.md).
+* Informationen zum Erstellen von ARM-Vorlagen finden Sie unter [Erstellen von Vorlagen](template-syntax.md).
 
 * Weitere Informationen zum Format des Ressourcennamens beim Verweisen auf die Ressource finden Sie unter der [Referenzfunktion](template-functions-resource.md#reference).

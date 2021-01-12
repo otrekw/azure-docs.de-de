@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: 9b870e21ffd5c6a8261b6731b939b5dff558256d
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 17b31e365e311b97e322828927827f40733313a6
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96501191"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588827"
 ---
 # <a name="azure-iot-device-sdk-for-c"></a>Azure IoT-Geräte-SDK für C
 
@@ -43,9 +43,9 @@ Dieser Artikel bietet einen Einblick in die Architektur des Azure IoT-Geräte-SD
 
 Das [**Azure IoT-Geräte-SDK für C**](https://github.com/Azure/azure-iot-sdk-c) finden Sie im GitHub-Repository und ausführliche Informationen zur API in der [C-API-Referenz](/azure/iot-hub/iot-c-sdk-ref/).
 
-Die aktuelle Version der Bibliotheken finden Sie in der Verzweigung **master** des Repositorys:
+Die neueste Version der Bibliotheken finden Sie im **Mainbranch** des Repositorys:
 
-  ![Screenshot des master-Branches des Repositorys](./media/iot-hub-device-sdk-c-intro/RepoMasterBranch.png)
+  ![Screenshot des Mainbranches des Repositorys](./media/iot-hub-device-sdk-c-intro/RepoMasterBranch.png)
 
 * Die Hauptimplementierung des SDKs befindet sich im Ordner **iothub\_client**, der die Implementierung der niedrigsten API-Ebene im SDK enthält: die Bibliothek **IoTHubClient**. Die Bibliothek **IoTHubClient** enthält APIs, die das Messaging zum Senden von Nachrichten an IoT Hub sowie zum Empfangen von Nachrichten von IoT Hub implementieren. Wenn Sie diese Bibliothek verwenden, müssen Sie sich um die Implementierung der Nachrichtenserialisierung kümmern. Andere Details für die Kommunikation mit IoT Hub werden Ihnen jedoch abgenommen.
 
@@ -72,7 +72,7 @@ Um die Beispiele im Azure IoT-Geräte-SDK für C ausführen zu können, müssen 
 
 Pakete werden für gängige Plattformen (beispielsweise NuGet für Windows oder apt_get für Debian und Ubuntu) bereitgestellt, und in den Beispielen werden diese Pakete verwendet (sofern verfügbar). In einigen Fällen muss das SDK jedoch für Ihr Gerät oder auf Ihrem Gerät kompiliert werden. Informationen zum Kompilieren des SDKs finden Sie bei Bedarf im GitHub-Repository unter [Prepare your development environment](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md) (Vorbereiten Ihrer Entwicklungsumgebung).
 
-Den Beispielanwendungscodes erhalten Sie, indem Sie eine Kopie des SDKs von GitHub herunterladen. Beziehen Sie Ihre Kopie des Quellcodes aus dem Verzeichnis **master** des [GitHub-Repositorys](https://github.com/Azure/azure-iot-sdk-c).
+Den Beispielanwendungscodes erhalten Sie, indem Sie eine Kopie des SDKs von GitHub herunterladen. Rufen Sie Ihre Kopie des Quellcodes aus dem **Mainbranch** des [GitHub-Repositorys](https://github.com/Azure/azure-iot-sdk-c) ab.
 
 
 ### <a name="obtain-the-device-credentials"></a>Abrufen der Geräteanmeldeinformationen

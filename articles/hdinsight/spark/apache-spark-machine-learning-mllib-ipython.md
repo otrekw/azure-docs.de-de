@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020, devx-track-python
 ms.date: 04/27/2020
-ms.openlocfilehash: bd61c6812d794d30e28f087dabf58db51e9c3296
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a6407f7c3b1e8570cdc6b36dceec79fba58689c7
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89230414"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97822181"
 ---
 # <a name="use-apache-spark-mllib-to-build-a-machine-learning-application-and-analyze-a-dataset"></a>Verwenden Sie Apache Spark MLlib zum Erstellen einer Machine Learning-Anwendung und zur Analyse eines Datasets.
 
@@ -32,7 +32,7 @@ MLlib ist eine Spark-Kernbibliothek, die viele nützliche Hilfsprogramme für Au
 
 *Klassifizierung*, eine Aufgabe im Bereich des Machine Learning, ist der Prozess, bei dem Eingabedaten in Kategorien sortiert werden. Der Klassifizierungsalgorithmus hat die Aufgabe herauszufinden, wie „Bezeichnungen“ den bereitgestellten Eingabedaten zugewiesen werden. Gehen Sie als Beispiel von einem Algorithmus mit maschinellem Lernen aus, der Aktieninformationen als Eingabe akzeptiert. Anschließend dividiert er den Kurs in zwei Kategorien: Aktien, die Sie verkaufen sollten, und Aktien, die Sie behalten sollten.
 
-Logistische Regression ist der Algorithmus, den Sie für die Klassifizierung verwenden. Die API für die logistische Regression von Spark ist nützlich für eine *binäre Klassifizierung*oder für die Klassifizierung der Eingabedaten in einer von zwei Gruppen. Weitere Informationen zur logistischen Regression finden Sie in [Wikipedia](https://en.wikipedia.org/wiki/Logistic_regression).
+Logistische Regression ist der Algorithmus, den Sie für die Klassifizierung verwenden. Die API für die logistische Regression von Spark ist nützlich für eine *binäre Klassifizierung* oder für die Klassifizierung der Eingabedaten in einer von zwei Gruppen. Weitere Informationen zur logistischen Regression finden Sie in [Wikipedia](https://en.wikipedia.org/wiki/Logistic_regression).
 
 Zusammenfassend führt der Prozess der logistischen Regression zu einer *logistischen Funktion*. Verwenden Sie diese Funktion, um die Wahrscheinlichkeit vorherzusagen, dass ein Eingabevektor zu der einen oder der anderen Gruppe gehört.  
 
@@ -44,7 +44,7 @@ In den folgenden Schritten entwickeln Sie ein Modell, um zu ermitteln, wie Sie e
 
 ## <a name="create-an-apache-spark-mllib-machine-learning-app"></a>Erstellen einer Apache Spark-MLlib-Machine Learning-App
 
-1. Erstellen Sie ein Jupyter Notebook mit dem PySpark-Kernel. Anweisungen hierzu finden Sie unter [Erstellen eines Jupyter Notebooks](./apache-spark-jupyter-spark-sql.md#create-a-jupyter-notebook-file).
+1. Erstellen Sie eine Jupyter Notebook-Instanz mit dem PySpark-Kernel. Anweisungen hierzu finden Sie unter [Erstellen einer Jupyter Notebook-Datei](./apache-spark-jupyter-spark-sql.md#create-a-jupyter-notebook-file).
 
 2. Importieren Sie die Typen, die für diese Anwendung benötigt werden. Kopieren Sie den folgenden Code, fügen Sie ihn in eine leere Zelle ein, und drücken Sie **UMSCHALT+EINGABE**.
 
@@ -174,7 +174,7 @@ Verschaffen Sie sich zunächst einen Überblick darüber, was in dem Dataset ent
     SELECT COUNT(results) AS cnt, results FROM CountResults GROUP BY results
     ```
 
-    Durch den Befehl `%%sql` gefolgt von `-o countResultsdf` wird sichergestellt, dass die Ausgabe der Abfrage lokal auf dem Jupyter-Server (in der Regel der Hauptknoten des Clusters) beibehalten wird. Die Ausgabe wird als [Pandas](https://pandas.pydata.org/) -Dataframe mit dem angegebenen Namen **countResultsdf**beibehalten. Weitere Informationen zur `%%sql`-Magic sowie anderen für den PySpark-Kernel verfügbaren Magics finden Sie unter [Verfügbare Kernels für Jupyter Notebooks mit Apache Spark-Clustern unter HDInsight](apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic).
+    Durch den Befehl `%%sql` gefolgt von `-o countResultsdf` wird sichergestellt, dass die Ausgabe der Abfrage lokal auf dem Jupyter-Server (in der Regel der Hauptknoten des Clusters) beibehalten wird. Die Ausgabe wird als [Pandas](https://pandas.pydata.org/) -Dataframe mit dem angegebenen Namen **countResultsdf** beibehalten. Weitere Informationen zum `%%sql`-Magic-Befehl sowie anderen für den PySpark-Kernel verfügbaren Magic-Befehlen finden Sie unter [Kernel für Jupyter Notebook in Apache Spark-Clustern in Azure HDInsight](apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic).
 
     Die Ausgabe ist:
 
@@ -335,7 +335,7 @@ Nun können Sie eine endgültige Visualisierung erstellen, um sich mit den Ergeb
     SELECT count(*) AS cnt FROM Predictions WHERE prediction = 1 AND (results = 'Pass' OR results = 'Pass w/ Conditions')
     ```
 
-1. Abschließend verwenden Sie den folgenden Ausschnitt, um die Grafik mithilfe von **Matplotlib**zu generieren.
+1. Abschließend verwenden Sie den folgenden Ausschnitt, um die Grafik mithilfe von **Matplotlib** zu generieren.
 
     ```PySpark
     %%local

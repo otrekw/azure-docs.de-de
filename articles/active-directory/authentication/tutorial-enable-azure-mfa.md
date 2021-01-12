@@ -10,18 +10,18 @@ ms.author: justinha
 author: justinha
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 32228e90e3cfc064cd5be9cd0655f321ab3e2809
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: f2e8bf2ccbf7a53563013c7ba653a6f6e8905337
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96741149"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881309"
 ---
 # <a name="tutorial-secure-user-sign-in-events-with-azure-ad-multi-factor-authentication"></a>Tutorial: Schützen von Benutzeranmeldeereignissen mit Azure AD Multi-Factor Authentication
 
 Bei der mehrstufigen Authentifizierung (Multi-Factor Authentication, MFA) wird vom Benutzer im Rahmen eines Anmeldeereignisses eine zusätzliche Art der Identifizierung angefordert. Dabei kann es sich beispielsweise um die Eingabe eines Codes auf dem Smartphone oder um einen Fingerabdruckscan handeln. Wenn Sie ein zweites Authentifizierungsverfahren erzwingen, wird die Sicherheit erhöht, weil dieses zusätzliche Verfahren von einem Angreifer nicht ohne Weiteres nachvollzogen bzw. dupliziert werden kann.
 
-Mithilfe von Azure AD Multi-Factor Authentication und Richtlinien für bedingten Zugriff kann MFA für Benutzer flexibel während bestimmter Anmeldeereignisse aktiviert werden.
+Mithilfe von Azure AD Multi-Factor Authentication und Richtlinien für bedingten Zugriff kann MFA für Benutzer flexibel während bestimmter Anmeldeereignisse aktiviert werden. [Hier](https://www.youtube.com/watch?v=qNndxl7gqVM) finden Sie ein Video zum Konfigurieren und Erzwingen von mehrstufiger Authentifizierung in Ihrem Mandanten (**empfohlen**).
 
 > [!IMPORTANT]
 > In diesem Tutorial wird für Administratoren veranschaulicht, wie Azure AD Multi-Factor Authentication aktiviert wird.

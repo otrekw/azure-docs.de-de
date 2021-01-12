@@ -4,12 +4,12 @@ description: Informationen zum Skalieren Ihrer Ressource Web-App, Clouddienst, v
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: bf0194e82acde0406cfeb57af027831f92a90c92
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: ee36db3f657365036bb68f641be53fd434f1b64b
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96938306"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97694924"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>Erste Schritte mit der automatischen Skalierung in Azure
 In diesem Artikel wird beschrieben, wie Sie Ihre automatische Skalierungseinstellung für Ihre Ressource im Microsoft Azure-Portal einrichten.
@@ -121,7 +121,7 @@ Um die Funktion mit ARM-Vorlagen zu aktivieren, legen Sie die Eigenschaft `healt
 
 ### <a name="health-check-path"></a>Pfad der Integritätsüberprüfung
 
-Der Pfad muss innerhalb einer Minute mit einem Statuscode zwischen 200 und 299 (einschließlich) antworten. Sollte der Pfad nicht innerhalb einer Minute antworten oder einen Statuscode außerhalb des Bereichs zurückgeben, gilt die Instanz als fehlerhaft. App Service folgt keinen 302-Umleitungen im Integritätsüberprüfungspfad. Die Integritätsüberprüfung ist in die Authentifizierungs- und Autorisierungsfeatures von App Service integriert. Das System erreicht den Endpunkt auch dann, wenn diese Sicherheitsfeatures aktiviert sind. Wenn Sie ein eigenes Authentifizierungssystem verwenden, muss der Pfad der Integritätsüberprüfung anonymen Zugriff zulassen. Wenn für den Standort „Nur HTTP **S**“ aktiviert ist, wird die Anforderung einer Integritätsprüfung über HTTP **S** gesendet.
+Der Pfad muss innerhalb einer Minute mit einem Statuscode zwischen 200 und 299 (einschließlich) antworten. Sollte der Pfad nicht innerhalb einer Minute antworten oder einen Statuscode außerhalb des Bereichs zurückgeben, gilt die Instanz als fehlerhaft. App Service folgt nicht den Umleitungen von 30x (301, 302, 307 usw.) zum Pfad der Integritätsüberprüfung. Diese Statuscodes gelten als **fehlerhaft**. Die Integritätsüberprüfung ist in die Authentifizierungs- und Autorisierungsfeatures von App Service integriert. Das System erreicht den Endpunkt auch dann, wenn diese Sicherheitsfeatures aktiviert sind. Wenn Sie ein eigenes Authentifizierungssystem verwenden, muss der Pfad der Integritätsüberprüfung anonymen Zugriff zulassen. Wenn für den Standort „Nur HTTP **S**“ aktiviert ist, wird die Anforderung einer Integritätsprüfung über HTTP **S** gesendet.
 
 Der Pfad der Integritätsüberprüfung sollte die kritischen Komponenten der Anwendung überprüfen. Wenn Ihre Anwendung z. B. von einer Datenbank und einem Messagingsystem abhängig ist, sollte der Endpunkt der Integritätsüberprüfung eine Verbindung mit diesen Komponenten herstellen. Wenn die Anwendung keine Verbindung mit einer kritischen Komponente herstellen kann, sollte der Pfad einen Antwortcode auf 500-Ebene zurückgeben, um damit anzugeben, dass die App fehlerhaft ist.
 
@@ -148,7 +148,7 @@ Nachdem Sie den Pfad der Integritätsüberprüfung der Anwendung angegeben haben
 
 ## <a name="moving-autoscale-to-a-different-region"></a>Verschieben der Autoskalierung in eine andere Region
 In diesem Abschnitt wird beschrieben, wie Sie die Autoskalierung von Azure in eine andere Region im selben Abonnement und in derselben Ressourcengruppe verschieben. Sie können die Einstellungen für die Autoskalierung mithilfe der REST-API verschieben.
-### <a name="prerequisite"></a>Voraussetzung
+### <a name="prerequisite"></a>Voraussetzungen
 1. Stellen Sie sicher, dass das Abonnement und die Ressourcengruppe verfügbar sind und die Details in der Quell- und der Zielregion identisch sind.
 1. Stellen Sie sicher, dass die Autoskalierung von Azure in der [Azure-Zielregion für das Verschieben](https://azure.microsoft.com/global-infrastructure/services/?products=monitor&regions=all) verfügbar ist.
 

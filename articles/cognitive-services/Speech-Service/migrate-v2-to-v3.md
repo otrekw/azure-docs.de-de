@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: rbeckers
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c5bc00ecf5e4c8ae440ce6610e9be8c8f77ed666
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: e9e5db87f983c5db59715eb8b6a9561acf5fad14
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96862206"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97630614"
 ---
 # <a name="migrate-code-from-v20-to-v30-of-the-rest-api"></a>Migration von Version 2.0 zu Version 3.0 der REST-API
 
@@ -33,12 +33,16 @@ Die Liste der Breaking Changes wurde nach dem Umfang der zur Anpassung erforderl
 ### <a name="host-name-changes"></a>Änderungen des Hostnamens
 
 Die Endpunkthostnamen haben sich von `{region}.cris.ai` zu `{region}.api.cognitive.microsoft.com` geändert. Pfade zu den neuen Endpunkten enthalten nicht mehr `api/`, da es Teil des Hostnamens ist. Das [Swagger-Dokument](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0) listet gültige Regionen und Pfade auf.
+>[!IMPORTANT]
+>Ändern Sie den Hostnamen von `{region}.cris.ai` in `{region}.api.cognitive.microsoft.com`, wobei „region“ die Region Ihres Speech-Abonnements ist. Entfernen Sie außerdem `api/` aus beliebigen Pfaden im Clientcode.
 
 ### <a name="identity-of-an-entity"></a>Identität einer Entität
 
 Die Eigenschaft `id` ist jetzt `self`. In Version 2 musste ein Benutzer der API wissen, wie unsere Pfade für die API erstellt werden. Dies war nicht erweiterbar und erforderte vom Benutzer unnötige Arbeit. Die Eigenschaft `id` (UUID) wird ersetzt durch `self` (Zeichenfolge), die der Position der Entität (URL) entspricht. Der Wert ist zwischen all Ihren Entitäten nach wie vor eindeutig. Wenn `id` als Zeichenfolge in Ihrem Code gespeichert ist, reicht eine Umbenennung aus, um das neue Schema zu unterstützen. Sie können jetzt den `self`-Inhalt als URL für die REST-Aufrufe `GET`, `PATCH` und `DELETE` für Ihre Entität verwenden.
 
 Wenn die Entität über zusätzliche Funktionen verfügt, die über andere Pfade verfügbar sind, werden diese unter `links` aufgelistet. Das folgende Beispiel für die Transkription zeigt eine separate Methode, um den Inhalt der Transkription mit `GET` abzurufen:
+>[!IMPORTANT]
+>Benennen Sie die Eigenschaft `id` in Ihrem Clientcode in `self` um. Ändern Sie bei Bedarf den Typ von `uuid` in `string`. 
 
 **Transkription der Version 2:**
 
@@ -91,6 +95,9 @@ Die Eigenschaft `values` enthält eine Teilmenge der verfügbaren Auflistungsent
 
 Diese Änderung erfordert den Aufruf von `GET` für die Auflistung in einer Schleife, bis alle Elemente zurückgegeben wurden.
 
+>[!IMPORTANT]
+>Wenn die Antwort einer GET-Anforderung an `speechtotext/v3.0/{collection}` einen Wert in `$.@nextLink` enthält, setzen Sie das Aufrufen von `GETs` für `$.@nextLink` fort, bis `$.@nextLink` nicht mehr so festgelegt ist, dass alle Elemente dieser Sammlung abgerufen werden.
+
 ### <a name="creating-transcriptions"></a>Erstellen von Transkriptionen
 
 Eine detaillierte Beschreibung zum Erstellen von Transkriptionsbatches finden Sie in [Vorgehensweise bei der Batchtranskription](./batch-transcription.md).
@@ -134,6 +141,8 @@ Die neue Eigenschaft `timeToLive` unter `properties` kann dazu beitragen, die be
   }
 }
 ```
+>[!IMPORTANT]
+>Benennen Sie die-Eigenschaft `recordingsUrl` um `contentUrls`, und übergeben Sie anstelle einer einzelnen URL ein URL-Array. Übergeben Sie Einstellungen für `diarizationEnabled` oder `wordLevelTimestampsEnabled` als `bool` statt `string`.
 
 ### <a name="format-of-v3-transcription-results"></a>Format der v3-Transkriptionsergebnisse
 
@@ -201,6 +210,9 @@ Beispiel eines Transkriptionsergebnisses der Version 3. Die Unterschiede sind in
   ]
 }
 ```
+>[!IMPORTANT]
+>Deserialisieren Sie das Transkriptionsergebnis, wie oben gezeigt, in den neuen Typ. Statt einer einzelnen Datei pro Audiokanal unterscheiden Sie Kanäle, indem Sie den Eigenschaftswert von `channel` für jedes Element in `recognizedPhrases` prüfen. Es gibt jetzt für jede Eingabedatei eine einzelne Ergebnisdatei.
+
 
 ### <a name="getting-the-content-of-entities-and-the-results"></a>Abrufen des Inhalts von Entitäten und der Ergebnisse
 
@@ -269,6 +281,9 @@ In Version 3 enthalten `links` eine Untereigenschaft namens `files` für den Fal
 
 Die Eigenschaft `kind` gibt das Format des Inhalts der Datei an. Bei Transkriptionen sind die Dateien der Art `TranscriptionReport` die Zusammenfassung des Auftrags und die Dateien der Art `Transcription` sind das Ergebnis des Auftrags selbst.
 
+>[!IMPORTANT]
+>Um die Ergebnisse von Vorgängen zu erhalten, wenden Sie `GET` auf `/speechtotext/v3.0/{collection}/{id}/files` an, denn sie sind nicht mehr in den Antworten von `GET` für `/speechtotext/v3.0/{collection}/{id}` oder `/speechtotext/v3.0/{collection}` enthalten.
+
 ### <a name="customizing-models"></a>Anpassen von Modellen
 
 Vor Version 3 gab es eine Unterscheidung zwischen einem _Akustikmodell_ und einem _Sprachmodell_, wenn ein Modell trainiert wurde. Diese Unterscheidung führte dazu, dass bei der Erstellung von Endpunkten oder Transkriptionen mehrere Modelle angegeben werden mussten. Um diesen Prozess für einen Aufrufer zu vereinfachen, haben wir die Unterschiede entfernt und alles vom Inhalt der Datasets abhängig gemacht, die für das Modelltraining verwendet werden. Mit dieser Änderung unterstützt die Modellerstellung jetzt gemischte Datasets (Sprachdaten und Akustikdaten). Endpunkte und Transkriptionen erfordern jetzt nur noch ein Modell.
@@ -277,11 +292,17 @@ Mit dieser Änderung wurde die Notwendigkeit eines `kind` im `POST`-Vorgang entf
 
 Die Akustikdaten werden beim Sprachtraining automatisch intern verwendet, um die Ergebnisse eines trainierten Modells zu verbessern. Im Allgemeinen liefern Modelle, die mit der API der Version 3 erstellt wurden, genauere Ergebnisse als Modelle, die mit der API der Version 2 erstellt wurden.
 
+>[!IMPORTANT]
+>Um sowohl den akustischen als auch den Sprachmodellteil anzupassen, übergeben Sie alle erforderlichen sprachlichen und akustischen Datasets in `datasets[]` in der POST-Anforderung an `/speechtotext/v3.0/models`. Dadurch wird ein einzelnes Modell erstellt, bei dem beide Teile angepasst sind.
+
 ### <a name="retrieving-base-and-custom-models"></a>Abrufen von Basis- und benutzerdefinierten Modellen
 
 In Version 3 wurden die Auflistungen der „Basismodelle“ von den kundeneigenen „angepassten Modellen“ getrennt, um das Abrufen der verfügbaren Modelle zu vereinfachen. Die beiden Routen sind jetzt `GET /speechtotext/v3.0/models/base` und `GET /speechtotext/v3.0/models/`.
 
 In Version 2 wurden alle Modelle zusammen in einer einzelnen Antwort zurückgegeben.
+
+>[!IMPORTANT]
+>Um eine Liste der bereitgestellten Basismodelle für die Anpassung zu erhalten, wenden Sie `GET` auf `/speechtotext/v3.0/models/base` an. Sie können Ihre eigenen angepassten Modelle über eine `GET`-Anforderung an `/speechtotext/v3.0/models` finden.
 
 ### <a name="name-of-an-entity"></a>Name einer Entität
 
@@ -302,6 +323,9 @@ Die Eigenschaft `name` ist jetzt `displayName`. Dies entspricht anderen Azure-AP
     "displayName": "Transcription using locale en-US"
 }
 ```
+
+>[!IMPORTANT]
+>Benennen Sie die Eigenschaft `name` in Ihrem Clientcode in `displayName` um.
 
 ### <a name="accessing-referenced-entities"></a>Zugreifen auf referenzierte Entitäten
 
@@ -351,6 +375,10 @@ In Version 2 wurden referenzierte Entitäten immer unterstrichen, z. B. die ver
 
 Wenn Sie die Details eines referenzierten Modells nutzen müssen (wie im obigen Beispiel gezeigt), rufen Sie einfach ein GET für `$.model.self` auf.
 
+>[!IMPORTANT]
+>Um die Metadaten referenzierter Entitäten abzurufen,wenden Sie GET auf `$.{referencedEntity}.self` an. Um z. B. das Modell einer Transkription abzurufen, wenden Sie `GET` auf `$.model.self` an.
+
+
 ### <a name="retrieving-endpoint-logs"></a>Abrufen von Endpunktprotokollen
 
 Version 2 des Diensts unterstützte die Protokollierung von Endpunktergebnissen. Um die Ergebnisse eines Endpunkts mit Version 2 abzurufen, würden Sie einen „Datenexport“ durchführen, der eine Momentaufnahme der durch einen Zeitbereich definierten Ergebnisse darstellt. Das Exportieren von Datenbatches war unflexibel. Die API der Version 3 ermöglicht den Zugriff auf jede einzelne Datei und gestattet deren Iteration.
@@ -392,6 +420,9 @@ Die Paginierung für Endpunktprotokolle funktioniert ähnlich wie bei allen ande
 
 In Version 3 kann jedes Endpunktprotokoll einzeln gelöscht werden, indem ein `DELETE`-Vorgang für den `self` einer Datei ausgegeben oder aber `DELETE` für `$.links.logs` verwendet wird. Um ein Enddatum anzugeben, kann der Anforderung der Abfrageparameter `endDate` hinzugefügt werden.
 
+>[!IMPORTANT]
+>Anstatt Protokollexporte für `/api/speechtotext/v2.0/endpoints/{id}/data` zu erstellen, verwenden Sie `/v3.0/endpoints/{id}/files/logs/` für den individuellen Zugriff auf Protokolldateien. 
+
 ### <a name="using-custom-properties"></a>Verwenden von benutzerdefinierten Eigenschaften
 
 Zur besseren Trennung der benutzerdefinierten Eigenschaften von den optionalen Konfigurationseigenschaften befinden sich jetzt alle explizit benannten Eigenschaften in der `properties`-Eigenschaft und alle von den aufrufenden Funktionen definierten Eigenschaften in der `customProperties`-Eigenschaft.
@@ -424,15 +455,26 @@ Zur besseren Trennung der benutzerdefinierten Eigenschaften von den optionalen K
 
 Diese Änderung ermöglicht es Ihnen auch, die richtigen Typen für alle explizit benannten Eigenschaften unter `properties` zu verwenden. (z. B. „boolean“ anstelle von „string“).
 
+>[!IMPORTANT]
+>Übergeben Sie in Ihren `POST`-Anforderungen alle benutzerdefinierten Eigenschaften als `customProperties` statt als `properties`.
+
 ### <a name="response-headers"></a>Antwortheader
 
 Version 3 gibt bei `POST`-Anforderungen nicht mehr den `Operation-Location`-Header zusätzlich zum `Location`-Header zurück. Der Wert beider Header in Version 2 war derselbe. Jetzt wird nur `Location` zurückgegeben.
 
 Da die neue API-Version jetzt von Azure API Management (APIM) verwaltet wird, sind die mit der Drosselung zusammenhängenden Header `X-RateLimit-Limit`, `X-RateLimit-Remaining` und `X-RateLimit-Reset` nicht in den Antwortheadern enthalten.
 
+>[!IMPORTANT]
+>Lesen Sie den Speicherort aus dem Antwortheader `Location` statt aus `Operation-Location`. Lesen Sie im Falle des Antwortcodes 429 den Headerwert `Retry-After` statt `X-RateLimit-Limit`, `X-RateLimit-Remaining` oder `X-RateLimit-Reset`.
+
+
 ### <a name="accuracy-tests"></a>Genauigkeitsprüfungen
 
 Genauigkeitsprüfungen wurden in Auswertungen umbenannt, da der neue Name besser beschreibt, was sie darstellen. Die neuen Pfade sind: `https://{region}.api.cognitive.microsoft.com/speechtotext/v3.0/evaluations`.
+
+>[!IMPORTANT]
+>Benennen Sie das Pfadsegment `accuracytests` in Ihrem Clientcode in `evaluations` um.
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

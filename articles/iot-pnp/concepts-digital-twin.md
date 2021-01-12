@@ -3,42 +3,115 @@ title: Grundlegendes zu digitalen IoT Plug & Play-Zwillingen
 description: Hier erfahren Sie, wie IoT Plug & Play digitale Zwillinge verwendet.
 author: prashmo
 ms.author: prashmo
-ms.date: 07/17/2020
+ms.date: 12/14/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: f13230c7bd88a9c3cf043fc1881a34f6b7ce6fe7
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 99c957e5bf6ffe69c94e109796590f5ab975c3cf
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95495320"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656885"
 ---
 # <a name="understand-iot-plug-and-play-digital-twins"></a>Grundlegendes zu digitalen IoT Plug & Play-Zwillingen
 
-Ein IoT Plug & Play-Gerät implementiert ein Modell, das durch das [Digital Twins Definition Language (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl)-Schema beschrieben wird. Ein Modell beschreibt den Satz von Komponenten, Eigenschaften, Befehlen und Telemetrienachrichten, die ein bestimmtes Gerät aufweisen kann. Ein Gerätezwilling und ein digitaler Zwilling werden initialisiert, wenn ein IoT Plug & Play-Gerät zum ersten Mal eine Verbindung mit einem IoT-Hub herstellt.
+Ein IoT Plug & Play-Gerät implementiert ein Modell, das durch das [Digital Twins Definition Language (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl)-Schema beschrieben wird. Ein Modell beschreibt den Satz von Komponenten, Eigenschaften, Befehlen und Telemetrienachrichten, die ein bestimmtes Gerät aufweisen kann.
 
 IoT Plug & Play verwendet DTDL-Version 2. Weitere Informationen zu dieser Version finden Sie in der Spezifikation [Digital Twins Definition Language (DTDL) – Version 2](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md) auf GitHub.
 
-DTDL ist nicht für IoT Plug & Play exklusiv. Andere IoT-Dienste, z. B. [Azure Digital Twins](../digital-twins/overview.md), stellen damit ganze Umgebungen wie Gebäude und Energieversorgungsnetze dar. Weitere Informationen finden Sie unter [Grundlegendes zu Zwillingsmodellen in Azure Digital Twins](../digital-twins/concepts-models.md).
+> [!NOTE]
+> DTDL ist nicht für IoT Plug & Play exklusiv. Andere IoT-Dienste, z. B. [Azure Digital Twins](../digital-twins/overview.md), stellen damit ganze Umgebungen wie Gebäude und Energieversorgungsnetze dar.
 
-In diesem Artikel wird beschrieben, wie Komponenten und Eigenschaften in den Abschnitten für *gewünschte* und *gemeldete* Werte eines Gerätezwillings dargestellt werden. Außerdem wird beschrieben, wie diese Konzepte dem entsprechenden digitalen Zwilling zugeordnet werden.
+Die Azure IoT-Dienst-SDKs enthalten APIs, die einem Dienst das Interagieren mit dem digitalen Zwilling eines Geräts ermöglichen. So kann ein Dienst beispielsweise Geräteeigenschaften aus dem digitalen Zwilling lesen oder mithilfe des digitalen Zwillings einen Befehl auf einem Gerät aufrufen. Weitere Informationen finden Sie unter [Beispiele für digitale IoT Hub-Zwillinge](concepts-developer-guide-service.md#iot-hub-digital-twin-examples).
 
-Das IoT Plug & Play-Gerät in diesem Artikel implementiert das [Temperaturreglermodell](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json) mit [Thermostat](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/Thermostat.json)-Komponenten.
+Das Beispiel für ein IoT Plug & Play-Gerät in diesem Artikel implementiert ein [Modell „Temperaturregler“](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json) mit [Thermostat](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/Thermostat.json)-Komponenten.
 
 ## <a name="device-twins-and-digital-twins"></a>Gerätezwillinge und digitale Zwillinge
 
-Gerätezwillinge sind JSON-Dokumente, in denen Gerätestatusinformationen gespeichert werden, z. B. Metadaten, Konfigurationen und Bedingungen. Weitere Informationen finden Sie unter [Verstehen und Verwenden von Gerätezwillingen in IoT Hub](../iot-hub/iot-hub-devguide-device-twins.md). Sowohl Geräte- als auch Lösungsentwickler können weiterhin denselben Satz von APIs und SDKs für Gerätezwillinge verwenden, um Geräte und Lösungen mithilfe von IoT Plug & Play-Konventionen zu implementieren.
+Genauso wie einen digitalen Zwilling verwaltet Azure IoT Hub auch einen *Gerätezwilling* für jedes verbundene Gerät. Ein Gerätezwilling ähnelt einem digitalen Zwilling darin, dass er die Eigenschaften eines Geräts darstellt. Die Azure IoT-Dienst-SDKs enthalten APIs zum Interagieren mit Gerätezwillingen.
 
-APIs für digitale Zwillinge arbeiten mit Konstrukten auf hoher Ebene in der DTDL (Digital Twins Definition Language), wie z. B. Komponenten, Eigenschaften und Befehlen. Die APIs für digitale Zwillinge erleichtern Lösungsentwicklern das Erstellen von IoT Plug & Play-Lösungen.
+Ein IoT-Hub initialisiert einen digitalen Zwilling und einen Gerätezwilling, wenn ein IoT Plug & Play-Gerät zum ersten Mal eine Verbindung herstellt.
 
-Bei einem Gerätezwilling wird der Zustand einer schreibbaren Eigenschaft auf die Abschnitte für gewünschte und gemeldete Eigenschaften aufgeteilt. Alle schreibgeschützten Eigenschaften sind im Abschnitt für gemeldete Eigenschaften verfügbar.
+Gerätezwillinge sind JSON-Dokumente, in denen Gerätestatusinformationen gespeichert werden, z. B. Metadaten, Konfigurationen und Bedingungen. Weitere Informationen finden Sie unter [Beispiele für IoT Hub-Dienstclients](concepts-developer-guide-service.md#iot-hub-service-client-examples). Sowohl Geräte- als auch Lösungsentwickler können weiterhin denselben Satz von APIs und SDKs für Gerätezwillinge verwenden, um Geräte und Lösungen mithilfe von IoT Plug & Play-Konventionen zu implementieren.
+
+Die APIs für den digitalen Zwilling arbeiten mit allgemeinen DTDL-Konstrukten wie Komponenten, Eigenschaften und Befehlen. Die APIs für digitale Zwillinge erleichtern Lösungsentwicklern das Erstellen von IoT Plug & Play-Lösungen.
+
+Bei einem Gerätezwilling wird der Zustand einer schreibbaren Eigenschaft auf die Abschnitte für *gewünschte Eigenschaften* und *gemeldete Eigenschaften* aufgeteilt. Alle schreibgeschützten Eigenschaften stehen im Abschnitt für gemeldete Eigenschaften zur Verfügung.
 
 Bei einem digitalen Zwilling gibt es eine einheitliche Ansicht des aktuellen und des gewünschten Zustands der Eigenschaft. Der Synchronisierungsstatus für eine bestimmte Eigenschaft wird im entsprechenden Abschnitt `$metadata` der Standardkomponentenebene gespeichert.
 
-### <a name="digital-twin-json-format"></a>JSON-Format von digitalen Zwillingen
+### <a name="device-twin-json-example"></a>JSON-Beispiel für einen Gerätezwilling
 
-Bei der Darstellung als JSON-Objekt umfasst ein digitaler Zwilling die folgenden Felder:
+Der folgende Codeausschnitt zeigt einen IoT Plug & Play-Gerätezwilling, der als JSON-Objekt formatiert ist:
+
+```json
+{
+  "deviceId": "sample-device",
+  "modelId": "dtmi:com:example:TemperatureController;1",
+  "version": 15,
+  "properties": {
+    "desired": {
+      "thermostat1": {
+        "__t": "c",
+        "targetTemperature": 21.8
+      },
+      "$metadata": {...},
+      "$version": 4
+    },
+    "reported": {
+      "serialNumber": "alwinexlepaho8329",
+      "thermostat1": {
+        "maxTempSinceLastReboot": 25.3,
+        "__t": "c",
+        "targetTemperature": {
+          "value": 21.8,
+          "ac": 200,
+          "ad": "Successfully executed patch",
+        }
+      },
+      "$metadata": {...},
+      "$version": 11
+    }
+  }
+}
+```
+
+### <a name="digital-twin-example"></a>Beispiel für einen digitalen Zwilling
+
+Der folgende Codeausschnitt zeigt den digitalen Zwilling, der als JSON-Objekt formatiert ist:
+
+```json
+{
+  "$dtId": "sample-device",
+  "serialNumber": "alwinexlepaho8329",
+  "thermostat1": {
+    "maxTempSinceLastReboot": 25.3,
+    "targetTemperature": 21.8,
+    "$metadata": {
+      "targetTemperature": {
+        "desiredValue": 21.8,
+        "desiredVersion": 4,
+        "ackVersion": 4,
+        "ackCode": 200,
+        "ackDescription": "Successfully executed patch",
+        "lastUpdateTime": "2020-07-17T06:11:04.9309159Z"
+      },
+      "maxTempSinceLastReboot": {
+         "lastUpdateTime": "2020-07-17T06:10:31.9609233Z"
+      }
+    }
+  },
+  "$metadata": {
+    "$model": "dtmi:com:example:TemperatureController;1",
+    "serialNumber": {
+      "lastUpdateTime": "2020-07-17T06:10:31.9609233Z"
+    }
+  }
+}
+```
+
+In der folgenden Tabelle werden die Felder im JSON-Objekt für den digitalen Zwilling beschrieben:
 
 | Feldname | BESCHREIBUNG |
 | --- | --- |
@@ -55,83 +128,13 @@ Bei der Darstellung als JSON-Objekt umfasst ein digitaler Zwilling die folgenden
 | `{componentName}.{propertyName}` | Der Wert der Komponenteneigenschaft im JSON-Format |
 | `{componentName}.$metadata` | Die Metadateninformationen für die Komponente. |
 
-#### <a name="device-twin-sample"></a>Beispiel für Gerätezwilling
-
-Der folgende Codeausschnitt zeigt einen IoT Plug & Play-Gerätezwilling, der als JSON-Objekt formatiert ist:
-
-```json
-{
-    "deviceId": "sample-device",
-    "modelId": "dtmi:com:example:TemperatureController;1",
-    "version": 15,
-    "properties": {
-        "desired": {
-            "thermostat1": {
-                "__t": "c",
-                "targetTemperature": 21.8
-            },
-            "$metadata": {...},
-            "$version": 4
-        },
-        "reported": {
-            "serialNumber": "alwinexlepaho8329",
-            "thermostat1": {
-                "maxTempSinceLastReboot": 25.3,
-                "__t": "c",
-                "targetTemperature": {
-                    "value": 21.8,
-                    "ac": 200,
-                    "ad": "Successfully executed patch",
-                }
-            },
-            "$metadata": {...},
-            "$version": 11
-        }
-    }
-}
-```
-
-#### <a name="digital-twin-sample"></a>Beispiel für digitalen Zwilling
-
-Der folgende Codeausschnitt zeigt den digitalen Zwilling, der als JSON-Objekt formatiert ist:
-
-```json
-{
-    "$dtId": "sample-device",
-    "serialNumber": "alwinexlepaho8329",
-    "thermostat1": {
-        "maxTempSinceLastReboot": 25.3,
-        "targetTemperature": 21.8,
-        "$metadata": {
-            "targetTemperature": {
-                "desiredValue": 21.8,
-                "desiredVersion": 4,
-                "ackVersion": 4,
-                "ackCode": 200,
-                "ackDescription": "Successfully executed patch",
-                "lastUpdateTime": "2020-07-17T06:11:04.9309159Z"
-            },
-            "maxTempSinceLastReboot": {
-                "lastUpdateTime": "2020-07-17T06:10:31.9609233Z"
-            }
-        }
-    },
-    "$metadata": {
-        "$model": "dtmi:com:example:TemperatureController;1",
-        "serialNumber": {
-            "lastUpdateTime": "2020-07-17T06:10:31.9609233Z"
-        }
-    }
-}
-```
-
 ### <a name="properties"></a>Eigenschaften
 
 Eigenschaften sind Datenfelder, die den Zustand einer Entität repräsentieren (wie die Eigenschaften in vielen objektorientierten Programmiersprachen).
 
 #### <a name="read-only-property"></a>Schreibgeschützte Eigenschaft
 
-Schema:
+DTDL-Schema:
 
 ```json
 {
@@ -152,9 +155,9 @@ Die folgenden Codeausschnitte zeigen die JSON-Darstellung der Eigenschaft `seria
 
 ```json
 "properties": {
-    "reported": {
-        "serialNumber": "alwinexlepaho8329"
-    }
+  "reported": {
+    "serialNumber": "alwinexlepaho8329"
+  }
 }
 ```
 
@@ -171,15 +174,17 @@ Die folgenden Codeausschnitte zeigen die JSON-Darstellung der Eigenschaft `seria
 
 #### <a name="writable-property"></a>Schreibbare Eigenschaft
 
-Angenommen, das Gerät wies auch die folgende schreibbare Eigenschaft in der Standardkomponente auf:
+Die folgenden Beispiele zeigen eine schreibbare Eigenschaft in der Standardkomponente.
+
+DTDL:
 
 ```json
 {
-    "@type": "Property",
-    "name": "fanSpeed",
-    "displayName": "Fan Speed",
-    "writable": true,
-    "schema": "double"
+  "@type": "Property",
+  "name": "fanSpeed",
+  "displayName": "Fan Speed",
+  "writable": true,
+  "schema": "double"
 }
 ```
 
@@ -189,19 +194,19 @@ Angenommen, das Gerät wies auch die folgende schreibbare Eigenschaft in der Sta
 
 ```json
 {
-    "properties": {
-        "desired": {
-            "fanSpeed": 2.0,
-        },
-        "reported": {
-            "fanSpeed": {
-                "value": 3.0,
-                "ac": 200,
-                "av": 1,
-                "ad": "Successfully executed patch version 1"
-            }
-        }
+  "properties": {
+    "desired": {
+      "fanSpeed": 2.0,
     },
+    "reported": {
+      "fanSpeed": {
+        "value": 3.0,
+        "ac": 200,
+        "av": 1,
+        "ad": "Successfully executed patch version 1"
+      }
+    }
+  },
 }
 ```
 
@@ -211,17 +216,17 @@ Angenommen, das Gerät wies auch die folgende schreibbare Eigenschaft in der Sta
 
 ```json
 {
-    "fanSpeed": 3.0,
-    "$metadata": {
-        "fanSpeed": {
-            "desiredValue": 2.0,
-            "desiredVersion": 2,
-            "ackVersion": 1,
-            "ackCode": 200,
-            "ackDescription": "Successfully executed patch version 1",
-            "lastUpdateTime": "2020-07-17T06:10:31.9609233Z"
-        }
+  "fanSpeed": 3.0,
+  "$metadata": {
+    "fanSpeed": {
+      "desiredValue": 2.0,
+      "desiredVersion": 2,
+      "ackVersion": 1,
+      "ackCode": 200,
+      "ackDescription": "Successfully executed patch version 1",
+      "lastUpdateTime": "2020-07-17T06:10:31.9609233Z"
     }
+  }
 }
 ```
 
@@ -233,8 +238,7 @@ In diesem Beispiel ist `3.0` der aktuelle Wert der Eigenschaft `fanSpeed`, die v
 ### <a name="components"></a>Komponenten
 
 Mit Komponenten kann eine Modellschnittstelle als eine Assembly anderer Schnittstellen erstellt werden.
-Die [Thermostat](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/Thermostat.json)-Schnittstelle ist zum Beispiel als Modell definiert.
-Diese Schnittstelle kann nun als Komponente „thermostat1“ (und eine andere Komponente „thermostat2“) beim Definieren des [Temperaturreglermodells](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json) eingebunden werden.
+So kann beispielsweise die Schnittstelle [Thermostat](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/Thermostat.json) in Form der Komponenten `thermostat1` und `thermostat2` in das [Modell „Temperaturregler“](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json) integriert werden.
 
 Bei einem Gerätezwilling wird eine Komponente durch den Marker `{ "__t": "c"}` identifiziert. Bei einem digitalen Zwilling kennzeichnet das Vorhandensein von `$metadata` eine Komponente.
 
@@ -251,30 +255,30 @@ Die folgenden Codeausschnitte zeigen die JSON-Darstellung der Komponente `thermo
 
 ```json
 "properties": {
-    "desired": {
-        "thermostat1": {
-            "__t": "c",
-            "targetTemperature": 21.8
-        },
-        "$metadata": {
-        },
-        "$version": 4
+  "desired": {
+    "thermostat1": {
+      "__t": "c",
+      "targetTemperature": 21.8
     },
-    "reported": {
-        "thermostat1": {
-            "maxTempSinceLastReboot": 25.3,
-            "__t": "c",
-            "targetTemperature": {
-                "value": 21.8,
-                "ac": 200,
-                "ad": "Successfully executed patch",
-                "av": 4
-            }
-        },
-        "$metadata": {
-        },
-        "$version": 11
-    }
+    "$metadata": {
+    },
+    "$version": 4
+  },
+  "reported": {
+    "thermostat1": {
+      "maxTempSinceLastReboot": 25.3,
+      "__t": "c",
+      "targetTemperature": {
+        "value": 21.8,
+        "ac": 200,
+        "ad": "Successfully executed patch",
+        "av": 4
+      }
+    },
+    "$metadata": {
+    },
+    "$version": 11
+  }
 }
 ```
 
@@ -284,21 +288,21 @@ Die folgenden Codeausschnitte zeigen die JSON-Darstellung der Komponente `thermo
 
 ```json
 "thermostat1": {
-    "maxTempSinceLastReboot": 25.3,
-    "targetTemperature": 21.8,
-    "$metadata": {
-        "targetTemperature": {
-            "desiredValue": 21.8,
-            "desiredVersion": 4,
-            "ackVersion": 4,
-            "ackCode": 200,
-            "ackDescription": "Successfully executed patch",
-            "lastUpdateTime": "2020-07-17T06:11:04.9309159Z"
-        },
-        "maxTempSinceLastReboot": {
-            "lastUpdateTime": "2020-07-17T06:10:31.9609233Z"
-        }
+  "maxTempSinceLastReboot": 25.3,
+  "targetTemperature": 21.8,
+  "$metadata": {
+    "targetTemperature": {
+      "desiredValue": 21.8,
+      "desiredVersion": 4,
+      "ackVersion": 4,
+      "ackCode": 200,
+      "ackDescription": "Successfully executed patch",
+      "lastUpdateTime": "2020-07-17T06:11:04.9309159Z"
+    },
+    "maxTempSinceLastReboot": {
+       "lastUpdateTime": "2020-07-17T06:10:31.9609233Z"
     }
+  }
 }
 ```
 
@@ -307,7 +311,7 @@ Die folgenden Codeausschnitte zeigen die JSON-Darstellung der Komponente `thermo
 
 ## <a name="digital-twin-apis"></a>APIs für digitale Zwillinge
 
-Azure Digital Twins umfasst **Get Digital Twin** (Abrufen des digitalen Zwillings), **Update Digital Twin** (Aktualisieren des digitalen Zwillings), **Invoke Component Command** (Aufrufen des Komponentenbefehls) und **Invoke Command** (Aufrufen des Befehls) zum Verwalten des digitalen Zwillings eines Geräts. Sie können entweder die [REST-APIs](/rest/api/iothub/service/digitaltwin) direkt oder über ein [Dienst-SDK](../iot-pnp/libraries-sdks.md) verwenden.
+Die APIs für digitale Zwillinge enthalten die Vorgänge **Get Digital Twin** (Abrufen des digitalen Zwillings), **Update Digital Twin** (Aktualisieren des digitalen Zwillings), **Invoke Component Command** (Aufrufen des Komponentenbefehls) und **Invoke Command** (Aufrufen des Befehls) zum Verwalten eines digitalen Zwillings. Sie können entweder die [REST-APIs](/rest/api/iothub/service/digitaltwin) direkt oder über ein [Dienst-SDK](../iot-pnp/libraries-sdks.md) verwenden.
 
 ## <a name="digital-twin-change-events"></a>Änderungsereignisse bei digitalen Zwillingen
 

@@ -4,15 +4,15 @@ description: Sie können Autorisierungsanmeldeinformationen für AzCopy-Vorgäng
 author: normesta
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/11/2020
+ms.date: 12/17/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 43002fdfbdce146b52774aa4182445bf34dd7199
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 99e06a36c2afa66f2874c14990d50c6287623efd
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97360287"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672490"
 ---
 # <a name="authorize-access-to-blobs-with-azcopy-and-azure-active-directory-azure-ad"></a>Autorisieren des Zugriffs auf Blobs mit AzCopy und Azure Active Directory (Azure AD)
 
@@ -183,9 +183,11 @@ Ersetzen Sie den Platzhalter `<path-to-certificate-file>` mit einem relativen od
 > [!NOTE]
 > Erwägen Sie, eine Eingabeaufforderung wie in diesem Beispiel zu verwenden. So erscheint das Kennwort nicht im Befehlsverlauf Ihrer Konsole. 
 
-## <a name="authorize-without-a-keyring-linux"></a>Autorisieren ohne einen Schlüsselbund (Linux)
+## <a name="authorize-without-a-secret-store"></a>Autorisieren ohne Geheimnisspeicher
 
-Wenn es in Ihrem Betriebssystem keinen Geheimnisspeicher wie z. B. einen *Schlüsselbund* gibt, funktioniert der Befehl `azcopy login` nicht. Stattdessen können Sie vor dem Ausführen der einzelnen Vorgänge In-Memory-Umgebungsvariablen festlegen. Weil diese Werte nach Abschluss des Vorgangs aus dem Arbeitsspeicher entfernt werden, müssen Sie sie jedes Mal festlegen, wenn Sie einen azcopy-Befehl ausführen.
+Mit dem Befehl `azcopy login` wird ein OAuth-Token abgerufen und in einem Geheimnisspeicher auf Ihrem System gespeichert. Wenn Ihr Betriebssystem über keinen Geheimnisspeicher verfügt (z. B. *keyring* unter Linux`azcopy login`), funktioniert der Befehl nicht, da es keinen Speicherort für das Token gibt. 
+
+Anstatt den Befehl `azcopy login` zu verwenden, können Sie In-Memory-Umgebungsvariablen festlegen. Führen Sie dann einen beliebigen AzCopy-Befehl aus. Der AzCopy-Befehl ruft das erforderliche Authentifizierungstoken für den Vorgang ab. Nach Abschluss des Vorgangs wird das Token aus dem Arbeitsspeicher gelöscht. 
 
 ### <a name="authorize-a-user-identity"></a>Autorisieren einer Benutzeridentität
 
@@ -248,8 +250,6 @@ Ersetzen Sie den Platzhalter `<resource-id>` durch die Ressourcen-ID der benutze
 Nachdem Sie diese Variablen festgelegt haben, können Sie einen beliebigen azcopy-Befehl ausführen (beispielsweise: `azcopy list https://contoso.blob.core.windows.net`).
 
 ### <a name="authorize-a-service-principal"></a>Autorisieren eines Dienstprinzipals
-
-Sie müssen sich interaktiv mindestens ein Mal anmelden, bevor Sie ein Skript ausführen, damit Sie in AzCopy die Anmeldeinformationen Ihres Dienstprinzipals bereitstellen können.  Diese Anmeldedaten werden in einer gesicherten, verschlüsseln Datei gespeichert, damit Ihr Skript diese vertraulichen Daten nicht weitergeben muss.
 
 Sie können sich mit einem geheimen Clientschlüssel oder mit dem Kennwort eines Zertifikats, das für die App-Registrierung Ihres Dienstprinzipals verwendet wird, bei Ihrem Konto anmelden.
 

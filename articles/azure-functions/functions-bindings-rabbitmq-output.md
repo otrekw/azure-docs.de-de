@@ -4,20 +4,20 @@ description: Erfahren Sie, wie Sie RabbitMQ-Nachrichten mit Azure Functions send
 author: cachai2
 ms.assetid: ''
 ms.topic: reference
-ms.date: 12/13/2020
+ms.date: 12/17/2020
 ms.author: cachai
 ms.custom: ''
-ms.openlocfilehash: 212bfcee09cd63b6ff09faaba4d99e4b4c583fe8
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: d9e575d68fe4fef607bdf443ece1ddd04f085533
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505667"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746455"
 ---
 # <a name="rabbitmq-output-binding-for-azure-functions-overview"></a>RabbitMQ-Ausgabebindung für Azure Functions – Übersicht
 
 > [!NOTE]
-> RabbitMQ-Bindungen werden nur mit **Windows Premium**-Plänen vollständig unterstützt. Im Verbrauchstarif und unter Linux werden sie derzeit nicht unterstützt.
+> RabbitMQ-Bindungen werden nur mit den Plänen **Premium und Dediziert** vollständig unterstützt. Der Verbrauchstarif wird nicht unterstützt.
 
 Verwenden Sie die RabbitMQ-Ausgabebindung, um Nachrichten an eine RabbitMQ-Warteschlange zu senden.
 
@@ -31,7 +31,7 @@ Das folgende Beispiel zeigt eine [C#-Funktion](functions-dotnet-class-library.md
 
 ```cs
 [FunctionName("RabbitMQOutput")]
-[return: RabbitMQ("outputQueue", ConnectionStringSetting = "ConnectionStringSetting")]
+[return: RabbitMQ(QueueName = "outputQueue", ConnectionStringSetting = "rabbitMQConnectionAppSetting")]
 public static string Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, ILogger log)
 {
     log.LogInformation($"C# Timer trigger function executed at: {DateTime.Now}");
@@ -44,34 +44,35 @@ Das folgende Beispiel zeigt, wie Sie die IAsyncCollector-Schnittstelle verwenden
 ```cs
 [FunctionName("RabbitMQOutput")]
 public static async Task Run(
-[RabbitMQTrigger("sourceQueue", ConnectionStringSetting = "TriggerConnectionString")] string rabbitMQEvent,
-[RabbitMQ("destinationQueue", ConnectionStringSetting = "OutputConnectionString")]IAsyncCollector<string> outputEvents,
+[RabbitMQTrigger("sourceQueue", ConnectionStringSetting = "rabbitMQConnectionAppSetting")] string rabbitMQEvent,
+[RabbitMQ(QueueName = "destinationQueue", ConnectionStringSetting = "rabbitMQConnectionAppSetting")]IAsyncCollector<string> outputEvents,
 ILogger log)
 {
-    // processing:
-    var myProcessedEvent = DoSomething(rabbitMQEvent);
-    
      // send the message
-    await outputEvents.AddAsync(JsonConvert.SerializeObject(myProcessedEvent));
+    await outputEvents.AddAsync(JsonConvert.SerializeObject(rabbitMQEvent));
 }
 ```
 
 Im folgenden Beispiel wird veranschaulicht, wie die Nachrichten als POCO gelesen werden.
 
 ```cs
-public class TestClass
+namespace Company.Function
 {
-    public string x { get; set; }
-}
-
-[FunctionName("RabbitMQOutput")]
-public static async Task Run(
-[RabbitMQTrigger("sourceQueue", ConnectionStringSetting = "TriggerConnectionString")] TestClass rabbitMQEvent,
-[RabbitMQ("destinationQueue", ConnectionStringSetting = "OutputConnectionString")]IAsyncCollector<TestClass> outputPocObj,
-ILogger log)
-{
-    // send the message
-    await outputPocObj.Add(rabbitMQEvent);
+    public class TestClass
+    {
+        public string x { get; set; }
+    }
+    public static class RabbitMQOutput{
+        [FunctionName("RabbitMQOutput")]
+        public static async Task Run(
+        [RabbitMQTrigger("sourceQueue", ConnectionStringSetting = "rabbitMQConnectionAppSetting")] TestClass rabbitMQEvent,
+        [RabbitMQ(QueueName = "destinationQueue", ConnectionStringSetting = "rabbitMQConnectionAppSetting")]IAsyncCollector<TestClass> outputPocObj,
+        ILogger log)
+        {
+            // send the message
+            await outputPocObj.AddAsync(rabbitMQEvent);
+        }
+    }
 }
 ```
 
@@ -98,7 +99,7 @@ Bindungsdaten in der Datei *function.json*:
             "type": "rabbitMQ",
             "name": "outputMessage",
             "queueName": "outputQueue",
-            "connectionStringSetting": "connectionStringAppSetting",
+            "connectionStringSetting": "rabbitMQConnectionAppSetting",
             "direction": "out"
         }
     ]
@@ -107,7 +108,7 @@ Bindungsdaten in der Datei *function.json*:
 
 Der C#-Skriptcode sieht wie folgt aus:
 
-```csx
+```C#
 using System;
 using Microsoft.Extensions.Logging;
 
@@ -141,7 +142,7 @@ Bindungsdaten in der Datei *function.json*:
             "type": "rabbitMQ",
             "name": "outputMessage",
             "queueName": "outputQueue",
-            "connectionStringSetting": "connectionStringAppSetting",
+            "connectionStringSetting": "rabbitMQConnectionAppSetting",
             "direction": "out"
         }
     ]
@@ -186,21 +187,21 @@ Bindungsdaten in der Datei *function.json*:
             "type": "rabbitMQ",
             "name": "outputMessage",
             "queueName": "outputQueue",
-            "connectionStringSetting": "connectionStringAppSetting",
+            "connectionStringSetting": "rabbitMQConnectionAppSetting",
             "direction": "out"
         }
     ]
 }
 ```
 
-In *_\_init_\_.py* können Sie eine Nachricht als Ausgabe in die Warteschlange schreiben, indem Sie einen Wert an die `set`-Methode übergeben.
+In *_\_init_\_.py*:
 
 ```python
 import azure.functions as func
 
-def main(req: func.HttpRequest, msg: func.Out[str]) -> func.HttpResponse:
+def main(req: func.HttpRequest, outputMessage: func.Out[str]) -> func.HttpResponse:
     input_msg = req.params.get('message')
-    msg.set(input_msg)
+    outputMessage.set(input_msg)
     return 'OK'
 ```
 
@@ -212,7 +213,7 @@ Das folgende Beispiel zeigt eine Java-Funktion, die eine Nachricht an die Rabbit
 @FunctionName("RabbitMQOutputExample")
 public void run(
 @TimerTrigger(name = "keepAliveTrigger", schedule = "0 */5 * * * *") String timerInfo,
-@RabbitMQOutput(connectionStringSetting = "rabbitMQ", queueName = "hello") OutputBinding<String> output,
+@RabbitMQOutput(connectionStringSetting = "rabbitMQConnectionAppSetting", queueName = "hello") OutputBinding<String> output,
 final ExecutionContext context) {
     output.setValue("Some string");
 }
@@ -239,7 +240,7 @@ ILogger log)
 }
 ```
 
-Ein vollständiges C#-Beispiel finden Sie [hier](#example).
+Ein vollständiges Beispiel finden Sie unter [C#-Beispiel](#example).
 
 # <a name="c-script"></a>[C#-Skript](#tab/csharp-script)
 
@@ -271,11 +272,13 @@ Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaft
 |**direction** | – | Muss auf „out“ festgelegt werden. |
 |**name** | – | Der Name der Variablen, die die Warteschlange im Funktionscode darstellt. |
 |**queueName**|**QueueName**| Name der Warteschlange, an die Nachrichten gesendet werden sollen. |
-|**hostName**|**HostName**|(optional, wenn ConnectionStringSetting verwendet wird) <br>Hostname der Warteschlange (z. B.: 10.26.45.210)|
-|**userNameSetting**|**UserNameSetting**|(optional, wenn ConnectionStringSetting verwendet wird) <br>Name für den Zugriff auf die Warteschlange |
-|**passwordSetting**|**PasswordSetting**|(optional, wenn ConnectionStringSetting verwendet wird) <br>Kennwort für den Zugriff auf die Warteschlange|
-|**connectionStringSetting**|**ConnectionStringSetting**|Name der App-Einstellung, die die Verbindungszeichenfolge für die Warteschlange mit der RabbitMQ-Nachricht enthält. Beachten Sie, dass der Trigger nicht funktioniert, wenn Sie die Verbindungszeichenfolge direkt und nicht über eine App-Einstellung in „local.settings.json“ angeben. (Beispiel: In *function.json*: connectionStringSetting: "rabbitMQConnection" <br> In *local.settings.json*: "rabbitMQConnection" : "<tatsächlicheVerbindungszeichenfolge>")|
-|**port**|**Port**|Ruft den verwendeten Port ab oder legt ihn fest. Der Standardwert ist 0.|
+|**hostName**|**HostName**|(bei Verwendung von ConnectionStringSetting ignoriert) <br>Hostname der Warteschlange (z. B.: 10.26.45.210)|
+|**userName**|**UserName**|(bei Verwendung von ConnectionStringSetting ignoriert) <br>Name der App-Einstellung mit dem Benutzernamen für den Zugriff auf die Warteschlange. Beispiel: UserNameSetting: "%<BenutzernameAusEinstellungen>%"|
+|**password**|**Kennwort**|(bei Verwendung von ConnectionStringSetting ignoriert) <br>Name der App-Einstellung mit dem Kennwort für den Zugriff auf die Warteschlange. Beispiel: UserNameSetting: "%<BenutzernameAusEinstellungen>%"|
+|**connectionStringSetting**|**ConnectionStringSetting**|Name der App-Einstellung, die die Verbindungszeichenfolge für die Warteschlange mit der RabbitMQ-Nachricht enthält. Beachten Sie, dass der Trigger nicht funktioniert, wenn Sie die Verbindungszeichenfolge direkt und nicht über eine App-Einstellung in „local.settings.json“ angeben. (Beispiel: In *function.json*: connectionStringSetting: "rabbitMQConnection" <br> In *local.settings.json*: "rabbitMQConnection" : "<TatsächlicheVerbindungszeichenfolge>")|
+|**port**|**Port**|(bei Verwendung von ConnectionStringSetting ignoriert) Dient zum Abrufen oder Festlegen des verwendeten Ports. Der Standardwert ist 0 und verweist auf die Standardporteinstellung des RabbitMQ-Clients: 5672.|
+
+[!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 ## <a name="usage"></a>Verwendung
 
@@ -285,7 +288,7 @@ Verwenden Sie die folgenden Parametertypen für die Ausgabebindung:
 
 * `byte[]`: Wenn der Parameterwert NULL ist, sobald die Funktion beendet wird, erstellt Functions keine Nachricht.
 * `string`: Wenn der Parameterwert NULL ist, sobald die Funktion beendet wird, erstellt Functions keine Nachricht.
-* `POCO`: Wenn der Parameterwert nicht als C#-Objekt formatiert ist, wird eine Fehlermeldung ausgegeben. Ein vollständiges C#-Beispiel finden Sie [hier](#example).
+* `POCO`: Wenn der Parameterwert nicht als C#-Objekt formatiert ist, wird eine Fehlermeldung ausgegeben. Ein vollständiges Beispiel finden Sie unter [C#-Beispiel](#example).
 
 Beim Arbeiten mit C# Funktionen:
 
@@ -297,7 +300,7 @@ Verwenden Sie die folgenden Parametertypen für die Ausgabebindung:
 
 * `byte[]`: Wenn der Parameterwert NULL ist, sobald die Funktion beendet wird, erstellt Functions keine Nachricht.
 * `string`: Wenn der Parameterwert NULL ist, sobald die Funktion beendet wird, erstellt Functions keine Nachricht.
-* `POCO`: Wenn der Parameterwert nicht als C#-Objekt formatiert ist, wird eine Fehlermeldung ausgegeben.
+* `POCO`: Wenn der Parameterwert nicht als C#-Objekt formatiert ist, wird eine Fehlermeldung ausgegeben. Ein vollständiges Beispiel finden Sie im [C#-Skriptbeispiel](#example).
 
 Beim Arbeiten mit C#-Skriptfunktionen:
 
@@ -305,11 +308,11 @@ Beim Arbeiten mit C#-Skriptfunktionen:
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Die RabbitMQ-Nachricht wird über eine Zeichenfolge gesendet.
+Die Warteschlangenmeldung ist über context.bindings.<NAME> verfügbar. Dabei entspricht <NAME> dem in „function.json“ definierten Namen. Falls es sich um eine JSON-Nutzlast handelt, wird der Wert in ein Objekt deserialisiert.
 
 # <a name="python"></a>[Python](#tab/python)
 
-Die RabbitMQ-Nachricht wird über eine Zeichenfolge gesendet.
+Weitere Informationen finden Sie im [Beispiel](#example) für Python.
 
 # <a name="java"></a>[Java](#tab/java)
 

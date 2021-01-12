@@ -5,17 +5,18 @@ services: data-factory
 author: nabhishek
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 11/16/2020
+ms.date: 12/30/2020
 ms.author: abnarain
 ms.reviewer: craigg
-ms.openlocfilehash: c9dd39ffa68d8261f5c5d301d4c351c52b3f27c1
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 922ec6c4b579a657e7ee5e872148f8126ce175e2
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94654591"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97822283"
 ---
 # <a name="troubleshoot-azure-data-factory"></a>Problembehandlung für Azure Data Factory
+
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 In diesem Artikel werden gängige Methoden zur Problembehandlung für externe Steuerungsaktivitäten in Azure Data Factory beschrieben.
@@ -498,7 +499,7 @@ Die folgende Tabelle gilt für Azure Batch.
 
 - **Meldung**: `There are duplicate files in the resource folder.`
 
-- **Ursache:** In verschiedenen Unterordnern von „folderPath“ gibt es mehrere Dateien mit demselben Namen.
+- **Ursache:** Mehrere Dateien mit dem gleichen Namen sind in verschiedenen Unterordnern von folderPath vorhanden.
 
 - **Empfehlung**: Benutzerdefinierte Aktivitäten vereinfachen die Ordnerstruktur unter „folderPath“. Wenn Sie die Ordnerstruktur beibehalten möchten, zippen Sie die Dateien, und extrahieren Sie sie in Azure Batch mit einem Befehl zum Entzippen.
    
@@ -545,7 +546,6 @@ Die folgende Tabelle gilt für Azure Batch.
 - **Ursache:** Beim Lesen des Dienstprinzipals bzw. beim Instanziieren der MSI-Authentifizierung ist ein interner Fehler aufgetreten.
 
 - **Empfehlung**: Erwägen Sie die Angabe eines Dienstprinzipals, der Berechtigungen zum Erstellen eines HDInsight-Clusters im angegebenen Abonnement hat, und versuchen Sie es erneut. Überprüfen Sie, ob [die verwalteten Identitäten ordnungsgemäß eingerichtet wurden](../hdinsight/hdinsight-managed-identities.md).
-
 
 ### <a name="error-code-2300"></a>Fehlercode: 2300
 
@@ -952,6 +952,16 @@ Die folgende Tabelle gilt für Azure Batch.
 
 - **Empfehlung**: Geben Sie ein Azure-Blobspeicherkonto als zusätzlichen Speicher für den bedarfsgesteuerten verknüpften HDInsight-Dienst an.
 
+### <a name="ssl-error-when-adf-linked-service-using-hdinsight-esp-cluster"></a>SSL-Fehler bei Verwendung des HDInsight ESP-Clusters durch den verknüpften ADF-Dienst
+
+- **Meldung**: `Failed to connect to HDInsight cluster: 'ERROR [HY000] [Microsoft][DriverSupport] (1100) SSL certificate verification failed because the certificate is missing or incorrect.`
+
+- **Ursache:** Das Problem ist wahrscheinlich auf den Vertrauensspeicher des Systems zurückzuführen.
+
+- **Lösung:** Navigieren Sie zum Pfad **Microsoft Integration Runtime\4.0\Shared\ODBC Drivers\Microsoft Hive ODBC Driver\lib**, und öffnen Sie „DriverConfiguration64.exe“, um die Einstellung zu ändern.
+
+    ![Deaktivieren von „Systemvertrauensspeicher verwenden“](./media/connector-troubleshoot-guide/system-trust-store-setting.png)
+
 ## <a name="web-activity"></a>Webaktivität
 
 ### <a name="error-code-2128"></a>Fehlercode: 2128
@@ -1015,9 +1025,9 @@ Wenn Sie beobachten, dass die Aktivität viel länger läuft als gewöhnlich und
 
 **Fehlermeldung:** `The payload including configurations on activity/dataSet/linked service is too large. Please check if you have settings with very large value and try to reduce its size.`
 
-**Ursache:** Die Nutzdaten für jede Aktivitätsausführung enthalten die Aktivitätskonfiguration, die Konfigurationen der zugeordneten Datasets und verknüpften Dienste (sofern vorhanden) sowie einen kleinen Teil der Systemeigenschaften, die pro Aktivitätstyp generiert werden. Der Grenzwert für diese Nutzdatengröße ist 896 KB, wie im Abschnitt [Data Factory-Grenzwerte](../azure-resource-manager/management/azure-subscription-service-limits.md#data-factory-limits) beschrieben.
+**Ursache:** Die Nutzdaten für jede Aktivitätsausführung enthalten die Aktivitätskonfiguration, die Konfigurationen der zugeordneten Datasets und verknüpften Dienste (sofern vorhanden) sowie einen kleinen Teil der pro Aktivitätstyp generierten Systemeigenschaften. Der Grenzwert für die Nutzdatengröße ist 896 KB, wie im Abschnitt [Data Factory-Grenzwerte](../azure-resource-manager/management/azure-subscription-service-limits.md#data-factory-limits) beschrieben.
 
-**Empfehlung:** Sie erreichen dieses Limit wahrscheinlich, weil Sie einen oder mehrere große Parameterwerte übergeben, die entweder aus der vorgelagerten Aktivitätsausgabe stammen oder externen Ursprungs sind, insbesondere, wenn Sie tatsächliche Daten über Aktivitäten in der Ablaufsteuerung hinweg übergeben. Überprüfen Sie, ob Sie die Größe großer Parameterwerte reduzieren können, oder optimieren Sie die Pipelinelogik, um zu vermeiden, dass solche Werte über Aktivitäten hinweg übergeben werden, und verarbeiten Sie sie stattdessen in der Aktivität.
+**Empfehlung:** Sie erreichen dieses Limit wahrscheinlich, weil Sie einen oder mehrere große Parameterwerte übergeben, die entweder aus der vorgelagerten Aktivitätsausgabe stammen oder externen Ursprungs sind, insbesondere, wenn Sie tatsächliche Daten über Aktivitäten in der Ablaufsteuerung hinweg übergeben. Überprüfen Sie, ob Sie die Größe großer Parameterwerte reduzieren können, oder optimieren Sie Ihre Pipelinelogik, um zu vermeiden, dass diese Werte zwischen Aktivitäten übergeben werden, und verarbeiten Sie sie stattdessen in der Aktivität.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

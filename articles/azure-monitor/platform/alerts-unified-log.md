@@ -6,12 +6,12 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 5/31/2019
 ms.subservice: alerts
-ms.openlocfilehash: 9f8004b41e8048dfc97fb61bb67a634963c0c575
-ms.sourcegitcommit: e5f9126c1b04ffe55a2e0eb04b043e2c9e895e48
+ms.openlocfilehash: a913bc0ae01507cb26c1650d63918a8319eeacf4
+ms.sourcegitcommit: 697638c20ceaf51ec4ebd8f929c719c1e630f06f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96317553"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97857425"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Protokollwarnungen in Azure Monitor
 
@@ -120,6 +120,8 @@ Bei Arbeitsbereichen und in Application Insights wird nur der Measuretyp **Metri
 ### <a name="split-by-alert-dimensions"></a>Aufteilen nach Warnungsdimensionen
 
 Teilen Sie Warnungen nach Zahlen- oder Zeichenfolgenspalten in separate Warnungen auf, indem Sie eine Gruppierung nach eindeutigen Kombinationen durchführen. Beim Erstellen von ressourcenbezogenen Warnungen im großen Stil (Abonnement- oder Ressourcengruppenbereich) können Sie eine Aufteilung nach der Spalte mit der Azure-Ressourcen-ID vornehmen. Beim Aufteilen nach der Spalte mit der Azure-Ressourcen-ID ändert sich das Ziel der Warnung in die angegebene Ressource.
+
+Das Aufteilen nach Spalte „Azure resource ID“ (Azure-Ressourcen-ID) wird empfohlen, wenn Sie dieselbe Bedingung auf mehreren Azure-Ressourcen überwachen möchten. Ein Beispiel hierfür ist das Überwachen aller VMs, deren CPU-Auslastung über 80 Prozent beträgt. Sie können sich auch gegen eine Aufteilung entscheiden, wenn Sie eine Bedingung für mehrere Ressourcen im Bereich festlegen und dann überwachen möchten, ob mindestens fünf Computer im Ressourcengruppenbereich eine CPU-Auslastung von über 80 Prozent aufweisen.
 
 Bei Arbeitsbereichen und in Application Insights wird nur der Measuretyp **Metrische Maßeinheit** unterstützt. Das Feld hat die Bezeichnung **Aggregieren nach**. Es ist auf drei Spalten beschränkt. Wenn eine Abfrage mehr als drei Gruppierungen nach Spalten enthält, kann dies zu unerwarteten Ergebnissen führen. Bei allen anderen Ressourcentypen wird dies im Abschnitt **Split by dimensions** (Nach Dimensionen aufteilen) der Bedingung konfiguriert (auf sechs Aufteilungen beschränkt).
 

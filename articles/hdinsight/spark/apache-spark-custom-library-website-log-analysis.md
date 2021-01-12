@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 12/27/2019
-ms.openlocfilehash: 1094235f5bc5cc25cf6d8f3762dc242503952de6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 61ec2db1799919eb395996b56d08b77e3be7ff5a
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86083796"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97822368"
 ---
 # <a name="analyze-website-logs-using-a-custom-python-library-with-apache-spark-cluster-on-hdinsight"></a>Analysieren von Websiteprotokollen mithilfe einer benutzerdefinierten Python-Bibliothek mit Apache Spark-Cluster unter HDInsight
 
@@ -25,7 +25,7 @@ Ein Apache Spark-Cluster unter HDInsight. Eine Anleitung finden Sie unter [Erste
 
 ## <a name="save-raw-data-as-an-rdd"></a>Speichern von Rohdaten als RDD
 
-In diesem Abschnitt verwenden wir das [Jupyter](https://jupyter.org) Notebook, das einem Apache Spark-Cluster in HDInsight zugeordnet ist, zum Ausführen von Aufträgen, bei denen Ihre Beispielrohdaten verarbeitet und dann als Hive-Tabelle gespeichert werden. Die Beispieldaten sind in einer CSV-Datei (hvac.csv) enthalten, die standardmäßig auf allen Clustern verfügbar ist.
+In diesem Abschnitt verwenden Sie das [Jupyter](https://jupyter.org)-Notebook, das einem Apache Spark-Cluster in HDInsight zugeordnet ist, zum Ausführen von Aufträgen, bei denen Ihre Beispielrohdaten verarbeitet und dann als Hive-Tabelle gespeichert werden. Die Beispieldaten sind in einer CSV-Datei (hvac.csv) enthalten, die standardmäßig auf allen Clustern verfügbar ist.
 
 Nachdem Ihre Daten als Apache Hive-Tabelle gespeichert wurden, können wir im nächsten Abschnitt eine Verbindung mit der Hive-Tabelle herstellen. Hierzu verwenden wir BI-Tools wie Power BI und Tableau.
 
@@ -33,7 +33,7 @@ Nachdem Ihre Daten als Apache Hive-Tabelle gespeichert wurden, können wir im n�
 
 1. Erstellen Sie ein neues Notebook. Wählen Sie **Neu** und dann **PySpark** aus.
 
-    ![Erstellen eines neuen Apache Jupyter Notebooks](./media/apache-spark-custom-library-website-log-analysis/hdinsight-create-jupyter-notebook.png "Erstellen eines neuen Jupyter Notebooks")
+    ![Erstellen eines neuen Apache-Jupyter-Notebooks](./media/apache-spark-custom-library-website-log-analysis/hdinsight-create-jupyter-notebook.png "Erstellen eines neuen Jupyter-Notebooks")
 
 1. Ein neues Notebook mit dem Namen „Untitled.pynb“ wird erstellt und geöffnet. Wählen Sie oben den Namen des Notebooks aus, und geben Sie einen Anzeigenamen ein.
 
@@ -172,7 +172,7 @@ Nachdem Ihre Daten als Apache Hive-Tabelle gespeichert wurden, können wir im n�
     SELECT * FROM AverageTime
     ```
 
-   Durch den Befehl `%%sql` gefolgt von `-o averagetime` wird sichergestellt, dass die Ausgabe der Abfrage lokal auf dem Jupyter-Server (in der Regel der Hauptknoten des Clusters) beibehalten wird. Die Ausgabe wird als [Pandas](https://pandas.pydata.org/) -Dataframe mit dem angegebenen Namen **averagetime**beibehalten.
+   Durch den Befehl `%%sql` gefolgt von `-o averagetime` wird sichergestellt, dass die Ausgabe der Abfrage lokal auf dem Jupyter-Server (in der Regel der Hauptknoten des Clusters) beibehalten wird. Die Ausgabe wird als [Pandas](https://pandas.pydata.org/) -Dataframe mit dem angegebenen Namen **averagetime** beibehalten.
 
    Die Ausgabe sollte wie das folgende Bild aussehen:
 

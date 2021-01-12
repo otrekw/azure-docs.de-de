@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 12/01/2020
 ms.author: NanditaV
 ms.reviewer: jrasnick
-ms.openlocfilehash: 8f11f104e8d3d0a4f3a004ebe9f149cb4132d910
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: f8ebbdf70836f3f2613183268f03dc43da1f0671
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96501284"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590559"
 ---
 # <a name="create-a-workspace-with-data-exfiltration-protection-enabled"></a>Erstellen eines Arbeitsbereichs mit aktiviertem Schutz vor Datenexfiltration
 In diesem Artikel wird beschrieben, wie Sie einen Arbeitsbereich mit aktiviertem Schutz vor Datenexfiltration und die genehmigten Azure AD-Mandanten für diesen Arbeitsbereich verwalten.
@@ -33,7 +33,7 @@ Führen Sie die Schritte unter [Schnellstart: Erstellen eines Synapse-Arbeitsber
 1. Legen Sie die Option „Ausgehenden Datenverkehr nur zu genehmigten Zielen zulassen“ auf „Ja“ fest.
 1. Wählen Sie die genehmigten Azure AD-Mandanten für diesen Arbeitsbereich aus.
 1. Überprüfen Sie die Konfiguration, und erstellen Sie den Arbeitsbereich.
-:::image type="content" source="./media/how-to-create-a-workspace-with-data-exfiltration-protection/workspace-creation-data-exfiltration-protection.png" alt-text="Erstellen eines Arbeitsbereichs mit Schutz vor Datenexfiltration":::
+:::image type="content" source="./media/how-to-create-a-workspace-with-data-exfiltration-protection/workspace-creation-data-exfiltration-protection.png" alt-text="Screenshot des Arbeitsbereichs „Synapse erstellen“ mit ausgewählter Option „Verwaltetes VNET aktivieren“.":::
 
 ## <a name="manage-approved-azure-active-directory-tenants-for-the-workspace"></a>Verwalten von genehmigten Azure Active Directory-Mandanten für den Arbeitsbereich
 1. Navigieren Sie im Azure-Portal des Arbeitsbereichs zu „Genehmigte Azure AD-Mandanten“. Hier ist die Liste mit den genehmigten Azure AD-Mandanten für den Arbeitsbereich angegeben. Der Mandant des Arbeitsbereichs ist standardmäßig vorhanden und wird nicht angezeigt.

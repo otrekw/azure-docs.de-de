@@ -7,12 +7,12 @@ ms.date: 07/20/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 51bd073b6f84f3378b91091e04f2f278ea2f49b6
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: ddb8027c145f6a38bfcd953be66dae2943a20c3a
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95495268"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654607"
 ---
 # <a name="manage-iot-plug-and-play-digital-twins"></a>Verwalten von digitalen IoT Plug & Play-Zwillingen
 
@@ -26,7 +26,7 @@ Ein IoT-Plug & Play-Gerät implementiert ein Modell, das durch die [Digital Tw
 
 Das in diesem Artikel als Beispiel verwendete IoT Plug & Play-Gerät implementiert das [Modell „Temperatur-Controller“](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json) mit [Thermostat](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/Thermostat.json)-Komponenten.
 
-Der folgende Codeausschnitt zeigt die Antwort auf eine Anforderung **Get Digital Twin** (Abrufen des digitalen Zwillings), die als JSON-Objekt formatiert ist. Weitere Informationen zum Format eines digitalen Zwillings finden Sie unter [Grundlegendes zu digitalen IoT Plug & Play-Zwillingen](./concepts-digital-twin.md#digital-twin-json-format):
+Der folgende Codeausschnitt zeigt die Antwort auf eine Anforderung **Get Digital Twin** (Abrufen des digitalen Zwillings), die als JSON-Objekt formatiert ist. Weitere Informationen zum Format eines digitalen Zwillings finden Sie unter [Grundlegendes zu digitalen IoT Plug & Play-Zwillingen](./concepts-digital-twin.md#digital-twin-example):
 
 ```json
 {

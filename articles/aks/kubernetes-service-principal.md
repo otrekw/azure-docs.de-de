@@ -4,12 +4,12 @@ description: Erstellen und Verwalten eines Azure Active Directory-Dienstprinzipa
 services: container-service
 ms.topic: conceptual
 ms.date: 06/16/2020
-ms.openlocfilehash: e95eae3ab8d992bc169e54700e7e31715e72102e
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: c6f50b152174cee1ee2cc37baa22432957107d2c
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96607822"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97614794"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>Dienstprinzipale mit Azure Kubernetes Service (AKS)
 
@@ -100,18 +100,7 @@ Wenn Sie Azure Container Registry (ACR) als Speicher für Containerimages verwen
 
 ### <a name="networking"></a>Netzwerk
 
-Möglicherweise verwenden Sie erweiterte Netzwerke, in denen sich das virtuelle Netzwerk und das Subnetz oder öffentliche IP-Adressen in einer anderen Ressourcengruppe befinden. Weisen Sie eine der folgenden Gruppen von Rollenberechtigungen zu:
-
-- Erstellen Sie eine [benutzerdefinierte Rolle][rbac-custom-role], und definieren Sie die folgenden Rollenberechtigungen:
-  - *Microsoft.Network/virtualNetworks/subnets/join/action*
-  - *Microsoft.Network/virtualNetworks/subnets/read*
-  - *Microsoft.Network/publicIPAddresses/join/action*
-  - *Microsoft.Network/publicIPAddresses/read*
-  - *Microsoft.Network/publicIPAddresses/write*
-  - Fügen Sie bei Verwendung [benutzerdefinierter Routingtabellen in Kubenet-Clustern](configure-kubenet.md#bring-your-own-subnet-and-route-table-with-kubenet) die folgenden Zusatzberechtigungen hinzu:
-    - *Microsoft.Network/routeTables/write*
-    - *Microsoft.Network/routeTables/read*
-- Alternativ können Sie die integrierte Rolle [Netzwerkmitwirkender][rbac-network-contributor] für das Subnetz im virtuellen Netzwerk zuweisen.
+Möglicherweise verwenden Sie erweiterte Netzwerke, in denen sich das virtuelle Netzwerk und das Subnetz oder öffentliche IP-Adressen in einer anderen Ressourcengruppe befinden. Weisen Sie die integrierte Rolle [Netzwerkmitwirkender][rbac-network-contributor] für das Subnetz im virtuellen Netzwerk zu. Alternativ können Sie eine [benutzerdefinierte Rolle][rbac-custom-role] mit Zugriffsberechtigungen für die Netzwerkressourcen in dieser Ressourcengruppe erstellen. Unter [AKS-Dienstberechtigungen][aks-permissions] finden Sie weitere Informationen.
 
 ### <a name="storage"></a>Storage
 
@@ -188,3 +177,4 @@ Informationen zum Aktualisieren der Anmeldeinformationen finden Sie unter [Aktua
 [aks-to-acr]: cluster-container-registry-integration.md
 [update-credentials]: update-credentials.md
 [azure-ad-permissions]: ../active-directory/fundamentals/users-default-permissions.md
+[aks-permissions]: concepts-identity.md#aks-service-permissions

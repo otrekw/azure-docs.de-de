@@ -13,17 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/07/2020
 ms.author: rkarlin
-ms.openlocfilehash: 9862519a2003eb373c43fef1b660986a8d830327
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: f584f11603e41b63f3c96749ed6c720eb5ce07a8
+ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92094161"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97835056"
 ---
 # <a name="azure-defender-for-iot-agent-frequently-asked-questions"></a>Häufig gestellte Fragen zum Azure Defender für IoT-Agent
 
 Dieser Artikel enthält eine Liste häufig gestellter Fragen (FAQ) zum Defender für IoT-Agent und die zugehörigen Antworten.
-
 
 ## <a name="do-i-have-to-install-an-embedded-security-agent"></a>Muss ich einen eingebetteten Sicherheits-Agent installieren?
 
@@ -41,7 +40,6 @@ Die Installation des Agent auf Ihren IoT-Geräten ist nicht zwingend erforderlic
 Der Defender für IoT-Agent bietet Bedrohungsschutz auf Geräteebene für Gerätekonfiguration, -verhalten und -zugriff (durch Scannen der Konfiguration), Prozess und Konnektivität. Der Defender für IoT-Sicherheits-Agent scannt keine geschäftsrelevanten Daten oder Aktivitäten.
 
 Der Defender für IoT-Sicherheits-Agent ist Open Source und auf GitHub in 32-Bit- und 64-Bit-Versionen für Windows und Linux verfügbar: https://github.com/Azure/Azure-IoT-Security.
-
 
 ## <a name="what-are-the-dependencies-and-prerequisites-of-the-agent"></a>Wie lauten die Abhängigkeiten und Voraussetzungen für den Agent?
 
@@ -87,13 +85,11 @@ Der Agent kann nicht deaktiviert werden.
 
 Wenn der Agent die Kommunikation einstellt oder keine Sicherheitsmeldungen sendet, wird eine Warnung **Gerät ist still** generiert.
 
-
-
 ## <a name="next-steps"></a>Nächste Schritte
 
 Um mehr darüber zu erfahren, wie Sie mit Defender für IoT beginnen können, lesen Sie die folgenden Artikel:
 
 - Lesen der [Übersicht](overview.md) über Defender für IoT
-- Überprüfen der [Dienstvoraussetzungen](service-prerequisites.md)
-- Erfahren Sie mehr über die [Ersten Schritte](getting-started.md)
+- Überprüfen der [Systemvoraussetzungen](quickstart-system-prerequisites.md)
+- Weitere Informationen zu [Erste Schritte mit Defender für IoT](getting-started.md)
 - Grundlegendes zu [Defender für IoT-Sicherheitswarnungen](concept-security-alerts.md)

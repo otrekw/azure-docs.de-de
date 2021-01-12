@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 0cd9f0d6cf9529439f7b5ce46b1a5807d0a68a7c
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 11a45adfda306b2ab843725b6aaa28a5e6c026a6
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97110981"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97614250"
 ---
 # <a name="configure-complexity-requirements-for-passwords-in-azure-active-directory-b2c"></a>Konfigurieren der Komplexitätsanforderungen für Kennwörter in Azure Active Directory B2C
 
@@ -218,7 +218,7 @@ Speichern Sie die Richtliniendatei.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie mehr über das [Konfigurieren der Kennwortänderung in benutzerdefinierten Richtlinien in Azure Active Directory B2C](custom-policy-password-change.md).
+- Erfahren Sie mehr über das [Konfigurieren der Kennwortänderung in Azure Active Directory B2C](add-password-change-policy.md).
 - Weitere Informationen finden Sie unter den Elementen [Predicates](predicates.md) und [PredicateValidations](predicates.md#predicatevalidations) in der IEF-Referenz.
 
 

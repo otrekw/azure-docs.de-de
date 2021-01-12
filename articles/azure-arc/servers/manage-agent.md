@@ -1,14 +1,14 @@
 ---
 title: Verwalten des Agents für Azure Arc-fähige Server
 description: In diesem Artikel werden die verschiedenen Verwaltungsaufgaben beschrieben, die Sie typischerweise während des Lebenszyklus des Connected Machine-Agents für Azure Arc-fähige Server ausführen.
-ms.date: 10/30/2020
+ms.date: 12/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9e17bf58d1e94b64d1cdc6ff0b57b1b6a81be180
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: f408048f61f76d6b258ea8e063630b4e2aa841af
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97107191"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724373"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>Verwalten des Connected Machine-Agent
 
@@ -189,7 +189,7 @@ Führen Sie den folgenden Befehl aus, um eine Verbindung mit Ihren Anmeldeinform
 
 ### <a name="disconnect"></a>Trennen
 
-Dieser Parameter gibt eine Ressource in Azure Resource Manager an, die den in Azure gelöschten Computer darstellt. Der Agent wird nicht vom Computer gelöscht, dies muss als separater Schritt erfolgen. Nachdem die Verbindung des Computers getrennt wurde und Sie ihn neu bei Azure Arc-fähigen Servern registrieren möchten, führen Sie `azcmagent connect` aus, um eine neue Ressource in Azure zu erstellen.
+Dieser Parameter gibt eine Ressource in Azure Resource Manager an, die den in Azure gelöschten Computer darstellt. Der Agent wird nicht vom Computer entfernt. Sie deinstallieren den Agent separat. Nachdem die Verbindung des Computers getrennt wurde und Sie ihn neu bei Azure Arc-fähigen Servern registrieren möchten, führen Sie `azcmagent connect` aus, um eine neue Ressource in Azure zu erstellen.
 
 > [!NOTE]
 > Wenn Sie mindestens eine Azure-VM-Erweiterung für Ihren Azure-Arc-fähigen Server bereitgestellt haben und die VM-Registrierung in Azure löschen, sind die Erweiterungen weiterhin installiert. Es ist wichtig zu verstehen, dass der Computer je nach installierter Erweiterung seine Funktion aktiv ausführt. Auf Computern, die außer Betrieb genommen oder nicht mehr von Azure Arc-fähigen Servern verwaltet werden sollen, müssen zunächst die Erweiterungen entfernt werden, bevor die Registrierung aus Azure entfernt wird.
@@ -208,7 +208,7 @@ Führen Sie den folgenden Befehl aus, um die Verbindung mit Ihren Anmeldeinforma
 
 ## <a name="remove-the-agent"></a>Entfernen des Agents
 
-Führen Sie eine der folgenden Methoden aus, um den Conncected Machine-Agent für Windows oder Linux von dem Computer zu deinstallieren. Durch das Entfernen des Agents wird weder die Registrierung des Computers bei Azure Arc-fähigen Servern aufgehoben noch werden die installierten Azure-VM-Erweiterungen entfernt. Sie müssen diese Schritte separat durchführen, wenn Sie den Computer in Azure nicht mehr verwalten müssen. Außerdem sollten die Schritte vor der Deinstallation des Agents abgeschlossen werden.
+Führen Sie eine der folgenden Methoden aus, um den Conncected Machine-Agent für Windows oder Linux von dem Computer zu deinstallieren. Durch das Entfernen des Agents wird weder die Registrierung des Computers bei Azure Arc-fähigen Servern aufgehoben noch werden die installierten Azure-VM-Erweiterungen entfernt. Heben Sie die Registrierung des Computers auf, und entfernen Sie die installierten VM-Erweiterungen separat, wenn Sie den Computer in Azure nicht mehr verwalten müssen. Diese Schritte müssen vor dem Deinstallieren des Agents ausgeführt werden.
 
 ### <a name="windows-agent"></a>Windows-Agent
 
@@ -286,6 +286,10 @@ Wenn Sie beabsichtigen, die Verwaltung des Computers mit unterstützenden Dienst
 ## <a name="update-or-remove-proxy-settings"></a>Aktualisieren oder Entfernen von Proxyeinstellungen
 
 Um den Agent für die Kommunikation mit dem Dienst über einen Proxyserver zu konfigurieren, entfernen Sie diese Konfiguration nach der Bereitstellung, oder führen Sie eine der folgenden Methoden aus, um diese Aufgabe durchzuführen.
+
+> [!NOTE]
+> Azure Arc-fähige Server unterstützen die Verwendung eines [Log Analytics-Gateways](../../azure-monitor/platform/gateway.md) als Proxy für den Connected Machine-Agent nicht.
+>
 
 ### <a name="windows"></a>Windows
 

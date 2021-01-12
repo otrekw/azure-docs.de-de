@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: be3d3f11e90c17bd8c4792418500da651039e480
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: a80eaecc02fa3c8c6618341c02e22241f0dc7faf
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97562802"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97845080"
 ---
 # <a name="advanced-features-of-azure-metrics-explorer"></a>Erweiterte Funktionen von Azure Metrik-Explorer
 
@@ -22,6 +22,35 @@ ms.locfileid: "97562802"
 ## <a name="metrics-in-azure"></a>Metriken in Azure
 
 [Metriken in Azure Monitor](data-platform-metrics.md) sind eine Reihe von Messwerten und Zahlen, die im Lauf der Zeit gesammelt und gespeichert werden. Es gibt Standardmetriken (bzw. sogenannte „Plattformmetriken“) und benutzerdefinierte Metriken. Die Standardmetriken werden Ihnen von der Azure-Plattform selbst bereitgestellt. Standardmetriken stellen die Integritäts- und Nutzungsstatistik Ihrer Azure-Ressourcen dar. Benutzerdefinierte Metriken werden hingegen von Ihren Anwendungen mithilfe der [Application Insights-API für benutzerdefinierte Ereignisse und Metriken](../app/api-custom-events-metrics.md), der [Azure-Diagnoseerweiterung (Windows Azure Diagnostics, WAD)](./diagnostics-extension-overview.md) oder durch die [Azure Monitor-REST-API](./metrics-store-custom-rest-api.md) an Azure gesendet.
+
+## <a name="resource-scope-picker"></a>Auswahl des Ressourcenbereichs
+Mit der Auswahl des Ressourcenbereichs können Sie Metriken für einzelne und mehrere Ressourcen anzeigen. Im Folgenden finden Sie Anweisungen zur Verwendung der Auswahl des Ressourcenbereichs. 
+
+### <a name="selecting-a-single-resource"></a>Auswählen einer einzelnen Ressource
+Wählen Sie im Menü **Azure Monitor** oder im Abschnitt **Überwachung** des Menüs einer Ressource die Option **Metriken** aus. Klicken Sie auf die Schaltfläche „Bereich auswählen“, um die Bereichsauswahl zu öffnen, in der Sie die Ressourcen auswählen können, für die Sie Metriken anzeigen möchten. Wenn Sie Metrik-Explorer über das Menü einer Ressource geöffnet haben, sollte dieser Bereich bereits angegeben sein. 
+
+![Screenshot der Auswahl des Ressourcenbereichs](./media/metrics-charts/scope-picker.png)
+
+Für bestimmte Ressourcen können Sie jeweils nur die Metriken einer einzelnen Ressource anzeigen. Diese Ressourcen finden Sie im Abschnitt „Alle Ressourcentypen“ in der Dropdownliste der Ressourcentypen.
+
+![Screenshot einer einzelnen Ressource](./media/metrics-charts/single-resource-scope.png)
+
+Nachdem Sie auf die gewünschte Ressource geklickt haben, werden alle Abonnements und Ressourcengruppen angezeigt, die diese Ressource enthalten.
+
+![Screenshot der verfügbaren Ressourcen](./media/metrics-charts/available-single-resource.png)
+
+> [!TIP]
+> Wenn Sie die Metriken mehrerer Ressourcen gleichzeitig oder mehrere Metriken aus einem Abonnement oder einer Ressourcengruppe anzeigen möchten, klicken Sie auf die Schaltfläche „Aufwerten“.
+
+Wenn Sie mit der Auswahl fertig sind, klicken Sie auf „Anwenden“.
+
+### <a name="viewing-metrics-across-multiple-resources"></a>Anzeigen von Metriken für mehrere Ressourcen
+Bei einigen Ressourcentypen ist die Möglichkeit aktiviert, Metriken für mehrere Ressourcen abzufragen, sofern sie sich im selben Abonnement und am selben Standort befinden. Diese Ressourcentypen finden Sie oben in der Dropdownliste „Ressourcentypen“. Weitere Informationen zum Anzeigen von Metriken über mehrere Ressourcen hinweg finden Sie in [diesem Dokument](metrics-dynamic-scope.md#selecting-multiple-resources).
+
+![Screenshot von ressourcenübergreifenden Typen](./media/metrics-charts/multi-resource-scope.png)
+
+Bei Typen, die mit mehreren Ressourcen kompatibel sind, können Sie auch Metriken für ein Abonnement oder mehrere Ressourcengruppen abfragen. Weitere Informationen hierzu finden Sie in [diesem Artikel](metrics-dynamic-scope.md#selecting-a-resource-group-or-subscription).
+
 
 ## <a name="create-views-with-multiple-metrics-and-charts"></a>Erstellen von Ansichten mit mehreren Metriken und Diagrammen
 
@@ -61,11 +90,25 @@ Angenommen, das Diagramm zeigt die Metrik **Serverantwortzeit** mit dem Aggregat
 
 Im Metrik-Explorer sind fünf Aggregationstypen für grundlegende Statistiken verfügbar: **Sum**, **Count**, **Min**, **Max** und **Average**. Der Aggregationstyp **Sum** wird manchmal auch als **Total** bezeichnet. Bei vielen Metriken blendet Metrik-Explorer die Aggregationen aus, die vollkommen irrelevant sind und nicht verwendet werden können.
 
-- **Sum**: Die Summe aller Werte, die über das Aggregationsintervall erfasst wurden.
-- **Count**: Die Anzahl der Messwerte, die über das Aggregationsintervall erfasst wurden. **Count** entspricht in dem Fall, dass die Metrik immer mit dem Wert 1 erfasst wird, dem Aggregationstyp **Sum**. Dies tritt üblicherweise auf, wenn die Metrik die Anzahl unterschiedlicher Ereignisse nachverfolgt und jeder Messwert ein Ereignis darstellt (d. h., der Code löst bei jedem Eintreffen einer neuen Anforderung einen Metrikdatensatz aus).
-- **Average**: Der Durchschnitt der Metrikwerte, die über das Aggregationsintervall erfasst wurden.
-- **Min**: Der niedrigste Wert, der über das Aggregationsintervall erfasst wurde.
-- **Max**: Der höchste Wert, der über das Aggregationsintervall erfasst wurde.
+**Sum**: Die Summe aller Werte, die über das Aggregationsintervall erfasst wurden.
+
+![Screenshot der Summe einer Anforderung](./media/metrics-charts/request-sum.png)
+
+**Count**: Die Anzahl der Messwerte, die über das Aggregationsintervall erfasst wurden. **Count** entspricht in dem Fall, dass die Metrik immer mit dem Wert 1 erfasst wird, dem Aggregationstyp **Sum**. Dies tritt üblicherweise auf, wenn die Metrik die Anzahl unterschiedlicher Ereignisse nachverfolgt und jeder Messwert ein Ereignis darstellt (d. h., der Code löst bei jedem Eintreffen einer neuen Anforderung einen Metrikdatensatz aus).
+
+![Screenshot der Anzahl einer Anforderung](./media/metrics-charts/request-count.png)
+
+**Average**: Der Durchschnitt der Metrikwerte, die über das Aggregationsintervall erfasst wurden.
+
+![Screenshot des Durchschnitts einer Anforderung](./media/metrics-charts/request-avg.png)
+
+**Min**: Der niedrigste Wert, der über das Aggregationsintervall erfasst wurde.
+
+![Screenshot des niedrigsten Werts einer Anforderung](./media/metrics-charts/request-min.png)
+
+**Max**: Der höchste Wert, der über das Aggregationsintervall erfasst wurde.
+
+![Screenshot des höchsten Werts einer Anforderung](./media/metrics-charts/request-max.png)
 
 ## <a name="apply-filters-to-charts"></a>Anwenden von Filtern auf Diagramme
 

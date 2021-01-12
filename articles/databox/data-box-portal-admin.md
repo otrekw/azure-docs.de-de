@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 07/20/2020
+ms.date: 12/18/2020
 ms.author: alkohli
-ms.openlocfilehash: 7d2734d386f1e49e2227058b148ee6b591d14a42
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 46a18cb2b6e1682427d5674be28b240f35b120fe
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94336425"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97678650"
 ---
 # <a name="use-the-azure-portal-to-administer-your-azure-data-box-and-azure-data-box-heavy"></a>Verwalten von Azure Data Box und Azure Data Box Heavy über das Azure-Portal
 
@@ -21,14 +21,11 @@ Dieser Artikel gilt sowohl für Azure Data Box als auch für Azure Data Box Heav
 
 Der Schwerpunkt dieses Artikels liegt auf den Aufgaben, die mithilfe des Azure-Portals ausgeführt werden können. Verwenden Sie das Azure-Portal, um Aufträge und Data Box-Gerät zu verwalten sowie den Auftragsstatus bis zum Abschluss nachzuverfolgen.
 
-[!INCLUDE [Data Box feature is in preview](../../includes/data-box-feature-is-preview-info.md)]
-
-
 ## <a name="cancel-an-order"></a>Abbrechen eines Auftrags
 
-Das Abbrechen eines erteilten Auftrags kann aus verschiedenen Gründen erforderlich sein. 
+Das Stornieren eines erteilten Auftrags kann aus verschiedenen Gründen erforderlich sein.
 
-Sowohl bei Import- als auch bei Exportaufträgen kann der Auftrag nur abgebrochen werden, wenn er noch nicht verarbeitet wurde. Sobald der Auftrag bearbeitet und das Data Box-Gerät vorbereitet ist, ist es nicht mehr möglich, den Auftrag zu stornieren.
+Sowohl bei Import- als auch bei Exportaufträgen kann der Auftrag nur storniert werden, wenn er noch nicht verarbeitet wurde. Sobald der Auftrag bearbeitet und das Data Box-Gerät vorbereitet ist, ist es nicht mehr möglich, diesen zu stornieren.
 
 Führen Sie die folgenden Schritte aus, um einen Auftrag zu stornieren.
 
@@ -44,10 +41,7 @@ Führen Sie die folgenden Schritte aus, um einen Auftrag zu stornieren.
 
 ## <a name="clone-an-order"></a>Klonen eines Auftrags
 
-Klonen kann in bestimmten Situationen hilfreich sein. Angenommen, ein Benutzer hat mithilfe von Data Box einige Daten übertragen. Bei zunehmender Datenmenge ist ein weiteres Data Box-Gerät erforderlich, um die Daten in Azure zu übertragen. In diesem Fall kann der gleiche Auftrag einfach geklont werden.
-
-> [!IMPORTANT]
-> Exportaufträge können nicht geklont werden. Nur Importaufträge können geklont werden.
+Klonen kann in bestimmten Situationen hilfreich sein. Nehmen Sie an, dass Sie mithilfe von Data Box einige Daten übertragen haben. Bei zunehmender Datenmenge ist ein weiteres Data Box-Gerät erforderlich, um diese Daten in Azure zu übertragen. In diesem Fall können Sie den Auftrag einfach klonen.
 
 Führen Sie die folgenden Schritte aus, um einen Importauftrag zu klonen.
 
@@ -76,7 +70,7 @@ Sie können nur Aufträge löschen, die abgeschlossen sind oder abgebrochen wurd
 
 ## <a name="download-shipping-label"></a>Versandetikett herunterladen
 
-Möglicherweise müssen Sie das Adressetikett herunterladen, wenn das E-Ink-Display Ihrer Data Box nicht funktioniert und das Rücksendeetikett nicht angezeigt wird. Da auf der Data Box Heavy kein E-Ink-Display vorhanden ist, gilt dieser Workflow nicht für Data Box Heavy.
+Möglicherweise müssen Sie das Adressetikett herunterladen, wenn das E-Ink-Display Ihres Data Box-Geräts nicht funktioniert und das Rücksendeetikett nicht angezeigt wird. Da auf dem Data Box Heavy-Gerät kein E-Ink-Display vorhanden ist, gilt dieser Workflow nicht für diese Geräte.
 
 Führen Sie die folgenden Schritte aus, um ein Adressetikett herunterzuladen.
 
@@ -104,7 +98,7 @@ Führen Sie die folgenden Schritte aus, um den Auftrag zu bearbeiten.
 
 ## <a name="edit-notification-details"></a>Bearbeiten der Benachrichtigungsdetails
 
-Unter Umständen müssen Sie die Benutzer ändern, die die E-Mails zum Auftragsstatus erhalten sollen. So muss beispielsweise ein Benutzer informiert werden, wenn das Gerät geliefert oder abgeholt wird. Ein anderer Benutzer muss ggf. informiert werden, wenn der Datenkopiervorgang abgeschlossen ist, damit er sich vor dem Löschen aus der Quelle vergewissern kann, dass sich die Daten im Azure-Speicherkonto befinden. In diesen Fällen können Sie die Benachrichtigungsdetails bearbeiten.
+Unter Umständen müssen Sie die Benutzer ändern, die die E-Mails zum Auftragsstatus erhalten. So muss beispielsweise ein Benutzer informiert werden, wenn das Gerät geliefert oder abgeholt wird. Ein anderer Benutzer muss ggf. informiert werden, wenn der Datenkopiervorgang abgeschlossen ist, damit er sich vor dem Löschen aus der Quelle vergewissern kann, dass sich die Daten im Azure-Speicherkonto befinden. In diesen Fällen können Sie die Benachrichtigungsdetails bearbeiten.
 
 Führen Sie die folgenden Schritte aus, um die Benachrichtigungsdetails zu bearbeiten.
 
@@ -127,10 +121,10 @@ Führen Sie die folgenden Schritte aus, um den Auftragsverlauf herunterzuladen:
 
     ![Herunterladen des Auftragsverlaufs](media/data-box-portal-admin/portal-admin-download-order-history.png)
 
-2. Klicken Sie auf **Bestellverlauf herunterladen**. Im heruntergeladenen Verlauf sehen Sie einen Eintrag für die Sendungsverfolgungsprotokolle des Zustelldiensts. Den zwei Knoten auf einer Data Box Heavy-Instanz entsprechend gibt es zwei Protokollgruppen. Unten in diesem Protokoll finden Sie Links zu den folgenden Elementen:
+2. Klicken Sie auf **Bestellverlauf herunterladen**. Der heruntergeladene Verlauf enthält einen Eintrag für die Sendungsverfolgungsprotokolle des Zustelldiensts. Den zwei Knoten auf einem Data Box Heavy-Gerät entsprechend gibt es zwei Protokollgruppen. Unten in diesem Protokoll finden Sie Links zu den folgenden Elementen:
     
-   - **Kopierprotokolle:** Diese Protokolle enthalten die Liste der Dateien, bei denen während des Kopierens von Daten vom Data Box-Gerät in Ihr Azure Storage-Konto (Importauftrag) oder *umgekehrt* (Exportauftrag) Fehler aufgetreten sind.
-   - **Überwachungsprotokolle** enthalten Informationen zum Einschalten und Zugriff auf Freigaben auf Data Box außerhalb eines Azure-Rechenzentrums.
+   - **Kopierprotokolle:** Diese Protokolle enthalten die Liste der Dateien, bei denen während des Kopierens von Daten vom Data Box-Gerät in Ihr Azure-Speicherkonto (Importauftrag) oder vom Speicherkonto auf das Data Box-Gerät (Exportauftrag) Fehler aufgetreten sind.
+   - **Überwachungsprotokolle:** Diese Protokolle enthalten Informationen zum Einschalten des Data Box-Geräts und zum Zugriff auf Freigaben auf dem Gerät, wenn sich dieses außerhalb eines Azure-Rechenzentrums befindet.
    - **BOM-Dateien in Importaufträgen:** Diese Dateien enthalten die Dateiliste (auch als Dateimanifest bezeichnet), die Sie bei der **Versandvorbereitung** herunterladen können und die die Dateinamen, Dateigrößen und Dateiprüfsummen enthält.
    - **Ausführliche Protokolle in Exportaufträgen:** Diese Dateien enthalten die Dateiliste mit Dateinamen, Dateigrößen und Prüfsummenberechnungen zum Zeitpunkt, an dem die Daten aus den Azure Storage-Konten auf das Data Box-Gerät kopiert wurden.
 
@@ -214,7 +208,7 @@ Hier finden Sie die Status für einen Importauftrag.
 
 |Auftragsstatus |BESCHREIBUNG |
 |---------|---------|
-|Bestellt     | Der Auftrag wurde erfolgreich erteilt. <br>Wenn das Gerät verfügbar ist, bestimmt Microsoft das Gerät für den Versand und bereitet es darauf vor. <br> Wenn das Gerät nicht sofort verfügbar ist, wird der Auftrag bearbeitet, sobald das Gerät verfügbar ist. Die Auftragsbearbeitung kann von mehreren Tagen bis zu einigen Monaten dauern. Wenn der Auftrag nicht binnen 90 Tagen erfüllt werden kann, wird er storniert, worüber Sie benachrichtigt werden.         |
+|Bestellt     | Der Auftrag wurde erfolgreich erteilt. <br>Wenn das Gerät verfügbar ist, bestimmt Microsoft das Gerät für den Versand und bereitet es darauf vor. <br> Wenn das Gerät nicht sofort verfügbar ist, wird der Auftrag verarbeitet, sobald das Gerät verfügbar ist. Die Auftragsbearbeitung kann von mehreren Tagen bis zu einigen Monaten dauern. Wenn der Auftrag nicht binnen 90 Tagen erfüllt werden kann, wird er storniert, worüber Sie benachrichtigt werden.         |
 |Verarbeitet     | Die Auftragsverarbeitung ist abgeschlossen. Gemäß Ihrem Auftrag wird das Gerät für den Versand im Rechenzentrum vorbereitet.         |
 |Versandt     | Der Auftrag wurde versandt. Verwenden Sie die in Ihrem Auftrag im Portal angezeigte Sendungsverfolgungs-ID, um die Sendung zu verfolgen.        |
 |Geliefert     | Der Auftrag wurde an die im Auftrag angegebene Adresse geliefert.        |
@@ -224,7 +218,7 @@ Hier finden Sie die Status für einen Importauftrag.
 |Abgeschlossen       |Der Auftrag wurde erfolgreich abgeschlossen.<br> Vergewissern Sie sich, dass sich Ihre Daten in Azure befinden, bevor Sie die lokalen Daten von Servern löschen.         |
 |Mit Fehlern abgeschlossen| Die Datenkopie wurde abgeschlossen, aber es sind Fehler beim Kopiervorgang aufgetreten. <br> Überprüfen Sie im Azure-Portal im angegebenen Pfad die Kopierprotokolle. Siehe [Beispiele für Kopierprotokolle, wenn der Upload mit Fehlern abgeschlossen wurde](./data-box-logs.md#upload-completed-with-errors).   |
 |Abgeschlossen mit Warnungen| Das Kopieren der Daten wurde abgeschlossen, Ihre Daten wurden jedoch geändert. Die Daten hatten unkritische Blob- oder Dateinamensfehler, die durch Ändern der Datei- oder Blobnamen behoben wurden. <br> Überprüfen Sie im Azure-Portal im angegebenen Pfad die Kopierprotokolle. Beachten Sie sich die Änderungen in Ihren Daten. Siehe [Beispiele für Kopierprotokolle, wenn der Upload mit Warnungen abgeschlossen wurde](./data-box-logs.md#upload-completed-with-warnings).   |
-|Canceled            |Der Auftrag wurde abgebrochen. <br> Entweder haben Sie den Auftrag abgebrochen, oder es ist ein Fehler aufgetreten, und der Auftrag wurde durch den Dienst abgebrochen. Wenn der Auftrag nicht binnen 90 Tagen erfüllt werden kann, wird er storniert, und Sie werden benachrichtigt.     |
+|Canceled            |Der Auftrag wurde abgebrochen. <br> Entweder haben Sie den Auftrag storniert, oder der Auftrag wurde durch den Dienst storniert, nachdem ein Fehler aufgetreten ist. Wenn der Auftrag nicht binnen 90 Tagen erfüllt werden kann, wird er storniert, worüber Sie benachrichtigt werden.     |
 |Bereinigung | Die Daten auf den Datenträgern des Geräts werden gelöscht. Die Gerätebereinigung gilt als abgeschlossen, wenn der Auftragsverlauf im Azure-Portal zum Download zur Verfügung steht.|
 
 ### <a name="statuses-for-export-order"></a>Status für Exportaufträge
@@ -237,10 +231,10 @@ Hier finden Sie die Status für einen Exportauftrag.
 |Canceled            |Der Auftrag wurde abgebrochen. <br> Entweder haben Sie den Auftrag abgebrochen (dies ist nur möglich, wenn der Auftrag noch nicht verarbeitet wurde), oder es ist ein Fehler aufgetreten, und der Auftrag wurde durch den Dienst abgebrochen. Wenn der Auftrag nicht binnen 90 Tagen erfüllt werden kann, wird er storniert, und Sie werden benachrichtigt.     |
 |Verarbeitet     | Die Auftragsverarbeitung ist abgeschlossen. Gemäß Ihrem Auftrag wird das Gerät für das Kopieren der Daten im Rechenzentrum vorbereitet. Gerätefreigaben werden erstellt.         |
 |Daten werden kopiert     | Die Daten aus dem angegebenen Azure Storage-Konto werden auf das Gerät kopiert. Verfolgen Sie den Kopierfortschritt Ihres Auftrags im Azure-Portal. <br> Warten Sie, bis der Datenkopiervorgang abgeschlossen ist. |
-|Kopiervorgang abgeschlossen     | Die Daten aus den angegebenen Azure Storage-Konten wurden auf das Gerät kopiert. In Ihrem Speicherkonto werden eine ausführliche Protokolldatei (wenn diese Option für den Auftrag aktiviert wurde) und ein Kopierprotokoll erstellt. Das ausführliche Protokoll enthält die Informationen zu allen Dateien (Name, Pfad, Berechnungsprüfsumme), die auf das Gerät kopiert wurden. Das Kopierprotokoll enthält die Zusammenfassung des Kopiervorgangs einschließlich einer Liste der Dateien, die aufgrund von Fehlern nicht kopiert werden konnten.<br> Die Daten im Speicherkonto bleiben unverändert. |
+|Kopiervorgang abgeschlossen     | Die Daten aus den angegebenen Azure Storage-Konten wurden auf das Gerät kopiert. In Ihrem Speicherkonto werden eine ausführliche Protokolldatei (wenn diese Option für den Auftrag aktiviert wurde) und ein Kopierprotokoll erstellt. Das ausführliche Protokoll enthält die Informationen zu allen Dateien (Name, Pfad, Berechnungsprüfsumme), die auf das Gerät kopiert wurden. Das Kopierprotokoll enthält die Zusammenfassung des Kopiervorgangs einschließlich einer Liste der Dateien, die aufgrund von Fehlern nicht kopiert werden konnten. <br> Die Daten im Speicherkonto bleiben unverändert. |
 |Kopiervorgang mit Fehlern abgeschlossen| Die Datenkopie wurde abgeschlossen, aber es sind Fehler beim Kopiervorgang aufgetreten. <br> Überprüfen Sie über den im Azure-Portal angegebenen Pfad die Kopierprotokolle im Azure Storage-Konto. Weitere Informationen finden Sie unter [Upload mit Fehlern abgeschlossen](./data-box-logs.md#upload-completed-with-errors).   |
 |Der Kopiervorgang wurde mit Warnungen abgeschlossen| Der Kopiervorgang der Daten aus dem Azure Storage-Konto wurde abgeschlossen, aber die Daten wiesen nicht schwerwiegende Fehler auf. <br> Überprüfen Sie im Azure-Portal im angegebenen Pfad die Kopierprotokolle. Notieren Sie sich die nicht schwerwiegenden Fehler. Weitere Informationen finden Sie unter [Upload mit Warnungen abgeschlossen](./data-box-logs.md#upload-completed-with-warnings).   |
-|Fehler beim Kopieren| Der Kopiervorgang der Daten aus dem Azure Storage-Konto ist fehlgeschlagen, und der Auftrag wurde beendet. Es wird kein Gerät versendet.<br> Überprüfen Sie über den im Azure-Portal angegebenen Pfad die Kopierprotokolle im Azure Storage-Konto. Weitere Informationen finden Sie unter [Upload mit Fehlern abgeschlossen](./data-box-logs.md#upload-completed-with-errors).   |
+|Fehler beim Kopieren| Der Kopiervorgang der Daten aus dem Azure Storage-Konto ist fehlgeschlagen, und der Auftrag wurde beendet. Es wird kein Gerät versendet. <br> Überprüfen Sie über den im Azure-Portal angegebenen Pfad die Kopierprotokolle im Azure Storage-Konto. Weitere Informationen finden Sie unter [Upload mit Fehlern abgeschlossen](./data-box-logs.md#upload-completed-with-errors).   |
 |Versandt     |Der Auftrag wurde versandt. Verwenden Sie die in Ihrem Auftrag im Portal angezeigte Sendungsverfolgungs-ID, um die Sendung zu verfolgen.        |
 |Geliefert     |Der Auftrag wurde an die im Auftrag angegebene Adresse geliefert.        |
 |Abgeholt     |Ihre Rücksendung wurde vom Zusteller abgeholt und gescannt.         |
@@ -252,14 +246,14 @@ Hier finden Sie die Status für einen Exportauftrag.
 > Wenn der Kopierauftrag zum Exportieren von Daten aus Azure Storage-Konten auf das Data Box-Gerät mit Fehlern oder Warnungen abgeschlossen wurde, wird das Gerät dennoch versendet. Nur wenn der Kopiervorgang fehlgeschlagen ist, wird der Auftrag abgebrochen und das Gerät wird nicht ausgeliefert.
 
 
-Beim selbst verwalteten Versand werden anstelle der in der obigen Tabelle erwähnten Status die folgenden angezeigt, nachdem der Kopiervorgang abgeschlossen wurde und bevor Sie das Gerät erhalten:
+Beim selbstverwalteten Versand werden (anstelle der in der obigen Tabelle erwähnten) die folgenden Status angezeigt, nachdem der Kopiervorgang abgeschlossen wurde und bevor Sie das Gerät erhalten:
 
 |Auftragsstatus |BESCHREIBUNG |
 |---------|---------|
 |Bereit zur Abholung beim Azure-Rechenzentrum      |Das Gerät kann im Azure-Rechenzentrum abgeholt werden.        |
 |Abgeholt    |Sie haben das Gerät abgeholt.         |
 |Bereit für den Empfang im Azure-Rechenzentrum     |Das Gerät kann im Azure-Rechenzentrum empfangen werden.        |
-|Empfangen     |Ihr Gerät wurde im Azure-Rechenzentrum empfangen.      |
+|Empfangen     |Ihr Gerät ist im Azure-Rechenzentrum eingegangen.      |
 
 
 

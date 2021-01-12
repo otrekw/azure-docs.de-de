@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: rdhillon
-ms.openlocfilehash: f861f9efa6ecc1886647ed6c460b6718ff97e8a1
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 90831c0e8d5ab73f65dc801319a357d59799cbc6
+ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95522327"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97807551"
 ---
 # <a name="troubleshoot-azure-private-endpoint-connectivity-problems"></a>Behandeln von Problemen mit der Konnektivität privater Azure-Endpunkte
 
@@ -100,8 +100,24 @@ Vergewissern Sie sich mithilfe der folgenden Schritte, dass alle üblichen Konfi
     
        ![NSG-Ausgangsregeln](./media/private-endpoint-tsg/nsg-outbound-rules.png)
 
+1. Für den virtuellen Quellcomputer sollte die Route zur privaten Endpunkt-IP für den nächsten Hop als InterfaceEndpoints in den effektiven NIC-Routen enthalten sein. 
+
+    a. Überprüfen Sie, ob die folgenden Gegebenheiten vorliegen, wenn die private Endpunktroute nicht im virtuellen Quellcomputer angezeigt wird: 
+     - Der virtuelle Quellcomputer und der private Endpunkt gehören demselben VNET an. Wenn das der Fall ist, müssen Sie den Support kontaktieren. 
+     - Der virtuelle Quellcomputer und der private Endpunkt gehören unterschiedlichen VNETs an. In diesem Fall müssen Sie die IP-Konnektivität zwischen diesen VNETs überprüfen. Wenn die IP-Konnektivität gegeben ist und die Route dennoch nicht angezeigt wird, kontaktieren Sie den Support. 
+
 1. Wenn die Ergebnisse der Verbindung überprüft wurden, kann das Konnektivitätsproblem mit anderen Aspekten wie Geheimnissen, Token und Kennwörtern auf der Anwendungsebene zusammenhängen.
-   - Überprüfen Sie in diesem Fall die Konfiguration der Private Link-Ressource, die dem privaten Endpunkt zugeordnet ist. Weitere Informationen finden Sie unter [Problembehandlung bei Konnektivitätsproblemen beim Private Link-Dienst](troubleshoot-private-link-connectivity.md).
+   - Überprüfen Sie in diesem Fall die Konfiguration der Private Link-Ressource, die dem privaten Endpunkt zugeordnet ist. Weitere Informationen finden Sie unter [Behandlung von Konnektivitätsproblemen bei Azure Private Link](troubleshoot-private-link-connectivity.md).
+   
+1. Bevor Sie ein Supportticket erstellen, sollten Sie die Fehlerquelle eingrenzen. 
+
+    a. Wenn ein lokaler Quellcomputer keine Verbindung mit einem privaten Endpunkt in Azure herstellen kann, testen Sie Folgendes: 
+      - Stellen Sie eine Verbindung von der lokalen Umgebung zu einem anderen virtuellen Computer her, und überprüfen Sie, ob die IP-Konnektivität zwischen dem virtuellen und dem lokalen Netzwerk gegeben ist. 
+      - Stellen Sie eine Verbindung von einem virtuellen Computer im virtuellen Netzwerk mit dem privaten Endpunkt her.
+      
+    b. Wenn der Quellcomputer sich in Azure und der private Endpunkt sich in einem anderen virtuellen Netzwerk befindet, testen Sie Folgendes: 
+      - Stellen Sie von einem anderen Quellcomputer aus eine Verbindung mit dem privaten Endpunkt her. Auf diese Weise können Sie für virtuelle Computer spezifische Probleme isolieren. 
+      - Stellen Sie eine Verbindung mit einem beliebigen virtuellen Computer her, der sich im selben virtuellen Netzwerk wie der private Endpunkt befindet.  
 
 1. Sollten weiterhin Konnektivitätsprobleme auftreten, wenden Sie sich an das [Azure-Supportteam](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).
 

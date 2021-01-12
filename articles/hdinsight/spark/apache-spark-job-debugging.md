@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
-ms.openlocfilehash: 817b8976f5d014d990945816c2df1c7e8ed729fb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 366c77ff94773163b71845b1ccbc6072c503734a
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86084884"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97822300"
 ---
 # <a name="debug-apache-spark-jobs-running-on-azure-hdinsight"></a>Debuggen von Apache Spark-Aufträgen, die in HDInsight ausgeführt werden
 
@@ -36,13 +36,13 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
    > [!TIP]  
    > Alternativ können Sie die YARN-Benutzeroberfläche auch über die Ambari-Benutzeroberfläche starten. Klicken Sie zum Starten der Ambari-Benutzeroberfläche unter **Clusterdashboards** auf **Ambari home** (Ambari-Homepage). Navigieren Sie von der Ambari-Benutzeroberfläche zu **Yarn** > **Quicklinks**, wählen Sie den aktiven Ressourcen-Manager aus, und klicken Sie auf **Resource Manager UI** (Benutzeroberfläche des Ressourcen-Managers).
 
-2. Da Sie den Spark-Auftrag mit Jupyter-Notebooks gestartet haben, hat die Anwendung den Namen **remotesparkmagics** (dies ist der Name für alle Anwendungen, die über die Notebooks gestartet werden). Klicken Sie auf die Anwendungs-ID für den Anwendungsnamen, um weitere Informationen zum Auftrag abzurufen. Diese Aktion öffnet die Anwendungsansicht.
+2. Da Sie den Spark-Auftrag mit Jupyter Notebook-Instanzen gestartet haben, hat die Anwendung den Namen **remotesparkmagics** (dies ist der Name für alle Anwendungen, die über die Notebook-Instanzen gestartet werden). Klicken Sie auf die Anwendungs-ID für den Anwendungsnamen, um weitere Informationen zum Auftrag abzurufen. Diese Aktion öffnet die Anwendungsansicht.
 
     ![Spark-Verlaufsserver – Suchen der Spark-Anwendungs-ID](./media/apache-spark-job-debugging/find-application-id1.png)
 
-    Für Anwendungen, die über die Jupyter-Notebooks gestartet werden, ist der Status immer **WIRD AUSGEFÜHRT** , bis Sie das Notebook beenden.
+    Für Anwendungen, die über die Jupyter Notebook-Instanzen gestartet werden, ist der Status immer **WIRD AUSGEFÜHRT**, bis Sie die Notebook-Instanz beenden.
 
-3. In der Anwendungsansicht können Sie weitere Details anzeigen, um die der Anwendung zugeordneten Container und die Protokolle (stdout/stderr) zu finden. Sie können die Spark-Benutzeroberfläche auch starten, indem Sie auf die Verknüpfung für die **Nachverfolgungs-URL**klicken, wie unten dargestellt.
+3. In der Anwendungsansicht können Sie weitere Details anzeigen, um die der Anwendung zugeordneten Container und die Protokolle (stdout/stderr) zu finden. Sie können die Spark-Benutzeroberfläche auch starten, indem Sie auf die Verknüpfung für die **Nachverfolgungs-URL** klicken, wie unten dargestellt.
 
     ![Spark-Verlaufsserver – Herunterladen von Containerprotokollen](./media/apache-spark-job-debugging/download-container-logs.png)
 
@@ -50,7 +50,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 Auf der Spark-Benutzeroberfläche können Sie Details der Spark-Aufträge anzeigen, die von der Anwendung erzeugt werden, die Sie zuvor gestartet haben.
 
-1. Klicken Sie wie auf dem Screenshot oben dargestellt in der Anwendungsansicht auf den Link für die **Nachverfolgungs-URL**, um die Spark-Benutzeroberfläche zu starten Es werden alle Spark-Aufträge angezeigt, die von der Anwendung, die im Jupyter-Notebook ausgeführt wird, gestartet werden.
+1. Klicken Sie wie auf dem Screenshot oben dargestellt in der Anwendungsansicht auf den Link für die **Nachverfolgungs-URL**, um die Spark-Benutzeroberfläche zu starten Es werden alle Spark-Aufträge angezeigt, die von der Anwendung, die in der Jupyter Notebook-Instanz ausgeführt wird, gestartet werden.
 
     ![Spark-Verlaufsserver – Registerkarte „Aufträge“](./media/apache-spark-job-debugging/view-apache-spark-jobs.png)
 

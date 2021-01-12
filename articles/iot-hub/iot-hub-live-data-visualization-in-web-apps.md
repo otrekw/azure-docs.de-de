@@ -12,12 +12,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
 - devx-track-azurecli
-ms.openlocfilehash: 3218df4601ef7a5e1b1e04c20c89eefc367b720b
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 7753c6c118d763163e6bc8f69f5b4eee13fe2393
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96746453"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588793"
 ---
 # <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-in-a-web-application"></a>Visualisieren von Echtzeit-Sensordaten aus Azure IoT Hub in einer Webanwendung
 
@@ -202,10 +202,10 @@ In diesem Abschnitt stellen Sie eine Web-App in App Service bereit und implement
    git remote add webapp <Git clone URL>
    ```
 
-8. Um den Code für App Service bereitzustellen, geben Sie den folgenden Befehl im Befehlsfenster ein. Wenn Sie zur Eingabe von Anmeldeinformationen aufgefordert werden, geben Sie die Anmeldeinformationen für die Bereitstellung auf Benutzerebene ein, die Sie in Schritt 5 erstellt haben. Stellen Sie sicher, dass der Pushvorgang zum Masterbranch des App Service-Remotespeicherorts erfolgt.
+8. Um den Code für App Service bereitzustellen, geben Sie den folgenden Befehl im Befehlsfenster ein. Wenn Sie zur Eingabe von Anmeldeinformationen aufgefordert werden, geben Sie die Anmeldeinformationen für die Bereitstellung auf Benutzerebene ein, die Sie in Schritt 5 erstellt haben. Stellen Sie sicher, dass Sie zum Mainbranch des App Service-Remotespeicherorts pushen.
 
     ```cmd
-    git push webapp master:master
+    git push webapp main:main
     ```
 
 9. Der Status der Bereitstellung wird im Befehlsfenster aktualisiert. Bei einer erfolgreichen Bereitstellung werden am Ende in etwa folgende Zeilen ausgegeben:
@@ -216,7 +216,7 @@ In diesem Abschnitt stellen Sie eine Web-App in App Service bereit und implement
     remote: Running post deployment command(s)...
     remote: Deployment successful.
     To https://contoso-web-app-3.scm.azurewebsites.net/contoso-web-app-3.git
-    6b132dd..7cbc994  master -> master
+    6b132dd..7cbc994  main -> main
     ```
 
 10. Führen Sie den folgenden Befehl aus, um den Status Ihrer Web-App abzufragen und sicherzustellen, dass sie ausgeführt wird:

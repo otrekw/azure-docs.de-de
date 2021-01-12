@@ -5,12 +5,12 @@ author: sajayantony
 ms.topic: article
 ms.date: 09/18/2020
 ms.author: sajaya
-ms.openlocfilehash: a2cddc9bbe868a2d18ee8111aabf6db7dc8643cf
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 055f039d5bba0dba2906e1d3b8410af00c5600ef
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93346994"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97606282"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Häufig gestellte Fragen zu Azure Container Registry (ACR)
 
@@ -111,6 +111,7 @@ Es dauert einige Zeit, bis Änderungen von Firewallregeln verbreitet werden. Nac
 - [Wie gewähre ich Zugriff auf Pull- oder Pushvorgänge für Images ohne Berechtigung zum Verwalten der Registrierungsressource?](#how-do-i-grant-access-to-pull-or-push-images-without-permission-to-manage-the-registry-resource)
 - [Wie aktiviere ich die automatische Quarantäne von Images für eine Registrierung?](#how-do-i-enable-automatic-image-quarantine-for-a-registry)
 - [Wie aktiviere ich den anonymen Zugriff per Pull?](#how-do-i-enable-anonymous-pull-access)
+- [Wie kann ich nicht verteilbare Ebenen an eine Registrierung pushen?](#how-do-i-push-non-distributable-layers-to-a-registry)
 
 ### <a name="how-do-i-access-docker-registry-http-api-v2"></a>Wie greife ich auf die HTTP-API V2 für Docker-Registrierungen zu?
 
@@ -264,6 +265,33 @@ Das Einrichten einer Azure Container Registry für den anonymen (öffentlichen) 
 > [!NOTE]
 > * Anonymer Zugriff ist nur auf die APIs möglich, die zum Abrufen eines bekannten Images erforderlich sind. Keine anderen APIs für Vorgänge wie Tagliste oder Repositoryliste sind anonym zugänglich.
 > * Führen Sie vor einem anonymen Pullvorgang den Befehl `docker logout` aus, um alle ggf. vorhandenen Docker-Anmeldeinformationen zu löschen.
+
+### <a name="how-do-i-push-non-distributable-layers-to-a-registry"></a>Wie kann ich nicht verteilbare Ebenen an eine Registrierung pushen?
+
+Eine nicht verteilbare Ebene in einem Manifest enthält einen URL-Parameter, aus dem Inhalte abgerufen werden können. Einige Anwendungsfälle für das Aktivieren des Pushens von nicht verteilbaren Ebenen sind Registrierungen mit Netzwerkeinschränkungen, Air Gap-Registrierungen mit eingeschränktem Zugriff oder Registrierungen ohne Internetverbindung.
+
+Wenn Sie beispielsweise NSG-Richtlinien (Netzwerksicherheitsgruppe) so eingerichtet haben, dass eine VM (virtueller Computer) Images nur aus Ihrer Azure Container Registry-Instanz pullen kann, gibt Docker Fehler für fremde bzw. nicht verteilbare Ebenen aus. Ein Windows Server Core-Image würde beispielsweise fremde Ebenenverweise auf Azure Container Registry im Manifest enthalten und in diesem Szenario Fehler bei Pullvorgängen ausgeben.
+
+So aktivieren Sie das Pushen von nicht verteilbaren Ebenen:
+
+1. Bearbeiten Sie die Datei `daemon.json`, die sich unter `/etc/docker/` (Linux) und unter `C:\ProgramData\docker\config\daemon.json` (Windows Server) befindet. Wenn die Datei zuvor leer war, fügen Sie die folgenden Inhalte hinzu:
+
+   ```json
+   {
+     "allow-nondistributable-artifacts": ["myregistry.azurecr.io"]
+   }
+   ```
+   > [!NOTE]
+   > Der Wert ist ein Array von Registrierungsadressen, die durch Kommas getrennt sind.
+
+2. Speichern und beenden Sie die Datei.
+
+3. Starten Sie Docker neu.
+
+Wenn Sie Images an die Registrierungen in der Liste pushen, werden ihre nicht verteilbaren Ebenen an die Registrierung gepusht.
+
+> [!WARNING]
+> Nicht verteilbare Artefakte weisen in der Regel Einschränkungen dazu auf, wie und wo sie verteilt und freigegeben werden können. Verwenden Sie dieses Feature nur zum Pushen von Artefakten an private Registrierungen. Stellen Sie sicher, dass Sie jegliche Geschäftsbedingungen einhalten, die sich mit der Weiterverteilung von nicht verteilbaren Artefakten befassen.
 
 ## <a name="diagnostics-and-health-checks"></a>Diagnose und Integritätsprüfungen
 

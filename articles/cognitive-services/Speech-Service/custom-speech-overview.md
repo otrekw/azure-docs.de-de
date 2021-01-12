@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/11/2020
 ms.author: trbye
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: be01309fee3454fbd4be78130f9826b493e7bf7a
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 51f9ad4fea1c139cee5974ecd81645c9a904feb4
+ms.sourcegitcommit: c538b6e4cf27b992500c079ad9c914c05d55eb7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033764"
+ms.lasthandoff: 01/03/2021
+ms.locfileid: "97854892"
 ---
 # <a name="what-is-custom-speech"></a>Was ist Custom Speech?
 
@@ -43,6 +43,23 @@ Das folgende Diagramm zeigt die Teile, aus denen sich das [Custom Speech-Portal]
 ## <a name="set-up-your-azure-account"></a>Einrichten Ihres Azure-Kontos
 
 Sie benötigen ein Azure-Konto und ein Abonnement für die Speech-Dienste, um das [Custom Speech-Portal](https://speech.microsoft.com/customspeech) zum Erstellen eines benutzerdefinierten Modells verwenden zu können. Falls nicht, können Sie [den Speech-Dienst kostenlos testen](overview.md#try-the-speech-service-for-free).
+
+Wenn Sie ein benutzerdefiniertes Modell mit Audiodaten trainieren möchten, wählen Sie eine der folgenden Regionen aus, in der dedizierte Hardware für das Training verfügbar ist. Dadurch wird die zum Trainieren benötigte Zeit reduziert.
+
+* Australien (Osten)
+* Kanada, Mitte
+* Indien, Mitte
+* East US
+* USA (Ost) 2
+* USA Nord Mitte
+* Nordeuropa
+* USA Süd Mitte
+* Asien, Südosten
+* UK, Süden
+* US Gov Arizona
+* US Government, Virginia
+* Europa, Westen
+* USA, Westen 2
 
 > [!NOTE]
 > Stellen Sie sicher, dass Sie ein Standard-Abonnement (S0) erstellen. Free-Abonnements (F0) werden nicht unterstützt.

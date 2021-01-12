@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/07/2020
 ms.author: rkarlin
-ms.openlocfilehash: 5e7eabd44ea8c56fbb102f9e48812745a31de62a
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 0c303adb4ee7c7551c6b389ec169d92a661a63bc
+ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92089195"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97835022"
 ---
 # <a name="azure-defender-for-iot-frequently-asked-questions"></a>Häufig gestellte Fragen zu Azure Defender für IoT
 
@@ -77,17 +77,13 @@ Ja. Sie können eine benutzerdefinierte Warnung für vordefinierte Verhaltenswei
 
 ## <a name="what-happens-when-the-internet-connection-stops-working"></a>Was geschieht, wenn die Internetverbindung nicht mehr funktioniert?
 
-Solange das Gerät betrieben wird, werden die Sensoren und der Agent weiterhin ausgeführt und speichern Daten. Die Daten werden entsprechend der Größenkonfiguration im Cache für Sicherheitsmeldungen gespeichert. Wenn das Gerät wieder eine Verbindung herstellt, werden die Sicherheitsmeldungen wieder gesendet.
-
-
-
-
+Solange das Gerät betrieben wird, werden die Sensoren und Agents weiterhin ausgeführt und speichern Daten. Die Daten werden entsprechend der Größenkonfiguration im Cache für Sicherheitsmeldungen gespeichert. Wenn das Gerät wieder eine Verbindung herstellt, werden die Sicherheitsmeldungen wieder gesendet.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Um mehr darüber zu erfahren, wie Sie mit Defender für IoT beginnen können, lesen Sie die folgenden Artikel:
 
 - Lesen der [Übersicht](overview.md) über Defender für IoT
-- Überprüfen der [Dienstvoraussetzungen](service-prerequisites.md)
-- Erfahren Sie mehr über die [Ersten Schritte](getting-started.md)
+- Überprüfen der [Systemvoraussetzungen](quickstart-system-prerequisites.md)
+- Weitere Informationen zu [Erste Schritte mit Defender für IoT](getting-started.md)
 - Grundlegendes zu [Defender für IoT-Sicherheitswarnungen](concept-security-alerts.md)

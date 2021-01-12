@@ -15,12 +15,12 @@ ms.date: 12/11/2020
 ms.subservice: hybrid
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ad3bd938355d138e660958e34d046d7af03e75c7
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: edb602e3d55ae07f49d5448283ae0d2b6da4b0cb
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97370914"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97694154"
 ---
 # <a name="manage-agent-registry-options"></a>Verwalten von Registrierungsoptionen für den Agent
 
@@ -63,6 +63,30 @@ Führen Sie die folgenden Schritte aus, um die Empfehlungsverfolgung zu aktivier
     > ![Empfehlungsverfolgung](media/how-to-manage-registry-options/referral-chasing.png)
 1. Starten Sie den Azure AD Connect-Bereitstellungsdienst über die Konsole *Dienste* neu.
 1. Wenn Sie mehrere Bereitstellungs-Agents bereitgestellt haben, wenden Sie diese Registrierungsänderung aus Konsistenzgründen auf alle Agents an.
+
+## <a name="skip-gmsa-configuration"></a>Überspringen der GMSA-Konfiguration
+Mit der Agent-Version 1.1.281.0 und höher werden Sie standardmäßig beim Ausführen des Konfigurations-Assistenten für den Agent aufgefordert, das [gruppenverwaltete Dienstkonto (Group Managed Service Account (GMSA))](/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview) einzurichten. Das GMSA-Setup vom Assistenten wird zur Laufzeit für alle Synchronisierungs- und Bereitstellungsvorgänge verwendet. 
+
+Wenn Sie ein Upgrade von einer früheren Version des Agents durchführen und ein benutzerdefiniertes Dienstkonto mit delegierten Berechtigungen auf Organisationseinheitsebene eingerichtet haben, die für Ihre Active Directory-Topologie spezifisch sind, können Sie die GMSA-Konfiguration überspringen/verschieben und diese Änderung planen. 
+
+> [!NOTE]
+> Diese Anleitung gilt speziell für Kunden, die die eingehende HR-Bereitstellung (Workday/SuccessFactors) mit Agent-Versionen vor 1.1.281.0 konfiguriert und ein benutzerdefiniertes Dienstkonto für Agent-Vorgänge eingerichtet haben. Langfristig empfiehlt es sich, als bewährte Vorgehensweise zum GMSA zu wechseln.  
+
+In diesem Szenario können Sie weiterhin die Binärdateien für den Agent aktualisieren und die GMSA-Konfiguration mit den folgenden Schritten überspringen: 
+
+1. Melden Sie sich auf dem Windows-Server, auf dem der Azure AD Connect-Bereitstellungs-Agent ausgeführt wird, als Administrator an.
+1. Führen Sie das Agent-Installationsprogramm aus, um die neuen Binärdateien des Agents zu installieren. Schließen Sie den Agent-Konfigurations-Assistenten, der nach erfolgreicher Installation automatisch geöffnet wird. 
+1. Verwenden Sie das Menüelement *Ausführen*, um den Registrierungs-Editor zu öffnen („regedit.exe“). 
+1. Suchen Sie den Schlüsselordner **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Azure AD Connect Agents\Azure AD Connect Provisioning Agent**.
+1. Führen Sie einen Rechtsklick aus, und wählen Sie „Neu > DWORD Value“ (DWORD-Wert) aus.
+1. Geben Sie als Namen `UseCredentials` an.
+1. Doppelklicken Sie auf **Wertname**, und geben Sie als Wert `1` ein.  
+    > [!div class="mx-imgBorder"]
+    > ![Verwenden von Anmeldeinformationen](media/how-to-manage-registry-options/use-credentials.png)
+1. Starten Sie den Azure AD Connect-Bereitstellungsdienst über die Konsole *Dienste* neu.
+1. Wenn Sie mehrere Bereitstellungs-Agents bereitgestellt haben, wenden Sie diese Registrierungsänderung aus Konsistenzgründen auf alle Agents an.
+1. Führen Sie über das Desktopkontextmenü den Assistenten für die Agent-Konfiguration aus. Der Assistent überspringt die GMSA-Konfiguration. 
+
 
 > [!NOTE]
 > Sie können die Festlegung der Registrierungsoptionen überprüfen, indem Sie die [ausführliche Protokollierung](how-to-troubleshoot.md#log-files) aktivieren. Die beim Start des Agents ausgegebenen Protokolle enthalten die Konfigurationswerte, die aus der Registrierung übernommen wurden. 

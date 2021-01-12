@@ -1,18 +1,18 @@
 ---
 title: Bewährte Methoden für Vorlagen
-description: Beschreibt die empfohlenen Vorgehensweisen zum Erstellen von Azure Resource Manager-Vorlagen. Bietet Vorschläge zur Vermeidung häufig auftretender Probleme bei der Verwendung von Vorlagen.
+description: In diesem Artikel werden empfohlene Vorgehensweisen zum Erstellen von Azure Resource Manager-Vorlagen (ARM-Vorlagen) beschrieben. Bietet Vorschläge zur Vermeidung häufig auftretender Probleme bei der Verwendung von Vorlagen.
 ms.topic: conceptual
 ms.date: 12/01/2020
-ms.openlocfilehash: c62bde8fc8cfc79330d13b7b2ff4f778dadf1339
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 85d58098508d5ac7cad6c1cb3cb68ad6c7f179f9
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96497978"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724985"
 ---
 # <a name="arm-template-best-practices"></a>Bewährte Methoden für ARM-Vorlagen
 
-Dieser Artikel zeigt, wie Sie empfohlene Vorgehensweisen beim Erstellen der ARM-Vorlage verwenden. Anhand dieser Empfehlungen können Sie häufig auftretende Probleme vermeiden, wenn Sie eine ARM-Vorlage zum Bereitstellen einer Lösung verwenden.
+In diesem Artikel werden empfohlene Vorgehensweisen zur Erstellung von ARM-Vorlagen (Azure Resource Manager-Vorlagen) veranschaulicht. Anhand dieser Empfehlungen können Sie häufig auftretende Probleme vermeiden, wenn Sie eine ARM-Vorlage zum Bereitstellen einer Lösung verwenden.
 
 ## <a name="template-limits"></a>Vorlagengrenzwerte
 
@@ -26,7 +26,7 @@ Außerdem gelten folgenden Beschränkungen:
 * 64 Ausgabewerte
 * 24.576 Zeichen in einem Vorlagenausdruck
 
-Sie können einige Vorlagengrenzwerte überschreiten, indem Sie eine geschachtelte Vorlage verwenden. Weitere Informationen finden Sie unter [Verwenden von verknüpften Vorlagen bei der Bereitstellung von Azure-Ressourcen](linked-templates.md). Um die Anzahl von Parametern, Variablen oder Ausgaben zu reduzieren, können Sie mehrere Werte in einem Objekt kombinieren. Weitere Informationen finden Sie unter [Objekte als Parameter](/azure/architecture/building-blocks/extending-templates/objects-as-parameters).
+Sie können einige Vorlagengrenzwerte überschreiten, indem Sie eine geschachtelte Vorlage verwenden. Weitere Informationen finden Sie unter [Verwenden von verknüpften und geschachtelten Vorlagen bei der Bereitstellung von Azure-Ressourcen](linked-templates.md). Um die Anzahl von Parametern, Variablen oder Ausgaben zu reduzieren, können Sie mehrere Werte in einem Objekt kombinieren. Weitere Informationen finden Sie unter [Objekte als Parameter](/azure/architecture/building-blocks/extending-templates/objects-as-parameters).
 
 ## <a name="resource-group"></a>Resource group
 
@@ -50,30 +50,30 @@ Die Informationen in diesem Abschnitt können bei der Verwendung von [Parametern
 
 * Geben Sie für jeden Parameter in den Metadaten eine Beschreibung an.
 
-   ```json
-   "parameters": {
-       "storageAccountType": {
-           "type": "string",
-           "metadata": {
-               "description": "The type of the new storage account created to store the VM disks."
-           }
-       }
-   }
-   ```
-
-* Definieren Sie Standardwerte für Parameter, die nicht vertraulich sind. Durch die Angabe eines Standardwerts kann die Vorlage einfacher bereitgestellt werden, und Benutzern Ihrer Vorlage wird ein Beispiel für einen passenden Wert angezeigt. Alle Standardwerte für einen Parameter müssen für alle Benutzer in der Standardbereitstellungskonfiguration gültig sein. 
-   
-   ```json
-   "parameters": {
-        "storageAccountType": {
-            "type": "string",
-            "defaultValue": "Standard_GRS",
-            "metadata": {
-                "description": "The type of the new storage account created to store the VM disks."
-            }
+    ```json
+    "parameters": {
+      "storageAccountType": {
+        "type": "string",
+        "metadata": {
+          "description": "The type of the new storage account created to store the VM disks."
         }
-   }
-   ```
+      }
+    }
+    ```
+
+* Definieren Sie Standardwerte für Parameter, die nicht vertraulich sind. Durch die Angabe eines Standardwerts kann die Vorlage einfacher bereitgestellt werden, und Benutzern Ihrer Vorlage wird ein Beispiel für einen passenden Wert angezeigt. Alle Standardwerte für einen Parameter müssen für alle Benutzer in der Standardbereitstellungskonfiguration gültig sein.
+
+    ```json
+    "parameters": {
+      "storageAccountType": {
+        "type": "string",
+        "defaultValue": "Standard_GRS",
+        "metadata": {
+          "description": "The type of the new storage account created to store the VM disks."
+        }
+      }
+    }
+    ```
 
 * Verwenden Sie keine leere Zeichenfolge als Standardwert, um einen optionalen Parameter anzugeben. Verwenden Sie stattdessen einen Literalwert oder einen Sprachausdruck, um einen Wert zu erstellen.
 
@@ -84,7 +84,7 @@ Die Informationen in diesem Abschnitt können bei der Verwendung von [Parametern
      "metadata": {
        "description": "Name of the storage account"
      }
-   },
+   }
    ```
 
 * Setzen Sie `allowedValues` sparsam ein. Verwenden sie dies nur, wenn Sie sicherstellen müssen, dass einige Werte nicht in die zulässigen Optionen eingeschlossen werden. Wenn Sie `allowedValues` zu großzügig verwenden, werden möglicherweise gültige Bereitstellungen blockiert, wenn Ihre Liste nicht auf dem neuesten Stand gehalten wird.
@@ -95,18 +95,18 @@ Die Informationen in diesem Abschnitt können bei der Verwendung von [Parametern
 
 * Verwenden Sie immer Parameter für Benutzernamen und Kennwörter (oder Geheimnisse).
 
-* Verwenden Sie `securestring` für alle Kennwörter und Geheimnisse. Wenn Sie vertrauliche Daten in einem JSON-Objekt übergeben, verwenden Sie den Typ `secureObject`. Vorlagenparameter des Typs „securestring“ oder „secureObject“ können nach der Bereitstellung der Ressource nicht mehr gelesen werden. 
-   
-   ```json
-   "parameters": {
-       "secretValue": {
-           "type": "securestring",
-           "metadata": {
-               "description": "The value of the secret to store in the vault."
-           }
-       }
-   }
-   ```
+* Verwenden Sie `securestring` für alle Kennwörter und Geheimnisse. Wenn Sie vertrauliche Daten in einem JSON-Objekt übergeben, verwenden Sie den Typ `secureObject`. Vorlagenparameter des Typs „securestring“ oder „secureObject“ können nach der Bereitstellung der Ressource nicht mehr gelesen werden.
+
+    ```json
+    "parameters": {
+      "secretValue": {
+        "type": "securestring",
+        "metadata": {
+          "description": "The value of the secret to store in the vault."
+        }
+      }
+    }
+    ```
 
 * Geben Sie keine Standardwerte für Benutzernamen, Kennwörter oder einen anderen Wert an, der einen `secureString`-Typ erfordert.
 
@@ -114,7 +114,7 @@ Die Informationen in diesem Abschnitt können bei der Verwendung von [Parametern
 
 ### <a name="location-recommendations-for-parameters"></a>Empfehlungen zu Standortparametern
 
-* Verwenden Sie einen Parameter zur Angabe des Standorts für Ressourcen, und legen den Standardwert auf `resourceGroup().location` fest. Indem Sie einen location-Parameter angeben, können Benutzer der Vorlage einen Standort angeben, für den Sie die Bereitstellungsberechtigung besitzen.
+* Verwenden Sie einen Parameter zur Angabe des Standorts für Ressourcen, und legen den Standardwert auf `resourceGroup().location` fest. Indem Sie einen location-Parameter bereitstellen, ermöglichen Sie es den Benutzern der Vorlage, einen Standort anzugeben, an dem sie über die Berechtigung zum Bereitstellen von Ressourcen verfügen.
 
    ```json
    "parameters": {
@@ -125,7 +125,7 @@ Die Informationen in diesem Abschnitt können bei der Verwendung von [Parametern
          "description": "The location in which the resources should be deployed."
        }
      }
-   },
+   }
    ```
 
 * Geben Sie nicht `allowedValues` für den location-Parameter an. Die von Ihnen angegebenen Standorte sind möglicherweise nicht in allen Clouds verfügbar.
@@ -144,7 +144,7 @@ Die folgenden Informationen können bei der Arbeit mit [Variablen](template-vari
 
 * Verwenden Sie Variablen für Werte, die Sie aus einer komplexen Anordnung von Vorlagenfunktionen erstellen. Die Vorlage ist einfacher zu lesen, wenn der komplexe Ausdruck nur in Variablen angezeigt wird.
 
-* Im Vorlagenabschnitt **variables** können Sie die [reference](template-functions-resource.md#reference)-Funktion nicht nutzen. Die **reference**-Funktion leitet ihren Wert aus dem Laufzeitstatus der Ressource ab. Variablen werden jedoch während der ersten Analyse der Vorlage aufgelöst. Erstellen Sie Werte, die die **reference**-Funktion direkt in den Abschnitten **resources** oder **outputs** der Vorlage benötigen.
+* Im Vorlagenabschnitt `variables` können Sie die [reference](template-functions-resource.md#reference)-Funktion nicht nutzen. Die `reference`-Funktion leitet ihren Wert aus dem Laufzeitstatus der Ressource ab. Variablen werden jedoch während der ersten Analyse der Vorlage aufgelöst. Erstellen Sie Werte, die die `reference`-Funktion direkt in den Abschnitten `resources` oder `outputs` der Vorlage benötigen.
 
 * Beziehen Sie Variablen für Ressourcennamen ein, die eindeutig sein müssen.
 
@@ -166,7 +166,7 @@ Verwenden Sie keine Variablen für die API-Version. Verwenden Sie insbesondere n
 
 Verwenden Sie die folgenden Richtlinien für die Entscheidung, welche [Abhängigkeiten](define-resource-dependency.md) festgelegt werden sollen:
 
-* Verwenden Sie die **reference**-Funktion, und übergeben Sie den Ressourcennamen, um eine implizite Abhängigkeit zwischen Ressourcen festzulegen, die eine Eigenschaft gemeinsam nutzen müssen. Fügen Sie kein explizites `dependsOn`-Element hinzu, wenn Sie bereits eine implizite Abhängigkeit definiert haben. Dieser Ansatz reduziert das Risiko unnötiger Abhängigkeiten. Ein Beispiel für das Festlegen einer impliziten Abhängigkeit finden Sie im Abschnitt zur [impliziten Abhängigkeit](define-resource-dependency.md#reference-and-list-functions).
+* Verwenden Sie die `reference`-Funktion, und übergeben Sie den Ressourcennamen, um eine implizite Abhängigkeit zwischen Ressourcen festzulegen, die eine Eigenschaft gemeinsam nutzen müssen. Fügen Sie kein explizites `dependsOn`-Element hinzu, wenn Sie bereits eine implizite Abhängigkeit definiert haben. Dieser Ansatz reduziert das Risiko unnötiger Abhängigkeiten. Ein Beispiel für das Festlegen einer impliziten Abhängigkeit finden Sie unter [reference- und list-Funktionen](define-resource-dependency.md#reference-and-list-functions).
 
 * Legen Sie für eine untergeordnete Ressource eine Abhängigkeit von der übergeordneten Ressource fest.
 
@@ -180,109 +180,108 @@ Verwenden Sie die folgenden Richtlinien für die Entscheidung, welche [Abhängig
 
 Die folgenden Informationen können bei der Arbeit mit [Ressourcen](template-syntax.md#resources) hilfreich sein:
 
-* Geben Sie in der Vorlage **Kommentare** für jede Ressource ein, damit andere Mitwirkende den Zweck der Ressource verstehen.
-   
-   ```json
-   "resources": [
-     {
-         "name": "[variables('storageAccountName')]",
-         "type": "Microsoft.Storage/storageAccounts",
-         "apiVersion": "2019-06-01",
-         "location": "[resourceGroup().location]",
-         "comments": "This storage account is used to store the VM disks.",
-         ...
-     }
-   ]
-   ```
+* Geben Sie in der Vorlage Kommentare (`comments`) für jede Ressource ein, damit andere Mitwirkende den Zweck der Ressource nachvollziehen können.
 
-* Wenn Sie einen *öffentlichen Endpunkt* in Ihrer Vorlage verwenden (z.B. einen öffentlichen Azure Blob Storage-Endpunkt), dürfen Sie den Namespace *nicht hartcodieren*. Verwenden Sie die **reference**-Funktion, um den Namespace dynamisch abzurufen. Mit diesem Ansatz können Sie die Vorlage in anderen öffentlichen Namespace-Umgebungen bereitstellen, ohne den Endpunkt in der Vorlage manuell zu ändern. Legen Sie die API-Version auf die Version fest, die Sie für das Speicherkonto in der Vorlage verwenden:
-   
-   ```json
-   "diagnosticsProfile": {
-       "bootDiagnostics": {
-           "enabled": "true",
-           "storageUri": "[reference(resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName')), '2019-06-01').primaryEndpoints.blob]"
-       }
-   }
-   ```
-   
-   Wenn das Speicherkonto in derselben Vorlage bereitgestellt wird, die Sie erstellen, und der Name des Speicherkontos nicht gemeinsam mit einer anderen Ressource in der Vorlage verwendet wird, müssen Sie den Anbieternamespace oder die API-Version nicht angeben, wenn Sie auf die Ressource verweisen. Das folgende Beispiel zeigt die vereinfachte Syntax:
-   
-   ```json
-   "diagnosticsProfile": {
-       "bootDiagnostics": {
-           "enabled": "true",
-           "storageUri": "[reference(variables('storageAccountName')).primaryEndpoints.blob]"
-       }
-   }
-   ```
-     
-   Sie können auch auf ein in einer anderen Ressourcengruppe vorhandenes Speicherkonto verweisen:
+    ```json
+    "resources": [
+      {
+        "name": "[variables('storageAccountName')]",
+        "type": "Microsoft.Storage/storageAccounts",
+        "apiVersion": "2019-06-01",
+        "location": "[resourceGroup().location]",
+        "comments": "This storage account is used to store the VM disks.",
+          ...
+      }
+    ]
+    ```
 
-   ```json
-   "diagnosticsProfile": {
-       "bootDiagnostics": {
-           "enabled": "true",
-           "storageUri": "[reference(resourceId(parameters('existingResourceGroup'), 'Microsoft.Storage/storageAccounts', parameters('existingStorageAccountName')), '2019-06-01').primaryEndpoints.blob]"
-       }
-   }
-   ```
+* Wenn Sie einen *öffentlichen Endpunkt* in Ihrer Vorlage verwenden (z.B. einen öffentlichen Azure Blob Storage-Endpunkt), dürfen Sie den Namespace *nicht hartcodieren*. Verwenden Sie die `reference`-Funktion, um den Namespace dynamisch abzurufen. Mit diesem Ansatz können Sie die Vorlage in anderen öffentlichen Namespace-Umgebungen bereitstellen, ohne den Endpunkt in der Vorlage manuell zu ändern. Legen Sie die API-Version auf die Version fest, die Sie für das Speicherkonto in der Vorlage verwenden.
+
+    ```json
+    "diagnosticsProfile": {
+      "bootDiagnostics": {
+        "enabled": "true",
+        "storageUri": "[reference(resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName')), '2019-06-01').primaryEndpoints.blob]"
+      }
+    }
+    ```
+
+   Wenn das Speicherkonto in derselben Vorlage bereitgestellt wird, die Sie erstellen, und der Name des Speicherkontos nicht gemeinsam mit einer anderen Ressource in der Vorlage verwendet wird, müssen Sie den Anbieternamespace oder `apiVersion` nicht angeben, wenn Sie auf die Ressource verweisen. Im folgenden Beispiel wird die vereinfachte Syntax gezeigt.
+
+    ```json
+    "diagnosticsProfile": {
+      "bootDiagnostics": {
+        "enabled": "true",
+        "storageUri": "[reference(variables('storageAccountName')).primaryEndpoints.blob]"
+      }
+    }
+    ```
+
+   Sie können auch auf ein Speicherkonto verweisen, das sich in einer anderen Ressourcengruppe befindet.
+
+    ```json
+    "diagnosticsProfile": {
+      "bootDiagnostics": {
+        "enabled": "true",
+        "storageUri": "[reference(resourceId(parameters('existingResourceGroup'), 'Microsoft.Storage/storageAccounts', parameters('existingStorageAccountName')), '2019-06-01').primaryEndpoints.blob]"
+      }
+    }
+    ```
 
 * Weisen Sie einem virtuellen Computer nur dann öffentliche IP-Adressen zu, wenn dies für eine Anwendung erforderlich ist. Verwenden Sie zum Herstellen einer Verbindung mit einem virtuellen Computer für das Debuggen, die Verwaltung oder administrative Zwecke entweder NAT-Eingangsregeln, ein Gateway für virtuelle Netzwerke oder eine Jumpbox.
-   
+
      Weitere Informationen zum Herstellen einer Verbindung mit virtuellen Computern finden Sie unter:
-   
+
    * [Run Windows VMs for an N-tier application](/azure/architecture/reference-architectures/n-tier/n-tier-sql-server) (Ausführen virtueller Windows-Computer in einer Architektur mit n Ebenen in Azure)
    * [Einrichten des Zugriffs auf WinRM für virtuelle Computer in Azure Resource Manager](../../virtual-machines/windows/winrm.md)
    * [Öffnen von Ports für einen virtuellen Computer in Azure mithilfe des Azure-Portals](../../virtual-machines/windows/nsg-quickstart-portal.md)
    * [Öffnen von Ports und Endpunkten für einen virtuellen Computer in Azure mithilfe von PowerShell](../../virtual-machines/windows/nsg-quickstart-powershell.md)
    * [Öffnen von Ports und Endpunkten für einen virtuellen Linux-Computer mithilfe der Azure CLI](../../virtual-machines/linux/nsg-quickstart.md)
 
-* Die Eigenschaft **domainNameLabel** für öffentliche IP-Adressen muss eindeutig sein. Der Wert **domainNameLabel** muss 3 bis 63 Zeichen lang sein und den Regeln des regulären Ausdrucks `^[a-z][a-z0-9-]{1,61}[a-z0-9]$` entsprechen. Da die **uniqueString**-Funktion eine Zeichenfolge mit 13 Zeichen erstellt, ist der **dnsPrefixString**-Parameter auf 50 Zeichen beschränkt:
+* Die Eigenschaft `domainNameLabel` für öffentliche IP-Adressen muss eindeutig sein. Der Wert `domainNameLabel` muss 3 bis 63 Zeichen lang sein und den Regeln des regulären Ausdrucks `^[a-z][a-z0-9-]{1,61}[a-z0-9]$` entsprechen. Da die Funktion `uniqueString` eine Zeichenfolge mit einer Länge von 13 Zeichen generiert, ist der Parameter `dnsPrefixString` auf 50 Zeichen beschränkt.
 
-   ```json
-   "parameters": {
-       "dnsPrefixString": {
-           "type": "string",
-           "maxLength": 50,
-           "metadata": {
-               "description": "The DNS label for the public IP address. It must be lowercase. It should match the following regular expression, or it will raise an error: ^[a-z][a-z0-9-]{1,61}[a-z0-9]$"
-           }
-       }
-   },
-   "variables": {
-       "dnsPrefix": "[concat(parameters('dnsPrefixString'),uniquestring(resourceGroup().id))]"
-   }
-   ```
+    ```json
+    "parameters": {
+      "dnsPrefixString": {
+        "type": "string",
+        "maxLength": 50,
+        "metadata": {
+          "description": "The DNS label for the public IP address. It must be lowercase. It should match the following regular expression, or it will raise an error: ^[a-z][a-z0-9-]{1,61}[a-z0-9]$"
+        }
+      }
+    },
+    "variables": {
+      "dnsPrefix": "[concat(parameters('dnsPrefixString'),uniquestring(resourceGroup().id))]"
+    }
+    ```
 
-* Verwenden Sie beim Hinzufügen eines Kennworts zu einer benutzerdefinierten Skripterweiterung die **commandToExecute**-Eigenschaft in **protectedSettings**:
-   
-   ```json
-   "properties": {
-       "publisher": "Microsoft.Azure.Extensions",
-       "type": "CustomScript",
-       "typeHandlerVersion": "2.0",
-       "autoUpgradeMinorVersion": true,
-       "settings": {
-           "fileUris": [
-               "[concat(variables('template').assets, '/lamp-app/install_lamp.sh')]"
-           ]
-       },
-       "protectedSettings": {
-           "commandToExecute": "[concat('sh install_lamp.sh ', parameters('mySqlPassword'))]"
-       }
-   }
-   ```
-   
+* Verwenden Sie die Eigenschaft `commandToExecute` in der Eigenschaft `protectedSettings`, wenn Sie ein Kennwort zu einer benutzerdefinierten Skripterweiterung hinzufügen.
+
+    ```json
+    "properties": {
+      "publisher": "Microsoft.Azure.Extensions",
+      "type": "CustomScript",
+      "typeHandlerVersion": "2.0",
+      "autoUpgradeMinorVersion": true,
+      "settings": {
+        "fileUris": [
+          "[concat(variables('template').assets, '/lamp-app/install_lamp.sh')]"
+        ]
+      },
+      "protectedSettings": {
+        "commandToExecute": "[concat('sh install_lamp.sh ', parameters('mySqlPassword'))]"
+      }
+    }
+    ```
+
    > [!NOTE]
-   > Zum Sicherzustellen der Verschlüsselung von Geheimnissen, die als Parameter an virtuelle Computer und Erweiterungen übergeben werden, verwenden Sie die **protectedSettings**-Eigenschaft der entsprechenden Erweiterungen.
-   > 
+   > Zum Sicherzustellen der Verschlüsselung von Geheimnissen, die als Parameter an virtuelle Computer und Erweiterungen übergeben werden, verwenden Sie die `protectedSettings`-Eigenschaft der entsprechenden Erweiterungen.
 
 ## <a name="use-test-toolkit"></a>Verwenden des Testtoolkits
 
 Das ARM-Vorlagen-Testtoolkit ist ein Skript, das überprüft, ob Ihre Vorlage die empfohlenen Vorgehensweisen verwendet. Wenn Ihre Vorlage mit den empfohlenen Vorgehensweisen nicht kompatibel ist, wird eine Liste mit Warnungen ausgegeben, die vorgeschlagene Änderungen enthält. Das Testtoolkit kann Ihnen dabei helfen zu erfahren, wie Sie bewährte Methoden in Ihre Vorlage implementieren.
 
-Nachdem Sie Ihre Vorlage abgeschlossen haben, führen Sie das Testtoolkit aus, um zu überprüfen, ob es Möglichkeiten gibt, die Implementierung zu verbessern. Weitere Informationen finden Sie unter [ARM-Vorlagen-Testtoolkit](test-toolkit.md).
+Nachdem Sie Ihre Vorlage fertiggestellt haben, führen Sie das Testtoolkit aus, um zu überprüfen, ob es Möglichkeiten gibt, die Implementierung zu verbessern. Weitere Informationen finden Sie unter [Verwenden von ARM-Vorlagen-Testtoolkits](test-toolkit.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,5 +1,5 @@
 ---
-title: Tutorial zum Konfigurieren von Azure Active Directory B2C mit Zscaler
+title: 'Tutorial: Konfigurieren von Azure Active Directory B2C mit Zscaler'
 titleSuffix: Azure AD B2C
 description: Erfahren Sie, wie Sie die Azure AD B2C-Authentifizierung in Zscaler integrieren.
 services: active-directory-b2c
@@ -11,156 +11,145 @@ ms.topic: how-to
 ms.date: 12/09/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: ff51c2a71dfcaec580733a92e265628ac816e229
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 254f8da74a187e88cfb973da7100fe5654c84bb6
+ms.sourcegitcommit: a89a517622a3886b3a44ed42839d41a301c786e0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97095829"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97732445"
 ---
-# <a name="tutorial-to-configure-zscaler-private-access-with-azure-active-directory-b2c-for-secure-hybrid-access"></a>Tutorial zum Konfigurieren von Zscaler Private Access mit Azure Active Directory B2C für den sicheren Hybridzugriff
+# <a name="tutorial-configure-zscaler-private-access-with-azure-active-directory-b2c"></a>Tutorial: Konfigurieren von Zscaler Private Access (ZPA) mit Azure Active Directory B2C
 
-In diesem Tutorial wird beschrieben, wie Sie die Azure AD B2C-Authentifizierung in [Zscaler Private Access (ZPA)](https://www.zscaler.com/products/zscaler-private-access) integrieren. ZPA ermöglicht einen richtlinienbasierten, sicheren Zugriff auf private Anwendungen und Ressourcen ohne die Kosten, den Aufwand oder die Sicherheitsrisiken eines virtuellen privaten Netzwerks (VPN). Das Angebot des sicheren Hybridzugriffs von Zscaler ermöglicht in Kombination mit Azure AD B2C eine unangreifbare Oberfläche für kundenorientierte Anwendungen.
+In diesem Tutorial erfahren Sie, wie Sie die Azure AD B2C-Authentifizierung (Azure Active Directory B2C) in [Zscaler Private Access (ZPA)](https://www.zscaler.com/products/zscaler-private-access) integrieren. ZPA ermöglicht einen richtlinienbasierten, sicheren Zugriff auf private Anwendungen und Ressourcen ohne die Kosten, den Aufwand oder die Sicherheitsrisiken eines virtuellen privaten Netzwerks (VPN). Das Angebot des sicheren Hybridzugriffs von Zscaler ermöglicht in Kombination mit Azure AD B2C eine unangreifbare Oberfläche für kundenorientierte Anwendungen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Zunächst benötigen Sie Folgendes:
+Bevor Sie beginnen, müssen die folgenden Voraussetzungen erfüllt sein:
 
-- Ein Azure-Abonnement. Falls Sie über kein Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) verwenden.
-
-- [Einen Azure AD B2C-Mandanten](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant), der mit Ihrem Azure-Abonnement verknüpft ist.
-
-- [ZPA-Abonnement](https://azuremarketplace.microsoft.com/marketplace/apps/aad.zscalerprivateaccess?tab=Overview)
+- Ein Azure-Abonnement. Falls Sie über kein Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) verwenden.  
+- [Einen Azure AD B2C-Mandanten](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant), der mit Ihrem Azure-Abonnement verknüpft ist.  
+- [Ein ZPA-Abonnement](https://azuremarketplace.microsoft.com/marketplace/apps/aad.zscalerprivateaccess?tab=Overview)
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
 Die ZPA-Integration umfasst die folgenden Komponenten:
 
-- Azure AD B2C: Der Identitätsanbieter (IdP), mit dem die Anmeldeinformationen des Benutzers überprüft werden. Außerdem ist er für die Registrierung eines neuen Benutzers verantwortlich.
-
-- ZPA: Der Dienst, der für die Sicherung der Webanwendung durch Erzwingen des [Zero Trust-Zugriffs](https://www.microsoft.com/security/blog/2018/12/17/zero-trust-part-1-identity-and-access-management/#:~:text=Azure%20Active%20Directory%20%28Azure%20AD%29%20provides%20the%20strong%2C,to%20express%20their%20access%20requirements%20in%20simple%20terms.) zuständig ist.
-
-- Webanwendung: Hostet den Dienst, auf den der Benutzer zugreifen möchte.
+- **Azure AD B2C**: Der Identitätsanbieter (IdP), mit dem die Anmeldeinformationen des Benutzers überprüft werden. Außerdem ist er für die Registrierung eines neuen Benutzers verantwortlich.  
+- **ZPA:** Der Dienst, der für den Schutz der Webanwendung durch Erzwingen des [Zero Trust-Zugriffs](https://www.microsoft.com/security/blog/2018/12/17/zero-trust-part-1-identity-and-access-management/#:~:text=Azure%20Active%20Directory%20%28Azure%20AD%29%20provides%20the%20strong%2C,to%20express%20their%20access%20requirements%20in%20simple%20terms.) zuständig ist.  
+- **Die Webanwendung:** Hostet den Dienst, auf den der Benutzer zugreifen möchte.
 
 Das folgende Diagramm zeigt, wie ZPA in Azure AD B2C integriert wird.
 
-![Abbildung zeigt das Zscaler-Architekturdiagramm](media/partner-zscaler/zscaler-architecture-diagram.png)
+![Diagramm der Zscaler-Architektur, das zeigt, wie ZPA in Azure AD B2C integriert ist.](media/partner-zscaler/zscaler-architecture-diagram.png)
 
-|Schritt | Beschreibung |
-|:-----| :-----------|
-| 1. | Der Benutzer gelangt in ein ZPA-Benutzerportal oder zu einer ZPA-Browserzugriffsanwendung.
-| 2. | ZPA benötigt die Benutzerkontextinformationen für die Entscheidung, ob der Benutzer auf die Webanwendung zugreifen darf. Zum Authentifizieren des Benutzers führt ZPA eine SAML-Umleitung zur Azure AD B2C-Anmeldeseite aus.  
-| 3. | Der Benutzer gelangt zur Azure AD B2C-Anmeldeseite. Wenn es sich um einen neuen Benutzer handelt, registriert sich der Benutzer, um ein neues Konto zu erstellen. Vorhandene Benutzer melden sich mit ihren Anmeldeinformationen an. Azure AD B2C überprüft die Identität des Benutzers.
-| 4. | Bei erfolgreicher Authentifizierung leitet Azure AD B2C den Benutzer zusammen mit der SAML-Assertion zurück an ZPA. ZPA überprüft die SAML-Assertion und legt den Benutzerkontext fest.
-| 5. | ZPA wertet die Zugriffsrichtlinien für den Benutzer aus. Wenn der Benutzer Zugriff auf die Webanwendung hat, kann die Verbindung weitergeleitet werden.
+Diese Sequenz wird in der folgenden Tabelle beschrieben:
+
+|Schritt | BESCHREIBUNG |
+| :-----:| :-----------|
+| 1 | Ein Benutzer öffnet ein ZPA-Benutzerportal oder eine ZPA-Browserzugriffsanwendung.
+| 2 | ZPA benötigt die Benutzerkontextinformationen für die Entscheidung, ob der Benutzer auf die Webanwendung zugreifen darf. Zum Authentifizieren des Benutzers führt ZPA eine SAML-Umleitung zur Azure AD B2C-Anmeldeseite aus.  
+| 3 | Der Benutzer gelangt zur Azure AD B2C-Anmeldeseite. Neue Benutzer registrieren sich für die Erstellung eines Kontos, und vorhandene Benutzer melden mit ihren bestehenden Anmeldeinformationen an. Azure AD B2C überprüft die Identität des Benutzers.
+| 4 | Bei erfolgreicher Authentifizierung leitet Azure AD B2C den Benutzer zusammen mit der SAML-Assertion zurück an ZPA. ZPA überprüft die SAML-Assertion und legt den Benutzerkontext fest.
+| 5 | ZPA wertet die Zugriffsrichtlinien für den Benutzer aus. Wenn der Benutzer Zugriff auf die Webanwendung hat, darf die Verbindung weitergeleitet werden.
 
 ## <a name="onboard-to-zpa"></a>Integrieren in ZPA
 
-In diesem Tutorial wird davon ausgegangen, dass Sie bereits eine funktionierende ZPA-Einrichtung haben. Lesen Sie zum Einstieg in ZPA den [Step-by-Step Configuration Guide for ZPA](https://help.zscaler.com/zpa/step-step-configuration-guide-zpa) (Schritt-für-Schritt-Konfigurationshandbuch für ZPA).
+In diesem Tutorial wird davon ausgegangen, dass Sie bereits eine funktionierende ZPA-Einrichtung haben. Lesen Sie zum Einstieg in ZPA den [Step-by-Step Configuration Guide for ZPA](https://help.zscaler.com/zpa/step-step-configuration-guide-zpa) (Leitfaden zur ZPA-Konfiguration in einzelnen Schritten).
 
-## <a name="integrate-with-azure-ad-b2c"></a>Integration in Azure AD B2C
+## <a name="integrate-zpa-with-azure-ad-b2c"></a>Integration von ZPA mit Azure AD B2C
 
-### <a name="part-1---configure-azure-ad-b2c-as-an-idp-on-zpa"></a>Teil 1: Konfigurieren von Azure AD B2C als IdP in ZPA
+### <a name="step-1-configure-azure-ad-b2c-as-an-idp-on-zpa"></a>Schritt 1: Konfigurieren von Azure AD B2C als IdP in ZPA
 
-So konfigurieren Sie Azure AD B2C als [Identitätsanbieter (IdP) in ZPA](https://help.zscaler.com/zpa/configuring-idp-single-sign):
+Führen Sie die folgenden Schritte aus, um Azure AD B2C als [IdP in ZPA](https://help.zscaler.com/zpa/configuring-idp-single-sign) zu konfigurieren:
 
 1. Melden Sie sich beim [ZPA Admin Portal](https://admin.private.zscaler.com) (ZPA-Verwaltungsportal) an.
 
-2. Wechseln Sie zu **Administration** > **IdP Configuration** (Verwaltung > IdP-Konfiguration).
+1. Wechseln Sie zu **Administration** > **IdP Configuration** (Verwaltung > IdP-Konfiguration).
 
-3. Wählen Sie **Add IdP Configuration** (IdP-Konfiguration hinzufügen) aus.
+1. Wählen Sie **Add IdP Configuration** (IdP-Konfiguration hinzufügen) aus.
 
-4. Geben Sie für **1 IdP Information** Folgendes ein:
+   Der Bereich **Add IdP Configuration** (IdP-Konfiguration hinzufügen) wird geöffnet.
 
-   a. **Name**: Azure AD B2C
+   ![Screenshot der Registerkarte mit IdP-Informationen im Bereich „Add IdP Configuration“ (IdP-Konfiguration hinzufügen)](media/partner-zscaler/add-idp-configuration.png)
 
-   b. **Single Sign-On** (Einmaliges Anmelden): Benutzer auswählen
+1. Wählen Sie die Registerkarte **IdP Information** (IdP-Informationen) aus, und gehen Sie dann wie folgt vor:
 
-   c. **Domains** (Domänen): Wählen Sie die Authentifizierungsdomänen aus, die Sie diesem IdP zuordnen möchten, und wählen Sie dann **Done** (Fertig).
+   a. Geben Sie im Feld **Name** die Bezeichnung **Azure AD B2C** ein.  
+   b. Wählen Sie unter **Single Sign-On** (Einmaliges Anmelden) die Option **User** (Benutzer) aus.  
+   c. Wählen Sie in der Dropdownliste **Domains** (Domänen) die Authentifizierungsdomänen aus, die Sie diesem IdP zuordnen möchten.
 
-   ![Abbildung zeigt die IdP-Informationen](media/partner-zscaler/add-idp-configuration.png)
+1. Wählen Sie **Weiter** aus.
 
-5. Wählen Sie **Weiter** aus.
+1. Wählen Sie die Registerkarte **SP Metadata** (SP-Metadaten) aus, und gehen Sie dann wie folgt vor:
 
-6. Für **2 SP Metadata** (SP-Metadaten):
+   a. Kopieren oder notieren Sie den Wert unter **Service Provider URL** (URL des Dienstanbieters) für die spätere Verwendung.  
+   b. Kopieren oder notieren Sie den Wert unter **Service Provider Entity ID** (Entitäts-ID des Dienstanbieters) für die spätere Verwendung.
 
-   a. Kopieren Sie die „Service Provider URL“ (Dienstanbieter-URL), und notieren Sie sie zur späteren Verwendung.
+   ![Screenshot der Registerkarte mit SP-Metadaten im Bereich „Add IdP Configuration“ (IdP-Konfiguration hinzufügen)](media/partner-zscaler/sp-metadata.png)
 
-   b. Kopieren Sie die „Service Provider Entity ID“ (Dienstanbieterentitäts-ID), und notieren Sie sie zur späteren Verwendung.
+1. Wählen Sie **Pause** (Anhalten) aus.
 
-   ![Abbildung zeigt die SP-Metadateninformationen](media/partner-zscaler/sp-metadata.png)
+Die übrige IdP-Konfiguration wird nach dem Konfigurieren von Azure AD B2C fortgesetzt.
 
-7. Wählen Sie **Pause** (Anhalten) aus.
-
-Der Rest der IdP-Konfiguration wird nach dem Konfigurieren von Azure AD B2C fortgesetzt.
-
-### <a name="part-2---configure-custom-policy-in-azure-ad-b2c"></a>Teil 2: Konfigurieren der benutzerdefinierten Richtlinie in Azure AD B2C
+### <a name="step-2-configure-custom-policies-in-azure-ad-b2c"></a>Schritt 2: Konfigurieren benutzerdefinierter Richtlinien in Azure AD B2C
 
 >[!Note]
->Dieser Schritt ist nur erforderlich, wenn Sie nicht bereits über benutzerdefinierte Richtlinien verfügen. Wenn Sie bereits über eine oder mehrere benutzerdefinierte Richtlinien verfügen, können Sie diesen Schritt überspringen.
+>Dieser Schritt ist nur erforderlich, wenn Sie noch keine benutzerdefinierten Richtlinien konfiguriert haben. Wenn Sie bereits über eine oder mehrere benutzerdefinierte Richtlinien verfügen, können Sie diesen Schritt überspringen.
 
-Der Artikel [Erste Schritte für benutzerdefinierte Richtlinien in Azure Active Directory B2C](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started) enthält Anweisungen zum Konfigurieren von benutzerdefinierten Richtlinien für Ihren Azure AD B2C-Mandanten.
+Weitere Informationen zum Konfigurieren benutzerdefinierter Richtlinien in Ihrem Azure AD B2C-Mandanten finden Sie unter [Erste Schritte für benutzerdefinierte Richtlinien in Azure Active Directory B2C](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started).
 
-### <a name="part-3---register-zpa-as-a-saml-application-in-azure-ad-b2c"></a>Teil 3: Registrieren von ZPA als SAML-Anwendung in Azure AD B2C
+### <a name="step-3-register-zpa-as-a-saml-application-in-azure-ad-b2c"></a>Schritt 3: Registrieren von ZPA als SAML-Anwendung in Azure AD B2C
 
-Der Artikel [Registrieren einer SAML-Anwendung in Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/connect-with-saml-service-providers) enthält Anweisungen zum Konfigurieren einer SAML-Anwendung in Azure AD B2C. In [Schritt 3.2](https://docs.microsoft.com/azure/active-directory-b2c/connect-with-saml-service-providers#32-upload-and-test-your-policy-metadata) wird die von Azure AD B2C verwendete IdP-SAML-Metadaten-URL bereitgestellt. Die benötigen Sie später.
+Der Artikel [Registrieren einer SAML-Anwendung in Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/connect-with-saml-service-providers) enthält Anweisungen zum Konfigurieren einer SAML-Anwendung in Azure AD B2C. 
 
-Befolgen Sie die Anweisungen dort bis [Schritt 4.2](https://docs.microsoft.com/azure/active-directory-b2c/connect-with-saml-service-providers#42-update-the-app-manifest). In Schritt 4.2 der Anleitung müssen Sie das App-Manifest aktualisieren. Aktualisieren Sie die Eigenschaften wie folgt:
+Kopieren oder notieren Sie in [Schritt 3.2: Hochladen und Testen der Richtlinienmetadaten](https://docs.microsoft.com/azure/active-directory-b2c/connect-with-saml-service-providers#32-upload-and-test-your-policy-metadata) die URL zu den SAML-Metadaten des IdP, die von Azure AD B2C verwendet wird. Sie benötigen die Information später.
 
-- **identifierUris**: Verwenden Sie die in **Teil 1, Schritt 6a** notierte Entitäts-ID für den Dienstanbieter.
+Befolgen Sie die Anweisungen in [Schritt 4.2: Aktualisieren des App-Manifests](https://docs.microsoft.com/azure/active-directory-b2c/connect-with-saml-service-providers#42-update-the-app-manifest). Aktualisieren Sie in Schritt 4.2 die Eigenschaften im App-Manifest wie folgt:
 
-- **samlMetadataUrl**: Überspringen Sie diese Eigenschaft, da ZPA keine SAML-Metadaten-URL hostet.
-
-- **replyUrlsWithType**: Verwenden Sie die in **Teil 1, Schritt 6b** notierte Dienstanbieter-URL.
-
-- **logoutUrl**: Überspringen Sie diese Eigenschaft, da ZPA keine Abmelde-URL unterstützt.
+- Bei **identifierUris**: Verwenden Sie die Entitäts-ID des Dienstanbieters, die Sie zuvor in Schritt 1.6.b kopiert oder notiert haben.  
+- Bei **samlMetadataUrl**: Überspringen Sie diese Eigenschaft, da ZPA keine URL zu SAML-Metadaten hostet.  
+- Bei **replyUrlsWithType**: Verwenden Sie die Dienstanbieter-URL, die Sie zuvor in Schritt 1.6.a kopiert oder notiert haben.  
+- Bei **logoutUrl**: Überspringen Sie diese Eigenschaft, da ZPA keine Abmelde-URL unterstützt.
 
 Die restlichen Schritte sind für dieses Tutorial nicht relevant.
 
-### <a name="part-4---extract-the-idp-saml-metadata-from-azure-ad-b2c"></a>Teil 4: Extrahieren der IdP-SAML-Metadaten aus Azure AD B2C
+### <a name="step-4-extract-the-idp-saml-metadata-from-azure-ad-b2c"></a>Schritt 4: Extrahieren der IdP-SAML-Metadaten aus Azure AD B2C
 
-Aus dem vorherigen Schritt müssen Sie eine SAML-Metadaten-URL im folgenden Format abrufen:
+Als Nächstes müssen Sie eine SAML-Metadaten-URL im folgenden Format abrufen:
 
 ```https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/<policy-name>/Samlp/metadata```
 
-Dabei ist `<tenant-name>` der Name Ihres Azure AD B2C-Mandanten, und `<policy-name>` ist der Name der benutzerdefinierten SAML-Richtlinie, die Sie im letzten Schritt erstellt haben.
+Dabei ist `<tenant-name>` der Name Ihres Azure AD B2C-Mandanten und `<policy-name>` der Name der benutzerdefinierten SAML-Richtlinie, die Sie im letzten Schritt erstellt haben.
 
-Beispiel: https://safemarch.b2clogin.com/safemarch.onmicrosoft.com/B2C_1A_signup_signin_saml//Samlp/metadata
+Die URL lautet z. B. `https://safemarch.b2clogin.com/safemarch.onmicrosoft.com/B2C_1A_signup_signin_saml//Samlp/metadata`.
 
-Öffnen Sie einen Webbrowser, und navigieren Sie zur SAML-Metadaten-URL. Wenn die Seite geladen wird, klicken Sie mit der rechten Maustaste an beliebiger Stelle auf die Seite. Wählen Sie **Seite speichern unter** aus, und speichern Sie die Datei auf Ihrem Computer. Sie werden sie im nächsten Teil verwenden.
+Öffnen Sie einen Webbrowser, und navigieren Sie zur SAML-Metadaten-URL. Klicken Sie mit der rechten Maustaste auf eine beliebige Stelle auf der Seite, wählen Sie **Speichern unter** aus, und speichern Sie die Datei auf Ihrem Computer für die Verwendung im nächsten Schritt.
 
-### <a name="part-5---complete-idp-configuration-on-zpa"></a>Teil 5: Abschluss der IdP-Konfiguration in ZPA
+### <a name="step-5-complete-the-idp-configuration-on-zpa"></a>Schritt 5: Abschließen der IdP-Konfiguration in ZPA
 
-Schließen Sie die [IdP-Konfiguration im ZPA-Verwaltungsportal](https://help.zscaler.com/zpa/configuring-idp-single-sign) ab, die teilweise konfiguriert wurde in Teil 1:
+Schließen Sie die [IdP-Konfiguration im ZPA-Verwaltungsportal](https://help.zscaler.com/zpa/configuring-idp-single-sign) ab, die Sie in „Schritt 1: Konfigurieren von Azure AD B2C als IdP in ZPA“ teilweise konfiguriert haben.
 
-1. Melden Sie sich beim [ZPA Admin Portal](https://admin.private.zscaler.com) (ZPA-Verwaltungsportal) an.
+1. Wechseln Sie im [ZPA Admin Portal](https://admin.private.zscaler.com) (ZPA-Verwaltungsportal) zu **Administration** > **IdP Configuration** (Verwaltung > IdP-Konfiguration).
 
-2. Wechseln Sie zu **Administration** > **IdP Configuration** (Verwaltung > IdP-Konfiguration).
+1. Wählen Sie den in Schritt 1 konfigurierten IdP und dann **Resume** (Fortsetzen) aus.
 
-3. Wählen Sie den in Teil 1 konfigurierten IdP und **Fortsetzen** aus.
+1. Wählen Sie im Bereich **Add IdP Configuration** (IdP-Konfiguration hinzufügen) die Registerkarte **Create IdP** (IdP erstellen) aus, und gehen Sie dann wie folgt vor:
 
-4. Für **3 Create IdP** (3 IdP erstellen):
-
-   a. Wechseln Sie zu **IdP Metadata File** > **Select File** (IdP-Metadatendatei > Datei auswählen), und laden Sie die Metadatendatei hoch, die Sie in Teil 4 gespeichert haben.
-
-   b. Überprüfen Sie, ob der **Status** für die IDP-Konfiguration **Enabled** (Aktiviert) ist.
-
+   a. Wechseln Sie zu **IdP Metadata File** (IdP-Metadatendatei), und laden Sie die Metadatendatei hoch, die Sie in „Schritt 4: Extrahieren der IdP-SAML-Metadaten aus Azure AD B2C“ gespeichert haben.  
+   b. Überprüfen Sie, ob der **Status** für die IdP-Konfiguration **Enabled** (Aktiviert) lautet.  
    c. Wählen Sie **Speichern** aus.
 
-      ![Abbildung zeigt die Informationen zur IdP-Erstellung](media/partner-zscaler/create-idp.png)
+   ![Screenshot der Registerkarte „Create IdP“ (IdP erstellen) im Bereich „Add IdP Configuration“ (IdP-Konfiguration hinzufügen)](media/partner-zscaler/create-idp.png)
 
 ## <a name="test-the-solution"></a>Testen der Lösung
 
-Wechseln Sie zu einem ZPA-Benutzerportal oder einer Browserzugriffsanwendung, und testen Sie den Registrierungs- oder Anmeldevorgang. Das Ergebnis sollte eine erfolgreiche SAML-Authentifizierung sein.
+Wechseln Sie zu einem ZPA-Benutzerportal oder einer Browserzugriffsanwendung, und testen Sie den Registrierungs- oder Anmeldevorgang. Das Testergebnis sollte eine erfolgreiche SAML-Authentifizierung sein.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen finden Sie in den folgenden Artikeln:
 
-- [Erste Schritte für benutzerdefinierte Richtlinien in Azure Active Directory B2C](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started)
-
+- [Erste Schritte mit benutzerdefinierten Richtlinien in Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started)
 - [Registrieren einer SAML-Anwendung in Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/connect-with-saml-service-providers)
-
-- [Step-by-Step Configuration Guide for ZPA](https://help.zscaler.com/zpa/step-step-configuration-guide-zpa) (Handbuch zur schrittweisen ZPA-Konfiguration)
-
+- [Step-by-Step Configuration Guide for ZPA](https://help.zscaler.com/zpa/step-step-configuration-guide-zpa) (Leitfaden zur ZPA-Konfiguration in einzelnen Schritten)
 - [Configuring an IdP for Single Sign-On](https://help.zscaler.com/zpa/configuring-idp-single-sign) (Konfigurieren eines IdP für einmaliges Anmelden)

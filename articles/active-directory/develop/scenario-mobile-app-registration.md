@@ -13,12 +13,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 35c1ffb370a158acc91e2378119055337e28580d
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 2af79efa2bd1685d0e7bd621e2ddb8930425dee1
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443091"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97614896"
 ---
 # <a name="register-mobile-apps-that-call-web-apis"></a>Registrieren mobiler Apps, die Web-APIs aufrufen
 
@@ -81,7 +81,12 @@ Wenn Sie den Umleitungs-URI stattdessen manuell konfigurieren möchten, können 
 
 Wenn Ihre App ausschließlich die Authentifizierung über Benutzernamen und Kennwort verwendet, brauchen Sie für Ihre Anwendung keinen Umleitungs-URI zu registrieren. Dieser Ablauf führt einen Roundtrip zum Microsoft Identity Platform-Endpunkt, Version 2.0, aus. Ihre Anwendung wird nicht über einen bestimmten URI zurückgerufen.
 
-Allerdings müssen Sie Ihre Anwendung als öffentliche Clientanwendung identifizieren. Beginnen Sie zu diesem Zweck im Abschnitt **Authentifizierung** Ihrer Anwendung. Wählen Sie im Unterabschnitt **Erweiterte Einstellungen** im Abschnitt **Standardclienttyp** neben **Hiermit wird eine Anwendung als öffentlicher Client eingestuft** **Ja** aus.
+Allerdings müssen Sie Ihre Anwendung als öffentliche Clientanwendung identifizieren. Gehen Sie folgendermaßen vor:
+
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com) unter **App-Registrierungen** Ihre App aus, und klicken Sie dann auf **Authentifizierung**.
+1. Wählen Sie unter **Erweiterte Einstellungen** > **Öffentliche Clientflows zulassen** > **Folgende Flows für Mobilgerät und Desktop aktivieren:** die Option **Ja** aus.
+
+   :::image type="content" source="media/scenarios/default-client-type.png" alt-text="Aktivieren der Einstellung für die Behandlung als öffentlicher Client im Bereich „Authentifizierung“ im Azure-Portal":::
 
 ## <a name="api-permissions"></a>API-Berechtigungen
 

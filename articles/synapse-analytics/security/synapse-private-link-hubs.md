@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 12/01/2020
 ms.author: NanditaV
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2613a4fd931ad49a4f40a4221ea20e8c25f185fe
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: d49868199d8f9f2da97f08dd06f29afd8f553bd9
+ms.sourcegitcommit: 17e9cb8d05edaac9addcd6e0f2c230f71573422c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96501327"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97586974"
 ---
 # <a name="connect-to-azure-synapse-studio-using-azure-private-link-hubs"></a>Herstellen einer Verbindung mit Azure Synapse Studio mit Azure Private Link-Hubs 
 
@@ -35,9 +35,9 @@ Sie können Ihren Private Link-Hub erstellen, indem Sie im Azure-Portal nach *Sy
 ## <a name="azure-private-links-hubs-and-azure-virtual-network"></a>Azure Private Link-Hubs und virtuelles Azure-Netzwerk
 Sie müssen Ihr virtuelles Azure-Netzwerk mit der Private Link-Hub-Ressource von Synapse verbinden, um die End-to-End-Verbindung mit Synapse Studio zu schützen. Hierfür müssen Sie einen privaten Endpunkt erstellen, der über eine Verbindung zwischen Ihrem virtuellen Netzwerk und dem von Ihnen erstellten Private Link-Hub verfügt. Sie können das Azure-Portal für Ihren Private Link-Hub verwenden und zum Abschnitt „Privater Endpunkt“ navigieren. Wählen Sie die Option „+ Privater Endpunkt“ aus, um einen neuen privaten Endpunkt zu erstellen, über den eine Verbindung mit Ihrem Private Link-Hub hergestellt wird.
 
-:::image type="content" source="./media/synapse-private-link-hubs/synapse-private-links-private-endpoint.png" alt-text="Erstellen einer Verbindung von einem privaten Endpunkt mit einem Private Link-Hub":::
+:::image type="content" source="./media/synapse-private-link-hubs/synapse-private-links-private-endpoint.png" alt-text="Screenshot der Seite zum Herstellen einer Verbindung mit dem privaten Endpunkt.":::
 
-Wählen Sie auf der Registerkarte „Ressource“ den Ressourcentyp „Microsoft.Synapse/privateLinkHubs“ aus. :::image type="content" source="./media/synapse-private-link-hubs/synapse-private-links-resource-type.png" alt-text="Erstellen einer Verbindung von einem privaten Endpunkt mit einem Private Link-Hub":::
+Wählen Sie auf der Registerkarte „Ressource“ den Ressourcentyp „Microsoft.Synapse/privateLinkHubs“ aus. :::image type="content" source="./media/synapse-private-link-hubs/synapse-private-links-resource-type.png" alt-text="Screenshot der Seite „Privaten Endpunkt erstellen“ mit Hervorhebung von „Ressourcentyp“.":::
 
 Wählen Sie auf der Registerkarte „Konfiguration“ unter „Private DNS-Zonen“ die Option „privatelink.azuresynapse.net“ aus, wenn Sie die Integration mit Ihrem virtuellen Netzwerk und der privaten DNS-Zone durchführen.
 

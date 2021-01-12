@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/12/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a657f43ef2d889cad1608d34e9235b1d5e7cb576
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 85534d1f64b273e42a2ea063e67286ee7bb4a90a
+ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95894149"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97827154"
 ---
 # <a name="speech-service-containers-frequently-asked-questions-faq"></a>Häufig gestellte Fragen (FAQ) zu Containern für den Speech-Dienst
 
@@ -169,7 +169,7 @@ StatusCode: InvalidArgument,
 Details: Voice does not match.
 ```
 
-**Antwort 2:** Sie müssen in der Anforderung den richtigen Sprachnamen angeben, wobei die Groß- und Kleinschreibung zu beachten ist. Weitere Informationen finden Sie in der vollständigen Zuordnung der Dienstnamen. Sie müssen `en-US-JessaRUS` verwenden, da `en-US-JessaNeural` in der Containerversion der Sprachsynthese derzeit nicht verfügbar ist.
+**Antwort 2:** Sie müssen in der Anforderung den richtigen Sprachnamen angeben, wobei die Groß- und Kleinschreibung zu beachten ist. Weitere Informationen finden Sie in der vollständigen Zuordnung der Dienstnamen.
 
 **Fehler 3:**
 
@@ -309,6 +309,8 @@ Die Problemumgehung besteht entweder darin, zur kontinuierlichen Erkennung in Ih
 Legen Sie für Ihren Code den Endpunkt auf „`host:port`/speech/recognition/interactive/cognitives services/v1“ fest.
 
 Informationen zu den verschiedenen Modi finden Sie nachfolgend unter „Speech-Modi“:
+
+## <a name="speech-modes---interactive-conversation-dictation"></a>Sprachmodi: Interaktiv, Konversation, Diktat
 
 [!INCLUDE [speech-modes](includes/speech-modes.md)]
 
@@ -558,6 +560,8 @@ auto result = synthesizer->SpeakTextAsync("{{{text2}}}").get();
 </summary>
 
 **Antwort:** Es gibt drei Endpunkte im Speech-Container für verschiedene Anwendungsbereiche. Sie sind als Speech-Modi definiert – siehe unten:
+
+## <a name="speech-modes"></a>Sprachmodi
 
 [!INCLUDE [speech-modes](includes/speech-modes.md)]
 

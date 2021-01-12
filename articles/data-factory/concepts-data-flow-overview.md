@@ -7,17 +7,17 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: references_regions
-ms.date: 09/02/2020
-ms.openlocfilehash: 32f1602c91d17ef2ad3283d4bc03d00d432641aa
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.date: 12/10/2020
+ms.openlocfilehash: 01ee890fe77abebfdec8d3d643773b42cb54187e
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93027600"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97606180"
 ---
 # <a name="mapping-data-flows-in-azure-data-factory"></a>Zuordnungsdatenflüsse in Azure Data Factory
 
-[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 ## <a name="what-are-mapping-data-flows"></a>Was sind Zuordnungsdatenflüsse?
 
@@ -29,7 +29,7 @@ Zuordnungsdatenflüsse bieten eine vollständig visuelle Darstellung, ohne Code 
 
 Datenflüsse werden über den Bereich mit Factory-Ressourcen wie Pipelines und Datasets erstellt. Wählen Sie zum Erstellen eines Datenflusses das Pluszeichen neben **Factory-Ressourcen** und dann die Option **Datenfluss** aus. 
 
-![Neuer Datenfluss](media/data-flow/new-data-flow.png "neuer Datenfluss")
+![Neuer Datenfluss](media/data-flow/new-data-flow.png)
 
 Mit dieser Aktion gelangen Sie zur Datenflusscanvas, auf der Sie Ihre Transformationslogik erstellen können. Wählen Sie **Quelle hinzufügen** aus, um mit der Konfiguration Ihrer Quelltransformation zu beginnen. Weitere Informationen finden Sie im Artikel zur [Quelltransformation](data-flow-source.md).
 
@@ -37,17 +37,17 @@ Mit dieser Aktion gelangen Sie zur Datenflusscanvas, auf der Sie Ihre Transforma
 
 Ein Zuordnungsdatenfluss verfügt über einen einzigartigen Erstellungsbereich für das vereinfachte Erstellen von Transformationslogik. Die Datenflusscanvas ist in drei Bereiche unterteilt: die obere Leiste, das Diagramm und den Konfigurationsbereich. 
 
-![Screenshot: Datenflusscanvas mit Beschriftungen für obere Leiste, Graph und Konfigurationsbereich](media/data-flow/canvas1.png "Canvas")
+![Screenshot: Datenflusscanvas mit Beschriftungen für obere Leiste, Graph und Konfigurationsbereich](media/data-flow/canvas-1.png "Canvas")
 
 ### <a name="graph"></a>Graph
 
 Das Diagramm zeigt den Transformationsdatenstrom. Es zeigt die Herkunft der Quelldaten beim Fließen in eine oder mehrere Senken. Wählen Sie die Option **Quelle hinzufügen** aus, um eine neue Quelle hinzuzufügen. Wählen Sie zum Hinzufügen einer neuen Transformation unten rechts in einer vorhandenen Transformation das Pluszeichen aus. Informieren Sie sich über das [Verwalten des Datenflussdiagramms](concepts-data-flow-manage-graph.md).
 
-![Screenshot: Graphbereich der Canvas mit einem Suchtextfeld](media/data-flow/canvas2.png "Canvas")
+![Screenshot: Graphbereich der Canvas mit einem Suchtextfeld](media/data-flow/canvas-2.png)
 
 ### <a name="configuration-panel"></a>Konfigurationsbereich
 
-Im Konfigurationsbereich werden die spezifischen Einstellungen für die derzeit ausgewählte Transformation angezeigt. Wenn keine Transformation ausgewählt ist, wird der Datenfluss angezeigt. In der allgemeinen Datenflusskonfiguration können Sie den Namen und die Beschreibung auf der Registerkarte **Allgemein** bearbeiten oder Parameter über die Registerkarte **Parameter** hinzufügen. Weitere Informationen finden Sie unter [Mapping Data Flow-Parameter](parameters-data-flow.md).
+Im Konfigurationsbereich werden die spezifischen Einstellungen für die derzeit ausgewählte Transformation angezeigt. Wenn keine Transformation ausgewählt ist, wird der Datenfluss angezeigt. In der allgemeinen Datenflusskonfiguration können Sie Parameter über die Registerkarte **Parameter** hinzufügen. Weitere Informationen finden Sie unter [Mapping Data Flow-Parameter](parameters-data-flow.md).
 
 Jede Transformation enthält mindestens vier Registerkarten für die Konfiguration.
 
@@ -99,63 +99,63 @@ Das Azure Data Factory-Team hat eine [Anleitung zur Leistungsoptimierung](concep
 
 ## <a name="available-regions"></a>Verfügbare Regionen
 
-Zuordnungsdatenflüsse sind in den folgenden Regionen verfügbar:
+======= Zuordnungsdatenflüsse sind in ADF in den folgenden Regionen verfügbar:
 
-| Azure-Region | Datenflüsse in ADF | Datenflüsse in Synapse Studio |
-| ------------ | ----------------- | ---------------------------- |
-|  Australien, Mitte | | |  
-| Australien, Mitte 2 | | |
-| Australien (Osten) | ✓ |  ✓ |
-| Australien, Südosten   | ✓ | ✓ |
-| Brasilien Süd  | ✓ |  |
-| Kanada, Mitte | ✓ |  |
-| Indien, Mitte | ✓ |   ✓ |
-| USA (Mitte)    | ✓ |   ✓ |
-| China, Osten |      | ✓ |
-| China, Osten 2  |   |    |
-| China, landesweit | | |
-| China, Norden |     | |
-| China, Norden 2 | |  |
-| Asien, Osten | ✓ | |
-| East US   | ✓ | ✓ |
-| USA (Ost) 2 | ✓ | ✓ |
-| Frankreich, Mitte | ✓ | ✓ |
-| Frankreich, Süden  | | |
-| Deutschland, Mitte (Sovereign) | | |
-| Deutschland, landesweit (Sovereign) | | |
-| Deutschland, Norden (Öffentlich) | | |
-| Deutschland, Nordosten (Sovereign) | | |
-| Deutschland, Westen-Mitte (Öffentlich) |  | ✓ |
-| Japan, Osten | ✓ |  |
-| Japan, Westen |  | |
-| Korea, Mitte | ✓ |  |
-| Korea, Süden | | |
-| USA Nord Mitte  | ✓ | ✓ |
-| Nordeuropa  | ✓ |    |
-| Norwegen, Osten | | |
-| Norwegen, Westen | | |
-| Südafrika, Norden    | ✓ | |
-| Südafrika, Westen |  |    |
-| USA Süd Mitte  | | ✓ |
-| Indien (Süden) | | |
-| Asien, Südosten    | ✓ | ✓ |
-| Schweiz, Norden |   |  |
-| Schweiz, Westen | | |
-| VAE, Mitte | | |
-| Vereinigte Arabische Emirate, Norden |  |    |
-| UK, Süden  | ✓ |   | ✓ |
-| UK, Westen |     | ✓ |
-| US DoD, Mitte | |  |
-| US DoD, Osten | |  |
-| US Gov Arizona |      |  |
-| US Gov, landesweit | |  |
-| US Gov Texas | |  |
-| US Government, Virginia |     |  |
-| USA, Westen-Mitte |     | ✓ |
-| Europa, Westen   | ✓ |   ✓ |
-| Indien, Westen | | |
-| USA (Westen)   | ✓ |   |
-| USA, Westen 2 | ✓ |   ✓ | 
+| Azure-Region | Datenflüsse in ADF |
+| ------------ | ----------------- |
+|  Australien, Mitte | |
+| Australien, Mitte 2 | |
+| Australien (Osten) | ✓ |
+| Australien, Südosten   | ✓ |
+| Brasilien Süd  | ✓ |
+| Kanada, Mitte | ✓ |
+| Indien, Mitte | ✓ |
+| USA (Mitte)    | ✓ |
+| China, Osten |      |
+| China, Osten 2  |   |
+| China, landesweit | |
+| China, Norden |     |
+| China, Norden 2 | |
+| Asien, Osten | ✓ |
+| East US   | ✓ |
+| USA (Ost) 2 | ✓ |
+| Frankreich, Mitte | ✓ |
+| Frankreich, Süden  | |
+| Deutschland, Mitte (Sovereign) | |
+| Deutschland, landesweit (Sovereign) | |
+| Deutschland, Norden (Öffentlich) | |
+| Deutschland, Nordosten (Sovereign) | |
+| Deutschland, Westen-Mitte (Öffentlich) |  |
+| Japan, Osten | ✓ |
+| Japan, Westen |  |
+| Korea, Mitte | ✓ |
+| Korea, Süden | |
+| USA Nord Mitte  | ✓ |
+| Nordeuropa  | ✓ |
+| Norwegen, Osten | |
+| Norwegen, Westen | |
+| Südafrika, Norden    | ✓ |
+| Südafrika, Westen |  |
+| USA Süd Mitte  | |
+| Indien (Süden) | |
+| Asien, Südosten    | ✓ |
+| Schweiz, Norden |   |
+| Schweiz, Westen | |
+| VAE, Mitte | |
+| Vereinigte Arabische Emirate, Norden |  |
+| UK, Süden  | ✓ |
+| UK, Westen |     |
+| US DoD, Mitte | |
+| US DoD, Osten | |
+| US Gov Arizona |      |
+| US Gov, landesweit | |
+| US Gov Texas | |
+| US Government, Virginia |     |
+| USA, Westen-Mitte |     |
+| Europa, Westen   | ✓ |
+| Indien, Westen | |
+| USA (Westen)   | ✓ |
+| USA, Westen 2 | ✓ |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

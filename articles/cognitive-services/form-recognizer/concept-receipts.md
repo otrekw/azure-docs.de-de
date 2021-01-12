@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 769dea079339af2c6307d9230e047a654dc3d5dd
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 82f6c5989149b50a1ef5e6c6fb5350d474476436
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95492209"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97845479"
 ---
 # <a name="receipt-concepts"></a>Konzepte zu Belegen
 
@@ -456,12 +456,11 @@ Die Belegausgabe ist auch für die allgemeine Buchhaltung für den geschäftlich
 
 Belege enthalten nützliche Daten, die Sie verwenden können, um Kundenverhalten und Einkaufstrends zu analysieren.
 
-Die Beleg-API ermöglicht außerdem die [AIBuilder-Belegverarbeitungsfunktion](/ai-builder/prebuilt-receipt-processing).
+Die Beleg-API unterstützt außerdem das [AI Builder-Belegverarbeitungsfeature](/ai-builder/prebuilt-receipt-processing).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Durchlaufen Sie eine [Formularerkennungs-Schnellstartanleitung für die Clientbibliothek](quickstarts/client-library.md), um damit zu beginnen, eine Belegverarbeitungs-App mit Formularerkennung in der Sprache Ihrer Wahl zu schreiben.
-- Befolgen Sie alternativ den [Schnellstart: Extrahieren von Verkaufsbelegdaten mithilfe der Formularerkennungs-REST-API mit Python](./quickstarts/python-receipts.md), um Belege mit der REST-API zu erkennen.
+- Sehen Sie sich die Informationen unter [Schnellstart: Verwenden der Clientbibliothek für die Formularerkennung](quickstarts/client-library.md) an, um damit zu beginnen, eine Belegverarbeitungs-App mit Formularerkennung in einer Sprache Ihrer Wahl zu schreiben.
 
 ## <a name="see-also"></a>Weitere Informationen
 

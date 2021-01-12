@@ -7,12 +7,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 12/14/2020
 ms.author: jgao
-ms.openlocfilehash: 4a7f21410bb97db0a7974870efb812c9954ac241
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: d12ec5e3fef45429741fff1665f435d68e6c83f6
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97503555"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97734180"
 ---
 # <a name="configure-development-environment-for-deployment-scripts-in-templates"></a>Konfigurieren der Entwicklungsumgebung für Bereitstellungsskripts in Vorlagen
 
@@ -155,7 +155,10 @@ Mit der folgenden ARM-Vorlage wird eine Containerinstanz und eine Dateifreigabe 
 ```
 Der Standardwert für den Einbindungspfad lautet **deploymentScript**.  Dies ist der Pfad in der Containerinstanz, in dem er in die Dateifreigabe eingebunden wird.
 
-Das in der Vorlage angegebene Standardcontainerimage ist **mcr.microsoft.com/azuredeploymentscripts-powershell:az4.3"** .  Eine Liste der unterstützten Azure PowerShell-Versionen und Azure CLI-Versionen finden Sie unter [Voraussetzungen](./deployment-script-template.md#prerequisites).
+Das in der Vorlage angegebene Standardcontainerimage ist **mcr.microsoft.com/azuredeploymentscripts-powershell:az4.3"** .   Eine Liste mit den unterstützten Azure PowerShell-Versionen finden Sie [hier](https://mcr.microsoft.com/v2/azuredeploymentscripts-powershell/tags/list). Eine Liste mit den unterstützten Azure CLI-Versionen finden Sie [hier](https://mcr.microsoft.com/v2/azure-cli/tags/list).
+
+  >[!IMPORTANT]
+  > Das Bereitstellungsskript verwendet die verfügbaren CLI-Images von Microsoft Container Registry (MCR). Das Zertifizieren eines CLI-Images für das Bereitstellungsskript dauert ungefähr einen Monat. Verwenden Sie nicht die CLI-Versionen, die innerhalb von 30 Tagen veröffentlicht wurden. Die Veröffentlichungsdaten für die Images finden Sie unter [Versionshinweise für die Azure CLI](/cli/azure/release-notes-azure-cli?view=azure-cli-latest&preserve-view=true). Wenn eine nicht unterstützte Version verwendet wird, werden in der Fehlermeldung die unterstützten Versionen aufgelistet.
 
 Die Vorlage hält die Containerinstanz 1800 Sekunden an. Sie haben 30 Minuten Zeit, bis die Containerinstanz in den Terminalstatus wechselt und die Sitzung beendet wird.
 
@@ -200,7 +203,7 @@ Sie können die Datei auch mithilfe des Azure-Portals oder über die Azure CLI h
 1. Klicken Sie auf **Verbinden** und dann auf **Verbinden**. Wenn Sie keine Verbindung mit der Containerinstanz herstellen können, starten Sie die Containergruppe neu, und versuchen Sie es noch mal.
 1. Führen Sie im Konsolenbereich die folgenden Befehle aus:
 
-    ```
+    ```console
     cd deploymentScript
     ls
     pwsh ./hello.ps1 "John Dole"
@@ -209,6 +212,14 @@ Sie können die Datei auch mithilfe des Azure-Portals oder über die Azure CLI h
     Die Ausgabe ist **Hello John Dole**.
 
     ![Bereitstellungsskript: Testen der Containerinstanz](./media/deployment-script-template-configure-dev/deployment-script-container-instance-test.png)
+
+1. Wenn Sie das Containerimage „AZ CLI“ verwenden, führen Sie den folgenden Code aus:
+
+   ```console
+   cd /mnt/azscripts/azscriptinput
+   ls
+   ./userscript.sh
+   ```
 
 ## <a name="use-docker"></a>Verwenden von Docker
 

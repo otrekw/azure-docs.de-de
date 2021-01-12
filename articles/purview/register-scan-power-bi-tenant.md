@@ -1,18 +1,18 @@
 ---
 title: Registrieren und Überprüfen eines Power BI-Mandanten (Vorschau)
 description: Erfahren Sie, wie Sie über das Azure Purview-Portal einen Power BI-Mandanten registrieren und überprüfen können.
-author: viseshag
-ms.author: viseshag
+author: chanuengg
+ms.author: csugunan
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/19/2020
-ms.openlocfilehash: 1f08bfd6b7c0439dd08a3091b5ea927781af9b84
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.openlocfilehash: 3d8107e980b9cad9bc55cb51cc78b63985986ba5
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97387580"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97696226"
 ---
 # <a name="register-and-scan-a-power-bi-tenant-preview"></a>Registrieren und Überprüfen eines Power BI-Mandanten (Vorschau)
 
@@ -50,6 +50,7 @@ Erstellen Sie zum Einrichten der Authentifizierung eine Sicherheitsgruppe, und f
 ## <a name="associate-the-security-group-with-the-tenant"></a>Verknüpfen der Sicherheitsgruppe mit dem Mandanten
 
 1. Melden Sie sich beim [Power BI-Verwaltungsportal](https://app.powerbi.com/admin-portal/tenantSettings) an.
+1. Wählen Sie die Seite **Mandanteneinstellungen** aus.
 
     > [!Important]
     > Sie müssen Power BI-Administrator sein, um die Seite mit den Mandanteneinstellungen anzeigen zu können.
@@ -60,7 +61,7 @@ Erstellen Sie zum Einrichten der Authentifizierung eine Sicherheitsgruppe, und f
     :::image type="content" source="./media/setup-power-bi-scan-PowerShell/allow-service-principals-power-bi-admin.png" alt-text="Bild, das zeigt, wie Dienstprinzipale schreibgeschützte Power BI-Administrator-API-Berechtigungen erhalten können":::
 
     > [!Caution]
-    > Wenn Sie der von Ihnen erstellten Sicherheitsgruppe (die Ihre verwaltete Datenkatalogidentität als Mitglied hat) gestatten, schreibgeschützte Power BI-Administrator-APIs zu verwenden, gestatten Sie ihr auch, auf die Metadaten (z. B. Dashboard- und Berichtsnamen, Besitzer, Beschreibungen usw.) für sämtliche Ihrer Power BI-Artefakte in diesem Mandanten zugreifen zu können. Sobald die Metadaten in Azure Purview eingelesen wurden, wird anhand der Pruview-Berechtigungen, nicht anhand der Power BI-Berechtigungen, festgelegt, wer diese Metadaten anzeigen kann.
+    > Wenn Sie der von Ihnen erstellten Sicherheitsgruppe (die Ihre verwaltete Datenkatalogidentität als Mitglied hat) gestatten, schreibgeschützte Power BI-Administrator-APIs zu verwenden, gestatten Sie ihr auch, auf die Metadaten (z. B. Dashboard- und Berichtsnamen, Besitzer, Beschreibungen usw.) für sämtliche Ihrer Power BI-Artefakte in diesem Mandanten zugreifen zu können. Sobald die Metadaten in Azure Purview eingelesen wurden, wird anhand der Pruview-Berechtigungen, nicht anhand der Power BI-Berechtigungen, festgelegt, wer diese Metadaten anzeigen kann.
 
     > [!Note]
     > Sie können die Sicherheitsgruppe aus Ihren Entwicklereinstellungen entfernen, die zuvor extrahierten Metadaten werden jedoch nicht aus dem Purview-Konto entfernt. Bei Bedarf können Sie sie separat löschen.
@@ -70,8 +71,6 @@ Erstellen Sie zum Einrichten der Authentifizierung eine Sicherheitsgruppe, und f
 Nachdem Sie dem Katalog Berechtigungen zum Herstellen einer Verbindung mit der Administrator-API Ihres Power BI-Mandanten erteilt haben, können Sie Ihre Überprüfung über das Katalogportal einrichten.
 
 Fügen Sie zunächst ein spezielles Featureflag zu Ihrer Purview-URL hinzu. 
-
-1. Fügen Sie die folgende Zeichenfolge an das Ende des URIs Ihrer Purview-Instanz an: `?feature.ext.catalog={"pbi":"true"}`. Dadurch wird die Power BI-Registrierungsoption in Ihrem Katalog aktiviert.
 
 1. Wählen Sie das **Verwaltungscenter**-Symbol aus.
 
@@ -111,6 +110,5 @@ Fügen Sie zunächst ein spezielles Featureflag zu Ihrer Purview-URL hinzu.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wie Sie PowerShell-Cmdlets zum Registrieren und Überprüfen eines Power BI-Mandanten verwenden, erfahren Sie unter:
-  
-- [Verwenden von PowerShell, um Power BI zu registrieren und zu überprüfen](powershell-register-scan-power-bi.md)
+- [Browsen im Azure Purview-Datenkatalog](how-to-browse-catalog.md)
+- [Suchen im Azure Purview-Datenkatalog](how-to-search-catalog.md)

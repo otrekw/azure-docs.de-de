@@ -13,15 +13,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/29/2020
+ms.date: 12/29/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: aae822665702300064e82e80d74b5c2256423ea1
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 1e6aaf1b37073bf93e0aca8237161bf11af3a872
+ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94957281"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97827222"
 ---
 # <a name="azure-proximity-placement-groups-for-optimal-network-latency-with-sap-applications"></a>Azure-Näherungsplatzierungsgruppen für optimale Netzwerklatenz mit SAP-Anwendungen
 SAP-Anwendungen, die auf der SAP NetWeaver- oder SAP S/4HANA-Architektur basieren, sind von der Netzwerklatenz zwischen der SAP-Anwendungsschicht und der SAP-Datenbankschicht abhängig. Diese Abhängigkeit ist das Ergebnis davon, dass der größte Teil der Geschäftslogik in der Anwendungsschicht ausgeführt wird. Da die SAP-Anwendungsschicht die Geschäftslogik ausführt, gibt sie mit einer hohen Frequenz Abfragen an die Datenbankschicht aus (tausende oder zehntausende von Abfragen pro Sekunde). In den meisten Fällen handelt es sich um einfache Abfragen. Sie können oft in 500 Mikrosekunden oder noch kürzerer Zeit in der Datenbankschicht ausgeführt werden.
@@ -42,6 +42,8 @@ Damit Sie die Möglichkeit zum Optimieren der Netzwerklatenz erhalten, bietet Az
 > - Nur bei Bedarf einsetzen
 > - Nur im Detailgrad eines einzelnen SAP-Systems einsetzen, nicht für eine gesamte Systemlandschaft oder eine gesamte SAP-Landschaft
 > - So einsetzen, dass die verschiedenen VM-Typen und die Anzahl der VMs innerhalb einer Näherungsplatzierungsgruppe so gering wie möglich gehalten wird
+
+Wenn Sie virtuelle Computer bereitstellen, indem Sie Verfügbarkeitszonen angeben und diese auswählen, sollte die Netzwerkwartezeit zwischen diesen VMs ausreichen, um SAP NetWeaver- und S/4HANA-Systeme mit zufriedenstellender Leistung und ausreichendem Durchsatz zu betreiben. Diese Annahme ist unabhängig davon, ob eine bestimmte Zone aus einem oder mehreren Rechenzentren erstellt wurde. Das gemeinsame Zuordnen von in Azure-Verfügbarkeitsgruppen bereitgestellten VMs mit zonal bereitgestellten VMs ist der einzige Grund für die Verwendung von Näherungsplatzierungsgruppen in zonalen Bereitstellungen.
 
 
 ## <a name="what-are-proximity-placement-groups"></a>Was sind Näherungsplatzierungsgruppen? 

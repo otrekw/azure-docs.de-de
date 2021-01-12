@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: rarayudu, logicappspm
 ms.topic: conceptual
-ms.date: 12/05/2020
-ms.openlocfilehash: 783431c4888a68e24cf3d2603c541c4797ea65d8
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.date: 12/29/2020
+ms.openlocfilehash: 34a5dfb44ee78245b56c1774701f48b3b8a494df
+ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96741098"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97827477"
 ---
 # <a name="create-an-integration-service-environment-ise-by-using-the-logic-apps-rest-api"></a>Erstellen einer Integrationsdienstumgebung (Integration Service Environment, ISE) mithilfe der Logic Apps-REST-API
 
@@ -69,9 +69,7 @@ Schließen Sie die folgenden Eigenschaften in den Anforderungsheader ein:
 
 Geben Sie im Anforderungstext die für die Erstellung der ISE zu verwendende Ressourcendefinition an, einschließlich der Informationen zu zusätzlichen Funktionen, die Sie in Ihrer ISE aktivieren möchten, z. B.:
 
-* Zum Erstellen einer ISE, die die Verwendung eines selbstsignierten Zertifikats zulässt, das am Speicherort `TrustedRoot` installiert ist, nehmen Sie das `certificates`-Objekt in den Abschnitt `properties` der ISE-Definition auf, wie später in diesem Artikel beschrieben.
-
-  Um diese Funktion für eine vorhandene ISE zu aktivieren, können Sie eine PATCH-Anforderung nur für das `certificates`-Objekt senden. Weitere Informationen zum Verwenden von selbstsignierten Zertifikaten finden Sie unter [Sicherer Zugriff und Daten: Zugriff für ausgehende Aufrufe anderer Dienste und Systeme](../logic-apps/logic-apps-securing-a-logic-app.md#secure-outbound-requests).
+* Nehmen Sie das `certificates`-Objekt wie später in diesem Artikel beschrieben in den `properties`-Abschnitt der ISE-Definition auf, um eine ISE zu erstellen, die die Verwendung eines selbstsignierten Zertifikats und eines von der Zertifizierungsstelle ausgestellten Zertifikats zulässt, das am `TrustedRoot`-Speicherort gespeichert ist.
 
 * Zum Erstellen einer ISE, die eine systemseitig zugewiesene oder benutzerseitig zugewiesene verwaltete Identität verwendet, schließen Sie das `identity`-Objekt mit dem verwalteten Identitätstyp sowie andere erforderliche Informationen in die ISE-Definition ein, wie später in diesem Artikel beschrieben.
 
@@ -123,7 +121,7 @@ Hier ist die Syntax des Anforderungstexts, in der die Eigenschaften für das Ers
             }
          ]
       },
-      // Include `certificates` object to enable self-signed certificate support
+      // Include `certificates` object to enable self-signed certiificate and certificate issued by Enterprise Certificate Authority
       "certificates": {
          "testCertificate": {
             "publicCertificate": "{base64-encoded-certificate}",
@@ -183,6 +181,45 @@ In diesem Beispielanforderungstext werden die Beispielwerte gezeigt:
             "publicCertificate": "LS0tLS1CRUdJTiBDRV...",
             "kind": "TrustedRoot"
          }
+      }
+   }
+}
+```
+## <a name="add-custom-root-certificates"></a>Hinzufügen benutzerdefinierter Stammzertifikate
+
+Häufig verwenden Sie eine ISE, um eine Verbindung mit benutzerdefinierten Diensten in Ihrem virtuellen Netzwerk oder Ihrem lokalen Netzwerk herzustellen. Diese benutzerdefinierten Dienste sind oft durch ein Zertifikat geschützt, das von einer benutzerdefinierten Stammzertifizierungsstelle ausgestellt wird (z. B. Unternehmenszertifizierungsstelle oder selbstsigniertes Zertifikat). Weitere Informationen zum Verwenden von selbstsignierten Zertifikaten finden Sie unter [Sicherer Zugriff und Daten: Zugriff für ausgehende Aufrufe anderer Dienste und Systeme](../logic-apps/logic-apps-securing-a-logic-app.md#secure-outbound-requests). Damit Ihre ISE erfolgreich eine Verbindung mit diesen Diensten über die TLS (Transport Layer Security) herstellen kann, benötigt Ihre ISE Zugriff auf diese Stammzertifikate. Verwenden Sie diese `PATCH`-HTTPS-Anforderung, um Ihre ISE mit einem benutzerdefinierten vertrauenswürdigen Stammzertifikat zu aktualisieren:
+
+`PATCH https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationServiceEnvironments/{integrationServiceEnvironmentName}?api-version=2019-05-01`
+
+Lesen Sie sich die folgenden Überlegungen durch, bevor Sie diesen Vorgang ausführen:
+
+* Stellen Sie sicher, dass Sie das Stammzertifikat *und* alle Zwischenzertifikate hochladen. Es gilt eine maximale Anzahl von 20 Zertifikaten.
+
+* Das Hochladen von Stammzertifikaten ist ein Ersetzungsvorgang, bei dem der aktuelle Upload vorherige Uploads überschreibt. Wenn Sie beispielsweise eine Anforderung senden, die ein Zertifikat hochlädt, und dann eine weitere Anforderung senden, um ein anderes Zertifikat hochzuladen, verwendet Ihre ISE nur das zweite Zertifikat. Wenn Sie beide Zertifikate verwenden müssen, fügen Sie diese derselben Anforderung hinzu.  
+
+* Das Hochladen von Stammzertifikaten ist ein asynchroner Vorgang, der einige Zeit in Anspruch nehmen kann. Sie können mit demselben URI eine `GET`-Anforderung senden, um den Status oder das Ergebnis zu überprüfen. Die Antwortnachricht umfasst ein `provisioningState`-Feld, das den `InProgress`-Wert zurückgibt, wenn der Uploadvorgang noch ausgeführt wird. Wenn der `provisioningState`-Wert `Succeeded` ist, ist der Uploadvorgang abgeschlossen.
+
+#### <a name="request-body-syntax-for-adding-custom-root-certificates"></a>Syntax des Anforderungstexts zum Hinzufügen von benutzerdefinierten Stammzertifikaten
+
+Dies ist die Syntax des Anforderungstexts, in der die Eigenschaften für das Hinzufügen von Stammzertifikaten beschrieben werden:
+
+```json
+{
+   "id": "/subscriptions/{Azure-subscription-ID}/resourceGroups/{Azure-resource-group}/providers/Microsoft.Logic/integrationServiceEnvironments/{ISE-name}",
+   "name": "{ISE-name}",
+   "type": "Microsoft.Logic/integrationServiceEnvironments",
+   "location": "{Azure-region}",
+   "properties": {
+      "certificates": {
+         "testCertificate1": {
+            "publicCertificate": "{base64-encoded-certificate}",
+            "kind": "TrustedRoot"
+         },
+         "testCertificate2": {
+            "publicCertificate": "{base64-encoded-certificate}",
+            "kind": "TrustedRoot"
+         }
+      }
    }
 }
 ```

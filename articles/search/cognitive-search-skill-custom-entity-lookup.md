@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: 5511551f240fe4fdd2f2aa3bc8a3a2615505f35f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 704763e8e6e7c5336d0ed3e1c28791fb96c77aba
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88936111"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97844954"
 ---
 #     <a name="custom-entity-lookup-cognitive-skill-preview"></a>Cognitive Search-Qualifikation„Benutzerdefinierte Entitätssuche“
 
@@ -41,7 +41,9 @@ Bei den Parametern wird zwischen Groß- und Kleinschreibung unterschieden.
 | `entitiesDefinitionUri`    | Pfad zu einer JSON- oder CSV-Datei, die den gesamten Zieltext enthält, mit dem verglichen werden soll. Diese Entitätsdefinition wird am Anfang der Ausführung eines Indexers gelesen. Alle Aktualisierungen an dieser Datei während der Ausführung werden erst in nachfolgenden Ausführungen berücksichtigt. Auf diese Konfiguration muss über HTTPS zugegriffen werden können. Weitere Informationen zum erwarteten CSV- oder JSON-Schema finden Sie unter [Benutzerdefiniertes Entitätsdefinitionsformat](#custom-entity-definition-format) weiter unten.|
 |`inlineEntitiesDefinition` | Inline-JSON-Entitätsdefinitionen. Dieser Parameter ersetzt den entitiesDefinitionUri-Parameter, falls vorhanden. Es können nicht mehr als 10 KB der Konfiguration inline bereitgestellt werden. Weitere Informationen zum erwarteten JSON-Schema finden Sie unter [Benutzerdefinierte Entitätsdefinition](#custom-entity-definition-format) weiter unten. |
 |`defaultLanguageCode` |    (Optional) Sprachcode des Eingabetexts, der verwendet wird, um den Eingabetext mit Token zu versehen und abzugrenzen. Die folgenden Sprachen werden unterstützt: `da, de, en, es, fi, fr, it, ko, pt`. Die Standardsprache ist Englisch (`en`). Wenn Sie ein Sprachcode-Ländercode-Format übergeben, wird nur der Sprachcodeteil des Formats verwendet.  |
-
+|`globalDefaultCaseSensitive` | (Optional) Hierbei handelt es sich um einen Standardwert zur Beachtung der Groß-/Kleinschreibung für den Skill. Wenn der Wert `defaultCaseSensitive` einer Entität nicht angegeben ist, wird dieser Wert als `defaultCaseSensitive`-Wert für die Entität verwendet. |
+|`globalDefaultAccentSensitive` | (Optional) Hierbei handelt es sich um einen Standardwert für die Beachtung von Diakritika für den Skill. Wenn der Wert `defaultAccentSensitive` einer Entität nicht angegeben ist, wird dieser Wert als `defaultAccentSensitive`-Wert für die Entität verwendet. |
+|`globalDefaultFuzzyEditDistance` | (Optional) Hierbei handelt es sich um einen Standardwert zur Fuzzybearbeitungsdistanz für den Skill. Wenn der Wert `defaultFuzzyEditDistance` einer Entität nicht angegeben ist, wird dieser Wert als `defaultFuzzyEditDistance`-Wert für die Entität verwendet. |
 
 ## <a name="skill-inputs"></a>Skilleingaben
 
@@ -151,8 +153,10 @@ In den folgenden Tabellen werden die verschiedenen Konfigurationsparameter ausf�
 | `subtype` | (Optional) Dieses Feld kann als Pass-Through-Feld für benutzerdefinierte Metadaten über die übereinstimmenden Texte verwendet werden. Der Wert dieses Felds wird mit jeder Übereinstimmung zur Entität in der Ausgabe der Qualifikation angezeigt. |
 | `id` | (Optional) Dieses Feld kann als Pass-Through-Feld für benutzerdefinierte Metadaten über die übereinstimmenden Texte verwendet werden. Der Wert dieses Felds wird mit jeder Übereinstimmung zur Entität in der Ausgabe der Qualifikation angezeigt. |
 | `caseSensitive` | (Optional) Der Standardwert ist „false“. Boolescher Wert, der angibt, ob bei Vergleichen mit dem Entitätsnamen die Groß-/Kleinschreibung beachtet werden soll. Beispiel für Übereinstimmungen mit „Microsoft“ ohne Berücksichtigung der Groß-/Kleinschreibung: microsoft, microSoft, MICROSOFT |
+| `accentSensitive` | (Optional) Der Standardwert ist „false“. Hierbei handelt es sich um einen booleschen Wert, der angibt, ob zwischen Buchstaben mit oder ohne Diakritika (z. B. „é“ und „e“) unterschieden werden soll. |
 | `fuzzyEditDistance` | (Optional) Der Standardwert ist „0“. Der Maximalwert ist „5“. Legt die zulässige Anzahl von abweichenden Zeichen fest, die noch als eine Übereinstimmung mit dem Entitätsnamen betrachtet werden. Die kleinste mögliche Fuzzyübereinstimmung für eine bestimmte Übereinstimmung wird zurückgegeben.  Wenn die Bearbeitungsdistanz beispielsweise auf 3 festgelegt ist, stimmt „Windows 10“ noch überein mit „Windows“, „Windows 10“ und „Windows 7“. <br/> Ist die Groß-/Kleinschreibung auf „false“ festgelegt, werden Unterschiede in der Groß-/Kleinschreibung hinsichtlich der Fuzzyübereinstimmung nicht berücksichtigt; andernfalls schon. |
-| `defaultCaseSensitive` | (Optional) Ändert den Standardwert für die Groß-/Kleinschreibung dieser Entität. Es kann verwendet werden, um die Standardeinstellung für den caseSensitive-Wert aller Aliase zu ändern. |
+| `defaultCaseSensitive` | (Optional) Ändert den Standardwert für die Groß-/Kleinschreibung dieser Entität. Dieser Parameter kann dazu verwendet werden, den Standardwert für alle Aliase von caseSensitive-Werten zu ändern. |
+| `defaultAccentSensitive` | (Optional) Dieser Parameter ändert den Standardwert für die Beachtung von Diakritika für diese Entität. Dieser Parameter kann dazu verwendet werden, den Standardwert für alle Aliase von accentSensitive-Werten zu ändern.|
 | `defaultFuzzyEditDistance` | (Optional) Ändert den Standardwert für die Fuzzybearbeitungsdistanz dieser Entität. Es kann verwendet werden, um die Standardeinstellung für den fuzzyEditDistance-Wert aller Aliase zu ändern. |
 | `aliases` | (Optional) Ein Array komplexer Objekte, die verwendet werden können, um alternative Schreibweisen oder Synonyme für den Stammnamen der Entität anzugeben. |
 
@@ -160,6 +164,7 @@ In den folgenden Tabellen werden die verschiedenen Konfigurationsparameter ausf�
 |------------------|-------------|
 | `text`  | Die alternative Schreibweise oder Darstellung eines bestimmten Zielentitätsnamens.  |
 | `caseSensitive` | (Optional) Funktioniert wie der oben beschriebene Parameter caseSensitive der Stammentität, gilt aber nur für diesen einen Alias. |
+| `accentSensitive` | (Optional) Dieser Parameter weist dieselbe Funktion wie der oben genannte Stammentitätsparameter „accentSensitive“ auf, gilt jedoch nur für diesen einen Alias. |
 | `fuzzyEditDistance` | (Optional) Funktioniert wie der oben beschriebene Parameter fuzzyEditDistance der Stammentität, gilt aber nur für diesen einen Alias. |
 
 
