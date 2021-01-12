@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/09/2020
 ms.author: kaprochi
-ms.openlocfilehash: f82ea154d5949f4d229ac76e7a7ce2a89d15ac13
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 7e27c3dd6e70d9a532c326d8187d82e14bf7ddda
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95025666"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591615"
 ---
 # <a name="cicd-for-custom-speech"></a>CI/CD für Custom Speech
 
@@ -31,7 +31,7 @@ Benutzerdefinierte CI/CD-Lösungen sind möglich, aber für eine robuste, vordef
 
 Der Zweck dieser Workflows besteht darin sicherzustellen, dass jedes Custom Speech-Modell eine höhere Erkennungsgenauigkeit aufweist als der vorherige Build. Wenn die Aktualisierungen für die Test- und/oder Trainingsdaten die Genauigkeit erhöhen, erstellen diese Workflows einen neuen Custom Speech-Endpunkt.
 
-Git-Server wie GitHub und Azure DevOps können automatisierte Workflows ausführen, wenn bestimmte Git-Ereignisse auftreten, z. B. Zusammenführungen oder Pull Requests. Beispielsweise kann ein CI-Workflow ausgelöst werden, wenn Aktualisierungen von Testdaten an den *Masterbranch* gesendet werden. Verschiedene Git-Server werden über unterschiedliche Tools verfügen, gestatten aber die Skripterstellung von Befehlen der Befehlszeilenschnittstelle (CLI), sodass sie auf einem Buildserver ausgeführt werden können.
+Git-Server wie GitHub und Azure DevOps können automatisierte Workflows ausführen, wenn bestimmte Git-Ereignisse auftreten, z. B. Zusammenführungen oder Pull Requests. Beispielsweise kann ein CI-Workflow ausgelöst werden, wenn Aktualisierungen von Testdaten an den *Mainbranch* gepusht werden. Verschiedene Git-Server werden über unterschiedliche Tools verfügen, gestatten aber die Skripterstellung von Befehlen der Befehlszeilenschnittstelle (CLI), sodass sie auf einem Buildserver ausgeführt werden können.
 
 Auf diesem Weg sollten die Workflows Daten, Tests, Testdateien, Modelle und Endpunkte so benennen und speichern, dass sie bis zu dem Commit oder der Version, von dem bzw. der sie stammen, zurückverfolgt werden können. Es ist auch hilfreich, diese Ressourcen so zu benennen, dass leicht erkennbar ist, welche nach der Aktualisierung der Testdaten und welche nach der Aktualisierung der Trainingsdaten erstellt wurden.
 
@@ -84,7 +84,7 @@ Das [Speech DevOps-Vorlagenrepository](https://github.com/Azure-Samples/Speech-S
 
 - Kopieren Sie das Vorlagenrepository in Ihr GitHub-Konto, erstellen Sie dann Azure-Ressourcen und einen [Dienstprinzipal](../../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) für die CI/CD-Workflows für GitHub Actions.
 - Durchlaufen Sie die „[innere Schleife der Entwicklung](https://mitchdenny.com/the-inner-loop/)“. Aktualisieren Sie Trainings- und Testdaten von einem Featurebranch, testen Sie die Änderungen mit einem temporären Entwicklungsmodell, und lösen Sie einen Pull Request aus, um die Änderungen vorzuschlagen und zu überprüfen.
-- Wenn Trainingsdaten in einem Pull Request für *master* aktualisiert werden, trainieren Sie Modelle mit dem CI-Workflow für GitHub Actions.
+- Wenn Trainingsdaten in einem Pull Request für *main* aktualisiert werden, trainieren Sie Modelle mit dem CI-Workflow für GitHub Actions.
 - Führen Sie automatisierte Genauigkeitsprüfungen durch, um die [Wort-Fehler-Rate](how-to-custom-speech-evaluate-data.md#evaluate-custom-speech-accuracy) (WER) eines Modells zu ermitteln. Speichern Sie die Testergebnisse in Azure-Blob.
 - Führen Sie den CD-Workflow aus, um einen Endpunkt zu erstellen, wenn sich die Wort-Fehler-Rate verbessert.
 

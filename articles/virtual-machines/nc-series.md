@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 38365cc144bbffbedfa1416112c5f8eca2b5fc13
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 97b5d6bc6f19e07ea7c980b98c1e7986c59dc546
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91653518"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97585410"
 ---
 # <a name="nc-series"></a>NC-Serie
 
@@ -22,7 +22,8 @@ Virtuelle Computer der NC-Serie werden mit der [NVIDIA-Grafikkarte Tesla K80](ht
 [Storage Premium-Zwischenspeicherung:](premium-storage-performance.md) Nicht unterstützt<br>
 [Livemigration:](maintenance-and-updates.md) Nicht unterstützt<br>
 [Updates mit Speicherbeibehaltung:](maintenance-and-updates.md) Nicht unterstützt<br>
-[Unterstützung von VM-Generationen:](generation-2.md) Generation 1<br>
+[Unterstützung von VM-Generationen](generation-2.md): Generation 1<br>
+Nvidia NVLink Interconnect: Nicht unterstützt<br>
 <br>
 
 | Size | vCPU | Memory: GiB | Temporärer Speicher (SSD): GiB | GPU | GPU-Arbeitsspeicher: GiB | Max. Anzahl Datenträger | Maximale Anzahl NICs |

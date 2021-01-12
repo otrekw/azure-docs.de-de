@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 11/12/2020
-ms.openlocfilehash: 6c5badf4760bff559fb050278df84c7ad6e703bd
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.date: 12/18/2020
+ms.openlocfilehash: 315de18539bf083515658b40fa70f3c214d7c909
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94616942"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97739738"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Herstellen einer Verbindung mit virtuellen Azure-Netzwerken in Azure Logic Apps mithilfe einer Integrationsdienstumgebung
 
@@ -44,24 +44,14 @@ Sie können eine ISE auch erstellen, indem Sie das [Beispiel für die Azure Reso
   > [!IMPORTANT]
   > Für Logik-Apps, integrierte Trigger, integrierte Aktionen und Connectors, die in Ihrer ISE ausgeführt werden, gilt ein anderer als der nutzungsbasierte Tarif. Weitere Informationen zur Preisgestaltung und Abrechnung für ISEs finden Sie unter [Feststehendes Preismodell](../logic-apps/logic-apps-pricing.md#fixed-pricing). Eine Preisübersicht finden Sie unter [Logic Apps – Preise](../logic-apps/logic-apps-pricing.md).
 
-* Ein [virtuelles Azure-Netzwerk](../virtual-network/virtual-networks-overview.md). Ihr virtuelles Netzwerk muss vier *leere* Subnetze enthalten. Diese sind zum Erstellen und Bereitstellen von Ressourcen in Ihrer ISE erforderlich und werden von den folgenden internen und ausgeblendeten Komponenten verwendet:
+* Ein [virtuelles Azure-Netzwerk](../virtual-network/virtual-networks-overview.md) mit *vier* leeren Subnetzen. Diese sind zum Erstellen und Bereitstellen von Ressourcen in Ihrer ISE erforderlich und werden von den folgenden internen und ausgeblendeten Komponenten verwendet:
 
   * Logic Apps Compute
   * Interne App Service-Umgebung (Connectors)
   * Internes API Management (Connectors)
   * Interner Redis-Cache für Zwischenspeicherung und Leistung
   
-  Die Subnetze können vorab oder bei der ISE-Erstellung erstellt werden. Überprüfen Sie jedoch vor dem Erstellen Ihrer Subnetze die [Subnetzanforderungen](#create-subnet).
-
-  > [!IMPORTANT]
-  >
-  > Die folgenden IP-Adressräume können von Azure Logic Apps nicht aufgelöst werden und dürfen daher nicht für das virtuelle Netzwerk oder für die Subnetze verwendet werden:<p>
-  > 
-  > * 0.0.0.0/8
-  > * 100.64.0.0/10
-  > * 127.0.0.0/8
-  > * 168.63.129.16/32
-  > * 169.254.169.254/32
+  Die Subnetze können vorab oder bei der ISE-Erstellung erstellt werden, sodass Sie die Subnetze gleichzeitig erstellen können. Überprüfen Sie jedoch vor dem Erstellen Ihrer Subnetze unbedingt die [Subnetzanforderungen](#create-subnet).
 
   * Stellen Sie sicher, dass Ihr virtuelles Netzwerk [den Zugriff für Ihre ISE ermöglicht](#enable-access), damit Ihre ISE ordnungsgemäß funktioniert und zugänglich ist.
 
@@ -156,21 +146,29 @@ Darüber hinaus müssen Ausgangsregeln für die [App Service-Umgebung (App Serv
 
 Wenn Sie [erzwungenes Tunneln](../firewall/forced-tunneling.md) durch Ihre Firewall einrichten oder verwenden, müssen Sie zusätzliche externe Abhängigkeiten für Ihre ISE zulassen. Mit erzwungenem Tunneln können Sie internetgebundenen Datenverkehr an einen bestimmten nächsten Hop, z. B. Ihr virtuelles privates Netzwerk (VPN) oder an eine virtuelle Appliance, anstatt ins Internet umleiten, sodass Sie den ausgehenden Datenverkehr im Netzwerk untersuchen und prüfen können.
 
-Normalerweise muss der gesamte ausgehende Abhängigkeitsdatenverkehr der ISE über die VIP (virtuelle IP-Adresse) verlaufen, die für die ISE bereitgestellt wurde. Wenn Sie jedoch den Datenverkehr entweder zu oder von Ihrer ISE ändern, müssen Sie die folgenden ausgehenden Abhängigkeiten von Ihrer Firewall zulassen, indem Sie deren nächsten Hop auf `Internet` festlegen. Wenn Sie Azure Firewall verwenden, befolgen Sie die [Anweisungen zum Einrichten Ihrer Firewall mit Ihrer App Service-Umgebung](../app-service/environment/firewall-integration.md#configuring-azure-firewall-with-your-ase).
+Wenn Sie den Zugriff für diese Abhängigkeiten nicht zulassen, tritt ein Fehler bei der ISE-Bereitstellung auf und Ihre bereitgestellte ISE funktioniert nicht mehr.
 
-Wenn Sie den Zugriff für diese Abhängigkeiten nicht zulassen, tritt ein Fehler bei der ISE-Bereitstellung auf und Ihre bereitgestellte ISE funktioniert nicht mehr:
+* Benutzerdefinierte Routen
 
-* [App Service-Umgebung Management-Adressen](../app-service/environment/management-addresses.md)
+  Um asymmetrisches Routing zu verhindern, müssen Sie für jede unten aufgeführte IP-Adresse eine Route mit **Internet** als nächstem Hop definieren.
+  
+  * [App Service-Umgebung Management-Adressen](../app-service/environment/management-addresses.md)
+  * [Azure-IP-Adressen für Connectors in der ISE-Region, die in dieser Downloaddatei verfügbar sind](https://www.microsoft.com/download/details.aspx?id=56519)
+  * [Azure Traffic Manager-Verwaltungsadressen](https://azuretrafficmanagerdata.blob.core.windows.net/probes/azure/probe-ip-ranges.json)
+  * [Eingehende und ausgehende Logic Apps-Adressen für die ISE-Region](../logic-apps/logic-apps-limits-and-config.md#firewall-configuration-ip-addresses-and-service-tags)
+  * [Azure-IP-Adressen für Connectors in der ISE-Region, die sich in dieser Downloaddatei befinden](https://www.microsoft.com/download/details.aspx?id=56519)
 
-* [Azure API Management-Adressen](../api-management/api-management-using-with-vnet.md#control-plane-ips)
+* Dienstendpunkte
 
-* [Azure Traffic Manager-Verwaltungsadressen](https://azuretrafficmanagerdata.blob.core.windows.net/probes/azure/probe-ip-ranges.json)
+  Sie müssen Dienstendpunkte für Azure SQL, Storage, Service Bus, KeyVault und Event Hub aktivieren, da Sie keinen Datenverkehr durch eine Firewall an diese Dienste senden können.
 
-* [Eingehende und ausgehende Logic Apps-Adressen für die ISE-Region](../logic-apps/logic-apps-limits-and-config.md#firewall-configuration-ip-addresses-and-service-tags)
+*  Weitere eingehende und ausgehende Abhängigkeiten
 
-* [Azure-IP-Adressen für Connectors in der ISE-Region, die sich in dieser Downloaddatei befinden](https://www.microsoft.com/download/details.aspx?id=56519)
-
-* Sie müssen Dienstendpunkte für Azure SQL, Storage, Service Bus und Event Hub aktivieren, da Sie keinen Datenverkehr durch eine Firewall an diese Dienste senden können.
+   Die Firewall *muss* die folgenden eingehenden und ausgehenden Abhängigkeiten zulassen:
+   
+   * [Azure-Dienstabhängigkeiten](../app-service/environment/firewall-integration.md#deploying-your-ase-behind-a-firewall)
+   * [Azure Cache-Dienstabhängigkeiten](../azure-cache-for-redis/cache-how-to-premium-vnet.md#what-are-some-common-misconfiguration-issues-with-azure-cache-for-redis-and-virtual-networks)
+   * [Azure API Management-Abhängigkeiten](../api-management/api-management-using-with-vnet.md#-common-network-configuration-issues)
 
 <a name="create-environment"></a>
 
@@ -188,7 +186,7 @@ Wenn Sie den Zugriff für diese Abhängigkeiten nicht zulassen, tritt ein Fehler
 
    ![Angeben von Umgebungsdetails](./media/connect-virtual-network-vnet-isolated-environment/integration-service-environment-details.png)
 
-   | Eigenschaft | Erforderlich | Wert | Beschreibung |
+   | Eigenschaft | Erforderlich | Wert | BESCHREIBUNG |
    |----------|----------|-------|-------------|
    | **Abonnement** | Ja | <*Name des Azure-Abonnements*> | Das für Ihre Umgebung zu verwendende Azure-Abonnement |
    | **Ressourcengruppe** | Ja | <*Name der Azure-Ressourcengruppe*> | Eine neue oder vorhandene Azure-Ressourcengruppe, in der Sie Ihre Umgebung erstellen möchten. |
@@ -211,7 +209,7 @@ Wenn Sie den Zugriff für diese Abhängigkeiten nicht zulassen, tritt ein Fehler
 
    * Verwenden Sie einen Namen, der mit einem alphabetischen Zeichen oder mit einem Unterstrich beginnt (keine Zahlen) und keines der folgenden Zeichen enthält: `<`, `>`, `%`, `&`, `\\`, `?`, `/`.
 
-   * Das Format [Classless Inter-Domain Routing (CIDR)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) und einen Class B-Adressraum
+   * Verwendet das Format [Classless Inter-Domain Routing (CIDR)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing).
    
      > [!IMPORTANT]
      >

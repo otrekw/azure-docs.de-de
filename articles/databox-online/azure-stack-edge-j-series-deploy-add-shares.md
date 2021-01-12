@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 12/22/2020
+ms.date: 01/04/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to add and connect to shares on Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: 845eef6e119823af789c9a263bfb750845d55bc0
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 919ec1c3c2b71b7d9aecb90d434aa919c7188d38
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97740911"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97897609"
 ---
 # <a name="tutorial-transfer-data-via-shares-with-azure-stack-edge-pro-gpu"></a>Tutorial: Übertragen von Daten über Freigaben mit einem Azure Stack Edge Pro-Gerät mit GPU
 
@@ -43,7 +43,7 @@ Vergewissern Sie sich, dass Folgendes erfüllt ist, bevor Sie Ihrem Azure Stack 
 
 Gehen Sie wie folgt vor, um eine Freigabe zu erstellen:
 
-1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) Ihre Azure Stack Edge-Ressource aus, und navigieren Sie anschließend zu **Übersicht**. Ihr Gerät sollte online sein.
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) Ihre Azure Stack Edge-Ressource aus, und navigieren Sie anschließend zu **Übersicht**. Ihr Gerät sollte online sein. Wählen Sie **Cloudspeichergateway** aus.
 
    ![Gerät online](./media/azure-stack-edge-j-series-deploy-add-shares/device-online-1.png)
 
@@ -51,7 +51,7 @@ Gehen Sie wie folgt vor, um eine Freigabe zu erstellen:
 
    ![Hinzufügen einer Freigabe](./media/azure-stack-edge-j-series-deploy-add-shares/select-add-share-1.png)
 
-3. Gehen Sie im Bereich **Freigabe hinzufügen** wie folgt vor:
+3. Führen Sie im Bereich **Freigabe hinzufügen** die folgenden Schritte aus:
 
     a. Geben Sie im Feld **Name** einen eindeutigen Namen für die Freigabe an.  
     Der Freigabename darf nur Buchstaben, Ziffern und Bindestriche enthalten. Er muss aus 3 bis 63 Zeichen bestehen und mit einem Buchstaben oder einer Ziffer beginnen. Bindestriche müssen vorangestellt und von einem Buchstaben oder einer Ziffer gefolgt werden.

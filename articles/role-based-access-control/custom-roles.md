@@ -7,14 +7,14 @@ manager: mtillman
 ms.service: role-based-access-control
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 12/11/2020
+ms.date: 12/15/2020
 ms.author: rolyon
-ms.openlocfilehash: eddbd9cb695f3ff7eabd9f2549d0a868d8826eb9
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: 79aaeee942a6d46243ee1c72d5904484b8698ebe
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97369122"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617322"
 ---
 # <a name="azure-custom-roles"></a>Benutzerdefinierte Azure-Rollen
 
@@ -208,6 +208,7 @@ In der nachstehenden Liste werden die Grenzwerte bei benutzerdefinierten Rollen 
 - Jedes Verzeichnis kann bis zu **5.000** benutzerdefinierte Rollen enthalten.
 - In Azure Deutschland und Azure China 21ViaNet kann es für jedes Verzeichnis bis zu 2.000 benutzerdefinierte Rollen geben.
 - `AssignableScopes` kann nicht auf den Stammbereich (`"/"`) festgelegt werden.
+- In `AssignableScopes` können Sie keine Platzhalter (`*`) verwenden. Diese Platzhaltereinschränkung soll sicherstellen, dass ein Benutzer keinen Zugriff auf einen Bereich durch Aktualisieren der Rollendefinition erhalten kann.
 - Sie können in den `AssignableScopes` einer benutzerdefinierten Rolle nur eine einzige Verwaltungsgruppe definieren. Das Hinzufügen einer Verwaltungsgruppe zu `AssignableScopes` befindet sich derzeit in der Vorschauphase.
 - Benutzerdefinierte Rollen mit `DataActions` können im Verwaltungsgruppenbereich nicht zugewiesen werden.
 - Azure Resource Manager überprüft nicht, ob die Verwaltungsgruppe im zuweisbaren Bereich der Rollendefinition vorhanden ist.

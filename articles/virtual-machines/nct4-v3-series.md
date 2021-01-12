@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 08/10/2020
 ms.author: vikancha
-ms.openlocfilehash: edbd8b2fefb90bb95bfcd08c126a42c810ad081b
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: 2de6cceb1e3b85060a146b18a689b57573bc932e
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96511598"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97585427"
 ---
 # <a name="ncast4_v3-series-in-preview"></a>NCasT4_v3-Serie (Vorschau) 
 
@@ -30,6 +30,8 @@ Die virtuellen Computer der NCasT4_v3-Serie basieren auf GPUs vom Typ [Nvidia Te
 [Livemigration:](maintenance-and-updates.md) Nicht unterstützt<br>
 [Updates mit Speicherbeibehaltung:](maintenance-and-updates.md) Nicht unterstützt<br>
 [Unterstützung von VM-Generationen](generation-2.md): Generation 1<br>
+Beschleunigter Netzwerkbetrieb: Unterstützt<br>
+Nvidia NVLink Interconnect: Nicht unterstützt<br>
 <br>
 
 | Size | vCPU | Memory: GiB | Temporärer Speicher (SSD): GiB | GPU | GPU-Arbeitsspeicher: GiB | Max. Anzahl Datenträger | Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (MBps) |

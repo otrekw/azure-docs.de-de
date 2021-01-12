@@ -8,12 +8,12 @@ ms.date: 12/13/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 22cef5919e597d4cd83ad80f5758a0427c52e2bb
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: e1031df9f305015048de7f708123a51875776e1b
+ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92219733"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97760587"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge"></a>Speichern von Daten im Edgebereich mit Azure Blob Storage in IoT Edge
 
@@ -29,7 +29,7 @@ Dieses Modul ist in folgenden Fällen hilfreich:
 Das folgende Video enthält eine kurze Einführung:
 > [!VIDEO https://www.youtube.com/embed/xbwgMNGB_3Y]
 
-Dieses Modul gehört zum Umfang der Features **deviceToCloudUpload** und **deviceAutoDelete** .
+Dieses Modul gehört zum Umfang der Features **deviceToCloudUpload** und **deviceAutoDelete**.
 
 **deviceToCloudUpload** ist eine konfigurierbare Funktion. Diese Funktion lädt die Daten aus Ihrem lokalen Blobspeicher automatisch in Azure hoch und unterstützt sporadische Internetkonnektivität. Die Funktion ermöglicht Folgendes:
 
@@ -81,9 +81,9 @@ Der Name dieser Einstellung lautet `deviceToCloudUploadProperties`. Wenn Sie den
 | ----- | ----- | ---- |
 | uploadOn | true, false | Standardmäßig auf `false` festgelegt. Wenn Sie das Feature aktivieren möchten, legen Sie dieses Feld auf `true` fest. <br><br> Umgebungsvariable: `deviceToCloudUploadProperties__uploadOn={false,true}` |
 | uploadOrder | NewestFirst, OldestFirst | Ermöglicht das Auswählen der Reihenfolge, in der die Daten in Azure kopiert werden. Standardmäßig auf `OldestFirst` festgelegt. Die Reihenfolge richtet sich nach dem Zeitpunkt der letzten Änderung des Blobs. <br><br> Umgebungsvariable: `deviceToCloudUploadProperties__uploadOrder={NewestFirst,OldestFirst}` |
-| cloudStorageConnectionString |  | `"DefaultEndpointsProtocol=https;AccountName=<your Azure Storage Account Name>;AccountKey=<your Azure Storage Account Key>;EndpointSuffix=<your end point suffix>"` ist eine Verbindungszeichenfolge, die es ermöglicht, das Speicherkonto anzugeben, in das Ihre Daten hochgeladen werden sollen. Geben Sie `Azure Storage Account Name`, `Azure Storage Account Key`, `End point suffix` an. Fügen Sie ein geeignetes Endpunktsuffix (EndpointSuffix) von Azure für das Ziel des Datenuploads hinzu (variiert für Azure global, Azure Government und Microsoft Azure Stack). <br><br> Sie können hier eine Azure Storage SAS-Verbindungszeichenfolge angeben. Allerdings müssen Sie diese Eigenschaft aktualisieren, wenn sie abläuft. <br><br> Umgebungsvariable: `deviceToCloudUploadProperties__cloudStorageConnectionString=<connection string>` |
+| cloudStorageConnectionString |  | `"DefaultEndpointsProtocol=https;AccountName=<your Azure Storage Account Name>;AccountKey=<your Azure Storage Account Key>;EndpointSuffix=<your end point suffix>"` ist eine Verbindungszeichenfolge, die es ermöglicht, das Speicherkonto anzugeben, in das Ihre Daten hochgeladen werden sollen. Geben Sie `Azure Storage Account Name`, `Azure Storage Account Key`, `End point suffix` an. Fügen Sie ein geeignetes Endpunktsuffix (EndpointSuffix) von Azure für das Ziel des Datenuploads hinzu (variiert für Azure global, Azure Government und Microsoft Azure Stack). <br><br> Sie können hier eine Azure Storage SAS-Verbindungszeichenfolge angeben. Allerdings müssen Sie diese Eigenschaft aktualisieren, wenn sie abläuft. SAS-Berechtigungen können das Erstellen des Zugriffs für Container sowie Erstellen, Schreiben und Hinzufügen des Zugriffs für Blobs umfassen.  <br><br> Umgebungsvariable: `deviceToCloudUploadProperties__cloudStorageConnectionString=<connection string>` |
 | storageContainersForUpload | `"<source container name1>": {"target": "<target container name>"}`,<br><br> `"<source container name1>": {"target": "%h-%d-%m-%c"}`, <br><br> `"<source container name1>": {"target": "%d-%c"}` | Ermöglicht Ihnen das Angeben der Containernamen, die Sie in Azure hochladen möchten. Mit diesem Modul können Sie sowohl Quell- als auch Zielcontainernamen angeben. Falls Sie keinen Zielcontainernamen angeben, wird der Containername automatisch wie folgt zugewiesen: `<IoTHubName>-<IotEdgeDeviceID>-<ModuleName>-<SourceContainerName>`. Sie können Vorlagenzeichenfolgen für den Zielcontainernamen erstellen. Weitere Informationen finden Sie in der Spalte mit den möglichen Werten. <br>* %h -> IoT Hub-Name (drei bis 50 Zeichen) <br>* %d -> IoT Edge-Geräte-ID (1 bis 129 Zeichen) <br>* %m -> Modulname (ein bis 64 Zeichen) <br>* %c -> Quellcontainername (drei bis 63 Zeichen) <br><br>Der Containername darf maximal 63 Zeichen lang sein. Bei automatischer Zuweisung des Zielcontainernamens gilt Folgendes: Ist der Name länger als 63 Zeichen, werden die einzelnen Bestandteile (IoTHubName, IotEdgeDeviceID, ModuleName, SourceContainerName) jeweils auf 15 Zeichen gekürzt. <br><br> Umgebungsvariable: `deviceToCloudUploadProperties__storageContainersForUpload__<sourceName>__target=<targetName>` |
-| deleteAfterUpload | true, false | Standardmäßig auf `false` festgelegt. Bei Festlegung auf `true` werden die Daten automatisch gelöscht, wenn der Upload in den Cloudspeicher abgeschlossen ist. <br><br> **VORSICHT** : Wenn Sie Anfügeblobs verwenden, löscht diese Einstellung Anfügeblobs nach einem erfolgreichen Upload aus dem lokalen Speicher, und alle künftigen Vorgänge zum Anfügen von Blöcken an diese Blobs schlagen fehl. Verwenden Sie diese Einstellung mit Vorsicht, und aktivieren Sie sie nicht, wenn Ihre Anwendung Anfügevorgänge nur selten ausführt oder kontinuierliche Anfügevorgänge nicht unterstützt.<br><br> Umgebungsvariable: `deviceToCloudUploadProperties__deleteAfterUpload={false,true}`. |
+| deleteAfterUpload | true, false | Standardmäßig auf `false` festgelegt. Bei Festlegung auf `true` werden die Daten automatisch gelöscht, wenn der Upload in den Cloudspeicher abgeschlossen ist. <br><br> **VORSICHT**: Wenn Sie Anfügeblobs verwenden, löscht diese Einstellung Anfügeblobs nach einem erfolgreichen Upload aus dem lokalen Speicher, und alle künftigen Vorgänge zum Anfügen von Blöcken an diese Blobs schlagen fehl. Verwenden Sie diese Einstellung mit Vorsicht, und aktivieren Sie sie nicht, wenn Ihre Anwendung Anfügevorgänge nur selten ausführt oder kontinuierliche Anfügevorgänge nicht unterstützt.<br><br> Umgebungsvariable: `deviceToCloudUploadProperties__deleteAfterUpload={false,true}`. |
 
 ### <a name="deviceautodeleteproperties"></a>deviceAutoDeleteProperties
 
@@ -93,7 +93,7 @@ Der Name dieser Einstellung lautet `deviceAutoDeleteProperties`. Wenn Sie den Io
 | ----- | ----- | ---- |
 | deleteOn | true, false | Standardmäßig auf `false` festgelegt. Wenn Sie das Feature aktivieren möchten, legen Sie dieses Feld auf `true` fest. <br><br> Umgebungsvariable: `deviceAutoDeleteProperties__deleteOn={false,true}` |
 | deleteAfterMinutes | `<minutes>` | Geben Sie die Zeit in Minuten an. Nach Ablauf dieser Zeit löscht das Modul Ihre Blobs automatisch aus dem lokalen Speicher. Derzeit sind maximal 35791 Minuten zulässig. <br><br> Umgebungsvariable: `deviceAutoDeleteProperties__ deleteAfterMinutes=<minutes>` |
-| retainWhileUploading | true, false | Die standardmäßige Einstellung ist `true`, und das Blob wird während des Uploads in den Cloudspeicher beibehalten, wenn deleteAfterMinutes abläuft. Sie können `false` festlegen, sodass die Daten gelöscht werden, sobald deleteAfterMinutes abgelaufen ist. Hinweis: Damit diese Eigenschaft funktioniert, setzen Sie uploadOn auf „true“.  <br><br> **VORSICHT** : Sollten Sie Anfügeblobs verwenden, löscht diese Einstellung Anfügeblobs aus dem lokalen Speicher, wenn der Wert abläuft, und künftige Vorgänge zum Anfügen von Blöcken an diese Blobs schlagen fehl. Vielleicht möchten Sie sicherstellen, dass der Ablaufwert groß genug für die erwartete Häufigkeit von Anfügevorgängen ist, die von Ihrer Anwendung ausgeführt werden.<br><br> Umgebungsvariable: `deviceAutoDeleteProperties__retainWhileUploading={false,true}`|
+| retainWhileUploading | true, false | Die standardmäßige Einstellung ist `true`, und das Blob wird während des Uploads in den Cloudspeicher beibehalten, wenn deleteAfterMinutes abläuft. Sie können `false` festlegen, sodass die Daten gelöscht werden, sobald deleteAfterMinutes abgelaufen ist. Hinweis: Damit diese Eigenschaft funktioniert, setzen Sie uploadOn auf „true“.  <br><br> **VORSICHT**: Sollten Sie Anfügeblobs verwenden, löscht diese Einstellung Anfügeblobs aus dem lokalen Speicher, wenn der Wert abläuft, und künftige Vorgänge zum Anfügen von Blöcken an diese Blobs schlagen fehl. Vielleicht möchten Sie sicherstellen, dass der Ablaufwert groß genug für die erwartete Häufigkeit von Anfügevorgängen ist, die von Ihrer Anwendung ausgeführt werden.<br><br> Umgebungsvariable: `deviceAutoDeleteProperties__retainWhileUploading={false,true}`|
 
 ## <a name="using-smb-share-as-your-local-storage"></a>Verwenden der SMB-Freigabe als lokalen Speicher
 
@@ -127,7 +127,7 @@ Für Ihre Bereitstellung kann der Wert von `<storage mount>` gleich **G:/Contain
 
 Wenn Sie in Ihren Erstellungsoptionen für Linux-Container [volume mount](https://docs.docker.com/storage/volumes/) für Speicher verwendet haben, sind keine weiteren Schritte erforderlich. Bei Verwendung von [bind mount](https://docs.docker.com/storage/bind-mounts/) müssen dagegen die folgenden Schritte ausgeführt werden, damit der Dienst korrekt ausgeführt wird.
 
-Zur Einhaltung des Prinzips der geringsten Rechte, das dazu dient, die Zugriffsrechte von Benutzern auf die Mindestberechtigungen zu beschränken, die sie für ihre Aufgaben benötigen, enthält dieses Modul einen Benutzer (Name: absie, ID: 11000) und eine Benutzergruppe (Name: absie, ID: 11000). Wenn der Container als **root** gestartet wird (Standardbenutzer ist **root** ), wird unser Dienst als der Benutzer **absie** mit geringen Berechtigungen gestartet.
+Zur Einhaltung des Prinzips der geringsten Rechte, das dazu dient, die Zugriffsrechte von Benutzern auf die Mindestberechtigungen zu beschränken, die sie für ihre Aufgaben benötigen, enthält dieses Modul einen Benutzer (Name: absie, ID: 11000) und eine Benutzergruppe (Name: absie, ID: 11000). Wenn der Container als **root** gestartet wird (Standardbenutzer ist **root**), wird unser Dienst als der Benutzer **absie** mit geringen Berechtigungen gestartet.
 
 Dieses Verhalten macht die Konfiguration der Berechtigungen für Hostpfadbindungen erforderlich, damit der Dienst korrekt funktioniert. Andernfalls stürzt der Dienst mit Zugriffsverweigerungsfehlern ab. Der Containerbenutzer (Beispiel: absie 11000) muss auf den in der Verzeichnisbindung verwendeten Pfad zugreifen können. Sie können dem Containerbenutzer Zugriff auf das Verzeichnis gewähren, indem Sie auf dem Host die folgenden Befehle ausführen:
 
@@ -175,7 +175,7 @@ Geben Sie Ihr IoT Edge-Gerät als Blobendpunkt für Speicheranforderungen an, di
   * `http://<fully qualified domain name>:11002/<account name>`
  
  > [!IMPORTANT]
- > Bei Modulaufrufen für Azure IoT Edge muss die Groß-/Kleinschreibung beachtet werden, und auch für das Storage SDK werden standardmäßig Kleinbuchstaben verwendet. Der Name des Moduls im [Azure Marketplace](how-to-deploy-modules-portal.md#deploy-modules-from-azure-marketplace) lautet **AzureBlobStorageonIoTEdge** . Indem Sie den Namen aber ändern und Kleinbuchstaben verwenden, können Sie sicherstellen, dass Ihre Verbindungen mit dem Modul „Azure Blob Storage auf IoT Edge“ nicht unterbrochen werden.
+ > Bei Modulaufrufen für Azure IoT Edge muss die Groß-/Kleinschreibung beachtet werden, und auch für das Storage SDK werden standardmäßig Kleinbuchstaben verwendet. Der Name des Moduls im [Azure Marketplace](how-to-deploy-modules-portal.md#deploy-modules-from-azure-marketplace) lautet **AzureBlobStorageonIoTEdge**. Indem Sie den Namen aber ändern und Kleinbuchstaben verwenden, können Sie sicherstellen, dass Ihre Verbindungen mit dem Modul „Azure Blob Storage auf IoT Edge“ nicht unterbrochen werden.
  
 ## <a name="azure-blob-storage-quickstart-samples"></a>Schnellstartbeispiele für Azure Blob Storage
 

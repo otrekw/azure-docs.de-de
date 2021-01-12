@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1755404a06d8586968801aa22f2af532da278802
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: fbddd2eb52414827561d8896dfc8bc9ff705f41b
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96742322"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97584390"
 ---
 # <a name="upgrade-to-the-latest-azure-multi-factor-authentication-server"></a>Aktualisieren des Azure Multi-Factor Authentication-Servers
 
@@ -33,16 +33,16 @@ Wenn Sie ein Upgrade von v6.x oder niedriger auf v7.x oder höher durchführen, 
 
 Upgradeschritte auf einen Blick:
 
-* Upgrade von Azure MFA-Servern (untergeordnete Server, dann Master)
+* Upgrade von Azure MFA-Servern (untergeordnete Server, dann Primär)
 * Upgrade der Benutzerportalinstanzen
 * Upgrade der AD FS-Adapterinstanzen
 
 ## <a name="upgrade-azure-mfa-server"></a>Upgrade des Azure MFA-Servers
 
 1. Befolgen Sie die Anweisungen in [Herunterladen des Azure Multi-Factor Authentication-Servers](howto-mfaserver-deploy.md#download-the-mfa-server), um die neueste Version des Azure MFA-Server-Installers zu erhalten.
-2. Erstellen Sie eine Sicherung der Datendatei von MFA-Server, die sich unter „C:\Programme\Multi-Factor Authentication-Server\Daten\PhoneFactor.pfdata“ befindet (der Standard-Installationsspeicherort), auf Ihrem MFA-Masterserver.
+2. Erstellen Sie eine Sicherung der Datendatei von MFA-Server, die sich unter „C:\Programme\Multi-Factor Authentication-Server\Daten\PhoneFactor.pfdata“ befindet (der Standard-Installationsspeicherort), auf Ihrem primären MFA-Server.
 3. Wenn Sie für Hochverfügbarkeit mehrere Server ausführen, ändern Sie die Clientsysteme, die eine Authentifizierung bei MFA-Server durchführen so, dass sie keinen Datenverkehr an die Server senden, die gerade aktualisiert werden. Wenn Sie einen Lastenausgleich verwenden, entfernen Sie einen untergeordneten MFA-Server aus dem Lastenausgleich, führen Sie das Upgrade durch, und fügen Sie den Server anschließend wieder zur Farm hinzu.
-4. Führen Sie das neue Installationsprogramm für jeden MFA-Server aus. Aktualisieren Sie untergeordnete Server zuerst, da diese die alten Datendateien lesen können, die vom Master repliziert werden.
+4. Führen Sie das neue Installationsprogramm für jeden MFA-Server aus. Aktualisieren Sie untergeordnete Server zuerst, da diese die alten Datendateien lesen können, die vom primären Server repliziert werden.
 
    > [!NOTE]
    > Beim Upgrade eines Servers muss dieser aus allen Aktivitäten im Zusammenhang mit Lastenausgleich und Austausch von Datenverkehr mit anderen MFA-Servern entfernt werden.
@@ -51,7 +51,7 @@ Upgradeschritte auf einen Blick:
   
 5. Folgen Sie der Aufforderung, das Microsoft Visual C++ 2015 Redistributable-Updatepaket zu installieren. Es werden sowohl die x86-Versionen als auch die x64-Versionen des Pakets installiert.
 6. Wenn Sie das Webdienst-SDK verwenden, werden Sie aufgefordert, das neue Webdienst-SDK zu installieren. Wenn Sie das neue Webdienst-SDK installieren, müssen Sie sichergehen, dass der Name des virtuellen Verzeichnisses dem vorher installierten virtuellen Verzeichnis entspricht (z.B. MultiFactorAuthWebServiceSdk).
-7. Wiederholen Sie diese Schritte auf allen untergeordneten Servern. Stufen Sie einen der untergeordneten Server zum neuen Master herauf, und aktualisieren Sie dann den alten Masterserver.
+7. Wiederholen Sie diese Schritte auf allen untergeordneten Servern. Stufen Sie einen der untergeordneten Server zum neuen primären Server herauf, und aktualisieren Sie dann den alten primären Server.
 
 ## <a name="upgrade-the-user-portal"></a>Aktualisieren des Benutzerportals
 

@@ -8,12 +8,12 @@ mms.devlang: na
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: kumud
-ms.openlocfilehash: 4cc0fd970f9adc26f5fdb024f501dcb0edf77bde
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 962f6bcf7747a82749e7ccab95de34f7834a8372
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94992419"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814209"
 ---
 # <a name="partnering-with-azure-ddos-protection-standard"></a>Partnerschaften mit Azure DDoS Protection Standard
 In diesem Artikel werden die Partnerschaftsmöglichkeiten beschrieben, die sich durch Azure DDoS Protection Standard ergeben können. Dieser Artikel soll Produktmanagern und Geschäftsentwicklern helfen, die Investitionspfade zu verstehen, und einen Einblick in die Wertschöpfungsmöglichkeiten durch Partnerschaften geben.
@@ -40,8 +40,8 @@ Für jede geschützte Anwendung optimiert Azure DDoS Protection Standard die Sch
 Azure DDoS Protection identifiziert und entschärft DDoS-Angriffe ohne jegliches Eingreifen des Benutzers.
 
 - Wenn sich die geschützte Ressource in dem durch Azure Security Center abgedeckten Abonnement befindet, sendet DDoS Protection Standard automatisch eine Warnung an Security Center, sobald ein DDoS-Angriff auf die geschützte Anwendung erkannt und entschärft wird.
-- Um benachrichtigt zu werden, wenn eine Risikominderung für eine geschützte öffentliche IP-Adresse aktiv ist, können Sie alternativ eine [Warnung für die den DDoS-Angriff betreffende Metrik konfigurieren](telemetry-monitoring-alerting.md#configure-alerts-for-ddos-protection-metrics).
-- Sie können außerdem Warnungen für die anderen DDoS-Metriken erstellen und [Angriffsanalysen konfigurieren](telemetry-monitoring-alerting.md), um das Ausmaß des Angriffs, den verworfenen Datenverkehr, die Angriffsvektoren, die wichtigsten Mitwirkenden und andere Details zu verstehen.
+- Um benachrichtigt zu werden, wenn eine Risikominderung für eine geschützte öffentliche IP-Adresse aktiv ist, können Sie alternativ eine [Warnung für die den DDoS-Angriff betreffende Metrik konfigurieren](alerts.md).
+- Sie können außerdem Warnungen für die anderen DDoS-Metriken erstellen und [Angriffstelemetrie konfigurieren](telemetry.md), um das Ausmaß des Angriffs, den verworfenen Datenverkehr, die Angriffsvektoren, die wichtigsten Mitwirkenden und andere Details zu verstehen.
 
 ![DDoS-Metriken](./media/ddos-protection-partner-onboarding/ddos-metrics.png)
 
@@ -71,7 +71,7 @@ Die folgenden Schritte sind erforderlich, damit Partner die Integration in Azure
 3. Aktivieren von Azure DDoS Protection Standard für das virtuelle Netzwerk des Diensts, der über öffentliche Endpunkte verfügt, unter Verwendung des im ersten Schritt erstellten DDoS Protection-Plans. Schrittweise Anleitungen dazu finden Sie unter [Aktivieren des DDoS Protection Standard-Plans](manage-ddos-protection.md#enable-ddos-protection-for-an-existing-virtual-network).
    > [!IMPORTANT] 
    > Nachdem Azure DDoS Protection Standard für ein virtuelles Netzwerk aktiviert wurde, werden alle öffentlichen IP-Adressen in diesem virtuellen Netzwerk automatisch geschützt. Der Ursprung dieser öffentlichen IP-Adressen kann sich innerhalb von Azure (Clientabonnement) oder außerhalb von Azure befinden. 
-4. Optional können Sie Azure DDoS Protection Standard-Telemetriedaten und -Angriffsanalysen in Ihr anwendungsspezifisches Dashboard für Kunden integrieren. Weitere Informationen zum Verwenden von Telemetriedaten finden Sie unter [Anzeigen und Konfigurieren der DDoS Protection-Telemetrie](telemetry-monitoring-alerting.md). 
+4. Optional können Sie Azure DDoS Protection Standard-Telemetriedaten und -Angriffsanalysen in Ihr anwendungsspezifisches Dashboard für Kunden integrieren. Weitere Informationen zum Verwenden von Telemetriedaten finden Sie unter [Anzeigen und Konfigurieren der DDoS Protection-Telemetrie](telemetry.md). 
 
 ### <a name="onboarding-guides-and-technical-documentation"></a>Anleitungen zum Onboarding und technische Dokumentation
 

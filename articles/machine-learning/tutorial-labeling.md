@@ -11,12 +11,12 @@ author: sdgilley
 ms.reviewer: ranku
 ms.date: 04/09/2020
 ms.custom: data4ml
-ms.openlocfilehash: 5aec3d6bb2afeadda64ac19563f8334a6aef3b77
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 238801171d19191bcac505f0c95395320f96d75c
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97347505"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882465"
 ---
 # <a name="tutorial-create-a-labeling-project-for-multi-class-image-classification"></a>Tutorial: Erstellen eines Beschriftungsprojekts für mehrklassige Bildklassifizierung 
 
@@ -104,7 +104,8 @@ Da Sie nun Zugriff auf die Daten haben, die Sie beschriften lassen möchten, ers
 1. Verwenden Sie die folgende Eingabe für das Formular **Dataset aus Datenspeicher erstellen**:
 
     1. Fügen Sie auf dem Formular **Grundlegende Infos** einen Namen hinzu. Hier verwenden wir **images-for-tutorial**.  Fügen Sie nach Wunsch eine Beschreibung hinzu.  Wählen Sie **Weiter** aus.
-    1. Verwenden Sie im Formular **Datenspeicherauswahl** die Dropdownliste, um Ihren **zuvor erstellten Datenspeicher** auszuwählen, z. B. **tutorial_images (Azure Blob Storage)** .
+    1. Wählen Sie im Formular **Datenspeicherauswahl** die Option **Zuvor erstellter Datenspeicher** aus. Klicken Sie dann auf den Datenspeichernamen, und wählen Sie **Select datastore** (Datenspeicher auswählen) aus.
+    1. Vergewissern Sie sich auf der nächsten Seite, dass der aktuell ausgewählte Datenspeicher der richtige ist. Falls nicht, wählen Sie **Zuvor erstellter Datenspeicher** aus, und wiederholen Sie den vorherigen Schritt.
     1. Wählen Sie als Nächstes weiterhin im Formular **Datenspeicherauswahl** die Option **Durchsuchen** und dann **MultiClass - DogsCats** aus.  Wählen Sie **Speichern** aus, um **/MultiClass - DogsCats** als Pfad zu verwenden.
     1. Wählen Sie **Weiter** aus, um Details zu bestätigen, und dann **Erstellen**, um das Dataset zu erstellen.
     1. Wählen Sie den Kreis neben dem Namen des Datasets in der Liste aus, z. B. **images-for-tutorial**.

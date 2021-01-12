@@ -3,19 +3,19 @@ title: Anpassen eines Personenmodells mit der Video Indexer-Website
 titleSuffix: Azure Media Services
 description: Erfahren Sie, wie Sie ein Personenmodell mit der Video Indexer-Website anpassen
 services: media-services
-author: anikaz
-manager: johndeu
+author: Juliako
+manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 08/06/2020
-ms.author: kumud
-ms.openlocfilehash: 9f5a18cc51aa92b53a5391404b1e9d3fc800bb47
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 12/16/2020
+ms.author: juliako
+ms.openlocfilehash: 890f8c159c3e8e8d0b4164cf218f320551ea63ec
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91356620"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97628934"
 ---
 # <a name="customize-a-person-model-with-the-video-indexer-website"></a>Anpassen eines Personenmodells mit der Video Indexer-Website
 
@@ -26,34 +26,27 @@ Sie können die Video Indexer-Website verwenden, um Gesichter zu bearbeiten, die
 ## <a name="central-management-of-person-models-in-your-account"></a>Zentrale Verwaltung von Personenmodellen in Ihrem Konto
 
 1. Um die Personenmodelle in Ihrem Konto anzuzeigen, zu bearbeiten und zu löschen, gehen Sie zur Video Indexer-Website, und melden Sie sich an.
+1. Wählen Sie links auf der Seite die Schaltfläche „Anpassung des Inhaltsmodells“ aus.
 
-2. Wählen Sie in der oberen rechten Ecke der Seite die Schaltfläche „Anpassung des Inhaltsmodells“ aus.
-
-    ![Screenshot: Video Indexer mit ausgewählter Schaltfläche für die Anpassung des Inhaltsmodells](./media/customize-face-model/content-model-customization.png)
-
-3. Wählen Sie die Registerkarte „Personen“.
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/content-model-customization/content-model-customization.png" alt-text="Anpassen eines Inhaltsmodells":::
+1. Wählen Sie die Registerkarte „Personen“.
 
     Es wird das Standardpersonenmodell für Ihr Konto angezeigt. Das Standardpersonenmodell enthält alle Gesichter, die Sie in den Einblicken Ihrer Videos bearbeitet oder geändert haben, für die Sie während der Indizierung kein benutzerdefiniertes Personenmodell angegeben haben.
 
     Wenn Sie weitere Personenmodelle erstellt haben, werden diese auf dieser Seite ebenfalls aufgeführt.
 
-    ![Screenshot: Dialogfeld „Anpassung des Inhaltsmodells“](./media/customize-face-model/content-model-customization-people-tab.png)
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/customize-face-model/content-model-customization-people-tab.png" alt-text="Personen anpassen":::
 
 ## <a name="create-a-new-person-model"></a>Erstellen eines neuen Personenmodells
 
-1. Wählen Sie die Schaltfläche **+ Modell hinzufügen** aus.
+1. Wählen Sie rechts die Schaltfläche **+ Modell hinzufügen** aus.
+1. Geben Sie den Namen des Modells ein. Jetzt können Sie dem neuen Personenmodell Personen und Gesichter hinzufügen.
+1. Wählen Sie die Menüschaltfläche „Liste“, und wählen Sie **Person hinzufügen** aus.
 
-    ![Screenshot: Dialogfeld „Anpassung des Inhaltsmodells“ mit ausgewählter Registerkarte „Personen“](./media/customize-face-model/add-new-person.png)
-
-2. Geben Sie den Namen des Modells ein, und wählen Sie die Schaltfläche neben dem Namen aus.
-
-    ![Screenshot: Dialogfeld „Anpassung des Inhaltsmodells“ mit einem für das Modell eingegebenen Namen](./media/customize-face-model/add-new-person2.png)
-
-    Sie haben ein neues Personenmodell erstellt. Jetzt können Sie Gesichter zum neuen Personenmodell hinzufügen.
-
-3. Wählen Sie die Menüschaltfläche „Liste“, und wählen Sie **Person hinzufügen** aus.
-
-    ![Screenshot: Dialogfeld „Anpassung des Inhaltsmodells“ mit einem Kontextmenü für Ihr neues Modell mit der Option „Person hinzufügen“](./media/customize-face-model/add-new-person3.png)
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/customize-face-model/add-new-person.png" alt-text="Hinzufügen einer Person":::
 
 ## <a name="add-a-new-person-to-a-person-model"></a>Hinzufügen einer neuen Person zu einem Personenmodell
 
@@ -61,14 +54,9 @@ Sie können die Video Indexer-Website verwenden, um Gesichter zu bearbeiten, die
 > Mit dem Video Indexer können Sie mehrere Personen mit dem gleichen Namen in einem Personenmodell hinzufügen. Aus Gründen der Benutzerfreundlichkeit und Übersichtlichkeit wird jedoch empfohlen, dass Sie jeder Person in Ihrem Modell eindeutige Namen geben.
 
 1. Um ein neues Gesicht zu einem Personenmodell hinzuzufügen, wählen Sie die Menüschaltfläche „Liste“ neben dem Personenmodell aus, dem Sie das Gesicht hinzufügen möchten.
-
 1. Wählen Sie im Menü **+ Person hinzufügen** aus.
 
-    ![Screenshot: Dialogfeld „Anpassung des Inhaltsmodells“ bereit für das Hinzufügen einer Person über das Kontextmenü](./media/customize-face-model/add-new-face.png)
-
     In einem Popupfenster werden Sie zum Ausfüllen der Personendetails aufgefordert. Geben Sie den Namen der Person ein, und aktivieren Sie das Kontrollkästchen.
-
-    ![Screenshot: Details zu einer Person](./media/customize-face-model/add-new-face2.png)
 
     Sie können dann aus Ihrem Datei-Explorer wählen oder die Gesichtsbilder des Gesichts per Drag & Drop verschieben. Video Indexer akzeptiert alle standardmäßigen Bilddateitypen (z.B: JPG, PNG und mehr).
 
@@ -79,15 +67,9 @@ Sie können die Video Indexer-Website verwenden, um Gesichter zu bearbeiten, die
 Sie können jedes Personenmodell in Ihrem Konto umbenennen, einschließlich des standardmäßigen Personenmodells. Selbst wenn Sie Ihr standardmäßiges Personenmodell umbenennen, dient es weiterhin als das standardmäßige Personenmodell in Ihrem Konto.
 
 1. Wählen Sie die Menüschaltfläche „Liste“ neben dem Personenmodell aus, das Sie umbenennen möchten.
-2. Wählen Sie im Menü die Option **Umbenennen** aus.
-
-    ![Screenshot: Dialogfeld „Anpassung des Inhaltsmodells“ mit einem Kontextmenü und der Option zum Umbenennen eines Personenmodells ](./media/customize-face-model/rename-person.png)
-
-3. Wählen Sie den aktuellen Namen des Modells aus, und geben Sie den neuen Namen ein.
-
-    ![Screenshot: umbenanntes Personenmodell](./media/customize-face-model/rename-person2.png)
-
-4. Aktivieren Sie das Kontrollkästchen, damit Ihr Modell umbenannt wird.
+1. Wählen Sie im Menü die Option **Umbenennen** aus.
+1. Wählen Sie den aktuellen Namen des Modells aus, und geben Sie den neuen Namen ein.
+1. Aktivieren Sie das Kontrollkästchen, damit Ihr Modell umbenannt wird.
 
 ## <a name="delete-a-person-model"></a>Löschen eines Personenmodells
 
@@ -95,12 +77,7 @@ Sie können jedes Personenmodell löschen, das Sie in Ihrem Konto erstellt haben
 
 1. Wählen Sie im Menü **Löschen** aus.
 
-    ![Screenshot: Dialogfeld „Anpassung des Inhaltsmodells“ mit einem Kontextmenü und der Option zum Löschen eines Personenmodells](./media/customize-face-model/delete-person.png)
-
     Ein Popupfenster wird eingeblendet und informiert Sie, dass diese Aktion das Personenmodell und alle darin enthaltenen Personen und Dateien löscht. Diese Aktion kann nicht rückgängig gemacht werden.
-
-    ![Screenshot: Bestätigungsdialogfeld zum Löschen des Personenmodells](./media/customize-face-model/delete-person2.png)
-
 1. Wenn Sie sicher sind, wählen Sie erneut löschen aus.
 
 > [!NOTE]
@@ -149,19 +126,10 @@ Sie können ein Personenmodell verwenden, um Ihr neues Video zu indizieren, inde
 
 Um Ihr Personenmodell für ein neues Video zu verwenden, führen Sie die folgenden Schritte aus:
 
-1. Wählen Sie die Schaltfläche **Hochladen** oben auf der Seite aus.
-
-    ![Screenshot: Schaltfläche „Hochladen“](./media/customize-face-model/upload.png)
-
-1. Legen Sie Ihre oder Videodatei in dem Kreis ab, oder suchen Sie nach Ihrer Datei.
+1. Wählen Sie die Schaltfläche **Hochladen** rechts auf der Seite aus.
+1. Legen Sie Ihre Videodatei ab, oder suchen Sie nach Ihrer Datei.
 1. Wählen Sie den Pfeil **Erweiterte Optionen** aus.
-
-    ![Screenshot: Dialogfeld „Mediendatei hochladen“](./media/customize-face-model/upload2.png)
-
 1. Wählen Sie die Dropdownliste und dann das von Ihnen erstellte Personenmodell aus.
-
-    ![Screenshot: Dialogfeld „Mediendatei hochladen“ mit dem in den erweiterten Optionen ausgewählten Standardpersonenmodel](./media/customize-face-model/upload3.png)
-
 1. Wählen Sie unten auf der Seite die Option **Hochladen** aus, und Ihr neues Video wird mithilfe des Personenmodells indiziert.
 
 Wenn Sie beim Hochladen kein Personenmodell angeben, indiziert der Video Indexer das Video anhand des standardmäßigen Personenmodells in Ihrem Konto.
@@ -178,9 +146,6 @@ Sie sehen Optionen zum Bearbeiten, Löschen und Neuindizieren Ihres Videos.
 
     Sie können nun das Personenmodell auswählen, mit dem Sie Ihr Video neu indizieren möchten.
 1. Wählen Sie die Dropdownliste und dann das Personenmodell aus, das Sie verwenden möchten.
-
-    ![Screenshot: Optionen für ein Video, einschließlich der Auswahl eines Personenmodells](./media/customize-face-model/reindex2.png)
-
 1. Wählen Sie die Schaltfläche **Neuindizieren** aus, und Ihr Video wird mithilfe Ihres Personenmodell erneut indiziert.
 
 Alle neuen Bearbeitungen, die Sie an den Gesichtern vornehmen, die in dem Video erkannt wurden, das Sie gerade neu indiziert haben, werden in dem Personenmodell gespeichert, mit dem Sie das Video neu indiziert haben.
@@ -211,15 +176,11 @@ Wenn Sie dem Video beim Hochladen kein Personenmodell zuweisen, wird Ihre Bearbe
 
 Wenn Sie ein Gesicht mit dem Namen einer vorhandenen Person im Personenmodell benennen, das das Video verwendet, werden die erkannten Gesichtsbilder aus diesem Video dieser Person mit dem zusammengeführt, was bereits im Modell vorhanden ist. Wenn Sie ein Gesicht mit einem neuen Namen benennen, wird ein neuer Personeneintrag in dem Personenmodell erstellt, das vom Video verwendet wird.
 
-![Screenshot: Gesicht mit hinzugefügtem Namen](./media/customize-face-model/edit-face2.png)
-
 ### <a name="delete-a-face"></a>Löschen eines Gesichts
 
 Um ein erkanntes Gesicht in Ihrem Video zu löschen, wechseln Sie zur Registerkarte „Erkenntnisse“, und wählen Sie oben rechts im Bereich das Stiftsymbol aus. Wählen Sie unter dem Namen des Gesichts die Option **Löschen** aus. Durch diese Aktion wird das erkannte Gesicht aus dem Video entfernt. Das Gesicht der Person wird in den anderen Videos, in denen es vorkommt, weiterhin erkannt. Sie können das Gesicht aber auch aus diesen Videos löschen, nachdem sie indiziert wurden.
 
 Die Person, wenn sie benannt wurde, bleibt auch im Personenmodell bestehen, das zur Indizierung des Videos verwendet wurde, aus dem Sie das Gesicht gelöscht haben, es sei denn, Sie löschen die Person ausdrücklich aus dem Personenmodell.
-
-![Löschen eines Gesichts in Ihrem Video](./media/customize-face-model/delete-face.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

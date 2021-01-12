@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 08/28/2020
+ms.date: 01/05/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: 75428b28095b0e425a1670caffcf960aa6ae58f6
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 28b5c107fb35c7bda9b1680050b92004436b98ff
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185503"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935461"
 ---
 # <a name="tutorial-transform-data-with-azure-stack-edge-pro"></a>Tutorial: Transformieren von Daten mit Azure Stack Edge Pro
 
@@ -37,7 +37,6 @@ In diesem Tutorial lernen Sie Folgendes:
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Stellen Sie Folgendes sicher, bevor Sie eine Computerolle auf Ihrem Azure Stack Edge Pro-Gerät einrichten:
-
 - Sie haben das Azure Stack Edge Pro-Gerät wie unter [Aktivieren von Azure Stack Edge Pro](azure-stack-edge-gpu-deploy-activate.md) beschrieben aktiviert.
 
 
@@ -45,36 +44,36 @@ Stellen Sie Folgendes sicher, bevor Sie eine Computerolle auf Ihrem Azure Stack 
 
 Sie erstellen eine IoT Hub-Ressource, um die Computeumgebung in Ihrer Azure Stack Edge Pro-Instanz zu konfigurieren.
 
-1. Navigieren Sie im Azure-Portal für Ihre Azure Stack Edge-Ressource zu **Übersicht**. Wählen Sie im Bereich auf der rechten Seite auf der Kachel **Compute** die Option **Erste Schritte**.
+1. Navigieren Sie im Azure-Portal für Ihre Azure Stack Edge-Ressource zu **Übersicht**, und wählen Sie **IoT Edge** aus.
 
-    ![Erste Schritte mit Compute](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-1.png)
+   ![Erste Schritte mit Compute](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-1.png)
 
-2. Wählen Sie auf der Kachel **Edgecomputing konfigurieren** die Option **Compute konfigurieren**.
+2. Wählen Sie unter **IoT Edge-Dienst aktivieren** die Option **Hinzufügen** aus.
 
-    ![Konfigurieren der Computeumgebung](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-2.png)
+   ![Konfigurieren der Computeumgebung](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-2.png)
 
-3. Geben Sie auf dem Blatt **Edgecomputing konfigurieren** Folgendes ein:
+3. Geben Sie unter **Create IoT Edge service** (IoT Edge-Dienst erstellen) Einstellungen für Ihre IoT Hub-Ressource ein:
 
-   
-    |Feld  |Wert  |
-    |---------|---------|
-    |IoT Hub     | Wählen Sie zwischen **Neu** und **Vorhanden**. <br> Standardmäßig wird ein Standard-Tarif (S1) verwendet, um eine IoT-Ressource zu erstellen. Wenn Sie eine IoT-Ressource im Free-Tarif verwenden möchten, können Sie diese erstellen und dann als vorhandene Ressource auswählen. <br> Die IoT Hub-Ressource nutzt in jedem Fall dasselbe Abonnement und dieselbe Ressourcengruppe wie die Azure Stack Edge-Ressource.     |
-    |Name     |Geben Sie einen Namen für Ihre IoT Hub-Ressource ein.         |
+   |Feld   |Wert    |
+   |--------|---------|
+   |Abonnement      | Von der Azure Stack Edge-Ressource verwendetes Abonnement |
+   |Ressourcengruppe    | Von der Azure Stack Edge-Ressource verwendete Ressource |
+   |IoT Hub           | Wählen Sie **Neu erstellen** oder **Vorhandene verwenden** aus. <br> Standardmäßig wird ein Standard-Tarif (S1) verwendet, um eine IoT-Ressource zu erstellen. Wenn Sie eine IoT-Ressource im Free-Tarif verwenden möchten, können Sie diese erstellen und dann als vorhandene Ressource auswählen. <br> Die IoT Hub-Ressource nutzt in jedem Fall dasselbe Abonnement und dieselbe Ressourcengruppe wie die Azure Stack Edge-Ressource.     |
+   |Name              | Wenn Sie nicht den für eine neue IoT Hub-Ressource bereitgestellten Standardnamen verwenden möchten, geben Sie einen anderen Namen ein. |
 
     ![Erste Schritte mit Compute 2](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-3.png)
 
-4. Klicken Sie auf **Erstellen**. Die Erstellung der IoT Hub-Ressource dauert einige Minuten. Nachdem die IoT Hub-Ressource erstellt wurde, wird die Kachel **Compute konfigurieren** aktualisiert, um die Computekonfiguration anzuzeigen. 
+4. Wenn Sie die Einstellungen abgeschlossen haben, wählen Sie **Überprüfen + erstellen** aus. Überprüfen Sie die Einstellungen für Ihre IoT Hub-Ressource, und wählen Sie **Erstellen** aus.
+
+   Die Ressourcenerstellung für eine IoT Hub-Ressource dauert einige Minuten. Nach der Erstellung der Ressource ist in der **Übersicht** angegeben, dass der IoT Edge-Dienst jetzt ausgeführt wird.
 
     ![Erste Schritte mit Compute 3](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-4.png)
 
-5. Wählen Sie auf der Kachel **Compute konfigurieren** die Option **View Compute** (Compute anzeigen), um sich zu vergewissern, dass die Edgecomputing-Rolle konfiguriert wurde.
-    
-    ![Erste Schritte mit Compute 4](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-5.png)
+5. Wenn Sie überprüfen möchten, ob die Edge-Computerolle konfiguriert wurde, wählen Sie **Eigenschaften** aus.
 
-    > [!NOTE]
-    > Wird das Dialogfeld **Compute konfigurieren** geschlossen, bevor die IoT Hub-Instanz mit dem Azure Stack Edge Pro-Gerät verknüpft wird, wird die IoT Hub-Instanz erstellt, aber nicht in der Computekonfiguration angezeigt. 
-    
-    Wenn die Edge-Computerolle auf dem Edge-Gerät eingerichtet ist, werden zwei Geräte erstellt: ein IoT-Gerät und ein IoT Edge-Gerät. Beide Geräte können in der IoT Hub-Ressource angezeigt werden. Auf diesem IoT Edge-Gerät wird auch eine IoT Edge-Runtime ausgeführt. Derzeit ist für Ihr IoT Edge-Gerät nur die Linux-Plattform verfügbar.
+   ![Erste Schritte mit Compute 4](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-5.png)
+
+   Wenn die Edge-Computerolle auf dem Edge-Gerät eingerichtet ist, werden zwei Geräte erstellt: ein IoT-Gerät und ein IoT Edge-Gerät. Beide Geräte können in der IoT Hub-Ressource angezeigt werden. Auf diesem IoT Edge-Gerät wird auch eine IoT Edge-Runtime ausgeführt. Derzeit ist für Ihr IoT Edge-Gerät nur die Linux-Plattform verfügbar.
 
 
 ## <a name="add-shares"></a>Hinzufügen von Freigaben
@@ -94,11 +93,11 @@ Für die einfache Bereitstellung in diesem Tutorial benötigen Sie zwei Freigabe
 
         ![Hinzufügen einer Edgefreigabe](./media/azure-stack-edge-j-series-deploy-configure-compute/add-edge-share-1.png) 
 
-    Wenn Sie eine lokale NFS-Freigabe erstellt haben, können Sie die folgende rsync-Befehlsoption verwenden, um Dateien auf die Freigabe zu kopieren:
+    Wenn Sie eine lokale NFS-Freigabe erstellt haben, können Sie die folgende Befehlsoption zur Remotesynchronisierung (`rsync`) verwenden, um Dateien auf die Freigabe zu kopieren:
 
     `rsync <source file path> < destination file path>`
 
-    Weitere Informationen zum Befehl `rsync` finden Sie in der [Dokumentation zu Rsync](https://www.computerhope.com/unix/rsync.htm).
+    Weitere Informationen zum Befehl `rsync` finden Sie in der [Dokumentation zu `Rsync`](https://www.computerhope.com/unix/rsync.htm).
 
     > [!NOTE]
     > Um eine NFS-Freigabe in das Computenetzwerk einzubinden, muss es im gleichen Subnetz wie die virtuelle IP-Adresse von NFS konfiguriert werden. Ausführliche Informationen zum Konfigurieren des Computenetzwerk finden Sie unter [Aktivieren des Computenetzwerks auf Ihrem Azure Stack Edge Pro-Gerät](azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy.md).
@@ -154,15 +153,15 @@ Führen Sie die folgenden Schritte aus, um zu überprüfen, ob das Modul ausgef�
  
 1. Stellen Sie im Datei-Explorer eine Verbindung mit den lokalen und anderen Edgefreigaben her, die Sie zuvor erstellt haben.
 
-    ![Überprüfen der Datentransformation](./media/azure-stack-edge-j-series-deploy-configure-compute/verify-data-2.png) 
+    ![Überprüfen der Datentransformation 1](./media/azure-stack-edge-j-series-deploy-configure-compute/verify-data-2.png) 
  
 1. Fügen Sie der lokalen Freigabe Daten hinzu.
 
-    ![Überprüfen der Datentransformation](./media/azure-stack-edge-j-series-deploy-configure-compute/verify-data-3.png) 
+    ![Überprüfen der Datentransformation 2](./media/azure-stack-edge-j-series-deploy-configure-compute/verify-data-3.png) 
  
    Die Daten werden auf die Cloudfreigabe verschoben.
 
-    ![Überprüfen der Datentransformation](./media/azure-stack-edge-j-series-deploy-configure-compute/verify-data-4.png)  
+    ![Überprüfen der Datentransformation 3](./media/azure-stack-edge-j-series-deploy-configure-compute/verify-data-4.png)  
 
    Anschließend werden die Daten per Pushvorgang von der Cloudfreigabe in das Speicherkonto übertragen. Im Storage-Explorer können Sie die Daten anzeigen.
 

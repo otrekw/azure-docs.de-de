@@ -6,12 +6,12 @@ ms.topic: reference
 ms.custom: devx-track-csharp
 ms.date: 02/20/2020
 ms.author: cshoe
-ms.openlocfilehash: 8bb07e650c99f18cfecbc7b7674e0ca0e5a01dae
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 159df4c228f74bb605c745e899d99bfff2aa511b
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95998905"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97763284"
 ---
 # <a name="signalr-service-output-binding-for-azure-functions"></a>SignalR Service-Ausgabebindung für Azure Functions
 
@@ -753,4 +753,5 @@ Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaft
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+- [Verarbeiten von Nachrichten von SignalR Service (Triggerbindung)](./functions-bindings-signalr-service-trigger.md)
 - [Zurückgeben der Dienstendpunkt-URL und des Zugriffstokens (Eingabebindung)](./functions-bindings-signalr-service-input.md)

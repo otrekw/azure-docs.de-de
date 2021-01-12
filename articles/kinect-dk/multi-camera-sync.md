@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 02/20/2020
 ms.topic: article
 keywords: Azure, Kinect, Spezifikationen, Hardware, DK, Funktionen, Tiefe, Farbe, RGB, IMU, Array, Tiefe, mehrere, Synchronisierung
-ms.openlocfilehash: 7c79101de5e5455ae2ff9fd8b5d8369a3832631c
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 30961152b31a659cb27e91a99d6806490998d18d
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91361159"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97592278"
 ---
 # <a name="synchronize-multiple-azure-kinect-dk-devices"></a>Synchronisierung mehrerer Azure Kinect DK-Geräte
 
@@ -88,6 +88,9 @@ Außerdem erhöhen die Unterschiede zwischen der Kamerauhr und der Gerätefirmwa
 Wenn Sie einen Offset von 160&mu;s verwenden, können Sie bis zu neun zusätzliche Tiefenkameras konfigurieren, sodass jeder Laser eingeschaltet wird, während die anderen Laser inaktiv sind.
 
 Verwenden Sie in Ihrer Software ```depth_delay_off_color_usec``` oder ```subordinate_delay_off_master_usec```, um sicherzustellen, dass jeder IR-Laser in seinem eigenen 160&mu;s-Fenster oder in einem anderen Sichtfeld ausgelöst wird.
+
+> [!NOTE]  
+> Die tatsächliche Impulsbreite beträgt 125 Mikrosekunden, aber wir geben 160 Mikrosekunden an, um einen gewissen Spielraum zu haben. Bei NFOV UNBINNED folgt beispielsweise auf jeden 125 Mikrosekunden-Impuls ein 1.450 Mikrosekunden-Leerlauf. Die Summe, (9 x 125) + (8 x 1.450), ergibt die Belichtungszeit von 12,8 ms. Sie können die Belichtung von 2 Geräten am engsten verschachteln, wenn der erste Impuls der zweiten Kamera in den ersten Leerlaufzeitraum der ersten Kamera fällt. Die Verzögerung zwischen der ersten und der zweiten Kamera könnte ein Minimum von 125 Mikrosekunden betragen (die Breite eines Impulses), aber die 160 Mikrosekunden dienen einem empfohlenen gewissen Spielraum. 160 Mikrosekunden ermöglichen Ihnen, die Belichtungszeiten von maximal 10 Kameras zu verschachteln.
 
 ## <a name="prepare-your-devices-and-other-hardware"></a>Vorbereiten von Geräten und anderer Hardware
 

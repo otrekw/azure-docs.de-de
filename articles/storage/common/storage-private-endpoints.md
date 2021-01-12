@@ -10,12 +10,12 @@ ms.date: 03/12/2020
 ms.author: santoshc
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 0da970724a5d6f0ad42ba64939f316ec1ada855b
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 7af2e6794d0d2f37c342a86b2f36b94c9601cc7e
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905552"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617254"
 ---
 # <a name="use-private-endpoints-for-azure-storage"></a>Verwenden privater Endpunkte für Azure Storage
 
@@ -45,6 +45,9 @@ Speicherkontobesitzer können Einwilligungsanforderungen und die privaten Endpun
 > Wenn der Zugriff auf Ihr Speicherkonto nur über den privaten Endpunkt erfolgen soll, konfigurieren Sie die Speicherfirewall so, dass der Zugriff über den öffentlichen Endpunkt verweigert oder gesteuert wird.
 
 Sie können Ihr Speicherkonto schützen, indem nur Verbindungen über das VNET akzeptiert werden. Dazu [konfigurieren Sie die Speicherfirewall](storage-network-security.md#change-the-default-network-access-rule) so, dass der Zugriff über den öffentlichen Endpunkt standardmäßig verweigert wird. Sie brauchen keine Firewallregel, um Datenverkehr aus einem VNET mit einem privaten Endpunkt zuzulassen, da die Speicherfirewall nur den Zugriff über den öffentlichen Endpunkt steuert. Private Endpunkte verwenden stattdessen den Einwilligungsflow, um Subnetzen den Zugriff auf den Speicherdienst zu gewähren.
+
+> [!NOTE]
+> Beim Kopieren von Blobs zwischen Speicherkonten benötigt der Client Netzwerkzugriff auf beide Konten. Wenn Sie also einen privaten Link für ein einziges Konto (Quelle oder Ziel) verwenden möchten, stellen Sie sicher, dass der Client über Netzwerkzugriff auf das andere Konto verfügt. Weitere Informationen zu anderen Möglichkeiten zum Konfigurieren des Netzwerkzugriffs finden Sie unter [Konfigurieren von Firewalls und virtuellen Netzwerken in Azure Storage](storage-network-security.md?toc=/azure/storage/blobs/toc.json). 
 
 ### <a name="private-endpoints-for-azure-storage"></a>Private Endpunkte für Azure Storage
 

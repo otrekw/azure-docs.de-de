@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/22/2020
+ms.date: 12/25/2020
 ms.author: memildin
-ms.openlocfilehash: c0952e0f267f9c2511a2e80fa7106958d8dd0ee5
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 115d89783a849a9c4c7adb2fceceaf8d1575c785
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791884"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97795983"
 ---
 # <a name="security-recommendations-in-azure-security-center"></a>Sicherheitsempfehlungen in Azure Security Center 
 In diesem Thema wird erläutert, wie Sie die Empfehlungen in Azure Security Center anzeigen und nutzen können, mit denen Sie Ihre Azure-Ressourcen schützen.
@@ -40,9 +40,13 @@ Jede Empfehlung beinhaltet Folgendes:
 
 Security Center analysiert den Sicherheitsstatus Ihrer Ressourcen, um mögliche Sicherheitsrisiken zu identifizieren. 
 
-1. Öffnen Sie im Menü von Security Center die Seite **Empfehlungen** , um die für Ihre Umgebung geltenden Empfehlungen anzuzeigen. Die Empfehlungen sind nach Sicherheitssteuerungen gruppiert.
+1. Öffnen Sie im Menü von Security Center die Seite **Empfehlungen**, um die für Ihre Umgebung geltenden Empfehlungen anzuzeigen. Die Empfehlungen sind nach Sicherheitssteuerungen gruppiert.
 
-      ![Nach Sicherheitssteuerung gruppierte Empfehlungen](./media/security-center-recommendations/view-recommendations.png)
+    :::image type="content" source="./media/security-center-recommendations/view-recommendations.png" alt-text="Nach Sicherheitssteuerung gruppierte Empfehlungen" lightbox="./media/security-center-recommendations/view-recommendations.png":::
+
+1. Verwenden Sie die optionalen Filter oberhalb der Liste der Empfehlungen, um Empfehlungen zu Ressourcentyp, Schweregrad, Umgebung oder anderen Kriterien zu finden, die für Sie wichtig sind.
+
+    :::image type="content" source="media/security-center-recommendations/recommendation-list-filters.png" alt-text="Filter zum Verfeinern der Liste der Azure Security Center-Empfehlungen":::
 
 1. Erweitern Sie eine Steuerung, und wählen Sie eine bestimmte Empfehlung aus, um die Seite mit den Empfehlungsdetails anzuzeigen.
 
@@ -53,12 +57,12 @@ Security Center analysiert den Sicherheitsstatus Ihrer Ressourcen, um mögliche 
     1. Die Schaltflächen **Erzwingen** und **Ablehnen** für unterstützte Empfehlungen (siehe [Verhindern von Fehlkonfigurationen mit den Optionen zum Erzwingen/Ablehnen für Empfehlungen](prevent-misconfigurations.md))
     1. **Angabe des Schweregrads**
     1. **Aktualisierungsintervall** (sofern relevant) 
-    1. **Beschreibung** : Eine kurze Beschreibung des Problems
-    1. **Schritte zur Bereinigung** : Eine Beschreibung der manuellen Schritte, die erforderlich sind, um das Sicherheitsproblem für die betroffenen Ressourcen zu beheben. Für Empfehlungen unter „Schnellkorrektur“ können Sie **Korrekturlogik anzeigen** auswählen, bevor Sie die vorgeschlagene Lösung auf die Ressourcen anwenden. 
-    1. **Betroffene Ressourcen** : Die Ressourcen sind in Registerkarten unterteilt:
-        - **Fehlerfreie Ressourcen** : Relevante Ressourcen, die entweder nicht beeinträchtigt sind oder bei denen das Problem bereits behoben wurde.
-        - **Fehlerhafte Ressourcen** : Ressourcen, die weiterhin vom identifizierten Problem betroffen sind.
-        - **Nicht anwendbare Ressourcen** : Ressourcen, für die die Empfehlung keine definitive Antwort geben kann. Auf dieser Registerkarte werden auch Gründe für die jeweilige Ressource angegeben. 
+    1. **Beschreibung**: Eine kurze Beschreibung des Problems
+    1. **Schritte zur Bereinigung**: Eine Beschreibung der manuellen Schritte, die erforderlich sind, um das Sicherheitsproblem für die betroffenen Ressourcen zu beheben. Für Empfehlungen unter „Schnellkorrektur“ können Sie **Korrekturlogik anzeigen** auswählen, bevor Sie die vorgeschlagene Lösung auf die Ressourcen anwenden. 
+    1. **Betroffene Ressourcen**: Die Ressourcen sind in Registerkarten unterteilt:
+        - **Fehlerfreie Ressourcen**: Relevante Ressourcen, die entweder nicht beeinträchtigt sind oder bei denen das Problem bereits behoben wurde.
+        - **Fehlerhafte Ressourcen**: Ressourcen, die weiterhin vom identifizierten Problem betroffen sind.
+        - **Nicht anwendbare Ressourcen**: Ressourcen, für die die Empfehlung keine definitive Antwort geben kann. Auf dieser Registerkarte werden auch Gründe für die jeweilige Ressource angegeben. 
 
             :::image type="content" source="./media/security-center-recommendations/recommendations-not-applicable-reasons.png" alt-text="Nicht anwendbare Ressourcen mit Gründen":::
     1. Aktionsschaltflächen zum Beheben über die Empfehlung oder Auslösen einer Logik-App

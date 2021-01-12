@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 10/21/2020
+ms.date: 01/05/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: cdfd012d5015e156439a1afa89e818bf82b64dc6
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: e8b58069dc41d5272c67edcb1f05ebd9f1bc5ad4
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96449340"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935602"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-pro-with-gpu"></a>Tutorial: Vorbereiten der Bereitstellung von Azure Stack Edge Pro-Geräten mit GPU 
 
@@ -36,7 +36,7 @@ Für die Azure Stack Edge Pro-Bereitstellung müssen Sie zunächst Ihre Umgebung
 | --- | --- |
 | **Vorbereitung** |Diese Schritte müssen zur Vorbereitung der anstehenden Bereitstellung ausgeführt werden. |
 | **[Konfigurationsprüfliste für die Bereitstellung](#deployment-configuration-checklist)** |Verwenden Sie diese Prüfliste, um vor und während der Bereitstellung Informationen zu erfassen und aufzuzeichnen. |
-| **[Voraussetzungen für die Bereitstellung](#prerequisites)** |Mit diesen Schritten überprüfen Sie, ob die Umgebung für die Bereitstellung vorbereitet ist. |
+| **[Voraussetzungen für die Bereitstellung](#prerequisites)** |Anhand dieser Voraussetzungen überprüfen Sie, ob die Umgebung für die Bereitstellung vorbereitet ist. |
 |  | |
 |**Tutorials für die Bereitstellung** |Diese Tutorials sind erforderlich, um Ihr Azure Stack Edge Pro-Gerät in der Produktionsumgebung bereitzustellen. |
 |**[1. Vorbereiten des Azure-Portals für Azure Stack Edge Pro](azure-stack-edge-gpu-deploy-prep.md)** |Erstellen und konfigurieren Sie Ihre Azure Stack Edge-Ressource, bevor Sie ein physisches Azure Stack Edge-Gerät installieren. |
@@ -46,7 +46,7 @@ Für die Azure Stack Edge Pro-Bereitstellung müssen Sie zunächst Ihre Umgebung
 |**[5. Konfigurieren von Geräteeinstellungen für Azure Stack Edge Pro](azure-stack-edge-gpu-deploy-set-up-device-update-time.md)** |Weisen Sie einen Gerätenamen und eine DNS-Domäne zu, und konfigurieren Sie den Updateserver und die Gerätezeit. |
 |**[6. Konfigurieren von Sicherheitseinstellungen für Azure Stack Edge Pro](azure-stack-edge-gpu-deploy-configure-certificates.md)** |Konfigurieren Sie Zertifikate für Ihr Gerät. Verwenden Sie von Geräten generierte Zertifikate, oder stellen Sie Ihre eigenen Zertifikate bereit.   |
 |**[7. Aktivieren von Azure Stack Edge Pro](azure-stack-edge-gpu-deploy-activate.md)** |Verwenden Sie den Aktivierungsschlüssel des Diensts, um das Gerät zu aktivieren. Das Gerät ist bereit, SMB- oder NFS-Freigaben einzurichten oder eine Verbindung über REST herzustellen. |
-|**[8. Konfigurieren von Compute](azure-stack-edge-gpu-deploy-configure-compute.md)** |Konfigurieren Sie die Computerolle auf Ihrem Gerät. Dabei wird auch ein Kubernetes-Cluster erstellt. |
+|**[8. Konfigurieren von Compute](azure-stack-edge-gpu-deploy-configure-compute.md)** |Konfigurieren Sie die Computerolle auf Ihrem Gerät. Außerdem wird ein Kubernetes-Cluster erstellt. |
 |**[9A. Übertragen von Daten mit Edge-Freigaben](azure-stack-edge-j-series-deploy-add-shares.md)** |Fügen Sie Freigaben hinzu, und stellen Sie über SMB oder NFS eine Verbindung mit Freigaben her. |
 |**[9B. Übertragen von Daten mit Edge-Speicherkonten](azure-stack-edge-j-series-deploy-add-storage-accounts.md)** |Fügen Sie Speicherkonten hinzu, und stellen Sie über REST-APIs eine Verbindung mit Blob Storage her. |
 
@@ -66,7 +66,7 @@ Im Folgenden finden Sie die Konfigurationsvoraussetzungen für die Azure Stack E
 
 Stellen Sie Folgendes sicher, bevor Sie beginnen:
 
-- Ihr Microsoft Azure-Abonnement ist für eine Azure Stack Edge-Ressource aktiviert. Stellen Sie sicher, dass Sie ein unterstütztes Abonnement verwendet haben, z. B. [Microsoft Enterprise Agreement (EA)](https://azure.microsoft.com/overview/sales-number/), [Cloud Solution Provider (CSP)](/partner-center/azure-plan-lp) oder [Microsoft Azure Sponsorship](https://azure.microsoft.com/offers/ms-azr-0036p/). Abonnements mit nutzungsbasierter Bezahlung werden nicht unterstützt. Informationen zum Identifizieren des Azure-Abonnementtyps finden Sie unter [Was ist ein Azure-Angebot?](../cost-management-billing/manage/switch-azure-offer.md#what-is-an-azure-offer).
+- Ihr Microsoft Azure-Abonnement ist für eine Azure Stack Edge-Ressource aktiviert. Stellen Sie sicher, dass Sie ein unterstütztes Abonnement verwendet haben, z. B. [Microsoft Enterprise Agreement (EA)](https://azure.microsoft.com/overview/sales-number/), [Cloud Solution Provider (CSP)](/partner-center/azure-plan-lp) oder [Microsoft Azure Sponsorship](https://azure.microsoft.com/offers/ms-azr-0036p/). Abonnements mit nutzungsbasierter Bezahlung werden nicht unterstützt. Informationen zum Identifizieren des Azure-Abonnementtyps finden Sie unter [Was ist ein Azure-Angebot?](../cost-management-billing/manage/switch-azure-offer.md#what-is-an-azure-offer).
 - Sie verfügen für die Azure Stack Edge Pro-/Data Box Gateway-, IoT Hub- und Azure Storage-Ressourcen über Zugriff als Besitzer oder Mitwirkender auf Ressourcengruppenebene.
 
     - Für die Erstellung von Azure Stack Edge-/Data Box Gateway-Ressourcen müssen Sie mindestens über Berechtigungen als Mitwirkender auf der Ressourcengruppenebene verfügen. 
@@ -125,21 +125,21 @@ Um eine Azure Stack Edge-Ressource zu erstellen, führen Sie im Azure-Portal die
     
     |Einstellung  |Wert  |
     |---------|---------|
-    |Subscription    |Dieser Wert wird auf der Grundlage Ihrer zuvor getroffenen Auswahl automatisch aufgefüllt. Das Abonnement ist mit Ihrem Abrechnungskonto verknüpft. |
+    |Subscription    |Das Abonnement wird auf der Grundlage der zuvor getroffenen Auswahl automatisch eingetragen. Das Abonnement ist mit Ihrem Abrechnungskonto verknüpft. |
     |Resource group  |Wählen Sie eine vorhandene Gruppe aus, oder erstellen Sie eine neue Gruppe.<br>Erfahren Sie mehr über [Azure-Ressourcengruppen](../azure-resource-manager/management/overview.md).     |
 
 7. Geben Sie die folgenden **Instanzendetails** ein, bzw. wählen Sie sie aus:
 
     |Einstellung  |Wert  |
     |---------|---------|
-    |Name   | Ein Anzeigename, der die Ressource identifiziert.<br>Der Name muss 2 bis 50 Zeichen lang sein und darf nur Buchstaben, Zahlen und Bindestriche enthalten.<br> Der Name muss mit einem Buchstaben oder einer Zahl beginnen und enden.        |
+    |Name   | Ein Anzeigename, der die Ressource identifiziert.<br>Der Name muss 2 bis 50 Zeichen lang sein und darf nur Buchstaben, Zahlen und Bindestriche enthalten.<br> Der Name muss mit einem Buchstaben oder einer Zahl beginnen und enden.        |
     |Region     |Eine Liste aller Regionen, in denen die Azure Stack Edge-Ressource verfügbar ist, finden Sie unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). Die für Azure Government verfügbaren Regionen finden Sie bei Bedarf unter [Azure-Regionen](https://azure.microsoft.com/global-infrastructure/regions/).<br> Wählen Sie den Standort aus, der der geografischen Region, in der Ihr Gerät bereitgestellt werden soll, am nächsten ist.|
 
     ![Ressource erstellen5](media/azure-stack-edge-gpu-deploy-prep/create-resource-5.png)
 
 8. Klicken Sie auf **Weiter: Lieferanschrift**.
 
-    - Falls Sie bereits über ein Gerät verfügen, aktivieren Sie das Kontrollkästchen **Ich habe ein Azure Stack Edge Pro-Gerät**.
+    - Falls Sie bereits über ein Gerät verfügen, aktivieren Sie das Kontrollkästchen **Ich besitze bereits ein Gerät.** .
 
         ![Ressource erstellen 6](media/azure-stack-edge-gpu-deploy-prep/create-resource-6.png)
 
@@ -157,7 +157,7 @@ Um eine Azure Stack Edge-Ressource zu erstellen, führen Sie im Azure-Portal die
 
 11. Klicken Sie auf **Erstellen**.
 
-Die Erstellung der Ressource dauert einige Minuten. Außerdem wird eine MSI erstellt, mit der das Azure Stack Edge-Gerät mit dem Ressourcenanbieter in Azure kommunizieren kann.
+Die Erstellung der Ressource dauert einige Minuten. Außerdem wird eine MSI-Datei erstellt, die die Kommunikation des Azure Stack Edge-Geräts mit dem Ressourcenanbieter in Azure ermöglicht.
 
 Nachdem die Ressource erfolgreich erstellt und bereitgestellt wurde, erhalten Sie eine Benachrichtigung. Wählen Sie **Zu Ressource wechseln** aus.
 
@@ -176,19 +176,17 @@ Wenn Sie während des Bestellvorgangs auf Probleme stoßen, informieren Sie sich
 
 Wenn die Azure Stack Edge-Ressource betriebsbereit ist, müssen Sie den Aktivierungsschlüssel abrufen. Dieser Schlüssel wird verwendet, um Ihr Azure Stack Edge Pro-Gerät zu aktivieren und mit der Ressource zu verbinden. Sie können diesen Schlüssel jetzt abrufen, während Sie sich im Azure-Portal befinden.
 
-1. Wählen Sie die von Ihnen erstellte Ressource aus. Wählen Sie **Übersicht** und anschließend **Geräteeinrichtung** aus.
+1. Wählen Sie die Ressource aus, die Sie erstellt haben, und wählen Sie **Übersicht** aus.
 
-    ![Auswählen von „Geräteeinrichtung“](media/azure-stack-edge-gpu-deploy-prep/azure-stack-edge-resource-2.png)
+2. Geben Sie im rechten Bereich einen Namen für Azure Key Vault an, oder übernehmen Sie den Standardnamen. Der Schlüsseltresorname kann aus 3 bis 24 Zeichen bestehen.
 
-2. Geben Sie auf der Kachel **Aktivieren** einen Namen für Azure Key Vault an, oder übernehmen Sie den Standardnamen. Der Schlüsseltresorname kann aus 3 bis 24 Zeichen bestehen. 
+   Für jede mit Ihrem Gerät aktivierte Azure Stack Edge-Ressource wird ein Schlüsseltresor erstellt. Im Schlüsseltresor können Sie Geheimnisse speichern und darauf zugreifen. So wird beispielsweise der Channel Integrity Key (CIK) für den Dienst im Schlüsseltresor gespeichert. 
 
-    Für jede mit Ihrem Gerät aktivierte Azure Stack Edge-Ressource wird ein Schlüsseltresor erstellt. Im Schlüsseltresor können Sie Geheimnisse speichern und darauf zugreifen. So wird beispielsweise der Channel Integrity Key (CIK) für den Dienst im Schlüsseltresor gespeichert. 
+   Nachdem Sie einen Schlüsseltresornamen angegeben haben, wählen Sie **Schlüssel generieren** aus, um einen Aktivierungsschlüssel zu erstellen. 
 
-    Nachdem Sie einen Schlüsseltresornamen angegeben haben, wählen Sie **Schlüssel generieren** aus, um einen Aktivierungsschlüssel zu erstellen. 
+   ![Abrufen des Aktivierungsschlüssels](media/azure-stack-edge-gpu-deploy-prep/azure-stack-edge-resource-3.png)
 
-    ![Abrufen des Aktivierungsschlüssels](media/azure-stack-edge-gpu-deploy-prep/azure-stack-edge-resource-3.png)
-
-    Warten Sie einige Minuten, während Schlüsseltresor und Aktivierungsschlüssel erstellt werden. Wählen Sie das Kopiersymbol, um den Schlüssel zu kopieren und für die spätere Verwendung zu speichern.
+   Warten Sie einige Minuten, während Schlüsseltresor und Aktivierungsschlüssel erstellt werden. Wählen Sie das Kopiersymbol, um den Schlüssel zu kopieren und für die spätere Verwendung zu speichern.<!--Verify that the new screen has a copy icon.-->
 
 
 > [!IMPORTANT]

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 11/28/2017
-ms.openlocfilehash: afe92351fe82a4e07665789c2ed4d4631be8731f
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 2e6da1783c3bec4958783494cb6928f5a6a69a58
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547451"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97822351"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-debug-apache-spark-applications-remotely-in-hdinsight-through-vpn"></a>Verwenden des Azure-Toolkits für IntelliJ zum Remotedebuggen von Apache Spark-Anwendungen über VPN
 
@@ -63,7 +63,7 @@ Wir empfehlen, auch einen Apache Spark-Cluster in Azure HDInsight zu erstellen, 
 
     ![Suchen nach dem Hauptknoten in Apache Ambari](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/ambari-cluster-headnodes.png)
 
-1. Kopieren Sie unten auf der angezeigten Seite im Bereich _ *Summary* * (Zusammenfassung) die **IP-Adresse** des Hauptknotens und den **Hostnamen**.
+1. Kopieren Sie unten auf der angezeigten Seite im Bereich _ *Summary** (Zusammenfassung) die **IP-Adresse** des Hauptknotens und den **Hostnamen**.
 
     ![Suchen nach der IP-Adresse in Apache Ambari](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/headnode-ip-address1.png)
 
@@ -179,7 +179,7 @@ Wir empfehlen, auch einen Apache Spark-Cluster in Azure HDInsight zu erstellen, 
 
    c. Speichern Sie die Datei .
 
-1. Fügen Sie die Hauptklasse für Ihre Anwendung hinzu. Klicken Sie im **Projekt-Explorer** (Projekt-Explorer) mit der rechten Maustaste auf **src** , zeigen Sie auf **New** (Neu), und wählen Sie dann **Scala Class** (Scala-Klasse) aus.
+1. Fügen Sie die Hauptklasse für Ihre Anwendung hinzu. Klicken Sie im **Projekt-Explorer** (Projekt-Explorer) mit der rechten Maustaste auf **src**, zeigen Sie auf **New** (Neu), und wählen Sie dann **Scala Class** (Scala-Klasse) aus.
 
     ![IntelliJ IDEA – Auswählen der Hauptklasse](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/hdi-spark-scala-code.png)
 

@@ -6,12 +6,12 @@ ms.author: bwren
 ms.subservice: metrics
 ms.topic: tutorial
 ms.date: 03/09/2020
-ms.openlocfilehash: 6ce9183fad50c43ea7070f5fa09e0d445caf89df
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 5dcb86ff4af2a68ecf0bb361e6da4f788ea32b62
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96451245"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881292"
 ---
 # <a name="tutorial-create-a-metrics-chart-in-azure-monitor"></a>Tutorial: Erstellen eines Metrikdiagramms in Azure Monitor
 Mit dem Metrik-Explorer – einem Azure Monitor-Feature im Azure-Portal – können Sie auf der Grundlage von Metrikwerten Diagramme erstellen, Trends visuell korrelieren sowie Spitzen und Einbrüche bei Metrikwerten untersuchen. Verwenden Sie den Metrik-Explorer, um die Integrität und Auslastung Ihrer Azure-Ressourcen zu untersuchen oder um Diagramme auf der Grundlage benutzerdefinierter Metriken zu zeichnen. 
@@ -40,7 +40,7 @@ Sie können den Metrik-Explorer entweder über das Menü „Azure Monitor“ ode
 
 1. Wählen Sie im Menü **Azure Monitor** oder im Abschnitt **Überwachung** des Menüs einer Ressource die Option **Metriken** aus.
 
-1. Wählen Sie unter **Bereich** die Ressource aus, für die Sie Metriken anzeigen möchten. Wenn Sie den Metrik-Explorer über das Menü einer Ressource geöffnet haben, ist der Bereich bereits angegeben.
+1. Wählen Sie unter **Bereich** die Ressource aus, für die Sie Metriken anzeigen möchten. Wenn Sie den Metrik-Explorer über das Menü einer Ressource geöffnet haben, ist der Bereich bereits angegeben. Weitere Informationen zu den verschiedenen Funktionen der Ressourcenbereichsauswahl finden Sie in [diesem Artikel](../platform/metrics-charts.md#resource-scope-picker).
 
     ![Auswählen eines Bereichs](media/tutorial-metrics-explorer/scope-picker.png)
 

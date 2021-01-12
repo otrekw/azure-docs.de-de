@@ -5,14 +5,14 @@ services: iot-hub
 author: jlian
 ms.service: iot-fundamentals
 ms.topic: conceptual
-ms.date: 12/02/2020
+ms.date: 12/18/2020
 ms.author: jlian
-ms.openlocfilehash: f79b03884109ffbd856ff4f60909565daeb0e792
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 08f033cbe121135e281379a013e11a33ae962dfb
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96549111"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97703805"
 ---
 # <a name="iot-hub-support-for-virtual-networks-with-private-link-and-managed-identity"></a>IoT Hub-Unterstützung für virtuelle Netzwerke mit Private Link und verwalteter Identität
 
@@ -89,9 +89,15 @@ Damit andere Dienste Ihre IoT Hub-Instanz als vertrauenswürdigen Microsoft-Dien
 
     :::image type="content" source="media/virtual-network-support/managed-identity.png" alt-text="Screenshot, der zeigt, wie eine verwaltete Identität für IoT Hub aktiviert wird":::
 
+So verwenden Sie Azure CLI, um die verwaltete Identität zu aktivieren:
+
+```azurecli-interactive
+az iot hub update --name <iot-hub-resource-name> --set identity.type="SystemAssigned"
+```
+
 ### <a name="assign-managed-identity-to-your-iot-hub-at-creation-time-using-arm-template"></a>Zuweisen einer verwalteten Identität zu Ihrem IoT-Hub zum Zeitpunkt der Erstellung mithilfe einer ARM-Vorlage
 
-Verwenden Sie die folgende ARM-Vorlage, um Ihrem IoT-Hub bei der Ressourcenbereitstellung eine verwaltete Identität zuzuweisen:
+Verwenden Sie die folgende ARM-Vorlage, um Ihrem IoT-Hub bei der Ressourcenbereitstellung eine verwaltete Identität zuzuweisen. Für diese ARM-Vorlage müssen zwei erforderliche Ressourcen bereitgestellt werden, bevor andere Ressourcen wie `Microsoft.Devices/IotHubs/eventHubEndpoints/ConsumerGroups` erstellt werden. 
 
 ```json
 {
@@ -115,9 +121,9 @@ Verwenden Sie die folgende ARM-Vorlage, um Ihrem IoT-Hub bei der Ressourcenberei
     {
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2018-02-01",
-      "name": "updateIotHubWithKeyEncryptionKey",
+      "name": "createIotHub",
       "dependsOn": [
-        "<provide-a-valid-resource-name>"
+        "[resourceId('Microsoft.Devices/IotHubs', '<provide-a-valid-resource-name>')]"
       ],
       "properties": {
         "mode": "Incremental",

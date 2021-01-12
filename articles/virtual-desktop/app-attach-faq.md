@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 73fb9bf436c043e903977fafbb5a502e2edc5488
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: 78c21e9515965f1c15315967f6a19a0df2838dc2
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96518684"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591194"
 ---
 # <a name="msix-app-attach-faq"></a>Häufig gestellte Fragen zum MSIX-Feature zum Anfügen von Apps
 
@@ -27,7 +27,7 @@ MSIX ist ein Verpackungsformat für Apps, während das MSIX-Feature zum Anfügen
 
 Das MSIX-Feature zum Anfügen von Apps verwendet FSLogix nicht. Das MSIX-Feature zum Anfügen von Apps und FSLogix sind jedoch so konzipiert, dass sie zusammen verwendet werden können, um eine einheitliche Benutzererfahrung zu ermöglichen.
 
-## <a name="can-i-use-msix-app-attach-outside-of-windows-virtual-desktop"></a>Kann ich das MSIX-Feature zum Anfügen von Apps außerhalb von Windows Virtual Desktop verwenden?
+## <a name="can-i-use-the-msix-app-attach-outside-of-windows-virtual-desktop"></a>Kann ich das MSIX-Feature zum Anfügen von Apps außerhalb von Windows Virtual Desktop verwenden?
 
 Die APIs, die das MSIX-Feature zum Anfügen von Apps benötigt, sind für Windows 10 Enterprise verfügbar. Diese APIs können außerhalb von Windows Virtual Desktop verwendet werden. Es gibt jedoch keine Verwaltungsebene für das MSIX-Feature zum Anfügen von Apps außerhalb von Windows Virtual Desktop.
 

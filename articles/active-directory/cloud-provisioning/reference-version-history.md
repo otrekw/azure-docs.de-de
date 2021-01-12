@@ -11,13 +11,13 @@ ms.date: 11/19/2020
 ms.subservice: app-provisioning
 ms.author: billmath
 ms.reviewer: daveba
-ms.openlocfilehash: 4ea4214b81a6ba812634449ab839ef9328dab931
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 3aa5546ec7ab65e3bfe3dd0fee76930a56cfe429
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95255058"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97584271"
 ---
-# <a name="azure-ad-connect-provisioning-agent-version-release-history"></a>Azure AD Connect-Bereitstellungs-Agent: Verlauf der Versionsveröffentlichungen.
+# <a name="azure-ad-connect-cloud-sync-agent-version-release-history"></a>Azure AD Connect-Cloudsynchronisierungs-Agent: Verlauf der Versionsveröffentlichungen
 
 [!INCLUDE [active-directory-cloud-sync-version-history.md](../../../includes/active-directory-cloud-sync-version-history.md)]

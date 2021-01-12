@@ -13,12 +13,12 @@ ms.date: 09/24/2018
 ms.author: kkrishna
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: a9b0090fa13a6d2f7a837a4f5ffee37d70893318
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f5a5242cb9448b3d11e0921b2272cf00bef8f6c1
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88116902"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97722265"
 ---
 # <a name="how-to-restrict-your-azure-ad-app-to-a-set-of-users-in-an-azure-ad-tenant"></a>Gewusst wie: Einschränken Ihrer Azure AD-App auf eine Gruppe von Benutzern in einem Azure AD-Mandanten
 
@@ -62,7 +62,7 @@ Es gibt zwei Möglichkeiten zum Erstellen einer Anwendung mit aktivierter Benutz
 
 1. Wählen Sie in der Liste die Anwendung aus, der Sie einen Benutzer oder eine Sicherheitsgruppe zuweisen möchten.
 1. Wählen Sie auf der Seite **Übersicht** der Anwendung im linken Navigationsmenü der Anwendung die Option **Eigenschaften** aus.
-1. Suchen Sie nach der Einstellung **Benutzerzuweisung erforderlich?** , und legen Sie sie auf **Ja** fest. Wenn diese Option auf **Ja**festgelegt ist, müssen Benutzer im Mandanten zuerst dieser Anwendung zugewiesen werden. Andernfalls können sie sich nicht bei dieser Anwendung anmelden.
+1. Suchen Sie nach der Einstellung **Benutzerzuweisung erforderlich?** , und legen Sie sie auf **Ja** fest. Wenn diese Option auf **Ja** festgelegt ist, müssen Benutzer im Mandanten zuerst dieser Anwendung zugewiesen werden. Andernfalls können sie sich nicht bei dieser Anwendung anmelden.
 1. Wählen Sie **Speichern**, um diese Konfigurationsänderung zu speichern.
 
 ### <a name="app-registration"></a>App-Registrierung
@@ -75,14 +75,14 @@ Es gibt zwei Möglichkeiten zum Erstellen einer Anwendung mit aktivierter Benutz
 1. Erstellen Sie die App, die Sie verwalten möchten, oder wählen Sie die App aus. Sie müssen der **Besitzer** dieser App-Registrierung sein.
 1. Folgen Sie auf der Seite **Übersicht** der Anwendung dem Link **Verwaltete Anwendung in lokalem Verzeichnis** unter der Zusammenfassung oben auf der Seite. Dadurch gelangen Sie zur _verwalteten Unternehmensanwendung_ Ihrer App-Registrierung.
 1. Wählen Sie auf dem Navigationsblatt auf der linken Seite die Option **Eigenschaften** aus.
-1. Suchen Sie nach der Einstellung **Benutzerzuweisung erforderlich?** , und legen Sie sie auf **Ja** fest. Wenn diese Option auf **Ja**festgelegt ist, müssen Benutzer im Mandanten zuerst dieser Anwendung zugewiesen werden. Andernfalls können sie sich nicht bei dieser Anwendung anmelden.
+1. Suchen Sie nach der Einstellung **Benutzerzuweisung erforderlich?** , und legen Sie sie auf **Ja** fest. Wenn diese Option auf **Ja** festgelegt ist, müssen Benutzer im Mandanten zuerst dieser Anwendung zugewiesen werden. Andernfalls können sie sich nicht bei dieser Anwendung anmelden.
 1. Wählen Sie **Speichern**, um diese Konfigurationsänderung zu speichern.
 
 ## <a name="assign-users-and-groups-to-the-app"></a>Zuweisen von Benutzern und Gruppen zur App
 
 Nachdem Sie Ihre App für die Aktivierung der Benutzerzuweisung konfiguriert haben, können Sie damit beginnen, der App Benutzer und Gruppen zuzuweisen.
 
-1. Wählen Sie in der Anwendung im Navigationsmenü auf der linken Seite den Bereich **Benutzer und Gruppen**.
+1. Wählen Sie in der Unternehmensanwendung im Navigationsmenü auf der linken Seite den Bereich **Benutzer und Gruppen** aus.
 1. Wählen Sie oben in der Liste **Benutzer und Gruppen** die Schaltfläche **Benutzer hinzufügen** aus, um den Bereich **Zuweisung hinzufügen** zu öffnen.
 1. Wählen Sie im Bereich **Zuweisung hinzufügen** den Selektor **Benutzer**. 
 

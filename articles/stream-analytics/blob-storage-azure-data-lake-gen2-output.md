@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: 17fc2db8c51c06601852037c38b9cfc2096c811f
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: ba64f5972d77637ec830fe6b872af66363d6c1bd
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109754"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740044"
 ---
 # <a name="blob-storage-and-azure-data-lake-gen2-output-from-azure-stream-analytics"></a>Blobspeicher- und Azure Data Lake Gen2-Ausgabe von Azure Stream Analytics
 
@@ -63,9 +63,5 @@ Die maximale Nachrichtengröße finden Sie unter [Grenzwerte für Azure Storage]
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+* [Verwendung von verwalteten Identitäten (Vorschau) zum Authentifizieren von Azure Stream Analytics-Aufträgen für Azure Blob Storage](blob-output-managed-identity.md)
 * [Schnellstart: Erstellen eines Stream Analytics-Auftrags mithilfe des Azure-Portals](stream-analytics-quick-create-portal.md)
-* [Schnellstart: Erstellen eines Azure Stream Analytics-Auftrags mit der Azure CLI](quick-create-azure-cli.md)
-* [Schnellstart: Erstellen eines Azure Stream Analytics-Auftrags mithilfe einer ARM-Vorlage](quick-create-azure-resource-manager.md)
-* [Schnellstart: Erstellen eines Stream Analytics-Auftrags mit Azure PowerShell](stream-analytics-quick-create-powershell.md)
-* [Schnellstart: Erstellen eines Azure Stream Analytics-Auftrags mithilfe von Visual Studio](stream-analytics-quick-create-vs.md)
-* [Schnellstart: Erstellen eines Azure Stream Analytics-Auftrags in Visual Studio Code](quick-create-visual-studio-code.md)

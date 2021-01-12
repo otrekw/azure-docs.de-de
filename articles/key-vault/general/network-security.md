@@ -10,16 +10,18 @@ ms.topic: tutorial
 ms.date: 10/01/2020
 ms.author: sudbalas
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: d1b1c27fe0136220d5a1851af4a5c24102a37da1
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 3639237a0dc34c521fd3fa52631fdb19c26ec284
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96015552"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936344"
 ---
 # <a name="configure-azure-key-vault-firewalls-and-virtual-networks"></a>Konfigurieren von Azure Key Vault-Firewalls und virtuellen Netzwerken
 
 In diesem Artikel erfahren Sie, wie Sie die Azure Key Vault-Firewall konfigurieren. Dieses Dokument enthält ausführliche Informationen zu den verschiedenen Konfigurationen für die Key Vault-Firewall. Außerdem erfahren Sie hier Schritt für Schritt, wie Sie Azure Key Vault für die Zusammenarbeit mit anderen Anwendungen und Azure-Diensten konfigurieren.
+
+Weitere Informationen finden Sie unter [VNET-Dienstendpunkte für Azure Key Vault](overview-vnet-service-endpoints.md).
 
 ## <a name="firewall-settings"></a>Firewalleinstellungen
 
@@ -167,10 +169,10 @@ Im Folgenden finden Sie Anweisungen zum Konfigurieren von Key Vault-Firewalls un
 
 ## <a name="references"></a>References
 * ARM-Vorlagenreferenz: [Azure Key Vault: ARM-Vorlagenreferenz](/azure/templates/Microsoft.KeyVault/vaults)
-* Azure CLI-Befehle: [az keyvault network-rule](/cli/azure/keyvault/network-rule?view=azure-cli-latest)
+* Azure CLI-Befehle: [az keyvault network-rule](/cli/azure/keyvault/network-rule)
 * Azure PowerShell-Cmdlets: [Get-AzKeyVault](/powershell/module/az.keyvault/get-azkeyvault), [Add-AzKeyVaultNetworkRule](/powershell/module/az.KeyVault/Add-azKeyVaultNetworkRule), [Remove-AzKeyVaultNetworkRule](/powershell/module/az.KeyVault/Remove-azKeyVaultNetworkRule), [Update-AzKeyVaultNetworkRuleSet](/powershell/module/az.KeyVault/Update-azKeyVaultNetworkRuleSet)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [VNET-Dienstendpunkte für Key Vault](overview-vnet-service-endpoints.md)
-* [Schützen Ihrer Key Vault-Instanz](secure-your-key-vault.md)
+* [Azure Key Vault-Sicherheitsübersicht](security-overview.md)

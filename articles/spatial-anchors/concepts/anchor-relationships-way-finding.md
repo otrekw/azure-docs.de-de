@@ -8,12 +8,12 @@ ms.author: parkerra
 ms.date: 11/20/2020
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 8c321eae9451715077aa50d163b62b51ec88ce1a
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: ce79fe88b33659241a226af7bbb7a966ede41abb
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95496884"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97696171"
 ---
 # <a name="anchor-relationships-and-way-finding-in-azure-spatial-anchors"></a>Ankerbeziehungen und Wegeleitsysteme in Azure Spatial Anchors
 
@@ -64,7 +64,7 @@ Sie können Raumanker auch in mehreren Sitzungen verbinden. Mit dieser Methode k
 
 Verbinden Sie Anker wie folgt in mehreren Sitzungen:
 
-1. Die App erstellt einige Anker mit einem CloudSpatialAnchorSession-Element.
+1. Die App erstellt einige Anker (Anker A und B) in einem CloudSpatialAnchorSession-Element.
 2. Später findet die App dann einen dieser Anker (z. B. Anker A), indem ein neues CloudSpatialAnchorSession-Element verwendet wird.
 3. Gehen Sie zu einem neuen Ort. Mit der zugrunde liegenden Mixed Reality- oder Augmented Reality-Plattform wird die Bewegung nachverfolgt.
 4. Erstellen Sie Anker C, indem Sie dasselbe CloudSpatialAnchorSession-Element verwenden. Die Anker A, B und C sind jetzt verbunden. Diese Beziehung wird vom Spatial Anchors-Dienst verwaltet.

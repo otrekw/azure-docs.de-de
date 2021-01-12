@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 12/16/2020
+ms.date: 01/05/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Mini R device so I can use it to transfer data to Azure.
-ms.openlocfilehash: 6d41c186a5d239ad7228c37902f5691085e43dbf
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 4535368b7d8d044469a4b0effee914176aca78e4
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97631243"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935404"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-mini-r"></a>Tutorial: Vorbereiten der Bereitstellung von Azure Stack Edge Mini R
 
@@ -36,7 +36,7 @@ Führen Sie zum Bereitstellen von Azure Stack Edge Mini R die folgenden Tutoria
 | --- | --- |
 | **Vorbereitung** |Diese Schritte müssen zur Vorbereitung der anstehenden Bereitstellung ausgeführt werden. |
 | **[Konfigurationsprüfliste für die Bereitstellung](#deployment-configuration-checklist)** |Verwenden Sie diese Prüfliste, um vor und während der Bereitstellung Informationen zu erfassen und aufzuzeichnen. |
-| **[Voraussetzungen für die Bereitstellung](#prerequisites)** |Mit diesen Schritten überprüfen Sie, ob die Umgebung für die Bereitstellung vorbereitet ist. |
+| **[Voraussetzungen für die Bereitstellung](#prerequisites)** |Anhand dieser Voraussetzungen überprüfen Sie, ob die Umgebung für die Bereitstellung vorbereitet ist. |
 |  | |
 |**Tutorials für die Bereitstellung** |Diese Tutorials sind erforderlich, um Ihr Azure Stack Edge Mini R-Gerät in der Produktionsumgebung bereitzustellen. |
 |**[1. Vorbereiten des Azure-Portals für das Gerät](azure-stack-edge-mini-r-deploy-prep.md)** |Erstellen und konfigurieren Sie Ihre Azure Stack Edge-Ressource, bevor Sie das physische Gerät installieren. |
@@ -46,7 +46,7 @@ Führen Sie zum Bereitstellen von Azure Stack Edge Mini R die folgenden Tutoria
 |**[5. Konfigurieren der Geräteeinstellungen](azure-stack-edge-mini-r-deploy-set-up-device-update-time.md)** |Weisen Sie einen Gerätenamen und eine DNS-Domäne zu, und konfigurieren Sie den Updateserver und die Gerätezeit. |
 |**[6. Konfigurieren der Sicherheitseinstellungen](azure-stack-edge-mini-r-deploy-configure-certificates-vpn-encryption.md)** |Konfigurieren Sie Zertifikate unter Verwendung Ihrer eigenen Zertifikate, richten Sie VPN ein, und konfigurieren Sie die Verschlüsselung ruhender Daten für Ihr Gerät.   |
 |**[7. Aktivieren des Geräts](azure-stack-edge-mini-r-deploy-activate.md)** |Verwenden Sie den Aktivierungsschlüssel des Diensts, um das Gerät zu aktivieren. Das Gerät ist bereit, SMB- oder NFS-Freigaben einzurichten oder eine Verbindung über REST herzustellen. |
-|**[8. Konfigurieren von Compute](azure-stack-edge-gpu-deploy-configure-compute.md)** |Konfigurieren Sie die Computerolle auf Ihrem Gerät. Dabei wird auch ein Kubernetes-Cluster erstellt. |
+|**[8. Konfigurieren von Compute](azure-stack-edge-gpu-deploy-configure-compute.md)** |Konfigurieren Sie die Computerolle auf Ihrem Gerät. Außerdem wird ein Kubernetes-Cluster erstellt. |
 
 Sie können jetzt mit der Einrichtung des Azure-Portals beginnen.
 
@@ -84,12 +84,12 @@ Stellen Sie Folgendes sicher, bevor Sie beginnen:
 
 Falls Sie bereits über eine Azure Stack Edge-Ressource für die Verwaltung Ihres physischen Geräts verfügen, überspringen Sie diesen Schritt, und fahren Sie mit [Abrufen des Aktivierungsschlüssels](#get-the-activation-key) fort.
 
-Um eine Azure Stack Edge-Ressource zu erstellen, führen Sie die folgenden Schritte im Azure-Portal aus:
+Um eine Azure Stack Edge-Ressource zu erstellen, führen Sie im Azure-Portal die folgenden Schritte aus.
 
 1. Melden Sie sich mit Ihren Microsoft Azure-Anmeldeinformationen beim Azure-Portal unter der folgenden URL an: [https://portal.azure.com](https://portal.azure.com).
 
 
-2. Wählen Sie im linken Bereich **+ Ressource erstellen** aus. Suchen Sie nach **Azure Stack Edge/Data Box Gateway**, und wählen Sie den Eintrag aus. Klicken Sie auf **Erstellen**. 
+2. Klicken Sie im linken Bereich auf **+ Create a resource** (Ressource erstellen). Suchen Sie nach **Azure Stack Edge/Data Box Gateway**, und wählen Sie den Eintrag aus. Klicken Sie auf **Erstellen**. 
 
 3. Wählen Sie das Abonnement aus, das Sie für das Azure Stack Edge Pro-Gerät verwenden möchten. Wählen Sie das Land/die Region aus, in das/die das physische Gerät versendet werden soll. Wählen Sie **Geräte anzeigen** aus.
 
@@ -101,43 +101,43 @@ Um eine Azure Stack Edge-Ressource zu erstellen, führen Sie die folgenden Schri
     [![Ressource erstellen 2](media/azure-stack-edge-mini-r-deploy-prep/create-resource-2.png)](media/azure-stack-edge-mini-r-deploy-prep/create-resource-2.png#lightbox)
 
 
-6. Geben Sie auf der Registerkarte **Grundlagen** die folgenden **Projektdetails** ein, bzw. wählen Sie sie aus:
+5. Geben Sie auf der Registerkarte **Grundlagen** die folgenden **Projektdetails** ein, bzw. wählen Sie sie aus:
     
     |Einstellung  |Wert  |
     |---------|---------|
-    |Subscription    |Dieser Wert wird auf der Grundlage Ihrer zuvor getroffenen Auswahl automatisch aufgefüllt. Das Abonnement ist mit Ihrem Abrechnungskonto verknüpft. |
+    |Subscription    |Das Abonnement wird auf der Grundlage der zuvor getroffenen Auswahl automatisch eingetragen. Das Abonnement ist mit Ihrem Abrechnungskonto verknüpft. |
     |Resource group  |Wählen Sie eine vorhandene Gruppe aus, oder erstellen Sie eine neue Gruppe.<br>Erfahren Sie mehr über [Azure-Ressourcengruppen](../azure-resource-manager/management/overview.md).     |
 
 
-7. Geben Sie die folgenden **Instanzendetails** ein, bzw. wählen Sie sie aus:
+6. Geben Sie die folgenden **Instanzendetails** ein, bzw. wählen Sie sie aus:
 
     |Einstellung  |Wert  |
     |---------|---------|
-    |Name   | Ein Anzeigename, der die Ressource identifiziert.<br>Der Name muss 2 bis 50 Zeichen lang sein und darf nur Buchstaben, Zahlen und Bindestriche enthalten.<br> Der Name muss mit einem Buchstaben oder einer Zahl beginnen und enden.        |
+    |Name   | Ein Anzeigename, der die Ressource identifiziert.<br>Der Name muss 2 bis 50 Zeichen lang sein und darf nur Buchstaben, Zahlen und Bindestriche enthalten.<br> Der Name muss mit einem Buchstaben oder einer Zahl beginnen und enden.        |
     |Region     |Eine Liste aller Regionen, in denen die Azure Stack Edge-Ressource verfügbar ist, finden Sie unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). Die für Azure Government verfügbaren Regionen finden Sie bei Bedarf unter [Azure-Regionen](https://azure.microsoft.com/global-infrastructure/regions/).<br> Wählen Sie den Standort aus, der der geografischen Region, in der Ihr Gerät bereitgestellt werden soll, am nächsten ist.|
 
     ![Ressource erstellen 4](media/azure-stack-edge-mini-r-deploy-prep/create-resource-4.png)
 
 
-8. Klicken Sie auf **Weiter: Lieferanschrift**.
+7. Klicken Sie auf **Weiter: Lieferanschrift**.
 
     - Falls Sie bereits über ein Gerät verfügen, aktivieren Sie das Kontrollkästchen **Ich besitze bereits ein Gerät.** .
 
-        ![Ressource erstellen5](media/azure-stack-edge-mini-r-deploy-prep/create-resource-5.png)
+     ![Ressource erstellen5](media/azure-stack-edge-mini-r-deploy-prep/create-resource-5.png)
 
     - Handelt es sich um das neue Gerät, das Sie bestellen möchten, geben Sie Kontaktname, Unternehmen, Lieferadresse für das Gerät sowie Kontaktinformationen ein.
 
-        ![Ressource erstellen 6](media/azure-stack-edge-mini-r-deploy-prep/create-resource-6.png)
+     ![Ressource erstellen 6](media/azure-stack-edge-mini-r-deploy-prep/create-resource-6.png)
 
-9. Klicken Sie auf **Weiter: Tags**. Geben Sie optional Tags an, um Ressourcen zu kategorisieren und die Abrechnung zu konsolidieren. Klicken Sie auf **Weiter: Überprüfen + erstellen**.
+8. Klicken Sie auf **Weiter: Tags**. Geben Sie optional Tags an, um Ressourcen zu kategorisieren und die Abrechnung zu konsolidieren. Klicken Sie auf **Weiter: Überprüfen + erstellen**.
 
-10. Überprüfen Sie auf der Registerkarte **Überprüfen + erstellen** die **Preisdetails**, die **Nutzungsbedingungen** und die Details für Ihre Ressource. Aktivieren Sie das Kontrollkästchen **Ich habe die angegebenen Informationen gelesen und stimme den Datenschutzbestimmungen zu.** .
+9. Überprüfen Sie auf der Registerkarte **Überprüfen + erstellen** die **Preisdetails**, die **Nutzungsbedingungen** und die Details für Ihre Ressource. Aktivieren Sie das Kontrollkästchen **Ich habe die angegebenen Informationen gelesen und stimme den Datenschutzbestimmungen zu.** .
 
-    ![Ressource erstellen 7](media/azure-stack-edge-mini-r-deploy-prep/create-resource-7.png) 
+    ![Ressource erstellen 7](media/azure-stack-edge-mini-r-deploy-prep/create-resource-7.png)
 
     Sie werden auch darüber informiert, dass während der Ressourcenerstellung eine verwaltete Dienstidentität (Managed Service Identity, MSI) aktiviert wird, mit der Sie sich bei Clouddiensten authentifizieren können. Diese Identität bleibt so lange bestehen, wie die Ressource vorhanden ist.
 
-8. Klicken Sie auf **Erstellen**.
+10. Klicken Sie auf **Erstellen**.
 
     Die Erstellung der Ressource dauert einige Minuten. Außerdem wird eine MSI-Datei erstellt, die die Kommunikation des Azure Stack Edge-Geräts mit dem Ressourcenanbieter in Azure ermöglicht.
     
@@ -153,15 +153,15 @@ Um eine Azure Stack Edge-Ressource zu erstellen, führen Sie die folgenden Schri
 
 Wenn die Azure Stack Edge-Ressource betriebsbereit ist, müssen Sie den Aktivierungsschlüssel abrufen. Dieser Schlüssel wird verwendet, um Ihr Azure Stack Edge Mini R-Gerät zu aktivieren und mit der Ressource zu verbinden. Sie können diesen Schlüssel jetzt abrufen, während Sie sich im Azure-Portal befinden.
 
-1. Wählen Sie die von Ihnen erstellte Ressource aus. Wählen Sie **Übersicht** und anschließend **Geräteeinrichtung** aus.
+1. Wählen Sie die Ressource aus, die Sie erstellt haben, und wählen Sie **Übersicht** aus.
 
-    ![Auswählen von „Geräteeinrichtung“](media/azure-stack-edge-mini-r-deploy-prep/azure-stack-edge-resource-2.png)
+   ![Auswählen von „Geräteeinrichtung“](media/azure-stack-edge-mini-r-deploy-prep/azure-stack-edge-resource-2.png)
 
 2. Geben Sie auf der Kachel **Aktivieren** einen Namen für Azure Key Vault an, oder übernehmen Sie den Standardnamen. Der Schlüsseltresorname kann aus 3 bis 24 Zeichen bestehen. 
 
-    Für jede mit Ihrem Gerät aktivierte Azure Stack Edge-Ressource wird ein Schlüsseltresor erstellt. Im Schlüsseltresor können Sie Geheimnisse speichern und darauf zugreifen. So wird beispielsweise der Channel Integrity Key (CIK) für den Dienst im Schlüsseltresor gespeichert. 
+    Für jede mit Ihrem Gerät aktivierte Azure Stack Edge-Ressource wird ein Schlüsseltresor erstellt. Im Schlüsseltresor können Sie Geheimnisse speichern und darauf zugreifen. So wird beispielsweise der Kanalintegritätsschlüssel (Channel Integrity Key, CIK) für den Dienst im Schlüsseltresor gespeichert.
 
-    Nachdem Sie einen Schlüsseltresornamen angegeben haben, wählen Sie **Schlüssel generieren** aus, um einen Aktivierungsschlüssel zu erstellen. 
+    Nachdem Sie einen Schlüsseltresornamen angegeben haben, wählen Sie **Generate activation key** (Aktivierungsschlüssel generieren) aus, um einen Aktivierungsschlüssel zu erstellen.
 
     [![Abrufen des Aktivierungsschlüssels](media/azure-stack-edge-mini-r-deploy-prep/azure-stack-edge-resource-3.png)](media/azure-stack-edge-mini-r-deploy-prep/azure-stack-edge-resource-3.png#lightbox)
 

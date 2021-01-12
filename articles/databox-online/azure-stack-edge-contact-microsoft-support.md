@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 07/11/2019
+ms.date: 12/17/2020
 ms.author: alkohli
-ms.openlocfilehash: dbdd4c7d23f56618c0e76649abe4faad86c5804c
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: a457c2816d4075190a2174339f7e52a2ea41730a
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91743300"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97696023"
 ---
 # <a name="open-a-support-ticket-for-azure-stack-edge-pro-and-azure-data-box-gateway"></a>Öffnen eines Supporttickets für Azure Stack Edge Pro und Azure Data Box Gateway
 
@@ -24,7 +24,7 @@ Dieser Artikel bezieht sich auf Azure Stack Edge Pro und Azure Data Box Gateway,
 
 ## <a name="create-a-support-request"></a>Erstellen einer Supportanfrage
 
-Führen Sie die folgenden Schritte aus, um eine Supportanfrage zu erstellen.
+Führen Sie die folgenden Schritte aus, um eine Supportanfrage zu erstellen:
 
 1. Wechseln Sie zu Ihrem Azure Stack Edge Pro- oder Data Box Gateway-Auftrag. Navigieren Sie zum Abschnitt **Support + Problembehandlung**, und wählen Sie anschließend die Option **Neue Supportanfrage**.
 
@@ -51,7 +51,7 @@ Führen Sie die folgenden Schritte aus, um eine Supportanfrage zu erstellen.
     6. Wählen Sie in der Dropdownliste die Option **Schweregrad**.
     7. Geben Sie die **Bevorzugte Kontaktmethode** an.
     8. Die **Reaktionszeit in Stunden** wird anhand Ihres Abonnementplans automatisch ausgewählt.
-    9. Geben Sie die bevorzugte Sprache für den Support an.
+    9. Geben Sie Ihre bevorzugte Sprache für den Support an.
     10. Geben Sie unter **Kontaktinformationen** Name, E-Mail-Adresse, Telefonnummer, optional einen Kontakt und das Land bzw. die Region an. Der Microsoft-Support verwendet diese Informationen, um Ihnen weitere Informationen, Diagnosen und Problemlösungen zur Verfügung zu stellen. 
     11. Klicken Sie auf **Weiter: Bewerten + erstellen >>** .
 
@@ -75,10 +75,10 @@ Diese Informationen gelten nur für Azure Stack-Geräte. Prozess zum Melden von 
 
 2. Wenn der Microsoft-Support ermittelt, dass es sich um ein Hardwareproblem handelt, wird eine der folgenden Aktionen durchgeführt:
 
-    * Ein Ersatzteil (Field Replacement Unit, FRU) für das fehlerhafte Hardwareteil wird geschickt. Zurzeit werden Netzteile und Festplatten als einzige Ersatzteile unterstützt.
+    * Ein Ersatzteil (Field Replacement Unit, FRU) für das fehlerhafte Hardwareteil wird geschickt. Zurzeit werden Netzteile und SSD-Datenträger als einzige Ersatzteile unterstützt.
     * Nur Ersatzteile werden innerhalb des nächsten Werktags ersetzt; alles andere erfordert einen vollständigen Austausch des Systems (Full System Replacement, FSR).
 
-3. Wenn ein Supportticket bis 16:30 Uhr Ortszeit (Montag bis Freitag) erstellt wird, wird ein Vor-Ort-Techniker für den nächsten Werktag eingeteilt, um bei Ihnen einen vollständigen Austausch des Systems bzw. Geräts durchzuführen.
+3. Wenn ein Supportticket bis 16:30 Uhr Ortszeit (Montag bis Freitag) erstellt wird, wird ein Vor-Ort-Techniker für den nächsten Werktag eingeteilt, um bei Ihnen einen vollständigen Austausch des Systems durchzuführen. Ein vollständiger Austausch des Systems dauert in der Regel sehr viel länger, da die Teile von unserer Fabrik ausgeliefert werden und Verzögerungen bei Transport und Zoll auftreten könnten.
 
 ## <a name="manage-a-support-request"></a>Erstellen einer Supportanfrage
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/17/2020
 ms.author: jeedes
-ms.openlocfilehash: 0ea08f8ec98ff8ddd4a9f15f12a0224db440b7b0
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 710164fa3712058d64e5d23006b986eb3dc3eaba
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97675651"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882754"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-imperva-data-security"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Imperva Data Security
 
@@ -37,7 +37,7 @@ Für die ersten Schritte benötigen Sie Folgendes:
 
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
-* Imperva Data Security unterstützt **IDP-initiiertes** einmaliges Anmelden.
+* Imperva Data Security unterstützt **SP-initiiertes** einmaliges Anmelden.
 
 ## <a name="adding-imperva-data-security-from-the-gallery"></a>Hinzufügen von Imperva Data Security aus dem Katalog
 
@@ -76,9 +76,13 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 1. Geben Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** die Werte für die folgenden Felder ein:
 
-    a. Geben Sie im Textfeld **Bezeichner** eine URL im folgenden Format ein: `https://<IMPERVA_DNS_NAME>:8443`
+    a. Geben Sie im Textfeld **Bezeichner** eine ID im folgenden Format ein: `application-name`.
 
     b. Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein: `https://<IMPERVA_DNS_NAME>:8443`
+    
+    c. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<IMPERVA_DNS_NAME>:8443`.
+    
+    d. Geben Sie im Textfeld **Abmelde-URL** eine URL im folgenden Format ein: `https://<IMPERVA_DNS_NAME>:8443`.    
 
     > [!NOTE]
     > Hierbei handelt es sich um Beispielwerte. Aktualisieren Sie diese Werte mit dem eigentlichen Bezeichner und der Antwort-URL. Wenden Sie sich an das [Supportteam von Imperva Data Security Client](mailto:support@jsonar.imperva.com), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.

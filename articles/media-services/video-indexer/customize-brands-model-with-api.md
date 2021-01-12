@@ -10,18 +10,19 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 01/14/2020
 ms.author: kumud
-ms.openlocfilehash: 5fc565ecc1b501f52e934784695594dcfef2a83a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c3056415d3432dbe64dd1f2bcf974a676bbf6c6b
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96020465"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586056"
 ---
 # <a name="customize-a-brands-model-with-the-video-indexer-api"></a>Anpassen eines Markenmodells mit der Video Indexer-API
 
-Video Indexer unterstützt die Markenerkennung aus Sprache und visuellem Text während der Indizierung und Neuindizierung von Video- und Audioinhalten. Das Feature zur Erkennung von Marken identifiziert Erwähnungen von Produkten, Diensten und Unternehmen, die von der Markendatenbank von Bing vorgeschlagen werden. Wenn Microsoft beispielsweise in einem Video- oder Audioinhalt erwähnt wird oder im visuellen Text in einem Video angegeben wird, erkennt Video Indexer dies als Marke im Inhalt. Ein benutzerdefiniertes Markenmodell ermöglicht es Ihnen, bestimmte Marken von der Erkennung auszuschließen und Marken einzubeziehen, die Teil Ihres Modells sein sollten und sich möglicherweise nicht in der Markendatenbank von Bing befinden.
+Video Indexer unterstützt die Markenerkennung aus Sprache und visuellem Text während der Indizierung und Neuindizierung von Video- und Audioinhalten. Das Feature zur Erkennung von Marken identifiziert Erwähnungen von Produkten, Diensten und Unternehmen, die von der Markendatenbank von Bing vorgeschlagen werden. Wenn Microsoft beispielsweise in einem Video- oder Audioinhalt erwähnt wird oder im visuellen Text in einem Video angegeben wird, erkennt Video Indexer dies als Marke im Inhalt. Ein benutzerdefiniertes Markenmodell ermöglicht es Ihnen, bestimmte Marken von der Erkennung auszuschließen und Marken einzubeziehen, die Teil Ihres Modells sein sollten und sich möglicherweise nicht in der Markendatenbank von Bing befinden. Weitere Informationen finden Sie in der [Übersicht](customize-brands-model-overview.md).
 
-Eine ausführliche Übersicht finden Sie unter [Übersicht](customize-brands-model-overview.md).
+> [!NOTE]
+> Wenn Ihr Video vor dem Hinzufügen einer Marke indiziert wurde, müssen Sie es neu indizieren.
 
 Sie können die Video Indexer-APIs zum Erstellen, Verwenden und Bearbeiten von benutzerdefinierten Markenmodellen verwenden, die in einem Video erkannt wurden, wie in diesem Thema beschrieben. Sie können auch die Video Indexer-Website verwenden, wie unter [Anpassen des Markenmodells mit der Video Indexer-Website](customize-brands-model-with-api.md) beschrieben wird.
 

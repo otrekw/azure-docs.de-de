@@ -7,12 +7,12 @@ ms.service: sql-db-mi
 ms.subservice: service
 ms.topic: conceptual
 ms.date: 09/13/2020
-ms.openlocfilehash: b0a10744d2b48fa620b48b731144222199f711c7
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 96367b143711c4ec5f3f8d609f048c72c6fded16
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92792530"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590850"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-sql-database--sql-managed-instance"></a>Grundlegendes zu den Änderungen im Zusammenhang mit der Stammzertifizierungsstelle für Azure SQL-Datenbank und SQL Managed Instance
 
@@ -72,7 +72,7 @@ Für Server, die nach dem 26. Oktober 2020 erstellt werden, können Sie das neu
 ### <a name="how-often-does-microsoft-update-their-certificates-or-what-is-the-expiry-policy"></a>Wie oft aktualisiert Microsoft seine Zertifikate, bzw. welche Ablaufrichtlinie gilt?
 Diese von Azure SQL-Datenbank und SQL Managed Instance verwendeten Zertifikate werden von vertrauenswürdigen Zertifizierungsstellen (ZS) bereitgestellt. Die Unterstützung dieser Zertifikate in Azure SQL-Datenbank und SQL Managed Instance ist also an die Unterstützung dieser Zertifikate durch die ZS gebunden. Wie in diesem Fall kann es jedoch zu unvorhergesehenen Fehlern in diesen vordefinierten Zertifikaten kommen, die schnellstmöglich behoben werden müssen.
 
-### <a name="if-i-am-using-read-replicas-do-i-need-to-perform-this-update-only-on-master-server-or-all-the-read-replicas"></a>Muss ich bei Verwendung von Lesereplikaten dieses Update nur auf dem Masterserver oder auch für alle Lesereplikate ausführen?
+### <a name="if-i-am-using-read-replicas-do-i-need-to-perform-this-update-only-on-primary-server-or-all-the-read-replicas"></a>Muss ich bei Verwendung von Lesereplikaten dieses Update nur auf dem primären Server oder für alle gelesenen Replikate ausführen?
 Da dieses Update eine clientseitige Änderung ist, müssen Sie die Änderungen auch für diese Clients anwenden, wenn der Client Daten vom Replikatserver gelesen hat. 
 
 ### <a name="do-we-have-server-side-query-to-verify-if-ssl-is-being-used"></a>Gibt es eine serverseitige Abfrage, um zu überprüfen, ob SSL verwendet wird?

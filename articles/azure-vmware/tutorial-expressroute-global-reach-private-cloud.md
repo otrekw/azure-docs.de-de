@@ -2,13 +2,13 @@
 title: 'Tutorial: Zusammenfassen lokaler Umgebungen mittels Peering zu einer privaten Cloud'
 description: Erfahren Sie, wie Sie ExpressRoute Global Reach-Peering mit einer privaten Cloud in einer Azure VMware Solution-Instanz erstellen.
 ms.topic: tutorial
-ms.date: 09/21/2020
-ms.openlocfilehash: 4d10972a693f7c4c3ae25a5bc986f6c15e978294
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.date: 1/5/2021
+ms.openlocfilehash: 613aece6ed548f70840349e017de4416883d6cf3
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92912496"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97913157"
 ---
 # <a name="tutorial-peer-on-premises-environments-to-a-private-cloud"></a>Tutorial: Zusammenfassen lokaler Umgebungen mittels Peering zu einer privaten Cloud
 
@@ -19,8 +19,8 @@ Für die ExpressRoute-Leitung, die Sie beim [Konfigurieren des Netzwerks zwische
 In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
-> * Erstellen eines zweiten Autorisierungsschlüssels für _Circuit 2_ , die ExpressRoute-Leitung der privaten Cloud
-> * Verwenden entweder des [Azure-Portals](#azure-portal-method) oder der [Azure CLI in einer Cloud Shell-Methode](#azure-cli-in-a-cloud-shell-method) im Abonnement von _Circuit 1_ , um das ExpressRoute Global Reach-Peering zwischen lokaler Umgebung und privater Cloud zu aktivieren
+> * Erstellen eines zweiten Autorisierungsschlüssels für _Circuit 2_, die ExpressRoute-Leitung der privaten Cloud
+> * Verwenden entweder des [Azure-Portals](#azure-portal-method) oder der [Azure CLI in einer Cloud Shell-Methode](#azure-cli-in-a-cloud-shell-method) im Abonnement von _Circuit 1_, um das ExpressRoute Global Reach-Peering zwischen lokaler Umgebung und privater Cloud zu aktivieren
 
 
 ## <a name="before-you-begin"></a>Voraussetzungen
@@ -33,6 +33,7 @@ Lesen Sie zunächst die Dokumentation zum [Aktivieren der Konnektivität zwische
 - Eine eingerichtete Verbindung mit einer privaten Azure VMware Solution-Cloud, deren ExpressRoute-Leitung mittels Peering mit einem ExpressRoute-Gateway in einem virtuellen Azure-Netzwerk (VNET) verbunden ist. Dies ist _Circuit 2_ aus den Peeringvorgängen.  
 - Eine separate, funktionierende ExpressRoute-Leitung für die Verbindungsherstellung zwischen lokalen Umgebungen und Azure. Dies ist _Circuit 1_ aus Sicht der Peeringvorgänge.
 - Ein [Netzwerkadressblock](../expressroute/expressroute-routing.md#ip-addresses-used-for-peerings) vom Typ „/29“ ohne Überschneidungen für das ExpressRoute Global Reach-Peering.
+- Stellen Sie sicher, dass alle Router mit dem Dienst des ExpressRoute-Anbieters eine ASN (Autonomous System Number, autonome Systemnummer) mit 4 Bytes unterstützen. Azure VMware Solution verwendet öffentliche ASNs mit 4 Bytes zum Ankündigen von Routen.
 
 > [!TIP]
 > Im Kontext dieser Voraussetzungen ist _Circuit 1_ Ihre lokale ExpressRoute-Leitung. Die ExpressRoute-Leitung Ihrer privaten Cloud befindet sich in einem anderen Abonnement und heißt _Circuit 2_. 

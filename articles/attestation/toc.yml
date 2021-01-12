@@ -15,6 +15,8 @@
   items:
     - name: Erstellen einer Nachweisrichtlinie
       href: author-sign-policy.md
+    - name: 'Erstellen eines privaten Endpunkts: PowerShell'
+      href: private-endpoint-powershell.md
     - name: Codebeispiele für den SGX-Nachweis
       href: /samples/browse/?expanded=azure&terms=attestation
 - name: Beispiele
@@ -37,7 +39,7 @@
       href: workflow.md
     - name: Anzeigen von Überwachungsprotokollen
       href: audit-logs.md
-- name: Referenzen
+- name: Verweise
   items:
     - name: Regionale Verfügbarkeit
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=azure-attestation'

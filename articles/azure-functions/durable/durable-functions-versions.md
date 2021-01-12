@@ -3,14 +3,14 @@ title: Übersicht über die Durable Functions-Versionen – Azure Functions
 description: Informationen über Durable Functions-Versionen
 author: cgillum
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 12/23/2020
 ms.author: azfuncdf
-ms.openlocfilehash: d6662259494bba5747e01c4574186e9030112247
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c4d10bab06428295bbc8c5319bd47787d7b1fb34
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88719409"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97763369"
 ---
 # <a name="durable-functions-versions-overview"></a>Übersicht über die Durable Functions-Versionen
 
@@ -50,6 +50,8 @@ Installieren Sie neueste 2.x-Version der Durable Functions-Bindungserweiterung i
 
 Durable Functions 2.x ist in Version 2.x des [Azure Functions-Erweiterungspakets](../functions-bindings-register.md#extension-bundles) verfügbar.
 
+Python-Unterstützung in Durable Functions setzt Durable Functions 2.x voraus.
+
 Um die Version des Erweiterungspakets in Ihrem Projekt zu aktualisieren, öffnen Sie „host.json“, und aktualisieren Sie den Abschnitt `extensionBundle`, um Version 2.x (`[2.*, 3.0.0)`) zu verwenden.
 
 ```json
@@ -61,6 +63,9 @@ Um die Version des Erweiterungspakets in Ihrem Projekt zu aktualisieren, öffnen
     }
 }
 ```
+
+> [!NOTE]
+> Wenn Visual Studio Code nicht die richtigen Vorlagen anzeigt, nachdem Sie die Erweiterungspaketversion geändert haben, laden Sie das Fenster erneut durch Ausführen des Befehls *Entwickler: Fenster erneut laden* (<kbd>STRG+R</kbd> unter Windows und Linux, <kbd>Command+R</kbd> unter macOS).
 
 #### <a name="net"></a>.NET
 

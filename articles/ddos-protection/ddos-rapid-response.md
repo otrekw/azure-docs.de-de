@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2020
 ms.author: yitoh
-ms.openlocfilehash: 3655b117b641a6179bd6539aaf3f75af07f21a1a
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 8de95a56f3da928997a97ff216b13d522c82afca
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94992368"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814192"
 ---
 # <a name="azure-ddos-rapid-response"></a>Azure DDoS Rapid Response
 
@@ -56,5 +56,5 @@ Weitere Informationen finden Sie in der [Dokumentation zu DDoS Protection Standa
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Erfahren Sie, wie Sie [Tests über Simulationen ausführen können](test-through-simulations.md).
-- Erfahren Sie, wie Sie [Telemetriedaten zum DDoS-Schutz anzeigen und konfigurieren](telemetry-monitoring-alerting.md).
-- Erfahren Sie, wie Sie [Berichte und Datenflussprotokolle zur Entschärfung von DDoS-Angriffen konfigurieren](reports-and-flow-logs.md).
+- Erfahren Sie, wie Sie [Telemetriedaten zum DDoS-Schutz anzeigen und konfigurieren](telemetry.md).
+- Erfahren Sie mehr zum [Anzeigen und Konfigurieren der DDoS-Diagnoseprotokollierung](diagnostic-logging.md).

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/10/2019
 ms.author: jeedes
-ms.openlocfilehash: 5c21efc9cb082d915fd87e9ae01606fce18016bc
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: 71f4cfa9e7b69e51bafa5364f857f8ab689f2ad0
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97897281"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955466"
 ---
 # <a name="tutorial-configure-servicenow-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von ServiceNow für die automatische Benutzerbereitstellung
 
@@ -152,6 +152,11 @@ Nachdem Sie die Bereitstellung konfiguriert haben, können Sie mit den folgenden
    ![Autorisieren der SOAP-Anforderung](media/servicenow-provisioning-tutorial/servicenow-webservice.png)
 
    Werden die Probleme dadurch behoben, wenden Sie sich an den ServiceNow-Support, und bitten Sie ihn, zur Problembehandlung das SOAP-Debuggen zu aktivieren. 
+
+* **IP-Bereiche** 
+
+   Der Azure AD-Bereitstellungsdienst wird zurzeit unter bestimmten IP-Adressbereichen betrieben. Sie können daher ggf. andere IP-Adressbereiche einschränken und diese bestimmten IP-Adressbereiche der Positivliste Ihrer Anwendung hinzufügen, um den Datenverkehrsfluss vom Azure AD-Bereitstellungsdienst an Ihre Anwendung zuzulassen. Entsprechende Informationen finden Sie in der Dokumentation unter [IP-Bereiche](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#ip-ranges).
+
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
 * [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps](../app-provisioning/configure-automatic-user-provisioning-portal.md)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/06/2020
 ms.author: Zhchia
-ms.openlocfilehash: 4851dfb4a96ab2ca19ba6ea67139772f9c091a69
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: c3f61c3fe688a0b7533902fb0caa19b67f883482
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97763643"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97901588"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von G Suite für die automatische Benutzerbereitstellung
 
@@ -24,13 +24,6 @@ In diesem Tutorial werden die Schritte beschrieben, die Sie sowohl in G Suite a
 
 > [!NOTE]
 > In diesem Tutorial wird ein Connector beschrieben, der auf dem Benutzerbereitstellungsdienst von Azure AD basiert. Wichtige Details zum Zweck und zur Funktionsweise dieses Diensts sowie häufig gestellte Fragen finden Sie unter [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](../app-provisioning/user-provisioning.md).
-
-> [!NOTE]
-> Der G Suite-Connector wurde vor Kurzem im Oktober 2019 aktualisiert. An dem G Suite-Connector vorgenommene Änderungen umfassen Folgendes:
->
-> * Unterstützung für zusätzliche G Suite-Benutzer- und -Gruppenattribute hinzugefügt.
-> * Die Namen der G Suite-Zielattribute wurden so aktualisiert, dass dem entsprechen, was [hier](https://developers.google.com/admin-sdk/directory)definiert ist.
-> * Aktualisierte Standardattributzuordnungen.
 
 > [!NOTE]
 > Dieser Artikel enthält Verweise auf den Begriff *Whitelist*, den Microsoft nicht länger verwendet. Sobald der Begriff aus der Software entfernt wurde, wird er auch aus diesem Artikel entfernt.
@@ -63,15 +56,15 @@ Bevor Sie G Suite für die automatische Benutzerbereitstellung mit Azure AD kon
 
 1. Melden Sie sich bei der [G Suite-Verwaltungskonsole](https://admin.google.com/) mit Ihrem Administratorkonto an, und wählen Sie **Sicherheit** aus. Sollte der Link nicht zu sehen sein, befindet er sich möglicherweise unter dem Menü **Weitere Steuerelemente** am unteren Bildschirmrand.
 
-    ![G Suite, Sicherheit](./media/google-apps-provisioning-tutorial/gapps-security.png)
+    ![G Suite, Sicherheit](./media/g-suite-provisioning-tutorial/gapps-security.png)
 
 2. Wählen Sie auf der Seite **Sicherheit** die Option **API-Referenz** aus.
 
-    ![G Suite, API](./media/google-apps-provisioning-tutorial/gapps-api.png)
+    ![G Suite, API](./media/g-suite-provisioning-tutorial/gapps-api.png)
 
 3. Wählen Sie **API-Zugriff aktivieren** aus.
 
-    ![G Suite, API aktiviert](./media/google-apps-provisioning-tutorial/gapps-api-enabled.png)
+    ![G Suite, API aktiviert](./media/g-suite-provisioning-tutorial/gapps-api-enabled.png)
 
     > [!IMPORTANT]
    > Für jeden Benutzer, den Sie für G Suite bereitstellen möchten, **muss** der Benutzername in Azure AD an eine benutzerdefinierte Domäne gebunden werden. Beispielsweise werden Benutzernamen wie bob@contoso.onmicrosoft.com von G Suite nicht akzeptiert. bob@contoso.com ist hingegen zulässig. Sie können die Domäne eines vorhandenen Benutzers ändern, indem Sie die [hier](../fundamentals/add-custom-domain.md) zu findenden Anleitungen befolgen.
@@ -80,15 +73,15 @@ Bevor Sie G Suite für die automatische Benutzerbereitstellung mit Azure AD kon
 
     a. Wählen Sie in der [G Suite-Verwaltungskonsole](https://admin.google.com/) die Option **Domänen** aus.
 
-    ![G Suite, Domänen](./media/google-apps-provisioning-tutorial/gapps-domains.png)
+    ![G Suite, Domänen](./media/g-suite-provisioning-tutorial/gapps-domains.png)
 
     b. Wählen Sie **Domäne oder Domänenalias hinzufügen** aus.
 
-    ![G Suite, Domänen hinzufügen](./media/google-apps-provisioning-tutorial/gapps-add-domain.png)
+    ![G Suite, Domänen hinzufügen](./media/g-suite-provisioning-tutorial/gapps-add-domain.png)
 
     c. Wählen Sie **Andere Domäne hinzufügen** aus, und geben Sie dann den Namen der Domäne ein, die Sie hinzufügen möchten.
 
-    ![G Suite, Andere Domänen hinzufügen](./media/google-apps-provisioning-tutorial/gapps-add-another.png)
+    ![G Suite, Andere Domänen hinzufügen](./media/g-suite-provisioning-tutorial/gapps-add-another.png)
 
     d. Wählen Sie **Weiter und Domänenbesitzrecht überprüfen** aus. Führen Sie dann die Schritte aus, mit denen Sie prüfen, ob Sie den Domänennamen besitzen. Umfassende Anweisungen zum Überprüfen Ihrer Domäne mit Google finden Sie unter [Überprüfen des Websitebesitzrechts](https://support.google.com/webmasters/answer/35179).
 
@@ -96,11 +89,11 @@ Bevor Sie G Suite für die automatische Benutzerbereitstellung mit Azure AD kon
 
 5. Bestimmen Sie als Nächstes, welches Administratorkonto Sie zum Verwalten der Benutzerbereitstellung in G Suite verwenden möchten. Navigieren Sie zur Registerkarte **Administratorrollen**.
 
-    ![G Suite, Administrator](./media/google-apps-provisioning-tutorial/gapps-admin.png)
+    ![G Suite, Administrator](./media/g-suite-provisioning-tutorial/gapps-admin.png)
 
 6. Bearbeiten Sie für die **Administratorrolle** des Kontos die **Berechtigungen** für diese Rolle. Aktivieren Sie alle **Admin-API-Berechtigungen**, damit dieses Konto für die Bereitstellung verwendet werden kann.
 
-    ![G Suite, Administratorberechtigungen](./media/google-apps-provisioning-tutorial/gapps-admin-privileges.png)
+    ![G Suite, Administratorberechtigungen](./media/g-suite-provisioning-tutorial/gapps-admin-privileges.png)
 
 ## <a name="step-3-add-g-suite-from-the-azure-ad-application-gallery"></a>Schritt 3: Hinzufügen von G Suite aus dem Azure AD-Anwendungskatalog
 
@@ -126,9 +119,9 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Wählen Sie **Unternehmensanwendungen** und dann **Alle Anwendungen**. Benutzer müssen sich unter „portal.azure.com“ anmelden und können nicht „aad.portal.azure.com“ verwenden.
 
-    ![Blatt „Unternehmensanwendungen“](./media/google-apps-provisioning-tutorial/enterprise-applications.png)
+    ![Blatt „Unternehmensanwendungen“](./media/g-suite-provisioning-tutorial/enterprise-applications.png)
 
-    ![Blatt „Alle Anwendungen“](./media/google-apps-provisioning-tutorial/all-applications.png)
+    ![Blatt „Alle Anwendungen“](./media/g-suite-provisioning-tutorial/all-applications.png)
 
 2. Wählen Sie in der Anwendungsliste den Eintrag **G Suite** aus.
 
@@ -138,7 +131,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![Screenshot der Optionen zum Verwalten mit aufgerufener Bereitstellungsoption](common/provisioning.png)
 
-      ![Blatt „Erste Schritte“](./media/google-apps-provisioning-tutorial/get-started.png)
+      ![Blatt „Erste Schritte“](./media/g-suite-provisioning-tutorial/get-started.png)
 
 4. Legen Sie den **Bereitstellungsmodus** auf **Automatisch** fest.
 
@@ -146,11 +139,11 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 5. Klicken Sie im Abschnitt **Administratoranmeldeinformationen** auf **Autorisieren**. In einem neuen Browserfenster werden Sie zum Dialogfeld für die Google-Autorisierung geleitet.
 
-      ![G Suite, Autorisierung](./media/google-apps-provisioning-tutorial/authorize-1.png)
+      ![G Suite, Autorisierung](./media/g-suite-provisioning-tutorial/authorize-1.png)
 
 6. Bestätigen Sie, dass Sie Azure AD die Berechtigungen erteilen möchten, Änderungen an Ihrem G Suite-Mandanten vorzunehmen. Wählen Sie **Akzeptieren** aus.
 
-     ![G Suite, Mandantenberechtigungen](./media/google-apps-provisioning-tutorial/gapps-auth.png)
+     ![G Suite, Mandantenberechtigungen](./media/g-suite-provisioning-tutorial/gapps-auth.png)
 
 7. Klicken Sie im Azure-Portal auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit G Suite herstellen kann. Vergewissern Sie sich im Falle eines Verbindungsfehlers, dass Ihr G Suite-Konto über Administratorberechtigungen verfügt, und wiederholen Sie den Vorgang. Führen Sie dann erneut den Schritt **Autorisieren** aus.
 
@@ -276,7 +269,13 @@ Nachdem Sie die Bereitstellung konfiguriert haben, können Sie mit den folgenden
 
 1. Mithilfe der [Bereitstellungsprotokolle](../reports-monitoring/concept-provisioning-logs.md) können Sie ermitteln, welche Benutzer erfolgreich bzw. nicht erfolgreich bereitgestellt wurden.
 2. Anhand der [Fortschrittsleiste](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md) können Sie den Status des Bereitstellungszyklus überprüfen und den Fortschritt der Bereitstellung verfolgen.
-3. Wenn sich die Bereitstellungskonfiguration in einem fehlerhaften Zustand zu befinden scheint, wird die Anwendung unter Quarantäne gestellt. Weitere Informationen zu den verschiedenen Quarantänestatus finden Sie [hier](../app-provisioning/application-provisioning-quarantine-status.md).
+3. Wenn sich die Bereitstellungskonfiguration in einem fehlerhaften Zustand zu befinden scheint, wird die Anwendung unter Quarantäne gestellt. Weitere Informationen zu den verschiedenen Quarantänestatus finden Sie [hier](../app-provisioning/application-provisioning-quarantine-status.md).  
+
+## <a name="change-log"></a>Änderungsprotokoll
+
+* 17.10.2020: Unterstützung für zusätzliche G Suite-Benutzerattribute und -Gruppenattribute hinzugefügt
+* 17.10.2020: Die Namen der G Suite-Zielattribute wurden so aktualisiert, dass sie den [hier](https://developers.google.com/admin-sdk/directory) definierten Angaben entsprechen.
+* 17.10.2020: Standardattributzuordnungen aktualisiert
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

@@ -8,14 +8,14 @@ manager: johndeu
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 05/15/2019
+ms.date: 12/15/2019
 ms.author: kumud
-ms.openlocfilehash: 5bd88493324867dc957922a732506f5cfb8bbc20
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a2de9dbb479f43d6b646cd9f6cf604d6a08c8b6a
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91361233"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586103"
 ---
 # <a name="customize-a-brands-model-with-the-video-indexer-website"></a>Anpassen eines Markenmodells mit der Video Indexer-Website
 
@@ -31,20 +31,23 @@ Eine ausführliche Übersicht finden Sie unter [Übersicht](customize-brands-mod
 
 Sie können die Video Indexer-Website zum Erstellen, Verwenden und Bearbeiten von benutzerdefinierten Markenmodellen verwenden, die in einem Video erkannt wurden, wie in diesem Thema beschrieben. Sie können auch die API verwenden. Dies wird unter [Anpassen von Markenmodellen mithilfe von APIs](customize-brands-model-with-api.md) beschrieben.
 
+> [!NOTE]
+> Wenn Ihr Video vor dem Hinzufügen einer Marke indiziert wurde, müssen Sie es neu indizieren. Sie finden das **Neu indizieren**-Element im Dropdownmenü, das dem Video zugeordnet ist. Wählen Sie **Erweiterte Optionen** -> **Markenkategorien** aus, und aktivieren Sie **Alle Marken**.
+
 ## <a name="edit-brands-model-settings"></a>Bearbeiten der Einstellungen für das Markenmodell
 
 Sie haben die Möglichkeit festzulegen, ob Marken aus der Bing-Markendatenbank erkannt werden sollen oder nicht. Um diese Option festzulegen, müssen Sie die Einstellungen des Markenmodells bearbeiten. Folgen Sie diesen Schritten:
 
 1. Navigieren Sie zur [Video Indexer](https://www.videoindexer.ai/)-Website, und melden Sie sich an.
-2. Um ein Modell in Ihrem Konto anzupassen, wählen Sie in der oberen rechten Ecke der Seite die Schaltfläche **Anpassung des Inhaltsmodells** aus.
+1. Um ein Modell in Ihrem Konto anzupassen, wählen Sie links auf der Seite die Schaltfläche **Anpassung des Inhaltsmodells** aus.
 
-   ![Anpassen eines Inhaltsmodells in Video Indexer](./media/content-model-customization/content-model-customization.png)
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/content-model-customization/content-model-customization.png" alt-text="Anpassen eines Inhaltsmodells in Video Indexer":::
+1. Um Marken zu bearbeiten, wählen Sie die Registerkarte **Marken** aus.
 
-3. Um Marken zu bearbeiten, wählen Sie die Registerkarte **Marken** aus.
-
-    ![Der Screenshot zeigt die Registerkarte „Marken“ des Dialogfelds „Anpassung des Inhaltsmodells“.](./media/customize-brand-model/customize-brand-model.png)
-
-4. Aktivieren Sie die Option **Von Bing vorgeschlagene Marken anzeigen**, wenn Sie möchten, dass Video Indexer von Bing vorgeschlagenen Marken erkennt – lassen Sie die Option andernfalls deaktiviert.
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/customize-brand-model/customize-brand-model.png" alt-text="Der Screenshot zeigt die Registerkarte „Marken“ des Dialogfelds „Anpassung des Inhaltsmodells“":::.
+1. Aktivieren Sie die Option **Von Bing vorgeschlagene Marken anzeigen**, wenn Sie möchten, dass Video Indexer von Bing vorgeschlagenen Marken erkennt – lassen Sie die Option andernfalls deaktiviert.
 
 ## <a name="include-brands-in-the-model"></a>Einbeziehen von Marken in das Modell
 
@@ -52,16 +55,14 @@ Der Abschnitt **Marken einschließen** stellt benutzerdefinierte Marken dar, die
 
 ### <a name="add-a-brand-to-include-list"></a>Hinzufügen einer Marke zur Einschlussliste
 
-1. Wählen Sie **+ Marke hinzufügen** aus.
-
-    ![Der Screenshot zeigt das Dialogfeld zum Einschließen von Marken, in dem Sie Marken hinzufügen können.](./media/customize-brand-model/add-brand.png)
+1. Wählen Sie **+ Neue Marke erstellen** aus.
 
     Geben Sie einen Namen (erforderlich), eine Kategorie (optional), eine Beschreibung (optional) und eine Verweis-URL (optional) an.
     Das Feld „Kategorie“ soll Sie beim Kennzeichnen Ihrer Marken unterstützen. Dieses Feld wird als *Tags* der Marke angezeigt, wenn die Video Indexer-APIs verwendet werden. Beispielsweise kann die Marke „Azure“ als „Cloud“ gekennzeichnet oder eingestuft werden.
 
     Das Feld für die Verweis-URL kann eine beliebige Referenzwebsite für die Marke sein (z. B. ein Link zur entsprechenden Wikipedia-Seite).
 
-2. Wählen Sie **Marke hinzufügen** aus. Sie sehen dann, dass die Marke der Liste **Marken einschließen** hinzugefügt wurde.
+2. Wählen Sie **Speichern** aus. Sie sehen dann, dass die Marke der Liste **Marken einschließen** hinzugefügt wurde.
 
 ### <a name="edit-a-brand-on-the-include-list"></a>Bearbeiten einer Marke in der Einschlussliste
 
@@ -82,11 +83,11 @@ Der Abschnitt **Marken ausschließen** stellt die Marken dar, die Video Indexer 
 
 ### <a name="add-a-brand-to-exclude-list"></a>Hinzufügen einer Marke zur Ausschlussliste
 
-1. Wählen Sie **+ Marke hinzufügen** aus.
+1. Wählen Sie **+ Neue Marke erstellen** aus.
 
     Geben Sie einen Namen (erforderlich) und eine Kategorie (optional) an.
 
-2. Wählen Sie **Marke hinzufügen** aus. Sie sehen dann, dass die Marke der Liste *Marken ausschließen* hinzugefügt wurde.
+2. Wählen Sie **Speichern** aus. Sie sehen dann, dass die Marke der Liste *Marken ausschließen* hinzugefügt wurde.
 
 ### <a name="edit-a-brand-on-the-exclude-list"></a>Bearbeiten einer Marke in der Ausschlussliste
 

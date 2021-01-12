@@ -6,12 +6,12 @@ ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 09/30/2020
-ms.openlocfilehash: d9731455edf0afbe4c0768ae40a51316ac71ad94
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: c2241d738a43c6891ee4bea0829400fdc51a664b
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92537574"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97734231"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-functions-with-azure-cache-for-redis"></a>Bereitstellen eines Machine Learning-Modells in Azure Functions mit Azure Cache for Redis 
 
@@ -51,17 +51,17 @@ Sie können ein Machine Learning-Modell für Azure Functions mit jeder Cache-Ins
    
    | Einstellung      | Vorgeschlagener Wert  | BESCHREIBUNG |
    | ------------ |  ------- | -------------------------------------------------- |
-   | **DNS-Name** | Geben Sie einen global eindeutigen Namen ein. | Der Cachename muss zwischen 1 und 63 Zeichen lang sein und darf nur Zahlen, Buchstaben und Bindestriche enthalten. Der Name muss mit einer Zahl oder einem Buchstaben beginnen und enden und darf keine aufeinanderfolgenden Bindestriche enthalten. Der *Hostname* Ihrer Cache-Instanz lautet *\<DNS name>.redis.cache.windows.net* . | 
+   | **DNS-Name** | Geben Sie einen global eindeutigen Namen ein. | Der Cachename muss zwischen 1 und 63 Zeichen lang sein und darf nur Zahlen, Buchstaben und Bindestriche enthalten. Der Name muss mit einer Zahl oder einem Buchstaben beginnen und enden und darf keine aufeinanderfolgenden Bindestriche enthalten. Der *Hostname* Ihrer Cache-Instanz lautet *\<DNS name>.redis.cache.windows.net*. | 
    | **Abonnement** | Öffnen Sie die Dropdownliste, und wählen Sie Ihr Abonnement aus. | Das Abonnement, unter dem diese neue Azure Cache for Redis-Instanz erstellt wird. | 
    | **Ressourcengruppe** | Öffnen Sie die Dropdownliste, und wählen Sie eine Ressourcengruppe aus, oder wählen Sie **Neu erstellen** aus, und geben Sie einen Namen für eine neue Ressourcengruppe ein. | Der Name der Ressourcengruppe, in der Ihr Cache und weitere Ressourcen erstellt werden. Wenn Sie alle Ihre App-Ressourcen in einer Ressourcengruppe zusammenfassen, können Sie sie einfacher gemeinsam verwalten oder löschen. | 
    | **Location** | Öffnen Sie die Dropdownliste, und wählen Sie einen Standort aus. | Wählen Sie eine [Region](https://azure.microsoft.com/regions/) in der Nähe anderer Dienste aus, die Ihren Cache verwenden. |
    | **Preisstufe** | Öffnen Sie die Dropdownliste, und wählen Sie einen [Tarif](https://azure.microsoft.com/pricing/details/cache/) aus. |  Der Tarif bestimmt Größe, Leistung und verfügbare Features für den Cache. Weitere Informationen finden Sie unter [What is Azure Cache for Redis](cache-overview.md) (Was ist Azure Cache for Redis?). |
 
-1. Wählen Sie die Registerkarte **Netzwerk** aus, oder klicken Sie unten auf der Seite auf die Schaltfläche **Netzwerk** .
+1. Wählen Sie die Registerkarte **Netzwerk** aus, oder klicken Sie unten auf der Seite auf die Schaltfläche **Netzwerk**.
 
 1. Wählen Sie auf der Registerkarte **Netzwerk** Ihre Konnektivitätsmethode aus.
 
-1. Wählen Sie unten auf der Seite die Registerkarte **Weiter: Erweitert** aus, oder klicken Sie unten auf der Seite auf die Schaltfläche **Weiter: Erweitert** .
+1. Wählen Sie unten auf der Seite die Registerkarte **Weiter: Erweitert** aus, oder klicken Sie unten auf der Seite auf die Schaltfläche **Weiter: Erweitert**.
 
 1. Aktivieren Sie auf der Registerkarte **Erweitert** für eine Basic- oder Standard-Cache-Instanz die Aktivierungsoption, wenn Sie einen TLS-fremden Port aktivieren möchten.
 
@@ -71,7 +71,7 @@ Sie können ein Machine Learning-Modell für Azure Functions mit jeder Cache-Ins
 
 1. Geben Sie optional auf der Registerkarte **Tags** den Namen und den Wert ein, wenn Sie die Ressource kategorisieren möchten. 
 
-1. Klicken Sie auf **Überprüfen und erstellen** . Sie werden zur Registerkarte „Überprüfen und erstellen“ weitergeleitet, auf der Azure Ihre Konfiguration überprüft.
+1. Klicken Sie auf **Überprüfen + erstellen**. Sie werden zur Registerkarte „Überprüfen und erstellen“ weitergeleitet, auf der Azure Ihre Konfiguration überprüft.
 
 1. Wenn die grüne Meldung „Validierung erfolgreich“ angezeigt wird, wählen Sie **Erstellen** aus.
 
@@ -81,7 +81,7 @@ Es dauert eine Weile, bis der Cache erstellt wird. Sie können den Fortschritt a
 
 Vor der Bereitstellung müssen Sie die Elemente definieren, die zum Ausführen des Modells als Webdienst erforderlich sind. Die folgende Liste beschreibt die wesentlichen für eine Bereitstellung erforderlichen Elemente:
 
-* Ein __Eingabeskript__ . Dieses Skript akzeptiert Anforderungen, bewertet die Anforderung mithilfe des Modells und gibt die Ergebnisse zurück.
+* Ein __Eingabeskript__. Dieses Skript akzeptiert Anforderungen, bewertet die Anforderung mithilfe des Modells und gibt die Ergebnisse zurück.
 
     > [!IMPORTANT]
     > Das Eingabeskript ist spezifisch für Ihr Modell. Es muss das Format der Daten der eingehenden Anforderung, das Format der im Modell erwarteten Daten und das Format der an Clients zurückgegebenen Daten erkennen.
@@ -123,7 +123,7 @@ def run(data):
 
 Weitere Informationen zum Einstiegsskript finden Sie unter [Definieren von Bewertungscode](../machine-learning/how-to-deploy-and-where.md?tabs=python#define-an-entry-script).
 
-* **Abhängigkeiten** , z. B. Hilfsprogramme oder Python/Conda-Pakete, die zum Ausführen des Eingabeskripts oder Modells erforderlich sind
+* **Abhängigkeiten**, z. B. Hilfsprogramme oder Python/Conda-Pakete, die zum Ausführen des Eingabeskripts oder Modells erforderlich sind
 
 Diese Entitäten werden in einer __Rückschlusskonfiguration__ gekapselt. Die Rückschlusskonfiguration verweist auf das Eingabeskript und andere Abhängigkeiten.
 
@@ -209,7 +209,7 @@ Bei `show_output=True` wird die Ausgabe des Docker-Buildprozesses angezeigt. Nac
     }
     ```
 
-    Speichern Sie die Werte für __Benutzername__ und eines der __Kennwörter__ .
+    Speichern Sie die Werte für __Benutzername__ und eines der __Kennwörter__.
 
 1. Wenn Sie noch nicht über eine Ressourcengruppe oder einen App Service-Plan für die Bereitstellung des Diensts verfügen, veranschaulichen die folgenden Befehle das Erstellen dieser beiden Elemente:
 
@@ -218,7 +218,7 @@ Bei `show_output=True` wird die Ausgabe des Docker-Buildprozesses angezeigt. Nac
     az appservice plan create --name myplanname --resource-group myresourcegroup --sku B1 --is-linux
     ```
 
-    In diesem Beispiel wird der _Linux Basic_ -Tarif (`--sku B1`) verwendet.
+    In diesem Beispiel wird der _Linux Basic_-Tarif (`--sku B1`) verwendet.
 
     > [!IMPORTANT]
     > Die von Azure Machine Learning erstellten Images verwenden Linux, daher müssen Sie den Parameter `--is-linux` verwenden.
@@ -283,14 +283,14 @@ Zu diesem Zeitpunkt beginnt die Funktions-App mit dem Laden des Images.
 > [!IMPORTANT]
 > Es kann einige Minuten dauern, bis das Image geladen wurde. Sie können den Fortschritt im Azure-Portal überwachen.
 
-## <a name="test-azure-function-http-trigger"></a>Testen eines Azure Functions-HTTP-Triggers 
+## <a name="test-azure-functions-http-trigger"></a>Testen des HTTP-Triggers in Azure Functions 
 
 Wir führen jetzt den Azure Functions-HTTP-Trigger aus und testen ihn.
 
-1. Navigieren Sie im Azure-Portal zu Ihrer Azure Functions-App.
+1. Navigieren Sie im Azure-Portal zu Ihrer Funktions-App.
 1. Wählen Sie unter „Developer“ die Option **Programmieren und testen** aus. 
 1. Wählen Sie auf der rechten Seite die Registerkarte **Eingabe** aus. 
-1. Klicken Sie auf die Schaltfläche **Ausführen** , um den Azure Functions-HTTP-Trigger zu testen. 
+1. Klicken Sie auf die Schaltfläche **Ausführen**, um den Azure Functions-HTTP-Trigger zu testen. 
 
 Sie haben nun ein Modell aus Azure Machine Learning als Funktions-App in Azure Functions mithilfe einer Azure Cache for Redis-Instanz bereitgestellt. Weitere Informationen zu Azure Cache for Redis erhalten Sie anhand der Links im Abschnitt unten.
 

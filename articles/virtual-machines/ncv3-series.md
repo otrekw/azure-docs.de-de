@@ -7,12 +7,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 854c988346bce9be06811d386b3798d2d0427dd7
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: 0e3aa70a1a40e3878aea7b4f42f5aa167e4204c5
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92095924"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97585383"
 ---
 # <a name="ncv3-series"></a>NCv3-Serie
 
@@ -22,7 +22,8 @@ NCv3-Serien-VMs werden mit NVIDIA Tesla V100-GPUs betrieben. Diese GPUs können 
 [Storage Premium-Zwischenspeicherung:](premium-storage-performance.md) Unterstützt<br>
 [Livemigration:](maintenance-and-updates.md) Nicht unterstützt<br>
 [Updates mit Speicherbeibehaltung:](maintenance-and-updates.md) Nicht unterstützt<br>
-[Unterstützung von VM-Generationen:](generation-2.md) Generation 1 und 2<br>
+[Unterstützung von VM-Generationen:](generation-2.md) Generation 1 und 2<br>
+Nvidia NVLink Interconnect: Nicht unterstützt<br>
 
 > [!IMPORTANT]
 > Für diese VM-Serie ist das vCPU-Kontingent (Kernkontingent) in Ihrem Abonnement anfänglich in jeder Region auf 0 festgelegt. Sie können für diese Serie in einer [verfügbaren Region](https://azure.microsoft.com/regions/services/) eine [Anhebung des vCPU-Kontingents anfordern](../azure-portal/supportability/resource-manager-core-quotas-request.md). Diese SKUs sind nicht für Test- oder Azure-Abonnements von Visual Studio-Abonnenten verfügbar. Ihre Abonnementebene unterstützt möglicherweise nicht die Auswahl oder Bereitstellung dieser SKUs. 

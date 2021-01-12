@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: Problembehandlung, Update, Bug, Kinect, Feedback, Wiederherstellung, Protokollierung, Tipps
-ms.openlocfilehash: 9711968de061956a945fca183444dd6ebde4ca9c
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: a6e00b6c5e9e4f82bb668769aade8311896bef32
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94356381"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97587280"
 ---
 # <a name="azure-kinect-known-issues-and-troubleshooting"></a>Bekannte Probleme bei Azure Kinect und Problembehandlung
 
@@ -165,6 +165,21 @@ Der Laser, der von der Tiefenkamera zum Berechnen der Tiefendaten von Bildern ve
 ## <a name="using-body-tracking-sdk-with-unreal"></a>Verwenden des Body Tracking SDK mit Unreal
 
 Um das Body Tracking SDK mit Unreal zu verwenden, achten Sie darauf, `<SDK Installation Path>\tools` zur Umgebungsvariable `PATH` hinzuzufügen und `dnn_model_2_0.onnx` und `cudnn64_7.dll` nach `Program Files/Epic Games/UE_4.23/Engine/Binaries/Win64` zu kopieren.
+
+## <a name="using-azure-kinect-on-headless-linux-system"></a>Verwenden von Azure Kinect auf einem monitorlosen Linux-System
+
+Die Azure Kinect-Tiefenengine unter Linux verwendet OpenGL. OpenGL erfordert eine Fensterinstanz, für die ein Monitor an das System angeschlossen sein muss. Für dieses Szenario gibt es eine Problemumgehung:
+
+1. Aktivieren Sie die automatische Anmeldung für das Benutzerkonto, das Sie verwenden möchten. Anweisungen zum Aktivieren der automatischen Anmeldung finden Sie in [diesem](https://vitux.com/how-to-enable-disable-automatic-login-in-ubuntu-18-04-lts/) Artikel.
+2. Schalten Sie das System aus, trennen Sie den Monitor, und schalten Sie das System ein. Die automatische Anmeldung erzwingt die Erstellung einer X-Server-Sitzung.
+2. Herstellen einer Verbindung über SSH und Festlegen der DISPLAY-Umgebungsvariablen `export DISPLAY=:0`
+3. Starten Sie Ihre Azure Kinect-Anwendung.
+
+## <a name="missing-c-documentation"></a>Fehlende C#-Dokumentation
+
+Die Sensor-SDK-C#-Dokumentation finden Sie [hier](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/namespace_microsoft_1_1_azure_1_1_kinect_1_1_sensor.html).
+
+Die Body Tracking-SDK-C#-Dokumentation finden Sie [hier](https://microsoft.github.io/Azure-Kinect-Body-Tracking/release/1.x.x/namespace_microsoft_1_1_azure_1_1_kinect_1_1_body_tracking.html).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

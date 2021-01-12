@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: fcbe2101f85678414d4496977d9a0a1d41a71ea5
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 1c63639321966cbb73f5c47524f408d17ba46c3a
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92517496"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936557"
 ---
 # <a name="tutorial-configure-zscaler-two-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Zscaler Two für die automatische Benutzerbereitstellung
 
@@ -40,15 +40,15 @@ Zum Durchführen der Schritte in diesem Tutorial benötigen Sie Folgendes:
 
 Bevor Sie Zscaler Two für die automatische Benutzerbereitstellung mit Azure AD konfigurieren, müssen Sie Zscaler Two aus dem Azure AD-Anwendungskatalog Ihrer Liste mit den verwalteten SaaS-Anwendungen hinzufügen.
 
-Klicken Sie im linken Bereich des [Azure-Portals](https://portal.azure.com) auf **Azure Active Directory** :
+Klicken Sie im linken Bereich des [Azure-Portals](https://portal.azure.com) auf **Azure Active Directory**:
 
 ![Wählen Sie „Azure Active Directory“.](common/select-azuread.png)
 
-Navigieren Sie zu **Unternehmensanwendungen** , und wählen Sie die Option **Alle Anwendungen** :
+Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie die Option **Alle Anwendungen**:
 
 ![Unternehmensanwendungen](common/enterprise-applications.png)
 
-Um eine Anwendung hinzuzufügen, wählen Sie oben im Fenster die Option **Neue Anwendung** :
+Um eine Anwendung hinzuzufügen, wählen Sie oben im Fenster die Option **Neue Anwendung**:
 
 ![Auswählen von „Neue Anwendung“](common/add-new-app.png)
 
@@ -75,7 +75,10 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 > [!TIP]
 > Es kann auch ratsam sein, SAML-basiertes einmaliges Anmelden für Zscaler Two zu aktivieren. Befolgen Sie hierfür die Anleitung im [Tutorial für einmaliges Anmelden mit Zscaler Two](zscaler-two-tutorial.md). Einmaliges Anmelden kann unabhängig von der automatischen Benutzerbereitstellung konfiguriert werden, aber diese beiden Features ergänzen sich gegenseitig.
 
-1. Melden Sie sich am [Azure-Portal](https://portal.azure.com) an, und wählen Sie **Unternehmensanwendungen** > **Alle Anwendungen** > **Zscaler Two** :
+> [!NOTE]
+> Beim Bereitstellen oder Aufheben der Bereitstellung von Benutzern und Gruppen wird empfohlen, die Bereitstellung in regelmäßigen Abständen neu zu starten, um sicherzustellen, dass die Gruppenmitgliedschaften ordnungsgemäß aktualisiert werden. Durch einen Neustart wird der Dienst gezwungen, alle Gruppen neu auszuwerten und die Mitgliedschaften zu aktualisieren. 
+
+1. Melden Sie sich am [Azure-Portal](https://portal.azure.com) an, und wählen Sie **Unternehmensanwendungen** > **Alle Anwendungen** > **Zscaler Two**:
 
     ![Unternehmensanwendungen](common/enterprise-applications.png)
 
@@ -83,7 +86,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![Liste „Anwendungen“](common/all-applications.png)
 
-3. Wählen Sie die Registerkarte **Bereitstellung** :
+3. Wählen Sie die Registerkarte **Bereitstellung**:
 
     ![Screenshot: Bereitstellung von Zscaler Two](./media/zscaler-two-provisioning-tutorial/provisioning-tab.png)
 
@@ -93,7 +96,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** die **Mandanten-URL** und das **geheime Token** Ihres Zscaler Two-Kontos ein. Dies ist im nächsten Schritt beschrieben.
 
-6. Navigieren Sie zum Abrufen der Angaben für **Mandanten-URL** und **Geheimes Token** im Zscaler Two-Portal zu **Administration** > **Authentication Settings** (Verwaltung > Authentifizierungseinstellungen), und wählen Sie unter **Authentication Type** (Authentifizierungstyp) die Option **SAML** :
+6. Navigieren Sie zum Abrufen der Angaben für **Mandanten-URL** und **Geheimes Token** im Zscaler Two-Portal zu **Administration** > **Authentication Settings** (Verwaltung > Authentifizierungseinstellungen), und wählen Sie unter **Authentication Type** (Authentifizierungstyp) die Option **SAML**:
 
     ![Zscaler Two-Authentifizierungseinstellungen](./media/zscaler-two-provisioning-tutorial/secret-token-1.png)
 
@@ -101,13 +104,13 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![Fenster „Configure SAML“ (SAML konfigurieren)](./media/zscaler-two-provisioning-tutorial/secret-token-2.png)
 
-    Wählen Sie **Enable SCIM-Based Provisioning** (SCIM-basierte Bereitstellung aktivieren), und kopieren Sie die **Basis-URL** und das **Bearertoken** . Speichern Sie anschließend die Einstellungen. Fügen Sie im Azure-Portal die **Basis-URL** im Feld **Mandanten-URL** und das **Bearertoken** im Feld **Geheimes Token** ein.
+    Wählen Sie **Enable SCIM-Based Provisioning** (SCIM-basierte Bereitstellung aktivieren), und kopieren Sie die **Basis-URL** und das **Bearertoken**. Speichern Sie anschließend die Einstellungen. Fügen Sie im Azure-Portal die **Basis-URL** im Feld **Mandanten-URL** und das **Bearertoken** im Feld **Geheimes Token** ein.
 
-7. Wählen Sie nach dem Eingeben der Werte in die Felder **Mandanten-URL** und **Geheimes Token** die Option **Verbindung testen** , um sicherzustellen, dass Azure AD eine Verbindung mit Zscaler Two herstellen kann. Falls der Verbindungsaufbau fehlschlägt, sollten Sie sicherstellen, dass Ihr Zscaler Two-Konto über Administratorberechtigungen verfügt, und den Vorgang dann wiederholen.
+7. Wählen Sie nach dem Eingeben der Werte in die Felder **Mandanten-URL** und **Geheimes Token** die Option **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit Zscaler Two herstellen kann. Falls der Verbindungsaufbau fehlschlägt, sollten Sie sicherstellen, dass Ihr Zscaler Two-Konto über Administratorberechtigungen verfügt, und den Vorgang dann wiederholen.
 
     ![Testen der Verbindung](./media/zscaler-two-provisioning-tutorial/test-connection.png)
 
-8. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder einer Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll. Wählen Sie **Bei Fehler E-Mail-Benachrichtigung senden** :
+8. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder einer Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll. Wählen Sie **Bei Fehler E-Mail-Benachrichtigung senden**:
 
     ![Einrichten der E-Mail-Benachrichtigung](./media/zscaler-two-provisioning-tutorial/notification.png)
 
@@ -131,7 +134,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 14. Wenn Sie Bereichsfilter konfigurieren möchten, hilft Ihnen die Anleitung unter [Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) weiter.
 
-15. Ändern Sie den **Bereitstellungsstatus** im Abschnitt **Einstellungen** in **Ein** , wenn Sie den Azure AD-Bereitstellungsdienst für Zscaler Two aktivieren möchten:
+15. Ändern Sie den **Bereitstellungsstatus** im Abschnitt **Einstellungen** in **Ein**, wenn Sie den Azure AD-Bereitstellungsdienst für Zscaler Two aktivieren möchten:
 
     ![Bereitstellungsstatus](./media/zscaler-two-provisioning-tutorial/provisioning-status.png)
 
@@ -139,7 +142,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![Bereichswerte](./media/zscaler-two-provisioning-tutorial/scoping.png)
 
-17. Wählen Sie **Speichern** , wenn Sie bereit für die Bereitstellung sind:
+17. Wählen Sie **Speichern**, wenn Sie bereit für die Bereitstellung sind:
 
     ![„Speichern“ auswählen](./media/zscaler-two-provisioning-tutorial/save-provisioning.png)
 

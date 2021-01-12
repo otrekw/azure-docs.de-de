@@ -5,12 +5,13 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/03/2020
 ms.topic: article
-ms.openlocfilehash: 536f5e7d2fa12d1f9a9f09a31b463d2096dcad37
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.custom: references_regions
+ms.openlocfilehash: 4380f14610fb0775c82aa79ec7cda9dc70cf0715
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207409"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97722690"
 ---
 # <a name="system-requirements"></a>Systemanforderungen
 
@@ -64,7 +65,32 @@ Weitere Informationen dazu finden Sie im speziellen Kapitel zu den [Netzwerkanfo
 
 Informationen zum Behandeln von Netzwerkproblemen finden Sie im [Problembehandlungsleitfaden](../resources/troubleshoot.md#unstable-holograms).
 
-### <a name="network-ports"></a>Netzwerkports
+### <a name="network-firewall"></a>Netzwerkfirewall
+
+### <a name="sdk-version--0176"></a>SDK-Version >= 0.1.76
+
+Beim Rendering per Remotezugriff von virtuellen Computern werden freigegebene IP-Adressen aus folgenden IP-Adressbereichen verwendet:
+
+| Name             | Region         | IP-Präfix         |
+|------------------|:---------------|:------------------|
+| Australien (Osten)   | australiaeast  | 20.53.44.240/28   |
+| East US          | eastus         | 20.62.129.224/28  |
+| USA (Ost) 2        | eastus2        | 20.49.103.240/28  |
+| Japan, Osten       | japaneast      | 20.191.165.112/28 |
+| Nordeuropa     | northeurope    | 52.146.133.64/28  |
+| USA Süd Mitte | southcentralus | 20.65.132.80/28   |
+| Asien, Südosten   | southeastasia  | 20.195.64.224/28  |
+| UK, Süden         | uksouth        | 51.143.209.144/28 |
+| Europa, Westen      | westeurope     | 20.61.99.112/28   |
+| USA, Westen 2        | westus2        | 20.51.9.64/28     |
+
+Stellen Sie sicher, dass Ihre Firewalls (auf dem Gerät, in Routern usw.) diese IP-Adressbereiche und die folgenden Ports nicht blockieren:
+
+| Port              | Protocol  | Allow    |
+|-------------------|---------- |----------|
+| 49152-65534       | TCP/UDP | Ausgehend |
+
+#### <a name="sdk-version--0176"></a>SDK-Version < 0.1.76
 
 Stellen Sie sicher, dass Ihre Firewalls (auf dem Gerät, in Routern usw.) die folgenden Ports nicht blockieren:
 

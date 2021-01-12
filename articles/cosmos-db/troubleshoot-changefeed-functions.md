@@ -4,16 +4,16 @@ description: Häufig auftretende Probleme, Problemumgehungen und Diagnoseschritt
 author: ealsur
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
-ms.date: 03/13/2020
+ms.date: 12/29/2020
 ms.author: maquaran
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 9fc5da214a50cb000d2154d08bb9b6f6f98ac5ec
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 1b7b82ea07b7e00d281739011c9c9f83ab4dff73
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340529"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97825612"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-functions-trigger-for-cosmos-db"></a>Diagnostizieren und Behandeln von Problemen bei Verwendung des Azure Functions-Triggers für Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -43,7 +43,7 @@ Wenn Sie manuell eine eigene Instanz des [Azure Cosmos DB-SDK-Clients](./sql-api
 
 Die Azure-Funktion schlägt mit folgender Fehlermeldung fehl: „Either the source collection 'collection-name' (in database 'database-name') or the lease collection 'collection2-name' (in database 'database2-name') does not exist. Both collections must exist before the listener starts. To automatically create the lease collection, set 'CreateLeaseCollectionIfNotExists' to 'true'“ (Die Quellsammlung 'Name der Sammlung' (in Datenbank 'Datenbankname') oder die Lease-Sammlung 'Name der Sammlung2' (in Datenbank 'Datenbankname2') ist nicht vorhanden. Beide Sammlungen müssen vorhanden sein, damit der Listener gestartet werden kann. Legen Sie zum automatischen Erstellen der Lease-Sammlung 'CreateLeaseCollectionIfNotExists' auf 'true' fest).
 
-Das heißt, dass einer oder beide der für die ordnungsgemäße Funktion des Triggers erforderlichen Azure Cosmos-Container nicht vorhanden oder für die Azure-Funktion nicht erreichbar ist. **In der Fehlermeldung wird Ihnen mitgeteilt, nach welcher Azure Cosmos-Datenbank und welchen Containern der Trigger sucht** , entsprechend Ihrer jeweiligen Konfiguration.
+Das heißt, dass einer oder beide der für die ordnungsgemäße Funktion des Triggers erforderlichen Azure Cosmos-Container nicht vorhanden oder für die Azure-Funktion nicht erreichbar ist. **In der Fehlermeldung wird Ihnen mitgeteilt, nach welcher Azure Cosmos-Datenbank und welchen Containern der Trigger sucht**, entsprechend Ihrer jeweiligen Konfiguration.
 
 1. Überprüfen Sie das `ConnectionStringSetting`-Attribut, und stellen Sie sicher, dass es **auf eine Einstellung verweist, die in Ihrer Azure-Funktions-App vorhanden ist**. Der Wert dieses Attributs darf nicht die Verbindungszeichenfolge selbst sein, sondern muss dem Namen der Konfigurationseinstellung entsprechen.
 2. Überprüfen Sie, ob `databaseName` und `collectionName` in Ihrem Azure Cosmos-Konto vorhanden sind. Wenn Sie die automatische Ersetzung von Werten (mit `%settingName%`-Mustern) nutzen, vergewissern Sie sich, dass der Name der Einstellung in der Azure-Funktions-App vorhanden ist.
@@ -85,16 +85,18 @@ Das Konzept einer „Änderung“ ist ein Vorgang in einem Dokument. Die gängig
 
 ### <a name="some-changes-are-missing-in-my-trigger"></a>Einige Änderungen sind in meinem Trigger nicht vorhanden
 
-Wenn Sie feststellen, dass einige der im Azure Cosmos-Container aufgetretenen Änderungen von der Azure-Funktion nicht übernommen werden, sollten Sie zuerst den folgenden Untersuchungsschritt ausführen.
+Wenn Sie feststellen, dass einige der Änderungen, die in Ihrem Azure Cosmos-Container aufgetreten sind, nicht von der Azure-Funktion übernommen werden, oder einige Änderungen im Ziel fehlen, wenn Sie sie kopieren, führen Sie die folgenden Schritte aus.
 
 Wenn Ihre Azure-Funktion die Änderungen empfängt, verarbeitet sie diese häufig und könnte das Ergebnis (optional) an ein anderes Ziel senden. Wenn Sie fehlende Änderungen untersuchen, stellen Sie sicher, dass Sie **messen, welche Änderungen am Erfassungspunkt** (beim Start der Azure-Funktion) und nicht am Ziel empfangen werden.
 
 Wenn einige Änderungen am Ziel nicht vorhanden sind, kann dies bedeuten, dass während der Ausführung der Azure-Funktion nach Empfang der Änderungen ein Fehler aufgetreten ist.
 
-Gehen Sie in diesem Szenario am besten wie folgt vor: Fügen Sie `try/catch`-Blöcke im Code und innerhalb der Schleifen hinzu, die möglicherweise die Änderungen verarbeiten, um etwaige Fehler für eine bestimmte Teilmenge von Elementen zu erkennen, und behandeln Sie diese entsprechend (senden Sie sie zur weiteren Analyse oder eine erneute Ausführung an einen anderen Speicher). 
+Gehen Sie in diesem Szenario am besten wie folgt vor: Fügen Sie `try/catch`-Blöcke im Code und innerhalb der Schleifen hinzu, die möglicherweise die Änderungen verarbeiten, um etwaige Fehler für eine bestimmte Teilmenge von Elementen zu erkennen, und behandeln Sie diese entsprechend (senden Sie sie zur weiteren Analyse oder eine erneute Ausführung an einen anderen Speicher).
 
 > [!NOTE]
 > Der Azure Functions-Trigger für Cosmos DB unternimmt standardmäßig keinen erneuten Versuch für einen Batch von Änderungen, wenn während der Codeausführung ein Ausnahmefehler aufgetreten ist. Das heißt, dass die Änderungen nicht am Ziel eintreffen, weil sie nicht verarbeitet werden.
+
+Wenn das Ziel ein anderer Cosmos-Container ist und Sie Upsertvorgänge ausführen, um die Elemente zu kopieren, **überprüfen Sie, ob die Partitionschlüsseldefinitionen für den überwachten Container und den Zielcontainer identisch sind**. Upsertvorgänge können aufgrund dieses Konfigurationsunterschieds mehrere Quellelemente im Ziel in einem speichern.
 
 Wenn Sie feststellen, dass einige Änderungen vom Trigger überhaupt nicht empfangen wurden, liegt dies am häufigsten daran, dass **eine andere Azure-Funktion ausgeführt wird**. Dies kann eine andere in Azure bereitgestellte Azure-Funktion sein oder eine Azure-Funktion, die lokal auf dem Computer des Entwicklers ausgeführt wird und **genau dieselbe Konfiguration aufweist** (die gleichen überwachten und Lease-Container) – und diese Azure-Funktion „stiehlt“ eine Teilmenge der Änderungen, die von Ihrer Azure-Funktion verarbeitet werden sollten.
 

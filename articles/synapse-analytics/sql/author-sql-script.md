@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: pimorano
 ms.reviewer: omafnan
-ms.openlocfilehash: 077815d117af0328a3466346727e135caaf8ff21
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 8d4c1928ae1fac9b840245756c4bf5fe22a83f0f
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96458006"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590510"
 ---
 # <a name="synapse-studio-sql-scripts-in-azure-synapse-analytics"></a>SQL-Skripts in Synapse Studio von Azure Synapse Analytics 
 
@@ -79,7 +79,7 @@ Untersuchen Sie die verfügbare Geste, indem Sie mit der rechten Maustaste auf d
 Wählen Sie im Menü „Aktionen“ unter „SQL-Skripts entwickeln“ die Option „Neuer Ordner“ aus. Geben Sie den Namen des neuen Ordners im Popupfenster ein. 
 
 > [!div class="mx-imgBorder"] 
-> ![newsqlscript](./media/author-sql-script/new-sql-script-create-folder.png)
+> ![Screenshot, der ein Beispiel für ein SQL-Skript mit der Auswahl „Neuer Ordner“ anzeigt.](./media/author-sql-script/new-sql-script-create-folder.png)
 
 Um ein SQL-Skript in einen Ordner zu verschieben, können Sie das SQL-Skript und dann im Menü „Aktionen“ die Option „Verschieben nach“ auswählen. Suchen Sie anschließend im neuen Fenster nach dem Zielordner, und verschieben Sie das SQL-Skript in den ausgewählten Ordner. Sie können das SQL-Skript auch schnell per Drag & Drop in einen Ordner verschieben.  
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 59784b6e618e875a6eedc947ce75afdf3bd1df74
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 0d4945ee97a46c78aac3c4ac508c5f89f5942296
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96327388"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937160"
 ---
 # <a name="tutorial-configure-zscaler-beta-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Zscaler Beta für die automatische Benutzerbereitstellung
 
@@ -80,6 +80,9 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 > [!TIP]
 > Sie können auch das SAML-basierte einmalige Anmelden für Zscaler Beta aktivieren. Befolgen Sie dazu die Anweisungen im [SSO-Tutorial zu Zscaler Beta](zscaler-beta-tutorial.md). Einmaliges Anmelden kann unabhängig von der automatischen Benutzerbereitstellung konfiguriert werden, obwohl diese beiden Features einander ergänzen.
+
+> [!NOTE]
+> Beim Bereitstellen oder Aufheben der Bereitstellung von Benutzern und Gruppen wird empfohlen, die Bereitstellung in regelmäßigen Abständen neu zu starten, um sicherzustellen, dass die Gruppenmitgliedschaften ordnungsgemäß aktualisiert werden. Durch einen Neustart wird der Dienst gezwungen, alle Gruppen neu auszuwerten und die Mitgliedschaften zu aktualisieren.  
 
 ### <a name="to-configure-automatic-user-provisioning-for-zscaler-beta-in-azure-ad"></a>So konfigurieren Sie die automatische Benutzerbereitstellung für Zscaler Beta in Azure AD:
 

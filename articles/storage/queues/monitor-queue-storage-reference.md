@@ -1,20 +1,20 @@
 ---
-title: Überwachen von Daten in Azure Queue Storage – Referenz | Microsoft-Dokumentation
-description: Protokoll- und Metrikenreferenz für die Überwachung von Daten in Azure Queue Storage
+title: Überwachen von Daten in Azure Queue Storage – Referenz
+description: Protokoll- und Metrikenreferenz für die Überwachung von Daten in Azure Queue Storage.
 author: normesta
 services: azure-monitor
-ms.service: azure-monitor
-ms.topic: reference
-ms.date: 10/02/2020
 ms.author: normesta
+ms.date: 10/02/2020
+ms.topic: reference
+ms.service: azure-monitor
 ms.subservice: logs
 ms.custom: monitoring
-ms.openlocfilehash: a3a07f828bb8ef20da630e909e46f03e8556eb98
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: ba8a82ed1113bfb3e71560ca9a6c713602df21f2
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96780364"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590646"
 ---
 # <a name="azure-queue-storage-monitoring-data-reference"></a>Überwachen von Daten in Azure Queue Storage – Referenz
 
@@ -26,23 +26,23 @@ In den nachstehenden Tabellen sind die für Azure Storage erfassten Plattformmet
 
 ### <a name="capacity-metrics"></a>Kapazitätsmetriken
 
-Kapazitätsmetrikwerte werden täglich aktualisiert (bis zu 24 Stunden). Das Aggregationsintervall definiert das Zeitintervall, für das Metrikwerte dargestellt werden. Das unterstützte Aggregationsintervall für alle Kapazitätsmetriken beträgt eine Stunde (PT1H).
+Kapazitätsmetriken werden täglich aktualisiert (bis zu 24 Stunden). Das Aggregationsintervall definiert das Zeitintervall, für das Metrikwerte dargestellt werden. Das unterstützte Aggregationsintervall für alle Kapazitätsmetriken beträgt eine Stunde (PT1H).
 
 Azure Storage stellt in Azure Monitor folgende Kapazitätsmetriken bereit:
 
-#### <a name="account-level"></a>Kontoebene
+#### <a name="account-level-capacity-metrics"></a>Kapazitätsmetriken auf Kontoebene
 
-[!INCLUDE [Account level capacity metrics](../../../includes/azure-storage-account-capacity-metrics.md)]
+[!INCLUDE [Account-level capacity metrics](../../../includes/azure-storage-account-capacity-metrics.md)]
 
-#### <a name="queue-storage"></a>Queue Storage
+#### <a name="queue-storage-metrics"></a>Queue Storage-Metriken
 
-Diese Tabelle enthält [Queue Storage-Metriken](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountsqueueservices).
+Diese Tabelle enthält [Queue Storage-Metriken](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountsqueueservices).
 
 | Metrik | BESCHREIBUNG |
 | ------------------- | ----------------- |
-| QueueCapacity | Der vom Speicherkonto beanspruchte Queue-Speicher. <br/><br/> Einheit: Byte <br/> Aggregationstyp: Average <br/> Beispielwert: 1024 |
-| QueueCount   | Die Anzahl von Warteschlangen im Speicherkonto. <br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Average <br/> Beispielwert: 1024 |
-| QueueMessageCount | Die ungefähre Anzahl von Warteschlangennachrichten im Warteschlangendienst des Speicherkontos. <br/><br/>Einheit: Anzahl <br/> Aggregationstyp: Average <br/> Beispielwert: 1024 |
+| **QueueCapacity** | Der vom Speicherkonto beanspruchte Queue Storage. <br><br> Einheit: `Bytes` <br> Aggregationstyp: `Average` <br> Wertbeispiel: `1024` |
+| **QueueCount** | Die Anzahl von Warteschlangen im Speicherkonto. <br><br> Einheit: `Count` <br> Aggregationstyp: `Average` <br> Wertbeispiel: `1024` |
+| **QueueMessageCount** | Die ungefähre Anzahl von Warteschlangennachrichten im Speicherkonto. <br><br> Einheit: `Count` <br> Aggregationstyp: `Average` <br> Wertbeispiel: `1024` |
 
 ### <a name="transaction-metrics"></a>Transaktionsmetriken
 
@@ -77,7 +77,7 @@ In der nachstehenden Tabelle sind die Eigenschaften für Azure Storage-Ressource
 
 [!INCLUDE [Account level capacity metrics](../../../includes/azure-storage-logs-properties-service.md)]
 
-## <a name="see-also"></a>Siehe auch
+## <a name="see-also"></a>Weitere Informationen
 
-- Eine Beschreibung der Überwachung von Azure Storage finden Sie unter [Überwachen von Azure Queue Storage](monitor-queue-storage.md).
+- Eine Beschreibung der Überwachung von Azure Queue Storage finden Sie unter [Überwachen von Azure Queue Storage](monitor-queue-storage.md).
 - Ausführliche Informationen zur Überwachung von Azure-Ressourcen finden Sie unter [Überwachen von Azure-Ressourcen mit Azure Monitor](../../azure-monitor/insights/monitor-azure-resource.md).

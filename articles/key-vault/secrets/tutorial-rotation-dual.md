@@ -10,12 +10,12 @@ ms.subservice: secrets
 ms.topic: tutorial
 ms.date: 06/22/2020
 ms.author: jalichwa
-ms.openlocfilehash: c2496959f851b55f8cc66c0e793b641cdafb003a
-ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
+ms.openlocfilehash: 39081bc7bec7cfd76ccfc9107d5c2286affb7df0
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97808333"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97913769"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-that-have-two-sets-of-authentication-credentials"></a>Automatisieren der Geheimnisrotation für Ressourcen, die über zwei Sätze mit Anmeldeinformationen für die Authentifizierung verfügen
 
@@ -222,8 +222,15 @@ Beachten Sie, dass `value` des Schlüssels mit dem Geheimnis im Schlüsseltresor
 
 ## <a name="key-vault-rotation-functions-for-two-sets-of-credentials"></a>Key Vault-Rotationsfunktionen für zwei Sätze von Anmeldeinformationen
 
-- [Speicherkonto](https://github.com/jlichwa/KeyVault-Rotation-StorageAccountKey-PowerShell)
-- [Redis Cache](https://github.com/jlichwa/KeyVault-Rotation-RedisCacheKey-PowerShell)
+Vorlage für Rotationsfunktionen für zwei Sätze von Anmeldeinformationen und einige sofort einsatzbereite Funktionen:
+
+- [Projektvorlage](https://serverlesslibrary.net/sample/bc72c6c3-bd8f-4b08-89fb-c5720c1f997f)
+- [Redis Cache](https://serverlesslibrary.net/sample/0d42ac45-3db2-4383-86d7-3b92d09bc978)
+- [Speicherkonto](https://serverlesslibrary.net/sample/0e4e6618-a96e-4026-9e3a-74b8412213a4)
+- [Cosmos DB](https://serverlesslibrary.net/sample/bcfaee79-4ced-4a5c-969b-0cc3997f47cc)
+
+> [!NOTE]
+> Die oben genannten Rotationsfunktionen werden von einem Mitglied der Community und nicht von Microsoft erstellt. Die Community-Instanz von Azure Functions wird von keinem Microsoft-Supportprogramm oder -Dienst unterstützt und in der vorliegenden Form ohne jegliche Gewährleistung zur Verfügung gestellt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

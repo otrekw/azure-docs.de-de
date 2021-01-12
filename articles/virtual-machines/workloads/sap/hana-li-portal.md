@@ -13,17 +13,21 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 07/15/2019
+ms.date: 12/31/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 550e22ac861b92994f2695594d09fc2935d273d1
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: e5adb8edbeafa4d77e24bf865338e111c455cb80
+ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967753"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97827511"
 ---
 # <a name="azure-hana-large-instances-control-through-azure-portal"></a>Steuerung von HANA in Azure (große Instanzen) über das Azure-Portal
+
+>[!NOTE]
+>Befolgen Sie für Rev 4.2 die Anweisungen im Thema [Verwalten von BareMetal-Instanzen über das Azure-Portal](../../../baremetal-infrastructure/workloads/sap/baremetal-infrastructure-portal.md).
+
 Dieses Dokument beschreibt, wie [HANA (große Instanzen)](./hana-overview-architecture.md) im [Azure-Portal](https://portal.azure.com) dargestellt wird und welche Aktivitäten Sie über das Azure-Portal mit den für Sie bereitgestellten Einheiten von HANA (große Instanzen) ausführen können. Die Sichtbarkeit von HANA (große Instanzen) im Azure-Portal wird über einen Azure-Ressourcenanbieter für HANA (große Instanzen) bereitgestellt. Diese Funktion befindet sich derzeit in der öffentlichen Vorschau.
 
 ## <a name="register-hana-large-instance-resource-provider"></a>Registrieren des Ressourcenanbieters für HANA (große Instanzen)

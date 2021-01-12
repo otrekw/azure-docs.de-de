@@ -6,15 +6,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 08/12/2020
+ms.date: 12/18/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 0b48b8d954b132caab96e5978c90687899ea04c2
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 59acbc545e6bb37ebd090ec458d98586de882133
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96549224"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97696288"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Java SDK für die SQL-API: Versionshinweise und Ressourcen
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -53,6 +53,12 @@ Dies ist das ursprüngliche Sync Java SDK v2 von Azure Cosmos DB für die SQL-
 |**Unterstützte Mindestlaufzeit**|[Java Development Kit (JDK) 7+](/java/azure/jdk/?view=azure-java-stable&preserve-view=true)|
 
 ## <a name="release-notes"></a>Versionshinweise
+
+### <a name="261"></a><a name="2.6.1"></a>2.6.1
+* Es wurde ein Fehler bei der Verarbeitung einer Abfrage durch Dienstinteroperabilität behoben.
+
+### <a name="260"></a><a name="2.6.0"></a>2.6.0
+* Unterstützung für das Abfragen des Änderungsfeeds zu einem bestimmten Zeitpunkt wurde hinzugefügt.
 
 ### <a name="251"></a><a name="2.5.1"></a>2.5.1
 * Behebt ein Cacheproblem der primären Partition in einer documentCollection-Abfrage.
@@ -271,6 +277,8 @@ Wenn Microsoft ein SDK deaktiviert, werden Sie mindestens **12 Monate** vorher 
 
 | Version | Veröffentlichungsdatum | Deaktivierungstermine |
 | --- | --- | --- |
+| [2.6.1](#2.6.1) |17. Dezember 2020 |--- |
+| [2.6.0](#2.6.0) |16. Juli 2020 |--- |
 | [2.5.1](#2.5.1) |03. Juni 2020 |--- |
 | [2.5.0](#2.5.0) |12. Mai 2020 |--- |
 | [2.4.7](#2.4.7) |20. Februar 2020 |--- |

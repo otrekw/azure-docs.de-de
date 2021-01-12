@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/07/2019
 ms.author: Zhchia
-ms.openlocfilehash: da3ad4f70e0cc41fe95327eb74093c1471c877bd
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 14708ddcc5c0e06ee58f5e9db5945c4e9f1a1d08
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96351570"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937143"
 ---
 # <a name="tutorial-configure-zscaler-private-access-zpa-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Zscaler Private Access (ZPA) für die automatische Benutzerbereitstellung
 
@@ -115,6 +115,9 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 > [!TIP]
 > Sie können auch das SAML-basierte einmalige Anmelden für Zscaler Private Access (ZPA) aktivieren. Befolgen Sie dazu die Anweisungen im [SSO-Tutorial zu Zscaler Private Access (ZPA)](./zscalerprivateaccess-tutorial.md). Einmaliges Anmelden kann unabhängig von der automatischen Benutzerbereitstellung konfiguriert werden, obwohl diese beiden Features einander ergänzen.
+
+> [!NOTE]
+> Beim Bereitstellen oder Aufheben der Bereitstellung von Benutzern und Gruppen wird empfohlen, die Bereitstellung in regelmäßigen Abständen neu zu starten, um sicherzustellen, dass die Gruppenmitgliedschaften ordnungsgemäß aktualisiert werden. Durch einen Neustart wird der Dienst gezwungen, alle Gruppen neu auszuwerten und die Mitgliedschaften zu aktualisieren.  
 
 > [!NOTE]
 > Weitere Informationen zum SCIM-Endpunkt von Zscaler Private Access finden Sie [hier](https://www.zscaler.com/partners/microsoft).

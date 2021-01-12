@@ -7,17 +7,17 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 10/14/2020
-ms.openlocfilehash: f3763857af1df8f34f38b36835a667c6610e1909
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.date: 12/15/2020
+ms.openlocfilehash: 5d265fe02d801cf0d2d66be37a8dc2a220e19b34
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107826"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591343"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Dienstgrenzwerte in der kognitiven Azure-Suche
 
-Die Grenzwerte für Speicher, Workloads und Mengen von Indizes und anderen Objekten hängen davon ab, ob die [Bereitstellung von Azure Cognitive Search](search-create-service-portal.md) im Tarif **Free** , **Basic** , **Standard** oder **Storage Optimized** erfolgt.
+Die Grenzwerte für Speicher, Workloads und Mengen von Indizes und anderen Objekten hängen davon ab, ob die [Bereitstellung von Azure Cognitive Search](search-create-service-portal.md) im Tarif **Free**, **Basic**, **Standard** oder **Storage Optimized** erfolgt.
 
 + **Free** ist ein gemeinsamer mehrinstanzfähiger Dienst, der Teil Ihres Azure-Abonnements ist. 
 
@@ -99,7 +99,7 @@ Es gibt eine maximale Ausführungsdauer, um den Dienst als Ganzes ausgewogen und
 <sup>5</sup> Die KI-Anreicherung und die Bildanalyse sind rechenintensive Vorgänge, die unverhältnismäßig große Mengen der verfügbaren Verarbeitungskapazität verbrauchen. Die Laufzeit für diese Workloads wurde verkürzt, damit andere Aufträge in der Warteschlange bessere Chancen haben, ausgeführt zu werden.
 
 > [!NOTE]
-> Wie unter [Indexgrenzwerte](#index-limits) beschrieben, erzwingen Indexer die Obergrenze von 3.000 Elementen auch für alle komplexen Sammlungen pro Dokument – ab der neuesten allgemein verfügbaren API-Version, die komplexe Typen (`2019-05-06`) unterstützt. Dies bedeutet, dass dieser Grenzwert für Sie nicht gilt, wenn Sie Ihren Indexer mit einer früheren API-Version erstellt haben. Zur Sicherstellung der maximalen Kompatibilität wird ein Indexer, der mit einer früheren API-Version erstellt und dann mit API-Version `2019-05-06` oder höher aktualisiert wurde, trotzdem von der Begrenzung **ausgenommen** . Kunden sollten sich dieser negativen Auswirkungen, die wie oben erwähnt mit der Verwendung sehr komplexer Sammlungen verbunden sind, bewusst sein. Wir empfehlen Ihnen dringend, für die Erstellung aller neuen Indexer die neueste allgemein verfügbare API-Version zu nutzen.
+> Wie unter [Indexgrenzwerte](#index-limits) beschrieben, erzwingen Indexer die Obergrenze von 3.000 Elementen auch für alle komplexen Sammlungen pro Dokument – ab der neuesten allgemein verfügbaren API-Version, die komplexe Typen (`2019-05-06`) unterstützt. Dies bedeutet, dass dieser Grenzwert für Sie nicht gilt, wenn Sie Ihren Indexer mit einer früheren API-Version erstellt haben. Zur Sicherstellung der maximalen Kompatibilität wird ein Indexer, der mit einer früheren API-Version erstellt und dann mit API-Version `2019-05-06` oder höher aktualisiert wurde, trotzdem von der Begrenzung **ausgenommen**. Kunden sollten sich dieser negativen Auswirkungen, die wie oben erwähnt mit der Verwendung sehr komplexer Sammlungen verbunden sind, bewusst sein. Wir empfehlen Ihnen dringend, für die Erstellung aller neuen Indexer die neueste allgemein verfügbare API-Version zu nutzen.
 
 ## <a name="shared-private-link-resource-limits"></a>Beschränkungen für freigegebene Private Link-Ressourcen
 
@@ -143,7 +143,7 @@ Suchabfrage- und Indizierungsanforderungen werden gedrosselt, wenn das System si
 
 Statische Grenzwerte für Anforderungsraten für Indexvorgänge:
 
-+ Indizes auflisten (GET /indexes): 5 pro Sekunde pro Sucheinheit
++ Indizes auflisten (GET /indexes): 3 pro Sekunde pro Sucheinheit
 + Index abrufen (GET /indexes/myindex): 10 pro Sekunde pro Sucheinheit
 + Index erstellen (POST /indexes): 12 pro Minute pro Sucheinheit
 + Index erstellen oder aktualisieren (PUT /indexes/myindex): 6 pro Sekunde pro Sucheinheit

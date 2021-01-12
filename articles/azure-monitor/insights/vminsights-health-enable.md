@@ -6,12 +6,13 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/16/2020
-ms.openlocfilehash: 20d38e5caee67ca8bb13877d3162401fa245dc2d
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.custom: references_regions
+ms.openlocfilehash: 78ce082c6e90cfc9c67ddcfa00926d292b9ed7ea
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96444777"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740469"
 ---
 # <a name="enable-azure-monitor-for-vms-guest-health-preview"></a>Aktivieren des Features „Gastintegrität“ von Azure Monitor für VMs (Vorschau)
 Mit dem Feature „Gastintegrität“ von Azure Monitor für VMs können Sie Informationen zur Integrität eines virtuellen Computers anzeigen. Dies wird anhand von verschiedenen Leistungsmessungen definiert, für die in regelmäßigen Abständen Stichproben genommen werden. In diesem Artikel wird beschrieben, wie Sie dieses Feature in Ihrem Abonnement aktivieren und die Gastüberwachung für die einzelnen virtuellen Computer aktivieren.
@@ -20,38 +21,57 @@ Mit dem Feature „Gastintegrität“ von Azure Monitor für VMs können Sie Inf
 Das Feature „Gastintegrität“ von Azure Monitor für VMs verfügt in der öffentlichen Vorschauphase über die folgenden Einschränkungen:
 
 - Aktuell werden nur virtuelle Azure-Computer unterstützt. Azure Arc für Server wird derzeit nicht unterstützt.
-- Auf dem virtuellen Computer muss eines der folgenden Betriebssysteme ausgeführt werden: 
+
+
+## <a name="supported-operating-systems"></a>Unterstützte Betriebssysteme
+Auf dem virtuellen Computer muss eines der folgenden Betriebssysteme ausgeführt werden: 
+
   - Ubuntu 16.04 LTS, Ubuntu 18.04 LTS
   - Windows Server 2012 oder höher
-- Der virtuelle Computer muss sich in einer der folgenden Regionen befinden:
-  - Australien (Osten)
-  - Australien, Südosten
-  - Indien, Mitte
-  - USA (Mitte)
-  - East US
-  - USA (Ost) 2
-  - USA, Osten 2 (EUAP)
-  - Deutschland, Westen-Mitte
-  - Japan, Osten
-  - USA Nord Mitte
-  - Nordeuropa
-  - USA Süd Mitte
-  - Asien, Südosten
-  - UK, Süden
-  - Europa, Westen
-  - USA (Westen)
-  - USA, Westen 2
-- Der Log Analytics-Arbeitsbereich muss sich in einer der folgenden Regionen befinden:
-  - East US
-  - USA, Osten 2 (EUAP)
-  - Region „Europa, Westen“
+
+## <a name="supported-regions"></a>Unterstützte Regionen
+
+Der virtuelle Computer muss sich in einer der folgenden Regionen befinden:
+
+- Australien, Mitte
+- Australien (Osten)
+- Australien, Südosten
+- Indien, Mitte
+- USA (Mitte)
+- Asien, Osten
+- East US
+- USA (Ost) 2
+- USA, Osten 2 (EUAP)
+- Deutschland, Westen-Mitte
+- Japan, Osten
+- USA Nord Mitte
+- Nordeuropa
+- USA Süd Mitte
+- Asien, Südosten
+- UK, Süden
+- USA, Westen-Mitte
+- Europa, Westen
+- USA (Westen)
+- USA, Westen 2
+
+
+Der Log Analytics-Arbeitsbereich muss sich in einer der folgenden Regionen befinden:
+
+- USA (Mitte)
+- East US
+- USA (Ost) 2
+- USA, Osten 2 (EUAP)
+- Nordeuropa
+- Asien, Südosten
+- UK, Süden
+- Region „Europa, Westen“
+- USA, Westen 2
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Für den virtuellen Computer muss das Onboarding für Azure Monitor für VMs durchgeführt werden.
 - Der Benutzer, der die Schritte für das Onboarding ausführt, muss mindestens über die Zugriffsebene „Mitwirkender“ für das Abonnement verfügen, unter dem sich der virtuelle Computer und die Datensammlungsregel befinden.
 - Erforderliche Azure-Ressourcenanbieter müssen wie im folgenden Abschnitt beschrieben registriert werden.
-
 
 ## <a name="register-required-azure-resource-providers"></a>Registrieren von erforderlichen Azure-Ressourcenanbietern
 Die folgenden Azure-Ressourcenanbieter müssen für Ihr Abonnement registriert werden, damit das Feature „Gastintegrität“ von Azure Monitor für VMs aktiviert werden kann. 

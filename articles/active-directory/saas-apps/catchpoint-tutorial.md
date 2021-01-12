@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/27/2020
+ms.date: 12/16/2020
 ms.author: jeedes
-ms.openlocfilehash: 8ff7f6468b5556b56c5c2aeaba6107cac48d1ed4
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 940915186176efcb39be03efe6673c138132ebd6
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92456448"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97916302"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-catchpoint"></a>Tutorial: Integration des einmaligen Anmeldens von Azure Active Directory mit Catchpoint
 
@@ -25,8 +25,6 @@ In diesem Tutorial erfahren Sie, wie Sie Catchpoint in Azure Active Directory (A
 * Steuern Sie den Benutzerzugriff auf Catchpoint über Azure AD.
 * Aktivieren Sie die automatische Catchpoint-Anmeldung für Benutzer mit Azure AD-Konten.
 * Verwalten Sie Ihre Konten zentral im Azure-Portal.
-
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -41,22 +39,21 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 
 * Catchpoint unterstützt SP- und IdP-initiiertes einmaliges Anmelden.
 * Catchpoint unterstützt die JIT-Benutzerbereitstellung (Just-In-Time).
-* Nach dem Konfigurieren von Catchpoint können Sie die Sitzungssteuerung erzwingen. Diese schützt in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten. Die Sitzungssteuerung ist eine Erweiterung des bedingten Zugriffs. [Hier](/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
 
 ## <a name="add-catchpoint-from-the-gallery"></a>Hinzufügen von Catchpoint über den Katalog
 
 Fügen Sie zum Konfigurieren der Integration von Catchpoint in Azure AD Catchpoint zu Ihrer Liste mit den verwalteten SaaS-Apps hinzu.
 
-1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim [Azure-Portal](https://portal.azure.com) an.
+1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim Azure-Portal an.
 1. Wählen Sie im linken Bereich den Dienst **Azure Active Directory** aus.
-1. Navigieren Sie zu **Unternehmensanwendungen** , und wählen Sie die Option **Alle Anwendungen** aus.
+1. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie die Option **Alle Anwendungen** aus.
 1. Wählen Sie zum Hinzufügen einer neuen Anwendung **Neue Anwendung** aus.
 1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **Catchpoint** in das Suchfeld ein.
 1. Wählen Sie im Ergebnisbereich **Catchpoint** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-catchpoint"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für Catchpoint
+## <a name="configure-and-test-azure-ad-sso-for-catchpoint"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für Catchpoint
 
-Damit einmaliges Anmelden funktioniert, müssen Sie einen Azure AD-Benutzer mit einem Benutzer in Catchpoint verknüpfen. In diesem Tutorial konfigurieren wir einen Testbenutzer mit dem Namen **B. Simon** . 
+Damit einmaliges Anmelden funktioniert, müssen Sie einen Azure AD-Benutzer mit einem Benutzer in Catchpoint verknüpfen. In diesem Tutorial konfigurieren wir einen Testbenutzer mit dem Namen **B. Simon**. 
 
 Durchlaufen Sie die folgenden Abschnitte:
 
@@ -71,8 +68,8 @@ Durchlaufen Sie die folgenden Abschnitte:
 
 Führen Sie die folgenden Schritte im Azure-Portal aus, um das einmalige Anmelden von Azure AD zu aktivieren:
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
-1. Navigieren Sie auf der Anwendungsintegrationsseite für **Catchpoint** zum Abschnitt **Verwalten** , und wählen Sie **Einmaliges Anmelden** aus.
+1. Melden Sie sich beim Azure-Portal an.
+1. Navigieren Sie auf der Anwendungsintegrationsseite für **Catchpoint** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
 1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
 1. Wählen Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** das Stiftsymbol aus, um die Einstellungen für **Grundlegende SAML-Konfiguration** zu bearbeiten.
 
@@ -80,10 +77,10 @@ Führen Sie die folgenden Schritte im Azure-Portal aus, um das einmalige Anmelde
 
 1. Konfigurieren Sie den initiierten Modus für Catchpoint:
    - Geben Sie für den **IDP-initiierten** Modus die Werte für die folgenden Felder an:
-     - Für **Bezeichner** : `https://portal.catchpoint.com/SAML2`
-     - Für **Antwort-URL** : `https://portal.catchpoint.com/ui/Entry/SingleSignOn.aspx`
+     - Für **Bezeichner**: `https://portal.catchpoint.com/SAML2`
+     - Für **Antwort-URL**: `https://portal.catchpoint.com/ui/Entry/SingleSignOn.aspx`
    - Wählen Sie für den **SP-initiierten** Modus die Option **Zusätzliche URLs festlegen** aus, und geben Sie den folgenden Wert ein:
-     - Für **Anmelde-URL** : `https://portal.catchpoint.com/ui/Entry/SingleSignOn.aspx`
+     - Für **Anmelde-URL**: `https://portal.catchpoint.com/ui/Entry/SingleSignOn.aspx`
 
 1. Die Catchpoint-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Fügen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzu. Die nachfolgende Tabelle enthält die Liste der Standardattribute:
 
@@ -104,9 +101,9 @@ Führen Sie die folgenden Schritte im Azure-Portal aus, um das einmalige Anmelde
     | Namespace | user.assignedrole |
 
     > [!NOTE]
-    > Der `namespace`-Anspruch muss dem Kontonamen zugeordnet werden. Dieser Kontoname muss mit einer Rolle in Azure AD eingerichtet werden, damit er in einer SAML-Antwort zurückgegeben werden kann. Weitere Informationen zu Rollen in Azure AD finden Sie unter [Gewusst wie: Konfigurieren von im SAML-Token ausgestellten Rollenansprüchen für Unternehmensanwendungen](../develop/active-directory-enterprise-app-role-management.md).
+    > Der `namespace`-Anspruch muss dem Kontonamen zugeordnet werden. Dieser Kontoname muss mit einer Rolle in Azure AD eingerichtet werden, damit er in einer SAML-Antwort zurückgegeben werden kann. Weitere Informationen zu Rollen in Azure AD finden Sie unter [Gewusst wie: Konfigurieren von im SAML-Token ausgestellten Rollenansprüchen für Unternehmensanwendungen](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps#app-roles-ui).
 
-1. Navigieren Sie zur Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** . Navigieren Sie im Abschnitt **SAML-Signaturzertifikat** zur Option **Zertifikat (Base64)** . Wählen Sie **Herunterladen** aus, um das Zertifikat auf Ihrem Computer zu speichern.
+1. Navigieren Sie zur Seite **Einmaliges Anmelden (SSO) mit SAML einrichten**. Navigieren Sie im Abschnitt **SAML-Signaturzertifikat** zur Option **Zertifikat (Base64)** . Wählen Sie **Herunterladen** aus, um das Zertifikat auf Ihrem Computer zu speichern.
 
     ![Downloadlink für das Zertifikat](common/certificatebase64.png)
 
@@ -123,8 +120,8 @@ In diesem Abschnitt erstellen Sie im Azure-Portal einen Azure AD-Testbenutzer m
 1. Führen Sie unter den Eigenschaften für **Benutzer** die folgenden Schritte aus:
    1. Geben Sie im Feld **Name** die Zeichenfolge `B.Simon` ein.  
    1. Geben Sie im Feld **Benutzername** die Zeichenfolge username@companydomain.extension ein. Geben Sie z. B. `B.Simon@contoso.com` ein
-   1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen** . Notieren Sie sich den angezeigten Kennwortwert.
-   1. Klicken Sie auf **Erstellen** .
+   1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**. Notieren Sie sich den angezeigten Kennwortwert.
+   1. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -132,16 +129,10 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 1. Wählen Sie im Azure-Portal **Unternehmensanwendungen** > **Alle Anwendungen** aus.
 1. Wählen Sie in der Anwendungsliste **Catchpoint** aus.
-1. Navigieren Sie auf der Übersichtsseite der App zum Abschnitt **Verwalten** , und wählen Sie **Benutzer und Gruppen** aus.
-
-   ![Link „Benutzer und Gruppen“](common/users-groups-blade.png)
-
+1. Navigieren Sie auf der Übersichtsseite der App zum Abschnitt **Verwalten**, und wählen Sie **Benutzer und Gruppen** aus.
 1. Wählen Sie die Schaltfläche **Benutzer hinzufügen** und anschließend im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
-
-    ![Link „Benutzer hinzufügen“](common/add-assign-user.png)
-
-1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste der Benutzer die Option **B.Simon** aus. Klicken Sie am unteren Bildschirmrand auf **Auswählen** .
-1. Falls Sie in der SAML-Assertion einen Rollenwert erwarten, wählen Sie im Dialogfeld **Rolle auswählen** die entsprechende Benutzerrolle aus der Liste aus. Klicken Sie am unteren Bildschirmrand auf die Schaltfläche **Auswählen** .
+1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste der Benutzer die Option **B.Simon** aus. Klicken Sie am unteren Bildschirmrand auf **Auswählen**.
+1. Wenn Sie die Rollen wie oben erläutert eingerichtet haben, können Sie sie in der Dropdownliste **Rolle auswählen** auswählen.
 1. Wählen Sie im Dialogfeld **Zuweisung hinzufügen** die Option **Zuweisen** aus.
 
 ## <a name="configure-catchpoint-sso"></a>Konfigurieren des einmaligen Anmeldens für Catchpoint
@@ -173,23 +164,26 @@ Catchpoint unterstützt die Just-In-Time-Benutzerbereitstellung (standardmäßig
 
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens
 
-In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mithilfe des Portals „Meine Apps“.
+In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mit den folgenden Optionen: 
 
-Wenn Sie im Portal „Meine Apps“ die Kachel „Catchpoint“ auswählen, sollten Sie automatisch bei der Catchpoint-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Portal „Meine Apps“ finden Sie unter [Anmelden beim Portal „Meine Apps“ und Starten von Apps über dieses](../user-help/my-apps-portal-end-user-access.md).
+#### <a name="sp-initiated"></a>SP-initiiert:
+
+* Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch werden Sie zur Anmelde-URL für Catchpoint weitergeleitet, wo Sie den Anmeldeflow initiieren können.  
+
+* Rufen Sie direkt die Catchpoint-Anmelde-URL auf, und initiieren Sie den Anmeldeflow.
+
+#### <a name="idp-initiated"></a>IDP-initiiert:
+
+* Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch sollten Sie automatisch bei der Catchpoint-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. 
+
+Sie können auch den Microsoft-Bereich „Meine Apps“ verwenden, um die Anwendung in einem beliebigen Modus zu testen. Beim Klicken auf die Kachel „Catchpoint“ in „Meine Apps“ geschieht Folgendes: Wenn Sie den SP-Modus konfiguriert haben, werden Sie zum Initiieren des Anmeldeflows zur Anmeldeseite der Anwendung weitergeleitet. Wenn Sie den IDP-Modus konfiguriert haben, sollten Sie automatisch bei der Catchpoint-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+
 
 > [!NOTE]
 > Wenn Sie sich über die Anmeldeseite bei der Catchpoint-Anwendung angemeldet haben, geben Sie nach der Angabe der **Catchpoint-Anmeldeinformationen** den gültigen **Namespacewert** in das Feld **Company Credentials (SSO)** (Anmeldeinformationen des Unternehmens (SSO)) ein, und wählen Sie **Login** (Anmelden) aus.
 > 
 > ![Catchpoint-Konfiguration](./media/catchpoint-tutorial/loginimage.png)
 
-## <a name="additional-resources"></a>Zusätzliche Ressourcen
+## <a name="next-steps"></a>Nächste Schritte
 
-- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](./tutorial-list.md)
-
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
-
-- [Was ist der bedingte Zugriff in Azure Active Directory?](../conditional-access/overview.md)
-
-- [Ausprobieren von Catchpoint mit Azure AD](https://aad.portal.azure.com/)
-
-- [Was ist Sitzungssteuerung in Microsoft Cloud App Security?](/cloud-app-security/proxy-intro-aad)
+Nach dem Konfigurieren von Catchpoint können Sie die Sitzungssteuerung erzwingen. Diese schützt in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten. Die Sitzungssteuerung ist eine Erweiterung des bedingten Zugriffs. [Hier](/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.

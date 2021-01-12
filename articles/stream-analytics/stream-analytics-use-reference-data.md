@@ -6,13 +6,13 @@ ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/2/2020
-ms.openlocfilehash: 2cfd391daa13a100a56bb10b79b27eda80902374
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.date: 12/18/2020
+ms.openlocfilehash: e7f5b3ae0a4dc7faa67a361b210b1d014e1f1b93
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96533605"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97722129"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>Verwenden von Referenzdaten für Suchvorgänge in Stream Analytics
 
@@ -137,6 +137,18 @@ INTO    output
 FROM    Step1
 JOIN    refData2 ON refData2.Desc = Step1.Desc 
 ``` 
+
+## <a name="iot-edge-jobs"></a>IoT Edge-Aufträge
+
+Für Stream Analytics-Edge-Aufträge werden nur lokale Verweisdaten unterstützt. Wenn ein Auftrag auf einem IoT Edge-Gerät bereitgestellt wird, werden Verweisdaten über den benutzerdefinierten Dateipfad geladen. Halten Sie auf dem Gerät eine Verweisdatendatei bereit. Ordnen Sie die Verweisdatendatei für einen Windows-Container auf dem lokalen Laufwerk an, und geben Sie das lokale Laufwerk mit dem Docker-Container frei. Erstellen Sie für einen Linux-Container ein Docker-Volume, und fügen Sie die Datendatei auf dem Volume ein.
+
+Die Aktualisierung der Verweisdaten in IoT Edge wird durch eine Bereitstellung ausgelöst. Nach dem Auslösen wählt das Stream Analytics-Modul die aktualisierten Daten aus, ohne die Ausführung des Auftrags zu beenden.
+
+Es gibt zwei Möglichkeiten, die Verweisdaten zu aktualisieren:
+
+* Aktualisieren des Verweisdatenpfads für Ihren Stream Analytics-Auftrag im Azure-Portal.
+
+* Aktualisieren der IoT Edge-Bereitstellung
 
 ## <a name="next-steps"></a>Nächste Schritte
 > [!div class="nextstepaction"]

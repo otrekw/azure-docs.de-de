@@ -3,19 +3,19 @@ title: 'Anpassen eines Markenmodells in Video Indexer: Azure'
 titleSuffix: Azure Media Services
 description: Dieser Artikel gibt einen Überblick darüber, was ein Markenmodell in Video Indexer ist und wie Sie es anpassen können.
 services: media-services
-author: anikaz
-manager: johndeu
+author: Juliako
+manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 05/15/2019
-ms.author: kumud
-ms.openlocfilehash: e0df698cb431e5e26c69047a9f464904f0546487
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 12/15/2019
+ms.author: juliako
+ms.openlocfilehash: 81d7dda854c6afcc9397289ff23ba45b02ed9fc4
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89294236"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586073"
 ---
 # <a name="customize-a-brands-model-in-video-indexer"></a>Anpassen eines Markenmodells in Video Indexer
 
@@ -25,15 +25,15 @@ Die Markenerkennung ist in einer Vielzahl von Geschäftsszenarien nützlich, z. 
 
 ## <a name="out-of-the-box-detection-example"></a>Beispiel zur vorkonfigurierten Erkennung
 
-In der Präsentation [Microsoft Build 2017 Day 2](https://www.videoindexer.ai/media/ed6ede78ad/) wird die Marke „Microsoft Windows“ mehrfach verwendet. Gelegentlich im Transkript, manchmal als sichtbarer Text, aber nie buchstäblich. Video Indexer erkennt mit hoher Genauigkeit auf der Grundlage des Kontexts, dass ein Begriff tatsächlich eine Marke ist, wobei über 90.000 Marken vorkonfiguriert sind und ständig aktualisiert werden. Video Indexer erkennt die Marke bei 02:25 in den Sprachinhalten und dann erneut bei 02:40 im sichtbaren Text, der Teil des Windows-Logos ist.
+In der Präsentation „Microsoft Build 2017 Day 2“ wird die Marke „Microsoft Windows“ mehrfach verwendet. Gelegentlich im Transkript, manchmal als sichtbarer Text, aber nie buchstäblich. Video Indexer erkennt mit hoher Genauigkeit auf der Grundlage des Kontexts, dass ein Begriff tatsächlich eine Marke ist, wobei über 90.000 Marken vorkonfiguriert sind und ständig aktualisiert werden. Video Indexer erkennt die Marke bei 02:25 in den Sprachinhalten und dann erneut bei 02:40 im sichtbaren Text, der Teil des Windows-Logos ist.
 
 ![Markenübersicht](./media/content-model-customization/brands-overview.png)
 
-Beim Erwähnen von Fenstern (windows) im Kontext des Bauwesens wird das Wort „Windows“ nicht als Marke erkannt. Dasselbe gilt basierend auf fortschrittlichen Machine Learning-Algorithmen auch für „Box“, „Apple“, „Fox“ usw., da diese Algorithmen wissen, wie diese Wörter eindeutig anhand des Kontexts unterschieden werden. Die Markenerkennung funktioniert für alle unterstützten Sprachen. Klicken Sie hier, um das vollständige [Keynote-Video und den Index für Microsoft Build 2017 Day 2](https://www.videoindexer.ai/media/ed6ede78ad/) anzuzeigen.
-
-Lesen Sie „Nächste Schritte“, um zu erfahren, wie Sie bei eigenen Marken vorgehen.
+Beim Erwähnen von Fenstern (windows) im Kontext des Bauwesens wird das Wort „Windows“ nicht als Marke erkannt. Dasselbe gilt basierend auf fortschrittlichen Machine Learning-Algorithmen auch für „Box“, „Apple“, „Fox“ usw., da diese Algorithmen wissen, wie diese Wörter eindeutig anhand des Kontexts unterschieden werden. Die Markenerkennung funktioniert für alle unterstützten Sprachen.  
 
 ## <a name="next-steps"></a>Nächste Schritte
+
+Lesen Sie diese Themen, um zu erfahren, wie Sie bei eigenen Marken vorgehen:
 
 [Anpassen des Markenmodells mit APIs](customize-brands-model-with-api.md)
 

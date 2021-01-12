@@ -4,12 +4,12 @@ description: Lassen Sie sich per SMS, Webhook und E-Mail usw. benachrichtigen, w
 ms.subservice: alerts
 ms.topic: conceptual
 ms.date: 09/17/2018
-ms.openlocfilehash: 836fc20b6c3d46766801dce0e2aeda83a217d6a3
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: e0d71c014780637b490c745ed829078d138df675
+ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95536080"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97708431"
 ---
 # <a name="alerts-on-activity-log"></a>Warnungen zum Aktivitätsprotokoll
 
@@ -18,7 +18,8 @@ ms.locfileid: "95536080"
 Aktivitätsprotokollwarnungen sind Warnungen, die aktiviert werden, wenn ein neues [Aktivitätsprotokollereignis](activity-log-schema.md) auftritt, das die in der Warnung angegebenen Bedingungen erfüllt. Die Warnungsregel wird basierend auf der Reihenfolge und der Menge der im [Azure-Aktivitätsprotokoll](platform-logs-overview.md) erfassten Ereignisse ausgelöst. Warnungsregeln des Aktivitätsprotokolls sind Azure-Ressourcen, sie können also mithilfe einer Azure Resource Manager-Vorlage erstellt werden. Sie können auch im Azure-Portal erstellt, aktualisiert oder gelöscht werden. In diesem Artikel werden die Konzepte erläutert, auf denen Aktivitätsprotokollwarnungen basieren. Weitere Informationen zur Erstellung oder Verwendung von Warnungsregeln des Aktivitätsprotokolls finden Sie unter [Erstellen, Anzeigen und Verwalten von Aktivitätsprotokollwarnungen mit Azure Monitor](alerts-activity-log.md).
 
 > [!NOTE]
-> Warnungen können **nicht** für Ereignisse in der Kategorie „Warnung“ des Aktivitätsprotokolls erstellt werden.
+> * Warnungen können **nicht** für Ereignisse in der Kategorie „Warnung“ des Aktivitätsprotokolls erstellt werden.
+> * Aktivitätsprotokollwarnungen mit der Kategorie „Sicherheit“ können auch in einem [neuen aktualisierten Flow](https://docs.microsoft.com/azure/security-center/continuous-export?tabs=azure-portal) auf [ServiceNow](https://docs.microsoft.com/azure/security-center/export-to-siem) festgelegt werden.
 
 Normalerweise erstellen Sie Aktivitätsprotokollwarnungen, um Benachrichtigungen zu empfangen, wenn Folgendes geschieht:
 

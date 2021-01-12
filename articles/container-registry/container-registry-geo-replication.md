@@ -5,12 +5,12 @@ author: stevelas
 ms.topic: article
 ms.date: 07/21/2020
 ms.author: stevelas
-ms.openlocfilehash: 636896edf8180052508f366bcc548efe13dec1e2
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: e5f0fe76b599874afe8d64c293f3d914da5dd243
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95810046"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97705165"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Georeplikation in Azure Container Registry
 
@@ -59,6 +59,8 @@ Die Georeplikationsfunktion von Azure Container Registry bietet die folgenden Vo
 * Verwalten einer einzelnen Konfiguration von Imagebereitstellungen, da alle Regionen die gleiche Image-URL verwenden: `contoso.azurecr.io/public/products/web:1.2`
 * Übertragung per Push in eine einzelne Registrierung, während ACR die Georeplikation verwaltet. ACR repliziert nur eindeutige Ebenen, wodurch die Regionen übergreifende Datenübertragung reduziert wird. 
 * Konfigurieren Sie regionale [Webhooks](container-registry-webhook.md), um über Ereignisse in bestimmten Replikaten benachrichtigt zu werden.
+
+Azure Container Registry unterstützt auch [Verfügbarkeitszonen](zone-redundancy.md), um eine robuste und hoch verfügbare Azure-Containerregistrierung innerhalb einer Azure-Region zu erstellen. Die Kombination aus Verfügbarkeitszonen für Redundanz innerhalb einer Region und Georeplikation über mehrere Regionen hinweg verbessert sowohl die Zuverlässigkeit als auch die Leistung einer Registrierung.
 
 ## <a name="configure-geo-replication"></a>Konfigurieren der Georeplikation
 

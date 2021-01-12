@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: ac6981d998f25b8df7cea553fe152d68cd43fee5
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: cc88712dd686983baed858de47e11dfa44e85350
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96181423"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955517"
 ---
 # <a name="tutorial-configure-snowflake-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Snowflake für die automatische Benutzerbereitstellung
 
@@ -159,6 +159,12 @@ Nachdem Sie die Bereitstellung konfiguriert haben, können Sie mit den folgenden
 ## <a name="connector-limitations"></a>Connector-Einschränkungen
 
 * Die von Snowflake generierten SCIM-Token laufen nach 6 Monaten ab. Beachten Sie, dass die Token vor ihrem Ablauf erneuert werden müssen, damit die Bereitstellungssynchronisierung weiterhin fortgesetzt werden kann. 
+
+## <a name="troubleshooting-tips"></a>Tipps zur Problembehandlung
+
+* **IP-Bereiche** 
+
+   Der Azure AD-Bereitstellungsdienst wird zurzeit unter bestimmten IP-Adressbereichen betrieben. Sie können daher ggf. andere IP-Adressbereiche einschränken und diese bestimmten IP-Adressbereiche der Positivliste Ihrer Anwendung hinzufügen, um den Datenverkehrsfluss vom Azure AD-Bereitstellungsdienst an Ihre Anwendung zuzulassen. Entsprechende Informationen finden Sie in der Dokumentation unter [IP-Bereiche](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#ip-ranges).
 
 ## <a name="change-log"></a>Änderungsprotokoll
 

@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 12/28/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: ca09e41e6d5b83f14d2dfee4107135585b7e945a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 518df665db0ba3770bee757f45d02b6ccd303a00
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95908794"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97803866"
 ---
 # <a name="point-in-time-restore-for-block-blobs"></a>Point-in-Time-Wiederherstellung für Blockblobs
 
@@ -43,7 +43,7 @@ Der Vorgang **Restore Blob Ranges** gibt eine Wiederherstellungs-ID zurück, die
 > Lesevorgänge aus dem sekundären Speicherort können während des Wiederherstellungsvorgangs fortgesetzt werden, wenn das Speicherkonto georepliziert wird.
 
 > [!CAUTION]
-> Point-in-Time-Wiederherstellung unterstützt nur Wiederherstellungsvorgänge für Blockblobs. Vorgänge für Container können nicht wiederhergestellt werden. Wenn Sie einen Container aus dem Speicherkonto löschen, indem Sie den Vorgang [Container löschen](/rest/api/storageservices/delete-container) aufrufen, kann dieser Container nicht mit einem Wiederherstellungsvorgang wiederhergestellt werden. Löschen Sie einzelne Blobs anstatt eines Containers, falls Sie diese vielleicht wiederherstellen möchten.
+> Point-in-Time-Wiederherstellung unterstützt nur Wiederherstellungsvorgänge für Blockblobs. Vorgänge für Container können nicht wiederhergestellt werden. Wenn Sie einen Container aus dem Speicherkonto löschen, indem Sie den Vorgang [Container löschen](/rest/api/storageservices/delete-container) aufrufen, kann dieser Container nicht mit einem Wiederherstellungsvorgang wiederhergestellt werden. Löschen Sie die einzelnen Blobs, anstatt einen ganzen Container zu löschen, wenn Sie sie möglicherweise später wiederherstellen möchten.
 
 ### <a name="prerequisites-for-point-in-time-restore"></a>Voraussetzungen für Point-in-Time-Wiederherstellung
 
@@ -57,9 +57,12 @@ Die Point-in-Time-Wiederherstellung erfordert, dass die folgenden Azure Storage-
 
 Wenn Sie Point-in-Time-Wiederherstellung für ein Speicherkonto aktivieren, geben Sie eine Beibehaltungsdauer an. Blockblobs in Ihrem Speicherkonto können während der Beibehaltungsdauer wieder hergestellt werden.
 
-Die Beibehaltungsdauer beginnt, wenn Sie Point-in-Time-Wiederherstellung aktivieren. Beachten Sie, dass Sie Blobs nicht in einem Zustand vor Beginn der Beibehaltungsdauer wiederherstellen können. Wenn Sie z. B. Point-in-Time-Wiederherstellung am 1. Mai mit einer Beibehaltungsdauer von 30 Tagen aktiviert haben, können Sie am 15. Mai maximal 15 Tage wiederherstellen. Am 1. Juni können Sie Daten zwischen 1 Tag und 30 Tagen wiederherstellen.
+Die Beibehaltungsdauer beginnt einige Minuten, nachdem Sie Point-in-Time-Wiederherstellung aktivieren. Beachten Sie, dass Sie Blobs nicht in einem Zustand vor Beginn der Beibehaltungsdauer wiederherstellen können. Wenn Sie z. B. Point-in-Time-Wiederherstellung am 1. Mai mit einer Beibehaltungsdauer von 30 Tagen aktiviert haben, können Sie am 15. Mai maximal 15 Tage wiederherstellen. Am 1. Juni können Sie Daten zwischen 1 Tag und 30 Tagen wiederherstellen.
 
 Die Beibehaltungsdauer für Point-in-Time-Wiederherstellung muss mindestens einen Tag weniger als die für vorläufiges Löschen angegebene Beibehaltungsdauer betragen. Wenn die Beibehaltungsdauer für vorläufiges Löschen z. B. auf 7 Tage festgelegt ist, kann die Beibehaltungsdauer für Point-in-Time-Wiederherstellung zwischen 1 Tag und 6 Tagen liegen.
+
+> [!IMPORTANT]
+> Die erforderliche Zeit zum Wiederherstellen einer Gruppe von Daten ist von der Anzahl der Schreib- und Löschvorgänge abhängig, die während des Wiederherstellungszeitraums vorgenommen werden. Beispielsweise dauert bei einem Konto mit 1 Million Objekten, in dem pro Tag 3.000 Objekte hinzugefügt und 1.000 Objekte gelöscht werden, die Wiederherstellung zu einem 30 Tage in der Vergangenheit liegenden Zeitpunkt ungefähr zwei Stunden. Bei einem Konto mit einer solchen Änderungsrate sollte weder ein Aufbewahrungszeitraum von mehr als 90 Tagen noch eine Wiederherstellung zu einem so weit in der Vergangenheit liegenden Zeitpunkt angewendet werden.
 
 ### <a name="permissions-for-point-in-time-restore"></a>Berechtigungen für Point-in-Time-Wiederherstellung
 

@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 12/07/2020
-ms.openlocfilehash: ee314708f0d564bf1af639a3d864ea19472425cf
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 7122c960dc7921e833329d528f96f0efe0347bda
+ms.sourcegitcommit: 17e9cb8d05edaac9addcd6e0f2c230f71573422c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96937626"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97707468"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Grenzwert- und Konfigurationsinformationen für Azure Logic Apps
 
@@ -37,8 +37,8 @@ Dies sind die Grenzwerte für eine einzelne Logik-App-Definition:
 | Maximale Anzahl von `parameters` | 50 | |
 | Maximale Anzahl von `outputs` | 10 | |
 | Maximale Größe für `trackedProperties` | 16.000 Zeichen |
-| Inlinecodeaktion: maximale Anzahl von Codezeichen | 1\.024 Zeichen | Um diesen Grenzwert auf 100.000 Zeichen zu erhöhen, erstellen Sie Ihre Logik-Apps mit dem Ressourcentyp **Logik-App (Vorschau)** . Verwenden Sie dafür entweder das [Azure-Portal](create-stateful-stateless-workflows-azure-portal.md) oder [Visual Studio Code und die Erweiterung **Azure Logic Apps (Vorschau)** ](create-stateful-stateless-workflows-visual-studio-code.md). |
-| Inlinecodeaktion: maximale Dauer für die Codeausführung | 5 Sekunden | Um diesen Grenzwert auf 15 Sekunden zu erhöhen, erstellen Sie Ihre Logik-Apps mit dem Ressourcentyp **Logik-App (Vorschau)** . Verwenden Sie dafür entweder das [Azure-Portal](create-stateful-stateless-workflows-azure-portal.md) oder [Visual Studio Code und die Erweiterung **Azure Logic Apps (Vorschau)** ](create-stateful-stateless-workflows-visual-studio-code.md). |
+| Inlinecodeaktion: maximale Anzahl von Codezeichen | 1\.024 Zeichen | Um diesen Grenzwert auf 100.000 Zeichen zu erhöhen, erstellen Sie Ihre Logik-Apps mit dem Ressourcentyp **Logik-App (Vorschau)** . Verwenden Sie dafür entweder das [Azure-Portal](create-stateful-stateless-workflows-azure-portal.md) oder [Visual Studio Code und die Erweiterung **Azure Logic Apps (Vorschau)**](create-stateful-stateless-workflows-visual-studio-code.md). |
+| Inlinecodeaktion: maximale Dauer für die Codeausführung | 5 Sekunden | Um diesen Grenzwert auf 15 Sekunden zu erhöhen, erstellen Sie Ihre Logik-Apps mit dem Ressourcentyp **Logik-App (Vorschau)** . Verwenden Sie dafür entweder das [Azure-Portal](create-stateful-stateless-workflows-azure-portal.md) oder [Visual Studio Code und die Erweiterung **Azure Logic Apps (Vorschau)**](create-stateful-stateless-workflows-visual-studio-code.md). |
 ||||
 
 <a name="run-duration-retention-limits"></a>
@@ -305,12 +305,12 @@ Für jedes Azure-Abonnement gelten folgende Grenzwerte für das Integrationskont
 
 * 1\.000 Integrationskonten insgesamt, einschließlich Integrationskonten in beliebigen [Integrationsdienstumgebungen (Integration Service Environments, ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) in [Developer- und Premium-SKUs](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level).
 
-* Jede ISE – unabhängig davon, ob es sich um eine [Entwickler- oder Premium-Version](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) handelt, ist auf eine bestimmte Anzahl von Integrationskonten beschränkt, aber [Sie können dieses Limit gegen zusätzliche Gebühren erhöhen](logic-apps-pricing.md#fixed-pricing):
+* Jede ISE, ob [Developer oder Premium](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level), kann ein einzelnes Integrationskonto ohne zusätzliche Kosten verwenden, obwohl der enthaltene Kontotyp von der ISE SKU abweicht. Sie können für Ihre ISE bis zur Gesamtgrenze für [zusätzliche Kosten](logic-apps-pricing.md#fixed-pricing) weitere Integrationskonten erstellen:
 
   | ISE SKU | Grenzwerte für Integrationskonten |
   |---------|----------------------------|
-  | **Premium** | Insgesamt 20: nur [Standard](../logic-apps/logic-apps-pricing.md#integration-accounts)-Konten, einschließlich eines kostenlosen Standard-Kontos. Sie können [weitere Integrationskonten gegen zusätzliche Gebühren](logic-apps-pricing.md#fixed-pricing) buchen. Es sind keine Free- oder Basic-Konten zulässig. |
-  | **Developer** | Insgesamt 20: Kombination aus [Free](../logic-apps/logic-apps-pricing.md#integration-accounts) (auf 1 Konto beschränkt) und [Standard](../logic-apps/logic-apps-pricing.md#integration-accounts) oder nur Standard-Konten. Sie können [weitere Integrationskonten gegen zusätzliche Gebühren](logic-apps-pricing.md#fixed-pricing) buchen. Es sind keine Basic-Konten zulässig. Verwenden Sie die [Developer-SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) für Experimente, Entwicklung und Tests, jedoch nicht für die Produktion oder Leistungstests. |
+  | **Premium** | 20 Konten insgesamt, einschließlich eines Standardkontos ohne zusätzliche Kosten. Mit dieser SKU können Sie nur [Standardkonten](../logic-apps/logic-apps-pricing.md#integration-accounts) haben. Es sind keine Free- oder Basic-Konten zulässig. |
+  | **Developer** | 20 Konten gesamt, einschließlich eines [kostenlosen](../logic-apps/logic-apps-pricing.md#integration-accounts) Kontos (auf 1 beschränkt). Mit dieser SKU sind beide Kombinationen möglich: <p>– Ein kostenloses Konto und bis zu 19 [Standardkonten](../logic-apps/logic-apps-pricing.md#integration-accounts). <br>– Kein kostenloses Konto und bis zu 20 Standardkonten. <p>Es sind keine Basic- oder zusätzlichen kostenlosen Konten zulässig. <p><p>**Wichtig**: Verwenden Sie die [Developer-SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) für Experimente, Entwicklung und Tests, jedoch nicht für die Produktion oder Leistungstests. |
   |||
 
 Weitere Informationen zur Preisgestaltung und Abrechnung für ISEs finden Sie unter [Feststehendes Preismodell](../logic-apps/logic-apps-pricing.md#fixed-pricing). Eine Preisübersicht finden Sie unter [Logic Apps – Preise](https://azure.microsoft.com/pricing/details/logic-apps/).
@@ -319,8 +319,7 @@ Weitere Informationen zur Preisgestaltung und Abrechnung für ISEs finden Sie un
 
 ### <a name="artifact-limits-per-integration-account"></a>Artefaktgrenzwerte pro Integrationskonto
 
-Die folgenden Grenzwerte gelten für die Anzahl von Artefakten für jeden Integrationskontotarif.
-Eine Preisübersicht finden Sie unter [Logic Apps – Preise](https://azure.microsoft.com/pricing/details/logic-apps/). Informationen zur Preisgestaltung und Abrechnung für Integrationskonten finden Sie unter [Integrationskonten](../logic-apps/logic-apps-pricing.md#integration-accounts).
+Die folgenden Grenzwerte gelten für die Anzahl von Artefakten für jeden Integrationskontotarif. Eine Preisübersicht finden Sie unter [Logic Apps – Preise](https://azure.microsoft.com/pricing/details/logic-apps/). Informationen zur Preisgestaltung und Abrechnung für Integrationskonten finden Sie unter [Integrationskonten](../logic-apps/logic-apps-pricing.md#integration-accounts).
 
 > [!NOTE]
 > Verwenden Sie den Free-Tarif nur für Versuchsszenarios und nicht für Produktionsszenarios. Dieser Tarif beschränkt Durchsatz und Nutzung und ist nicht mit einer Vereinbarung zum Servicelevel (Service-Level Agreement, SLA) verbunden.
@@ -413,7 +412,9 @@ In diesem Abschnitt sind nur die IP-Adressen des Azure Logic Apps-Diensts für d
 
 > [!TIP]
 > Zur Reduzierung der Komplexität beim Erstellen von Sicherheitsregeln können Sie optional das [Diensttag](../virtual-network/service-tags-overview.md) **LogicAppsManagement** verwenden, anstatt für jede Region Logic Apps-IP-Adresspräfixe für die eingehende Richtung anzugeben.
-> Dieses Tag funktioniert in allen Regionen, in denen der Logic Apps-Dienst verfügbar ist.
+> Bei verwalteten Connectors können Sie optional das **AzureConnectors**-Diensttag verwenden, anstatt für jede Region IP-Adresspräfixe des verwalteten Connectors für die ausgehende Richtung anzugeben.
+> Diese Tags funktionieren in den Regionen, in denen der Logic Apps-Dienst verfügbar ist.
+
 
 <a name="multi-tenant-inbound"></a>
 
@@ -477,7 +478,7 @@ In diesem Abschnitt sind die IP-Adressen für die ausgehende Richtung aufgeführ
 
 > [!TIP]
 > Zur Reduzierung der Komplexität beim Erstellen von Sicherheitsregeln können Sie optional das [Diensttag](../virtual-network/service-tags-overview.md) **LogicApps** verwenden, anstatt für jede Region Logic Apps-IP-Adresspräfixe für die ausgehende Richtung anzugeben.
-> Bei verwalteten Connectors können Sie optional das **AzureConnectors**-Diensttag verwenden, anstatt für jede Region IP-Adresspräfixe des verwalteten Connectors für die ausgehende Richtung anzugeben. Diese Tags funktionieren in den Regionen, in denen der Logic Apps-Dienst verfügbar ist. 
+> Dieses Tag funktioniert in allen Regionen, in denen der Logic Apps-Dienst verfügbar ist. 
 
 <a name="multi-tenant-outbound"></a>
 

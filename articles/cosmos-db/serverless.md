@@ -5,13 +5,13 @@ author: ThomasWeiss
 ms.author: thweiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/25/2020
-ms.openlocfilehash: cabc243c6ba74217873b5b0a5fa51a7cb410512e
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.date: 12/23/2020
+ms.openlocfilehash: c5086eee805ffbcdf0741eae4db405b1bcbe8692
+ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96170830"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97760358"
 ---
 # <a name="azure-cosmos-db-serverless-preview"></a>Azure Cosmos DB serverlos (Vorschau)
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -19,7 +19,7 @@ ms.locfileid: "96170830"
 > [!IMPORTANT]
 > Azure Cosmos DB serverlos befindet sich derzeit in der Vorschauphase. Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Mit Azure Cosmos DB serverlos können Sie Ihr Azure Cosmos-Konto auf verbrauchsbasierte Weise verwenden. Dabei werden Ihnen nur die Anforderungseinheiten in Rechnung gestellt, die von den Datenbankvorgängen und dem von Ihren Daten genutzten Speicher beansprucht werden. Wenn Sie Azure Cosmos DB im serverlosen Modus verwenden, fällt keine Mindestgebühr an.
+Mit Azure Cosmos DB serverlos können Sie Ihr Azure Cosmos-Konto auf verbrauchsbasierte Weise verwenden. Dabei werden Ihnen nur die Anforderungseinheiten in Rechnung gestellt, die von den Datenbankvorgängen und dem von Ihren Daten genutzten Speicher beansprucht werden. Serverlose Container können Tausende von Anforderungen pro Sekunde ohne Mindestgebühren und ohne erforderliche Kapazitätsplanung verarbeiten.
 
 > [!IMPORTANT] 
 > Haben Sie Feedback zu Azure Cosmos DB serverlos? Teilen Sie uns Ihre Meinung mit! Sie können eine Nachricht an das Azure Cosmos DB serverlos-Team senden: [azurecosmosdbserverless@service.microsoft.com](mailto:azurecosmosdbserverless@service.microsoft.com).
@@ -36,13 +36,12 @@ Azure Cosmos DB Server serverlos ist am besten für Szenarien geeignet, in dene
 - **Niedriger, zeitweiliger und unvorhersehbarer Datenverkehr:** Da die Bereitstellung von Kapazität in solchen Fällen nicht erforderlich und unter Umständen kostenintensiv ist.
 - **Mittlere Leistung**: Da serverlose Container [bestimmten Leistungsmerkmale](#performance) aufweisen.
 
-Aus diesen Gründen sollte Azure Cosmos DB serverlos für die folgenden Workloadtypen in Betracht gezogen werden:
+Aus diesen Gründen sollte Azure Cosmos DB serverlos in folgenden Situationen in Betracht gezogen werden:
 
-- Entwicklung
-- Testen
-- Prototypenerstellung
-- Proof of Concept (PoC)
-- Nicht kritische Anwendung mit geringem Datenverkehr
+- Erste Schritte mit Azure Cosmos DB
+- Entwicklung, Testen und Prototypenerstellung bei neuen Anwendungen
+- Ausführen kleiner bis mittlerer Anwendungen mit zeitweiligem Datenverkehr, der schwer vorhergesagt werden kann
+- Integration in serverlose Computedienste wie [Azure Functions](../azure-functions/functions-overview.md)
 
 Weitere Anleitungen zum Auswählen des Angebots, das Ihrem Anwendungsfall am besten entspricht, finden Sie im Artikel [Wählen zwischen bereitgestelltem Durchsatz und serverlos](throughput-serverless.md).
 

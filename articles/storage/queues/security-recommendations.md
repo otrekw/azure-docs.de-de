@@ -2,20 +2,20 @@
 title: Sicherheitsempfehlungen für Queue Storage
 titleSuffix: Azure Storage
 description: Erfahren Sie mehr über Sicherheitsempfehlungen für Queue Storage. Die Umsetzung dieser Anleitung erleichtert es Ihnen, Ihre Sicherheitspflichten zu erfüllen, die in unserem Modell der gemeinsamen Verantwortung beschrieben werden.
-services: storage
 author: tamram
+services: storage
+ms.author: tamram
+ms.date: 03/11/2020
+ms.topic: conceptual
 ms.service: storage
 ms.subservice: queues
-ms.topic: conceptual
-ms.date: 03/11/2020
-ms.author: tamram
 ms.custom: security-recommendations
-ms.openlocfilehash: 9ec7dcc12b7452ee4bd40fab9b2bc53b5cca9be3
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: db0e033adf553c25c6b7b401f8d0df1a2cd5995f
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348807"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97592159"
 ---
 # <a name="security-recommendations-for-queue-storage"></a>Sicherheitsempfehlungen für Queue Storage
 
@@ -37,7 +37,7 @@ Azure Security Center analysiert in regelmäßigen Abständen den Sicherheitssta
 
 | Empfehlung | Kommentare | Security Center |
 |-|----|--|
-| Verwenden von Azure Active Directory (Azure AD) zum Autorisieren des Zugriffs auf Warteschlangendaten | Azure AD bietet überlegene Sicherheit und Benutzerfreundlichkeit über den gemeinsam verwendeten Schlüssel für die Autorisierung von Anforderungen an Queue Storage. Weitere Informationen finden Sie unter [Authorize access to Azure blobs and queues using Azure Active Directory (Autorisieren des Zugriffs auf Azure-Blobs und -Warteschlangen mit Azure Active Directory)](../common/storage-auth-aad.md). | - |
+| Verwenden von Azure Active Directory (Azure AD) zum Autorisieren des Zugriffs auf Warteschlangendaten | Azure AD bietet überlegene Sicherheit und Benutzerfreundlichkeit über die Autorisierung des gemeinsam verwendeten Schlüssels für die Autorisierung von Anforderungen an Queue Storage. Weitere Informationen finden Sie unter [Authorize access to Azure blobs and queues using Azure Active Directory (Autorisieren des Zugriffs auf Azure-Blobs und -Warteschlangen mit Azure Active Directory)](../common/storage-auth-aad.md). | - |
 | Beachten Sie das Prinzip der geringsten Rechte beim Zuweisen von Berechtigungen für einen Azure AD-Sicherheitsprinzipal über Azure RBAC. | Wenn Sie einem Benutzer, einer Gruppe oder einer Anwendung eine Rolle zuweisen, erteilen Sie diesem Sicherheitsprinzipal nur die Berechtigungen, die zum Ausführen der jeweiligen Aufgaben erforderlich sind. Durch Einschränken des Zugriffs auf Ressourcen kann sowohl ein unbeabsichtigter als auch böswilliger Missbrauch Ihrer Daten verhindert werden. | - |
 | Schützen Ihrer Kontozugriffsschlüssel mit Azure Key Vault | Microsoft empfiehlt die Verwendung von Azure AD zum Autorisieren von Anforderungen an Azure Storage. Wenn jedoch eine Autorisierung mit gemeinsam verwendetem Schlüssel erforderlich ist, schützen Sie Ihre Kontoschlüssel mit Azure Key Vault. Sie können die Schlüssel zur Laufzeit aus dem Schlüsseltresor abrufen, anstatt Sie mit der Anwendung zu speichern. | - |
 | Regelmäßiges Neugenerieren der Kontoschlüssel | Durch regelmäßiges Rotieren der Kontoschlüssel verringert sich das Risiko, dass Ihre Daten für böswillige Akteure offengelegt werden. | - |
@@ -52,12 +52,12 @@ Azure Security Center analysiert in regelmäßigen Abständen den Sicherheitssta
 | Configure the minimum required version of Transport Layer Security (TLS) for a storage account. (Konfigurieren Sie die erforderliche Mindestversion der Transport Layer Security (TLS) für ein Speicherkonto.)  | Legen Sie fest, dass Clients beim Senden von Anforderungen an ein Azure Storage-Konto eine sicherere TLS-Version verwenden, indem Sie die TLS-Mindestversion für dieses Konto konfigurieren. Weitere Informationen finden Sie unter [Konfigurieren der erforderlichen Mindestversion der Transport Layer Security (TLS) für ein Speicherkonto](../common/transport-layer-security-configure-minimum-version.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json).| - |
 | Aktivieren der Option **Sichere Übertragung erforderlich** für alle Speicherkonten | Wenn Sie die Option **Sichere Übertragung erforderlich** aktivieren, müssen alle an das Speicherkonto gerichteten Anforderungen über sichere Verbindungen erfolgen. Bei Anforderungen über HTTP treten Fehler auf. Weitere Informationen finden Sie unter [Vorschreiben einer sicheren Übertragung in Azure Storage](../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json). | [Ja](../../security-center/security-center-remediate-recommendations.md) |
 | Aktivieren von Firewallregeln | Konfigurieren Sie Firewallregeln, um den Zugriff auf Ihr Speicherkonto auf Anforderungen zu beschränken, die aus angegebenen IP-Adressen oder -Adressbereichen oder einer Liste von Subnetzen in einem virtuellen Azure-Netzwerk (VNET) stammen. Weitere Informationen zum Konfigurieren von Firewallregeln finden Sie unter [Konfigurieren von Azure Storage-Firewalls und virtuellen Netzwerken](../common/storage-network-security.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json). | - |
-| Gewähren des Zugriffs vertrauenswürdiger Microsoft-Dienste auf das Speicherkonto | Wenn Sie Firewallregeln für Ihr Speicherkonto aktivieren, werden eingehende Datenanforderungen standardmäßig blockiert – es sei denn, die Anforderungen stammen von einem Dienst, der innerhalb eines virtuellen Azure-Netzwerks (VNet) agiert, oder aus zulässigen öffentlichen IP-Adressen. Unter anderem werden Anforderungen von anderen Azure-Diensten, aus dem Azure-Portal und von Protokollierungs-/Metrikdiensten blockiert. Sie können Anforderungen von anderen Azure-Diensten zulassen, indem Sie eine Ausnahme hinzufügen, um vertrauenswürdigen Microsoft-Diensten den Zugriff auf das Speicherkonto zu gewähren. Weitere Informationen zum Hinzufügen einer Ausnahme für vertrauenswürdige Microsoft-Dienste finden Sie unter [Konfigurieren von Azure Storage-Firewalls und virtuellen Netzwerken](../common/storage-network-security.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json).| - |
-| Verwenden privater Endpunkte | Ein privater Endpunkt weist dem Speicherkonto eine private IP-Adresse aus Ihrem Azure Virtual Network (VNET) zu. Er sichert den gesamten Datenverkehr zwischen Ihrem VNET und dem Speicherkonto über einen privaten Link. Weitere Informationen zu privaten Endpunkten finden Sie unter [Herstellen einer privaten Verbindung mit einem Speicherkonto mithilfe eines privaten Azure-Endpunkts](../../private-link/tutorial-private-endpoint-storage-portal.md). | - |
+| Gewähren des Zugriffs vertrauenswürdiger Microsoft-Dienste auf das Speicherkonto | Wenn Sie Firewallregeln für Ihr Speicherkonto aktivieren, werden eingehende Datenanforderungen standardmäßig blockiert – es sei denn, die Anforderungen stammen von einem Dienst, der innerhalb eines Azure-VNET agiert, oder aus zulässigen öffentlichen IP-Adressen. Unter anderem werden Anforderungen von anderen Azure-Diensten, aus dem Azure-Portal und von Protokollierungs-/Metrikdiensten blockiert. Sie können Anforderungen von anderen Azure-Diensten zulassen, indem Sie eine Ausnahme hinzufügen, um vertrauenswürdigen Microsoft-Diensten den Zugriff auf das Speicherkonto zu gewähren. Weitere Informationen zum Hinzufügen einer Ausnahme für vertrauenswürdige Microsoft-Dienste finden Sie unter [Konfigurieren von Azure Storage-Firewalls und virtuellen Netzwerken](../common/storage-network-security.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json).| - |
+| Verwenden privater Endpunkte | Ein privater Endpunkt weist dem Speicherkonto eine private IP-Adresse aus Ihrem Azure-VNET zu. Er sichert den gesamten Datenverkehr zwischen Ihrem VNET und dem Speicherkonto über einen privaten Link. Weitere Informationen zu privaten Endpunkten finden Sie unter [Herstellen einer privaten Verbindung mit einem Speicherkonto mithilfe eines privaten Azure-Endpunkts](../../private-link/tutorial-private-endpoint-storage-portal.md). | - |
 | Verwenden von VNET-Diensttags | Ein Diensttag steht für eine Gruppe von IP-Adresspräfixen eines bestimmten Azure-Diensts. Microsoft verwaltet die Adresspräfixe, für die das Diensttag gilt, und aktualisiert das Diensttag automatisch, wenn sich die Adressen ändern. Weitere Informationen zu den von Azure Storage unterstützten Diensttags finden Sie unter [Übersicht über Azure-Diensttags](../../virtual-network/service-tags-overview.md). Ein Tutorial, das veranschaulicht, wie mithilfe von Diensttags Netzwerk-Ausgangsregeln erstellt werden, finden Sie unter [Einschränken des Zugriffs auf PaaS-Ressourcen](../../virtual-network/tutorial-restrict-network-access-to-resources.md). | - |
 | Einschränken des Netzwerkzugriffs auf bestimmte Netzwerke | Das Einschränken des Netzwerkzugriffs auf Netzwerke, auf denen Clients mit erforderlichem Zugriff gehostet werden, verringert die Gefährdung Ihrer Ressourcen durch Netzwerkangriffe. | [Ja](../../security-center/security-center-remediate-recommendations.md) |
 
-## <a name="loggingmonitoring"></a>Protokollierung/Überwachung
+## <a name="logging-and-monitoring"></a>Protokollierung und Überwachung
 
 | Empfehlung | Kommentare | Security Center |
 |-|----|--|

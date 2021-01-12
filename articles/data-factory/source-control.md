@@ -11,12 +11,12 @@ ms.reviewer: ''
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/02/2020
-ms.openlocfilehash: 75073cd2f0dae9cac12175677427671101813a90
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: e839b8a22da50ce172043f57a4467219a1771175
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97355221"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97584200"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Quellcodeverwaltung in Azure Data Factory
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
@@ -103,7 +103,7 @@ Im Konfigurationsbereich werden die folgenden Einstellungen für das Codereposit
 | **Azure Repos-Organisation** | Der Name Ihrer Azure Repos-Organisation. Sie können den Namen Ihrer Azure Repos-Organisation unter `https://{organization name}.visualstudio.com` finden. Sie können sich [bei Ihrer Azure Repos-Organisation anmelden](https://www.visualstudio.com/team-services/git/), um auf Ihr Visual Studio-Profil zuzugreifen und Ihre Repositorys und Projekte anzuzeigen. | `<your organization name>` |
 | **Projektname** | Der Name Ihres Azure Repos-Projekts. Sie können den Namen Ihres Azure Repos-Projekts unter `https://{organization name}.visualstudio.com/{project name}` finden. | `<your Azure Repos project name>` |
 | **Repositoryname** | Der Name Ihres Azure Repos-Coderepositorys. Azure Repos-Projekte enthalten Git-Repositorys zum Verwalten Ihres Quellcodes, wenn Ihr Projekt umfangreicher wird. Sie können ein neues Repository erstellen oder ein vorhandenes Repository verwenden, das sich bereits in Ihrem Projekt befindet. | `<your Azure Repos code repository name>` |
-| **Collaboration branch** (Kollaborationsbranch) | Ihr Branch für die Azure Repos-Kollaboration, der für die Veröffentlichung verwendet wird. Die Standardeinstellung ist `master`. Ändern Sie diese Einstellung, falls Sie Ressourcen eines anderen Branchs veröffentlichen möchten. | `<your collaboration branch name>` |
+| **Collaboration branch** (Kollaborationsbranch) | Ihr Branch für die Azure Repos-Kollaboration, der für die Veröffentlichung verwendet wird. Dieser lautet standardmäßig `main`. Ändern Sie diese Einstellung, falls Sie Ressourcen eines anderen Branchs veröffentlichen möchten. | `<your collaboration branch name>` |
 | **Stammordner** | Ihr Stammordner im Branch für die Azure Repos-Kollaboration. | `<your root folder name>` |
 | **Vorhandene Data Factory-Ressourcen in Repository importieren** | Gibt an, ob vorhandene Data Factory-Ressourcen aus dem **Dokumenterstellungsbereich** in ein Azure Repos Git-Repository importiert werden sollen. Aktivieren Sie das Kontrollkästchen, um Ihre Data Factory-Ressourcen in das zugehörige Git-Repository im JSON-Format zu importieren. Diese Aktion exportiert jede Ressource einzeln (d. h. die verknüpften Dienste und Datasets werden in separate JSONs exportiert). Ist dieses Kontrollkästchen nicht aktiviert, werden die vorhandenen Ressourcen nicht importiert. | Aktiviert (Standardeinstellung) |
 | **Branch zum Importieren der Ressource** | Gibt an, in welchen Branch die Data Factory-Ressourcen (Pipelines, Datasets, verknüpfte Dienste usw.) importiert werden. Sie können Ressourcen in einen der folgenden Branches importieren: a. Kollaboration b. Neu erstellen c. Vorhandene verwenden |  |
@@ -153,7 +153,7 @@ Im Konfigurationsbereich werden die folgenden Einstellungen für das GitHub-Repo
 | **GitHub Enterprise-URL** | Die GitHub Enterprise-URL des Stamms (muss für den lokalen GitHub Enterprise-Server „HTTPS“ lauten). Beispiel: `https://github.mydomain.com`. Nur erforderlich, wenn **GitHub Enterprise verwenden** ausgewählt ist | `<your GitHub enterprise url>` |                                                           
 | **GitHub-Konto** | Ihr GitHub-Kontoname. Sie finden diesen Namen unter https:\//github.com/{Kontoname}/{Repositoryname}. Beim Navigieren zu dieser Seite werden Sie zur Eingabe der GitHub-OAuth-Anmeldeinformationen zu Ihrem GitHub-Konto aufgefordert. | `<your GitHub account name>` |
 | **Repositoryname**  | Der Name Ihres GitHub-Coderepositorys. GitHub-Konten enthalten Git-Repositorys zum Verwalten Ihres Quellcodes. Sie können ein neues Repository erstellen oder ein vorhandenes Repository verwenden, das sich bereits in Ihrem Konto befindet. | `<your repository name>` |
-| **Collaboration branch** (Kollaborationsbranch) | Ihr Branch für die GitHub-Kollaboration, der für die Veröffentlichung verwendet wird. Die Standardeinstellung ist „master“. Ändern Sie diese Einstellung, falls Sie Ressourcen eines anderen Branchs veröffentlichen möchten. | `<your collaboration branch>` |
+| **Collaboration branch** (Kollaborationsbranch) | Ihr Branch für die GitHub-Kollaboration, der für die Veröffentlichung verwendet wird. Standardmäßig ist dies der Mainbranch. Ändern Sie diese Einstellung, falls Sie Ressourcen eines anderen Branchs veröffentlichen möchten. | `<your collaboration branch>` |
 | **Stammordner** | Ihr Stammordner im Branch für die GitHub-Kollaboration. |`<your root folder name>` |
 | **Vorhandene Data Factory-Ressourcen in Repository importieren** | Gibt an, ob vorhandene Data Factory-Ressourcen aus dem Erstellungsbereich auf der Benutzeroberfläche in ein GitHub-Repository importiert werden sollen. Aktivieren Sie das Kontrollkästchen, um Ihre Data Factory-Ressourcen in das zugehörige Git-Repository im JSON-Format zu importieren. Diese Aktion exportiert jede Ressource einzeln (d. h. die verknüpften Dienste und Datasets werden in separate JSONs exportiert). Ist dieses Kontrollkästchen nicht aktiviert, werden die vorhandenen Ressourcen nicht importiert. | Aktiviert (Standardeinstellung) |
 | **Branch zum Importieren der Ressource** | Gibt an, in welchen Branch die Data Factory-Ressourcen (Pipelines, Datasets, verknüpfte Dienste usw.) importiert werden. Sie können Ressourcen in einen der folgenden Branches importieren: a. Kollaboration b. Neu erstellen c. Vorhandene verwenden |  |
@@ -211,7 +211,7 @@ Jedes Azure Repos Git-Repository, das einer Data Factory zugeordnet ist, verfüg
 
 ![Neuen Branch erstellen](media/author-visually/new-branch.png)
 
-Wenn Sie bereit sind, die Änderungen in Ihrem Featurebranch mit Ihrem Kollaborationsbranch zu mergen, klicken Sie auf das Dropdownmenü „Branch“ und dann auf **Pull Request erstellen**. Dann gelangen Sie zu Azure Repos Git und können Pull Requests auslösen, Codereviews durchführen und Änderungen an Ihrem Kollaborationsbranch zusammenführen. (`master` ist die Standardeinstellung.) Sie können nur Veröffentlichungen für den Data Factory-Dienst Ihres Kollaborationsbranchs durchführen. 
+Wenn Sie bereit sind, die Änderungen in Ihrem Featurebranch mit Ihrem Kollaborationsbranch zu mergen, klicken Sie auf das Dropdownmenü „Branch“ und dann auf **Pull Request erstellen**. Dann gelangen Sie zu Azure Repos Git und können Pull Requests auslösen, Codereviews durchführen und Änderungen an Ihrem Kollaborationsbranch zusammenführen. (`main` ist die Standardeinstellung.) Sie können nur Veröffentlichungen für den Data Factory-Dienst Ihres Kollaborationsbranchs durchführen. 
 
 ![Erstellen eines neuen Pull Requests](media/author-visually/create-pull-request.png)
 
@@ -232,7 +232,7 @@ In Azure Data Factory kann jeweils nur ein Veröffentlichungsbranch vorhanden se
 
 ### <a name="publish-code-changes"></a>Veröffentlichen von Codeänderungen
 
-Nachdem Sie die Änderungen mit dem Kollaborationsbranch gemergt haben (`master` ist die Standardeinstellung), klicken Sie auf **Veröffentlichen**, um Ihre Codeänderungen manuell im Masterbranch im Data Factory-Dienst zu veröffentlichen.
+Nachdem Sie die Änderungen mit dem Kollaborationsbranch gemergt haben (`main` ist die Standardeinstellung), klicken Sie auf **Veröffentlichen**, um Ihre Codeänderungen manuell im Mainbranch im Data Factory-Dienst zu veröffentlichen.
 
 ![Veröffentlichen von Änderungen für den Data Factory-Dienst](media/author-visually/publish-changes.png)
 
@@ -241,7 +241,7 @@ Ein Seitenbereich wird geöffnet, in dem Sie bestätigen, dass der Branch für d
 ![Überprüfen des Branch für die Veröffentlichung](media/author-visually/configure-publish-branch.png)
 
 > [!IMPORTANT]
-> Der Masterbranch ist nicht repräsentativ für das, was im Data Factory-Dienst bereitgestellt wird. Der Masterbranch *muss* manuell im Data Factory-Dienst veröffentlicht werden.
+> Der Mainbranch ist nicht repräsentativ für das, was im Data Factory-Dienst bereitgestellt wird. Der Mainbranch *muss* manuell im Data Factory-Dienst veröffentlicht werden.
 
 ## <a name="best-practices-for-git-integration"></a>Bewährte Methoden für die Git-Integration
 
@@ -264,7 +264,7 @@ Durch die Verwendung von Key Vault oder der MSI-Authentifizierung werden Continu
 
 ### <a name="stale-publish-branch"></a>Veralteter Branch für die Veröffentlichung
 
-Wenn der Branch für die Veröffentlichung nicht mit dem Masterbranch synchron ist und trotz einer aktuellen Veröffentlichung veraltete Ressourcen enthält, versuchen Sie die folgenden Schritte:
+Wenn der Branch für die Veröffentlichung nicht mit dem Mainbranch synchron ist und trotz einer aktuellen Veröffentlichung veraltete Ressourcen enthält, versuchen Sie die folgenden Schritte:
 
 1. Entfernen des aktuellen Git-Repositorys
 1. Konfigurieren Sie Git mit denselben Einstellungen neu. Stellen Sie jedoch sicher, dass **Vorhandene Data Factory Ressourcen in Repository importieren** ausgewählt ist, und wählen Sie **Neuer Branch** aus.

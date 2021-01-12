@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/17/2019
 ms.author: kumud
-ms.openlocfilehash: fc60ca462a2891cc022847e056e32239f2675f70
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: fd154ec40ed4d1650e44a67fd5d362a2bc0c519d
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93094573"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97813937"
 ---
 # <a name="quickstart-create-and-configure-azure-ddos-protection-standard"></a>Schnellstart: Erstellen und Konfigurieren von Azure DDoS Protection Standard
 
@@ -75,6 +75,10 @@ Ein virtuelles Netzwerk kann nicht in eine andere Ressourcengruppe oder ein ande
 4. Wählen Sie unter **EINSTELLUNGEN** die Option **DDoS-Schutz** aus.
 5. Wählen Sie **Standard** aus. Klicken Sie unter **DDoS-Schutzplan** auf einen vorhandenen DDoS-Schutzplan oder den Plan, den Sie in Schritt 1 erstellt haben, und wählen Sie dann **Speichern** aus. Der von Ihnen ausgewählte Plan kann sich im selben oder in einem anderen Abonnement als das virtuelle Netzwerk befinden. Beide Abonnements müssen jedoch dem gleichen Azure Active Directory-Mandanten zugeordnet sein.
 
+### <a name="enable-ddos-protection-for-all-virtual-networks"></a>Aktivieren des DDoS-Schutzes für alle virtuellen Netzwerke
+
+Diese [Richtlinie](https://github.com/Azure/Azure-Network-Security/tree/master/Azure%20DDoS%20Protection/Policy%20-%20Virtual%20Networks%20should%20be%20associated%20with%20an%20Azure%20DDoS%20Protection%20Standard%20plan) erkennt alle virtuellen Netzwerke in einem definierten Bereich, für die DDoS Protection Standard nicht aktiviert ist, und erstellt optional eine Wartungsaufgabe, die die Zuordnung zum Schutz des VNET erstellt. Ausführliche schrittweise Anleitungen zum Bereitstellen dieser Richtlinie finden Sie unter https://aka.ms/ddosvnetpolicy-techcommunity.
+
 ## <a name="validate-and-test"></a>Überprüfen und Testen
 
 Überprüfen Sie zunächst die Details Ihres DDoS-Schutzplans:
@@ -87,14 +91,14 @@ Das virtuelle Netzwerk _MyVnet_ sollte aufgeführt werden.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Sie können Ihre Ressourcen für das nächste Tutorial beibehalten. Löschen Sie die Ressourcengruppe _MyResourceGroup_ , wenn Sie sie nicht mehr benötigen. Wenn Sie die Ressourcengruppe löschen, werden auch der DDoS-Schutzplan und alle zugehörigen Ressourcen gelöscht. Wenn Sie diesen DDoS-Schutzplan nicht weiter verwenden möchten, sollten Sie Ressourcen entfernen, um unnötige Gebühren zu vermeiden.
+Sie können Ihre Ressourcen für das nächste Tutorial beibehalten. Löschen Sie die Ressourcengruppe _MyResourceGroup_, wenn Sie sie nicht mehr benötigen. Wenn Sie die Ressourcengruppe löschen, werden auch der DDoS-Schutzplan und alle zugehörigen Ressourcen gelöscht. Wenn Sie diesen DDoS-Schutzplan nicht weiter verwenden möchten, sollten Sie Ressourcen entfernen, um unnötige Gebühren zu vermeiden.
 
    >[!WARNING]
    >Diese Aktion kann nicht rückgängig gemacht werden.
 
-1. Suchen Sie im Azure-Portal nach **Ressourcengruppen** , und wählen Sie den Eintrag aus, oder wählen Sie im Menü des Azure-Portals die Option **Ressourcengruppen** aus.
+1. Suchen Sie im Azure-Portal nach **Ressourcengruppen**, und wählen Sie den Eintrag aus, oder wählen Sie im Menü des Azure-Portals die Option **Ressourcengruppen** aus.
 
-2. Suchen Sie die Ressourcengruppe _MyResourceGroup_ , indem Sie einen Filter verwenden oder nach unten scrollen.
+2. Suchen Sie die Ressourcengruppe _MyResourceGroup_, indem Sie einen Filter verwenden oder nach unten scrollen.
 
 3. Wählen Sie die Ressourcengruppe und dann **Ressourcengruppe löschen** aus.
 
@@ -112,4 +116,4 @@ Wenn Sie einen DDoS-Schutzplan löschen möchten, müssen Sie zuerst die Zuordnu
 Informationen zum Anzeigen und Konfigurieren von Telemetriedaten für Ihren DDoS-Schutzplan, finden Sie in den Tutorials.
 
 > [!div class="nextstepaction"]
-> [Anzeigen und Konfigurieren der DDoS Protection-Telemetrie](telemetry-monitoring-alerting.md)
+> [Anzeigen und Konfigurieren der DDoS Protection-Telemetrie](telemetry.md)

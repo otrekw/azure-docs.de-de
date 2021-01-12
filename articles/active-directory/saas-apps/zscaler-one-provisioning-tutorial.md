@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: b8b6383c7808fd6c298d7776fc10572631bc6ddc
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: f6725045064b74079e00ca5bbe1d560f3b19f3ff
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96006216"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937126"
 ---
 # <a name="tutorial-configure-zscaler-one-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Zscaler One für die automatische Benutzerbereitstellung
 
@@ -78,6 +78,9 @@ Dieser Abschnitt führt Sie durch die Schritte zum Konfigurieren des Azure AD-Be
 > [!TIP]
 > Sie können auch SAML-basiertes einmaliges Anmelden für Zscaler One aktivieren. Befolgen Sie hierfür die Anleitung im [Tutorial für einmaliges Anmelden mit Zscaler One](zscaler-One-tutorial.md). Einmaliges Anmelden kann unabhängig von der automatischen Benutzerbereitstellung konfiguriert werden, obwohl diese beiden Features einander ergänzen.
 
+> [!NOTE]
+> Beim Bereitstellen oder Aufheben der Bereitstellung von Benutzern und Gruppen wird empfohlen, die Bereitstellung in regelmäßigen Abständen neu zu starten, um sicherzustellen, dass die Gruppenmitgliedschaften ordnungsgemäß aktualisiert werden. Durch einen Neustart wird der Dienst gezwungen, alle Gruppen neu auszuwerten und die Mitgliedschaften zu aktualisieren.  
+
 ### <a name="configure-automatic-user-provisioning-for-zscaler-one-in-azure-ad"></a>Konfigurieren der automatischen Benutzerbereitstellung für Zscaler One in Azure AD
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Wählen Sie **Unternehmensanwendungen** > **Alle Anwendungen** > **Zscaler One** aus.
@@ -102,7 +105,7 @@ Dieser Abschnitt führt Sie durch die Schritte zum Konfigurieren des Azure AD-Be
 
     ![Zscaler One-Authentifizierungseinstellungen](./media/zscaler-one-provisioning-tutorial/secret-token-1.png)
 
-    a. Wählen Sie **SAML konfigurieren** aus, um die Optionen unter **SAML konfigurieren** zu öffnen.
+    ein. Wählen Sie **SAML konfigurieren** aus, um die Optionen unter **SAML konfigurieren** zu öffnen.
 
     ![SAML konfigurieren in Zscaler One](./media/zscaler-one-provisioning-tutorial/secret-token-2.png)
 
@@ -156,7 +159,7 @@ Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden Sie unter
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
-* [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps im Azure-Portal](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Nächste Schritte

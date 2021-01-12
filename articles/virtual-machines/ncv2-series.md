@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 19ed565cbc68cc49da9daa5460e4dca41ce01cbc
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: 97fa5148d7de7cac67a69c8d9c21721cb57951d3
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91653484"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97585382"
 ---
 # <a name="ncv2-series"></a>NCv2-Serie
 
@@ -25,6 +25,7 @@ Die NC24rs v2-Konfiguration bietet eine Netzwerkschnittstelle mit geringer Warte
 [Livemigration:](maintenance-and-updates.md) Nicht unterstützt<br>
 [Updates mit Speicherbeibehaltung:](maintenance-and-updates.md) Nicht unterstützt<br>
 [Unterstützung von VM-Generationen:](generation-2.md) Generation 1 und 2<br>
+Nvidia NVLink Interconnect: Nicht unterstützt
 
 > [!IMPORTANT]
 > Für diese VM-Serie ist das vCPU-Kontingent (Kernkontingent) in Ihrem Abonnement anfänglich in jeder Region auf 0 festgelegt. Sie können für diese Serie in einer [verfügbaren Region](https://azure.microsoft.com/regions/services/) eine [Anhebung des vCPU-Kontingents anfordern](../azure-portal/supportability/resource-manager-core-quotas-request.md).

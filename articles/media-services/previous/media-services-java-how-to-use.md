@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: devx-track-java
-ms.openlocfilehash: 8a95ee631797c4dcca87f3506a6cf29245328159
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3c86689681aa99f60c4345e92f7f5c426795a69e
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89263449"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586702"
 ---
 # <a name="get-started-with-the-java-client-sdk-for-azure-media-services"></a>Erste Schritte mit dem Java-Client-SDK für Azure Media Services
 
@@ -51,7 +51,7 @@ Wenn Sie `gradle` als Erstellungstool verwenden, müssen Sie der Datei `build.gr
 >Ab Version `0.9.8` des `azure-media`-Pakets verfügt das SDK über Unterstützung für AAD-Authentifizierung (Azure Active Directory), und die Unterstützung für die Azure ACS-Authentifizierung (Access Control Service) wurde entfernt. Es wird empfohlen, möglichst bald zum Azure AD-Authentifizierungsmodell zu migrieren. Ausführliche Informationen zur Migration finden Sie im Artikel [Zugreifen auf die Azure Media Services-API per Azure AD-Authentifizierung](media-services-use-aad-auth-to-access-ams-api.md).
 
 >[!NOTE]
->Sie finden den Quellcode des Azure Media Services-Java-SDK in unserem [GitHub-Repository](https://github.com/Azure/azure-sdk-for-java/tree/0.9/services/azure-media). Achten Sie darauf, dass Sie die Umstellung auf Branch 0.9 durchführen, nicht auf die Masterbranch. 
+>Sie finden den Quellcode des Azure Media Services-Java-SDK in unserem [GitHub-Repository](https://github.com/Azure/azure-sdk-for-java/tree/0.9/services/azure-media). Achten Sie darauf, dass Sie die Umstellung auf Branch 0.9 durchführen, nicht auf den Mainbranch. 
 
 ## <a name="how-to-use-azure-media-services-with-java"></a>Gewusst wie: Verwenden von Azure Media Services mit Java
 

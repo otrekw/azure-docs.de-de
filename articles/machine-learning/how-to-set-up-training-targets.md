@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: 2197d5be91af4c93e9691e1dc2b953198669deaf
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: d8918181024715a57c6029d3ad0a36ea75140fcb
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97027406"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97739942"
 ---
 # <a name="configure-and-submit-training-runs"></a>Konfigurieren und Übermitteln von Trainingsausführungen
 
@@ -172,6 +172,38 @@ In diesen Notebooks finden Sie Beispiele für die Konfiguration von Ausführunge
 * [tutorials/img-classification-part1-training.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/image-classification-mnist-data/img-classification-part1-training.ipynb)
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-clone-for-examples.md)]
+
+## <a name="troubleshooting"></a>Problembehandlung
+
+ * **ModuleErrors (Kein Modul benannt)** :  Wenn Sie beim Übermitteln von Experimenten in Azure ML auf ModuleErrors treffen, erwartet das Trainingsskript die Installation eines Pakets, aber es wird nicht hinzugefügt. Nachdem Sie den Paketnamen angegeben haben, installiert Azure ML das Paket in der für Ihr Training verwendeten Umgebung.
+
+    Wenn Sie Estimators verwenden, um Experimente zu übermitteln, können Sie einen Paketnamen über den Parameter `pip_packages` oder `conda_packages` im Estimator auf der Grundlage angeben, aus welcher Quelle Sie das Paket installieren möchten. Sie können auch eine YML-Datei mit allen Ihren Abhängigkeiten mit `conda_dependencies_file` angeben oder alle Ihre pip-Anforderungen in einer TXT-Datei mit dem Parameter `pip_requirements_file` auflisten. Wenn Sie Ihr eigenes Azure ML-Umgebungsobjekt besitzen, das das vom Estimator verwendete Standardimage außer Kraft setzen soll, können Sie diese Umgebung über den `environment`-Parameter des Estimatorkonstruktors angeben.
+    
+    Die von Azure ML verwalteten Docker-Images und deren Inhalt werden unter [AzureML-Container](https://github.com/Azure/AzureML-Containers) angezeigt.
+    Frameworkspezifische Abhängigkeiten sind in der jeweiligen Dokumentation des Frameworks aufgeführt:
+    *  [Chainer](/python/api/azureml-train-core/azureml.train.dnn.chainer?preserve-view=true&view=azure-ml-py#&preserve-view=trueremarks)
+    * [PyTorch](/python/api/azureml-train-core/azureml.train.dnn.pytorch?preserve-view=true&view=azure-ml-py#&preserve-view=trueremarks)
+    * [TensorFlow](/python/api/azureml-train-core/azureml.train.dnn.tensorflow?preserve-view=true&view=azure-ml-py#&preserve-view=trueremarks)
+    *  [SKLearn](/python/api/azureml-train-core/azureml.train.sklearn.sklearn?preserve-view=true&view=azure-ml-py#&preserve-view=trueremarks)
+    
+    > [!Note]
+    > Wenn Sie der Meinung sind, dass ein bestimmtes Paket häufig genug vorkommt, um in von Azure ML verwalteten Images und Umgebungen hinzugefügt zu werden, erstellen Sie ein GitHub-Problem unter [AzureML-Container](https://github.com/Azure/AzureML-Containers). 
+ 
+* **NameError (Name nicht definiert), AttributeError (Objekt besitzt kein Attribut)** : Diese Ausnahme sollte von Ihren Trainingsskripts stammen. Sie können sich die Protokolldateien des Azure-Portals ansehen, um weitere Informationen über den nicht definierten Namen oder den Attributfehler zu erhalten. Aus dem SDK können Sie `run.get_details()` verwenden, um die Fehlermeldung anzuzeigen. Dadurch werden auch alle für Ihre Ausführung generierten Protokolldateien aufgelistet. Werfen Sie unbedingt einen Blick auf das Trainingsskript, und beheben Sie den Fehler, bevor Sie Ihren Durchlauf erneut übermitteln. 
+
+
+* **Löschen von Ausführungen oder Experimenten**:  Experimente können mit der Methode [Experiment.archive](/python/api/azureml-core/azureml.core.experiment%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truearchive--) oder über die Registerkartenansicht „Experiment“ im Azure Machine Learning Studio-Client über die Schaltfläche „Experiment archivieren“ archiviert werden. Durch diese Aktion wird das Experiment aus Abfragelisten und Ansichten ausgeblendet, aber nicht gelöscht.
+
+    Das endgültige Löschen einzelner Experimente oder Ausführungen wird derzeit nicht unterstützt. Weitere Informationen zum Löschen von Arbeitsbereichsressourcen finden Sie unter [Exportieren oder Löschen Ihrer Arbeitsbereichsdaten im Machine Learning-Dienst](how-to-export-delete-data.md).
+
+* **Metrikdokument ist zu groß**: Azure Machine Learning weist interne Beschränkungen der Größe von Metrikobjekten auf, die gleichzeitig aus einem Trainingsdurchlauf protokolliert werden können. Wenn bei der Protokollierung einer Metrik mit Listenwert der Fehler „Metrikdokument ist zu groß“ angezeigt wird, versuchen Sie, die Liste in kleinere Blöcke aufzuteilen, z. B.:
+
+    ```python
+    run.log_list("my metric name", my_metric[:N])
+    run.log_list("my metric name", my_metric[N:])
+    ```
+
+    Intern verkettet Azure ML die Blöcke mit demselben Metriknamen zu einer zusammenhängenden Liste.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

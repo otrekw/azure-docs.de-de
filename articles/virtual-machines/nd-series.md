@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 1dfd4185f077806d6b84376e786cfe5de1a8ffc3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f37341233eec45a22fe92450e69d486e61f26eb4
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91653437"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97585308"
 ---
 # <a name="nd-series"></a>ND-Serie
 
@@ -22,7 +22,8 @@ Die virtuellen Computer der ND-Serie sind eine neue Ergänzung der GPU-Familie u
 [Storage Premium-Zwischenspeicherung:](premium-storage-performance.md) Unterstützt<br>
 [Livemigration:](maintenance-and-updates.md) Nicht unterstützt<br>
 [Updates mit Speicherbeibehaltung:](maintenance-and-updates.md) Nicht unterstützt<br>
-[Unterstützung von VM-Generationen:](generation-2.md) Generation 1 und 2<br>
+[Unterstützung von VM-Generationen:](generation-2.md) Generation 1 und 2<br>
+Nvidia NVLink Interconnect: Nicht unterstützt<br>
 
 > [!IMPORTANT]
 > Für diese VM-Serie ist das regionsspezifische vCPU-Kontingent (Kernkontingent) in Ihrem Abonnement anfänglich auf 0 festgelegt. Sie können für diese Serie in einer [verfügbaren Region](https://azure.microsoft.com/regions/services/) eine [Anhebung des vCPU-Kontingents anfordern](../azure-portal/supportability/resource-manager-core-quotas-request.md).

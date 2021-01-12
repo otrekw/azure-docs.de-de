@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/5/2020
 ms.author: mbaldwin
-ms.openlocfilehash: d6f3d2051790ba02f5e4ea1687830ccbdf6dcf21
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 1ab382ec10d932b94961c73b7d7ac9082125a88c
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93285140"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97704519"
 ---
 # <a name="how-to-create-an-azure-key-vault-and-vault-access-policy-by-using-a-resource-manager-template"></a>Erstellen eines Azure-Schlüsseltresors und von Tresorzugriffsrichtlinien mithilfe einer Resource Manager-Vorlage
 
@@ -176,14 +176,14 @@ Weitere Key Vault-Vorlagen finden Sie hier: [Key Vault Resource Manager-Referenz
 
 Sie können das Azure-Portal verwenden, um die oben genannten Vorlagen mithilfe der Option **Eigene Vorlage im Editor erstellen** bereitzustellen, die hier beschrieben ist: [Bereitstellen von Ressourcen mithilfe einer benutzerdefinierten Vorlage](../../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template)
 
-Sie können die oben aufgeführten Vorlagen auch in Dateien speichern und die folgenden Befehle verwenden:  [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) und [az group deployment create](/cli/azure/group/deployment#az-group-deployment-create):
+Sie können die oben aufgeführten Vorlagen auch in Dateien speichern und die folgenden Befehle verwenden:  [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) und [az deployment group create](/cli/azure/deployment/group#az_deployment_group_create):
 
 ```azurepowershell
 New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateFile key-vault-template.json
 ```
 
 ```azurecli
-az group deployment create --resource-group ExampleGroup --template-file key-vault-template.json
+az deployment group create --resource-group ExampleGroup --template-file key-vault-template.json
 ```
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen

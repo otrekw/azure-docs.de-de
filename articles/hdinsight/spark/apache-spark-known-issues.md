@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/15/2019
 ms.author: hrasheed
-ms.openlocfilehash: 1dbf6478a62675c8b514298007a7663239d8f7cf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 65163225853037ac4cb97a02c0bdaf554b509fb1
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86084641"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97822198"
 ---
 # <a name="known-issues-for-apache-spark-cluster-on-hdinsight"></a>Bekannte Probleme bei Apache Spark-Clustern unter HDInsight
 
@@ -77,7 +77,7 @@ Sie müssen stattdessen den Spark-HBase-Connector verwenden. Anweisungen finden 
 
 ## <a name="issues-related-to-jupyter-notebooks"></a>Probleme im Zusammenhang mit Jupyter Notebooks
 
-Im Folgenden sind einige Probleme im Zusammenhang mit Jupyter Notebooks genannt.
+Im Folgenden werden einige Probleme im Zusammenhang mit Jupyter Notebooks genannt.
 
 ### <a name="notebooks-with-non-ascii-characters-in-filenames"></a>Notebooks mit Nicht-ASCII-Zeichen in Dateinamen
 

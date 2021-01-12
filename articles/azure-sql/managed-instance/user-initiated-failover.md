@@ -3,19 +3,19 @@ title: Manuelles Initiieren eines Failovers für SQL Managed Instance
 description: Erfahren Sie, wie Sie ein manuelles Failover der primären und sekundären Replikate in einer Azure SQL Managed Instance ausführen.
 services: sql-database
 ms.service: sql-managed-instance
-ms.custom: seo-lt-2019, sqldbrb=1, devx-track-azurecli
+ms.custom: seo-lt-2019, sqldbrb=1
 ms.devlang: ''
 ms.topic: how-to
 author: danimir
 ms.author: danil
 ms.reviewer: douglas, sstein
-ms.date: 08/31/2020
-ms.openlocfilehash: 51e9e66e2fd8ff60dd20c275a66fd13c047cc629
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.date: 12/16/2020
+ms.openlocfilehash: 4b1c98d8621267b300a82b697bce66a6b94e82f3
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94985517"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97825925"
 ---
 # <a name="user-initiated-manual-failover-on-sql-managed-instance"></a>Vom Benutzer initiiertes manuelles Failover für SQL Managed Instance
 
@@ -140,7 +140,7 @@ In der Dienstebene „Universell“ erhalten Sie eine andere Ausgabe als in der 
 
 > [!IMPORTANT]
 > Folgende funktionsbezogene Einschränkungen gelten bei vom Benutzer initiierten manuellen Failovervorgängen:
-> - Auf ein und derselben Managed Instance kann alle **30 Minuten** immer nur ein (1) Failover initiiert werden.
+> - Auf ein und derselben Managed Instance kann alle **15 Minuten** immer nur ein (1) Failover initiiert werden.
 > - Bei unternehmenskritischen Instanzen muss ein Quorum mit Replikaten vorhanden sein, damit die Failoveranforderung akzeptiert wird.
 > - Bei unternehmenskritischen Instanzen kann nicht angegeben werden, auf welchem lesbaren sekundären Replikat das Failover initiiert werden soll.
 

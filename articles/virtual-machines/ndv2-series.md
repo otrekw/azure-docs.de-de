@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: ff828024610ce498d40a4039d8116e28366aebb9
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: dcfbacb788225d936b236c901e9477a9bbb23b94
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92494423"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97585291"
 ---
 # <a name="updated-ndv2-series"></a>Aktualisierte NDv2-Serie
 
@@ -39,6 +39,7 @@ Entscheidend ist, dass die NDv2-Serie sowohl auf rechenintensive Workloads zum z
 [Updates mit Speicherbeibehaltung:](maintenance-and-updates.md) Nicht unterstützt<br>
 [Unterstützung von VM-Generationen:](generation-2.md) Generation 2<br>
 InfiniBand: Unterstützt<br>
+Nvidia NVLink Interconnect: Unterstützt<br>
 <br>
 
 | Size | vCPU | Memory: GiB | Temporärer Speicher (SSD): GiB | GPU | GPU-Arbeitsspeicher: GiB | Max. Anzahl Datenträger | Maximaler Durchsatz des Datenträgers ohne Cache: IOPS/MBps | Max. Netzwerkbandbreite | Maximale Anzahl NICs |

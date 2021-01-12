@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 4579fa3c6dd1e34072a31747fda5113a5ac1be2a
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: fa90cbf1e467416010ae0ba83e9344a84ce52e21
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92517428"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936497"
 ---
 # <a name="tutorial-configure-zscaler-zscloud-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Zscaler ZSCloud für die automatische Benutzerbereitstellung
 
@@ -41,15 +41,15 @@ Zum Durchführen der Schritte in diesem Tutorial benötigen Sie Folgendes:
 
 Bevor Sie Zscaler ZSCloud für die automatische Benutzerbereitstellung mit Azure AD konfigurieren, müssen Sie Zscaler ZSCloud aus dem Azure AD-Anwendungskatalog der Liste mit den verwalteten SaaS-Anwendungen hinzufügen.
 
-Klicken Sie im linken Bereich des [Azure-Portals](https://portal.azure.com) auf **Azure Active Directory** :
+Klicken Sie im linken Bereich des [Azure-Portals](https://portal.azure.com) auf **Azure Active Directory**:
 
 ![Wählen Sie „Azure Active Directory“.](common/select-azuread.png)
 
-Navigieren Sie zu **Unternehmensanwendungen** , und wählen Sie die Option **Alle Anwendungen** :
+Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie die Option **Alle Anwendungen**:
 
 ![Unternehmensanwendungen](common/enterprise-applications.png)
 
-Um eine Anwendung hinzuzufügen, wählen Sie oben im Fenster die Option **Neue Anwendung** :
+Um eine Anwendung hinzuzufügen, wählen Sie oben im Fenster die Option **Neue Anwendung**:
 
 ![Auswählen von „Neue Anwendung“](common/add-new-app.png)
 
@@ -76,7 +76,10 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 > [!TIP]
 > Es kann auch ratsam sein, SAML-basiertes einmaliges Anmelden für Zscaler ZSCloud zu aktivieren. Befolgen Sie hierfür die Anleitung im [Tutorial für einmaliges Anmelden mit Zscaler ZSCloud](zscaler-zsCloud-tutorial.md). Einmaliges Anmelden kann unabhängig von der automatischen Benutzerbereitstellung konfiguriert werden, aber diese beiden Features ergänzen sich gegenseitig.
 
-1. Melden Sie sich am [Azure-Portal](https://portal.azure.com) an, und wählen Sie **Unternehmensanwendungen** > **Alle Anwendungen** > **Zscaler ZSCloud** :
+> [!NOTE]
+> Beim Bereitstellen oder Aufheben der Bereitstellung von Benutzern und Gruppen wird empfohlen, die Bereitstellung in regelmäßigen Abständen neu zu starten, um sicherzustellen, dass die Gruppenmitgliedschaften ordnungsgemäß aktualisiert werden. Durch einen Neustart wird der Dienst gezwungen, alle Gruppen neu auszuwerten und die Mitgliedschaften zu aktualisieren. 
+
+1. Melden Sie sich am [Azure-Portal](https://portal.azure.com) an, und wählen Sie **Unternehmensanwendungen** > **Alle Anwendungen** > **Zscaler ZSCloud**:
 
     ![Unternehmensanwendungen](common/enterprise-applications.png)
 
@@ -84,7 +87,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![Liste „Anwendungen“](common/all-applications.png)
 
-3. Wählen Sie die Registerkarte **Bereitstellung** :
+3. Wählen Sie die Registerkarte **Bereitstellung**:
 
     ![Zscaler ZSCloud-Bereitstellung](./media/zscaler-zscloud-provisioning-tutorial/provisioningtab.png)
 
@@ -94,7 +97,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** die **Mandanten-URL** und das **geheime Token** Ihres Zscaler ZSCloud-Kontos ein. Dies ist im nächsten Schritt beschrieben.
 
-6. Navigieren Sie zum Abrufen der Angaben für **Mandanten-URL** und **Geheimes Token** im Zscaler ZSCloud-Portal zu **Administration** > **Authentication Settings** (Verwaltung > Authentifizierungseinstellungen), und wählen Sie unter **Authentication Type** (Authentifizierungstyp) die Option **SAML** :
+6. Navigieren Sie zum Abrufen der Angaben für **Mandanten-URL** und **Geheimes Token** im Zscaler ZSCloud-Portal zu **Administration** > **Authentication Settings** (Verwaltung > Authentifizierungseinstellungen), und wählen Sie unter **Authentication Type** (Authentifizierungstyp) die Option **SAML**:
 
     ![Zscaler ZSCloud-Authentifizierungseinstellungen](./media/zscaler-zscloud-provisioning-tutorial/secrettoken1.png)
 
@@ -102,13 +105,13 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![Fenster „Configure SAML“ (SAML konfigurieren)](./media/zscaler-zscloud-provisioning-tutorial/secrettoken2.png)
 
-    Wählen Sie **Enable SCIM-Based Provisioning** (SCIM-basierte Bereitstellung aktivieren), und kopieren Sie die **Basis-URL** und das **Bearertoken** . Speichern Sie anschließend die Einstellungen. Fügen Sie im Azure-Portal die **Basis-URL** im Feld **Mandanten-URL** und das **Bearertoken** im Feld **Geheimes Token** ein.
+    Wählen Sie **Enable SCIM-Based Provisioning** (SCIM-basierte Bereitstellung aktivieren), und kopieren Sie die **Basis-URL** und das **Bearertoken**. Speichern Sie anschließend die Einstellungen. Fügen Sie im Azure-Portal die **Basis-URL** im Feld **Mandanten-URL** und das **Bearertoken** im Feld **Geheimes Token** ein.
 
-7. Wählen Sie nach dem Eingeben der Werte in die Felder **Mandanten-URL** und **Geheimes Token** die Option **Verbindung testen** , um sicherzustellen, dass Azure AD eine Verbindung mit Zscaler ZSCloud herstellen kann. Wenn die Verbindung nicht möglich ist, sollten Sie sicherstellen, dass Ihr Zscaler ZSCloud-Konto über Administratorberechtigungen verfügt, und den Vorgang wiederholen.
+7. Wählen Sie nach dem Eingeben der Werte in die Felder **Mandanten-URL** und **Geheimes Token** die Option **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit Zscaler ZSCloud herstellen kann. Wenn die Verbindung nicht möglich ist, sollten Sie sicherstellen, dass Ihr Zscaler ZSCloud-Konto über Administratorberechtigungen verfügt, und den Vorgang wiederholen.
 
     ![Testen der Verbindung](./media/zscaler-zscloud-provisioning-tutorial/testconnection.png)
 
-8. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder einer Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll. Wählen Sie **Bei Fehler E-Mail-Benachrichtigung senden** :
+8. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder einer Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll. Wählen Sie **Bei Fehler E-Mail-Benachrichtigung senden**:
 
     ![Einrichten der E-Mail-Benachrichtigung](./media/zscaler-zscloud-provisioning-tutorial/Notification.png)
 
@@ -132,7 +135,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 14. Wenn Sie Bereichsfilter konfigurieren möchten, hilft Ihnen die Anleitung unter [Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) weiter.
 
-15. Ändern Sie den **Bereitstellungsstatus** im Abschnitt **Einstellungen** in **Ein** , um den Azure AD-Bereitstellungsdienst für Zscaler ZSCloud zu aktivieren:
+15. Ändern Sie den **Bereitstellungsstatus** im Abschnitt **Einstellungen** in **Ein**, um den Azure AD-Bereitstellungsdienst für Zscaler ZSCloud zu aktivieren:
 
     ![Bereitstellungsstatus](./media/zscaler-zscloud-provisioning-tutorial/provisioningstatus.png)
 
@@ -140,7 +143,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![Bereichswerte](./media/zscaler-zscloud-provisioning-tutorial/scoping.png)
 
-17. Wählen Sie **Speichern** , wenn Sie bereit für die Bereitstellung sind:
+17. Wählen Sie **Speichern**, wenn Sie bereit für die Bereitstellung sind:
 
     ![„Speichern“ auswählen](./media/zscaler-zscloud-provisioning-tutorial/saveprovisioning.png)
 

@@ -8,19 +8,18 @@ ms.topic: article
 ms.date: 03/01/2019
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 1cefb5a7b554b9a477f6a51eab3b22b0e8f55378
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 691cbd79e82432c8e919dcbb51642a76000296dc
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88958421"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97607608"
 ---
 # <a name="troubleshoot-domain-and-tlsssl-certificate-problems-in-azure-app-service"></a>Problembehandlung bei Domänen- und TLS/SSL-Zertifikaten in Azure App Service
 
 In diesem Artikel werden häufige Probleme aufgelistet, die beim Konfigurieren einer Domäne oder eines TLS/SSL-Zertifikats für Ihre Web-Apps in Azure App Service auftreten können. Darüber hinaus werden die möglichen Ursachen und Lösungen für diese Probleme beschrieben.
 
 Sollten Sie beim Lesen dieses Artikels feststellen, dass Sie weitere Hilfe benötigen, können Sie sich über das [MSDN-Forum oder über das Stack Overflow-Forum](https://azure.microsoft.com/support/forums/) mit Azure-Experten in Verbindung setzen. Alternativ dazu haben Sie die Möglichkeit, einen Azure-Supportfall zu erstellen. Rufen Sie die [Azure-Support-Website](https://azure.microsoft.com/support/options/) auf, und wählen Sie die Option **Support erhalten**.
-
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -120,7 +119,7 @@ Im Internet-Browser ist möglicherweise immer noch die alte IP-Adresse für Ihre
 
 **Lösung für Ursache 2**
 
-Löschen Sie den Browser-Cache. Bei Windows-Geräten können Sie den Befehl `ipconfig /flushdns` ausführen. Überprüfen Sie mithilfe von [WhatsmyDNS.net](https://www.whatsmydns.net/), ob Ihre Domäne auf die IP-Adresse der App zeigt. 
+Löschen Sie den Browser-Cache. Bei Windows-Geräten können Sie den Befehl `ipconfig /flushdns` ausführen. Überprüfen Sie mithilfe von [WhatsmyDNS.net](https://www.whatsmydns.net/), ob Ihre Domäne auf die IP-Adresse der App zeigt.
 
 ### <a name="you-cant-add-a-subdomain"></a>Sie können keine Unterdomäne hinzufügen. 
 
@@ -185,7 +184,7 @@ Das App Service-Zertifikat wurde erneuert, aber die App, die das App Service-Zer
 
 #### <a name="cause"></a>Ursache 
 App Service synchronisiert Ihr Zertifikat innerhalb von 48 Stunden. Wenn Sie ein Zertifikat aktualisieren oder wechseln, ruft die Anwendung manchmal weiterhin das alte Zertifikat und nicht das neu aktualisierte Zertifikat ab. Dies liegt daran, dass der Auftrag zum Synchronisieren der Zertifikatsressource noch nicht ausgeführt wurde. Klicken Sie auf „Synchronisieren“. Der Synchronisierungsvorgang aktualisiert automatisch die Hostnamenbindungen für das Zertifikat in App Service, ohne dass es zu Downtime für Ihre Apps kommt.
- 
+
 #### <a name="solution"></a>Lösung
 
 Sie können eine Synchronisierung des Zertifikats erzwingen:
@@ -201,17 +200,17 @@ Für das App Service-Zertifikat ist zuerst eine Überprüfung der Domäne erford
 
 #### <a name="solution"></a>Lösung
 Überprüfen Sie Ihre Domäne manuell durch Hinzufügen eines TXT-Eintrags:
- 
-1.  Wechseln Sie zum DNS-Anbieter (Domain Name Service), der Ihre Domäne (Domänennamen) hostet.
-2.  Fügen Sie einen TXT-Eintrag für Ihre Domäne hinzu, in dem der Wert des Domänentokens verwendet wird, das im Azure-Portal angezeigt wird. 
+
+1. Wechseln Sie zum DNS-Anbieter (Domain Name Service), der Ihre Domäne (Domänennamen) hostet.
+1. Fügen Sie einen TXT-Eintrag für Ihre Domäne hinzu, in dem der Wert des Domänentokens verwendet wird, das im Azure-Portal angezeigt wird. 
 
 Warten Sie einige Minuten, bis die DNS-Daten weitergegeben wurden, und wählen Sie dann die Schaltfläche **Aktualisieren** aus, um die Überprüfung auszulösen. 
 
 Als Alternative können Sie die HTML-Webseitenmethoden verwenden, um Ihre Domäne manuell zu überprüfen. Diese Methode ermöglicht es der Zertifizierungsstelle, den Domänenbesitz für die Domäne zu bestätigen, für die das Zertifikat ausgestellt ist.
 
-1.  Erstellen Sie eine HTML-Datei namens „{Domänenüberprüfungstoken}.html“. Der Inhalt dieser Datei muss der Wert des Domänenüberprüfungstokens sein.
-3.  Laden Sie diese Datei in das Stammverzeichnis des Webservers hoch, der Ihre Domäne hostet.
-4.  Wählen Sie **Aktualisieren** aus, um den Status des Zertifikats zu prüfen. Es kann einige Minuten dauern, bis die Überprüfung abgeschlossen ist.
+1. Erstellen Sie eine HTML-Datei namens „{Domänenüberprüfungstoken}.html“. Der Inhalt dieser Datei muss der Wert des Domänenüberprüfungstokens sein.
+1. Laden Sie diese Datei in das Stammverzeichnis des Webservers hoch, der Ihre Domäne hostet.
+1. Wählen Sie **Aktualisieren** aus, um den Status des Zertifikats zu prüfen. Es kann einige Minuten dauern, bis die Überprüfung abgeschlossen ist.
 
 Beispiel: Sie erwerben ein Standardzertifikat für azure.com mit dem Domänenüberprüfungstoken „1234abcd“. Eine Webanforderung, die für https://azure.com/1234abcd.html gestellt wird, sollte „1234abcd“ zurückgeben. 
 

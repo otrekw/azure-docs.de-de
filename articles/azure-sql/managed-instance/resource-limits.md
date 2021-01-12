@@ -12,12 +12,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, jovanpop, sachinp
 ms.date: 09/14/2020
-ms.openlocfilehash: 47c837e7a2ee859c7805d6b2e11058bcc02e6c22
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 9a96da607ceea5a6d5cb6ef02df5a9a4db24562e
+ms.sourcegitcommit: e8bd58dbcfe0eae45979d86e071778b9aec40b6c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400572"
+ms.lasthandoff: 12/25/2020
+ms.locfileid: "97770960"
 ---
 # <a name="overview-of-azure-sql-managed-instance-resource-limits"></a>Übersicht über Ressourcenlimits für Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -84,7 +84,7 @@ SQL Managed Instance umfasst zwei Dienstebenen: [Universell](../database/service
 | Max. Sitzungen | 30.000 | 30.000 |
 | Max. gleichzeitige Worker (Anforderungen) | Gen4: 210 * Anzahl der virtuellen Kerne + 800<br>Gen5: 105 * Anzahl der virtuellen Kerne + 800 | Gen4: 210 * Anzahl der virtuellen Kerne + 800<br>Gen5: 105 * Anzahl der virtuellen Kerne + 800 |
 | [Schreibgeschützte Replikate](../database/read-scale-out.md) | 0 | 1 (im Preis inbegriffen) |
-| Computeisolation | Gen5:<br/>– unterstützt für 80 virtuelle Kerne<br/>– für andere Größen nicht unterstützt<br/><br/>Gen4 wird eingestellt und deshalb nicht mehr unterstützt.|Gen5:<br/>– unterstützt für 60, 64, 80 virtuelle Kerne<br/>– für andere Größen nicht unterstützt<br/><br/>Gen4 wird eingestellt und deshalb nicht mehr unterstützt.|
+| Computeisolation | Gen5 wird nicht unterstützt, weil Instanzen vom Typ „Universell“ physische Hardware mit anderen Instanzen teilen können.<br/>Gen4 wird eingestellt und deshalb nicht mehr unterstützt.|Gen5:<br/>– unterstützt für 40, 64, 80 virtuelle Kerne<br/>– für andere Größen nicht unterstützt<br/><br/>Gen4 wird eingestellt und deshalb nicht mehr unterstützt.|
 
 
 Einige weitere Überlegungen: 
@@ -150,7 +150,7 @@ In der folgenden Tabelle werden die **standardmäßigen regionalen Grenzwerte** 
 |Visual Studio Enterprise|2 |64|
 |Visual Studio Professional und MSDN Platforms|2|32|
 
-\* Berücksichtigen Sie bei der Planung von Bereitstellungen, dass die Dienstebene „Unternehmenskritisch“ (Business Critical, BC) viermal (4-mal) mehr v-Kern-Kapazität erfordert als die Dienstebene „Universell“ (General Purpose, GP). Beispiel: 1 virtueller Kern „Universell“ = 1 V-Kern-Einheit, und 1 virtueller Kern „Unternehmenskritisch“ = 4 V-Kern-Einheiten. Um die Nutzungsanalyse hinsichtlich der Standardgrenzwerte zu vereinfachen, fassen Sie die vCore-Einheiten für alle Subnetze in der Region zusammen, in der SQL Managed Instance bereitgestellt wird. Vergleichen Sie die Ergebnisse anschließend mit den Grenzwerten für Instanzeinheiten Ihres Abonnementtyps. Der Grenzwert **Max number of vCore units** (Maximale Anzahl von virtuellen Kerneinheiten) gilt für jedes Abonnement in einer Region. Es gibt keinen Grenzwert pro individuellem Subnetz, außer dass die Summe aller in mehreren Subnetzen bereitgestellten virtuellen Kerne niedriger oder gleich der **maximalen Anzahl von virtuellen Kerneinheiten** sein muss.
+\* Berücksichtigen Sie bei der Planung von Bereitstellungen, dass die Dienstebene „Unternehmenskritisch“ (Business Critical, BC) viermal (4-mal) mehr v-Kern-Kapazität erfordert als die Dienstebene „Universell“ (General Purpose, GP). Beispiel: 1 virtueller Kern „Universell“ = 1 V-Kern-Einheit, und 1 virtueller Kern „Unternehmenskritisch“ = 4 virtuelle Kerne. Um die Nutzungsanalyse hinsichtlich der Standardgrenzwerte zu vereinfachen, fassen Sie die vCore-Einheiten für alle Subnetze in der Region zusammen, in der SQL Managed Instance bereitgestellt wird. Vergleichen Sie die Ergebnisse anschließend mit den Grenzwerten für Instanzeinheiten Ihres Abonnementtyps. Der Grenzwert **Max number of vCore units** (Maximale Anzahl von virtuellen Kerneinheiten) gilt für jedes Abonnement in einer Region. Es gibt keinen Grenzwert pro individuellem Subnetz, außer dass die Summe aller in mehreren Subnetzen bereitgestellten virtuellen Kerne niedriger oder gleich der **maximalen Anzahl von virtuellen Kerneinheiten** sein muss.
 
 \*\* Höhere Grenzwerte für Subnetze und virtuelle Kerne sind in den folgenden Regionen verfügbar: „Australien, Osten“, „USA, Osten“, „USA, Osten 2“, „Europa, Norden“, „USA, Süden-Mitte“, „Asien, Südosten“, „Vereinigtes Königreich, Süden“, „Europa, Westen“, „USA, Westen 2“.
 

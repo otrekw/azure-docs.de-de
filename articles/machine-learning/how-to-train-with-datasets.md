@@ -12,12 +12,12 @@ ms.reviewer: nibaccam
 ms.date: 07/31/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, data4ml
-ms.openlocfilehash: b6ec9d7035194efc471fc06befad9822c8684a5d
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 8b95c5a45992c895713e0be056856172b14b830d
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94685578"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740673"
 ---
 # <a name="train-with-datasets-in-azure-machine-learning"></a>Trainieren mit Datasets in Azure Machine Learning
 
@@ -220,6 +220,7 @@ print(os.listdir(mounted_path))
 print (mounted_path)
 ```
 
+
 ## <a name="directly-access-datasets-in-your-script"></a>Direktes Zugreifen auf Datasets in Ihrem Skript
 
 Auf registrierte Datasets kann sowohl lokal als auch remote in Computeclustern wie Azure Machine Learning Compute zugegriffen werden. Verwenden Sie für den experimentübergreifenden Zugriff auf Ihr registriertes Dataset den folgenden Code, um anhand des Namens auf Ihren Arbeitsbereich und das registrierte Dataset zuzugreifen. Die Methode [`get_by_name()`](/python/api/azureml-core/azureml.core.dataset.dataset?preserve-view=true&view=azure-ml-py#&preserve-view=trueget-by-name-workspace--name--version--latest--) für die Klasse `Dataset` gibt standardmäßig die neueste Version des im Arbeitsbereich registrierten Datasets zurück.
@@ -256,6 +257,33 @@ src.run_config.source_directory_data_store = "workspaceblobstore"
 
 + Die [Dataset-Notebooks](https://aka.ms/dataset-tutorial) veranschaulichen und erläutern die in diesem Artikel enthaltenen Konzepte.
 + Informationen zum Parametrisieren von Datasets in ML-Pipelines finden Sie [hier](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-showcasing-dataset-and-pipelineparameter.ipynb).
+
+## <a name="troubleshooting"></a>Problembehandlung
+
+* **Dataset initialization failed:  Waiting for mount point to be ready has timed out** (Fehler bei der Initialisierung des Datasets: Timeout beim Warten auf Verfügbarkeit des Bereitstellungpunkts): 
+  * Wenn Sie keine Ausgangsregeln für [Netzwerksicherheitsgruppen](https://docs.microsoft.com/azure/virtual-network/network-security-groups-overview) haben und `azureml-sdk>=1.12.0` verwenden, aktualisieren Sie `azureml-dataset-runtime` und die zugehörigen Abhängigkeiten auf die neueste Version für die jeweilige Nebenversion. Wenn Sie das SDK in einer Ausführung verwenden, erstellen Sie die Umgebung neu, damit sie über den neuesten Patch mit dem Fix verfügt. 
+  * Wenn Sie `azureml-sdk<1.12.0` verwenden, führen Sie ein Upgrade auf die neueste Version aus.
+  * Wenn Sie über Ausgangsregeln für Netzwerksicherheitsgruppen verfügen, stellen Sie sicher, dass eine Ausgangsregel vorhanden ist, die sämtlichen Datenverkehr für das Diensttag `AzureResourceMonitor` zulässt.
+
+### <a name="overloaded-azurefile-storage"></a>Überladener AzureFile-Speicher
+
+Wenn Sie eine Fehlermeldung `Unable to upload project files to working directory in AzureFile because the storage is overloaded` erhalten, wenden Sie die folgenden Problemumgehungen an.
+
+Falls Sie eine Dateifreigabe für andere Workloads (beispielsweise die Datenübertragung) verwenden, empfiehlt es sich, Blobs zu verwenden, damit die Dateifreigabe für die Übermittlung von Ausführungen frei ist. Alternativ kann die Workload auch auf zwei verschiedene Arbeitsbereiche aufgeteilt werden.
+
+### <a name="passing-data-as-input"></a>Übergeben von Daten als Eingabe
+
+*  **TypeError: FileNotFound: Datei oder Verzeichnis nicht vorhanden**: Dieser Fehler tritt auf, wenn sich die Datei nicht an dem von Ihnen angegebenen Dateipfad befindet. Sie müssen sicherstellen, dass Ihre Verweise auf die Datei konsistent mit dem Einbindungsort des Datasets auf Ihrem Computeziel ist. Um einen deterministischen Zustand sicherzustellen, empfiehlt es sich, für die Einbindung eines Datasets an einem Computeziel den abstrakten Pfad zu verwenden. Im folgenden Code wird das Dataset beispielsweise unter dem Stammverzeichnis des Dateisystems des Computeziels eingebunden: `/tmp`. 
+    
+    ```python
+    # Note the leading / in '/tmp/dataset'
+    script_params = {
+        '--data-folder': dset.as_named_input('dogscats_train').as_mount('/tmp/dataset'),
+    } 
+    ```
+
+    Wenn Sie den vorangestellten Schrägstrich („/“) nicht einschließen, müssen Sie das Arbeitsverzeichnis auf dem Computeziel als Präfix hinzufügen, z. B. `/mnt/batch/.../tmp/dataset`, um anzugeben, wo das Dataset eingebunden werden soll.
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

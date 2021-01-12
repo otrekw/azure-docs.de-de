@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/03/2020
 ms.author: jeedes
-ms.openlocfilehash: bbea6a0aa31034cd1c04145fb50b72432c9f8520
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 9e5d12bcea1bd7a587568c30b49c8c4ee95f8362
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92319014"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937381"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-akamai"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Akamai
 
@@ -63,7 +63,7 @@ Akamai EAA wird als einzelne Anwendung in der Azure AD-Instanz konfiguriert. D
 
 * Benutzer verfügen über zwei Anwendungsportale.
 
-* Abdeckung aller Anwendungen durch eine einzelne allgemeine Richtlinie für bedingten Zugriff.
+* Abdeckung aller Anwendungen durch eine einzelne allgemeine Richtlinie für bedingten Zugriff
 
 ![Integrationsszenario 1](./media/header-akamai-tutorial/scenario1.png)
 

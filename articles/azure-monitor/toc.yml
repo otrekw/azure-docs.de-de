@@ -127,7 +127,7 @@
           href: platform/personal-data-mgmt.md
         - name: 'Anwendungsdatensammlung, -vermerkdauer und -speicherung'
           href: app/data-retention-privacy.md
-    - name: Warnungen
+    - name: Alerts
       items:
         - name: Übersicht
           href: platform/alerts-overview.md
@@ -226,6 +226,8 @@
               href: platform/service-providers.md
             - name: Dedicated-Cluster
               href: log-query/logs-dedicated-clusters.md
+            - name: Problembehandlungsprotokolle
+              href: platform/azure-monitor-troubleshooting-logs.md
         - name: Log Analytics
           items:
             - name: Übersicht

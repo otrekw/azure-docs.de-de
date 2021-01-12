@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 08/10/2020
 ms.author: kumud
-ms.openlocfilehash: f9eedba6c8aee5c8aab73e2ed598a4511b4c5982
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dd8b36340deb6c785989107461dd420e7fc0d985
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89020455"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97722571"
 ---
 # <a name="customize-a-language-model-with-the-video-indexer-website"></a>Anpassen eines Sprachmodells mit der Video Indexer-Website
 
@@ -28,34 +28,27 @@ Sie können die Video Indexer-Website verwenden, um benutzerdefinierte Sprachmod
 ## <a name="create-a-language-model"></a>Erstellen eines Sprachmodells
 
 1. Navigieren Sie zur [Video Indexer](https://www.videoindexer.ai/)-Website, und melden Sie sich an.
-2. Um ein Modell in Ihrem Konto anzupassen, wählen Sie in der oberen rechten Ecke der Seite die Schaltfläche **Anpassung des Inhaltsmodells** aus.
+1. Um ein Modell in Ihrem Konto anzupassen, wählen Sie links auf der Seite die Schaltfläche **Anpassung des Inhaltsmodells** aus.
 
-   ![Anpassen eines Inhaltsmodells in Video Indexer](./media/content-model-customization/content-model-customization.png)
-
-3. Wählen Sie die Registerkarte **Sprache** aus.
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/customize-language-model/model-customization.png" alt-text="Anpassen eines Inhaltsmodells in Video Indexer":::
+1. Wählen Sie die Registerkarte **Sprache** aus.
 
     Eine Liste der unterstützten Sprachen wird angezeigt.
-
-    ![Liste der Sprachmodelle in Video Indexer](./media/customize-language-model/customize-language-model.png)
-
-4. Nach dem Auswählen der gewünschten Sprache wählen Sie **Modell hinzufügen** aus.
-5. Geben Sie den Namen für das Sprachmodell ein, und drücken Sie die Eingabetaste.
+1. Nach dem Auswählen der gewünschten Sprache wählen Sie **Modell hinzufügen** aus.
+1. Geben Sie den Namen für das Sprachmodell ein, und drücken Sie die Eingabetaste.
 
     Damit wird das Modell erstellt, und das Hochladen von Textdateien in das Modell wird möglich.
-
-6. Wählen Sie **Datei hinzufügen** aus, um eine Textdatei hinzuzufügen. Ihr Datei-Explorer wird geöffnet.
-
-7. Navigieren Sie zur Textdatei, und wählen Sie diese aus. Sie können mehrere Textdateien einem Sprachmodell hinzufügen.
+1. Wählen Sie **Datei hinzufügen** aus, um eine Textdatei hinzuzufügen. Ihr Datei-Explorer wird geöffnet.
+1. Navigieren Sie zur Textdatei, und wählen Sie diese aus. Sie können mehrere Textdateien einem Sprachmodell hinzufügen.
 
     Sie können auch eine Textdatei hinzufügen, indem Sie die Schaltfläche **...** auf der rechten Seite des Sprachmodells und **Datei hinzufügen** auswählen.
-
-8. Nachdem Sie die Textdateien hochgeladen haben, wählen Sie die grüne Option **Trainieren** aus.
-
-    ![Trainieren eines Sprachmodells in Video Indexer](./media/customize-language-model/train-model.png)
+1. Nachdem Sie die Textdateien hochgeladen haben, wählen Sie die grüne Option **Trainieren** aus.
 
 Der Trainingsprozess kann einige Minuten dauern. Wenn der Trainingsprozess abgeschlossen ist, wird **Trained** (Trainiert) neben dem Modell angezeigt. Sie können für die Datei eine Vorschau anzeigen, sie herunterladen und aus dem Modell löschen.
 
-![Trainiertes Sprachmodell in Video Indexer](./media/customize-language-model/preview-model.png)
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/customize-language-model/customize-language-model.png" alt-text="Modelltraining":::
 
 ### <a name="using-a-language-model-on-a-new-video"></a>Verwenden eines Sprachmodells für ein neues Video
 
@@ -64,28 +57,22 @@ Um Ihr Sprachmodell für ein neues Video zu verwenden, führen Sie eine der folg
 * Wählen Sie die Schaltfläche **Hochladen** oben auf der Seite aus.
 
     ![Schaltfläche „Hochladen“ im Video Indexer](./media/customize-language-model/upload.png)
+* Legen Sie Ihre Audio- oder Videodatei ab, oder suchen Sie nach Ihrer Datei.
 
-* Legen Sie Ihre Audio- oder Videodatei in dem Kreis ab, oder suchen Sie nach Ihrer Datei.
+Sie können optional die **Ausgangssprache des Videos** auswählen. Wählen Sie die Dropdownliste und daraus ein von Ihnen erstelltes Sprachmodell aus. Ihnen sollten dann die Sprache Ihres Sprachmodells sowie der von Ihnen in Klammern festgelegte Name angezeigt werden. Beispiel:
 
-    ![Hochladen einer Mediendatei in den Video Indexer](./media/customize-language-model/upload2.png)
-
-Sie können optional die **Ausgangssprache des Videos** auswählen. Wählen Sie die Dropdownliste und daraus ein von Ihnen erstelltes Sprachmodell aus. Ihnen sollten dann die Sprache Ihres Sprachmodells sowie der von Ihnen in Klammern festgelegte Name angezeigt werden.
+![Auswählen der Ausgangssprache des Videos – Neuindizierung eines Videos mit Video Indexer](./media/customize-language-model/reindex.png)
 
 Wählen Sie unten auf der Seite die Option **Hochladen** aus, und Ihr neues Video wird mithilfe des Sprachmodells indiziert.
 
 ### <a name="using-a-language-model-to-reindex"></a>Neuindizieren mithilfe eines Sprachmodells
 
-Um Ihr Sprachmodell zum Neuindizieren eines Videos in Ihrer Sammlung zu verwenden, navigieren Sie zu Ihren **Account videos** (Videos in Ihrem Konto) auf der [Video Indexer](https://www.videoindexer.ai/)-Homepage, und zeigen Sie auf den Namen des Videos, welches Sie erneut indizieren möchten.
+Führen Sie die folgenden Schritte aus, um das Sprachmodell zum erneuten Indizieren eines Videos in Ihrer Sammlung zu verwenden:
 
-Sie sehen Optionen zum Bearbeiten, Löschen und Neuindizieren Ihres Videos. Wählen Sie die Option zum Neuindizieren Ihres Videos aus.
-
-![Neuindizieren mit Video Indexer](./media/customize-language-model/reindex1.png)
-
-Über die Option **Ausgangssprache des Videos** können Sie die Ausgangssprache des Videos auswählen, mit der Sie Ihr Video erneut indizieren möchten. Wählen Sie die Dropdownliste und daraus ein von Ihnen erstelltes Sprachmodell aus. Ihnen sollten dann die Sprache Ihres Sprachmodells sowie der von Ihnen in Klammern festgelegte Name angezeigt werden.
-
-![Auswählen der Ausgangssprache des Videos – Neuindizierung eines Videos mit Video Indexer](./media/customize-language-model/reindex.png)
-
-Wählen Sie die Schaltfläche **Neuindizieren** aus, und Ihr Video wird mithilfe Ihres Sprachmodells erneut indiziert.
+1. Melden Sie sich bei der [Video Indexer](https://www.videoindexer.ai/)-Startseite an.
+1. Klicken Sie im Video auf die **...** -Schaltfläche, und wählen Sie **Neu indizieren** aus.
+1. Über die Option **Ausgangssprache des Videos** können Sie die Ausgangssprache des Videos auswählen, mit der Sie Ihr Video erneut indizieren möchten. Wählen Sie die Dropdownliste und daraus ein von Ihnen erstelltes Sprachmodell aus. Ihnen sollten dann die Sprache Ihres Sprachmodells sowie der von Ihnen in Klammern festgelegte Name angezeigt werden.
+1. Wählen Sie die Schaltfläche **Neuindizieren** aus, und Ihr Video wird mithilfe Ihres Sprachmodells erneut indiziert.
 
 ## <a name="edit-a-language-model"></a>Bearbeiten eines Sprachmodells
 
@@ -145,8 +132,6 @@ Video Indexer unterstützt die automatische Anpassung von Sprachmodellen basiere
     > Für die Anpassung werden nur Textkorrekturen verwendet. Korrekturen, die keine eigentlichen Wörter beinhalten (z. B. Satzzeichen oder Leerzeichen), werden nicht berücksichtigt.
     
 1. Transkriptkorrekturen werden auf der Registerkarte „Sprache“ auf der Seite „Anpassung des Inhaltsmodells“ angezeigt.
-
-    ![Anpassen eines Sprachmodells – Video Indexer](./media/customize-language-model/customize.png)
 
    Um die Datei „Aus Transkriptbearbeitungen“ für jedes Ihrer Sprachmodelle anzusehen, wählen Sie sie aus, um sie zu öffnen.
 

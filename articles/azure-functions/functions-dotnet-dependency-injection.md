@@ -7,12 +7,12 @@ ms.custom: devx-track-csharp
 ms.date: 08/15/2020
 ms.author: glenga
 ms.reviewer: jehollan
-ms.openlocfilehash: ee2e7dc577e000878884655c0ed5f4bcb1aabab5
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 70ec9248db002823e969fa5f4fba8bf1074a9af7
+ms.sourcegitcommit: 0830e02635d2f240aae2667b947487db01f5fdef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167694"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97706931"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>Verwenden der Abhängigkeitsinjektion in Azure Functions (.NET)
 
@@ -29,6 +29,8 @@ Bevor Sie die Abhängigkeitsinjektion verwenden können, müssen Sie die folgend
 - [Microsoft.Azure.Functions.Extensions](https://www.nuget.org/packages/Microsoft.Azure.Functions.Extensions/)
 
 - [Microsoft.NET.Sdk.Functions-Paket](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions/), Version 1.0.28 oder höher
+
+- [Microsoft.Extensions.DependencyInjection](https://www.nuget.org/packages/Microsoft.Extensions.DependencyInjection/) (derzeit werden nur Version 3.x und frühere unterstützt)
 
 ## <a name="register-services"></a>Registrieren von Diensten
 
@@ -68,7 +70,7 @@ Eine Reihe von Registrierungsschritten wird vor und nach dem Verarbeiten der Sta
 
 - *Die Startup-Klasse ist nur für Setup und Registrierung vorgesehen.* Vermeiden Sie die Verwendung von Diensten, die beim Start während des Startvorgangs registriert werden. Versuchen Sie beispielsweise nicht, eine Nachricht in einer Protokollierung zu protokollieren, die während des Starts registriert wird. Dieser Zeitpunkt des Registrierungsprozesses ist zu früh, damit ihre Dienste zur Verwendung verfügbar sind. Nachdem die `Configure`-Methode ausgeführt wurde, registriert die Azure Functions-Laufzeit weiterhin zusätzliche Abhängigkeiten, die sich den Betrieb ihrer Dienste auswirken können.
 
-- *Der Container für die Abhängigkeitsinjektion enthält nur explizit registrierte Typen* . Die einzigen Dienste, die als injizierbare Typen verfügbar sind, sind diejenigen, die in der `Configure`-Methode eingerichtet werden. Folglich sind Azure Functions-spezifische Typen wie `BindingContext` und `ExecutionContext` während des Setups oder als injizierbare Typen nicht verfügbar.
+- *Der Container für die Abhängigkeitsinjektion enthält nur explizit registrierte Typen*. Die einzigen Dienste, die als injizierbare Typen verfügbar sind, sind diejenigen, die in der `Configure`-Methode eingerichtet werden. Folglich sind Azure Functions-spezifische Typen wie `BindingContext` und `ExecutionContext` während des Setups oder als injizierbare Typen nicht verfügbar.
 
 ## <a name="use-injected-dependencies"></a>Verwenden von eingefügten Abhängigkeiten
 
@@ -118,9 +120,9 @@ In diesem Beispiel wird das Paket [Microsoft.Extensions.Http](https://www.nuget.
 
 Azure Functions-Apps bieten dieselbe Dienstlebensdauer wie die [ASP.NET-Abhängigkeitsinjektion](/aspnet/core/fundamentals/dependency-injection#service-lifetimes). Bei einer Funktions-App weisen die verschiedenen Dienstlebensdauern die folgenden Verhalten auf:
 
-- **Vorübergehend** : Bei jeder Anforderung des Diensts werden vorübergehende Dienste erstellt.
-- **Bereichsbezogen** : Die bereichsbezogene Lebensdauer eines Diensts entspricht der Ausführungslebensdauer einer Funktion. Bereichsbezogene Dienste werden einmal pro Ausführung erstellt. In späteren Anforderungen für diesen Dienst während der Ausführung wird die vorhandene Dienstinstanz wiederverwendet.
-- **Singleton** : Die Lebensdauer eines Singletondiensts entspricht der Lebensdauer des Hosts und wird für Funktionsausführungen dieser Instanz wiederverwendet. Dienste mit Singleton-Lebensdauer werden für Verbindungen und Clients empfohlen, z. B. Instanzen von `DocumentClient` oder `HttpClient`.
+- **Vorübergehend**: Bei jeder Lösung des Diensts werden vorübergehende Dienste erstellt.
+- **Bereichsbezogen**: Die bereichsbezogene Lebensdauer eines Diensts entspricht der Ausführungslebensdauer einer Funktion. Bereichsbezogene Dienste werden einmal pro Funktionsausführung erstellt. In späteren Anforderungen für diesen Dienst während der Ausführung wird die vorhandene Dienstinstanz wiederverwendet.
+- **Singleton**: Die Lebensdauer eines Singletondiensts entspricht der Lebensdauer des Hosts und wird für Funktionsausführungen dieser Instanz wiederverwendet. Dienste mit Singleton-Lebensdauer werden für Verbindungen und Clients empfohlen, z. B. Instanzen von `DocumentClient` oder `HttpClient`.
 
 Sie können auf GitHub ein [Beispiel für verschiedene Dienstlebensdauern](https://github.com/Azure/azure-functions-dotnet-extensions/tree/main/src/samples/DependencyInjection/Scopes) anzeigen bzw. herunterladen.
 
@@ -182,11 +184,13 @@ In der folgenden Beispieldatei `host.json` wird der Protokollfilter hinzugefügt
 }
 ```
 
+Weitere Informationen zu Protokollgraden finden Sie unter [Konfigurieren von Protokollgraden](configure-monitoring.md#configure-log-levels).
+
 ## <a name="function-app-provided-services"></a>Dienste, die von Funktions-App bereitgestellt werden
 
 Der Funktionshost registriert viele Dienste. Es ist sicher, die folgenden Dienste als Abhängigkeit in Ihrer Anwendung zu verwenden:
 
-|Diensttyp|Gültigkeitsdauer|BESCHREIBUNG|
+|Diensttyp|Lebensdauer|BESCHREIBUNG|
 |--|--|--|
 |`Microsoft.Extensions.Configuration.IConfiguration`|Singleton|Laufzeitkonfiguration|
 |`Microsoft.Azure.WebJobs.Host.Executors.IHostIdProvider`|Singleton|Verantwortlich für die Bereitstellung der Hostinstanz-ID|

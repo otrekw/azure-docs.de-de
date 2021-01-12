@@ -5,13 +5,13 @@ author: ThomasWeiss
 ms.author: thweiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/25/2020
-ms.openlocfilehash: 1943aae3a2b01490dca687bcdea99d76da238d51
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.date: 12/23/2020
+ms.openlocfilehash: a6f8b79ecc8dcac71dc8f5d1be2bb58a0288a307
+ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187254"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97760247"
 ---
 # <a name="how-to-choose-between-provisioned-throughput-and-serverless"></a>Wählen zwischen bereitgestelltem Durchsatz und serverlos
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -25,7 +25,7 @@ Azure Cosmos DB ist in zwei verschiedenen Kapazitätsmodi verfügbar: [bereitges
 | Kriterien | Bereitgestellter Durchsatz | Serverlos |
 | --- | --- | --- |
 | Status | Allgemein verfügbar | In der Vorschau |
-| Am besten geeignet für | Unternehmenswichtige Workloads, die vorhersagbare Leistung erfordern | Kleine bis mittlere, nicht kritische Workloads mit geringem und zeitweiligem Datenverkehr |
+| Am besten geeignet für | Unternehmenswichtige Workloads, die vorhersagbare Leistung erfordern | Kleine bis mittlere Workloads mit geringem und zeitweiligem Datenverkehr, der schwer vorhergesagt werden kann |
 | Funktionsweise | Für jeden Ihrer Container stellen Sie eine gewisse Durchsatzmenge bereit, ausgedrückt in [Anforderungseinheiten](request-units.md) pro Sekunde. Jede Sekunde steht diese Menge von Anforderungseinheiten für Ihre Datenbankvorgänge zur Verfügung. Bereitgestellter Durchsatz kann manuell aktualisiert oder automatisch mit [Autoskalierung](provision-throughput-autoscale.md) angepasst werden. | Sie führen die Datenbankvorgänge für Ihre Container aus, ohne Kapazität bereitstellen zu müssen. |
 | Geografische Verteilung | Verfügbar (unbegrenzte Anzahl von Azure-Regionen) | Nicht verfügbar (serverlose Konten können nur in einer einzigen Azure-Region ausgeführt werden) |
 | Maximale Speicherkapazität pro Container | Unbegrenzt | 50 GB |
