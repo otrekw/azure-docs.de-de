@@ -3,12 +3,12 @@ title: host.json-Referenz für Azure Functions 2.x
 description: Referenzdokumentation für die host.json-Datei von Azure Functions mit der v2 Runtime.
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: 96d6b884e9e2c835316af01140c6fc7208ee5ab9
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 735c92720f4a3f871499ad3a0565446a02b438eb
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96746079"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654811"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>host.json-Referenz für Azure Functions 2.x oder höher 
 
@@ -129,7 +129,8 @@ In der folgenden Beispieldatei *host.json* für Version 2.x und höher sind all
       "lockAcquisitionTimeout": "00:01:00",
       "lockAcquisitionPollingInterval": "00:00:03"
     },
-    "watchDirectories": [ "Shared", "Test" ]
+    "watchDirectories": [ "Shared", "Test" ],
+    "watchFiles": [ "myFile.txt" ]
 }
 ```
 
@@ -444,6 +445,16 @@ Eine Reihe von [Verzeichnissen mit freigegebenem Code](functions-reference-cshar
 ```json
 {
     "watchDirectories": [ "Shared" ]
+}
+```
+
+## <a name="watchfiles"></a>watchFiles
+
+Ein Array mit einem oder mehreren Namen von Dateien, die auf Änderungen überwacht werden, für die die App neu gestartet werden muss.  Dadurch wird sichergestellt, dass Änderungen am Code in diesen Dateien von Ihren Funktionen übernommen werden.
+
+```json
+{
+    "watchFiles": [ "myFile.txt" ]
 }
 ```
 

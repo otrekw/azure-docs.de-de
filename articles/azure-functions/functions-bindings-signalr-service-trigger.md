@@ -6,16 +6,18 @@ ms.topic: reference
 ms.custom: devx-track-csharp
 ms.date: 05/11/2020
 ms.author: chenyl
-ms.openlocfilehash: e2651afbcdc3bae71bb531aa0e821f83264c295d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2482a26987ec142880acc51bf470d844655b6e3f
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88212586"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97763511"
 ---
 # <a name="signalr-service-trigger-binding-for-azure-functions"></a>SignalR Service-Auslöserbindung für Azure Functions
 
 Verwenden Sie die *SignalR*-Auslöserbindung, um auf Nachrichten zu antworten, die von Azure SignalR Service gesendet werden. Beim Auslösen der Funktion werden die an die Funktion übergebenen Nachrichten als JSON-Objekt analysiert.
+
+Im serverlosen Modus des SignalR Service verwendet SignalR Service das Feature [Upstream](../azure-signalr/concept-upstream.md), um Nachrichten vom Client an die Funktions-App zu senden. Und die Funktions-App verwendet die SignalR Service-Triggerbindung, um diese Nachrichten zu verarbeiten. Die allgemeine Architektur wird unten dargestellt: :::image type="content" source="media/functions-bindings-signalr-service/signalr-trigger.png" alt-text="SignalR-Triggerarchitektur":::
 
 Informationen zu Setup- und Konfigurationsdetails finden Sie in der [Übersicht](functions-bindings-signalr-service.md).
 
@@ -203,15 +205,22 @@ InvocationContext enthält den gesamten Inhalt der von SignalR Service gesendete
 
 ## <a name="using-parameternames"></a>Verwenden von `ParameterNames`
 
-Die Eigenschaft `ParameterNames` in `SignalRTrigger` erlaubt Ihnen, Argumente von Aufrufnachrichten an die Parameter von Funktionen zu binden. Dadurch erhalten Sie einen bequemeren Zugriff auf die Argumente von `InvocationContext`.
+Die Eigenschaft `ParameterNames` in `SignalRTrigger` erlaubt Ihnen, Argumente von Aufrufnachrichten an die Parameter von Funktionen zu binden. Der von Ihnen definierte Name kann als Teil der [Bindungsausdrücke](../azure-functions/functions-bindings-expressions-patterns.md) in anderen Bindungen oder als Parameter im Code verwendet werden. Dadurch erhalten Sie einen bequemeren Zugriff auf die Argumente von `InvocationContext`.
 
-Angenommen, Sie haben einen JavaScript-SignalR-Client, der versucht, die Methode `broadcast` in Azure Functions mit zwei Argumenten aufzurufen.
+Angenommen, Sie haben einen JavaScript-SignalR-Client, der versucht, die Methode `broadcast` in Azure Functions mit zwei Argumenten (`message1`, `message2`) aufzurufen.
 
 ```javascript
 await connection.invoke("broadcast", message1, message2);
 ```
 
-Sie können auf diese beiden Argumente sowohl über Parameter zugreifen als auch ihnen einen Parametertyp zuweisen, indem Sie `ParameterNames` verwenden.
+Nachdem Sie `parameterNames` festgelegt haben, entspricht der von Ihnen definierte Name den Argumenten, die auf der Clientseite gesendet werden. 
+
+```cs
+[SignalRTrigger(parameterNames: new string[] {"arg1, arg2"})]
+```
+
+Anschließend enthält `arg1` den Inhalt von `message1` und `arg2` den Inhalt von `message2`.
+
 
 ### <a name="remarks"></a>Bemerkungen
 
@@ -219,20 +228,28 @@ Für die Parameterbindung ist die Reihenfolge wichtig. Wenn Sie `ParameterNames`
 
 `ParameterNames` und das Attribut `[SignalRParameter]` **können nicht** gleichzeitig verwendet werden, da Sie sonst eine Ausnahme erhalten.
 
-## <a name="send-messages-to-signalr-service-trigger-binding"></a>Senden von Nachrichten an die SignalR Service-Auslöserbindung
+## <a name="signalr-service-integration"></a>SignalR Service-Integration
 
-Azure Functions generiert eine URL für die SignalR Server-Auslöserbindung, die wie folgt formatiert ist:
+Der signalr-Dienst benötigt eine URL für den Zugriff auf die Funktions-App, wenn Sie die SignalR Service-Triggerbindung verwenden. Die URL sollte in **Upstreameinstellungen** auf der SignalR Service-Seite konfiguriert werden. 
+
+:::image type="content" source="../azure-signalr/media/concept-upstream/upstream-portal.png" alt-text="Upstreamportal":::
+
+Bei Verwendung des SignalR Service-Triggers kann die URL einfach und wie unten dargestellt formatiert sein:
 
 ```http
-https://<APP_NAME>.azurewebsites.net/runtime/webhooks/signalr?code=<API_KEY>
+<Function_App_URL>/runtime/webhooks/signalr?code=<API_KEY>
 ```
 
-`API_KEY` wird von Azure Functions generiert. Sie können den `API_KEY` über das Azure-Portal abrufen, da Sie die SignalR Service-Auslöserbindung verwenden.
+`Function_App_URL` finden Sie auf der Übersichtsseite der Funktions-App, `API_KEY` wird von der Azure-Funktion generiert. Sie können den `API_KEY` von `signalr_extension` auf dem Blatt **App-Schlüssel** der Funktions-App abrufen.
 :::image type="content" source="media/functions-bindings-signalr-service/signalr-keys.png" alt-text="API-Schlüssel":::
 
-Sie sollten diese URL in den vorgelagerten Einstellungen von SignalR Service auf `UrlTemplate` festlegen.
+Wenn Sie mehrere Funktions-Apps in Verbindung mit einem SignalR Service verwenden möchten, kann der Upstream auch komplexe Routingregeln unterstützen. Weitere Informationen finden Sie unter [Upstreameinstellungen](../azure-signalr/concept-upstream.md).
+
+## <a name="step-by-step-sample"></a>Schritt-für-Schritt-Beispiel
+
+Sie können das Beispiel in GitHub befolgen, um einen Chatraum für die Funktions-App mit der SignalR Service-Triggerbindung und der Upstreamfunktion bereitzustellen: [Beispiel für bidirektionalen Chatraum](https://github.com/aspnet/AzureSignalR-samples/tree/master/samples/BidirectionChat)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Azure Functions-Entwicklung und -Konfiguration mit Azure SignalR Service](../azure-signalr/signalr-concept-serverless-development-config.md)
-* [Beispiel einer SignalR Service-Auslöserbindung](https://github.com/Azure/azure-functions-signalrservice-extension/tree/dev/samples/bidirectional-chat)
+* [Beispiel einer SignalR Service-Auslöserbindung](https://github.com/aspnet/AzureSignalR-samples/tree/master/samples/BidirectionChat)

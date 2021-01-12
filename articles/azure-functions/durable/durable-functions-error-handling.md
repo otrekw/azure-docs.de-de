@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie Fehler in der Durable Functions-Erweiterung f
 ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: azfuncdf
-ms.openlocfilehash: 6650322834d491d78470e2d8dbd24e2c6750ae39
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 023f9dfcc421935c3f7515e847108925d5e5521e
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87081694"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673646"
 ---
 # <a name="handling-errors-in-durable-functions-azure-functions"></a>Fehlerbehandlung in Durable Functions (Azure Functions)
 
@@ -196,7 +196,11 @@ Der Aktivitätsfunktionsaufruf im vorherigen Beispiel nimmt einen Parameter zum 
 * **Backoff-Koeffizient**: Der Koeffizient, der verwendet wird, um die Rate für die Erhöhung des Backoffs zu bestimmen. Der Standardwert lautet 1.
 * **Max. Wiederholungsintervall**: Die maximale Zeitspanne zwischen den Wiederholungsversuchen.
 * **Timeout für Wiederholungsversuche**: Die maximale Zeitspanne für das Ausführen von Wiederholungsversuchen. Das Standardverhalten ist das Wiederholen auf unbestimmte Zeit.
-* **Handle**: Es kann ein benutzerdefinierter Rückruf angegeben werden, der bestimmt, ob eine Funktion wiederholt werden soll.
+* **Handle**: Es kann ein benutzerdefinierter Rückruf angegeben werden, der bestimmt, ob eine Funktion wiederholt werden soll. 
+
+> [!NOTE]
+> Benutzerdefinierte Rückrufe werden zurzeit von Durable Functions in JavaScript (`context.df.RetryOptions`) nicht unterstützt.
+
 
 ## <a name="function-timeouts"></a>Funktion-Timeouts
 

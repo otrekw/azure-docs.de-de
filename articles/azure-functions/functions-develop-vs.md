@@ -4,12 +4,12 @@ description: In diesem Artikel erhalten Sie Informationen über das Entwickeln u
 ms.custom: vs-azure, devx-track-csharp
 ms.topic: conceptual
 ms.date: 06/10/2020
-ms.openlocfilehash: c5164d0757de5011c112a9506979da19d9585790
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 877c82e375b0ea469071402b83fadbd634177f3f
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167796"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97655814"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Entwickeln von Azure Functions mithilfe von Visual Studio  
 
@@ -42,17 +42,17 @@ Sofern nicht anders angegeben, gelten die gezeigten Prozeduren und Beispiele fü
 
 ### <a name="check-your-tools-version-in-visual-studio-2017"></a><a name="check-your-tools-version"></a>Überprüfen der Toolversion in Visual Studio 2017
 
-1. Wählen Sie im Menü **Extras** auf **Erweiterungen und Updates** . Erweitern Sie **Installiert** > **Tools** , und wählen Sie dann **Azure Functions und Webauftragstools** aus.
+1. Wählen Sie im Menü **Extras** auf **Erweiterungen und Updates**. Erweitern Sie **Installiert** > **Tools**, und wählen Sie dann **Azure Functions und Webauftragstools** aus.
 
     ![Überprüfen der Functions-Toolsversion](./media/functions-develop-vs/functions-vstools-check-functions-tools.png)
 
-1. Notieren Sie sich die installierte **Version** , und vergleichen Sie diese Version mit der aktuellen, die in den [Versionshinweisen](https://github.com/Azure/Azure-Functions/blob/master/VS-AzureTools-ReleaseNotes.md) aufgeführt ist. 
+1. Notieren Sie sich die installierte **Version**, und vergleichen Sie diese Version mit der aktuellen, die in den [Versionshinweisen](https://github.com/Azure/Azure-Functions/blob/master/VS-AzureTools-ReleaseNotes.md) aufgeführt ist. 
 
 1. Wenn Ihre Version älter ist, aktualisieren Sie Ihre Tools in Visual Studio, wie im folgenden Abschnitt gezeigt.
 
 ### <a name="update-your-tools-in-visual-studio-2017"></a>Aktualisieren der Tools in Visual Studio 2017
 
-1. Erweitern Sie im Dialogfeld **Erweiterungen und Updates** die Option **Updates** > **Visual Studio Marketplace** , wählen Sie **Azure Functions und Webauftragstools** , und wählen Sie **Aktualisieren** .
+1. Erweitern Sie im Dialogfeld **Erweiterungen und Updates** die Option **Updates** > **Visual Studio Marketplace**, wählen Sie **Azure Functions und Webauftragstools**, und wählen Sie **Aktualisieren**.
 
     ![Aktualisieren der Functions-Toolsversion](./media/functions-develop-vs/functions-vstools-update-functions-tools.png)   
 
@@ -71,9 +71,9 @@ Sofern nicht anders angegeben, gelten die gezeigten Prozeduren und Beispiele fü
 
 Nach dem Erstellen eines Azure Functions-Projekts erstellt die Projektvorlage ein C#-Projekt, installiert das NuGet-Paket `Microsoft.NET.Sdk.Functions` und legt das Zielframework fest. Das neue Projekt enthält die folgenden Dateien:
 
-* **host.json** : Ermöglicht das Konfigurieren des Functions-Hosts. Diese Einstellungen gelten für die lokale Ausführung und die Ausführung in Azure. Weitere Informationen finden Sie in der [host.json-Referenz](functions-host-json.md).
+* **host.json**: Ermöglicht das Konfigurieren des Functions-Hosts. Diese Einstellungen gelten für die lokale Ausführung und die Ausführung in Azure. Weitere Informationen finden Sie in der [host.json-Referenz](functions-host-json.md).
 
-* **local.settings.json** : Behält Einstellungen beim lokalen Ausführen von Funktionen bei. Diese Einstellungen werden bei der Ausführung in Azure nicht verwendet. Weitere Informationen finden Sie unter [Datei für lokale Einstellungen](#local-settings-file).
+* **local.settings.json**: Behält Einstellungen beim lokalen Ausführen von Funktionen bei. Diese Einstellungen werden bei der Ausführung in Azure nicht verwendet. Weitere Informationen finden Sie unter [Datei für lokale Einstellungen](#local-settings-file).
 
     >[!IMPORTANT]
     >Da die Datei „local.settings.json“ Geheimnisse enthalten kann, müssen Sie sie aus der Quellcodeverwaltung Ihres Projekts ausschließen. Stellen Sie sicher, dass die Einstellung **In Ausgabeverzeichnis kopieren** für diese Datei auf **Kopieren, falls aktueller** festgelegt ist. 
@@ -86,6 +86,18 @@ Visual Studio lädt die Einstellungen in „local.settings.json“ nicht automat
 
 Ihr Code kann die Werte für Funktions-App-Einstellungen auch als Umgebungsvariablen lesen. Weitere Informationen finden Sie unter [Umgebungsvariablen](functions-dotnet-class-library.md#environment-variables).
 
+## <a name="configure-your-build-output-settings"></a>Konfigurieren der Buildausgabeeinstellungen
+
+Beim Erstellen eines Azure Functions-Projekts optimieren die Buildtools die Ausgabe so, dass nur eine Kopie aller Assemblys, die mit der Functions-Laufzeit gemeinsam genutzt werden, beibehalten wird. Das Ergebnis ist ein optimierter Build, der so viel Speicherplatz wie möglich einspart. Wenn Sie jedoch zu einer neueren Version Ihrer Projekteassemblys wechseln, wissen die Buildtools möglicherweise nicht, dass diese Assemblys beibehalten werden müssen. Um sicherzustellen, dass diese Assemblys während des Optimierungsprozesses beibehalten werden, können Sie sie mithilfe von `FunctionsPreservedDependencies`-Elementen in der Projektdatei (CSPROJ-Datei) angeben:
+
+```xml
+  <ItemGroup>
+    <FunctionsPreservedDependencies Include="Microsoft.AspNetCore.Http.dll" />
+    <FunctionsPreservedDependencies Include="Microsoft.AspNetCore.Http.Extensions.dll" />
+    <FunctionsPreservedDependencies Include="Microsoft.AspNetCore.Http.Features.dll" />
+  </ItemGroup>
+```
+
 ## <a name="configure-the-project-for-local-development"></a>Konfigurieren des Projekts für die lokale Entwicklung
 
 Die Functions-Laufzeit verwendet intern ein Azure-Speicherkonto. Legen Sie für alle Triggertypen außer HTTP und Webhooks den Schlüssel `Values.AzureWebJobsStorage` auf eine gültige Verbindungszeichenfolge für ein Azure Storage-Konto fest. Ihre Funktions-App kann auch den [Azure-Speicheremulator](../storage/common/storage-use-emulator.md) für die Verbindungseinstellung `AzureWebJobsStorage` verwenden, die für das Projekt erforderlich ist. Um den Emulator zu verwenden, legen Sie den Wert für `AzureWebJobsStorage` auf `UseDevelopmentStorage=true` fest. Ändern Sie diese Einstellung vor der Bereitstellung in eine tatsächliche Verbindungszeichenfolge für ein Speicherkonto.
@@ -94,7 +106,7 @@ So legen Sie die Speicherkonto-Verbindungszeichenfolge fest:
 
 1. Wählen Sie in Visual Studio **Ansicht** > **Cloud-Explorer** aus.
 
-2. Erweitern Sie in **Cloud-Explorer** die Option **Speicherkonten** , und wählen Sie Ihr Speicherkonto aus. Kopieren Sie auf der Registerkarte **Eigenschaften** den Wert **Primäre Verbindungszeichenfolge** .
+2. Erweitern Sie in **Cloud-Explorer** die Option **Speicherkonten**, und wählen Sie Ihr Speicherkonto aus. Kopieren Sie auf der Registerkarte **Eigenschaften** den Wert **Primäre Verbindungszeichenfolge**.
 
 2. Öffnen Sie in Ihrem Projekt die Datei „local.settings.json“, und legen Sie den Wert des Schlüssels `AzureWebJobsStorage` auf die kopierte Verbindungszeichenfolge fest.
 
@@ -208,7 +220,7 @@ Verwenden Sie die folgenden Schritte, um Ihr Projekt in einer Funktions-App in A
 
 Da Visual Studio diese Einstellungen nicht automatisch beim Veröffentlichen des Projekts hochlädt, müssen Sie alle in der Datei „local.settings.json“ hinzugefügten Einstellungen auch der Funktions-App in Azure hinzufügen.
 
-Die einfachste Möglichkeit zum Hochladen der erforderlichen Einstellungen in Ihre Funktions-App in Azure ist das Auswählen des Links **Azure App Service-Einstellungen bearbeiten** , der nach dem Veröffentlichen des Projekts angezeigt wird.
+Die einfachste Möglichkeit zum Hochladen der erforderlichen Einstellungen in Ihre Funktions-App in Azure ist das Auswählen des Links **Azure App Service-Einstellungen bearbeiten**, der nach dem Veröffentlichen des Projekts angezeigt wird.
 
 :::image type="content" source="./media/functions-develop-vs/functions-vstools-app-settings.png" alt-text="Einstellungen im Fenster „Veröffentlichen“":::
 
@@ -216,7 +228,7 @@ Durch Auswählen dieses Links wird das Dialogfeld **Anwendungseinstellungen** f�
 
 ![Anwendungseinstellungen](./media/functions-develop-vs/functions-vstools-app-settings2.png)
 
-**Lokal** zeigt einen Einstellungswert in der Datei „local.settings.json“ an, und **Remote** zeigt einen aktuellen Einstellungswert in der Funktions-App in Azure an. Wählen Sie **Einstellung hinzufügen** , um eine neue App-Einstellung zu erstellen. Verwenden Sie den Link **Wert aus lokaler Quelle einfügen** , um einen Einstellungswert in das Feld **Remote** zu kopieren. Ausstehende Änderungen werden in die Datei für lokale Einstellungen und die Funktions-App geschrieben, wenn Sie **OK** auswählen.
+**Lokal** zeigt einen Einstellungswert in der Datei „local.settings.json“ an, und **Remote** zeigt einen aktuellen Einstellungswert in der Funktions-App in Azure an. Wählen Sie **Einstellung hinzufügen**, um eine neue App-Einstellung zu erstellen. Verwenden Sie den Link **Wert aus lokaler Quelle einfügen**, um einen Einstellungswert in das Feld **Remote** zu kopieren. Ausstehende Änderungen werden in die Datei für lokale Einstellungen und die Funktions-App geschrieben, wenn Sie **OK** auswählen.
 
 > [!NOTE]
 > Standardmäßig wird die Datei „local.settings.json“ nicht in die Quellcodeverwaltung eingecheckt. Dies bedeutet, dass das Projekt beim Klonen eines lokalen Functions-Projekts aus der Quellcodeverwaltung keine Datei „local.settings.json“ enthält. In diesem Fall müssen Sie die Datei „local.settings.json“ manuell im Projektstamm erstellen, damit das Dialogfeld **Anwendungseinstellungen** erwartungsgemäß funktioniert. 

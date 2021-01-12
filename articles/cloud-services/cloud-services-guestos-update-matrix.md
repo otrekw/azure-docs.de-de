@@ -10,14 +10,14 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 11/17/2020
+ms.date: 12/21/2020
 ms.author: yohaddad
-ms.openlocfilehash: a5cc0fdf0473cb8ceafd164a34df6f0bd66dd6d3
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 5e61dcb5a329916ed2c95646282bbdccad3b5767
+ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96013699"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97708499"
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Azure-Gastbetriebssystemversionen und SDK-Kompatibilitätsmatrix
 Bietet Ihnen aktuelle Informationen zu den neuesten Azure-Gastbetriebssystemreleases für Cloud Services. Anhand dieser Informationen können Sie Ihren Upgradepfad planen, bevor ein Gastbetriebssystem abgekündigt wird. Wenn Sie die Rollen so konfigurieren, dass die *automatischen* Gast-BS-Updates, wie unter [Updateeinstellungen für Azure-Gast-BS][Azure Guest OS Update Settings]beschrieben, verwendet werden, müssen Sie diese Seite nicht unbedingt lesen.
@@ -41,6 +41,9 @@ Bietet Ihnen aktuelle Informationen zu den neuesten Azure-Gastbetriebssystemrele
 Sie wissen nicht genau, wie Sie Ihr Gastbetriebssystem aktualisieren sollen? Entsprechende Informationen finden Sie [hier][cloud updates].
 
 ## <a name="news-updates"></a>Neuigkeiten
+
+###### <a name="december-19-2020"></a>**19. December 2020**
+Das Gastbetriebssystem für November wurde veröffentlicht. 
 
 ###### <a name="november-17-2020"></a>**17. November 2020**
 Das Gastbetriebssystem für Oktober wurde veröffentlicht. 
@@ -146,8 +149,9 @@ Installierte .NET Framework-Versionen: 3.5, 4.7.2
 
 | Konfigurationszeichenfolge | Veröffentlichungsdatum | Deaktivierungsdatum |
 | --- | --- | --- |
+|  WA-GUEST-OS-6.25_202011-01 |  19. Dezember 2020  |  Nach 6.27  |  
 |  WA-GUEST-OS-6.24_202010-02 |  17. November 2020  |  Nach 6.26  |  
-|  WA-GUEST-OS-6.23_202009-01  |  10. Oktober 2020  |  Nach 6.25  |  
+|~~WA-GUEST-OS-6.23_202009-01~~|  10. Oktober 2020  |  19. Dezember 2020  |  
 |~~WA-GUEST-OS-6.22_202008-02~~|  5\. September 2020  |  17. November 2020  |  
 |~~WA-GUEST-OS-6.21_202007-01~~|  17. August 2020  |  10. Oktober 2020  |  
 |~~WA-GUEST-OS-6.20_202006-02~~|  10. August 2020  |  5\. September 2020  |  
@@ -183,8 +187,9 @@ Installierte .NET Framework-Versionen: 3.5, 4.6.2
 
 | Konfigurationszeichenfolge | Veröffentlichungsdatum | Deaktivierungsdatum |
 | --- | --- | --- |
+|  WA-GUEST-OS-5.49_202011-02  |  19. Dezember 2020  |  Nach 5.51  | 
 |  WA-GUEST-OS-5.48_202010-02  |  17. November 2020  |  Nach 5.50  | 
-|  WA-GUEST-OS-5.47_202009-01  |  10. Oktober 2020  |  Nach 5.49  | 
+|~~WA-GUEST-OS-5.47_202009-01~~|  10. Oktober 2020  |  19. Dezember 2020  | 
 |~~WA-GUEST-OS-5.46_202008-02~~|  5\. September 2020  |  17. November 2020  |  
 |~~WA-GUEST-OS-5.45_202007-01~~|  17. August 2020  |  10. Oktober 2020  |  
 |~~WA-GUEST-OS-5.44_202006-02~~|  10. August 2020  |  5\. September 2020  |  
@@ -217,8 +222,9 @@ Installierte .NET Framework-Versionen: 3.5, 4.5.1, 4.5.2
 
 | Konfigurationszeichenfolge | Veröffentlichungsdatum | Deaktivierungsdatum |
 | --- | --- | --- |
+|  WA-GUEST-OS-4.84_202011-01  |  19. Dezember 2020  |  Nach 4.86  | 
 |  WA-GUEST-OS-4.83_202010-02  |  17. November 2020  |  Nach 4.85  | 
-|  WA-GUEST-OS-4.82_202009-01  |  10. Oktober 2020  |  Nach 4.84  | 
+|~~WA-GUEST-OS-4.82_202009-01~~|  10. Oktober 2020  |  19. Dezember 2020  | 
 |~~WA-GUEST-OS-4.81_202008-02~~|  5\. September 2020  |  17. November 2020  | 
 |~~WA-GUEST-OS-4.80_202007-01~~|  17. August 2020  |  10. Oktober 2020  | 
 |~~WA-GUEST-OS-4.79_202006-02~~|  10. August 2020  |  5\. September 2020  | 
@@ -251,8 +257,9 @@ Installierte .NET Framework-Versionen: 3.5, 4.5
 
 | Konfigurationszeichenfolge | Veröffentlichungsdatum | Deaktivierungsdatum |
 | --- | --- | --- |
+|  WA-GUEST-OS-3.91_202011-01  |  19. Dezember 2020  |  Nach 3.93  |  
 |  WA-GUEST-OS-3.90_202010-02  |  17. November 2020  |  Nach 3.92  |  
-|  WA-GUEST-OS-3.89_202009-01  |  10. Oktober 2020  |  Nach 3.91  |  
+|~~WA-GUEST-OS-3.89_202009-01~~|  10. Oktober 2020  |  19. Dezember 2020  |  
 |~~WA-GUEST-OS-3.88_202008-02~~|  5\. September 2020  |  17. November 2020  |  
 |~~WA-GUEST-OS-3.87_202007-01~~|  17. August 2020  |  10. Oktober 2020  |  
 |~~WA-GUEST-OS-3.86_202006-02~~|  10. August 2020  |  5\. September 2020  |  
@@ -285,8 +292,9 @@ Installierte .NET Framework-Versionen: 3.5 (einschließlich 2.0 und 3.0), 4.5
 
 | Konfigurationszeichenfolge | Veröffentlichungsdatum | Deaktivierungsdatum |
 | --- | --- | --- |
+|  WA-GUEST-OS-2.104_202011-01  |  19. Dezember 2020  |  Nach 2.106  |  
 |  WA-GUEST-OS-2.103_202010-02  |  17. November 2020  |  Nach 2.105  |  
-|  WA-GUEST-OS-2.102_202009-01  |  10. Oktober 2020  |  Nach 2.104  |  
+|~~WA-GUEST-OS-2.102_202009-01~~|  10. Oktober 2020  |  19. Dezember 2020  |  
 |~~WA-GUEST-OS-2.101_202008-02~~|  5\. September 2020  |  17. November 2020 |    
 |~~WA-GUEST-OS-2.100_202007-01~~|  17. August 2020  |  10. Oktober 2020  |  
 |~~WA-GUEST-OS-2.99_202006-02~~|  10. August 2020  | 5\. September 2020  |  

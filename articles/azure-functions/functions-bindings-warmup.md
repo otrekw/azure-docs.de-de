@@ -10,16 +10,19 @@ ms.topic: reference
 ms.custom: devx-track-csharp
 ms.date: 11/08/2019
 ms.author: cshoe
-ms.openlocfilehash: 6a909b246e7cb3695533a75294c523d7c9aeaeda
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 7cefe75eefb746c150b051a7bd1f4513c103d205
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94832941"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97655857"
 ---
 # <a name="azure-functions-warm-up-trigger"></a>Azure Functions-Trigger für die Aufwärmphase
 
-Dieser Artikel erläutert das Arbeiten mit dem Trigger für die Aufwärmphase in Azure Functions. Der Trigger für die Aufwärmphase wird nur für Funktions-Apps unterstützt, die in einem [Premium-Plan](functions-premium-plan.md) ausgeführt werden. Wenn eine Instanz hinzugefügt wird, um eine Funktions-App zu skalieren, wird ein Trigger für die Aufwärmphase aufgerufen. Sie können einen Trigger für die Aufwärmphase verwenden, um während dem [vorab aufgewärmten Prozess](./functions-premium-plan.md#pre-warmed-instances) benutzerdefinierte Abhängigkeiten vorab zu laden, damit Ihre Funktionen sofort mit der Verarbeitung von Anforderungen beginnen können. 
+Dieser Artikel erläutert das Arbeiten mit dem Trigger für die Aufwärmphase in Azure Functions. Wenn eine Instanz hinzugefügt wird, um eine Funktions-App zu skalieren, wird ein Trigger für die Aufwärmphase aufgerufen. Sie können einen Trigger für die Aufwärmphase verwenden, um während dem [vorab aufgewärmten Prozess](./functions-premium-plan.md#pre-warmed-instances) benutzerdefinierte Abhängigkeiten vorab zu laden, damit Ihre Funktionen sofort mit der Verarbeitung von Anforderungen beginnen können. 
+
+> [!NOTE]
+> Der Trigger für die Aufwärmphase wird nur für Funktions-Apps unterstützt, die in einem Verbrauchsplan ausgeführt werden.
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 

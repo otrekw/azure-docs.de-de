@@ -10,14 +10,14 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 12/15/2020
+ms.date: 12/21/2020
 ms.author: yohaddad
-ms.openlocfilehash: adaea28d105b72152e1af28cc9d79da19c548c2c
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 7f683b5002fd31b599ae6fadeb82e5c6f5ce56a0
+ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97561408"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97708905"
 ---
 # <a name="azure-guest-os"></a>Azure-Gastbetriebssystem
 Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MSRC), die auf das Azure-Gastbetriebssystem angewendet wurden. Durchsuchen Sie diesen Artikel, um zu ermitteln, ob ein bestimmtes Update für das Gastbetriebssystem gilt, das Sie verwenden. Updates werden für die [Familie][family-explain], in der sie eingeführt wurden, immer in die jeweils neueste Version übertragen.
@@ -79,34 +79,31 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 
 
 ## <a name="november-2020-guest-os"></a>Gastbetriebssystem für November 2020
->[!NOTE] 
-
->Das Gastbetriebssystem für November wird derzeit auf Clouddienst-VMs eingeführt, die für automatische Updates konfiguriert sind. Wenn die Bereitstellung abgeschlossen ist, wird diese Version für manuelle Updates über das Azure-Portal und Konfigurationsdateien verfügbar gemacht. Die folgenden Patches sind im Gastbetriebssystem für November enthalten. Änderungen der Liste vorbehalten. 
 
 | Produktkategorie | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
 | --- | --- | --- | --- | --- |
-|  Rel 20-11 OOB |  [4594442]  |  Letztes kumulatives Update | 6.25 | 17. November 2020 |
-|  Rel 20-11 OOB |  [4594441]  |  Letztes kumulatives Update | 5,49 | 19. November 2020 |
-|  Rel 20-11 |  [4580325]  |  Flash-Update | 3.91, 4.84, 5.49, 6.25 | 13. Oktober 2020 |
-|  Rel 20-11 |  [4586768]  |  Kumulatives IE-Update | 2.104, 3.91, 4.84 | 10. November 2020 |
-|  Rel 20-11 |  [4578952]  |  .NET Framework 3.5: Sicherheits- und Qualitätsrollup | 2.104 | 10. November 2020 |
-|  Rel 20-11 |  [4578955]  |  .NET Framework 4.5.2: Sicherheits- und Qualitätsrollup | 2.104 | 10. November 2020 |
-|  Rel 20-11 |  [4578953]  |  .NET Framework 3.5: Sicherheits- und Qualitätsrollup | 4.84 | 10. November 2020 |
-|  Rel 20-11 |  [4578956]  |  .NET Framework 4.5.2: Sicherheits- und Qualitätsrollup | 4.84 | 10. November 2020 |
-|  Rel 20-11 |  [4578950]  |  .NET Framework 3.5: Sicherheits- und Qualitätsrollup | 3,91 | 10. November 2020 |
-|  Rel 20-11 |  [4578954]  |  .NET Framework 4.5.2: Sicherheits- und Qualitätsrollup | 3,91 | 10. November 2020 |
-|  Rel 20-11 |  [4578966]  |  Kumulatives Update für .NET Framework 3.5 und 4.7.2 | 6.25 | 13. Oktober 2020 |
-|  Rel 20-11 |  [4586827]  |  Monatlicher Rollup | 2.104 | 10. November 2020 |
-|  Rel 20-11 |  [4586834]  |  Monatlicher Rollup | 3,91 | 10. November 2020 |
-|  Rel 20-11 |  [4586845]  |  Monatlicher Rollup | 4.84 | 10. November 2020 |
-|  Rel 20-11 |  [4566426]  |  Wartungsstapelaktualisierung | 3,91 | 14. Jul 2020 |
-|  Rel 20-11 |  [4566425]  |  Wartungsstapelaktualisierung | 4.84 | 14. Jul 2020 |
-|  Rel 20-11 OOB |  [4578013]  |  Eigenständiges Sicherheitsupdate | 4.84 | 19. August 2020 |
-|  Rel 20-11 |  [4576750]  |  Wartungsstapelaktualisierung | 5,49 | 8\. September 2020 |
-|  Rel 20-11 |  [4580970]  |  Wartungsstapelaktualisierung | 2.104 | 13. Oktober 2020 |
-|  Rel 20-11 |  [4587735]  |  Wartungsstapelaktualisierung | 6.25 | 10. November 2020 |
-|  Rel 20-11 |  [4494175]  |  Microcode | 5,49 | 1\. September 2020 |
-|  Rel 20-11 |  [4494174]  |  Microcode | 6.25 | 3\. September 2020 |
+|  Rel 20-11 OOB |  [4594442]  |  Letztes kumulatives Update | [6.25] | 17. November 2020 |
+|  Rel 20-11 OOB |  [4594441]  |  Letztes kumulatives Update | [5,49] | 19. November 2020 |
+|  Rel 20-11 |  [4580325]  |  Flash-Update | [3.91], [4.84], [5.49], [6.25] | 13. Oktober 2020 |
+|  Rel 20-11 |  [4586768]  |  Kumulatives IE-Update | [2.104], [3.91], [4.84] | 10. November 2020 |
+|  Rel 20-11 |  [4578952]  |  .NET Framework 3.5: Sicherheits- und Qualitätsrollup | [2.104] | 10. November 2020 |
+|  Rel 20-11 |  [4578955]  |  .NET Framework 4.5.2: Sicherheits- und Qualitätsrollup | [2.104] | 10. November 2020 |
+|  Rel 20-11 |  [4578953]  |  .NET Framework 3.5: Sicherheits- und Qualitätsrollup | [4.84] | 10. November 2020 |
+|  Rel 20-11 |  [4578956]  |  .NET Framework 4.5.2: Sicherheits- und Qualitätsrollup | [4.84] | 10. November 2020 |
+|  Rel 20-11 |  [4578950]  |  .NET Framework 3.5: Sicherheits- und Qualitätsrollup | [3,91] | 10. November 2020 |
+|  Rel 20-11 |  [4578954]  |  .NET Framework 4.5.2: Sicherheits- und Qualitätsrollup | [3,91] | 10. November 2020 |
+|  Rel 20-11 |  [4578966]  |  Kumulatives Update für .NET Framework 3.5 und 4.7.2 | [6.25] | 13. Oktober 2020 |
+|  Rel 20-11 |  [4586827]  |  Monatlicher Rollup | [2.104] | 10. November 2020 |
+|  Rel 20-11 |  [4586834]  |  Monatlicher Rollup | [3,91] | 10. November 2020 |
+|  Rel 20-11 |  [4586845]  |  Monatlicher Rollup | [4.84] | 10. November 2020 |
+|  Rel 20-11 |  [4566426]  |  Wartungsstapelaktualisierung | [3,91] | 14. Jul 2020 |
+|  Rel 20-11 |  [4566425]  |  Wartungsstapelaktualisierung | [4.84] | 14. Jul 2020 |
+|  Rel 20-11 OOB |  [4578013]  |  Eigenständiges Sicherheitsupdate | [4.84] | 19. August 2020 |
+|  Rel 20-11 |  [4576750]  |  Wartungsstapelaktualisierung | [5,49] | 8\. September 2020 |
+|  Rel 20-11 |  [4580970]  |  Wartungsstapelaktualisierung | [2.104] | 13. Oktober 2020 |
+|  Rel 20-11 |  [4587735]  |  Wartungsstapelaktualisierung | [6.25] | 10. November 2020 |
+|  Rel 20-11 |  [4494175]  |  Microcode | [5,49] | 1\. September 2020 |
+|  Rel 20-11 |  [4494174]  |  Microcode | [6.25] | 3\. September 2020 |
 
 [4594442]: https://support.microsoft.com/kb/4594442
 [4594441]: https://support.microsoft.com/kb/4594441
@@ -130,6 +127,11 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 [4587735]: https://support.microsoft.com/kb/4587735
 [4494175]: https://support.microsoft.com/kb/4494175
 [4494174]: https://support.microsoft.com/kb/4494174
+[2.104]: ./cloud-services-guestos-update-matrix.md#family-2-releases
+[3,91]: ./cloud-services-guestos-update-matrix.md#family-3-releases
+[4.84]: ./cloud-services-guestos-update-matrix.md#family-4-releases
+[5,49]: ./cloud-services-guestos-update-matrix.md#family-5-releases
+[6.25]: ./cloud-services-guestos-update-matrix.md#family-6-releases
 
 
 
@@ -1171,8 +1173,8 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 | Rel 18-12 | [4470199] | Internet Explorer  | 2.81, 3.68, 4.61 | 11. Dezember 2018 |
 | – | [4468323] | Zeitzonenupdate    | 2.81, 3.68, 4.61 | 13. Dezember 2018 |
 | – | [4467107] | Nicht sicherheitsrelevanter Rollup für November   | 2.81 | 13. November 2018 |
-| – | [4467701] | Nicht sicherheitsrelevanter Rollup für November     | 3.68 | 13. November 2018 |
-| – | [4467697] | Nicht sicherheitsrelevanter Rollup für November     | 4.61 | 13. November 2018 |
+| – | [4467701] | Nicht sicherheitsrelevanter Rollup für November | 3.68 | 13. November 2018 |
+| – | [4467697] | Nicht sicherheitsrelevanter Rollup für November | 4.61 | 13. November 2018 |
 
 [4471321]: https://support.microsoft.com/kb/4471321
 [4471328]: https://support.microsoft.com/kb/4471328
