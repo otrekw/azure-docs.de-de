@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: troubleshooting
 ms.date: 10/16/2019
 ms.author: charwen
-ms.openlocfilehash: f3c142491363f30513877ae4368f291430aa3675
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d4f5d4b7fed8f14f048794616ee272342d1e8343
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85831929"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97915554"
 ---
 # <a name="troubleshoot-azure-bastion"></a>Problembehandlung für Azure Bastion
 
@@ -81,7 +81,7 @@ The key's randomart image is:
 
 ## <a name="black-screen-in-the-azure-portal"></a><a name="blackscreen"></a>Schwarzer Bildschirm im Azure-Portal
 
-**F:** Wenn ich versuche, eine Verbindung mithilfe von Azure Bastion herzustellen, erhalte ich einen schwarzen Bildschirm im Azure-Portal.
+**F:** Wenn ich versuche, eine Verbindung mithilfe von Azure Bastion herzustellen, wird keine Verbindung mit der Ziel-VM hergestellt, und ich erhalte einen schwarzen Bildschirm im Azure-Portal.
 
 **A:** Dies geschieht, wenn ein Problem mit der Netzwerkverbindung zwischen dem Webbrowser und Azure Bastion vorliegt (beispielsweise kann Ihre Client-Internetfirewall den WebSockets-Datenverkehr blockieren) oder zwischen Azure Bastion und der Ziel-VM. In den meisten Fälle wurde auch eine NSG entweder auf AzureBastionSubnet oder auf das Subnetz der Ziel-VM angewendet, die den RDP-/SSH-Datenverkehr in Ihrem virtuellen Netzwerk blockiert. Lassen Sie WebSockets-Datenverkehr über die Client-Internetfirewall zu, und überprüfen Sie die NSGs für das Subnetz Ihrer Ziel-VM.
 

@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 14a65b83195bff48934668ff029f925e13884bad
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 8789015c239aae58ec25f0f644d4c497da477c2b
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96743699"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881241"
 ---
 # <a name="optimize-reauthentication-prompts-and-understand-session-lifetime-for-azure-ad-multi-factor-authentication"></a>Optimieren von Aufforderungen zur erneuten Authentifizierung und Grundlegendes zur Sitzungslebensdauer für Azure AD Multi-Factor Authentication
 
@@ -108,7 +108,7 @@ Führen Sie die folgenden Schritte aus, um die Option *Remain signed-in* (Angeme
 1. Wählen Sie **Unternehmensbranding** aus, und wählen Sie anschließend für jedes Gebietsschema **Option „Angemeldet bleiben“ anzeigen** aus.
 1. Wählen Sie *Ja* und anschließend **Speichern** aus.
 
-Führen Sie die folgenden Schritte aus, um die Einstellungen für Multi-Factor Authentication zu speichern:
+Führen Sie die folgenden Schritte aus, um die Einstellungen für Multi-Factor Authentication für vertrauenswürdige Geräte zu speichern:
 
 1. Suchen Sie im Azure AD-Portal nach *Azure Active Directory*, und wählen Sie es aus.
 1. Wählen Sie **Sicherheit** und anschließend **MFA** aus.

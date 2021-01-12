@@ -2,14 +2,14 @@
 title: Markieren von Ressourcen, Ressourcengruppen und Abonnements für die logische Organisation
 description: Zeigt, wie Sie Tags zum Organisieren von Azure-Ressourcen für die Abrechnung und Verwaltung anwenden können.
 ms.topic: conceptual
-ms.date: 12/03/2020
+ms.date: 01/04/2021
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e47d3acf15ce5e4f5cb70444419b76beb21ae98b
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: 3d1161eb99e1145c7a003326310db1922ec3d55c
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96558146"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881747"
 ---
 # <a name="use-tags-to-organize-your-azure-resources-and-management-hierarchy"></a>Verwenden von Tags zum Organisieren von Azure-Ressourcen und Verwaltungshierarchie
 
@@ -438,9 +438,12 @@ Wenn die Tagnamen oder -werte Leerzeichen enthalten, umschließen Sie sie mit do
 az tag update --resource-id $group --operation Merge --tags "Cost Center"=Finance-1222 Location="West US"
 ```
 
-## <a name="templates"></a>Vorlagen
+## <a name="arm-templates"></a>ARM-Vorlagen
 
-Sie können Ressourcen, Ressourcengruppen und Abonnements während der Bereitstellung mit einer Resource Manager-Vorlage markieren.
+Sie können Ressourcen, Ressourcengruppen und Abonnements während der Bereitstellung mit einer Azure Resource Manager-Vorlage (ARM-Vorlage) markieren.
+
+> [!NOTE]
+> Die Tags, die Sie über die ARM-Vorlage anwenden, überschreiben alle vorhandenen Tags.
 
 ### <a name="apply-values"></a>Anwenden von Werten
 
@@ -448,7 +451,7 @@ Im folgenden Beispiel wird ein Speicherkonto mit drei Tags bereitgestellt. Zwei 
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "utcShort": {
@@ -487,7 +490,7 @@ Sie können einen Objektparameter definieren, der mehrere Tags speichert, und di
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "location": {
@@ -525,7 +528,7 @@ Wenn Sie mehrere Werte in einem einzelnen Tag speichern möchten, wenden Sie ein
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "location": {
@@ -558,7 +561,7 @@ Wenn Sie Tags aus einer Ressourcengruppe auf eine Ressource anwenden möchten, v
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "location": {

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/10/2020
-ms.openlocfilehash: cf64deb17bea508637debb5612231d355d523fbb
-ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
+ms.openlocfilehash: 57b350c7772d42e5dbd89c1d03c89f905a26398b
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95315582"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895528"
 ---
 # <a name="azure-monitor-agent-overview-preview"></a>Übersicht über den Azure Monitor-Agent (Vorschauversion)
 Der Azure Monitor-Agent (AMA) sammelt Überwachungsdaten aus dem Gastbetriebssystem virtueller Computer und übermittelt sie an Azure Monitor. Dieser Artikel enthält eine Übersicht über den Azure Monitor-Agent sowie Informationen zur Installation und zur Konfiguration der Datensammlung.
@@ -54,7 +54,7 @@ Während der Public Preview-Phase des Azure Monitor-Agents gelten folgende Ein
 
 - Der Azure Monitor-Agent unterstützt keine Lösungen und Erkenntnisse wie Azure Monitor für VMs und Azure Security Center. Das einzige derzeit unterstützte Szenario ist die Sammlung von Daten unter Verwendung der von Ihnen konfigurierten Datensammlungsregeln. 
 - Datensammlungsregeln müssen in der gleichen Region erstellt werden, in der sich auch die als Ziel verwendeten Log Analytics-Arbeitsbereiche befinden.
-- Azure-VMs und Server mit Azure Arc-Unterstützung werden aktuell unterstützt. VM-Skalierungsgruppen, Azure Kubernetes Service und andere Computeressourcentypen werden derzeit nicht unterstützt.
+- Derzeit werden virtuelle Azure-Computer, VM-Skalierungsgruppen und Server mit Azure Arc-Unterstützung unterstützt. Azure Kubernetes Service und andere Compute-Ressourcentypen werden zurzeit nicht unterstützt.
 - Der virtuelle Computer benötigt Zugriff auf die folgenden HTTPS-Endpunkte:
   - *.ods.opinsights.azure.com
   - *.ingest.monitor.azure.com

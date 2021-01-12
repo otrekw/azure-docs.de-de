@@ -8,16 +8,32 @@ ms.date: 09/15/2020
 ms.author: jeffpatt
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 661cfd5bb410a714bc42e0cd9676ac2ec08f8a45
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2a37c86268d2424971058021044c60185a25348f
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90708410"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97916455"
 ---
 # <a name="troubleshoot-azure-nfs-file-shares"></a>Behandeln von Problemen mit Azure NFS-Dateifreigaben
 
 In diesem Artikel sind einige allgemeine Probleme aufgeführt, die im Zusammenhang mit Azure NFS-Dateifreigaben auftreten können. Er enthält mögliche Ursachen und Problemumgehungen, wenn diese Probleme auftreten.
+
+## <a name="chgrp-filename-failed-invalid-argument-22"></a>Fehler bei chgrp "Dateiname": Ungültiges Argument (22)
+
+### <a name="cause-1-idmapping-is-not-disabled"></a>Ursache 1: idmapping ist nicht deaktiviert.
+Azure Files lässt keine alphanumerische UID/GID zu. Daher muss idmapping deaktiviert sein. 
+
+### <a name="cause-2-idmapping-was-disabled-but-got-re-enabled-after-encountering-bad-filedir-name"></a>Ursache 2: idmapping wurde deaktiviert, wurde jedoch wieder aktiviert, nachdem ein ungültiger Datei-/Verzeichnisname gefunden wurde.
+Auch wenn idmapping ordnungsgemäß deaktiviert wurde, werden die Einstellungen zum Deaktivieren von idmapping in einigen Fällen überschrieben. Wenn Azure Files beispielsweise auf einen ungültigen Dateinamen stößt, wird ein Fehler zurückgegeben. Wenn dieser bestimmte Fehlercode erkannt wird, wird idmapping erneut durch den NFS v4.1-Linux-Client aktiviert, und die zukünftigen Anforderungen werden wieder mit alphanumerischer UID/GID gesendet. Eine Liste der bei Azure Files nicht unterstützten Zeichen finden Sie in diesem [Artikel](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#:~:text=The%20Azure%20File%20service%20naming%20rules%20for%20directory,be%20no%20more%20than%20255%20characters%20in%20length). Der Doppelpunkt ist eines der nicht unterstützten Zeichen. 
+
+### <a name="workaround"></a>Problemumgehung
+Überprüfen Sie, ob idmapping deaktiviert ist und nicht erneut aktiviert wird. Führen Sie dann Folgendes aus:
+
+- Heben Sie die Einbindung der Freigabe auf.
+- Deaktivieren Sie id-mapping mit # echo Y > /sys/module/nfs/parameters/nfs4_disable_idmapping
+- Binden Sie die Freigabe wieder ein
+- Wenn rsync ausgeführt wird, führen Sie rsync mit dem Argument „–numeric-ids“ in einem Verzeichnis aus, das keine ungültigen Datei-/Verzeichnisnamen aufweist.
 
 ## <a name="unable-to-create-an-nfs-share"></a>Es kann keine NFS-Freigabe erstellt werden.
 
@@ -52,7 +68,7 @@ NFS ist nur für Speicherkonten mit der folgenden Konfiguration verfügbar:
 - Ebene – Premium
 - Kontoart – FileStorage
 - Redundanz – LRS
-- Regionen – USA, Osten; USA, Osten 2; Vereinigtes Königreich, Süden; Asien, Südosten
+- Regionen – [Liste der unterstützten Regionen](https://docs.microsoft.com/azure/storage/files/storage-files-how-to-create-nfs-shares?tabs=azure-portal#regional-availability)
 
 #### <a name="solution"></a>Lösung
 
@@ -90,7 +106,7 @@ Im folgenden Diagramm wird die Konnektivität bei Verwendung öffentlicher Endpu
     - Das Peering virtueller Netzwerke mit virtuellen Netzwerken, die im privaten Endpunkt gehostet werden, gewährt den Clients in virtuellen Netzwerken mit Peering Zugriff auf NFS-Freigaben.
     - Private Endpunkte können mit ExpressRoute, Point-to-Site- und Site-to-Site-VPNs verwendet werden.
 
-:::image type="content" source="media/storage-troubleshooting-files-nfs/connectivity-using-private-endpoints.jpg" alt-text="Diagramm der Verbindungen über öffentliche Endpunkte" lightbox="media/storage-troubleshooting-files-nfs/connectivity-using-private-endpoints.jpg":::
+:::image type="content" source="media/storage-troubleshooting-files-nfs/connectivity-using-private-endpoints.jpg" alt-text="Diagramm der Verbindungen über private Endpunkte" lightbox="media/storage-troubleshooting-files-nfs/connectivity-using-private-endpoints.jpg":::
 
 ### <a name="cause-2-secure-transfer-required-is-enabled"></a>Ursache 2: „Sichere Übertragung erforderlich“ ist aktiviert.
 
@@ -100,7 +116,7 @@ Die doppelte Verschlüsselung wird für NFS-Freigaben noch nicht unterstützt. A
 
 Deaktivieren Sie auf dem Blatt „Konfiguration“ des Speicherkontos die Option „Sichere Übertragung erforderlich“.
 
-:::image type="content" source="media/storage-files-how-to-mount-nfs-shares/storage-account-disable-secure-transfer.png" alt-text="Diagramm der Verbindungen über öffentliche Endpunkte":::
+:::image type="content" source="media/storage-files-how-to-mount-nfs-shares/storage-account-disable-secure-transfer.png" alt-text="Screenshot mit dem Blatt „Konfiguration“ des Speicherkontos und der deaktivierten Option „Sichere Übertragung erforderlich“":::
 
 ### <a name="cause-3-nfs-common-package-is-not-installed"></a>Ursache 3: Das Paket „nfs-common“ ist nicht installiert.
 Installieren Sie das Paket, bevor Sie den mount-Befehl ausführen, indem Sie den unten angegebenen distributionsspezifischen Befehl ausführen.

@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 11/30/2020
+ms.date: 1/04/2021
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: e0185cc8786dc101375262ddfd187c5d8e7e054f
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 6f95b4eca8dbaf6cfaa7546fddada7577a1541b3
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97509562"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97916251"
 ---
 # <a name="how-to-provide-optional-claims-to-your-app"></a>Gewusst wie: Bereitstellen optionaler Ansprüche für Ihre App
 
@@ -66,7 +66,7 @@ Die Gruppe optionaler Ansprüche, die standardmäßig zur Verwendung in Anwendun
 | `ztdid`                    | ID der Bereitstellung ohne manuelles Eingreifen | JWT | | Die für [Windows Autopilot](/windows/deployment/windows-autopilot/windows-10-autopilot) verwendete Geräteidentität |
 | `email`                    | Die adressierbaren E-Mail-Adresse dieses Benutzers, wenn der Benutzer über eine verfügt.  | JWT, SAML | MSA, Azure AD | Dieser Wert ist standardmäßig enthalten, wenn der Benutzer ein Gast im Mandanten ist.  Für verwaltete Benutzer (Benutzer innerhalb des Mandanten) muss er über diese optionale Anforderung oder – nur in v2.0 – mit dem OpenID-Bereich angefordert werden.  Für verwaltete Benutzer muss die E-Mail-Adresse im [Office-Verwaltungsportal](https://portal.office.com/adminportal/home#/users) festgelegt sein.|
 | `acct`                | Benutzerkontostatus im Mandanten. | JWT, SAML | | Wenn der Benutzer dem Mandanten angehört, lautet der Wert `0`. Bei einem Gastbenutzer lautet der Wert `1`. |
-| `groups`| Optionale Formatierung für Gruppenansprüche |JWT, SAML| |Wird in Verbindung mit der Einstellung „GroupMembershipClaims“ im [Anwendungsmanifest](reference-app-manifest.md) verwendet, das ebenfalls festgelegt sein muss. Weitere Informationen finden Sie weiter unten unter [Gruppenansprüche](#configuring-groups-optional-claims). Weitere Informationen zu Gruppenansprüchen finden Sie unter [Konfigurieren von Gruppenansprüchen](../hybrid/how-to-connect-fed-group-claims.md).
+| `groups`| Optionale Formatierung für Gruppenansprüche |JWT, SAML| |Wird mit der Einstellung „GroupMembershipClaims“ im [Anwendungsmanifest](reference-app-manifest.md) verwendet, das ebenfalls festgelegt sein muss. Weitere Informationen finden Sie weiter unten unter [Gruppenansprüche](#configuring-groups-optional-claims). Weitere Informationen zu Gruppenansprüchen finden Sie unter [Konfigurieren von Gruppenansprüchen](../hybrid/how-to-connect-fed-group-claims.md).
 | `upn`                      | UserPrincipalName | JWT, SAML  |           | Ein Bezeichner für den Benutzer, der mit dem Parameter „username_hint“ verwendet werden kann.  Kein dauerhafter Bezeichner für den Benutzer, sollte nicht zur eindeutigen Identifizierung von Benutzerinformationen verwendet werden (beispielsweise als Datenbankschlüssel). Verwenden Sie stattdessen die Benutzerobjekt-ID (`oid`) als Datenbankschlüssel. Benutzern, die sich mit einer [alternativen Anmelde-ID](../authentication/howto-authentication-use-email-signin.md) anmelden, sollte ihr Benutzerprinzipalname (User Principal Name, UPN) nicht angezeigt werden. Verwenden Sie stattdessen die folgenden ID-Tokenansprüche, um den Anmeldezustand für Benutzer anzuzeigen: `preferred_username` oder `unique_name` für v1-Token, `preferred_username` für v2-Token. Obwohl dieser Anspruch automatisch hinzugefügt wird, können Sie ihn als einen optionalen Anspruch angeben, um zusätzliche Eigenschaften zum Ändern des Verhaltens im Fall eines Gastbenutzer anzufügen.  |
 | `idtyp`                    | Tokentyp   | JWT-Zugriffstoken | Besonderheit: Nur in Nur-App-Zugriffstoken |  Der Wert lautet `app`, wenn es sich beim Token um ein Nur-App-Token handelt. Dies ist der genaueste Weg für eine API, zu bestimmen, ob ein Token ein App-Token oder ein App- und Benutzertoken ist.|
 
@@ -85,7 +85,17 @@ Diese Ansprüche sind in Azure AD v1.0-Token immer enthalten, jedoch nie in v2.0
 | `in_corp`     | Innerhalb des Unternehmensnetzwerks        | Signalisiert, ob sich der Client aus dem Unternehmensnetzwerk anmeldet. Andernfalls ist der Anspruch nicht enthalten.   |  Basierend auf den Einstellungen für [vertrauenswürdige IP-Adressen](../authentication/howto-mfa-mfasettings.md#trusted-ips) in der MFA.    |
 | `family_name` | Last Name (Nachname)                       | Gibt den Nachnamen des Benutzers entsprechend der Definition im Benutzerobjekt an. <br>„family_name“: „Miller“ | Wird in MSA und Azure AD unterstützt. Erfordert den Bereich `profile`.   |
 | `given_name`  | Vorname                      | Gibt den Vornamen des Benutzers entsprechend der Definition im Benutzerobjekt an.<br>"given_name": "Frank"                   | Wird in MSA und Azure AD unterstützt.  Erfordert den Bereich `profile`. |
-| `upn`         | Benutzerprinzipalname | Ein Bezeichner für den Benutzer, der mit dem Parameter „username_hint“ verwendet werden kann.  Kein dauerhafter Bezeichner für den Benutzer, sollte nicht zur eindeutigen Identifizierung von Benutzerinformationen verwendet werden (beispielsweise als Datenbankschlüssel). Verwenden Sie stattdessen die Benutzerobjekt-ID (`oid`) als Datenbankschlüssel. Benutzern, die sich mit einer [alternativen Anmelde-ID](../authentication/howto-authentication-use-email-signin.md) anmelden, sollte ihr Benutzerprinzipalname (User Principal Name, UPN) nicht angezeigt werden. Verwenden Sie stattdessen die folgenden ID-Tokenansprüche, um den Anmeldezustand für Benutzer anzuzeigen: `preferred_username` oder `unique_name` für v1-Token, `preferred_username` für v2-Token. | Informationen zur Konfiguration des Anspruchs finden Sie weiter unten unter [Zusätzliche Eigenschaften](#additional-properties-of-optional-claims). Erfordert den Bereich `profile`.|
+| `upn`         | Benutzerprinzipalname | Ein Bezeichner für den Benutzer, der mit dem Parameter „username_hint“ verwendet werden kann.  Kein dauerhafter Bezeichner für den Benutzer, sollte nicht zur eindeutigen Identifizierung von Benutzerinformationen verwendet werden (beispielsweise als Datenbankschlüssel). Verwenden Sie stattdessen die Benutzerobjekt-ID (`oid`) als Datenbankschlüssel. Benutzern, die sich mit einer [alternativen Anmelde-ID](../authentication/howto-authentication-use-email-signin.md) anmelden, sollte ihr Benutzerprinzipalname (User Principal Name, UPN) nicht angezeigt werden. Verwenden Sie stattdessen den folgenden `preferred_username`-Anspruch, um den Anmeldezustand dem Benutzer anzuzeigen. | Informationen zur Konfiguration des Anspruchs finden Sie weiter unten unter [Zusätzliche Eigenschaften](#additional-properties-of-optional-claims). Erfordert den Bereich `profile`.|
+
+
+**Tabelle 4: nur in v1.0 enthaltene optionale Ansprüche**
+
+Einige der Verbesserungen des v2-Tokenformats sind für Apps verfügbar, die das v1-Tokenformat verwenden, da sie eine Optimierung der Sicherheit und Zuverlässigkeit ermöglichen. Diese werden für die vom v2-Endpunkt angeforderten ID-Token oder Zugriffstoken für APIs, die das v2-Tokenformat verwenden, nicht wirksam. 
+
+| JWT-Anspruch     | Name                            | Beschreibung | Notizen |
+|---------------|---------------------------------|-------------|-------|
+|`aud`          | Zielgruppe | In JWTs immer vorhanden, in v1-Zugriffstoken kann sie jedoch auf unterschiedlichste Weise ausgegeben werden, was die Programmierung bei Durchführung der Tokenüberprüfung erschwert.  Verwenden Sie die [zusätzlichen Eigenschaften für diesen Anspruch](#additional-properties-of-optional-claims), um sicherzustellen, dass er immer auf eine GUID in v1-Zugriffstoken festgelegt ist. | Nur v1-JWT-Zugriffstoken|
+|`preferred_username` | Bevorzugter Benutzername        | Stellt den bevorzugten Benutzernamensanspruch innerhalb von v1-Token bereit. Dies erleichtert es Apps, Hinweise zu Benutzernamen bereitzustellen und lesbare Anzeigenamen unabhängig von Ihrem Tokentyp anzuzeigen.  Es wird empfohlen, diesen optionalen Anspruch anstelle etwa von `upn` oder `unique_name` zu verwenden. | v1-ID-Token und Zugriffstoken |
 
 ### <a name="additional-properties-of-optional-claims"></a>Zusätzliche Eigenschaften optionaler Ansprüche
 
@@ -97,7 +107,9 @@ Einige optionale Ansprüche können so konfiguriert werden, dass sie auf andere 
 |----------------|--------------------------|-------------|
 | `upn`          |                          | Kann für SAML- und JWT-Antworten und für v1.0- und v2.0-Token verwendet werden. |
 |                | `include_externally_authenticated_upn`  | Bezieht den Gast-UPN ein, wie er im Ressourcenmandanten gespeichert ist. Zum Beispiel, `foo_hometenant.com#EXT#@resourcetenant.com` |
-|                | `include_externally_authenticated_upn_without_hash` | Wie oben, außer dass die Hashzeichen (`#`) durch Unterstriche (`_`) ersetzt werden, z. B. `foo_hometenant.com_EXT_@resourcetenant.com` |
+|                | `include_externally_authenticated_upn_without_hash` | Wie oben, außer dass die Hashzeichen (`#`) durch Unterstriche (`_`) ersetzt werden, z. B. `foo_hometenant.com_EXT_@resourcetenant.com`|
+| `aud`          |                          | In v1-Zugriffstoken wird dies verwendet, um das Format des `aud`-Anspruchs zu ändern.  Dies hat keine Auswirkungen auf v2-Token oder ID-Token, bei denen der `aud`-Anspruch immer die Client-ID ist. Verwenden Sie diese Informationen, um sicherzustellen, dass Ihre API die Zielgruppenüberprüfung leichter durchführen kann Wie alle optionalen Ansprüche, die sich auf das Zugriffstoken auswirken, muss die Ressource in der Anforderung diesen optionalen Anspruch festlegen, da Ressourcen Besitzer des Zugriffstokens sind.|
+|                | `use_guid`               | Gibt die Client-ID der Ressource (API) im GUID-Format als `aud`-Anspruch anstelle eines AppID-URI oder einer GUID aus. Wenn also die Client-ID einer Ressource `bb0a297b-6a42-4a55-ac40-09a501456577` ist, erhält jede App, die ein Zugriffstoken für diese Ressource anfordert, ein Zugriffstoken mit `aud` : `bb0a297b-6a42-4a55-ac40-09a501456577`.|
 
 #### <a name="additional-properties-example"></a>Beispiel für zusätzliche Eigenschaften
 

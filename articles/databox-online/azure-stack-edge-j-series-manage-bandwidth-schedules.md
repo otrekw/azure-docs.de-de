@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/28/2020
+ms.date: 01/05/2021
 ms.author: alkohli
-ms.openlocfilehash: a0d596c7c1046ea26ac389a48c17fa5abccbfd12
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 3182258245701903e7b3d6d6163cf3e2bd55c1fc
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951603"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97915460"
 ---
 # <a name="use-the-azure-portal-to-manage-bandwidth-schedules-on-your-azure-stack-edge-pro-gpu"></a>Verwalten von Bandbreitenzeitplänen für Ihr Azure Stack Edge Pro-GPU-Gerät über das Azure-Portal 
 
@@ -40,7 +40,7 @@ Gehen Sie im Azure-Portal wie folgt vor, um einen Zeitplan hinzuzufügen:
 
     ![Auswählen der Bandbreite](media/azure-stack-edge-j-series-manage-bandwidth-schedules/add-schedule-1.png)
 
-3. Gehen Sie unter **Zeitplan hinzufügen** wie folgt vor: 
+3. Gehen Sie unter **Zeitplan hinzufügen** wie folgt vor:
 
    1. Geben Sie den **Starttag**, den **Endtag**, die **Startzeit** und die **Endzeit** des Zeitplans an.
    2. Aktivieren Sie die Option **Ganztägig**, wenn dieser Zeitplan den ganzen Tag lang ausgeführt werden soll.
@@ -58,9 +58,10 @@ Gehen Sie im Azure-Portal wie folgt vor, um einen Zeitplan hinzuzufügen:
 
 Führen Sie die folgenden Schritte aus, um einen Bandbreitenzeitplan zu bearbeiten:
 
-1. Wechseln Sie im Azure-Portal zu Ihrer Azure Stack Edge-Ressource und dann zu **Bandbreite**. 
+1. Wechseln Sie im Azure-Portal zu Ihrer Azure Stack Edge-Ressource und dann zu **Bandbreite**.
 2. Wählen Sie in der Liste mit den Bandbreitenzeitplänen einen Zeitplan aus, den Sie ändern möchten.
-    ![Auswählen eines Bandbreitenzeitplans](media/azure-stack-edge-j-series-manage-bandwidth-schedules/modify-schedule-1.png)
+
+   ![Auswählen eines Bandbreitenzeitplans](media/azure-stack-edge-j-series-manage-bandwidth-schedules/modify-schedule-1.png)
 
 3. Nehmen Sie die gewünschten Änderungen vor, und speichern Sie sie.
 
