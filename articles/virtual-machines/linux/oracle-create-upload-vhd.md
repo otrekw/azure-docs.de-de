@@ -1,18 +1,18 @@
 ---
 title: Erstellen und Hochladen einer Oracle Linux-VHD
 description: Erfahren Sie, wie Sie eine virtuelle Azure-Festplatte (Virtual Hard Disk, VHD) erstellen und hochladen, die ein Oracle Linux-Betriebssystem enthält.
-author: gbowerman
+author: danielsollondon
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.topic: how-to
-ms.date: 12/10/2019
-ms.author: guybo
-ms.openlocfilehash: 4e9f87ec4a0df28b14bca8f5a44dfe9388e8ff03
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.date: 12/01/2020
+ms.author: danis
+ms.openlocfilehash: b63591db7f72e655839ee6f575e49bbf873abc5b
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500528"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895460"
 ---
 # <a name="prepare-an-oracle-linux-virtual-machine-for-azure"></a>Vorbereiten eines virtuellen Oracle Linux-Computers für Azure
 
@@ -23,9 +23,10 @@ In diesem Artikel wird davon ausgegangen, dass Sie bereits ein Oracle Linux-Betr
 * Hyper-V und Azure unterstützen Oracle Linux entweder mit dem Unbreakable Enterprise Kernel (UEK) oder dem Red Hat Compatible Kernel.
 * Der UEK2 von Oracle wird auf Hyper-V und Azure nicht unterstützt, da er nicht die erforderlichen Treiber enthält.
 * Das VHDX-Format wird in Azure noch nicht unterstützt, dafür jedoch **virtuelle Festplatten mit fester Größe**.  Sie können den Datenträger mit dem Hyper-V-Manager oder dem convert-vhd-Cmdlet in das VHD-Format konvertieren.
-* Beim Installieren des Linux-Systems wird empfohlen, anstelle von LVM (bei vielen Installationen oftmals voreingestellt) die Standardpartitionen zu verwenden. Dadurch lässt sich vermeiden, dass ein LVM-Namenskonflikt mit geklonten virtuellen Computern auftritt, besonders dann, wenn ein BS-Datenträger zu Fehlerbehebungszwecken mit einem anderen virtuellen Computer verbunden wird. [LVM](/previous-versions/azure/virtual-machines/linux/configure-lvm?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) oder [RAID](/previous-versions/azure/virtual-machines/linux/configure-raid?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) können wahlweise auf Datenträgern verwendet werden.
+* **Kernel-Unterstützung für bereitgestellte UDF-Dateisysteme ist erforderlich.** Beim ersten Start in Azure wird die Bereitstellungskonfiguration über UDF-formatierte Medien, die an den Gast angefügt sind, an den virtuellen Linux-Computer übergeben. Der Azure-Linux-Agent muss das UDF-Dateisystem bereitstellen können, um dessen Konfiguration zu lesen und die VM bereitzustellen.
+* Beim Installieren des Linux-Systems wird empfohlen, anstelle von LVM (bei vielen Installationen oftmals voreingestellt) die Standardpartitionen zu verwenden. Dadurch lässt sich vermeiden, dass ein LVM-Namenskonflikt mit geklonten virtuellen Computern auftritt, besonders dann, wenn ein BS-Datenträger zu Fehlerbehebungszwecken mit einem anderen virtuellen Computer verbunden wird. [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) oder [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) können wahlweise auf Datenträgern verwendet werden.
 * Linux-Kernelversionen vor Version 2.6.37 unterstützen keinen NUMA (Non-Uniform Memory Access, nicht einheitlicher Speicherzugriff) auf Hyper-V mit größeren VM-Größen. Dieses Problem betrifft in erster Linie ältere Verteilungen, die den vorgeschalteten Red Hat 2.6.32 Kernel verwenden, und wurde in Oracle Linux 6.6 und höher behoben.
-* Konfigurieren Sie keine SWAP-Partition auf einem Betriebssystemdatenträger. Der Linux-Agent kann konfiguriert werden, eine Auslagerungsdatei auf dem temporären Ressourcendatenträger zu erstellen.  Weitere Informationen dazu finden Sie in den folgenden Schritten.
+* Konfigurieren Sie keine SWAP-Partition auf einem Betriebssystemdatenträger. Weitere Informationen dazu finden Sie in den folgenden Schritten.
 * Alle VHDs in Azure benötigen eine virtuelle Größe, die auf 1 MB ausgerichtet ist. Beim Konvertieren von einem unformatierten Datenträger in VHD müssen Sie sicherstellen, dass die Größe des unformatierten Datenträgers ein Vielfaches von 1 MB vor der Konvertierung beträgt. Weitere Informationen finden Sie in den [Linux-Installationshinweisen](create-upload-generic.md#general-linux-installation-notes).
 * Stellen Sie sicher, dass das `Addons` -Repository aktiviert ist. Bearbeiten Sie die Datei `/etc/yum.repos.d/public-yum-ol6.repo` (Oracle Linux 6) oder `/etc/yum.repos.d/public-yum-ol7.repo` (Oracle Linux 7), und ändern Sie in dieser Datei unter **[ol6_addons]** oder **[ol7_addons]** die Zeile `enabled=0` in `enabled=1`.
 
@@ -207,34 +208,106 @@ Die Vorbereitung eines virtuellen Oracle Linux 7-Computers für Azure entspricht
     ```
 
 11. Stellen Sie sicher, dass der SSH-Server installiert und konfiguriert ist, damit er beim Booten hochfährt.  Dies ist für gewöhnlich die Standardeinstellung.
-12. Installieren Sie den Azure Linux-Agent, indem Sie den folgenden Befehl ausführen:
+12. Installieren Sie den Azure Linux-Agent und die Abhängigkeiten:
 
-    ```console
-    # sudo yum install WALinuxAgent
-    # sudo systemctl enable waagent
+    ```bash
+    sudo yum install WALinuxAgent
+    sudo systemctl enable waagent
     ```
 
-13. Richten Sie keinen SWAP-Raum auf dem BS-Datenträger ein.
-    
-    Der Azure Linux Agent kann SWAP-Raum automatisch mit dem lokalen Ressourcendatenträger konfigurieren, der nach der Bereitstellung in Azure mit dem virtuellen Computer verknüpft ist. Beachten Sie, dass der lokale Ressourcendatenträger ein *temporärer* Datenträger ist und geleert werden kann, wenn die Bereitstellung des virtuellen Computers aufgehoben wird. Modifizieren Sie nach dem Installieren des Azure Linux-Agents (siehe vorheriger Schritt) die folgenden Parameter in „/etc/waagent.conf“ entsprechend:
+13. Installieren von cloud-init zum Behandeln der Bereitstellung
 
-    ```config-conf
-    ResourceDisk.Format=y
-    ResourceDisk.Filesystem=ext4
-    ResourceDisk.MountPoint=/mnt/resource
-    ResourceDisk.EnableSwap=y
-    ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
+    ```console
+    yum install -y cloud-init cloud-utils-growpart gdisk hyperv-daemons
+
+    # Configure waagent for cloud-init
+    sed -i 's/Provisioning.UseCloudInit=n/Provisioning.UseCloudInit=y/g' /etc/waagent.conf
+    sed -i 's/Provisioning.Enabled=y/Provisioning.Enabled=n/g' /etc/waagent.conf
+
+
+    echo "Adding mounts and disk_setup to init stage"
+    sed -i '/ - mounts/d' /etc/cloud/cloud.cfg
+    sed -i '/ - disk_setup/d' /etc/cloud/cloud.cfg
+    sed -i '/cloud_init_modules/a\\ - mounts' /etc/cloud/cloud.cfg
+    sed -i '/cloud_init_modules/a\\ - disk_setup' /etc/cloud/cloud.cfg
+
+    echo "Allow only Azure datasource, disable fetching network setting via IMDS"
+    cat > /etc/cloud/cloud.cfg.d/91-azure_datasource.cfg <<EOF
+    datasource_list: [ Azure ]
+    datasource:
+    Azure:
+        apply_network_config: False
+    EOF
+
+    if [[ -f /mnt/resource/swapfile ]]; then
+    echo Removing swapfile - RHEL uses a swapfile by default
+    swapoff /mnt/resource/swapfile
+    rm /mnt/resource/swapfile -f
+    fi
+
+    echo "Add console log file"
+    cat >> /etc/cloud/cloud.cfg.d/05_logging.cfg <<EOF
+
+    # This tells cloud-init to redirect its stdout and stderr to
+    # 'tee -a /var/log/cloud-init-output.log' so the user can see output
+    # there without needing to look on the console.
+    output: {all: '| tee -a /var/log/cloud-init-output.log'}
+    EOF
+
     ```
 
-14. Führen Sie die folgenden Befehle aus, um den virtuellen Computer zurückzusetzen und ihn für die Bereitstellung in Azure vorzubereiten:
-    
+14. Auslagerungskonfiguration Erstellen Sie auf dem Betriebssystem-Datenträger keinen Auslagerungsbereich.
+
+    Früher wurde der Azure Linux-Agent zum automatischen Konfigurieren des Auslagerungsbereichs mit dem lokalen Ressourcendatenträger verwendet, der nach der Bereitstellung der VM in Azure mit der VM verknüpft ist. Dies wird jetzt von cloud-init behandelt. Sie dürfen **nicht** den Linux-Agent zum Erstellen des Ressourcendatenträgers verwenden. Erstellen Sie die Auslagerungsdatei, und ändern Sie die folgenden Parameter in `/etc/waagent.conf` entsprechend:
+
     ```console
-    # sudo waagent -force -deprovision
+    sed -i 's/ResourceDisk.Format=y/ResourceDisk.Format=n/g' /etc/waagent.conf
+    sed -i 's/ResourceDisk.EnableSwap=y/ResourceDisk.EnableSwap=n/g' /etc/waagent.conf
+    ```
+
+    Beim Einbinden, Formatieren und Erstellen einer Auslagerung können Sie eine der folgenden Aktionen ausführen:
+    * Übergeben Sie dies bei jedem Erstellen einer VM als cloud-init-Konfiguration.
+    * Verwenden Sie eine im Image integrierte cloud-init-Anweisung, die dies bei jeder Erstellung der VM durchführt:
+
+        ```console
+        cat > /etc/cloud/cloud.cfg.d/00-azure-swap.cfg << EOF
+        #cloud-config
+        # Generated by Azure cloud image build
+        disk_setup:
+          ephemeral0:
+            table_type: mbr
+            layout: [66, [33, 82]]
+            overwrite: True
+        fs_setup:
+          - device: ephemeral0.1
+            filesystem: ext4
+          - device: ephemeral0.2
+            filesystem: swap
+        mounts:
+          - ["ephemeral0.1", "/mnt"]
+          - ["ephemeral0.2", "none", "swap", "sw", "0", "0"]
+        EOF
+        ```
+
+
+15. Führen Sie die folgenden Befehle aus, um den virtuellen Computer zurückzusetzen und ihn für die Bereitstellung in Azure vorzubereiten:
+
+    ```console
+    # Note: if you are migrating a specific virtual machine and do not wish to create a generalized image,
+    # skip the deprovision step
+    # sudo rm -rf /var/lib/waagent/
+    # sudo rm -f /var/log/waagent.log
+
+    # waagent -force -deprovision+user
+    # rm -f ~/.bash_history
+    
+
     # export HISTSIZE=0
+
     # logout
     ```
 
-15. Klicken Sie im Hyper-V-Manager auf **Aktion > Herunterfahren**. Ihre Linux-VHD kann nun in Azure hochgeladen werden.
+16. Klicken Sie im Hyper-V-Manager auf **Aktion > Herunterfahren**. Ihre Linux-VHD kann nun in Azure hochgeladen werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Nun können Sie mit Ihrer Oracle Linux-VHD-Datei neue virtuelle Computer in Azure erstellen. Wenn Sie zum ersten Mal die VHD-Datei in Azure hochladen, lesen Sie den Artikel [Erstellen eines virtuellen Linux-Computers aus einem benutzerdefinierten Datenträger mithilfe der Azure CLI 2.0](upload-vhd.md#option-1-upload-a-vhd).

@@ -3,12 +3,12 @@ title: Verteilte gemeinsame Entwicklung von Azure DevTest Labs-Ressourcen
 description: Bietet bewährte Methoden zum Einrichten einer verteilten und gemeinsamen Entwicklungsumgebung für die Entwicklung von DevTest Labs-Ressourcen.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: c18bbbfd3ad727811cc28c424381e5caf32b1cfc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1ef6d7aa7d3cfd4fcc64eaa45259684dfcb9ccee
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85483804"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97592363"
 ---
 # <a name="best-practices-for-distributed-and-collaborative-development-of-azure-devtest-labs-resources"></a>Bewährte Methoden für die verteilte und gemeinsame Entwicklung von Azure DevTest Labs-Ressourcen
 Mithilfe der verteilten gemeinsamen Entwicklung können unterschiedliche Teams oder Personen eine Codebasis entwickeln und verwalten. Der Erfolg des Entwicklungsprozesses hängt von der Fähigkeit ab, Informationen zu erstellen, freizugeben und zu integrieren. Dieses wichtige Entwicklungsprinzip kann in Azure DevTest Labs verwendet werden. Es gibt mehrere Arten von Ressourcen innerhalb eines Labs, die häufig zwischen verschiedenen Labs innerhalb eines Unternehmens verteilt werden. Die verschiedenen Arten von Ressourcen sind in zwei Bereiche unterteilt:
@@ -39,13 +39,13 @@ Die häufigste Konfiguration für Quellcodeverwaltung (Source Code Control, SCC)
 - Ressourcen für die Geschäftseinheit/-division
 - Teamspezifische Ressourcen.
 
-Jede dieser Ebenen ist mit einem anderen Repository verknüpft, in dem der Masterbranch die Produktionsqualität aufweisen muss. Die [Branches](/azure/devops/repos/git/git-branching-guidance?view=azure-devops) in jedem Repository sind für die Entwicklung dieser spezifischen Ressourcen (Artefakte oder Vorlagen) vorgesehen. Diese Struktur ist gut für DevTest Labs geeignet, da Sie problemlos mehrere Repositorys und mehrere Branches gleichzeitig mit den Labs der Organisation verbinden können. Der Repositoryname ist in der Benutzeroberfläche (UI) enthalten, um Verwechslungen zu vermeiden, wenn identische Namen, Beschreibungen und Herausgeber vorhanden sind.
+Jede dieser Ebenen ist mit einem anderen Repository verknüpft, wobei der Mainbranch Produktionsqualität aufweisen muss. Die [Branches](/azure/devops/repos/git/git-branching-guidance?view=azure-devops) in jedem Repository sind für die Entwicklung dieser spezifischen Ressourcen (Artefakte oder Vorlagen) vorgesehen. Diese Struktur ist gut für DevTest Labs geeignet, da Sie problemlos mehrere Repositorys und mehrere Branches gleichzeitig mit den Labs der Organisation verbinden können. Der Repositoryname ist in der Benutzeroberfläche (UI) enthalten, um Verwechslungen zu vermeiden, wenn identische Namen, Beschreibungen und Herausgeber vorhanden sind.
      
 Die folgende Abbildung zeigt zwei Repositorys: ein Unternehmensrepository, das von der IT-Abteilung verwaltet wird, und ein Divisionsrepository, das von der Division R & D (Research & Development, Forschung und Entwicklung) verwaltet wird.
 
 ![Ein Beispiel für eine verteilende und kollaborative Entwicklungsumgebung](./media/best-practices-distributive-collaborative-dev-env/distributive-collaborative-dev-env.png)
    
-Diese mehrschichtige Struktur ermöglicht die Entwicklung. Dabei wird ein höheres Maß an Qualität im Masterbranch gewährleistet, während mehrere mit einem Lab verbundene Repositorys größere Flexibilität ermöglichen.
+Diese Ebenenstruktur sorgt bei der Entwicklung für bessere Qualität im Mainbranch, und mehrere mit einem Lab verbundene Repositorys ermöglichen größere Flexibilität.
 
 ## <a name="next-steps"></a>Nächste Schritte    
 Weitere Informationen finden Sie in folgenden Artikeln:

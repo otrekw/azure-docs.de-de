@@ -3,12 +3,12 @@ title: Verwenden eines Event Hubs aus der Apache Kafka-App – Azure Event Hubs 
 description: Dieser Artikel enthält Informationen zur Azure Event Hubs-Unterstützung für Apache Kafka.
 ms.topic: article
 ms.date: 09/25/2020
-ms.openlocfilehash: d9aa8af30d5ef5e1a985e4d73a9d4a8921ac7d45
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: b0f0da76bba68f8a66695700d530e871cbd35e3c
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369589"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861337"
 ---
 # <a name="use-azure-event-hubs-from-apache-kafka-applications"></a>Verwenden von Azure Event Hubs aus Apache Kafka-Anwendungen
 Event Hubs bietet einen mit den Apache Kafka®-Producer- und -Consumer-APIs kompatiblen Endpunkt, der von den meisten vorhandenen Apache Kafka-Clientanwendungen als Alternative zum Ausführen Ihres eigenen Apache Kafka-Clusters verwendet werden kann. Event Hubs unterstützt Apache Kafka-Producer- und -Consumer-API-Clients mit Version 1.0 oder höher.
@@ -90,7 +90,7 @@ sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule require
 #### <a name="samples"></a>Beispiele 
 Ein **Tutorial** mit schrittweisen Anleitungen zum Erstellen eines Event Hubs und den Zugriff darauf mithilfe von SAS oder OAuth finden Sie unter [Schnellstart: Datenstreaming mit Event Hubs mithilfe des Kafka-Protokolls](event-hubs-quickstart-kafka-enabled-event-hubs.md).
 
-Weitere **Beispiele** , die die Verwendung von OAuth mit Event Hubs für Kafka veranschaulichen, finden Sie unter [Beispiele auf GitHub](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/oauth).
+Weitere **Beispiele**, die die Verwendung von OAuth mit Event Hubs für Kafka veranschaulichen, finden Sie unter [Beispiele auf GitHub](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/oauth).
 
 ## <a name="other-event-hubs-features"></a>Weitere Event Hubs-Funktionen 
 
@@ -118,9 +118,7 @@ Die Nutzlast eines Event Hub-Ereignisses ist ein Bytestream, und der Inhalt kann
 
 ### <a name="log-compaction"></a>Protokollkomprimierung
 
-Apache Kafka-Protokollkomprimierung ist eine Funktion, mit der alle bis auf den letzten Datensatz jedes Schlüssels aus einer Partition entfernt werden können, wodurch ein Apache Kafka-Thema effektiv in einen Schlüssel-Wert-Speicher umgewandelt wird, bei dem der letzte hinzugefügte Wert den vorherigen Wert überschreibt. Das Schlüssel-Wert-Speichermuster wird selbst bei häufigen Updates wesentlich besser von Datenbankdiensten wie [Azure Cosmos DB](../cosmos-db/introduction.md) unterstützt.
-
-Die Protokollkomprimierungsfunktion wird von den Clientframeworks von Kafka Connect und Kafka Streams verwendet.
+Apache Kafka-Protokollkomprimierung ist eine Funktion, mit der alle bis auf den letzten Datensatz jedes Schlüssels aus einer Partition entfernt werden können, wodurch ein Apache Kafka-Thema effektiv in einen Schlüssel-Wert-Speicher umgewandelt wird, bei dem der letzte hinzugefügte Wert den vorherigen Wert überschreibt. Dieses Feature wird derzeit nicht von Azure Event Hubs implementiert. Das Schlüssel-Wert-Speichermuster wird selbst bei häufigen Updates wesentlich besser von Datenbankdiensten wie [Azure Cosmos DB](../cosmos-db/introduction.md) unterstützt. Weitere Informationen finden Sie im Thema [Protokollprojektion](event-hubs-federation-overview.md#log-projections) des Event Hubs-Verbundleitfadens. 
 
 ### <a name="kafka-streams"></a>Kafka Streams
 

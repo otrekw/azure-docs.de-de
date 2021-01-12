@@ -4,12 +4,12 @@ description: Dieser Artikel enthält Hinweise zur Einhaltung der Unternehmensric
 ms.topic: article
 ms.date: 06/26/2020
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: fe370ec882fd0462bba6afdf11c718cf46618f0c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 89fe380c3a8e0e0a82cc806bf19f9a3454041d94
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85480931"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97592346"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---company-policy-and-compliance"></a>Governance der Azure DevTest Labs-Infrastruktur – Unternehmensrichtlinie und Compliance
 Dieser Artikel enthält Hinweise zur Einhaltung der Unternehmensrichtlinie und der Compliance für die Azure DevTest Labs-Infrastruktur. 
@@ -37,7 +37,7 @@ Im Rahmen der allgemeinen Governance- und Konfigurationsverwaltungsstrategie Ihr
 - Ordnen Sie die Azure Repos demselben Azure Active Directory-Mandanten zu, den das Azure-Abonnement zur Authentifizierung und Autorisierung verwendet.
 - Erstellen Sie in Azure Active Directory eine Gruppe mit dem Namen **Alle DevTest Labs-Entwickler**, die zentral verwaltet wird. Jeder Entwickler, der zur Entwicklung von Artefakten beiträgt, sollte in diese Gruppe aufgenommen werden.
 - Die gleiche Azure Active Directory-Gruppe kann verwendet werden, um Zugriff auf das Azure Repos-Repository und -Lab zu ermöglichen.
-- In den Azure Repos sollten Verzweigungen oder Gabelungen verwendet werden, um ein Entwicklungsrepository vom primären Produktionsrepository zu trennen. Inhalte werden erst nach einem ordnungsgemäßen Code Review mit einem Pull Request dem Masterbranch hinzugefügt. Sobald der Codereviewer die Änderung genehmigt hat, führt ein leitender Entwickler, der für die Wartung des Masterbranchs verantwortlich ist, den aktualisierten Code zusammen. 
+- In den Azure Repos sollten Verzweigungen oder Gabelungen verwendet werden, um ein Entwicklungsrepository vom primären Produktionsrepository zu trennen. Inhalte werden dem Mainbranch erst nach einem ordnungsgemäßen Code Review mit einem Pull Request hinzugefügt. Sobald der Codereviewer die Änderung genehmigt hat, führt ein leitender Entwickler, der für die Wartung des Mainbranchs verantwortlich ist, den aktualisierten Code zusammen. 
 
 ## <a name="corporate-security-policies"></a>Unternehmenssicherheitsrichtlinien
 

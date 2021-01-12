@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 99ed7d3ad81202ab6fe67bf52888bbdbf0b28d2a
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.openlocfilehash: b7bd04790c7ac124afe3e9b503803f27118ae959
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97387087"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861864"
 ---
 # <a name="technicalprofiles"></a>TechnicalProfiles
 
@@ -52,7 +52,7 @@ Allen Typen von technischen Profilen liegt das gleiche Konzept zugrunde. Sie sen
 ![Diagramm des Flows für technische Profile](./media/technical-profiles/technical-profile-flow.png)
 
 1. **Einmaliges Anmelden (Single Sign-On, SSO) für Sitzungsverwaltung**: Stellt den Sitzungszustand des technischen Profils wieder her, indem die [SSO-Sitzungsverwaltung](custom-policy-reference-sso.md) verwendet wird.
-1. **Transformation von Eingabeansprüchen**: Bevor ein technisches Profil gestartet wird, führt Azure AD B2C eine [Anspruchstransformation].(claimstransformations.md) des Eingabeanspruchs aus.
+1. **Transformation von Eingabeansprüchen**: Bevor ein technisches Profil gestartet wird, führt Azure AD B2C eine [Anspruchstransformation ](claimstransformations.md) des Eingabeanspruchs aus.
 1. **Eingabeansprüche**: Ansprüche werden dem Anspruchsbehälter entnommen, der für das technische Profil verwendet wird.
 1. **Ausführung des technischen Profils** – Das technische Profil tauscht die Ansprüche mit der konfigurierten Partei aus. Beispiel:
     - Der Benutzer wird an den Identitätsanbieter umgeleitet, um die Anmeldung abzuschließen. Nach der erfolgreichen Anmeldung kehrt der Benutzer zurück, und die Ausführung des technischen Profils wird fortgesetzt.

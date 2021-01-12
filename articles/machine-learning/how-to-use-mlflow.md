@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 12/23/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: a093fe330ccbecc33cd8dac03d6425655e90366d
-ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
+ms.openlocfilehash: ed9d41a84e455241ed3cfc41b905a671f2a2d499
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97760468"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97912953"
 ---
 # <a name="train-and-track-ml-models-with-mlflow-and-azure-machine-learning-preview"></a>Trainieren und Nachverfolgen von ML-Modellen mit MLflow und Azure Machine Learning (Vorschauversion)
 
@@ -65,6 +65,7 @@ Im folgenden Diagramm ist dargestellt, wie Sie mit MLflow-Tracking die Ausführu
 * Installieren Sie das `azureml-mlflow`-Paket. 
     * Mit diesem Paket wird automatisch `azureml-core` des [The Azure Machine Learning Python SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py) bereitgestellt, um MLflow den Zugriff auf Ihren Arbeitsbereich zu ermöglichen.
 * [Erstellen Sie einen Azure Machine Learning-Arbeitsbereich.](how-to-manage-workspace.md)
+    * Überprüfen Sie, welche [Zugriffsberechtigungen Sie benötigen, um Ihre MLflow-Vorgänge mit Ihrem Arbeitsbereich](how-to-assign-roles.md#mlflow-operations) auszuführen.
 
 ## <a name="track-local-runs"></a>Nachverfolgen von lokalen Ausführungen
 
@@ -210,7 +211,7 @@ run.get_metrics()
 
 Registrieren und verfolgen Sie Ihre Modelle mit der [Azure Machine Learning-Modellregistrierung](concept-model-management-and-deployment.md#register-package-and-deploy-models-from-anywhere), die die MLflow-Modellregistrierung unterstützt. Azure Machine Learning-Modelle werden am MLflow-Modellschema ausgerichtet, sodass Sie diese Modelle problemlos exportieren und in verschiedene Workflows importieren können. Die Metadaten zu MLflow, z. B. die Ausführungs-ID, werden auch mit dem registrierten Modell gekennzeichnet, um sie besser nachverfolgen zu können. Benutzer können Trainingsausführungen senden, registrieren und bereitstellen, die aus MLflow-Ausführungen erstellt wurden. 
 
-Wenn Sie Ihr Produktionsbereitstellungsmodell in einem Schritt bereitstellen und registrieren möchten, finden Sie weitere Informationen unter [Bereitstellen und Registrieren von MLflow-Modellen](how-to-deploy-models-with-mlflow.md).
+Wenn Sie Ihr Produktionsbereitstellungsmodell in einem Schritt bereitstellen und registrieren möchten, finden Sie weitere Informationen unter [Bereitstellen und Registrieren von MLflow-Modellen](how-to-deploy-mlflow-models.md).
 
 Führen Sie die folgenden Schritte aus, um ein Modell aus einer Ausführung zu registrieren und anzuzeigen:
 
@@ -259,7 +260,7 @@ Die [Notebooks „MLflow mit Azure ML“](https://github.com/Azure/MachineLearni
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Bereitstellen von Modellen mit MLflow](how-to-deploy-models-with-mlflow.md).
+* [Bereitstellen von Modellen mit MLflow](how-to-deploy-mlflow-models.md).
 * Überwachen Ihrer Produktionsmodelle auf [Datenabweichungen](./how-to-enable-data-collection.md)
 * [Nachverfolgen von Azure Databricks-Ausführungen mit MLflow](how-to-use-mlflow-azure-databricks.md)
 * [Verwalten Ihrer Modelle](concept-model-management-and-deployment.md)

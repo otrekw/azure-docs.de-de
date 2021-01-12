@@ -10,12 +10,12 @@ author: nabhishek
 ms.author: abnarain
 manager: anandsub
 ms.date: 05/08/2019
-ms.openlocfilehash: a454c1297b0f25c64b11217811999d4331148205
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: f2a0784b2795b82131880d73a6d9217acc1d72d3
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "96022461"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97606214"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Von Azure Data Factory unterstützte Compute-Umgebungen
 
@@ -32,7 +32,7 @@ Die folgende Tabelle enthält eine Liste von Compute-Umgebungen, die von Data Fa
 | [Azure Machine Learning Studio (klassisch)](#azure-machine-learning-studio-classic-linked-service) | [Aktivitäten von Machine Learning Studio (Classic): Batchausführung und Ressourcenaktualisierung](transform-data-using-machine-learning.md) |
 | [Azure Machine Learning](#azure-machine-learning-linked-service) | [Azure Machine Learning-Pipelineausführung](transform-data-machine-learning-service.md) |
 | [Azure Data Lake Analytics](#azure-data-lake-analytics-linked-service) | [Data Lake Analytics U-SQL](transform-data-using-data-lake-analytics.md) |
-| [Azure SQL](#azure-sql-database-linked-service), [Azure Synapse Analytics (ehemals SQL Data Warehouse)](#azure-synapse-analytics-linked-service), [SQL Server](#sql-server-linked-service) | [Gespeicherte Prozedur](transform-data-using-stored-procedure.md) |
+| [Azure SQL](#azure-sql-database-linked-service), [Azure Synapse Analytics](#azure-synapse-analytics-linked-service), [SQL Server](#sql-server-linked-service) | [Gespeicherte Prozedur](transform-data-using-stored-procedure.md) |
 | [Azure Databricks](#azure-databricks-linked-service)         | [Notebook](transform-data-databricks-notebook.md), [Jar](transform-data-databricks-jar.md), [Python](transform-data-databricks-python.md) |
 | [Azure-Funktion](#azure-function-linked-service)         | [Aktivität „Azure Function“](control-flow-azure-function-activity.md)
 >  
@@ -253,7 +253,7 @@ Wenn Sie Hauptknoten und Workerknoten der Größe D4 erstellen möchten, geben S
 "dataNodeSize": "Standard_D4",
 ```
 
-Wenn Sie einen falschen Wert für diese Eigenschaften angeben, erhalten Sie möglicherweise den folgenden **Fehler**: Der Cluster wurde nicht erstellt. Ausnahme: Vorgang der Clustererstellung kann nicht abgeschlossen werden. Vorgang mit Code ‚400‘ fehlgeschlagen. Cluster hinterließ folgenden Status: 'Error'. Meldung: 'PreClusterCreationValidationFailure'. Wenn Sie diesen Fehler erhalten, achten Sie darauf, dass Sie den Namen der **Cmdlets und APIs** aus der Tabelle im Artikel [Größen für virtuelle Computer](../virtual-machines/sizes.md) verwenden.          
+Wenn Sie einen falschen Wert für diese Eigenschaften angeben, erhalten Sie möglicherweise den folgenden **Fehler**: Der Cluster wurde nicht erstellt. Ausnahme: Vorgang der Clustererstellung kann nicht abgeschlossen werden. Vorgang mit Code ‚400‘ fehlgeschlagen. Cluster hinterließ folgenden Status: 'Error'. Meldung: 'PreClusterCreationValidationFailure'. Wenn Sie diesen Fehler erhalten, achten Sie darauf, dass Sie den Namen der **Cmdlets und APIs** aus der Tabelle im Artikel [Größen für virtuelle Computer](../virtual-machines/sizes.md) verwenden.
 
 ### <a name="bring-your-own-compute-environment"></a>Eigene Compute-Umgebung
 Bei dieser Konfiguration können Benutzer eine bereits vorhandene Compute-Umgebung als verknüpften Dienst in Data Factory registrieren. Die Compute-Umgebung wird vom Benutzer verwaltet und von Data Factory zum Ausführen von Aktivitäten verwendet.
@@ -564,7 +564,7 @@ Sie erstellen einen mit Azure SQL verknüpften Dienst und verwenden ihn mit der 
 
 ## <a name="azure-synapse-analytics-linked-service"></a>Mit Azure Synapse Analytics verknüpfter Dienst
 
-Sie erstellen einen mit Azure Synapse Analytics (ehemals SQL Data Warehouse) verknüpften Dienst und verwenden ihn mit der [Aktivität „Gespeicherte Prozedur“](transform-data-using-stored-procedure.md) zum Aufrufen einer gespeicherten Prozedur in einer Data Factory-Pipeline. Im Artikel [Azure Synapse Analytics-Connector (ehemals SQL Data Warehouse)](connector-azure-sql-data-warehouse.md#linked-service-properties) finden Sie weitere Informationen zu diesem verknüpften Dienst.
+Sie erstellen einen mit Azure Synapse Analytics verknüpften Dienst und verwenden ihn mit der [Aktivität „Gespeicherte Prozedur“](transform-data-using-stored-procedure.md), um eine gespeicherte Prozedur in einer Data Factory-Pipeline aufzurufen. Im Artikel zum [-Connector](connector-azure-sql-data-warehouse.md#linked-service-properties) finden Sie weitere Informationen über diesen verknüpften Dienst.
 
 ## <a name="sql-server-linked-service"></a>Mit SQL Server verknüpfter Dienst
 

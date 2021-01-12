@@ -17,12 +17,12 @@ ms.date: 11/07/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: e8268630b2c108dc95ded059ce41866a14fadd0e
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 3fe87f94ce05efa4a784ba7e3f65e53abb00fd05
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97359250"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97914245"
 ---
 # <a name="automate-management-with-the-sql-server-iaas-agent-extension"></a>Automatisieren der Verwaltung mit der SQL Server-IaaS-Agent-Erweiterung
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -42,20 +42,21 @@ Die Erweiterung für den SQL Server-IaaS-Agent bietet für SQL Server auf Azur
 
 - **Free:** Die Erweiterung ist in allen drei Verwaltbarkeitsmodi vollständig kostenlos. Es fallen keine zusätzlichen Kosten für die Erweiterung oder für das Ändern von Verwaltungsmodi an. 
 
-- **Vereinfachte Lizenzverwaltung**: Die Erweiterung vereinfacht die SQL Server-Lizenzverwaltung. Außerdem können Sie über das [Azure-Portal](manage-sql-vm-portal.md), die Azure-Befehlszeilenschnittstelle oder PowerShell schnell SQL Server-VMs mit aktiviertem Azure-Hybridvorteil identifizieren: 
-
-   # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
-
-   ```azurecli-interactive
-   $vms = az sql vm list | ConvertFrom-Json
-   $vms | Where-Object {$_.sqlServerLicenseType -eq "AHUB"}
-   ```
+- **Vereinfachte Lizenzverwaltung**: Die Erweiterung vereinfacht die SQL Server-Lizenzverwaltung. Außerdem können Sie über das [Azure-Portal](manage-sql-vm-portal.md), PowerShell oder die Azure CLI schnell SQL Server-VMs mit aktiviertem Azure-Hybridvorteil identifizieren: 
 
    # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
    ```powershell-interactive
    Get-AzSqlVM | Where-Object {$_.LicenseType -eq 'AHUB'}
    ```
+
+   # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+
+   ```azurecli-interactive
+   $ az sql vm list --query "[?sqlServerLicenseType=='AHUB']"
+   ```
+
+
 
    ---
 

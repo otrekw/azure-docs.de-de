@@ -10,13 +10,13 @@ author: linda33wj
 manager: shwang
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
-ms.date: 10/15/2020
-ms.openlocfilehash: c532758ce29646ba32530269233759551117968b
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.date: 12/18/2020
+ms.openlocfilehash: d24eea36d45e49f19625c260f2518fb5ae0369e0
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92901627"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97695074"
 ---
 # <a name="copy-and-transform-data-in-azure-sql-managed-instance-by-using-azure-data-factory"></a>Kopieren und Transformieren von Daten in Azure SQL Managed Instance mit Azure Data Factory
 
@@ -284,7 +284,7 @@ Zum Kopieren von Daten aus der verwalteten SQL-Instanz werden im Abschnitt für 
 **Beachten Sie folgende Punkte:**
 
 - Wenn **sqlReaderQuery** für **SqlMISource** angegeben ist, führt die Kopieraktivität diese Abfrage für die Quelle der verwalteten SQL-Instanz aus, um die Daten abzurufen. Sie können auch eine gespeicherte Prozedur angeben, indem Sie **sqlReaderStoredProcedureName** und **storedProcedureParameters** angeben, sofern die gespeicherten Prozeduren Parameter verwenden.
-- Ohne Angabe von **sqlReaderQuery** oder der Eigenschaft **sqlReaderStoredProcedureName** werden die im Abschnitt „structure“ des JSON-Codes des Datasets definierten Spalten zum Erstellen einer Abfrage verwendet. Die Abfrage `select column1, column2 from mytable` wird für die verwaltete SQL-Instanz ausgeführt. Falls die Datasetdefinition keinen Abschnitt „structure“ enthält, werden alle Spalten der Tabelle ausgewählt.
+- Wenn Sie zum Abrufen von Daten eine gespeicherte Prozedur in der Quelle verwenden und die gespeicherte Prozedur beim Übergeben eines anderen Parameterwerts ein anderes Schema zurückgibt, kommt es möglicherweise beim Importieren eines Schemas über die Benutzeroberfläche oder beim Kopieren von Daten in eine SQL-Datenbank zu einem Fehler oder einem unerwarteten Ergebnis.
 
 **Beispiel: Verwenden einer SQL-Abfrage**
 

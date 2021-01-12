@@ -56,6 +56,8 @@
               href: connect-azure-active-directory.md
             - name: Office 365 (jetzt mit Teams!)
               href: connect-office-365.md
+            - name: Dynamics 365 (neu!)
+              href: connect-dynamics-365.md
             - name: Cloud App Security
               href: connect-cloud-app-security.md
             - name: Azure-Aktivitätsprotokoll
@@ -72,16 +74,18 @@
               href: connect-azure-atp.md
             - name: Microsoft Defender für Office 365 (vormals Office 365 ATP)
               href: connect-office-365-advanced-threat-protection.md
-            - name: Azure DDoS Protection
-              href: connect-azure-ddos-protection.md
-            - name: Azure Firewall
-              href: connect-azure-firewall.md
             - name: Azure Defender-Warnungen von ASC
               href: connect-azure-security-center.md
             - name: Azure Defender (vormals ASC) für IoT
               href: connect-asc-iot.md
+            - name: Azure DDoS Protection
+              href: connect-azure-ddos-protection.md
+            - name: Azure Firewall
+              href: connect-azure-firewall.md
             - name: Azure Web Application Firewall (WAF)
               href: connect-azure-waf.md
+            - name: Protokolle für Azure SQL-Datenbank
+              href: connect-azure-sql-logs.md
             - name: Domänennamenserver
               href: connect-dns.md
             - name: Windows-Firewall

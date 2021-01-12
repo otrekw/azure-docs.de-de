@@ -6,14 +6,14 @@ ms.author: sidram
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/23/2020
+ms.date: 01/04/2021
 ms.custom: devx-track-js
-ms.openlocfilehash: a2d26689a3036f05d7c8e7f417fbbb447402aedc
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: f140384ee2c78b38982c99dab5912bc451584a42
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97762859"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97898146"
 ---
 # <a name="connect-stream-analytics-jobs-to-resources-in-an-azure-virtual-network-vnet"></a>Verbinden von Stream Analytics-Aufträgen mit Ressourcen in einem Azure Virtual Network (VNet)
 
@@ -41,7 +41,7 @@ Ihre Aufträge können mit dieser Methode eine Verbindung mit den folgenden Azur
 1. [Blob Storage oder Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/stream-analytics/blob-output-managed-identity): Kann das Speicherkonto oder die Streamingein- oder -ausgabe Ihres Auftrags sein.
 2. [Azure Event Hubs](https://docs.microsoft.com/azure/stream-analytics/event-hubs-managed-identity): Kann die Streamingein- oder -ausgabe Ihres Auftrags sein.
 
-Wenn Ihre Aufträge eine Verbindung mit anderen Ein- oder Ausgabetypen herstellen müssen, besteht die einzige Möglichkeit darin, private Endpunkte in Stream Analytics-Clustern zu verwenden.
+Wenn Ihre Aufträge eine Verbindung mit anderen Eingabe- oder Ausgabetypen herstellen müssen, können Sie mit Azure Functions zuerst aus Stream Analytics in die Event Hubs-Ausgabe und dann in ein beliebiges Ziel schreiben. Wenn Sie direkt aus Stream Analytics in andere Ausgabetypen schreiben möchten, die in einem VNet oder einer Firewall geschützt sind, besteht die einzige Möglichkeit darin, private Endpunkte in Stream Analytics-Clustern zu verwenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

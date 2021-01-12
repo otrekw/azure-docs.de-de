@@ -1,27 +1,27 @@
 ---
-title: 'Azure Stack Edge Pro: Freigabeverwaltung | Microsoft-Dokumentation'
-description: Hier wird beschrieben, wie Sie im Azure-Portal Freigaben für Ihr Azure Stack Edge Pro-Gerät verwalten.
+title: Azure Stack Edge Pro-FPGA-Freigabeverwaltung | Microsoft-Dokumentation
+description: Hier wird beschrieben, wie Sie im Azure-Portal Freigaben für Ihr Azure Stack Edge Pro-FPGA-Gerät verwalten.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 03/25/2019
+ms.date: 01/04/2021
 ms.author: alkohli
-ms.openlocfilehash: 4d43b70c8f958ad37b6ac2d0ee043d5f07d11da9
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 7fbb5ca43d2877e2e14914b71df7cc1bcdf27f88
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96444581"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97898234"
 ---
-# <a name="use-the-azure-portal-to-manage-shares-on-azure-stack-edge-pro"></a>Verwalten von Freigaben für Ihr Azure Stack Edge Pro-Gerät im Azure-Portal
+# <a name="use-the-azure-portal-to-manage-shares-on-azure-stack-edge-pro-fpga"></a>Verwalten von Freigaben für Ihr Azure Stack Edge Pro-FPGA-Gerät im Azure-Portal 
 
-In diesem Artikel wird beschrieben, wie Sie Freigaben für Ihr Azure Stack Edge Pro-Gerät verwalten. Sie können das Azure Stack Edge Pro-Gerät im Azure-Portal oder über die lokale Webbenutzeroberfläche verwalten. Verwenden Sie das Azure-Portal, um Freigaben hinzuzufügen, zu löschen oder zu aktualisieren oder um Speicherschlüssel für das Speicherkonto zu synchronisieren, das den Freigaben zugeordnet ist.
+In diesem Artikel wird beschrieben, wie Sie Freigaben für Ihr Azure Stack Edge Pro-FPGA-Gerät verwalten. Sie können das Azure Stack Edge Pro-FPGA-Gerät im Azure-Portal oder über die lokale Webbenutzeroberfläche verwalten. Verwenden Sie das Azure-Portal, um Freigaben hinzuzufügen, zu löschen oder zu aktualisieren oder um Speicherschlüssel für das Speicherkonto zu synchronisieren, das den Freigaben zugeordnet ist.
 
 ## <a name="about-shares"></a>Informationen zu Freigaben
 
-Wenn Sie Daten an Azure übertragen möchten, müssen Sie Freigaben für Ihr Azure Stack Edge Pro-Gerät erstellen. Bei den Freigaben, die Sie auf dem Azure Stack Edge Pro-Gerät hinzufügen, kann es sich um lokale Freigaben oder Freigaben handeln, die Daten per Pushvorgang in die Cloud übertragen.
+Wenn Sie Daten an Azure übertragen möchten, müssen Sie Freigaben für Ihr Azure Stack Edge Pro-FPGA-Gerät erstellen. Bei den Freigaben, die Sie auf dem Azure Stack Edge Pro-Gerät hinzufügen, kann es sich um lokale Freigaben oder Freigaben handeln, die Daten per Pushvorgang in die Cloud übertragen.
 
  - **Lokale Freigaben**: Verwenden Sie diese Freigaben, wenn die Daten lokal auf dem Gerät verarbeitet werden sollen.
  - **Freigaben**: Verwenden Sie diese Freigaben, wenn die Gerätedaten automatisch in Ihr Speicherkonto in der Cloud gepusht werden sollen. Alle Cloudfunktionen, z. B. **Aktualisieren** und **Speicherkontoschlüssel synchronisieren**, werden auf die Freigaben angewendet.
@@ -39,7 +39,7 @@ In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
 Gehen Sie im Azure-Portal wie folgt vor, um eine Freigabe zu erstellen:
 
-1. Wechseln Sie im Azure-Portal zu Ihrer Azure Stack Edge-Ressource und dann zu **Gateway > Freigaben**. Wählen Sie in der Befehlsleiste die Option **+ Freigabe hinzufügen**.
+1. Wechseln Sie im Azure-Portal zu Ihrer Azure Stack Edge-Ressource und dann zu **Cloudspeichergateway**. Wechseln Sie zu **Freigaben**, und wählen Sie dann in der Befehlsleiste die Option **+ Freigabe hinzufügen** aus.
 
     ![Auswählen von „Freigabe hinzufügen“](media/azure-stack-edge-manage-shares/add-share-1.png)
 
@@ -72,7 +72,7 @@ Gehen Sie im Azure-Portal wie folgt vor, um eine Freigabe zu erstellen:
 
 ## <a name="add-a-local-share"></a>Hinzufügen einer lokalen Freigabe
 
-1. Wechseln Sie im Azure-Portal zu Ihrer Azure Stack Edge-Ressource und dann zu **Gateway > Freigaben**. Wählen Sie in der Befehlsleiste die Option **+ Freigabe hinzufügen**.
+1. Wechseln Sie im Azure-Portal zu Ihrer Azure Stack Edge-Ressource und dann zu **Cloudspeichergateway > Freigaben**. Wählen Sie in der Befehlsleiste die Option **+ Freigabe hinzufügen**.
 
    ![Auswählen von „Freigabe hinzufügen“ 2](media/azure-stack-edge-manage-shares/add-local-share-1.png)
 
@@ -96,15 +96,13 @@ Gehen Sie im Azure-Portal wie folgt vor, um eine Freigabe zu erstellen:
 
    ![Anzeigen von Updates auf dem Blatt „Freigaben“](media/azure-stack-edge-manage-shares/add-local-share-3.png)
     
-    Wählen Sie die Freigabe aus, um den lokalen Bereitstellungspunkt für die Edgecomputingmodule dieser Freigabe anzuzeigen.
 
-   ![Anzeigen von Details zur lokalen Freigabe](media/azure-stack-edge-manage-shares/add-local-share-4.png)
 
 ## <a name="mount-a-share"></a>Einbinden einer Dateifreigabe
 
 Wenn Sie eine Freigabe erstellt haben, bevor Sie Compute für Ihr Azure Stack Edge Pro-Gerät konfiguriert haben, müssen Sie die Freigabe einbinden. Gehen Sie wie folgt vor, um eine Freigabe einzubinden.
 
-1. Wechseln Sie im Azure-Portal zu Ihrer Azure Stack Edge-Ressource und dann zu **Gateway > Freigaben**. Wählen Sie in der Liste mit den Freigaben die Freigabe aus, die Sie einbinden möchten. Für die ausgewählte Freigabe wird in der Spalte **Für Compute verwendet** der Status **Deaktiviert** angezeigt.
+1. Wechseln Sie im Azure-Portal zu Ihrer Azure Stack Edge-Ressource und dann zu **Cloudspeichergateway > Freigaben**. Wählen Sie in der Liste mit den Freigaben die Freigabe aus, die Sie einbinden möchten. Für die ausgewählte Freigabe wird in der Spalte **Für Compute verwendet** der Status **Deaktiviert** angezeigt.
 
    ![Auswählen der Freigabe 3](media/azure-stack-edge-manage-shares/select-share-mount.png)
 
@@ -122,13 +120,13 @@ Wenn Sie eine Freigabe erstellt haben, bevor Sie Compute für Ihr Azure Stack Ed
 
 5. Wählen Sie die Freigabe erneut aus, um den lokalen Bereitstellungspunkt für die Freigabe anzuzeigen. Das Edgecomputingmodul verwendet diesen lokalen Bereitstellungspunkt für die Freigabe.
 
-   ![Lokaler Bereitstellungspunkt für die Freigabe](media/azure-stack-edge-manage-shares/share-mountpoint.png)
+   ![Lokaler Bereitstellungspunkt für die Freigabe](media/azure-stack-edge-manage-shares/share-mountpoint.png) 
 
 ## <a name="unmount-a-share"></a>Aufheben der Einbindung einer Freigabe
 
 Gehen Sie im Azure-Portal wie folgt vor, um die Einbindung einer Freigabe aufzuheben:
 
-1. Wechseln Sie im Azure-Portal zu Ihrer Azure Stack Edge-Ressource und dann zu **Gateway > Freigaben**.
+1. Wechseln Sie im Azure-Portal zu Ihrer Azure Stack Edge-Ressource und dann zu **Cloudspeichergateway > Freigaben**.
 
    ![Auswählen der Freigabe 4](media/azure-stack-edge-manage-shares/select-share-unmount.png)
 
@@ -148,13 +146,13 @@ Gehen Sie im Azure-Portal wie folgt vor, um die Einbindung einer Freigabe aufzuh
 
 Gehen Sie im Azure-Portal wie folgt vor, um eine Freigabe zu löschen:
 
-1. Klicken Sie in der Liste mit den Freigaben auf die Freigabe, die Sie löschen möchten.
+1. Wechseln Sie im Azure-Portal zu Ihrer Azure Stack Edge-Ressource und dann zu **Cloudspeichergateway > Freigaben**. Klicken Sie in der Liste mit den Freigaben auf die Freigabe, die Sie löschen möchten.
 
    ![Auswählen der Freigabe 5](media/azure-stack-edge-manage-shares/delete-share-1.png)
 
 2. Klicken Sie auf **Löschen**.
 
-   ![Auf „Löschen“ klicken](media/azure-stack-edge-manage-shares/delete-share-2.png)
+   ![Auswählen von „Löschen“](media/azure-stack-edge-manage-shares/delete-share-2.png)
 
 3. Wenn Sie zur Bestätigung aufgefordert werden, klicken Sie auf **Ja**.
 
@@ -173,15 +171,15 @@ Mithilfe des Aktualisierungsfeatures können Sie den Inhalt einer Freigabe aktua
 
 Gehen Sie im Azure-Portal wie folgt vor, um eine Freigabe zu aktualisieren:
 
-1. Navigieren Sie im Azure-Portal zu **Freigaben**. Klicken Sie auf die Freigabe, die Sie aktualisieren möchten.
+1. Wechseln Sie im Azure-Portal zu Ihrer Azure Stack Edge-Ressource und dann zu **Cloudspeichergateway > Freigaben**. Klicken Sie auf die Freigabe, die Sie aktualisieren möchten.
 
    ![Auswählen der Freigabe 6](media/azure-stack-edge-manage-shares/refresh-share-1.png)
 
-2. Klicken Sie auf **Aktualisieren**.
+2. Wählen Sie **Daten aktualisieren.** aus.
 
-   ![Klicken auf „Aktualisieren“](media/azure-stack-edge-manage-shares/refresh-share-2.png)
+   ![Option zum Aktualisieren auswählen](media/azure-stack-edge-manage-shares/refresh-share-2.png)
  
-3. Wenn Sie zur Bestätigung aufgefordert werden, klicken Sie auf **Ja**. Daraufhin wird ein Auftrag gestartet, um den Inhalt der lokalen Freigabe zu aktualisieren.
+3. Wählen Sie **Ja** aus, wenn Sie zur Bestätigung aufgefordert werden. Daraufhin wird ein Auftrag gestartet, um den Inhalt der lokalen Freigabe zu aktualisieren.
 
    ![Bestätigen der Aktualisierung](media/azure-stack-edge-manage-shares/refresh-share-3.png)
 
@@ -199,7 +197,7 @@ Speicherkontoschlüssel müssen nach der Rotation synchronisiert werden. Die Syn
 
 Gehen Sie im Azure-Portal wie folgt vor, um Ihren Speicherzugriffsschlüssel zu synchronisieren:
 
-1. Navigieren Sie in Ihrer Ressource zu **Übersicht**. Klicken Sie in der Liste mit den Freigaben auf eine Freigabe, die dem Speicherkonto zugeordnet ist, das Sie synchronisieren möchten.
+1. Wechseln Sie im Azure-Portal zu Ihrer Azure Stack Edge-Ressource und dann zu **Cloudspeichergateway > Freigaben**. Klicken Sie in der Liste mit den Freigaben auf eine Freigabe, die dem Speicherkonto zugeordnet ist, das Sie synchronisieren möchten.
 
     ![Auswählen einer Freigabe mit relevantem Speicherkonto](media/azure-stack-edge-manage-shares/sync-storage-key-1.png)
 

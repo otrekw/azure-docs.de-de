@@ -9,14 +9,14 @@ ms.topic: reference
 ms.reviewer: larryfr
 ms.author: andzha
 author: Anurzeuii
-ms.date: 08/24/2020
+ms.date: 12/21/2020
 ms.custom: references_regions
-ms.openlocfilehash: 0300dab1fa7d0ef0d20c4236cc452135b3ade20e
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 88240f9b46997d11f1e7c2d93fa880b004615a11
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93305757"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97725019"
 ---
 # <a name="azure-machine-learning-sovereign-cloud-parity"></a>Sovereign Cloud-Parität für Azure Machine Learning
 
@@ -92,7 +92,7 @@ Unser Ziel besteht darin, größtmögliche Parität zwischen unserer öffentlich
 | ML-gestützte Beschriftung (Bildklassifizierung und Objekterkennung)           | Öffentliche Vorschau       | YES                | YES         |
 | **Verantwortungsvolles maschinelles Lernen** |   | | |
 | Erklärbarkeit auf der Benutzeroberfläche                                                       | Öffentliche Vorschau       | Nein                 | Nein          |
-| Differenzieller Datenschutz: WhiteNoise-Toolkit                                    | OSS                  | Nein                 | Nein          |
+| Differenzieller Datenschutz: SmartNoise-Toolkit                                    | OSS                  | Nein                 | Nein          |
 | Benutzerdefinierte Tags in Azure Machine Learning zur Implementierung von Datenblättern              | Allgemein verfügbar                   | Nein                 | Nein          |
 | Fairness bei der AzureML-Integration                                               | Öffentliche Vorschau       | Nein                 | Nein          |
 | Interpretability SDK                                                      | Allgemein verfügbar                   | YES                | YES         |
@@ -205,7 +205,7 @@ Unser Ziel besteht darin, größtmögliche Parität zwischen unserer öffentlich
 | ML-gestützte Beschriftung (Bildklassifizierung und Objekterkennung)           | Öffentliche Vorschau   | YES       | –        |
 | **Verantwortungsvolles maschinelles Lernen** |    | | |
 | Erklärbarkeit auf der Benutzeroberfläche                                                       | Öffentliche Vorschau   | Nein        | –        |
-| Differenzieller Datenschutz: WhiteNoise-Toolkit                                    | OSS              | Nein        | –        |
+| Differenzieller Datenschutz: SmartNoise-Toolkit                                    | OSS              | Nein        | –        |
 | Benutzerdefinierte Tags in Azure Machine Learning zur Implementierung von Datenblättern              | Allgemein verfügbar               | Nein        | –        |
 | Fairness bei der AzureML-Integration                                               | Öffentliche Vorschau   | Nein        | –        |
 | Interpretability SDK                                                      | Allgemein verfügbar               | YES       | –        |

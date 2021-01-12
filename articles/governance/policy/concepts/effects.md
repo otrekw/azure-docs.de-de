@@ -3,12 +3,12 @@ title: Funktionsweise von Auswirkungen
 description: Die Azure Policy-Definitionen haben verschiedene Auswirkungen, mit denen festgelegt wird, wie die Konformität verwaltet und gemeldet wird.
 ms.date: 10/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: 19811eca33be7dff4d9bee5b8bd89dd38f185a57
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: e72e94766dce2660409e729bc43eb107fb9ab39a
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91873947"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97883077"
 ---
 # <a name="understand-azure-policy-effects"></a>Grundlegendes zu Azure Policy-Auswirkungen
 
@@ -43,7 +43,9 @@ Anforderungen zum Erstellen oder Aktualisieren einer Ressource werden von Azure 
 
 Nachdem vom Ressourcenanbieter ein Erfolgscode für eine Anforderung im Resource Manager-Modus zurückgegeben wurde, werden **AuditIfNotExists** und **DeployIfNotExists** ausgewertet, um zu bestimmen, ob eine zusätzliche Konformitätsprotokollierung oder -aktion erforderlich ist.
 
-## <a name="append"></a>Append
+Außerdem schränken `PATCH`-Anforderungen, die nur Felder mit Bezug zu `tags` ändern, die Richtlinienauswertung auf Richtlinien mit Bedingungen ein, die Felder mit Bezug zu `tags` überprüfen.
+
+## <a name="append"></a>Anfügen
 
 „append“ wird verwendet, um der angeforderten Ressource während der Erstellung oder Aktualisierung zusätzliche Felder hinzuzufügen. Ein häufiges Beispiel ist die Angabe der zulässigen IP-Adressen für eine Speicherressource.
 

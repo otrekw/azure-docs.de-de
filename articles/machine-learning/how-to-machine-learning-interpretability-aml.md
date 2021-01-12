@@ -11,12 +11,12 @@ ms.reviewer: Luis.Quintanilla
 ms.date: 07/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: c9ee57baf63867e4dca4236d484321586cfb3b17
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 14d15f54befba162b071b40e06e589f980708fd3
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96862342"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740486"
 ---
 # <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python-preview"></a>Erläutern von ML-Modellen und -Vorhersagen in Python mithilfe des Interpretierbarkeitspakets (Vorschauversion)
 
@@ -296,41 +296,7 @@ Das folgende Beispiel zeigt die Verwendung der `ExplanationClient`-Klasse zum Ak
 
 ## <a name="visualizations"></a>Visualisierungen
 
-Nachdem Sie die Erklärungen in Ihr lokales Jupyter Notebook heruntergeladen haben, können Sie das Visualisierungsdashboard zum Auswerten und Interpretieren Ihres Modells verwenden.
-
-### <a name="understand-entire-model-behavior-global-explanation"></a>Verstehen des gesamten Modellverhalten (globale Erklärung) 
-
-Die folgenden Plots bieten eine Gesamtansicht des trainierten Modells mit den zugehörigen Vorhersagen und Erläuterungen.
-
-|Plot|BESCHREIBUNG|
-|----|-----------|
-|Durchsuchen von Daten| Zeigt eine Übersicht über das Dataset zusammen mit Vorhersagewerten.|
-|Globale Relevanz|Aggregiert Featurerelevanzwerte von einzelnen Datenpunkten, um die K wichtigsten Features des Modells (K konfigurierbar) anzuzeigen. Unterstützt das Verständnis des Gesamtverhaltens des zugrunde liegenden Modells.|
-|Erläuterungsuntersuchung|Veranschaulicht, wie ein Feature für eine Änderung der Vorhersagewerte des Modells (oder der Wahrscheinlichkeit von Vorhersagewerten) sorgt. Zeigt die Auswirkung der Featureinteraktion.|
-|Zusammenfassung der Relevanz|Verwendet Relevanzwerte für individuelle Features über alle Datenpunkte, um die Verteilung der Auswirkungen jedes Features auf den Vorhersagewert zu beschreiben. Mithilfe dieses Diagramms untersuchen Sie, in welche Richtung sich die Featurewerte auf die Vorhersagewerte auswirken.
-|
-
-[![Globales Visualisierungsdashboard](./media/how-to-machine-learning-interpretability-aml/global-charts.png)](./media/how-to-machine-learning-interpretability-aml/global-charts.png#lightbox)
-
-### <a name="understand-individual-predictions-local-explanation"></a>Verstehen individueller Vorhersagen (lokale Erklärung) 
-
-Sie können den Plot der individuellen Featurerelevanz für jeden Datenpunkt laden, indem Sie auf einen der einzelnen Datenpunkte in einem der Gesamtplots klicken.
-
-|Plot|BESCHREIBUNG|
-|----|-----------|
-|Lokale Relevanz|Zeigt die K wichtigsten Features (K konfigurierbar) für eine individuelle Vorhersage an. Veranschaulicht das lokale Verhalten des zugrunde liegenden Modells an einem bestimmten Datenpunkt.|
-|Perturbation Exploration (Was-wäre-wenn-Analyse)|Ermöglicht die Änderung von Featurewerten des gewählten Datenpunkts und die Verfolgung, wie sich diese Änderungen auf den Vorhersagewert auswirken.|
-|Individual Conditional Expectation (ICE)| Ermöglicht die Änderung von Featurewerten von einem Mindestwert zu einem Maximalwert. Veranschaulicht, wie sich bei einer Änderung des Features die Vorhersage des Datenpunkts ändert.|
-
-[![Visualisierungsdashboard: Wichtigkeit lokaler Features](./media/how-to-machine-learning-interpretability-aml/local-charts.png)](./media/how-to-machine-learning-interpretability-aml/local-charts.png#lightbox)
-
-
-[![Visualisierungsdashboard: Störung von Features](./media/how-to-machine-learning-interpretability-aml/perturbation.gif)](./media/how-to-machine-learning-interpretability-aml/perturbation.gif#lightbox)
-
-
-[![Visualisierungsdashboard: ICE-Plots](./media/how-to-machine-learning-interpretability-aml/ice-plot.png)](./media/how-to-machine-learning-interpretability-aml/ice-plot.png#lightbox)
-
-Verwenden Sie den folgenden Code, um das Visualisierungsdashboard zu laden.
+Nachdem Sie die Erklärungen in Ihr lokales Jupyter Notebook heruntergeladen haben, können Sie das Visualisierungsdashboard zum Auswerten und Interpretieren Ihres Modells verwenden. Verwenden Sie den folgenden Code, um das Visualisierungsdashboard-Widget in Ihrem Jupyter Notebook zu laden:
 
 ```python
 from interpret_community.widget import ExplanationDashboard
@@ -338,11 +304,58 @@ from interpret_community.widget import ExplanationDashboard
 ExplanationDashboard(global_explanation, model, datasetX=x_test)
 ```
 
+Die Visualisierung unterstützt Erklärungen sowohl für entwickelte als auch für Rohfeatures. Erklärungen im Rohformat basieren auf den Features des ursprünglichen Datasets, und Erklärungen im entwickelten Format basieren auf den Features des Datasets mit Anwendung von Feature Engineering („Featurisierung“).
+
+Beim Interpretieren eines Modells in Bezug auf das ursprüngliche Dataset empfehlen wir Ihnen, Erklärungen im Rohformat zu nutzen, da jede Featurerelevanz jeweils einer Spalte aus dem ursprünglichen Dataset entspricht. Ein Szenario, in dem Erklärungen im entwickelten Format ggf. hilfreich sind, sind Untersuchungen der Auswirkung einzelner Kategorien eines kategorischen Features. Wenn eine 1-Hot-Codierung auf ein kategorisches Feature angewendet wird, enthalten die sich ergebenden Erklärungen im entwickelten Format einen anderen Relevanzwert pro Kategorie (einen pro entwickeltem Feature mit 1-Hot-Codierung). Dies kann hilfreich sein, wenn eingegrenzt werden soll, welcher Teil des Datasets für das Modell die meisten Informationen enthält.
+
+> [!NOTE]
+> Erklärungen im entwickelten und im Rohformat werden sequenziell berechnet. Zuerst wird basierend auf der Modell- und Featurisierungspipeline eine entwickelte Erklärung erstellt. Anschließend wird basierend auf dieser entwickelten Erklärung die Erklärung im Rohformat erstellt, indem die Relevanz der entwickelten Features, die aus demselben Rohfeature stammen, aggregiert wird.
+
+### <a name="create-edit-and-view-dataset-cohorts"></a>Erstellen, Bearbeiten und Anzeigen von Datasetkohorten
+
+Im oberen Menüband wird die Gesamtstatistik für Ihr Modell und die Daten angezeigt. Sie können Ihre Daten in Datasetkohorten oder Untergruppen aufteilen, um die Leistung Ihres Modells und die Erklärungen für diese definierten Untergruppen zu untersuchen bzw. zu vergleichen. Indem Sie Ihre Datasetstatistik und die Erklärungen für diese Untergruppen vergleichen, können Sie ermitteln, warum in bestimmten Gruppen ggf. Fehler auftreten.
+
+[![Erstellen, Bearbeiten und Anzeigen von Datasetkohorten](./media/how-to-machine-learning-interpretability-aml/dataset-cohorts.gif)](./media/how-to-machine-learning-interpretability-aml/dataset-cohorts.gif#lightbox)
+
+### <a name="understand-entire-model-behavior-global-explanation"></a>Verstehen des gesamten Modellverhalten (globale Erklärung) 
+
+Die ersten drei Registerkarten im Dashboard für die Erklärungen enthalten eine Gesamtanalyse des trainierten Modells mit den zugehörigen Vorhersagen und Erklärungen.
+
+#### <a name="model-performance"></a>Modellleistung
+Evaluieren Sie die Leistung Ihres Modells, indem Sie die Verteilung Ihrer Vorhersagewerte und die Werte Ihrer Modellleistungsmetriken untersuchen. Sie können Ihr Modell genauer untersuchen, indem Sie sich eine vergleichende Analyse der Leistung für verschiedene Kohorten oder Untergruppen Ihres Datasets ansehen. Wählen Sie Filter für den Y-Wert und X-Wert aus, um unterschiedliche Dimensionen anzuzeigen. Zeigen Sie Metriken an, z. B. Genauigkeit, Rückruf, False Positive-Rate (FPR) und False-Negative-Rate (FNR).
+
+[![Registerkarte „Modellleistung“ in der Erklärungsvisualisierung](./media/how-to-machine-learning-interpretability-aml/model-performance.gif)](./media/how-to-machine-learning-interpretability-aml/model-performance.gif#lightbox)
+
+#### <a name="dataset-explorer"></a>Dataset-Explorer
+Untersuchen Sie Ihre Datasetstatistik, indem Sie unterschiedliche Filter für die X-, Y- und Farbachsen auswählen, um Ihre Daten in verschiedene Dimensionen zu unterteilen. Erstellen Sie oben Datasetkohorten, um Datasetstatistiken mit Filtern zu analysieren, z. B. in Bezug auf vorhergesagtes Ergebnis, Datasetfeatures und Fehlergruppen. Verwenden Sie das Zahnradsymbol in der oberen rechten Ecke des Graphen, um die Graphtypen zu ändern.
+
+[![Registerkarte „Dataset-Explorer“ in der Erklärungsvisualisierung](./media/how-to-machine-learning-interpretability-aml/dataset-explorer.gif)](./media/how-to-machine-learning-interpretability-aml/dataset-explorer.gif#lightbox)
+
+#### <a name="aggregate-feature-importance"></a>Aggregierte Featurerelevanz
+Untersuchen Sie die Features mit Top-k-Relevanz, die sich auf Ihre Modellvorhersagen (auch als globale Erklärungen bezeichnet) insgesamt auswirken. Verwenden Sie den Schieberegler, um die Werte für die Featurerelevanz in absteigender Reihenfolge anzuzeigen. Wählen Sie bis zu drei Kohorten aus, um die entsprechenden Werte für die Featurerelevanz nebeneinander anzuzeigen. Klicken Sie im Graphen auf einen beliebigen Featurebalken, um anzuzeigen, wie sich die Werte des ausgewählten Features auf die Modellvorhersage unten im Abhängigkeitsplot auswirken.
+
+[![Registerkarte „Aggregierte Featurerelevanz“ in der Erklärungsvisualisierung](./media/how-to-machine-learning-interpretability-aml/aggregate-feature-importance.gif)](./media/how-to-machine-learning-interpretability-aml/aggregate-feature-importance.gif#lightbox)
+
+### <a name="understand-individual-predictions-local-explanation"></a>Verstehen individueller Vorhersagen (lokale Erklärung) 
+
+Auf der vierten Registerkarte der Seite mit den Erklärungen können Sie einen Drilldown für einen Datenpunkt durchführen und die einzelnen Featurerelevanzwerte anzeigen. Sie können den jeweiligen Featurerelevanz-Plot für einen beliebigen Datenpunkt laden, indem Sie im Hauptpunktdiagramm auf einen beliebigen Datenpunkt klicken oder rechts im Bereichs-Assistenten einen bestimmten Datenpunkt auswählen.
+
+|Plot|BESCHREIBUNG|
+|----|-----------|
+|Individuelle Featurerelevanz|Zeigt die wichtigsten Top-k-Features für eine individuelle Vorhersage an. Veranschaulicht das lokale Verhalten des zugrunde liegenden Modells an einem bestimmten Datenpunkt.|
+|Was-wäre-wenn-Analyse|Ermöglicht das Vornehmen von Änderungen an Featurewerten des ausgewählten realen Datenpunkts und das Beobachten der sich ergebenden Änderungen des Vorhersagewerts, indem ein hypothetischer Datenpunkt mit den neuen Featurewerten generiert wird.|
+|Individual Conditional Expectation (ICE)|Ermöglicht die Änderung von Featurewerten von einem Mindestwert zu einem Maximalwert. Veranschaulicht, wie sich bei einer Änderung des Features die Vorhersage des Datenpunkts ändert.|
+
+[![Registerkarte „Individuelle Featurerelevanz und Was-wäre-wenn-Analyse“ im Dashboard mit den Erklärungen](./media/how-to-machine-learning-interpretability-aml/individual-tab.gif)](./media/how-to-machine-learning-interpretability-aml/individual-tab.gif#lightbox)
+
+> [!NOTE]
+> Diese Erklärungen basieren auf vielen Näherungen und sind nicht die „Ursache“ von Vorhersagen. Wir raten Benutzern davon ab, basierend auf den Featurestörungen des Was-wäre-wenn-Tools Entscheidungen für das reale Leben zu treffen, sofern nicht die absolute mathematische Belastbarkeit der kausalen Rückschlüsse sichergestellt ist. Dieses Tool dient hauptsächlich dem Verständnis des Modells und zum Debuggen.
+
 ### <a name="visualization-in-azure-machine-learning-studio"></a>Visualisierung in Azure Machine Learning-Studio
 
-Wenn Sie die Schritte zur [Remoteinterpretierbarkeit](how-to-machine-learning-interpretability-aml.md#generate-feature-importance-values-via-remote-runs) (Hochladen der generierten Erklärung in den Azure Machine Learning-Ausführungsverlauf) abgeschlossen haben, können Sie das Visualisierungsdashboard im [Azure Machine Learning Studio](https://ml.azure.com) anzeigen. Bei diesem Dashboard handelt es sich um eine einfachere Version des oben erläuterten Visualisierungsdashboards (Durchsuchen der Erklärung und ICE-Plots sind deaktiviert, da es im Studio keine aktive Computeinstanz gibt, die ihre Echtzeitberechnungen durchführen kann).
+Wenn Sie die Schritte zur [Remoteinterpretierbarkeit](how-to-machine-learning-interpretability-aml.md#generate-feature-importance-values-via-remote-runs) (Hochladen der generierten Erklärung in den Azure Machine Learning-Ausführungsverlauf) abgeschlossen haben, können Sie das Visualisierungsdashboard im [Azure Machine Learning Studio](https://ml.azure.com) anzeigen. Dieses Dashboard ist eine vereinfachte Version des oben erwähnten Visualisierungsdashboards. Die Generierung von Was-wäre-wenn-Datenpunkten und die ICE-Plots sind deaktiviert, da in Azure Machine Learning Studio keine aktive Computeressource vorhanden ist, mit der die Echtzeitberechnungen durchgeführt werden können.
 
-Wenn das Dataset sowie die globalen und lokalen Erklärungen verfügbar sind, werden alle Registerkarten mit Daten gefüllt (außer Perturbation Exploration und ICE). Wenn nur eine globale Erklärung verfügbar ist, sind die Registerkarte „Zusammenfassung der Relevanz“ und alle Registerkarten für lokale Erklärungen deaktiviert.
+Wenn die Dataset-, globalen und lokalen Erklärungen verfügbar sind, werden auf allen Registerkarten Daten eingefügt. Falls nur eine globale Erklärung verfügbar ist, wird die Registerkarte für „Individuelle Featurerelevanz“ deaktiviert.
 
 Sie haben zwei Möglichkeiten, um auf das Visualisierungsdashboard in Azure Machine Learning-Studio zuzugreifen:
 
@@ -351,7 +364,7 @@ Sie haben zwei Möglichkeiten, um auf das Visualisierungsdashboard in Azure Mach
   1. Wählen Sie ein bestimmtes Experiment aus, um alle Ausführungen in diesem Experiment anzuzeigen.
   1. Wählen Sie eine Ausführung aus, und klicken Sie dann auf die Registerkarte **Erklärungen**, um das Dashboard zur Erklärungsvisualisierung anzuzeigen.
 
-   [![Lokale Featurerelevanz für das Visualisierungsdashboard in AzureML Studio in Experimenten](./media/how-to-machine-learning-interpretability-aml/amlstudio-experiments.png)](./media/how-to-machine-learning-interpretability-aml/amlstudio-experiments.png#lightbox)
+   [![Aggregierte Featurerelevanz für das Visualisierungsdashboard in AzureML Studio in Experimenten](./media/how-to-machine-learning-interpretability-aml/model-explanation-dashboard-aml-studio.png)](./media/how-to-machine-learning-interpretability-aml/model-explanation-dashboard-aml-studio.png#lightbox)
 
 * Bereich **Modelle**
   1. Wenn Sie Ihr ursprüngliches Modell mithilfe der Schritte unter [Bereitstellen von Modellen mit Azure Machine Learning](./how-to-deploy-and-where.md) registriert haben, können Sie **Modelle** im linken Bereich auswählen, um sie anzuzeigen.
@@ -359,7 +372,7 @@ Sie haben zwei Möglichkeiten, um auf das Visualisierungsdashboard in Azure Mach
 
 ## <a name="interpretability-at-inference-time"></a>Interpretierbarkeit beim Ziehen von Rückschlüssen
 
-Sie können den Explainer zusammen mit dem ursprünglichen Modell bereitstellen und ihn zur Rückschlusszeit verwenden, um die einzelnen Werte für die Featurerelevanz (lokale Erklärung) für beliebige neue Datenpunkte bereitzustellen. Wir bieten auch einfachere Bewertungsexplainer, um die Leistung der Interpretierbarkeit beim Ziehen von Rückschlüssen zu verbessern. Der Bereitstellungsvorgang für einen einfacheren Bewertungsexplainer ähnelt der Bereitstellung eines Modells und umfasst die folgenden Schritte:
+Sie können den Explainer zusammen mit dem ursprünglichen Modell bereitstellen und ihn zur Rückschlusszeit verwenden, um die einzelnen Werte für die Featurerelevanz (lokale Erklärung) für beliebige neue Datenpunkte bereitzustellen. Wir bieten auch einfachere Bewertungsexplainer, um die Leistung der Interpretierbarkeit beim Ziehen von Rückschlüssen zu verbessern. Dies wird derzeit nur über das Azure Machine Learning SDK unterstützt. Der Bereitstellungsvorgang für einen einfacheren Bewertungsexplainer ähnelt der Bereitstellung eines Modells und umfasst die folgenden Schritte:
 
 1. Erstellen Sie ein Erklärungsobjekt. Sie können z. B. `TabularExplainer` verwenden:
 
@@ -547,6 +560,17 @@ Sie können den Explainer zusammen mit dem ursprünglichen Modell bereitstellen 
 1. Bereinigen
 
    Verwenden Sie zum Löschen eines bereitgestellten Webdiensts `service.delete()`.
+
+## <a name="troubleshooting"></a>Problembehandlung
+
+* **Keine Unterstützung von Daten mit geringer Dichte**: Da für das Dashboard für die Modellerklärungen Fehler auftreten können bzw. die Leistung erheblich verringert werden kann, wenn eine große Zahl von Features vorhanden ist, werden Daten mit geringer Dichte derzeit nicht unterstützt. Darüber hinaus treten bei großen Datasets und einer großen Anzahl von Features allgemeine Speicherprobleme auf. 
+
+* **Vorhersagemodelle werden für Modellerklärungen nicht unterstützt**: Die Funktion für die Interpretierbarkeit (Erklärung des besten Modells) ist nicht für Vorhersageexperimente mit automatisiertem maschinellem Lernen verfügbar, von denen die folgenden Algorithmen als bestes Modell empfohlen werden: TCNForecaster, AutoArima, Prophet, ExponentialSmoothing, Average, Naive, Seasonal Average und Seasonal Naive. Bei Vorhersagen mit automatisiertem maschinellem Lernen werden Regressionsmodelle verwendet, die Erklärungen unterstützen. Im Erklärungsdashboard wird die Registerkarte „Individuelle Featurerelevanz“ aufgrund der Komplexität der Datenpipelines aber nicht für Vorhersagen unterstützt.
+
+* **Lokale Erklärung für Datenindex**: Das Erklärungsdashboard verfügt nicht über die Unterstützung für das Abgleichen der lokalen Relevanzwerte mit einem Zeilenbezeichner aus dem ursprünglichen Validierungsdataset, wenn das Dataset mehr als 5.000 Datenpunkte umfasst. Der Grund ist, dass für die Daten im Dashboard ein Downsampling nach dem Zufallsprinzip durchgeführt wird. Im Dashboard werden aber für jeden Datenpunkt, der an das Dashboard übergeben wird, auf der Registerkarte „Individuelle Featurerelevanz“ die Rohfeaturewerte für das Dataset angezeigt. Die Benutzer können die lokalen Relevanzwerte wieder dem ursprünglichen Dataset zuordnen, indem sie einen Abgleich mit den Rohfeaturewerten für das Dataset durchführen. Wenn die Größe des Validierungsdatasets weniger als 5.000 Stichproben umfasst, entspricht das Feature `index` in AzureML Studio dem Index im Validierungsdataset.
+
+* **Keine Unterstützung von Was-wäre-wenn-/ICE-Plots in Studio**: Was-wäre-wenn- und ICE-Plots (Individual Conditional Expectation) werden in Azure Machine Learning Studio auf der Registerkarte „Erklärungen“ nicht unterstützt, da für die hochgeladene Erklärung eine Computeressource benötigt wird, um die Vorhersagen und Wahrscheinlichkeiten von gestörten Features neu berechnen zu können. Dies wird derzeit in Jupyter Notebooks unterstützt, wenn für die Ausführung ein Widget mit dem SDK verwendet wird.
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

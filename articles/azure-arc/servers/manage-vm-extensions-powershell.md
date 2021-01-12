@@ -1,14 +1,14 @@
 ---
 title: Aktivieren der VM-Erweiterung mithilfe von Azure PowerShell
 description: In diesem Artikel wird beschrieben, wie Sie mit Azure PowerShell VM-Erweiterungen auf Azure Arc-fähigen Servern bereitstellen, die in Hybrid Cloud-Umgebungen ausgeführt werden.
-ms.date: 11/24/2020
+ms.date: 01/05/2021
 ms.topic: conceptual
-ms.openlocfilehash: 6b38c425042c260a29682db11212a1f6324abd38
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.openlocfilehash: 9b1f83ad976aa3471430a912280fac25dc5c5c0c
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97387409"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97916183"
 ---
 # <a name="enable-azure-vm-extensions-using-azure-powershell"></a>Aktivieren von Azure-VM-Erweiterungen mithilfe von Azure PowerShell
 
@@ -35,8 +35,10 @@ Im folgenden Beispiel wird die Log Analytics-VM-Erweiterung auf einem Arc-fähig
 ```powershell
 PS C:\> $Setting = @{ "workspaceId" = "workspaceId" }
 PS C:\> $protectedSetting = @{ "workspaceKey" = "workspaceKey" }
-PS C:\> New-AzConnectedMachineExtension -Name OMSLinuxAgent -ResourceGroupName "myResourceGroup" -MachineName "myMachine" -Location "eastus" -Publisher "Microsoft.EnterpriseCloud.Monitoring" -TypeHandlerVersion "1.10" -Settings $Setting -ProtectedSetting $protectedSetting -ExtensionType "OmsAgentforLinux"
+PS C:\> New-AzConnectedMachineExtension -Name OMSLinuxAgent -ResourceGroupName "myResourceGroup" -MachineName "myMachine" -Location "eastus" -Publisher "Microsoft.EnterpriseCloud.Monitoring" -TypeHandlerVersion "1.10" -Settings $Setting -ProtectedSetting $protectedSetting -ExtensionType "OmsAgentForLinux"
 ```
+
+Um im vorherigen Beispiel die Log Analytics-VM-Erweiterung auf einem Windows-Server mit Arc-Unterstützung zu aktivieren, ändern Sie den Wert für den Parameter `-ExtensionType` in `"MicrosoftMonitoringAgent"`.
 
 Im folgenden Beispiel wird die Erweiterung für benutzerdefinierte Skripts auf einem Arc-fähigen Server aktiviert:
 

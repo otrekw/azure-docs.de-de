@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 12/14/2020
+ms.date: 01/05/2021
 ms.reviewer: arvinh
-ms.openlocfilehash: 78e9d7355b8c96295456f8aa9cb80b1d3bdd2fab
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: bde5cecc4052724f795cac03f6efceb3451ea2ee
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97509545"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97914347"
 ---
 # <a name="known-issues-application-provisioning"></a>Bekannte Probleme: Bereitstellung von Anwendungen
 In diesem Artikel werden bekannte Probleme behandelt, die Sie bei der App-Bereitstellung berücksichtigen sollten. Sie können Ihr Feedback zum Anwendungsbereitstellungsdienst über UserVoice angeben. Weitere Informationen finden Sie auf der [UserVoice-Seite zur Azure AD-Anwendungsbereitstellung](https://aka.ms/appprovisioningfeaturerequest). Wir beobachten UserVoice genau, damit wir den Dienst verbessern können. 
@@ -82,6 +82,10 @@ Die [Zeit](./application-provisioning-when-will-provisioning-finish-specific-use
 **Änderungen werden nicht von der Ziel-App zu Azure AD migriert**
 
 Der App-Bereitstellungsdienst erkennt keine Änderungen an externen Apps. Daher wird keine Rollbackaktion ausgeführt. Der App-Bereitstellungsdienst verlässt sich auf Änderungen, die in Azure AD vorgenommen werden. 
+
+**Wechsel von „Sync All“ (Alle synchronisieren) zu „Sync Assigned“ (Zugewiesene synchronisieren) nicht möglich**
+
+Nachdem Sie den Bereich von „Sync All“ (Alle synchronisieren) in „Sync Assigned“ (Zugewiesene synchronisieren) geändert haben, müssen Sie einen Neustart durchführen, damit die Änderung wirksam wird. Sie können den Neustart über die Benutzeroberfläche durchführen.
 
 **Bereitstellungszyklus wird bis zum Abschluss fortgesetzt**
 

@@ -14,15 +14,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 12/21/2020
+ms.date: 01/05/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9e842e4d2a4dbd118840498587696df085b07700
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: f74e6435af9084b0c8f222c33dc922fe678bc4c7
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97722894"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97914518"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Verwenden von Azure zum Hosten und Ausführen von SAP-Workloadszenarien
 
@@ -83,6 +83,9 @@ In diesem Abschnitt finden Sie Dokumente zur Integration von Microsoft Power BI
 
 ## <a name="change-log"></a>Änderungsprotokoll
 
+- 05.01.2021: Änderungen beim [Aufskalieren von SAP HANA mit einem Standbyknoten auf Azure-VMs mit ANF unter SLES](./sap-hana-scale-out-standby-netapp-files-suse.md) und beim [Aufskalieren von SAP HANA mit einem Standbyknoten auf Azure-VMs mit ANF unter RHEL](./sap-hana-scale-out-standby-netapp-files-rhel.md), wobei die empfohlene Konfiguration zum Zulassen des SAP-Host-Agents zum Verwalten des lokalen Portbereichs geändert wurde.  
+- 04.01.2021: Neue Azure in [Was ist SAP HANA in Azure (große Instanzen)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) hinzugefügt, die von HLI unterstützt werden.
+- 29.12.2020: Architekturempfehlungen für bestimmte Azure-Regionen in [SAP-Workloadkonfigurationen mit Azure-Verfügbarkeitszonen](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-ha-availability-zones) hinzugefügt.
 - 21.12.2020: Hinzufügen neuer Zertifizierungen zu SKUs für große HANA-Instanzen in [Verfügbare SKUs für große HANA-Instanzen](./hana-available-skus.md)
 - 12.12.2020: Verweis auf SAP-Hinweis zur Erläuterung der Details zur Oracle Enterprise Linux-Unterstützung durch SAP in [Welche SAP-Software wird für Azure-Bereitstellungen unterstützt?](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-supported-product-on-azure#oracle-dbms-support) hinzugefügt
 - 26.11.2020: Anpassen von [SAP HANA: Speicherkonfigurationen für virtuelle Azure-Computer](./hana-vm-operations-storage.md) und [Azure Storage-Typen für die SAP-Workload](./planning-guide-storage.md) an geänderte einzelne [VM-SLAs](https://azure.microsoft.com/support/legal/sla/virtual-machines)

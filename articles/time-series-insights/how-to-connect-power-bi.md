@@ -1,108 +1,91 @@
 ---
 title: Verbinden Ihrer Umgebung mit Power BI – Azure Time Series Insights | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie Azure Time Series Insights mit Power BI verbinden können, um Daten unternehmensweit freizugeben, aufzuzeichnen und anzuzeigen.
-author: deepakpalled
-ms.author: dpalled
-manager: diviso
+author: shreyasharmamsft
+ms.author: shresha
+manager: dpalled
 services: time-series-insights
 ms.service: time-series-insights
 ms.topic: conceptual
-ms.date: 10/01/2020
-ms.openlocfilehash: 680b3c5a9548fa06d0139bd441b5583c27427a77
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.date: 12/14/2020
+ms.openlocfilehash: 07e79dbde142400677901ee02903144f9a42cd6b
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95020775"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740714"
 ---
 # <a name="visualize-data-from-azure-time-series-insights-in-power-bi"></a>Visualisieren der Daten von Azure Time Series Insights in Power BI
 
-Azure Time Series Insights ist eine Plattform zum Speichern, Verwalten, Abfragen und Visualisieren von Zeitreihendaten in der Cloud. [Power BI](https://powerbi.microsoft.com) ist ein Tool zur Unternehmensanalyse mit umfangreichen Visualisierungsfunktionen, mit dem Sie Erkenntnisse und Ergebnisse unternehmensweit teilen können. Beide Dienste können jetzt integriert werden, damit Sie die inhärenten Visualisierungsfunktionen von Azure Time Series Insights und Power BI optimal nutzen können.
+Azure Time Series Insights ist eine Plattform zum Speichern, Verwalten, Abfragen und Visualisieren von Zeitreihendaten in der Cloud. [Power BI](https://powerbi.microsoft.com) ist ein Tool zur Unternehmensanalyse mit umfangreichen Visualisierungsfunktionen, mit dem Sie Erkenntnisse und Ergebnisse unternehmensweit teilen können. Beide Dienste können jetzt integriert werden, um die leistungsstarken Analysefunktionen von Azure Time Series Insights mit den nützlichen Datenvisualisierungsfunktionen und einfachen Freigabeoptionen von Power BI zu verbinden.
 
 Sie lernen Folgendes:
 
-* Verbinden von Azure Time Series Insights mit Power BI über den Cloudconnector
-* Erstellen visueller Elemente mit Ihren Daten in Power BI
+* Herstellen einer Verbindung für Azure Time Series Insights mit Power BI über den nativen Azure Time Series Insights-Connector
+* Erstellen von visuellen Elementen mit Ihren Zeitreihendaten in Power BI
 * Veröffentlichen des Berichts für Power BI und Teilen mit dem restlichen Unternehmen
 
-Am Ende erfahren Sie, wie Sie Zeitreihendaten mit Azure Time Series Insights visualisieren und mit der leistungsstarken Datenvisualisierung und den einfachen Freigabefunktionen von Power BI erweitern können.
-
-Stellen Sie sicher, dass Sie sich für ein [kostenloses Azure-Abonnement](https://azure.microsoft.com/free/) registrieren, falls Sie noch keins besitzen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
+* Registrieren Sie sich für ein [kostenloses Azure-Abonnement](https://azure.microsoft.com/free/), falls Sie noch keins besitzen.
 * Herunterladen und Installieren der aktuellen Version von [Power BI Desktop](https://powerbi.microsoft.com/downloads/)
 * [Azure Time Series Insights Gen2-Umgebung](./how-to-provision-manage.md). Erstellen Sie eine, falls Sie nicht über eine solche Umgebung verfügen.
 
+Lesen Sie den Artikel [Gewähren von Datenzugriff für eine Umgebung](./concepts-access-policies.md), und stellen Sie sicher, dass Sie entweder über Direkt- oder Gastzugriff auf die Azure Time Series Insights Gen2-Umgebung verfügen. 
+
 > [!IMPORTANT]
->
-> * Der Connector wird derzeit nur in Azure Time Series Insights Gen2-Umgebungen unterstützt, die mit **Warm Storage** konfiguriert sind.
-> * Falls Sie über Gastzugriff auf die Azure Time Series Insights Gen2-Umgebung von einem anderen Azure AD-Mandanten aus verfügen, können Sie nicht auf den Connector zugreifen. Informieren Sie sich über die [Umgebungszugriffsrichtlinien](./concepts-access-policies.md).
+> * Führen Sie den Download und die Installation der aktuellen Version von [Power BI Desktop](https://powerbi.microsoft.com/downloads/) durch. Vergewissern Sie sich, dass Sie mindestens die Version vom Dezember 2020 (2.88.321.0) von Power BI Desktop installiert haben, damit Sie die Schritte in diesem Artikel ausführen können. 
 
 ## <a name="connect-data-from-azure-time-series-insights-to-power-bi"></a>Verbinden der Daten von Azure Time Series Insights mit Power BI
 
-Gehen Sie wie folgt vor, um die Azure Time Series Insights-Umgebung mit Power BI zu verbinden:
-
-1. Öffnen von Azure Time Series Insights-Explorer
-1. Exportieren Sie Daten als Abfrage oder als Rohdaten.
-1. Öffnen Sie Power BI Desktop.
-1. Laden Sie Daten über die benutzerdefinierte Abfrage.
-
-### <a name="export-data-into-power-bi-desktop"></a>Exportieren Sie Daten in Power BI Desktop.
+### <a name="1-export-data-into-power-bi-desktop"></a>1. Exportieren Sie Daten in Power BI Desktop.
 
 Erste Schritte:
 
-1. Öffnen Sie Azure Time Series Insights-Explorer, und stellen Sie Ihre Daten zusammen.
+1. Öffnen Sie Azure Time Series Insights Gen2-Explorer, und stellen Sie Ihre Daten zusammen. Dies sind die Daten, die nach Power BI exportiert werden.
 1. Nachdem Sie eine Ansicht erstellt haben, mit der Sie zufrieden sind, navigieren Sie zum Dropdownmenü **Weitere Aktionen**, und wählen Sie dann **Mit Power BI verbinden** aus.
 
-    [![Azure Time Series Insights-Explorer-Export](media/how-to-connect-power-bi/time-series-insights-export-option.png)](media/how-to-connect-power-bi/time-series-insights-export-option.png#lightbox)
+    [![Export von Azure Time Series Insights Gen2-Explorer](media/how-to-connect-power-bi/export-from-explorer.jpg)](media/how-to-connect-power-bi/export-from-explorer.jpg#lightbox)
 
-1. Legen Sie Ihre Parameter auf dieser Registerkarte fest:
+1. Legen Sie Ihre Parameter für den Export fest:
 
-   1. Geben Sie einen relativen Zeitrahmen für die Anzeige an. Wenn Sie mit Ihrer bestehenden Ansicht zufrieden sind, belassen Sie diese als **Vorhandener Zeitrahmen**.
-
-   1. Wählen Sie zwischen **aggregierten Ereignissen** und **Rohereignissen**.
+   * **Datenformat:** Wählen Sie aus, ob Sie **aggregierte Daten** oder **Rohereignisse** nach Power BI exportieren möchten. 
 
        > [!NOTE]
-       > Sie können Ihre Daten jederzeit später in Power BI aggregieren, aber nach der Aggregation nicht zu Rohdaten zurückkehren.
+       > * Wenn Sie Rohereignisse exportieren, können Sie diese Daten später in Power BI aggregieren. Nach dem Export von aggregierten Daten ist die Umstellung auf Rohdaten in Power BI nicht mehr möglich. 
+       > * Für Daten der Ebene „Rohereignisse“ gilt ein Grenzwert von 250.000 für die Ereignisanzahl.
 
-       > [!NOTE]
-       > Für Daten der Ebene „Rohereignisse“ gilt ein Grenzwert von 250.000 für die Ereignisanzahl.
+   * **Zeitbereich**: Geben Sie an, ob in Power BI ein **fester** Zeitbereich oder die **aktuellen** Daten angezeigt werden sollen. Bei Auswahl eines festen Zeitraums werden die Daten nach Power BI exportiert, die im von Ihnen angegebenen Suchzeitraum enthalten sind. Die Auswahl des aktuellen Zeitbereichs bedeutet, dass für Power BI die aktuellen Daten für den von Ihnen gewählten Suchzeitraum exportiert werden. (Wenn Sie beispielsweise eine beliebige Stunde mit Daten und die Einstellung „Aktuell“ auswählen, werden vom Power BI-Connector immer Abfragen für die Daten der aktuellen Stunde durchgeführt.)
+  
+   * **Speichertyp**: Wählen Sie aus, ob Ihre ausgewählte Abfrage für **Warm Storage** oder **Cold Storage** durchgeführt werden soll. 
 
-       [![Verbinden](media/how-to-connect-power-bi/connect-to-power-bi.png)](media/how-to-connect-power-bi/connect-to-power-bi.png#lightbox)
+    > [!TIP]
+    > * Vom Azure Time Series Insights-Explorer werden die empfohlenen Parameter anhand der Daten, die Sie für den Export festgelegt haben, automatisch ausgewählt. 
 
-   1. Wenn Sie Ihre Azure Time Series Insights-Umgebung nicht für **Warm Storage** konfiguriert haben, erhalten Sie eine Warnung.
+1. Wählen Sie die Option **Abfrage in Zwischenablage kopieren** aus, nachdem Sie Ihre Einstellungen konfiguriert haben.
 
-       [![Warm Storage-Warnung](media/how-to-connect-power-bi/connect-to-power-bi-warning.png)](media/how-to-connect-power-bi/connect-to-power-bi-warning.png#lightbox)
+    [![Azure Time Series Insights-Explorer: Modales Dialogfeld](media/how-to-connect-power-bi/choose-explorer-parameters.jpg)](media/how-to-connect-power-bi/choose-explorer-parameters.jpg#lightbox)
 
-       > [!TIP]
-       > Sie können Ihre bestehende Instanz im Azure-Portal für **Warm Storage** konfigurieren.
+2. Starten Sie Power BI Desktop.
+   
+3. Wählen Sie in Power BI Desktop auf der Registerkarte **Start** die Option **Daten abrufen** in der oberen linken Ecke und anschließend **Mehr** aus.
 
-1. Wählen Sie **Abfrage in Zwischenablage kopieren** aus.
-1. Starten Sie jetzt Power BI Desktop.
-1. Wählen Sie in Power BI Desktop auf der Registerkarte **Start** die Option **Daten abrufen** in der oberen linken Ecke und anschließend **Mehr** aus.
+    [![Abrufen von Daten in Power BI](media/how-to-connect-power-bi/get-data-power-bi.jpg)](media/how-to-connect-power-bi/get-data-power-bi.jpg#lightbox)
 
-    [![Dropdownliste für Start](media/how-to-connect-power-bi/power-bi-home-drop-down.png)](media/how-to-connect-power-bi/power-bi-home-drop-down.png#lightbox)
+4. Suchen Sie nach **Azure Time Series Insights**, und wählen Sie **Azure Time Series Insights (Beta)** und dann **Verbinden** aus.
 
-1. Suchen Sie nach **Azure Time Series Insights**, und wählen Sie **Azure Time Series Insights (Beta)** und dann **Verbinden** aus.
-
-    [![Verbinden von Power BI mit Azure Time Series Insights](media/how-to-connect-power-bi/connect-to-time-series-insights.png)](media/how-to-connect-power-bi/connect-to-time-series-insights.png#lightbox)
+    [![Verbinden von Power BI mit Azure Time Series Insights](media/how-to-connect-power-bi/select-tsi-connector.jpg)](media/how-to-connect-power-bi/select-tsi-connector.jpg#lightbox)
 
     Alternativ können Sie auch zur Registerkarte **Azure** navigieren, **Azure Time Series Insights (Beta)** und dann **Verbinden** auswählen.
 
-1. Es wird ein Dialogfeld mit einer Meldung angezeigt, in dem Sie um die Berechtigung zum Herstellen von Verbindungen mit Ressourcen von Drittanbietern gebeten werden. Wählen Sie **Weiter** aus.
+5. Fügen Sie die Abfrage, die Sie aus dem Azure Time Series Insights-Explorer kopiert haben, in das Feld **Benutzerdefinierte Abfrage** ein, und wählen Sie dann **OK** aus.
 
-    [![Auswählen von „Benutzerdefinierte Abfrage erstellen“](media/how-to-connect-power-bi/confirm-the-connection.png)](media/how-to-connect-power-bi/confirm-the-connection.png#lightbox)
+    [![Einfügen der benutzerdefinierten Abfrage und Auswählen von „OK“](media/how-to-connect-power-bi/custom-query-load.png)](media/how-to-connect-power-bi/custom-query-load.png#lightbox)  
 
-1. Wählen Sie im Dropdownmenü unter **Datenquelle** die Option **Benutzerdefinierte Abfrage erstellen** aus. Fügen Sie den Inhalt Ihrer Zwischenablage unten in das optionale Feld **Benutzerdefinierte Abfrage (optional)** ein, und drücken Sie dann auf **OK**.
+6.  Die Datentabelle wird jetzt geladen. Drücken Sie **Laden**, um sie in Power BI zu laden. Falls Sie Transformationen für die Daten durchführen möchten, haben Sie jetzt die Möglichkeit dazu, indem Sie auf **Daten transformieren** klicken. Sie können Ihre Daten auch transformieren, nachdem sie geladen wurden.
 
-    [![Übergeben der benutzerdefinierten Abfrage und Auswählen von „OK“](media/how-to-connect-power-bi/custom-query-load.png)](media/how-to-connect-power-bi/custom-query-load.png#lightbox)  
-
-1. Die Datentabelle wird jetzt geladen. Drücken Sie **Laden**, um sie in Power BI zu laden.
-
-    [![Überprüfen der geladenen Daten in der Tabelle und Auswählen von „Laden“](media/how-to-connect-power-bi/review-the-loaded-data-table.png)](media/how-to-connect-power-bi/review-the-loaded-data-table.png#lightbox)  
-
-Wenn Sie diese Schritte abgeschlossen haben, wechseln Sie zum nächsten Abschnitt.
+    [![Überprüfen der Daten in der Tabelle und Auswählen von „Laden“](media/how-to-connect-power-bi/review-the-loaded-data-table.png)](media/how-to-connect-power-bi/review-the-loaded-data-table.png#lightbox)  
 
 ## <a name="create-a-report-with-visuals"></a>Erstellen eines Berichts mit Visuals
 
@@ -114,38 +97,25 @@ Nachdem Sie die Daten jetzt in Power BI importiert haben, ist es an der Zeit, ei
 
 1. Wählen Sie in der Spalte **Visualisierungen** das gewünschte visuelle Element aus. Wählen Sie z. B. **Liniendiagramm** aus. Dadurch wird Ihrem Canvas ein leeres Liniendiagramm hinzugefügt.
 
-1. Wählen Sie in der Liste **Felder** die Option **_Timestamp** aus, und ziehen Sie sie in das Feld **Achse**, um Elemente entlang der X-Achse anzuzeigen. Stellen Sie sicher, dass als Wert für die **Achse** zu **_Timestamp** gewechselt wird (Standard ist **Datumshierarchie**).
+1.  Wählen Sie in der Liste **Felder** die Option **_Timestamp** (Zeitstempel) aus, und ziehen Sie sie in das Feld **Achse**, um Zeitdaten entlang der X-Achse anzuzeigen. Stellen Sie sicher, dass als Wert für die **Achse** zu **_Timestamp** gewechselt wird (Standard ist **Datumshierarchie**).
 
-    [![Screenshot, der das Menü „Zeitstempel“ mit ausgewähltem „_Timestamp“ zeigt.](media/how-to-connect-power-bi/select-timestamp.png)](media/how-to-connect-power-bi/select-timestamp.png#lightbox)
+    [![Auswählen von „_Timestamp“](media/how-to-connect-power-bi/select-timestamp.png)](media/how-to-connect-power-bi/select-timestamp.png#lightbox)
 
-1. Wählen Sie erneut in der Liste **Felder** die Option **TimeSeriesId** aus, und ziehen Sie sie in das Feld **Werte**, um Elemente entlang der Y-Achse anzuzeigen.
+1.  Wählen Sie in der Liste **Felder** die Variable aus, die dargestellt werden soll, und ziehen Sie sie in das Feld **Werte**, um die Werte entlang der Y-Achse anzuzeigen. Wählen Sie Ihren Wert für die Zeitreihen-ID aus, und ziehen Sie ihn in das Feld **Legende**, um im Diagramm mehrere Linien zu erstellen (eine pro Zeitreihen-ID). Dies führt zu einer Anzeige, die der Anzeige des Azure Time Series Insights-Explorers ähnelt! 
 
-    [![Erstellen eines Liniendiagramms](media/how-to-connect-power-bi/power-bi-line-chart.png)](media/how-to-connect-power-bi/power-bi-line-chart.png#lightbox)
+    [![Erstellen eines einfachen Liniendiagramms](media/how-to-connect-power-bi/power-bi-line-chart.png)](media/how-to-connect-power-bi/power-bi-line-chart.png#lightbox)
 
 1. Um ein weiteres Diagramm zum Canvas hinzuzufügen, klicken Sie an eine beliebige Stelle auf dem Canvas außerhalb des Liniendiagramms, und wiederholen Sie diesen Vorgang.
 
     [![Erstellen zusätzlicher freizugebender Diagramme](media/how-to-connect-power-bi/power-bi-additional-charts.png)](media/how-to-connect-power-bi/power-bi-additional-charts.png#lightbox)
 
-Nachdem Sie Ihren Bericht erstellt haben, können Sie ihn in Power BI Reporting Services veröffentlichen.
+Nachdem Sie Ihren Bericht erstellt haben, können Sie ihn für die Reporting Services von Power BI veröffentlichen und für andere Personen in Ihrer Organisation freigeben.
 
 ## <a name="advanced-editing"></a>Erweiterte Bearbeitung
-
-Wenn Sie bereits ein Dataset in Power BI geladen haben, die Abfrage aber ändern möchten (z. B. Datum/Uhrzeit oder Umgebungs-ID-Parameter), können Sie dies über die „Erweiterter Editor“-Funktion von Power BI erreichen. Weitere Informationen finden Sie in der [Dokumentation zu Power BI](/power-bi/desktop-query-overview).
-
-Als Übersicht:
-
-1. Wählen Sie in Power BI Desktop **Abfragen bearbeiten** aus.
-1. Drücken Sie auf **Erweiterter Editor**.
-
-    [![Bearbeiten von Abfragen im erweiterten Editor](media/how-to-connect-power-bi/power-bi-advanced-query-editing.png)](media/how-to-connect-power-bi/power-bi-advanced-query-editing.png#lightbox)
-
-1. Ändern Sie die JSON-Nutzlast nach Bedarf.
-1. Wählen Sie **Fertig** und dann **Schließen und übernehmen** im **Fenster des Power Query-Editors** aus.
-
-Die Benutzeroberfläche zeigt nun die gewünschten Änderungen an, die Sie angewendet haben.  
+Wenn Sie bereits ein Dataset in Power BI geladen haben, die Abfrage aber ändern möchten (z. B. Datum/Uhrzeit oder Umgebungs-ID-Parameter), können Sie dies über die „Erweiterter Editor“-Funktion von Power BI erreichen. Weitere Informationen zum Vornehmen von Änderungen mit dem **Power Query-Editor** finden Sie in der [Power BI-Dokumentation](https://docs.microsoft.com/power-bi/desktop-query-overview). 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Weitere Informationen zu Azure Time Series Insights finden Sie unter [Power BI-Connectorkonzepte](/power-bi/desktop-query-overview).
+* Weitere Informationen zu [Power BI Desktop](https://docs.microsoft.com/power-bi/desktop-query-overview).
 
-* Weitere Informationen zu [Power BI Desktop](/power-bi/desktop-query-overview).
+* Lesen Sie die weiteren Informationen zum [Abfragen von Daten](concepts-query-overview.md) in Azure Time Series Insights Gen2.

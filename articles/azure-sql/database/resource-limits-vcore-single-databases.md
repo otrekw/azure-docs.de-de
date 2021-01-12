@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/15/2020
-ms.openlocfilehash: d6936d6c72855bc22e3fc9323028fd0b8cd0fb29
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: 4ffe663c1a1651891af5f6e65ee231cbe3e8d650
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92097574"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882301"
 ---
 # <a name="resource-limits-for-single-databases-using-the-vcore-purchasing-model"></a>Ressourcenlimits für Singletons mit dem auf virtuellen Kernen (V-Kernen) basierenden Kaufmodell
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -307,7 +307,7 @@ Der [serverlose Computetarif](serverless-tier-overview.md) ist derzeit nur auf G
 |Max. gleichzeitige Worker (Anforderungen)|200|400|600|800|1000|1200|1400|
 |Max. gleichzeitige Sitzungen|30.000|30.000|30.000|30.000|30.000|30.000|30.000|
 |Anzahl von Replikaten|1|1|1|1|1|1|1|
-|Multi-AZ|–|–|–|–|–|–|–|
+|Multi-AZ|[In der Vorschau verfügbar](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[In der Vorschau verfügbar](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[In der Vorschau verfügbar](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[In der Vorschau verfügbar](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[In der Vorschau verfügbar](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[In der Vorschau verfügbar](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[In der Vorschau verfügbar](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|
 |Horizontale Leseskalierung|–|–|–|–|–|–|–|
 |Enthaltener Sicherungsspeicher|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|
 
@@ -332,7 +332,7 @@ Der [serverlose Computetarif](serverless-tier-overview.md) ist derzeit nur auf G
 |Max. gleichzeitige Worker (Anforderungen)|1600|1800|2000|2400|3200|4000|8\.000|
 |Max. gleichzeitige Sitzungen|30.000|30.000|30.000|30.000|30.000|30.000|30.000|
 |Anzahl von Replikaten|1|1|1|1|1|1|1|
-|Multi-AZ|–|–|–|–|–|–|–|
+|Multi-AZ|[In der Vorschau verfügbar](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[In der Vorschau verfügbar](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[In der Vorschau verfügbar](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[In der Vorschau verfügbar](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[In der Vorschau verfügbar](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[In der Vorschau verfügbar](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[In der Vorschau verfügbar](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|
 |Horizontale Leseskalierung|–|–|–|–|–|–|–|
 |Enthaltener Sicherungsspeicher|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|
 

@@ -5,12 +5,12 @@ services: service-fabric
 documentationcenter: .net
 ms.topic: conceptual
 ms.date: 02/01/2019
-ms.openlocfilehash: 25e6854491f35dd0aa46b5de218d312f57854760
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: bbfdc0a30aa673e8602ec9233fde4236c99ef5aa
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96018918"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882210"
 ---
 # <a name="overview-of-service-fabric-clusters-on-azure"></a>Übersicht über Service Fabric-Cluster in Azure
 Ein Service Fabric-Cluster enthält eine per Netzwerk verbundene Gruppe von virtuellen oder physischen Computern, auf denen Ihre Microservices bereitgestellt und verwaltet werden. Ein Computer oder ein virtueller Computer, der Teil eines Clusters ist, wird als Clusterknoten bezeichnet. Cluster können auf Tausende von Knoten skaliert werden. Wenn Sie dem Cluster neue Knoten hinzufügen, verteilt Service Fabric Partitionsreplikate und Instanzen des Diensts auf die erhöhte Anzahl von Knoten neu, um sie auszugleichen. Die Gesamtleistung der Anwendung verbessert sich und Konflikte beim Speicherzugriff werden reduziert. Wenn die Knoten im Cluster nicht effizient genutzt werden, können Sie die Anzahl der Knoten im Cluster verringern. Service Fabric gleicht die Partitionsreplikate und Instanzen erneut über die verringerte Anzahl von Knoten aus, um die Hardware der einzelnen Knoten besser zu nutzen.
@@ -94,16 +94,17 @@ Weitere Informationen finden Sie unter [Aktualisieren von Clustern](service-fabr
 ## <a name="supported-operating-systems"></a>Unterstützte Betriebssysteme
 Sie können Cluster auf virtuellen Computern mit diesen Betriebssystemen erstellen:
 
-| Betriebssystem | Erste unterstützte Service Fabric-Version |
-| --- | --- |
-| Windows Server 2012 R2 | Alle Versionen |
-| Windows Server 2016 | Alle Versionen |
-| Windows Server 1709 | 6.0 |
-| Windows Server 1803 | 6.4 |
-| Windows Server 1809 | 6.4.654.9590 |
-| Windows Server 2019 | 6.4.654.9590 |
-| Linux Ubuntu 16.04 | 6.0 |
-| Linux Ubuntu 18.04 | 7.1 |
+| Betriebssystem | Erste unterstützte Service Fabric-Version | Letzte unterstützte Service Fabric-Version |
+| --- | --- | --- | 
+| Windows Server 2019 | 6.4.654.9590 | – |
+| Windows Server 2016 | Alle Versionen | – |
+| Windows Server 20H2 | 7.2.445.9590 | – |
+| Windows Server 1809 | 6.4.654.9590 | 7.2.445.9590 |
+| Windows Server 1803 | 6.4 | 7.2.445.9590 |
+| Windows Server 1709 | 6.0 | 7.2.445.9590 |
+| Windows Server 2012 | Alle Versionen | – | 
+| Linux Ubuntu 16.04 | 6.0 | – |
+| Linux Ubuntu 18.04 | 7.1 | – |
 
 Weitere Informationen finden Sie unter [Unterstützte Clusterversionen in Azure](./service-fabric-versions.md#supported-operating-systems).
 

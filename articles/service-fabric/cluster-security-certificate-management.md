@@ -4,12 +4,12 @@ description: Erfahren Sie mehr zum Verwalten von Zertifikaten in einem Service F
 ms.topic: conceptual
 ms.date: 04/10/2020
 ms.custom: sfrev
-ms.openlocfilehash: aba681157d71f94914462b8d9fc13b90d4d6b153
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 722c84c25cb5188e45dd96363bab9af6ff93f6dc
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88653663"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97901265"
 ---
 # <a name="certificate-management-in-service-fabric-clusters"></a>Zertifikatverwaltung in Service Fabric-Clustern
 
@@ -109,9 +109,12 @@ Randbemerkung: IETF [RFC 3647](https://tools.ietf.org/html/rfc3647) definiert [V
 
 Wir haben bereits festgestellt, dass Azure Key Vault die automatische Rotation von Zertifikaten unterstützt. Die zugehörige Zertifikatrichtlinie legt den Zeitpunkt fest, an dem das Zertifikat im Tresor rotiert wird, entweder anhand von Tagen vor Ablauf oder als Prozentsatz der Gesamtgültigkeitsdauer. Der Bereitstellungs-Agent muss nach diesem Zeitpunkt und vor dem Ablauf des nun vorherigen Zertifikats aufgerufen werden, um dieses neue Zertifikat an alle Knoten im Cluster zu verteilen. Service Fabric hilft dabei, indem Integritätswarnungen ausgelöst werden, wenn das Ablaufdatum eines Zertifikats (das derzeit im Cluster verwendet wird) vor einem vorgegebenen Intervall eintritt. Ein automatischer Bereitstellungs-Agent (d. h. die Key Vault-VM-Erweiterung), der so konfiguriert ist, dass er das Tresorzertifikat überwacht, fragt den Tresor in regelmäßigen Abständen ab, erkennt die Rotation, ruft das neue Zertifikat ab und installiert es. Wenn die Bereitstellung über das VM/VMSS-Feature „Geheimnisse“ erfolgt, muss ein autorisierter Bediener die VM/VMSS mit dem Key Vault-URI mit Versionsangabe aktualisieren, der dem neuen Zertifikat entspricht.
 
-In beiden Fällen wird das rotierte Zertifikat nun allen Knoten zur Verfügung gestellt. Außerdem haben wir den Mechanismus beschrieben, den Service Fabric zur Erkennung von Rotationen verwendet. Lassen Sie uns untersuchen, was als Nächstes geschieht, wenn die Rotation auf ein Clusterzertifikat angewendet wird, das anhand des allgemeinen Namens des Antragstellers deklariert wurde (zum Zeitpunkt der Abfassung dieses Artikels und mit Service Fabric-Laufzeitversion 7.1.409):
-  - Bei neuen Verbindungen innerhalb des Clusters sowie mit dem Cluster findet und wählt die Service Fabric-Laufzeit das passende Zertifikat mit dem am weitesten entfernten Ablaufdatum (die Eigenschaft NotAfter des Zertifikats, oft als „na“ abgekürzt).
+In beiden Fällen wird das rotierte Zertifikat nun allen Knoten zur Verfügung gestellt. Außerdem haben wir den Mechanismus beschrieben, den Service Fabric zur Erkennung von Rotationen verwendet. Lassen Sie uns untersuchen, was als Nächstes geschieht, wenn die Rotation auf ein Clusterzertifikat angewendet wird, das anhand des allgemeinen Namens des Antragstellers deklariert wurde.
+  - Bei neuen Verbindungen innerhalb des Clusters sowie mit dem Cluster findet und wählt die Service Fabric-Laufzeit das passende Zertifikat, das zuletzt ausgestellt wurde (größter Wert der Eigenschaft „NotBefore“). Beachten Sie, dass dies eine Änderung gegenüber früheren Versionen der Service Fabric-Laufzeit ist.
   - Bestehende Verbindungen bleiben bestehen bzw. können natürlich ablaufen oder anderweitig beendet werden. Ein interner Handler wird benachrichtigt, dass es eine neue Übereinstimmung gibt.
+
+> [!NOTE] 
+> Vor Version 7.2.445 (7.2 CU4) hat Service Fabric das Zertifikat mit dem spätesten Ablaufdatum ausgewählt (das Zertifikat mit dem spätesten Wert der Eigenschaft „NotAfter“).
 
 Daraus ergeben sich die folgenden wichtigen Beobachtungen:
   - Das Verlängerungszertifikat wird ggf. ignoriert, wenn sein Ablaufdatum vor dem des derzeit verwendeten Zertifikats liegt.
@@ -134,8 +137,11 @@ Wir haben Mechanismen und Einschränkungen beschrieben, komplizierte Regeln und 
 
 Die Sequenz ist vollständig skriptfähig bzw. automatisierbar und ermöglicht eine anfängliche Bereitstellung eines Clusters ohne Benutzereingriff, der für automatisches Rollover von Zertifikaten konfiguriert ist. Es folgen detaillierte Schritte. Wir verwenden eine Kombination aus PowerShell-Cmdlets und Fragmenten von JSON-Vorlagen. Die gleiche Funktionalität ist mit allen unterstützten Mitteln zur Interaktion mit Azure zu erreichen.
 
-[!NOTE] Bei diesem Beispiel wird davon ausgegangen, dass sich bereits ein Zertifikat im Tresor befindet. Das Registrieren und Verlängern eines von Key Vault verwalteten Zertifikats erfordert die zuvor in diesem Artikel beschriebenen erforderlichen manuellen Schritte. Verwenden Sie in Produktionsumgebungen von Key Vault verwaltete Zertifikate. Ein Beispielskript speziell für eine Microsoft-interne PKI ist nachstehend angegeben.
-Automatisches Rollover von Zertifikaten ist nur für von einer Zertifizierungsstelle ausgestellte Zertifikate sinnvoll. Der Einsatz selbstsignierter Zertifikate, einschließlich derer, die bei der Bereitstellung eines Service Fabric-Clusters im Azure-Portal generiert werden, ist unsinnig, aber dennoch für lokale/vom Entwickler gehostete Bereitstellungen möglich, indem der Fingerabdruck des Ausstellers als identisch mit dem des Blattzertifikats deklariert wird.
+> [!NOTE]
+> Bei diesem Beispiel wird davon ausgegangen, dass sich bereits ein Zertifikat im Tresor befindet. Das Registrieren und Verlängern eines von Key Vault verwalteten Zertifikats erfordert die zuvor in diesem Artikel beschriebenen erforderlichen manuellen Schritte. Verwenden Sie in Produktionsumgebungen von Key Vault verwaltete Zertifikate. Ein Beispielskript speziell für eine Microsoft-interne PKI ist nachstehend angegeben.
+
+> [!NOTE]
+> Automatisches Rollover von Zertifikaten ist nur für von einer Zertifizierungsstelle ausgestellte Zertifikate sinnvoll. Der Einsatz selbstsignierter Zertifikate, einschließlich derer, die bei der Bereitstellung eines Service Fabric-Clusters im Azure-Portal generiert werden, ist unsinnig, aber dennoch für lokale/vom Entwickler gehostete Bereitstellungen möglich, indem der Fingerabdruck des Ausstellers als identisch mit dem des Blattzertifikats deklariert wird.
 
 ### <a name="starting-point"></a>Startpunkt
 Der Kürze halber gehen wir von folgendem Ausgangszustand aus:

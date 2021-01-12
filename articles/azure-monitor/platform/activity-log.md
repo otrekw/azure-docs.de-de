@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/12/2020
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 1b49faabb1c61a10418bfce3ae2e8187429981ad
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 6eae805b6edce4c414d26f1b79d52ac33f8f2d9d
+ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186081"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97709111"
 ---
 # <a name="azure-activity-log"></a>Azure-Aktivitätsprotokoll
 Das Aktivitätsprotokoll ist ein [Plattformprotokoll](platform-logs-overview.md) in Azure, das einen Einblick in Ereignisse auf Abonnementebene ermöglicht. Dies sind beispielsweise Informationen wie das Ändern einer Ressource oder das Starten eines virtuellen Computers. Sie können das Aktivitätsprotokoll im Azure-Portal anzeigen oder Einträge mit PowerShell und der CLI abrufen. Um zusätzliche Funktionen zu erhalten, sollten Sie eine Diagnoseeinstellung erstellen, mit der das Aktivitätsprotokoll an [Azure Monitor-Protokolle](data-platform-logs.md) gesendet wird, an Azure Event Hubs außerhalb von Azure weitergeleitet oder für die Archivierung an Azure Storage gesendet wird. In diesem Artikel wird ausführlich beschrieben, wie das Aktivitätsprotokoll angezeigt und an verschiedene Ziele gesendet wird.
@@ -56,7 +56,8 @@ Sie können auch mithilfe der folgenden Methoden auf Aktivitätsprotokollereigni
 - Verwenden von Protokollabfragen zum Ausführen komplexer Analysen und Erhalten tiefer Einblicke in Aktivitätsprotokolleinträge
 - Verwenden von Protokollwarnungen mit Aktivitätseinträgen, die eine komplexere Warnungslogik ermöglichen
 - Speichern von Aktivitätsprotokolleinträgen für mehr als 90 Tage
-- Keine Gebühren für die Erfassung oder Aufbewahrung von Aktivitätsprotokolldaten, die in einem Log Analytics-Arbeitsbereich gespeichert sind
+- Keine Datenerfassungsgebühren für die Aktivitätsprotokolldaten, die in einem Log Analytics-Arbeitsbereich gespeichert sind
+- Keine Gebühren für die Aufbewahrung von Aktivitätsprotokolldaten in einem Log Analytics-Arbeitsbereich bis zum Ablauf von 90 Tagen
 
 [Erstellen Sie eine Diagnoseeinstellung](diagnostic-settings.md), um das Aktivitätsprotokoll an einen Log Analytics-Arbeitsbereich zu senden. Sie können das Aktivitätsprotokoll von einem einzelnen Abonnement an bis zu fünf Arbeitsbereiche senden. Für eine mandantenübergreifende Erfassung von Protokollen ist [Azure Lighthouse](../../lighthouse/index.yml) erforderlich.
 
@@ -66,14 +67,14 @@ Verwenden Sie z. B. die folgende Abfrage, um die Anzahl der Aktivitätsprotokol
 
 ```kusto
 AzureActivity
-| summarize count() by Category
+| summarize count() by CategoryValue
 ```
 
 Verwenden Sie die folgende Abfrage, um alle Datensätze in der Kategorie „Administrativ“ abzurufen.
 
 ```kusto
 AzureActivity
-| where Category == "Administrative"
+| where CategoryValue == "Administrative"
 ```
 
 
@@ -199,7 +200,7 @@ Wenn bereits ein Protokollprofil vorhanden ist, müssen Sie zuerst das vorhanden
     Add-AzLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -serviceBusRuleId /subscriptions/s1/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/mytestSB/authorizationrules/RootManageSharedAccessKey -Location global,westus,eastus -RetentionInDays 90 -Category Write,Delete,Action
     ```
 
-    | Eigenschaft | Erforderlich | BESCHREIBUNG |
+    | Eigenschaft | Erforderlich | Beschreibung |
     | --- | --- | --- |
     | Name |Ja |Name des Protokollprofils. |
     | StorageAccountId |Nein |Ressourcen-ID des Speicherkontos, in dem das Aktivitätsprotokoll gespeichert werden soll. |
@@ -242,7 +243,7 @@ Wenn bereits ein Protokollprofil vorhanden ist, müssen Sie zuerst das vorhanden
    az monitor log-profiles create --name "default" --location null --locations "global" "eastus" "westus" --categories "Delete" "Write" "Action"  --enabled false --days 0 --service-bus-rule-id "/subscriptions/<YOUR SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventHub/namespaces/<EVENT HUB NAME SPACE>/authorizationrules/RootManageSharedAccessKey"
    ```
 
-    | Eigenschaft | Erforderlich | BESCHREIBUNG |
+    | Eigenschaft | Erforderlich | Beschreibung |
     | --- | --- | --- |
     | name |Ja |Name des Protokollprofils. |
     | storage-account-id |Ja |Ressourcen-ID des Speicherkontos, in dem Aktivitätsprotokolle gespeichert werden sollen. |
@@ -277,6 +278,7 @@ Die Spalten in der folgenden Tabelle sind im aktualisierten Schema veraltet. Sie
 |:---|:---|
 | ActivityStatus    | ActivityStatusValue    |
 | ActivitySubstatus | ActivitySubstatusValue |
+| Category          | CategoryValue          |
 | Vorgangsname     | OperationNameValue     |
 | ResourceProvider  | ResourceProviderValue  |
 

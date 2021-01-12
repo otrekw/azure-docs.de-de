@@ -11,12 +11,12 @@ ms.reviewer: luquinta
 ms.date: 11/16/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 17b0564b4b73f5a5032343dcb78669cbf4cabd5a
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: 057f965c67c25d486771a4c037e13153a7f2cf66
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97516140"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97901146"
 ---
 # <a name="use-azure-machine-learning-with-the-fairlearn-open-source-package-to-assess-the-fairness-of-ml-models-preview"></a>Verwenden von Azure Machine Learning mit dem Open-Source-Paket Fairlearn zur Bewertung der Fairness von ML-Modellen (Vorschau)
 
@@ -46,7 +46,7 @@ Spätere Versionen von Fairlearn sollten auch im folgenden Beispielcode funktion
 
 Das folgende Beispiel zeigt die Verwendung des Fairnesspakets. Wir laden die Erkenntnisse zur Modellfairness in Azure Machine Learning hoch und sehen das Fairnessbewertungsdashboard in Azure Machine Learning Studio.
 
-1. Trainieren Sie ein Beispielmodell in einem Jupyter-Notebook. 
+1. Trainieren Sie ein Beispielmodell in Jupyter Notebook. 
 
     Als Dataset verwenden Sie das bekannte Zensusdataset mit Angaben zu Erwachsenen, das Sie über OpenML abrufen. Unser Ausgangspunkt ist, dass bei der Kreditvergabeentscheidung ein Problem mit der Bezeichnung auftritt, die angibt, ob eine Person einen früheren Kredit zurückgezahlt hat. Wir trainieren ein Modell, um vorherzusagen, ob bisher unbekannte Personen einen Kredit zurückzahlen werden. Ein solches Modell kann für Kreditvergabeentscheidungen verwendet werden.
 

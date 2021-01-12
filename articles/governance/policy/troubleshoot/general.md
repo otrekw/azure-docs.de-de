@@ -3,12 +3,12 @@ title: Problembehandlung für häufige Fehler
 description: Erfahren Sie, wie Sie Probleme beim Erstellen von Richtliniendefinitionen, mit dem jeweiligen SDK und dem Add-On für Kubernetes beheben.
 ms.date: 12/01/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: f3667988d527100507d308887338278e1200d454
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: b88d00575adb571c59b562d25067c4a1716fb50f
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96510997"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882975"
 ---
 # <a name="troubleshoot-errors-using-azure-policy"></a>Problembehandlung mit Azure Policy
 
@@ -36,7 +36,7 @@ In einer Richtliniendefinition wird ein falscher oder nicht vorhandener Alias ve
 
 #### <a name="resolution"></a>Lösung
 
-Überprüfen Sie zunächst, ob die Resource Manager-Eigenschaft über einen Alias verfügt. Verwenden Sie die [Azure Policy-Erweiterung für Visual Studio Code](../how-to/extension-for-vscode.md), [Azure Resource Graph](../../resource-graph/samples/starter.md#distinct-alias-values) oder das SDK, um nach verfügbaren Aliasen zu suchen. Wenn der Alias für eine Resource Manager-Eigenschaft nicht vorhanden ist, erstellen Sie ein Supportticket.
+Überprüfen Sie zunächst, ob die Resource Manager-Eigenschaft über einen Alias verfügt. Verwenden Sie die [Azure Policy-Erweiterung für Visual Studio Code](../how-to/extension-for-vscode.md) oder das SDK, um nach verfügbaren Aliasen zu suchen. Wenn der Alias für eine Resource Manager-Eigenschaft nicht vorhanden ist, erstellen Sie ein Supportticket.
 
 ### <a name="scenario-evaluation-details-not-up-to-date"></a>Szenario: Auswertungsdetails nicht auf dem neuesten Stand
 

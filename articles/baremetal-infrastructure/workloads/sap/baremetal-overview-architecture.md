@@ -1,15 +1,15 @@
 ---
 title: Übersicht über die Vorschauversion von BareMetal Infrastructure in Azure
-description: Erfahren Sie, wie Sie BareMetal Infrastructure in Azure bereitstellen.
+description: Übersicht über die BareMetal Infrastructure in Azure.
 ms.custom: references_regions
 ms.topic: conceptual
-ms.date: 12/31/2020
-ms.openlocfilehash: db974d9260344d1f6050235bb2a9fbaa0420659b
-ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
+ms.date: 1/4/2021
+ms.openlocfilehash: eb4dc129719dc410f7101598e3d72e68f17809c1
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97829055"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97860980"
 ---
 #  <a name="what-is-baremetal-infrastructure-preview-on-azure"></a>Was ist BareMetal Infrastructure (Vorschau) in Azure?
 
@@ -25,7 +25,7 @@ BareMetal Infrastructure ist für spezialisierte und allgemeine Workloads zunäc
 - USA Süd Mitte
 
 >[!NOTE]
->**Rev 4.2** ist die neueste BareMetal Infrastructure-Revision mit neuem Branding, die die vorhandene Architektur von Rev 4 verwendet.  Rev 4 bietet eine größere Nähe zu den Hosts von Azure-VMs (Virtual Machines, virtuelle Computer) und verringert damit die Latenz zwischen Azure-VMs und BareMetal-Instanzeinheiten. Sie können über das Azure-Portal auf Ihre BareMetal-Instanzen zugreifen und diese verwalten. 
+>**Rev 4.2** ist die neueste BareMetal Infrastructure-Revision mit neuem Branding, die die vorhandene Architektur von Rev 4 verwendet.  Rev 4 befindet sich näher an den Azure-VM-Hosts (virtuelle Computer). Sie bietet wesentliche Verbesserungen bei der Netzwerklatenz zwischen Azure-VMs und BareMetal-Instanzeinheiten, die in Rev 4-Stamps oder -Reihen bereitgestellt werden.  Sie können über das Azure-Portal auf Ihre BareMetal-Instanzen zugreifen und diese verwalten. 
 
 ## <a name="support"></a>Support
 BareMetal Infrastructure ist mit ISO 27001, ISO 27017, SOC 1 und SOC 2 konform.  Außerdem wird das BYOL-Modell (Bring-Your-Own-License, Verwendung Ihrer eigenen Lizenz) für Betriebssystem, spezialisierte Workloads und Anwendungen von Drittanbietern unterstützt.  
@@ -35,13 +35,13 @@ Wenn Sie Root-Zugriff und vollständige Kontrolle erhalten, sind Sie für Folgen
 - Lizenzierung, Sicherheit und Unterstützung für Betriebssystem und Drittanbietersoftware
 
 Microsoft ist verantwortlich für:
-- Bereitstellen zertifizierter Hardware für spezialisierte Workloads 
+- Bereitstellen der Hardware für spezialisierte Workloads 
 - Bereitstellen des Betriebssystems
 
 :::image type="content" source="media/baremetal-support-model.png" alt-text="Supportmodell für BareMetal Infrastructure" border="false":::
 
 ## <a name="compute"></a>Compute
-BareMetal Infrastructure bietet verschiedene SKUs, die für spezialisierte Workloads zertifiziert sind. Die verfügbaren SKUs reichen vom kleineren System mit zwei Sockets bis zum System mit 24 Sockets. Verwenden Sie die für die jeweilige Workload zertifizierten SKUs für Ihre spezialisierte Workload.
+BareMetal Infrastructure bietet verschiedene SKUs für spezialisierte Workloads. Die verfügbaren SKUs reichen vom kleineren System mit zwei Sockets bis zum System mit 24 Sockets. Verwenden Sie für Ihre spezialisierte Workload die SKUs für die jeweilige Workload.
 
 Im BareMetal-Instanzstempel selbst sind die folgenden Komponenten kombiniert:
 
@@ -72,13 +72,13 @@ Folgende Linux-Betriebssystemversionen sind verfügbar:
    - SLES 15 SP1
 
 ## <a name="storage"></a>Storage
-Auf einem bestimmten SKU-Typ basierende BareMetal-Instanzen verfügen über einen vordefinierten NFS-Speicher, der auf einem bestimmten Workloadtyp basiert. Wenn Sie BareMetal bereitstellen, können Sie basierend auf dem geschätzten Wachstum zusätzlichen Speicher bereitstellen, indem Sie eine Supportanfrage übermitteln. Der gesamte Speicher wird in Revision 4.2 als Flashspeicher mit Unterstützung für NFSv3 und NFSv4 bereitgestellt. Bei der neueren Revision 4.5 sind auch NVMe-SSDs verfügbar. Weitere Informationen zu Speichergrößen finden Sie im Abschnitt zum [BareMetal-Workloadtyp](../../../virtual-machines/workloads/sap/get-started.md).
+Auf einem bestimmten SKU-Typ basierende BareMetal-Instanzen verfügen über einen vordefinierten NFS-Speicher für einen bestimmten Workloadtyp. Wenn Sie BareMetal bereitstellen, können Sie basierend auf dem geschätzten Wachstum mehr Speicher bereitstellen, indem Sie eine Supportanfrage übermitteln. Der gesamte Speicher wird in Revision 4.2 als Flashspeicher mit Unterstützung für NFSv3 und NFSv4 bereitgestellt. Bei der neueren Revision 4.5 sind auch NVMe-SSDs verfügbar. Weitere Informationen zu Speichergrößen finden Sie im Abschnitt zum [BareMetal-Workloadtyp](../../../virtual-machines/workloads/sap/get-started.md).
 
 >[!NOTE]
->Der für BareMetal verwendete Speicher entspricht den Sicherheitsanforderungen von FIPS 140-2 und bietet standardmäßig die Verschlüsselung ruhender Daten. Die Daten werden sicher auf den Datenträgern gespeichert.
+>Der für BareMetal verwendete Speicher erfüllt die Anforderungen der [Federal Information Processing Standard (FIPS) Publication 140-2](/microsoft-365/compliance/offering-fips-140-2), die standardmäßig eine Verschlüsselung ruhender Daten unterstützt. Die Daten werden sicher auf den Datenträgern gespeichert.
 
 ## <a name="networking"></a>Netzwerk
-Die Architektur von Azure-Netzwerkdiensten ist ein wichtiger Aspekt einer erfolgreichen Bereitstellung spezialisierter Workloads auf BareMetal-Instanzen. Die Wahrscheinlichkeit ist hoch, dass nicht alle IT-Systeme bereits in Azure zu finden sind. Azure verfügt über Netzwerktechnologie, damit Azure für Ihre lokalen Softwarebereitstellungen wie ein virtuelles Rechenzentrum aussieht. Für BareMetal-Instanzen sind die folgenden Azure-Netzwerkfunktionen erforderlich:
+Die Architektur von Azure-Netzwerkdiensten ist ein wichtiger Aspekt einer erfolgreichen Bereitstellung spezialisierter Workloads auf BareMetal-Instanzen. Die Wahrscheinlichkeit ist hoch, dass nicht alle IT-Systeme bereits unter Azure angeordnet sind. Azure verfügt über Netzwerktechnologie, damit Azure für Ihre lokalen Softwarebereitstellungen wie ein virtuelles Rechenzentrum aussieht. Für BareMetal-Instanzen sind die folgenden Azure-Netzwerkfunktionen erforderlich:
 
 - Virtuelle Azure-Netzwerke werden mit der ExpressRoute-Leitung verbunden, die als Verbindung mit Ihren lokalen Netzwerkressourcen dient.
 - Eine ExpressRoute-Leitung, die lokale Systeme mit Azure verbindet, sollte über eine Mindestbandbreite von 1 GBit/s verfügen.

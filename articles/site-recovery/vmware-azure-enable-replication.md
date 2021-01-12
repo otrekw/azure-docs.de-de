@@ -3,15 +3,15 @@ title: Aktivieren von VMware-VMs für die Notfallwiederherstellung mit Azure Sit
 description: In diesem Artikel wird beschrieben, wie Sie die Replikation von VMware-VMs für die Notfallwiederherstellung mit dem Azure Site Recovery-Dienst aktivieren.
 author: Rajeswari-Mamilla
 ms.service: site-recovery
-ms.date: 04/01/2020
+ms.date: 12/07/2020
 ms.topic: conceptual
 ms.author: ramamill
-ms.openlocfilehash: 74870d10348421bf726b9bdc58504a74cf4105a9
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 7e4f18b5d4f074d6596b375cbc11f40c2ab69d68
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96004210"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97616608"
 ---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>Aktivieren der Replikation in Azure für VMware-VMs
 
@@ -94,6 +94,41 @@ Führen Sie zum Aktivieren der Replikation die folgenden Schritte aus:
    :::image type="content" source="./media/vmware-azure-enable-replication/enable-replication7.png" alt-text="Fenster „Replikation aktivieren“":::
 
 1. Klicken Sie auf **Replikation aktivieren**. Sie können den Fortschritt des Auftrags **Schutz aktivieren** unter **Einstellungen** > **Aufträge** > **Site Recovery-Aufträge** verfolgen. Nachdem der Auftrag **Schutz abschließen** ausgeführt wurde, ist der virtuelle Computer bereit zum Failover.
+
+## <a name="monitor-initial-replication"></a>Überwachen der ersten Replikation
+
+Nachdem der Vorgang „Replikation aktivieren“ für das geschützte Element abgeschlossen ist, wird von Azure Site Recovery die Replikation der Daten (synonym mit der Synchronisierung) vom Quellcomputer zur Zielregion initiiert. Während dieses Zeitraums wird ein Replikat mit Quelldatenträgern erstellt. Die Deltaänderungen werden erst in die Zielregion kopiert, nachdem der Kopiervorgang für die Originaldatenträger abgeschlossen wurde. Der benötigte Zeitraum für das Kopieren der Originaldatenträger hängt von mehreren Parametern ab, z. B.:
+
+- Größe der Quellcomputer-Datenträger
+- Verfügbare Bandbreite zum Übertragen der Daten an Azure (Sie können den Bereitstellungsplaner nutzen, um die optimale erforderliche Bandbreite zu ermitteln.)
+- Ressourcen des Prozessservers, z. B. Arbeitsspeicher, freier Speicherplatz auf dem Datenträger, verfügbare CPU-Kapazität zum Zwischenspeichern und Verarbeiten der Daten, die von geschützten Elementen empfangen werden (Stellen Sie sicher, dass der Prozessserver [fehlerfrei](vmware-physical-azure-monitor-process-server.md#monitor-proactively) ist.)
+
+Navigieren Sie zum Nachverfolgen des Status der ersten Replikation im Azure-Portal zur Option „Replizierte Elemente“, und sehen Sie sich in der Spalte „Status“ den Wert für das replizierte Element an. Als Status wird der Prozentsatz der Fertigstellung für die erste Replikation angezeigt. Wenn Sie auf „Status“ zeigen, wird der Wert für die Gesamtmenge der übertragenen Daten angezeigt. Wenn Sie auf den Status klicken, wird eine Kontextseite mit den folgenden Parametern angezeigt:
+
+- Letzte Aktualisierung um: Gibt den Zeitpunkt an, zu dem die Replikationsinformationen des gesamten Computers vom Dienst zuletzt aktualisiert wurden.
+- Prozentsatz der Fertigstellung: Gibt den Prozentsatz der Fertigstellung in Bezug auf die Replikation für die VM an.
+- Gesamtmenge an übertragenen Daten: Gibt die Menge der Daten an, die von der VM an Azure übertragen wurden.
+
+    :::image type="content" source="media/vmware-azure-enable-replication/initial-replication-state.png" alt-text="Status der Replikation" lightbox="media/vmware-azure-enable-replication/initial-replication-state.png":::
+
+- Synchronisierungsstatus (Nachverfolgung von Details auf Datenträgerebene)
+    - Status der Replikation
+      - Falls die Replikation noch nicht gestartet wurde, wird der Status „In Warteschlange“ angezeigt. Während der ersten Replikation werden jeweils nur drei Datenträger repliziert. Hierdurch soll verhindert werden, dass es auf dem Prozessserver zu einer Drosselung kommt.
+      - Nach dem Start der Replikation ändert sich der Status in „In Bearbeitung“.
+      - Nach Abschluss der ersten Replikation wird der Status „Abgeschlossen“ angezeigt.        
+   - Von Site Recovery wird der Originaldatenträger gelesen, die Daten werden an Azure übertragen, und der Status auf Datenträgerebene wird erfasst. Beachten Sie Folgendes: Von Site Recovery wird die Replikation des nicht belegten Teils des Datenträgers übersprungen, und dieser Teil wird den Daten nach Abschluss des Vorgangs dann hinzugefügt. Daher kann es sein, dass die Gesamtmenge der für alle Datenträger übertragenen Daten nicht mit dem Wert für die „Gesamtmenge an übertragenen Daten“ auf VM-Ebene übereinstimmt.
+   - Indem Sie auf die Informationssprechblase für einen Datenträger klicken, können Sie die folgenden Details anzeigen: wann die Replikation (synonym mit der Synchronisierung) für den Datenträger ausgelöst wurde, welche Daten innerhalb der letzten 15 Minuten an Azure übertragen wurden und wie der Zeitstempel der letzten Aktualisierung lautet. Dies ist der Zeitstempel des letzten Zeitpunkts, zu dem vom Azure-Dienst Informationen vom Quellcomputer empfangen wurden. :::image type="content" source="media/vmware-azure-enable-replication/initial-replication-info-balloon.png" alt-text="initial-replication-info-balloon-details" lightbox="media/vmware-azure-enable-replication/initial-replication-info-balloon.png":::
+   - Die Integrität der einzelnen Datenträger wird angezeigt.
+      - Wenn die Replikation langsamer als erwartet durchgeführt wird, ändert sich der Datenträgerstatus in „Warnung“.
+      - Falls der Replikationsvorgang nicht fortgesetzt wird, wird für den Datenträger der Status „Kritisch“ angezeigt.
+
+Stellen Sie beim Integritätsstatus „Kritisch“ oder „Warnung“ sicher, dass bei der Replikation für den Computer und den [Prozessserver](vmware-physical-azure-monitor-process-server.md) keine Fehler angezeigt werden. 
+
+Nachdem der Auftrag „Replikation aktivieren“ abgeschlossen wurde, wird für den Replikationsstatus „0 %“ und für die Gesamtmenge an übertragenen Daten „Nicht verfügbar“ angezeigt. Wenn Sie auf einen identifizierten Datenträger klicken, wird für die Daten „Nicht verfügbar“ angezeigt. Hiermit wird angegeben, dass die Replikation noch gestartet werden muss und Azure Site Recovery die aktuellen Statistikwerte noch nicht erhalten hat. Der Status wird alle 30 Minuten aktualisiert.
+
+> [!NOTE]
+> Aktualisieren Sie die Konfigurationsserver, Prozessserver für die Aufskalierung und Mobilitäts-Agents auf Version 9.36 oder höher, damit sichergestellt ist, dass der Status genau erfasst und an Site Recovery-Dienste gesendet wird.
+
 
 ## <a name="view-and-manage-vm-properties"></a>Anzeigen und Verwalten von VM-Eigenschaften
 

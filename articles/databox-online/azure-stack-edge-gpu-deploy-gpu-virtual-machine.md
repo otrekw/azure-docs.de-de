@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 12/21/2020
 ms.author: alkohli
-ms.openlocfilehash: 6fa8705221e1f1f9a9143f274a53db21b657988f
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: 0a7f54d991d31594a6ab522dbf9e73958cde3023
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97763682"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97900143"
 ---
 # <a name="gpu-vms-for-your-azure-stack-edge-pro-device"></a>GPU-VMs für Ihr Azure Stack Edge Pro-Gerät
 
@@ -338,7 +338,7 @@ Weitere Informationen finden Sie unter [Nvidia-GPU-Treibererweiterung für Windo
 
 ### <a name="gpu-extension-for-linux"></a>GPU-Erweiterung für Linux
 
-Um Nvidia-GPU-Treiber für eine vorhandene VM bereitzustellen, bearbeiten Sie die Parameterdatei `addGPUExtLinuxVM.parameters.json` und stellen dann die Vorlage `addGPUextensiontoVM.json` bereit.
+Um Nvidia-GPU-Treiber für eine vorhandene VM bereitzustellen, bearbeiten Sie die Parameterdatei und stellen dann die Vorlage `addGPUextensiontoVM.json` bereit. Es gibt spezielle Parameterdateien für Ubuntu und Red Hat Enterprise Linux (RHEL), wie in den folgenden Abschnitten erläutert.
 
 #### <a name="edit-parameters-file"></a>Bearbeiten der Parameterdatei
 
@@ -371,8 +371,7 @@ Wenn Sie Ubuntu verwenden, kann die Datei `addGPUExtLinuxVM.parameters.json` die
     }
     }
 ```
-Wenn Sie Red Hat Enterprise Linux (RHEL) verwenden, kann die Datei die folgenden Parameter enthalten:
-
+Wenn Sie Red Hat Enterprise Linux (RHEL) verwenden, akzeptiert die Datei `addGPUExtensionRHELVM.parameters.json` die folgenden Parameter:
 
 ```powershell
 {

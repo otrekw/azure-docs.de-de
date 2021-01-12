@@ -3,12 +3,12 @@ title: Aktualisieren eines Clusters, um den allgemeinen Namen des Zertifikats zu
 description: Hier erfahren Sie, wie Sie ein Azure Service Fabric-Clusterzertifikat so konvertieren, dass keine fingerabdruckbasierten Deklarationen, sondern allgemeine Namen verwendet werden.
 ms.topic: conceptual
 ms.date: 09/06/2019
-ms.openlocfilehash: 013b8190390a4b05791b0a56072487f249956ec5
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: f719b1eb39da776827c6babec61e9e6701bb4602
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92495207"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97900789"
 ---
 # <a name="convert-cluster-certificates-from-thumbprint-based-declarations-to-common-names"></a>Konvertieren von Clusterzertifikaten von der Verwendung fingerabdruckbasierter Deklarationen zur Verwendung allgemeiner Namen
 
@@ -63,8 +63,11 @@ Es gibt mehrere gültige Anfangszustände für eine Konvertierung. Für alle Zus
 #### <a name="valid-starting-states"></a>Gültige Anfangszustände
 
 - `Thumbprint: GoalCert, ThumbprintSecondary: None`
-- `Thumbprint: GoalCert, ThumbprintSecondary: OldCert1`, wobei `GoalCert` ein späteres `NotAfter`-Datum aufweist als `OldCert1`
-- `Thumbprint: OldCert1, ThumbprintSecondary: GoalCert`, wobei `GoalCert` ein späteres `NotAfter`-Datum aufweist als `OldCert1`
+- `Thumbprint: GoalCert, ThumbprintSecondary: OldCert1`, wobei `GoalCert` ein späteres `NotBefore`-Datum aufweist als `OldCert1`
+- `Thumbprint: OldCert1, ThumbprintSecondary: GoalCert`, wobei `GoalCert` ein späteres `NotBefore`-Datum aufweist als `OldCert1`
+
+> [!NOTE]
+> Vor Version 7.2.445 (7.2 CU4) wählte Service Fabric das Zertifikat mit dem spätesten Ablaufdatum (das Zertifikat mit dem spätesten Wert der NotAfter-Eigenschaft) aus, sodass für die oben genannten Anfangszustände vor Version 7.2 CU4 „GoalCert“ ein späteres `NotAfter`-Datum als `OldCert1` erforderlich ist.
 
 Wenn sich Ihr Cluster in keinem der zuvor beschriebenen gültigen Zustände befindet, finden Sie am Ende dieses Artikels Informationen dazu, wie Sie einen solchen Zustand erreichen.
 
@@ -79,7 +82,7 @@ Sie müssen die Unterschiede und Auswirkungen der verschiedenen Mechanismen gena
    >
    > Wenn keine Aussteller angegeben sind oder die Liste leer ist, wird das Zertifikat für die Authentifizierung akzeptiert, sofern die Kette erstellt werden kann. Dann endet das Zertifikat in einem Stamm, dem vom Validierungssteuerelement vertraut wird. Wenn mindestens ein Fingerabdruck eines Ausstellers angegeben ist, wird das Zertifikat akzeptiert, sofern der Fingerabdruck des direkten Ausstellers – wie aus der Kette extrahiert – mit einem der in diesem Feld angegebenen Werte übereinstimmt. Das Zertifikat wird akzeptiert, unabhängig davon, ob dem Stamm vertraut wird oder nicht.
    >
-   > Eine PKI verwendet möglicherweise andere Zertifizierungsstellen (so genannte *Aussteller* ), um Zertifikate mit einem bestimmten Antragsteller zu signieren. Aus diesem Grund ist es wichtig, alle erwarteten Fingerabdrücke von Ausstellern für diesen Antragsteller anzugeben. Anders gesagt: Die Verlängerung eines Zertifikats wird nicht unbedingt vom selben Aussteller signiert wie das Zertifikat, das verlängert wird.
+   > Eine PKI verwendet möglicherweise andere Zertifizierungsstellen (so genannte *Aussteller*), um Zertifikate mit einem bestimmten Antragsteller zu signieren. Aus diesem Grund ist es wichtig, alle erwarteten Fingerabdrücke von Ausstellern für diesen Antragsteller anzugeben. Anders gesagt: Die Verlängerung eines Zertifikats wird nicht unbedingt vom selben Aussteller signiert wie das Zertifikat, das verlängert wird.
    >
    > Die Angabe des Ausstellers gilt als Best Practice. Auch wenn kein Aussteller angegeben wird, funktioniert dieses Verfahren bei Zertifikatketten bis zu einem vertrauenswürdigen Stamm. Dieses Verhalten unterliegt jedoch Einschränkungen, und es wird möglicherweise in naher Zukunft eingestellt. Cluster, die in Azure bereitgestellt, mit durch eine private PKI ausgestellten X.509-Zertifikaten geschützt und per Antragsteller deklariert werden, können möglicherweise durch Service Fabric nicht überprüft werden (zur Kommunikation zwischen Cluster und Dienst). Für eine Überprüfung muss die Zertifikatrichtlinie der PKI ermittelbar, verfügbar und zugänglich sein.
 
@@ -217,11 +220,14 @@ New-AzResourceGroupDeployment -ResourceGroupName $groupname -Verbose `
 
 | Anfangsstatus | Upgrade 1 | Upgrade 2 |
 | :--- | :--- | :--- |
-| `Thumbprint: OldCert1, ThumbprintSecondary: None` und `GoalCert` weisen ein späteres `NotAfter`-Datum auf als `OldCert1` | `Thumbprint: OldCert1, ThumbprintSecondary: GoalCert` | - |
-| `Thumbprint: OldCert1, ThumbprintSecondary: None` und `OldCert1` weisen ein späteres `NotAfter`-Datum auf als `GoalCert` | `Thumbprint: GoalCert, ThumbprintSecondary: OldCert1` | `Thumbprint: GoalCert, ThumbprintSecondary: None` |
-| `Thumbprint: OldCert1, ThumbprintSecondary: GoalCert`, wobei `OldCert1` ein späteres `NotAfter`-Datum aufweist als `GoalCert` | Upgrade auf `Thumbprint: GoalCert, ThumbprintSecondary: None` | - |
-| `Thumbprint: GoalCert, ThumbprintSecondary: OldCert1`, wobei `OldCert1` ein späteres `NotAfter`-Datum aufweist als `GoalCert` | Upgrade auf `Thumbprint: GoalCert, ThumbprintSecondary: None` | - |
+| `Thumbprint: OldCert1, ThumbprintSecondary: None` und `GoalCert` weisen ein späteres `NotBefore`-Datum auf als `OldCert1` | `Thumbprint: OldCert1, ThumbprintSecondary: GoalCert` | - |
+| `Thumbprint: OldCert1, ThumbprintSecondary: None` und `OldCert1` weisen ein späteres `NotBefore`-Datum auf als `GoalCert` | `Thumbprint: GoalCert, ThumbprintSecondary: OldCert1` | `Thumbprint: GoalCert, ThumbprintSecondary: None` |
+| `Thumbprint: OldCert1, ThumbprintSecondary: GoalCert`, wobei `OldCert1` ein späteres `NotBefore`-Datum aufweist als `GoalCert` | Upgrade auf `Thumbprint: GoalCert, ThumbprintSecondary: None` | - |
+| `Thumbprint: GoalCert, ThumbprintSecondary: OldCert1`, wobei `OldCert1` ein späteres `NotBefore`-Datum aufweist als `GoalCert` | Upgrade auf `Thumbprint: GoalCert, ThumbprintSecondary: None` | - |
 | `Thumbprint: OldCert1, ThumbprintSecondary: OldCert2` | Entfernen von `OldCert1` oder `OldCert2`, um den Zustand `Thumbprint: OldCertx, ThumbprintSecondary: None` zu erreichen | Fortfahren mit dem neuen Anfangszustand |
+
+> [!NOTE]
+> Ersetzen Sie für einen Cluster in einer Version vor Version 7.2.445 (7.2 CU4) in den oben genannten Zuständen `NotBefore` durch `NotAfter`.
 
 Eine Anleitung zu diesen Upgrades finden Sie unter [Verwalten von Zertifikaten in einem Azure Service Fabric-Cluster](service-fabric-cluster-security-update-certs-azure.md).
 

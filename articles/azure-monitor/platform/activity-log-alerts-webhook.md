@@ -4,12 +4,12 @@ description: Lernen Sie das Schema des JSON-Codes kennen, der beim Aktivieren ei
 ms.topic: conceptual
 ms.date: 03/31/2017
 ms.subservice: alerts
-ms.openlocfilehash: 026613c3f5710137fb110153b34f9ed74bbf8a7b
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: b48f094b460a2871b502c72b39b849ed68b9c085
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95522786"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97916631"
 ---
 # <a name="webhooks-for-azure-activity-log-alerts"></a>Webhooks für Azure-Aktivitätsprotokollwarnungen
 Als Teil der Definition einer Aktionsgruppe können Sie Webhookendpunkte für den Empfang von Aktivitätsprotokollwarnungs-Benachrichtigungen konfigurieren. Mithilfe von Webhooks können Sie diese Benachrichtigung zur Nachbearbeitung oder Ausführung benutzerdefinierter Aktionen an andere Systeme weiterleiten. In diesem Artikel erfahren Sie, wie die Nutzlast für die HTTP POST-Methode für einen Webhook aussieht.
@@ -27,6 +27,20 @@ Der Webhook kann optional tokenbasierte Autorisierung zur Authentifizierung verw
 
 ## <a name="payload-schema"></a>Nutzlast und Schema
 Die JSON-Nutzlast des POST-Vorgangs variiert in Abhängigkeit vom Feld „data.context.activityLog.eventSource“ der Nutzlast.
+
+> [!NOTE]
+> Derzeit wird die Beschreibung, die Teil des Aktivitätsprotokollereignisses ist, in die ausgelöste Eigenschaft **Alert Description** kopiert.
+>
+> Um die Nutzlast des Aktivitätsprotokolls an andere Warnungstypen anzupassen, enthält ab dem 1. April 2021 die ausgelöste Warnungseigenschaft **Description** stattdessen die Warnungsregel.
+>
+> In Vorbereitung auf diese Änderung haben wir die neue Eigenschaft **Activity Log Event Description** für die vom Aktivitätsprotokoll ausgelöste Warnung erstellt. Diese neue Eigenschaft wird mit der Eigenschaft **Description** ausgefüllt, die bereits verfügbar ist. Dies bedeutet, dass das neue Feld **Activity Log Event Description** die Beschreibung enthält, die Teil des Aktivitätsprotokollereignisses ist.
+>
+> Überprüfen Sie Ihre Warnungsregeln, Aktionsregeln, Webhooks, Logik-Apps und andere Konfigurationen, in denen Sie möglicherweise die Eigenschaft **Description** aus der ausgelösten Warnung verwenden, und ersetzen Sie sie durch die Eigenschaft **Activity Log Event Description**.
+>
+> Wenn Ihre Bedingung (in ihren Aktionsregeln, Webhooks, Logik-Apps oder anderen Konfigurationen) zurzeit auf der Eigenschaft **Description** für Aktivitätsprotokollwarnungen basiert, müssen Sie sie möglicherweise so ändern, dass sie auf der Eigenschaft **Activity Log Event Description** basiert.
+>
+> Zum Ausfüllen der neuen Eigenschaft **Description** können Sie in der Definition der Warnungsregel eine Beschreibung hinzufügen.
+> ![Ausgelöste Aktivitätsprotokollwarnungen](media/activity-log-alerts-webhook/activity-log-alert-fired.png)
 
 ### <a name="common"></a>Allgemein
 

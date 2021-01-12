@@ -150,19 +150,19 @@ GO
 BULK INSERT Sales.Invoices FROM 'inv-2017-12-08.csv' WITH (DATA_SOURCE = 'MyAzureBlobStorage');
 ```
 
-**Problemumgehung** : Verwenden Sie die [SAS-Authentifizierung, um sich bei Azure Storage zu authentifizieren](/sql/t-sql/statements/bulk-insert-transact-sql?view=sql-server-ver15#f-importing-data-from-a-file-in-azure-blob-storage).
+**Problemumgehung**: Verwenden Sie die [SAS-Authentifizierung, um sich bei Azure Storage zu authentifizieren](/sql/t-sql/statements/bulk-insert-transact-sql?view=sql-server-ver15#f-importing-data-from-a-file-in-azure-blob-storage).
 
 ### <a name="service-principal-cannot-access-azure-ad-and-akv"></a>Der Dienstprinzipal kann nicht auf Azure AD und Azure Key Vault zugreifen.
 
 In einigen Fällen kann ein Problem bei dem Dienstprinzipal auftreten, der für den Zugriff auf Azure AD- und Azure Key Vault-Dienste (AKV) verwendet wird. Dieses Problem beeinträchtigt die Verwendung von Azure AD-Authentifizierung und Transparent Database Encryption (TDE) mit SQL Managed Instance. Dabei kann es sich um ein vorübergehendes Konnektivitätsproblem handeln, oder Anweisungen, z. B. „CREATE LOGIN/USER FROM EXTERNAL PROVIDER“ oder „EXECUTE AS LOGIN/USER“, können nicht ausgeführt werden. In manchen Fällen ist es eventuell nicht möglich, TDE mit einem kundenseitig verwalteten Schlüssel in einer neuen Azure SQL Managed Instance einzurichten.
 
-**Problemumgehung** : Wenn Sie verhindern möchten, dass dieses Problem in Ihrer Instanz von SQL Managed Instance auftritt, bevor Sie Updatebefehle ausführen, oder falls dieses Problem bereits nach Updatebefehlen aufgetreten ist, wechseln Sie zum Azure-Portal, und öffnen Sie in SQL Managed Instance das [Blatt „Active Directory-Administrator“](./authentication-aad-configure.md?tabs=azure-powershell#azure-portal). Überprüfen Sie, ob die Fehlermeldung „Die verwaltete Instanz benötigt einen Dienstprinzipal für den Zugriff auf Azure Active Directory. Klicken Sie hier, um einen Dienstprinzipal zu erstellen.“ angezeigt wird. Falls diese Fehlermeldung auftritt, klicken Sie darauf, und befolgen Sie die Schritt-für-Schritt-Anweisungen, die so lange angezeigt werden, bis der Fehler behoben wurde.
+**Problemumgehung**: Wenn Sie verhindern möchten, dass dieses Problem in Ihrer Instanz von SQL Managed Instance auftritt, bevor Sie Updatebefehle ausführen, oder falls dieses Problem bereits nach Updatebefehlen aufgetreten ist, wechseln Sie zum Azure-Portal, und öffnen Sie in SQL Managed Instance das [Blatt „Active Directory-Administrator“](./authentication-aad-configure.md?tabs=azure-powershell#azure-portal). Überprüfen Sie, ob die Fehlermeldung „Die verwaltete Instanz benötigt einen Dienstprinzipal für den Zugriff auf Azure Active Directory. Klicken Sie hier, um einen Dienstprinzipal zu erstellen.“ angezeigt wird. Falls diese Fehlermeldung auftritt, klicken Sie darauf, und befolgen Sie die Schritt-für-Schritt-Anweisungen, die so lange angezeigt werden, bis der Fehler behoben wurde.
 
 ### <a name="restoring-manual-backup-without-checksum-might-fail"></a>Wiederherstellen der manuellen Sicherung ohne CHECKSUM schlägt möglicherweise fehl
 
 Unter bestimmten Umständen kann die manuelle Sicherung von Datenbanken, die für eine verwalteten Instanz ohne CHECKSUM erstellt wurde, nicht wiederhergestellt werden. Versuchen Sie in solchen Fällen erneut, die Sicherung wiederherzustellen, bis der Vorgang erfolgreich war.
 
-**Problemumgehung** : Erstellen Sie manuelle Sicherungen von Datenbanken für verwaltete Instanzen mit aktivierter CHECKSUM.
+**Problemumgehung**: Erstellen Sie manuelle Sicherungen von Datenbanken für verwaltete Instanzen mit aktivierter CHECKSUM.
 
 ### <a name="agent-becomes-unresponsive-upon-modifying-disabling-or-enabling-existing-jobs"></a>Der Agent reagiert beim Ändern, Deaktivieren oder Aktivieren vorhandener Aufträge nicht mehr
 
@@ -172,19 +172,19 @@ Unter bestimmten Umständen kann es vorkommen, dass der Agent nicht mehr reagier
 
 Wenn die Azure-Rolle „Mitwirkender“ von SQL Managed Instance auf eine Ressourcengruppe (RG) angewandt wird, betrifft dies nicht SQL Managed Instance und hat keine Auswirkungen.
 
-**Problemumgehung** : Richten Sie eine Rolle „Mitwirkender“ von SQL Managed Instance für Benutzer auf Abonnementebene ein.
+**Problemumgehung**: Richten Sie eine Rolle „Mitwirkender“ von SQL Managed Instance für Benutzer auf Abonnementebene ein.
 
 ### <a name="limitation-of-manual-failover-via-portal-for-failover-groups"></a>Einschränkung beim manuellen Failover über das Portal für Failovergruppen
 
 Wenn sich eine Failovergruppe über mehrere Instanzen in verschiedenen Azure-Abonnements oder Ressourcengruppen erstreckt, kann von der primären Instanz in der Failovergruppe kein manuelles Failover initiiert werden.
 
-**Problemumgehung** : Initiieren Sie das Failover über das Portal von der geosekundären Instanz.
+**Problemumgehung**: Initiieren Sie das Failover über das Portal von der geosekundären Instanz.
 
 ### <a name="sql-agent-roles-need-explicit-execute-permissions-for-non-sysadmin-logins"></a>SQL-Agent-Rollen benötigen explizite EXECUTE-Berechtigungen für Anmeldungen, die keine Systemadministratoranmeldungen sind
 
 Wenn Anmeldungen für Nicht-Systemadministratoren einer der [festen SQL-Agent-Datenbankrollen](/sql/ssms/agent/sql-server-agent-fixed-database-roles) hinzugefügt werden, besteht ein Problem, bei dem den gespeicherten Masterprozeduren explizite EXECUTE-Berechtigungen gewährt werden müssen, damit diese Anmeldungen funktionieren. Wenn dieses Problem auftritt, wird die Fehlermeldung „The EXECUTE permission was denied on the object <object_name> (Microsoft SQL Server, Error: 229)“ (Die Berechtigung EXECUTE wurde für das Objekt <objekt_name> verweigert (Microsoft SQL Server, Fehler: 229) angezeigt.
 
-**Problemumgehung** : Nachdem Sie einer festen SQL-Agent-Datenbankrolle (SQLAgentUserRole, SQLAgentReaderRole oder SQLAgentOperatorRole) Anmeldungen hinzugefügt haben, führen Sie für jede hinzugefügte Anmeldung das folgende T-SQL-Skript aus, um den aufgelisteten gespeicherten Prozeduren explizit EXECUTE-Berechtigungen zu erteilen.
+**Problemumgehung**: Nachdem Sie einer festen SQL-Agent-Datenbankrolle (SQLAgentUserRole, SQLAgentReaderRole oder SQLAgentOperatorRole) Anmeldungen hinzugefügt haben, führen Sie für jede hinzugefügte Anmeldung das folgende T-SQL-Skript aus, um den aufgelisteten gespeicherten Prozeduren explizit EXECUTE-Berechtigungen zu erteilen.
 
 ```tsql
 USE [master]
@@ -204,13 +204,13 @@ GRANT EXECUTE ON master.dbo.xp_sqlagent_notify TO [login_name]
 
 In einigen Fällen werden auf der Dienstebene „Unternehmenskritisch“ [maximale Arbeitsspeicherlimits für speicheroptimierte Objekte](../managed-instance/resource-limits.md#in-memory-oltp-available-space) nicht ordnungsgemäß angewandt. Mit SQL Managed Instance kann die Workload eventuell mehr Arbeitsspeicher für In-Memory-OLTP-Vorgänge belegen. Dies kann sich auf die Verfügbarkeit und Stabilität der Instanz auswirken. In-Memory-OLTP-Abfragen, die die Grenzwerte erreichen, führen möglicherweise nicht sofort zu Fehlern. Dieses Problem wird bald behoben. Bei Abfragen, die mehr In-Memory-OLTP-Arbeitsspeicher belegen, treten früher Fehler auf, wenn sie die [Grenzwerte](../managed-instance/resource-limits.md#in-memory-oltp-available-space) erreichen.
 
-**Problemumgehung** : [Überwachen Sie die In-Memory-OLTP-Arbeitsspeichernutzung](../in-memory-oltp-monitor-space.md) mithilfe von [SQL Server Management Studio](/sql/relational-databases/in-memory-oltp/monitor-and-troubleshoot-memory-usage#bkmk_Monitoring), um sicherzustellen, dass die Workload nicht mehr als den verfügbaren Arbeitsspeicher belegt. Erhöhen Sie die Arbeitsspeicherlimits, die von der Anzahl von virtuellen Kernen abhängen, oder optimieren Sie Ihre Workload, damit sie weniger Arbeitsspeicher belegt.
+**Problemumgehung**: [Überwachen Sie die In-Memory-OLTP-Arbeitsspeichernutzung](../in-memory-oltp-monitor-space.md) mithilfe von [SQL Server Management Studio](/sql/relational-databases/in-memory-oltp/monitor-and-troubleshoot-memory-usage#bkmk_Monitoring), um sicherzustellen, dass die Workload nicht mehr als den verfügbaren Arbeitsspeicher belegt. Erhöhen Sie die Arbeitsspeicherlimits, die von der Anzahl von virtuellen Kernen abhängen, oder optimieren Sie Ihre Workload, damit sie weniger Arbeitsspeicher belegt.
  
 ### <a name="wrong-error-returned-while-trying-to-remove-a-file-that-is-not-empty"></a>Zurückgegebener Fehler bei dem Versuch, eine nicht leere Datei zu entfernen
 
 SQL Server und SQL Managed Instance [lassen nicht das Löschen von Dateien zu, die nicht leer sind](/sql/relational-databases/databases/delete-data-or-log-files-from-a-database#Prerequisites). Wenn Sie versuchen, eine nicht leere Datendatei mithilfe der Anweisung `ALTER DATABASE REMOVE FILE` zu entfernen, wird der Fehler `Msg 5042 – The file '<file_name>' cannot be removed because it is not empty` nicht sofort zurückgegeben. SQL Managed Instance versucht weiterhin, die Datei zu löschen, und für den Vorgang tritt nach 30 Minuten der Fehler `Internal server error` auf.
 
-**Problemumgehung** : Entfernen Sie den Inhalt der Datei mit dem Befehl `DBCC SHRINKFILE (N'<file_name>', EMPTYFILE)`. Wenn es sich um die einzige Datei in der Dateigruppe handelt, müssen Sie Daten aus der Tabelle oder Partition löschen, die dieser Dateigruppe zugeordnet ist, bevor Sie die Datei verkleinern, und diese Daten optional in eine andere Tabelle/Partition laden.
+**Problemumgehung**: Entfernen Sie den Inhalt der Datei mit dem Befehl `DBCC SHRINKFILE (N'<file_name>', EMPTYFILE)`. Wenn es sich um die einzige Datei in der Dateigruppe handelt, müssen Sie Daten aus der Tabelle oder Partition löschen, die dieser Dateigruppe zugeordnet ist, bevor Sie die Datei verkleinern, und diese Daten optional in eine andere Tabelle/Partition laden.
 
 ### <a name="change-service-tier-and-create-instance-operations-are-blocked-by-ongoing-database-restore"></a>Das Ändern der Dienstebene und Erstellen von Instanzvorgängen wird durch die laufende Datenbankwiederherstellung blockiert
 
@@ -218,19 +218,19 @@ Durch die laufende `RESTORE`-Anweisung blockieren der Migrationsprozess des Date
 
 Der Wiederherstellungsvorgang blockiert diese Vorgänge für die verwalteten Instanzen und Instanzenpools in dem Subnetz, in dem der Wiederherstellungsvorgang ausgeführt wird. Die Instanzen in Instanzenpools sind davon nicht betroffen. Beim Erstellen oder Ändern von Vorgängen auf Dienstebene tritt kein Fehler oder Timeout auf. Sie werden fortgesetzt, sobald der Wiederherstellungsvorgang abgeschlossen oder abgebrochen wurde.
 
-**Problemumgehung** : Warten Sie, bis der Wiederherstellungsvorgang abgeschlossen ist, oder brechen Sie ihn ab, wenn die Erstellung oder Aktualisierung der Dienstebene eine höhere Priorität hat.
+**Problemumgehung**: Warten Sie, bis der Wiederherstellungsvorgang abgeschlossen ist, oder brechen Sie ihn ab, wenn die Erstellung oder Aktualisierung der Dienstebene eine höhere Priorität hat.
 
 ### <a name="resource-governor-on-business-critical-service-tier-might-need-to-be-reconfigured-after-failover"></a>Resource Governor auf Dienstebene „Unternehmenskritisch“ muss möglicherweise nach einem Failover neu konfiguriert werden
 
 Das Feature [Resource Governor](/sql/relational-databases/resource-governor/resource-governor), mit dem Sie die der Benutzerworkload zugewiesenen Ressourcen einschränken können, klassifiziert möglicherweise eine Benutzerworkload nach einem Failover oder einer vom Benutzer initiierten Änderung der Dienstebene (z. B. Änderung der maximalen virtuellen Kerne oder der maximalen Instanzspeichergröße) falsch.
 
-**Problemumgehung** : Führen Sie `ALTER RESOURCE GOVERNOR RECONFIGURE` regelmäßig oder als Teil des SQL-Agent-Auftrags aus, der den SQL-Task beim Starten der Instanz ausführt, wenn Sie [Resource Governor](/sql/relational-databases/resource-governor/resource-governor) verwenden.
+**Problemumgehung**: Führen Sie `ALTER RESOURCE GOVERNOR RECONFIGURE` regelmäßig oder als Teil des SQL-Agent-Auftrags aus, der den SQL-Task beim Starten der Instanz ausführt, wenn Sie [Resource Governor](/sql/relational-databases/resource-governor/resource-governor) verwenden.
 
 ### <a name="cross-database-service-broker-dialogs-must-be-reinitialized-after-service-tier-upgrade"></a>Datenbankübergreifende Service Broker-Dialoge müssen nach einem Upgrade der Dienstebene erneut initialisiert werden
 
-Datenbankübergreifenden Service Broker-Dialoge stellen die Zustellung der Nachrichten an die Dienste in anderen Datenbanken nach Änderung der Dienstebene ein. Die Nachrichten sind *nicht verloren* , sondern befinden sich in der Absenderwarteschlange. Jegliche Änderung virtueller Kerne oder der Instanzspeichergröße von SQL Managed Instance führt dazu, dass der Wert `service_broke_guid` in der Sicht [sys.databases](/sql/relational-databases/system-catalog-views/sys-databases-transact-sql) für alle Datenbanken geändert wird. Ein `DIALOG`, der mit der Anweisung [BEGIN DIALOG](/sql/t-sql/statements/begin-dialog-conversation-transact-sql) erstellt wurde und auf Service Broker in einer anderen Datenbank verweist, stellt die Zustellung von Nachrichten an den Zieldienst ein.
+Datenbankübergreifenden Service Broker-Dialoge stellen die Zustellung der Nachrichten an die Dienste in anderen Datenbanken nach Änderung der Dienstebene ein. Die Nachrichten sind *nicht verloren*, sondern befinden sich in der Absenderwarteschlange. Jegliche Änderung virtueller Kerne oder der Instanzspeichergröße von SQL Managed Instance führt dazu, dass der Wert `service_broke_guid` in der Sicht [sys.databases](/sql/relational-databases/system-catalog-views/sys-databases-transact-sql) für alle Datenbanken geändert wird. Ein `DIALOG`, der mit der Anweisung [BEGIN DIALOG](/sql/t-sql/statements/begin-dialog-conversation-transact-sql) erstellt wurde und auf Service Broker in einer anderen Datenbank verweist, stellt die Zustellung von Nachrichten an den Zieldienst ein.
 
-**Problemumgehung** : Beenden Sie vor dem Aktualisieren der Dienstebene alle Aktivitäten, die datenbankübergreifende Dialogkonversationen von Service Broker verwenden, und initialisieren Sie sie danach neu. Wenn nach dem Ändern der Dienstebene noch nicht zugestellte Nachrichten vorhanden sind, lesen Sie sie aus der Quellwarteschlange, und senden Sie sie erneut an die Zielwarteschlange.
+**Problemumgehung**: Beenden Sie vor dem Aktualisieren der Dienstebene alle Aktivitäten, die datenbankübergreifende Dialogkonversationen von Service Broker verwenden, und initialisieren Sie sie danach neu. Wenn nach dem Ändern der Dienstebene noch nicht zugestellte Nachrichten vorhanden sind, lesen Sie sie aus der Quellwarteschlange, und senden Sie sie erneut an die Zielwarteschlange.
 
 ### <a name="impersonation-of-azure-ad-login-types-is-not-supported"></a>Identitätswechsel für Azure AD-Anmeldetypen wird nicht unterstützt.
 
@@ -258,7 +258,7 @@ Die Datenbank im Status *Wird wiederhergestellt* weist temporär einen zufällig
 
 In der Anfangsphase kann der Benutzer auf die leere Datenbank zugreifen und sogar in dieser Datenbank Tabellen erstellen oder Daten laden. Diese temporäre Datenbank wird gelöscht, wenn der Wiederherstellungsdienst die zweite Phase startet.
 
-**Problemumgehung** : Greifen Sie erst dann auf die Datenbank zu, die Sie wiederherstellen, wenn Sie feststellen, dass die Wiederherstellung abgeschlossen ist.
+**Problemumgehung**: Greifen Sie erst dann auf die Datenbank zu, die Sie wiederherstellen, wenn Sie feststellen, dass die Wiederherstellung abgeschlossen ist.
 
 ### <a name="tempdb-structure-and-content-is-re-created"></a>Struktur und Inhalt von TEMPDB werden neu erstellt.
 
@@ -285,7 +285,7 @@ Sie können mithilfe von Systemansichten [die Anzahl von verbleibenden Dateien i
 
 Mehrere Systemansichten, Leistungsindikatoren, Fehlermeldungen, XEvents und Fehlerprotokolleinträge zeigen GUID-Datenbankbezeichner anstelle der eigentlichen Datenbanknamen an. Verlassen Sie sich nicht auf diese GUIDs, da sie in Zukunft durch tatsächliche Datenbanknamen ersetzt werden.
 
-**Problemumgehung** : Verwenden Sie die Sicht „sys.databases“, um den tatsächlichen Datenbanknamen aus dem physischen Datenbanknamen aufzulösen, der in Form von GUID-Datenbankbezeichnern angegeben wurde:
+**Problemumgehung**: Verwenden Sie die Sicht „sys.databases“, um den tatsächlichen Datenbanknamen aus dem physischen Datenbanknamen aufzulösen, der in Form von GUID-Datenbankbezeichnern angegeben wurde:
 
 ```tsql
 SELECT name as ActualDatabaseName, physical_database_name as GUIDDatabaseIdentifier 
@@ -330,7 +330,7 @@ using (var scope = new TransactionScope())
 
 CLR-Module in SQL Managed Instance und Verbindungsserver oder verteilte Abfragen, die auf eine aktuelle Instanz verweisen, können die IP-Adresse der lokalen Instanz mitunter nicht auflösen. Dieser Fehler ist ein vorübergehendes Problem.
 
-**Problemumgehung** : Verwenden Sie nach Möglichkeit Kontextverbindungen im CLR-Modul.
+**Problemumgehung**: Verwenden Sie nach Möglichkeit Kontextverbindungen im CLR-Modul.
 
 ## <a name="updates"></a>Aktualisierungen
 

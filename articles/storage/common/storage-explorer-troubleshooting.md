@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 07/28/2020
 ms.author: delhan
-ms.openlocfilehash: 8bffe0c3871eae12f3b875a96301136d11dfc516
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 4e87e99f16a89cab95f9bd07b75b80f1c13d47f1
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92783792"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97900653"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure Storage-Explorer – Leitfaden zur Problembehandlung
 
@@ -35,18 +35,18 @@ Sie benötigen die Berechtigung zum Auflisten von Speicherkonten. Ihnen muss die
 
 #### <a name="list-storage-account-keys"></a>Auflisten von Speicherkontoschlüsseln
 
-Für Storage-Explorer können auch Kontoschlüssel zum Authentifizieren von Anforderungen verwendet werden. Sie können Zugriff auf Kontoschlüssel über leistungsstärkere Rollen erhalten, z. B. über die Rolle _Mitwirkender_ .
+Für Storage-Explorer können auch Kontoschlüssel zum Authentifizieren von Anforderungen verwendet werden. Sie können Zugriff auf Kontoschlüssel über leistungsstärkere Rollen erhalten, z. B. über die Rolle _Mitwirkender_.
 
 > [!NOTE]
 > Mit Zugriffsschlüsseln werden für deren Besitzer uneingeschränkte Berechtigungen gewährt. Daher wird nicht empfohlen, diese Schlüssel an Kontobenutzer weiterzugeben. Wenn Sie Zugriffsschlüssel widerrufen müssen, können Sie sie über das [Azure-Portal](https://portal.azure.com/) neu generieren.
 
 #### <a name="data-roles"></a>Datenrollen
 
-Ihnen muss mindestens eine Rolle zugewiesen sein, über die Zugriff zum Lesen der Daten von Ressourcen gewährt wird. Wenn Sie beispielsweise Blobs auflisten oder herunterladen müssen, benötigen Sie mindestens die Rolle _Storage-Blobdatenleser_ .
+Ihnen muss mindestens eine Rolle zugewiesen sein, über die Zugriff zum Lesen der Daten von Ressourcen gewährt wird. Wenn Sie beispielsweise Blobs auflisten oder herunterladen müssen, benötigen Sie mindestens die Rolle _Storage-Blobdatenleser_.
 
 ### <a name="why-do-i-need-a-management-layer-role-to-see-my-resources-in-storage-explorer"></a>Warum benötige ich eine Rolle auf der Verwaltungsebene, damit meine Ressourcen in Storage-Explorer angezeigt werden?
 
-Azure Storage verfügt über zwei Zugriffsebenen: _Verwaltung_ und _Daten_ . Auf Abonnements und Speicherkonten wird über die Verwaltungsebene zugegriffen. Auf Container, Blobs und andere Datenressourcen wird über die Datenebene zugegriffen. Wenn Sie beispielsweise eine Liste mit Ihren Speicherkonten aus Azure abrufen möchten, senden Sie eine Anforderung an den Verwaltungsendpunkt. Wenn Sie eine Liste mit den Blobcontainern eines Kontos anzeigen möchten, können Sie eine Anforderung an den entsprechenden Dienstendpunkt senden.
+Azure Storage verfügt über zwei Zugriffsebenen: _Verwaltung_ und _Daten_. Auf Abonnements und Speicherkonten wird über die Verwaltungsebene zugegriffen. Auf Container, Blobs und andere Datenressourcen wird über die Datenebene zugegriffen. Wenn Sie beispielsweise eine Liste mit Ihren Speicherkonten aus Azure abrufen möchten, senden Sie eine Anforderung an den Verwaltungsendpunkt. Wenn Sie eine Liste mit den Blobcontainern eines Kontos anzeigen möchten, können Sie eine Anforderung an den entsprechenden Dienstendpunkt senden.
 
 Azure-Rollen können Berechtigungen für den Zugriff auf die Verwaltungs- oder Datenebene gewähren. Mit der Rolle „Leser“ wird beispielsweise Lesezugriff auf die Ressourcen der Verwaltungsebene gewährt.
 
@@ -63,20 +63,23 @@ Wenn Sie auf Blobcontainer oder Warteschlangen zugreifen möchten, können Sie d
 1. Öffnen Sie das Dialogfeld „Verbinden“.
 2. Wählen Sie „Ressource über Azure Active Directory (Azure AD) hinzufügen“ aus. Klicken Sie auf Weiter.
 3. Wählen Sie das Benutzerkonto und den Mandanten aus, die der Ressource zugeordnet sind, die angefügt werden soll. Klicken Sie auf Weiter.
-4. Wählen Sie den Ressourcentyp aus, geben Sie die URL für die Ressource ein, und geben Sie einen eindeutigen Anzeigenamen für die Verbindung ein. Klicken Sie auf Weiter. Klicken Sie auf „Verbinden“.
+4. Wählen Sie den Ressourcentyp aus, geben Sie die URL für die Ressource ein, und geben Sie einen eindeutigen Anzeigenamen für die Verbindung ein. Wählen Sie „Weiter“ und dann „Verbinden“ aus.
 
 Für andere Ressourcentypen verfügen wir derzeit nicht über eine Azure RBAC-bezogene Lösung. Zur Problemumgehung können Sie einen SAS-URI anfordern, um ihn [an Ihre Ressource anzufügen](../../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=linux#use-a-shared-access-signature-uri).
 
 ### <a name="recommended-azure-built-in-roles"></a>Empfohlene in Azure integrierte Rollen
 
 Es gibt mehrere integrierte Azure-Rollen, die die Berechtigungen bereitstellen können, die für die Verwendung von Storage-Explorer erforderlich sind. Einige dieser Rollen sind:
-- [Besitzer:](../../role-based-access-control/built-in-roles.md#owner) Sie können alles verwalten, einschließlich des Zugriffs auf Ressourcen. **Hinweis** : Über diese Rolle erhalten Sie Schlüsselzugriff.
-- [Mitwirkender](../../role-based-access-control/built-in-roles.md#contributor): Sie können alles verwalten, ausgenommen den Zugriff auf Ressourcen. **Hinweis** : Über diese Rolle erhalten Sie Schlüsselzugriff.
-- [Leser:](../../role-based-access-control/built-in-roles.md#reader) Lesen und Auflisten von Ressourcen.
-- [Speicherkontomitwirkender:](../../role-based-access-control/built-in-roles.md#storage-account-contributor) Vollständige Verwaltung von Speicherkonten. **Hinweis** : Über diese Rolle erhalten Sie Schlüsselzugriff.
-- [Besitzer von Speicherblobdaten](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner): Vollzugriff auf Azure Storage-Blobcontainer und -Daten.
-- [Mitwirkender an Speicherblobdaten](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor): Lesen, Schreiben und Löschen von Azure Storage-Containern und -Blobs.
-- [Leser von Speicherblobdaten](../../role-based-access-control/built-in-roles.md#storage-blob-data-reader): Lesen und Auflisten von Azure Storage-Containern und -Blobs.
+- [Besitzer:](/azure/role-based-access-control/built-in-roles#owner) Sie können alles verwalten, einschließlich des Zugriffs auf Ressourcen.
+- [Mitwirkender](/azure/role-based-access-control/built-in-roles#contributor): Sie können alles verwalten, ausgenommen den Zugriff auf Ressourcen.
+- [Leser:](/azure/role-based-access-control/built-in-roles#reader) Lesen und Auflisten von Ressourcen.
+- [Speicherkontomitwirkender:](/azure/role-based-access-control/built-in-roles#storage-account-contributor) Vollständige Verwaltung von Speicherkonten.
+- [Besitzer von Speicherblobdaten](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner): Vollzugriff auf Azure Storage-Blobcontainer und -Daten.
+- [Mitwirkender an Speicherblobdaten](/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor): Lesen, Schreiben und Löschen von Azure Storage-Containern und -Blobs.
+- [Leser von Speicherblobdaten](/azure/role-based-access-control/built-in-roles#storage-blob-data-reader): Lesen und Auflisten von Azure Storage-Containern und -Blobs.
+
+> [!NOTE]
+> Die Rollen „Besitzer“, „Mitwirkender“ und „Speicherkontomitwirkender“ gewähren Zugriff auf den Kontoschlüssel.
 
 ## <a name="error-self-signed-certificate-in-certificate-chain-and-similar-errors"></a>Error: Selbstsigniertes Zertifikat in der Zertifikatkette (und vergleichbare Fehler)
 
@@ -88,7 +91,7 @@ Zertifikatfehler treten in der Regel in einer der folgenden Situationen auf:
 Wenn Storage-Explorer ein selbstsigniertes oder nicht vertrauenswürdiges Zertifikat sieht, kann er nicht mehr erkennen, ob die empfangene HTTPS-Nachricht geändert wurde. Wenn Sie über eine Kopie des selbstsignierten Zertifikats verfügen, können Sie Storage-Explorer anweisen, es als vertrauenswürdig zu behandeln. Führen Sie dazu die folgenden Schritte aus:
 
 1. Rufen Sie eine X.509-Kopie (CER) des Zertifikats mit Base64-Verschlüsselung ab.
-2. Wechseln Sie zu **Bearbeiten** > **SSL-Zertifikate** > **Zertifikate importieren** , suchen Sie über die Dateiauswahl die CER-Datei, wählen Sie sie aus, und öffnen Sie sie.
+2. Wechseln Sie zu **Bearbeiten** > **SSL-Zertifikate** > **Zertifikate importieren**, suchen Sie über die Dateiauswahl die CER-Datei, wählen Sie sie aus, und öffnen Sie sie.
 
 Dieses Problem kann auch auftreten, wenn es mehrere Zertifikate gibt (Stamm- und Zwischenzertifikat). Um diesen Fehler zu beheben, müssen beide Zertifikate hinzugefügt werden.
 
@@ -98,12 +101,12 @@ Wenn Sie nicht sicher sind, woher das Zertifikat kommt, können Sie zur Lösung 
     * [Windows](https://slproweb.com/products/Win32OpenSSL.html): Eine Light-Version sollte ausreichend sein.
     * Mac und Linux: Sollte im Betriebssystem enthalten sein.
 2. Führen Sie OpenSSL aus.
-    * Windows: Öffnen Sie das Installationsverzeichnis, wählen Sie **/bin/** aus, und doppelklicken Sie dann auf **openssl.exe** .
+    * Windows: Öffnen Sie das Installationsverzeichnis, wählen Sie **/bin/** aus, und doppelklicken Sie dann auf **openssl.exe**.
     * Mac und Linux: Führen Sie `openssl` über ein Terminal aus.
 3. Führen Sie `s_client -showcerts -connect microsoft.com:443` aus.
 4. Suchen Sie nach selbstsignierten Zertifikaten. Wenn Sie sich nicht sicher sind, welche Zertifikate selbst signiert sind, notieren Sie sich, wo immer der Betreff `("s:")` und der Zertifikataussteller `("i:")` identisch sind.
 5. Wenn Sie selbstsignierte Zertifikate gefunden haben, kopieren Sie für jedes Zertifikat den gesamten Inhalt von (und einschließlich) `-----BEGIN CERTIFICATE-----` bis `-----END CERTIFICATE-----`, und fügen Sie ihn in eine neue CER-Datei ein.
-6. Öffnen Sie Storage-Explorer, und navigieren Sie zu **Bearbeiten** > **SSL-Zertifikate** > **Zertifikate importieren** . Verwenden Sie dann die Dateiauswahl, um die von Ihnen erstellten CER-Dateien zu suchen, auszuwählen und zu öffnen.
+6. Öffnen Sie Storage-Explorer, und navigieren Sie zu **Bearbeiten** > **SSL-Zertifikate** > **Zertifikate importieren**. Verwenden Sie dann die Dateiauswahl, um die von Ihnen erstellten CER-Dateien zu suchen, auszuwählen und zu öffnen.
 
 Wenn Sie durch Befolgen dieser Schritte keine selbstsignierten Zertifikate finden können, wenden Sie sich über das Feedbacktool an uns. Sie können Storage-Explorer auch über die Befehlszeile öffnen, indem Sie das `--ignore-certificate-errors`-Flag verwenden. Wenn Storage-Explorer mit diesem Flag geöffnet wird, werden Zertifikatfehler ignoriert.
 
@@ -113,7 +116,7 @@ Wenn Sie durch Befolgen dieser Schritte keine selbstsignierten Zertifikate finde
 
 Leere Anmeldedialogfelder treten am häufigsten auf, wenn Active Directory-Verbunddienste (AD FS) Storage-Explorer auffordern, eine Umleitung durchzuführen, die von Electron nicht unterstützt wird. Als Problemumgehung können Sie versuchen, den Gerätecodefluss für die Anmeldung zu verwenden. Gehen Sie dazu folgendermaßen vor:
 
-1. Wählen Sie auf der linken vertikalen Symbolleiste die Option **Einstellungen** aus. Wechseln Sie im Bereich „Einstellungen“ zu **Anwendung** > **Anmelden** . Aktivieren Sie die Option **Anmeldung per Gerätecodeflow verwenden** .
+1. Wählen Sie auf der linken vertikalen Symbolleiste die Option **Einstellungen** aus. Wechseln Sie im Bereich „Einstellungen“ zu **Anwendung** > **Anmelden**. Aktivieren Sie die Option **Anmeldung per Gerätecodeflow verwenden**.
 2. Öffnen Sie das Dialogfeld **Verbinden** (über das Steckersymbol in der vertikalen Leiste auf der linken Seite oder durch Auswählen der Option **Konto hinzufügen** im Kontobereich).
 3. Wählen Sie die Umgebung aus, an der Sie sich anmelden möchten.
 4. Wählen Sie **Anmelden** aus.
@@ -130,7 +133,7 @@ Wenn Sie sich in einer Schleife für eine erneute Authentifizierung befinden ode
 
 1. Entfernen Sie alle Konten, und schließen Sie dann Storage-Explorer.
 2. Löschen Sie den Ordner „.IdentityService“ von Ihrem Computer. Der Ordner befindet sich unter Windows unter `C:\users\<username>\AppData\Local`. Bei Mac und Linux finden Sie den Ordner im Stammverzeichnis Ihres Benutzerverzeichnisses.
-3. Wenn Sie Mac oder Linux verwenden, müssen Sie auch den Eintrag „Microsoft.Developer.IdentityService“ aus dem Keystore des Betriebssystems löschen. Unter Mac ist der Keystore die Anwendung *Gnome Keychain* . Unter Linux wird die Anwendung in der Regel als _Schlüsselbund_ bezeichnet, der Name kann jedoch abhängig von Ihrer Distribution abweichen.
+3. Wenn Sie Mac oder Linux verwenden, müssen Sie auch den Eintrag „Microsoft.Developer.IdentityService“ aus dem Keystore des Betriebssystems löschen. Unter Mac ist der Keystore die Anwendung *Gnome Keychain*. Unter Linux wird die Anwendung in der Regel als _Schlüsselbund_ bezeichnet, der Name kann jedoch abhängig von Ihrer Distribution abweichen.
 
 ### <a name="conditional-access"></a>Bedingter Zugriff
 
@@ -148,7 +151,7 @@ Die macOS-Keychain kann manchmal in einem Zustand wechseln, der Probleme in Verb
     ![Schlosssymbol](./media/storage-explorer-troubleshooting/unlockingkeychain.png)
 
 5. Öffnen Sie den Storage-Explorer.
-6. Sie werden mit einer Nachricht wie „Servicehub möchte auf den Schlüsselbund zugreifen“ aufgefordert. Geben Sie das Kennwort Ihres Mac-Administratorkontos ein, und wählen Sie **Immer zulassen** (oder **Zulassen** , falls **Immer zulassen** nicht verfügbar ist) aus.
+6. Sie werden mit einer Nachricht wie „Servicehub möchte auf den Schlüsselbund zugreifen“ aufgefordert. Geben Sie das Kennwort Ihres Mac-Administratorkontos ein, und wählen Sie **Immer zulassen** (oder **Zulassen**, falls **Immer zulassen** nicht verfügbar ist) aus.
 7. Versuchen Sie, sich anzumelden.
 
 ### <a name="general-sign-in-troubleshooting-steps"></a>Allgemeine Schritte zur Behandlung von Anmeldeproblemen
@@ -187,50 +190,66 @@ Wenn ein zugeordnetes Konto oder eine verbundene Speicherressource über die Ben
 
 ## <a name="proxy-issues"></a>Proxyprobleme
 
-Vergewissern Sie sich zunächst, dass Sie die folgenden Informationen richtig eingegeben haben:
+Storage-Explorer unterstützt das Herstellen einer Verbindung mit Azure Storage-Ressourcen über einen Proxyserver. Wenn beim Herstellen einer Verbindung mit Azure über einen Proxy Probleme auftreten, finden Sie hier einige Vorschläge.
 
-* Proxy-URL und Portnummer
-* Benutzername und Kennwort, sofern für den Proxy erforderlich
+> [!NOTE]
+> Storage-Explorer unterstützt nur die Standardauthentifizierung mit Proxyservern. Andere Authentifizierungsmethoden wie NTLM werden nicht unterstützt.
 
 > [!NOTE]
 > Storage-Explorer unterstützt keine Dateien für die automatische Proxykonfiguration, die zum Konfigurieren von Proxyeinstellungen verwendet werden können.
 
-### <a name="common-solutions"></a>Gängige Lösungen
+### <a name="verify-storage-explorer-proxy-settings"></a>Überprüfen der Storage-Explorer-Proxyeinstellungen
+
+Die Einstellung **Anwendung → Proxy → Proxykonfiguration** bestimmt, von welcher Quelle Storage-Explorer die Proxykonfiguration abruft.
+
+Wenn Sie „Umgebungsvariablen verwenden“ auswählen, stellen Sie sicher, dass Sie die Umgebungsvariable `HTTPS_PROXY` oder `HTTP_PROXY` festlegen (bei Umgebungsvariablen wird die Groß-/Kleinschreibung berücksichtigt, achten Sie also darauf, dass Sie die richtigen Variablen festlegen). Wenn diese Variablen nicht definiert oder ungültig sind, verwendet Storage-Explorer keinen Proxy. Starten Sie Storage-Explorer neu, nachdem Sie Umgebungsvariablen geändert haben.
+
+Wenn Sie „App-Proxyeinstellungen verwenden“ auswählen, stellen Sie sicher, dass die In-App-Proxyeinstellungen richtig sind.
+
+### <a name="steps-for-diagnosing-issues"></a>Schritte zur Diagnose von Problemen
 
 Wenn weiterhin Probleme auftreten, probieren Sie die folgenden Methoden zur Problembehandlung:
 
-* Wenn Sie ohne Verwendung des Proxys eine Verbindung mit dem Internet herstellen können, überprüfen Sie, ob der Storage-Explorer ohne aktivierte Proxyeinstellungen ausgeführt wird. Wenn dies der Fall ist, liegt möglicherweise ein Problem mit den Proxyeinstellungen vor. Identifizieren Sie die Probleme zusammen mit dem Administrator.
-* Überprüfen Sie, ob andere Anwendungen, die den Proxyserver verwenden, wie erwartet ausgeführt werden.
-* Prüfen Sie, ob Sie sich für die Azure-Umgebung, die Sie verwenden möchten, am Portal anmelden können.
-* Vergewissern Sie sich, dass Antworten von den Dienstendpunkten empfangen werden können. Geben Sie eine der Endpunkt-URLs im Browser ein. Wenn Sie eine Verbindung herstellen können, sollten Sie eine XML-Antwort wie „InvalidQueryParameterValue“ oder eine ähnliche erhalten.
-* Wenn eine andere Person auch den Storage-Explorer mit Ihrem Proxyserver verwendet, überprüfen Sie, ob diese Person eine Verbindung herstellen kann. Wenn dies der Fall ist, müssen Sie sich möglicherweise an den Administrator für den Proxyserver wenden.
+1. Wenn Sie ohne Verwendung des Proxys eine Verbindung mit dem Internet herstellen können, überprüfen Sie, ob der Storage-Explorer ohne aktivierte Proxyeinstellungen ausgeführt wird. Wenn Storage-Explorer erfolgreich eine Verbindung herstellen kann, liegt möglicherweise ein Problem mit dem Proxyserver vor. Identifizieren Sie die Probleme zusammen mit dem Administrator.
+2. Überprüfen Sie, ob andere Anwendungen, die den Proxyserver verwenden, wie erwartet ausgeführt werden.
+3. Prüfen Sie, ob Sie sich für die Azure-Umgebung, die Sie verwenden möchten, am Portal anmelden können.
+4. Vergewissern Sie sich, dass Antworten von den Dienstendpunkten empfangen werden können. Geben Sie eine der Endpunkt-URLs im Browser ein. Wenn Sie eine Verbindung herstellen können, sollten Sie eine XML-Antwort wie `InvalidQueryParameterValue` erhalten.
+5. Prüfen Sie, ob eine andere Person, die Storage-Explorer mit demselben Proxyserver verwendet, eine Verbindung herstellen kann. Wenn dies der Fall ist, müssen Sie sich möglicherweise an den Administrator für den Proxyserver wenden.
 
 ### <a name="tools-for-diagnosing-issues"></a>Tools zum Diagnostizieren von Problemen
 
-Wenn Sie über Netzwerktools verfügen, z.B. Fiddler für Windows, können Sie die Probleme wie folgt diagnostizieren:
+Ein Netzwerktool wie Fiddler kann Ihnen dabei helfen, Probleme zu diagnostizieren.
 
-* Wenn Sie über den Proxy arbeiten müssen, müssen Sie das Netzwerktool möglicherweise so konfigurieren, dass eine Verbindung über den Proxy hergestellt wird.
-* Überprüfen Sie die vom Netzwerktool verwendete Portnummer.
-* Geben Sie die URL des lokalen Hosts und die Portnummer des Netzwerktools als Proxyeinstellungen im Storage-Explorer ein. Bei korrekter Eingabe beginnt das Netzwerktool mit der Protokollierung der vom Storage-Explorer an Verwaltungs- und Dienstendpunkte gesendeten Netzwerkanforderungen. Wenn Sie in einem Browser beispielsweise `https://cawablobgrs.blob.core.windows.net/` für den Blogendpunkt eingeben, erhalten Sie eine Antwort ähnlich der folgenden:
+1. Konfigurieren Sie das Netzwerktool als Proxyserver, der auf dem lokalen Host ausgeführt wird. Wenn Sie weiterhin hinter einem echten Proxy arbeiten müssen, müssen Sie das Netzwerktool möglicherweise so konfigurieren, dass eine Verbindung über den Proxy hergestellt wird.
+2. Überprüfen Sie die vom Netzwerktool verwendete Portnummer.
+3. Konfigurieren Sie die Proxyeinstellungen für Storage-Explorer so, dass der lokale Host und die Portnummer des Netzwerktools (z. B. „localhost:8888“) verwendet wird.
+ 
+Bei korrekter Konfiguration protokolliert das Netzwerktool die vom Storage-Explorer an Verwaltungs- und Dienstendpunkte gesendeten Netzwerkanforderungen.
+ 
+Wenn das Netzwerktool Storage-Explorer-Datenverkehr anscheinend nicht protokolliert, testen Sie das Tool mit einer anderen Anwendung. Geben Sie z. B. die Endpunkt-URL für eine Ihrer Speicherressourcen (z. B. `https://contoso.blob.core.windows.net/`) in einem Webbrowser ein. Sie erhalten dann eine Antwort wie die folgende:
 
   ![Codebeispiel](./media/storage-explorer-troubleshooting/4022502_en_2.png)
 
-  Diese Antwort deutet darauf hin, dass die Ressource vorhanden ist, auch wenn Sie nicht darauf zugreifen können.
+  Die Antwort deutet darauf hin, dass die Ressource vorhanden ist, auch wenn Sie nicht darauf zugreifen können.
+
+Wenn Ihr Netzwerktool nur Datenverkehr von anderen Anwendungen anzeigt, müssen Sie möglicherweise die Proxyeinstellungen in Storage-Explorer anpassen. Andernfalls müssen Sie die Einstellungen Ihres Tools anpassen.
 
 ### <a name="contact-proxy-server-admin"></a>Kontaktaufnahme mit dem Administrator für den Proxyserver
 
 Wenn Ihre Proxyeinstellungen richtig sind, müssen Sie sich möglicherweise an den Administrator für den Proxyserver wenden, um Folgendes zu erreichen:
 
 * Sicherstellen, dass der Proxy nicht den Datenverkehr zu Azure Verwaltungs- oder Ressourcenendpunkten blockiert.
-* das von Ihrem Proxyserver verwendete Authentifizierungsprotokoll überprüfen. NTLM-Proxys werden derzeit vom Storage-Explorer nicht unterstützt.
+* das von Ihrem Proxyserver verwendete Authentifizierungsprotokoll überprüfen. Storage-Explorer unterstützt nur Standardauthentifizierungsprotokolle. NTLM-Proxys werden vom Storage-Explorer nicht unterstützt.
 
 ## <a name="unable-to-retrieve-children-error-message"></a>Fehlermeldung: Untergeordnete Elemente können nicht abgerufen werden
 
-Wenn Sie die Verbindung mit Azure über einen Proxy hergestellt haben, überprüfen Sie, ob die Proxyeinstellungen richtig sind. Wenn Ihnen vom Besitzer des Abonnements oder Kontos Zugriff auf eine Ressource erteilt wurde, sollten Sie sich vergewissern, dass Sie über die Berechtigung zum Lesen oder Auflisten für diese Ressource verfügen.
+Wenn Sie die Verbindung mit Azure über einen Proxy hergestellt haben, überprüfen Sie, ob die Proxyeinstellungen richtig sind.
+
+Wenn Ihnen vom Besitzer des Abonnements oder Kontos Zugriff auf eine Ressource gewährt wurde, vergewissern Sie sich, dass Sie über die Berechtigung zum Lesen oder Auflisten für diese Ressource verfügen.
 
 ## <a name="connection-string-doesnt-have-complete-configuration-settings"></a>Verbindungszeichenfolge weist keine vollständigen Konfigurationseinstellungen auf
 
-Wenn Sie diese Fehlermeldung erhalten, verfügen Sie möglicherweise nicht über die erforderlichen Berechtigungen zum Abrufen der Schlüssel für Ihr Speicherkonto. Um zu überprüfen, ob dies der Fall ist, navigieren Sie zum Portal, und suchen Sie Ihr Speicherkonto. Klicken Sie hierzu einfach mit der rechten Maustaste auf den Knoten für Ihr Speicherkonto, und wählen Sie dann **Im Portal öffnen** aus. Wechseln Sie dann zum Blatt **Zugriffsschlüssel** . Wenn Sie nicht über die Berechtigung zum Anzeigen von Schlüsseln verfügen, wird die Meldung „Sie haben keinen Zugriff“ angezeigt. Um dieses Problem zu umgehen, können Sie den Kontoschlüssel von einer anderen Person erhalten und mit Name und Schlüssel anfügen, oder Sie können eine andere Person um die SAS für das Speicherkonto bitten und mit dieser das Speicherkonto anfügen.
+Wenn Sie diese Fehlermeldung erhalten, verfügen Sie möglicherweise nicht über die erforderlichen Berechtigungen zum Abrufen der Schlüssel für Ihr Speicherkonto. Um zu überprüfen, ob dies der Fall ist, navigieren Sie zum Portal, und suchen Sie Ihr Speicherkonto. Klicken Sie hierzu einfach mit der rechten Maustaste auf den Knoten für Ihr Speicherkonto, und wählen Sie dann **Im Portal öffnen** aus. Wechseln Sie dann zum Blatt **Zugriffsschlüssel**. Wenn Sie nicht über die Berechtigung zum Anzeigen von Schlüsseln verfügen, wird die Meldung „Sie haben keinen Zugriff“ angezeigt. Um dieses Problem zu umgehen, können Sie den Kontoschlüssel von einer anderen Person erhalten und mit Name und Schlüssel anfügen, oder Sie können eine andere Person um die SAS für das Speicherkonto bitten und mit dieser das Speicherkonto anfügen.
 
 Wenn die Kontoschlüssel angezeigt werden, ist es ratsam, ein Problem in GitHub zu melden, damit wir Ihnen beim Beheben des Problems helfen können.
 
@@ -238,7 +257,7 @@ Wenn die Kontoschlüssel angezeigt werden, ist es ratsam, ein Problem in GitHub 
 
 Wenn Sie diese Fehlermeldung erhalten, wenn Sie versuchen, eine benutzerdefinierte Verbindung hinzuzufügen, können die Verbindungsdaten, die in der lokalen Verwaltung für Anmeldeinformationen gespeichert sind, beschädigt sein. Versuchen Sie, Ihre beschädigten lokalen Verbindungen zu löschen und sie dann erneut hinzuzufügen, um dieses Problem zu umgehen:
 
-1. Starten Sie den Storage-Explorer. Wechseln Sie im Menü zu **Hilfe** > **Entwicklertools umschalten** .
+1. Starten Sie den Storage-Explorer. Wechseln Sie im Menü zu **Hilfe** > **Entwicklertools umschalten**.
 2. Wechseln Sie im geöffneten Fenster auf der Registerkarte **Anwendung** zu **Lokaler Speicher** (linke Seite) > **file://** .
 3. Abhängig von der Art der Verbindung, bei der ein Problem auftritt, suchen Sie nach dem Schlüssel, und kopieren Sie dann den Wert in einen Text-Editor. Der Wert ist ein Array Ihrer benutzerdefinierten Verbindungsnamen, wie die folgenden:
     * Speicherkonten
@@ -265,7 +284,7 @@ Nachdem Sie alle Ihre Verbindungen überprüft haben, müssen Sie für alle Verb
 # <a name="windows"></a>[Windows](#tab/Windows)
 
 1. Suchen Sie im Menü **Start** nach der **Anmeldeinformationsverwaltung** und öffnen Sie sie.
-2. Wechseln Sie zu **Windows-Anmeldeinformationen** .
+2. Wechseln Sie zu **Windows-Anmeldeinformationen**.
 3. Suchen Sie unter **Generische Anmeldeinformationen** nach Einträgen, die den Schlüssel `<connection_type_key>/<corrupted_connection_name>` aufweisen (z. B. `StorageExplorer_CustomConnections_Accounts_v1/account1`).
 4. Löschen Sie diese Einträge, und fügen Sie die Verbindungen erneut hinzu.
 

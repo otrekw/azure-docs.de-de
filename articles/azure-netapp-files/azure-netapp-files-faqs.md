@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/16/2020
+ms.date: 01/05/2020
 ms.author: b-juche
-ms.openlocfilehash: 1537a87999f9a8eecf83a2431b2f53d3ceaedacb
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 913d61c506505d18fff416291e7f3b718f1d92f3
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96854698"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97913497"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Häufig gestellte Fragen zu Azure NetApp Files
 
@@ -137,6 +137,16 @@ Sie können angeben, ob für das Stammkonto (Root) Zugriff auf das Volume besteh
 Ja, das ist möglich. Der Dateipfad muss jedoch entweder in einem anderen Abonnement oder in einer anderen Region verwendet werden.   
 
 Ein Beispiel: Angenommen, Sie erstellen ein Volume namens `vol1`. Anschließend erstellen Sie ein weiteres Volume mit dem Namen `vol1` in einem anderen Kapazitätspool, aber im gleichen Abonnement und in der gleichen Region. In diesem Fall führt die Verwendung des gleichen Volumenamens (`vol1`) zu einem Fehler. Wenn Sie den gleichen Dateipfad verwenden möchten, muss sich der Name in einer anderen Region oder in einem anderen Abonnement befinden.
+
+### <a name="when-i-try-to-access-nfs-volumes-through-a-windows-client-why-does-the-client-take-a-long-time-to-search-folders-and-subfolders"></a>Warum nimmt der Client für das Durchsuchen von Ordnern und Unterordnern viel Zeit in Anspruch, wenn ich versuche, über einen Windows-Client auf NFS-Volumes zuzugreifen?
+
+Stellen Sie sicher, dass `CaseSensitiveLookup` auf dem Windows-Client aktiviert ist, um die Suche nach Ordnern und Unterordnern zu beschleunigen:
+
+1. Verwenden Sie den folgenden PowerShell-Befehl, um „CaseSensitiveLookup“ aktivieren:   
+    `Set-NfsClientConfiguration -CaseSensitiveLookup 1`    
+2. Binden Sie das Volume auf dem Windows-Server ein.   
+    Beispiel:   
+    `Mount -o rsize=1024 -o wsize=1024 -o mtype=hard \\10.x.x.x\testvol X:*`
 
 ## <a name="smb-faqs"></a>Häufig gestellte Fragen zu SMB
 

@@ -14,12 +14,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 09c306b85c910e8ec2021abf15013935c44b0df3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 91e74668224d1cdbbc462bf6c2c0a22c4f0a9837
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91707709"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97916574"
 ---
 # <a name="monitor-media-services-metrics"></a>Überwachen von Media Services-Metriken
 
@@ -38,24 +38,21 @@ Azure Monitor bietet verschiedene Methoden für die Interaktion mit Metriken, z.
 
 1. Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 1. Navigieren Sie zu Ihrem Azure Media Services-Konto, und wählen Sie **Metriken** aus.
-1. Klicken Sie auf das Feld **RESSOURCE**, und wählen Sie die Ressource aus, deren Metriken Sie überwachen möchten.
+1. Klicken Sie auf das Feld **Bereich**, und wählen Sie die Ressource aus, die Sie überwachen möchten.
 
-    Auf der rechten Seite wird das Fenster **Ressource auswählen** mit der Liste der für Sie verfügbaren Ressourcen angezeigt. In diesem Fall wird Folgendes angezeigt:
+    Auf der rechten Seite wird das Fenster **Bereich auswählen** mit der Liste der für Sie verfügbaren Ressourcen angezeigt. In diesem Fall wird Folgendes angezeigt:
 
     * &lt;Name des Media Services-Kontos&gt;
     * &lt;Name des Media Services-Kontos&gt;/&lt;Name des Streamingendpunkts&gt;
     * &lt;Speicherkontoname&gt;
 
-    Wählen Sie die Ressource aus, und klicken Sie auf **Anwenden**. Weitere Informationen zu unterstützten Ressourcen und Metriken finden Sie unter [Überwachen von Media Services-Metriken](media-services-metrics-diagnostic-logs.md).
-
-    ![Screenshot, der die ausgewählte Ressource und die hervorgehobene Schaltfläche „Übernehmen“ zeigt.](media/media-services-metrics/metrics02.png)
+    Filtern Sie die Liste, wählen Sie die Ressource aus, und klicken Sie auf **Anwenden**. Weitere Informationen zu unterstützten Ressourcen und Metriken finden Sie unter [Überwachen von Media Services-Metriken](media-services-metrics-diagnostic-logs.md).
 
     > [!NOTE]
-    > Um zwischen den Ressourcen zu wechseln, deren Metriken überwacht werden sollen, klicken Sie erneut auf das Feld **RESSOURCE**, und wiederholen Sie diesen Schritt.
-1. (Optional) Benennen Sie das Diagramm (ändern Sie den Namen, indem Sie oben auf das Bleistiftsymbol klicken).
-1. Fügen Sie Metriken hinzu, die Sie anzeigen möchten.
+    > Um zwischen den zu überwachenden Ressourcen zu wechseln, klicken Sie erneut auf das Feld **Quelle**, und wiederholen Sie diesen Schritt.
 
-    ![Metriken](media/media-services-metrics/metrics03.png)
+1. Optional: Benennen Sie das Diagramm (ändern Sie den Namen, indem Sie oben auf das Bleistiftsymbol klicken).
+1. Fügen Sie die Metriken hinzu, die angezeigt werden sollen.
 1. Sie können das Diagramm an das Dashboard anheften.
 
 ## <a name="view-metrics-with-azure-cli"></a>Anzeigen von Metriken mit der Azure-Befehlszeilenschnittstelle
@@ -72,8 +69,8 @@ Um andere Metriken abzurufen, ersetzen Sie „Egress“ durch den Namen der gew�
 
 ## <a name="see-also"></a>Weitere Informationen
 
-* [Azure Monitor-Metriken](../../azure-monitor/platform/data-platform.md)
-* [Erstellen, Anzeigen und Verwalten von Metrikwarnungen mit Azure Monitor](../../azure-monitor/platform/alerts-metric.md)
+- [Azure Monitor-Metriken](../../azure-monitor/platform/data-platform.md)
+- [Erstellen, Anzeigen und Verwalten von Metrikwarnungen mit Azure Monitor](../../azure-monitor/platform/alerts-metric.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

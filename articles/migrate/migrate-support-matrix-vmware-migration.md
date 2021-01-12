@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: fa8f9ad2d15730d2a0a2c1a722aa3970bbc8f173
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 6e80b1446142786cbd77245a2b6696cac1bb9272
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033985"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97897092"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>Unterstützungsmatrix für die VMware-Migration
 
@@ -59,7 +59,7 @@ In der Tabelle werden die Migrationsanforderungen ohne Agent für VMware-VMs zus
 **Linux-VMs in Azure** | Einige VMs erfordern möglicherweise Änderungen, damit sie in Azure ausgeführt werden können.<br/><br/> Bei diesen Linux-Betriebssystemen führt Azure Migrate diese Änderungen automatisch durch:<br/> – Red Hat Enterprise Linux 7.8, 7.7, 7.6, 7.5, 7.4, 7.0 und 6.x<br/> – Cent OS 7.7, 7.6, 7.5, 7.4 und 6.x</br> - SUSE Linux Enterprise Server 12 SP1+<br/> – SUSE Linux Enterprise Server 15 SP1 <br/>– Ubuntu 19.04, 19.10, 14.04LTS, 16.04LTS, 18.04LTS<br/> – Debian 7, 8 <br/> Oracle Linux 7.7, 7.7-CI<br/> Bei anderen Betriebssystemen nehmen Sie die [erforderlichen Änderungen](prepare-for-migration.md#verify-required-changes-before-migrating) manuell vor.
 **Linux-Start** | Wenn sich „/boot“ in einer dedizierten Partition befindet, sollte diese auf dem Betriebssystemdatenträger und nicht auf mehrere Datenträger verteilt vorhanden sein.<br/> Wenn „/boot“ Teil der Stammpartition („/“) ist, sollte sich diese auf dem Betriebssystemdatenträger befinden und nicht auf andere Datenträger erstrecken.
 **UEFI-Start** | Unterstützt. UEFI-basierte VMs werden zu Azure-VMs der 2. Generation migriert. 
-**Datenträgergröße** | 2 TB für den Betriebssystemdatenträger (BIOS-Start); 4 TB für den Betriebssystemdatenträger (UEFI-Start); 32 TB für Datenträger
+**Datenträgergröße** | 2 TB für den Betriebssystemdatenträger, 32 TB für Datenträger
 **Einschränkungen für Datenträger** |  Bis zu 60 Datenträger pro virtuellem Computer
 **Verschlüsselte Datenträger/Volumes** | Die Migration von VMs mit verschlüsselten Datenträgern/Volumes wird nicht unterstützt.
 **Freigegebener Datenträgercluster** | Wird nicht unterstützt.
@@ -122,7 +122,7 @@ Die Tabelle enthält eine Übersicht über die Unterstützung für virtuelle VMw
 **UEFI-Start** | Unterstützt. UEFI-basierte VMs werden zu Azure-VMs der 2. Generation migriert. 
 **UEFI: Sicherer Start**         | Nicht unterstützt für die Migration.
 **Zieldatenträger** | Virtuelle Computer können nur zu verwalteten Datenträgern (HDD Standard, SSD Standard, SSD Premium) in Azure migriert werden.
-**Datenträgergröße** | 2 TB für den Betriebssystemdatenträger (BIOS-Start); 4 TB für den Betriebssystemdatenträger (UEFI-Start); 8 TB für Datenträger
+**Datenträgergröße** | 2 TB für den Betriebssystemdatenträger, 32 TB für Datenträger
 **Einschränkungen für Datenträger** |  Bis zu 63 Datenträger pro virtuellem Computer
 **Verschlüsselte Datenträger/Volumes** | Die Migration von VMs mit verschlüsselten Datenträgern/Volumes wird nicht unterstützt.
 **Freigegebener Datenträgercluster** | Wird nicht unterstützt.

@@ -9,17 +9,29 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 09/10/2020
-ms.openlocfilehash: b11b0b46e57247d09e576795079e20c679e519d5
-ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
+ms.openlocfilehash: 695702c04e2eeb74ee27b7d4276a3be94d9d1cf7
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97760111"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881819"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning: Anmerkungen zu dieser Version
 
 In diesem Artikel erhalten Sie Informationen zu Azure Machine Learning-Versionen.  Den vollständigen SDK-Referenzinhalt finden Sie auf der Hauptseite der Referenz zum [**Azure Machine Learning SDK für Python**](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py).
 
+## <a name="2020-12-31"></a>2020-12-31
+### <a name="azure-machine-learning-studio-notebooks-experience-december-update"></a>Azure Machine Learning Studio Notebooks-Oberfläche (Aktualisierung vom Dezember)
++ **Neue Features**
+  + Suche des Benutzers nach Dateinamen. Benutzer können jetzt alle in einem Arbeitsbereich gespeicherten Dateien durchsuchen.
+  + Parallele Markdown-Anzeige pro Notebookzelle. Die Benutzer können jetzt in einer Notebookzelle gerendertes Markdown und die Markdownsyntax nebeneinander anzeigen.
+  + Zellenstatusleiste. Auf der Statusleiste werden der Status einer Codezelle angezeigt und angegeben, ob eine Zelle erfolgreich ausgeführt wurde und wie lange die Ausführung gedauert hat. 
+   
++ **Fehlerbehebungen und Verbesserungen**
+  + Verbesserte Seitenladezeiten
+  + Verbesserte Leistung 
+  + Verbesserte Geschwindigkeit und Kernelzuverlässigkeit
+  
 ## <a name="2020-12-07"></a>2020-12-07
 
 ### <a name="azure-machine-learning-sdk-for-python-v1190"></a>Azure Machine Learning SDK für Python v1.19.0
@@ -83,7 +95,19 @@ In diesem Artikel erhalten Sie Informationen zu Azure Machine Learning-Versionen
     + Die Verwendung von „Nccl“ und „Gloo“ als gültiger Eingabetyp für Schätzerklassen wurde zugunsten der Verwendung von „PyTorchConfiguration“ mit „ScriptRunConfig“ als veraltet markiert. 
     + Die Verwendung von „Mpi“ als gültiger Eingabetyp für Schätzerklassen wurde zugunsten der Verwendung von „MpiConfiguration“ mit „ScriptRunConfig“ als veraltet markiert.
 
+## <a name="2020-11-30"></a>2020-11-30
+### <a name="azure-machine-learning-studio-notebooks-experience-november-update"></a>Azure Machine Learning Studio Notebooks-Oberfläche (Aktualisierung vom November)
++ **Neue Features**
+   + Natives Terminal. Benutzer haben jetzt über das [integrierte Terminal](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#terminal) Zugriff auf ein integriertes Terminal und auf Git-Vorgänge.
+  + Ordnerduplikat 
+  + Dropdownliste für Computekosten 
+  + Pylance für Offlinecomputing 
 
++ **Fehlerbehebungen und Verbesserungen**
+  + Verbesserte Seitenladezeiten
+  + Verbesserte Leistung 
+  + Verbesserte Geschwindigkeit und Kernelzuverlässigkeit
+  + Upload großer Dateien. Sie können jetzt Dateien mit einer Größe von bis zu 95 MB hochladen.
 
 ## <a name="2020-11-09"></a>11.9.2020
 

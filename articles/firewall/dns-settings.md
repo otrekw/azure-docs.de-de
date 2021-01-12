@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: how-to
-ms.date: 11/06/2020
+ms.date: 01/04/2021
 ms.author: victorh
-ms.openlocfilehash: 197d48a2f5368111ec194a18f86aedf5ad78e1b2
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 855c06b610fb8166f6f2dfcf37af34efb3713ffe
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94565618"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97883219"
 ---
 # <a name="azure-firewall-dns-settings"></a>DNS-Einstellungen für Azure Firewall
 
@@ -64,6 +64,9 @@ $azFw | Set-AzFirewall
 ## <a name="dns-proxy"></a>DNS-Proxy
 
 Sie haben auch die Möglichkeit, Azure Firewall als DNS-Proxy zu konfigurieren. Ein DNS-Proxy ist ein Vermittler für DNS-Anforderungen von virtuellen Clientcomputern an einen DNS-Server. Wenn Sie einen benutzerdefinierten DNS-Server konfigurieren, aktivieren Sie den DNS-Proxy, um DNS-Auflösungskonflikte zu vermeiden und zudem FQDN-Filterung (vollqualifizierter Domänenname) in den Netzwerkregeln zu aktivieren.
+
+:::image type="content" source="media/dns-settings/dns-proxy-2.png" alt-text="D N S-Proxykonfiguration mit einem benutzerdefinierten D N S-Server.":::
+
 
 Wenn Sie den DNS-Proxy nicht aktivieren, können DNS-Anforderungen vom Client zu einem anderen Zeitpunkt an einen DNS-Server weitergeleitet werden oder eine andere Antwort als die der Firewall zurückgeben. Der DNS-Proxy fügt Azure Firewall in den Pfad der Clientanforderungen ein, um Inkonsistenzen zu vermeiden.
 

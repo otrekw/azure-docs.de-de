@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b40171d87ccffa7c5c4fb72d2e79af015b1d16f
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: a78cf9b7d78078030ac0db8bd2f0fddb93a8dda4
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96859962"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881395"
 ---
 # <a name="assign-sensitivity-labels-to-microsoft-365-groups-in-azure-active-directory"></a>Zuweisen von Vertraulichkeitsbezeichnungen zu Microsoft 365-Gruppen in Azure Active Directory
 
@@ -48,7 +48,7 @@ Damit veröffentlichte Bezeichnungen auf Gruppen angewendet werden können, müs
     ```
 
     > [!NOTE]
-    > Wenn für diese Azure AD-Organisation keine Gruppeneinstellungen erstellt wurden, müssen Sie zunächst die Einstellungen erstellen. Um Gruppeneinstellungen für diese Azure AD-Organisation zu erstellen, führen Sie die Schritte in [Azure Active Directory-Cmdlets zum Konfigurieren von Gruppeneinstellungen](../enterprise-users/groups-settings-cmdlets.md) aus.
+    > Wenn für diese Azure AD-Organisation keine Gruppeneinstellungen erstellt wurden, wird im obigen Cmdlet der Fehler „Das Argument kann nicht an den Parameter "Identity" gebunden werden, da es NULL ist.“ angezeigt. In diesem Fall müssen Sie zunächst die Einstellungen erstellen. Um Gruppeneinstellungen für diese Azure AD-Organisation zu erstellen, führen Sie die Schritte in [Azure Active Directory-Cmdlets zum Konfigurieren von Gruppeneinstellungen](../enterprise-users/groups-settings-cmdlets.md) aus.
 
 1. Zeigen Sie als nächstes die aktuellen Gruppeneinstellungen an.
 

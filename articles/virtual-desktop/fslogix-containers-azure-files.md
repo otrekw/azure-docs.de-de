@@ -3,15 +3,15 @@ title: FSLogix-Profilcontainerdateien mit Windows Virtual Desktop – Azure
 description: Dieser Artikel beschreibt FSLogix-Profilcontainer in Windows Virtual Desktop und Azure Files.
 author: Heidilohr
 ms.topic: conceptual
-ms.date: 08/07/2019
+ms.date: 01/04/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e3bd667bc7fce8f9fb10b852cae7a6c4ad198d75
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: ef7f19d835f4fef1a911da01015321b2dda67682
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97797195"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861878"
 ---
 # <a name="fslogix-profile-containers-and-azure-files"></a>FSLogix-Profilcontainer und Azure Files
 
@@ -70,7 +70,7 @@ S2D-Cluster benötigen ein Betriebssystem, das gepatcht, aktualisiert und in ein
 Am 19. November 2018 [erwarb Microsoft FSLogix](https://blogs.microsoft.com/blog/2018/11/19/microsoft-acquires-fslogix-to-enhance-the-office-365-virtualization-experience/). FSLogix löst viele Herausforderungen in Bezug auf Profilcontainer. Zu den wichtigsten zählen folgende:
 
 - **Leistung:** [FSLogix-Profilcontainer](/fslogix/configure-profile-container-tutorial/) sind ausgesprochen leistungsfähig und lösen Leistungsprobleme, die bisher einen Austauschmodus mit Cache blockiert haben.
-- **OneDrive:** Ohne FSLogix-Profilcontainer wird OneDrive for Business in nicht dauerhaften RDSH- und VDI-Umgebungen nicht unterstützt. Im Blog [OneDrive for Business and FSLogix best practices](/fslogix/overview/) (Best Practices für OneDrive for Business und FSLogix) beschrieben, wie diese beiden Technologien interagieren. Weitere Informationen finden Sie unter [Verwenden des Synchronisierungsclients auf virtuellen Desktops](/deployoffice/rds-onedrive-business-vdi/).
+- **OneDrive:** Ohne FSLogix-Profilcontainer wird OneDrive for Business in nicht dauerhaften RDSH- und VDI-Umgebungen nicht unterstützt. Auf der [OneDrive-Seite für die Unterstützung von VDI](/onedrive/sync-vdi-support) erhalten Sie Informationen über die Interaktion. Weitere Informationen finden Sie unter [Verwenden des Synchronisierungsclients auf virtuellen Desktops](/deployoffice/rds-onedrive-business-vdi/).
 - **Zusätzliche Ordner**: FSLogix bietet die Möglichkeit, Benutzerprofile auf zusätzliche Ordner zu erweitern.
 
 Seit der Übernahme hat Microsoft damit begonnen, vorhandene Lösungen für Benutzerprofile wie UPD durch FSLogix-Profilcontainer zu ersetzen.

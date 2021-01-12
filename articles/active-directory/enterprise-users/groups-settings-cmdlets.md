@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 70387717c15dade349a323e663ac0fd31935a15f
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: c48e23de6832999b262283c0bf6664b4dfe88ee7
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96859877"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881564"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>Azure Active Directory-Cmdlets zum Konfigurieren von Gruppeneinstellungen
 
@@ -84,10 +84,11 @@ Mit diesen Schritten werden Einstellungen auf Verzeichnisebene erstellt, die fü
    ```powershell
    $Setting = $Template.CreateDirectorySetting()
    ```  
-4. Aktualisieren Sie dann den Wert für die Nutzungsrichtlinie:
+4. Aktualisieren Sie dann das Einstellungsobjekt mit einem neuen Wert. In den beiden folgenden Beispielen wird der Wert für die Verwendungsrichtlinie geändert, und Vertraulichkeitsbezeichnungen werden aktiviert. Legen Sie nach Bedarf diese oder eine andere Einstellung in der Vorlage fest:
   
    ```powershell
    $Setting["UsageGuidelinesUrl"] = "https://guideline.example.com"
+   $Setting["EnableMIPLabels"] = "True"
    ```  
 5. Wenden Sie dann die Einstellungen an:
   
@@ -118,7 +119,7 @@ Um den Wert für UsageGuideLinesUrl in der Vorlage mit den Einstellungen zu aktu
    ```powershell
     Name                          Value
     ----                          -----
-    EnableMIPLabels               false
+    EnableMIPLabels               True
     CustomBlockedWordsList
     EnableMSStandardBlockedWords  False
     ClassificationDescriptions

@@ -11,15 +11,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 07/12/2019
+ms.date: 01/04/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0144c57549e374404d3dde0fe997ba41adc8606b
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: c06988bf9c3558f5ef82862bdbcd821dc42ca28a
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967583"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97880986"
 ---
 #  <a name="what-is-sap-hana-on-azure-large-instances"></a>Was ist SAP HANA in Azure (große Instanzen)?
 
@@ -35,12 +35,14 @@ Die Kundenisolation innerhalb des Infrastrukturumfelds wird in Mandanten wie fol
 
 Diese Bare-Metal-Servereinheiten unterstützen nur das Ausführen von SAP HANA. Die SAP-Anwendungsschicht oder Middlewareschicht der Workload wird auf VMs ausgeführt. Die Infrastrukturumfelder, die die Einheiten von SAP HANA in Azure (große Instanzen) ausführen, sind mit den Backbones der Azure-Netzwerkdienste verbunden. Auf diese Weise wird eine Konnektivität mit geringer Wartezeit zwischen Einheiten von SAP HANA in Azure (große Instanzen) und VMs bereitgestellt.
 
-Seit Juli 2019 wird zwischen den zwei verschiedenen Stempeln der Revisionen von großen HANA-Instanzen und dem Speicherort für Bereitstellungen unterschieden:
+Ab Januar 2021 wird zwischen den zwei verschiedenen Stempeln der Revisionen von großen HANA-Instanzen und dem Speicherort für Bereitstellungen unterschieden:
 
 - „Revision 3“ (Rev 3): umfasst die Stempel, die vor Juli 2019 für Kunden zur Bereitstellung zur Verfügung gestellt wurden.
 - „Revision 4“ (Rev 4): Neuer Stempelentwurf, der in unmittelbarer Nähe zu Azure-VM-Hosts bereitgestellt wird und bisher in den folgenden Azure-Regionen freigegeben wurde:
     -  USA, Westen 2 
-    -  East US 
+    -  East US
+    -  USA, Osten 2 (in zwei Verfügbarkeitszonen)
+    -  USA, Süden-Mitte (in zwei Verfügbarkeitszonen)
     -  Europa, Westen
     -  Nordeuropa
 

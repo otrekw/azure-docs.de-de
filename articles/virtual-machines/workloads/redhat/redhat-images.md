@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 02/10/2020
 ms.author: alsin
 ms.reviewer: cynthn
-ms.openlocfilehash: 5cac21046b6b4afdefc4213f6a1fab438d62cca3
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: dbff136ac5787ef9549cca9dc8f946c56a138986
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94957536"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97900500"
 ---
 # <a name="overview-of-red-hat-enterprise-linux-images"></a>Übersicht über Red Hat Enterprise Linux-Images
 
@@ -22,7 +22,7 @@ Dieser Artikel beschreibt die verfügbaren Red Hat Enterprise Linux-Images (RHEL
 Weitere Informationen zu Red Hat-Supportrichtlinien für alle RHEL-Versionen finden Sie unter [Red Hat Enterprise Linux Life Cycle (Red Hat Enterprise Linux-Lebenszyklus)](https://access.redhat.com/support/policy/updates/errata). Ausführliche Informationen zu Preisen finden Sie unter [Azure-Preisrechner](https://azure.microsoft.com/pricing/details/virtual-machines/linux/).
 
 >[!IMPORTANT]
-> Für RHEL-Images, die derzeit auf dem Azure-Marketplace verfügbar sind, wird entweder das Lizenzierungsmodell Bring-Your-Own-Subscription (BYOS) oder die nutzungsbasierte Zahlung (Pay-As-You-Go) unterstützt. Der [Azure-Vorteil bei Hybridnutzung](../../windows/hybrid-use-benefit-licensing.md) und dynamische Wechsel zwischen BYOS und nutzungsbasierter Bezahlung werden nicht unterstützt. Für einen Wechsel des Lizenzierungsmodus ist eine erneute Bereitstellung der VM über das entsprechende Image erforderlich.
+> Für RHEL-Images, die derzeit auf dem Azure-Marketplace verfügbar sind, wird entweder das Lizenzierungsmodell Bring-Your-Own-Subscription (BYOS) oder die nutzungsbasierte Zahlung (Pay-As-You-Go) unterstützt. Der dynamische Wechsel zwischen BYOS und nutzungsbasierter Bezahlung kann über den [Azure-Vorteil bei Hybridnutzung](../../linux/azure-hybrid-benefit-linux.md) erfolgen.
 
 >[!NOTE]
 > Erstellen Sie ein Supportticket bei Microsoft, wenn bei Ihnen in Azure Marketplace ein Problem mit RHEL-Images auftritt.

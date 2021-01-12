@@ -3,20 +3,24 @@ title: Einstellen von Runtimeversionen von Azure Functions als Ziel
 description: Azure Functions unterstützt mehrere Versionen der Runtime. Erfahren Sie, wie Sie die Runtimeversion einer in Azure gehosteten Funktions-App angeben.
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: a7d86ef26d50d60389ae09bf3245ed97fea2c3e3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 46bf7849888033b2bbb7e9b9669ee3eae4de10e9
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88926574"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97916523"
 ---
 # <a name="how-to-target-azure-functions-runtime-versions"></a>Einstellen von Runtimeversionen von Azure Functions als Ziel
 
 Eine Funktionen-App wird für eine bestimmte Version der Azure Functions-Runtime ausgeführt. Es gibt drei Hauptversionen: [1.x, 2.x und 3.x](functions-versions.md). Standardmäßig werden Funktions-Apps in Version 3.x der Runtime erstellt. In diesem Artikel wird erläutert, wie Sie eine Funktionen-App in Azure so konfigurieren, dass sie mit der von Ihnen ausgewählten Version ausgeführt wird. Informationen zum Konfigurieren einer lokalen Entwicklungsumgebung für eine bestimmte Version finden Sie unter [Codieren und lokales Testen von Azure Functions](functions-run-local.md).
 
+Das Durchführen der Konfiguration für eine bestimmte Version hängt davon ab, ob Windows oder Linux ausgeführt wird.
+
 ## <a name="automatic-and-manual-version-updates"></a>Automatische und manuelle Versionsupdates
 
-Mit Azure Functions können Sie eine bestimmte Version der Runtime als Ziel festlegen, indem Sie die Anwendungseinstellung `FUNCTIONS_EXTENSION_VERSION` in einer Funktionen-App verwenden. Die Funktionen-App verwendet weiterhin die angegebene Version der Runtime, bis Sie ausdrücklich die Verwendung einer neuen Version auswählen. Wenn Sie nur die Hauptversion angeben, wird die Funktions-App automatisch auf neue Nebenversionen der Runtime aktualisiert, sobald diese verfügbar werden. Neue Nebenversionen sollten keine Breaking Changes enthalten. 
+_Dieser Abschnitt trifft nicht zu, wenn Sie Ihre Funktions-App [unter Linux](#manual-version-updates-on-linux) ausführen._
+
+Mit Azure Functions können Sie unter Windows eine bestimmte Version der Runtime als Ziel festlegen, indem Sie die Anwendungseinstellung `FUNCTIONS_EXTENSION_VERSION` in einer Funktions-App verwenden. Die Funktionen-App verwendet weiterhin die angegebene Version der Runtime, bis Sie ausdrücklich die Verwendung einer neuen Version auswählen. Wenn Sie nur die Hauptversion angeben, wird die Funktions-App automatisch auf neue Nebenversionen der Runtime aktualisiert, sobald diese verfügbar werden. Neue Nebenversionen sollten keine Breaking Changes enthalten. 
 
 Wenn Sie eine Nebenversion (z.B. „2.0.12345“) angeben, wird die Funktions-App an diese spezifische Version angeheftet, bis Sie sie explizit ändern. Ältere Nebenversionen werden regelmäßig aus der Produktionsumgebung entfernt. Danach wird Ihre Funktions-App auf der neuesten Version anstatt auf der in `FUNCTIONS_EXTENSION_VERSION` festgelegten Version ausgeführt. Aus diesem Grund sollten Sie Probleme im Zusammenhang mit Ihrer Funktions-App, die eine bestimmte Nebenversion erfordern, schnell beheben, damit Sie stattdessen die Hauptversion als Ziel verwenden können. Das Entfernen von Nebenversionen wird in den [App Service-Ankündigungen](https://github.com/Azure/app-service-announcements/issues) erläutert.
 
@@ -36,6 +40,8 @@ Die folgende Tabelle enthält die Werte vom Typ `FUNCTIONS_EXTENSION_VERSION` f�
 Eine Änderung an der Runtimeversion bewirkt, dass eine Funktionen-App neu gestartet wird.
 
 ## <a name="view-and-update-the-current-runtime-version"></a>Anzeigen und Aktualisieren der aktuellen Runtimeversion
+
+_Dieser Abschnitt trifft nicht zu, wenn Sie Ihre Funktions-App [unter Linux](#manual-version-updates-on-linux) ausführen._
 
 Sie können die von der Funktions-App verwendete Runtimeversion ändern. Da möglicherweise wesentliche Änderungen vorliegen, können Sie nur die Runtimeversion ändern, bevor Sie Funktionen in Ihrer Funktions-App erstellt haben. 
 
@@ -120,6 +126,65 @@ Ersetzen Sie wie zuvor `<FUNCTION_APP>` durch den Namen Ihrer Funktions-App und 
 ---
 
 Die Funktions-App startet neu, nachdem die Änderung an der Anwendungseinstellung vorgenommen wurde.
+
+## <a name="manual-version-updates-on-linux"></a>Manuelle Versionsupdates unter Linux
+
+Wenn Sie eine Linux-Funktions-App an eine bestimmte Hostversion anheften möchten, geben Sie in der Standortkonfiguration im Feld „LinuxFxVersion“ die Image-URL an. Beispiel: Sie möchten eine Node 10-Funktions-App an die Hostversion 3.0.13142 anheften.
+
+Für **Linux-App-Dienst/Apps mit elastischem Premium-Tarif**: Legen Sie `LinuxFxVersion` auf `DOCKER|mcr.microsoft.com/azure-functions/node:3.0.13142-node10-appservice` fest.
+
+Für **Linux-Apps mit Verbrauchstarif**: Legen Sie `LinuxFxVersion` auf `DOCKER|mcr.microsoft.com/azure-functions/mesh:3.0.13142-node10` fest.
+
+
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azurecli-linux)
+
+Sie können die `LinuxFxVersion` über die Azure CLI anzeigen und festlegen.  
+
+Zeigen Sie in der Azure CLI die aktuelle Version der Runtime mit dem Befehl [az functionapp config show](/cli/azure/functionapp/config) an.
+
+```azurecli-interactive
+az functionapp config show --name <function_app> \
+--resource-group <my_resource_group>
+```
+
+Ersetzen Sie in diesem Code `<function_app>` durch den Namen der Funktions-App. Ersetzen Sie außerdem `<my_resource_group>` durch den Namen der Ressourcengruppe für Ihre Funktions-App. 
+
+Sie sehen `linuxFxVersion` in der folgenden Ausgabe, die zur besseren Lesbarkeit beschnitten wurde:
+
+```output
+{
+  ...
+
+  "kind": null,
+  "limits": null,
+  "linuxFxVersion": <LINUX_FX_VERSION>,
+  "loadBalancing": "LeastRequests",
+  "localMySqlEnabled": false,
+  "location": "West US",
+  "logsDirectorySizeLimit": 35,
+   ...
+}
+```
+
+Sie können die Einstellung `linuxFxVersion` in der Funktions-App mit dem Befehl [az functionapp config set](/cli/azure/functionapp/config) aktualisieren.
+
+```azurecli-interactive
+az functionapp config set --name <FUNCTION_APP> \
+--resource-group <RESOURCE_GROUP> \
+--linux-fx-version <LINUX_FX_VERSION>
+```
+
+Ersetzen Sie `<FUNCTION_APP>` durch den Namen der Funktions-App. Ersetzen Sie außerdem `<RESOURCE_GROUP>` durch den Namen der Ressourcengruppe für Ihre Funktions-App. Ersetzen Sie zudem `<LINUX_FX_VERSION>` durch die oben erläuterten Werte.
+
+Sie können diesen Befehl an der [Azure Cloud Shell](../cloud-shell/overview.md) ausführen, indem Sie im vorangehenden Codebeispiel **Ausprobieren** auswählen. Sie können auch die [Azure-Befehlszeilenschnittstelle lokal](/cli/azure/install-azure-cli) zum Ausführen dieses Befehls verwenden, nachdem Sie sich mit [az login](/cli/azure/reference-index#az-login) angemeldet haben.
+
+
+Die Funktions-App wird auch neu gestartet, nachdem die Änderung der Standardkonfiguration vorgenommen wurde.
+
+> [!NOTE]
+> Beachten Sie, dass das Festlegen von `LinuxFxVersion` direkt auf die Image-URL für Apps mit Verbrauchstarif Platzhalter und andere Kaltstartoptimierungen verhindert.
+
+---
 
 ## <a name="next-steps"></a>Nächste Schritte
 

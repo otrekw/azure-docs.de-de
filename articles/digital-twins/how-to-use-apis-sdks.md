@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: c9f9cc53c62ed19fa5fbd1e78c840a8a34b6fb84
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.openlocfilehash: 3c880d570cfa6e1b1388e59557836a3070d7cdc7
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97824650"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97862551"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>Verwenden der Azure Digital Twins-APIs und SDKs
 
@@ -29,7 +29,7 @@ Bei den Steuerungsebenen-APIs handelt es sich um [ARM](../azure-resource-manager
 Die aktuellste Version der Steuerungsebenen-API ist _**2020-12-01**_.
 
 So verwenden Sie die Steuerungsebenen-APIs
-* Sie können die APIs direkt aufrufen, indem Sie auf den neuesten Swagger im [Swagger-Ordner der Steuerungsebene](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins) verweisen. Dieses Repository enthält auch einen Ordner mit Beispielen, die die Verwendung veranschaulichen.
+* Sie können die APIs direkt aufrufen, indem Sie auf den neuesten Swagger-Ordner im [Swagger-Repository der Steuerungsebene](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins/stable) verweisen. Dieser Ordner enthält auch einen Ordner mit Beispielen, die die Verwendung veranschaulichen.
 * Sie können derzeit auf SDKs für Steuerungs-APIs in Folgendem zugreifen...
   - [ **.NET (C#)**](https://www.nuget.org/packages/Microsoft.Azure.Management.DigitalTwins/) ([Referenz [automatisch generiert]](/dotnet/api/overview/azure/digitaltwins/management?view=azure-dotnet&preserve-view=true)) ([Quelle](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Microsoft.Azure.Management.DigitalTwins))
   - [**Java**](https://search.maven.org/artifact/com.microsoft.azure.digitaltwins.v2020_10_31/azure-mgmt-digitaltwins/1.0.0/jar) ([Referenz [automatisch generiert]](/java/api/overview/azure/digitaltwins?view=azure-java-stable&preserve-view=true)) ([Quelle](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins/mgmt-v2020_10_31))
@@ -51,7 +51,7 @@ Die aktuellste Datenebenen-API-Version ist _**2020-10-31**_.
 
 So verwenden Sie die Datenebenen-APIs
 * Sie können die APIs direkt aufrufen, indem Sie wie folgt vorgehen:
-   - Verweisen auf den aktuellen Swagger im [Swagger-Ordner der Datenebene](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/data-plane/Microsoft.DigitalTwins). Dieses Repository enthält auch einen Ordner mit Beispielen, die die Verwendung veranschaulichen. 
+   - Verweisen auf den aktuellen Swagger-Ordner im [Swagger-Repository der Datenebene](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/data-plane/Microsoft.DigitalTwins). Dieser Ordner enthält auch einen Ordner mit Beispielen, die die Verwendung veranschaulichen. 
    - Zeigen Sie die [API-Referenzdokumentation](/rest/api/azure-digitaltwins/) an.
 * Sie können das **.NET (C#) SDK** verwenden. So verwenden Sie das .NET SDK
    - Sie können das Paket über NuGet anzeigen und hinzufügen: [Azure.DigitalTwins.Core](https://www.nuget.org/packages/Azure.DigitalTwins.Core). 

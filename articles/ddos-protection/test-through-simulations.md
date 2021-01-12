@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: 55692122461ef1b22b43b0def43e826ac7aeae30
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: e3a665e3615c9ff3a68cf13eeaef5e8f41632f6a
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97813784"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97900359"
 ---
 # <a name="test-through-simulations"></a>Durchführen von Simulationstests
 
@@ -42,9 +42,9 @@ Wir haben gemeinsam mit [BreakingPoint Cloud](https://www.ixiacom.com/products/b
     |---------      |---------                                          |
     |Ziel-IP-Adresse           | Geben Sie eine Ihrer öffentlichen IP-Adressen ein, die Sie testen möchten.                     |
     |Portnummer   | Geben Sie _443_ ein.                       |
-    |DDoS-Profil | Wählen Sie **TCP-SYN-Flood** aus.|
-    |Testgröße       | Wählen Sie **200.000 PPS, 100 MBit/s und 8 Quell-IP-Adressen** aus.                                  |
-    |Testdauer | Wählen Sie **10 Minuten** aus.|
+    |DDoS-Profil | Mögliche Werte: **DNS Flood**, **NTPv2 Flood**, **SSDP Flood**, **TCP SYN Flood**, **UDP 64B Flood**, **UDP 128B Flood**, **UDP 256B Flood**, **UDP 512B Flood**, **UDP 1024B Flood**, **UDP 1514B Flood**, **UDP Fragmentation** und **UDP Memcached**.|
+    |Testgröße       | Mögliche Werte: **100K pps, 50 MBit/s und 4 Quell-IPs**, **200K pps, 100 MBit/s und 8 Quell-IPs**, **400K pps, 200 MBit/s und 16 Quell-IPs**, **800K pps, 400 MBit/s und 32 Quell-IPs**.                                  |
+    |Testdauer | Mögliche Werte: **10 Minuten**, **15 Minuten**, **20 Minuten**, **25 Minuten**, **30 Minuten**.|
 
 Die Konfiguration sollte jetzt wie folgt aussehen:
 

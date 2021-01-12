@@ -3,12 +3,12 @@ title: Erstellen von Richtlinien für Gastkonfigurationen für Windows
 description: Erfahren Sie, wie Sie eine Azure Policy-Richtlinie für Gastkonfigurationen für Windows erstellen.
 ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: d01f4fff28debc3fabcfb32b32b02c5029ce7323
-ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
+ms.openlocfilehash: 85ffda54d58db0544858ca8ab61335b61f18299e
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97755972"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881785"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-windows"></a>Erstellen von Richtlinien für Gastkonfigurationen für Windows
 
@@ -138,9 +138,32 @@ class ResourceName : OMI_BaseResource
 };
 ```
 
+Wenn die Ressource über die erforderlichen Eigenschaften verfügt, müssen diese parallel zur `reasons`-Klasse von `Get-TargetResource` zurückgegeben werden. Wenn `reasons` nicht eingeschlossen ist, enthält der Dienst ein „Catch-All“-Verhalten, das die Werteingaben mit `Get-TargetResource` und den von `Get-TargetResource` zurückgegebenen Werten vergleicht und einen ausführlichen Vergleich als `reasons` bereitstellt.
+
 ### <a name="configuration-requirements"></a>Konfigurationsanforderungen
 
 Der Name der benutzerdefinierten Konfiguration muss überall einheitlich sein. Der Name der ZIP-Datei für das Inhaltspaket, der Konfigurationsname in der MOF-Datei und der Name der Gastzuweisung in der Azure Resource Manager-Vorlage (ARM-Vorlage) müssen identisch sein.
+
+### <a name="policy-requirements"></a>Richtlinienanforderungen
+
+Der Abschnitt `metadata` der Richtliniendefinition muss zwei Eigenschaften für den Gastkonfigurationsdienst enthalten, um die Bereitstellung und die Berichterstellung von Gastkonfigurationszuweisungen zu automatisieren. Die `category`-Eigenschaft muss auf „Guest Configuration“ festgelegt werden, und ein Abschnitt mit dem Namen `Guest Configuration` muss Informationen zur Gastkonfigurationszuweisung enthalten. Mit dem `New-GuestConfigurationPolicy`-Cmdlet wird dieser Text automatisch erstellt.
+Weitere Informationen finden Sie in den Anleitungen auf dieser Seite.
+
+Das folgende Beispiel veranschaulicht die Verwendung des Abschnitts `metadata`.
+
+```json
+    "metadata": {
+      "category": "Guest Configuration",
+      "guestConfiguration": {
+        "name": "test",
+        "version": "1.0.0",
+        "contentType": "Custom",
+        "contentUri": "CUSTOM-URI-HERE",
+        "contentHash": "CUSTOM-HASH-VALUE-HERE",
+        "configurationParameter": {}
+      }
+    },
+```
 
 ### <a name="scaffolding-a-guest-configuration-project"></a>Gerüstbau für ein Gastkonfigurationsprojekt
 
@@ -494,7 +517,7 @@ New-GuestConfigurationPackage `
 Wenn Sie ein Update für die Richtlinie freigeben möchten, ändern Sie die Details für das Gastkonfigurationspaket und die Azure Policy-Definition.
 
 > [!NOTE]
-> Die Eigenschaft `version` der Gastkonfigurationszuweisung betrifft nur Pakete, die von Microsoft gehostet werden. Bei der Versionsverwaltung für benutzerdefinierte Inhalte hat sich die Best Practice etabliert, die Version in den Dateinamen aufzunehmen.
+> Die Eigenschaft `version` der Gastkonfigurationszuweisung wirkt sich nur auf Pakete aus, die von Microsoft gehostet werden. Bei der Versionsverwaltung für benutzerdefinierte Inhalte hat sich die Best Practice etabliert, die Version in den Dateinamen aufzunehmen.
 
 Geben Sie zunächst beim Ausführen von `New-GuestConfigurationPackage` einen Namen für das Paket an, der es gegenüber früheren Versionen eindeutig kennzeichnet. Sie können z. B. eine Versionsnummer in den Namen einschließen wie in `PackageName_1.0.0`.
 Die Zahl in diesem Beispiel dient nur dazu, das Paket eindeutig zu machen, und nicht dazu, das Paket als neuer oder älter als andere Pakete zu kennzeichnen.

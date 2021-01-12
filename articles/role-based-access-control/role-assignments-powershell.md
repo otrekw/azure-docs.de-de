@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 11/25/2020
 ms.author: rolyon
-ms.openlocfilehash: c4082f7fc535807ec996034ba695549a51969a99
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 6eadba7d778a632896529f3c7c53886619d96444
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182409"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97901469"
 ---
 # <a name="add-or-remove-azure-role-assignments-using-azure-powershell"></a>Hinzufügen oder Entfernen von Azure-Rollenzuweisungen mithilfe von Azure PowerShell
 
@@ -28,6 +28,7 @@ Sie benötigen Folgendes, um Rollenzuweisungen hinzufügen oder entfernen zu kö
 
 - `Microsoft.Authorization/roleAssignments/write`- und `Microsoft.Authorization/roleAssignments/delete`-Berechtigungen, wie z.B. [Benutzerzugriffsadministrator](built-in-roles.md#user-access-administrator) oder [Besitzer](built-in-roles.md#owner)
 - [PowerShell in Azure Cloud Shell](../cloud-shell/overview.md) oder [Azure PowerShell](/powershell/azure/install-az-ps)
+- Das Konto, das Sie zum Ausführen des PowerShell-Befehls verwenden, muss über die Microsoft Graph-Berechtigung `Directory.Read.All` verfügen.
 
 ## <a name="steps-to-add-a-role-assignment"></a>Schritte zum Hinzufügen einer Rollenzuweisung
 

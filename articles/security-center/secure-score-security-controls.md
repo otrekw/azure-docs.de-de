@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/10/2020
+ms.date: 01/05/2021
 ms.author: memildin
-ms.openlocfilehash: 283dbf152778b5ef58e298444058f619356ef241
-ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
+ms.openlocfilehash: 1e6b66fce6b22dfd12c162d469ce44137c94ab87
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97756108"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97916370"
 ---
 # <a name="secure-score-in-azure-security-center"></a>Secure Score in Azure Security Center
 
@@ -72,7 +72,7 @@ Zur Wiederholung: Ihre Sicherheitsbewertung wird auf Seiten des Security Center-
 
 ### <a name="get-your-secure-score-from-the-rest-api"></a>Abrufen ihrer Sicherheitsbewertung über die REST-API
 
-Sie können auf Ihre Bewertung über die Sicherheitsbewertungs-API (derzeit in der Vorschau) zugreifen. Die API-Methoden bieten die Flexibilität, die Daten abzufragen und im Laufe der Zeit einen eigenen Berichtsmechanismus für Ihre Sicherheitsbewertungen zu erstellen. Beispielsweise können Sie die API [Sicherheitsbewertungen](/rest/api/securitycenter/securescores) verwenden, um die Bewertung für ein bestimmtes Abonnement zu erhalten. Darüber hinaus können Sie die API [Sicherheitsbewertungs-Steuerelemente](/rest/api/securitycenter/securescorecontrols) verwenden, um die Sicherheitssteuerelemente und die aktuelle Bewertung Ihrer Abonnements aufzulisten.
+Sie können auf Ihre Bewertung über die Sicherheitsbewertungs-API zugreifen. Die API-Methoden bieten die Flexibilität, die Daten abzufragen und im Laufe der Zeit einen eigenen Berichtsmechanismus für Ihre Sicherheitsbewertungen zu erstellen. Beispielsweise können Sie die API [Sicherheitsbewertungen](/rest/api/securitycenter/securescores) verwenden, um die Bewertung für ein bestimmtes Abonnement zu erhalten. Darüber hinaus können Sie die API [Sicherheitsbewertungs-Steuerelemente](/rest/api/securitycenter/securescorecontrols) verwenden, um die Sicherheitssteuerelemente und die aktuelle Bewertung Ihrer Abonnements aufzulisten.
 
 ![Abrufen einer einzelnen Sicherheitsbewertung über die API](media/secure-score-security-controls/single-secure-score-via-api.png)
 

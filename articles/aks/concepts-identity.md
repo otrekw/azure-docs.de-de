@@ -6,35 +6,78 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: 983b1a5e024a44733fab418a67375f232e66cfe4
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 3c291d9a9d48b6f75148b673848b8451521bab91
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96457176"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97615800"
 ---
 # <a name="access-and-identity-options-for-azure-kubernetes-service-aks"></a>Zugriffs- und Identitätsoptionen für Azure Kubernetes Service (AKS)
 
 Es gibt verschiedene Möglichkeiten, Kubernetes-Cluster zu authentifizieren, den Zugriff/die Autorisierung zu steuern und sie zu schützen. Mit der rollenbasierten Zugriffssteuerung für Kubernetes (Kubernetes RBAC) können Sie den Zugriff von Benutzern, Gruppen und Dienstkonten auf die Ressourcen beschränken, die wirklich benötigt werden. Mit Azure Kubernetes Service (AKS) können Sie die Sicherheits- und Berechtigungsstruktur weiter verbessern, indem Sie Azure Active Directory und Azure RBAC verwenden. Mit diesen Ansätzen können Sie den Zugriff auf den Cluster schützen, und es werden nur die mindestens erforderlichen Berechtigungen für Entwickler und Operatoren bereitgestellt.
 
-In diesem Artikel werden die wichtigsten Konzepte für die Authentifizierung und das Zuweisen von Berechtigungen in AKS vorgestellt:
+In diesem Artikel werden die wichtigsten Konzepte für die Authentifizierung und Zuweisung von Berechtigungen in AKS vorgestellt.
 
-- [Rollenbasierte Zugriffssteuerung in Kubernetes (Kubernetes RBAC)](#kubernetes-role-based-access-control-kubernetes-rbac)
-  - [Rollen und Clusterrollen](#roles-and-clusterroles)
-  - [Rollenbindungen und Clusterrollenbindungen](#rolebindings-and-clusterrolebindings) 
-  - [Kubernetes-Dienstkonten](#kubernetes-service-accounts)
-- [Azure Active Directory-Integration](#azure-active-directory-integration)
-- [Azure RBAC](#azure-role-based-access-control-azure-rbac)
-  - [Azure RBAC zum Autorisieren des Zugriffs auf die AKS-Ressource](#azure-rbac-to-authorize-access-to-the-aks-resource)
-  - [Azure RBAC für die Kubernetes-Autorisierung (Vorschau)](#azure-rbac-for-kubernetes-authorization-preview)
+## <a name="aks-service-permissions"></a>AKS-Dienstberechtigungen
 
+Beim Erstellen eines Clusters werden von AKS Ressourcen erstellt oder geändert, die für die Erstellung und Ausführung des Clusters benötigt werden, z. B. VMs und NICs. Dies erfolgt im Namen des Benutzers, der den Cluster erstellt. Diese Identität unterscheidet sich von der Identitätsberechtigung des Clusters, die während der Erstellung des Clusters erstellt wird.
+
+### <a name="identity-creating-and-operating-the-cluster-permissions"></a>Identität für die Erstellung und den Betrieb des Clusters: Berechtigungen
+
+Die folgenden Berechtigungen werden von der Identität benötigt, die zum Erstellen und Betreiben des Clusters verwendet wird.
+
+| Berechtigung | `Reason` |
+|---|---|
+| Microsoft.Compute/diskEncryptionSets/read | Erforderlich zum Lesen der Datenträgerverschlüsselungssatz-ID. |
+| Microsoft.Compute/proximityPlacementGroups/write | Erforderlich zum Aktualisieren von Näherungsplatzierungsgruppen. |
+| Microsoft.Network/applicationGateways/read <br/> Microsoft.Network/applicationGateways/write <br/> Microsoft.Network/virtualNetworks/subnets/join/action | Erforderlich zum Konfigurieren von Anwendungsgateways und Beitreten zum Subnetz. |
+| Microsoft.Network/virtualNetworks/subnets/join/action | Erforderlich zum Konfigurieren der Netzwerksicherheitsgruppe für das Subnetz, wenn ein benutzerdefiniertes VNET verwendet wird.|
+| Microsoft.Network/publicIPAddresses/join/action <br/> Microsoft.Network/publicIPPrefixes/join/action | Erforderlich zum Konfigurieren der ausgehenden öffentlichen IP-Adressen auf der Load Balancer Standard-Instanz. |
+| Microsoft.OperationalInsights/workspaces/sharedkeys/read <br/> Microsoft.OperationalInsights/workspaces/read <br/> Microsoft.OperationsManagement/solutions/write <br/> Microsoft.OperationsManagement/solutions/read <br/> Microsoft.ManagedIdentity/userAssignedIdentities/assign/action | Erforderlich zum Erstellen und Aktualisieren von Log Analytics-Arbeitsbereichen und der Azure-Überwachung für Container. |
+
+### <a name="aks-cluster-identity-permissions"></a>AKS-Clusteridentität: Berechtigungen
+
+Die folgenden Berechtigungen werden von der AKS-Clusteridentität verwendet, die beim Erstellen des Clusters erstellt und dem AKS-Cluster zugeordnet wird. Die einzelnen Berechtigungen werden aus den folgenden Gründen verwendet:
+
+| Berechtigung | `Reason` |
+|---|---|
+| Microsoft.Network/loadBalancers/delete <br/> Microsoft.Network/loadBalancers/read <br/> Microsoft.Network/loadBalancers/write | Erforderlich zum Konfigurieren des Lastenausgleichs für einen LoadBalancer-Dienst. |
+| Microsoft.Network/publicIPAddresses/delete <br/> Microsoft.Network/publicIPAddresses/read <br/> Microsoft.Network/publicIPAddresses/write | Erforderlich zum Ermitteln und Konfigurieren von öffentlichen IP-Adressen für einen LoadBalancer-Dienst. |
+| Microsoft.Network/publicIPAddresses/join/action | Erforderlich zum Konfigurieren von öffentlichen IP-Adressen für einen LoadBalancer-Dienst. |
+| Microsoft.Network/networkSecurityGroups/read <br/> Microsoft.Network/networkSecurityGroups/write | Erforderlich zum Erstellen oder Löschen von Sicherheitsregeln für einen LoadBalancer-Dienst. |
+| Microsoft.Compute/disks/delete <br/> Microsoft.Compute/disks/read <br/> Microsoft.Compute/disks/write <br/> Microsoft.Compute/locations/DiskOperations/read | Erforderlich zum Konfigurieren von AzureDisks. |
+| Microsoft.Storage/storageAccounts/delete <br/> Microsoft.Storage/storageAccounts/listKeys/action <br/> Microsoft.Storage/storageAccounts/read <br/> Microsoft.Storage/storageAccounts/write <br/> Microsoft.Storage/operations/read | Erforderlich zum Konfigurieren von Speicherkonten für AzureFile oder AzureDisk. |
+| Microsoft.Network/routeTables/read <br/> Microsoft.Network/routeTables/routes/delete <br/> Microsoft.Network/routeTables/routes/read <br/> Microsoft.Network/routeTables/routes/write <br/> Microsoft.Network/routeTables/write | Erforderlich zum Konfigurieren von Routingtabellen und Routen für Knoten. |
+| Microsoft.Compute/virtualMachines/read | Erforderlich zum Suchen nach Informationen für virtuelle Computer in einer VM-Verfügbarkeitsgruppe, z. B. Zonen, Fehlerdomäne, Größe und Datenträger. |
+| Microsoft.Compute/virtualMachines/write | Erforderlich, um AzureDisks an einen virtuellen Computer in einer VM-Verfügbarkeitsgruppe anzufügen. |
+| Microsoft.Compute/virtualMachineScaleSets/read <br/> Microsoft.Compute/virtualMachineScaleSets/virtualMachines/read <br/> Microsoft.Compute/virtualMachineScaleSets/virtualmachines/instanceView/read | Erforderlich zum Suchen nach Informationen für virtuelle Computer in einer VM-Skalierungsgruppe, z. B. Zonen, Fehlerdomäne, Größe und Datenträger. |
+| Microsoft.Network/networkInterfaces/write | Erforderlich, um einen virtuellen Computer aus einer VM-Verfügbarkeitsgruppe dem Back-End-Adresspool eines Lastenausgleichsmoduls hinzuzufügen. |
+| Microsoft.Compute/virtualMachineScaleSets/write | Erforderlich, um eine VM-Skalierungsgruppe dem Back-End-Adresspool eines Lastenausgleichsmoduls hinzuzufügen und Knoten in einer VM-Skalierungsgruppe aufzuskalieren. |
+| Microsoft.Compute/virtualMachineScaleSets/virtualmachines/write | Erforderlich, um AzureDisks anzufügen und einen virtuellen Computer aus einer VM-Skalierungsgruppe dem Lastenausgleichsmodul hinzuzufügen. |
+| Microsoft.Network/networkInterfaces/read | Erforderlich, um für virtuelle Computer in einer VM-Verfügbarkeitsgruppe nach internen IP-Adressen und Back-End-Adresspools eines Lastenausgleichsmoduls zu suchen. |
+| Microsoft.Compute/virtualMachineScaleSets/virtualMachines/networkInterfaces/read | Erforderlich, um für einen virtuellen Computer in einer VM-Skalierungsgruppe nach internen IP-Adressen und Back-End-Adresspools eines Lastenausgleichsmoduls zu suchen. |
+| Microsoft.Compute/virtualMachineScaleSets/virtualMachines/networkInterfaces/ ipconfigurations/publicipaddresses/read | Erforderlich, um in einer VM-Skalierungsgruppe nach öffentlichen IP-Adressen für einen virtuellen Computer zu suchen. |
+| Microsoft.Network/virtualNetworks/read <br/> Microsoft.Network/virtualNetworks/subnets/read | Erforderlich für die Überprüfung, ob für das interne Lastenausgleichsmodul in einer anderen Ressourcengruppe ein Subnetz vorhanden ist. |
+| Microsoft.Compute/snapshots/delete <br/> Microsoft.Compute/snapshots/read <br/> Microsoft.Compute/snapshots/write | Erforderlich zum Konfigurieren von Momentaufnahmen für AzureDisk. |
+| Microsoft.Compute/locations/vmSizes/read <br/> Microsoft.Compute/locations/operations/read | Erforderlich, um nach VM-Größen zur Ermittlung von Grenzwerten für AzureDisk-Volumes zu suchen. |
+
+### <a name="additional-cluster-identity-permissions"></a>Clusteridentität: Weitere Berechtigungen
+
+Die folgenden zusätzlichen Berechtigungen werden von der Clusteridentität benötigt, wenn ein Cluster mit bestimmten Attributen erstellt wird. Da diese Berechtigungen nicht automatisch zugewiesen werden, müssen Sie sie der Clusteridentität nach der Erstellung hinzufügen.
+
+| Berechtigung | `Reason` |
+|---|---|
+| Microsoft.Network/networkSecurityGroups/write <br/> Microsoft.Network/networkSecurityGroups/read | Erforderlich, wenn eine Netzwerksicherheitsgruppe in einer anderen Ressourcengruppe verwendet wird. Erforderlich zum Konfigurieren von Sicherheitsregeln für einen LoadBalancer-Dienst. |
+| Microsoft.Network/virtualNetworks/subnets/read <br/> Microsoft.Network/virtualNetworks/subnets/join/action | Erforderlich, wenn ein Subnetz in einer anderen Ressourcengruppe, z. B. einem benutzerdefinierten VNET, verwendet wird. |
+| Microsoft.Network/routeTables/routes/read <br/> Microsoft.Network/routeTables/routes/write | Erforderlich, wenn ein Subnetz mit einer zugeordneten Routingtabelle in einer anderen Ressourcengruppe, z. B. einem VNET mit einer benutzerdefinierten Routingtabelle, verwendet wird. Erforderlich zum Überprüfen, ob für das Subnetz in der anderen Ressourcengruppe bereits ein Subnetz vorhanden ist. |
+| Microsoft.Network/virtualNetworks/subnets/read | Erforderlich, wenn ein internes Lastenausgleichsmodul in einer anderen Ressourcengruppe verwendet wird. Erforderlich für die Überprüfung, ob für das interne Lastenausgleichsmodul in der Ressourcengruppe bereits ein Subnetz vorhanden ist. |
 
 ## <a name="kubernetes-role-based-access-control-kubernetes-rbac"></a>Rollenbasierte Zugriffssteuerung in Kubernetes (Kubernetes RBAC)
 
 Für eine präzise Filterung der Aktionen, die Benutzer ausführen können, wird in Kubernetes die rollenbasierte Zugriffssteuerung (Kubernetes RBAC) verwendet. Mit diesem Steuerungsmechanismus können Sie Benutzern oder Benutzergruppen die Berechtigung für bestimmte Aktionen (z. B. Ressourcen erstellen bzw. ändern oder Protokolle zur Workload ausgeführter Anwendungen anzeigen) zuweisen. Diese Berechtigungen können auf einen einzelnen Namespace begrenzt oder für den gesamten AKS-Cluster erteilt werden. Mit der rollenbasierten Zugriffssteuerung (RBAC) von Kubernetes können Sie *Rollen* erstellen, um Berechtigungen zu definieren, und anschließend diese Rollen mit *Rollenbindungen* Benutzern zuweisen.
 
 Weitere Informationen finden Sie unter [Verwenden der Kubernetes RBAC-Autorisierung][kubernetes-rbac].
-
 
 ### <a name="roles-and-clusterroles"></a>Rollen und Clusterrollen
 
@@ -88,7 +131,7 @@ Wie in der obigen Abbildung gezeigt, ruft der API-Server den AKS-Webhookserver a
 5. Der API-Server wird mit dem Auth-WebHook-Server konfiguriert, um die Validierung auszuführen.
 6. Der Webhookserver für die Authentifizierung bestätigt, dass die Signatur des JSON-Webtokens gültig ist, indem der öffentliche Azure AD-Signaturschlüssel überprüft wird.
 7. Die Serveranwendung verwendet vom Benutzer bereitgestellte Anmeldeinformationen, um die Gruppenmitgliedschaften des angemeldeten Benutzers aus der MS Graph-API abzufragen.
-8. An den API-Server wird eine Antwort mit Benutzerinformationen gesendet, u. a. mit dem UPN-Anspruch (User Principal Name) des Zugriffstokens und der Gruppenmitgliedschaft des Benutzers basierend auf der Objekt-ID.
+8. An den API-Server wird eine Antwort mit Benutzerinformationen gesendet, z. B. mit dem UPN-Anspruch (User Principal Name) des Zugriffstokens und der Gruppenmitgliedschaft des Benutzers basierend auf der Objekt-ID.
 9. Die API führt eine Autorisierungsentscheidung basierend auf der Kubernetes-Rolle bzw. -Rollenbindung aus.
 10. Nach der Autorisierung gibt der API-Server eine Antwort an kubectl zurück.
 11. Kubectl stellt Feedback für den Benutzer bereit.
@@ -134,7 +177,7 @@ Mit dieser Funktion können Sie z. B. nicht nur Benutzern Berechtigungen für d
 
 #### <a name="built-in-roles"></a>Integrierte Rollen
 
-AKS stellt die folgenden vier integrierten Rollen bereit. Sie sind mit den [integrierten Rollen in Kubernetes](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles) vergleichbar, weisen aber einige Unterschiede wie der Unterstützung von CRDs auf. Die vollständige Liste der Aktionen, die für jede integrierte Rolle zulässig sind, finden Sie [hier](../role-based-access-control/built-in-roles.md).
+AKS stellt die folgenden vier integrierten Rollen bereit. Sie sind mit den [integrierten Rollen in Kubernetes](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles) vergleichbar, weisen aber einige Unterschiede wie der Unterstützung von CRDs auf. Die vollständige Liste mit den Aktionen, die für die einzelnen integrierten Rollen zulässig sind, finden Sie [hier](../role-based-access-control/built-in-roles.md).
 
 | Role                                | BESCHREIBUNG  |
 |-------------------------------------|--------------|
@@ -192,3 +235,4 @@ Weitere Informationen zu den wesentlichen Konzepten von Kubernetes und AKS finde
 [aks-concepts-storage]: concepts-storage.md
 [aks-concepts-network]: concepts-network.md
 [operator-best-practices-identity]: operator-best-practices-identity.md
+[upgrade-per-cluster]: ../azure-monitor/insights/container-insights-update-metrics.md#upgrade-per-cluster-using-azure-cli

@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 10/21/2020
 ms.author: inhenkel
-ms.openlocfilehash: 4ddb02bbcf284566550517f8fa343a728e2275a9
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 895b4529a8b99ecc66e3566b4696a0e61c337153
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96483626"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881904"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Versionshinweise zu Azure Media Services v3
 
@@ -38,16 +38,23 @@ Damit Sie bezüglich der aktuellen Entwicklungen auf dem neuesten Stand bleiben,
 >
 > Weitere Informationen finden Sie in den häufig gestellten Fragen im Abschnitt über [Einschränkungen im Azure-Portal im Zusammenhang mit Media Services v3](frequently-asked-questions.md#what-are-the-azure-portal-limitations-for-media-services-v3).
 
+## <a name="december-2020"></a>Dezember 2020
+
+### <a name="regional-availability"></a>Regionale Verfügbarkeit
+
+Azure Media Services ist jetzt in der Region „Norwegen, Osten“ im Azure-Portal verfügbar.  RESTv2 ist in dieser Region nicht verfügbar.
+
 ## <a name="october-2020"></a>Oktober 2020
 
 ### <a name="basic-audio-analysis"></a>Audioanalyse im Tarif „Basic“
+
 Die Voreinstellung für die Audioanalyse enthält jetzt einen Basic-Tarif. Der neue Basic-Modus für die Audioanalyse bietet eine kostengünstige Option zum Extrahieren von Transkriptionen für gesprochenen Text sowie zum Formatieren von Beschriftungstext und Untertiteln. In diesem Modus werden Transkriptionen von gesprochenen Texten erstellt und VTT-Dateien mit Untertiteln und Beschriftungstexten generiert. Die Ausgabe in diesem Modus beinhaltet eine Insights JSON-Datei, die nur die Stichwörter, die Transkription und Zeitinformationen enthält. Eine automatische Spracherkennung und Sprecherdiarisierung sind nicht Bestandteil dieses Modus. Mehr dazu finden Sie in der Liste der [unterstützten Sprachen](analyzing-video-audio-files-concept.md#built-in-presets).
 
 Kunden, die Indexer v1 und Indexer v2 verwenden, sollten zur Voreinstellung für die Audioanalyse im Tarif „Basic“ migrieren.
 
 Weitere Informationen zum Basic-Modus für die Audioanalyse finden Sie unter [Analysieren von Video- und Audiodateien](analyzing-video-audio-files-concept.md).  Informationen zur Verwendung des Basic-Modus für die Audioanalyse mit der REST-API finden Sie unter [Erstellen einer Audiotransformation im Tarif „Basic“](how-to-create-basic-audio-transform.md).
 
-## <a name="live-events"></a>Liveereignisse
+### <a name="live-events"></a>Liveereignisse
 
 Aktualisierungen der meisten Eigenschaften sind jetzt zulässig, wenn Liveereignisse beendet werden. Darüber hinaus dürfen Benutzer ein Präfix für den statischen Hostnamen für die Eingabe- und Vorschau-URLs von Liveereignissen angeben. VanityUrl heißt jetzt `useStaticHostName`, um den Zweck der Eigenschaft besser widerzuspiegeln.
 
@@ -57,7 +64,7 @@ Ein Liveereignis unterstützt den Empfang verschiedener Seitenverhältnisse bei 
 
 Live Encoding bietet jetzt die Möglichkeit, feste Keyframe-Intervallfragmente zwischen 0,5 und 20 Sekunden auszugeben.
 
-## <a name="accounts"></a>Konten
+### <a name="accounts"></a>Konten
 
 > [!WARNING]
 > Wenn Sie ein Media Services-Konto mit der API-Version 2020-05-01 erstellen, funktioniert es nicht mit RESTv2. 

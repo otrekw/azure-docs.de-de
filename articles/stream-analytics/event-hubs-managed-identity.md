@@ -5,13 +5,13 @@ author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
-ms.date: 11/30/2020
-ms.openlocfilehash: c65833e5bf581c6326bf9362c7e5fc00a985d301
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.date: 01/04/2021
+ms.openlocfilehash: ca27df7188c5edd1da94fc41707f6c25eb4034bf
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96354882"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895137"
 ---
 # <a name="use-managed-identities-to-access-event-hubfrom-an-azure-stream-analytics-job-preview"></a>Verwenden von verwalteten Identitäten zum Zugriff auf Event Hubs aus einem Azure Stream Analytics-Auftrag (Vorschau)
 
@@ -20,6 +20,9 @@ Azure Stream Analytics unterstützt die Authentifizierung über verwaltete Ident
 Bei einer verwalteten Identität handelt es sich um eine in Azure Active Directory registrierte verwaltete Anwendung, die einen bestimmten Stream Analytics-Auftrag repräsentiert. Diese verwaltete Anwendung wird zur Authentifizierung bei einer Zielressource verwendet, beispielsweise Event Hubs hinter einer Firewall oder in einem virtuellen Netzwerk. Weitere Informationen zum Umgehen von Firewalls finden Sie unter [Gewähren des Zugriffs auf Azure Event Hubs-Namespaces über private Endpunkte](../event-hubs/private-link-service.md#trusted-microsoft-services).
 
 Dieser Artikel veranschaulicht, wie Sie verwaltete Identitäten für die Event Hubs-Eingaben und -Ausgaben eines Stream Analytics-Auftrags über das Azure-Portal aktivieren. Bevor Sie eine verwaltete Identität aktivieren können, müssen Sie über einen Stream Analytics-Auftrag und eine Event Hub-Ressource verfügen.
+
+### <a name="limitation"></a>Einschränkung
+Während der Vorschauphase funktioniert die Stichprobenentnahme von Event Hubs im Azure-Portal nicht, wenn der Authentifizierungsmodus „Verwaltete Identität“ verwendet wird.
 
 ## <a name="create-a-managedidentity"></a>Erstellen einer verwalteten Identität  
 

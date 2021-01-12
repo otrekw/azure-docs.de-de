@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/16/2020
 ms.author: mathapli
 ms.reviewer: cynthn
-ms.openlocfilehash: 1f31cc982e5e7f92cfe7e8adf588dd96628f2c6f
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: fd36d365eb02819352bc14caf9d8e258a8663c70
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95744040"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861390"
 ---
 # <a name="red-hat-enterprise-linux-rhel-extended-lifecycle-support"></a>Erweiterte Lebenszyklusunterstützung für Red Hat Enterprise Linux (RHEL)
 Dieser Artikel bietet Informationen zur erweiterten Lebenszyklusunterstützung für die Red Hat Enterprise-Images:
@@ -38,6 +38,12 @@ Am 30. November 2020 ist die Wartungsphase für Red Hat Enterprise Linux 6 be
 
 #### <a name="what-is-the-additional-charge-for-using-red-hat-enterprise-linux-extended-life-cycle-support-els-add-on"></a>Welche zusätzlichen Gebühren fallen für das Add-On zur erweiterten Lebenszyklusunterstützung (Extended Life Cycle Support, ELS) für Red Hat Enterprise Linux an?
 Die Kosten im Zusammenhang mit der erweiterten Lebenszyklusunterstützung finden Sie im [ELS-Formular](https://aka.ms/els-form).
+
+#### <a name="ive-deployed-a-vm-by-using-custom-image-how-can-i-add-extended-lifecycle-support-to-this-vm"></a>Ich habe eine VM mithilfe eines benutzerdefinierten Images bereitgestellt. Wie kann ich dieser VM erweiterte Lebenszyklusunterstützung hinzufügen?
+Sie müssen sich direkt an Red Hat wenden, um Unterstützung direkt von Red Hat zu erhalten.
+
+#### <a name="ive-deployed-a-vm-by-using-custom-image-can-i-convert-this-vm-to-a-payg-vm"></a>Ich habe eine VM mithilfe eines benutzerdefinierten Images bereitgestellt. Kann ich diese VM in eine VM mit nutzungsbasierter Zahlung umwandeln?
+Nein, das ist nicht möglich. Die Umwandlung wird in Azure derzeit nicht unterstützt.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

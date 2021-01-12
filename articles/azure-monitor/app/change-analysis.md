@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: cawams
 ms.author: cawa
 ms.date: 05/04/2020
-ms.openlocfilehash: 36e73ceddaa5e3f9cbbf4a41f76a4ba6d70eed0f
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.openlocfilehash: 50e199d2d56016086bb409f8690e9828f1d19984
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94979962"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881508"
 ---
 # <a name="use-application-change-analysis-preview-in-azure-monitor"></a>Verwenden der Anwendungsänderungsanalyse (Vorschau) in Azure Monitor
 
@@ -183,7 +183,6 @@ Wenn Sie den Änderungsverlauf nach der Integration in die Anwendungsänderungsa
     ```
 
 - **Fehler beim Registrieren des Microsoft.ChangeAnalysis-Ressourcenanbieters**. Diese Meldung bedeutet, dass beim Senden der Registrierungsanforderung durch die Benutzeroberfläche sofort ein Fehler aufgetreten ist und dieser nicht mit einem Berechtigungsproblem im Zusammenhang steht. Wahrscheinlich handelt es sich um ein vorübergehendes Problem mit der Internetverbindung. Aktualisieren Sie die Seite, und überprüfen Sie Ihre Internetverbindung. Wenn der Fehler weiterhin auftritt, wenden Sie sich an changeanalysishelp@microsoft.com.
-- **Fehler beim Abfragen des Microsoft.ChangeAnalysis-Ressourcenanbieters** mit der Meldung, dass das *Azure Lighthouse-Abonnement nicht unterstützt wird und die Änderungen nur im Basismandanten des Abonnements verfügbar sind*. Derzeit besteht eine Einschränkung für die Registrierung des Änderungsanalyse-Ressourcenanbieters über das Azure Lighthouse-Abonnement für Benutzer, die nicht dem Basismandanten angehören. Wir erwarten, dass diese Einschränkung in naher Zukunft behoben wird. Wenn Sie durch dieses Problem blockiert werden, gibt es eine Problemumgehung, die das Erstellen eines Dienstprinzipals und das explizite Zuweisen der Rolle zum Zulassen des Zugriffs umfasst.  Wenden Sie sich an changeanalysishelp@microsoft.com, um mehr darüber zu erfahren.
 
 - **Der Vorgang dauert länger als erwartet**. Diese Meldung bedeutet, dass die Registrierung länger als zwei Minuten dauert. Dies ist ungewöhnlich, bedeutet aber nicht unbedingt, dass ein Fehler aufgetreten ist. Sie können zu **Abonnements | Ressourcenanbieter** navigieren, um den Registrierungsstatus für den **Microsoft.ChangeAnalysis**-Ressourcenanbieter zu prüfen. Sie können über die Benutzeroberfläche eine Aufhebung der Registrierung, Neuregistrierung oder Aktualisierung durchführen, um zu sehen, ob dadurch Abhilfe geschaffen wird. Wenn das Problem weiterhin besteht, wenden Sie sich an changeanalysishelp@microsoft.com, um Unterstützung zu erhalten.
     ![Problembehandlung bei zu lange dauernder Registrierung des Ressourcenanbieters](./media/change-analysis/troubleshoot-registration-taking-too-long.png)
@@ -191,6 +190,10 @@ Wenn Sie den Änderungsverlauf nach der Integration in die Anwendungsänderungsa
 ![Screenshot des Diagnose- und Problembehandlungstools für einen virtuellen Computer mit ausgewählten Problembehandlungstools](./media/change-analysis/vm-dnsp-troubleshootingtools.png)
 
 ![Screenshot der Kachel für das Problembehandlungstool zum Analysieren von aktuellen Änderungen für einen virtuellen Computer](./media/change-analysis/analyze-recent-changes.png)
+
+### <a name="azure-lighthouse-subscription-is-not-supported"></a>Azure Lighthouse-Abonnements werden nicht unterstützt.
+
+- **Fehler beim Abfragen des Microsoft.ChangeAnalysis-Ressourcenanbieters** mit der Meldung, dass das *Azure Lighthouse-Abonnement nicht unterstützt wird und die Änderungen nur im Basismandanten des Abonnements verfügbar sind*. Derzeit besteht eine Einschränkung für die Registrierung des Änderungsanalyse-Ressourcenanbieters über das Azure Lighthouse-Abonnement für Benutzer, die nicht dem Basismandanten angehören. Wir erwarten, dass diese Einschränkung in naher Zukunft behoben wird. Wenn Sie durch dieses Problem blockiert werden, gibt es eine Problemumgehung, die das Erstellen eines Dienstprinzipals und das explizite Zuweisen der Rolle zum Zulassen des Zugriffs umfasst.  Wenden Sie sich an changeanalysishelp@microsoft.com, um mehr darüber zu erfahren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

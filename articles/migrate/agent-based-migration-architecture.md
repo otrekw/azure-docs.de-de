@@ -6,12 +6,12 @@ ms.author: rahugup
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: 1389b03d87beb24cba50fec0a782de8b7f935557
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: c605c21307cda874f34ae5ea9f4e4959e5e6c183
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96753891"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861953"
 ---
 # <a name="agent-based-migration-architecture"></a>Agent-basierte Migrationsarchitektur
 
@@ -92,14 +92,14 @@ Wenn Sie VMware-VMs replizieren, können Sie den [Site Recovery-Bereitstellungsp
 
 Verwenden Sie die Werte in dieser Tabelle, um herauszufinden, ob Sie in Ihrer Bereitstellung einen zusätzlichen Prozessserver benötigen.
 
-- Wenn Ihre tägliche Änderungsrate (Churn Rate) über 2 TB liegt, setzen Sie einen zusätzlichen Prozessserver ein.
+- Wenn die tägliche Änderungsrate (Churn Rate) über 2 TB liegt, stellen Sie einen zusätzlichen Prozessserver bereit.
 - Wenn Sie mehr als 200 Computer replizieren, setzen Sie eine zusätzliche Replikationsappliance ein.
 
 **CPU** | **Memory** | **Freier Speicherplatz für Datenzwischenspeicherung** | **Datenänderungsrate** | **Replikationsgrenzwerte**
 --- | --- | --- | --- | ---
 8 vCPUs (2 Sockets * 4 Kerne \@ 2,5 GHz) | 16 GB | 300 GB | 500 GB oder weniger | < 100 Computer 
 12 vCPUs (2 Sockets * 6 Kerne \@ 2,5 GHz) | 18 GB | 600 GB | 501 GB bis 1 TB | 100-150 Computer.
-16 vCPUs (2 Sockets * 8 Kerne \@ 2,5 GHz) | 32 G1 |  1 TB | 1 TB bis 2 TB | 151-200 Computer.
+16 vCPUs (2 Sockets * 8 Kerne \@ 2,5 GHz) | 32 GB |  1 TB | 1 TB bis 2 TB | 151-200 Computer.
 
 ### <a name="sizing-scale-out-process-servers"></a>Festlegen der Größe für horizontal skalierte Prozessserver
 
@@ -108,7 +108,7 @@ Wenn Sie einen horizontal skalierten Prozessserver bereitstellen müssen, verwen
 **Prozessserver** | **Freier Speicherplatz für Datenzwischenspeicherung** | **Datenänderungsrate** | **Replikationsgrenzwerte**
 --- | --- | --- | --- 
 4 vCPUs (2 Sockets * 2 Kerne \@ 2,5 GHz), 8 GB Arbeitsspeicher | 300 GB | 250 GB oder weniger | Bis zu 85 Computer 
-8 vCPUs (2 Sockets * 4 Kerne \@ 2,5 GHz), 12 GB Arbeitsspeicher | 600 GB | 251 GB bis 1 TB    | 86-150 Computer.
+8 vCPUs (2 Sockets * 4 Kerne \@ 2,5 GHz), 12 GB Arbeitsspeicher | 600 GB | 251 GB bis 1 TB | 86-150 Computer.
 12 vCPUs (2 Sockets * 6 Kerne \@ 2,5 GHz), 24 GB Arbeitsspeicher | 1 TB | 1–2 TB | 151-225 Computer.
 
 ## <a name="throttle-upload-bandwidth"></a>Drosseln Sie die Bandbreite für den Upload.

@@ -2,13 +2,13 @@
 title: Vorlagenfunktionen – Ressourcen
 description: Beschreibung der Funktionen, die in einer Azure Resource Manager-Vorlage (ARM-Vorlage) zum Abrufen von Werten zu Ressourcen verwendet werden können.
 ms.topic: conceptual
-ms.date: 11/18/2020
-ms.openlocfilehash: 166e9104a9d791ac6d82ed0e8e2d3659efd2ae0d
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.date: 01/04/2021
+ms.openlocfilehash: f16e8e06bf5deb2b66af7758f2944fe256cfa268
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96919993"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861420"
 ---
 # <a name="resource-functions-for-arm-templates"></a>Ressourcenfunktionen für ARM-Vorlagen
 
@@ -175,7 +175,7 @@ Integrierte Richtliniendefinitionen sind Ressourcen auf Mandantenebene. Ein Beis
 
 `list{Value}(resourceName or resourceIdentifier, apiVersion, functionValues)`
 
-Die Syntax für diese Funktion variiert je nach dem Namen der Auflistungsvorgänge. Jede Implementierung gibt Werte für den Ressourcentyp zurück, der einen Auflistungsvorgang unterstützt. Der Name des Vorgangs muss mit `list` beginnen. Häufig werden `listKeys`, `listKeyValue` und `listSecrets` verwendet.
+Die Syntax für diese Funktion variiert je nach dem Namen der Auflistungsvorgänge. Jede Implementierung gibt Werte für den Ressourcentyp zurück, der einen Auflistungsvorgang unterstützt. Der Name des Vorgangs muss mit `list` beginnen und kann ein Suffix aufweisen. Häufig werden `list`, `listKeys`, `listKeyValue` und `listSecrets` verwendet.
 
 ### <a name="parameters"></a>Parameter
 

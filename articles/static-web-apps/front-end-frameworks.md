@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 07/18/2020
 ms.author: cshoe
-ms.openlocfilehash: 4b1bc58b6b4a87cd6e5e09e83020a38261b8746f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 14564b0591ef0146131b3f9324556b613e25daac
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90905373"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97901231"
 ---
 # <a name="configure-front-end-frameworks-and-libraries-with-azure-static-web-apps-preview"></a>Konfigurieren von Front-End-Frameworks und Bibliotheken mit Azure Static Web Apps (Vorschauversion)
 
@@ -24,7 +24,7 @@ Die folgende Tabelle listet die Einstellungen für eine Reihe von Frameworks und
 
 Die Absicht der Tabellenspalten wird durch die folgenden Punkte erläutert:
 
-- **Speicherort für App-Artefakte**: Listet den Wert für `app_artifact_location` auf, dem [Ordner für erstellte Versionen von Anwendungsdateien](github-actions-workflow.md#build-and-deploy).
+- **Ausgabespeicherort**: Listet den Wert für `output_location` auf, dem [Ordner für erstellte Versionen von Anwendungsdateien](github-actions-workflow.md#build-and-deploy).
 
 - **Benutzerdefinierter Buildbefehl**: Wenn das Framework einen anderen Befehl als `npm run build` oder `npm run azure:build` erfordert, können Sie einen [benutzerdefinierten Buildbefehl](github-actions-workflow.md#custom-build-commands) definieren.
 
