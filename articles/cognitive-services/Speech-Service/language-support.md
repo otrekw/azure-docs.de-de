@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/26/2020
+ms.date: 01/07/2021
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: d0cb9dc3c54f409c3bdd71fbb57c823e15abc22d
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: 68a384197409115343a81aea23b0f7d42166d716
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97762961"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97976808"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Sprach- und Stimmunterstützung für den Speech-Dienst
 
@@ -53,9 +53,9 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | Arabisch (Vereinigte Arabische Emirate)      | `ar-AE` | Sprachmodell                                   |
 | Bulgarisch (Bulgarien)               | `bg-BG` | Sprachmodell                                   |
 | Katalanisch (Spanien)                    | `ca-ES` | Sprachmodell                                   |
-| Chinesisch (Kantonesisch, traditionell)   | `zh-HK` | Sprachmodell                                   |
+| Chinesisch (Kantonesisch, traditionell)   | `zh-HK` | Akustische Modell<br>Sprachmodell                 |
 | Chinesisch (Mandarin, vereinfacht)     | `zh-CN` | Akustische Modell<br>Sprachmodell                 |
-| Chinesisch (Taiwanesisch, Mandarin)       | `zh-TW` | Sprachmodell                                   |
+| Chinesisch (Taiwanesisch, Mandarin)       | `zh-TW` | Akustische Modell<br>Sprachmodell                 |
 | Kroatisch (Kroatien)                 | `hr-HR` | Sprachmodell                                   |
 | Tschechisch (Tschechische Republik)             | `cs-CZ` | Sprachmodell                                   |
 | Dänisch (Dänemark)                   | `da-DK` | Sprachmodell                                   |
@@ -83,8 +83,8 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | Ungarisch (Ungarn)                | `hu-HU` | Sprachmodell                                   |
 | Irisch (Irland)                     | `ga-IE` | Sprachmodell                                   |
 | Italienisch (Italien)                    | `it-IT` | Akustische Modell<br>Sprachmodell<br>Aussprache|
-| Japanisch (Japan)                   | `ja-JP` | Sprachmodell                                   |
-| Koreanisch (Korea)                     | `ko-KR` | Sprachmodell                                   |
+| Japanisch (Japan)                   | `ja-JP` | Akustische Modell<br>Sprachmodell                 |
+| Koreanisch (Korea)                     | `ko-KR` | Akustische Modell<br>Sprachmodell                 |
 | Lettisch (Lettland)                   | `lv-LV` | Sprachmodell                                   |
 | Litauisch (Litauen)             | `lt-LT` | Sprachmodell                                   |
 | Maltesisch (Malta)                     | `mt-MT` | Sprachmodell                                   |

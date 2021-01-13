@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 12/29/2020
-ms.openlocfilehash: 2668f969076fd2b9960995fec44350d61b405740
-ms.sourcegitcommit: 31d242b611a2887e0af1fc501a7d808c933a6bf6
+ms.openlocfilehash: 0834b8f00e4c414b3a36314b80f6c99fb8f2aea2
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97809417"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955211"
 ---
 # <a name="batch-testing-with-a-set-of-example-utterances"></a>Batchtests mit einem Satz von Beispieläußerungen
 
@@ -168,17 +168,17 @@ In den beiden Abschnitten des Diagramms in Grün entsprach die Vorhersage der Er
 
 LUIS ermöglicht Ihnen Batchtests im LUIS-Portal und mithilfe der REST-API. Die Endpunkte für die REST-API sind unten aufgeführt. Informationen zu Batchtests im LUIS-Portal finden Sie unter [Tutorial: Batchtests von Datasets](luis-tutorial-batch-testing.md). Verwenden Sie die unten aufgeführten vollständigen URLs, und ersetzen Sie die Platzhalterwerte durch Ihren eigenen LUIS-Vorhersageschlüssel und Ihren Endpunkt. 
 
-Vergessen Sie nicht, im Header Ihren LUIS-Schlüssel zu `Apim-Subscription-Id` hinzuzufügen, und legen Sie `Content-Type` auf `application/json` fest.
+Vergessen Sie nicht, im Header Ihren LUIS-Schlüssel zu `Ocp-Apim-Subscription-Key` hinzuzufügen, und legen Sie `Content-Type` auf `application/json` fest.
 
 ### <a name="start-a-batch-test"></a>Starten eines Batchtests
 
 Starten Sie einen Batchtest, und verwenden Sie entweder eine App-Versions-ID oder einen Veröffentlichungsslot. Senden Sie eine **POST**-Anforderung an eins der folgenden Endpunktformate. Fügen Sie Ihre Batchdatei in den Text der Anforderung ein.
 
 Veröffentlichungsslot
-* `<YOUR-PREDICTION-ENDPOINT>/luis/prediction/v3.0/apps/<YOUR-APP-ID>/slots/<YOUR-SLOT-NAME>/evaluations`
+* `<YOUR-PREDICTION-ENDPOINT>/luis/prediction/v3.0-preview/apps/<YOUR-APP-ID>/slots/<YOUR-SLOT-NAME>/evaluations`
 
 App-Versions-ID
-* `<YOUR-PREDICTION-ENDPOINT>/luis/prediction/v3.0/apps/<YOUR-APP-ID>/versions/<YOUR-APP-VERSION-ID>/evaluations`
+* `<YOUR-PREDICTION-ENDPOINT>/luis/prediction/v3.0-preview/apps/<YOUR-APP-ID>/versions/<YOUR-APP-VERSION-ID>/evaluations`
 
 Diese Endpunkte geben eine Vorgangs-ID zurück, die Sie verwenden, um den Status zu überprüfen und Ergebnisse abzurufen. 
 
@@ -188,20 +188,20 @@ Diese Endpunkte geben eine Vorgangs-ID zurück, die Sie verwenden, um den Status
 Verwenden Sie die Vorgangs-ID des Batch Tests, den Sie gestartet haben, um seinen Status aus den folgenden Endpunktformaten abzurufen: 
 
 Veröffentlichungsslot
-* `<YOUR-PREDICTION-ENDPOINT>/luis/prediction/v3.0/apps/<YOUR-APP-ID>/slots/<YOUR-SLOT-ID>/evaluations/<YOUR-OPERATION-ID>/status`
+* `<YOUR-PREDICTION-ENDPOINT>/luis/prediction/v3.0-preview/apps/<YOUR-APP-ID>/slots/<YOUR-SLOT-ID>/evaluations/<YOUR-OPERATION-ID>/status`
 
 App-Versions-ID
-* `<YOUR-PREDICTION-ENDPOINT>/luis/prediction/v3.0/apps/<YOUR-APP-ID>/versions/<YOUR-APP-VERSION-ID>/evaluations/<YOUR-OPERATION-ID>/status`
+* `<YOUR-PREDICTION-ENDPOINT>/luis/prediction/v3.0-preview/apps/<YOUR-APP-ID>/versions/<YOUR-APP-VERSION-ID>/evaluations/<YOUR-OPERATION-ID>/status`
 
 ### <a name="get-the-results-from-a-batch-test"></a>Abrufen der Ergebnisse eines Batchtests
 
 Verwenden Sie die Vorgangs-ID des Batch Tests, den Sie gestartet haben, um seine Ergebnisse aus den folgenden Endpunktformaten abzurufen: 
 
 Veröffentlichungsslot
-* `<YOUR-PREDICTION-ENDPOINT>/luis/prediction/v3.0/apps/<YOUR-APP-ID>/slots/<YOUR-SLOT-ID>/evaluations/<YOUR-OPERATION-ID>/result`
+* `<YOUR-PREDICTION-ENDPOINT>/luis/prediction/v3.0-preview/apps/<YOUR-APP-ID>/slots/<YOUR-SLOT-ID>/evaluations/<YOUR-OPERATION-ID>/result`
 
 App-Versions-ID
-* `<YOUR-PREDICTION-ENDPOINT>/luis/prediction/v3.0/apps/<YOUR-APP-ID>/versions/<YOUR-APP-VERSION-ID>/evaluations/<YOUR-OPERATION-ID>/result`
+* `<YOUR-PREDICTION-ENDPOINT>/luis/prediction/v3.0-preview/apps/<YOUR-APP-ID>/versions/<YOUR-APP-VERSION-ID>/evaluations/<YOUR-OPERATION-ID>/result`
 
 
 ### <a name="batch-file-of-utterances"></a>Batchdatei mit Äußerungen
