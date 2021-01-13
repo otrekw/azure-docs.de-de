@@ -117,8 +117,12 @@
       "searchScope": [
         "Azure"
       ],
-      "recommendations": false,
-      "uhfHeaderId": "azure",
+      "disable_contribution_on_translation_quality": [
+        "MT",
+        "MTE75",
+        "MTE95",
+        "Blank"
+      ],
       "contributors_to_exclude": [
         "atookey",
         "chbain",
