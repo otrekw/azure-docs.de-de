@@ -12,12 +12,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 10/30/2020
 ms.author: juliako
-ms.openlocfilehash: 9f7bf41bd864f6780eee00938f35bb34d2336eb5
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 81e52d4a6827492931179055d040b541d51228eb
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93145751"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97916659"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure Media Services Video Indexer: Versionshinweise
 
@@ -29,6 +29,12 @@ Damit Sie bezüglich der aktuellen Entwicklungen auf dem neuesten Stand bleiben,
 * Bekannte Probleme
 * Behebung von Programmfehlern
 * Veraltete Funktionen
+
+##  <a name="december-2020"></a>Dezember 2020
+
+### <a name="video-indexer-deployed-in-the-switzerland-west-and-switzerland-north"></a>Video Indexer in den Regionen „Schweiz, Westen“ und „Schweiz, Norden“ bereitgestellt
+
+Sie können jetzt in den Regionen „Schweiz, Westen“ und „Schweiz, Norden“ ein kostenpflichtiges Video Indexer-Konto erstellen.
 
 ## <a name="october-2020"></a>Oktober 2020
 
@@ -138,7 +144,7 @@ In den nächsten Wochen werden wir dies ändern und die URL der [Video Indexer-W
     * Ersetzen der URL durch eine URL, die auf die Video Indexer-Widget-APIs verweist (beispielsweise das [Widget „Kognitive Erkenntnisse“](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Insights-Widget))
     * Verwenden der Video Indexer-Website zum Generieren einer neuen eingebetteten URL:
          
-         Drücken Sie **Wiedergabe** , um zur Seite Ihres Videos zu gelangen > klicken Sie auf die Schaltfläche **&lt;/&gt; Einbinden** > kopieren Sie die URL in Ihre Anwendung:
+         Drücken Sie **Wiedergabe**, um zur Seite Ihres Videos zu gelangen > klicken Sie auf die Schaltfläche **&lt;/&gt; Einbinden** > kopieren Sie die URL in Ihre Anwendung:
    
     Die regionalen URLs werden nicht unterstützt und werden in den nächsten Wochen blockiert.
 

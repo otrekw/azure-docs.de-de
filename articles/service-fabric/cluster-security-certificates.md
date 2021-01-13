@@ -3,12 +3,12 @@ title: Zertifikatbasierte X. 509-Authentifizierung in einem Service Fabric-Clust
 description: Erfahren Sie mehr über zertifikatbasierte Authentifizierung in Service Fabric-Clustern und wie Sie zertifikatbezogene Probleme erkennen, verringern und beheben können.
 ms.topic: conceptual
 ms.date: 03/16/2020
-ms.openlocfilehash: 4d81cb9d224bdc2e3002c621c86729df235e0d81
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 8af0246e0e576f9877c4c5e3b1f1a4314ae29827
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96574767"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97901248"
 ---
 # <a name="x509-certificate-based-authentication-in-service-fabric-clusters"></a>Zertifikatbasierte X. 509-Authentifizierung in einem Service Fabric-Cluster
 
@@ -170,7 +170,10 @@ Die Knotentypzertifikate können auch nach dem allgemeinen Namen des Antragstell
   </NodeTypes>
 ```
 
-Bei beiden Deklarationen liest ein Service Fabric-Knoten die Konfiguration beim Start, sucht und lädt die angegebenen Zertifikate und sortiert sie in absteigender Reihenfolge ihres NotAfter-Attributs. Abgelaufene Zertifikate werden ignoriert, und das erste Element der Liste wird als Clientanmeldeinformationen für alle Service Fabric-Verbindungen ausgewählt, die von diesem Knoten versucht werden. (Tatsächlich bevorzugt Service Fabric das am spätesten ablaufende Zertifikat.)
+Bei allen Deklarationstypen liest ein Service Fabric-Knoten die Konfiguration beim Start, sucht und lädt die angegebenen Zertifikate und sortiert sie in absteigender Reihenfolge ihres NotBefore-Attributs. Abgelaufene Zertifikate werden ignoriert, und das erste Element der Liste wird als Clientanmeldeinformation für alle Service Fabric-Verbindungen ausgewählt, die von diesem Knoten versucht werden. (Tatsächlich bevorzugt Service Fabric das zuletzt ausgestellte Zertifikat.)
+
+> [!NOTE]
+> Vor Version 7.2.445 (7.2 CU4) wählte Service Fabric das Zertifikat mit dem spätesten Ablaufdatum aus (das Zertifikat mit dem spätesten Wert der Eigenschaft „NotAfter“).
 
 Beachten Sie, dass ein Zertifikat für auf dem allgemeinen Namen basierende Präsentationsdeklarationen als Übereinstimmung betrachtet wird, wenn der allgemeine Name des Antragstellers dem Feld X509FindValue (oder X509FindValueSecondary) der Deklaration im genauen Zeichenfolgenvergleich unter Beachtung von Groß- und Kleinschreibung entspricht. Dies steht im Gegensatz zu den Validierungsregeln, die Platzhaltervergleiche unterstützen, sowie Zeichenfolgenvergleiche ohne Berücksichtigung von Groß- und Kleinschreibung.  
 

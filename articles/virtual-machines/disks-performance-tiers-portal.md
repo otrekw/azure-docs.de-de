@@ -4,16 +4,16 @@ description: Erfahren Sie, wie Sie über das Azure-Portal Leistungsstufen für n
 author: roygara
 ms.service: virtual-machines
 ms.topic: how-to
-ms.date: 11/19/2020
+ms.date: 01/05/2021
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: a868d5d236cf4c5a8d29f15490909c2f1a53546f
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: 625fb1e3dd0b433da6b60f995aa6b380c23ec9ce
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "96016576"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97901022"
 ---
 # <a name="change-your-performance-tier-using-the-azure-portal"></a>Ändern Ihrer Leistungsstufe über das Azure-Portal
 
@@ -47,7 +47,7 @@ In den folgenden Schritten wird beschrieben, wie Sie die Leistungsstufe eines vo
 1. Heben Sie entweder die Zuordnung des virtuellen Computers auf, oder trennen Sie den Datenträger.
 1. Auswählen des Datenträgers
 1. Wählen Sie die **Größe und Leistung** aus.
-1. Wählen Sie in der Dropdownliste **Leistungsstufen** eine Stufe aus, die sich von der aktuellen Baseline des Datenträgers unterscheidet.
+1. Wählen Sie in der Dropdownliste **Leistungsstufen** eine andere Stufe als die aktuelle Leistungsstufe des Datenträgers aus.
 1. Wählen Sie **Größe ändern** aus.
 
 :::image type="content" source="media/disks-performance-tiers-portal/change-tier-existing-disk.png" alt-text="Der Screenshot für das Blatt zu Größe und Leistung, wobei die Leistungsstufe hervorgehoben ist." lightbox="media/disks-performance-tiers-portal/performance-tier-settings.png":::

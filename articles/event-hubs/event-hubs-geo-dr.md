@@ -3,18 +3,27 @@ title: 'Georedundante Notfallwiederherstellung: Azure Event Hubs | Microsoft-Dok
 description: Verwenden von geografischen Regionen für Failover und Notfallwiederherstellung in Azure Event Hubs
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 6dd2385a6f6e61136a1284171532aedd70a9cc96
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: e10ac5847a38190c8feaae5e51f9b55bee4c4fbc
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96608349"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861471"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Azure Event Hubs: Georedundante Notfallwiederherstellung 
-Wenn gesamte Azure-Regionen oder -Rechenzentren ausfallen (wenn keine [Verfügbarkeitszonen](../availability-zones/az-overview.md) verwendet werden), ist es von entscheidender Bedeutung, dass die Datenverarbeitung in einer anderen Region oder in einem anderen Rechenzentrum fortgesetzt werden kann. Daher sind die *georedundante Notfallwiederherstellung* und die *Georeplikation* wichtige Funktionen für jedes Unternehmen. Azure Event Hubs unterstützt die georedundante Notfallwiederherstellung und die Georeplikation auf Namespaceebene. 
 
-> [!NOTE]
-> Das Feature zur georedundanten Notfallwiederherstellung ist nur für die [Tarife „Standard“ und „Dediziert“](https://azure.microsoft.com/pricing/details/event-hubs/) verfügbar.  
+Die Resilienz gegen katastrophale Ausfälle von Datenverarbeitungsressourcen ist für viele Unternehmen erforderlich und in einigen Fällen sogar Branchenvorschrift. 
+
+Mit Azure Event Hubs wird das Risiko von katastrophalen Ausfällen einzelner Computer oder sogar ganzer Racks auf Cluster verteilt, die sich über mehrere Fehlerdomänen in einem Rechenzentrum erstrecken. Außerdem implementiert der Dienst transparente Fehlererkennungs- und Failovermechanismen und kann somit auch bei solchen Ausfällen weiterhin innerhalb der garantierten Servicelevel und in der Regel ohne spürbare Unterbrechungen ausgeführt werden. Wenn ein Event Hubs-Namespace mit aktivierter Option für [Verfügbarkeitszonen](../availability-zones/az-overview.md) erstellt wurde, wird das Ausfallrisiko noch weiter auf drei physisch getrennte Einrichtungen verteilt. Der Dienst verfügt dann über genügend Kapazitätsreserven, um den vollständigen, katastrophalen Ausfall einer gesamten Einrichtung sofort zu bewältigen. 
+
+Das Azure Event Hubs-Clustermodell mit Unterstützung von Verfügbarkeitszonen bietet Resilienz bei schwerwiegenden Hardwareausfälle und sogar beim katastrophalen Ausfall eines vollständigen Rechenzentrums. Es kann jedoch bedrohliche Situationen mit großflächigen physischen Zerstörungen geben, vor denen selbst diese Maßnahmen keinen ausreichenden Schutz bieten können. 
+
+Die georedundante Notfallwiederherstellung von Event Hubs erleichtert die Wiederherstellung nach einer Katastrophe dieser Größenordnung und die endgültige Aufgabe einer Azure-Region, ohne dass Sie die Anwendungskonfigurationen ändern müssen. Wenn Sie eine Azure-Region aufgeben, sind in der Regel mehrere Dienste betroffen. Dieses Feature soll vor allem dabei helfen, die Integrität der gesamten Anwendungskonfiguration zu bewahren.  
+
+Die georedundante Notfallwiederherstellung stellt sicher, dass die gesamte Konfiguration eines Namespaces (Event Hubs, Consumergruppen und Einstellungen) ständig von einem primären Namespace in einem sekundären Namespace repliziert wird, wenn diese gekoppelt sind. Außerdem können Sie jederzeit ein einmaliges Failover vom primären zum sekundären Namespace auslösen. Beim Failover wird der ausgewählte Aliasname für den Namespace dem sekundären Namespace zugeordnet, dann wird die Kopplung aufgehoben. Das Failover erfolgt nach der Initiierung fast unmittelbar. 
+
+> [!IMPORTANT]
+> Das Feature ermöglicht die sofortige Fortsetzung von Vorgängen mit derselben Konfiguration, **repliziert aber keine Ereignisdaten**. Sofern der Notfall nicht zum Verlust sämtlicher Zonen geführt hat, werden die Ereignisdaten nach dem Failover im primären Event Hub beibehalten, und die bisherigen Ereignisse können von dort abgerufen werden, sobald der Zugriff wiederhergestellt ist. Verwenden Sie zum Replizieren von Ereignisdaten und zum Betreiben der entsprechenden Namespaces in Aktiv/Aktiv-Konfigurationen zur Bewältigung von Ausfällen und Notfällen nicht den Featuresatz der georedundanten Notfallwiederherstellung. Befolgen Sie stattdessen die [Replikationsanleitung](event-hubs-federation-overview.md).  
 
 ## <a name="outages-and-disasters"></a>Ausfälle und Notfälle
 

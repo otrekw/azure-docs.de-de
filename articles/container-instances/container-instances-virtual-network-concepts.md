@@ -3,12 +3,12 @@ title: Szenarien für die Verwendung eines virtuellen Netzwerks
 description: Szenarien, Ressourcen und Einschränkungen für die Bereitstellung von Containergruppen in einem virtuellen Azure-Netzwerk.
 ms.topic: article
 ms.date: 08/11/2020
-ms.openlocfilehash: 5e9c1d1606a9ad491ba7a7e623f1606717aa5b1f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2fb468a6a860bcc076043c30606922f43fbdb1ad
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89569168"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882431"
 ---
 # <a name="virtual-network-scenarios-and-resources"></a>Szenarien und Ressourcen für virtuelle Azure-Netzwerke
 
@@ -41,6 +41,7 @@ Containergruppen, die in einem virtuellen Azure-Netzwerk bereitgestellt werden, 
 * Sie können keine [verwaltete Identität](container-instances-managed-identity.md) in einer Containergruppe verwenden, die in einem virtuellen Netzwerk bereitgestellt wurde.
 * Sie können weder einen [Livetest](container-instances-liveness-probe.md) noch einen [Bereitschaftstest](container-instances-readiness-probe.md) in einer Containergruppe verwenden, die in einem virtuellen Netzwerk bereitgestellt wurde.
 * Aufgrund der zusätzlichen beteiligten Netzwerkressourcen erfolgen Bereitstellungen in einem virtuellen Netzwerk in der Regel langsamer als die Bereitstellung einer Standardcontainerinstanz.
+* Wenn Sie eine Verbindung zwischen Ihrer Containergruppe und einem Azure Storage-Konto herstellen, müssen Sie dieser Ressource einen [Dienstendpunkt](../virtual-network/virtual-network-service-endpoints-overview.md) hinzufügen.
 
 [!INCLUDE [container-instances-restart-ip](../../includes/container-instances-restart-ip.md)]
 

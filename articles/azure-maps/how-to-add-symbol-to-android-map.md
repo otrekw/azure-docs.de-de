@@ -1,184 +1,150 @@
 ---
-title: Hinzufügen einer Symbolebene zu einer Karte mithilfe des Android SDK für Azure Maps
-description: Erfahren Sie, wie Sie einer Karte einen Marker hinzufügen. Sehen Sie sich ein Beispiel an, in dem das Microsoft Azure Maps Android SDK verwendet wird, um eine Symbolebene hinzuzufügen, die punktbasierte Daten aus einer Datenquelle enthält.
-author: anastasia-ms
-ms.author: v-stharr
-ms.date: 11/24/2020
-ms.topic: how-to
+title: Hinzufügen einer Symbolebene zu Android-Karten | Microsoft Azure Maps
+description: Erfahren Sie, wie Sie einer Karte einen Marker hinzufügen. Sehen Sie sich ein Beispiel an, in dem das Azure Maps Android SDK verwendet wird, um eine Symbolebene hinzuzufügen, die punktbasierte Daten aus einer Datenquelle enthält.
+author: rbrundritt
+ms.author: richbrun
+ms.date: 12/08/2020
+ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: philmea
-ms.openlocfilehash: 300a7968b2072459d6d7709e4d89388e1bcf59f3
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+manager: cpendle
+ms.openlocfilehash: 040fcde35707074ffaf102ed6c224b2f47a084bb
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96531206"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97679354"
 ---
-# <a name="add-a-symbol-layer-to-a-map-using-azure-maps-android-sdk"></a>Hinzufügen einer Symbolebene zu einer Karte mithilfe des Android SDK für Azure Maps
+# <a name="add-a-symbol-layer-android-sdk"></a>Hinzufügen einer Symbolebene (Android SDK)
 
-Dieser Artikel zeigt Ihnen, wie Sie Punktdaten aus einer Datenquelle als Symbolebene auf einer Karte mit dem Android SDK für Azure Maps rendern können.
+Dieser Artikel zeigt Ihnen, wie Sie Punktdaten aus einer Datenquelle als Symbolebene auf einer Karte mit dem Android SDK für Azure Maps rendern können. Mit Symbolebenen werden Punkte als Bild und Text auf der Karte gerendert.
+
+> [!TIP]
+> Symbolebenen rendern in der Standardeinstellung die Koordinaten aller Geometrien in einer Datenquelle. Legen Sie die Option `filter` der Ebene auf `eq(geometryType(), "Point")` fest, um die Ebene so zu beschränken, dass nur Punktgeometriefeatures gerendert werden. Wenn Sie auch MultiPoint-Features einschließen möchten, legen Sie die Option `filter` der Ebene auf `any(eq(geometryType(), "Point"), eq(geometryType(), "MultiPoint"))` fest.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-1. [Erstellen eines Azure Maps-Kontos](quick-demo-map-app.md#create-an-azure-maps-account)
-2. [Abrufen eines Primärschlüssels](quick-demo-map-app.md#get-the-primary-key-for-your-account) (auch primärer Schlüssel oder Abonnementschlüssel genannt)
-3. Laden Sie das [Android SDK für Azure Maps](./how-to-use-android-map-control-library.md) herunter und installieren Sie des.
+Stellen Sie sicher, dass Sie die Schritte im Dokument [Schnellstart: Erstellen einer Android-App](quick-android-map.md) ausführen. Codeblöcke in diesem Artikel können in den `onReady`-Ereignishandler von Karten eingefügt werden.
 
 ## <a name="add-a-symbol-layer"></a>Hinzufügen einer Symbolebene
 
-Um der Karte über die Symbolebene einen Marker hinzuzufügen, führen Sie die folgenden Schritte aus:
+Bevor Sie der Karte eine Symbolebene hinzufügen können, müssen Sie einige Schritte ausführen. Erstellen Sie zunächst eine Datenquelle, und fügen Sie sie der Karte hinzu. Erstellen Sie eine Symbolebene. Übergeben Sie dann die Datenquelle an die Symbolebene, um die Daten aus der Datenquelle abzurufen. Abschließend fügen Sie Daten in die Datenquelle ein, damit diese gerendert werden können.
 
-1. Bearbeiten Sie **res** > **layout** > **activity_main.xml** so, dass die Datei wie die folgende XML aussieht:
-    
-    ```XML
-    <?xml version="1.0" encoding="utf-8"?>
-    <FrameLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
+Der folgende Code zeigt, was der Karte hinzugefügt werden soll, nachdem sie geladen wurde. Dieses Beispiel rendert einen einzelnen Punkt auf der Karte mithilfe einer Symbolebene.
 
-        <com.microsoft.azure.maps.mapcontrol.MapControl
-            android:id="@+id/mapcontrol"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:mapcontrol_centerLat="47.64"
-            app:mapcontrol_centerLng="-122.33"
-            app:mapcontrol_zoom="12"
-            />
+```java
+//Create a data source and add it to the map.
+DataSource source = new DataSource();
+map.sources.add(source);
 
-    </FrameLayout>
-    ```
+//Create a point and add it to the data source.
+source.add(Point.fromLngLat(0, 0));
 
-2. Kopieren Sie den folgenden Codeausschnitt in die **onCreate()** -Methode Ihrer `MainActivity.java`-Klasse.
+//Create a symbol layer to render icons and/or text at points on the map.
+SymbolLayer layer = new SymbolLayer(source);
 
-    ```Java
-    mapControl.onReady(map -> {
-    
-        //Create a data source and add it to the map.
-        DataSource dataSource = new DataSource();
-        map.sources.add(dataSource);
-    
-        //Create a point feature and add it to the data source.
-        dataSource.add(Feature.fromGeometry(Point.fromLngLat(-122.33, 47.64)));
-    
-        //Add a red custom image icon to the map resources.
-        map.images.add("my-icon", R.drawable.mapcontrol_marker_red);
-    
-        //Create a symbol layer and add it to the map.
-        map.layers.add(new SymbolLayer(dataSource,
-            iconImage("my-icon")));
-        });
-    
-    ```
-    
-    Nachdem Sie den obigen Codeausschnitt hinzugefügt haben, sollte `MainActivity.java` wie folgt aussehen:
-    
-    ```Java
-    package com.example.myapplication;
-    
-    import android.app.Activity;
-    import android.os.Bundle;
-    import com.mapbox.geojson.Feature;
-    import com.mapbox.geojson.Point;
-    import com.microsoft.azure.maps.mapcontrol.AzureMaps;
-    import com.microsoft.azure.maps.mapcontrol.MapControl;
-    import com.microsoft.azure.maps.mapcontrol.layer.SymbolLayer;
-    import com.microsoft.azure.maps.mapcontrol.source.DataSource;
-    import static com.microsoft.azure.maps.mapcontrol.options.SymbolLayerOptions.iconImage;
-    public class MainActivity extends AppCompatActivity {
-        
-        static{
-                AzureMaps.setSubscriptionKey("<Your Azure Maps subscription key>");
-            }
-    
-        MapControl mapControl;
-        @Override
-        protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_main);
-    
-            mapControl = findViewById(R.id.mapcontrol);
-    
-            mapControl.onCreate(savedInstanceState);
-    
-            mapControl.onReady(map -> {
-    
-                //Create a data source and add it to the map.
-                DataSource dataSource = new DataSource();
-                map.sources.add(dataSource);
-            
-                //Create a point feature and add it to the data source.
-                dataSource.add(Feature.fromGeometry(Point.fromLngLat(-122.33, 47.64)));
-            
-                //Add a custom image icon to the map resources.
-                map.images.add("my-icon", R.drawable.mapcontrol_marker_red);
-            
-                //Create a symbol layer and add it to the map.
-                map.layers.add(new SymbolLayer(dataSource,
-                    iconImage("my-icon")));
-            });
-        }
-    
-        @Override
-        public void onStart() {
-            super.onStart();
-            mapControl.onStart();
-        }
-    
-        @Override
-        public void onResume() {
-            super.onResume();
-            mapControl.onResume();
-        }
-    
-        @Override
-        public void onPause() {
-            super.onPause();
-            mapControl.onPause();
-        }
-    
-        @Override
-        public void onStop() {
-            super.onStop();
-            mapControl.onStop();
-        }
-    
-        @Override
-        public void onLowMemory() {
-            super.onLowMemory();
-            mapControl.onLowMemory();
-        }
-    
-        @Override
-        protected void onDestroy() {
-            super.onDestroy();
-            mapControl.onDestroy();
-        }
-    
-        @Override
-        protected void onSaveInstanceState(Bundle outState) {
-            super.onSaveInstanceState(outState);
-            mapControl.onSaveInstanceState(outState);
-        }
-    }
-    ```
+//Add the layer to the map.
+map.layers.add(layer);
+```
 
-Wenn Sie die Anwendung ausführen, sollten Sie an dieser Stelle einen Marker auf der Karte sehen, wie hier gezeigt:
+Es gibt drei verschiedene Arten von Punktdaten, die der Karte hinzugefügt werden können:
 
-![Android-Kartenpin](./media/how-to-add-symbol-to-android-map/android-map-pin.png)
+- GeoJSON-Point-Geometrie: Dieses Objekt enthält lediglich eine Koordinate eines Punkts. Mit der statischen `Point.fromLngLat`-Methode können diese Objekte ganz einfach erstellt werden.
+- GeoJSON-MultiPoint-Geometrie: Dieses Objekt enthält lediglich die Koordinaten mehrerer Punkte. Übergeben Sie ein Array von Punkten an die `MultiPoint`-Klasse, um diese Objekte zu erstellen.
+- GeoJSON-Feature: Dieses Objekt besteht aus einer beliebigen GeoJSON-Geometrie und einer Reihe von Eigenschaften, die Metadaten der Geometrie enthalten.
+
+Weitere Informationen zum Erstellen und Hinzufügen von Daten zur Karte finden Sie im Dokument [Erstellen einer Datenquelle](create-data-source-android-sdk.md).
+
+Mit dem folgenden Codebeispiel wird eine GeoJSON-Punktgeometrie erstellt und an das GeoJSON-Feature übergeben. Außerdem wird den Eigenschaften der `title`-Wert hinzugefügt. Die `title`-Eigenschaft wird über dem Symbol auf der Karte als Text angezeigt.
+
+```java
+//Create a data source and add it to the map.
+DataSource source = new DataSource();
+map.sources.add(source);
+
+//Create a point feature.
+Feature feature = Feature.fromGeometry(Point.fromLngLat(0, 0));
+
+//Add a property to the feature.
+feature.addStringProperty("title", "Hello World!");
+
+//Add the feature to the data source.
+source.add(feature);
+
+//Create a symbol layer to render icons and/or text at points on the map.
+SymbolLayer layer = new SymbolLayer(source, 
+    //Get the title property of the feature and display it on the map.
+    textField(get("title"))
+);
+
+//Add the layer to the map.
+map.layers.add(layer);
+```
+
+Der folgende Screenshot veranschaulicht, wie durch den oben aufgeführten Code unter Verwendung eines Symbols und einer Beschriftung mit einer Symbolebene ein Punktfeature gerendert wird.
+
+![Karte mit gerendertem Punkt. Dabei wird eine Symbolebene zur Darstellung eines Symbols und einer Beschriftung für ein Punktfeature verwendet.](media/how-to-add-symbol-to-android-map/android-map-pin.png)
 
 > [!TIP]
-> Standardmäßig optimieren Symbolebenen das Rendering von Symbolen, indem sie überlappende Symbole ausblenden. Beim Zoomen werden die ausgeblendeten Symbole angezeigt. Legen Sie die Option `iconAllowOverlap` auf `true` fest, um dieses Feature zu deaktivieren und alle Symbole jederzeit anzuzeigen.
+> Standardmäßig optimieren Symbolebenen das Rendering von Symbolen, indem sie überlappende Symbole ausblenden. Beim Zoomen werden die ausgeblendeten Symbole angezeigt. Legen Sie die Optionen `iconAllowOverlap` und `textAllowOverlap` auf `true` fest, um dieses Feature zu deaktivieren und immer alle Symbole zu rendern.
+
+## <a name="add-a-custom-icon-to-a-symbol-layer"></a>Hinzufügen eines benutzerdefinierten Zeichens zu einer Symbolebene
+
+Symbolebenen werden mit WebGL gerendert. Daher müssen alle Ressourcen wie etwa Zeichenbilder in den WebGL-Kontext geladen werden. Dieses Beispiel zeigt, wie Sie ein benutzerdefiniertes Symbol zu den Kartenressourcen hinzufügen können. Dieses Symbol wird dann zum Rendern von Punktdaten mit einem benutzerdefinierten Symbol auf der Karte verwendet. Die `textField`-Eigenschaft der Symbolebene erfordert, dass ein Ausdruck angegeben wird. In diesem Fall möchten wir die temperature-Eigenschaft rendern. Da die Temperatur eine Zahl ist, muss Sie in eine Zeichenfolge konvertiert werden. Außerdem soll „°F“ angefügt werden. Diese Verkettung ist mit folgendem Ausdruck möglich: `concat(Expression.toString(get("temperature")), literal("°F"))`.
+
+```java
+//Load a custom icon image into the image sprite of the map.
+map.images.add("my-custom-icon", R.drawable.showers);
+
+//Create a data source and add it to the map.
+DataSource source = new DataSource();
+map.sources.add(source);
+
+//Create a point feature.
+Feature feature = Feature.fromGeometry(Point.fromLngLat(-73.985708, 40.75773));
+
+//Add a property to the feature.
+feature.addNumberProperty("temperature", 64);
+
+//Add the feature to the data source.
+source.add(feature);
+
+//Create a symbol layer to render icons and/or text at points on the map.
+SymbolLayer layer = new SymbolLayer(source,
+    iconImage("my-custom-icon"),
+    iconSize(0.5f),
+
+    //Get the title property of the feature and display it on the map.
+    textField(concat(Expression.toString(get("temperature")), literal("°F"))),
+    textOffset(new Float[]{0f, -1.5f})
+);
+```
+
+In diesem Beispiel wurde die folgende Abbildung in den Ordner „drawable“ der App geladen.
+
+| ![Wettersymbolbild für Regenschauer](media/how-to-add-symbol-to-android-map/showers.png)|
+|:-----------------------------------------------------------------------:|
+| showers.png                                                  |
+
+Der folgende Screenshot veranschaulicht, wie durch den oben aufgeführten Code unter Verwendung eines benutzerdefinierten Symbols und einer formatierten Beschriftung mit einer Symbolebene ein Punktfeature gerendert wird.
+
+![Karte mit gerendertem Punkt. Dabei wird eine Symbolebene zur Darstellung eines benutzerdefinierten Symbols und einer formatierten Beschriftung für ein Punktfeature verwendet.](media/how-to-add-symbol-to-android-map/android-custom-symbol-layer.png)
+
+> [!TIP]
+> Wenn Sie nur Text mit einer Symbolebene rendern möchten, können Sie das Symbol ausblenden, indem Sie die `iconImage`-Eigenschaft der Symboloptionen auf `"none"` setzen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wie Sie Ihrer Karte weitere Daten hinzufügen, erfahren Sie hier:
+In den folgenden Artikeln finden Sie weitere Codebeispiele, die Sie Ihren Karten hinzufügen können:
 
 > [!div class="nextstepaction"]
-> [Hinzufügen von Formen zu einer Android-Karte](./how-to-add-shapes-to-android-map.md)
+> [Erstellen einer Datenquelle](create-data-source-android-sdk.md)
+
+> [!div class="nextstepaction"]
+> [Hinzufügen einer Blasenebene](map-add-bubble-layer-android.md)
+
+> [!div class="nextstepaction"]
+> [Verwenden von datengesteuerten Formatvorlagenausdrücken](data-driven-style-expressions-android-sdk.md)
 
 > [!div class="nextstepaction"]
 > [Anzeigen von Featureinformationen](display-feature-information-android.md)

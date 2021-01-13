@@ -3,12 +3,12 @@ title: 'Konzept: Integrieren einer Azure VMware Solution-Bereitstellung in eine 
 description: Hier erfahren Sie, wie Sie eine Azure VMware Solution-Bereitstellung in eine Hub-and-Spoke-Architektur in Azure integrieren.
 ms.topic: conceptual
 ms.date: 10/26/2020
-ms.openlocfilehash: 788ef9886e0d102a549e84cd01c658e9e4131c63
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 0d511c8d6a96ffb6fa666bcb7c989764f398bdc9
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967447"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97901384"
 ---
 # <a name="integrate-azure-vmware-solution-in-a-hub-and-spoke-architecture"></a>Integrieren von Azure VMware Solution in eine Hub-and-Spoke-Architektur
 
@@ -128,7 +128,7 @@ Als bewährte Sicherheitsmethode sollten Sie den [Microsoft Azure Bastion](../ba
 
 Für die Azure DNS-Auflösung stehen zwei Optionen zur Verfügung:
 
--   Verwenden Sie die Azure Active Directory-Domänencontroller, die im Hub bereitgestellt werden (beschrieben unter [Überlegungen zur Identität](#identity-considerations)) als Namenserver.
+-   Verwenden Sie die im Hub bereitgestellten Domänencontroller (beschrieben unter [Überlegungen zur Identität](#identity-considerations)) als Namenserver.
 
 -   Konfigurieren Sie eine private Azure DNS-Zone, und stellen Sie diese bereit.
 
@@ -136,7 +136,7 @@ Die beste Vorgehensweise besteht darin, beide Optionen zu kombinieren, um eine z
 
 Als allgemeine Entwurfsempfehlung sollten Sie die vorhandene Azure DNS-Infrastruktur (in diesem Fall Active Directory-integriertes DNS), die auf mindestens zwei Azure-VMs bereitgestellt ist, die im virtuellen Hub-Netzwerk bereitgestellt und in den virtuellen Spoke-Netzwerken konfiguriert sind, damit diese Azure DNS-Server in den DNS-Einstellungen verwendet werden.
 
-Sie können ein privates Azure-DNS verwenden, bei dem die private Azure-DNS-Zone zum virtuellen Netzwerk führt.  Die DNS-Server werden als hybride Resolver mit bedingter Weiterleitung an die lokale oder Azure VMware Solution-Instanz mit einem DNS, das die private Azure-DNS-Infrastruktur des Kunden nutzt. 
+Sie können ein privates Azure-DNS verwenden, bei dem die private Azure-DNS-Zone zum virtuellen Netzwerk führt.  Die DNS-Server werden als hybride Resolver mit bedingter Weiterleitung an die lokale oder Azure VMware Solution-Instanz mit einem DNS verwendet, das die private Azure-DNS-Infrastruktur des Kunden nutzt. 
 
 Aktivieren Sie die automatische Registrierung, um den Lebenszyklus der DNS-Einträge für die VMs, die in den virtuellen Spoke-Netzwerken bereitgestellt werden, automatisch zu verwalten. Wenn diese Option aktiviert ist, ist die maximale Anzahl von privaten DNS-Zonen nur 1. Wenn diese Option deaktiviert ist, beträgt die maximale Anzahl 1000.
 
@@ -144,7 +144,7 @@ Lokale und Azure VMware Solution-Server können mit bedingten Weiterleitungen an
 
 ## <a name="identity-considerations"></a>Überlegungen zur Identität
 
-Für Identitätszwecke besteht der beste Ansatz darin, mindestens einen AD-Domänencontroller im Hub bereitzustellen. Verwenden Sie zwei freigegebene Dienstsubnetze in Form einer Zonenbereitstellung oder VM-Verfügbarkeitsgruppe. Informationen dazu, wie Sie Ihre lokale AD-Domäne auf Azure erweitern, finden Sie unter [Erweitern der lokalen Active Directory-Domäne auf Azure](/azure/architecture/reference-architectures/identity/adds-extend-domain).
+Für Identitätszwecke besteht der beste Ansatz darin, mindestens einen Domänencontroller im Hub bereitzustellen. Verwenden Sie zwei freigegebene Dienstsubnetze in Form einer Zonenbereitstellung oder VM-Verfügbarkeitsgruppe. Weitere Informationen dazu, wie Sie Ihre lokale Active Directory-Domäne auf Azure erweitern, finden Sie im [Azure Architecture Center](/azure/architecture/reference-architectures/identity/adds-extend-domain).
 
 Stellen Sie außerdem einen weiteren Domänencontroller auf der Azure VMware Solution-Seite bereit, der in der vSphere-Umgebung als Identitäts- und DNS-Quelle fungiert.
 

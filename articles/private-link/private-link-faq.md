@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 10/05/2019
 ms.author: allensu
-ms.openlocfilehash: 2e5edb0ccf20ab0dba14864487f2b2ddef7d57e7
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: c074c29b7a37f49d5a4c7a5fab00b9a3e41c6893
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95544206"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97901537"
 ---
 # <a name="azure-private-link-frequently-asked-questions-faq"></a>Häufig gestellte Fragen (FAQ) zu Azure Private Link
 
@@ -43,8 +43,8 @@ Ja. Sie können mehrere private Endpunkte in demselben VNet oder Subnetz verwend
 ### <a name="do-i-require-a-dedicated-subnet-for-private-endpoints"></a>Benötige ich ein dediziertes Subnetz für private Endpunkte? 
 Nein. Sie benötigen kein dediziertes Subnetz für private Endpunkte. Sie können eine private Endpunkt-IP aus einem beliebigen Subnetz des VNet auswählen, in dem Ihr Dienst bereitgestellt wird.  
  
-### <a name="can-private-endpoint-connect-to-private-link-service-across-azure-active-directory-tenants"></a>Kann der private Endpunkt eine Verbindung mit dem Private Link-Dienst über Azure Active Directory-Mandanten hinweg herstellen? 
-Ja. Private Endpunkte können über AD-Mandanten eine Verbindung mit Private Link-Diensten oder mit Azure PaaS herstellen.  
+### <a name="can-a-private-endpoint-connect-to-private-link-services-across-azure-active-directory-tenants"></a>Kann ein privater Endpunkt eine Verbindung mit dem Private Link-Dienst über verschiedene Azure Active Directory-Mandanten hinweg herstellen? 
+Ja. Private Endpunkte können über verschiedene Azure Active Directory-Mandanten hinweg eine Verbindung mit Private Link-Diensten oder einer Azure PaaS-Lösung herstellen. Private Endpunkte, die mandantenübergreifende Verbindungen herstellen können, erfordern eine manuelle Genehmigung von Anforderungen. 
  
 ### <a name="can-private-endpoint-connect-to-azure-paas-resources-across-azure-regions"></a>Können private Endpunkte eine Verbindung mit Azure PaaS-Ressourcen zwischen Azure-Regionen herstellen?
 Ja. Private Endpunkte können eine Verbindung mit Azure PaaS-Ressourcen zwischen Azure-Regionen herstellen.

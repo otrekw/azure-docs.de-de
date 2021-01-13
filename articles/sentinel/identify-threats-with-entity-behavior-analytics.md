@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/19/2020
 ms.author: yelevin
-ms.openlocfilehash: a0a677342534cd92d5530199076e3d2e7084134d
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 2326746d274c68225cd4c8569df6a20d6050ec1a
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95494776"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97900891"
 ---
 # <a name="identify-advanced-threats-with-user-and-entity-behavior-analytics-ueba-in-azure-sentinel"></a>Erkennen komplexerer Bedrohungen mit User and Entity Behavior Analytics (UEBA) in Azure Sentinel
 
@@ -177,6 +177,8 @@ Entitätsseiten sind Teil von verschiedenen Verwendungsszenarios und können üb
 | **ActivityInsights**      | Kontextabhängige Analyse von Aktivitäten basierend auf unserer Profilerstellung              |
 | **InvestigationPriority** | Score für Anomalie zwischen 0 und 10 (0 = harmlos, 10 = äußerst anormal)         |
 |
+
+Alle kontextbezogenen Anreicherungen finden Sie in der [Referenz zu Azure Sentinel-UEBA-Anreicherungen](ueba-enrichments.md) unter **Benutzererkenntnisse**, **Geräteerkenntnisse** und **Aktivitätserkenntnisse**.
 
 ### <a name="querying-behavior-analytics-data"></a>Abfragen von Daten der Verhaltensanalyse
 

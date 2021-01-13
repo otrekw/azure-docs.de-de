@@ -1,17 +1,17 @@
 ---
 title: Problembehandlungsübung für Azure SignalR Service
 description: Hier erfahren Sie, wie Sie Konnektivitätsprobleme und Probleme bei der Nachrichtenübermittlung behandeln.
-author: YanJin
+author: yjin81
 ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: yajin1
-ms.openlocfilehash: 413bb88deac96c1ca12e8a9d25fc9cd16edf4616
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 2e22777b747ae24c3e643cbd43bfdb0604d453a2
+ms.sourcegitcommit: 17e9cb8d05edaac9addcd6e0f2c230f71573422c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183956"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97707655"
 ---
 # <a name="how-to-troubleshoot-connectivity-and-message-delivery-issues"></a>Behandeln von Konnektivitätsproblemen und von Problemen bei der Nachrichtenübermittlung
 
@@ -28,6 +28,8 @@ In diesem Leitfaden werden verschiedene Methoden zur Selbstdiagnose vorgestellt,
 * Informationen zum Modus `Classic` finden Sie in der [Problembehandlung für den klassischen Modus](#classic_mode_tsg).
 
 <a name="default_mode_tsg"></a>
+
+[Haben Sie Probleme oder Feedback zu dieser Problembehandlung? Informieren Sie uns darüber.](https://aka.ms/asrs/survey/troubleshooting)
 
 ## <a name="default-mode-troubleshooting"></a>Problembehandlung für den Standardmodus
 
@@ -73,6 +75,7 @@ Der *Server* von SignalR verwaltet die *Serververbindung* zwischen *Server* und 
 
 Sehen Sie sich die serverseitige Netzwerkablaufverfolgung an, um anhand des Statuscodes und der Fehlerdetails zu ermitteln, warum die *Serververbindung* ausfällt oder vom *Dienst* abgelehnt wird, und suchen Sie im [Leitfaden zur Problembehandlung](./signalr-howto-troubleshoot-guide.md) nach der Grundursache.
 
+[Haben Sie Probleme oder Feedback zu dieser Problembehandlung? Informieren Sie uns darüber.](https://aka.ms/asrs/survey/troubleshooting)
 
 ### <a name="how-to-add-logs"></a>Hinzufügen von Protokollen
 
@@ -166,6 +169,8 @@ Sie können auch für Azure SignalR Service [Diagnoseprotokolle aktivieren](./si
 
 <a name="serverless_mode_tsg"></a>
 
+[Haben Sie Probleme oder Feedback zu dieser Problembehandlung? Informieren Sie uns darüber.](https://aka.ms/asrs/survey/troubleshooting)
+
 ## <a name="serverless-mode-troubleshooting"></a>Problembehandlung für den serverlosen Modus
 
 Wenn sich **ASRS** im *serverlosen* Modus befindet, wird der Modus `Serverless` nur von **ASP.NET Core SignalR** unterstützt. Von **ASP.NET SignalR** wird dieser Modus **NICHT** unterstützt.
@@ -174,11 +179,15 @@ Die einfachste Methode, um Konnektivitätsprobleme im Modus `Serverless` zu diag
 
 <a name="classic_mode_tsg"></a>
 
+[Haben Sie Probleme oder Feedback zu dieser Problembehandlung? Informieren Sie uns darüber.](https://aka.ms/asrs/survey/troubleshooting)
+
 ## <a name="classic-mode-troubleshooting"></a>Problembehandlung für den klassischen Modus
 
 Der Modus `Classic` ist veraltet und sollte nicht mehr verwendet werden. In diesem Modus ermittelt Azure SignalR Service anhand der bestehenden *Serververbindungen*, ob sich der aktuelle Dienst im Modus `default` oder im Modus `serverless` befindet. Dies kann zu Clientkonnektivitätsproblemen führen, da Azure SignalR bei einem plötzlichen Ausfall aller bestehenden *Serververbindungen* (beispielsweise aufgrund von Netzwerkinstabilität) von einem Wechsel zum Modus `serverless` ausgeht und Clients, die während dieses Zeitraums eine Verbindung herstellen, niemals an den Server der gehosteten App weitergeleitet werden. Aktivieren Sie die [serverseitige Protokollierung](#add_logs_server), und überprüfen Sie, ob Clients als `ServerlessModeEntered` erfasst wurden, wenn Sie über einen Server für Ihre gehostete App verfügen, aber einige Clients den App-Server nicht erreichen. Ist dies der Fall, kann es hilfreich sein, [diese Clientverbindungen abzubrechen](https://github.com/Azure/azure-signalr/blob/dev/docs/rest-api.md#API) und die Clients neu starten zu lassen.
 
 Die Behandlung von Konnektivitätsproblemen und von Problemen bei der Nachrichtenübermittlung im Modus `classic` ist vergleichbar mit der [Problembehandlung für den Standardmodus](#default_mode_tsg).
+
+[Haben Sie Probleme oder Feedback zu dieser Problembehandlung? Informieren Sie uns darüber.](https://aka.ms/asrs/survey/troubleshooting)
 
 ## <a name="service-health"></a>Dienstintegrität
 
@@ -195,6 +204,8 @@ Die Dienstintegrität kann mithilfe der Integritäts-API überprüft werden.
     * Sollte keine der obigen Optionen funktionieren, fügen Sie im Azure-Portal eine neue Supportanfrage hinzu.
 
 Weitere Informationen zur Notfallwiederherstellung finden Sie [hier](./signalr-concept-disaster-recovery.md).
+
+[Haben Sie Probleme oder Feedback zu dieser Problembehandlung? Informieren Sie uns darüber.](https://aka.ms/asrs/survey/troubleshooting)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

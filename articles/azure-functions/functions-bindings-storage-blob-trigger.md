@@ -6,18 +6,18 @@ ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: fd33ca4c5d637e31230d8c124fdb9ec7c71d2ba7
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 3213df378bc3b8403ebd11f899d722106de67a65
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97094844"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882023"
 ---
 # <a name="azure-blob-storage-trigger-for-azure-functions"></a>Azure Blob Storage-Trigger für Azure Functions
 
 Der Blobspeichertrigger startet eine Funktion, wenn ein neues oder aktualisiertes Blob erkannt wird. Der Blobinhalt wird als [Eingabe für die Funktion](./functions-bindings-storage-blob-input.md) bereitgestellt.
 
-Der Azure Blob Storage-Trigger erfordert ein universelles Speicherkonto. V2-Speicherkonten mit [hierarchischen Namespaces](../storage/blobs/data-lake-storage-namespace.md) werden ebenfalls unterstützt. Um ein Blobkonto zu verwenden, oder wenn Ihre Anwendung spezielle Anforderungen hat, überprüfen Sie die Alternativen zur Verwendung dieses Triggers.
+Der Azure Blob Storage-Trigger erfordert ein universelles Speicherkonto. Storage V2-Konten mit [hierarchischen Namespaces](../storage/blobs/data-lake-storage-namespace.md) werden ebenfalls unterstützt. Um ein Blobkonto zu verwenden, oder wenn Ihre Anwendung spezielle Anforderungen hat, überprüfen Sie die Alternativen zur Verwendung dieses Triggers.
 
 Informationen zu Setup- und Konfigurationsdetails finden Sie in der [Übersicht](./functions-bindings-storage-blob.md).
 
@@ -114,6 +114,24 @@ public static void Run(CloudBlockBlob myBlob, string name, ILogger log)
 }
 ```
 
+# <a name="java"></a>[Java](#tab/java)
+
+Diese Funktion schreibt ein Protokoll, wenn im `myblob`-Container ein Blob hinzugefügt oder aktualisiert wird.
+
+```java
+@FunctionName("blobprocessor")
+public void run(
+  @BlobTrigger(name = "file",
+               dataType = "binary",
+               path = "myblob/{name}",
+               connection = "MyStorageAccountAppSetting") byte[] content,
+  @BindingName("name") String filename,
+  final ExecutionContext context
+) {
+  context.getLogger().info("Name: " + filename + " Size: " + content.length + " bytes");
+}
+```
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Das folgende Beispiel zeigt eine Blobtriggerbindung in einer Datei *function.json* und [JavaScript-Code](functions-reference-node.md), der die Bindung verwendet. Die Funktion schreibt ein Protokoll, wenn im Container `samples-workitems` ein Blob hinzugefügt oder aktualisiert wird.
@@ -146,6 +164,34 @@ module.exports = function(context) {
     context.log('Node.js Blob trigger function processed', context.bindings.myBlob);
     context.done();
 };
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Das folgende Beispiel veranschaulicht, wie Sie eine Funktion erstellen, die ausgeführt wird, wenn dem Blobspeichercontainer `source` eine Datei hinzugefügt wird.
+
+Die Funktionskonfigurationsdatei (_function.json_) enthält eine Bindung mit `blobTrigger` als `type`, bei der `direction` auf `in` festgelegt ist.
+
+```json
+{
+  "bindings": [
+    {
+      "name": "InputBlob",
+      "type": "blobTrigger",
+      "direction": "in",
+      "path": "source/{name}",
+      "connection": "MyStorageAccountConnectionString"
+    }
+  ]
+}
+```
+
+Hier sehen Sie den zugehörigen Code für die Datei _run.ps1_.
+
+```powershell
+param([byte[]] $InputBlob, $TriggerMetadata)
+
+Write-Host "PowerShell Blob trigger: Name: $($TriggerMetadata.Name) Size: $($InputBlob.Length) bytes"
 ```
 
 # <a name="python"></a>[Python](#tab/python)
@@ -183,24 +229,6 @@ import azure.functions as func
 
 def main(myblob: func.InputStream):
     logging.info('Python Blob trigger function processed %s', myblob.name)
-```
-
-# <a name="java"></a>[Java](#tab/java)
-
-Diese Funktion schreibt ein Protokoll, wenn im `myblob`-Container ein Blob hinzugefügt oder aktualisiert wird.
-
-```java
-@FunctionName("blobprocessor")
-public void run(
-  @BlobTrigger(name = "file",
-               dataType = "binary",
-               path = "myblob/{name}",
-               connection = "MyStorageAccountAppSetting") byte[] content,
-  @BindingName("name") String filename,
-  final ExecutionContext context
-) {
-  context.getLogger().info("Name: " + filename + " Size: " + content.length + " bytes");
-}
 ```
 
 ---
@@ -267,17 +295,21 @@ Das zu verwendende Speicherkonto wird anhand von Folgendem bestimmt (in der ange
 
 Attribute werden von C#-Skript nicht unterstützt.
 
+# <a name="java"></a>[Java](#tab/java)
+
+Das `@BlobTrigger`-Attribut wird verwendet, um Ihnen Zugriff auf das Blob zu gewähren, das die Funktion ausgelöst hat. Weitere Detailinformationen finden Sie im [Triggerbeispiel](#example).
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Attribute werden von JavaScript nicht unterstützt.
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Attribute werden von PowerShell nicht unterstützt.
+
 # <a name="python"></a>[Python](#tab/python)
 
 Attribute werden von Python nicht unterstützt.
-
-# <a name="java"></a>[Java](#tab/java)
-
-Das `@BlobTrigger`-Attribut wird verwendet, um Ihnen Zugriff auf das Blob zu gewähren, das die Funktion ausgelöst hat. Weitere Detailinformationen finden Sie im [Triggerbeispiel](#example).
 
 ---
 
@@ -305,17 +337,21 @@ Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaft
 
 [!INCLUDE [functions-bindings-blob-storage-trigger](../../includes/functions-bindings-blob-storage-trigger.md)]
 
+# <a name="java"></a>[Java](#tab/java)
+
+Das `@BlobTrigger`-Attribut wird verwendet, um Ihnen Zugriff auf das Blob zu gewähren, das die Funktion ausgelöst hat. Weitere Detailinformationen finden Sie im [Triggerbeispiel](#example).
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Greifen Sie über `context.bindings.<NAME>` auf Blobdaten zu, wobei `<NAME>` mit dem in *function.json* definierten Wert übereinstimmt.
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Greifen Sie auf die Blobdaten über einen Parameter zu, der dem Namen entspricht, der durch den name-Parameter der Bindung in der Datei _function.json_ festgelegt ist.
+
 # <a name="python"></a>[Python](#tab/python)
 
-Greifen Sie über den als [InputStream](/python/api/azure-functions/azure.functions.inputstream?view=azure-python) typisierten Parameter auf Blob-Daten zu. Weitere Detailinformationen finden Sie im [Triggerbeispiel](#example).
-
-# <a name="java"></a>[Java](#tab/java)
-
-Das `@BlobTrigger`-Attribut wird verwendet, um Ihnen Zugriff auf das Blob zu gewähren, das die Funktion ausgelöst hat. Weitere Detailinformationen finden Sie im [Triggerbeispiel](#example).
+Greifen Sie über den als [InputStream](/python/api/azure-functions/azure.functions.inputstream?view=azure-python&preserve-view=true) typisierten Parameter auf Blob-Daten zu. Weitere Detailinformationen finden Sie im [Triggerbeispiel](#example).
 
 ---
 
@@ -374,6 +410,10 @@ Wenn der Blobname *{20140101}-soundfile.mp3* lautet, erhält die Variable `name`
 
 [!INCLUDE [functions-bindings-blob-storage-trigger](../../includes/functions-bindings-blob-storage-metadata.md)]
 
+# <a name="java"></a>[Java](#tab/java)
+
+Metadaten sind in Java nicht verfügbar.
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
@@ -383,13 +423,13 @@ module.exports = function (context, myBlob) {
 };
 ```
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Metadaten sind über den Parameter `$TriggerMetadata` verfügbar.
+
 # <a name="python"></a>[Python](#tab/python)
 
 Metadaten sind in Python nicht verfügbar.
-
-# <a name="java"></a>[Java](#tab/java)
-
-Metadaten sind in Java nicht verfügbar.
 
 ---
 
@@ -399,11 +439,11 @@ Die Azure Functions-Runtime stellt sicher, dass Blobtriggerfunktionen für ein n
 
 Azure Functions speichert Blobbelege in einem Container mit dem Namen *azure-webjobs-hosts* im Azure Storage-Konto für Ihre Funktions-App (per App-Einstellung `AzureWebJobsStorage` definiert). Ein Blobbeleg enthält die folgenden Informationen:
 
-* Die ausgelöste Funktion („ *&lt;Funktions-App-Name>* .Functions. *&lt;Funktionsname>* “, z. B.: „MyFunctionApp.Functions.CopyBlob“)
+* Die ausgelöste Funktion (`<FUNCTION_APP_NAME>.Functions.<FUNCTION_NAME>`, z. B. `MyFunctionApp.Functions.CopyBlob`)
 * Containername
-* Blobtyp ("BlockBlob" oder "PageBlob")
+* Der Blobtyp (`BlockBlob` oder `PageBlob`)
 * Blobname
-* ETag (eine Blobversions-ID, z.B.: „0x8D1DC6E70A277EF“)
+* Das ETag (ein Blobversionsbezeichner, z. B. `0x8D1DC6E70A277EF`)
 
 Um eine erneute Verarbeitung eines Blobs zu erzwingen, können Sie den Blobbeleg für dieses Blob manuell aus dem Container *azure-webjobs-hosts* löschen. Auch wenn eine erneute Verarbeitung eventuell nicht sofort ausgeführt wird, erfolgt sie doch garantiert zu einem späteren Zeitpunkt. Für eine sofortige erneute Verarbeitung kann das *ScanInfo*-Blob in *azure-webjobs-hosts/blobscaninfo* aktualisiert werden. Alle Blobs mit einem Zeitstempel der letzten Änderung, der nach der `LatestScan`-Eigenschaft liegt, werden erneut überprüft.
 
@@ -413,11 +453,11 @@ Wenn bei Ausführung einer Blobtriggerfunktion für ein Blob ein Fehler auftritt
 
 Wenn bei allen fünf Versuchen Fehler auftreten, fügt Azure Functions der Storage-Warteschlange *webjobs-blobtrigger-poison* eine Nachricht hinzu. Die maximale Anzahl von Wiederholungen ist konfigurierbar. Für die Verarbeitung nicht verarbeitbarer Blobs und der dazugehörigen Nachrichtenwarteschlange wird die gleiche MaxDequeueCount-Einstellung verwendet. Die Warteschlangennachricht für nicht verarbeitbare Blobs ist ein JSON-Objekt, das die folgenden Eigenschaften enthält:
 
-* FunctionId (im Format *&lt;Funktionen-App-Name>* .Functions. *&lt;Funktionsname>* )
-* BlobType ("BlockBlob" oder "PageBlob")
+* FunctionId (im Format `<FUNCTION_APP_NAME>.Functions.<FUNCTION_NAME>`)
+* BlobType (`BlockBlob` oder `PageBlob`)
 * ContainerName
 * BlobName
-* ETag (eine Blobversions-ID, z.B.: „0x8D1DC6E70A277EF“)
+* ETag (ein Blobversionsbezeichner, z. B. `0x8D1DC6E70A277EF`)
 
 ## <a name="concurrency-and-memory-usage"></a>Parallelität und Arbeitsspeichernutzung
 

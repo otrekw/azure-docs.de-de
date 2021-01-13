@@ -3,14 +3,14 @@ title: Entfernen von VMs aus der Updateverwaltung in Azure Automation
 description: In diesem Artikel erfahren Sie, wie Sie mit der Updateverwaltung verwaltete Computer entfernen.
 services: automation
 ms.topic: conceptual
-ms.date: 09/09/2020
+ms.date: 01/05/2021
 ms.custom: mvc
-ms.openlocfilehash: 774dbe29cbb6b4d063d3619d0c710efb1949b99a
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: d0399aed9be8d81abb2aa55190225570ddcc1a4e
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92221626"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97913191"
 ---
 # <a name="remove-vms-from-update-management"></a>Entfernen virtueller Computer aus der Updateverwaltung
 
@@ -32,13 +32,20 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
 3. Navigieren Sie im Azure-Portal zu **Log Analytics-Arbeitsbereiche**. Wählen Sie Ihren Arbeitsbereich in der Liste aus.
 
-4. Wählen Sie in Ihrem Log Analytics-Arbeitsbereich im oberen Aktionsmenü **Protokolle** und dann **Abfrage-Explorer** aus.
+4. Wählen Sie in Ihrem Log Analytics-Arbeitsbereich **Erweiterte Einstellungen** aus, und wählen Sie dann im linken Menü **Computergruppen** aus.
 
-5. Erweitern Sie unter **Abfrage-Explorer** im rechten Bereich **Gespeicherte Abfragen > Updates**, und wählen Sie die gespeicherte Suchabfrage `MicrosoftDefaultComputerGroup`, um sie zu bearbeiten.
+5. Wählen Sie unter **Computergruppen** im rechten Bereich die Option **Gespeicherte Gruppen** aus.
 
-6. Überprüfen Sie die Abfrage im Abfrage-Editor, und suchen Sie die UUID für den virtuellen Computer. Entfernen Sie die UUID für den virtuellen Computer, und wiederholen Sie die Schritte für alle anderen VMs, die Sie entfernen möchten.
+6. Klicken Sie in der Tabelle für die gespeicherte Suchabfrage **Updates:MicrosoftDefaultComputerGroup** auf **Mitglieder anzeigen**, um die Abfrage auszuführen und die Mitglieder der Gruppe anzuzeigen.
 
-7. Speichern Sie die gespeicherte Suche, wenn Sie die Bearbeitung abgeschlossen haben, indem Sie auf der oberen Leiste **Speichern** auswählen.
+7. Überprüfen Sie die Abfrage im Abfrage-Editor, und suchen Sie die UUID für den virtuellen Computer. Entfernen Sie die UUID für den virtuellen Computer, und wiederholen Sie die Schritte für alle anderen VMs, die Sie entfernen möchten.
+
+8. Speichern Sie die gespeicherte Suche, wenn Sie die Bearbeitung abgeschlossen haben, indem Sie auf der oberen Leiste **Speichern** auswählen. Geben Sie bei Aufforderung Folgendes an:
+
+    * **Name**: MicrosoftDefaultComputerGroup
+    * **Speichern unter**: Funktion
+    * **Alias**: Updates__MicrosoftDefaultComputerGroup
+    * **Kategorie:** Aktualisierungen
 
 >[!NOTE]
 >Computer werden weiterhin angezeigt, nachdem Sie die Registrierung aufgehoben haben, da wir alle in den letzten 24 Stunden bewerteten Computer melden. Nachdem Sie den Computer entfernt haben, müssen Sie 24 Stunden warten, bis er nicht mehr aufgelistet wird.

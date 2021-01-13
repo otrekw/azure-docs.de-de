@@ -10,14 +10,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: conceptual
-ms.date: 08/31/2020
+ms.date: 01/05/2021
 ms.author: inhenkel
-ms.openlocfilehash: f37b453a294a0d0a7b9a99bfebe8f3eff09e8956
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 36593efd4f2583f28dffbb4f5b491fbeec7ba21d
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89291193"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97916319"
 ---
 # <a name="azure-storage-accounts"></a>Azure Storage-Konten
 
@@ -54,6 +54,9 @@ Zum Schutz Ihrer im Ruhezustand befindlichen Medienobjekte sollten die Medienobj
 |[Clientseitige Speicherverschlüsselung](../../storage/common/storage-client-side-encryption.md)|Durch Azure Storage angebotene clientseitige Verschlüsselung – Schlüssel wird vom Kunden in Key Vault verwaltet.|Wird nicht unterstützt.|
 
 <sup>1</sup> In Media Services v3 wird Speicherverschlüsselung (AES-256-Verschlüsselung) nur für die Abwärtskompatibilität unterstützt, wenn Ihre Medienobjekte mit Media Services v2 erstellt wurden. Dies bedeutet, dass v3 mit vorhandenen speicherverschlüsselten Medienobjekten funktioniert, jedoch keine Erstellung von neuen zulässt.
+
+## <a name="double-encryption"></a>Doppelte Verschlüsselung
+Media Services unterstützt die Mehrfachverschlüsselung.  Weitere Informationen dazu finden Sie unter [Mehrfachverschlüsselung in Azure](https://docs.microsoft.com/azure/security/fundamentals/double-encryption).
 
 ## <a name="storage-account-errors"></a>Speicherkontofehler
 

@@ -1,18 +1,21 @@
 ---
 title: Partitionieren von Service Fabric-Diensten
-description: Beschreibt, wie Sie zustandsbehaftete Service Fabric-Dienste partitionieren. Partitionen ermöglichen die Datenspeicherung auf dem lokalen Computer, damit Daten und Computeleistung zusammen skaliert werden können.
+description: Hier erfahren Sie, wie Sie zustandslose und zustandsbehaftete Service Fabric-Dienste partitionieren.
 ms.topic: conceptual
 ms.date: 06/30/2017
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d33e7b5ee293cf9dfb49e509bec2e1950033a956
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 199ae9d9844149c1931da638633110f717fe0517
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89005427"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97915894"
 ---
 # <a name="partition-service-fabric-reliable-services"></a>Partitionieren von Service Fabric Reliable Services
-Dieser Artikel enthält eine Einführung in die grundlegenden Konzepte der Partitionierung von Azure Service Fabric Reliable Services. Der in diesem Artikel verwendete Quellcode ist auch unter [GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions)verfügbar.
+Dieser Artikel enthält eine Einführung in die grundlegenden Konzepte der Partitionierung von Azure Service Fabric Reliable Services. Die Partitionierung ermöglicht die Datenspeicherung auf lokalen Computern, sodass Daten und Computeressourcen zusammen skaliert werden können.
+
+> [!TIP]
+> Der [vollständige Beispielcode](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions) des in diesem Artikel verwendeten Codes ist auf GitHub verfügbar.
 
 ## <a name="partitioning"></a>Partitionierung
 Die Partitionierung ist nicht nur auf Service Fabric beschränkt. Tatsächlich ist sie ein grundlegendes Muster beim Erstellen von skalierbaren Diensten. In einem weiteren Sinne können wir uns die Partitionierung als ein Konzept vorstellen, bei dem der Zustand (Daten) und die Berechnung (Compute) in kleinere zugängliche Einheiten unterteilt werden, um die Skalierbarkeit und Leistung zu verbessern. Eine bekannte Form der Partitionierung ist die [Datenpartitionierung][wikipartition], die auch als Sharding bezeichnet wird.
@@ -348,14 +351,14 @@ Da wir eine Partition pro Buchstabe benötigen, können wir 0 als niedrigen Sch
     
     ![Screenshot des Browsers](./media/service-fabric-concepts-partitioning/samplerunning.png)
 
-Den gesamten Quellcode des Beispiels finden Sie unter [GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions).
+Die vollständige Lösung für den in diesem Artikel verwendeten Code finden Sie hier: https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Informationen zu den Service Fabric-Konzepten finden Sie hier:
+Weitere Informationen zu Service Fabric-Diensten:
 
+* [Herstellung einer Verbindung mit Diensten in Service Fabric und die Kommunikation mit diesen Diensten](service-fabric-connect-and-communicate-with-services.md)
 * [Verfügbarkeit der Service Fabric-Dienste](service-fabric-availability-services.md)
 * [Scaling Service Fabric Applications (in englischer Sprache)](service-fabric-concepts-scalability.md)
-* [Kapazitätsplanung für Service Fabric-Anwendungen](service-fabric-capacity-planning.md)
 
 [wikipartition]: https://en.wikipedia.org/wiki/Partition_(database)
 

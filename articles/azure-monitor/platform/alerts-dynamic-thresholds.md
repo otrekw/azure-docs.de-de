@@ -4,13 +4,13 @@ description: Erstellen von Warnungen mit Machine Learning-basierten dynamischen 
 author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
-ms.date: 02/16/2020
-ms.openlocfilehash: 110d4a3219b4898fa6f138e29f1112d7134f674c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.date: 01/04/2021
+ms.openlocfilehash: 92fafc9357ca08cd31c9ba7badbf7f6433f44f86
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96012338"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97862585"
 ---
 # <a name="metric-alerts-with-dynamic-thresholds-in-azure-monitor"></a>Metrikwarnungen mit dynamischen Schwellenwerten in Azure Monitor
 
@@ -39,7 +39,7 @@ Dynamische Schwellenwerte erfassen fortlaufend Daten der Metrikreihe und versuch
 Die Schwellenwerte werden so ausgewählt, dass eine Abweichung von diesen Schwellenwerten eine Anomalie im Metrikverhalten ergibt.
 
 > [!NOTE]
-> Saisonale Mustererkennung ist auf ein Stunden-, Tage- oder Wochenintervall festgelegt. Dies bedeutet, dass andere Muster wie zweistündige oder halbwöchentliche möglicherweise nicht erkannt werden.
+> Dynamische Schwellwerte können Saisonalität für stündliche, tägliche oder wöchentliche Muster erkennen. Andere Muster wie „alle zwei Stunden“ oder „zweimal die Woche“ werden möglicherweise nicht erkannt. Zum Erkennen einer wöchentlichen Saisonalität sind Verlaufsdaten über einen Zeitraum von mindestens drei Wochen erforderlich. 
 
 ## <a name="what-does-sensitivity-setting-in-dynamic-thresholds-mean"></a>Was bedeutet die „Sensitivity“-Einstellung in dynamischen Schwellenwerten?
 

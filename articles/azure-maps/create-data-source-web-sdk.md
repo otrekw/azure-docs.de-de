@@ -9,19 +9,19 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: d09dddbceed773cd723897cc9730198b68be0ff7
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 9964c99ddfb59811fc67df634b41cede5847ede0
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96903614"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97678854"
 ---
 # <a name="create-a-data-source"></a>Erstellen einer Datenquelle
 
 Das Azure Maps Web SDK speichert Daten in Datenquellen. Die Verwendung von Datenquellen optimiert die Datenvorgänge zum Abfragen und Rendern. Derzeit gibt es zwei Arten von Datenquellen:
 
-- **GeoJSON-Quelle:** Dient für die lokale Verwaltung von Standortrohdaten im GeoJSON-Format. Sie ist geeignet für kleine bis mittlere Datasets (mit mehr als Hunderttausenden Formen).
-- **Vektorkachelquelle:** Lädt Daten, die als Vektorkacheln für die aktuelle Kartenansicht formatiert sind, basierend auf dem Kartenkachelsystem. Sie eignet sich ideal für große bis sehr große Datasets (Millionen oder Milliarden Formen).
+* **GeoJSON-Quelle:** Dient für die lokale Verwaltung von Standortrohdaten im GeoJSON-Format. Sie ist geeignet für kleine bis mittlere Datasets (mit mehr als Hunderttausenden Formen).
+* **Vektorkachelquelle:** Lädt Daten, die als Vektorkacheln für die aktuelle Kartenansicht formatiert sind, basierend auf dem Kartenkachelsystem. Sie eignet sich ideal für große bis sehr große Datasets (Millionen oder Milliarden Formen).
 
 ## <a name="geojson-data-source"></a>GeoJSON-Datenquelle
 
@@ -50,8 +50,8 @@ Nach der Erstellung können Datenquellen über die `map.sources`-Eigenschaft, di
 
 ```javascript
 //Create a data source and add it to the map.
-var dataSource = new atlas.source.DataSource();
-map.sources.add(dataSource);
+var source = new atlas.source.DataSource();
+map.sources.add(source);
 ```
 
 Der folgende Code zeigt die verschiedenen Möglichkeiten, wie GeoJSON-Daten einer `DataSource` hinzugefügt werden können.
@@ -60,13 +60,13 @@ Der folgende Code zeigt die verschiedenen Möglichkeiten, wie GeoJSON-Daten eine
 //GeoJsonData in the following code can be a single or array of GeoJSON features or geometries, a GeoJSON feature colleciton, or a single or array of atlas.Shape objects.
 
 //Add geoJSON object to data source. 
-dataSource.add(geoJsonData);
+source.add(geoJsonData);
 
 //Load geoJSON data from URL. URL should be on a CORs enabled endpoint.
-dataSource.importDataFromUrl(geoJsonUrl);
+source.importDataFromUrl(geoJsonUrl);
 
 //Overwrite all data in data source.
-dataSource.setShapes(geoJsonData);
+source.setShapes(geoJsonData);
 ```
 
 > [!TIP]
@@ -76,10 +76,10 @@ dataSource.setShapes(geoJsonData);
 
 Eine Vektorkachelquelle beschreibt, wie auf eine Vektorkachelebene zugegriffen wird. Verwenden Sie die [VectorTileSource-](/javascript/api/azure-maps-control/atlas.source.vectortilesource)-Klasse, um eine Vektorkachelquelle zu instanziieren. Vektorkachelebenen ähneln Kachelebenen, sind aber nicht identisch. Eine Kachelebene ist ein Rasterbild. Vektorkachelebenen sind komprimierte Dateien und liegen im Format **PBF** vor. Diese komprimierte Datei enthält Vektorkartendaten und eine oder mehrere Ebenen. Die Datei kann auf dem Client gerendert und formatiert werden, basierend auf dem Stil jeder einzelnen Ebene. Die Daten in einer Vektorkachel enthalten geografische Merkmale in Form von Punkten, Linien und Polygonen. Vektorkachelebenen haben gegenüber Rasterkachelebenen mehrere Vorteile:
 
- - Eine Dateigröße einer Vektorkachel ist in der Regel wesentlich kleiner als eine vergleichbare Rasterkachel. Somit wird auch weniger Bandbreite verwendet. Dies bedeutet geringere Wartezeiten, eine schnellere Karte und eine bessere Benutzererfahrung.
- - Da Vektorkacheln auf dem Client gerendert werden, passen sie sich an die Auflösung des Geräts an, auf dem sie angezeigt werden. Hieraus resultiert, dass die gerenderten Karten definierter und mit sehr klaren Bezeichnungen dargestellt werden.
- - Um den Stil der Daten in den Vektorkarten zu ändern, müssen Sie die Daten nicht erneut herunterladen, da der neue Stil auf den Client angewendet werden kann. Im Gegensatz dazu erfordert das Ändern des Stils einer Rasterkachelebene in der Regel das Laden von Kacheln vom Server und das anschließende Anwenden des neuen Stils.
- - Da die Daten in Vektorform bereitgestellt werden, ist zur Aufbereitung der Daten weniger serverseitige Verarbeitung erforderlich. Als Folge hieraus können die neueren Daten schneller zur Verfügung gestellt werden.
+* Eine Dateigröße einer Vektorkachel ist in der Regel wesentlich kleiner als eine vergleichbare Rasterkachel. Somit wird auch weniger Bandbreite verwendet. Dies bedeutet geringere Wartezeiten, eine schnellere Karte und eine bessere Benutzererfahrung.
+* Da Vektorkacheln auf dem Client gerendert werden, passen sie sich an die Auflösung des Geräts an, auf dem sie angezeigt werden. Hieraus resultiert, dass die gerenderten Karten definierter und mit sehr klaren Bezeichnungen dargestellt werden.
+* Um den Stil der Daten in den Vektorkarten zu ändern, müssen Sie die Daten nicht erneut herunterladen, da der neue Stil auf den Client angewendet werden kann. Im Gegensatz dazu erfordert das Ändern des Stils einer Rasterkachelebene in der Regel das Laden von Kacheln vom Server und das anschließende Anwenden des neuen Stils.
+* Da die Daten in Vektorform bereitgestellt werden, ist zur Aufbereitung der Daten weniger serverseitige Verarbeitung erforderlich. Als Folge hieraus können die neueren Daten schneller zur Verfügung gestellt werden.
 
 Azure Maps hält den offenen Standard [Mapbox Vector Tile Specification](https://github.com/mapbox/vector-tile-spec) ein. Azure Maps bietet als Teil der Plattform die folgenden Dienste für Vektorkacheln an:
 
@@ -95,14 +95,14 @@ Um Daten aus einer Vektorkachelquelle auf der Karte anzuzeigen, verbinden Sie di
 
 ```javascript
 //Create a vector tile source and add it to the map.
-var datasource = new atlas.source.VectorTileSource(null, {
+var source = new atlas.source.VectorTileSource(null, {
     tiles: ['https://{azMapsDomain}/traffic/flow/tile/pbf?api-version=1.0&style=relative&zoom={z}&x={x}&y={y}'],
     maxZoom: 22
 });
-map.sources.add(datasource);
+map.sources.add(source);
 
 //Create a layer for traffic flow lines.
-var flowLayer = new atlas.layer.LineLayer(datasource, null, {
+var flowLayer = new atlas.layer.LineLayer(source, null, {
     //The name of the data layer within the data source to pass into this rendering layer.
     sourceLayer: 'Traffic flow',
 
@@ -142,30 +142,30 @@ Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azure
 
 Daten werden mithilfe von Renderebenen auf der Karte gerendert. Auf eine einzelne Datenquelle kann von einer oder mehreren Renderebene verwiesen werden. Die folgenden Renderebenen erfordern eine Datenquelle:
 
-- [Blasenebene](map-add-bubble-layer.md) – Punktdaten werden als skalierte Kreise mit Pixelradius gerendert.
-- [Symbolebene](map-add-pin.md) – Punktdaten werden als Symbole oder Text gerendert.
-- [Wärmebildebene](map-add-heat-map-layer.md) – Punktdaten werden als Dichtewärmebild gerendert.
-- [Linienebene](map-add-shape.md) – Rendert eine Linie und/oder die Kontur von Polygonen. 
-- [Polygonebene](map-add-shape.md) – füllt den Bereich eines Polygons mit einer Volltonfarbe oder einem Bildmuster aus.
+* [Blasenebene](map-add-bubble-layer.md) – Punktdaten werden als skalierte Kreise mit Pixelradius gerendert.
+* [Symbolebene](map-add-pin.md) – Punktdaten werden als Symbole oder Text gerendert.
+* [Wärmebildebene](map-add-heat-map-layer.md) – Punktdaten werden als Dichtewärmebild gerendert.
+* [Linienebene](map-add-shape.md) – Rendert eine Linie und/oder die Kontur von Polygonen. 
+* [Polygonebene](map-add-shape.md) – füllt den Bereich eines Polygons mit einer Volltonfarbe oder einem Bildmuster aus.
 
 Der folgende Code zeigt, wie Sie eine Datenquelle erstellen, sie zur Karte hinzufügen und mit einer Blasenebene verbinden. Und dann importieren Sie GeoJSON-Punktdaten von einem Remoteort in die Datenquelle. 
 
 ```javascript
 //Create a data source and add it to the map.
-var datasource = new atlas.source.DataSource();
-map.sources.add(datasource);
+var source = new atlas.source.DataSource();
+map.sources.add(source);
 
 //Create a layer that defines how to render points in the data source and add it to the map.
-map.layers.add(new atlas.layer.BubbleLayer(datasource));
+map.layers.add(new atlas.layer.BubbleLayer(source));
 
 //Load the earthquake data.
-datasource.importDataFromUrl('https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_month.geojson');
+source.importDataFromUrl('https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_month.geojson');
 ```
 
 Es gibt zusätzliche Renderebenen, die sich nicht mit diesen Datenquellen verbinden, die die Daten zum Rendern aber direkt laden. 
 
-- [Bildebene](map-add-image-layer.md) – überlagert ein einzelnes Bild oberhalb der Karte und bindet seine Ecken an einen Satz angegebener Koordinaten.
-- [Kachelebene](map-add-tile-layer.md) – überlagert eine Rasterkachelebene oberhalb der Karte.
+* [Bildebene](map-add-image-layer.md) – überlagert ein einzelnes Bild oberhalb der Karte und bindet seine Ecken an einen Satz angegebener Koordinaten.
+* [Kachelebene](map-add-tile-layer.md) – überlagert eine Rasterkachelebene oberhalb der Karte.
 
 ## <a name="one-data-source-with-multiple-layers"></a>Eine Datenquelle mit mehreren Ebenen
 
@@ -179,34 +179,40 @@ Mit Azure Maps benötigen Sie nur ein einzelnes Polygon in einer Datenquelle, wi
 
 ```javascript
 //Create a data source and add it to the map.
-var dataSource = new atlas.source.DataSource();
-map.sources.add(dataSource);
+var source = new atlas.source.DataSource();
+map.sources.add(source);
 
 //Create a polygon and add it to the data source.
-dataSource.add(new atlas.data.Polygon([[[/* Coordinates for polygon */]]]));
+source.add(new atlas.data.Polygon([[[/* Coordinates for polygon */]]]));
 
 //Create a polygon layer to render the filled in area of the polygon.
-var polygonLayer = new atlas.layer.PolygonLayer(dataSource, 'myPolygonLayer', {
+var polygonLayer = new atlas.layer.PolygonLayer(source, 'myPolygonLayer', {
      fillColor: 'rgba(255,165,0,0.2)'
 });
 
 //Create a line layer for greater control of rendering the outline of the polygon.
-var lineLayer = new atlas.layer.LineLayer(dataSource, 'myLineLayer', {
+var lineLayer = new atlas.layer.LineLayer(source, 'myLineLayer', {
      color: 'orange',
      width: 2
 });
 
 //Create a bubble layer to render the vertices of the polygon as scaled circles.
-var bubbleLayer = new atlas.layer.BubbleLayer(dataSource, 'myBubbleLayer', {
+var bubbleLayer = new atlas.layer.BubbleLayer(source, 'myBubbleLayer', {
      color: 'orange',
      radius: 5,
-     outlineColor: 'white',
-     outlineWidth: 2
+     strokeColor: 'white',
+     strokeWidth: 2
 });
 
 //Add all layers to the map.
 map.layers.add([polygonLayer, lineLayer, bubbleLayer]);
 ```
+
+> [!TIP]
+> Beim Hinzufügen von Ebenen zur Karte mithilfe der `map.layers.add`-Funktion kann die ID oder Instanz einer vorhandenen Ebene als zweiter Parameter übergeben werden. Dadurch wird die Karte angewiesen, die neue Ebene unterhalb der vorhandenen Ebene hinzuzufügen. Mit dieser Methode wird nicht nur eine Ebenen-ID übergeben. Sie unterstützt zusätzlich die folgenden Werte.
+>
+> * `"labels"`: Fügt die neue Ebene unterhalb der Kartenbezeichnungsebenen ein.
+> * `"transit"`: Fügt die neue Ebene unterhalb der Straßen- und Transitebene der Karte ein.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

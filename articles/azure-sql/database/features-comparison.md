@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
-ms.reviewer: bonova, sstein
-ms.date: 11/10/2020
-ms.openlocfilehash: b40f618b65af6fd7a6d283431aaf63c2cc1dcd1a
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.reviewer: bonova, sstein, danil
+ms.date: 12/25/2020
+ms.openlocfilehash: 7bdde57c1d33118fd7d3c8e04a2507d8997c36d0
+ms.sourcegitcommit: 31d242b611a2887e0af1fc501a7d808c933a6bf6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97368459"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97809512"
 ---
 # <a name="features-comparison-azure-sql-database-and-azure-sql-managed-instance"></a>Featurevergleich: Azure SQL-Datenbank und Azure SQL Managed Instance
 
@@ -51,7 +51,7 @@ Die folgende Tabelle enthält die wichtigsten Features von SQL Server und gibt A
 | [Sortierung – Server/Instanz](/sql/relational-databases/collations/set-or-change-the-server-collation) | Nein, es wird immer die standardmäßige Serversortierung `SQL_Latin1_General_CP1_CI_AS` verwendet. | Ja, kann festgelegt werden, wenn die [Instanz erstellt wird](../managed-instance/scripts/create-powershell-azure-resource-manager-template.md), eine spätere Aktualisierung ist nicht möglich. |
 | [ColumnStore-Indizes](/sql/relational-databases/indexes/columnstore-indexes-overview) | Ja – [Premium-Tarif, Standard-Tarif – mindestens S3, Tarif „Universell“, Tarife „Unternehmenskritisch“ und „Hyperscale“](/sql/relational-databases/indexes/columnstore-indexes-overview) |Ja |
 | [Common Language Runtime – CLR](/sql/relational-databases/clr-integration/common-language-runtime-clr-integration-programming-concepts) | Nein | Ja, aber ohne Zugriff auf das Dateisystem in der `CREATE ASSEMBLY`-Anweisung – siehe [CLR-Unterschiede](../managed-instance/transact-sql-tsql-differences-sql-server.md#clr) |
-| [Anmeldeinformationen](/sql/relational-databases/security/authentication-access/credentials-database-engine) | Ja, aber nur [datenbankweit gültige Anmeldeinformationen](/sql/t-sql/statements/create-database-scoped-credential-transact-sql). | Ja, aber nur der **Azure Key Vault** und `SHARED ACCESS SIGNATURE` werden unterstützt – siehe [Details](../managed-instance/transact-sql-tsql-differences-sql-server.md#credential) |
+| [Anmeldeinformationen](/sql/relational-databases/security/authentication-access/credentials-database-engine) | Ja, aber nur [datenbankweit gültige Anmeldeinformationen](/sql/t-sql/statements/create-database-scoped-credential-transact-sql). | Ja, es werden aber nur **Azure Key Vault** und `SHARED ACCESS SIGNATURE` unterstützt – siehe [Details](../managed-instance/transact-sql-tsql-differences-sql-server.md#credential). |
 | [Datenbankübergreifende Abfragen / Abfragen dreiteiliger Namen](/sql/relational-databases/linked-servers/linked-servers-database-engine) | Nein – siehe [Elastische Abfragen](elastic-query-overview.md) | Ja, plus [elastische Abfragen](elastic-query-overview.md) |
 | [Datenbankübergreifende Transaktionen](/sql/relational-databases/linked-servers/linked-servers-database-engine) | Nein | Ja, innerhalb der Instanz. Informationen zu instanzübergreifenden Abfragen finden Sie unter [Verknüpfte Server](../managed-instance/transact-sql-tsql-differences-sql-server.md#linked-servers). |
 | [Datenbank-E-Mail – DbMail](/sql/relational-databases/database-mail/database-mail) | Nein | Ja |
@@ -64,6 +64,7 @@ Die folgende Tabelle enthält die wichtigsten Features von SQL Server und gibt A
 | [Verteilte Transaktionen – MS DTC](/sql/relational-databases/native-client-ole-db-transactions/supporting-distributed-transactions) | Nein (siehe [Elastische Transaktionen](elastic-transactions-overview.md)) |  Nein – siehe [Verknüpfte Server](../managed-instance/transact-sql-tsql-differences-sql-server.md#linked-servers). Versuchen Sie, während der Migration Datenbanken aus verschiedenen verteilten SQL Server-Instanzen in einer SQL Managed Instance zu konsolidieren. |
 | [DML-Trigger](/sql/relational-databases/triggers/create-dml-triggers) | Die meisten (siehe einzelne Anweisungen) |  Ja |
 | [DMVs](/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views) | Die meisten – siehe einzelne DMVs |  Ja – siehe [T-SQL-Unterschiede](../managed-instance/transact-sql-tsql-differences-sql-server.md) |
+| [Elastische Abfrage](elastic-query-overview.md) (in der Public Preview) | Ja, mit dem erforderlichen RDBMS-Typ. | Ja, mit dem erforderlichen RDBMS-Typ. |
 | [Ereignisbenachrichtigungen](/sql/relational-databases/service-broker/event-notifications) | Nein (siehe [Warnungen](alerts-insights-configure-portal.md)) | Nein |
 | [Ausdrücke](/sql/t-sql/language-elements/expressions-transact-sql) |Ja | Ja |
 | [Erweiterte Ereignisse (XEvent)](/sql/relational-databases/extended-events/extended-events) | Siehe [Erweiterte Ereignisse in der SQL-Datenbank](xevent-db-diff-from-svr.md) | Ja – siehe [Erweiterte Ereignisse](../managed-instance/transact-sql-tsql-differences-sql-server.md#extended-events) |
@@ -127,6 +128,7 @@ Die Azure-Plattform bietet eine Reihe von PaaS-Funktionen, die den Standardfeatu
 | [Azure Resource Health](../../service-health/resource-health-overview.md) | Ja | Nein |
 | Sicherungsaufbewahrung | Ja. Standardmäßig 7 Tage, maximal 35 Tage. | Ja. Standardmäßig 7 Tage, maximal 35 Tage. |
 | [Data Migration Service (DMS)](/sql/dma/dma-overview) | Ja | Ja |
+| [Elastische Aufträge](elastic-jobs-overview.md) | Ja – siehe [Aufträge für die elastische Datenbank (Vorschau)](elastic-jobs-overview.md) | Nein (stattdessen kann [SQL-Agent](../managed-instance/transact-sql-tsql-differences-sql-server.md#sql-server-agent) verwendet werden). |
 | Dateisystemzugriff | Nein. Verwenden Sie [BULK INSERT](/sql/t-sql/statements/bulk-insert-transact-sql#f-importing-data-from-a-file-in-azure-blob-storage) oder [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql#i-accessing-data-from-a-file-stored-on-azure-blob-storage) als Alternative für den Zugriff und das Laden von Daten aus Azure Blob Storage. | Nein. Verwenden Sie [BULK INSERT](/sql/t-sql/statements/bulk-insert-transact-sql#f-importing-data-from-a-file-in-azure-blob-storage) oder [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql#i-accessing-data-from-a-file-stored-on-azure-blob-storage) als Alternative für den Zugriff und das Laden von Daten aus Azure Blob Storage. |
 | [Geowiederherstellung](recovery-using-backups.md#geo-restore) | Ja | Ja |
 | [Hyperscale-Architektur](service-tier-hyperscale.md) | Ja | Nein |
@@ -146,7 +148,7 @@ Die Azure-Plattform bietet eine Reihe von PaaS-Funktionen, die den Standardfeatu
 | [Query Performance Insights (QPI)](query-performance-insight-use.md) | Ja | Nein. Verwenden Sie integrierte Berichte in SQL Server Management Studio und Azure Data Studio. |
 | [VNET](../../virtual-network/virtual-networks-overview.md) | Teilweise, eingeschränkter Zugriff über [VNET-Endpunkte](vnet-service-endpoint-rule-overview.md) ist möglich | Ja, die SQL Managed Instance wird in das VNET des Kunden eingeschleust. Siehe [Subnetz](../managed-instance/transact-sql-tsql-differences-sql-server.md#subnet) und [VNET](../managed-instance/transact-sql-tsql-differences-sql-server.md#vnet) |
 | VNET-Dienstendpunkt | [Ja](vnet-service-endpoint-rule-overview.md) | Nein |
-| Globales VNet-Peering | Ja, mithilfe von [privater IP und Dienstendpunkten](vnet-service-endpoint-rule-overview.md) | Nein, aufgrund der [Load Balancer-Einschränkung beim globalen VNet-Peering](../../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints) wird [SQL Managed Instance nicht unterstützt](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers).
+| Globales VNet-Peering | Ja, mithilfe von [privater IP und Dienstendpunkten](vnet-service-endpoint-rule-overview.md) | Ja, mit [Peering virtueller Netzwerke](https://techcommunity.microsoft.com/t5/azure-sql/new-feature-global-vnet-peering-support-for-azure-sql-managed/ba-p/1746913). |
 
 ## <a name="tools"></a>Tools
 

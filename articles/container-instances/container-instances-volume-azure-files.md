@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie ein Azure Files-Volume einbinden, sodass der 
 ms.topic: article
 ms.date: 07/02/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 5ca619ac3ae93ee238d019b64ecccc975b7c8e3b
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: afebdcdc9d9c5852d7fe66ed06ac457c1dbb0afb
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746871"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881802"
 ---
 # <a name="mount-an-azure-file-share-in-azure-container-instances"></a>Einbinden einer Azure-Dateifreigabe in Azure Container Instances
 
@@ -20,6 +20,9 @@ Standardmäßig ist Azure Container Instances zustandslos. Wenn der Container ab
 >
 > Das Einbinden einer Azure Files-Freigabe in eine Containerinstanz ähnelt einem [bind mount](https://docs.docker.com/storage/bind-mounts/) bei Docker. Beachten Sie, dass, wenn Sie eine Freigabe in ein Containerverzeichnis einbinden, in dem Dateien oder Verzeichnisse vorhanden sind, diese Dateien oder Verzeichnisse durch die Einbindung verdeckt werden und nicht verfügbar sind, während der Container ausgeführt wird.
 >
+
+> [!IMPORTANT]
+> Wenn Sie Containergruppen in einem virtuellen Azure-Netzwerk bereitstellen, müssen Sie Ihrem Azure Storage-Konto einen [Dienstendpunkt](../virtual-network/virtual-network-service-endpoints-overview.md) hinzufügen.
 
 ## <a name="create-an-azure-file-share"></a>Erstellen einer Azure-Dateifreigabe
 
@@ -45,19 +48,19 @@ az storage share create \
   --account-name $ACI_PERS_STORAGE_ACCOUNT_NAME
 ```
 
-## <a name="get-storage-credentials"></a>Erhalten der Zugriffsinformationen für das Azure-Speicherkonto
+## <a name="get-storage-credentials"></a>Erhalten der Anmeldeinformationen für das Speicherkonto
 
 Um eine Azure-Dateifreigabe als Volume in Azure Container Instances einzubinden, benötigen Sie drei Werte: den Namen des Speicherkontos, den Freigabenamen und den Speicherzugriffsschlüssel.
 
-* **Speicherkontoname** : Wenn Sie das obige Skript verwendet haben, wurde der Name des Speicherkontos in der Variablen `$ACI_PERS_STORAGE_ACCOUNT_NAME` gespeichert. Um den Kontonamen einzusehen, geben Sie Folgendes ein:
+* **Speicherkontoname**: Wenn Sie das obige Skript verwendet haben, wurde der Name des Speicherkontos in der Variablen `$ACI_PERS_STORAGE_ACCOUNT_NAME` gespeichert. Um den Kontonamen einzusehen, geben Sie Folgendes ein:
 
   ```console
   echo $ACI_PERS_STORAGE_ACCOUNT_NAME
   ```
 
-* **Freigabename** : Dieser Wert ist bereits bekannt (definiert als `acishare` im vorangehenden Skript).
+* **Freigabename**: Dieser Wert ist bereits bekannt (definiert als `acishare` im vorangehenden Skript).
 
-* **Speicherkontoschlüssel** : Diesen Wert finden Sie mithilfe des folgenden Befehls:
+* **Speicherkontoschlüssel**: Diesen Wert finden Sie mithilfe des folgenden Befehls:
 
   ```azurecli-interactive
   STORAGE_KEY=$(az storage account keys list --resource-group $ACI_PERS_RESOURCE_GROUP --account-name $ACI_PERS_STORAGE_ACCOUNT_NAME --query "[0].value" --output tsv)

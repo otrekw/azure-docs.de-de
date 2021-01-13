@@ -7,14 +7,14 @@ ms.date: 4/4/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: cpendleton
+manager: cpendle
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: 8f27f7532d074428fafe74e4a453628f5c61d2b8
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 41a117c9ea8b47afcedaa1714abc2031d3be6c21
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895969"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680053"
 ---
 # <a name="data-driven-style-expressions-web-sdk"></a>Datengesteuerte Formatvorlagenausdrücke (Web SDK)
 
@@ -24,9 +24,9 @@ Datengesteuerte Formatvorlagen verringern die Menge an Code, die zum Implementie
 
 Dieses Video enthält eine Übersicht über die datengesteuerte Formatierung im Azure Maps Web SDK.
 
-<br/>
+</br>
 
-<iframe src="https://channel9.msdn.com/Shows/Internet-of-Things-Show/Data-Driven-Styling-with-Azure-Maps/player" width="960" height="540" allowFullScreen frameBorder="0"></iframe>
+>[!VIDEO https://channel9.msdn.com/Shows/Internet-of-Things-Show/Data-Driven-Styling-with-Azure-Maps/player?format=ny]
 
 Ausdrücke werden als JSON-Arrays dargestellt. Das erste Element eines Ausdrucks im Array ist eine Zeichenfolge, mit der der Name des Ausdrucksoperators angegeben wird. Dies können beispielsweise „+“ oder „case“ sein. Die nächsten Elemente (falls vorhanden) sind die Argumente für den Ausdruck. Jedes Argument ist entweder ein Literalwert (Zeichenfolge, Zahl, boolescher Wert oder `null`) oder ein anderes Array mit Ausdrücken. Mit dem folgenden Pseudocode wird die grundlegende Struktur eines Ausdrucks definiert. 
 
@@ -58,7 +58,7 @@ Das Azure Maps Web SDK unterstützt viele Typen von Ausdrücken. Ausdrücke kön
 
 In allen Beispielen dieses Dokuments werden die folgenden Features verwendet, um die verschiedenen Möglichkeiten der Verwendung der einzelnen Ausdrücke zu veranschaulichen. 
 
-```javascript
+```json
 {
     "type": "Feature",
     "geometry": {
@@ -70,13 +70,13 @@ In allen Beispielen dieses Dokuments werden die folgenden Features verwendet, um
         "entityType": "restaurant",
         "revenue": 12345,
         "subTitle": "Building 40", 
-        "temperature": 72,
+        "temperature": 64,
         "title": "Cafeteria", 
-        "zoneColor": "red",
-        "abcArray": ['a', 'b', 'c'],
-        "array2d": [['a', 'b'], ['x', 'y']],
+        "zoneColor": "purple",
+        "abcArray": ["a", "b", "c"],
+        "array2d": [["a", "b"], ["x", "y"]],
         "_style": {
-            "fillColor": 'red'
+            "fillColor": "red"
         }
     }
 }
@@ -88,22 +88,22 @@ Mit Datenausdrücken wird der Zugriff auf die Eigenschaftsdaten in einem Feature
 
 | Ausdruck | Rückgabetyp | BESCHREIBUNG |
 |------------|-------------|-------------|
-| `['at', number, array]` | Objekt (object) | Ruft ein Element aus einem Array ab. |
+| `['at', number, array]` | value | Ruft ein Element aus einem Array ab. |
 | `['geometry-type']` | Zeichenfolge | Ruft den Geometrietyp des Features ab: Point, MultiPoint, LineString, MultiLineString, Polygon, MultiPolygon. |
 | `['get', string]` | value | Ruft den Eigenschaftswert aus den Eigenschaften des aktuellen Features ab. Gibt null zurück, wenn die angeforderte Eigenschaft fehlt. |
 | `['get', string, object]` | value | Ruft den Eigenschaftswert aus den Eigenschaften des angegebenen Objekts ab. Gibt null zurück, wenn die angeforderte Eigenschaft fehlt. |
 | `['has', string]` | boolean | Ermittelt, ob die Eigenschaften eines Features über die angegebene Eigenschaft verfügen. |
 | `['has', string, object]` | boolean | Ermittelt, ob die Eigenschaften des Objekts über die angegebene Eigenschaft verfügen. |
 | `['id']` | value | Ruft die ID des Features ab, falls eine vorhanden ist. |
-| `['length', string | array]` | number | Ruft die Länge einer Zeichenfolge oder eines Arrays ab. |
 | `['in', boolean | string | number, array]` | boolean | Bestimmt, ob ein Element in einem Array vorhanden ist |
 | `['in', substring, string]` | boolean | Bestimmt, ob eine Teilzeichenfolge in einer Zeichenfolge vorhanden ist |
 | `['index-of', boolean | string | number, array | string]`<br/><br/>`['index-of', boolean | string | number, array | string, number]` | number | Gibt die erste Position zurück, an der ein Element in einem Array oder eine Teilzeichenfolge in einer Zeichenfolge gefunden wird. Sollte die Eingabe nicht gefunden werden, wird `-1` zurückgegeben. Akzeptiert einen optionalen Index, ab dem mit der Suche begonnen werden soll. |
-| `['slice', array | string, number]`<br/><br/>`['slice', array | string, number, number]` | `string` \| array | Gibt ein Element aus einem Array oder eine Teilzeichenfolge aus einer Zeichenfolge ab einem angegebenen Startindex oder zwischen einem Start- und einem Endindex zurück (sofern festgelegt). Der Rückgabewert schließt den Startindex ein, aber nicht den Endindex. |
+| `['length', string | array]` | number | Ruft die Länge einer Zeichenfolge oder eines Arrays ab. |
+| `['slice', array | string, number]`<br/><br/>`['slice', array | string, number, number]` | string \| array | Gibt ein Element aus einem Array oder eine Teilzeichenfolge aus einer Zeichenfolge ab einem angegebenen Startindex oder zwischen einem Start- und einem Endindex zurück (sofern festgelegt). Der Rückgabewert schließt den Startindex ein, aber nicht den Endindex. |
 
 **Beispiele**
 
-Auf die Eigenschaften eines Features kann in einem Ausdruck direkt zugegriffen werden, indem ein `get`-Ausdruck verwendet wird. In diesem Beispiel wird der „zoneColor“-Wert des Features verwendet, um die Farbeigenschaft einer Blasenebene anzugeben. 
+Auf die Eigenschaften eines Features kann in einem Ausdruck direkt zugegriffen werden, indem ein `get`-Ausdruck verwendet wird. In diesem Beispiel wird der `zoneColor`-Wert des Features verwendet, um die Farbeigenschaft einer Blasenebene anzugeben. 
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -203,7 +203,7 @@ Bei mathematischen Ausdrücken werden mathematische Operatoren bereitgestellt, u
 | `['max', number, number, …]` | number | Berechnet die maximale Anzahl in der angegebenen Zahlengruppe. |
 | `['min', number, number, …]` | number | Berechnet die minimale Anzahl in der angegebenen Zahlengruppe. |
 | `['pi']` | number | Gibt die mathematische Konstante `PI` zurück. |
-| `['round', number]` | number | Rundet die Zahl auf die nächste ganze Zahl. Halbe Werte werden weg von null gerundet. Für `['round', -1.5]` ergibt sich beispielsweise „-2“. |
+| `['round', number]` | number | Rundet die Zahl auf die nächste ganze Zahl. Halbe Werte werden weg von null gerundet. `['round', -1.5]` ergibt beispielsweise `-2`. |
 | `['sin', number]` | number | Berechnet den Sinus der angegebenen Zahl. |
 | `['sqrt', number]` | number | Berechnet die Quadratwurzel der angegebenen Zahl. |
 | `['tan', number]` | number | Berechnet den Tangens der angegebenen Zahl. |
@@ -228,6 +228,16 @@ Ein Aggregatausdruck verwendet drei Werte: einen Operatorwert, einen Anfangswert
 
 Wenn alle Funktionen in einem Dataset eine `revenue`-Eigenschaft haben, die eine Zahl ist. Dann kann der Gesamtumsatz aller Punkte in einem Cluster, der aus dem Dataset erstellt wurde, mithilfe des folgenden Aggregatausdrucks berechnet werden. Diese Berechnung erfolgt mit dem folgenden Aggregatausdruck: `['+', 0, ['get', 'revenue']]`
 
+### <a name="accumulated-expression"></a>Akkumulierter Ausdruck
+
+Mit dem `accumulated`-Ausdruck wird der Wert einer bis dahin akkumulierten Clustereigenschaft abgerufen. Dieser kann nur in der Option `clusterProperties` einer gruppierten `DataSource`-Quelle verwendet werden.
+
+**Nutzung**
+
+```javascript
+["accumulated"]
+```
+
 ## <a name="boolean-expressions"></a>Boolesche Ausdrücke
 
 Bei booleschen Ausdrücken werden Ausdrücke mit booleschen Operatoren bereitgestellt, um boolesche Vergleiche auszuwerten.
@@ -245,6 +255,7 @@ Beim Vergleichen von Werten ist der Vergleich streng typisiert. Werte unterschie
 | `['>=' value, value]` | boolean | Gibt `true` zurück, wenn die erste Eingabe größer oder gleich der zweiten Eingabe ist, andernfalls `false`. Die Argumente müssen entweder jeweils Zeichenfolgen oder Zahlen sein. |
 | `['all', boolean, boolean, …]` | boolean | Gibt `true` zurück, wenn alle Eingaben `true` sind, andernfalls `false`. |
 | `['any', boolean, boolean, …]` | boolean | Gibt `true` zurück, wenn eine oder mehrere Eingaben `true` sind, andernfalls `false`. |
+| `['within', Polygon | MultiPolygon | Feature<Polygon | MultiPolygon>]` | boolean | Gibt `true` zurück, wenn das ausgewertete Feature vollständig innerhalb einer Grenze der Eingabegeometrie enthalten ist, andernfalls „false“. Der Eingabewert kann ein gültiger GeoJSON-Wert vom Typ `Polygon`, `MultiPolygon`, `Feature` oder `FeatureCollection` sein. Für die Evaluation unterstützte Features:<br/><br/>– Point: Gibt `false` zurück, wenn ein Punkt auf oder außerhalb der Grenze liegt.<br/>– LineString: Gibt `false` zurück, wenn ein Teil einer Linie außerhalb der Grenze liegt, die Grenze überschneidet, oder deren Endpunkt auf der Grenze liegt. |
 
 ## <a name="conditional-expressions"></a>Bedingte Ausdrücke
 
@@ -355,28 +366,6 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 });
 ```
 
-Im folgenden Beispiel wird ein Vergleichsausdruck verwendet, um einen Filter der Art „in Array“ oder „Array enthält“ auszuführen. In diesem Fall filtert der Ausdruck Daten mit einem ID-Wert, der in einer Liste zulässiger IDs enthalten ist. Wenn Sie Ausdrücke mit Filtern verwenden, muss das Ergebnis ein boolescher Wert sein.
-
-```javascript
-var layer = new atlas.layer.BubbleLayer(datasource, null, {
-    filter: [
-        'match',  
-
-        //Get the property to match.
-        ['get', 'id'],  
-
-         //List of values to match.
-        [24, 53, 98], 
-
-        //If there is a match, return true.
-        true,
-    
-        //Otherwise return false.
-        false
-    ]
-});
-```
-
 ### <a name="coalesce-expression"></a>COALESCE-Ausdruck
 
 Bei einem `coalesce`-Ausdruck wird eine Reihe von Ausdrücken durchlaufen, bis der erste Wert erkannt wird, der nicht null ist. Dieser Wert wird dann zurückgegeben. 
@@ -394,7 +383,7 @@ Mit dem folgenden Pseudocode wird die Struktur des `coalesce`-Ausdrucks definier
 
 **Beispiel**
 
-Im folgenden Beispiel wird ein `coalesce`-Ausdruck genutzt, um die Option `textField` einer Symbolebene festzulegen. Wenn die `title`-Eigenschaft für das Feature fehlt oder auf `null` festgelegt ist, versucht der Ausdruck, nach der `subtitle`-Eigenschaft zu suchen. Falls sie nicht vorhanden oder `null` festgelegt ist, wird auf eine leere Zeichenfolge zurückgegriffen. 
+Im folgenden Beispiel wird ein `coalesce`-Ausdruck genutzt, um die Option `textField` einer Symbolebene festzulegen. Wenn die `title`-Eigenschaft für das Feature fehlt oder auf `null` festgelegt ist, versucht der Ausdruck, nach der `subTitle`-Eigenschaft zu suchen. Falls sie nicht vorhanden oder `null` festgelegt ist, wird auf eine leere Zeichenfolge zurückgegriffen. 
 
 ```javascript
 var layer = new atlas.layer.SymbolLayer(datasource, null, {
@@ -405,8 +394,8 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
             //Try getting the title property.
             ['get', 'title'],
 
-            //If there is no title, try getting the subtitle. 
-            ['get', 'subtitle'],
+            //If there is no title, try getting the subTitle. 
+            ['get', 'subTitle'],
 
             //Default to an empty string.
             ''
@@ -439,8 +428,14 @@ Bei Typenausdrücken werden Tools zum Testen und Konvertieren unterschiedlicher 
 
 | Ausdruck | Rückgabetyp | BESCHREIBUNG |
 |------------|-------------|-------------|
+| `['array', value]` \| `['array', type: "string" | "number" | "boolean", value]` | Objekt[] | Bestätigt, dass die Eingabe ein Array ist. |
+| `['boolean', value]` \| `["boolean", value, fallback: value, fallback: value, ...]` | boolean | Bestätigt, dass die Eingabe ein boolescher Wert ist. Bei mehreren Werten werden diese der Reihe nach einzeln ausgewertet, bis ein boolescher Wert gefunden wird. Wenn keine der Eingaben einem booleschen Wert entspricht, verursacht der Ausdruck einen Fehler. |
+| `['collator', { 'case-sensitive': boolean, 'diacritic-sensitive': boolean, 'locale': string }]` | collator | Gibt einen Collator für die Verwendung in Vergleichsvorgängen zurück, die vom Gebietsschema abhängig sind. Die Optionen, bei denen die Groß-/Kleinschreibung und diakritische Zeichen beachtet werden, ergeben standardmäßig „false“. Das locale-Argument gibt das IETF-Sprachtag des zu verwendenden Gebietsschemas an. Wenn keins angegeben ist, wird das Standardgebietsschema verwendet. Wenn das angeforderte Gebietsschema nicht verfügbar ist, verwendet der Collator ein vom System definiertes Fallbackgebietsschema. Verwenden Sie „resolved-locale“, um die Ergebnisse des Gebietsschema-Fallbackverhaltens zu testen. |
 | `['literal', array]`<br/><br/>`['literal', object]` | array \| object | Gibt einen Literalarray- oder Objektwert zurück. Verwenden Sie diesen Ausdruck, um zu verhindern, dass ein Array oder ein Objekt als Ausdruck ausgewertet wird. Dies ist erforderlich, wenn ein Array oder Objekt von einem Ausdruck zurückgegeben werden muss. |
 | `['image', string]` | Zeichenfolge | Prüft, ob eine angegebene Image-ID in das Kartenbildsprite geladen wird. Wenn dies der Fall ist, wird die ID zurückgegeben, andernfalls wird NULL zurückgegeben. |
+| `['number', value]` \| `["number", value, fallback: value, fallback: value, ...]` | number | Bestätigt, dass der Eingabewert eine Zahl ist. Bei mehreren Werten werden diese der Reihe nach einzeln ausgewertet, bis eine Zahl gefunden wird. Wenn keine der Eingaben einer Zahl entspricht, verursacht der Ausdruck einen Fehler. |
+| `['object', value]`  \| `["object", value, fallback: value, fallback: value, ...]` | Object | Bestätigt, dass der Eingabewert ein Objekt ist.  Bei mehreren Werten werden diese der Reihe nach einzeln ausgewertet, bis ein Objekt gefunden wird. Wenn keine der Eingaben einem Objekt entspricht, verursacht der Ausdruck einen Fehler. |
+| `['string', value]` \| `["string", value, fallback: value, fallback: value, ...]` | Zeichenfolge | Bestätigt, dass der Eingabewert eine Zeichenfolge ist. Bei mehreren Werten werden diese der Reihe nach einzeln ausgewertet, bis eine Zeichenfolge gefunden wird. Wenn keine der Eingaben einer Zeichenfolge entspricht, verursacht der Ausdruck einen Fehler. |
 | `['to-boolean', value]` | boolean | Konvertiert den Eingabewert in einen booleschen Wert. Das Ergebnis ist `false`, wenn die Eingabe eine leere Zeichenfolge ist oder `0`, `false`, `null` oder `NaN` lautet. Andernfalls lautet das Ergebnis `true`. |
 | `['to-color', value]`<br/><br/>`['to-color', value1, value2…]` | color | Konvertiert den Eingabewert in eine Farbe. Falls mehrere Werte bereitgestellt werden, werden sie der Reihe nach einzeln ausgewertet, bis die erste erfolgreiche Konvertierung erfolgt ist. Wenn keine der Eingaben konvertiert werden kann, ergibt sich für den Ausdruck ein Fehler. |
 | `['to-number', value]`<br/><br/>`['to-number', value1, value2, …]` | number | Konvertiert den Eingabewert in eine Zahl, falls dies möglich ist. Wenn die Eingabe `null` oder `false` lautet, ist das Ergebnis 0. Wenn die Eingabe `true` lautet, ist das Ergebnis 1. Wenn die Eingabe eine Zeichenfolge ist, wird sie mit der Zeichenfolgenfunktion [ToNumber](https://tc39.github.io/ecma262/#sec-tonumber-applied-to-the-string-type) der ECMAScript-Sprachspezifikation in eine Zahl konvertiert. Falls mehrere Werte bereitgestellt werden, werden sie der Reihe nach einzeln ausgewertet, bis die erste erfolgreiche Konvertierung erfolgt ist. Wenn keine der Eingaben konvertiert werden kann, ergibt sich für den Ausdruck ein Fehler. |
@@ -475,13 +470,13 @@ Farbausdrücke erleichtern Ihnen das Erstellen und Bearbeiten von Farbwerten.
 
 | Ausdruck | Rückgabetyp | BESCHREIBUNG |
 |------------|-------------|-------------|
-| `['rgb', number, number, number]` | color | Erstellt einen Farbwert aus den Komponenten *red* , *green* und *blue* , die zwischen `0` und `255` liegen müssen und deren Alphakomponente `1` lauten muss. Wenn eine Komponente außerhalb des Bereichs liegt, tritt für den Ausdruck ein Fehler auf. |
-| `['rgba', number, number, number, number]` | color | Erstellt einen Farbwert aus den Komponenten *red* , *green* und *blue* , die zwischen `0` und `255` liegen müssen und deren Alphakomponente zwischen `0` und `1` liegen muss. Wenn eine Komponente außerhalb des Bereichs liegt, tritt für den Ausdruck ein Fehler auf. |
-| `['to-rgba']` | \[number, number, number, number\] | Gibt ein Array mit vier Elementen zurück, das die Komponenten *red* , *green* , *blue* und *alpha* der Eingabefarbe enthält (in dieser Reihenfolge). |
+| `['rgb', number, number, number]` | color | Erstellt einen Farbwert aus den Komponenten *red*, *green* und *blue*, die zwischen `0` und `255` liegen müssen und deren Alphakomponente `1` lauten muss. Wenn eine Komponente außerhalb des Bereichs liegt, tritt für den Ausdruck ein Fehler auf. |
+| `['rgba', number, number, number, number]` | color | Erstellt einen Farbwert aus den Komponenten *red*, *green* und *blue*, die zwischen `0` und `255` liegen müssen und deren Alphakomponente zwischen `0` und `1` liegen muss. Wenn eine Komponente außerhalb des Bereichs liegt, tritt für den Ausdruck ein Fehler auf. |
+| `['to-rgba']` | \[number, number, number, number\] | Gibt ein Array mit vier Elementen zurück, das die Komponenten *red*, *green*, *blue* und *alpha* der Eingabefarbe enthält (in dieser Reihenfolge). |
 
 **Beispiel**
 
-Im folgenden Beispiel wird ein RGB-Farbwert erstellt, der für *red* über den Wert `255` und für *green* und *blue* über Werte verfügt, die per Multiplikation von `2.5` mit dem Wert der `temperature`-Eigenschaft berechnet werden. Wenn sich die Temperatur ändert, ändert sich die Farbe in verschiedene Schattierungen von *red* .
+Im folgenden Beispiel wird ein RGB-Farbwert erstellt, der für *red* über den Wert `255` und für *green* und *blue* über Werte verfügt, die per Multiplikation von `2.5` mit dem Wert der `temperature`-Eigenschaft berechnet werden. Wenn sich die Temperatur ändert, ändert sich die Farbe in verschiedene Schattierungen von *red*.
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -505,6 +500,8 @@ Mit Zeichenfolgenoperator-Ausdrücken werden Konvertierungsvorgänge für Zeiche
 |------------|-------------|-------------|
 | `['concat', string, string, …]` | Zeichenfolge | Verkettet mehrere Zeichenfolgen miteinander. Jeder Wert muss eine Zeichenfolge sein. Verwenden Sie den Typenausdruck `to-string`, um bei Bedarf andere Werttypen in eine Zeichenfolge zu konvertieren. |
 | `['downcase', string]` | Zeichenfolge | Konvertiert die angegebene Zeichenfolge in Kleinbuchstaben. |
+| `['is-supported-script', string]` \| `['is-supported-script', Expression]`| boolean | Bestimmt, ob die Eingabezeichenfolge einen Zeichensatz verwendet, der vom aktuellen Schriftstapel unterstützt wird. Beispiel: `['is-supported-script', 'ಗೌರವಾರ್ಥವಾಗಿ']` |
+| `['resolved-locale', string]` | Zeichenfolge | Gibt das IETF-Sprachtag des Gebietsschemas zurück, das vom angegebenen Collator verwendet wird. Dies kann verwendet werden, um das standardmäßige Systemgebietsschema zu bestimmen oder um festzustellen, ob ein angefordertes Gebietsschema erfolgreich geladen wurde. |
 | `['upcase', string]` | Zeichenfolge | Konvertiert die angegebene Zeichenfolge in Großbuchstaben. |
 
 **Beispiel**
@@ -575,14 +572,10 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
         'interpolate',
         ['linear'],
         ['get', 'temperature'],
-        50,        
-        'blue',
-        60,
-        'yellow',
-        70,
-        'orange',
-        80,
-        'red'
+        50, 'blue',
+        60, 'yellow',
+        70, 'orange',
+        80, 'red'
     ]
 });
 ```
@@ -624,12 +617,9 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
         'step',
         ['get', 'temperature'],
         'blue',
-        60,
-        'yellow',
-        70,
-        'orange',
-        80,
-        'red'
+        60, 'yellow',
+        70, 'orange',
+        80, 'red'
     ]
 });
 ```
@@ -724,7 +714,6 @@ Der Text Field Format-Ausdruck kann mit der `textField`-Option der `textOptions`
 
  * `'font-scale'` – Gibt den Skalierungsfaktor für den Schriftgrad an. Wenn er angegeben ist, wird mit diesem Wert die `size`-Eigenschaft von `textOptions` für die individuelle Zeichenfolge außer Kraft gesetzt.
  * `'text-font'` – Gibt mindestens eine Schriftfamilie an, die für diese Zeichenfolge verwendet werden sollte. Wenn er angegeben ist, wird mit diesem Wert die `font`-Eigenschaft von `textOptions` für die individuelle Zeichenfolge außer Kraft gesetzt.
- * `'text-color'`: Gibt eine Farbe an, die beim Rendern auf einen Text angewendet werden soll. 
 
 Mit dem folgenden Pseudocode wird die Struktur des Text Field Format-Ausdrucks definiert. 
 
@@ -734,14 +723,12 @@ Mit dem folgenden Pseudocode wird die Struktur des Text Field Format-Ausdrucks d
     input1: string, 
     options1: { 
         'font-scale': number, 
-        'text-font': string[],
-        'text-color': color
+        'text-font': string[]
     },
     input2: string, 
     options2: { 
         'font-scale': number, 
-        'text-font': string[] ,
-        'text-color': color
+        'text-font': string[]
     },
     …
 ]
@@ -749,7 +736,7 @@ Mit dem folgenden Pseudocode wird die Struktur des Text Field Format-Ausdrucks d
 
 **Beispiel**
 
-Im folgenden Beispiel wird das Textfeld formatiert, indem Fettdruck hinzugefügt und der Schriftgrad der `title`-Eigenschaft des Features erhöht wird. In diesem Beispiel wird auch die `subtitle`-Eigenschaft des Features mit einem niedrigeren Schriftgrad und rot markiert in einer neuen Zeile hinzugefügt.
+Im folgenden Beispiel wird das Textfeld formatiert, indem Fettdruck hinzugefügt und der Schriftgrad der `title`-Eigenschaft des Features erhöht wird. In diesem Beispiel wird auch die `subTitle`-Eigenschaft des Features mit einem niedrigeren Schriftgrad in einer neuen Zeile hinzugefügt.
 
 ```javascript
 var layer = new atlas.layer.SymbolLayer(datasource, null, {
@@ -766,11 +753,10 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 
             '\n', {},   //Add a new line without any formatting.
 
-            //Scale the font size down of the subtitle property. 
-            ['get', 'subtitle'],
+            //Scale the font size down of the subTitle property. 
+            ['get', 'subTitle'],
             { 
-                'font-scale': 0.75, 
-                'text-color': 'red' 
+                'font-scale': 0.75
             }
         ]
     }
@@ -817,7 +803,7 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
         textField: [
             'number-format', 
             ['get', 'revenue'], 
-            { ‘currency': 'USD' }
+            { 'currency': 'USD' }
         ],
 
         offset: [0, 0.75]
@@ -885,7 +871,7 @@ var layer = new atlas.layer.HeatMapLayer(datasource, null, {
         ['zoom'],
         
         //For zoom level 1 set the radius to 2 pixels.
-        10, 2,
+        1, 2,
 
         //Between zoom level 1 and 19, exponentially scale the radius from 2 pixels to 2 * Math.pow(2, 19 - 1) pixels (524,288 pixels).
         19, 2 * Math.pow(2, 19 - 1)

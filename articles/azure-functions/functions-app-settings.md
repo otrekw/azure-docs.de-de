@@ -3,12 +3,12 @@ title: Referenz zu App-Einstellungen für Azure Functions
 description: Referenzdokumentation für die App-Einstellungen für Azure Functions oder Umgebungsvariablen.
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: 2b71bee620ab7d5b1ef98b60013d1978f49d127f
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 3d7292999fc4b53fed06822461857185127dc793
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94505885"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97898724"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Referenz zu App-Einstellungen für Azure Functions
 
@@ -46,7 +46,7 @@ Weitere Informationen finden Sie unter [Verbindungszeichenfolgen](../azure-monit
 
 Standardmäßig nutzen [Functions-Proxys](functions-proxies.md) eine Verknüpfung, um API-Aufrufe von Proxys direkt an Funktionen in der gleichen Functions-App zu senden. Die Verknüpfung wird anstelle einer neuen HTTP-Anforderung verwendet. Diese Einstellung ermöglicht das Deaktivieren dieses Verknüpfungsverhaltens.
 
-|Schlüssel|Wert|BESCHREIBUNG|
+|Schlüssel|Wert|Beschreibung|
 |-|-|-|
 |AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|true|Aufrufe mit einer Back-End-URL, die auf eine Funktion in der lokalen Funktions-App verweist, werden nicht direkt an die Funktion gesendet. Stattdessen werden die Anforderungen wieder an das HTTP-Front-End für die Funktions-App zurückgeleitet.|
 |AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|false|Aufrufe mit einer Back-End-URL, die auf eine Funktion in der lokalen Funktions-App verweist, werden direkt an die Funktion weitergeleitet. Dies ist der Standardwert. |
@@ -55,7 +55,7 @@ Standardmäßig nutzen [Functions-Proxys](functions-proxies.md) eine Verknüpfun
 
 Diese Einstellung steuert, ob die Zeichen `%2F` in Routenparametern als Schrägstrich decodiert werden, wenn sie in die Back-End-URL eingefügt werden. 
 
-|Schlüssel|Wert|BESCHREIBUNG|
+|Schlüssel|Wert|Beschreibung|
 |-|-|-|
 |AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|true|Routenparameter mit codierten Schrägstrichen werden decodiert. |
 |AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|false|Alle Routenparameter werden unverändert weitergegeben (Standardverhalten). |
@@ -185,6 +185,14 @@ Gibt die maximale Anzahl von Sprachworkerprozessen mit einem Standardwert von `1
 |Schlüssel|Beispielwert|
 |---|------------|
 |FUNCTIONS\_WORKER\_PROCESS\_COUNT|2|
+
+## <a name="python_threadpool_thread_count"></a>PYTHON\_THREADPOOL\_THREAD\_COUNT
+
+Gibt die maximale Anzahl von Threads an, die von einem Python-Sprachworker zum Ausführen von Funktionsaufrufen verwendet werden. Der Standardwert lautet `1` für die Python-Version `3.8` und niedriger. Für die Python-Version `3.9` und höher ist der Wert auf `None` festgelegt. Beachten Sie, dass diese Einstellung nicht die Anzahl von Threads garantiert, die bei Ausführungen festgelegt werden. Diese Einstellung ermöglicht es Python, die Anzahl von Threads auf den angegebenen Wert zu erhöhen. Die Einstellung gilt nur für Python-Funktions-Apps. Darüber hinaus gilt die Einstellung für synchrone Funktionsaufrufe und nicht für Coroutinen.
+
+|Schlüssel|Beispielwert|Maximalwert|
+|---|------------|---------|
+|PYTHON\_THREADPOOL\_THREAD\_COUNT|2|32|
 
 
 ## <a name="functions_worker_runtime"></a>FUNCTIONS\_WORKER\_RUNTIME

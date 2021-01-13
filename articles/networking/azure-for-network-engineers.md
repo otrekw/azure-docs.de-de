@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 06/25/2020
 ms.author: osamaz
-ms.openlocfilehash: 4f513da4e7883cd273098039c9c4a4645d849f0f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e13dc868512dba15c5b335c1774aaa540eef8157
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85516000"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861415"
 ---
 # <a name="azure-for-network-engineers"></a>Azure für Netzwerktechniker
 Als herkömmlicher Netzwerktechniker sind Sie mit physischen Ressourcen wie Routern, Switches, Kabeln und Firewalls zum Erstellen einer Infrastruktur umgegangen. Auf logischer Ebene haben Sie virtuelles LAN (VLAN), STP (Spanning Tree Protocol) und Routingprotokolle (RIP, OSPF, BGP) konfiguriert. Sie haben Ihr Netzwerk mithilfe von Verwaltungstools und einer Befehlszeilenschnittstelle verwaltet. Netzwerke in der Cloud unterscheiden sich darin, dass die Netzwerkendpunkte logisch sind und Routingprotokolle nur minimal zum Einsatz kommen. In Azure konfigurieren und verwalten Sie Ressourcen mit der Azure Resource Manager-API, der Azure-Befehlszeilenschnittstelle und PowerShell. Sie beginnen Ihre Netzwerkjourney, indem Sie sich über grundlegende Mandanten der Azure-Netzwerkstruktur informieren. 
@@ -67,7 +67,7 @@ Wenn konkurrierende Einträge in einer Routingtabelle vorliegen, wählt Azure de
 
 ## <a name="security"></a>Sicherheit
 
-Sie können den Netzwerkdatenverkehr zu und von Ressourcen in einem virtuellen Netzwerk mithilfe von Netzwerksicherheitsgruppen filtern. Sie können auch virtuelle Netzwerkgeräte (Network Virtual Appliances, NVA) wie Azure Firewall oder Firewalls von anderen Anbietern verwenden. Sie können steuern, wie in Azure Datenverkehr aus Subnetzen weitergeleitet wird. Zudem können Sie einschränken, welche Benutzer in Ihrer Organisation Ressourcen in virtuellen Netzwerken verwenden können.
+Sie können den Netzwerkdatenverkehr zu und von Ressourcen in einem virtuellen Netzwerk mithilfe von Netzwerksicherheitsgruppen filtern. Sie können auch virtuelle Netzwerkgeräte (Network Virtual Appliances, NVAs) wie Azure Firewall oder Firewalls von anderen Anbietern verwenden. Sie können steuern, wie in Azure Datenverkehr aus Subnetzen weitergeleitet wird. Zudem können Sie einschränken, welche Benutzer in Ihrer Organisation Ressourcen in virtuellen Netzwerken verwenden können.
 
 Eine Netzwerksicherheitsgruppe (NSG) enthält eine Liste mit Regeln für eine Zugriffssteuerungsliste (Access Control List, ACL) zum Zulassen oder Verweigern von Netzwerkdatenverkehr an Subnetze, NICs oder beides. NSGs können entweder Subnetzen oder einzelnen NICs zugeordnet werden, die mit einem Subnetz verbunden sind. Wenn eine NSG einem Subnetz zugeordnet ist, gelten die ACL-Regeln für alle VMs in diesem Subnetz. Darüber hinaus kann Datenverkehr zu einer einzelnen NIC beschränkt werden, indem eine NSG direkt einer NIC zugewiesen wird.
 

@@ -4,15 +4,15 @@ description: Liste der Metriken, die mit Azure Monitor für jeden Ressourcentyp 
 author: rboucher
 services: azure-monitor
 ms.topic: reference
-ms.date: 12/09/2020
+ms.date: 01/04/2021
 ms.author: robb
 ms.subservice: metrics
-ms.openlocfilehash: 04f6cdae8a7601f94251516cf5c3c1fab07994a6
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 54ef00d32cea26a41581fc0bbd89d2be34919c02
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96929105"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97883026"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Unterstützte Metriken von Azure Monitor
 
@@ -618,8 +618,8 @@ Weitere wichtige Informationen finden Sie unter [Übersicht über Azure Monitor-
 
 |Metrik|Über Diagnoseeinstellungen exportierbar?|Metrikanzeigename|Einheit|Aggregationstyp|BESCHREIBUNG|Dimensionen|
 |---|---|---|---|---|---|---|
-|Verbrauchte CPU-Guthaben|Ja|Verbrauchte CPU-Guthaben|Anzahl|Average|Gesamtanzahl von Guthaben, die vom virtuellen Computer verwendet werden|Keine Dimensionen|
-|Verbleibende CPU-Guthaben|Ja|Verbleibende CPU-Guthaben|Anzahl|Average|Gesamtanzahl von Guthaben, die für den Burst verfügbar sind|Keine Dimensionen|
+|Verbrauchte CPU-Guthaben|Ja|Verbrauchte CPU-Guthaben|Anzahl|Average|Gesamtmenge von Guthaben, die vom virtuellen Computer verwendet werden. Nur auf [burstfähigen VMs der B-Serie](../../virtual-machines/sizes-b-series-burstable.md) verfügbar. Siehe |Keine Dimensionen|
+|Verbleibende CPU-Guthaben|Ja|Verbleibende CPU-Guthaben|Anzahl|Average|Gesamtmenge von Guthaben, die für den Burst verfügbar sind. Nur auf [burstfähigen VMs der B-Serie](../../virtual-machines/sizes-b-series-burstable.md) verfügbar.|Keine Dimensionen|
 |Beanspruchte Datenträgerbandbreite in Prozent|Ja|Beanspruchte Datenträgerbandbreite in Prozent|Percent|Average|Prozentsatz der pro Minute beanspruchten Datenträgerbandbreite|LUN|
 |Beanspruchte Datenträger-IOPS in Prozent|Ja|Beanspruchte Datenträger-IOPS in Prozent|Percent|Average|Prozentsatz der pro Minute beanspruchten Datenträger-E/A-Vorgänge|LUN|
 |Warteschlangentiefe für Datenträger|Ja|Warteschlangentiefe für Datenträger (Vorschauversion)|Anzahl|Average|Warteschlangentiefe (oder Warteschlangenlänge) für Datenträger|LUN|
@@ -671,8 +671,8 @@ Weitere wichtige Informationen finden Sie unter [Übersicht über Azure Monitor-
 
 |Metrik|Über Diagnoseeinstellungen exportierbar?|Metrikanzeigename|Einheit|Aggregationstyp|BESCHREIBUNG|Dimensionen|
 |---|---|---|---|---|---|---|
-|Verbrauchte CPU-Guthaben|Ja|Verbrauchte CPU-Guthaben|Anzahl|Average|Gesamtanzahl von Guthaben, die vom virtuellen Computer verwendet werden|Keine Dimensionen|
-|Verbleibende CPU-Guthaben|Ja|Verbleibende CPU-Guthaben|Anzahl|Average|Gesamtanzahl von Guthaben, die für den Burst verfügbar sind|Keine Dimensionen|
+|Verbrauchte CPU-Guthaben|Ja|Verbrauchte CPU-Guthaben|Anzahl|Average|Gesamtmenge von Guthaben, die vom virtuellen Computer verwendet werden. Nur auf [burstfähigen VMs der B-Serie](../../virtual-machines/sizes-b-series-burstable.md) verfügbar.|Keine Dimensionen|
+|Verbleibende CPU-Guthaben|Ja|Verbleibende CPU-Guthaben|Anzahl|Average|Gesamtmenge von Guthaben, die für den Burst verfügbar sind. Nur auf [burstfähigen VMs der B-Serie](../../virtual-machines/sizes-b-series-burstable.md) verfügbar.|Keine Dimensionen|
 |Warteschlangentiefe für Datenträger|Ja|Warteschlangentiefe für Datenträger (Vorschauversion)|Anzahl|Average|Warteschlangentiefe (oder Warteschlangenlänge) für Datenträger|LUN, VMName|
 |Vom Datenträger gelesene Bytes/Sek.|Ja|Vom Datenträger gelesene Bytes/Sek. (Vorschauversion)|Anzahl pro Sekunde|Average|Bytes, die während des Überwachungszeitraums pro Sekunde auf einem einzelnen Datenträger gelesen wurden|LUN, VMName|
 |Datenträgerlesevorgänge/Sek.|Ja|Datenträgerlesevorgänge/Sek. (Vorschauversion)|Anzahl pro Sekunde|Average|IOPS, die während des Überwachungszeitraums auf einem einzelnen Datenträger gelesen wurden|LUN, VMName|

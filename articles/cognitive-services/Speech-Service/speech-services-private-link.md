@@ -1,69 +1,87 @@
 ---
-title: Verwenden von Speech Services mit privaten Endpunkten
+title: Verwenden privater Endpunkte mit dem Speech-Dienst
 titleSuffix: Azure Cognitive Services
-description: Anleitung zur Verwendung von Speech Services mit privaten Azure Private Link-Endpunkten
+description: Erfahren Sie, wie Sie den Speech-Dienst mit privaten Endpunkten verwenden, die durch einen Azure Private Link bereitgestellt werden
 services: cognitive-services
 author: alexeyo26
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/04/2020
+ms.date: 12/15/2020
 ms.author: alexeyo
-ms.openlocfilehash: 01a0171ed2b660fbabebf4276a74f8a3ea631bde
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: f905582615b16780fae179ba6a21bd4343bd47f3
+ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97516529"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97755802"
 ---
-# <a name="using-speech-services-with-private-endpoints-provided-by-azure-private-link"></a>Verwendung von Speech Services mit privaten Azure Private Link-Endpunkten
+# <a name="use-speech-service-through-a-private-endpoint"></a>Verwenden des Speech-Diensts mithilfe eines privaten Endpunkts
 
-[Azure Private Link](../../private-link/private-link-overview.md) ermöglicht das Herstellen von Verbindungen mit verschiedenen PaaS-Diensten in Azure über einen [privaten Endpunkt](../../private-link/private-endpoint-overview.md). Ein privater Endpunkt ist eine private IP-Adresse in einem bestimmten [virtuellen Netzwerk](../../virtual-network/virtual-networks-overview.md) und Subnetz.
+Mithilfe von [Azure Private Link](../../private-link/private-link-overview.md) können Sie Verbindungen mit Diensten in Azure über einen [privaten Endpunkt](../../private-link/private-endpoint-overview.md) herstellen.
+Ein privater Endpunkt ist eine private IP-Adresse, die nur in einem bestimmten [virtuellen Netzwerk](../../virtual-network/virtual-networks-overview.md) und Subnetz zugänglich ist.
 
-In diesem Artikel wird erläutert, wie Sie Private Link und private Endpunkte mit Azure Cognitive Speech Services einrichten und verwenden. 
+In diesem Artikel wird erläutert, wie Sie Private Link und private Endpunkte mit Azure Cognitive Speech Services einrichten und verwenden.
 
 > [!NOTE]
-> In diesem Artikel werden die Besonderheiten bei der Einrichtung und Verwendung von Private Link mit Azure Cognitive Speech Services erläutert. Bevor Sie fortfahren, sollten Sie den allgemeinen Artikel zur [Verwendung virtueller Netzwerke mit Cognitive Services](../cognitive-services-virtual-networks.md) lesen.
+> In diesem Artikel werden die Besonderheiten bei der Einrichtung und Verwendung von Private Link mit Azure Cognitive Speech Services erläutert. Bevor Sie fortfahren, informieren Sie sich über das [Verwenden von virtuellen Netzwerken mit Cognitive Services](../cognitive-services-virtual-networks.md).
 
-Für die Aktivierung einer Speech-Ressource für Szenarios mit privaten Endpunkten sind folgende Schritte erforderlich:
-- [Erstellen eines benutzerdefinierten Domänennamens für die Speech-Ressource](#create-custom-domain-name)
-- [Erstellen und Konfigurieren privater Endpunkte](#enabling-private-endpoints)
-- [Anpassen vorhandener Anwendungen und Lösungen](#using-speech-resource-with-custom-domain-name-and-private-endpoint-enabled)
+Führen Sie die folgenden Aufgaben aus, um einen Speech-Dienst über einen privaten Endpunkt zu verwenden:
 
-Wenn Sie später alle privaten Endpunkte entfernen, aber die Ressource weiterverwenden möchten, können Sie in [diesem Abschnitt](#using-speech-resource-with-custom-domain-name-without-private-endpoints) nachlesen, wie Sie vorgehen müssen.
+1. [Erstellen eines benutzerdefinierten Domänennamens für die Speech-Ressource](#create-a-custom-domain-name)
+2. [Erstellen und Konfigurieren privater Endpunkte](#enable-private-endpoints)
+3. [Anpassen vorhandener Anwendungen und Lösungen](#use-speech-resource-with-custom-domain-name-and-private-endpoint-enabled)
 
-## <a name="create-custom-domain-name"></a>Erstellen von benutzerdefinierten Domänennamen
+Wenn Sie private Endpunkte zu einem späteren Zeitpunkt entfernen, die Speech-Ressource jedoch trotzdem weiterhin verwenden möchten, führen Sie die Aufgaben in [diesem Abschnitt](#use-speech-resource-with-custom-domain-name-without-private-endpoints) aus.
 
-Für private Endpunkte müssen [benutzerdefinierte Cognitive Services-Unterdomänennamen](../cognitive-services-custom-subdomains.md) verwendet werden. Mithilfe der folgenden Anweisungen können Sie einen für Ihre Speech-Ressource erstellen.
+## <a name="create-a-custom-domain-name"></a>Erstellen eines benutzerdefinierten Domänennamens
 
-> [!WARNING]
-> Eine Speech-Ressource mit aktiviertem benutzerdefinierten Domänennamen interagiert auf andere Weise mit Speech Services. Höchstwahrscheinlich müssen Sie Ihren Anwendungscode für Szenarios [mit aktivierten privaten Endpunkten](#using-speech-resource-with-custom-domain-name-and-private-endpoint-enabled) und [**ohne** aktivierte private Endpunkte](#using-speech-resource-with-custom-domain-name-without-private-endpoints) anpassen.
+Für private Endpunkte ist ein [benutzerdefinierter Unterdomänenname von Cognitive Services](../cognitive-services-custom-subdomains.md) erforderlich. Befolgen Sie die Anweisungen unten, um einen für Ihre Speech-Ressource zu erstellen.
+
+> [!CAUTION]
+> Eine Speech-Ressource mit aktiviertem benutzerdefiniertem Domänennamen interagiert auf andere Weise mit Speech Services.
+> Wahrscheinlich müssen Sie Ihren Anwendungscode sowohl für Szenarien [mit aktivierten privaten Endpunkten](#use-speech-resource-with-custom-domain-name-and-private-endpoint-enabled) als auch [**ohne** aktivierte private Endpunkte](#use-speech-resource-with-custom-domain-name-without-private-endpoints) anpassen.
 >
-> Die Aktivierung des benutzerdefinierten Domänennamens kann [**nicht rückgängig gemacht werden**](../cognitive-services-custom-subdomains.md#can-i-change-a-custom-domain-name). Sie können den [regionalen Namen](../cognitive-services-custom-subdomains.md#is-there-a-list-of-regional-endpoints) nur wiederherstellen, indem Sie eine neue Speech-Ressource erstellen. 
+> Wenn Sie einen benutzerdefinierten Domänennamen aktivieren, wird der Vorgang [**unumkehrbar**](../cognitive-services-custom-subdomains.md#can-i-change-a-custom-domain-name). Sie können den [regionalen Namen](../cognitive-services-custom-subdomains.md#is-there-a-list-of-regional-endpoints) nur wiederherstellen, indem Sie eine neue Speech-Ressource erstellen.
 >
-> Insbesondere in Fällen, in denen der Speech-Ressource viele benutzerdefinierte Modelle und Projekte zugeordnet sind, die über [Speech Studio](https://speech.microsoft.com/) erstellt wurden, wird **dringend** empfohlen, die Konfiguration an einer Testressource auszuprobieren und Produktionsressourcen erst im Anschluss zu bearbeiten.
+> Wenn Ihrer Speech-Ressource viele benutzerdefinierte Modelle und Projekte zugeordnet sind, die über [Speech Studio](https://speech.microsoft.com/) erstellt wurden, wird **dringend** empfohlen, die Konfiguration mit einer Testressource auszuprobieren und Produktionsressourcen erst im Anschluss zu bearbeiten.
 
 # <a name="azure-portal"></a>[Azure portal](#tab/portal)
 
-- Wechseln Sie zum [Azure-Portal](https://portal.azure.com/), und melden Sie sich bei Ihrem Azure-Konto an.
-- Wählen Sie die erforderliche Speech-Ressource aus.
-- Wählen Sie *Netzwerk* (unter *Ressourcenverwaltung*) aus. 
-- Klicken Sie auf der Registerkarte *Firewalls und virtuelle Netzwerke* (Standard) auf die Schaltfläche **Benutzerdefinierten Domänennamen generieren**.
-- Dadurch wird ein Panel mit Anweisungen zum Erstellen einer eindeutigen benutzerdefinierten Unterdomäne für Ihre Ressource geöffnet.
-> [!WARNING]
-> Nachdem Sie einen benutzerdefinierten Domänennamen erstellt haben, kann dieser **nicht mehr** geändert werden. Weitere Informationen finden Sie in der obigen Warnung.
-- Nachdem der Vorgang abgeschlossen wurde, sollten Sie *Schlüssel und Endpunkt* (unter *Ressourcenverwaltung*) auswählen und sich vergewissern, dass der neue Endpunktname für Ihre Ressource das folgende Format aufweist: <p />`{your custom name}.cognitiveservices.azure.com`
+Führen Sie die folgenden Schritte aus, um einen benutzerdefinierten Domänennamen im Azure-Portal zu erstellen:
+
+1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com/), und melden Sie sich bei Ihrem Azure-Konto an.
+1. Wählen Sie die erforderliche Speech-Ressource aus.
+1. Klicken Sie im linken Navigationsbereich in der Gruppe **Ressourcenverwaltung** auf **Netzwerk**.
+1. Klicken Sie auf der Registerkarte **Firewalls und virtuelle Netzwerke** auf **Benutzerdefinierten Domänennamen generieren**. Dadurch wird rechts ein Panel mit Anweisungen zum Erstellen einer eindeutigen benutzerdefinierten Unterdomäne für Ihre Ressource geöffnet.
+1. Geben Sie im Bereich „Benutzerdefinierten Domänennamen generieren“ einen benutzerdefinierten Domänennamensteil ein. Ihre vollständige benutzerdefinierte Domäne sieht wie `https://{your custom name}.cognitiveservices.azure.com` aus. 
+    **Nachdem Sie einen benutzerdefinierten Domänennamen erstellt haben, kann dieser _nicht mehr geändert werden_! Lesen Sie die Mahnung zur Vorsicht oben noch einmal.** Nachdem Sie Ihren benutzerdefinierten Domänennamen eingegeben haben, klicken Sie auf **Speichern**.
+1. Nachdem der Vorgang abgeschlossen ist, klicken Sie in der Gruppe **Ressourcenverwaltung** auf **Schlüssel und Endpunkt**. Vergewissern Sie sich, dass der neue Endpunktname Ihrer Ressource so beginnt:
+
+    `https://{your custom name}.cognitiveservices.azure.com`
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Für diesen Abschnitt muss PowerShell 7.x oder höher mit Version 5.1.0 oder höher des Azure PowerShell-Moduls lokal ausgeführt werden. Führen Sie `Get-Module -ListAvailable Az` aus, um die installierte Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Install and configure Azure PowerShell](/powershell/azure/install-Az-ps) (Installieren des Azure PowerShell-Moduls) Informationen dazu.
+Um einen benutzerdefinierten Domänennamen mithilfe von PowerShell zu erstellen, vergewissern Sie sich, dass auf Ihrem Computer PowerShell, Version 7.x oder höher, mit dem Azure PowerShell Modul, Version 5.1.0 oder höher, verfügbar ist. Führen Sie die folgenden Schritte aus, um die Versionen dieser Tools anzuzeigen:
 
-Bevor Sie fortfahren, müssen Sie `Connect-AzAccount` ausführen, um eine Verbindung mit Azure herzustellen.
+1. Geben Sie in einem PowerShell-Fenster Folgendes ein:
 
-## <a name="verify-custom-domain-name-availability"></a>Überprüfen der Verfügbarkeit des benutzerdefinierten Domänennamens
+    `$PSVersionTable`
 
-Sie müssen überprüfen, ob die gewünschte benutzerdefinierte Domäne verfügbar ist. Verwenden Sie hierfür die [checkDomainAvailability](/rest/api/cognitiveservices/accountmanagement/checkdomainavailability/checkdomainavailability)-Methode der Cognitive Services-REST-API. Die einzelnen Schritte werden in den Kommentaren im folgenden Codeblock erklärt.
+    Vergewissern Sie sich, dass der Wert von PSVersion größer als 7.x ist. Zum Ausführen eines Upgrades von PowerShell befolgen Sie die Anweisungen unter [Installieren verschiedener Versionen von PowerShell](/powershell/scripting/install/installing-powershell).
+
+1. Geben Sie in einem PowerShell-Fenster Folgendes ein:
+
+    `Get-Module -ListAvailable Az`
+
+    Wenn nichts angezeigt wird oder die Version des Azure PowerShell-Moduls niedriger als 5.1.0 ist, befolgen Sie die Anweisungen unter [installieren des Azure PowerShell-Moduls](/powershell/azure/install-Az-ps), um das Upgrade durchzuführen.
+
+Bevor Sie fortfahren, führen Sie `Connect-AzAccount` aus, um eine Verbindung mit Azure herzustellen.
+
+## <a name="verify-custom-domain-name-is-available"></a>Vergewissern Sie sich, dass der benutzerdefinierte Domänenname verfügbar ist
+
+Sie müssen überprüfen, ob die benutzerdefinierte Domäne, die Sie verwenden möchten, verfügbar ist. Führen Sie mithilfe des Vorgangs [Check Domain Availability](/rest/api/cognitiveservices/accountmanagement/checkdomainavailability/checkdomainavailability) in der Cognitive Services REST-API diese Schritte aus, um zu bestätigen, dass die Domäne verfügbar ist.
 
 > [!TIP]
 > Der folgende Code funktioniert **nicht** in Azure Cloud Shell.
@@ -72,18 +90,16 @@ Sie müssen überprüfen, ob die gewünschte benutzerdefinierte Domäne verfügb
 $subId = "Your Azure subscription Id"
 $subdomainName = "custom domain name"
 
-# Select the Azure subscription containing Speech resource
-# If your Azure account has only one active subscription
-# you can skip this step
+# Select the Azure subscription that contains Speech resource.
+# You can skip this step if your Azure account has only one active subscription.
 Set-AzContext -SubscriptionId $subId
 
-# Preparing OAuth token which is used in request
-# to Cognitive Services REST API
+# Prepare OAuth token to use in request to Cognitive Services REST API.
 $Context = Get-AzContext
 $AccessToken = (Get-AzAccessToken -TenantId $Context.Tenant.Id).Token
 $token = ConvertTo-SecureString -String $AccessToken -AsPlainText -Force
 
-# Preparing and executing the request to Cognitive Services REST API
+# Prepare and send the request to Cognitive Services REST API.
 $uri = "https://management.azure.com/subscriptions/" + $subId + `
     "/providers/Microsoft.CognitiveServices/checkDomainAvailability?api-version=2017-04-18"
 $body = @{
@@ -94,7 +110,7 @@ $jsonBody = $body | ConvertTo-Json
 Invoke-RestMethod -Method Post -Uri $uri -ContentType "application/json" -Authentication Bearer `
     -Token $token -Body $jsonBody | Format-List
 ```
-Wenn der gewünschte Name verfügbar ist, sieht die Antwort folgendermaßen aus:
+Wenn der gewünschte Name verfügbar ist, sehen Sie eine Antwort wie diese:
 ```azurepowershell
 isSubdomainAvailable : True
 reason               :
@@ -108,26 +124,26 @@ reason               : Sub domain name 'my-custom-name' is already used. Please 
 type                 :
 subdomainName        : my-custom-name
 ```
-## <a name="enabling-custom-domain-name"></a>Aktivieren des benutzerdefinierten Domänennamens
+## <a name="create-your-custom-domain-name"></a>Erstellen Ihres benutzerdefinierten Domänennamens
 
-Verwenden Sie das Cmdlet [Set-AzCognitiveServicesAccount](/powershell/module/az.cognitiveservices/set-azcognitiveservicesaccount), um den benutzerdefinierten Domänennamen für die ausgewählte Speech-Ressource zu aktivieren. Die einzelnen Schritte werden in den Kommentaren im folgenden Codeblock erklärt.
+Verwenden Sie das Cmdlet [Set-AzCognitiveServicesAccount](/powershell/module/az.cognitiveservices/set-azcognitiveservicesaccount), um den benutzerdefinierten Domänennamen für die ausgewählte Speech-Ressource zu aktivieren.
 
-> [!WARNING]
-> Nach erfolgreicher Ausführung des folgenden Codes können Sie einen benutzerdefinierten Domänennamen für Ihre Speech-Ressource erstellen. Dieser Name kann **nicht** geändert werden. Weitere Informationen finden Sie in der obigen Warnung.
+> [!CAUTION]
+> Nach erfolgreicher Ausführung des unten abgebildeten Codes können Sie einen benutzerdefinierten Domänennamen für Ihre Speech-Ressource erstellen.
+> Dieser Name kann **nicht** geändert werden. Weitere Informationen finden Sie in der **Mahnung zur Vorsicht** oben.
 
 ```azurepowershell
 $resourceGroup = "Resource group name where Speech resource is located"
 $speechResourceName = "Your Speech resource name"
 $subdomainName = "custom domain name"
 
-# Select the Azure subscription containing Speech resource
-# If your Azure account has only one active subscription
-# you can skip this step
+# Select the Azure subscription that contains Speech resource.
+# You can skip this step if your Azure account has only one active subscription.
 $subId = "Your Azure subscription Id"
 Set-AzContext -SubscriptionId $subId
 
-# Set the custom domain name to the selected resource
-# WARNING! THIS IS NOT REVERSIBLE!
+# Set the custom domain name to the selected resource.
+# CAUTION: THIS CANNOT BE CHANGED OR UNDONE!
 Set-AzCognitiveServicesAccount -ResourceGroupName $resourceGroup `
     -Name $speechResourceName -CustomSubdomainName $subdomainName
 ```
@@ -138,11 +154,11 @@ Set-AzCognitiveServicesAccount -ResourceGroupName $resourceGroup `
 
 - Für diesen Abschnitt ist die aktuelle Version der Azure CLI erforderlich. Bei Verwendung von Azure Cloud Shell ist die aktuelle Version bereits installiert.
 
-## <a name="verify-custom-domain-name-availability"></a>Überprüfen der Verfügbarkeit des benutzerdefinierten Domänennamens
+## <a name="verify-the-custom-domain-name-is-available"></a>Vergewissern Sie sich, dass der benutzerdefinierte Domänenname verfügbar ist
 
-Sie müssen überprüfen, ob die gewünschte benutzerdefinierte Domäne verfügbar ist. Verwenden Sie hierfür die [checkDomainAvailability](/rest/api/cognitiveservices/accountmanagement/checkdomainavailability/checkdomainavailability)-Methode der Cognitive Services-REST-API. 
+Sie müssen überprüfen, ob die gewünschte benutzerdefinierte Domäne verfügbar ist. Verwenden Sie hierfür die [checkDomainAvailability](/rest/api/cognitiveservices/accountmanagement/checkdomainavailability/checkdomainavailability)-Methode der Cognitive Services-REST-API.
 
-Kopieren Sie den folgenden Codeblock, fügen Sie den benutzerdefinierten Domänennamen ein, und speichern Sie ihn in der Datei `subdomain.json`.
+Kopieren Sie den folgenden Codeblock, fügen Sie Ihren bevorzugten benutzerdefinierten Domänennamen ein, und speichern Sie ihn in der Datei `subdomain.json`.
 
 ```json
 {
@@ -156,7 +172,7 @@ Kopieren Sie die Datei in den aktuellen Ordner, oder laden Sie sie in Azure Clou
 ```azurecli-interactive
 az rest --method post --url "https://management.azure.com/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.CognitiveServices/checkDomainAvailability?api-version=2017-04-18" --body @subdomain.json
 ```
-Wenn der gewünschte Name verfügbar ist, sieht die Antwort folgendermaßen aus:
+Wenn der gewünschte Name verfügbar ist, sehen Sie eine Antwort wie diese:
 ```azurecli
 {
   "isSubdomainAvailable": true,
@@ -175,7 +191,7 @@ Wenn der Name bereits verwendet wird, erhalten Sie die folgende Antwort:
   "type": null
 }
 ```
-## <a name="enabling-custom-domain-name"></a>Aktivieren des benutzerdefinierten Domänennamens
+## <a name="enable-custom-domain-name"></a>Aktivieren eines benutzerdefinierten Domänennamens
 
 Verwenden Sie den Befehl [az cognitiveservices account update](/cli/azure/cognitiveservices/account#az_cognitiveservices_account_update), um den benutzerdefinierten Domänennamen für die ausgewählte Speech-Ressource zu aktivieren.
 
@@ -184,15 +200,17 @@ Wählen Sie das Azure-Abonnement mit der Speech-Ressource aus. Wenn nur ein akti
 az account set --subscription xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 ```
 Legen Sie den benutzerdefinierten Domänennamen auf die ausgewählte Ressource fest. Ersetzen Sie die Beispielparameterwerte durch die tatsächlichen Parameterwerte, und führen Sie den folgenden Befehl aus.
-> [!WARNING]
-> Nach erfolgreicher Ausführung des folgenden Befehls können Sie einen benutzerdefinierten Domänennamen für Ihre Speech-Ressource erstellen. Dieser Name kann **nicht** geändert werden. Weitere Informationen finden Sie in der obigen Warnung.
+
+> [!CAUTION]
+> Nach erfolgreicher Ausführung des folgenden Befehls können Sie einen benutzerdefinierten Domänennamen für Ihre Speech-Ressource erstellen. Dieser Name kann **nicht** geändert werden. Weitere Informationen finden Sie in der Mahnung zur Vorsicht oben.
+
 ```azurecli
 az cognitiveservices account update --name my-speech-resource-name --resource-group my-resource-group-name --custom-domain my-custom-name
 ```
 
 **_
 
-## <a name="enabling-private-endpoints"></a>Aktivieren privater Endpunkte
+## <a name="enable-private-endpoints"></a>Aktivieren privater Endpunkte
 
 Sie können private Endpunkte über das Azure-Portal, Azure PowerShell oder die Azure-Befehlszeilenschnittstelle (Azure CLI) abrufen.
 
@@ -218,7 +236,7 @@ Machen Sie sich mit den Grundprinzipien von [DNS für private Endpunkte in Cogni
 
 In diesem Abschnitt wird `my-private-link-speech.cognitiveservices.azure.com` als DNS-Beispielname für die Speech-Ressource verwendet.
 
-Melden Sie sich bei einem virtuellen Computer an, der sich in dem virtuellen Netzwerk befindet, an das Sie Ihren privaten Endpunkt angefügt haben. Öffnen Sie die Windows-Eingabeaufforderung oder die Bash-Shell, führen Sie den Befehl nslookup aus, und vergewissern Sie sich, dass dieser den benutzerdefinierten Domänennamen Ihrer Ressource richtig auflöst:
+Melden Sie sich bei einem virtuellen Computer an, der sich in dem virtuellen Netzwerk befindet, an das Sie Ihren privaten Endpunkt angefügt haben. Öffnen Sie die Windows-Eingabeaufforderung oder die Bash-Shell, führen Sie `nslookup` aus, und vergewissern Sie sich, dass der benutzerdefinierten Domänenname Ihrer Ressource erfolgreich aufgelöst wird:
 ```dos
 C:\>nslookup my-private-link-speech.cognitiveservices.azure.com
 Server:  UnKnown
@@ -233,11 +251,11 @@ Aliases:  my-private-link-speech.cognitiveservices.azure.com
 
 #### <a name="optional-check-dns-resolution-from-other-networks"></a>Optional: DNS-Auflösung über andere Netzwerke
 
-Diese Überprüfung ist erforderlich, wenn Sie die Speech-Ressource, für die private Endpunkte aktiviert wurden, im Hybridmodus verwenden möchten. Dieser wird verwendet, wenn Sie die Zugriffsoption *Alle Netzwerke* oder *Ausgewählte Netzwerke und private Endpunkte* im Abschnitt *Netzwerk* Ihrer Ressource aktiviert haben. Wenn Sie nur über private Endpunkte auf die Ressource zugreifen, können Sie diesen Abschnitt überspringen.
+Diese Überprüfung ist erforderlich, wenn Sie die Speech-Ressource, für die private Endpunkte aktiviert wurden, im Hybridmodus verwenden möchten. Dieser wird verwendet, wenn Sie entweder die Zugriffsoption *Alle Netzwerke* oder *Ausgewählte Netzwerke und private Endpunkte* im Abschnitt *Netzwerk* Ihrer Ressource aktiviert haben. Wenn Sie nur über private Endpunkte auf die Ressource zugreifen, können Sie diesen Abschnitt überspringen.
 
 In diesem Abschnitt wird `my-private-link-speech.cognitiveservices.azure.com` als DNS-Beispielname für die Speech-Ressource verwendet.
 
-Öffnen Sie auf einem Computer in einem Netzwerk, von dem aus der Zugriff auf die Ressource zugelassen werden soll, die Windows-Eingabeaufforderung oder die Bash-Shell, führen Sie den Befehl nslookup aus, und vergewissern Sie sich, dass dieser den benutzerdefinierten Domänennamen Ihrer Ressource richtig auflöst:
+Öffnen Sie auf einem Computer in einem Netzwerk, von dem aus der Zugriff auf die Ressource zugelassen wird, die Windows-Eingabeaufforderung oder die Bash-Shell, führen Sie den Befehl `nslookup` aus, und vergewissern Sie sich, dass dieser den benutzerdefinierten Domänennamen Ihrer Ressource erfolgreich auflöst:
 ```dos
 C:\>nslookup my-private-link-speech.cognitiveservices.azure.com
 Server:  UnKnown
@@ -251,18 +269,18 @@ Aliases:  my-private-link-speech.cognitiveservices.azure.com
           westeurope.prod.vnet.cog.trafficmanager.net
 ```
 
-Sie sehen, dass die aufgelöste IP-Adresse auf einen VNET-Proxyendpunkt verweist. Dieser wird zum Weiterleiten des Netzwerkdatenverkehrs an die Cognitive Services-Ressource verwendet, für die private Endpunkte aktiviert sind. Dieses Verhalten unterscheidet sich bei einer Ressource, für die ein benutzerdefinierter Domänenname aktiviert ist, aber *keine* privaten Endpunkte konfiguriert wurden. Weitere Informationen finden Sie in [diesem Abschnitt](#dns-configuration).
+Beachten Sie, dass die aufgelöste IP-Adresse auf einen Proxyendpunkt in einem virtuellen Netzwerk verweist, der den Netzwerkdatenverkehr an den privaten Endpunkt für die Cognitive Services-Ressource weiterleitet. Das Verhalten unterscheidet sich bei einer Ressource mit einem benutzerdefinierter Domänennamen aber *ohne* private Endpunkte. Details dazu finden Sie in [diesem Abschnitt](#dns-configuration).
 
-## <a name="adjusting-existing-applications-and-solutions"></a>Anpassen vorhandener Anwendungen und Lösungen 
+## <a name="adjust-existing-applications-and-solutions"></a>Anpassen vorhandener Anwendungen und Lösungen
 
-Eine Speech-Ressource mit aktivierter benutzerdefinierten Domäne interagiert auf andere Weise mit Speech Services. Das gilt für Speech-Ressourcen mit aktivierter benutzerdefinierter Domäne [mit](#using-speech-resource-with-custom-domain-name-and-private-endpoint-enabled) und [ohne](#using-speech-resource-with-custom-domain-name-without-private-endpoints) private Endpunkte. In diesem Abschnitt finden Sie Informationen zu beiden Szenarios.
+Eine Speech-Ressource mit aktivierter benutzerdefinierten Domäne interagiert auf andere Weise mit Speech Services. Das gilt für Speech-Ressourcen mit aktivierter benutzerdefinierter Domäne [mit](#use-speech-resource-with-custom-domain-name-and-private-endpoint-enabled) und [ohne](#use-speech-resource-with-custom-domain-name-without-private-endpoints) private Endpunkte. In diesem Abschnitt finden Sie Informationen zu beiden Szenarios.
 
-### <a name="using-speech-resource-with-custom-domain-name-and-private-endpoint-enabled"></a>Verwenden von Speech-Ressourcen mit benutzerdefiniertem Domänennamen und privaten Endpunkten
+### <a name="use-speech-resource-with-custom-domain-name-and-private-endpoint-enabled"></a>Verwenden von Speech-Ressourcen mit benutzerdefiniertem Domänennamen und aktivierten privaten Endpunkten
 
 Eine Speech-Ressource, für die benutzerdefinierte Domänennamen und private Endpunkte aktiviert sind, interagiert auf andere Weise mit Speech Services. In diesem Abschnitt wird erläutert, wie eine solche Ressource mit Speech Services-REST-API und dem [Speech-SDK](speech-sdk.md) verwendet wird.
 
 > [!NOTE]
-> Beachten Sie, dass eine Speech-Ressource ohne private Endpunkte, aber mit einem **benutzerdefinierten Domänennamen** auf andere Weise als eine Speech-Ressource mit aktivierten privaten Endpunkten mit Speech Services interagiert. Wenn Sie eine solche Ressource besitzen (also falls Sie beispielsweise eine Ressource mit privaten Endpunkten besaßen, diese aber entfernt haben), sollten Sie den [Abschnitt zu diesem Thema](#using-speech-resource-with-custom-domain-name-without-private-endpoints) lesen.
+> Beachten Sie, dass eine Speech-Ressource ohne private Endpunkte, aber mit einem **benutzerdefinierten Domänennamen** auf andere Weise als eine Speech-Ressource mit aktivierten privaten Endpunkten mit Speech Services interagiert. Wenn Sie eine solche Ressource besitzen (also falls Sie beispielsweise eine Ressource mit privaten Endpunkten besaßen, diese aber entfernt haben), sollten Sie den [Abschnitt zu diesem Thema](#use-speech-resource-with-custom-domain-name-without-private-endpoints) lesen.
 
 #### <a name="speech-resource-with-custom-domain-name-and-private-endpoint-usage-with-rest-api"></a>Verwenden von Speech-Ressourcen mit benutzerdefiniertem Domänennamen und privaten Endpunkten mit der REST-API
 
@@ -334,7 +352,7 @@ Die folgenden beiden Vorgänge sind erforderlich, um die Liste der unterstützte
 ```http
 https://westeurope.api.cognitive.microsoft.com/sts/v1.0/issuetoken
 ```
-- Verwenden Sie das Authentifizierungstoken, um die Liste der Stimmen abzurufen:
+- Verwenden Sie das Token, um die Liste der Stimmen abzurufen:
 ```http
 https://westeurope.tts.speech.microsoft.com/cognitiveservices/voices/list
 ```
@@ -413,7 +431,7 @@ Insbesondere diese beiden Schritte sind erforderlich, um das im vorherigen Absch
 - Bestimmen der Endpunkt-URL, die von der Anwendung verwendet wird
 - Ändern der Endpunkt-URL wie im vorherigen Abschnitt beschrieben und Erstellen der `SpeechConfig`-Klasseninstanz durch explizite Verwendung der geänderten URL
 
-###### <a name="determining-application-endpoint-url"></a>Bestimmen der Anwendungsendpunkt-URL
+###### <a name="determine-application-endpoint-url"></a>Bestimmen der Anwendungsendpunkt-URL
 
 - [Aktivieren Sie die Protokollierung für Ihre Anwendung](how-to-use-logging.md), und führen Sie diese aus, um ein Protokoll zu generieren.
 - Suchen Sie in der Protokolldatei nach `SPEECH-ConnectionUrl`. Diese Zeichenfolge enthält den Parameter `value`, der wiederum die vollständige URL enthält, die Ihre Anwendung verwendet hat.
@@ -426,7 +444,7 @@ Die Anwendung hat also die folgende URL verwendet:
 ```
 wss://westeurope.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US
 ```
-###### <a name="creating-speechconfig-instance-using-full-endpoint-url"></a>Erstellen einer `SpeechConfig`-Instanz mithilfe der vollständigen Endpunkt-URL
+###### <a name="create-speechconfig-instance-using-full-endpoint-url"></a>Erstellen einer `SpeechConfig`-Instanz mithilfe der vollständigen Endpunkt-URL
 
 Ändern Sie den Endpunkt, den Sie im vorherigen Abschnitt festgelegt haben, wie unter [Allgemeines Prinzip](#general-principle) beschrieben.
 
@@ -464,7 +482,7 @@ SPXSpeechConfiguration *speechConfig = [[SPXSpeechConfiguration alloc] initWithE
 
 Nachdem Sie diese Änderung vorgenommen haben, sollte Ihre Anwendung mit Speech-Ressourcen mit aktivierten privaten Endpunkten kompatibel sein. Eine nahtlosere Unterstützung des Szenarios mit privaten Endpunkten ist in Arbeit.
 
-### <a name="using-speech-resource-with-custom-domain-name-without-private-endpoints"></a>Verwenden von Speech-Ressourcen mit benutzerdefiniertem Domänennamen und ohne private Endpunkte
+### <a name="use-speech-resource-with-custom-domain-name-without-private-endpoints"></a>Verwenden von Speech-Ressourcen mit benutzerdefiniertem Domänennamen ohne private Endpunkte
 
 In diesem Artikel wurde mehrmals betont, dass die Aktivierung der benutzerdefinierten Domäne für eine Speech-Ressource **nicht rückgängig gemacht werden kann** und eine solche Ressource nicht auf die herkömmliche Weise (also nicht wie bei der Verwendung von [regionalen Endpunktnamen](../cognitive-services-custom-subdomains.md#is-there-a-list-of-regional-endpoints)) mit Speech Services kommuniziert.
 
@@ -529,7 +547,7 @@ Folgende Schritte sind erforderlich, damit Ihre Anwendung in einem Szenario mit 
 - Anfordern des Autorisierungstokens über die Cognitive Services-REST-API
 - Instanziieren der Klasse `SpeechConfig` mithilfe der Methode FromAuthorizationToken oder WithAuthorizationToken 
 
-###### <a name="requesting-authorization-token"></a>Anfordern des Autorisierungstokens
+###### <a name="request-authorization-token"></a>Anfordern eines Autorisierungstokens
 
 In [diesem Artikel](../authentication.md#authenticate-with-an-authentication-token) erfahren Sie, wie Sie das Token über die Cognitive Services-REST-API abrufen können. 
 
@@ -540,7 +558,7 @@ https://my-private-link-speech.cognitiveservices.azure.com/sts/v1.0/issueToken
 > [!TIP]
 > Sie finden diese URL im Abschnitt *Schlüssel und Endpunkt* (unter *Ressourcenverwaltung*) Ihrer Speech-Ressource im Azure-Portal.
 
-###### <a name="creating-speechconfig-instance-using-authorization-token"></a>Erstellen einer `SpeechConfig`-Instanz mithilfe des Autorisierungstokens
+###### <a name="create-speechconfig-instance-using-authorization-token"></a>Erstellen einer `SpeechConfig`-Instanz mithilfe des Autorisierungstokens
 
 Sie müssen die Klasse `SpeechConfig` mit dem Autorisierungstoken instanziieren, das Sie im vorherigen Abschnitt abgerufen haben. Nehmen Sie an, dass die folgenden Variablen definiert sind:
 
