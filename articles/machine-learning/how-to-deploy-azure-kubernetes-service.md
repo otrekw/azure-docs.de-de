@@ -6,17 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.custom: how-to, contperf-fy21q1, deploy, devx-track-azurecli
+ms.custom: how-to, contperf-fy21q1, deploy
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 09/01/2020
-ms.openlocfilehash: d7540066ccc0d3a62dbd4012eee100d8e8aea98f
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 7ba01139e365b2f0023ef0784b6ed83e7bde609a
+ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505085"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97831725"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Bereitstellen eines Modells in einem Azure Kubernetes Service-Cluster
 
@@ -91,6 +91,55 @@ Die Front-End-Komponente (azureml-fe), die eingehende Rückschlussanforderungen 
 Azureml-fe wird sowohl (vertikal) hochskaliert, um mehr Kerne zu verwenden, als auch (horizontal) aufskaliert, um mehr Pods zu verwenden. Wenn Sie die Entscheidung zum zentralen Hochskalieren treffen, wird die Zeit herangezogen, die zum Weiterleiten eingehender Rückschlussanforderungen benötigt wird. Wenn diese Zeit den Schwellenwert überschreitet, erfolgt eine Hochskalierung. Wenn die Zeit zum Weiterleiten eingehender Anforderungen weiterhin den Schwellenwert überschreitet, erfolgt eine Aufskalierung.
 
 Beim Herunter- und Abskalieren wird die CPU-Auslastung verwendet. Wenn der Schwellenwert für die CPU-Auslastung erreicht ist, wird das Front-End zuerst herunterskaliert. Wenn die CPU-Auslastung auf den Schwellenwert für die Abskalierung sinkt, erfolgt eine Abskalierung. Ein Hoch- und Aufskalieren erfolgt nur, wenn genügend Clusterressourcen verfügbar sind.
+
+## <a name="understand-connectivity-requirements-for-aks-inferencing-cluster"></a>Grundlegendes zu Konnektivitätsanforderungen für AKS-Rückschlusscluster
+
+Wenn Azure Machine Learning einen AKS-Cluster erstellt oder anfügt, wird der AKS-Cluster mit einem der beiden folgenden Netzwerkmodelle bereitgestellt:
+* Kubenet-Netzwerke: Die Netzwerkressourcen werden normalerweise bei der Bereitstellung des AKS-Clusters erstellt und konfiguriert.
+* Azure Container Networking Interface (CNI) -Netzwerke: Der AKS-Cluster wird mit vorhandenen virtuellen Netzwerkressourcen und -konfigurationen verbunden.
+
+Für den ersten Netzwerkmodus wird das Netzwerk für Azure Machine Learning Service ordnungsgemäß erstellt und konfiguriert. Für den zweiten Netzwerkmodus muss der Kunde, da der Cluster mit einem bestehenden virtuellen Netzwerk verbunden ist, insbesondere wenn ein benutzerdefinierter DNS für das bestehende virtuelle Netzwerk verwendet wird, besonders auf die Konnektivitätsanforderungen für den AKS-Rückschlusscluster achten und die DNS-Auflösung und die ausgehende Konnektivität für AKS-Rückschlüsse sicherstellen.
+
+Das folgende Diagramm erfasst alle Konnektivitätsanforderungen für AKS-Rückschlüsse. Schwarze Pfeile stellen die tatsächliche Kommunikation dar, während blaue Pfeile die Domänennamen repräsentieren, die das vom Kunden gesteuerte DNS auflösen soll.
+
+ ![Konnektivitätsanforderungen für AKS-Rückschlüsse](./media/how-to-deploy-aks/aks-network.png)
+
+### <a name="overall-dns-resolution-requirements"></a>Allgemeine Anforderungen an die DNS-Auflösung
+Die DNS-Auflösung innerhalb des bestehenden VNET liegt in der Verantwortung des Kunden. Die folgenden DNS-Einträge sollten auflösbar sein:
+* AKS-API-Server in Form von \<cluster\>.hcp.\<region\>.azmk8s.io
+* Microsoft Container Registry (MCR): mcr.microsoft.com
+* Azure Container Registry (ARC) des Kunden in Form von \<ACR name\>.azurecr.io
+* Azure Storage-Konto in Form von \<account\>.table.core.windows.net und \<account\>.blob.core.windows.net
+* (Optional) Für die AAD-Authentifizierung: api.azureml.ms
+* Bewertungsendpunkt-Domänenname, entweder automatisch von Azure ML generiert oder benutzerdefinierter Domänenname Der automatisch generierte Domänenname würde wie folgt aussehen: \<leaf-domain-label \+ auto-generated suffix\>.\<region\>.cloudapp.azure.com
+
+### <a name="connectivity-requirements-in-chronological-order-from-cluster-creation-to-model-deployment"></a>Konnektivitätsanforderungen in chronologischer Reihenfolge: von der Clustererstellung zur Modellimplementierung
+
+Beim Erstellen oder Anfügen von AKS wird der Azure ML-Router (azureml-fe) im AKS-Cluster bereitgestellt. Für die Bereitstellung des Azure ML-Routers sollte der AKS-Knoten Folgendes ermöglichen:
+* Auflösen von DNS für den AKS-API-Server
+* Auflösen von DNS für MCR, um Docker-Images für Azure ML-Router herunterzuladen
+* Herunterladen von Images aus MCR, wo die ausgehende Konnektivität erforderlich ist
+
+Direkt nach der Bereitstellung von azureml-fe wird der Start versucht und dies erfordert Folgendes:
+* Auflösen von DNS für den AKS-API-Server
+* Abfragen des AKS-API-Servers, um andere Instanzen von sich selbst zu ermitteln (es handelt sich um einen Multi-Pod-Dienst)
+* Herstellen einer Verbindung mit anderen Instanzen von sich selbst
+
+Nachdem azureml-fe gestartet wurde, benötigt es zusätzliche Konnektivität, um ordnungsgemäß zu funktionieren:
+* Herstellen einer Verbindung mit Azure Storage zum Herunterladen einer dynamischen Konfiguration
+* Lösen Sie das DNS für den AAD-Authentifizierungsserver „api.azureml.ms“ auf und kommunizieren Sie mit ihm, wenn der bereitgestellte Dienst die AAD-Authentifizierung verwendet.
+* Abfragen des AKS-API-Servers, um bereitgestellte Modelle zu entdecken
+* Kommunizieren mit bereitgestellten Modell-PODs
+
+Zum Zeitpunkt der Modellimplementierung sollte der AKS-Knoten zu Folgendem in der Lage sein: 
+* Auflösen von DNS für die ACR des Kunden
+* Herunterladen von Images aus der ACR des Kunden
+* Auflösen von DNS für Azure-BLOBs, in denen das Modell gespeichert wird
+* Herunterladen von Modellen aus Azure-BLOBs
+
+Nach der Bereitstellung des Modells und dem Start des Diensts wird azureml-fe automatisch mithilfe der AKS-API erkannt und ist bereit, Anforderungen an das Modell weiterzuleiten. Es muss in der Lage sein, mit den Modell-PODs zu kommunizieren.
+>[!Note]
+>Wenn das bereitgestellte Modell eine Konnektivität erfordert (z. B. Abfragen einer externen Datenbank oder eines anderen REST-Diensts, Herunterladen eines BLOGs usw.), dann sollten sowohl die DNS-Auflösung als auch die ausgehende Kommunikation für diese Dienste aktiviert sein.
 
 ## <a name="deploy-to-aks"></a>Bereitstellen für AKS
 

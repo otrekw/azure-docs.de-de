@@ -9,12 +9,12 @@ ms.subservice: management
 ms.date: 06/26/2020
 ms.reviewer: jushiman
 ms.custom: avverma, devx-track-azurecli
-ms.openlocfilehash: 334e0c745257354d9548a6f9c8cee4d43fa8da6d
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 4ebb16186e613affdb886a8819240d47f944c42f
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92744734"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97763539"
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-image-upgrades"></a>Automatische Betriebssystemimageupgrades mit Azure-VM-Skalierungsgruppen
 
@@ -45,6 +45,9 @@ Der Upgradeprozess funktioniert wie folgt:
 
 Der Upgradeorchestrator für das Skalierungsgruppen-Betriebssystem überprüft die allgemeine Skalierungsgruppenintegrität, bevor die einzelnen Batches aktualisiert werden. Beim Aktualisieren eines Batches finden eventuell andere gleichzeitige geplante oder nicht geplante Wartungsaktivitäten statt, die die Integrität Ihrer Skalierungsgruppeninstanzen beeinträchtigen könnten. Wenn in solchen Fällen mehr als 20% der Instanzen der Skalierungsgruppe fehlerhaft werden, endet das Upgrade der Skalierungsgruppe am Ende des aktuellen Batches.
 
+> [!NOTE]
+>Das automatische Betriebssystemupgrade führt kein Upgrade der Referenzimage-SKU für die Skalierungsgruppe durch. Um die SKU zu ändern (z. B. Ubuntu 16.04-LTS auf 18.04-LTS), müssen Sie das [Skalierungsgruppenmodell](virtual-machine-scale-sets-upgrade-scale-set.md#the-scale-set-model) direkt mit der gewünschten Image-SKU aktualisieren. Imageherausgeber und Angebot können bei einer vorhandenen Skalierungsgruppe nicht geändert werden.  
+
 ## <a name="supported-os-images"></a>Unterstützte Betriebssystemimages
 Derzeit werden nur bestimmte Betriebssystemplattform-Images unterstützt. Benutzerdefinierte Images [werden unterstützt](virtual-machine-scale-sets-automatic-upgrade.md#automatic-os-image-upgrade-for-custom-images), wenn die Skalierungsgruppe benutzerdefinierte Images über [Shared Image Gallery](shared-image-galleries.md) nutzt.
 
@@ -54,25 +57,24 @@ Derzeit werden die folgenden Plattform-SKUs unterstützt (weitere werden regelm�
 |-------------------------|---------------|--------------------|
 | Canonical               | UbuntuServer  | 16.04-LTS          |
 | Canonical               | UbuntuServer  | 18.04-LTS          |
-| Rogue Wave (OpenLogic)  | CentOS        | 7,5                |
-| CoreOS                  | CoreOS        | Stable             |
-| Microsoft Corporation   | Windows Server | 2012-R2-Datacenter |
-| Microsoft Corporation   | Windows Server | 2016-Datacenter    |
-| Microsoft Corporation   | Windows Server | 2016-Datacenter-Smalldisk |
-| Microsoft Corporation   | Windows Server | 2016-Datacenter-with-Containers |
-| Microsoft Corporation   | Windows Server | 2019-Datacenter |
-| Microsoft Corporation   | Windows Server | 2019-Datacenter-Smalldisk |
-| Microsoft Corporation   | Windows Server | 2019-Datacenter-with-Containers |
-| Microsoft Corporation   | Windows Server | Datacenter-Core-1903-with-Containers-smalldisk |
+| OpenLogic               | CentOS        | 7,5                |
+| MicrosoftWindowsServer  | Windows Server | 2012-R2-Datacenter |
+| MicrosoftWindowsServer  | Windows Server | 2016-Datacenter    |
+| MicrosoftWindowsServer  | Windows Server | 2016-Datacenter-Smalldisk |
+| MicrosoftWindowsServer  | Windows Server | 2016-Datacenter-with-Containers |
+| MicrosoftWindowsServer  | Windows Server | 2019-Datacenter |
+| MicrosoftWindowsServer  | Windows Server | 2019-Datacenter-Smalldisk |
+| MicrosoftWindowsServer  | Windows Server | 2019-Datacenter-with-Containers |
+| MicrosoftWindowsServer  | Windows Server | Datacenter-Core-1903-with-Containers-smalldisk |
 
 
 ## <a name="requirements-for-configuring-automatic-os-image-upgrade"></a>Anforderungen für das Konfigurieren des automatischen Upgrades von Betriebssystemimages
 
-- Die *version* -Eigenschaft des Images muss auf *latest* festgelegt werden.
+- Die *version*-Eigenschaft des Images muss auf *latest* festgelegt werden.
 - Verwenden Sie Anwendungsintegritätstests oder [Anwendungsintegritätserweiterung](virtual-machine-scale-sets-health-extension.md) für Nicht-Service Fabric-Skalierungsgruppen.
 - Verwenden Sie Compute-API-Version 2018-10-01 oder höher.
 - Stellen Sie sicher, dass im Skalierungsgruppenmodell angegebene externe Ressourcen verfügbar und aktualisiert sind. Zu den Beispielen zählen SAS-URI für die Bootstrap-Nutzlast in VM-Erweiterungseigenschaften, Nutzlast im Speicherkonto, Verweis auf Geheimnisse im Modell und Sonstiges.
-- Für Skalierungsgruppen mit Verwendung von virtuellen Windows-Computern ab Compute-API-Version 2019-03-01 muss die *virtualMachineProfile.osProfile.windowsConfiguration.enableAutomaticUpdates* -Eigenschaft in der Skalierungsgruppenmodell-Definition auf *false* festgelegt werden. Die obige Eigenschaft ermöglicht Upgrades auf einem virtuellen Computer, bei denen „Windows Update“ Betriebssystempatches anwendet, ohne den Betriebssystemdatenträger zu ersetzen. Wenn für Ihre Skalierungsgruppe automatische Upgrades von Betriebssystemimages aktiviert sind, ist kein zusätzliches Update per „Windows Update“ erforderlich.
+- Für Skalierungsgruppen mit Verwendung von virtuellen Windows-Computern ab Compute-API-Version 2019-03-01 muss die *virtualMachineProfile.osProfile.windowsConfiguration.enableAutomaticUpdates*-Eigenschaft in der Skalierungsgruppenmodell-Definition auf *false* festgelegt werden. Die obige Eigenschaft ermöglicht Upgrades auf einem virtuellen Computer, bei denen „Windows Update“ Betriebssystempatches anwendet, ohne den Betriebssystemdatenträger zu ersetzen. Wenn für Ihre Skalierungsgruppe automatische Upgrades von Betriebssystemimages aktiviert sind, ist kein zusätzliches Update per „Windows Update“ erforderlich.
 
 ### <a name="service-fabric-requirements"></a>Service Fabric-Anforderungen
 

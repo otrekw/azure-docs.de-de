@@ -4,12 +4,12 @@ description: Entwickeln von Funktionen mit Python
 ms.topic: article
 ms.date: 11/4/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 8254abda68949e6884143316d4b29b07ade129dc
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: cf1d8f89de61a548f6c542d6d8a73fde93675e95
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96167844"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895409"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Python-Entwicklerhandbuch für Azure Functions
 
@@ -299,87 +299,7 @@ Außerdem können Sie `status_code` und `headers` für die Antwortnachricht im z
 
 ## <a name="scaling-and-performance"></a>Skalierung und Leistung
 
-Es ist wichtig zu verstehen, wie Ihre Funktionen ausgeführt werden und wie sich die Leistung auf die Skalierung Ihrer Funktions-App auswirkt. Dies ist besonders wichtig, wenn hochleistungsfähige Apps entworfen werden. Beim Entwerfen, Schreiben und Konfigurieren von Funktions-Apps sind die folgenden Punkte zu berücksichtigen.
-
-### <a name="horizontal-scaling"></a>Horizontale Skalierung
-Standardmäßig überwacht Azure Functions automatisch die Auslastung Ihrer Anwendung und erstellt bei Bedarf zusätzliche Host Instanzen für Python. Functions verwendet integrierte Schwellenwerte für verschiedene Triggertypen, um zu entscheiden, wann Instanzen hinzugefügt werden sollen, z. B. Alter von Nachrichten und Warteschlangengröße für Warteschlangentrigger. Diese Schwellenwerte sind nicht vom Benutzer konfigurierbar. Weitere Informationen finden Sie unter [Funktionsweise von Verbrauchsplan (Verbrauchstarif) und Premium-Plan](functions-scale.md#how-the-consumption-and-premium-plans-work).
-
-### <a name="improving-throughput-performance"></a>Verbessern der Durchsatzleistung
-
-Zur Verbesserung der Leistung müssen Sie zunächst verstehen, wie Ihre App Ressourcen verwendet, damit Sie Ihre Funktions-App entsprechend konfigurieren können.
-
-#### <a name="understanding-your-workload"></a>Grundlegendes zu Ihrer Workload
-
-Die Standardkonfigurationen sind für die meisten Azure Functions-Anwendungen geeignet. Allerdings können Sie die Leistung des Durchsatzes Ihrer Anwendungen verbessern, indem Sie Konfigurationen einsetzen, die zu Ihrem Workloadprofil passen. Daher besteht der erste Schritt darin, zu verstehen, was für ein Typ von Workload ausgeführt wird.
-
-| | E/A-gebundene Workload | CPU-gebundene Workload |
-|--| -- | -- |
-|**Merkmale der Funktions-App**| <ul><li>Die App muss viele gleichzeitige Aufrufe verarbeiten.</li> <li> Die App verarbeitet eine große Anzahl von E/A-Ereignissen, wie z. B. Netzwerkaufrufe und Lese-/Schreibvorgänge auf Datenträgern.</li> </ul>| <ul><li>Die App führt Langzeitberechnungen durch, wie z. B. die Größenänderung von Bildern.</li> <li>Die App führt Datentransformationen durch.</li> </ul> |
-|**Beispiele**| <ul><li>Web-APIs</li><ul> | <ul><li>Datenverarbeitung</li><li> Machine Learning-Rückschluss</li><ul>|
-
-
-> [!NOTE]
->  Da die Workload von Funktionen in der Praxis meist eine Mischung aus E/A- und CPU-gebundenen Workloads ist, wird empfohlen, ein Profil der Workload unter realistischen Produktionslasten zu erstellen.
-
-
-#### <a name="performance-specific-configurations"></a>Leistungsspezifische Konfigurationen
-
-Nachdem Sie das Workloadprofil ihrer Funktions-App nun kennen, können Sie die folgenden Konfigurationen zum Verbessern der Durchsatzleistung ihrer Funktionen einsetzen.
-
-##### <a name="async"></a>Async
-
-Da [Python eine Single-Thread-Laufzeit](https://wiki.python.org/moin/GlobalInterpreterLock) ist, kann eine Hostinstanz für Python jeweils nur einen Funktionsaufruf gleichzeitig verarbeiten. Bei Anwendungen, die eine große Anzahl von E/A-Ereignissen verarbeiten und/oder E/A-gebunden sind, können Sie die Leistung erheblich verbessern, indem Sie Funktionen asynchron ausführen.
-
-Um eine Funktion asynchron auszuführen, verwenden Sie die `async def`-Anweisung, die die Funktion mit [asyncio](https://docs.python.org/3/library/asyncio.html) direkt ausführt:
-
-```python
-async def main():
-    await some_nonblocking_socket_io_op()
-```
-Im Folgenden finden Sie ein Beispiel für eine Funktion mit HTTP-Triggern, die [aiohttp](https://pypi.org/project/aiohttp/)-HTTP-Clients verwendet:
-
-```python
-import aiohttp
-
-import azure.functions as func
-
-async def main(req: func.HttpRequest) -> func.HttpResponse:
-    async with aiohttp.ClientSession() as client:
-        async with client.get("PUT_YOUR_URL_HERE") as response:
-            return func.HttpResponse(await response.text())
-
-    return func.HttpResponse(body='NotFound', status_code=404)
-```
-
-
-Eine Funktion ohne das Schlüsselwort `async` wird automatisch in einem asyncio-Threadpool ausgeführt:
-
-```python
-# Runs in an asyncio thread-pool
-
-def main():
-    some_blocking_socket_io()
-```
-
-Um den vollen Nutzen aus der asynchronen Ausführung von Funktionen zu ziehen, muss der E/A-Vorgang bzw. die Bibliothek, die in Ihrem Code verwendet wird, ebenfalls asynchron implementiert sein. Die Verwendung synchroner E/A-Vorgänge in Funktionen, die als asynchron definiert sind, **kann die Gesamtleistung beeinträchtigen**.
-
-Hier sind einige Beispiele von Clientbibliotheken, die asynchrone Muster implementiert haben:
-- [aiohttp](https://pypi.org/project/aiohttp/): HTTP-Client/-Server für asyncio 
-- [Streams API](https://docs.python.org/3/library/asyncio-stream.html): Allgemeine async/await-fähige Primitiven für die Arbeit mit Netzwerkverbindungen
-- [Janus Queue](https://pypi.org/project/janus/): Threadsichere asyncio-fähige Warteschlange für Python
-- [pyzmq](https://pypi.org/project/pyzmq/): Python-Bindungen für ZeroMQ
- 
-
-##### <a name="use-multiple-language-worker-processes"></a>Verwenden mehrerer Sprachworkerprozesse
-
-Standardmäßig verfügt jede Functions-Hostinstanz über einen einzigen Sprachworkerprozess. Sie können die Anzahl der Workerprozesse pro Host erhöhen (bis zu 10), indem Sie die Anwendungseinstellung [FUNCTIONS_WORKER_PROCESS_COUNT](functions-app-settings.md#functions_worker_process_count) verwenden. Azure Functions versucht dann, gleichzeitige Funktionsaufrufe gleichmäßig auf diese Worker zu verteilen.
-
-Für CPU-gebundene Apps sollten Sie die Anzahl der Sprachworker gleich oder höher einstellen als die Anzahl der Kerne, die pro Funktions-App verfügbar sind. Weitere Informationen finden Sie unter [Verfügbare Instanz-SKUs](functions-premium-plan.md#available-instance-skus). 
-
-E/A-gebundene Apps können auch davon profitieren, eine höhere Anzahl von Workerprozessen im Vergleich zu den verfügbaren Kerne festzulegen. Denken Sie daran, dass eine zu hohe Anzahl von Workern die Gesamtleistung aufgrund der höheren Anzahl der erforderlichen Kontextwechsel beeinträchtigen kann. 
-
-Die FUNCTIONS_WORKER_PROCESS_COUNT gilt für jeden Host, der von Functions erstellt wird, wenn Ihre Anwendung horizontal skaliert wird, um die Anforderungen zu erfüllen.
-
+Informationen zu den bewährten Methoden für Skalierung und Leistung für Python-Funktions-Apps finden Sie im Artikel [Verbessern der Durchsatzleistung von Python-Apps in Azure Functions](python-scale-performance-reference.md).
 
 ## <a name="context"></a>Kontext
 

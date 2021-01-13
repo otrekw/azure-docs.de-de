@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/07/2020
+ms.date: 01/05/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 69c2bd96c7aa3bb3328784bb3b5027ade4902c43
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 129809a83bcebdcf80b05a7300dd9acf862e5886
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97669226"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97900398"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-salesforce-account-using-azure-active-directory-b2c"></a>Einrichten der Registrierung und Anmeldung mit einem Salesforce-Konto mithilfe von Azure Active Directory B2C
 
@@ -48,10 +48,12 @@ Damit Sie in Azure Active Directory B2C (Azure AD B2C) ein Salesforce-Konto verw
     1. **API-Name** 
     1. **Contact Email** (Kontakt-E-Mail-Adresse): Geben Sie hier die Kontakt-E-Mail-Adresse für Salesforce an.
 1. Wählen Sie unter **API (OAuth-Einstellungen aktivieren)** die Option **OAuth-Einstellungen aktivieren** aus.
-1. Geben Sie unter **Rückmeldungs-URL** `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` an. Ersetzen Sie `your-tenant-name` durch den Namen Ihres Mandanten. Bei der Eingabe Ihres Mandantennamens dürfen Sie nur Kleinbuchstaben verwenden, auch wenn der Mandant in Azure AD B2C Großbuchstaben enthält.
-1. Wählen Sie unter **Selected OAuth Scopes** (Ausgewählte OAuth-Bereiche) **Zugriff auf Ihre grundlegenden Informationen (id, profile, email, address, phone)** und **Zugriff auf Ihre eindeutige Kennung zulassen (openid)** aus.
-1. Wählen Sie **Geheimnis für Webserver-Flow erforderlich** aus.
-1. Klicken Sie auf **ID-Token konfigurieren**, und wählen Sie anschließend **Standardanforderungen einschließen** aus.
+    1. Geben Sie unter **Rückmeldungs-URL** `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` an. Ersetzen Sie `your-tenant-name` durch den Namen Ihres Mandanten. Bei der Eingabe Ihres Mandantennamens dürfen Sie nur Kleinbuchstaben verwenden, auch wenn der Mandant in Azure AD B2C Großbuchstaben enthält.
+    1. Wählen Sie unter **Selected OAuth Scopes** (Ausgewählte OAuth-Bereiche) **Zugriff auf Ihre grundlegenden Informationen (id, profile, email, address, phone)** und **Zugriff auf Ihre eindeutige Kennung zulassen (openid)** aus.
+    1. Wählen Sie **Geheimnis für Webserver-Flow erforderlich** aus.
+1. Wählen Sie **Configure ID Token** (ID-Token konfigurieren) aus. 
+    1. Legen Sie für **Token Valid for** (Token gültig für) 5 Minuten fest.
+    1. Wählen Sie **Include Standard Claims** (Standardansprüche einschließen) aus.
 1. Klicken Sie auf **Speichern**.
 1. Kopieren Sie die Werte für **Consumer Key** (Consumerschlüssel) und **Consumer Secret** (Consumergeheimnis). Diese beiden Angaben benötigen Sie, um Salesforce als Identitätsanbieter in Ihrem Mandanten zu konfigurieren. Das **Clientgeheimnis** ist eine wichtige Anmeldeinformation.
 
@@ -63,10 +65,10 @@ Damit Sie in Azure Active Directory B2C (Azure AD B2C) ein Salesforce-Konto verw
 1. Wählen Sie links oben im Azure-Portal die Option **Alle Dienste** aus, suchen Sie nach **Azure AD B2C**, und wählen Sie dann diese Option aus.
 1. Wählen Sie **Identitätsanbieter** und dann **Neuer OpenID Connect-Anbieter** aus.
 1. Geben Sie einen **Namen** ein. Geben Sie z. B. *Salesforce* ein.
-1. Geben Sie für **Metadata url** (Metadaten-URL) die folgende URL ein, und ersetzen Sie dabei `{org}` durch Ihre Salesforce-Organisation:
+1. Geben Sie für **Metadaten-URL** die URL des [Salesforce OpenID Connect Configuration-Dokuments](https://help.salesforce.com/articleView?id=remoteaccess_using_openid_discovery_endpoint.htm) ein. Bei einer Sandbox wird „login.salesforce.com“ durch „test.salesforce.com“ ersetzt. Für eine Community wird „login.salesforce.com“ durch die Community-URL ersetzt, z. B. „username.force.com/.well-known/openid-configuration“. Die URL muss eine HTTPS-URL sein.
 
     ```
-    https://{org}.my.salesforce.com/.well-known/openid-configuration
+    https://login.salesforce.com/.well-known/openid-configuration
     ```
 
 1. Geben Sie für **Client-ID** die zuvor notierte Anwendungs-ID ein.
@@ -80,7 +82,7 @@ Damit Sie in Azure Active Directory B2C (Azure AD B2C) ein Salesforce-Konto verw
     - **Anzeigename**: *name*
     - **Vorname**: *given_name*
     - **Nachname**: *family_name*
-    - **E-Mail**: *preferred_username*
+    - **E-Mail**: *email*
 
 1. Wählen Sie **Speichern** aus.
 ::: zone-end
@@ -121,8 +123,7 @@ Sie können ein Salesforce-Konto als Anspruchsanbieter definieren, indem Sie es 
           <DisplayName>Salesforce</DisplayName>
           <Protocol Name="OpenIdConnect" />
           <Metadata>
-            <!-- Update the {org} below to your Salesforce organization -->
-            <Item Key="METADATA">https://{org}.my.salesforce.com/.well-known/openid-configuration</Item>
+            <Item Key="METADATA">https://login.salesforce.com/.well-known/openid-configuration</Item>
             <Item Key="response_types">code</Item>
             <Item Key="response_mode">form_post</Item>
             <Item Key="scope">openid id profile email</Item>
@@ -154,7 +155,7 @@ Sie können ein Salesforce-Konto als Anspruchsanbieter definieren, indem Sie es 
     </ClaimsProvider>
     ```
 
-4. Legen Sie für den **METADATA**-URI `{org}` mit Ihrer Salesforce-Organisation fest.
+4. Für **METADATA** ist die URL des [Salesforce OpenID Connect Configuration-Dokuments](https://help.salesforce.com/articleView?id=remoteaccess_using_openid_discovery_endpoint.htm) festgelegt. Bei einer Sandbox wird „login.salesforce.com“ durch „test.salesforce.com“ ersetzt. Für eine Community wird „login.salesforce.com“ durch die Community-URL ersetzt, z. B. „username.force.com/.well-known/openid-configuration“. Die URL muss eine HTTPS-URL sein.
 5. Legen Sie **client_id** auf die Anwendungs-ID aus der Anwendungsregistrierung fest.
 6. Speichern Sie die Datei .
 

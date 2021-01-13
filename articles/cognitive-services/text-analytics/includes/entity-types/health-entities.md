@@ -9,29 +9,29 @@ ms.subservice: text-analytics
 ms.topic: include
 ms.date: 10/02/2020
 ms.author: aahi
-ms.openlocfilehash: 308b2a9cb00f44f0e330d4fef5592d8855ee3394
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 00c1c8ddab9214bf7698c21b05c24afa36ec20d9
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94553156"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98147479"
 ---
 ## <a name="text-analytics-for-health-categories-entities-and-attributes"></a>Textanalyse für Kategorien, Entitäten und Attribute im Gesundheitswesen
 
 [Gewusst wie: Verwenden von Text Analytics for Health (Vorschauversion)](../../how-tos/text-analytics-for-health.md) erkennt medizinische Begriffe in den folgenden Kategorien.  (Beachten Sie, dass in dieser Containervorschau nur englischer Text unterstützt wird und nur eine einzige Modellversion in jedem Containerimage bereitgestellt wird.)
 
 
-| Kategorie  | Beschreibung  |
+| Kategorie  | BESCHREIBUNG  |
 |---------|---------|
-| ANATOMY | Begriffe zur Erfassung von Informationen über den Körper und anatomische Systeme und Bereiche. |
- | DEMOGRAPHICS | Begriffe, die Informationen über Geschlecht und Alter erfassen. |
- | EXAMINATION | Begriffe, die Informationen zu Diagnoseverfahren und Tests erfassen. |
- | GENOMICS | Begriffe, die Informationen zu Genen und Varianten erfassen. |
- | HEALTHCARE | Begriffe, die Informationen zu Verwaltungsvorgängen, Pflegeumgebungen und Berufen im Gesundheitswesen erfassen. |
- | MEDICAL CONDITION | Begriffe, die Informationen zu Diagnoseverfahren, Symptomen oder Anzeichen erfassen. |
- | MEDICATION | Begriffe, die Informationen zu Medikamenten einschließlich Name, Klasse, Dosierung und Verwaltungsabläufen erfassen. |
- | SOCIAL | Begriffe, die Informationen über medizinisch relevante soziale Aspekte wie z. B. Verwandschaftsverhältnisse erfassen. |
- | TREATMENT | Begriffe, die Informationen zu Therapieverfahren erfassen. |
+| [ANATOMY](#anatomy) | Begriffe zur Erfassung von Informationen über den Körper und anatomische Systeme und Bereiche. |
+ | [DEMOGRAPHICS](#demographics) | Begriffe, die Informationen über Geschlecht und Alter erfassen. |
+ | [EXAMINATION](#examinations) | Begriffe, die Informationen zu Diagnoseverfahren und Tests erfassen. |
+ | [GENOMICS](#genomics) | Begriffe, die Informationen zu Genen und Varianten erfassen. |
+ | [HEALTHCARE](#healthcare) | Begriffe, die Informationen zu Verwaltungsvorgängen, Pflegeumgebungen und Berufen im Gesundheitswesen erfassen. |
+ | [MEDICAL CONDITION](#medical-condition) | Begriffe, die Informationen zu Diagnoseverfahren, Symptomen oder Anzeichen erfassen. |
+ | [MEDICATION](#medication) | Begriffe, die Informationen zu Medikamenten einschließlich Name, Klasse, Dosierung und Verwaltungsabläufen erfassen. |
+ | [SOCIAL](#social) | Begriffe, die Informationen über medizinisch relevante soziale Aspekte wie z. B. Verwandschaftsverhältnisse erfassen. |
+ | [TREATMENT](#treatment) | Begriffe, die Informationen zu Therapieverfahren erfassen. |
   
 Jede Kategorie kann zwei Begriffsgruppen beinhalten:
 
@@ -267,7 +267,15 @@ Außerdem erkennt der Dienst Beziehungen zwischen den verschiedenen Begriffen, e
 +   **FREQUENCY_OF_MEDICATION**
 +   **ROUTE_OF_MEDICATION**
 +   **TIME_OF_MEDICATION**
-  
+
+## <a name="social"></a>Soziale Netzwerke
+
+### <a name="entities"></a>Entitäten
+
+**FAMILY_RELATION**: Erwähnungen von Familienangehörigen des Patienten. Beispielsweise „Vater“, „Tochter“, „Geschwister“, „Eltern“.
+
+:::image type="content" source="../../media/ta-for-health/family-relation.png" alt-text="Screenshot: Weiteres Beispiel für ein Behandlungszeitattribut":::
+
 ## <a name="treatment"></a>Behandlung
 
 ### <a name="entities"></a>Entitäten
@@ -294,17 +302,8 @@ Außerdem erkennt der Dienst Beziehungen zwischen den verschiedenen Begriffen, e
 
 :::image type="content" source="../../media/ta-for-health/treatment-time.png" alt-text="Screenshot: Beispiel für ein Behandlungszeitattribut":::
 
-
 ### <a name="supported-relations"></a>Unterstützte Beziehungen
 
 + **DIRECTION_OF_TREATMENT**
 +   **TIME_OF_TREATMENT**
 +   **FREQUENCY_OF_TREATMENT**
-
-## <a name="social"></a>Soziale Netzwerke
-
-### <a name="entities"></a>Entitäten
-
-**FAMILY_RELATION**: Erwähnungen von Familienangehörigen des Patienten. Beispielsweise „Vater“, „Tochter“, „Geschwister“, „Eltern“.
-
-:::image type="content" source="../../media/ta-for-health/family-relation.png" alt-text="Screenshot: Weiteres Beispiel für ein Behandlungszeitattribut":::

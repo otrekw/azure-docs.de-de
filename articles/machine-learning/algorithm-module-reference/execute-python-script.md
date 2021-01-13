@@ -10,12 +10,12 @@ ms.custom: devx-track-python
 author: likebupt
 ms.author: keli19
 ms.date: 12/02/2020
-ms.openlocfilehash: 360f0ce60a35bc96c6dd8e46d636f07124d01255
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: d1e4ffa525c5628d0b6c9a3ca67f3e069c44e823
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96511915"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97679184"
 ---
 # <a name="execute-python-script-module"></a>Execute Python Script-Modul
 
@@ -156,7 +156,7 @@ Das Modul „Execute Python Script“ (Python-Skript ausführen) enthält Python
     1. Fassen Sie das Skript und andere benutzerdefinierte Ressourcen in einer ZIP-Datei zusammen.
     1. Laden Sie die ZIP-Datei als **Dateidataset** in Studio hoch. 
     1. Ziehen Sie das Datasetmodul aus der Liste *Datasets* im linken Modulbereich auf die Erstellungsseite des Designers. 
-    1. Verbinden Sie das Dataset mit dem **Script Bundle**-Port des **Execute R Script**-Moduls.
+    1. Verbinden Sie das Dataset mit dem **Script Bundle**-Port des **Execute Python Script**-Moduls.
     
     Während der Ausführung der Pipeline kann jede Datei verwendet werden, die im hochgeladenen ZIP-Archiv enthalten ist. Wenn das Archiv eine Verzeichnisstruktur enthält, bleibt die Struktur erhalten.
  

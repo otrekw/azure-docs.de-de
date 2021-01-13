@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: ca56c285baff9982ff465b0d4115d15eadedb8c9
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: a8b2fdf99b33df3322748b7e073cc4ab18957c84
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94534754"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98045239"
 ---
 # <a name="manage-azure-digital-twins-models"></a>Verwalten von Azure Digital Twins-Modellen
 
@@ -36,35 +36,7 @@ Angenommen, ein Krankenhaus möchte seine Räume digital überwachen. Jeder Raum
 
 Der erste Schritt zur Lösung besteht darin, Modelle zu erstellen, die verschiedene Aspekte des Krankenhauses darstellen. In diesem Szenario kann ein Patientenzimmer wie folgt beschrieben werden:
 
-```json
-{
-  "@id": "dtmi:com:contoso:PatientRoom;1",
-  "@type": "Interface",
-  "@context": "dtmi:dtdl:context;2",
-  "displayName": "Patient Room",
-  "contents": [
-    {
-      "@type": "Property",
-      "name": "visitorCount",
-      "schema": "double"
-    },
-    {
-      "@type": "Property",
-      "name": "handWashCount",
-      "schema": "double"
-    },
-    {
-      "@type": "Property",
-      "name": "handWashPercentage",
-      "schema": "double"
-    },
-    {
-      "@type": "Relationship",
-      "name": "hasDevices"
-    }
-  ]
-}
-```
+:::code language="json" source="~/digital-twins-docs-samples/models/PatientRoom.json":::
 
 > [!NOTE]
 > Dies ist ein Beispieltext für eine JSON-Datei, in der ein Modell definiert und gespeichert wird, das als Teil eines Clientprojekts hochgeladen werden soll. Der REST-API-Aufruf hingegen verwendet ein Array mit Modelldefinitionen wie die obige (die einer `IEnumerable<string>` im .NET SDK zugeordnet ist). Damit Sie dieses Modell direkt in der REST-API verwenden können, sollten Sie es in Klammern setzen.
@@ -86,48 +58,16 @@ Nachdem Sie Modelle erstellt haben, können Sie sie in die Azure Digital Twins-I
 
 Wenn Sie zum Hochladen eines Modells bereit sind, können Sie den folgenden Codeausschnitt verwenden:
 
-```csharp
-// 'client' is an instance of DigitalTwinsClient
-// Read model file into string (not part of SDK)
-StreamReader r = new StreamReader("MyModelFile.json");
-string dtdl = r.ReadToEnd(); r.Close();
-string[] dtdls = new string[] { dtdl };
-client.CreateModels(dtdls);
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/model_operations.cs" id="CreateModel":::
 
 Die Methode `CreateModels` akzeptiert mehrere Dateien in einer einzigen Transaktion. Hier ein Beispiel zur Veranschaulichung:
 
-```csharp
-var dtdlFiles = Directory.EnumerateFiles(sourceDirectory, "*.json");
-
-List<string> dtdlStrings = new List<string>();
-foreach (string fileName in dtdlFiles)
-{
-    // Read model file into string (not part of SDK)
-    StreamReader r = new StreamReader(fileName);
-    string dtdl = r.ReadToEnd(); r.Close();
-    dtdlStrings.Add(dtdl);
-}
-client.CreateModels(dtdlStrings);
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/model_operations.cs" id="CreateModels_multi":::
 
 Modelldateien können mehr als ein einzelnes Modell enthalten. In diesem Fall müssen die Modelle in einem JSON-Array platziert werden. Beispiel:
 
-```json
-[
-  {
-    "@id": "dtmi:com:contoso:Planet",
-    "@type": "Interface",
-    //...
-  },
-  {
-    "@id": "dtmi:com:contoso:Moon",
-    "@type": "Interface",
-    //...
-  }
-]
-```
- 
+:::code language="json" source="~/digital-twins-docs-samples/models/Planet-Moon.json":::
+
 Modelldateien werden beim Hochladen vom Dienst überprüft.
 
 ## <a name="retrieve-models"></a>Abrufen von Modellen
@@ -141,18 +81,7 @@ Dafür haben Sie die folgenden Möglichkeiten:
 
 Hier sehen Sie ein paar Beispielaufrufe:
 
-```csharp
-// 'client' is a valid DigitalTwinsClient object
-
-// Get a single model, metadata and data
-DigitalTwinsModelData md1 = client.GetModel(id);
-
-// Get a list of the metadata of all available models
-Pageable<DigitalTwinsModelData> pmd2 = client.GetModels();
-
-// Get models and metadata for a model ID, including all dependencies (models that it inherits from, components it references)
-Pageable<DigitalTwinsModelData> pmd3 = client.GetModels(new GetModelsOptions { IncludeModelDefinition = true });
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/model_operations.cs" id="GetModels":::
 
 Die API-Aufrufe zum Abrufen von Modellen geben alle `DigitalTwinsModelData`-Objekte zurück. `DigitalTwinsModelData` enthält Metadaten zum Modell, das in der Azure Digital Twins-Instanz gespeichert ist, z. B. Name, DTMI und Erstellungsdatum des Modells. Das Objekt `DigitalTwinsModelData` kann auch das Modell selbst enthalten. Je nach Parametern können Sie daher die Abrufaufrufe verwenden, um entweder nur Metadaten (was z. B. nützlich ist, wenn Sie eine Liste verfügbarer Tools für die Benutzeroberfläche anzeigen möchten) oder das gesamte Modell abzurufen.
 
@@ -208,12 +137,7 @@ Es handelt sich hierbei um separate Features, die einander nicht beeinträchtige
 
 Mithilfe des folgenden Codes können Sie Modelle außer Betrieb setzen:
 
-```csharp
-// 'client' is a valid DigitalTwinsClient  
-client.DecommissionModel(dtmiOfPlanetInterface);
-// Write some code that deletes or transitions digital twins
-//...
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/model_operations.cs" id="DecommissionModel":::
 
 Der Status „Außerbetriebsetzung“ eines Modells ist in den `ModelData`-Datensätzen enthalten, die von den APIs zum Abrufen von Modellen zurückgegeben werden.
 
@@ -244,10 +168,8 @@ Selbst wenn ein Modell die Anforderungen zum sofortigen Löschen erfüllt, sollt
 6. Löschen Sie das Modell. 
 
 Dazu können Sie den folgenden Aufruf verwenden:
-```csharp
-// 'client' is a valid DigitalTwinsClient
-await client.DeleteModelAsync(IDToDelete);
-```
+
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/model_operations.cs" id="DeleteModel":::
 
 #### <a name="after-deletion-twins-without-models"></a>Nach dem Löschen: Zwillinge ohne Modelle
 

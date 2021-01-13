@@ -3,7 +3,7 @@ title: Verwenden von Azure Storage für die Sicherung und Wiederherstellung von 
 description: Erfahren Sie, wie Sie SQL Server in Azure Storage sichern. Erläutert die Vorteile der Sicherung von SQL-Datenbanken in Azure Storage.
 services: virtual-machines-windows
 documentationcenter: ''
-author: MikeRayMSFT
+author: MashaMSFT
 tags: azure-service-management
 ms.assetid: 0db7667d-ef63-4e2b-bd4d-574802090f8b
 ms.service: virtual-machines-sql
@@ -13,17 +13,17 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/31/2017
 ms.author: mathoma
-ms.openlocfilehash: b4100800385792557358d3fb6438f52650483f89
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 35fff49a53f5a0a9532fd0dff841356c5deaf3ea
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97359790"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724781"
 ---
 # <a name="use-azure-storage-for-sql-server-backup-and-restore"></a>Verwenden von Azure Storage für die Sicherung und Wiederherstellung von SQL Server
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-Ab SQL Server 2012 SP1 CU2 können Sie SQL Server-Sicherungen direkt in Azure Blob Storage schreiben. Mit dieser Funktion können Sie Sicherungs- und Wiederherstellungsvorgänge in Azure Blob Storage und in SQL Server-Datenbanken ausführen. Die Sicherung in der Cloud bietet zahlreiche Vorteile: Verfügbarkeit, unbegrenzter georeplizierter standortexterner Speicher und problemlose Migration von Daten in die und aus der Cloud. Sie können BACKUP- und RESTORE-Anweisungen mithilfe von T-SQL oder SMO aufrufen.
+Ab SQL Server 2012 SP1 CU2 können Sie Sicherungen von SQL Server-Datenbanken direkt in Azure Blob Storage schreiben. Verwenden Sie diese Funktion zum Sichern und Wiederherstellen aus Azure Blob Storage. Die Sicherung in der Cloud bietet zahlreiche Vorteile: Verfügbarkeit, unbegrenzter georeplizierter standortexterner Speicher und problemlose Migration von Daten in die und aus der Cloud. Sie können `BACKUP`- oder `RESTORE`-Anweisungen mithilfe von Transact-SQL oder SMO erstellen.
 
 ## <a name="overview"></a>Übersicht
 In SQL Server 2016 wurden neue Funktionen eingeführt: Sie können die [Dateimomentaufnahme-Sicherung](/sql/relational-databases/backup-restore/file-snapshot-backups-for-database-files-in-azure) verwenden, um nahezu sofortige Sicherungen und unglaublich schnelle Wiederherstellungen durchzuführen.
@@ -52,26 +52,26 @@ Die folgenden Azure-Komponenten werden bei einer Sicherung in Azure Blob Storage
 | --- | --- |
 | **Speicherkonto** |Das Speicherkonto ist der Ausgangspunkt für alle Speicherdienste. Um auf Azure Blob Storage zuzugreifen, erstellen Sie zunächst ein Azure Storage-Konto. Weitere Informationen zu Azure Blob Storage finden Sie unter [Verwenden von Azure Blob Storage](https://azure.microsoft.com/develop/net/how-to-guides/blob-storage/) |
 | **Container** |Ein Container stellt einen Satz Blobs als Gruppe bereit und kann eine unbegrenzte Anzahl von Blobs enthalten. Um eine SQL Server-Sicherung in Azure Blob Storage zu speichern, muss mindestens ein Stammcontainer erstellt worden sein. |
-| **Blob** |Eine Datei eines beliebigen Typs und beliebiger Größe. Blobs sind über das folgende URL-Format adressierbar: **https://[Speicherkonto].blob.core.windows.net/[Container]/[Blob]** . Weitere Informationen über Seitenblobs finden Sie unter [Grundlegendes zu Block- und Seitenblobs](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs) |
+| **Blob** |Eine Datei eines beliebigen Typs und beliebiger Größe. Blobs können über das folgende URL-Format aufgerufen werden: `https://<storageaccount>.blob.core.windows.net/<container>/<blob>`. Weitere Informationen über Seitenblobs finden Sie unter [Grundlegendes zu Block- und Seitenblobs](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs) |
 
 ## <a name="sql-server-components"></a>SQL Server-Komponenten
 Die folgenden SQL Server-Komponenten werden bei einer Sicherung in Azure Blob Storage verwendet.
 
 | Komponente | BESCHREIBUNG |
 | --- | --- |
-| **URL** |Eine URL gibt einen URI (Uniform Resource Identifier) für eine eindeutige Sicherungsdatei an. Die URL dient zur Angabe des Speicherorts und Namens der SQL Server-Sicherungsdatei. Die URL muss auf ein tatsächliches BLOB, nicht nur auf einen Container verweisen. Wenn das BLOB nicht vorhanden ist, wird es erstellt. Das Angeben eines vorhandenen Blobs führt zu einem Fehler bei BACKUP – es sei denn, die Option > WITH FORMAT wird angegeben. Hier sehen Sie ein Beispiel einer URL, die Sie im BACKUP-Befehl angeben können: **http[s]://[storageaccount].blob.core.windows.net/[container]/[FILENAME.bak]** . HTTPS wird empfohlen, ist jedoch nicht erforderlich. |
+| **URL** |Eine URL gibt einen URI (Uniform Resource Identifier) für eine eindeutige Sicherungsdatei an. Die URL stellt den Speicherort und Namen der SQL Server-Sicherungsdatei bereit. Die URL muss auf ein tatsächliches BLOB, nicht nur auf einen Container verweisen. Wenn das Blob nicht vorhanden ist, wird es von Azure erstellt. Das Angeben eines vorhandenen Blobs führt zu einem Fehler beim Befehl „backup“, es sei denn, die Option `WITH FORMAT` wird angegeben. Hier sehen Sie ein Beispiel einer URL, die Sie im BACKUP-Befehl angeben können: `https://<storageaccount>.blob.core.windows.net/<container>/<FILENAME.bak>` .<br><br> HTTPS wird empfohlen, ist jedoch nicht erforderlich. |
 | **Credential** |Die Informationen, die zum Herstellen einer Verbindung mit Azure Blob Storage und zur Authentifizieren damit erforderlich sind, werden als Anmeldeinformationen gespeichert. Damit SQL Server Sicherungen in einen Azure-Blob schreiben oder daraus wiederherstellen kann, müssen SQL Server-Anmeldeinformationen erstellt werden. Weitere Informationen finden Sie unter [CREATE CREDENTIAL (Transact-SQL)](/sql/t-sql/statements/create-credential-transact-sql). |
 
 > [!NOTE]
 > SQL Server 2016 wurde aktualisiert und unterstützt jetzt Blockblobs. Weitere Informationen finden Sie unter [Tutorial: Verwenden von Microsoft Azure Blob Storage mit SQL Server 2016-Datenbanken](/sql/relational-databases/tutorial-use-azure-blob-storage-service-with-sql-server-2016).
 > 
-> 
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 1. Erstellen Sie ein Azure-Konto, falls Sie noch keins besitzen. Wenn Sie Azure evaluieren, können Sie die [kostenlose Testversion](https://azure.microsoft.com/free/)verwenden.
 2. Arbeiten Sie dann eines der folgenden Tutorials durch, in denen Sie Anleitungen zum Erstellen eines Speicherkontos und zum Durchführen einer Wiederherstellung erhalten.
    
-   * **SQL Server 2014**: [Tutorial: Sicherung und Wiederherstellung von SQL Server 2014 in Microsoft Azure Blob Storage](https://msdn.microsoft.com/library/jj720558\(v=sql.120\).aspx)
+   * **SQL Server 2014**: [Tutorial: Sicherung und Wiederherstellung von SQL Server 2014 in Microsoft Azure Blob Storage](/previous-versions/sql/2014/relational-databases/backup-restore/sql-server-backup-to-url)
    * **SQL Server 2016:** [Tutorial: Verwenden von Microsoft Azure Blob Storage mit SQL Server 2016-Datenbanken](/sql/relational-databases/tutorial-use-azure-blob-storage-service-with-sql-server-2016).
 3. Lesen Sie weitere Artikel zu diesem Thema, und beginnen Sie mit [Sicherung und Wiederherstellung von SQL Server mit Microsoft Azure Blob Storage](/sql/relational-databases/backup-restore/sql-server-backup-and-restore-with-microsoft-azure-blob-storage-service).
 

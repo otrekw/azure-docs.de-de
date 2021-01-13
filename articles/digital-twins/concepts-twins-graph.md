@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: a1fc5be93e2b9729838aa9fb3a777936003c5f45
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: d9a6eb572b1ab870fdb848f8b0989f88e6dbc3c0
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93356388"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98045953"
 ---
 # <a name="understand-digital-twins-and-their-twin-graph"></a>Grundlegendes zu digitalen Zwillingen und zum zugehörigen Zwillingsgraphen
 
@@ -25,13 +25,13 @@ In einer Azure Digital Twins-Lösung werden die Entitäten in Ihrer Umgebung dur
 
 Bevor Sie auf Ihrer Azure Digital Twins-Instanz einen digitalen Zwilling erstellen können, müssen Sie ein *Modell* in den Dienst hochladen. Mit einem Modell wird unter anderem die Gruppe mit den Eigenschaften, Telemetrienachrichten und Beziehungen beschrieben, über die ein bestimmter Zwilling verfügen kann. Informationen zu den Informationsarten, die in einem Modell definiert sind, finden Sie unter [*Konzepte: Grundlegendes zu Zwillingsmodellen in Azure Digital Twins*](concepts-models.md).
 
-Nachdem Sie ein Modell erstellt und hochgeladen haben, kann Ihre Client-App eine Instanz des entsprechenden Typs erstellen. Hierbei handelt es sich um einen digitalen Zwilling. Nachdem Sie beispielsweise ein Modell vom Typ *Floor* (Etage) erstellt haben, können Sie einen oder mehrere digitale Zwillinge erstellen, die diesen Typ nutzen (z. B. ein Zwilling vom Typ *Floor* mit dem Namen *GroundFloor* , einen anderen mit dem Namen *Floor2* usw.). 
+Nachdem Sie ein Modell erstellt und hochgeladen haben, kann Ihre Client-App eine Instanz des entsprechenden Typs erstellen. Hierbei handelt es sich um einen digitalen Zwilling. Nachdem Sie beispielsweise ein Modell vom Typ *Floor* (Etage) erstellt haben, können Sie einen oder mehrere digitale Zwillinge erstellen, die diesen Typ nutzen (z. B. ein Zwilling vom Typ *Floor* mit dem Namen *GroundFloor*, einen anderen mit dem Namen *Floor2* usw.). 
 
 ## <a name="relationships-a-graph-of-digital-twins"></a>Beziehungen: ein Graph für digitale Zwillinge
 
 Zwillinge werden anhand ihrer Beziehungen zu einem Zwillingsgraphen vereint. Die Beziehungen, die ein Zwilling aufweisen kann, werden als Teil des Modells definiert.  
 
-Beispielsweise kann für das Modell *Floor* (Etage) eine Beziehung vom Typ *contains* (enthält) definiert werden, die für Zwillinge vom Typ *Room* (Zimmer) bestimmt ist. Mit dieser Definition können Sie mit Azure Digital Twins *contains* -Beziehungen von allen *Floor* -Zwillingen zu allen *Room* -Zwillingen erstellen (einschließlich Zwillingen mit Untertypen von *Room* ). 
+Beispielsweise kann für das Modell *Floor* (Etage) eine Beziehung vom Typ *contains* (enthält) definiert werden, die für Zwillinge vom Typ *Room* (Zimmer) bestimmt ist. Mit dieser Definition können Sie mit Azure Digital Twins *contains*-Beziehungen von allen *Floor*-Zwillingen zu allen *Room*-Zwillingen erstellen (einschließlich Zwillingen mit Untertypen von *Room*). 
 
 Das Ergebnis dieses Prozesses ist eine Gruppe mit Knoten (die digitalen Zwillinge), die über Edges (die Beziehungen) in einem Graphen verbunden sind.
 
@@ -47,7 +47,7 @@ Unten ist ein Ausschnitt des Clientcodes angegeben, in dem die [DigitalTwins-API
 
 Sie können die Eigenschaften eines Zwillings bei der Erstellung initialisieren oder später festlegen. Um einen Zwilling mit initialisierten Eigenschaften zu erstellen, erstellen Sie ein JSON-Dokument, das die erforderlichen Initialisierungswerte bereitstellt.
 
-[!INCLUDE [Azure Digital Twins code: create twin](../../includes/digital-twins-code-create-twin.md)]
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_other.cs" id="CreateTwin_noHelper":::
 
 Sie können auch eine Hilfsklasse namens `BasicDigitalTwin` verwenden, um Eigenschaftenfelder als Alternative zur Verwendung eines Wörterbuchs direkt in einem „Zwillingsobjekt“ zu speichern. Weitere Informationen zur Hilfsklasse und Beispiele für deren Verwendung finden Sie im Abschnitt [*Erstellen eines Digital Zwillings*](how-to-manage-twin.md#create-a-digital-twin) von *Vorgehensweise: Verwalten digitaler Zwillinge*.
 
@@ -58,25 +58,7 @@ Sie können auch eine Hilfsklasse namens `BasicDigitalTwin` verwenden, um Eigens
 
 Hier ist ein Beispiel für Clientcode angegeben, in dem die [DigitalTwins-APIs](/rest/api/digital-twins/dataplane/twins) verwendet werden, um eine Beziehung zwischen einem digitalen Zwilling vom Typ *Floor* (Etage) mit dem Namen *GroundFloor* und einem digitalen Zwilling vom Typ *Room* (Zimmer) mit dem Namen *Cafe* zu erstellen.
 
-```csharp
-// Create Twins, using functions similar to the previous sample
-await CreateRoom("Cafe", 70, 66);
-await CreateFloor("GroundFloor", averageTemperature=70);
-// Create relationships
-var relationship = new BasicRelationship
-{
-    TargetId = "Cafe",
-    Name = "contains"
-};
-try
-{
-    string relId = $"GroundFloor-contains-Cafe";
-    await client.CreateOrReplaceRelationshipAsync<BasicRelationship>("GroundFloor", relId, relationship);
-} catch(ErrorResponseException e)
-{
-    Console.WriteLine($"*** Error creating relationship: {e.Response.StatusCode}");
-}
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_other.cs" id="CreateRelationship_3":::
 
 ## <a name="json-representations-of-graph-elements"></a>JSON-Darstellungen von Graphelementen
 
@@ -90,7 +72,7 @@ Bei der Darstellung als JSON-Objekt zeigt ein digitaler Zwilling die folgenden F
 | --- | --- |
 | `$dtId` | Eine vom Benutzer angegebene Zeichenfolge zur Darstellung der ID des digitalen Zwillings |
 | `$etag` | Ein vom Webserver zugewiesenes Standard-HTTP-Feld |
-| `$conformance` | Eine Enumeration mit dem Konformitätsstatus dieses digitalen Zwillings ( *conformant* (konform), *non-conformant* (nicht konform), *unknown* (unbekannt)) |
+| `$conformance` | Eine Enumeration mit dem Konformitätsstatus dieses digitalen Zwillings (*conformant* (konform), *non-conformant* (nicht konform), *unknown* (unbekannt)) |
 | `{propertyName}` | Den Wert einer Eigenschaft im JSON-Format (`string`, Zahlentyp oder Objekt) |
 | `$relationships` | Die URL des Pfads zur Sammlung mit den Beziehungen. Dieses Feld ist nicht vorhanden, wenn der digitale Zwilling keine ausgehenden Beziehungsedges aufweist. |
 | `$metadata.$model` | [Optional] Die ID der Modellschnittstelle, die diesen digitalen Zwilling kennzeichnet |

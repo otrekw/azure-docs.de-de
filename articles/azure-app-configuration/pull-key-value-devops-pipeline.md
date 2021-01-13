@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: how-to
 ms.date: 11/17/2020
 ms.author: drewbat
-ms.openlocfilehash: 1c28b4e9821f31f927ef4f640aa664d330cf8792
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: fbe517c766b3835bf4265a1309b8737a25925b7c
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96570993"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97914959"
 ---
 # <a name="pull-settings-to-app-configuration-with-azure-pipelines"></a>Pullen von Einstellungen aus App Configuration mit Azure Pipelines
 
@@ -103,6 +103,9 @@ Wenn eine nachfolgende Aufgabe beispielsweise ein PowerShell-Skript ausführt, k
 echo "$env:myBuildSetting"
 ```
 Der Wert wird an der Konsole ausgegeben.
+
+> [!NOTE]
+> Azure Key Vault-Verweise in der App-Konfiguration werden aufgelöst und als [geheime Variablen](/azure/devops/pipelines/process/variables#secret-variables) festgelegt. In Azure-Pipelines werden geheime Variablen aus dem Protokoll maskiert. Sie werden nicht als Umgebungsvariablen an Aufgaben übermittelt und müssen stattdessen als Eingaben übermittelt werden. 
 
 ## <a name="troubleshooting"></a>Problembehandlung
 

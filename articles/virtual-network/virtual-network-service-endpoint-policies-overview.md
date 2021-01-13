@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2020
 ms.author: rdhillon
-ms.openlocfilehash: 14ecb30af11bf750c90e45c3fb6b443d861a1445
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 13535a82f8aca741a1e25755e5a2d971ce45514e
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89400754"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97739296"
 ---
 # <a name="virtual-network-service-endpoint-policies-for-azure-storage"></a>Richtlinien für VNET-Dienstendpunkte für Azure Storage
 
@@ -122,7 +122,7 @@ Virtuelle Netzwerke und Azure Storage-Konten können sich in demselben Abonnemen
 - Virtuelle Netzwerke müssen sich in derselben Region wie die Richtlinie des Dienstendpunkts befinden.
 - Sie können eine Richtlinie für Dienstendpunkte in einem Subnetz nur anwenden, wenn die Dienstendpunkte für die in der Richtlinie angegebenen Azure-Dienste konfiguriert sind.
 - Sie können Richtlinien für Dienstendpunkte nicht für Datenverkehr aus Ihrem lokalen Netzwerk zu Azure-Diensten verwenden.
-- Verwaltete Azure-Dienste unterstützen derzeit keine Endpunktrichtlinien. Dies umfasst verwaltete Dienste, die in den freigegebenen Subnetzen (z. B. *Azure HDInsight, Azure Batch, Azure ADDS, Azure Application Gateway, Azure-VPN-Gateway, Azure Firewall*) oder in den dedizierten Subnetzen (z. B. *Azure App Service-Umgebung, Azure Cache for Redis, Azure API Management, Azure SQL MI, klassische verwaltete Dienste*) bereitgestellt wurden.
+- Verwaltete Azure-Dienste unterstützen derzeit keine Endpunktrichtlinien. Dies umfasst verwaltete Dienste, die in den freigegebenen Subnetzen (z. B. *Azure Batch, Azure ADDS, Azure Application Gateway, Azure VPN Gateway, Azure Firewall*) oder in den dedizierten Subnetzen (z. B. *Azure App Service-Umgebung, Azure Cache for Redis, Azure API Management, Azure SQL MI, klassische verwaltete Dienste*) bereitgestellt wurden.
 
  > [!WARNING]
  > Azure-Dienste, die in Ihrem virtuellen Netzwerk bereitgestellt wurden (z.B. Azure HDInsight), greifen aufgrund von Infrastrukturanforderungen auf andere Azure-Dienste zu, wie z.B. Azure Storage. Das Einschränken der Endpunktrichtlinie auf bestimmte Ressourcen könnten den Zugriff auf diese Infrastrukturressourcen für die Azure-Dienste unterbrechen, die in Ihrem virtuellen Netzwerk bereitgestellt wurden.

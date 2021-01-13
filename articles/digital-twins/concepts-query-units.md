@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 8/14/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 33c572719d76a2add39aec37329679113fcddb76
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 86f2abb8bfb95d5b9e72936ca3e9464747c00b1c
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93146329"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98049302"
 ---
 # <a name="query-units-in-azure-digital-twins"></a>Abfrageeinheiten in Azure Digital Twins 
 
-Die Azure Digital Twins- **Abfrageeinheit (Query Unit, QU)** wird für die bedarfsgesteuerte Berechnung zum Ausführen von [Azure Digital Twins-Abfragen](how-to-query-graph.md) mithilfe der [Abfrage-API](/rest/api/digital-twins/dataplane/query) verwendet. 
+Die Azure Digital Twins-**Abfrageeinheit (Query Unit, QU)** wird für die bedarfsgesteuerte Berechnung zum Ausführen von [Azure Digital Twins-Abfragen](how-to-query-graph.md) mithilfe der [Abfrage-API](/rest/api/digital-twins/dataplane/query) verwendet. 
 
 Sie bietet eine Abstraktion der Systemressourcen, z. B. CPU, IOPS und Arbeitsspeicher, die für die Durchführung der von Azure Digital Twins unterstützten Abfragen erforderlich sind. So können Sie die Verwendung der Ressourcen in Abfrageeinheiten nachverfolgen.
 
@@ -35,34 +35,7 @@ Mit den Azure Digital Twins-[SDKs](how-to-use-apis-sdks.md) können Sie den quer
 
 Der folgende Codeausschnitt veranschaulicht das Extrahieren der durch den Aufruf der Abfrage-API anfallenden Abfragegebühren. Zuerst werden die Antwortseiten durchlaufen, um auf den query-charge-Header zuzugreifen, und dann werden die Ergebnisse der digitalen Zwillinge auf den einzelnen Seiten durchlaufen. 
 
-```csharp
-AsyncPageable<string> asyncPageableResponseWithCharge = client.QueryAsync("SELECT * FROM digitaltwins");
-int pageNum = 0;
-
-// The "await" keyword here is required, as a call is made when fetching a new page.
-
-await foreach (Page<string> page in asyncPageableResponseWithCharge.AsPages())
-{
-    Console.WriteLine($"Page {++pageNum} results:");
-
-    // Extract the query-charge header from the page
-
-    if (QueryChargeHelper.TryGetQueryCharge(page, out float queryCharge))
-    {
-        Console.WriteLine($"Query charge was: {queryCharge}");
-    }
-
-    // Iterate over the twin instances.
-
-    // The "await" keyword is not required here, as the paged response is local.
-
-    foreach (string response in page.Values)
-    {
-        BasicDigitalTwin twin = JsonSerializer.Deserialize<BasicDigitalTwin>(response);
-        Console.WriteLine($"Found digital twin '{twin.Id}'");
-    }
-}
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/getQueryCharges.cs":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

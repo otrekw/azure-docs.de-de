@@ -11,16 +11,16 @@ author: jhirono
 ms.date: 11/20/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 07ff656c5eacbbcdc16c6c7cf098478ca6baf745
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 8d3145639d2d4fb64bdb374f1dea0a7b70e4151c
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97509290"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724713"
 ---
 # <a name="how-to-use-your-workspace-with-a-custom-dns-server"></a>Verwenden Ihres Arbeitsbereichs mit einem benutzerdefinierten DNS-Server
 
-Wenn Sie einen Azure Machine Learning-Arbeitsbereich mit einem privaten Endpunkt verwenden, gibt es [verschiedene Möglichkeiten, die DNS-Namensauflösung zu verarbeiten](../private-link/private-endpoint-dns.md). Standardmäßig übernimmt Azure automatisch die Namensauflösung für Ihren Arbeitsbereich und Ihren privaten Endpunkt. Wenn Sie stattdessen _Ihren eigenen benutzerdefinierten DNS-Server_ verwenden, müssen Sie DNS-Einträge für den Arbeitsbereich manuell erstellen.
+Wenn Sie einen Azure Machine Learning-Arbeitsbereich mit einem privaten Endpunkt verwenden, gibt es [verschiedene Möglichkeiten, die DNS-Namensauflösung zu verarbeiten](../private-link/private-endpoint-dns.md). Standardmäßig übernimmt Azure automatisch die Namensauflösung für Ihren Arbeitsbereich und Ihren privaten Endpunkt. Wenn Sie stattdessen _Ihren eigenen benutzerdefinierten DNS-Server_ verwenden, müssen Sie DNS-Einträge für den Arbeitsbereich manuell erstellen oder bedingte Weiterleitungen verwenden.
 
 > [!IMPORTANT]
 > In diesem Artikel wird nur behandelt, wie der vollqualifizierte Domänenname (FQDN) und die IP-Adressen für diese Einträge gefunden werden können. Er enthält KEINE Informationen zum Konfigurieren der DNS-Einträge für diese Elemente. Weitere Informationen zum Hinzufügen von Einträgen finden Sie in der Dokumentation zu Ihrer DNS-Software.
@@ -37,9 +37,9 @@ Wenn Sie einen Azure Machine Learning-Arbeitsbereich mit einem privaten Endpunkt
 
 - Optional die [Azure CLI](/cli/azure/install-azure-cli) oder [Azure PowerShell](/powershell/azure/install-az-ps).
 
-## <a name="find-the-ip-addresses"></a>Suchen der IP-Adressen
-
-Die folgende Liste enthält die vollqualifizierten Domänennamen (FQDN), die von Ihrem Arbeitsbereich und Ihrem privaten Endpunkt verwendet werden:
+## <a name="fqdns-in-use"></a>Verwendete vollqualifizierte Domänennamen (FQDN)
+### <a name="these-fqdns-are-in-use-in-the-following-regions-eastus-southcentralus-and-westus2"></a>Diese FQDNs werden in den folgenden Regionen verwendet: eastus, southcentralus und westus2.
+Die folgende Liste enthält die vollqualifizierten Domänennamen (FQDN), die von Ihrem Arbeitsbereich verwendet werden:
 
 * `<workspace-GUID>.workspace.<region>.cert.api.azureml.ms`
 * `<workspace-GUID>.workspace.<region>.api.azureml.ms`
@@ -51,6 +51,19 @@ Die folgende Liste enthält die vollqualifizierten Domänennamen (FQDN), die von
 
     > [!NOTE]
     > Auf Compute-Instanzen kann nur innerhalb des virtuellen Netzwerks zugegriffen werden.
+    
+### <a name="these-fqdns-are-in-use-in-all-other-regions"></a>Diese vollqualifizierten Domänennamen werden in allen anderen Regionen verwendet.
+Die folgende Liste enthält die vollqualifizierten Domänennamen (FQDN), die von Ihrem Arbeitsbereich verwendet werden:
+
+* `<workspace-GUID>.workspace.<region>.cert.api.azureml.ms`
+* `<workspace-GUID>.workspace.<region>.api.azureml.ms`
+* `ml-<workspace-name>-<region>-<workspace-guid>.notebooks.azure.net`
+* `<instance-name>.<region>.instances.azureml.ms`
+
+    > [!NOTE]
+    > Auf Compute-Instanzen kann nur innerhalb des virtuellen Netzwerks zugegriffen werden.
+
+## <a name="find-the-ip-addresses"></a>Suchen der IP-Adressen
 
 Verwenden Sie eine der folgenden Methoden, um die internen IP-Adressen für die FQDNs im VNet zu finden:
 
@@ -89,7 +102,7 @@ Die Informationen, die von allen Methoden zurückgegeben werden, sind dieselben:
 | `ml-myworkspace-eastus-fb7e20a0-8891-458b-b969-55ddb3382f51.notebooks.azure.net` | `10.1.0.6` |
 
 > [!IMPORTANT]
-> Einige FQDNs werden in der Liste des privaten Endpunkts nicht angezeigt, sind jedoch für den Arbeitsbereich erforderlich. Diese FQDNs sind in der folgenden Tabelle aufgeführt und müssen auch Ihrem DNS-Server hinzugefügt werden:
+> Einige FQDNs werden in der Liste des privaten Endpunkts nicht angezeigt, sind jedoch für den Arbeitsbereich in „eastus“, „southcentralus“ und „westus2“ erforderlich. Diese FQDNs sind in der folgenden Tabelle aufgeführt und müssen auch Ihrem DNS-Server und/oder einer Zone mit privatem Azure-DNS hinzugefügt werden:
 >
 > * `<workspace-GUID>.workspace.<region>.cert.api.azureml.ms`
 > * `<workspace-GUID>.workspace.<region>.experiments.azureml.net`
@@ -102,3 +115,5 @@ Die Informationen, die von allen Methoden zurückgegeben werden, sind dieselben:
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen zur Verwendung von Azure Machine Learning mit einem virtuellen Netzwerk finden Sie in der [Übersicht über virtuelle Netzwerke](how-to-network-security-overview.md).
+
+Weitere Informationen zur Integration privater Endpunkte in Ihre DNS-Konfiguration finden Sie unter [DNS-Konfiguration für private Azure-Endpunkte](https://docs.microsoft.com/azure/private-link/private-endpoint-dns).

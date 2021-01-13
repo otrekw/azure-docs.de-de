@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 12/17/2020
 ms.author: aahi
-ms.openlocfilehash: 180de56e3c158802460d2ff995041e8572d4dcd7
-ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
+ms.openlocfilehash: a0cd968c90a27d6f1ae79d08fb2bd027169233db
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/01/2021
-ms.locfileid: "97844969"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98133785"
 ---
 # <a name="text-analytics-api-v3-language-support"></a>Textanalyse-API v3: Sprachunterstützung 
 
@@ -86,11 +86,9 @@ ms.locfileid: "97844969"
 
 #### <a name="key-phrase-extraction"></a>[Schlüsselbegriffserkennung](#tab/key-phrase-extraction)
 
-> [!NOTE]
-> Modellversionen der Schlüsselbegriffserkennung vor Version 2020-07-01 sind auf 64 Zeichen begrenzt. Dieser Grenzwert gilt bei späteren Modellversionen nicht mehr.
-
 | Sprache              | Sprachcode | v2-Unterstützung | v3-Unterstützung | Ab Modellversion 3 verfügbar: |       Notizen        |
 |:----------------------|:-------------:|:----------:|:----------:|:-----------------------------------------:|:------------------:|
+| Dänisch                |     `da`      |     ✓      |      ✓     |                2019-10-01                 |                    |
 | Niederländisch                 |     `nl`      |     ✓      |     ✓      |                2019-10-01                 |                    |
 | Englisch               |     `en`      |     ✓      |     ✓      |                2019-10-01                 |                    |
 | Finnisch               |     `fi`      |     ✓      |     ✓      |                2019-10-01                 |                    |

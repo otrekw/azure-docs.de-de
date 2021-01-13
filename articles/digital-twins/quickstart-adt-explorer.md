@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 9/24/2020
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: d42a32e236eb73f2aa9f2f61d9708314783564dd
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: f6bd6b13ab4a2e654bdabc86355f2c3388abed31
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187295"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98050526"
 ---
 # <a name="quickstart---explore-a-sample-azure-digital-twins-scenario-using-adt-explorer"></a>Schnellstart: Untersuchen eines Azure Digital Twins-Beispielszenarios mit ADT Explorer
 
@@ -251,9 +251,7 @@ In diesem Abschnitt führen Sie eine Abfrage aus, um die Frage zu beantworten, w
 
 Führen Sie zur Beantwortung dieser Frage im Feld **QUERY EXPLORER** (Abfrage-Explorer) die folgende Abfrage aus.
 
-```SQL
-SELECT * FROM DigitalTwins T WHERE T.Temperature > 75
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="TemperatureQuery":::
 
 Wie Sie weiter oben bei der Betrachtung der Zwillingseigenschaften gesehen haben, weist Room0 (Raum0) eine Temperatur von 70 und Room1 (Raum1) eine Temperatur von 80 Grad Fahrenheit auf. Aus diesem Grund wird hier in den Ergebnissen nur Room1 (Raum1) angezeigt.
     
@@ -284,9 +282,7 @@ Nun wird das Fenster **Patch Information** (Patchinformationen) mit dem Patchcod
 
 Vergewissern Sie sich, dass die Aktualisierung der Temperatur für Room0 (Raum0) vom Graphen registriert wurde. Führen Sie dazu erneut die weiter oben beschriebene Abfrage aus, um alle Zwillinge in der Umgebung abzurufen, bei denen die Temperatur über 75 Grad Fahrenheit liegt.
 
-```SQL
-SELECT * FROM DigitalTwins T WHERE T.Temperature > 75
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="TemperatureQuery":::
 
 Nachdem die Temperatur von Room0 (Raum0) von 70 in 76 geändert wurde, sollten im Ergebnis beide Zwillinge angezeigt werden.
 

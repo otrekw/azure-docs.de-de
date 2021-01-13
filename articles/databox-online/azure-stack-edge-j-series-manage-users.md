@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/28/2020
+ms.date: 01/05/2021
 ms.author: alkohli
-ms.openlocfilehash: 66967c1fa8f6ca42459559caf46bffb0e5afe925
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0bef344414a9ba27d5808fcd17ed664b7f51bddc
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91743589"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97915967"
 ---
 # <a name="use-the-azure-portal-to-manage-users-on-your-azure-stack-edge-pro"></a>Verwalten von Benutzern auf Azure Stack Edge Pro-Geräten mit dem Azure-Portal
 
@@ -30,19 +30,19 @@ In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
 ## <a name="about-users"></a>Informationen zu Benutzern
 
-Benutzer können über Lesezugriff oder über Vollzugriff verfügen. Wie der Name schon sagt, können Benutzer mit Lesezugriff die Freigabedaten nur anzeigen. Benutzer mit Vollzugriff können Freigabedaten lesen, Schreibvorgänge für diese Freigaben ausführen sowie Freigabedaten ändern oder löschen.
+Benutzer können über Lesezugriff oder über Vollzugriff verfügen. Benutzer mit Lesezugriff können nur die Freigabedaten anzeigen. Benutzer mit Vollzugriff können Freigabedaten lesen, Schreibvorgänge für diese Freigaben ausführen sowie Freigabedaten ändern oder löschen.
 
  - **Benutzer mit Vollzugriff:** Lokaler Benutzer mit Vollzugriff.
  - **Benutzer mit Lesezugriff:** Lokaler Benutzer, der nur über Lesezugriff verfügt. Diese Benutzer werden Freigaben zugeordnet, die schreibgeschützte Vorgänge zulassen.
 
-Die Benutzerberechtigungen werden definiert, wenn der Benutzer im Rahmen der Freigabeerstellung erstellt wird. Nachdem die Berechtigungen für einen Benutzer definiert wurden, können sie über den Explorer geändert werden.
+Die Benutzerberechtigungen werden definiert, wenn der Benutzer im Rahmen der Freigabeerstellung erstellt wird. Sie können mit dem Datei-Explorer geändert werden.
 
 
 ## <a name="add-a-user"></a>Hinzufügen eines Benutzers
 
 Gehen Sie im Azure-Portal wie folgt vor, um einen Benutzer hinzuzufügen:
 
-1. Wechseln Sie im Azure-Portal zu Ihrer Azure Stack Edge-Ressource und dann zu **Übersicht > Benutzer**. Wählen Sie auf der Befehlsleiste die Option **+ Benutzer hinzufügen** aus.
+1. Wechseln Sie im Azure-Portal zu Ihrer Azure Stack Edge-Ressource und dann zu **Benutzern**. Wählen Sie auf der Befehlsleiste die Option **+ Benutzer hinzufügen** aus.
 
     ![Auswählen von „Benutzer hinzufügen“](media/azure-stack-edge-j-series-manage-users/add-user-1.png)
 
@@ -59,7 +59,7 @@ Gehen Sie im Azure-Portal wie folgt vor, um einen Benutzer hinzuzufügen:
 ## <a name="modify-user"></a>Ändern eines Benutzers
 
 Das Kennwort für einen Benutzer kann nach der Benutzererstellung geändert werden. Wählen Sie in der Benutzerliste einen Benutzer aus. Geben Sie ein neues Kennwort ein, und bestätigen Sie es. Speichern Sie die Änderungen.
- 
+
 ![Ändern eines Benutzers](media/azure-stack-edge-j-series-manage-users/modify-user-1.png)
 
 
@@ -68,7 +68,7 @@ Das Kennwort für einen Benutzer kann nach der Benutzererstellung geändert werd
 Gehen Sie im Azure-Portal wie folgt vor, um einen Benutzer zu löschen:
 
 
-1. Wechseln Sie im Azure-Portal zu Ihrer Azure Stack Edge-Ressource und dann zu **Übersicht > Benutzer**.
+1. Wechseln Sie im Azure-Portal zu Ihrer Azure Stack Edge-Ressource und dann zu **Benutzern**.
 
     ![Auswählen des zu löschenden Benutzers](media/azure-stack-edge-j-series-manage-users/delete-user-1.png)
 

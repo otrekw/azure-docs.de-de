@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/28/2020
 ms.author: yitoh
-ms.openlocfilehash: 4f9de2f956451cd6ab8bc8a7a0fc51903ec54694
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: d9b77def3ccefe3c866ccef78684d38da0b8a268
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97815872"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97915146"
 ---
 # <a name="view-and-configure-ddos-protection-alerts"></a>Anzeigen und Konfigurieren von DDoS-Schutzwarnungen
 
@@ -34,7 +34,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 - Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 - Damit Sie die Schritte in diesem Tutorial ausführen können, müssen Sie zunächst einen [Azure DDoS Protection Standard-Schutzplan](manage-ddos-protection.md) erstellen. Außerdem muss DDoS Protection Standard in einem virtuellen Netzwerk aktiviert sein.
-- DDoS überwacht öffentliche IP-Adressen, die Ressourcen in einem virtuellen Netzwerk zugewiesen sind. Wenn Sie keine Ressourcen mit öffentlichen IP-Adressen im virtuellen Netzwerk besitzen, müssen Sie zunächst eine Ressource mit einer öffentlichen IP-Adresse erstellen. Sie können die öffentliche IP-Adresse aller Ressourcen (einschließlich Azure Load Balancer-Instanzen, bei denen sich die virtuellen Back-End-Computer im virtuellen Netzwerk befinden) überwachen, die über Resource Manager (nicht klassisch) bereitgestellt werden und unter [virtuelles Netzwerk für Azure-Dienste](../virtual-network/virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network) aufgeführt sind, mit Ausnahme der Ressourcen für Azure App Service-Umgebungen und Azure VPN Gateway. Um mit diesem Tutorial fortzufahren, können Sie schnell einen virtuellen [Windows](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)- oder [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)-Computer erstellen.     
+- DDoS überwacht öffentliche IP-Adressen, die Ressourcen in einem virtuellen Netzwerk zugewiesen sind. Wenn Sie keine Ressourcen mit öffentlichen IP-Adressen im virtuellen Netzwerk besitzen, müssen Sie zunächst eine Ressource mit einer öffentlichen IP-Adresse erstellen. Sie können die öffentliche IP-Adresse aller Ressourcen (einschließlich Azure Load Balancer-Instanzen, bei denen sich die virtuellen Back-End-Computer im virtuellen Netzwerk befinden) überwachen, die über Resource Manager (nicht klassisch) bereitgestellt werden und unter [virtuelles Netzwerk für Azure-Dienste](../virtual-network/virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network) aufgeführt sind, mit Ausnahme der Ressourcen für Azure App Service-Umgebungen. Um mit diesem Tutorial fortzufahren, können Sie schnell einen virtuellen [Windows](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)- oder [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)-Computer erstellen.     
 
 ## <a name="configure-alerts-through-azure-monitor"></a>Konfigurieren von Warnungen in Azure Monitor
 
@@ -64,7 +64,7 @@ Mithilfe der Warnungskonfiguration von Azure Monitor können Sie jede der verfü
     |---------                |---------                                                                                           |
     | Bereich                   | Klicken Sie auf **Ressource auswählen**. </br> Wählen Sie das **Abonnement** mit der öffentlichen IP-Adresse aus, die Sie protokollieren möchten. Wählen Sie **Öffentliche IP-Adresse** als **Ressourcentyp** aus. Wählen Sie anschließend die öffentliche IP-Adresse aus, für die Sie Metriken protokollieren möchten. </br> Wählen Sie **Fertig** aus. | 
     | Bedingung | Wählen Sie **Bedingung auswählen** aus. </br> Wählen Sie unter „Signalname“ die Option **Unter DDoS-Angriff oder nicht** aus. </br> Wählen Sie **Größer oder gleich** als **Operator** aus. </br> Wählen Sie **Maximum** für **Aggregationstyp** aus. </br> Geben Sie *1* in **Schwellenwert** ein. Bei der Metrik **Unter DDoS-Angriff oder nicht** bedeutet **0**, dass Sie nicht angegriffen werden, während **1** bedeutet, dass Sie angegriffen werden. </br> Wählen Sie **Fertig** aus. | 
-    | Aktionen | Wählen Sie **Aktionsgruppen hinzufügen** aus. </br> Wählen Sie **Aktionsgruppe erstellen** aus. </br> Wählen Sie unter **Benachrichtigungen** als **Benachrichtigungstyp** die Option **E-Mail/SMS/Push/Sprachanruf** aus. </br> Geben Sie _MyUnderAttackEmailAlert_ in **Name** ein. </br> Klicken Sie auf die Schaltfläche „Bearbeiten“. Wählen Sie dann **E-Mail** und so viele der folgenden Optionen, wie Sie benötigen, und anschließend **OK** aus. </br> Klicken Sie auf **Überprüfen + erstellen**. | 
+    | Actions | Wählen Sie **Aktionsgruppen hinzufügen** aus. </br> Wählen Sie **Aktionsgruppe erstellen** aus. </br> Wählen Sie unter **Benachrichtigungen** als **Benachrichtigungstyp** die Option **E-Mail/SMS/Push/Sprachanruf** aus. </br> Geben Sie _MyUnderAttackEmailAlert_ in **Name** ein. </br> Klicken Sie auf die Schaltfläche „Bearbeiten“. Wählen Sie dann **E-Mail** und so viele der folgenden Optionen, wie Sie benötigen, und anschließend **OK** aus. </br> Klicken Sie auf **Überprüfen + erstellen**. | 
     | Warnungsregeldetails | Geben Sie _MyDdosAlert_ unter **Name der Warnungsregel** ein. |
 
 Innerhalb weniger Minuten nach Erkennung eines Angriffs erhalten Sie eine E-Mail von Azure Monitor-Metriken, die der folgenden Abbildung ähnelt:

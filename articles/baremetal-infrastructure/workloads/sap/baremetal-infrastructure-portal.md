@@ -2,20 +2,22 @@
 title: BareMetal-Instanzeinheiten in Azure
 description: Hier erfahren Sie, wie Sie BareMetal-Instanzeinheiten über das Azure-Portal identifizieren und mit ihnen interagieren.
 ms.topic: how-to
-ms.date: 12/31/2020
-ms.openlocfilehash: 927baa79519781ef74920b17bc9fcd858f0f6c6f
-ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
+ms.date: 1/4/2021
+ms.openlocfilehash: 30e1661e82546dbaf6d8dc4288ad896df89f401e
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97829052"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861039"
 ---
 # <a name="manage-baremetal-instances-through-the-azure-portal"></a>Verwalten von BareMetal-Instanzen über das Azure-Portal
  
 In diesem Artikel wird die Darstellung von [BareMetal-Instanzen](baremetal-overview-architecture.md) im [Azure-Portal](https://portal.azure.com/) erläutert. Zudem werden die Aktivitäten beschrieben, die Sie im Azure-Portal mit den bereitgestellten BareMetal-Instanzeinheiten durchführen können. 
  
 ## <a name="register-the-resource-provider"></a>Registrieren des Ressourcenanbieters
-Die Sichtbarkeit von Instanzen im Azure-Portal wird über einen Azure-Ressourcenanbieter gesteuert. Diese Funktion befindet sich derzeit in der öffentlichen Vorschau. Im Azure-Abonnement, das Sie für BareMetal-Instanzbereitstellungen verwenden, ist der *BareMetalInfrastructure*-Ressourcenanbieter standardmäßig registriert. Wenn die bereitgestellten BareMetal-Instanzeinheiten nicht angezeigt werden, müssen Sie den Ressourcenanbieter in Ihrem Abonnement registrieren. Der BareMetal-Instanzressourcenanbieter kann auf zwei Arten registriert werden:
+Die Sichtbarkeit von Instanzen im Azure-Portal wird über einen Azure-Ressourcenanbieter gesteuert. Diese Funktion befindet sich derzeit in der öffentlichen Vorschau. Im Azure-Abonnement, das Sie für BareMetal-Instanzbereitstellungen verwenden, ist der *BareMetalInfrastructure*-Ressourcenanbieter standardmäßig registriert. Wenn die bereitgestellten BareMetal-Instanzeinheiten nicht angezeigt werden, müssen Sie den Ressourcenanbieter in Ihrem Abonnement registrieren. 
+
+Der BareMetal-Instanzressourcenanbieter kann auf zwei Arten registriert werden:
  
 * [Azure-Befehlszeilenschnittstelle](#azure-cli)
  
@@ -85,15 +87,15 @@ Die dargestellten Attribute unterscheiden sich nicht wesentlich von den Azure-VM
 Auf der rechten Seite werden der Name, das Betriebssystem, die IP-Adresse und die SKU des Geräts mit der Anzahl der CPU-Threads und dem Arbeitsspeicher angezeigt. Außerdem sehen Sie den Energiezustand und die Hardwareversion (Revision des BareMetal-Instanzstamps). Der Energiezustand gibt an, ob die Hardwareeinheit ein- oder ausgeschaltet ist. Die Details des Betriebssystems geben jedoch keinen Aufschluss darüber, ob es ausgeführt wird.
  
 Mögliche Hardwarerevisionen:
+
+* Revision 3 (Rev 3)
+
+* Revision 4 (Rev 4)
  
-* Revision 3
- 
-* Revision 4
- 
-* Revision 4.2
+* Revision 4.2 (Rev 4.2)
  
 >[!NOTE]
->Revision 4.2 ist die neueste BareMetal-Infrastruktur-Revision mit neuem Branding, die die Architektur von Revision 4 verwendet. Sie bietet wesentliche Verbesserungen in der Netzwerklatenz zwischen Azure-VMs und BareMetal-Instanzeinheiten, die in Revision 4-Stamps oder -Reihen bereitgestellt werden. Weitere Informationen zu den verschiedenen Revisionen finden Sie unter [BareMetal-Infrastrukturen in Azure](baremetal-overview-architecture.md).
+>Rev 4.2 ist die neueste BareMetal Infrastructure-Revision mit neuem Branding, die die vorhandene Architektur von Rev 4 verwendet. Rev 4 befindet sich näher an den Azure-VM-Hosts (virtuelle Computer). Sie bietet wesentliche Verbesserungen bei der Netzwerklatenz zwischen Azure-VMs und BareMetal-Instanzeinheiten, die in Rev 4-Stamps oder -Reihen bereitgestellt werden. Sie können über das Azure-Portal auf Ihre BareMetal-Instanzen zugreifen und diese verwalten. Weitere Informationen finden Sie unter [Was ist BareMetal Infrastructure (Vorschau) in Azure?](baremetal-overview-architecture.md).
  
 Auf der rechten Seite sehen Sie den Namen der [Azure-Näherungsplatzierungsgruppe](../../../virtual-machines/linux/co-location.md), die automatisch für jede bereitgestellte BareMetal-Instanzeinheit erstellt wird. Referenzieren Sie die Näherungsplatzierungsgruppe bei der Bereitstellung der Azure-VMs, die die Anwendungsschicht hosten. Durch die Verwendung der Näherungsplatzierungsgruppe, die der BareMetal-Instanzeinheit zugeordnet ist, stellen Sie sicher, dass die Azure-VMs in unmittelbarer Nähe der BareMetal-Instanzeinheit bereitgestellt werden.
  

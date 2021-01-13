@@ -10,15 +10,15 @@ ms.devlang: ''
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/13/2019
+ms.date: 01/05/2020
 ms.author: kumud
 ms.reviewer: ypitsch
-ms.openlocfilehash: 05e966d3f4631e3c344bd97c0faec99cc3c6dd66
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: a33c7e7d637b519b249c250481a73d04c661d4d5
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91819890"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97915843"
 ---
 # <a name="microsoft-global-network"></a>Globales Microsoft-Netzwerk
 
@@ -71,4 +71,5 @@ Diese Prinzipien gelten auf jeder Ebene des Netzwerks: von Host-Netzwerkschnitts
 Das exponentielle Wachstum von Azure und seinem Netzwerk hat einen Punkt erreicht, an dem wir schließlich erkannt haben, dass die menschliche Intuition bei der Verwaltung des globalen Netzwerkbetriebs an ihre Grenzen stößt. Um dem Bedarf der Validierung lang-, mittel- und kurzfristiger Änderungen im Netzwerk gerecht zu werden, haben wir eine Plattform zum synthetischen Spiegeln und Emulieren des Produktionsnetzwerks entwickelt. Die Möglichkeit zur Erstellung gespiegelter Umgebungen und zur Ausführung von Millionen von Simulationen gestattet es uns, Änderungen an Soft- und Hardware sowie deren Auswirkungen zu testen, bevor sie auf unsere Produktionsplattform und in unser Netzwerk übertragen werden. 
 
 ## <a name="next-steps"></a>Nächste Schritte
+- [Erfahren Sie, wie Microsoft globale Netzwerkzuverlässigkeit durch intelligente Software verbessern kann.](https://azure.microsoft.com/blog/advancing-global-network-reliability-through-intelligent-software-part-1-of-2/)
 - [Weitere Informationen zu den Netzwerkdiensten in Azure](https://azure.microsoft.com/product-categories/networking/)

@@ -1,7 +1,7 @@
 ---
-title: Featurisierung in AutoML-Experimenten
+title: Featurisierung mit automatisiertem maschinellem Lernen
 titleSuffix: Azure Machine Learning
-description: Erfahren Sie, welche Featurisierungseinstellungen Azure Machine Learning bietet und wie Feature Engineering in Experimenten mit automatisiertem ML unterstützt wird.
+description: Erfahren Sie mehr über die Einstellungen der Datenfeaturisierung in Azure Machine Learning und wie Sie diese Features für Ihre Experimente mit automatisiertem maschinellen Lernen anpassen können.
 author: nibaccam
 ms.author: nibaccam
 ms.reviewer: nibaccam
@@ -9,23 +9,22 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.custom: how-to, automl
-ms.date: 05/28/2020
-ms.openlocfilehash: 658db1604895515525e5a4826a43c0b21d9698b1
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.custom: how-to,automl,contperf-fy21q2
+ms.date: 12/18/2020
+ms.openlocfilehash: 526afe758063ce6c5f6bd86f8192f56d5f844a85
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93359628"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97694009"
 ---
-# <a name="featurization-in-automated-machine-learning"></a>Featurisierung mit automatisiertem maschinellem Lernen
+# <a name="data-featurization-in-automated-machine-learning"></a>Datenfeaturisierung mit automatisiertem maschinellem Lernen
 
 
 
-In diesem Leitfaden wird Folgendes vermittelt:
+Erfahren Sie mehr über die Einstellungen der Datenfeaturisierung in Azure Machine Learning und wie Sie diese Features für Experimente mit [automatisiertem maschinellen Lernen](concept-automated-ml.md) anpassen können.
 
-- Welche Featurisierungseinstellungen Azure Machine Learning bietet
-- Wie Sie diese Features für Ihre [automatisierten Machine Learning-Experimente](concept-automated-ml.md) anpassen
+## <a name="feature-engineering-and-featurization"></a>Feature Engineering und Featurisierung
 
 Beim *Feature Engineering* werden Domänenkenntnisse der Daten zum Erstellen von Features verwendet, mit denen ML-Algorithmen (Machine Learning) besser lernen können. In Azure Machine Learning wird das Feature Engineering mithilfe von Datenskalierungs- und Normalisierungstechniken vereinfacht. Zusammen werden diese Techniken und das Feature Engineering als *Featurisierung* in Experimenten mit automatisiertem maschinellem Lernen bzw. *AutoML* bezeichnet.
 
@@ -38,7 +37,7 @@ In diesem Artikel wird davon ausgegangen, dass Sie bereits mit der Konfiguration
 
 ## <a name="configure-featurization"></a>Konfigurieren der Featurisierung
 
-Standardmäßig werden in jedem Experiment mit automatisiertem maschinellem Lernen [automatische Skalierungs- und Normalisierungstechniken](#featurization) auf Ihre Daten angewandt. Bei diesen Techniken handelt es sich um Formen der Featurisierung, die für *bestimmte* Algorithmen hilfreich sind, die auf Features unterschiedlichen Größenordnungen reagieren. Sie können jedoch zusätzliche Featurisierungen wie die *Zuschreibung fehlender Werte* , *Codierung* und *Transformationen* aktivieren.
+Standardmäßig werden in jedem Experiment mit automatisiertem maschinellem Lernen [automatische Skalierungs- und Normalisierungstechniken](#featurization) auf Ihre Daten angewandt. Bei diesen Techniken handelt es sich um Formen der Featurisierung, die für *bestimmte* Algorithmen hilfreich sind, die auf Features unterschiedlichen Größenordnungen reagieren. Sie können zusätzliche Featurisierungen wie die *Zuschreibung fehlender Werte*, *Codierung* und *Transformationen* aktivieren.
 
 > [!NOTE]
 > Die Schritte zur Featurisierung bei automatisiertem maschinellen Lernen (Featurenormalisierung, Behandlung fehlender Daten, Umwandlung von Text in numerische Daten usw.) werden Teil des zugrunde liegenden Modells. Bei Verwendung des Modells für Vorhersagen werden die während des Trainings angewendeten Schritte zur Featurisierung automatisch auf Ihre Eingabedaten angewendet.
@@ -49,7 +48,7 @@ In der folgenden Tabelle sind die akzeptierten Einstellungen für `featurization
 
 |Konfiguration der Featurisierung | BESCHREIBUNG|
 ------------- | ------------- |
-|`"featurization": 'auto'`| Gibt an, dass im Rahmen der Vorverarbeitung die folgenden [Schritte für Datenschutzmaßnahmen und Featurebereitstellung](#featurization) automatisch durchgeführt werden müssen. Dies ist die Standardeinstellung.|
+|`"featurization": 'auto'`| Gibt an, dass im Rahmen der Vorverarbeitung die folgenden Schritte für [Datenschutzmaßnahmen](#data-guardrails) und [Featurisierung](#featurization) automatisch durchgeführt werden müssen. Dies ist die Standardeinstellung.|
 |`"featurization": 'off'`| Gibt an, dass Featurisierungsschritte nicht automatisch durchgeführt werden müssen.|
 |`"featurization":`&nbsp;`'FeaturizationConfig'`| Gibt an, dass benutzerdefinierte Featurisierungsschritte verwendet werden sollen. [Erfahren Sie, wie Sie die Featurebereitstellung anpassen](#customize-featurization).|
 
@@ -66,7 +65,7 @@ In der folgenden Tabelle sind die Verfahren zusammengefasst, die automatisch auf
 | ------------- | ------------- |
 |**Löschen von Features mit hoher Kardinalität oder ohne Varianz** _ |Löschen Sie diese Features aus Trainings-und Validierungssätzen. Gilt für Features, denen alle Werte fehlen, die denselben Wert für alle Zeilen haben oder die eine sehr hohe Kardinalität (z. B. Hashes, IDs oder GUIDs) aufweisen.|
 |_*Imputieren von fehlenden Werten**_ |Bei numerischen Features werden fehlende Werte mit dem Durchschnitt der Werte in der Spalte imputiert.<br/><br/>Bei kategorischen Features werden fehlende Werte mit dem am häufigsten vorkommenden Wert imputiert.|
-|_*Generieren zusätzlicher Features**_ |Für DateTime-Funktionen: Jahr, Monat, Tag, Tag der Woche, Tag des Jahres, Quartal, Woche des Jahres, Stunde, Minute, Sekunde.<br><br> _Für Vorhersageaufgaben* werden diese zusätzlichen DateTime-Features erstellt: ISO-Jahr, Halb – Halbjahr, Kalendermonat als Zeichenfolge, Woche, Wochentag als Zeichenfolge, Quartalstag, Tag des Jahres, AM/PM (0, wenn die Stunde vor Mittag ist (12 pm), andernfalls 1), AM/PM als Zeichenfolge, Tageszeit (12-Stunden-Basis)<br/><br/>Für Text-Funktionen: Ausdruckshäufigkeit basierend auf Unigrammen, Bigrammen und Trigrammen. Informieren Sie sich, [wie Sie hierzu BERT verwenden](#bert-integration).|
+|_*Generieren weiterer Features**_ |Für DateTime-Funktionen: Jahr, Monat, Tag, Tag der Woche, Tag des Jahres, Quartal, Woche des Jahres, Stunde, Minute, Sekunde.<br><br> _Für Vorhersageaufgaben* werden diese zusätzlichen DateTime-Features erstellt: ISO-Jahr, Halb – Halbjahr, Kalendermonat als Zeichenfolge, Woche, Wochentag als Zeichenfolge, Quartalstag, Tag des Jahres, AM/PM (0, wenn die Stunde vor Mittag ist (12 pm), andernfalls 1), AM/PM als Zeichenfolge, Tageszeit (12-Stunden-Basis)<br/><br/>Für Text-Funktionen: Ausdruckshäufigkeit basierend auf Unigrammen, Bigrammen und Trigrammen. Informieren Sie sich, [wie Sie hierzu BERT verwenden](#bert-integration).|
 |**Transformieren und Codieren** _|Numerische Features mit wenigen eindeutigen Werten werden in kategorische Features transformiert.<br/><br/>One-Hot-Codierung wird für kategorische Features mit geringer Kardinalität verwendet. One-Hot-Hashcodierung wird für kategorische Features mit hoher Kardinalität verwendet.|
 |_ *Worteinbettungen**|Ein Textfeaturizer konvertiert Vektoren von Texttoken mithilfe eines vortrainierten Modells in Satzvektoren. Der Einbettungsvektor jedes Worts in einem Dokument wird mit dem Rest zusammengefasst und produziert so einen Dokumentenfeaturevektor.|
 |**Zielcodierungen**|Bei kategorischen Features wird durch diesen Schritt jede Kategorie einem gemitteltem Zielwert für Regressionsprobleme und der Klassenwahrscheinlichkeit für jede Klasse für Klassifizierungsprobleme zugeordnet. Häufigkeitsbasierte Gewichtung und k-fache Kreuzvalidierung werden angewendet, um die Überanpassung der Zuordnung und das Rauschen durch dünn besetzte Datenkategorien zu verringern.|
@@ -80,8 +79,8 @@ Der *Datenintegritätsschutz* hilft Ihnen dabei, potenzielle Probleme mit Ihren 
 
 Der Datenintegritätsschutz wird für Folgendes angewendet:
 
-- **Für SDK-Experimente** : wenn die Parameter `"featurization": 'auto'` oder `validation=auto` in Ihrem `AutoMLConfig`-Objekt angegeben sind
-- **Für Studio-Experimente** : wenn die automatische Featurisierung aktiviert ist
+- **Für SDK-Experimente**: wenn die Parameter `"featurization": 'auto'` oder `validation=auto` in Ihrem `AutoMLConfig`-Objekt angegeben sind
+- **Für Studio-Experimente**: wenn die automatische Featurisierung aktiviert ist
 
 Sie können den Datenintegritätsschutz für Ihr Experiment folgendermaßen überprüfen:
 
@@ -108,7 +107,7 @@ Schutzmaßnahme|Status|Bedingung&nbsp;für&nbsp;Auslösung
 **Ergänzen fehlender Featurewerte durch Imputation** |Erfolgreich <br><br><br> Vorgehensweise| Es wurden keine fehlenden Featurewerte in Ihren Trainingsdaten festgestellt. Erfahren Sie mehr über die [Imputation fehlender Werte](./how-to-use-automated-ml-for-ml-models.md#customize-featurization). <br><br> Fehlende Featurewerte wurden in Ihren Trainingsdaten festgestellt und imputiert.
 **Behandeln von Features mit hoher Kardinalität** |Erfolgreich <br><br><br> Vorgehensweise| Ihre Eingaben wurden analysiert, und es wurden keine Features mit hoher Kardinalität gefunden. <br><br> Features mit hoher Kardinalität wurden in Ihren Eingaben erkannt und behandelt.
 **Verarbeitung der Überprüfungsaufteilung** |Vorgehensweise| Die Überprüfungskonfiguration wurde auf `'auto'` festgelegt, und die Trainingsdaten enthielten *mehr als 20.000 Zeilen*. <br> Jede Iteration des trainierten Modells wurde durch Kreuzvalidierung überprüft. Erfahren Sie mehr über [Überprüfungsdaten](./how-to-configure-auto-train.md#training-validation-and-test-data). <br><br> Die Überprüfungskonfiguration wurde auf `'auto'` festgelegt, und die Trainingsdaten enthielten *weniger als 20.000 Zeilen*. <br> Die Eingabedaten wurden zur Überprüfung des Modells in ein Trainingsdataset und ein Validierungsdataset aufgeteilt.
-**Ausgewogenheitserkennung für Klassen** |Erfolgreich <br><br><br><br>Benachrichtigt <br><br><br>Vorgehensweise | Ihre Eingaben wurden analysiert, und alle Klassen in Ihren Trainingsdaten sind ausgeglichen. Ein Dataset gilt als ausgewogen, wenn jede Klasse im Datensatz gemessen an Anzahl und Verhältnis der Stichproben gut repräsentiert ist. <br><br> In Ihren Eingaben wurden unausgeglichene Klassen erkannt. Beheben Sie das Ausgleichsproblem, um den Modelltrend zu beheben. Erfahren Sie mehr über [unausgeglichene Daten](./concept-manage-ml-pitfalls.md#identify-models-with-imbalanced-data).<br><br> In Ihren Eingaben wurden unausgeglichene Klassen festgestellt, und die Sweeping-Logik hat beschlossen, einen Ausgleich anzuwenden.
+**Ausgewogenheitserkennung für Klassen** |Erfolgreich <br><br><br><br>Benachrichtigt <br><br><br>Fertig | Ihre Eingaben wurden analysiert, und alle Klassen in Ihren Trainingsdaten sind ausgeglichen. Ein Dataset gilt als ausgewogen, wenn jede Klasse im Datensatz gemessen an Anzahl und Verhältnis der Stichproben gut repräsentiert ist. <br><br> In Ihren Eingaben wurden unausgeglichene Klassen erkannt. Beheben Sie das Ausgleichsproblem, um den Modelltrend zu beheben. Erfahren Sie mehr über [unausgeglichene Daten](./concept-manage-ml-pitfalls.md#identify-models-with-imbalanced-data).<br><br> In Ihren Eingaben wurden unausgeglichene Klassen festgestellt, und die Sweeping-Logik hat beschlossen, einen Ausgleich anzuwenden.
 **Erkennung von Arbeitsspeicherproblemen** |Erfolgreich <br><br><br><br> Vorgehensweise |<br> Die ausgewählten Werte (Horizont, Verzögerung und rollierendes Zeitfenster) wurden analysiert, und es wurden keine potenziellen Probleme aufgrund von unzureichendem Speicherplatz erkannt. Erfahren Sie mehr über [Vorhersagekonfigurationen](./how-to-auto-train-forecast.md#configuration-settings) von Zeitreihen. <br><br><br>Die ausgewählten Werte (Horizont, Verzögerung und rollierendes Zeitfenster) wurden analysiert, und für Ihr Experiment steht unter Umständen nicht genügend Speicherplatz zur Verfügung. Die Konfigurationen für Verzögerung oder rollierende Zeitfenster wurden deaktiviert.
 **Häufigkeitserkennung** |Erfolgreich <br><br><br><br> Vorgehensweise |<br> Die Zeitreihe wurde analysiert, und alle Datenpunkte entsprechen der erkannten Häufigkeit. <br> <br> Die Zeitreihe wurde analysiert, und es wurden Datenpunkte ermittelt, die nicht mit der erkannten Häufigkeit übereinstimmen. Diese Datenpunkte wurden aus dem Dataset entfernt. Erfahren Sie mehr über die [Datenaufbereitung für die Zeitreihenvorhersage](./how-to-auto-train-forecast.md#preparing-data).
 
@@ -303,22 +302,24 @@ class_prob = fitted_model.predict_proba(X_test)
 
 Wenn das zugrundeliegende Modell die `predict_proba()`-Funktion nicht unterstützt oder das Format falsch ist, wird eine für die Modellklasse spezifische Ausnahme ausgelöst. Beispiele zur Implementierung dieser Funktion für verschiedene Modelltypen finden Sie in den Referenzdokumenten zu [RandomForestClassifier](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier.predict_proba) und [XGBoost](https://xgboost.readthedocs.io/en/latest/python/python_api.html).
 
-## <a name="bert-integration"></a>BERT-Integration
+<a name="bert-integration"></a>
+
+## <a name="bert-integration-in-automated-ml"></a>BERT-Integration im automatisierten maschinellen Lernen
 
 [BERT](https://techcommunity.microsoft.com/t5/azure-ai/how-bert-is-integrated-into-azure-automated-machine-learning/ba-p/1194657) wird auf der Featurisierungsebene von AutoML verwendet. Wenn in dieser Ebene eine Spalte freien Text oder andere Datentypen wie Zeitstempel oder einfache Zahlen enthält, dann wird die Featurisierung entsprechend angewendet.
 
 Für BERT wird das Modell unter Verwendung der von den Anbietern zur Verfügung gestellten Bezeichnungen optimiert und trainiert. Von hier aus werden die Dokumenteinbettungen als Features neben anderen ausgegeben, z. B. zeitstempelbasierte Features, Wochentag. 
 
 
-### <a name="bert-steps"></a>BERT-Schritte
+### <a name="steps-to-invoke-bert"></a>Schritte zum Aufrufen von BERT
 
-Um BERT aufzurufen, müssen Sie `enable_dnn: True` in Ihren „automl_settings“ festlegen und eine GPU-Computeressource verwenden (z. B. `vm_size = "STANDARD_NC6"` oder eine höhere GPU). Wenn eine CPU-Computeressource verwendet wird, aktiviert AutoML anstatt BERT den BiLSTM DNN-Featurizer.
+Um BERT aufzurufen, legen Sie `enable_dnn: True` in Ihren „automl_settings“ fest und verwenden eine GPU-Computeressource (`vm_size = "STANDARD_NC6"` oder eine höhere GPU). Wenn eine CPU-Computeressource verwendet wird, aktiviert AutoML anstatt BERT den BiLSTM DNN-Featurizer.
 
 AutoML führt die folgenden Schritte für BERT aus. 
 
 1. **Vorverarbeitung und Tokenisierung aller Textspalten**. Beispielsweise ist der „StringCast“-Transformator in der Zusammenfassung der Featurisierung für das endgültige Modell zu finden. Ein Beispiel dafür, wie die Zusammenfassung der Featurisierung des Modells zu erstellen ist, findet sich in [diesem Notebook](https://towardsdatascience.com/automated-text-classification-using-machine-learning-3df4f4f9570b).
 
-2. **Verketten Sie alle Textspalten zu einer einzelnen Textspalte** , daher das `StringConcatTransformer` im endgültigen Modell. 
+2. **Verketten Sie alle Textspalten zu einer einzelnen Textspalte**, daher das `StringConcatTransformer` im endgültigen Modell. 
 
     Bei unserer Implementierung von BERT ist die Gesamttextlänge eines Trainingsbeispiels auf 128 Token eingeschränkt. Das bedeutet, dass bei der Verkettung alle Textspalten idealerweise höchstens 128 Token aufweisen sollten. Wenn mehrere Spalten vorhanden sind, sollte jede Spalte gekürzt werden, sodass diese Bedingung erfüllt ist. Bei verketteten Spalten mit einer Länge von mehr als 128 Token kürzt die Tokenizerebene von BERT diese Eingabe andernfalls auf 128 Token.
 
@@ -327,7 +328,8 @@ AutoML führt die folgenden Schritte für BERT aus.
 Die Ausführung von BERT dauert im Allgemeinen länger als bei den anderen Featurizern. Für eine bessere Leistung empfehlen wir die Verwendung von „STANDARD_NC24r“ oder „STANDARD_NC24rs_V3“ für die RDMA-Fähigkeiten. 
 
 AutoML verteilt das BERT-Training auf mehrere Knoten, wenn diese verfügbar sind (bis zu maximal acht Knoten). Dies kann in Ihrem `AutoMLConfig`-Objekt erfolgen, indem Sie den `max_concurrent_iterations`-Parameter auf einen höheren Wert als 1 festlegen. 
-### <a name="supported-languages"></a>Unterstützte Sprachen
+
+## <a name="supported-languages-for-bert-in-automl"></a>Unterstützte Sprachen für BERT in AutoML 
 
 AutoML unterstützt derzeit ungefähr 100 Sprachen und wählt abhängig von der Sprache des Datasets das entsprechende BERT-Modell aus. Für Daten in deutscher Sprache wird das deutsche BERT-Modell verwendet. Für englische Daten wird das englische BERT-Modell verwendet. Für alle anderen Sprachen nutzen wir das mehrsprachige BERT-Modell.
 

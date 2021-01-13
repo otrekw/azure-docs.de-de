@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 10/30/2020
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: d01136ea4377bd7d35a2e11b4bcf654bcf677fbe
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: e357667e650e9feeb8dceeffe71c287cde9fe8a0
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97401558"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631600"
 ---
 # <a name="virtual-network-service-tags"></a>Diensttags in virtuellen Netzwerken
 <a name="network-service-tags"></a>
@@ -53,6 +53,7 @@ Standardmäßig spiegeln Diensttags die Bereiche für die gesamte Cloud wider. E
 | **AzureActiveDirectory** | Azure Active Directory | Ausgehend | Nein | Ja |
 | **AzureActiveDirectoryDomainServices** | Verwaltungsdatenverkehr für dedizierte Azure Active Directory Domain Services-Bereitstellungen. | Beide | Nein | Ja |
 | **AzureAdvancedThreatProtection** | Azure Advanced Threat Protection | Ausgehend | Nein | Nein |
+| **AzureArcInfrastructure** | Azure Arc-fähige Server, Azure Arc-fähiges Kubernetes und Datenverkehr der Gastkonfiguration.<br/><br/>*Hinweis:* Dieses Tag weist eine Abhängigkeit von den Tags **AzureActiveDirectory**,**AzureTrafficManager** und **AzureResourceManager** auf. *Dieses Tag ist derzeit nicht über das Azure-Portal konfigurierbar*.| Ausgehend | Nein | Ja |
 | **AzureBackup** |Azure Backup.<br/><br/>*Hinweis:* Dieses Tag weist eine Abhängigkeit vom Tag **Storage** und **AzureActiveDirectory** auf. | Ausgehend | Nein | Ja |
 | **AzureBotService** | Azure Bot Service | Ausgehend | Nein | Nein |
 | **AzureCloud** | Alle [öffentlichen IP-Adressen im Rechenzentrum](https://www.microsoft.com/download/details.aspx?id=56519). | Ausgehend | Ja | Ja |

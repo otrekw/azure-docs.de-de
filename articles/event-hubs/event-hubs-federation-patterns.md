@@ -3,12 +3,12 @@ title: 'Muster für Ereignisreplikationsaufgaben: Azure Event Hubs | Microsoft-D
 description: Dieser Artikel enthält ausführliche Anleitungen zur Implementierung spezifischer Muster für Ereignisreplikationsaufgaben.
 ms.topic: article
 ms.date: 12/12/2020
-ms.openlocfilehash: 7702b1987faabfce8d97e7b5c9b18766df72caad
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: 494de442b636d535fa1ed6fdeeeda28db9783952
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97803985"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861376"
 ---
 # <a name="event-replication-tasks-patterns"></a>Muster für Ereignisreplikationsaufgaben
 
@@ -20,7 +20,7 @@ In diesem Artikel finden Sie eine ausführliche Anleitung zur Implementierung ei
 
 Das Replikationsmuster kopiert Ereignisse von einer Event Hub-Instanz zur nächsten oder von einer -Instanz in ein anderes Ziel, z. B. eine Service Bus-Warteschlange. Die Ereignisse werden weitergeleitet, ohne dass Änderungen an den Ereignisnutzdaten vorgenommen werden.
 
-Die Implementierung dieses Musters wird in den Beispielen [Ereignisreplikation zwischen Event Hub-Instanzen](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/EventHubCopy) und [Ereignisreplikation zwischen Event Hub-Instanzen und Service Bus](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/EventHubCopyToServiceBus) behandelt.
+Die Implementierung dieses Musters wird durch die Beispiele zur [Ereignisreplikation zwischen Event Hubs](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/EventHubCopy) und [Ereignisreplikation zwischen Event Hubs und Service Bus](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/EventHubCopyToServiceBus) und das Tutorial [Verwenden von Apache Kafka MirrorMaker mit Event Hubs](event-hubs-kafka-mirror-maker-tutorial.md) für den spezifischen Fall des Replizierens von Daten von einem Apache Kafka-Broker in Event Hubs abgedeckt.
 
 ### <a name="streams-and-order-preservation"></a>Datenströme und Beibehaltung der Reihenfolge
 

@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 219fe2d9d8ac46ba3dbeebe6aaae9dddc0883aa0
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: e7d013775861f290d532e0d7c132896ebeff8ae8
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500409"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680214"
 ---
 # <a name="platform-supported-migration-of-iaas-resources-from-classic-to-azure-resource-manager-in-linux"></a>Plattformgestützte Migration von IaaS-Ressourcen vom klassischen Bereitstellungsmodell zu Azure Resource Manager in Linux
 
@@ -22,7 +22,7 @@ ms.locfileid: "96500409"
 
 
 
-Dieser Artikel beschreibt, wie Sie IaaS-Ressourcen (Infrastructure-as-a-Service) vom klassischen Bereitstellungsmodell zum Resource Manager-Bereitstellungsmodell migrieren. Der Artikel enthält zudem Informationen dazu, wie Sie Ressourcen aus den beiden Bereitstellungsmodellen, die in Ihrem Abonnement nebeneinander existieren, mithilfe von Standort-zu-Standort-Gateways miteinander verbinden. Informieren Sie sich weiter über [Features und Vorteile von Azure Resource Manager](../azure-resource-manager/management/overview.md). 
+Dieser Artikel bietet eine Übersicht über das plattformgestützte Migrationstool, wie Ressourcen von den Azure Service Manager- (klassisch) zu Resource Manager-Bereitstellungsmodellen (ARM) migriert werden können, und beschreibt, wie Ressourcen aus den beiden Bereitstellungsmodellen, die in Ihrem Abonnement nebeneinander existieren, mithilfe von Site-to-Site-Gateways im virtuellen Netzwerk verbunden werden können. Informieren Sie sich weiter über [Features und Vorteile von Azure Resource Manager](../azure-resource-manager/management/overview.md). 
 
 ## <a name="goal-for-migration"></a>Ziel der Migration
 Resource Manager ermöglicht die Bereitstellung komplexer Anwendungen über Vorlagen, konfiguriert virtuelle Computer mit VM-Erweiterungen und bietet Möglichkeiten zur Zugriffsverwaltung und Markierung. Azure Resource Manager umfasst die skalierbare, parallele Bereitstellung für virtuelle Computer in Verfügbarkeitsgruppen. Das neue Bereitstellungsmodell bietet auch die unabhängige Lebenszyklusverwaltung der Bereiche Compute, Netzwerk und Speicher. Zudem liegt ein Schwerpunkt auf der standardmäßigen Sicherstellung der Sicherheit, indem virtuelle Computer in einem virtuellen Netzwerk verwendet werden.
@@ -37,7 +37,7 @@ Nahezu alle Funktionen des klassischen Bereitstellungsmodells werden für die Be
 * Speicherkonten
 * Virtuelle Netzwerke
 * VPN-Gateways
-* ExpressRoute-Gateways _(nur im gleichen Abonnement wie das virtuelle Netzwerk)_
+* [ExpressRoute-Gateways](https://docs.microsoft.com/azure/expressroute/expressroute-howto-move-arm) _(nur im gleichen Abonnement wie das virtuelle Netzwerk)_
 * Netzwerksicherheitsgruppen
 * Routingtabellen
 * Reservierte IP-Adressen

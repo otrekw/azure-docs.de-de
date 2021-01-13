@@ -10,12 +10,12 @@ ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: delhan
-ms.openlocfilehash: fbf8c1987a66cad6d9d9bc9dab829af4b42a224e
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 236390529ddaf84416448138d7b5bdf31caf681b
+ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91971556"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97827494"
 ---
 # <a name="how-to-use-boot-diagnostics-to-troubleshoot-virtual-machines-in-azure"></a>Es wird beschrieben, wie Sie die Startdiagnose zum Beheben von Problemen mit virtuellen Computern in Azure verwenden.
 
@@ -87,7 +87,7 @@ Zum Aktivieren von Startdiagnoseeinstellungen auf vorhandenen virtuellen Compute
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und wählen Sie dann den virtuellen Computer aus.
 2. Wählen Sie im Abschnitt **Support + Problembehandlung** die Option **Startdiagnose** und dann die Registerkarte **Einstellungen** aus.
-3. Ändern Sie in den Einstellungen für **Startdiagnose** den Status in **Ein** , und wählen Sie in der Dropdownliste **Speicherkonto** ein Speicherkonto aus. 
+3. Ändern Sie in den Einstellungen für **Startdiagnose** den Status in **Ein**, und wählen Sie in der Dropdownliste **Speicherkonto** ein Speicherkonto aus. 
 4. Speichern Sie die Änderungen.
 
     ![Aktualisieren eines vorhandenen virtuellen Computers](./media/virtual-machines-common-boot-diagnostics/enable-for-existing-vm.png)
