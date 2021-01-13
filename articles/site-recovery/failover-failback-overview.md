@@ -3,12 +3,12 @@ title: Informationen zu Failover und Failback in Azure Site Recovery
 description: Erfahren Sie mehr über Failover und Failback in Azure Site Recovery.
 ms.topic: conceptual
 ms.date: 12/24/2019
-ms.openlocfilehash: 3617683200aa3ffba08061b70993613fd0cc7241
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: b900655d6fdf1143d430ac842bfd84eb1dfdf34c
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369878"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98070742"
 ---
 # <a name="about-on-premises-disaster-recovery-failoverfailback"></a>Informationen zum lokalen Failover und Failback bei der Notfallwiederherstellung
 
@@ -18,10 +18,10 @@ Dieser Artikel bietet eine Übersicht über Failover- und Failbackvorgänge bei 
 
 Failover und Failback in Site Recovery erfolgen in vier Phasen:
 
-- **Phase 1: Failover vom lokalen Standort** : Nach dem Einrichten der Replikation in Azure für lokale Computer führen Sie ein Failover dieser Computer nach Azure durch, wenn Ihr lokaler Standort ausfällt. Nach dem Failover werden auf der Grundlage der replizierten Daten virtuelle Azure-Computer erstellt.
-- **Phase 2: Erneutes Schützen der Azure-VMs** : In Azure schützen Sie die Azure-VMs erneut, damit sie wieder an den lokalen Standort repliziert werden können. Die lokale VM (sofern verfügbar) wird während der Anwendung des erneuten Schutzes deaktiviert, um die Konsistenz der Daten sicherzustellen.
-- **Phase 3: Failover von Azure** : Wenn der Normalbetrieb Ihres lokalen Standorts wiederhergestellt ist, führen Sie erneut ein Failover aus, um ein Failback der Azure-VMs an Ihren lokalen Standort durchzuführen. Sie können das Failback zum ursprünglichen Speicherort durchführen – von dem aus Sie das Failover ausgeführt haben – oder einen anderen Speicherort verwenden.
-- **Phase 4: Erneutes Schützen der lokalen Computer** : Nach dem Failback aktivieren Sie die Replikation der lokalen Computer nach Azure erneut.
+- **Phase 1: Failover vom lokalen Standort**: Nach dem Einrichten der Replikation in Azure für lokale Computer führen Sie ein Failover dieser Computer nach Azure durch, wenn Ihr lokaler Standort ausfällt. Nach dem Failover werden auf der Grundlage der replizierten Daten virtuelle Azure-Computer erstellt.
+- **Phase 2: Erneutes Schützen der Azure-VMs**: In Azure schützen Sie die Azure-VMs erneut, damit sie wieder an den lokalen Standort repliziert werden können. Die lokale VM (sofern verfügbar) wird während der Anwendung des erneuten Schutzes deaktiviert, um die Konsistenz der Daten sicherzustellen.
+- **Phase 3: Failover von Azure**: Wenn der Normalbetrieb Ihres lokalen Standorts wiederhergestellt ist, führen Sie erneut ein Failover aus, um ein Failback der Azure-VMs an Ihren lokalen Standort durchzuführen. Sie können das Failback zum ursprünglichen Speicherort durchführen – von dem aus Sie das Failover ausgeführt haben – oder einen anderen Speicherort verwenden.
+- **Phase 4: Erneutes Schützen der lokalen Computer**: Nach dem Failback aktivieren Sie die Replikation der lokalen Computer nach Azure erneut.
 
 ## <a name="failover"></a>Failover
 
@@ -33,8 +33,8 @@ Sie führen Failovervorgänge im Rahmen Ihrer Strategie für Geschäftskontinuit
 
 Ein Failover erfolgt in zwei Phasen:
 
-- **Failover** : Bei einem Failover wird eine Azure-VM erstellt und anhand des ausgewählten Wiederherstellungspunkts eingerichtet.
-- **Commit** : Nach dem Failover überprüfen Sie die VM in Azure:
+- **Failover**: Bei einem Failover wird eine Azure-VM erstellt und anhand des ausgewählten Wiederherstellungspunkts eingerichtet.
+- **Commit**: Nach dem Failover überprüfen Sie die VM in Azure:
     - Dann können Sie das Failover auf den ausgewählten Wiederherstellungspunkt committen oder einen anderen Punkt für den Commit auswählen.
     - Nach dem Committen des Failovers kann der Wiederherstellungspunkt nicht mehr geändert werden.
 
@@ -45,10 +45,10 @@ Um nach einem Failover über RDP/SSH eine Verbindung mit den Azure-VMs herzustel
 
 **Failover** | **Location** | **Aktionen**
 --- | --- | ---
-**Azure-VM (Windows)** | Auf dem lokalen Computer vor dem Failover | **Zugriff über das Internet** : Aktivieren Sie RDP. Stellen Sie sicher, dass TCP- und UDP-Regeln für **Öffentlich** hinzugefügt werden und dass RDP unter **Windows-Firewall** > **Zugelassene Apps** für alle Profile zugelassen ist.<br/><br/> **Zugriff über Site-to-Site-VPN** : Aktivieren Sie RDP auf dem Computer. Überprüfen Sie, ob RDP unter **Windows-Firewall** -> **Zugelassene Apps und Feature** für **private und Domänennetzwerke** zugelassen ist.<br/><br/>  Achten Sie darauf, dass die SAN-Richtlinie des Betriebssystems auf **OnlineAll** festgelegt ist. [Weitere Informationen](https://support.microsoft.com/kb/3031135)<br/><br/> Stellen Sie sicher, dass auf der VM keine ausstehenden Windows-Updates vorhanden sind, wenn Sie ein Failover auslösen. Windows Update wird möglicherweise während des Failovers gestartet, und Sie können sich erst dann wieder bei der VM anmelden, nachdem die Updates fertig gestellt sind.
-**Virtueller Azure-Computer unter Windows** | Auf der Azure-VM nach einem Failover |  Fügen Sie der VM eine [öffentliche IP-Adresse](/archive/blogs/srinathv/how-to-add-a-public-ip-address-to-azure-vm-for-vm-failed-over-using-asr) hinzu.<br/><br/> In den Netzwerksicherheitsgruppen-Regeln auf der VM nach dem Failover (und im Azure-Subnetz, mit dem sie verbunden ist) müssen eingehende Verbindungen über den RDP-Port zulässig sein.<br/><br/> Aktivieren Sie die **Startdiagnose** , um einen Screenshot der VM anzuzeigen. Wenn Sie keine Verbindung herstellen können, überprüfen Sie, ob die VM ausgeführt wird, und sehen sich die [Tipps zur Problembehandlung](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx) an.
+**Virtueller Azure-Computer unter Windows** | Auf dem lokalen Computer vor dem Failover | **Zugriff über das Internet**: Aktivieren Sie RDP. Stellen Sie sicher, dass TCP- und UDP-Regeln für **Öffentlich** hinzugefügt werden und dass RDP unter **Windows-Firewall** > **Zugelassene Apps** für alle Profile zugelassen ist.<br/><br/> **Zugriff über Site-to-Site-VPN**: Aktivieren Sie RDP auf dem Computer. Überprüfen Sie, ob RDP unter **Windows-Firewall** -> **Zugelassene Apps und Feature** für **private und Domänennetzwerke** zugelassen ist.<br/><br/>  Achten Sie darauf, dass die SAN-Richtlinie des Betriebssystems auf **OnlineAll** festgelegt ist. [Weitere Informationen](https://support.microsoft.com/kb/3031135)<br/><br/> Stellen Sie sicher, dass auf der VM keine ausstehenden Windows-Updates vorhanden sind, wenn Sie ein Failover auslösen. Windows Update wird möglicherweise während des Failovers gestartet, und Sie können sich erst dann wieder bei der VM anmelden, nachdem die Updates fertig gestellt sind.
+**Virtueller Azure-Computer unter Windows** | Auf der Azure-VM nach einem Failover |  Fügen Sie der VM eine [öffentliche IP-Adresse](/archive/blogs/srinathv/how-to-add-a-public-ip-address-to-azure-vm-for-vm-failed-over-using-asr) hinzu.<br/><br/> In den Netzwerksicherheitsgruppen-Regeln auf der VM nach dem Failover (und im Azure-Subnetz, mit dem sie verbunden ist) müssen eingehende Verbindungen über den RDP-Port zulässig sein.<br/><br/> Aktivieren Sie die **Startdiagnose**, um einen Screenshot der VM anzuzeigen. Wenn Sie keine Verbindung herstellen können, überprüfen Sie, ob die VM ausgeführt wird, und sehen sich die [Tipps zur Problembehandlung](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx) an.
 **Virtueller Azure-Computer unter Linux** | Auf dem lokalen Computer vor dem Failover | Stellen Sie sicher, dass der Secure Shell-Dienst auf der VM so festgelegt ist, dass er beim Systemstart automatisch gestartet wird.<br/><br/> Überprüfen Sie, ob die Firewallregeln eine SSH-Verbindung damit zulassen.
-**Virtueller Azure-Computer unter Linux** | Auf der Azure-VM nach einem Failover | In den Netzwerksicherheitsgruppen-Regeln auf der VM nach dem Failover (und für das Azure-Subnetz, mit dem sie verbunden ist) müssen eingehende Verbindungen über den SSH-Port zulässig sein.<br/><br/> Fügen Sie der VM eine [öffentliche IP-Adresse](/archive/blogs/srinathv/how-to-add-a-public-ip-address-to-azure-vm-for-vm-failed-over-using-asr) hinzu.<br/><br/> Aktivieren Sie die **Startdiagnose** , um einen Screenshot der VM anzuzeigen.<br/><br/>
+**Virtueller Azure-Computer unter Linux** | Auf der Azure-VM nach einem Failover | In den Netzwerksicherheitsgruppen-Regeln auf der VM nach dem Failover (und für das Azure-Subnetz, mit dem sie verbunden ist) müssen eingehende Verbindungen über den SSH-Port zulässig sein.<br/><br/> Fügen Sie der VM eine [öffentliche IP-Adresse](/archive/blogs/srinathv/how-to-add-a-public-ip-address-to-azure-vm-for-vm-failed-over-using-asr) hinzu.<br/><br/> Aktivieren Sie die **Startdiagnose**, um einen Screenshot der VM anzuzeigen.<br/><br/>
 
 ## <a name="types-of-failover"></a>Failover-Arten
 
@@ -124,8 +124,8 @@ Erfahren Sie mehr über den erneuten Schutz und das Failback für VMware-VMs:
 
 Wenn Sie Azure-VMs im lokalen Speicherort erneut schützen, können Sie angeben, ob ein Failback zum ursprünglichen oder einem anderen Speicherort erfolgen soll.
 
-- **Wiederherstellung am ursprünglichen Speicherort** : Damit wird ein Failback von Azure zum selben lokalen Quellcomputer ausgeführt, sofern dieser vorhanden ist. In diesem Szenario werden nur Änderungen wieder an den lokalen Computer repliziert.
-- **Wiederherstellung an einem anderen Speicherort** : Wenn der lokale Computer nicht vorhanden ist, können Sie ein Failback von Azure zu einem anderen Speicherort durchführen. Wenn Sie die Azure-VM im lokalen Speicherort erneut schützen, wird der lokale Computer erstellt. Von Azure zum lokalen Speicherort erfolgt eine vollständige Datenreplikation. [Informieren](concepts-types-of-failback.md) Sie sich über die Anforderungen und Einschränkungen für das Failback.
+- **Wiederherstellung am ursprünglichen Speicherort**: Damit wird ein Failback von Azure zum selben lokalen Quellcomputer ausgeführt, sofern dieser vorhanden ist. In diesem Szenario werden nur Änderungen wieder an den lokalen Computer repliziert.
+- **Wiederherstellung an einem anderen Speicherort**: Wenn der lokale Computer nicht vorhanden ist, können Sie ein Failback von Azure zu einem anderen Speicherort durchführen. Wenn Sie die Azure-VM im lokalen Speicherort erneut schützen, wird der lokale Computer erstellt. Von Azure zum lokalen Speicherort erfolgt eine vollständige Datenreplikation. [Informieren](concepts-types-of-failback.md) Sie sich über die Anforderungen und Einschränkungen für das Failback.
 
 
 
@@ -138,21 +138,21 @@ So schützen Sie Hyper-V-VMs erneut und führen ein Failback von Azure zum lokal
 - Sie führen ein geplantes Failback von Azure zum lokalen Standort aus.
 - Für das Failback der Hyper-V-VMs müssen keine speziellen Komponenten eingerichtet werden.
 - Während des geplanten Failovers können Sie Optionen auswählen, um Daten vor dem Failback zu synchronisieren:
-    - **Daten vor dem Failover synchronisieren** : Diese Option minimiert die Ausfallzeiten der virtuellen Computer, da die Computer synchronisiert werden, ohne dass sie heruntergefahren werden.
+    - **Daten vor dem Failover synchronisieren**: Diese Option minimiert die Ausfallzeiten der virtuellen Computer, da die Computer synchronisiert werden, ohne dass sie heruntergefahren werden.
         - Phase 1: Eine Momentaufnahme der Azure-VM wird erstellt und auf den lokalen Hyper-V-Host kopiert. Der Computer wird weiterhin in Azure ausgeführt.
         - Phase 2: Die Azure-VM wird heruntergefahren, sodass dort keine neuen Änderungen auftreten. Die letzten Deltaänderungen werden an den lokalen Server übertragen, und die lokale VM wird gestartet.
-    - **Daten nur während des Failovers synchronisieren** : Diese Option ist schneller, da erwartet wird, dass die meisten Daten auf dem Datenträger geändert wurden, und daher keine Prüfsummenberechnungen durchgeführt werden. Mit der Option wird ein Download des Datenträgers durchgeführt. Die Option wird empfohlen, wenn die VM bereits seit einer Weile in Azure ausgeführt wurde (mindestens einen Monat) oder wenn die lokale VM gelöscht wurde.
+    - **Daten nur während des Failovers synchronisieren**: Diese Option ist schneller, da erwartet wird, dass die meisten Daten auf dem Datenträger geändert wurden, und daher keine Prüfsummenberechnungen durchgeführt werden. Mit der Option wird ein Download des Datenträgers durchgeführt. Die Option wird empfohlen, wenn die VM bereits seit einer Weile in Azure ausgeführt wurde (mindestens einen Monat) oder wenn die lokale VM gelöscht wurde.
 
 [Erfahren Sie mehr](hyper-v-azure-failback.md) über den erneuten Schutz und das Failback für Hyper-V.
 
 Wenn Sie Azure-VMs im lokalen Speicherort erneut schützen, können Sie angeben, ob ein Failback zum ursprünglichen oder einem anderen Speicherort erfolgen soll.
 
-- **Wiederherstellung am ursprünglichen Speicherort** : Damit wird ein Failback von Azure zum selben lokalen Quellcomputer ausgeführt, sofern dieser vorhanden ist. In diesem Szenario wählen Sie eine der im vorherigen Verfahren beschriebenen Synchronisierungsoptionen aus.
-- **Wiederherstellung an einem anderen Speicherort** : Wenn der lokale Computer nicht vorhanden ist, können Sie ein Failback von Azure zu einem anderen Speicherort durchführen. Wenn Sie die Azure-VM im lokalen Speicherort erneut schützen, wird der lokale Computer erstellt. Bei dieser Option empfiehlt sich die Synchronisierung der Daten vor dem Failover.
+- **Wiederherstellung am ursprünglichen Speicherort**: Damit wird ein Failback von Azure zum selben lokalen Quellcomputer ausgeführt, sofern dieser vorhanden ist. In diesem Szenario wählen Sie eine der im vorherigen Verfahren beschriebenen Synchronisierungsoptionen aus.
+- **Wiederherstellung an einem anderen Speicherort**: Wenn der lokale Computer nicht vorhanden ist, können Sie ein Failback von Azure zu einem anderen Speicherort durchführen. Wenn Sie die Azure-VM im lokalen Speicherort erneut schützen, wird der lokale Computer erstellt. Bei dieser Option empfiehlt sich die Synchronisierung der Daten vor dem Failover.
 - [Informieren](hyper-v-azure-failback.md) Sie sich über die Anforderungen und Einschränkungen für das Failback.
 
 
-Nach dem Failback zum lokalen Standort aktivieren Sie die Option **Umgekehrt replizieren** , um die Replikation der VM in Azure zu starten. So schließt sich der Kreis.
+Nach dem Failback zum lokalen Standort aktivieren Sie die Option **Umgekehrt replizieren**, um die Replikation der VM in Azure zu starten. So schließt sich der Kreis.
 
 
 

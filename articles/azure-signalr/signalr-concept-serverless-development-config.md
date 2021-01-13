@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: antchu
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: acb85a04b8a1ca491058702510079a36b93fc657
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 3d69b72012819e3d9099e447b9048fe07aea86d3
+ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151050"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97858704"
 ---
 # <a name="azure-functions-development-and-configuration-with-azure-signalr-service"></a>Azure Functions-Entwicklung und -Konfiguration mit Azure SignalR Service
 
@@ -49,7 +49,7 @@ Informationen zum Erstellen eines authentifizierten Tokens finden Sie unter [Ver
 
 ### <a name="handle-messages-sent-from-signalr-service"></a>Verarbeiten von Nachrichten, die von SignalR Service gesendet wurden
 
-Verwenden Sie die *SignalR Trigger*-Bindung, um von SignalR Service gesendete Nachrichten zu verarbeiten. Die Auslösung ist möglich, wenn Clients Nachrichten senden oder wenn eine Clientverbindung hergestellt oder getrennt wird.
+Verwenden Sie die *SignalR Trigger*-Bindung, um von SignalR Service gesendete Nachrichten zu verarbeiten. Sie können sich benachrichtigen lassen, wenn Clients Nachrichten senden oder wenn eine Clientverbindung hergestellt oder getrennt wird.
 
 Weitere Informationen finden Sie in der [Referenz zu *SignalR Trigger*-Bindungen](../azure-functions/functions-bindings-signalr-service-trigger.md).
 
@@ -111,7 +111,7 @@ Alle Funktionen, die das klassenbasierte Modell nutzen sollen, müssen die Metho
 
 ### <a name="define-hub-method"></a>Definieren der Hubmethode
 
-Alle Hubmethoden **müssen** über das Argument `InvocationContext` verfügen, das um das Attribut `[SignalRTrigger]` ergänzt sein muss, und einen parameterlosen Konstruktor verwenden. Anschließend wird der **Methodenname** als Parameter**ereignis** behandelt.
+Alle Hubmethoden **müssen** über das Argument `InvocationContext` verfügen, das um das Attribut `[SignalRTrigger]` ergänzt sein muss, und einen parameterlosen Konstruktor verwenden. Anschließend wird der **Methodenname** als Parameter **ereignis** behandelt.
 
 Standardmäßig ist `category=messages` (mit Ausnahme des Methodennamens)gleich einem der folgenden Namen:
 
@@ -285,7 +285,7 @@ Konfigurieren Sie die SignalR-Clients für die Verwendung der API Management-URL
 
 Azure Functions verfügt über eine integrierte Authentifizierung und unterstützt gängige Anbieter wie Facebook, Twitter, Microsoft-Konto, Google und Azure Active Directory. Dieses Feature kann in die Bindung *SignalRConnectionInfo* integriert werden, um Verbindungen mit Azure SignalR Service zu erstellen, die für eine Benutzer-ID authentifiziert wurden. Ihre Anwendung kann unter Verwendung der Ausgabebindung *SignalR* Nachrichten senden, die für diese Benutzer-ID bestimmt sind.
 
-Öffnen Sie im Azure-Portal auf der Registerkarte *Plattformfeatures* Ihrer Funktions-App das Fenster mit den*Authentifizierungs-/Autorisierungseinstellungen*. Gehen Sie gemäß der Dokumentation für die [App Service-Authentifizierung](../app-service/overview-authentication-authorization.md) vor, um die Authentifizierung mit einem Identitätsanbieter Ihrer Wahl zu konfigurieren.
+Öffnen Sie im Azure-Portal auf der Registerkarte *Plattformfeatures* Ihrer Funktions-App das Fenster mit den *Authentifizierungs-/Autorisierungseinstellungen*. Gehen Sie gemäß der Dokumentation für die [App Service-Authentifizierung](../app-service/overview-authentication-authorization.md) vor, um die Authentifizierung mit einem Identitätsanbieter Ihrer Wahl zu konfigurieren.
 
 Nach Abschluss der Konfiguration enthalten authentifizierte HTTP-Anforderungen Header vom Typ `x-ms-client-principal-name` und `x-ms-client-principal-id`, die wiederum den Benutzernamen bzw. die Benutzer-ID der authentifizierten Identität enthalten.
 

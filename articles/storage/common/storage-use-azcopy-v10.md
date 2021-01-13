@@ -8,12 +8,12 @@ ms.date: 12/08/2020
 ms.author: normesta
 ms.subservice: common
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 6232b315abf8840d6fd77d02e3e928c0004746a0
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: ab3cb403a8757f424a141206f99f9c29bf3e0b49
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97029327"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108147"
 ---
 # <a name="get-started-with-azcopy"></a>Erste Schritte mit AzCopy
 
@@ -105,7 +105,7 @@ Beispielbefehle finden Sie in diesen Artikeln.
 
 | Dienst | Artikel |
 |--------|-----------|
-|Azure Blob Storage |[Hochladen von Dateien in Azure Blob Storage](storage-use-azcopy-blobs-upload.md)<br><br>[Herunterladen von Blobs aus Azure Blob Storage](storage-use-azcopy-blobs-download.md)<br><br>[Kopieren von Blobs zwischen Azure-Speicherkonten](storage-use-azcopy-blobs-download.md)<br><br>[Synchronisieren mit Azure Blob Storage](storage-use-azcopy-blobs-download.md)|
+|Azure Blob Storage |[Hochladen von Dateien in Azure Blob Storage](storage-use-azcopy-blobs-upload.md)<br><br>[Herunterladen von Blobs aus Azure Blob Storage](storage-use-azcopy-blobs-download.md)<br><br>[Kopieren von Blobs zwischen Azure-Speicherkonten](storage-use-azcopy-blobs-copy.md)<br><br>[Synchronisieren mit Azure Blob Storage](storage-use-azcopy-blobs-synchronize.md)|
 |Azure Files |[Übertragen von Daten mit AzCopy und Dateispeicher](storage-use-azcopy-files.md)|
 |Amazon S3|[Übertragen von Daten mit AzCopy und Amazon S3-Buckets](storage-use-azcopy-s3.md)|
 |Azure Stack-Speicher|[Übertragen von Daten mit AzCopy und Azure Stack-Speicher](/azure-stack/user/azure-stack-storage-transfer#azcopy)|

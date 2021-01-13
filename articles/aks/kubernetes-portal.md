@@ -3,13 +3,13 @@ title: Zugreifen auf Kubernetes-Ressourcen über das Azure-Portal
 description: Erfahren Sie, wie Sie mit Kubernetes-Ressourcen interagieren, um einen Azure Kubernetes Service-Cluster (AKS) über das Azure-Portal zu verwalten.
 services: container-service
 ms.topic: article
-ms.date: 12/09/2020
-ms.openlocfilehash: 8e31c41573ced403a034999de71a5595a54281df
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.date: 12/16/2020
+ms.openlocfilehash: 4f34535f74de562c0a1b65c31f28476ca02e540f
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96921592"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631873"
 ---
 # <a name="access-kubernetes-resources-from-the-azure-portal"></a>Zugreifen auf Kubernetes-Ressourcen über das Azure-Portal
 
@@ -19,15 +19,17 @@ Die Kubernetes-Ressourcenansicht im Azure-Portal ersetzt das veraltete [AKS-Dash
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Um Kubernetes-Ressourcen im Azure-Portal anzuzeigen, benötigen Sie einen AKS-Cluster. Jeder Cluster wird unterstützt, doch wenn Sie eine Azure Active Directory-Integration (Azure AD) verwenden, muss Ihr Cluster die [von AKS verwaltete Azure AD-Integration][aks-managed-aad] verwenden. Wenn Ihr Cluster Legacy-Azure AD verwendet, können Sie ein Upgrade Ihres Clusters im Portal oder mithilfe der [Azure CLI][cli-aad-upgrade] durchführen.
+Um Kubernetes-Ressourcen im Azure-Portal anzuzeigen, benötigen Sie einen AKS-Cluster. Jeder Cluster wird unterstützt, doch wenn Sie eine Azure Active Directory-Integration (Azure AD) verwenden, muss Ihr Cluster die [von AKS verwaltete Azure AD-Integration][aks-managed-aad] verwenden. Wenn Ihr Cluster Legacy-Azure AD verwendet, können Sie ein Upgrade Ihres Clusters im Portal oder mithilfe der [Azure CLI][cli-aad-upgrade] durchführen. Sie können auch [das Azure-Portal verwenden][portal-cluster], um einen neuen AKS-Cluster zu erstellen.
 
 ## <a name="view-kubernetes-resources"></a>Anzeigen von Kubernetes-Ressourcen
 
 Um die Kubernetes-Ressourcen anzuzeigen, navigieren Sie im Azure-Portal zu Ihrem AKS-Cluster. Der Navigationsbereich auf der linken Seite wird verwendet, um auf Ihre Ressourcen zuzugreifen. Die Ressource umfasst Folgendes:
 
 - **Namespaces** zeigt die Namespaces Ihres Clusters an. Der Filter am Anfang der Namespaceliste bietet eine schnelle Möglichkeit zum Filtern und Anzeigen Ihrer Namespaceressourcen.
-- **Workloads** zeigt Informationen zu Bereitstellungen, Pods, Replikatgruppen und Daemonsets an, die in Ihrem Cluster bereitgestellt sind. Der folgende Screenshot zeigt die Standardsystempods in einem AKS-Beispielcluster.
+- **Workloads** zeigt Informationen zu Bereitstellungen, Pods, Replikatgruppen, StatefulSets, Daemongruppen, Aufträgen und cron-Aufträgen an, die auf Ihrem Cluster bereitgestellt wurden. Der folgende Screenshot zeigt die Standardsystempods in einem AKS-Beispielcluster.
 - **Dienste und Eingänge** zeigt alle Dienst- und Eingangsressourcen Ihres Clusters an.
+- **Storage** zeigt Ihre Azure-Speicher Klassen und persistenten Volumeinformationen an.
+- Unter **Konfiguration** werden die ConfigMaps und Geheimnisse Ihres Clusters angezeigt.
 
 :::image type="content" source="media/kubernetes-portal/workloads.png" alt-text="Im Azure-Portal angezeigte Kubernetes-Podinformationen." lightbox="media/kubernetes-portal/workloads.png":::
 
@@ -35,7 +37,7 @@ Um die Kubernetes-Ressourcen anzuzeigen, navigieren Sie im Azure-Portal zu Ihrem
 
 In diesem Beispiel verwenden wir unseren AKS-Beispielcluster zum Bereitstellen der Azure Vote-Anwendung aus dem [AKS-Schnellstart][portal-quickstart].
 
-1. Wählen Sie in einer der Ressourcenansichten („Namespace“, „Workloads“ oder „Dienste und Eingänge“) **Hinzuzufügen** aus.
+1. Wählen Sie in einer der Ressourcenansichten („Namespace“, „Workloads“ oder „Dienste und Eingänge“, „Speicher“ und „Konfiguration“) **Hinzuzufügen** aus.
 1. Fügen Sie die YAML-Datei für die Azure Vote-Anwendung aus dem [AKS-Schnellstart][portal-quickstart] ein.
 1. Wählen Sie unten im YAML-Editor **Hinzufügen** aus, um die Anwendung bereitzustellen. 
 
@@ -45,7 +47,7 @@ Nachdem die YAML-Datei hinzugefügt wurde, zeigt die Ressourcenanzeige sowohl di
 
 ### <a name="monitor-deployment-insights"></a>Überwachen von Bereitstellungserkenntnissen
 
-AKS-Cluster mit aktiviertem [Azure Monitor für Container][enable-monitor] können Bereitstellungserkenntnisse schnell anzeigen. In der Kubernetes-Ressourcenansicht können Benutzer den Livestatus von einzelnen Bereitstellungen anzeigen, einschließlich CPU- und Speicherauslastung, sowie zu Azure Monitor wechseln, um ausführlichere Informationen zu erhalten. Im Folgenden finden Sie ein Beispiel für Bereitstellungserkenntnisse aus einem AKS-Beispielcluster:
+AKS-Cluster mit aktiviertem [Azure Monitor für Container][enable-monitor] können Bereitstellungserkenntnisse und andere Erkenntnisse schnell anzeigen. In der Kubernetes-Ressourcenansicht können Benutzer den Livestatus von einzelnen Bereitstellungen anzeigen, einschließlich CPU- und Speicherauslastung, sowie zu Azure Monitor wechseln, um ausführlichere Informationen zu einzelnen Knoten und Containern zu erhalten. Im Folgenden finden Sie ein Beispiel für Bereitstellungserkenntnisse aus einem AKS-Beispielcluster:
 
 :::image type="content" source="media/kubernetes-portal/deployment-insights.png" alt-text="Im Azure-Portal angezeigte Bereitstellungserkenntnisse." lightbox="media/kubernetes-portal/deployment-insights.png":::
 
@@ -75,8 +77,6 @@ Für den Zugriff auf die Kubernetes-Ressourcen müssen Sie Zugriff auf den AKS-C
 
 Bei vorhandenen Clustern müssen Sie möglicherweise die Kubernetes-Ressourcenansicht aktivieren. Um die Ressourcenansicht zu aktivieren, befolgen Sie die Anweisungen im Portal für Ihren Cluster.
 
-:::image type="content" source="media/kubernetes-portal/enable-resource-view.png" alt-text="Azure-Portalmeldung für die Aktivierung der Kubernetes-Ressourcenansicht." lightbox="media/kubernetes-portal/enable-resource-view.png":::
-
 > [!TIP]
 > Das AKS-Feature für [**vom API-Server autorisierte IP-Adressbereiche**](api-server-authorized-ip-ranges.md) kann hinzugefügt werden, um den Zugriff des API-Servers auf den öffentlichen Endpunkt der Firewall zu beschränken. Eine weitere Option für solche Cluster stellt das Aktualisieren von `--api-server-authorized-ip-ranges` dar, um den Zugriff für einen lokalen Clientcomputer oder einen IP-Adressbereich (aus dem das Portal aufgerufen wird) einzubeziehen. Um diesen Zugriff zuzulassen, benötigen Sie die öffentliche IPv4-Adresse des Computers. Sie finden diese Adresse mithilfe des Befehls unten, oder indem Sie in einem Internetbrowser nach „Wie lautet meine IP-Adresse“ suchen.
 ```bash
@@ -100,3 +100,4 @@ In diesem Artikel wurde gezeigt, wie Sie auf Kubernetes-Ressourcen für Ihren AK
 [aks-managed-aad]: managed-aad.md
 [cli-aad-upgrade]: managed-aad.md#upgrading-to-aks-managed-azure-ad-integration
 [enable-monitor]: ../azure-monitor/insights/container-insights-enable-existing-clusters.md
+[portal-cluster]: kubernetes-walkthrough-portal.md

@@ -10,13 +10,13 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: panosper
-ms.custom: seodec18
-ms.openlocfilehash: 7b872340c50c800ebe4d4d6c7ca56b3b327bf162
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.custom: seodec18,references_regions
+ms.openlocfilehash: f11ccafd58cc64e6186ef590bbbccbfab3335ea4
+ms.sourcegitcommit: c538b6e4cf27b992500c079ad9c914c05d55eb7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95972645"
+ms.lasthandoff: 01/03/2021
+ms.locfileid: "97854858"
 ---
 # <a name="speech-service-supported-regions"></a>Vom Speech-Dienst unterstützte Regionen
 
@@ -44,6 +44,8 @@ Der Speech-Dienst ist in den folgenden Regionen für **Spracherkennung**, **Spra
 
 Wenn Sie das [Speech SDK](speech-sdk.md) verwenden, werden die Regionen durch den **Regionsbezeichner** angegeben (z. B. als Parameter von `SpeechConfig.FromSubscription`). Achten Sie darauf, dass die Region mit der Region Ihres Abonnements übereinstimmt.
 
+Wenn Sie ein benutzerdefiniertes Modell mit Audiodaten trainieren möchten, verwenden Sie eine der [Regionen mit dedizierter Hardware](custom-speech-overview.md#set-up-your-azure-account), um das Training zu beschleunigen. Sie können die [REST-API](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CopyModelToSubscription) verwenden, um das vollständig trainierte Modell später in eine andere Region zu kopieren.
+
 ### <a name="intent-recognition"></a>Absichtserkennung
 
 Verfügbare Regionen für **Absichtserkennung** über das Speech SDK sind die folgenden:
@@ -67,17 +69,21 @@ Dies ist eine Teilmenge der Veröffentlichungsregionen, die vom [Language Unders
 
 ### <a name="voice-assistants"></a>Sprachassistenten
 
-Das [Speech SDK](speech-sdk.md) unterstützt Funktionen des **Sprachassistenten** in den folgenden Regionen:
+Das [Speech SDK](speech-sdk.md) unterstützt Funktionen des **Sprach-Assistenten** mithilfe von [Direct Line Speech](https://docs.microsoft.com/azure/cognitive-services/speech-service/direct-line-speech) in diesen Regionen:
 
-| Region         | Regionsbezeichner |
-| -------------- | -------------------- |
-| USA (Westen)        | `westus`             |
-| USA, Westen 2      | `westus2`            |
-| East US        | `eastus`             |
-| USA (Ost) 2      | `eastus2`            |
-| Europa, Westen    | `westeurope`         |
-| Nordeuropa   | `northeurope`        |
-| Asien, Südosten | `southeastasia`      |
+| Globale Region | Region           | Regionsbezeichner    |
+| ------------- | ---------------- | -------------------- |
+| Nordamerika | USA (Westen)          | `westus`             |
+| Nordamerika | USA, Westen 2        | `westus2`            |
+| Nordamerika | East US          | `eastus`             |
+| Nordamerika | USA (Ost) 2        | `eastus2`            |
+| Nordamerika | USA, Westen-Mitte  | `westcentralus`      |
+| Nordamerika | USA Süd Mitte | `southcentralus`     |
+| Europa        | Europa, Westen      | `westeurope`         |
+| Europa        | Nordeuropa     | `northeurope`        |
+| Asia          | Asien, Osten        | `eastasia`           |
+| Asia          | Asien, Südosten   | `southeastasia`      |
+| Indien         | Indien, Mitte    | `centralindia`       |
 
 ### <a name="speaker-recognition"></a>Sprechererkennung
 

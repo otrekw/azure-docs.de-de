@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/15/2020
-ms.openlocfilehash: 4d9a5900990ea41788ced5f25690619fbde68d33
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 87bc2338ecc48f1115a406c276ef221cb185a4c5
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91854986"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98118624"
 ---
 # <a name="managed-identities-in-azure-hdinsight"></a>Verwaltete Identitäten in Azure HDInsight
 
@@ -55,6 +55,7 @@ Wenn Sie bereits einen zeitintensiven Cluster mit mehreren unterschiedlichen ver
  * In ESP-Clustern wird das LDAPS-Zertifikat beim Ändern des LDAPS-Zertifikats von AAD DS nicht automatisch aktualisiert, sodass die LDAP-Synchronisierung und Hochskalierungen nicht mehr gestartet werden.
  * Beim MSI-Zugriff auf ADLS Gen2 treten Fehler auf.
  * Verschlüsselungsschlüssel können im CMK-Szenario nicht rotiert werden.
+
 In diesen Fällen sollten Sie allen im Cluster verwendeten verwalteten Identitäten die erforderlichen Rollen und Berechtigungen für die obigen Szenarien zuweisen. Wenn Sie z. B. unterschiedliche verwaltete Identitäten für ADLS Gen2 und ESP-Cluster verwenden, sollten beide über die Rollen „Besitzer von Speicherblobdaten“ und „Mitwirkender für die HDInsight-Domänendienste“ verfügen, um diese Probleme zu vermeiden.
 
 ## <a name="faq"></a>Häufig gestellte Fragen

@@ -6,12 +6,12 @@ ms.date: 03/14/2019
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 6b578cd03daa6e996a69c03afd327097d6123045
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 3144633f76d1c4738f2323f1e047d6f32329909f
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97607897"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98133241"
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java-sdk"></a>Anleitung zur Problembehandlung sowie Fragen und Antworten zu Application Insights für das Java SDK
 
@@ -23,7 +23,7 @@ Haben Sie Fragen oder Probleme im Zusammenhang mit [Azure Application Insights i
 ## <a name="build-errors"></a>Buildfehler
 **Wenn ich in Eclipse oder Intellij Idea das Application Insights-SDK über Maven oder Gradle hinzufüge, erhalte ich Build- oder Prüfsummenvalidierungsfehler.**
 
-* Wenn die Abhängigkeit `<version>`-Element ein Muster mit Platzhalterzeichen verwendet (z.B. (Maven) `<version>[2.0,)</version>` oder (Gradle) `version:'2.0.+'`), geben Sie stattdessen eine bestimmte Version an wie `2.0.1`. Weitere Informationen finden Sie in den [Versionshinweisen](https://github.com/Microsoft/ApplicationInsights-Java/releases) für die aktuelle Version.
+* Wenn die Abhängigkeit `<version>`-Element ein Muster mit Platzhalterzeichen verwendet (z.B. (Maven) `<version>[2.0,)</version>` oder (Gradle) `version:'2.+'`), geben Sie stattdessen eine bestimmte Version an wie `2.6.2`.
 
 ## <a name="no-data"></a>Keine Daten
 **Ich habe Application Insights erfolgreich hinzugefügt und meine Anwendung ausgeführt, sehe aber keine Daten im Portal.**
@@ -36,7 +36,7 @@ Haben Sie Fragen oder Probleme im Zusammenhang mit [Azure Application Insights i
 * [Aktivieren Sie die Protokollierung](#debug-data-from-the-sdk) durch Hinzufügen eines `<SDKLogger />`-Elements unter dem Stammknoten in der Datei „ApplicationInsights.xml“ (im Ressourcenordner Ihres Projekts), und suchen Sie nach Einträgen, denen „AI: INFO/WARN/ERROR“ für verdächtige Protokolleinträge vorangestellt ist. 
 * Stellen Sie sicher, dass die richtige Datei "ApplicationInsights.xml" vom Java-SDK geladen wurde, indem Sie die von der Konsole ausgegebenen Meldungen auf den Hinweis untersuchen, dass die Konfigurationsdatei gefunden wurde.
 * Wenn die Konfigurationsdatei nicht gefunden wird, stellen Sie anhand der Ausgabemeldungen fest, wo nach der Konfigurationsdatei gesucht wird, und stellen Sie sicher, dass sich die Datei "ApplicationInsights.xml" an einem dieser durchsuchten Speicherorte befindet. Als Faustregel können Sie die Konfigurationsdatei bei den JAR-Dateien des Application Insights-SDK ablegen. Beispiel: In Tomcat wäre dies der Ordner „WEB-INF/classes“. Während der Entwicklung können Sie „ApplicationInsights.xml“ im Ressourcenordner des Webprojekts platzieren.
-* Informieren Sie sich auch auf der [GitHub-Problemseite](https://github.com/Microsoft/ApplicationInsights-Java/issues) über bekannte Probleme mit dem SDK.
+* Informieren Sie sich auch auf der [GitHub-Problemseite](https://github.com/microsoft/ApplicationInsights-Java/issues) über bekannte Probleme mit dem SDK.
 * Stellen Sie sicher, dass Sie dieselbe Version von Application Insights-Kern, Web-, Agent- und Protokollierungsappender verwenden, um Versionskonflikte zu vermeiden.
 
 #### <a name="i-used-to-see-data-but-it-has-stopped"></a>Zuvor wurden Daten angezeigt, jetzt jedoch nicht mehr.
@@ -194,7 +194,7 @@ Application Insights verwendet `org.apache.http`. Dies wird innerhalb der Kern-J
 
 ## <a name="get-help"></a>Hier erhalten Sie Hilfe
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/ms-application-insights)
-* [Problem in GitHub melden](https://github.com/Microsoft/ApplicationInsights-Java/issues)
+* [Problem in GitHub melden](https://github.com/microsoft/ApplicationInsights-Java/issues)
 
 <!--Link references-->
 

@@ -9,12 +9,12 @@ ms.date: 11/20/2020
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0166a3b6031f9e1d364a37db99be5bc5a65267df
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 01065f9ac26599d26d6e2a6979eae1e559a82854
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95484609"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97722962"
 ---
 # <a name="authentication-and-authorization-to-azure-spatial-anchors"></a>Authentifizierung und Autorisierung bei Azure Spatial Anchors
 
@@ -193,7 +193,7 @@ Das Azure AD-Zugriffstoken wird mithilfe von [MSAL](../../active-directory/deve
 **In Ihrem Code**
 
 >[!NOTE]
-> Sie können das auf GitHub verfügbare Dienstbeispiel verwenden.
+> Sie können das [Dienstbeispiel](https://github.com/Azure/azure-spatial-anchors-samples/tree/master/Sharing/SharingServiceSample) verwenden, das als Teil der [Spatial Anchor-Beispiel-Apps](https://github.com/Azure/azure-spatial-anchors-samples) verfügbar ist.
 
 1.    Stellen Sie sicher, dass Sie die Anwendungs-ID, das Anwendungsgeheimnis und den Umleitungs-URI Ihrer eigenen Azure AD-Anwendung als Parameter für **Client-ID**, **Geheimnis** und **RedirectUri** (Umleitungs-URI) in MSAL verwenden.
 2.    Legen Sie die Mandanten-ID im **authority**-Parameter in MSAL auf Ihre eigene Azure AD-Mandanten-ID fest.

@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 11/09/2020
-ms.openlocfilehash: 1a384eed542d0c09a973e0e68288f9fc1660cc96
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: b3dca3617e2fb7ccdff870041374e9158498c9d1
+ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94380899"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97708939"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>Grenzwerte und Grenzen für QnA Maker-Wissensdatenbanken
 
@@ -82,10 +82,10 @@ Die Länge und die zulässigen Zeichen für den Metadatennamen und -wert sind in
 
 ## <a name="knowledge-base-content-limits"></a>Grenzwerte für die Inhalte einer Knowledge Base
 Allgemeine Grenzwerte für die Inhalte in der Knowledge Base:
-* Länge des Antworttexts: 25.000
-* Länge des Fragentexts: 1.000
-* Länge des Texts für den Metadatenschlüssel: 100
-* Länge des Texts für den Metadatenwert: 500
+* Länge des Antworttexts: 25.000 Zeichen
+* Länge des Fragentexts: 1.000 Zeichen
+* Länge des Texts für den Metadatenschlüssel: 100 Zeichen
+* Länge des Texts für den Metadatenwert: 500 Zeichen
 * Unterstützte Zeichen für den Metadatennamen: Buchstaben, Ziffern und `_`
 * Unterstützte Zeichen für den Metadatenwerte: Alle Zeichen außer `:` und `|`
 * Länge des Dateinamens: 200

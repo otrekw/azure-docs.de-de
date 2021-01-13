@@ -3,12 +3,12 @@ title: Sicherheitsübersicht
 description: Sicherheitsinformationen zu Azure Arc-fähigen Servern.
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: be79be3030af76425b54fd683784d0e216ac2cf5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aa8653b783e7eb3e211b7514831604dd5642cfbe
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91329039"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98117026"
 ---
 # <a name="azure-arc-for-servers-security-overview"></a>Sicherheitsübersicht über Azure Arc für Server
 
@@ -16,7 +16,7 @@ In diesem Artikel werden die Sicherheitskonfiguration und entsprechenden Aspekte
 
 ## <a name="identity-and-access-control"></a>Identität und Zugriffssteuerung
 
-Jeder Azure Arc-fähige Server hat eine verwaltete Identität als Teil einer Ressourcengruppe innerhalb eines Azure-Abonnements, wobei diese Identität den Server darstellt, der lokal oder in einer anderen Cloudumgebung ausgeführt wird. Der Zugriff auf diese Ressource wird durch die standardmäßige [rollenbasierte Zugriffssteuerung von Azure](../../role-based-access-control/overview.md) gesteuert. Auf der Seite [**Zugriffssteuerung (IAM)** ](../../role-based-access-control/role-assignments-portal.md#access-control-iam) im Azure-Portal können Sie überprüfen, wer Zugriff auf Ihren Azure Arc-fähigen Server hat.
+Jeder Azure Arc-fähige Server hat eine verwaltete Identität als Teil einer Ressourcengruppe innerhalb eines Azure-Abonnements, wobei diese Identität den Server darstellt, der lokal oder in einer anderen Cloudumgebung ausgeführt wird. Der Zugriff auf diese Ressource wird durch die standardmäßige [rollenbasierte Zugriffssteuerung von Azure](../../role-based-access-control/overview.md) gesteuert. Auf der Seite [**Zugriffssteuerung (IAM)**](../../role-based-access-control/role-assignments-portal.md) im Azure-Portal können Sie überprüfen, wer Zugriff auf Ihren Azure Arc-fähigen Server hat.
 
 :::image type="content" source="./media/security-overview/access-control-page.png" alt-text="Zugriffssteuerung bei Azure Arc-fähigem Server" border="false" lightbox="./media/security-overview/access-control-page.png":::
 

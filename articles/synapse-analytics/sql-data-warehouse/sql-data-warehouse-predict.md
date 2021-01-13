@@ -11,16 +11,16 @@ ms.date: 07/21/2020
 ms.author: anjangsh
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: b1a2e802f66132a88060fb74831781055897b077
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 9e7d45a588e60cd082f1eef43d1d1b6681b9e912
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97093654"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98117740"
 ---
 # <a name="score-machine-learning-models-with-predict"></a>Bewerten von Machine Learning-Modellen mit PREDICT
 
-Der dedizierte SQL-Pool bietet Ihnen die Möglichkeit, Machine Learning-Modelle mithilfe der vertrauten Sprache T-SQL zu bewerten. Mit der T-SQL-Funktion [PREDICT](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest&preserve-view=true) können Sie Ihre vorhandenen Machine Learning-Modelle, die mit Verlaufsdaten trainiert wurden, innerhalb der sicheren Grenzen Ihrer Data Warehouse bewerten. Die PREDICT-Funktion nimmt ein [ONNX-Modell (Open Neural Network Exchange)](https://onnx.ai/) und die Daten als Eingaben an. Dieses Feature beseitigt den Schritt des Verschiebens von wertvollen Daten für die Bewertung an einen Speicherort außerhalb des Data Warehouse. Es soll Datenspezialisten die Möglichkeit geben, Machine Learning-Modelle ganz einfach mit der vertrauten T-SQL-Schnittstelle bereitzustellen und nahtlos mit Data Scientists zusammenzuarbeiten, die mit dem richtigen Framework für ihre Aufgabe arbeiten.
+Der dedizierte SQL-Pool bietet Ihnen die Möglichkeit, Machine Learning-Modelle mithilfe der vertrauten Sprache T-SQL zu bewerten. Mit der T-SQL-Funktion [PREDICT](/sql/t-sql/queries/predict-transact-sql?preserve-view=true&view=azure-sqldw-latest) können Sie Ihre vorhandenen Machine Learning-Modelle, die mit Verlaufsdaten trainiert wurden, innerhalb der sicheren Grenzen Ihrer Data Warehouse bewerten. Die PREDICT-Funktion nimmt ein [ONNX-Modell (Open Neural Network Exchange)](https://onnx.ai/) und die Daten als Eingaben an. Dieses Feature beseitigt den Schritt des Verschiebens von wertvollen Daten für die Bewertung an einen Speicherort außerhalb des Data Warehouse. Es soll Datenspezialisten die Möglichkeit geben, Machine Learning-Modelle ganz einfach mit der vertrauten T-SQL-Schnittstelle bereitzustellen und nahtlos mit Data Scientists zusammenzuarbeiten, die mit dem richtigen Framework für ihre Aufgabe arbeiten.
 
 > [!NOTE]
 > Diese Funktionalität wird im serverlosen SQL-Pool zurzeit nicht unterstützt.
@@ -35,7 +35,7 @@ Der dedizierte SQL-Pool erwartet ein vortrainiertes Modell. Beachten Sie die fol
 
 - Der dedizierte SQL-Pool unterstützt nur Modelle im ONNX-Format. ONNX ist ein Open-Source-Modellformat, mit dem Sie Modelle zwischen verschiedenen Frameworks austauschen können, um Interoperabilität zu ermöglichen. Sie können Ihre vorhandenen Modelle in das ONNX-Format konvertieren. Dazu verwenden Sie Frameworks, die es entweder nativ unterstützen oder über Konvertierungspakete verfügen. Beispielsweise konvertiert das [sklearn-onnx](https://github.com/onnx/sklearn-onnx)-Paket scikit-learn-Modelle in ONNX. Das [ONNX-GitHub-Repository](https://github.com/onnx/tutorials#converting-to-onnx-format) enthält eine Liste der unterstützten Frameworks sowie Beispiele.
 
-   Wenn Sie [automatisiertes ML](https://docs.microsoft.com/azure/machine-learning/concept-automated-ml) für das Training verwenden, stellen Sie sicher, dass der Parameter *enable_onnx_compatible_models* auf TRUE festgelegt ist, damit ein Modell im ONNX-Format Modell erstellt wird. Das [Notebook für automatisiertes maschinelles Lernen](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb) zeigt ein Beispiel für die Verwendung von AutoML zum Erstellen eines Machine Learning-Modells im ONNX-Format.
+   Wenn Sie [automatisiertes ML](../../machine-learning/concept-automated-ml.md) für das Training verwenden, stellen Sie sicher, dass der Parameter *enable_onnx_compatible_models* auf TRUE festgelegt ist, damit ein Modell im ONNX-Format Modell erstellt wird. Das [Notebook für automatisiertes maschinelles Lernen](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb) zeigt ein Beispiel für die Verwendung von AutoML zum Erstellen eines Machine Learning-Modells im ONNX-Format.
 
 - Die folgenden Datentypen werden als Eingabedaten unterstützt:
     - int, bigint, real, float
@@ -66,7 +66,7 @@ GO
 
 ```
 
-Nachdem das Modell in eine hexadezimale Zeichenfolge konvertiert und die Tabellendefinition angegeben wurde, verwenden Sie den Befehl [COPY](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true) oder PolyBase, um das Modell in die Tabelle des dedizierten SQL-Pools zu laden. Im folgenden Codebeispiel wird der Befehl „Copy“ verwendet, um das Modell zu laden.
+Nachdem das Modell in eine hexadezimale Zeichenfolge konvertiert und die Tabellendefinition angegeben wurde, verwenden Sie den Befehl [COPY](/sql/t-sql/statements/copy-into-transact-sql?preserve-view=true&view=azure-sqldw-latest) oder PolyBase, um das Modell in die Tabelle des dedizierten SQL-Pools zu laden. Im folgenden Codebeispiel wird der Befehl „Copy“ verwendet, um das Modell zu laden.
 
 ```sql
 -- Copy command to load hexadecimal string of the model from Azure Data Lake storage location
@@ -80,9 +80,9 @@ WITH (
 
 ## <a name="scoring-the-model"></a>Bewerten des Modells
 
-Nachdem das Modell und die Daten in das Data Warehouse geladen wurden, verwenden Sie die T-SQL-Funktion **PREDICT**, um das Modell zu bewerten. Stellen Sie sicher, dass die neuen Eingabedaten dasselbe Format aufweisen wie die Trainingsdaten, die zum Erstellen des Modells verwendet wurden. Die T-SQL-Funktion PREDICT nimmt zwei Eingaben an: das Modell und neue Eingabedaten für die Bewertung. Mit diesen generiert sie neue Spalten für die Ausgabe. Das Modell kann als Variable, Literal oder skalare Unterabfrage angegeben werden. Verwenden Sie [WITH common_table_expression](https://docs.microsoft.com/sql/t-sql/queries/with-common-table-expression-transact-sql?view=azure-sqldw-latest&preserve-view=true), um ein benanntes Resultset für den DATA-Parameter anzugeben.
+Nachdem das Modell und die Daten in das Data Warehouse geladen wurden, verwenden Sie die T-SQL-Funktion **PREDICT**, um das Modell zu bewerten. Stellen Sie sicher, dass die neuen Eingabedaten dasselbe Format aufweisen wie die Trainingsdaten, die zum Erstellen des Modells verwendet wurden. Die T-SQL-Funktion PREDICT nimmt zwei Eingaben an: das Modell und neue Eingabedaten für die Bewertung. Mit diesen generiert sie neue Spalten für die Ausgabe. Das Modell kann als Variable, Literal oder skalare Unterabfrage angegeben werden. Verwenden Sie [WITH common_table_expression](/sql/t-sql/queries/with-common-table-expression-transact-sql?preserve-view=true&view=azure-sqldw-latest), um ein benanntes Resultset für den DATA-Parameter anzugeben.
 
-Das folgende Beispiel zeigt eine Beispielabfrage mit der Funktion PREDICT. Es wird eine zusätzliche Spalte mit dem Namen *Score* und dem Datentyp *float* erstellt, die die Vorhersageergebnisse enthält. Alle Eingabedatenspalten und die Ausgabevorhersagespalten können mit der SELECT-Anweisung angezeigt werden. Weitere Details finden Sie unter [PREDICT (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest&preserve-view=true).
+Das folgende Beispiel zeigt eine Beispielabfrage mit der Funktion PREDICT. Es wird eine zusätzliche Spalte mit dem Namen *Score* und dem Datentyp *float* erstellt, die die Vorhersageergebnisse enthält. Alle Eingabedatenspalten und die Ausgabevorhersagespalten können mit der SELECT-Anweisung angezeigt werden. Weitere Details finden Sie unter [PREDICT (Transact-SQL)](/sql/t-sql/queries/predict-transact-sql?preserve-view=true&view=azure-sqldw-latest).
 
 ```sql
 -- Query for ML predictions
@@ -93,4 +93,4 @@ DATA = dbo.mytable AS d, RUNTIME = ONNX) WITH (Score float) AS p;
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zur Funktion PREDICT finden Sie unter [PREDICT (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest&preserve-view=true).
+Weitere Informationen zur Funktion PREDICT finden Sie unter [PREDICT (Transact-SQL)](/sql/t-sql/queries/predict-transact-sql?preserve-view=true&view=azure-sqldw-latest).

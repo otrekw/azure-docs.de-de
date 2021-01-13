@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: pafarley
-ms.openlocfilehash: ccf742e5ff612816cae1056ef7bf0e64fc9dbb5b
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.openlocfilehash: 3724a7d515197c1f969bb051fc201b82bee64c42
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94616466"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97813495"
 ---
 # <a name="custom-vision-service-release-notes"></a>Custom Vision Service: Anmerkungen zu dieser Version
 
@@ -41,7 +41,7 @@ ms.locfileid: "94616466"
 
 - Custom Vision Service hat die allgemeine Verfügbarkeit auf Azure erreicht!
 - Die erweiterte Trainingsfunktion mit einem neuen Back-End für Machine Learning wurde hinzugefügt, um für eine verbesserte Leistung zu sorgen, insbesondere bei anspruchsvollen Datasets und differenzierter Klassifizierung. Mit dem erweiterten Training können Sie ein Budget für die Computezeit für das Training angeben, und Custom Vision führt eine experimentelle Ermittlung durch, um die optimalen Einstellungen für Training und Erweiterung zu identifizieren. Für schnelle Iterationen können Sie das bestehende schnelle Training weiterhin verwenden.
-- Einführung von APIs der Version 3.0. Ankündigung der bevorstehenden Einstellung von APIs vor Version 3.0 am 1. Oktober 2019. In den Schnellstarts für [.NET](./quickstarts/image-classification.md), [Python](./quickstarts/image-classification.md), [Node](./quickstarts/image-classification.md), [Java](./quickstarts/image-classification.md) oder [Go](./quickstarts/image-classification.md) finden Sie Beispiele für die ersten Schritte.
+- Einführung von APIs der Version 3.0. Ankündigung der bevorstehenden Einstellung von APIs vor Version 3.0 am 1. Oktober 2019. Beispiel für die ersten Schritte finden Sie in dem [Schnellstarts](./quickstarts/image-classification.md) in der Dokumentation.
 - In den APIs der Version 3.0 wurden „Standarditerationen“ durch Veröffentlichen/Aufheben der Veröffentlichung ersetzt.
 - Es wurden neue Exportziele für Modelle hinzugefügt. Für den Dockerfile-Export wurde ein Upgrade durchgeführt, um ARM für Raspberry Pi 3 zu unterstützen. Die Exportunterstützung wurde zum [Developer Kit für KI für maschinelles Sehen](https://visionaidevkit.com/) hinzugefügt.
 - Die Anzahl der Tags pro Projekt wurde für den S0-Tarif auf 500 erhöht. Die Anzahl der Bilder pro Projekt wurde für den S0-Tarif auf 100.000 erhöht.

@@ -11,16 +11,16 @@ ms.date: 11/20/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 4886cf6c24e7e96676b9ca5e74b431685cd5a8bb
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 4f881dcc0d26589c4029246019119fa0555dcd5d
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452862"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98117774"
 ---
 # <a name="load-data-from-azure-data-lake-storage-into-dedicated-sql-pools-in-azure-synapse-analytics"></a>Laden von Daten aus Azure Data Lake Storage in dedizierte SQL-Pools in Azure Synapse Analytics
 
-In diesem Leitfaden erfahren Sie, wie Sie die [COPY-Anweisung](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) verwenden, um Daten aus Azure Data Lake Storage zu laden. Kurze Beispiele zur Verwendung der COPY-Anweisung für alle Authentifizierungsmethoden finden Sie in der folgenden Dokumentation: [Sicheres Laden von Daten mithilfe dedizierter SQL-Pools](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-bulk-load-copy-tsql-examples).
+In diesem Leitfaden erfahren Sie, wie Sie die [COPY-Anweisung](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) verwenden, um Daten aus Azure Data Lake Storage zu laden. Kurze Beispiele zur Verwendung der COPY-Anweisung für alle Authentifizierungsmethoden finden Sie in der folgenden Dokumentation: [Sicheres Laden von Daten mithilfe dedizierter SQL-Pools](./quickstart-bulk-load-copy-tsql-examples.md).
 
 > [!NOTE]  
 > Wenn Sie Feedback zur COPY-Anweisung geben oder Probleme melden möchten, senden Sie eine E-Mail an die folgende Verteilerliste: sqldwcopypreview@service.microsoft.com.
@@ -65,7 +65,7 @@ WITH
 
 ## <a name="create-the-copy-statement"></a>Erstellen der COPY-Anweisung
 
-Stellen Sie eine Verbindung mit Ihrem dedizierten SQL-Pool her, und führen Sie die COPY-Anweisung aus. Eine umfassende Liste mit Beispielen finden Sie in der folgenden Dokumentation: [Sicheres Laden von Daten mithilfe dedizierter SQL-Pools](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-bulk-load-copy-tsql-examples).
+Stellen Sie eine Verbindung mit Ihrem dedizierten SQL-Pool her, und führen Sie die COPY-Anweisung aus. Eine umfassende Liste mit Beispielen finden Sie in der folgenden Dokumentation: [Sicheres Laden von Daten mithilfe dedizierter SQL-Pools](./quickstart-bulk-load-copy-tsql-examples.md).
 
 ```sql
 -- B: Create and execute the COPY statement
@@ -133,6 +133,6 @@ Das Laden von Daten ist der erste Schritt bei der Entwicklung einer Data Warehou
 > [Erfahren Sie, wie Tabellen für Data Warehousing entwickelt werden.](sql-data-warehouse-tables-overview.md)
 
 Weitere Ladebeispiele und Verweise finden Sie in der folgenden Dokumentation:
-- [COPY-Anweisung – Referenzdokumentation](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest#syntax)
-- [COPY-Beispiele für jede Authentifizierungsmethode](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-bulk-load-copy-tsql-examples)
-- [Schnellstart: COPY-Anweisung für eine einzelne Tabelle](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-bulk-load-copy-tsql)
+- [COPY-Anweisung – Referenzdokumentation](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest#syntax)
+- [COPY-Beispiele für jede Authentifizierungsmethode](./quickstart-bulk-load-copy-tsql-examples.md)
+- [Schnellstart: COPY-Anweisung für eine einzelne Tabelle](./quickstart-bulk-load-copy-tsql.md)

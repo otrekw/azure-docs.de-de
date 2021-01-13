@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: e5d360933cbeb611046aede6164ec2e2fa497664
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 7ed7c3a586f5671191e3c517b5925cab888caefb
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97347794"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724305"
 ---
 # <a name="sentence-pairing-and-alignment-in-parallel-documents"></a>Satzpaarbildung und -zuordnung in parallelen Dokumenten
 
@@ -22,7 +22,7 @@ Nach dem Hochladen der Dokumente werden aus den Sätzen in parallelen Dokumenten
 
 ## <a name="pairing-and-alignment-process"></a>Paarbildungs- und Zuordnungsprozess
 
-Custom Translator lernt Übersetzungen von Sätzen Satz für Satz. Dazu wird ein Satz in der Quelle und anschließend die Übersetzung dieses Satzes im Ziel gelesen. Danach werden Wörter und Ausdrücke in diesen beiden Sätzen einander zugeordnet. Dieser Prozess ermöglicht die Erstellung einer Zuordnung zwischen den Wörtern und Ausdrücken in einem Satz und den entsprechenden Wörtern und Ausdrücken in der Übersetzung des Satzes. Durch die Zuordnung soll sichergestellt werden, dass das System mit Sätzen trainiert wird, bei denen es sich um gegenseitige Übersetzungen handelt.
+Custom Translator lernt Übersetzungen von Sätzen Satz für Satz. Er liest einen Satz aus dem Quelltext und anschließend die Übersetzung dieses Satzes aus dem Zieltext. Danach werden Wörter und Ausdrücke in diesen beiden Sätzen einander zugeordnet. Dieser Prozess ermöglicht die Erstellung einer Zuordnung zwischen den Wörtern und Ausdrücken in einem Satz und den entsprechenden Wörtern und Ausdrücken in der Übersetzung des Satzes. Durch die Zuordnung soll sichergestellt werden, dass das System mit Sätzen trainiert wird, bei denen es sich um gegenseitige Übersetzungen handelt.
 
 ## <a name="pre-aligned-documents"></a>Vorab zugeordnete Dokumente
 

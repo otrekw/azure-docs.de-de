@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/05/2019
 ms.author: memildin
-ms.openlocfilehash: 28d0d7b14c18a1d98be1872b1555930b2e1650c3
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 366a9a63e4577a9b8470faec68f8d4a25114dd48
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92342449"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98133700"
 ---
 # <a name="protect-your-network-resources"></a>Schützen von Netzwerkressourcen
 Azure Security Center analysiert ständig den Sicherheitsstatus Ihrer Azure-Ressourcen anhand bewährter Methoden für Netzwerksicherheit. Werden potenzielle Sicherheitslücken erkannt, erstellt Security Center Empfehlungen, die Sie beim Konfigurieren der erforderlichen Steuerelemente zum Sichern und Schützen Ihrer Ressourcen unterstützen.
 
-Eine vollständige Liste der Empfehlungen für das Netzwerk finden Sie unter [Netzwerkempfehlungen](recommendations-reference.md#recs-network).
+Eine vollständige Liste der Empfehlungen für das Netzwerk finden Sie unter [Netzwerkempfehlungen](recommendations-reference.md#recs-networking).
 
 Dieser Artikel behandelt Empfehlungen, die aus Sicht der Netzwerksicherheit auf Ihre Azure-Ressourcen zutreffen. Bei Netzwerkempfehlungen stehen Firewalls der nächsten Generation, Netzwerksicherheitsgruppen, Regeln für den eingehenden Datenverkehr mit übermäßigem JIT-VM-Zugriff und vieles mehr im Mittelpunkt. Eine Liste von Netzwerkempfehlungen und Aktionen zur Problembehebung finden Sie unter [Verwalten von Sicherheitsempfehlungen in Azure Security Center](security-center-recommendations.md).
 
@@ -48,7 +48,7 @@ So öffnen Sie die Netzwerkübersicht:
 
 1. Öffnen Sie im Menü von Security Center das Azure Defender-Dashboard, und wählen Sie **Netzwerkübersicht** aus.
 
-    :::image type="content" source="./media/security-center-network-recommendations/opening-network-map.png" alt-text="Netzwerk-Ressourcentypen im Ressourcenbestand" lightbox="./media/security-center-network-recommendations/opening-network-map.png":::
+    :::image type="content" source="./media/security-center-network-recommendations/opening-network-map.png" alt-text="Öffnen der Netzwerkübersicht auf dem Azure Defender-Dashboard" lightbox="./media/security-center-network-recommendations/opening-network-map.png":::
 
 1. Wählen Sie im Menü **Schichten** die Option **Topologie** aus.
  

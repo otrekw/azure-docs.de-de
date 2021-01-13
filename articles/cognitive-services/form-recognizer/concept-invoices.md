@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: pafarley
-ms.openlocfilehash: 9a3a6bd6489baea90ed4143b42a09e7d697bbc50
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 7acfa9c2ffdd4cdd62e965041cdc42dc44d469c5
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602443"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97845576"
 ---
 # <a name="form-recognizer-prebuilt-invoice-model"></a>Vordefiniertes Rechnungsmodell für die Formularerkennung
 
@@ -74,12 +74,12 @@ Die JSON-Ausgabe besteht aus drei Teilen:
 
 Der Rechnungsdienst extrahiert den Text, die Tabellen und 26 Rechnungsfelder. Nachstehend sehen Sie die aus einer Rechnung extrahierten Felder in der JSON-Ausgabeantwort (die folgende Ausgabe verwendet diese [Beispielrechnung](./media/sample-invoice.jpg)).  
 
-|Name| Type | BESCHREIBUNG | Text | Wert (standardisierte Ausgabe) |
+|Name| type | BESCHREIBUNG | Text | Wert (standardisierte Ausgabe) |
 |:-----|:----|:----|:----| :----|
 | CustomerName | Zeichenfolge | Kunde, dem die Rechnung gestellt wird | Microsoft Corp. |  |
 | CustomerId | Zeichenfolge | Referenz-ID für den Kunden | CID-12345 |  |
 | PurchaseOrder | Zeichenfolge | Eine Referenznummer für die Bestellung | PO-3333 | |  |
-| InvoiceId | Zeichenfolge | ID für diese bestimmte Rechnung (oft „Rechnungsnummer“) | INV-100 | |  |
+| InvoiceId | Zeichenfolge | ID für diese bestimmte Rechnung (oftmals „Rechnungsnummer“) | INV-100 | |  |
 | Rechnungsdatum | date | Datum, an dem die Rechnung ausgestellt wurde | 15.11.2019 | 
 | DueDate | date | Datum, an dem die Zahlung für diese Rechnung fällig ist | 15.12.2019 | 2019-12-15 | 15.11.2019 |
 | VendorName | Zeichenfolge | Anbieter, der diese Rechnung erstellt hat | CONTOSO LTD. | |
@@ -107,8 +107,8 @@ Der Rechnungsdienst extrahiert den Text, die Tabellen und 26 Rechnungsfelder. N
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Probieren Sie Ihre eigenen Rechnungen und Beispiele in der [Beispielbenutzeroberfläche für die Formularerkennung](https://fott-preview.azurewebsites.net/) aus.
-- Arbeiten Sie eine [Schnellstartanleitung zur Clientbibliothek für die Formularerkennung](quickstarts/client-library.md) durch, um mit dem Schreiben einer Rechnungsverarbeitungs-App mit Formularerkennung in der Sprache Ihrer Wahl zu beginnen.
-- Oder führen Sie die Schritte im Schnellstart zum [Extrahieren von Layoutdaten](./quickstarts/python-invoices.md) aus, um die Extraktion von Layoutdaten mithilfe von Python und der REST-API zu implementieren.
+- Sehen Sie sich die Informationen unter [Schnellstart: Verwenden der Clientbibliothek für die Formularerkennung](quickstarts/client-library.md) an, um damit zu beginnen, eine Rechnungsverarbeitungs-App mit Formularerkennung in der Sprache Ihrer Wahl zu schreiben.
+
 ## <a name="see-also"></a>Weitere Informationen
 
 * [Was ist die Formularerkennung?](./overview.md)

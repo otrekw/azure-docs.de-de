@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 12/15/2020
+ms.date: 01/12/2020
 ms.author: b-juche
-ms.openlocfilehash: ceaf0209dd14c8d97088d7f8e8e6990429607089
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: c914ab007f482e4d2b560b1cb461e27d4f4442ec
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97591821"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98133156"
 ---
 # <a name="create-a-dual-protocol-nfsv3-and-smb-volume-for-azure-netapp-files"></a>Erstellen eines Volumes mit dualem Protokoll (NFSv3 und SMB) für Azure NetApp Files
 
@@ -39,7 +39,6 @@ Azure NetApp Files unterstützt das Erstellen von Volumes mithilfe von NFS (NFSv
 * Erstellen Sie eine Reverse-Lookup-Zone auf dem DNS-Server, und fügen Sie dann einen Zeigereintrag (PTR) des AD-Hostcomputers in dieser Reverse-Lookup-Zone hinzu. Andernfalls kann das Volume mit dualem Protokoll nicht erstellt werden.
 * Stellen Sie sicher, dass der NFS-Client auf dem neuesten Stand ist, und führen Sie die neuesten Updates für das Betriebssystem aus.
 * Stellen Sie sicher, dass der Active Directory (AD) LDAP-Server auf dem AD ausgeführt wird. Hierzu können Sie die Rolle [Active Directory Lightweight Directory Services (AD LDS)](/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/hh831593(v=ws.11)) auf dem AD-Computer installieren und konfigurieren.
-* Stellen Sie sicher, dass eine Zertifizierungsstelle im AD mithilfe der Rolle [Active Directory-Zertifikatdienste](/windows-server/networking/core-network-guide/cncg/server-certs/install-the-certification-authority) erstellt wird, um das selbst signierte Zertifikat der Stammzertifizierungsstelle zu generieren und zu exportieren.   
 * Doppelprotokollvolumes unterstützen zurzeit keine Azure Active Directory Domain Services (AADDS).  
 * Die von einem Doppelprotokollvolume verwendete NFS-Version ist NFSv3. Dabei gelten die folgenden Bedingungen:
     * Das duale Protokoll unterstützt die erweiterten Attribute `set/get` von Windows-ACLs von NFS-Clients nicht.
@@ -105,9 +104,6 @@ Azure NetApp Files unterstützt das Erstellen von Volumes mithilfe von NFS (NFSv
 3. Klicken Sie auf **Protokoll**, und führen Sie anschließend die folgenden Aktionen aus:  
     * Wählen Sie **Dual-protocol (NFSv3 and SMB)** (Duales Protokoll (NFSv3 und SMB)) als Protokolltyp für das Volume aus.   
 
-    * Wählen Sie in der Dropdownliste die **Active Directory**-Verbindung aus.  
-    Die verwendete Active Directory-Verbindung muss über ein Serverzertifikat der Stammzertifizierungsstelle verfügen. 
-
     * Geben Sie den **Volumepfad** für das Volume an.   
     Der Volumepfad ist der Name des freigegebenen Volumes. Der Name muss mit einem alphabetischen Zeichen beginnen und innerhalb jedes Abonnements und jeder Region eindeutig sein.  
 
@@ -122,28 +118,6 @@ Azure NetApp Files unterstützt das Erstellen von Volumes mithilfe von NFS (NFSv
     Das von Ihnen erstellte Volume wird auf der Seite „Volumes“ angezeigt. 
  
     Ein Volume erbt Abonnement-, Ressourcengruppen- und Standortattribute aus dem Kapazitätspool. Den Volumebereitstellungsstatus können Sie auf der Benachrichtigungsregisterkarte überwachen.
-
-## <a name="upload-active-directory-certificate-authority-public-root-certificate"></a>Hochladen des öffentlichen Stammzertifikats der Active Directory-Zertifizierungsstelle  
-
-1.  Führen Sie die unter [Installieren der Zertifizierungsstelle](/windows-server/networking/core-network-guide/cncg/server-certs/install-the-certification-authority) angegebenen Schritte zum Installieren und Konfigurieren der AD DS-Zertifizierungsstelle aus. 
-
-2.  Führen Sie die unter [Anzeigen von Zertifikaten mit dem MMC-Snap-In](/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in) angegebenen Schritte aus, um das MMC-Snap-In und das Tool „Zertifikat-Manager“ zu verwenden.  
-    Verwenden Sie das Snap-In „Zertifikat-Manager“, um das Stamm- oder Ausstellerzertifikat für das lokale Gerät zu suchen. Sie sollten die Befehle des Snap-Ins „Zertifikatverwaltung“ über eine der folgenden Einstellungen ausführen:  
-    * Windows-basierter Client, der der Domäne hinzugefügt wurde und auf dem das Stammzertifikat installiert ist 
-    * Anderer Computer in der Domäne mit dem Stammzertifikat  
-
-3. Exportieren Sie das Stammzertifikat.  
-    Achten Sie darauf, dass das Zertifikat im Base64-codierten X.509-Format (.CER) exportiert wird: 
-
-    ![Zertifikatexport-Assistent](../media/azure-netapp-files/certificate-export-wizard.png)
-
-4. Wechseln Sie zum NetApp-Konto des Volumes mit dem dualen Protokoll, klicken Sie auf **Active Directory-Verbindungen**, und laden Sie das Zertifikat der Stammzertifizierungsstelle im Fenster **Active Directory beitreten** hoch:  
-
-    ![Serverzertifikat von Stammzertifizierungsstelle](../media/azure-netapp-files/server-root-ca-certificate.png)
-
-    Stellen Sie sicher, dass der Name der Zertifizierungsstelle durch DNS aufgelöst werden kann. Dieser Name ist das Feld „Ausgestellt von“ oder „Aussteller“ im Zertifikat:  
-
-    ![Zertifikatinformationen](../media/azure-netapp-files/certificate-information.png)
 
 ## <a name="manage-ldap-posix-attributes"></a>Verwalten von LDAP-POSIX-Attributen
 

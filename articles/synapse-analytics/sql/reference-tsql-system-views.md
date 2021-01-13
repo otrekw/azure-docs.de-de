@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 4e4e6a1607fa42f4be07451f9aa0d8ff923d85d6
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: fc90ad8104cff7ead501470a883b56b67a86cf7c
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93317326"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121259"
 ---
 # <a name="system-views-supported-in-synapse-sql"></a>In Synapse SQL unterstützte Systemsichten
 
@@ -72,7 +72,7 @@ Links zur Dokumentation für die in Synapse SQL unterstützten T-SQL-Anweisungen
 
 ## <a name="sql-server-dmvs-applicable-to-dedicated-sql-pool"></a>Im dedizierten SQL-Pool anwendbare SQL Server-DMVs
 
-Die folgenden DMVs gelten für den dedizierten SQL-Pool, müssen aber ausgeführt werden, indem eine Verbindung mit der **Masterdatenbank** hergestellt wird.
+Die folgenden DMVs sind für den dedizierten SQL-Pool zutreffend, müssen aber ausgeführt werden, indem eine Verbindung mit der **Masterdatenbank** hergestellt wird.
 
 * [sys.database_service_objectives](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
@@ -225,7 +225,7 @@ Der SQL-Pool und das Parallel Data Warehouse (PDW) des Analytics Platform System
 
 ## <a name="sql-server-2016-polybase-dmvs-available-in-dedicated-sql-pool"></a>Liste der verfügbaren SQL Server 2016 PolyBase-DMVs im dedizierten SQL-Pool
 
-Die folgenden DMVs gelten für den dedizierten SQL-Pool, müssen aber ausgeführt werden, indem eine Verbindung mit der **Masterdatenbank** hergestellt wird.
+Die folgenden DMVs sind für den dedizierten SQL-Pool zutreffend, müssen aber ausgeführt werden, indem eine Verbindung mit der **Masterdatenbank** hergestellt wird.
 
 * [sys.dm_exec_compute_node_errors](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-compute-node-errors-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [sys.dm_exec_compute_node_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-compute-node-status-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
@@ -252,6 +252,5 @@ Die folgenden DMVs gelten für den dedizierten SQL-Pool, müssen aber ausgeführ
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Referenzinformationen finden Sie unter [T-SQL-Anweisungen in Synapse SQL](/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-reference-tsql-language-elements) und [T-SQL-Sprachelemente in Synapse SQL](/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-reference-tsql-statements).
+Weitere Referenzinformationen finden Sie unter [T-SQL-Anweisungen in Synapse SQL](../sql-data-warehouse/sql-data-warehouse-reference-tsql-language-elements.md) und [T-SQL-Sprachelemente in Synapse SQL](../sql-data-warehouse/sql-data-warehouse-reference-tsql-statements.md).
 
- 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.subservice: machine-learning
 ms.date: 10/20/2020
 ms.author: midesa
-ms.openlocfilehash: 8735514b639cb0322a83ffb19d661027327c0f73
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 8768b8f8c7bf70b184971abc6ce27e2193823dea
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96458760"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121548"
 ---
 # <a name="analyze-data-with-apache-spark"></a>Analysieren von Daten mit Apache Spark
 
@@ -25,7 +25,7 @@ Sie werden das Dataset [New York City (NYC) Taxi](https://azure.microsoft.com/en
 - Erstellen Sie einen Apache Spark-Pool, indem Sie das Tutorial [Erstellen eines Apache Spark-Pools](../articles/../quickstart-create-apache-spark-pool-studio.md) absolvieren. 
 
 ## <a name="download-and-prepare-the-data"></a>Herunterladen und Vorbereiten der Daten
-1. Erstellen Sie ein Notebook unter Verwendung des PySpark-Kernels. Eine entsprechende Anleitung finden Sie unter [Erstellen eines Notebooks](https://docs.microsoft.com/azure/synapse-analytics/quickstart-apache-spark-notebook#create-a-notebook). 
+1. Erstellen Sie ein Notebook unter Verwendung des PySpark-Kernels. Eine entsprechende Anleitung finden Sie unter [Erstellen eines Notebooks](../quickstart-apache-spark-notebook.md#create-a-notebook). 
    
 > [!Note]
 > 
@@ -180,5 +180,5 @@ Nachdem Sie die Ausführung der Anwendung abgeschlossen haben, fahren Sie das No
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics)
+- [Azure Synapse Analytics](../index.yml)
 - [Offizielle Apache Spark-Dokumentation](https://spark.apache.org/docs/latest/)

@@ -1,6 +1,6 @@
 ---
-title: Kernel für Jupyter-Notebook in Spark-Clustern in Azure HDInsight
-description: Erfahren Sie mehr über die PySpark-, PySpark3- und Spark-Kernel für in Spark-Clustern in HDInsight Linux verfügbare Jupyter-Notebooks.
+title: Kernel für Jupyter Notebook in Spark-Clustern in Azure HDInsight
+description: Erfahren Sie mehr über die PySpark-, PySpark3- und Spark-Kernel für die in Spark-Clustern in HDInsight verfügbaren Jupyter Notebooks.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: 8c3993d8208a9a9e2ab54be44d88de0b20a2e586
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b1139ce2358d5e5b3b52376892524e7ee0dd5611
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86084714"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97822232"
 ---
 # <a name="kernels-for-jupyter-notebook-on-apache-spark-clusters-in-azure-hdinsight"></a>Kernel für Jupyter Notebook in Apache Spark-Clustern in Azure HDInsight
 
@@ -29,28 +29,28 @@ In diesem Artikel erfahren Sie, wie Sie diese Kernels verwenden und welche Vorte
 
 Einen Apache Spark-Cluster unter HDInsight Eine Anleitung finden Sie unter [Erstellen von Apache Spark-Clustern in Azure HDInsight](apache-spark-jupyter-spark-sql.md).
 
-## <a name="create-a-jupyter-notebook-on-spark-hdinsight"></a>Erstellen eines Jupyter-Notebooks unter Spark HDInsight
+## <a name="create-a-jupyter-notebook-on-spark-hdinsight"></a>Erstellen eines Jupyter Notebooks unter Spark HDInsight
 
 1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) Ihren Spark-Cluster aus.  Anweisungen dazu finden Sie unter [Auflisten und Anzeigen von Clustern](../hdinsight-administer-use-portal-linux.md#showClusters). Die **Übersicht** wird geöffnet.
 
-2. Wählen Sie in der **Übersicht** im Feld **Clusterdashboards** die Option **Jupyter-Notebook** aus. Geben Sie die Administratoranmeldeinformationen für den Cluster ein, wenn Sie dazu aufgefordert werden.
+2. Wählen Sie in der **Übersicht** im Feld **Clusterdashboards** die Option **Jupyter Notebook** aus. Geben Sie die Administratoranmeldeinformationen für den Cluster ein, wenn Sie dazu aufgefordert werden.
 
-    ![Jupyter-Notebook in Apache Spark](./media/apache-spark-jupyter-notebook-kernels/hdinsight-spark-open-jupyter-interactive-spark-sql-query.png "Jupyter-Notebook in Spark")
+    ![Jupyter Notebook in Apache Spark](./media/apache-spark-jupyter-notebook-kernels/hdinsight-spark-open-jupyter-interactive-spark-sql-query.png "Jupyter Notebook in Spark")
   
    > [!NOTE]  
-   > Sie können das Jupyter-Notebook im Spark-Cluster auch aufrufen, indem Sie in Ihrem Browser die folgende URL öffnen. Ersetzen Sie **CLUSTERNAME** durch den Namen Ihres Clusters:
+   > Sie können das Jupyter Notebook im Spark-Cluster auch aufrufen, indem Sie in Ihrem Browser die folgende URL öffnen. Ersetzen Sie **CLUSTERNAME** durch den Namen Ihres Clusters:
    >
    > `https://CLUSTERNAME.azurehdinsight.net/jupyter`
 
 3. Wählen Sie **Neu** und anschließend entweder **Pyspark**, **PySpark3** oder **Spark** aus, um ein Notebook zu erstellen. Der Spark-Kernel ist für Scala-Anwendungen vorgesehen, der PySpark-Kernel für Python2-Anwendungen und der PySpark3-Kernel für Python3-Anwendungen.
 
-    ![Kernel für Jupyter-Notebook in Spark](./media/apache-spark-jupyter-notebook-kernels/kernel-jupyter-notebook-on-spark.png "Kernel für Jupyter-Notebook in Spark")
+    ![Kernel für Jupyter Notebook in Spark](./media/apache-spark-jupyter-notebook-kernels/kernel-jupyter-notebook-on-spark.png "Kernel für Jupyter Notebook in Spark")
 
 4. Mit dem gewählten Kernel wird ein Notebook geöffnet.
 
 ## <a name="benefits-of-using-the-kernels"></a>Vorteile der Kernelverwendung
 
-Hier sind einige Vorteile der Verwendung der neuen Kernel mit einem Jupyter-Notebook in Spark HDInsight-Clustern.
+Hier sind einige Vorteile der Verwendung der neuen Kernel mit einem Jupyter Notebook in Spark HDInsight-Clustern.
 
 - **Voreingestellte Kontexte** Bei Verwendung der **PySpark**-, **PySpark3**- oder **Spark**-Kernel müssen Sie die Spark- oder Hive-Kontexte nicht mehr explizit festlegen, um mit Ihren Anwendungen arbeiten zu können. Diese Kontexte sind standardmäßig verfügbar. Diese Kontexte sind:
 
@@ -107,10 +107,10 @@ SELECT * FROM hivesampletable
 
 Die obige Anweisung führt folgende Aktionen aus:
 
-- Wählt alle Datensätze aus **hivesampletable**aus.
+- Wählt alle Datensätze aus **hivesampletable** aus.
 - Da wir „-q“ verwenden, wird die automatische Visualisierung deaktiviert.
 - Da wir `-m sample -r 0.1 -n 500` verwenden, werden nach dem Zufallsprinzip 10 % der Zeilen in „hivesampletable“ ausgewählt, und die Größe des Resultsets wird auf 500 Zeilen beschränkt.
-- Da wir `-o query2` verwendet haben, wird schließlich auch die Ausgabe in einem Dataframe namens **query2**gespeichert.
+- Da wir `-o query2` verwendet haben, wird schließlich auch die Ausgabe in einem Dataframe namens **query2** gespeichert.
 
 ## <a name="considerations-while-using-the-new-kernels"></a>Überlegungen bei der Verwendung der neuen Kernel
 

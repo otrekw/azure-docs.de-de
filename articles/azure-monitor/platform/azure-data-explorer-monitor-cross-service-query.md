@@ -1,25 +1,23 @@
 ---
 title: Dienstübergreifende Abfragen zwischen Azure Monitor und Azure Data Explorer (Vorschau)
 description: Fragen Sie Daten in Azure Data Explorer über Azure Log Analytics-Tools und umgekehrt ab, um alle Daten an einem Ort zusammenzuführen und zu analysieren.
-author: orens
+author: osalzberg
 ms.author: bwren
 ms.reviewer: bwren
 ms.subservice: logs
 ms.topic: conceptual
 ms.date: 06/12/2020
-ms.openlocfilehash: 0af9111223bb16f1c5843223e7fe1661ce99c623
-ms.sourcegitcommit: 003ac3b45abcdb05dc4406661aca067ece84389f
+ms.openlocfilehash: e60f77495cdb822a0c50be936c2b0d3ac31348f3
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96749229"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98116708"
 ---
 # <a name="cross-service-query---azure-monitor-and-azure-data-explorer-preview"></a>Dienstübergreifende Abfragen – Azure Monitor und Azure Data Explorer (Vorschau)
 Erstellen Sie dienstübergreifende Abfragen zwischen [Azure Data Explorer](https://docs.microsoft.com/azure/data-explorer/), [Application Insights](/azure/azure-monitor/app/app-insights-overview) und [Log Analytics](/azure/azure-monitor/platform/data-platform-logs).
 ## <a name="azure-monitor-and-azure-data-explorer-cross-service-querying"></a>Dienstübergreifende Abfragen zwischen Azure Monitor und Azure Data Explorer
 Mit dieser Funktion können Sie [dienstübergreifende Abfragen zwischen Azure Data Explorer und Azure Monitor](https://docs.microsoft.com/azure/data-explorer/query-monitor-data) sowie [dienstübergreifende Abfragen zwischen Azure Monitor und Azure Data Explorer](https://docs.microsoft.com/azure/azure-monitor/platform/azure-monitor-data-explorer-proxy) erstellen.
-
-:::image type="content" source="media\azure-data-explorer-monitor-proxy\azure-data-explorer-monitor-flow.png" alt-text="Azure Data Explorer-Proxyflow":::
 
 Beispiel (Abfrage von Azure Data Explorer aus Log Analytics):
 ```kusto

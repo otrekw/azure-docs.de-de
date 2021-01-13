@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 91f612ba7f19deb739dbb6004e275ea044a5a3d3
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 45e1ae5b8a1084334b7596f62c272e16294c4c14
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462558"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98118760"
 ---
 # <a name="query-nested-types-in-parquet-and-json-files-by-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Abfragen von geschachtelten Typen in Parquet und JSON-Dateien mit einem serverlosen SQL-Pool in Azure Synapse Analytics
 
@@ -24,7 +24,7 @@ Bei geschachtelten Typen handelt es sich um komplexe Strukturen zur Darstellung 
 - In hierarchischen [JSON-Dateien](query-json-files.md). Dabei können komplexe JSON-Dokumente als einzelne Spalte gelesen werden.
 - In Azure Cosmos DB-Sammlungen (aktuell in der geschlossenen öffentlichen Vorschau verfügbar). Dabei kann jedes Dokument komplexe geschachtelte Eigenschaften enthalten.
 
-Der serverlose SQL-Pool formatiert alle geschachtelten Typen als JSON-Objekte und -Arrays. Somit können Sie [komplexe Objekte mithilfe von JSON-Funktionen extrahieren oder ändern](https://docs.microsoft.com/sql/relational-databases/json/validate-query-and-change-json-data-with-built-in-functions-sql-server) bzw. [JSON-Daten mithilfe der OPENJSON-Funktion analysieren](https://docs.microsoft.com/sql/relational-databases/json/convert-json-data-to-rows-and-columns-with-openjson-sql-server). 
+Der serverlose SQL-Pool formatiert alle geschachtelten Typen als JSON-Objekte und -Arrays. Somit können Sie [komplexe Objekte mithilfe von JSON-Funktionen extrahieren oder ändern](/sql/relational-databases/json/validate-query-and-change-json-data-with-built-in-functions-sql-server) bzw. [JSON-Daten mithilfe der OPENJSON-Funktion analysieren](/sql/relational-databases/json/convert-json-data-to-rows-and-columns-with-openjson-sql-server). 
 
 Hier folgt ein Beispiel für eine Abfrage, die Skalar- und Objektwerte aus der JSON-Datei [COVID-19 Open Research Dataset](https://azure.microsoft.com/services/open-datasets/catalog/covid-19-open-research/) extrahiert, die geschachtelte Objekte enthält: 
 
@@ -121,7 +121,7 @@ Das Ergebnis ist in der folgenden Tabelle gezeigt:
 | --- | --- | --- | --- |
 | Supplementary Information An eco-epidemiolo... | Julien   | - Figure S1 : Phylogeny of... | `{    "paper_id": "000b7d1517ceebb34e1e3e817695b6de03e2fa78",    "metadata": {        "title": "Supplementary Information An eco-epidemiological study of Morbilli-related paramyxovirus infection in Madagascar bats reveals host-switching as the dominant macro-evolutionary mechanism",        "authors": [            {                "first": "Julien"` |
 
-Im Gegensatz zu JSON-Dateien, die in den meisten Fällen eine einzelne Spalte zurückgeben, die ein komplexes JSON-Objekt enthält, können Parquet-Dateien mehrere komplexe Spalten aufweisen. Sie können die Eigenschaften der geschachtelten Spalten mit der Funktion `JSON_VALUE` für jede Spalte lesen. Mit `OPENROWSET` können Sie die Pfade der geschachtelten Eigenschaften direkt in einer `WITH`-Klausel angeben. Sie können die Pfade als Namen einer Spalte festlegen, oder Sie können einen [JSON-Pfadausdruck](https://docs.microsoft.com/sql/relational-databases/json/json-path-expressions-sql-server) hinter dem Spaltentyp hinzufügen.
+Im Gegensatz zu JSON-Dateien, die in den meisten Fällen eine einzelne Spalte zurückgeben, die ein komplexes JSON-Objekt enthält, können Parquet-Dateien mehrere komplexe Spalten aufweisen. Sie können die Eigenschaften der geschachtelten Spalten mit der Funktion `JSON_VALUE` für jede Spalte lesen. Mit `OPENROWSET` können Sie die Pfade der geschachtelten Eigenschaften direkt in einer `WITH`-Klausel angeben. Sie können die Pfade als Namen einer Spalte festlegen, oder Sie können einen [JSON-Pfadausdruck](/sql/relational-databases/json/json-path-expressions-sql-server) hinter dem Spaltentyp hinzufügen.
 
 Die folgende Abfrage liest die Datei structBeispiel.parquet und zeigt, wie Elemente einer geschachtelten Spalte an die Oberfläche gebracht werden: Es gibt zwei Möglichkeiten, auf einen geschachtelten Wert zu verweisen:
 - Durch Angeben des Pfadausdrucks des geschachtelten Werts nach der Typspezifikation.

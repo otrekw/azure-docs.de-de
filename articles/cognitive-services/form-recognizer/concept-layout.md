@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: pafarley
-ms.openlocfilehash: 60ef490bbba4dca4f01b82967ad6ea8636e7bd4e
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: a63f910b3a939e33b8c71d8f22d15f6d610a12cc
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353696"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97845558"
 ---
 # <a name="form-recognizer-layout-service"></a>Layoutdienst für die Formularerkennung
 
@@ -89,8 +89,7 @@ Layout extrahiert auch Auswahlmarkierungen aus Dokumenten. Extrahierte Auswahlma
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Ausprobieren Ihrer eigenen Layoutextraktion mithilfe der [Beispielbenutzeroberfläche für die Formularerkennung](https://fott-preview.azurewebsites.net/)
-- Arbeiten Sie einen [Schnellstart für die Clientbibliothek zur Formularerkennung](quickstarts/client-library.md) durch, um die ersten Schritte zum Extrahieren von Layouts in der Sprache Ihrer Wahl auszuführen.
-- Oder führen Sie die Schritte im Schnellstart zum [Extrahieren von Layoutdaten](./QuickStarts/python-layout.md) aus, um die Extraktion von Layoutdaten mithilfe von Python und der REST-API zu implementieren.
+- Arbeiten Sie einen [Schnellstart für die Formularerkennung](quickstarts/client-library.md) durch, um die ersten Schritte zum Extrahieren von Layouts in der Sprache Ihrer Wahl auszuführen.
 
 ## <a name="see-also"></a>Weitere Informationen
 

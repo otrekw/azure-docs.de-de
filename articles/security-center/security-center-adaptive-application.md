@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/06/2020
 ms.author: memildin
-ms.openlocfilehash: 95c3ad6f689893195e0e5c17c59ab31143cf238d
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 473353c3f61d1096beb11c521c08ac723d54b780
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93346518"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071600"
 ---
 # <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>Verwenden von adaptiven Anwendungssteuerungen zum Verringern der Angriffsfläche Ihres Computers
 
@@ -53,7 +53,7 @@ Durch die Definition von Listen mit bekannten sicheren Anwendungen und das Gener
 |Status des Release:|Allgemein verfügbar (Generally Available, GA)|
 |Preise:|Erfordert [Azure Defender für Server](defender-for-servers-introduction.md)|
 |Unterstützte Computer:|![Ja](./media/icons/yes-icon.png) Azure- und Nicht-Azure-Computer, auf denen Windows und Linux ausgeführt wird<br>![Ja](./media/icons/yes-icon.png) [Azure Arc](../azure-arc/index.yml)-Computer|
-|Erforderliche Rollen und Berechtigungen:|**Sicherheitsleseberechtigter** - und **Leseberechtigter** -Rollen können Gruppen und Listen der bekannten sicheren Anwendungen anzeigen<br>**Mitwirkender** - und **Sicherheitsadministrator** -Rollen können Gruppen und Listen der bekannten sicheren Anwendungen bearbeiten|
+|Erforderliche Rollen und Berechtigungen:|**Sicherheitsleseberechtigter**- und **Leseberechtigter**-Rollen können Gruppen und Listen der bekannten sicheren Anwendungen anzeigen<br>**Mitwirkender**- und **Sicherheitsadministrator**-Rollen können Gruppen und Listen der bekannten sicheren Anwendungen bearbeiten|
 |Clouds:|![Ja](./media/icons/yes-icon.png) Kommerzielle Clouds<br>![Ja](./media/icons/yes-icon.png) National/Sovereign (US Gov, China Gov, andere Gov-Clouds)|
 |||
 
@@ -71,18 +71,18 @@ Wählen Sie die Empfehlung aus, oder öffnen Sie die Seite der adaptiven Anwendu
 
     Die Seite **Adaptive Anwendungssteuerung** wird geöffnet, auf der Ihre VMs auf den folgenden Registerkarten gruppiert sind:
 
-    - **Konfiguriert** : Gruppen von Computern, die bereits über eine definierte Zulassungsliste von Anwendungen verfügen. Für jede Gruppe zeigt die konfigurierte Registerkarte Folgendes an:
+    - **Konfiguriert**: Gruppen von Computern, die bereits über eine definierte Zulassungsliste von Anwendungen verfügen. Für jede Gruppe zeigt die konfigurierte Registerkarte Folgendes an:
         - die Anzahl von Computern in der Gruppe
         - letzte Warnungen
 
-    - **Empfohlen** : Gruppen von Computern, auf denen die gleichen Anwendungen konsistent ausgeführt werden, und für die keine Zulassungsliste konfiguriert ist. Sie sollten die adaptive Anwendungssteuerung für diese Gruppen zu aktivieren.
+    - **Empfohlen**: Gruppen von Computern, auf denen die gleichen Anwendungen konsistent ausgeführt werden, und für die keine Zulassungsliste konfiguriert ist. Sie sollten die adaptive Anwendungssteuerung für diese Gruppen zu aktivieren.
     
       > [!TIP]
       > Wenn ein Gruppenname mit dem Präfix „REVIEWGROUP“ angezeigt wird, enthält er Computer mit einer teilweise konsistenten Liste von Anwendungen. Security Center kann kein Muster sehen, empfiehlt aber, diese Gruppe zu überprüfen, um festzustellen, ob _Sie_ einige Regeln für die adaptive Anwendungssteuerung wie in [Bearbeiten der Regel für die adaptive Anwendungssteuerung einer Gruppe](#edit-a-groups-adaptive-application-controls-rule) beschrieben manuell definieren können.
       >
       > Sie können auch Computer aus dieser Gruppe in andere Gruppen verschieben, wie in [Verschieben eines Computers aus einer Gruppe in eine andere](#move-a-machine-from-one-group-to-another) beschrieben.
 
-    - **Keine Empfehlung** : Computer ohne definierte Zulassungsliste von Anwendungen, die die Funktion nicht unterstützen. Ihr Computer befindet sich aus folgenden Gründen möglicherweise auf dieser Registerkarte:
+    - **Keine Empfehlung**: Computer ohne definierte Zulassungsliste von Anwendungen, die die Funktion nicht unterstützen. Ihr Computer befindet sich aus folgenden Gründen möglicherweise auf dieser Registerkarte:
       - Ein Log Analytics-Agent fehlt.
       - Der Log Analytics-Agent sendet keine Ereignisse.
       - Es handelt sich um einen Windows-Computer mit einer bereits vorhandenen [AppLocker](/windows/security/threat-protection/windows-defender-application-control/applocker/applocker-overview)-Richtlinie, die entweder durch ein Gruppenrichtlinienobjekt oder eine lokale Sicherheitsrichtlinie aktiviert ist.
@@ -101,11 +101,11 @@ Wählen Sie die Empfehlung aus, oder öffnen Sie die Seite der adaptiven Anwendu
 
    ![Konfigurieren einer neuen Regel](./media/security-center-adaptive-application/adaptive-application-create-rule.png)
 
-   1. **Computer auswählen** : Standardmäßig werden alle Computer in der identifizierten Gruppe ausgewählt. Heben Sie die Auswahl von Computern auf, die Sie von dieser Regel ausnehmen möchten.
+   1. **Computer auswählen**: Standardmäßig werden alle Computer in der identifizierten Gruppe ausgewählt. Heben Sie die Auswahl von Computern auf, die Sie von dieser Regel ausnehmen möchten.
    
-   1. **Empfohlene Anwendungen** : Lesen Sie diese Liste mit Anwendungen, die auf den Computern in dieser Gruppe gängig sind, und für die ein Zulassen der Ausführung empfohlen wird.
+   1. **Empfohlene Anwendungen**: Lesen Sie diese Liste mit Anwendungen, die auf den Computern in dieser Gruppe gängig sind, und für die ein Zulassen der Ausführung empfohlen wird.
    
-   1. **Weitere Anwendungen** : Überprüfen Sie diese Liste von Anwendungen, die auf den Computern innerhalb dieser Gruppe entweder seltener vorkommen, oder die als nutzbar bekannt sind. Ein Warnsymbol gibt an, dass eine bestimmte Anwendung von einem Angreifer zur Umgehung einer Anwendungszulassungsliste verwendet werden könnte. Sie sollten diese Anwendungen sorgfältig überprüfen.
+   1. **Weitere Anwendungen**: Überprüfen Sie diese Liste von Anwendungen, die auf den Computern innerhalb dieser Gruppe entweder seltener vorkommen, oder die als nutzbar bekannt sind. Ein Warnsymbol gibt an, dass eine bestimmte Anwendung von einem Angreifer zur Umgehung einer Anwendungszulassungsliste verwendet werden könnte. Sie sollten diese Anwendungen sorgfältig überprüfen.
 
       > [!TIP]
       > Beide Anwendungslisten enthalten die Option, eine bestimmte Anwendung auf bestimmte Benutzer zu beschränken. Wenden Sie nach Möglichkeit das Prinzip der geringsten Berechtigungen an.
@@ -127,7 +127,7 @@ So bearbeiten Sie die Regeln für eine Gruppe von Computern:
 
 1. Wählen Sie auf der Registerkarte **Konfiguriert** die Gruppe mit der Regel aus, die Sie bearbeiten möchten.
 
-1. Lesen Sie die verschiedenen Abschnitte der Seite **Konfigurieren von Regeln zur Anwendungssteuerung** , wie unter [Aktivieren der adaptiven Anwendungssteuerung für eine Gruppe von Computern](#enable-application-controls-on-a-group-of-machines) beschrieben.
+1. Lesen Sie die verschiedenen Abschnitte der Seite **Konfigurieren von Regeln zur Anwendungssteuerung**, wie unter [Aktivieren der adaptiven Anwendungssteuerung für eine Gruppe von Computern](#enable-application-controls-on-a-group-of-machines) beschrieben.
 
 1. Fügen Sie optional eine oder mehrere benutzerdefinierte Regeln hinzu:
 
@@ -158,11 +158,6 @@ So bearbeiten Sie die Regeln für eine Gruppe von Computern:
 
     :::image type="content" source="./media/security-center-adaptive-application/adaptive-application-group-settings.png" alt-text="Seite „Gruppeneinstellungen“ für adaptive Anwendungssteuerungen" lightbox="./media/security-center-adaptive-application/adaptive-application-group-settings.png":::
 
-    > [!IMPORTANT]
-    > Die Option **Erzwingen** in den Einstellungen zum Schutzmodus für Dateitypen ist in **allen** Szenarien abgeblendet. Derzeit sind keine Erzwingungsoptionen verfügbar. 
-    >
-    > :::image type="content" source="./media/security-center-adaptive-application/adaptive-application-modes.png" alt-text="Erzwingungsmodus für Dateischutz dauerhaft abgeblendet. Keine Erzwingungsoptionen verfügbar.":::
-
 1. Ändern Sie optional den Namen der Gruppe oder den jeweiligen Schutzmodus für Dateitypen.
 
 1. Wählen Sie **Anwenden** und dann **Speichern** aus.
@@ -175,11 +170,11 @@ Diese Empfehlung wird angezeigt, wenn das maschinelle Lernen von Security Center
 
 So beheben Sie die Probleme:
 
-1. Wählen Sie auf der Empfehlungenseite die Empfehlung **Zulassungslistenregeln in der Richtlinie für die adaptive Anwendungssteuerung müssen aktualisiert werden** , um Gruppen mit neu identifizierten, potenziell legitimen Verhalten anzuzeigen.
+1. Wählen Sie auf der Empfehlungenseite die Empfehlung **Zulassungslistenregeln in der Richtlinie für die adaptive Anwendungssteuerung müssen aktualisiert werden**, um Gruppen mit neu identifizierten, potenziell legitimen Verhalten anzuzeigen.
 
 1. Wählen Sie die Gruppe mit der Regel aus, die Sie bearbeiten möchten.
 
-1. Lesen Sie die verschiedenen Abschnitte der Seite **Konfigurieren von Regeln zur Anwendungssteuerung** , wie unter [Aktivieren der adaptiven Anwendungssteuerung für eine Gruppe von Computern](#enable-application-controls-on-a-group-of-machines) beschrieben.
+1. Lesen Sie die verschiedenen Abschnitte der Seite **Konfigurieren von Regeln zur Anwendungssteuerung**, wie unter [Aktivieren der adaptiven Anwendungssteuerung für eine Gruppe von Computern](#enable-application-controls-on-a-group-of-machines) beschrieben.
 
 1. Wählen Sie **Überwachung** aus, um die Änderungen zu übernehmen.
 
@@ -228,14 +223,14 @@ Die vollständige API-Dokumentation finden Sie [hier](/rest/api/securitycenter/a
 
 Einige der Funktionen, die über die REST-API verfügbar sind:
 
-* **List** : Ruft alle Ihre Gruppenempfehlungen ab und stellt einen JSON-Code mit einem Objekt für jede Gruppe bereit.
+* **List**: Ruft alle Ihre Gruppenempfehlungen ab und stellt einen JSON-Code mit einem Objekt für jede Gruppe bereit.
 
-* **Get** : Ruft den JSON-Code mit den vollständigen Empfehlungsdaten (d. h. Liste von Computern, Herausgeber-/Pfadregeln usw.) ab.
+* **Get**: Ruft den JSON-Code mit den vollständigen Empfehlungsdaten (d. h. Liste von Computern, Herausgeber-/Pfadregeln usw.) ab.
 
-* **Put** : Konfiguriert Ihre Regel (verwenden Sie den JSON-Code, den Sie mit **Get** abgerufen haben, als Text für diese Anforderung).
+* **Put**: Konfiguriert Ihre Regel (verwenden Sie den JSON-Code, den Sie mit **Get** abgerufen haben, als Text für diese Anforderung).
  
    > [!IMPORTANT]
-   > Die **Put** -Funktion erwartet weniger Parameter als der vom Get-Befehl zurückgegebene JSON-Code enthält.
+   > Die **Put**-Funktion erwartet weniger Parameter als der vom Get-Befehl zurückgegebene JSON-Code enthält.
    >
    > Entfernen Sie die folgenden Eigenschaften, bevor Sie den JSON-Code in der Put-Anforderung verwenden: recommendationStatus, configurationStatus, issues, location und sourceSystem.
 

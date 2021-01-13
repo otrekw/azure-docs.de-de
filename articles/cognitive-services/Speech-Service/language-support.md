@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: 12c9777449d3f360b8f08d99aca7b916856139d4
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: d0cb9dc3c54f409c3bdd71fbb57c823e15abc22d
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400181"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97762961"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Sprach- und Stimmunterstützung für den Speech-Dienst
 
@@ -36,94 +36,94 @@ To get pronunciation bits:
 https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronunciation Datasets" -> Click on Import -> Locale: the list of locales there correspond to the supported locales
 -->
 
-| Sprache                          | Gebietsschema (BCP-47) | Anpassungen                                   |
-|-----------------------------------|--------|--------------------------------------------------|
-|Arabisch (Bahrain), modernes Hocharabisch  |`ar-BH` | Sprachmodell                                   |
-|Arabisch (Ägypten)                     |`ar-EG` | Sprachmodell                                   |
-|Arabisch (Irak)                      |`ar-IQ` | Sprachmodell                                   |
-|Arabisch (Israel)                              |`ar-IL` | Sprachmodell                                                   |
-|Arabisch (Jordanien)                    |`ar-JO` | Sprachmodell                                   |
-|Arabisch (Kuwait)                    |`ar-KW` | Sprachmodell                                   |
-|Arabisch (Libanon)                   |`ar-LB` | Sprachmodell                                   |
-|Arabisch (Oman)                      |`ar-OM` | Sprachmodell                                   |
-|Arabisch (Katar)                     |`ar-QA` | Sprachmodell                                   |
-|Arabisch (Saudi-Arabien)              |`ar-SA` | Sprachmodell                                   |
-|Arabisch (Staat Palästina)            |`ar-PS` | Sprachmodell                                   |
-|Arabisch (Syrien)                     |`ar-SY` | Sprachmodell                                   |
-|Arabisch (Vereinigte Arabische Emirate)      |`ar-AE` | Sprachmodell                                   |
-|Bulgarisch (Bulgarien)               |`bg-BG` | Sprachmodell                                   |
-|Katalanisch (Spanien)                    |`ca-ES` | Sprachmodell                                   |
-|Chinesisch (Kantonesisch, traditionell)   |`zh-HK` | Sprachmodell                                   |
-|Chinesisch (Mandarin, vereinfacht)     |`zh-CN` | Akustische Modell<br>Sprachmodell                 |
-|Chinesisch (Taiwanesisch, Mandarin)       |`zh-TW` | Sprachmodell                                   |
-|Kroatisch (Kroatien)                 |`hr-HR` | Sprachmodell                                   |
-|Tschechisch (Tschechische Republik)             |`cs-CZ` | Sprachmodell                                   |
-|Dänisch (Dänemark)                   |`da-DK` | Sprachmodell                                   |
-|Niederländisch (Niederlande)                |`nl-NL` | Sprachmodell                                   |
-|Englisch (Australien)                |`en-AU` | Akustische Modell<br>Sprachmodell                 |
-|Englisch (Kanada)                   |`en-CA` | Akustische Modell<br>Sprachmodell                 |
-|Englisch (Hongkong)                |`en-HK` | Sprachmodell                                   |
-|Englisch (Indien)                    |`en-IN` | Akustische Modell<br>Sprachmodell                 |
-|Englisch (Irland)                  |`en-IE` | Sprachmodell                                   |
-|Englisch (Neuseeland)              |`en-NZ` | Akustische Modell<br>Sprachmodell                 |
-|Englisch (Nigeria)                          |`en-NG` | Sprachmodell                                                     |
-|Englisch (Philippinen)              |`en-PH` | Sprachmodell                                   |
-|Englisch (Singapur)                |`en-SG` | Sprachmodell                                   |
-|Englisch (Südafrika)             |`en-ZA` | Sprachmodell                                   |
-|Walisisch (Großbritannien)           |`en-GB` | Akustische Modell<br>Sprachmodell<br>Aussprache|
-|Englisch (USA)            |`en-US` | Akustische Modell<br>Sprachmodell<br>Aussprache|
-|Estnisch (Estland)                  |`et-EE` | Sprachmodell                                   |
-|Finnisch (Finnland)                  |`fi-FI` | Sprachmodell                                   |
-|Französisch (Kanada)                    |`fr-CA` | Akustische Modell<br>Sprachmodell                 |
-|Französisch (Frankreich)                    |`fr-FR` | Akustische Modell<br>Sprachmodell<br>Aussprache|
-|Deutsch (Deutschland)                   |`de-DE` | Akustische Modell<br>Sprachmodell<br>Aussprache|
-|Griechisch (Griechenland)                     |`el-GR` | Sprachmodell                                   |
-|Gujarati (Indien)                  |`gu-IN` | Sprachmodell                                   |
-|Hindi (Indien)                      |`hi-IN` | Akustische Modell<br>Sprachmodell                 |
-|Ungarisch (Ungarn)                |`hu-HU` | Sprachmodell                                   |
-|Irisch (Irland)                     |`ga-IE` | Sprachmodell                                   |
-|Italienisch (Italien)                    |`it-IT` | Akustische Modell<br>Sprachmodell<br>Aussprache|
-|Japanisch (Japan)                   |`ja-JP` | Sprachmodell                                   |
-|Koreanisch (Korea)                     |`ko-KR` | Sprachmodell                                   |
-|Lettisch (Lettland)                   |`lv-LV` | Sprachmodell                                   |
-|Litauisch (Litauen)             |`lt-LT` | Sprachmodell                                   |
-|Maltesisch (Malta)                     |`mt-MT` | Sprachmodell                                   |
-|Marathi (Indien)                    |`mr-IN` | Sprachmodell                                   |
-|Norwegisch, Bokmål (Norwegen)         |`nb-NO` | Sprachmodell                                   |
-|Polnisch (Polen)                    |`pl-PL` | Sprachmodell                                   |
-|Portugiesisch (Brasilien)                |`pt-BR` | Akustische Modell<br>Sprachmodell<br>Aussprache|
-|Portugiesisch (Portugal)              |`pt-PT` | Sprachmodell                                   |
-|Rumänisch (Rumänien)                 |`ro-RO` | Sprachmodell                                   |
-|Russisch (Russische Föderation)                   |`ru-RU` | Akustische Modell<br>Sprachmodell                 |
-|Slowakisch (Slowakei)                  |`sk-SK` | Sprachmodell                                   |
-|Slowenisch (Slowenien)               |`sl-SI` | Sprachmodell                                   |
-|Spanisch (Argentinien)                |`es-AR` | Sprachmodell                                   |
-|Spanisch (Bolivien)                  |`es-BO` | Sprachmodell                                   |
-|Spanisch (Chile)                    |`es-CL` | Sprachmodell                                   |
-|Spanisch (Kolumbien)                 |`es-CO` | Sprachmodell                                   |
-|Spanisch (Costa Rica)               |`es-CR` | Sprachmodell                                   |
-|Spanisch (Kuba)                     |`es-CU` | Sprachmodell                                   |
-|Spanisch (Dominikanische Republik)       |`es-DO` | Sprachmodell                                   |
-|Spanisch (Ecuador)                  |`es-EC` | Sprachmodell                                   |
-|Spanisch (El Salvador)              |`es-SV` | Sprachmodell                                   |
-|Spanisch (Äquatorialguinea)            |`es-GQ` | Sprachmodell                                   |
-|Spanisch (Guatemala)                |`es-GT` | Sprachmodell                                   |
-|Spanisch (Honduras)                 |`es-HN` | Sprachmodell                                   |
-|Spanisch (Mexiko)                   |`es-MX` | Akustische Modell<br>Sprachmodell                 |
-|Spanisch (Nicaragua)                |`es-NI` | Sprachmodell                                   |
-|Spanisch (Panama)                   |`es-PA` | Sprachmodell                                   |
-|Spanisch (Paraguay)                 |`es-PY` | Sprachmodell                                   |
-|Spanisch (Peru)                     |`es-PE` | Sprachmodell                                   |
-|Spanisch (Puerto Rico)              |`es-PR` | Sprachmodell                                   |
-|Spanisch (Spanien)                    |`es-ES` | Akustische Modell<br>Sprachmodell                 |
-|Spanisch (Uruguay)                  |`es-UY` | Sprachmodell                                   |
-|Spanisch (USA)                      |`es-US` | Sprachmodell                                   |
-|Spanisch (Venezuela)                |`es-VE` | Sprachmodell                                   |
-|Schwedisch (Schweden)                   |`sv-SE` | Sprachmodell                                   |
-|Tamil (Indien)                      |`ta-IN` | Sprachmodell                                   |
-|Telugu (Indien)                     |`te-IN` | Sprachmodell                                   |
-|Thai (Thailand)                    |`th-TH` | Sprachmodell                                   |
-|Türkisch (Türkei)                   |`tr-TR` | Sprachmodell                                   |
+| Sprache                           | Gebietsschema (BCP-47) | Anpassungen                                   |
+|------------------------------------|--------|--------------------------------------------------|
+| Arabisch (Bahrain), modernes Hocharabisch  | `ar-BH` | Sprachmodell                                   |
+| Arabisch (Ägypten)                     | `ar-EG` | Sprachmodell                                   |
+| Arabisch (Irak)                      | `ar-IQ` | Sprachmodell                                   |
+| Arabisch (Israel)                    | `ar-IL` | Sprachmodell                                   |
+| Arabisch (Jordanien)                    | `ar-JO` | Sprachmodell                                   |
+| Arabisch (Kuwait)                    | `ar-KW` | Sprachmodell                                   |
+| Arabisch (Libanon)                   | `ar-LB` | Sprachmodell                                   |
+| Arabisch (Oman)                      | `ar-OM` | Sprachmodell                                   |
+| Arabisch (Katar)                     | `ar-QA` | Sprachmodell                                   |
+| Arabisch (Saudi-Arabien)              | `ar-SA` | Sprachmodell                                   |
+| Arabisch (Staat Palästina)        | `ar-PS` | Sprachmodell                                   |
+| Arabisch (Syrien)                     | `ar-SY` | Sprachmodell                                   |
+| Arabisch (Vereinigte Arabische Emirate)      | `ar-AE` | Sprachmodell                                   |
+| Bulgarisch (Bulgarien)               | `bg-BG` | Sprachmodell                                   |
+| Katalanisch (Spanien)                    | `ca-ES` | Sprachmodell                                   |
+| Chinesisch (Kantonesisch, traditionell)   | `zh-HK` | Sprachmodell                                   |
+| Chinesisch (Mandarin, vereinfacht)     | `zh-CN` | Akustische Modell<br>Sprachmodell                 |
+| Chinesisch (Taiwanesisch, Mandarin)       | `zh-TW` | Sprachmodell                                   |
+| Kroatisch (Kroatien)                 | `hr-HR` | Sprachmodell                                   |
+| Tschechisch (Tschechische Republik)             | `cs-CZ` | Sprachmodell                                   |
+| Dänisch (Dänemark)                   | `da-DK` | Sprachmodell                                   |
+| Niederländisch (Niederlande)                | `nl-NL` | Sprachmodell                                   |
+| Englisch (Australien)                | `en-AU` | Akustische Modell<br>Sprachmodell                 |
+| Englisch (Kanada)                   | `en-CA` | Akustische Modell<br>Sprachmodell                 |
+| Englisch (Hongkong)                | `en-HK` | Sprachmodell                                   |
+| Englisch (Indien)                    | `en-IN` | Akustische Modell<br>Sprachmodell                 |
+| Englisch (Irland)                  | `en-IE` | Sprachmodell                                   |
+| Englisch (Neuseeland)              | `en-NZ` | Akustische Modell<br>Sprachmodell                 |
+| Englisch (Nigeria)                  | `en-NG` | Sprachmodell                                   |
+| Englisch (Philippinen)              | `en-PH` | Sprachmodell                                   |
+| Englisch (Singapur)                | `en-SG` | Sprachmodell                                   |
+| Englisch (Südafrika)             | `en-ZA` | Sprachmodell                                   |
+| Walisisch (Großbritannien)           | `en-GB` | Akustische Modell<br>Sprachmodell<br>Aussprache|
+| Englisch (USA)            | `en-US` | Akustische Modell<br>Sprachmodell<br>Aussprache|
+| Estnisch (Estland)                  | `et-EE` | Sprachmodell                                   |
+| Finnisch (Finnland)                  | `fi-FI` | Sprachmodell                                   |
+| Französisch (Kanada)                    | `fr-CA` | Akustische Modell<br>Sprachmodell                 |
+| Französisch (Frankreich)                    | `fr-FR` | Akustische Modell<br>Sprachmodell<br>Aussprache|
+| Deutsch (Deutschland)                   | `de-DE` | Akustische Modell<br>Sprachmodell<br>Aussprache|
+| Griechisch (Griechenland)                     | `el-GR` | Sprachmodell                                   |
+| Gujarati (Indien)                  | `gu-IN` | Sprachmodell                                   |
+| Hindi (Indien)                      | `hi-IN` | Akustische Modell<br>Sprachmodell                 |
+| Ungarisch (Ungarn)                | `hu-HU` | Sprachmodell                                   |
+| Irisch (Irland)                     | `ga-IE` | Sprachmodell                                   |
+| Italienisch (Italien)                    | `it-IT` | Akustische Modell<br>Sprachmodell<br>Aussprache|
+| Japanisch (Japan)                   | `ja-JP` | Sprachmodell                                   |
+| Koreanisch (Korea)                     | `ko-KR` | Sprachmodell                                   |
+| Lettisch (Lettland)                   | `lv-LV` | Sprachmodell                                   |
+| Litauisch (Litauen)             | `lt-LT` | Sprachmodell                                   |
+| Maltesisch (Malta)                     | `mt-MT` | Sprachmodell                                   |
+| Marathi (Indien)                    | `mr-IN` | Sprachmodell                                   |
+| Norwegisch, Bokmål (Norwegen)         | `nb-NO` | Sprachmodell                                   |
+| Polnisch (Polen)                    | `pl-PL` | Sprachmodell                                   |
+| Portugiesisch (Brasilien)                | `pt-BR` | Akustische Modell<br>Sprachmodell<br>Aussprache|
+| Portugiesisch (Portugal)              | `pt-PT` | Sprachmodell                                   |
+| Rumänisch (Rumänien)                 | `ro-RO` | Sprachmodell                                   |
+| Russisch (Russische Föderation)                   | `ru-RU` | Akustische Modell<br>Sprachmodell                 |
+| Slowakisch (Slowakei)                  | `sk-SK` | Sprachmodell                                   |
+| Slowenisch (Slowenien)               | `sl-SI` | Sprachmodell                                   |
+| Spanisch (Argentinien)                | `es-AR` | Sprachmodell                                   |
+| Spanisch (Bolivien)                  | `es-BO` | Sprachmodell                                   |
+| Spanisch (Chile)                    | `es-CL` | Sprachmodell                                   |
+| Spanisch (Kolumbien)                 | `es-CO` | Sprachmodell                                   |
+| Spanisch (Costa Rica)               | `es-CR` | Sprachmodell                                   |
+| Spanisch (Kuba)                     | `es-CU` | Sprachmodell                                   |
+| Spanisch (Dominikanische Republik)       | `es-DO` | Sprachmodell                                   |
+| Spanisch (Ecuador)                  | `es-EC` | Sprachmodell                                   |
+| Spanisch (El Salvador)              | `es-SV` | Sprachmodell                                   |
+| Spanisch (Äquatorialguinea)        | `es-GQ` | Sprachmodell                                   |
+| Spanisch (Guatemala)                | `es-GT` | Sprachmodell                                   |
+| Spanisch (Honduras)                 | `es-HN` | Sprachmodell                                   |
+| Spanisch (Mexiko)                   | `es-MX` | Akustische Modell<br>Sprachmodell                 |
+| Spanisch (Nicaragua)                | `es-NI` | Sprachmodell                                   |
+| Spanisch (Panama)                   | `es-PA` | Sprachmodell                                   |
+| Spanisch (Paraguay)                 | `es-PY` | Sprachmodell                                   |
+| Spanisch (Peru)                     | `es-PE` | Sprachmodell                                   |
+| Spanisch (Puerto Rico)              | `es-PR` | Sprachmodell                                   |
+| Spanisch (Spanien)                    | `es-ES` | Akustische Modell<br>Sprachmodell                 |
+| Spanisch (Uruguay)                  | `es-UY` | Sprachmodell                                   |
+| Spanisch (USA)                      | `es-US` | Sprachmodell                                   |
+| Spanisch (Venezuela)                | `es-VE` | Sprachmodell                                   |
+| Schwedisch (Schweden)                   | `sv-SE` | Sprachmodell                                   |
+| Tamil (Indien)                      | `ta-IN` | Sprachmodell                                   |
+| Telugu (Indien)                     | `te-IN` | Sprachmodell                                   |
+| Thai (Thailand)                    | `th-TH` | Sprachmodell                                   |
+| Türkisch (Türkei)                   | `tr-TR` | Sprachmodell                                   |
 
 ## <a name="text-to-speech"></a>Text-zu-Sprache
 
@@ -137,6 +137,11 @@ Sowohl das Microsoft Speech SDK als auch die REST-API unterstützen diese Stimme
 Die neuronale Sprachsynthese ist eine neue Art der Sprachsynthese mithilfe von Deep Neural Networks. Wenn Sie eine neuronale Stimme verwenden, kann die synthetisierte Sprache kaum von menschlichen Aufzeichnungen unterschieden werden.
 
 Gestalten Sie mit neuronalen Stimmen Interaktionen mit Chatbots und Sprachassistenten noch natürlicher und einladender, wandeln Sie digitale Texte wie E-Books in Audiobooks um, und verpassen Sie Ihrem Navigationssystem im Auto ein Upgrade. Durch natürliche, menschenähnliche Intonation und klare Aussprache von Wörtern können neuronale Stimmen die Hörermüdung bei der Interaktion mit KI-Systemen erheblich verringern.
+
+> [!NOTE]
+> Neuronale Stimmen werden aus Stichproben erstellt, die eine 24-kHz-Abtastrate verwenden.
+> Die Abtastrate aller Stimmen kann bei der Synchronisierung auf andere Abtastraten herauf- oder heruntergesetzt werden.
+
 
 | Sprache | Gebietsschema | Geschlecht | Name der Stimme | Stilunterstützung |
 |---|---|---|---|---|
@@ -294,6 +299,11 @@ Informationen dazu, wie Sie neuronale Stimmen konfigurieren und anpassen können
 
 Es stehen mehr als 75 Standardstimmen in mehr als 45 Sprachen und Gebietsschemas zur Verfügung, mit denen Sie Text in Sprache umwandeln können. Weitere Informationen zur regionalen Verfügbarkeit finden Sie unter [Regionen](regions.md#standard-and-neural-voices).
 
+> [!NOTE]
+> Mit zwei Ausnahmen werden Standardstimmen aus Stichproben erstellt, die eine 16-kHz-Abtastrate verwenden.
+> Die Stimmen **en-US-AriaRUS** und **en-US-GuyRUS** werden ebenfalls aus Stichproben erstellt, die eine Abtastrate von 24 khz verwenden.
+> Die Abtastrate aller Stimmen kann bei der Synchronisierung auf andere Abtastraten herauf- oder heruntergesetzt werden.
+
 | Sprache | Gebietsschema (BCP-47) | Geschlecht | Name der Stimme |
 |--|--|--|--|
 | Arabisch (Arabisch) | `ar-EG` | Female | `ar-EG-Hoda`|
@@ -325,7 +335,7 @@ Es stehen mehr als 75 Standardstimmen in mehr als 45 Sprachen und Gebietsschemas
 | Walisisch (Großbritannien) | `en-GB` | Female | `en-GB-Susan`|
 | Englisch (USA) | `en-US` | Male | `en-US-BenjaminRUS`|
 | Englisch (USA) | `en-US` | Male | `en-US-GuyRUS`|
-| Englisch (USA) | `en-US` | Female | `en-US-JessaRUS`|
+| Englisch (USA) | `en-US` | Female | `en-US-AriaRUS`|
 | Englisch (USA) | `en-US` | Female | `en-US-ZiraRUS`|
 | Finnisch (Finnland) | `fi-FI` | Female | `fi-FI-HeidiRUS`|
 | Französisch (Kanada) | `fr-CA` | Female | `fr-CA-Caroline`|

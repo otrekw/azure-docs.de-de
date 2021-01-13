@@ -9,16 +9,16 @@ ms.subservice: sql-dw
 ms.date: 07/10/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: de446209104c113b10346645f79b461239c3efab
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 25c692ea9a2dce4723472f6812ac46d82b2b318d
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96901272"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120987"
 ---
 # <a name="securely-load-data-using-synapse-sql"></a>Sicheres Laden von Daten mithilfe von Synapse SQL
 
-In diesem Artikel werden sichere Authentifizierungsmechanismen für die [COPY-Anweisung](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) erläutert und Beispiele dazu bereitgestellt. Die COPY-Anweisung ist die flexibelste und sicherste Methode zum Massenladen von Daten in Synapse SQL.
+In diesem Artikel werden sichere Authentifizierungsmechanismen für die [COPY-Anweisung](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) erläutert und Beispiele dazu bereitgestellt. Die COPY-Anweisung ist die flexibelste und sicherste Methode zum Massenladen von Daten in Synapse SQL.
 ## <a name="supported-authentication-mechanisms"></a>Unterstützte Authentifizierungsmechanismen
 
 In der nachstehenden Matrix werden die unterstützten Authentifizierungsmethoden für jeden Dateityp und jedes Speicherkonto beschrieben. Dies gilt für den Quellspeicherort und den Speicherort der Fehlerdatei.
@@ -136,7 +136,7 @@ Eine Authentifizierung der verwalteten Identität ist erforderlich, wenn Ihr Spe
 
     ![Erteilen der Azure RBAC-Berechtigung zum Laden](./media/quickstart-bulk-load-copy-tsql-examples/rbac-load-permissions.png)
 
-2. Konfigurieren Sie die Azure AD-Authentifizierung anhand der folgenden [Dokumentation](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure?tabs=azure-powershell#create-an-azure-ad-administrator-for-azure-sql-server). 
+2. Konfigurieren Sie die Azure AD-Authentifizierung anhand der folgenden [Dokumentation](../../azure-sql/database/authentication-aad-configure.md?tabs=azure-powershell). 
 
 3. Stellen Sie mithilfe von Active Directory eine Verbindung zu Ihrem SQL-Pool her. Dort können Sie jetzt die COPY-Anweisung ohne Angabe von Anmeldeinformationen ausführen:
 
@@ -152,11 +152,11 @@ Eine Authentifizierung der verwalteten Identität ist erforderlich, wenn Ihr Spe
 ## <a name="e-service-principal-authentication"></a>E. Dienstprinzipalauthentifizierung
 #### <a name="steps"></a>Schritte
 
-1. [Erstellen Sie eine Azure Active Directory-Anwendung.](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application)
-2. [Abrufen der Anwendungs-ID](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)
-3. [Abrufen des Authentifizierungsschlüssels](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#create-a-new-application-secret)
-4. [Abrufen des V1 OAuth 2.0-Token-Endpunkts](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#step-4-get-the-oauth-20-token-endpoint-only-for-java-based-applications)
-5. [Zuweisen von Lese-, Schreib- und Ausführungsberechtigungen zu ihrer Azure AD-Anwendung](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#step-3-assign-the-azure-ad-application-to-the-azure-data-lake-storage-gen1-account-file-or-folder) in Ihrem Speicherkonto
+1. [Erstellen Sie eine Azure Active Directory-Anwendung.](../..//active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)
+2. [Abrufen der Anwendungs-ID](../..//active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)
+3. [Abrufen des Authentifizierungsschlüssels](../../active-directory/develop/howto-create-service-principal-portal.md#authentication-two-options)
+4. [Abrufen des V1 OAuth 2.0-Token-Endpunkts](../../data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory.md?bc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2ftoc.json#step-4-get-the-oauth-20-token-endpoint-only-for-java-based-applications)
+5. [Zuweisen von Lese-, Schreib- und Ausführungsberechtigungen zu ihrer Azure AD-Anwendung](../../data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory.md?bc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2ftoc.json#step-3-assign-the-azure-ad-application-to-the-azure-data-lake-storage-gen1-account-file-or-folder) in Ihrem Speicherkonto
 6. Jetzt können Sie die COPY-Anweisung ausführen:
 
     ```sql
@@ -176,5 +176,5 @@ Eine Authentifizierung der verwalteten Identität ist erforderlich, wenn Ihr Spe
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Informieren Sie sich im [Artikel „COPY-Anweisung“](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest#syntax) über alle Details der Syntax.
-- Informieren Sie sich im Artikel [data loading overview](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/design-elt-data-loading#what-is-elt) (Übersicht über das Laden von Daten) über bewährte Methoden zum Laden von Daten.
+- Informieren Sie sich im [Artikel „COPY-Anweisung“](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest#syntax) über alle Details der Syntax.
+- Informieren Sie sich im Artikel [data loading overview](./design-elt-data-loading.md#what-is-elt) (Übersicht über das Laden von Daten) über bewährte Methoden zum Laden von Daten.

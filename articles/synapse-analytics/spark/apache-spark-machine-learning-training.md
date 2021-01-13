@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: machine-learning
 ms.date: 09/13/2020
-ms.openlocfilehash: 805bc2aecda37599234c81dd928868d8c14aea4e
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 56b9a98eb72b375aacfeb7cb147997028d3d9ba7
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97091988"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98116805"
 ---
 # <a name="train-machine-learning-models"></a>Trainieren von Machine Learning-Modellen
 Apache Spark in Azure Synapse Analytics ermöglicht maschinelles Lernen mit Big Data und bietet so die Chance, wertvolle Erkenntnisse aus großen Mengen strukturierter, unstrukturierter und sich schnell verändernder Daten zu gewinnen. Beim Trainieren von Machine Learning-Modellen mithilfe von Azure Spark in Azure Synapse Analytics gibt es mehrere Optionen: Apache Spark MLlib, Azure Machine Learning und verschiedene andere Open-Source-Bibliotheken. 
@@ -53,11 +53,11 @@ Durch die Nutzung von automatisiertem ML in Azure Synapse Analytics profitieren 
 > In [diesem Tutorial](./spark/../apache-spark-azure-machine-learning-tutorial.md) erfahren Sie, wie Sie in Azure Machine Learning ein Experiment mit automatisiertem maschinellem Lernen erstellen.
 
 ## <a name="azure-cognitive-services"></a>Azure Cognitive Services
-[Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/what-are-cognitive-services) bietet ML-Funktionen, mit denen allgemeine Probleme gelöst werden können, beispielsweise durch Analyse von Texten im Hinblick auf emotionale Stimmungslagen oder durch Analyse von Bildern zum Erkennen von Objekten oder Gesichtern. Sie benötigen keine speziellen Kenntnisse zu maschinellem Lernen oder Data Science, um diese Dienste zu verwenden. Ein Cognitive Service stellt einige oder alle Komponenten einer Machine Learning-Lösung bereit: Daten, Algorithmus und trainiertes Modell. Zur Nutzung dieser Dienste sind allgemeine Kenntnisse über Ihre Daten erforderlich, ohne dass Sie Erfahrung mit maschinellem Lernen oder Data Science benötigen. Sie können dieses vorab trainierten Cognitive Services in Azure Synapse Analytics automatisch verwenden.
+[Azure Cognitive Services](../../cognitive-services/what-are-cognitive-services.md) bietet ML-Funktionen, mit denen allgemeine Probleme gelöst werden können, beispielsweise durch Analyse von Texten im Hinblick auf emotionale Stimmungslagen oder durch Analyse von Bildern zum Erkennen von Objekten oder Gesichtern. Sie benötigen keine speziellen Kenntnisse zu maschinellem Lernen oder Data Science, um diese Dienste zu verwenden. Ein Cognitive Service stellt einige oder alle Komponenten einer Machine Learning-Lösung bereit: Daten, Algorithmus und trainiertes Modell. Zur Nutzung dieser Dienste sind allgemeine Kenntnisse über Ihre Daten erforderlich, ohne dass Sie Erfahrung mit maschinellem Lernen oder Data Science benötigen. Sie können dieses vorab trainierten Cognitive Services in Azure Synapse Analytics automatisch verwenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Dieser Artikel bietet eine Übersicht über die verschiedenen Optionen zum Trainieren von ML-Modellen innerhalb von Apache Spark-Pools in Azure Synapse Analytics. In den folgenden Tutorials erfahren Sie mehr über das Modelltraining:
 
-- Ausführen von AutoML-Experimenten mit Azure Machine Learning und Azure Synapse Analytics: [Tutorial zum automatisierten maschinellen Lernen](./spark/../apache-spark-autoscale.md) 
-- Ausführen von SparkML-Experimenten: [Tutorial zu Apache SparkML](../spark/apache-spark-azure-machine-learning-tutorial.md)
+- Ausführen von AutoML-Experimenten mit Azure Machine Learning und Azure Synapse Analytics: [Tutorial zum automatisierten maschinellen Lernen](../spark/apache-spark-azure-machine-learning-tutorial.md) 
+- Ausführen von SparkML-Experimenten: [Tutorial zu Apache SparkML](../spark/apache-spark-machine-learning-mllib-notebook.md)
 - Anzeigen der Standardbibliotheken: [Azure Synapse Analytics-Runtime](../spark/apache-spark-version-support.md)

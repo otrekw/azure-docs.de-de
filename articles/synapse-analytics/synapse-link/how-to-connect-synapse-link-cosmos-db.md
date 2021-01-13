@@ -9,12 +9,12 @@ ms.subservice: synapse-link
 ms.date: 04/21/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 0e4bcc13a2eaddbf394d8468b29eeff475119e2d
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 5316f74ee38f597592ae4582aef31837f0f05fda
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96459023"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98119831"
 ---
 # <a name="connect-to-azure-synapse-link-for-azure-cosmos-db"></a>Herstellen einer Verbindung mit Azure Synapse Link für Azure Cosmos DB
 
@@ -24,8 +24,8 @@ In diesem Artikel wird beschrieben, wie Sie über Azure Synapse Analytics Studio
 
 Damit Sie eine Azure Cosmos DB-Datenbank mit Ihrem Arbeitsbereich verbinden können, benötigen Sie Folgendes:
 
-* Eine vorhandene Azure Cosmos DB-Datenbank. Erstellen Sie alternativ ein neues Konto anhand der Schritte in [Schnellstart: Verwalten eines Azure Cosmos DB-Kontos](https://docs.microsoft.com/azure/cosmos-db/how-to-manage-database-account).
-* Einen vorhandenen Azure Synapse-Arbeitsbereich, oder Sie erstellen einen neuen Arbeitsbereich anhand der Schritte in [Schnellstart: Erstellen eines Synapse-Arbeitsbereichs](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-workspace).
+* Eine vorhandene Azure Cosmos DB-Datenbank. Erstellen Sie alternativ ein neues Konto anhand der Schritte in [Schnellstart: Verwalten eines Azure Cosmos DB-Kontos](../../cosmos-db/how-to-manage-database-account.md).
+* Einen vorhandenen Azure Synapse-Arbeitsbereich, oder Sie erstellen einen neuen Arbeitsbereich anhand der Schritte in [Schnellstart: Erstellen eines Synapse-Arbeitsbereichs](../quickstart-create-workspace.md).
 
 > [!IMPORTANT]
 > Azure Synapse Link für Azure Cosmos DB wird derzeit für Arbeitsbereiche unterstützt, in denen kein verwaltetes virtuelles Netzwerk aktiviert ist.

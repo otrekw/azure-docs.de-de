@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 12/15/2020
+ms.date: 12/17/2020
 ms.author: aahi
-ms.openlocfilehash: 9b90f177432de11f8281d03021b38bae647dadf2
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 0b57629f5c21d933fc898258263199b5fc713fdb
+ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97562530"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97683362"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Verwenden der Erkennung benannter Entitäten in der Textanalyse
 
@@ -35,8 +35,6 @@ Das Feature PII ist ein Bestandteil von NER und kann vertrauliche Entitäten in 
 
 ## <a name="named-entity-recognition-features-and-versions"></a>Features und Versionen der Erkennung benannter Entitäten
 
-[!INCLUDE [v3 region availability](../includes/v3-region-availability.md)]
-
 | Funktion                                                         | NER v3.0 | NER v3.1-preview.3 |
 |-----------------------------------------------------------------|--------|----------|
 | Methoden für Einzel- und Batchabfragen                          | X      | X        |
@@ -54,7 +52,7 @@ Named Entity Recognition v3.1-preview.3 enthält die Erkennungsfunktionen von 
 * Einen optionalen Parameter `domain=phi` zur Erkennung vertraulicher gesundheitsbezogener Informationen (`PHI`).
 * Einen [asynchronen Vorgang](text-analytics-how-to-call-api.md) mithilfe des Endpunkts `/analyze`.
 
-Weitere Informationen finden Sie im Artikel zu [Entitätskategorien](../named-entity-types.md) und unten im Abschnitt [Anforderungsendpunkte](#request-endpoints). 
+Weitere Informationen finden Sie im Artikel zu [Entitätskategorien](../named-entity-types.md) und unten im Abschnitt [Anforderungsendpunkte](#request-endpoints). Weitere Informationen zu Zuverlässigkeitsbewertungen finden Sie unter dem [Hinweis zur Transparenz der Textanalyse](/legal/cognitive-services/text-analytics/transparency-note?context=/azure/cognitive-services/text-analytics/context/context). 
 
 ## <a name="sending-a-rest-api-request"></a>Senden einer REST-API-Anforderung
 

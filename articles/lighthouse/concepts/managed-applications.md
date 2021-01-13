@@ -1,23 +1,33 @@
 ---
 title: Azure Lighthouse und verwaltete Azure-Anwendungen
-description: Hier erfahren Sie, wie Azure Lighthouse und verwaltete Azure-Anwendungen Ihnen helfen können, unterschiedliche Szenarien zu ermöglichen, und wie diese gemeinsam verwendet werden können.
-ms.date: 08/12/2020
+description: Verstehen Sie, wie Azure Lighthouse und verwaltete Azure-Anwendungen gemeinsam verwendet werden können.
+ms.date: 12/18/2020
 ms.topic: conceptual
-ms.openlocfilehash: b3d6c83a50f1da006f2618f7f4ff59759dac2555
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 5c30c3234a57e25ceaa521ad485f58d4d663ebe9
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96436520"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97693977"
 ---
 # <a name="azure-lighthouse-and-azure-managed-applications"></a>Azure Lighthouse und verwaltete Azure-Anwendungen
 
-Sowohl verwaltete Azure-Anwendungen als auch Azure Lighthouse funktionieren, indem sie einem Dienstanbieter den Zugriff auf Ressourcen ermöglichen, die sich im Mandanten des Kunden befinden. Es kann hilfreich sein, die Unterschiede in der Art und Weise zu verstehen, in der sie arbeiten, sowie die Szenarien, an deren Ermöglichung sie beteiligt sind, und wie sie gemeinsam verwendet werden können.
+Sowohl verwaltete Azure-Anwendungen als auch Azure Lighthouse funktionieren, indem sie einem Dienstanbieter den Zugriff auf Ressourcen ermöglichen, die sich im Mandanten des Kunden befinden. Die Unterschiede in der Arbeitsweise, die Szenarien, die sie ermöglichen und die Möglichkeiten zur gemeinsamen Verwendung zu verstehen, kann nützlich sein.
 
 > [!TIP]
 > Zwar beziehen wir uns in diesem Thema auf Dienstanbieter und Kunden, doch können [Unternehmen, die mehrere Mandanten verwalten](enterprise.md), denselben Prozess und dieselben Tools verwenden.
 
 ## <a name="comparing-azure-lighthouse-and-azure-managed-applications"></a>Vergleich von Azure Lighthouse und verwalteten Azure-Anwendungen
+
+Diese Tabelle veranschaulicht einige allgemeine Unterschiede, die sich auf Ihre Wahl von Azure Lighthouse oder verwalteten Azure-Anwendungen für einen bestimmten Zweck auswirken können. Wie unten erwähnt, können Sie auch Lösungen entwerfen, in denen beide gemeinsam verwendet werden.
+
+|Aspekt  |Azure Lighthouse  |Verwaltete Azure-Anwendungen  |
+|---------|---------|---------|
+|Typischer Benutzer     |Dienstanbieter oder Unternehmen, die mehrere Mandanten verwalten         |Unabhängige Softwareanbieter (ISVs)         |
+|Umfang des mandantenübergreifenden Zugriffs     |Abonnement(s) oder Ressourcengruppe(n)         |Ressourcengruppe (mit einer einzelnen Anwendung als Bereich)         |
+|In Azure Marketplace zu erwerben     |Nein (Angebote können auf Azure Marketplace veröffentlicht werden, Kunden werden jedoch separat abgerechnet)        |Ja         |
+|IP-Schutz     |Ja (IP kann im Mandanten des Dienstanbieters verbleiben)        |Ja (entwurfsbedingt, die Ressourcengruppe ist an Kunden gebunden)         |
+|Ablehnungszuweisungen     |Nein         |Ja        |
 
 ### <a name="azure-lighthouse"></a>Azure Lighthouse
 
@@ -51,3 +61,4 @@ Kunden können auch an verwalteten Anwendungen von mehreren Dienstanbietern inte
 
 - Weitere Informationen zu [verwalteten Azure-Anwendungen](../../azure-resource-manager/managed-applications/overview.md).
 - Erfahren Sie mehr über das [Onboarding eines Abonnements in Azure Lighthouse](../how-to/onboard-customer.md).
+- Erfahren Sie mehr über [ISV-Szenarien mit Azure Lighthouse](isv-scenarios.md).

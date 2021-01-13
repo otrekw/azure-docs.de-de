@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/03/2020
+ms.date: 12/23/2020
 ms.author: wolfma
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 426cf78f6b87acf1d8c7551b0b0a6172a30167b1
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 68a129f38e9a94a7e381d11ffa3c3d02791b025b
+ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96621094"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97755768"
 ---
 # <a name="how-to-use-batch-transcription"></a>Verwenden von Batch-Transkription
 
-Bei der Batch-Transkription handelt es sich um eine Reihe von Rest-API-Vorgängen, mit denen Sie große Mengen von Audiodaten im Speicher transkribieren können. Sie können mit einem normalen SAS-URI (Shared Access Signature) auf Audiodateien verweisen und Transkriptionsergebnisse asynchron empfangen. Mit der API-Version 3.0 haben Sie die Möglichkeit, eine oder mehrere Audiodateien zu transkribieren oder einen ganzen Speichercontainer zu verarbeiten.
+Bei der Batch-Transkription handelt es sich um eine Reihe von Rest-API-Vorgängen, mit denen Sie große Mengen von Audiodaten im Speicher transkribieren können. Sie können mit einem normalen [SAS-URI (Shared Access Signature)](../../storage/common/storage-sas-overview.md) auf Audiodateien verweisen und Transkriptionsergebnisse asynchron empfangen. Mit der API-Version 3.0 haben Sie die Möglichkeit, eine oder mehrere Audiodateien zu transkribieren oder einen ganzen Speichercontainer zu verarbeiten.
 
 Mit den REST-APIs für die Batch-Transkription können Sie die folgenden Methoden aufrufen:
 
@@ -66,7 +66,7 @@ Verwenden Sie die pro Äußerung erstellten Zeitstempel, um eine geordnete endg�
 
 ### <a name="configuration"></a>Konfiguration
 
-Die Konfigurationsparameter werden als JSON angegeben.
+Die Konfigurationsparameter werden als JSON angegeben. 
 
 **Transkribieren einer oder mehrerer Einzeldateien.** Wenn Sie mehrere Dateien zu transkribieren haben, empfehlen wir, mehrere Dateien in einer Anforderung zu senden. Im Beispiel unten werden drei Dateien verwendet:
 
@@ -85,7 +85,7 @@ Die Konfigurationsparameter werden als JSON angegeben.
 }
 ```
 
-**Verarbeiten eines gesamten Speichercontainers:**
+**Verarbeiten eines gesamten Speichercontainers.** Container-[SAS](../../storage/common/storage-sas-overview.md) sollte die Berechtigungen `r` (Lesen) und `l` (Auflisten) enthalten:
 
 ```json
 {
@@ -177,7 +177,7 @@ Verwenden Sie diese optionalen Eigenschaften zum Konfigurieren der Transkription
       `destinationContainerUrl`
    :::column-end:::
    :::column span="2":::
-      Optionale URL mit [Dienst-Ad-hoc-SAS](../../storage/common/storage-sas-overview.md) zu einem beschreibbaren Container in Azure. Das Ergebnis wird in diesem Container gespeichert. SAS mit gespeicherter Zugriffsrichtlinie wird **nicht** unterstützt. Wenn keine Angabe erfolgt, speichert Microsoft die Ergebnisse in einem von Microsoft verwalteten Speichercontainer. Wenn die Transkription durch Aufruf von [Transkription löschen](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/DeleteTranscription) gelöscht wird, werden die Ergebnisdaten ebenfalls gelöscht.
+      Optionale URL mit [Ad-hoc-SAS](../../storage/common/storage-sas-overview.md) zu einem schreibfähigen Container in Azure. Das Ergebnis wird in diesem Container gespeichert. SAS mit gespeicherter Zugriffsrichtlinie wird **nicht** unterstützt. Wenn keine Angabe erfolgt, speichert Microsoft die Ergebnisse in einem von Microsoft verwalteten Speichercontainer. Wenn die Transkription durch Aufruf von [Transkription löschen](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/DeleteTranscription) gelöscht wird, werden die Ergebnisdaten ebenfalls gelöscht.
 :::row-end:::
 
 ### <a name="storage"></a>Storage

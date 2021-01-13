@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/22/2020
 ms.author: aahi
-ms.openlocfilehash: 80e0de73bbeae2ee1a79199fde34a3c430959ac8
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: cc6bcef77ca1601b76468586aa6af202836f1438
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93356704"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631991"
 ---
 # <a name="batch-processing-kit-for-speech-containers"></a>Batchverarbeitungskit für Speech-Container
 
@@ -86,13 +86,13 @@ docker run --rm -ti -v  /mnt/my_nfs:/my_nfs --entrypoint /bin/bash /mn
 So führen Sie den Batchclient aus:  
 
 ```Docker
-run-batch-client -config /my_nfs/config.yaml -input_folder /my_nfs/audio_files -output_folder /my_nfs/transcriptions -log_folder  /my_nfs/logs -log_level DEBUG -nbest 1 -m ONESHOT -diarization  None -language en-US -strict_config   
+run-batch-client -config /my_nfs/config.yaml -input_folder /my_nfs/audio_files -output_folder /my_nfs/transcriptions -log_folder  /my_nfs/logs -file_log_level DEBUG -nbest 1 -m ONESHOT -diarization  None -language en-US -strict_config   
 ```
 
 So führen Sie Batchclient und-Container mit einem einzelnen Befehl aus:
 
 ```Docker
-docker run --rm -ti -v  /mnt/my_nfs:/my_nfs docker.io/batchkit/speech-batch-kit:latest  -config /my_nfs/config.yaml -input_folder /my_nfs/audio_files -output_folder /my_nfs/transcriptions -log_folder  /my_nfs/logs -log_level DEBUG -nbest 1 -m ONESHOT -diarization  None -language en-US -strict_config   
+docker run --rm -ti -v  /mnt/my_nfs:/my_nfs docker.io/batchkit/speech-batch-kit:latest  -config /my_nfs/config.yaml -input_folder /my_nfs/audio_files -output_folder /my_nfs/transcriptions -log_folder  /my_nfs/logs -file_log_level DEBUG -nbest 1 -m ONESHOT -diarization  None -language en-US -strict_config   
 ```
 
 
@@ -156,7 +156,7 @@ Der `REST`-Modus ist ein API-Servermodus, der einen grundlegenden Satz von HTTP-
 > [!NOTE]
 > Der Batchclient überschreibt die Datei *run.log* regelmäßig, wenn sie zu groß wird.
 
-Der Client erstellt eine *run.log*-Datei in dem Verzeichnis, das im `-log_folder`-Argument im Docker-Befehl `run` angegeben ist. Protokolle werden standardmäßig mit dem Protokolliergrad DEBUG erfasst. Die gleichen Protokolle werden an `stdout/stderr` gesendet und anhand des `-log_level`-Arguments gefiltert. Dieses Protokoll ist nur zum Debuggen erforderlich oder wenn Sie eine Ablaufverfolgung an den Support senden müssen. Der Protokollierungsordner enthält außerdem die Protokolle des Speech SDK für die einzelnen Audiodateien.
+Der Client erstellt eine *run.log*-Datei in dem Verzeichnis, das im `-log_folder`-Argument im Docker-Befehl `run` angegeben ist. Protokolle werden standardmäßig mit dem Protokolliergrad DEBUG erfasst. Die gleichen Protokolle werden an `stdout/stderr` gesendet und anhand der Argumente `-file_log_level` oder `console_log_level` gefiltert. Dieses Protokoll ist nur zum Debuggen erforderlich oder wenn Sie eine Ablaufverfolgung an den Support senden müssen. Der Protokollierungsordner enthält außerdem die Protokolle des Speech SDK für die einzelnen Audiodateien.
 
 Das durch `-output_folder` angegebene Ausgabeverzeichnis enthält eine Datei *run_summary.json* , die regelmäßig alle 30 Sekunden oder beim Abschluss neuer Transkriptionen neu geschrieben wird. Sie können diese Datei verwenden, um bei fortschreitender Verarbeitung des Batches den Status zu überprüfen. Wenn der Batch abgeschlossen ist, enthält sie außerdem die endgültige Ausführungsstatistik und den Abschlussstatus jeder Datei. Der Batch ist abgeschlossen, wenn der Prozess zu einem ordnungsgemäßen Ende gelangt. 
 

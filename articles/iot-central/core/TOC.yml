@@ -85,8 +85,14 @@
       items:
         - name: Einrichten einer Gerätevorlage
           href: howto-set-up-template.md
+        - name: Verschieben von Geräten in IoT
+          href: how-to-move-device-to-iot.md
         - name: Verwenden von Eigenschaften
           href: howto-use-properties.md
+        - name: Verwenden von Befehlen
+          href: howto-use-commands.md
+        - name: Verwenden von Standortdaten
+          href: howto-use-location-data.md
         - name: Vorbereiten und Verbinden eines Azure Sphere DevKit
           href: howto-connect-sphere.md
         - name: Vorbereiten und Verbinden eines RuuviTag-Geräts

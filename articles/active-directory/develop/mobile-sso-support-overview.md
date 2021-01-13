@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/14/2020
 ms.author: nichola
-ms.openlocfilehash: 59924c1f876d08aa504f19c5d6c86dca32fbd1e2
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 9c53ea5bad88eb79940274c409218045c06d7981
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96173463"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98064967"
 ---
 # <a name="support-single-sign-on-and-app-protection-policies-in-mobile-apps-you-develop"></a>Unterstützung von einmaligem Anmelden und App-Schutzrichtlinien in von Ihnen entwickelten mobilen Apps
 
@@ -36,7 +36,7 @@ Außerdem werden durch Aktivieren von einmaligem Anmelden in Ihrer App neue Auth
 
 Damit Ihre App einmaliges Anmelden nutzen kann, wird Folgendes empfohlen:
 
-### <a name="use-microsoft-authentication-library-msal"></a>Verwenden der Microsoft Authentication Library (MSAL)
+### <a name="use-the-microsoft-authentication-library-msal"></a>Verwenden von Microsoft Authentication Library (MSAL)
 
 Am besten implementieren Sie einmaliges Anmelden in Ihrer Anwendung, indem Sie die [Microsoft Authentication Library (MSAL)](msal-overview.md) verwenden. Mithilfe von MSAL können Sie Ihrer App mit wenig Code und API-Aufrufen eine Authentifizierung hinzufügen, bei der Sie von allen Features der [Microsoft Identity Platform](./index.yml) profitieren. Die Wartung einer sicheren Authentifizierungslösung überlassen Sie dabei Microsoft. Die MSAL fügt standardmäßig Unterstützung von einmaligem Anmelden für Ihre Anwendung hinzu. Außerdem ist die Verwendung von MSAL eine Voraussetzung, um auch App-Schutzrichtlinien implementieren zu können.
 

@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 06/11/2020
 ms.author: chenyl
-ms.openlocfilehash: 1d51f5e8d2fac1e2b180a608c840d0a322e76271
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 33df4410b9dd82fd0b1c732eb03ab5e0e77e9869
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92143237"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97763114"
 ---
 # <a name="upstream-settings"></a>Upstreameinstellungen
 
@@ -53,6 +53,19 @@ Wenn ein Client im „chat“-Hub die Hubmethode `broadcast` aufruft, wird eine 
 http://host.com/chat/api/messages/broadcast
 ```
 
+### <a name="key-vault-secret-reference-in-url-template-settings"></a>Verweis auf Key Vault-Geheimnis in den URL-Vorlageneinstellungen
+
+Die Upstream-URL ist keine Verschlüsselung im Ruhezustand. Sie sollten für die Speicherung von vertraulichen Informationen Key Vault verwenden, dessen Zugriffskontrolle eine höhere Sicherheit bietet. Grundsätzlich können Sie die verwaltete Identität von Azure SignalR Service aktivieren, dann eine Leseberechtigung für eine Key Vault-Instanz erteilen und einen Key Vault-Verweis anstelle von Klartext im Upstream-URL-Muster verwenden.
+
+1. Fügen Sie eine systemseitig oder benutzerseitig zugewiesene Identität hinzu. Mehr dazu finden Sie unter [How to add managed identity in Azure Portal](./howto-use-managed-identity.md#add-a-system-assigned-identity) (Hinzufügen von verwalteter Identität im Azure-Portal)
+
+2. Erteilen Sie der verwalteten Identität in den Zugriffsrichtlinien im Key Vault Leseberechtigung für das Geheimnis. Weitere Informationen finden Sie unter [Zuweisen einer Key Vault-Zugriffsrichtlinie über das Azure-Portal](https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal).
+
+3. Ersetzen Sie den vertraulichen Text im Upstream-URL-Muster durch die Syntax `{@Microsoft.KeyVault(SecretUri=<secret-identity>)}`.
+
+> [!NOTE]
+> Der geheime Inhalt wird nur dann erneut gelesen, wenn Sie die Upstreameinstellungen oder die verwaltete Identität ändern. Vergewissern Sie sich, dass Sie der verwalteten Identität Leseberechtigung für das Geheimnis erteilt haben, bevor Sie den Key Vault-Geheimnisverweis verwenden.
+
 ### <a name="rule-settings"></a>Regeleinstellungen
 
 Sie können Regeln für *Hubregeln*, *Kategorieregeln* und *Ereignisregeln* separat festlegen. Die Abgleichsregel unterstützt drei Formate. Nehmen wir als Beispiel die Ereignisregeln:
@@ -61,8 +74,8 @@ Sie können Regeln für *Hubregeln*, *Kategorieregeln* und *Ereignisregeln* sepa
 - Verwenden Sie den vollständigen Namen des Ereignisses, um das Ereignis abzugleichen. Beispielsweise entspricht `connected` dem verbundenen Ereignis.
 
 > [!NOTE]
-> Wenn Sie Azure Functions und den [SignalR-Trigger](../azure-functions/functions-bindings-signalr-service-trigger.md) verwenden, macht SignalR-Trigger einen einzelnen Endpunkt im folgenden Format verfügbar: `https://<APP_NAME>.azurewebsites.net/runtime/webhooks/signalr?code=<API_KEY>`.
-> Sie können einfach die URL-Vorlage für diese URL konfigurieren.
+> Wenn Sie Azure Functions und den [SignalR-Trigger](../azure-functions/functions-bindings-signalr-service-trigger.md) verwenden, macht SignalR-Trigger einen einzelnen Endpunkt im folgenden Format verfügbar: `<Function_App_URL>/runtime/webhooks/signalr?code=<API_KEY>`.
+> Sie können einfach **URL-Vorlageneinstellungen** mit dieser URL konfigurieren und für die **Regeleinstellungen** die Standardwerte beibehalten. Ausführliche Informationen zum Finden von `<Function_App_URL>` und `<API_KEY>` finden Sie unter [SignalR Service-Integration](../azure-functions/functions-bindings-signalr-service-trigger.md#signalr-service-integration).
 
 ### <a name="authentication-settings"></a>Authentifizierungseinstellungen
 
@@ -82,7 +95,7 @@ Wenn Sie `ManagedIdentity` auswählen, müssen Sie im Voraus eine verwaltete Ide
 3. Fügen Sie unter **Upstream-URL-Muster** URLs hinzu. Dann zeigen Einstellungen, z. B. **Hubregeln**, den Standardwert an.
 4. Um Einstellungen für **Hubregeln**, **Ereignisregeln**, **Kategorieregeln** und **Upstreamauthentifizierung** festzulegen, wählen Sie den Wert von **Hubregeln** aus. Es wird eine Seite angezeigt, auf der Sie die Einstellungen bearbeiten können:
 
-    :::image type="content" source="media/concept-upstream/upstream-detail-portal.png" alt-text="Upstreameinstellungen":::
+    :::image type="content" source="media/concept-upstream/upstream-detail-portal.png" alt-text="Upstream-Einstellungsdetails":::
 
 5. Stellen Sie sicher, dass Sie zunächst eine verwaltete Identität aktiviert haben, um die **Upstreamauthentifizierung** festzulegen. Wählen Sie dann **Verwaltete Identität verwenden** aus. Entsprechend Ihren Anforderungen können Sie unter der **Authentifizierungsressourcen-ID** beliebige Optionen auswählen. Weitere Informationen finden Sie unter [Verwaltete Identitäten für Azure SignalR Service](howto-use-managed-identity.md).
 
@@ -115,7 +128,7 @@ Um Upstreameinstellungen unter Verwendung einer [Azure Resource Manager-Vorlage]
 
 ## <a name="serverless-protocols"></a>Serverlose Protokolle
 
-Azure SignalR Service sendet Nachrichten an Endpunkte, die den folgenden Protokollen folgen.
+Azure SignalR Service sendet Nachrichten an Endpunkte, die den folgenden Protokollen folgen. Sie können [SignalR Service-Triggerbindung](../azure-functions/functions-bindings-signalr-service-trigger.md) mit der Funktions-App verwenden, die diese Protokolle für Sie verarbeitet.
 
 ### <a name="method"></a>Methode
 
@@ -145,7 +158,7 @@ Content-Type: application/json
 
 Content-Type: `application/json`
 
-|Name  |Typ  |BESCHREIBUNG  |
+|Name  |type  |BESCHREIBUNG  |
 |---------|---------|---------|
 |Fehler |Zeichenfolge |Die Fehlermeldung einer geschlossenen Verbindung. Leer, wenn Verbindungen ohne Fehler geschlossen werden.|
 
@@ -153,7 +166,7 @@ Content-Type: `application/json`
 
 Content-Type: `application/json` oder `application/x-msgpack`
 
-|Name  |Typ  |BESCHREIBUNG  |
+|Name  |type  |BESCHREIBUNG  |
 |---------|---------|---------|
 |InvocationId |Zeichenfolge | Eine optionale Zeichenfolge, die eine Aufrufnachricht darstellt. Details finden Sie in den [Aufrufen](https://github.com/dotnet/aspnetcore/blob/master/src/SignalR/docs/specs/HubProtocol.md#invocations).|
 |Ziel |Zeichenfolge | Dasselbe wie das Ereignis und das Ziel in einer [Aufrufnachricht](https://github.com/dotnet/aspnetcore/blob/master/src/SignalR/docs/specs/HubProtocol.md#invocation-message-encoding). |
@@ -170,3 +183,5 @@ Hex_encoded(HMAC_SHA256(accessKey, connection-id))
 
 - [Verwaltete Identitäten für Azure SignalR Service](howto-use-managed-identity.md)
 - [Azure Functions-Entwicklung und -Konfiguration mit Azure SignalR Service](signalr-concept-serverless-development-config.md)
+- [Verarbeiten von Nachrichten von SignalR Service (Triggerbindung)](../azure-functions/functions-bindings-signalr-service-trigger.md)
+- [Beispiel einer SignalR Service-Auslöserbindung](https://github.com/aspnet/AzureSignalR-samples/tree/master/samples/BidirectionChat)

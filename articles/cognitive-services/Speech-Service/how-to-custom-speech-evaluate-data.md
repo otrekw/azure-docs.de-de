@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/11/2020
 ms.author: trbye
-ms.openlocfilehash: b8b3a0aa6d9790dbb5900eac2d79074f44a749d2
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 54a54dccd82e4f6cfd72a1cc8a71b51f9fd4ed95
+ms.sourcegitcommit: 697638c20ceaf51ec4ebd8f929c719c1e630f06f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95025649"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97857357"
 ---
 # <a name="evaluate-and-improve-custom-speech-accuracy"></a>Bewerten und Verbessern der Custom Speech-Genauigkeit
 
@@ -23,7 +23,7 @@ In diesem Artikel erfahren Sie, wie Sie die Genauigkeit der Spracherkennungsmode
 
 ## <a name="evaluate-custom-speech-accuracy"></a>Bewerten der Custom Speech-Genauigkeit
 
-Der Branchenstandard zur Messung der Modellgenauigkeit ist die *Wort-Fehler-Rate* (WER). Zur Berechnung der WER wird die Anzahl von bei der Erkennung falsch identifizierten Wörtern ermittelt und durch die Gesamtanzahl von Wörtern im menschenmarkierten Transkript (unten als „N“ zu sehen) dividiert. Diese Zahl wird dann mit 100 % multipliziert, um die WER zu berechnen.
+Der Branchenstandard zur Messung der Modellgenauigkeit ist die [Wort-Fehler-Rate](https://en.wikipedia.org/wiki/Word_error_rate) (WER). Zur Berechnung der WER wird die Anzahl von bei der Erkennung falsch identifizierten Wörtern ermittelt und durch die Gesamtanzahl von Wörtern im menschenmarkierten Transkript (unten als „N“ zu sehen) dividiert. Diese Zahl wird dann mit 100 % multipliziert, um die WER zu berechnen.
 
 ![WER-Formel](./media/custom-speech/custom-speech-wer-formula.png)
 
@@ -36,6 +36,8 @@ Falsch identifizierte Wörter fallen in drei Kategorien:
 Hier sehen Sie ein Beispiel:
 
 ![Beispiel für falsch identifizierte Wörter](./media/custom-speech/custom-speech-dis-words.png)
+
+Wenn Sie WER-Messungen lokal replizieren möchten, können Sie sclite von [SCTK](https://github.com/usnistgov/SCTK) verwenden.
 
 ## <a name="resolve-errors-and-improve-wer"></a>Beheben von Fehlern und Verbessern der WER
 
@@ -96,7 +98,7 @@ In den folgenden Abschnitten wird beschrieben, wie mit den einzelnen Arten von z
 
 ### <a name="add-related-text-sentences"></a>Hinzufügen von passenden Textsätzen
 
-Mit zusätzlichen passenden Textsätzen können hauptsächlich Ersetzungsfehler reduziert werden, die sich auf die fehlerhafte Erkennung von gängigen und themenspezifischen Wörtern beziehen, indem diese im Kontext angezeigt werden. Bei themenspezifischen Wörtern kann es sich auch um ungewöhnliche oder ausgedachte Wörter handeln, aber ihre Aussprache muss eindeutig sein, damit sie erkannt werden können.
+Beginnen Sie beim Training eines neuen benutzerdefinierten Modells, indem Sie verwandten Text hinzufügen, um die Erkennung von themenspezifischen Wörtern und Ausdrücken zu verbessern. Mit passenden Textsätzen können hauptsächlich Ersetzungsfehler reduziert werden, die sich auf die fehlerhafte Erkennung von gängigen und themenspezifischen Wörtern beziehen, indem diese im Kontext angezeigt werden. Bei themenspezifischen Wörtern kann es sich auch um ungewöhnliche oder ausgedachte Wörter handeln, aber ihre Aussprache muss eindeutig sein, damit sie erkannt werden können.
 
 > [!NOTE]
 > Vermeiden Sie Textsätze, die „Rauschen“ enthalten, z. B. nicht zu erkennende Buchstaben oder Wörter.
@@ -111,6 +113,12 @@ Berücksichtigen Sie Folgendes:
 * Vermeiden Sie Beispiele, die Transkriptionsfehler enthalten, aber verwenden Sie unterschiedliche Audioqualitäten.
 * Vermeiden Sie Sätze, die sich nicht auf Ihre Problembestellung beziehen. Sätze dieser Art können das Modell beeinträchtigen.
 * Wenn die Qualität von Transkripts variiert, können Sie besonders gute Sätze (z. B. hervorragende Transkriptionen mit wichtigen Ausdrücken) duplizieren, um ihre Gewichtung zu erhöhen.
+* Der Speech-Dienst verwendet die Transkriptionen automatisch, um die Erkennung von themenspezifischen Wörtern und Ausdrücken zu verbessern, als wären sie als verwandter Text hinzugefügt worden.
+* Das Training mit Audiodaten bietet den größten Nutzen, wenn das Audiomaterial auch für Menschen schwer zu verstehen ist. In den meisten Fällen sollten Sie mit dem Training beginnen, indem Sie nur verwandten Text verwenden.
+* Der Abschluss eines Trainingsvorgangs kann mehrere Tage in Anspruch nehmen. Zum Verbessern der Trainingsgeschwindigkeit achten Sie darauf, Ihr Speech-Dienstabonnement in einer [Region mit dedizierter Hardware](custom-speech-overview.md#set-up-your-azure-account) für das Training zu erstellen.
+
+> [!NOTE]
+> Nicht alle Basismodelle unterstützen das Training mit Audiodaten. Wenn es von einem Basismodell nicht unterstützt wird, verwendet der Speech-Dienst nur den Text aus den Transkriptionen und ignoriert die Audiodaten.
 
 ### <a name="add-new-words-with-pronunciation"></a>Hinzufügen von neuen Wörtern mit besonderer Aussprache
 

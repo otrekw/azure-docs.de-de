@@ -9,18 +9,18 @@ ms.subservice: machine-learning
 ms.date: 06/30/2020
 ms.author: midesa
 ms.reviewer: jrasnick
-ms.openlocfilehash: e547d047e8d736acbd1cdda5ffe3a78dbe8259f7
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: 2594e25bff3ca949b329f8b66f4427eb1f6950b0
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97901032"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98118709"
 ---
 # <a name="tutorial-train-a-model-in-python-with-automated-machine-learning"></a>Tutorial: Trainieren eines Modells in Python mit automatisiertem maschinellem Lernen
 
 Azure Machine Learning ist eine cloudbasierte Umgebung, die Ihnen das Trainieren, Bereitstellen, Automatisieren, Verwalten und Nachverfolgen von Machine Learning-Modellen ermöglicht. 
 
-In diesem Tutorial verwenden Sie [automatisiertes maschinelles Lernen](https://docs.microsoft.com/azure/machine-learning/concept-automated-ml) in Azure Machine Learning, um ein Regressionsmodell für die Vorhersage der Preise für Taxifahrten zu erstellen. Dieser Prozess erzielt das beste Modell, indem Trainingsdaten und Konfigurationseinstellungen akzeptiert und automatisch Kombinationen der verschiedenen Methoden, Modelle und Hyperparametereinstellungen durchlaufen werden.
+In diesem Tutorial verwenden Sie [automatisiertes maschinelles Lernen](../../machine-learning/concept-automated-ml.md) in Azure Machine Learning, um ein Regressionsmodell für die Vorhersage der Preise für Taxifahrten zu erstellen. Dieser Prozess erzielt das beste Modell, indem Trainingsdaten und Konfigurationseinstellungen akzeptiert und automatisch Kombinationen der verschiedenen Methoden, Modelle und Hyperparametereinstellungen durchlaufen werden.
 
 In diesem Tutorial lernen Sie Folgendes:
 - Herunterladen der Daten unter Verwendung von Apache Spark und Azure Open Datasets
@@ -31,7 +31,7 @@ In diesem Tutorial lernen Sie Folgendes:
 ## <a name="before-you-begin"></a>Voraussetzungen
 
 - Erstellen Sie anhand der Schnellstartanleitung zum [Erstellen eines serverlosen Apache Spark-Pools](../quickstart-create-apache-spark-pool-studio.md) einen serverlosen Apache Spark-Pool.
-- Absolvieren Sie das [Tutorial für die Einrichtung des Azure Machine Learning-Arbeitsbereichs](https://docs.microsoft.com/azure/machine-learning/tutorial-1st-experiment-sdk-setup), falls Sie noch nicht über einen vorhandenen Azure Machine Learning-Arbeitsbereich verfügen. 
+- Absolvieren Sie das [Tutorial für die Einrichtung des Azure Machine Learning-Arbeitsbereichs](../../machine-learning/tutorial-1st-experiment-sdk-setup.md), falls Sie noch nicht über einen vorhandenen Azure Machine Learning-Arbeitsbereich verfügen. 
 
 ## <a name="understand-regression-models"></a>Grundlegendes zu logistischen Regressionsmodellen
 
@@ -48,7 +48,7 @@ In diesem Beispiel verwenden Sie Spark, um einige Analysen zu Trinkgelddaten von
 
 Gehen Sie dabei folgendermaßen vor:
 
-1. Erstellen Sie ein Notebook unter Verwendung des PySpark-Kernels. Eine entsprechende Anleitung finden Sie unter [Erstellen eines Notebooks](https://docs.microsoft.com/azure/synapse-analytics/quickstart-apache-spark-notebook#create-a-notebook).
+1. Erstellen Sie ein Notebook unter Verwendung des PySpark-Kernels. Eine entsprechende Anleitung finden Sie unter [Erstellen eines Notebooks](../quickstart-apache-spark-notebook.md#create-a-notebook).
    
     > [!Note]
     > Durch den PySpark-Kernel müssen Sie keine Kontexte explizit erstellen. Der Spark-Kontext wird automatisch für Sie erstellt, wenn Sie die erste Codezelle ausführen.
@@ -144,7 +144,7 @@ ws = Workspace(workspace_name = workspace_name,
 ```
 
 ## <a name="convert-a-dataframe-to-an-azure-machine-learning-dataset"></a>Konvertieren eines Dataframes in ein Azure Machine Learning-Dataset
-Um ein Remoteexperiment zu übermitteln, müssen Sie das Dataset in ein Azure Machine Learning-Element vom Typ ```TabularDatset``` konvertieren. Ein [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py&preserve-view=true) stellt Daten in einem tabellarischen Format dar, indem die bereitgestellten Dateien analysiert werden.
+Um ein Remoteexperiment zu übermitteln, müssen Sie das Dataset in ein Azure Machine Learning-Element vom Typ ```TabularDatset``` konvertieren. Ein [TabularDataset](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py) stellt Daten in einem tabellarischen Format dar, indem die bereitgestellten Dateien analysiert werden.
 
 Mit dem folgenden Code werden der vorhandene Arbeitsbereich und der Azure Machine Learning-Standarddatenspeicher abgerufen. Anschließend werden der Datenspeicher und die Dateispeicherorte an den Pfadparameter übergeben, um ein neues ```TabularDataset``` zu erstellen. 
 
@@ -170,7 +170,7 @@ dataset_training = Dataset.Tabular.from_delimited_files(path = [(datastore, 'tra
 In den folgenden Abschnitten wird der Prozess zum Übermitteln eines Experiments mit automatisiertem maschinellem Lernen Schritt für Schritt beschrieben.
 
 ### <a name="define-training-settings"></a>Definieren von Trainingseinstellungen
-1. Zum Übermitteln eines Experiments müssen Sie die Experimentparameter und Modelleinstellungen für das Training definieren. Eine vollständige Liste der Einstellungen finden Sie unter [Konfigurieren automatisierter ML-Experimente in Python](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train).
+1. Zum Übermitteln eines Experiments müssen Sie die Experimentparameter und Modelleinstellungen für das Training definieren. Eine vollständige Liste der Einstellungen finden Sie unter [Konfigurieren automatisierter ML-Experimente in Python](../../machine-learning/how-to-configure-auto-train.md).
 
    ```python
    import logging
@@ -338,5 +338,5 @@ Als Letztes können Sie auch auf die Ergebnisse der Iterationen zugreifen, indem
 ![Screenshot eines Azure Machine Learning-Arbeitsbereichs](./media/azure-machine-learning-spark-notebook/azure-machine-learning-workspace.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
-- [Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics)
+- [Azure Synapse Analytics](../index.yml)
 - [Tutorial: Erstellen einer Machine Learning-App mit Apache Spark MLlib und Azure Synapse Analytics](./apache-spark-machine-learning-mllib-notebook.md)

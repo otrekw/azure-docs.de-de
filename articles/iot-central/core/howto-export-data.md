@@ -7,21 +7,18 @@ ms.author: viviali
 ms.date: 11/05/2020
 ms.topic: how-to
 ms.service: iot-central
-ms.custom: contperf-fy21q1
-ms.openlocfilehash: b84f1efd77ca757fd2ceaa8bb5605e3fc78297d0
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.custom: contperf-fy21q1, contperf-fy21q3
+ms.openlocfilehash: 3079b8384a24642322d6f6eb86e2ca7f0927db15
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032370"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98065387"
 ---
 # <a name="export-iot-data-to-cloud-destinations-using-data-export"></a>Exportieren von IoT-Daten zu Cloudzielen mithilfe des Datenexports
 
 > [!Note]
-> In diesem Artikel werden die Features für den Datenexport in IoT Central beschrieben.
->
-> - Informationen zu den Features für den Legacy-Datenexport finden Sie unter [Exportieren von IoT-Daten zu Cloudzielen mithilfe des Datenexports (Legacy)](./howto-export-data-legacy.md).
-> - Wenn Sie etwas über die Unterschiede zwischen den Features für den Datenexport und den Legacy-Datenexport erfahren möchten, sehen Sie sich die [Vergleichstabelle](#comparison-of-legacy-data-export-and-data-export) unten an.
+> In diesem Artikel werden die Features für den Datenexport in IoT Central beschrieben. Informationen zu den Features für den Legacy-Datenexport finden Sie unter [Exportieren von IoT-Daten zu Cloudzielen mithilfe des Datenexports (Legacy)](./howto-export-data-legacy.md).
 
 In diesem Artikel wird beschrieben, wie Sie das neue Datenexportfeature in Azure IoT Central verwenden können. Verwenden Sie dieses Feature für den fortlaufenden Export von gefilterten und angereicherten IoT-Daten aus Ihrer IoT Central-Anwendung. Beim Datenexport werden Änderungen nahezu in Echtzeit in andere Teile Ihrer Cloudlösung gepusht, damit Sie umsetzbare Einblicke, Analyseergebnisse und Speicherinformationen erhalten.
 

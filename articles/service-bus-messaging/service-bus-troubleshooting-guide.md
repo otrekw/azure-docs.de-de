@@ -3,12 +3,12 @@ title: Leitfaden zur Problembehandlung für Azure Service Bus | Microsoft-Dokume
 description: Lernen Sie Tipps zur Problembehandlung und Empfehlungen für einige Probleme kennen, die bei der Verwendung von Azure Service Bus auftreten können.
 ms.topic: article
 ms.date: 09/16/2020
-ms.openlocfilehash: aab7fa53b4af309c68cd91fdb1d25c5771f89828
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8c31d252d75a2ba75528cd12d3a94bad5bd9f677
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91261123"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98126868"
 ---
 # <a name="troubleshooting-guide-for-azure-service-bus"></a>Leitfaden zur Problembehandlung für Azure Service Bus
 In diesem Artikel finden Sie Tipps zur Problembehandlung und Empfehlungen für einige Probleme, die bei der Verwendung von Azure Service Bus auftreten können. 
@@ -26,7 +26,7 @@ Die folgenden Schritte unterstützen Sie bei der Problembehandlung von Konnektiv
     
     Beispiel für eine Fehlermeldung:
 
-    ```json
+    ```xml
     <Error>
         <Code>400</Code>
         <Detail>

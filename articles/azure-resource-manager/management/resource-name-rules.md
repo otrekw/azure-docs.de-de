@@ -3,12 +3,12 @@ title: Einschränkungen bei Ressourcennamen
 description: Zeigt die Benennungsregeln und -einschränkungen für Azure-Ressourcen
 ms.topic: conceptual
 ms.date: 12/29/2020
-ms.openlocfilehash: edcf3f09b57ed7628611c482effddb210ef8e456
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: 59babd9298fdca96b450b2dc67832c86c043c49c
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97814379"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132748"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Benennungsregeln und -einschränkungen für Azure-Ressourcen
 
@@ -83,7 +83,7 @@ In den folgenden Tabellen bezieht sich der Begriff alphanumerisch auf:
 > | Entität | `Scope` | Länge | Gültige Zeichen |
 > | --- | --- | --- | --- |
 > | locks | Zuweisungsbereich | 1-90 | Alphanumerische Zeichen, Punkte, Unterstriche, Bindestriche und Klammern.<br><br>Darf nicht mit einem Punkt enden. |
-> | policyAssignments | Zuweisungsbereich | 1–128 Anzeigename<br><br>1-64 Ressourcenname | Der Anzeigename kann beliebige Zeichen enthalten.<br><br>Der Ressourcenname darf nicht `%` enthalten und nicht mit einem Punkt oder Leerzeichen enden. |
+> | policyAssignments | Zuweisungsbereich | 1–128 Anzeigename<br><br>1-64 Ressourcenname<br><br>1-24 Ressourcenname im Verwaltungsgruppenbereich | Der Anzeigename kann beliebige Zeichen enthalten.<br><br>Der Ressourcenname darf nicht `%` enthalten und nicht mit einem Punkt oder Leerzeichen enden. |
 > | policyDefinitions | Definitionsbereich | 1–128 Anzeigename<br><br>1-64 Ressourcenname | Der Anzeigename kann beliebige Zeichen enthalten.<br><br>Der Ressourcenname darf nicht `%` enthalten und nicht mit einem Punkt oder Leerzeichen enden. |
 > | policySetDefinitions | Definitionsbereich | 1–128 Anzeigename<br><br>1-64 Ressourcenname<br><br>1-24 Ressourcenname im Verwaltungsgruppenbereich | Der Anzeigename kann beliebige Zeichen enthalten.<br><br>Der Ressourcenname darf nicht `%` enthalten und nicht mit einem Punkt oder Leerzeichen enden.  |
 

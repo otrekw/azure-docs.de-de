@@ -38,6 +38,9 @@
     - name: 'Erstellen einer freigegebenen Abfrage: Azure CLI'
       displayName: 'extension, docker, queries'
       href: ./shared-query-azure-cli.md
+    - name: 'Erstellen einer freigegebenen Abfrage: Azure PowerShell'
+      displayName: 'powershell, queries, Az.ResourceGraph'
+      href: ./shared-query-azure-powershell.md
     - name: Bereitstellen einer freigegebenen Abfrage – ARM-Vorlage
       displayName: 'resource manager, queries'
       href: ./shared-query-template.md

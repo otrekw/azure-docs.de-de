@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/30/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5f0dc73877d7742d4fc6a0c5b9bcf0529d475e0a
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 6ff3d985bb24ec852bb5c6cfaedf295fd79a8247
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96445268"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120358"
 ---
 # <a name="troubleshoot-synapse-studio-connectivity-with-powershell"></a>Beheben von Synapse Studio-Konnektivitätsproblemen mit PowerShell
 
@@ -58,4 +58,4 @@ Wenn Sie ein Netzwerkadministrator sind und die Firewallkonfiguration für Azure
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Wenn die vorherigen Schritte nicht zur Lösung Ihres Problems beitragen, [erstellen Sie ein Supportticket](../../sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket.md).
+Wenn die vorherigen Schritte nicht zur Lösung Ihres Problems beitragen, [erstellen Sie ein Supportticket](../sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket.md).

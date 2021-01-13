@@ -10,34 +10,34 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/06/2020
 ms.author: shono
-ms.openlocfilehash: 87b9e4a3ca7151b3666928b00add175eddeea050
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 0dbd6ea13069b72e6bca5c065af92568a5c7cdb8
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94409381"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97844951"
 ---
 # <a name="select-a-domain-for-a-custom-vision-project"></a>Auswählen einer Domäne für ein Custom Vision-Projekt
 
-Auf dem Blatt „Einstellungen“ für das Custom Vision-Projekt können Sie eine Domäne für das Projekt auswählen. Wählen Sie die Domäne, die Ihrem Szenario am nächsten kommt.
+Auf der Registerkarte „Einstellungen“ Ihres Custom Vision-Projekt können Sie eine Domäne für das Projekt auswählen. Wählen Sie die Domäne, die Ihrem Szenario am nächsten kommt. Wenn Sie auf Custom Vision über eine Clientbibliothek oder eine REST-API zugreifen, brauchen Sie beim Erstellen des Projekts keine Domänen-ID anzugeben. Sie können eine Liste der Domänen-IDs mithilfe von [Get Domains](https://westus2.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Training_3.3/operations/5eb0bcc6548b571998fddeab) abrufen oder die Tabelle unten verwenden.
 
 ## <a name="image-classification"></a>Bildklassifizierung
 
 |Domain|Zweck|
 |---|---|
-|__Allgemein__| Für eine breite Palette von Aufgaben in der Bildklassifizierung optimiert. Wenn keine der anderen Domänen geeignet erscheint oder Sie unsicher sind, welche Domäne Sie wählen sollen, verwenden Sie die allgemeine Domäne.|
-|__Food (Lebensmittel)__|Für Fotos von Gerichten optimiert, wie sie beispielsweise auf der Speisekarte von Restaurants abgebildet werden. Wenn Sie Fotos von einzelnen Früchten oder Gemüsen klassifizieren möchten, verwenden Sie die Domäne „Food“.|
-|__Landmarks (Wahrzeichen)__|Optimiert für erkennbare Wahrzeichen (Naturdenkmäler oder künstlich geschaffene Wahrzeichen). Diese Domäne funktioniert am besten, wenn das Wahrzeichen im Foto deutlich zu sehen ist. Die Domäne funktioniert auch, wenn das Wahrzeichen etwas von Personen im Vordergrund verdeckt wird.|
-|__Retail (Einzelhandel)__|Für Bilder optimiert, wie man sie in einem Einkaufskatalog oder auf einer Einkaufswebsite findet. Wenn Sie eine präzise Klassifizierung zwischen Kleidern, Hosen und Hemden wünschen, verwenden Sie diese Domäne.|
+|__Allgemein__| Für eine breite Palette von Aufgaben in der Bildklassifizierung optimiert. Wenn keine der anderen Domänen geeignet erscheint oder Sie unsicher sind, welche Domäne Sie wählen sollen, verwenden Sie die allgemeine Domäne. ID: `ee85a74c-405e-4adc-bb47-ffa8ca0c9f31`|
+|__Food (Lebensmittel)__|Für Fotos von Gerichten optimiert, wie sie beispielsweise auf der Speisekarte von Restaurants abgebildet werden. Wenn Sie Fotos von einzelnen Früchten oder Gemüsen klassifizieren möchten, verwenden Sie die Domäne „Food“. ID: `c151d5b5-dd07-472a-acc8-15d29dea8518`|
+|__Landmarks (Wahrzeichen)__|Optimiert für erkennbare Wahrzeichen (Naturdenkmäler oder künstlich geschaffene Wahrzeichen). Diese Domäne funktioniert am besten, wenn das Wahrzeichen im Foto deutlich zu sehen ist. Die Domäne funktioniert auch, wenn das Wahrzeichen etwas von Personen im Vordergrund verdeckt wird. ID: `ca455789-012d-4b50-9fec-5bb63841c793`|
+|__Retail (Einzelhandel)__|Für Bilder optimiert, wie man sie in einem Einkaufskatalog oder auf einer Einkaufswebsite findet. Wenn Sie eine präzise Klassifizierung zwischen Kleidern, Hosen und Hemden wünschen, verwenden Sie diese Domäne. ID: `b30a91ae-e3c1-4f73-a81e-c270bff27c39`|
 |__Kompaktdomänen__| Für die Bedingungen der Echtzeitklassifizierung auf Edgegeräten optimiert.|
 
 ## <a name="object-detection"></a>Objekterkennung
 
 |Domain|Zweck|
 |---|---|
-|__Allgemein__| Für eine Vielzahl von Aufgaben der Objekterkennung optimiert. Wenn keine der anderen Domänen geeignet erscheint oder Sie unsicher sind, welche Domäne Sie wählen sollen, verwenden Sie die Domäne „Generic“.|
-|__Logo__|Für die Suche nach Markenlogos in Bildern optimiert.|
-|__Produkte in Regalen__|Für die Erkennung und Klassifizierung von Produkten in Regalen optimiert.|
+|__Allgemein__| Für eine Vielzahl von Aufgaben der Objekterkennung optimiert. Wenn keine der anderen Domänen geeignet erscheint oder Sie unsicher sind, welche Domäne Sie wählen sollen, verwenden Sie die allgemeine Domäne. ID: `da2e3a8a-40a5-4171-82f4-58522f70fbc1`|
+|__Logo__|Für die Suche nach Markenlogos in Bildern optimiert. ID: `1d8ffafe-ec40-4fb2-8f90-72b3b6cecea4`|
+|__Produkte in Regalen__|Für die Erkennung und Klassifizierung von Produkten in Regalen optimiert. ID: `3780a898-81c3-4516-81ae-3a139614e1f3`|
 |__Kompaktdomänen__| Für die Bedingungen der Echtzeitobjekterkennung auf Edgegeräten optimiert.|
 
 ## <a name="compact-domains"></a>Kompaktdomänen
@@ -46,11 +46,11 @@ Die von Kompaktdomänen generierten Modelle können für die lokale Ausführung 
 
 Die Modellleistung variiert je nach ausgewählter Domäne. In der folgenden Tabelle geben wir die Modellgröße und die Rückschlusszeit auf der Intel Desktop-CPU und der NVIDIA-GPU \[1\] an. Diese Zahlen enthalten keine Vor- und Nachverarbeitungszeit.
 
-|Aufgabe|Domain|Modellgröße|CPU-Rückschlusszeit|GPU-Rückschlusszeit|
-|---|---|---|---|---|
-|Klassifizierung|General (compact) (Allgemein (kompakt))|5 MB|13 ms|5 ms|
-|Objekterkennung|General (compact) (Allgemein (kompakt))|45 MB|35 ms|5 ms|
-|Objekterkennung|Allgemein (kompakt) [$1]|14 MB|27 ms|7 ms|
+|Aufgabe|Domain|id|Modellgröße|CPU-Rückschlusszeit|GPU-Rückschlusszeit|
+|---|---|---|---|---|---|
+|Klassifizierung|General (compact) (Allgemein (kompakt))|`0732100f-1a38-4e49-a514-c9b44c697ab5`|5 MB|13 ms|5 ms|
+|Objekterkennung|General (compact) (Allgemein (kompakt))|`a27d5ca5-bb19-49d8-a70a-fec086c47f5b`|45 MB|35 ms|5 ms|
+|Objekterkennung|Allgemein (kompakt) [$1]|`7ec2ac80-887b-48a6-8df9-8b1357765430`|14 MB|27 ms|7 ms|
 
 >[!NOTE]
 >Die Domäne __Allgemein (kompakt)__ für die Objekterkennung erfordert eine spezielle Nachverarbeitungslogik. Die Einzelheiten entnehmen Sie einem Beispielskript im exportierten ZIP-Paket. Wenn Sie ein Modell ohne die Nachverarbeitungslogik benötigen, verwenden Sie __Allgemein (kompakt) [S1]__ .

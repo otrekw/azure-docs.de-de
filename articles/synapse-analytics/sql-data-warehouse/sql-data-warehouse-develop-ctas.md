@@ -11,12 +11,12 @@ ms.date: 03/26/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seoapril2019, azure-synapse
-ms.openlocfilehash: 3d9a842af5e1d3fac73515d96644bef250d7d0c4
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 95158193a978702392106c8aa3347de211fd1a3e
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93334568"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98115445"
 ---
 # <a name="create-table-as-select-ctas"></a>CREATE TABLE AS SELECT (CTAS)
 
@@ -208,7 +208,7 @@ DROP TABLE CTAS_acs;
 
 ## <a name="ansi-join-replacement-for-merge"></a>ANSI-Verknüpfungsersatz für MERGE 
 
-In Azure Synapse Analytics muss das Ziel bei [MERGE](https://docs.microsoft.com/sql/t-sql/statements/merge-transact-sql?view=sql-server-ver15) (Vorschau) mit NOT MATCHED BY TARGET eine verteilte HASH-Tabelle sein.  Benutzer können ANSI JOIN bei [UPDATE](https://docs.microsoft.com/sql/t-sql/queries/update-transact-sql?view=sql-server-ver15) oder [DELETE](https://docs.microsoft.com/sql/t-sql/statements/delete-transact-sql?view=sql-server-ver15) als Problemumgehung verwenden, um Zieltabellendaten basierend auf dem Ergebnis der Verknüpfung mit einer anderen Tabelle zu ändern.  Beispiel:
+In Azure Synapse Analytics muss das Ziel bei [MERGE](/sql/t-sql/statements/merge-transact-sql?view=sql-server-ver15) (Vorschau) mit NOT MATCHED BY TARGET eine verteilte HASH-Tabelle sein.  Benutzer können ANSI JOIN bei [UPDATE](/sql/t-sql/queries/update-transact-sql?view=sql-server-ver15) oder [DELETE](/sql/t-sql/statements/delete-transact-sql?view=sql-server-ver15) als Problemumgehung verwenden, um Zieltabellendaten basierend auf dem Ergebnis der Verknüpfung mit einer anderen Tabelle zu ändern.  Beispiel:
 
 ```sql
 CREATE TABLE dbo.Table1   

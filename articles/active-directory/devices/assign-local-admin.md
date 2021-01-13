@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cfd7b5ac981fcb87d0fc929d944205dec9432b74
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: d482f21955b76e6b90523afe3b4933378c91d36e
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96575821"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98107360"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>Verwalten der lokalen Administratorgruppe auf in Azure AD eingebundenen Geräten
 
@@ -32,8 +32,7 @@ Wenn Sie mithilfe einer Azure AD-Einbindung eine Verbindung zwischen einem Wind
 - Azure AD-Geräteadministratorrolle 
 - Benutzer, der die Azure AD-Einbindung ausführt   
 
-Indem Sie Azure AD-Rollen zur lokalen Administratorgruppe hinzufügen, können Sie die Benutzer, die ein Gerät verwalten können, jederzeit in Azure AD aktualisieren, ohne Änderungen auf dem Gerät vornehmen zu müssen. Derzeit können Sie einer Administratorrolle keine Gruppen zuweisen.
-Azure AD fügt der lokalen Administratorgruppe darüber hinaus die Rolle des Azure AD-Geräteadministrators hinzu, um das Prinzip der geringsten Berechtigung (Principle of Least Privilege, PoLP) zu unterstützen. Zusätzlich zu den globalen Administratoren können Sie auch Benutzern, denen *nur* die Geräteadministratorrolle zugewiesen wurde, die Verwaltung eines Geräts ermöglichen. 
+Indem Sie Azure AD-Rollen zur lokalen Administratorgruppe hinzufügen, können Sie die Benutzer, die ein Gerät verwalten können, jederzeit in Azure AD aktualisieren, ohne Änderungen auf dem Gerät vornehmen zu müssen. Azure AD fügt der lokalen Administratorgruppe darüber hinaus die Rolle des Azure AD-Geräteadministrators hinzu, um das Prinzip der geringsten Berechtigung (Principle of Least Privilege, PoLP) zu unterstützen. Zusätzlich zu den globalen Administratoren können Sie auch Benutzern, denen *nur* die Geräteadministratorrolle zugewiesen wurde, die Verwaltung eines Geräts ermöglichen. 
 
 ## <a name="manage-the-global-administrators-role"></a>Verwalten der globalen Administratorrolle
 

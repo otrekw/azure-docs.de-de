@@ -11,12 +11,12 @@ ms.date: 06/26/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 667629b7f613b11f40528b039c7525339b7a62d0
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: bd32b9690f8a9aef92eb1f2fbcc4ec926a65584e
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462871"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121191"
 ---
 # <a name="azure-advisor-recommendations-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Advisor-Empfehlungen für dedizierte SQL-Pools in Azure Synapse Analytics
 
@@ -65,12 +65,12 @@ Derzeit zeigt der Advisor maximal vier Kandidaten für replizierte Tabellen auf 
 
 
 ## <a name="adaptive-gen2-cache-utilization"></a>Adaptive (Gen2) Cacheauslastung
-Wenn Sie über ein großes Workingset verfügen, kann es zu einem niedrigen Prozentsatz der Cachetreffer und einer hohen Cacheauslastung kommen. Für dieses Szenario sollten Sie hochskalieren, um die Cachekapazität zu erhöhen und Ihre Workload erneut auszuführen. Weitere Informationen finden Sie in der folgenden [Dokumentation](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-how-to-monitor-cache). 
+Wenn Sie über ein großes Workingset verfügen, kann es zu einem niedrigen Prozentsatz der Cachetreffer und einer hohen Cacheauslastung kommen. Für dieses Szenario sollten Sie hochskalieren, um die Cachekapazität zu erhöhen und Ihre Workload erneut auszuführen. Weitere Informationen finden Sie in der folgenden [Dokumentation](./sql-data-warehouse-how-to-monitor-cache.md). 
 
 ## <a name="tempdb-contention"></a>TempDB-Konflikt
 
-Die Abfrageleistung kann sich bei hohen tempdb-Konflikten verschlechtern.  Tempdb-Konflikte können über benutzerdefinierte temporäre Tabellen auftreten, oder wenn eine große Menge von Datenverschiebungen vorkommen. In diesem Szenario können Sie für höhere tempdb-Zuordnungen skalieren und [Ressourcenklassen sowie die Workloadverwaltung konfigurieren](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-workload-management), um mehr Arbeitsspeicher für Ihre Abfragen bereitzustellen. 
+Die Abfrageleistung kann sich bei hohen tempdb-Konflikten verschlechtern.  Tempdb-Konflikte können über benutzerdefinierte temporäre Tabellen auftreten, oder wenn eine große Menge von Datenverschiebungen vorkommen. In diesem Szenario können Sie für höhere tempdb-Zuordnungen skalieren und [Ressourcenklassen sowie die Workloadverwaltung konfigurieren](./sql-data-warehouse-workload-management.md), um mehr Arbeitsspeicher für Ihre Abfragen bereitzustellen. 
 
 ## <a name="data-loading-misconfiguration"></a>Fehlkonfiguration beim Laden von Daten
 
-Sie sollten Daten immer aus einem Speicherkonto in derselben Region wie der dedizierte SQL-Pool laden, um die Latenz zu minimieren. Verwenden Sie die [COPY-Anweisung für hohen Durchsatz bei der Datenerfassung](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest), und teilen Sie Ihre Stagingdateien in Ihrem Speicherkonto auf, um den Durchsatz zu maximieren. Wenn Sie die COPY-Anweisung nicht verwenden können, können Sie für einen besseren Durchsatz die SqlBulkCopy-API oder bcp mit einer hohen Batchgröße verwenden. Weitere Anleitungen zum Laden von Daten finden Sie in der folgenden [Dokumentation](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/guidance-for-loading-data). 
+Sie sollten Daten immer aus einem Speicherkonto in derselben Region wie der dedizierte SQL-Pool laden, um die Latenz zu minimieren. Verwenden Sie die [COPY-Anweisung für hohen Durchsatz bei der Datenerfassung](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest), und teilen Sie Ihre Stagingdateien in Ihrem Speicherkonto auf, um den Durchsatz zu maximieren. Wenn Sie die COPY-Anweisung nicht verwenden können, können Sie für einen besseren Durchsatz die SqlBulkCopy-API oder bcp mit einer hohen Batchgröße verwenden. Weitere Anleitungen zum Laden von Daten finden Sie in der folgenden [Dokumentation](./guidance-for-loading-data.md).

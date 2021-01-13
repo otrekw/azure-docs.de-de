@@ -5,22 +5,19 @@ description: Erfahren Sie, wie Sie Ihren Arbeitsbereich mit Azure Machine Learni
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.reviewer: jmartens
 author: lobrien
 ms.author: laobri
 ms.date: 04/24/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 82e128ffdc215a084110a68170ac12accd8fca0e
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: c4f48acc2d6e57dea0a8db2a149d7ca2871c9f39
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93308135"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98072002"
 ---
 # <a name="export-or-delete-your-machine-learning-service-workspace-data"></a>Exportieren oder Löschen Ihrer Arbeitsbereichsdaten im Machine Learning-Dienst
-
-
 
 In Azure Machine Learning können Sie Ihre Arbeitsbereichsdaten entweder über die grafische Benutzeroberfläche des Portals oder das Python-SDK exportieren oder löschen. Dieser Artikel beschreibt beide Optionen.
 

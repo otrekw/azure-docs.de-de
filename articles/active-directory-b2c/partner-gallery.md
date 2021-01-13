@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 06/08/2020
+ms.date: 01/11/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 4592742b99d7c3e915c31ca5a202355d32e76d68
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 15b4b61fd250dfb7d68c563f9f42c7d288a0019c
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97356122"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98070863"
 ---
 # <a name="azure-active-directory-b2c-isv-partners"></a>Azure Active Directory B2C-ISV-Partner
 
@@ -54,7 +54,7 @@ Microsoft arbeitet für MFA und kennwortlose Authentifizierung mit den folgenden
 | ![Screenshot eines Nevis-Logos](./media/partner-gallery/nevis-logo.png) | [Nevis](./partner-nevis.md) ermöglicht die kennwortlose Authentifizierung und bietet mit der Nevis Access-App eine vollständig markentreue Endbenutzerumgebung an, die auf Mobilgeräte abzielt. So wird eine starke Kundenauthentifizierung bereitgestellt, die den Transaktionsanforderungen der Zahlungsdiensterichtlinie 2 (Payment Services Directive 2, PSD2) entspricht. |
 | ![Screenshot eines Trusona-Logos](./media/partner-gallery/trusona-logo.png) | Die Integration von [Trusona](./partner-trusona.md) hilft Ihnen bei der sicheren Anmeldung und ermöglicht kennwortlose Authentifizierung, mehrstufige Authentifizierung (MFA) und das Scannen digitaler Lizenzen. |
 | ![Screenshot eines Twilio-Logos](./media/partner-gallery/twilio-logo.png) | Die [Twilio Verify-App](./partner-twilio.md) bietet mehrere Lösungen, um die mehrstufige Authentifizierung (MFA) durch SMS OTP (One-Time-Password, Einmalkennwort), TOTP (Time Based One-Time-Password, zeitbasiertes Einmalkennwort) und Push-Benachrichtigungen zu aktivieren und die SCA-Anforderungen der PSD2 zu erfüllen. |
-| ![Screenshot eines TypingDNA-Logos](./media/partner-gallery/typingdna-logo.png) | [TypingDNA](./partner-twilio.md) ermöglicht eine strenge Kundenauthentifizierung durch das Analysieren der Tastatureingabemuster eines Benutzers. So können Unternehmen eine „unsichtbare“ MFA implementieren und die SCA-Anforderungen der PSD2 einhalten. |
+| ![Screenshot eines TypingDNA-Logos](./media/partner-gallery/typingdna-logo.png) | [TypingDNA](./partner-typingdna.md) ermöglicht eine strenge Kundenauthentifizierung durch das Analysieren der Tastatureingabemuster eines Benutzers. So können Unternehmen eine „unsichtbare“ MFA implementieren und die SCA-Anforderungen der PSD2 einhalten. |
 | ![Screenshot eines WhoIAm-Logos](./media/partner-gallery/whoiam-logo.png) | [WhoIAM](./partner-whoiam.md) ist eine BRIMS-Anwendung (Branded Identity Management System), mit der Organisationen ihre Benutzerbasis per Sprachanruf, SMS und E-Mail überprüfen können. |
 
 ## <a name="role-based-access-control"></a>Rollenbasierte Zugriffssteuerung 

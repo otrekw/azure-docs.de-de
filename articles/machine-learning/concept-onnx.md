@@ -6,17 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.reviewer: jmartens
 ms.author: prasantp
 author: prasanthpul
 ms.date: 06/18/2020
 ms.custom: seodec18
-ms.openlocfilehash: e7b818de12a968869d655a80917572ddf5f2c210
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 5a1ed6c43e4d3a96e0e19d7be50e1e16bcab780e
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323003"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071237"
 ---
 # <a name="onnx-and-azure-machine-learning-create-and-accelerate-ml-models"></a>ONNX und Azure Machine Learning: Erstellen und Beschleunigen von ML-Modellen
 
@@ -91,10 +90,10 @@ Beispiele für die Verwendung in anderen Sprachen finden Sie im [GitHub-Reposito
 
 ## <a name="more-info"></a>Weitere Informationen
 
-Erfahren Sie mehr über **ONNX** , oder leisten Sie einen Beitrag zum Projekt:
+Erfahren Sie mehr über **ONNX**, oder leisten Sie einen Beitrag zum Projekt:
 + [ONNX-Projektwebsite](https://onnx.ai)
 + [ONNX-Code auf GitHub](https://github.com/onnx/onnx)
 
-Erfahren Sie mehr über die **ONNX-Runtime** , oder leisten Sie einen Beitrag zum Projekt:
+Erfahren Sie mehr über die **ONNX-Runtime**, oder leisten Sie einen Beitrag zum Projekt:
 + [Website des ONNX-Runtime-Projekts](https://onnxruntime.ai)
 + [ONNX Runtime-GitHub-Repository](https://github.com/Microsoft/onnxruntime)

@@ -355,6 +355,8 @@
               href: ./spark/optimize-cluster-configuration.md
         - name: "Migrieren zu Spark\_2.3 oder\_2.4"
           href: ./spark/migrate-versions.md
+        - name: Aktualisieren von .NET für Apache Spark auf 1.0
+          href: ./spark/spark-dotnet-version-update.md
     - name: Anleitungen
       items:
         - name: Verwenden von Tools

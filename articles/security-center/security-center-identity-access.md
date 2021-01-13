@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/08/2020
 ms.author: memildin
-ms.openlocfilehash: b36f52fd97a9f7ff294f14ec394ff9a9f607b5b0
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 3c0dd2b4e7e48eeb76d82c26eb52b89b61e9f668
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187152"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98134108"
 ---
 # <a name="monitor-identity-and-access"></a>Überwachen der Identität und des Zugriffs
 
@@ -44,7 +44,7 @@ Beispiele für Empfehlungen, die möglicherweise im Security Center auf der Seit
 - Veraltete Konten müssen aus Ihrem Abonnement entfernt werden. (Veraltete Konten sind Konten, die nicht mehr benötigt werden und bei denen die Anmeldung bei Azure Active Directory blockiert wurde.)
 
 > [!TIP]
-> Weitere Informationen zu diesen und anderen Empfehlungen, die in diesen Steuerungen angezeigt werden können, finden Sie unter [Empfehlungen zu Identität und Zugriff](recommendations-reference.md#recs-identity).
+> Weitere Informationen zu diesen und anderen Empfehlungen, die in diesen Steuerungen angezeigt werden können, finden Sie unter [Empfehlungen zu Identität und Zugriff](recommendations-reference.md#recs-identityandaccess).
 
 ### <a name="limitations"></a>Einschränkungen
 

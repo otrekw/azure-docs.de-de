@@ -11,12 +11,12 @@ ms.date: 11/20/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 60a995f78b9b696197d9bd45e04becb19e4129f0
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: c91310d9d1e67dd77098ee13a87190ee6d411607
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97653060"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120103"
 ---
 # <a name="best-practices-for-loading-data-using-dedicated-sql-pools-in-azure-synapse-analytics"></a>Bewährte Methoden für das Laden von Daten mithilfe von dedizierten SQL-Pools in Azure Synapse Analytics
 
@@ -47,7 +47,7 @@ In diesem Beispiel wird ein für eine bestimmte Arbeitsauslastungsgruppe klassif
    CREATE LOGIN loader WITH PASSWORD = 'a123STRONGpassword!';
 ```
 
-Stellen Sie eine Verbindung mit dem dedizierten SQL-Pool her, und erstellen Sie einen Benutzer. Beim folgenden Code wird vorausgesetzt, dass Sie über eine Verbindung mit der Datenbank „mySampleDataWarehouse“ verfügen. Es wird gezeigt, wie ein Benutzer namens „loader“ erstellt wird, und er erhält Berechtigungen zum Erstellen von Tabellen und Laden mithilfe der [COPY-Anweisung](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest). Anschließend wird der Benutzer für die Arbeitsauslastungsgruppe DataLoads mit maximalen Ressourcen klassifiziert. 
+Stellen Sie eine Verbindung mit dem dedizierten SQL-Pool her, und erstellen Sie einen Benutzer. Beim folgenden Code wird vorausgesetzt, dass Sie über eine Verbindung mit der Datenbank „mySampleDataWarehouse“ verfügen. Es wird gezeigt, wie ein Benutzer namens „loader“ erstellt wird, und er erhält Berechtigungen zum Erstellen von Tabellen und Laden mithilfe der [COPY-Anweisung](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest). Anschließend wird der Benutzer für die Arbeitsauslastungsgruppe DataLoads mit maximalen Ressourcen klassifiziert. 
 
 ```sql
    -- Connect to the dedicated SQL pool
@@ -179,5 +179,5 @@ Es sind keine weiteren Änderungen an zugrunde liegenden externen Datenquellen e
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Weitere Informationen zur COPY-Anweisung oder zu PolyBase beim Entwerfen eines ELT-Prozesses (Extrahieren, Laden und Transformieren) finden Sie unter [Datenladestrategien für Synapse SQL-Pools](design-elt-data-loading.md).
-- Ein Tutorial zum Ladevorgang finden Sie unter [Tutorial: Laden des New York Taxicab-Datasets](load-data-from-azure-blob-storage-using-polybase.md).
+- Ein Tutorial zum Ladevorgang finden Sie unter [Tutorial: Laden des New York Taxicab-Datasets](./load-data-from-azure-blob-storage-using-copy.md).
 - Informationen zum Überwachen von Datenladevorgängen finden Sie unter [Überwachen Ihrer Workload mit dynamischen Verwaltungssichten](sql-data-warehouse-manage-monitor.md).

@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 09957461fd92114d1181a570550ee1a189edd8ea
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 874d44e3900b1edf24c2f6bee95d787c5fc3988d
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96009865"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97704838"
 ---
-## <a name="create-an-azure-container-instance-resource"></a>Erstellen einer Azure Container Instances-Ressource
+## <a name="create-an-azure-container-instance-resource-using-the-azure-portal"></a>Erstellen einer Azure Container Instances-Ressource im Azure-Portal
 
 1. Wechseln Sie zur Seite [Erstellen](https://ms.portal.azure.com/#create/Microsoft.ContainerInstances) für Container Instances.
 
@@ -43,9 +43,9 @@ ms.locfileid: "96009865"
 
     | Schlüssel | Wert |
     |--|--|
-    |`apikey`|Kopiert von der Seite **Schlüssel** der Ressource. Es handelt sich um eine aus 32 alphanumerischen Zeichen bestehende Zeichenfolge ohne Leerzeichen oder Bindestriche, `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`.|
-    |`billing`|Kopiert von der Seite **Übersicht** der Ressource.|
-    |`eula`|`accept`|
+    |`ApiKey`|Kopiert von der Seite **Schlüssel und Endpunkte** der Ressource. Es handelt sich um eine aus 32 alphanumerischen Zeichen bestehende Zeichenfolge ohne Leerzeichen oder Bindestriche, `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`.|
+    |`Billing`| Ihre Endpunkt-URL, kopiert von der Seite **Schlüssel und Endpunkte** der Ressource.|
+    |`Eula`|`accept`|
 
 5. Klicken Sie auf **Überprüfen und erstellen**.
 6. Nachdem die Überprüfung abgeschlossen ist, klicken Sie auf **Erstellen**, um den Erstellungsprozess abzuschließen.

@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 53c68f44273b14658bd4d95ce7cf3cf847c077d0
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: f780d5404d99435a61c4e3f9e90b1acbd9539af9
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93025951"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98118437"
 ---
 # <a name="monitor-workload---azure-portal"></a>Überwachen von Workloads – Azure-Portal
 
@@ -24,7 +24,7 @@ In diesem Artikel wird beschrieben, wie Sie im Azure-Portal Ihre Workload überw
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Azure-Abonnement: Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
-- SQL-Pool: Sie sammeln Protokolle für einen SQL-Pool. Wenn Sie keinen SQL-Pool bereitgestellt haben, lesen Sie die Anleitungen unter [Erstellen eines SQL-Pools](load-data-from-azure-blob-storage-using-polybase.md).
+- SQL-Pool: Sie sammeln Protokolle für einen SQL-Pool. Wenn Sie keinen SQL-Pool bereitgestellt haben, lesen Sie die Anleitungen unter [Erstellen eines SQL-Pools](./load-data-from-azure-blob-storage-using-copy.md).
 
 ## <a name="create-a-log-analytics-workspace"></a>Erstellen eines Log Analytics-Arbeitsbereichs
 
@@ -63,7 +63,7 @@ Navigieren Sie zu Ihrem Log Analytics-Arbeitsbereich, in dem Sie die folgenden S
 - Erstellen von Protokollwarnungen
 - Anheften von Abfrageergebnissen an ein Dashboard
 
-Weitere Informationen zu der Funktionalität von Protokollabfragen finden Sie in dieser [Dokumentation](../../azure-monitor/log-query/query-language.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
+Weitere Informationen zu der Funktionalität von Protokollabfragen finden Sie in dieser [Dokumentation](/azure/data-explorer/kusto/query/?bc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2ftoc.json).
 
 ![Log Analytics-Arbeitsbereich-Editor](./media/sql-data-warehouse-monitor-workload-portal/log_analytics_workspace_editor.png)
 
