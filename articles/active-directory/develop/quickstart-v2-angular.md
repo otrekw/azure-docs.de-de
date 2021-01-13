@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 03/18/2020
 ms.author: janutter
-ms.openlocfilehash: 72d9aefcdda5d224b256c6e969b7a75259a97005
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: c34ea5e2c622b7b203c56c6de2b611d6eca1d35c
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95750772"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98017509"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-an-angular-single-page-application"></a>Schnellstart: Anmelden von Benutzern und Abrufen eines Zugriffstokens in einer Angular-Single-Page-Webanwendung
 
@@ -35,7 +35,7 @@ In diesem Schnellstart laden Sie ein Codebeispiel herunter und führen es aus, d
 >
 > ### <a name="option-1-express-register-and-automatically-configure-the-app-and-then-download-the-code-sample"></a>Option 1 (Express): Registrieren und automatisches Konfigurieren der App und anschließendes Herunterladen des Codebeispiels
 >
-> 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+> 1. Melden Sie sich beim <a href="https://portal.azure.com/" target="_blank">Azure-Portal<span class="docon docon-navigate-external x-hidden-focus"></span></a> an.
 > 1. Sollte Ihr Konto Zugriff auf mehrere Mandanten haben, wählen Sie rechts oben das entsprechende Konto aus, und legen Sie Ihre Portalsitzung auf den gewünschten Azure AD-Mandanten (Azure Active Directory) fest.
 > 1. Öffnen Sie im Azure-Portal den neuen Bereich [App-Registrierungen](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs).
 > 1. Geben Sie einen Namen für Ihre Anwendung ein, und klicken Sie auf **Registrieren**.
@@ -45,7 +45,7 @@ In diesem Schnellstart laden Sie ein Codebeispiel herunter und führen es aus, d
 >
 > #### <a name="step-1-register-the-application"></a>Schritt 1: Registrieren der Anwendung
 >
-> 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+> 1. Melden Sie sich beim <a href="https://portal.azure.com/" target="_blank">Azure-Portal<span class="docon docon-navigate-external x-hidden-focus"></span></a> an.
 > 1. Sollte Ihr Konto Zugriff auf mehrere Mandanten haben, wählen Sie rechts oben Ihr Konto aus, und legen Sie Ihre Portalsitzung auf den gewünschten Azure AD-Mandanten fest.
 > 1. Befolgen Sie die Anleitung zum [Registrieren einer Single-Page-Webanwendung](./scenario-spa-app-registration.md) im Azure-Portal.
 > 1. Fügen Sie im Bereich **Authentifizierung** Ihrer App-Registrierung eine neue Plattform hinzu, und registrieren Sie den Umleitungs-URI: `http://localhost:4200/`.

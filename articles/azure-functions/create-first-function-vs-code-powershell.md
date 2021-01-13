@@ -3,12 +3,12 @@ title: 'Erstellen einer PowerShell-Funktion mit Visual Studio Code: Azure Functi
 description: Erfahren Sie, wie Sie eine PowerShell-Funktion erstellen und dann das lokale Projekt für serverloses Hosting in Azure Functions unter Verwendung der Azure Functions-Erweiterung in Visual Studio Code veröffentlichen.
 ms.topic: quickstart
 ms.date: 11/04/2020
-ms.openlocfilehash: 5d85c0362daa9dc3b42ed0cc1329329ffa598bee
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: ad129d8faec5725a6e76f14577e6a0e9deae8d86
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94637046"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97968006"
 ---
 # <a name="quickstart-create-a-powershell-function-in-azure-using-visual-studio-code"></a>Schnellstart: Erstellen einer PowerShell-Funktion in Azure mit Visual Studio Code
 
@@ -26,8 +26,7 @@ Vergewissern Sie sich zunähst, dass Folgendes vorhanden ist:
 
 + Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-+ [Node.js](https://nodejs.org/): Wird von Windows für npm benötigt. Nur [Active LTS- und Maintenance LTS-Versionen](https://nodejs.org/about/releases/). Verwenden Sie den Befehl `node --version`, um Ihre Version zu überprüfen.
-    Nicht erforderlich für die lokale Entwicklung unter macOS und Linux
++ [Azure Functions Core Tools](functions-run-local.md#install-the-azure-functions-core-tools), Version 3.x.
 
 + [PowerShell 7](/powershell/scripting/install/installing-powershell-core-on-windows)
 

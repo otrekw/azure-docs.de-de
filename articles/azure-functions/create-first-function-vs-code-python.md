@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie eine Python-Funktion erstellen und dann das l
 ms.topic: quickstart
 ms.date: 11/04/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 4d37acfddeb5f5b6220e7082e729a7d6e6dfe66b
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 9e4ddc479b0adcb88e846b92e6603dfdf3c99baa
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94542421"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97967989"
 ---
 # <a name="quickstart-create-a-function-in-azure-with-python-using-visual-studio-code"></a>Schnellstart: Erstellen einer Funktion in Azure mit Python mithilfe von Visual Studio Code
 
@@ -27,8 +27,7 @@ Vergewissern Sie sich zunähst, dass Folgendes vorhanden ist:
 
 + Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-+ [Node.js](https://nodejs.org/): Wird von Windows für npm benötigt. Nur [Active LTS- und Maintenance LTS-Versionen](https://nodejs.org/about/releases/). Verwenden Sie den Befehl `node --version`, um Ihre Version zu überprüfen.
-    Nicht erforderlich für die lokale Entwicklung unter macOS und Linux
++ [Azure Functions Core Tools](functions-run-local.md#install-the-azure-functions-core-tools), Version 3.x.
 
 + [Python 3.8](https://www.python.org/downloads/release/python-381/), [Python 3.7](https://www.python.org/downloads/release/python-375/) und [Python 3.6](https://www.python.org/downloads/release/python-368/) werden von Azure Functions (x64) unterstützt.
 

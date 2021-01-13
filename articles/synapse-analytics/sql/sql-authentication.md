@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: efa160eb422658aeeb2eea3ad3c1d305b4b9f8be
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 1217cf74ab36a8fe865e47009616b1ccb240df67
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462407"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98119882"
 ---
 # <a name="sql-authentication"></a>SQL-Authentifizierung
 
@@ -111,7 +111,7 @@ Für die Erstellung einer Datenbank muss es sich um einen Benutzer handeln, der 
    CREATE USER Mary FROM LOGIN Mary;  -- To create a SQL Server user based on a SQL Server authentication login
    ```
 
-4. Fügen Sie den neuen Benutzer der Datenbankrolle **dbmanager** in `master` hinzu. Verwenden Sie dazu die Prozedur [sp_addrolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=azure-sqldw-latest). (Beachten Sie, dass die Anweisung [ALTER ROLE](/sql/t-sql/statements/alter-role-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) in SQL (bereitgestellt) nicht unterstützt wird). Beispielanweisungen:
+4. Fügen Sie den neuen Benutzer der Datenbankrolle **dbmanager** in `master` hinzu. Verwenden Sie dazu die Prozedur [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=azure-sqldw-latest). (Beachten Sie, dass die Anweisung [ALTER ROLE](/sql/t-sql/statements/alter-role-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) in SQL (bereitgestellt) nicht unterstützt wird). Beispielanweisungen:
 
    ```sql
    EXEC sp_addrolemember 'dbmanager', 'Mary'; 
@@ -133,7 +133,7 @@ Die andere Administratorrolle ist die Rolle „loginmanager“ (Anmeldungs-Manag
 
 ## <a name="non-administrator-users"></a>Benutzer ohne Administratorrechte
 
-Üblicherweise benötigen Konten ohne Administratorrechte keinen Zugriff auf die Masterdatenbank. Erstellen Sie eigenständige Datenbankbenutzer auf Datenbankebene, indem Sie die [CREATE USER](https://msdn.microsoft.com/library/ms173463.aspx) -Anweisung (Transact-SQL) verwenden. 
+Üblicherweise benötigen Konten ohne Administratorrechte keinen Zugriff auf die Masterdatenbank. Erstellen Sie eigenständige Datenbankbenutzer auf Datenbankebene, indem Sie die [CREATE USER](/sql/t-sql/statements/create-user-transact-sql) -Anweisung (Transact-SQL) verwenden. 
 
 Der Benutzer kann ein eigenständiger Datenbankbenutzer mit Azure Active Directory-Authentifizierung (bei Konfiguration Ihrer Umgebung für die Azure AD-Authentifizierung), ein eigenständiger Datenbankbenutzer mit SQL Server-Authentifizierung oder ein Benutzer mit SQL Server-Authentifizierung basierend auf einer SQL Server-Authentifizierungsanmeldung (im vorherigen Schritt erstellt) sein.  
 
@@ -191,7 +191,7 @@ Bei den Datenbankrollen kann es sich um integrierte Rollen handeln, z.B. **db_ow
 
 Die feste Datenbankrolle **db_datareader** gewährt beispielsweise Lesezugriff auf jede Tabelle der Datenbank. Dies ist im Normalfall nicht unbedingt erforderlich. 
 
-Es ist viel besser, die Anweisung [CREATE ROLE](https://msdn.microsoft.com/library/ms187936.aspx) zum Erstellen Ihrer eigenen benutzerdefinierten Datenbankrollen zu verwenden und jeder Rolle sorgfältig nur die Berechtigungen zu gewähren, die für die jeweilige Aufgabe benötigt werden. Wenn ein Benutzer Mitglied mehrerer Rollen ist, verfügt er über die zusammengefassten Berechtigungen all dieser Rollen.
+Es ist viel besser, die Anweisung [CREATE ROLE](/sql/t-sql/statements/create-role-transact-sql) zum Erstellen Ihrer eigenen benutzerdefinierten Datenbankrollen zu verwenden und jeder Rolle sorgfältig nur die Berechtigungen zu gewähren, die für die jeweilige Aufgabe benötigt werden. Wenn ein Benutzer Mitglied mehrerer Rollen ist, verfügt er über die zusammengefassten Berechtigungen all dieser Rollen.
 
 ## <a name="permissions"></a>Berechtigungen
 
@@ -199,7 +199,7 @@ Es gibt mehr als 100 Berechtigungen, die in SQL-Datenbank individuell gewährt o
 
 Aufgrund der Schachtelung und der Anzahl von Berechtigungen muss ein geeignetes Berechtigungssystem sorgfältig entworfen werden, um für Ihre Datenbank den richtigen Schutz sicherzustellen. 
 
-Beginnen Sie mit der Liste der Berechtigungen unter [Berechtigungen (Datenbank-Engine)](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine), und sehen Sie sich die [Grafik in Postergröße](https://docs.microsoft.com/sql/relational-databases/security/media/database-engine-permissions.png) mit den Berechtigungen an.
+Beginnen Sie mit der Liste der Berechtigungen unter [Berechtigungen (Datenbank-Engine)](/sql/relational-databases/security/permissions-database-engine), und sehen Sie sich die [Grafik in Postergröße](/sql/relational-databases/security/media/database-engine-permissions.png) mit den Berechtigungen an.
 
 ### <a name="considerations-and-restrictions"></a>Überlegungen und Einschränkungen
 
@@ -236,5 +236,4 @@ Beachten Sie beim Verwalten von Anmeldungen und Benutzern in SQL-Datenbank die f
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen finden Sie unter [Eigenständige Datenbankbenutzer - machen Sie Ihre Datenbank portabel](https://msdn.microsoft.com/library/ff929188.aspx).
- 
+Weitere Informationen finden Sie unter [Eigenständige Datenbankbenutzer - machen Sie Ihre Datenbank portabel](/sql/relational-databases/security/contained-database-users-making-your-database-portable).

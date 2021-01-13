@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: 0e3bbb2532340664d0fc54b29bea3ef3af75f9b6
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 249f124dc7d4d789ca4396a67fba63fbdd144ba6
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96459160"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120052"
 ---
 # <a name="synapse-sql-resource-consumption"></a>Synapse SQL-Ressourcennutzung
 
@@ -94,7 +94,7 @@ Ein SQL-Pool ist ein horizontal hochskalierbares System, das große Mengen von C
 
 > [!NOTE]
 >
-> Die Abfrageleistung steigt bei höherem Parallelisierungsgrad nur, wenn die Verarbeitung auf mehrere Computeknoten aufgeteilt werden kann. Wenn Sie feststellen, dass die Skalierung Ihre Leistung nicht ändert, müssen Sie möglicherweise Ihr Tabellendesign und/oder Ihre Abfragen anpassen. Eine Anleitung zur Abfrageoptimierung finden Sie unter [Spickzettel für Azure SQL Data Warehouse](../overview-cheat-sheet.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
+> Die Abfrageleistung steigt bei höherem Parallelisierungsgrad nur, wenn die Verarbeitung auf mehrere Computeknoten aufgeteilt werden kann. Wenn Sie feststellen, dass die Skalierung Ihre Leistung nicht ändert, müssen Sie möglicherweise Ihr Tabellendesign und/oder Ihre Abfragen anpassen. Eine Anleitung zur Abfrageoptimierung finden Sie unter [Spickzettel für Azure SQL Data Warehouse](../overview-terminology.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json).
 
 ### <a name="permissions"></a>Berechtigungen
 

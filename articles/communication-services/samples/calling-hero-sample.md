@@ -9,12 +9,12 @@ ms.author: dademath
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: c872c2a2799eee3ae9e39653b0046b70ca5d7e8b
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 44f23e4f5b3f65fb4f3c69b2ddc55af8c983aa23
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94887534"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98043726"
 ---
 # <a name="get-started-with-the-group-calling-hero-sample"></a>Erste Schritte mit dem Hero-Beispiel für Gruppenanrufe
 
@@ -72,7 +72,7 @@ Für die lokale Bereitstellung müssen wir beide Anwendungen starten. Wenn über
 
 Sie können das Beispiel lokal testen, indem Sie mehrere Browsersitzungen mit der URL Ihres Anrufs öffnen, um einen Anruf mit mehreren Benutzern zu simulieren.
 
-## <a name="before-running-the-sample-for-the-first-time"></a>Vor dem erstmaligen Ausführen des Beispiels
+### <a name="before-running-the-sample-for-the-first-time"></a>Vor dem erstmaligen Ausführen des Beispiels
 
 1. Öffnen Sie eine Instanz von PowerShell, des Windows-Terminals, einer Eingabeaufforderung oder eines gleichwertigen Tools, und navigieren Sie zu dem Verzeichnis, in dem Sie das Beispiel klonen möchten.
 2. `git clone https://github.com/Azure-Samples/communication-services-web-calling-hero.git`
@@ -98,7 +98,7 @@ Sie können das Beispiel lokal testen, indem Sie mehrere Browsersitzungen mit de
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn Sie ein Communication Services-Abonnement bereinigen und entfernen möchten, können Sie die Ressource oder die Ressourcengruppe löschen. Wenn Sie die Ressourcengruppe löschen, werden auch alle anderen Ressourcen gelöscht, die ihr zugeordnet sind. Erfahren Sie mehr über das [Bereinigen von Ressourcen](../quickstarts/create-communication-resource.md#clean-up-resources).
+Wenn Sie ein Communication Services-Abonnement bereinigen und entfernen möchten, können Sie die Ressource oder die Ressourcengruppe löschen. Wenn Sie die Ressourcengruppe löschen, werden auch alle anderen Ressourcen gelöscht, die ihr zugeordnet sind. Weitere Informationen zum Bereinigen von Ressourcen finden Sie [hier](../quickstarts/create-communication-resource.md#clean-up-resources).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

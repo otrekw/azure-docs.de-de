@@ -13,12 +13,12 @@ ms.date: 09/03/2020
 ms.author: marsma
 ms.custom: aaddev, contperf-fy21q1
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: 4ebae7e97f9128bb9302e9076e71dd3164f0c29e
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: bf8b705aff8ac608d0eb3626026797f1d106414b
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97030959"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98017751"
 ---
 # <a name="quickstart-configure-an-application-to-expose-a-web-api"></a>Schnellstart: Konfigurieren einer Anwendung für das Verfügbarmachen einer Web-API
 
@@ -45,7 +45,7 @@ Der Code in einer Clientanwendung fordert die Berechtigung zum Ausführen von Vo
 
 Führen Sie zuerst die folgenden Schritte aus, um einen Beispielbereich namens `Employees.Read.All` zu erstellen:
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Melden Sie sich beim <a href="https://portal.azure.com/" target="_blank">Azure-Portal<span class="docon docon-navigate-external x-hidden-focus"></span></a> an.
 1. Wenn Sie Zugriff auf mehrere Mandanten haben, verwenden Sie im Menü am oberen Rand den Filter **Verzeichnis + Abonnement** :::image type="icon" source="./media/quickstart-configure-app-expose-web-apis/portal-01-directory-subscription-filter.png" border="false":::, um den Mandanten auszuwählen, der die Registrierung der Client-App enthält.
 1. Wählen Sie zuerst **Azure Active Directory** > **App-Registrierungen** und dann die App-Registrierung Ihrer API aus.
 1. Wählen Sie **Eine API verfügbar machen** > **Bereich hinzufügen** aus.

@@ -11,12 +11,12 @@ ms.date: 01/08/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74a6c816979732e21813a0f2024167c68ca1c5dc
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: d8e1af1848405441088796d2e3b42e7b52eedba8
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94874099"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98065115"
 ---
 # <a name="what-is-azure-ad-connect"></a>Was ist Azure AD Connect?
 
@@ -26,7 +26,7 @@ Das Microsoft-Tool Azure AD Connect wurde entwickelt, um Sie beim Erreichen Ihre
 - [Passthrough-Authentifizierung](how-to-connect-pta.md): Eine Anmeldemethode, die Benutzern die Verwendung des gleichen Kennworts lokal und in der Cloud ermöglicht, die zusätzliche Infrastruktur einer Verbundumgebung jedoch nicht erfordert.
 - [Verbundintegration](how-to-connect-fed-whatis.md): Der Verbund ist eine optionale Komponente von Azure AD Connect und kann zum Konfigurieren einer Hybridumgebung mithilfe einer lokalen AD FS-Infrastruktur verwendet werden. Er bietet auch AD FS-Verwaltungsfunktionen wie die Zertifikaterneuerung und zusätzliche AD FS-Serverbereitstellungen.
 - [Synchronisierung](how-to-connect-sync-whatis.md): Dieser Prozess ist verantwortlich für das Erstellen von Benutzern, Gruppen und anderen Objekten.  Er stellt auch sicher, dass Identitätsinformationen für Ihre lokalen Benutzer und Gruppen denen in der Cloud entsprechen.  Diese Synchronisierung umfasst auch Kennworthashes.
-- [Systemüberwachung](): Azure AD Connect Health bietet eine stabile Überwachung und einen zentralen Speicherort im Azure-Portal, um diese Aktivität anzuzeigen. 
+- [Systemüberwachung](whatis-azure-ad-connect.md#what-is-azure-ad-connect-health): Azure AD Connect Health bietet eine stabile Überwachung und einen zentralen Speicherort im Azure-Portal, um diese Aktivität anzuzeigen. 
 
 
 ![Was ist Azure AD Connect?](./media/whatis-hybrid-identity/arch.png)

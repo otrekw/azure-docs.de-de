@@ -11,12 +11,12 @@ ms.date: 05/28/2019
 ms.author: pimorano
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 78a0982081b8e34461fb2910cc7ce21be622cb6a
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 4da99200079557ab9d1674635c0df26c9e62d488
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96922809"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120273"
 ---
 # <a name="quickstart-create-and-query-a-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics-using-the-azure-portal"></a>Schnellstart: Erstellen und Abfragen eines dedizierten SQL-Pools (vormals SQL DW) in Azure Synapse Analytics über das Azure-Portal
 
@@ -153,7 +153,7 @@ In diesem Abschnitt wird [SQL Server Management Studio](/sql/ssms/download-sql-s
 
 ## <a name="run-some-queries"></a>Ausführen einiger Abfragen
 
-Sie sollten keine große Abfragen ausführen, während Sie als Serveradministrator protokolliert werden, da hierbei eine [Ressourcenklasse mit begrenzten Ressourcen](resource-classes-for-workload-management.md)verwendet wird. Konfigurieren Sie stattdessen [Workloadisolation](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-configure-workload-isolation-tsql) wie [in den Tutorials veranschaulicht](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/load-data-wideworldimportersdw#create-a-user-for-loading-data).
+Sie sollten keine große Abfragen ausführen, während Sie als Serveradministrator protokolliert werden, da hierbei eine [Ressourcenklasse mit begrenzten Ressourcen](resource-classes-for-workload-management.md)verwendet wird. Konfigurieren Sie stattdessen [Workloadisolation](./quickstart-configure-workload-isolation-tsql.md) wie [in den Tutorials veranschaulicht](./load-data-wideworldimportersdw.md#create-a-user-for-loading-data).
 
 Azure Synapse Analytics nutzt T-SQL als Abfragesprache. Führen Sie die folgenden Schritte aus, um ein Abfragefenster zu öffnen und einige T-SQL-Abfragen auszuführen:
 

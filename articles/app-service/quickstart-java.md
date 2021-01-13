@@ -11,12 +11,12 @@ ms.author: jafreebe
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
 zone_pivot_groups: app-service-platform-windows-linux
 adobe-target: true
-ms.openlocfilehash: b54df350e3f59720a92d7c1e74e28d9fcafddf94
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: 32d7dc913ae19353574e91837b4ea009d9f797c6
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97802472"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071781"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service"></a>Schnellstart: Erstellen einer Java-App in Azure App Service
 
@@ -212,13 +212,13 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.12.0:config
 
 Sie können bei Bedarf die Konfigurationen für App Service direkt in der Datei `pom.xml` ändern. Im Folgenden sind einige gängige Konfigurationen aufgeführt:
 
-Eigenschaft | Erforderlich | BESCHREIBUNG | Version
+Eigenschaft | Erforderlich | Beschreibung | Version
 ---|---|---|---
 `<schemaVersion>` | false | Gibt die Version des Konfigurationsschemas an. Folgende Werte werden unterstützt: `v1` und `v2`. | 1.5.2
 `<subscriptionId>` | false | Geben Sie die Abonnement-ID an. | 0.1.0+
 `<resourceGroup>` | true | Azure-Ressourcengruppe für Ihre Web-App. | 0.1.0+
 `<appName>` | true | Der Name Ihrer Web-App. | 0.1.0+
-`<region>` | true | Gibt die Region an, in der Ihre Web-App gehostet wird. Der Standardwert ist **westeurope**. Alle gültigen Regionen finden Sie im Abschnitt [Unterstützten Regionen](https://github.com/microsoft/azure-maven-plugins/blob/develop/azure-webapp-maven-plugin/README.md). | 0.1.0+
+`<region>` | true | Gibt die Region an, in der Ihre Web-App gehostet wird. Der Standardwert ist **westeurope**. Alle gültigen Regionen finden Sie im Abschnitt [Unterstützten Regionen](https://azure.microsoft.com/global-infrastructure/services/?products=app-service). | 0.1.0+
 `<pricingTier>` | false | Der Tarif für Ihre Web-App. Für Produktionsworkloads lautet der Standardwert **P1V2**, für Entwicklungs- und Testworkloads in Java ist der empfohlene Mindestwert hingegen **B2**. [Weitere Informationen](https://azure.microsoft.com/pricing/details/app-service/linux/)| 0.1.0+
 `<runtime>` | true | Details zur Konfiguration der Laufzeitumgebung finden Sie [hier](https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Web-App:-Configuration-Details). | 0.1.0+
 `<deployment>` | true | Details zur Konfiguration der Bereitstellung finden Sie [hier](https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Web-App:-Configuration-Details). | 0.1.0+

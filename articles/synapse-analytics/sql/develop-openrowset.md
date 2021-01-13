@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 97ee6c17d62a924686e3e4f4717d7bb7f4375988
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 7e7dce7ec4b8d4d55e734487595bb330e97ab18b
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96446672"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120443"
 ---
 # <a name="how-to-use-openrowset-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Verwenden von „OPENROWSET“ mit einem serverlosen SQL-Pool in Azure Synapse Analytics
 
@@ -171,7 +171,7 @@ WITH (
 )
 ```
 
-json_path: Der [JSON-Pfadausdruck](https://docs.microsoft.com/sql/relational-databases/json/json-path-expressions-sql-server?view=sql-server-ver15) zur Spalte oder geschachtelten Eigenschaft. Als [PATH-Modus](https://docs.microsoft.com/sql/relational-databases/json/json-path-expressions-sql-server?view=sql-server-ver15#PATHMODE) ist standardmäßig der Lax-Modus ausgewählt.
+json_path: Der [JSON-Pfadausdruck](/sql/relational-databases/json/json-path-expressions-sql-server?view=sql-server-ver15) zur Spalte oder geschachtelten Eigenschaft. Als [PATH-Modus](/sql/relational-databases/json/json-path-expressions-sql-server?view=sql-server-ver15#PATHMODE) ist standardmäßig der Lax-Modus ausgewählt.
 
 > [!NOTE]
 > Im Strict-Modus tritt bei der Abfrage ein Fehler auf, wenn der angegebene Pfad nicht vorhanden ist. Im Lax-Modus wird die Abfrage erfolgreich ausgeführt, und der JSON-Pfadausdruck wird zu NULL ausgewertet.
@@ -371,7 +371,7 @@ WITH (
 
 ### <a name="specify-columns-using-json-paths"></a>Angeben von Spalten mithilfe von JSON-Pfaden
 
-Im folgenden Beispiel wird gezeigt, wie Sie [JSON-Pfadausdrücke](https://docs.microsoft.com/sql/relational-databases/json/json-path-expressions-sql-server?view=sql-server-ver15) in der WITH-Klausel verwenden. Darüber hinaus wird der Unterschied zwischen den PATH-Modi „Strict“ und „Lax“ veranschaulicht: 
+Im folgenden Beispiel wird gezeigt, wie Sie [JSON-Pfadausdrücke](/sql/relational-databases/json/json-path-expressions-sql-server?view=sql-server-ver15) in der WITH-Klausel verwenden. Darüber hinaus wird der Unterschied zwischen den PATH-Modi „Strict“ und „Lax“ veranschaulicht: 
 
 ```sql
 SELECT 

@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 3213df378bc3b8403ebd11f899d722106de67a65
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 6735b3377650c900a7b7d18933180991a6a2c9fd
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97882023"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97930887"
 ---
 # <a name="azure-blob-storage-trigger-for-azure-functions"></a>Azure Blob Storage-Trigger für Azure Functions
 
@@ -347,7 +347,7 @@ Greifen Sie über `context.bindings.<NAME>` auf Blobdaten zu, wobei `<NAME>` mit
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Greifen Sie auf die Blobdaten über einen Parameter zu, der dem Namen entspricht, der durch den name-Parameter der Bindung in der Datei _function.json_ festgelegt ist.
+Greifen Sie auf die Blobdaten über einen Parameter zu, der mit dem Namen übereinstimmt, der durch den name-Parameter der Bindung in der Datei _function.json_ festgelegt ist.
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -463,7 +463,7 @@ Wenn bei allen fünf Versuchen Fehler auftreten, fügt Azure Functions der Stora
 
 Der Blobtrigger verwendet intern eine Warteschlange, sodass die maximal zulässige Anzahl gleichzeitiger Funktionsaufrufe durch die [Warteschlangenkonfiguration in „host.json“](functions-host-json.md#queues) gesteuert wird. Durch die Standardeinstellungen wird die Anzahl gleichzeitiger Aufrufe auf 24 beschränkt. Dieser Grenzwert gilt separat für jede Funktion, die einen Blobtrigger verwendet.
 
-[Der Verbrauchstarif](functions-scale.md#how-the-consumption-and-premium-plans-work) beschränkt den Arbeitsspeicher einer Funktions-App auf einer VM auf 1,5 GB. Der Arbeitsspeicher wird von jeder parallel ausgeführten Funktionsinstanz und durch die Functions-Runtime selbst verwendet. Wenn eine durch einen Blob ausgelöste Funktion das gesamte Blob in den Arbeitsspeicher lädt, entspricht der maximal von dieser Funktion verwendete Arbeitsspeicher nur für Blobs dem 24 * der maximalen Blobgröße. Beispiel: Eine Funktions-App, die drei Funktionen mit Blobtrigger umfasst und die Standardeinstellungen verwendet, weist pro VM eine maximale Nebenläufigkeit von 3 * 24 = 72 Funktionsaufrufen auf.
+[Der Verbrauchstarif](event-driven-scaling.md) beschränkt den Arbeitsspeicher einer Funktions-App auf einer VM auf 1,5 GB. Der Arbeitsspeicher wird von jeder parallel ausgeführten Funktionsinstanz und durch die Functions-Runtime selbst verwendet. Wenn eine durch einen Blob ausgelöste Funktion das gesamte Blob in den Arbeitsspeicher lädt, entspricht der maximal von dieser Funktion verwendete Arbeitsspeicher nur für Blobs dem 24 * der maximalen Blobgröße. Beispiel: Eine Funktions-App, die drei Funktionen mit Blobtrigger umfasst und die Standardeinstellungen verwendet, weist pro VM eine maximale Nebenläufigkeit von 3 * 24 = 72 Funktionsaufrufen auf.
 
 JavaScript- und Java-Funktionen laden das gesamte Blob in den Arbeitsspeicher, C#-Funktionen zeigen dieses Verhalten bei einer Bindung an `string` oder `Byte[]`.
 

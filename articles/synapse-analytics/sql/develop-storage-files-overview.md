@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/19/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 82a4ded3a64a8a8bbc62f99a8854eb6d2b5f0d0b
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: f398f80e4e283f971e0d947d0dda131e12fe88a7
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96446570"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120392"
 ---
 # <a name="access-external-storage-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Zugreifen auf externen Speicher mithilfe eines serverlosen SQL-Pools in Azure Synapse Analytics
 
@@ -116,7 +116,7 @@ CREATE EXTERNAL DATA SOURCE MyAzureInvoices
 
 Benutzer mit den Berechtigungen zum Lesen der Tabelle können auf externe Dateien über eine externe Tabelle (EXTERNAL TABLE) zugreifen, die basierend auf einer Gruppe von Azure Storage-Ordnern und -Dateien erstellt wurde.
 
-Benutzer, die über [Berechtigungen zum Erstellen einer externen Tabelle](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql?view=sql-server-ver15#permissions&preserve-view=true) verfügen (z. B. CREATE TABLE und ALTER ANY CREDENTIAL oder REFERENCES DATABASE SCOPED CREDENTIAL), können mit dem folgenden Skript basierend auf der Azure Storage-Datenquelle eine Tabelle erstellen:
+Benutzer, die über [Berechtigungen zum Erstellen einer externen Tabelle](/sql/t-sql/statements/create-external-table-transact-sql?preserve-view=true&view=sql-server-ver15#permissions) verfügen (z. B. CREATE TABLE und ALTER ANY CREDENTIAL oder REFERENCES DATABASE SCOPED CREDENTIAL), können mit dem folgenden Skript basierend auf der Azure Storage-Datenquelle eine Tabelle erstellen:
 
 ```sql
 CREATE EXTERNAL TABLE [dbo].[DimProductexternal]

@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: c2daef64b110e59da76d8342508c19c7f1b3cd08
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 02194bd6122cc97ac9dfd6887c6ae2161182c13a
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452786"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120426"
 ---
 # <a name="use-external-tables-with-synapse-sql"></a>Verwenden externer Tabellen mit Synapse SQL
 
@@ -31,7 +31,7 @@ In einem dedizierten SQL-Pool können Sie eine externe Tabelle für Folgendes ve
 
 In Verbindung mit der Anweisung [CREATE TABLE AS SELECT](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) werden in einer externen Tabelle ausgewählte Daten in eine Tabelle innerhalb des SQL-Pools importiert. Zusätzlich zur [COPY-Anweisung](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) sind externe Tabellen hilfreich beim Laden von Daten. 
 
-Ein Tutorial zum Laden finden Sie unter [Verwenden von PolyBase zum Laden von Daten aus Azure Blob Storage](../sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
+Ein Tutorial zum Laden finden Sie unter [Verwenden von PolyBase zum Laden von Daten aus Azure Blob Storage](../sql-data-warehouse/load-data-from-azure-blob-storage-using-copy.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json).
 
 ### <a name="serverless-sql-pool"></a>[Serverloser SQL-Pool](#tab/sql-on-demand)
 

@@ -10,12 +10,12 @@ ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2ff2d9708642c347a829de290d45849d8629807f
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: f0c762d0f12f11cb4eef23b55fccb5b7c2a274d3
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462350"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98118216"
 ---
 # <a name="connect-to-synapse-sql"></a>Herstellen einer Verbindung mit Synapse SQL
 Stellen Sie eine Verbindung mit der Synapse SQL-Funktion in Azure Synapse Analytics her.
@@ -51,7 +51,7 @@ So ermitteln Sie den vollqualifizierten Servernamen
 ![Vollständiger Servername: serverloser SQL-Pool](./media/connect-overview/server-connect-example-sqlod.png)
 
 ## <a name="supported-drivers-and-connection-strings"></a>Unterstützte Treiber und Verbindungszeichenfolgen
-Synapse SQL unterstützt [ADO.NET](https://msdn.microsoft.com/library/e80y5yhx(v=vs.110).aspx), [ODBC](https://msdn.microsoft.com/library/jj730314.aspx), [PHP](https://msdn.microsoft.com/library/cc296172.aspx?f=255&MSPPError=-2147217396) und [JDBC](https://msdn.microsoft.com/library/mt484311(v=sql.110).aspx). Um zur neuesten Version und Dokumentation zu gelangen, wählen Sie einen der genannten Treiber aus. Zur automatischen Erstellung der Verbindungszeichenfolge für den verwendeten Treiber wählen Sie im Azure-Portal die Option **Datenbank-Verbindungszeichenfolgen anzeigen** aus, wie im vorherigen Beispiel zu sehen. Im Anschluss finden Sie auch einige Beispielverbindungszeichenfolgen für die einzelnen Treiber.
+Synapse SQL unterstützt [ADO.NET](/dotnet/framework/data/adonet/), [ODBC](/sql/connect/odbc/windows/microsoft-odbc-driver-for-sql-server-on-windows), [PHP](/sql/connect/php/overview-of-the-php-sql-driver?f=255&MSPPError=-2147217396) und [JDBC](/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server). Um zur neuesten Version und Dokumentation zu gelangen, wählen Sie einen der genannten Treiber aus. Zur automatischen Erstellung der Verbindungszeichenfolge für den verwendeten Treiber wählen Sie im Azure-Portal die Option **Datenbank-Verbindungszeichenfolgen anzeigen** aus, wie im vorherigen Beispiel zu sehen. Im Anschluss finden Sie auch einige Beispielverbindungszeichenfolgen für die einzelnen Treiber.
 
 > [!NOTE]
 > Es empfiehlt sich, das Verbindungstimeout auf 300 Sekunden festzulegen, damit die Verbindung bei kurzen Ausfällen bestehen bleibt.

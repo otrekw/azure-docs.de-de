@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 580dfe779ff0f550524781076d3e27805ffd6689
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: ff7b07cb1a4f480907bb51e741a05deeaae8e66b
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96451655"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98116482"
 ---
 # <a name="connect-to-synapse-sql-with-azure-data-studio"></a>Herstellen einer Verbindung mit Synapse SQL über Azure Data Studio
 
@@ -95,4 +95,4 @@ Erkunden Sie weitere Möglichkeiten zum Herstellen einer Verbindung mit Synapse�
 - [Visual Studio](../sql-data-warehouse/sql-data-warehouse-query-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 - [sqlcmd](get-started-connect-sqlcmd.md)
 
-Besuchen Sie [Verwenden von Azure Data Studio zum Verbinden mit und Abfragen von Daten mithilfe eines dedizierten SQL-Pools in Azure Synapse Analytics](https://docs.microsoft.com/sql/azure-data-studio/quickstart-sql-dw), um weitere Informationen zu erhalten. 
+Besuchen Sie [Verwenden von Azure Data Studio zum Verbinden mit und Abfragen von Daten mithilfe eines dedizierten SQL-Pools in Azure Synapse Analytics](/sql/azure-data-studio/quickstart-sql-dw), um weitere Informationen zu erhalten.

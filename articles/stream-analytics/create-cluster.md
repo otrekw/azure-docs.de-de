@@ -3,17 +3,16 @@ title: Erstellen eines Schnellstarts für den Azure Stream Analytics-Cluster
 description: Hier erfahren Sie, wie Sie einen Azure Stream Analytics-Cluster erstellen.
 author: sidramadoss
 ms.author: sidram
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: overview
 ms.custom: mvc
 ms.date: 09/22/2020
-ms.openlocfilehash: a7be204c30d242be991fb9a57d239b69342ace97
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: eb36af5b3f1e142405b24ade16516d0268b4ab2f
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90944338"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98016557"
 ---
 # <a name="quickstart-create-a-dedicated-azure-stream-analytics-cluster-using-azure-portal"></a>Schnellstart: Erstellen eines dedizierten Azure Stream Analytics-Clusters mithilfe des Azure-Portals
 

@@ -10,12 +10,12 @@ ms.workload: identity
 ms.date: 12/09/2020
 ms.author: rolyon
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 7cf4020ad38224b25ea8bb7dc7f0fdea7dd6f3b1
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 5e4f3314ba580dddbd995855bc0f0512b7597107
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97034002"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98115729"
 ---
 # <a name="quickstart-check-access-for-a-user-to-azure-resources"></a>Schnellstart: Überprüfen des Zugriffs auf Azure-Ressourcen für einen Benutzer
 
@@ -37,7 +37,7 @@ Führen Sie die folgenden Schritte aus, um den Satz der Azure-Ressourcen zu öff
 
     Nachfolgend sehen Sie ein Beispiel für eine Ressourcengruppe.
 
-    ![Übersicht über Ressourcengruppen](./media/check-access/rg-overview.png)
+    ![Übersicht über Ressourcengruppen](./media/shared/rg-overview.png)
 
 ## <a name="step-2-check-access-for-a-user"></a>Schritt 2: Überprüfen des Zugriffs für einen Benutzer
 
@@ -47,7 +47,7 @@ Führen Sie die folgenden Schritte aus, um den Zugriff für einen einzelnen Benu
 
     Die folgende Abbildung zeigt ein Beispiel der Seite „Zugriffssteuerung (IAM)“ für eine Ressourcengruppe.
 
-    ![Ressourcengruppen-Zugriffssteuerung: Registerkarte „Zugriff überprüfen“](./media/check-access/rg-access-control.png)
+    ![Ressourcengruppen-Zugriffssteuerung: Registerkarte „Zugriff überprüfen“](./media/shared/rg-access-control.png)
 
 1. Wählen Sie auf der Registerkarte **Zugriff überprüfen** in der Liste **Suchen** Benutzer, Gruppen, Dienstprinzipale oder verwaltete Identitäten aus, für die Sie den Zugriff überprüfen möchten.
 

@@ -11,12 +11,12 @@ ms.date: 04/28/2020
 ms.author: anvang
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: b8a39220bda788cf6dac0be5151c2cdf5385e342
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 26a8a865a787a9c9b17031f94456272c93380704
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91570273"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98117043"
 ---
 # <a name="quickstart-scale-compute-for-synapse-sql-pool-with-the-azure-portal"></a>Schnellstart: Skalieren von Computeressourcen für den Synapse-SQL-Pool mit dem Azure-Portal
 
@@ -52,4 +52,4 @@ So ändern Sie Data Warehouse-Einheiten
     ![Schieberegler bewegen](./media/quickstart-scale-compute-portal/scale-dwu.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zum SQL-Pool finden Sie im Tutorial zum [Laden von Daten in den SQL-Pool](load-data-from-azure-blob-storage-using-polybase.md). 
+Weitere Informationen zum SQL-Pool finden Sie im Tutorial zum [Laden von Daten in den SQL-Pool](./load-data-from-azure-blob-storage-using-copy.md).

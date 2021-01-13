@@ -11,16 +11,16 @@ ms.date: 11/20/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 83b5804888379316b855c36f803f646cec102d9e
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 939a74a2bbedf6b00159f0c33a50eeb93595cda4
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024584"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98116074"
 ---
 # <a name="quickstart-bulk-load-data-using-the-copy-statement"></a>Schnellstart: Massenladen von Daten mit der COPY-Anweisung
 
-In dieser Schnellstartanleitung verwenden Sie das Massenladen von Daten in Ihren dedizierten SQL-Pool mithilfe der einfachen und flexiblen [COPY-Anweisung](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) für die Datenerfassung mit hohem Durchsatz. Die COPY-Anweisung ist das empfohlene Ladehilfsprogramm, da sie Ihnen mit folgender Funktionalität das nahtlose und flexible Laden von Daten ermöglicht:
+In dieser Schnellstartanleitung verwenden Sie das Massenladen von Daten in Ihren dedizierten SQL-Pool mithilfe der einfachen und flexiblen [COPY-Anweisung](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) für die Datenerfassung mit hohem Durchsatz. Die COPY-Anweisung ist das empfohlene Ladehilfsprogramm, da sie Ihnen mit folgender Funktionalität das nahtlose und flexible Laden von Daten ermöglicht:
 
 - Benutzer mit niedrigeren Berechtigungen können ohne strikte Berechtigungen zur STEUERUNG im Data Warehouse laden
 - Nutzen einer einzelnen T-SQL-Anweisung, ohne dass zusätzliche Datenbankobjekte erstellt werden müssen
@@ -138,5 +138,5 @@ GROUP BY r.[request_id]
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Bewährte Methoden zum Laden von Daten finden Sie unter [Bewährte Methoden für das Laden von Daten mit einem Synapse SQL-Pool](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/guidance-for-loading-data).
-- Informationen zum Verwalten der Ressourcen für Ihre Datenladevorgänge finden Sie unter [Schnellstart: Konfigurieren der Workloadisolation mithilfe von T-SQL](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-configure-workload-isolation-tsql). 
+- Bewährte Methoden zum Laden von Daten finden Sie unter [Bewährte Methoden für das Laden von Daten mit einem Synapse SQL-Pool](./guidance-for-loading-data.md).
+- Informationen zum Verwalten der Ressourcen für Ihre Datenladevorgänge finden Sie unter [Schnellstart: Konfigurieren der Workloadisolation mithilfe von T-SQL](./quickstart-configure-workload-isolation-tsql.md).

@@ -6,12 +6,12 @@ ms.author: nimag
 ms.date: 08/11/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: d35e51d097c2d5e0b66c23efa27ae70c065d547c
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: f3d6023ffd3043bc57727fc39f077dd0ce7eccb8
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96584579"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98024365"
 ---
 In diesem Schnellstart erfahren Sie, wie Sie einen Anruf mithilfe der Clientbibliothek für Telefonie von Azure Communication Services für JavaScript beginnen.
 
@@ -22,52 +22,10 @@ In diesem Schnellstart erfahren Sie, wie Sie einen Anruf mithilfe der Clientbibl
 - Eine aktive Communication Services-Ressource. [Erstellen Sie eine Communication Services-Ressource](../../create-communication-resource.md).
 - Ein Benutzerzugriffstoken, um den Anruf-Client zu instanziieren. Erfahren Sie mehr über das [Erstellen und Verwalten von Benutzerzugriffstoken](../../access-tokens.md).
 
-## <a name="setting-up"></a>Einrichten
 
-### <a name="create-a-new-nodejs-application"></a>Erstellen einer neuen Node.js-Anwendung
+[!INCLUDE [Calling with JavaScript](./get-started-javascript-setup.md)]
 
-Öffnen Sie Ihr Terminal- oder Befehlsfenster, erstellen Sie ein neues Verzeichnis für Ihre App, und navigieren Sie zu diesem Verzeichnis.
-
-```console
-mkdir calling-quickstart && cd calling-quickstart
-```
-
-Führen Sie `npm init -y` aus, um die Datei **package.json** mit den Standardeinstellungen zu erstellen.
-
-```console
-npm init -y
-```
-
-### <a name="install-the-package"></a>Installieren des Pakets
-
-Verwenden Sie den Befehl `npm install`, um die Clientbibliothek für Telefonie von Azure Communication Services für JavaScript zu installieren.
-
-```console
-npm install @azure/communication-common --save
-npm install @azure/communication-calling --save
-```
-
-Für diese Schnellstartanleitung werden die folgenden Webpack-Versionen empfohlen:
-
-```console
-"webpack": "^4.42.0",
-"webpack-cli": "^3.3.11",
-"webpack-dev-server": "^3.10.3"
-```
-
-Mit der Option `--save` wird die Bibliothek als Abhängigkeit in Ihrer Datei **package.json** aufgelistet.
-
-### <a name="set-up-the-app-framework"></a>Einrichten des App-Frameworks
-
-In dieser Schnellstartanleitung wird Webpack verwendet, um die Anwendungsressourcen zu bündeln. Führen Sie den folgenden Befehl aus, um die npm-Pakete „webpack“, „webpack-cli“ und „webpack-dev-server“ zu installieren und als Entwicklungsabhängigkeiten in Ihrer Datei **package.json** aufzulisten:
-
-```console
-npm install webpack@4.42.0 webpack-cli@3.3.11 webpack-dev-server@3.10.3 --save-dev
-```
-
-Erstellen Sie im Stammverzeichnis Ihres Projekts die Datei **index.html**. Diese Datei wird zum Konfigurieren eines grundlegenden Layouts verwendet, das es dem Benutzer ermöglicht, einen Azure Communications Bot aufzurufen.
-
-Hier folgt der Code:
+Der Code lautet wie folgt:
 
 ```html
 <!DOCTYPE html>
@@ -117,8 +75,8 @@ Die folgenden Klassen und Schnittstellen befassen sich mit einigen der wichtigst
 
 | Name                             | Beschreibung                                                                                                                                 |
 | ---------------------------------| ------------------------------------------------------------------------------------------------------------------------------------------- |
-| CallClient                       | „CallClient“ ist der Haupteinstiegspunkt der Clientbibliothek für Telefonie.                                                                       |
-| CallAgent                        | „CallAgent“ dient zum Starten und Verwalten von Anrufen.                                                                                            |
+| CallClient                       | CallClient ist der Haupteinstiegspunkt in die Clientbibliothek „Calling“.                                                                       |
+| CallAgent                        | CallAgent dient zum Starten und Verwalten von Anrufen.                                                                                            |
 | AzureCommunicationUserCredential | Die AzureCommunicationUserCredential-Klasse implementiert die CommunicationUserCredential-Schnittstelle, die zum Instanziieren von „CallAgent“ verwendet wird. |
 
 

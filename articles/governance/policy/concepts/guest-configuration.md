@@ -3,12 +3,12 @@ title: Informationen zum Überwachen der Inhalte virtueller Computer
 description: Hier erfahren Sie, wie Azure Policy mithilfe des Gastkonfigurationsclients Einstellungen in VMs überwacht.
 ms.date: 10/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 58fe1c630de4abfb2fe04ddedb45b360cfebd423
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: 5ec43516c60d2fe5d923a7b87cddbea0ad640453
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97862323"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071832"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Informationen zu Guest Configuration von Azure Policy
 
@@ -153,8 +153,6 @@ Die Guest Configuration-Erweiterung schreibt Protokolldateien an die folgenden S
 Windows: `C:\ProgramData\GuestConfig\gc_agent_logs\gc_agent.log`
 
 Linux: `/var/lib/GuestConfig/gc_agent_logs/gc_agent.log`
-
-Dabei bezieht sich `<version>` auf die aktuelle Versionsnummer.
 
 ### <a name="collecting-logs-remotely"></a>Remotesammeln von Protokollen
 

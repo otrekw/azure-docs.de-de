@@ -3,12 +3,12 @@ title: Referenz zu App-Einstellungen für Azure Functions
 description: Referenzdokumentation für die App-Einstellungen für Azure Functions oder Umgebungsvariablen.
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: 3d7292999fc4b53fed06822461857185127dc793
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: 72b42e392f350a8693ca8a052bdec1d5fd337234
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97898724"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937109"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Referenz zu App-Einstellungen für Azure Functions
 
@@ -46,7 +46,7 @@ Weitere Informationen finden Sie unter [Verbindungszeichenfolgen](../azure-monit
 
 Standardmäßig nutzen [Functions-Proxys](functions-proxies.md) eine Verknüpfung, um API-Aufrufe von Proxys direkt an Funktionen in der gleichen Functions-App zu senden. Die Verknüpfung wird anstelle einer neuen HTTP-Anforderung verwendet. Diese Einstellung ermöglicht das Deaktivieren dieses Verknüpfungsverhaltens.
 
-|Schlüssel|Wert|Beschreibung|
+|Schlüssel|Wert|BESCHREIBUNG|
 |-|-|-|
 |AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|true|Aufrufe mit einer Back-End-URL, die auf eine Funktion in der lokalen Funktions-App verweist, werden nicht direkt an die Funktion gesendet. Stattdessen werden die Anforderungen wieder an das HTTP-Front-End für die Funktions-App zurückgeleitet.|
 |AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|false|Aufrufe mit einer Back-End-URL, die auf eine Funktion in der lokalen Funktions-App verweist, werden direkt an die Funktion weitergeleitet. Dies ist der Standardwert. |
@@ -55,7 +55,7 @@ Standardmäßig nutzen [Functions-Proxys](functions-proxies.md) eine Verknüpfun
 
 Diese Einstellung steuert, ob die Zeichen `%2F` in Routenparametern als Schrägstrich decodiert werden, wenn sie in die Back-End-URL eingefügt werden. 
 
-|Schlüssel|Wert|Beschreibung|
+|Schlüssel|Wert|BESCHREIBUNG|
 |-|-|-|
 |AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|true|Routenparameter mit codierten Schrägstrichen werden decodiert. |
 |AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|false|Alle Routenparameter werden unverändert weitergegeben (Standardverhalten). |
@@ -256,7 +256,7 @@ Nur für Verbrauchs- und Premium-Tarife. Der Dateipfad zum Code der Funktionen-A
 Die maximale Anzahl der Instanzen, auf denen die Funktionen-App aufskaliert werden kann. Dieser Wert ist standardmäßig unbegrenzt.
 
 > [!IMPORTANT]
-> Diese Einstellung befindet sich in der Vorschauphase.  Eine [App-Eigenschaft für das maximale Aufskalieren einer Funktion](./functions-scale.md#limit-scale-out) wurde hinzugefügt und ist die empfohlene Methode zum Begrenzen des Aufskalierens.
+> Diese Einstellung befindet sich in der Vorschauphase.  Eine [App-Eigenschaft für das maximale Aufskalieren einer Funktion](./event-driven-scaling.md#limit-scale-out) wurde hinzugefügt und ist die empfohlene Methode zum Begrenzen des Aufskalierens.
 
 |Schlüssel|Beispielwert|
 |---|------------|

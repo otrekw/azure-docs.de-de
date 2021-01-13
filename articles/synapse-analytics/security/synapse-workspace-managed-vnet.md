@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: b605c2c9f3c7468d0fe1f2cccd8c3602c556714b
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 949b7e55569cc6fceacc37677ed06a28bb85d7c2
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96501072"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98116363"
 ---
 # <a name="azure-synapse-analytics-managed-virtual-network"></a>Azure Synapse Analytics: verwaltetes virtuelles Netzwerk
 
@@ -41,7 +41,7 @@ Dedizierter SQL-Pool und serverloser SQL-Pool sind mehrinstanzenfähig und befin
 
 ## <a name="create-an-azure-synapse-workspace-with-a-managed-workspace-virtual-network"></a>Erstellen eines Azure Synapse-Arbeitsbereichs mit einem verwalteten virtuellen Arbeitsbereichsnetzwerk
 
-Registrieren Sie den Netzwerkressourcenanbieter, falls dies noch nicht geschehen ist. Durch Registrieren eines Ressourcenanbieters wird Ihr Abonnement für die Verwendung mit dem Ressourcenanbieter konfiguriert. Wählen Sie in der Liste der Ressourcenanbieter *Microsoft.Network* aus, wenn Sie die [Registrierung durchführen](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types).
+Registrieren Sie den Netzwerkressourcenanbieter, falls dies noch nicht geschehen ist. Durch Registrieren eines Ressourcenanbieters wird Ihr Abonnement für die Verwendung mit dem Ressourcenanbieter konfiguriert. Wählen Sie in der Liste der Ressourcenanbieter *Microsoft.Network* aus, wenn Sie die [Registrierung durchführen](../../azure-resource-manager/management/resource-providers-and-types.md).
 
 Wenn Sie einen Azure Synapse-Arbeitsbereich mit einem verknüpften verwalteten virtuellen Arbeitsbereichsnetzwerk erstellen möchten, wählen Sie im Azure-Portal die Registerkarte **Netzwerk** aus, und aktivieren Sie das Kontrollkästchen **Verwaltetes VNET aktivieren**.
 

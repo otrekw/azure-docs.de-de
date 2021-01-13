@@ -7,18 +7,18 @@ ms.author: shhazam
 ms.date: 12/07/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 08afba8ade30775a49492f337bb5337320b9e282
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: b2f95ddb13896ed461a20f1948fef34569586d1f
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97836363"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97977070"
 ---
 # <a name="control-what-traffic-is-monitored"></a>Steuern, welcher Datenverkehr überwacht wird
 
 Sensoren führen automatisch eine umfassende Paketerkennung für IT- und OT-Datenverkehr durch und lösen Informationen über Netzwerkgeräte auf, wie etwa Geräteattribute und -verhalten. Es stehen verschiedene Tools zur Verfügung, um den Typ von Datenverkehr zu steuern, der von den einzelnen Sensoren erkannt wird.
 
-## <a name="learning-and-smart-it-learning-modes"></a>Lernmodi und Smart IT-Lernmodi
+## <a name="learning-and-smart-it-learning-modes"></a>Lernmodus und Smart IT-Lernmodus
 
 Der Lernmodus weist Ihren Sensor an, die übliche Aktivität Ihres Netzwerks zu erlernen. Beispiele hierfür sind Geräte, die in Ihrem Netzwerk ermittelt werden, im Netzwerk erkannte Protokolle, Dateiübertragungen zwischen bestimmten Geräten usw. Diese Aktivität wird zur Baseline Ihres Netzwerks.
 
@@ -64,7 +64,7 @@ In manchen Fällen, etwa in Umgebungen, die öffentliche Bereiche als interne Be
 
 So konfigurieren Sie Subnetze:
 
-1. Wählen Sie im Menü auf der Seite **System Settings** (Systemeinstellungen) aus.
+1. Wählen Sie im Menü an der Seite **System Settings** (Systemeinstellungen) aus.
 
 2. Wählen Sie im Fenster **System Setting** (Systemeinstellungen) **Subnets** (Subnetze) aus.
 
@@ -228,7 +228,7 @@ So definieren Sie DNS-Server:
 
 3. Geben Sie eine Adresse in **Lookup Address** (Lookup-Adresse) im Dialogfeld **DNS reverse lookup test for server** (Test des DNS-Reverse Lookups für Server) ein.
 
-    :::image type="content" source="media/how-to-enrich-asset-information/dns-reverse-looup-test-screen.png" alt-text="Screenshot des Lookupadressbereichs.":::
+    :::image type="content" source="media/how-to-enrich-asset-information/dns-reverse-lookup-test-screen.png" alt-text="Screenshot des Lookupadressbereichs.":::
 
 4. Klicken Sie auf **Test**.
 
@@ -253,7 +253,7 @@ Konfigurieren Sie eine Firewallregel, die ausgehenden Datenverkehr vom Sensor in
 
 So konfigurieren Sie eine automatische Überprüfung:
 
-1. Wählen Sie im Menü auf der Seite **System Settings** (Systemeinstellungen) aus.
+1. Wählen Sie im Menü an der Seite **System Settings** (Systemeinstellungen) aus.
 
 2. Wählen Sie **Windows Endpoint Monitoring** :::image type="icon" source="media/how-to-control-what-traffic-is-monitored/windows-endpoint-monitoring-icon-v2.png" border="false"::: (Windows-Endpunktüberwachung) aus.
 
@@ -281,7 +281,7 @@ So konfigurieren Sie eine automatische Überprüfung:
 
 So führen Sie eine manuelle Überprüfung aus:
 
-1. Wählen Sie im Menü auf der Seite **System Settings** (Systemeinstellungen) aus.
+1. Wählen Sie im Menü an der Seite **System Settings** (Systemeinstellungen) aus.
 
 2. Wählen Sie **Windows Endpoint Monitoring** :::image type="icon" source="media/how-to-control-what-traffic-is-monitored/windows-endpoint-monitoring-icon-v2.png" border="false"::: (Windows-Endpunktüberwachung) aus.
 
