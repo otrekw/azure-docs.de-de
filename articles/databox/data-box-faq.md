@@ -6,14 +6,14 @@ author: v-dalc
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 12/14/2020
+ms.date: 12/17/2020
 ms.author: alkohli
-ms.openlocfilehash: 18a1fc7f42884dcc194256e1f51ddecb62d2708c
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: 87ec1f03a1f2294a4423e26129644eafcf7c915c
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97516402"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97655474"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: Häufig gestellte Fragen
 
@@ -97,11 +97,11 @@ Diese Vorlaufzeiten sind *Schätzwerte*. Die Zeit für jede Phase der Auftragsve
 **Geschätzte Vorlaufzeiten für einen Data Box-Auftrag:**
 
 1. Bestellen einer Data Box: Einige Minuten, über das Portal
-2. Gerätezuordnung und -vorbereitung: 1 bis 2 Werktage
+2. Gerätezuordnung und -vorbereitung: 1 bis 2 Werktage, je nach Bestandsverfügbarkeit und ausstehender Erfüllung anderer Aufträge
 3. Versand: 2-3 Werktage
 4. Datenkopiervorgang am Kundenstandort: Abhängig von der Art der Daten, der Größe und der Anzahl der Dateien
 5. Rücksendung: 2-3 Werktage
-6. Verarbeitung des Geräts im Rechenzentrum: 1 bis 2 Werktage
+6. Verarbeitung des Geräts im Rechenzentrum: 1 bis 2 Werktage, je nach ausstehender Verarbeitung anderer Aufträge
 7. Hochladen von Daten in Azure: Beginnt, sobald die Verarbeitung beendet und das Gerät verbunden ist. Die Uploadzeit ist abhängig von der Art der Daten, der Größe und der Anzahl der Dateien.
 
 ### <a name="q-i-ordered-a-couple-of-data-box-devices-i-cant-create-any-additional-orders-why"></a>Q. Ich habe mehrere Data Box-Geräte bestellt. Weitere Bestellungen kann ich nicht erstellen. Warum?

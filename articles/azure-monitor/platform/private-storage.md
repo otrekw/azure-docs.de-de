@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: noakup
 ms.author: noakuper
 ms.date: 09/03/2020
-ms.openlocfilehash: f221237bee441ec78d726dabf476d1085a27071d
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 0a2439f0ed18cf93691a1d0389e049b1b7993d93
+ms.sourcegitcommit: a89a517622a3886b3a44ed42839d41a301c786e0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97095303"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97732058"
 ---
 # <a name="using-customer-managed-storage-accounts-in-azure-monitor-log-analytics"></a>Verwenden von kundenseitig verwalteten Speicherkonten in Azure Monitor Log Analytics
 
@@ -32,11 +32,11 @@ Unterstützte Datentypen:
 * IIS-Protokolle
 
 ## <a name="using-private-links"></a>Verwenden von privaten Verbindungen
-Kundenseitig verwaltete Speicherkonten sind bei einigen Anwendungsfällen erforderlich, wenn private Verbindungen verwendet werden, um eine Verbindung mit Azure Monitor-Ressourcen herzustellen. Ein solcher Fall ist die Erfassung von benutzerdefinierten Protokollen oder IIS-Protokollen. Diese Datentypen werden zunächst als Blobs in ein zwischengeschaltetes Azure Storage-Konto hochgeladen und dann erst in einen Arbeitsbereich importiert. Einige Azure Monitor-Lösungen verwenden möglicherweise ebenfalls Speicherkonten, um große Dateien (z. B. Watson-Speicherabbilddateien) zu speichern, die von der Azure Security Center-Lösung verwendet werden. 
+Kundenseitig verwaltete Speicherkonten sind bei einigen Anwendungsfällen erforderlich, wenn private Verbindungen verwendet werden, um eine Verbindung mit Azure Monitor-Ressourcen herzustellen. Ein solcher Fall ist die Erfassung von benutzerdefinierten Protokollen oder IIS-Protokollen. Diese Datentypen werden zunächst als Blobs in ein zwischengeschaltetes Azure Storage-Konto hochgeladen und dann erst in einen Arbeitsbereich importiert. Einige Azure Monitor-Lösungen verwenden möglicherweise ebenfalls Speicherkonten, um große Dateien zu speichern, z. B. Azure Security Center (ASC), das möglicherweise Dateien hochladen muss. 
 
 ##### <a name="private-link-scenarios-that-require-a-customer-managed-storage"></a>Private Link-Szenarios, die einen kundenseitig verwalteten Speicher erfordern
 * Erfassung von benutzerdefinierten Protokollen und IIS-Protokollen
-* Zulassen des Sammelns von Watson-Speicherabbilddateien durch die ASC-Lösung
+* Zulassen des Hochladens von Dateien durch die ASC-Lösung
 
 ### <a name="how-to-use-a-customer-managed-storage-account-over-a-private-link"></a>Verwenden eines kundenseitig verwalteten Speicherkontos über eine Private Link-Instanz
 ##### <a name="workspace-requirements"></a>Arbeitsbereichsanforderungen
@@ -45,13 +45,14 @@ Beim Herstellen einer Verbindung mit Azure Monitor über eine private Verbindung
 Damit das Speicherkonto erfolgreich eine Verbindung mit Ihrer Private Link-Instanz herstellen kann, muss Folgendes der Fall sein:
 * Das Speicherkonto muss sich in Ihrem VNet oder einem über Peering damit verbundenen Netzwerk befinden und über eine private Verbindung mit Ihrem VNet verbunden sein. Dies ermöglicht es Agents in Ihrem VNet, Protokolle an das Speicherkonto senden.
 * Es muss sich in derselben Region befinden wie der Arbeitsbereich, mit dem es verknüpft ist.
-* Es muss den Zugriff auf das Speicherkonto durch Azure Monitor zulassen. Wenn Sie nur ausgewählte Netzwerke auf Ihr Speicherkonto zugreifen lassen, sollten Sie außerdem die folgende Ausnahme aktivieren: „Vertrauenswürdigen Microsoft-Diensten den Zugriff auf dieses Speicherkonto erlauben“. Dadurch kann Log Analytics die in diesem Speicherkonto erfassten Protokolle lesen.
+* Es muss den Zugriff auf das Speicherkonto durch Azure Monitor zulassen. Wenn Sie nur ausgewählten Netzwerken den Zugriff auf Ihr Speicherkonto gestatten möchten, sollten Sie die folgende Ausnahme auswählen: „Vertrauenswürdigen Microsoft-Diensten den Zugriff auf dieses Speicherkonto erlauben“.
+![Abbildung zu vertrauenswürdigen Microsoft-Diensten für ein Speicherkonto](./media/private-storage/storage-trust.png)
 * Wenn Ihr Arbeitsbereich auch Datenverkehr aus anderen Netzwerken verarbeitet, sollten Sie das Speicherkonto so konfigurieren, dass eingehender Datenverkehr aus diesen Netzwerken/dem Internet zugelassen wird.
 
 ##### <a name="link-your-storage-account-to-a-log-analytics-workspace"></a>Verknüpfen des Speicherkontos mit einem Log Analytics-Arbeitsbereich
 Sie können Ihr Speicherkonto über die [Azure CLI](/cli/azure/monitor/log-analytics/workspace/linked-storage) oder die [REST-API](/rest/api/loganalytics/linkedstorageaccounts) mit dem Arbeitsbereich verknüpfen. Verwendbare Werte für dataSourceType:
 * „CustomLogs“, um den Speicher für die Erfassung von benutzerdefinierten Protokollen und IIS-Protokollen zu verwenden
-* „AzureWatson“, um den Speicher für Watson-Speicherabbilddateien zu verwenden, die von der ASC-Lösung (Azure Security Center) hochgeladen wurden Weitere Informationen zum Verwalten der Datenaufbewahrung, zum Ersetzen eines verknüpften Speicherkontos und zum Überwachen der Speicherkontoaktivität finden Sie unter [Verwalten von verknüpften Speicherkonten](#managing-linked-storage-accounts). 
+* „AzureWatson“, um den Speicher für Dateien zu verwenden, die von der ASC-Lösung (Azure Security Center) hochgeladen wurden Weitere Informationen zum Verwalten der Datenaufbewahrung, zum Ersetzen eines verknüpften Speicherkontos und zum Überwachen der Speicherkontoaktivität finden Sie unter [Verwalten von verknüpften Speicherkonten](#managing-linked-storage-accounts). 
 
 ## <a name="encrypting-data-with-cmk"></a>Verschlüsseln von Daten mit kundenseitig verwalteten Schlüsseln
 Azure Storage verschlüsselt alle ruhenden Daten in einem Speicherkonto. Standardmäßig verschlüsselt der Dienst Daten mit von Microsoft verwalteten Schlüsseln (Microsoft-Managed Key, MMK). Azure Storage lässt Sie jedoch alternativ kundenseitig verwaltete Schlüssel (CMKs) aus Azure Key Vault für das Verschlüsseln Ihrer Speicherdaten verwenden. Sie können entweder Ihre eigenen Schlüssel in Azure Key Vault importieren oder Schlüssel über die Azure Key Vault-APIs generieren.

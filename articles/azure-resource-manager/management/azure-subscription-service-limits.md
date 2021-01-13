@@ -3,12 +3,12 @@ title: Grenzwerte und Kontingente von Azure-Abonnements
 description: Stellt eine Liste allgemeiner Azure-Abonnements und Diensteinschränkungen, Kontingenten und Einschränkungen bereit. Dieser Artikel enthält Informationen zum Erhöhen von Grenzwerten und Höchstwerten.
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 4d56c5c3fd33d1cda05e23d5bc53e7540428671b
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 20de08ee30deae74954f2857b4de756b8cf46f08
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96547847"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97964189"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen
 
@@ -132,7 +132,7 @@ Informationen zu Grenzwerten für Azure Database for PostgreSQL finden Sie unter
 
 [!INCLUDE [functions-limits](../../../includes/functions-limits.md)]
 
-Weitere Informationen finden Sie unter [Vergleich von Hostingplänen für Functions](../../azure-functions/functions-scale.md#hosting-plans-comparison).
+Weitere Informationen finden Sie unter [Vergleich von Hostingplänen für Functions](../../azure-functions/functions-scale.md).
 
 ## <a name="azure-kubernetes-service-limits"></a>Grenzwerte für Azure Kubernetes Service
 
@@ -175,6 +175,10 @@ Die aktuellen Werte für Azure Machine Learning Compute-Kontingente finden Sie a
 ## <a name="azure-policy-limits"></a>Azure Policy-Grenzwerte
 
 [!INCLUDE [policy-limits](../../../includes/azure-policy-limits.md)]
+
+## <a name="azure-role-based-access-control-limits"></a>Grenzwerte für rollenbasierte Zugriffssteuerung von Azure (RBAC)
+
+[!INCLUDE [role-based-access-control-limits](../../../includes/role-based-access-control/limits.md)]
 
 ## <a name="azure-signalr-service-limits"></a>Grenzwerte für Azure SignalR Service
 
@@ -339,10 +343,6 @@ Die aktuellen Werte für Azure Purview-Kontingente finden Sie auf der [Seite „
 ## <a name="notification-hubs-limits"></a>Grenzwerte für Notification Hubs
 
 [!INCLUDE [notification-hub-limits](../../../includes/notification-hub-limits.md)]
-
-## <a name="azure-role-based-access-control-limits"></a>Grenzwerte für rollenbasierte Zugriffssteuerung von Azure (RBAC)
-
-[!INCLUDE [role-based-access-control-limits](../../../includes/role-based-access-control-limits.md)]
 
 ## <a name="service-bus-limits"></a>Service Bus-Grenzwerte
 

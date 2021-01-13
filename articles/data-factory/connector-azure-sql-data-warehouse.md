@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/12/2020
-ms.openlocfilehash: 7f92b4327b53b38cc83493c65ad573523546ee58
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.date: 12/18/2020
+ms.openlocfilehash: 68f536e06ec5a40083d96745f5b72e511e423f64
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97095116"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97695179"
 ---
 # <a name="copy-and-transform-data-in-azure-synapse-analytics-by-using-azure-data-factory"></a>Kopieren und Transformieren von Daten in Azure Synapse Analytics mithilfe von Azure Data Factory
 
@@ -275,6 +275,10 @@ Legen Sie zum Kopieren von Daten aus Azure Synapse Analytics die Eigenschaft **t
 | partitionUpperBound | Der maximale Wert der Partitionsspalte für das Teilen des Partitionsbereichs. Dieser Wert wird zur Entscheidung über den Partitionssprung verwendet, nicht zum Filtern der Zeilen in der Tabelle. Alle Zeilen in der Tabelle oder im Abfrageergebnis werden partitioniert und kopiert. Wenn nicht angegeben, wird der Wert für die Kopieraktivität automatisch erkannt.  <br>Verwenden Sie diese Option, wenn die Partitionsoption `DynamicRange` lautet. Ein Beispiel finden Sie im Abschnitt [Paralleles Kopieren aus SQL-Datenbank](#parallel-copy-from-azure-synapse-analytics). | Nein |
 | partitionLowerBound | Der minimale Wert der Partitionsspalte für das Teilen des Partitionsbereichs. Dieser Wert wird zur Entscheidung über den Partitionssprung verwendet, nicht zum Filtern der Zeilen in der Tabelle. Alle Zeilen in der Tabelle oder im Abfrageergebnis werden partitioniert und kopiert. Wenn nicht angegeben, wird der Wert für die Kopieraktivität automatisch erkannt.<br>Verwenden Sie diese Option, wenn die Partitionsoption `DynamicRange` lautet. Ein Beispiel finden Sie im Abschnitt [Paralleles Kopieren aus SQL-Datenbank](#parallel-copy-from-azure-synapse-analytics). | Nein |
 
+**Beachten Sie Folgendes:**
+
+- Wenn Sie eine gespeicherte Prozedur in der Quelle zum Abrufen von Daten verwenden und die gespeicherte Prozedur so konzipiert ist, dass beim Übergeben eines anderen Parameterwerts ein anderes Schema zurückgegeben wird, tritt möglicherweise ein Fehler oder ein unerwartetes Ergebnis auf, wenn Sie ein Schema von der Benutzeroberfläche importieren oder Daten in SQL-Datenbank mit automatischer Tabellenerstellung kopieren.
+
 **Beispiel: Verwenden von SQL-Abfragen**
 
 ```json
@@ -482,7 +486,7 @@ Mit [PolyBase](/sql/relational-databases/polybase/polybase-guide) lassen sich gr
 
 Die folgenden PolyBase-Eigenschaften werden unter `polyBaseSettings` in der Kopieraktivität unterstützt:
 
-| Eigenschaft          | Beschreibung                                                  | Erforderlich                                      |
+| Eigenschaft          | BESCHREIBUNG                                                  | Erforderlich                                      |
 | :---------------- | :----------------------------------------------------------- | :-------------------------------------------- |
 | rejectValue       | Gibt die Anzahl oder den Prozentsatz von Zeilen an, die abgelehnt werden können, bevor für die Abfrage ein Fehler auftritt.<br/><br/>Weitere Informationen zu den PolyBase-Ablehnungsoptionen finden Sie im Abschnitt „Argumente“ in [CREATE EXTERNAL TABLE (Transact-SQL)](/sql/t-sql/statements/create-external-table-transact-sql). <br/><br/>Zulässige Werte sind „0“ (Standard), „1“, „2“ usw. | Nein                                            |
 | rejectType        | Gibt an, ob die **rejectValue**-Option als Literalwert oder Prozentsatz angegeben ist.<br/><br/>Zulässige Werte sind **Value** (Standard) und **Percentage**. | Nein                                            |
@@ -710,7 +714,7 @@ Das Verwenden der COPY-Anweisung unterstützt die folgende Konfiguration:
 
 Die folgenden Einstellungen der COPY-Anweisung werden unter `allowCopyCommand` in der Kopieraktivität unterstützt:
 
-| Eigenschaft          | Beschreibung                                                  | Erforderlich                                      |
+| Eigenschaft          | BESCHREIBUNG                                                  | Erforderlich                                      |
 | :---------------- | :----------------------------------------------------------- | :-------------------------------------------- |
 | defaultValues | Gibt die Standardwerte für die einzelnen Zielspalten in Azure Synapse Analytics an.  Die Standardwerte in der Eigenschaft überschreiben die in Data Warehouse festgelegte DEFAULT-Einschränkung, und die Identitätsspalte darf keinen Standardwert haben. | Nein |
 | additionalOptions | Zusätzliche Optionen, die direkt in der WITH-Klausel in der [COPY-Anweisung](/sql/t-sql/statements/copy-into-transact-sql) an eine COPY-Anweisung in Azure Synapse Analytics übergeben werden. Geben Sie den Wert so an, wie er gemäß den Anforderungen der COPY-Anweisung erforderlich ist. | Nein |

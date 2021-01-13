@@ -1,17 +1,17 @@
 ---
 title: Zugreifen auf Azure SQL-Datenbank oder Azure Synapse Analytics mit verwalteten Identitäten – Azure Stream Analytics
 description: In diesem Artikel wird die Verwendung von verwalteten Identitäten zum Authentifizieren von Azure Stream Analytics-Aufträgen für die Azure SQL-Datenbank- oder Azure Synapse Analytics-Ausgabe beschrieben.
-author: mamccrea
-ms.author: mamccrea
+author: enkrumah
+ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 11/30/2020
-ms.openlocfilehash: ee617b50d85f611e130ec5533239c8924efecc6b
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 244f8a446e33102e018881b3ec8f32ba9d8cbcc6
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96352183"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98014144"
 ---
 # <a name="use-managed-identities-to-access-azure-sql-database-or-azure-synapse-analytics-from-an-azure-stream-analytics-job-preview"></a>Zugreifen auf Azure SQL-Datenbank oder Azure Synapse Analytics mit verwalteten Identitäten aus einem Azure Stream Analytics-Auftrag (Vorschau)
 

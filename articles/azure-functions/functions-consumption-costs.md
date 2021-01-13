@@ -3,12 +3,12 @@ title: Abschätzen der Kosten des Verbrauchstarifs in Azure Functions
 description: Erfahren Sie, wie Sie die Kosten besser abschätzen, die Sie eventuell verursachen, wenn Sie Ihre Funkions-App in einem Verbrauchstarif in Azure ausführen.
 ms.date: 9/20/2019
 ms.topic: conceptual
-ms.openlocfilehash: 58082e03c1416848e9aa1e97308bed1ceaa67295
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 430804d478df718f51ae1da9adb6693f597157a9
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168109"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934882"
 ---
 # <a name="estimating-consumption-plan-costs"></a>Abschätzen der Kosten des Verbrauchstarifs
 
@@ -16,9 +16,9 @@ Zurzeit gibt es drei Typen von Hostingtarifen für eine App, die in Azure Functi
 
 | Planen | BESCHREIBUNG |
 | ---- | ----------- |
-| [**Verbrauch**](functions-scale.md#consumption-plan) | Ihnen wird nur die Zeit in Rechnung gestellt, die Ihre Funktions-App auch ausgeführt wird. Dieser Tarif umfasst pro Abonnement eine [free grant][seite mit der preisübersicht] (kostenlose Zuweisung).|
-| [**Premium**](functions-scale.md#premium-plan) | Bietet Ihnen dieselben Features und Skalierungsverfahren wie der Verbrauchstarif, aber mit mehr Leistung und VNET-Zugriff. Die Kosten basieren auf dem von Ihnen gewählten Tarif. Weitere Informationen finden Sie unter [Premium-Plan (Premium-Tarif) für Azure Functions](functions-premium-plan.md). |
-| [**Dediziert (App Service)**](functions-scale.md#app-service-plan) <br/>(Tarif „Basic“ oder höher) | Wenn Sie in dedizierten VMs oder in Isolierung ausführen müssen, benutzerdefinierte Images verwenden oder die Überkapazität Ihres App Service-Plans nutzen möchten. Verwendet [normale App Service-Planabrechnung](https://azure.microsoft.com/pricing/details/app-service/). Die Kosten basieren auf dem von Ihnen gewählten Tarif.|
+| [**Verbrauch**](consumption-plan.md) | Ihnen wird nur die Zeit in Rechnung gestellt, die Ihre Funktions-App auch ausgeführt wird. Dieser Tarif umfasst pro Abonnement eine [free grant][seite mit der preisübersicht] (kostenlose Zuweisung).|
+| [**Premium**](functions-premium-plan.md) | Bietet Ihnen dieselben Features und Skalierungsverfahren wie der Verbrauchstarif, aber mit mehr Leistung und VNET-Zugriff. Die Kosten basieren auf dem von Ihnen gewählten Tarif. Weitere Informationen finden Sie unter [Premium-Plan (Premium-Tarif) für Azure Functions](functions-premium-plan.md). |
+| [**Dediziert (App Service)**](dedicated-plan.md) <br/>(Tarif „Basic“ oder höher) | Wenn Sie in dedizierten VMs oder in Isolierung ausführen müssen, benutzerdefinierte Images verwenden oder die Überkapazität Ihres App Service-Plans nutzen möchten. Verwendet [normale App Service-Planabrechnung](https://azure.microsoft.com/pricing/details/app-service/). Die Kosten basieren auf dem von Ihnen gewählten Tarif.|
 
 Sie haben den Plan ausgewählt, der die Leistung Ihrer Funktion sowie Ihre Kostenanforderungen am besten unterstützt. Weitere Informationen finden Sie unter [Skalierung und Hosting von Azure Functions](functions-scale.md).
 

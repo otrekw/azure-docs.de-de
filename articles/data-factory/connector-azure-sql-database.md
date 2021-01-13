@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/12/2020
-ms.openlocfilehash: 2e5c04087a9874a01498c70eb3834606069cef13
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.date: 12/18/2020
+ms.openlocfilehash: 9b0445a9ca92f05a11f5a97895039a55f9d64d71
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96021893"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97693910"
 ---
 # <a name="copy-and-transform-data-in-azure-sql-database-by-using-azure-data-factory"></a>Kopieren und Transformieren von Daten in Azure SQL-Datenbank mithilfe von Azure Data Factory
 
@@ -63,7 +63,7 @@ Die folgenden Abschnitte enthalten Details zu Eigenschaften, die zum Definieren 
 
 Diese Eigenschaften werden für den mit Azure SQL-Datenbank verknüpften Dienst unterstützt:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die **type**-Eigenschaft muss auf **AzureSqlDatabase** festgelegt sein. | Ja |
 | connectionString | Geben Sie Informationen, die zur Verbindung mit der Azure SQL-Datenbank-Instanz erforderlich sind, für die **connectionString**-Eigenschaft ein. <br/>Sie können auch ein Kennwort oder einen Dienstprinzipalschlüssel in Azure Key Vault eingeben. Bei Verwendung der SQL-Authentifizierung pullen Sie die `password`-Konfiguration aus der Verbindungszeichenfolge. Weitere Informationen finden Sie im JSON-Beispiel unter der Tabelle sowie unter [Speichern von Anmeldeinformationen in Azure Key Vault](store-credentials-in-key-vault.md). | Ja |
@@ -224,7 +224,7 @@ Eine vollständige Liste mit den verfügbaren Abschnitten und Eigenschaften zum 
 
 Die folgenden Eigenschaften werden beim Azure SQL-Datenbank-Dataset unterstützt:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die **type**-Eigenschaft des Datasets muss auf **AzureSqlTable** festgelegt sein. | Ja |
 | schema | Name des Schemas. |Quelle: Nein, Senke: Ja  |
@@ -263,7 +263,7 @@ Eine vollständige Liste der verfügbaren Abschnitte und Eigenschaften zum Defin
 
 Zum Kopieren von Daten aus Azure SQL-Datenbank werden die folgenden Eigenschaften im Abschnitt **source** der Kopieraktivität unterstützt:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die **type**-Eigenschaft der Quelle der Kopieraktivität muss auf **AzureSqlSource** festgelegt werden. Der Typ „SqlSource“ wird aus Gründen der Abwärtskompatibilität weiterhin unterstützt. | Ja |
 | sqlReaderQuery | Diese Eigenschaft verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. z. B. `select * from MyTable`. | Nein |
@@ -273,14 +273,14 @@ Zum Kopieren von Daten aus Azure SQL-Datenbank werden die folgenden Eigenschafte
 | partitionOptions | Hiermit werden die Datenpartitionierungsoptionen angegeben, mit denen Daten aus Azure SQL-Datenbank geladen werden. <br>Zulässige Werte sind: **None** (Standardwert), **PhysicalPartitionsOfTable** und **DynamicRange**.<br>Wenn eine Partitionierungsoption aktiviert ist (d.h. nicht `None`), wird der Parallelitätsgrad für das gleichzeitige Laden von Daten aus einer Oracle-Datenbank durch die Einstellung [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) der Kopieraktivität gesteuert. | Nein |
 | partitionSettings | Geben Sie die Gruppe der Einstellungen für die Datenpartitionierung an. <br>Verwenden Sie diese Option, wenn die Partitionsoption nicht `None` lautet. | Nein |
 | **_Unter `partitionSettings`:_* _ | | |
-| partitionColumnName | Geben Sie den Namen der Quellspalte als _ *„integer“ oder „date/datetime“* * (`int`, `smallint`, `bigint`, `date`, `smalldatetime`, `datetime`, `datetime2` oder `datetimeoffset`) an, der von der Bereichspartitionierung für das parallele Kopieren verwendet wird. Ohne Angabe wird der Index oder der Primärschlüssel der Tabelle automatisch erkannt und als Partitionsspalte verwendet.<br>Verwenden Sie diese Option, wenn die Partitionsoption `DynamicRange` lautet. Wenn Sie die Quelldaten mithilfe einer Abfrage abrufen, integrieren Sie `?AdfDynamicRangePartitionCondition ` in die WHERE-Klausel. Ein Beispiel finden Sie im Abschnitt [Paralleles Kopieren aus SQL-Datenbank](#parallel-copy-from-sql-database). | Nein |
+| partitionColumnName | Geben Sie den Namen der Quellspalte als *„integer“ oder „date/datetime“* (`int`, `smallint`, `bigint`, `date`, `smalldatetime`, `datetime`, `datetime2` oder `datetimeoffset`) an, der von der Bereichspartitionierung für das parallele Kopieren verwendet wird. Ohne Angabe wird der Index oder der Primärschlüssel der Tabelle automatisch erkannt und als Partitionsspalte verwendet.<br>Verwenden Sie diese Option, wenn die Partitionsoption `DynamicRange` lautet. Wenn Sie die Quelldaten mithilfe einer Abfrage abrufen, integrieren Sie `?AdfDynamicRangePartitionCondition ` in die WHERE-Klausel. Ein Beispiel finden Sie im Abschnitt [Paralleles Kopieren aus SQL-Datenbank](#parallel-copy-from-sql-database). | Nein |
 | partitionUpperBound | Der maximale Wert der Partitionsspalte für das Teilen des Partitionsbereichs. Dieser Wert wird zur Entscheidung über den Partitionssprung verwendet, nicht zum Filtern der Zeilen in der Tabelle. Alle Zeilen in der Tabelle oder im Abfrageergebnis werden partitioniert und kopiert. Wenn nicht angegeben, wird der Wert für die Kopieraktivität automatisch erkannt.  <br>Verwenden Sie diese Option, wenn die Partitionsoption `DynamicRange` lautet. Ein Beispiel finden Sie im Abschnitt [Paralleles Kopieren aus SQL-Datenbank](#parallel-copy-from-sql-database). | Nein |
 | partitionLowerBound | Der minimale Wert der Partitionsspalte für das Teilen des Partitionsbereichs. Dieser Wert wird zur Entscheidung über den Partitionssprung verwendet, nicht zum Filtern der Zeilen in der Tabelle. Alle Zeilen in der Tabelle oder im Abfrageergebnis werden partitioniert und kopiert. Wenn nicht angegeben, wird der Wert für die Kopieraktivität automatisch erkannt.<br>Verwenden Sie diese Option, wenn die Partitionsoption `DynamicRange` lautet. Ein Beispiel finden Sie im Abschnitt [Paralleles Kopieren aus SQL-Datenbank](#parallel-copy-from-sql-database). | Nein |
 
-**Beachten Sie Folgendes:**
+**Beachten Sie folgende Punkte:**
 
 - Wenn **sqlReaderQuery** für **AzureSqlSource** angegeben ist, führt die Kopieraktivität diese Abfrage für die Azure SQL-Datenbankquelle aus, um die Daten abzurufen. Sie können auch eine gespeicherte Prozedur angeben, indem Sie **sqlReaderStoredProcedureName** und **storedProcedureParameters** angeben, sofern die gespeicherten Prozeduren Parameter verwenden.
-- Ohne Angabe von **sqlReaderQuery** oder **sqlReaderStoredProcedureName** werden die im Abschnitt „structure“ des JSON-Codes des Datasets definierten Spalten zum Erstellen einer Abfrage verwendet. Die Abfrage `select column1, column2 from mytable` wird für Azure SQL-Datenbank ausgeführt. Falls die Datasetdefinition keinen Abschnitt „structure“ enthält, werden alle Spalten der Tabelle ausgewählt.
+- Wenn Sie eine gespeicherte Prozedur in der Quelle zum Abrufen von Daten verwenden und die gespeicherte Prozedur so konzipiert ist, dass beim Übergeben eines anderen Parameterwerts ein anderes Schema zurückgegeben wird, tritt möglicherweise ein Fehler oder ein unerwartetes Ergebnis auf, wenn Sie ein Schema von der Benutzeroberfläche importieren oder Daten in SQL-Datenbank mit automatischer Tabellenerstellung kopieren.
 
 #### <a name="sql-query-example"></a>Beispiel für eine SQL-Abfrage
 
@@ -376,7 +376,7 @@ GO
 
 Zum Kopieren von Daten in Azure SQL-Datenbank werden die folgenden Eigenschaften im Abschnitt **sink** der Kopieraktivität unterstützt:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die **type**-Eigenschaft der Senke der Kopieraktivität muss auf **AzureSqlSink** festgelegt werden. Der Typ „SqlSink“ wird aus Gründen der Abwärtskompatibilität weiterhin unterstützt. | Ja |
 | preCopyScript | Geben Sie eine auszuführende SQL-Abfrage für die Kopieraktivität an, ehe Sie Daten in Azure SQL-Datenbank schreiben. Sie wird pro Ausführung der Kopieraktivität nur einmal aufgerufen. Sie können diese Eigenschaft nutzen, um vorab geladene Daten zu bereinigen. | Nein |

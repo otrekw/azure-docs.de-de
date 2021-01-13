@@ -6,12 +6,12 @@ ms.author: rahugup
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 06/14/2020
-ms.openlocfilehash: c549cae0b7bdc5e237ec3cf704a1ead53db91449
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: a1203133d8749b43a92d89e7251539a1e002bfd8
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96754027"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97968567"
 ---
 # <a name="support-matrix-for-physical-server-migration"></a>Unterstützungsmatrix für die Migration physischer Server
 
@@ -48,7 +48,7 @@ Die Tabelle enthält eine Übersicht über die Unterstützung für physische Ser
 **UEFI-Start** | Unterstützt. UEFI-basierte Computer werden zu virtuellen Azure-Computern der 2. Generation migriert.  <br/><br/> Der Betriebssystemdatenträger sollte bis zu vier Partitionen aufweisen, und Volumes sollten mit NTFS formatiert sein.
 **UEFI: Sicherer Start**         | Nicht unterstützt für die Migration.
 **Zieldatenträger** | Computer können nur zu verwalteten Datenträgern (HDD Standard, SSD Standard, SSD Premium) in Azure migriert werden.
-**Datenträgergröße** | 2 TB für den Betriebssystemdatenträger (BIOS-Start); 4 TB für den Betriebssystemdatenträger (UEFI-Start); 8 TB für Datenträger
+**Datenträgergröße** | 2 TB für den Betriebssystemdatenträger, 32 TB für Datenträger
 **Einschränkungen für Datenträger** |  Bis zu 63 Datenträger pro Computer
 **Verschlüsselte Datenträger/Volumes** |  Die Migration von Computern mit verschlüsselten Datenträgern/Volumes wird nicht unterstützt.
 **Freigegebener Datenträgercluster** | Wird nicht unterstützt.

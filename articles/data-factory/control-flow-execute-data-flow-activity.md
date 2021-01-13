@@ -8,13 +8,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.author: makromer
-ms.date: 11/24/2020
-ms.openlocfilehash: 1c0ed7cf38cc01623169216ec45e88d198ede3d2
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.date: 01/03/2021
+ms.openlocfilehash: 3eff23a42a6ac5f5360bdebfcc692e13acb3e8b0
+ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97095082"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97858778"
 ---
 # <a name="data-flow-activity-in-azure-data-factory"></a>Datenflussaktivität in Azure Data Factory
 
@@ -38,6 +38,8 @@ Verwenden Sie die Datenflussaktivität, um Daten mithilfe von Mapping Data Flow 
          "computeType": "General"
       },
       "traceLevel": "Fine",
+      "runConcurrently": true,
+      "continueOnError": true,      
       "staging": {
           "linkedService": {
               "referenceName": "MyStagingLinkedService",
@@ -95,6 +97,14 @@ Wenn Sie Azure Synapse Analytics als Senke oder Quelle verwenden, müssen Sie ei
 Wenn Sie nicht voraussetzen, dass jede Pipelineausführung Ihrer Datenflussaktivitäten alle ausführlichen Telemetrieprotokolle vollständig protokolliert, können Sie den Protokolliergrad optional auf „Standard“ oder „Kein“ festlegen. Wenn Sie Ihre Datenflüsse im Modus „Ausführlich“ (Standard) ausführen, fordern Sie an, dass ADF die Aktivität während der Datentransformation auf den einzelnen Partitionsebenen vollständig protokolliert. Da dies ein kostspieliger Vorgang sein kann, kann nur die ausschließliche Aktivierung von „Ausführlich“ bei der Problembehandlung den gesamten Datenfluss und die Pipelineleistung verbessern. Der Modus „Standard“ protokolliert nur die Transformationszeitspannen, während „Kein“ nur eine Zusammenfassung der Zeitspannen bietet.
 
 ![Protokolliergrad](media/data-flow/logging.png "Festlegen des Protokolliergrads")
+
+## <a name="sink-properties"></a>Senkeneigenschaften
+
+Mit der Gruppierungsfunktion in Datenflüssen können Sie sowohl die Ausführungsreihenfolge der Senken festlegen als auch Senken unter Verwendung derselben Gruppennummer gruppieren. Um die Verwaltung von Gruppen zu erleichtern, können Sie ADF auffordern, Senken in der gleichen Gruppe parallel auszuführen. Sie können die Senkengruppe auch so festlegen, dass sie selbst dann fortgesetzt wird, wenn bei einer der Senken ein Fehler auftritt.
+
+Beim Standardverhalten von Datenflusssenken wird jede Senke sequenziell nacheinander ausgeführt, und der Datenfluss schlägt fehl, wenn ein Fehler in der Senke auftritt. Außerdem werden alle Senken standardmäßig der gleichen Gruppe zugeordnet, es sei denn, Sie bearbeiten die Datenflusseigenschaften und legen unterschiedliche Prioritäten für die Senken fest.
+
+![Senkeneigenschaften](media/data-flow/sink-properties.png "Festlegen von Senkeneigenschaften")
 
 ## <a name="parameterizing-data-flows"></a>Parametrisieren von Datenflüssen
 

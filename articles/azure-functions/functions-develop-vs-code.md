@@ -4,12 +4,12 @@ description: In diesem Artikel erhalten Sie Informationen über das Entwickeln u
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 08/21/2019
-ms.openlocfilehash: 573177615ff898326eb29649a7f766b5df34b587
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 33adcb853099778c4b06a9cd428f480f6138ee8b
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96168429"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936973"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>Entwickeln von Azure Functions mithilfe von Visual Studio Code
 
@@ -255,7 +255,7 @@ Mit den folgenden Schritten wird Ihr Projekt in einer neuen Funktions-App veröf
     | ------ | ----- | ----------- |
     | Funktions-App in Azure auswählen | Neue Funktions-App in Azure erstellen | Geben Sie an der nächsten Eingabeaufforderung einen eindeutigen Namen ein, der Ihre neue Funktions-App identifiziert, und drücken Sie dann die EINGABETASTE. Gültige Zeichen für den Namen einer Funktions-App sind `a-z`, `0-9` und `-`. |
     | Betriebssystem auswählen | Windows | Die Funktions-App wird unter Windows ausgeführt. |
-    | Hostingplan auswählen | Verbrauchsplan | Es wird serverloses [Hosting mit Verbrauchsplan](functions-scale.md#consumption-plan) verwendet. |
+    | Hostingplan auswählen | Verbrauchsplan | Es wird serverloses [Hosting mit Verbrauchsplan](consumption-plan.md) verwendet. |
     | Auswählen einer Runtime für Ihre neue App | Ihre Projektsprache | Die Laufzeit muss mit dem Projekt übereinstimmen, das Sie veröffentlichen. |
     | Auswählen einer Ressourcengruppe für neue Ressourcen | Erstellen einer neuen Ressourcengruppe | Geben Sie an der nächsten Eingabeaufforderung einen Ressourcengruppennamen ein (etwa `myResourceGroup`), und drücken Sie dann die EINGABETASTE. Sie können auch eine vorhandene Ressourcengruppe auswählen. |
     | Auswählen eines Speicherkontos | Erstellen eines neuen Speicherkontos | Geben Sie an der nächsten Eingabeaufforderung einen global eindeutigen Namen für das neue Speicherkonto ein, das von Ihrer Funktions-App verwendet wird, und drücken Sie dann die EINGABETASTE. Speicherkontonamen müssen zwischen 3 und 24 Zeichen lang sein und dürfen nur Ziffern und Kleinbuchstaben enthalten. Sie können auch ein vorhandenes Konto auswählen. |

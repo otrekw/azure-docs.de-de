@@ -6,16 +6,16 @@ ms.assetid: dea3f41e-cf35-481b-a6bc-33d7fc9d01b1
 ms.topic: article
 ms.date: 10/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: 8033235cde5b7ebe298bb1fa8d4222e208df998b
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: a29d81be9b750d89230a180b8a7c786466d99bb8
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183004"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936429"
 ---
 # <a name="azure-app-service-plan-overview"></a>Azure App Service-Plan – Übersicht
 
-In App Service (Web-Apps, API-Apps oder Mobile Apps) wird eine App immer in einem _App Service-Plan_ ausgeführt. Darüber hinaus gibt es in [Azure Functions](../azure-functions/functions-scale.md#app-service-plan) ebenfalls die Option für die Ausführung in einem _App Service-Plan_. Mit einem App Service-Plan wird ein Satz mit Computeressourcen für eine auszuführende Web-App definiert. Diese Computeressourcen entsprechen der [_Serverfarm_](https://wikipedia.org/wiki/Server_farm) beim herkömmlichen Webhosting. Es können eine oder mehrere Apps für die Ausführung auf denselben Computeressourcen (oder in demselben App Service-Plan) konfiguriert werden.
+In App Service (Web-Apps, API-Apps oder Mobile Apps) wird eine App immer in einem _App Service-Plan_ ausgeführt. Darüber hinaus gibt es in [Azure Functions](../azure-functions/dedicated-plan.md) ebenfalls die Option für die Ausführung in einem _App Service-Plan_. Mit einem App Service-Plan wird ein Satz mit Computeressourcen für eine auszuführende Web-App definiert. Diese Computeressourcen entsprechen der [_Serverfarm_](https://wikipedia.org/wiki/Server_farm) beim herkömmlichen Webhosting. Es können eine oder mehrere Apps für die Ausführung auf denselben Computeressourcen (oder in demselben App Service-Plan) konfiguriert werden.
 
 Wenn Sie einen App Service-Plan in einer bestimmten Region (z.B. „Europa, Westen“) erstellen, wird für den Plan in dieser Region ein Satz mit Computeressourcen erstellt. Alle Apps, die Sie in diesen App Service-Plan einfügen, werden auf diesen Computeressourcen ausgeführt, wie in Ihrem App Service-Plan definiert. Für jeden App Service-Plan wird Folgendes definiert:
 

@@ -15,16 +15,16 @@ ms.topic: how-to
 ms.date: 05/06/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: b717d84c8fedf4a87c0b81752b14914ece185250
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: 7d00c40a021bbe087d906fd6d9b767188a7b169a
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97369207"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97964326"
 ---
 # <a name="list-azure-role-assignments-using-the-rest-api"></a>Auflisten von Azure-Rollenzuweisungen mithilfe der REST-API
 
-[!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control-definition-list.md)] In diesem Artikel wird beschrieben, wie Sie mit der REST-API Rollenzuweisungen auflisten.
+[!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control/definition-list.md)] In diesem Artikel wird beschrieben, wie Sie mit der REST-API Rollenzuweisungen auflisten.
 
 > [!NOTE]
 > Wenn Ihre Organisation Verwaltungsfunktionen an einen Dienstanbieter ausgelagert hat, der die [delegierte Azure-Ressourcenverwaltung](../lighthouse/concepts/azure-delegated-resource-management.md) verwendet, werden die von diesem Dienstanbieter autorisierten Rollenzuweisungen hier nicht angezeigt.

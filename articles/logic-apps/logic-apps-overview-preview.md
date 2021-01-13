@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
 ms.date: 12/07/2020
-ms.openlocfilehash: 0c4d0416c107c9ceb4cd0dbdf80761ab9b52d56c
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 7c15b3a854b533d93bc05f7e5302671711da75c2
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96924023"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936123"
 ---
 # <a name="overview-azure-logic-apps-preview"></a>Übersicht: Vorschauversion von Azure Logic Apps
 
@@ -148,7 +148,7 @@ Azure Logic Apps (Vorschau) umfasst viele aktuelle und zusätzliche Funktionen, 
 
 Wenn Sie den neuen Logik-App-Typ im Azure-Portal erstellen oder aus Visual Studio Code bereitstellen, müssen Sie als Hostingplan entweder [App Service oder Premium](../azure-functions/functions-scale.md) auswählen, damit Ihre Logik-App verwendet werden kann. Dieser Plan bestimmt das Preismodell für die Ausführung Ihrer Logik-App. Wenn Sie den App Service-Plan auswählen, müssen Sie außerdem einen [Tarif](../app-service/overview-hosting-plans.md) auswählen.
 
-*Zustandsbehaftete* Workflows verwenden [externen Speicher](../azure-functions/functions-scale.md#storage-account-requirements), sodass das [Azure Storage-Preismodell](https://azure.microsoft.com/pricing/details/storage/) auf Speichertransaktionen angewandt wird, die von der Azure Logic Apps-Runtime (Vorschau) ausgeführt werden. Beispielsweise werden Warteschlangen für die Zeitplanung verwendet, während Tabellen und Blobs zum Speichern von Workflowzuständen verwendet werden.
+*Zustandsbehaftete* Workflows verwenden [externen Speicher](../azure-functions/storage-considerations.md#storage-account-requirements), sodass das [Azure Storage-Preismodell](https://azure.microsoft.com/pricing/details/storage/) auf Speichertransaktionen angewandt wird, die von der Azure Logic Apps-Runtime (Vorschau) ausgeführt werden. Beispielsweise werden Warteschlangen für die Zeitplanung verwendet, während Tabellen und Blobs zum Speichern von Workflowzuständen verwendet werden.
 
 > [!NOTE]
 > Während der öffentlichen Vorschauphase entstehen durch das Ausführen von Logik-Apps in App Service keine *zusätzlichen* Gebühren zum ausgewählten Plan.

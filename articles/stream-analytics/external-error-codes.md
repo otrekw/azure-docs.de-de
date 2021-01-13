@@ -1,17 +1,17 @@
 ---
 title: Externe Fehlercodes – Azure Stream Analytics
 description: Beheben Sie Probleme in Azure Stream Analytics mit externen Fehlercodes.
-ms.author: mamccrea
-author: mamccrea
+ms.author: sidram
+author: sidramadoss
 ms.topic: troubleshooting
 ms.date: 05/07/2020
 ms.service: stream-analytics
-ms.openlocfilehash: 61d6556467bc6f1494e11ce3a01bf5266b740f3f
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 9f55a715b11b126ea340e665e008d7245e578190
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93305784"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98016387"
 ---
 # <a name="azure-stream-analytics-external-error-codes"></a>Externe Fehlercodes in Azure Stream Analytics
 
@@ -48,12 +48,12 @@ Unerwartetes Verhalten Ihres Azure Stream Analytics-Auftrags können Sie mithilf
 ## <a name="azurefunctionhttptimeouterror"></a>AzureFunctionHttpTimeOutError
 
 * **Ursache:** Fehler beim Schreiben an Azure Functions, weil die HTTP-Anforderung das Timeout überschritten hat. 
-* **Empfehlung** : Überprüfen Sie die Azure Functions-Protokolle auf mögliche Verzögerungen.
+* **Empfehlung**: Überprüfen Sie die Azure Functions-Protokolle auf mögliche Verzögerungen.
 
 ## <a name="eventhubargumenterror"></a>EventHubArgumentError
 
 * **Ursache:** Die Eingabeoffsets sind ungültig. Dies kann auf ein Failover zurückzuführen sein.
-* **Empfehlung** : Starten Sie den Stream Analytics-Auftrag ab dem letzten Ausgabezeitpunkt neu.
+* **Empfehlung**: Starten Sie den Stream Analytics-Auftrag ab dem letzten Ausgabezeitpunkt neu.
 
 ## <a name="eventhubfailedtowriteevents"></a>EventHubFailedToWriteEvents
 

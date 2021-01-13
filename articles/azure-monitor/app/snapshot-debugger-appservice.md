@@ -2,25 +2,26 @@
 title: Aktivieren des Momentaufnahmedebuggers für .NET-Apps in Azure App Service | Microsoft-Dokumentation
 description: Aktivieren des Momentaufnahmedebuggers für .NET-Apps in Azure App Service
 ms.topic: conceptual
-author: brahmnes
-ms.author: bfung
+author: cweining
+ms.author: cweining
 ms.date: 03/26/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 35653840c5ddd6f5ae2d5dc078513f0fa35ab34a
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 421f80493a9cb88e8bbbddc06aa9a24042b64b17
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97560932"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97695470"
 ---
 # <a name="enable-snapshot-debugger-for-net-apps-in-azure-app-service"></a>Aktivieren des Momentaufnahmedebuggers für .NET-Apps in Azure App Service
 
-Der Momentaufnahmedebugger kann derzeit für ASP.NET- und ASP.NET Core-Apps verwendet werden, die unter Azure App Service in Windows-Dienstplänen ausgeführt werden. Wenn Sie den Debugger für Momentaufnahmen verwenden, empfehlen wir, Ihre Anwendung auf der Dienstebene „Basic“ oder höher auszuführen. Bei den meisten Anwendungen haben die Dienstebenen „Free“ und „Shared“ nicht genügend Arbeitsspeicher zum Speichern von Momentaufnahmen.
+Der Momentaufnahmedebugger kann derzeit für ASP.NET- und ASP.NET Core-Apps verwendet werden, die unter Azure App Service in Windows-Dienstplänen ausgeführt werden. Wenn Sie den Debugger für Momentaufnahmen verwenden, empfehlen wir, Ihre Anwendung auf der Dienstebene „Basic“ oder höher auszuführen. Bei den meisten Anwendungen haben die Dienstebenen „Free“ und „Shared“ nicht genügend Arbeits- oder Festplattenspeicher zum Speichern von Momentaufnahmen.
 
 ## <a name="enable-snapshot-debugger"></a><a id="installation"></a> Aktivieren des Momentaufnahmedebuggers
 Befolgen Sie die unten angegebenen Anweisungen, um den Momentaufnahmedebugger für eine App zu aktivieren.
 
 Wenn Sie eine andere Art von Azure-Dienst ausführen, helfen Ihnen diese Anweisungen beim Aktivieren des Momentaufnahmedebuggers auf anderen unterstützten Plattformen weiter:
+* [Azure-Funktion](snapshot-debugger-function-app.md?toc=/azure/azure-monitor/toc.json)
 * [Azure Cloud Services](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
 * [Azure Service Fabric-Dienste](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
 * [Azure Virtual Machines und VM-Skalierungsgruppen](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)

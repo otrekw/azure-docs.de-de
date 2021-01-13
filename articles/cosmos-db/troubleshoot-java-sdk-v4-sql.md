@@ -9,12 +9,12 @@ ms.devlang: java
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.custom: devx-track-java
-ms.openlocfilehash: 4753f7c0b8b5e515d33da3f9df48a2cdd9d921cc
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: d6b23a831426a3308a0b47946d5a82679e937bbe
+ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96017575"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97683129"
 ---
 # <a name="troubleshoot-issues-when-you-use-azure-cosmos-db-java-sdk-v4-with-sql-api-accounts"></a>Behandeln von Problemen bei der Verwendung des Azure Cosmos DB Java SDK v4 mit SQL-API-Konten
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -38,6 +38,13 @@ Beginnen Sie mit dieser Liste:
 * Sehen Sie sich das Java SDK im zentralen Azure Cosmos DB-Repository an, das [Open-Source auf GitHub](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos/azure-cosmos) verfügbar ist. Es verfügt über einen aktiv überwachten [Problemabschnitt](https://github.com/Azure/azure-sdk-for-java/issues). Überprüfen Sie, ob Sie ein ähnliches Problem finden, für das bereits eine Problemumgehung dokumentiert wurde. Ein hilfreicher Tipp ist das Filtern von Problemen nach dem Tag *cosmos:v4-item*.
 * Sehen Sie sich die [Leistungstipps](performance-tips-java-sdk-v4-sql.md) für Azure Cosmos DB Java SDK v4 an, und implementieren Sie die empfohlenen Methoden.
 * Lesen Sie den Rest dieses Artikels, falls Sie keine Lösung gefunden haben. Reichen Sie anschließend ein [GitHub-Problem](https://github.com/Azure/azure-sdk-for-java/issues) ein. Wenn es eine Option zum Hinzufügen von Tags zu Ihrem GitHub-Issue gibt, fügen Sie das Tag *cosmos:v4-item* hinzu.
+
+### <a name="retry-logic"></a>Wiederholungslogik <a id="retry-logics"></a>
+Das Cosmos DB SDK versucht bei jedem E/A-Fehler, den fehlgeschlagenen Vorgang zu wiederholen, sofern eine Wiederholung im SDK möglich ist. Es ist eine bewährte Methode, einen Wiederholungsversuch für jeden Fehler durchzuführen, doch müssen insbesondere Schreibfehler behandelt/wiederholt werden. Es wird empfohlen, das neueste SDK zu verwenden, da die Wiederholungslogik kontinuierlich verbessert wird.
+
+1. E/A-Fehler bei Lese- und Abfragevorgängen werden vom SDK wiederholt, ohne dass sie dem Endbenutzer angezeigt werden.
+2. Schreibvorgänge (Erstellen, Aktualisieren/Einfügen, Ersetzen, Löschen) sind nicht idempotent, und daher kann das SDK die fehlgeschlagenen Schreibvorgänge nicht immer blind wiederholen. Es ist erforderlich, dass die Anwendungslogik des Benutzers den Fehler behandelt und den Wiederholungsversuch durchführt.
+3. Unter [Beheben von Problemen bei der Verfügbarkeit von SDKs](troubleshoot-sdk-availability.md) werden Wiederholungen für Cosmos DB-Konten in mehreren Regionen erläutert.
 
 ## <a name="common-issues-and-workarounds"></a><a name="common-issues-workarounds"></a>Häufig auftretende Probleme und Problemumgehungen
 

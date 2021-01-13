@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
 ms.date: 12/07/2020
-ms.openlocfilehash: d10689937a037469399863395e0190e399334bd3
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: a7e19894a4688fe270422e93f7081f98e0b699a3
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96924038"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936531"
 ---
 # <a name="create-stateful-and-stateless-workflows-in-the-azure-portal-with-azure-logic-apps-preview"></a>Erstellen zustandsbehafteter und zustandsloser Workflows im Azure-Portal mit „Azure Logic Apps (Vorschau)“
 
@@ -90,7 +90,7 @@ In diesem Artikel erfahren Sie, wie Sie Ihre Logik-App und einen Workflow im Azu
    | Eigenschaft | Erforderlich | Wert | Beschreibung |
    |----------|----------|-------|-------------|
    | **Speicherkonto** | Ja | <*Azure-storage-account-name*> | Das [Azure Storage-Konto](../storage/common/storage-account-overview.md), das für Speichertransaktionen verwendet werden soll. Dieser Ressourcenname muss regionsübergreifend eindeutig sein und 3-24 Zeichen enthalten (nur Ziffern und Kleinbuchstaben). Wählen Sie entweder ein vorhandenes Konto aus, oder erstellen Sie ein neues Konto. <p><p>In diesem Beispiel wird ein Speicherkonto namens `fabrikamstorageacct` erstellt. |
-   | **Plantyp** | Ja | <*Azure-hosting-plan*> | Der [Hostingplan](../app-service/overview-hosting-plans.md), der für die Bereitstellung Ihrer Logik-App verwendet werden soll. Dies ist entweder ein [**Premium**](../azure-functions/functions-scale.md#premium-plan)- oder [**App Service-Plan**](../azure-functions/functions-scale.md#app-service-plan). Ihre Auswahl wirkt sich auf die Tarife aus, die Sie später auswählen können. <p><p>In diesem Beispiel wird der **App Service-Plan** verwendet. <p><p>**Hinweis**: Ähnlich wie bei Azure Functions ist für den Ressourcentyp **Logik-App (Vorschau)** ein Hostingplan und Tarif erforderlich. Hostingpläne für den Verbrauch werden weder unterstützt, noch stehen sie für diesen Ressourcentyp zur Verfügung. Weitere Informationen finden Sie in diesen Themen: <p><p>- [Skalierung und Hosting von Azure Functions](../azure-functions/functions-scale.md) <br>- [App Service-Preisdetails](https://azure.microsoft.com/pricing/details/app-service/) <p><p> |
+   | **Plantyp** | Ja | <*Azure-hosting-plan*> | Der [Hostingplan](../app-service/overview-hosting-plans.md), der für die Bereitstellung Ihrer Logik-App verwendet werden soll. Dies ist entweder ein [**Premium**](../azure-functions/functions-premium-plan.md)- oder [**App Service-Plan**](../azure-functions/dedicated-plan.md). Ihre Auswahl wirkt sich auf die Tarife aus, die Sie später auswählen können. <p><p>In diesem Beispiel wird der **App Service-Plan** verwendet. <p><p>**Hinweis**: Ähnlich wie bei Azure Functions ist für den Ressourcentyp **Logik-App (Vorschau)** ein Hostingplan und Tarif erforderlich. Hostingpläne für den Verbrauch werden weder unterstützt, noch stehen sie für diesen Ressourcentyp zur Verfügung. Weitere Informationen finden Sie in diesen Themen: <p><p>- [Skalierung und Hosting von Azure Functions](../azure-functions/functions-scale.md) <br>- [App Service-Preisdetails](https://azure.microsoft.com/pricing/details/app-service/) <p><p> |
    | **Windows-Plan** | Ja | <*plan-name*> | Der zu verwendende Planname. Wählen Sie entweder einen vorhandenen Plan aus, oder geben Sie den Namen für einen neuen Plan an. <p><p>In diesem Beispiel wird der Name `Fabrikam-Service-Plan`verwendet. |
    | **SKU und Größe** | Ja | <*pricing-tier*> | Der [Tarif](../app-service/overview-hosting-plans.md), der zum Hosting Ihrer Logik-App verwendet werden soll. Ihre Auswahl hängt von dem zuvor gewählten Plantyp ab. Wählen Sie **Größe ändern**, um den Standardtarif zu ändern. Sie können dann basierend auf der benötigten Workload andere Tarife auswählen. <p><p>In diesem Beispiel wird der kostenlose **F1-Tarif** für **Dev/Test**-Workloads verwendet. Weitere Informationen finden Sie unter [App Service-Preisdetails](https://azure.microsoft.com/pricing/details/app-service/). |
    |||||

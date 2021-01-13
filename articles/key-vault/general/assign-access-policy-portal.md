@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 08/27/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 9277d100eb6744adfc20fbba9f96b822654e64a3
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 910b8dae10036cc2e396be13495fd28363dc971d
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93287699"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934559"
 ---
 # <a name="assign-a-key-vault-access-policy-using-the-azure-portal"></a>Zuweisen einer Key Vault-Zugriffsrichtlinie über das Azure-Portal
 
@@ -33,7 +33,7 @@ Weitere Informationen zum Erstellen von Gruppen in Azure Active Directory über 
 
     ![Auswählen von „Zugriffsrichtlinien“, Auswählen von „Rollenzuweisung hinzufügen“](../media/authentication/assign-policy-portal-01.png)
 
-1.  Wählen Sie die gewünschten Berechtigungen unter **Zertifikatberechtigungen** , **Schlüsselberechtigungen** und **Geheimnisberechtigungen** aus. Sie können auch eine Vorlage auswählen, die gebräuchliche Kombinationen aus Berechtigungen enthält:
+1.  Wählen Sie die gewünschten Berechtigungen unter **Zertifikatberechtigungen**, **Schlüsselberechtigungen** und **Geheimnisberechtigungen** aus. Sie können auch eine Vorlage auswählen, die gebräuchliche Kombinationen aus Berechtigungen enthält:
 
     ![Angeben von Zugriffsrichtlinienberechtigungen](../media/authentication/assign-policy-portal-02.png)
 
@@ -47,14 +47,13 @@ Weitere Informationen zum Erstellen von Gruppen in Azure Active Directory über 
 
     ![Hinzufügen der Zugriffsrichtlinie mit zugewiesenem Dienstprinzipal](../media/authentication/assign-policy-portal-04.png)
 
-1. Vergewissern Sie sich auf der Seite **Zugriffsrichtlinien** , dass Ihre Zugriffsrichtlinie unter **Aktuelle Zugriffsrichtlinien** aufgeführt ist, und wählen Sie dann **Speichern** aus. Zugriffsrichtlinien werden erst angewandt, wenn Sie sie speichern.
+1. Vergewissern Sie sich auf der Seite **Zugriffsrichtlinien**, dass Ihre Zugriffsrichtlinie unter **Aktuelle Zugriffsrichtlinien** aufgeführt ist, und wählen Sie dann **Speichern** aus. Zugriffsrichtlinien werden erst angewandt, wenn Sie sie speichern.
 
     ![Speichern der Änderungen an den Zugriffsrichtlinien](../media/authentication/assign-policy-portal-05.png)
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Azure Key Vault – Sicherheit: Identitäts- und Zugriffsverwaltung](overview-security.md#identity-and-access-management)
+- [Azure Key Vault – Sicherheit: Identitäts- und Zugriffsverwaltung](security-overview.md#identity-management)
 - [Sicherer Zugriff auf einen Schlüsseltresor](secure-your-key-vault.md)
 - [Entwicklerhandbuch zu Azure Key Vault](developers-guide.md)
-- [Bewährte Methoden bei Azure Key Vault](best-practices.md)

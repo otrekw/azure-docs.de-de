@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/19/2020
-ms.openlocfilehash: 94c926c555a4bc96ac3c6fbe773650e16554bcf2
-ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
+ms.openlocfilehash: d04fa25b9c953d151fc16d11f304c48b7046ab76
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95315701"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680391"
 ---
 # <a name="configure-data-collection-for-the-azure-monitor-agent-preview"></a>Konfigurieren der Datensammlung für den Azure Monitor-Agent (Vorschau)
 
@@ -35,6 +35,9 @@ Angenommen, in einer Umgebung mit einer Gruppe von virtuellen Computern wird auf
 
 Sie können das Azure-Portal verwenden, um eine Datensammlungsregel zu erstellen und dieser Regel unter Ihrem Abonnement virtuelle Computer zuzuordnen. Der Azure Monitor-Agent wird automatisch installiert, und für alle virtuellen Computer wird eine verwaltete Identität erstellt (falls noch nicht geschehen).
 
+> [!IMPORTANT]
+> Derzeit besteht folgendes bekanntes Problem: Wenn die Datensammlungsregel eine verwaltete Identität auf einem virtuellen Computer erstellt, der bereits über eine benutzerseitig zugewiesene verwaltete Identität verfügt, wird die benutzerseitig zugewiesene Identität deaktiviert.
+
 Wählen Sie im Portal im Menü **Azure Monitor** unter **Einstellungen** die Option **Datensammlungsregeln** aus. Klicken Sie auf **Hinzufügen**, um eine neue Datensammlungsregel und eine Zuweisung hinzuzufügen.
 
 [![Datensammlungsregeln](media/azure-monitor-agent/data-collection-rules.png)](media/azure-monitor-agent/data-collection-rules.png#lightbox)
@@ -52,7 +55,7 @@ Klicken Sie auf der Registerkarte **Sammeln und übermitteln** auf **Datenquelle
 [![Einfache Datenquelle](media/azure-monitor-agent/data-collection-rule-data-source-basic.png)](media/azure-monitor-agent/data-collection-rule-data-source-basic.png#lightbox)
 
 
-Wählen Sie **Benutzerdefiniert** aus, um andere Protokolle und Leistungsindikatoren anzugeben. Anschließend können Sie einen [XPath](https://www.w3schools.com/xml/xpath_syntax.asp) für bestimmte Werte angeben, die gesammelt werden sollen. Beispiele hierzu finden Sie unter [Beispiel für eine Datensammlungsregel](data-collection-rule-overview.md#sample-data-collection-rule).
+Um andere Protokolle und Leistungsindikatoren aus den [derzeit unterstützten Datenquellen](azure-monitor-agent-overview.md#data-sources-and-destinations) anzugeben oder um Ereignisse mithilfe von XPath-Abfragen zu filtern, wählen Sie **Benutzerdefiniert** aus. Anschließend können Sie einen [XPath](https://www.w3schools.com/xml/xpath_syntax.asp) für bestimmte Werte angeben, die gesammelt werden sollen. Beispiele hierzu finden Sie unter [Beispiel für eine Datensammlungsregel](data-collection-rule-overview.md#sample-data-collection-rule).
 
 [![Datenquelle: Benutzerdefiniert](media/azure-monitor-agent/data-collection-rule-data-source-custom.png)](media/azure-monitor-agent/data-collection-rule-data-source-custom.png#lightbox)
 

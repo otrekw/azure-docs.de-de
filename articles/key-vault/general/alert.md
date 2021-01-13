@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 04/06/2020
 ms.author: sudbalas
 Customer intent: As a key vault administrator, I want to learn the options available to monitor the health of my vaults
-ms.openlocfilehash: 7ff3daded48612fd308396420dca65cd81d9fafc
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 5946a5d6d1adb5f609f497b4c2194582f624fe24
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97724696"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934593"
 ---
 # <a name="monitoring-and-alerting-for-azure-key-vault"></a>Überwachung und Warnungen für Azure Key Vault
 
@@ -25,8 +25,8 @@ ms.locfileid: "97724696"
 Sobald Sie damit begonnen haben, Ihre Produktionsgeheimnisse im Schlüsseltresor zu speichern, sollten Sie durch eine Überwachung der Integrität Ihres Schlüsseltresors sicherstellen, dass Ihr Dienst wie vorgesehen funktioniert. Wenn Sie Ihren Dienst skalieren, steigt die Anzahl von Anforderungen, die an Ihren Schlüsseltresor gesendet werden. Dies kann die Latenzzeit Ihrer Anforderungen erhöhen und in extremen Fällen zu einer Drosselung Ihrer Anforderungen führen – was sich auf die Leistung Ihres Diensts auswirkt. Sie müssen außerdem benachrichtigt werden, wenn Ihr Schlüsseltresor eine ungewöhnliche Anzahl von Fehlercodes sendet, damit Sie bei Problemen mit Zugriffsrichtlinien oder Firewallkonfiguration schnell handeln können. In diesem Dokument werden die folgenden Themen behandelt:
 
 + Grundlegende Key Vault-Metriken für die Überwachung
-+ Konfigurieren von Metriken und Erstellen eines Dashboards 
-+ Erstellen von Warnungen bei angegebenen Schwellenwerten 
++ Konfigurieren von Metriken und Erstellen eines Dashboards
++ Erstellen von Warnungen bei angegebenen Schwellenwerten
 
 ## <a name="basic-key-vault-metrics-to-monitor"></a>Grundlegende Key Vault-Metriken für die Überwachung
 

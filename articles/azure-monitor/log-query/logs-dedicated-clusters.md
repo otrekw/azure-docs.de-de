@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 09/16/2020
-ms.openlocfilehash: d2446e866c0e12d50a0759373682f4f62bc4bba0
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: 34524626cc213233c3db2ca438261b238eb18a2a
+ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96512221"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97831770"
 ---
 # <a name="azure-monitor-logs-dedicated-clusters"></a>Dedizierte Azure Monitor-Protokollcluster
 
@@ -56,6 +56,20 @@ Wenn Ihr Arbeitsbereich den Legacytarif pro Knoten verwendet, wird er, wenn er m
 
 Weitere Informationen zur Abrechnung für dedizierte Log Analytics-Cluster finden Sie [hier]( https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#log-analytics-dedicated-clusters).
 
+## <a name="asynchronous-operations-and-status-check"></a>Asynchrone Vorgänge und Statusüberprüfung
+
+Einige Konfigurationsschritte werden asynchron ausgeführt, da sie nicht schnell abgeschlossen werden können. Der Status in der Antwort enthält eine der folgenden Angaben: „Wird ausgeführt“, „Wird aktualisiert“, „Wird gelöscht“, „Erfolgreich“ oder „Fehler“ einschließlich des Fehlercodes. Wenn REST verwendet und akzeptiert wird, gibt die Antwort anfänglich den HTTP-Statuscode 200 (OK) und einen Header mit der Eigenschaft Azure-AsyncOperation zurück:
+
+```JSON
+"Azure-AsyncOperation": "https://management.azure.com/subscriptions/subscription-id/providers/Microsoft.OperationalInsights/locations/region-name/operationStatuses/operation-id?api-version=2020-08-01"
+```
+
+Sie können den Status des asynchronen Vorgangs prüfen, indem Sie eine GET-Anforderung für den Headerwert Azure-AsyncOperation senden:
+
+```rst
+GET https://management.azure.com/subscriptions/subscription-id/providers/microsoft.operationalInsights/locations/region-name/operationstatuses/operation-id?api-version=2020-08-01
+Authorization: Bearer <token>
+```
 
 ## <a name="creating-a-cluster"></a>Erstellen eines Clusters
 
@@ -90,7 +104,7 @@ Get-Job -Command "New-AzOperationalInsightsCluster*" | Format-List -Property *
 
 *Call* 
 ```rst
-PUT https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
+PUT https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-08-01
 Authorization: Bearer <token>
 Content-type: application/json
 
@@ -113,7 +127,7 @@ Content-type: application/json
 
 200 OK und ein Header
 
-### <a name="check-provisioning-status"></a>Überprüfen des Bereitstellungsstatus
+### <a name="check-cluster-provisioning-status"></a>Überprüfen des Bereitstellungsstatus für den Cluster
 
 Es dauert eine Weile, bis die Bereitstellung des Log Analytics-Clusters abgeschlossen ist. Sie können den Bereitstellungsstatus auf verschiedene Weise überprüfen:
 
@@ -127,7 +141,7 @@ Es dauert eine Weile, bis die Bereitstellung des Log Analytics-Clusters abgeschl
 - Senden Sie eine GET-Anforderung für die *Clusterressource*, und überprüfen Sie den Wert für *provisioningState*. Während der Bereitstellung lautet dieser Wert *ProvisioningAccount*, und nach Abschluss des Vorgangs lautet er *Succeeded*.
 
    ```rst
-   GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
+   GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-08-01
    Authorization: Bearer <token>
    ```
 
@@ -159,104 +173,7 @@ Es dauert eine Weile, bis die Bereitstellung des Log Analytics-Clusters abgeschl
 
 Die GUID *principalId* wird vom verwalteten Identitätsdienst für die *Clusterressource* generiert.
 
-## <a name="change-cluster-properties"></a>Ändern der Clustereigenschaften
-
-Nachdem Sie Ihre *Clusterressource* erstellt und vollständig bereitgestellt haben, können Sie zusätzliche Eigenschaften auf Clusterebene mithilfe von PowerShell oder der REST-API bearbeiten. Abgesehen von den Eigenschaften, die während der Clustererstellung verfügbar sind, können zusätzliche Eigenschaften erst festgelegt werden, nachdem der Cluster bereitgestellt wurde:
-
-- **keyVaultProperties**: Dient zum Konfigurieren von Azure Key Vault, der zum Bereitstellen eines [kundenseitig verwalteten Azure Monitor-Schlüssels](../platform/customer-managed-keys.md#customer-managed-key-provisioning-procedure) verwendet wird. Sie enthält die folgenden Parameter:  *KeyVaultUri*, *KeyName*, *KeyVersion*. 
-- **billingType**: Die Eigenschaft *billingType* bestimmt die Abrechnungszuordnung für die *Clusterressource* und deren Daten:
-  - **Cluster** (Standard): Die Kapazitätsreservierungskosten für Ihren Cluster werden der *Clusterressource* zugeordnet.
-  - **Arbeitsbereiche**: Die Kapazitätsreservierungskosten für Ihren Cluster werden proportional den Arbeitsbereichen im Cluster zugeordnet. Wenn die Gesamtmenge der erfassten Daten unter der Kapazitätsreservierung liegt, wird ein Teil des Verbrauchs über die *Clusterressource* abgerechnet. Weitere Informationen zum Clusterpreismodell finden Sie unter [Dedizierte Log Analytics-Cluster](../platform/manage-cost-storage.md#log-analytics-dedicated-clusters). 
-
-> [!NOTE]
-> Die Eigenschaft *billingType* wird in PowerShell nicht unterstützt.
-> Clustereigenschaftsaktualisierungen werden möglicherweise asynchron ausgeführt und können einige Zeit in Anspruch nehmen.
-
-**PowerShell**
-
-```powershell
-Update-AzOperationalInsightsCluster -ResourceGroupName {resource-group-name} -ClusterName {cluster-name} -KeyVaultUri {key-uri} -KeyName {key-name} -KeyVersion {key-version}
-```
-
-**REST**
-
-> [!NOTE]
-> Sie können *Clusterressource*, *sku*, *keyVaultProperties* oder *billingType* mithilfe von PATCH aktualisieren.
-
-Beispiel: 
-
-*Call*
-
-```rst
-PATCH https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
-Authorization: Bearer <token>
-Content-type: application/json
-
-{
-   "sku": {
-     "name": "capacityReservation",
-     "capacity": <capacity-reservation-amount-in-GB>
-     },
-   "properties": {
-    "billingType": "cluster",
-     "KeyVaultProperties": {
-       "KeyVaultUri": "https://<key-vault-name>.vault.azure.net",
-       "KeyName": "<key-name>",
-       "KeyVersion": "<current-version>"
-       }
-   },
-   "location":"<region-name>"
-}
-```
-
-„KeyVaultProperties“ enthält die Details des Key Vault-Schlüsselbezeichners.
-
-*Antwort*
-
-200 OK und Header
-
-### <a name="check-cluster-update-status"></a>Überprüfen des Status der Clusteraktualisierung
-
-Die Weitergabe des Schlüsselbezeichners dauert einige Minuten. Sie können den Aktualisierungsstatus auf zwei Arten überprüfen:
-
-- Kopieren Sie den URL-Wert von „Azure-AsyncOperation“ aus der Antwort, und befolgen Sie die Überprüfung des Status asynchroner Vorgänge. 
-
-   OR
-
-- Senden Sie eine GET-Anforderung für die *Clusterressource*, und überprüfen Sie die Eigenschaften *KeyVaultProperties*. Die zuletzt aktualisierten Schlüsselbezeichnerdetails sollten in der Antwort zurückgegeben werden.
-
-   Nachdem die Aktualisierung des Schlüsselbezeichners abgeschlossen ist, sollte die Antwort auf die GET-Anforderung für die *Clusterressource* wie folgt aussehen:
-
-   ```json
-   {
-     "identity": {
-       "type": "SystemAssigned",
-       "tenantId": "tenant-id",
-       "principalId": "principle-id"
-       },
-     "sku": {
-       "name": "capacityReservation",
-       "capacity": 1000,
-       "lastSkuUpdate": "Sun, 22 Mar 2020 15:39:29 GMT"
-       },
-     "properties": {
-       "keyVaultProperties": {
-         "keyVaultUri": "https://key-vault-name.vault.azure.net",
-         "kyName": "key-name",
-         "keyVersion": "current-version"
-         },
-        "provisioningState": "Succeeded",
-       "billingType": "cluster",
-       "clusterId": "cluster-id"
-     },
-     "id": "/subscriptions/subscription-id/resourceGroups/resource-group-name/providers/Microsoft.OperationalInsights/clusters/cluster-name",
-     "name": "cluster-name",
-     "type": "Microsoft.OperationalInsights/clusters",
-     "location": "region-name"
-  }
-  ```
-
-## <a name="link-a-workspace-to-the-cluster"></a>Verknüpfen eines Arbeitsbereichs mit dem Cluster
+## <a name="link-a-workspace-to-cluster"></a>Verknüpfen eines Arbeitsbereichs mit einem Cluster
 
 Wenn ein Arbeitsbereich mit einem dedizierten Cluster verknüpft ist, werden neue Daten, die in den Arbeitsbereich erfasst werden, an den neuen Cluster weitergeleitet, während vorhandene Daten im vorhandenen Cluster verbleiben. Wenn der dedizierte Cluster mithilfe von kundenseitig verwalteten Schlüsseln (Customer-managed keys, CMK) verschlüsselt wird, werden nur neue Daten mit dem Schlüssel verschlüsselt. Das System abstrahiert diesen Unterschied von den Benutzern, und die Benutzer fragen den Arbeitsbereich wie gewohnt ab, während das System clusterübergreifende Abfragen für das Back-End ausführt.
 
@@ -299,7 +216,7 @@ Verwenden Sie den folgenden REST-Aufruf zum Verknüpfen eines Clusters:
 *Senden*
 
 ```rst
-PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>/linkedservices/cluster?api-version=2020-03-01-preview 
+PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>/linkedservices/cluster?api-version=2020-08-01 
 Authorization: Bearer <token>
 Content-type: application/json
 
@@ -314,22 +231,34 @@ Content-type: application/json
 
 200 OK und Header.
 
-### <a name="using-customer-managed-keys-with-linking"></a>Verwenden kundenseitig verwalteter Schlüssel mit Verknüpfung
-
+### <a name="check-workspace-link-status"></a>Überprüfen des Verknüpfungsstatus des Arbeitsbereichs
+  
 Wenn Sie kundenseitig verwaltete Schlüssel verwenden, werden erfasste Daten nach dem Zuordnungsvorgang mit Ihrem verwalteten Schlüssel verschlüsselt gespeichert, was bis zu 90 Minuten dauern kann. 
 
 Sie können den Zuordnungsstatus des Arbeitsbereichs auf zwei Arten überprüfen:
 
 - Kopieren Sie den URL-Wert von „Azure-AsyncOperation“ aus der Antwort, und befolgen Sie die Überprüfung des Status asynchroner Vorgänge.
 
-- Senden Sie eine [Workspaces – Get](/rest/api/loganalytics/workspaces/get)-Anforderung und beobachten Sie die Antwort. Der zugehörige Arbeitsbereich verfügt unter „features“ über „clusterResourceId“.
+- Führen Sie den Get-Vorgang für den Arbeitsbereich aus, und beobachten Sie, ob die *clusterResourceId*-Eigenschaft unter *features* in der Antwort vorhanden ist.
 
-Eine Sendeanforderung sieht wie folgt aus:
+**BEFEHLSZEILENSCHNITTSTELLE (CLI)**
 
-*Senden*
+```azurecli
+az monitor log-analytics cluster show --resource-group "resource-group-name" --name "cluster-name"
+```
+
+**PowerShell**
+
+```powershell
+Get-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-name" -Name "workspace-name"
+```
+
+**REST**
+
+*Call*
 
 ```rest
-GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalInsights/workspaces/<workspace-name>?api-version=2020-03-01-preview
+GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>?api-version=2020-08-01
 Authorization: Bearer <token>
 ```
 
@@ -365,14 +294,183 @@ Authorization: Bearer <token>
 }
 ```
 
-## <a name="unlink-a-workspace-from-a-dedicated-cluster"></a>Aufheben der Verknüpfung eines Arbeitsbereichs mit einem dedizierten Cluster
+## <a name="change-cluster-properties"></a>Ändern der Clustereigenschaften
+
+Nachdem Sie Ihre *Clusterressource* erstellt und vollständig bereitgestellt haben, können Sie zusätzliche Eigenschaften auf Clusterebene mithilfe von PowerShell oder der REST-API bearbeiten. Abgesehen von den Eigenschaften, die während der Clustererstellung verfügbar sind, können zusätzliche Eigenschaften erst festgelegt werden, nachdem der Cluster bereitgestellt wurde:
+
+- **keyVaultProperties**: Hiermit wird der Schlüssel in Azure Key Vault aktualisiert. Weitere Informationen finden Sie unter [Aktualisieren des Clusters mit Schlüsselbezeichnerdetails](../platform/customer-managed-keys.md#update-cluster-with-key-identifier-details). Sie enthält die folgenden Parameter: *KeyVaultUri*, *KeyName*, *KeyVersion*. 
+- **billingType**: Die Eigenschaft *billingType* bestimmt die Abrechnungszuordnung für die *Clusterressource* und deren Daten:
+  - **Cluster** (Standard): Die Kapazitätsreservierungskosten für Ihren Cluster werden der *Clusterressource* zugeordnet.
+  - **Arbeitsbereiche**: Die Kapazitätsreservierungskosten für Ihren Cluster werden proportional den Arbeitsbereichen im Cluster zugeordnet. Wenn die Gesamtmenge der erfassten Daten unter der Kapazitätsreservierung liegt, wird ein Teil des Verbrauchs über die *Clusterressource* abgerechnet. Weitere Informationen zum Clusterpreismodell finden Sie unter [Dedizierte Log Analytics-Cluster](../platform/manage-cost-storage.md#log-analytics-dedicated-clusters). 
+
+> [!NOTE]
+> Die Eigenschaft *billingType* wird in PowerShell nicht unterstützt.
+
+### <a name="get-all-clusters-in-resource-group"></a>Abrufen aller Cluster in einer Ressourcengruppe
+  
+**BEFEHLSZEILENSCHNITTSTELLE (CLI)**
+
+```azurecli
+az monitor log-analytics cluster list --resource-group "resource-group-name"
+```
+
+**PowerShell**
+
+```powershell
+Get-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name"
+```
+
+**REST**
+
+*Call*
+
+  ```rst
+  GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters?api-version=2020-08-01
+  Authorization: Bearer <token>
+  ```
+
+*Antwort*
+  
+  ```json
+  {
+    "value": [
+      {
+        "identity": {
+          "type": "SystemAssigned",
+          "tenantId": "tenant-id",
+          "principalId": "principal-Id"
+        },
+        "sku": {
+          "name": "capacityReservation",
+          "capacity": 1000,
+          "lastSkuUpdate": "Sun, 22 Mar 2020 15:39:29 GMT"
+          },
+        "properties": {
+           "keyVaultProperties": {
+              "keyVaultUri": "https://key-vault-name.vault.azure.net",
+              "keyName": "key-name",
+              "keyVersion": "current-version"
+              },
+          "provisioningState": "Succeeded",
+          "billingType": "cluster",
+          "clusterId": "cluster-id"
+        },
+        "id": "/subscriptions/subscription-id/resourcegroups/resource-group-name/providers/microsoft.operationalinsights/workspaces/workspace-name",
+        "name": "cluster-name",
+        "type": "Microsoft.OperationalInsights/clusters",
+        "location": "region-name"
+      }
+    ]
+  }
+  ```
+
+### <a name="get-all-clusters-in-subscription"></a>Abrufen aller Cluster in einem Abonnement
+
+**BEFEHLSZEILENSCHNITTSTELLE (CLI)**
+
+```azurecli
+az monitor log-analytics cluster list
+```
+
+**PowerShell**
+
+```powershell
+Get-AzOperationalInsightsCluster
+```
+
+**REST**
+
+*Call*
+
+```rst
+GET https://management.azure.com/subscriptions/<subscription-id>/providers/Microsoft.OperationalInsights/clusters?api-version=2020-08-01
+Authorization: Bearer <token>
+```
+    
+*Antwort*
+    
+Dasselbe wie bei „Cluster in einer Ressourcengruppe“, jedoch im Abonnementbereich.
+
+
+
+### <a name="update-capacity-reservation-in-cluster"></a>Aktualisieren der Kapazitätsreservierung in einem Cluster
+
+Wenn sich das Datenvolumen Ihrer verknüpften Arbeitsbereiche im Laufe der Zeit ändert und Sie die Kapazitätsreservierungsebene entsprechend aktualisieren möchten. Die Kapazität wird in der Einheit GB angegeben und kann Werte von 1000 GB/Tag oder mehr in Schritten von 100 GB pro Tag aufweisen. Beachten Sie, dass Sie nicht den vollständigen REST-Anforderungstext angeben müssen, aber die SKU einschließen sollten.
+
+**BEFEHLSZEILENSCHNITTSTELLE (CLI)**
+
+```azurecli
+az monitor log-analytics cluster update --name "cluster-name" --resource-group "resource-group-name" --sku-capacity 1000
+```
+
+**PowerShell**
+
+```powershell
+Update-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -ClusterName "cluster-name" -SkuCapacity 1000
+```
+
+**REST**
+
+*Call*
+
+  ```rst
+  PATCH https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-08-01
+  Authorization: Bearer <token>
+  Content-type: application/json
+
+  {
+    "sku": {
+      "name": "capacityReservation",
+      "Capacity": 2000
+    }
+  }
+  ```
+
+### <a name="update-billingtype-in-cluster"></a>Aktualisieren von billingType im Cluster
+
+Die Eigenschaft *billingType* bestimmt die Abrechnungszuordnung für den Cluster und dessen Daten:
+- *Cluster* (Standard): Die Abrechnung wird dem Abonnement zugeordnet, das Ihre Clusterressource hostet.
+- *Arbeitsbereiche*: Die Abrechnung wird den Abonnements zugeordnet, die Ihre Arbeitsbereiche proportional hosten.
+
+**REST**
+
+*Call*
+
+  ```rst
+  PATCH https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-08-01
+  Authorization: Bearer <token>
+  Content-type: application/json
+
+  {
+    "properties": {
+      "billingType": "cluster",
+      }  
+  }
+  ```
+
+### <a name="unlink-a-workspace-from-cluster"></a>Aufheben der Verknüpfung eines Arbeitsbereichs mit einem Cluster
 
 Sie können die Verknüpfung eines Arbeitsbereichs mit einem Cluster aufheben. Nach dem Aufheben der Verknüpfung eines Arbeitsbereichs mit dem Cluster werden neue Daten, die diesem Arbeitsbereich zugeordnet sind, nicht an den dedizierten Cluster gesendet. Außerdem erfolgt die Abrechnung des Arbeitsbereichs nicht mehr über den Cluster. Alte Daten des nicht verknüpften Arbeitsbereichs können im Cluster verbleiben. Wenn diese Daten mithilfe von kundenseitig verwalteten Schlüsseln (Customer-managed keys, CMK) verschlüsselt werden, werden die Key Vault-Geheimnisse beibehalten. Das System abstrahiert diese Änderung von Log Analytics-Benutzern. Benutzer können den Arbeitsbereich einfach wie gewohnt abfragen. Das System führt bei Bedarf clusterübergreifende Abfragen für das Back-End ohne einen Hinweis auf die Benutzer durch.  
 
 > [!WARNING] 
-> Es gibt eine Begrenzung von zwei Verknüpfungsvorgängen pro Arbeitsbereich innerhalb eines Monats. Berücksichtigen und planen Sie das Aufheben der Verknüpfung von Aktionen gründlich. 
+> Es gibt eine Begrenzung von zwei Verknüpfungsvorgängen für einen bestimmten Arbeitsbereich innerhalb eines Monats. Berücksichtigen und planen Sie das Aufheben der Verknüpfung von Aktionen gründlich.
 
-## <a name="delete-a-dedicated-cluster"></a>Löschen eines dedizierten Clusters
+**BEFEHLSZEILENSCHNITTSTELLE (CLI)**
+
+```azurecli
+az monitor log-analytics workspace linked-service delete --resource-group "resource-group-name" --workspace-name "MyWorkspace" --name cluster
+```
+
+**PowerShell**
+
+Verwenden Sie den folgenden PowerShell-Befehl zum Aufheben der Verknüpfung eines Arbeitsbereichs mit einem Cluster:
+
+```powershell
+# Unlink a workspace from cluster
+Remove-AzOperationalInsightsLinkedService -ResourceGroupName {resource-group-name} -WorkspaceName {workspace-name} -LinkedServiceName cluster
+```
+
+### <a name="delete-cluster"></a>Löschen von Clustern
 
 Eine dedizierte Clusterressource kann gelöscht werden. Sie müssen die Verknüpfung aller Arbeitsbereiche mit dem Cluster aufheben, bevor Sie ihn löschen. Sie brauchen Schreibberechtigungen für die *Clusterressource*, um diesen Vorgang auszuführen. 
 
@@ -381,6 +479,9 @@ Nachdem die Clusterressource gelöscht wurde, wechselt der physische Cluster in 
 Eine *Clusterressource*, die in den letzten 14 Tagen gelöscht wurde, befindet sich im vorläufig gelöschten Zustand und kann zusammen mit den Daten wiederhergestellt werden. Da bei der Löschung der *Clusterressource* die Zuordnung aller Arbeitsbereiche zur *Clusterressource* aufgehoben wurde, müssen Sie die Arbeitsbereiche nach der Wiederherstellung neu zuordnen. Der Wiederherstellungsvorgang kann vom Benutzer nicht durchgeführt werden. Wenden Sie sich daher bei Wiederherstellungsanfragen an Ihren Microsoft-Kanal oder den Support.
 
 Innerhalb von 14 Tagen nach dem Löschvorgang ist der Name der Clusterressource reserviert und kann nicht von anderen Ressourcen verwendet werden.
+
+> [!WARNING] 
+> Es gibt eine Begrenzung von drei Clustern pro Abonnement. Dazu zählen sowohl aktive als auch vorläufig gelöschte Cluster. Kunden sollten keine wiederkehrenden Prozeduren erstellen, mit denen Cluster erstellt und gelöscht werden. Dies hat erhebliche Auswirkungen auf Log Analytics-Back-End-Systeme.
 
 **PowerShell**
 
@@ -403,7 +504,73 @@ Verwenden Sie den folgenden REST-Aufruf zum Löschen eines Clusters:
 
   200 – OK
 
+## <a name="limits-and-constraints"></a>Grenzen und Einschränkungen
 
+- Die maximale Anzahl von Clustern pro Region und Abonnement beträgt 2.
+
+- Das Maximum der verknüpften Arbeitsbereiche für den Cluster beträgt 1000.
+
+- Sie können einen Arbeitsbereich mit Ihrem Cluster verknüpfen und dann die Verknüpfung aufheben. Die Anzahl der Verknüpfungen in einem bestimmten Arbeitsbereich ist innerhalb eines Zeitraums von 30 Tagen auf 2 begrenzt.
+
+- Die Arbeitsbereichverknüpfung mit einem Cluster sollte NUR ausgeführt werden, nachdem Sie sichergestellt haben, dass die Log Analytics-Clusterbereitstellung abgeschlossen wurde. Daten, die vor dem Abschluss an Ihren Arbeitsbereich gesendet wurden, werden gelöscht und können nicht wiederhergestellt werden.
+
+- Das Verschieben eines Clusters in eine andere Ressourcengruppe oder ein anderes Abonnement wird derzeit nicht unterstützt.
+
+- Die Arbeitsbereichverknüpfung mit dem Cluster schlägt fehl, wenn er mit einem anderen Cluster verknüpft ist.
+
+- Lockbox ist in China derzeit nicht verfügbar. 
+
+- [Doppelte Verschlüsselung](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption) wird automatisch für Cluster konfiguriert, die ab Oktober 2020 in unterstützten Regionen erstellt werden. Sie können überprüfen, ob Ihr Cluster für doppelte Verschlüsselung konfiguriert ist. Dazu verwenden Sie eine GET-Anforderung für den Cluster und beobachten den Wert der Eigenschaft `"isDoubleEncryptionEnabled"`. Bei Clustern mit aktivierter doppelter Verschlüsselung lautet dieser `true`. 
+  - Wenn Sie einen Cluster erstellen und die Fehlermeldung „Die doppelte Verschlüsselung für Cluster wird von <Regionsname> nicht unterstützt.“ erhalten, können Sie den Cluster trotzdem ohne doppelte Verschlüsselung erstellen. Fügen Sie die Eigenschaft `"properties": {"isDoubleEncryptionEnabled": false}` im REST-Anforderungstext hinzu.
+  - Die Einstellung für doppelte Verschlüsselung kann nach dem Erstellen des Clusters nicht mehr geändert werden.
+
+## <a name="troubleshooting"></a>Problembehandlung
+
+- Wenn beim Erstellen eines Clusters ein Konfliktfehler auftritt, haben Sie Ihren Cluster möglicherweise in den letzten 14 Tagen gelöscht und dieser befindet sich nun im Zustand des vorläufigen Löschens. Der Clustername bleibt während des Zeitraums des vorläufigen Löschens reserviert, und Sie können keinen neuen Cluster mit diesem Namen erstellen. Der Name wird nach Ablauf des Zeitraums des vorläufigen Löschens freigegeben, wenn der Cluster dauerhaft gelöscht wird.
+
+- Wenn Sie den Cluster aktualisieren, während ein Vorgang läuft, schlägt der Vorgang fehl.
+
+- Einige Vorgänge dauern lange und können einige Zeit in Anspruch nehmen. Dies sind Erstellen des Clusters, Aktualisieren des Clusterschlüssels und Löschen des Clusters. Sie können den Vorgangsstatus auf zwei Arten überprüfen:
+  - Kopieren Sie bei Verwendung von REST den URL-Wert von „Azure-AsyncOperation“ aus der Antwort, und befolgen Sie die [Überprüfung des Status asynchroner Vorgänge](#asynchronous-operations-and-status-check).
+  - Senden Sie eine GET-Anforderung an den Cluster oder Arbeitsbereich, und beobachten Sie die Antwort. Beispielsweise weist der nicht verknüpfte Arbeitsbereich unter *features* nicht die *clusterResourceId* auf.
+
+- Fehlermeldungen
+  
+  Clustererstellung:
+  -  400 – Der Clustername ist ungültig. Der Clustername darf die Zeichen „a–z“, „A–Z“, „0–9“ und die Länge „3–63“ enthalten.
+  -  400 – Der Text der Anforderung ist NULL oder hat ein ungültiges Format.
+  -  400 – Der SKU-Name ist ungültig. Legen Sie den SKU-Namen auf „capacityReservation“ fest.
+  -  400 – Kapazität wurde bereitgestellt, aber SKU ist nicht „capacityReservation“. Legen Sie den SKU-Namen auf „capacityReservation“ fest.
+  -  400 – Fehlende Kapazität in SKU. Legen Sie den Kapazitätswert in Schritten von 100 (GB) auf „1.000“ oder höher fest.
+  -  400 – Die Kapazität in SKU liegt nicht im Bereich. Sie sollte mindestens 1.000 und bis zur maximal zulässigen Kapazität betragen, die in Ihrem Arbeitsbereich unter „Nutzung und geschätzte Kosten“ zur Verfügung steht.
+  -  400 – Die Kapazität ist für 30 Tage gesperrt. Eine Verringerung der Kapazität ist 30 Tage nach dem Update zulässig.
+  -  400 – Es wurde keine SKU festgelegt. Legen Sie den SKU-Namen auf „capacityReservation“ und den Kapazitätswert in Schritten von 100 (GB) auf „1.000“ oder höher fest.
+  -  400 – „Identität“ ist NULL oder leer. Legen Sie die Identität mit dem Typ „systemAssigned“ fest.
+  -  400 – „KeyVaultProperties“ werden bei der Erstellung festgelegt. Aktualisieren Sie „KeyVaultProperties“ nach der Clustererstellung.
+  -  400 – Der Vorgang kann jetzt nicht ausgeführt werden. Der asynchrone Vorgang befindet sich in einem anderen Zustand als „erfolgreich“. Der Cluster muss seinen Vorgang beenden, bevor ein Aktualisierungsvorgang ausgeführt wird.
+
+  Clusterupdate
+  -  400 –-Der Cluster befindet sich im Zustand „wird gelöscht“. Asynchroner Vorgang wird ausgeführt. Der Cluster muss seinen Vorgang beenden, bevor ein Aktualisierungsvorgang ausgeführt wird.
+  -  400 – „KeyVaultProperties“ ist nicht leer, hat aber ein ungültiges Format. Lesen Sie [Key Identifier Update](../platform/customer-managed-keys.md#update-cluster-with-key-identifier-details) (Aktualisierung des Schlüsselbezeichners).
+  -  400 – Fehler beim Überprüfen des Schlüssels in Key Vault. Mögliche Ursachen: Fehlende Berechtigungen, oder der Schlüssel ist nicht vorhanden. Vergewissern Sie sich, dass Sie die [Schlüssel- und Zugriffsrichtlinie in Key Vault](../platform/customer-managed-keys.md#grant-key-vault-permissions) festgelegt haben.
+  -  400 – Der Schlüssel kann nicht wiederhergestellt werden. Key Vault muss auf „Vorläufiges Löschen und Löschschutz“ festgelegt werden. Lesen Sie die [Dokumentation zu Key Vault](../../key-vault/general/soft-delete-overview.md).
+  -  400 – Der Vorgang kann jetzt nicht ausgeführt werden. Warten Sie, bis der asynchrone Vorgang beendet wurde, und versuchen Sie es erneut.
+  -  400 –-Der Cluster befindet sich im Zustand „wird gelöscht“. Warten Sie, bis der asynchrone Vorgang beendet wurde, und versuchen Sie es erneut.
+
+  Clusterabruf:
+    -  404 – Der Cluster wurde nicht gefunden; möglicherweise wurde er gelöscht. Wenn Sie versuchen, einen Cluster mit diesem Namen zu erstellen, und es zu einem Konflikt kommt, ist der Cluster 14 Tage lang im Zustand „Vorläufig gelöscht“. Sie können den Support kontaktieren, um ihn wiederherzustellen, oder einen anderen Namen zum Erstellen eines neuen Clusters verwenden. 
+
+  Clusterlöschung
+    -  409 – Ein Cluster kann im Bereitstellungsstatus nicht gelöscht werden. Warten Sie, bis der asynchrone Vorgang beendet wurde, und versuchen Sie es erneut.
+
+  Arbeitsbereichverknüpfung:
+  -  404 – Arbeitsbereich nicht gefunden. Der von Ihnen angegebene Arbeitsbereich ist nicht vorhanden oder wurde gelöscht.
+  -  409 – Arbeitsbereichverknüpfung oder Aufheben der Verknüpfung in Bearbeitung.
+  -  400 – Der Cluster wurde nicht gefunden, der angegebene Cluster ist nicht vorhanden, oder er wurde gelöscht. Wenn Sie versuchen, einen Cluster mit diesem Namen zu erstellen, und es zu einem Konflikt kommt, ist der Cluster 14 Tage lang im Zustand „Vorläufig gelöscht“. Sie können den Support kontaktieren, um ihn wiederherzustellen.
+
+  Aufheben der Arbeitsbereichverknüpfung:
+  -  404 – Arbeitsbereich nicht gefunden. Der von Ihnen angegebene Arbeitsbereich ist nicht vorhanden oder wurde gelöscht.
+  -  409 – Arbeitsbereichverknüpfung oder Aufheben der Verknüpfung in Bearbeitung.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

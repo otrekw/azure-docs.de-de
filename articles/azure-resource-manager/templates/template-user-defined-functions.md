@@ -3,12 +3,12 @@ title: Benutzerdefinierte Funktionen in Vorlagen
 description: Beschreibt, wie benutzerdefinierte Funktionen in einer Azure Resource Manager-Vorlage (ARM-Vorlage) definiert und verwendet werden.
 ms.topic: conceptual
 ms.date: 03/09/2020
-ms.openlocfilehash: 12199aca788438e4558ed2c607b866f0dc723e2a
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: f428fa3bc827af3820ad9f928f4f92b881c9c84c
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96436962"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934678"
 ---
 # <a name="user-defined-functions-in-arm-template"></a>Benutzerdefinierte Funktionen in ARM-Vorlagen
 
@@ -44,7 +44,7 @@ Für benutzerdefinierte Funktionen müssen Namespacewerte verwendet werden, um N
 
 ## <a name="use-the-function"></a>Verwenden der Funktion
 
-Das folgende Beispiel zeigt eine Vorlage, die eine benutzerdefinierte Funktion enthält. Die Funktion wird dazu verwendet, einen eindeutigen Namen für ein Speicherkonto abzurufen. Die Vorlage weist den Parameter **storageNamePrefix** auf, der als Parameter an die Funktion übergeben wird.
+Das folgende Beispiel zeigt eine Vorlage, die eine benutzerdefinierte Funktion enthält. Die Funktion wird dazu verwendet, einen eindeutigen Namen für ein Speicherkonto abzurufen. Die Vorlage weist den Parameter `storageNamePrefix` auf, der als Parameter an die Funktion übergeben wird.
 
 ```json
 {

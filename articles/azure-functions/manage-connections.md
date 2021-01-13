@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie durch die Verwendung statischer Verbindungscl
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 02/25/2018
-ms.openlocfilehash: 53848e6273cf59439d44b431652981b18bdd5ba6
-ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
+ms.openlocfilehash: ec16ce3e7f9793be2a012a029bcca31c9a7ea4cf
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97755955"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936701"
 ---
 # <a name="manage-connections-in-azure-functions"></a>Verwalten von Verbindungen in Azure Functions
 
@@ -19,7 +19,7 @@ Funktionen innerhalb einer Funktions-App nutzen Ressourcen gemeinsam. Unter dies
 
 Die Anzahl der verfügbaren Verbindungen ist teilweise begrenzt, da eine Funktions-App in einer [Sandboxumgebung](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox) ausgeführt wird. Eine Einschränkung, die die Sandbox Ihrem Code auferlegt, ist eine Grenze für die Anzahl der ausgehenden Verbindungen, die derzeit 600 aktive (insgesamt 1.200) Verbindungen pro Instanz beträgt. Wenn diese Grenze erreicht ist, schreibt die Functions-Runtime die folgende Meldung in die Protokolle: `Host thresholds exceeded: Connections`. Weitere Informationen finden Sie unter [Funktions-Apps: Diensteinschränkungen](functions-scale.md#service-limits).
 
-Dieser Grenzwert gilt pro Instanz. Wenn der [Skalierungscontroller Funktions-App-Instanzen hinzufügt](functions-scale.md#how-the-consumption-and-premium-plans-work), um mehr Anforderungen zu verarbeiten, weist jede Instanz einen unabhängigen Verbindungsgrenzwert auf. Das heißt, es gibt keinen globalen Verbindungsgrenzwert, um sie können über alle aktiven Instanzen weit mehr als 600 aktive Verbindungen verwenden.
+Dieser Grenzwert gilt pro Instanz. Wenn der [Skalierungscontroller Funktions-App-Instanzen hinzufügt](event-driven-scaling.md), um mehr Anforderungen zu verarbeiten, weist jede Instanz einen unabhängigen Verbindungsgrenzwert auf. Das heißt, es gibt keinen globalen Verbindungsgrenzwert, um sie können über alle aktiven Instanzen weit mehr als 600 aktive Verbindungen verwenden.
 
 Stellen Sie bei der Problembehandlung sicher, dass Sie Application Insights für Ihre Funktions-App aktiviert haben. Mit Application Insights können Sie Metriken für Ihre Funktions-Apps wie Ausführungen anzeigen. Weitere Informationen finden Sie unter [Anzeigen von Telemetriedaten in Application Insights](analyze-telemetry-data.md#view-telemetry-in-application-insights).  
 

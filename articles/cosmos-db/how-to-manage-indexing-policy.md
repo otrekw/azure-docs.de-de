@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/02/2020
 ms.author: tisande
 ms.custom: devx-track-python, devx-track-js, devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: cd51210a64223fab5d2d48a91bd3d0a6521a9627
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 8d52f8c59e83a4aae8724100770965f756a439fb
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93341313"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98015690"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>Verwalten von Indizierungsrichtlinien in Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -27,7 +27,7 @@ In Azure Cosmos DB werden Daten gemäß [Indizierungsrichtlinien](index-policy.m
 
 Hier sehen Sie einige Beispiele für Indizierungsrichtlinien im [JSON-Format](index-policy.md#include-exclude-paths). So werden sie für das Azure-Portal verfügbar gemacht. Die gleichen Parameter können über die Azure CLI oder ein beliebiges SDK festgelegt werden.
 
-### <a name="opt-out-policy-to-selectively-exclude-some-property-paths"></a>Deaktivierungsrichtlinie zum selektiven Ausschließen einiger Eigenschaftspfade
+### <a name="opt-out-policy-to-selectively-exclude-some-property-paths"></a><a id="range-index"></a>Deaktivierungsrichtlinie zum selektiven Ausschließen einiger Eigenschaftspfade
 
 ```json
     {
@@ -146,7 +146,7 @@ Diese Indizierungsrichtlinie entspricht der unten gezeigten Indizierungsrichtlin
 > [!NOTE]
 > Allgemein wird die Verwendung einer Indizierungsrichtlinie zur **Deaktivierung** empfohlen, damit Azure Cosmos DB neue Eigenschaften, die Ihrem Datenmodell hinzugefügt werden, proaktiv indizieren kann.
 
-### <a name="using-a-spatial-index-on-a-specific-property-path-only"></a>Verwenden eines räumlichen Index nur für einen bestimmten Eigenschaftspfad
+### <a name="using-a-spatial-index-on-a-specific-property-path-only"></a><a id="spatial-index"></a>Verwenden eines räumlichen Index nur für einen bestimmten Eigenschaftspfad
 
 ```json
 {
@@ -176,7 +176,7 @@ Diese Indizierungsrichtlinie entspricht der unten gezeigten Indizierungsrichtlin
 }
 ```
 
-## <a name="composite-indexing-policy-examples"></a>Zusammengesetzte Indizierung – Richtlinienbeispiele
+## <a name="composite-indexing-policy-examples"></a><a id="composite-index"></a>Zusammengesetzte Indizierung – Richtlinienbeispiele
 
 Über das Einschließen oder Ausschließen von Pfaden für einzelne Eigenschaften hinaus können Sie auch einen zusammengesetzten Index angeben. Wenn Sie eine Abfrage für ausführen möchten, die eine `ORDER BY`-Klausel für mehrere Eigenschaften aufweist, ist ein [zusammengesetzter Index](index-policy.md#composite-indexes) für diese Eigenschaften erforderlich. Außerdem bedeuten zusammengesetzte Indizes einen Leistungsvorteil für Abfragen, die über mehrere Filter oder sowohl über einen Filter als auch eine ORDER BY-Klausel verfügen.
 
@@ -359,7 +359,7 @@ Azure Cosmos-Container speichern ihre Indizierungsrichtlinie als ein JSON-Dokume
 
 1. Erstellen Sie ein neues Azure Cosmos-Konto, oder wählen Sie ein bereits vorhandenes Konto aus.
 
-1. Öffnen Sie den Bereich **Daten-Explorer** , und wählen Sie den gewünschten Container aus.
+1. Öffnen Sie den Bereich **Daten-Explorer**, und wählen Sie den gewünschten Container aus.
 
 1. Klicken Sie auf **Skalierung und Einstellungen**.
 

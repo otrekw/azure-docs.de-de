@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: 898c106fb961373889fbae87db6c755fe2495ff8
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: d602687ea623b90ea5dcae4ece09a1ccc438ea57
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96621262"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97822385"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>Transaktionsfunktionen im kommerziellen Marketplace
 
@@ -90,7 +90,7 @@ Diese Option ermöglicht höhere oder niedrigere Preise als für das öffentlich
 
 Wir berechnen eine Store-Standarddienstgebühr von 20 %, wenn Kunden Ihr Transaktionsangebot über den kommerziellen Marketplace erwerben. Ausführliche Informationen zu dieser Gebühr finden Sie in Abschnitt 5c der [Microsoft-Herausgebervereinbarung](https://go.microsoft.com/fwlink/?LinkID=699560).
 
-Für bestimmte transaktionsfähige Angebote, die Sie im kommerziellen Marketplace veröffentlichen, können Sie eine reduzierte Store-Dienstgebühr von 10 % beantragen. Damit ein Angebot berechtigt ist, muss es von Microsoft als „Azure IP Co-Sell Incentivized“ gekennzeichnet worden sein. Die Anforderungen für die Berechtigung müssen mindestens fünf (5) Arbeitstage vor dem Ende eines jeden Kalendermonats erfüllt sein, damit die reduzierte Marketplace-Dienstgebühr für den Monat in Anspruch genommen werden kann. Einzelheiten zur Berechtigung für das IP-Co-Selling finden Sie unter [Requirements for Co-sell Status](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status) (Anforderungen für den Co-Selling-Status).
+Für bestimmte transaktionsfähige Angebote, die Sie im kommerziellen Marketplace veröffentlichen, können Sie eine reduzierte Store-Dienstgebühr von 10 % beantragen. Damit ein Angebot berechtigt ist, muss es von Microsoft als „Azure IP Co-Sell Incentivized“ gekennzeichnet worden sein. Die Anforderungen für die Berechtigung müssen mindestens fünf Arbeitstage vor dem Ende eines jeden Kalendermonats erfüllt sein, damit die reduzierte Marketplace-Dienstgebühr in Anspruch genommen werden kann. Sobald die Anforderungen für die Berechtigung erfüllt sind, wird die reduzierte Dienstgebühr für alle Transaktionen ab dem ersten Tag des folgenden Monats gewährt, bis der Azure IP-Co-Sell Incentivized-Status nicht mehr gegeben ist. Einzelheiten zur Berechtigung für das IP-Co-Selling finden Sie unter [Requirements for Co-sell Status](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status) (Anforderungen für den Co-Selling-Status).
 
 Die reduzierte Marketplace-Dienstgebühr gilt für SaaS, VMs, verwaltete Apps und andere berechtigte transaktionsfähige IaaS-Lösungen im Rahmen der Azure IP-Co-Selling-Incentives, die über den kommerziellen Marketplace bereitgestellt werden. Kostenpflichtige SaaS-Angebote, die einer Microsoft Teams-App oder mindestens zwei Microsoft 365-Add-Ins (wie Excel, PowerPoint, Word, Outlook und SharePoint) zugeordnet sind und in Microsoft AppSource veröffentlicht werden, erhalten ebenfalls diesen Rabatt.
 

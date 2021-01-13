@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f34ca47d5ff6c809eef40f89ee0049285cfd7d42
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: aa6726bb5c60dceab0a58632da99c04361183246
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97355392"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97932689"
 ---
 # <a name="add-an-api-connector-to-a-user-flow"></a>Hinzufügen eines API-Connectors zu einem Benutzerflow
 
@@ -319,7 +319,7 @@ Stellen Sie Folgendes sicher:
 * Die **Endpunkt-URL** des API-Connectors verweist auf den richtigen API-Endpunkt.
 * In Ihrer API wird explizit auf NULL-Werte der empfangenen Ansprüche geprüft.
 * Ihre API antwortet so schnell wie möglich, um eine flüssige Darstellung für den Benutzer zu gewährleisten.
-    * Wenn Sie eine serverlose Funktion oder einen skalierbaren Webdienst verwenden, nutzen Sie einen Hostingplan, mit dem die API im aktiven Zustand („wach“ oder „warm“) Für Azure Functions wird empfohlen, den [Premium-Plan](../../azure-functions/functions-scale.md#premium-plan) zu verwenden. 
+    * Wenn Sie eine serverlose Funktion oder einen skalierbaren Webdienst verwenden, nutzen Sie einen Hostingplan, mit dem die API im aktiven Zustand („wach“ oder „warm“) Für Azure Functions wird empfohlen, den [Premium-Plan](../../azure-functions/functions-premium-plan.md) zu verwenden. 
 
 
 ### <a name="use-logging"></a>Verwenden von Protokollierung

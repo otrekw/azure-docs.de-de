@@ -1,18 +1,17 @@
 ---
 title: Verarbeiten von IoT-Datenströmen in Echtzeit mit Azure Stream Analytics
 description: IoT-Sensortags und -Datenströme mit Stream Analytics und Echtzeit-Datenverarbeitung
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: enkrumah
+ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 11/26/2019
-ms.openlocfilehash: 311aca139220622a0436d490e73a536c3fc898c9
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: a438401ff93c20d8759e6128936c3626bd3de484
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129013"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98012681"
 ---
 # <a name="process-real-time-iot-data-streams-with-azure-stream-analytics"></a>Verarbeiten von IoT-Datenströmen in Echtzeit mit Azure Stream Analytics
 
@@ -125,7 +124,7 @@ HAVING Avg(temp)>100
 
 ![Filterabfrage (30 Sekunden)](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-10.png)
 
-Die Ergebnisse umfassen nur noch 245 Zeilen, und es werden die Namen der Sensoren aufgeführt, bei denen die Durchschnittstemperatur höher als 100 ist. Bei dieser Abfrage wird der Datenstrom mit den Ereignissen nach **dspl** (Sensorname) gruppiert, und es wird ein **rollierendes Fenster** von 30 Sekunden verwendet. Bei zeitlichen Abfragen muss angegeben werden, wie der Zeitablauf erfolgen soll. Mit der **TIMESTAMP BY** -Klausel haben Sie die Spalte **OUTPUTTIME** angegeben, um Zeiten allen Zeitberechnungen zuzuordnen. Ausführliche Informationen finden Sie in den Artikeln [Zeitverwaltung (Azure Stream Analytics)](/stream-analytics-query/time-management-azure-stream-analytics) und [Windowing-Funktionen (Azure Stream Analytics)](/stream-analytics-query/windowing-azure-stream-analytics).
+Die Ergebnisse umfassen nur noch 245 Zeilen, und es werden die Namen der Sensoren aufgeführt, bei denen die Durchschnittstemperatur höher als 100 ist. Bei dieser Abfrage wird der Datenstrom mit den Ereignissen nach **dspl** (Sensorname) gruppiert, und es wird ein **rollierendes Fenster** von 30 Sekunden verwendet. Bei zeitlichen Abfragen muss angegeben werden, wie der Zeitablauf erfolgen soll. Mit der **TIMESTAMP BY**-Klausel haben Sie die Spalte **OUTPUTTIME** angegeben, um Zeiten allen Zeitberechnungen zuzuordnen. Ausführliche Informationen finden Sie in den Artikeln [Zeitverwaltung (Azure Stream Analytics)](/stream-analytics-query/time-management-azure-stream-analytics) und [Windowing-Funktionen (Azure Stream Analytics)](/stream-analytics-query/windowing-azure-stream-analytics).
 
 ### <a name="query-detect-absence-of-events"></a>Abfrage: Abwesenheit von Ereignissen erkennen
 
@@ -148,7 +147,7 @@ WHERE t2.dspl IS NULL
 
 ![Abwesenheit von Ereignissen erkennen](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-11.png)
 
-Hier verwenden wir den Verknüpfungsvorgang **LEFT OUTER** für den gleichen Datenstrom (Selbstverknüpfung). Für eine innere Verknüpfung ( **INNER** ) wird nur dann ein Ergebnis zurückgegeben, wenn eine Übereinstimmung gefunden wird.  Wenn ein Ereignis von der linken Seite der Verknüpfung keine Übereinstimmung besitzt, wird bei **LEFT OUTER** für alle Spalten der rechten Seite eine Zeile mit NULL zurückgegeben. Dieses Verfahren ist äußerst hilfreich, um die Abwesenheit von Ereignissen zu ermitteln. Weitere Informationen finden Sie unter [JOIN (Azure Stream Analytics)](/stream-analytics-query/join-azure-stream-analytics).
+Hier verwenden wir den Verknüpfungsvorgang **LEFT OUTER** für den gleichen Datenstrom (Selbstverknüpfung). Für eine innere Verknüpfung (**INNER**) wird nur dann ein Ergebnis zurückgegeben, wenn eine Übereinstimmung gefunden wird.  Wenn ein Ereignis von der linken Seite der Verknüpfung keine Übereinstimmung besitzt, wird bei **LEFT OUTER** für alle Spalten der rechten Seite eine Zeile mit NULL zurückgegeben. Dieses Verfahren ist äußerst hilfreich, um die Abwesenheit von Ereignissen zu ermitteln. Weitere Informationen finden Sie unter [JOIN (Azure Stream Analytics)](/stream-analytics-query/join-azure-stream-analytics).
 
 ## <a name="conclusion"></a>Zusammenfassung
 

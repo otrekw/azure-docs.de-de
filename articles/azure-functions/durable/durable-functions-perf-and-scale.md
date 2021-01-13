@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: b9fc465b5e5f132264fd36e004fa3ee7623b87a5
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: c94218248f1122cdb60ab8124bc9d9365fe8947b
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96854987"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97931737"
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Leistung und Skalierbarkeit in Durable Functions (Azure Functions)
 
@@ -51,7 +51,7 @@ Die Durable Task-Erweiterung implementiert einen zufälligen exponentiellen Back
 Die maximale Abrufverzögerung kann über die Eigenschaft `maxQueuePollingInterval` in der Datei [host.json](../functions-host-json.md#durabletask) konfiguriert werden. Die Festlegung dieser Eigenschaft auf einen höheren Wert kann zu höherer Latenz bei der Nachrichtenverarbeitung führen. Eine höhere Latenz wird nur nach Zeiträumen ohne Aktivität erwartet. Die Festlegung dieser Eigenschaft auf einen niedrigeren Wert kann aufgrund verstärkter Speichertransaktionen zu höheren Speicherkosten führen.
 
 > [!NOTE]
-> Bei der Ausführung in Verbrauchs- und Premium-Tarifen von Azure Functions ruft der [Azure Functions-Skalierungscontroller](../functions-scale.md#how-the-consumption-and-premium-plans-work) alle Steuerelement- und Arbeitselement-Warteschlangen einmal alle 10 Sekunden ab. Dieser zusätzliche Abruf ist erforderlich, um zu ermitteln, wann die Instanzen der Funktions-Apps aktiviert und Skalierungsentscheidungen getroffen werden sollen. Zum Zeitpunkt der Erstellung dieses Artikels ist dieses Intervall von 10 Sekunden konstant und kann nicht konfiguriert werden.
+> Bei der Ausführung in Verbrauchs- und Premium-Tarifen von Azure Functions ruft der [Azure Functions-Skalierungscontroller](../event-driven-scaling.md) alle Steuerelement- und Arbeitselement-Warteschlangen einmal alle 10 Sekunden ab. Dieser zusätzliche Abruf ist erforderlich, um zu ermitteln, wann die Instanzen der Funktions-Apps aktiviert und Skalierungsentscheidungen getroffen werden sollen. Zum Zeitpunkt der Erstellung dieses Artikels ist dieses Intervall von 10 Sekunden konstant und kann nicht konfiguriert werden.
 
 ### <a name="orchestration-start-delays"></a>Verzögerungen beim Starten der Orchestrierung
 Orchestrierungsinstanzen werden gestartet, indem eine `ExecutionStarted`-Nachricht zu einer der Steuerungswarteschlangen des Taskhubs hinzugefügt wird. Unter bestimmten Umständen sind möglicherweise Verzögerungen von mehreren Sekunden zwischen der geplanten Ausführung einer Orchestrierung und der tatsächlichen Ausführung zu beobachten. Während dieses Zeitraums verbleibt die Orchestrierungsinstanz im Zustand `Pending`. Für diese Verzögerungen gibt es zwei mögliche Gründe:
@@ -138,7 +138,7 @@ Im Allgemeinen sollten Orchestratorfunktionen einfach sein und keine große Rech
 
 ## <a name="auto-scale"></a>Automatische Skalierung
 
-Wie bei allen Azure Functions-Vorgängen, die im Nutzungsplan oder Tarifen des Typs „Elastisch Premium“ ausgeführt werden, unterstützt Durable Functions die automatische Skalierung über den [Azure Functions-Skalierungscontroller](../functions-scale.md#runtime-scaling). Der Skalierungscontroller überwacht die Latenz aller Warteschlangen, indem regelmäßig _Peek_-Befehle ausgegeben werden. Basierend auf den Latenzen der eingesehenen Nachrichten legt der Skalierungscontroller fest, ob virtuelle Computer hinzugefügt oder entfernt werden.
+Wie bei allen Azure Functions-Vorgängen, die im Nutzungsplan oder Tarifen des Typs „Elastisch Premium“ ausgeführt werden, unterstützt Durable Functions die automatische Skalierung über den [Azure Functions-Skalierungscontroller](../event-driven-scaling.md#runtime-scaling). Der Skalierungscontroller überwacht die Latenz aller Warteschlangen, indem regelmäßig _Peek_-Befehle ausgegeben werden. Basierend auf den Latenzen der eingesehenen Nachrichten legt der Skalierungscontroller fest, ob virtuelle Computer hinzugefügt oder entfernt werden.
 
 Wenn der Skalierungscontroller bestimmt, dass die Latenzen der Nachrichten der Steuerelement-Warteschlangen zu hoch sind, werden VM-Instanzen hinzugefügt, bis die Nachrichtenlatenz auf ein annehmbares Maß verringert ist oder bis die Partitionsanzahl der Steuerelement-Warteschlangen erreicht ist. Auf ähnliche Weise fügt der Skalierungscontroller kontinuierlich VM-Instanzen hinzu, wenn Latenzen der Warteschlangen für Arbeitsaufgaben hoch sind, jedoch unabhängig von der Partitionsanzahl.
 

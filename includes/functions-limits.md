@@ -4,14 +4,14 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 05/04/2020
 ms.author: glenga
-ms.openlocfilehash: 826fccad043b067ce86d5f56eaebc6ee48b532d1
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: aa75d1d57f44bb1a4d6513823ac97ac9917b260f
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96025883"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934463"
 ---
-| Resource |[Verbrauchstarif](../articles/azure-functions/functions-scale.md#consumption-plan)|[Premium-Plan](../articles/azure-functions/functions-scale.md#premium-plan)|[Dedizierter Plan](../articles/azure-functions/functions-scale.md#app-service-plan)|[ASE](../articles/app-service/environment/intro.md)| [Kubernetes](../articles/aks/quotas-skus-regions.md) |
+| Resource |[Verbrauchstarif](../articles/azure-functions/consumption-plan.md)|[Premium-Plan](../articles/azure-functions/functions-premium-plan.md)|[Dedizierter Plan](../articles/azure-functions/dedicated-plan.md)|[ASE](../articles/app-service/environment/intro.md)| [Kubernetes](../articles/aks/quotas-skus-regions.md) |
 | --- | --- | --- | --- | --- | --- |
 |Standardmäßige [Timeoutdauer](../articles/azure-functions/functions-scale.md#timeout) (in Minuten) |5 | 30 |30<sup>1</sup> | 30 | 30 |
 |Maximale [Timeoutdauer](../articles/azure-functions/functions-scale.md#timeout) (in Minuten) |10 | unbounded<sup>7</sup> | unbounded<sup>2</sup> | unbounded | unbounded |
@@ -28,10 +28,10 @@ ms.locfileid: "96025883"
 | benutzerdefinierte Domäne [SSL-Unterstützung](../articles/app-service/configure-ssl-bindings.md) |Unbegrenzte Anzahl von SNI SSL-Verbindungen inbegriffen | Unbegrenzte Anzahl von SNI SSL-Verbindungen und 1 IP-SSL-Verbindung inbegriffen |Unbegrenzte Anzahl von SNI SSL-Verbindungen und 1 IP-SSL-Verbindung inbegriffen | Unbegrenzte Anzahl von SNI SSL-Verbindungen und 1 IP-SSL-Verbindung inbegriffen | – |
 
 <sup>1</sup> Das Timeout für die Laufzeit von Functions 1.x in einem App Service-Plan ist standardmäßig unbegrenzt.  
-<sup>2</sup> Hierfür muss der App Service-Plan auf [Always On](../articles/azure-functions/functions-scale.md#always-on) festgelegt werden. Die Bezahlung erfolgt zu den üblichen [Raten](https://azure.microsoft.com/pricing/details/app-service/).  
+<sup>2</sup> Hierfür muss der App Service-Plan auf [Always On](../articles/azure-functions/dedicated-plan.md#always-on) festgelegt werden. Die Bezahlung erfolgt zu den üblichen [Raten](https://azure.microsoft.com/pricing/details/app-service/).  
 <sup>3</sup> Diese Grenzwerte werden [auf dem Host festgelegt](https://github.com/Azure/azure-functions-host/blob/dev/src/WebJobs.Script.WebHost/web.config).  
 <sup>4</sup> Die tatsächliche Anzahl der Funktions-Apps, die Sie hosten können, hängt von der Aktivität der Apps, der Größe der Computerinstanzen und der entsprechenden Ressourcenauslastung ab.  
 <sup>5</sup> Der Speichergrenzwert entspricht der gesamten Inhaltsgröße aller Apps im gleichen App Service-Plan im temporären Speicher. Der Verbrauchsplan verwendet Azure Files zur temporären Speicherung.  
-<sup>6</sup> Wenn Ihre Funktions-App unter einem [Verbrauchsplan](../articles/azure-functions/functions-scale.md#consumption-plan) gehostet wird, wird nur die CNAME-Option unterstützt. Für Funktions-Apps unter einem [Premium-Plan](../articles/azure-functions/functions-scale.md#premium-plan) oder einem [App Service-Plan](../articles/azure-functions/functions-scale.md#app-service-plan) können Sie eine benutzerdefinierte Domäne entweder mit einem CNAME- oder einem A-Eintrag zuordnen.  
+<sup>6</sup> Wenn Ihre Funktions-App unter einem [Verbrauchsplan](../articles/azure-functions/consumption-plan.md) gehostet wird, wird nur die CNAME-Option unterstützt. Für Funktions-Apps unter einem [Premium-Plan](../articles/azure-functions/functions-premium-plan.md) oder einem [App Service-Plan](../articles/azure-functions/dedicated-plan.md) können Sie eine benutzerdefinierte Domäne entweder mit einem CNAME- oder einem A-Eintrag zuordnen.  
 <sup>7</sup> Garantiert für bis zu 60 Minuten  
 <sup>8</sup> Worker sind Rollen, die Kunden-Apps hosten. Worker sind in drei festen Größen verfügbar: Eine vCPU/3,5 GB RAM; zwei vCPUs/7 GB RAM; vier vCPUs/14 GB RAM.

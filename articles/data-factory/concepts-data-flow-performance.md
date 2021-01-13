@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
-ms.date: 11/24/2020
-ms.openlocfilehash: cc06f12317f5e30721452e07bd4dc5f50dfdb7ec
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.date: 12/18/2020
+ms.openlocfilehash: d23b2f65f25b704beaee12c53e47706653dcc208
+ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96022359"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97858585"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Anleitung zur Leistung und Optimierung der Mapping Data Flow-Funktion
 
@@ -169,7 +169,7 @@ Sie können Lesevorgänge aus Azure SQL-Datenbank durchführen, indem Sie eine T
 
 ### <a name="azure-synapse-analytics-sources"></a>Azure Synapse Analytics-Quellen
 
-Bei Verwendung von Azure Synapse Analytics ist in den Quelloptionen die Einstellung **Staging aktivieren** vorhanden. Dies ermöglicht ADF das Lesen aus Synapse über ```Polybase```. Bei dieser Vorgehensweise ergibt sich eine starke Verbesserung der Leseleistung. Beim Aktivieren von ```Polybase``` müssen Sie in den Einstellungen für Datenflussaktivitäten einen Azure Blob Storage- oder Azure Data Lake Storage Gen2-Stagingspeicherort angeben.
+Bei Verwendung von Azure Synapse Analytics ist in den Quelloptionen die Einstellung **Staging aktivieren** vorhanden. Dies ermöglicht ADF das Lesen aus Synapse über ```Staging```. Bei dieser Vorgehensweise ergibt sich eine starke Verbesserung der Leseleistung. Beim Aktivieren von ```Staging``` müssen Sie in den Einstellungen für Datenflussaktivitäten einen Azure Blob Storage- oder Azure Data Lake Storage Gen2-Stagingspeicherort angeben.
 
 ![Staging aktivieren](media/data-flow/enable-staging.png "Staging aktivieren")
 
@@ -216,9 +216,9 @@ Planen Sie die Anpassung der Größe Ihrer Quelle und Senke in Azure SQL-Datenba
 
 ### <a name="azure-synapse-analytics-sinks"></a>Azure Synapse Analytics-Senken
 
-Stellen Sie beim Schreiben in Azure Synapse Analytics sicher, dass die Option **Staging aktivieren** aktiviert ist. Hierdurch wird für ADF das Schreiben mit [PolyBase](/sql/relational-databases/polybase/polybase-guide) ermöglicht, sodass für die Daten quasi ein Massenladevorgang erfolgt. Bei Verwendung von PolyBase müssen Sie auf ein Azure Data Lake Storage Gen2- oder Azure Blob Storage-Konto für das Staging der Daten verweisen.
+Stellen Sie beim Schreiben in Azure Synapse Analytics sicher, dass die Option **Staging aktivieren** aktiviert ist. Hierdurch wird für ADF das Schreiben mit dem [SQL-Befehl COPY](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql) ermöglicht, sodass für die Daten quasi ein Massenladevorgang erfolgt. Bei Verwendung von Staging müssen Sie auf ein Azure Data Lake Storage Gen2- oder Azure Blob Storage-Konto für das Staging der Daten verweisen.
 
-Mit Ausnahme von PolyBase gelten für Azure Synapse Analytics die gleichen bewährten Methoden wie für Azure SQL-Datenbank.
+Mit Ausnahme von Staging gelten für Azure Synapse Analytics die gleichen bewährten Methoden wie für Azure SQL-Datenbank.
 
 ### <a name="file-based-sinks"></a>Dateibasierte Senken 
 
@@ -309,6 +309,14 @@ Die sequenzielle Ausführung von Aufträgen dauert insgesamt wahrscheinlich am l
 ### <a name="overloading-a-single-data-flow"></a>Überladen eines einzelnen Datenflusses
 
 Wenn Sie die gesamte Logik innerhalb eines einzelnen Datenflusses anordnen, führt ADF den gesamten Auftrag auf einer einzelnen Spark-Instanz aus. Dies mag zwar als eine Möglichkeit zur Kostenreduzierung erscheinen, doch werden unterschiedliche logische Datenflüsse kombiniert und das Überwachen und Debuggen kann schwierig sein. Wenn eine Komponente ausfällt, können auch alle anderen Teile des Auftrags nicht ausgeführt werden. Das Azure Data Factory-Team empfiehlt, Datenflüsse anhand unabhängiger Flüsse der Geschäftslogik zu organisieren. Wenn der Datenfluss zu groß wird, werden Überwachung und Debugging durch Aufteilen in separate Komponenten erleichtert. Es gibt zwar kein festes Limit für die Anzahl von Transformationen in einem Datenfluss, doch wird der Auftrag bei zu vielen Transformationen sehr komplex.
+
+### <a name="execute-sinks-in-parallel"></a>Paralleles Ausführen von Senken
+
+Beim Standardverhalten von Datenflusssenken wird jede Senke sequenziell nacheinander ausgeführt, und der Datenfluss schlägt fehl, wenn ein Fehler in der Senke auftritt. Außerdem werden alle Senken standardmäßig der gleichen Gruppe zugeordnet, es sei denn, Sie bearbeiten die Datenflusseigenschaften und legen unterschiedliche Prioritäten für die Senken fest.
+
+Datenflüsse ermöglichen es Ihnen, Senken über die Registerkarte für Datenflusseigenschaften im Benutzeroberflächendesigner in Gruppen zusammenfassen. Sie können sowohl die Ausführungsreihenfolge der Senken festlegen als auch Senken unter Verwendung derselben Gruppennummer gruppieren. Um die Verwaltung von Gruppen zu erleichtern, können Sie ADF auffordern, Senken in der gleichen Gruppe parallel auszuführen.
+
+In der Pipeline zum Ausführen der Datenflussaktivität befindet sich unter dem Abschnitt „Senkeneigenschaften“ eine Option, mit der das parallele Laden von Senken aktiviert werden kann. Wenn Sie die parallele Ausführung aktivieren, weisen Sie Datenflüsse an, gleichzeitig und nicht sequenziell in verbundene Senken zu schreiben. Um die Option für parallele Ausführung zu verwenden, müssen die Senken in einer Gruppe zusammengefasst und über eine neue Verzweigung oder bedingte Teilung mit demselben Datenstrom verbunden sein.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

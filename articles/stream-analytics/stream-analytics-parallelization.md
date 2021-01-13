@@ -3,16 +3,15 @@ title: Verwenden der Abfrageparallelisierung und Skalierung in Azure Stream Anal
 description: In diesem Artikel erfahren Sie, wie Sie Stream Analytics-Aufträge durch Konfiguration von Eingabepartitionen, Optimierung der Abfragedefinition und Festlegung von Auftragsstreamingeinheiten skalieren.
 author: JSeb225
 ms.author: jeanb
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 326af3bc38ce70cc7cb205384bb4302c5ff73d28
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 9149413d070bbb5eb8d0f8d0c99fe5ff705bcefb
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97704179"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98012324"
 ---
 # <a name="leverage-query-parallelization-in-azure-stream-analytics"></a>Nutzen der Parallelisierung von Abfragen in Azure Stream Analytics
 Dieser Artikel veranschaulicht das Nutzen der Parallelisierung in Azure Stream Analytics. Erfahren Sie, wie Sie Stream Analytics-Aufträge durch Konfigurieren der Eingabe in Partitionen und Optimieren der Analysenabfragedefinition skalieren.

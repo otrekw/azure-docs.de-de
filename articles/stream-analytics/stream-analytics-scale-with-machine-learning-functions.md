@@ -3,16 +3,15 @@ title: Skalieren der Funktionen von Machine Learning Studio (klassisch) in Azure
 description: In diesem Artikel wird beschrieben, wie Sie Stream Analytics-Aufträge mit Funktionen von Machine Learning Studio (klassisch) skalieren, indem Sie die Partitionierung und Streamingeinheiten konfigurieren.
 author: jseb225
 ms.author: jeanb
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 03/16/2020
-ms.openlocfilehash: feeb709f67a0e75f5980ec0520b95feb7edd5960
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b9768bacf8d29b37f479ea080afddd494b506262
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96018816"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98013939"
 ---
 # <a name="scale-your-stream-analytics-job-with-azure-machine-learning-studio-classic-functions"></a>Skalieren eines Stream Analytics-Auftrags mit Azure Machine Learning Studio-Funktionen (klassisch)
 

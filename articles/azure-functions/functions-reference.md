@@ -4,12 +4,12 @@ description: Lernen Sie die Konzepte und Techniken der Azure Functions kennen, d
 ms.assetid: d8efe41a-bef8-4167-ba97-f3e016fcd39e
 ms.topic: conceptual
 ms.date: 10/12/2017
-ms.openlocfilehash: 54bfd770fba9a1766396d66c0c263111c233c9c2
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: dd9a517749030f9f99731d36947c4d4ff2f13b01
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96167878"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936735"
 ---
 # <a name="azure-functions-developer-guide"></a>Azure Functions: Entwicklerhandbuch
 In Azure Functions nutzen bestimmte Funktionen einige wichtige technische Konzepte und Komponenten gemeinsam, unabhängig von der verwendeten Sprache oder Bindung. Bevor Sie sich mit den spezifischen Details einer bestimmten Sprache oder Bindung beschäftigen, sollten Sie diese Übersicht lesen, die für alle Funktionen gilt.
@@ -69,7 +69,7 @@ Funktions-Apps können mit verschiedenen Tools erstellt und veröffentlicht werd
 Mit dem integrierten Functions-Editor im Azure-Portal können Sie Ihren Code und die Datei *function.json* direkt inline aktualisieren. Dies wird nur für kleine Änderungen oder Proof of Concept-Projekte empfohlen. Die bewährte Methode ist die Verwendung eines lokalen Entwicklungstools wie Visual Studio Code.
 
 ## <a name="parallel-execution"></a>Parallele Ausführung
-Wenn die Auslösung mehrerer Ereignisse schneller erfolgt als die Runtime einer Singlethreadfunktion sie verarbeiten kann, kann die Runtime die Funktion mehrmals parallel aufrufen.  Wenn eine Funktionen-App den [verbrauchsbasierten Hostingplan](functions-scale.md#how-the-consumption-and-premium-plans-work) verwendet, kann die App automatisch aufskaliert werden.  Jede Instanz der Funktionen-App – unabhängig davon, ob die App im verbrauchsbasierten Hostingplan oder einem regulären [App Service-Hostingplan](../app-service/overview-hosting-plans.md) ausgeführt wird – kann gleichzeitige Funktionsaufrufe über mehrere Threads parallel verarbeiten.  Die maximale Anzahl gleichzeitiger Funktionsaufrufe in jeder Funktionen-App-Instanz variiert je nach Art des verwendeten Triggers sowie je nach den Ressourcen, die von anderen Funktionen innerhalb der Funktionen-App verwendet werden.
+Wenn die Auslösung mehrerer Ereignisse schneller erfolgt als die Runtime einer Singlethreadfunktion sie verarbeiten kann, kann die Runtime die Funktion mehrmals parallel aufrufen.  Wenn eine Funktionen-App den [verbrauchsbasierten Hostingplan](event-driven-scaling.md) verwendet, kann die App automatisch aufskaliert werden.  Jede Instanz der Funktionen-App – unabhängig davon, ob die App im verbrauchsbasierten Hostingplan oder einem regulären [App Service-Hostingplan](../app-service/overview-hosting-plans.md) ausgeführt wird – kann gleichzeitige Funktionsaufrufe über mehrere Threads parallel verarbeiten.  Die maximale Anzahl gleichzeitiger Funktionsaufrufe in jeder Funktionen-App-Instanz variiert je nach Art des verwendeten Triggers sowie je nach den Ressourcen, die von anderen Funktionen innerhalb der Funktionen-App verwendet werden.
 
 ## <a name="functions-runtime-versioning"></a>Versionsverwaltung der Functions-Runtime
 

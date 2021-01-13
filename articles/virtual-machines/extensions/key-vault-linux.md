@@ -9,12 +9,12 @@ ms.subservice: extensions
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: c9b624a1efc72bebec8547e8ecf9f3bf9fc99863
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: 0558513d88eb5ffb03484e9d3bd8e37b2c9a0dcf
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97680657"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895018"
 ---
 # <a name="key-vault-virtual-machine-extension-for-linux"></a>Key Vault-VM-Erweiterung für Linux
 
@@ -38,6 +38,21 @@ Die Key Vault-VM-Erweiterung unterstützt folgende Linux-Distributionen:
   - Key Vault-Instanz mit Zertifikat. Siehe [Erstellen eines Schlüsseltresors](../../key-vault/general/quick-create-portal.md).
   - Der VM/VMSS muss eine [verwaltete Identität](../../active-directory/managed-identities-azure-resources/overview.md) zugewiesen sein.
   - Die Key Vault-Zugriffsrichtlinie muss mit geheimen Schlüsseln `get` und `list` Berechtigung für die verwaltete VM/VMSS-Identität festgelegt werden, um den Teil des Zertifikats für den geheimen Schlüssel abzurufen. Weitere Informationen finden Sie unter [Authentifizieren bei Key Vault](../../key-vault/general/authentication.md) und [Zuweisen einer Key Vault-Zugriffsrichtlinie](../../key-vault/general/assign-access-policy-cli.md).
+  -  VMSS sollte die folgende Identitätseinstellung aufweisen: ` 
+  "identity": {
+  "type": "UserAssigned",
+  "userAssignedIdentities": {
+  "[parameters('userAssignedIdentityResourceId')]": {}
+  }
+  }
+  `
+  
+ - Die AKV-Erweiterung sollte die folgende Einstellung aufweisen: `
+                 "authenticationSettings": {
+                    "msiEndpoint": "[parameters('userAssignedIdentityEndpoint')]",
+                    "msiClientId": "[reference(parameters('userAssignedIdentityResourceId'), variables('msiApiVersion')).clientId]"
+                  }
+   `
 
 ## <a name="extension-schema"></a>Erweiterungsschema
 
@@ -138,6 +153,17 @@ Die JSON-Konfiguration für eine VM-Erweiterung muss im VM-Ressourcenfragment de
     }
 ```
 
+### <a name="extension-dependency-ordering"></a>Reihenfolge von Erweiterungsabhängigkeiten
+Die Key Vault-VM-Erweiterung unterstützt die Ausführung von Erweiterungen in Reihenfolge, sofern konfiguriert. Standardmäßig meldet die Erweiterung, dass sie erfolgreich gestartet wurde, sobald der Abruf gestartet wurde. Sie kann jedoch so konfiguriert werden, dass sie wartet, bis die gesamte Liste der Zertifikate erfolgreich heruntergeladen wurde, bevor sie einen erfolgreichen Start meldet. Wenn andere Erweiterungen davon abhängen, dass der vollständige Satz von Zertifikaten vor dem Start installiert wird, kann diese Erweiterung durch Aktivieren dieser Einstellung eine Abhängigkeit von der Key Vault Erweiterung deklarieren. Dadurch wird verhindert, dass diese Erweiterungen erst gestartet werden, nachdem alle Zertifikate installiert wurden, von denen sie abhängig sind. Die Erweiterung wiederholt den ursprünglichen Download unbegrenzt oft und verbleibt im Status `Transitioning`.
+
+Zum Aktivieren legen Sie Folgendes fest:
+```
+"secretsManagementSettings": {
+    "requireInitialSync": true,
+    ...
+}
+```
+> [Hinweis] Die Verwendung dieses Features ist mit einer ARM-Vorlage, die eine vom System zugewiesene Identität erstellt und eine Key Vault-Zugriffsrichtlinie mit dieser Identität aktualisiert, nicht kompatibel. Dies würde zu einem Deadlock führen, da die Key Vault-Zugriffsrichtlinie erst aktualisiert werden kann, nachdem alle Erweiterungen gestartet wurden. Verwenden Sie stattdessen eine *einzelne vom Benutzer zugewiesene MSI-Identität*, und wenden Sie vor der Bereitstellung eine Zugriffssteuerungsliste mit dieser Identität auf Ihre Key Vaults an.
 
 ## <a name="azure-powershell-deployment"></a>Azure PowerShell-Bereitstellung
 > [!WARNING]

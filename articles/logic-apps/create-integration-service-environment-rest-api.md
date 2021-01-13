@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: rarayudu, logicappspm
 ms.topic: conceptual
-ms.date: 12/29/2020
-ms.openlocfilehash: 34a5dfb44ee78245b56c1774701f48b3b8a494df
-ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
+ms.date: 12/30/2020
+ms.openlocfilehash: ee6c116d02a7be1682d9e8379037ef1b8c92bce8
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97827477"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97967037"
 ---
 # <a name="create-an-integration-service-environment-ise-by-using-the-logic-apps-rest-api"></a>Erstellen einer Integrationsdienstumgebung (Integration Service Environment, ISE) mithilfe der Logic Apps-REST-API
 
@@ -121,7 +121,7 @@ Hier ist die Syntax des Anforderungstexts, in der die Eigenschaften für das Ers
             }
          ]
       },
-      // Include `certificates` object to enable self-signed certiificate and certificate issued by Enterprise Certificate Authority
+      // Include `certificates` object to enable self-signed certificate and the certificate issued by Enterprise Certificate Authority
       "certificates": {
          "testCertificate": {
             "publicCertificate": "{base64-encoded-certificate}",
@@ -185,6 +185,7 @@ In diesem Beispielanforderungstext werden die Beispielwerte gezeigt:
    }
 }
 ```
+
 ## <a name="add-custom-root-certificates"></a>Hinzufügen benutzerdefinierter Stammzertifikate
 
 Häufig verwenden Sie eine ISE, um eine Verbindung mit benutzerdefinierten Diensten in Ihrem virtuellen Netzwerk oder Ihrem lokalen Netzwerk herzustellen. Diese benutzerdefinierten Dienste sind oft durch ein Zertifikat geschützt, das von einer benutzerdefinierten Stammzertifizierungsstelle ausgestellt wird (z. B. Unternehmenszertifizierungsstelle oder selbstsigniertes Zertifikat). Weitere Informationen zum Verwenden von selbstsignierten Zertifikaten finden Sie unter [Sicherer Zugriff und Daten: Zugriff für ausgehende Aufrufe anderer Dienste und Systeme](../logic-apps/logic-apps-securing-a-logic-app.md#secure-outbound-requests). Damit Ihre ISE erfolgreich eine Verbindung mit diesen Diensten über die TLS (Transport Layer Security) herstellen kann, benötigt Ihre ISE Zugriff auf diese Stammzertifikate. Verwenden Sie diese `PATCH`-HTTPS-Anforderung, um Ihre ISE mit einem benutzerdefinierten vertrauenswürdigen Stammzertifikat zu aktualisieren:

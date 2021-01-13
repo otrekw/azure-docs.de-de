@@ -3,7 +3,7 @@ title: Verwenden von Azure AD Connect Health mit Synchronisierung | Microsoft-Do
 description: Auf dieser Seite zu Azure AD Connect Health wird erläutert, wie eine Überwachung mit Azure AD Connect für die Synchronisierung durchgeführt wird.
 services: active-directory
 documentationcenter: ''
-author: zhiweiwangmsft
+author: billmath
 manager: daveba
 ms.assetid: 1dfbeaba-bda2-4f68-ac89-1dbfaf5b4015
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.date: 07/18/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: efb332cf8d5e34a435010a39a12b38f87cff5875
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: e803614a02e76d179579a2258abd563b5c58e63a
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91313364"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98016982"
 ---
 # <a name="monitor-azure-ad-connect-sync-with-azure-ad-connect-health"></a>Überwachen der Azure AD Connect-Synchronisierung mit Azure AD Connect Health
 Die folgende Dokumentation bezieht sich auf die Überwachung von Azure AD Connect (Sync) mithilfe von Azure AD Connect Health.  Informationen zum Überwachen von AD FS mit Azure AD Connect Health finden Sie unter [Verwenden von Azure AD Connect Health mit AD FS](how-to-connect-health-adfs.md). Informationen zur Überwachung der Active Directory-Domänendienste mit Azure AD Connect Health finden Sie unter [Verwenden von Azure AD Connect Health mit AD DS](how-to-connect-health-adds.md).

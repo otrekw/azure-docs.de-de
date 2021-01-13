@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 05/19/2020
 ms.author: hahamil
 ms.custom: aaddev
-ms.openlocfilehash: e42b6b7ffa39110ce356094de690bb353a3fb10f
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 0050eb61aac53b69c74306b9aaab797d8adfa915
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97107786"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98016999"
 ---
 # <a name="single-page-application-app-registration"></a>Single-Page-Webanwendung: App-Registrierung
 
@@ -27,7 +27,7 @@ Führen Sie die folgenden Schritte aus, um eine Single-Page-Webanwendung (Single
 
 Führen Sie für MSAL.js 1.0- und für MSAL.js 2.0-basierte Anwendungen zunächst die folgenden Schritte aus, um die App-Erstregistrierung zu erstellen.
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Melden Sie sich beim <a href="https://portal.azure.com/" target="_blank">Azure-Portal<span class="docon docon-navigate-external x-hidden-focus"></span></a> an.
 1. Wenn Sie Zugriff auf mehrere Mandanten haben, verwenden Sie im Menü am oberen Rand den Filter **Verzeichnis + Abonnement** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::, um den Mandanten auszuwählen, für den Sie eine Anwendung registrieren möchten.
 1. Suchen Sie nach **Azure Active Directory**, und wählen Sie diese Option aus.
 1. Wählen Sie unter **Verwalten** Folgendes aus: **App-Registrierungen** > **Neue Registrierung**.

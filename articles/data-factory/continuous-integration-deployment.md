@@ -10,13 +10,13 @@ ms.author: weetok
 ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
-ms.date: 09/23/2020
-ms.openlocfilehash: 84e156074d6db837556ba4ed9febdb43bcdf3318
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.date: 12/17/2020
+ms.openlocfilehash: b5b0f6dcef728f0597e7eac8ba57c8fd240d19c9
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96902303"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680302"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Continuous Integration und Continuous Delivery in Azure Data Factory
 
@@ -28,7 +28,7 @@ Bei Continuous Integration wird jede Änderung, die an Ihrer Codebasis vorgenomm
 
 In Azure Data Factory bedeuten Continuous Integration und Continuous Delivery (CI/CD), dass Data Factory-Pipelines von einer Umgebung (Entwicklung, Test, Produktion) in eine andere verschoben werden. Azure Data Factory nutzt [Azure Resource Manager-Vorlagen](../azure-resource-manager/templates/overview.md) zum Speichern der Konfiguration ihrer verschiedenen ADF-Entitäten (Pipelines, Datasets, Datenflüsse usw.). Es gibt zwei empfohlene Methoden zum Höherstufen einer Data Factory in eine andere Umgebung:
 
--    Automatisierte Bereitstellung über Integration von Data Factory in [Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines?view=azure-devops)
+-    Automatisierte Bereitstellung über Integration von Data Factory in [Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines)
 -    Manuelles Hochladen einer Resource Manager-Vorlage über Integration der Data Factory-Benutzeroberfläche in Azure Resource Manager.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -41,9 +41,9 @@ Unten ist eine Beispielübersicht des CI/CD-Lebenszyklus in einer Azure Data Fac
 
 1.  Ein Entwickler [erstellt einen Featurebranch](source-control.md#creating-feature-branches), um eine Änderung vorzunehmen. Er debuggt die Pipelineausführungen mit seinen neuesten Änderungen. Weitere Informationen zum Debuggen einer Pipelineausführung finden Sie unter [Iteratives Entwickeln und Debuggen mit Azure Data Factory](iterative-development-debugging.md).
 
-1.  Wenn ein Entwickler mit den vorgenommenen Änderungen nicht zufrieden ist, erstellt er einen Pull Request vom Featurebranch zum Master- oder Kollaborationsbranch, um seine Änderungen von anderen Entwicklern überprüfen zu lassen.
+1.  Wenn ein Entwickler mit den vorgenommenen Änderungen zufrieden ist, erstellt er einen Pull Request vom Featurebranch zum Main- oder Kollaborationsbranch, um seine Änderungen von anderen Entwicklern überprüfen zu lassen.
 
-1.  Nachdem ein Pull Request genehmigt wurde und Änderungen im Masterbranch zusammengeführt wurden, werden die Änderungen in der Entwicklungsfactory veröffentlicht.
+1.  Nachdem ein Pull Request genehmigt wurde und Änderungen im Mainbranch zusammengeführt wurden, werden die Änderungen in der Entwicklungsfactory veröffentlicht.
 
 1.  Wenn das Team bereit ist für die Bereitstellung der Änderungen in einer Test- oder UAT-Factory (User Acceptance Tests, Benutzerakzeptanztests), wechselt es zu seinem Azure Pipelines-Release und stellt die gewünschte Version der Entwicklungsfactory für UAT bereit. Diese Bereitstellung erfolgt im Rahmen einer Azure Pipelines-Aufgabe, und dabei kommen Resource Manager-Vorlagenparameter zum Einsatz, um die entsprechende Konfiguration anzuwenden.
 
@@ -115,7 +115,7 @@ Im Folgenden finden Sie eine Anleitung zum Einrichten eines Azure Pipelines-Rele
 
 1.  Speichern Sie die Releasepipeline.
 
-1. Wählen Sie zum Auslösen eines Release die Option **Release erstellen** aus. Informationen zum Automatisieren der Erstellung von Releases finden Sie unter [Azure DevOps-Releasetrigger](/azure/devops/pipelines/release/triggers?view=azure-devops).
+1. Wählen Sie zum Auslösen eines Release die Option **Release erstellen** aus. Informationen zum Automatisieren der Erstellung von Releases finden Sie unter [Azure DevOps-Releasetrigger](/azure/devops/pipelines/release/triggers).
 
    ![Auswählen von „Release erstellen“](media/continuous-integration-deployment/continuous-integration-image10.png)
 
@@ -207,6 +207,12 @@ Wenn Ihre Entwicklungsfactory ein zugeordnetes Git-Repository hat, können Sie d
 
 * Sie verwenden automatisierte CI/CD und möchten einige Eigenschaften während der Resource Manager-Bereitstellung ändern, die Eigenschaften sind standardmäßig aber nicht parametrisiert.
 * Die Resource Manager-Standardvorlage ist aufgrund der Größe Ihrer Factory ungültig, da sie mehr als die maximal zulässige Parameteranzahl (256) enthält.
+
+    In Bezug auf das Limit von 256 für benutzerdefinierte Parameter gibt es drei Optionen:    
+  
+    * Verwenden Sie die benutzerdefinierte Parameterdatei, und entfernen Sie Eigenschaften, die keine Parametrisierung erfordern, d. h. Eigenschaften, die einen Standardwert beibehalten und somit die Parameteranzahl verringern können.
+    * Gestalten Sie die Logik im Datenfluss zur Reduzierung von Parametern um. Wenn z. B. alle Pipelineparameter denselben Wert aufweisen, können Sie stattdessen globale Parameter verwenden.
+    * Teilen Sie eine Data Factory in mehrere Datenflüsse auf.
 
 Wenn Sie die standardmäßige Parametrisierungsvorlage überschreiben möchten, navigieren Sie zum Verwaltungshub, und wählen Sie **Parametrisierungsvorlage** im Abschnitt für die Quellcodeverwaltung aus. Wählen Sie **Vorlage bearbeiten** aus, um den Code-Editor für die Parametrisierungsvorlage zu öffnen. 
 
@@ -639,7 +645,7 @@ Das folgende Video ist ein ausführliches Videotutorial, in dem Sie erfahren, wi
 
 ## <a name="exposure-control-and-feature-flags"></a>Anzeigesteuerungs- und Featureflags
 
-Wenn Sie in einem Team arbeiten, gibt es Instanzen, für die Sie Änderungen zusammenführen können, aber nicht möchten, dass sie in Umgebungen mit erhöhten Rechten wie PROD und QA ausgeführt werden. Für dieses Szenario empfiehlt das ADF-Team [das DevOps-Konzept der Verwendung von Featureflags](/azure/devops/migrate/phase-features-with-feature-flags?view=azure-devops). In ADF können Sie [globale Parameter](author-global-parameters.md) und die [Aktivität „IfCondition“](control-flow-if-condition-activity.md) kombinieren, um Logiksätze auf der Grundlage dieser Umgebungsflags auszublenden.
+Wenn Sie in einem Team arbeiten, gibt es Instanzen, für die Sie Änderungen zusammenführen können, aber nicht möchten, dass sie in Umgebungen mit erhöhten Rechten wie PROD und QA ausgeführt werden. Für dieses Szenario empfiehlt das ADF-Team [das DevOps-Konzept der Verwendung von Featureflags](/azure/devops/migrate/phase-features-with-feature-flags). In ADF können Sie [globale Parameter](author-global-parameters.md) und die [Aktivität „IfCondition“](control-flow-if-condition-activity.md) kombinieren, um Logiksätze auf der Grundlage dieser Umgebungsflags auszublenden.
 
 Informationen zum Einrichten eines Featureflags finden Sie im folgenden Videotutorial:
 
@@ -668,7 +674,7 @@ Wenn Sie die Git-Integration mit Ihrer Data Factory verwenden und über eine CI/
     - Data Factory-Entitäten sind voneinander abhängig. Beispielsweise hängen Trigger von Pipelines ab, während Pipelines von Datasets und anderen Pipelines abhängig sind. Die selektive Veröffentlichung einer Teilmenge von Ressourcen kann ggf. zu unerwartetem Verhalten und Fehlern führen.
     - In den seltenen Fällen, in denen Sie eine selektive Veröffentlichung durchführen müssen, können Sie die Verwendung eines Hotfix erwägen. Weitere Informationen finden Sie unter [Hotfix für Produktionsumgebung](#hotfix-production-environment).
 
-- Das Azure Data Factory-Team rät davon ab, Azure RBAC-Steuerelemente einzelnen Entitäten (Pipelines, Datasets usw.) in einer Data Factory zuzuweisen. Wenn ein Entwickler beispielsweise Zugriff auf eine Pipeline oder ein Dataset hat, sollte er in der Lage sein, auf alle Pipelines oder Datasets in der Data Factory zuzugreifen. Wenn Sie der Ansicht sind, dass Sie viele Azure-Rollen innerhalb einer Data Factory implementieren müssen, ziehen Sie die Bereitstellung einer zweiten Data Factory in Betracht.
+- Das Azure Data Factory-Team rät davon ab, Azure RBAC-Steuerelemente einzelnen Entitäten (Pipelines, Datasets usw.) in einer Data Factory zuzuweisen. Wenn ein Entwickler beispielsweise Zugriff auf eine Pipeline oder ein Dataset hat, sollte er in der Lage sein, auf alle Pipelines oder Datasets in der Data Factory zuzugreifen. Wenn Sie der Ansicht sind, dass Sie viele Azure-Rollen innerhalb einer Data Factory implementieren müssen, ziehen Sie die Bereitstellung einer zweiten Data Factory in Betracht.
 
 -   Sie können nicht aus privaten Branches veröffentlichen.
 

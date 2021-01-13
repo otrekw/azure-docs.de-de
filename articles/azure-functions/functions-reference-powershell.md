@@ -5,12 +5,12 @@ author: eamonoreilly
 ms.topic: conceptual
 ms.custom: devx-track-dotnet, devx-track-azurepowershell
 ms.date: 04/22/2019
-ms.openlocfilehash: af9490433c344c712da55e9b29bf9df364380736
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 61ed3ed274505101c65e251260bd759fe78f7b31
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422534"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936786"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>PowerShell-Entwicklerhandbuch für Azure Functions
 
@@ -649,11 +649,11 @@ Beachten Sie beim Arbeiten mit PowerShell-Funktionen die Überlegungen in den fo
 
 ### <a name="cold-start"></a>Kaltstart
 
-Bei der Entwicklung von Azure Functions im [serverlosen Hostingmodell](functions-scale.md#consumption-plan) sind Kaltstarts Realität. *Kaltstart* bezieht sich auf den Zeitraum, den der Start Ihrer Funktions-App bis zum Verarbeiten einer Anforderung dauert. Kaltstarts treten beim Verbrauchstarif häufiger auf, da Ihre Funktions-App während inaktiver Phasen heruntergefahren wird.
+Bei der Entwicklung von Azure Functions im [serverlosen Hostingmodell](consumption-plan.md) sind Kaltstarts Realität. *Kaltstart* bezieht sich auf den Zeitraum, den der Start Ihrer Funktions-App bis zum Verarbeiten einer Anforderung dauert. Kaltstarts treten beim Verbrauchstarif häufiger auf, da Ihre Funktions-App während inaktiver Phasen heruntergefahren wird.
 
 ### <a name="bundle-modules-instead-of-using-install-module"></a>Modulbündel statt `Install-Module`
 
-Ihr Skript wird bei jedem Aufruf ausgeführt. Vermeiden Sie die Verwendung von `Install-Module` in Ihrem Skript. Verwenden Sie stattdessen `Save-Module` vor der Veröffentlichung, damit Ihre Funktion keine Zeit für das Herunterladen des Moduls aufbringen muss. Falls Kaltstarts Auswirkungen auf Ihre Funktionen haben, sollten Sie erwägen, Ihre Funktions-App in einem [App Service-Plan](functions-scale.md#app-service-plan) mit *Always On* oder einem [Premium-Plan](functions-scale.md#premium-plan) bereitzustellen.
+Ihr Skript wird bei jedem Aufruf ausgeführt. Vermeiden Sie die Verwendung von `Install-Module` in Ihrem Skript. Verwenden Sie stattdessen `Save-Module` vor der Veröffentlichung, damit Ihre Funktion keine Zeit für das Herunterladen des Moduls aufbringen muss. Falls Kaltstarts Auswirkungen auf Ihre Funktionen haben, sollten Sie erwägen, Ihre Funktions-App in einem [App Service-Plan](dedicated-plan.md) mit *Always On* oder einem [Premium-Plan](functions-premium-plan.md) bereitzustellen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

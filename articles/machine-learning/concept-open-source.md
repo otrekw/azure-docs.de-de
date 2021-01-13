@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: luisquintanilla
 ms.author: luquinta
 ms.date: 12/16/2020
-ms.openlocfilehash: b3fa9767310bfc300087c9dc7384f33993aca70d
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: d987d21700e5f19ad8228b08508e8da842cc39eb
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97675722"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97914109"
 ---
 # <a name="open-source-integration-with-azure-machine-learning-projects"></a>Open-Source-Integration in Azure Machine Learning-Projekte
 
@@ -101,4 +101,4 @@ Machine Learning Operations (MLOps), gemeinhin als DevOps für maschinelles Lern
 
 Mithilfe von DevOps-Methoden wie Continuous Integration (CI) und Continuous Deployment (CD) können Sie den gesamten Lebenszyklus des maschinellen Lernens automatisieren und Governancedaten dazu erfassen. Sie können Ihre [CI/CD-Pipeline für maschinelles Lernen in GitHub-Aktionen](./how-to-github-actions-machine-learning.md) definieren, um Trainings- und Bereitstellungsaufgaben für Azure Machine Learning auszuführen. 
 
-Die Erfassung von Softwareabhängigkeiten, Metriken, Metadaten, Daten und Versionsverwaltung für Modelle sind ein wichtiger Teil des MLOps-Prozesses, um transparente, reproduzierbare und überwachbare Pipelines zu erstellen. Für diese Aufgabe können Sie [MLFlow in Azure Machine Learning verwenden](how-to-use-mlflow.md), ebenso wie beim [Training von Machine Learning-Modellen in Azure Databricks](./how-to-use-mlflow-azure-databricks.md).
+Die Erfassung von Softwareabhängigkeiten, Metriken, Metadaten, Daten und Versionsverwaltung für Modelle sind ein wichtiger Teil des MLOps-Prozesses, um transparente, reproduzierbare und überwachbare Pipelines zu erstellen. Für diese Aufgabe können Sie [MLFlow in Azure Machine Learning verwenden](how-to-use-mlflow.md), ebenso wie beim [Training von Machine Learning-Modellen in Azure Databricks](./how-to-use-mlflow-azure-databricks.md). Sie können auch [MLflow-Modelle als Azure-Webdienst bereitstellen](how-to-deploy-mlflow-models.md). 

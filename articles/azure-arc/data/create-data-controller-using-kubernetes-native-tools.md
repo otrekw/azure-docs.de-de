@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 051a7f506d351a17764e38c760ffba06d224cc38
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: e8d00055d9a4d7355ccd8a33c8a9b811b852f5c8
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422568"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955279"
 ---
 # <a name="create-azure-arc-data-controller-using-kubernetes-tools"></a>Erstellen eines Azure Arc-Datencontrollers unter Verwendung von Kubernetes-Tools
 
@@ -38,11 +38,9 @@ Wenn Sie in der Vergangenheit den Azure Arc-Datencontroller auf demselben Cluste
 ```console
 # Cleanup azure arc data service artifacts
 kubectl delete crd datacontrollers.arcdata.microsoft.com 
-kubectl delete sqlmanagedinstances.sql.arcdata.microsoft.com 
-kubectl delete postgresql-11s.arcdata.microsoft.com 
-kubectl delete postgresql-12s.arcdata.microsoft.com
-kubectl delete clusterroles azure-arc-data:cr-arc-metricsdc-reader
-kubectl delete clusterrolebindings azure-arc-data:crb-arc-metricsdc-reader
+kubectl delete crd sqlmanagedinstances.sql.arcdata.microsoft.com 
+kubectl delete crd postgresql-11s.arcdata.microsoft.com 
+kubectl delete crd postgresql-12s.arcdata.microsoft.com
 ```
 
 ## <a name="overview"></a>Übersicht
@@ -59,7 +57,7 @@ Das Erstellen des Azure Arc-Datencontrollers umfasst die folgenden allgemeinen S
 Führen Sie den folgenden Befehl aus, um die benutzerdefinierten Ressourcendefinitionen zu erstellen.  **[Erfordert Administratorberechtigungen für Kubernetes-Cluster]**
 
 ```console
-kubectl create -f https://raw.githubusercontent.com/microsoft/azure_arc/master/arc_data_services/deploy/yaml/custom-resource-definitions.yaml
+kubectl create -f https://raw.githubusercontent.com/microsoft/azure_arc/main/arc_data_services/deploy/yaml/custom-resource-definitions.yaml
 ```
 
 ## <a name="create-a-namespace-in-which-the-data-controller-will-be-created"></a>Erstellen eines Namespace, in dem der Datencontroller erstellt wird
@@ -79,7 +77,7 @@ Der Bootstrapperdienst verarbeitet eingehende Anforderungen zum Erstellen, Bearb
 Führen Sie den folgenden Befehl aus, um einen Bootstrapperdienst, ein Dienstkonto für den Bootstrapperdienst sowie eine Rolle und eine Rollenbindung für das Konto des Bootstrapperdiensts zu erstellen.
 
 ```console
-kubectl create --namespace arc -f https://raw.githubusercontent.com/microsoft/azure_arc/master/arc_data_services/deploy/yaml/bootstrapper.yaml
+kubectl create --namespace arc -f https://raw.githubusercontent.com/microsoft/azure_arc/main/arc_data_services/deploy/yaml/bootstrapper.yaml
 ```
 
 Überprüfen Sie mithilfe des folgenden Befehls, ob der Bootstrapperpod ausgeführt wird.  Sie müssen den Befehl möglicherweise mehrmals ausführen, bis sich der Status in `Running` ändert.
@@ -102,7 +100,7 @@ containers:
       - env:
         - name: ACCEPT_EULA
           value: "Y"
-        #image: mcr.microsoft.com/arcdata/arc-bootstrapper:public-preview-oct-2020  <-- template value to change
+        #image: mcr.microsoft.com/arcdata/arc-bootstrapper:public-preview-dec-2020  <-- template value to change
         image: <your registry DNS name or IP address>/<your repo>/arc-bootstrapper:<your tag>
         imagePullPolicy: IfNotPresent
         name: bootstrapper
@@ -150,7 +148,7 @@ echo '<your string to encode here>' | base64
 # echo 'example' | base64
 ```
 
-Nachdem Sie den Benutzernamen und das Kennwort codiert haben, können Sie basierend auf der [Vorlagendatei](https://raw.githubusercontent.com/microsoft/azure_arc/master/arc_data_services/deploy/yaml/controller-login-secret.yaml) eine Datei erstellen und die Werte für Benutzername und Kennwort durch Ihre eigenen Werte ersetzen.
+Nachdem Sie den Benutzernamen und das Kennwort codiert haben, können Sie basierend auf der [Vorlagendatei](https://raw.githubusercontent.com/microsoft/azure_arc/main/arc_data_services/deploy/yaml/controller-login-secret.yaml) eine Datei erstellen und die Werte für Benutzername und Kennwort durch Ihre eigenen Werte ersetzen.
 
 Führen Sie dann den folgenden Befehl aus, um das Geheimnis zu erstellen.
 
@@ -165,26 +163,26 @@ kubectl create --namespace arc -f C:\arc-data-services\controller-login-secret.y
 
 Nun können Sie den Datencontroller selbst erstellen.
 
-Erstellen Sie zunächst eine lokale Kopie der [Vorlagendatei](https://raw.githubusercontent.com/microsoft/azure_arc/master/arc_data_services/deploy/yaml/data-controller.yaml) auf Ihrem Computer, damit Sie einige Einstellungen ändern können.
+Erstellen Sie zunächst eine lokale Kopie der [Vorlagendatei](https://raw.githubusercontent.com/microsoft/azure_arc/main/arc_data_services/deploy/yaml/data-controller.yaml) auf Ihrem Computer, damit Sie einige Einstellungen ändern können.
 
 Bearbeiten Sie die folgenden Einstellungen nach Bedarf:
 
 **ERFORDERLICH**
-- **location** : Ändern Sie diese Einstellung in den Azure-Standort, an dem die _Metadaten_ zum Datencontroller gespeichert werden.  Die Liste der verfügbaren Azure-Standorte finden Sie im Artikel mit der [Übersicht zum Erstellen eines Datencontrollers](create-data-controller.md).
-- **resourceGroup** : Die Azure-Ressourcengruppe, in der Sie die Azure-Ressource für den Datencontroller im Azure Resource Manager erstellen möchten.  Diese Ressourcengruppe sollte in der Regel bereits vorhanden sein, wird jedoch erst benötigt, wenn Sie die Daten in Azure hochladen.
-- **subscription** : Die Azure-Abonnement-GUID für das Abonnement, in dem Sie die Azure-Ressourcen erstellen möchten.
+- **location**: Ändern Sie diese Einstellung in den Azure-Standort, an dem die _Metadaten_ zum Datencontroller gespeichert werden.  Die Liste der verfügbaren Azure-Standorte finden Sie im Artikel mit der [Übersicht zum Erstellen eines Datencontrollers](create-data-controller.md).
+- **resourceGroup**: Die Azure-Ressourcengruppe, in der Sie die Azure-Ressource für den Datencontroller im Azure Resource Manager erstellen möchten.  Diese Ressourcengruppe sollte in der Regel bereits vorhanden sein, wird jedoch erst benötigt, wenn Sie die Daten in Azure hochladen.
+- **subscription**: Die Azure-Abonnement-GUID für das Abonnement, in dem Sie die Azure-Ressourcen erstellen möchten.
 
 **ÜBERPRÜFUNG UND GGF. ÄNDERUNG DER STANDARDWERTE EMPFOHLEN**
-- **storage..className** : Die Speicherklasse, die für die Daten- und Protokolldateien des Datencontrollers verwendet werden soll.  Wenn Sie nicht sicher sind, welche Speicherklassen in Ihrem Kubernetes-Cluster verfügbar sind, können Sie den folgenden Befehl ausführen: `kubectl get storageclass`.  Der Standardwert ist `default`. Dabei wird davon ausgegangen, dass eine Speicherklasse mit dem Namen `default` vorhanden ist, und _nicht_ , dass eine Speicherklasse vorhanden ist, die der Standardspeicherklasse entspricht.  Hinweis: Es gibt zwei className-Einstellungen, die auf die gewünschte Speicherklasse festgelegt werden müssen – eine für Daten und eine für Protokolle.
-- **serviceType** : Ändern Sie den Diensttyp in `NodePort`, wenn Sie keinen LoadBalancer verwenden.  Hinweis: Es gibt zwei serviceType-Einstellungen, die geändert werden müssen.
+- **storage..className**: Die Speicherklasse, die für die Daten- und Protokolldateien des Datencontrollers verwendet werden soll.  Wenn Sie nicht sicher sind, welche Speicherklassen in Ihrem Kubernetes-Cluster verfügbar sind, können Sie den folgenden Befehl ausführen: `kubectl get storageclass`.  Der Standardwert ist `default`. Dabei wird davon ausgegangen, dass eine Speicherklasse mit dem Namen `default` vorhanden ist, und _nicht_, dass eine Speicherklasse vorhanden ist, die der Standardspeicherklasse entspricht.  Hinweis: Es gibt zwei className-Einstellungen, die auf die gewünschte Speicherklasse festgelegt werden müssen – eine für Daten und eine für Protokolle.
+- **serviceType**: Ändern Sie den Diensttyp in `NodePort`, wenn Sie keinen LoadBalancer verwenden.  Hinweis: Es gibt zwei serviceType-Einstellungen, die geändert werden müssen.
 
 **OPTIONAL**
 - **name:** Der Standardname des Datencontrollers lautet `arc`. Sie können ihn jedoch ändern.
-- **displayName** : Legen Sie diesen Wert auf denselben Wert fest wie das name-Attribut am Anfang der Datei.
-- **registry** : Die Microsoft Container Registry ist die Standardregistrierung.  Wenn Sie die Images aus der Microsoft Container Registry pullen und [in eine private Containerregistrierung pushen](offline-deployment.md), geben Sie hier die IP-Adresse oder den DNS-Namen Ihrer Registrierung ein.
-- **dockerRegistry** : Das Geheimnis für Imagepullvorgänge, das verwendet wird, um die Images ggf. aus einer privaten Containerregistrierung zu pullen.
-- **repository** : Das Standardrepository der Microsoft Container Registry lautet `arcdata`.  Wenn Sie eine private Containerregistrierung verwenden, geben Sie den Pfad für den Ordner/das Repository mit den Containerimages der Azure Arc-fähigen Datendienste ein.
-- **imageTag** : Das aktuelle Tag der letzten Version wird standardmäßig in der Vorlage verwendet, Sie können es jedoch ändern, wenn Sie eine ältere Version verwenden möchten.
+- **displayName**: Legen Sie diesen Wert auf denselben Wert fest wie das name-Attribut am Anfang der Datei.
+- **registry**: Die Microsoft Container Registry ist die Standardregistrierung.  Wenn Sie die Images aus der Microsoft Container Registry pullen und [in eine private Containerregistrierung pushen](offline-deployment.md), geben Sie hier die IP-Adresse oder den DNS-Namen Ihrer Registrierung ein.
+- **dockerRegistry**: Das Geheimnis für Imagepullvorgänge, das verwendet wird, um die Images ggf. aus einer privaten Containerregistrierung zu pullen.
+- **repository**: Das Standardrepository der Microsoft Container Registry lautet `arcdata`.  Wenn Sie eine private Containerregistrierung verwenden, geben Sie den Pfad für den Ordner/das Repository mit den Containerimages der Azure Arc-fähigen Datendienste ein.
+- **imageTag**: Das aktuelle Tag der letzten Version wird standardmäßig in der Vorlage verwendet, Sie können es jedoch ändern, wenn Sie eine ältere Version verwenden möchten.
 
 Beispiel einer vollständigen YAML-Datei für einen Datencontroller:
 ```yaml
@@ -200,7 +198,7 @@ spec:
     serviceAccount: sa-mssql-controller
   docker:
     imagePullPolicy: Always
-    imageTag: public-preview-oct-2020 
+    imageTag: public-preview-dec-2020 
     registry: mcr.microsoft.com
     repository: arcdata
   security:

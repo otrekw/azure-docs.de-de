@@ -3,17 +3,16 @@ title: Management .NET SDK für Azure Stream Analytics
 description: Führen Sie erste Schritte mit dem Stream Analytics Management .NET SDK durch. Erfahren Sie, wie Analytics-Aufträge eingerichtet und ausgeführt werden. Erstellen Sie ein Projekt, Eingaben, Ausgaben und Transformationen.
 author: jseb225
 ms.author: jeanb
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 12/06/2018
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 93e10baa5281481b57e945f93b7375060b574de5
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 633885bb1062edac8226c073768ffdeba84fcb55
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93126854"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98012630"
 ---
 # <a name="management-net-sdk-set-up-and-run-analytics-jobs-using-the-azure-stream-analytics-api-for-net"></a>Management .NET SDK: Einrichten und Ausführen von Analyseaufträgen mit der Azure Stream Analytics-API für .NET
 Erfahren Sie, wie Sie mit der Azure Stream Analytics-API für .NET über das Management .NET SDK Analyseaufträge einrichten und ausführen. Richten Sie ein Projekt ein, erstellen Sie Eingabe- und Ausgabequellen sowie Transformationen, und starten und beenden Sie Aufträge. Für Ihre Analyseaufträge können Sie Daten aus dem Blob-Speicher oder einem Event Hub streamen.

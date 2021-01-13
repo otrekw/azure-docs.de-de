@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 0b4cf72622df78e13add723853d935fc97649b4a
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 19451fb09919238a04ac953c9c38fc70b4744d16
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97358995"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955296"
 ---
 # <a name="create-azure-arc-data-controller-using-the-azure-data-cli-azdata"></a>Erstellen eines Azure Arc-Datencontrollers mithilfe von [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]
 
@@ -271,12 +271,12 @@ Nachdem Sie den Befehl ausgeführt haben, fahren Sie mit [Überwachen des Erstel
 Bevor Sie den Datencontroller in Azure Red Hat OpenShift erstellen, müssen Sie bestimmte Sicherheitskontexteinschränkungen (Security Context Constraints, SCC) anwenden. Für das Vorschaurelease lockern diese die Sicherheitseinschränkungen. In zukünftigen Releases werden aktualisierte Sicherheitskontexteinschränkungen bereitgestellt.
 
 1. Laden Sie die benutzerdefinierte Sicherheitskontexteinschränkung (Security Context Constraint, SCC) herunter. Verwenden Sie einen der folgenden Werte: 
-   - [GitHub](https://github.com/microsoft/azure_arc/tree/master/arc_data_services/deploy/yaml/arc-data-scc.yaml) 
-   - ([Raw](https://raw.githubusercontent.com/microsoft/azure_arc/master/arc_data_services/deploy/yaml/arc-data-scc.yaml))
+   - [GitHub](https://github.com/microsoft/azure_arc/tree/main/arc_data_services/deploy/yaml/arc-data-scc.yaml) 
+   - ([Raw](https://raw.githubusercontent.com/microsoft/azure_arc/main/arc_data_services/deploy/yaml/arc-data-scc.yaml))
    - `curl` Mit dem folgenden Befehl wird „arc-data-scc.yaml“ heruntergeladen:
 
       ```console
-      curl https://raw.githubusercontent.com/microsoft/azure_arc/master/arc_data_services/deploy/yaml/arc-data-scc.yaml -o arc-data-scc.yaml
+      curl https://raw.githubusercontent.com/microsoft/azure_arc/main/arc_data_services/deploy/yaml/arc-data-scc.yaml -o arc-data-scc.yaml
       ```
 
 1. Create SCC (SCC erstellen).
@@ -329,12 +329,12 @@ Nachdem Sie den Befehl ausgeführt haben, fahren Sie mit [Überwachen des Erstel
 Bevor Sie den Datencontroller in Red Hat OCP erstellen, müssen Sie bestimmte Sicherheitskontexteinschränkungen (Security Context Constraints, SCC) anwenden. Für das Vorschaurelease lockern diese die Sicherheitseinschränkungen. In zukünftigen Releases werden aktualisierte Sicherheitskontexteinschränkungen bereitgestellt.
 
 1. Laden Sie die benutzerdefinierte Sicherheitskontexteinschränkung (Security Context Constraint, SCC) herunter. Verwenden Sie einen der folgenden Werte: 
-   - [GitHub](https://github.com/microsoft/azure_arc/tree/master/arc_data_services/deploy/yaml/arc-data-scc.yaml) 
-   - ([Raw](https://raw.githubusercontent.com/microsoft/azure_arc/master/arc_data_services/deploy/yaml/arc-data-scc.yaml))
+   - [GitHub](https://github.com/microsoft/azure_arc/tree/main/arc_data_services/deploy/yaml/arc-data-scc.yaml) 
+   - ([Raw](https://raw.githubusercontent.com/microsoft/azure_arc/main/arc_data_services/deploy/yaml/arc-data-scc.yaml))
    - `curl` Mit dem folgenden Befehl wird „arc-data-scc.yaml“ heruntergeladen:
 
       ```console
-      curl https://raw.githubusercontent.com/microsoft/azure_arc/master/arc_data_services/deploy/yaml/arc-data-scc.yaml -o arc-data-scc.yaml
+      curl https://raw.githubusercontent.com/microsoft/azure_arc/main/arc_data_services/deploy/yaml/arc-data-scc.yaml -o arc-data-scc.yaml
       ```
 
 1. Create SCC (SCC erstellen).

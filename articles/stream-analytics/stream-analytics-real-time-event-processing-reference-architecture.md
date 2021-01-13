@@ -3,16 +3,15 @@ title: Echtzeitereignisverarbeitung mithilfe von Azure Stream Analytics
 description: Dieser Artikel beschreibt die Referenzarchitektur für die Echtzeitereignisverarbeitung und -analyse mithilfe von Azure Stream Analytics.
 author: jseb225
 ms.author: jeanb
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/24/2017
-ms.openlocfilehash: 0aa489e1732a8be564b3cefe1ed74d7aaacb1456
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 858ec5fef065acba6934945a96c21fb1c26b3685
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93124423"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98012086"
 ---
 # <a name="reference-architecture-real-time-event-processing-with-microsoft-azure-stream-analytics"></a>Referenzarchitektur: Echtzeitereignisverarbeitung mit Microsoft Azure Stream Analytics
 Die Referenzarchitektur für die Echtzeitereignisverarbeitung mit Azure Stream Analytics soll als allgemeiner Plan dienen, mit dem eine Plattform-as-a-Service (PaaS) für die Datenstromverarbeitung in Echtzeit auf der Basis von Microsoft Azure bereitgestellt werden kann.
@@ -35,13 +34,13 @@ Microsoft Azure stellt einen umfassenden Katalog von Analysetechnologien bereit,
   * Präsentations-/Nutzungsebene
 * Zusammenfassung
 
-**Autor** : Charles Feddersen, Lösungsarchitekt, Data Insights Center of Excellence, Microsoft Corporation
+**Autor**: Charles Feddersen, Lösungsarchitekt, Data Insights Center of Excellence, Microsoft Corporation
 
 **Veröffentlicht:** Januar 2015
 
-**Version** : 1.0
+**Version**: 1.0
 
-**Download** : [Real-Time Event Processing with Microsoft Azure Stream Analytics](https://download.microsoft.com/download/6/2/3/623924DE-B083-4561-9624-C1AB62B5F82B/real-time-event-processing-with-microsoft-azure-stream-analytics.pdf) (Echtzeitereignisverarbeitung mit Microsoft Azure Stream Analytics)
+**Download**: [Real-Time Event Processing with Microsoft Azure Stream Analytics](https://download.microsoft.com/download/6/2/3/623924DE-B083-4561-9624-C1AB62B5F82B/real-time-event-processing-with-microsoft-azure-stream-analytics.pdf) (Echtzeitereignisverarbeitung mit Microsoft Azure Stream Analytics)
 
 ## <a name="get-help"></a>Hier erhalten Sie Hilfe
 Weitere Unterstützung finden Sie auf der [Frageseite von Microsoft Q&A (Fragen und Antworten) zu Azure Stream Analytics](/answers/topics/azure-stream-analytics.html).

@@ -4,16 +4,15 @@ description: In diesem Artikel wird beschrieben, wie Sie eine CI/CD-Pipeline (Co
 services: stream-analytics
 author: su-jie
 ms.author: sujie
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 09/10/2020
-ms.openlocfilehash: d9b6dfc977aab7d8907b5d3c3851a22f96227d78
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b601a3586cfa971b2e8337a914f4e10bb0178ba0
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91757757"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98014245"
 ---
 # <a name="use-azure-devops-to-create-a-cicd-pipeline-for-a-stream-analytics-job"></a>Erstellen einer CI/CD-Pipeline für einen Stream Analytics-Auftrag mit Azure DevOps
 
@@ -39,7 +38,7 @@ In diesem Abschnitt erfahren Sie, wie Sie eine Buildpipeline erstellen. Sie kön
 
 1. Wählen Sie Ihren Quelltyp, das Teamprojekt und das Repository aus. Wählen Sie anschließend **Weiter** aus.
 
-   :::image type="content" source="media/set-up-cicd-pipeline/select-repo.png" alt-text="Erstellen einer neue Azure-Pipeline":::
+   :::image type="content" source="media/set-up-cicd-pipeline/select-repo.png" alt-text="Auswählen eines Azure Stream Analytics-Projekts":::
 
 1. Wählen Sie auf der Seite **Eine Vorlage auswählen** den Eintrag **Leerer Auftrag** aus.
 
@@ -47,7 +46,7 @@ In diesem Abschnitt erfahren Sie, wie Sie eine Buildpipeline erstellen. Sie kön
 
 1. Wählen Sie auf der Registerkarte **Aufgaben** das Pluszeichen neben **Agent-Auftrag 1** aus. Geben Sie in die Aufgabensuche **npm** ein, und wählen Sie *npm* aus.
 
-   :::image type="content" source="media/set-up-cicd-pipeline/search-npm.png" alt-text="Erstellen einer neue Azure-Pipeline":::
+   :::image type="content" source="media/set-up-cicd-pipeline/search-npm.png" alt-text="npm-Aufgabe auswählen":::
 
 2. Weisen Sie der Aufgabe einen **Anzeigenamen** zu. Ändern Sie die Option **Befehl** in *benutzerdefiniert*, und geben Sie den folgenden Befehl in **Befehl und Argumente** ein. Belassen Sie die übrigen Optionen in ihrer Standardeinstellung.
 
@@ -55,7 +54,7 @@ In diesem Abschnitt erfahren Sie, wie Sie eine Buildpipeline erstellen. Sie kön
    install -g azure-streamanalytics-cicd
    ```
 
-   :::image type="content" source="media/set-up-cicd-pipeline/npm-config.png" alt-text="Erstellen einer neue Azure-Pipeline":::
+   :::image type="content" source="media/set-up-cicd-pipeline/npm-config.png" alt-text="Konfiguration für npm-Aufgabe eingeben":::
 
 ## <a name="add-a-build-task"></a>Hinzufügen einer Buildaufgabe
 
@@ -77,7 +76,7 @@ In diesem Abschnitt erfahren Sie, wie Sie eine Buildpipeline erstellen. Sie kön
 
    In der folgenden Abbildung wird ein Stream Analytics Visual Studio Code-Projekt als Beispiel verwendet.
 
-   :::image type="content" source="media/set-up-cicd-pipeline/command-line-config-build.png" alt-text="Erstellen einer neue Azure-Pipeline":::
+   :::image type="content" source="media/set-up-cicd-pipeline/command-line-config-build.png" alt-text="Konfigurationen in Visual Studio-Code für Befehlszeilenaufgaben eingeben":::
 
 ## <a name="add-a-test-task"></a>Hinzufügen einer Testaufgabe
 
@@ -87,7 +86,7 @@ In diesem Abschnitt erfahren Sie, wie Sie eine Buildpipeline erstellen. Sie kön
    |-|-|
    |testPath|Test|
 
-   :::image type="content" source="media/set-up-cicd-pipeline/pipeline-variables-test.png" alt-text="Erstellen einer neue Azure-Pipeline":::
+   :::image type="content" source="media/set-up-cicd-pipeline/pipeline-variables-test.png" alt-text="Pipelinevariablen hinzufügen":::
 
 2. Wählen Sie auf der Registerkarte **Aufgaben** das Pluszeichen neben **Agent-Auftrag 1** aus. Suchen Sie nach **Befehlszeile**.
 
@@ -99,7 +98,7 @@ In diesem Abschnitt erfahren Sie, wie Sie eine Buildpipeline erstellen. Sie kön
    azure-streamanalytics-cicd test -project $(projectRootPath)/asaproj.json -outputpath $(projectRootPath)/$(outputPath)/$(testPath) -testConfigPath $(projectRootPath)/test/testConfig.json 
    ```
 
-   :::image type="content" source="media/set-up-cicd-pipeline/command-line-config-test.png" alt-text="Erstellen einer neue Azure-Pipeline":::
+   :::image type="content" source="media/set-up-cicd-pipeline/command-line-config-test.png" alt-text="Konfigurationen für Befehlszeilenaufgaben eingeben":::
 
 ## <a name="add-a-copy-files-task"></a>Hinzufügen einer Aufgabe zum Kopieren von Dateien
 
@@ -116,7 +115,7 @@ Sie müssen eine Aufgabe zum Kopieren von Dateien hinzufügen, um die Testzusamm
 
 2. Erweitern Sie **Steuerungsoptionen**. Wählen Sie **Auch wenn eine vorherige Aufgabe fehlgeschlagen ist, außer wenn der Build abgebrochen wurde** unter **Aufgabe ausführen** aus.
 
-   :::image type="content" source="media/set-up-cicd-pipeline/copy-config.png" alt-text="Erstellen einer neue Azure-Pipeline":::
+   :::image type="content" source="media/set-up-cicd-pipeline/copy-config.png" alt-text="Konfiguration für Kopieraufgabe eingeben":::
 
 ## <a name="add-a-publish-build-artifacts-task"></a>Hinzufügen einer Aufgabe zum Veröffentlichen von Buildartefakten
 
@@ -124,7 +123,7 @@ Sie müssen eine Aufgabe zum Kopieren von Dateien hinzufügen, um die Testzusamm
 
 2. Erweitern Sie **Steuerungsoptionen**. Wählen Sie **Auch wenn eine vorherige Aufgabe fehlgeschlagen ist, außer wenn der Build abgebrochen wurde** unter **Aufgabe ausführen** aus.
 
-   :::image type="content" source="media/set-up-cicd-pipeline/publish-config.png" alt-text="Erstellen einer neue Azure-Pipeline":::
+   :::image type="content" source="media/set-up-cicd-pipeline/publish-config.png" alt-text="Konfiguration für Veröffentlichungsaufgabe eingeben":::
 
 ## <a name="save-and-run"></a>Speichern und ausführen
 
@@ -134,9 +133,9 @@ Wenn Sie mit dem Hinzufügen der Aufgaben für npm-Paket, Befehlszeile, „Datei
 
 Die Testzusammenfassungsdatei und Azure Resource Manager-Vorlagendateien finden Sie im Ordner **Published**.
 
-   :::image type="content" source="media/set-up-cicd-pipeline/check-build-test-result.png" alt-text="Erstellen einer neue Azure-Pipeline":::
+   :::image type="content" source="media/set-up-cicd-pipeline/check-build-test-result.png" alt-text="Build und Testergebnisse überprüfen":::
 
-   :::image type="content" source="media/set-up-cicd-pipeline/check-drop-folder.png" alt-text="Erstellen einer neue Azure-Pipeline":::
+   :::image type="content" source="media/set-up-cicd-pipeline/check-drop-folder.png" alt-text="Artefakte überprüfen":::
 
 ## <a name="release-with-azure-pipelines"></a>Release mit Azure Pipelines
 
@@ -150,7 +149,7 @@ In diesem Abschnitt erfahren Sie, wie Sie eine Releasepipeline erstellen. Sie k�
 
 3. Wählen Sie im Feld **Artefakte** den Befehl **+ Artefakt hinzufügen** aus. Wählen Sie unter **Quelle** die Buildpipeline aus, die Sie gerade erstellt haben, und wählen Sie **Hinzufügen** aus.
 
-   :::image type="content" source="media/set-up-cicd-pipeline/build-artifact.png" alt-text="Erstellen einer neue Azure-Pipeline":::
+   :::image type="content" source="media/set-up-cicd-pipeline/build-artifact.png" alt-text="Buildpipelineartefakt eingeben":::
 
 4. Ändern Sie den Namen von **Stufe 1** in **Auftrag in Testumgebung bereitstellen**.
 
@@ -172,7 +171,7 @@ In diesem Abschnitt erfahren Sie, wie Sie eine Releasepipeline erstellen. Sie k�
    |Speicherort der Vorlage| Verknüpftes Artefakt|
    |Vorlage| $(System.DefaultWorkingDirectory)/_azure-streamanalytics-cicd-demo-CI-Deploy/drop/myASAProject.JobTemplate.json |
    |Vorlagenparameter|$(System.DefaultWorkingDirectory)/_azure-streamanalytics-cicd-demo-CI-Deploy/drop/myASAProject.JobTemplate.parameters.json |
-   |Vorlagenparameter überschreiben|-<arm_template_parameter> "Ihr Wert". Sie können die Parameter mithilfe von **Variablen**definieren.|
+   |Vorlagenparameter überschreiben|-<arm_template_parameter> "Ihr Wert". Sie können die Parameter mithilfe von **Variablen** definieren.|
    |Bereitstellungsmodus|Inkrementell|
 
 3. Wählen Sie im Aufgabendropdown **Auftrag in Produktionsumgebung bereitstellen** aus.
@@ -196,7 +195,7 @@ In diesem Abschnitt erfahren Sie, wie Sie eine Releasepipeline erstellen. Sie k�
 
 Um ein Release zu erstellen, wählen Sie **Release erstellen** in der oberen rechten Ecke aus.
 
-:::image type="content" source="media/set-up-cicd-pipeline/create-release.png" alt-text="Erstellen einer neue Azure-Pipeline":::
+:::image type="content" source="media/set-up-cicd-pipeline/create-release.png" alt-text="Erstellen eines Release mittels Azure Pipelines":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

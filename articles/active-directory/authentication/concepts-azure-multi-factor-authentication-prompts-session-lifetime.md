@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8789015c239aae58ec25f0f644d4c497da477c2b
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 0033b6985313de351ffdaf7028d2c1e9bd76ba72
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97881241"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97963518"
 ---
 # <a name="optimize-reauthentication-prompts-and-understand-session-lifetime-for-azure-ad-multi-factor-authentication"></a>Optimieren von Aufforderungen zur erneuten Authentifizierung und Grundlegendes zur Sitzungslebensdauer für Azure AD Multi-Factor Authentication
 
@@ -121,7 +121,7 @@ Führen Sie die folgenden Schritte aus, um Richtlinien für bedingten Zugriff f�
 1. Wählen Sie **Sicherheit** und anschließend **Bedingter Zugriff** aus.
 1. Konfigurieren Sie eine Richtlinie mithilfe der in diesem Artikel beschriebenen empfohlenen Optionen für die Sitzungsverwaltung.
 
-Zum Überprüfen der Tokengültigkeitsdauer [verwenden Sie Azure AD PowerShell, um Azure AD-Richtlinien abzufragen](../develop/configure-token-lifetimes.md#prerequisites). Deaktivieren Sie alle Richtlinien, die Sie eingerichtet haben.
+Zum Überprüfen der Tokengültigkeitsdauer [verwenden Sie Azure AD PowerShell, um Azure AD-Richtlinien abzufragen](../develop/configure-token-lifetimes.md#get-started). Deaktivieren Sie alle Richtlinien, die Sie eingerichtet haben.
 
 Wenn mehr als eine Einstellung in Ihrem Mandanten aktiviert ist, empfehlen wir Ihnen, die Einstellungen ausgehend von der für Sie verfügbaren Lizenzierung zu aktualisieren. Wenn Sie beispielsweise über Azure AD Premium-Lizenzen verfügen, sollten Sie nur die Richtlinie für bedingten Zugriff für die *Anmeldehäufigkeit* und die *persistente Browsersitzung* verwenden. Wenn Sie über Microsoft 365-Apps oder Azure AD Free-Lizenzen verfügen, verwenden Sie die Konfiguration *Remain signed-in?* (Angemeldet bleiben?).
 

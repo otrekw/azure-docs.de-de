@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 01/05/2021
 ms.author: lle
 ms.reviewer: craigg
-ms.openlocfilehash: fac4f3029d783e9257d00466ddb9fc9741b0f5a2
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: 3b7b405e34b6ca82da593507ad6103d360c5df1e
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97895647"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97968584"
 ---
 # <a name="troubleshoot-azure-data-factory-security-and-access-control-issues"></a>Beheben von Problemen mit der Sicherheit und Zugriffssteuerung in Azure Data Factory
 
@@ -151,16 +151,6 @@ Um das Problem zu lösen, gehen Sie zu [Azure Private Link für Azure Data Facto
 Versuchen Sie, den Zugriff über das öffentliche Netzwerk auf der Benutzeroberfläche zu aktivieren, wie im folgenden Screenshot gezeigt:
 
 ![Screenshot des Steuerelements „Aktiviert“ für „Zugriff über öffentliche Netzwerke zulassen“ im Bereich „Netzwerk“.](media/self-hosted-integration-runtime-troubleshoot-guide/enable-public-network-access.png)
-
-### <a name="pipeline-runtime-varies-when-basing-on-different-ir"></a>Die Pipeline Laufzeit variiert, wenn sie auf unterschiedlichen IRs basiert.
-
-#### <a name="symptoms"></a>Symptome
-
-Durch einfaches Umschalten der Dropdownliste „Verknüpfter Dienst“ im Dataset werden dieselben Pipelineaktivitäten ausgeführt, die Laufzeiten unterscheiden sich jedoch stark. Wenn das Dataset auf der Integration Runtime für verwaltete virtuelle Netzwerke basiert, dauert die Ausführung im Durchschnitt länger als 2 Minuten. Sie dauert jedoch ca. 20 Sekunden, wenn es auf der Standard-Integration Runtime basiert.
-
-#### <a name="cause"></a>Ursache
-
-Wenn Sie die Details der Pipelineausführungen überprüfen, können Sie feststellen, dass die langsame Pipeline in der IR für das verwaltete VNET (virtuelles Netzwerk) ausgeführt wird, während die normale Pipeline in der Azure IR ausgeführt wird. Die Warteschlangenzeit ist im IR für das verwaltete VNET länger als in der Azur IR. Der Grund dafür ist, dass wir nicht einen Computeknoten pro Data Factory reservieren und somit vor dem Starten jeder Kopieraktivität eine Aufwärmphase von ca. 2 Minuten erfolgt. Dies geschieht hauptsächlich beim Beitritt zu einem VNET statt in der Azure IR.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

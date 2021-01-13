@@ -3,17 +3,16 @@ title: Programmgesteuertes Überwachen und Verwalten von Azure Stream Analytics-
 description: Dieser Artikel beschreibt, wie Sie Stream Analytics-Aufträge, die mit REST-APIs, dem Azure SDK oder PowerShell erstellt wurden, programmgesteuert überwachen.
 author: jseb225
 ms.author: jeanb
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 04/20/2017
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9c746e409964b4625a4c9921d9f02ca0c9730a35
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: dda1b6b652870440e7228e6640bb555f4c2e4a63
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93123445"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98015075"
 ---
 # <a name="programmatically-create-a-stream-analytics-job-monitor"></a>Programmgesteuertes Überwachen von Stream Analytics-Aufträgen
 
@@ -136,7 +135,7 @@ Mit dem folgenden Code werden die erforderlichen Variablen und Verwaltungsclient
 
 ## <a name="enable-monitoring-for-an-existing-stream-analytics-job"></a>Aktivieren der Überwachung für einen vorhandenen Stream Analytics-Auftrag
 
-Mit dem folgenden Code wird die Überwachung für einen **vorhandenen** Stream Analytics-Auftrag aktiviert. Der erste Teil des Codes führt eine GET-Anforderung an den Stream Analytics-Dienst aus, um Daten zum jeweiligen Stream Analytics-Auftrag abzurufen. Hierbei wird die (mit der GET-Anforderung abgerufene) *ID* -Eigenschaft als Parameter für die Put-Methode in der zweiten Hälfte des Codes verwendet, die eine PUT-Anforderung an den Insights-Dienst sendet, um die Überwachung des Stream Analytics-Auftrags zu aktivieren.
+Mit dem folgenden Code wird die Überwachung für einen **vorhandenen** Stream Analytics-Auftrag aktiviert. Der erste Teil des Codes führt eine GET-Anforderung an den Stream Analytics-Dienst aus, um Daten zum jeweiligen Stream Analytics-Auftrag abzurufen. Hierbei wird die (mit der GET-Anforderung abgerufene) *ID*-Eigenschaft als Parameter für die Put-Methode in der zweiten Hälfte des Codes verwendet, die eine PUT-Anforderung an den Insights-Dienst sendet, um die Überwachung des Stream Analytics-Auftrags zu aktivieren.
 
 > [!WARNING]
 > Wenn Sie die Überwachung bereits für einen anderen Stream Analytics-Auftrag aktiviert haben, entweder über das Azure-Portal oder programmgesteuert über den folgenden Code, **wird empfohlen, dass Sie den gleichen Speicherkontonamen angeben wie bei der zuvor aktivierten Überwachung.**

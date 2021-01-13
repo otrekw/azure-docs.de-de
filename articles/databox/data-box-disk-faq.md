@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: conceptual
-ms.date: 12/14/2020
+ms.date: 12/17/2020
 ms.author: alkohli
-ms.openlocfilehash: acaa0fdb1fa0e9a338f4e249622cad0115c6b58e
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: 3df8f75a726639e87157a1aa7fd9ff4d35c0ef4f
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97516452"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654624"
 ---
 # <a name="azure-data-box-disk-frequently-asked-questions"></a>Azure Data Box Disk: Häufig gestellte Fragen
 
@@ -100,13 +100,11 @@ Diese Vorlaufzeiten sind *Schätzwerte*. Die Zeit für jede Phase der Auftragsve
 **Geschätzte Vorlaufzeiten für einen Data Box Disk-Auftrag:**
 
 1. Bestellen von Data Box Disk: Einige Minuten, über das Portal
-2. Datenträgerzuordnung und -vorbereitung: 1 bis 2 Werktage
+2. Datenträgerzuordnung und -vorbereitung: Bis zu 5 Werktage, abhängig von der Bestandsverfügbarkeit und der Anzahl der zur Verarbeitung ausstehenden Aufträge
 3. Versand: 2-3 Werktage
 4. Datenkopiervorgang am Kundenstandort: Abhängig von der Art der Daten, der Größe und der Anzahl der Dateien
 5. Rücksendung: 2-3 Werktage
-6. Verarbeiten des Datenträgers im Rechenzentrum: 1 bis 2 Werktage
-7. Hochladen von Daten in Azure: Beginnt, sobald die Verarbeitung beendet und der Datenträger verbunden ist. Die Uploadzeit ist abhängig von der Art der Daten, der Größe und der Anzahl der Dateien.
-
+6. Verarbeitung im Rechenzentrum und Hochladen in Azure: Das Hochladen der Daten im Rechenzentrum beginnt, sobald die operative Verarbeitung abgeschlossen und der Datenträger verbunden ist. Die Uploadzeit ist abhängig von der Art der Daten, der Größe und der Anzahl der Dateien.
 
 ## <a name="configure-and-connect"></a>Konfigurieren und Verbinden
  

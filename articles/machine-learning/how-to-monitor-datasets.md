@@ -1,7 +1,7 @@
 ---
-title: Analysieren und Überwachen von Datasets auf Datendrift (Vorschau)
+title: Erkennen von Datendrift in Datasets (Vorschau)
 titleSuffix: Azure Machine Learning
-description: Erstellen Sie Monitore für Azure Machine Learning-Datasets (Vorschau), überwachen Sie die Datasets auf Datendrift, und richten Sie Warnungen ein.
+description: Erfahren Sie, wie Sie die Datendrifterkennung in Azure Learning einrichten. Erstellen Sie Datasetsmonitore (Vorschau), überwachen Sie den Datendrift, und richten Sie Warnungen ein.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,33 +10,33 @@ ms.author: copeters
 author: lostmygithubaccount
 ms.date: 06/25/2020
 ms.topic: conceptual
-ms.custom: how-to, data4ml
-ms.openlocfilehash: 04882c71a2d80e01029dd0a8b476f21a658e632b
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.custom: how-to, data4ml, contperf-fy21q2
+ms.openlocfilehash: 1bf7856e807b04e35d28a3e262ae89ea9c298f3c
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93359594"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97763590"
 ---
 # <a name="detect-data-drift-preview-on-datasets"></a>Erkennen von Datendrift (Vorschau) in Datasets
-
-
-> [!IMPORTANT]
-> Das Erkennen von Datendrift in Datasets befindet sich derzeit in der öffentlichen Vorschauphase.
-> Die Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Hier erfahren Sie, wie Sie Datendrift überwachen und Warnungen für starke Drift festlegen.  
 
 Azure Machine Learning-Datasetmonitore (Vorschau) ermöglichen Folgendes:
-* **Analysieren der Drift in Ihren Daten** , um zu verstehen, wie diese sich im Lauf der Zeit ändern.
+* **Analysieren der Drift in Ihren Daten**, um zu verstehen, wie diese sich im Lauf der Zeit ändern.
 * **Überwachen von Modelldaten** auf Änderungen zwischen Trainings- und Nutzungsdatasets.  Beginnen Sie mit dem [Sammeln von Daten für Modelle in der Produktion](how-to-enable-data-collection.md).
 * **Überwachen von neuen Daten** auf Änderungen zwischen Baseline- und Zieldatasets.
-* **Erstellen von Profilen für Features in Daten** , um nachzuverfolgen, wie sich statistische Eigenschaften im Lauf der Zeit ändern.
-* **Einrichten von Warnungen zur Datendrift** , um bei potenziellen Problemen frühzeitig eine Benachrichtigung zu erhalten. 
+* **Erstellen von Profilen für Features in Daten**, um nachzuverfolgen, wie sich statistische Eigenschaften im Lauf der Zeit ändern.
+* **Einrichten von Warnungen zur Datendrift**, um bei potenziellen Problemen frühzeitig eine Benachrichtigung zu erhalten. 
+* **[Erstellen einer neuen Datasetversion](how-to-version-track-datasets)** , wenn Sie ermitteln, dass die Daten zu stark abgewichen sind.
 
 Für die Monitorerstellung wird ein [Azure Machine Learning-Dataset](how-to-create-register-datasets.md) verwendet. Das Dataset muss eine Zeitstempelspalte enthalten.
 
 Datendriftmetriken können mit dem Python SDK oder in Azure Machine Learning Studio angezeigt werden.  Andere Metriken und Erkenntnisse sind über die Ressource [Azure Application Insights](../azure-monitor/app/app-insights-overview.md) verfügbar, die mit dem Azure Machine Learning-Arbeitsbereich verknüpft ist.
+
+> [!IMPORTANT]
+> Die Datendrifterkennung für Datasets befindet sich derzeit in der öffentlichen Vorschauphase.
+> Die Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -77,7 +77,7 @@ Der Datendriftalgorithmus misst Änderungen von Daten allgemein und bietet Hinwe
 
 Aus konzeptioneller Sicht gibt es drei primäre Szenarien für die Einrichtung von Datasetmonitoren in Azure Machine Learning.
 
-Szenario | Beschreibung
+Szenario | BESCHREIBUNG
 ---|---
 Überwachen der Nutzungsdaten eines Modells auf Drift gegenüber den Trainingsdaten | Angesichts der Tatsache, dass die Modellgenauigkeit abnimmt, wenn die Nutzungsdaten von den Trainingsdaten abweichen, können die Ergebnisse dieses Szenarios als Überwachung eines Proxys für die Modellgenauigkeit interpretiert werden.
 Überwachen eines Zeitreihendatasets auf Drift gegenüber einem vorherigen Zeitraum | Dieses Szenario ist allgemeiner und kann zum Überwachen von Datasets verwendet werden, die an Prozessen vor oder nach der Modellerstellung beteiligt sind.  Das Zieldataset muss über eine Zeitstempelspalte verfügen. Das Baselinedataset kann ein beliebiges tabellarische Dataset sein, das über gemeinsame Features mit dem Zieldataset verfügt.
@@ -92,15 +92,20 @@ Datasetmonitore sind von folgenden Azure-Diensten abhängig:
 | *Application Insights*| Drift gibt Metriken an Application Insights aus, die zum Machine Learning-Arbeitsbereich gehören.
 | *Azure Blob Storage*| Drift gibt Metriken im JSON-Format an Azure Blob Storage aus.
 
-## <a name="how-dataset-monitors-data"></a>Datenüberwachung durch das Dataset
+### <a name="baseline-and-target-datasets"></a>Baseline- und Zieldatasets 
 
-Verwenden Sie Machine Learning-Datasets für die Überwachung auf Datendrift. Geben Sie ein Baselinedataset an (üblicherweise das Trainingsdataset für ein Modell). Ein Zieldataset – in der Regel Modelleingabedaten – wird im Lauf der Zeit mit dem Baselinedataset verglichen. Dieser Vergleich bedeutet, dass im Zieldataset eine Zeitstempelspalte angegeben sein muss.
+Sie überwachen [Azure Machine Learning-Datasets](how-to-create-register-datasets.md) auf Datendrift. Wenn Sie einen Datasetmonitor erstellen, verweisen Sie auf Folgendes:
+* Baselinedataset – normalerweise das Trainingsdataset für ein Modell
+* Zieldataset – in der Regel Modelleingabedaten – wird im Lauf der Zeit mit dem Baselinedataset verglichen Dieser Vergleich bedeutet, dass im Zieldataset eine Zeitstempelspalte angegeben sein muss.
+
+Der Monitor vergleicht die Baseline- und Zieldatasets.
 
 ## <a name="create-target-dataset"></a>Erstellen des Zieldatasets
 
 Für das Zieldataset muss das Merkmal `timeseries`festgelegt sein. Hierzu muss die Zeitstempelspalte angegeben werden – entweder auf der Grundlage einer Spalte in den Daten oder auf der Grundlage einer aus dem Pfadmuster der Dateien abgeleiteten virtuellen Spalte. Erstellen Sie das Dataset mit einem Zeitstempel per [Python SDK](#sdk-dataset) oder in [Azure Machine Learning Studio](#studio-dataset). Eine Spalte, die einen Zeitstempel darstellt, muss angegeben werden, um dem Dataset das Merkmal `timeseries` hinzuzufügen. Wenn Ihre Daten in einer Ordnerstruktur mit Zeitinformationen partitioniert sind (beispielsweise „{JJJJ/MM/TT}“), können Sie über die Einstellung für das Pfadmuster eine virtuelle Spalte erstellen und als Partitionszeitstempel festlegen, um die Bedeutung der Zeitreihenfunktion zu erhöhen.
 
-### <a name="python-sdk"></a><a name="sdk-dataset"></a>Python SDK
+# <a name="python"></a>[Python](#tab/python)
+<a name="sdk-dataset"></a>
 
 Die Methode [`with_timestamp_columns()`](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py#&preserve-view=truewith-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-) der Klasse [`Dataset`](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py#&preserve-view=truewith-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-) dient zum Definieren der Zeitstempelspalte für das Dataset.
 
@@ -129,9 +134,12 @@ dset = dset.with_timestamp_columns('date')
 dset = dset.register(ws, 'target')
 ```
 
-Ein vollständiges Beispiel für die Verwendung des `timeseries`-Merkmals von Datasets finden Sie im [Beispiel-Notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/timeseries-datasets/tabular-timeseries-dataset-filtering.ipynb) oder in der [Dokumentation zum SDK für das Dataset](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py#&preserve-view=truewith-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-).
+> [!TIP]
+> Ein vollständiges Beispiel für die Verwendung des `timeseries`-Merkmals von Datasets finden Sie im [Beispiel-Notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/timeseries-datasets/tabular-timeseries-dataset-filtering.ipynb) oder in der [Dokumentation zum SDK für das Dataset](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py#&preserve-view=truewith-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-).
 
-### <a name="azure-machine-learning-studio"></a><a name="studio-dataset"></a>Azure Machine Learning Studio
+# <a name="studio"></a>[Studio](#tab/azure-studio)
+
+<a name="studio-dataset"></a>
 
 Wenn Sie Ihr Dataset mithilfe des Azure Machine Learning-Studios erstellen, stellen Sie sicher, dass der Pfad zu Ihren Daten Zeitstempelinformationen enthält, schließen Sie alle Unterordner mit Daten ein, und legen Sie das Partitionsformat fest.
 
@@ -147,14 +155,14 @@ Wenn Ihre Daten wie hier nach Datum partitioniert sind, können Sie auch den Zei
 
 :::image type="content" source="media/how-to-monitor-datasets/timeseries-partitiontimestamp.png" alt-text="Zeitstempel der Partition":::
 
+---
 
-## <a name="create-dataset-monitors"></a>Erstellen von Datasetmonitoren
+## <a name="create-dataset-monitor"></a>Erstellen eines Datasetmonitors
 
-Erstellen Sie Datasetmonitore, um Datendrift bei einem neuen Dataset zu erkennen und eine entsprechende Warnung auszugeben.  Verwenden Sie entweder das [Python SDK](#sdk-monitor) oder [Azure Machine Learning Studio](#studio-monitor).
+Erstellen Sie einen Datasetmonitor, um Datendrift bei einem neuen Dataset zu erkennen und eine entsprechende Warnung auszugeben.  Verwenden Sie entweder das [Python SDK](#sdk-monitor) oder [Azure Machine Learning Studio](#studio-monitor).
 
-### <a name="python-sdk"></a><a name="sdk-monitor"></a>Python SDK
-
-Vollständige Informationen finden Sie in der [Python SDK-Referenzdokumentation zur Datendrift](/python/api/azureml-datadrift/azureml.datadrift). 
+# <a name="python"></a>[Python](#tab/python)
+<a name="sdk-monitor"></a> Vollständige Informationen finden Sie in der [Python SDK-Referenzdokumentation zum Datendrift](/python/api/azureml-datadrift/azureml.datadrift). 
 
 Im folgenden Beispiel wird gezeigt, wie ein Datasetmonitor mit dem Python SDK erstellt wird.
 
@@ -202,26 +210,29 @@ monitor = monitor.disable_schedule()
 monitor = monitor.enable_schedule()
 ```
 
-Ein vollständiges Beispiel für die Einrichtung eines `timeseries`-Datasets und einer Datendrifterkennung finden Sie in unserem [Beispiel-Notebook](https://aka.ms/datadrift-notebook).
+> [!TIP]
+> Ein vollständiges Beispiel für die Einrichtung eines `timeseries`-Datasets und einer Datendrifterkennung finden Sie in unserem [Beispiel-Notebook](https://aka.ms/datadrift-notebook).
 
-### <a name="azure-machine-learning-studio"></a><a name="studio-monitor"></a> Azure Machine Learning Studio
+
+# <a name="studio"></a>[Studio](#tab/azure-studio)
+<a name="studio-monitor"></a>
 
 1. Navigieren Sie zur [Studio-Homepage](https://ml.azure.com).
 1. Wählen Sie die Registerkarte **Datasets** auf der linken Seite aus. 
 1. Wählen Sie **Datasetmonitore** aus.
    ![Monitorliste](./media/how-to-monitor-datasets/monitor-list.png)
 
-1. Klicken Sie auf die Schaltfläche **+ Monitor erstellen** , und fahren Sie mit dem Assistenten fort, indem Sie auf **Weiter** klicken.  
+1. Klicken Sie auf die Schaltfläche **+ Monitor erstellen**, und fahren Sie mit dem Assistenten fort, indem Sie auf **Weiter** klicken.  
 
 :::image type="content" source="media/how-to-monitor-datasets/wizard.png" alt-text="Assistent zum Erstellen von Monitoren":::
 
-* **Zieldataset auswählen** :  Das Zieldataset ist ein tabellarisches Dataset mit angegebener Zeitstempelspalte, das auf Datendrift hin analysiert wird. Das Zieldataset muss gemeinsame Features mit dem Baselinedataset aufweisen, und es sollte sich um ein `timeseries`-Dataset handeln, an das neue Daten angefügt werden. Es können Daten der Vergangenheit im Zieldataset analysiert oder neue Daten überwacht werden.
+* **Zieldataset auswählen**:  Das Zieldataset ist ein tabellarisches Dataset mit angegebener Zeitstempelspalte, das auf Datendrift hin analysiert wird. Das Zieldataset muss gemeinsame Features mit dem Baselinedataset aufweisen, und es sollte sich um ein `timeseries`-Dataset handeln, an das neue Daten angefügt werden. Es können Daten der Vergangenheit im Zieldataset analysiert oder neue Daten überwacht werden.
 
-* **Baselinedataset auswählen** :  Wählen Sie das tabellarische Dataset aus, das als Baseline für den Vergleich mit dem Zieldataset im Zeitverlauf verwendet werden soll.  Das Baselinedataset muss gemeinsame Features mit dem Zieldataset aufweisen.  Wählen Sie einen Zeitbereich aus, um ein Segment des Zieldatasets zu verwenden, oder geben Sie ein separates Dataset an, das als Baseline verwendet werden soll.
+* **Baselinedataset auswählen**:  Wählen Sie das tabellarische Dataset aus, das als Baseline für den Vergleich mit dem Zieldataset im Zeitverlauf verwendet werden soll.  Das Baselinedataset muss gemeinsame Features mit dem Zieldataset aufweisen.  Wählen Sie einen Zeitbereich aus, um ein Segment des Zieldatasets zu verwenden, oder geben Sie ein separates Dataset an, das als Baseline verwendet werden soll.
 
-* **Monitoreinstellungen** :  Diese Einstellungen gelten für die geplante Datasetmonitor-Pipeline, die erstellt wird. 
+* **Monitoreinstellungen**:  Diese Einstellungen gelten für die geplante Datasetmonitor-Pipeline, die erstellt wird. 
 
-    | Einstellung | Beschreibung | Tipps | Veränderlich | 
+    | Einstellung | BESCHREIBUNG | Tipps | Veränderlich | 
     | ------- | ----------- | ---- | ------- |
     | Name | Name des Datasetmonitors. | | Nein |
     | Features | Liste der Features, die im Hinblick auf Datendrift im Lauf der Zeit analysiert werden. | Legen Sie diese Einstellung auf die Ausgabefeatures eines Modells fest, um eine konzeptionelle Drift zu messen. Schließen Sie keine Features ein, für die im Laufe der Zeit eine natürliche Drift auftritt (Monat, Jahr, Index usw.). Nach dem Anpassen der Featureliste können Sie einen Abgleich für alle vorhandenen Datendriftmonitore durchführen. | Ja | 
@@ -233,6 +244,8 @@ Ein vollständiges Beispiel für die Einrichtung eines `timeseries`-Datasets und
     | Schwellenwert | Schwellenwert für den Prozentsatz der Datendrift für Warnungen per E-Mail. | Weitere Warnungen und Ereignisse können in vielen weiteren Metriken in der dem Arbeitsbereich zugeordneten Application Insights-Ressource festgelegt werden. | Ja |
 
 Nach Abschluss des Assistenten wird der resultierende Datasetmonitor in der Liste angezeigt. Wählen Sie diesen Eintrag aus, um zur Detailseite für den Monitor zu gelangen.
+
+---
 
 ## <a name="understand-data-drift-results"></a>Verstehen der Datendriftergebnisse
 
@@ -277,7 +290,7 @@ Die Metriken im Diagramm hängen von der Art des Features ab.
 
 * Numerische Features
 
-    | Metrik | Beschreibung |  
+    | Metrik | BESCHREIBUNG |  
     | ------ | ----------- |  
     | Wasserstein-Distanz | Der Mindestarbeitsaufwand, der für die Transformation der Baselineverteilung in die Zielverteilung erforderlich ist. |
     | Mittelwert | Durchschnittlicher Wert des Features. |
@@ -286,7 +299,7 @@ Die Metriken im Diagramm hängen von der Art des Features ab.
 
 * Kategorische Features
     
-    | Metrik | Beschreibung |  
+    | Metrik | BESCHREIBUNG |  
     | ------ | ----------- |  
     | Euklidischer Abstand     |  Berechnet für Kategoriespalten.  Der euklidische Abstand wird für zwei Vektoren berechnet, die auf der Grundlage der empirischen Verteilung der gleichen Kategoriespalte aus zwei Datasets generiert wurden.  „0“ gibt an, dass es keinen Unterschied bei den empirischen Verteilungen gibt.    Je weiter der Wert von „0“ entfernt ist, desto stärker ist der Drift der Spalte.  Trends können anhand eines Zeitreihendiagramm dieser Metrik ermittelt werden und bei der Identifizierung eines Features mit Drift hilfreich sein.  |
     | Eindeutige Werte | Anzahl eindeutiger Werte (Kardinalität) des Features. |
@@ -319,9 +332,50 @@ Sie können eine vorhandene oder eine neue Aktionsgruppe verwenden, um die Aktio
 
 ![Neue Aktionsgruppe](./media/how-to-monitor-datasets/action-group.png)
 
+
+## <a name="troubleshooting"></a>Problembehandlung
+
+Einschränkungen und bekannte Probleme bei Datendriftüberwachungen:
+
+* Der Zeitbereich für die Analyse von Verlaufsdaten ist auf 31 Intervalle der Häufigkeitseinstellung für die Überwachung beschränkt. 
+* Es besteht eine Beschränkung auf 200 Features, es sei denn, es wurde keine Featureliste angegeben (alle Features werden verwendet).
+* Die Computegröße muss ausreichend sein, um die Daten zu verarbeiten.
+* Stellen Sie sicher, dass Ihr Dataset über Daten innerhalb des Zeitraums verfügt, der durch das Start- und Enddatum für die jeweilige Ausführung der Überwachung festgelegt ist.
+* Datasetmonitore funktionieren nur bei Datensätzen, die mindestens 50 Zeilen enthalten.
+* Spalten bzw. Features im Dataset werden basierend auf den Bedingungen in der unten angegebenen Tabelle als kategorisch oder numerisch klassifiziert. Wenn ein Feature diese Bedingungen nicht erfüllt – beispielsweise bei einer Spalte vom Typ „string“ mit mehr als 100 eindeutigen Werten –, wird es aus dem Datendriftalgorithmus entfernt. In die Profilerstellung wird es aber einbezogen. 
+
+    | Featuretyp | Datentyp | Bedingung | Einschränkungen | 
+    | ------------ | --------- | --------- | ----------- |
+    | Kategorisch | string, bool, int, float | Die Anzahl von eindeutigen Werten im Feature ist kleiner als 100 und geringer als 5 % der Anzahl von Zeilen. | NULL wird als eigene Kategorie behandelt. | 
+    | Numerisch | int, float | Die Werte im Feature weisen einen numerischen Datentyp auf und erfüllen die Bedingung für ein kategorisches Feature nicht. | Das Feature wird entfernt, wenn mehr als 15 % der Werte NULL sind. | 
+
+* Wenn Sie eine Datendriftüberwachung erstellt haben, die Daten auf der Seite **Datasetüberwachungen** in Azure Machine Learning Studio jedoch nicht angezeigt werden, versuchen Sie Folgendes.
+
+    1. Überprüfen Sie, ob Sie oben auf der Seite den richtigen Datumsbereich ausgewählt haben.  
+    1. Wählen Sie auf der Registerkarte **Datasetüberwachungen** den Experimentlink aus, um den Ausführungsstatus zu prüfen.  Dieser Link befindet sich ganz rechts in der Tabelle.
+    1. Wenn die Ausführung erfolgreich abgeschlossen wurde, überprüfen Sie in den Treiberprotokollen, wie viele Metriken generiert wurden oder ob Warnmeldungen vorhanden sind.  Die Treiberprotokolle finden Sie nach dem Klicken auf ein Experiment auf der Registerkarte **Ausgabe + Protokolle**.
+
+* Wenn die SDK-Funktion `backfill()` nicht die erwartete Ausgabe generiert, kann dies auf ein Authentifizierungsproblem zurückzuführen sein.  Verwenden Sie beim Erstellen des Computeziels, das an diese Funktion übergeben wird, nicht `Run.get_context().experiment.workspace.compute_targets`.  Verwenden Sie stattdessen [ServicePrincipalAuthentication](/python/api/azureml-core/azureml.core.authentication.serviceprincipalauthentication?preserve-view=true&view=azure-ml-py), wie hier zu sehen, um das Computeziel zu erstellen, das Sie an die Funktion `backfill()` übergeben: 
+
+  ```python
+   auth = ServicePrincipalAuthentication(
+          tenant_id=tenant_id,
+          service_principal_id=app_id,
+          service_principal_password=client_secret
+          )
+   ws = Workspace.get("xxx", auth=auth, subscription_id="xxx", resource_group"xxx")
+   compute = ws.compute_targets.get("xxx")
+   ```
+
+* Es kann bis zu 10 Minuten dauern, bis Daten aus dem Modelldatensammler in Ihrem Blobspeicherkonto eintreffen (in der Regel wird der Vorgang schneller ausgeführt). Warten Sie in einem Skript oder Notebook 10 Minuten, damit die folgenden Zellen ausgeführt werden können.
+
+    ```python
+    import time
+    time.sleep(600)
+    ```
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Fahren Sie mit dem [Azure Machine Learning-Studio](https://ml.azure.com) oder dem [Python-Notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datadrift-tutorial/datadrift-tutorial.ipynb) fort, um einen Datasetmonitor zu erstellen.
 * Informieren Sie sich, wie Sie die Datendrift für [in Azure Kubernetes Service bereitgestellte Modelle](./how-to-enable-data-collection.md) einrichten.
-* Richten Sie Datendriftüberwachungen mit [Ereignisraster](how-to-use-event-grid.md) ein. 
-* Sollten Probleme auftreten, sehen Sie sich die allgemeinen [Tipps zur Problembehandlung](resource-known-issues.md#data-drift) an.
+* Richten Sie Datendriftüberwachungen mit [Ereignisraster](how-to-use-event-grid.md) ein.

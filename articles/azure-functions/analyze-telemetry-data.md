@@ -4,12 +4,12 @@ description: Hier erfahren Sie, wie Sie Azure Functions-Telemetriedaten anzeigen
 ms.topic: how-to
 ms.date: 10/14/2020
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 1d8d9cc9a7a4111e98b1d9141957769d6f157d45
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 14b6ed3964900e3395ca335c301dfd0285da46e7
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97027729"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937296"
 ---
 # <a name="analyze-azure-functions-telemetry-in-application-insights"></a>Analysieren von Azure Functions-Telemetriedaten in Application Insights 
 
@@ -108,7 +108,7 @@ Die Runtime stellt die Felder `customDimensions.LogLevel` und `customDimensions.
 
 ## <a name="consumption-plan-specific-metrics"></a>Verbrauchstarifspezifische Metriken
 
-Beim Ausführen mit einem [Verbrauchstarif](functions-scale.md#consumption-plan) werden die *Ausführungskosten* einer einzelnen Funktionsausführung in *GB-Sekunden* gemessen. Die Ausführungskosten werden berechnet, indem die Speichernutzung mit der Ausführungsdauer kombiniert wird. Weitere Informationen finden Sie unter [Abschätzen der Kosten des Verbrauchstarifs](functions-consumption-costs.md).
+Beim Ausführen mit einem [Verbrauchstarif](consumption-plan.md) werden die *Ausführungskosten* einer einzelnen Funktionsausführung in *GB-Sekunden* gemessen. Die Ausführungskosten werden berechnet, indem die Speichernutzung mit der Ausführungsdauer kombiniert wird. Weitere Informationen finden Sie unter [Abschätzen der Kosten des Verbrauchstarifs](functions-consumption-costs.md).
 
 Die folgenden Telemetrieabfragen sind spezifisch für Metriken, die sich im Verbrauchstarif auf die Kosten für das Ausführen von Funktionen auswirken.
 

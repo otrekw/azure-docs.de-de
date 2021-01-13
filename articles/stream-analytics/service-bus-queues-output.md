@@ -1,18 +1,17 @@
 ---
 title: Ausgabe von Service Bus-Warteschlangen von Azure Stream Analytics
 description: In diesem Artikel werden Service Bus-Warteschlangen als Ausgabe für Azure Stream Analytics beschrieben.
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: enkrumah
+ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 3527bdbbf1ba337d24dc390f97ed090c8dfbe039
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 9f71a0f9c6d3fdca4b81be3a69479c78236fcc31
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348388"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98014211"
 ---
 # <a name="service-bus-queues-output-from-azure-stream-analytics"></a>Ausgabe von Service Bus-Warteschlangen von Azure Stream Analytics
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: fafa4c1e8c12ce26a90cfdf9df940823abf5ff25
-ms.sourcegitcommit: 697638c20ceaf51ec4ebd8f929c719c1e630f06f
+ms.openlocfilehash: 54da62ce961156b64c917b448557c17e7516e222
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 01/04/2021
-ms.locfileid: "97857442"
+ms.locfileid: "97862134"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Was ist eine Azure Machine Learning-Compute-Instanz?
 
@@ -130,7 +130,7 @@ Diese Aktionen können von Azure RBAC gesteuert werden:
 * *Microsoft.MachineLearningServices/workspaces/computes/stop/action*
 * *Microsoft.MachineLearningServices/workspaces/computes/restart/action*
 
-Beachten Sie, dass der Benutzer zum Erstellen einer Compute-Instanz über Berechtigungen für die folgenden Aktionen verfügen muss:
+Zum Erstellen einer Compute-Instanz müssen Sie über Berechtigungen für die folgenden Aktionen verfügen:
 * *Microsoft.MachineLearningServices/workspaces/computes/write*
 * *Microsoft.MachineLearningServices/workspaces/checkComputeNameAvailability/action*
 

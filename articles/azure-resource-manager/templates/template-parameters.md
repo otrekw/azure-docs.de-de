@@ -3,12 +3,12 @@ title: Parameter in Vorlagen
 description: Beschreibt, wie Parameter in einer Azure Resource Manager-Vorlage (ARM-Vorlage) definiert werden.
 ms.topic: conceptual
 ms.date: 11/24/2020
-ms.openlocfilehash: 4ac1aeb579040b35b2a9b4cb90fb5687f91ebd3b
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 929d871bc0087d4fda585773b349dee4e0945c7c
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353509"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934712"
 ---
 # <a name="parameters-in-arm-templates"></a>Parameter in ARM-Vorlagen
 
@@ -20,7 +20,7 @@ Jeder Parameter muss auf einen der [Datentypen](template-syntax.md#data-types) f
 
 ## <a name="define-parameter"></a>Definieren eines Parameters
 
-Das folgende Beispiel zeigt eine einfache Parameterdefinition. Hiermit wird ein Parameter mit dem Namen **storageSKU** definiert. Der Parameter ist ein Zeichenfolgenwert, und er akzeptiert nur Werte, die für die beabsichtigte Verwendung gültig sind. Wenn während der Bereitstellung kein Wert angegeben wird, verwendet der Parameter einen Standardwert.
+Das folgende Beispiel zeigt eine einfache Parameterdefinition. Hiermit wird ein Parameter mit dem Namen `storageSKU` definiert. Der Parameter ist ein Zeichenfolgenwert, und er akzeptiert nur Werte, die für die beabsichtigte Verwendung gültig sind. Wenn während der Bereitstellung kein Wert angegeben wird, verwendet der Parameter einen Standardwert.
 
 ```json
 "parameters": {

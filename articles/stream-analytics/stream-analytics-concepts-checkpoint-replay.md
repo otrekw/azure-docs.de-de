@@ -1,25 +1,24 @@
 ---
 title: Begriffe zur Wiederherstellung von Prüfpunkten und der Wiedergabe in Azure Stream Analytics
 description: In diesem Artikel werden Begriffe zur Wiederherstellung von Prüfpunkten und Wiedergabeaufträgen in Azure Stream Analytics beschrieben.
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: sidramadoss
+ms.author: sidram
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 10d9053e082a995085fa255cc0d9f63a2b4e2b17
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: df31f8538bb9eabeca37fe4c52c4443fd447e415
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84020607"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98015317"
 ---
 # <a name="checkpoint-and-replay-concepts-in-azure-stream-analytics-jobs"></a>Begriffe zu Prüfpunkten und zur Wiedergabe bei Azure Stream Analytics-Aufträgen
 In diesem Artikel werden Begriffe zu internen Prüfpunkten und zur Wiedergabe in Azure Stream Analytics sowie deren Auswirkung auf die Wiederherstellung von Aufträgen beschrieben. Bei jeder Ausführung eines Stream Analytics-Auftrags werden intern Zustandsinformationen verwaltet. Die Zustandsinformationen werden in regelmäßigen Abständen in einem Prüfpunkt gespeichert. In einigen Szenarien werden die Prüfpunktinformationen bei einem Auftragsfehler oder einem Upgrade für die Auftragswiederherstellung verwendet. In anderen Fällen kann der Prüfpunkt nicht für die Wiederherstellung verwendet werden, sodass eine Wiedergabe erforderlich ist.
 
-## <a name="stateful-query-logicin-temporal-elements"></a>Zustandsbehaftete Abfragelogik in temporalen Elementen
-Eine einzigartige Funktion eines Azure Stream Analytics-Auftrags besteht darin, eine zustandsbehaftete Verarbeitung wie etwa Aggregate, temporale Verknüpfungen und temporale Analysefunktionen im Fenstermodus auszuführen. Die einzelnen Operatoren speichern Zustandsinformationen bei der Auftragsausführung. Die maximale Fenstergröße für diese Abfrageelemente beträgt sieben Tage. 
+## <a name="stateful-query-logic-in-temporal-elements"></a>Zustandsbehaftete Abfragelogik in temporalen Elementen
+Eine einzigartige Funktion eines Azure Stream Analytics-Auftrags besteht darin, eine zustandsbehaftete Verarbeitung wie etwa Aggregate, temporale Verknüpfungen und temporale Analysefunktionen im Fenstermodus auszuführen. Die einzelnen Operatoren speichern Zustandsinformationen bei der Auftragsausführung.  Die maximale Fenstergröße für diese Abfrageelemente beträgt sieben Tage. 
 
 Der Begriff der temporalen Fenster kommt in mehreren Stream Analytics-Abfrageelementen vor:
 1. Fensteraggregate (GROUP BY von rollierenden, springenden und gleitenden Fenstern)

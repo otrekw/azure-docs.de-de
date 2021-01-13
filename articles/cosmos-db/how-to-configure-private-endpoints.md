@@ -4,15 +4,15 @@ description: Erfahren Sie, wie Sie Azure Private Link für den Zugriff auf ein A
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 09/18/2020
+ms.date: 12/16/2020
 ms.author: thweiss
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 4ba4e5f462a3cc88de5b23b32a5e749f9363e93f
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 9a6db0d25165059581d7ffafa5b8e7fd19330c87
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93081891"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97629645"
 ---
 # <a name="configure-azure-private-link-for-an-azure-cosmos-account"></a>Konfigurieren von Azure Private Link für ein Azure Cosmos-Konto
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -616,6 +616,9 @@ foreach ($ipconfig in $networkInterface.properties.ipConfigurations) {
 Verwenden Sie möglichst eine private DNS-Zone innerhalb des Subnetzes, in dem Sie den privaten Endpunkt erstellt haben. Konfigurieren Sie die Endpunkte so, dass jede private IP-Adresse einem DNS-Eintrag zugeordnet ist. (Siehe `fqdns`-Eigenschaft in der zuvor gezeigten Antwort.)
 
 Wenn Sie den privaten Endpunkt erstellen, können Sie ihn in eine private DNS-Zone in Azure integrieren. Wenn Sie stattdessen eine benutzerdefinierte DNS-Zone verwenden möchten, müssen Sie diese so konfigurieren, dass DNS-Einträge für alle privaten IP-Adressen hinzugefügt werden, die für den privaten Endpunkt reserviert sind.
+
+> [!IMPORTANT]
+> Die DNS-Auflösung Ihrer Anforderungen bestimmt, ob diese über Ihre privaten Endpunkte übertragen werden oder die öffentliche Standardroute verwenden. Stellen Sie sicher, dass Ihr lokales DNS ordnungsgemäß auf die privaten IP-Adressen verweist, die vom privaten Endpunkt zugeordnet werden.
 
 ## <a name="private-link-combined-with-firewall-rules"></a>Private Link in Kombination mit Firewallregeln
 

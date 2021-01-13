@@ -5,12 +5,12 @@ author: anthonychu
 ms.author: antchu
 ms.date: 12/1/2020
 ms.topic: article
-ms.openlocfilehash: 099f90ba8c5d9dabb6c4c505e50d8c077e3eaf0f
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: f527b387afc01eb60bd582adc13a4ad3d516055b
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96746028"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936990"
 ---
 # <a name="azure-functions-custom-handlers"></a>Benutzerdefinierte Azure Functions-Handler
 
@@ -407,7 +407,7 @@ Wenn Sie das Element `message` der Ausgabe auf die Bestelldaten aus der Anforder
 Bei Funktionen mit HTTP-Trigger und ohne zusätzliche Bindungen oder Ausgaben soll Ihr Handler möglicherweise direkt mit der HTTP-Anforderung und -Antwort arbeiten anstatt mit den Nutzlasten von [Anforderung](#request-payload) und [Antwort](#response-payload) des benutzerdefinierten Handlers. Dieses Verhalten kann mithilfe der Einstellung `enableForwardingHttpRequest` in *host.json* konfiguriert werden.
 
 > [!IMPORTANT]
-> Der Hauptzweck benutzerdefinierter Handler besteht darin, die Verwendung von Sprachen und Runtimes zu ermöglichen, für die derzeit keine erstklassige Unterstützung in Azure Functions zur Verfügung steht. Webanwendungen können zwar ggf. mit benutzerdefinierten Handlern ausgeführt werden, Azure Functions ist jedoch kein standardmäßiger Reverseproxy. Einige Features wie Antwortstreaming, HTTP/2 und WebSockets stehen nicht zur Verfügung. Manche Komponenten der HTTP-Anforderung wie bestimmte Header und Routen sind möglicherweise eingeschränkt. Bei Ihrer Anwendung kann es auch zu übermäßigen [Kaltstarts](functions-scale.md#cold-start) kommen.
+> Der Hauptzweck benutzerdefinierter Handler besteht darin, die Verwendung von Sprachen und Runtimes zu ermöglichen, für die derzeit keine erstklassige Unterstützung in Azure Functions zur Verfügung steht. Webanwendungen können zwar ggf. mit benutzerdefinierten Handlern ausgeführt werden, Azure Functions ist jedoch kein standardmäßiger Reverseproxy. Einige Features wie Antwortstreaming, HTTP/2 und WebSockets stehen nicht zur Verfügung. Manche Komponenten der HTTP-Anforderung wie bestimmte Header und Routen sind möglicherweise eingeschränkt. Bei Ihrer Anwendung kann es auch zu übermäßigen [Kaltstarts](event-driven-scaling.md#cold-start) kommen.
 >
 > Zur Vermeidung dieser Punkte empfiehlt es sich gegebenenfalls, Ihre Web-Apps in [Azure App Service](../app-service/overview.md) auszuführen.
 

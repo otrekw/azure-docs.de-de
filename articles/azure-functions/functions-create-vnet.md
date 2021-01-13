@@ -3,12 +3,12 @@ title: Integrieren von Azure Functions in ein virtuelles Azure-Netzwerk
 description: Ein Tutorial in einzelnen Schritten, in dem erläutert wird, wie Sie eine Funktion mit einem virtuellen Azure-Netzwerk verbinden.
 ms.topic: article
 ms.date: 4/23/2020
-ms.openlocfilehash: f50c923104fdfcf26f400f20f0de66a82eb3d245
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: efc936111d162d73b1cc5465ae6b677c9006ab32
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87387522"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937014"
 ---
 # <a name="tutorial-integrate-functions-with-an-azure-virtual-network"></a>Tutorial: Integrieren von Functions in ein virtuelles Azure-Netzwerk
 
@@ -105,7 +105,7 @@ Damit haben Sie eine WordPress-Website eingerichtet, die ausschließlich in Ihre
 
 1. Wählen Sie auf der Seite **VNET-Integration** die Option **VNET hinzufügen** aus.
 
-    :::image type="content" source="./media/functions-create-vnet/networking-2.png" alt-text="Auswählen von „Netzwerk“ in der Funktions-App":::
+    :::image type="content" source="./media/functions-create-vnet/networking-2.png" alt-text="Hinzufügen der VNET-Integration (Vorschau)":::
 
 1. Verwenden Sie unter **Netzwerkfeaturestatus** die Einstellungen in der Tabelle unterhalb der Abbildung:
 
@@ -129,7 +129,7 @@ Wenn die VNET-Integration aktiviert ist, können Sie einen Proxy in Ihrer Funkti
 
 1. Wählen Sie in Ihrer Funktions-App im Menü auf der linken Seite **Proxys** aus, und wählen Sie dann **Hinzufügen** aus. Verwenden Sie die Proxyeinstellungen aus der Tabelle unterhalb der Abbildung:
 
-    :::image type="content" source="./media/functions-create-vnet/create-proxy.png" alt-text="Auswählen von „Netzwerk“ in der Funktions-App":::
+    :::image type="content" source="./media/functions-create-vnet/create-proxy.png" alt-text="Definieren der Proxyeinstellungen":::
 
     | Einstellung  | Vorgeschlagener Wert  | Beschreibung      |
     | -------- | ---------------- | ---------------- |
@@ -160,4 +160,4 @@ Funktionen, die in einem Premium-Tarif ausgeführt werden, haben dieselbe zugrun
 > [!div class="nextstepaction"]
 > [Weitere Informationen zu den Netzwerkoptionen in Functions](./functions-networking-options.md)
 
-[Premium-Plan]: functions-scale.md#premium-plan
+[Premium-Plan]: functions-premium-plan.md

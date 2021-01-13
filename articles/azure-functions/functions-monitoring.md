@@ -5,12 +5,12 @@ ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
 ms.topic: conceptual
 ms.date: 10/14/2020
 ms.custom: devx-track-csharp, fasttrack-edit, contperf-fy21q2, devx-track-js
-ms.openlocfilehash: 7dbaa8712e09de9084e2bcb66d43f2181af292a0
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 6dc3c582466fe0646b0350213947ff2173368bde
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033033"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936837"
 ---
 # <a name="monitor-azure-functions"></a>Überwachen von Azure Functions
 
@@ -113,7 +113,7 @@ Da Functions auch in Azure Monitor integriert ist, können Sie auch Diagnoseeins
 
 _Dieses Feature befindet sich in der Vorschauphase._ 
 
-Der [Azure Functions-Skalierungscontroller](./functions-scale.md#runtime-scaling) dient zum Überwachen von Instanzen des Azure Functions-Hosts, auf dem Ihre App ausgeführt wird. Dieser Controller entscheidet basierend auf der aktuellen Leistung über das Hinzufügen oder Entfernen von Instanzen. Der Skalierungscontroller kann Protokolle an Application Insights ausgeben, damit sie die Entscheidungen, die der Skalierungscontroller für Ihre Funktions-App trifft, besser nachvollziehen können. Sie können die generierten Protokolle auch im Blobspeicher speichern, damit Sie von einem anderen Dienst analysiert werden können. 
+Der [Azure Functions-Skalierungscontroller](./event-driven-scaling.md#runtime-scaling) dient zum Überwachen von Instanzen des Azure Functions-Hosts, auf dem Ihre App ausgeführt wird. Dieser Controller entscheidet basierend auf der aktuellen Leistung über das Hinzufügen oder Entfernen von Instanzen. Der Skalierungscontroller kann Protokolle an Application Insights ausgeben, damit sie die Entscheidungen, die der Skalierungscontroller für Ihre Funktions-App trifft, besser nachvollziehen können. Sie können die generierten Protokolle auch im Blobspeicher speichern, damit Sie von einem anderen Dienst analysiert werden können. 
 
 Um dieses Feature zu aktivieren, fügen Sie den Einstellungen ihrer Funktions-App eine Anwendungseinstellung mit dem Namen `SCALE_CONTROLLER_LOGGING_ENABLED` hinzu. Weitere Informationen finden Sie unter [Konfigurieren der Skalierung von Controllerprotokollen](configure-monitoring.md#configure-scale-controller-logs).
 

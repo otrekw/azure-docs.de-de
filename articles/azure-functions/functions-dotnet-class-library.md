@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Azure Functions mithilfe von C# entwickelt wird.
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 07/24/2020
-ms.openlocfilehash: 9e11d013b6e7473f290ba1ccb54857034491d116
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 77ae736c787666df5e78358bc78e06eee9b7d4f9
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97672664"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936922"
 ---
 # <a name="azure-functions-c-developer-reference"></a>C#-Entwicklerreferenz zu Azure Functions
 
@@ -138,7 +138,7 @@ public static class BindingExpressionsExample
 
 Im Buildprozess wird eine *function.json*-Datei in einem Funktionsordner im Ordner für Builds erstellt. Wie bereits erwähnt ist diese Datei nicht für die direkte Bearbeitung vorgesehen. Sie können weder die Bindungskonfiguration ändern noch die Funktion deaktivieren, indem Sie diese Datei bearbeiten. 
 
-Der Zweck dieser Datei besteht darin, Informationen für den Skalierungscontroller bereitzustellen, die dieser für [Skalierungsentscheidungen hinsichtlich des Verbrauchsplans](functions-scale.md#how-the-consumption-and-premium-plans-work) verwenden kann. Aus diesem Grund hat die Datei nur Triggerinformationen und keine Eingabe- oder Ausgabebindungen.
+Der Zweck dieser Datei besteht darin, Informationen für den Skalierungscontroller bereitzustellen, die dieser für [Skalierungsentscheidungen hinsichtlich des Verbrauchsplans](event-driven-scaling.md) verwenden kann. Aus diesem Grund hat die Datei nur Triggerinformationen und keine Eingabe- oder Ausgabebindungen.
 
 Die generierte *function.json*-Datei enthält eine `configurationSource`-Eigenschaft, die der Runtime mitteilt, dass sie statt der *function.json*-Konfiguration die .NET Attribute für Bindungen verwenden soll. Hier sehen Sie ein Beispiel:
 
@@ -208,7 +208,7 @@ Wenn Sie Core Tools mithilfe von npm installieren, wirkt sich dies nicht auf die
 
 ## <a name="readytorun"></a>ReadyToRun
 
-Sie können ihre Funktions-App als [ReadyToRun-Binärdateien](/dotnet/core/whats-new/dotnet-core-3-0#readytorun-images) kompilieren. ReadyToRun ist eine Form der Vorabkompilierung, die zur Optimierung der Startleistung beitragen und die Auswirkungen eines [Kaltstarts](functions-scale.md#cold-start) bei Ausführung in einem [Verbrauchstarif](functions-scale.md#consumption-plan) reduzieren kann.
+Sie können ihre Funktions-App als [ReadyToRun-Binärdateien](/dotnet/core/whats-new/dotnet-core-3-0#readytorun-images) kompilieren. ReadyToRun ist eine Form der Vorabkompilierung, die zur Optimierung der Startleistung beitragen und die Auswirkungen eines [Kaltstarts](event-driven-scaling.md#cold-start) bei Ausführung in einem [Verbrauchstarif](consumption-plan.md) reduzieren kann.
 
 ReadyToRun ist in .NET 3.0 verfügbar und setzt [Azure Functions Runtimeversion 3.0](functions-versions.md) voraus.
 

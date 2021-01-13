@@ -3,12 +3,12 @@ title: Fortlaufender Export von Telemetriedaten aus Application Insights | Micro
 description: Exportieren Sie Diagnose- und Nutzungsdaten in Microsoft Azure-Speicher, die Sie anschließendes daraus herunterladen.
 ms.topic: conceptual
 ms.date: 05/26/2020
-ms.openlocfilehash: f67a5c555c438298cee701ca065aaf8c01c6406e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a6f636ce9fe30c666f08935d5830eb0c12e6cb5e
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87324334"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97674136"
 ---
 # <a name="export-telemetry-from-application-insights"></a>Exportieren von Telemetriedaten aus Application Insights
 Möchten Sie Ihre Telemetriedaten länger aufbewahren als von der standardmäßigen Beibehaltungsdauer vorgesehen? Oder möchten Sie sie in einer speziellen Art und Weise verarbeiten? Der fortlaufende Export eignet sich hierfür ideal. Die Ereignisse, die Sie im Application Insights-Portal sehen, können im JSON-Format in Microsoft Azure-Speicher exportiert werden. Sie können Ihre Daten anschließend herunterladen und den Code schreiben, den Sie zu ihrer Verarbeitung benötigen.  
@@ -37,6 +37,9 @@ Der fortlaufende Export **unterstützt nicht** die folgenden Azure-Speicherfeatu
 * [Azure Data Lake Storage Gen2](../../storage/blobs/data-lake-storage-introduction.md).
 
 ## <a name="create-a-continuous-export"></a><a name="setup"></a> Erstellen eines fortlaufenden Exports
+
+> [!NOTE]
+> Eine Anwendung kann nicht mehr als 3 TB Daten pro Tag exportieren. Wenn mehr als 3 TB pro Tag exportiert werden, wird der Export deaktiviert. Um ohne Beschränkung zu exportieren, verwenden Sie den [auf Diagnoseeinstellungen basierenden Export](#diagnostic-settings-based-export).
 
 1. Öffnen Sie in der Application Insights-Ressource für Ihre App im Konfigurationsbereich rechts die Option „Fortlaufender Export“, und wählen Sie **Hinzufügen** aus:
 
@@ -207,6 +210,19 @@ Bei größeren Dimensionen sollten Sie [HDInsight](https://azure.microsoft.com/s
 * [Stream Analytics-Beispiel](export-stream-analytics.md)
 * [Exportieren in SQL mit Stream Analytics][exportasa]
 * [Detaillierte Datenmodellreferenz für die Eigenschaftstypen und -werte.](export-data-model.md)
+
+## <a name="diagnostic-settings-based-export"></a>Auf Diagnoseeinstellungen basierender Export
+
+Bei dem auf Diagnoseeinstellungen basierenden Export wird ein anderes Schema als beim fortlaufenden Export verwendet. Außerdem werden Features unterstützt, die vom fortlaufenden Export nicht unterstützt werden. Dies sind:
+
+* Azure-Speicherkonten mit VNET, Firewalls und privaten Links
+* Export in Event Hub
+
+Führen Sie die folgenden Schritte aus, um zu dem auf Diagnoseeinstellungen basierender Export zu migrieren:
+
+1. Deaktivieren Sie den aktuellen fortlaufenden Export.
+2. [Migrieren Sie die Anwendung zu einer arbeitsbereichsbasierten Ressource](convert-classic-resource.md).
+3. [Aktivieren Sie den Export von Diagnoseeinstellungen](create-workspace-resource.md#export-telemetry). Wählen Sie in der Application Insights-Ressource **Diagnoseeinstellungen > Diagnoseeinstellung hinzufügen** aus.
 
 <!--Link references-->
 

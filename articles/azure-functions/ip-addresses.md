@@ -3,12 +3,12 @@ title: IP-Adressen in Azure Functions
 description: Erfahren Sie, wie Sie eingehende und ausgehende IP-Adressen für Funktionen-Apps finden und wodurch diese geändert werden.
 ms.topic: conceptual
 ms.date: 12/03/2018
-ms.openlocfilehash: 1d2cf34ee4712705eaa1c0da5ad63712f9e649fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 291a1cda7b8a2acc5426ea255519e1c2e58a2d7c
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91652464"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936718"
 ---
 # <a name="ip-addresses-in-azure-functions"></a>IP-Adressen in Azure Functions
 
@@ -51,7 +51,7 @@ az webapp show --resource-group <group_name> --name <app_name> --query possibleO
 ```
 
 > [!NOTE]
-> Bei der Skalierung einer im [Verbrauchstarif](functions-scale.md#consumption-plan) oder [Premium-Tarif](functions-scale.md#premium-plan) ausgeführten Funktions-App wird möglicherweise ein neuer Bereich von ausgehenden IP-Adressen zugewiesen. Bei der Ausführung in diesen Tarifen müssen Sie möglicherweise das gesamte Rechenzentrum einer Positivliste hinzufügen.
+> Bei der Skalierung einer im [Verbrauchstarif](consumption-plan.md) oder [Premium-Tarif](functions-premium-plan.md) ausgeführten Funktions-App wird möglicherweise ein neuer Bereich von ausgehenden IP-Adressen zugewiesen. Bei der Ausführung in diesen Tarifen müssen Sie möglicherweise das gesamte Rechenzentrum einer Positivliste hinzufügen.
 
 ## <a name="data-center-outbound-ip-addresses"></a>Ausgehende IP-Adressen eines Rechenzentrums
 
@@ -89,7 +89,7 @@ Die eingehende IP-Adresse **kann** geändert werden, wenn Sie:
 - die letzte Funktionen-App in einer Kombination aus Ressourcengruppe und Region löschen und neu erstellen.
 - eine TLS-Bindung löschen, z. B. während der [Zertifikaterneuerung](../app-service/configure-ssl-certificate.md#renew-certificate).
 
-Wenn Ihre Funktions-App in einem [Verbrauchstarif](functions-scale.md#consumption-plan) oder [Premium-Tarif](functions-scale.md#premium-plan) ausgeführt wird, kann sich die eingehende IP-Adresse auch ändern, selbst wenn Sie noch keine der [oben aufgeführten](#inbound-ip-address-changes) Aktionen ausgeführt haben.
+Wenn Ihre Funktions-App in einem [Verbrauchstarif](consumption-plan.md) oder [Premium-Tarif](functions-premium-plan.md) ausgeführt wird, kann sich die eingehende IP-Adresse auch ändern, selbst wenn Sie noch keine der [oben aufgeführten](#inbound-ip-address-changes) Aktionen ausgeführt haben.
 
 ## <a name="outbound-ip-address-changes"></a>Änderungen der ausgehenden IP-Adresse
 
@@ -98,7 +98,7 @@ Der Satz der verfügbaren ausgehenden IP-Adressen für eine Funktionen-App kann 
 * Maßnahmen ergreifen, durch die sich die eingehende IP-Adresse ändern kann.
 * den Tarif für Ihren App Service-Plan wechseln. Alle möglichen ausgehenden IP-Adressen, die Ihre App in allen Tarifen verwenden kann, sind in der `possibleOutboundIPAddresses`-Eigenschaft aufgelistet. Siehe [Ermitteln der ausgehenden IP-Adressen](#find-outbound-ip-addresses).
 
-Wenn Ihre Funktions-App in einem [Verbrauchstarif](functions-scale.md#consumption-plan) oder [Premium-Tarif](functions-scale.md#premium-plan) ausgeführt wird, kann sich die ausgehende IP-Adresse auch ändern, selbst wenn Sie noch keine der [oben aufgeführten](#inbound-ip-address-changes) Aktionen ausgeführt haben.
+Wenn Ihre Funktions-App in einem [Verbrauchstarif](consumption-plan.md) oder [Premium-Tarif](functions-premium-plan.md) ausgeführt wird, kann sich die ausgehende IP-Adresse auch ändern, selbst wenn Sie noch keine der [oben aufgeführten](#inbound-ip-address-changes) Aktionen ausgeführt haben.
 
 So erzwingen Sie eine Änderung der ausgehenden IP-Adresse:
 

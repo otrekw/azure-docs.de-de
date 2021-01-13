@@ -13,12 +13,12 @@ ms.date: 04/15/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: sureshja
-ms.openlocfilehash: 1f4e1def81fc79ec159ce6be825793a9bd8d0ce7
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: b29d8007ba7c6fb41209ad4f792069667416616b
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93286958"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98011542"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Azure Active Directory-App-Manifest
 
@@ -33,7 +33,7 @@ Sie können die Attribute einer App über das Azure-Portal oder programmgesteuer
 
 Konfigurieren Sie das Anwendungsmanifest wie folgt:
 
-1. Öffnen Sie das [Azure-Portal](https://portal.azure.com). Suchen Sie nach dem **Azure Active Directory** -Dienst, und wählen Sie ihn aus.
+1. Öffnen Sie das <a href="https://portal.azure.com/" target="_blank">Azure-Portal<span class="docon docon-navigate-external x-hidden-focus"></span></a>. Suchen Sie nach dem **Azure Active Directory**-Dienst, und wählen Sie ihn aus.
 1. Wählen Sie **App-Registrierungen** aus.
 1. Wählen Sie die App aus, die Sie konfigurieren möchten.
 1. Wählen Sie auf der Seite **Übersicht** der App den Abschnitt **Manifest**. Ein webbasierter Manifest-Editor wird geöffnet, mit dem Sie das Manifest im Portal bearbeiten können. Optional können Sie **Herunterladen** wählen, um das Manifest lokal zu bearbeiten, und dann **Hochladen** verwenden, um es wieder auf Ihre Anwendung anzuwenden.

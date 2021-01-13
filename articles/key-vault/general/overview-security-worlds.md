@@ -8,12 +8,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 07/03/2017
-ms.openlocfilehash: 3584f83c5e1a5e83d069373395227b70c084eae9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d21deea13aac3d40c452a183c340d3108a1a01f4
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81426746"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936327"
 ---
 # <a name="azure-key-vault-security-worlds-and-geographic-boundaries"></a>Sicherheitsumgebungen und geografische Grenzen von Azure Key Vault
 
@@ -43,6 +43,3 @@ Im Artikel zu Produkten nach Region enthält z.B. die Registerkarte **Amerika** 
 >Ausnahmen bilden USA DOD OSTEN und USA DOD MITTE, die jeweils über eigene Sicherheitsumgebungen verfügen. 
 
 Ähnlich sind auf der Registerkarte **Europa** sowohl „EUROPA, NORDEN“ als auch „EUROPA, WESTEN“ der Region „Europe“ zugeordnet. Dasselbe gilt auch für die Registerkarte **Asien-Pazifik**.
-
-
-

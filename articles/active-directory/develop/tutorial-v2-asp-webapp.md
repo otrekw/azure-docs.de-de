@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: 4dca1fa0e823b482044d35f98412187af2fa72ed
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: f0620c4d373ee96c87b575ae7eb173b2f16eecb2
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97507760"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98013650"
 ---
 # <a name="tutorial-add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>Tutorial: Hinzufügen der Anmeldung bei Microsoft zu einer ASP.NET-Web-App
 
@@ -374,7 +374,8 @@ Führen Sie die folgenden Schritte aus, um Ihre Anwendung zu registrieren und Ih
    1. Ändern Sie „SSL aktiviert“ in `True`.
    1. Klicken Sie mit der rechten Maustaste in Visual Studio auf das Projekt, und wählen Sie **Eigenschaften** und dann die Registerkarte **Web** aus. Ändern Sie im Abschnitt **Server** die Einstellung **Projekt-URL** in die **SSL-URL**.
    1. Kopieren Sie die SSL-URL. Im nächsten Schritt fügen Sie diese URL im Registrierungsportal zur Liste der Umleitungs-URIs hinzu.<br/><br/>![Projekteigenschaften](media/active-directory-develop-guidedsetup-aspnetwebapp-configure/vsprojectproperties.png)<br />
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+   
+1. Melden Sie sich beim <a href="https://portal.azure.com/" target="_blank">Azure-Portal<span class="docon docon-navigate-external x-hidden-focus"></span></a> an.
 1. Wenn Sie Zugriff auf mehrere Mandanten haben, verwenden Sie im Menü am oberen Rand den Filter **Verzeichnis + Abonnement** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::, um den Mandanten auszuwählen, für den Sie eine Anwendung registrieren möchten.
 1. Suchen Sie nach **Azure Active Directory**, und wählen Sie diese Option aus.
 1. Wählen Sie unter **Verwalten** Folgendes aus: **App-Registrierungen** > **Neue Registrierung**.

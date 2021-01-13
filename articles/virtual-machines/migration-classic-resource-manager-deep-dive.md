@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 12/17/2020
 ms.author: tagore
-ms.openlocfilehash: c17ade2af751b80e612aa104a9af1a22c4325413
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: ff3e8916a6634c564aa98b21b7e8d7c89fa1b17e
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97695744"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97897177"
 ---
 # <a name="technical-deep-dive-on-platform-supported-migration-from-classic-to-azure-resource-manager"></a>Ausführliche technische Informationen zur plattformgestützten Migration vom klassischen Bereitstellungsmodell zu Azure Resource Manager
 
@@ -150,7 +150,7 @@ Die folgende Tabelle zeigt die Darstellung der Ressourcen im klassischen Bereits
 
 | Klassische Darstellung | Resource Manager-Darstellung | Notizen |
 | --- | --- | --- |
-| Name des Clouddiensts |DNS-Name |Während der Migration wird für jeden Clouddienst eine neue Ressourcengruppe mit dem Benennungsmuster `<cloudservicename>-migrated`erstellt. Diese Ressourcengruppe enthält alle Ihre Ressourcen. Der Name des Clouddiensts wird als DNS-Name verwendet, der der öffentlichen IP-Adresse zugeordnet ist. |
+| Clouddienstname (Name des gehosteten Diensts) |DNS-Name |Während der Migration wird für jeden Clouddienst eine neue Ressourcengruppe mit dem Benennungsmuster `<cloudservicename>-migrated`erstellt. Diese Ressourcengruppe enthält alle Ihre Ressourcen. Der Name des Clouddiensts wird als DNS-Name verwendet, der der öffentlichen IP-Adresse zugeordnet ist. |
 | Virtueller Computer |Virtueller Computer |VM-spezifische Eigenschaften werden unverändert migriert. Bestimmte osProfile-Informationen (etwa der Computername) werden im klassischen Bereitstellungsmodell nicht gespeichert und bleiben daher nach der Migration leer. |
 | An virtuellen Computer angefügte Datenträgerressourcen |An virtuellen Computer angefügte implizite Datenträger |Datenträger werden im Resource Manager-Bereitstellungsmodell nicht als Ressourcen oberster Ebene modelliert. Sie werden als implizite Datenträger unter dem virtuellen Computer migriert. Derzeit werden nur Datenträger unterstützt, die mit einem virtuellen Computer verbunden sind. Resource Manager-VMs können nun Speicherkonten im klassischen Bereitstellungsmodell verwenden, sodass die Datenträger komfortabel ohne jegliche Updates migriert werden können. |
 | VM-Erweiterungen |VM-Erweiterungen |Mit Ausnahme von XML-Erweiterungen werden alle Ressourcenerweiterungen aus dem klassischen Bereitstellungsmodell migriert. |

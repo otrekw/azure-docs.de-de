@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/24/2020
 ms.author: jehollan, glenga
 ms.custom: include file
-ms.openlocfilehash: 4dc85988d904fdec72e1e6d92f03582a2a8f1427
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4eaea46044f0da4766fda051655d57caee9d98b6
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85121514"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937013"
 ---
 1. Wählen Sie im Menü des Azure-Portals oder auf der **Startseite** die Option **Ressource erstellen** aus.
 
@@ -36,7 +36,7 @@ ms.locfileid: "85121514"
 
     | Einstellung      | Vorgeschlagener Wert  | BESCHREIBUNG |
     | ------------ | ---------------- | ----------- |
-    | **[Speicherkonto](../articles/storage/common/storage-account-create.md)** |  Global eindeutiger Name |  Erstellen Sie ein Speicherkonto, das von Ihrer Funktions-App verwendet wird. Speicherkontonamen müssen zwischen 3 und 24 Zeichen lang sein und dürfen nur Zahlen und Kleinbuchstaben enthalten. Sie können auch ein vorhandenes Konto verwenden, das die [Anforderungen an das Speicherkonto](../articles/azure-functions/functions-scale.md#storage-account-requirements) erfüllen muss. |
+    | **[Speicherkonto](../articles/storage/common/storage-account-create.md)** |  Global eindeutiger Name |  Erstellen Sie ein Speicherkonto, das von Ihrer Funktions-App verwendet wird. Speicherkontonamen müssen zwischen 3 und 24 Zeichen lang sein und dürfen nur Zahlen und Kleinbuchstaben enthalten. Sie können auch ein vorhandenes Konto verwenden, das die [Anforderungen an das Speicherkonto](../articles/azure-functions/storage-considerations.md#storage-account-requirements) erfüllen muss. |
     |**Betriebssystem**| Bevorzugtes Betriebssystem | Ein Betriebssystem ist für Sie basierend auf Ihrer Runtimestapelauswahl vorab ausgewählt, aber Sie können die Einstellung ggf. ändern. Python wird nur unter Linux unterstützt. |
     | **[Plan](../articles/azure-functions/functions-scale.md)** | Premium | Der Hostingplan, der definiert, wie Ihre Ressourcen der Funktionen-App zugewiesen werden Wählen Sie **Premium** aus. Standardmäßig wird ein neuer App Service Plan erstellt. Der Standardwert für **SKU und Größe** ist **EP1**, wobei EP für _Elastisch Premium_ steht. Weitere Informationen finden Sie in der [Liste der Premium-SKUs](../articles/azure-functions/functions-premium-plan.md#available-instance-skus).<br/>Wenn Sie JavaScript-Funktionen im Rahmen eines Premium-Plans ausführen, sollten Sie eine Instanz auswählen, die weniger vCPUs hat. Weitere Informationen finden Sie unter [Auswählen von Premium-Plänen mit Einzelkern](../articles/azure-functions/functions-reference-node.md#considerations-for-javascript-functions).  |
 

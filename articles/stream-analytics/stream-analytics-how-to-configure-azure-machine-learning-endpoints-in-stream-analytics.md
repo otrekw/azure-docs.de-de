@@ -3,16 +3,15 @@ title: Verwenden von Azure Machine Learning Studio-Endpunkten (klassisch) in Azu
 description: In diesem Artikel wird beschrieben, wie benutzerdefinierte Machine Language-Funktionen in Azure Stream Analytics verwendet werden.
 author: jseb225
 ms.author: jeanb
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/11/2019
-ms.openlocfilehash: 236191710dac19a08db0e8ce94dc695d393009a7
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: a36162d24e18371fdf6b19835e4748e3043d1f24
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93127126"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98012524"
 ---
 # <a name="azure-machine-learning-studio-classic-integration-in-stream-analytics-preview"></a>Azure Machine Learning Studio-Integration (klassisch) in Stream Analytics (Vorschau)
 Stream Analytics unterstützt benutzerdefinierte Funktionen, die Azure Machine Learning Studio-Endpunkte (klassisch) kontaktieren. Die REST-API-Unterstützung für dieses Feature ist in der [Stream Analytics-REST-API-Bibliothek](/rest/api/streamanalytics/)ausführlich beschrieben. Dieser Artikel enthält zusätzliche Informationen, die für die erfolgreiche Implementierung dieser Funktion in Stream Analytics erforderlich sind. Es wurde ein Tutorial bereitgestellt, das [hier](stream-analytics-machine-learning-integration-tutorial.md)verfügbar ist.
@@ -20,10 +19,10 @@ Stream Analytics unterstützt benutzerdefinierte Funktionen, die Azure Machine L
 ## <a name="overview-azure-machine-learning-studio-classic-terminology"></a>Übersicht: Azure Machine Learning Studio-Terminologie (klassisch)
 Microsoft Azure Machine Learning Studio (klassisch) ist ein Drag & Drop-Tool für die Zusammenarbeit, mit dem Sie Predictive Analytics-Lösungen für Ihre Daten erstellen, testen und bereitstellen können. Dieses Tool trägt den Namen *Azure Machine Learning Studio (klassisch)* . Studio (klassisch) wird zum Interagieren mit den Machine Learning-Ressourcen und zum einfachen Erstellen, Testen und Durchlaufen Ihres Entwurfs verwendet. Unten sind diese Ressourcen und die dazugehörigen Definitionen angegeben.
 
-* **Arbeitsbereich** : Der *Arbeitsbereich* ist ein Container, in dem alle anderen Machine Learning-Ressourcen zur Verwaltung und Steuerung zusammengefasst sind.
-* **Experiment** : *Experimente* werden von Data Scientists erstellt, um Datasets zu nutzen und ein Machine Learning-Modell zu trainieren.
-* **Endpunkt** : Bei *Endpunkten* handelt es sich um das Studio-Objekt (klassisch), das zum Verwenden von Features als Eingabe, Anwenden eines angegebenen Machine Learning-Modells und Zurückgeben der erzielten Ausgabe eingesetzt wird.
-* **Bewertungswebdienst** : Ein *Bewertungswebdienst* ist eine Sammlung von Endpunkten (wie oben beschrieben).
+* **Arbeitsbereich**: Der *Arbeitsbereich* ist ein Container, in dem alle anderen Machine Learning-Ressourcen zur Verwaltung und Steuerung zusammengefasst sind.
+* **Experiment**: *Experimente* werden von Data Scientists erstellt, um Datasets zu nutzen und ein Machine Learning-Modell zu trainieren.
+* **Endpunkt**: Bei *Endpunkten* handelt es sich um das Studio-Objekt (klassisch), das zum Verwenden von Features als Eingabe, Anwenden eines angegebenen Machine Learning-Modells und Zurückgeben der erzielten Ausgabe eingesetzt wird.
+* **Bewertungswebdienst**: Ein *Bewertungswebdienst* ist eine Sammlung von Endpunkten (wie oben beschrieben).
 
 Jeder Endpunkt verfügt über APIs für die Batchausführung und synchrone Ausführung. Für Stream Analytics wird die synchrone Ausführung verwendet. Der entsprechende Dienst wird in Azure Machine Learning Studio (klassisch) als [Anforderung-Antwort-Dienst](../machine-learning/classic/consume-web-services.md) bezeichnet.
 

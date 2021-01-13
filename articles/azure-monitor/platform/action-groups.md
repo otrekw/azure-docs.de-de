@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/28/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 9b5b20de1b86eae72de54b3f2c1cf37074fba144
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: b5b6a697e6a5cae064a6a48419246dc12e8d048c
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97095167"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97695832"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Erstellen und Verwalten von Aktionsgruppen im Azure-Portal
 Eine Aktionsgruppe ist eine Sammlung von Benachrichtigungseinstellungen, die vom Besitzer eines Azure-Abonnements definiert wurden. Azure Monitor- und Service Health-Warnungen verwenden Aktionsgruppen, um Benutzer zu benachrichtigen, dass eine Warnung ausgelöst wurde. Verschiedene Warnungen können je nach den Bedürfnissen des Benutzers die gleiche Aktionsgruppe oder verschiedene Aktionsgruppen verwenden. 
@@ -132,6 +132,18 @@ Es kann sein, dass Sie in einer Aktionsgruppe über eine begrenzte Anzahl von E-
 Senden Sie eine E-Mail an die Mitglieder dieser Rolle im Abonnement. Die E-Mail wird nur an Mitglieder der Rolle gesendet, die **Azure AD-Benutzer** sind. E-Mail wird nicht an Azure AD-Gruppen oder Dienstprinzipale gesendet.
 
 Eine Benachrichtigungs-E-Mail wird nur an die *primäre E-Mail-Adresse* gesendet.
+
+Wenn Sie keine Benachrichtigungen an der *primären E-Mail-Adresse* erhalten, können Sie die folgenden Schritte ausführen:
+
+1. Navigieren Sie im Azure-Portal zu *Active Directory*.
+2. Klicken Sie auf „Alle Benutzer“ (im linken Bereich). Daraufhin wird eine Liste der Benutzer angezeigt (im rechten Bereich).
+3. Wählen Sie den Benutzer aus, für den Sie die Angaben zur *primären E-Mail-Adresse* überprüfen möchten.
+
+  :::image type="content" source="media/action-groups/active-directory-user-profile.png" alt-text="Beispiel für das Überprüfen eines Benutzerprofils"border="true":::
+
+4. Wenn im Benutzerprofil unter „Kontaktinformationen“ der Bereich „E-Mail“ leer ist, klicken Sie oben auf die Schaltfläche *Bearbeiten*, fügen Sie die *primäre E-Mail-Adresse* hinzu, und klicken Sie dann oben auf die Schaltfläche *Speichern*.
+
+  :::image type="content" source="media/action-groups/active-directory-add-primary-email.png" alt-text="Beispiel für das Hinzufügen einer primären E-Mail-Adresse"border="true":::
 
 Es kann sein, dass Sie in einer Aktionsgruppe über eine begrenzte Anzahl von E-Mail-Aktionen verfügen. Weitere Informationen finden Sie im Artikel [Ratenlimits für Sprache, SMS-Nachrichten, E-Mail-Nachrichten, Azure App-Pushbenachrichtigungen und Webhookbeiträge](./alerts-rate-limiting.md).
 

@@ -5,12 +5,12 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 10/27/2020
 ms.author: jehollan
-ms.openlocfilehash: bed76a6f3a17332f9a1e411ff1d4efb52703f3e1
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: f4d7611f285535680469f3a334ab889b0b644bfe
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96020989"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936861"
 ---
 # <a name="azure-functions-networking-options"></a>Netzwerkoptionen von Azure Functions
 
@@ -21,9 +21,9 @@ Die Hostingmodelle weisen verschiedene verfügbare Ebenen der Netzwerkisolation 
 Sie können Funktions-Apps auf verschiedene Arten hosten:
 
 * Sie können unter Tarifoptionen wählen, die in einer mehrinstanzenfähigen Infrastruktur ausgeführt werden und über unterschiedliche Ebenen von Konnektivitäts- und Skalierungsoptionen für virtuelle Netzwerke verfügen:
-    * Im [Verbrauchstarif](functions-scale.md#consumption-plan) wird als Reaktion auf Last dynamisch skaliert, und der Tarif bietet Optionen für eine minimale Netzwerkisolation.
-    * Im [Premium-Tarif](functions-scale.md#premium-plan) wird ebenfalls dynamisch skaliert, der Tarif ermöglicht aber eine umfassendere Netzwerkisolation.
-    * Beim [Azure App Service-Plan](functions-scale.md#app-service-plan) wird eine feste Skalierung verwendet, und er weist eine ähnliche Netzwerkisolation wie der Premium-Tarif auf.
+    * Im [Verbrauchstarif](consumption-plan.md) wird als Reaktion auf Last dynamisch skaliert, und der Tarif bietet Optionen für eine minimale Netzwerkisolation.
+    * Im [Premium-Tarif](functions-premium-plan.md) wird ebenfalls dynamisch skaliert, der Tarif ermöglicht aber eine umfassendere Netzwerkisolation.
+    * Beim [Azure App Service-Plan](dedicated-plan.md) wird eine feste Skalierung verwendet, und er weist eine ähnliche Netzwerkisolation wie der Premium-Tarif auf.
 * Sie können Funktionen in einer [App Service-Umgebung](../app-service/environment/intro.md) ausführen. Mit dieser Methode werden die Funktionen in Ihrem virtuellen Netzwerk bereitgestellt und eine umfassende Netzwerksteuerung und -isolation ermöglicht.
 
 ## <a name="matrix-of-networking-features"></a>Matrix der Netzwerkfunktionen
@@ -34,7 +34,7 @@ Sie können Funktions-Apps auf verschiedene Arten hosten:
 
 Mit Zugriffseinschränkungen können Sie eine nach Priorität sortierte Liste mit IP-Adressen definieren, über die der Zugriff auf Ihre App zugelassen bzw. abgelehnt wird. Die Liste kann IPv4- und IPv6-Adressen oder bestimmte Subnetze eines virtuellen Netzwerks mit [Dienstendpunkten](#use-service-endpoints) enthalten. Wenn mindestens ein Eintrag vorhanden ist, enthält die Liste am Ende einen impliziten Eintrag vom Typ „Alle ablehnen“. IP-Einschränkungen können für alle Hostingoptionen für Funktionen verwendet werden.
 
-Zugriffseinschränkungen sind für [Premium](functions-premium-plan.md), [Verbrauch](functions-scale.md#consumption-plan) und [App Service](functions-scale.md#app-service-plan) verfügbar.
+Zugriffseinschränkungen sind für [Premium](functions-premium-plan.md), [Verbrauch](consumption-plan.md) und [App Service](dedicated-plan.md) verfügbar.
 
 > [!NOTE]
 > Mit den geltenden Netzwerkbeschränkungen können Sie nur in Ihrem virtuellen Netzwerk bereitstellen, oder wenn Sie die IP-Adresse des Computers, mit dem Sie auf das Azure-Portal zugreifen, der Liste der sicheren Empfänger hinzugefügt haben. Sie können die Funktion jedoch weiterhin über das Portal verwalten.

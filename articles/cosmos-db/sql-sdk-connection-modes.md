@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/14/2020
 ms.author: maquaran
 ms.custom: devx-track-dotnet, contperf-fy21q2
-ms.openlocfilehash: c30e97a4bff8fa845f6eb3c3092a00ee541e59f4
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: cf985999bac0cf45eec5d8f0f5f9e921b6f4591c
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032795"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934950"
 ---
 # <a name="azure-cosmos-db-sql-sdk-connectivity-modes"></a>Azure Cosmos DB SQL SDK-Konnektivitätsmodi
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -28,7 +28,7 @@ Diese beiden Konnektivitätsmodi sind verfügbar:
       
     Der Gatewaymodus wird auf allen SDK-Plattformen unterstützt. Wenn Ihre Anwendung in einem Unternehmensnetzwerk mit strengen Firewalleinschränkungen ausgeführt wird, ist der Gatewaymodus die beste Wahl, da er den HTTPS-Standardport und einen einzelnen DNS-Endpunkt verwendet. Im Gatewaymodus ist jedoch jeweils ein zusätzlicher Netzwerkhop erforderlich, wenn Daten in Azure Cosmos DB geschrieben oder daraus gelesen werden, was sich negativ auf die Leistung auswirkt. Der Gatewayverbindungsmodus wird auch empfohlen, wenn Sie Anwendungen in Umgebungen mit einer begrenzten Anzahl von Socketverbindungen ausführen.
 
-    Beachten Sie bei Verwendung des SDK in Azure Functions – insbesondere beim [Verbrauchstarif](../azure-functions/functions-scale.md#consumption-plan) – die aktuellen [Grenzwerte für Verbindungen](../azure-functions/manage-connections.md).
+    Beachten Sie bei Verwendung des SDK in Azure Functions – insbesondere beim [Verbrauchstarif](../azure-functions/consumption-plan.md) – die aktuellen [Grenzwerte für Verbindungen](../azure-functions/manage-connections.md).
 
   * Direkter Modus
 

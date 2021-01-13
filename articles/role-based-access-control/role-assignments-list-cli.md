@@ -14,16 +14,16 @@ ms.workload: identity
 ms.date: 10/30/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: e44437bb926e8d2d1ffcd3134bbc63538a112ff0
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: b6125252c22163306a79f5682a3a5fc4f0b55d4c
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94648309"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97964387"
 ---
 # <a name="list-azure-role-assignments-using-azure-cli"></a>Auflisten von Azure-Rollenzuweisungen mithilfe der Azure-Befehlszeilenschnittstelle
 
-[!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control-definition-list.md)] In diesem Artikel wird beschrieben, wie Sie mit der Azure-Befehlszeilenschnittstelle Rollenzuweisungen auflisten.
+[!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control/definition-list.md)] In diesem Artikel wird beschrieben, wie Sie mit der Azure-Befehlszeilenschnittstelle Rollenzuweisungen auflisten.
 
 > [!NOTE]
 > Wenn Ihre Organisation Verwaltungsfunktionen an einen Dienstanbieter ausgelagert hat, der die [delegierte Azure-Ressourcenverwaltung](../lighthouse/concepts/azure-delegated-resource-management.md) verwendet, werden die von diesem Dienstanbieter autorisierten Rollenzuweisungen hier nicht angezeigt.

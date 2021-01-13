@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/31/2020
+ms.date: 12/18/2020
 ms.author: jingwang
-ms.openlocfilehash: 25829b45c06aa9e451c305eb319f650ed5b8e16a
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: b3f84d48cd65c37495f00a17b586ff4a6954795d
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97347301"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680863"
 ---
 # <a name="copy-data-from-ftp-server-by-using-azure-data-factory"></a>Kopieren von Daten von einem FTP-Server mithilfe von Azure Data Factory
 
@@ -187,6 +187,8 @@ Folgende Eigenschaften werden für FTP unter den `storeSettings`-Einstellungen i
 | enablePartitionDiscovery | Geben Sie bei partitionierten Dateien an, ob die Partitionen anhand des Dateipfads analysiert und als zusätzliche Quellspalten hinzugefügt werden sollen.<br/>Zulässige Werte sind **FALSE** (Standard) und **TRUE**. | Nein                                            |
 | partitionRootPath | Wenn die Partitionsermittlung aktiviert ist, geben Sie den absoluten Stammpfad an, um partitionierte Ordner als Datenspalten zu lesen.<br/><br/>Falls nicht angegeben, gilt standardmäßig:<br/>Wenn Sie den Dateipfad im Dataset oder die Liste der Dateien in der Quelle verwenden, ist der Partitionsstammpfad der im Dataset konfigurierte Pfad.<br/>Wenn Sie einen Platzhalterordnerfilter verwenden, ist der Stammpfad der Partition der Unterpfad vor dem ersten Platzhalter.<br/><br/>Angenommen, Sie konfigurieren den Pfad im Dataset als „root/folder/year=2020/month=08/day=27“:<br/>Wenn Sie den Stammpfad der Partition als „root/folder/year=2020“ angeben, generiert die Kopieraktivität zusätzlich zu den Spalten innerhalb der Dateien die beiden weiteren Spalten `month` und `day` mit den Werten „08“ bzw. „27“.<br/>Wenn der Stammpfad der Partition nicht angegeben ist, wird keine zusätzliche Spalte generiert. | Nein                                            |
 | maxConcurrentConnections | Die Anzahl von Verbindungen, die gleichzeitig mit dem Datenspeicher hergestellt werden können. Geben Sie diesen Wert nur an, wenn Sie die gleichzeitigen Verbindungen mit dem Datenspeicher begrenzen möchten. | Nein |
+
+Beim Kopieren von Daten vom FTP-Server versucht ADF derzeit, zuerst die Dateilänge abzurufen, dann die Datei in mehrere Teile aufzuteilen und diese parallel zu lesen. Wenn Ihr FTP-Server das Abrufen der Dateilänge oder das Lesen aus einem bestimmten Offset nicht unterstützt, tritt möglicherweise ein Fehler auf.
 
 **Beispiel:**
 

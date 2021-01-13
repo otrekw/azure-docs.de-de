@@ -12,12 +12,12 @@ ms.date: 09/15/2020
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: a0abbacc55cff2f561323a22dd83311c87b1511d
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 90debef39b3e657bf96221dfaf5fa762d332a364
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97584492"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97976519"
 ---
 # <a name="tutorial---build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>Tutorial: Erstellen eines SCIM-Endpunkts und Konfigurieren der Benutzerbereitstellung mit Azure AD
 
@@ -1217,7 +1217,7 @@ OAuth-Autorisierungscodeflow:
 > [!NOTE]
 > Aktuell ist es zwar nicht möglich, OAuth für eine Anwendung einzurichten, die nicht aus dem Katalog stammt, Sie können jedoch manuell ein Zugriffstoken auf Ihrem Autorisierungsserver generieren und in das Feld für ein geheimes Token der Anwendung einfügen, die nicht aus dem Katalog stammt. Dies ermöglicht es Ihnen, die Kompatibilität Ihres SCIM-Servers mit dem SCIM-Client in Azure AD zu überprüfen, bevor Sie ein Onboarding im App-Katalog ausführen, für den die Autorisierung über OAuth-Code unterstützt wird.  
 
-**Langlebige OAuth-Bearertoken:** Wenn Ihre Anwendung den Ablauf der OAuth-Autorisierungscodegenehmigung nicht unterstützt, können Sie auch ein langlebiges OAuth-Bearertoken generieren, mit dem ein Administrator die Integration der Bereitstellung einrichten kann. Das Token sollte unbefristet sein, andernfalls wird der Bereitstellungsauftrag nach Ablauf des Token [unter Quarantäne gestellt](application-provisioning-quarantine-status.md). Dieses Token muss eine Größe von weniger als 1 KB aufweisen.  
+**Langlebige OAuth-Bearertoken:** Wenn Ihre Anwendung den Ablauf der OAuth-Autorisierungscodegenehmigung nicht unterstützt, können Sie auch ein langlebiges OAuth-Bearertoken generieren, mit dem ein Administrator die Integration der Bereitstellung einrichten kann. Das Token sollte unbefristet sein, andernfalls wird der Bereitstellungsauftrag nach Ablauf des Token [unter Quarantäne gestellt](application-provisioning-quarantine-status.md).
 
 Teilen Sie uns über [UserVoice](https://aka.ms/appprovisioningfeaturerequest) mit, wenn weitere Methoden zur Authentifizierung und Autorisierung erforderlich sind.
 

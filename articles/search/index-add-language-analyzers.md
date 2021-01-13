@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/05/2020
-ms.openlocfilehash: ca5f237585f74225a04091b5694dbfad12864332
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 555709776c88dd3003e400bbcefe2ec1cfa0f4af
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97656035"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934168"
 ---
 # <a name="add-language-analyzers-to-string-fields-in-an-azure-cognitive-search-index"></a>Hinzufügen von Sprachanalysetools zu Zeichenfolgenfeldern in einem Azure Cognitive Search-Index
 
@@ -68,9 +68,9 @@ Weitere Informationen zu Indexeigenschaften finden Sie unter [Erstellen eines In
 ## <a name="language-analyzer-list"></a>Liste der Sprachanalysen 
  Es folgt die Liste der unterstützten Sprachen sowie die Namen der Lucene- und Microsoft-Analyseprogramme.  
 
-| Sprache | Name des Microsoft-Analysetools | Name des Lucene-Analysetools |  |
-|--|--|--|--|
-| Arabisch | ar.microsoft | ar.lucene |  |
+| Sprache | Name des Microsoft-Analysetools | Name des Lucene-Analysetools |
+|--|--|--|
+| Arabisch | ar.microsoft | ar.lucene |
 | Armenisch |  | hy.lucene |  |
 | Bengalisch | bn.microsoft |  |  |
 | Baskisch |  | eu.lucene |  |

@@ -9,12 +9,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 68d9a64e388d24f2067f47282945b9561d807535
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 6a78b38bd71a2822d94e58834ab17824c9ef6ec6
+ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96545926"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97683098"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-net-sdk"></a>Diagnostizieren und Behandeln von Problemen bei Verwendung des .NET SDK für Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -53,6 +53,13 @@ Sehen Sie sich den Abschnitt [Häufig auftretende Probleme und Problemumgehungen
 
 ### <a name="check-the-portal-metrics"></a>Überprüfen der Metriken im Portal
 Das Überprüfen der [Metriken im Portal](./monitor-cosmos-db.md) hilft festzustellen, ob es sich um ein Problem auf Clientseite handelt oder ob es ein Problem mit dem Dienst gibt. Wenn die Metriken beispielsweise viele Anforderungen mit Ratenbegrenzungen aufweisen (HTTP-Statuscode 429), bedeutet dies, dass die Anforderung gedrosselt wird. Siehe dann den Abschnitt [Anforderungsrate zu hoch](troubleshoot-request-rate-too-large.md). 
+
+## <a name="retry-logic"></a>Wiederholungslogik <a id="retry-logics"></a>
+Das Cosmos DB SDK versucht bei jedem E/A-Fehler, den fehlgeschlagenen Vorgang zu wiederholen, sofern eine Wiederholung im SDK möglich ist. Es ist eine bewährte Methode, einen Wiederholungsversuch für jeden Fehler durchzuführen, doch müssen insbesondere Schreibfehler behandelt/wiederholt werden. Es wird empfohlen, das neueste SDK zu verwenden, da die Wiederholungslogik kontinuierlich verbessert wird.
+
+1. E/A-Fehler bei Lese- und Abfragevorgängen werden vom SDK wiederholt, ohne dass sie dem Endbenutzer angezeigt werden.
+2. Schreibvorgänge (Erstellen, Aktualisieren/Einfügen, Ersetzen, Löschen) sind nicht idempotent, und daher kann das SDK die fehlgeschlagenen Schreibvorgänge nicht immer blind wiederholen. Es ist erforderlich, dass die Anwendungslogik des Benutzers den Fehler behandelt und den Wiederholungsversuch durchführt.
+3. Unter [Beheben von Problemen bei der Verfügbarkeit von SDKs](troubleshoot-sdk-availability.md) werden Wiederholungen für Cosmos DB-Konten in mehreren Regionen erläutert.
 
 ## <a name="common-error-status-codes"></a>Allgemeine Fehlerstatuscodes <a id="error-codes"></a>
 

@@ -1,18 +1,17 @@
 ---
 title: Verwenden von REST-APIs zum Implementieren von CI/CD für Azure Stream Analytics in IoT Edge
 description: Erfahren Sie, wie Sie mithilfe von REST-APIs eine Pipeline für Continuous Integration und Deployment für Azure Stream Analytics implementieren.
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: su-jie
+ms.author: sujie
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 12/04/2018
-ms.openlocfilehash: a7e56758a1a76933d6bb18883aa15ce33ce2e89e
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 3c3f776ad0996fa0b7422f0fca2d899a35e853d1
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130917"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98016132"
 ---
 # <a name="implement-cicd-for-stream-analytics-on-iot-edge-using-apis"></a>Implementieren von CI/CD für Stream Analytics in IoT Edge mithilfe von APIs
 
@@ -59,7 +58,7 @@ Um einen Stream Analytics-Auftrag zu erstellen, rufen Sie die PUT-Methode mithil
 |------|-----------|
 |PUT|`https://management.azure.com/subscriptions/{\**subscription-id**}/resourcegroups/{**resource-group-name**}/providers/Microsoft.StreamAnalytics/streamingjobs/{**job-name**}?api-version=2017-04-01-preview`|
  
-Befehlsbeispiel unter Verwendung von **curl** :
+Befehlsbeispiel unter Verwendung von **curl**:
 
 ```curl
 curl -u { <username:password> } -H "Content-Type: application/json" -X { <method> } -d "{ <request body> }" https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{resource-group-name}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobname}?api-version=2017-04-01-preview  
@@ -148,7 +147,7 @@ Um einen Stream Analytics-Auftrag auf IoT Edge zu veröffentlichen, rufen Sie di
 
 Dieser asynchrone Vorgang gibt so lange den Status 202 zurück, bis der Auftrag erfolgreich veröffentlicht wurde. Der Antwortheader des Speicherorts enthält den URI, der zum Abrufen des Status des Prozesses verwendet wird. Während der Prozess ausgeführt wird, gibt ein Aufruf des URIs im Speicherortheader den Status 202 zurück. Während der Prozess abgeschlossen ist, gibt der URI im Speicherortheader den Status 200 zurück. 
 
-Beispiel für einen Veröffentlichungsaufruf für ein Edgepaket mithilfe von **curl** : 
+Beispiel für einen Veröffentlichungsaufruf für ein Edgepaket mithilfe von **curl**: 
 
 ```bash
 curl -d -X POST https://management.azure.com/subscriptions/{subscriptionid}/resourceGroups/{resourcegroupname}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobname}/publishedgepackage?api-version=2017-04-01-preview
@@ -163,7 +162,7 @@ https://management.azure.com/subscriptions/{**subscriptionid**}/resourcegroups/{
 ```
 Führen Sie nach einem Wait von einer oder zwei Minuten den folgenden Befehl aus, um einen API-Aufruf mit der URL vorzunehmen, die Sie dem Kopfteil der Antwort entnommen haben. Wiederholen Sie den Befehl, wenn Sie keine 200-Antwort erhalten.
  
-Beispiel für den API-Aufruf mit der zurückgegebenen URL mit **curl** :
+Beispiel für den API-Aufruf mit der zurückgegebenen URL mit **curl**:
 
 ```bash
 curl -d –X GET https://management.azure.com/subscriptions/{subscriptionid}/resourceGroups/{resourcegroupname}/providers/Microsoft.StreamAnalytics/streamingjobs/{resourcename}/publishedgepackage?api-version=2017-04-01-preview 

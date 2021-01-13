@@ -7,12 +7,12 @@ ms.topic: how-to
 author: github-2407
 ms.author: krsh
 ms.date: 10/15/2020
-ms.openlocfilehash: 36eebb218ed2b2d9a48cf7d970896115af5cf6f8
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: a9698981b1a658664bfc14886628bbfd0a4a64d2
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424855"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97976927"
 ---
 # <a name="test-a-virtual-machine-image"></a>Testen eines VM-Images
 
@@ -214,28 +214,6 @@ In diesem Abschnitt wird beschrieben, wie Sie ein vom Benutzer bereitgestelltes 
                             "id": "[resourceId('Microsoft.Network/networkInterfaces',parameters('nicName'))]"
                         }
                     ]
-                }
-            }
-        },
-        {
-            "type": "Microsoft.Compute/virtualMachines/extensions",
-            "apiVersion": "2015-06-15",
-            "name": "[concat(parameters('vmName'),'/WinRMCustomScriptExtension')]",
-            "location": "[parameters('location')]",
-            "dependsOn": [
-                "[concat('Microsoft.Compute/virtualMachines/', parameters('vmName'))]"
-            ],
-            "properties": {
-                "publisher": "Microsoft.Compute",
-                "type": "CustomScriptExtension",
-                "typeHandlerVersion": "1.4",
-                "settings": {
-                    "fileUris": [
-                        "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vm-winrm-windows/ConfigureWinRM.ps1",
-                        "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vm-winrm-windows/makecert.exe",
-                        "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vm-winrm-windows/winrmconf.cmd"
-                    ],
-                    "commandToExecute": "[concat('powershell -ExecutionPolicy Unrestricted -file ConfigureWinRM.ps1 ',variables('hostDNSNameScriptArgument'))]"
                 }
             }
         }
@@ -572,13 +550,13 @@ Das Certification Test Tool for Azure Certified wird auf einem lokalen Windows-C
 1. Laden Sie das neueste [Certification Test Tool for Azure Certified](https://www.microsoft.com/download/details.aspx?id=44299) herunter, und installieren Sie es.
 2. Öffnen Sie das Zertifizierungstool, und wählen Sie dann **Neuen Test starten** aus.
 3. Geben Sie auf dem Bildschirm Testinformationen einen **Testnamen** für den Testlauf ein.
-4. Wählen Sie die Plattform für Ihre VM aus (entweder **Windows Server** oder **Linux** ). Die Auswahl der Plattform wirkt sich auf die restlichen Optionen aus.
-5. Aktivieren Sie das Kontrollkästchen **Für Azure SQL-Datenbank testen** , wenn Ihre VM diesen Datenbankdienst verwendet.
+4. Wählen Sie die Plattform für Ihre VM aus (entweder **Windows Server** oder **Linux**). Die Auswahl der Plattform wirkt sich auf die restlichen Optionen aus.
+5. Aktivieren Sie das Kontrollkästchen **Für Azure SQL-Datenbank testen**, wenn Ihre VM diesen Datenbankdienst verwendet.
 
 #### <a name="connect-the-certification-tool-to-a-vm-image"></a>Verbinden des Zertifizierungstools mit einem VM-Image
 
 1. Wählen Sie den Modus für die SSH-Authentifizierung aus: „Kennwortauthentifizierung“ oder „Authentifizierung per Schlüsseldatei“.
-2. Geben Sie bei Verwendung der Authentifizierung per Kennwort Werte für den **VM-DNS-Namen** , den **Benutzernamen** und das **Kennwort** ein. Sie können auch die Standardnummer für den SSH-Port ändern.
+2. Geben Sie bei Verwendung der Authentifizierung per Kennwort Werte für den **VM-DNS-Namen**, den **Benutzernamen** und das **Kennwort** ein. Sie können auch die Standardnummer für den SSH-Port ändern.
 
     :::image type="content" source="media/vm/azure-vm-cert-2.png" alt-text="Zeigt die Auswahl von VM-Testinformationen.":::
 
@@ -592,7 +570,7 @@ Das Certification Test Tool for Azure Certified wird auf einem lokalen Windows-C
 
 #### <a name="run-a-certification-test"></a>Ausführen eines Zertifizierungstests
 
-Nachdem Sie die Parameterwerte für Ihr VM-Image im Zertifizierungstool angegeben haben, wählen Sie „Verbindung testen“ aus, um eine gültige Verbindung mit Ihrer VM herzustellen. Klicken Sie nach dem Überprüfen der Verbindung auf **Weiter** , um den Test zu starten. Nach Abschluss des Tests werden die Ergebnisse in einer Tabelle angezeigt. In der Spalte „Status“ wird für jeden Test „Bestanden“, „Fehler“ oder „Warnung“ angezeigt. Wenn einer der Tests nicht erfolgreich durchgeführt wird, wird das Image nicht zertifiziert. Überprüfen Sie in diesem Fall die Anforderungen und Fehlermeldungen, nehmen Sie die vorgeschlagenen Änderungen vor, und führen Sie den Test erneut durch.
+Nachdem Sie die Parameterwerte für Ihr VM-Image im Zertifizierungstool angegeben haben, wählen Sie „Verbindung testen“ aus, um eine gültige Verbindung mit Ihrer VM herzustellen. Klicken Sie nach dem Überprüfen der Verbindung auf **Weiter**, um den Test zu starten. Nach Abschluss des Tests werden die Ergebnisse in einer Tabelle angezeigt. In der Spalte „Status“ wird für jeden Test „Bestanden“, „Fehler“ oder „Warnung“ angezeigt. Wenn einer der Tests nicht erfolgreich durchgeführt wird, wird das Image nicht zertifiziert. Überprüfen Sie in diesem Fall die Anforderungen und Fehlermeldungen, nehmen Sie die vorgeschlagenen Änderungen vor, und führen Sie den Test erneut durch.
 
 Geben Sie nach Abschluss des automatisierten Tests auf dem Bildschirm Fragebogen auf den Registerkarten Allgemeine Bewertung und Kernelanpassung weitere Informationen zu Ihrem VM-Image an, und wählen Sie anschließend Weiter aus.
 
@@ -705,11 +683,11 @@ $Content = $res | ConvertFrom-Json
 
 Diese Beispielbildschirme zeigen ein Beispiel für das Aufrufen der API in PowerShell:
 
-**Mit SSH-Schlüssel** :
+**Mit SSH-Schlüssel**:
 
  :::image type="content" source="media/vm/call-api-with-ssh-key.png" alt-text="Aufrufen der API in PowerShell mit einem SSH-Schlüssel":::
 
-**Mit Kennwort** :
+**Mit Kennwort**:
 
  :::image type="content" source="media/vm/call-api-with-password.png" alt-text="Aufrufen der API in PowerShell mit einem Kennwort":::
 

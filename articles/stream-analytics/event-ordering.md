@@ -1,18 +1,17 @@
 ---
 title: Konfigurieren von Richtlinien für die Ereignisreihenfolge in Azure Stream Analytics
 description: In diesem Artikel erfahren Sie, wie Sie die Einstellungen für die Ereignisreihenfolge in Stream Analytics konfigurieren.
-author: sidram
+author: sidramadoss
 ms.author: sidram
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 08/06/2020
-ms.openlocfilehash: 80567a211f08d6322c80b6645f8b70ec7df64b59
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: f7ec6f32b48a93a29210311c7ba6747eb2e2d066
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130662"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98014294"
 ---
 # <a name="configuring-event-ordering-policies-for-azure-stream-analytics"></a>Konfigurieren von Richtlinien für die Ereignisreihenfolge in Azure Stream Analytics
 

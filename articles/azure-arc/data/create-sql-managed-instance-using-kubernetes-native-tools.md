@@ -9,12 +9,12 @@ ms.author: vinsonyu
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 2902274cfff11ac256459abd4fe0378146ee067b
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.openlocfilehash: dde2794e459e9375a231b7792bc1bd5ab21561bf
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93280182"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955228"
 ---
 # <a name="create-azure-sql-managed-instance-using-kubernetes-tools"></a>Erstellen einer verwalteten Azure SQL-Instanz mithilfe von Kubernetes-Tools
 
@@ -34,7 +34,7 @@ Zum Erstellen einer verwalteten SQL-Instanz müssen Sie ein Kubernetes-Geheimnis
 
 ## <a name="create-a-yaml-file"></a>Erstellen einer YAML-Datei
 
-Sie können die [YAML-Vorlage](https://raw.githubusercontent.com/microsoft/azure_arc/master/arc_data_services/deploy/yaml/sqlmi.yaml)datei als Ausgangspunkt verwenden, um Ihre eigene benutzerdefinierte YAML-Datei für die verwaltete SQL-Instanz zu erstellen.  Laden Sie diese Datei auf Ihren Computer herunter, und öffnen Sie sie in einem Text-Editor.  Es ist hilfreich, einen Text-Editor wie [VS Code](https://code.visualstudio.com/download) zu verwenden, der Syntaxhervorhebung und Linten für YAML-Dateien unterstützen.
+Sie können die [YAML-Vorlage](https://raw.githubusercontent.com/microsoft/azure_arc/main/arc_data_services/deploy/yaml/sqlmi.yaml)datei als Ausgangspunkt verwenden, um Ihre eigene benutzerdefinierte YAML-Datei für die verwaltete SQL-Instanz zu erstellen.  Laden Sie diese Datei auf Ihren Computer herunter, und öffnen Sie sie in einem Text-Editor.  Es ist hilfreich, einen Text-Editor wie [VS Code](https://code.visualstudio.com/download) zu verwenden, der Syntaxhervorhebung und Linten für YAML-Dateien unterstützen.
 
 Dies ist eine YAML-Beispieldatei:
 

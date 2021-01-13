@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 06/09/2020
 ms.author: surmb
-ms.openlocfilehash: b8acf1b025a5943773821c8ab78de6288eb6bec2
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 05df2144b892aed764f9606fb19bd6a3242b97f3
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93397897"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934899"
 ---
 <a name="troubleshoot-backend-health-issues-in-application-gateway"></a>Behandeln von Problemen mit der Back-End-Integrität in Application Gateway
 ==================================================
@@ -21,6 +21,9 @@ ms.locfileid: "93397897"
 --------
 
 Standardmäßig testet Application Gateway Back-End-Server, um deren Integritätsstatus zu überprüfen und zu prüfen, ob sie bereit sind, Anforderungen zu verarbeiten. Benutzer können auch benutzerdefinierte Tests erstellen, um den Hostnamen, den zu überprüfenden Pfad und die Statuscodes, die als fehlerfrei akzeptiert werden sollen, anzugeben. Wenn der Back-End-Server nicht erfolgreich antwortet, wird der Server von Application Gateway in jedem Fall als fehlerhaft markiert, und die Anforderung wird nicht mehr an den Server weitergeleitet. Nachdem der Server erfolgreich reagiert hat, setzt Application Gateway das Weiterleiten der Anforderungen fort.
+
+> [!NOTE]
+> Dieser Artikel enthält Verweise auf den Begriff *Whitelist*, den Microsoft nicht länger verwendet. Sobald der Begriff aus der Software entfernt wurde, wird er auch aus diesem Artikel entfernt.
 
 ### <a name="how-to-check-backend-health"></a>Überprüfen der Back-End-Integrität
 
@@ -218,7 +221,7 @@ Damit ein TLS/SSL-Zertifikat als vertrauenswürdig eingestuft wird, muss dieses 
 
 1.  Melden Sie sich bei dem Computer an, auf dem Ihre Anwendung gehostet wird.
 
-1.  Drücken Sie WIN+R, oder klicken Sie mit der rechten Maustaste auf die Schaltfläche **Start** , und wählen Sie dann **Ausführen** aus.
+1.  Drücken Sie WIN+R, oder klicken Sie mit der rechten Maustaste auf die Schaltfläche **Start**, und wählen Sie dann **Ausführen** aus.
 
 1.  Geben Sie `certmgr.msc` ein, und drücken Sie dann die EINGABETASTE. Sie können auch im **Start** menü nach dem Zertifikat-Manager suchen.
 
@@ -230,7 +233,7 @@ Damit ein TLS/SSL-Zertifikat als vertrauenswürdig eingestuft wird, muss dieses 
 
 1.  Wählen Sie auf der Registerkarte **Details** die Option **In Datei kopieren** aus, und speichern Sie die Datei im Base-64-codierten X.509-Format (CER-Format).
 
-1.  Öffnen Sie die HTTP- **Einstellungen** von Application Gateway im Azure-Portal.
+1.  Öffnen Sie die HTTP-**Einstellungen** von Application Gateway im Azure-Portal.
 
 1. Öffnen Sie die HTTP-Einstellungen, wählen Sie **Zertifikat hinzufügen** aus, und suchen Sie die Zertifikatdatei, die Sie gerade gespeichert haben.
 
@@ -302,7 +305,7 @@ Windows:
 
 1.  Melden Sie sich bei dem Computer an, auf dem Ihre Anwendung gehostet wird.
 
-1.  Drücken Sie WIN+R, oder klicken Sie mit der rechten Maustaste auf die Schaltfläche **Start** , und wählen Sie **Ausführen** aus.
+1.  Drücken Sie WIN+R, oder klicken Sie mit der rechten Maustaste auf die Schaltfläche **Start**, und wählen Sie **Ausführen** aus.
 
 1.  Geben Sie **certmgr.msc** ein, und drücken Sie die EINGABETASTE. Sie können auch im **Start** menü nach dem Zertifikat-Manager suchen.
 
@@ -381,7 +384,7 @@ Dieses Verhalten kann aus einem oder mehreren der folgenden Gründe auftreten:
 
     c.  Überprüfen Sie, ob es Standardrouten (0.0.0.0/0) gibt, wobei der nächste Hop nicht auf **Internet** festgelegt ist. Wenn die Einstellung entweder **Virtuelles Gerät** oder **Virtual Network Gateway** ist, müssen Sie sicherstellen, dass Ihr virtuelles Gerät oder das lokale Gerät das Paket ordnungsgemäß zurück an das Internetziel weiterleiten kann, ohne das Paket zu ändern.
 
-    d.  Andernfalls ändern Sie den nächsten Hop in **Internet** , wählen Sie **Speichern** aus, und überprüfen Sie die Back-End-Integrität.
+    d.  Andernfalls ändern Sie den nächsten Hop in **Internet**, wählen Sie **Speichern** aus, und überprüfen Sie die Back-End-Integrität.
 
 1.  Von einer ExpressRoute-/VPN-Verbindung in einem virtuellen Netzwerk über BGP angekündigte Standardroute:
 
@@ -393,7 +396,7 @@ Dieses Verhalten kann aus einem oder mehreren der folgenden Gründe auftreten:
 
 1.  Wenn ein benutzerdefinierter DNS-Server im virtuellen Netzwerk konfiguriert ist, überprüfen Sie, ob der (oder die) Server öffentliche Domänen auflösen kann (können). Die Auflösung öffentlicher Domänennamen ist möglicherweise in Szenarien erforderlich, in denen Application Gateway beispielsweise externe Domänen wie OCSP-Server erreichen oder den Sperrstatus des Zertifikats überprüfen muss.
 
-1.  Um zu überprüfen, ob Application Gateway fehlerfrei ist und ausgeführt wird, wechseln Sie im Portal zur Option **Ressourcenintegrität** , und überprüfen Sie, ob der Zustand **Fehlerfrei** lautet. Wenn Sie den Zustand **Fehlerhaft** oder [Beeinträchtigt](https://azure.microsoft.com/support/options/) sehen, **wenden Sie sich an den Support**.
+1.  Um zu überprüfen, ob Application Gateway fehlerfrei ist und ausgeführt wird, wechseln Sie im Portal zur Option **Ressourcenintegrität**, und überprüfen Sie, ob der Zustand **Fehlerfrei** lautet. Wenn Sie den Zustand **Fehlerhaft** oder [Beeinträchtigt](https://azure.microsoft.com/support/options/) sehen, **wenden Sie sich an den Support**.
 
 <a name="next-steps"></a>Nächste Schritte
 ----------

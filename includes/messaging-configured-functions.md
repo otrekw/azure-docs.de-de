@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/12/2020
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 9cc19548f0b969421974afe3e274fc5334590cb0
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: b487dcad83ccbc31adf2d7ec2dd77c490db2c68e
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97805670"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935194"
 ---
 Azure Functions ermöglicht das Erstellen von auf Konfigurationen beschränkten Replikationsaufgaben, die auf einem vordefinierten Einstiegspunkt basieren. Die [konfigurationsbasierten Replikationsbeispiele für Azure Functions](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config) veranschaulichen, wie [vorgefertigte Hilfsprogramme](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/src/Azure.Messaging.Replication) in Ihrem eigenen Code genutzt werden können, oder wie damit vermieden werden kann, Code überhaupt anfassen zu müssen und nur die Konfiguration zu verwenden.
 
@@ -166,7 +166,7 @@ Wenn Sie Ereignisse an eine Service Bus-Warteschlange weiterleiten möchten, fü
             "direction": "out",
             "type": "serviceBus",
             "connection": "functionname-target-connection",
-            "eventHubName": "queue-b",
+            "queueName": "queue-b",
             "name": "output" 
         }
     ...
@@ -190,7 +190,7 @@ Wenn Sie Ereignisse an ein Service Bus-Thema weiterleiten möchten, fügen Sie d
             "direction": "out",
             "type": "serviceBus",
             "connection": "functionname-target-connection",
-            "eventHubName": "queue-b",
+            "topicName": "topic-b",
             "name": "output" 
         }
     ...

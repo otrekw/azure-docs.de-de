@@ -5,19 +5,28 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: how-to
-ms.date: 09/28/2020
+ms.date: 12/14/2020
 ms.author: duau
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 7931ad9e55d62d5fa2b1828d276e56f7c8cd02e1
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: aea51e56f2d96fa634b1ece2029c9ea5bf3f60fc
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93286489"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98011304"
 ---
 # <a name="configure-expressroute-direct-by-using-the-azure-cli"></a>Konfigurieren von ExpressRoute Direct mit der Azure-Befehlszeilenschnittstelle
 
 ExpressRoute Direct ermöglicht das Herstellen einer direkten Verbindung mit dem globalen Netzwerk von Microsoft – dank strategisch verteilten Peeringstandorten auf der ganzen Welt. Weitere Informationen über ExpressRoute finden Sie unter [Informationen zu ExpressRoute Direct](expressroute-erdirect-about.md).
+
+## <a name="before-you-begin"></a>Voraussetzungen
+
+Bevor Sie ExpressRoute Direct nutzen können, müssen Sie zunächst Ihr Abonnement registrieren. Senden Sie dafür eine E-Mail mit Ihrer Abonnement-ID an <ExpressRouteDirect@microsoft.com>. Geben Sie in der E-Mail die folgenden Aspekte an:
+
+* Szenarien, für die Sie **ExpressRoute Direct** nutzen können
+* Bevorzugte Standorte: Unter [Partner und Peeringstandorte](expressroute-locations-providers.md) finden Sie eine vollständige Liste aller Standorte.
+* Zeitrahmen für die Implementierung
+* Weitere Fragen
 
 ## <a name="create-the-resource"></a><a name="resources"></a>Erstellen der Ressource
 

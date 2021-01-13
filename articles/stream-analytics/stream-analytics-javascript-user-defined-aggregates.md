@@ -3,17 +3,16 @@ title: Benutzerdefinierte JavaScript-Aggregate in Azure Stream Analytics
 description: In diesem Artikel wird beschrieben, wie Sie erweiterte Abfragemechanismen mit benutzerdefinierten JavaScript-Aggregaten in Azure Stream Analytics durchführen.
 author: rodrigoaatmicrosoft
 ms.author: rodrigoa
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/28/2017
 ms.custom: devx-track-js
-ms.openlocfilehash: 8891bb5cd3b8bd8ae9e02c871d6d0ffe42078c0b
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: e9695a268d1c6ec43a737afd36536e4ec2a41a41
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93124763"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98012477"
 ---
 # <a name="azure-stream-analytics-javascript-user-defined-aggregates"></a>Azure Stream Analytics – benutzerdefinierte JavaScript-Aggregate
  
@@ -124,7 +123,7 @@ Nun erstellen wir anhand der folgenden Schritte ein JavaScript-UDA unter einem v
 
 1. Melden Sie sich beim Azure-Portal an, und suchen Sie Ihren vorhandenen Stream Analytics-Auftrag.
 1. Klicken Sie auf den Funktionslink unter **AUFTRAGSTOPOLOGIE**.
-1. Klicken Sie auf das Symbol **Hinzufügen** , um eine neue Funktion hinzuzufügen.
+1. Klicken Sie auf das Symbol **Hinzufügen**, um eine neue Funktion hinzuzufügen.
 1. Wählen Sie in der Ansicht „Neue Funktion“ den Funktionstyp **JavaScript-UDA** aus. Daraufhin wird im Editor eine UDA-Standardvorlage angezeigt.
 1. Geben Sie „TWA“ als UDA-Alias ein, und ändern Sie die Funktionsimplementierung wie im Folgenden angegeben:
 

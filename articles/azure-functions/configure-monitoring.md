@@ -4,12 +4,12 @@ description: Es wird beschrieben, wie Sie Ihre Funktions-App zur Überwachung mi
 ms.date: 8/31/2020
 ms.topic: how-to
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 77cc87e44990f471ef38871c0225835660779a3c
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.openlocfilehash: 24350eb07481db66907d199cd96f84a02cc98c9e
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97825761"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937279"
 ---
 # <a name="how-to-configure-monitoring-for-azure-functions"></a>Konfigurieren der Überwachung für Azure Functions
 
@@ -197,7 +197,7 @@ Weitere Informationen finden Sie unter [Stichprobenentnahme in Application Insig
 
 _Dieses Feature befindet sich in der Vorschauphase._ 
 
-Der [Skalierungscontroller von Azure Functions](./functions-scale.md#runtime-scaling) kann Protokolle an Application Insights oder an den Blobspeicher ausgeben, damit sie die Entscheidungen, die der Skalierungscontroller für Ihre Funktions-App trifft, besser nachvollziehen können.
+Der [Skalierungscontroller von Azure Functions](./event-driven-scaling.md#runtime-scaling) kann Protokolle an Application Insights oder an den Blobspeicher ausgeben, damit sie die Entscheidungen, die der Skalierungscontroller für Ihre Funktions-App trifft, besser nachvollziehen können.
 
 Um dieses Feature zu aktivieren, fügen Sie den Einstellungen Ihrer Funktions-App eine Anwendungseinstellung mit dem Namen `SCALE_CONTROLLER_LOGGING_ENABLED` hinzu. Der Wert dieser Einstellung muss das Format `<DESTINATION>:<VERBOSITY>` haben und auf Folgendem basieren:
 

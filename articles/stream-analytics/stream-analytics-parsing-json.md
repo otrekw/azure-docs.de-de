@@ -2,17 +2,17 @@
 title: Analysieren von JSON- und AVRO-Daten in Azure Stream Analytics
 description: Dieser Artikel beschreibt, wie Sie mit komplexen Datentypen wie Arrays, JSON- und CSV-formatierten Daten arbeiten.
 ms.service: stream-analytics
-author: mamccrea
-ms.author: mamccrea
+author: sidramadoss
+ms.author: sidram
 ms.topic: conceptual
 ms.date: 01/29/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 6c2eb4225cb014b3251d12470e4e9827150a5cf2
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: f6cb131fb3ff3cab4122aac5e1c6960dee4f8421
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93123352"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98012239"
 ---
 # <a name="parse-json-and-avro-data-in-azure-stream-analytics"></a>Analysieren von JSON- und AVRO-Daten in Azure Stream Analytics
 
@@ -91,7 +91,7 @@ Es wird folgendes Ergebnis ausgegeben:
 
 Verwenden Sie die Funktion [GetRecordPropertyValue](/stream-analytics-query/getrecordpropertyvalue-azure-stream-analytics), wenn der Eigenschaftenname eine Variable ist. Dies ermöglicht die Erstellung dynamischer Abfragen, ohne Eigenschaftsnamen hart codieren zu müssen.
 
-Stellen Sie sich z. B. einmal vor, dass der Beispieldatenstrom **mit Referenzdaten verknüpft werden muss** , die Schwellenwerte für jeden Gerätesensor enthalten. Nachfolgend finden Sie einen Ausschnitt aus solchen Referenzdaten.
+Stellen Sie sich z. B. einmal vor, dass der Beispieldatenstrom **mit Referenzdaten verknüpft werden muss**, die Schwellenwerte für jeden Gerätesensor enthalten. Nachfolgend finden Sie einen Ausschnitt aus solchen Referenzdaten.
 
 ```json
 {
@@ -207,7 +207,7 @@ Sie können dann in Ihrer Stream Analytics-Abfrage wie nachfolgend gezeigt eine
 
 Arraydatentypen sind eine geordnete Sammlung von Werten. Im Folgenden werden einige typische Vorgänge mit Arraywerten beschrieben. In diesen Beispielen werden die Funktionen [GetArrayElement](/stream-analytics-query/getarrayelement-azure-stream-analytics), [GetArrayElements](/stream-analytics-query/getarrayelements-azure-stream-analytics), [GetArrayLength](/stream-analytics-query/getarraylength-azure-stream-analytics) und der [APPLY](/stream-analytics-query/apply-azure-stream-analytics)-Operator verwendet.
 
-Hier ist ein Beispiel für ein einzelnes Ereignis. Sowohl `CustomSensor03` als auch `SensorMetadata` sind vom Typ **Array** :
+Hier ist ein Beispiel für ein einzelnes Ereignis. Sowohl `CustomSensor03` als auch `SensorMetadata` sind vom Typ **Array**:
 
 ```json
 {

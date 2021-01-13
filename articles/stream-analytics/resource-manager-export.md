@@ -2,17 +2,17 @@
 title: Exportieren einer Azure Resource Manager-Vorlage für einen Azure Stream Analytics-Auftrag
 description: In diesem Artikel erfahren Sie, wie Sie eine Azure Resource Manager-Vorlage für Ihren Azure Stream Analytics-Auftrag exportieren.
 services: stream-analytics
-author: mamccrea
-ms.author: mamccrea
+author: sidramadoss
+ms.author: sidram
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 03/10/2020
-ms.openlocfilehash: 2afebe61c4b2998692c823e66d8fc73584ec1dc2
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: aa17d83dcc14675db5ff6aa4597314baffbffdbb
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93125647"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98015418"
 ---
 # <a name="export-an-azure-stream-analytics-job-azure-resource-manager-template"></a>Exportieren einer Azure Resource Manager-Vorlage für einen Azure Stream Analytics-Auftrag
 
@@ -38,7 +38,7 @@ Als Nächstes muss das Auftragsskript als Azure Resource Manager-Vorlage kompi
 
    ![Datei „Transformation.asaql“ in Visual Studio Code](./media/resource-manager-export/transformation-asaql.png)
 
-1. Klicken Sie mit der rechten Maustaste auf die Datei *Transformation.asaql* , und wählen Sie **ASA: Skript kompilieren** aus dem Menü aus.
+1. Klicken Sie mit der rechten Maustaste auf die Datei *Transformation.asaql*, und wählen Sie **ASA: Skript kompilieren** aus dem Menü aus.
 
 1. Daraufhin wird im Arbeitsbereich Ihres Stream Analytics-Auftrags ein Ordner namens **Deploy** angezeigt.
 
@@ -58,7 +58,7 @@ Bearbeiten Sie als Nächstes die Parameterdatei für die Azure Resource Manage
 
 Ihr Azure Stream Analytics-Auftrag kann nun mithilfe der Azure Resource Manager-Vorlagen bereitgestellt werden, die Sie im vorherigen Abschnitt generiert haben.
 
-Führen Sie in einem PowerShell-Fenster den folgenden Befehl aus. Ersetzen Sie dabei *ResourceGroupName* , *TemplateFile* und *TemplateParameterFile* durch den tatsächlichen Ressourcengruppennamen bzw. durch die vollständigen Dateipfade der Dateien *JobTemplate.json* und *JobTemplate.parameters.json* im Ordner **Deploy** des Arbeitsbereichs Ihres Auftrags.
+Führen Sie in einem PowerShell-Fenster den folgenden Befehl aus. Ersetzen Sie dabei *ResourceGroupName*, *TemplateFile* und *TemplateParameterFile* durch den tatsächlichen Ressourcengruppennamen bzw. durch die vollständigen Dateipfade der Dateien *JobTemplate.json* und *JobTemplate.parameters.json* im Ordner **Deploy** des Arbeitsbereichs Ihres Auftrags.
 
 Sollte Azure PowerShell bei Ihnen nicht konfiguriert sein, führen Sie die Schritte zum [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-Az-ps) aus.
 

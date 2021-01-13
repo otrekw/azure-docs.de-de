@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 575903654a165bef0d09ac6abf0793af3f6784e8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5fa0b6ca41349d20614a64006536e78d8ee71844
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90931769"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955364"
 ---
 # <a name="offline-deployment-overview"></a>Offlinebereitstellung: Übersicht
 
@@ -22,7 +22,7 @@ Normalerweise werden die Containerimages, die bei der Erstellung des Azure Arc-D
 
 Da für Azure Arc-fähige Datendienste monatliche Updates bereitgestellt werden und eine große Anzahl von Containerimages vorhanden ist, empfiehlt es sich, diesen Prozess des Pullens, Markierens und Pushens der Containerimages in eine private Containerregistrierung mithilfe eines Skripts durchzuführen.  Das Skript kann entweder automatisiert oder manuell ausgeführt werden.
 
-Ein [Beispielskript](https://raw.githubusercontent.com/microsoft/azure_arc/master/arc_data_services/deploy/scripts/pull-and-push-arc-data-services-images-to-private-registry.py) finden Sie im GitHub-Repository für Azure Arc.
+Ein [Beispielskript](https://raw.githubusercontent.com/microsoft/azure_arc/main/arc_data_services/deploy/scripts/pull-and-push-arc-data-services-images-to-private-registry.py) finden Sie im GitHub-Repository für Azure Arc.
 
 > [!NOTE]
 > Dieses Skript erfordert die Installation von Python und der [Docker CLI](https://docs.docker.com/install/).

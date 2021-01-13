@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: f447c6028b1750aa96e531a97e7b0861f66a5749
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 30852b6b3f9a4b490c4b58fe07f34ee49c60fa9f
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761667"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955245"
 ---
 # <a name="create-a-postgresql-hyperscale-server-group-using-kubernetes-tools"></a>Erstellen einer PostgreSQL Hyperscale-Servergruppe mit Kubernetes-Tools
 
@@ -34,7 +34,7 @@ Zum Erstellen einer PostgreSQL Hyperscale-Servergruppe müssen Sie ein Kubernet
 
 ## <a name="create-a-yaml-file"></a>Erstellen einer YAML-Datei
 
-Sie können die [YAML-Vorlagedatei](https://raw.githubusercontent.com/microsoft/azure_arc/master/arc_data_services/deploy/yaml/postsgresql.yaml) als Ausgangspunkt verwenden, um Ihre eigene benutzerdefinierte YAML-Datei für die PostgreSQL Hyperscale-Servergruppe zu erstellen.  Laden Sie diese Datei auf Ihren Computer herunter, und öffnen Sie sie in einem Text-Editor.  Es ist hilfreich, einen Text-Editor wie [VS Code](https://code.visualstudio.com/download) zu verwenden, der Syntaxhervorhebung und Linten für YAML-Dateien unterstützen.
+Sie können die [YAML-Vorlagedatei](https://raw.githubusercontent.com/microsoft/azure_arc/main/arc_data_services/deploy/yaml/postgresql.yaml) als Ausgangspunkt verwenden, um Ihre eigene benutzerdefinierte YAML-Datei für die PostgreSQL Hyperscale-Servergruppe zu erstellen.  Laden Sie diese Datei auf Ihren Computer herunter, und öffnen Sie sie in einem Text-Editor.  Es ist hilfreich, einen Text-Editor wie [VS Code](https://code.visualstudio.com/download) zu verwenden, der Syntaxhervorhebung und Linten für YAML-Dateien unterstützen.
 
 Dies ist eine YAML-Beispieldatei:
 

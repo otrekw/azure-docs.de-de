@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: how-to
 ms.date: 11/12/2020
-ms.openlocfilehash: 87d6ca8ee69ca49cf52b61e6beddb56721658afa
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: bdbbf3e808e1dda0970aaf87d154ee79bea4dcb1
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94593738"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97964166"
 ---
 # <a name="share-and-receive-data-from-azure-sql-database-and-azure-synapse-analytics"></a>Freigeben und Empfangen von Daten aus Azure SQL-Datenbank und Azure Synapse Analytics
 
@@ -341,7 +341,7 @@ Die Leistung von SQL-Momentaufnahmen wird durch eine Reihe von Faktoren beeinflu
 * Standort der Quell- und Zieldatenspeicher. 
 
 ## <a name="troubleshoot-sql-snapshot-failure"></a>Problembehandlung für Fehler bei der SQL-Momentaufnahme
-Die häufigste Ursache für einen Fehler bei der Momentaufnahme ist, dass Data Share nicht über die Berechtigung für den Quell- oder Zieldatenspeicher verfügt. Um Data Share die Berechtigung für Quell- oder Zielinstanz von Azure SQL-Datenbank oder Azure Synapse Analytics (ehemals Azure SQL DW) zu erteilen, müssen Sie das bereitgestellte SQL-Skript ausführen, wenn Sie eine Verbindung mit der SQL-Datenbank mithilfe der Azure Active Directory-Authentifizierung herstellen. Informationen zur Problembehandlung für weitere Fehler bei der SQL-Momentaufnahme finden Sie unter [Problembehandlung für Fehler bei Momentaufnahme](data-share-troubleshoot.md#snapshot-failed).
+Die häufigste Ursache für einen Fehler bei der Momentaufnahme ist, dass Data Share nicht über die Berechtigung für den Quell- oder Zieldatenspeicher verfügt. Um Data Share die Berechtigung für Quell- oder Zielinstanz von Azure SQL-Datenbank oder Azure Synapse Analytics (ehemals Azure SQL DW) zu erteilen, müssen Sie das bereitgestellte SQL-Skript ausführen, wenn Sie eine Verbindung mit der SQL-Datenbank mithilfe der Azure Active Directory-Authentifizierung herstellen. Informationen zur Problembehandlung für weitere Fehler bei der SQL-Momentaufnahme finden Sie unter [Problembehandlung für Fehler bei Momentaufnahme](data-share-troubleshoot.md#snapshots).
 
 ## <a name="next-steps"></a>Nächste Schritte
 Sie haben erfahren, wie Sie Daten aus SQL-Quellen mithilfe des Azure Data Share-Diensts freigeben und empfangen. Weitere Informationen zum Freigeben von Daten aus anderen Datenquellen finden Sie unter [Unterstützte Datenspeicher](supported-data-stores.md).

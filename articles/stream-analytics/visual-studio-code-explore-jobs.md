@@ -2,16 +2,16 @@
 title: Erkunden von Azure Stream Analytics-Aufträgen mit Visual Studio Code
 description: In diesem Artikel wird veranschaulicht, wie ein Azure Stream Analytics-Auftrag in ein lokales Projekt exportiert wird, Aufträge aufgelistet und Auftragsentitäten angezeigt werden können.
 ms.service: stream-analytics
-author: mamccrea
-ms.author: mamccrea
+author: su-jie
+ms.author: sujie
 ms.date: 05/15/2019
 ms.topic: how-to
-ms.openlocfilehash: 4b4ddd7db4891c642ec2002bbe992314fe67a20f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4f1c0650820a419275ade6095344033b6d81a568
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90891967"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98013871"
 ---
 # <a name="explore-azure-stream-analytics-with-visual-studio-code-preview"></a>Erkunden von Azure Stream Analytics mit Visual Studio Code (Vorschauversion)
 
